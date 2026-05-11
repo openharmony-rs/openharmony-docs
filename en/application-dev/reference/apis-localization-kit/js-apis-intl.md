@@ -15,7 +15,7 @@ The [i18n](js-apis-i18n.md) module provides enhanced i18n capabilities through s
 >
 >  - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [number formatting API](#numberformat) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the official CLDR documentation.
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [number formatting API](#numberformat) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 >
@@ -601,8 +601,6 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 
 Options for creating the **NumberFormat** object. Since API version 9, the **NumberOptions** attribute is changed from mandatory to optional.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Global.I18n
 
 | Name                      | Type     | Read-Only  | Optional  |  Description                                      |
@@ -704,7 +702,7 @@ Compares two strings based on the specified collation rules.
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Comparison result.<br>- If the value is a negative number, the first string comes before the second string.<br>- If the value is **0**, the first and second strings are in the same sequence.<br>- If the value is a positive number, the first string is comes after the second string.|
+| number | Comparison result.<br>- If the value is a negative number, the first string comes before the second string.<br>- If the value is **0**, the first and second strings are in the same sequence.<br>- If the value is a positive number, the first string comes after the second string.|
 
 **Example**
 ```ts
@@ -1203,7 +1201,7 @@ The following uses **123000.123** as an example to show the parameter values and
 | 3 | 123,000.123 |
 | 4 | 123,000.1230 |
 
-**Table 3** Maximum number of fraction digits (maximumFractionDigits)
+**Table 13** Maximum number of fraction digits (maximumFractionDigits)
 
 | Value| Display Effect|
 | -------- | -------- |
@@ -1231,7 +1229,7 @@ The following uses **123000.123** as an example to show the parameter values and
 | true | 123,000.123 |
 | false | 123000.123 |
 
-**Table 7** Number notation (notation)
+**Table 17** Number notation (notation)
 
 | Value| Display Effect|
 | -------- | -------- |
@@ -1251,7 +1249,7 @@ The following uses **123000.123** as an example to show the parameter values and
 
 Assume that the currency unit is USD and the value is **-12300**.
 
-**Table 19** Currency sign (currencySign)
+**Table 19** Currency signs (currencySign)
 
 | Value| Display Effect|
 | -------- | -------- |
@@ -1291,7 +1289,7 @@ Assume that the unit name is **hectare** and the value is **-12300**.
 
 The following uses the relative time **1 day ago** and locale IDs **fr-FR** and **en-GB** as an example.
 
-**Table 11** Numeric representation (numeric)
+**Table 23** Numeric representation (numeric)
 
 | Value  | Description                                         | Display Effect (fr-FR)| Display Effect (en-GB)|
 | ------ | -------------------------------------------- | -------------- | --------------- |

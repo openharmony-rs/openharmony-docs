@@ -245,7 +245,7 @@ This error code is reported if the memory is insufficient.
 
 **Cause**
 
-This error code is reported if the memory is insufficient.
+The memory is insufficient.
 
 **Solution**
 
@@ -497,7 +497,7 @@ This error code is reported if the file requested by the specified URL does not 
 
 **Cause**
 
-This error code is reported if the file requested by the specified URL does not exist.
+The file requested by the specified URL does not exist.
 
 **Solution**
 
@@ -555,7 +555,7 @@ An incorrect server domain name is configured for the atomic service.
 
 **Solution**
 
-Configure a correct server domain name for the atomic service.
+Configure a correct server domain name for the atomic service. For details, see [Configuring Server Domain Names](https://developer.huawei.com/consumer/en/doc/atomic-guides/agc-help-harmonyos-server-domain). The server domain name configuration takes effect more than one day after being set.
 
 ## 2300999 Internal Error
 
