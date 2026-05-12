@@ -623,7 +623,7 @@ Registers a callback to listen for the destroy event of the word selection panel
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'destroyed'**.|
-| callback | Callback\<void> | Yes  | Callback function. The return value is null.      |
+| callback | Callback\<void> | Yes  | Callback function that returns no value.      |
 
 **Example**
 <!--code_no_check-->
@@ -654,7 +654,7 @@ Unregisters the callback used to listen for the destroy event of the word select
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes  | Event type, which is **'destroyed'**.              |
-| callback | Callback\<void> | No  | Callback function. The return value is null. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 <!--code_no_check-->
@@ -683,7 +683,7 @@ Registers a callback to listen for the hide event of the word selection panel. T
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'hidden'**.|
-| callback | Callback\<void> | Yes  | Callback function. The return value is null.      |
+| callback | Callback\<void> | Yes  | Callback function that returns no value.      |
 
 **Example**
 <!--code_no_check-->
@@ -714,7 +714,7 @@ Unregisters the callback used to listen for the hide event of the word selection
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes  | Event type, which is **'hidden'**.              |
-| callback | Callback\<void> | No  | Callback function. The return value is null. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 <!--code_no_check-->
