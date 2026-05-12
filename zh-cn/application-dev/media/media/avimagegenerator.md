@@ -40,9 +40,9 @@
    avImageGenerator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
    ```
    ArkTS-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    ```ts
-    import common from '@ohos.app.ability.common';
+   import common from '@ohos.app.ability.common';
    import { globalContext } from '../entryability/GlobalContext';
    private avImageGenerator: media.AVImageGenerator | undefined;
    private context: Context | undefined;
