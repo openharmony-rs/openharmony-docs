@@ -247,7 +247,7 @@
          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
          return;
        }
-       await this.port.setRts(true);
+       await this.port!.setRts(true);
        console.info(`${TAG} setRts(true) success`);
      } catch (err) {
        const e = err as BusinessError;
