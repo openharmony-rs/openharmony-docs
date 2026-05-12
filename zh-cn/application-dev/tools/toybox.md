@@ -163,7 +163,6 @@ toybox的执行方式有两种：
 | ifconfig      | 显示或配置网络接口。<br/>usage: ifconfig [-aS] [INTERFACE [ACTION...]] |
 | netstat   | 显示网络信息。<br/>usage: netstat [-pWrxwutneal] |
 | ping/ping6    | 检测网络连通性。ping6自带-6选项。<br/>usage: ping/ping6 [OPTIONS] HOST |
-| telnet  | 连接telnet服务器。<br/>usage: telnet HOST [PORT] |
 
 ### 文件操作
 
