@@ -4847,7 +4847,7 @@ IP多媒体系统调用模式。
 | audioDeviceList   | [Array\<AudioDevice\>](#audiodevice10) | 是   | 音频设备列表。    |
 | currentAudioDevice | [AudioDevice](#audiodevice10)          | 是   | 当前音频设备。    |
 | isMuted            | boolean                               | 是   | 是否静音。        |
-| isMicDisabled<sup>24+<sup>     |  boolean                                | 是    | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
+| isMicDisabled<sup>24+</sup>     |  boolean                                | 是    | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
 
 
 ## CallRestrictionType<sup>8+</sup>
