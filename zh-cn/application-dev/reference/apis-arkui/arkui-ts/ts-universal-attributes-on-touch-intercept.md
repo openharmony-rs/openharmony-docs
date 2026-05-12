@@ -39,7 +39,7 @@ ArkTS-Sta: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode> | undefi
 
 | 参数名        | 类型                    | 必填  | 说明                         |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | ArkTS-Dyn: Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-appendix-enums.md#hittestmode9)><br/>ArkTS-Sta: Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-appendix-enums.md#hittestmode9)> \| undefined | 是     |  自定义事件拦截回调。在做[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时回调此函数。通过返回值设置组件的[触摸测试类型](ts-universal-attributes-hit-test-behavior.md)。<br/>传入undefined时无效果。 |
+| callback      | ArkTS-Dyn: Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-appendix-enums.md#hittestmode9)><br/>ArkTS-Sta: Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-appendix-enums.md#hittestmode9)> \| undefined | 是     |  自定义事件拦截回调。在做[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时回调此函数。通过返回值设置组件的[HitTestMode](ts-appendix-enums.md#hittestmode9)。<br/>传入undefined时无效果。 |
 
 **返回值：**
 
