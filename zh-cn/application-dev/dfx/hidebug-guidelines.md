@@ -371,14 +371,14 @@ HiDebug提供修改转储堆快照级别的接口。
 
 ## 导出内存快照
 
-从API version 26开始，HiDebug支持注册内存导出监听器，用于在内存占用较高或通过hidumper命令手动触发时导出应用内存快照，便于本地导出或上报。
+从API版本26.0.0开始，HiDebug支持注册内存导出监听器，用于在内存占用较高或通过[hidumper命令](hidumper.md#查询虚拟机堆内存)手动触发时导出应用内存快照，便于本地导出或上报。
 
 ### 接口说明（C/C++）
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| OH_HiDebug_RegisterMemDumpListener | 注册内存导出监听器。<br/>**说明**：从API version 26开始，支持该接口。 |
-| OH_HiDebug_UnregisterMemDumpListener | 注销已注册的内存导出监听器。<br/>**说明**：从API version 26开始，支持该接口。 |
+| OH_HiDebug_RegisterMemDumpListener | 注册内存导出监听器。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
+| OH_HiDebug_UnregisterMemDumpListener | 注销已注册的内存导出监听器。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
 
 ## 其他
 
