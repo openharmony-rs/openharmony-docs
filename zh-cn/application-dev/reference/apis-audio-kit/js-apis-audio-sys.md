@@ -3281,6 +3281,45 @@ async function getExcludedDevices(){
 }
 ```
 
+## getActiveOutputDeviceDescriptors
+
+getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
+
+获取当前音频设备场景下的活跃输出设备描述符。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型                                                         | 说明                      |
+| ------------------------------------------------------------ | ------------------------- |
+| Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise对象，返回活跃输出设备描述符列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in getting active output device descriptors, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get active output device descriptors. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## AudioRendererChangeInfo<sup>9+</sup>
 
 描述音频渲染器更改信息。
@@ -3947,7 +3986,7 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean\>): void
 取消监听空间音频渲染开关状态变化事件。使用callback异步回调。
 
 > **说明：**
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offspatializationenabledchangeforanydevice12)替代。
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off('spatializationEnabledChangeForAnyDevice')](#offspatializationenabledchangeforanydevice12)替代。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4387,7 +4426,7 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean\>): void
 取消监听头动跟踪开关状态变化事件。使用callback异步回调。
 
 > **说明：**
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offheadtrackingenabledchangeforanydevice12)替代。
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off('headTrackingEnabledChangeForAnyDevice')](#offheadtrackingenabledchangeforanydevice12)替代。
 
 **系统接口：** 该接口为系统接口。
 
