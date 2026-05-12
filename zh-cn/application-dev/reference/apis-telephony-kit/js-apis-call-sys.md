@@ -5400,7 +5400,7 @@ controlCamera\(callId: number, cameraId: string\): Promise\<void\>
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
 | callId | number                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
-| cameraId | string                     | 是   | 相机Id。cameraId获取方式可参考相机管理[getSupportedCameras](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)。|
+| cameraId | string                     | 是   | 相机Id。cameraId获取方式可参考相机管理[getSupportedCameras](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口。|
 
 **返回值：**
 
