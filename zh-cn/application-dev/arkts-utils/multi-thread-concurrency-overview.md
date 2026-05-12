@@ -249,6 +249,60 @@ struct Index {
 
 <!-- @[actor_model2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/MultiThreadConcurrencyOverview/entry/src/main/ets/managers/actormodel2.ets) -->
 
+``` TypeScript
+import { taskpool } from '@kit.ArkTS';
+
+// 跨线程并发任务
+@Concurrent
+async function produce(): Promise<number> {
+  // 添加生产相关逻辑
+  console.info('producing...');
+  return Math.random();
+}
+
+class Consumer {
+  public consume(value: number) {
+    // 添加消费相关逻辑
+    console.info('consuming value: ' + value);
+  }
+}
+
+@Entry
+@Component
+struct ActorModel2 {
+  @State message: string = 'Hello World'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+        Button() {
+          Text('start')
+        }.onClick(async () => {
+          let dataArray: number[] = [];
+          let produceTask: taskpool.Task = new taskpool.Task(produce);
+          let consumer: Consumer = new Consumer();
+          for (let index: number = 0; index < 10; index++) {
+            // 执行生产异步并发任务
+            let result = await taskpool.execute(produceTask) as number;
+            dataArray.push(result);
+          }
+          for (let index: number = 0; index < dataArray.length; index++) {
+            consumer.consume(dataArray[index]);
+          }
+        })
+        .width('20%')
+        .height('20%')
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ## TaskPool和Worker
 
 ArkTS提供了TaskPool和Worker两种并发能力供开发者选择，各自的运作机制和注意事项请见[TaskPool简介](taskpool-introduction.md)和[Worker简介](worker-introduction.md)，两者之间实现的特点和适用场景也存在差异，请见[TaskPool和Worker的对比](taskpool-vs-worker.md)。
