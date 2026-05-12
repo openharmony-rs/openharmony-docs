@@ -1206,17 +1206,19 @@ function UpdateDataFunc(imageSource: image.ImageSource): void {
 
 createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 
+createPicture(options?: DecodingOptionsForPicture): Promise\<Picture | undefined>
+
 通过图片解码参数创建Picture对象。使用Promise异步回调。
 
 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法，及时释放内存。
 
 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1229,6 +1231,7 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 | 类型                         | 说明                       |
 | ---------------------------- | -------------------------- |
 | Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture。 |
+| Promise\<[Picture](arkts-apis-image-Picture.md) \| undefined> | Promise对象，返回Picture。 |
 
 **错误码：**
 
@@ -1238,10 +1241,11 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed.  |
 | 7700203  | Unsupported options, For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. |
-| 7700301  | Decode failed.                                      |
+| 7700301  | Decode failed. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function CreatePicture() {
   let options: image.DecodingOptionsForPicture = {
@@ -1256,40 +1260,7 @@ async function CreatePicture() {
 }
 ```
 
-## createPicture<sup>23+</sup>
-
-createPicture(options?: DecodingOptionsForPicture): Promise\<Picture | undefined>
-
-通过图片解码参数创建Picture对象。使用Promise异步回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名  | 类型                                                   | 必填 | 说明       |
-| ------- | ------------------------------------------------------ | ---- | ---------- |
-| options | [DecodingOptionsForPicture](arkts-apis-image-i.md#decodingoptionsforpicture13) | 否   | 解码参数。 |
-
-**返回值：**
-
-| 类型                         | 说明                       |
-| ---------------------------- | -------------------------- |
-| Promise\<[Picture](arkts-apis-image-Picture.md) \| undefined> | Promise对象，返回Picture。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 7700301  | Failed to decode image.                                      |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 async function CreatePictureFunc(imageSource: image.ImageSource): void {
   let opts: image.DecodingOptionsForPicture = { desiredAuxiliaryPictures: [image.AuxiliaryPictureType.GAINMAP] };
@@ -2018,6 +1989,8 @@ function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
 
 createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
 
+createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap | undefined>
+
 使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
 
 > **说明：**
@@ -2032,6 +2005,8 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 **ArkTS-Dyn起始版本：** 15
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                                 | 必填 | 说明                     |
@@ -2044,6 +2019,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 | 类型                             | 说明                        |
 | -------------------------------- | --------------------------- |
 | Promise\<[PixelMap](arkts-apis-image-PixelMap.md)>  | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -2062,6 +2038,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function CreatePixelMapUsingAllocator(context : Context) {
   // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
@@ -2086,47 +2063,7 @@ async function CreatePixelMapUsingAllocator(context : Context) {
 }
 ```
 
-## createPixelMapUsingAllocator<sup>23+</sup>
-
-createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap | undefined>
-
-使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名        | 类型                                 | 必填 | 说明                     |
-| ------------- | ------------------------------------ | ---- | ------------------------ |
-| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。 |
-| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
-
-**返回值：**
-
-| 类型                             | 说明                        |
-| -------------------------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 7700101  | Bad source. |
-| 7700102  | Unsupported mimetype.                                        |
-| 7700103  | Image too large. |
-| 7700201  | Unsupported allocator type. For example, use share memory to decode HDR image as only DMA supported HDR metadata. |
-| 7700203  | Unsupported options, For example, unsupported desiredPixelFormat causes a failure in converting an imagge into the desired pixel format. |
-| 7700301  | Failed to decode image.                                      |
-| 7700302  | Failed to allocate memory.                                   |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 async function CreatePixelMapUsingAllocatorFunc(imageSource: image.ImageSource): void {
    let decodeOpts: image.DecodingOptions = {
@@ -2150,6 +2087,8 @@ async function CreatePixelMapUsingAllocatorFunc(imageSource: image.ImageSource):
 
 createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
 
+createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap \| undefined
+
 根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
@@ -2160,11 +2099,11 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 >
 > 该方法为同步方法，调用时会阻塞当前线程，不建议在主线程中调用，否则可能导致应用卡顿、掉帧或响应延迟。具体场景参考[耗时任务并发场景简介](../../arkts-utils/time-consuming-task-overview.md)。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2178,6 +2117,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 | 类型                   | 说明                   |
 | ---------------------- | ---------------------- |
 | [PixelMap](arkts-apis-image-PixelMap.md)  | 用于同步返回创建结果。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
 
 **错误码：**
 
@@ -2196,6 +2136,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function CreatePixelMapUsingAllocator(context : Context) {
   // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
@@ -2220,47 +2161,7 @@ async function CreatePixelMapUsingAllocator(context : Context) {
 }
 ```
 
-## createPixelMapUsingAllocatorSync<sup>23+</sup>
-
-createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap \| undefined
-
-根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[申请图片解码内存(ArkTS)](../../media/image/image-allocator-type.md)。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名        | 类型                                 | 必填 | 说明                     |
-| ------------- | ------------------------------------ | ---- | ------------------------ |
-| options        | [DecodingOptions](arkts-apis-image-i.md#decodingoptions7) | 否   | 解码参数。 |
-| allocatorType | [AllocatorType](arkts-apis-image-e.md#allocatortype15)   | 否   | 用于图像解码的内存类型。默认值为AllocatorType.AUTO。 |
-
-**返回值：**
-
-| 类型                   | 说明                   |
-| ---------------------- | ---------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 7700101  | Bad source. |
-| 7700102  | Unsupported MIME type.                                        |
-| 7700103  | Image too large. |
-| 7700201  | Unsupported allocator type. For example, use share memory to decode HDR image as only DMA supported HDR metadata. |
-| 7700203  | Unsupported options, For example, unsupported desiredPixelFormat cause a failure in converting an image into the desired pixel format. |
-| 7700301  | Failed to decode image.                                      |
-| 7700302  | Failed to allocate memory.                                   |
-
-**示例：**
-
+ArtTS-Sta示例:
 ```ts
 function CreatePixelMapUsingAllocatorSyncFunc(imageSource: image.ImageSource): void {
    let decodeOpts: image.DecodingOptions = {

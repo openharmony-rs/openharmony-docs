@@ -316,17 +316,13 @@ Gainmap图单个通道的数据内容，参考ISO 21496-1。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                    | 类型                    | 只读 | 可选 | 说明                            |
 | ----------------------- | ----------------------- | ---- | ---- | ------------------------------- |
-| exifMetadata            | [ExifMetadata](arkts-apis-image-ExifMetadata.md) | 否   | 是   | Exif元数据。                    |
-| makerNoteHuaweiMetadata | [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md) | 否   | 是   | 来自Huawei相机的照片元数据。 |
-| heifsMetadata | [HeifsMetadata](arkts-apis-image-HeifsMetadata.md) | 否   | 是   | HEIF序列图像元数据类，用于存储图像的元数据。 |
-| webPMetadata<sup>24+</sup> | [WebPMetadata](arkts-apis-image-WebPMetadata.md) | 否   | 是   | WebP图像元数据类，用于存储图像的元数据。 |
-| dngMetadata<sup>24+</sup> | [DngMetadata](#dngmetadata24) | 否   | 是   | DNG图像元数据。 |
+| exifMetadata            | [ExifMetadata](arkts-apis-image-ExifMetadata.md) | 否   | 是   | Exif元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| makerNoteHuaweiMetadata | [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md) | 否   | 是   | 来自Huawei相机的照片元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| heifsMetadata | [HeifsMetadata](arkts-apis-image-HeifsMetadata.md) | 否   | 是   | HEIF序列图像元数据类，用于存储图像的元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| webPMetadata<sup>24+</sup> | [WebPMetadata](arkts-apis-image-WebPMetadata.md) | 否   | 是   | WebP图像元数据类，用于存储图像的元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| dngMetadata<sup>24+</sup> | [DngMetadata](#dngmetadata24) | 否   | 是   | DNG图像元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 | gifMetadata | [GifMetadata](arkts-apis-image-GifMetadata.md) | 否   | 是   | GIF图像元数据。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | tiffMetadata | [TiffMetadata](arkts-apis-image-TiffMetadata.md) | 否   | 是   | TIFF图像元数据。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | jfifMetadata | [JfifMetadata](arkts-apis-image-JfifMetadata.md) | 否   | 是   | JFIF图像元数据。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
@@ -341,6 +337,10 @@ Dng图像元数据类，用于存储图像的元数据。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                         | 类型 | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
@@ -496,6 +496,10 @@ ImageReceiver的初始化选项。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称              | 类型              | 只读 | 可选 | 说明               |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |
