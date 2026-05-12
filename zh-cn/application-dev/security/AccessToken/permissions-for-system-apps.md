@@ -4160,6 +4160,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：PC/2in1
+
 **起始版本**：14
 
 ## ohos.permission.UTILIZE_RECOVERY_KEY
@@ -4171,6 +4173,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：14
 
@@ -4207,6 +4211,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：14
 
@@ -5892,6 +5898,20 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
+
+允许应用配置卷加密策略。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：26.0.0
 

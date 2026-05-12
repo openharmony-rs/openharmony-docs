@@ -4160,6 +4160,8 @@ Allows an application to create or remove the recovery key.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: PCs/2-in-1 devices
+
 **Valid since**: 14
 
 ## ohos.permission.UTILIZE_RECOVERY_KEY
@@ -4171,6 +4173,8 @@ Allows an application to utilize the recovery key to reset the lock screen passw
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 14
 
@@ -4207,6 +4211,8 @@ Allows an application to obtain brief information about the recovery key.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 14
 
@@ -5892,6 +5898,20 @@ Allows a system application to launch the intelligent customer service.
 **Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
+
+Allows an application to configure the encryption policy for a volume.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.0
 
