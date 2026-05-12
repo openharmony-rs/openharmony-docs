@@ -141,9 +141,10 @@
    try {
      const portList = await serial.getSerialPortList();
      console.info(`${TAG} getSerialPortList success, count: ${portList.length}`);
-     portList.forEach((port: serial.SerialPort, index: number) => {
-       console.info(`${TAG}   [${index}] portName=${port.portInfo.portName}, vendorId=${port.portInfo.vendorId}, productId=${port.portInfo.productId}`);
-     });
+     for (let i = 0; i < portList.length; i++) {
+       const port = portList[i];
+       console.info(`${TAG}   [${i}] portName=${port.portInfo.portName}, vendorId=${port.portInfo.vendorId}, productId=${port.portInfo.productId}`);
+     }
      if (portList.length > 0) {
        this.port = portList[0];
      }
