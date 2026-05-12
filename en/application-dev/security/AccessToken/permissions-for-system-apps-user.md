@@ -148,3 +148,17 @@ Allows an application to add, remove, and edit call logs.
 **Certificate-based authorization**: true
 
 **Valid since**: 8
+
+## ohos.permission.cli.BUNDLE_ACTIVE_INFO
+
+Allows an application to query the running status of specific applications using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0

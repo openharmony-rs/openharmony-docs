@@ -148,3 +148,17 @@
 **是否支持证书授权**：true
 
 **起始版本**：8
+
+## ohos.permission.cli.BUNDLE_ACTIVE_INFO
+
+允许应用通过CLI命令查询应用运行状态。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
