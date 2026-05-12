@@ -1900,4 +1900,4 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS表示操作成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，可能原因：canvas、glyphIds、positions和font中的任何一个为nullptr。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，可能原因如下：<br> - glyphIdOffset或positionOffset小于0；<br> - glyphIdCount小于glyphIdOffset + glyphCount；<br> - positionCount小于positionOffset + glyphCount；<br> - glyphIdOffset小于0；<br> - positionOffset小于0；<br> - glyphCount小于或等于0。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS表示操作成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，可能原因：canvas、glyphIds、positions和font中的任何一个为nullptr。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，可能原因如下：<br> - glyphIdOffset或positionOffset小于0；<br> - glyphIdCount小于glyphIdOffset + glyphCount;<br> - positionCount小于positionOffset + glyphCount;<br> - glyphIdOffset小于0;<br> - positionOffset小于0;<br> - glyphCount小于或等于0。 |
