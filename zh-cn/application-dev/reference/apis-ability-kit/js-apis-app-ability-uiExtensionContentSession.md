@@ -1,4 +1,4 @@
-# @ohos.app.ability.UIExtensionContentSession (UIExtensionAbility界面操作类)
+# @ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
