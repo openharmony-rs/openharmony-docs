@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -28,6 +29,10 @@ release(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                 |
@@ -43,6 +48,8 @@ release(callback: AsyncCallback\<void\>): void
 | 7400201                |  Camera service fatal error.                           |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -68,6 +75,32 @@ function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releasePreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.release((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
+      console.error(`Failed to release the Preview output instance ${err.code}`);
+      return;
+    }
+    console.info('Callback invoked to indicate that the preview output instance is released successfully.');
+  });
+}
+
+function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.release((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
+      console.error(`Failed to release the video output instance ${err.code}`);
+      return;
+    }
+    console.info('Callback invoked to indicate that the video output instance is released successfully.');
+  });
+}
+```
+
 ## release
 
 release(): Promise\<void\>
@@ -77,6 +110,10 @@ release(): Promise\<void\>
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -93,6 +130,8 @@ release(): Promise\<void\>
 | 7400201                |  Camera service fatal error.                           |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -113,3 +152,28 @@ function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
   });
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releasePreviewOutput(previewOutput: camera.PreviewOutput): void {
+  previewOutput.release().then(() => {
+    console.info('Promise returned to indicate that the preview output instance is released successfully.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to preview output release, error code: ${err.code}`);
+  });
+}
+
+function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
+  videoOutput.release().then(() => {
+    console.info('Promise returned to indicate that the video output instance is released successfully.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to video output release, error code: ${err.code}`);
+  });
+}
+```
+
