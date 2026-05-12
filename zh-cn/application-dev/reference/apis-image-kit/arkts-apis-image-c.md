@@ -44,7 +44,7 @@ import { image } from '@kit.ImageKit';
 | DUBLIN_CORE | [XMPNamespace](arkts-apis-image-i.md#xmpnamespace) | uri: "`http://purl.org/dc/elements/1.1/`"<br>prefix: "dc"           | Dublin Core元数据命名空间。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
 | TIFF        | [XMPNamespace](arkts-apis-image-i.md#xmpnamespace) | uri: "`http://ns.adobe.com/tiff/1.0/`"<br>prefix: "tiff"            | TIFF图像格式参数命名空间。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
 
-**示例：**
+## 示例
 
 ```ts
 const defaultXmageWaterMarkModeAtTheBottom = image.XMAGE_WATERMARK_MODE_AT_THE_BOTTOM;
