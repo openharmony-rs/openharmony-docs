@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -58,11 +58,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let uri = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
-let res = await dlpPermission.isDLPFile(file);
-console.info('res', res);
-if (file !== undefined) {
-  fileIo.closeSync(file);
-}
+dlpPermission.isDLPFile(file).then((res: boolean) => {
+    console.info(JSON.stringify(res));
+}).catch((error: BusinessError)=> {
+    console.error(error.message);
+}).finally(()=> {
+    if (file !== undefined) {
+        fileIo.closeSync(file);
+    }
+});
 ```
 
 ## dlpPermission.isDLPFile
@@ -142,8 +146,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.isInSandbox().then(async (inSandbox) => { // Check whether the application is running in a sandbox.
   if (inSandbox) {
-    let res: dlpPermission.DLPPermissionInfo = await dlpPermission.getDLPPermissionInfo(); // Obtain the permission information.
-    console.info('res', JSON.stringify(res));
+    dlpPermission.getDLPPermissionInfo().then((res: dlpPermission.DLPPermissionInfo) => {
+      console.info('res', JSON.stringify(res));
+    }).catch((error: BusinessError)=> {
+      console.error(JSON.stringify(error));
+    })
   }
 });
 ```
@@ -197,7 +204,7 @@ dlpPermission.isInSandbox().then((inSandbox) => { // Check whether the applicati
 
 getOriginalFileName(fileName: string): string
 
-Obtains the original file name of a DLP file. This API returns the result synchronously.
+Obtains the original name of a DLP file. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
@@ -366,8 +373,11 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let inSandbox = await dlpPermission.isInSandbox(); // Check whether the application is running in a sandbox.
-console.info('res', inSandbox);
+dlpPermission.isInSandbox().then((res) => { // Check whether the application is running in a sandbox.
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.isInSandbox
@@ -438,8 +448,11 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let res = await dlpPermission.getDLPSupportedFileTypes(); // Obtain the file types that support DLP.
-console.info('res', JSON.stringify(res));
+dlpPermission.getDLPSupportedFileTypes().then((res) => { // Obtain the file types that support DLP.
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.getDLPSupportedFileTypes
@@ -519,10 +532,13 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-let inSandbox = await dlpPermission.isInSandbox(); // Check whether the application is running in a sandbox.
-if (inSandbox) {
-  await dlpPermission.setRetentionState([uri]); // Set the sandbox retention state.
-}
+dlpPermission.isInSandbox().then(async (inSandbox) => {
+  if (inSandbox) {
+    await dlpPermission.setRetentionState([uri]); // Set the sandbox retention state.
+  }
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+}); // Whether the application is running in a sandbox.
 ```
 
 ## dlpPermission.setRetentionState
@@ -558,17 +574,20 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-let inSandbox = await dlpPermission.isInSandbox(); // Check whether the application is running in a sandbox.
-if (inSandbox) {
-  dlpPermission.setRetentionState([uri], (err, res) => {
-    if (err != undefined) {
-      console.error('setRetentionState error,', err.code, err.message);
-    } else {
-      console.info('setRetentionState success');
-      console.info('res', JSON.stringify(res));
-    }
-  }); // Set the sandbox retention state.
-}
+dlpPermission.isInSandbox().then((inSandbox) => { // Check whether the application is running in a sandbox.
+  if (inSandbox) {
+    dlpPermission.setRetentionState([uri], (err, res) => {
+      if (err != undefined) {
+        console.error('setRetentionState error,', err.code, err.message);
+      } else {
+        console.info('setRetentionState success');
+        console.info('res', JSON.stringify(res));
+      }
+    }); // Set the sandbox retention state.
+  }
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.cancelRetentionState
@@ -608,7 +627,11 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
-await dlpPermission.cancelRetentionState([uri]); // Cancel the sandbox retention state.
+dlpPermission.cancelRetentionState([uri]); // Cancel the retention state for a sandbox application.
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.cancelRetentionState
@@ -689,8 +712,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let res:Array<dlpPermission.RetentionSandboxInfo> = await dlpPermission.getRetentionSandboxList(); // Obtain the sandbox apps in the retention state.
-console.info('res', JSON.stringify(res));
+dlpPermission.getRetentionSandboxList().then((res) => { // Obtain the sandbox retention information.
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.getRetentionSandboxList
@@ -786,7 +812,7 @@ Obtains the list of DLP files that are accessed recently. This API uses a promis
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;[AccessedDLPFileInfo](#accesseddlpfileinfo)&gt;&gt; | Promise used to return the list of recently accessed files obtained.|
+| Promise&lt;Array&lt;[AccessedDLPFileInfo](#accesseddlpfileinfo)&gt;&gt; | Promise used to return the list of recently accessed DLP files obtained.|
 
 **Error codes**
 
@@ -804,8 +830,11 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let res:Array<dlpPermission.AccessedDLPFileInfo> = await dlpPermission.getDLPFileAccessRecords(); // Obtain the list of recently accessed DLP files.
-console.info('res', JSON.stringify(res));
+dlpPermission.getDLPFileAccessRecords().then((res) => { // Obtain the list of recently accessed DLP files.
+  console.info('res', JSON.stringify(res));
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.getDLPFileAccessRecords
@@ -852,7 +881,7 @@ dlpPermission.getDLPFileAccessRecords((err, res) => {
 
 startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&lt;DLPManagerResult&gt;
 
-Starts the DLP manager application on the current [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability page in borderless mode. This API uses a promise to return the result.
+Starts the DLP manager application on the current [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability) page in borderless mode. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -895,16 +924,18 @@ import { common, Want } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 
 let context = new UIContext().getHostContext() as common.UIAbilityContext; // Obtain the current UIAbilityContext.
-let want: Want = {
-  "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
-  "parameters": {
-    "displayName": "1.txt"
-  }
-}; // Request parameters.
-dlpPermission.startDLPManagerForResult(context, want).then((res) => {
-  console.info('res.resultCode', res.resultCode);
-  console.info('res.want', JSON.stringify(res.want));
-}); // Start the DLP manager application.
+if (context !== undefined) {
+    let want: Want = {
+        "uri": "file://docs/storage/Users/currentUser/Desktop/1.txt",
+        "parameters": {
+        "displayName": "1.txt"
+        }
+    }; // Request parameters.
+    dlpPermission.startDLPManagerForResult(context, want).then((res) => {
+        console.info('res.resultCode', res.resultCode);
+        console.info('res.want', JSON.stringify(res.want));
+    }); // Start the DLP manager application.
+}
 ```
 
 ## dlpPermission.setSandboxAppConfig<sup>11+<sup>
@@ -944,7 +975,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-await dlpPermission.setSandboxAppConfig('configInfo'); // Set sandbox application configuration.
+dlpPermission.setSandboxAppConfig('configInfo').then((res) => { // Set sandbox application configuration.
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.cleanSandboxAppConfig<sup>11+<sup>
@@ -977,7 +1012,11 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-await dlpPermission.cleanSandboxAppConfig(); // Clear the sandbox application configuration.
+dlpPermission.cleanSandboxAppConfig().then((res) => { // Clean sandbox application configuration.
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.getSandboxAppConfig<sup>11+<sup>
@@ -1008,8 +1047,11 @@ For details about the error codes, see [DLP Service Error Codes](errorcode-dlp.m
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let res = await dlpPermission.getSandboxAppConfig() // Obtain the sandbox application configuration.
-console.info('res', JSON.stringify(res));
+dlpPermission.getSandboxAppConfig().then((res) => { // Obtain the sandbox application configuration.
+  console.info('res', res);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
@@ -1100,29 +1142,29 @@ interface Policy {
 }
 
 try {
-  let attributeValues: Array<string> = [ '1' ];
-  let attribute: Attribute = {
-    attributeId: 'DeviceHealthyStatus',
-    attributeValues: attributeValues,
-    valueType: 0,
-    opt: 2
-  }; // Attribute information
-  let rule: Rule = {
-    ruleId: 'ruleId',
-    attributes: [ attribute ]
-  }; // Rules
-  let policy: Policy = {
-    rules: [ rule ],
-    policyId: 'policyId',
-    ruleConflictAlg: 0
-  }; // Policy
-  let enterprisePolicy: dlpPermission.EnterprisePolicy = {
-    policyString: JSON.stringify(policy)
-  };
-  dlpPermission.setEnterprisePolicy(enterprisePolicy);
-  console.info('set enterprise policy success');
-} catch (err) {
-  console.error('error:' + err.code + err.message); // Throw an error if the operation fails.
+    let attributeValues: Array<string> = [ '1' ];
+    let attribute: Attribute = {
+        attributeId: 'DeviceHealthyStatus',
+        attributeValues: attributeValues,
+        valueType: 0,
+        opt: 2
+    }; // Attribute information
+    let rule: Rule = {
+        ruleId: 'ruleId',
+        attributes: [ attribute ]
+    }; // Rules
+    let policy: Policy = {
+        rules: [ rule ],
+        policyId: 'policyId',
+        ruleConflictAlg: 0
+    }; // Policy
+    let enterprisePolicy: dlpPermission.EnterprisePolicy = {
+        policyString: JSON.stringify(policy)
+    };
+    dlpPermission.setEnterprisePolicy(enterprisePolicy);
+    console.info('set enterprise policy success'); 
+} catch (err) { 
+    console.error('error:' + err.code + err.message); // Throw an error if the operation fails.
 }
 ```
 
@@ -1178,7 +1220,7 @@ Represents the information about a DLP file opened.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| uri | string | No| No| URI of the DLP file. The value contains up to 4095 bytes.|
+| uri | string | No| No| URI of the DLP file. The value contains a maximum of 4,095 bytes.|
 | lastOpenTime | number | No| No| Time when the file was last opened. The value must be greater than or equal to 0.|
 
 ## DLPManagerResult<sup>11+</sup>
@@ -1234,8 +1276,8 @@ Obtains a **DLPFile** object. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| plaintextFd | number | Yes| FD of a plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **false** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
-| dlpFd | number | Yes| FD of an encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **false** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| plaintextFd | number | Yes| FD of a plaintext file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **null** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| dlpFd | number | Yes| FD of an encrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **null** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
 | property | [DLPProperty](#dlpproperty21) | Yes| General policy of DLP files.|
 | customProperty | [CustomProperty](#customproperty21) | Yes| Enterprise custom policy.|
 
@@ -1270,28 +1312,34 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
+let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt";
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_ONLY).fd;
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
 let dlpProperty: dlpPermission.DLPProperty = {
-   ownerAccount: 'zhangsan',
-   ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
-   authUserList: [],
-   contactAccount: 'zhangsan',
-   offlineAccess: true,
-   ownerAccountID: 'xxxxxxx',
-   everyoneAccessList: []
- };
+  ownerAccount: 'zhangsan',
+  ownerAccountType: dlpPermission.AccountType.DOMAIN_ACCOUNT,
+  authUserList: [],
+  contactAccount: 'zhangsan',
+  offlineAccess: true,
+  ownerAccountID: 'xxxxxxx',
+  everyoneAccessList: []
+};
 let customProperty: dlpPermission.CustomProperty = {
   enterprise: 'customProperty'
 };
-await dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty);
-console.info('Successfully generate DLP file for enterprise.');
-if (dlpFd) {
-  fileIo.closeSync(dlpFd);
-}
-if (plaintextFd) {
-  fileIo.closeSync(plaintextFd);
-}
+dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty).then((res) => {
+  console.info('Successfully generate DLP file for enterprise.');
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+}).finally(()=>{
+  if (dlpFd) {
+    fileIo.closeSync(dlpFd);
+  }
+  if (plaintextFd) {
+    fileIo.closeSync(plaintextFd);
+  }
+});
 ```
 
 ## dlpPermission.decryptDlpFile<sup>21+</sup>
@@ -1311,8 +1359,8 @@ Decrypts a DLP file to generate a plaintext file. This API uses a promise to ret
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | Yes| FD of the file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **false** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
-| plaintextFd | number | Yes| FD of the decrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **false** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| dlpFd | number | Yes| FD of the file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **null** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| plaintextFd | number | Yes| FD of the decrypted file. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **null** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
 
 **Return value**
 
@@ -1346,16 +1394,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let plaintextFd: number | undefined = undefined;
 let dlpFd: number | undefined = undefined;
+let plainFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt";
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 plaintextFd = fileIo.openSync(plainFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).fd;
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
-await dlpPermission.decryptDlpFile(dlpFd, plaintextFd);
-console.info('Successfully decrypt DLP file.');
-if (dlpFd) {
-   fileIo.closeSync(dlpFd);
-}
-if (plaintextFd) {
-   fileIo.closeSync(plaintextFd);
-}
+dlpPermission.decryptDlpFile(dlpFd, plaintextFd).then((res) => {
+  console.info('Successfully decrypt DLP file.');
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+}).finally(()=>{
+  if (dlpFd) {
+    fileIo.closeSync(dlpFd);
+  }
+  if (plaintextFd) {
+    fileIo.closeSync(plaintextFd);
+  }
+});
 ```
 
 ## dlpPermission.queryDlpPolicy<sup>21+</sup>
@@ -1372,7 +1426,7 @@ Parses the file header in a DLP file to obtain the DLP plaintext policy. This AP
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| dlpFd | number | Yes| FD of the file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **false** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
+| dlpFd | number | Yes| FD of the file to be decrypted. The value range is [0, 2<sup>31</sup>-1]. If the value of **fd** is less than 0, **null** is returned. If the value of **fd** is greater than 2<sup>31</sup>-1, the value is truncated.|
 
 **Return value**
 
@@ -1405,12 +1459,17 @@ import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let dlpFd : number | undefined = undefined;
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
-let policy: string = await dlpPermission.queryDlpPolicy(dlpFd);
-console.info('DLP policy:' + policy);
-if (dlpFd) {
-   fileIo.closeSync(dlpFd);
- }
+dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
+  console.info('DLP policy:' + policy);
+}).catch((error: BusinessError)=> {
+  console.error(JSON.stringify(error));
+}).finally(()=>{
+  if (dlpFd) {
+    fileIo.closeSync(dlpFd);
+  }
+});
 ```
 
 ## ActionType<sup>21+</sup>
@@ -1446,6 +1505,7 @@ Represents a custom policy.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | enterprise | string | No| No| JSON string of an enterprise custom policy. The length cannot exceed 4 MB. If the value exceeds this range, **null** is returned.|
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | No| Yes| Query options about an enterprise DLP file.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## DLPProperty<sup>21+</sup>
 
@@ -1521,6 +1581,31 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------- |
 | 201 | Permission denied. |
 | 19100011 | The system ability works abnormally. |
+  
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { Callback } from '@kit.BasicServicesKit';
+
+export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
+  private accountId: string;
+  private accountName: string;
+  constructor() {
+    this.accountId = 'accountId';
+    this.accountName = 'accountName';
+  }
+
+  connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
+    let callbackJson = JSON.stringify({
+      'requestId': requestId,
+    });
+    callback(callbackJson);
+  }
+}
+
+let plugin: dlpPermission.DlpConnPlugin = new DataCapsulePlugin();
+```
 
  
 ## DlpConnManager<sup>21+</sup>
@@ -1548,6 +1633,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
+  
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnManager();
+```
 
 ### registerPlugin<sup>21+</sup>
 static registerPlugin(plugin: DlpConnPlugin): number
@@ -1585,6 +1678,31 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
+  
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { Callback } from '@kit.BasicServicesKit';
+
+export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
+  private accountId: string;
+  private accountName: string;
+  constructor() {
+    this.accountId = 'accountId';
+    this.accountName = 'accountName';
+  }
+
+  connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
+    let callbackJson = JSON.stringify({
+      'requestId': requestId,
+    });
+    callback(callbackJson);
+  }
+}
+  
+let pluginId: number = dlpPermission.DlpConnManager.registerPlugin(new DataCapsulePlugin());
+```
 
 ### unregisterPlugin<sup>21+</sup>
 static unregisterPlugin(): void
@@ -1610,3 +1728,143 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 19100002 | Credential service busy due to too many tasks or duplicate tasks. |
 | 19100003 | Credential task time out. |
 | 19100004 | Credential service error. |
+
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+
+dlpPermission.DlpConnManager.unregisterPlugin();
+```
+
+## DlpFileQueryOptions
+
+Represents the query options about an enterprise DLP file.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| classificationLabel | string | No| Yes| User-defined classification label of an enterprise DLP file. The value contains a maximum of 255 bytes.|
+
+## dlpPermission.queryOpenedEnterpriseDlpFiles
+
+queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&lt;string&gt;&gt;
+
+Queries the URIs of enterprise DLP files that have been opened and meet the specified options. This API uses a promise to return the result.
+
+>**NOTE**
+>
+> - This API can only query enterprise DLP files generated by the caller app through [generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21). Enterprise DLP files generated by other apps cannot be queried.
+> - Read-only enterprise DLP files with the same classification label are opened in the same sandbox. If multiple such files are opened in a sandbox, the URIs of all files that have been opened (including manually closed files) are returned.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | No| Query options about an enterprise DLP file.<br>If this parameter is not specified or is set to an empty string, all enterprise DLP files are queried.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the opened enterprise DLP files.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: dlpPermission.DlpFileQueryOptions = {
+  classificationLabel: 'label1'
+};
+dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) => {
+  console.info("try to query opened enterprise dlp files, result: ", JSON.stringify(uris));
+}).catch((error: BusinessError)=> {
+  console.error(error.message);
+}).finally(()=> {
+  console.info("after querying opened enterprise dlp files");
+});
+```
+
+## dlpPermission.closeOpenedEnterpriseDlpFiles
+
+closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt;
+
+Closes all opened enterprise DLP files that meet the specified options. This API uses a promise to return the result.
+
+>**NOTE**
+>
+> This API can only close enterprise DLP files generated by the caller app through [generateDlpFileForEnterprise](#dlppermissiongeneratedlpfileforenterprise21).
+  
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+**System capability**: SystemCapability.Security.DataLossPrevention
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| options | [DlpFileQueryOptions](#dlpfilequeryoptions) | No| Query options about an enterprise DLP file.<br>If this parameter is not specified or is set to an empty string, all enterprise DLP files are closed.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 801 | Capability not supported. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
+
+**Example**
+
+```ts
+import { dlpPermission } from '@kit.DataProtectionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: dlpPermission.DlpFileQueryOptions = {
+  classificationLabel: 'label1'
+};
+dlpPermission.closeOpenedEnterpriseDlpFiles(options).then(() => {
+  console.info("try to close opened enterprise dlp files");
+}).catch((error: BusinessError)=> {
+  console.error(error.message);
+}).finally(()=> {
+  console.info("after closing opened enterprise dlp files");
+});
+```
