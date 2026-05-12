@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @wyxpku-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -130,22 +130,25 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
     |capList支持能力列表|功能说明|
     | ---- | ------ |
-    |Acticle|获取阅读场景感知信息|
+    |Article|获取阅读场景感知信息|
     |ShortVideo|获取短视频场景的感知信息|
     |Todo|获取待办场景的感知信息|
     |Activity|获取基础服务的感知信息|
     |UiImage|获取页面内子图信息|
     |JumpContext|高亮跳转到指定上下文|
     |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
-
+    |UiTree|获取页面内json树信息<br> **起始版本：** 26.0.0|
+    |InjectEvent|注入事件<br> **起始版本：** 26.0.0|
   * groupId支持能力列表<br>
   
     |groupId支持能力列表|对应子项能力|功能说明|
     | ---- | ------ | ------|
-    |SmartEdge|Acticle|获取阅读场景感知信息|
+    |SmartEdge|Article|获取阅读场景感知信息|
     |SmartEdge|ShortVideo|获取短视频场景的感知信息|
     |SmartEdge|Todo|获取待办场景的感知信息|
     |SmartEdge|Activity|获取基础服务的感知信息|
+    |CeliaMemory|Article|获取阅读场景感知信息|
+    |CeliaMemory|Todo|获取待办场景的感知信息|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -563,6 +566,7 @@ capture接口支持的capList能力列表
 | ---- | ------ |
 |UiImage|获取页面内子图信息|
 |QuickSnap|获取截屏信息|
+|UiTree|获取页面json树信息<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
@@ -622,6 +626,7 @@ interact接口支持的capList能力列表
 |capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
+|InjectEvent|注入事件<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
@@ -691,10 +696,12 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 apperceive接口支持的groupId能力列表
 |groupId能力列表|对应子项能力|功能说明|
 | ---- | ------ | ------|
-|SmartEdge|Acticle|获取阅读场景感知信息|
+|SmartEdge|Article|获取阅读场景感知信息|
 |SmartEdge|ShortVideo|获取短视频场景的感知信息|
 |SmartEdge|Todo|获取待办场景的感知信息|
 |SmartEdge|Activity|获取基础服务的感知信息|
+|CeliaMemory|Article|获取阅读场景感知信息|
+|CeliaMemory|Todo|获取待办场景的感知信息|
 
 **返回值：**
 

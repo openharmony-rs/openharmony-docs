@@ -262,7 +262,7 @@ ArkUI_PickerIndicatorDivider dividerStyle = {
 
 ```cpp
 ArkUI_PickerIndicatorStyle indicatorStyle1 = {
-    .background = backgroundStyle,
+    .background = backgroundStyle
 };
 picker->SetSelectionIndicator(&indicatorStyle1);
 

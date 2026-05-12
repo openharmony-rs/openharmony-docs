@@ -1,7 +1,7 @@
 # @ohos.enterprise.securityManager（安全管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -141,7 +141,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     .then((result) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
-    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err: BusinessError) => {
   console.error(`Failed to get raw file content. message: ${err.message}`);
@@ -376,10 +376,10 @@ let policy: securityManager.PasswordPolicy = {
   additionalDescription: '至少八个字符，至少一个大写字母，一个小写字母，一个数字和一个特殊字符',
 };
 try {
-    securityManager.setPasswordPolicy(wantTemp, policy);
-    console.info(`Succeeded in setting password policy.`);
+  securityManager.setPasswordPolicy(wantTemp, policy);
+  console.info(`Succeeded in setting password policy.`);
 } catch(err) {
-    console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -431,10 +431,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
-    console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -497,10 +497,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    securityManager.setScreenLockDisabledForAccount(wantTemp, true);
-    console.info(`Succeeded in setting screen lock disabled for account.`);
+  securityManager.setScreenLockDisabledForAccount(wantTemp, true);
+  console.info(`Succeeded in setting screen lock disabled for account.`);
 } catch(err) {
-    console.error(`Failed to set screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -555,10 +555,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    let result: boolean = securityManager.isScreenLockDisabledForAccount(wantTemp);
-    console.info(`Succeeded in checking screen lock disabled for account, result : ${result}`);
+  let result: boolean = securityManager.isScreenLockDisabledForAccount(wantTemp);
+  console.info(`Succeeded in checking screen lock disabled for account, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to check screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to check screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -609,10 +609,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let tokenId: number = 586874394;
 try {
-    securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
-    console.info(`Succeeded in setting clipboard policy.`);
+  securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
+  console.info(`Succeeded in setting clipboard policy.`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -666,10 +666,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let tokenId: number = 586874394;
 try {
-    let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
-    console.info(`Succeeded in getting password policy, result : ${result}`);
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -721,10 +721,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
-    console.info(`Succeeded in setting clipboard policy.`);
+  securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
+  console.info(`Succeeded in setting clipboard policy.`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -779,10 +779,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
-    console.info(`Succeeded in getting password policy, result : ${result}`);
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -839,10 +839,10 @@ let bundleName: string = 'com.example.myapplication';
 let source: string = '/data/storage/el1/base/test.png';
 let accountId: number = 100;
 try {
-    securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
-    console.info(`Succeeded in setting set watermarkImage policy.`);
+  securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
+  console.info(`Succeeded in setting set watermarkImage policy.`);
 } catch(err) {
-    console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -892,10 +892,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
-    console.info(`Succeeded in setting cancel watermarkImage policy.`);
+  securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
+  console.info(`Succeeded in setting cancel watermarkImage policy.`);
 } catch(err) {
-    console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -946,17 +946,17 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
-      // 需根据实际情况进行替换
-      appIdentifier: '736498586',
-      appIndex: 0,
-      accountId: 100
+  // 需根据实际情况进行替换
+  appIdentifier: '736498586',
+  appIndex: 0,
+  accountId: 100
 };
 let permissionsTemp: Array<string> = ['ohos.permission.CAMERA', 'ohos.permission.LOCATION'];
 try {
-    securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
-    console.info('Succeeded in setting permission managed state.');
+  securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
+  console.info('Succeeded in setting permission managed state.');
 } catch(err) {
-    console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1009,17 +1009,17 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
-      // 需根据实际情况进行替换
-      appIdentifier: '736498586',
-      appIndex: 0,
-      accountId: 100
+  // 需根据实际情况进行替换
+  appIdentifier: '736498586',
+  appIndex: 0,
+  accountId: 100
 };
 let permissionTemp: string = 'ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION';
 try {
-    let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
-    console.info(`Succeeded in getting permission managed state, result : ${result}`);
+  let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
+  console.info(`Succeeded in getting permission managed state, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1082,10 +1082,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
-    console.info(`Succeeded in setting managed policy.`);
+  securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
+  console.info(`Succeeded in setting managed policy.`);
 } catch(err) {
-    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1138,10 +1138,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
-    console.info(`Succeeded in getting managed policy, result : ${result}`);
+  let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
+  console.info(`Succeeded in getting managed policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1149,7 +1149,7 @@ try {
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
 
-安装企业重签名证书。
+安装企业应用重签名证书。
 
 同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate24)进行卸载。
 
@@ -1157,9 +1157,9 @@ installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, f
 
 在企业应用分发场景下，<!--RP2--><!--RP2End-->开发者可以使用重签名证书对企业应用进行二次签名，签名完成后将应用包提供给企业管理员。企业管理员可以将重签名后的应用安装在已部署重签名证书的企业设备上。
 
-企业重签名证书使用流程：<!--RP3--><!--RP3End--><br>1.通过MDM应用安装企业重签名证书；<br>2.开发者利用签名工具（如ohos-signer或DevEco Studio签名插件），对原始HAP包进行二次签名；<br>3.安装重签名应用（可以通过企业私有应用市场安装）；<br>4.运行应用。
+企业应用重签名证书使用流程：<!--RP3--><!--RP3End--><br>1.通过MDM应用安装企业应用重签名证书；<br>2.开发者利用签名工具（如ohos-signer或DevEco Studio签名插件），对原始HAP包进行二次签名；<br>3.安装重签名应用（可以通过企业私有应用市场安装）；<br>4.运行应用。
 
-规格约束：<br>1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行；<br>2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用；<br>3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
+规格约束：<br>1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行；<br>2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用；<br>3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业应用重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1203,7 +1203,7 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-// test.cer证书文件需要放置在应用沙箱目录下，并确保是有效的企业重签名证书
+// test.cer证书文件需要放置在应用沙箱目录下，并确保是有效的企业应用重签名证书
 // 需根据实际情况进行替换
 const filePath = '/test.cer';
 // 需根据实际情况进行替换
@@ -1225,7 +1225,7 @@ try {
 
 uninstallEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, accountId: number): void
 
-卸载企业重签名证书。
+卸载企业应用重签名证书。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 

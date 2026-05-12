@@ -662,6 +662,7 @@ struct Page {
   }
 
   aboutToAppear(): void {
+    // addMonitor支持配置成同步监听函数
     UIUtils.addMonitor(this, 'user.age', this.onChange, { isSynchronous: true })
   }
 
@@ -691,6 +692,7 @@ class User {
 struct Page {
   @Local user: User = new User();
 
+  // @Monitor仅支持异步监听
   @Monitor('user.age')
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -729,6 +731,7 @@ class Info {
   @Trace message: string = 'not initialized';
 
   constructor() {
+    // addMonitor可以监听构造函数中message的变化
     UIUtils.addMonitor(this, 'message', this.onMessageChange);
     this.message = 'initialized';
   }
@@ -839,7 +842,7 @@ struct Child {
 
 ### 使用包含通配符的路径
 
-从API版本26.0.0开始，MonitorOptions新增`enableWildcard`配置项（默认值为false），当显式设置为true时，addMonitor可以支持使用通配符路径。当未配置`enableWildcard`为true，但使用通配符路径时，该次addMonitor的添加不会生效。
+从API版本26.0.0开始，MonitorOptions新增`enableWildcard`配置项（默认值为false），当显式设置为true时，addMonitor可以支持使用通配符路径。当未配置`enableWildcard`为true，但使用通配符路径时，该路径被认为不合法，该次addMonitor的添加不会生效。
 
 `enableWildcard`将在第一次为函数创建监听时生效，后续无法被更改。对`enableWildcard`值的检查发生在检测到路径中含有通配符时。当首次创建监听时，`enableWildcard`设置为true，后续路径中不含通配符时，将不会检查`enableWildcard`的值，因此即使此时传递`enableWildcard`为false，也会忽略该false，仍添加监听。当首次创建监听时，`enableWildcard`设置为false，若后续路径中含有通配符，无论`enableWildcard`是否传递为true，该路径都被认为不合法，该次addMonitor的添加不会生效。
 
@@ -916,7 +919,7 @@ struct MonitorWildcardObject {
 
 **使用通配符监听Array对象的变化**
 
-使能通配符的addMonitor可以监听到数组的API调用。任意数组的方法被调用时，addMonitor注册的回调都会被执行，即使数组为空或并未实际修改数组的内容。API包括`push`、`pop`、`shift`、`splice`、`unshift`、`shrinkTo`、`extendTo`、`copyWithin`、`fill`、`reverse`、`sort`。
+使能通配符的addMonitor可以监听到数组的API调用。任意数组的方法被调用时，addMonitor注册的回调都会被执行，即使数组为空或并未实际修改数组的内容。API包括`push`、`pop`、`shift`、`splice`、`unshift`、`copyWithin`、`fill`、`reverse`、`sort`。
 
 ```ts
 import { UIUtils } from '@kit.ArkUI';
@@ -955,7 +958,7 @@ struct DocAddMonitorAPIArrayOfArrays {
     return new TopArray(
       new ArrayOfPerson(new Person('Adrian'), new Person('Andrew'), new Person('Aaliyah'), new Person('Amir'), new Person('Angel')),
       new ArrayOfPerson(new Person('Carter'), new Person('Charlie'), new Person('Cooper'), new Person('Cole'), new Person('Callie')),
-      new ArrayOfPerson(new Person('Danile'), new Person('Dasy'), new Person('Dawson'), new Person('Dana'), new Person('Dalton'))
+      new ArrayOfPerson(new Person('Daniel'), new Person('Daisy'), new Person('Dawson'), new Person('Dana'), new Person('Dalton'))
     );
   }
 
@@ -1025,7 +1028,7 @@ struct DocAddMonitorAPIArrayOfArrays {
       Button('topArray = new TopArray, keep [1]')
         .onClick(() => {
           let newTop = this.makeNewTopArray();
-          newTop[1] = this.topArray[1]; // topArray.1 unchanged, LSV for 'topArray.1.*' not changed
+          newTop[1] = this.topArray[1]; // topArray.1未改变，路径'topArray.1.*'中通配符前最后一个确定值未改变
           this.topArray = newTop;
         })
 
@@ -1086,7 +1089,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
           this.date.setMilliseconds(1000);
         })
       // API调用触发onDateChanged
-      Button(`date.setTime(1000)`)
+      Button(`date.setTime(1000000)`)
         .onClick(() => {
           this.date.setTime(1000000);
         })

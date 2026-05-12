@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -17,7 +17,7 @@
    <!-- @[encodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPicture.ets) -->   
    
    ``` TypeScript
-   // 导入相关模块包。
+   // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
@@ -73,7 +73,7 @@
      async function packToFile(picture: image.Picture, packOpts: image.PackingOption, context: Context) {
        try {
          const path : string = context.cacheDir + '/picture.jpg';
-         let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+         let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
          const imagePackerApi = image.createImagePacker();
          await imagePackerApi.packToFile(picture, file.fd, packOpts);
        } catch (error) {

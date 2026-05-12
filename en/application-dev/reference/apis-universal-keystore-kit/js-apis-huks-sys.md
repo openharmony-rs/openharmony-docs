@@ -654,7 +654,7 @@ export default function HuksAsUserTest() {
 
 ## huks.anonAttestKeyItemOfflineAsUser
 
-anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params[]: HuksParam) : Promise\<HuksReturnResult>
+anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
 
 Obtains an anonymous key certificate in offline mode for a specified user. This API uses a promise to return the result.
 

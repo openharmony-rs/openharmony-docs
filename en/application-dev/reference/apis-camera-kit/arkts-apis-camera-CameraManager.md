@@ -398,6 +398,56 @@ function createPreviewOutput(cameraManager: camera.CameraManager, surfaceId: str
 }
 ```
 
+### createDeferredPreviewOutput<sup>24+</sup>
+
+createDeferredPreviewOutput(profile: Profile): PreviewOutput
+
+Creates a deferred **PreviewOutput** instance and adds it, instead of a common **PreviewOutput** instance, to the data stream during stream configuration.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type            | Mandatory| Description      |
+| -------- | --------------- | ---- | --------- |
+| profile | [Profile](arkts-apis-camera-i.md#profile) | Yes| Supported preview profile, which is obtained through [getSupportedOutputCapability](#getsupportedoutputcapability11).|
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| [PreviewOutput](arkts-apis-camera-PreviewOutput.md)  | **PreviewOutput** instance created. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400101                |  Parameter missing or parameter type incorrect.               |
+| 7400201                |  Camera service fatal error.               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createPreviewOutput(cameraOutputCapability: camera.CameraOutputCapability, cameraManager: camera.CameraManager): camera.PreviewOutput | undefined {
+  let profile: camera.Profile = cameraOutputCapability.previewProfiles[0];
+  let previewOutput: camera.PreviewOutput | undefined = undefined;
+  try {
+    previewOutput = cameraManager.createDeferredPreviewOutput(profile);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The createPreviewOutput call failed. error code: ${err.code}`);
+  }
+  return previewOutput;
+}
+```
+
 ## createPhotoOutput<sup>11+</sup>
 
 createPhotoOutput(profile?: Profile): PhotoOutput
@@ -797,7 +847,7 @@ Checks whether the camera device supports the flashlight.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| boolean    | Check result for the support of the flashlight. **true** if supported, **false** otherwise. If the API call fails, undefined is returned.|
+| boolean    | Whether the device supports the flashlight. **true** if supported, **false** otherwise.<br>If **false** is returned, [isTorchModeSupported](#istorchmodesupported11), [getTorchMode](#gettorchmode11), [setTorchMode](#settorchmode11), [isTorchLevelControlSupported](#istorchlevelcontrolsupported), and [setTorchModeOnWithLevel](#settorchmodeonwithlevel) do not take effect.<br>If the API call fails, undefined is returned.|
 
 **Example**
 

@@ -15,7 +15,7 @@
 
 > **说明：**
 >
-> 如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
+> 从API版本26.0.0开始，如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
 
 ## 接口说明
 
@@ -37,6 +37,8 @@
 | on(type: 'freeze', observer: FreezeObserver): void | 注册应用主线程freeze监听。只能在主线程调用，重复注册后，后一次的注册会覆盖前一次的。 |
 | off(type: 'freeze', observer?: FreezeObserver): void | 以FreezeObserver的形式解除应用主线程消息处理耗时监听。<br/>说明：从API version 18开始，支持该接口。 |
 | setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | 仅允许在主线程调用，发生JS_CRASH异常时，支持链式回调，返回值为上一次注册的处理器。 <br/>说明：从API version 21开始，支持该接口。 |
+| setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver; | 仅允许在主线程调用，发生应用资源超基线时，支持链式回调，返回值为上一次注册的资源占用观察者。 <br/>说明：从API version 24开始，支持该接口。 |
+| setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver | 仅允许在主线程调用，发生APP_FREEZE异常时，支持链式回调，返回值为上一次注册的处理器。<br/>**说明**：从API版本26.0.0开始，支持该接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 当采用callback作为异步回调时，可以在callback中进行下一步处理。
 
@@ -416,4 +418,106 @@ function testErrorHandlers() {
 Button('错误处理器责任链模式场景').onClick(()=>{
   testErrorHandlers();
 }).position({x:50, y:350});
+```
+
+### freeze处理器责任链模式场景
+
+ 定义第一个freeze处理器及注册方法，无前置处理器时退出进程。
+<!-- @[first_freeze_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstFreezeHandler.ets) -->  
+
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let firstHandler: errorManager.FreezeObserver = () => {};
+const firstFreezeHandler: errorManager.FreezeObserver = () => {
+    // 自定义的第一个FreezeHandler实现逻辑
+    console.info('[FirstHandler] First freeze handler invoked.');
+    if (firstHandler) {
+        firstHandler();
+    } else {
+        console.info('[FirstHandler] First freeze handler end.');
+    }
+};
+
+export function setFirstFreezeHandler() {
+    try {
+        firstHandler = errorManager.setDefaultFreezeObserver(firstFreezeHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error('setFirstFreezeHandler',`error: ${code}, ${message}`);
+    }
+    console.info('Registered First freeze Handler.');
+}
+```
+
+ 定义第二个freeze处理器及注册方法，形成链式调用。
+<!-- @[second_freeze_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondFreezeHandler.ets) -->  
+
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let secondHandler: errorManager.FreezeObserver = () => {};
+const secondFreezeHandler: errorManager.FreezeObserver = () => {
+    // 自定义的第二个SecondHandler实现逻辑
+    console.info('[SecondHandler] Second freeze handler invoked.');
+    if (secondHandler) {
+        secondHandler();
+    } else {
+        console.info('[SecondHandler] Second freeze handler end.');
+    }
+};
+
+export function setSecondFreezeHandler() {
+    try {
+        secondHandler = errorManager.setDefaultFreezeObserver(secondFreezeHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error('setSecondFreezeHandler',`error: ${code}, ${message}`);
+    }
+    console.info('Registered Second freeze Handler.');
+}
+```
+
+ 引入头文件。
+<!-- @[freeze_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+import { setFirstFreezeHandler } from './FirstFreezeHandler';
+import { setSecondFreezeHandler } from './SecondFreezeHandler';
+```
+
+ 新增构造场景故障函数。
+<!-- @[test_timeout_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function waitTime() {
+  // 构造场景故障
+  let date = Date.now();
+  while (Date.now() - date < 15000) {
+  };
+}
+```
+
+ 新增freeze处理器责任链模式构造函数。
+<!-- @[test_freeze_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function testFreezeHandlers() {
+  setFirstFreezeHandler();
+  setSecondFreezeHandler();
+  waitTime();
+}
+```
+
+ 主组件通过按钮触发测试，注册两个处理器并调用构造场景故障函数验证处理链。
+<!-- @[onclick_freeze_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+Button('freeze处理器责任链模式场景').onClick(()=>{
+  testFreezeHandlers();
+}).position({x:50, y:400});
 ```

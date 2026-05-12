@@ -1,7 +1,7 @@
 # 企业设备管理错误码
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -112,6 +112,7 @@ Failed to deactivate the administrator application of the device.
 2. 检查解除激活时设备管理应用中指定设备管理元能力组件是否激活过。
 3. 检查调用者是否解除激活自身，设备管理器应用不能解除激活其他设备管理器应用。
 
+<!--Del-->
 ## 9200006 指定的用户ID非法
 
 **错误信息**
@@ -154,6 +155,7 @@ The system ability works abnormally.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
+<!--DelEnd-->
 
 ## 9200008 系统订阅事件无效
 
@@ -332,6 +334,46 @@ Service timeout.
 **处理步骤**
 
 服务超时，请稍后重试。
+
+## 9200017 企业设备管理员自激活凭证无效
+
+**错误信息**
+
+The self-activation credential of the enterprise device administrator is invalid.
+
+**错误描述**
+
+当企业设备管理员自激活凭证无效时，方法将返回该错误码。
+
+**可能原因**
+
+1、企业ID不匹配。
+
+2、应用appIdentifier配置失败。
+
+3、激活凭证缺少必需字段或者证书链校验失败。
+
+**处理步骤**
+
+检查企业设备管理员自激活凭证是否正确。
+
+## 9200018 该设备非企业设备
+
+**错误信息**
+
+This device is not an enterprise device.
+
+**错误描述**
+
+该设备非企业设备。
+
+**可能原因**
+
+该设备非企业设备。
+
+**处理步骤**
+
+检查该设备是否设置为企业设备。
 
 ## 9201001 管理证书失败
 

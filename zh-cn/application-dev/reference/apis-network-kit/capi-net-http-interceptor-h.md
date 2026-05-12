@@ -52,7 +52,8 @@ int32_t OH_Http_AddReadOnlyInterceptor(struct OH_Http_Interceptor *interceptor)
 
 - 当前仅支持只读响应(OH_STAGE_RESPONSE)拦截器。
 - 拦截器一旦添加，将持续生效，直至开发者显式移除。
-- 必须调用 `OH_Http_RemoveInterceptor` 移除单个拦截器，或调用 `OH_Http_RemoveAllInterceptors` 移除整组拦截器以释放资源。
+- 必须调用[OH_Http_RemoveInterceptor](#oh_http_removeinterceptor)移除单个拦截器，或调用[OH_Http_RemoveAllInterceptors](#oh_http_removeallinterceptors)移除整组拦截器以释放资源。
+- 拦截器[OH_Http_Interceptor](capi-netstack-http-interceptor.md)的成员变量`enabled`为0，需要调用[OH_Http_StartAllInterceptors](#oh_http_startallinterceptors)启动拦截器。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -67,7 +68,6 @@ int32_t OH_Http_AddReadOnlyInterceptor(struct OH_Http_Interceptor *interceptor)
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回值为0表示执行成功；返回值为201表示权限被拒绝；返回值为401表示参数错误（如指针为nullptr，或不支持所添加的拦截器类型）。详细错误码请参考[OH_HTTP_RESULT_OK](capi-net-http-type-h.md#http_errcode)、[OH_HTTP_PERMISSION_DENIED](capi-net-http-type-h.md#http_errcode)和[OH_HTTP_PARAMETER_ERROR](capi-net-http-type-h.md#http_errcode)。 |
-
 
 ### OH_Http_RemoveInterceptor()
 
@@ -128,6 +128,8 @@ int32_t OH_Http_StartAllInterceptors(int32_t groupId)
 
 启用指定组ID的所有HTTP拦截器。
 
+- 调用[OH_Http_StopAllInterceptors](#oh_http_stopallinterceptors)停止拦截器。
+
 **系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 24
@@ -150,6 +152,8 @@ int32_t OH_Http_StopAllInterceptors(int32_t groupId)
 **描述**
 
 停用指定组ID的所有HTTP拦截器。
+
+- 调用[OH_Http_StartAllInterceptors](#oh_http_startallinterceptors)重新启用拦截器。
 
 **系统能力：** SystemCapability.Communication.NetStack
 

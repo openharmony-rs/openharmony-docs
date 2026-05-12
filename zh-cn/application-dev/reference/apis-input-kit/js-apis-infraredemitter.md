@@ -59,9 +59,10 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置红外载波频率及红外电平信号模式
             infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
           } catch (error) {
-            console.error(`transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -109,9 +110,9 @@ struct Index {
         .onClick(() => {
           try {
             let frequencies = infraredEmitter.getInfraredFrequencies();
-            console.info(`frequencies: ${JSON.stringify(frequencies)}`);
+            console.info(`Succeeded in getting infrared frequencies, frequencies: ${JSON.stringify(frequencies)}.`);
           } catch (error) {
-            console.error(`Get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -168,10 +169,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+            // 查询是否有红外发射器
             infraredEmitter.hasIrEmitter().then((result: boolean) => {
-              console.info(`hasIrEmitter: ${JSON.stringify(result)}`);
+              console.info(`Succeeded in querying infrared emitter: ${JSON.stringify(result)}.`);
             }).catch((error: BusinessError)=> {
-              console.error(`hasIrEmitter failed: ${JSON.stringify(error)}`);})
+              console.error(`Failed to query infrared emitter, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);})
         })
     }
   }
