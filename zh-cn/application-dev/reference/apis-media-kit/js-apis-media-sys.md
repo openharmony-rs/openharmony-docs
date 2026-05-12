@@ -1514,11 +1514,11 @@ enableDeviceLevelCapture是AVScreenCaptureStrategy接口中的一个可选参数
 
 播放管理类，用于管理和播放媒体资源。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
 
-在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](#onstatechange9)：监听播放状态机AVPlayerState切换。[on('error')](#onerror9)：监听错误事件。
+在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](apis-media-kit/arkts-apis-media-AVPlayer.md#onstatechange9)：监听播放状态机AVPlayerState切换。[on('error')](apis-media-kit/arkts-apis-media-AVPlayer.md#onerror9)：监听错误事件。
 
 应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
 
-Audio/Video播放demo可参考：[音频播放开发指导](../../media/media/using-avplayer-for-playback.md)、[视频播放开发指导](../../media/media/video-playback.md)。
+Audio/Video播放demo可参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
 
 ### 属性
 
