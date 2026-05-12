@@ -1755,6 +1755,7 @@ Implements a Display instance, with attributes and APIs defined.
 Before calling any API in Display, you must use [getAllDisplays()](#displaygetalldisplays9) or [getDefaultDisplaySync()](#displaygetdefaultdisplaysync9) to obtain a Display instance.
 
 ### Attributes
+<!--Table: 26%; 20%; 7%; 7%; 40% -->
 
 | Name| Type| Read-Only| Optional| Description                                                                                                           |
 | -------- | -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------|

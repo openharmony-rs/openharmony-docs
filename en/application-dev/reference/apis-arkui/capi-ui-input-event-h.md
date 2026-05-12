@@ -67,6 +67,10 @@ Provides ArkUI event definitions on the native side.
 | [uint32_t OH_ArkUI_PointerEvent_GetPointerCount(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getpointercount) | Obtains the number of contact points from a pointer event (such as a touch, mouse, or axis event). Pointer events are typically events that carry position information, such as touch events, where the location of the event can be determined. Non-pointer events, such as key events, do not have position information and do not involve touch points, so this API is not applicable to key events. For touch events, this API returns the number of active touch points, for example, fingers on the screen. For mouse and axis events, this API always returns **1**, as they are single-pointer interactions.                                                                                                                                                                                                                                                                                                                                                                                 |
 | [int32_t OH_ArkUI_PointerEvent_GetPointerId(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getpointerid) | Obtains the unique ID of a contact point from a pointer event (such as a touch, mouse, or axis event). The ID distinguishes between multiple touch points from the same input device. The return value itself does not have any other meaning beyond identifying the touch point.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [int32_t OH_ArkUI_PointerEvent_GetChangedPointerId(const ArkUI_UIInputEvent* event, uint32_t* pointerIndex)](#oh_arkui_pointerevent_getchangedpointerid) | Obtains the ID of the touch pointer that triggers the current touch event.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getcurrentlocalx) | Obtains the X coordinate relative to the upper left corner of the current component from a [pointer event](../../ui/arkts-interaction-capability-overview.md#pointer-event)(such as a touch event, mouse event, or axis event) based on the real-time location.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getcurrentlocalxbyindex) | Obtains the X coordinate of a specific contact point relative to the upper left corner of the current component from a [pointer event](../../ui/arkts-interaction-capability-overview.md#pointer-event)(such as a touch event, mouse event, or axis event) based on the real-time location. For all types of events, an index value less than 0 is considered invalid. For mouse and axis events, an index value other than 0 is considered invalid. For touch events, this API is used to obtain the X coordinate of a specific contact point relative to the upper left corner of the current component based on the given index.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getcurrentlocaly) | Obtains the Y coordinate relative to the upper left corner of the current component from a [pointer event](../../ui/arkts-interaction-capability-overview.md#pointer-event)(such as a touch event, mouse event, or axis event) based on the real-time location.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getcurrentlocalybyindex) | Obtains the Y coordinate of a specific contact point relative to the upper left corner of the current component from a [pointer event](../../ui/arkts-interaction-capability-overview.md#pointer-event)(such as a touch event, mouse event, or axis event) based on the real-time location. For all types of events, an index value less than 0 is considered invalid. For mouse and axis events, an index value other than 0 is considered invalid. For touch events, this API is used to obtain the Y coordinate of a specific contact point relative to the upper left corner of the current component based on the given index.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | [float OH_ArkUI_PointerEvent_GetX(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_getx) | Obtains the x-coordinate relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [float OH_ArkUI_PointerEvent_GetXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)](#oh_arkui_pointerevent_getxbyindex) | Obtains the x-coordinate of a specific contact point relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event). For mouse and axis events, this API returns the default value of **0.0f** if the given index is greater than 0.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [float OH_ArkUI_PointerEvent_GetY(const ArkUI_UIInputEvent* event)](#oh_arkui_pointerevent_gety) | Obtains the y-coordinate relative to the upper left corner of the current component from a pointer event (such as a touch, mouse, or axis event).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -859,6 +863,124 @@ Obtains the y-coordinate of a specific contact point relative to the upper left 
 | Type| Description|
 | -- | -- |
 | float | Y-coordinate of the specific contact point relative to the upper left corner of the current component, in px. Returns **0.0f** if a parameter error occurs.|
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalX()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalX(const ArkUI_UIInputEvent* event)
+```
+
+**Description**
+
+
+Obtains the X coordinate relative to the upper left corner of the current component from a [pointer event](../../ui/arkts-interaction-capability-overview.md#pointer-event)(such as a touch event, mouse event, or axis event) based on the real-time location.
+
+**Since:** 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the UI input event.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| float | X coordinate of the current pointer event relative to the upper left corner of the current component. The default unit is px, which can vary according to the setting of [setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error occurs, **0.0f** is returned.|
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalXByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
+```
+
+**Description**
+
+
+Obtains the X coordinate of a specific contact point relative to the upper left corner of the current component from a [pointer event](../../ui/arkts-interaction-capability-overview.md#pointer-event)(such as a touch event, mouse event, or axis event) based on the real-time location.
+
+For all types of events, an index value less than 0 is considered invalid.
+
+For mouse and axis events, an index value other than 0 is considered invalid.
+
+For touch events, this API is used to obtain the X coordinate of a specific contact point relative to the upper left corner of the current component based on the given index.
+
+**Since:** 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the UI input event.|
+| uint32_t pointerIndex | Index of the target touch point in the multi-touch data list.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| float | X coordinate of the specific contact point relative to the upper left corner of the current component. The default unit is px, which can vary according to the setting of [setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error occurs, **0.0f** is returned.|
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalY()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalY(const ArkUI_UIInputEvent* event)
+```
+
+**Description**
+
+
+Obtains the Y coordinate relative to the upper left corner of the current component from a [pointer event](../../ui/arkts-interaction-capability-overview.md#pointer-event)(such as a touch event, mouse event, or axis event) based on the real-time location.
+
+**Since:** 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the UI input event.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| float | Y coordinate of the current pointer event relative to the upper left corner of the current component. The default unit is px, which can vary according to the setting of [setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error occurs, **0.0f** is returned.|
+
+### OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex()
+
+```c
+float OH_ArkUI_PointerEvent_GetCurrentLocalYByIndex(const ArkUI_UIInputEvent* event, uint32_t pointerIndex)
+```
+
+**Description**
+
+
+Obtains the Y coordinate of a specific contact point relative to the upper left corner of the current component from a [pointer event](../../ui/arkts-interaction-capability-overview.md#pointer-event)(such as a touch event, mouse event, or axis event) based on the real-time location.
+
+For all types of events, an index value less than 0 is considered invalid.
+
+For mouse and axis events, an index value other than 0 is considered invalid.
+
+For touch events, this API is used to obtain the Y coordinate of a specific contact point relative to the upper left corner of the current component based on the given index.
+
+**Since:** 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the UI input event.|
+| uint32_t pointerIndex | Index of the target touch point in the multi-touch data list.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| float | Y coordinate of the specific contact point relative to the upper left corner of the current component. The default unit is px, which can vary according to the setting of [setLengthMetricUnit](../apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlengthmetricunit). If a parameter error occurs, **0.0f** is returned.|
 
 ### OH_ArkUI_PointerEvent_GetWindowX()
 

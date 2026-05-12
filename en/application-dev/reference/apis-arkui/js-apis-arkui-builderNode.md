@@ -87,7 +87,7 @@ Defines the optional build options.
 | ------------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
 | nestingBuilderSupported | boolean | No  | Yes  | Whether to support nested **@Builder** within **@Builder**. **true** if supported, **false** otherwise.<br>Default value: **false**.<br>**Model constraint**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | localStorage<sup>20+</sup> | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | No  | Yes  | LocalStorage for the current BuilderNode. Custom components mounted under this BuilderNode will share the specified LocalStorage. **NOTE**<br>If LocalStorage is also passed through a custom component's constructor, the constructor parameter takes precedence.<br>Default value: **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| enableProvideConsumeCrossing<sup>20+</sup> | boolean | No  | Yes  | Defines whether two-way synchronization is supported between the [@Consume](../../ui/state-management/arkts-provide-and-consume.md) decorated variable of the custom component of [state management V1](../../ui/state-management/arkts-state-management-overview.md#state-management-v1) inside the **BuilderNode** and the [@Provide](../../ui/state-management/arkts-provide-and-consume.md) decorated variable outside the **BuilderNode**, and whether two-way synchronization is supported between the [@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable of the custom component of [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) inside the **BuilderNode** and the [@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable outside the **BuilderNode**.<br>API version 20 and later versions support two-way synchronization for the custom component of state management V1. API version 22 and later versions support two-way synchronization for the custom component of state management V2.<br>The value **true** means that this feature is supported, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| enableProvideConsumeCrossing<sup>20+</sup> | boolean | No  | Yes  | Defines whether two-way synchronization is supported between the [@Consume](../../ui/state-management/arkts-provide-and-consume.md) decorated variable of the custom component of [state management V1](../../ui/state-management/arkts-state-management-overview.md#state-management-v1) inside the **BuilderNode** and the [@Provide](../../ui/state-management/arkts-provide-and-consume.md) decorated variable outside the **BuilderNode**, and whether two-way synchronization is supported between the [@Consumer](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable of the custom component of [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) inside the **BuilderNode** and the [@Provider](../../ui/state-management/arkts-new-provider-and-consumer.md) decorated variable outside the **BuilderNode**.<br>API version 20 and later versions support two-way synchronization for the custom component of state management V1. API version 23 and later versions support two-way synchronization for the custom component of state management V2.<br>The value **true** means that this feature is supported, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## InputEventType<sup>20+</sup>
 
@@ -3024,6 +3024,49 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 
 For details, see [Example 13: Handling Mouse Events in ReactiveBuilderNode)](#example-13-handling-mouse-events-in-reactivebuildernode), [Example 14: Handling Touch Events in ReactiveBuilderNode](#example-14-handling-touch-events-in-reactivebuildernode), and [Example 15: Handling Axis Events in ReactiveBuilderNode)](#example-15-handling-axis-events-in-reactivebuildernode).
 
+### postInputEventWithStrategy<sup>24+</sup>
+
+postInputEventWithStrategy(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+
+Posts an event containing a competition strategy to the target UI component node.
+
+Before calling this API, you need to convert the value of **event** to the corresponding event and convert the coordinates in the **window** parameter in **event**. **offsetA** indicates the offset of the ReactiveBuilderNode relative to the parent component, **offsetB** indicates the offset of the hit position relative to the ReactiveBuilderNode, and **offsetC** is the sum of **offsetA** and **offsetB**. The value of **offsetC** is used as the value of the **window** parameter in **event** and passed to the **postInputEventWithStrategy** method. For details, see the following sample code.
+
+![Coordinate conversion example](figures/postInputEvent-point.png)
+
+> **NOTE**
+>
+> - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
+>
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [SourceType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
+>
+> - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
+>
+> - The forwarded event is posted to the target component and its child components for processing, and triggers the corresponding gesture. You can use input parameters to control whether the gestures of the current component and the target component are in a competitive relationship.
+>
+> - If the event is converted to a developer-constructed event, mandatory fields must be assigned values, for example, the **touches** field of a touch event and the **scrollStep** field of an axis event. Ensure the completeness of the event. For example, [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of a touch event must contain both the **DOWN** and **UP** fields to prevent program exceptions or unexpected crashes.
+>
+> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--Del-->
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                                     | Mandatory| Description      |
+| ------ | ------------------------------------------------------------------------- | ---- | ---------- |
+| event  | [InputEventType](#inputeventtype20) | Yes  | Input event used for event posting.|
+| competitionStrategy  | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | No  | Whether the gesture for posting the event is in a competition scenario. By default, the gesture is not in a competition scenario.|
+
+**Return value**
+
+| Type   | Description              |
+| ------- | ------------------ |
+| boolean | Whether the event is successfully dispatched. Returns **true** if the operation is successful; returns **false** otherwise.|
+
 ### inheritFreezeOptions<sup>22+</sup>
 
 inheritFreezeOptions(enabled: boolean): void
@@ -5784,7 +5827,7 @@ class MyNodeController extends NodeController {
     return this.rootNode.getFrameNode();
   }
 
-  postInputEvent(event: InputEventType, uiContext: UIContext, CompetitionStrategy: competitionStrategy): boolean {
+  postInputEvent(event: InputEventType, uiContext: UIContext, competitionStrategy: CompetitionStrategy): boolean {
     if (this.rootNode == null) {
       return false;
     }
