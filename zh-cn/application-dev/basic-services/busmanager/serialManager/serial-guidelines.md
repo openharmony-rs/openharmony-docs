@@ -11,6 +11,8 @@
 
 串口通信模块（`@ohos.busManager.serial`）提供面向对象的串口管理能力，支持获取设备可用串口列表、打开/关闭串口、数据读写、硬件信号控制以及流控配置等功能。该模块适用于工业自动化、物联网设备互联、嵌入式设备调试、GPS模块通信等需要通过串口进行数据交换的场景。
 
+如需使用RTS/CTS流控、监听数据接收事件、清空缓冲区等更多串口通信能力，请参考[USB串口通信管理](../../usb/usbSerial/usbSerial-communication.md)
+
 ## 基本概念
 
 在进行串口通信开发时，开发者应了解以下基本概念：
@@ -124,7 +126,7 @@
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import serial from '@ohos.busManager.serial'
@@ -133,7 +135,7 @@
 
 2. 获取串口设备列表。
 
-   <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -153,7 +155,7 @@
 
 3. 打开串口设备。
 
-   <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -177,7 +179,7 @@
 
 4. 注册数据接收回调，监听串口数据。
 
-   <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -198,7 +200,7 @@
 
 5. 通过串口写入数据。
 
-   <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -217,7 +219,7 @@
 
 6. 刷新缓冲区与等待发送完成。
 
-   <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -237,7 +239,7 @@
 
    * 设置RTS信号为高电平
 
-     <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -255,7 +257,7 @@
 
    * 获取CTS信号状态
 
-     <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -273,7 +275,7 @@
 
    * 发送break信号
 
-     <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -291,7 +293,7 @@
 
 8. 注销数据接收回调和关闭串口设备。
 
-   <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
