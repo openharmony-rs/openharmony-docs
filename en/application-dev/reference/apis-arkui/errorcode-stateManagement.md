@@ -340,3 +340,5 @@ The key is not of the string or [TypeConstructorWithArgs\<T\>](./js-apis-stateMa
 **Solution**
 
 Ensure that the key passed for using the **remove** API of **AppStorageV2** and **PersistenceV2** and the **save** API of **PersistenceV2** is of the string or **TypeConstructorWithArgs\<T\>** type.
+
+<!--no_check-->

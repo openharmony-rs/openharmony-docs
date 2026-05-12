@@ -1578,7 +1578,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 >
 > - If the event is converted to a developer-constructed event, mandatory fields must be assigned values, for example, the **touches** field of a touch event and the **scrollStep** field of an axis event. Ensure the completeness of the event. For example, [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of a touch event must contain both the **DOWN** and **UP** fields to prevent program exceptions or unexpected crashes.
 >
-> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--Del-->
+> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--DelEnd-->
 
 **Model constraint**: This API can be used only in the stage model.
 
@@ -3046,7 +3046,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 >
 > - If the event is converted to a developer-constructed event, mandatory fields must be assigned values, for example, the **touches** field of a touch event and the **scrollStep** field of an axis event. Ensure the completeness of the event. For example, [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) of a touch event must contain both the **DOWN** and **UP** fields to prevent program exceptions or unexpected crashes.
 >
-> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--Del-->
+> - The same event can be forwarded multiple times.<!--Del--> This API cannot be called by [UIExtensionComponent](arkui-ts/ts-container-ui-extension-component-sys.md).<!--DelEnd-->
 
 **Model constraint**: This API can be used only in the stage model.
 
