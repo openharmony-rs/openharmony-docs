@@ -1,9 +1,9 @@
 # 卡片代理刷新（仅对系统应用开放）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @Qian-Win-->
-<!--Designer: @cx983299475-->
-<!--Tester: @mahailong123456-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 卡片代理刷新是一种通过系统应用刷新卡片的机制。卡片提供方不在运行时，仍然可以通过开启了数据共享能力的系统应用完成卡片数据的更新。
