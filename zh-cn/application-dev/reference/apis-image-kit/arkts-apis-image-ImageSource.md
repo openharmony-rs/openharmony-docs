@@ -2064,7 +2064,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
 > - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
-> - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写的权限，否则会导致字段修改不成功。
+> - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
