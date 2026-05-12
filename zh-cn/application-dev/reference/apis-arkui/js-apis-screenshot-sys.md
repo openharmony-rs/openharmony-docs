@@ -68,7 +68,7 @@ import { screenshot } from '@kit.ArkUI';
 **系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 26.0.0
- 	 
+
 **ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值 | 说明 |
