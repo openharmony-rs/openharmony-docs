@@ -1893,7 +1893,7 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas
 | [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* positions | 位置数组。 |
 | int positionCount | 位置数组的大小。 |
 | int positionOffset | 在位置数组绘制之前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。 |
-| int glyphCount | 要绘制的字形的数量。如果数量小于或等于0，则不绘制任何内容并返回错误码。如果glyphCount与glyphIdOffset或者positionOffset和大于int32_t上限，则该和按上限处理。 |
+| int glyphCount | 要绘制的字形的数量。如果数量小于或等于0，则不绘制任何内容并返回错误码OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。 |
 | [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 绘制时使用的字体。 |
 
 **返回：**
