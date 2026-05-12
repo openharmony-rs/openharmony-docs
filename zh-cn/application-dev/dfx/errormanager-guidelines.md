@@ -342,11 +342,12 @@ Button('进程promise监听注册被拒绝').onClick(()=>{
 ### 错误处理器责任链模式场景
 
  定义第一个错误处理器及注册方法，无前置处理器时退出进程。
-<!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) --> 
+<!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let firstHandler: errorManager.ErrorHandler;
 const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
@@ -362,7 +363,13 @@ const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
 };
 
 export function setFirstErrorHandler() {
-    firstHandler = errorManager.setDefaultErrorHandler(firstErrorHandler); 
+    try {
+        firstHandler = errorManager.setDefaultErrorHandler(firstErrorHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error('setFirstErrorHandler',`error: ${code}, ${message}`);
+    }
     console.info('Registered First Error Handler');
 }
 ```

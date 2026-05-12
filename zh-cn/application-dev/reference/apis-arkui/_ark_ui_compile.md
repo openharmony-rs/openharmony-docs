@@ -811,7 +811,7 @@ The \'xxx\' decorator can only be used with \'struct\'.
 装饰器无法装饰非struct。
 
 **可能原因**<br>
-开发者使用了@Componet、@ComponentV2等struct装饰器装饰了非struct比如函数等导致报错。
+开发者使用了@Component、@ComponentV2等struct装饰器装饰了非struct比如函数等导致报错。
 
 **处理步骤**<br>
 按照错误日志描述，正确使用对应装饰器即可。

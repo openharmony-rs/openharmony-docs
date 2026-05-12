@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the attributes that can be set by ArkUI on the native side for image components including **Image** and **ImageAnimator**.
+Enumerates the attribute types that can be set by ArkUI on the native side for image components including **Image** and **ImageAnimator**.
 
 **Since**: 12
 
@@ -177,7 +177,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_IMAGE_ALT = 4006
 ```
 
-Placeholder image attribute, which can be set, reset, and obtained as required through APIs.<br>
+Placeholder image address attribute, which can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -423,7 +423,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | whether the image follows the system language direction. **true**: The image follows the system language direction. **false**: The image does not follow the system language direction.|
+| .value[0].i32 | Whether the image follows the system language direction. **true**: The image follows the system language direction. **false**: The image does not follow the system language direction.|
 
 ## NODE_IMAGE_COPY_OPTION
 

@@ -2,7 +2,7 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @wuliangdong-->
-<!--Designer: @butterls-->
+<!--Designer: @hanruofei-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 

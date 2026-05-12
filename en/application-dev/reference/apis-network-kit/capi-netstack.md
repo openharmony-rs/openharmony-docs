@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides C APIs of the SSL/TLS certificate chain verification module.
+Provides C APIs for network-related modules, including SSL/TLS certificate chain verification, WebSocket client, HTTP request, and global HTTP interceptor.
 
 **Since**: 11
 ## Files
@@ -21,3 +21,5 @@ Provides C APIs of the SSL/TLS certificate chain verification module.
 | [net_websocket_type.h](capi-net-websocket-type-h.md) | Defines data structures for the C APIs of the WebSocket client module.|
 | [net_http.h](capi-net-http-h.md) | Defines the APIs of the HTTP request module.|
 | [net_http_type.h](capi-net-http-type-h.md) | Defines the data structures for the C APIs of the HTTP request module.|
+| [http_interceptor.h](capi-net-http-interceptor-h.md) | Defines the APIs of the global HTTP interceptor module.|
+| [http_interceptor_type.h](capi-net-http-interceptor-type-h.md) | Defines the data structures for the C APIs of the global HTTP interceptor module.|

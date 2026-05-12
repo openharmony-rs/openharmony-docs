@@ -2374,11 +2374,17 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 });
 ```
 
-## notificationManager.setDistributedEnable
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 设置设备是否支持分布式通知。使用callback异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2426,11 +2432,17 @@ let enable: boolean = true;
 notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
-## notificationManager.setDistributedEnable
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean): Promise\<void>
 
 设置设备是否支持分布式通知。使用Promise异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2480,11 +2492,17 @@ notificationManager.setDistributedEnable(enable).then(() => {
 });
 ```
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
 设置指定应用是否支持分布式通知。使用callback异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2539,11 +2557,17 @@ notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedE
 
 
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
 设置指定应用是否支持分布式通知。使用Promise异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2598,11 +2622,17 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 });
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
 根据应用的包获取应用程序是否支持分布式通知。使用callback异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2653,11 +2683,17 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 查询指定应用是否支持分布式通知。使用Promise异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2711,11 +2747,15 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 ```
 
 
-## notificationManager.getDeviceRemindType
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 获取通知的提醒方式。使用callback异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2760,11 +2800,15 @@ let getDeviceRemindTypeCallback = (err: BusinessError, data: notificationManager
 notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
 ```
 
-## notificationManager.getDeviceRemindType
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 获取通知的提醒方式。使用Promise异步回调。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3574,11 +3618,15 @@ notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notificati
 ```
 
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
 
 设置是否将通知同步到未安装应用程序的设备(callback形式)。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3630,11 +3678,15 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSync
 ```
 
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<void>
 
 设置是否将通知同步到未安装应用程序的设备(Promise形式)。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3688,11 +3740,15 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
 ```
 
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<boolean>): void
 
 获取同步通知到未安装应用程序设备的开关是否开启(callback形式)。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3739,11 +3795,15 @@ notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotifica
 ```
 
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 获取同步通知到未安装应用程序设备的开关是否开启(Promise形式)。
+
+**起始版本：** 9
+
+**废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -4786,7 +4846,7 @@ setAdditionalConfig(key: string, value: string): Promise\<number\>
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用[自定义铃声](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
+| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用自定义铃声。 |
 | value   | string | 是  | 附加配置值。参数示例：[bundleName1,bundleName2]。 |
 
 **返回值：**
