@@ -20,6 +20,8 @@
 
 1. 创建[AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavtranscoder12)实例。
 
+   ArkTS-Dyn示例：
+
    ```ts
    import { media } from '@kit.MediaKit';
    
@@ -28,6 +30,10 @@
    this.avTranscoder = await media.createAVTranscoder();
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[create_instance](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
 2. 设置业务需要的监听事件，监听状态变化及错误上报。
 
    | 事件类型 | 说明 | 
@@ -35,6 +41,8 @@
    | complete | 必要事件，监听AVTranscoder的转码完成。 | 
    | error | 必要事件，监听AVTranscoder的错误信息。 |
    | progressUpdate | 监听AVTranscoder的进度。 |
+
+   ArkTS-Dyn示例：
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -85,6 +93,10 @@
 
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[create_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
 3. 设置源视频文件fd：设置属性fdSrc。
    > **说明：**
    >
@@ -95,6 +107,8 @@
    > - 应通过Context属性获取应用文件路径，建议使用getUIContext获取UIContext实例，并使用getHostContext调用绑定实例的getContext，请参考[getHostContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
    >
    > - 如果使用ResourceManager.getRawFd()打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
+
+   ArkTS-Dyn示例：
 
    ```ts
    // 导入来自于ets/transcoder/AVTranscoderManager.ets文件。
@@ -155,11 +169,23 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   UI界面：
+
+   <!-- @[transcoder_ui](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+
+   源文件设置：
+
+   <!-- @[create_fdsrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
 4. 设置目标视频文件fd：设置属性fdDst。
    > **说明：**
    >
    > 转码输出文件fd（即示例里fdDst），形式为number。需要调用基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
    
+   ArkTS-Dyn示例：
+
    ```ts
    import { fileIo } from '@kit.CoreFileKit';
    import { media } from '@kit.MediaKit';
@@ -184,6 +210,9 @@
      }
    }
    ```
+   ArkTS-Sta示例：
+
+   <!-- @[create_fddst](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
 
 5. 配置视频转码参数，调用prepare()接口。
 
@@ -191,6 +220,8 @@
    >
    > 写入配置参数时需要注意，prepare()接口的入参avConfig中仅设置转码相关的配置参数。<br>
    > 受限于解析/封装/编解码能力，只能使用[支持的转码格式](media-kit-intro.md#avtranscoder)。
+
+   ArkTS-Dyn示例：
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -212,7 +243,19 @@
    ```
    <!--RP2--><!--RP2End-->
 
+   ArkTS-Sta示例：
+   
+   转码参数设置：
+
+   <!-- @[create_transcoderconfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
+   调用Prepare()接口：
+
+   <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
 6. 开始转码，调用start()接口。
+
+   ArkTS-Dyn示例：
 
    ```ts
    async startTranscoderingProcess() {
@@ -230,7 +273,13 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[doStart](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
 7. 暂停转码，调用pause()接口。
+
+   ArkTS-Dyn示例：
 
    ```ts
    // 暂停转码对应的流程。
@@ -243,7 +292,13 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[doPause](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
 8. 恢复转码，调用resume()接口。
+
+   ArkTS-Dyn示例：
 
    ```ts
    // 恢复转码。
@@ -256,7 +311,13 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[doResume](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
 9. 销毁实例，调用release()接口，退出转码。
+
+   ArkTS-Dyn示例：
 
    ```ts
    // 销毁实例。
@@ -272,7 +333,14 @@
      }
    }
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[doRelease](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+
 10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程
+
+   ArkTS-Dyn示例：
 
     ```ts
     async avTranscoderDemo() {
@@ -281,6 +349,10 @@
       await this.resumeTranscoderingProcess(); // 恢复转码。
     }
     ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[transcoder_process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
 
 ## 运行示例工程
 
