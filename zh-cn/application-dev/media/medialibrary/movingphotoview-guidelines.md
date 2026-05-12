@@ -28,11 +28,15 @@
 
      API version 21及之前版本：
 
+     <!-- @[movingphotoview_import_api21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
      ```
 
      API version 22及之后版本：
+
+     <!-- @[movingphotoview_import_api22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
@@ -44,11 +48,15 @@
 
    创建、获取的方式可参考[访问和管理动态照片资源](photoAccessHelper-movingphoto.md)。
 
+   <!-- @[movingphotoview_src](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    src: photoAccessHelper.MovingPhoto | undefined = undefined;
    ```
 
 3. 创建动态照片控制器（[MovingPhotoViewController](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md#movingphotoviewcontroller)），用于控制动态照片的播放状态（如播放、停止）。
+
+   <!-- @[movingphotoview_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
    controller: MovingPhotoViewController = new MovingPhotoViewController();
@@ -57,6 +65,8 @@
 4. 创建动态照片组件。
 
    以下参数取值仅为举例，具体每个属性的取值范围，可参考API文档：[@ohos.multimedia.movingphotoview](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md)。
+
+   <!-- @[movingphotoview_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
     // API version 21及之前版本导入方式：import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
