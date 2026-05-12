@@ -22,6 +22,16 @@
 
 拖拽事件信息。
 
+### dragAnimationType<sup>26+</sup>
+
+dragAnimationType: [DragAnimationType](#draganimationtype26枚举说明)
+
+设置拖拽动画类型。该属性仅支持在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)阶段设置，可在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)、[onDragEnter](ts-universal-events-drag-drop.md#ondragenter)、[onDragMove](ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](ts-universal-events-drag-drop.md#ondragleave)、[onDrop](ts-universal-events-drag-drop.md#ondrop)、[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)回调中获取。
+
+**默认值：** DragAnimationType.DEFAULT
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ### enableInternalDropAnimation<sup>20+</sup>
 
 enableInternalDropAnimation(configuration: string): void
@@ -45,10 +55,294 @@ enableInternalDropAnimation(configuration: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[drag-event(拖拽事件)](../errorcode-drag-event.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[拖拽事件错误码](../errorcode-drag-event.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 801       | Capability not supported.|
 | 190003    | Operation not allowed for current phase. |
+
+### executeFollowHandMorphDropAnimation<sup>26+</sup>
+
+executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, animationOption?: string): void
+
+设置一个跟手变形落位动效执行完成后的回调，该回调由系统在拖拽框架动效结束后触发。
+
+> **说明：**
+>
+> 1. 该接口仅在dragAnimationType设置为DragAnimationType.FOLLOW_HAND_MORPH时生效。
+> 2. 不要在回调中实现与动效无关的逻辑，避免影响执行效率。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --------- | ----------------------------------------- | ---- | ---------------------------------- |
+| onAnimationFinished | [Callback\<void\>](../../../reference/apis-basic-services-kit/js-apis-base.md#callback) | 是 | 拖拽框架动效结束后触发的回调。 |
+| animationOption | string | 否 | 可选的动效参数字符串，会在动效流程中由框架透传。<br/>参数为JSON字符串格式，包含以下字段：<br/>- CubicCurveEnable: boolean - 是否启用三次曲线动画<br/>- SpringEnable: boolean - 是否启用弹簧动画<br/>- dropAnimationCurve: number[] - 落位动画曲线参数<br/>- dropPosition: number[] - 落位位置坐标[x, y]<br/>- dropSize: number[] - 落位尺寸[width, height] |
+
+## DragAnimationType<sup>26+</sup>枚举说明
+
+拖拽动画类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| --------- | ------- | ---------------------------------- |
+| DEFAULT | 0 | 使用默认拖拽动画。 |
+| FOLLOW_HAND_MORPH | 1 | 使用跟手变形拖拽动画。 |
+
+## DragController<sup>11+</sup>
+
+提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。本文仅介绍DragController的系统接口，其他公开接口参见[DragController](../arkts-apis-uicontext-dragcontroller.md)。
+
+### interruptFollowHandMorphDropAnimation<sup>26+</sup>
+
+interruptFollowHandMorphDropAnimation(): boolean
+
+中断待执行的跟手变形落位动效，并立即触发其收尾流程。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 返回true表示中断成功；返回false表示当前不存在待中断的跟手变形落位动效。 |
+
+## 示例
+
+### 示例1（设置跟手变形拖拽动画）
+
+从API版本26.0.0开始，示例1通过设置[dragAnimationType](#draganimationtype26枚举说明)为FOLLOW_HAND_MORPH实现跟手变形拖拽动画效果，并在拖拽结束时通过[executeFollowHandMorphDropAnimation](#executefollowhandmorphdropanimation26)执行自定义落位动效。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+// 动画参数类
+class AnimationOption {
+  CubicCurveEnable: boolean = false;
+  SpringEnable: boolean = false;
+  dropAnimationCurve: number[] = [];
+  dropPosition: number[] = [];
+  dropSize: number[] = [];
+}
+
+@Entry
+@Component
+struct FollowHandMorphDemo {
+  @State dragInfo: string = '未拖拽';
+  @State animationInfo: string = '';
+  @State interruptResult: string = '';
+
+  build() {
+    Column({ space: 20 }) {
+      Text('跟手变形拖拽动画示例')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+
+      Text('操作说明：长按左侧方块拖拽到右侧区域')
+        .fontSize(14)
+        .fontColor('#666666')
+
+      Row({ space: 30 }) {
+        // 拖拽源
+        Column() {
+          Text('拖拽源')
+            .fontSize(14)
+          Text('长按拖拽')
+            .fontSize(12)
+            .fontColor('#999999')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('#DDEEFF')
+        .borderRadius(12)
+        .justifyContent(FlexAlign.Center)
+        .draggable(true)
+        .onDragStart((event: DragEvent) => {
+          // 设置为跟手变形动画模式
+          event.dragAnimationType = DragAnimationType.FOLLOW_HAND_MORPH;
+          this.dragInfo = 'onDragStart: dragAnimationType=1';
+        })
+
+        // 目标区域
+        Column() {
+          Text('目标区域')
+            .fontSize(14)
+          Text('在此松手')
+            .fontSize(12)
+            .fontColor('#999999')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('#EAF8EA')
+        .borderRadius(12)
+        .justifyContent(FlexAlign.Center)
+        .onDrop((event: DragEvent) => {
+          this.dragInfo = 'onDrop触发';
+
+          // 构建动画参数
+          let animationOption = new AnimationOption();
+          animationOption.CubicCurveEnable = true;
+          animationOption.SpringEnable = false;
+          animationOption.dropAnimationCurve = [0.416, 0.99, 0];
+          animationOption.dropPosition = [360, 560];
+          animationOption.dropSize = [100, 100];
+
+          // 执行跟手变形落位动效
+          event.executeFollowHandMorphDropAnimation(() => {
+            this.animationInfo = '跟手变形动效完成';
+          }, JSON.stringify(animationOption));
+        })
+      }
+
+      // 状态显示
+      Column({ space: 8 }) {
+        Text(`拖拽状态: ${this.dragInfo}`).fontSize(12)
+        Text(`动效状态: ${this.animationInfo}`).fontSize(12)
+        Text(`中断结果: ${this.interruptResult}`).fontSize(12)
+      }
+      .width('100%')
+      .padding(12)
+      .backgroundColor('#F7F7F7')
+      .borderRadius(8)
+
+      // 中断动画按钮
+      Button('中断待执行的跟手变形动效')
+        .onClick(() => {
+          let result = this.getUIContext().getDragController().interruptFollowHandMorphDropAnimation();
+          this.interruptResult = result ? '中断成功' : '无待中断的动效';
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .backgroundColor('#FFFFFF')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+'use static'
+
+import { Column, Component, Entry, Row, Text, Button, State, DragEvent, DragItemInfo, ColumnOptions, RowOptions, FontWeight, FlexAlign, DragAnimationType } from '@kit.ArkUI';
+
+// 动画参数类
+class AnimationOption {
+  CubicCurveEnable: boolean = false;
+  SpringEnable: boolean = false;
+  dropAnimationCurve: number[] = [];
+  dropPosition: number[] = [];
+  dropSize: number[] = [];
+}
+
+@Entry
+@Component
+struct FollowHandMorphDemo {
+  @State dragInfo: string = '未拖拽';
+  @State animationInfo: string = '';
+  @State interruptResult: string = '';
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      Text('跟手变形拖拽动画示例')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+
+      Text('操作说明：长按左侧方块拖拽到右侧区域')
+        .fontSize(14)
+        .fontColor('#666666')
+
+      Row({ space: 30 } as RowOptions) {
+        // 拖拽源
+        Column() {
+          Text('拖拽源')
+            .fontSize(14)
+          Text('长按拖拽')
+            .fontSize(12)
+            .fontColor('#999999')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('#DDEEFF')
+        .borderRadius(12)
+        .justifyContent(FlexAlign.Center)
+        .draggable(true)
+        .onDragStart((event: DragEvent) => {
+          // 设置为跟手变形动画模式
+          event.dragAnimationType = DragAnimationType.FOLLOW_HAND_MORPH;
+          this.dragInfo = 'onDragStart: dragAnimationType=1';
+          return {} as DragItemInfo
+        })
+
+        // 目标区域
+        Column() {
+          Text('目标区域')
+            .fontSize(14)
+          Text('在此松手')
+            .fontSize(12)
+            .fontColor('#999999')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('#EAF8EA')
+        .borderRadius(12)
+        .justifyContent(FlexAlign.Center)
+        .onDrop((event: DragEvent) => {
+          this.dragInfo = 'onDrop触发';
+
+          // 构建动画参数
+          let animationOption = new AnimationOption();
+          animationOption.CubicCurveEnable = true;
+          animationOption.SpringEnable = false;
+          animationOption.dropAnimationCurve = [0.416, 0.99, 0];
+          animationOption.dropPosition = [360, 560];
+          animationOption.dropSize = [100, 100];
+
+          // 执行跟手变形落位动效
+          event.executeFollowHandMorphDropAnimation(() => {
+            this.animationInfo = '跟手变形动效完成';
+          }, JSON.stringify(animationOption));
+        })
+      }
+
+      // 状态显示
+      Column({ space: 8 } as ColumnOptions) {
+        Text(`拖拽状态: ${this.dragInfo}`).fontSize(12)
+        Text(`动效状态: ${this.animationInfo}`).fontSize(12)
+        Text(`中断结果: ${this.interruptResult}`).fontSize(12)
+      }
+      .width('100%')
+      .padding(12)
+      .backgroundColor('#F7F7F7')
+      .borderRadius(8)
+
+      // 中断动画按钮
+      Button('中断待执行的跟手变形动效')
+        .onClick(() => {
+          let result = this.getUIContext().getDragController().interruptFollowHandMorphDropAnimation();
+          this.interruptResult = result ? '中断成功' : '无待中断的动效';
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .backgroundColor('#FFFFFF')
+  }
+}
+```
