@@ -142,7 +142,7 @@ SQL语句中的函数，如下所示：
 
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
 
-   <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
+   <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -170,7 +170,7 @@ SQL语句中的函数，如下所示：
 
    ArkTS-Dyn示例：
 
-   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -199,13 +199,15 @@ SQL语句中的函数，如下所示：
    ArkTS-Sta示例：
    
    context为应用的上下文信息，此处获取方式仅为示例，开发者可以根据自己的需求获取上下文信息。当前获取方式是通过UIAbility在Index.ets页面获取。
-   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/Index.ets)--> 
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/Index.ets)-->
+
    ``` TypeScript
    /* context为应用的上下文信息，此处获取方式仅为示例。 */
    const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
    ```
 
-   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
    const STORE_CONFIG :relationalStore.StoreConfig = {
@@ -228,7 +230,6 @@ SQL语句中的函数，如下所示：
        console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
      };
    ```
-
 
 3. 获取到RdbStore后，调用execute接口插入数据。
 
@@ -255,6 +256,7 @@ SQL语句中的函数，如下所示：
    ArkTS-Sta示例：
 
    <!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ``` TypeScript
    try {
      // 使用参数绑定
@@ -299,6 +301,7 @@ SQL语句中的函数，如下所示：
    ArkTS-Sta示例：
 
    <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ``` TypeScript
    // 修改数据
    try {
@@ -400,6 +403,7 @@ SQL语句中的函数，如下所示：
    ArkTS-Sta示例：
 
    <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+
    ``` TypeScript
    let resultSet: relationalStore.ResultSet | undefined = undefined;
    // 单表查询
