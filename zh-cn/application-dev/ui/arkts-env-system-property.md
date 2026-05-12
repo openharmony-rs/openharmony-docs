@@ -6,21 +6,17 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-在多设备开发的场景中，开发者可以使用[\@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md)装饰器监听环境变量的改变，并根据环境变量来进行相应的场景判断，以减少不同设备间的适配逻辑和重复开发。
+在多设备开发的场景中，开发者可以使用[\@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md)装饰器监听系统环境变量的改变，并根据系统环境变量来进行相应的场景判断，以减少不同设备间的适配逻辑和重复开发。
 
 >**说明：**
 >
 > 从API version 22开始，\@Env支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-create-custom-components.md#componentv2)中使用。
 >
 > 从API version 22开始，该装饰器支持在原子化服务中使用。
->
-> 当前\@Env包含两类能力：一类是通过[SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)读取组件所在窗口的环境变量；另一类是通过`@Env('system.arkui.layout.direction')`读取当前组件上下文中的方向环境变量，可与[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)配合使用。
->
-> 如需读取WithEnv作用域内通过`customEnv`设置的局部自定义环境变量，请使用[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-system-property.md)。
 
 ## 概述
 \@Env是响应式系统环境变量装饰器，其功能包括：
-- 根据入参读取相应的环境变量信息，详情见[\@Env支持参数](#env支持参数)。目前支持以下几类环境变量：
+- 根据入参读取相应的环境变量信息，详情见[\@Env支持参数](#env支持参数)。目前支持以下几种环境变量：
   - [SystemProperties.BREAK_POINT](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口不同宽高阈值下对应的断点值信息。
   - [SystemProperties.WINDOW_SIZE<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的大小信息，单位为vp。
   - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的大小信息，单位为px。
@@ -28,14 +24,12 @@
   - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的避让区域信息，单位为px。
   - [SystemProperties.WINDOW_DISPLAY_ID](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口所在屏幕的ID，从API版本26.0.0开始支持。
   - [SystemProperties.WINDOW_SYSTEM_DENSITY](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口所在屏幕的系统显示大小缩放系数，从API版本26.0.0开始支持。
-  - `'system.arkui.layout.direction'`，用于获取当前组件上下文中的方向环境变量，并可响应祖先WithEnv方向作用域的变化。
-- 环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新。
+- 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新。
 - \@Env装饰的变量不允许开发者初始化。\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
 
 ## \@Env支持参数
 
-- 窗口级环境变量：请参考[SystemProperties枚举类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)。
-- 作用域化方向环境变量：请参考[WithEnv作用域化方向环境变量](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#withenv作用域化方向环境变量)。
+@Env支持的参数请参考[SystemProperties枚举类型说明](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)。
 
 ## \@Env和Environment能力对比
 \@Env和[Environment](./state-management/arkts-environment.md)都是系统环境变量相关，但两者能力有较大的不同，具体能力对比见下表。
@@ -43,9 +37,9 @@
 | 能力 | \@Env |Environment|
 | ------------------ | ------------------ | ------------------ |
 |起始API version|从API version 22开始支持。|从API version 7开始支持。|
-|支持参数|[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)和`'system.arkui.layout.direction'`| 支持`languageCode`等参数，详情见[Environment内置参数](./state-management/arkts-environment.md#environment内置参数)。|
-|使用形式|\@Env为装饰器，可声明在\@Component或\@ComponentV2中。使用`SystemProperties`时读取组件所在窗口的环境变量；使用`'system.arkui.layout.direction'`时读取当前组件上下文中的方向环境变量。|通过[envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)等接口获取当前应用的环境变量，并存入[AppStorage](./state-management/arkts-appstorage.md)中，开发者可通过AppStorage的接口访问系统环境变量的值，具体例子见[从ui中访问environment参数](./state-management/arkts-environment.md#从ui中访问environment参数)。|
-|是否有响应式能力|有，当系统环境变量变化或相关方向作用域变化时，会通知\@Env装饰的环境变量改变，并通知\@Env关联组件刷新。|无，系统环境变量变化时，不会通知Environment改变。|
+|支持参数|[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)| 支持`languageCode`等参数，详情见[Environment内置参数](./state-management/arkts-environment.md#environment内置参数)。|
+|使用形式|\@Env为装饰器，可声明在\@Component或\@ComponentV2中，获取对应参数的环境变量信息。|通过[envProp](../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10)等接口获取当前应用的环境变量，并存入[AppStorage](./state-management/arkts-appstorage.md)中，开发者可通过AppStorage的接口访问系统环境变量的值，具体例子见[从ui中访问environment参数](./state-management/arkts-environment.md#从ui中访问environment参数)。|
+|是否有响应式能力|有，当系统环境变量变化时，会通知\@Env装饰的环境变量的改变，并通知\@Env关联组件刷新。|无，系统环境变量变化时，不会通知Environment改变。|
 
 ## 限制条件
 - \@Env仅支持在\@Component和\@ComponentV2中使用，否则会有编译时报错。如果开发者绕过编译时检查，则会有运行时报错。
@@ -87,7 +81,7 @@
   }
   ```
 
-- \@Env当前支持[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)和`'system.arkui.layout.direction'`。若使用不支持的参数，将触发编译时报错。
+- \@Env当前支持[SystemProperties的枚举值](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)。若使用不支持的参数，将触发编译时报错。
     ```ts
     import { uiObserver } from '@kit.ArkUI';
 
@@ -110,7 +104,6 @@
   - \@Env使用`SystemProperties.WINDOW_AVOID_AREA_PX`时，装饰的变量类型必须为`window.UIEnvWindowAvoidAreaInfoPX`类型。
   - \@Env使用`SystemProperties.WINDOW_DISPLAY_ID`时，装饰的变量类型必须为`number`类型。
   - \@Env使用`SystemProperties.WINDOW_SYSTEM_DENSITY`时，装饰的变量类型必须为`number`类型。
-  - \@Env使用`'system.arkui.layout.direction'`时，装饰的变量类型必须为[Direction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#direction)类型。
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 
@@ -133,7 +126,7 @@
   ```
 - \@Env装饰的变量在\@Component和\@ComponentV2传递遵循以下规则：
   - \@Env装饰的变量仅能用于初始化\@ComponentV2中@Param装饰的变量，否则会有编译时报错。
-  - \@Env装饰的变量仅能用于初始化\@Component中常规变量，否则会有编译时报错。需要注意，当\@Env使用窗口级[SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)参数并通过[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)切换窗口时，会依据新的窗口更新环境变量实例。在切换窗口的场景中，不建议开发者使用\@Env变量来初始化子组件的常规变量，否则会造成该常规变量无法被\@Env通知触发其关联UI组件刷新。具体示例可见[通过BuilderNode切换窗口（窗口级环境变量）](#通过buildernode切换窗口窗口级环境变量)。
+  - \@Env装饰的变量仅能用于初始化\@Component中常规变量，否则会有编译时报错。需要注意，通过[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)切换窗口，会导致\@Env依据新的窗口更新环境变量实例。在切换窗口的场景中，不建议开发者使用\@Env变量来初始化子组件的常规变量，否则会造成该常规变量无法被\@Env通知触发其关联UI组件刷新。具体示例可见[通过BuilderNode切换窗口](#通过buildernode切换窗口)。
   ```ts
   import { uiObserver } from '@kit.ArkUI';
   
@@ -186,9 +179,9 @@
   }
   ```
 
-## \@Env初始化流程（SystemProperties窗口级环境变量）
+## \@Env初始化流程
 
-\@Env变量不允许开发者初始化，其值由框架根据当前窗口的环境变量自动提供，\@Env变量在被第一次读值的时候，会触发初始化。以下流程适用于使用[SystemProperties](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)参数的窗口级环境变量，不适用于`@Env('system.arkui.layout.direction')`这类基于当前组件上下文的作用域化方向环境变量。\@Env变量初始化遵循以下流程：
+\@Env变量不允许开发者初始化，其值由框架根据当前窗口的环境变量自动提供，\@Env变量在被第一次读值的时候，会触发初始化。\@Env变量初始化遵循以下流程：
 
 1. 从父组件中查找已有实例：
    - 向上递归查找父组件。
@@ -289,44 +282,6 @@ struct GrandChild2 {
 ```
 
 ## 使用场景
-### 配合WithEnv读取作用域化方向
-
-可通过`@Env('system.arkui.layout.direction')`读取当前组件上下文中的方向环境变量，并配合[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)为子树设置局部方向作用域。
-
-```ts
-@Component
-struct DirectionTag {
-  @Env('system.arkui.layout.direction') currentDirection: Direction;
-
-  build() {
-    Text(`${this.currentDirection}`)
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State directionValue: Direction = Direction.Ltr;
-
-  build() {
-    Column({ space: 12 }) {
-      Button('切换方向')
-        .onClick(() => {
-          this.directionValue = this.directionValue === Direction.Ltr ? Direction.Rtl : Direction.Ltr;
-        })
-
-      WithEnv() {
-        Column({ space: 12 }) {
-          Text('未显式设置direction的后代组件将跟随WithEnv作用域')
-          DirectionTag()
-        }
-      }
-      .env(SystemEnvKeys.DIRECTION, this.directionValue)
-    }
-  }
-}
-```
-
 ### 在\@ComponentV2中使用\@Env
 
 下面的例子中：
@@ -522,7 +477,7 @@ struct Comp {
 }
 ```
 
-### 通过BuilderNode切换窗口（窗口级环境变量）
+### 通过BuilderNode切换窗口
 
 \@Env用于展示\@Component/\@ComponentV2所在[窗口](../reference/apis-arkui/arkts-apis-window-Window.md)的环境变量信息。开发者通过BuilderNode切换@Component\@ComponentV2所在的窗口实例时，\@Env会根据新的窗口获取对应的环境变量信息，并触发关联的UI组件刷新。以`SystemProperties.BREAK_POINT`为例。
 

@@ -1,10 +1,10 @@
 # WithEnv
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
-<!--Tester: @zhangwenhan12-->
-<!--Adviser: @zhang_yixin13-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @khq-->
+<!--Adviser: @Brilliantry_Rui-->
 
 WithEnv组件用于为一段子组件树设置局部环境变量作用域。开发者可以通过该组件为后代组件提供自定义环境变量，或设置局部布局方向等系统环境变量。
 
