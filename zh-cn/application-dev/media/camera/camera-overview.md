@@ -44,4 +44,4 @@
 
 - [相机和媒体库(ArkTS) (Full SDK)（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/Camera)
 
-<!--PR1--><!--PR1End-->
+<!--RP1--><!--RP1End-->
