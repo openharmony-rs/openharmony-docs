@@ -265,7 +265,7 @@
          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
          return;
        }
-       const ctsStatus = await this.port.getCts();
+       const ctsStatus = await this.port!.getCts();
        console.info(`${TAG} getCts success, CTS: ${ctsStatus}`);
      } catch (err) {
        const e = err as BusinessError;
