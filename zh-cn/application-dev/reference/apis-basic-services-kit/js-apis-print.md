@@ -47,7 +47,7 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -95,7 +95,7 @@ onBlock(callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -144,7 +144,7 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -192,7 +192,7 @@ onSucceed(callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -241,7 +241,7 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -289,7 +289,7 @@ onFail(callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -338,7 +338,7 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -386,7 +386,7 @@ onCancel(callback: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -435,7 +435,7 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -483,7 +483,7 @@ offBlock(callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -532,7 +532,7 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -580,7 +580,7 @@ offSucceed(callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -629,7 +629,7 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -677,7 +677,7 @@ offFail(callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -726,7 +726,7 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -774,7 +774,7 @@ offCancel(callback?: Callback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -831,7 +831,7 @@ ArkTS-Sta: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -914,7 +914,7 @@ onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -970,7 +970,7 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1024,7 +1024,7 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1073,7 +1073,7 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1142,26 +1142,7 @@ print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
-| context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | Promise对象，返回[PrintTask](#printtask)。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1232,7 +1213,7 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1312,8 +1293,6 @@ struct Index {
 定义打印范围的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
-
-**ArkTS-Dyn起始版本**：11
 
 **ArkTS-Dyn起始版本**：11
 
@@ -1605,7 +1584,7 @@ addPrinterToDiscovery(printerInformation: PrinterInformation): Promise&lt;void&g
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1660,7 +1639,7 @@ updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise&lt;voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1733,7 +1712,7 @@ removePrinterFromDiscovery(printerId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1780,7 +1759,7 @@ getPrinterInformationById(printerId: string): Promise&lt;PrinterInformation&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1977,7 +1956,7 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2039,7 +2018,7 @@ on(type: 'printerChange', callback: PrinterChangeCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2083,7 +2062,7 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2127,7 +2106,7 @@ onPrinterChange(callback: PrinterChangeCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2170,7 +2149,7 @@ offPrinterChange(callback?: PrinterChangeCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2213,7 +2192,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2266,7 +2245,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2311,7 +2290,7 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2354,7 +2333,7 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2396,7 +2375,7 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2446,7 +2425,7 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2492,7 +2471,7 @@ startPrint(job: PrintJobData): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2766,7 +2745,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2817,7 +2796,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2864,7 +2843,7 @@ updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -2964,6 +2943,10 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2981,7 +2964,7 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[打印服务错误码](./errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3056,6 +3039,10 @@ registerWatermarkCallback(callback: WatermarkCallback): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3064,7 +3051,7 @@ registerWatermarkCallback(callback: WatermarkCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3099,6 +3086,10 @@ unregisterWatermarkCallback(callback?: WatermarkCallback): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -3107,7 +3098,7 @@ unregisterWatermarkCallback(callback?: WatermarkCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -3154,7 +3145,7 @@ notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |

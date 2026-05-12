@@ -143,7 +143,8 @@ import { scan } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：23
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | minValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最小值。 |
 | maxValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 范围的最大值。 |
@@ -160,7 +161,8 @@ import { scan } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：23
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | optionName | string | 否 | 否 | 选项名称。 |
 | optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 选项索引。 |
@@ -184,7 +186,8 @@ import { scan } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：23
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | valueType | [OptionValueType](#optionvaluetype) | 否 | 否 | 值类型。 |
 | numValue | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 数值。 |
@@ -202,7 +205,8 @@ import { scan } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：23
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | progress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 当前进度百分比，范围从0~100。单位：百分比。 |
 | pictureFd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 扫描图片的文件描述符。 |
@@ -219,7 +223,8 @@ import { scan } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：23
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | scannerId | string | 否 | 否 | 扫描仪的唯一标识符。 |
 | discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 扫描仪的发现模式。 |
@@ -239,7 +244,8 @@ import { scan } from '@kit.BasicServicesKit';
 **ArkTS-Sta起始版本**：23
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | scannerId | string | 否 | 否 | 扫描仪ID。 |
 | discoveryMode | [ScannerDiscoveryMode](#scannerdiscoverymode) | 否 | 否 | 发现模式。 |
@@ -262,11 +268,14 @@ init(): Promise&lt;void&gt;
 **ArkTS-Sta起始版本**：23
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -300,11 +309,14 @@ exit(): Promise&lt;void&gt;
 **ArkTS-Sta起始版本**：23
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -338,11 +350,14 @@ startScannerDiscovery(): Promise&lt;void&gt;
 **ArkTS-Sta起始版本**：23
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -376,16 +391,20 @@ openScanner(scannerId: string): Promise&lt;void&gt;
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 要打开的扫描仪的ID。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -420,16 +439,20 @@ closeScanner(scannerId: string): Promise&lt;void&gt;
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 要关闭的扫描仪的ID。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -464,16 +487,20 @@ getScannerParameter(scannerId: string): Promise&lt;ScannerParameter[]&gt;
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;[ScannerParameter](#scannerparameter)[]&gt; | Promise对象，返回扫描仪参数数组。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -510,18 +537,22 @@ ArkTS-Sta: setScannerParameter(scannerId: string, optionIndex: int, value: Scann
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
 | optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要设置的选项的索引。 |
 | value | [ScannerOptionValue](#scanneroptionvalue) | 是 | 要设置的值。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -563,17 +594,21 @@ ArkTS-Sta: setScanAutoOption(scannerId: string, optionIndex: int): Promise&lt;vo
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
 | optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要设置为自动的选项的索引。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -611,17 +646,21 @@ ArkTS-Sta: getScannerCurrentSetting(scannerId: string, optionIndex: int): Promis
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
 | optionIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 要获取的选项的索引。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;[ScannerOptionValue](#scanneroptionvalue)&gt; | Promise对象，返回扫描仪选项值。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -657,17 +696,21 @@ startScan(scannerId: string, batchMode: boolean): Promise&lt;void&gt;
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
 | batchMode | boolean | 是 | 是否使用批处理模式。true表示使用批处理模式，false表示不使用批处理模式。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -703,16 +746,20 @@ cancelScan(scannerId: string): Promise&lt;void&gt;
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -747,16 +794,20 @@ getPictureScanProgress(scannerId: string): Promise&lt;PictureScanProgress&gt;
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | scannerId | string | 是 | 扫描仪的ID。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
 | Promise&lt;[PictureScanProgress](#picturescanprogress)&gt; | Promise对象，返回图片扫描进度信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -791,12 +842,15 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
 | callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备发现信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -827,12 +881,15 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | 是 | 事件类型。 |
 | callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 否 | 回调函数，返回扫描仪设备发现信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -851,7 +908,7 @@ scan.on('scanDeviceFound', callback);
 scan.off('scanDeviceFound', callback);
 ```
 
-## scan.onScanDeviceFound
+## scan.onScanDeviceFound<sup>23+</sup>
 
 onScanDeviceFound(callback: Callback&lt;ScannerDevice&gt;): void
 
@@ -868,11 +925,14 @@ onScanDeviceFound(callback: Callback&lt;ScannerDevice&gt;): void
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 是 | 回调函数，返回扫描仪设备发现信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -888,7 +948,7 @@ scan.onScanDeviceFound((device: scan.ScannerDevice) => {
 })
 ```
 
-## scan.offScanDeviceFound
+## scan.offScanDeviceFound<sup>23+</sup>
 
 offScanDeviceFound(callback?: Callback&lt;ScannerDevice&gt;): void
 
@@ -905,11 +965,14 @@ offScanDeviceFound(callback?: Callback&lt;ScannerDevice&gt;): void
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;[ScannerDevice](#scannerdevice)&gt; | 否 | 回调函数，返回扫描仪设备发现信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -943,12 +1006,15 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | 是 | 事件类型。 |
 | callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 是 | 回调函数，返回扫描仪设备同步信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -979,12 +1045,15 @@ off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | 是 | 事件类型。 |
 | callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 否 | 回调函数，返回扫描仪设备同步信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1003,7 +1072,7 @@ scan.on('scanDeviceSync', callback);
 scan.off('scanDeviceSync', callback);
 ```
 
-## scan.onScanDeviceSync
+## scan.onScanDeviceSync<sup>23+</sup>
 
 onScanDeviceSync(callback: Callback&lt;ScannerSyncDevice&gt;): void
 
@@ -1020,11 +1089,14 @@ onScanDeviceSync(callback: Callback&lt;ScannerSyncDevice&gt;): void
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 是 | 回调函数，返回扫描仪设备同步信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1057,11 +1129,14 @@ offScanDeviceSync(callback?: Callback&lt;ScannerSyncDevice&gt;): void
 **ArkTS-Sta起始版本**：23
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Callback&lt;[ScannerSyncDevice](#scannersyncdevice)&gt; | 否 | 回调函数，返回扫描仪设备同步信息。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
