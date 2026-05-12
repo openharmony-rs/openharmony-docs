@@ -305,7 +305,7 @@ struct DragControllerPage {
 
 **示例：**
 
-该示例通过[DragInfo](#draginfo)的[autoHideComponentUniqueIds](#draginfo)属性，在主动拖拽成功发起后自动隐藏指定组件。
+该示例通过[DragInfo](#draginfo)的autoHideComponentUniqueIds属性，在主动拖拽成功发起后自动隐藏指定组件。
 
 从API版本26.0.0开始，DragInfo新增autoHideComponentUniqueIds属性。
 
