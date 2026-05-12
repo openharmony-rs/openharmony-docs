@@ -191,12 +191,6 @@ import { common } from '@kit.AbilityKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { rpc } from '@kit.IPCKit';
 
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-if (context != undefined) {
-  MarshallingUnMarshallingFunc(context);
-}
-
 class MySequence implements rpc.Parcelable {
   picture_: image.Picture;
 
