@@ -207,10 +207,10 @@ SQL语句中的函数，如下所示：
    ```
 
    <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-
+   
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
-   const STORE_CONFIG :relationalStore.StoreConfig = {
+   const STORE_CONFIG: relationalStore.StoreConfig = {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
      vector: true // 可选参数，该参数为true时才可以使用向量数据库
@@ -221,7 +221,7 @@ SQL语句中的函数，如下所示：
        if (!store) {
          console.error('Get RdbStore failed, store is undefined');
          return;
-       }      
+       }
        // 建表语句，floatvector(2)代表repr的维度是2
        const SQL_CREATE_TABLE = 'CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, repr floatvector(2));';
        // 第二个入参表示不开启显示事务，第三个参数undefined表示未使用参数绑定
