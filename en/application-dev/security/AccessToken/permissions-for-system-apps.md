@@ -4595,20 +4595,6 @@ Allows an application to access the list of applications that can be started in 
 
 **Valid since**: 18
 
-## ohos.permission.GET_NETWORK_STATS
-
-Allows a system application to obtain historical network traffic.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 10
-
-**Changelog**: **Enable via ACL** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12.
-
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
 Allows a system application to read data from the Peep Protect database.
