@@ -27,6 +27,8 @@ PasteButton()
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -38,6 +40,8 @@ PasteButton(options: PasteButtonOptions)
 创建包含指定元素的粘贴控件。
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -65,6 +69,8 @@ PasteButton(options: PasteButtonOptions)
 >     - ButtonType默认样式为Capsule。
 > - icon、text和buttonType不支持动态修改。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -83,6 +89,8 @@ PasteButton(options: PasteButtonOptions)
 
 粘贴控件的图标风格。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -95,6 +103,8 @@ PasteButton(options: PasteButtonOptions)
 
 粘贴控件的文本描述。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -106,6 +116,8 @@ PasteButton(options: PasteButtonOptions)
 ## PasteButtonOnClickResult
 
 粘贴控件点击后的授权结果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -121,6 +133,8 @@ PasteButton(options: PasteButtonOptions)
 type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult, error?: BusinessError&lt;void&gt;) =&gt; void
 
 点击粘贴控件触发该回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -143,6 +157,8 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 onClick(event: PasteButtonCallback)
 
 点击动作触发该回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
