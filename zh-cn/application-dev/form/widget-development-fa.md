@@ -238,7 +238,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
       "window": {
         "designWidth": 720,
         "autoDesignWidth": true
-    	},
+      },
         "type": "form"
       }
     ]
