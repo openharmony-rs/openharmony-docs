@@ -2012,6 +2012,8 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
+createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
+
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
@@ -2025,11 +2027,11 @@ CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 - 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7)、通过默认参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-1) 、通过图片解码参数-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-2)
 - 释放ImageSource实例：[release](arkts-apis-image-ImageSource.md#release)
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2042,9 +2044,11 @@ CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
 | [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
+| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2068,9 +2072,34 @@ async function CreateIncrementalImageSource(context : Context) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+import { resourceManager } from '@kit.LocalizationKit';
+
+function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
+  let imageArray = context.resourceManager.getRawFileContentSync("test_image.jpg");
+  let buffer: ArrayBuffer = new ArrayBuffer(imageArray.byteLength);
+  try {
+    const imageSourceIncremental = image.createIncrementalSource(buffer);
+    console.info(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource success!');
+    if (imageSourceIncremental != undefined) {
+      return imageSourceIncremental;
+    }
+    console.error(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource failed');
+    return undefined;
+  } catch (error) {
+    console.error(0x00000, 'CreateIncrementalSourceFunc', 'CreateIncrementalSourceFunc failed: ' + error);
+    return undefined;
+  }
+}
+```
+
 ## image.CreateIncrementalSource<sup>9+</sup>
 
 CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
+
+createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
@@ -2078,11 +2107,11 @@ CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2096,9 +2125,11 @@ CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
 | [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
+| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2124,92 +2155,7 @@ async function CreateIncrementalImageSource(context : Context) {
 }
 ```
 
-## image.createIncrementalSource<sup>23+</sup>
-
-createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
-
-通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
-
-以增量方式创建的ImageSource实例，仅支持使用以下功能，同步、异步callback、异步Promise均支持。
-
-- 获取图片信息：指定序号-[getImageInfo](arkts-apis-image-ImageSource.md#getimageinfo)、直接获取-[getImageInfo](arkts-apis-image-ImageSource.md#getimageinfo-1)
-- 获取图片中给定索引处图像的指定属性键的值：[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)
-- 批量获取图片中的指定属性键的值：[getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12)
-- 更新增量数据：[updateData](arkts-apis-image-ImageSource.md#updatedata9)
-- 创建PixelMap对象：通过图片解码参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7)、通过默认参数创建-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-1) 、通过图片解码参数-[createPixelMap](arkts-apis-image-ImageSource.md#createpixelmap7-2)
-- 释放ImageSource实例：[release](arkts-apis-image-ImageSource.md#release)
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名  | 类型        | 必填 | 说明      |
-| ------- | ------------| ---- | ----------|
-| buf     | ArrayBuffer | 是   | 增量数据。|
-
-**返回值：**
-
-| 类型                        | 说明                              |
-| --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
-
-**示例：**
-
-```ts
-import { common } from '@kit.AbilityKit';
-import { resourceManager } from '@kit.LocalizationKit';
-
-function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.ImageSource | undefined {
-  let imageArray = context.resourceManager.getRawFileContentSync("test_image.jpg");
-  let buffer: ArrayBuffer = new ArrayBuffer(imageArray.byteLength);
-  try {
-    const imageSourceIncremental = image.createIncrementalSource(buffer);
-    console.info(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource success!');
-    if (imageSourceIncremental != undefined) {
-      return imageSourceIncremental;
-    }
-    console.error(0x00000, 'CreateIncrementalSourceFunc', 'createIncrementalSource failed');
-    return undefined;
-  } catch (error) {
-    console.error(0x00000, 'CreateIncrementalSourceFunc', 'CreateIncrementalSourceFunc failed: ' + error);
-    return undefined;
-  }
-}
-```
-
-## image.createIncrementalSource<sup>23+</sup>
-
-createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
-
-通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
-
-此接口支持的功能与[createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined](#imagecreateincrementalsource23)所生成的实例支持的功能相同。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**系统能力：** SystemCapability.Multimedia.Image.ImageSource
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名  | 类型                            | 必填 | 说明                                 |
-| ------- | ------------------------------- | ---- | ------------------------------------ |
-| buf     | ArrayBuffer                     | 是   | 增量数据。                           |
-| options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 否   | 图片属性，包括图片像素密度、像素格式和图片尺寸。 |
-
-**返回值：**
-
-| 类型                        | 说明                              |
-| --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
-
-**示例：**
-
+ArkTS-Sta示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 import { resourceManager } from '@kit.LocalizationKit';

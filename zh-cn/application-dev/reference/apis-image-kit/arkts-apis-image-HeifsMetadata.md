@@ -27,13 +27,9 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
-| heifsDelayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒。 |
+| heifsDelayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | heifsCanvasHeight | number | 是   | 是   | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>该值为正整数。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
 | heifsCanvasWidth | number | 是   | 是   | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>该值为正整数。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
 | heifsUnclampedDelayTime | number | 是   | 是   | HEIF序列图片每帧未钳制的延迟时长。<br>单位为毫秒（ms）。<br>该值为正整数。 </br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
