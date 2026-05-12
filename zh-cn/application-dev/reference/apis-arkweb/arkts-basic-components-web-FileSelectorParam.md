@@ -140,15 +140,15 @@ getDescriptions(): Array\<string\>
 
 isAcceptAllOptionExcluded(): boolean
 
-获取文件选择器是否包含选项（\*\/\*），即所有文件。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。<br>当返回false时，开发者需要在文件类型选择器中添加“所有文件”选项；返回true时则不需要。
+获取文件选择器是否包含选项（\*\/\*），即所有文件。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`excludeAcceptAllOption`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **返回值：**
 
-| 类型      | 说明           |
-| ------- | ------------ |
-| boolean | 返回是否排除“所有文件”选项。<br>true表示排除（不包含“所有文件”选项），false表示不排除（包含“所有文件”选项）。 |
+| 类型      | 说明                                                               |
+| ------- |------------------------------------------------------------------|
+| boolean | 返回是否排除“所有文件”选项。<br>true表示排除（不包含“所有文件”选项）。false表示不排除，开发者需要在文件类型选择器中添加“所有文件”选项。 |
 
 ## getAcceptableFileTypes<sup>23+</sup>
 
