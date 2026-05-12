@@ -1719,7 +1719,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
-请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会弹出用户授权弹框，建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
+请求用户授权是否能在后台长时间运行，使用callback异步回调。接口调用成功会弹出用户授权横幅通知，但重复请求授权会直接回调上次授权结果，不弹窗横幅通知，建议应用在前台时调用该接口，提示用户进行授权。仅适用于特殊场景类型[MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21)的长时任务。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
