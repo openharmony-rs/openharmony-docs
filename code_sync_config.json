@@ -103,5 +103,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/avimagegenerator.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":81,
+						"name":"set_fdSrc",
+						"start_line":69
+					},
+					{
+						"end_line":94,
+						"name":"fetch_frame",
+						"start_line":84
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/avmetadataextractor.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":90,
+						"name":"set_fdSrc",
+						"start_line":78
+					},
+					{
+						"end_line":264,
+						"name":"set_dataSrc",
+						"start_line":232
+					},
+					{
+						"end_line":110,
+						"name":"fetch_frame",
+						"start_line":101
+					},
+					{
+						"end_line":158,
+						"name":"fetch_frames",
+						"start_line":136
+					}
+				]
+			}
+		]
 	}
 ]
