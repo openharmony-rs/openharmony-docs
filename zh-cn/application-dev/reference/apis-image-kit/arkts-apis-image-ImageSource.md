@@ -1204,9 +1204,9 @@ function UpdateDataFunc(imageSource: image.ImageSource): void {
 
 ## createPicture<sup>13+</sup>
 
-createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
+ArkTS-Dyn: createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 
-createPicture(options?: DecodingOptionsForPicture): Promise\<Picture | undefined>
+ArkTS-Sta: createPicture(options?: DecodingOptionsForPicture): Promise\<Picture | undefined>
 
 通过图片解码参数创建Picture对象。使用Promise异步回调。
 
@@ -1230,8 +1230,8 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture | undefined
 
 | 类型                         | 说明                       |
 | ---------------------------- | -------------------------- |
-| Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture。 |
-| Promise\<[Picture](arkts-apis-image-Picture.md) \| undefined> | Promise对象，返回Picture。 |
+| ArkTS-Dyn: Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture。 |
+| ArkTS-Sta: Promise\<[Picture](arkts-apis-image-Picture.md) \| undefined> | Promise对象，返回Picture。 |
 
 **错误码：**
 
@@ -1987,9 +1987,9 @@ function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
 
 ## createPixelMapUsingAllocator<sup>15+</sup>
 
-createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
+ArkTS-Dyn: createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
 
-createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap | undefined>
+ArkTS-Sta: createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: AllocatorType): Promise\<PixelMap | undefined>
 
 使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
 
@@ -2018,8 +2018,8 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 | 类型                             | 说明                        |
 | -------------------------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)>  | Promise对象，返回PixelMap。 |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
+| ArkTS-Dyn: Promise\<[PixelMap](arkts-apis-image-PixelMap.md)>  | Promise对象，返回PixelMap。 |
+| ArkTS-Sta: Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -2085,9 +2085,9 @@ async function CreatePixelMapUsingAllocatorFunc(imageSource: image.ImageSource):
 
 ## createPixelMapUsingAllocatorSync<sup>15+</sup>
 
-createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
+ArkTS-Dyn: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap
 
-createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap \| undefined
+ArkTS-Sta: createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: AllocatorType): PixelMap | undefined
 
 根据指定的分配器同步创建一个基于图像解码参数的PixelMap对象。接口使用详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
 
@@ -2116,8 +2116,8 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 | 类型                   | 说明                   |
 | ---------------------- | ---------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md)  | 用于同步返回创建结果。 |
-| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
+| ArkTS-Dyn: [PixelMap](arkts-apis-image-PixelMap.md)  | 用于同步返回创建结果。 |
+| ArkTS-Sta: [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 用于同步返回创建结果。 |
 
 **错误码：**
 
