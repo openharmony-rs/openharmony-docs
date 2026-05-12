@@ -13,7 +13,8 @@
 
 - Surface模式。
 
-  编码器通过OHNativeWindow来获取输入数据，可以与其他模块对接（如相机模块）。适用于与相机、屏幕录制等数据源直接对接的编码场景。
+  编码器通过[OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来获取输入数据，可以与其他模块对接（如相机模块）。适用于与相机、屏幕录制等数据源直接对接的编码场景。
+
 - Buffer模式。
 
   编码器通过预分配的共享内存获取输入数据，开发者需将原始视频数据拷贝到预分配的共享内存中。适用于对文件或内存中的原始视频数据进行编码处理的场景。
@@ -24,7 +25,7 @@
 |  数据输入   | 通过OHNativeWindow获取输入帧，数据通常由生产者模块（如相机）直接写入。| 通过OnNeedInputBuffer回调函数获取共享内存buffer信息，调用OH_VideoEncoder_PushInputBuffer送入数据。 |
 |   输入结束  | 必须调用OH_VideoEncoder_NotifyEndOfStream接口通知编码器输入结束。 | 在最后一个输入buffer的flags中设置AVCODEC_BUFFER_FLAGS_EOS标志。|
 
-当前支持的编码格式请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
+当前支持的编码格式请参考AVCodec支持的格式文档中的[视频编码](avcodec-support-formats.md#视频编码)。
 
 具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
@@ -40,10 +41,10 @@
    - 处于Executing状态时，调用OH_VideoEncoder_Stop接口可以使编码器返回到Prepared状态。
 4. 运行状态（Executing）。
    - Prepared状态下，调用OH_VideoEncoder_Start接口进入Executing状态。
-   - Executing 状态具有三个子状态：Running、Flushed和End-of-Stream。
+   - Executing状态具有三个子状态：Running、Flushed和End-of-Stream。
      - Running：调用OH_VideoEncoder_Start接口进入Running子状态。
      - Flushed：调用OH_VideoEncoder_Flush接口进入Flushed子状态。
-     - End-of-Stream：编码器接收到输入buffer的flags为[AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)，或者OH_VideoEncoder_NotifyEndOfStream接口调用时，进入End-of-Stream子状态。在此状态下，编码器不再接受新的输入，但是仍然会继续生成输出，直到输出到达尾帧。
+     - End-of-Stream：编码器接收到输入buffer的flags为[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)中的AVCODEC_BUFFER_FLAGS_EOS，或者调用OH_VideoEncoder_NotifyEndOfStream接口时，进入End-of-Stream子状态。在此状态下，编码器不再接受新的输入，但是仍然会继续生成输出，直到输出到达尾帧。
 5. 错误状态（Error）。
    - 在极少数情况下，编码器异常时进入Error状态。接口会返回错误码或通过OH_AVCodecOnError回调抛出异常。
    - Error状态下，可以调用OH_VideoEncoder_Reset接口返回Initialized状态，或者调用OH_VideoEncoder_Destroy接口进入到最后的Released状态。
@@ -1037,10 +1038,10 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 5. 在Buffer模式下，开发者通过输入回调函数OH_AVCodecOnNeedInputBuffer获取到OH_AVBuffer的指针实例后，必须调用OH_VideoEncoder_PushInputBuffer接口来通知系统该实例已被使用完毕。确保系统能够将该实例里面的数据进行编码。如果开发者通过调用OH_AVBuffer_GetNativeBuffer接口获取到OH_NativeBuffer指针实例，并且该实例的生命周期超过了当前的OH_AVBuffer指针实例，那么开发者需手动拷贝数据，并自行管理新生成的OH_NativeBuffer实例的生命周期，确保其正确使用和释放。
 <!--RP14--><!--RP14End-->
 
-## 视频编码支持以下能力
+## 视频编码支持的能力
 
 |          支持的能力                       |                              使用简述                                            |
 | --------------------------------------- | ---------------------------------------------------------------------------------- |
-| 分层编码、设置LTR帧、参考帧                      | 具体可参考：[时域可分层视频编码](video-encoding-temporal-scalability.md)        |
-| 支持历史帧repeat编码                    | 具体可参考：[OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)、<br> [OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)    |
+| 分层编码、设置LTR帧、参考帧                      | 具体可参考：[时域可分层视频编码](video-encoding-temporal-scalability.md)。       |
+| 支持历史帧repeat编码                    | 具体可参考：native_avcodec_base.h[变量](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)中的OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER和OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT。    |
 <!--RP4--> <!--RP4End-->

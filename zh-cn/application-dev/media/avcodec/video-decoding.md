@@ -13,7 +13,8 @@
 
 - Surface模式。
 
-  解码后的图像帧通过[OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来传递输出数据，可以与其他模块对接（如显示模块[自定义渲染（XComponent）](../../ui/napi-xcomponent-guidelines.md)）。适用于视频播放、实时预览等需要将画面渲染到屏幕的解码场景。
+  解码后的图像帧通过[OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来传递输出数据，可以与其他模块对接（如显示模块[自定义渲染(XComponent)](../../ui/napi-xcomponent-guidelines.md)）。适用于视频播放、实时预览等需要将画面渲染到屏幕的解码场景。
+
 - Buffer模式。
 
   解码后的原始YUV数据通过共享内存输出，开发者可直接访问和处理每一帧图像数据。适用于视频编辑、YUV原始数据保存等需要获取并处理原始数据的解码场景。
@@ -24,7 +25,7 @@
 |    输出处理    | 不送显：调用OH_VideoDecoder_FreeOutputBuffer接口丢弃解码帧。<br>送显：调用OH_VideoDecoder_RenderOutputBuffer接口显示并释放解码帧，或调用OH_VideoDecoder_RenderOutputBufferAtTime接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。| 输出数据处理后，必须调用OH_VideoDecoder_FreeOutputBuffer接口释放数据。|
 |  回调数据  | 在Surface模式下，只能获取到输出回调buffer的数据信息。 | 在Buffer模式下，可以获取到输出回调buffer的共享内存的地址和数据信息。 |
 
-当前支持的解码格式请参考[AVCodec支持的格式](avcodec-support-formats.md#视频解码)。
+当前支持的解码格式请参考AVCodec支持的格式文档中的[视频解码](avcodec-support-formats.md#视频解码)。
 
 具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
@@ -43,7 +44,7 @@
    - Executing状态包含三个子状态：
      - Running：调用OH_VideoDecoder_Start接口进入Running子状态。
      - Flushed：调用OH_VideoDecoder_Flush接口进入Flushed子状态。
-     - End-of-Stream：解码器接收到输入buffer的flag为[AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)时，进入End-of-Stream子状态。在此状态下，解码器不再接受新的输入，但是仍然会继续生成输出，直到输出尾帧。
+     - End-of-Stream：解码器接收到输入buffer的flag为[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)中的AVCODEC_BUFFER_FLAGS_EOS时，进入End-of-Stream子状态。在此状态下，解码器不再接受新的输入，但是仍然会继续生成输出，直到输出尾帧。
 5. 错误状态（Error）。
    - 极少数情况下，解码器异常时进入Error状态，接口会返回错误码或通过OH_AVCodecOnError回调抛出异常。
    - Error状态下，可以调用OH_VideoDecoder_Reset接口返回Initialized状态，或者调用OH_VideoDecoder_Destroy接口进入最后的Released状态。
@@ -60,7 +61,7 @@
 
 参考以下示例代码，完成视频解码的基础流程，包括：创建解码器、设置解码参数、开始、刷新、重置、停止、销毁资源。
 
-**图2** 为视频解码调用关系示意图
+**图2** 视频解码调用关系示意图
 
 - 虚线表示可选。
 
@@ -1217,24 +1218,24 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 ## 注意事项
 
-1. 解码器执行Flush/Reset/Stop操作之后，再次调用OH_VideoDecoder_Start接口重新开始解码时，必须重新向解码器发送SPS/PPS码流参数集。具体示例请参考[Surface模式](#surface模式)“步骤-13：调用OH_VideoDecoder_Flush()”。
-2. Flush，Reset，Stop，Destroy接口需在非回调线程中调用。接口执行时会阻塞等待所有已触发的回调执行完毕，再将执行结果返回给开发者。
+1. 解码器执行Flush/Reset/Stop操作之后，再次调用OH_VideoDecoder_Start接口重新开始解码时，必须重新向解码器发送SPS/PPS码流参数集。具体示例请参考[Surface模式](#surface模式)中的“步骤-13. 调用OH_VideoDecoder_Flush()刷新解码器”。
+2. Flush、Reset、Stop、Destroy接口需在非回调线程中调用。接口执行时会阻塞等待所有已触发的回调执行完毕，再将执行结果返回给开发者。
 3. 由于硬件解码器资源有限，每个解码器在使用完毕后都必须调用OH_VideoDecoder_Destroy接口销毁实例，释放资源。
 4. 视频解码输入码流仅支持AnnexB格式，且同一帧的多个slice需一次送入解码器。
-5. 一旦调用Flush，Reset，Stop接口，会触发系统回收OH_AVBuffer，开发者不可对之前回调函数获取到的OH_AVBuffer继续进行操作。
+5. 一旦调用Flush、Reset、Stop接口，会触发系统回收OH_AVBuffer，开发者不可对之前回调函数获取到的OH_AVBuffer继续进行操作。
 6. DRM解密能力在Surface模式下既支持非安全视频通路，也支持安全视频通路。在Buffer模式下仅支持非安全视频通路。
 7. 在Buffer模式下，开发者通过输出回调函数OH_AVCodecOnNewOutputBuffer获取到OH_AVBuffer后，必须调用OH_VideoDecoder_FreeOutputBuffer接口释放，确保系统能够将后续解码的数据写入到相应的位置。如果开发者通过调用OH_AVBuffer_GetNativeBuffer接口获取OH_NativeBuffer指针实例，并且该实例的生命周期超过了当前的OH_AVBuffer指针实例，那么开发者需手动拷贝数据，并自行管理新生成的OH_NativeBuffer实例的生命周期，确保其正确使用和释放。
 <!--RP6--><!--RP6End-->
 
 <!--RP5--><!--RP5End-->
 
-## 视频解码支持以下能力
+## 视频解码支持的能力
 
 |          支持的能力                       |             使用简述                                                    |
 | --------------------------------------- | ----------------------------------------------------------------------- |
-| 动态分辨率切换         | 仅硬件解码器支持输入码流分辨率发生变化，发生变化后会触发OH_VideoDecoder_RegisterCallback接口设置的回调函数OnStreamChanged()。具体可参考上文中：Surface模式步骤-3或Buffer模式步骤-3。  |
-| 动态切换surface  | 通过调用OH_VideoDecoder_SetSurface可动态切换OHNativeWindow，仅Surface模式支持。具体可参考上文中：Surface模式步骤-6。    |
-| 低时延解码  | 通过调用OH_VideoDecoder_Configure接口配置低时键值，具体可参考上文中：Surface模式的步骤-5或Buffer模式步骤-5。      |
+| 动态分辨率切换         | 仅硬件解码器支持输入码流分辨率发生变化，发生变化后会触发OH_VideoDecoder_RegisterCallback接口设置的回调函数OnStreamChanged()。<br>具体可参考上文中：Surface模式步骤-3或Buffer模式步骤-3。  |
+| 动态切换surface  | 通过调用OH_VideoDecoder_SetSurface可动态切换OHNativeWindow，仅Surface模式支持。<br>具体可参考上文中：Surface模式步骤-6。    |
+| 低时延解码  | 通过调用OH_VideoDecoder_Configure接口配置低时键值，<br>具体可参考上文中：Surface模式的步骤-5或Buffer模式步骤-5。      |
 
 
 
