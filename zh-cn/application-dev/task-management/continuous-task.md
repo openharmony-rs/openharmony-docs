@@ -27,7 +27,7 @@
 | DATA_TRANSFER | 数据传输。 | dataTransfer | 非托管形式的上传、下载，如在浏览器后台上传或下载数据。 |
 | AUDIO_PLAYBACK | 音视频播放。<br> **说明：** 从API version 12开始，支持在原子化服务中使用。 | audioPlayback | 音频、视频在后台播放，音视频投播。 |
 | AUDIO_RECORDING | 录制。 | audioRecording | 录音、录屏退后台。 |
-| LOCATION | 定位导航。 | location | 定位、导航。 |
+| LOCATION | 定位导航。<br/>**说明：** 从API版本26.0.0开始，支持在原子化服务中使用。 | location | 定位、导航。 |
 | BLUETOOTH_INTERACTION | 蓝牙相关业务。 | bluetoothInteraction | 通过蓝牙传输文件时退后台。 |
 | MULTI_DEVICE_CONNECTION | 多设备互联。<br> **说明：** 从API version 12开始，支持在原子化服务中使用。 | multiDeviceConnection | 分布式业务连接、投播。 |
 | <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放）。 | wifiInteraction  | 通过WLAN传输文件时退后台。 |
