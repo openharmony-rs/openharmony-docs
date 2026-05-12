@@ -1189,6 +1189,11 @@
 						"end_line":197,
 						"name":"module_abilities_metadata",
 						"start_line":22
+					},
+					{
+						"end_line":202,
+						"name":"module_skillProfiles",
+						"start_line":24
 					}
 				]
 			},
