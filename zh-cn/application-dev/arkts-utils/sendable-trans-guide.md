@@ -12,7 +12,7 @@
 
 - 使用**turbotransJSON**将JSON字符串反序列化为对象，并转换为Sendable对象在并发实例间传递，适用于将普通对象或JSON字符串转换为Sendable对象，详细可参考[使用turbotransJSON序列化/反序列化并生成Sendable对象](#使用turbotransjson序列化反序列化并生成sendable对象)。
 - 使用**turbotransProtobuf**通过.proto生成@Sendable的消息类，并进行编码/解码，详细可参考[使用turbotransProtobuf生成Sendable对象并编解码](#使用turbotransprotobuf生成sendable对象并编解码)。
-- 使用turbotransJSON或turbotransProtobuf转换生成Sendable对象后，如果还需要绑定UI进行组件刷新的话，可以阅读[使用makeObserved将Sendable对象转换成可观察对象](#使用makeobserved将sendable对象转换成可观察对象)章节。
+- 使用turbotransJSON或turbotransProtobuf转换生成Sendable对象后，如果还需要绑定UI进行组件刷新的话，可以阅读[使用makeObserved将Sendable对象转换为可观察对象](#使用makeobserved将sendable对象转换为可观察对象)章节。
 
 ## 使用TurboTrans三方库操作Sendable对象
 
@@ -20,7 +20,7 @@
 
 1. 环境配置
 
-   引入TurboTransJSONPlugin和TurboTransJSON三方库
+   引入TurboTransJSONPlugin和TurboTransJSON三方库。
 
    <!-- @[transferableObject_jsonPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigor/hvigor-config.json5) -->
    
@@ -65,7 +65,7 @@
 
 2. 定义可序列化模型。
    
-   通过@Serializable装饰器标记需序列化的类，添加generateSendable: true属性，并利用@SerialName(覆盖属性的名称)完成属性的定制化配置，其中：
+   通过@Serializable装饰器标记需序列化的类，添加generateSendable: true属性，并利用`@SerialName()`完成属性的定制化配置，其中：
    
    - `@Serializable({ generateSendable: true })`：表示需要生成与该模型对应的Sendable类型与转换方法。
    - `@SerialName({ name: 'xxx' })`：将类属性与JSON字段名绑定。
@@ -160,7 +160,7 @@
    export class SendableLayout implements lang.ISendable {
      public type: string = '';
      public arr: collections.Array<number> = new collections.Array();
-   
+
      toOrigin(): Layout {
        const origin = new Layout();
        origin.type = this.type;
@@ -196,7 +196,7 @@
    插件生效还需要在工程根目录的hvigorfile.ts文件中添加相关插件配置。
 
    ```ts
-   import { turboTransJsonPlugin } from '@hadss/turbo-trans-json-plugin';
+   import { turboTransProtobufPlugin } from '@hadss/turbo-trans-protobuf-plugin';
    import { hvigor } from '@ohos/hvigor';
    import { appTasks } from '@ohos/hvigor-ohos-plugin';
    
@@ -303,9 +303,9 @@
    }
    ```
 
-## 使用makeObserved将Sendable对象转换成可观察对象
+## 使用makeObserved将Sendable对象转换为可观察对象
 
-使用[UIUtils.makeObserved()](../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)方法可以将Sendable对象转换成可观察对象。
+使用[UIUtils.makeObserved()](../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)方法可以将Sendable对象转换为可观察对象。
 
 - 使用`taskpool.execute()`获取并发任务返回的Sendable对象，再通过`UIUtils.makeObserved()`转为可观察对象。
 - 当可观察对象的属性发生变化时，绑定的UI组件会自动刷新显示。
