@@ -2196,7 +2196,6 @@ struct TextExample5 {
   }
 }
 ```
-![](figures/setTextSelection.gif)
 
 ### Example 6: Setting Text Adaptation and Font Scale Factor Limits
 
