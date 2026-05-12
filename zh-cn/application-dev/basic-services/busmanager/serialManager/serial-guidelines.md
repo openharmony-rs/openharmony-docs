@@ -209,7 +209,7 @@
        return;
      }
      const data = new Uint8Array([0x48, 0x65, 0x6C, 0x6C, 0x6F]);
-     const writeLen = await this.port.write(data);
+     const writeLen = await this.port!.write(data);
      console.info(`${TAG} write success, length: ${writeLen}`);
    } catch (err) {
      const e = err as BusinessError;
