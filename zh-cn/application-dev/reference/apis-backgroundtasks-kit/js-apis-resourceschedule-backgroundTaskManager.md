@@ -1865,7 +1865,7 @@ export default class EntryAbility extends UIAbility {
 | SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通文本通知。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。                   |
 | SUBMODE_LIVE_VIEW_NOTIFICATION  | 3    | 实况窗通知。            |
 | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。             |
-| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入[AVSession](../../media/avsession/avsession-overview.md)的音视频播放场景，通知类型为普通文本类型。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。             |
+| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入[AVSession](../../media/avsession/avsession-overview.md)的音视频播放场景，不发送通知。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。             |
 | SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 6    | 录音，通知类型为普通文本通知。            |
 | SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 7    | 录屏，通知类型为普通文本通知。            |
 | SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话，通知类型为普通文本通知。            |
