@@ -36,6 +36,7 @@
 (1) 打开应用工程级编译构建文件: entry > src/main/module.json5
 
 ([OpenHarmony工程管理介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V3/ohos-project-overview-0000001218440650-V3))
+
 module.json5部分参数示例如下:
 ``` json5
 {
