@@ -170,7 +170,7 @@ Web组件扩展了viewport meta标签，新增了max-fling-speed-x和max-fling-s
 >
 > max-fling-speed-x表示限制横向的抛滑速度，max-fling-speed-y表示限制纵向的抛滑速度，单位为vp/s。
 
-以下是HTML片段示例
+以下是HTML片段示例：
 ```html
   <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-y=4500">
 ```
@@ -180,5 +180,5 @@ Web组件扩展了viewport meta标签，新增了max-fling-speed-x和max-fling-s
 ```
 
 ```html
-  <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-y=4500,  max-fling-speed-x=4500">
+  <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-y=4500, max-fling-speed-x=4500">
 ```
