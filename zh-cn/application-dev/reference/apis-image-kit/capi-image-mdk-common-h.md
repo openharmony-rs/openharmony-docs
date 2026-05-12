@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -38,7 +38,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | 可能被使用的接口返回值的枚举。 |
+| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | 被使用的接口返回值的枚举。 |
 
 ## 枚举类型说明
 
@@ -50,7 +50,7 @@ enum IRNdkErrCode
 
 **描述**
 
-可能被使用的接口返回值的枚举。
+被使用的接口返回值的枚举。
 
 **起始版本：** 10
 

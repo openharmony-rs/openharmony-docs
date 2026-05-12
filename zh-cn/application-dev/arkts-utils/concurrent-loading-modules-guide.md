@@ -1,8 +1,8 @@
 # 业务模块并发加载场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -24,6 +24,7 @@
      public history?: collections.Array<collections.Array<string>>;
      public totalCount: number = 0;
    
+     // 初始化
      static init(): Calculator {
        let calc = new Calculator();
        calc.totalCount = 0;
@@ -31,40 +32,47 @@
        return calc;
      }
    
+     // 加法运算
      add(a: number, b: number) {
        let result = a + b;
        this.newCalc(`${a} + ${b}`, `${result}`);
        return result;
      }
    
+     // 减法运算
      sub(a: number, b: number) {
        let result = a - b;
        this.newCalc(`${a} - ${b}`, `${result}`);
        return result;
      }
    
+     // 乘法运算
      mul(a: number, b: number) {
        let result = a * b;
        this.newCalc(`${a} * ${b}`, `${result}`);
        return result;
      }
    
+     // 除法运算
      div(a: number, b: number) {
        let result = a / b;
        this.newCalc(`${a} / ${b}`, `${result}`);
        return result;
      }
    
+     // 获取历史记录
      getHistory(): collections.Array<collections.Array<string>> {
        return this.history!;
      }
    
+     // 打印历史记录
      showHistory() {
        for (let i = 0; i < this.totalCount; i++) {
          console.info(`${i}: ${this.history![i][0]} = ${this.history![i][1]}`);
        }
      }
    
+     // 添加新计算记录
      private newCalc(opt: string, ret: string) {
        let newRecord = new collections.Array<string>(opt, ret);
        this.totalCount = this.history!.unshift(newRecord);
@@ -79,12 +87,15 @@
    ``` TypeScript
    @Sendable
    export class TimerSdk {
+   
+     // 初始化
      static init(): TimerSdk {
        let timer = new TimerSdk();
        return timer;
      }
    
-     async Countdown(time: number) {
+     // 倒计时
+     async countdown(time: number) {
        return new Promise((resolve: (value: boolean) => void) => {
          setTimeout(() => {
            resolve(true);
@@ -103,11 +114,13 @@
    import { TimerSdk } from '../sdk/TimerSdk';
    import { taskpool } from '@kit.ArkTS';
    
+   // 初始化Calculator
    @Concurrent
    function initCalculator(): Calculator {
      return Calculator.init();
    }
    
+   // 初始化TimerSdk
    @Concurrent
    function initTimerSdk(): TimerSdk {
      return TimerSdk.init();
@@ -169,7 +182,7 @@
              })
              .onClick(async () => {
                console.info(`Timer start`);
-               await this.timer?.Countdown(1000);
+               await this.timer?.countdown(1000);
                console.info(`Timer end`);
                this.countdown = 'success';
              })

@@ -42,7 +42,7 @@ ArkTS-Sta: type WindowAnimationCurveParam = Array&lt;double&gt;
 
 动画曲线参数。不同曲线类型[WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)，对应的WindowAnimationCurveParam参数含义不同。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -114,7 +114,9 @@ type RotationChangeCallback<T, U> = (info: T) => U
 
 ## WindowEventListener<sup>24+</sup>
 
-type WindowEventListener = (windowId: number, event: window.WindowEventType) => void
+ArkTS-Dyn: type WindowEventListener = (windowId: number, event: window.WindowEventType) => void
+
+ArkTS-Sta: type WindowEventListener = (windowId: int, event: window.WindowEventType) => void
 
 窗口生命周期事件通知的回调函数。
 
@@ -122,9 +124,13 @@ type WindowEventListener = (windowId: number, event: window.WindowEventType) => 
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | ------------------ |
-| windowId | number  | 是  | 触发生命周期变更的窗口ID。|
+| windowId | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 是  | 触发生命周期变更的窗口ID。|
 | event | window.[WindowEventType](arkts-apis-window-e.md#windoweventtype10)  | 是 | 窗口生命周期回调的事件类型。|

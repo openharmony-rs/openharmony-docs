@@ -1,7 +1,7 @@
 # Hid_RawDevInfo
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -27,5 +27,5 @@ Defines the raw device information.
 | Name| Description|
 | -- | -- |
 | uint32_t busType | Bus type.|
-| uint16_t vendor | Provider ID.|
+| uint16_t vendor | Vendor ID.|
 | uint16_t product | Product ID.|

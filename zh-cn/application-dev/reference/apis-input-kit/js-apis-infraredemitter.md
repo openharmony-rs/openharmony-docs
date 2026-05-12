@@ -11,6 +11,8 @@
 
 > **说明**：
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 
@@ -22,7 +24,9 @@ import { infraredEmitter } from '@kit.InputKit';
 
 ## infraredEmitter.transmitInfrared
 
-transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
+ArkTS-Dyn: transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
+
+ArkTS-Sta: transmitInfrared(infraredFrequency: long, pattern: Array&lt;long&gt;): void
 
 产生特定频率和特定电平大小的红外信号。
 
@@ -30,12 +34,16 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
-| infraredFrequency | number             | 是    | 红外频率，单位：Hz。 |
-| pattern | Array&lt;number&gt; | 是    | 红外电平信号，单位：μs。电平信号的数量取值范围为[0,1024]，取值为0时，接口调用不生效。电平信号的取值需大于0。<br/>比如[100,200,300,400]该电平信号数组，其中100us为高电平信号、200us为低电平信号、300us为高电平信号、400us为低电平信号。 |
+| infraredFrequency | ArkTS-Dyn: number<br/>ArkTS-Sta: long             | 是    | 红外频率，单位：Hz。 |
+| pattern | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;long&gt;| 是    | 红外电平信号，单位：μs。电平信号的数量取值范围为[0,1024]，取值为0时，接口调用不生效。电平信号的取值需大于0。<br/>比如[100,200,300,400]该电平信号数组，其中100us为高电平信号、200us为低电平信号、300us为高电平信号、400us为低电平信号。 |
 
 **错误码：**
 
@@ -48,6 +56,8 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```js
 import { infraredEmitter } from '@kit.InputKit';
 
@@ -59,9 +69,36 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置红外载波频率及红外电平信号模式
             infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
           } catch (error) {
-            console.error(`transmitInfrared failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置红外载波频率及红外电平信号模式
+            infraredEmitter.transmitInfrared(38000, [100, 200, 300, 400]);
+          } catch (error) {
+            console.error(`Failed to set infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -81,6 +118,10 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **设备行为差异**：该接口在支持红外发射器的Phone和TV设备上返回红外信号的频率范围，在其他不支持红外发射器的设备上返回一组最大和最小频率，且均为0Hz。建议使用[hasIrEmitter](#infraredemitterhasiremitter23)接口查询设备是否支持红外发射器。
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                  | 说明                  |
@@ -97,6 +138,8 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```js
 import { infraredEmitter } from '@kit.InputKit';
 
@@ -109,9 +152,35 @@ struct Index {
         .onClick(() => {
           try {
             let frequencies = infraredEmitter.getInfraredFrequencies();
-            console.info(`frequencies: ${JSON.stringify(frequencies)}`);
+            console.info(`Succeeded in getting infrared frequencies, frequencies: ${JSON.stringify(frequencies)}.`);
           } catch (error) {
-            console.error(`Get infrared frequencies failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let frequencies = infraredEmitter.getInfraredFrequencies();
+            console.info(`Succeeded in getting infrared frequencies, frequencies: ${JSON.stringify(frequencies)}.`);
+          } catch (error) {
+            console.error(`Failed to get infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -125,10 +194,14 @@ struct Index {
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
+
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
-| max    | number  | 否    | 否 | 最大支持频率，单位：Hz。 |
-| min    | number  | 否    | 否 | 最小支持频率，单位：Hz。 |
+| max                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 最大支持频率，单位：Hz。 |
+| min                       | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 否 | 最小支持频率，单位：Hz。 |
 
 ## infraredEmitter.hasIrEmitter<sup>23+</sup>
 
@@ -139,6 +212,10 @@ hasIrEmitter(): Promise&lt;boolean&gt;
 **需要权限**：ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InfraredEmitter
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **返回值**：
 
@@ -157,6 +234,8 @@ hasIrEmitter(): Promise&lt;boolean&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```js
 import { infraredEmitter } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -168,10 +247,36 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
+            // 查询是否有红外发射器
             infraredEmitter.hasIrEmitter().then((result: boolean) => {
-              console.info(`hasIrEmitter: ${JSON.stringify(result)}`);
+              console.info(`Succeeded in querying infrared emitter: ${JSON.stringify(result)}.`);
             }).catch((error: BusinessError)=> {
-              console.error(`hasIrEmitter failed: ${JSON.stringify(error)}`);})
+              console.error(`Failed to query infrared emitter, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);})
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+            // 查询是否有红外发射器
+            infraredEmitter.hasIrEmitter().then((result: boolean) => {
+              console.info(`Succeeded in querying infrared emitter: ${JSON.stringify(result)}.`);
+            }).catch((error: BusinessError)=> {
+              console.error(`Failed to query infrared emitter, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);})
         })
     }
   }

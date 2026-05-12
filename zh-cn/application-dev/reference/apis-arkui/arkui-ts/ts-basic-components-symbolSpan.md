@@ -12,6 +12,8 @@
 >
 > - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件支持继承父组件Text的属性，即如果子组件未设置属性且父组件设置属性，则继承父组件设置的全部属性。
 >
 > - SymbolSpan拖拽不会置灰显示。
@@ -30,6 +32,10 @@ SymbolSpan(value: Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -46,7 +52,9 @@ SymbolSpan(value: Resource)
 
 ### fontColor
 
-fontColor(value: Array&lt;ResourceColor&gt;)
+ArkTS-Dyn: fontColor(value: Array&lt;ResourceColor&gt;)
+
+ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
 设置SymbolSpan组件颜色。
 
@@ -60,15 +68,21 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | SymbolSpan组件颜色。<br/> 默认值：不同渲染策略下默认值不同。 |
+| value  | ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\><br/>ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | SymbolSpan组件颜色。<br/> 默认值：不同渲染策略下默认值不同。<br/>取值为undefined时，按默认值处理。 |
 
 ### fontSize
 
-fontSize(value: number | string | Resource)
+ArkTS-Dyn: fontSize(value: number | string | Resource)
+
+ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 设置SymbolSpan组件大小。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
@@ -82,15 +96,21 @@ fontSize(value: number | string | Resource)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                          |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | SymbolSpan组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md) |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolSpan组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md) <br/>取值为undefined时，按默认值处理。|
 
 ### fontWeight
 
-fontWeight(value: number | FontWeight | string)
+ArkTS-Dyn: fontWeight(value: number | FontWeight | string)
+
+ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
 设置SymbolSpan组件粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。
 
@@ -106,15 +126,21 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                               |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string | 是   | SymbolSpan组件粗细。<br/>默认值：FontWeight.Normal |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | SymbolSpan组件粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
 
 ### renderingStrategy
 
-renderingStrategy(value: SymbolRenderingStrategy)
+ArkTS-Dyn: renderingStrategy(value: SymbolRenderingStrategy)
+
+ArkTS-Sta: renderingStrategy(value: SymbolRenderingStrategy | undefined)
 
 设置SymbolSpan渲染策略。
 
@@ -128,11 +154,15 @@ renderingStrategy(value: SymbolRenderingStrategy)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 是   | SymbolSpan渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE |
+| value  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | SymbolSpan渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE<br/>取值为undefined时，按默认值处理。 |
 
 不同渲染策略效果可参考以下示意图。
 
@@ -140,7 +170,9 @@ renderingStrategy(value: SymbolRenderingStrategy)
 
 ### effectStrategy
 
-effectStrategy(value: SymbolEffectStrategy)
+ArkTS-Dyn: effectStrategy(value: SymbolEffectStrategy)
+
+ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
 设置SymbolSpan动效策略。
 
@@ -154,15 +186,21 @@ effectStrategy(value: SymbolEffectStrategy)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                       |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明) | 是   | SymbolSpan动效策略。<br/>默认值：SymbolEffectStrategy.NONE |
+| value  | ArkTS-Dyn: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](ts-basic-components-symbolGlyph.md#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolSpan动效策略。<br/>默认值：SymbolEffectStrategy.NONE<br/>取值为undefined时，按默认值处理。 |
 
 ### attributeModifier<sup>12+</sup>
 
-attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute>)
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute> | undefined)
 
 设置组件的动态属性。
 
@@ -170,11 +208,53 @@ attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute> | 是   | 动态设置组件的属性。 |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute> \| undefined | 是   | 动态设置组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
+### key<sup>23+</sup>
+
+key(value: string | undefined)
+
+组件的唯一标识，唯一性由使用者保证。
+
+此接口仅用于对应用的测试。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置[id](#id23)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
+
+### id<sup>23+</sup>
+
+id(value: string | undefined)
+
+组件的唯一标识，唯一性由使用者保证。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
 
 ## 事件
 

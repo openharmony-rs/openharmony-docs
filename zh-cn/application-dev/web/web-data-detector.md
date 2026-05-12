@@ -24,6 +24,7 @@ Web组件内的H5页面加载完成后，自动识别并高亮标注页面内的
 
 页面中文本实体高亮后，将转变为超链接形式。触摸点击或鼠标左键点击实体，会根据实体类型弹出操作菜单。
 
+ArkTS-Dyn示例：
 <!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
 
 ``` TypeScript
@@ -40,6 +41,44 @@ struct Index {
       Row() {
         Button('Refresh')
           .onClick(() => {
+            this.webController.refresh();
+          })
+      }
+
+      Web({
+        src: $rawfile('index.html'),
+        controller: this.webController
+      })
+        .enableDataDetector(true)
+        .dataDetectorConfig({
+          types: []  // 实体识别类型，为空则识别所有类型
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
+
+``` TypeScript
+import { Entry, Row, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { webview } from '@kit.ArkWeb'
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  webController: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Row() {
+        Button('Refresh')
+          .onClick((_: ClickEvent) => {
             this.webController.refresh();
           })
       }
@@ -93,10 +132,26 @@ struct Index {
 ## 分词长按预览
 使用分词长按预览功能时，需要额外配置[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)：
 
+ArkTS-Dyn示例：
 <!--code_no_check-->
 <!-- @[web_DataDetector_LongPress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorLongPress.ets) -->
 
 ``` TypeScript
+Web({
+src: $rawfile('index.html'),
+controller: this.webController
+})
+.enableDataDetector(true)
+.dataDetectorConfig({
+  enablePreviewMenu: true,  // 配置分词长按预览功能
+  types: []
+})
+```
+
+ArkTS-Sta示例：
+<!--code_no_check-->
+<!-- @[web_DataDetector_LongPress](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorLongPress.ets) -->
+```TypeScript
 Web({
 src: $rawfile('index.html'),
 controller: this.webController

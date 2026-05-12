@@ -29,7 +29,7 @@
 
 表示焦点模型的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -69,7 +69,7 @@
 
 表示设备角色的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -86,25 +86,25 @@
 
 | 名称                 | 值     | 说明                                                      |
 | ---------------------| ------ | --------------------------------------------------------- |
-| INVALID              | 0      | 无效设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| EARPIECE             | 1      | 听筒。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SPEAKER              | 2      | 扬声器。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| WIRED_HEADSET        | 3      | 有线耳机，带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| WIRED_HEADPHONES     | 4      | 有线耳机，不带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| BLUETOOTH_SCO        | 7      | 蓝牙设备SCO（Synchronous Connection Oriented）连接。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| BLUETOOTH_A2DP       | 8      | 蓝牙设备A2DP（Advanced Audio Distribution Profile）连接。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| MIC                  | 15     | 麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| USB_HEADSET          | 22     | USB耳机，带麦克风。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| DISPLAY_PORT<sup>12+</sup>        | 23     | DisplayPort（显示接口，简称DP），用于外接扩展设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REMOTE_CAST<sup>12+</sup>        | 24     | 音频被系统应用投送到其他的远程设备。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| INVALID              | 0      | 无效设备。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| EARPIECE             | 1      | 听筒。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SPEAKER              | 2      | 扬声器。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| WIRED_HEADSET        | 3      | 有线耳机，带麦克风。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| WIRED_HEADPHONES     | 4      | 有线耳机，不带麦克风。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| BLUETOOTH_SCO        | 7      | 蓝牙设备SCO（Synchronous Connection Oriented）连接。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| BLUETOOTH_A2DP       | 8      | 蓝牙设备A2DP（Advanced Audio Distribution Profile）连接。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| MIC                  | 15     | 麦克风。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| USB_HEADSET          | 22     | USB耳机，带麦克风。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| DISPLAY_PORT<sup>12+</sup>        | 23     | DisplayPort（显示接口，简称DP），用于外接扩展设备。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REMOTE_CAST<sup>12+</sup>        | 24     | 音频被系统应用投送到其他的远程设备。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | USB_DEVICE<sup>18+</sup>        | 25 | USB设备（不包含USB耳机）。           |
 | HDMI<sup>19+</sup>        | 27 | HDMI设备（例如HDMI、ARC、eARC等）。           |
 | LINE_DIGITAL<sup>19+</sup>        | 28 | 有线数字设备（例如S/PDIF等）。           |
-| REMOTE_DAUDIO<sup>18+</sup>        | 29 | 分布式设备。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| REMOTE_DAUDIO<sup>18+</sup>        | 29 | 分布式设备。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | HEARING_AID<sup>20+</sup>        | 30 | 助听器设备。 |
 | NEARLINK<sup>20+</sup>        | 31 | 星闪设备。 |
 | SYSTEM_PRIVATE<sup>22+</sup> | 200 | 系统私有设备（由于该设备在系统中属于私有设备，因此应用程序可以忽略该设备）。 |
-| DEFAULT<sup>9+</sup> | 1000   | 默认设备类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| DEFAULT<sup>9+</sup> | 1000   | 默认设备类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## BluetoothAndNearlinkPreferredRecordCategory<sup>21+</sup>
 
@@ -223,7 +223,7 @@
 
 表示音频编码类型的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -312,22 +312,22 @@
 
 | 名称                                      |  值    | 说明                                                                             |
 | ------------------------------------------| ------ |--------------------------------------------------------------------------------|
-| STREAM_USAGE_UNKNOWN                      | 0      | 未知类型。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_UNKNOWN                      | 0      | 未知类型。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | STREAM_USAGE_MEDIA<sup>(deprecated)</sup> | 1      | 媒体。<br/> 从API version 7开始支持，从API version 10开始废弃，建议使用该枚举中的STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME或STREAM_USAGE_AUDIOBOOK替代。 |
-| STREAM_USAGE_MUSIC<sup>10+</sup>          | 1      | 音乐。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP语音通话（该流类型起播时，会触发开启3A算法）。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| STREAM_USAGE_VOICE_ASSISTANT<sup>9+</sup> | 3      | 语音播报。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_ALARM<sup>10+</sup>          | 4      | 闹钟。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_VOICE_MESSAGE<sup>10+</sup>  | 5      | 语音消息。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_MUSIC<sup>10+</sup>          | 1      | 音乐。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_VOICE_COMMUNICATION          | 2      | VoIP语音通话（该流类型起播时，会触发开启3A算法）。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| STREAM_USAGE_VOICE_ASSISTANT<sup>9+</sup> | 3      | 语音播报。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_ALARM<sup>10+</sup>          | 4      | 闹钟。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_VOICE_MESSAGE<sup>10+</sup>  | 5      | 语音消息。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | STREAM_USAGE_NOTIFICATION_RINGTONE<sup>(deprecated)</sup> | 6      | 通知铃声。<br/> 从API version 7开始支持，从API version 10开始废弃，建议使用该枚举中的STREAM_USAGE_RINGTONE替代。 |
-| STREAM_USAGE_RINGTONE<sup>10+</sup>       | 6      | 铃声。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_NOTIFICATION<sup>10+</sup>   | 7      | 通知音。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_ACCESSIBILITY<sup>10+</sup>  | 8      | 无障碍。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_MOVIE<sup>10+</sup>          | 10     | 电影或视频。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_GAME<sup>10+</sup>           | 11     | 游戏。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_AUDIOBOOK<sup>10+</sup>      | 12     | 有声读物（包括听书、相声、评书）、听新闻、播客等。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_NAVIGATION<sup>10+</sup>     | 13     | 导航。   <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| STREAM_USAGE_VIDEO_COMMUNICATION<sup>12+</sup>     | 17     | VoIP视频通话（该流类型起播时，会触发开启3A算法）。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_RINGTONE<sup>10+</sup>       | 6      | 铃声。    <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_NOTIFICATION<sup>10+</sup>   | 7      | 通知音。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_ACCESSIBILITY<sup>10+</sup>  | 8      | 无障碍。    <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_MOVIE<sup>10+</sup>          | 10     | 电影或视频。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_GAME<sup>10+</sup>           | 11     | 游戏。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_AUDIOBOOK<sup>10+</sup>      | 12     | 有声读物（包括听书、相声、评书）、听新闻、播客等。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_NAVIGATION<sup>10+</sup>     | 13     | 导航。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| STREAM_USAGE_VIDEO_COMMUNICATION<sup>12+</sup>     | 17     | VoIP视频通话（该流类型起播时，会触发开启3A算法）。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## AudioState<sup>8+</sup>
 
@@ -349,7 +349,7 @@
 
 表示音效模式的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -374,7 +374,7 @@
 
 表示中断类型的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -391,7 +391,7 @@
 
 此类型表示音频打断是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](#interrupthint)获取。关于音频打断策略的详细说明可参考文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -414,12 +414,12 @@
 
 | 名称                               |  值     | 说明                                         |
 | ---------------------------------- | ------ | -------------------------------------------- |
-| INTERRUPT_HINT_NONE<sup>8+</sup>   | 0      | 无提示。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| INTERRUPT_HINT_RESUME              | 1      | 提示音频恢复，应用可主动触发开始渲染或开始采集的相关操作。<br>此操作无法由系统强制执行，其对应的[InterruptForceType](#interruptforcetype9)一定为INTERRUPT_SHARE类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| INTERRUPT_HINT_PAUSE               | 2      | 提示音频暂停，暂时失去音频焦点。<br>待焦点可用时，会收到INTERRUPT_HINT_RESUME事件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| INTERRUPT_HINT_STOP                | 3      | 提示音频停止，彻底失去音频焦点。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| INTERRUPT_HINT_DUCK                | 4      | 提示音频躲避开始，降低音量播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| INTERRUPT_HINT_UNDUCK<sup>8+</sup> | 5      | 提示音频躲避结束，恢复音量播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| INTERRUPT_HINT_NONE<sup>8+</sup>   | 0      | 无提示。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| INTERRUPT_HINT_RESUME              | 1      | 提示音频恢复，应用可主动触发开始渲染或开始采集的相关操作。<br>此操作无法由系统强制执行，其对应的[InterruptForceType](#interruptforcetype9)一定为INTERRUPT_SHARE类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| INTERRUPT_HINT_PAUSE               | 2      | 提示音频暂停，暂时失去音频焦点。<br>待焦点可用时，会收到INTERRUPT_HINT_RESUME事件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| INTERRUPT_HINT_STOP                | 3      | 提示音频停止，彻底失去音频焦点。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| INTERRUPT_HINT_DUCK                | 4      | 提示音频躲避开始，降低音量播放。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| INTERRUPT_HINT_UNDUCK<sup>8+</sup> | 5      | 提示音频躲避结束，恢复音量播放。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | INTERRUPT_HINT_MUTE<sup>20+</sup> | 6      | 提示音频静音。 |
 | INTERRUPT_HINT_UNMUTE<sup>20+</sup> | 7      | 提示音频解除静音。            |
 
@@ -467,10 +467,10 @@
 
 | 名称                                        |  值     | 说明              |
 |:------------------------------------------| :----- |:----------------|
-| REASON_UNKNOWN | 0 | 未知原因。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REASON_NEW_DEVICE_AVAILABLE | 1 | 新设备可用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REASON_OLD_DEVICE_UNAVAILABLE | 2 | 旧设备不可用。报告此原因时，应考虑暂停音频播放。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REASON_OVERRODE | 3 | 强选。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REASON_UNKNOWN | 0 | 未知原因。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REASON_NEW_DEVICE_AVAILABLE | 1 | 新设备可用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REASON_OLD_DEVICE_UNAVAILABLE | 2 | 旧设备不可用。报告此原因时，应考虑暂停音频播放。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REASON_OVERRODE | 3 | 强选。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REASON_SESSION_ACTIVATED<sup>20+</sup> | 4 | 音频会话已激活。 |
 | REASON_STREAM_PRIORITY_CHANGED<sup>20+</sup> | 5 | 更高优先级的音频流出现导致的系统设备切换。 |
 
@@ -541,6 +541,8 @@
 ## AudioConcurrencyMode<sup>12+</sup>
 
 表示音频并发模式的枚举。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -649,7 +651,7 @@
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[InterruptType](#interrupttype)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 

@@ -1,4 +1,4 @@
-# 融合效果（系统接口）
+# 融合效果 (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
@@ -47,6 +47,10 @@ useUnionEffect(value: boolean | undefined, options?: GravityCenterOptions): T
 表示是否使用祖先组件[UnionEffectContainer](ts-container-unioneffectcomponent-sys.md)的融合效果，是否作为UnionEffectContainer做形状融合的一部分。
 
 不设置该属性时，默认不使用祖先组件UnionEffectContainer的融合效果。
+
+> **说明：**
+>
+> 多次调用该接口传入[GravityCenterOptions](#gravitycenteroptions)参数时，仅最后一次设置的引力中心参数生效。
 
 **起始版本：** 26.0.0
 

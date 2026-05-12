@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  Column未设置高度或宽度时，在主轴或交叉轴方向上自适应子组件大小。
+>  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - Column未设置高度或宽度时，在主轴或交叉轴方向上自适应子组件大小。
 
 
 ## 子组件
@@ -23,6 +25,7 @@
 ## 接口
 
 ### Column
+
 Column(options?: ColumnOptions)
 
 创建垂直方向线性布局容器，可以设置子组件的间距。
@@ -37,6 +40,10 @@ Column(options?: ColumnOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -44,7 +51,10 @@ Column(options?: ColumnOptions)
 | options<sup>18+</sup> | [ColumnOptions](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。 |
 
 ### Column<sup>18+</sup>
-Column(options?: ColumnOptions | ColumnOptionsV2)
+
+ArkTS-Dyn: Column(options?: ColumnOptions | ColumnOptionsV2)
+
+ArkTS-Sta: Column(options?: ColumnOptions | ColumnOptions | ColumnOptionsV2)
 
 创建垂直方向线性布局容器，可以设置子组件的间距。
 
@@ -54,11 +64,15 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
+| options | ArkTS-Dyn: [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明)<br>ArkTS-Sta: [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
 
 ## ColumnOptions<sup>18+</sup>对象说明
 
@@ -74,6 +88,10 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | space<sup>7+</sup> | string&nbsp;\|&nbsp;number | 否 | 是 | 纵向布局元素垂直方向间距。<br/>space为负数或者[justifyContent](ts-container-column.md#justifycontent8)设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，space不生效。<br/>默认值：0 <br />非法值：按默认值处理。<br/>单位：vp<br/>**说明：**<br/>space取值是大于等于0的数字，或者可以转换为数字的字符串。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -88,13 +106,19 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | space | [SpaceType](#spacetype18) | 否 | 是 | 纵向布局元素垂直方向间距。<br/>space为负数或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时，space不生效。<br/>默认值：0 <br />单位：vp <br />非法值：按默认值处理。<br/>**说明：** <br/>space取值是大于等于0的数字，或者可以转换为数字的字符串，或者可以转换为数字的Resource类型数据。 |
 
 ## SpaceType<sup>18+</sup>
 
-type SpaceType = string | number | Resource
+ArkTS-Dyn: type SpaceType = string | number | Resource
+
+ArkTS-Sta: type SpaceType = string | double | Resource
 
 Column组件构造函数中space支持的数据类型，取值类型为下表类型中的并集。
 
@@ -104,9 +128,13 @@ Column组件构造函数中space支持的数据类型，取值类型为下表类
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 |类型|说明|
 |---|---|
-|number|表示类型为数字，可取任意值。|
+|ArkTS-Dyn: number<br/>ArkTS-Sta: double|表示类型为数字，可取任意值。|
 |string|表示值类型为字符串，可取任意值。|
 |[Resource](ts-types.md#resource)|表示值为资源引用类型，取值为从系统资源或者应用资源中引入的数据值。|
 
@@ -117,7 +145,9 @@ Column组件构造函数中space支持的数据类型，取值类型为下表类
 
 ### alignItems
 
-alignItems(value: HorizontalAlign)
+ArkTS-Dyn: alignItems(value: HorizontalAlign)
+
+ArkTS-Sta: alignItems(value: HorizontalAlign | undefined)
 
 设置子组件在水平方向上的对齐格式。
 
@@ -127,15 +157,21 @@ alignItems(value: HorizontalAlign)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [HorizontalAlign](ts-appendix-enums.md#horizontalalign) | 是   | 子组件在水平方向上的对齐格式。<br/>默认值：HorizontalAlign.Center |
+| value  | ArkTS-Dyn: [HorizontalAlign](ts-appendix-enums.md#horizontalalign)<br/>ArkTS-Sta: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) \| undefined | 是   | 子组件在水平方向上的对齐格式。<br/>默认值：HorizontalAlign.Center<br/>取值为undefined时，按默认值处理。 |
 
 ### justifyContent<sup>8+</sup>
 
-justifyContent(value: FlexAlign)
+ArkTS-Dyn: justifyContent(value: FlexAlign)
+
+ArkTS-Sta: justifyContent(value: FlexAlign | undefined)
 
 设置子组件在垂直方向上的对齐格式。
 
@@ -145,11 +181,15 @@ justifyContent(value: FlexAlign)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| value  | [FlexAlign](ts-appendix-enums.md#flexalign) | 是   | 子组件在垂直方向上的对齐格式。<br/>默认值：FlexAlign.Start |
+| value  | ArkTS-Dyn: [FlexAlign](ts-appendix-enums.md#flexalign)<br/>ArkTS-Sta: [FlexAlign](ts-appendix-enums.md#flexalign) \| undefined | 是   | 子组件在垂直方向上的对齐格式。<br/>默认值：FlexAlign.Start<br/>取值为undefined时，按默认值处理。 |
 
 >  **说明：**
 >
@@ -157,7 +197,9 @@ justifyContent(value: FlexAlign)
 
 ### reverse<sup>12+</sup>
 
-reverse(isReversed: Optional\<boolean\>)
+ArkTS-Dyn: reverse(isReversed: Optional\<boolean\>)
+
+ArkTS-Sta: reverse(isReversed: boolean | undefined)
 
 设置子组件在垂直方向上的排列是否反转。
 
@@ -167,15 +209,41 @@ reverse(isReversed: Optional\<boolean\>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | 是   | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。 |
+| isReversed  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br/>ArkTS-Sta: boolean \| undefined | 是   | 子组件在垂直方向上的排列是否反转。<br/>默认值：true，设置true表示子组件在垂直方向上反转排列，设置false表示子组件在垂直方向上正序排列。<br/>取值为undefined时，按默认值处理。 |
 
 >  **说明：**
 >
 >  若未设置reverse属性，主轴方向不反转；若设置了reverse属性，且参数值为undefined，则视为默认值true，主轴方向反转。<br/>通用属性direction只能改变Column交叉轴方向，不改变Column主轴方向，因此与reverse属性互不影响。
+
+### attributeModifier<sup>12+</sup>
+
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<ColumnAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ColumnAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Column组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 
@@ -198,6 +266,8 @@ reverse(isReversed: Optional\<boolean\>)
   ]
 }
 ```
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -254,6 +324,67 @@ struct ColumnExample {
         }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
       }.width('100%').padding({ top: 5 })
     }.width('100%').height('100%')
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Column, ColumnOptions, Padding, Margin, HorizontalAlign, FlexAlign, $r } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ColumnExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      // 设置子元素垂直方向间距为5
+      Text('space').width('90%')
+      Column({ space: 5 } as ColumnOptions) {
+        Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('100%').height(30).backgroundColor(0x00FFFF)
+      }.width('90%').height(100).border({ width: 1 })
+
+      // 通过资源引用方式设置子元素垂直方向间距
+      Text('Resource space').width('90%')
+      Column({ space: $r("app.string.stringSpace") } as ColumnOptions) {
+        Column().width('100%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('100%').height(30).backgroundColor(0x00FFFF)
+      }.width('90%').height(100).border({ width: 1 })
+
+      // 设置子元素水平方向对齐方式
+      Text('alignItems(Start)').width('90%')
+      Column() {
+        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+      }.alignItems(HorizontalAlign.Start).width('90%').border({ width: 1 })
+
+      Text('alignItems(End)').width('90%')
+      Column() {
+        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+      }.alignItems(HorizontalAlign.End).width('90%').border({ width: 1 })
+
+      Text('alignItems(Center)').width('90%')
+      Column() {
+        Column().width('50%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('50%').height(30).backgroundColor(0x00FFFF)
+      }.alignItems(HorizontalAlign.Center).width('90%').border({ width: 1 })
+
+      // 设置子元素垂直方向的对齐方式
+      Text('justifyContent(Center)').width('90%')
+      Column() {
+        Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('90%').height(30).backgroundColor(0x00FFFF)
+      }.height(100).border({ width: 1 }).justifyContent(FlexAlign.Center)
+
+      Text('justifyContent(End)').width('90%')
+      Column() {
+        Column().width('90%').height(30).backgroundColor(0xAFEEEE)
+        Column().width('90%').height(30).backgroundColor(0x00FFFF)
+      }.height(100).border({ width: 1 }).justifyContent(FlexAlign.End)
+    }.width('100%').padding({ top: 5 } as Padding)
   }
 }
 ```

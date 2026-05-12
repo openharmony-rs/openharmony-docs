@@ -1,8 +1,8 @@
 # @ohos.fastbuffer (FastBuffer)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -14,9 +14,11 @@ FastBuffer通过from构造时，仅支持FastBuffer、Uint8Array、string、Arra
 
 > **说明：**
 >
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于ArkT-Dyn。
 >
-> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -31,7 +33,7 @@ type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' 
 
 表示支持的编码格式类型。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -55,7 +57,7 @@ alloc(size: number, fill?: string | FastBuffer | number, encoding?: BufferEncodi
 
 创建指定字节长度的FastBuffer对象并初始化。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -93,7 +95,7 @@ allocUninitializedFromPool(size: number): FastBuffer
 
 从缓冲池中创建指定大小未初始化的FastBuffer对象，需要使用[fill](#fill)函数来初始化FastBuffer对象。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -125,7 +127,7 @@ allocUninitialized(size: number): FastBuffer
 
 创建指定大小未初始化的FastBuffer对象，需要使用[fill](#fill)函数来初始化FastBuffer对象。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -157,7 +159,7 @@ byteLength(value: string | FastBuffer | TypedArray | DataView | ArrayBuffer | Sh
 
 根据不同的编码格式，返回指定字符串的字节数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -194,7 +196,7 @@ compare(buf1: FastBuffer | Uint8Array, buf2: FastBuffer | Uint8Array): -1 | 0 | 
 
 返回两个FastBuffer对象的比较结果，通常用于对FastBuffer对象数组进行排序。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -244,7 +246,7 @@ concat(list: FastBuffer[] | Uint8Array[], totalLength?: number): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -287,7 +289,7 @@ from(array: number[]): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -317,7 +319,7 @@ from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?:
 
 创建与`arrayBuffer`共享内存的指定长度的FastBuffer对象。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -363,7 +365,7 @@ from(buffer: FastBuffer | Uint8Array): FastBuffer
 
 当入参为Uint8Array对象时，基于Uint8Array对象的内存创建新的FastBuffer对象并返回，保持数据的内存关联。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -412,7 +414,7 @@ from(value: string, encoding?: BufferEncoding): FastBuffer
 
 根据指定编码格式的字符串，创建新的FastBuffer对象。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -450,7 +452,7 @@ isBuffer(obj: Object): boolean
 
 判断`obj`是否为FastBuffer。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -494,7 +496,7 @@ isEncoding(encoding: string): boolean
 
 判断`encoding`是否为支持的编码格式。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -535,7 +537,7 @@ fastbuffer.transcode支持的编码：'ascii' | 'utf8' | 'utf16le'| 'ucs2' | 'la
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -567,7 +569,7 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -596,7 +598,7 @@ compare(target: FastBuffer | Uint8Array, targetStart?: number, targetEnd?: numbe
 
 比较当前对象this与目标对象target，并返回比较结果。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -647,7 +649,7 @@ copy(target: FastBuffer| Uint8Array, targetStart?: number, sourceStart?: number,
 
 将`this`实例中指定位置的数据复制到`target`的指定位置上，并返回复制的字节总长度。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -698,7 +700,7 @@ entries(): IterableIterator&lt;[number,&nbsp;number]&gt;
 
 返回一个包含key值和value值的迭代器。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -736,7 +738,7 @@ equals(otherBuffer: Uint8Array | FastBuffer): boolean
 
 逐字节比较`this`和otherBuffer是否相等。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -781,7 +783,7 @@ fill(value: string | FastBuffer | Uint8Array | number, offset?: number, end?: nu
 
 使用`value`填充当前对象指定位置的数据，默认为循环填充，并返回填充后的FastBuffer对象。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -830,7 +832,7 @@ includes(value: string | number | FastBuffer | Uint8Array, byteOffset?: number, 
 
 当byteOffset大于等于this.length时，返回false。当byteOffset小于等于-this.length，查找整个FastBuffer中是否存在`value`。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -870,7 +872,7 @@ indexOf(value: string | number | FastBuffer | Uint8Array, byteOffset?: number, e
 
 当byteOffset大于等于this.length时，返回-1。当byteOffset小于等于-this.length，返回整个FastBuffer中首次出现`value`的索引。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -906,7 +908,7 @@ keys(): IterableIterator&lt;number&gt;
 
 返回一个包含key值的迭代器。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -942,7 +944,7 @@ values(): IterableIterator&lt;number&gt;
 
 返回一个包含value的迭代器。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -984,7 +986,7 @@ lastIndexOf(value: string | number | FastBuffer | Uint8Array, byteOffset?: numbe
 
 当byteOffset大于等于this.length时，返回整个FastBuffer中最后一次出现`value`的索引。当byteOffset小于等于-this.length时，返回-1。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1021,7 +1023,7 @@ readBigInt64BE(offset?: number): bigint
 
 从指定的`offset`处读取有符号的大端序64位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1062,7 +1064,7 @@ readBigInt64LE(offset?: number): bigint
 
 从指定的`offset`处读取有符号的小端序64位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1103,7 +1105,7 @@ readBigUInt64BE(offset?: number): bigint
 
 从指定的`offset`处读取无符号的大端序64位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1144,7 +1146,7 @@ readBigUInt64LE(offset?: number): bigint
 
 从指定的`offset`处读取无符号的小端序64位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1185,7 +1187,7 @@ readDoubleBE(offset?: number): number
 
 从指定的`offset`处读取64位大端序双精度值。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1225,7 +1227,7 @@ readDoubleLE(offset?: number): number
 
 从指定的`offset`处读取64位小端序双精度值。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1265,7 +1267,7 @@ readFloatBE(offset?: number): number
 
 从指定的`offset`处读取32位大端序浮点数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1305,7 +1307,7 @@ readFloatLE(offset?: number): number
 
 从指定的`offset`处读取32位小端序浮点数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1345,7 +1347,7 @@ readInt8(offset?: number): number
 
 从指定的`offset`处读取有符号的8位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1387,7 +1389,7 @@ readInt16BE(offset?: number): number
 
 从指定的`offset`处读取有符号的大端序16位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1427,7 +1429,7 @@ readInt16LE(offset?: number): number
 
 从指定的`offset`处读取有符号的小端序16位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1467,7 +1469,7 @@ readInt32BE(offset?: number): number
 
 从指定的`offset`处读取有符号的大端序32位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1507,7 +1509,7 @@ readInt32LE(offset?: number): number
 
 从指定的`offset`处读取有符号的小端序32位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1547,7 +1549,7 @@ readIntBE(offset: number, byteLength: number): number
 
 从指定的`offset`处读取byteLength个字节，并将结果解释为支持最高48位精度的大端序、二进制补码有符号值。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1591,7 +1593,7 @@ readIntLE(offset: number, byteLength: number): number
 
 从指定的`offset`处读取`byteLength`个字节，并将结果解释为支持最高48位精度的小端序、二进制补码有符号值。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1633,7 +1635,7 @@ readUInt8(offset?: number): number
 
 从`offset`处读取8位无符号整型数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1678,7 +1680,7 @@ readUInt16BE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1719,7 +1721,7 @@ readUInt16LE(offset?: number): number
 
 从指定的`offset`处的buf读取无符号的小端序16位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1762,7 +1764,7 @@ readUInt32BE(offset?: number): number
 
 从指定的`offset`处的buf读取无符号的大端序32位整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1805,7 +1807,7 @@ readUInt32LE(offset?: number): number
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1844,7 +1846,7 @@ readUIntBE(offset: number, byteLength: number): number
 
 从指定的`offset`处的buf读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号大端序整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1886,7 +1888,7 @@ readUIntLE(offset: number, byteLength: number): number
 
 从指定的`offset`处的buf读取`byteLength`个字节，并将结果解释为支持最高48位精度的无符号小端序整数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1930,7 +1932,7 @@ subarray(start?: number, end?: number): FastBuffer
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1966,7 +1968,7 @@ swap16(): FastBuffer
 
 将当前对象转换为无符号的16位整数数组，并交换字节顺序。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2004,7 +2006,7 @@ swap32(): FastBuffer
 
 将当前对象转换为无符号的32位整数数组，并交换字节顺序。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2042,7 +2044,7 @@ swap64(): FastBuffer
 
 将当前对象转换为无符号的64位整数数组，并交换字节顺序。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2080,7 +2082,7 @@ toJSON(): Object
 
 将Buffer转为JSON并返回。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2108,7 +2110,7 @@ toString(encoding?: string, start?: number, end?: number): string
 
 将当前对象中指定位置的数据转成指定编码格式的字符串并返回。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2153,7 +2155,7 @@ write(str: string, offset?: number, length?: number, encoding?: string): number
 
 在FastBuffer对象的offset偏移处写入指定编码的字符串，写入的字节长度为length。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2204,7 +2206,7 @@ writeBigInt64BE(value: bigint, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入有符号的大端序64位BigInt型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2247,7 +2249,7 @@ writeBigInt64LE(value: bigint, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入有符号的小端序64位BigInt型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2288,7 +2290,7 @@ console.info("result = " + result);
 
 writeBigUInt64BE(value: bigint, offset?: number): number
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 在FastBuffer对象的offset偏移处写入无符号的大端序64位BigUInt型数据。
 
@@ -2333,7 +2335,7 @@ writeBigUInt64LE(value: bigint, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入无符号的小端序64位BigUInt型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2376,7 +2378,7 @@ writeDoubleBE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入大端序的64位双浮点型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2419,7 +2421,7 @@ writeDoubleLE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入小端序的64位双浮点型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2462,7 +2464,7 @@ writeFloatBE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入大端序的32位浮点型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2506,7 +2508,7 @@ writeFloatLE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入小端序的32位浮点型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2549,7 +2551,7 @@ writeInt8(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入8位有符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2596,7 +2598,7 @@ writeInt16BE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入大端序的16位有符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2640,7 +2642,7 @@ writeInt16LE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入小端序的16位有符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2683,7 +2685,7 @@ writeInt32BE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入大端序的32位有符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2727,7 +2729,7 @@ writeInt32LE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入小端序的32位有符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2770,7 +2772,7 @@ writeIntBE(value: number, offset: number, byteLength: number): number
 
 在FastBuffer对象的offset偏移处写入大端序的有符号数据，字节长度为byteLength。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2815,7 +2817,7 @@ writeIntLE(value: number, offset: number, byteLength: number): number
 
 在FastBuffer对象的offset偏移处写入小端序的有符号数据，字节长度为byteLength。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2859,7 +2861,7 @@ writeUInt8(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入8位无符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2911,7 +2913,7 @@ writeUInt16BE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入大端序的16位无符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -2957,7 +2959,7 @@ writeUInt16LE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入小端序的16位无符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3003,7 +3005,7 @@ writeUInt32BE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入大端序的32位无符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3046,7 +3048,7 @@ writeUInt32LE(value: number, offset?: number): number
 
 在FastBuffer对象的offset偏移处写入小端序的32位无符号整型数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3089,7 +3091,7 @@ writeUIntBE(value: number, offset: number, byteLength: number): number
 
 在FastBuffer对象的offset偏移处写入大端序的无符号数据，字节长度为byteLength。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -3133,7 +3135,7 @@ writeUIntLE(value: number, offset: number, byteLength: number): number
 
 在FastBuffer对象的offset偏移处写入小端序的无符号数据，字节长度为byteLength。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

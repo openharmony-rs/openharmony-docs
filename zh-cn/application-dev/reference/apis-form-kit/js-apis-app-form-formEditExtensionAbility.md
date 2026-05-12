@@ -12,6 +12,8 @@ FormEditExtensionAbility模块提供卡片编辑功能，继承自[UIExtensionAb
 > 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -27,6 +29,10 @@ import { FormEditExtensionAbility } from '@kit.FormKit';
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
   | 名称 | 类型    | 只读 | 可选  |说明|
   | ------ | ------ | ---- | ---- | ---- |
-  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | 否   | 否 |FormEditExtensionAbility的上下文环境，默认值是继承自UIExtensionContext的对象。|
+  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | 否   | 否 |FormEditExtensionAbility的上下文环境，默认值是继承自[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#uiextensioncontext-1)的对象。|

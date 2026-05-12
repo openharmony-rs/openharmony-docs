@@ -11,6 +11,8 @@
 
 > **说明**：
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含模块的系统接口，其他公开接口请参考[@ohos.multimodalInput.inputDevice (输入设备)](js-apis-inputdevice.md)。
@@ -24,7 +26,9 @@ import { inputDevice } from '@kit.InputKit';
 
 ## inputDevice.setKeyboardRepeatDelay<sup>10+</sup>
 
-setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta:  setKeyboardRepeatDelay(delay: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置键盘按键的重复时延，使用callback异步回调。
 
@@ -32,12 +36,16 @@ setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| delay    | number                    | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| delay    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复延迟时间成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -49,6 +57,8 @@ setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -62,15 +72,49 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置键盘重复延迟
             inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError) => {
               if (error) {
-                console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set keyboard repeat delay success`);
+              console.info(`Succeeded in setting keyboard repeat delay.`);
             });
           } catch (error) {
-            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置键盘重复延迟
+           inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError<void>|null, data: undefined)  => {
+              if (error) {
+                console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting keyboard repeat delay.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -80,7 +124,9 @@ struct Index {
 
 ## inputDevice.setKeyboardRepeatDelay<sup>10+</sup>
 
-setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
+ArkTS-Dyn: setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setKeyboardRepeatDelay(delay: int): Promise&lt;void&gt;
 
 设置键盘按键的重复时延，使用Promise异步回调。
 
@@ -88,11 +134,15 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| delay | number | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 |
+| delay | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是    | 键盘按键重复延迟时间，默认值500ms，调节范围[300ms，1000ms]。 |
 
 **返回值**：
 
@@ -111,6 +161,8 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -123,13 +175,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置按键重复延迟350ms
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
-              console.info(`Set keyboard repeat delay success`);
+              console.info(`Succeeded in setting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -137,21 +190,58 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置按键重复延迟350ms
+            inputDevice.setKeyboardRepeatDelay(350).then(() => {
+              console.info(`Succeeded in setting keyboard repeat delay.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+
+```
+
 ## inputDevice.getKeyboardRepeatDelay<sup>10+</sup>
 
-getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
-获取键盘按键的重复时延，使用callback异步回调。
+ArkTS-Sta: getKeyboardRepeatDelay(callback: AsyncCallback&lt;int&gt;): void
+
+获取键盘按键的重复时延，使用Callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback   | AsyncCallback&lt;number&gt;                    | 是    | 回调函数，返回键盘按键重复延迟时间。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt;                | 是    | 回调函数。当获取成功时，err为undefined，data为键盘按键重复延迟时间；否则为错误对象。 |
 
 **错误码**：
 
@@ -162,7 +252,9 @@ getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 | 202  | SystemAPI permission error. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -176,15 +268,49 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 获取键盘重复延迟
             inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: number) => {
               if (error) {
-                console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get keyboard repeat delay success`);
+              console.info(`Succeeded in getting keyboard repeat delay.`);
             });
           } catch (error) {
-            console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取键盘重复延迟
+            inputDevice.getKeyboardRepeatDelay((error: BusinessError<void>|null, delay: int|undefined) => {
+              if (error) {
+                console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in getting keyboard repeat delay.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -194,7 +320,9 @@ struct Index {
 
 ## inputDevice.getKeyboardRepeatDelay<sup>10+</sup>
 
-getKeyboardRepeatDelay(): Promise&lt;number&gt;
+ArkTS-Dyn: getKeyboardRepeatDelay(): Promise&lt;number&gt;
+
+ArkTS-Sta: getKeyboardRepeatDelay(): Promise&lt;int&gt;
 
 获取键盘按键的重复时延，使用Promise异步回调。
 
@@ -202,11 +330,15 @@ getKeyboardRepeatDelay(): Promise&lt;number&gt;
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，返回键盘按键的重复时延。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回键盘按键的重复时延。 |
 
 **错误码**：
 
@@ -218,6 +350,8 @@ getKeyboardRepeatDelay(): Promise&lt;number&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -231,13 +365,44 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 获取键盘重复延迟
             inputDevice.getKeyboardRepeatDelay().then((delay: number) => {
-              console.info(`Get keyboard repeat delay success`);
+              console.info(`Succeeded in getting keyboard repeat delay.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 获取键盘重复延迟
+            inputDevice.getKeyboardRepeatDelay().then((delay: int) => {
+              console.info(`Succeeded in getting keyboard repeat delay.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get keyboard repeat delay, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -247,7 +412,9 @@ struct Index {
 
 ## inputDevice.setKeyboardRepeatRate<sup>10+</sup>
 
-setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setKeyboardRepeatRate(rate: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置键盘按键的重复速率，使用callback异步回调。
 
@@ -255,12 +422,16 @@ setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| rate    | number                    | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。 |
+| rate    | ArkTS-Dyn: number <br> ArkTS-Sta: int| 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置键盘按键重复速率成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -272,6 +443,8 @@ setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -285,15 +458,48 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 按键重复速率60ms/次
             inputDevice.setKeyboardRepeatRate(60, (error: BusinessError) => {
               if (error) {
-                console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set keyboard repeat rate success`);
+              console.info(`Succeeded in setting keyboard repeat rate.`);
             });
           } catch (error) {
-            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 按键重复速率60ms/次
+            inputDevice.setKeyboardRepeatRate(60, (error: BusinessError<void> | null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting keyboard repeat rate.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -303,7 +509,9 @@ struct Index {
 
 ## inputDevice.setKeyboardRepeatRate<sup>10+</sup>
 
-setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
+ArkTS-Dyn: setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setKeyboardRepeatRate(rate: int): Promise&lt;void&gt;
 
 设置键盘按键的重复速率，使用Promise异步回调。
 
@@ -311,11 +519,15 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| rate | number | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
+| rate | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是    | 键盘按键重复速率，默认值50ms/次，调节范围[36ms/次，100ms/次]。 |
 
 **返回值**：
 
@@ -334,7 +546,39 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```js
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 按键重复速率60ms/次
+            inputDevice.setKeyboardRepeatRate(60).then(() => {
+              console.info(`Succeeded in setting keyboard repeat rate.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -347,12 +591,12 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.info(`Set keyboard repeat rate success`);
+              console.info(`Succeeded in setting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -362,19 +606,25 @@ struct Index {
 
 ## inputDevice.getKeyboardRepeatRate<sup>10+</sup>
 
-getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
-获取键盘按键的重复速率，使用callback异步回调。
+ArkTS-Sta: getKeyboardRepeatRate(callback: AsyncCallback&lt;int&gt;): void
+
+获取键盘按键的重复速率，使用Callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名       | 类型                          | 必填   | 说明             |
 | -------- | --------------------------- | ---- | -------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数，返回键盘按键的重复速率。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是    | 回调函数。当获取成功时，err为undefined，data为键盘按键的重复速率；否则为错误对象。 |
 
 **错误码**：
 
@@ -386,6 +636,8 @@ getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -399,15 +651,46 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 获取键盘重复速率
             inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: number) => {
               if (error) {
-                console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get keyboard repeat rate success`);
+              console.info(`Succeeded in getting keyboard repeat rate.`);
             });
           } catch (error) {
-            console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.getKeyboardRepeatRate((error: BusinessError<void>|null, rate: int|undefined ) => {
+              if (error) {
+                console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in getting keyboard repeat rate.`);
+            });
+          } catch (error) {
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -417,7 +700,9 @@ struct Index {
 
 ## inputDevice.getKeyboardRepeatRate<sup>10+</sup>
 
-getKeyboardRepeatRate(): Promise&lt;number&gt;
+ArkTS-Dyn: getKeyboardRepeatRate(): Promise&lt;number&gt;
+
+ArkTS-Sta: getKeyboardRepeatRate(): Promise&lt;int&gt;
 
 获取键盘按键的重复速率，使用Promise异步回调。
 
@@ -425,11 +710,15 @@ getKeyboardRepeatRate(): Promise&lt;number&gt;
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值**：
 
 | 类型                    | 说明                  |
 | --------------------- | ------------------- |
-| Promise&lt;number&gt; | Promise对象，返回键盘按键的重复速率。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回键盘按键的重复速率。 |
 
 **错误码**：
 
@@ -441,6 +730,8 @@ getKeyboardRepeatRate(): Promise&lt;number&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputDevice } from '@kit.InputKit';
@@ -454,13 +745,41 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 获取键盘重复速率
             inputDevice.getKeyboardRepeatRate().then((rate: number) => {
-              console.info(`Get keyboard repeat rate success`);
+              console.info(`Succeeded in getting keyboard repeat rate.`);
             }).catch((error: BusinessError) => {
-              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```js
+import { inputDevice } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.getKeyboardRepeatRate().then((rate: int) => {
+              console.info(`Succeeded in getting keyboard repeat rate.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to get keyboard repeat rate, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -470,7 +789,9 @@ struct Index {
 
 ## inputDevice.setInputDeviceEnabled<sup>18+</sup>
 
-setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
+ArkTS-Dyn: setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
+
+ArkTS-Sta: setInputDeviceEnabled(deviceId: int, enabled: boolean): Promise&lt;void&gt;
 
 设置输入设备的开关状态。以触摸屏为例：关闭时，点击触摸屏设备不响应；开启时，可正常操作触摸屏。使用Promise异步回调。
 
@@ -480,11 +801,15 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 **系统API**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
+
 **参数**：
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | ------------------------- |
-| deviceId | number  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。              |
+| deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。              |
 | enabled  | boolean | 是   | 输入设备的开关状态，取值为true表示开启输入设备，取值为false表示关闭输入设备。 |
 
 **返回值**：
@@ -507,6 +832,8 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```js
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -519,13 +846,43 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置设备ID为0
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
-              console.info(`Set input device enable success`);
+              console.info(`Succeeded in setting input device enabled.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set device enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set input device enable error`);
+            console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            inputDevice.setInputDeviceEnabled(0, true).then(() => {
+              console.info(`Succeeded in setting input device enabled.`);
+            }).catch((error: BusinessError) => {
+              console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

@@ -507,7 +507,7 @@ struct Index {
 
 ## uiObserver.onNavDestinationUpdate<sup>23+</sup>
 
-onNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, callback: Callback<observer.NavDestinationInfo>): void
+onNavDestinationUpdate(options: NavDestinationSwitchObserverOptions, callback: Callback<NavDestinationInfo\>): void
 
 监听NavDestination组件的状态变化。
 
@@ -1532,7 +1532,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callbac
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
 | context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
-| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\)        | 否   | 需要被注销的回调函数。若不指定，则注销指定context下所有navDestinationSwitch监听。                 |
+| callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。若不指定，则注销指定context下所有navDestinationSwitch监听。                 |
 
 **示例：**
 
@@ -1556,7 +1556,6 @@ offNavDestinationSwitch(context: UIAbilityContext | UIContext, callback?: Callba
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
 | context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。                 |
 
@@ -1759,7 +1758,7 @@ offNavDestinationSwitch(context: UIAbilityContext | UIContext, observerOptions: 
 
 取消监听Navigation的页面切换事件。
 
-**系统能力：** SystemCapability.ArkUI.A.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1771,7 +1770,6 @@ offNavDestinationSwitch(context: UIAbilityContext | UIContext, observerOptions: 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
 | context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。                 |
@@ -1919,7 +1917,6 @@ offTabContentUpdate(callback?: Callback\<TabContentInfo\>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
 | callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。 |
 
 **示例：**
@@ -2068,7 +2065,6 @@ offTabContentUpdate(options: ObserverOptions, callback?: Callback\<TabContentInf
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
 | options  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
 | callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。 |
 

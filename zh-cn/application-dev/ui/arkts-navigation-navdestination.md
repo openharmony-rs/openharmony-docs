@@ -20,6 +20,8 @@ NavDestination提供了两种类型。
   
   NavDestination设置mode为NavDestinationMode.DIALOG弹窗类型，此时整个NavDestination默认透明显示。弹窗类型的NavDestination显示和消失时不会影响下层标准类型的NavDestination的显示和生命周期，两者可以同时显示。
 
+  ArkTS-Dyn示例：
+  
   <!-- @[PageDisplayType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayType.ets) -->
   
   ``` TypeScript
@@ -80,6 +82,71 @@ NavDestination提供了两种类型。
   }
   ```
 
+  ArkTS-Sta示例：
+
+  ```ts
+  import {
+    Entry,
+    Component,
+    Builder,
+    Column,
+    Button,
+    Stack,
+    Navigation,
+    NavigationMode,
+    NavPathStack,
+    NavDestination,
+    Text,
+    Margin,
+    NavDestinationMode,
+    ClickEvent,
+    Alignment,
+    FlexAlign,
+    Color,
+    PopInfo
+  } from '@kit.ArkUI';
+
+  let pageStack: NavPathStack = new NavPathStack();
+  @Entry
+  @Component
+  struct Index {
+    @Builder PagesMap(name: string) {
+      if (name == 'DialogPage') {
+        DialogPage();
+      }
+    }
+
+    build() {
+      Navigation(pageStack) {
+        Button('Push DialogPage').margin(20).width('80%').onClick((e: ClickEvent) => {
+          pageStack.pushPathByName('DialogPage', new Object(), (info: PopInfo) => {}, true)
+        })
+      }.mode(NavigationMode.Stack).title('Main').navDestination(this.PagesMap)
+    }
+  }
+
+  @Component
+  export struct DialogPage {
+    build() {
+      NavDestination() {
+        Stack({ alignContent: Alignment.Center }) {
+          Column() {
+            Text("Dialog NavDestination").fontSize(20).margin({ bottom: 100 } as Margin)
+            Button("Close").onClick((e: ClickEvent) => {
+              pageStack.pop(new Object(), true);
+            }).width('30%')
+          }
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor(Color.White)
+          .borderRadius(10)
+          .height('30%')
+          .width('80%')
+        }.height("100%").width('100%')
+      }.backgroundColor('rgba(0,0,0,0.5)').hideTitleBar(true, true).mode(NavDestinationMode.DIALOG)
+    }
+  }
+  ```
+  
   ![dialog_navdestination](figures/DialogNavDestinationExample.gif)
 
 ## 页面生命周期
@@ -116,6 +183,8 @@ NavDestination提供了两种类型。
 
   自定义组件提供[queryNavDestinationInfo](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#querynavdestinationinfo)方法，可以在NavDestination内部查询到当前所属页面的信息，返回值为[NavDestinationInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationinfo)，若查询不到则返回undefined。
 
+  ArkTS-Dyn示例：
+  
   <!-- @[MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/observer/template1/Index.ets) -->
   
   ``` TypeScript
@@ -138,6 +207,35 @@ NavDestination提供了两种类型。
           Text(this.context!.resourceManager.getStringSync($r('app.string.onPageName').id) + `${this.navDesInfo?.name}`)
         }.width('100%').height('100%')
         // ...
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  ```ts
+  import { Component, NavDestination, NavDestinationInfo, uiObserver } from '@kit.ArkUI';
+
+  @Component
+  export struct NavDestinationExample {
+    build() {
+      NavDestination() {
+        MyComponent();
+      }
+    }
+  }
+
+  @Component
+  struct MyComponent {
+    navDesInfo: uiObserver.NavDestinationInfo | undefined;
+
+    aboutToAppear() {
+      this.navDesInfo = this.queryNavDestinationInfo();
+      console.info('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
+    }
+
+    build() {
+      // ...
     }
   }
   ```

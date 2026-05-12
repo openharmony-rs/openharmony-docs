@@ -8,7 +8,9 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅支持ArkTS-Dyn。
+> 
+> - 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 开发者指南见：[\@Env开发者指南](../../../ui/arkts-env-system-property.md)。
 
@@ -32,6 +34,7 @@ import { uiObserver } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
+  // @Env读取系统环境变量
   @Env(SystemProperties.BREAK_POINT) breakpoint: uiObserver.WindowSizeLayoutBreakpointInfo;
 
   build() {}
@@ -77,7 +80,7 @@ type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 | 名称        | 值   | 说明                                       |
 | ----------- | ---- | ------------------------------------------------------------ |
 |BREAK_POINT|'system.arkui.breakpoint'|[@Env](#env)变量参数，通过\@Env(SystemProperties.BREAK_POINT)可获取[`WindowSizeLayoutBreakpointInfo`](../js-apis-arkui-observer.md#windowsizelayoutbreakpointinfo22)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的尺寸布局断点信息。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-|WINDOW_SIZE<sup>23+</sup>|'system.window.size'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_SIZE)可获取[`SizeInVP`](../arkts-apis-window-i.md#sizeinvp23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的大小信息，单位为vp。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
-|WINDOW_SIZE_PX<sup>23+</sup>|'system.window.size.px'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_SIZE_PX)可获取[`Size`](../arkts-apis-window-i.md#size7)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的大小信息，单位为px。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
-|WINDOW_AVOID_AREA<sup>23+</sup>|'system.window.avoidarea'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_AVOID_AREA)可获取[`UIEnvWindowAvoidAreaInfoVP`](../arkts-apis-window-i.md#uienvwindowavoidareainfovp23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的避让区域信息，单位为vp。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
-|WINDOW_AVOID_AREA_PX<sup>23+</sup>|'system.window.avoidarea.px'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_AVOID_AREA_PX)可获取[`UIEnvWindowAvoidAreaInfoPX`](../arkts-apis-window-i.md#uienvwindowavoidareainfopx23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的避让区域信息，单位为px。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
+|WINDOW_SIZE<sup>23+</sup>|'system.window.size'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_SIZE)可获取[`SizeInVP`](../arkts-apis-window-i.md#sizeinvp23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的大小信息，单位为vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
+|WINDOW_SIZE_PX<sup>23+</sup>|'system.window.size.px'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_SIZE_PX)可获取[`Size`](../arkts-apis-window-i.md#size7)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的大小信息，单位为px。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
+|WINDOW_AVOID_AREA<sup>23+</sup>|'system.window.avoidarea'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_AVOID_AREA)可获取[`UIEnvWindowAvoidAreaInfoVP`](../arkts-apis-window-i.md#uienvwindowavoidareainfovp23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的避让区域信息，单位为vp。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。|
+|WINDOW_AVOID_AREA_PX<sup>23+</sup>|'system.window.avoidarea.px'|[@Env](#env)变量参数，通过\@Env(SystemProperties.WINDOW_AVOID_AREA_PX)可获取[`UIEnvWindowAvoidAreaInfoPX`](../arkts-apis-window-i.md#uienvwindowavoidareainfopx23)实例。<br/>当该装饰器声明在[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)或[\@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)中时，用于获取当前自定义组件所在窗口的避让区域信息，单位为px。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。|

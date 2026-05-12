@@ -1,7 +1,7 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -10,12 +10,22 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
+>
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@ohos.base';
+import notificationExtensionSubscription from '@ohos.notificationExtensionSubscription';
 ```
 
 ## notificationExtensionSubscription.openSubscriptionSettings
@@ -27,6 +37,10 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -53,6 +67,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -70,19 +85,39 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+
+try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
+    console.info(`openSubscriberSettings success`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  console.error(`failed to call openSubscriptionSettings ${error}`)
+}
+```
+
 ## notificationExtensionSubscription.openSubscriptionSettingsWithResult
 
 openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
 
 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
 
-**起始版本**：26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -109,6 +144,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { common } from '@kit.AbilityKit';
 
@@ -126,6 +162,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+
+try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
+    console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  console.error(`failed to call openSubscriptionSettingsWithResult ${error}`)
+}
+```
+
 ## notificationExtensionSubscription.subscribe
 
 subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
@@ -135,6 +189,10 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -161,8 +219,24 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
+  {
+    addr: '01:23:45:67:89:AB', // 使用动态获取的蓝牙地址
+    type: notificationExtensionSubscription.SubscribeType.BLUETOOTH
+  }
+];
+notificationExtensionSubscription.subscribe(infos).then(() => {
+  console.info(`subscribe success`);
+}).catch((err: BusinessError) => {
+  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+});
 
+```
+
+ArkTS-Sta示例：
+```ts
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
     addr: '01:23:45:67:89:AB', // 使用动态获取的蓝牙地址
@@ -171,10 +245,10 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
   console.info("subscribe success");
-}).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+}).catch((err: Error) => {
+  let error = err as BusinessError
+  console.error(`subscribe fail: ${JSON.stringify(error)}`);
 });
-
 ```
 
 ## notificationExtensionSubscription.unsubscribe
@@ -186,6 +260,10 @@ unsubscribe(): Promise\<void\>
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -205,11 +283,22 @@ unsubscribe(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
+  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationExtensionSubscription.unsubscribe().then(() => {
+  console.info("unsubscribe success");
+}).catch((error: Error) => {
+  let err = error as BusinessError
   console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -223,6 +312,10 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -242,11 +335,21 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-
 notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
   console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+  let err = error as BusinessError
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -260,6 +363,10 @@ isUserGranted(): Promise\<boolean\>
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -279,8 +386,8 @@ isUserGranted(): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
     console.info('isUserGranted true');
@@ -288,6 +395,20 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
     console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
+  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
+  if (isOpen) {
+    console.info('isUserGranted true');
+  } else {
+    console.info('isUserGranted false');
+  }
+}).catch((error: Error) => {
+  let err = error as BusinessError
   console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -301,6 +422,10 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 **系统能力**：SystemCapability.Notification.Notification
 
 **需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -320,11 +445,21 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
+  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+  let err = error as BusinessError
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -336,6 +471,10 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 用于描述通知扩展订阅的信息。
 
 **系统能力**： SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -349,6 +488,10 @@ type NotificationInfo = _NotificationInfo
 
 **系统能力**：SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
@@ -358,6 +501,10 @@ type NotificationInfo = _NotificationInfo
 表示通知扩展订阅的类型。
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值       | 说明       |
 | -------------------- | -------- | ---------- |
@@ -371,6 +518,10 @@ type BundleOption = _BundleOption
 
 **系统能力**： SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 指定应用的包信息。 |
@@ -383,6 +534,10 @@ type GrantedBundleInfo = _GrantedBundleInfo
 
 **系统能力**： SystemCapability.Notification.Notification
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
@@ -393,11 +548,13 @@ type UserGrantSetting = _UserGrantSetting
 
 用户授权的设置信息。
 
-**起始版本**：26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**： SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 类型 | 说明 |
 | --- | --- |

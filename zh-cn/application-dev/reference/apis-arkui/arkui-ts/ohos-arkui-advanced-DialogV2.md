@@ -1,7 +1,7 @@
 # DialogV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,6 +12,8 @@
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制弹出框的数据和状态，实现更高效的用户界面刷新。
 
 > **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -41,6 +43,10 @@ TipsDialogV2({imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, imageBo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 类型                                                                                                    | 必填 | 装饰器类型                | 说明                                                              |
 |------------------|-------------------------------------------------------------------------------------------------------|----|----------------------|-----------------------------------------------------------------|
 | imageRes         | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是  | @Param<br />@Require | 展示的图片。                                                          |
@@ -65,6 +71,10 @@ type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型      | 必填 | 说明                                            |
@@ -73,7 +83,9 @@ type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
 ## SelectDialogV2
 
-SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
+ArkTS-Dyn: SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
+
+ArkTS-Sta: SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: int, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
 
 选择类弹出框，弹框中以列表或网格的形式提供可选的内容。
 
@@ -83,11 +95,15 @@ SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: numbe
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型                                                       | 必填 | 装饰器类型               | 说明                                                                              |
 | ------------- | -------------------------------------------------------- | -- |---------------------|---------------------------------------------------------------------------------|
 | title         | [ResourceStr](ts-types.md#resourcestr)                   | 是  | @Param<br/>@Require | 选择弹出框标题。<br/> **说明：** 标题超过两行会显示“...”。                                                 |
 | content       | [ResourceStr](ts-types.md#resourcestr)                   | 否  | @Param              | 选择弹出框内容。默认不显示。                                                                  |
-| selectedIndex | number                                                   | 否  | @Param              | 选择弹出框的选中项。<br />默认值：-1，没有选中项。若设置数值不在取值范围，按没有选中项处理。  <br/>取值范围：小于选择弹出框的子项内容列表长度。 |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int                    | 否  | @Param              | 选择弹出框的选中项。<br />默认值：-1，没有选中项。若设置数值不在取值范围，按没有选中项处理。  <br/>取值范围：小于选择弹出框的子项内容列表长度。 |
 | confirm       | [AdvancedDialogV2Button](#advanceddialogv2button)        | 否  | @Param              | 选择弹出框底部按钮。<br />默认不显示。                                                          |
 | radioContent  | [SheetInfo](ts-methods-action-sheet.md#sheetinfo对象说明)\[] | 是  | @Param<br/>@Require | 选择弹出框的子项内容列表，每个选择项支持设置文本和选中的回调事件。                                               |
 
@@ -102,6 +118,10 @@ ConfirmDialogV2({title: ResourceStr, content?: ResourceStr, checkTips?: Resource
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                                                  | 必填 | 装饰器类型  | 说明                                                         |
 |-----------------| ------------------------------------------------------------------- | -- | ------ |------------------------------------------------------------|
@@ -125,6 +145,10 @@ AlertDialogV2({primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 类型                                                | 必填 | 装饰器类型                | 说明                   |
 | --------------- | ------------------------------------------------- | -- | :------------------- | -------------------- |
 | primaryTitle    | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 确认弹出框一级标题。<br />默认不显示。<br/>**说明：** 标题超过两行会显示“...”。  |
@@ -145,6 +169,10 @@ LoadingDialogV2({content?: ResourceStr})
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型                                     | 必填 | 装饰器类型  | 说明                                               |
 | ------- | -------------------------------------- | -- | :----- |--------------------------------------------------|
 | content | [ResourceStr](ts-types.md#resourcestr) | 否  | @Param | 加载弹出框内容。<br />默认为空。<br/> **说明：** 内容超过十行会显示“...”。 |
@@ -160,6 +188,10 @@ CustomContentDialogV2({contentBuilder: () => void, primaryTitle?: ResourceStr, s
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 类型                                                   | 必填 | 装饰器类型         | 说明                       |
 | ------------------ | ---------------------------------------------------- | -- | ------------- | ------------------------ |
@@ -179,6 +211,10 @@ type PopoverDialogV2OnVisibleChange = (visible: boolean) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型      | 必填 | 说明                                                                    |
@@ -196,6 +232,10 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                                                | 必填 | 装饰器类型               | 说明                                                 |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
@@ -218,6 +258,10 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 ## AdvancedDialogV2ButtonAction
 
 type AdvancedDialogV2ButtonAction = () => void
@@ -227,6 +271,10 @@ type AdvancedDialogV2ButtonAction = () => void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ## AdvancedDialogV2Button
 
@@ -238,15 +286,15 @@ type AdvancedDialogV2ButtonAction = () => void
 
 | 名称           | 类型                                                                     | 只读 | 可选 | 说明                                                                          |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
-| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的背景。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。    |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。     |
-| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
-| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。          |
+| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的背景。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24  |
 
 > **说明：**
 >
@@ -264,6 +312,10 @@ AdvancedDialogV2Button的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                              | 必填 | 说明      |
@@ -278,15 +330,15 @@ AdvancedDialogV2Button的构造函数。
 
 | 名称           | 类型                                                                     | 只读 | 可选 | 说明                                                                          |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
-| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。    |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的背景。<br /> 默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
-| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
-| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
-| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
-| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。  |
+| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的背景。<br /> 默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23   |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24  |
 
 ## 示例
 
@@ -294,6 +346,7 @@ AdvancedDialogV2Button的构造函数。
 
 上图下文弹出框，包含imageRes、content等内容。
 
+ArkTS-Dyn示例：
 ```ts
 import { TipsDialogV2, AdvancedDialogV2Button, UIContext  } from '@kit.ArkUI';
 
@@ -334,7 +387,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("打开TipsDialogV2弹出框")
+          Button('打开TipsDialogV2弹出框')
             .width(96)
             .height(40)
             .onClick(() => {
@@ -354,6 +407,71 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Button, Builder, $r, Row, Stack, Column, Margin, Alignment, ButtonRole, Local, UIContext
+} from '@kit.ArkUI';
+import { TipsDialogV2, AdvancedDialogV2Button } from '@ohos.arkui.advanced.DialogV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local checked: boolean = false;
+
+  @Builder
+  dialogBuilder(): void {
+    TipsDialogV2({
+      // 系统麦克风图片资源
+      imageRes: $r('sys.media.ohos_ic_public_voice'),
+      content: '想要卸载这个APP嘛?',
+      title: 'TipsDialogV2',
+      checkTips: '不再提示',
+      checked: this.checked,
+      primaryButton: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {
+          console.info('Callback when the first button is clicked');
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '删除',
+        role: ButtonRole.ERROR,
+        action: () => {
+          console.info('Callback when the second button is clicked');
+        }
+      }),
+      onCheckedChange: (checked: boolean) => {
+        console.info('Callback when the checkbox is clicked');
+        this.checked = checked;
+      }
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button('打开TipsDialogV2弹窗')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                },
+              });
+            })
+        }.margin({ bottom: 300 } as Margin)
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
 
 ![TipsDialog](figures/TipsDialog.png)
 
@@ -361,6 +479,7 @@ struct Index {
 
 纯列表弹出框，包含selectedIndex、radioContent等内容。
 
+ArkTS-Dyn示例：
 ```ts
 import { SelectDialogV2, AdvancedDialogV2Button ,UIContext  } from '@kit.ArkUI';
 
@@ -403,7 +522,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("纯列表弹出框")
+          Button('纯列表弹出框')
             .width(96)
             .height(40)
             .onClick(() => {
@@ -423,6 +542,72 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Button, Builder, $r, Row, Stack, Column, Margin, Alignment, ButtonRole, Local, UIContext
+} from '@kit.ArkUI';
+import { SelectDialogV2, AdvancedDialogV2Button } from '@ohos.arkui.advanced.DialogV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local radioIndex: int = 0;
+  @Builder
+  dialogBuilder(): void {
+    SelectDialogV2({
+      title: '文本标题',
+      selectedIndex: this.radioIndex,
+      confirm: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {},
+      }),
+      radioContent: [
+        {
+          title: '文本文本文本文本文本',
+          action: () => {
+            this.radioIndex = 0
+          }
+        },
+        {
+          title: '文本文本文本文本',
+          action: () => {
+            this.radioIndex = 1
+          }
+        },
+        {
+          title: '文本文本文本文本',
+          action: () => {
+            this.radioIndex = 2
+          }
+        },
+      ]
+    })
+  }
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button('纯列表弹出框')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                }
+              })
+            })
+        }.margin({ bottom: 300 } as Margin)
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
 
 ![SelectDialog](figures/SelectDialog.png)
 
@@ -430,6 +615,7 @@ struct Index {
 
 文本与勾选弹出框，包含content、checkTips等内容。
 
+ArkTS-Dyn示例：
 ```ts
 import { ConfirmDialogV2, AdvancedDialogV2Button, UIContext  } from '@kit.ArkUI';
 
@@ -469,7 +655,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("打开ConfirmDialogV2弹出框")
+          Button('打开ConfirmDialogV2弹出框')
             .width(96)
             .height(40)
             .onClick(() => {
@@ -490,6 +676,71 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Button, Builder, $r, Row, Stack, Column, Margin, Alignment, DialogAlignment, Local,
+  UIContext
+} from '@kit.ArkUI';
+import { ConfirmDialogV2, AdvancedDialogV2Button } from '@ohos.arkui.advanced.DialogV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local checked: boolean = false;
+
+  @Builder
+  dialogBuilder(): void {
+    ConfirmDialogV2({
+      title: '文本标题',
+      content: '文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本',
+      checked: this.checked,
+      checkTips: '禁止后不再提示',
+      primaryButton: new AdvancedDialogV2Button({
+        content: '禁止',
+        action: () => {
+          console.info('Callback when the primary button is clicked');
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '允许',
+        action: () => {
+          this.checked = false
+          console.info('Callback when the second button is clicked');
+        }
+      }),
+      onCheckedChange: (checked: boolean) => {
+        console.info('Callback when the checkbox is clicked');
+        this.checked = checked;
+      },
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button('打开ConfirmDialogV2弹窗')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                },
+                alignment: DialogAlignment.Bottom
+              });
+            })
+        }.margin({ bottom: 300 } as Margin)
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
 
 ![2024-06-03](figures/2024-06-03_150422.png)
 
@@ -497,6 +748,7 @@ struct Index {
 
 纯文本弹出框，包含primaryTitle、secondaryTitle、content等内容。
 
+ArkTS-Dyn示例：
 ```ts
 import { AlertDialogV2, AdvancedDialogV2Button, UIContext  } from '@kit.ArkUI';
 
@@ -529,7 +781,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("打开AlertDialogV2弹出框")
+          Button('打开AlertDialogV2弹出框')
             .width(96)
             .height(40)
             .onClick(() => {
@@ -549,6 +801,62 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Button, Builder, $r, Row, Stack, Column, Margin, Alignment, ButtonRole, UIContext
+} from '@kit.ArkUI';
+import { AlertDialogV2, AdvancedDialogV2Button } from '@ohos.arkui.advanced.DialogV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Builder
+  dialogBuilder(): void {
+    AlertDialogV2({
+      primaryTitle: '弹框一级标题',
+      secondaryTitle: '弹框二级标题',
+      content: '文本文本文本文本文本',
+      primaryButton: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {
+          console.info('Callback when the primary button is clicked');
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '确认',
+        role: ButtonRole.ERROR,
+        action: () => {
+          console.info('Callback when the second button is clicked');
+        }
+      }),
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button('打开AlertDialogV2弹窗')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                }
+              });
+            })
+        }.margin({ bottom: 300 } as Margin)
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
 
 ![AlertDialog](figures/AlertDialog.png)
 
@@ -556,6 +864,7 @@ struct Index {
 
 进度加载类弹出框，包含content等内容。
 
+ArkTS-Dyn示例：
 ```ts
 import { LoadingDialogV2, UIContext  } from '@kit.ArkUI';
 
@@ -573,7 +882,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("打开LoadingDialogV2弹出框")
+          Button('打开LoadingDialogV2弹出框')
             .width(96)
             .height(40)
             .onClick(() => {
@@ -593,6 +902,47 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Button, Builder, $r, Row, Stack, Column, Margin, Alignment, UIContext
+} from '@kit.ArkUI';
+import { LoadingDialogV2, AdvancedDialogV2Button } from '@ohos.arkui.advanced.DialogV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Builder
+  dialogBuilder(): void {
+    LoadingDialogV2({
+      content: '文本文本文本文本文本...',
+    })
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button('打开LoadingDialogV2弹窗')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                }
+              });
+            })
+        }.margin({ bottom: 300 } as Margin)
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
 
 ![LoadingDialog](figures/LoadingDialog.gif)
 
@@ -600,6 +950,7 @@ struct Index {
 
 自定义主题风格弹出框，包含content、theme等内容。
 
+ArkTS-Dyn示例：
 ```ts
 import { CustomColors, CustomTheme, LoadingDialogV2, UIContext  } from '@kit.ArkUI';
 
@@ -632,7 +983,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("打开LoadingDialogV2弹出框")
+          Button('打开LoadingDialogV2弹窗')
             .width(96)
             .height(40)
             .onClick(() => {
@@ -652,6 +1003,63 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Button, Builder, $r, Row, Stack, Column, Margin, Alignment, WithTheme, UIContext
+} from '@kit.ArkUI';
+import { CustomColors, CustomTheme } from '@ohos.arkui.theme';
+import { LoadingDialogV2, AdvancedDialogV2Button } from '@ohos.arkui.advanced.DialogV2';
+
+class CustomThemeImpl implements CustomTheme {
+  colors?: CustomColors;
+
+  constructor(colors: CustomColors) {
+    this.colors = colors;
+  }
+}
+
+const customThemeColors = {
+  fontPrimary: '#ffd0a300',
+  iconSecondary: '#ffd000cd'
+} as CustomColors;
+
+@Entry
+@ComponentV2
+struct Index {
+  @Builder
+  dialogBuilder(): void {
+    WithTheme({ theme: new CustomThemeImpl(customThemeColors) }) {
+      LoadingDialogV2({
+        content: '文本文本文本文本文本...',
+      })
+    }
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          Button('打开LoadingDialogV2弹窗')
+            .width(96)
+            .height(40)
+            .onClick(() => {
+              let uiContext: UIContext = this.getUIContext();
+              uiContext.getPromptAction().openCustomDialog({
+                builder: () => {
+                  this.dialogBuilder();
+                }
+              });
+            })
+        }.margin({ bottom: 300 } as Margin)
+      }.align(Alignment.Bottom)
+      .width('100%').height('100%')
+    }
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .height('100%')
+  }
+}
+```
 
 ![loading\_dialog\_with\_theme](figures/advanced_dialog_loading_dialog_with_theme.png)
 
@@ -659,6 +1067,7 @@ struct Index {
 
 支持自定义内容弹出框，包含contentBuilder、buttons等内容。
 
+ArkTS-Dyn示例：
 ```ts
 import { CustomContentDialogV2, AdvancedDialogV2Button, UIContext  } from '@kit.ArkUI';
 
@@ -689,10 +1098,67 @@ struct Index {
 
   build() {
     Column() {
-      Button("打开CustomContentDialogV2弹出框")
+      Button('打开CustomContentDialogV2弹出框')
         .onClick(() => {
             let uiContext: UIContext = this.getUIContext();
             uiContext.getPromptAction().openCustomDialog({
+            builder: () => {
+              this.dialogBuilder();
+            }
+          })
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  @Builder
+  buildContent(): void {
+    Column() {
+      Text('内容区')
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Button, Builder, Column, FlexAlign, Text, ButtonRole, ButtonStyleMode, UIContext
+} from '@kit.ArkUI';
+import { CustomContentDialogV2, AdvancedDialogV2Button } from '@ohos.arkui.advanced.DialogV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Builder
+  dialogBuilder(): void {
+    CustomContentDialogV2({
+      primaryTitle: '标题',
+      secondaryTitle: '辅助文本',
+      contentBuilder: () => {
+        this.buildContent();
+      },
+      buttons: [
+        new AdvancedDialogV2Button({
+          content: '按钮1', buttonStyle: ButtonStyleMode.TEXTUAL,
+          action: () => {
+            console.info('Callback when the button is clicked');
+          }
+        }),
+        new AdvancedDialogV2Button({
+          content: '按钮2', buttonStyle: ButtonStyleMode.TEXTUAL, role: ButtonRole.ERROR,
+        })
+      ],
+    })
+  }
+
+  build() {
+    Column() {
+      Button('打开CustomContentDialogV2弹窗')
+        .onClick(() => {
+          let uiContext: UIContext = this.getUIContext();
+          uiContext.getPromptAction().openCustomDialog({
             builder: () => {
               this.dialogBuilder();
             }
@@ -719,6 +1185,7 @@ struct Index {
 
 跟手弹出框（警告弹出框为例），包含visible、popover、targetBuilder等内容。
 
+ArkTS-Dyn示例：
 ```ts
 import { AlertDialogV2, PopoverDialogV2, PopoverDialogV2Options, AdvancedDialogV2Button} from '@kit.ArkUI';
 
@@ -752,6 +1219,62 @@ struct Index {
 
   @Builder buttonBuilder() {
     Button('跟手弹出框目标组件').onClick(() => {
+      this.isShow = true;
+    });
+  }
+
+  build() {
+    Column() {
+      PopoverDialogV2({
+        visible: this.isShow!!,
+        popover: this.popoverOptions,
+        targetBuilder: () => {
+          this.buttonBuilder();
+        },
+      })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Button, Builder, Column, FlexAlign, Text, ButtonRole, ButtonStyleMode, Local
+} from '@kit.ArkUI';
+import {
+  PopoverDialogV2, AdvancedDialogV2Button, PopoverDialogV2Options, AlertDialogV2
+} from '@ohos.arkui.advanced.DialogV2';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local isShow: boolean = false;
+  @Local popoverOptions: PopoverDialogV2Options = {
+    builder: () => {
+      this.dialogBuilder();
+    }
+  } as PopoverDialogV2Options;
+
+  @Builder dialogBuilder() {
+    AlertDialogV2({
+      content: '跟手弹出框',
+      primaryButton: new AdvancedDialogV2Button({
+        content: '取消',
+        action: () => {
+          this.isShow = false;
+        },
+      }),
+      secondaryButton: new AdvancedDialogV2Button({
+        content: '确认',
+        action: () => {
+          this.isShow = false;
+        },
+      }),
+    });
+  }
+
+  @Builder buttonBuilder() {
+    Button('跟手弹窗目标组件').onClick(() => {
       this.isShow = true;
     });
   }

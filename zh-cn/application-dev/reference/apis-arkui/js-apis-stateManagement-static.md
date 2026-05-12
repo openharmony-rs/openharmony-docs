@@ -1,0 +1,2095 @@
+# @ohos.arkui.stateManagement (状态管理) (ArkTS-Sta)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926; @liwenzhen3-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+状态管理模块提供了应用程序动态刷新、UI数据存储、使能数据观察等能力。
+
+>**说明：**
+>
+>- 本模块首批接口从API version 20开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+>- 本模块仅支持ArkTS-Sta。
+
+## 导入模块
+
+```ts
+import { AppStorageV2, PersistenceV2, UIUtils } from '@ohos.arkui.stateManagement';
+```
+
+## AppStorageV2
+
+**起始版本：** 26.0.0
+
+AppStorageV2提供状态变量在应用级全局共享的能力。
+
+AppStorageV2具体UI使用说明，详见[AppStorageV2：应用全局的UI状态存储](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)。
+
+### connect
+
+static connect\<T extends object\>(ttype: Class, key: string, defaultCreator?: StorageDefaultCreator\<T\>): T | undefined
+
+将键值对数据存储在应用内存中。如果给定的key已经存在于[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，存储后返回。
+
+>**说明：**
+>
+>- 如果数据已存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+>
+>- key相同，connect类型不同的数据会导致应用异常，开发者需要确保类型匹配。
+>
+>- 建议key使用有意义的值，可由字母、数字和下划线组成，长度不超过255字符，避免使用非法字符或空字符。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名         | 类型                                                                              | 必填 | 说明                 |
+| -------------- | --------------------------------------------------------------------------------- | ---- | -------------------- |
+| ttype          | Class                                                                              | 是   | 指定的类型。         |
+| key            | string                                                                            | 是   | 指定的key。          |
+| defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort22) | 否   | 获取默认值的构造器，默认值为undefined。 |
+
+**返回值：**
+
+| 类型           | 说明                                                            |
+| -------------- | --------------------------------------------------------------- |
+| T \| undefined | 创建或获取AppStorageV2数据成功时，返回数据；否则返回undefined。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { AppStorageV2, ObservedV2, Trace } from '@kit.ArkUI';
+
+@ObservedV2
+class SampleClass {
+  @Trace p: number = 0;
+}
+
+const ISampleType = Class.from<SampleClass>();
+
+// 将key为key_as1、value为new SampleClass()对象的键值对存储到内存中，并赋值给as1
+const as1: SampleClass = AppStorageV2.connect<SampleClass>(ISampleType, 'key_as1', () => new SampleClass())!;
+```
+
+### connect
+
+static connect\<T extends object\>(ttype: Class, defaultCreator?: StorageDefaultCreator\<T\>): T | undefined
+
+将键值对数据存储在应用内存中。如果给定的ttype已经存在于[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，存储后返回。
+
+>**说明：**
+>
+>- ttype使用Class.from\<classname\>()方法获得。
+>
+>- 未传入key时，默认使用ttype的name作为key。
+>
+>- 如果数据已存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名         | 类型                                                                              | 必填 | 说明                 |
+| -------------- | --------------------------------------------------------------------------------- | ---- | -------------------- |
+| ttype          | Class                                                                              | 是   | 指定的类型。         |
+| defaultCreator | StorageDefaultCreator\<T\> | 否   | 获取默认值的构造器，默认值为undefined。 |
+
+**返回值：**
+
+| 类型           | 说明                                                            |
+| -------------- | --------------------------------------------------------------- |
+| T \| undefined | 创建或获取AppStorageV2数据成功时，返回数据；否则返回undefined。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { AppStorageV2, ObservedV2, Trace } from '@kit.ArkUI';
+
+@ObservedV2
+class SampleClass {
+  @Trace p: number = 0;
+}
+
+const ISampleType = Class.from<SampleClass>();
+
+// 将ttype为SampleClass的Class、value为new SampleClass()对象的键值对存储到内存中，并赋值给as2
+const as2: SampleClass | undefined = AppStorageV2.connect<SampleClass>(ISampleType, () => new SampleClass());
+
+// ttype为SampleClass的Class的对象已经在AppStorageV2中，将该对象返回给as3
+const as3: SampleClass = AppStorageV2.connect<SampleClass>(ISampleType)!;
+```
+
+### remove
+
+static remove(keyOrType: string | Class): void
+
+将指定的键值对数据从[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)里面删除。如果指定的键值不存在于AppStorageV2中，将删除失败。
+
+>**说明：**
+>
+>删除AppStorageV2中不存在的key会报警告。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型           | 必填 | 说明                                                                   |
+| --------- | -------------- | ---- | ---------------------------------------------------------------------- |
+| keyOrType | string \| Class | 是   | 需要删除的key。如果传入的是Class类型，则删除的key为Class类型入参的name。 |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+'use static'
+
+import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+
+// 假设AppStorageV2中存在keyOrType为key_as1的键，从AppStorageV2中删除该键值对数据
+AppStorageV2.remove('key_as1');
+
+// 假设AppStorageV2中存在keyOrType为SampleClass的Class的键，从AppStorageV2中删除该键值对数据
+AppStorageV2.remove(Class.from<SampleClass>());
+
+// 假设AppStorageV2中不存在keyOrType为key_as2的键，打印warn日志警告
+AppStorageV2.remove('key_as2');
+```
+### keys
+
+static keys(): Array\<string\>
+
+获取[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)中的所有key。
+
+>**说明：**
+>
+>key在Array中的顺序是无序的，与key插入到AppStorageV2中的顺序无关。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型            | 说明                      |
+| --------------- | ------------------------- |
+| Array\<string\> | 所有AppStorageV2中的key。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { AppStorageV2 } from '@kit.ArkUI';
+
+// 假设AppStorageV2中存在两个key（key_as1、key_as2），返回[key_as1、key_as2]，并赋值给keys
+const keys: Array<string> = AppStorageV2.keys();
+```
+
+## PersistenceV2
+
+PersistenceV2具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management-static/arkts-static-new-persistencev2.md)。
+
+**起始版本：** 26.0.0
+
+### connect
+
+static connect\<T extends object\>(ttype: Class, defaultCreator?: StorageDefaultCreator\<T\>, connectOptions?: BaseConnectOptions\<T\>): T | undefined
+
+将键值对数据储存在应用磁盘中。如果给定的key已经存在于PersistenceV2中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+| 参数名         | 类型                                     | 必填 | 说明                                                  |
+| -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
+| ttype | Class | 是   | 传入的参数的Class类型。 |
+| defaultCreator | StorageDefaultCreator\<T\> | 否   | 默认数据的构造器，默认值为undefined。 |
+| connectOptions | BaseConnectOptions\<T\> | 否   | 可选配置 |  
+
+**返回值：**
+
+| 类型           | 说明                                                |
+| -------------- | --------------------------------------------------- |
+| T \| undefined | 创建或获取数据成功时，返回数据；否则返回undefined。 |
+
+> **说明：**
+>
+>
+> 1、ttype使用Class.from\<classname\>()方法获得。
+>
+> 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+>
+> 3、PersistenceV2中存储的key为ttype的name，例如，如果传入Info类的实例，此处存储的key即为Info。
+>
+> 4、当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
+
+**示例：**
+
+```ts
+'use static'
+
+import { PersistenceV2, ObservedV2, Trace } from '@kit.ArkUI';
+
+@ObservedV2
+class Info {
+  @Trace userInfo: int = 1;
+}
+
+@ObservedV2
+class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace info: Info = new Info();
+}
+
+const p1: Person = PersistenceV2.connect<Person>(
+  Class.from<Person>(),
+  (): Person => {
+    return new Person();
+  }, {
+    enableAutoSave: true
+  }
+)!;
+```
+### connect
+
+static connect\<T extends object\>(ttype: Class, key: string, defaultCreator?: StorageDefaultCreator\<T\>, connectOptions?: BaseConnectOptions\<T\>): T | undefined
+
+将键值对数据储存在应用磁盘中。如果给定的key已经存在于PersistenceV2中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+| 参数名         | 类型                                     | 必填 | 说明                                                  |
+| -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
+| ttype | Class | 是   | 传入的参数的Class类型。 |
+| key | string | 是   | 指定的key。 |
+| defaultCreator | StorageDefaultCreator\<T\> | 否   | 默认数据的构造器，默认值为undefined。 |
+| connectOptions | BaseConnectOptions\<T\> | 否   | 可选配置 |  
+
+**返回值：**
+
+| 类型           | 说明                                                |
+| -------------- | --------------------------------------------------- |
+| T \| undefined | 创建或获取数据成功时，返回数据；否则返回undefined。 |
+
+> **说明：**
+>
+> 1、ttype使用Class.from\<classname\>()方法获得。
+>
+> 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+>
+> 3、key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
+>
+> 4、当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
+
+**示例：**
+
+```ts
+'use static'
+
+import { PersistenceV2, ObservedV2, Trace } from '@kit.ArkUI';
+
+@ObservedV2
+class Info {
+  @Trace userInfo: int = 1;
+}
+
+@ObservedV2
+class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace info: Info = new Info();
+}
+
+const p1: Person = PersistenceV2.connect<Person>(
+  Class.from<Person>(),
+  'Person',
+  (): Person => {
+    return new Person();
+  }, {
+    enableAutoSave: true
+  }
+)!;
+```
+
+### globalConnect
+
+static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>): T | undefined
+
+将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management-static/arkts-static-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+| 参数名         | 类型                                     | 必填 | 说明                                                  |
+| -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
+| connectOptions | [ConnectOptions\<T\>](#connectoptions) | 是   | 传入的connect参数，详细说明见ConnectOptions参数说明。 |
+
+**返回值：**
+
+| 类型           | 说明                                                |
+| -------------- | --------------------------------------------------- |
+| T \| undefined | 创建或获取数据成功时，返回数据；否则返回undefined。 |
+
+> **说明：**
+>
+>
+> 1、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+>
+> 2、同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。
+>
+> 3、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
+>
+> 4、关联[\@Observed](../../ui/state-management-static/arkts-static-observed-and-objectlink.md)对象时，因为该类型的name属性未定义，需要指定key或者自定义name属性。
+>
+> 4、数据的存储路径为应用级别，不同module使用相同的key和相同的加密分区进行globalConnect，存储的数据副本应用仅有一份。
+>
+> 5、globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。
+>
+> 6、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key必须不一致，否则会运行时报错。
+>
+> 7、EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
+
+**示例：**
+仅供开发者了解globalConnect用法，完整使用需开发者自己写出@Entry组件。
+
+<!--code_no_check-->
+```ts
+'use static'
+
+import { PersistenceV2, ObservedV2, Trace } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+@ObservedV2
+class Info {
+  @Trace userInfo: int = 1;
+}
+
+@ObservedV2
+class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace info: Info = new Info();
+}
+
+const p1: Person = PersistenceV2.globalConnect<Person>({
+  type: Class.from<Person>(),
+  key: 'Person',
+  defaultCreator: () => {
+    return new Person();
+  },
+  areaMode: contextConstant.AreaMode.EL1,
+  enableAutoSave: true
+})!;
+
+```
+
+### remove
+
+static remove(keyOrType: string | Class): void
+
+将指定的键值对数据从PersistenceV2里面删除。如果指定的键值不存在于PersistenceV2中，将删除失败。
+
+>**说明：**
+>
+>删除PersistenceV2中不存在的key会打印warn日志警告。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型           | 必填 | 说明                                                                   |
+| --------- | -------------- | ---- | ---------------------------------------------------------------------- |
+| keyOrType | string \| Class | 是   | 需要删除的key。如果传入的是Class类型，则删除的key为Class类型入参的name。 |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+'use static'
+
+import { PersistenceV2 } from '@kit.ArkUI';
+
+// 假设PersistenceV2中存在keyOrType为key_as1的键，从PersistenceV2中删除该键值对数据
+PersistenceV2.remove('key_as1');
+
+// 假设PersistenceV2中存在keyOrType为SampleClass的键，从PersistenceV2中删除该键值对数据
+PersistenceV2.remove(Class.from<SampleClass>());
+
+// 假设PersistenceV2中不存在keyOrType为key_as2的键，打印warn日志警告
+PersistenceV2.remove('key_as2');
+```
+
+### keys
+
+static keys(): Array\<string\>
+
+获取PersistenceV2中所有的key。
+
+>**说明：**
+>
+>key在Array中的顺序是无序的，与key插入到PersistenceV2中的顺序无关。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型            | 说明                      |
+| --------------- | ------------------------- |
+| Array\<string\> | PersistenceV2中所有的key。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { PersistenceV2 } from '@kit.ArkUI';
+
+// 假设PersistenceV2中存在两个key（key_as1、key_as2），返回[key_as1、key_as2]，并赋值给keys
+const keys: Array<string> = PersistenceV2.keys();
+```
+
+### save
+
+static save(keyOrType: string \| Class): void
+
+手动持久化指定的键值对数据。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                             |
+| --------- | ------------------- | ---- | ---------------------------------------------------------------- |
+| keyOrType | string \| Class | 是   | 需要持久化的key；如果指定的是Class类型，持久化的key为Class的name。 |
+
+>**说明：**
+>
+>如果使用[PersistenceV2](../../ui/state-management-static/arkts-static-new-persistencev2.md)的connect或globalConnect接口存储数据时，没有设置enableAutoSave参数，或设置为true，则自动持久化存储数据；否则，需要调用该接口持久化对应key的数据。
+>
+>手动持久化PersistenceV2中不存在的key会打印warn日志警告。
+
+**示例：**
+
+<!--code_no_check-->
+
+```ts
+@ObservedV2
+class SampleClass {
+  @Trace p: number = 0;
+}
+
+// 假设PersistenceV2中存在keyOrType为key_as1的键，持久化该键值对数据
+PersistenceV2.save('key_as1');
+
+// 假设PersistenceV2中存在keyOrType为SampleClass的键，持久化该键值对数据
+PersistenceV2.save(Class.from<SampleClass>());
+
+// 假设PersistenceV2中不存在keyOrType为key_as2的键，打印warn日志警告
+PersistenceV2.save('key_as2');
+```
+
+### notifyOnError<sup>22+</sup>
+
+static notifyOnError(callback: PersistenceErrorCallback | undefined): void
+
+在持久化失败时调用。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填 | 说明               |
+| -------- | ------------------------------------- | ---- | ------------------ |
+| callback | PersistenceErrorCallback \| undefined | 是   | 持久化失败时调用。 |
+
+**示例：**
+
+```ts
+// 持久化失败时调用
+PersistenceV2.notifyOnError((key: string, reason: string, message: string, oldValue?: string) => {
+  console.error(`error key: ${key}, reason: ${reason}, message: ${message} ${oldValue}`);
+});
+```
+
+## PersistenceErrorCallback
+
+type PersistenceErrorCallback = (key: string, reason: string, message: string, oldValue?: string) => void
+
+持久化失败时返回错误原因的回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                    | 必填 | 说明             |
+| ------- | --------------------------------------- | ---- | ---------------- |
+| key     | string                                  | 是   | 出错的键值。     |
+| reason  | string                                  | 是   | 出错的原因类型。 |
+| message | string                                  | 是   | 出错的更多消息。 |
+| oldValue | string                                 | 否   | 反序列化失败时返回原始序列化数据。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import {
+  PersistenceV2,
+  ObservedV2,
+  Trace,
+  Local,
+  Entry,
+  Column,
+  Button,
+  ClickEvent,
+  ComponentV2
+} from '@kit.ArkUI';
+
+@ObservedV2
+class Person {
+  @Trace userName: string = 'John';
+  userId: number = 1;
+}
+
+// 接受序列化失败的回调
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+  console.error(`error key: ${key}, reason: ${reason}, message: ${msg} ${oldValue}`);
+});
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local cp: Person = PersistenceV2.connect<Person>(
+    Class.from<Person>(),
+    (): Person => {
+      return new Person();
+    })!;
+
+  build() {
+    Column() {
+      Button(`Page1 connect the key Sample ${this.cp.userName}`)
+        .onClick((e: ClickEvent) => {
+          this.cp = PersistenceV2.connect<Person>(Class.from<Person>(),
+            'Key',
+            () => new Person())!;
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+
+## ConnectOptions
+
+globalConnect参数类型。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称           | 类型                       | 只读 | 可选 | 说明                                                                                                                                                                                                                                      |
+| -------------- | -------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type           | Class                  | 否   | 否   | 指定的类型。                                                                                                                                                                                                                              |
+| key            | string                     | 否   | 是   | 传入的key，不传则使用type的名字作为key。                                                                                                                                                                                                  |
+| defaultCreator | StorageDefaultCreator\<T\> | 否   | 是   | 默认数据的构造器，默认值为undefined，建议传递，如果globalConnect是第一次连接key，不传会报错。                                                                                                                                                                |
+| areaMode       | contextConstant.AreaMode   | 否   | 是   | 加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径。 |
+| toJson         | [ToJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#tojsontypet)      | 否 | 是   | 转换存储对象到JSON格式对象的函数。                      |
+| fromJson       | [FromJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#fromjsontypet)  | 否 | 是   | 转换JSON格式对象到存储对象的函数。 |
+| enableAutoSave       | boolean   | 否   | 是   | 是否自动持久化存储数据，默认值为true。 |
+
+## BaseConnectOptions
+
+connect参数类型。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称           | 类型                       | 只读 | 可选 | 说明                                                                                                                                                                                                                                      |
+| -------------- | -------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| toJson         | [ToJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#tojsontypet)      | 否 | 是   | 转换存储对象到JSON格式对象的函数。                      |
+| fromJson       | [FromJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#fromjsontypet)  | 否 | 是   | 转换JSON格式对象到存储对象的函数。 |
+| enableAutoSave       | boolean   | 否   | 是   | 是否自动持久化存储数据，默认值为true。 |
+
+## UIUtils
+
+UIUtils是状态管理提供的工具，用于处理可观察数据。
+
+### makeObserved
+
+static makeObserved\<T extends object \| null \| undefined\>(source: T): T
+
+将不可观察数据转化为可观察数据。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
+
+> **说明：**
+>
+> 默认情况下，返回对象支持深度观察，可观察嵌套属性变化。
+>
+> 如果传入了undefined或null，则直接返回传入值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明         |
+| ------ | ---- | ---- | ------------ |
+| source | T    | 是   | 数据源对象。 |
+
+**返回值：**
+
+| 类型 | 说明               |
+| ---- | ------------------ |
+| T    | 可观察的数据对象。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Text, ClickEvent, UIUtils, Button } from '@kit.ArkUI';
+
+export interface Info {
+  name: string,
+  age: int
+}
+
+export interface Person {
+  info: Info
+}
+
+@Entry
+@Component
+struct Index {
+  // 深度观察
+  person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person) as Person;
+
+  build() {
+    Column() {
+      Text(`info.name: ${this.person.info.name}`)
+      Button('change name')
+        .onClick(() => {
+          this.person.info.name = 'Jackson'; // 由于是深度观察，第二层属性变化也会触发刷新。
+        })
+      Button('replace info')
+        .onClick(() => {
+          this.person.info = { name: 'Tom', age: 25 } as Info; // 触发刷新，属于第一层属性变化
+        })
+    }
+  }
+}
+```
+
+### makeObserved
+
+static makeObserved\<T extends object \| null \| undefined\>(source: T, allowDeep: boolean): T
+
+将不可观察数据转化为可观察数据，并通过`allowDeep`控制观察深度。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
+
+> **说明：**
+>
+> 如果传入了undefined或null，则直接返回传入值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| source | T | 是 | 数据源对象。 |
+| allowDeep | boolean | 是 | 是否深度观察。传入`true`时为深度观察；传入`false`时仅观察第一层属性变化。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| T | 可观察的数据对象。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Text, ClickEvent, UIUtils, Button } from '@kit.ArkUI';
+
+export interface Info {
+  name: string,
+  age: int
+}
+
+export interface Person {
+  info: Info
+}
+
+@Entry
+@Component
+struct Index {
+  // 一层观察
+  person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person, false) as Person;
+
+  build() {
+    Column() {
+      Text(`info.name: ${this.person.info.name}`)
+      Button('change name')
+        .onClick(() => {
+          this.person.info.name = 'Jackson'; // 不触发刷新，属于第二层属性变化
+        })
+      Button('replace info')
+        .onClick(() => {
+          this.person.info = { name: 'Tom', age: 25 } as Info; // 触发刷新，属于第一层属性变化
+        })
+    }
+  }
+}
+```
+
+### getTarget
+
+static getTarget\<T extends object\>(source: T): T
+
+获取状态管理框架包装前的原始对象。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                     |
+| ------ | ---- | ---- | ------------------------ |
+| source | T    | 是   | 状态管理框架包装的对象。 |
+
+**返回值：**
+
+| 类型 | 说明                           |
+| ---- | ------------------------------ |
+| T    | 状态管理框架包装前的原始对象。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
+import { State, UIUtils } from '@ohos.arkui.stateManagement';
+interface Info {
+  name: string,
+  age: number
+}
+@Entry
+@Component
+struct Index {
+  rawInfo: Info = { name: 'Jack', age: 25} as Info;
+  // 装饰字面量
+  @State info: Info = this.rawInfo;
+  build() {
+    Column() {
+      Text(`rawInfo === info: ${this.rawInfo === this.info}`) // false
+      Text(`rawInfo === UIUtils.getTarget(info): ${this.rawInfo === UIUtils.getTarget(this.info)}`) // true
+    }
+  }
+}
+```
+
+### getLifecycle<sup>24+</sup>
+
+static getLifecycle\<T extends IVariableOwner\>(customComponent: T): CustomComponentLifecycle
+
+getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明     |
+| ------ | ---- | ---- | ------------ |
+| customComponent | T    | 是   | 自定义组件实例。 |
+
+**返回值：**
+
+| 类型 | 说明                                             |
+| ---- | ------------------------------------------------ |
+| [CustomComponentLifecycle](./arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycle)    | 自定义组件的生命周期实例。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { UIUtils, ComponentAppear, Entry, Component, State, Text } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State lifecycleState: int = -1;
+
+  @ComponentAppear
+  myAppear() {
+    // UIUtils.getLifecycle获得自定义组件的生命周期实例，getCurrentState查询自定义组件当前生命周期。
+    // 预期查询到的生命周期为CustomComponentLifecycleState.APPEARED = 1。
+    this.lifecycleState = UIUtils.getLifecycle(this).getCurrentState();
+  }
+
+  build() {
+    Text(`${this.lifecycleState}`)
+  }
+}
+```
+
+### makeBinding\<T\>
+
+static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
+
+创建只读的单向数据绑定实例，用于在@Builder函数中为参数类型为Binding的参数提供实参。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                                                 |
+| ------ | --------------------------------------- | ---- | ---------------------------------------------------- |
+| getter | [GetterCallback\<T\>](#gettercallbackt) | 是   | 获取值的回调函数，每次访问值时重新执行以获取最新值。 |
+
+**返回值：**
+
+| 类型                      | 说明                                                            |
+| ------------------------- | --------------------------------------------------------------- |
+| [Binding\<T\>](#bindingt) | 包含一个value属性，用于获取当前绑定的值，且只能读取，不能修改。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { UIUtils, Binding, State } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
+
+@Builder
+function CustomButton(readOnlyParam: Binding<number>) {
+  Row() {
+    Button(`Custom btn: ${readOnlyParam.value}`)
+  }
+}
+
+@Entry
+@Component
+struct MyApp {
+  @State num1: number = 1;
+  build() {
+    Column() {
+      Button(`Entry btn ${this.num1}`)
+        .onClick((e) => {
+          this.num1 += 1;
+        });
+      CustomButton(
+        /**
+         * 创建只读绑定实例
+         * @param getter - 返回this.number1的函数
+         * @returns 只读的Binding<number>对象
+         *
+         * 特点：
+         * 1. 每次访问.value时重新计算
+         * 2. 不能直接修改值
+         */
+        UIUtils.makeBinding(() => this.num1),
+      );
+    }
+  }
+}
+```
+
+### makeBinding\<T\>
+
+static makeBinding\<T\>(getter: GetterCallback\<T\>, setter: SetterCallback\<T\>): MutableBinding\<T\>
+
+创建双向数据绑定实例，用于构建@Builder函数中类型为MutableBinding的参数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                                     |
+| ------ | --------------------------------------- | ---- | ---------------------------------------- |
+| getter | [GetterCallback\<T\>](#gettercallbackt) | 是   | 获取值的回调函数，每次访问值时重新执行。 |
+| setter | [SetterCallback\<T\>](#settercallbackt) | 是   | 定义如何更新值，当.value被修改时调用。   |
+
+**返回值：**
+
+| 类型                                    | 说明                                                                     |
+| --------------------------------------- | ------------------------------------------------------------------------ |
+| [MutableBinding\<T\>](#mutablebindingt) | 包含一个value属性，支持读取和修改数据，设置值时检查类型是否匹配泛型`T`。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { UIUtils, MutableBinding, State } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
+
+@Builder
+function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: MutableBinding<number>) {
+  Row() {
+    Button(`Custom btn: ${mutableParam1.value} -- ${mutableParam2.value}`)
+      .onClick((e) => {
+        mutableParam1.value += 1;
+        mutableParam2.value += 1;
+      });
+  }
+}
+
+@Entry
+@Component
+struct MyApp {
+  @State num2: number = 10;
+  @State num3: number = 100;
+
+  build() {
+    Column() {
+      Button(`Entry btn ${this.num2} -- ${this.num3}`)
+        .onClick((e) => {
+          this.num2 += 1;
+          this.num3 += 1;
+        });
+      CustomButton(
+        /**
+         * 创建绑定
+         * @param getter - 返回this.number2的函数
+         * @param setter - 绑定值修改时调用的回调
+         * @returns 可变的MutableBinding<number>对象
+         *
+         * 特点：
+         * 1. 支持读写操作
+         * 2. 修改.value时会自动调用setter回调
+         */
+        UIUtils.makeBinding(() => this.num2, (v) => {
+          this.num2 = v;
+        }),
+        UIUtils.makeBinding(() => this.num3, (v) => {
+          this.num3 = v;
+        })
+      );
+    }
+  }
+}
+```
+
+### addMonitor<sup>23+</sup>
+
+static addMonitor(valueCallback: MonitorValueCallback | MonitorValueCallback[], monitorCallback: MonitorCallback, options?: MonitorOptions): IMonitorDecoratedVariable
+
+动态地为状态变量注册监听。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| valueCallback | [MonitorValueCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorvaluecallback) \| [MonitorValueCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorvaluecallback)[] | 是 | 返回被监听状态变量的箭头函数或箭头函数数组。 |
+| monitorCallback | [MonitorCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorcallback) | 是 | 触发监听时调用的回调函数。 |
+| options | [MonitorOptions](#monitoroptions23) | 否 | 设置函数的行为，默认行行为详见[MonitorOptions](#monitoroptions23)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [IMonitorDecoratedVariable](./arkui-ts/ts-state-management-monitor-static.md#imonitordecoratedvariable) | 指代监听关系的句柄。|
+
+**示例：**
+
+```typescript
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: number = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+  // 注册监听关系
+    this.monitor = UIUtils.addMonitor(() => this.value, this.onChange);
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 值修改时触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+```
+
+### addMonitor
+
+static addMonitor(valueInfo: MonitorValueInfo | MonitorValueInfo[], monitorCallback: MonitorCallback, options?: MonitorBaseOptions): IMonitorDecoratedVariable
+
+动态地为状态变量注册监听。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名          | 类型                                                         | 必填 | 说明                                                         |
+| --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| valueCallback   | [MonitorValueInfo](#monitorvalueinfo) \| MonitorValueInfo[]  | 是   | 监听变量的信息或其数组。                                     |
+| monitorCallback | [MonitorCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorcallback) | 是   | 触发监听时调用的回调函数。                                   |
+| options         | [MonitorBaseOptions](#monitorbaseoptions)                    | 否   | 设置函数的行为，默认行为详见[MonitorBaseOptions](#monitorbaseoptions)。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| [IMonitorDecoratedVariable](./arkui-ts/ts-state-management-monitor-static.md#imonitordecoratedvariable) | 指代监听关系的句柄。 |
+
+```ts
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: int = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+  // 注册监听关系
+    this.monitor = UIUtils.addMonitor({ valueCallback: () => this.value, path: 'value' }, this.onChange);
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<int>(path)?.before} to ${monitor.value<int>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 值修改时触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+```
+
+### clearMonitor<sup>23+</sup>
+
+static clearMonitor(monitor: IMonitorDecoratedVariable): void
+
+动态地为状态变量解绑监听。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| monitor | [IMonitorDecoratedVariable](./arkui-ts/ts-state-management-monitor-static.md#imonitordecoratedvariable) | 是 | 指代监听关系的句柄。|
+
+**示例：**
+
+```typescript
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: number = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+    this.monitor = UIUtils.addMonitor(() => this.value, this.onChange);
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 监听解绑之后不会再触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+
+      // 解绑监听
+      Button('Clear Monitor')
+        .onClick(() => {
+          if (this.monitor) {
+            UIUtils.clearMonitor(this.monitor!);
+          }
+        })
+    }
+  }
+}
+```
+### canBeObserved<sup>24+</sup>
+static canBeObserved\<T extends object\>(source: T): ObservedResult
+
+判断数据对象是否为可观察对象，并返回观察结果。详见[canBeObserved接口：判断对象是否为可被观察对象](../../ui/state-management-static/arkts-static-new-canBeObserved.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明     |
+| ------ | ---- | ---- | ------------ |
+| source | T    | 是   | 输入一个数据对象，判断其是否可被观察。</br>具体使用规则，详见[canBeObserved接口：判断对象是否为可被观察对象](../../ui/state-management-static/arkts-static-new-canBeObserved.md)。 |
+
+**返回值：**
+
+| 类型 | 说明     |
+| ---- | ------------ |
+| [ObservedResult](#observedresult24) | 返回对象是否可被观察的结果。 |
+
+**示例：**
+
+``` ts
+'use static'
+
+import { Entry, Text, Column, Component, Button, State, UIUtils, Observed } from '@kit.ArkUI'
+@Observed
+class Info {
+  age: number = 25;
+  name: string = 'Tom';
+}
+@Entry
+@Component
+struct Index {
+  @State info: Info = new Info();
+
+  build() {
+    Column() {
+      Text(`age: ${this.info.age}`)
+      Button('show observe result')
+        .onClick(() => {
+          console.info(`observed result: ${JSON.stringify(UIUtils.canBeObserved(this.info))}`);
+        })
+    }
+  }
+}
+```
+
+### getCustomComponentContext
+
+static getCustomComponentContext\<T extends IVariableOwner\>(customComponent: T): CustomComponentContext
+
+获取自定义组件的上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：**26.0.0
+
+**参数：**
+
+| 参数名          | 类型 | 必填 | 说明             |
+| --------------- | ---- | ---- | ---------------- |
+| customComponent | T    | 是   | 自定义组件对象。 |
+
+**返回值：**
+
+| 类型                                              | 说明                         |
+| ------------------------------------------------- | ---------------------------- |
+| [CustomComponentContext](#customcomponentcontext) | 传入自定义组件的上下文信息。 |
+
+## MonitorOptions<sup>23+</sup>
+
+设置监听的行为。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| isSynchronous | boolean | 否 | 是 | 指定函数是否同步执行，`true`为同步，`false`为异步。默认为`false`。|
+| owner | [IVariableOwner](./arkui-ts/ts-state-management-monitor-static.md#ivariableowner) | 否 | 是 | 指定冻结的组件，仅能传入@ComponentV2装饰的自定义组件，默认值为`undefined`。|
+| path | string \| string[] | 否 | 是 | 显式指定监听状态变量的路径，默认为`addMonitor`自动生成的路径。|
+
+## StorageDefaultCreator\<T\><sup>22+</sup>
+
+type StorageDefaultCreator\<T\> = () => T
+
+返回默认构造器的函数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明                                             |
+| ---- | ------------------------------------------------ |
+| () => T    | 返回默认构造器的函数。 |
+
+**示例：**
+
+```ts
+import { PersistenceV2, ObservedV2, Trace } from '@kit.ArkUI';
+
+@ObservedV2
+class Info {
+  @Trace userInfo: int = 1;
+}
+
+@ObservedV2
+class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace info: Info = new Info();
+
+  public toJson(): jsonx.JsonElement {
+    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    // 存储userName
+    const userNameEle = new jsonx.JsonElement();
+    userNameEle.setString(this.userName);
+    root.setElement('userName', userNameEle);
+    // 存储userId
+    const userIdEle = new jsonx.JsonElement();
+    userIdEle.setInteger(this.userId);
+    root.setElement('userId', userIdEle);
+    // 存储info对象
+    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
+    const infoEle = new jsonx.JsonElement();
+    infoEle.setInteger(this.info.userInfo);
+    inforoot.setElement('userInfo', infoEle);
+    root.setElement('inforoot', inforoot);
+    return root;
+  }
+
+  public fromJson(json: jsonx.JsonElement): void {
+    this.userName = json.getElement('userName').asString();
+    this.userId = json.getElement('userId').asInteger();
+    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
+  }
+}
+
+const toJsonPerson = (person: Person) => {
+  return person.toJson();
+}
+
+const fromJsonPerson = (json: jsonx.JsonElement): Person => {
+  let person = new Person();
+  person.fromJson(json);
+  return person;
+}
+
+// 将key为Person、value为new Person()对象的键值对持久化，并赋值给source
+// StorageDefaultCreator 指的是 () => new Person()
+const source: Person = PersistenceV2.connect<Person>(
+  Type.from<Person>(),
+  'Person',
+  toJsonPerson,
+  fromJsonPerson,
+  (): Person => {
+    return new Person();
+  },true
+)!;
+
+@Entry
+@Component
+struct PersonComp {
+  data: Person = source;
+
+  build() {
+    Column() {
+      Text(`${this.data.info.userInfo}`)
+    }
+  }
+}
+```
+
+## GetterCallback\<T\>
+
+type GetterCallback\<T\> = () => T
+
+获取绑定值的回调方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明           |
+| ---- | -------------- |
+| T    | 返回当前组件。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { UIUtils, Binding, State } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
+
+@Builder
+function CustomButton(readOnlyParam: Binding<number>) {
+  Row() {
+    Button(`Custom btn: ${readOnlyParam.value}`)
+  }
+}
+
+@Entry
+@Component
+struct MyApp {
+  @State num1: number = 1;
+  build() {
+    Column() {
+      Button(`Entry btn ${this.num1}`)
+        .onClick((e) => {
+          this.num1 += 1;
+        });
+      CustomButton(
+        // UIUtils.makeBinding函数的第一个参数是GetterCallback
+        UIUtils.makeBinding(() => this.num1),
+      );
+    }
+  }
+}
+```
+
+## SetterCallback\<T\>
+
+type SetterCallback\<T\> = (newValue: T) => void
+
+设置绑定值的回调方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明            |
+| -------- | ---- | ---- | --------------- |
+| newValue | T    | 是   | 类型为T的参数。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { UIUtils,MutableBinding, State } from '@ohos.arkui.stateManagement';
+import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
+
+@Builder
+function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: MutableBinding<number>) {
+  Row() {
+    Button(`Custom btn: ${mutableParam1.value} -- ${mutableParam2.value}`)
+      .onClick((e) => {
+        mutableParam1.value += 1;
+        mutableParam2.value += 1;
+      });
+  }
+}
+
+@Entry
+@Component
+struct MyApp {
+  @State num2: number = 10;
+  @State num3: number = 100;
+
+  build() {
+    Column() {
+      Button(`Entry btn ${this.num2} -- ${this.num3}`)
+        .onClick((e) => {
+          this.num2 += 1;
+          this.num3 += 1;
+        });
+      CustomButton(
+        // UIUtils.makeBinding函数的第二个参数应为SetterCallback
+        UIUtils.makeBinding(() => this.num2, (v) => {
+          this.num2 = v;
+        }),
+        UIUtils.makeBinding(() => this.num3, (v) => {
+          this.num3 = v;
+        })
+      );
+    }
+  }
+}
+```
+
+## Binding\<T\>
+
+只读数据绑定的泛型类可以绑定任意类型的数据（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
+
+### value
+get value(): T
+
+提供get访问器以获取当前绑定值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明                                                  |
+| ---- | ----------------------------------------------------- |
+| T    | 返回值类型为泛型参数T，与Binding\<T\>定义的类型一致。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { Binding } from '@ohos.arkui.stateManagement';
+import { Row, Button, Builder } from '@ohos.arkui.component';
+
+@Builder
+function CustomButton(readOnlyParam: Binding<number>) {
+  // CustomButton的第一个参数为Binding，一个只读数据绑定的泛型类
+  Row() {
+    // num1.value Binding类可以使用绑定的值
+    Button(`Custom btn: ${readOnlyParam.value}`)
+  }
+}
+```
+
+## MutableBinding\<T\>
+
+可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
+
+### value
+set value(newValue: T)
+
+提供set访问器，用于设置当前绑定值。构造MutableBinding类实例时必须提供set访问器，否则会触发运行时错误。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型 | 必填 | 说明                                                       |
+| -------- | ---- | ---- | ---------------------------------------------------------- |
+| newValue | T    | 是   | 参数类型为泛型参数T，与MutableBinding\<T\>定义的类型一致。 |
+
+### value
+get value(): T
+
+提供get访问器，用于获取当前绑定值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 描述                                                  |
+| ---- | ----------------------------------------------------- |
+| T    | 返回值类型为泛型参数T，与Binding\<T\>定义的类型一致。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { MutableBinding } from '@ohos.arkui.stateManagement';
+import { Row, Button, ClickEvent, Builder } from '@ohos.arkui.component';
+
+@Builder
+function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: MutableBinding<number>) {
+  // CustomButton的第二个参数为MutableBinding，即一个可变数据绑定的泛型类
+  Row() {
+    Button(`Custom btn: ${mutableParam1.value} -- ${mutableParam2.value}`)
+      .onClick((e) => {
+        // 可变数据绑定的泛型类可以修改绑定的值
+        mutableParam1.value += 1;
+        mutableParam2.value += 1;
+      });
+  }
+}
+```
+
+## ObservedResult<sup>24+</sup>
+
+对象是否可被观察的结果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 类型 | 只读  |可选 | 说明     |
+| ------ | ---- | ---- | ---- | ------------ |
+| isObserved | boolean  | 否 |  否   | 对象是否可被观察。<br/>true：表示是可被观察对象。<br/>false：表示不是可被观察对象。 |
+| reason | string  | 否 | 否   | 对象是否可被观察的原因。<br/>不可被观察原因：对象本身是不可被观察的。<br/>可被观察原因或使用场景：<br/> 1. 对象被[@Observed](./../../ui/state-management-static/arkts-static-observed-and-objectlink.md)装饰器装饰。 <br/> 2. 对象被[@ObservedV2和@Trace](./../../ui/state-management-static/arkts-static-new-observedV2-and-trace.md)装饰。 <br/> 3. 对象为被V1装饰器装饰或被[makeObserved](#makeobserved)方法转换的interface字面量。 <br/> 4. 对象为被V1/V2装饰器装饰或被makeObserved方法转换的Array/Map/Set/Date类型。<br/> 5. 对象被@Observed装饰器装饰，但未使用在UI上。 <br/> 6. 对象被@ObservedV2和@Trace装饰，但未使用在UI上。 <br/> 7. 对象为被V1装饰器装饰或被makeObserved方法转换的interface字面量，但未用在UI上。 <br/> 8. 对象为被V1/V2装饰器装饰或被makeObserved方法转换的Array/Map/Set/Date类型，但未用在UI上。 |
+| decoratorInfo | Array\<[DecoratorInfo](#decoratorinfo24)\>  | 否 | 否   | 对象可被观察时，数组中内容为对象关联的装饰器和组件信息。对象不可被观察时，此数组为空。 |
+
+## DecoratorInfo<sup>24+</sup>
+
+可被观察对象关联的装饰器和组件信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 类型 | 只读  | 可选 | 说明     |
+| ------ | ---- | ---- |---- | ------------ |
+| decoratorName | string  | 否 | 否   | 当对象被[@Observed](./../../ui/state-management-static/arkts-static-observed-and-objectlink.md)装饰时，值为对象关联的装饰器名称。<br/> 当对象属性使用[@Track](./../../ui/state-management-static/arkts-static-track.md)时，值为：`@Track`。<br/> 当对象属性使用[@Trace](./../../ui/state-management-static/arkts-static-new-observedV2-and-trace.md)时，值为：`@Trace`。<br/> 当对象经过[makeObserved](#makeobserved)转换时，值为：`MakeObserved`。<br/> 当对象为被V1装饰器装饰的built-in类型时，值为对象关联的装饰器名称。<br/> 当对象为被V1装饰器装饰的interface字面量时，值为对象关联的装饰器名称。<br/> 当对象被@Observed装饰且使用在V2组件中时，值为：`@Observed(mix used in V2)`。 <br/> 当对象为被V1装饰器装饰的built-in类型且使用在V2组件中时，值为：`V1 Decorated BuiltInType(mix used in V2)`。<br> 当对象为被V1装饰器装饰的interface字面量且使用在V2组件中时，值为：`V1 Decorated ObjectLiteral(mix used in V2)`。<br> 当对象为被V2装饰器装饰的built-in类型时，值为：`V2 Decorated BuiltInType`。 |
+| stateVariableName | string  | 否 | 否   | 被装饰器装饰的属性名称。<br/>在V1组件中被状态管理V1装饰器装饰的@Observed装饰的对象、interface字面量和built-in类型对象返回V1装饰器的名称。<br/>使用@Track装饰器、@Trace装饰器时返回属性名。<br/>使用V2装饰器装饰或makeObserved转换的built-in对象时，返回可观测属性的名称。常见的框架内置可观察属性见下表。<br>makeObserved转换的interface字面量返回`Any Object Literal Property`。 |
+| owningComponentOrClassName | string  | 否 | 否   | 在V1组件中被状态管理V1装饰器装饰的@Observed装饰的对象、interface字面量和built-in类型对象返回V1组件名称。<br/>使用@Track装饰器、@Trace装饰器时返回对象名称。<br/>使用V2装饰器装饰或makeObserved转换的built-in对象时，返回对象名称。<br/>使用makeObserved转换的interface字面量时，返回字面量的定义名称。 |
+| owningComponentId | int | 否 | 否   | 在V1组件中被状态管理V1装饰器装饰的@Observed装饰的对象、interface字面量和built-in类型对象返回V1组件ID。<br/>其余情况返回-1。 |
+| dependentInfo | Array\<[ElementInfo](#elementinfo24)\> | 否 | 否   | 使用该可观察对象的组件信息。若对象没有用在任何UI上，则返回空数组。 |
+
+**常见框架内置可观察属性表**
+
+| 名称                   | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| "\_\_OB\_LENGTH"       | 容器的长度（Array的length属性/Map的size属性/Set的size属性）变化时，通知关联的组件刷新。 |
+| "\_\_OB\_ANY\_INDEX"    | Array的任意元素变化时，通知关联的组件刷新。                    |
+| "\_\_OB\_ANY\_PROPERTY" | Map/Set的任意元素变化时，通知关联的组件刷新。                  |
+| "\_\_OB\_DATE"         | Date的内置属性变化时，通知关联的组件刷新。                     |
+
+## ElementInfo<sup>24+</sup>
+
+可被观察对象关联的组件信息，包含系统组件和自定义组件。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 类型 | 只读  | 可选 | 说明     |
+| ------ | ---- | ---- |---- | ------------ |
+| elementName | string  | 否 | 否   | 组件的名称。 |
+| elementId | int | 否 | 否   | 组件的ID。 |
+
+## MonitorValueInfo
+
+监听变量信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| valueCallback | [MonitorValueCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorvaluecallback) | 否   | 否   | 获取变量的回调。                                             |
+| path          | string                                                       | 否   | 是   | 路径信息。未传入将使用自动生成的默认值。                     |
+| observeProps  | boolean                                                      | 否   | 是   | 是否开启属性观察。<br>true：开启属性观察；false：不开启属性观察。<br>默认值：false。 |
+
+## MonitorBaseOptions
+
+监听基础选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| isSynchronous | boolean                                                      | 否   | 是   | 是否同步回调。<br>true：同步回调；false：异步回调。<br>默认值：false。 |
+| owner         | [IVariableOwner](./arkui-ts/ts-state-management-monitor-static.md#ivariableowner) | 否   | 是   | 指定冻结的组件，仅能传入[@ComponentV2](../../ui/state-management-static/arkts-static-componentv2.md)装饰的自定义组件。默认值为`undefined`，即不指定冻结的组件。 |
+
+## CustomComponentContext
+
+自定义组件的上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+## ObservedArray\<T\>
+
+继承自Array\<T\>，为可观察API操作的Array对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr1 = new ObservedArray<int>();
+```
+
+### constructor
+
+constructor(first: T, ...d: T[])
+
+使用元素列表初始化ObservedArray实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| first | T | 是 | 第一个元素。 |
+| d | T[] | 否 | 其余元素组成的数组，默认为[]。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr2 = new ObservedArray<int>(1, 2, 3);
+```
+
+### constructor
+
+constructor(arrayLen: int, initializer: ObservedArrayInitializer\<T\>)
+
+使用指定的长度和初始化函数初始化ObservedArray实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| arrayLen | int | 是 | 数组初始长度。 |
+| initializer | [ObservedArrayInitializer\<T\>](#observedarrayinitializer) | 是 | 数组元素初始化函数。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr3 = new ObservedArray<int>(3, (index: int): int => index * 10);
+```
+
+## ObservedArrayInitializer
+
+type ObservedArrayInitializer\<T\> = (index: int) => T
+
+ObservedArray的元素初始化函数类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| index | int | 是 | 当前初始化元素的索引。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| T | 对应索引位置的元素值。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let initializer = (index: int): int => index;
+let arr = new ObservedArray<int>(4, initializer);
+```
+
+## ObservedMap\<K, V\>
+
+继承自Map\<K, V\>，为可观察API操作的Map对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map1 = new ObservedMap<int, string>();
+```
+
+### constructor
+
+constructor(initialCapacity: int)
+
+使用指定的容量创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| initialCapacity | int | 是 | 指定的初始容量。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map2 = new ObservedMap<int, string>(16);
+```
+
+### constructor
+
+constructor(entries: [K, V][])
+
+使用键值对数组创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| entries | [K, V][] | 是 | 初始键值对数组。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map3 = new ObservedMap<int, string>([[0, 'a'], [1, 'b']]);
+```
+
+### constructor
+
+constructor(map: Map\<K, V\>)
+
+使用已有Map对象创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| map | Map\<K, V\> | 是 | 初始Map对象。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map4 = new ObservedMap<int, string>(new Map<int, string>([[0, 'a'], [1, 'b']]));
+```
+
+## ObservedSet\<K\>
+
+继承自Set\<K\>，为可观察API操作的Set对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set1 = new ObservedSet<int>();
+```
+
+### constructor
+
+constructor(bucketsCount: int)
+
+使用指定的容量创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| bucketsCount | int | 是 | 指定的初始容量。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set2 = new ObservedSet<int>(16);
+```
+
+### constructor
+
+constructor(values: K[])
+
+使用元素数组创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| values | K[] | 是 | 初始元素数组。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set3 = new ObservedSet<int>([1, 2, 3]);
+```
+
+### constructor
+
+constructor(set: Set\<K\>)
+
+使用已有Set对象创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| set | Set\<K\> | 是 | 初始Set对象。 |
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set4 = new ObservedSet<int>(new Set<int>([1, 2, 3]));
+```
+
+## ObservedDate
+
+继承自Date，为可观察API操作的Date对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedDate } from '@kit.ArkUI';
+
+let date1 = new ObservedDate();
+```
+
+### constructor
+
+constructor(value: long | string | Date)
+
+使用指定初始值创建ObservedDate实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value | long \| string \| Date | 是 | 初始时间值。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedDate } from '@kit.ArkUI';
+
+let date2 = new ObservedDate('2021-08-08');
+let date3 = new ObservedDate(new Date('2021-08-08'));
+```

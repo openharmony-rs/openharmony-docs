@@ -9,7 +9,9 @@
 设置组件对齐方式、布局方向及显示位置。
 
 > **说明：**
-> 
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## align
@@ -24,9 +26,15 @@ align(value: Alignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[align](#align23)。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
-<!--Table: 10%; 10%; 10%; 70%-->
+<!--Table: 10%; 15%; 10%; 65%-->
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Alignment](ts-appendix-enums.md#alignment) | 是   | 设置当前组件绘制区域内的子组件的对齐方式。<br/>只在[Stack](ts-container-stack.md)、[FolderStack](ts-container-folderstack.md)、[Shape](ts-drawing-components-shape.md)、[Button](ts-basic-components-button.md)、[Marquee](ts-basic-components-marquee.md)、[StepperItem](ts-basic-components-stepperitem.md)、[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Hyperlink](ts-container-hyperlink.md)、[SymbolGlyph](ts-basic-components-symbolGlyph.md)、[ListItem](ts-container-listitem.md)、[GridItem](ts-container-griditem.md)、[Scroll](ts-container-scroll.md)、[FlowItem](ts-container-flowitem.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[PatternLock](ts-basic-components-patternlock.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[TextClock](ts-basic-components-textclock.md)、[TextTimer](ts-basic-components-texttimer.md)、[MenuItem](ts-basic-components-menuitem.md)、[Toggle](ts-basic-components-toggle.md)、[Checkbox](ts-basic-components-checkbox.md)、[NodeContainer](ts-basic-components-nodecontainer.md)中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考[textAlign](ts-basic-components-text.md#textalign)。<br/>不支持textAlign属性的组件则无法设置水平方向的文字对齐。<br/>默认值：Alignment.Center<br/>**说明：** <br/>该属性在[Stack](ts-container-stack.md)组件上支持镜像能力，在其他组件上不支持镜像能力。<br/>在Stack中该属性与alignContent效果一致，只能设置子组件在当前组件内的对齐方式。 |
@@ -49,8 +57,15 @@ align(alignment: Alignment | LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[align](#align23)。
+
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
+<!--Table: 20%; 20%; 10%; 50%-->
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 是   | 设置当前组件绘制区域内的子组件的对齐方式，增加支持镜像的能力。<br/>LocalizedAlignment只在[Shape](ts-drawing-components-shape.md)、[Button](ts-basic-components-button.md)、[GridItem](ts-container-griditem.md)、[FlowItem](ts-container-flowitem.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[PatternLock](ts-basic-components-patternlock.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[TextClock](ts-basic-components-textclock.md)、[TextTimer](ts-basic-components-texttimer.md)、[StepperItem](ts-basic-components-stepperitem.md)、[MenuItem](ts-basic-components-menuitem.md)、[Toggle](ts-basic-components-toggle.md)、[Checkbox](ts-basic-components-checkbox.md)、[ListItem](ts-container-listitem.md)中有效果。<br/>其中，除[ListItem](ts-container-listitem.md)与Alignment的效果保持一致以外，其他组件镜像切换均生效；其他设置LocalizedAlignment无效果的组件按其默认效果显示。<br/>默认值：Alignment.Center、LocalizedAlignment.CENTER<br/>设置异常值按默认值处理，效果为居中显示。<br/>**说明：** <br/>Alignment类型不支持镜像能力；LocalizedAlignment类型支持镜像能力，选择LocalizedAlignment中的枚举值，根据direction或系统语言方向的改变实现镜像切换。其中direction的优先级高于系统语言方向，当设置direction且不为auto时，LocalizedAlignment的镜像按照direction进行布局；当设置direction为auto或未设置时，LocalizedAlignment的镜像按照系统语言方向进行布局。|
@@ -61,9 +76,37 @@ align(alignment: Alignment | LocalizedAlignment): T
 | --- | --- |
 |  T | 返回当前组件。 |
 
+## align<sup>23+</sup>
+
+align(alignment: Alignment \| LocalizedAlignment | undefined): this
+
+设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[align](#align)和[align](#align20)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                         |
+| ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) \| undefined | 是   | 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。<br/>默认值：Alignment.Center<br/>**说明：** <br/>Alignment类型不支持镜像能力，<br/>align属性入参为undefined或null时按默认值处理，效果为居中显示。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+|  this | 返回当前组件。 |
+
 ## direction
 
-direction(value: Direction): T
+ArkTS-Dyn: direction(value: Direction): T
+
+ArkTS-Sta: direction(value: Direction | undefined): this
 
 设置当前组件绘制区域内主轴方向上的布局，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -73,21 +116,27 @@ direction(value: Direction): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                |
 | ------ | ------------------------------------------- | ---- | --------------------------------------------------- |
-| value  | [Direction](ts-appendix-enums.md#direction) | 是   | 设置当前组件绘制区域内主轴方向上的布局。<br/>属性配置为auto的时候，按照系统语言方向进行布局。<br/>该属性在Column组件上不生效。<br/>默认值：Direction.Auto <br/>direction取undefined或null时按默认值处理。 |
+| value  | ArkTS-Dyn: [Direction](ts-appendix-enums.md#direction)<br/>ArkTS-Sta: [Direction](ts-appendix-enums.md#direction) \| undefined | 是   | 设置当前组件绘制区域内主轴方向上的布局。<br/>属性配置为auto的时候，按照系统语言方向进行布局。<br/>该属性在Column组件上不生效。<br/>默认值：Direction.Auto <br/>direction取undefined或null时按默认值处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## position
 
-position(value: Position | Edges | LocalizedEdges): T
+ArkTS-Dyn: position(value: Position | Edges | LocalizedEdges): T
+
+ArkTS-Sta: position(value: Position | Edges | LocalizedEdges | undefined): this
 
 绝对定位，确定子组件相对父组件内容区的位置，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -107,21 +156,27 @@ position(value: Position | Edges | LocalizedEdges): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | 是   | 绝对定位，确定子组件相对父组件内容区的位置，父组件内容区的大小为父组件大小减去[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)、[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)后提供给子组件可布局的内容区域大小。<br/>设置异常值时该属性不生效。 |
+| value  | ArkTS-Dyn: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12)<br/>ArkTS-Sta: [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) \| undefined | 是   | 绝对定位，确定子组件相对父组件内容区的位置，父组件内容区的大小为父组件大小减去[border](ts-universal-attributes-border.md#border)、[padding](ts-universal-attributes-size.md#padding)、[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)后提供给子组件可布局的内容区域大小。<br/>设置异常值时该属性不生效。<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## markAnchor
 
-markAnchor(value: Position | LocalizedPosition): T
+ArkTS-Dyn: markAnchor(value: Position | LocalizedPosition): T
+
+ArkTS-Sta: markAnchor(value: Position | LocalizedPosition | undefined): this
 
 设置元素在位置定位时的锚点，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -131,21 +186,27 @@ markAnchor(value: Position | LocalizedPosition): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                             | 必填 | 说明                                                         |
 | ------ | -------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [LocalizedPosition<sup>12+</sup>](ts-types.md#localizedposition12) | 是   | 设置元素在位置定位时的锚点，基于position或offset的初始位置，进行进一步的偏移调整。<br/>设置.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})，效果等于设置.position({x: value1 - value3, y: value2 - value4})，offset同理。<br/>单独设置.markAnchor({x: value1, y: value2})，效果等于设置.offset({x: -value1, y: -value2})。<br/>API version 9及以前，默认值为：{x: 0, y: 0}<br/>API version 10：无默认值。 <br/>设置异常值时该属性不生效。|
+| value  | ArkTS-Dyn: [Position](ts-types.md#position) \| [LocalizedPosition<sup>12+</sup>](ts-types.md#localizedposition12)<br/>ArkTS-Sta: [Position](ts-types.md#position) \| [LocalizedPosition](ts-types.md#localizedposition12) \| undefined | 是   | 设置元素在位置定位时的锚点，基于position或offset的初始位置，进行进一步的偏移调整。<br/>设置.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})，效果等于设置.position({x: value1 - value3, y: value2 - value4})，offset同理。<br/>单独设置.markAnchor({x: value1, y: value2})，效果等于设置.offset({x: -value1, y: -value2})。<br/>API version 9及以前，默认值为：{x: 0, y: 0}<br/>API version 10：无默认值。 <br/>设置异常值时该属性不生效。<br/>取值为undefined时，与不设置表现一致。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## offset
 
-offset(value: Position | Edges | LocalizedEdges): T
+ArkTS-Dyn: offset(value: Position | Edges | LocalizedEdges): T
+
+ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined): this
 
 相对偏移，组件相对原本的布局位置进行偏移。和position一起使用时，position生效，offset不生效，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -155,17 +216,21 @@ offset(value: Position | Edges | LocalizedEdges): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12)  \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | 是   | 相对偏移，组件基于原本的布局位置进行偏移。offset属性不影响父组件布局，仅在绘制时调整位置。<br/>Position类型基于组件自身左上角偏移，Edges类型基于组件自身四边偏移。 offset属性设置{x: x, y: y}与设置{left: x, top: y}以及{right: -x, bottom: -y}效果相同，类型LocalizedEdges支持镜像模式：LTR模式下start等同于x，RTL模式下start等同于-x。<br/>API version 9及以前，默认值为：{x: 0, y: 0}<br/>默认单位：vp<br/>API version 10：无默认值。<br/>设置异常值时该属性不生效。|
+| value  | ArkTS-Dyn: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12)  \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12)<br/>ArkTS-Sta: [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12)  \| [LocalizedEdges](ts-types.md#localizededges12) \| undefined | 是   | 相对偏移，组件基于原本的布局位置进行偏移。offset属性不影响父组件布局，仅在绘制时调整位置。<br/>Position类型基于组件自身左上角偏移，Edges类型基于组件自身四边偏移。 offset属性设置{x: x, y: y}与设置{left: x, top: y}以及{right: -x, bottom: -y}效果相同，类型LocalizedEdges支持镜像模式：LTR模式下start等同于x，RTL模式下start等同于-x。<br/>API version 9及以前，默认值为：{x: 0, y: 0}<br/>默认单位：vp<br/>API version 10：无默认值。<br/>设置异常值时该属性不生效。<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## alignRules<sup>9+</sup>
 
@@ -178,6 +243,10 @@ alignRules(value: AlignRuleOption): T
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -203,6 +272,10 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
@@ -215,9 +288,37 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 | --- | --- |
 |  T | 返回当前组件。 |
 
+## alignRules<sup>23+</sup>
+
+alignRules(value: AlignRuleOption | LocalizedAlignRuleOptions | undefined): this
+
+设置在相对容器中子组件的对齐规则，仅当父容器为[RelativeContainer](ts-container-relativecontainer.md)时生效。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[alignRules](#alignrules9)和[alignRules](#alignrules12)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                     |
+| ------ | ------------------------------------------- | ---- | ------------------------ |
+| value  | [AlignRuleOption](#alignruleoption9对象说明) \| [LocalizedAlignRuleOptions](#localizedalignruleoptions12对象说明) \| undefined | 是   | 设置在相对容器中子组件的对齐规则。<br/>取值为undefined时，与不设置表现一致。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+|  this | 返回当前组件。 |
+
 ## layoutGravity<sup>20+</sup>
 
-layoutGravity(alignment: LocalizedAlignment): T
+ArkTS-Dyn: layoutGravity(alignment: LocalizedAlignment): T
+
+ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 单独设置Stack组件中子组件的对齐规则，仅当父组件为Stack时生效。与align属性同时使用时，layoutGravity优先级更高，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
@@ -227,23 +328,31 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignment  | [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 是   | 指定设置在Stack组件中子组件的对齐规则。<br/>默认值：LocalizedAlignment.CENTER 。说明：当传入异常值时，按默认值处理。|
+| alignment  | ArkTS-Dyn: [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20)<br/>ArkTS-Sta: [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) \| undefined | 是   | 指定设置在Stack组件中子组件的对齐规则。<br/>默认值：LocalizedAlignment.CENTER 。说明：当传入异常值时，按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## AlignRuleOption<sup>9+</sup>对象说明
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -269,6 +378,10 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | anchor<sup>9+</sup>  | string  |否|否| 设置作为锚点的组件的id值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -288,6 +401,10 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | anchor<sup>9+</sup>  | string |否|否| 设置作为锚点的组件的id值。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -298,6 +415,10 @@ layoutGravity(alignment: LocalizedAlignment): T
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -315,6 +436,10 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | anchor  | string  |否|否| 设置作为锚点的组件的id值。 |
@@ -326,6 +451,10 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | anchor  | string |否|否| 设置作为锚点的组件的id值。 |
@@ -333,7 +462,9 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 ## chainMode<sup>12+</sup>
 
-chainMode(direction: Axis, style: ChainStyle): T
+ArkTS-Dyn: chainMode(direction: Axis, style: ChainStyle): T
+
+ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined): this
 
 指定以该组件为链头所构成的链的参数，仅当父组件为[RelativeContainer](ts-container-relativecontainer.md)时生效。链头指满足成链规则时链的第一个组件（水平方向从左边起始，镜像语言下从右边起始；竖直方向从上边起始）。
 
@@ -343,18 +474,24 @@ chainMode(direction: Axis, style: ChainStyle): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| direction  | [Axis](ts-appendix-enums.md#axis) | 是   | 链的方向。 |
-| style  | [ChainStyle](#chainstyle12) | 是   | 链的样式。 |
+| direction  | ArkTS-Dyn: [Axis](ts-appendix-enums.md#axis)<br/>ArkTS-Sta: [Axis](ts-appendix-enums.md#axis)\| undefined | 是   | 链的方向。<br/>取值为undefined时，与不设置表现一致。 |
+| style  | ArkTS-Dyn: [ChainStyle](#chainstyle12)<br/>ArkTS-Sta: [ChainStyle](#chainstyle12) \| undefined | 是   | 链的样式。<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## ChainStyle<sup>12+</sup>
 
@@ -364,11 +501,15 @@ chainMode(direction: Axis, style: ChainStyle): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                                                         |
-| ------------- | ------------------------------------------------------------ |
-| SPREAD        | 组件在约束锚点间均匀分布。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
-| SPREAD_INSIDE | 除首尾2个子组件的其他组件在约束锚点间均匀分布。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
-| PACKED        | 链内子组件无间隙。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称          | 值 | 说明                                                         |
+| ------------- | ----- | ------------------------------------------------------------ |
+| SPREAD        | 0 | 组件在约束锚点间均匀分布。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
+| SPREAD_INSIDE | 1 | 除首尾2个子组件的其他组件在约束锚点间均匀分布。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
+| PACKED        | 2 | 链内子组件无间隙。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
 
 >  **说明：**
 >
@@ -376,7 +517,9 @@ chainMode(direction: Axis, style: ChainStyle): T
 
 ## chainWeight<sup>14+</sup>
 
-chainWeight(chainWeight: ChainWeightOptions): T
+ArkTS-Dyn: chainWeight(chainWeight: ChainWeightOptions): T
+
+ArkTS-Sta: chainWeight(chainWeight: ChainWeightOptions | undefined): this
 
 对形成链的组件进行重新布局。仅当父组件为[RelativeContainer](ts-container-relativecontainer.md)时生效。
 
@@ -388,17 +531,21 @@ chainWeight(chainWeight: ChainWeightOptions): T
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| chainWeight  | [ChainWeightOptions](ts-types.md#chainweightoptions14对象说明) | 是   | 设置了chainWeight属性的组件与同一条链上的兄弟组件在水平或竖直方向的尺寸会按照设置的权重进行分配，分配时会忽略组件本身尺寸设置，按分配的权重自适应占满剩余空间。 |
+| chainWeight  | ArkTS-Dyn: [ChainWeightOptions](ts-types.md#chainweightoptions14对象说明)<br/>ArkTS-Sta: [ChainWeightOptions](ts-types.md#chainweightoptions14对象说明) \| undefined | 是   | 设置了chainWeight属性的组件与同一条链上的兄弟组件在水平或竖直方向的尺寸会按照设置的权重进行分配，分配时会忽略组件本身尺寸设置，按分配的权重自适应占满剩余空间。<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 **示例：**
 
@@ -409,6 +556,8 @@ chainWeight(chainWeight: ChainWeightOptions): T
 ### 示例1（对齐方式和主轴方向上的布局）
 
 设置内容在元素内的对齐方式和子元素在父组件主轴方向上的布局。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -456,11 +605,62 @@ struct PositionExample1 {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Column, Stack, Row, ColumnOptions, FlexDirection, TextAlign, Alignment, Direction, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct PositionExample1 {
+  build() {
+    Column() {
+      Column({ space: 10 } as ColumnOptions) {
+        // 元素内容<元素宽高，设置内容在与元素内的对齐方式
+        Text('align').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Stack() {
+          Text('First show in bottom end').height('65%').backgroundColor(0xD2B48C)
+          Text('Second show in bottom end').backgroundColor(0xF5DEB3).opacity(0.9)
+        }.width('90%').height(50).margin({ top: 5 } as Margin).backgroundColor(0xFFE4C4)
+        .align(Alignment.BottomEnd)
+        Stack() {
+          Text('top start')
+        }.width('90%').height(50).margin({ top: 5 } as Margin).backgroundColor(0xFFE4C4)
+        .align(Alignment.TopStart)
+
+        // 父容器设置direction为Direction.Ltr，子元素从左到右排列
+        Text('direction').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Row() {
+          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
+          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
+          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
+          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
+        }
+        .width('90%')
+        .direction(Direction.Ltr)
+        // 父容器设置direction为Direction.Rtl，子元素从右到左排列
+        Row() {
+          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
+          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
+          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
+          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
+        }
+        .width('90%')
+        .direction(Direction.Rtl)
+      }
+    }
+    .width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![align.png](figures/align.png)
 
 ### 示例2（位置偏移）
 
 基于父组件、相对定位、锚点作出位置偏移。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -545,11 +745,99 @@ struct PositionExample2 {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Column, Stack, Row, ColumnOptions, FlexDirection, TextAlign, Alignment, Direction, Margin, Color, BorderStyle, Position } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct PositionExample2 {
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      // 设置子组件左上角相对于父组件左上角的偏移位置
+      Text('position').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2 position(30, 10)')
+          .size({ width: '60%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .align(Alignment.Start)
+          .position({ x: 30, y: 10 } as Position)
+        Text('3').size({ width: '45%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 position(50%, 70%)')
+          .size({ width: '50%', height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .position({ x: '50%', y: '70%' } as Position)
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+
+      // 相对于起点偏移，其中x为最终定位点距离起点水平方向间距，x>0往左，反之向右。
+      // y为最终定位点距离起点垂直方向间距，y>0向上，反之向下
+      Text('markAnchor').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Stack({ alignContent: Alignment.TopStart }) {
+        Row()
+          .size({ width: '100', height: '100' })
+          .backgroundColor(0xdeb887)
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: 25, y: 25 } as Position)
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: -100, y: -25 } as Position)
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: 25, y: -25 } as Position)
+      }.margin({ top: 25 } as Margin).border({ width: 1, style: BorderStyle.Dashed })
+
+      // 相对定位，x>0向右偏移，反之向左，y>0向下偏移，反之向上
+      Text('offset').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2  offset(15, 30)')
+          .size({ width: 120, height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .align(Alignment.Start)
+          .offset({ x: 15, y: 30 } as Position)
+        Text('3').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 offset(-5%, 20%)')
+          .size({ width: 100, height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .offset({ x: '-5%', y: '20%' } as Position)
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+    }
+    .width('100%').margin({ top: 25 } as Margin)
+  }
+}
+```
+
 ![position.png](figures/position.png)
 
 ### 示例3（绝对定位和相对偏移）
 
 使用position设置绝对定位，确定子组件相对父组件的位置。使用offset设置相对偏移，组件相对原本的布局位置进行偏移。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -625,11 +913,52 @@ struct Example3 {
 }
 ```
 
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Column, Stack, Row, ColumnOptions, FlexDirection, TextAlign, Alignment, Direction, Margin, Color, BorderStyle, Edges } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Example3 {
+  build() {
+    Column({ space: 20 } as ColumnOptions){
+      Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('bottom:0, right:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).position({bottom: 0, right: 0} as Edges)
+        Text('top:0, left:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).position({top: 0, left: 0} as Edges)
+        Text('top:10%, left:50%').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).position({ top: '10%', left: '50%' } as Edges)
+        Text('bottom:0, left:30').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).position({ bottom: 0, left: 30 } as Edges)
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+
+
+      Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2 top:30, left:0').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center).offset({top: 30, left: 0} as Edges)
+        Text('3').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 bottom:10, right:30').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(12)
+          .textAlign(TextAlign.Center).offset({bottom: 10, right: 30} as Edges)
+      }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
+    }.width('100%').margin({ top: 25 } as Margin)
+  }
+}
+```
+
 ![position.png](figures/position2.jpeg)
 
 ### 示例4（镜像效果）
 
 通用布局属性支持[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。下述示例从上到下依次通过[position](#position)、[offset](#offset)和[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色对应镜像前效果，深蓝色对应镜像后效果。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -697,6 +1026,94 @@ struct Example4 {
               Row() {
               }
               .markAnchor({ x: '100fp', y: '-350fp' }) // markAnchor接口中的参数使用Position类型，不支持镜像翻转效果
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+            }
+            .backgroundColor(Color.White)
+            .padding(50)
+            .margin(50)
+          }
+        }
+        .width('100%')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
+
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }) {
+          Text()
+            .width(20)
+            .height(100)
+            .borderRadius(10)
+            .backgroundColor('#C0C0C0')
+        }.width(20).backgroundColor('#ededed')
+      }
+    }.height('90%')
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Text, Column, Stack, Row, Flex, ScrollBar, Scroller, Scroll, RelativeContainer, ScrollBarDirection, ScrollDirection, FlexDirection,
+  BarState, TextAlign, Alignment, Direction, Margin, Color, BorderStyle, Position, Edges, LengthMetrics, LocalizedEdges, LocalizedPosition } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Example4 {
+  private scroller: Scroller = new Scroller();
+
+  build() {
+    Column() {
+      Stack({ alignContent: Alignment.End }) {
+        Scroll(this.scroller) {
+          Flex({ direction: FlexDirection.Column }) {
+            RelativeContainer() {
+              Row() {
+              }
+              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) } as LocalizedEdges)
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .position({ left:'200px', top: '100px' } as Edges)
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) } as LocalizedEdges)
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .offset({ left: 100, top: 200  } as Edges)
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) } as LocalizedPosition)
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+              Row() {
+              }
+              .markAnchor({ x: '100fp', y: '-350fp' } as Position)
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')

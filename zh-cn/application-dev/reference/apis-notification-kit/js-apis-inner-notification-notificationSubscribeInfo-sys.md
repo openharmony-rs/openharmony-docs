@@ -1,8 +1,8 @@
 # NotificationSubscribeInfo (系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -20,10 +21,31 @@
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                 | 类型                  | 只读 | 可选 | 说明                                       |
 | -------------------- | --------------------- | ---- | --- | ------------------------------------------ |
-| bundleNames          | Array<string\>         | 否 | 是 | 应用Bundle名称。 不传递该参数时，默认订阅所有应用的通知。 |
-| userId               | number                | 否 | 是  | 用户ID。 不传递该参数时，默认订阅所有用户ID的通知。 |
-| deviceType<sup>12+</sup>           | string                | 否 | 是 | 设备类型。不传递该参数时，默认订阅当前设备的通知。根据[设备信息](../apis-basic-services-kit/js-apis-device-info.md)获取。                                    |
-| slotTypes<sup>18+</sup>   | Array<[notificationManager.SlotType](js-apis-notificationManager.md#slottype)\>| 否 | 是 | 通知渠道类型。 不传递该参数时，默认订阅所有渠道类型的通知。 |
-| filterLimit<sup>18+</sup>   | number| 否 | 是 | 通知过滤范围。默认值为0。取值范围包括：<br>- 0：不进行任何过滤，订阅全部通知。 <br>- 1：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)为空的通知过滤掉。<br>- 2：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)不为空的通知过滤掉。|
+| bundleNames          | Array<string\>         | 否 | 是 | 应用Bundle名称。 不传递该参数时，默认订阅所有应用的通知。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
+| userId               | ArkTS-Dyn: number <br/>ArkTS-Sta: int                | 否 | 是  | 用户ID。 不传递该参数时，默认订阅当前用户ID的通知。<br/> **ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
+| deviceType<sup>12+</sup>           | string                | 否 | 是 | 设备类型。不传递该参数时，默认订阅当前设备的通知。根据[设备信息](../apis-basic-services-kit/js-apis-device-info.md)获取。<br/> **ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23                                    |
+| slotTypes<sup>18+</sup>   | Array<[notificationManager.SlotType](js-apis-notificationManager.md#slottype)\>| 否 | 是 | 通知渠道类型。 不传递该参数时，默认订阅所有渠道类型的通知。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| filterLimit<sup>18+</sup>   | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 是 | 通知过滤范围。默认值为0。取值范围包括：<br>- 0：不进行任何过滤，订阅全部通知。 <br>- 1：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)为空的通知过滤掉。<br>- 2：将渠道类型为[SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype)且[userInput](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1)不为空的通知过滤掉。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23|
+| voiceContentOptions  | [VoiceContentOptions](#voicecontentoptions)| 否 | 是 | 通知语音播报选项。<br/> **ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0|
+
+## VoiceContentOptions
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+| 名称      | 类型              | 只读   | 可选 | 说明                     |
+|-----------| ---------------- | -------|----- |-------------------------|
+| enabled        | boolean | 否 | 是 | 是否订阅通知语音播报内容。 <br> - true：订阅。<br> - false：不订阅。默认值为false。|

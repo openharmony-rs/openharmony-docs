@@ -77,7 +77,7 @@ setVolume(volume: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed, form 0.0 to 1.0. |
+| 6800101 | Parameter verification failed, from 0.0 to 1.0. |
 
 **示例：**
 

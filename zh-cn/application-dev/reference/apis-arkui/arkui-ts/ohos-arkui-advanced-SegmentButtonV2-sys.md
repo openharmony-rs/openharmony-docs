@@ -25,7 +25,7 @@ import { TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2
 
 页签型分段按钮。
 
-**装饰器类型：** @ComponentV2
+**装饰器类型：** [@ComponentV2](../../../ui/state-management/arkts-create-custom-components.md#componentv2)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,7 +35,7 @@ import { TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2
 
 | 名称 | 类型  | 必填 | 装饰器类型 | 说明 |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| backgroundSystemMaterial<sup>23+</sup> | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material) | 否 | @Param | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。<br/>默认值：无材质效果 <br>该成员只读，不支持更改。<br>**系统接口：** 此接口为系统接口。|
+| backgroundSystemMaterial<sup>23+</sup> | [uiMaterial.Material](../arkts-apis-uimaterial-sys.md#material) | 否 | [@Param](../../../ui/state-management/arkts-new-param.md) | 分段按钮组件的背景板的系统材质。不同系统材质包含不同的属性影响效果。<br/>默认值：无材质效果 <br>该成员只读，不支持更改。<br>**系统接口：** 此接口为系统接口。|
 
 ## CapsuleSegmentButtonV2
 

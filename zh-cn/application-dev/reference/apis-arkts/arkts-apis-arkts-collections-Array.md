@@ -1,7 +1,7 @@
 # Class (Array)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -11,9 +11,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Class仅适用于ArkTS-Dyn。
 >
-> 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
 文档中存在泛型的使用，涉及以下泛型标记符：
 
@@ -29,7 +31,7 @@ import { collections } from '@kit.ArkTS';
 
 ## 属性
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -44,7 +46,7 @@ constructor()
 
 创建一个ArkTS Array的构造函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -68,7 +70,7 @@ constructor(first: T, ...left: T[])
 
 ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -99,7 +101,7 @@ constructor(...items: T[])
 
 ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -131,7 +133,7 @@ static create\<T>(arrayLength: number, initialValue: T): Array\<T>
 
 生成一个固定长度的Array，其中，每个元素的初始值为initialValue。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -168,7 +170,7 @@ static from\<T>(arrayLike: ArrayLike\<T>): Array\<T>
 
 从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -213,7 +215,7 @@ static from\<T>(iterable: Iterable\<T>): Array\<T>
 
 从一个实现了Iterable接口的对象创建一个新的ArkTS Array。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -609,7 +611,7 @@ pop(): T | undefined
 
 从ArkTS Array中移除并返回最后一个元素。如果Array为空，则返回undefined，且Array不发生变化。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -641,7 +643,7 @@ push(...items: T[]): number
 
 在ArkTS Array的末尾添加元素，并返回新的Array长度。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -680,7 +682,7 @@ join(separator?: string): string
 
 将ArkTS Array的所有元素连接成一个字符串，元素之间可以用指定的分隔符分隔。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -719,7 +721,7 @@ shift(): T | undefined
 
 从ArkTS Array中移除并返回第一个元素。如果Array为空，则返回undefined，且Array不发生变化。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -784,7 +786,7 @@ unshift(...items: T[]): number
 
 在ArkTS Array的首端插入元素，并返回新的Array长度。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -856,7 +858,7 @@ slice(start?: number, end?: number): Array\<T>
 
 返回一个新的Array，该Array是原始ArkTS Array的切片。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -895,7 +897,7 @@ sort(compareFn?: (a: T, b: T) => number): Array\<T>
 
 对ArkTS Array进行排序，并返回排序后的Array。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -935,7 +937,7 @@ indexOf(searchElement: T, fromIndex?: number): number
 
 返回在ArkTS Array中搜索元素首次出现的索引，如果不存在则返回-1。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -975,7 +977,7 @@ forEach(callbackFn: (value: T, index: number, array: Array\<T>) => void): void
 
 对Array中的每个元素执行提供的回调函数。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1010,7 +1012,7 @@ map\<U>(callbackFn: (value: T, index: number, array: Array\<T>) => U): Array\<U>
 
 对Array中的每个元素执行提供的回调函数，并返回一个新的Array，该Array包含回调函数的结果。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1053,7 +1055,7 @@ filter(predicate: (value: T, index: number, array: Array\<T>) => boolean): Array
 
 返回一个新Array，其中包含通过指定回调函数测试的所有元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1092,7 +1094,7 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 对Array中的每个元素执行回调函数，将其结果作为累加值，并返回最终的结果。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1131,7 +1133,7 @@ reduce\<U>(callbackFn: (previousValue: U, currentValue: T, currentIndex: number,
 
 与 reduce方法类似，但它接受一个初始值作为第二个参数，用于在Array遍历开始前初始化累加器。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1172,7 +1174,7 @@ at(index: number): T | undefined
 
 返回Array中指定索引位置的元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1212,7 +1214,7 @@ entries(): IterableIterator<[number, T]>
 
 返回一个新的可迭代对象，该对象包含Array中每个元素的键值对。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1245,7 +1247,7 @@ keys(): IterableIterator\<number>
 
 返回一个新的可迭代对象，该对象包含Array中每个元素的索引。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1280,7 +1282,7 @@ values(): IterableIterator\<T>
 
 返回一个新的可迭代对象，该对象包含Array中每个元素的值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1315,7 +1317,7 @@ find(predicate: (value: T, index: number, obj: Array\<T>) => boolean): T | undef
 
 返回Array中第一个满足指定测试函数的元素的值，如果所有元素都不满足，则返回undefined。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1354,7 +1356,7 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 判断Array是否包含指定的元素，并返回一个布尔值。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1394,7 +1396,7 @@ findIndex(predicate: (value: T, index: number, obj: Array\<T>) => boolean): numb
 
 返回Array中第一个满足指定测试函数的元素的索引，如果所有元素都不满足，则返回-1。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1433,7 +1435,7 @@ fill(value: T, start?: number, end?: number): Array\<T>
 
 使用指定的值填充Array中指定范围的所有元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1474,7 +1476,7 @@ shrinkTo(arrayLength: number): void
 
 使Array收缩到指定长度。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1510,7 +1512,7 @@ extendTo(arrayLength: number, initialValue: T): void
 
 使Array扩展到指定长度，扩展的部分使用给定值填充。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1589,7 +1591,7 @@ splice(start: number): Array\<T>
 
 删除Array中指定位置(start)以及之后的所有元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1699,7 +1701,7 @@ splice(start: number, deleteCount: number, ...items: T[]): Array\<T>
 
 删除Array中指定位置的元素，需要时在Array的指定位置插入新元素。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

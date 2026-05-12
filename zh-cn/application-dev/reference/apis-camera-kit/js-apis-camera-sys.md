@@ -81,18 +81,6 @@ lcd闪光灯信息项。
 | ------ | ----------------------------- |-----| ---------- | ---------- |
 | raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| 否  | 是   | raw图。 |
 
-## ExposureMode
-
-枚举，曝光模式。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                           | 值   | 说明      |
-| ----------------------------- |-----|---------|
-| EXPOSURE_MODE_MANUAL<sup>12+</sup>          | 3   | 手动曝光模式。 |
-
 ## PolicyType<sup>12+</sup>
 
 枚举，策略类型。
@@ -559,7 +547,6 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> |    5    | Extreme Digital格式的图。   |
 | CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | DEPTH_16格式的深度图。      |
 | CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | DEPTH_32格式的深度图。      |
 
@@ -5068,16 +5055,6 @@ ISO参数信息。
 | 名称        | 类型    | 只读 | 可选  | 说明       |
 | ----------- | ------- | ---- |-----| ---------- |
 | lumination  | number  | 是   | 是   | 范围[0, 1]，光照值归一化数值。|
-
-## CameraFormat
-
-枚举，输出格式。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                     | 值        | 说明         |
-| ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup>  | 5         | DNG格式的增强RAW图片，JPG和RAW图片封装在同一个文件中，最高支持16bit的RAW数据。**系统接口：** 此接口为系统接口。         |
 
 ## ExposureMeteringMode<sup>12+</sup> 
 

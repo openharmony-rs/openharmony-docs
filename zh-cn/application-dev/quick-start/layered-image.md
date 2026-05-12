@@ -36,7 +36,7 @@
 
       * mainElement配置的为入口UIAbility，但是入口UIAbility未设置icon或label。
 
-      * mainElement未配置或者配置的不为入口UIAbility，且module.json5配置文件中第一个入口UIAblity未设置icon或label。
+      * mainElement未配置或者配置的不为入口UIAbility，且module.json5配置文件中第一个入口UIAbility未设置icon或label。
 
   多HAP包的工程中，如果entry类型存在，以entry类型的HAP中module.json5配置文件为准。如果没有entry类型，此时用所有hap的moduleName以ASCII字典序排序，最终以排序为最后一个的feature包的module.json5配置文件为准。
 

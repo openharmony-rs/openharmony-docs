@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要提供串口管理功能，包括打开和关闭设备的串口、写入和读取数据、设置和获取串口的配置参数、权限管理等。
 
@@ -18,7 +18,7 @@
 ## 导入模块
 
 ```ts
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 ```
 
 ## serialManager.addSerialRight
@@ -60,7 +60,7 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function addSerialRight() {

@@ -24,7 +24,7 @@
 >
 >  - 组件对表冠事件的接收受自身获焦状态影响，接收到BEGIN后，如果失焦，则无法继续再接收到后续的UPDATE和END。
 
-当组件需要获取旋转角度等信息时，可以通过onDigitalCrown接收表冠事件来获得上报信息。以下以Text组件为例，介绍表冠事件开发的基本步骤及开发过程中需要注意的事项。
+当组件需要获取旋转角度等信息时，可以通过[onDigitalCrown](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#ondigitalcrown)接收表冠事件来获得上报信息。以下以[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件为例，介绍表冠事件开发的基本步骤及开发过程中需要注意的事项。
 
 1. 组件获焦
 
@@ -69,6 +69,8 @@
 
 **完整示例：**
 
+ ArkTS-Dyn示例：
+
  <!-- [crown_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
  
  ``` TypeScript
@@ -78,6 +80,47 @@
  struct Index {
    @State message: string = 'onDigitalCrown';
  
+   build() {
+     Column() {
+       Row() {
+         Stack() {
+           Text(this.message)
+             .fontSize(20)
+             .fontColor(Color.White)
+             .backgroundColor("#262626")
+             .textAlign(TextAlign.Center)
+             .focusable(true)
+             .focusOnTouch(true)
+             .defaultFocus(true)
+             .borderWidth(2)
+             .width(223)
+             .height(223)
+             .borderRadius(110)
+             .onDigitalCrown((event: CrownEvent) => {
+               event.stopPropagation();
+               this.message = "CrownEvent\n\n" + JSON.stringify(event);
+               hilog.debug(0x0000, 'Tag',
+                 "action:%{public}d, angularVelocity:%{public}f, degree:%{public}f, timestamp:%{public}f",
+                 event.action, event.angularVelocity, event.degree, event.timestamp);
+             })
+         }.width("100%").height("100%")
+       }.width("100%").height("100%")
+     }
+   }
+ }
+ ```
+
+ ArkTS-Sta示例：
+ 
+ ``` TypeScript
+ import { Entry, Component, State, Column, Row, Stack, Text, Color, TextAlign, CrownEvent } from '@kit.ArkUI';
+ import { hilog } from '@kit.PerformanceAnalysisKit';
+
+ @Entry
+ @Component
+ struct Index {
+   @State message: string = 'onDigitalCrown';
+
    build() {
      Column() {
        Row() {

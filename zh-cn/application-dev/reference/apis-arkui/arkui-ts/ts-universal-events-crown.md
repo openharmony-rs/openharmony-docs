@@ -10,6 +10,8 @@
 
 >  **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 手动旋转表冠以触发其存在默认的交互逻辑，例如旋转手表的表冠后，滚动条会根据旋转表冠的旋转方向进行滚动。
@@ -22,7 +24,9 @@
 
 ## onDigitalCrown
 
-onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
+ArkTS-Dyn: onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
+
+ArkTS-Sta: onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt; | undefined): this
 
 组件获焦以后旋转表冠时触发该回调。
 
@@ -34,17 +38,21 @@ onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 
 **参数：** 
 | 参数名      | 类型                             | 必填     | 说明                                      |
 | ---------- | -------------------------------- | ------- | ----------------------------------------- |
-| handler      | Optional&lt;Callback&lt;[CrownEvent](#crownevent对象说明)&gt;&gt; | 是       | 获得[CrownEvent](#crownevent对象说明)对象。   |
+| handler      | ArkTS-Dyn: Optional&lt;Callback&lt;[CrownEvent](#crownevent对象说明)&gt;&gt; <br/>ArkTS-Sta: Callback&lt;[CrownEvent](#crownevent对象说明)&gt; \|&nbsp;undefined | 是       | 获得[CrownEvent](#crownevent对象说明)对象。<br/>传入undefined时无效果。   |
 
 
 **返回值：**
 | 类型      | 说明           |
 | --------- | ---------------|
-| T         | 返回当前组件。   |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this         | 返回当前组件。   |
 
 ## CrownEvent对象说明
 
@@ -54,11 +62,15 @@ onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                   | 类型       | 只读    |  可选   |  说明                                                       |
 | --------------------- | ------------- | ---------- |------------ |-------------------------------------- |
-| timestamp         | number   |  否     | 否    |时间戳。                                  |
-| angularVelocity | number   |  否     | 否    |旋转角速度，每秒转的角度(°/s)。                   |
-| degree          | number   |  否     | 否    |相对旋转角度。<br>单位：度。<br>取值范围:[-360, 360]。     |
+| timestamp         | ArkTS-Dyn: number<br/>ArkTS-Sta: long   |  否     | 否    |时间戳。                                  |
+| angularVelocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |旋转角速度，每秒转的角度(°/s)。                   |
+| degree          | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |相对旋转角度。<br>单位：度。<br>取值范围:[-360, 360]。     |
 | action          | [CrownAction](ts-appendix-enums.md#crownaction18)   |  否     | 否    |表冠动作。  |
 | stopPropagation | Callback\<void>    |  否      | 否    |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。                         |
 

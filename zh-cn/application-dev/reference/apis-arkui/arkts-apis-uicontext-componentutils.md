@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本Class首批接口从API version 10开始支持。
@@ -24,11 +26,15 @@ getRectangleById(id: string): componentUtils.ComponentInfo
 
 > **说明：**
 >
-> 该接口需要在目标组件布局、完成以后获取目标组件区域大小信息，建议在[onAppear](./arkui-ts/ts-universal-events-show-hide.md#onappear)中使用该接口。
+> 该接口需要在目标组件布局完成以后获取目标组件区域大小信息，建议在[布局回调](./js-apis-arkui-inspector.md)中使用该接口。如果组件动态创建但未挂载组件树，则无法通过该接口获取正常的组件信息。因为组件在未挂载组件树的情况下，一般未经过UI框架正常的测量与布局，此时请确保组件正常挂载组件树后再尝试获取组件信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -75,8 +81,8 @@ struct Index {
           this.message = 'Welcome';
           let componentUtils: ComponentUtils = this.getUIContext().getComponentUtils();
           let modePosition = componentUtils.getRectangleById("HelloWorld");
-          let width = modePosition.size.width; //获取组件的宽度
-          let height = modePosition.size.height; //获取组件的高度
+          let width = modePosition.size.width; // 获取组件的宽度
+          let height = modePosition.size.height; // 获取组件的高度
           let localOffsetX = modePosition.localOffset.x; // 获取组件相对于父组件的x轴偏移
           let localOffsetY = modePosition.localOffset.y; // 获取组件相对于父组件的y轴偏移
           console.info(`width: ${width}, height: ${height}, localOffsetX: ${localOffsetX}, localOffsetY: ${localOffsetY}`);

@@ -25,23 +25,40 @@
 
 以查询用户人脸注册凭据的状态为例：
 
+ArkTS-Dyn示例：
 <!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 obtainingEnrolledCredentialInformation() {
   try {
     let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
-    Logger.info('get current enrolled state successfully');
+    Logger.info('get current enrolled state successfully.');
     return enrolledState.credentialDigest;
   } catch (error) {
     const err: BusinessError = error as BusinessError;
-    Logger.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
+    Logger.error(`get current enrolled state failed, code is ${err?.code}, message is ${err?.message}`);
     return false;
   }
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+obtainingEnrolledCredentialInformation() {
+  try {
+    let enrolledState = userAuth.getEnrolledState(userAuth.UserAuthType.FACE);
+    Logger.info('get current enrolled state successfully.');
+    return enrolledState.credentialDigest;
+  } catch (error) {
+      Logger.error(`get current enrolled state failed, code is ${error.code}, message is ${error.message}`);
+    return false;
+  }
+}
+```
 
 ## 示例代码
 
-  - [查询用户注册凭据的状态](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询用户注册凭据的状态(ArkTS-Dyn)](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询用户注册凭据的状态(ArkTS-Sta)](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/UserAuthentication-Sta)

@@ -15,7 +15,7 @@
 
 > **说明：**
 >
-> 如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
+> 从API版本26.0.0开始，如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
 
 ## 接口说明
 
@@ -37,6 +37,7 @@
 | on(type: 'freeze', observer: FreezeObserver): void | 注册应用主线程freeze监听。只能在主线程调用，重复注册后，后一次的注册会覆盖前一次的。 |
 | off(type: 'freeze', observer?: FreezeObserver): void | 以FreezeObserver的形式解除应用主线程消息处理耗时监听。<br/>说明：从API version 18开始，支持该接口。 |
 | setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | 仅允许在主线程调用，发生JS_CRASH异常时，支持链式回调，返回值为上一次注册的处理器。 <br/>说明：从API version 21开始，支持该接口。 |
+| setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver; | 仅允许在主线程调用，发生应用资源超基线时，支持链式回调，返回值为上一次注册的资源占用观察者。 <br/>说明：从API version 24开始，支持该接口。 |
 
 当采用callback作为异步回调时，可以在callback中进行下一步处理。
 
@@ -340,11 +341,12 @@ Button('进程promise监听注册被拒绝').onClick(()=>{
 ### 错误处理器责任链模式场景
 
  定义第一个错误处理器及注册方法，无前置处理器时退出进程。
-<!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) --> 
+<!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let firstHandler: errorManager.ErrorHandler;
 const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
@@ -360,7 +362,13 @@ const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
 };
 
 export function setFirstErrorHandler() {
-    firstHandler = errorManager.setDefaultErrorHandler(firstErrorHandler); 
+    try {
+        firstHandler = errorManager.setDefaultErrorHandler(firstErrorHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error('setFirstErrorHandler',`error: ${code}, ${message}`);
+    }
     console.info('Registered First Error Handler');
 }
 ```

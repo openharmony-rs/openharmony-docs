@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-从API version 22开始，支持从ArkTS-Sta的Navigation调用ArkTS-Dyn的NavDestination页面实现导航跳转。在ArkTS-Sta互操作场景下，导出ArkTS-Dyn的NavDestination子页面，在ArkTS-Sta的Navigation中直接调用。
+从API version 22开始，支持从ArkTS-Sta的[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)调用ArkTS-Dyn的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)页面实现导航跳转。在ArkTS-Sta互操作场景下，导出ArkTS-Dyn的NavDestination子页面，在ArkTS-Sta的Navigation中直接调用。
 
 
 完整示例结构如下图所示：

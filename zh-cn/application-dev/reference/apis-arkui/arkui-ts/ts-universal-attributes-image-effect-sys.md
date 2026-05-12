@@ -171,7 +171,7 @@ edgeLight(params: EdgeLightParams | undefined): T
 | length   | [Length](ts-types.md#length)                              | 否   | 否   | 沿流动方向的边缘流光的投影长度（不支持百分比）。<br/>取值范围：[0, +∞)<br/>单位：vp<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
 | intensity | number                                                   | 否   | 是   | 边缘流光效果的发光强度。<br/>取值范围：[0, 1]<br/>默认值：1<br/>**说明：**<br/>值为0时，流光效果完全不可见。<br/>值为1时，流光效果达到最大亮度。<br/>设置大于1的值时，按值为1处理。<br/>设置小于0的值时，按值为0处理。 |
 | color    | [ResourceColor](ts-types.md#resourcecolor)                | 否   | 是   | 边缘流光颜色。<br/>默认值：#FFFFFF，显示为白色。 |
-| thickness | [Length](ts-types.md#length)                             | 否   | 是   | 边缘流光线条厚度（不支持百分比）。<br/>取值范围：[0, +∞)<br/>单位：vp<br/>默认值：0<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
+| thickness | [Length](ts-types.md#length)                             | 否   | 是   | 边缘流光线条粗细（不支持百分比）。<br/>取值范围：[0, +∞)<br/>单位：vp<br/>默认值：0<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
 
 ## 示例
 ### 示例1（设置组件提亮）

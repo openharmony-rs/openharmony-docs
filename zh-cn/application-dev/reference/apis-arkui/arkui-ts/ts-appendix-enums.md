@@ -2,14 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @piggyguy; @jiyujia926; @hehongyang3-->
+<!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
->本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 7开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## AccessibilityHoverType<sup>12+</sup>
 
@@ -190,6 +192,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值 | 说明                 |
 | ---- | --- | ------------------ |
 | Off  | 0 | 不显示。               |
@@ -236,20 +242,20 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 值            | 说明                                                         |
+| 名称                     | 值            |说明                                                         |
 | ------------------------ | ------------- | ------------------------------------------------------------ |
-| Black                    | 0x000000      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png) |
-| Blue                     | 0x0000ff      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png) |
-| Brown                    | 0xa52a2a      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png) |
-| Gray                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Grey                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Green                    | 0x008000      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png) |
-| Orange                   | 0xffa500      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png) |
-| Pink                     | 0xffc0cb      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png) |
-| Red                      | 0xff0000      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png) |
-| White                    | 0xffffff      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png) |
-| Yellow                   | 0xffff00      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png) |
-| Transparent<sup>9+</sup> | rgba(0,0,0,0) | 透明色                                                       |
+| Black                    | ArkTS-Dyn: 0x000000<br/>ArkTS-Sta: '#FF000000'      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Blue                     | ArkTS-Dyn: 0x0000ff<br/>ArkTS-Sta: '#FF0000FF'      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Brown                    | ArkTS-Dyn: 0xa52a2a<br/>ArkTS-Sta: '#FFA52A2A'      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Gray                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Grey                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Green                    | ArkTS-Dyn: 0x008000<br/>ArkTS-Sta: '#FF008000'      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Orange                   | ArkTS-Dyn: 0xffa500<br/>ArkTS-Sta: '#FFFFA500'      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Pink                     | ArkTS-Dyn: 0xffc0cb<br/>ArkTS-Sta: '#FFFFC0CB'      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Red                      | ArkTS-Dyn: 0xff0000<br/>ArkTS-Sta: '#FFFF0000'      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| White                    | ArkTS-Dyn: 0xffffff<br/>ArkTS-Sta: '#FFFFFFFF'      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Yellow                   | ArkTS-Dyn: 0xffff00<br/>ArkTS-Sta: '#FFFFFF00'      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Transparent<sup>9+</sup> | ArkTS-Dyn: rgba(0,0,0,0)<br/>ArkTS-Sta: '#00000000' | 透明色<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                       |
 
 ## ColorSpace<sup>20+</sup>
 
@@ -371,6 +377,23 @@
 | DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
 
+## DialogDisplayMode<sup>24+</sup>
+
+弹窗的显示模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称         | 值 | 说明                       |
+| ------------ | -- | -------------------------- |
+| SCREEN_BASED | 0  | 基于屏幕显示弹窗。         |
+| WINDOW_BASED | 1  | 基于应用窗口显示弹窗。     |
+
 ## Direction
 
 定义元素水平布局的方向。
@@ -444,6 +467,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明                                       |
 | ------ | --- | ---------------------------------------- |
@@ -542,14 +569,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称           | 说明                                       |
-| ------------ | ---------------------------------------- |
-| Start        | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
-| Center       | 元素在主轴方向中心对齐，第一个元素与行首的距离和最后一个元素与行尾的距离相同。   |
-| End          | 元素在主轴方向尾部对齐，最后一个元素与行尾对齐，其余元素与后一个对齐。      |
-| SpaceBetween | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。 |
-| SpaceAround  | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。 |
-| SpaceEvenly  | Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距均相同。 |
+| 名称           | 值 | 说明                                       |
+| ------------ | ------ | ---------------------------------------- |
+| Start        | 0 | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
+| Center       | 1 | 元素在主轴方向中心对齐，第一个元素与行首的距离和最后一个元素与行尾的距离相同。   |
+| End          | 2 | 元素在主轴方向尾部对齐，最后一个元素与行尾对齐，其余元素与后一个对齐。      |
+| SpaceBetween | 3 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。 |
+| SpaceAround  | 4 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。 |
+| SpaceEvenly  | 5 | Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距均相同。 |
 
 ## FlexDirection
 
@@ -561,12 +588,12 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称            | 说明               |
-| ------------- | ---------------- |
-| Row           | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 与Row方向相反方向进行布局。  |
-| Column        | 主轴与列方向一致作为布局模式。  |
-| ColumnReverse | 与Column相反方向进行布局。 |
+| 名称            | 值 | 说明               |
+| ------------- | ------ | ---------------- |
+| Row           | 0 | 主轴与行方向一致作为布局模式。  |
+| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
+| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
 
@@ -578,11 +605,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                          |
-| ----------- | --------------------------- |
-| NoWrap      | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
-| Wrap        | Flex容器的元素以多行/列排布，子项允许超出容器。   |
-| WrapReverse | Flex容器的元素以反向多行/列排布，子项允许超出容器。 |
+| 名称          | 值 | 说明                          |
+| ----------- | ------ | --------------------------- |
+| NoWrap      | 0 | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
+| Wrap        | 1 | Flex容器的元素以多行/列排布，子项允许超出容器。   |
+| WrapReverse | 2 | Flex容器的元素以反向多行/列排布，子项允许超出容器。 |
 
 ## FontStyle
 
@@ -704,11 +731,11 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明           |
-| ------ | ------------ |
-| Start  | 按照语言方向起始端对齐。 |
-| Center | 居中对齐，默认对齐方式。 |
-| End    | 按照语言方向末端对齐。  |
+| 名称     | 值 | 说明           |
+| ------ | ------ | ------------ |
+| Start  | 0 | 按照语言方向起始端对齐。 |
+| Center | 1 | 居中对齐，默认对齐方式。 |
+| End    | 2 | 按照语言方向末端对齐。  |
 
 ## HoverEffect<sup>8+</sup>
 
@@ -795,14 +822,14 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明                                       |
-| -------- | ---------------------------------------- |
-| Auto     | 使用Flex容器中的默认配置。                           |
-| Start    | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
-| Center   | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
-| End      | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
-| Stretch  | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
-| Baseline | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| 名称       | 值 | 说明                                       |
+| -------- | ------ | ---------------------------------------- |
+| Auto     | 0 | 使用Flex容器中的默认配置。                           |
+| Start    | 1 | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
+| Center   | 2 | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
+| End      | 3 | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
+| Stretch  | 4 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
+| Baseline | 5 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
 
 ## ImageRepeat
 
@@ -847,6 +874,55 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | BOTTOM   | 3 | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | BASELINE | 4 | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | FOLLOW_PARAGRAPH<sup>20+</sup>  | 5 |对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+
+## InputEventInterceptAction
+
+输入事件拦截动作枚举。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | ---- |
+| CONTINUE | 0 | 允许事件继续传递到UI框架。 |
+| BLOCK | 1 | 阻止事件传递到UI框架。 |
+
+## InputEventSubTypeMask
+
+输入事件子类型掩码枚举，用于标识不同类型的输入事件子类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | ---- |
+| LEFT_MOUSE_DOWN | 1 << 0 | 鼠标左键按下。 |
+| LEFT_MOUSE_UP | 1 << 1 | 鼠标左键抬起。 |
+| RIGHT_MOUSE_DOWN | 1 << 2 | 鼠标右键按下。 |
+| RIGHT_MOUSE_UP | 1 << 3 | 鼠标右键抬起。 |
+| MIDDLE_MOUSE_DOWN | 1 << 4 | 鼠标中键按下。 |
+| MIDDLE_MOUSE_UP | 1 << 5 | 鼠标中键抬起。 |
+| LEFT_MOUSE_DRAGGING | 1 << 6 | 鼠标左键按下并移动。 |
+| RIGHT_MOUSE_DRAGGING | 1 << 7 | 鼠标右键按下并移动。 |
+| MIDDLE_MOUSE_DRAGGING | 1 << 8 | 鼠标中键按下并移动。 |
+| TOUCH_DOWN | 1 << 9 | 触控按下。 |
+| TOUCH_UP | 1 << 10 | 触控抬起。 |
+| KEY_DOWN | 1 << 11 | 物理键盘按下。 |
+| KEY_UP | 1 << 12 | 物理键盘抬起。 |
 
 ## InteractionHand<sup>15+</sup>
 
@@ -1047,6 +1123,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值 | 说明                             |
 | ------ | --- | ------------------------------ |
 | SELF_ONLY   | 0 | 只自身滚动，不与父组件联动。  |
@@ -1119,20 +1199,20 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 说明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| Left                     | 气泡提示位于组件左侧，与组件左侧中心对齐。                   |
-| Right                    | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
-| Top                      | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
-| Bottom                   | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
-| TopLeft                  | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
-| TopRight                 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
-| BottomLeft               | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
-| BottomRight              | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
-| LeftTop<sup>9+</sup>     | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
-| LeftBottom<sup>9+</sup>  | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
-| RightTop<sup>9+</sup>    | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |
-| RightBottom<sup>9+</sup> | 气泡提示位于组件右侧，与组件下侧边缘对齐。                   |
+| 名称                     | 值 | 说明                                                         |
+| ------------------------ | -- | ------------------------------------------------------------ |
+| Left                     | 0 | 气泡提示位于组件左侧，与组件左侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                  |
+| Right                    | 1 | 气泡提示位于组件右侧，与组件右侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                  |
+| Top                      | 2 | 气泡提示位于组件上侧，与组件上侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                   |
+| Bottom                   | 3 | 气泡提示位于组件下侧，与组件下侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                   |
+| TopLeft                  | 4 | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| TopRight                 | 5 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| BottomLeft               | 6 | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| BottomRight              | 7 | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| LeftTop<sup>9+</sup>     | 8 | 气泡提示位于组件左侧，与组件上侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| LeftBottom<sup>9+</sup>  | 9 | 气泡提示位于组件左侧，与组件下侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| RightTop<sup>9+</sup>    | 10 | 气泡提示位于组件右侧，与组件上侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| RightBottom<sup>9+</sup> | 11 | 气泡提示位于组件右侧，与组件下侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
 
 ## PixelRoundCalcPolicy<sup>11+</sup>
 
@@ -1159,6 +1239,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
@@ -1190,7 +1274,7 @@ type Nullable\<T> = T | undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
+| BREAKPOINT_DEFAULT         | 0    | 针对[List](./ts-container-list.md)和[Swiper](./ts-container-swiper.md)组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对[Grid](./ts-container-grid.md)和[WaterFlow](./ts-container-waterflow.md)组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 
@@ -1230,10 +1314,14 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 说明            |
-| ---------- | ------------- |
-| LongPress  | 通过长按触发菜单弹出。   |
-| RightClick | 通过鼠标右键点击触发菜单弹出。 |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称         | 值 | 说明            |
+| ---------- | -- | ------------- |
+| LongPress  | 1 | 通过长按触发菜单弹出。   |
+| RightClick | 0 | 通过鼠标右键点击触发菜单弹出。 |
 
 ## RenderFit<sup>10+</sup>
 
@@ -1244,6 +1332,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值                          | 说明                                                                              |
 | --------------------------- | -- | ---------------------------------------------------------------------------------- |
@@ -1293,6 +1385,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     |  值  | 说明                                       |
 | ------ | ------ | ---------------------------------------- |
 | DRAG   |  0  | 拖拽事件。 |
@@ -1341,6 +1437,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 说明                         |
 | ----------- | -------------------------- |
@@ -1506,10 +1606,16 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    |  说明                   |
-| ------  | -------------------- |
-| TARGET | Tips跟随目标物。 |
-| CURSOR | Tips跟随鼠标。 |
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称    | 值 | 说明                   |
+| ------  | -- | -------------------- |
+| TARGET | 0 | Tips跟随目标物。 |
+| CURSOR | 1 | Tips跟随鼠标。 |
 
 ## VerticalAlign
 
@@ -1521,11 +1627,11 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明           |
-| ------ | ------------ |
-| Top    | 顶部对齐。        |
-| Center | 居中对齐，默认对齐方式。 |
-| Bottom | 底部对齐。        |
+| 名称     | 值 | 说明           |
+| ------ | ------ | ------------ |
+| Top    | 0 | 顶部对齐。        |
+| Center | 1 | 居中对齐，默认对齐方式。 |
+| Bottom | 2 | 底部对齐。        |
 
 ## Visibility
 
@@ -1597,6 +1703,6 @@ type Nullable\<T> = T | undefined
 | 名称                             | 说明                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
 | SURFACE                          | 用于EGL/OpenGLES和媒体数据写入，单独展示开发者定制的绘制内容到屏幕上。背景色设置为黑色时走显示子系统（DSS）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| COMPONENT<sup>(deprecated)</sup> | 使用[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TEXTURE                          | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

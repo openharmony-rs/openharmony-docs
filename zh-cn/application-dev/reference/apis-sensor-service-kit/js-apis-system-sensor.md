@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 sensor模块提供订阅传感器数据基本能力，主要包含查询传感器的列表、订阅/取消传感器的数据、执行控制命令等。
@@ -33,7 +33,7 @@ import { Sensor } from '@kit.SensorServiceKit';
 
 观察加速度数据变化。针对同一个应用，多次点击调用时，会覆盖前面的调用效果，即仅最后一次调用生效。
 
-除Lite Wearable外，从API Version8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#accelerometer9)。
+除Lite Wearable外，从API Version8开始，推荐使用[ACCELEROMETER](js-apis-sensor.md#sensoronaccelerometer9)。
 
 **系统能力**：SystemCapability.Sensors.Sensor.Lite
 
@@ -58,7 +58,7 @@ let accelerometerOptions: subscribeAccelerometerOptions = {
     console.info('Succeeded in subscribing. Z-axis data: ' + ret.z);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeAccelerometer(accelerometerOptions);
@@ -111,7 +111,7 @@ let subscribeCompassOptions: SubscribeCompassOptions = {
     console.info('Succeeded in subscribing. Get data direction:' + ret.direction);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeCompass(subscribeCompassOptions);
@@ -164,7 +164,7 @@ let subscribeProximityOptions: SubscribeProximityOptions = {
     console.info('Succeeded in subscribing. Get data distance:' + ret.distance);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeProximity(subscribeProximityOptions);
@@ -219,7 +219,7 @@ let subscribeLightOptions: SubscribeLightOptions = {
     console.info('Succeeded in subscribing. Get data intensity:' + ret.intensity);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeLight(subscribeLightOptions);
@@ -274,7 +274,7 @@ let subscribeStepCounterOptions: SubscribeStepCounterOptions = {
     console.info('Succeeded in subscribing. Get step value:' + ret.steps);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeStepCounter(subscribeStepCounterOptions);
@@ -328,7 +328,7 @@ let subscribeBarometerOptions: SubscribeBarometerOptions = {
     console.info('Succeeded in subscribing. Get data value:' + ret.pressure);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeBarometer(subscribeBarometerOptions);
@@ -383,7 +383,7 @@ let subscribeHeartRateOptions: SubscribeHeartRateOptions = {
     console.info('Succeeded in subscribing. Get heartRate value:' + ret.heartRate);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeHeartRate(subscribeHeartRateOptions);
@@ -437,7 +437,7 @@ let subscribeOnBodyStateOptions: SubscribeOnBodyStateOptions = {
     console.info('Succeeded in subscribing. Get on-body state value:' + ret.value);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
@@ -486,7 +486,7 @@ let getOnBodyStateOptions: GetOnBodyStateOptions = {
     console.info('Succeeded in subscribing. On body state: ' + ret.value);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.getOnBodyState(getOnBodyStateOptions);
@@ -525,7 +525,7 @@ let subscribeDeviceOrientationOptions: SubscribeDeviceOrientationOptions = {
     console.info('Succeeded in subscribing. Gamma data: ' + ret.gamma);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   }
 };
 Sensor.subscribeDeviceOrientation(subscribeDeviceOrientationOptions);
@@ -585,7 +585,7 @@ let subscribeGyroscopeOptions: SubscribeGyroscopeOptions = {
     console.info('Succeeded in subscribing. Z-axis data: ' + ret.z);
   },
   fail: (data: string, code: number) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   }
 };
 Sensor.subscribeGyroscope(subscribeGyroscopeOptions);

@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要提供串口管理功能，包括打开和关闭设备的串口、写入和读取数据、设置和获取串口的配置参数、权限管理等。
 
@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 ```
 
 ## serialManager.getPortList
@@ -42,7 +42,7 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口设备清单 
 function getPortList() {
@@ -96,7 +96,7 @@ hasSerialRight(portId: number): boolean
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function hasSerialRight() {
@@ -157,7 +157,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function requestSerialRight() {
@@ -219,7 +219,7 @@ open(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function open() {
@@ -294,7 +294,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function getAttribute() {
@@ -377,7 +377,7 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function setAttribute() {
@@ -471,7 +471,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function read() {
@@ -558,7 +558,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function readSync() {
@@ -647,7 +647,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function write() {
@@ -735,7 +735,7 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function writeSync() {
@@ -813,7 +813,7 @@ close(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function close() {
@@ -892,7 +892,7 @@ cancelSerialRight(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function cancelSerialRight() {
@@ -935,10 +935,10 @@ function cancelSerialRight() {
 
 | 名称       |          类型        |  只读   |  可选 | 说明        |
 |----------|--------|----------|-----------|----------------------|
-| baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率。  |
-| dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，默认值为8位。  |
+| baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率，单位：比特/秒  |
+| dataBits | [DataBits](#databits)   |   否   | 是  | 串口数据位，默认值为8，单位：比特  |
 | parity   | [Parity](#parity)       |   否   | 是  | 串口奇偶校验，默认值为None，无奇偶校验。 |
-| stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，默认值为1位。  |
+| stopBits | [StopBits](#stopbits)   |   否   | 是  | 串口停止位，默认值为1，单位：比特  |
 
 ## SerialPort
 
@@ -953,46 +953,46 @@ function cancelSerialRight() {
 
 ## BaudRates
 
-表示波特率的枚举
+表示波特率的枚举，单位：比特/秒
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
-| BAUDRATE_50  | 50  | 传输波特率为50。  |
-| BAUDRATE_75  | 75  | 传输波特率为75。  |
-| BAUDRATE_110  | 110  | 传输波特率为110。  |
-| BAUDRATE_134  | 134  | 传输波特率为134。  |
-| BAUDRATE_150  | 150  | 传输波特率为150。  |
-| BAUDRATE_200  | 200  | 传输波特率为200。  |
-| BAUDRATE_300  | 300  | 传输波特率为300。  |
-| BAUDRATE_600  | 600  | 传输波特率为600。  |
-| BAUDRATE_1200  | 1200  | 传输波特率为1200。  |
-| BAUDRATE_1800  | 1800  | 传输波特率为1800。  |
-| BAUDRATE_2400  | 2400  | 传输波特率为2400。  |
-| BAUDRATE_4800  | 4800  | 传输波特率为4800。  |
-| BAUDRATE_9600  | 9600  | 传输波特率为9600。  |
-| BAUDRATE_19200  | 19200  | 传输波特率为19200。  |
-| BAUDRATE_38400  | 38400  | 传输波特率为38400。  |
-| BAUDRATE_57600  | 57600  | 传输波特率为57600。  |
-| BAUDRATE_115200  | 115200  | 传输波特率为115200。  |
-| BAUDRATE_230400  | 230400  | 传输波特率为230400。  |
-| BAUDRATE_460800  | 460800  | 传输波特率为460800。  |
-| BAUDRATE_500000  | 500000  | 传输波特率为500000。  |
-| BAUDRATE_576000  | 576000  | 传输波特率为576000。  |
-| BAUDRATE_921600  | 921600  | 传输波特率为921600。  |
-| BAUDRATE_1000000  | 1000000  | 传输波特率为1000000。  |
-| BAUDRATE_1152000  | 1152000  | 传输波特率为1152000。  |
-| BAUDRATE_1500000  | 1500000  | 传输波特率为1500000。  |
-| BAUDRATE_2000000  | 2000000  | 传输波特率为2000000。  |
-| BAUDRATE_2500000  | 2500000  | 传输波特率为2500000。  |
-| BAUDRATE_3000000  | 3000000  | 传输波特率为3000000。  |
-| BAUDRATE_3500000  | 3500000  | 传输波特率为3500000。  |
-| BAUDRATE_4000000  | 4000000  | 传输波特率为4000000。  |
+| BAUDRATE_50  | 50  | 传输波特率为50比特/秒。  |
+| BAUDRATE_75  | 75  | 传输波特率为75比特/秒。  |
+| BAUDRATE_110  | 110  | 传输波特率为110比特/秒。  |
+| BAUDRATE_134  | 134  | 传输波特率为134比特/秒。  |
+| BAUDRATE_150  | 150  | 传输波特率为150比特/秒。  |
+| BAUDRATE_200  | 200  | 传输波特率为200比特/秒。  |
+| BAUDRATE_300  | 300  | 传输波特率为300比特/秒。  |
+| BAUDRATE_600  | 600  | 传输波特率为600比特/秒。  |
+| BAUDRATE_1200  | 1200  | 传输波特率为1200比特/秒。  |
+| BAUDRATE_1800  | 1800  | 传输波特率为1800比特/秒。  |
+| BAUDRATE_2400  | 2400  | 传输波特率为2400比特/秒。  |
+| BAUDRATE_4800  | 4800  | 传输波特率为4800比特/秒。  |
+| BAUDRATE_9600  | 9600  | 传输波特率为9600比特/秒。  |
+| BAUDRATE_19200  | 19200  | 传输波特率为19200比特/秒。  |
+| BAUDRATE_38400  | 38400  | 传输波特率为38400比特/秒。  |
+| BAUDRATE_57600  | 57600  | 传输波特率为57600比特/秒。  |
+| BAUDRATE_115200  | 115200  | 传输波特率为115200比特/秒。  |
+| BAUDRATE_230400  | 230400  | 传输波特率为230400比特/秒。  |
+| BAUDRATE_460800  | 460800  | 传输波特率为460800比特/秒。  |
+| BAUDRATE_500000  | 500000  | 传输波特率为500000比特/秒。  |
+| BAUDRATE_576000  | 576000  | 传输波特率为576000比特/秒。  |
+| BAUDRATE_921600  | 921600  | 传输波特率为921600比特/秒。  |
+| BAUDRATE_1000000  | 1000000  | 传输波特率为1000000比特/秒。  |
+| BAUDRATE_1152000  | 1152000  | 传输波特率为1152000比特/秒。  |
+| BAUDRATE_1500000  | 1500000  | 传输波特率为1500000比特/秒。  |
+| BAUDRATE_2000000  | 2000000  | 传输波特率为2000000比特/秒。  |
+| BAUDRATE_2500000  | 2500000  | 传输波特率为2500000比特/秒。  |
+| BAUDRATE_3000000  | 3000000  | 传输波特率为3000000比特/秒。  |
+| BAUDRATE_3500000  | 3500000  | 传输波特率为3500000比特/秒。  |
+| BAUDRATE_4000000  | 4000000  | 传输波特率为4000000比特/秒。  |
 
 ## DataBits
 
-表示数据位宽的枚举
+表示数据位宽的枚举，单位：比特
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
@@ -1019,7 +1019,7 @@ function cancelSerialRight() {
 
 ## StopBits
 
-表示停止位宽的枚举
+表示停止位宽的枚举，单位：比特
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 

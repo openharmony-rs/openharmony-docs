@@ -56,7 +56,7 @@ import { systemTimer } from '@kit.BasicServicesKit';
 | name<sup>15+</sup> | string                        |  否 | 是  | 定时器名称，长度不超过64字节。<br>同一个UID中不可以同时存在两个同名定时器。如果创建了一个和之前已创建的定时器名字相同的定时器，先创建的定时器会被销毁。<br>默认值为空字符串。<br>ArkTS-Dyn起始版本: 15<br>ArkTS-Sta起始版本: 23 |
 | interval  | ArkTS-Dyn: number<br>ArkTS-Sta: long   |  否 | 是  | 定时器时间间隔，单位：毫秒。<br>如果是循环定时器，interval值最小为1s，最大为365天，建议interval值不小于5000毫秒；<br>单次定时器interval值为0。<br>默认值为0。 |
 | wantAgent | WantAgent                              |  否 | 是  | 设置通知的WantAgent，定时器到期后通知（支持拉起应用MainAbility，不支持拉起ServiceAbility）。<br>默认值为空。 |
-| callback  | void                                   |  否 | 是  | 用户需要执行的回调函数。<br>默认值为空。 |
+| callback  | function                                   |  否 | 是  | 用户需要执行的回调函数。<br>默认值为空。 |
 
 
 ## systemTimer.createTimer
@@ -95,7 +95,7 @@ ArkTS-Sta: createTimer(options: TimerOptions, callback: AsyncCallback&lt;long&gt
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -117,7 +117,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -180,7 +180,7 @@ ArkTS-Sta: createTimer(options: TimerOptions): Promise&lt;long&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -200,7 +200,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -239,7 +239,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long, callback: AsyncCallback&lt
 | 参数名      | 类型                   | 必填 | 说明                                                                                                                                                                                                                                                           |
 | ----------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | timer       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的ID。                                                                                                                                                                                                                                                      |
-| triggerTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime(STARTUP)](js-apis-date-time.md#systemdatetimegetuptime10)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10)获取。 |
+| triggerTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10)获取。 |
 | callback    | AsyncCallback&lt;void> | 是   | 回调函数。                                                                                                                                                                                                                                                        |
 
 **错误码：**
@@ -253,7 +253,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long, callback: AsyncCallback&lt
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -283,7 +283,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -332,7 +332,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long): Promise&lt;void&gt;
 | 参数名      | 类型   | 必填 | 说明                                                                                                                                                                                                                                                           |
 | ----------- | ------ | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | timer       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的ID。                                                                                                                                                                                                                                                      |
-| triggerTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime(STARTUP)](js-apis-date-time.md#systemdatetimegetuptime10)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10)获取。 |
+| triggerTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10)获取。 |
 
 **返回值：**
 
@@ -351,7 +351,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -379,7 +379,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -439,6 +439,7 @@ ArkTS-Sta: stopTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -468,7 +469,7 @@ try {
   console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
 }
 ```
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -536,7 +537,7 @@ ArkTS-Sta: stopTimer(timer: long): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -565,7 +566,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例: 
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -626,7 +627,7 @@ ArkTS-Sta: destroyTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -658,7 +659,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -727,7 +728,7 @@ ArkTS-Sta: destroyTimer(timer: long): Promise&lt;void&gt;
 
 **示例：**
 
-ArkTS-Dyn示例:
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -757,7 +758,7 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 

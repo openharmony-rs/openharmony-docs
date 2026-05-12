@@ -79,7 +79,7 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
    import { abilityAccessCtrl } from '@kit.AbilityKit';
    ```
 
-3. 分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。
+3. 分布式数据同步权限的授权方式为user_grant，因此需要调用[requestPermissionsFromUser()](../../application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)接口，以动态弹窗的方式向用户申请授权。
 
    <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -100,13 +100,17 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
 
 ### 场景概述
 
-开发者可以调用DeviceManager设备发现相关接口，获取周边可用的设备。
+开发者可以调用设备发现相关接口，获取周边可用的设备。
 
 ### 接口说明
 
-startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void;
+ArkTS-Dyn: startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void;
+
+ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, filterOptions?: Record&lt;string, int | string&gt;): void;
 
 发现周边同局域网或者开启蓝牙的设备。详细信息参见：[startDiscovering](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)。
+
+发现设备结果和失败信息可通过发现结果监听接口获取，ArkTS-Dyn场景下可使用[on('discoverSuccess')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondiscoversuccess)和[on('discoverFailure')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondiscoverfailure)，ArkTS-Sta场景下可使用[onDiscoverSuccess](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondiscoversuccess23)和[onDiscoverFailure](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondiscoverfailure23)。发现结束后，可调用[stopDiscovering](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#stopdiscovering)停止发现。
 
 
 ### 开发步骤
@@ -138,7 +142,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
      logger.info('[DeviceManager.RemoteDeviceModel] deviceManager.createDeviceManager begin');
      try {
        let dmInstance = distributedDeviceManager.createDeviceManager('com.samples.devicemanager');
-       this.deviceManager = dmInstance
+       this.deviceManager = dmInstance;
        // ...
        logger.info(`[DeviceManager.RemoteDeviceModel] createDeviceManager callback returned,
        value= ${JSON.stringify(this.deviceManager)}`);
@@ -152,6 +156,8 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
    ```
 
 5. 注册发现设备的回调，调用发现接口发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
+
+   ArkTS-Dyn示例：
    
    <!-- @[start_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
@@ -192,6 +198,85 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
    }
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   type DiscoverySuccessResultData = distributedDeviceManager.DiscoverySuccessResult;
+   type DiscoveryFailureResultData = distributedDeviceManager.DiscoveryFailureResult;
+   type DeviceManagerParam = Record<string, int | string>;
+
+   startDeviceDiscovery(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       return;
+     }
+
+     let self = this;
+     try {
+       this.deviceManager.onDiscoverSuccess((data: DiscoverySuccessResultData) => {
+         logger.info('[DeviceManager.RemoteDeviceModel] deviceFound data=' + JSON.stringify(data));
+         self.deviceFound(data.device);
+       })
+       this.deviceManager.onDiscoverFailure((data: DiscoveryFailureResultData) => {
+         logger.info('[DeviceManager.RemoteDeviceModel] discoverFail data=' + JSON.stringify(data));
+       })
+       let discoverParam: DeviceManagerParam = {
+         'discoverTargetType': 1
+       };
+       let filterOptions: DeviceManagerParam = this.getFilterOptions();
+       if (Object.entries(filterOptions).length == 0) {
+         this.deviceManager.startDiscovering(discoverParam);
+       } else {
+         this.deviceManager.startDiscovering(discoverParam, filterOptions);
+       }
+     } catch (err) {
+       let e: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] startDeviceDiscovery failed err: ' + e.toString());
+     }
+   }
+   ```
+
+6. 发现结束或页面退出时，调用停止发现接口释放发现监听。ArkTS-Dyn场景下可调用[off('discoverSuccess')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdiscoversuccess)和[off('discoverFailure')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdiscoverfailure)取消监听，ArkTS-Sta场景下可调用[offDiscoverSuccess](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdiscoversuccess23)和[offDiscoverFailure](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdiscoverfailure23)取消监听。
+
+   ArkTS-Dyn示例：
+
+   ```ts
+   stopDeviceDiscovery(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       return;
+     }
+
+     try {
+       this.deviceManager.stopDiscovering();
+       this.deviceManager.off('discoverSuccess');
+       this.deviceManager.off('discoverFailure');
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   stopDeviceDiscovery(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       return;
+     }
+
+     try {
+       this.deviceManager.stopDiscovering();
+       this.deviceManager.offDiscoverSuccess();
+       this.deviceManager.offDiscoverFailure();
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+     }
+   }
+   ```
 
 ## 设备绑定开发指导
 
@@ -201,7 +286,9 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 ### 接口说明
 
-bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void;
+ArkTS-Dyn: bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}&gt;): void;
+
+ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | string&gt; , callback: AsyncCallback&lt;BindTargetResult&gt;): void;
 
 设备绑定。详细信息参见：[bindTarget](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#bindtarget)。
 
@@ -212,6 +299,8 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 2. 发现周边不可信设备。
    
 3. 选择不可信设备id，发起设备绑定。
+
+   ArkTS-Dyn示例：
 
    <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
@@ -251,6 +340,63 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
    }
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   type BindTargetResultData = distributedDeviceManager.BindTargetResult;
+   type DeviceManagerParam = Record<string, int | string>;
+
+   authenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
+     logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice ' + JSON.stringify(device));
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       return;
+     }
+
+     for (let i = 0; i < this.discoverList.length; i++) {
+       if (this.discoverList[i].deviceId != device.deviceId) {
+         continue;
+       }
+
+       let bindParam: DeviceManagerParam = {
+         'bindLevel': 3,
+         'bindType': 1,
+         'targetPkgName': 'com.samples.devicemanager.sta',
+         'appName': 'DeviceManager-sta',
+       };
+       try {
+         this.deviceManager.bindTarget(device.deviceId, bindParam, (err: BusinessError, data: BindTargetResultData) => {
+           if (err) {
+             logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice error:' + JSON.stringify(err));
+             return;
+           }
+           logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice succeed:' + JSON.stringify(data));
+         })
+       } catch (err) {
+         let e: BusinessError = err as BusinessError;
+         logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice failed err: ' + e.toString());
+       }
+     }
+   }
+   ```
+
+4. 业务不再需要可信关系时，可调用[unbindTarget](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#unbindtarget)解除绑定关系。
+
+   ```ts
+   unAuthenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       return;
+     }
+
+     try {
+       this.deviceManager.unbindTarget(device.deviceId);
+     } catch (err) {
+       let error: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] unAuthenticateDevice failed err: ' + error.toString());
+     }
+   }
+   ```
 
 
 ## 设备信息查询开发指导
@@ -264,6 +410,8 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 设备信息查询。详细信息参见：[getAvailableDeviceListSync](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)。
+
+除查询在线可信设备列表外，还可通过[getLocalDeviceNetworkId](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getlocaldevicenetworkid)、[getLocalDeviceName](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getlocaldevicename)、[getLocalDeviceType](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getlocaldevicetype)、[getLocalDeviceId](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getlocaldeviceid)、[getDeviceName](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getdevicename)和[getDeviceType](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getdevicetype)查询本机设备或指定可信设备的详细信息。
 
 ### 开发步骤
 
@@ -306,9 +454,11 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 ### 接口说明
 
-on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void;
+ArkTS-Dyn: on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void;
 
-设备上下线监听。详细信息参见：[on('deviceStateChange')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)。
+ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void;
+
+设备上下线监听。详细信息参见：[on('deviceStateChange')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)和[onDeviceStateChange](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange23)。
 
 ### 开发步骤
 
@@ -327,6 +477,8 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
    ```
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口，并注册设备上下线回调。
+
+   ArkTS-Dyn示例：
 
    <!-- @[device_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
@@ -366,3 +518,65 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
    }
    ```
 
+   ArkTS-Sta示例：
+
+   ```ts
+   type DeviceStateChangeResultData = distributedDeviceManager.DeviceStateChangeResult;
+
+   registerDeviceStateListener(): void {
+     logger.info('[DeviceManager.RemoteDeviceModel] registerDeviceStateListener');
+     if (typeof (this.deviceManager) == 'undefined') {
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       return;
+     }
+
+     try {
+       this.deviceManager.onDeviceStateChange((data: DeviceStateChangeResultData) => {
+         logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange data=' + JSON.stringify(data));
+         switch (data.action) {
+           case distributedDeviceManager.DeviceStateChange.AVAILABLE:
+             logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange ONLINE');
+             break;
+           case distributedDeviceManager.DeviceStateChange.UNAVAILABLE:
+             logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange OFFLINE');
+             break;
+           default:
+             break;
+         }
+       })
+     } catch(err) {
+       let e: BusinessError = err as BusinessError;
+       logger.error('[DeviceManager.RemoteDeviceModel] deviceStateChange failed err: ' + e.toString());
+     }
+   }
+   ```
+
+5. 不再监听设备上下线时，ArkTS-Dyn场景下可调用[off('deviceStateChange')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange)取消监听，ArkTS-Sta场景下可调用[offDeviceStateChange](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange23)取消监听。设备管理实例不再使用时，可调用[releaseDeviceManager](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#distributeddevicemanagerreleasedevicemanager)释放资源。
+
+   ArkTS-Dyn示例：
+
+   ```ts
+   releaseDeviceManager(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       return;
+     }
+
+     this.deviceManager.off('deviceStateChange');
+     distributedDeviceManager.releaseDeviceManager(this.deviceManager);
+     this.deviceManager = undefined;
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   ```ts
+   releaseDeviceManager(): void {
+     if (typeof (this.deviceManager) == 'undefined') {
+       return;
+     }
+
+     this.deviceManager.offDeviceStateChange();
+     distributedDeviceManager.releaseDeviceManager(this.deviceManager);
+     this.deviceManager = undefined;
+   }
+   ```

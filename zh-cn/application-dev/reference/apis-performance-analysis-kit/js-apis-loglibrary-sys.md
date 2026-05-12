@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @BruceZong-->
-<!--Designer: @gcw_qzKyUhyU-->
+<!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -11,6 +11,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块为系统接口。
 
@@ -26,11 +27,15 @@ import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | name | string | 否 | 否 | 文件名称。 |
-| mtime | number | 否 | 否  | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。 |
-| size | number | 否 | 否  | 文件大小，以字节为单位。 |
+| mtime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否  | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。 |
+| size | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否  | 文件大小，以字节为单位。 |
 
 ## logLibrary.list
 
@@ -41,6 +46,10 @@ list(logType: string): LogEntry[]
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -66,14 +75,30 @@ list(logType: string): LogEntry[]
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let logObj = logLibrary.list('HILOG');
-    // do something here.
+  let logObj = logLibrary.list('HILOG');
+  // do something here.
 } catch (error) {
-    console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+  console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let logObj = logLibrary.list('HILOG');
+  // do something here.
+} catch (err: BusinessError) {
+  console.error(`error code: ${err?.code}, error msg: ${err?.message}`);
 }
 ```
 
@@ -86,6 +111,10 @@ copy(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -114,23 +143,44 @@ copy(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    logLibrary.copy('HILOG', 'hiapplogcat-1.zip', ''
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    logLibrary.copy('HILOG', logObj[0].name, ''
     ).then(
-        (val) => {
-            // do something here.
-        }
+      (val) => {
+        // do something here.
+      }
     ).catch(
-        (err: BusinessError) => {
-            // do something here.
-        }
+      (err: BusinessError) => {
+        // do something here.
+      }
     )
+  }
 } catch (error) {
     console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    await logLibrary.copy('HILOG', logObj[0].name, '');
+  }
+} catch (err: BusinessError) {
+  console.error(`error code: ${err?.code}, error msg: ${err?.message}`);
 }
 ```
 
@@ -143,6 +193,10 @@ copy(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 **需要权限：** ohos.permission.READ_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -166,19 +220,42 @@ copy(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-    logLibrary.copy('HILOG', 'hiapplogcat-1.zip', 'dir1', (error, val) => {
-        if (val === undefined) {
-            // copy failed.
-        } else {
-            // copy success.
-        }
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    logLibrary.copy('HILOG', logObj[0].name, 'dir1', (error, val) => {
+      if (val === undefined) {
+        // copy failed.
+      } else {
+        // copy success.
+      }
     });
+  }
 } catch (error) {
     console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let logObj = logLibrary.list('HILOG');
+  if (logObj.length > 0) {
+    logLibrary.copy('HILOG', logObj[0].name, 'dir1', (err: BusinessError | null) => {
+      // copy结果
+    });
+  }
+} catch (err: BusinessError) {
+  console.error(`error code: ${err?.code}, error msg: ${err?.message}`);
 }
 ```
 
@@ -191,6 +268,10 @@ move(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -219,23 +300,44 @@ move(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    logLibrary.move('FAULTLOG', 'fault_log_test.zip', ''
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    logLibrary.move('FAULTLOG', logObj[0].name, ''
     ).then(
-        (val) => {
-            // do something here.
-        }
+      (val) => {
+        // do something here.
+      }
     ).catch(
-        (err: BusinessError) => {
-            // do something here.
-        }
+      (err: BusinessError) => {
+        // do something here.
+      }
     )
+  }
 } catch (error) {
     console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    await logLibrary.move('FAULTLOG', logObj[0].name, '');
+  }
+} catch (err: BusinessError) {
+  console.error(`error code: ${err?.code}, error msg: ${err?.message}`);
 }
 ```
 
@@ -248,6 +350,10 @@ move(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -271,19 +377,42 @@ move(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-    logLibrary.move('FAULTLOG', 'fault_log_test.zip', 'dir1/dir2', (error, val) => {
-        if (val === undefined) {
-            // move failed.
-        } else {
-            // move success.
-        }
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    logLibrary.move('FAULTLOG', logObj[0].name, 'dir1/dir2', (error, val) => {
+      if (val === undefined) {
+        // move failed.
+      } else {
+        // move success.
+      }
     });
+  }
 } catch (error) {
     console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    logLibrary.move('FAULTLOG', logObj[0].name, 'dir1/dir2', (err: BusinessError | null) => {
+      // move结果
+    });
+  }
+} catch (err: BusinessError) {
+  console.error(`error code: ${err?.code}, error msg: ${err?.message}`);
 }
 ```
 
@@ -296,6 +425,10 @@ remove(logType: string, logName: string): void
 **需要权限：** ohos.permission.WRITE_HIVIEW_SYSTEM
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.LogLibrary
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -317,12 +450,33 @@ remove(logType: string, logName: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { logLibrary } from '@kit.PerformanceAnalysisKit';
 
 try {
-  logLibrary.remove('FAULTLOG', 'fault_log_test.zip');
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    logLibrary.remove('FAULTLOG', logObj[0].name);
+  }
 } catch (error) {
   console.error(`error code: ${error?.code}, error msg: ${error?.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { logLibrary } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let logObj = logLibrary.list('FAULTLOG');
+  if (logObj.length > 0) {
+    logLibrary.remove('FAULTLOG', logObj[0].name);
+  }
+} catch (err: BusinessError) {
+  console.error(`error code: ${err?.code}, error msg: ${err?.message}`);
 }
 ```
