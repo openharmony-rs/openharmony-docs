@@ -227,7 +227,7 @@
        console.error(`${TAG} No serial port found, please call getSerialPortList first`);
        return;
      }
-     await this.port.flush();
+     await this.port!.flush();
      console.info(`${TAG} flush success`);
    } catch (err) {
      const e = err as BusinessError;
