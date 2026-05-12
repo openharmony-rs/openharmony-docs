@@ -4595,20 +4595,6 @@
 
 **起始版本**：18
 
-## ohos.permission.GET_NETWORK_STATS
-
-允许系统应用获取历史流量。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：10
-
-**变更信息**：API 10-11，ACL使能为false；从API 12开始，变更为true。
-
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
 允许系统应用从窥屏提示数据库读取数据。
