@@ -13,6 +13,12 @@
 1. 导入所需的模块。
 
    <!-- @[taskpool_listen_sensor_data_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   
+   ``` TypeScript
+   import { sensor } from '@kit.SensorServiceKit';
+   import { taskpool } from '@kit.ArkTS';
+   import { BusinessError, emitter } from '@kit.BasicServicesKit';
+   ```
 
 2. 定义长时任务，内部监听sensor数据，并通过emitter注册销毁通知。
 
