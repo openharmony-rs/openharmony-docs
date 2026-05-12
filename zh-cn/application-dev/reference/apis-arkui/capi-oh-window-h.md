@@ -768,7 +768,7 @@ int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_Den
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回结果代码<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。 <br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
+| int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。 <br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
 
 ### OH_WindowManager_GetDensityInfoCopy()
 
