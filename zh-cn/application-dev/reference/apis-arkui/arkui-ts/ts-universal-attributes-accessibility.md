@@ -18,7 +18,7 @@
 
 ## accessibilityGroup
 
-accessibilityGroup(value: boolean): T
+accessibilityGroup(value: boolean)
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -50,7 +50,7 @@ accessibilityGroup(value: boolean): T
 
 ## accessibilityGroup<sup>14+</sup>
 
-ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T
+ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -89,7 +89,7 @@ ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: Accessibil
 
 ## accessibilityGroup<sup>23+</sup>
 
-accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions?: AccessibilityOptions): this
+accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions?: AccessibilityOptions)
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -130,7 +130,7 @@ accessibilityGroup(isGroup: boolean | undefined, accessibilityOptions?: Accessib
 
 ## accessibilityText
 
-accessibilityText(value: string): T
+accessibilityText(value: string)
 
 设置无障碍文本。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
@@ -158,7 +158,7 @@ accessibilityText(value: string): T
 
 ## accessibilityText<sup>12+</sup>
 
-accessibilityText(text: Resource): T
+accessibilityText(text: Resource)
 
 设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
@@ -190,7 +190,7 @@ accessibilityText(text: Resource): T
 
 ## accessibilityText<sup>23+</sup>
 
-accessibilityText(text: Resource | string | undefined): this
+accessibilityText(text: Resource | string | undefined)
 
 设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
@@ -222,7 +222,7 @@ accessibilityText(text: Resource | string | undefined): this
 
 ## accessibilityDescription
 
-accessibilityDescription(value: string): T
+accessibilityDescription(value: string)
 
 设置无障碍说明。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -250,7 +250,7 @@ accessibilityDescription(value: string): T
 
 ## accessibilityDescription<sup>12+</sup>
 
-accessibilityDescription(description: Resource): T
+accessibilityDescription(description: Resource)
 
 设置无障碍说明，支持通过[Resource](ts-types.md#resource)引用资源文件。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -282,7 +282,7 @@ accessibilityDescription(description: Resource): T
 
 ## accessibilityDescription<sup>23+</sup>
 
-accessibilityDescription(description: Resource | string | undefined): this
+accessibilityDescription(description: Resource | string | undefined)
 
 设置无障碍说明，支持通过[Resource](ts-types.md#resource)引用资源文件。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -314,9 +314,9 @@ accessibilityDescription(description: Resource | string | undefined): this
 
 ## accessibilityLevel
 
-ArkTS-Dyn: accessibilityLevel(value: string): T
+ArkTS-Dyn: accessibilityLevel(value: string)
 
-ArkTS-Sta: accessibilityLevel(value: string | undefined): this
+ArkTS-Sta: accessibilityLevel(value: string | undefined)
 
 设置无障碍重要性。该属性用于控制某个组件是否可被无障碍辅助服务所识别。
 
@@ -345,9 +345,9 @@ ArkTS-Sta: accessibilityLevel(value: string | undefined): this
 
 ## accessibilityVirtualNode<sup>11+</sup>
 
-ArkTS-Dyn: accessibilityVirtualNode(builder: CustomBuilder): T
+ArkTS-Dyn: accessibilityVirtualNode(builder: CustomBuilder)
 
-ArkTS-Sta: accessibilityVirtualNode(builder: CustomBuilder | undefined): this
+ArkTS-Sta: accessibilityVirtualNode(builder: CustomBuilder | undefined)
 
 设置无障碍虚拟子节点。对自绘制组件传入一个自定义的CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。如使用画布组件[Canvas](./ts-components-canvas-canvas.md)时，可以通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。
 
@@ -379,9 +379,9 @@ ArkTS-Sta: accessibilityVirtualNode(builder: CustomBuilder | undefined): this
 
 ## accessibilityChecked<sup>13+</sup>
 
-ArkTS-Dyn: accessibilityChecked(isCheck: boolean): T
+ArkTS-Dyn: accessibilityChecked(isCheck: boolean)
 
-ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined): this
+ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined)
 
 无障碍节点是否选中的状态维护，用于支持多选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
@@ -414,9 +414,9 @@ ArkTS-Sta: accessibilityChecked(isCheck: boolean | undefined): this
 
 ## accessibilitySelected<sup>13+</sup>
 
-ArkTS-Dyn: accessibilitySelected(isSelect: boolean): T
+ArkTS-Dyn: accessibilitySelected(isSelect: boolean)
 
-ArkTS-Sta: accessibilitySelected(isSelect: boolean | undefined): this
+ArkTS-Sta: accessibilitySelected(isSelect: boolean | undefined)
 
 无障碍节点是否选中的状态维护，用于支持单选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
@@ -449,9 +449,9 @@ ArkTS-Sta: accessibilitySelected(isSelect: boolean | undefined): this
 
 ## accessibilityRole<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityRole(role: AccessibilityRoleType): T
+ArkTS-Dyn: accessibilityRole(role: AccessibilityRoleType)
 
-ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
+ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined)
 
 设置无障碍组件类型，特定组件类型有特定的朗读方式，可以根据应用诉求，修改组件类型，用于控制无障碍模式下对组件的朗读方式和朗读内容。
 
@@ -621,9 +621,9 @@ ArkTS-Sta: accessibilityRole(role: AccessibilityRoleType | undefined): this
 
 ## accessibilityNextFocusId<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityNextFocusId(nextId: string): T
+ArkTS-Dyn: accessibilityNextFocusId(nextId: string)
 
-ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
+ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined)
 
 指定屏幕朗读扫动走焦过程中组件的下一个焦点。
 
@@ -651,9 +651,9 @@ ArkTS-Sta: accessibilityNextFocusId(nextId: string | undefined): this
 
 ## accessibilityDefaultFocus<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityDefaultFocus(focus: boolean): T
+ArkTS-Dyn: accessibilityDefaultFocus(focus: boolean)
 
-ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined): this
+ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined)
 
 为页面设置屏幕朗读初始焦点。
 
@@ -681,9 +681,9 @@ ArkTS-Sta: accessibilityDefaultFocus(focus: boolean | undefined): this
 
 ## accessibilityUseSamePage<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode): T
+ArkTS-Dyn: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode)
 
-ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefined): this
+ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefined)
 
 设置当前组件和宿主应用为同page模式。
 
@@ -732,9 +732,9 @@ ArkTS-Sta: accessibilityUseSamePage(pageMode: AccessibilitySamePageMode | undefi
 
 ## accessibilityScrollTriggerable<sup>18+</sup>
 
-ArkTS-Dyn: accessibilityScrollTriggerable(isTriggerable: boolean): T
+ArkTS-Dyn: accessibilityScrollTriggerable(isTriggerable: boolean)
 
-ArkTS-Sta: accessibilityScrollTriggerable(isTriggerable: boolean | undefined): this
+ArkTS-Sta: accessibilityScrollTriggerable(isTriggerable: boolean | undefined)
 
 设置无障碍节点是否支持屏幕朗读滚动操作。当屏幕朗读在扫动走焦时，若容器内当前页面无可聚焦的组件，会发起一次自动滚动操作。
 
@@ -763,9 +763,9 @@ ArkTS-Sta: accessibilityScrollTriggerable(isTriggerable: boolean | undefined): t
 
 ## accessibilityTextHint<sup>12+</sup>
 
-ArkTS-Dyn: accessibilityTextHint(value: string): T
+ArkTS-Dyn: accessibilityTextHint(value: string)
 
-ArkTS-Sta: accessibilityTextHint(value: string | undefined): this
+ArkTS-Sta: accessibilityTextHint(value: string | undefined)
 
 设置组件的文本提示信息，供无障碍辅助应用查询。
 
@@ -797,9 +797,9 @@ ArkTS-Sta: accessibilityTextHint(value: string | undefined): this
 
 ## accessibilityFocusDrawLevel<sup>19+</sup>
 
-ArkTS-Dyn: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T
+ArkTS-Dyn: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel)
 
-ArkTS-Sta: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel | undefined): this
+ArkTS-Sta: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel | undefined)
 
 无障碍焦点绿框的绘制层级设置功能。
 
@@ -834,9 +834,7 @@ ArkTS-Sta: accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel | undefined): t
 
 ## accessibilityStateDescription<sup>23+</sup>
 
-ArkTS-Dyn: accessibilityStateDescription(description: string | Resource | undefined): T
-
-ArkTS-Sta: accessibilityStateDescription(description: string | Resource | undefined): this
+accessibilityStateDescription(description: string | Resource | undefined)
 
 设置组件的状态播报文本，用于屏幕朗读场景下清晰说明组件当前的实时状态。屏幕朗读时会优先播报该状态文本。
 
@@ -864,9 +862,7 @@ ArkTS-Sta: accessibilityStateDescription(description: string | Resource | undefi
 
 ## accessibilityActionOptions<sup>23+</sup>
 
-ArkTS-Dyn: accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
-
-ArkTS-Sta: accessibilityActionOptions(option: AccessibilityActionOptions | undefined): this
+accessibilityActionOptions(option: AccessibilityActionOptions | undefined)
 
 设置组件的无障碍操作的可选参数，用于限制或修改屏幕朗读等辅助应用发起的操作行为。
 
