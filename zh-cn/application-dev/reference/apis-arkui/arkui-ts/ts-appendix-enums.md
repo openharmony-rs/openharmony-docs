@@ -25,10 +25,10 @@
 
 | 名称         | 值 | 说明                                                         |
 | ------------ | - | ------------------------------------------------------------ |
-| HOVER_ENTER  | 0 | 手指按下时触发。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| HOVER_MOVE   | 1 | 触摸移动时触发。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| HOVER_EXIT   | 2 | 手指抬起时触发。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| HOVER_CANCEL | 3 | 打断取消当前触发的事件。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| HOVER_ENTER  | 0 | 手指按下时触发。 |
+| HOVER_MOVE   | 1 | 触摸移动时触发。 |
+| HOVER_EXIT   | 2 | 手指抬起时触发。 |
+| HOVER_CANCEL | 3 | 打断取消当前触发的事件。 |
 
 ## AttributeModifierState<sup>23+</sup>
 
@@ -510,7 +510,7 @@
 
 | 名称                  | 值 | 说明                                                |
 | --------------------- | - | ---------------------------------------------------- |
-| EMBEDDED_UI_EXTENSION | 0 | 表示当前拉起的提供方类型为EmbeddedUIExtensionAbility。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| EMBEDDED_UI_EXTENSION | 0 | 表示当前拉起的提供方类型为EmbeddedUIExtensionAbility。 |
 
 ## EventQueryType<sup>19+</sup>
 
