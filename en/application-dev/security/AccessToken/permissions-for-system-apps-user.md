@@ -159,6 +159,6 @@ Allows an application to query the running status of specific applications using
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Phone | 2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
