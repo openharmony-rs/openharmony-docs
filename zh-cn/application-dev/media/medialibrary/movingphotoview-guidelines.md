@@ -57,8 +57,8 @@
 3. 创建动态照片控制器（[MovingPhotoViewController](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md#movingphotoviewcontroller)），用于控制动态照片的播放状态（如播放、停止）。
 
    <!-- @[movingphotoview_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    controller: MovingPhotoViewController = new MovingPhotoViewController();
    ```
 
