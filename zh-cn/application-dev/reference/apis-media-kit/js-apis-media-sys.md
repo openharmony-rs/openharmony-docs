@@ -451,7 +451,7 @@ isWatermarkSupported(): Promise\<boolean>
 
 检查当前设备录制是否支持硬件数字水印能力。使用Promise异步回调。
 
-可在[prepare()](arkts-apis-media-AVRecorder.md#prepare9-1)、[start()](arkts-apis-media-AVRecorder.md#start9)、[paused()](arkts-apis-media-AVRecorder.md#pause9)事件成功触发后调用。
+可在[prepare()](arkts-apis-media-AVRecorder.md#prepare9-1)、[start()](arkts-apis-media-AVRecorder.md#start9)、[pause()](arkts-apis-media-AVRecorder.md#pause9)事件成功触发后调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
