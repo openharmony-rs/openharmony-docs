@@ -1569,7 +1569,7 @@ getCurrentTrack(trackType: MediaType): Promise\<number>
 | 5400101  | No memory. Return by promise.|
 | 5400102  | Operation not allowed. Return by promise.|
 | 5400103  | I/O error. Return by promise.|
-| 5400105  |Service died. return by promise.|
+| 5400105  |Service died. Return by promise.|
 
 **示例：**
 
