@@ -49,9 +49,9 @@
    创建、获取的方式可参考[访问和管理动态照片资源](photoAccessHelper-movingphoto.md)。
 
    <!-- @[movingphotoview_src](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
-   src: photoAccessHelper.MovingPhoto | undefined = undefined;
+   
+   ``` TypeScript
+   @State src: photoAccessHelper.MovingPhoto | undefined = undefined
    ```
 
 3. 创建动态照片控制器（[MovingPhotoViewController](../../reference/apis-media-library-kit/ohos-multimedia-movingphotoview.md#movingphotoviewcontroller)），用于控制动态照片的播放状态（如播放、停止）。
