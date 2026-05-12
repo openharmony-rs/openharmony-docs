@@ -41,25 +41,7 @@
    ```
    ArkTS-Sta:
    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
-   ```ts
-   import common from '@ohos.app.ability.common';
-   import { globalContext } from '../entryability/GlobalContext';
-   private avImageGenerator: media.AVImageGenerator | undefined;
-   private context: Context | undefined;
-   private fileDescriptor: resourceManager.RawFileDescriptor | undefined;
-   private testFilename: string = 'H264_AAC.mp4';
-
-   // 获取当前组件所在Ability的Context，并通过Context获取应用文件路径。
-   this.context = globalContext.getAbilityContext();
-   // 设置fdSrc，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
-   this.fileDescriptor = await this.context!!.resourceManager.getRawFd(this.testFilename);
-   const descriptor: media.AVFileDescriptor = {
-     fd: this.fileDescriptor!.fd,
-     offset: this.fileDescriptor!.offset,
-     length: this.fileDescriptor!.length
-   };
-   this.avImageGenerator!!.fdSrc = descriptor;
-   ```
+   
 3. 获取指定时间图像：调用fetchFrameByTime()，可以获取到一个PixelMap对象，该对象可用于图片显示。
 
    ArkTS-Dyn:
