@@ -51,7 +51,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| VkSurfaceCreateFlagsOHOS | VkFlags | 用于Vulkan Surface创建时使用到的VkFlags类型位掩码。<br>**起始版本：** 10 |
+| VkSurfaceCreateFlagsOHOS | VkFlags | 用于Vulkan Surface创建时使用的VkFlags类型位掩码。<br>**起始版本：** 10 |
 | VkSwapchainImageUsageFlagsOHOS | VkFlags | 交换链图像的使用标志。<br>**起始版本：** 10 |
 
 ### 宏定义
