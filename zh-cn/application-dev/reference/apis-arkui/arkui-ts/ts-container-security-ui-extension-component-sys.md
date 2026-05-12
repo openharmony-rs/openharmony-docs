@@ -49,13 +49,13 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 用于构造SecurityUIExtensionComponent时传递参数。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -67,18 +67,36 @@ SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensionOptions)
 
 定义SecurityUIExtensionComponent内容分辨率跟随策略的枚举。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | FOLLOW_HOST_DPI | 0 | 表示分辨率跟随宿主。 |
 | FOLLOW_UI_EXTENSION_ABILITY_DPI | 1 | 表示分辨率跟随UIExtensionAbility。 |
+
+## ReceiveCallback
+
+type ReceiveCallback = Callback<Record<string, RecordData>>
+
+回调函数，返回收到的来自对端Ability的数据
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, RecordData>> | 回调函数，返回收到的来自对端Ability的数据。 |
 
 ## 属性
 
@@ -96,41 +114,41 @@ ArkTS-Sta: onRemoteReady(callback: Callback\<SecurityUIExtensionProxy\> | undefi
 
 UIExtensionAbility连接完成时触发的回调，使用callback异步回调。之后可通过返回的[SecurityUIExtensionProxy](#securityuiextensionproxy)向被拉起的Ability发送数据。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> \| undefined | 是 | 回调函数，用于向对端Ability发送数据。<br/>ArkTS-Sta模式下,可传入undefined，表示取消回调函数。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[SecurityUIExtensionProxy](#securityuiextensionproxy)\> \| undefined | 是 | 回调函数，用于向对端Ability发送数据。<br/>ArkTS-Sta模式下，可传入undefined，表示取消回调函数。 |
 
 ### onReceive
 
 ArkTS-Dyn: onReceive(callback: Callback\<Record\<string, Object\>\>)
 
-ArkTS-Sta: onReceive(callback: Callback\<Record\<string, RecordData\>\> | undefined)
+ArkTS-Sta: onReceive(callback: ReceiveCallback | undefined)
 
 收到被拉起的Ability发送的数据时触发的回调。使用callback异步回调。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, RecordData\>\> \| undefined | 是 | 回调函数，返回收到的来自对端Ability的数据。<br/>ArkTS-Sta模式下,可传入undefined，表示取消回调函数。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\><br/>ArkTS-Sta: [ReceiveCallback](#receivecallback) \| undefined | 是 | 回调函数，返回收到的来自对端Ability的数据。<br/>ArkTS-Sta模式下，可传入undefined，表示取消回调函数。 |
 
 ### onError
 
@@ -140,19 +158,19 @@ ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError\> | undefined)
 
 被拉起的Ability扩展在运行过程中发生异常时触发的回调，不包含与UIExtensionAbility断开连接场景。使用callback异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> \| undefined | 是 | 回调函数，入参用于接收异常信息。<br/>ArkTS-Sta模式下,可传入undefined，表示取消回调函数。 |
+| callback | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> \| undefined | 是 | 回调函数，入参用于接收异常信息。<br/>ArkTS-Sta模式下，可传入undefined，表示取消回调函数。 |
 
 ### onTerminated
 
@@ -162,19 +180,19 @@ ArkTS-Sta: onTerminated(callback: Callback\<TerminationInfo\> | undefined)
 
 被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)或[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)正常退出时触发此回调。使用callback异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\> \| undefined | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果。<br/>ArkTS-Sta模式下,可传入undefined，表示取消回调函数。 |
+| callback | ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\><br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)\> \| undefined | 是 | 回调函数，入参用于接收UIExtensionAbility的返回结果。<br/>ArkTS-Sta模式下，可传入undefined，表示取消回调函数。 |
 
 ## SecurityUIExtensionProxy
 
@@ -188,13 +206,13 @@ ArkTS-Sta: send(data: Record\<string, RecordData\>): void
 
 用于在双方建立连接成功后，向组件使用方被拉起的Ability发送数据，提供异步发送能力。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -210,13 +228,13 @@ ArkTS-Sta: sendSync(data: Record\<string, RecordData\>): Record\<string, RecordD
 
 用于在双方建立连接成功后，向组件使用方被拉起的Ability发送数据，提供同步发送能力。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -245,13 +263,13 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 订阅被拉起的Ability发生异步注册的回调。使用callback异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -266,13 +284,13 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 订阅被拉起的Ability发生同步注册的回调。使用callback异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -287,13 +305,13 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 
 取消订阅被拉起的Ability发生异步注册的回调。使用callback异步回调。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -307,13 +325,14 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 取消订阅被拉起的Ability发生同步注册后触发的回调。使用callback异步回调。
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
