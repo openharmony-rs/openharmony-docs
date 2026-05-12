@@ -13499,7 +13499,7 @@ try {
 
 ## CloudEnhancementTaskStage<sup>13+</sup>
 
-枚举，应用查询云增强任务状态时，在[CloudEnhancementTaskState](#cloudenhancement13)接口中返回，表示云增强任务状态。
+枚举，应用查询云增强任务状态时，在[CloudEnhancementTaskState](#cloudenhancementtaskstate13)接口中返回，表示云增强任务状态。
 
 **系统接口**：此接口为系统接口。
 
