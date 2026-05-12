@@ -3986,7 +3986,7 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean\>): void
 取消监听空间音频渲染开关状态变化事件。使用callback异步回调。
 
 > **说明：**
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offspatializationenabledchangeforanydevice12)替代。
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off('spatializationEnabledChangeForAnyDevice')](#offspatializationenabledchangeforanydevice12)替代。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4426,7 +4426,7 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean\>): void
 取消监听头动跟踪开关状态变化事件。使用callback异步回调。
 
 > **说明：**
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offheadtrackingenabledchangeforanydevice12)替代。
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off('headTrackingEnabledChangeForAnyDevice')](#offheadtrackingenabledchangeforanydevice12)替代。
 
 **系统接口：** 该接口为系统接口。
 
