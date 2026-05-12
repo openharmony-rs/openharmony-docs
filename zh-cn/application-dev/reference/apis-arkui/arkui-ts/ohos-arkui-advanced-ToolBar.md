@@ -72,7 +72,7 @@ ArkTS-Sta: Toolbar({toolBarList: ToolBarOptions, activateIndex?: int, controller
 
 ## ToolBarOptions<sup>23+</sup>
 
-type ToolBarOptions = Array<ToolBarOption>
+type ToolBarOptions = Array\<ToolBarOption>
 
 定义工具栏列表。
 
@@ -84,7 +84,7 @@ type ToolBarOptions = Array<ToolBarOption>
 
 | 类型   | 说明   |
 | ------ | ------ |
-| Array<ToolBarOption> | 表示工具栏列表。 |
+| Array\<ToolBarOption> | 表示工具栏列表。 |
 
 ## ToolBarOption
 
