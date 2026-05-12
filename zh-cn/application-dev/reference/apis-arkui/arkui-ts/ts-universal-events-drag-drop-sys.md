@@ -22,15 +22,11 @@
 
 拖拽事件信息。
 
-### dragAnimationType<sup>26+</sup>
+### 属性
 
-dragAnimationType: [DragAnimationType](#draganimationtype26枚举说明)
-
-设置拖拽动画类型。该属性仅支持在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)阶段设置，可在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)、[onDragEnter](ts-universal-events-drag-drop.md#ondragenter)、[onDragMove](ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](ts-universal-events-drag-drop.md#ondragleave)、[onDrop](ts-universal-events-drag-drop.md#ondrop)、[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)回调中获取。
-
-**默认值：** DragAnimationType.DEFAULT
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+| 名称 | 类型 | 默认值 | 说明 |
+| --------- | ----------------------------------------- | --------- | ---------------------------------- |
+| dragAnimationType | [DragAnimationType](#draganimationtype枚举说明) | DragAnimationType.DEFAULT | 设置拖拽动画类型。该属性仅支持在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)阶段设置，可在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)、[onDragEnter](ts-universal-events-drag-drop.md#ondragenter)、[onDragMove](ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](ts-universal-events-drag-drop.md#ondragleave)、[onDrop](ts-universal-events-drag-drop.md#ondrop)、[onDragEnd](ts-universal-events-drag-drop.md#ondragend10)回调中获取。 <br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 <br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
 
 ### enableInternalDropAnimation<sup>20+</sup>
 
@@ -63,18 +59,20 @@ enableInternalDropAnimation(configuration: string): void
 | 801       | Capability not supported.|
 | 190003    | Operation not allowed for current phase. |
 
-### executeFollowHandMorphDropAnimation<sup>26+</sup>
+### executeFollowHandMorphDropAnimation
 
 executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, animationOption?: string): void
 
-设置一个跟手变形落位动效执行完成后的回调，该回调由系统在拖拽框架动效结束后触发。
+设置一个跟手变形落位动效执行完成后的回调，该回调由系统在拖拽框架动效结束后触发。使用callback异步回调。
 
 > **说明：**
 >
 > 1. 该接口仅在dragAnimationType设置为DragAnimationType.FOLLOW_HAND_MORPH时生效。
 > 2. 不要在回调中实现与动效无关的逻辑，避免影响执行效率。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -84,12 +82,18 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
-| onAnimationFinished | [Callback\<void\>](../../../reference/apis-basic-services-kit/js-apis-base.md#callback) | 是 | 拖拽框架动效结束后触发的回调。 |
-| animationOption | string | 否 | 可选的动效参数字符串，会在动效流程中由框架透传。<br/>参数为JSON字符串格式，包含以下字段：<br/>- CubicCurveEnable: boolean - 是否启用三次曲线动画<br/>- SpringEnable: boolean - 是否启用弹簧动画<br/>- dropAnimationCurve: number[] - 落位动画曲线参数<br/>- dropPosition: number[] - 落位位置坐标[x, y]<br/>- dropSize: number[] - 落位尺寸[width, height] |
+| onAnimationFinished | [Callback](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)\<void\> | 是 | 拖拽框架动效结束后触发的回调。 |
+| animationOption | string | 否 | 可选的动效参数字符串，会在动效流程中由框架透传。<br/>参数为JSON字符串格式，包含以下字段：<br/>- CubicCurveEnable: boolean，表示是否启用三次曲线动画。<br/>- SpringEnable: boolean，表示是否启用弹簧动画。<br/>- dropAnimationCurve: number[]，表示落位动画曲线参数。<br/>- dropPosition: number[]，落位位置坐标[x, y]。<br/>- dropSize: number[]，落位尺寸[width, height]。 |
 
-## DragAnimationType<sup>26+</sup>枚举说明
+## DragAnimationType枚举说明
 
 拖拽动画类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,13 +106,16 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。本文仅介绍DragController的系统接口，其他公开接口参见[DragController](../arkts-apis-uicontext-dragcontroller.md)。
 
-### interruptFollowHandMorphDropAnimation<sup>26+</sup>
+### interruptFollowHandMorphDropAnimation
 
 interruptFollowHandMorphDropAnimation(): boolean
 
 中断待执行的跟手变形落位动效，并立即触发其收尾流程。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -118,13 +125,13 @@ interruptFollowHandMorphDropAnimation(): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 返回true表示中断成功；返回false表示当前不存在待中断的跟手变形落位动效。 |
+| boolean | 返回中断结果。<br/> 返回true表示中断成功，返回false表示当前不存在待中断的跟手变形落位动效。 |
 
 ## 示例
 
 ### 示例1（设置跟手变形拖拽动画）
 
-从API版本26.0.0开始，示例1通过设置[dragAnimationType](#draganimationtype26枚举说明)为FOLLOW_HAND_MORPH实现跟手变形拖拽动画效果，并在拖拽结束时通过[executeFollowHandMorphDropAnimation](#executefollowhandmorphdropanimation26)执行自定义落位动效。
+该示例通过设置[dragAnimationType](#draganimationtype枚举说明)为FOLLOW_HAND_MORPH实现跟手变形拖拽动画效果，并在拖拽结束时通过[executeFollowHandMorphDropAnimation](#executefollowhandmorphdropanimation)执行自定义落位动效。
 
 ArkTS-Dyn示例：
 
