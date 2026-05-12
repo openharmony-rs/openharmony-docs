@@ -37,8 +37,8 @@
      API version 22及之后版本：
 
      <!-- @[movingphotoview_import_api22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
      ```
 
