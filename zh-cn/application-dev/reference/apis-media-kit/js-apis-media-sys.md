@@ -1565,7 +1565,7 @@ getCurrentTrack(trackType: MediaType): Promise\<number>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202  | Called from Non-System applications. return by promise.|
+| 202  | Called from Non-System applications. Return by promise.|
 | 5400101  | No memory. Return by promise.|
 | 5400102  | Operation not allowed. Return by promise.|
 | 5400103  | I/O error. Return by promise.|
@@ -1594,7 +1594,7 @@ forceLoadVideo(force: boolean): Promise\<void>
 
 是否强制加载视频。使用Promise异步回调。
 
-只有当AVPlayer处于prepared、playing或者pause状态时，才能调用此接口。
+只有当AVPlayer处于prepared、playing或者paused状态时，才能调用此接口。
 
 **起始版本：** 26.0.0
 
@@ -1622,7 +1622,7 @@ forceLoadVideo(force: boolean): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202  | Called from Non-System applications. return by promise.|
+| 202  | Called from Non-System applications. Return by promise.|
 
 **示例：**
 
