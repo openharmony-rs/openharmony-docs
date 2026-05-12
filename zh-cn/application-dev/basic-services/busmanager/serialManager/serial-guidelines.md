@@ -169,7 +169,7 @@
        stopBits: serial.StopBits.ONE,
        parity: serial.Parity.NONE
      };
-     await this.port.open(config);
+     await this.port!.open(config);
      console.info(`${TAG} open success`);
    } catch (err) {
      const e = err as BusinessError;
