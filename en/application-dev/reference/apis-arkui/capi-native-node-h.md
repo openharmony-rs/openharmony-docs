@@ -3686,3 +3686,5 @@ Obtains the **ArkUI_GestureCollectInterceptInfo** object from a specified **ArkU
 | [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md)* | Pointer to the **ArkUI_GestureCollectInterceptInfo** object. This return value is valid only during the callback and does not need to be released.<br>**null** is returned if the input parameter is invalid or is not the gesture collection interception information.|
 
 ## More
+
+<!--no_check-->
