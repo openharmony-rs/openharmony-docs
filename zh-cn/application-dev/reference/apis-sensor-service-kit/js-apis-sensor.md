@@ -33,7 +33,7 @@ on(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&gt;
 
 **需要权限**：ohos.permission.ACCELEROMETER
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7798,7 +7798,7 @@ off(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;):
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -7857,7 +7857,7 @@ off(type: SensorId.ORIENTATION, sensorInfoParam?: SensorInfoParam, callback?: Ca
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[offOrientationChange](#sensorofforientationchange23)
 
-**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -11468,7 +11468,7 @@ try {
 | HALL                        | 10   | 霍尔传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
 | PROXIMITY                   | 12   | 接近光传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                               |
 | HUMIDITY                    | 13   | 湿度传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
-| ORIENTATION                 | 256  | 方向传感器。<br/>**原子化服务API**：从API version 11开始，该接口在支持原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| ORIENTATION                 | 256  | 方向传感器。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | GRAVITY                     | 257  | 重力传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
 | LINEAR_ACCELEROMETER        | 258  | 线性加速度传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                           |
 | ROTATION_VECTOR             | 259  | 旋转矢量传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                             |
@@ -11498,8 +11498,8 @@ try {
 
 | 名称             | 类型      | 只读 | 可选 | 说明                          |
 |----------------|---------|----|----|-----------------------------|
-| deviceId      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 设备ID：默认值为-1，表示本地设备，其它设备Id需通过[getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19)查询。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。                   |
-| sensorIndex       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 传感器索引：默认值为0，为设备上的默认传感器，其它传感器Id需通过[getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19)查询。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。                      |
+| deviceId      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 设备ID：默认值为-1，表示本地设备，其它设备ID需通过[getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19)查询。                   |
+| sensorIndex       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 传感器索引：默认值为0，为设备上的默认传感器，其它传感器ID需通过[getSensorListByDeviceSync](#sensorgetsensorlistbydevicesync19)查询。                      |
 
 ## SensorStatusEvent<sup>19+</sup>
 
@@ -11987,7 +11987,7 @@ try {
 | 名称     | 类型                                                        | 只读 | 可选 | 说明                                                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ---- |--------------------------------------------------------------------------------------------|
 | interval | ArkTS-Dyn: number\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> <br> ArkTS-Sta: long\|[SensorFrequency](#sensorfrequency11)<sup>11+</sup> | 否   | 是   | 表示传感器的上报频率，默认值为200000000ns。该属性有最小值和最大值的限制，由硬件支持的上报频率决定，当设置频率大于最大值时以最大值上报数据，小于最小值时以最小值上报数据。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | 否 | 是 | 传感器传入设置参数，可指定deviceId、sensorIndex。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23                                                         |
+| sensorInfoParam<sup>19+</sup> | [SensorInfoParam](#sensorinfoparam19) | 否 | 是 | 传感器传入设置参数，可指定deviceId、sensorIndex。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23                                                         |
 
 ## SensorFrequency<sup>11+</sup>
 
