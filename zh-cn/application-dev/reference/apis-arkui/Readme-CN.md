@@ -295,6 +295,7 @@
     - [FlowItem](arkui-ts/ts-container-flowitem.md)
     - [LazyVGridLayout](arkui-ts/ts-container-lazyvgridlayout.md)
     - [LazyVWaterFlowLayout](arkui-ts/ts-container-lazyvwaterflowlayout.md)
+    - [LazyColumnLayout](arkui-ts/ts-container-lazycolumnlayout.md)
     - [ScrollBar](arkui-ts/ts-basic-components-scrollbar.md)
     - [Refresh](arkui-ts/ts-container-refresh.md)
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
