@@ -1,6 +1,6 @@
 # 包管理子系统Changelog
 
-## cl.bundlemanager.1 Ability Kit相关公共事件行为变更，增加管控
+## cl.bundlemanager.1 Ability Kit部分公共事件行为变更，增加管控
 
 **访问级别**
 
