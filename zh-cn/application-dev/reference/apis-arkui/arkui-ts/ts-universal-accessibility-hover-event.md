@@ -20,9 +20,9 @@
 
 ## onAccessibilityHover
 
-ArkTS-Dyn: onAccessibilityHover(callback: AccessibilityCallback)
+ArkTS-Dyn: onAccessibilityHover(callback: AccessibilityCallback): T
 
-ArkTS-Sta: onAccessibilityHover(callback: AccessibilityCallback | undefined)
+ArkTS-Sta: onAccessibilityHover(callback: AccessibilityCallback | undefined): this
 
 开启无障碍模式后，单指触摸绑定该回调的组件时触发该回调。
 
@@ -93,9 +93,9 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 
 ## onAccessibilityHoverTransparent<sup>20+</sup>
 
-ArkTS-Dyn: onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback)
+ArkTS-Dyn: onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
 
-ArkTS-Sta: onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback | undefined)
+ArkTS-Sta: onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback | undefined): this
 
 在开启朗读类辅助应用以及手指触摸在组件区域的前提下，当该组件及子组件全部没有被无障碍悬浮识别为可聚焦时，会触发该回调，并且返回无障碍悬浮事件。仅支持手指触摸。不支持如下组件在触摸位置中的场景，包括[UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md)、[Web](../../apis-arkweb/arkts-basic-components-web.md)、<!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md)、<!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md)与第三方UI框架对接。在上述场景下，该回调接口无法生效。
 

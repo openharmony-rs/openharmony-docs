@@ -20,9 +20,9 @@
 
 ## onAccessibilityFocus
 
-ArkTS-Dyn: onAccessibilityFocus(callback: AccessibilityFocusCallback)
+ArkTS-Dyn: onAccessibilityFocus(callback: AccessibilityFocusCallback): T
 
-ArkTS-Sta: onAccessibilityFocus(callback: AccessibilityFocusCallback | undefined)
+ArkTS-Sta: onAccessibilityFocus(callback: AccessibilityFocusCallback | undefined): this
 
 设置无障碍节点获焦、失焦状态的回调函数。当状态发生变化时，触发回调函数。
 
@@ -72,9 +72,9 @@ type AccessibilityFocusCallback = (isFocus: boolean) => void
 
 ## onAccessibilityActionIntercept<sup>20+</sup>
 
-ArkTS-Dyn: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback)
+ArkTS-Dyn: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): T
 
-ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback | undefined)
+ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback | undefined): this
 
 该接口在无障碍模式下，可在无障碍控制操作触发前通知注册的回调函数，由注册方决定是否拦截该次无障碍动作，对不支持Click的组件注册也无法触发回调。
 
