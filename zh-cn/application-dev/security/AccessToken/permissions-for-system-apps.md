@@ -5911,7 +5911,7 @@
 
 ## ohos.permission.MANAGE_AOD
 
-通过API调用AOD Service，触发进入或退出AOD、状态管理等接口时，需要校验该权限。
+允许应用触发进入或退出熄屏显示（AOD），并管理AOD状态。
 
 **权限级别**：system_core
 
