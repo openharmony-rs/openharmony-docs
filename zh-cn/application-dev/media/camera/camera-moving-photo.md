@@ -57,8 +57,8 @@
 
 3. 查询当前设备当前模式是否支持动态照片能力。
 
-    > **说明：**
-    > 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
+> **说明：**
+> 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
 
    <!-- @[camera_moving_photo_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
@@ -82,9 +82,9 @@
 
 4. 使能动态照片拍照能力。
 
-    > **说明：**
-    >
-    > 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
+> **说明：**
+>
+> 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
 
    <!-- @[camera_moving_photo_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
@@ -109,7 +109,7 @@
 
 在相机应用开发过程中，可以随时监听动态照片拍照输出流状态。通过注册photoAsset的回调函数获取监听结果，photoOutput创建成功时即可监听。
 
-   <!-- @[photo_asset_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+<!-- @[photo_asset_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
    ``` TypeScript
    onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
@@ -172,6 +172,7 @@
      }
    }
    ```
+
 ## HDR动态照片
 
 从API version 23开始，相机提供HDR动态照片拍摄能力，即组成动态照片的静态图片与动态短视频均为高动态范围（HDR）内容，能够在高光与暗部细节、色彩层次和整体质感方面优于SDR成片效果。
