@@ -623,7 +623,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  notificationId: number = 0; // 保存通知id
+  notificationId: number = 0; // 保存通知ID
   continuousTaskId: number | undefined = -1;
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
