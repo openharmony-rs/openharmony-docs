@@ -1158,7 +1158,7 @@ Allows an application to query traffic data of other applications.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+**Supported devices**: general devices
 
 **Since**: 10
 
