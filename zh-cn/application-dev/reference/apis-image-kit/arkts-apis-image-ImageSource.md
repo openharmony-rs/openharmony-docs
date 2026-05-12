@@ -45,8 +45,6 @@ ArkTS-Sta: getImageInfo(index: int, callback: AsyncCallback\<ImageInfo | undefin
 
 获取指定序号的图片信息。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。

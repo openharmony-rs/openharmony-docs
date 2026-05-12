@@ -23,8 +23,8 @@ import { image } from '@kit.ImageKit';
 
 | 名称                               | 类型   | 值   | 说明                                                         |
 | ---------------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| XMAGE_WATERMARK_MODE_AT_THE_BOTTOM | ArkTS-Dyn: number<br>ArkTS-Sta: int | 9    | XMAGE水印固定位于图像底部中央。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
-| XMAGE_WATERMARK_MODE_BORDER        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 10   | XMAGE水印会自动调整到边界位置，系统根据图像内容选择最适合的边界区域。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| XMAGE_WATERMARK_MODE_AT_THE_BOTTOM | ArkTS-Dyn: number<br>ArkTS-Sta: int | 9    | XMAGE水印模式：XMAGE水印固定位于图像底部中央。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| XMAGE_WATERMARK_MODE_BORDER        | ArkTS-Dyn: number<br>ArkTS-Sta: int | 10   | XMAGE水印模式：XMAGE水印会自动调整到边界位置，系统根据图像内容选择最适合的边界区域。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | CAPTURE_MODE_PROFESSIONAL | ArkTS-Dyn: number<br>ArkTS-Sta: int | 2    | 拍摄模式：专业模式。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW | ArkTS-Dyn: number<br>ArkTS-Sta: int | 7    | 拍摄模式：前置摄像头夜景模式。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | CAPTURE_MODE_PANORAMA | ArkTS-Dyn: number<br>ArkTS-Sta: int | 8    | 拍摄模式：全景模式。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
