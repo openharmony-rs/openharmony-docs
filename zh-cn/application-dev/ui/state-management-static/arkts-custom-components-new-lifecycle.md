@@ -8,7 +8,7 @@
 
 ## 概述
 
-已有的[自定义组件生命周期](../state-management/arkts-page-custom-components-lifecycle.md)回调函数触发只取决于事件的触发，在某些特定的情况下，会出现自定义组件生命周期回调函数的触发顺序不符合预期。比如：[aboutToDisappear在特定情况下会误调用aboutToAppear、组件未展开被复用时，会误调用aboutToReuse](#生命周期回调函数的区别)。新的自定义组件生命周期回调函数受[状态机](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)限制，生命周期回调函数调用时机符合预期。
+已有的[自定义组件生命周期](../state-management/arkts-page-custom-components-lifecycle.md)回调函数触发只取决于事件的触发，在某些特定的情况下，会出现自定义组件生命周期回调函数的触发顺序不符合预期。比如：[aboutToDisappear在特定情况下会误调用aboutToAppear、组件未展开被复用时，会误调用aboutToReuse](#生命周期回调函数的区别)。新的自定义组件生命周期回调函数受状态机[CustomComponentLifecycleState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)限制，生命周期回调函数调用时机符合预期。
 
 自定义组件生命周期，即用[@Component](../state-management/arkts-create-custom-components.md#component)或[@ComponentV2](../state-management/arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，从API version 24开始，提供以下生命周期装饰器：
 
@@ -453,35 +453,35 @@ struct Child {
 export class MyObserver implements CustomComponentLifecycleObserver {
   // 重写CustomComponentLifecycleObserver中的生命周期事件
   // 被监听的自定义组件创建实例后，执行build函数之前回调aboutToAppear
-  aboutToAppear() {
+  aboutToAppear(): void {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
   }
   // 被监听的自定义组件首次渲染触发的build函数执行完成之后回调onDidBuild
-  onDidBuild() {
+  onDidBuild(): void {
     hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
   }
   // 被监听的自定义组件触发复用时回调aboutToReuse
-  aboutToReuse(params?: ReuseObject) {
+  aboutToReuse(params?: ReuseObject): void {
     // params存在时，为V1的复用；
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
   }
   // 被监听的自定义组件触发回收时回调aboutToRecycle
-  aboutToRecycle() {
+  aboutToRecycle(): void {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
   }
   // 被监听的自定义组件析构销毁之前回调myDisappear
-  aboutToDisappear() {
+  aboutToDisappear(): void {
     hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
   }
 }
 
 // 创建Observer对象
 const observer = new MyObserver();
-export function registerObserver(lifeCycle: CustomComponentLifecycle) {
+export function registerObserver(lifeCycle: CustomComponentLifecycle): void {
   // 向lifeCycle注册监听
   lifeCycle.addObserver(observer);
 }
-export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
+export function unRegisterObserver(lifeCycle: CustomComponentLifecycle): void {
   // 向lifeCycle取消注册监听
   lifeCycle.removeObserver(observer);
 }
