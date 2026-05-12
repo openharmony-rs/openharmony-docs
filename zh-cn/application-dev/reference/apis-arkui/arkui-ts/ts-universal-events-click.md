@@ -99,7 +99,7 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | ArkTS-Dyn: (event: [ClickEvent](#clickevent)) => void <br/>ArkTS-Sta: ((event: [ClickEvent](#clickevent)) => void) \|&nbsp;undefined | 是   | 点击事件的回调函数。 |
+| event  | ArkTS-Dyn: (event: [ClickEvent](#clickevent)) => void <br/>ArkTS-Sta: ((event: [ClickEvent](#clickevent)) => void) \|&nbsp;undefined | 是   | 点击事件的回调函数。<br/>传入undefined时无效果。 |
 
 **返回值：**
 
