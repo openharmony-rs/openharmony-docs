@@ -37,12 +37,12 @@ import { media } from '@kit.MediaKit';
 
 addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
 
- 为视频转码添加水印。使用Promise异步回调。
+为视频转码添加水印。使用Promise异步回调。
  
- > **说明：**
- >
- > - 应用最多可以添加5个水印。
- > - 此接口只能在prepared状态之前调用。
+> **说明：**
+>
+> - 应用最多可以添加5个水印。
+> - 此接口只能在prepared状态之前调用。
  
 **起始版本：** 26.0.0
 
