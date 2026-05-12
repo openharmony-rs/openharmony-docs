@@ -1,7 +1,7 @@
 # Sendable对象简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -80,7 +80,7 @@ Sendable interface需同时满足以下两个规则：
 
 - ArkTS语言标准库中定义的[异步等待对象](arkts-condition-variable-introduction.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
-- ArkTS语言标准库中定义的[SendableLruCache对象](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
+- ArkTS语言标准库中定义的[SendableLruCache](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md)对象（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
 - 继承了[ISendable](#isendable)的interface。
 
@@ -93,7 +93,7 @@ Sendable interface需同时满足以下两个规则：
   - [可共享的色彩管理](../reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)
   - [基于Sendable对象的图片处理](../reference/apis-image-kit/js-apis-sendableImage.md)
   - [资源管理](../reference/apis-localization-kit/js-apis-sendable-resource-manager.md)
-  - [SendableContext对象管理](../reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
+  - [Sendable上下文管理](../reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
 
 - 元素均为Sendable类型的union type数据。
 

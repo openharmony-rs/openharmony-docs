@@ -180,7 +180,7 @@ class Consumer {
 
 @Entry
 @Component
-struct Index {
+struct ActorModel {
   @State message: string = 'Hello World';
 
   build() {
