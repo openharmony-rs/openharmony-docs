@@ -5054,7 +5054,7 @@ constructor(options?: ISO8601DateTimeFormatOptions)
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | ------ | ------ | ---- | ------------------------ |
-| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | 否    | 符合ISO 8601标准的日期格式化对象创建时的选项。 |
+| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | 否    | 符合ISO 8601标准的日期格式化对象创建时的选项。默认值：所有属性均使用默认值的ISO8601DateTimeFormatOptions对象。 |
 
 **示例：**
 ```ts
