@@ -251,7 +251,7 @@ userCancelEvent(enabled: boolean)
 
 ### symbolIconColor
 
-symbolIconColor(color: Array&lt;ResourceColor&gt; )
+symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
 设置安全控件Symbol图标颜色。
 
@@ -269,7 +269,7 @@ symbolIconColor(color: Array&lt;ResourceColor&gt; )
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[渲染策略](#symbolrenderingstrategy)下默认值不同。 |
+| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[symbolrenderingstrategy](#symbolrenderingstrategy)下默认值不同。 |
 
 ### symbolFontWeight
 

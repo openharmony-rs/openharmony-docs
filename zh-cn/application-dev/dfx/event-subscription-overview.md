@@ -25,6 +25,8 @@ HiAppEvent能够订阅应用事件和系统事件。
 
 [应用冻屏事件介绍](hiappevent-watcher-freeze-events.md)
 
+[应用冻屏告警事件介绍](hiappevent-watcher-appfreezewarning-events.md)
+
 [资源泄漏事件介绍](hiappevent-watcher-resourceleak-events.md)
 
 [地址越界事件介绍](hiappevent-watcher-address-sanitizer-events.md)

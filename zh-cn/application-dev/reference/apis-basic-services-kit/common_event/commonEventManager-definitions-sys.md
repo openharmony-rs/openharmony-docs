@@ -1,9 +1,8 @@
 # 系统定义的公共事件(系统接口)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -296,6 +295,21 @@
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **取值：** "usual.event.USER_LOCKED"
+
+
+### COMMON_EVENT_SCREEN_LOCK_EXITING
+
+表示锁屏退出的公共事件。
+
+锁屏退出时将会触发事件通知服务发布该系统公共事件，此公共事件不关注文件系统是否解密。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**取值：** "usual.event.SCREEN_LOCK_EXITING"
 
 
 ## Core File Kit

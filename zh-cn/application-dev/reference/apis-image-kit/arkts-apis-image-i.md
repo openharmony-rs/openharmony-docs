@@ -280,6 +280,8 @@ Gainmap图单个通道的数据内容，参考ISO 21496-1。
 | tiffMetadata | [TiffMetadata](arkts-apis-image-TiffMetadata.md) | 否   | 是   | TIFF图像元数据。<br>**起始版本：** 26.0.0 |
 | jfifMetadata | [JfifMetadata](arkts-apis-image-JfifMetadata.md) | 否   | 是   | JFIF图像元数据。<br>**起始版本：** 26.0.0 |
 | pngMetadata | [PngMetadata](arkts-apis-image-PngMetadata.md) | 否   | 是   | PNG图像元数据。<br>**起始版本：** 26.0.0 |
+| xmpMetadata | [XMPMetadata](arkts-apis-image-XMPMetadata.md) | 否   | 是   | XMP元数据。<br>**起始版本：** 26.0.0 |
+| avisMetadata | [AvisMetadata](arkts-apis-image-AvisMetadata.md) | 否   | 是   | AVIS图像元数据。<br>**起始版本：** 26.0.0 |
 
 ## DngMetadata<sup>24+</sup>
 
@@ -326,7 +328,7 @@ Dng图像元数据类，用于存储图像的元数据。
 | antiAliasStrength | number | 是 | 是 | 抗锯齿滤波器强度。 |
 | shadowScale | number | 是 | 是 | 阴影区域缩放因子。 |
 | dngPrivateData | ArrayBuffer | 是 | 是 | 厂商私有数据块。 |
-| makerNoteSafety | number | 是 | 是 | EXIF MakerNote是否安全可保留。0：不安全，1：安全。 |
+| makerNoteSafety | boolean | 是 | 是 | EXIF MakerNote是否安全可保留。true表示安全，false表示不安全。 |
 | calibrationIlluminant1 | number | 是 | 是 | 第一校准光源类型。 |
 | calibrationIlluminant2 | number | 是 | 是 | 第二校准光源类型。 |
 | bestQualityScale | number | 是 | 是 | 最佳画质缩放比例。 |
@@ -430,12 +432,59 @@ ImageReceiver的初始化选项。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 | 名称              | 类型              | 只读 | 可选 | 说明               |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |
 | buffer  | ArrayBuffer | 否   | 否   | 图像缓冲区。     |
 | bitsPerPixel | number  | 否   | 否   | 每个像素在缓冲区数据中实际占用的位数，单位为比特。     |
+
+## XMPTag
+
+表示XMP标签信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称          | 类型                                              | 只读 | 可选 | 说明              |
+| ------------- | ------------------------------------------------ | ---- | ---- | ---------------- |
+| xmpNamespace  | [XMPNamespace](#xmpnamespace)                    | 否   | 否   | XMP命名空间。     |
+| name          | string                                           | 否   | 否   | XMP标签名称。     |
+| type          | [XMPTagType](arkts-apis-image-e.md#xmptagtype)   | 否   | 否   | XMP标签类型。     |
+| value         | string                                           | 否   | 是   | XMP标签值。       |
+
+## XMPNamespace
+
+表示XMP命名空间。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称   | 类型    | 只读 | 可选 | 说明             |
+| ------ | ------ | ---- | ---- | --------------- |
+| uri    | string | 否   | 否   | XMP命名空间URI。 |
+| prefix | string | 否   | 否   | XMP命名空间前缀。 |
+
+## XMPEnumerateOptions
+
+表示XMP枚举选项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称          | 类型     | 只读 | 可选 | 说明                   |
+| ------------- | ------- | ---- | ---- | --------------------- |
+| isRecursive   | boolean | 否   | 是   | 表示是否进行递归遍历。<br>true表示进行递归遍历。false表示仅遍历直接子节点。默认为false。 |
+| onlyQualifier | boolean | 否   | 是   | 表示是否仅遍历限定符节点。<br>true表示仅遍历限定符节点。false表示遍历所有节点。默认为false。 |
 
 ## GetImagePropertyOptions<sup>(deprecated)</sup>
 

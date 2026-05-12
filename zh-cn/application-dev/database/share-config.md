@@ -72,7 +72,7 @@ crossAppSharedConfig字段配置说明：
 | 属性名称 | 含义 | 数据类型 | 必填 |
 | ------- | ------- | ------- | ------- |
 | uri | 共享配置项的全局唯一标识。固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写，但同一应用内不允许重复。uri最大长度为256字节。 | 字符串 | 是 |
-| value | 共享配置项的值。<br/>API版本26.0.0之前，最大长度为4096字节。<br/>从API版本26.0.0开始，最大长度为102400字节。共享配置项的值长度大于4096字节时，[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#datasharecreatedataproxyhandle20)的[DataProxyConfig](../reference/apis-arkdata/js-apis-data-dataShare.md#dataproxyconfig20)参数需配置maxValueLength字段为[MAX_LENGTH_100K](../reference/apis-arkdata/js-apis-data-dataShare.md#dataproxymaxvaluelength)，将共享配置项的值最大长度扩展为102400字节。 | 字符串 | 是 |
+| value | 共享配置项的值。<br/>API版本26.0.0之前，最大长度为4096字节。<br/>从API版本26.0.0开始，最大长度为102400字节。共享配置项的值长度大于4096字节时，[应用间配置共享接口](../reference/apis-arkdata/js-apis-data-dataShare.md#datasharecreatedataproxyhandle20)的[DataProxyConfig](../reference/apis-arkdata/js-apis-data-dataShare.md#dataproxyconfig20)参数需配置maxValueLength字段为[MAX_LENGTH_100K](../reference/apis-arkdata/js-apis-data-dataShare.md#dataproxymaxvaluelength)，将共享配置项的值最大长度扩展为102400字节，否则接口返回结果可能非预期。 | 字符串 | 是 |
 | allowList | 允许访问该共享配置项的应用程序列表。数组最大长度为256，超过256的部分不生效。<br/>API版本26.0.0之前，数组中每个元素为应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)，单个appIdentifier为只包含数字的字符串，最大长度为128字节，超过128字节的appIdentifier不会生效。可使用[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口来获取当前应用的appIdentifier。<br/>从API版本26.0.0开始，数组支持配置特殊字符串"all"（区分大小写）表示允许所有应用访问。 | 字符串数组 | 是 |
 
 ```json5
