@@ -206,7 +206,7 @@ PixelMap的初始化选项。
 | needsPackProperties<sup>12+</sup> | boolean | 否   | 是   | 是否需要编码图片属性信息，例如EXIF。true表示需要，false表示不需要。默认值为false。 |
 | maxEmbedThumbnailDimension | number | 否 | 是 | 用于指定编码过程中生成缩略图的最大边长（宽和高中较大的那一边），较短的一边会根据长边的缩放比例进行缩放。此参数仅在needsPackProperties设置为true时有效。<br>该值应为整数，默认值为0。<br>若未指定此参数，或根据该尺寸计算出生成的缩略图宽/高为0，则编码过程中不会生成缩略图。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | backgroundColor<sup>12+</sup> | number | 否   | 是   | 透明度区域显示的背景颜色。当图片像素为RGBA格式，但编码的目标格式不支持透明度（"image/jpeg"或"image/heif）时，可指定背景颜色（0xRRGGBB），默认值为 0（黑色）。<br>**颜色范围：** 0x000000-0xFFFFFF |
-| sizeLimit<sup>12+</sup> | PackingSizeLimit | 否   | 是   | 编码图像的最大尺寸限制。如果输入图像的宽或者高超过该限制，将保持宽高比进行缩小。默认值为不限制。 |
+| sizeLimit<sup>12+</sup> | PackingSizeLimit | 否   | 是   | 编码图像的最大尺寸限制。如果输入的图像宽或者高超过该限制，将保持宽高比进行缩小。默认值为不限制。 |
 | needsPackGPS<sup>12+</sup> | boolean | 否   | 是   | 是否需要编码图片时去除GPS隐私信息。true表示需要，false表示不需要。默认值为false。 |
 
 ## PackingOptionsForSequence<sup>18+</sup>
