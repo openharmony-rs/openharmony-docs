@@ -2501,7 +2501,7 @@ ArkTS-Sta: makeUnique(screenId:long): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.ACCESS_VIRTUAL_SCREEN
 
-**设备行为差异**：该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异**：该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在Wearable设备中报801错误码，在其他设备中不生效也不报错。
 
 **ArkTS-Dyn起始版本：** 16
 
