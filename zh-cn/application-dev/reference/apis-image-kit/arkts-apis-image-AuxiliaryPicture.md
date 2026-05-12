@@ -145,7 +145,7 @@ ArkTS-Sta示例：
 ```ts
 function ReadPixelsToBufferFunc(auxPicture: image.AuxiliaryPicture): void {
   try {
-    let auxBuffer = await auxPicture.readPixelsToBuffer();
+    let auxBuffer = auxPicture.readPixelsToBuffer();
     console.info(0x00000, 'ReadPixelsToBufferFunc', 'readPixelsToBuffer success!');
   } catch (err) {
     console.error(0x00000, 'ReadPixelsToBufferFunc', 'ReadPixelsToBufferFunc failed: ' + err);
@@ -352,7 +352,7 @@ ArkTS-Sta示例：
 function GetMetadataFunc(auxPicture: image.AuxiliaryPicture): void {
   try {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
-    let metadata = await auxPicture.getMetadata(metadataType);
+    let metadata = auxPicture.getMetadata(metadataType);
     if (metadata != null) {
       console.info(0x00000, 'GetMetadataFunc', 'getMetadata success!');
     }

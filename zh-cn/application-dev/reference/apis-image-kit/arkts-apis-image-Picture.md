@@ -137,7 +137,7 @@ ArkTS-Sta示例：
 ```ts
 function GetHdrComposedPixelmapFunc(picture: image.Picture): void {
   try {
-    let pixelMap = await picture.getHdrComposedPixelmap();
+    let pixelMap = picture.getHdrComposedPixelmap();
     console.info(0x00000, 'GetHdrComposedPixelmapFunc', 'getHdrComposedPixelmap success!');
   } catch (err) {
     console.error(0x00000, 'GetHdrComposedPixelmapFunc', 'GetHdrComposedPixelmapFunc failed: ' + err);
