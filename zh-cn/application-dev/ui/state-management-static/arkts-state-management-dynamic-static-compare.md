@@ -11,7 +11,7 @@
 而在ArkTS-Sta中，由于采用相同的状态管理实现逻辑，`@Component`和`@ComponentV2`天然支持V1/V2状态变量的传递，因此无需调用`UIUtils.enableV2Compatibility`和`UIUtils.makeV1Observed`接口，可以直接混用状态管理V1与V2。
 
 
-具体混用规则可参考[状态管理V1V2混用指导](./arkts-v1-v2-mixusage.md)。
+具体混用规则可参考[状态管理V1V2混用指导](./arkts-static-v1-v2-mixusage.md)。
 
 ## 静态无需mutableBuilder
 
