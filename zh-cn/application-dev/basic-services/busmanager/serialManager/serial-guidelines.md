@@ -187,10 +187,11 @@
        console.error(`${TAG} No serial port found, please call getSerialPortList first`);
        return;
      }
-     this.dataCallback = (data: Uint8Array) => {
+     const callback = (data: Uint8Array): void => {
        console.info(`${TAG} onDataRead: ${Array.from(data).join(', ')}`);
      };
-     this.port.onDataRead(this.dataCallback);
+     this.dataCallback = callback;
+     this.port!.onDataRead(callback);
      console.info(`${TAG} onDataRead registered`);
    } catch (err) {
      const e = err as BusinessError;
