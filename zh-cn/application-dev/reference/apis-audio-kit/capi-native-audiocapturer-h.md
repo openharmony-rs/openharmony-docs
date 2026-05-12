@@ -493,7 +493,7 @@ OH_AudioStream_Result OH_AudioCapturer_SetMuteHint(OH_AudioCapturer* capturer, b
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioCapturer* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md)创建的音频流实例。 |
+| OH_AudioCapturer* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 | bool mute | 当应用自身已将录制流静音时，传入true，表示将目标流标记为静音。解除静音时，传入false。 |
 
 **返回：**
