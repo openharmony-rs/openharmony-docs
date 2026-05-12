@@ -422,7 +422,7 @@
 
 3. 需要的资源文件string.json
 
-    ```json
+    ```json5
     {
         "string": [
           // ...
