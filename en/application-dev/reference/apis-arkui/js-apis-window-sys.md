@@ -204,7 +204,7 @@ Describes the translation parameters.
 
 ## StartAnimationSystemParams<sup>20+</sup>
 
-Start animation configuration. This API works only for full-screen applications.
+Describes the start animation configuration. This API works only for full-screen applications.
 
 The configuration does not take effect for inter-application transitions, where the default animation of the system is used.
 
@@ -229,6 +229,40 @@ Describes the window parameters during application startup.
 | Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | systemAnimationParams             | [StartAnimationSystemParams](#startanimationsystemparams20)                 | No  | Yes  | Parameters for the startup animation. The default value is **undefined**. If this parameter is not set, the default animation of the system is used.|
+
+## WindowAnchorInfo<sup>24+</sup>
+
+Describes the anchor point information used to maintain the relative position between the level-1 child window and the main window.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
+| ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| anchorType             | [WindowAnchor](arkts-apis-window-e.md#windowanchor20)                 | No  | No  | Type of the anchor point used to maintain the relative position.|
+| offsetX             |     number           | No  | Yes  | X-axis offset between the anchor points of the child window and the main window, in px. The value must be an integer. Floating-point numbers are rounded down. The default value is **0**.|
+| offsetY             |     number           | No  | Yes  | Y-axis offset between the anchor points of the child window and the main window, in px. The value must be an integer. Floating-point numbers are rounded down. The default value is **0**.|
+
+## SubWindowAttachOptions<sup>24+</sup>
+
+Describes the parameters used to maintain the relative position between the child window and the main window.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
+| ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| currentLayoutMode             | string               | No  | Yes  | Current layout mode of the child window, which is used to control the UI effect customized by the application. If this parameter is not passed, the default value is an empty string.|
+| parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | No  | Yes  | Callback triggered when the parent window size changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window size changes. By default, this parameter is not passed, and notifications about the parent window size changes cannot be received.|
+| parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | No  | Yes  | Callback triggered when the parent window mode changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window mode changes. By default, this parameter is not passed, and notifications about the parent window mode changes cannot be received.|
+| isIntersectedWidthLimit | boolean | No| Yes| Whether the width of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the width of the child window and that of the bound main window cannot exceed the intersection of the width limits of the two windows. If there is no intersection between the width limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the width of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the width limits of all windows.<br>The value **false** indicates that the width of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.|
+| isIntersectedHeightLimit | boolean | No| Yes| Whether the height of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the height of the child window and that of the bound main window cannot exceed the intersection of the height limits of the two windows. If there is no intersection between the height limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the height of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the height limits of all windows.<br>The value **false** indicates that the height of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.|
 
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
@@ -357,7 +391,7 @@ Minimizes all main windows on a display while keeping one window open. This API 
 | Name  | Type                     | Mandatory| Description          |
 | -------- | ------------------------- | ---- | -------------- |
 | displayId| number                    | Yes  | Display ID. The value must be an integer. Non-integer values are rounded down.|
-| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. If the window ID is greater than 0 but does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Non-integer values are rounded down.|
+| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. If the window ID is greater than 0 but does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Floating-point numbers are rounded down.|
 
 **Return value**
 
@@ -946,7 +980,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -1011,7 +1045,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let enable: boolean = true;
-let color: ArrayBuffer = new ArrayBuffer(0);
+let color: ArrayBuffer = new ArrayBuffer(40000);
 let initializationOptions: image.InitializationOptions = {
   size: {
     height: 100,
@@ -1238,6 +1272,81 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to set zIndex. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.createSubWindowAndBindParent<sup>24+</sup>
+
+createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
+
+Creates a subwindow and binds it to the parent window. This API uses a promise to return the result.
+
+Only the main window can be bound as the parent window.
+
+The subwindow is displayed or hidden along with the parent window, but is not destroyed when the parent window is destroyed. The subwindow listens to the lifecycle changes of the parent window through a callback function.
+
+It is recommended that you destroy the created subwindow after the parent window is destroyed.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                                               |
+| -------- | ----------------------- | -- |---------------------------------------------------|
+| name | string | Yes| Window name.|
+| parentId | number | Yes| Parent window ID. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Current application context.|
+| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | Yes| Callback used to return the lifecycle changes of the bound parent window.|
+
+**Return value**
+
+| Type| Description|
+| -------------------------------- | ------------------------------------ |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to return the child window created.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. This can not work correctly due to limited device capabilities. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
+| 1300003 | This window manager service works abnormally. |
+| 1300009 | The parent window is invalid. Possible cause: 1. The parent window does not exist or has been destroyed. 2. Invalid window type. Only main windows are supported.|
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    const parentWindowEventListener = (windowId: number, event: window.WindowEventType) => {
+      // ...
+    }
+    try {
+      let promise = window.createSubWindowAndBindParent('test', 100, this.context, parentWindowEventListener);
+      promise.then((data) => {
+        console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
+        windowClass = data;
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
 }
 ```
 
@@ -1622,6 +1731,178 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+### attachLayoutToParentWindow<sup>24+</sup>
+
+attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWindowAttachOptions): Promise&lt;void&gt;
+
+Attaches a first-level child window to the main window to maintain a fixed relative position. This API uses a promise to return the result.
+
+The relative position is represented by the anchor point offset between the child window and the parent window. The child window and the parent window use the same window anchor point.
+
+> **NOTE**
+>
+> - Only first-level child windows can call this API. The child window must be in floating window mode (that is, the window mode is **window.WindowStatusType.FLOATING**).
+>
+> - After the child window calls this API, the display position of the child window immediately follows the main window and the relative position remains unchanged. In addition, the size and mode changes of the main window can be listened to. The effect will persist unless the [detachLayoutToParentWindow()](#detachlayouttoparentwindow24) API is called for detaching.
+>
+> - After the child window calls this API, calling APIs such as [moveWindowTo()](arkts-apis-window-Window.md#movewindowto9), [maximize()](arkts-apis-window-Window.md#maximize12), and [setFollowParentWindowLayoutEnabled()](arkts-apis-window-Window.md#setfollowparentwindowlayoutenabled17) to change the window position, or dragging and moving or dragging and resizing the child window through mouse or touch operations will not take effect.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, this API does not take effect and no error is reported.
+
+**Parameters**
+
+| Name  | Type                     | Mandatory| Description          |
+| -------- | ------------------------- | ---- | -------------- |
+| anchorInfo       | [WindowAnchorInfo](#windowanchorinfo24)                    | No  | Anchor point information used to attach the first-level child window to the main window to maintain the fixed relative position. If this parameter is not passed, the default logic is the same as that of [WindowAnchorInfo](#windowanchorinfo24).|
+| attachOptions       | [SubWindowAttachOptions](#subwindowattachoptions24)                    | No  | Additional parameters for setting the child window layout. If this parameter is not passed, the default logic is the same as that of [SubWindowAttachOptions](#subwindowattachoptions24).|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function attachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. The current window's parent window is not a main window; 3. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: 1. The subwindow is following its parent window's layout. 2. The subwindow is maximized.|
+
+**Example**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        let anchorInfo : window.WindowAnchorInfo = {
+          anchorType: window.WindowAnchor.TOP_START,
+          offsetX: 0,
+          offsetY: 0
+        };
+        let attachOptions: window.SubWindowAttachOptions = {
+          parentWindowSizeChangeCallback:(data: window.Size) => {
+            console.info(`Successfully accepted parentWindow size change, width: ${data.width}, height: ${data.height}`);
+          },
+          parentWindowStatusChangeCallback:(type: window.WindowStatusType) => {
+            console.info(`Successfully accepted parentWindow status change, statusType: ${type}`);
+          },
+          isIntersectedWidthLimit: true,
+          isIntersectedHeightLimit: true
+        }
+        subWindow.attachLayoutToParentWindow(anchorInfo, attachOptions).then(() => {
+          console.info("Succeeded in attaching to the main window");
+        }).catch((error: BusinessError) => {
+          console.error(`attachLayoutToParentWindow failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
+    });
+  }
+}
+```
+
+### detachLayoutToParentWindow<sup>24+</sup>
+
+detachLayoutToParentWindow(): Promise&lt;void&gt;
+
+Detach a first-level child window from the main window to cancel a fixed relative position. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - When the child window calls this API, the child window must be in the attached state.
+>
+> - After detached by calling this API, the child window retains its position during attaching. You can drag the child window to change its size and position.
+>
+> - After the detaching, calling APIs such as [moveWindowTo()](arkts-apis-window-Window.md#movewindowto9), [maximize()](arkts-apis-window-Window.md#maximize12), and [setFollowParentWindowLayoutEnabled()](arkts-apis-window-Window.md#setfollowparentwindowlayoutenabled17) to change the window position, or dragging and moving or dragging and resizing the child window through mouse or touch operations will take effect.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, this API does not take effect and no error is reported.
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Function detachLayoutToParentWindow can not work correctly due to limited device capabilities.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300003 | This window manager service works abnormally.|
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only subwindows are supported; 2. Only level-1 subwindows are supported.|
+| 1300010 | The operation in the current window status is invalid. Possible cause: The subwindow is not attached to the main window.|
+
+**Example**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index', (loadError: BusinessError) => {
+      if (loadError.code) {
+        console.error(`Failed to load the content. Cause code: ${loadError.code}, message: ${loadError.message}`);
+        return;
+      }
+      console.info("Succeeded in loading the content.");
+      windowStage.createSubWindow("subWindow").then((subWindow: window.Window) => {
+        if (subWindow == null) {
+          console.error("Failed to create the subWindow. Cause: The data is empty");
+          return;
+        }
+        subWindow.detachLayoutToParentWindow().then(() => {
+          console.info("Succeeded in detaching to the main window");
+        }).catch((error: BusinessError) => {
+          console.error(`detachLayoutToParentWindow failed. ${error.code} ${error.message}`);
+        })
+      }).catch((error: BusinessError) => {
+        console.error(`createSubWindow failed. ${error.code} ${error.message}`);
+      })
+    });
+  }
+}
+```
+
 ### bindDialogTarget<sup>9+</sup>
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
@@ -2000,6 +2281,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
+
+**Example**
 
 ```ts
 let isSkip: boolean = true;
@@ -3260,7 +3543,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3339,7 +3622,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3591,7 +3874,7 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
 Sets the background color of the main window container for both when it has focus and when it does not. In the stage model, you need to call this API after [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9).
 
-The background color you set here covers the entire window, including both the title bar and the content area. If you also use [setWindowBackgroundColor()](arkts-apis-window-Window.md#setwindowbackgroundcolor9), the content area shows the window background color, whereas the title bar shows the container background color.
+The background color you set here covers the entire window, including both the title bar and the content area. The background color of the content area follows the system color mode (light/dark) by default. When both this API and [setWindowBackgroundColor()](arkts-apis-window-Window.md#setwindowbackgroundcolor9) are used to set the background color, the content area displays the window background color, while the title bar displays the window container background color.
 
 **System API**: This is a system API.
 
@@ -3668,9 +3951,9 @@ Called by the main window to place the window above all the other windows. This 
 
 **Device behavior differences**
 
-In versions earlier than <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, and error code 801 is returned on other devices.
+Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, but returns error code 801 on other devices.
 
-Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, this API returns error code 801 when called.
 
 **Parameters**
 
@@ -4253,7 +4536,7 @@ Sets the image displayed in the multitasking view. This API uses a promise to re
 
 > **NOTE**
 >
-> Before calling this API, you are advised to load the page by using [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](arkts-apis-window-Window.md#setuicontent9-1). If this API is called before the application finishes loading the page, the intended functionality does not take effect. As a result, only the application's starting window is displayed in the multitasking view.
+> Before calling this API, you are advised to load the page by using [loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) or [setUIContent](arkts-apis-window-Window.md#setuicontent9-1). If this API is called before the application finishes loading the page, the intended functionality does not take effect. As a result, only the application's launch page is displayed in the multitasking view.
 
 **System API**: This is a system API.
 
@@ -4304,7 +4587,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       console.info('Succeeded in loading the content.');
-      let color = new ArrayBuffer(512 * 512 * 4); // Create an ArrayBuffer object to store image pixels. The size of the object is (height * width * 4) bytes.
+      let color = new ArrayBuffer(512 * 512 * 4); // Create an ArrayBuffer object to store image pixels. The size of the object is (height × width × 4) bytes.
       let pixelMap: image.PixelMap;
       let bufferArr = new Uint8Array(color);
       for (let i = 0; i < bufferArr.length; i += 4) {
