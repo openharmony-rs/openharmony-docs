@@ -50,7 +50,7 @@ accessibilityGroup(value: boolean)
 
 ## accessibilityGroup<sup>14+</sup>
 
-ArkTS-Dyn: accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
+accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 

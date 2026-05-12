@@ -912,10 +912,10 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
-| offsetX       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位：px。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| offsetY       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位：px。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| surfaceWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的宽度，单位：px。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| surfaceHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的高度，单位：px。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| offsetX       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位：px。 |
+| offsetY       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位：px。 |
+| surfaceWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的宽度，单位：px。 |
+| surfaceHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的高度，单位：px。 |
 
 > **说明：**
 >
