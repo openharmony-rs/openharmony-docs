@@ -106,9 +106,9 @@
      // 设置dataSrc。
      avMetadataExtractor.dataSrc = dataSrc;
      ```
-    ArkTS-Sta:
-    <!-- @[set_dataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
-    ```ts
+     ArkTS-Sta:
+     <!-- @[set_dataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+     ```ts
      import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
      import common from '@ohos.app.ability.common';
      import media from '@ohos.multimedia.media';
@@ -118,37 +118,36 @@
      const TAG = 'MetadataDemo';
 
      // 创建AVMetadataExtractor对象。
-      this.avMetadataExtractor = await media.createAVMetadataExtractor();
-
-      this.context = globalContext.getAbilityContext();
-      let rootPath: string = this.context!!.filesDir; // 应用文件目录。
-      let fileName: string = '/test.mp4'; // test.mp4为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
-      // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
-      // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
-      let fd: Int = fs.openSync(rootPath + fileName, fs.OpenMode.READ_ONLY).fd;
-      let fileSize: Long = fs.statSync(rootPath + fileName).size;
-      let dataCallback = (buffer: ArrayBuffer, len: Long, pos?: Long | undefined): Int => {
-        if (buffer == undefined || len == undefined || pos == undefined) {
-          console.error(TAG, `dataSrc callback param invalid`);
-          return -1;
-        }
-        let options: ReadOptions = {
-          offset: pos,
-          length: len
-        };
-        let num: Int = fs.readSync(fd, buffer, options).toInt();
-        console.info(TAG, 'readAt end, num: ' + num);
-        if (num > 0 && fileSize >= pos) {
-          return num;
-        }
-        return -1;
-      }
-      let dataSrc: media.AVDataSrcDescriptor = {
-        fileSize: fileSize,
-        callback: dataCallback
-      };
+     this.avMetadataExtractor = await media.createAVMetadataExtractor();
+     this.context = globalContext.getAbilityContext();
+     let rootPath: string = this.context!!.filesDir; // 应用文件目录。
+     let fileName: string = '/test.mp4'; // test.mp4为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
+     // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
+     // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
+     let fd: Int = fs.openSync(rootPath + fileName, fs.OpenMode.READ_ONLY).fd;
+     let fileSize: Long = fs.statSync(rootPath + fileName).size;
+     let dataCallback = (buffer: ArrayBuffer, len: Long, pos?: Long | undefined): Int => {
+       if (buffer == undefined || len == undefined || pos == undefined) {
+         console.error(TAG, `dataSrc callback param invalid`);
+         return -1;
+       }
+       let options: ReadOptions = {
+         offset: pos,
+         length: len
+       };
+       let num: Int = fs.readSync(fd, buffer, options).toInt();
+       console.info(TAG, 'readAt end, num: ' + num);
+       if (num > 0 && fileSize >= pos) {
+         return num;
+       }
+       return -1;
+     }
+     let dataSrc: media.AVDataSrcDescriptor = {
+       fileSize: fileSize,
+       callback: dataCallback
+     };
       // 设置dataSrc。
-      this.avMetadataExtractor!!.dataSrc = dataSrc;
+     this.avMetadataExtractor!!.dataSrc = dataSrc;
      ```
   
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
