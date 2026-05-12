@@ -98,7 +98,7 @@ ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
 ArkTS-Dyn: onError(callback: ErrorCallback)
 
-ArkTS-Sta: onError(callback: ErrorCallback<BusinessError> | undefined)
+ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError> | undefined)
 
 被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
@@ -138,7 +138,7 @@ attributeModifier(modifier: AttributeModifier\<EmbeddedComponentAttribute> | Att
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[EmbeddedComponentAttribute](#属性)> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是 | EmbeddedComponent组件的属性修改器。取值为undefined时，不使用attributeModifier。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<EmbeddedComponentAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是 | EmbeddedComponent组件的属性修改器。取值为undefined时，不使用attributeModifier。 |
 
 > **说明：**
 >
