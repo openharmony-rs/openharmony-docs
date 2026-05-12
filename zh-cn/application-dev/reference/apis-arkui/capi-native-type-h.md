@@ -11805,7 +11805,7 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(Ark
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
-### OH_ArkUI_TextMarqueeOptions_Create
+### OH_ArkUI_TextMarqueeOptions_Create()
 ``` c
 ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
 ```
@@ -11822,7 +11822,7 @@ ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()
 | -- | -- |
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)*| 创建文本跑马灯模式配置项的对象指针。|
 
-### OH_ArkUI_TextMarqueeOptions_Dispose
+### OH_ArkUI_TextMarqueeOptions_Dispose()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11840,7 +11840,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 需要销毁的文本跑马灯模式配置项对象指针。 |
 
 
-### OH_ArkUI_TextMarqueeOptions_SetStart
+### OH_ArkUI_TextMarqueeOptions_SetStart()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)
 ```
@@ -11858,7 +11858,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | bool start | 是否播放。true表示播放，false表示不播放。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetStart
+### OH_ArkUI_TextMarqueeOptions_GetStart()
 ``` c
 bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11882,7 +11882,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 | bool | 是否播放。true表示播放，false表示不播放。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetStep
+### OH_ArkUI_TextMarqueeOptions_SetStep()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)
 ```
@@ -11900,7 +11900,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | float step | 步长。单位：vp。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetStep
+### OH_ArkUI_TextMarqueeOptions_GetStep()
 ``` c
 float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11924,7 +11924,7 @@ float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
 | float | 步长。单位：vp。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetSpacing
+### OH_ArkUI_TextMarqueeOptions_SetSpacing()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)
 ```
@@ -11942,7 +11942,7 @@ void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, fl
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | float spacing | 首尾间距。单位：vp。|
 
-### OH_ArkUI_TextMarqueeOptions_GetSpacing
+### OH_ArkUI_TextMarqueeOptions_GetSpacing()
 ``` c
 float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 ```
@@ -11967,7 +11967,7 @@ float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 
 
 
-### OH_ArkUI_TextMarqueeOptions_SetLoop
+### OH_ArkUI_TextMarqueeOptions_SetLoop()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)
 ```
@@ -11985,7 +11985,7 @@ void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | int32_t loop | 设置的重复滚动的次数。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetLoop
+### OH_ArkUI_TextMarqueeOptions_GetLoop()
 ``` c
 int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
 ```
@@ -12010,7 +12010,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
 
 
 
-### OH_ArkUI_TextMarqueeOptions_SetFromStart
+### OH_ArkUI_TextMarqueeOptions_SetFromStart()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)
 ```
@@ -12028,7 +12028,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, 
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | bool fromStart | 跑马灯运行方向。true表示从头开始滚动，false表示反向滚动。|
 
-### OH_ArkUI_TextMarqueeOptions_GetFromStart
+### OH_ArkUI_TextMarqueeOptions_GetFromStart()
 ``` c
 bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
 ```
@@ -12052,7 +12052,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
 | bool | 跑马灯运行方向。true表示从头开始滚动，false表示反向滚动。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetDelay
+### OH_ArkUI_TextMarqueeOptions_SetDelay()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)
 ```
@@ -12070,7 +12070,7 @@ void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int3
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | int32_t delay| 每轮滚动延迟时间，单位为毫秒。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetDelay
+### OH_ArkUI_TextMarqueeOptions_GetDelay()
 ``` c
 int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
 ```
@@ -12093,7 +12093,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
 | -- | -- |
 | int32_t | 返回每轮滚动延迟时间，单位为毫秒。|
 
-### OH_ArkUI_TextMarqueeOptions_SetFadeout
+### OH_ArkUI_TextMarqueeOptions_SetFadeout()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)
 ```
@@ -12112,7 +12112,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | bool fadeout| 跑马灯是否支持文字超长时的渐隐效果。<br/>true表示支持渐隐效果，false表示不支持渐隐效果。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetFadeout
+### OH_ArkUI_TextMarqueeOptions_GetFadeout()
 ``` c
 bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 ```
@@ -12136,7 +12136,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 | bool | 是否支持文字超长时的渐隐效果。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetStartPolicy
+### OH_ArkUI_TextMarqueeOptions_SetStartPolicy()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)
 
@@ -12155,7 +12155,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy) startPolicy| 启动策略。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetStartPolicy
+### OH_ArkUI_TextMarqueeOptions_GetStartPolicy()
 ``` c
 ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)
 ```
@@ -12179,7 +12179,7 @@ ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMa
 | ArkUI_MarqueeStartPolicy | 启动策略。|
 
 
-### OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy
+### OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy()
 ``` c
 void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option,
     ArkUI_MarqueeUpdatePolicy updatePolicy)
@@ -12198,7 +12198,7 @@ void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* optio
 | [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | 文本跑马灯模式配置项。 |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) updatePolicy| 更新策略。 |
 
-### OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy
+### OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy()
 ``` c
 ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)
 ```
@@ -16116,7 +16116,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4RotationOptions_GetCenterY(const ArkUI_Matrix4Ro
 ### OH_ArkUI_Matrix4TranslationOptions_Create()
 
 ```c
-ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create();
+ArkUI_Matrix4TranslationOptions* OH_ArkUI_Matrix4TranslationOptions_Create()
 ```
 
 **描述：**
@@ -16202,7 +16202,7 @@ ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_GetX(const ArkUI_Matrix4Trans
 ### OH_ArkUI_Matrix4TranslationOptions_SetY()
 
 ```c
-ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y);
+ArkUI_ErrorCode OH_ArkUI_Matrix4TranslationOptions_SetY(ArkUI_Matrix4TranslationOptions* options, const float y)
 ```
 
 **描述：**

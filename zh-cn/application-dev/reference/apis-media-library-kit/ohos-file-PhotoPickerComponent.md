@@ -1304,7 +1304,7 @@ struct Drawer {
   aboutToAppear(): void {
     // 获取屏幕高度。
     let displayInfo = display.getDefaultDisplaySync();
- 	  this.screenHeight = displayInfo.height / displayInfo.densityPixels;
+    this.screenHeight = displayInfo.height / displayInfo.densityPixels;
     // 获取抽屉高度，示例为屏幕高度的0.8倍，可自定义修改。
     this.drawerHeight = this.screenHeight * this.drawerRatio;
     // 初始时抽屉在底部（隐藏高度），示例为隐藏抽屉的0.8倍。
