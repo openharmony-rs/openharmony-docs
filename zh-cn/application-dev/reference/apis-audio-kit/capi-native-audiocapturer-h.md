@@ -500,7 +500,7 @@ OH_AudioStream_Result OH_AudioCapturer_SetMuteHint(OH_AudioCapturer* capturer, b
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数capturer为nullptr。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：操作状态异常，录制流未处于running状态。<br>         AUDIOSTREAM_ERROR_SYSTEM：系统异常，例如系统服务异常退出等。 |
+| OH_AudioStream_Result | AUDIOSTREAM_SUCCESS：函数执行成功。<br>         AUDIOSTREAM_ERROR_INVALID_PARAM：参数capturer为nullptr。<br>         AUDIOSTREAM_ERROR_ILLEGAL_STATE：操作状态异常，录音流未处于running状态。<br>         AUDIOSTREAM_ERROR_SYSTEM：系统异常，例如系统服务异常退出等。 |
 
 ### OH_AudioCapturer_GetOverflowCount()
 
