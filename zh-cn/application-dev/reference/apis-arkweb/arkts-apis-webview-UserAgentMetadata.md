@@ -120,7 +120,7 @@ setBitness(bitness: string): void
 
 getBitness(): string
 
-获取平台的位数类型。不调用对应的[setBitness](#setbitness)设置时，位数类型默认值：Desktop: "64"，其他设备: ""。
+获取平台的位数类型。不调用对应的[setBitness](#setbitness)设置时，位数类型默认值：Desktop："64"，其他设备：""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -160,7 +160,7 @@ setFormFactors(formFactors: Array\<UserAgentFormFactor>): void
 
 getFormFactors(): Array\<UserAgentFormFactor>
 
-获取设备形态信息，如手机、平板等。不调用对应的[setFormFactors](#setformfactors)进行设置时，形态信息默认值：手机："Mobile"，手表: "Watch"，车机: "Automotive"，PC: "Desktop"，平板："Tablet"。
+获取设备形态信息，如手机、平板等。不调用对应的[setFormFactors](#setformfactors)进行设置时，形态信息默认值：手机："Mobile"，手表："Watch"，车机："Automotive"，PC："Desktop"，平板："Tablet"。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -190,7 +190,7 @@ setFullVersion(fullVersion: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| fullVersion | string | 是   | 对应请求标头的Sec-CH-UA-Full-Version。 |
+| fullVersion | string | 是   | 对应请求标头的Sec-CH-UA-Full-Version。空代表使用ArkWeb默认值。 |
 
 **示例：**
 
@@ -270,7 +270,7 @@ setModel(model: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| model | string | 是   | 对应请求标头的Sec-CH-UA-Model。 |
+| model | string | 是   | 对应请求标头的Sec-CH-UA-Model。 空代表使用ArkWeb默认值。 |
 
 **示例：**
 
@@ -350,7 +350,7 @@ setPlatformVersion(platformVersion: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| platformVersion | string | 是   | 对应请求标头的Sec-CH-UA-Platform-Version。 |
+| platformVersion | string | 是   | 对应请求标头的Sec-CH-UA-Platform-Version。空代表使用ArkWeb默认值。 |
 
 **示例：**
 
