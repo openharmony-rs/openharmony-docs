@@ -12,34 +12,15 @@
 
 1. 导入所需的模块。
 
-   ```ts
-   // Index.ets
-   import { sensor } from '@kit.SensorServiceKit';
-   import { taskpool } from '@kit.ArkTS';
-   import { BusinessError, emitter } from '@kit.BasicServicesKit';
-   ```
+   <!-- @[taskpool_listen_sensor_data_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
 
 2. 定义长时任务，内部监听sensor数据，并通过emitter注册销毁通知。
 
-   ```ts
-   // Index.ets
-   @Concurrent
-   async function SensorListener() : Promise<void> {
-     sensor.on(sensor.SensorId.ACCELEROMETER, (data) => {
-       emitter.emit({ eventId: 0 }, { data: data });
-     }, { interval: 1000000000 });
-   
-     emitter.on({ eventId: 1 }, () => {
-       sensor.off(sensor.SensorId.ACCELEROMETER)
-       emitter.off(1)
-     })
-   }
-   ```
+   <!-- @[taskpool_listen_sensor_data_concurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
 
 3. 给sensor添加ohos.permission.ACCELEROMETER权限。
 
    ```json
-   // module.json5
    "requestPermissions": [
      {
        "name": "ohos.permission.ACCELEROMETER"
