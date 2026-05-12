@@ -46,7 +46,7 @@ Image Kit支持对解码得到的PixelMap进行[位图操作](../image/image-pix
 
 Image Kit支持通过[ImageEffect](../image/image-effect-guidelines.md)为图片添加滤镜效果。
 
-Image Kit还提供了读取和[编辑图片EXIF信息](../image/image-tool.md)的能力，可以获取和配置图片文件中的附加属性，如：宽、高、旋转方向等图片基本信息，光圈、焦距等图片拍照参数，经度、纬度等图片GPS信息等。
+Image Kit还提供了[读取和编辑图片EXIF信息](../image/image-tool.md)的能力，可以获取和配置图片文件中的附加属性，如：宽、高、旋转方向等图片基本信息，光圈、焦距等图片拍照参数，经度、纬度等图片GPS信息等。
 
 图片解码和图片编码的流程如图1和图2所示。图片解码得到的PixelMap可以直接用于图片显示、图片编辑和处理。
 
