@@ -1,7 +1,7 @@
 # lowpower_video_sink.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -214,9 +214,7 @@ OH_AVErrCode OH_LowPowerVideoSink_StartDecoder(OH_LowPowerVideoSink* sink)
 
 **Description**
 
-Starts an OH_LowPowerVideoSink instance for decoding. This function must be called after [OH_LowPowerVideoSink_Prepare](#oh_lowpowervideosink_prepare) or if no video is playing, after [OH_LowPowerVideoSink_SetTargetStartFrame](#oh_lowpowervideosink_settargetstartframe).
-
-After successful startup, the OH_LowPowerVideoSink instance starts reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.
+Starts an OH_LowPowerVideoSink instance for decoding. This function must be called after [OH_LowPowerVideoSink_Prepare](#oh_lowpowervideosink_prepare) or if no video is playing, after [OH_LowPowerVideoSink_SetTargetStartFrame](#oh_lowpowervideosink_settargetstartframe).<br> After successful startup, the OH_LowPowerVideoSink instance starts reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.
 
 **Since**: 20
 
@@ -288,9 +286,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Pause(OH_LowPowerVideoSink* sink)
 
 **Description**
 
-Pauses an OH_LowPowerVideoSink instance. This function must be called after [OH_LowPowerVideoSink_StartRenderer](#oh_lowpowervideosink_startrenderer) or [OH_LowPowerVideoSink_Resume](#oh_lowpowervideosink_resume).
-
-After successful pause, the OH_LowPowerVideoSink instance stops reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.
+Pauses an OH_LowPowerVideoSink instance. This function must be called after [OH_LowPowerVideoSink_StartRenderer](#oh_lowpowervideosink_startrenderer) or [OH_LowPowerVideoSink_Resume](#oh_lowpowervideosink_resume).<br> After successful pause, the OH_LowPowerVideoSink instance stops reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.
 
 **Since**: 20
 
@@ -314,9 +310,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Resume(OH_LowPowerVideoSink* sink)
 
 **Description**
 
-Resumes an OH_LowPowerVideoSink instance. This function must be called after[OH_LowPowerVideoSink_Pause](#oh_lowpowervideosink_pause).
-
-After successful resumption, the OH_LowPowerVideoSink instance resumes reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.
+Resumes an OH_LowPowerVideoSink instance. This function must be called after[OH_LowPowerVideoSink_Pause](#oh_lowpowervideosink_pause).<br> After successful resumption, the OH_LowPowerVideoSink instance resumes reporting the [OH_LowPowerVideoSink_OnDataNeeded](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ondataneeded) event.
 
 **Since**: 20
 
@@ -340,11 +334,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Flush(OH_LowPowerVideoSink* sink)
 
 **Description**
 
-Clears all input and output data from the decoders and render buffers of an OH_LowPowerVideoSink instance.
-
-You are not advised to call this function after [OH_LowPowerVideoSink_StartRenderer](#oh_lowpowervideosink_startrenderer) or [OH_LowPowerVideoSink_Resume](#oh_lowpowervideosink_resume).
-
-Note that if the decoder has previously received data, you must input the codec data again.
+Clears all input and output data from the decoders and render buffers of an OH_LowPowerVideoSink instance.<br> You are not advised to call this function after [OH_LowPowerVideoSink_StartRenderer](#oh_lowpowervideosink_startrenderer) or [OH_LowPowerVideoSink_Resume](#oh_lowpowervideosink_resume).<br> Note that if the decoder has previously received data, you must input the codec data again.
 
 **Since**: 20
 
@@ -392,9 +382,7 @@ OH_AVErrCode OH_LowPowerVideoSink_Reset(OH_LowPowerVideoSink* sink)
 
 **Description**
 
-Resets an OH_LowPowerVideoSink instance.
-
-To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpowervideosink_configure) to configure the instance again.
+Resets an OH_LowPowerVideoSink instance.<br> To reuse the instance, you must call [OH_LowPowerVideoSink_Configure](#oh_lowpowervideosink_configure) to configure the instance again.
 
 **Since**: 20
 
@@ -476,9 +464,9 @@ Sets the target rendering frame for an OH_LowPowerVideoSink instance.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| const int64_t framePts | Presentation timestamp (PTS) of the target video frame to render.|
+| const int64_t framePts | Presentation timestamp (PTS) of the target video frame to render. The unit is microsecond.|
 | [OH_LowPowerVideoSink_OnTargetArrived](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ontargetarrived) onTargetArrived | OH_LowPowerVideoSink_OnTargetArrived, which is invoked when the target frame is rendered.|
-| const int64_t timeoutMs | Time wait for the first frame to finish rendering. If the first frame does not finish rendering within the specified time, the OH_LowPowerVideoSink_OnTargetArrived callback is directly invoked.|
+| const int64_t timeoutMs | Time wait for the first frame to finish rendering. If the first frame does not finish rendering within the specified time, the OH_LowPowerVideoSink_OnTargetArrived callback is directly invoked. The unit is milliseconds.|
 | void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
 **Returns**
@@ -504,7 +492,7 @@ Sets the playback speed for an OH_LowPowerVideoSink instance.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
-| const float speed | Playback speed, in the range [0.1, 4.0].|
+| const float speed | Playback speed, in the range [0.25, 4.0].|
 
 **Returns**
 
@@ -554,7 +542,7 @@ Obtains the Presentation Timestamp (PTS) of the video that is playing.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) *sink | Pointer to an OH_LowPowerVideoSink instance.|
-| int64_t *pts | Pointer to the PTS of the video.|
+| int64_t *pts | Pointer to the PTS of the video. The unit is microsecond.|
 
 **Returns**
 
