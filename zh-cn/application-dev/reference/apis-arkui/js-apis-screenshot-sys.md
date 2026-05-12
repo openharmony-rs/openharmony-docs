@@ -57,6 +57,24 @@ import { screenshot } from '@kit.ArkUI';
 | displayId | ArkTs-Dyn: number <br> ArkTs-Sta: long        | 否 | 是   | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，该参数应为整数。默认为0。 |
 | isNotificationNeeded| boolean        | 否 | 是   | 表示截取图像之后是否发送截屏通知，true表示发送截屏通知，false表示不发送截屏通知，默认值为true。截屏通知可以通过[captureStatusChange](js-apis-display.md#displayoncapturestatuschange12)接口监听。   |
 | isCaptureFullOfScreen | boolean        | 否 | 是   | 表示是否截取当前物理屏上所有DisplayId对应的逻辑屏。对于一个物理屏上有多个DisplayId的场景，true表示截取整个物理屏，false表示只截取DisplayId所在区域的逻辑屏。默认值为false。 |
+| displayIntent | [DisplayIntentType](#displayintenttype)        | 否 | 是   | 表示截取HDR图像的渲染方式，不影响SDR图像效果。默认值为screenshot.DisplayIntentType.CANONICAL。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## DisplayIntentType 
+
+截取HDR图像的渲染方式枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 26.0.0
+ 	 
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CANONICAL | 0 | 表示指定截图以标准HDR显示属性进行渲染，以优化截图在不同HDR显示器上的显示效果。|
+| LOCAL | 1 |表示指定截图以当前HDR显示属性进行渲染，以保证截图与当前被截图的显示器显示效果一致。|
 
 ## Size
 
@@ -405,7 +423,8 @@ import { image } from '@kit.ImageKit';
 let hdrScreenshotOptions: screenshot.HdrScreenshotOptions = {
   "displayId": 0,
   "isNotificationNeeded": true,
-  "isCaptureFullOfScreen": true
+  "isCaptureFullOfScreen": true,
+  "displayIntent": screenshot.DisplayIntentType.CANONICAL
 };
 try {
   let promise = screenshot.saveHdrPicture(hdrScreenshotOptions);
@@ -432,7 +451,8 @@ import { image } from '@kit.ImageKit';
 let hdrScreenshotOptions: screenshot.HdrScreenshotOptions = {
   "displayId": 0,
   "isNotificationNeeded": true,
-  "isCaptureFullOfScreen": true
+  "isCaptureFullOfScreen": true,
+  "displayIntent": screenshot.DisplayIntentType.CANONICAL
 };
 try {
   let promise = screenshot.saveHdrPicture(hdrScreenshotOptions);
