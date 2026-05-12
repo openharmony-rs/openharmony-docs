@@ -3980,15 +3980,17 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-### getAssetCompatibleUris<sup>26+</sup>
+### getAssetCompatibleUris
 
 getAssetCompatibleUris(bundleName: string, assets: Array&lt;PhotoAsset&gt;, compatibleFlag?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-根据bundleName、photoAsset列表和compatibleFlag获取需要转码的URI列表。使用Promise异步回调。
+根据bundleName、photoAsset列表和compatibleFlag获取需要转码的URI列表。
 
 compatibleFlag为兼容配置掩码标志，位定义如下：
-- Bit 0：表示大图。
-- Bit 1：表示Heif图像。
+- Bit 0：表示高分辨率图像。
+- Bit 1：表示Heif格式图像。
+
+**起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -4000,9 +4002,9 @@ compatibleFlag为兼容配置掩码标志，位定义如下：
 
 | 参数名        | 类型                                | 必填 | 说明                                                         |
 | ------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| bundleName    | string                              | 是   | 应用的bundleName。                                           |
+| bundleName    | string                              | 是   | 应用的包名。                                           |
 | assets        | Array&lt;[PhotoAsset](#photoasset)&gt; | 是   | 待检查的资产数组。                                           |
-| compatibleFlag | number                              | 否   | 兼容配置掩码标志。<br>Bit 0表示大图，Bit 1表示Heif图像。 |
+| compatibleFlag | number                              | 否   | 兼容配置掩码标志。<br>第0位（Bit 0）表示高分辨率图像，第1位（Bit 1）表示Heif格式图像。 |
 
 **返回值：**
 
