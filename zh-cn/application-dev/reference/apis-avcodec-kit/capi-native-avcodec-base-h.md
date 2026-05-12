@@ -246,7 +246,6 @@
 | const char * OH_MD_KEY_LATITUDE | 纬度的键，值类型为float，范围为[-90.0, 90.0]。表示地理位置信息中的纬度。<br>**起始版本：** 24 |
 | const char * OH_MD_KEY_LONGITUDE | 经度的键，值类型为float，范围为[-180.0, 180.0]。表示地理位置信息中的经度。<br>**起始版本：** 24 |
 | const char * OH_MD_KEY_ALTITUDE | 海拔的键，值类型为float，该键是可选的。表示地理位置信息中的海拔。<br>**起始版本：** 24 |
-| const char * OH_MD_KEY_SCREEN_CAPTURE_WINDOW_RECT | 获取屏幕捕获矩形窗口的键。值类型为int32_t数组，单位为像素（px），数组长度为4。通过[OH_AVFormat_GetIntBuffer](capi-native-avformat-h.md#oh_avformat_getintbuffer)获取屏幕中的矩形窗口，在int32_t数组中，[top,left,width,height]分别表示矩形窗口的左上角坐标、窗口的宽度和高度。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_VIVID_SIGNAL_FORMAT | 设置Audio Vivid输入信号格式的键，值类型为int32_t，该键仅用于Audio Vivid编码器。<br> 具体取值请参见[OH_AudioVividSignalFormat](capi-native-audio-vivid-h.md#oh_audiovividsignalformat)。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_SOUNDBED_LAYOUT | 设置音频声床的通道布局的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 具体取值请参见[OH_AudioChannelLayout](capi-native-audio-channel-layout-h.md#oh_audiochannellayout)。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_AUDIO_SOUNDBED_BITRATE | 设置音频声床编码比特率的键，值类型为int64_t，该键是可选的且仅用于Audio Vivid编码器。<br> 实际编码比特率可能会根据编码器的能力调整。<br>**起始版本：** 26.0.0 |
