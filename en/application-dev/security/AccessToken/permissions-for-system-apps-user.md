@@ -153,7 +153,7 @@ Allows an application to add, remove, and edit call logs.
 
 Allows an application to query the running status of specific applications using CLI commands.
 
-**Permission level**: ：system_basic
+**Permission level**: system_basic
 
 **Authorization mode**: user_grant
 
