@@ -283,7 +283,7 @@
          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
          return;
        }
-       await this.port.sendBrk();
+       await this.port!.sendBrk();
        console.info(`${TAG} sendBrk success`);
      } catch (err) {
        const e = err as BusinessError;
