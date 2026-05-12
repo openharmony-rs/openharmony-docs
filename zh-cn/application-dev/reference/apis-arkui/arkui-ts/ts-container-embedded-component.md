@@ -124,7 +124,7 @@ ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError> | undefined)
 
 attributeModifier(modifier: AttributeModifier\<EmbeddedComponentAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
-设置XComponent组件的属性修改器。
+设置EmbeddedComponent组件的属性修改器。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
