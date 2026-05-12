@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -31,6 +31,7 @@ Enumerates the pixel formats of images.
 | RGBA_1010102<sup>12+</sup> | 10 | The color information consists of four components: R (Red), G (Green), B (Blue), and alpha. R, G, and B each occupy 10 bits, and alpha occupies 2 bits. The total length is 32 bits.|
 | YCBCR_P010<sup>12+</sup> | 11 | The color information consists of the luminance component Y and the chrominance components Cb and Cr. Each component has effective 10 bits. In storage, the Y plane uses 16 bits per pixel (10 of which are effective). The UV plane is interleaved, with every four pixels taking up 32 bits of data (each chrominance component having 10 effective bits), resulting in an average of 15 effective bits overall. It corresponds to [CAMERA_FORMAT_YCBCR_P010 in CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat). |
 | YCRCB_P010<sup>12+</sup> | 12 | The color information consists of the luminance component Y and the chrominance components Cr and Cb. Each component has effective 10 bits. In storage, the Y plane uses 16 bits per pixel (10 of which are effective). The UV plane is interleaved, with every four pixels taking up 32 bits of data (each chrominance component having 10 effective bits), resulting in an average of 15 effective bits overall. It corresponds to [CAMERA_FORMAT_YCRCB_P010 in CameraFormat](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat). |
+| ALPHA_U8 | 15 | The color information consists of only the transparency (alpha), with 8 bits per pixel, stored in order from the most significant bit to the least significant bit. All pixels are tightly arranged without alignment.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0. |
 | ASTC_4x4<sup>18+</sup> | 102 | The storage format is ASTC_4x4, and the memory usage is only 1/4 of that of RGBA_8888. This format is intended for direct display scenarios. It does not support pixel access or editing in post-processing, and does not support cascaded affine transformations. |
 
 ## AlphaType<sup>9+</sup>
@@ -85,6 +86,8 @@ Enumerates image metadata types.
 | PNG_METADATA | 19    | PNG image metadata.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
 | JFIF_METADATA | 20    | JFIF image metadata.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
 | TIFF_METADATA | 21    | TIFF image metadata.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
+| XMP_METADATA | 22    | XMP image metadata.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
+| AVIS_METADATA | 23    | AVIS image metadata.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
 
 ## ScaleMode<sup>9+</sup>
 
@@ -358,10 +361,11 @@ Enumerates the WebP image information.
 ## DngPropertyKey<sup>24+</sup>
 
 Enumerates the DNG image information.
-- For details about the fields, see the DNG Specification 1.4.0.0.
-- The key in the format example is **image.DngPropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **DNG_BACKWARD_VERSION**).
-- The format example is intended only to demonstrate the format of the read result. For details about how to use the API, see [readImageMetadata](arkts-apis-image-ImageSource.md#readimagemetadata23).
-- For details about the return value type, see [DngMetadata](arkts-apis-image-i.md#dngmetadata24).
+
+> **NOTE**
+>
+> - For details about the fields, see the DNG Specification 1.4.0.0.
+> - For details about the return value type, see [DngMetadata](arkts-apis-image-i.md#dngmetadata24).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -392,7 +396,7 @@ Enumerates the DNG image information.
 | REDUCTION_MATRIX2 | 'ReductionMatrix2' | Dimension reduction matrix under the second calibration illuminant.|
 | ANALOG_BALANCE | 'AnalogBalance' | Analog gain balance coefficient.|
 | AS_SHOT_NEUTRAL | 'AsShotNeutral' | Neutral white point at capture.|
-| AS_SHOT_WHITE_XY | 'AsShotWhiteXY' | CIE x-y chromaticity coordinates of the white point at capture.|
+| AS_SHOT_WHITEXY | 'AsShotWhiteXY' | CIE x-y chromaticity coordinates of the white point at capture.|
 | BASELINE_EXPOSURE | 'BaselineExposure' | Baseline exposure compensation value, in EV.|
 | BASELINE_NOISE | 'BaselineNoise' | Baseline noise level.|
 | BASELINE_SHARPNESS | 'BaselineSharpness' | Baseline sharpness gain.|
@@ -465,8 +469,7 @@ Enumerates the PNG image information.
 
 > **NOTE**
 >
-> - The key in the format example is **image.PngPropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **X_PIXELS_PER_METER**).
-> - For details about the return value type, see [PngMetadata](arkts-apis-image-PngMetadata.md).
+> For details about the return value type, see [PngMetadata](arkts-apis-image-PngMetadata.md).
 
 **Since**: 26.0.0
 
@@ -499,8 +502,7 @@ Enumerates the JFIF image information.
 
 > **NOTE**
 >
-> - The key in the format example is **image.JfifPropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **DENSITY_UNIT**).
-> - For details about the return value type, see [JfifMetadata](arkts-apis-image-JfifMetadata.md).
+> For details about the return value type, see [JfifMetadata](arkts-apis-image-JfifMetadata.md).
 
 **Since**: 26.0.0
 
@@ -522,8 +524,7 @@ Enumerates the TIFF image information.
 
 > **NOTE**
 >
-> - The key in the format example is **image.TiffPropertyKey.*XXX*** (where *XXX* is the name of an enumeration, for example, **DOCUMENT_NAME**).
-> - For details about the return value type, see [TiffMetadata](arkts-apis-image-TiffMetadata.md).
+> For details about the return value type, see [TiffMetadata](arkts-apis-image-TiffMetadata.md).
 
 **Since**: 26.0.0
 
@@ -553,6 +554,24 @@ Enumerates the TIFF image information.
 | SOFTWARE | 'TiffSoftware' | Name and version number of the software used to create the image.|
 | PRIMARY_CHROMATICITIES | 'TiffPrimaryChromaticities' | Chromaticity coordinates of the RGB primaries in the image.|
 | ARTIST | 'TiffArtist' | Person who created the image.|
+
+## AvisPropertyKey
+
+Enumerates the AVIS image information.
+
+> **NOTE**
+>
+> For details about the return value type, see [AvisMetadata](arkts-apis-image-AvisMetadata.md).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name             | Value               | Description                  |
+| ----------------- | ----------------- | --------------------- |
+| DELAY_TIME    | 'AvisDelayTime'    | Playback duration of each frame in an AVIS image.<br>The unit is milliseconds.|
 
 ## ImageFormat<sup>9+</sup>
 
@@ -723,4 +742,24 @@ Enumerates the XMAGE color modes.
 | BRIGHT | 1    | Bright.|
 | SOFT   | 2    | Soft focus.|
 | MONO   | 3    | Monochrome.|
+
+## XMPTagType
+
+Enumerates the XMP tag types.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name           | Value  | Description                                                                |
+| --------------- | ---- | ------------------------------------------------------------------- |
+| UNKNOWN         | 0    | Unknown.                                                          |
+| STRING          | 1    | String.                                                        |
+| UNORDERED_ARRAY | 2    | Unordered array. During serialization, the format of this type in XMP metadata is \<rdf:Bag>.         |
+| ORDERED_ARRAY   | 3    | Unordered array. During serialization, the format of this type in XMP metadata is \<rdf:Seq>.         |
+| ALTERNATE_ARRAY | 4    | Alternative array. During serialization, the format of this type in XMP metadata is \<rdf:Alt>.         |
+| ALTERNATE_TEXT  | 5    | Multi-language text. During serialization, this type is an alternative array of **xml:lang** qualifiers in XMP format.|
+| STRUCTURE       | 6    | Struct. Unlike array elements, fields in the struct can belong to different namespaces.           |
 <!--no_check-->

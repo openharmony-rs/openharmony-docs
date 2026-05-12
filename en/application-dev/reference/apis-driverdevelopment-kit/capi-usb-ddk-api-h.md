@@ -8,7 +8,7 @@
 
 ## Overview
 
-Claims the USB DDK APIs used by the USB host to access USB devices.
+Declares the USB DDK APIs used by the USB host to access USB devices.
 
 **File to include**: <usb/usb_ddk_api.h>
 

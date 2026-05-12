@@ -42,7 +42,7 @@ static show(options?: DatePickerDialogOptions)
 
 | 参数名  | 类型                                                        | 必填 | 说明                       |
 | ------- | ----------------------------------------------------------- | ---- | -------------------------- |
-| options | [DatePickerDialogOptions](#datepickerdialogoptions对象说明) | 否   | 配置日期选择器弹窗的参数。 |
+| options | [DatePickerDialogOptions](#datepickerdialogoptions对象说明) | 否   | 配置日期选择器弹窗的参数。参数缺省时无法弹出弹窗。 |
 
 ## DatePickerDialogOptions对象说明
 

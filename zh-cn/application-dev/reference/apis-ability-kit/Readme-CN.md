@@ -4,7 +4,7 @@
 <!--Owner: @wanghang-->
 <!--Designer: @hanfeng6; @lihaitao-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--ability-arkts-->
   - Stage模型能力的接口<!--stage-model-->
@@ -312,6 +312,7 @@
     - [ability_runtime_common.h](capi-ability-runtime-common-h.md)
     - [application_context.h](capi-application-context-h.md)
     - [context_constant.h](capi-context-constant-h.md)
+    - [connect_options.h](capi-connect-options-h.md)
     - [native_child_process.h](capi-native-child-process-h.md)
     - [native_interface_bundle.h](capi-native-interface-bundle-h.md)
     - [start_options.h](capi-start-options-h.md)
@@ -320,6 +321,8 @@
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
     - [context.h](capi-abilityruntime-context-h.md)
     - [extension_ability.h](capi-extension-ability-h.md)
+    - [modular_object_extension_ability.h](capi-modular-object-extension-ability-h.md)
+    - [modular_object_extension_context.h](capi-modular-object-extension-context-h.md)
     - [modular_object_extension_manager.h](capi-modular-object-extension-manager-h.md)
   - 结构体<!--ability-struct-->
     - [AbilityBase_Element](capi-abilitybase-element.md)
@@ -341,6 +344,9 @@
     - [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md)
     - [OH_AbilityRuntime_ModularObjectExtensionInfo*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md)
     - [OH_AbilityRuntime_AllModularObjectExtensionInfos*](capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md)
+    - [OH_AbilityRuntime_ConnectOptions](capi-abilityruntime-oh-abilityruntime-connectoptions.md)
+    - [OH_AbilityRuntime_ModularObjectExtensionContext*](capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md)
+    - [OH_AbilityRuntime_ModularObjectExtensionInstance](capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md)
 - 错误码<!--ability-arkts-errcode-->
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)

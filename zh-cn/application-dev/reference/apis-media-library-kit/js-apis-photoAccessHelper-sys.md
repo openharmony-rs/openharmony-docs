@@ -4374,18 +4374,21 @@ setPreferredCompatibleMode(bundleName: string, compatibleMode: PreferredCompatib
 phAccessHelper的创建方法请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例用法。
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function setPreferredCompatibleMode(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   bundleName: string,
   preferredCompatibleMode: photoAccessHelper.PreferredCompatibleMode
 ): Promise<void> {
-  try {
-    await phAccessHelper.setPreferredCompatibleMode(bundleName, preferredCompatibleMode);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The setPreferredCompatibleMode call failed. error code: ${err.code}`);
-  }
+  console.info('setPreferredCompatibleModeDemo');
+  phAccessHelper.setPreferredCompatibleMode(bundleName, preferredCompatibleMode)
+    .then(() => {
+      console.info('setPreferredCompatibleMode successfully');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`The setPreferredCompatibleMode call failed. error: ${err.code}, ${err.message}`);
+    });
 }
 ```
 
@@ -4430,17 +4433,22 @@ getPreferredCompatibleMode(bundleName: string): Promise\<PreferredCompatibleMode
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 async function getPreferredCompatibleMode(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   bundleName: string
 ): Promise<photoAccessHelper.PreferredCompatibleMode> {
+  console.info('getPreferredCompatibleModeDemo');
   let mode: photoAccessHelper.PreferredCompatibleMode = photoAccessHelper.PreferredCompatibleMode.DEFAULT;
-  try {
-    mode = await phAccessHelper.getPreferredCompatibleMode(bundleName);
-  } catch (error) {
-    let err = error as BusinessError;
-    console.error(`The getPreferredCompatibleMode call failed. error code: ${err.code}`);
-  }
+  await phAccessHelper.getPreferredCompatibleMode(bundleName)
+    .then((result: photoAccessHelper.PreferredCompatibleMode) => {
+      mode = result;
+      console.info('getPreferredCompatibleMode successfully');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`The getPreferredCompatibleMode call failed. error: ${err.code}, ${err.message}`);
+    });
   return mode;
 }
 ```
@@ -12905,7 +12913,7 @@ async function example(context: Context) {
 
 ## AlbumAttribute
 
-枚举，设置相册的属性类型。
+枚举，相册的属性类型。
 
 **起始版本：** 26.0.0
 
@@ -12915,7 +12923,8 @@ async function example(context: Context) {
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| NICK_NAME_ATTR | 'nickname' | 设置相册昵称。<br>**系统接口**：此接口为系统接口。 |
+| NICK_NAME_ATTR | 'nickname' | 相册昵称。<br>**系统接口**：此接口为系统接口。 |
+| IS_REMOVED_ATTR | 'is_removed' | 相册是否已删除。<br>- 现支持人像相册。<br>- 值为1表示该相册已删除。<br>- 值为0表示该相册未删除或已恢复。<br>**系统接口**：此接口为系统接口。 |
 
 ## AlbumOperationType
 

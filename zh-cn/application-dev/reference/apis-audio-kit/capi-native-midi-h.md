@@ -17,9 +17,9 @@
 5. **数据交互**：  
    - **接收**：通过回调函数接收UMP（Universal MIDI Packet 通用MIDI数据包）格式的MIDI数据。  
    - **发送**：构建UMP（Universal MIDI Packet 通用MIDI数据包）数据包并通过输出端口发送。  
-6. **释放资源**：使用完毕后关闭端口、设备并销毁客户端。  
+6. **释放资源**：使用完毕后关闭端口、设备并销毁客户端。
 
-**引用文件：** <midi/native_midi.h>
+**引用文件：** <ohmidi/native_midi.h>
 
 **库：** libohmidi.so
 

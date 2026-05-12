@@ -166,7 +166,7 @@ hiAppEvent.addWatcher({
     for (const eventGroup of appEventGroups) {
       hilog.info(0x0000, 'hiAppEvent', `eventName=${eventGroup.name}`);
       for (const eventInfo of eventGroup.appEventInfos) {
-        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`, );
+        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`);
       }
     }
   }
@@ -279,7 +279,7 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 
 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。<br />不同的事件有不同的配置项，目前仅支持以下事件：
 - MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
-- APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)）
+- APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#自定义规格设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
@@ -363,13 +363,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let policy: hiAppEvent.EventPolicy = {
-  "mainThreadJankPolicy":{
-    "logType": 1,
-    "sampleInterval": 100,
-    "ignoreStartupTime": 11,
-    "sampleCount": 21,
-    "reportTimesPerApp": 3,
-    "autoStopSampling": true
+  mainThreadJankPolicy:{
+    logType: 1,
+    sampleInterval: 100,
+    ignoreStartupTime: 11,
+    sampleCount: 21,
+    reportTimesPerApp: 3,
+    autoStopSampling: true
   }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
@@ -1182,13 +1182,14 @@ hiAppEvent.configure(config2);
 
 提供崩溃事件配置策略的定义。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
-| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能崩溃事件的页面切换日志。<br/>true：使能崩溃事件的页面切换日志。<br/>false：不使能崩溃事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能崩溃事件的页面切换日志。<br/>true：使能崩溃事件的页面切换日志。<br/>false：不使能崩溃事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| extendPcLrPrinting    | boolean | 否 | 是   | 设置崩溃日志中是否打印pc和lr寄存器前后的内存值。<br/>true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AppFreezePolicy<sup>24+</sup>
 
@@ -1206,13 +1207,12 @@ hiAppEvent.configure(config2);
 
 提供资源泄漏事件配置策略的定义。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 | 名称       | 类型    | 只读 | 可选 | 说明     |
 | ---------- | ------- | ---- | ---- | ------------- |
-| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br/>"event"：应用发生oom时，不传递堆快照。<br/>"event_rawheap"：应用发生oom时，系统生成并传递堆快照。<br/>**说明**：<br/>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br/>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br/>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AddressSanitizerPolicy<sup>24+</sup>
 
@@ -1338,6 +1338,7 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 | AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 23开始，该参数支持在原子化服务中使用。 |
+| appFreezeWarning | string | 是 | 应用冻屏告警事件。系统事件名称常量。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
 

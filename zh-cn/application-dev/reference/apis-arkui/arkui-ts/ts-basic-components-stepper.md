@@ -1,9 +1,9 @@
 # Stepper
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 步骤导航器组件，适用于引导用户按照步骤完成任务的导航场景。
@@ -39,7 +39,7 @@ Stepper(value?: { index?: number })
 
 | 参数名 | 类型 | 必填  | 说明 |
 | ------| -------- | --------------- | -------- |
-| value | { index?: number }   | 否 | 设置步骤导航器当前显示StepperItem的索引值。<br/>默认值：0<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
+| value | { index?: number }   | 否 | 设置步骤导航器当前显示StepperItem的索引值。<br/>取值范围：[0, 子组件的数量-1]<br/>默认值：0<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 |
 
 
 ## 属性
@@ -155,6 +155,7 @@ onPrevious(callback:&nbsp;(index:&nbsp;number,&nbsp;pendingIndex:&nbsp;number)&n
 ## 示例
 
 ### 示例1（使用Stepper）
+
 该示例主要演示如何使用步骤导航器组件。
 
 ```ts
@@ -257,7 +258,8 @@ struct StepperExample {
 ![stepper](figures/stepper.gif)
 
 ### 示例2（使用Swiper替代Stepper）
-该示例主要演示如何使用Swiper组件实现Stepper组件的功能，示例效果图同示例1。
+
+该示例主要演示如何使用[Swiper](ts-container-swiper.md)组件实现Stepper组件的功能，示例效果图同示例1。
 
 ```ts
 @Styles
