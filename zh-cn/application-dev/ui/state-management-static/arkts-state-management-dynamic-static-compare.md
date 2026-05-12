@@ -163,7 +163,7 @@ class Info {
   constructor() {
     UIUtils.addMonitor(this, 'message', this.onMessageChange);
     // 会触发onMessageChange回调，打印`message change from not initialized to initialized`
-    this.message = 'initialized'; 
+    this.message = 'initialized';
   }
   onMessageChange(monitor: IMonitor) {
     console.info(`message change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
@@ -208,7 +208,7 @@ class Info {
     // 导致该修改被下方aboutToAppear里的修改覆盖。
     this.message = 'initialized';
   }
-  onMessageChange(monitor: IMonitor) {
+  onMessageChange(monitor: IMonitor): void {
     monitor.dirty.forEach((path: string) => {
       console.info(`message change from ${monitor.value<string>(path)?.before} to ${monitor.value<string>(path)?.now}`);
     });

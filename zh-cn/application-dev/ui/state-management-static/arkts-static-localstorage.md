@@ -549,7 +549,7 @@ export default class EntryAbility extends UIAbility {
   };
   storage: LocalStorage = new LocalStorage(this.para);
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', this.storage);
   }
 }
@@ -915,7 +915,7 @@ let storageFunc = () => {
 class Model {
   storage: LocalStorage = storageA;
 
-  call(propName: string, value: number) {
+  call(propName: string, value: number): void {
     this.storage.setOrCreate<number>(propName, value);
   }
 }
