@@ -301,7 +301,7 @@
        console.error(`${TAG} No serial port found, please call getSerialPortList first`);
        return;
      }
-     await this.port.close();
+     await this.port!.close();
      console.info(`${TAG} close success`);
      this.port = null;
    } catch (err) {
