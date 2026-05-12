@@ -1,9 +1,9 @@
 # LiveFormExtensionContext (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
