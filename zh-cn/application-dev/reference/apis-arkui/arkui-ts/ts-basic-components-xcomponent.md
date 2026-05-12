@@ -277,7 +277,9 @@ ArkTS-Sta: enableSecure(isSecure: boolean | undefined)
 
 ### hdrBrightness<sup>20+</sup>
 
-hdrBrightness(brightness: number)
+ArkTS-Dyn: hdrBrightness(brightness: number)
+
+ArkTS-Sta: hdrBrightness(brightness: double | undefined)
 
 用于调整组件播放HDR视频的亮度。
 
@@ -293,7 +295,7 @@ hdrBrightness(brightness: number)
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | 是   | 用于调整组件播放HDR视频的亮度; brightness的取值范围为0.0~1.0; 小于0.0的值等价于0.0，大于1.0的值等价于1.0，异常值按1.0处理; 0.0 表示SDR视频的亮度，1.0 表示HDR视频的亮度。<br/>默认值：1.0 |
+| brightness | ArkTS-Dyn: number <br/>ArkTS-Sta: double \| undefined | 是   | 用于调整组件播放HDR视频的亮度; brightness的取值范围为0.0~1.0; 小于0.0的值等价于0.0，大于1.0的值等价于1.0，异常值按1.0处理; 0.0 表示SDR视频的亮度，1.0 表示HDR视频的亮度。<br/>默认值：1.0 |
 
   > **说明：**
   >
@@ -330,6 +332,26 @@ ArkTS-Sta: hdrBrightness(brightness: double | undefined, type?: HdrType)
 | -------- | ------- | ---- | ---------------------- |
 | brightness | ArkTS-Dyn: number <br/>ArkTS-Sta: double \| undefined | 是  | HDR视频的亮度。取值范围为0.0到1.0。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。0.0表示视频按照SDR亮度显示，1.0表示视频按照当前允许的最高HDR亮度显示。<br/>默认值：1.0。<br/>ArkTS-Sta模式下可不传，不传时使用默认值1.0。|
 | type | [HdrType](#hdrtype24枚举说明) | 否   | 播放HDR视频时的HDR类型。<br/>默认值: HdrType.DEFAULT|
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<XComponentAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置XComponent组件的属性修改器。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[XComponentAttribute](#属性)> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是 | XComponent组件的属性修改器。取值为undefined时，不使用attributeModifier。 |
 
 ## HdrType<sup>24+</sup>枚举说明
 
@@ -890,10 +912,10 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
-| offsetX       | number | 否   | 是   | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位：px。 |
-| offsetY       | number | 否   | 是   | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位：px。 |
-| surfaceWidth  | number | 否   | 否   | Surface显示区域的宽度，单位：px。                            |
-| surfaceHeight | number | 否   | 否   | Surface显示区域的高度，单位：px。                            |
+| offsetX       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位：px。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| offsetY       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位：px。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| surfaceWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的宽度，单位：px。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| surfaceHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的高度，单位：px。<br/> **ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 > **说明：**
 >
