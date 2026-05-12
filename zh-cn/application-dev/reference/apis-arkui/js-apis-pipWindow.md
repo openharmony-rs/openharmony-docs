@@ -892,7 +892,7 @@ startPiP(): Promise&lt;void&gt;
 | 1300013    | Failed to create the PiP window.                       |
 | 1300014    | PiP internal error.                                    |
 | 1300015    | Repeated PiP operation.                                |
-| 1300034    | This operation conflicts with other floating windows. Possible cause: App has already started float view.<br>适用版本：26.0.0+ |
+| 1300034    | This operation conflicts with other floating windows. Possible cause: App has already started float view.</br>适用版本：26.0.0+ |
 
 **示例：**
 
