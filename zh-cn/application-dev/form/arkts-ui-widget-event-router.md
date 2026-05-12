@@ -262,7 +262,7 @@
    ```
 
 5. 在resources/base/profile下的main_pages.json文件中配置FunA.ets和FunB.ets页面。
-   ```json
+   ```json5
    // src/main/resources/base/profile/main_pages.json
    {
        "src": [
@@ -273,7 +273,7 @@
    }
    ```
 6. 资源文件如下，请开发者替换为实际使用的资源。
-   ```json
+   ```json5
    // src/main/resources/zh_CN/element/string.json
    {
      "string": [
