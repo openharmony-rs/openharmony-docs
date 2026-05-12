@@ -4696,9 +4696,11 @@ authWithPopup(callback: IUserAuthCallback): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：**
 
-从API version 11开始无需申请权限，建议升级SDK版本。
+API版本11+：N/A
+
+API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **参数：**
 
@@ -4753,9 +4755,11 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：**
 
-从API version 11开始无需申请权限，建议升级SDK版本。
+API版本11+：N/A
+
+API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **参数：**
 
@@ -6863,7 +6867,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
-表示[查询认证凭据信息](#getauthinfo12)的可选参数集合。
+表示查询认证凭据信息[getAuthInfo](#getauthinfo12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6905,7 +6909,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ## AuthOptions<sup>12+</sup>
 
-表示[认证用户](#auth12)的可选参数集合。
+表示认证用户[auth](#auth12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6919,7 +6923,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ## GetInputDataOptions<sup>12+</sup>
 
-表示[通知调用者获取数据](#ongetdata8)的可选参数集合。
+表示通知调用者获取数据[onGetData](#ongetdata8)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
