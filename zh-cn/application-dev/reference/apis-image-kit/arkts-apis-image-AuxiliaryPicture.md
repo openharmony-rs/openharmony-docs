@@ -294,9 +294,9 @@ function SetMetadataFunc(auxPicture: image.AuxiliaryPicture, context: common.UIA
 
 ## getMetadata<sup>13+</sup>
 
-getMetadata(metadataType: MetadataType): Promise\<Metadata>
+ArkTS-Dyn: getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
+ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 从辅助图中获取元数据。使用Promise异步回调。
 
@@ -316,8 +316,8 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 | 类型                             | 说明             |
 | -------------------------------- | ---------------- |
-| Promise<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，返回元数据的Promise对象。 |
-| Promise<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | 返回元数据对象。 |
+| ArkTS-Dyn:Promise<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，返回元数据的Promise对象。 |
+| ArkTS-Sta:Promise<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | 返回元数据对象。 |
 
 **错误码：**
 
@@ -325,7 +325,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. **ArkTS模式**: 该错误码仅适用于ArkTS-Dyn|
+| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. **ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 7600202  | Unsupported metadata. Possible causes: 1. Unsupported metadata type. 2. The metadata type does not match the auxiliary picture type. |
 
 **示例：**

@@ -24,9 +24,9 @@ import { image } from '@kit.ImageKit';
 
 ## getMainPixelmap<sup>13+</sup>
 
-getMainPixelmap(): PixelMap
+ArkTS-Dyn: getMainPixelmap(): PixelMap
 
-getMainPixelmap(): PixelMap | undefined
+ArkTS-Sta: getMainPixelmap(): PixelMap | undefined
 
 获取主图的pixelmap。
 
@@ -40,8 +40,8 @@ getMainPixelmap(): PixelMap | undefined
 
 | 类型                | 说明                   |
 | ------------------- | ---------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 同步返回PixelMap对象。 |
-| [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 同步返回PixelMap对象。 |
+| ArkTS-Dyn: [PixelMap](arkts-apis-image-PixelMap.md) | 同步返回PixelMap对象。 |
+| ArkTS-Sta: [PixelMap](arkts-apis-image-PixelMap.md) \| undefined | 同步返回PixelMap对象。 |
 
 ArkTS-Dyn示例：
 ```ts
@@ -80,9 +80,9 @@ function GetMainPixelmapFunc(picture: image.Picture): void {
 
 ## getHdrComposedPixelmap<sup>13+</sup>
 
-getHdrComposedPixelmap(): Promise\<PixelMap>
+ArkTS-Dyn: getHdrComposedPixelmap(): Promise\<PixelMap>
 
-getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
+ArkTS-Sta: getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
 合成HDR图并获取HDR图的pixelmap。使用Promise异步回调。
 
@@ -96,8 +96,8 @@ getHdrComposedPixelmap(): Promise\<PixelMap | undefined>
 
 | 类型                          | 说明                        |
 | ----------------------------- | --------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
+| ArkTS-Dyn: Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
+| ArkTS-Sta: Promise\<[PixelMap](arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回PixelMap。 |
 
 **错误码：**
 
@@ -517,9 +517,9 @@ function SetMetadataFunc(picture: image.Picture): void {
 
 ## getMetadata<sup>13+</sup>
 
-getMetadata(metadataType: MetadataType): Promise\<Metadata>
+ArkTS-Dyn: getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
+ArkTS-Sta: getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 获取主图的元数据。使用Promise异步回调。
 
@@ -539,8 +539,8 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata | undefined>
 
 | 类型               | 说明                      |
 | ------------------ | ------------------------- |
-| Promise\<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象。返回元数据。 |
-| Promise\<Metadata \| undefined> | Promise对象。返回元数据。 |
+| ArkTS-Dyn: Promise\<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象。返回元数据。 |
+| ArkTS-Sta: Promise\<[Metadata](arkts-apis-image-Metadata.md) \| undefined> | Promise对象。返回元数据。 |
 
 **错误码：**
 
@@ -702,11 +702,11 @@ function MarshallingUnMarshallingFunc(context: common.UIAbilityContext): void {
     if (picture != null || picture != undefined) {
       let parcelable: MySequence = new MySequence(picture);
       let data: rpc.MessageSequence = rpc.MessageSequence.create();
-      // marshalling
+      // 序列化。
       data.writeParcelable(parcelable);
 
       let ret: MySequence = new MySequence(picture);
-      // unmarshalling
+      // 反序列化。
       data.readParcelable(ret);
     } else {
       console.error(0x00000, 'MarshallingUnMarshallingFunc', 'picture is null!');
