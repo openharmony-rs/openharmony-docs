@@ -352,6 +352,32 @@ struct Index {
 2. 定义普通类实例对象，持有Sendable类实例对象。
 
    <!-- @[define_normal_class_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Material.ets) -->
+   
+   ``` TypeScript
+   import { SharedValuesBucket } from './SharedValuesBucket';
+   import { collections } from '@kit.ArkTS';
+   
+   export class Material {
+     public seq: number = 0;
+     public materialName: string = '';
+     // ... 省略其他属性
+     public buckets: collections.Array<SharedValuesBucket | undefined>;
+   
+     constructor(seq: number, materialName: string, buckets: collections.Array<SharedValuesBucket | undefined>) {
+       this.seq = seq;
+       this.materialName = materialName;
+       this.buckets = buckets;
+     }
+   
+     getBuckets() : collections.Array<SharedValuesBucket | undefined>{
+       return this.buckets;
+     }
+   
+     setBuckets(buckets: collections.Array<SharedValuesBucket | undefined>) {
+       this.buckets = buckets;
+     }
+   }
+   ```
 
 3. UI主线程发起数据库操作请求，在子线程进行数据的增删改查等操作。
 
