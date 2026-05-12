@@ -51,12 +51,12 @@ Defines the style parameters of the popup.
 
 | Name       | Type      | Read-Only     | Optional     | Description                           |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
-| icon      | [PopupIconOptions](#popupiconoptions)                        | No  | Yes| Icon of the popup.<br>**NOTE**<br>The icon is not displayed when **width** and **height** are set to an invalid value or **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| title     | [PopupTextOptions](#popuptextoptions)                        | No  | Yes | Title of the popup.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| message   | [PopupTextOptions](#popuptextoptions)                        | No | No | Content of the popup.<br>**NOTE**<br>**fontWeight** is not available for **messages**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| icon      | [PopupIconOptions](#popupiconoptions)                        | No  | Yes| Icon of the popup.<br>**NOTE**<br>The icon is not displayed when **width** and **height** are set to an invalid value or **0**.<br> By default, no icon is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| title     | [PopupTextOptions](#popuptextoptions)                        | No  | Yes | Title of the popup.<br> By default, no title is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| message   | [PopupTextOptions](#popuptextoptions)                        | No | No | Content of the popup.<br>**NOTE**<br>**fontWeight** is not available for **messages**.<br> By default, no message is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | showClose | boolean \| [Resource](ts-types.md#resource)                | No  | Yes | Whether to show the close button.<br>**true**: Show the close button. **false**: Do not show the close button.<br>**Resource**: Show the corresponding icon.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| onClose   | () => void                                                   | No  | Yes | Callback for the popup close button.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| buttons   | [[PopupButtonOptions](#popupbuttonoptions)?,[PopupButtonOptions](#popupbuttonoptions)?] | No  | Yes | Buttons of the popup. A maximum of two buttons can be set.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| onClose   | () => void                                                   | No  | Yes | Callback for the popup close button.<br> By default, the callback for the close button is not set.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| buttons   | [[PopupButtonOptions](#popupbuttonoptions)?,[PopupButtonOptions](#popupbuttonoptions)?] | No  | Yes | Buttons of the popup. A maximum of two buttons can be set.<br> By default, no buttons are displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | No                               | Yes                              | Layout direction.<br>Default value: **Direction.Auto**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | maxWidth<sup>18+</sup> | [Dimension](ts-types.md#dimension10)                                             | No                               | Yes                              | Maximum width of the popup. This API allows the popup to display with a custom width.<br>**NOTE**<br>1. When using resource references, ensure that the parameter type matches the attribute method type.<br>2. **maxWidth** accepts numeric values (both floating-point and integer values), such as **$r('app.float.maxWidth')** and **$r('app.integer.maxWidth')**.<br>3. When the type is Resource, values default to px units if no unit is explicitly specified.<br>Default value: **400vp**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
@@ -90,7 +90,7 @@ Defines the button attributes and events.
 | Name     | Type                                                | Read-Only| Optional| Description                |
 | --------- | ---------------------------------------------------- | ---- | ---------------------- | ---------------------- |
 | text      | [ResourceStr](ts-types.md#resourcestr)               | No | No | Text of the button.        |
-| action    | () => void                                           | No  | Yes | Click callback of the button.|
+| action    | () => void                                           | No  | Yes | Click callback of the button.<br> By default, no operation is performed.|
 | fontSize  | number \| string \| [Resource](ts-types.md#resource) | No  | Yes | Font size of the button text.<br>Default value: **$r('sys.float.ohos_id_text_size_button2')**<br>The string value must be convertible to a number (for example, **'10'**) or include a length unit (for example, **'10px'**); percentage-based strings are not supported.<br>Invalid values are handled as default values.|
 | fontColor | [ResourceColor](ts-types.md#resourcecolor)           | No  | Yes | Font color of the button text.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**|
 
@@ -109,7 +109,7 @@ Defines the icon options.
 | image        | [ResourceStr](ts-types.md#resourcestr)                       | No | No | Icon content.                    |
 | width        | [Dimension](ts-types.md#dimension10)                         | No  | Yes| Icon width.<br>Default value: **32VP**|
 | height       | [Dimension](ts-types.md#dimension10)                         | No  | Yes| Icon height.<br>Default value: **32VP**|
-| fillColor    | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes| Icon fill color. This property applies only to an SVG image.|
+| fillColor    | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes| Icon fill color. This property applies only to an SVG image.<br> By default, the icon color is not changed.|
 | borderRadius | [Length](ts-types.md#length) \| [BorderRadiuses](ts-types.md#borderradiuses9) | No  | Yes| Rounded corner of the icon.<br>Default value: **$r('sys.float.ohos_id_corner_radius_default_s')** |
 
 ## Example
