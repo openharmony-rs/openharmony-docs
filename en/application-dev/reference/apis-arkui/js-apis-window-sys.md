@@ -391,7 +391,7 @@ Minimizes all main windows on a display while keeping one window open. This API 
 | Name  | Type                     | Mandatory| Description          |
 | -------- | ------------------------- | ---- | -------------- |
 | displayId| number                    | Yes  | Display ID. The value must be an integer. Non-integer values are rounded down.|
-| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. If the window ID is greater than 0 but does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Floating-point numbers are rounded down.|
+| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code 401 is thrown. If the window ID is greater than 0 but the window does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Floating-point numbers are rounded down.|
 
 **Return value**
 
@@ -1438,7 +1438,7 @@ promise.then(() => {
 
 hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
-Hides this window and plays an animation during the process. This API uses an asynchronous callback to return the result. This API takes effect only for a system window.
+Hides this window and plays an animation during the process. This API uses an asynchronous callback to return the result. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -1480,7 +1480,7 @@ windowClass.hideWithAnimation((err: BusinessError) => {
 
 hideWithAnimation(): Promise&lt;void&gt;
 
-Hides this window and plays an animation during the process. This API uses a promise to return the result. This API takes effect only for a system window.
+Hides this window and plays an animation during the process. This API uses a promise to return the result. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -1520,7 +1520,7 @@ promise.then(() => {
 
 showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
-Shows this window and plays an animation during the process. This API uses an asynchronous callback to return the result. This API takes effect only for a system window.
+Shows this window and plays an animation during the process. This API uses an asynchronous callback to return the result. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -1562,7 +1562,7 @@ windowClass.showWithAnimation((err: BusinessError) => {
 
 showWithAnimation(): Promise&lt;void&gt;
 
-Shows this window and plays an animation during the process. This API uses a promise to return the result. This API takes effect only for a system window.
+Shows this window and plays an animation during the process. This API uses a promise to return the result. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2430,7 +2430,7 @@ export default class EntryAbility extends UIAbility {
 
 opacity(opacity: number): void
 
-Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window) of a system window, global floating window, and modal window.
 
 **System API**: This is a system API.
 
@@ -2467,7 +2467,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window) of a system window, global floating window, and modal window.
 
 **System API**: This is a system API.
 
@@ -2510,7 +2510,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window) of a system window, global floating window, and modal window.
 
 **System API**: This is a system API.
 
@@ -2554,7 +2554,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window) of a system window, global floating window, and modal window.
 
 **System API**: This is a system API.
 
@@ -2596,7 +2596,7 @@ try {
 
  getTransitionController(): TransitionController
 
-Obtains the transition animation controller.
+Obtains the transition animation controller. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2628,7 +2628,7 @@ let controller = windowClass.getTransitionController(); // Obtain the transition
 
 setBlur(radius: number): void
 
-Blurs this window.
+Blurs this window. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2665,7 +2665,7 @@ try {
 
 setBackdropBlur(radius: number): void
 
-Blurs the background of this window.
+Blurs the background of this window. This API can be used only for system windows, global floating windows, and modal windows.
 
 The window background refers to the lower-layer area covered by the window, which is the same as the window size.
 
@@ -2707,7 +2707,7 @@ try {
 
 setBackdropBlurStyle(blurStyle: BlurStyle): void
 
-Sets the blur style for the background of this window.
+Sets the blur style for the background of this window. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2744,7 +2744,7 @@ try {
 
 setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): void
 
-Sets the shadow for the window borders.
+Sets the shadow for the window borders. This API can be used only for system windows, application subwindows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2784,7 +2784,7 @@ try {
 
 setCornerRadius(cornerRadius: number): void
 
-Sets the radius of the rounded corners for this window.
+Sets the radius of the rounded corners for this window. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -3702,7 +3702,7 @@ Sets whether the window uses the default density of the current screen. In the s
 
 If this API is not called, the default density is not used.
 
-If this API, [setDefaultDensityEnabled(true)](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12), and [setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15) are all called, the setting from the last called API will be applied.
+If this API, [setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12), and [setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15) are all called, the setting from the last called API will be applied.
 
 **System API**: This is a system API.
 
@@ -3951,7 +3951,7 @@ Called by the main window to place the window above all the other windows. This 
 
 **Device behavior differences**
 
-Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, but returns error code 801 on other devices.
+In versions earlier than <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
 
 Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, or if the device does not support freeform windows, this API returns error code 801 when called.
 
