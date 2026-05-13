@@ -396,7 +396,16 @@
          await this.avTranscoder.pause();
        }
      }
+   <!-- @[doPause](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 暂停转码对应的流程。
+   async pauseTranscoderingProcess(): Promise<void> {
+     if (this.avTranscoder != undefined) { // 仅在调用start返回后调用pause为合理调用。
+       await this.avTranscoder!.pause();
+     }
    }
+   ```
    ```
 
    ArkTS-Sta示例：
