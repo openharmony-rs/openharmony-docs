@@ -585,7 +585,7 @@ requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallbac
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                         | 是   | 发起网络请求的URL地址。                         |
 | options  | HttpRequestOptions                             | 是   | 参考[HttpRequestOptions](#httprequestoptions)。 |
-| callback | AsyncCallback\<number\>       | 是   | 回调函数。当请求成功，err为undefined，返回[HTTP请求响应错误码](#responsecode)；否则为错误对象。                                    |
+| callback | AsyncCallback\<number\>       | 是   | 回调函数。当请求成功，err为undefined，返回HTTP请求响应错误码；否则为错误对象。                                    |
 
 **错误码：**
 
@@ -689,7 +689,7 @@ requestInStream(url: string, options? : HttpRequestOptions): Promise\<number\>
 
 | 类型                                   | 说明                              |
 | :------------------------------------- | :-------------------------------- |
-| Promise\<number\> | 以Promise形式返回[发起请求的结果](#responsecode)。 |
+| Promise\<number\> | 以Promise形式返回发起请求的结果。 |
 
 **错误码：**
 
