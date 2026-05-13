@@ -835,7 +835,7 @@ on(type: 'scanDeviceFound', callback: Callback&lt;ScannerDevice&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[scan.onScanDeviceFound](#scanonscandevicefound)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[scan.onScanDeviceFound<sup>23+</sup>](#scanonscandevicefound23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -874,7 +874,7 @@ off(type: 'scanDeviceFound', callback?: Callback&lt;ScannerDevice&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[scan.offScanDeviceFound](#scanoffscandevicefound)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[scan.offScanDeviceFound<sup>23+</sup>](#scanoffscandevicefound23)。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -999,7 +999,7 @@ on(type: 'scanDeviceSync', callback: Callback&lt;ScannerSyncDevice&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[scan.onScanDeviceSync](#scanonscandevicesync)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[scan.onScanDeviceSync<sup>23+</sup>](#scanonscandevicesync23)。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
@@ -1038,7 +1038,7 @@ off(type: 'scanDeviceSync', callback?: Callback&lt;ScannerSyncDevice&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[scan.offScanDeviceSync](#scanoffscandevicesync)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[scan.offScanDeviceSync<sup>23+</sup>](#scanoffscandevicesync23)。
 
 **需要权限：** ohos.permission.MANAGE_PRINT_JOB
 
