@@ -42,10 +42,10 @@
 | `OH_VideoEncoder_CreatePrimaryWithPreproc` | √ | N/A | 创建主编码器入口 |
 | `OH_VideoEncoder_CreateSecondaryFromPrimary` | √ | N/A | 创建副编码器入口，仅可以通过主编码器句柄创建 |
 | `OH_VideoEncoder_RegisterCallback` | √ | √ | 各自独立注册 |
-| `OH_VideoEncoder_RegisterParameterCallback` | × NOT_PERMIT | × NOT_PERMIT | 不支持随帧参数 |
-| `OH_VideoEncoder_PushInputParameter` | × NOT_PERMIT | × NOT_PERMIT | 不支持随帧参数 |
+| `OH_VideoEncoder_RegisterParameterCallback` | × | × | 不支持随帧参数 |
+| `OH_VideoEncoder_PushInputParameter` | × | × | 不支持随帧参数 |
 | `OH_VideoEncoder_Configure` | √ | √ | 各自独立配置（分辨率、码率、前处理等均可不同） |
-| `OH_VideoEncoder_GetSurface` | √ **仅限此调用者** | × NOT_PERMIT | 副编码器调用返回错误 |
+| `OH_VideoEncoder_GetSurface` | √ **仅限此调用者** | × | 副编码器调用返回错误 |
 | `OH_VideoEncoder_Prepare` | √ | √ | 各自准备资源，参考普通编码器 |
 | `OH_VideoEncoder_Start` | √ | √ | 各自独立控制，参考普通编码器 |
 | `OH_VideoEncoder_Stop` | √ | √ | 各自独立控制，参考普通编码器 |
@@ -54,10 +54,10 @@
 | `OH_VideoEncoder_SetParameter` | √ | √ | 运行时动态调整 |
 | `OH_VideoEncoder_NotifyEndOfStream` | √ | √ | Surface 模式专用 |
 | `OH_VideoEncoder_FreeOutputBuffer` | √ | √ | 各自释放各自的 output buffer |
-| `OH_VideoEncoder_PushInputData` | × NOT_PERMIT | × NOT_PERMIT | 不支持 Buffer 模式 |
-| `OH_VideoEncoder_PushInputBuffer` | × NOT_PERMIT | × NOT_PERMIT | 不支持 Buffer 模式 |
-| `OH_VideoEncoder_QueryInputBuffer` | × NOT_PERMIT | × NOT_PERMIT | 不支持同步模式 |
-| `OH_VideoEncoder_QueryOutputBuffer` | × NOT_PERMIT | × NOT_PERMIT | 不支持同步模式 |
+| `OH_VideoEncoder_PushInputData` | × | × | 不支持 Buffer 模式 |
+| `OH_VideoEncoder_PushInputBuffer` | × | × | 不支持 Buffer 模式 |
+| `OH_VideoEncoder_QueryInputBuffer` | × | × | 不支持同步模式 |
+| `OH_VideoEncoder_QueryOutputBuffer` | × | × | 不支持同步模式 |
 | `OH_VideoEncoder_GetInputDescription` | √ | √ | 含前处理元数据信息 |
 | `OH_VideoEncoder_GetOutputDescription` | √ | √ | |
 | `OH_VideoEncoder_IsValid` | √ | √ | |
