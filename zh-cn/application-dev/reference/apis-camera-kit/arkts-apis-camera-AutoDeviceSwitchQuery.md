@@ -28,13 +28,13 @@ isAutoDeviceSwitchSupported(): boolean
 
 查询设备是否支持自动切换镜头能力。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
  
 **返回值：**
 
