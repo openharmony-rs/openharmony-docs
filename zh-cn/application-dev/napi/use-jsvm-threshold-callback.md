@@ -49,193 +49,193 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 **cpp部分代码**
 
  <!-- @[oh_jsvm_take_raw_heap_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutRawheap/entry/src/main/cpp/hello.cpp) -->    
-
-```cpp
-#include <iostream>
-#include <fstream>
-#include <thread>
-#include <chrono>
-#include <unistd.h>
-#include <sys/types.h>
-#include "napi/native_api.h"
-#include "hilog/log.h"
-#include "ark_runtime/jsvm.h"
-
-#define LOG_DOMAIN 0x3200
-#define LOG_TAG "APP"
-
-static int g_aa = 0;
-
-static bool g_heapThresholdCalled = false;
-static uint64_t g_triggeredThreshold = 0;
-static void* g_callbackUserData = nullptr;
-static bool g_snapshotGenerated = false;
-
-static constexpr int SLEEP_TIME_MS = 100;
-static constexpr uint64_t THRESHOLD_SIZE = 1024 * 1024;
-static constexpr int TEST_DATA_VALUE = 0x12345678;
-
-bool SnapshotStreamCallback(const char* data, int size, void* streamData)
-{
-    std::FILE* file = reinterpret_cast<std::FILE*>(streamData);
-    if (file) {
-        size_t written = std::fwrite(data, 1, size, file);
-        return written == static_cast<size_t>(size);
-    }
-    return true;
-}
-
-void OnHeapThresholdReached(JSVM_VM vm, uint64_t threshold, void* data)
-{
-    OH_LOG_INFO(LOG_APP, "== Heap threshold reached ==");
-    OH_LOG_INFO(LOG_APP, "Threshold: %{public}lu bytes", threshold);
-    OH_LOG_INFO(LOG_APP, "User data: %{public}d", *static_cast<int*>(data));
-
-    g_heapThresholdCalled = true;
-    g_triggeredThreshold = threshold;
-    g_callbackUserData = data;
-
-    if (!g_snapshotGenerated) {
-        g_snapshotGenerated = true;
-        pid_t pid = fork();
-        if (pid < 0) {
-            OH_LOG_ERROR(LOG_APP, "fork failed");
-        } else if (pid == 0) {
-            std::FILE* file = std::fopen(
-                "/data/storage/el2/base/temp/threshold.rawheap", "wb");
-            OH_JSVM_TakeRawHeapSnapshot(vm, SnapshotStreamCallback, file);
-            std::fflush(file);
-            fclose(file);
-            _exit(0);
-        }
-    }
-}
-
-static void ResetTestState()
-{
-    g_heapThresholdCalled = false;
-    g_triggeredThreshold = 0;
-    g_callbackUserData = nullptr;
-    g_snapshotGenerated = false;
-}
-
-static void TestSetHeapThresholdCallback(JSVM_VM vm, uint64_t threshold, int* testData)
-{
-    JSVM_Status addStatus = OH_JSVM_SetHeapThresholdCallback(
-        vm, threshold, OnHeapThresholdReached, testData);
-    if (addStatus == JSVM_OK) {
-        OH_LOG_INFO(LOG_APP, "Set heap threshold callback success");
-    }
-
-    JSVM_Status addRepeatStatus = OH_JSVM_SetHeapThresholdCallback(
-        vm, threshold, OnHeapThresholdReached, testData);
-    if (addRepeatStatus == JSVM_INVALID_ARG) {
-        OH_LOG_INFO(LOG_APP, "Set repeated callback failed (expected)");
-    }
-
-    JSVM_Status addInvalidStatus = OH_JSVM_SetHeapThresholdCallback(
-        vm, 0, OnHeapThresholdReached, testData);
-    if (addInvalidStatus == JSVM_INVALID_ARG) {
-        OH_LOG_INFO(LOG_APP, "Set callback with 0 threshold failed (expected)");
-    }
-}
-
-static void TestClearHeapThresholdCallback(JSVM_VM vm, uint64_t threshold, int* testData)
-{
-    JSVM_Status removeStatus = OH_JSVM_ClearHeapThresholdCallback(
-        vm, threshold, OnHeapThresholdReached, testData);
-    if (removeStatus == JSVM_OK) {
-        OH_LOG_INFO(LOG_APP, "Clear heap threshold callback success");
-    }
-
-    JSVM_Status removeRepeatStatus = OH_JSVM_ClearHeapThresholdCallback(
-        vm, threshold, OnHeapThresholdReached, testData);
-    if (removeRepeatStatus == JSVM_INVALID_ARG) {
-        OH_LOG_INFO(LOG_APP, "Clear repeated callback failed (expected)");
-    }
-
-    JSVM_Status removeMismatchStatus = OH_JSVM_ClearHeapThresholdCallback(
-        vm, 999999, OnHeapThresholdReached, testData);
-    if (removeMismatchStatus == JSVM_INVALID_ARG) {
-        OH_LOG_INFO(LOG_APP, "Clear mismatch threshold callback failed (expected)");
-    }
-}
-
-static void RunAllocScript(JSVM_Env env)
-{
-    const char* allocJs = R"JS(
-        var holder = [];
-        for (let i = 0; i < 10000; i++) {
-            holder.push(new Uint8Array(1024));
-        }
-    )JS";
-
-    JSVM_Value jsSrc;
-    JSVM_Value result1;
-    JSVM_Script script;
-    OH_JSVM_CreateStringUtf8(env, allocJs, JSVM_AUTO_LENGTH, &jsSrc);
-    OH_JSVM_CompileScript(env, jsSrc, nullptr, 0, true, nullptr, &script);
-    OH_JSVM_RunScript(env, script, &result1);
-}
-
-static bool CheckTestResult(uint64_t threshold, int* testData)
-{
-    bool testSuccess = (g_heapThresholdCalled &&
-                        g_triggeredThreshold == threshold &&
-                        g_callbackUserData == testData &&
-                        g_snapshotGenerated);
-    if (testSuccess) {
-        OH_LOG_INFO(LOG_APP, "Heap management test: SUCCESS");
-    } else {
-        OH_LOG_ERROR(LOG_APP, "Heap management test: FAILED");
-    }
-    return testSuccess;
-}
-
-static JSVM_Value HeapMgmtTest(JSVM_Env env, JSVM_CallbackInfo info)
-{
-    ResetTestState();
-
-    JSVM_VM vm;
-    OH_JSVM_GetVM(env, &vm);
-    int testData = TEST_DATA_VALUE;
-    uint64_t threshold = THRESHOLD_SIZE;
-
-    std::FILE* file = std::fopen(
-        "/data/storage/el2/base/temp/take.rawheap", "wb");
-    JSVM_Status snapshotStatus = OH_JSVM_TakeRawHeapSnapshot(
-        vm, SnapshotStreamCallback, file);
-    if (snapshotStatus == JSVM_INVALID_ARG) {
-        OH_LOG_ERROR(LOG_APP, "Take raw heap snapshot failed (invalid arg)");
-    }
-
-    TestSetHeapThresholdCallback(vm, threshold, &testData);
-    RunAllocScript(env);
-
-    OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL);
-    std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
-
-    TestClearHeapThresholdCallback(vm, threshold, &testData);
-
-    bool testSuccess = CheckTestResult(threshold, &testData);
-
-    JSVM_Value result;
-    OH_JSVM_GetBoolean(env, testSuccess, &result);
-    return result;
-}
-
-static JSVM_CallbackStruct param[] = {
-    {.data = nullptr, .callback = HeapMgmtTest},
-};
-
-static JSVM_CallbackStruct* method = param;
-
-static JSVM_PropertyDescriptor descriptor[] = {
-    {"heapMgmtTest", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-};
-
-const char* SRC_CALL_NATIVE = R"JS(heapMgmtTest();)JS";
-```
+ 
+ ``` C++
+ #include <iostream>
+ #include <fstream>
+ #include <thread>
+ #include <chrono>
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include "napi/native_api.h"
+ #include "hilog/log.h"
+ #include "ark_runtime/jsvm.h"
+ 
+ #define LOG_DOMAIN 0x3200
+ #define LOG_TAG "APP"
+ 
+ static int g_aa = 0;
+ 
+ static bool g_heapThresholdCalled = false;
+ static uint64_t g_triggeredThreshold = 0;
+ static void* g_callbackUserData = nullptr;
+ static bool g_snapshotGenerated = false;
+ 
+ static constexpr int SLEEP_TIME_MS = 100;
+ static constexpr uint64_t THRESHOLD_SIZE = 1024 * 1024;
+ static constexpr int TEST_DATA_VALUE = 0x12345678;
+ 
+ bool SnapshotStreamCallback(const char* data, int size, void* streamData)
+ {
+     std::FILE* file = reinterpret_cast<std::FILE*>(streamData);
+     if (file) {
+         size_t written = std::fwrite(data, 1, size, file);
+         return written == static_cast<size_t>(size);
+     }
+     return true;
+ }
+ 
+ void OnHeapThresholdReached(JSVM_VM vm, uint64_t threshold, void* data)
+ {
+     OH_LOG_INFO(LOG_APP, "== Heap threshold reached ==");
+     OH_LOG_INFO(LOG_APP, "Threshold: %{public}lu bytes", threshold);
+     OH_LOG_INFO(LOG_APP, "User data: %{public}d", *static_cast<int*>(data));
+ 
+     g_heapThresholdCalled = true;
+     g_triggeredThreshold = threshold;
+     g_callbackUserData = data;
+ 
+     if (!g_snapshotGenerated) {
+         g_snapshotGenerated = true;
+         pid_t pid = fork();
+         if (pid < 0) {
+             OH_LOG_ERROR(LOG_APP, "fork failed");
+         } else if (pid == 0) {
+             std::FILE* file = std::fopen(
+                 "/data/storage/el2/base/temp/threshold.rawheap", "wb");
+             OH_JSVM_TakeRawHeapSnapshot(vm, SnapshotStreamCallback, file);
+             std::fflush(file);
+             fclose(file);
+             _exit(0);
+         }
+     }
+ }
+ 
+ static void ResetTestState()
+ {
+     g_heapThresholdCalled = false;
+     g_triggeredThreshold = 0;
+     g_callbackUserData = nullptr;
+     g_snapshotGenerated = false;
+ }
+ 
+ static void TestSetHeapThresholdCallback(JSVM_VM vm, uint64_t threshold, int* testData)
+ {
+     JSVM_Status addStatus = OH_JSVM_SetHeapThresholdCallback(
+         vm, threshold, OnHeapThresholdReached, testData);
+     if (addStatus == JSVM_OK) {
+         OH_LOG_INFO(LOG_APP, "Set heap threshold callback success");
+     }
+ 
+     JSVM_Status addRepeatStatus = OH_JSVM_SetHeapThresholdCallback(
+         vm, threshold, OnHeapThresholdReached, testData);
+     if (addRepeatStatus == JSVM_INVALID_ARG) {
+         OH_LOG_INFO(LOG_APP, "Set repeated callback failed (expected)");
+     }
+ 
+     JSVM_Status addInvalidStatus = OH_JSVM_SetHeapThresholdCallback(
+         vm, 0, OnHeapThresholdReached, testData);
+     if (addInvalidStatus == JSVM_INVALID_ARG) {
+         OH_LOG_INFO(LOG_APP, "Set callback with 0 threshold failed (expected)");
+     }
+ }
+ 
+ static void TestClearHeapThresholdCallback(JSVM_VM vm, uint64_t threshold, int* testData)
+ {
+     JSVM_Status removeStatus = OH_JSVM_ClearHeapThresholdCallback(
+         vm, threshold, OnHeapThresholdReached, testData);
+     if (removeStatus == JSVM_OK) {
+         OH_LOG_INFO(LOG_APP, "Clear heap threshold callback success");
+     }
+ 
+     JSVM_Status removeRepeatStatus = OH_JSVM_ClearHeapThresholdCallback(
+         vm, threshold, OnHeapThresholdReached, testData);
+     if (removeRepeatStatus == JSVM_INVALID_ARG) {
+         OH_LOG_INFO(LOG_APP, "Clear repeated callback failed (expected)");
+     }
+ 
+     JSVM_Status removeMismatchStatus = OH_JSVM_ClearHeapThresholdCallback(
+         vm, 999999, OnHeapThresholdReached, testData);
+     if (removeMismatchStatus == JSVM_INVALID_ARG) {
+         OH_LOG_INFO(LOG_APP, "Clear mismatch threshold callback failed (expected)");
+     }
+ }
+ 
+ static void RunAllocScript(JSVM_Env env)
+ {
+     const char* allocJs = R"JS(
+         var holder = [];
+         for (let i = 0; i < 10000; i++) {
+             holder.push(new Uint8Array(1024));
+         }
+     )JS";
+ 
+     JSVM_Value jsSrc;
+     JSVM_Value result1;
+     JSVM_Script script;
+     OH_JSVM_CreateStringUtf8(env, allocJs, JSVM_AUTO_LENGTH, &jsSrc);
+     OH_JSVM_CompileScript(env, jsSrc, nullptr, 0, true, nullptr, &script);
+     OH_JSVM_RunScript(env, script, &result1);
+ }
+ 
+ static bool CheckTestResult(uint64_t threshold, int* testData)
+ {
+     bool testSuccess = (g_heapThresholdCalled &&
+                         g_triggeredThreshold == threshold &&
+                         g_callbackUserData == testData &&
+                         g_snapshotGenerated);
+     if (testSuccess) {
+         OH_LOG_INFO(LOG_APP, "Heap management test: SUCCESS");
+     } else {
+         OH_LOG_ERROR(LOG_APP, "Heap management test: FAILED");
+     }
+     return testSuccess;
+ }
+ 
+ static JSVM_Value HeapMgmtTest(JSVM_Env env, JSVM_CallbackInfo info)
+ {
+     ResetTestState();
+ 
+     JSVM_VM vm;
+     OH_JSVM_GetVM(env, &vm);
+     int testData = TEST_DATA_VALUE;
+     uint64_t threshold = THRESHOLD_SIZE;
+ 
+     std::FILE* file = std::fopen(
+         "/data/storage/el2/base/temp/take.rawheap", "wb");
+     JSVM_Status snapshotStatus = OH_JSVM_TakeRawHeapSnapshot(
+         vm, SnapshotStreamCallback, file);
+     if (snapshotStatus == JSVM_INVALID_ARG) {
+         OH_LOG_ERROR(LOG_APP, "Take raw heap snapshot failed (invalid arg)");
+     }
+ 
+     TestSetHeapThresholdCallback(vm, threshold, &testData);
+     RunAllocScript(env);
+ 
+     OH_JSVM_MemoryPressureNotification(env, JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL);
+     std::this_thread::sleep_for(std::chrono::milliseconds(SLEEP_TIME_MS));
+ 
+     TestClearHeapThresholdCallback(vm, threshold, &testData);
+ 
+     bool testSuccess = CheckTestResult(threshold, &testData);
+ 
+     JSVM_Value result;
+     OH_JSVM_GetBoolean(env, testSuccess, &result);
+     return result;
+ }
+ 
+ static JSVM_CallbackStruct param[] = {
+     {.data = nullptr, .callback = HeapMgmtTest},
+ };
+ 
+ static JSVM_CallbackStruct* method = param;
+ 
+ static JSVM_PropertyDescriptor descriptor[] = {
+     {"heapMgmtTest", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+ };
+ 
+ const char* SRC_CALL_NATIVE = R"JS(heapMgmtTest();)JS";
+ ```
 
 **执行结果**
 
