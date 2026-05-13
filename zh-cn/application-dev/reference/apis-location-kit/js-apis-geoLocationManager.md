@@ -3177,7 +3177,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[MatchingWlanInfo](#matchingwlaninfo26)&gt;&gt; | Promise对象, 匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组(数组长度为0)。仅返回rssi最强的3个设备信息。 |
+  | Promise&lt;Array&lt;[MatchingWlanInfo](#matchingwlaninfo)&gt;&gt; | Promise对象, 匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组(数组长度为0)。仅返回rssi最强的3个设备信息。 |
 
 **错误码**：
 
