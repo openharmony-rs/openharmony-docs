@@ -140,7 +140,7 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：succeed，<br/>表示打印成功。 |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务成功。 |
 
 **错误码：**
 
@@ -188,7 +188,7 @@ onSucceed(callback: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务成功。 |
 
 **错误码：**
 
