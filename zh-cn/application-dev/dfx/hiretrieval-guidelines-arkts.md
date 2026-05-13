@@ -9,14 +9,14 @@
 
 ## 简介
 
-应用灰度采集功能通过APMS云侧平台圈选设备，精准采集故障日志上报云端，帮助开发者定位线上故障，适用于需要获取线上故障详细信息的场景。当前应用灰度采集功能支持的故障类型和对应的故障日志如下：
+应用灰度采集功能通过云端平台<!--Del-->（参考[HiRetrieval云端功能实现](hiretrieval-cloud-server-guidelines.md)）<!--DelEnd-->圈选设备，精准采集故障日志上报云端，帮助开发者定位线上故障，适用于需要获取线上故障详细信息的场景。当前应用灰度采集功能支持的故障类型和对应的故障日志如下：
 - 资源泄漏类
   - FD泄漏：句柄泄漏日志、句柄栈日志。
   - GPU泄漏：内存采样日志、内存栈日志。
   - ArkTS OOM泄漏：ArkTS虚拟机内存快照日志。
   - RSS泄漏：smaps日志、内存栈日志、ArkTS虚拟机内存快照日志、Kotlin语言内存快照日志。
 
-开发者在APMS云侧新建任务时，可以选择上述故障中的任一。在任务激活期间，被圈选的设备发生了对应故障，则会自动采集对应的日志并上传到云端。
+开发者在云端新建任务时，可以选择上述故障中的任一。在任务激活期间，被圈选的设备发生了对应故障，则会自动采集对应的日志并上传到云端。
 
 ## 工作原理
 
@@ -42,6 +42,8 @@
 2. 在onCreate函数中调用初始化接口，初始化应用灰度采集功能。
 
 3. 再在onWindowStageCreate函数中，配置HiRetrievalConfig，调用participate方法参与应用灰度活动。最后调用run接口使能应用灰度采集的完整功能。
+
+   <!-- @[hiretrieval](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/EntryAbility.ets) -->
 
    ```ts
    export default class EntryAbility extends UIAbility {
@@ -104,4 +106,4 @@
    }
    ```
 
-4. 完成上述步骤后，应用灰度采集模块将自动接受云侧平台所下发的灰度任务，并执行对应的故障日志采集和上传功能。应用开发者无需再编写额外代码。采集的故障日志将上传到云侧，开发者可以在云侧平台获取，以定位故障。
+4. 完成上述步骤后，应用灰度采集模块将自动接受云端平台所下发的灰度任务，并执行对应的故障日志采集和上传功能。应用开发者无需再编写额外代码。采集的故障日志将上传到云端，开发者可以在云端平台获取，以定位故障。
