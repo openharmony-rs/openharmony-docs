@@ -22,6 +22,23 @@ insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void
 
 插入一条代理规则，与schemeFilter匹配的URL都会使用指定代理。如果schemeFilter为空，所有URL都将使用指定代理。
 
+代理格式为[scheme://]host[:port]。
+
+scheme是可选的，必须是HTTP、HTTPS或SOCKS。scheme默认值为HTTP。
+
+host是带括号的IPv6字面量、IPv4字面量或由点分隔的一个或多个标签。
+
+端口号是可选的，默认HTTP为80、HTTPS为443、SOCKS为1080。
+
+例如：
+- example.com host: example.com
+- https://example.com  scheme: https  host: example.com
+- example.com:8888     host: example.com  port: 8888
+- https://example.com:8888  scheme: https  host: example.com  port: 8888
+- 192.168.1.1  host: 192.168.1.1
+- 192.168.1.1:8888  host: 192.168.1.1 port: 8888
+- [10:20:30:40:50:60:70:80]
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
