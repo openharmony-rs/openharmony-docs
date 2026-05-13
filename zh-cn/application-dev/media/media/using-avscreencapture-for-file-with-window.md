@@ -139,7 +139,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 4. 调用[OH_AVScreenCapture_StartScreenRecording](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_startscreenrecording)方法开始进行窗口级录制。
 
    <!-- @[screenCapture_startScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
    ```
