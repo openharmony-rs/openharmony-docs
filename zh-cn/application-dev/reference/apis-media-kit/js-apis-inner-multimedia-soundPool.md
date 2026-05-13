@@ -82,11 +82,11 @@ import { audio } from '@kit.AudioKit';
 > **说明：**
 >
 > - 在使用SoundPool实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。
->   - [on('loadComplete')](#onloadcomplete)：监听资源加载完成。建议开发者监听此回调以确保音频在加载完成后进行播放。
->   - [on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)：监听播放完成，同时返回播放结束的音频的streamId。
->   - [on('playFinished')](#onplayfinished)：监听播放完成。
->   - [on('error')](#onerror)：监听错误事件。
->   - [on('errorOccurred')](#onerroroccurred20)：监听错误事件，同时返回[errorInfo](#errorinfo20)。
+>   - [on('loadComplete')](js-apis-inner-multimedia-soundPool.md#onloadcomplete)：监听资源加载完成。建议开发者监听此回调以确保音频在加载完成后进行播放。
+>   - [on('playFinishedWithStreamId')](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid18)：监听播放完成，同时返回播放结束的音频的streamId。
+>   - [on('playFinished')](js-apis-inner-multimedia-soundPool.md#onplayfinished)：监听播放完成。
+>   - [on('error')](js-apis-inner-multimedia-soundPool.md#onerror)：监听错误事件。
+>   - [on('errorOccurred')](js-apis-inner-multimedia-soundPool.md#onerroroccurred20)：监听错误事件，同时返回[errorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)。
 > - SoundPool目前不支持后台播放、设置音频打断等音频焦点策略和跳过音频头尾的静音帧。SoundPool低时延播放可参考[使用SoundPool播放短音频(ArkTS)](../../media/media/using-soundpool-for-playback.md)。
 
 ### load
@@ -97,7 +97,7 @@ ArkTS-Sta: load(uri: string, callback: AsyncCallback\<int>): void
 
 加载音频资源。使用callback方式异步获取资源ID，入参uri通过获取文件fd生成以"fd://"开头的文件描述字符串。
 
-该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](#load-3)实现。
+该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](js-apis-inner-multimedia-soundPool.md#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](js-apis-inner-multimedia-soundPool.md#load-3)实现。
 
 > **说明：**
 >
@@ -175,7 +175,7 @@ ArkTS-Sta: load(uri: string): Promise\<int>
 
 加载音频资源。使用Promise方式异步获取资源ID，入参uri通过获取文件fd生成以"fd://"开头的文件描述字符串。
 
-该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](#load-3)实现。
+该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](js-apis-inner-multimedia-soundPool.md#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](js-apis-inner-multimedia-soundPool.md#load-3)实现。
 
 > **说明：**
 >
@@ -508,7 +508,7 @@ ArkTS-Sta: play(soundID: int, params: PlayParameters, callback: AsyncCallback\<i
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | soundID |ArkTS-Dyn: number<br>ArkTS-Sta: int| 是   | 资源ID，通过load方法获取。 |
-| params | [PlayParameters](#playparameters) | 是  | play播放相关参数的设置。 |
+| params | [PlayParameters](js-apis-inner-multimedia-soundPool.md#playparameters) | 是  | play播放相关参数的设置。 |
 | callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<int> | 是   | 获取回调的音频流ID，有效值大于0。 |
 
 **错误码：**
@@ -648,7 +648,7 @@ ArkTS-Sta: play(soundID: int, params?: PlayParameters): Promise\<int>
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
 | soundID | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 资源ID，通过load方法获取。 |
-| params | [PlayParameters](#playparameters) | 否  | play播放相关参数的设置。 |
+| params | [PlayParameters](js-apis-inner-multimedia-soundPool.md#playparameters) | 否  | play播放相关参数的设置。 |
 
 **返回值：**
 
@@ -1693,7 +1693,7 @@ on(type: 'loadComplete', callback: Callback\<number>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onLoadComplete](#onloadcomplete23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onLoadComplete](js-apis-inner-multimedia-soundPool.md#onloadcomplete23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1742,7 +1742,7 @@ onLoadComplete(callback: Callback\<int>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('loadComplete')](#onloadcomplete)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('loadComplete')](js-apis-inner-multimedia-soundPool.md#onloadcomplete)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1788,7 +1788,7 @@ off(type: 'loadComplete'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offLoadComplete](#offloadcomplete23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offLoadComplete](js-apis-inner-multimedia-soundPool.md#offloadcomplete23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1834,7 +1834,7 @@ offLoadComplete(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('loadComplete')](#offloadcomplete)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('loadComplete')](js-apis-inner-multimedia-soundPool.md#offloadcomplete)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1870,13 +1870,13 @@ on(type: 'playFinishedWithStreamId', callback: Callback\<number>): void
 
 音频池资源播放完成监听，同时返回播放结束的音频的streamId。使用callback异步回调。
 
-当仅单独注册[on('playFinished')](#onplayfinished)事件回调或者[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，都会触发注册的回调。
+当仅单独注册[on('playFinished')](js-apis-inner-multimedia-soundPool.md#onplayfinished)事件回调或者[on('playFinishedWithStreamId')](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，都会触发注册的回调。
 
-当同时注册[on('playFinished')](#onplayfinished)事件回调和[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
+当同时注册[on('playFinished')](js-apis-inner-multimedia-soundPool.md#onplayfinished)事件回调和[on('playFinishedWithStreamId')](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid18)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayFinishedWithStreamId](#onplayfinishedwithstreamid23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayFinishedWithStreamId](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1922,13 +1922,13 @@ onPlayFinishedWithStreamId(callback: Callback\<int>): void
 
 音频池资源播放完成监听，同时返回播放结束的音频的streamId。
 
-当仅单独注册[onPlayFinished](#onplayfinished23)事件回调或者[onPlayFinishedWithStreamId](#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，都会触发注册的回调。
+当仅单独注册[onPlayFinished](js-apis-inner-multimedia-soundPool.md#onplayfinished23)事件回调或者[onPlayFinishedWithStreamId](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，都会触发注册的回调。
 
-当同时注册[onPlayFinished](#onplayfinished23)事件回调和[onPlayFinishedWithStreamId)](#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
+当同时注册[onPlayFinished](js-apis-inner-multimedia-soundPool.md#onplayfinished23)事件回调和[onPlayFinishedWithStreamId)](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playFinishedWithStreamId')](#onplayfinishedwithstreamid18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playFinishedWithStreamId')](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid18)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -1973,7 +1973,7 @@ off(type: 'playFinishedWithStreamId'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayFinishedWithStreamId](#offplayfinishedwithstreamid23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayFinishedWithStreamId](js-apis-inner-multimedia-soundPool.md#offplayfinishedwithstreamid23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2018,7 +2018,7 @@ offPlayFinishedWithStreamId(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playFinishedWithStreamId')](#offplayfinishedwithstreamid18)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playFinishedWithStreamId')](js-apis-inner-multimedia-soundPool.md#offplayfinishedwithstreamid18)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2055,7 +2055,7 @@ on(type: 'playFinished', callback: Callback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayFinished](#onplayfinished23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayFinished](js-apis-inner-multimedia-soundPool.md#onplayfinished23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2104,7 +2104,7 @@ onPlayFinished(callback: Callback\<void>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playFinished')](#onplayfinished)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('playFinished')](js-apis-inner-multimedia-soundPool.md#onplayfinished)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2150,7 +2150,7 @@ off(type: 'playFinished'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayFinished](#offplayfinished23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayFinished](js-apis-inner-multimedia-soundPool.md#offplayfinished23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2196,7 +2196,7 @@ offPlayFinished(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playFinished')](#offplayfinished)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('playFinished')](js-apis-inner-multimedia-soundPool.md#offplayfinished)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2230,11 +2230,11 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'error', callback: ErrorCallback): void
 
-监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。使用callback异步回调。
+监听[SoundPool](js-apis-inner-multimedia-soundPool.md#soundpool)的错误事件，该事件仅用于错误提示。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](js-apis-inner-multimedia-soundPool.md#onerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2280,11 +2280,11 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 onError(callback: ErrorCallback): void
 
-监听[SoundPool](#soundpool)的错误事件，该事件仅用于错误提示。
+监听[SoundPool](js-apis-inner-multimedia-soundPool.md#soundpool)的错误事件，该事件仅用于错误提示。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](js-apis-inner-multimedia-soundPool.md#onerror)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2331,7 +2331,7 @@ off(type: 'error'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](js-apis-inner-multimedia-soundPool.md#offerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2376,7 +2376,7 @@ offError(): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](js-apis-inner-multimedia-soundPool.md#offerror)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2409,11 +2409,11 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 
-监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。使用callback异步回调。
+监听[SoundPool](js-apis-inner-multimedia-soundPool.md#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onErrorOccurred](#onerroroccurred23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onErrorOccurred](js-apis-inner-multimedia-soundPool.md#onerroroccurred23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2424,7 +2424,7 @@ on(type: 'errorOccurred', callback: Callback\<ErrorInfo>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件回调类型，支持的事件为'errorOccurred'，当用户或系统操作导致错误，触发该事件。 |
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | 是   | 回调函数，返回错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+| callback | Callback\<[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)> | 是   | 回调函数，返回错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)。 |
 
 **示例：**
 
@@ -2462,11 +2462,11 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 onErrorOccurred(callback: Callback\<ErrorInfo>): void
 
-监听[SoundPool](#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](#errorinfo20)。
+监听[SoundPool](js-apis-inner-multimedia-soundPool.md#soundpool)的错误事件，并返回包含错误码、错误发生阶段、资源ID和音频流ID的[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('errorOccurred')](#onerroroccurred20)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('errorOccurred')](js-apis-inner-multimedia-soundPool.md#onerroroccurred20)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2476,7 +2476,7 @@ onErrorOccurred(callback: Callback\<ErrorInfo>): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | 是   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+| callback | Callback\<[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)> | 是   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)。 |
 
 **示例：**
 
@@ -2516,7 +2516,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offErrorOccurred](#offerroroccurred23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offErrorOccurred](js-apis-inner-multimedia-soundPool.md#offerroroccurred23)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2527,7 +2527,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type   | string | 是   | 事件回调类型，取消注册的事件为'errorOccurred'。 |
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)，不设置callback时不提供相关信息。 |
+| callback | Callback\<[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)，不设置callback时不提供相关信息。 |
 
 **示例：**
 
@@ -2562,7 +2562,7 @@ offErrorOccurred(callback?: Callback\<ErrorInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('errorOccurred')](#offerroroccurred20)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('errorOccurred')](js-apis-inner-multimedia-soundPool.md#offerroroccurred20)。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
@@ -2572,7 +2572,7 @@ offErrorOccurred(callback?: Callback\<ErrorInfo>): void
 
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+| callback | Callback\<[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)。 |
 
 **示例：**
 
