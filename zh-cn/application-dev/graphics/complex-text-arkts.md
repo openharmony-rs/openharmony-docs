@@ -245,11 +245,9 @@
 
 - **省略号样式设置：** 在文本内容超出显示区域时，可以使用省略号截断文本，支持头部、中部、尾部以及多行省略模式。
 
-- **文字换行方式设置：** 文本排版时支持不同的断行策略（贪婪、高质量或均衡），可根据场景选择合适的换行方式。
+- **文字换行方式设置：** 文本排版时支持不同的断行策略，可根据场景选择合适的换行方式。
 
-- **行首标点挤压：** 在排版中，通过开启行首标点挤压功能，将行首标点符号进行挤压处理，避免标点占用行首空间，提升排版紧凑度。
-
-- **查询各类型字体资源路径：** 按字体类型查询系统字体的资源路径。
+- **行首标点压缩：** 在排版中，通过开启行首标点压缩功能，将行首标点符号进行挤压处理，避免标点占用行首空间，提升排版紧凑度。
 
 ### 装饰线
 
@@ -391,59 +389,31 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 ### 省略号样式设置
 
-当文本内容超出可显示区域时，可以通过省略号样式设置来控制文本的截断方式。通过[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的textStyle属性设置省略号字符串（ellipsis）和省略模式（ellipsisMode），配合maxLines属性限制最大行数，实现不同位置的省略效果。需要注意，省略号相关属性需要在ParagraphStyle的textStyle中设置才生效，通过pushStyle设置的省略号属性不会生效。关键代码如下：
+从API version 22开始，支持设置省略号样式，在文本内容超出显示区域时截断文本。从API version 24开始，支持多行省略模式。
 
-```ts
-let myTextStyle: text.TextStyle = {
-  ellipsis: '...',
-  ellipsisMode: text.EllipsisMode.END
-};
-let myParagraphStyle: text.ParagraphStyle = {
-  textStyle: myTextStyle,
-  maxLines: 2
-};
-```
+通过[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的textStyle属性设置省略号模式，可选的省略号模式可见[EllipsisMode](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#ellipsismode)。
+
+需要注意，省略号相关属性需要在ParagraphStyle的textStyle中设置才生效，通过pushStyle设置的省略号属性不会生效。
 
 具体使用效果可参见下文[示例九](#示例九省略号样式)。
 
 ### 文字换行方式设置
 
-通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的breakStrategy属性可以控制断行策略，影响文本在有限宽度内如何分行，支持GREEDY（贪婪）、HIGH_QUALITY（高质量）和BALANCED（均衡）三种策略。关键代码如下：
+从API version 22开始，支持在文本排版时设置断行策略，断行策略决定了文本如何在行尾进行换行处理。
 
-```ts
-let myParagraphStyle: text.ParagraphStyle = {
-  textStyle: myTextStyle,
-  breakStrategy: text.BreakStrategy.BALANCED
-};
-```
+通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的breakStrategy属性可以控制断行策略，可选的断行策略可见[BreakStrategy](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#breakstrategy)。
 
 具体使用效果可参见下文[示例十](#示例十文字换行方式)。
 
-### 行首标点挤压
+### 行首标点压缩
 
-在中文排版中，行首的标点符号会占用较多空间，导致排版不够紧凑。通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的compressHeadPunctuation属性，可以开启行首标点挤压，将行首标点符号进行挤压处理，提升排版紧凑度。关键代码如下：
+从API version 23开始，在文本排版中支持行首标点压缩功能。通过启用行首标点压缩功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
 
-```ts
-let myParagraphStyle: text.ParagraphStyle = {
-  textStyle: myTextStyle,
-  compressHeadPunctuation: true
-};
-```
+通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的compressHeadPunctuation属性设置是否启用行首标点压缩。
 
-具体使用效果可参见下文[示例十一](#示例十一行首标点挤压)。
-
-### 查询字体资源路径
-
-通过文本引擎提供的接口，可以按类型查询系统字体路径，便于开发者了解和使用系统字体资源。关键代码如下：
-
-```ts
-let fontPaths: Array<string> = text.getFontPathsByType(text.SystemFontType.GENERIC);
-```
-
-具体使用效果可参见下文[示例十二](#示例十二查询字体资源路径)。
+具体使用效果可参见下文[示例十一](#示例十一行首标点压缩)。
 
 ### 示例一（装饰线、字体特征）
-这里以文本样式中的装饰线和字体特征为例，呈现多样式文本的绘制与显示。
 
 <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
 
@@ -1619,9 +1589,32 @@ struct Font08 {
 | ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
 
 ### 示例九（省略号样式）
-这里以省略号样式为例，呈现文本截断省略的绘制与显示。
+以下示例展示了开启尾部省略号模式的文本截断效果。
 
 <!-- @[arkts_ellipsis_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample9.ets) -->
+
+``` TypeScript
+// 设置文本样式，包含省略号字符串和省略号模式
+let myTextStyle: text.TextStyle = {
+  color: {
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 0
+  },
+  fontSize: 40,
+  // 设置省略号字符串
+  ellipsis: '...',
+  // 设置省略号模式为尾部省略
+  ellipsisMode: text.EllipsisMode.END
+};
+// 设置段落样式，包含最大行数
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  // 设置最大显示行数为2
+  maxLines: 2
+};
+```
 
 具体效果如下所示：
 
@@ -1635,9 +1628,18 @@ struct Font08 {
 | 开启多行中部省略号 | ![zh-cn_image_complexArkTsDemo9_6](figures/zh-cn_image_complexArkTsDemo9_6.png) |
 
 ### 示例十（文字换行方式）
-这里以均衡断行策略为例，呈现断行策略对文本排版的影响。
+以下示例展示了BALANCED断行策略对文本排版的影响。
 
 <!-- @[arkts_break_strategy_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets) -->
+
+``` TypeScript
+// 设置断行策略为均衡策略（BALANCED）
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  // 设置断行策略为均衡策略，各行宽度尽量均衡
+  breakStrategy: text.BreakStrategy.BALANCED
+};
+```
 
 具体效果如下所示：
 
@@ -1647,25 +1649,22 @@ struct Font08 {
 | BALANCED | ![zh-cn_image_complexArkTsDemo10_2](figures/zh-cn_image_complexArkTsDemo10_2.png) |
 | HIGH_QUALITY | ![zh-cn_image_complexArkTsDemo10_3](figures/zh-cn_image_complexArkTsDemo10_3.png) |
 
-### 示例十一（行首标点挤压）
-这里以行首标点挤压为例，呈现行首标点挤压的排版效果。
+### 示例十一（行首标点压缩）
+以下示例展示了开启行首标点压缩的排版对比效果。
 
 <!-- @[arkts_punctuation_compress_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets) -->
 
-具体效果如下所示：
-
-| 标点挤压设置 | 示意效果 |
-| -------- | -------- |
-| 未开启标点挤压 | ![zh-cn_image_complexArkTsDemo11_1](figures/zh-cn_image_complexArkTsDemo11_1.png) |
-| 开启标点挤压 | ![zh-cn_image_complexArkTsDemo11_2](figures/zh-cn_image_complexArkTsDemo11_2.png) |
-
-### 示例十二（查询字体资源路径）
-这里以查询通用字体路径为例，呈现按类型查询系统字体路径的使用方式。
-
-<!-- @[arkts_font_query_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample12.ets) -->
+``` TypeScript
+// 开启行首标点压缩
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  compressHeadPunctuation: true
+};
+```
 
 具体效果如下所示：
 
-| 查询类型 | 示意效果 |
+| 标点压缩设置 | 示意效果 |
 | -------- | -------- |
-| 按类型查询字体路径 | ![zh-cn_image_complexArkTsDemo12](figures/zh-cn_image_complexArkTsDemo12.png) |
+| 未开启标点压缩 | ![zh-cn_image_complexArkTsDemo11_1](figures/zh-cn_image_complexArkTsDemo11_1.png) |
+| 开启标点压缩 | ![zh-cn_image_complexArkTsDemo11_2](figures/zh-cn_image_complexArkTsDemo11_2.png) |

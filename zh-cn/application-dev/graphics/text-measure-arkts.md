@@ -39,19 +39,6 @@
 | getTextLines(): Array&lt;TextLine&gt; | 获取当前段落文本行对象数组。 |
 | getLineMetrics(): Array&lt;LineMetrics&gt; | 获取段落所有行的度量信息。包含行的高度、宽度、起始坐标等信息。 |
 | getLineMetrics(lineNumber: number): LineMetrics \| undefined | 获取段落指定行的度量信息。包含行的高度、宽度、起始坐标等信息。超出当前段落排版后最大行数后返回undefined。 |
-| layoutWithConstraints(constraint: TextRectSize): TextLayoutResult | 在限定宽高区域内排版文本，返回实际排版尺寸和适配的字符串范围。 |
-| getCharacterPositionAtCoordinate(x: number, y: number, encoding: TextEncoding): PositionWithAffinity | 根据坐标获取字符位置及其亲和度，支持指定文本编码类型。 |
-| getCharacterRangeForGlyphRange(glyphRange: Range, encoding: TextEncoding): Array&lt;Range&gt; | 根据字形范围获取对应的字符范围，返回数组包含字符范围和实际字形范围。 |
-| getGlyphRangeForCharacterRange(characterRange: Range, encoding: TextEncoding): Array&lt;Range&gt; | 根据字符范围获取对应的字形范围，返回数组包含字形范围和实际字符范围。 |
-
-**相关数据结构**
-
-| 数据结构 | 描述 |
-| -------- | -------- |
-| TextRectSize | 排版区域的尺寸信息，包含width（宽度）和height（高度），单位为px。 |
-| TextLayoutResult | 排版结果，包含fitStrRange（适配的字符串范围数组）和correctRect（实际排版尺寸）。 |
-| PositionWithAffinity | 字符位置信息，包含position（字符索引）和affinity（亲和度）。 |
-| Affinity | 文本亲和度枚举，UPSTREAM表示偏向前一个字符，DOWNSTREAM表示偏向后一个字符。 | 
 
 
 ## 开发步骤
@@ -142,14 +129,63 @@
    console.info("MetricsMSG: 第1行 lineMetrics width: " + allLineMetrics[0].width);
    ```
 
-5. 在限定宽高区域内排版文本，获取排版结果。使用layoutWithConstraints接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（correctRect）和适配的字符串范围（fitStrRange）。
+5. 从API version 24开始支持在限定宽高区域内排版文本，获取排版结果。
+
+   使用[layoutWithConstraints()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#layoutwithconstraints24)接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（correctRect）和适配的字符串范围（fitStrRange）。
 
    <!-- @[ts_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
 
-6. 根据坐标获取字符位置信息。使用getCharacterPositionAtCoordinate获取指定编码类型下的字符位置。返回的PositionWithAffinity包含字符索引和亲和度信息。
+   ``` TypeScript
+   // case6: 在限定宽高区域内排版文本，获取排版结果
+   let constraint: text.TextRectSize = { width: 600, height: 200 };
+   let layoutResult: text.TextLayoutResult = paragraph.layoutWithConstraints(constraint);
+   // 获取排版后的实际尺寸
+   console.info("MetricsMSG: correctRect width: " + layoutResult.correctRect.width +
+     ", height: " + layoutResult.correctRect.height);
+   // 获取适配的字符串范围
+   for (let i = 0; i < layoutResult.fitStrRange.length; i++) {
+     console.info("MetricsMSG: fitStrRange[" + i + "] start: " + layoutResult.fitStrRange[i].start +
+       ", end: " + layoutResult.fitStrRange[i].end);
+   }
+   ```
+
+6. 从API version 24开始支持根据坐标获取字符位置信息。
+
+   使用[getCharacterPositionAtCoordinate()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterpositionatcoordinate24)获取指定编码类型下的字符位置。返回的PositionWithAffinity包含字符索引和亲和度信息。
 
    <!-- @[ts_text_metrics_get_character_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
 
-7. 字形范围与字符范围的相互转换。使用getCharacterRangeForGlyphRange根据字形范围获取对应的字符范围，使用getGlyphRangeForCharacterRange根据字符范围获取对应的字形范围。返回的数组包含两个元素，第一个是目标范围，第二个是实际范围。编码类型支持UTF-8和UTF-16。
+   ``` TypeScript
+   // case8: 根据坐标获取字符位置（指定编码类型）
+   let charPos: text.PositionWithAffinity =
+     paragraph.getCharacterPositionAtCoordinate(100, 50, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   console.info("MetricsMSG: charPos position: " + charPos.position +
+     ", affinity: " + charPos.affinity);
+   ```
+
+7. 从API version 24开始支持字形范围与字符范围的相互转换。
+
+   使用[getCharacterRangeForGlyphRange()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterrangeforglyphrange24)根据字形范围获取对应的字符范围，使用[getGlyphRangeForCharacterRange()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglyphrangeforcharacterrange24)根据字符范围获取对应的字形范围。返回的数组包含两个元素，第一个是目标范围，第二个是实际范围。编码类型支持UTF-8和UTF-16。
 
    <!-- @[ts_text_metrics_glyph_character_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // case9: 根据字形范围获取字符范围
+   let glyphRange: text.Range = { start: 0, end: 2 };
+   let glyphToCharRanges: Array<text.Range> =
+     paragraph.getCharacterRangeForGlyphRange(glyphRange, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   // 返回数组第一个为字符范围，第二个为实际字形范围
+   console.info("MetricsMSG: charRange start: " + glyphToCharRanges[0].start +
+     ", end: " + glyphToCharRanges[0].end);
+   console.info("MetricsMSG: actualGlyphRange start: " + glyphToCharRanges[1].start +
+     ", end: " + glyphToCharRanges[1].end);
+   // case10: 根据字符范围获取字形范围
+   let charRange: text.Range = { start: 0, end: 2 };
+   let charToGlyphRanges: Array<text.Range> =
+     paragraph.getGlyphRangeForCharacterRange(charRange, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+   // 返回数组第一个为字形范围，第二个为实际字符范围
+   console.info("MetricsMSG: glyphRange start: " + charToGlyphRanges[0].start +
+     ", end: " + charToGlyphRanges[0].end);
+   console.info("MetricsMSG: actualCharRange start: " + charToGlyphRanges[1].start +
+     ", end: " + charToGlyphRanges[1].end);
+   ```

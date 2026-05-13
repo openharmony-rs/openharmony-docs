@@ -194,11 +194,9 @@ OH_Drawing_DestroyTypography(typography);
 
 - **省略号样式设置：** 在文本内容超出显示区域时，可以使用省略号截断文本，支持头部、中部、尾部以及多行省略模式。
 
-- **文字换行方式设置：** 文本排版时支持不同的断行策略（贪婪、高质量或均衡），可根据场景选择合适的换行方式。
+- **文字换行方式设置：** 文本排版时支持不同的断行策略，可根据场景选择合适的换行方式。
 
-- **行首标点挤压：** 在排版中，通过开启行首标点挤压功能，将行首标点符号进行挤压处理，避免标点占用行首空间，提升排版紧凑度。
-
-- **查询各类型字体资源路径：** 按字体类型查询系统字体资源的路径。
+- **行首标点压缩：** 在排版中，通过开启行首标点压缩功能，将行首标点符号进行挤压处理，避免标点占用行首空间，提升排版紧凑度。
 
 ### 装饰线
 
@@ -1053,91 +1051,77 @@ OH_Drawing_DestroyTypography(typography);
 
 ### 省略号样式设置
 
-在文本内容超出显示区域时，可以使用省略号（Ellipsis）截断文本。文本引擎支持多种省略号模式，包括头部省略、中部省略、尾部省略以及多行省略，同时支持自定义省略号字符串。
+从API version 22开始，支持设置省略号样式，在文本内容超出显示区域时截断文本。从API version 24开始，支持多行省略模式。
 
-| 省略号模式 | 说明 |
-| -------- | -------- |
-| ELLIPSIS_MODAL_HEAD | 头部省略 |
-| ELLIPSIS_MODAL_MIDDLE | 中部省略 |
-| ELLIPSIS_MODAL_TAIL | 尾部省略 |
-| ELLIPSIS_MODAL_MULTILINE_HEAD | 多行头部省略 |
-| ELLIPSIS_MODAL_MULTILINE_MIDDLE | 多行中部省略 |
-
-| 接口定义 | 描述 |
-| -------- | -------- |
-| OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_TypographyStyle\* style, OH_Drawing_TypographyStyleAttributeId id, int value) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL，设置省略号模式。 |
+使用[OH_Drawing_SetTypographyStyleAttributeInt](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint)接口，传入[TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)设置省略号模式，可选的省略号模式可见[OH_Drawing_EllipsisModal](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)。
 
 <!-- @[complex_text_c_ellipsis_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+// 创建一个带有省略号设置的 TypographyStyle
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置最大行数为2，超过2行的部分将被省略
+OH_Drawing_SetTypographyTextMaxLines(typoStyle, 2);
+// 设置省略号模式为尾部省略
+OH_Drawing_SetTypographyStyleAttributeInt(typoStyle,
+    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
+// 设置自定义省略号字符串
+OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
+```
+
 | 省略号模式 | 效果 |
 | -------- | -------- |
-| ELLIPSIS_MODAL_TAIL（尾部省略） | ![complexCDemoEllipsis1](figures/complexCDemoEllipsis1.png) |
-| ELLIPSIS_MODAL_HEAD（头部省略） | ![complexCDemoEllipsis2](figures/complexCDemoEllipsis2.png) |
-| ELLIPSIS_MODAL_MIDDLE（中部省略） | ![complexCDemoEllipsis3](figures/complexCDemoEllipsis3.png) |
-| ELLIPSIS_MODAL_MULTILINE_HEAD（多行头部省略） | ![complexCDemoEllipsis4](figures/complexCDemoEllipsis4.png) |
-| ELLIPSIS_MODAL_MULTILINE_MIDDLE（多行中部省略） | ![complexCDemoEllipsis5](figures/complexCDemoEllipsis5.png) |
+| ELLIPSIS_MODAL_TAIL | ![complexCDemoEllipsis1](figures/complexCDemoEllipsis1.png) |
+| ELLIPSIS_MODAL_HEAD | ![complexCDemoEllipsis2](figures/complexCDemoEllipsis2.png) |
+| ELLIPSIS_MODAL_MIDDLE | ![complexCDemoEllipsis3](figures/complexCDemoEllipsis3.png) |
+| ELLIPSIS_MODAL_MULTILINE_HEAD | ![complexCDemoEllipsis4](figures/complexCDemoEllipsis4.png) |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE | ![complexCDemoEllipsis5](figures/complexCDemoEllipsis5.png) |
 
 
 ### 文字换行方式设置
 
-文本排版时，断行策略决定了文本如何在行尾进行换行处理。文本引擎支持三种断行策略：
+从API version 22开始，支持在文本排版时设置断行策略，断行策略决定了文本如何在行尾进行换行处理。
 
-- **GREEDY（贪婪策略）**：默认策略，逐行尽量填满，直到放不下再换行。
-- **HIGH_QUALITY（高质量策略）**：在换行时会考虑整体排版质量，选择更合理的断行位置。
-- **BALANCED（均衡策略）**：尽量使各行的长度趋于均衡，适合多行文本的排版场景。
-
-| 接口定义 | 描述 |
-| -------- | -------- |
-| void OH_Drawing_SetTypographyTextBreakStrategy(OH_Drawing_TypographyStyle\* style, int breakStrategy) | 设置断行策略。 |
+使用[OH_Drawing_SetTypographyTextBreakStrategy](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographytextbreakstrategy)接口设置断行策略，可选的断行策略可见[OH_Drawing_BreakStrategy](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_breakstrategy)。
 
 <!-- @[complex_text_c_break_strategy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+// 创建一个设置了均衡断行策略的 TypographyStyle
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置断行策略为 BALANCED（均衡策略）
+OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_BALANCED);
+```
+
 | 换行方式 | 效果 |
 | -------- | -------- |
-| GREEDY（贪婪策略） | ![complexCDemoBreakStrategy1](figures/complexCDemoBreakStrategy1.png) |
-| HIGH_QUALITY（高质量策略） | ![complexCDemoBreakStrategy2](figures/complexCDemoBreakStrategy2.png) |
-| BALANCED（均衡策略） | ![complexCDemoBreakStrategy3](figures/complexCDemoBreakStrategy3.png) |
+| GREEDY | ![complexCDemoBreakStrategy1](figures/complexCDemoBreakStrategy1.png) |
+| HIGH_QUALITY | ![complexCDemoBreakStrategy2](figures/complexCDemoBreakStrategy2.png) |
+| BALANCED | ![complexCDemoBreakStrategy3](figures/complexCDemoBreakStrategy3.png) |
 
-### 行首标点挤压
+### 行首标点压缩
 
-在中文排版中，行首的标点符号会占用较多空间，导致排版不够紧凑。通过启用行首标点挤压功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
+从API version 23开始，在文本排版中支持行首标点压缩功能。通过启用行首标点压缩功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
 
-| 接口定义 | 描述 |
-| -------- | -------- |
-| OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle\* style, OH_Drawing_TypographyStyleAttributeId id, bool value) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION，设置是否启用行首标点挤压。 |
-| OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle\* style, OH_Drawing_TypographyStyleAttributeId id, bool\* value) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION，查询是否启用了行首标点挤压。 |
+使用[OH_Drawing_SetTypographyStyleAttributeBool](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributebool)接口，传入[TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)设置是否启用行首标点压缩，使用[OH_Drawing_GetTypographyStyleAttributeBool](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_gettypographystyleattributebool)接口查询是否启用了行首标点压缩。
 
 <!-- @[complex_text_c_punctuation_compress_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+
+``` C++
+// 第二段：开启行首标点压缩
+OH_Drawing_TypographyStyle *typoStyleCompress = OH_Drawing_CreateTypographyStyle();
+OH_Drawing_SetTypographyTextAlign(typoStyleCompress, TEXT_ALIGN_LEFT);
+OH_Drawing_ErrorCode errorCode = OH_Drawing_SetTypographyStyleAttributeBool(typoStyleCompress,
+    OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION, true);
+if (errorCode != OH_DRAWING_SUCCESS) {
+    DRAWING_LOGE("SetTypographyStyleAttributeBool failed, errorCode: %{public}d", errorCode);
+}
+```
 
 | 是否开启行首标点压缩 | 效果 |
 | -------- | -------- |
 | 关闭行首标点压缩 | ![complexCDemoCompressPunctuation1](figures/complexCDemoCompressPunctuation1.png) |
 | 开启行首标点压缩 | ![complexCDemoCompressPunctuation2](figures/complexCDemoCompressPunctuation2.png) |
-
-
-### 查询各类型字体资源路径
-
-在需要获取系统中不同类型字体资源的路径时，可以使用`OH_Drawing_GetFontPathsByType`接口按字体类型查询字体路径。
-
-| 接口定义 | 描述 |
-| -------- | -------- |
-| OH_Drawing_String\* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType type, size_t\* count) | 根据字体类型获取系统字体路径列表。 |
-
-**OH_Drawing_SystemFontType枚举值说明：**
-
-| 枚举值 | 说明 |
-| -------- | -------- |
-| ALL | 所有字体类型 |
-| GENERIC | 系统通用字体类型 |
-| STYLISH | 风格字体类型 |
-| INSTALLED | 已安装字体类型 |
-| CUSTOMIZED | 自定义字体类型 |
-
-<!-- @[complex_text_c_get_font_paths](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
-
-| 查询字体资源路径 | 效果 |
-| -------- | -------- |
-| 查询字体资源路径 | ![complexCDemoFontPath](figures/complexCDemoFontPath.png) |
 
 ## 样式的拷贝、绘制与显示
 支持拷贝文本样式、段落样式、阴影样式，以便快速复制相关样式作用到不同文字上。
