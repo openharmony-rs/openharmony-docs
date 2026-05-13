@@ -192,7 +192,7 @@ isAcceptAllOptionExcluded(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否排除“所有文件”选项。<br>true表示排除（不包含“所有文件”选项）。false表示不排除，开发者需要在文件类型选择器中添加“所有文件”选项。 |
+| boolean | 返回是否排除“所有文件类型”选项。<br>true表示排除（不包含“所有文件类型”选项）。false表示不排除，开发者需要在文件选择器中添加“所有文件类型”选项。 |
 
 ## getAcceptableFileTypes<sup>23+</sup>
 
