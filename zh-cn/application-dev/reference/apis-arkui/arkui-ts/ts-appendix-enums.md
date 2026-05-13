@@ -1301,10 +1301,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                         |
-| ----------- | -------------------------- |
-| MainOnly    | 只有主标题时，标题栏的推荐高度（56vp）。      |
-| MainWithSub | 同时有主标题和副标题时，标题栏的推荐高度（82vp）。 |
+| 名称          | 值 |说明                         |
+| ----------- | ----| -------------------------- |
+| MainOnly    | 0 | 只有主标题时，标题栏的推荐高度（56vp）。      |
+| MainWithSub | 1 | 同时有主标题和副标题时，标题栏的推荐高度（82vp）。 |
 
 ## TransitionType
 
