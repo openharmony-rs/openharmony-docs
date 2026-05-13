@@ -116,7 +116,7 @@
    <!-- @[decode_combined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
    
    ``` TypeScript
-   async CombinedDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {wxc
+   async CombinedDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
      let decodingOptions: image.DecodingOptions = {
        desiredRegion: {
          size: { width: 2000, height: 2000 },
