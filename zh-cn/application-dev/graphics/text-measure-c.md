@@ -37,10 +37,6 @@
 | size_t OH_Drawing_TypographyGetLineCount (OH_Drawing_Typography\* ) | 获取文本行数。 | 
 | OH_Drawing_LineMetrics\* OH_Drawing_TypographyGetLineMetrics (OH_Drawing_Typography\* ) | 获取段落行的度量信息。包含行的高度、宽度、起始坐标等信息。 | 
 | double OH_Drawing_TextStyleGetLetterSpacing (OH_Drawing_TextStyle \*) | 获取文本的字符间距。 | 
-| OH_Drawing_RectSize OH_Drawing_TypographyLayoutWithConstraintsWithBuffer(OH_Drawing_Typography\*, OH_Drawing_RectSize, OH_Drawing_Array\*\*, size_t\*) | 在限定宽高区域内排版文本，返回实际排版尺寸和适配字符串范围。 |
-| OH_Drawing_PositionAndAffinity\* OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer(OH_Drawing_Typography\*, double, double, OH_Drawing_TextEncoding) | 根据坐标获取字符位置（支持UTF-8/UTF-16编码）。 |
-| OH_Drawing_Range\* OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(OH_Drawing_Typography\*, size_t, size_t, OH_Drawing_Range\*\*, OH_Drawing_TextEncoding) | 根据字形范围获取字符范围。 |
-| OH_Drawing_Range\* OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer(OH_Drawing_Typography\*, size_t, size_t, OH_Drawing_Range\*\*, OH_Drawing_TextEncoding) | 根据字符范围获取字形范围。 |
 
 
 ## 开发步骤
@@ -130,36 +126,98 @@
    DRAWING_LOGI("第1行 lineMetrics ascender: %{public}f", -lineMetric.ascender);
    ```
 
-6. 在限定宽高区域内排版文本，获取排版结果。使用`OH_Drawing_TypographyLayoutWithConstraintsWithBuffer`接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸，同时通过输出参数返回适配字符串范围数组及其大小。
+6. 从API version 24开始支持在限定宽高区域内排版文本，获取排版结果。
 
-   > **说明：**
-   >
-   > - `OH_Drawing_RectSize`为结构体类型，包含`width`（宽度）和`height`（高度）两个`double`类型成员。
-   > - 适配字符串范围数组使用完毕后，需调用`OH_Drawing_ReleaseArrayBuffer`释放内存。
+   使用[OH_Drawing_TypographyLayoutWithConstraintsWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographylayoutwithconstraintswithbuffer)接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（OH_Drawing_RectSize）和适配的字符串范围。
 
-   <!-- @[c_text_metrics_layout_with_constraints_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[c_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-   <!-- @[c_text_metrics_layout_with_constraints_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   ``` C++
+   // 设置限定区域的宽高
+   OH_Drawing_RectSize constraintsRect;
+   constraintsRect.width = 500.0;
+   constraintsRect.height = 200.0;
+   OH_Drawing_Array *fitStrRangeArr = nullptr;
+   size_t fitStrRangeArrayLen = 0;
+   // 在限定区域内排版文本，返回实际排版尺寸
+   OH_Drawing_RectSize actualSize = OH_Drawing_TypographyLayoutWithConstraintsWithBuffer(typography,
+       constraintsRect, &fitStrRangeArr, &fitStrRangeArrayLen);
+   DRAWING_LOGI("actualSize width: %{public}f, height: %{public}f", actualSize.width, actualSize.height);
+   DRAWING_LOGI("fitStrRangeArrayLen: %{public}zu", fitStrRangeArrayLen);
+   // 遍历适配字符串范围数组
+   for (size_t i = 0; i < fitStrRangeArrayLen; ++i) {
+       OH_Drawing_Range *range = OH_Drawing_GetRangeByArrayIndex(fitStrRangeArr, i);
+       if (range != nullptr) {
+           DRAWING_LOGI("fitStrRange[%{public}zu] start: %{public}zu, end: %{public}zu",
+               i, OH_Drawing_GetStartFromRange(range), OH_Drawing_GetEndFromRange(range));
+       }
+   }
+   // 释放适配字符串范围数组
+   OH_Drawing_ReleaseArrayBuffer(fitStrRangeArr);
+   ```
 
-   <!-- @[c_text_metrics_layout_with_constraints_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+7. 从API version 24开始支持根据坐标获取字符位置信息。
 
-7. 根据坐标获取字符位置信息。使用`OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer`获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
-
-   > **说明：**
-   >
-   > - `OH_Drawing_PositionAndAffinity`对象使用完毕后，需调用`OH_Drawing_DestroyPositionAndAffinity`释放内存。
-   > - 亲和度（Affinity）用于表示光标偏向哪个方向，上游亲和表示光标在当前行的行首，下游亲和表示光标在上一行的行尾。
+   使用[OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterpositionatcoordinatewithbuffer)获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
 
    <!-- @[c_text_metrics_char_position_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
-8. 字形范围与字符范围的相互转换。使用`OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer`根据字形范围获取对应的字符范围，使用`OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer`根据字符范围获取对应的字形范围。
+   ``` C++
+   // 根据坐标获取字符位置，使用UTF-8编码
+   OH_Drawing_PositionAndAffinity *charPos =
+       OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer(
+           typography, 100.0, 30.0, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+   if (charPos != nullptr) {
+       size_t charPosition = OH_Drawing_GetPositionFromPositionAndAffinity(charPos);
+       int affinity = OH_Drawing_GetAffinityFromPositionAndAffinity(charPos);
+       DRAWING_LOGI("charPosition (UTF-8 byte offset): %{public}zu, affinity: %{public}d",
+           charPosition, affinity);
+       OH_Drawing_DestroyPositionAndAffinity(charPos);
+   }
+   ```
 
-   > **说明：**
-   >
-   > - `OH_Drawing_Range`为结构体类型，包含`start`（起始位置）和`end`（结束位置）两个`size_t`类型成员。
-   > - 对于UTF-8编码，传入和返回的范围表示字节偏移量；对于UTF-16编码，表示UTF-16码元偏移量。
-   > - `OH_Drawing_Range`对象使用完毕后，需调用`OH_Drawing_ReleaseRangeBuffer`释放内存。
+8. 从API version 24开始支持字形范围与字符范围的相互转换。
+
+   使用[OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterrangeforglyphrangewithbuffer)根据字形范围获取对应的字符范围。
 
    <!-- @[c_text_metrics_glyph_info_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
 
+   ``` C++
+   // 根据字形范围[0, 5)获取对应的字符范围
+   OH_Drawing_Range *actualGlyphRange = nullptr;
+   OH_Drawing_Range *charRange =
+       OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(
+           typography, 0, 5, &actualGlyphRange, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+   if (charRange != nullptr) {
+       DRAWING_LOGI("charRange start: %{public}zu, end: %{public}zu",
+           OH_Drawing_GetStartFromRange(charRange), OH_Drawing_GetEndFromRange(charRange));
+       OH_Drawing_ReleaseRangeBuffer(charRange);
+   }
+   if (actualGlyphRange != nullptr) {
+       DRAWING_LOGI("actualGlyphRange start: %{public}zu, end: %{public}zu",
+           OH_Drawing_GetStartFromRange(actualGlyphRange), OH_Drawing_GetEndFromRange(actualGlyphRange));
+       OH_Drawing_ReleaseRangeBuffer(actualGlyphRange);
+   }
+   ```
+
+   使用[OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetglyphrangeforcharacterrangewithbuffer)根据字符范围获取对应的字形范围。
+
    <!-- @[c_text_metrics_glyph_info_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ``` C++
+   // 根据字符范围[0, 10)获取对应的字形范围
+   OH_Drawing_Range *actualCharRange = nullptr;
+   OH_Drawing_Range *glyphRange =
+       OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer(
+           typography, 0, 10, &actualCharRange, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+   if (glyphRange != nullptr) {
+       DRAWING_LOGI("glyphRange start: %{public}zu, end: %{public}zu",
+           OH_Drawing_GetStartFromRange(glyphRange), OH_Drawing_GetEndFromRange(glyphRange));
+       OH_Drawing_ReleaseRangeBuffer(glyphRange);
+   }
+   if (actualCharRange != nullptr) {
+       DRAWING_LOGI("actualCharRange start: %{public}zu, end: %{public}zu",
+           OH_Drawing_GetStartFromRange(actualCharRange), OH_Drawing_GetEndFromRange(actualCharRange));
+       OH_Drawing_ReleaseRangeBuffer(actualCharRange);
+   }
+   ```
