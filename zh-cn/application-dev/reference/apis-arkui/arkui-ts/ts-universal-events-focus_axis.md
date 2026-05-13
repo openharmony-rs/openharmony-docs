@@ -46,18 +46,28 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 焦点轴事件的对象说明，继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
+### 属性
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                                      | 类型                  | 只读    |  可选   |         说明                 |
 | ------------------------------------- | ---------------------------------------     | ------------- | ------------- | ------------------------- |
-| axisMap                               | ArkTS-Dyn: Map<[AxisModel](ts-appendix-enums.md#axismodel15), number><br/>ArkTS-Sta: Map<[AxisModel](ts-appendix-enums.md#axismodel15), double>      |  否    |  否     | 焦点轴事件的轴值表。          |
-| stopPropagation                       | Callback\<void>                      |     否         |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。            |
+| axisMap                               | ArkTS-Dyn: Map<[AxisModel](ts-appendix-enums.md#axismodel15), number><br/>ArkTS-Sta: Map<[AxisModel](ts-appendix-enums.md#axismodel15), double>      |  否    |  否     | 焦点轴事件的轴值表。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23          |
+| stopPropagation                       | Callback\<void>                      |     否         |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 15            |
+
+### stopPropagation<sup>23+</sup>
+
+stopPropagation(): void
+
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 
