@@ -924,7 +924,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionM
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | 指向[OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager)返回的音频会话管理实例。 |
-| bool mute | 当应用自身已将录制流静音时，传入true，表示将当前应用下的录音流标记为静音。解除静音时，传入false。 |
+| bool mute | 当应用自身已将录音流静音时，传入true，表示将当前应用下的录音流标记为静音。解除静音时，传入false。 |
 
 **返回：**
 
