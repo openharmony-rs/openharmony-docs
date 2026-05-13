@@ -171,7 +171,7 @@
    ```
 
 
-![zh-cn_image_0000002571808402](figures/zh-cn_image_0000002571808402.gif)
+![showAndHideWindow](figures/showAndHideWindow.gif)
 <!--DelEnd-->
 
 ## 设置应用内Ability跳转淡入淡出动效
@@ -235,7 +235,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000002572028188](figures/zh-cn_image_0000002572028188.gif)
+![startAbilityWithFadeInOut](figures/startAbilityWithFadeInOut.gif)
 
 ## 设置主窗口销毁时的转场动画
 
@@ -295,4 +295,4 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-![zh-cn_image_0000002602794157](figures/zh-cn_image_0000002602794157.gif)
+![appDestroyAnimation](figures/appDestroyAnimation.gif)
