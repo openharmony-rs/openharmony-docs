@@ -321,8 +321,8 @@ Gainmap图单个通道的数据内容，参考ISO 21496-1。
 | exifMetadata            | [ExifMetadata](arkts-apis-image-ExifMetadata.md) | 否   | 是   | Exif元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | makerNoteHuaweiMetadata | [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md) | 否   | 是   | 来自Huawei相机的照片元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | heifsMetadata | [HeifsMetadata](arkts-apis-image-HeifsMetadata.md) | 否   | 是   | HEIF序列图像元数据类，用于存储图像的元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
-| webPMetadata<sup>24+</sup> | [WebPMetadata](arkts-apis-image-WebPMetadata.md) | 否   | 是   | WebP图像元数据类，用于存储图像的元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
-| dngMetadata<sup>24+</sup> | [DngMetadata](#dngmetadata24) | 否   | 是   | DNG图像元数据。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
+| webPMetadata<sup>24+</sup> | [WebPMetadata](arkts-apis-image-WebPMetadata.md) | 否   | 是   | WebP图像元数据类，用于存储图像的元数据。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
+| dngMetadata<sup>24+</sup> | [DngMetadata](#dngmetadata24) | 否   | 是   | DNG图像元数据。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24|
 | gifMetadata | [GifMetadata](arkts-apis-image-GifMetadata.md) | 否   | 是   | GIF图像元数据。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | tiffMetadata | [TiffMetadata](arkts-apis-image-TiffMetadata.md) | 否   | 是   | TIFF图像元数据。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | jfifMetadata | [JfifMetadata](arkts-apis-image-JfifMetadata.md) | 否   | 是   | JFIF图像元数据。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |

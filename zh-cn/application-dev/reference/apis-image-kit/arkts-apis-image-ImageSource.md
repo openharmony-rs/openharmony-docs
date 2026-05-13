@@ -1335,7 +1335,7 @@ async function CreatePictures() {
 ArkTS-Sta示例：
 ```ts
 async function CreatePictures(imageSourceApi: image.ImageSource) {
-  let frameCount: number = await imageSourceApi.getFrameCount();
+  let frameCount: int = await imageSourceApi.getFrameCount();
   for (let index = 0; index < frameCount; index++) {
     try {
       let pictureObj: image.Picture | undefined = await imageSourceApi.createPictureAtIndex(index);
@@ -1364,8 +1364,6 @@ ArkTS-Sta: createPixelMap(options?: DecodingOptions): Promise\<PixelMap | undefi
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1406,7 +1404,7 @@ ArkTS-Sta示例：
 ```ts
 async function CreatePixelMapFunc(imageSource: image.ImageSource): void {
   try {
-    let pixelMap = await imageSource.createPixelMap();
+    let pixelMap = imageSource.createPixelMap();
     console.info(0x00000, 'CreatePixelMapFunc', 'createPixelMap success!');
   } catch (err) {
     console.error(0x00000, 'CreatePixelMapFunc', 'CreatePixelMapFunc failed: ' + err);
@@ -1996,8 +1994,6 @@ ArkTS-Sta: createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
