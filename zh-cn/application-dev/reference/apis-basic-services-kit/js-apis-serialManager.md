@@ -188,7 +188,6 @@ function requestSerialRight() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -252,11 +251,10 @@ function open() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    await serialManager.requestSerialRight(portId).then(result => {
+    serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -333,11 +331,10 @@ function getAttribute() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    await serialManager.requestSerialRight(portId).then(result => {
+    serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -422,11 +419,10 @@ function setAttribute() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    await serialManager.requestSerialRight(portId).then(result => {
+    serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -522,7 +518,6 @@ function read() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -611,11 +606,10 @@ function readSync() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    await serialManager.requestSerialRight(portId).then(result => {
+    serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -706,7 +700,6 @@ function write() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -795,11 +788,10 @@ function writeSync() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    await serialManager.requestSerialRight(portId).then(result => {
+    serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -879,11 +871,10 @@ function close() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    await serialManager.requestSerialRight(portId).then(result => {
+    serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -964,11 +955,10 @@ function cancelSerialRight() {
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
-    await serialManager.requestSerialRight(portId).then(result => {
+    serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
