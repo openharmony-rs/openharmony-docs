@@ -3986,10 +3986,11 @@ getAssetCompatibleUris(bundleName: string, assets: Array&lt;PhotoAsset&gt;, comp
 
 根据bundleName、photoAsset列表和compatibleFlag获取需要转码的URI列表。使用Promise异步回调。
 
-compatibleFlag为兼容配置掩码标志，位定义如下：
-- 第0位（Bit 0）：表示高分辨率图像。
-- 第1位（Bit 1）：表示Heif格式图像。
-
+> **说明：**
+>
+> compatibleFlag为兼容配置掩码标志，位定义如下：
+> - 第0位（Bit 0）：表示高分辨率图像。
+> - 第1位（Bit 1）：表示Heif格式图像。
 **起始版本：** 26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
