@@ -864,22 +864,24 @@ completed(): Promise<CompletedResult>
 
 | 名称 | 类型   | 只读 | 可选 | 说明   |
 | ---- | ------------------------------------------------ | ---- | ---- | ------ |
-| functionName | string | 否   | 否 |产生错误的接口名称。 |
-| errorCode | number | 否   | 否 | 错误码。 |
-| message | string | 否   | 否 | 接口返回的具体错误描述信息。 |
-
-## CompletedResult<sup>26+</sup>
+## CompletedResult
 
 Picker上次退出时现场的信息。
 
+**起始版本：**26.0.0
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称 | 类型                                             | 只读 | 可选 | 说明      |
 | ---- | ------------------------------------------------ | ---- | ---- |---------|
+| photoUris | Array&lt;string&gt; | 否   | 否 | 已选择的图片或视频URI。该URI数组仅支持通过临时授权方式调用photoAccessHelper.getAssets使用。 |
+| contextRecoveryInfo |  [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)   | 否   | 否 | PhotoPicker退出状态的上下文信息。  |
+| movingPhotoBadgeStates | Array&lt;[photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)&gt;  | 否   | 否 | 已选择媒体文件的动态照片状态。当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates包含动态照片状态；否则为空。 |
+
 | photoUris | Array&lt;string&gt; | 否   | 否 | 已选择的图片或视频URI。该URI数组仅支持通过临时授权方式调用photoAccessHelper.getAssets使用。媒体文件URI的使用方式请参考[媒体文件URI说明](../../media/medialibrary/photoAccessHelper-userFileUri.md)。。 |
 | contextRecoveryInfo |  [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)   | 否   | 否 | PhotoPicker退出状态的上下文信息。  |
 | movingPhotoBadgeStates | Array&lt;[photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)&gt;  | 否   | 否 | 已选择媒体文件的动态照片状态。当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates包含动态照片状态；否则为空。。  |
