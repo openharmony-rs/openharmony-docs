@@ -556,7 +556,7 @@ let infos: config.AppSeniorModeInfo[] = [{
 config.setSeniorModeStateForApp(infos).then(() => {
   console.info(`Succeeded in setting seniorModeState for App.`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to set seniorModeState for App, Code is ${err.code}, message is ${err.message}`);
+  console.error(`failed to setSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -587,7 +587,7 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise对象，返回 true表示应用“长辈模式”已启用；返回false表示应用“长辈模式”已关闭。|
+| Promise&lt;boolean&gt; | Promise对象，返回true表示应用“长辈模式”已启用；返回false表示应用“长辈模式”已关闭。|
 
 **错误码：**
 
@@ -607,7 +607,7 @@ import { config } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 config.getSeniorModeStateForApp("com.example.myapplication", 0).then((data: boolean) => {
-  console.info(`Succeeded in getting seniorModeState for app data: ${data}`);
+  console.info(`Succeeded in getting seniorModeState for app, data: ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to getSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
 });
@@ -638,7 +638,7 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。 |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 回调函数。返回被修改的应用“长辈模式”信息。|
 
 **错误码：**
 
@@ -646,8 +646,8 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
