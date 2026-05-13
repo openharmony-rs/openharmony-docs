@@ -36,6 +36,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值 | 说明       |
 | ----------- | - | -------- |
 | TopStart    | 0 | 顶部起始端。   |
@@ -87,6 +91,10 @@
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     |值| 说明                            |
 | ------ |-----| ----------------------------- |
@@ -211,6 +219,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明                            |
 | ------ | --- | ----------------------------- |
@@ -404,6 +416,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 值   | 说明          |
 | ---- | ---- | ----------- |
 | Ltr  | 0 | 元素从左到右布局。   |
@@ -447,6 +463,10 @@
 用于控制滚动组件在布局中的对齐位置。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                             | 值 | 说明                                                         |
 | -------------------------------- | --- | ------------------------------------------------------------ |
@@ -569,6 +589,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 值 | 说明                                       |
 | ------------ | ------ | ---------------------------------------- |
 | Start        | 0 | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
@@ -588,6 +612,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 值 | 说明               |
 | ------------- | ------ | ---------------- |
 | Row           | 0 | 主轴与行方向一致作为布局模式。  |
@@ -604,6 +632,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值 | 说明                          |
 | ----------- | ------ | --------------------------- |
@@ -663,6 +695,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                      |值| 说明         |
 | ----------------------  |----| ---------- |
@@ -731,6 +767,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值 | 说明           |
 | ------ | ------ | ------------ |
 | Start  | 0 | 按照语言方向起始端对齐。 |
@@ -779,6 +819,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 下表列出了典型设备默认高宽比断点的阈值划分，可在基于窗口高宽比布局设计时作为参考。个别设备可根据需求通过产品化配置调整断点阈值。
 
 | 名称     | 值   | 说明                   |
@@ -821,6 +865,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 | 说明                                       |
 | -------- | ------ | ---------------------------------------- |
@@ -991,6 +1039,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值            | 说明       |
 | ------------- | ------------- | ------------- |
 | TOP_START     | 'top_start'   | 顶部起始端。   |
@@ -1012,6 +1064,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ------ | ---- | ------------- |
@@ -1224,6 +1280,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     |值| 说明                            |
 | ------ | ----|----------------------------- |
 | NO_FORCE_ROUND |0| 非取整计算。|
@@ -1258,6 +1318,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    |  值   | 说明                   |
 | ------  |---- | -------------------- |
@@ -1680,6 +1744,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 下表列出了典型设备默认宽度断点的阈值划分，可在基于窗口宽度断点布局设计时作为参考。个别设备可根据需求通过产品化配置调整断点阈值。
 
