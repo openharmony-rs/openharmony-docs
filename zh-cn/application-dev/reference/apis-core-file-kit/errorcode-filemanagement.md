@@ -888,6 +888,10 @@ Software caused connection abort
 
 Invalid file name
 
+**错误描述**
+
+文件名非法。
+
 **可能原因**
 
 文件名存在非法字符。
@@ -901,6 +905,10 @@ Invalid file name
 **错误信息**
 
 Invalid URI
+
+**错误描述**
+
+非法URI。
 
 **可能原因**
 
@@ -916,6 +924,10 @@ URI不合法。
 
 Invalid file name extension
 
+**错误描述**
+
+文件后缀非法。
+
 **可能原因**
 
 按照文件类型命名。
@@ -929,6 +941,10 @@ Invalid file name extension
 **错误信息**
 
 File already in the recycle bin
+
+**错误描述**
+
+文件已进入回收站。
 
 **可能原因**
 
@@ -944,6 +960,10 @@ File already in the recycle bin
 
 System inner fail
 
+**错误描述**
+
+系统内部错误。
+
 **可能原因**
 
 系统异常，发生未知错误。
@@ -958,6 +978,10 @@ System inner fail
 
 Member is not a valid PhotoKey
 
+**错误描述**
+
+成员名非法。
+
 **可能原因**
 
 传入的字符串不是类或接口的成员名。
@@ -965,6 +989,48 @@ Member is not a valid PhotoKey
 **处理步骤**
 
 确保传入的字符串为类或接口的成员名。
+
+### 14000016 操作类型不支持
+
+**错误信息**
+
+Operation Not Support
+
+**错误描述**
+ 	 
+当前操作类型不被支持。
+ 	 
+**可能原因**
+ 	 
+1. 对非Moving Photo类型的资源执行了Moving Photo相关操作。
+ 	 
+2. 对已通过添加/移动/移除的资源，再次操作相同的URI。
+ 	 
+3. 之前的资源创建/修改请求还未提交就再次修改（包含 CREATE_FROM_URI/GET_WRITE_CACHE_HANDLER/ADD_RESOURCE 操作）。
+ 	 
+4. 对非视频类型（MediaType.VIDEO）的资源执行了视频增强等视频专属操作。
+ 	 
+5. 对非用户相册或高亮相册执行了不允许的操作。
+ 	 
+**处理步骤**
+ 	 
+1. 确认资源类型。
+ 	 
+   - 如执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源是Moving Photo类型。
+ 	- 如执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO类型。
+ 	 
+2. 避免重复操作。
+
+   - 在调用addAssets/removeAssets/moveAssets前，检查是否已执行过此操作，避免连续重复调用。
+ 	 
+3. 完成提交后再修改。
+ 	 
+   - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用[applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+   - 提交生效后才能对创建的资产发起新的修改请求。
+ 	 
+4. 确认相册类型。
+   - addAssets/removeAssets 仅支持用户相册和高亮相册。
+   - 系统相册（如相机、截屏相册）不支持这些操作。
 
 ## 空间统计错误码
 
