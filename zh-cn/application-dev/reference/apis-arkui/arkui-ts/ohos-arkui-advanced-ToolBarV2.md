@@ -163,17 +163,13 @@ ArkTS-Sta: type ToolBarV2ItemAction = (index: int) => void
 
 **装饰器类型：**@ObservedV2
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-### 属性
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -233,17 +229,13 @@ ToolBarV2ItemText的构造函数。
 
 **装饰器类型：**@ObservedV2
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-### 属性
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -470,17 +462,13 @@ ToolBarV2SymbolGlyph定义Symbol图标的属性。
 
 **装饰器类型**：@ObservedV2
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-### 属性
 
 **ArkTS-Dyn起始版本：** 18
 

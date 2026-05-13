@@ -84,7 +84,7 @@ type ToolBarOptions = Array\<ToolBarOption>
 
 | 类型   | 说明   |
 | ------ | ------ |
-| Array\<ToolBarOption> | 表示工具栏列表。 |
+| Array\<[ToolBarOption](#toolbaroption)> | 表示工具栏列表。 |
 
 ## ToolBarOption
 
