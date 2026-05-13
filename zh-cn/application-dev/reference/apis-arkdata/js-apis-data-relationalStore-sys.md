@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 关系型数据库（Relational Database，RDB）是一种基于关系模型来管理数据的数据库。关系型数据库基于SQLite组件提供了一套完整的对本地数据库进行管理的机制，对外提供了一系列的增、删、改、查等接口，也可以直接运行用户输入的SQL语句来满足复杂的场景需要。不支持Worker线程。
@@ -1221,7 +1221,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 >
 > 入参info中若要传入设备id信息，则设备id必须是已与当前设备建立网络连接的设备id。
 >
-> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedinfo24)，则只允许使用等于空或不等于空。
+> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedfield24)，则只允许使用等于空或不等于空。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
