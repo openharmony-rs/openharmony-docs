@@ -4448,7 +4448,7 @@ Allows an application to read the data of Account Suggestions and start the UIEx
 
 **Certificate-based authorization**: true
 
-**Valid since**: 18
+**Valid since**: 16
 
 ## ohos.permission.GET_PAGE_INFO
 
