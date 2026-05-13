@@ -7,7 +7,7 @@
 <!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[瀑布流组件](ts-container-waterflow.md)的子组件，用来展示瀑布流具体item。
+瀑布流组件[WaterFlow](ts-container-waterflow.md)的子组件，用来展示瀑布流具体item。
 
 
 > **说明：**
@@ -57,7 +57,7 @@ attributeModifier(modifier: AttributeModifier\<FlowItemAttribute> | AttributeMod
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<FlowItemAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<FlowItemAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>FlowItemAttribute：当前组件的[属性](#属性)。 |
 
 ## 示例
 
