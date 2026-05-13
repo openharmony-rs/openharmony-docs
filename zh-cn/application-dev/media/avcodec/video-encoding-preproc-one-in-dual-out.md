@@ -81,7 +81,7 @@
 static OH_AVCodec *g_primary = nullptr;
 OH_AVErrCode ret = OH_VideoEncoder_CreatePrimaryWithPreproc(OH_AVCODEC_MIMETYPE_VIDEO_AVC, &g_primary);
 if (ret != AV_ERR_OK || g_primary == nullptr) {
-    // 异常处理
+    // 异常处理。
     return -1;
 }
 ```
@@ -97,40 +97,35 @@ if (ret != AV_ERR_OK || g_primary == nullptr) {
 ```cpp
 OH_AVFormat *format = OH_AVFormat_Create();
 
-// ===== 基础编码参数（必填）=====
+// 基础编码参数（必填）。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920);         // 输入宽度（像素）
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080);        // 输入高度（像素）
 OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 原始帧率（丢帧功能的前置依赖）
 
-// ===== 前处理参数（按需选用）=====
-// --- 方案 A：降采样示例 ---
-// 将 1920x1080 缩放到 640x360 后编码
-// 注意：width 和 height 必须成对出现
+// 前处理参数（按需选用）。
+// 方案 A：降采样示例。
+// 将 1920x1080 缩放到 640x360 后编码。
+// 注意：width 和 height 必须成对出现。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH, 640);
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT, 360);
 
-// --- 方案 B：裁剪示例 ---
-// 从 1920x1080 中裁剪中心 1280x720 区域
-// 注意：left/top/right/bottom 必须全部同时出现
-// int left = 320, top = 180, right = 1599, bottom = 899;  // 宽=1599-320+1=1280, 高=899-180+1=720
+// 方案 B：裁剪示例。
+// 从 1920x1080 中裁剪中心 1280x720 区域。
+// 注意：left/top/right/bottom 必须全部同时出现。
+// 举例：left = 320, top = 180, right = 1599, bottom = 899; 对应：宽=1599-320+1=1280, 高=899-180+1=720。
 // OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT, 320);
 // OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_TOP, 180);
 // OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT, 1599);
 // OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_BOTTOM, 899);
 
-// --- 方案 C：丢帧示例 ---
-// 从 30fps 降到 15fps（可单独使用或与降采样/裁剪组合）
+// 方案 C：丢帧示例。
+// 从 30fps 降到 15fps（可单独使用或与降采样/裁剪组合）。
 // OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0);
 
-// 执行配置
+// 执行配置。
 ret = OH_VideoEncoder_Configure(encoder, format);
 if (ret != AV_ERR_OK) {
-    // 常见错误：
-    // AV_ERR_INVALID_VAL:
-    //   - 降采样/裁剪参数不完整（未成对/未成组配置）
-    //   - 参数越界（不在支持的范围内）
-    //   - 降采样与裁剪同时设置（二者互斥）
-    //   - 丢帧目标帧率为负数或 >= 原始帧率
+    // 错误处理。
     OH_AVFormat_Destroy(format);
     return -1;
 }
@@ -144,10 +139,10 @@ OH_AVFormat_Destroy(format);
 ```cpp
 static OH_AVCodec *g_secondary = nullptr;
 
-// 必须在 Primary 成功创建之后才能创建 Secondary
+// 必须在 Primary 成功创建之后才能创建 Secondary。
 ret = OH_VideoEncoder_CreateSecondaryFromPrimary(g_primary, &g_secondary);
 if (ret != AV_ERR_OK || g_secondary == nullptr) {
-    // 异常处理
+    // 异常处理。
     return -1;
 }
 ```
@@ -162,29 +157,28 @@ if (ret != AV_ERR_OK || g_secondary == nullptr) {
 ```cpp
 OH_AVFormat *secFmt = OH_AVFormat_Create();
 
-// 输入尺寸与 Primary 一致（共享同一输入源）
+// 输入尺寸与 Primary 一致（共享同一输入源）。
 OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_WIDTH, 1920);           // 同 Primary
 OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_HEIGHT, 1080);          // 同 Primary
 OH_AVFormat_SetDoubleValue(secFmt, OH_MD_KEY_FRAME_RATE, 30.0);   // 同 Primary
 OH_AVFormat_SetLongValue(secFmt, OH_MD_KEY_BITRATE, 1500000);     // 1.5Mbps（较低码率）
 
-// ===== 差异化前处理配置（Secondary 独立配置）=====
-// --- 模式 A：降采样（最常用）---
-// 将 1080p 缩放到 480p 用于预览
-// 注意：width 和 height 必须成对出现
+// 差异化前处理配置（Secondary 独立配置）。
+// 模式 A：降采样（最常用）。
+// 将1080p缩放到480p用于预览。
+// 注意：width和height必须成对出现。
 OH_AVFormat_SetIntValue(secFmt,
     OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH, 854);
 OH_AVFormat_SetIntValue(secFmt,
     OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT, 480);
 
-// --- 组合：降采样 + 丢帧 ---
-// 进一步降低预览路帧率
+// 组合：降采样 + 丢帧，进一步降低预览路帧率。
 OH_AVFormat_SetDoubleValue(secFmt,
     OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0);
 
-// --- 模式 B：ROI 裁剪（替代方案）---
-// 只编码画面中心区域
-// 注意：left/top/right/bottom 必须全部同时出现
+// 模式 B：ROI 裁剪（替代方案）。
+// 只编码画面中心区域。
+// 注意：left/top/right/bottom 必须全部同时出现。
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT, 480);
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_TOP, 270);
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT, 1439);
@@ -194,7 +188,7 @@ ret = OH_VideoEncoder_Configure(g_secondary, secFmt);
 OH_AVFormat_Destroy(secFmt);
 
 if (ret != AV_ERR_OK) {
-    // 异常处理
+    // 异常处理。
     return -1;
 }
 ```
@@ -202,15 +196,15 @@ if (ret != AV_ERR_OK) {
 ### 获取共享 Surface 并绑定数据源
 
 ```cpp
-// 关键规则：只能通过主编码器获取 Surface
+// 关键规则：只能通过主编码器获取 Surface。
 OHNativeWindow *window = nullptr;
 ret = OH_VideoEncoder_GetSurface(g_primary, &window);
 if (ret != AV_ERR_OK || window == nullptr) {
-    // 异常处理
+    // 异常处理。
     return -1;
 }
 
-// 将 window 绑定到 Camera / XComponent 数据源
+// 将 window 绑定到 Camera / XComponent 数据源。
 // cameraManager->SetPreviewSurface(window)
 // nativeXComponent->SetSurface(window)
 ```
@@ -225,20 +219,20 @@ if (ret != AV_ERR_OK || window == nullptr) {
 ```cpp
 ret = OH_VideoEncoder_Prepare(g_primary);
 if (ret != AV_ERR_OK) {
-    // 异常处理
+    // 异常处理。
 }
 ret = OH_VideoEncoder_Prepare(g_secondary);
 if (ret != AV_ERR_OK) {
-    // 异常处理
+    // 异常处理。
 }
 ret = OH_VideoEncoder_Start(g_primary);
 if (ret != AV_ERR_OK) {
-    // 异常处理
+    // 异常处理。
 }
 
 ret = OH_VideoEncoder_Start(g_secondary);
 if (ret != AV_ERR_OK) {
-    // 异常处理
+    // 异常处理。
 }
 ```
 
@@ -247,7 +241,7 @@ if (ret != AV_ERR_OK) {
 可在运行时通过 `SetParameter` 动态修改 Secondary 的前处理参数：
 
 ```cpp
-// 动态调整副编码器的降采样目标分辨率
+// 动态调整副编码器的降采样目标分辨率。
 void ChangeSecondaryResolution(int newWidth, int newHeight)
 {
     OH_AVFormat *param = OH_AVFormat_Create();
@@ -259,7 +253,7 @@ void ChangeSecondaryResolution(int newWidth, int newHeight)
     OH_AVFormat_Destroy(param);
 }
 
-// 根据网络状态动态调整丢帧力度
+// 根据网络状态动态调整丢帧力度。
 void AdjustSecondaryDropRate(double targetFps)
 {
     OH_AVFormat *param = OH_AVFormat_Create();
@@ -267,7 +261,7 @@ void AdjustSecondaryDropRate(double targetFps)
         OH_AVFormat_SetDoubleValue(param,
             OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, targetFps);
     } else {
-        // 设为 0.0 取消丢帧
+        // 设为 0.0 取消丢帧。
         OH_AVFormat_SetDoubleValue(param,
             OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 0.0);
     }
@@ -279,15 +273,15 @@ void AdjustSecondaryDropRate(double targetFps)
 ### 停止与销毁
 
 ```cpp
-// 停止编码器
+// 停止编码器。
 OH_VideoEncoder_Stop(g_secondary);
 OH_VideoEncoder_Stop(g_primary);
 
-// 发送结束标记（各发各的）
+// 发送结束标记（各发各的）。
 OH_VideoEncoder_NotifyEndOfStream(g_primary);
 OH_VideoEncoder_NotifyEndOfStream(g_secondary);
 
-// 销毁：先 Secondary 后 Primary
+// 销毁：先Secondary后Primary。
 if (g_secondary != nullptr)
 {
     OH_VideoEncoder_Destroy(g_secondary);
@@ -300,7 +294,7 @@ if (g_primary != nullptr)
     g_primary = nullptr;
 }
 
-// 释放window实例
+// 释放window实例。
 if (window != nullptr){
     OH_NativeWindow_DestroyNativeWindow(window);
     window = nullptr;
@@ -362,79 +356,3 @@ if (window != nullptr){
 | Secondary 无输出 | 未调用 Start / Surface 未绑定数据源 / 回调未正确注册 | 检查 Secondary 是否已 Start；确认 Primary 的 Surface 已绑定到 Camera/XComponent；确认回调函数非 null 且包含 FreeOutputBuffer |
 | Primary 回调阻塞导致 Secondary 饥饿 | Primary 的 onNeedOutputData 中耗时过长 | 确保 Primary 回调中尽快 FreeOutputBuffer，避免长时间阻塞 |
 
----
-
-## API 参考
-
-### 核心创建接口
-
-```c
-/**
- * 创建支持前处理的主视频编码器
- *
- * 支持能力：
- * 1. 前处理功能（降采样、裁剪、丢帧）
- * 2. 从该主编码器创建副编码器实现一入二出双路编码
- *
- * @param mime MIME 类型字符串，不可为 NULL
- *             必须是支持类型（如 OH_AVCODEC_MIMETYPE_VIDEO_AVC、OH_AVCODEC_MIMETYPE_VIDEO_HEVC）
- * @param codec 双指针，用于接收创建的编码器实例，不可为 NULL
- *              创建成功后需通过 OH_VideoEncoder_Destroy 销毁
- *
- * @return AV_ERR_OK 成功
- *         AV_ERR_INVALID_VAL: mime 为 NULL / codec 为 NULL / MIME 类型不支持
- *         AV_ERR_NO_MEMORY: 内存分配失败
- *
- * @since 26.0.0
- */
-OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCodec **codec);
-
-/**
- * 从主编码器创建副视频编码器
- *
- * 副编码器特性：
- * 1. 与主编码器共享输入源
- * 2. 可独立配置编码参数
- * 3. 可使用不同的前处理参数
- * 4. 可独立启动/停止（不依赖主编码器的启停状态）
- * 5. 生命周期必须短于主编码器
- * 6. 一个主编码器同时只能拥有一个副编码器
- *
- * @param primary 主编码器句柄，必须由 CreatePrimaryWithPreproc 创建，不可为 NULL
- * @param codec 双指针，用于接收创建的副编码器实例，不可为 NULL
- *              创建成功后需通过 OH_VideoEncoder_Destroy 销毁
- *
- * @return AV_ERR_OK 成功
- *         AV_ERR_INVALID_VAL: primary 为 NULL / codec 为 NULL / primary 不是有效的主编码器
- *         AV_ERR_OPERATE_NOT_PERMIT: 主编码器已存在关联的副编码器
- *         AV_ERR_NO_MEMORY: 内存分配失败
- *
- * @note 生命周期管理：
- *       - 主编码器生命周期必须长于副编码器
- *       - 建议销毁顺序：先销毁副编码器，再销毁主编码器
- *       - 若主编码器先于副编码器销毁，系统会自动先销毁副编码器再释放主编码器
- *       - 两个编码器都必须通过 OH_VideoEncoder_Destroy 显式销毁
- *       - 一个主编码器同时只能有一个副编码器
- *       - 副编码器销毁后，可从同一主编码器重新创建新的副编码器
- *
- * @since 26.0.0
- */
-OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec);
-```
-
-### 前处理配置 Key
-
-```c
-/* 降采样（必须成对使用，与裁剪互斥） */
-extern const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_WIDTH;  // int32_t
-extern const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEIGHT; // int32_t
-
-/* 裁剪（必须完整组使用，与降采样互斥） */
-extern const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT;         // int32_t
-extern const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_TOP;          // int32_t
-extern const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT;        // int32_t
-extern const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_BOTTOM;       // int32_t
-
-/* 丢帧（可独立或与上述组合使用，精度保留2位小数四舍五入） */
-extern const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE; // double
-```
