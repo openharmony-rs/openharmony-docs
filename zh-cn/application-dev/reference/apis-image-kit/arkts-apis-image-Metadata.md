@@ -263,7 +263,7 @@ ArkTS-Sta: clone(): Promise\<Metadata | undefined>
 
 | 类型                              | 说明                              |
 | --------------------------------- | --------------------------------- |
-| ArkTS-Dyn: Promise\<[Metadata](arkts-apis-image-Metadata.md)>  <br>ArkTS-Sta: Promise\<Metadata \| undefined> | Promise对象，成功返回元数据实例。 |
+| ArkTS-Dyn: Promise\<[Metadata](arkts-apis-image-Metadata.md)>  <br>ArkTS-Sta: Promise\<[Metadata]((arkts-apis-image-Metadata.md)) \| undefined> | Promise对象，成功返回元数据实例。 |
 
 **示例：**
 

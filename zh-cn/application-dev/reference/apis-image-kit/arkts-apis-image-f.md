@@ -249,17 +249,17 @@ createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Pro
 > - 此接口不支持创建以下像素格式的PixelMap：RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -331,17 +331,17 @@ createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions):
 > - 此接口不支持创建以下像素格式的PixelMap：RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -553,11 +553,11 @@ createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions, 
 
 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1102,17 +1102,17 @@ createEmptyPixelMap(param: InitializationOptions): PixelMap
 > - 此接口不支持创建以下像素格式的PixelMap：ASTC_4x4。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1215,6 +1215,8 @@ createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptio
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
@@ -1266,6 +1268,8 @@ createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: A
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1678,7 +1682,7 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>7+</sup>
 
-createImageSource(fd: number): ImageSource
+createImageSource(fd: int): ImageSource
 
 通过传入文件描述符来创建ImageSource实例。
 
@@ -1696,7 +1700,7 @@ createImageSource(fd: number): ImageSource
 
 | 参数名 | 类型   | 必填 | 说明          |
 | ------ | ------ | ---- | ------------- |
-| fd     | number | 是   | 文件描述符fd。|
+| fd     | int | 是   | 文件描述符fd。|
 
 **返回值：**
 
@@ -1743,7 +1747,7 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(fd: number, options: SourceOptions): ImageSource
+createImageSource(fd: int, options: SourceOptions): ImageSource
 
 通过传入文件描述符来创建ImageSource实例。
 
@@ -1763,7 +1767,7 @@ createImageSource(fd: number, options: SourceOptions): ImageSource
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| fd      | number                          | 是   | 文件描述符fd。                      |
+| fd      | int | 是   | 文件描述符fd。      |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
@@ -2004,9 +2008,9 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.CreateIncrementalSource<sup>9+</sup>
 
-CreateIncrementalSource(buf: ArrayBuffer): ImageSource
+ArkTS-Dyn: CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
-createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
+ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
@@ -2037,8 +2041,8 @@ createIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
@@ -2091,9 +2095,9 @@ function CreateIncrementalSourceFunc(context: common.UIAbilityContext): image.Im
 
 ## image.CreateIncrementalSource<sup>9+</sup>
 
-CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
+ArkTS-Dyn: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 
-createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
+ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource | undefined
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
@@ -2118,8 +2122,8 @@ createIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource 
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
-| [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
@@ -2179,11 +2183,11 @@ getImageSourceSupportedFormats(): string[]
 
 获取支持解码的图片格式，图片格式以mime type表示。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 **ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2415,7 +2419,9 @@ function CreateAuxiliaryPictureUsingAllocator(info: image.AuxiliaryPictureInfo, 
 
 ## image.createImageReceiver<sup>11+</sup>
 
-createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver
+createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver
+
+createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver | undefined
 
 通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
@@ -2433,13 +2439,14 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。             |
-| capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
+| capacity | int | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
 **返回值：**
 
 | 类型                             | 说明                                    |
 | -------------------------------- | --------------------------------------- |
-| [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
+| ArkTS-Dyn: [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
+| ArkTS-Sta: [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
 
 **错误码：**
 
@@ -2527,7 +2534,7 @@ let receiver: image.ImageReceiver = image.createImageReceiver(options)!;
 
 ## image.createImageCreator<sup>11+</sup>
 
-createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator
+createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator
 
 通过图片大小、图片格式、容量创建ImageCreator实例。
 
@@ -2545,7 +2552,7 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
-| capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
+| capacity | int | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
 **返回值：**
 
