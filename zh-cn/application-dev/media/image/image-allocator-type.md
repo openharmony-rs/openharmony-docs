@@ -83,7 +83,7 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
    
    ``` TypeScript
    // 导入相关模块。
-   import { image } from '@kit.ImageKit';wxc
+   import { image } from '@kit.ImageKit';
    import { common } from '@kit.AbilityKit';
    ```
 
