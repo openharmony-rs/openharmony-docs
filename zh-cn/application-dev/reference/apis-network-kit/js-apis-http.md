@@ -589,7 +589,7 @@ requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[HTTP错误码](errorcode-net-http.md)。<br>
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和HTTP错误码。<br>
 HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可参考：[curl错误码](https://curl.se/libcurl/c/libcurl-errors.html)
 
 | 错误码ID   | 错误信息                                                         |
