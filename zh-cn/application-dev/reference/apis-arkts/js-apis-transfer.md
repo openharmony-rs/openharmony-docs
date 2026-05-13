@@ -100,7 +100,12 @@ transferDynamic(input: Object, inputName: string): Any
 // ArkTS-Sta环境
 import { transfer } from '@kit.ArkTS'
 
-let static_obj = new ArrayBuffer(8);
+let staticObj = new ArrayBuffer(8);
+let dynamicObj = transfer.transferDynamic(staticObj, 'InteropTransferHelper')
+// 调用1.0中的har1func方法处理dynamicObj
+let moduleName = ESValue.load('@normalized:....');
+let har1func = ESValue.load('@normalized:...');
+har1func.invoke(ESObject.wrap(dynamicObj));
 let dynamic_obj = transfer.transferDynamic(static_obj, 'InteropTransferHelper')
 // 调用1.0中的har1func方法处理dynamic_obj
 let moduleName = ESValue.load('@normalized:....');
