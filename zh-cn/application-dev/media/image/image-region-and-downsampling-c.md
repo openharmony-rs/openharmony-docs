@@ -91,7 +91,7 @@
    <!-- @[decode_downsample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
    
    ``` C++
-   // 下采样解码示例。wxc
+   // 下采样解码示例。
    napi_value DownsampleDecode(napi_env env, napi_callback_info info)
    {
        OH_DecodingOptions *ops = nullptr;
