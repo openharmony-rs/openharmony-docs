@@ -37,6 +37,7 @@
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)
   - [@ohos.process (获取进程相关的信息)](js-apis-process.md)
   - [@ohos.taskpool (启动任务池)](js-apis-taskpool.md)
+  - [@ohos.transfer (系统对象转换工具)](js-apis-transfer.md)
   - [@ohos.uri (URI字符串解析)](js-apis-uri.md)
   - [@ohos.url (URL字符串解析)](js-apis-url.md)
   - [@ohos.util (util工具函数)](js-apis-util.md)
