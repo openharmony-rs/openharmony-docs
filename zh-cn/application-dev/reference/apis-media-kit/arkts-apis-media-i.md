@@ -527,7 +527,7 @@ async function setupPlayer() {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
