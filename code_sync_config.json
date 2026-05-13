@@ -168,5 +168,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/avsession/avsession-desktop-lyrics.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DesktopLyric.ets",
+				"functions":[
+					{
+						"end_line":119,
+						"name":"setAVSessionInformation",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
