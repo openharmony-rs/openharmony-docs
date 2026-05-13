@@ -431,7 +431,7 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：block，<br/>表示打印阻塞。 |
-| callback | Callback&lt;void&gt; | 否 | 回调函数，返回取消打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务阻塞事件订阅。 |
 
 **错误码：**
 
@@ -464,7 +464,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 offBlock(callback?: Callback&lt;void&gt;): void
 
-取消打印完成后的监听，使用callback异步回调。
+取消打印阻塞事件监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -479,7 +479,7 @@ offBlock(callback?: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 否 | 回调函数，返回取消打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务阻塞事件订阅。 |
 
 **错误码：**
 
