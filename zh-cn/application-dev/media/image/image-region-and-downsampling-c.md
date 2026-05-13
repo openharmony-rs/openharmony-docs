@@ -145,7 +145,7 @@
    <!-- @[decode_combined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
    
    ``` C++
-   // 区域解码与下采样组合使用示例。wxc
+   // 区域解码与下采样组合使用示例。
    napi_value CombinedDecode(napi_env env, napi_callback_info info)
    {
        OH_DecodingOptions *ops = nullptr;
