@@ -206,7 +206,7 @@ async function GetImageInfo(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function GetImageInfoFunc(imageSource: image.ImageSource): void {
+async function GetImageInfoFunc(imageSource: image.ImageSource): Promise<void> {
   try {
     let imageInfo = await imageSource.getImageInfo(0);
     console.info(0x00000, 'GetImageInfoFunc', 'getImageInfo success!');
@@ -339,7 +339,7 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function GetImagePropertyFunc(imageSource: image.ImageSource): void {
+async function GetImagePropertyFunc(imageSource: image.ImageSource): Promise<void> {
   let opts: image.ImagePropertyOptions = { index: 0, defaultValue: '9999' };
   try {
     let property: string = await imageSource.getImageProperty(image.PropertyKey.BITS_PER_SAMPLE, opts);
@@ -408,7 +408,7 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function GetImagePropertiesFunc(imageSource: image.ImageSource): void {
+async function GetImagePropertiesFunc(imageSource: image.ImageSource): Promise<void> {
   let key = [image.PropertyKey.IMAGE_WIDTH, image.PropertyKey.IMAGE_LENGTH];
   try {
     let properties = await imageSource.getImageProperties(key);
@@ -554,7 +554,7 @@ async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function ModifyImagePropertyFunc(imageSource: image.ImageSource): void {
+async function ModifyImagePropertyFunc(imageSource: image.ImageSource): Promise<void> {
   let opts: image.ImagePropertyOptions = { index: 0, defaultValue: '9999' };
   try {
     await imageSource.modifyImageProperty(image.PropertyKey.IMAGE_WIDTH, "120");
@@ -636,7 +636,7 @@ async function ModifyImageProperties(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function ModifyImagePropertiesFunc(imageSource: image.ImageSource): void {
+async function ModifyImagePropertiesFunc(imageSource: image.ImageSource): Promise<void> {
   let keyValues: Record<image.PropertyKey, string | null> = {};
   keyValues[image.PropertyKey.IMAGE_WIDTH] = "1024";
   keyValues[image.PropertyKey.IMAGE_LENGTH] = "1024";
@@ -1402,7 +1402,7 @@ imageSourceApi.createPixelMap().then((pixelMap: image.PixelMap) => {
 
 ArkTS-Sta示例：
 ```ts
-async function CreatePixelMapFunc(imageSource: image.ImageSource): void {
+async function CreatePixelMapFunc(imageSource: image.ImageSource): Promise<void> {
   try {
     let pixelMap = imageSource.createPixelMap();
     console.info(0x00000, 'CreatePixelMapFunc', 'createPixelMap success!');
@@ -1780,7 +1780,7 @@ async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function CreatePixelMapListFunc(imageSource: image.ImageSource): void {
+async function CreatePixelMapListFunc(imageSource: image.ImageSource): Promise<void> {
   let decodeOpts: image.DecodingOptions = {
   sampleSize: 1,
   editable: true,
@@ -2059,7 +2059,7 @@ async function CreatePixelMapUsingAllocator(context : Context) {
 
 ArkTS-Sta示例：
 ```ts
-async function CreatePixelMapUsingAllocatorFunc(imageSource: image.ImageSource): void {
+async function CreatePixelMapUsingAllocatorFunc(imageSource: image.ImageSource): Promise<void> {
    let decodeOpts: image.DecodingOptions = {
     sampleSize: 1,
     editable: true,
@@ -2541,7 +2541,7 @@ async function GetDelayTimeList(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function GetDelayTimeListFunc(imageSource: image.ImageSource): void {
+async function GetDelayTimeListFunc(imageSource: image.ImageSource): Promise<void> {
   try {
     let delayTimes: Array<int> = await imageSource.getDelayTimeList();
     console.info(0x00000, 'GetDelayTimeListFunc', 'getDelayTimeList success!');
@@ -2676,7 +2676,7 @@ async function GetFrameCount(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function GetFrameCountFunc(imageSource: image.ImageSource): void {
+async function GetFrameCountFunc(imageSource: image.ImageSource): Promise<void> {
   try {
     let frameCount: int = await imageSource.getFrameCount();
     console.info(0x00000, 'GetFrameCountFunc', 'getFrameCount success!');
@@ -2734,7 +2734,7 @@ async function GetDisposalTypeList(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function GetDisposalTypeListFunc(imageSource: image.ImageSource): void {
+async function GetDisposalTypeListFunc(imageSource: image.ImageSource): Promise<void> {
   try {
     let disposalTypes: Array<int> = await imageSource.getDisposalTypeList();
     console.info(0x00000, 'GetDisposalTypeListFunc', 'getDisposalTypeList success!');
@@ -2841,7 +2841,7 @@ async function Release(imageSourceObj : image.ImageSource) {
 
 ArkTS-Sta示例：
 ```ts
-async function ReleaseFunc(imageSource: image.ImageSource): void {
+async function ReleaseFunc(imageSource: image.ImageSource): Promise<void> {
   try {
     await imageSource.release();
     console.info(0x00000, 'ReleaseFunc', 'release success!');
