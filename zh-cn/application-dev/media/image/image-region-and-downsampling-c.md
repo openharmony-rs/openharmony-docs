@@ -35,7 +35,7 @@
    <!-- @[decode_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
    
    ``` C++
-   // 区域解码示例。wxc
+   // 区域解码示例。
    napi_value DecodeRegion(napi_env env, napi_callback_info info)
    {
        OH_DecodingOptions *ops = nullptr;
