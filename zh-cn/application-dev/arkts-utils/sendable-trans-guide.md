@@ -141,17 +141,6 @@
 
    当`generateSendable: true`生效后，构建产物中会生成`toSendable()`，将普通对象转换为Sendable对象。其关键点在于会对普通对象做必要的容器转换，例如把`number[]`转换为`collections.Array<number>`。以下代码为编译时工具自动生成的，文件位于entry/src/generated目录下。
 
-   ``` TypeScript
-   toSendable(): SendableLayout {
-     const sendable = new SendableLayout();
-   
-     // 非构造函数属性赋值
-     sendable.type = this.type;
-     sendable.arr = new collections.Array(...this.arr);
-   
-     return sendable;
-   }
-   ```
 
    同时，生成的Sendable类型通常会提供`toOrigin()`，用于在需要继续按普通对象处理、复用原有逻辑或重新序列化时，将Sendable对象还原为普通对象。以下代码为编译时工具自动生成的，文件位于entry/src/generated目录下。
 
@@ -166,20 +155,6 @@
        origin.type = this.type;
        origin.arr = new Array(...this.arr);
        return origin;
-     }
-   }
-   ```
-   
-   JSON路径就形成了完整闭环：
-
-   JSON字符串 -> `TJSON.fromString()` -> 普通对象 -> `toSendable()` -> Sendable对象 -> `toOrigin()` -> 普通对象。
-
-### 使用turbotransProtobuf生成Sendable对象并编解码
-
-1. 环境配置
-
-   引入TurboTransProtobufPlugin和TurboTransProtobuf三方库。
-
    ```ts
    "dependencies": {
        // ...
