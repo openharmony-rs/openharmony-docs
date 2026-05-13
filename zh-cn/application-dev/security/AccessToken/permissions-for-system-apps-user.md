@@ -149,6 +149,48 @@
 
 **起始版本**：8
 
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_VISION
+
+允许系统应用通过CLI命令使用无障碍视觉辅助功能。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_HEARING
+
+允许系统应用通过CLI命令使用无障碍听觉辅助功能。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_ACTION
+
+允许系统应用通过CLI命令使用无障碍行为辅助功能。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.cli.BUNDLE_ACTIVE_INFO
 
 允许应用通过CLI命令查询应用运行状态。
