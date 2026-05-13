@@ -477,7 +477,17 @@
    ```
 
 10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程
-
+   <!-- @[transcoder_process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 一个完整的【开始转码-暂停转码-恢复转码-转码完成】示例。
+   async avTranscoderDemo(){
+     this.context = globalContext.getAbilityContext();
+     await this.startTranscoderingProcess(); // 开始转码。
+     await this.pauseTranscoderingProcess(); //暂停转码。
+     await this.resumeTranscoderingProcess(); // 恢复转码。
+   }
+   ```
    ArkTS-Dyn示例：
 
     ```ts
