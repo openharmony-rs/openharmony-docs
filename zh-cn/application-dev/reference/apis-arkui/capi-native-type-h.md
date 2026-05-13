@@ -114,6 +114,8 @@
 | [OH_ArkUI_FontWeightConfigs](capi-arkui-nativemodule-oh-arkui-fontweightconfigs.md) | OH_ArkUI_FontWeightConfigs | 定义文本的字体粗细配置。可以通过[OH_ArkUI_FontWeightConfigs_Create](#oh_arkui_fontweightconfigs_create) 接口创建对应的文本字体粗细配置对象。可以通过[OH_ArkUI_FontWeightConfigs_Destroy](#oh_arkui_fontweightconfigs_destroy) 接口销毁文本字体粗细配置对象。配置创建后通过[OH_ArkUI_FontWeightConfigs_SetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_setenablevariablefontweight) 接口设置是否启用可变字体粗细调节。配置创建后通过[OH_ArkUI_FontWeightConfigs_GetEnableVariableFontWeight](#oh_arkui_fontweightconfigs_getenablevariablefontweight) 接口查看是否启用了可变字体粗细调节。配置创建后通过[OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_setenabledevicefontweightcategory) 接口设置文本字体粗细是否跟随设备的字体粗细级别更新。配置创建后通过[OH_ArkUI_FontWeightConfigs_GetEnableDeviceFontWeightCategory](#oh_arkui_fontweightconfigs_getenabledevicefontweightcategory) 接口查看文本字体粗细是否跟随设备的字体粗细级别更新。 |
 | [OH_ArkUI_FontConfigs](capi-arkui-nativemodule-oh-arkui-fontconfigs.md) | OH_ArkUI_FontConfigs | 定义文本的字体配置。可以通过[OH_ArkUI_FontConfigs_Create](#oh_arkui_fontconfigs_create) 接口创建文本字体配置对象。可以通过[OH_ArkUI_FontConfigs_Destroy](#oh_arkui_fontconfigs_destroy) 接口销毁文本字体配置对象。配置创建后通过[OH_ArkUI_FontConfigs_SetFontWeightConfigs](#oh_arkui_fontconfigs_setfontweightconfigs) 接口设置文本的字体粗细配置。配置创建后通过[OH_ArkUI_FontConfigs_GetFontWeightConfigs](#oh_arkui_fontconfigs_getfontweightconfigs) 接口查看文本的字体粗细配置。 |
 | [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) | OH_ArkUI_TextController | 定义文本组件的控制器。可以通过[OH_ArkUI_TextController_Create](#oh_arkui_textcontroller_create)创建文本组件控制器对象。可以通过[OH_ArkUI_TextController_Destroy](#oh_arkui_textcontroller_destroy)接口销毁文本组件控制器对象。控制器创建后通过[OH_ArkUI_TextController_SetStyledString](#oh_arkui_textcontroller_setstyledstring) 接口设置文本组件的属性字符串。 |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | OH_ArkUI_LinearGradientOptions | 定义线性渐变效果选项。 |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | OH_ArkUI_RadialGradientOptions | 定义径向渐变效果选项。 |
 
 ### 枚举
 
@@ -822,6 +824,28 @@
 | [OH_ArkUI_TextController* OH_ArkUI_TextController_Create()](#oh_arkui_textcontroller_create) | - | 创建文本组件控制器对象。 |
 | [void OH_ArkUI_TextController_Destroy(OH_ArkUI_TextController* controller)](#oh_arkui_textcontroller_destroy) | - | 销毁文本组件控制器对象。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_textcontroller_setstyledstring) | - | 设置文本组件的属性字符串。 |
+| [OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()](#oh_arkui_lineargradientoptions_create) | - | 创建线性渐变效果选项对象。 |
+| [void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* options)](#oh_arkui_lineargradientoptions_destroy) | - | 销毁线性渐变效果选项对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientOptions* options, float angle)](#oh_arkui_lineargradientoptions_setangle) | - | 设置线性渐变效果选项的角度。 |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGradientOptions* options, float* angle)](#oh_arkui_lineargradientoptions_getangle) | - | 获取线性渐变效果选项的角度。 |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection direction)](#oh_arkui_lineargradientoptions_setdirection) | - | 设置线性渐变选项的方向。 |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection* direction)](#oh_arkui_lineargradientoptions_getdirection) | - | 获取线性渐变选项的方向。 |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradientOptions* options, bool repeating)](#oh_arkui_lineargradientoptions_setrepeating) | - | 设置颜色是否在线性渐变选项中重复。 |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_LinearGradientOptions* options, bool* repeating)](#oh_arkui_lineargradientoptions_getrepeating) | - | 获取线性渐变选项中颜色是否重复。 |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_lineargradientoptions_setcolorstop) | - | 设置线性渐变选项的颜色停止点。 |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetColorStop(const OH_ArkUI_LinearGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_lineargradientoptions_getcolorstop) | - | 获取线性渐变选项的颜色停止点。 |
+| [OH_ArkUI_RadialGradientOptions* OH_ArkUI_RadialGradientOptions_Create()](#oh_arkui_radialgradientoptions_create) | - | 创建一个径向渐变选项对象。 |
+| [void OH_ArkUI_RadialGradientOptions_Destroy(OH_ArkUI_RadialGradientOptions* options)](#oh_arkui_radialgradientoptions_destroy) | - | 销毁一个径向渐变选项对象。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterX(OH_ArkUI_RadialGradientOptions* options, float centerX)](#oh_arkui_radialgradientoptions_setcenterx) | - | 设置径向渐变选项中心点的X坐标。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterX(const OH_ArkUI_RadialGradientOptions* options, float* centerX)](#oh_arkui_radialgradientoptions_getcenterx) | - | 获取径向渐变选项的中心点的X坐标。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterY(OH_ArkUI_RadialGradientOptions* options, float centerY)](#oh_arkui_radialgradientoptions_setcentery) | - | 设置径向渐变选项中心点的Y坐标。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterY(const OH_ArkUI_RadialGradientOptions* options, float* centerY)](#oh_arkui_radialgradientoptions_getcentery) | - | 获取径向渐变选项的中心点的Y坐标。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRadius(OH_ArkUI_RadialGradientOptions* options, float radius)](#oh_arkui_radialgradientoptions_setradius) | - | 设置径向渐变选项的半径。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRadius(const OH_ArkUI_RadialGradientOptions* options, float* radius)](#oh_arkui_radialgradientoptions_getradius) | - | 获取径向渐变选项的半径。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRepeating(OH_ArkUI_RadialGradientOptions* options, bool repeating)](#oh_arkui_radialgradientoptions_setrepeating) | - | 设置径向渐变选项中颜色是否重复。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_RadialGradientOptions* options, bool* repeating)](#oh_arkui_radialgradientoptions_getrepeating) | - | 获取径向渐变选项中颜色是否重复的设置。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_radialgradientoptions_setcolorstop) | - | 设置径向渐变选项的颜色停止点。 |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_RadialGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_radialgradientoptions_getcolorstop) | - | 获取径向渐变选项的颜色停止点。 |
 
 ## 枚举类型说明
 
@@ -17302,3 +17326,535 @@ ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController*
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_LinearGradientOptions_Create()
+
+```c
+OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()
+```
+
+**描述**
+
+创建线性渐变效果选项对象。
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions*](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | 指向[OH_ArkUI_LinearGradientOptions*](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)的指针。 |
+
+### OH_ArkUI_LinearGradientOptions_Destroy()
+
+```c
+void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* options)
+```
+
+**描述**
+
+销毁线性渐变效果选项对象。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+
+### OH_ArkUI_LinearGradientOptions_SetAngle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientOptions* options, float angle)
+```
+
+**描述**
+
+设置线性渐变效果选项的角度。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+| float angle | 线性渐变效果选项的角度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_LinearGradientOptions_GetAngle()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGradientOptions* options, float* angle)
+```
+
+**描述**
+
+获取线性渐变效果选项的角度。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+| float* angle | 线性渐变效果选项的角度。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_LinearGradientOptions_SetDirection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection direction)
+```
+
+**描述**
+
+设置线性渐变选项的方向。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+| [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection) direction | 线性渐变选项的方向。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_LinearGradientOptions_GetDirection()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection* direction)
+```
+
+**描述**
+
+获取线性渐变选项的方向。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+| [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection)* direction | 线性渐变选项的方向。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_LinearGradientOptions_SetRepeating()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradientOptions* options, bool repeating)
+```
+
+**描述**
+
+设置颜色是否在线性渐变选项中重复。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+| bool repeating | 颜色是否在线性渐变选项中重复，false表示不重复着色，true表示重复着色。默认值：false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_LinearGradientOptions_GetRepeating()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_LinearGradientOptions* options, bool* repeating)
+```
+
+**描述**
+
+查询线性渐变选项中颜色是否重复。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+| bool* repeating | 指向线性渐变选项中颜色是否重复的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_LinearGradientOptions_SetColorStop()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)
+```
+
+**描述**
+
+设置线性渐变选项的颜色停止点。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+| const uint32_t* colors | 指向颜色数组的指针。 |
+| const float* stops | 指向颜色停止点数组的指针。 |
+| int32_t colorsAndStopsSize | 颜色和颜色停止点中的元素数量。颜色和颜色停止点的元素数量必须相同。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_LinearGradientOptions_GetColorStop()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetColorStop(const OH_ArkUI_LinearGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)
+```
+
+**描述**
+
+获取线性渐变选项的颜色停止点。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | 指向[OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)对象的指针。 |
+| uint32_t* colors | 指向颜色数组的指针。 |
+| float* stops | 指向颜色停止点数组的指针。 |
+| int32_t colorsAndStopsSize | 颜色和颜色停止点中的元素数量。颜色和颜色停止点的元素数量必须相同。 |
+| int32_t* writeLength | 实际写入的颜色及颜色停止点数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_Create()
+
+```c
+OH_ArkUI_RadialGradientOptions* OH_ArkUI_RadialGradientOptions_Create()
+```
+
+**描述**
+
+创建一个径向渐变选项对象。
+
+**起始版本：** 26.0.0
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions*](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+
+### OH_ArkUI_RadialGradientOptions_Destroy()
+
+```c
+void OH_ArkUI_RadialGradientOptions_Destroy(OH_ArkUI_RadialGradientOptions* options)
+```
+
+**描述**
+
+销毁一个径向渐变选项对象。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+
+### OH_ArkUI_RadialGradientOptions_SetCenterX()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterX(OH_ArkUI_RadialGradientOptions* options, float centerX)
+```
+
+**描述**
+
+设置径向渐变选项中心点的X坐标。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| float centerX | 径向渐变选项中心点的X坐标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_GetCenterX()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterX(const OH_ArkUI_RadialGradientOptions* options, float* centerX)
+```
+
+**描述**
+
+获取径向渐变选项中心点的X坐标。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| float* centerX | 指向径向渐变选项中心点的X坐标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_SetCenterY()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterY(OH_ArkUI_RadialGradientOptions* options, float centerY)
+```
+
+**描述**
+
+设置径向渐变选项中心点的Y坐标。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| float centerY | 径向渐变选项中心点的Y坐标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_GetCenterY()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterY(const OH_ArkUI_RadialGradientOptions* options, float* centerY)
+```
+
+**描述**
+
+获取径向渐变选项中心点的Y坐标。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| float* centerY | 指向径向渐变选项中心点的Y坐标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_SetRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRadius(OH_ArkUI_RadialGradientOptions* options, float radius)
+```
+
+**描述**
+
+设置径向渐变选项的半径。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| float radius | 径向渐变选项的半径。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_GetRadius()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRadius(const OH_ArkUI_RadialGradientOptions* options, float* radius)
+```
+
+**描述**
+
+获取径向渐变选项的半径。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| float* radius | 指向径向渐变选项的半径的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_SetRepeating()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRepeating(OH_ArkUI_RadialGradientOptions* options, bool repeating)
+```
+
+**描述**
+
+设置径向渐变选项中颜色是否重复。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| bool repeating | 径向渐变选项中颜色是否重复，false表示不重复着色，true表示重复着色。默认值：false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_GetRepeating()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_RadialGradientOptions* options, bool* repeating)
+```
+
+**描述**
+
+查询径向渐变选项中颜色是否重复。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| bool* repeating | 指向径向渐变选项中颜色是否重复的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_SetColorStop()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)
+```
+
+**描述**
+
+设置径向渐变选项的颜色停止点。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| const uint32_t* colors | 指向颜色数组的指针。 |
+| const float* stops | 指向颜色停止点数组的指针。 |
+| int32_t colorsAndStopsSize | 颜色和颜色停止点中的元素数量。颜色和颜色停止点的元素数量必须相同。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_RadialGradientOptions_GetColorStop()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_RadialGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)
+```
+
+**描述**
+
+获取径向渐变选项的颜色停止点。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | 指向[OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)对象的指针。 |
+| uint32_t* colors | 指向颜色数组的缓冲区指针。 |
+| float* stops | 指向颜色停止点数组的指针。 |
+| int32_t colorsAndStopsSize | 颜色和颜色停止点中的元素数量。颜色和颜色停止点的元素数量必须相同。 |
+| int32_t* writeLength | 实际写入的颜色停止点数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 操作结果码。<br> 操作成功时，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br> 参数异常时，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
