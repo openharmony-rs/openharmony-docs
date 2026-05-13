@@ -139,7 +139,7 @@ OH_AVCodec *OH_VideoEncoder_CreateByMime(const char *mime)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *mime | MIME类型描述字符串，请参阅[AVCODEC_MIME_TYPE变量](capi-native-avcodec-base-h.md#变量)。 |
+| const char *mime | MIME类型描述字符串，请参阅AVCODEC_MIME_TYPE类型[变量](capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
