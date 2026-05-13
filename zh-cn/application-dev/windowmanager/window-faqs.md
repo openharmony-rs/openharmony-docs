@@ -551,7 +551,7 @@ module.json5配置示例如下：
 
 ## 如何设置全局悬浮窗背景色为透明
 
-可以通过调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setWindowBackgroundColor9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
+可以通过调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
 
 ## 如何判断应用被部分遮挡或完全遮挡
 
