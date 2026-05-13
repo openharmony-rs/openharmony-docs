@@ -4103,7 +4103,7 @@ struct Index {
   build() {
     Column() {
       Image(this.pixelmap).width(200).height(200);
-      Button().onClick(() => {
+      Button("Click").onClick(() => {
         if (this.pixelmap == undefined) {
           const color: ArrayBuffer = new ArrayBuffer(160000);
           let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
