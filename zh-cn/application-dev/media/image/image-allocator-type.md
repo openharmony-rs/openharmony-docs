@@ -150,7 +150,7 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
 <!-- @[allocator_yuv_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
 
 ``` TypeScript
-async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefined> {wxc
+async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefined> {
   const resourceMgr = context.resourceManager;
   try {
     const rawFileDescriptor = await resourceMgr.getRawFd('test.jpeg');
