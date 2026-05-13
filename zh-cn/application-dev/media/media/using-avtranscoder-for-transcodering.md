@@ -252,6 +252,11 @@
    调用Prepare()接口：
 
    <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 3.配置转码参数完成准备工作。
+   await this.avTranscoder!.prepare(this.avConfig);
+   ```
 
 6. 开始转码，调用start()接口。
 
