@@ -1496,7 +1496,8 @@ screen.stopExpand(expandScreenIds).then(() => {
 | activeModeIndex   | number                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。 |
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。       |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |       
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
+| densityDpi<sup>26+</sup> | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。 |
 
 ### setOrientation
 
