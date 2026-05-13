@@ -5877,8 +5877,6 @@ async function unregisterReadMicInDataCallback(): Promise<void> {
 
 音频渲染器选项信息。
 
-**起始版本：** 26.0.0 
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
@@ -5887,7 +5885,7 @@ async function unregisterReadMicInDataCallback(): Promise<void> {
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明               |
 | ------------ | ------------------------------------------------- | ---- |---| ------------------ |
-| originalAppIdInfo | [AppIdInfo](#appidinfo) | 否 | 是 | 表示音频流的原始应用ID信息。|
+| originalAppIdInfo | [AppIdInfo](#appidinfo) | 否 | 是 | 表示音频流的原始应用ID信息。<br> **起始版本：** 26.0.0 |
 
 ## AppIdInfo
 
