@@ -1924,7 +1924,7 @@ onPlayFinishedWithStreamId(callback: Callback\<int>): void
 
 当仅单独注册[onPlayFinished](js-apis-inner-multimedia-soundPool.md#onplayfinished23)事件回调或者[onPlayFinishedWithStreamId](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，都会触发注册的回调。
 
-当同时注册[onPlayFinished](js-apis-inner-multimedia-soundPool.md#onplayfinished23)事件回调和[onPlayFinishedWithStreamId)](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
+当同时注册[onPlayFinished](js-apis-inner-multimedia-soundPool.md#onplayfinished23)事件回调和[onPlayFinishedWithStreamId](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid23)事件回调时，当音频播放完成的时候，仅会触发'playFinishedWithStreamId'事件回调，不会触发'playFinished'事件回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
