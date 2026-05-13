@@ -84,7 +84,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 获取图片和视频资源，使用Promise方式返回结果。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -151,7 +151,7 @@ getBurstAssets(burstKey: string, options: FetchOptions): Promise&lt;FetchResult&
 
 获取连拍照片资源，使用Promise方式返回结果。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -219,7 +219,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -278,7 +278,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -333,7 +333,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -398,7 +398,7 @@ createPhotoAsset(photoType: PhotoType, extension: string, title?: string): Promi
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -777,7 +777,7 @@ applyChanges(mediaChangeRequest: MediaChangeRequest): Promise&lt;void&gt;
 
 在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件或授权弹窗的方式创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -904,7 +904,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 >
 > 当传入URI为沙箱路径时，可正常保存图片/视频，但无界面预览。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -975,7 +975,7 @@ showAssetsCreationDialogEx(srcFileUris: Array&lt;string&gt;, creationSettings: A
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1044,7 +1044,7 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1217,7 +1217,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 <!--RP1--><!--RP1End-->调用接口给未授权的URI进行授权，返回已创建并授予保存权限的URI列表。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1273,8 +1273,8 @@ requestPhotoUrisReadPermissionEx(srcFileUris: Array&lt;string&gt;): Promise&lt;R
 
 返回授权结果，其中包含已创建并授予保存权限的URI列表以及无效的URI列表。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-  
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 ​**模型约束**： 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -1623,7 +1623,7 @@ getPhotoPickerComponentDefaultAlbumName(): Promise&lt;string&gt;
 
 应用使用PhotoPickerComponent组件选择照片时，支持调用API获取组件默认显示相册的相册名字符串。跟随当前系统语言，支持返回当前语言的相册名。使用Promise异步回调。
 
-**原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**： 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1801,7 +1801,7 @@ getRecentPhotoInfo(options?: RecentPhotoOptions): Promise\<RecentPhotoInfo>
 
 应用使用RecentPhotoComponent组件查看最近图片时，支持调用API获取最近图片信息。使用Promise异步回调。
 
-**原子化服务API**： 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**： 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
