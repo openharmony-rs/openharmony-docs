@@ -6055,6 +6055,20 @@ Allows a system application to query the status of interaction-related accessibi
 
 **Since**: 26.0.0
 
+## ohos.permission.CONNECT_GAME_ACCELERATION
+
+Allows an application to adjust the performance policy in gaming scenarios.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs
+
+**Since**: 26.0.0
+
 ## ohos.permission.QUERY_CLI_TOOL
 
 Allows a system application to query CLI tools.
