@@ -88,6 +88,7 @@
       - [BuilderNode (ArkTS-Sta)](js-apis-arkui-builderNode-static.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
+      - [typeNode](js-apis-arkui-typeNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
       - [LayoutAlgorithm](js-apis-arkui-layoutAlgorithm.md)
       - [NodeController](js-apis-arkui-nodeController.md)
