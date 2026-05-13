@@ -605,7 +605,7 @@ ArkTS-Sta: navDestination(builder: PageMapBuilder | undefined)
 
 | 参数名  | 类型                                   | 必填 | 说明                     |
 | ------- | -------------------------------------- | ---- | ------------------------ |
-| builder | ArkTS-Dyn: (name: string, param: unknown) => void <br/>ArkTS-Sta: [PageMapBuilder](ts-types.md#pagemapbuilder23)&nbsp;\|&nbsp;undefined| 是   | 创建NavDestination组件。name：NavDestination页面名称。param：开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。 |
+| builder | ArkTS-Dyn: (name: string, param: unknown) => void <br/>ArkTS-Sta: [PageMapBuilder](ts-types.md#pagemapbuilder23)&nbsp;\|&nbsp;undefined| 是   | 用于创建NavDestination组件的回调函数。<br/>name：NavDestination页面名称。<br/>param：开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。<br/>取值为undefined时，不创建NavDestination组件。 |
 
 ### navBarWidthRange<sup>10+</sup>
 
@@ -972,7 +972,7 @@ toolBar(value: object | CustomBuilder)
 
 ArkTS-Dyn: onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; void)
 
-ArkTS-Sta: onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; void | undefined)
+ArkTS-Sta: onTitleModeChange(callback: ((titleMode: NavigationTitleMode) => void) | undefined)
 
 当[titleMode](#titlemode)为NavigationTitleMode.Free时，随着可滚动组件的滑动标题栏模式发生变化时触发此回调。
 
@@ -988,7 +988,7 @@ ArkTS-Sta: onTitleModeChange(callback: (titleMode: NavigationTitleMode) =&gt; vo
 
 | 参数名    | 类型                                                | 必填 | 说明       |
 | --------- | --------------------------------------------------- | ---- | ---------- |
-| callback | ArkTS-Dyn: (titleMode: [NavigationTitleMode](#navigationtitlemode枚举说明)) =&gt; void<br/>ArkTS-Sta: (titleMode: NavigationTitleMode) =&gt; void \| undefined| 是   | 返回标题模式。取值为undefined时，不使用回调函数。 |
+| callback | ArkTS-Dyn: (titleMode: [NavigationTitleMode](#navigationtitlemode枚举说明)) =&gt; void<br/>ArkTS-Sta: ((titleMode: NavigationTitleMode) =&gt; void) \| undefined| 是   | 标题栏模式发生变化时触发的回调函数。<br/>titleMode：当前标题栏的显示模式。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onNavBarStateChange<sup>9+</sup>
 
@@ -996,7 +996,7 @@ ArkTS-Dyn: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void)
 
 ArkTS-Sta: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void | undefined)
 
-导航页显示状态切换时触发该回调。取值为undefined时，不使用回调函数。
+导航页显示状态切换时触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1010,7 +1010,7 @@ ArkTS-Sta: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void | undef
 
 | 参数名    | 类型    | 必填 | 说明                                           |
 | --------- | ------- | ---- | ---------------------------------------------- |
-| isVisible |boolean| 是   | isVisible为true时表示显示，为false时表示隐藏。 |
+| callback | ArkTS-Dyn: (isVisible: boolean) => void<br/>ArkTS-Sta: (isVisible: boolean) => void \| undefined | 是 | 导航页显示状态切换时触发的回调函数。<br/>isVisible：true表示显示导航页，false表示隐藏导航页。<br/>取值为undefined时，不触发回调函数。 |
 
 ### onNavigationModeChange<sup>11+</sup>
 
@@ -1018,7 +1018,7 @@ ArkTS-Dyn: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void)
 
 ArkTS-Sta: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void | undefined)
 
-当Navigation首次显示或者单双栏状态发生变化时触发该回调。取值为undefined时，不使用回调函数。
+当Navigation首次显示或者单双栏状态发生变化时触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1032,7 +1032,7 @@ ArkTS-Sta: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void | 
 
 | 参数名    | 类型    | 必填 | 说明                                           |
 | --------- | ------- | ---- | ---------------------------------------------- |
-| mode | [NavigationMode](#navigationmode9枚举说明) | 是   | NavigationMode.Split：当前Navigation显示为双栏;<br/>NavigationMode.Stack：当前Navigation显示为单栏。|
+| callback | ArkTS-Dyn: (mode: NavigationMode) => void<br/>ArkTS-Sta: (mode: NavigationMode) => void \| undefined | 是 | Navigation首次显示或者单双栏状态发生变化时触发的回调函数。<br/>mode：导航页的显示模式，NavigationMode.Split表示当前Navigation显示为双栏，NavigationMode.Stack表示当前Navigation显示为单栏。<br/>取值为undefined时，不触发回调函数。 |
 
 ### customNavContentTransition<sup>11+</sup>
 
@@ -1040,7 +1040,7 @@ ArkTS-Dyn: customNavContentTransition(delegate:(from: NavContentInfo, to: NavCon
 
 ArkTS-Sta: customNavContentTransition(delegate:((from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => NavigationAnimatedTransition | undefined) | undefined)
 
-自定义转场动画回调。取值为undefined时，不使用回调函数。
+自定义转场动画回调。
 
 >**说明：**
 >
@@ -1058,15 +1058,7 @@ ArkTS-Sta: customNavContentTransition(delegate:((from: NavContentInfo, to: NavCo
 
 | 参数名    | 类型                                                  | 必填 | 说明                    |
 | --------- | ----------------------------------------------------- | ---- | ----------------------- |
-| from      | [NavContentInfo](#navcontentinfo11)                   | 是   | 退场Destination的页面。 |
-| to        | [NavContentInfo](#navcontentinfo11)                   | 是   | 进场Destination的页面。 |
-| operation | [NavigationOperation](#navigationoperation11枚举说明) | 是   | 转场类型。              |
-
-**返回值：** 
-
-| 类型                                                         | 说明                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [NavigationAnimatedTransition](#navigationanimatedtransition11)&nbsp;\|&nbsp;undefined | NavigationAnimatedTransition：自定义转场动画协议。<br/>undefined: 返回未定义，执行默认转场动效。 |
+| delegate | ArkTS-Dyn: (from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => NavigationAnimatedTransition \| undefined<br/>ArkTS-Sta: ((from: NavContentInfo, to: NavContentInfo, operation: NavigationOperation) => NavigationAnimatedTransition \| undefined) \| undefined | 是 | 自定义转场动画的回调函数。<br/>from：退场Destination的页面信息。<br/>to：进场Destination的页面信息。<br/>operation：当前页面转场的类型。<br/>当回调函数返回[NavigationAnimatedTransition](#navigationanimatedtransition11)时，表示自定义转场动画协议；返回undefined时表示未定义，执行默认转场动效。 <br/>取值为undefined时，不使用自定义转场动画回调函数，执行默认转场动效。 |
 
 ## NavPathStack<sup>10+</sup>
 
