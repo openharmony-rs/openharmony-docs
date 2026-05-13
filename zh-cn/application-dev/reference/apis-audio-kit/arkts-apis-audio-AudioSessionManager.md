@@ -899,7 +899,7 @@ enableMuteSuggestionWhenMixWithOthers(enable: boolean): void
 audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOthers(true);
 ```
 
-## setCapturerMuteHint<sup>24</sup>
+## setCapturerMuteHint<sup>24+</sup>
 
 setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
 
