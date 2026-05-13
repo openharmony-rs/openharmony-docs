@@ -42,9 +42,9 @@ import { formInfo } from '@kit.FormKit';
 | formVisibleNotify  | boolean        | 否    | 否     | 卡片是否使能可见通知。<br/>-&nbsp;true：通知卡片提供方可见状态变化。<br/>-&nbsp;false：不通知卡片提供方可见状态变化。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | scheduledUpdateTime        | string               | 否    | 否     | 卡片更新时间。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | formConfigAbility | string               | 否    | 否     | 卡片配置ability。指定长按卡片弹出的选择框内，编辑选项所对应的ability。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| updateDuration        | number       | 否    | 否     | 卡片更新周期。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为大于等于0小于2^16的整数。 |
-| defaultDimension  | number | 否    | 否     | 卡片规格  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[1, 9]的整数。 |
-| supportDimensions    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的规格。具体可选规格参考[FormDimension](#formdimension) <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 最大长度为9数值为整数的数组。 |
+| updateDuration        | number       | 否    | 否     | 卡片更新周期。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[0, 336]的整数。 |
+| defaultDimension  | number | 否    | 否     | 卡片规格。具体可选规格参考[FormDimension](#formdimension)。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 数值为[1, 9]的整数，数值5从API version 9开始支持，从API version 20开始废弃。 |
+| supportDimensions    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的规格。具体可选规格参考[FormDimension](#formdimension)。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**说明：** 最大长度为9，数值取值范围[1, 9]的的整数的数组，数值5从API version 9开始支持，从API version 20开始废弃。 |
 | isDynamic<sup>10+</sup>      | boolean               | 否    | 否     | 卡片是否为动态卡片。<br/>仅ArkTS卡片区分动静态卡片，JS卡片均为动态卡片。<br/>-&nbsp;true：为动态卡片。<br/>-&nbsp;false：为静态卡片。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | transparencyEnabled<sup>11+</sup>      | boolean               | 否    | 否     | 卡片是否支持设置背景透明度。<br/>ArkTS卡片由用户配置决定是否支持，JS卡片均不支持。<br/>-&nbsp;true：表示是透明卡片。<br/>-&nbsp;false：表示不是透明卡片。  <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | supportedShapes<sup>12+</sup>    | Array&lt;number&gt;      | 否    | 否     | 卡片支持的形状。具体可选形状参考[FormShape<sup>12+</sup>](#formshape12) <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**说明：** 1代表方形，2代表圆形。 |
@@ -157,12 +157,14 @@ import { formInfo } from '@kit.FormKit';
 
 定义卡片形状枚举。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Ability.Form
 
 | 名称        | 值   | 说明         |
 | ----------- | ---- | ------------ |
-| RECT        | 1   | 方形 form。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| CIRCLE      | 2   | 圆形 form。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| RECT        | 1   | 方形 form。|
+| CIRCLE      | 2   | 圆形 form。|
 
 ## FormInfoFilter
 
@@ -232,7 +234,7 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称 | 类型 | 只读 | 可选  | 说明                              |
 |-----|-----|------|-----|---------------------------------|
-| area     | [Rect](#rect20) | 否 | 否   | 描述互动卡片动效区域范围，以卡片左上角为原点，单位为vp。   |
+| area     | [Rect](#rect20) | 否 | 否   | 描述互动卡片动效区域范围，以卡片左上角为原点。   |
 | duration | number | 否 | 否   | 互动卡片动效持续时长，单位ms。取值为大于0的整数，<!--Del-->针对三方应用，<!--DelEnd-->取值要求不大于3500<!--Del-->，系统应用无此限制<!--DelEnd-->。 |
 | useDefaultAnimation | boolean | 否 | 是   | 互动卡片状态切换时是否启动系统提供的默认动效，默认为true。<br/>-&nbsp;true：表示系统提供默认切换动效。<br/>-&nbsp;false：表示系统不提供切换动效，画面直接切换，适合切换时非激活态和激活态UI完全一致的场景。 |
 
@@ -280,5 +282,5 @@ import { formInfo } from '@kit.FormKit';
 | moduleName  | string               | 是    | 否     | 卡片所属模块的名称。                      |
 | abilityName | string               | 是    | 否     | 卡片所属的Ability名称。                       |
 | formName        | string               | 是    | 否     | 卡片名称。                                 |
-| dimension | number               | 是    | 否     | 卡片尺寸，取值及其对应含义请参考[FormDimension](#formdimension)。<br>**说明：**取值范围[1,9]的整数   |
+| dimension | number               | 是    | 否     | 卡片尺寸，取值及其对应含义请参考[FormDimension](#formdimension)。<br>**说明：** 取值范围[1, 9]的整数，数值5从API version 9开始支持，从API version 20开始废弃。   |
 | formLocation | [FormLocation](#formlocation20)| 是    | 否     | 卡片位置信息。   |

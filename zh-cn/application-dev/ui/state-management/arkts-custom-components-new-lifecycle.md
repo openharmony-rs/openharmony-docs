@@ -1,7 +1,7 @@
 # 自定义组件生命周期（推荐）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @seaside_wu1; @xin11112-->
+<!--Owner: @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -23,6 +23,10 @@
 - [\@ComponentReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse)：当可复用的自定义组件从缓存中重新添加到节点树时调用该装饰器装饰的函数，以接收组件的构造入参。最后，\@ComponentReuse装饰的函数会递归遍历所有子组件，对每个完成复用的组件调用\@ComponentReuse装饰的函数。
 
 - [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle)：当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用该装饰器装饰的函数。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
+
+- [\@ComponentActive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentactive)：当组件从非激活状态变为激活状态时，调用该装饰器装饰的函数。自定义组件激活和非激活概念详见[支持场景](#自定义组件的激活与非激活生命周期调用时机)。自定义组件的激活和非激活概念与[组件冻结](./arkts-custom-components-freeze.md)中的组件激活（active）和非激活（inactive）概念相同。
+
+- [\@ComponentInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinactive)：当组件从激活状态变为非激活状态时，调用该装饰器装饰的函数。
 
 自定义组件生命周期受状态机限制，流程如下图所示。
 
@@ -63,6 +67,10 @@
   }
   ```
 - 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)。
+
+-  `@ComponentActive`和`@ComponentInactive`这两个自定义组件生命周期装饰器自API版本26.0.0起可用，用于监听组件的激活状态变化，不受状态机约束。它们独立于状态机工作：当组件由非激活转为激活状态（例如应用从后台切回前台、页面重新显示时），会触发`@ComponentActive`装饰的函数；反之，当组件从激活转为非激活状态（例如应用退至后台、页面隐藏或组件预创建时），则调用`@ComponentInactive`装饰的函数，目前激活和非激活生命周期仅支持[以下场景](#自定义组件的激活与非激活生命周期调用时机)。
+
+- 自定义组件创建后默认为激活状态，不会触发`@ComponentActive`装饰的函数回调函数。
 
 ## 使用场景
 
@@ -474,12 +482,283 @@ Column() {
   Text('Hello World')
 }
 .onAppear(() => {
+  // 在onAppear中注册监听
   registerObserver(UIUtils.getLifecycle(this));
 })
 .onDisAppear(() => {
   unRegisterObserver(UIUtils.getLifecycle(this));
 })
 ```
+
+### 自定义组件的激活与非激活生命周期调用时机
+
+需要注意，组件激活/非激活并不等同于其可见性。自定义组件从激活状态转变为非激活状态时，触发`@ComponentInactive`装饰的方法；自定义组件从非激活状态转变为激活状态时，触发`@ComponentActive`装饰的方法。自定义组件激活和非激活状态切换仅涵盖以下场景：
+
+- **[组件回收复用](../../ui/state-management/arkts-reusable.md)**：进入复用池的组件为非激活状态，从复用池上树的组件为激活状态。在可复用组件从缓存中重新添加到节点树或被回收时，可以通过`@ComponentActive`和`@ComponentInactive`装饰器监听组件的激活状态变化。其中，@ComponentActive触发时机晚于`@ComponentRecycle`和`aboutToRecycle`，`@ComponentInactive`触发时机晚于`@ComponentReuse`和`aboutToReuse`。
+
+- **[Router](../../ui/arkts-router-to-navigation.md)**：当前栈顶页面为激活状态，非栈顶不可见页面为非激活状态。页面每次隐藏时触发onPageHide，页面中的自定义组件从激活状态变为非激活状态，触发`@ComponentInactive`装饰的方法；页面每次显示时触发onPageShow，页面中的自定义组件从非激活状态变为激活状态，触发`@ComponentActive`装饰的方法。同理，息屏时页面也会触发onPageHide，页面中的自定义组件从激活状态变为非激活状态，触发`@ComponentInactive`装饰的方法；亮屏时页面会触发onPageShow，页面中的自定义组件会触发`@ComponentActive`装饰的方法。
+
+- **[Tabs](../../ui/arkts-navigation-tabs.md)**：只有当前显示的`TabContent`中的自定义组件处于激活状态，其余则为非激活状态。需要注意`TabContent`会懒创建子组件，第一次切换到`TabContent`时，`TabContent`中的组件开始创建。当`TabContent`中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当`TabContent`中的自定义组件从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- **[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)**：仅当前显示的LazyForEach中的自定义组件为激活状态，而缓存节点的组件则为非激活状态。在懒加载场景下，当数据项进入或离开可视区域时，组件会触发激活状态变化。进入可视区域的自定义组件触发`@ComponentActive`装饰的方法；离开可视区域和进入预加载区域的自定义组件触发`@ComponentInactive`装饰的方法。
+
+- **[BuilderNode](../../ui/arkts-user-defined-arktsNode-builderNode.md)**：BuilderNode会打断BuilderNode上层自定义组件激活和非激活状态传递给BuilderNode内的自定义组件的行为。当BuilderNode的inheritFreezeOptions设置为true时，BuilderNode中自定义组件可以继承BuilderNode上层自定义组件的激活和非激活状态。当BuilderNode中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- **[Repeat](../../ui/rendering-control/arkts-new-rendering-control-repeat.md)**：Repeat组件在渲染数据项时，屏上的RepeatItem中的自定义组件为激活状态，而离开屏上的RepeatItem中的组件为非激活状态。当RepeatItem中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- **[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)**：Swiper轮播组件当前显示页面中的自定义组件为激活状态，而非当前显示的缓存页面中的组件为非激活状态。当Swiper中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- **[Navigation](../../ui/arkts-navigation-introduction.md)**：当前栈顶页面为激活状态，非栈顶不可见页面为非激活状态。当导航组件中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
+
+- **[Scroll](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md)和[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)**：在滚动容器中，所有子组件在初始创建时都会完成构建，没有预加载机制，所有子组件都是激活状态。在ForEach循环渲染场景中，所有数据项对应的节点在初始创建时都会一次性构建完成，所有子组件都是激活状态。当数据项进入或离开可视区域时，不会触发数据项中自定义组件的`@ComponentActive`和`@ComponentInactive`装饰的方法。
+
+- **组件混用**：在多个支持激活状态的场景组合使用时，`@ComponentActive`和`@ComponentInactive`会根据实际组件的激活状态变化而触发。例如Navigation和TabContent混用时，当Navigation页面切换或Tab标签切换，都会触发相应组件的激活/非激活回调。
+
+以下示例展示了Navigation和TabContent混用场景下，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机：
+
+```typescript
+// Index.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    Column() {
+      Navigation(this.pageStack) {
+        Text(this.message)
+        Button(`PageOne`)
+          .onClick(() => {
+            // 跳转到PageOne页面
+            this.pageStack.pushPath({ name: 'PageOne' });
+          })
+          .width('80%')
+        Button(`PageTwo`)
+          .onClick(() => {
+            // 跳转到PageTwo页面
+            this.pageStack.pushPath({ name: 'PageTwo' });
+          })
+          .width('80%')
+      }
+    }
+  }
+}
+```
+
+```typescript
+// PageOne.ets
+@Builder
+export function PageOneBuilder() {
+  PageOne()
+}
+
+@Entry
+@Component
+struct PageOne {
+  @State pageStack: NavPathStack = new NavPathStack();
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text(`PageOne`)
+        Button('PageTwo')
+          .onClick(() => {
+            // 跳转到PageTwo页面
+            this.pageStack.pushPath({ name: 'PageTwo' });
+          })
+          .width('80%')
+        Button(`back`)
+          .onClick(() => {
+            // 返回上一页
+            this.pageStack.pop();
+          })
+          .width('80%')
+      }
+    }
+    .onReady((context: NavDestinationContext) => {
+      // 页面准备就绪时，获取导航路径栈
+      this.pageStack = context.pathStack;
+    })
+  }
+}
+```
+
+```typescript
+// PageTwo.ets
+import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
+
+@Builder
+export function PageTwoBuilder() {
+  PageTwo()
+}
+
+@Entry
+@Component
+struct PageTwo {
+  @State pageStack: NavPathStack = new NavPathStack();
+  @State @Watch('onMessageUpdated') message: number = 0;
+
+  onMessageUpdated() {
+    console.info(`TabContent message callback func ${this.message}`);
+  }
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text(`PageTwo`)
+        Button(`PageOne`)
+          .onClick(() => {
+            // 跳转到PageOne页面
+            this.pageStack.pushPath({ name: 'PageOne' });
+          })
+          .width('80%')
+        Button(`back`)
+          .onClick(() => {
+            // 返回上一页
+            this.pageStack.pop();
+          })
+          .width('80%')
+        Row() {
+          Column() {
+            Button(`change message`)
+              .onClick(() => {
+                this.message++;
+              })
+            TabsComponent();
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    .onReady((context: NavDestinationContext) => {
+      // 页面准备就绪时，获取导航路径栈
+      this.pageStack = context.pathStack;
+    })
+  }
+}
+
+// 冻结子组件：使用freezeWhenInactive配置
+@Component({ freezeWhenInactive: true })
+struct FreezeChild {
+  @Link message: number;
+  index: number = 0;
+
+  @ComponentActive
+  myActive() {
+    // 组件从非激活状态变为激活状态时触发
+    console.info(`FreezeChild myActive, index: ${this.index}`);
+  }
+
+  @ComponentInactive
+  myInactive() {
+    // 组件从激活状态变为非激活状态时触发
+    console.info(`FreezeChild myInactive, index: ${this.index}`);
+  }
+
+  build() {
+    Text(`message ${this.message}, index: ${this.index}`)
+  }
+}
+
+@Component
+struct TabsComponent {
+  private data: number[] = [0, 1, 2];
+  private controller: TabsController = new TabsController();
+  @State @Watch('onMessageUpdated') message: number = 0;
+
+  onMessageUpdated() {
+    console.info(`TabContent message callback func ${this.message}`);
+  }
+
+  build() {
+    Column() {
+      Button(`Incr state ${this.message}`)
+        .onClick(() => {
+          this.message++;
+        })
+      Tabs() {
+        ForEach(this.data, (item: number) => {
+          TabContent() {
+            // 将message作为@Link传递给FreezeChild，使状态可以在父子组件间同步
+            FreezeChild({ message: this.message, index: item })
+          }.tabBar(`tab${item}`)
+        }, (item: number) => item.toString())
+      }
+      .vertical(false)
+      .scrollable(true)
+      .barMode(BarMode.Fixed)
+      .barWidth(400)
+      .barHeight(150)
+      .animationDuration(400)
+      .width('100%')
+      .height(200)
+      .backgroundColor(0xF5F5F5)
+    }
+  }
+}
+```
+
+在系统配置文件`route_map.json`中配置子页信息如下：
+```json5
+{
+  "routerMap": [
+    {
+      "name": "PageOne",
+      "buildFunction": "PageOneBuilder",
+      "pageSourceFile": "src/main/ets/pages/PageOne.ets"
+    },
+    {
+      "name": "PageTwo",
+      "buildFunction": "PageTwoBuilder",
+      "pageSourceFile": "src/main/ets/pages/PageTwo.ets"
+    }
+  ]
+}
+```
+
+在module.json5配置文件中配置routerMap路由映射。
+```json5
+{
+  "module": {
+    // ···
+    "routerMap": "$profile:route_map",
+    // ···
+  }
+}
+```
+
+**场景说明与日志输出：**
+
+本示例展示了`Navigation`页面路由和`TabContent`切换场景下的组件激活/非激活状态变化。当页面路由切换时，离开页面的FreezeChild触发`@ComponentInactive`，返回时触发`@ComponentActive`。
+
+上述代码建议按以下步骤执行。
+
+1. 点击PageTwo跳转到PageTwo。
+
+   无日志输出，FreezeChild组件已创建并处于激活状态。
+
+2. 点击tab1，tab0下的自定义组件FreezeChild触发@ComponentInactive。
+   ```text
+   FreezeChild myInactive, index: 0
+   ```
+
+3. 点击tab0，tab1下的自定义组件FreezeChild触发@ComponentInactive，tab0下的自定义组件FreezeChild触发@ComponentActive。
+   ```text
+   FreezeChild myActive, index: 0
+   FreezeChild myInactive, index: 1
+   ```
+
+4. 点击PageOne，tab0下的自定义组件FreezeChild触发@ComponentInactive。
+   ```text
+   FreezeChild myInactive, index: 0
+   ```
+
+5. 点击back，tab0下的自定义组件FreezeChild触发@ComponentActive。
+   ```text
+   FreezeChild myActive, index: 0
+   ```
 
 ## 生命周期回调函数的区别
 
@@ -591,6 +870,7 @@ export struct SwiperExample {
   @State selectedTabIndex: number = 0;
   @ComponentAppear
   myAppear(): void {
+    // myAppear中为data赋值
     let list: number[] = [];
     for (let i = 0; i <= 11; i++) {
       list.push(i);
@@ -685,10 +965,12 @@ struct ReusableTest {
   @State flag2: boolean = false;
   build() {
     Column() {
+      // 点击Button切换flag1，触发ReusableComp1和ReusableComp2的回收/复用
       Button('a')
         .onClick(() => {
           this.flag1 = !this.flag1;
         })
+      // 点击Button切换flag2，触发ReusableComp1和ReusableComp3的回收/复用
       Button('b')
         .onClick(() => {
           this.flag2 = !this.flag2;

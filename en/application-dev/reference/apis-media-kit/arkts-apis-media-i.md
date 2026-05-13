@@ -292,8 +292,8 @@ Defines the format parameters of the video thumbnail to be obtained.
 
 | Name  | Type  | Read-Only| Optional| Description                                                                           |
 |--------|--------|------|------|---------------------------------------------------------------------------------|
-| width  | number | No  | Yes  | Width of the thumbnail. The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
-| height | number | No  | Yes  | Height of the thumbnail. The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| width  | number | No  | Yes  | Width of the thumbnail, in pixels.<br>The value must be greater than 0 and less than or equal to the width of the original video. Otherwise, the returned thumbnail will not be scaled.|
+| height | number | No  | Yes  | Height of the thumbnail, in pixels.<br>The value must be greater than 0 and less than or equal to the height of the original video. Otherwise, the returned thumbnail will not be scaled.|
 
 ## OutputSize<sup>20+</sup>
 
@@ -303,8 +303,8 @@ Describes the output size of the video thumbnail fetched.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width  | number | No  | Yes  | Width of the thumbnail.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
-| height | number | No  | Yes  | Height of the thumbnail.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+| width  | number | No  | Yes  | Width of the thumbnail, in pixels.<br>- If this parameter is set to a value less than 0, the width will be the original video width.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the height ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
+| height | number | No  | Yes  | Height of the thumbnail, in pixels.<br>- If this parameter is set to a value less than 0, the height will be the original video height.<br>- If the value is **0** or is not assigned, the scaling ratio is the same as the width ratio.<br>- If neither width nor height is assigned, the output is the width and height of the original video frame.|
 
 ## FrameInfo<sup>23+</sup>
 
@@ -422,6 +422,7 @@ Describes the screen capture strategy.
 | keepCaptureDuringCall | boolean | No| Yes | Whether to keep screen capture during a cellular call. The value **true** means to keep screen capture during a cellular call, and **false** means the opposite. The default value is **false**.|
 | enableBFrame | boolean | No| Yes| Whether to enable B-frame encoding for screen capture. **true** to enable, **false** otherwise. The default value is **false**.<br>For details about the restrictions on B-frame video encoding, see [Constraints in B-Frame Video Encoding](../../media/avcodec/video-encoding-b-frame.md#constraints). If the current environment does not meet the restrictions, B-frames will be skipped during screen capture, and no error will be returned.|
 | privacyMaskMode<sup>23+</sup> | number | No| Yes| Mask mode for privacy windows during screen capture.<br> - **0**: Full-screen mask mode for privacy windows. The default value is **0**.<br> - **1**: Window mask mode for privacy windows.<br> - If this parameter is set to other values, an error is returned.<br> **Model restriction**: This API can be used only in the stage model.|
+| enablePause | boolean | No| Yes| Whether screen capture can be paused.<br>**true**: yes; **false**: no. The default value is **false**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AVScreenCaptureRecordConfig<sup>12+</sup>
 

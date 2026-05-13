@@ -1,9 +1,9 @@
 # @ohos.graphics.sendableColorSpaceManager (可共享的色彩管理)
 
 <!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphic-->
-<!--Owner: @xubo85-->
-<!--Designer: @comicchang; @wang-luyu4-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -136,6 +136,14 @@ getColorSpaceName(): colorSpaceManager.ColorSpace
 | ------------------ | ------------------------ |
 | [colorSpaceManager.ColorSpace](js-apis-colorSpaceManager.md#colorspace)  | 返回色域类型枚举值。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：12-22 |
+
 **示例：**
 
 ```ts
@@ -154,7 +162,15 @@ getWhitePoint(): collections.Array\<number\>
 
 | 类型                | 说明                     |
 | ------------------ | ------------------------ |
-| [collections.Array\<number\>](../apis-arkts/arkts-apis-arkts-collections-Array.md)  | 返回色域白点值[x, y]。 |
+| [collections.Array](../apis-arkts/arkts-apis-arkts-collections-Array.md)\<number>  | 返回色域白点值[x, y]。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：12-22 |
 
 **示例：**
 
@@ -176,6 +192,14 @@ getGamma(): number
 | 类型                | 说明                     |
 | ------------------ | ------------------------ |
 | number  | 返回色域gamma值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：12-22 |
 
 **示例：**
 

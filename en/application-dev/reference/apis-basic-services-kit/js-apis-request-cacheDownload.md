@@ -81,7 +81,7 @@ Describes the pre-downloaded resource information.
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| size | number | Yes | No | Size of a pre-downloaded resource after decompression. If the value is a positive integer, the resource is successfully downloaded; if the value is **-1**, the resource fails to be downloaded.|
+| size | number | Yes | No | Size of a pre-downloaded resource after decompression, in bytes. If the value is a positive integer, the resource is successfully downloaded; if the value is **-1**, the resource fails to be downloaded.|
 
 ## NetworkInfo<sup>20+</sup>
 
@@ -475,7 +475,7 @@ Subscribes to the pre-download completion events. This API uses an asynchronous 
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL to be registered, with a maximum of 8192 bytes.|
+| url | string | Yes | Callback URL to be registered, with a maximum of 8,192 bytes.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Example**:
@@ -541,7 +541,7 @@ Unsubscribes from the pre-download completion events. This API uses an asynchron
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL to be unregistered, with a maximum of 8192 bytes.|
+| url | string | Yes | Callback URL to be registered, with a maximum of 8,192 bytes.|
 | callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is left blank, all completion callback functions of the URL are unregistered.|
 
 **Example**:

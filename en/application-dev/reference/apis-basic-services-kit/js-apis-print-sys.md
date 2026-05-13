@@ -5,13 +5,13 @@
 <!--Owner: @guoshengbang-->
 <!--Designer: @gcw_4D6e0BBd-->
 <!--Tester: @guoshengbang-->
-<!--Adviser: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 The **print** module provides APIs for basic print operations.
 
 > **NOTE** 
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.print (Print) (System API)](js-apis-print-sys.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.print (Print)](js-apis-print.md).
 
 ## Modules to Import
 
@@ -2228,7 +2228,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
-| 13100005 | Invalid printer. |
+| 13100005 | Can not find the printer in system. |
 
 **Example**
 
@@ -2281,7 +2281,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 202 | not system application |
-| 13100003 | Failure of print service. |
+| 13100003 | Add a printer to cups failed. |
 
 **Example**
 

@@ -38,7 +38,7 @@ Media change request, which is the parent class of the asset change request and 
 
 ## CreateOptions
 
-Options for creating an image or video asset.
+Defines the options for creating an image or video asset.
 
 The title must meet the following requirements:
 
@@ -259,10 +259,24 @@ Defines the asset compatibility capability.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 24.
-
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
     
 | Name                  | Type               | Read-Only| Optional| Description          |
 | ---- | ---- | ---- | ---- | ---- |
-| supportedHighResolution       | boolean  | No| No| Whether high-resolution assets are supported. **true**: yes; **false**: no.|
+| supportedHighResolution | boolean  | No| No| Whether high-resolution assets are supported. **true**: yes; **false**: no.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| supportedMimeType | Array&lt;string&gt;  | No| Yes| Supported MIME types.<br>- **image/heic**: The app supports the HEIF format.<br>- **image/jpeg**: The app supports only the JPEG format.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+
+## MediaLibraryAvailability
+
+Defines the availability information of the media library.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name | Type               | Read-Only| Optional| Description                                             |
+| ---- | ------- | ---- |  ---- | ----- |
+| availabilityStatus | [AvailabilityStatus](arkts-apis-photoAccessHelper-e.md#availabilitystatus) | No| No| Availability status of the media library.|
+| unavailabilityReason | string | No| No| Reason why the media library is unavailable, for example, "Database corrupted".|

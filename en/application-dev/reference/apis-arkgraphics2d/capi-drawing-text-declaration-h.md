@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-Declares the structs related to text in 2D drawing.
+Provides declarations of data structures related to 2D text drawing.
 
 **File to include**: <native_drawing/drawing_text_declaration.h>
 
@@ -40,3 +40,5 @@ Declares the structs related to text in 2D drawing.
 | [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) | OH_Drawing_TextLine | Defines a struct used to manage text lines.|
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) | OH_Drawing_Run | Defines a struct used to manage runs.|
 | [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md) | OH_Drawing_FontFullDescriptor | Defines a struct used to describe detailed information about a font, that is, the font descriptor.|
+| [OH_Drawing_FontVariationAxis](capi-drawing-oh-drawing-fontvariationaxis.md) | OH_Drawing_FontVariationAxis | Describes the variable axis of the font.|
+| [OH_Drawing_FontVariationInstance](capi-drawing-oh-drawing-fontvariationinstance.md) | OH_Drawing_FontVariationInstance | Describes a variable font instance and stores the preset variable font style information.|
