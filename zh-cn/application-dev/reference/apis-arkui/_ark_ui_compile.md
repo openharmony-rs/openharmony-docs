@@ -1439,3 +1439,16 @@ reuseId属性不能用于@ReusableV2装饰的@ComponentV2自定义组件。
 
 **处理步骤**<br>
 根据错误描述修改，在正确场景下使用reuseId属性功能。
+
+## 10905363 V1装饰器不能装饰类型为Function或者() => void的变量
+**错误信息**<br>
+The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
+
+**错误描述**<br>
+从API version 23开始，V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误。
+
+**可能原因**<br>
+开发者在Function类型或者() => void类型的变量上使用了V1装饰器。
+
+**处理步骤**<br>
+根据错误描述修改，删除用于Function类型或者() => void类型变量上的V1装饰器。
