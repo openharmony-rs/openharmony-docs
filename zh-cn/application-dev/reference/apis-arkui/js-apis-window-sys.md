@@ -1794,7 +1794,7 @@ try {
 }
 ```
 
-## window.createSubWindowAndBindParent<sup>24+</sup>
+## window.createSubWindowAndBindParent
 
 ArkTS-Dyn: createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
 
@@ -1814,9 +1814,9 @@ ArkTS-Sta: createSubWindowAndBindParent(name: string, parentId: int, ctx: BaseCo
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1825,7 +1825,7 @@ ArkTS-Sta: createSubWindowAndBindParent(name: string, parentId: int, ctx: BaseCo
 | name | string | 是 | 窗口名称。|
 | parentId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 指定父窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
 | ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 当前应用上下文信息。|
-| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | 是 | 回调函数。返回绑定父窗的生命周期变化。|
+| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener) | 是 | 回调函数。返回绑定父窗的生命周期变化。|
 
 **返回值：**
 
