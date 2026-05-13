@@ -681,7 +681,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 
 ### completed
 
-completed(): Promise<CompletedResult>
+completed(): Promise\<CompletedResult>
 
 应用可通过该接口，在Picker界面完成选择操作后获取完整现场数据，下一次启动Picker时可以使用该数据恢复现场。
 
