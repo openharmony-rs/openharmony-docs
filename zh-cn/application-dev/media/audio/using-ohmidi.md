@@ -900,7 +900,7 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 ## 相关参考
 
 - [OH_MIDI开发概述(C/C++)](midi-overview.md)
-- [OH_MIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
+- [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
 - [native_midi.h](../../reference/apis-audio-kit/capi-native-midi-h.md)
 - [native_midi_base.h](../../reference/apis-audio-kit/capi-native-midi-base-h.md)
 - [通用错误码](../../reference/errorcode-universal.md)说明
