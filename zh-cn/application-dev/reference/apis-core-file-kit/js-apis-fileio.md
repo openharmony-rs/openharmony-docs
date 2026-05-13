@@ -1122,7 +1122,7 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[hash.write](js-apis-file-hash.md#hashhash)替代。
+> 从API version 9开始废弃，请使用[hash.hash](js-apis-file-hash.md#hashhash)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1160,7 +1160,7 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[hash.write](js-apis-file-hash.md#hashhash-1)替代。
+> 从API version 9开始废弃，请使用[hash.hash](js-apis-file-hash.md#hashhash-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
