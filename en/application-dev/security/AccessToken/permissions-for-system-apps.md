@@ -6020,3 +6020,17 @@ Allows a system application to run CLI tools.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.cli.GET_STORAGE_MANAGER
+
+Allows an application to query storage using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | litewearables
+
+**Since**: 26.0.0
