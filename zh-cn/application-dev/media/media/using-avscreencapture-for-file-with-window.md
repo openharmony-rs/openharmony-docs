@@ -128,7 +128,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    方式二（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
 
    <!-- @[screenCapture_createCaptureStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    // 通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
    OH_AVScreenCapture_CaptureStrategy *strategy = OH_AVScreenCapture_CreateCaptureStrategy();
