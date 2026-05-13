@@ -165,34 +165,34 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 | 名称          | 值 | 说明                                      |
 | ------------- | -- |----------------------------------------- |
-| ERROR_UNKNOWN                                  | 0 |未知错误。可能原因：系统内部异常或未知错误。解决方法：建议查看系统日志获取更多信息，或联系技术支持。|
-| FILE_FAILED | 1 |  常规文件操作失败。可能原因：文件系统错误、权限不足或磁盘损坏。解决方法：检查文件路径和权限，确保磁盘空间充足。|
-| FILE_ACCESS_DENIED | 2 | 没有权限访问文件。可能原因：应用缺少文件访问权限或文件被其他进程占用。解决方法：请检查应用权限配置，确保已申请必要的文件访问权限。|
-| FILE_NO_SPACE | 3 | 磁盘没有足够的空间。可能原因：磁盘空间不足或分区已满。解决方法：清理不必要的文件，释放磁盘空间。|
-| FILE_NAME_TOO_LONG | 5 | 文件名过长。可能原因：文件名超过系统最大长度限制。解决方法：请缩短文件名或更改文件路径。|
-| FILE_TOO_LARGE | 6 | 文件太大。可能原因：文件大小超过系统或应用的限制。解决方法：请检查文件大小，考虑分片处理或选择其他方式传输。|
-| FILE_TRANSIENT_ERROR | 10 |  出现了一些临时问题，例如内存不足、文件正在使用以及同时打开的文件过多。可能原因：系统资源不足或文件被占用。解决方法：释放系统资源，关闭不必要的文件，稍后重试。|
-| FILE_BLOCKED | 11 |  由于某些本地策略，文件被阻止访问。可能原因：安全策略或权限限制阻止了文件访问。解决方法：请检查本地安全策略和权限配置，确保允许访问该文件。|
-| FILE_TOO_SHORT | 13 |  当尝试恢复下载时，发现文件长度不足，可能文件已不存在。可能原因：下载文件已损坏或被删除。解决方法：请重新开始下载任务。|
-| FILE_HASH_MISMATCH | 14 |  哈希值不匹配。可能原因：文件在传输过程中被篡改或下载不完整。解决方法：请重新下载文件，确保网络连接稳定。|
-| FILE_SAME_AS_SOURCE | 15 |  文件已存在。可能原因：目标位置已存在同名文件。解决方法：请更改文件名或选择覆盖选项。|
-| NETWORK_FAILED | 20 |  一般网络错误。可能原因：网络连接异常或服务器无响应。解决方法：请检查网络连接状态，稍后重试。|
-| NETWORK_TIMEOUT | 21 | 网络超时。可能原因：网络响应时间过长或网络不稳定。解决方法：请检查网络连接，或增加超时时间设置。|
-| NETWORK_DISCONNECTED | 22 | 网络连接断开。可能原因：网络连接中断或设备断网。解决方法：请检查网络连接，确保网络正常后重试。|
-| NETWORK_SERVER_DOWN | 23 |  服务器关闭。可能原因：目标服务器暂时不可用或维护中。解决方法：请稍后重试或联系服务提供商。|
-| NETWORK_INVALID_REQUEST | 24 |  无效的网络请求，可能重定向到不支持的协议或无效的URL。可能原因：URL格式错误或不支持的协议。解决方法：请检查URL格式和协议，确保请求参数正确。|
-| SERVER_FAILED | 30 | 服务器返回一般性错误。可能原因：服务器内部错误或服务异常。解决方法：请稍后重试或联系服务器管理员。|
-| SERVER_NO_RANGE | 31 |  服务器不支持范围请求。可能原因：服务器不支持断点续传功能。解决方法：请尝试完整下载文件。|
-| SERVER_BAD_CONTENT | 33 |   服务器没有请求的数据。可能原因：请求的资源已被删除或不存在。解决方法：请检查请求URL，确保资源存在。|
-| SERVER_UNAUTHORIZED | 34 |  服务器不允许下载该文件。可能原因：缺少认证信息或权限不足。解决方法：请检查认证信息，确保有足够的权限。|
-| SERVER_CERT_PROBLEM | 35 |  服务器证书错误。可能原因：SSL证书过期或无效。解决方法：请检查服务器证书配置，确保证书有效。|
-| SERVER_FORBIDDEN | 36 |  服务器访问被禁止。可能原因：访问权限不足或IP被限制。解决方法：请联系管理员获取访问权限。|
-| SERVER_UNREACHABLE | 37 |  无法访问服务器。可能原因：服务器地址错误或网络不可达。解决方法：请检查服务器地址和网络连接。|
-| SERVER_CONTENT_LENGTH_MISMATCH | 38 |  接收到的数据与内容长度不匹配。可能原因：数据传输不完整或被截断。解决方法：请重新下载文件。|
-| SERVER_CROSS_ORIGIN_REDIRECT | 39 | 发生意外的跨站重定向。可能原因：服务器配置了不安全的重定向策略。解决方法：请检查服务器配置，确保重定向安全。|
+| ERROR_UNKNOWN                                  | 0 |未知的错误。|
+| FILE_FAILED | 1 |  常规文件操作失败。|
+| FILE_ACCESS_DENIED | 2 | 没有权限访问文件。|
+| FILE_NO_SPACE | 3 | 磁盘没有足够的空间。|
+| FILE_NAME_TOO_LONG | 5 | 文件名过长。|
+| FILE_TOO_LARGE | 6 | 文件太大。|
+| FILE_TRANSIENT_ERROR | 10 |  出现了一些临时问题，例如内存不足、文件正在使用以及同时打开的文件过多。|
+| FILE_BLOCKED | 11 |  由于某些本地策略，文件被阻止访问。|
+| FILE_TOO_SHORT | 13 |  当尝试恢复下载时，发现文件不够长，可能该文件已不存在。|
+| FILE_HASH_MISMATCH | 14 |  哈希不匹配。|
+| FILE_SAME_AS_SOURCE | 15 |  文件已存在。|
+| NETWORK_FAILED | 20 |  一般网络错误。|
+| NETWORK_TIMEOUT | 21 | 网络超时。|
+| NETWORK_DISCONNECTED | 22 | 网络断开连接。|
+| NETWORK_SERVER_DOWN | 23 |  服务器关闭。|
+| NETWORK_INVALID_REQUEST | 24 |  无效的网络请求，可能重定向到不支持的方案或无效的URL。|
+| SERVER_FAILED | 30 | 服务器返回了一个一般性错误。|
+| SERVER_NO_RANGE | 31 |  服务器不支持范围请求。|
+| SERVER_BAD_CONTENT | 33 |   服务器没有请求的数据。|
+| SERVER_UNAUTHORIZED | 34 |  服务器不允许下载该文件。|
+| SERVER_CERT_PROBLEM | 35 |  服务器证书错误。|
+| SERVER_FORBIDDEN | 36 |  服务器访问被禁止。|
+| SERVER_UNREACHABLE | 37 |  无法访问服务器。|
+| SERVER_CONTENT_LENGTH_MISMATCH | 38 |  接收到的数据与内容长度不匹配。|
+| SERVER_CROSS_ORIGIN_REDIRECT | 39 | 发生意外的跨站重定向。|
 | USER_CANCELED | 40 | 用户取消了下载。|
 | USER_SHUTDOWN | 41 | 用户关闭了应用。|
-| CRASH | 50 | 应用发生崩溃。可能原因：应用内部错误或系统异常导致进程崩溃。解决方法：请查看崩溃日志，修复问题后重试。|
+| CRASH | 50 | 应用发生了崩溃。|
 
 ## WebResourceType<sup>12+</sup>
 
@@ -363,9 +363,9 @@ Web页面场景下，全局滚动条模式。
 | 名称 | 值 | 说明 |
 | ------------------------------- | - | ---------- |
 | SUCCESS | 0 | 成功。 |
-| ERR_UNKNOWN   | -1 | 未知错误，内部状态错误等。可能原因：系统内部异常。解决方法：建议查看系统日志获取更多信息，或联系技术支持。|
-| ERR_INVALID_PARAM   | -2 | 参数不合法。可能原因：参数类型、范围或格式不正确。解决方法：请检查接口参数，确保参数符合要求。|
-| ERR_CONTROLLER_NOT_INITED   | -3 | WebViewController未绑定组件。可能原因：Web组件未正确初始化或绑定。解决方法：请确保在调用接口前，WebViewController已正确绑定到Web组件。|
+| ERR_UNKNOWN   | -1 | 未知错误，内部状态错误等。 |
+| ERR_INVALID_PARAM   | -2 | 参数不合法。 |
+| ERR_CONTROLLER_NOT_INITED   | -3 | WebViewController未绑定组件。 |
 | ERR_KEY_NOT_MATCH   | -4 | 未匹配到key值，对于[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)需与[getBlanklessInfoWithKey](./arkts-apis-webview-WebviewController.md#getblanklessinfowithkey20)配套使用并且key值一致，否则返回该错误码。 |
 | ERR_SIGNIFICANT_CHANGE   | -5 | 当相似度较低时，系统会判定为跳变太大，[setBlanklessLoadingWithKey](./arkts-apis-webview-WebviewController.md#setblanklessloadingwithkey20)接口不会成功启用插帧。 |
 | ERR_DURATION_OUT_OF_RANGE<sup>23+</sup>   | -6 | 在[BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23)设置的插帧持续时间超出范围。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -373,7 +373,7 @@ Web页面场景下，全局滚动条模式。
 
 ## BlanklessFrameInterpolationState <sup>23+</sup>
 
-白屏插帧状态，表示无白屏加载插帧功能的状态。插帧是指在页面加载时，通过在两个实际帧之间插入计算生成的过渡帧，减少用户感知的白屏等待时间，提升视觉体验。
+白屏插帧状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
