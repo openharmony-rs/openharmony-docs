@@ -856,6 +856,8 @@
     - [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)
     - [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)
     - [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)
+    - [ArkUI_NativeGestureAPI_3](capi-arkui-nativemodule-arkui-nativegestureapi-3.md)
+    - [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)
