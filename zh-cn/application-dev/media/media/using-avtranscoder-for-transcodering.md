@@ -96,6 +96,28 @@
    ArkTS-Sta示例：
 
    <!-- @[create_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 注册avTranscoder回调函数。
+   setAVTranscoderCallback(): void {
+     if (this.avTranscoder != undefined) {
+       // 转码完成回调函数。
+       this.avTranscoder?.onComplete(() => {
+         console.log(`AVTranscoder is completed`);
+         this.releaseTranscoderingProcess();
+       });
+       // 错误上报回调函数。
+       this.avTranscoder?.onError((err: BusinessError) => {
+         console.error(`AVTranscoder failed, code is ${err.code}, message is ${err.message}`);
+       });
+       // 进度上报回调函数
+       this.avTranscoder?.onProgressUpdate((progress: int) => {
+         console.info(`AVTranscoder progressUpdate = ${progress}`);
+         this.currentProgress = progress;
+       })
+     }
+   }
+   ```
 
 3. 设置源视频文件fd：设置属性fdSrc。
    > **说明：**
