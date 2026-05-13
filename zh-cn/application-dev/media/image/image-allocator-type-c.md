@@ -339,10 +339,6 @@ napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
 }
 ```
 
-``` C++
-
-```
-
 ## 系统默认的内存分配方式
 
 在使用[OH_ImageSourceNative_CreatePixelmap](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap)接口进行解码时，不同场景下会采取不同的内存分配类型。
