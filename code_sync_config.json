@@ -52230,7 +52230,7 @@
 				"functions":[
 					{
 						"end_line":28,
-						"name":"tranferabledObject_Layout",
+						"name":"transferableObject_Layout",
 						"start_line":15
 					}
 				]
@@ -52239,44 +52239,52 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets",
 				"functions":[
 					{
-						"end_line":53,
-						"name":"tranferabledObject_testJSON",
+						"end_line":56,
+						"name":"transferableObject_testJSON",
 						"start_line":15
 					}
 				]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/generated/ets/turbotrans_JSON/layout.ets",
-				"functions":[
-					{
-						"end_line":117,
-						"name":"tranferabledObject_SendableLayout",
-						"start_line":107
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/generated/ets/sendableModel/SendableLayout.ets",
-				"functions":[
-					{
-						"end_line":31,
-						"name":"tranferabledObject_SendableLayout_toOrigin",
-						"start_line":19
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":78,
-						"name":"tranferabledObject_Text",
-						"start_line":20
+						"end_line":75,
+						"name":"transferableObject_makeObserved",
+						"start_line":69
 					},
 					{
-						"end_line":75,
-						"name":"tranferabledObject_makeObserved",
-						"start_line":69
+						"end_line":78,
+						"name":"transferableObject_Text",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigor/hvigor-config.json5",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"transferableObject_jsonPlugin",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigorfile.ts",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"transferableObject_configPlugin",
+						"start_line":15
 					}
 				]
 			}
