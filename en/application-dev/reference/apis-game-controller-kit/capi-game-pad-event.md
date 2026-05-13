@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines APIs for game controller events.
+Defines APIs for gamepad events.
 
 **File to include**: <GameControllerKit/game_pad_event.h>
 
@@ -28,10 +28,10 @@ Defines APIs for game controller events.
 
 | Name| Description| 
 | -------- | -------- |
-| typedef enum [GamePad_AxisSourceType](capi-game-controller.md#gamepad_axissourcetype) [GamePad_AxisSourceType](capi-game-controller.md#gamepad_axissourcetype) | Defines source types of game controller axis events.| 
-| typedef enum [GamePad_Button_ActionType](capi-game-controller.md#gamepad_button_actiontype) [GamePad_Button_ActionType](capi-game-controller.md#gamepad_button_actiontype) | Defines button action types of the game controller.| 
-| typedef struct [GamePad_ButtonEvent](capi-game-controller.md#gamepad_buttonevent) [GamePad_ButtonEvent](capi-game-controller.md#gamepad_buttonevent) | Defines game controller button events.| 
-| typedef struct [GamePad_AxisEvent](capi-game-controller.md#gamepad_axisevent) [GamePad_AxisEvent](capi-game-controller.md#gamepad_axisevent) | Defines game controller axis events.| 
+| typedef enum [GamePad_AxisSourceType](capi-game-controller.md#gamepad_axissourcetype) [GamePad_AxisSourceType](capi-game-controller.md#gamepad_axissourcetype) | Defines source types of gamepad axis events.| 
+| typedef enum [GamePad_Button_ActionType](capi-game-controller.md#gamepad_button_actiontype) [GamePad_Button_ActionType](capi-game-controller.md#gamepad_button_actiontype) | Defines button action types of the gamepad.| 
+| typedef struct [GamePad_ButtonEvent](capi-game-controller.md#gamepad_buttonevent) [GamePad_ButtonEvent](capi-game-controller.md#gamepad_buttonevent) | Defines gamepad button events.| 
+| typedef struct [GamePad_AxisEvent](capi-game-controller.md#gamepad_axisevent) [GamePad_AxisEvent](capi-game-controller.md#gamepad_axisevent) | Defines gamepad axis events.| 
 | typedef struct [GamePad_PressedButton](capi-game-controller.md#gamepad_pressedbutton) [GamePad_PressedButton](capi-game-controller.md#gamepad_pressedbutton) | Defines pressed buttons.| 
 | typedef void(\*[GamePad_ButtonInputMonitorCallback](capi-game-controller.md#gamepad_buttoninputmonitorcallback)) (const struct [GamePad_ButtonEvent](capi-game-controller.md#gamepad_buttonevent) \*buttonEvent) | Defines the callback function used in the button event registration listening API. Called when a player presses a button.| 
 | typedef void(\*[GamePad_AxisInputMonitorCallback](capi-game-controller.md#gamepad_axisinputmonitorcallback)) (const struct [GamePad_AxisEvent](capi-game-controller.md#gamepad_axisevent) \*axisEvent) | Defines the callback function used in the axis event registration listening API. Called when a player operates a joystick.| 
@@ -41,8 +41,8 @@ Defines APIs for game controller events.
 
 | Name| Description| 
 | -------- | -------- |
-| [GamePad_AxisSourceType](capi-game-controller.md#gamepad_axissourcetype) {<br>DPAD = 0,<br>LEFT_THUMBSTICK = 1,<br>RIGHT_THUMBSTICK = 2,<br>LEFT_TRIGGER = 3,<br>RIGHT_TRIGGER = 4<br>} | Source types of game controller axis events.| 
-| [GamePad_Button_ActionType](capi-game-controller.md#gamepad_button_actiontype) {<br>DOWN = 0,<br>UP = 1<br>} | Button action types of the game controller.| 
+| [GamePad_AxisSourceType](capi-game-controller.md#gamepad_axissourcetype) {<br>DPAD = 0,<br>LEFT_THUMBSTICK = 1,<br>RIGHT_THUMBSTICK = 2,<br>LEFT_TRIGGER = 3,<br>RIGHT_TRIGGER = 4<br>} | Source types of gamepad axis events.| 
+| [GamePad_Button_ActionType](capi-game-controller.md#gamepad_button_actiontype) {<br>DOWN = 0,<br>UP = 1<br>} | Button action types of the gamepad.| 
 
 
 ### Functions
