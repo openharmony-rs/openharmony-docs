@@ -2,20 +2,20 @@
 
 从API version 26.0.0开始，支持编码前处理功能。
 
-## 1. 功能概述
+## 功能概述
 
 编码前处理是视频编码器在输入帧进入编码管线之前执行的预处理能力，通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建的主编码器支持以下三种前处理功能：
 
 | 功能 | 说明 | 典型场景 | 引入版本 |
 |------|------|----------|--------|
-| **降采样（Downsampling）** | 将高分辨率帧缩放到低分辨率后送入编码器 | 低分辨率编码输出 | 26.0.0 |
-| **裁剪（Crop）** | 从原始画面中提取指定矩形区域进行编码 | ROI 区域关注、局部特写 | 26.0.0 |
-| **丢帧（Drop Frame）** | 按目标帧率选择性丢弃输入帧 | 降低带宽占用、自适应码率 | 26.0.0 |
+| 降采样（Downsampling） | 将高分辨率帧缩放到低分辨率后送入编码器 | 低分辨率编码输出 | 26.0.0 |
+| 裁剪（Crop） | 从原始画面中提取指定矩形区域进行编码 | ROI 区域关注、局部特写 | 26.0.0 |
+| 丢帧（Drop Frame） | 按目标帧率选择性丢弃输入帧 | 降低带宽占用、自适应码率 | 26.0.0 |
 
 > **互斥规则**：降采样参数与裁剪参数**不能同时使用**。丢帧可与降采样或裁剪**组合使用**。
 
 
-## 2. 使用场景
+## 使用场景
 
 ### 场景一：低分辨率编码输出
 
@@ -32,28 +32,28 @@
 - 网络拥堵时：通过 `SetParameter` 动态加大丢帧力度，降低输出帧率以节省带宽
 - 网络恢复后：将丢帧目标设为 `0.0` 取消丢帧
 
-## 3. 约束与限制
+## 约束与限制
 
-### 3.1 基本约束
+### 基本约束
 
 | 约束项 | 说明 |
 |--------|------|
-| **支持的 MIME 类型** | 和普通视频编码器支持范围一致，可通过 `OH_AVCodec_GetCapability` 查询是否支持指定 MIME 类型编码器 |
-| **创建方式** | 必须通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建，不支持普通创建方式 |
-| **数据通路** | **仅支持 Surface 异步模式**，Buffer 模式和同步模式均不支持（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
-| **随帧参数** | 不支持 `RegisterParameterCallback` 接口（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
+| 支持的 MIME 类型 | 和普通视频编码器支持范围一致，可通过 `OH_AVCodec_GetCapability` 查询是否支持指定 MIME 类型编码器 |
+| 创建方式 | 必须通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建，不支持普通创建方式 |
+| 数据通路 | **仅支持 Surface 异步模式**，Buffer 模式和同步模式均不支持（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
+| 随帧参数 | 不支持 `RegisterParameterCallback` 接口（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
 
-### 3.2 降采样（Downsampling）约束
+### 降采样（Downsampling）约束
 
 | 序号 | 约束规则 |
 |------|----------|
-| 1 | **必须成对配置**：宽度和高度必须同时配置或同时设置。若仅配置其中一个，Configure/SetParameter 将返回 `AV_ERR_INVALID_VAL` |
-| 2 | **禁用条件**：当宽度与高度均配置为合法的零值时，降采样功能被禁用 |
-| 3 | **有效范围**：当宽度与高度在支持的范围内时，降采样功能被启用。建议通过 `OH_AVCapability_IsVideoSizeSupported` 接口查询支持的降采样范围 |
-| 4 | **越界处理**：当宽度或高度不在支持范围内时，Configure/SetParameter 返回 `AV_ERR_INVALID_VAL` |
-| 5 | **与裁剪互斥**：不能与裁剪参数（`CROP_LEFT/TOP/RIGHT/BOTTOM`）同时使用。若同时设置了降采样和裁剪参数，返回 `AV_ERR_INVALID_VAL` |
+| 1 | 必须成对配置：宽度和高度必须同时配置或同时设置。若仅配置其中一个，Configure/SetParameter 将返回 `AV_ERR_INVALID_VAL` |
+| 2 | 禁用条件：当宽度与高度均配置为合法的零值时，降采样功能被禁用 |
+| 3 | 有效范围：当宽度与高度在支持的范围内时，降采样功能被启用。建议通过 `OH_AVCapability_IsVideoSizeSupported` 接口查询支持的降采样范围 |
+| 4 | 越界处理：当宽度或高度不在支持范围内时，Configure/SetParameter 返回 `AV_ERR_INVALID_VAL` |
+| 5 | 与裁剪互斥：不能与裁剪参数（`CROP_LEFT/TOP/RIGHT/BOTTOM`）同时使用。若同时设置了降采样和裁剪参数，返回 `AV_ERR_INVALID_VAL` |
 
-### 3.3 裁剪（Crop）约束
+### 裁剪（Crop）约束
 
 坐标系统说明：
 - `(left, top)` 为裁剪矩形的左上角坐标
@@ -64,30 +64,30 @@
 
 | 序号 | 约束规则 |
 |------|----------|
-| 1 | **必须完整配置**：left、top、right、bottom 四个参数必须同时配置。若仅配置其中部分参数，返回 `AV_ERR_INVALID_VAL` |
-| 2 | **禁用条件**：当 left、top、right、bottom **全部为 0** 时，裁剪功能被禁用 |
-| 3 | **有效范围**：当裁剪的宽度、高度在支持的范围内时，裁剪功能被启用。建议通过 `OH_AVCapability_IsVideoSizeSupported` 查询支持的裁剪范围 |
-| 4 | **越界处理**：当裁剪值不在支持范围内时，返回 `AV_ERR_INVALID_VAL` |
-| 5 | **与降采样互斥**：不能与降采样参数（`DOWNSAMPLING_WIDTH/HEIGHT`）同时使用。若同时设置，返回 `AV_ERR_INVALID_VAL` |
-| 6 | **行为效果**：裁剪启用时，编码器仅对输入帧的裁剪区域进行编码，裁剪矩形之外的内容将被丢弃 |
+| 1 | 必须完整配置：left、top、right、bottom 四个参数必须同时配置。若仅配置其中部分参数，返回 `AV_ERR_INVALID_VAL` |
+| 2 | 禁用条件：当 left、top、right、bottom **全部为 0** 时，裁剪功能被禁用 |
+| 3 | 有效范围：当裁剪的宽度、高度在支持的范围内时，裁剪功能被启用。建议通过 `OH_AVCapability_IsVideoSizeSupported` 查询支持的裁剪范围 |
+| 4 | 越界处理：当裁剪值不在支持范围内时，返回 `AV_ERR_INVALID_VAL` |
+| 5 | 与降采样互斥：不能与降采样参数（`DOWNSAMPLING_WIDTH/HEIGHT`）同时使用。若同时设置，返回 `AV_ERR_INVALID_VAL` |
+| 6 | 行为效果：裁剪启用时，编码器仅对输入帧的裁剪区域进行编码，裁剪矩形之外的内容将被丢弃 |
 
-### 3.4 丢帧（Drop Frame）约束
+### 丢帧（Drop Frame）约束
 
 | 序号 | 约束规则 |
 |------|----------|
-| 1 | **前置条件**：调用方必须已设置原始帧率（`OH_MD_KEY_FRAME_RATE`） |
-| 2 | **精度要求**：数值精度保留到小数点后 **2 位**（采用**四舍五入**方式） |
-| 3 | **值为 0.00**：丢帧功能被禁用 |
-| 4 | **合法正值**：设置为大于 0 且小于原始帧率的正数时，将按设定帧率进行丢帧 |
-| 5 | **非法值**：设置为负数或大于等于原始帧率的值时，返回 `AV_ERR_INVALID_VAL` |
-| 6 | **可组合性**：可与降采样参数**同时使用** |
-| 7 | **可组合性**：可与裁剪参数**同时使用** |
+| 1 | 前置条件：调用方必须已设置原始帧率（`OH_MD_KEY_FRAME_RATE`） |
+| 2 | 精度要求：数值精度保留到小数点后 **2 位**（采用**四舍五入**方式） |
+| 3 | 值为 0.00：丢帧功能被禁用 |
+| 4 | 合法正值：设置为大于 0 且小于原始帧率的正数时，将按设定帧率进行丢帧 |
+| 5 | 非法值：设置为负数或大于等于原始帧率的值时，返回 `AV_ERR_INVALID_VAL` |
+| 6 | 可组合性：可与降采样参数**同时使用** |
+| 7 | 可组合性：可与裁剪参数**同时使用** |
 
-## 4. 开发步骤
+## 开发步骤
 
 支持前处理编码和普通编码器的使用流程一致，主要差异点主要有创建方式、支持前处理参数配置以及动态更新。本文主要对差异点进行详细说明。完整编码器开发流程参考[视频编码Surface模式](video-encoding.md#surface模式)
 
-### Step 1：创建支持前处理的编码器
+### 创建支持前处理的编码器
 ```cpp
 OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
 if (capability == nullptr) {
@@ -102,11 +102,11 @@ if (ret != AV_ERR_OK || encoder == nullptr) {
 }
 ```
 
-### Step 2：注册回调
+### 注册回调
 
 参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
 
-### Step 3：配置编码参数与前处理参数
+### 配置编码参数与前处理参数
 
 编码器参数配置[视频编码Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
 
@@ -153,10 +153,10 @@ if (ret != AV_ERR_OK) {
 OH_AVFormat_Destroy(format);
 ```
 
-### Step 4：获取 Surface
+### 获取 Surface
 
 ```cpp
-// ⚠️ 关键：只能通过主编码器句柄获取 Surface
+// 关键：只能通过主编码器句柄获取 Surface
 OHNativeWindow *window = nullptr;
 ret = OH_VideoEncoder_GetSurface(encoder, &window);
 if (ret != AV_ERR_OK || window == nullptr) {
@@ -173,10 +173,10 @@ if (ret != AV_ERR_OK || window == nullptr) {
 > - **仅主编码器**可以调用 `GetSurface`，副编码器调用将返回 `AV_ERR_OPERATE_NOT_PERMIT`
 > - 对于一入二出场景，只需获取一次 Surface 即可（主/副共享同一输入源）
 
-### Step 5：准备、启动、写入编码图像
+### 准备、启动、写入编码图像
 参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤7、8、10。
 
-### Step 6：运行时动态调整（可选）
+### 运行时动态调整（可选）
 
 可通过 `SetParameter` 在运行时动态修改前处理参数：
 
@@ -211,10 +211,10 @@ void AdjustDownsampling(OH_AVCodec *enc, int newWidth, int newHeight)
 ```
 其他编码器仍可动态配置，参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤9。
 
-### Step 7：通知编码结束、释放编码帧、销毁编码器
+### 通知编码结束、释放编码帧、销毁编码器
 和普通编码器一致，参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤12、13、17。
 
-## 5. GetInputDescription 查询
+## GetInputDescription 查询
 
 启用前处理后，可通过 `GetInputDescription` 查询预处理后的实际输入信息及配置参数：
 
@@ -234,32 +234,32 @@ if (inputDesc != nullptr) {
 }
 ```
 
-## 6. API 参考
+## API 参考
 ### 标准编解码 API 可用性
 
 对于通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建的编码器，以下标准 API 的可用性如下：
 
 | 接口 | 是否可用 | 备注 |
 |------|:--------:|------|
-| `OH_VideoEncoder_RegisterCallback` | ✅ | |
-| `OH_VideoEncoder_RegisterParameterCallback` | ❌ | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
-| `OH_VideoEncoder_PushInputParameter` | ❌ | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
-| `OH_VideoEncoder_Configure` | ✅ | 含前处理参数 |
-| `OH_VideoEncoder_GetSurface` | ✅ | |
-| `OH_VideoEncoder_Prepare` | ✅ | 准备内部资源 |
-| `OH_VideoEncoder_Start` | ✅ | |
-| `OH_VideoEncoder_Stop` | ✅ | |
-| `OH_VideoEncoder_Flush` | ✅ | |
-| `OH_VideoEncoder_Reset` | ✅ | 重置到 Initialized 状态 |
-| `OH_VideoEncoder_SetParameter` | ✅ | 运行时动态调整前处理等参数 |
-| `OH_VideoEncoder_NotifyEndOfStream` | ✅ | Surface 模式专用 |
-| `OH_VideoEncoder_FreeOutputBuffer` | ✅ | |
-| `OH_VideoEncoder_GetInputDescription` | ✅ | 包含前处理元数据 |
-| `OH_VideoEncoder_GetOutputDescription` | ✅ | |
-| `OH_VideoEncoder_IsValid` | ✅ | |
-| `OH_VideoEncoder_Destroy` | ✅ | 销毁编码器实例 |
-| `OH_VideoEncoder_PushInputData` | ❌ | Buffer 模式不支持 |
-| `OH_VideoEncoder_PushInputBuffer` | ❌ | Buffer 模式不支持 |
-| `OH_VideoEncoder_QueryInputBuffer` | ❌ | 同步模式不支持 |
-| `OH_VideoEncoder_QueryOutputBuffer` | ❌ | 同步模式不支持 |
+| `OH_VideoEncoder_RegisterCallback` | √ | |
+| `OH_VideoEncoder_RegisterParameterCallback` | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
+| `OH_VideoEncoder_PushInputParameter` | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
+| `OH_VideoEncoder_Configure` | √ | 含前处理参数 |
+| `OH_VideoEncoder_GetSurface` | √ | |
+| `OH_VideoEncoder_Prepare` | √ | 准备内部资源 |
+| `OH_VideoEncoder_Start` | √ | |
+| `OH_VideoEncoder_Stop` | √ | |
+| `OH_VideoEncoder_Flush` | √ | |
+| `OH_VideoEncoder_Reset` | √ | 重置到 Initialized 状态 |
+| `OH_VideoEncoder_SetParameter` | √ | 运行时动态调整前处理等参数 |
+| `OH_VideoEncoder_NotifyEndOfStream` | √ | Surface 模式专用 |
+| `OH_VideoEncoder_FreeOutputBuffer` | √ | |
+| `OH_VideoEncoder_GetInputDescription` | √ | 包含前处理元数据 |
+| `OH_VideoEncoder_GetOutputDescription` | √ | |
+| `OH_VideoEncoder_IsValid` | √ | |
+| `OH_VideoEncoder_Destroy` | √ | 销毁编码器实例 |
+| `OH_VideoEncoder_PushInputData` | × | Buffer 模式不支持 |
+| `OH_VideoEncoder_PushInputBuffer` | × | Buffer 模式不支持 |
+| `OH_VideoEncoder_QueryInputBuffer` | × | 同步模式不支持 |
+| `OH_VideoEncoder_QueryOutputBuffer` | × | 同步模式不支持 |
 

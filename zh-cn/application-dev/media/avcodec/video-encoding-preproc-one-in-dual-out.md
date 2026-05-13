@@ -3,80 +3,79 @@
 从API version 26.0.0开始，支持编码一入二出编码，主副编码器分别支持前处理配置。
 
 
-## 1. 功能概述
+## 功能概述
 
 **一入二出（One Input Dual Outputs）**是指通过同一份视频输入数据，同时驱动 **两个独立编码器** 产生两路不同编码码流的能力。
 
 | 编码器角色 | 创建方式 | 说明 | 引入版本 |
 |-----------|----------|------|----------|
-| **主编码器（Primary）** | `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建 | 管理共享输入 Surface，负责前处理管线调度，可配置独立的编码参数和前处理参数 | 26.0.0 |
-| **副编码器（Secondary）** | `OH_VideoEncoder_CreateSecondaryFromPrimary` 从主编码器创建 | 共享 Primary 的输入源，可配置独立的编码参数和前处理参数 | 26.0.0 |
+| 主编码器（Primary） | `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建 | 管理共享输入 Surface，负责前处理管线调度，可配置独立的编码参数和前处理参数 | 26.0.0 |
+| 副编码器（Secondary） | `OH_VideoEncoder_CreateSecondaryFromPrimary` 从主编码器创建 | 共享主编码器的输入源，可配置独立的编码参数和前处理参数 | 26.0.0 |
 
 ### 架构图
 以下为一入二出架构图：
 ![one input dual output](figures/video-encoding-one-in-dual-out.png)
 
-## 2. 使用场景
-
+## 使用场景
+应用可依据自己的场景选择使用，场景使用举例见下表：
 | 场景 | 主编码器（Primary） | 副编码器（Secondary） | 用途说明 |
 |------|---------------------|----------------------|----------|
-| **多码率直播（ABR）** | 高码率主码流 | 降采样 + 丢帧的低码流 | 根据网络带宽自适应切换 |
-| **ROI 区域关注** | 全帧编码归档 | 裁剪感兴趣区域编码 | 监控全帧存储 + 局部区域分析 |
-| **多人视频通话** | 全分辨率、高帧率（本地显示） | 降采样 + 丢帧、低码率（远端传输） | 本地高清预览 + 远端低带宽实时通话 |
+| 多码率直播（ABR） | 高码率主码流 | 降采样 + 丢帧的低码流 | 根据网络带宽自适应切换 |
+| ROI 区域关注 | 全帧编码归档 | 裁剪感兴趣区域编码 | 监控全帧存储 + 局部区域分析 |
+| 多人视频通话 | 全分辨率、高帧率（本地显示） | 降采样 + 丢帧、低码率（远端传输） | 本地高清预览 + 远端低带宽实时通话 |
 
+## 约束与限制
 
-## 3. 约束与限制
-
-### 3.1 创建与生命周期约束
+### 创建与生命周期约束
 
 | 序号 | 约束规则 |
 |------|----------|
-| 1 | **Secondary 数量**：每个 Primary 同时最多挂载 **1 个** Secondary |
-| 2 | **创建顺序**：必须先创建 Primary，再从 Primary 派生 Secondary |
-| 3 | **生命周期关系**：Primary 是 Secondary 的所有者（Owner），Secondary 不得脱离 Primary 独立存在。<br>- **推荐销毁顺序**：先 `Destroy(Secondary)` → 再 `Destroy(Primary)`，销毁后立即将对应指针赋值 `nullptr`<br>- **容错机制**：若违反顺序先 Destroy Primary，系统会级联释放关联的 Secondary，但仍应显式遵循正确顺序 |
-| 4 | **重建能力**：Secondary 销毁后，可以从同一个 Primary 重新创建新的 Secondary |
+| 1 | Secondary 数量：每个 Primary 同时最多挂载 **1 个** Secondary |
+| 2 | 创建顺序：必须先创建 Primary，再从 Primary 派生 Secondary |
+| 3 | 生命周期关系：Primary 是 Secondary 的所有者（Owner），Secondary 不得脱离 Primary 独立存在。<br>- **推荐销毁顺序**：先 `Destroy(Secondary)` → 再 `Destroy(Primary)`，销毁后立即将对应指针赋值 `nullptr`<br>- **容错机制**：若违反顺序先 Destroy Primary，系统会级联释放关联的 Secondary，但仍应显式遵循正确顺序 |
+| 4 | 重建能力：Secondary 销毁后，可以从同一个 Primary 重新创建新的 Secondary |
 
-### 3.2 接口可用性约束
+### 接口可用性约束
 
 | 接口 | 主编码器 | 副编码器 | 备注 |
 |------|:--------:|:--------:|------|
-| **OH_VideoEncoder_CreatePrimaryWithPreproc** | ✅ | N/A | 创建主编码器入口 |
-| **OH_VideoEncoder_CreateSecondaryFromPrimary** | ✅ | N/A | 创建副编码器入口，仅可以通过主编码器句柄创建 |
-| **OH_VideoEncoder_RegisterCallback** | ✅ | ✅ | 各自独立注册 |
-| **OH_VideoEncoder_RegisterParameterCallback** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持随帧参数 |
-| **OH_VideoEncoder_PushInputParameter** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持随帧参数 |
-| **OH_VideoEncoder_Configure** | ✅ | ✅ | 各自独立配置（分辨率、码率、前处理等均可不同） |
-| **OH_VideoEncoder_GetSurface** | ✅ **仅限此调用者** | ❌ NOT_PERMIT | 副编码器调用返回错误 |
-| **OH_VideoEncoder_Prepare** | ✅ | ✅ | 各自准备资源，参考普通编码器 |
-| **OH_VideoEncoder_Start** | ✅ | ✅ | 各自独立控制，参考普通编码器 |
-| **OH_VideoEncoder_Stop** | ✅ | ✅ | 各自独立控制，参考普通编码器 |
-| **OH_VideoEncoder_Flush** | ✅ | ✅ | 各自独立控制，参考普通编码器 |
-| **OH_VideoEncoder_Reset** | ✅ | ✅ | 各自独立控制，参考普通编码器 |
-| **OH_VideoEncoder_SetParameter** | ✅ | ✅ | 运行时动态调整 |
-| **OH_VideoEncoder_NotifyEndOfStream** | ✅ | ✅ | Surface 模式专用 |
-| **OH_VideoEncoder_FreeOutputBuffer** | ✅ | ✅ | 各自释放各自的 output buffer |
-| **OH_VideoEncoder_PushInputData** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持 Buffer 模式 |
-| **OH_VideoEncoder_PushInputBuffer** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持 Buffer 模式 |
-| **OH_VideoEncoder_QueryInputBuffer** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持同步模式 |
-| **OH_VideoEncoder_QueryOutputBuffer** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持同步模式 |
-| **OH_VideoEncoder_GetInputDescription** | ✅ | ✅ | 含前处理元数据信息 |
-| **OH_VideoEncoder_GetOutputDescription** | ✅ | ✅ | |
-| **OH_VideoEncoder_IsValid** | ✅ | ✅ | |
-| **OH_VideoEncoder_Destroy** | ✅ | ✅ | 先销毁 Secondary，再销毁 Primary |
+| `OH_VideoEncoder_CreatePrimaryWithPreproc` | √ | N/A | 创建主编码器入口 |
+| `OH_VideoEncoder_CreateSecondaryFromPrimary` | √ | N/A | 创建副编码器入口，仅可以通过主编码器句柄创建 |
+| `OH_VideoEncoder_RegisterCallback` | √ | √ | 各自独立注册 |
+| `OH_VideoEncoder_RegisterParameterCallback` | × NOT_PERMIT | × NOT_PERMIT | 不支持随帧参数 |
+| `OH_VideoEncoder_PushInputParameter` | × NOT_PERMIT | × NOT_PERMIT | 不支持随帧参数 |
+| `OH_VideoEncoder_Configure` | √ | √ | 各自独立配置（分辨率、码率、前处理等均可不同） |
+| `OH_VideoEncoder_GetSurface` | √ **仅限此调用者** | × NOT_PERMIT | 副编码器调用返回错误 |
+| `OH_VideoEncoder_Prepare` | √ | √ | 各自准备资源，参考普通编码器 |
+| `OH_VideoEncoder_Start` | √ | √ | 各自独立控制，参考普通编码器 |
+| `OH_VideoEncoder_Stop` | √ | √ | 各自独立控制，参考普通编码器 |
+| `OH_VideoEncoder_Flush` | √ | √ | 各自独立控制，参考普通编码器 |
+| `OH_VideoEncoder_Reset` | √ | √ | 各自独立控制，参考普通编码器 |
+| `OH_VideoEncoder_SetParameter` | √ | √ | 运行时动态调整 |
+| `OH_VideoEncoder_NotifyEndOfStream` | √ | √ | Surface 模式专用 |
+| `OH_VideoEncoder_FreeOutputBuffer` | √ | √ | 各自释放各自的 output buffer |
+| `OH_VideoEncoder_PushInputData` | × NOT_PERMIT | × NOT_PERMIT | 不支持 Buffer 模式 |
+| `OH_VideoEncoder_PushInputBuffer` | × NOT_PERMIT | × NOT_PERMIT | 不支持 Buffer 模式 |
+| `OH_VideoEncoder_QueryInputBuffer` | × NOT_PERMIT | × NOT_PERMIT | 不支持同步模式 |
+| `OH_VideoEncoder_QueryOutputBuffer` | × NOT_PERMIT | × NOT_PERMIT | 不支持同步模式 |
+| `OH_VideoEncoder_GetInputDescription` | √ | √ | 含前处理元数据信息 |
+| `OH_VideoEncoder_GetOutputDescription` | √ | √ | |
+| `OH_VideoEncoder_IsValid` | √ | √ | |
+| `OH_VideoEncoder_Destroy` | √ | √ | 先销毁 Secondary，再销毁 Primary |
 
-### 3.5 配置约束
+### 配置约束
 
 | 约束项 | 说明 |
 |--------|------|
-| **Surface 共享** | 主/副编码器共享同一个 Consumer Surface，仅需从 `GetSurface` 获取一次并绑定到数据源（Camera/XComponent）
-| **Window 生命周期** | `OH_VideoEncoder_GetSurface` 获取的 window 实例需由开发者负责释放，在所有编码器 Destroy 之后调用 `OH_NativeWindow_DestroyNativeWindow(window)` 销毁 |
-| **前处理独立性** | 每个编码器可分别配置不同的降采样/裁剪/丢帧策略；但每个编码器内部降采样与裁剪仍然互斥 |
-| **回调独立性** | 两路的 `onNewOutputBuffer` 回调在不同线程中触发，需各自释放 FreeOutputBuffer |
+| Surface 共享 | 主/副编码器共享同一个 Consumer Surface，仅需从 `GetSurface` 获取一次并绑定到数据源（Camera/XComponent）
+| Window 生命周期 | `OH_VideoEncoder_GetSurface` 获取的 window 实例需由开发者负责释放，在所有编码器 Destroy 之后调用 `OH_NativeWindow_DestroyNativeWindow(window)` 销毁 |
+| 前处理独立性 | 每个编码器可分别配置不同的降采样/裁剪/丢帧策略；但每个编码器内部降采样与裁剪仍然互斥 |
+| 回调独立性 | 两路的 `onNewOutputBuffer` 回调在不同线程中触发，需各自释放 FreeOutputBuffer |
 
 
-## 4. 开发步骤
+## 开发步骤
 
-### Step 1：创建主编码器（Primary）
+### 创建主编码器（Primary）
 
 ```cpp
 static OH_AVCodec *g_primary = nullptr;
@@ -87,11 +86,11 @@ if (ret != AV_ERR_OK || g_primary == nullptr) {
 }
 ```
 
-### Step 2：注册主编码器回调
+### 注册主编码器回调
 
 和普通编码器实现一致，参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
 
-### Step 3：配置主编码器
+### 配置主编码器
 
 编码器参数配置[视频编码Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
 
@@ -140,12 +139,12 @@ OH_AVFormat_Destroy(format);
 
 > **注意**：Primary 的 WIDTH/HEIGHT 定义了共享输入 Surface 的尺寸，后续创建的 Secondary 在 Configure 时建议设置相同的输入尺寸值。
 
-### Step 4：从主编码器派生创建副编码器（Secondary）
+### 从主编码器派生创建副编码器（Secondary）
 
 ```cpp
 static OH_AVCodec *g_secondary = nullptr;
 
-// ⚠️ 必须在 Primary 成功创建之后才能创建 Secondary
+// 必须在 Primary 成功创建之后才能创建 Secondary
 ret = OH_VideoEncoder_CreateSecondaryFromPrimary(g_primary, &g_secondary);
 if (ret != AV_ERR_OK || g_secondary == nullptr) {
     // 异常处理
@@ -153,12 +152,12 @@ if (ret != AV_ERR_OK || g_secondary == nullptr) {
 }
 ```
 
-### Step 5：注册副编码器回调
+### 注册副编码器回调
 
 和普通编码器实现一致，参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
 > **注意**：Primary 和 Secondary 的回调在**不同线程**中执行。两路都必须各自调用 `FreeOutputBuffer`，否则可能导致阻塞或饥饿。
 
-### Step 6：配置副编码器（含差异化前处理）
+### 配置副编码器（含差异化前处理）
 
 ```cpp
 OH_AVFormat *secFmt = OH_AVFormat_Create();
@@ -200,10 +199,10 @@ if (ret != AV_ERR_OK) {
 }
 ```
 
-### Step 7：获取共享 Surface 并绑定数据源
+### 获取共享 Surface 并绑定数据源
 
 ```cpp
-// ⚠️ 关键规则：只能通过主编码器获取 Surface
+// 关键规则：只能通过主编码器获取 Surface
 OHNativeWindow *window = nullptr;
 ret = OH_VideoEncoder_GetSurface(g_primary, &window);
 if (ret != AV_ERR_OK || window == nullptr) {
@@ -221,7 +220,7 @@ if (ret != AV_ERR_OK || window == nullptr) {
 > - 副编码器调用将直接返回 `AV_ERR_OPERATE_NOT_PERMIT`
 > - 主/副共享同一个 Consumer Surface，只需获取和绑定一次
 
-### Step 8：完成编码器准备并启动两个编码器
+### 完成编码器准备并启动两个编码器
 
 ```cpp
 ret = OH_VideoEncoder_Prepare(g_primary);
@@ -243,7 +242,7 @@ if (ret != AV_ERR_OK) {
 }
 ```
 
-### Step 9：运行时动态调整（可选）
+### 运行时动态调整（可选）
 
 可在运行时通过 `SetParameter` 动态修改 Secondary 的前处理参数：
 
@@ -277,7 +276,7 @@ void AdjustSecondaryDropRate(double targetFps)
 }
 ```
 
-### Step 10：停止与销毁
+### 停止与销毁
 
 ```cpp
 // 停止编码器
@@ -315,7 +314,7 @@ if (window != nullptr){
 
 ---
 
-## 5. 推荐配置模式
+## 推荐配置模式
 
 ### 模式 A：纯双分辨率（最常用）
 
@@ -352,7 +351,7 @@ if (window != nullptr){
 
 ---
 
-## 6. 常见问题排查
+## 常见问题排查
 
 | 问题 | 可能原因 | 解决方法 |
 |------|----------|----------|
@@ -365,7 +364,7 @@ if (window != nullptr){
 
 ---
 
-## 7. API 参考
+## API 参考
 
 ### 核心创建接口
 
