@@ -1701,7 +1701,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 | 类型                                  | 说明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
-| [VibrateTime](#vibratetime9)          | 按照指定时长触发马达振动。 |
+| [VibrateTime](#vibratetime9)          | 按照指定时长触发马达振动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | [VibratePreset](#vibratepreset9)      | 按照预置振动类型触发马达振动。                               |
 | [VibrateFromFile](#vibratefromfile10) | 按照自定义振动配置文件触发马达振动。                         |
 | [VibrateFromPattern<sup>18+</sup>](#vibratefrompattern18)      | 按照自定义振动效果触发马达振动。                             |

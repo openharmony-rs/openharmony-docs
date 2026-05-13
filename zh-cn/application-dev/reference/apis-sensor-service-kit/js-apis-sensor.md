@@ -11460,27 +11460,27 @@ try {
 
 | 名称                        | 值   | 说明                                                         |
 | --------------------------- | ---- | ------------------------------------------------------------ |
-| ACCELEROMETER               | 1    | 加速度传感器。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| GYROSCOPE                   | 2    | 陀螺仪传感器。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| AMBIENT_LIGHT               | 5    | 环境光传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                               |
-| MAGNETIC_FIELD              | 6    | 磁场传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
-| BAROMETER                   | 8    | 气压计传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                               |
-| HALL                        | 10   | 霍尔传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
-| PROXIMITY                   | 12   | 接近光传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                               |
-| HUMIDITY                    | 13   | 湿度传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
-| ORIENTATION                 | 256  | 方向传感器。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| GRAVITY                     | 257  | 重力传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
-| LINEAR_ACCELEROMETER        | 258  | 线性加速度传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                           |
-| ROTATION_VECTOR             | 259  | 旋转矢量传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                             |
-| AMBIENT_TEMPERATURE         | 260  | 环境温度传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                             |
-| MAGNETIC_FIELD_UNCALIBRATED | 261  | 未校准磁场传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                           |
-| GYROSCOPE_UNCALIBRATED      | 263  | 未校准陀螺仪传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                         |
-| SIGNIFICANT_MOTION          | 264  | 有效运动传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                             |
-| PEDOMETER_DETECTION         | 265  | 计步检测传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                             |
-| PEDOMETER                   | 266  | 计步传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
-| HEART_RATE                  | 278  | 心率传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                 |
-| WEAR_DETECTION              | 280  | 佩戴检测传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                             |
-| ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                       |
+| ACCELEROMETER               | 1    | 加速度传感器。<br/>**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| GYROSCOPE                   | 2    | 陀螺仪传感器。<br/>**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| AMBIENT_LIGHT               | 5    | 环境光传感器。                                               |
+| MAGNETIC_FIELD              | 6    | 磁场传感器。                                                 |
+| BAROMETER                   | 8    | 气压计传感器。                                               |
+| HALL                        | 10   | 霍尔传感器。                                                 |
+| PROXIMITY                   | 12   | 接近光传感器。                                               |
+| HUMIDITY                    | 13   | 湿度传感器。                                                 |
+| ORIENTATION                 | 256  | 方向传感器。<br/>**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| GRAVITY                     | 257  | 重力传感器。                                                 |
+| LINEAR_ACCELEROMETER        | 258  | 线性加速度传感器。                                           |
+| ROTATION_VECTOR             | 259  | 旋转矢量传感器。                                             |
+| AMBIENT_TEMPERATURE         | 260  | 环境温度传感器。                                             |
+| MAGNETIC_FIELD_UNCALIBRATED | 261  | 未校准磁场传感器。                                           |
+| GYROSCOPE_UNCALIBRATED      | 263  | 未校准陀螺仪传感器。                                         |
+| SIGNIFICANT_MOTION          | 264  | 有效运动传感器。                                             |
+| PEDOMETER_DETECTION         | 265  | 计步检测传感器。                                             |
+| PEDOMETER                   | 266  | 计步传感器。                                                 |
+| HEART_RATE                  | 278  | 心率传感器。                                                 |
+| WEAR_DETECTION              | 280  | 佩戴检测传感器。                                             |
+| ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。                                       |
 | FUSION_PRESSURE<sup>22+</sup>             | 283  | 融合压力传感器。<br/>仅智能表有该传感器<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23                        |
 
 
@@ -11568,16 +11568,16 @@ try {
 
 | 名称                          | 类型      | 只读 | 可选 | 说明               |
 |-----------------------------|---------|----|----|------------------|
-| sensorName                  | string  | 否  | 否  | 传感器名称。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
-| vendorName                  | string  | 否  | 否  | 传感器供应商。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
-| firmwareVersion             | string  | 否  | 否  | 传感器固件版本。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
-| hardwareVersion             | string  | 否  | 否  | 传感器硬件版本。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
-| sensorId                    | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 否  | 传感器类型id。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
-| maxRange                    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器测量范围的最大值。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23    |
-| minSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否  | 否  | 允许的最小采样周期。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
-| maxSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否  | 否  | 允许的最大采样周期。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23     |
-| precision                   | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器精度。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
-| power                       | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器功率的估计值，单位：mA。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| sensorName                  | string  | 否  | 否  | 传感器名称。|
+| vendorName                  | string  | 否  | 否  | 传感器供应商。         |
+| firmwareVersion             | string  | 否  | 否  | 传感器固件版本。  |
+| hardwareVersion             | string  | 否  | 否  | 传感器硬件版本。   |
+| sensorId                    | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 否  | 传感器类型id。   |
+| maxRange                    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器测量范围的最大值。    |
+| minSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否  | 否  | 允许的最小采样周期。  |
+| maxSamplePeriod             | ArkTS-Dyn: number <br> ArkTS-Sta: long  | 否  | 否  | 允许的最大采样周期。     |
+| precision                   | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器精度。  |
+| power                       | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否  | 否  | 传感器功率的估计值，单位：mA。 |
 | sensorIndex<sup>19+</sup>   | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 传感器索引。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23           |
 | deviceId<sup>19+</sup>      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 设备ID。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
 | deviceName<sup>19+</sup>    | string  | 否  | 是  | 设备名称。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23            |
