@@ -181,7 +181,7 @@ The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid ra
 **可能原因**
 
 该错误码表示应用分身索引不合法，可能原因如下：
-1. 应用分身索引不在合法范围。
+1. 应用分身索引不在合法范围，要求是大于等于0的整数。
 2. 该索引对应的应用不存在。
 
 **处理步骤**
