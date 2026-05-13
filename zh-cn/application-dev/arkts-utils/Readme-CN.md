@@ -4,7 +4,7 @@
 <!--Owner: @flyingwolf; @wang_zhaoyong-->
 <!--Designer: @flyingwolf-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng; @ge-yafang-->
+<!--Adviser:  @HelloCrease; @ge-yafang-->
 
 - [ArkTS简介](arkts-overview.md)
 - ArkTS基础类库<!--arkts-utils-->
