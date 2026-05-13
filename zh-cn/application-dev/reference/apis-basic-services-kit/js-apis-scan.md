@@ -1112,7 +1112,7 @@ scan.onScanDeviceSync((device: scan.ScannerSyncDevice) => {
 })
 ```
 
-## scan.offScanDeviceSync
+## scan.offScanDeviceSync<sup>23+</sup>
 
 offScanDeviceSync(callback?: Callback&lt;ScannerSyncDevice&gt;): void
 
