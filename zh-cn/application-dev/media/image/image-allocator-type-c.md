@@ -283,60 +283,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 <!-- @[allocator_yuv_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadAllocator.cpp) -->
 
 ``` C++
-napi_value CreatePixelmapWithYUV(napi_env env, napi_callback_info info)
-{
-    napi_value argValue[1] = {nullptr};
-    size_t argCount = 1;
-    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < 1 ||
-        argValue[0] == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "CreatePixelmapWithYUV napi_get_cb_info failed!");
-        return GetJsResult(env, IMAGE_BAD_PARAMETER);
-    }
-    const size_t maxPathLength = 1024;
-    char filePath[maxPathLength];
-    size_t pathSize = maxPathLength;
-    napi_get_value_string_utf8(env, argValue[0], filePath, maxPathLength, &pathSize);
 
-    OH_ImageSourceNative* imageSource = nullptr;
-    Image_ErrorCode errorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &imageSource);
-    
-    OH_DecodingOptions *options = nullptr;
-    OH_DecodingOptions_Create(&options);
-    // 设置YUV像素格式（NV21或NV12），实现内存优化。
-    OH_DecodingOptions_SetPixelFormat(options, PIXEL_FORMAT_NV21);
-    
-    // 使用DMA内存分配，配合YUV格式实现最优解码性能。
-    IMAGE_ALLOCATOR_TYPE allocatorType = IMAGE_ALLOCATOR_TYPE::IMAGE_ALLOCATOR_TYPE_DMA;
-    OH_PixelmapNative *pixelmap = nullptr;
-    errorCode = OH_ImageSourceNative_CreatePixelmapUsingAllocator(imageSource, options, allocatorType, &pixelmap);
-    if (errorCode == IMAGE_SUCCESS && pixelmap != nullptr) {
-        // 获取PixelMap信息，验证像素格式。
-        OH_Pixelmap_ImageInfo *imageInfo = nullptr;
-        OH_PixelmapImageInfo_Create(&imageInfo);
-        OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
-        
-        uint32_t width;
-        uint32_t height;
-        uint32_t rowStride;
-        int32_t pixelFormat;
-        OH_PixelmapImageInfo_GetWidth(imageInfo, &width);
-        OH_PixelmapImageInfo_GetHeight(imageInfo, &height);
-        OH_PixelmapImageInfo_GetRowStride(imageInfo, &rowStride);
-        OH_PixelmapImageInfo_GetPixelFormat(imageInfo, &pixelFormat);
-        OH_LOG_INFO(LOG_APP, "YUV PixelMap created: width=%{public}u, height=%{public}u, "
-                    "rowStride=%{public}u, pixelFormat=%{public}d",
-                    width, height, rowStride, pixelFormat);
-        OH_PixelmapImageInfo_Release(imageInfo);
-    } else {
-        OH_LOG_ERROR(LOG_APP, "CreatePixelmapWithYUV failed, errorCode=%{public}d", errorCode);
-    }
-    
-    OH_DecodingOptions_Release(options);
-    options = nullptr;
-    OH_ImageSourceNative_Release(imageSource);
-    imageSource = nullptr;
-    return GetJsResult(env, errorCode);
-}
 ```
 
 ## 系统默认的内存分配方式
