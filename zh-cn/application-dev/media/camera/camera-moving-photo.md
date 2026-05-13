@@ -57,8 +57,8 @@
 
 3. 查询当前设备当前模式是否支持动态照片能力。
 
-> **说明：**
-> 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
+   > **说明：**
+   > 查询是否支持动态照片前需要先完成相机会话配置、提交和启动会话，详细开发步骤请参考[会话管理](camera-session-management.md)。
 
    <!-- @[camera_moving_photo_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
@@ -82,9 +82,9 @@
 
 4. 使能动态照片拍照能力。
 
-> **说明：**
->
-> 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
+   > **说明：**
+   >
+   > 使能动态照片前需要使能[分段式拍照](camera-deferred-capture.md)能力。
 
    <!-- @[camera_moving_photo_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
