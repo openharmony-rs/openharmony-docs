@@ -294,6 +294,12 @@
    ArkTS-Sta示例：
 
    <!-- @[create_fddst](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   this.outputFilePath = this.context!.filesDir + '/output.mp4';
+   this.file = fs.openSync(this.outputFilePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+   this.avTranscoder!!.fdDst = this.file.fd;
+   ```
 
 5. 配置视频转码参数，调用prepare()接口。
 
