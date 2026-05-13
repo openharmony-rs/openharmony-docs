@@ -5607,6 +5607,23 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formHost, formInfo } from '@kit.FormKit';
+
+try {
+  formHost.getFormIdsByFormLocation(formInfo.FormLocation.DESKTOP).then((formIds: Array<string>) => {
+    console.info('formHost getFormIdsByFormLocation success.');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+```
+
 ## formHost.onGetWantParamsCallback
 
 onGetWantParamsCallback(callback: formInfo.GetWantParamsCallback): void
