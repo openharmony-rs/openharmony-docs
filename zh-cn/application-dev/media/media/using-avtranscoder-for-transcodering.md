@@ -378,6 +378,11 @@
    ArkTS-Sta示例：
 
    <!-- @[doStart](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 4.开始转码。
+   await this.avTranscoder!.start();
+   ```
 
 7. 暂停转码，调用pause()接口。
 
