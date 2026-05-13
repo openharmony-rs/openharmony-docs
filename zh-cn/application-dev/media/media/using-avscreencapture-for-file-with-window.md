@@ -58,7 +58,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    创建AVScreenCapture实例capture后，可以设置屏幕录制所需要的参数。
 
    <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    void SetConfig(OH_AVScreenCaptureConfig &config)
    {
@@ -67,44 +67,44 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
            .audioChannels = 2,
            .audioSource = OH_MIC
        };
-
+   
        OH_AudioCaptureInfo innerCapInfo = {
            .audioSampleRate = 48000,
            .audioChannels = 2,
            .audioSource = OH_ALL_PLAYBACK
        };
-
+   
        OH_AudioEncInfo audioEncInfo = {
            .audioBitrate = 48000,
            .audioCodecformat = OH_AAC_LC
        };
-
+   
        OH_VideoCaptureInfo videoCapInfo = {
            .videoFrameWidth = 720,
            .videoFrameHeight = 1280,
            .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
        };
-
+   
        OH_VideoEncInfo videoEncInfo = {
            .videoCodec = OH_H264,
            .videoBitrate = 2000000,
            .videoFrameRate = 30
        };
-
+   
        OH_AudioInfo audioInfo = {
            .micCapInfo = micCapInfo,
            .innerCapInfo = innerCapInfo,
            .audioEncInfo = audioEncInfo
        };
-
+   
        OH_VideoInfo videoInfo = {
            .videoCapInfo = videoCapInfo,
            .videoEncInfo = videoEncInfo
        };
-
+   
        config = {
            .captureMode = OH_CAPTURE_HOME_SCREEN,
-           .dataType = OH_ORIGINAL_STREAM,
+           .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流或文件
            .audioInfo = audioInfo,
            .videoInfo = videoInfo
        };
