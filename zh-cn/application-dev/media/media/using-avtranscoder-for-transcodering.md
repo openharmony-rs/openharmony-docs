@@ -248,6 +248,16 @@
    转码参数设置：
 
    <!-- @[create_transcoderconfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   private avConfig: media.AVTranscoderConfig = {
+     audioBitrate: 100000, // 音频比特率。
+     audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
+     fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 封装格式。
+     videoBitrate: 200000, // 视频比特率。
+     videoCodec: media.CodecMimeType.VIDEO_AVC, // 视频编码格式。
+   };
+   ```
 
    调用Prepare()接口：
 
