@@ -4050,7 +4050,7 @@ struct Index {
 
 forceReuseRasterResult(isForce: boolean): void
 
-设置是否强制复用光栅化结果。设置后，在下次调用{@link OH_Drawing_TypographyPaint}绘制时生效。true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。
+设置是否强制复用光栅化结果。设置后，在下次调用[paint](#paint)绘制时生效。true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -4066,7 +4066,7 @@ forceReuseRasterResult(isForce: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |  ---   | ---  | ---  | ---  |
-| isForce | boolean | 是 | 是否强制复用光栅化结果。true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。 |
+| isForce | boolean | 是 | 是否强制复用光栅化结果。true表示强制复用光栅化结果，false表示允许更新光栅化结果。 |
  
 **示例：**
 
@@ -4077,7 +4077,7 @@ import { text, drawing } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit'
  
 function textFunc(pixelmap: PixelMap) {
-  let canvas = new drawing.Canvas(pixelMap);
+  let canvas = new drawing.Canvas(pixelmap);
   let textData = "Hello World";
   let myTextStyle: text.TextStyle = {
     color: { alpha: 255, red: 255, green: 0, blue: 0 },
@@ -4127,7 +4127,7 @@ import { image } from '@kit.ImageKit';
 
 function textFunc(pixelmap?: image.PixelMap) {
   if (pixelmap) {
-    let canvas = new drawing.Canvas(pixelMap);
+    let canvas = new drawing.Canvas(pixelmap);
     let textData = "Hello World";
     let myTextStyle: text.TextStyle = {
       color: { alpha: 255, red: 255, green: 0, blue: 0 },
