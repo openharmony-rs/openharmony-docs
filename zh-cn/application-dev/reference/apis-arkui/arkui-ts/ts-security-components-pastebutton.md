@@ -28,6 +28,8 @@ PasteButton()
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -45,6 +47,8 @@ PasteButton(options: PasteButtonOptions)
 创建包含指定元素的粘贴控件。
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -69,6 +73,8 @@ PasteButton(options?: PasteButtonOptions)
 创建粘贴控件。
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -100,6 +106,8 @@ PasteButton(options?: PasteButtonOptions)
 >     - ButtonType默认样式为Capsule。
 > - icon、text和buttonType不支持动态修改。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -122,6 +130,8 @@ PasteButton(options?: PasteButtonOptions)
 
 粘贴控件的图标风格。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -138,6 +148,8 @@ PasteButton(options?: PasteButtonOptions)
 
 粘贴控件的文本描述。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -153,6 +165,8 @@ PasteButton(options?: PasteButtonOptions)
 ## PasteButtonOnClickResult
 
 粘贴控件点击后的授权结果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -172,6 +186,8 @@ PasteButton(options?: PasteButtonOptions)
 type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult, error?: BusinessError&lt;void&gt;) =&gt; void
 
 点击粘贴控件触发该回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -200,6 +216,8 @@ ArkTS-Dyn: onClick(event: PasteButtonCallback)
 ArkTS-Sta: onClick(event: PasteButtonCallback | undefined)
 
 点击动作触发该回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
