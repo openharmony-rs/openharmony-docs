@@ -864,6 +864,10 @@ completed(): Promise<CompletedResult>
 
 | 名称 | 类型   | 只读 | 可选 | 说明   |
 | ---- | ------------------------------------------------ | ---- | ---- | ------ |
+ | functionName | string | 否   | 否 |产生错误的接口名称。 |	 
+ | errorCode | number | 否   | 否 | 错误码。 |	 
+ | message | string | 否   | 否 | 接口返回的具体错误描述信息。 |
+
 ## CompletedResult
 
 Picker上次退出时现场的信息。
