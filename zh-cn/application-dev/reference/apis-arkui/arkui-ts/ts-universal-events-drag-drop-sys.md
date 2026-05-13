@@ -61,7 +61,7 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 
 > **说明：**
 >
-> 1. 该接口仅在dragAnimationType设置为DragAnimationType.FOLLOW_HAND_MORPH时生效。
+> 1. 该接口仅在[dragAnimationType](#属性)设置为DragAnimationType.FOLLOW_HAND_MORPH时生效。
 > 2. 不要在回调中实现与动效无关的逻辑，避免影响执行效率。
 
 **起始版本：** 26.0.0
@@ -77,7 +77,7 @@ executeFollowHandMorphDropAnimation(onAnimationFinished: Callback\<void\>, anima
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | onAnimationFinished | [Callback](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)\<void\> | 是 | 拖拽框架动效结束后触发的回调。 |
-| animationOption | string | 否 | 可选的动效参数字符串，会在动效流程中由框架透传。<br/>参数为JSON字符串格式，包含以下字段：<br/>- CubicCurveEnable: boolean，表示是否启用三次曲线动画。<br/>- SpringEnable: boolean，表示是否启用弹簧动画。<br/>- dropAnimationCurve: number[]，表示落位动画曲线参数。<br/>- dropPosition: number[]，落位位置坐标[x, y]。<br/>- dropSize: number[]，落位尺寸[width, height]。 |
+| animationOption | string | 否 | 落位动效参数。<br/>参数为JSON字符串格式，包含以下字段：<br/>CubicCurveEnable: boolean，表示是否启用三次曲线动画。设置为true时启用三次曲线动画，设置为false时不启用。<br/>SpringEnable: boolean，表示是否启用弹簧动画。设置为true时启用弹簧动画效果，设置为false时不启用。**说明：** SpringEnable优先级高于CubicCurveEnable，当两者同时为true时，以弹簧动画为准。<br/>dropAnimationCurve: number[]，表示落位动画曲线参数，其含义由SpringEnable和CubicCurveEnable决定（SpringEnable优先级更高）。当SpringEnable为true时，数组长度为3，格式为[response, dampingRatio, blendDuration]，对应[curves.springMotion](../../../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9)的弹簧曲线参数；当SpringEnable为false且CubicCurveEnable为true时，数组长度为4，格式为[x1, y1, x2, y2]，对应[curves.cubicBezierCurve](../../../reference/apis-arkui/js-apis-curve.md#curvescubicbeziercurve9)的三次贝塞尔曲线控制点参数。**说明：** 当SpringEnable和CubicCurveEnable均未正确设置时，使用默认弹簧曲线(0.6, 0.7, 0.25)。<br/>dropPosition: number[]，落位位置坐标。数组长度为2，格式为[x, y]，单位为px，表示拖拽元素落位时的目标位置坐标，取值范围为(-∞, +∞)。<br/>dropSize: number[]，落位尺寸。数组长度为2，格式为[width, height]，单位为px，表示拖拽元素落位时的目标尺寸，取值范围为(0, +∞)。 |
 
 ## DragAnimationType
 
@@ -196,10 +196,10 @@ struct FollowHandMorphDemo {
 
           // 构建动画参数
           let animationOption = new AnimationOption();
-          animationOption.CubicCurveEnable = true;
-          animationOption.SpringEnable = false;
+          animationOption.CubicCurveEnable = false;
+          animationOption.SpringEnable = true;
           animationOption.dropAnimationCurve = [0.416, 0.99, 0];
-          animationOption.dropPosition = [360, 560];
+          animationOption.dropPosition = [830, 600];
           animationOption.dropSize = [100, 100];
 
           // 执行跟手变形落位动效
