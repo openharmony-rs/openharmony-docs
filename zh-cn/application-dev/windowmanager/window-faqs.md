@@ -261,11 +261,11 @@ export default class EntryAbility extends UIAbility {
 
 ## 如何设置窗口背景透明
 
-可以通过调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowavoidarea9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
+可以通过调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
 
 > **说明：**
 > 
-> - 在支持[自由多窗](window-terminology.md#自由多窗模式)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowavoidarea9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
+> - 在支持[自由多窗](window-terminology.md#自由多窗模式)的设备上，存在窗口容器，窗口容器背景色覆盖整个窗口区域，包括标题栏和内容区域。调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口仅可设置应用内容背景色，此时会透出窗口容器背景色。
 > 
 > - 在2in1和Tablet设备上可以调用[setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20)接口设置容器透明，在其他设备上暂不支持设置容器背景色。
 
@@ -551,7 +551,7 @@ module.json5配置示例如下：
 
 ## 如何设置全局悬浮窗背景色为透明
 
-可以通过调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowavoidarea9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
+可以通过调用[setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setWindowBackgroundColor9)接口，传入'\#00XXXXXX'（其中X代表任意十六进制数字）或者透明的[ColorMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#colormetrics12)实现窗口背景透明。
 
 ## 如何判断应用被部分遮挡或完全遮挡
 
@@ -610,7 +610,7 @@ module.json5配置示例如下：
 - 进程级水印：可通过[setWatermarkImageForAppWindows()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwatermarkimageforappwindows21)设置或取消应用进程级水印，针对当前应用进程的窗口生效，包括后续该进程新创建的窗口。
 
 <!--Del-->
-- 屏幕级水印：可通过[window.setWaterMarkImage()](../reference/apis-arkui/js-apis-window-sys.md#windowsetwatermarkflag10)设置和取消屏幕级水印。
+- 屏幕级水印：可通过[window.setWaterMarkImage()](../reference/apis-arkui/js-apis-window-sys.md#windowsetwatermarkimage10)设置和取消屏幕级水印。
 <!--DelEnd-->
 
 ## 如何将创建的窗口移动到扩展屏
