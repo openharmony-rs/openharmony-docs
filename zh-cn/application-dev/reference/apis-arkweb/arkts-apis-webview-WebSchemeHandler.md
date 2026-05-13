@@ -150,9 +150,9 @@ onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 
 当请求完成时的回调，仅当[onRequestStart](#onrequeststart12)回调决定拦截此请求时触发。触发的时机有以下两点：
 
-1.WebResourceHandler调用didFail或者didFinish。
+1. WebResourceHandler调用didFail或者didFinish。
 
-2.此请求因为其他原因中断。
+2. 此请求因为其他原因中断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

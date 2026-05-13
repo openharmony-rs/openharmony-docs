@@ -12,7 +12,7 @@ typedef struct {...} ArkWeb_ControllerAPI
 
 ## 概述
 
-Controller相关的Native API结构体。在调用接口前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。Controller相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
+Controller相关的Native API结构体。在调用接口前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致崩溃。Controller相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
 
 **起始版本：** 12
 
@@ -62,7 +62,7 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 | 参数项 | 描述 |
 | -- | -- |
 | const char* webTag | Web组件名称。                   |
-|const ArkWeb_JavaScriptObject* javascriptObject  | 注入的JavaScript对象。           |
+| const ArkWeb_JavaScriptObject* javascriptObject  | 注入的JavaScript对象。           |
 
 ### registerJavaScriptProxy()
 
@@ -218,7 +218,7 @@ const char* (*getLastJavascriptProxyCallingFrameUrl)()
 ### registerJavaScriptProxyEx()
 
 ```c
-void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject,const char* permission)
+void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)
 ```
 
 **描述：**
@@ -233,7 +233,7 @@ void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWi
 | -- | -- |
 | const char* webTag | Web组件名称。 |
 |  const [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md)* proxyObject | 注册的对象。 |
-| const char* permission | json格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 |
+| const char* permission | JSON格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 |
 
 ### registerAsyncJavaScriptProxyEx()
 
@@ -253,5 +253,5 @@ void (*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObj
 | -------- | -------- |
 | const char* webTag | Web组件名称。  | 
 | const ArkWeb_ProxyObject* proxyObject | 注册的对象。  | 
-| const char* permission | json格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 | 
+| const char* permission | JSON格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 | 
 
