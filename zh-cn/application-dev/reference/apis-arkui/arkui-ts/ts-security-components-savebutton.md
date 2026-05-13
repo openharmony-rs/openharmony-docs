@@ -100,35 +100,39 @@ SaveButton(options: SaveButtonOptions)
 
 保存控件的文本描述。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DOWNLOAD | 0 | 保存控件的文字描述为“下载”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| DOWNLOAD_FILE | 1 | 保存控件的文字描述为“下载文件”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| SAVE | 2 | 保存控件的文字描述为“保存”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| SAVE_IMAGE | 3 | 保存控件的文字描述为“保存图片”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| SAVE_FILE | 4 | 保存控件的文字描述为“保存文件”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| DOWNLOAD_AND_SHARE | 5 | 保存控件的文字描述为“下载分享”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| RECEIVE | 6 | 保存控件的文字描述为“接收”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| CONTINUE_TO_RECEIVE | 7 | 保存控件的文字描述为“继续接收”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| SAVE_TO_GALLERY<sup>12+</sup> | 8 | 保存控件的文字描述为“保存至图库”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| EXPORT_TO_GALLERY<sup>12+</sup> | 9 | 保存控件的文字描述为“导出”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| QUICK_SAVE_TO_GALLERY<sup>12+</sup> | 10 | 保存控件的文字描述为“快速保存图片”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| RESAVE_TO_GALLERY<sup>12+</sup> | 11 | 保存控件的文字描述为“重新保存”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| SAVE_ALL<sup>18+</sup> | 12 | 保存控件的文字描述为“全部保存”。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| DOWNLOAD | 0 | 保存控件的文字描述为“下载”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| DOWNLOAD_FILE | 1 | 保存控件的文字描述为“下载文件”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| SAVE | 2 | 保存控件的文字描述为“保存”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| SAVE_IMAGE | 3 | 保存控件的文字描述为“保存图片”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| SAVE_FILE | 4 | 保存控件的文字描述为“保存文件”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| DOWNLOAD_AND_SHARE | 5 | 保存控件的文字描述为“下载分享”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| RECEIVE | 6 | 保存控件的文字描述为“接收”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| CONTINUE_TO_RECEIVE | 7 | 保存控件的文字描述为“继续接收”。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| SAVE_TO_GALLERY<sup>12+</sup> | 8 | 保存控件的文字描述为“保存至图库”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| EXPORT_TO_GALLERY<sup>12+</sup> | 9 | 保存控件的文字描述为“导出”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| QUICK_SAVE_TO_GALLERY<sup>12+</sup> | 10 | 保存控件的文字描述为“快速保存图片”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| RESAVE_TO_GALLERY<sup>12+</sup> | 11 | 保存控件的文字描述为“重新保存”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| SAVE_ALL<sup>18+</sup> | 12 | 保存控件的文字描述为“全部保存”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## SaveButtonOnClickResult枚举说明
 
 保存控件点击后的授权结果。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SUCCESS | 0 | 保存控件点击后权限授权成功。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后弹窗用户取消授权。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
+| SUCCESS | 0 | 保存控件点击后权限授权成功。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后弹窗用户取消授权。 <br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## SaveButtonCallback<sup>18+</sup>
 
@@ -152,8 +156,6 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 
 ## SaveButtonAttribute
 SaveButtonAttribute提供自定义图标（setIcon）、自定义文本（setText）、图标尺寸（iconSize）、图标圆角（iconBorderRadius），以及按压态效果（stateEffect）等属性设置的方法。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
