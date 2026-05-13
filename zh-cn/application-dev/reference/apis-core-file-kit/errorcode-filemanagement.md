@@ -1016,21 +1016,21 @@ Operation Not Support
 
 1. 确认资源类型。
 
-   - 如执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源是Moving Photo类型。
-   - 如执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO类型。
+    - 如执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源是Moving Photo类型。
+    - 如执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO类型。
 
 2. 避免重复操作。
 
-   - 在调用addAssets/removeAssets/moveAssets前，检查是否已执行过此操作，避免连续重复调用。
+    - 在调用addAssets/removeAssets/moveAssets前，检查是否已执行过此操作，避免连续重复调用。
 
 3. 完成提交后再修改。
 
-   - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用[applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
-   - 提交生效后才能对创建的资产发起新的修改请求。
+    - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用[applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+    - 提交生效后才能对创建的资产发起新的修改请求。
 
 4. 确认相册类型。
-   - addAssets/removeAssets 仅支持用户相册和高亮相册。
-   - 系统相册（如相机、截屏相册）不支持这些操作。
+    - addAssets/removeAssets 仅支持用户相册和高亮相册。
+    - 系统相册（如相机、截屏相册）不支持这些操作。
 
 ## 空间统计错误码
 
