@@ -155,7 +155,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 6. 调用[OH_AVScreenCapture_Release](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_release)方法销毁实例，释放资源。
 
    <!-- @[screenCapture_releaseScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    OH_AVScreenCapture_Release(g_avCapture);
    g_avCapture = nullptr;
