@@ -1,8 +1,8 @@
 # Custom Component Built-in APIs
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -142,7 +142,7 @@ struct MyComponent {
 
 queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
 
-Queries the information about the nearest **NavDestination** component in the navigation stack for a custom component.
+Queries the information of the nearest **NavDestination** component (a navigation page or subpage of the **Navigation** component) associated with this custom component. The search direction is controlled by **isInner**: **true** for inward search and **false** for outward search.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -177,7 +177,7 @@ struct NavigationExample {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfo.pushPath({ name: 'pageOne' }); // Push the navigation destination page specified by name to the navigation stack.
+            this.pageInfo.pushPath({ name: 'pageOne' }); // Push the NavDestination page specified by name to the navigation path stack.
           })
       }
     }.title('NavIndex')
@@ -210,7 +210,7 @@ export struct PageOneComponent {
             this.navDesInfo = this.queryNavDestinationInfo(true);
             this.text = JSON.stringify(this.navDesInfo?.name).toString();
           })
-        Text('The NavDestination component found inward is:' + this.text)
+        Text('The NavDestination component found inward is: ' + this.text)
           .width('80%')
           .height(50)
           .margin(50)
@@ -238,7 +238,7 @@ struct MyComponent {
           this.navDesInfo = this.queryNavDestinationInfo(false);
           this.text = JSON.stringify(this.navDesInfo?.name).toString();
         })
-      Text('The NavDestination component found outward is:' + this.text)
+      Text('The NavDestination component found outward is: ' + this.text)
         .width('80%')
         .height(50)
         .margin(50)
