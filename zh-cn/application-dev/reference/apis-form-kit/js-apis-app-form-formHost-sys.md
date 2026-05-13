@@ -5622,6 +5622,7 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## formHost.onGetWantParamsCallback
