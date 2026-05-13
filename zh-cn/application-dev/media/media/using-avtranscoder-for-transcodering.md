@@ -33,6 +33,11 @@
    ArkTS-Sta示例：
 
    <!-- @[create_instance](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 1.创建转码实例。
+   this.avTranscoder = await media.createAVTranscoder();
+   ```
 
 2. 设置业务需要的监听事件，监听状态变化及错误上报。
 
