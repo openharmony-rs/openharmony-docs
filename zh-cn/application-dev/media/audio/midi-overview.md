@@ -48,7 +48,7 @@ OH_MIDI包含客户端、设备、端口和事件四个核心概念。使用OH_M
 
 ## OH_MIDI设备（Device）
 
-MIDI设备是指物理或虚拟的MIDI接口设备，包括USB MIDI键盘、蓝牙MIDI控制器等。设备连接后，MIDI服务会为其分配标识符（[OH_MIDIDeviceInformation](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportinformation.md)中的`midiDeviceId`），用于在当前会话中区分和管理不同设备。
+MIDI设备是指物理或虚拟的MIDI接口设备，包括USB MIDI键盘、蓝牙MIDI控制器等。设备连接后，MIDI服务会为其分配标识符（[OH_MIDIDeviceInformation](../../reference/apis-audio-kit/capi-ohmidi-oh-midideviceinformation.md)中的`midiDeviceId`），用于在当前会话中区分和管理不同设备。
 
 设备信息包含设备类型（USB或蓝牙）、原生协议能力、设备名称、厂商ID、产品ID和设备地址等属性。
 
