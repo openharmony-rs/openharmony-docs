@@ -29,7 +29,8 @@
 - 其他开发场景<!--other-scenarios-->
   - [截图与隐私模式 (ArkTS)](screenshot-and-privacy-mode.md)
   - [控制亮度与常亮 (ArkTS)](brightness-control.md)
-  - [使用WindowManager管理多模输入事件（C/C++）](native-window-event-filter.md)
+  - [设置窗口动效 (ArkTS)](window-animation.md)
+  - [使用WindowManager管理多模输入事件 (C/C++)](native-window-event-filter.md)
   <!--RP1-->
   <!--RP1End-->
 - 应用启动页的配置与使用<!--launch-page-->
