@@ -1404,7 +1404,7 @@ ArkTS-Sta示例：
 ```ts
 async function CreatePixelMapFunc(imageSource: image.ImageSource): Promise<void> {
   try {
-    let pixelMap = imageSource.createPixelMap();
+    let pixelMap = await imageSource.createPixelMap();
     console.info(0x00000, 'CreatePixelMapFunc', 'createPixelMap success!');
   } catch (err) {
     console.error(0x00000, 'CreatePixelMapFunc', 'CreatePixelMapFunc failed: ' + err);
