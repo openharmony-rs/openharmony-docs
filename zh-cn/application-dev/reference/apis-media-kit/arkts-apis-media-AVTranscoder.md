@@ -619,7 +619,7 @@ onError(callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -684,7 +684,7 @@ offError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#onerror12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror12)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
 
