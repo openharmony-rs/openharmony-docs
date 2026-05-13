@@ -462,6 +462,19 @@
    ArkTS-Sta示例：
 
    <!-- @[doRelease](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 释放转码流程。
+   async releaseTranscoderingProcess(): Promise<void> {
+     if (this.avTranscoder != undefined) {
+       // 1.释放转码实例。
+       await this.avTranscoder!!.release();
+       this.avTranscoder = undefined;
+       // 2.关闭转码目标文件fd。
+       fs.closeSync(this.avTranscoder!.fdDst);
+     }
+   }
+   ```
 
 10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程
 
