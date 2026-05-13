@@ -147,7 +147,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 5. 调用[OH_AVScreenCapture_StopScreenRecording](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_stopscreenrecording)方法停止录制。
 
    <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
    ```
