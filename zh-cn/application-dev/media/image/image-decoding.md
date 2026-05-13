@@ -35,7 +35,7 @@
    
    ``` TypeScript
    // 获取当前设备支持的解码格式列表。
-   export function getSupportedFormats(): string[] {wxc
+   export function getSupportedFormats(): string[] {
      let formats = image.getImageSourceSupportedFormats();
      console.info('Supported formats: ' + formats);
      return formats;
