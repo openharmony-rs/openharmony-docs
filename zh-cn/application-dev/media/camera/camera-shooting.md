@@ -36,21 +36,21 @@
    <!-- @[camera_getPhotoOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    
    ``` TypeScript
-     getPhotoOutput(cameraManager: camera.CameraManager,
-       cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
-       let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
-       if (!photoProfilesArray || photoProfilesArray.length === 0) {
-         console.error('photoProfilesArray is null or []');
-       }
-       let photoOutput: camera.PhotoOutput | undefined = undefined;
-       try {
-         this.photoProfileObj = photoProfilesArray[0]
-         photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
-       } catch (error) {
-         let err = error as BusinessError;
-         console.error(`Failed to createPhotoOutput. error: ${err}`);
-       }
-       return photoOutput;
+   getPhotoOutput(cameraManager: camera.CameraManager,
+     cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
+     let photoProfilesArray: camera.Profile[] = cameraOutputCapability.photoProfiles;
+     if (!photoProfilesArray || photoProfilesArray.length === 0) {
+       console.error('photoProfilesArray is null or []');
+     }
+     let photoOutput: camera.PhotoOutput | undefined = undefined;
+     try {
+       this.photoProfileObj = photoProfilesArray[0]
+       photoOutput = cameraManager.createPhotoOutput(photoProfilesArray[0]);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`Failed to createPhotoOutput. error: ${err}`);
+     }
+     return photoOutput;
    }
    ```
 
