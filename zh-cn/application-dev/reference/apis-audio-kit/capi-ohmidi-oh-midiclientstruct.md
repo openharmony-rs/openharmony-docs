@@ -1,4 +1,4 @@
-# OH_MIDIClientStruct
+# OH_MIDIClient
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->

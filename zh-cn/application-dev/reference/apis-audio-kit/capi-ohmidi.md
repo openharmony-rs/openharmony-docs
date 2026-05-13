@@ -1,4 +1,4 @@
-# OHMIDI
+# OH_MIDI
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
