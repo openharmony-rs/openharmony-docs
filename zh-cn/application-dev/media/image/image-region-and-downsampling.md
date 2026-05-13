@@ -76,7 +76,7 @@
    <!-- @[decode_downsample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
    
    ``` TypeScript
-   async DownsampleDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {wxc
+   async DownsampleDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
      let decodingOptions: image.DecodingOptions = {
        desiredSize: { width: 512, height: 512 }
      };
