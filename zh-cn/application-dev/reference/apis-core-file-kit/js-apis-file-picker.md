@@ -767,7 +767,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 | 名称                    | 类型                                          | 只读 | 可选 | 说明                                       |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
 | maxSelectNumber<sup>10+</sup>       | number                                      | 否   | 是 | 选择文件最大个数。<br>API version 20及之前的版本，单次文件选择的最大数量上限为500个，默认值也为500。目录选择功能仅对具备该系统能力的设备开放，且单次最多可选择1个目录。<br>API version 21及之后的版本取消文件选择数量的限制。受系统能力限制，选择文件数量过大可能会出现功能异常或处理性能较差等情况，建议单次选择文件个数不超过1万个。<br>API version 23及之后的版本取消目录选择数量的限制。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService   |
-| defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定选择的文件或者目录的URI。默认为空（效果为拉起最近打开页）。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService          |
+| defaultFilePathUri<sup>10+</sup>    | string                                      | 否   |  是 | 指定所选文件或目录的URI，默认值为空（此时打开最近访问的页面）。PC的文件选择器为提升用户体验，会记住用户上次导航到的位置并以此作为起始路径，而不会始终使用defaultFilePathUri指定的路径。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService          |
 | fileSuffixFilters<sup>10+</sup>     | Array&lt;string&gt;                         | 否   |  是 | 选择文件的后缀类型。传入字符串数组，每一项代表一个后缀选项，每一项内部用"\|\"分为两部分，第一部分为描述，第二部分为过滤后缀。没有"\|\"则没有描述，该项整体是一个过滤后缀。每项过滤后缀可以存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔，传入数组长度不能超过100，例如：['图片(.png, .jpg)\|\.png,.jpg', '文档\|\.txt', '视频\|\.mp4', '.pdf']。<br>默认不过滤，即显示所有文件。此外2in1设备支持通配符方式['所有文件(\*.\*)\|\.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。<br>仅对具有该系统能力的设备开放。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService   |
 | selectMode<sup>11+</sup>         | [DocumentSelectMode](#documentselectmode11) | 否   |  是 | Picker选择的文档类型，默认值是FILE(文件类型)。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
 | authMode<sup>12+</sup>    | boolean                              | 否   |  是 | 拉起授权Picker，默认为false（非授权模式）。当authMode为true时为授权模式，defaultFilePathUri必填，表明待授权URI。<br>**设备行为差异**：该参数在2in1设备中可正常使用，在其他设备中无效果。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection  |
@@ -845,7 +845,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 ## PhotoViewPicker<sup>(deprecated)</sup>
 
-图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。选择文件推荐使用[PhotoAccessHelper的PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)。在使用前，需要先创建PhotoViewPicker实例。
+图库选择器对象，用来支撑选择图片/视频和保存图片/视频等用户场景。选择文件推荐使用PhotoAccessHelper的[PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)。在使用前，需要先创建PhotoViewPicker实例。
 
 > **说明：**
 >
