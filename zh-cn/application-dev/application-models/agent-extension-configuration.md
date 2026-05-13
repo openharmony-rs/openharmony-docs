@@ -1,4 +1,4 @@
-# Agent配置文件说明
+# AgentExtensionAbility配置文件说明
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
