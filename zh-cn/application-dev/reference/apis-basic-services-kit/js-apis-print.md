@@ -2964,7 +2964,7 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[打印服务错误码](errorcode-print.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
