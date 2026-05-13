@@ -1541,7 +1541,6 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 设置文本描边拐角样式。
 
-
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
