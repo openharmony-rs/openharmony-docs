@@ -169,7 +169,7 @@ textDirection(direction: TextDirection | undefined)
 
 ### strokeJoinStyle
 
-strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): SearchAttribute
+strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 设置文本描边拐角样式。
 
@@ -187,15 +187,9 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined): SearchAttribute
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 文本描边拐角样式。<br/>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](ts-text-common.md#strokejoinstyle)，文本拐角处表现为锐角。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| [SearchAttribute](ts-basic-components-search.md#属性) | 返回SearchAttribute之后，可以链式调用SearchAttribute的其他方法。 |
-
 ### shaderStyle
 
-shaderStyle(shader: ShaderStyle | undefined): SearchAttribute
+shaderStyle(shader: ShaderStyle | undefined)
 
 设置文本着色器效果，如线性渐变、径向渐变效果等。
 
@@ -216,12 +210,6 @@ shaderStyle(shader: ShaderStyle | undefined): SearchAttribute
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | shader         | [ShaderStyle](ts-text-common.md#shaderstyle20) \| undefined | 是 | 文本着色器效果。<br/>值为undefined时，重置为默认值，无任何渐变效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| [SearchAttribute](ts-basic-components-search.md#属性) | 返回SearchAttribute之后，可以链式调用SearchAttribute的其他方法。 |
 
 ### copyOption<sup>9+</sup>
 
