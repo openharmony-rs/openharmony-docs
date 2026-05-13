@@ -1188,7 +1188,7 @@ Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for 
 This error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog and is called by the parent component.
 
 **Possible Cause**<br>
-The child component is not decorated with the required decorators.
+The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Solution**<br>
 Make sure the child component is decorated with @Component, @ComponentV2, or @CustomDialog before calling it.

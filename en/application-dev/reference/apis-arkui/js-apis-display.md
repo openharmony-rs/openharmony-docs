@@ -1480,7 +1480,7 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 **Required permissions**: ohos.permission.ACCESS_VIRTUAL_SCREEN
 
-**Device behavior differences**: This API can be properly called on phones, PCs/2-in-1 devices, and tablets, but does not take effect or report errors when being called on other devices.
+**Device behavior differences**: This API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on wearables, error code 801 is reported. If it is called on other device types, it has no effect and does not report errors.
 
 **Parameters**
 
