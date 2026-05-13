@@ -183,5 +183,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/using-avscreencapture-for-file-with-window.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"screenCapture_import",
+						"start_line":20
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":454,
+						"name":"screenCapture_create",
+						"start_line":452
+					},
+					{
+						"end_line":106,
+						"name":"screenCapture_config",
+						"start_line":56
+					},
+					{
+						"end_line":480,
+						"name":"screenCapture_createCaptureStrategy",
+						"start_line":475
+					},
+					{
+						"end_line":493,
+						"name":"screenCapture_startScreenRecording",
+						"start_line":491
+					},
+					{
+						"end_line":533,
+						"name":"screenCapture_stopScreenRecording",
+						"start_line":531
+					},
+					{
+						"end_line":499,
+						"name":"screenCapture_releaseScreenRecording",
+						"start_line":496
+					}
+				]
+			}
+		]
 	}
 ]
