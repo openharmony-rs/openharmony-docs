@@ -10,13 +10,6 @@
 
 **hidumper**是OpenHarmony系统提供的诊断工具，可以实时查看系统中所有窗口的详细信息，帮助开发者快速定位窗口相关问题。窗口信息的dump分为两个层面：
 
-- **Native侧（cpp底座，WindowManager侧）**：窗口管理服务层面的信息
-- **UI侧（SceneBoard侧）**：UI渲染和显示层面的信息
-
-### Native侧窗口信息dump（WindowManager）
-
-Native侧的dump信息由WindowManagerService（窗口管理服务）提供，反映窗口在系统底层的实际状态。
-
 #### hidumper参数说明
 
 基本命令格式：
@@ -287,7 +280,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 **关键字段详解**：
 
-##### VisibilityState（可见性状态）
+**VisibilityState（可见性状态）**
 
 取值说明：
 - `0`：窗口可见（前台显示）
@@ -1553,3 +1546,4 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 >
 > 系统的超时检测机制是为了保障用户体验，避免用户长时间看到空白窗口。开发者应重视此警告并及时修复，确保应用窗口能够快速、正确地显示内容。
 
+## 1300012错误码的定位指导
