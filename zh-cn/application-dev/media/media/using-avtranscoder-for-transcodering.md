@@ -415,7 +415,16 @@
 8. 恢复转码，调用resume()接口。
 
    ArkTS-Dyn示例：
-
+   <!-- @[doResume](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 恢复对应的转码流程。
+   async resumeTranscoderingProcess(): Promise<void> {
+     if (this.avTranscoder != undefined) { // 仅在调用pause返回后调用resume为合理调用。
+       await this.avTranscoder!.resume();
+     }
+   }
+   ```
    ```ts
    // 恢复转码。
    async resumeTranscoderingProcess() {
