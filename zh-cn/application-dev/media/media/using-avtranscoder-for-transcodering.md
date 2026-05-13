@@ -178,6 +178,17 @@
    源文件设置：
 
    <!-- @[create_fdsrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
+   
+   ``` TypeScript
+   // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
+   this.rawFileDescriptor = await this.context!.resourceManager.getRawFd('H264_AAC.mp4');
+   // 将 RawFileDescriptor 转换为 AVFileDescriptor
+   this.avTranscoder!.fdSrc = {
+     fd: this.rawFileDescriptor!.fd,
+     offset: this.rawFileDescriptor!.offset,
+     length: this.rawFileDescriptor!.length
+   };
+   ```
 
 4. 设置目标视频文件fd：设置属性fdDst。
    > **说明：**
