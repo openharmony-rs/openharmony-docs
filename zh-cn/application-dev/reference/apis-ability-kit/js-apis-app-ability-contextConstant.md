@@ -156,7 +156,7 @@ export default class EntryAbility extends UIAbility {
 
 ## ContextType
 
-表示常见Context类型的枚举，用于[contextType](./js-apis-inner-application-context.md#contexttype)接口。
+表示常见Context类型的枚举，用于[isContextOf](./js-apis-inner-application-context.md#iscontextof)接口。
 
 **起始版本**：26.0.0
 
@@ -181,7 +181,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
-    let result = this.context.contextType(contextConstant.ContextType.UIABILITY_CONTEXT);
+    let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
 }
