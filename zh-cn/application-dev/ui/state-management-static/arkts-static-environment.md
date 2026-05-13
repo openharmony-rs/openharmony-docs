@@ -120,7 +120,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { Environment, window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index');
     let window = windowStage.getMainWindow();
     window.then(window => {

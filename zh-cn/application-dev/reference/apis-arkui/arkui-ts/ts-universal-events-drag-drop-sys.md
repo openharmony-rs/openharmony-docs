@@ -45,7 +45,7 @@ enableInternalDropAnimation(configuration: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[drag-event(拖拽事件)](../errorcode-drag-event.md)错误码。
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)和[拖拽事件错误码](../errorcode-drag-event.md)。
 
 | 错误码ID   | 错误信息 |
 | --------- | ------- |

@@ -54,7 +54,7 @@ Column(options?: ColumnOptions)
 
 ArkTS-Dyn: Column(options?: ColumnOptions | ColumnOptionsV2)
 
-ArkTS-Sta: Column(options?: ColumnOptions | ColumnOptions | ColumnOptionsV2, content_?: CustomBuilder)
+ArkTS-Sta: Column(options?: ColumnOptions | ColumnOptions | ColumnOptionsV2)
 
 创建垂直方向线性布局容器，可以设置子组件的间距。
 
@@ -73,7 +73,6 @@ ArkTS-Sta: Column(options?: ColumnOptions | ColumnOptions | ColumnOptionsV2, con
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | options | ArkTS-Dyn: [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明)<br>ArkTS-Sta: [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
-| content_ | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 定义子组件的Builder函数。 |
 
 ## ColumnOptions<sup>18+</sup>对象说明
 

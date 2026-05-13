@@ -1,6 +1,6 @@
-# @Reusable: 组件复用
+# @Reusable：组件复用
 
-为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@Reusable装饰[\@Component](./ts-custom-component-decorator-component-static.md)装饰的自定义组件，达成组件复用的效果。开发指南参考：[\@Reusable装饰器：组件复用](../../../ui/state-management/arkts-reusable.md)。
+为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@Reusable装饰[\@Component：自定义组件](./ts-custom-component-decorator-component-static.md)装饰的自定义组件，达成组件复用的效果。开发指南参考：[\@Reusable装饰器：组件复用](../../../ui/state-management/arkts-reusable.md)。
 
 > **说明：**
 >

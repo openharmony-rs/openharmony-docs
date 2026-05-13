@@ -55,7 +55,7 @@ ArkTS-Sta: Slider(options?: SliderOptions, content_?: CustomBuilder)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double\> | 否 | 是 | 当前进度值。取值为undefined时，按默认值处理。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7设置滑动条的双向绑定](#示例7设置滑动条的双向绑定)。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double\> | 否 | 是 | 当前进度值。取值为undefined时，按默认值处理。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | min | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置最小值。<br/>默认值：0 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | max | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置最大值。<br/>默认值：100<br/>**说明：** <br/>min >= max异常情况，min取默认值0，max取默认值100。<br/>value不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | step | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置Slider滑动步长。<br/>默认值：1<br/>取值范围：[0.01, max - min]<br/>**说明：** <br/>若设置的step值小于0或大于max值，则按默认值显示。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
@@ -104,6 +104,8 @@ ArkTS-Sta: blockColor(value: ResourceColor | LinearGradient | undefined)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -163,7 +165,7 @@ ArkTS-Sta: trackColor(value: ResourceColor | LinearGradient | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10) \| undefined | 是   | 滑轨的背景颜色。取值为undefined时，按默认值处理。<br/>默认值：`$r('sys.color.ohos_id_color_component_normal')`<br/>**说明：** <br/>1. 设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。<br/>2. 该接口中的LinearGradient类型不支持在原子化服务中使用。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10) \| undefined | 是   | 滑轨的背景颜色。取值为undefined时，按默认值处理。<br/>默认值：`$r('sys.color.ohos_id_color_component_normal')`<br/>**说明：** <br/>1. 设置渐变色时，如果颜色断点颜色值为非法值或渐变色断点为空，渐变色将不起效果。<br/>2. 该接口中的LinearGradient类型不支持在原子化服务中使用。 |
 
 ### trackColorMetrics<sup>23+</sup>
 
@@ -274,6 +276,8 @@ ArkTS-Sta: showSteps(value: boolean | undefined)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 7
 
@@ -604,7 +608,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<SliderConfiguration> | und
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md)[\<SliderConfiguration>](#sliderconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md)[\<SliderConfiguration>](#sliderconfiguration12对象说明) \| undefined | 是   | 在Slider组件上，定制内容区的方法。<br/>ContentModifier：内容修改器，开发者需要自定义class实现ContentModifier接口。取值为undefined时，则不使用内容修改器。 |
+| modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)<[SliderConfiguration](#sliderconfiguration12对象说明)><br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)<[SliderConfiguration](#sliderconfiguration12对象说明)> \| undefined | 是   | 在Slider组件上，定制内容区的方法。<br/>ContentModifier：内容修改器，开发者需要自定义class实现ContentModifier接口。取值为undefined时，则不使用内容修改器。 |
 
 >  **说明：**
 >
@@ -689,7 +693,7 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| sensitivity | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)[\<CrownSensitivity>](ts-appendix-enums.md#crownsensitivity18)<br/>ArkTS-Sta: [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是   | 旋转表冠的灵敏度。取值为undefined时，按默认值处理。<br />默认值：CrownSensitivity.MEDIUM |
+| sensitivity | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)><br/>ArkTS-Sta: [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是   | 旋转表冠的灵敏度。取值为undefined时，按默认值处理。<br />默认值：CrownSensitivity.MEDIUM |
 
 ### prefix<sup>20+</sup>
 
@@ -754,6 +758,8 @@ ArkTS-Sta: showSteps(value: boolean | undefined, options?: SliderShowStepOptions
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -826,7 +832,7 @@ attributeModifier(modifier: AttributeModifier\<SliderAttribute> | AttributeModif
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | AttributeModifier\<[SliderAttribute](#属性)\> \| AttributeModifier\<[CommonMethod](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\> \| undefined | 是   | 在Slider组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
+| modifier  | AttributeModifier\<[SliderAttribute](./ts-basic-components-slider.md)\> \| AttributeModifier\<[通用属性](./ts-component-general-attributes.md)\> \| undefined | 是   | 在Slider组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
 ## ColorMetricsLinearGradient<sup>23+</sup>
 
@@ -934,6 +940,8 @@ Slider刻度点的无障碍文本信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
@@ -949,6 +957,8 @@ Slider刻度点的无障碍文本信息映射集。
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 20
 

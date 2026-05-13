@@ -19,15 +19,17 @@
 
 ### scrollBar<sup>11+</sup>
 
-ArkTS-Dyn: scrollBar(barState: BarState): T
+ArkTS-Dyn: scrollBar(barState: BarState)
 
-ArkTS-Sta: scrollBar(barState: BarState | undefined): this
+ArkTS-Sta: scrollBar(barState: BarState | undefined)
 
 设置滚动条状态。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -38,12 +40,6 @@ ArkTS-Sta: scrollBar(barState: BarState | undefined): this
 | 参数名   | 类型                                      | 必填 | 说明                                   |
 | -------- | ----------------------------------------- | ---- | -------------------------------------- |
 | barState | ArkTS-Dyn: [BarState](ts-appendix-enums.md#barstate)<br/>ArkTS-Sta: [BarState](ts-appendix-enums.md#barstate)&nbsp;\|&nbsp;undefined | 是   | 滚动条状态。<br/>默认值：List、Grid、Scroll组件默认BarState.Auto，WaterFlow组件默认BarState.Off。<br/>取值为undefined时，按默认值处理。 |
-
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ### scrollBarColor<sup>11+</sup>
 
@@ -73,9 +69,9 @@ scrollBarColor(color: Color | number | string): T
 
 ### scrollBarColor<sup>22+</sup>
 
-ArkTS-Dyn: scrollBarColor(color: Color | number | string | Resource): T
+ArkTS-Dyn: scrollBarColor(color: Color | number | string | Resource)
 
-ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined): this
+ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined)
 
 设置滚动条的颜色。与[scrollBarColor<sup>11+</sup>](#scrollbarcolor11)相比，color参数开始支持Resource类型。
 
@@ -93,23 +89,19 @@ ArkTS-Sta: scrollBarColor(color: Color | int | string | Resource | undefined): t
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | color  | ArkTS-Dyn: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>默认值：'\#182431'（40%不透明度）<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。<br/>取值为undefined时，滚动条的颜色默认颜色。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### scrollBarWidth<sup>11+</sup>
 
-ArkTS-Dyn: scrollBarWidth(value: number | string): T
+ArkTS-Dyn: scrollBarWidth(value: number | string)
 
-ArkTS-Sta: scrollBarWidth(value: double | string | undefined): this
+ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
 设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过滚动组件主轴方向的高度，则滚动条的宽度会变为默认值。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -120,12 +112,6 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined): this
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。<br/>取值为undefined时，按默认值处理。 |
-
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ### scrollBarWidth
 
@@ -161,15 +147,17 @@ ArkTS-Sta: scrollBarWidth(value: Resource | undefined): this
 
 ### edgeEffect<sup>11+</sup>
 
-ArkTS-Dyn: edgeEffect(edgeEffect: EdgeEffect, options?: EdgeEffectOptions): T
+ArkTS-Dyn: edgeEffect(edgeEffect: EdgeEffect, options?: EdgeEffectOptions)
 
-ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOptions): this
+ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOptions)
 
 设置边缘滑动效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -182,23 +170,19 @@ ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOp
 | edgeEffect            | ArkTS-Dyn: [EdgeEffect](ts-appendix-enums.md#edgeeffect)<br/>ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect)&nbsp;\|&nbsp;undefined     | 是   | 滚动组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：Grid、Scroll、WaterFlow组件默认EdgeEffect.None，List组件默认EdgeEffect.Spring。<br/>取值为undefined时，按默认值处理。|
 | options | [EdgeEffectOptions](#edgeeffectoptions11对象说明) | 否   | 组件内容大小小于组件自身时是否开启滑动效果，以及设置边缘效果生效的边缘。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：<br/>List、Grid、WaterFlow组件默认{ alwaysEnabled: false, EffectEdge: EffectEdge.START \| EffectEdge.END }，Scroll组件默认{ alwaysEnabled: true, EffectEdge: EffectEdge.START \| EffectEdge.END }。|
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### nestedScroll<sup>11+</sup>
 
-ArkTS-Dyn: nestedScroll(value: NestedScrollOptions): T
+ArkTS-Dyn: nestedScroll(value: NestedScrollOptions)
 
-ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined): this
+ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
 
 设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -210,23 +194,19 @@ ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined): this
 | ------ | ----------------------------------------------------- | ---- | -------------- |
 | value  | ArkTS-Dyn: [NestedScrollOptions](#nestedscrolloptions10对象说明)<br/>ArkTS-Sta: [NestedScrollOptions](#nestedscrolloptions10对象说明)&nbsp;\|&nbsp;undefined | 是   | 嵌套滚动选项。<br/>默认值：{ scrollForward: NestedScrollMode.SELF_ONLY, scrollBackward: NestedScrollMode.SELF_ONLY }<br/>取值为undefined时，按默认值处理。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### enableScrollInteraction<sup>11+</sup>
 
-ArkTS-Dyn: enableScrollInteraction(value: boolean): T
+ArkTS-Dyn: enableScrollInteraction(value: boolean)
 
-ArkTS-Sta: enableScrollInteraction(value: boolean | undefined): this
+ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 
 设置是否支持滚动手势。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -238,23 +218,19 @@ ArkTS-Sta: enableScrollInteraction(value: boolean | undefined): this
 | ------ | ------- | ---- | ----------------------------------- |
 | value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true<br/>取值为undefined时，按默认值处理。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### friction<sup>11+</sup>
 
-ArkTS-Dyn: friction(value: number | Resource): T
+ArkTS-Dyn: friction(value: number | Resource)
 
-ArkTS-Sta: friction(value: double | Resource | undefined): this
+ArkTS-Sta: friction(value: double | Resource | undefined)
 
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。设置为小于等于0的值时，按默认值处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -266,17 +242,11 @@ ArkTS-Sta: friction(value: double | Resource | undefined): this
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
 | value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 摩擦系数。<br/>默认值：非wearable设备为0.6，wearable设备为0.9。<br/>从API version 11开始，非wearable设备默认值为0.7。<br/>从API version 12开始，非wearable设备默认值为0.75。 <br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。|
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### flingSpeedLimit<sup>11+</sup>
 
-ArkTS-Dyn: flingSpeedLimit(speedLimit: number): T
+ArkTS-Dyn: flingSpeedLimit(speedLimit: number)
 
-ArkTS-Sta: flingSpeedLimit(speedLimit: double | undefined): this
+ArkTS-Sta: flingSpeedLimit(speedLimit: double | undefined)
 
 限制跟手滑动结束后，惯性动效开始时的最大初始速度。
 
@@ -294,6 +264,8 @@ ArkTS-Sta: flingSpeedLimit(speedLimit: double | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -304,17 +276,11 @@ ArkTS-Sta: flingSpeedLimit(speedLimit: double | undefined): this
 | ---------- | ------ | ---- | ------------------------------- |
 | speedLimit | ArkTS-Dyn: number<br/>ArkTS-Sta: double&nbsp;\|&nbsp;undefined | 是   | 惯性动效开始时的最大初始速度。<br/>默认值：9000<br/>单位：vp/s <br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。<br/>取值为undefined时，按默认值处理。|
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### fadingEdge<sup>14+</sup>
 
-ArkTS-Dyn: fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions): T
+ArkTS-Dyn: fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions)
 
-ArkTS-Sta: fadingEdge(enabled: boolean | undefined, options?: FadingEdgeOptions): this
+ArkTS-Sta: fadingEdge(enabled: boolean | undefined, options?: FadingEdgeOptions)
 
 设置是否开启边缘渐隐效果及设置边缘渐隐长度。
 
@@ -330,6 +296,8 @@ ArkTS-Sta: fadingEdge(enabled: boolean | undefined, options?: FadingEdgeOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
@@ -341,23 +309,19 @@ ArkTS-Sta: fadingEdge(enabled: boolean | undefined, options?: FadingEdgeOptions)
 | enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined                           | 是   | 是否开启边缘渐隐效果。设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false <br/>取值为undefined时，按默认值处理。|
 | options | [FadingEdgeOptions](#fadingedgeoptions14对象说明)  | 否   | 边缘渐隐参数对象。可以通过该对象定义边缘渐隐效果属性，比如设置渐隐长度。<br/>如果设置小于0的值或undefined或者不设置则取默认值，默认长度为32vp。<br/>如果设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### clipContent<sup>14+</sup>
 
-ArkTS-Dyn: clipContent(clip: ContentClipMode | RectShape): T
+ArkTS-Dyn: clipContent(clip: ContentClipMode | RectShape)
 
-ArkTS-Sta: clipContent(clip: ContentClipMode | RectShape | undefined): this
+ArkTS-Sta: clipContent(clip: ContentClipMode | RectShape | undefined)
 
 设置滚动容器的内容层裁剪区域。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 14
 
@@ -369,17 +333,11 @@ ArkTS-Sta: clipContent(clip: ContentClipMode | RectShape | undefined): this
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | clip | ArkTS-Dyn: [ContentClipMode](#contentclipmode14枚举说明)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape)<br/>ArkTS-Sta: [ContentClipMode](#contentclipmode14枚举说明)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape)&nbsp;\|&nbsp;undefined   | 是   | 裁剪只针对滚动容器的内容，即其子节点，背景不受影响。通过RectShape传入自定义矩形区域时仅支持设置宽高和相对于组件左上角的[offset](../js-apis-arkui-shape.md#offset)，不支持圆角。<br></div>默认值：Grid、Scroll的默认值为ContentClipMode.BOUNDARY，List、WaterFlow的默认值为ContentClipMode.CONTENT_ONLY。<br/>取值为undefined时，按默认值处理。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### backToTop<sup>15+</sup>
 
-ArkTS-Dyn: backToTop(backToTop: boolean): T
+ArkTS-Dyn: backToTop(backToTop: boolean)
 
-ArkTS-Sta: backToTop(backToTop: boolean | undefined): this
+ArkTS-Sta: backToTop(backToTop: boolean | undefined)
 
 设置滚动组件是否支持点击状态栏回到顶部。
 
@@ -388,6 +346,8 @@ ArkTS-Sta: backToTop(backToTop: boolean | undefined): this
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -399,17 +359,11 @@ ArkTS-Sta: backToTop(backToTop: boolean | undefined): this
 | ------ | ------- | ---- | ---------------------------------------------- |
 | backToTop  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置滚动组件是否支持点击状态栏回到顶部。设置为true支持点击状态栏通过动画回到顶部，设置为false不支持点击状态栏回到顶部。<br/>默认值：<br/>API version 18之前：false。 <br/>API version 18及以后：滚动方向是水平方向时为false，是垂直方向时为true。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### scrollBarMargin<sup>20+</sup>
 
-ArkTS-Dyn: scrollBarMargin(margin: ScrollBarMargin): T
+ArkTS-Dyn: scrollBarMargin(margin: ScrollBarMargin)
 
-ArkTS-Sta: scrollBarMargin(margin: ScrollBarMargin | undefined): this
+ArkTS-Sta: scrollBarMargin(margin: ScrollBarMargin | undefined)
 
 设置滚动条的边距。边距是在滚动条避让圆角距离的基础上计算的，如果滚动条区域小于滚动条的最小长度，则不显示滚动条。
 
@@ -428,12 +382,6 @@ ArkTS-Sta: scrollBarMargin(margin: ScrollBarMargin | undefined): this
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
 | margin  | ArkTS-Dyn: [ScrollBarMargin](./ts-types.md#scrollbarmargin20对象说明)<br/>ArkTS-Sta: [ScrollBarMargin](./ts-types.md#scrollbarmargin20对象说明)&nbsp;\|&nbsp;undefined  | 是   |滚动条起始、末尾边距。<br/>默认值：{start: LengthMetrics.vp(0), end: LengthMetrics.vp(0)} <br/>取值为undefined时，滚动条起始、末尾边距默认为0。 |
-
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ### autoAdjustScrollBarMargin
 
@@ -499,9 +447,9 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): t
 
 ### contentStartOffset<sup>22+</sup>
 
-ArkTS-Dyn: contentStartOffset(offset: number | Resource): T
+ArkTS-Dyn: contentStartOffset(offset: number | Resource)
 
-ArkTS-Sta: contentStartOffset(offset: double | Resource | undefined): this
+ArkTS-Sta: contentStartOffset(offset: double | Resource | undefined)
 
 设置内容区域起始偏移量。滚动组件滚动到起始位置时，内容与组件显示区域边界保留指定距离。
 
@@ -521,17 +469,11 @@ contentStartOffset + contentEndOffset超过滚动组件内容区长度后content
 | ------ | ------ | ---- | ----------------------------------------------- |
 | offset  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 内容区域起始偏移量。<br/>默认值：0<br/>单位：vp <br/>设置异常值如负数、非数字Resource与undefined时，按默认值处理。|
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### contentEndOffset<sup>22+</sup>
 
-ArkTS-Dyn: contentEndOffset(offset: number | Resource): T
+ArkTS-Dyn: contentEndOffset(offset: number | Resource)
 
-ArkTS-Sta: contentEndOffset(offset: double | Resource | undefined): this
+ArkTS-Sta: contentEndOffset(offset: double | Resource | undefined)
 
 设置内容区末尾偏移量。滚动组件滚动到末尾位置时，内容与组件显示区域边界保留指定距离。
 
@@ -550,13 +492,6 @@ contentStartOffset + contentEndOffset超过滚动组件内容区长度后content
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
 | offset  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 内容区末尾偏移量。<br/>默认值：0<br/>单位：vp <br/>设置异常值如负数、非数字Resource与undefined时，按默认值处理。|
-
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 
 ### enableScrollWithMouse
 
@@ -593,9 +528,9 @@ ArkTS-Sta: enableScrollWithMouse(enabled: boolean | undefined): this
 
 ### onReachStart<sup>11+</sup>
 
-ArkTS-Dyn: onReachStart(event: () => void): T
+ArkTS-Dyn: onReachStart(event: () => void)
 
-ArkTS-Sta: onReachStart(event: (() => void) | undefined): this
+ArkTS-Sta: onReachStart(event: (() => void) | undefined)
 
 滚动组件到达起始位置时触发。
 
@@ -604,6 +539,8 @@ ArkTS-Sta: onReachStart(event: (() => void) | undefined): this
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -615,17 +552,11 @@ ArkTS-Sta: onReachStart(event: (() => void) | undefined): this
 | ------ | ------ | ---- | -------------------- |
 | event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void)&nbsp;\|&nbsp;undefined | 是   | 滚动组件到达起始位置时的回调。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### onReachEnd<sup>11+</sup>
 
-ArkTS-Dyn: onReachEnd(event: () => void): T
+ArkTS-Dyn: onReachEnd(event: () => void)
 
-ArkTS-Sta: onReachEnd(event: (() => void) | undefined): this
+ArkTS-Sta: onReachEnd(event: (() => void) | undefined)
 
 滚动组件到达末尾位置时触发。
 
@@ -634,6 +565,8 @@ ArkTS-Sta: onReachEnd(event: (() => void) | undefined): this
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -645,17 +578,11 @@ ArkTS-Sta: onReachEnd(event: (() => void) | undefined): this
 | ------ | ------ | ---- | -------------------- |
 | event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void)&nbsp;\|&nbsp;undefined | 是   | 滚动组件到达末尾位置时的回调。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### onScrollStart<sup>11+</sup>
 
-ArkTS-Dyn: onScrollStart(event: () => void): T
+ArkTS-Dyn: onScrollStart(event: () => void)
 
-ArkTS-Sta: onScrollStart(event: (() => void) | undefined): this
+ArkTS-Sta: onScrollStart(event: (() => void) | undefined)
 
 滚动开始时触发。手指拖动滚动组件或拖动滚动组件的滚动条触发的滚动开始时，会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滚动控制器触发的带动画的滚动，动画开始时会触发该事件。
 
@@ -669,6 +596,8 @@ ArkTS-Sta: onScrollStart(event: (() => void) | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -679,17 +608,11 @@ ArkTS-Sta: onScrollStart(event: (() => void) | undefined): this
 | ------ | ------ | ---- | -------------------- |
 | event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void)&nbsp;\|&nbsp;undefined | 是   | 滚动开始时的回调。 |
 
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
-
 ### onScrollStop<sup>11+</sup>
 
-ArkTS-Dyn: onScrollStop(event: () => void): T
+ArkTS-Dyn: onScrollStop(event: () => void)
 
-ArkTS-Sta: onScrollStop(event: (() => void) | undefined): this
+ArkTS-Sta: onScrollStop(event: (() => void) | undefined)
 
 滚动停止时触发。手拖动滚动组件或拖动滚动组件的滚动条触发的滚动，手离开屏幕后滚动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滚动控制器触发的带动画的滚动，动画停止时会触发该事件。
 
@@ -703,6 +626,8 @@ ArkTS-Sta: onScrollStop(event: (() => void) | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -712,12 +637,6 @@ ArkTS-Sta: onScrollStop(event: (() => void) | undefined): this
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
 | event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void)&nbsp;\|&nbsp;undefined | 是   | 滚动停止时的回调。 |
-
-**返回值：**
-
-| 类型 | 说明           |
-| --- | -------------- |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ### onWillScroll<sup>12+</sup> 
 
@@ -817,9 +736,9 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 ### onWillStartDragging<sup>21+</sup>
 
-ArkTS-Dyn: onWillStartDragging(handler: VoidCallback): T
+ArkTS-Dyn: onWillStartDragging(handler: VoidCallback)
 
-ArkTS-Sta: onWillStartDragging(handler: VoidCallback | undefined): this
+ArkTS-Sta: onWillStartDragging(handler: VoidCallback | undefined)
 
 滚动组件开始拖动时触发。
 
@@ -839,17 +758,11 @@ ArkTS-Sta: onWillStartDragging(handler: VoidCallback | undefined): this
 | ------- | ------------------------------------------ | ---- | ---------------------------- |
 | handler | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 滚动组件开始拖动时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
 
-**返回值：**
-
-| 类型 | 说明               |
-| ---- | ------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this    | 返回当前滚动组件。 |
-
 ### onWillStopDragging<sup>20+</sup>
 
-ArkTS-Dyn: onWillStopDragging(handler: OnWillStopDraggingCallback): T
+ArkTS-Dyn: onWillStopDragging(handler: OnWillStopDraggingCallback)
 
-ArkTS-Sta: onWillStopDragging(handler: OnWillStopDraggingCallback | undefined): this
+ArkTS-Sta: onWillStopDragging(handler: OnWillStopDraggingCallback | undefined)
 
 滚动组件划动离手时触发，使用鼠标滚轮划动时不会触发。
 
@@ -869,17 +782,11 @@ ArkTS-Sta: onWillStopDragging(handler: OnWillStopDraggingCallback | undefined): 
 | ------- | ----------------------------------------------------------- | ---- | ---------------------------- |
 | handler | ArkTS-Dyn: [OnWillStopDraggingCallback](#onwillstopdraggingcallback20)<br/>ArkTS-Sta: [OnWillStopDraggingCallback](#onwillstopdraggingcallback20)&nbsp;\|&nbsp;undefined | 是   | 滚动组件划动离手时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
 
-**返回值：**
-
-| 类型 | 说明               |
-| ---- | ------------------ |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this    | 返回当前滚动组件。 |
-
 ### onDidStopDragging<sup>21+</sup>
 
-ArkTS-Dyn: onDidStopDragging(handler: OnDidStopDraggingCallback): T
+ArkTS-Dyn: onDidStopDragging(handler: OnDidStopDraggingCallback)
 
-ArkTS-Sta: onDidStopDragging(handler: OnDidStopDraggingCallback | undefined): this
+ArkTS-Sta: onDidStopDragging(handler: OnDidStopDraggingCallback | undefined)
 
 滚动组件结束拖拽时触发。
 
@@ -899,17 +806,11 @@ ArkTS-Sta: onDidStopDragging(handler: OnDidStopDraggingCallback | undefined): th
 | ------- | --------------------------------------------------------- | ---- | --------------------------- |
 | handler | ArkTS-Dyn: [OnDidStopDraggingCallback](#ondidstopdraggingcallback21)<br/>ArkTS-Sta: [OnDidStopDraggingCallback](#ondidstopdraggingcallback21)&nbsp;\|&nbsp;undefined | 是   | 滚动组件结束拖动时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
 
-**返回值：**
-
-| 类型 | 说明               |
-| ---- | ------------------ |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this    | 返回当前滚动组件。 |
-
 ### onWillStartFling<sup>21+</sup>
 
-ArkTS-Dyn: onWillStartFling(handler: VoidCallback): T
+ArkTS-Dyn: onWillStartFling(handler: VoidCallback)
 
-ArkTS-Sta: onWillStartFling(handler: VoidCallback | undefined): this
+ArkTS-Sta: onWillStartFling(handler: VoidCallback | undefined)
 
 滚动组件将要开始惯性动效时触发。
 
@@ -935,17 +836,11 @@ ArkTS-Sta: onWillStartFling(handler: VoidCallback | undefined): this
 | ------- | ------------------------------------------ | ---- | ---------------------------- |
 | handler | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 滚动组件将要开始惯性动效时触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
 
-**返回值：**
-
-| 类型 | 说明               |
-| ---- | ------------------ |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this    | 返回当前滚动组件。 |
-
 ### onDidStopFling<sup>21+</sup>
 
-ArkTS-Dyn: onDidStopFling(handler: VoidCallback): T
+ArkTS-Dyn: onDidStopFling(handler: VoidCallback)
 
-ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
+ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined)
 
 滚动组件结束惯性动效后触发，进行中的惯性动效被新的滑动事件打断时不触发。
 
@@ -964,12 +859,6 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 | 参数名  | 类型                                        | 必填 | 说明                         |
 | ------- | ------------------------------------------ | ---- | ---------------------------- |
 | handler | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)&nbsp;\|&nbsp;undefined | 是   | 滚动组件结束惯性动效后触发的回调。<br/>当设置为undefined时，重置该事件回调。 |
-
-**返回值：**
-
-| 类型 | 说明               |
-| ---- | ------------------ |
-| ArkTS-Dyn: T <br/>ArkTS-Sta: this    | 返回当前滚动组件。 |
 
 ## ItemDragInfo对象说明
 
@@ -1555,12 +1444,38 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 | --------  | ------- | ---- | -------------------------------------------------------------------------------- |
 | willFling | boolean | 是   | 结束拖拽后是否会有惯性动效。返回true代表拖拽结束后有惯性动效，返回false代表没有惯性动效。 |
 
+## OnVisibleIndexesChangeCallback
+
+type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
+
+懒加载线性布局容器[LazyColumnLayout](ts-container-lazycolumnlayout.md)所显示的子组件索引发生变化时的回调类型。
+
+> **说明：**
+>
+> - 当LazyColumnLayout没有子组件时，start和end都返回-1。
+> - 当LazyColumnLayout在可视区域内无子组件时，start和end都返回-1。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                  |
+| ------ | ------ | ---- | ------------------------------------- |
+| start  | number | 是   | 可视区域起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+| end    | number | 是   | 可视区域终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+
 ## 示例
 
 ### 示例1（支持滚动手势）
 该示例通过设置[enableScrollInteraction](ts-container-scrollable-common.md#enablescrollinteraction11)属性，实现了使用手势滚动纵向列表，并在当前显示界面发生改变时回调索引。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1629,7 +1544,7 @@ struct ListExample {
 ### 示例2（设置边缘渐隐）
 该示例通过设置[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性，实现了[List](ts-container-list.md)组件开启边缘渐隐效果并设置边缘渐隐长度。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1734,7 +1649,7 @@ struct ScrollExample {
 ### 示例4（设置滚动条边距）
 从API version 20开始，该示例通过设置[scrollBarMargin](#scrollbarmargin20)属性，调整滚动组件的滚动条边距。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts

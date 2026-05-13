@@ -419,7 +419,7 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration\>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12对象说明) | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)<[MenuItemConfiguration](#menuitemconfiguration12)> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### menuItemContentModifier<sup>18+</sup>
 
@@ -445,7 +445,7 @@ menuItemContentModifier(modifier: Optional\<ContentModifier\<MenuItemConfigurati
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12对象说明)> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)<[MenuItemConfiguration](#menuitemconfiguration12)>> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### menuItemContentModifier<sup>23+</sup>
 
@@ -465,7 +465,7 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration\> | und
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12对象说明) \| undefined | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)<[MenuItemConfiguration](#menuitemconfiguration12)> \| undefined | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### divider<sup>12+</sup>
 
@@ -1639,7 +1639,7 @@ ArkTS-Sta: showDefaultSelectedIcon(show: boolean | undefined)
 
 ### textModifier<sup>20+</sup>
 
-textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
+textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)\>)
 
 定制Select按钮文本样式的方法，在应用了textModifier之后，Select按钮的文本样式将完全由开发者自定义。
 
@@ -1661,7 +1661,7 @@ textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribut
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 在Select组件上，定制按钮文本样式的方法。 <br/> 当modifier的值为undefined时，不自定义文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 在Select组件上，定制按钮文本样式的方法。 <br/> 当modifier的值为undefined时，不自定义文本样式。 |
 
 ### textModifier<sup>23+</sup>
 
@@ -1681,7 +1681,7 @@ textModifier(modifier: TextModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 在Select组件上，定制按钮文本样式的方法。取值为undefined时，则不使用文本修改器。|
+| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 在Select组件上，定制按钮文本样式的方法。取值为undefined时，则不使用文本修改器。|
 
 ### arrowModifier<sup>20+</sup>
 
@@ -1731,7 +1731,7 @@ arrowModifier(modifier: SymbolGlyphModifier | undefined)
 
 ### optionTextModifier<sup>20+</sup>
 
-optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
+optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)\>)
 
 定制Select下拉菜单未选中项文本样式的方法，在应用optionTextModifier之后，下拉菜单未选中项的文本样式将完全由开发者自定义。
 
@@ -1755,11 +1755,11 @@ optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-at
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。<br/> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。<br/> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
 
 ### optionTextModifier<sup>23+</sup>
 
-optionTextModifier(modifier: [TextModifier](ts-universal-attributes-attribute-modifier.md) | undefined)
+optionTextModifier(modifier: [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | undefined)
 
 定制Select下拉菜单未选中项文本样式的方法，在应用optionTextModifier之后，下拉菜单未选中项的文本样式将完全由开发者自定义。
 
@@ -1777,11 +1777,11 @@ optionTextModifier(modifier: [TextModifier](ts-universal-attributes-attribute-mo
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。取值为undefined时，则不使用此选项修改器。|
+| modifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。取值为undefined时，则不使用此选项修改器。|
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
-selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
+selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)\>)
 
 定制Select下拉菜单选中项文本样式的方法，在应用selectedOptionTextModifier之后，下拉菜单选中项的文本样式将完全由开发者自定义。
 
@@ -1805,7 +1805,7 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 <br/> 当modifier的值为undefined时，不自定义下拉菜单项选中项的文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 <br/> 当modifier的值为undefined时，不自定义下拉菜单项选中项的文本样式。 |
 
 ### selectedOptionTextModifier<sup>23+</sup>
 
@@ -1827,7 +1827,7 @@ selectedOptionTextModifier(modifier: TextModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。取值为undefined时，则不使用选中项文本修改器。 |
+| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。取值为undefined时，则不使用选中项文本修改器。 |
 
 ### showInSubWindow<sup>20+</sup>
 
@@ -1917,7 +1917,7 @@ attributeModifier(modifier: AttributeModifier\<SelectAttribute\> | AttributeModi
 
 | 参数名   | 类型                                                                                                                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier | AttributeModifier\<[SelectAttribute](#属性)\> \| AttributeModifier\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | Select组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
+| modifier | AttributeModifier\<[SelectAttribute](./ts-basic-components-select.md)\> \| AttributeModifier\<[通用属性](./ts-component-general-attributes.md)\> \| undefined | 是   | Select组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
 ### menuBackgroundBlurStyleOptions
 
@@ -2074,6 +2074,10 @@ onSelect(callback: (index: number, value: string) => void)
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | (index: number, value: string) => void | 是   | 下拉菜单选中某一项触发的回调。 |
 
 callback回调参数说明：
 

@@ -32,6 +32,8 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 19
 
 **ArkTS-Sta起始版本：** 23

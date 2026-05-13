@@ -28,7 +28,6 @@
     - 静态自定义组件<!--arkts-static-custom-components-->
       - [\@Component装饰器: 自定义组件](../ui/state-management-static/arkts-static-create-component.md)
       - [\@ComponentV2装饰器：自定义组件](../ui/state-management-static/arkts-static-componentv2.md)
-      - [自定义组件生命周期](state-management-static/arkts-custom-components-new-lifecycle.md)
       - [自定义组件冻结](../ui/state-management-static/arkts-static-custom-components-v1-v2-freeze.md)
         - [V1自定义组件冻结场景](../ui/state-management-static/arkts-static-freeze.md)
         - [V2自定义组件冻结场景](../ui/state-management-static/arkts-static-custom-components-freezeV2.md)
@@ -99,8 +98,8 @@
         - [!!语法：双向绑定](state-management/arkts-new-binding.md)
       - 静态ArkTS<!--arkts-ui-syntactic-sugar-static-->
         - [$$()语法：系统组件双向同步](state-management/arkts-two-way-sync-static.md)
-    - 静态ArkTS的状态管理<!--arkts-state-management-v1-static-->
-      - 状态管理（V1）<!--arkts-state-management-v1-->
+    - 静态ArkTS的状态管理<!--arkts-state-management-static-->
+      - 状态管理（V1）<!--arkts-state-management-v1-static-->
         - 管理组件拥有的状态<!--arkts-component-state-management-->
           - [\@State装饰器：组件内状态](state-management-static/arkts-static-state.md)
           - [\@PropRef装饰器：父子单向同步](state-management-static/arkts-static-propref.md)
@@ -115,7 +114,7 @@
           - [AppStorage：应用全局的UI状态存储](state-management-static/arkts-static-appstorage.md)
           - [PersistentStorage：持久化存储UI状态](state-management-static/arkts-static-persiststorage.md)
           - [Environment：设备环境查询](state-management-static/arkts-static-environment.md)
-      - 状态管理（V2）<!--arkts-state-management-v2-->
+      - 状态管理（V2）<!--arkts-state-management-v2-static-->
         - 管理组件拥有的状态<!--arkts-component-state-management-v2-->
           - [\@Local装饰器：组件内部状态](state-management-static/arkts-static-new-local.md)
           - [\@Param装饰器：组件外部输入](state-management-static/arkts-static-new-param.md)
@@ -127,6 +126,15 @@
           - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management-static/arkts-static-new-observedV2-and-trace.md)
           - [\@Monitor装饰器：状态变量修改监听](state-management-static/arkts-static-new-monitor.md)
           - [\@SyncMonitor装饰器：状态变量修改同步监听](state-management-static/arkts-static-new-syncmonitor.md)
+        - 管理应用拥有的状态<!--arkts-v2-manage-application-state-static-->
+          - [AppStorageV2: 应用全局UI状态存储](state-management-static/arkts-static-appstoragev2.md)
+          - [PersistenceV2: 持久化存储UI状态](state-management-static/arkts-static-new-persistencev2.md)
+      - 辅助接口<!--arkts-new-other-state-mgmt-static-->
+        - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)
+        - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
+        - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management-static/arkts-static-new-addmonitor-clearmonitor.md)
+        - [canBeObserved接口：判断对象是否可被观察](state-management-static/arkts-static-new-canBeObserved.md)
+      - [ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](state-management-static/arkts-static-new-observed-built-in-types.md)
     - 状态管理V1-V2迁移指导<!--arkts-v1-v2-guide-->
       - [V1-V2迁移概述](state-management/arkts-v1-v2-migration.md)
       - 状态管理V1向V2迁移场景<!--arkts-state-management-v1-v2-migration-guide-->
@@ -324,6 +332,7 @@
       - [UI组件适配（通用信息）](arkts-sta-deprecated-general-information.md)
       - [UI组件适配（路由与导航）](arkts-sta-deprecated-router-and-navigation.md)
       - [UI组件适配（滚动与滑动）](arkts-sta-deprecated-scroll-and-swipe.md)
+      - [UI组件适配（文本）](arkts-sta-deprecated-text.md)
       - [UI组件适配（信息展示）](arkts-sta-deprecated-information-display.md)
       - [UI组件适配（动效与视效）](arkts-sta-deprecated-animation-and-visual.md)
   - ArkTS-Sta与ArkTS-Dyn的UI互操作<!--ui-arkts-sta-interop-dyn-->
@@ -350,6 +359,7 @@
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用布局组件](ndk-layout-container.md)
     - [设置通用布局属性](ndk-common-attribute-layout.md)
+  - 使用列表与网格<!--arkts-list-and-grid-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)

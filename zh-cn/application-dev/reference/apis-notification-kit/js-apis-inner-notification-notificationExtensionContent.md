@@ -10,11 +10,18 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
+> 
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 
 ## NotificationExtensionContent
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 | 
 | -------- | -------- | -------- | -------- | -------- |

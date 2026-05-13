@@ -1505,7 +1505,7 @@ scrollBarColor(thumbColor: ColorMetrics | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br />默认值：'#66182431'，显示为灰色。|
+| thumbColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是 | 滚动条的颜色。<br />默认值：'#66182431'，显示为灰色。<br/>取值为undefined时，按默认值处理。|
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -1671,7 +1671,7 @@ ArkTS-Sta: onEditChange(callback:&nbsp;((isEditing:&nbsp;boolean)&nbsp;=&gt;&nbs
 
 | 参数名    | 类型    | 必填 | 说明                 |
 | --------- | ------- | ---- | -------------------- |
-| isEditing | boolean | 是   | 为true表示正在输入。 |
+| isEditing | boolean | 是   | 是否处于编辑态。<br/> true：编辑态；false：非编辑态。 |
 
 ### onCopy<sup>8+</sup>
 

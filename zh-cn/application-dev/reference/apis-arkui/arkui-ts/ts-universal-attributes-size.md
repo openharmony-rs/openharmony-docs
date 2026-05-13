@@ -102,6 +102,8 @@ ArkTS-Sta: width(widthValue: Length | LayoutPolicy | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 15
 
 **ArkTS-Sta起始版本：** 23
@@ -131,6 +133,8 @@ ArkTS-Sta: height(heightValue: Length | LayoutPolicy | undefined): this
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -261,6 +265,8 @@ ArkTS-Sta: safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadd
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 14
 

@@ -37,7 +37,7 @@ import { Chip, ChipOptions, ChipSize } from '@kit.ArkUI';
 
 Chip(options:ChipOptions): void
 
-**装饰器类型：**@Builder
+**装饰器类型：** [@Builder](../../../ui/state-management/arkts-builder.md)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -393,8 +393,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, LocalizedPadding, LengthMetrics } from '@ohos.arkui.component';
-import { Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions } from '@ohos.arkui.advanced.Chip';
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, LocalizedPadding, LengthMetrics,
+  Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -493,10 +493,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, LocalizedPadding, LengthMetrics } from '@ohos.arkui.component';
-import { Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions, CloseOptions } from '@ohos.arkui.advanced.Chip';
-
-import { Chip, ChipSize } from '@kit.ArkUI';
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, LocalizedPadding, LengthMetrics,
+  Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -594,8 +592,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, LocalizedPadding, LengthMetrics } from '@ohos.arkui.component';
-import { Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions } from '@ohos.arkui.advanced.Chip';
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, LocalizedPadding, LengthMetrics,
+  Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -703,9 +701,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-import { Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions } from '@ohos.arkui.advanced.Chip';
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, State, Chip, ChipSize,
+  PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -814,10 +811,8 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-import { Chip, ChipSize, ChipSymbolGlyphOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier } from '@ohos.arkui.advanced.Chip';
-
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, State, Chip, ChipSize,
+  ChipSymbolGlyphOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -919,9 +914,9 @@ struct ChipPage {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, LengthMetrics, FlexAlign } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-import { Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier } from '@ohos.arkui.advanced.Chip';
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, LengthMetrics, FlexAlign, State,
+  Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier
+  } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -1060,9 +1055,9 @@ struct ChipExample2 {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, LengthMetrics, FlexAlign, BuilderParam, Builder, NavDestination, Scroll, ResourceStr, HorizontalAlign, Text } from '@ohos.arkui.component';
-import { State, PropRef, Require } from '@ohos.arkui.stateManagement';
-import { Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier } from '@ohos.arkui.advanced.Chip';
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, LengthMetrics, FlexAlign,
+  BuilderParam, Builder, NavDestination, Scroll, ResourceStr, HorizontalAlign, Text, State, PropRef, Require, Chip,
+  ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier } from '@kit.ArkUI';
 
 @Builder
 function DefaultFunction(): void {
@@ -1280,10 +1275,9 @@ struct ChipExample2 {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, LengthMetrics, FlexAlign, BuilderParam, Builder, NavDestination, Scroll, ResourceStr, HorizontalAlign, Text } from '@ohos.arkui.component';
-import { State, PropRef, Require } from '@ohos.arkui.stateManagement';
-import { Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier } from '@ohos.arkui.advanced.Chip';
-
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, LengthMetrics, FlexAlign,
+  BuilderParam, Builder, NavDestination, Scroll, ResourceStr, HorizontalAlign, Text, State, PropRef, Require, Chip,
+  ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier } from '@kit.ArkUI';
 @Builder
 function DefaultFunction(): void {
 }
@@ -1509,9 +1503,10 @@ struct ChipAccessibilityExample {
 ArkTS-Sta示例：
 
 ```ts
-import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, LengthMetrics, FlexAlign, BuilderParam, Builder, NavDestination, Scroll, ResourceStr, HorizontalAlign, Text, FontWeight } from '@ohos.arkui.component';
-import { State, PropRef, Require } from '@ohos.arkui.stateManagement';
-import { Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions, SymbolGlyphModifier, AccessibilitySelectedType, CloseOptions } from '@ohos.arkui.advanced.Chip';
+import { Entry, Column, Component, Color, $r, ColumnOptions, Direction, Button, LengthMetrics, FlexAlign,
+  BuilderParam, Builder, NavDestination, Scroll, ResourceStr, HorizontalAlign, Text, FontWeight, State,
+  PropRef, Require, Chip, ChipSize, PrefixIconOptions, SuffixIconOptions, ChipOptions, LabelOptions,
+  SymbolGlyphModifier, AccessibilitySelectedType, CloseOptions } from '@kit.ArkUI';
 
 @Entry
 @Component

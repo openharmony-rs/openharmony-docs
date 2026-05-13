@@ -39,38 +39,15 @@ Stack(options?: StackOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[Stack](#stack23)。
-
 **ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名       | 类型                                    | 必填 | 说明                                                    |
 | ------------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
 | options | [StackOptions](#stackoptions18对象说明) | 否   | 设置子组件在容器内的对齐方式。 |
-
-### Stack<sup>23+</sup>
-
-Stack(options?: StackOptions，content_?: CustomBuilder)
-
-堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[Stack](#stack-1)。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ----- | --- | --- | --- |
-| options | [StackOptions](#stackoptions18对象说明) | 否   | 设置子组件在容器内的对齐方式。 |
-| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 定义子组件的Builder函数。 |
 
 ## StackOptions<sup>18+</sup>对象说明
 

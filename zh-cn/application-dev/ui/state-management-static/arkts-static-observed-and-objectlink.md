@@ -10,7 +10,7 @@
 
 - 子组件中\@ObjectLink装饰器装饰的状态变量用于接收\@Observed装饰的类的实例，和父组件中对应的状态变量建立双向数据绑定。这个实例可以是数组中的被\@Observed装饰的项，或者是class object中的属性，这个属性同样也需要被\@Observed装饰。
 
-- \@Observed用于嵌套类场景中，观察对象类属性变化，要配合自定义组件使用（示例详见[嵌套对象](#嵌套对象)），如果要做数据双向同步，需要搭配\@ObjectLink使用。
+- \@Observed用于嵌套类场景中，观察对象类属性变化，要配合自定义组件使用。在API版本26.0.0以前，该嵌套类场景中的属性对应的类如果被@Observed装饰，则该对象类属性变化，UI不会刷新；API版本26.0.0及以后，若该对象类属性变化，则UI会刷新，示例详见[嵌套对象](#嵌套对象)。如果要做数据双向同步，需要搭配\@ObjectLink使用。
 
 在静态上下文中使用时，需要导入装饰器：
 
@@ -547,7 +547,7 @@ struct Index {
 import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text, TextAlign } from '@kit.ArkUI';
 
 @Observed
-class Book {
+export class Book {
   name: string;
 
   constructor(name: string) {
@@ -556,7 +556,7 @@ class Book {
 }
 
 @Observed
-class Bag {
+export class Bag {
   book: Book;
 
   constructor(book: Book) {
@@ -592,7 +592,8 @@ struct Index {
 
   build() {
     Column() {
-      Text(`Index: ${this.bag.book.name}`) // 无法观察到name的变化
+      // API版本26.0.0以前，无法观察到name的变化，API版本26.0.0及之后，可观察到name的变化。
+      Text(`Index: ${this.bag.book.name}`)
         .width(320)
         .margin(10)
         .textAlign(TextAlign.Center)
@@ -610,7 +611,7 @@ struct Index {
 }
 ```
 
-上述示例中，Index组件中的Text组件不刷新，因为该变化属于第二层的变化，\@State无法观察到第二层的变化。但是Book被\@Observed装饰，Book的属性name可以被\@ObjectLink观察到，所以无论点击哪个Button，BookCard组件中的Text组件都会刷新。
+在API版本26.0.0以前，上述示例中，Index组件中的Text组件不刷新，因为该变化属于第二层的变化，\@State无法观察到第二层的变化；API版本26.0.0及之后，Index组件中的Text组件会刷新。同时，Book被\@Observed装饰，Book的属性name可以被\@ObjectLink观察到，所以无论点击哪个Button，BookCard组件中的Text组件都会刷新。
 
 ```ts
 'use static'

@@ -97,6 +97,8 @@ preferences.getPreferences(context, 'myStore', (err: BusinessError, val: prefere
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -107,6 +109,29 @@ let dataPreferences: preferences.Preferences | null = null;
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.getPreferences(this.context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
+      if (err) {
+        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      dataPreferences = val;
+      console.info("Succeeded in getting preferences.");
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.getPreferences(this.context, 'myStore', (err: BusinessError | null, val: preferences.Preferences | undefined) => {
       if (err) {
         console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
         return;
@@ -178,6 +203,8 @@ promise.then((object: preferences.Preferences) => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -192,6 +219,27 @@ class EntryAbility extends UIAbility {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let promise = preferences.getPreferences(this.context, 'myStore');
+    promise.then((object: preferences.Preferences | undefined) => {
+      dataPreferences = object;
+      console.info("Succeeded in getting preferences.");
+    }).catch((err) => {
       console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -258,6 +306,8 @@ preferences.getPreferences(context, options, (err: BusinessError, val: preferenc
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -269,6 +319,30 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
     preferences.getPreferences(this.context, options, (err: BusinessError, val: preferences.Preferences) => {
+      if (err) {
+        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      dataPreferences = val;
+      console.info("Succeeded in getting preferences.");
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    preferences.getPreferences(this.context, options, (err: BusinessError | null, val: preferences.Preferences | undefined) => {
       if (err) {
         console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
         return;
@@ -344,6 +418,8 @@ promise.then((object: preferences.Preferences) => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -359,6 +435,29 @@ class EntryAbility extends UIAbility {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    let promise = preferences.getPreferences(this.context, 'myStore');
+    promise = preferences.getPreferences(this.context, options);
+    promise.then((object: preferences.Preferences | undefined) => {
+      dataPreferences = object;
+      console.info("Succeeded in getting preferences.");
+    }).catch((err) => {
       console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -495,6 +594,8 @@ preferences.deletePreferences(context, 'myStore', (err: BusinessError) => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -503,6 +604,26 @@ import { window } from '@kit.ArkUI';
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.deletePreferences(this.context, 'myStore', (err: BusinessError) => {
+      if (err) {
+        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      console.info("Succeeded in deleting preferences.");
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.deletePreferences(this.context, 'myStore', (err: BusinessError | null) => {
       if (err) {
         console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
         return;
@@ -576,6 +697,8 @@ promise.then(() => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -587,6 +710,24 @@ class EntryAbility extends UIAbility {
     promise.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let promise = preferences.deletePreferences(this.context, 'myStore');
+    promise.then(() => {
+      console.info("Succeeded in deleting preferences.");
+    }).catch((err) => {
       console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -656,6 +797,8 @@ preferences.deletePreferences(context, options, (err: BusinessError) => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -665,6 +808,26 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
     preferences.deletePreferences(this.context, options, (err: BusinessError) => {
+      if (err) {
+        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      console.info("Succeeded in deleting preferences.");
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.deletePreferences(this.context, options, (err: BusinessError | null) => {
       if (err) {
         console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
         return;
@@ -743,6 +906,8 @@ promise.then(() => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -755,6 +920,24 @@ class EntryAbility extends UIAbility {
     promise.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let promise = preferences.deletePreferences(this.context, options);
+    promise.then(() => {
+      console.info("Succeeded in deleting preferences.");
+    }).catch((err) => {
       console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -820,6 +1003,8 @@ preferences.removePreferencesFromCache(context, 'myStore', (err: BusinessError) 
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -828,6 +1013,26 @@ import { window } from '@kit.ArkUI';
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.removePreferencesFromCache(this.context, 'myStore', (err: BusinessError) => {
+      if (err) {
+        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      console.info("Succeeded in removing preferences.");
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.removePreferencesFromCache(this.context, 'myStore', (err: BusinessError | null) => {
       if (err) {
         console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
         return;
@@ -901,6 +1106,8 @@ promise.then(() => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -912,6 +1119,24 @@ class EntryAbility extends UIAbility {
     promise.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let promise = preferences.removePreferencesFromCache(this.context, 'myStore');
+    promise.then(() => {
+      console.info("Succeeded in removing preferences.");
+    }).catch((err) => {
       console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -1042,6 +1267,8 @@ preferences.removePreferencesFromCache(context, options, (err: BusinessError) =>
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1051,6 +1278,26 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
     preferences.removePreferencesFromCache(this.context, options, (err: BusinessError) => {
+      if (err) {
+        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      console.info("Succeeded in removing preferences.");
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.removePreferencesFromCache(this.context, options, (err: BusinessError | null) => {
       if (err) {
         console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
         return;
@@ -1128,6 +1375,8 @@ promise.then(() => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1140,6 +1389,24 @@ class EntryAbility extends UIAbility {
     promise.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let promise = preferences.removePreferencesFromCache(this.context, options);
+    promise.then(() => {
+      console.info("Succeeded in removing preferences.");
+    }).catch((err) => {
       console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -1333,6 +1600,8 @@ get(key: string, defValue: ValueType, callback: AsyncCallback&lt;ValueType&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1341,7 +1610,21 @@ dataPreferences.get('startup', 'default', (err: BusinessError, val: preferences.
     console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
     return;
   }
-  console.info("Succeeded in getting value of 'startup'. val： " + val);
+  console.info("Succeeded in getting value of 'startup'. val: " + val);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.get('startup', 'default', (err: BusinessError | null, val: preferences.ValueType | undefined) => {
+  if (err) {
+    console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in getting value of 'startup'. val: " + val);
 })
 ```
 
@@ -1383,6 +1666,8 @@ get(key: string, defValue: ValueType): Promise&lt;ValueType&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1390,6 +1675,17 @@ let promise = dataPreferences.get('startup', 'default');
 promise.then((data: preferences.ValueType) => {
   console.info("Succeeded in getting value of 'startup'. Data: " + data);
 }).catch((err: BusinessError) => {
+  console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.get('startup', 'default');
+promise.then((data: preferences.ValueType | undefined) => {
+  console.info("Succeeded in getting value of 'startup'. Data: " + data);
+}).catch((err) => {
   console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -1432,8 +1728,16 @@ getSync(key: string, defValue: ValueType): ValueType
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let value: preferences.ValueType = dataPreferences.getSync('startup', 'default');
+```
+
+ArkTS-Sta示例：
+
+```ts
+let value: preferences.ValueType = dataPreferences!.getSync('startup', 'default');
 ```
 
 ### getAll
@@ -1467,6 +1771,8 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1485,6 +1791,21 @@ dataPreferences.getAll((err: BusinessError, value: Object) => {
   let allKeys = getObjKeys(value);
   console.info("getAll keys = " + allKeys);
   console.info("getAll object = " + JSON.stringify(value));
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.getAll((err: BusinessError | null, value: Object | undefined) => {
+  if (err) {
+    console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  let obj = value as Record<string, object>;
+  console.info("getAll keys = " + obj);
 })
 ```
 
@@ -1519,6 +1840,8 @@ getAll(): Promise&lt;Object&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1535,6 +1858,18 @@ promise.then((value: Object) => {
   console.info('getAll keys = ' + allKeys);
   console.info("getAll object = " + JSON.stringify(value));
 }).catch((err: BusinessError) => {
+  console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.getAll();
+promise.then((value: Object | undefined) => {
+  let obj = value as Record<string, object>;
+  console.info("getAll keys = " + obj);
+}).catch((err) => {
   console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -1569,6 +1904,8 @@ getAllSync(): Object
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // 由于ArkTS中无Object.keys，且无法使用for..in...
 // 若报ArkTS问题，请将此方法单独抽离至一个ts文件中并暴露，在需要用到的ets文件中引入使用
@@ -1581,6 +1918,14 @@ let value = dataPreferences.getAllSync();
 let allKeys = getObjKeys(value);
 console.info('getAll keys = ' + allKeys);
 console.info("getAll object = " + JSON.stringify(value));
+```
+
+ArkTS-Sta示例：
+
+```ts
+let value1 = dataPreferences!.getAllSync();
+let obj = value1 as Record<string, object>;
+console.info('getAll keys = ' + obj);
 ```
 
 ### put
@@ -1622,10 +1967,26 @@ put(key: string, value: ValueType, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.put('startup', 'auto', (err: BusinessError) => {
+  if (err) {
+    console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in putting value of 'startup'.");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.put('startup', 'auto', (err: BusinessError | null) => {
   if (err) {
     console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
     return;
@@ -1679,6 +2040,8 @@ put(key: string, value: ValueType): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1686,6 +2049,17 @@ let promise = dataPreferences.put('startup', 'auto');
 promise.then(() => {
   console.info("Succeeded in putting value of 'startup'.");
 }).catch((err: BusinessError) => {
+  console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.put('startup', 'auto');
+promise.then(() => {
+  console.info("Succeeded in putting value of 'startup'.");
+}).catch((err) => {
   console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -1729,8 +2103,16 @@ putSync(key: string, value: ValueType): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 dataPreferences.putSync('startup', 'auto');
+```
+
+ArkTS-Sta示例：
+
+```ts
+dataPreferences!.putSync('startup', 'auto');
 ```
 
 
@@ -1766,10 +2148,30 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.has('startup', (err: BusinessError, val: boolean) => {
+  if (err) {
+    console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  if (val) {
+    console.info("The key 'startup' is contained.");
+  } else {
+    console.info("The key 'startup' is not contained.");
+  }
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.has('startup', (err: BusinessError | null, val: boolean | undefined) => {
   if (err) {
     console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
     return;
@@ -1820,6 +2222,8 @@ has(key: string): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1831,6 +2235,21 @@ promise.then((val: boolean) => {
     console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
+  console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.has('startup');
+promise.then((val: boolean) => {
+  if (val) {
+    console.info("The key 'startup' is contained.");
+  } else {
+    console.info("The key 'startup' does not contain.");
+  }
+}).catch((err) => {
   console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -1873,8 +2292,21 @@ hasSync(key: string): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let isExist: boolean = dataPreferences.hasSync('startup');
+if (isExist) {
+  console.info("The key 'startup' is contained.");
+} else {
+  console.info("The key 'startup' does not contain.");
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let isExist: boolean = dataPreferences!.hasSync('startup');
 if (isExist) {
   console.info("The key 'startup' is contained.");
 } else {
@@ -1915,10 +2347,26 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.delete('startup', (err: BusinessError) => {
+  if (err) {
+    console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in deleting the key 'startup'.");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.delete('startup', (err: BusinessError | null) => {
   if (err) {
     console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
     return;
@@ -1965,6 +2413,8 @@ delete(key: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1972,7 +2422,18 @@ let promise = dataPreferences.delete('startup');
 promise.then(() => {
   console.info("Succeeded in deleting the key 'startup'.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete the key 'startup'. code =" + err.code +", message =" + err.message);
+  console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.delete('startup');
+promise.then(() => {
+  console.info("Succeeded in deleting the key 'startup'.");
+}).catch((err) => {
+  console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
 })
 ```
 
@@ -2008,8 +2469,16 @@ deleteSync(key: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 dataPreferences.deleteSync('startup');
+```
+
+ArkTS-Sta示例：
+
+```ts
+dataPreferences!.deleteSync('startup');
 ```
 
 ### flush
@@ -2049,10 +2518,26 @@ flush(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.flush((err: BusinessError) => {
+  if (err) {
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.flush((err: BusinessError | null) => {
   if (err) {
     console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
@@ -2097,6 +2582,8 @@ flush(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2104,6 +2591,17 @@ let promise = dataPreferences.flush();
 promise.then(() => {
   console.info("Succeeded in flushing.");
 }).catch((err: BusinessError) => {
+  console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.flush();
+promise.then(() => {
+  console.info("Succeeded in flushing.");
+}).catch((err) => {
   console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -2136,8 +2634,16 @@ flushSync(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 dataPreferences.flushSync();
+```
+
+ArkTS-Sta示例：
+
+```ts
+dataPreferences!.flushSync();
 ```
 
 ### clear
@@ -2171,10 +2677,26 @@ clear(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.clear((err: BusinessError) =>{
+  if (err) {
+    console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in clearing.");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.clear((err: BusinessError | null) =>{
   if (err) {
     console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
     return;
@@ -2213,6 +2735,8 @@ clear(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2220,6 +2744,17 @@ let promise = dataPreferences.clear();
 promise.then(() => {
   console.info("Succeeded in clearing.");
 }).catch((err: BusinessError) => {
+  console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.clear();
+promise.then(() => {
+  console.info("Succeeded in clearing.");
+}).catch((err) => {
   console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -2240,8 +2775,16 @@ clearSync(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 dataPreferences.clearSync();
+```
+
+ArkTS-Sta示例：
+
+```ts
+dataPreferences!.clearSync();
 ```
 
 ### on('change')
@@ -2426,7 +2969,7 @@ onMultiProcessChange(callback: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onMultiProcessChange')](#onmultiprocesschange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('multiProcessChange')](#onmultiprocesschange10)。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 

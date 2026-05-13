@@ -192,6 +192,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 值 | 说明                 |
 | ---- | --- | ------------------ |
 | Off  | 0 | 不显示。               |
@@ -238,20 +242,20 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 值            | 说明                                                         |
+| 名称                     | 值            |说明                                                         |
 | ------------------------ | ------------- | ------------------------------------------------------------ |
-| Black                    | 0x000000      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png) |
-| Blue                     | 0x0000ff      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png) |
-| Brown                    | 0xa52a2a      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png) |
-| Gray                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Grey                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Green                    | 0x008000      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png) |
-| Orange                   | 0xffa500      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png) |
-| Pink                     | 0xffc0cb      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png) |
-| Red                      | 0xff0000      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png) |
-| White                    | 0xffffff      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png) |
-| Yellow                   | 0xffff00      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png) |
-| Transparent<sup>9+</sup> | rgba(0,0,0,0) | 透明色                                                       |
+| Black                    | ArkTS-Dyn: 0x000000<br/>ArkTS-Sta: '#FF000000'      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Blue                     | ArkTS-Dyn: 0x0000ff<br/>ArkTS-Sta: '#FF0000FF'      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Brown                    | ArkTS-Dyn: 0xa52a2a<br/>ArkTS-Sta: '#FFA52A2A'      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Gray                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Grey                     | ArkTS-Dyn: 0x808080<br/>ArkTS-Sta: '#FF808080'      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Green                    | ArkTS-Dyn: 0x008000<br/>ArkTS-Sta: '#FF008000'      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Orange                   | ArkTS-Dyn: 0xffa500<br/>ArkTS-Sta: '#FFFFA500'      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Pink                     | ArkTS-Dyn: 0xffc0cb<br/>ArkTS-Sta: '#FFFFC0CB'      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Red                      | ArkTS-Dyn: 0xff0000<br/>ArkTS-Sta: '#FFFF0000'      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| White                    | ArkTS-Dyn: 0xffffff<br/>ArkTS-Sta: '#FFFFFFFF'      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Yellow                   | ArkTS-Dyn: 0xffff00<br/>ArkTS-Sta: '#FFFFFF00'      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png)<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| Transparent<sup>9+</sup> | ArkTS-Dyn: rgba(0,0,0,0)<br/>ArkTS-Sta: '#00000000' | 透明色<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                                       |
 
 ## ColorSpace<sup>20+</sup>
 
@@ -373,6 +377,23 @@
 | DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
 
+## DialogDisplayMode<sup>24+</sup>
+
+弹窗的显示模式。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称         | 值 | 说明                       |
+| ------------ | -- | -------------------------- |
+| SCREEN_BASED | 0  | 基于屏幕显示弹窗。         |
+| WINDOW_BASED | 1  | 基于应用窗口显示弹窗。     |
+
 ## Direction
 
 定义元素水平布局的方向。
@@ -446,6 +467,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值 | 说明                                       |
 | ------ | --- | ---------------------------------------- |
@@ -1098,6 +1123,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值 | 说明                             |
 | ------ | --- | ------------------------------ |
 | SELF_ONLY   | 0 | 只自身滚动，不与父组件联动。  |
@@ -1170,20 +1199,20 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                     | 说明                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| Left                     | 气泡提示位于组件左侧，与组件左侧中心对齐。                   |
-| Right                    | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
-| Top                      | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
-| Bottom                   | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
-| TopLeft                  | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
-| TopRight                 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
-| BottomLeft               | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
-| BottomRight              | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
-| LeftTop<sup>9+</sup>     | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
-| LeftBottom<sup>9+</sup>  | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
-| RightTop<sup>9+</sup>    | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |
-| RightBottom<sup>9+</sup> | 气泡提示位于组件右侧，与组件下侧边缘对齐。                   |
+| 名称                     | 值 | 说明                                                         |
+| ------------------------ | -- | ------------------------------------------------------------ |
+| Left                     | 0 | 气泡提示位于组件左侧，与组件左侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                  |
+| Right                    | 1 | 气泡提示位于组件右侧，与组件右侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                  |
+| Top                      | 2 | 气泡提示位于组件上侧，与组件上侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                   |
+| Bottom                   | 3 | 气泡提示位于组件下侧，与组件下侧中心对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23                   |
+| TopLeft                  | 4 | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| TopRight                 | 5 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| BottomLeft               | 6 | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| BottomRight              | 7 | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| LeftTop<sup>9+</sup>     | 8 | 气泡提示位于组件左侧，与组件上侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| LeftBottom<sup>9+</sup>  | 9 | 气泡提示位于组件左侧，与组件下侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| RightTop<sup>9+</sup>    | 10 | 气泡提示位于组件右侧，与组件上侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
+| RightBottom<sup>9+</sup> | 11 | 气泡提示位于组件右侧，与组件下侧边缘对齐。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23                   |
 
 ## PixelRoundCalcPolicy<sup>11+</sup>
 
@@ -1210,6 +1239,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值   | 说明                   |
 | -------- | ---- | ---------------------- |
@@ -1281,10 +1314,14 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 说明            |
-| ---------- | ------------- |
-| LongPress  | 通过长按触发菜单弹出。   |
-| RightClick | 通过鼠标右键点击触发菜单弹出。 |
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称         | 值 | 说明            |
+| ---------- | -- | ------------- |
+| LongPress  | 1 | 通过长按触发菜单弹出。   |
+| RightClick | 0 | 通过鼠标右键点击触发菜单弹出。 |
 
 ## RenderFit<sup>10+</sup>
 
@@ -1348,6 +1385,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     |  值  | 说明                                       |
 | ------ | ------ | ---------------------------------------- |
 | DRAG   |  0  | 拖拽事件。 |
@@ -1396,6 +1437,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 说明                         |
 | ----------- | -------------------------- |
@@ -1561,10 +1606,16 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    |  说明                   |
-| ------  | -------------------- |
-| TARGET | Tips跟随目标物。 |
-| CURSOR | Tips跟随鼠标。 |
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称    | 值 | 说明                   |
+| ------  | -- | -------------------- |
+| TARGET | 0 | Tips跟随目标物。 |
+| CURSOR | 1 | Tips跟随鼠标。 |
 
 ## VerticalAlign
 

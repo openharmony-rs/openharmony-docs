@@ -34,27 +34,7 @@ FolderStack(options?: FolderStackOptions)
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[FolderStack](#folderstack23)。
-
 **ArkTS-Dyn起始版本：** 11
-
-**参数：**
-
-| 参数名       | 类型                                    | 必填 | 说明                                                                 |
-| ------------ | ------------------------------------------- | ---- |----------------------------------------------------------------------|
-| options |  [FolderStackOptions](#folderstackoptions18对象说明) | 否   | FolderStack的配置项。 |
-
-### FolderStack<sup>23+</sup>
-
-FolderStack(options?: FolderStackOptions，content_?: CustomBuilder)
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[FolderStack](#folderstack-1)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -63,7 +43,6 @@ FolderStack(options?: FolderStackOptions，content_?: CustomBuilder)
 | 参数名       | 类型                                    | 必填 | 说明                                                                 |
 | ------------ | ------------------------------------------- | ---- |----------------------------------------------------------------------|
 | options |  [FolderStackOptions](#folderstackoptions18对象说明) | 否   | FolderStack的配置项。 |
-| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 定义子组件的Builder函数。 |
 
 ## FolderStackOptions<sup>18+</sup>对象说明
 
@@ -175,7 +154,7 @@ ArkTS-Sta: autoHalfFold(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启自动旋转。<br/>默认值：true，设置true表示FolderStack在[半折叠状态](ts-appendix-enums.md#foldstatus11)进行布局时开启自动旋转，设置false表示关闭自动旋转。该属性不区分设备类型。<br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启自动旋转。<br/>默认值：true，设置true表示FolderStack在半折叠状态（见[FoldStatus](ts-appendix-enums.md#foldstatus11)）进行布局时开启自动旋转，设置false表示关闭自动旋转。该属性不区分设备类型。<br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### attributeModifier<sup>12+</sup>
 
@@ -617,22 +596,8 @@ struct attributeDemo {
 **ArkTS-Sta示例：**
 
 ```ts
-import {
-  Entry,
-  Text,
-  Column,
-  Component,
-  FolderStack,
-  FoldStatus,
-  Alignment,
-  AttributeModifier,
-  FolderStackAttribute,
-  TextAlign,
-  SafeAreaType,
-  SafeAreaEdge,
-  FlexAlign
-} from '@ohos.arkui.component'
-import { State } from '@ohos.arkui.stateManagement'
+import { Entry, Text, Column, Component, FolderStack, FoldStatus, Alignment, AttributeModifier, FolderStackAttribute, TextAlign, SafeAreaType, SafeAreaEdge, FlexAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
 
 class MyFolderStackModifier implements AttributeModifier<FolderStackAttribute> {
   applyNormalAttribute(instance: FolderStackAttribute): void {

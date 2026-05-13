@@ -11,7 +11,10 @@ formHost模块提供了卡片使用方相关接口的能力，包括对使用方
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 > 本模块接口均为系统接口。
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -28,6 +31,10 @@ deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -53,6 +60,8 @@ deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -71,6 +80,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.deleteForm(formId, (error,data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('formHost deleteForm success');
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## deleteForm
 
 deleteForm(formId: string): Promise&lt;void&gt;
@@ -80,6 +110,10 @@ deleteForm(formId: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -111,6 +145,8 @@ deleteForm(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 
@@ -119,6 +155,24 @@ try {
   formHost.deleteForm(formId).then(() => {
     console.info('formHost deleteForm success');
   }).catch((error: BusinessError) => {
+    console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.deleteForm(formId).then(() => {
+    console.info('formHost deleteForm success');
+  }).catch((error) => {
     console.error(`formHost deleteForm, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
@@ -135,6 +189,10 @@ releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -160,6 +218,8 @@ releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -176,6 +236,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.releaseForm(formId, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## releaseForm
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -185,6 +264,10 @@ releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -211,6 +294,8 @@ releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -227,6 +312,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.releaseForm(formId, true, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## releaseForm
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
@@ -236,6 +340,10 @@ releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -267,6 +375,8 @@ releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -283,6 +393,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.releaseForm(formId, true).then(() => {
+    console.info('formHost releaseForm success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## requestForm
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
@@ -292,6 +421,10 @@ requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -317,6 +450,8 @@ requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -333,6 +468,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.requestForm(formId, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## requestForm
 
 requestForm(formId: string): Promise&lt;void&gt;
@@ -342,6 +496,10 @@ requestForm(formId: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -372,6 +530,8 @@ requestForm(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -388,6 +548,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.requestForm(formId).then(() => {
+    console.info('formHost requestForm success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## requestFormWithParams<sup>12+</sup>
 
 requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Promise&lt;void&gt;
@@ -397,6 +576,10 @@ requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Prom
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -428,6 +611,8 @@ requestFormWithParams(formId: string, wantParams?: Record<string, Object>): Prom
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -447,6 +632,28 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  let params: Record<string, Object> = {
+    'ohos.extra.param.key.host_bg_inverse_color': '#ff000000' as Object
+  };
+  formHost.requestFormWithParams(formId, params).then(() => {
+    console.info('formHost requestFormWithParams success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## castToNormalForm
 
 castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
@@ -456,6 +663,10 @@ castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -481,6 +692,8 @@ castToNormalForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -497,6 +710,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.castToNormalForm(formId, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## castToNormalForm
 
 castToNormalForm(formId: string): Promise&lt;void&gt;
@@ -506,6 +738,10 @@ castToNormalForm(formId: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -536,6 +772,8 @@ castToNormalForm(formId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -552,6 +790,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.castToNormalForm(formId).then(() => {
+    console.info('formHost castTempForm success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
@@ -561,6 +818,10 @@ notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -584,6 +845,8 @@ notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -600,6 +863,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyVisibleForms(formId, (error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -609,6 +891,10 @@ notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -637,6 +923,8 @@ notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -653,6 +941,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyVisibleForms(formId).then(() => {
+    console.info('formHost notifyVisibleForms success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
@@ -662,6 +969,10 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -685,6 +996,8 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -701,6 +1014,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyInvisibleForms(formId, (error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -710,6 +1042,10 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -738,6 +1074,8 @@ notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -754,6 +1092,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.notifyInvisibleForms(formId).then(() => {
+    console.info('formHost notifyInvisibleForms success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
@@ -763,6 +1120,10 @@ enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -787,6 +1148,8 @@ enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -803,6 +1166,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.enableFormsUpdate(formId, (error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -812,6 +1194,10 @@ enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -841,6 +1227,8 @@ enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -857,6 +1245,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.enableFormsUpdate(formId).then(() => {
+    console.info('formHost enableFormsUpdate success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
@@ -866,6 +1273,10 @@ disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -891,6 +1302,8 @@ disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -907,6 +1320,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.disableFormsUpdate(formId, (error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -916,6 +1348,10 @@ disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -946,6 +1382,8 @@ disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -962,6 +1400,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string[] = ['12400633174999288'];
+  formHost.disableFormsUpdate(formId).then(() => {
+    console.info('formHost disableFormsUpdate success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isSystemReady
 
 isSystemReady(callback: AsyncCallback&lt;void&gt;): void
@@ -969,6 +1426,10 @@ isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 检查系统是否准备好。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -987,6 +1448,8 @@ isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1002,6 +1465,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.isSystemReady((error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## isSystemReady
 
 isSystemReady(): Promise&lt;void&gt;
@@ -1009,6 +1490,10 @@ isSystemReady(): Promise&lt;void&gt;
 检查系统是否准备好。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1026,6 +1511,8 @@ isSystemReady(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1041,6 +1528,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.isSystemReady().then(() => {
+    console.info('formHost isSystemReady success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getAllFormsInfo
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
@@ -1050,6 +1555,10 @@ getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1072,6 +1581,8 @@ getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 
@@ -1088,6 +1599,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getAllFormsInfo((error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost getAllFormsInfo`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getAllFormsInfo
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
@@ -1097,6 +1628,10 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1118,6 +1653,8 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 
@@ -1132,6 +1669,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
+    console.info(`formHost getAllFormsInfo`);
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getFormsInfo
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
@@ -1141,6 +1696,10 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1165,6 +1724,8 @@ getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.Fo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 
@@ -1181,6 +1742,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost getFormsInfo`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
@@ -1190,6 +1771,10 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1215,6 +1800,8 @@ getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 
@@ -1231,6 +1818,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost getFormsInfo`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
@@ -1240,6 +1847,10 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1270,6 +1881,8 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 
@@ -1284,6 +1897,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
+    console.info(`formHost getFormsInfo`);
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## getFormsInfo<sup>12+</sup>
 
 getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
@@ -1293,6 +1924,10 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 **需要权限**：ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力**：SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1322,6 +1957,8 @@ getFormsInfo(filter: formInfo.FormInfoFilter): Promise&lt;Array&lt;formInfo.Form
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 
@@ -1341,9 +1978,34 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const filter: formInfo.FormInfoFilter = {
+  bundleName: 'ohos.samples.FormApplication',
+  moduleName: 'entry',
+  supportedDimensions: [formInfo.FormDimension.Dimension_1_2, formInfo.FormDimension.Dimension_2_2, formInfo.FormDimension.Dimension_2_4]
+};
+try {
+  formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
+    console.info(`formHost getFormsInfo`);
+  }).catch((error) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+}
+```
+
 ## deleteInvalidForms
 
-deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: deleteInvalidForms(formIds: Array\<string>, callback: AsyncCallback\<int>): void
 
 根据列表删除应用程序的无效卡片。使用callback异步回调。
 
@@ -1351,12 +2013,16 @@ deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;numb
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | formIds | Array&lt;string&gt; | 是   | 有效卡片标识列表。 |
-| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当根据列表删除应用程序的无效卡片成功，error为undefined，data为删除的卡片个数；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br>ArkTS-Sta: AsyncCallback&lt;int&gt;| 是 | 回调函数。当根据列表删除应用程序的无效卡片成功，error为undefined，data为删除的卡片个数；否则为错误对象。 |
 
 **错误码：**
 
@@ -1372,6 +2038,8 @@ deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;numb
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -1390,15 +2058,42 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+  formHost.deleteInvalidForms(formIds, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost deleteInvalidForms`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## deleteInvalidForms
 
-deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
+ArkTS-Dyn: deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
+
+ArkTS-Sta: deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;int&gt;
 
 根据列表删除应用程序的无效卡片。使用Promise异步回调。
 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1410,7 +2105,7 @@ deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回删除的卡片个数。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回删除的卡片个数。|
 
 **错误码：**
 
@@ -1427,6 +2122,8 @@ deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 
@@ -1442,6 +2139,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+  formHost.deleteInvalidForms(formIds).then((data: int) => {
+    console.info(`formHost deleteInvalidForms, data: ${data}`);
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
 ## acquireFormState
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
@@ -1451,6 +2166,10 @@ acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&g
 **需要权限：** ohos.permission.REQUIRE_FORM 和 ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1474,6 +2193,8 @@ acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&g
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
@@ -1503,6 +2224,37 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  'deviceId': '',
+  'bundleName': 'ohos.samples.FormApplication',
+  'abilityName': 'FormAbility',
+  'parameters': {
+    'ohos.extra.param.key.module_name': 'entry',
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.form_dimension': 2
+  }
+};
+try {
+  formHost.acquireFormState(want, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost acquireFormState`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## acquireFormState
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
@@ -1512,6 +2264,10 @@ acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM 和 ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1541,6 +2297,8 @@ acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { Want } from '@kit.AbilityKit';
@@ -1567,6 +2325,35 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  'deviceId': '',
+  'bundleName': 'ohos.samples.FormApplication',
+  'abilityName': 'FormAbility',
+  'parameters': {
+    'ohos.extra.param.key.module_name': 'entry',
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.form_dimension': 2
+  }
+};
+try {
+  formHost.acquireFormState(want).then((data) => {
+    console.info(`formHost acquireFormState`);
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('formUninstall')
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
@@ -1578,6 +2365,10 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 > 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1617,6 +2408,10 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -1653,6 +2448,10 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: A
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
@@ -1677,6 +2476,8 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: A
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1693,6 +2494,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsVisible(formIds, true, (error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
@@ -1702,6 +2522,10 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1732,6 +2556,8 @@ notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1748,6 +2574,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsVisible(formIds, true).then(() => {
+    console.info('formHost notifyFormsVisible success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
@@ -1757,6 +2602,10 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, c
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1782,6 +2631,8 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, c
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1798,6 +2649,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsEnableUpdate(formIds, true, (error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
@@ -1807,6 +2677,10 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): 
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1837,6 +2711,8 @@ notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1852,6 +2728,25 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
+    console.info('formHost notifyFormsEnableUpdate success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
 ## shareForm
 
 shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;): void
@@ -1861,6 +2756,10 @@ shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;)
 **需要权限：** ohos.permission.REQUIRE_FORM 和 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1886,6 +2785,8 @@ shareForm(formId: string, deviceId: string, callback: AsyncCallback&lt;void&gt;)
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1903,6 +2804,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
+try {
+  formHost.shareForm(formId, deviceId, (error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## shareForm
 
 shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
@@ -1912,6 +2833,10 @@ shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM 和 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1942,6 +2867,8 @@ shareForm(formId: string, deviceId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1959,6 +2886,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
+try {
+  formHost.shareForm(formId, deviceId).then(() => {
+    console.info('formHost shareForm success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callback: AsyncCallback\<void>): void
@@ -1968,6 +2915,10 @@ notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callb
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1992,6 +2943,8 @@ notifyFormsPrivacyProtected(formIds: Array\<string>, isProtected: boolean, callb
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2008,6 +2961,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsPrivacyProtected(formIds, true, (error) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## notifyFormsPrivacyProtected
 
 notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Promise\<void\>
@@ -2017,6 +2989,10 @@ notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Pro
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2044,6 +3020,10 @@ notifyFormsPrivacyProtected(formIds: Array\<string\>, isProtected: boolean): Pro
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred. |
 
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2060,6 +3040,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: Array<string> = new Array<string>('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsPrivacyProtected(formIds, true).then(() => {
+    console.info('formHost notifyFormsPrivacyProtected success');
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>>): void
@@ -2071,6 +3070,10 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2094,6 +3097,8 @@ acquireFormData(formId: string, callback: AsyncCallback\<Record\<string, Object>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 
@@ -2111,6 +3116,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  formHost.acquireFormData(formId, (error, data) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost acquireFormData`);
+    }
+  });
+} catch(error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## acquireFormData<sup>10+</sup>
 
 acquireFormData(formId: string): Promise\<Record\<string, Object>>
@@ -2122,6 +3148,10 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2150,6 +3180,8 @@ acquireFormData(formId: string): Promise\<Record\<string, Object>>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2163,6 +3195,25 @@ try {
   });
 } catch (e) {
   console.error(`catch error, code: ${e.code}, message: ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  formHost.acquireFormData(formId).then((data) => {
+    console.info('formHost acquireFormData success' + data);
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2184,6 +3235,10 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callba
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2208,6 +3263,8 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;, callba
 | 16501003 | The form cannot be operated by the current application.     |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common, Want } from '@kit.AbilityKit';
@@ -2261,6 +3318,64 @@ struct CardExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { FormComponent, FormDimension, FormInfo, Visibility } from '@kit.ArkUI';
+import { formHost, formInfo } from '@kit.FormKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct CardExample {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State formId: long = 0;
+  @State fwidth: number = 420;
+  @State fheight: number = 280;
+
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "widget",
+        bundle: "com.example.cardprovider",
+        ability: "EntryFormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false,
+      })
+        .allowUpdate(true)
+        .size({ width: this.fwidth, height: this.fheight })
+        .visibility(Visibility.Visible)
+        .onAcquired((form) => {
+          console.info(`testTag form info`);
+          this.formId = form.id;
+          try {
+            let formIds: Array<string> = [this.formId.toString()];
+            formHost.setRouterProxy(formIds, (want) => {
+              console.info(`formHost recv router event`);
+              // 卡片使用方自己处理跳转
+              this.context.startAbility(want, (error) => {
+                console.info(`formHost startAbility error, code: ${error.code}, message: ${error.message}`);
+              });
+            }).then(() => {
+              console.info('formHost set router proxy success');
+            }).catch((err) => {
+              console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
+            })
+          } catch (error) {
+            console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## setRouterProxy<sup>11+</sup>
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
@@ -2278,6 +3393,10 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promi
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2307,6 +3426,8 @@ setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promi
 | 16501003 | The form cannot be operated by the current application.     |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost } from '@kit.FormKit';
@@ -2362,6 +3483,64 @@ struct CardExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { FormComponent, FormDimension, FormInfo, Visibility } from '@kit.ArkUI';
+import { formHost, formInfo } from '@kit.FormKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct CardExample {
+  private context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  @State formId: long = 0;
+  @State fwidth: number = 420;
+  @State fheight: number = 280;
+
+  build() {
+    Column() {
+      FormComponent({
+        id: this.formId,
+        name: "widget",
+        bundle: "com.example.cardprovider",
+        ability: "EntryFormAbility",
+        module: "entry",
+        dimension: FormDimension.Dimension_2_2,
+        temporary: false,
+      })
+        .allowUpdate(true)
+        .size({ width: this.fwidth, height: this.fheight })
+        .visibility(Visibility.Visible)
+        .onAcquired((form) => {
+          console.info(`testTag form info`);
+          this.formId = form.id;
+          try {
+            let formIds: Array<string> = [this.formId.toString()];
+            formHost.setRouterProxy(formIds, (want) => {
+              console.info(`formHost recv router event`);
+              // 卡片使用方自己处理跳转
+              this.context.startAbility(want, (error) => {
+                console.info(`formHost startAbility error, code: ${error.code}, message: ${error.message}`);
+              });
+            }).then(() => {
+              console.info('formHost set router proxy success');
+            }).catch((err) => {
+              console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
+            })
+          } catch (error) {
+            console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
@@ -2371,6 +3550,10 @@ clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&g
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2395,6 +3578,8 @@ clearRouterProxy(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&g
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2411,6 +3596,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.clearRouterProxy(formIds, (err) => {
+    if (err) {
+      console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## clearRouterProxy<sup>11+</sup>
 
 clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -2420,6 +3624,10 @@ clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2449,6 +3657,8 @@ clearRouterProxy(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2464,6 +3674,25 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.clearRouterProxy(formIds).then(() => {
+    console.info('formHost clear rourter proxy success');
+  }).catch((err) => {
+    console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
 ## setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
@@ -2475,6 +3704,10 @@ setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2498,6 +3731,8 @@ setFormsRecyclable(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2514,6 +3749,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.setFormsRecyclable(formIds, (err) => {
+    if (err) {
+      console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## setFormsRecyclable<sup>11+</sup>
 
 setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -2525,6 +3779,10 @@ setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2553,6 +3811,8 @@ setFormsRecyclable(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2568,6 +3828,25 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.setFormsRecyclable(formIds).then(() => {
+    console.info('setFormsRecyclable success');
+  }).catch((err) => {
+    console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
 ## recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
@@ -2579,6 +3858,10 @@ recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2602,6 +3885,8 @@ recoverForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2617,6 +3902,25 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.recoverForms(formIds, (err) => {
+    if (err) {
+      console.error(`recoverForms error, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
 ## recoverForms<sup>11+</sup>
 
 recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -2628,6 +3932,10 @@ recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2657,6 +3965,8 @@ recoverForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2672,6 +3982,25 @@ try {
   console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.recoverForms(formIds).then(() => {
+    console.info('recover forms success');
+  }).catch((err) => {
+    console.error(`formHost recover forms error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.info(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
 ## recycleForms<sup>12+</sup>
 
 recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
@@ -2683,6 +4012,10 @@ recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2712,6 +4045,8 @@ recycleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2728,6 +4063,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formIds: string[] = ['12400633174999288'];
+  formHost.recycleForms(formIds).then(() => {
+    console.info('recycle forms success');
+  }).catch((err) => {
+    console.error(`formHost recycle forms error, code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## updateFormLocation<sup>12+</sup>
 updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 
@@ -2738,6 +4092,10 @@ updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 **需要权限**：ohos.permission.REQUIRE_FORM
 
 **系统能力**：SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2763,6 +4121,8 @@ updateFormLocation(formId: string, location: formInfo.FormLocation): void;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2772,6 +4132,21 @@ try {
   formHost.updateFormLocation(formId, formInfo.FormLocation.SCREEN_LOCK);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  formHost.updateFormLocation(formId, formInfo.FormLocation.SCREEN_LOCK);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2786,6 +4161,10 @@ setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 **需要权限**：ohos.permission.REQUIRE_FORM
 
 **系统能力**：SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2810,6 +4189,8 @@ setPublishFormResult(formId: string, result: formInfo.PublishFormResult): void;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2823,6 +4204,21 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  let res: formInfo.PublishFormResult = {code: formInfo.PublishFormErrorCode.SUCCESS, message: ''};
+  formHost.setPublishFormResult(formId, res);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
 ## updateFormLockedState<sup>22+</sup>
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
@@ -2834,6 +4230,10 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 **需要权限**：ohos.permission.REQUIRE_FORM
 
 **系统能力**：SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2863,6 +4263,8 @@ updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2879,6 +4281,134 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+let isLocked: boolean = true;
+
+try {
+  formHost.updateFormLockedState(formId, isLocked).then(() => {
+    console.info(`formHost updateFormLockedState success`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## addForm<sup>12+</sup>
+
+addForm(want: Want): Promise&lt;formInfo.RunningFormInfo&gt;
+
+添加主题卡片。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.REQUIRE_FORM
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 查询卡片状态时携带的want信息。需要包含bundle名、ability名、module名、卡片名、卡片规格等。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo.md#runningforminfo20)&gt; | Promise对象。返回符合条件的卡片信息，包括卡片名称、尺寸等。 |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let want: Want = {
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': {
+      'ohos.extra.param.key.form_dimension': 4,
+      'ohos.extra.param.key.form_is_theme': true,
+      'ohos.extra.param.key.form_location': 0,
+      'ohos.extra.param.key.module_name': 'entry',
+      'ohos.extra.param.key.form_name': 'widget',
+      'themeFormId': '0',
+      'themeId': '2181824853'
+    }
+  };
+  formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formHost addForm, formId: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formInfo, formHost } from '@kit.FormKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+try {
+  let wantParams: Record<String, RecordData> = {
+    'ohos.extra.param.key.form_dimension': 4,
+    'ohos.extra.param.key.form_is_theme': true,
+    'ohos.extra.param.key.form_location': 0,
+    'ohos.extra.param.key.module_name': 'entry',
+    'ohos.extra.param.key.form_name': 'widget',
+    'themeFormId': '0',
+    'themeId': '2181824853'
+  };
+  let want: Want = {
+    'bundleName': 'com.huawei.hmsapp.thememanager',
+    'abilityName': 'ThemeFaCardUIExtAbility',
+    'parameters': wantParams
+  }
+  formHost.addForm(want).then((data: formInfo.RunningFormInfo) => {
+    console.info(`formHost addForm, formId: ${data.formId}`);
+  }).catch((error) => {
+    console.error(`formHost addForm error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, ${error.code}, message: ${error.message}`);
+}
+```
+
 ## formHost.on('formOverflow')<sup>20+</sup>
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
@@ -2888,6 +4418,10 @@ on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): vo
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2919,6 +4453,53 @@ try {
 }
 ```
 
+## formHost.onFormOverflow<sup>23+</sup>
+
+onFormOverflow(callback: Callback\<formInfo.OverflowRequest\>): void
+
+订阅互动卡片动效请求事件，使用callback异步回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                         |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
+| callback | Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | 是   | 回调函数，用于卡片使用方对动效请求进行处理。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (data: formInfo.OverflowRequest) => {
+  console.info( 'testTag', `onFormOverflow OverflowRequest, data.formId: ${data.formId}`);
+}
+try {
+  formHost.onFormOverflow(callback);
+  console.info( 'testTag EntryFormAbility', 'onFormOverflow success');
+} catch (error) {
+  console.info( 'testTag EntryFormAbility', `onFormOverflow catch error ${error.code}, ${error.message}`);
+}
+```
+
 ## formHost.off('formOverflow')<sup>20+</sup>
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
@@ -2928,6 +4509,10 @@ off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): 
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2959,6 +4544,53 @@ try {
 }   
 ```
 
+## formHost.offFormOverflow<sup>23+</sup>
+
+offFormOverflow(callback?: Callback\<formInfo.OverflowRequest\>): void
+
+取消订阅互动卡片动效请求事件，使用callback异步回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | 否   | 回调函数，对应已订阅互动卡片动效请求。缺省时，表示注销所有已注册互动卡片动效请求事件回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (data: formInfo.OverflowRequest) => {
+  console.info( 'testTag', `offFormOverflow OverflowRequest, data.formId: ${data.formId}`);
+}
+try {
+  formHost.offFormOverflow(callback);
+  console.info( 'testTag EntryFormAbility', 'offFormOverflow success');
+} catch (error) {
+  console.info( 'testTag EntryFormAbility', `offFormOverflow catch error ${error.code}, ${error.message}`);
+}
+```
+
 ## formHost.on('changeSceneAnimationState')<sup>20+</sup>
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
@@ -2968,6 +4600,10 @@ on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeScene
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -2999,6 +4635,55 @@ try {
 }
 ```
 
+## formHost.onChangeSceneAnimationState<sup>23+</sup>
+
+onChangeSceneAnimationState(callback: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
+
+订阅互动卡片状态切换请求事件，使用callback异步回调。
+
+互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                       |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| callback | Callback&lt;[formInfo.ChangeSceneAnimationStateRequest](js-apis-app-form-formInfo-sys.md#changesceneanimationstaterequest20)&gt; | 是   | 回调函数，用于卡片使用方处理状态切换请求。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (data: formInfo.ChangeSceneAnimationStateRequest) => {
+  console.info( 'testTag', `onChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.formId: ${data.formId}`);
+}
+try {
+  formHost.onChangeSceneAnimationState(callback);
+  console.info( 'testTag EntryFormAbility', 'onChangeSceneAnimationState on success');
+} catch (error) {
+  console.info( 'testTag EntryFormAbility', `onChangeSceneAnimationState on catch error ${error.code}, ${error.message}`);
+}
+```
+
 ## formHost.off('changeSceneAnimationState')<sup>20+</sup>
 
 off(type: 'changeSceneAnimationState', callback?: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
@@ -3008,6 +4693,10 @@ off(type: 'changeSceneAnimationState', callback?: Callback&lt;formInfo.ChangeSce
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3039,6 +4728,53 @@ try {
 }
 ```
 
+## formHost.offChangeSceneAnimationState<sup>23+</sup>
+
+offChangeSceneAnimationState(callback?: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
+
+取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[formInfo.ChangeSceneAnimationStateRequest](js-apis-app-form-formInfo-sys.md#changesceneanimationstaterequest20)&gt; | 否   | 回调函数，对应已订阅互动卡片状态切换请求。缺省时，表示注销所有已注册互动卡片状态切换事件回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callback = (data: formInfo.ChangeSceneAnimationStateRequest) => {
+  console.info( 'testTag', `offChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.formId: ${data.formId}`);
+}
+try {
+  formHost.offChangeSceneAnimationState(callback);
+  console.info( 'testTag EntryFormAbility', 'changeSceneAnimationState off success');
+} catch (error) {
+  console.info( 'testTag EntryFormAbility', `changeSceneAnimationState off catch error ${error.code}, ${error.message}`);
+}
+```
+
 ## formHost.on('getFormRect')<sup>20+</sup>
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
@@ -3048,6 +4784,10 @@ on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3089,6 +4829,66 @@ try {
 }
 ```
 
+## formHost.onGetFormRect<sup>23+</sup>
+
+onGetFormRect(callback: formInfo.GetFormRectInfoCallback): void
+
+订阅卡片位置尺寸查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是   | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callGetFormRect: formInfo.GetFormRectInfoCallback = (formId: string): Promise<formInfo.Rect> => {
+  console.info('testTag', 'testTag', `cbGetFormRect a new form`);
+  return new Promise<formInfo.Rect>((resolve: (rect: formInfo.Rect) => void, reject: (err: Error) => void): void => {
+    console.info('testTag', 'testTag', `cbGetFormRect Promise called`);
+    let rect1: formInfo.Rect = {
+      left: 1.0,
+      top: 1.2,
+      width: 1.3,
+      height: 1.4
+    };
+    resolve(rect1);
+  });
+}
+
+try {
+  formHost.onGetFormRect(callGetFormRect);
+  console.info('testTag', 'testTag', 'onGetFormRect&formInfo success');
+} catch (error) {
+  let code = error.code;
+  let message = error.message;
+  console.info('testTag', 'testTag', 'onGetFormRect&formInfo catch error', `code: ${code}, message: ${message})`);
+}
+```
+
 ## formHost.off('getFormRect')<sup>20+</sup>
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
@@ -3098,6 +4898,10 @@ off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3127,6 +4931,62 @@ try {
 }
 ```
 
+## formHost.offGetFormRect<sup>23+</sup>
+
+offGetFormRect(callback?: formInfo.GetFormRectInfoCallback): void
+
+取消订阅卡片位置尺寸查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 否   | 回调函数，对应已订阅卡片位置尺寸查询请求。缺省时，表示注销所有已注册卡片位置、尺寸查询事件回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callGetFormRect: formInfo.GetFormRectInfoCallback = (formId: string): Promise<formInfo.Rect> => {
+  console.info(`cbGetFormRect a new form`);
+  return new Promise<formInfo.Rect>((resolve: (rect: formInfo.Rect) => void, reject: (err: Error) => void): void => {
+    console.info(`cbGetFormRect Promise called`);
+    let rect1: formInfo.Rect = {
+      left: 1.0,
+      top: 1.2,
+      width: 1.3,
+      height: 1.4
+    }
+  });
+}
+
+try {
+  formHost.offGetFormRect(callGetFormRect);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## formHost.updateFormSize<sup>20+</sup>
 
 updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void
@@ -3138,6 +4998,10 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3161,6 +5025,8 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3180,6 +5046,212 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let formId: string = '12400633174999288';
+  let newDimension = formInfo.FormDimension.Dimension_1_2;
+  let newRect: formInfo.Rect = {left: 1, top: 2, width: 100, height: 100};
+  formHost.updateFormSize(formId, newDimension, newRect);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.onGetLiveFormStatus<sup>23+</sup>
+
+onGetLiveFormStatus(callback: formInfo.GetLiveFormStatusCallback): void
+
+订阅卡片生存状态查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getliveformstatuscallback20) | 是   | 回调函数，卡片使用方对查询请求进行处理，返回卡片生存状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.onGetLiveFormStatus((): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "active" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.offGetLiveFormStatus<sup>23+</sup>
+
+offGetLiveFormStatus(callback?: formInfo.GetLiveFormStatusCallback): void
+
+取消订阅卡片生存状态查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getliveformstatuscallback20) | 否   | 回调函数，卡片使用方对查询请求进行处理，返回卡片生存状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offGetLiveFormStatus((): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "inactive" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.onFormUninstall<sup>23+</sup>
+
+onFormUninstall(callback: Callback&lt;string&gt;): void
+
+订阅卡片卸载事件。使用callback异步回调。
+
+> **说明：**
+> 
+> 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | Callback&lt;string&gt; | 是 | 回调函数，返回卡片标识。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost } from '@kit.FormKit';
+
+try {
+  formHost.onFormUninstall((formId: string) => {
+    console.info(`formHost on formUninstall, formId: ${formId}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.offFormUninstall<sup>23+</sup>
+
+offFormUninstall(callback?: Callback&lt;string&gt;): void
+
+取消订阅卡片卸载事件。使用callback异步回调。
+
+> **说明：**
+> 
+> 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- | ------- |
+| callback | Callback&lt;string&gt; | 否 | 回调函数，返回卡片标识。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { formHost } from '@kit.FormKit';
+
+try {
+  formHost.offFormUninstall();
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+
 ## getAllTemplateFormsInfo<sup>23+</sup>
 
 getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
@@ -3191,6 +5263,10 @@ getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3210,6 +5286,8 @@ getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3227,6 +5305,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getAllTemplateFormsInfo().then((data) => {
+    for (let formInfo of data) {
+      console.info(`getAllTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    }
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 
 ## getTemplateFormsInfo<sup>23+</sup>
 
@@ -3239,6 +5337,10 @@ getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3265,6 +5367,8 @@ getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3282,6 +5386,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.getTemplateFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data) => {
+    for (let formInfo of data) {
+      console.info(`getTemplateFormsInfo bundleName: ${formInfo.bundleName}, moduleName: ${formInfo.moduleName}, name: ${formInfo.name}`);
+    }
+  }).catch((error) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## formHost.onTemplateFormDetailInfoChange<sup>23+</sup>
 
 onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback): void
@@ -3295,6 +5419,10 @@ onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3314,6 +5442,8 @@ onTemplateFormDetailInfoChange(callback: formInfo.TemplateFormDetailInfoCallback
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3331,6 +5461,26 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback: formInfo.TemplateFormDetailInfoCallback = (info) => {
+    for (let templateFormDetailInfo of info) {
+      console.info(`TemplateFormDetailInfoCallback bundleName: ${templateFormDetailInfo.bundleName}, moduleName: ${templateFormDetailInfo.moduleName}, formName: ${templateFormDetailInfo.formName}`);
+    }
+  };
+  formHost.onTemplateFormDetailInfoChange(callback);
+  console.info(`onTemplateFormDetailInfoChange success`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 
 ## formHost.offTemplateFormDetailInfoChange<sup>23+</sup>
 
@@ -3345,6 +5495,10 @@ offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallba
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3364,6 +5518,8 @@ offTemplateFormDetailInfoChange(callback?: formInfo.TemplateFormDetailInfoCallba
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formHost } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3373,6 +5529,21 @@ try {
   console.info(`offTemplateFormDetailInfoChange success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offTemplateFormDetailInfoChange();
+  console.info(`offTemplateFormDetailInfoChange success`);
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -3389,6 +5560,10 @@ getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;s
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -3414,6 +5589,8 @@ getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;s
 | 16501016 | The location of the widget is invalid. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { formHost, formInfo } from '@kit.FormKit';

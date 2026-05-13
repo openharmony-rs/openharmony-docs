@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 ```
 
 ## serialManager.getPortList
@@ -42,7 +42,7 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口设备清单 
 function getPortList() {
@@ -96,7 +96,7 @@ hasSerialRight(portId: number): boolean
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function hasSerialRight() {
@@ -157,7 +157,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function requestSerialRight() {
@@ -219,7 +219,7 @@ open(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function open() {
@@ -294,7 +294,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function getAttribute() {
@@ -377,7 +377,7 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function setAttribute() {
@@ -471,7 +471,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function read() {
@@ -558,7 +558,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function readSync() {
@@ -647,7 +647,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function write() {
@@ -735,7 +735,7 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function writeSync() {
@@ -813,7 +813,7 @@ close(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function close() {
@@ -892,7 +892,7 @@ cancelSerialRight(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
+import serialManager from '@ohos.busManager.serial';
 
 // 获取串口列表
 function cancelSerialRight() {
