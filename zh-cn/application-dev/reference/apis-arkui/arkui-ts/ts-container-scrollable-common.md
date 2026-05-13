@@ -1173,7 +1173,7 @@ type OnDidStopDraggingCallback = (willFling: boolean) => void
 ### 示例1（支持滚动手势）
 该示例通过设置[enableScrollInteraction](ts-container-scrollable-common.md#enablescrollinteraction11)属性，实现了使用手势滚动纵向列表，并在当前显示界面发生改变时回调索引。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1242,7 +1242,7 @@ struct ListExample {
 ### 示例2（设置边缘渐隐）
 该示例通过设置[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性，实现了[List](ts-container-list.md)组件开启边缘渐隐效果并设置边缘渐隐长度。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1347,7 +1347,7 @@ struct ScrollExample {
 ### 示例4（设置滚动条边距）
 从API version 20开始，该示例通过设置[scrollBarMargin](#scrollbarmargin20)属性，调整滚动组件的滚动条边距。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts

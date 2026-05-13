@@ -355,7 +355,7 @@ interface ArrObject {
 
 该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置Header/Footer。
 
-ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](#示例1设置吸顶吸底)。
+ListDataSource说明及完整代码参考[示例1（设置吸顶/吸底）](#示例1设置吸顶吸底)。
 
 <!--code_no_check-->
 ```ts
@@ -494,7 +494,7 @@ struct ListItemGroupExample {
 
 该示例展示了ListItemGroup在多列布局中的使用，通过设置List组件的[lanes](./ts-container-list.md#lanes9)属性实现多列布局。
 
-ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](#示例1设置吸顶吸底)。
+ListDataSource说明及完整代码参考[示例1（设置吸顶/吸底）](#示例1设置吸顶吸底)。
 
 <!--code_no_check-->
 ```ts
