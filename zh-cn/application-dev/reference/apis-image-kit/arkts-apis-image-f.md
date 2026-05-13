@@ -1557,7 +1557,9 @@ async function CreateUnpremultipliedPixelMap() {
 
 ## image.createImageSource
 
-createImageSource(uri: string): ImageSource
+ArkTS-Dyn: createImageSource(uri: string): ImageSource
+
+ArkTS-Sta: createImageSource(uri: string): ImageSource | undefined
 
 通过传入的uri创建ImageSource实例。
 
@@ -1581,7 +1583,8 @@ createImageSource(uri: string): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1617,7 +1620,9 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(uri: string, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(uri: string, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(uri: string, options: SourceOptions): ImageSource | undefined
 
 通过传入的uri创建ImageSource实例。
 
@@ -1644,7 +1649,8 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1682,7 +1688,9 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>7+</sup>
 
-createImageSource(fd: int): ImageSource
+ArkTS-Dyn: createImageSource(fd: number): ImageSource
+
+ArkTS-Sta: createImageSource(fd: int): ImageSource | undefined
 
 通过传入文件描述符来创建ImageSource实例。
 
@@ -1706,7 +1714,8 @@ createImageSource(fd: int): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1747,7 +1756,9 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(fd: int, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(fd: number, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(fd: int, options: SourceOptions): ImageSource | undefined
 
 通过传入文件描述符来创建ImageSource实例。
 
@@ -1774,7 +1785,8 @@ createImageSource(fd: int, options: SourceOptions): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1817,7 +1829,9 @@ function CreateImageSourceFunc(context: common.UIAbilityContext): image.ImageSou
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(buf: ArrayBuffer): ImageSource
+ArkTS-Dyn: createImageSource(buf: ArrayBuffer): ImageSource
+
+ArkTS-Sta: createImageSource(buf: ArrayBuffer): ImageSource | undefined
 
 通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
 
@@ -1843,7 +1857,8 @@ createImageSource(buf: ArrayBuffer): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1875,7 +1890,9 @@ function CreateImageSourceFunc(): image.ImageSource | undefined {
 
 ## image.createImageSource<sup>9+</sup>
 
-createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource | undefined
 
 通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
 
@@ -1902,7 +1919,8 @@ createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Sta:[ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1936,7 +1954,9 @@ function CreateImageSourceFunc(): image.ImageSource | undefined {
 
 ## image.createImageSource<sup>11+</sup>
 
-createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
+ArkTS-Dyn: createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
+
+ArkTS-Sta: createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource | undefined
 
 通过图像资源文件的RawFileDescriptor创建ImageSource实例。
 
@@ -1961,7 +1981,8 @@ createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOp
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 

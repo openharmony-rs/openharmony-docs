@@ -32,10 +32,10 @@ import { image } from '@kit.ImageKit';
 
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
-| delayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | GIF图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位为毫秒（ms）。<br>该值为正整数。 |
-| unclampedDelayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | GIF图片每帧未钳制的延迟时长。<br>单位为毫秒（ms）。<br>该值为正整数。 |
+| delayTime | int | 是   | 是   | GIF图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位为毫秒（ms）。<br>该值为正整数。 |
+| unclampedDelayTime | int | 是   | 是   | GIF图片每帧未钳制的延迟时长。<br>单位为毫秒（ms）。<br>该值为正整数。 |
 | hasGlobalColorMap | boolean | 是   | 是   | 是否包含全局调色板。<br>true表示包含，false表示不包含。 |
-| loopCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | GIF图片循环次数。<br>取值为0或正整数。0表示无限循环，其他值表示实际循环次数。 |
-| disposalType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | GIF图片的每帧处置方式。<br>- 0表示未指定。<br>- 1表示不处置。<br>- 2表示还原为背景色。<br>- 3表示还原为前一帧。<br>该值为正整数。 |
-| canvasHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | GIF图片的画布像素高度。<br>单位为像素（px）。 |
-| canvasWidth | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | GIF图片的画布像素宽度。<br>单位为像素（px）。 |
+| loopCount |  int | 是   | 是   | GIF图片循环次数。<br>取值为0或正整数。0表示无限循环，其他值表示实际循环次数。 |
+| disposalType |  int | 是   | 是   | GIF图片的每帧处置方式。<br>- 0表示未指定。<br>- 1表示不处置。<br>- 2表示还原为背景色。<br>- 3表示还原为前一帧。<br>该值为正整数。 |
+| canvasHeight |  int | 是   | 是   | GIF图片的画布像素高度。<br>单位为像素（px）。 |
+| canvasWidth | int | 是   | 是   | GIF图片的画布像素宽度。<br>单位为像素（px）。 |
