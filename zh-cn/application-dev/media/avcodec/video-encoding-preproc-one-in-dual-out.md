@@ -40,8 +40,8 @@
 
 | 接口 | 主编码器 | 副编码器 | 备注 |
 |------|:--------:|:--------:|------|
-| **OH_VideoEncoder_CreatePrimaryWithPreproc** | ✅ | N/A | 创建主编码器的唯一入口 |
-| **OH_VideoEncoder_CreateSecondaryFromPrimary** | ✅ | ❌ NOT_PERMIT | 仅 Primary 句柄可调用 |
+| **OH_VideoEncoder_CreatePrimaryWithPreproc** | ✅ | N/A | 创建主编码器入口 |
+| **OH_VideoEncoder_CreateSecondaryFromPrimary** | ✅ | N/A | 创建副编码器入口，仅可以通过主编码器句柄创建 |
 | **OH_VideoEncoder_RegisterCallback** | ✅ | ✅ | 各自独立注册 |
 | **OH_VideoEncoder_RegisterParameterCallback** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持随帧参数 |
 | **OH_VideoEncoder_PushInputParameter** | ❌ NOT_PERMIT | ❌ NOT_PERMIT | 不支持随帧参数 |
@@ -241,6 +241,7 @@ ret = OH_VideoEncoder_Start(g_secondary);
 if (ret != AV_ERR_OK) {
     // 异常处理
 }
+```
 
 ### Step 9：运行时动态调整（可选）
 
@@ -314,20 +315,7 @@ if (window != nullptr){
 
 ---
 
-## 5. GetInputDescription 差异
-
-主/副编码器的 `GetInputDescription()` 返回不同的预处理信息：
-
-| 字段 | Primary 示例 | Secondary 示例（降采样+丢帧场景） |
-|------|-------------|-----------------------------------|
-| `WIDTH` | 1920 | 1920 |
-| `HEIGHT` | 1080 | 1080 |
-| 像素格式 | NV12 | NV12（两者一致） |
-| `PREPROC_DOWNSAMPLING_*` | 无 | 有值（降采样配置参数） |
-| `PREPROC_DROP_TO_FRAME_RATE` | 有值或无值（取决于是否启用） | 有值（如 15.0） |
-
-
-## 6. 推荐配置模式
+## 5. 推荐配置模式
 
 ### 模式 A：纯双分辨率（最常用）
 
@@ -364,7 +352,7 @@ if (window != nullptr){
 
 ---
 
-## 7. 常见问题排查
+## 6. 常见问题排查
 
 | 问题 | 可能原因 | 解决方法 |
 |------|----------|----------|
@@ -377,7 +365,7 @@ if (window != nullptr){
 
 ---
 
-## 8. API 参考
+## 7. API 参考
 
 ### 核心创建接口
 
