@@ -215,7 +215,7 @@ Defines the common types for the native module.
 | [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | Enumerates the animation playback directions.                          |
 | [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | Enumerates the item states of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component.|
 | [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | Enumerates the item edge effects of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Enumerates the swipe action menu display directions for **ListItem** components.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Enumerates the swipe action menu display directions for the **ListItem** component.|
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | Enumerates the playback states of the frame-by-frame animation.                      |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | Enumerates the states before and after execution of the frame-by-frame animation.            |
 | [ArkUI_ErrorCode](#arkui_errorcode)                                 | ArkUI_ErrorCode                 | Enumerates the error codes.                        |
@@ -512,8 +512,8 @@ Defines the common types for the native module.
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | - | Destroys an instance of the cross-language configuration option.|
 | [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | - | Sets whether cross-language attribute setting is allowed in the configuration option.|
 | [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | - | Checks whether cross-language attribute setting is allowed in the configuration option.|
-| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | Creates an instance of visible area change event parameters.|
-| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | Disposes of an instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | Creates an instance of the parameters for visible area change events.|
+| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | Disposes of the instance of the parameters for visible area change events.|
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | - | Sets the threshold ratios for visible area changes.|
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | - | Sets the expected update interval for visible area changes.  |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions *option, bool measureFromViewport)](#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) | - | Sets the visible area calculation mode.|
@@ -1466,7 +1466,7 @@ Enumerates the content clipping modes of scrollable components.
 | -- | -- |
 | ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY = 0 | Clip to the content area only.|
 | ARKUI_CONTENT_CLIP_MODE_BOUNDARY = 1 | Clip to the component's boundary area.|
-| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | Clip to the [safe area](./arkui-ts/ts-universal-attributes-expand-safe-area.md) area configured for the component.|
+| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | Clip to the [safe area](./arkui-ts/ts-universal-attributes-expand-safe-area.md) configured for the component.|
 
 ### ArkUI_WaterFlowLayoutMode
 
@@ -3001,8 +3001,8 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  Corresponding render child node not found. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  The parameter value is out of range. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  The current rendering node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md). For details about the error code, see [106406 Current Render Node Is Obtained from FrameNode](../apis-arkui/errorcode-node-render.md#106406-current-render-node-is-obtained-from-framenode).<br>**Since**: 22|
-| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  The current rendering node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) and the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) has not been adopted as an affiliated node or has been disposed. For details about the error code, see [106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted](../apis-arkui/errorcode-node-render.md#106407-current-render-node-is-obtained-from-framenode-and-the-framenode-is-disposed-or-no-longer-adopted).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  The current render node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md). For details about the error code, see [106406 Current Render Node Is Obtained from FrameNode](../apis-arkui/errorcode-node-render.md#106406-current-render-node-is-obtained-from-framenode).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  The current render node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) and the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) has not been adopted as an affiliated node or has been disposed. For details about the error code, see [106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted](../apis-arkui/errorcode-node-render.md#106407-current-render-node-is-obtained-from-framenode-and-the-framenode-is-disposed-or-no-longer-adopted).<br>**Since**: 22|
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  The current node is not in the adopted state. For details about the error code, see [106408 Current Node Is Not in Adopted State](../apis-arkui/errorcode-node-render.md#106408-current-node-is-not-in-adopted-state).<br>**Since**: 22|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  The current node is not focusable. For details about the error code, see [150001 Component Not Focusable](../apis-arkui/errorcode-focus.md#150001-component-not-focusable).<br>**Since**: 15|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  An ancestor of the current node is not focusable. For details about the error code, see [150002 Ancestor Component Not Focusable](../apis-arkui/errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since**: 15|
@@ -9666,7 +9666,7 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 **Description**
 
 
-Creates an instance of visible area change event parameters.
+Creates an instance of the parameters for visible area change events.
 
 **Since**: 17
 
@@ -9674,7 +9674,7 @@ Creates an instance of visible area change event parameters.
 
 | Type                                | Description|
 |------------------------------------| -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | Pointer to the created instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | Pointer to the instance of the parameters for visible area change events.|
 
 ### OH_ArkUI_VisibleAreaEventOptions_Dispose()
 
@@ -9685,7 +9685,7 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 **Description**
 
 
-Disposes of an instance of visible area change event parameters.
+Disposes of the instance of the parameters for visible area change events.
 
 **Since**: 17
 
@@ -17028,7 +17028,7 @@ Obtains whether variable weight adjustment is enabled for the text font weight c
 
 | Type| Description|
 | -- | -- |
-| bool | Whether variable font weight adjustment is enabled.<br>        **true** indicates variable font weight adjustment is enabled. If the value of **weight** is any integer in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used.<br>         **false** indicates to disable variable font weight adjustment. If the value of **weight** is an integer multiple of 100 in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used.<br>         The default value is **false**. If the value of **weight** is not within the range of [100, 900], the default value **400** is used.|
+| bool | Whether variable font weight adjustment is enabled.<br>        **true** indicates variable font weight adjustment is enabled. If the value of **weight** is any integer in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used.<br>         **false** indicates variable font weight adjustment is disabled. If the value of **weight** is an integer multiple of 100 in the range of [100, 900], the value of **weight** is used. Otherwise, the default value **400** is used.<br>         The default value is **false**. If the value of **weight** is not within the range of [100, 900], the default value **400** is used.|
 
 ### OH_ArkUI_FontWeightConfigs_SetEnableDeviceFontWeightCategory()
 
