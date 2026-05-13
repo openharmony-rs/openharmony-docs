@@ -32,7 +32,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 1. 添加头文件。
 
    <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
-
+   
    ``` C
    #include "napi/native_api.h"
    #include <multimedia/player_framework/native_avscreen_capture.h>
