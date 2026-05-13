@@ -211,6 +211,54 @@ textDirection(direction: TextDirection | undefined)
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
 
+### strokeJoinStyle
+
+strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
+
+设置文本描边拐角样式。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | 是 | 文本描边拐角样式。<br/>值为undefined时，按照StrokeJoinStyle.MITER_JOIN处理，请参考[StrokeJoinStyle](ts-text-common.md#strokejoinstyle)，文本拐角处表现为锐角。 |
+
+### shaderStyle
+
+shaderStyle(shader: ShaderStyle | undefined)
+
+设置文本着色器效果，如线性渐变、径向渐变效果等。
+
+> **说明：**
+>
+>  当同时设置shaderStyle和[strokeWidth](#strokewidth20)时，shaderStyle不生效。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| shader         | [ShaderStyle](ts-text-common.md#shaderstyle20) \| undefined | 是 | 文本着色器效果。<br/>值为undefined时，重置为默认值，无任何渐变效果。 |
+
 ### copyOption<sup>9+</sup>
 
 ArkTS-Dyn: copyOption(value: CopyOptions)
@@ -2741,6 +2789,8 @@ struct SearchExample {
 
 从API version 20开始，该示例通过[strokeWidth](#strokewidth20)和[strokeColor](#strokecolor20)属性设置文本的描边宽度及颜色。
 
+从API版本26.0.0开始，新增[strokeJoinStyle](#strokejoinstyle)接口，支持设置文本描边拐角样式。
+
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -2774,6 +2824,7 @@ struct SearchExample {
           .minFontSize(40)
           .maxFontSize(40)
           .strokeWidth(LengthMetrics.px(3.0))
+          .strokeJoinStyle(StrokeJoinStyle.MITER_JOIN)
           .strokeColor(Color.Red)
       }.height('90%')
     }
