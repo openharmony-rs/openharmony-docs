@@ -26,9 +26,9 @@ The file declares the window management APIs. You can use the APIs to set and ob
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | Sets whether to display the status bar in a window.|
-| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | Sets the color of the status bar in a window.|
-| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | Sets whether to display the navigation bar in a window.|
+| [int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindowstatusbarenabled) | - | Sets whether the main window displays the status bar.|
+| [int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color)](#oh_windowmanager_setwindowstatusbarcolor) | - | Sets the color of the status bar in the main window.|
+| [int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool enabled, bool enableAnimation)](#oh_windowmanager_setwindownavigationbarenabled) | - | Sets whether the main window displays the navigation bar.|
 | [int32_t OH_WindowManager_GetWindowAvoidArea(int32_t windowId, WindowManager_AvoidAreaType type, WindowManager_AvoidArea* avoidArea)](#oh_windowmanager_getwindowavoidarea) | - | Obtains the avoid area of a window.|
 | [int32_t OH_WindowManager_IsWindowShown(int32_t windowId, bool* isShow)](#oh_windowmanager_iswindowshown) | - | Checks whether a window is displayed.|
 | [int32_t OH_WindowManager_ShowWindow(int32_t windowId)](#oh_windowmanager_showwindow) | - | Shows a window.|
@@ -67,16 +67,21 @@ int32_t OH_WindowManager_SetWindowStatusBarEnabled(int32_t windowId, bool enable
 
 **Description**
 
-Sets whether to display the status bar in a window.
+Sets whether the main window displays the status bar.
+
+The return value obtained after the call takes effect does not indicate that the visibility changes of the status bar have been fully executed. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as the floating window or split-screen of Multi-Window). It takes effect once the main window enters full-screen or maximized mode.
 
 **Since**: 15
 
+**Device behavior differences**:
+
+Calls to this API do not take effect or return an error on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API can be properly called.
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
+| int32_t windowId | ID of the main window. Calls to this API with a non-main window ID do not take effect or return an error. If the window ID does not exist, the error code **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL** is returned when this API is called.|
 | bool enabled | Whether to display the status bar. **true** to display, **false** otherwise.|
 | bool enableAnimation | Whether to enable the show/hide animation of the status bar. **true** to enable, **false** otherwise.|
 
@@ -94,16 +99,21 @@ int32_t OH_WindowManager_SetWindowStatusBarColor(int32_t windowId, int32_t color
 
 **Description**
 
-Sets the color of the status bar in a window.
+Sets the color of the status bar in the main window.
+
+The return value obtained after the call takes effect does not indicate that the color updates of the status bar have been fully executed. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as the floating window or split-screen of Multi-Window). It takes effect once the main window enters full-screen or maximized mode.
 
 **Since**: 15
 
+**Device behavior differences**:
+
+Calls to this API do not take effect or return an error on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API can be properly called.
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
+| int32_t windowId | ID of the main window. Calls to this API with a non-main window ID do not take effect or return an error. If the window ID does not exist, the error code **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL** is returned when this API is called.|
 | int32_t color | Color to set, in ARGB format.|
 
 **Return value**
@@ -120,7 +130,7 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **Description**
 
-Sets whether to display the navigation bar in a window.
+Sets whether the main window displays the navigation bar.<!--RP2--><!--RP2End-->
 
 **Since**: 15
 
@@ -129,7 +139,7 @@ Sets whether to display the navigation bar in a window.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t windowId | Window ID. The default value is **0**. The value is an integer.|
+| int32_t windowId | ID of the main window. Calls to this API with a non-main window ID do not take effect or return an error. If the window ID does not exist, the error code **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL** is returned when this API is called.|
 | bool enabled | Whether to display the navigation bar. **true** to display, **false** otherwise.|
 | bool enableAnimation | Whether to enable the show/hide animation of the navigation bar. **true** to enable, **false** otherwise.|
 
@@ -311,13 +321,14 @@ If the input parameter is **-1**, the window brightness reverts to the system br
 
 When the window moves to the background, the setting becomes invalid, and brightness can be adjusted through Control Panel or shortcut keys. You are not advised to call this API when the window is in the background, as it may cause timing issues.
 
-> **NOTE**
-> - For non-2-in-1 devices:
->   - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, if a window has custom brightness, Control Panel cannot change the system brightness.
->   - Starting from <!--RP1-->OpenHarmony 6.1<!--RP1End-->, Control Panel can adjust system brightness even when a window has custom brightness. Doing so will automatically reset that window's brightness to match the new system brightness.
-> - For 2-in-1 devices:
->   - Before OpenHarmony 5.0.2, if a window has custom brightness, system brightness controls (Control Panel or shortcut keys) are disabled.
->   - Starting from OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
+**Device behavior differences**:
+- For TVs: This API does not take effect or report an error.
+- For non-2-in-1 devices (excluding TVs):
+  - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, when the window brightness of the current window is active, adjusting the system screen brightness from the Control Panel does not take effect.
+  - Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, Control Panel can adjust system brightness even when the window brightness of the current window is active. Doing so will automatically reset that window's brightness to match the new system brightness.
+- For 2-in-1 devices:
+  - Before OpenHarmony 5.0.2, when the screen brightness set by a window is active, adjusting the system screen brightness from the Control Panel or a shortcut key does not take effect.
+  - Since OpenHarmony 5.0.2, window brightness is always synchronized with system brightness. Brightness can be adjusted through this API, Control Panel, or shortcut keys.
 
 **Since**: 15
 

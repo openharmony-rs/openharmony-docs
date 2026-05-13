@@ -1120,7 +1120,7 @@ Avoid using incompatible decorators on the same struct. Use only one appropriate
 Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for struct \'xxx\'.
 
 **Description**<br>
-TThis error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
+This error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Possible Cause**<br>
 The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
