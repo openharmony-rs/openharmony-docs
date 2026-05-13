@@ -416,81 +416,6 @@ UINodeCount: 159
 - 优化渲染逻辑
 - 避免在渲染线程执行耗时操作
 
-### 分析窗口显示异常
-
-**场景1：窗口不显示**
-
-如果窗口不显示，检查以下字段：
-
-```
-mms0  0  18119  11  1  1  1  -1  0  [ 0  0  720  1208 ]
-```
-
-异常判断：
-- `Flag=1`：窗口处于隐藏状态
-- `ZOrd=-1`：层级为负，不参与显示
-- 解决方案：调用showWindow()显示窗口，Flag应变为0，ZOrd变为正数
-
-**场景2：窗口尺寸异常**
-
-```
-SystemUi_VolumePanel  0  1572  1  2111  1  0  -1  0  [ 0  0  0  0 ]
-```
-
-异常判断：
-- `[ 0  0  0  0 ]`：窗口尺寸为0，不显示
-- 可能是窗口创建但未设置大小，或窗口隐藏时尺寸清零
-
-**场景3：窗口层级错误导致遮挡**
-
-```
-WindowName      ZOrd
-note0           1    (应该显示但被遮挡)
-SystemUi_StatusBar 2  (遮挡note0)
-```
-
-异常判断：
-- 应用窗口ZOrd=1，系统UI窗口ZOrd=2
-- 系统UI层级更高，可能遮挡应用窗口内容
-- 正常情况：应用窗口应该有足够层级显示
-
-可以快速找到应用的所有窗口及其ID。
-
-**查看特定窗口ID的详细信息**：
-
-```bash
-hdc shell hidumper -s windowmanagerservice -a 'a' | grep -A 20 "window\[341\]"
-```
-
-输出示例：
-```
-window[341](0x5d2e43c0): type=MAIN_WINDOW, bundleName=com.example.app1
-  rect=[0,0][1080,1920]
-  visibility=true, drawn=true
-  focusState=ACTIVE
-  zOrder=100
-  windowMode=WINDOW_MODE_FULLSCREEN
-  orientation=UNSPECIFIED
-  alpha=1.0
-  turnScreenOn=false
-  keepScreenOn=false
-```
-
-**详细属性说明**：
-
-| 属性 | 含义 | 异常判断 |
-|------|------|---------|
-| `rect` | 窗口位置和大小 | 尺寸为0可能导致不显示 |
-| `visibility` | 窗口可见性 | false表示窗口未显示或被隐藏 |
-| `drawn` | 窗口绘制状态 | false表示窗口未绘制内容 |
-| `focusState` | 焦点状态 | ACTIVE=获焦，INACTIVE=失焦 |
-| `zOrder` | 层级 | 数值越大越靠前 |
-| `windowMode` | 窗口模式 | FULLSCREEN/SPLIT/FLOATING |
-| `orientation` | 旋转方向 | 确认窗口旋转策略 |
-| `alpha` | 透明度 | 值越小越透明 |
-| `turnScreenOn` | 是否点亮屏幕 | 对特定窗口有用 |
-| `keepScreenOn` | 是否保持屏幕常亮 | 对特定窗口有用 |
-
 ### 定位问题的典型方法
 
 #### 方法1：验证窗口创建和显示完整流程
@@ -1129,6 +1054,8 @@ class MyAbility extends UIAbility {
 ## 1300004错误码的定位指导
 ### xxxx
 
+## 1300012错误码的定位指导
+
 ## 超时警告WINDOW_EXCEPTION_DETECTION的定位指导
 
 窗口异常检测日志是系统用于监控窗口生命周期异常的工具，帮助开发者及时发现和定位窗口相关问题。常见的异常类型包括：伪冻屏/透明窗检测、窗口生命周期异常等。
@@ -1266,4 +1193,450 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 >
 > 系统的超时检测机制是为了保障用户体验，避免用户长时间看到空白窗口。开发者应重视此警告并及时修复，确保应用窗口能够快速、正确地显示内容。
 
-## 1300012错误码的定位指导
+## 实际案例：分屏后白屏问题定位
+
+### 问题背景
+
+**问题描述**：
+
+开发者反馈应用在分屏模式下显示白屏，无法正常显示界面内容。用户操作流程：
+1. 应用正常启动，全屏显示正常
+2. 用户切换到分屏模式
+3. 应用窗口在分屏区域显示为白屏，无任何内容
+4. 控制台无错误日志，应用未崩溃
+
+**问题现象**：
+- 分屏后窗口尺寸变化（从全屏变为分屏尺寸）
+- 窗口显示为纯白色，无UI内容
+- 窗口可触摸，但无响应
+- 无明显的错误日志输出
+
+### 定位思路
+
+针对分屏白屏问题，开发者应该：
+1. 使用hidumper抓取窗口状态信息
+2. 使用hidumper抓取组件树（UI树）结构
+3. 分析窗口属性和UI渲染状态
+4. 定位UI节点缺失或渲染异常原因
+
+### 步骤1：使用hidumper抓取窗口基本信息
+
+首先，查看窗口的基本状态信息，确认窗口是否创建成功、属性是否正常。
+
+**命令**：
+```bash
+hdc shell hidumper -s WindowManagerService -a '-a'
+```
+
+**输出分析**：
+
+查看窗口列表，找到分屏应用窗口：
+
+```
+WindowName           DisplayId Pid     WinId Type Mode Flag ZOrd Orientation [ x    y    w    h    ]
+NoteApp              0         18299   13    1    1    0    1    0           [ 0    0    720  640 ]
+```
+
+**关键信息解读**：
+- `WindowName: NoteApp`：应用窗口名称
+- `WinId: 13`：窗口ID
+- `Type: 1`：应用主窗口
+- `Mode: 1`：全屏模式（需要关注，分屏后模式可能未更新）
+- `Flag: 0`：显示状态（正常）
+- `ZOrd: 1`：层级正常
+- `[ 0  0 720 640 ]`：窗口尺寸（分屏尺寸，正常）
+
+**初步判断**：
+- ✅ 窗口创建成功
+- ✅ 窗口尺寸已调整为分屏大小
+- ✅ 窗口处于显示状态（Flag=0）
+- ❓ 但UI内容未显示，需要进一步检查
+
+### 步骤2：查看窗口详细属性
+
+使用`-w WinId`参数查看窗口详细属性：
+
+**命令**：
+```bash
+hdc shell hidumper -s WindowManagerService -a '-w 13'
+```
+
+**输出示例**：
+```
+WindowName: NoteApp
+DisplayId: 0
+WinId: 13
+Pid: 18299
+Type: 1
+Mode: 1
+Flag: 0
+Orientation: 0
+VisibilityState: 0
+Focusable: true
+DecoStatus: true
+WindowRect: [ 0, 0, 720, 640 ]
+```
+
+**关键信息分析**：
+- `VisibilityState: 0`：窗口可见（正常）
+- `Focusable: true`：可获焦（正常）
+- `WindowRect`尺寸正确（分屏尺寸）
+
+**判断**：窗口属性正常，问题不在窗口管理层面，需要检查UI渲染层面。
+
+### 步骤3：使用hidumper抓取组件树（关键步骤）
+
+**这一步是定位分屏白屏问题的关键！**
+
+使用UI侧dump工具抓取组件树，分析UI节点结构和渲染状态。
+
+**命令**：
+```bash
+hdc shell hidumper -s SceneBoard
+```
+
+或查看特定窗口的UI信息：
+
+```bash
+hdc shell hidumper -s SceneBoard | grep -A 30 "WindowId: 13"
+```
+
+**正常情况的输出示例**：
+```
+---------------------------- SceneBoard ----------------------------
+Window UI Info:
+  WindowId: 13
+    UIContentLoaded: true
+    SurfaceNodeCreated: true
+    Visibility: true
+    RenderStatus: RENDERED
+    FrameRate: 60
+    UITreeDepth: 5
+    RootNode: [ScrollComponent, Column, Text, Button, Image]
+```
+
+**白屏问题的输出示例（异常）**：
+```
+---------------------------- SceneBoard ----------------------------
+Window UI Info:
+  WindowId: 13
+    UIContentLoaded: false           ← 问题点1：内容未加载
+    SurfaceNodeCreated: true
+    Visibility: true
+    RenderStatus: NOT_RENDERED       ← 问题点2：未渲染
+    FrameRate: 0
+    UITreeDepth: 0                   ← 问题点3：UI树深度为0
+    RootNode: [ ]                    ← 问题点4：根节点为空
+```
+
+**关键异常点识别**：
+
+| 字段 | 正常值 | 异常值 | 问题含义 |
+|------|--------|--------|----------|
+| `UIContentLoaded` | `true` | `false` | 页面内容未加载完成 |
+| `RenderStatus` | `RENDERED` | `NOT_RENDERED` | UI未开始渲染 |
+| `UITreeDepth` | `5` | `0` | UI树为空，无节点 |
+| `RootNode` | `[组件列表]` | `[ ]` | 根节点为空 |
+
+**结论**：组件树为空，UI内容未加载，导致白屏。
+
+### 步骤4：深入分析组件树结构
+
+**更详细的组件树dump**：
+
+某些场景需要更详细的组件树信息，可以使用ArkUI option：
+
+```bash
+hdc shell hidumper -s WindowManagerService -a '-w 13 ArkUI option'
+```
+
+**输出示例（白屏问题）**：
+```
+WindowName: NoteApp
+WinId: 13
+...
+UINodeCount: 0                     ← UI节点数为0
+LastRequestVsyncTime: 0            ← 未请求VSync
+last vsyncId: 0                    ← VSync ID为0
+finishCount: [ ]
+```
+
+**对比正常分屏窗口**：
+```
+WindowName: NormalApp
+WinId: 14
+...
+UINodeCount: 159                   ← UI节点数正常
+LastRequestVsyncTime: 17816965532004 ← VSync活跃
+last vsyncId: 1948                  ← VSync持续更新
+finishCount: [ ]
+```
+
+**问题确认**：
+- `UINodeCount: 0` → UI节点数为0，无UI内容
+- `LastRequestVsyncTime: 0` → 未请求VSync，渲染停止
+- 组件树为空，页面未正确加载
+
+### 步骤5：定位根本原因
+
+根据组件树分析结果，可能的原因：
+
+#### 原因1：分屏后未重新加载页面内容
+
+**场景**：
+- 全屏时页面加载成功
+- 切换分屏后，窗口尺寸变化，但页面未重新适配
+- UI树被清空或未重新构建
+
+**代码问题示例**：
+```ts
+// 错误：分屏后未重新加载页面
+onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow((err, win) => {
+        win.loadContent('pages/MainPage'); // 只在全屏时加载一次
+    });
+}
+
+// 分屏事件触发，但未重新加载
+onWindowModeChange(mode) {
+    // 切换到分屏，但未重新适配页面
+    console.log('Window mode changed to:', mode);
+    // 缺失：未重新loadContent或setUIContent
+}
+```
+
+#### 原因2：分屏尺寸导致布局崩溃
+
+**场景**：
+- 分屏窗口尺寸较小（如720x640）
+- 原页面布局未适配小尺寸
+- 布局计算失败，UI节点未生成
+
+**典型问题**：
+- 固定尺寸组件超出窗口边界
+- 布局约束冲突
+- 组件树构建失败
+
+#### 原因3：分屏触发时序问题
+
+**场景**：
+- 分屏切换时，窗口销毁重建
+- 新窗口创建但页面加载时机错误
+- 异步加载页面，但窗口已切换
+
+**代码问题示例**：
+```ts
+// 错误：分屏时异步加载页面
+onWindowStageCreate(windowStage: window.WindowStage) {
+    setTimeout(() => {
+        // 分屏切换时，setTimeout可能被取消或延迟
+        windowStage.getMainWindow((err, win) => {
+            win.loadContent('pages/MainPage');
+        });
+    }, 500);
+}
+```
+
+#### 原因4：分屏模式下窗口模式未更新
+
+**场景**：
+- 窗口Mode仍为全屏（Mode=1）
+- 分屏应更新为分屏模式
+- 模式不匹配导致布局异常
+
+**检查方法**：
+```bash
+hdc shell hidumper -s WindowManagerService -a '-w 13' | grep "Mode"
+```
+
+分屏窗口Mode应为特定分屏模式值，如果仍为全屏模式（Mode=1），说明模式未正确更新。
+
+### 步骤6：结合日志和组件树综合分析
+
+**查看应用日志**：
+```bash
+hdc shell hilog | grep "NoteApp"
+```
+
+**查找关键日志**：
+- 页面加载日志：`loadContent success`或失败
+- 布局日志：`layout failed`或`constraint error`
+- 分屏事件日志：`windowModeChange`事件
+
+**结合组件树和日志**：
+- 如果组件树为空 + 无loadContent日志 → 页面未加载
+- 如果组件树为空 + 有loadContent失败日志 → 加载失败
+- 如果组件树为空 + layout error日志 → 布局崩溃
+
+### 解决方案
+
+根据组件树分析结果，采取相应解决方案：
+
+#### 方案1：分屏时重新加载页面
+
+**正确做法**：
+```ts
+// 正确：监听窗口模式变化，重新加载页面
+onWindowModeChange(windowMode) {
+    if (windowMode === window.WindowMode.SPLIT) {
+        // 分屏模式，重新加载适配页面
+        this.reloadPageForSplitMode();
+    }
+}
+
+reloadPageForSplitMode() {
+    window.getLastWindow(this.context).loadContent('pages/SplitPage', (err) => {
+        if (!err.code) {
+            console.log('Split page loaded successfully');
+        }
+    });
+}
+```
+
+#### 方案2：适配分屏尺寸的布局
+
+**正确做法**：
+```ts
+// 正确：使用响应式布局，适配分屏尺寸
+@Entry
+@Component
+struct MainPage {
+    build() {
+        // 使用百分比或响应式尺寸
+        Column() {
+            Text('Content')
+                .width('100%')    // 使用百分比，而非固定尺寸
+                .height('50%')
+        }
+        .width('100%')
+        .height('100%')
+    }
+}
+```
+
+**避免固定尺寸**：
+```ts
+// 错误：固定尺寸不适配分屏
+Column() {
+    Text('Content')
+        .width(720)     // 固定尺寸，分屏时可能超出
+        .height(1280)
+}
+```
+
+#### 方案3：立即加载，避免异步延迟
+
+**正确做法**：
+```ts
+// 正确：窗口创建后立即加载，不使用setTimeout
+onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow((err, win) => {
+        if (!err.code) {
+            // 立即加载，不延迟
+            win.loadContent('pages/MainPage');
+        }
+    });
+}
+```
+
+#### 方案4：监听窗口尺寸变化
+
+**正确做法**：
+```ts
+// 正确：监听窗口尺寸变化，动态适配
+win.on('windowSizeChange', (size) => {
+    console.log('Window size changed:', size.width, size.height);
+    
+    // 根据新尺寸重新布局
+    this.adjustLayoutForSize(size);
+});
+
+adjustLayoutForSize(size) {
+    if (size.width < 800) {
+        // 分屏小尺寸，使用紧凑布局
+        this.useCompactLayout();
+    } else {
+        // 全屏大尺寸，使用正常布局
+        this.useNormalLayout();
+    }
+}
+```
+
+### 定位流程总结
+
+**分屏白屏问题定位流程图**：
+
+```
+发现问题 → 使用hidumper查看窗口列表 → 查看窗口详细属性 → 抓取组件树（关键） → 分析UI节点 → 定位原因 → 解决问题
+```
+
+**关键步骤**：
+1. ✅ 窗口创建成功？ → 查WindowManagerService dump
+2. ✅ 窗口属性正常？ → 查窗口详细属性
+3. ✅ **组件树是否为空？ → 查SceneBoard dump（最关键）**
+4. ✅ UI节点数量？ → 查UINodeCount
+5. ✅ 渲染状态？ → 查RenderStatus
+
+**核心判断**：
+- `UIContentLoaded: false` + `UITreeDepth: 0` + `UINodeCount: 0` → 页面未加载
+- `UIContentLoaded: true` + `UITreeDepth: 0` + `RenderStatus: NOT_RENDERED` → 加载成功但渲染失败
+- `UIContentLoaded: true` + `UITreeDepth: 5` + `RenderStatus: RENDERED` → 正常渲染
+
+### 开发者检查清单
+
+**遇到分屏白屏问题时，按以下清单排查**：
+
+1. ✅ 使用hidumper查看窗口列表，确认窗口创建
+2. ✅ 使用`-w WinId`查看窗口详细属性，确认VisibilityState、Flag等
+3. ✅ **使用hidumper -s SceneBoard抓取组件树（必须做！）**
+4. ✅ 检查`UIContentLoaded`状态，确认页面是否加载
+5. ✅ 检查`UITreeDepth`和`UINodeCount`，确认UI节点数量
+6. ✅ 检查`RenderStatus`，确认渲染状态
+7. ✅ 结合应用日志，查找页面加载或布局相关日志
+8. ✅ 检查分屏事件处理代码，确认是否重新加载页面
+9. ✅ 检查布局代码，确认是否适配分屏尺寸
+10. ✅ 检查是否有异步加载导致的时序问题
+
+### 最佳实践
+
+**预防分屏白屏问题的建议**：
+
+1. **监听窗口模式变化**：在onWindowModeChange中处理分屏切换
+2. **响应式布局**：使用百分比、自适应尺寸，避免固定尺寸
+3. **立即加载页面**：窗口创建后立即loadContent，避免异步延迟
+4. **监听窗口尺寸变化**：动态调整布局适配不同尺寸
+5. **使用hidumper验证**：开发分屏功能时，使用hidumper验证UI树状态
+
+**推荐代码模板**：
+
+```ts
+class MyAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        windowStage.getMainWindow((err, win) => {
+            if (!err.code) {
+                // 立即加载页面
+                win.loadContent('pages/MainPage');
+                
+                // 监听窗口尺寸变化
+                win.on('windowSizeChange', (size) => {
+                    console.log('Window size:', size.width, size.height);
+                });
+                
+                // 监听窗口模式变化
+                win.on('windowModeChange', (mode) => {
+                    if (mode === window.WindowMode.SPLIT) {
+                        console.log('Entered split mode');
+                        // 可选：重新加载分屏适配页面
+                    }
+                });
+            }
+        });
+    }
+}
+```
+
+> **说明：**
+>
+> 分屏白屏问题的核心在于UI内容未正确渲染。开发者必须使用hidumper抓取组件树，检查UI节点数量和渲染状态，这是定位此类问题的关键步骤。通过分析`UIContentLoaded`、`UITreeDepth`、`UINodeCount`等字段，可以快速判断问题是页面未加载、布局崩溃还是渲染停止，从而采取针对性解决方案。
+
+
