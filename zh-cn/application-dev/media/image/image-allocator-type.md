@@ -83,14 +83,14 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
    
    ``` TypeScript
    // 导入相关模块。
-   import { image } from '@kit.ImageKit';
+   import { image } from '@kit.ImageKit';wxc
    import { common } from '@kit.AbilityKit';
    ```
 
    <!-- @[allocator_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
-   async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap | undefined> {
+   async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap | undefined> {wxc
      const resourceMgr = context.resourceManager;
      try {
        const rawFile = await resourceMgr.getRawFileContent('99_132.jpg'); // 测试图片为99*132的jpg图。
@@ -150,7 +150,7 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
 <!-- @[allocator_yuv_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
 
 ``` TypeScript
-async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefined> {
+async CreatePixelMapWithYUV(context: Context): Promise<image.PixelMap | undefined> {wxc
   const resourceMgr = context.resourceManager;
   try {
     const rawFileDescriptor = await resourceMgr.getRawFd('test.jpeg');
