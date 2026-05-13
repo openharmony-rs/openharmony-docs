@@ -290,7 +290,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 - 检查窗口是否正确显示
 - 判断窗口是否被隐藏
 
-##### Focusable（可获焦状态）
+**Focusable（可获焦状态）**
 
 取值说明：
 - `true`：窗口可以获焦，能接收键盘输入
@@ -300,7 +300,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 - 幅通知窗口设置为`Focusable: false`，不打断用户输入
 - 主窗口设置为`Focusable: true`，可以接收键盘输入
 
-##### IsPrivacyMode（隐私模式）
+**IsPrivacyMode（隐私模式）**
 
 取值说明：
 - `false`：普通窗口，可以被截屏录屏
@@ -310,7 +310,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 - 防止敏感信息被截屏泄露
 - 金融类应用常用隐私模式
 
-##### isSnapshotSkip（截屏跳过标志）
+**isSnapshotSkip（截屏跳过标志）**
 
 取值说明：
 - `0`：允许截屏
@@ -318,7 +318,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 与IsPrivacyMode类似，用于控制窗口是否可被截屏捕获。
 
-##### FirstFrameCallbackCalled（首帧回调）
+**FirstFrameCallbackCalled（首帧回调）**
 
 取值说明：
 - `0`：首帧回调未调用，窗口未完成首帧绘制
@@ -328,13 +328,13 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 - 判断窗口是否已完成渲染启动
 - 检测窗口启动性能问题（长时间未回调）
 
-##### DecoStatus（装饰状态）
+**DecoStatus（装饰状态）**
 
 取值说明：
 - `true`：窗口有装饰（标题栏、边框等）
 - `false`：窗口无装饰（无边框窗口）
 
-##### TouchHotAreas（触摸热区）
+**TouchHotAreas（触摸热区）**
 
 格式：`[ x, y, w, h ]`
 
@@ -345,19 +345,19 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 **常见问题定位**：
 
-##### 问题1：窗口不显示
+**问题1：窗口不显示**
 
 检查字段：
 - `VisibilityState: 1` → 窗口被隐藏，调用showWindow()显示
 - `Flag: 1` → 状态标志为隐藏，检查窗口是否调用hideWindow()
 
-##### 问题2：窗口无法接收键盘输入
+**问题2：窗口无法接收键盘输入**
 
 检查字段：
 - `Focusable: false` → 窗口不可获焦，调用setWindowFocusable(true)设置可获焦
 - 确认窗口在前台区域（分隔线以上）
 
-##### 问题3：窗口被截屏泄露
+**问题3：窗口被截屏泄露**
 
 检查字段：
 - `IsPrivacyMode: false` → 未启用隐私模式
@@ -365,13 +365,13 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 解决方案：调用setPrivacyMode(true)启用隐私模式。
 
-##### 问题4：窗口启动性能慢
+**问题4：窗口启动性能慢**
 
 检查字段：
 - `FirstFrameCallbackCalled: 0` → 首帧未完成，可能页面加载慢
 - 结合日志分析启动耗时
 
-##### 问题5：窗口触摸区域异常
+**问题5：窗口触摸区域异常**
 
 检查字段：
 - `TouchHotAreas` 尺寸异常 → 触摸热区设置错误
@@ -379,7 +379,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 **实用技巧**：
 
-##### 技巧1：快速定位焦点窗口详情
+**技巧1：快速定位焦点窗口详情**
 
 当Focus window: 13时，直接查看WinId=13的详细信息：
 
@@ -389,7 +389,7 @@ hdc shell hidumper -s WindowManagerService -a '-w 13'
 
 确认Focusable=true，确保窗口可获焦。
 
-##### 技巧2：排查隐私模式设置
+**技巧2：排查隐私模式设置**
 
 检查敏感窗口的隐私模式：
 
@@ -399,7 +399,7 @@ hdc shell hidumper -s WindowManagerService -a '-w <敏感窗口WinId>'
 
 确认IsPrivacyMode=true，防止截屏泄露。
 
-##### 技巧3：验证窗口显示状态
+**技巧3：验证窗口显示状态**
 
 检查窗口是否正确显示：
 
@@ -412,7 +412,7 @@ hdc shell hidumper -s WindowManagerService -a '-w <目标WinId>'
 - Flag=0（显示状态）
 - WindowRect尺寸正常
 
-##### 技巧4：对比前后台窗口状态差异
+**技巧4：对比前后台窗口状态差异**
 
 前台窗口（分隔线以上）的特征：
 - VisibilityState: 0
