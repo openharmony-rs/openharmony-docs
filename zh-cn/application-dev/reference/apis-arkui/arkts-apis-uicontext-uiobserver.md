@@ -3138,7 +3138,7 @@ on(type: 'afterPanEnd', callback: PanListenerCallback): void
 
 | 参数名   | 类型                                                        | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                      | 是   | 监听事件，固定为'beforePanEnd'，用于监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend)事件触发后触发。 |
+| type     | string                                                      | 是   | 监听事件，固定为'afterPanEnd'，用于监听Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend)事件执行后的指令下发情况，所注册回调将于Pan手势[onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend)事件触发后触发。 |
 | callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | 是   | 回调函数。可以获得Pan手势事件的[GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent对象说明)，[GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12)和组件的[FrameNode](js-apis-arkui-frameNode.md)。   |
 
 **示例：**
