@@ -1359,7 +1359,7 @@ this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string)
 });
 ```
 
-<a id="onStateChange26"></a>
+<a id="onstatechange26"></a>
 ### onStateChange
 
 onStateChange(callback: StateChangeCallback): void
@@ -1439,7 +1439,7 @@ off(type: 'stateChange'): void
 this.pipController.off('stateChange');
 ```
 
-<a id="offStateChange26"></a>
+<a id="offstatechange26"></a>
 ### offStateChange
 
 offStateChange(): void
@@ -1514,7 +1514,7 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 });
 ```
 
-<a id="onControlPanelActionEvent26"></a>
+<a id="oncontrolpanelactionevent26"></a>
 ### onControlPanelActionEvent
 
 onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
