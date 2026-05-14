@@ -22,7 +22,9 @@ import { camera } from '@kit.CameraKit';
 
 getSupportedCameras(): Array\<CameraDevice\>
 
-获取支持的基础相机设备对象，同步返回结果。如果需要获取额外的相机设备对象，可通过[getCameraDevices](#getcameradevices)接口获取。
+获取支持的基础相机设备对象（如获取CameraType为CAMERA_TYPE_DEFAULT的默认相机），同步返回结果。
+
+如果需要获取额外的相机设备对象（如获取CameraType为CAMERA_TYPE_TELEPHOTO的长焦相机），可通过[getCameraDevices](#getcameradevices23)接口获取。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
