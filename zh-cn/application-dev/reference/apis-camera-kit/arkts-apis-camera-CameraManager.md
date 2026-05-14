@@ -884,9 +884,11 @@ function unregisterCameraStatus(cameraManager: camera.CameraManager): void {
 offCameraStatus(callback?: AsyncCallback\<CameraStatusInfo\>): void
 
 相机设备状态注销回调，通过注销回调函数取消获取相机的状态变化。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('cameraStatus')](#offcamerastatus)。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Sta起始版本：** 22
