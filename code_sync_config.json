@@ -36167,7 +36167,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":352,
+						"end_line":374,
 						"name":"get_Status",
 						"start_line":18
 					},
@@ -36177,32 +36177,32 @@
 						"start_line":19
 					},
 					{
-						"end_line":173,
+						"end_line":184,
 						"name":"set_ReverbPreset",
 						"start_line":20
 					},
 					{
-						"end_line":371,
+						"end_line":383,
 						"name":"get_ReverbPreset",
 						"start_line":21
 					},
 					{
-						"end_line":213,
+						"end_line":235,
 						"name":"set_EqualizerPreset",
 						"start_line":22
 					},
 					{
-						"end_line":390,
+						"end_line":392,
 						"name":"get_EqualizerPreset",
 						"start_line":23
 					},
 					{
-						"end_line":327,
+						"end_line":349,
 						"name":"enable",
 						"start_line":24
 					},
 					{
-						"end_line":328,
+						"end_line":350,
 						"name":"all_audioLoopback",
 						"start_line":15
 					}
