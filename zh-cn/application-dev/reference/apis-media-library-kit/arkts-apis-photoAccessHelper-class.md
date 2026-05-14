@@ -2,8 +2,8 @@
 
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xuchangda-->
-<!--Designer: @guxinggang-->
+<!--Owner: @xuchangda; @yixiaoff-->
+<!--Designer: @guxinggang; @liweilu1-->
 <!--Tester: @wangbeibei; @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
