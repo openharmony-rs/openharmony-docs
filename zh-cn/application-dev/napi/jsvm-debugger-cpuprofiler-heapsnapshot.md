@@ -158,7 +158,7 @@ void TestJSVM() {
 4. 调用OH_JSVM_WaitForDebugger，等待建立socket连接。
 5. 检查端侧端口是否打开成功。hdc shell "cat /proc/net/unix | grep jsvm"。结果出现可用的 unix 端口即可，如：jsvm_devtools_remote_9229_123，其中 9229 为 tcp 端口号，123 为对应的 pid。
 6. 转发端口。hdc fport tcp:9229 tcp:9229。转发开发者个人计算机侧端口9229到端侧端口9229。结果为"Forwardport result:OK"即可。
-7. 推荐使用[Chrome inspect 页面](#使用-chrome-inspect-页面进行调试)进行调试。也可以获取“devtoolsFrontendUrl”字段进行调试，但该方式依赖Chrome DevTools Protocol及其WebSocket连接，不保证稳定连接，暂不支持Chrome 14x及以上版本。devtoolsFrontendUrl操作方法如下：在Chrome浏览器地址栏输入“localhost:9229/json”，回车获取端口连接信息；打开Chrome开发者工具，拷贝“devtoolsFrontendUrl”字段对应的url到地址栏，回车进入DevTools源码页。此时可以看到应用中通过OH_JSVM_RunScript执行的JS源码，并暂停在第一行JS源码处。(注：“devtoolsFrontendUrl”字段对应的url只支持使用Chrome、Edge浏览器打开，不支持使用Firefox、Safari等浏览器打开。)
+7. 推荐使用[Chrome inspect 页面](#使用-chrome-inspect-页面进行调试)进行调试。也可以获取“devtoolsFrontendUrl”字段进行调试，但该方式依赖Chrome DevTools Protocol及其WebSocket连接，不保证稳定连接，暂不支持Chrome 14x及以上版本。devtoolsFrontendUrl操作方法如下：在Chrome浏览器地址栏输入"localhost:9229/json"，回车获取端口连接信息；打开Chrome开发者工具，拷贝"devtoolsFrontendUrl"字段对应的url到地址栏，回车进入DevTools源码页。此时可以看到应用中通过OH_JSVM_RunScript执行的JS源码，并暂停在第一行JS源码处。(注："devtoolsFrontendUrl"字段对应的url只支持使用Chrome、Edge浏览器打开，不支持使用Firefox、Safari等浏览器打开。)
 8. 用户可在源码页打断点，通过按钮发出各种调试命令控制JS代码执行，并查看变量。
 9. 调用OH_JSVM_CloseInspector关闭inspector，结束socket连接。
 
