@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @lizihao_73-->
-<!--Designer: @zhoulin_-->
+<!--Owner: @gcw_bkPrirku-->
+<!--Designer: @liaojunhua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -14,7 +14,7 @@
 以下为支持设置自定义窗口动效的几种典型场景：
 
 <!--Del-->
-- [设置系统窗口、全局悬浮窗及模态窗动效](#设置系统窗口、全局悬浮窗及模态窗动效)
+- [设置窗口显示/隐藏动效](#设置窗口显示隐藏动效)
 <!--DelEnd-->
 
 - [设置应用内Ability跳转淡入淡出动效](#设置应用内ability跳转淡入淡出动效)
@@ -22,9 +22,15 @@
 - [设置主窗口销毁时的转场动画](#设置主窗口销毁时的转场动画)
 
 <!--Del-->
-## 设置系统窗口、全局悬浮窗及模态窗动效
+## 设置窗口显示/隐藏动效
 
-在Stage模型下，允许应用创建和管理窗口，包括全局悬浮窗、模态窗和音量条、壁纸、通知栏、导航栏、可设置窗口层级等系统窗口。具体支持的系统窗口类型可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。
+支持设置窗口的显示/隐藏动效，目前支持的窗口类型如下：
+
+- 全局悬浮窗
+
+- 模态窗
+
+- 系统窗口：包括音量调、壁纸、通知栏、导航栏窗口等。系统窗口类型具体可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。
 
 此处以创建“可设置窗口层级的系统窗口”为例，设置其显示/隐藏过程中的组合动画效果。
 
@@ -59,7 +65,7 @@
 
 2. 配置窗口显示/隐藏时的动画。
 
-   通过动画函数[animateTo()](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#显式动画-animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9)设置窗口不透明度，[scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9)设置缩放参数，[rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9)设置旋转参数，[translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9)设置平移参数。
+   通过动画函数[animateTo()](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#显式动画-animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9)设置窗口不透明度，通过[scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9)设置缩放参数，通过[rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9)设置旋转参数，通过[translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9)设置平移参数。
 
    ```ts
    // pages/WindowAnimationDemo.ets
