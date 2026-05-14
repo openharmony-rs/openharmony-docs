@@ -1528,28 +1528,24 @@ Audio/Video播放示例可参考：[使用AVPlayer播放音频(ArkTS)](../../med
 
 | 名称               | 类型                                   | 只读 | 可选 | 说明             |
 | ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
-| privacyType | [audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。详细信息请参阅[audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>默认值为PRIVACY_TYPE_PUBLIC。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
-| enableStartFrameRateOpt | boolean | 否   | 是   |是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br>true表示采用，false表示不采用，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0|
+| privacyType | [audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10) | 否   | 是   | 音频隐私配置。详细信息请参阅[audio.AudioPrivacyType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioprivacytype10)。<br>默认值为PRIVACY_TYPE_PUBLIC。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| enableStartFrameRateOpt | boolean | 否   | 是   |是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br>true表示采用，false表示不采用，默认值为false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### getCurrentTrack
 
-ArkTS-Dyn: getCurrentTrack(trackType: MediaType): Promise\<number>
-
-ArkTS-Sta: getCurrentTrack(trackType: MediaType): Promise\<int>
+getCurrentTrack(trackType: MediaType): Promise\<number>
 
 获取指定媒体类型的选定轨道。使用Promise异步回调。
 
 只有当AVPlayer处于prepared、playing或者paused状态时，才能调用该接口。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
- **ArkTS-Dyn起始版本：** 26.0.0
-
- **ArkTS-Sta起始版本：** 26.0.0  
 
 **参数：**
 
@@ -1561,7 +1557,7 @@ ArkTS-Sta: getCurrentTrack(trackType: MediaType): Promise\<int>
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-|  ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | Promise对象，返回指定媒体类型选中轨道的索引值。 |
+| Promise\<number> | Promise对象，返回指定媒体类型选中轨道的索引值。 |
 
 **错误码：**
 
@@ -1600,15 +1596,13 @@ forceLoadVideo(force: boolean): Promise\<void>
 
 只有当AVPlayer处于prepared、playing或者paused状态时，才能调用此接口。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
-
- **ArkTS-Dyn起始版本：** 26.0.0
-
- **ArkTS-Sta起始版本：** 26.0.0    
 
 **参数：**
 
