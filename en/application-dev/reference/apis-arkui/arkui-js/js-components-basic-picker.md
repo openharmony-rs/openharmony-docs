@@ -323,5 +323,4 @@ export default {
     },
 }
 ```
-
-![mmmm](figures/mmmm.gif)
+<!--no_check-->

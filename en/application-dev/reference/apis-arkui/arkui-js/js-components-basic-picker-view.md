@@ -267,7 +267,6 @@ export default {
     },
 }
 ```
-![picker-view2](figures/picker-view2.gif)
 
 ### Date and Time Selector
 
@@ -355,3 +354,4 @@ export default {
 }
 ```
 ![picker-view4](figures/picker-view4.png)
+<!--no_check-->
