@@ -56,7 +56,7 @@ import { image } from '@kit.ImageKit';
 | resolutionUnit                      | ArkTS-Dyn: number<br>ArkTS-Sta: int                                             | 否   | 是   | 用于测量宽度方向上的图像分辨率和高度方向上的图像分辨率的单位。 |
 | transferFunction                    | string                                             | 否   | 是   | 图像的传递函数，通常用于颜色校正。                           |
 | software                            | string                                             | 否   | 是   | 用于生成图像的软件名称和版本。                             |
-| dateTime                            | string                                             | 否   | 是   | 图像创建的日期和时间。<br/>在本标准中，指文件更改的日期和时间。格式为："YYYY:MM:DD HH:MM:SS"，时间以24小时格式显示。例如："2025:12:15 18:44:59"。 |
+| dateTime                            | string                                             | 否   | 是   | 图像创建的日期和时间。<br/>在本标准中，指文件更改的日期和时间。格式为：“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。例如：“2025:12:15 18:44:59”。 |
 | artist                              | string                                             | 否   | 是   | 创建图像的人的姓名。                                         |
 | whitePoint                          | ArkTS-Dyn: number[]<br>ArkTS-Sta: double[]                                           | 否   | 是   | 图像白点的色度。                                             |
 | primaryChromaticities               | ArkTS-Dyn: number[]<br>ArkTS-Sta: double[]                                           | 否   | 是   | 图像原色的色度。                                             |
@@ -68,7 +68,7 @@ import { image } from '@kit.ImageKit';
 | yCbCrPositioning                    | ArkTS-Dyn: number<br>ArkTS-Sta: int                                             | 否   | 是   | 色度分量相对于亮度分量的位置。                               |
 | referenceBlackWhite                 | ArkTS-Dyn: number[]<br>ArkTS-Sta: double[]                                           | 否   | 是   | 参考黑点值和白点值。                                         |
 | copyright                           | string                                             | 否   | 是   | 图像的版权信息。                                             |
-| exposureTime                        | ArkTS-Dyn: number<br>ArkTS-Sta: double                                             | 否   | 是   | 曝光时间。                                                   |
+| exposureTime                        | ArkTS-Dyn: number<br>ArkTS-Sta: double                                             | 否   | 是   | 曝光时间。单位为秒（s）。 |
 | fNumber                             | ArkTS-Dyn: number<br>ArkTS-Sta: double                                              | 否   | 是   | 光圈值，如f/1.8。                                            |
 | exposureProgram                     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                              | 否   | 是   | 相机在拍摄照片时用于设置曝光的程序类。                       |
 | spectralSensitivity                 | string                                             | 否   | 是   | 指示相机每个通道的光谱灵敏度。                           |
@@ -113,8 +113,8 @@ import { image } from '@kit.ImageKit';
 | isoSpeedLatitudeyyy                 | ArkTS-Dyn: number<br>ArkTS-Sta: int                                              | 否   | 是   | 表示相机传感器在单次曝光中可记录的最大动态范围。单位为EV。 |
 | isoSpeedLatitudezzz                 | ArkTS-Dyn: number<br>ArkTS-Sta: int                                              | 否   | 是   | 表示相机传感器在过曝方向保护高光细节的能力边界。单位为EV。 |
 | exifVersion                         | string                                             | 否   | 是   | 支持的Exif标准的版本。                                       |
-| dateTimeOriginal                    | string                                             | 否   | 是   | 生成原始图像数据的日期和时间。<br />对于DSC（Digital Still Camera 数码静态相机），会记录拍摄照片的日期和时间。格式为"YYYY:MM:DD HH:MM:SS"，时间以24小时格式显示。 |
-| dateTimeDigitized                   | string                                             | 否   | 是   | 将图像作为数字数据存储的日期和时间。<br/>例如，如果DSC捕获了图像，并同时记录了文件，则DateTimeOriginal和DateTimeDigitized将具有相同的内容。格式为"YYYY:MM:DD HH:MM:SS"，时间以24小时格式显示。 |
+| dateTimeOriginal                    | string                                             | 否   | 是   | 生成原始图像数据的日期和时间。<br />对于DSC（Digital Still Camera 数码静态相机），会记录拍摄照片的日期和时间。格式为“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。 |
+| dateTimeDigitized                   | string                                             | 否   | 是   | 将图像作为数字数据存储的日期和时间。<br/>例如，如果DSC捕获了图像，并同时记录了文件，则DateTimeOriginal和DateTimeDigitized将具有相同的内容。格式为“YYYY:MM:DD HH:MM:SS”，时间以24小时格式显示。 |
 | offsetTime                          | string                                             | 否   | 是   | 作为DateTime标签的补充元数据，解决因地理时区变化导致的时间戳歧义问题。 |
 | offsetTimeOriginal                  | string                                             | 否   | 是   | 设备的地理时区位置。                                         |
 | offsetTimeDigitized                 | string                                             | 否   | 是   | 记录图像数字化时的UTC协调世界时（Coordinated Universal Time）偏移，有助于精确调整时间戳。  |
