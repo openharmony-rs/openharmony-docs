@@ -11,12 +11,13 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
 ```ts
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 ```
 
 ## serialManager.getPortList
@@ -26,6 +27,10 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 查询串口设备清单，包括设备名称和对应的端口号。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -42,33 +47,39 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口设备清单 
 function getPortList() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 }
 ```
 
 ## serialManager.hasSerialRight
 
-hasSerialRight(portId: number): boolean
+ArkTS-Dyn: hasSerialRight(portId: number): boolean
+
+ArkTS-Sta: hasSerialRight(portId: int): boolean
 
 检查应用程序是否具有访问串口设备的权限。应用退出后再拉起时，需要重新申请授权。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int  | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **返回值：**
 
@@ -96,17 +107,17 @@ hasSerialRight(portId: number): boolean
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function hasSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('portList: ', JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (serialManager.hasSerialRight(portId)) {
@@ -119,7 +130,9 @@ function hasSerialRight() {
 
 ## serialManager.requestSerialRight
 
-requestSerialRight(portId: number): Promise&lt;boolean&gt;
+ArkTS-Dyn: requestSerialRight(portId: number): Promise&lt;boolean&gt;
+
+ArkTS-Sta: requestSerialRight(portId: int): Promise&lt;boolean&gt;
 
 请求应用程序访问串口设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。使用Promise异步回调。
 
@@ -157,7 +170,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function requestSerialRight() {
@@ -167,7 +180,7 @@ function requestSerialRight() {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -175,7 +188,6 @@ function requestSerialRight() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -186,17 +198,23 @@ function requestSerialRight() {
 
 ## serialManager.open
 
-open(portId: number): void
+ArkTS-Dyn: open(portId: number): void
+
+ArkTS-Sta: open(portId: int): void
 
 打开串口设备。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **错误码：**
 
@@ -219,17 +237,17 @@ open(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function open() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -237,7 +255,6 @@ function open() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -256,17 +273,23 @@ function open() {
 
 ## serialManager.getAttribute
 
-getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
+ArkTS-Dyn: getAttribute(portId: number): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
+
+ArkTS-Sta: getAttribute(portId: int): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
 
 获取指定串口的配置参数。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId |   ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **返回值：**
 
@@ -294,17 +317,17 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function getAttribute() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -312,7 +335,6 @@ function getAttribute() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -344,17 +366,23 @@ function getAttribute() {
 
 ## serialManager.setAttribute
 
-setAttribute(portId: number, attribute: SerialAttribute): void
+ArkTS-Dyn: setAttribute(portId: number, attribute: [SerialAttribute](#serialattribute)): void
+
+ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribute)): void
 
 设置串口的配置参数。如果未调用该方法，使用默认配置参数（波特率：9600bps；数据位：8；校验位：0；停止位：1）。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                  | 必填 | 说明          |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId    |   ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 | attribute | [SerialAttribute](#serialattribute) | 是  | 串口参数。     |
 
 **错误码：**
@@ -377,17 +405,17 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function setAttribute() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -395,7 +423,6 @@ function setAttribute() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -429,7 +456,9 @@ function setAttribute() {
 
 ## serialManager.read
 
-read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+ArkTS-Dyn: read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 从串口设备异步读取数据。使用Promise异步回调。
 
@@ -439,15 +468,15 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
 | 类型                    | 说明             |
 |-----------------------|----------------|
-| Promise&lt;number&gt; | Promise对象，返回读取数据长度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回读取数据长度。 |
 
 **错误码：**
 
@@ -471,7 +500,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function read() {
@@ -481,7 +510,7 @@ function read() {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -489,7 +518,6 @@ function read() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -506,7 +534,7 @@ function read() {
 
   // 异步读取
   let readBuffer: Uint8Array = new Uint8Array(64);
-  serialManager.read(portId, readBuffer, 2000).then((size: number) => {
+  serialManager.read(portId, readBuffer, 2000).then((size: int) => {
     console.info('read usbSerial success, readBuffer: ' + readBuffer.toString());
   }).catch((error: Error) => {
     console.error('read usbSerial error, ' + JSON.stringify(error));
@@ -516,25 +544,31 @@ function read() {
 
 ## serialManager.readSync
 
-readSync(portId: number, buffer: Uint8Array, timeout?: number): number
+ArkTS-Dyn: readSync(portId: number, buffer: Uint8Array, timeout?: number): number
+
+ArkTS-Sta: readSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 从串口设备同步读取数据。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。|
+| portId  |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。|
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
+| timeout |  ArkTS-Dyn: number<br> ArkTS-Sta: int      | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。默认值0表示不等待直接返回。 |
 
 **返回值：**
 
 | 类型     | 说明          |
 |--------|-------------|
-| number | 返回读取数据长度。 |
+|  ArkTS-Dyn: number<br> ArkTS-Sta: int  | 返回读取数据长度。 |
 
 **错误码：**
 
@@ -558,17 +592,17 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function readSync() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -576,7 +610,6 @@ function readSync() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -604,7 +637,9 @@ function readSync() {
 
 ## serialManager.write
 
-write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+ArkTS-Dyn: write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
+
+ArkTS-Sta: write(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 向串口设备异步写数据，每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。
 
@@ -614,15 +649,15 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。      |
 | buffer  | Uint8Array | 是  | 写入数据的缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。 |
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。 |
 
 **返回值：**
 
 | 类型                    | 说明          |
 |-----------------------|-------------|
-| Promise&lt;number&gt; | Promise对象，返回写入数据长度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回写入数据长度。 |
 
 **错误码：**
 
@@ -647,7 +682,7 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 ```ts
 import { JSON } from '@kit.ArkTS';
 import { buffer } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function write() {
@@ -657,7 +692,7 @@ function write() {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -665,7 +700,6 @@ function write() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -682,7 +716,7 @@ function write() {
 
   // 异步写入
   let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-  serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
+  serialManager.write(portId, writeBuffer, 2000).then((size: int) => {
     console.info('write usbSerial success, writeBuffer: ' + writeBuffer.toString());
   }).catch((error: Error) => {
     console.error('write usbSerial error, ' + JSON.stringify(error));
@@ -692,25 +726,31 @@ function write() {
 
 ## serialManager.writeSync
 
-writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
+ArkTS-Dyn: writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
+
+ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
 向串口设备同步写数据，每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。     |
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。     |
 | buffer  | Uint8Array | 是  | 写入目标缓冲区。 |
-| timeout | number     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。|
+| timeout | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 否  | 超时时间（单位：毫秒），指定时间内等待API在目标端口的缓冲区是否可写，若可写则正常处理，若不可写等待超过指定时间后返回超时。默认值0表示不可写时不等待直接返回。|
 
 **返回值：**
 
 | 类型     | 说明          |
 |--------|-------------|
-| number | 返回写入数据长度。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 返回写入数据长度。 |
 
 **错误码：**
 
@@ -734,18 +774,17 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { buffer } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function writeSync() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -753,7 +792,6 @@ function writeSync() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -781,17 +819,23 @@ function writeSync() {
 
 ## serialManager.close
 
-close(portId: number): void
+ArkTS-Dyn: close(portId: number): void
+
+ArkTS-Sta: close(portId: int): void
 
 关闭串口。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明          |
 |--------|--------|----|-------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **错误码：**
 
@@ -813,17 +857,17 @@ close(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function close() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -831,7 +875,6 @@ function close() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -859,17 +902,23 @@ function close() {
 
 ## serialManager.cancelSerialRight
 
-cancelSerialRight(portId: number): void
+ArkTS-Dyn: cancelSerialRight(portId: number): void
+
+ArkTS-Sta: cancelSerialRight(portId: int): void
 
 移除应用程序运行时访问串口设备的权限。此接口会调用close关闭已打开的串口。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
 
 **错误码：**
 
@@ -892,17 +941,17 @@ cancelSerialRight(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function cancelSerialRight() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
-  if (!portList || portList.length === 0) {
+  if (portList === undefined || portList.length === 0) {
     console.error('usbSerial portList is empty');
     return;
   }
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
 
   // 检测设备是否可被应用访问
   if (!serialManager.hasSerialRight(portId)) {
@@ -910,7 +959,6 @@ function cancelSerialRight() {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
         console.error('user is not granted the operation permission');
-        return;
       } else {
         console.info('grant permission successfully');
       }
@@ -933,6 +981,10 @@ function cancelSerialRight() {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       |          类型        |  只读   |  可选 | 说明        |
 |----------|--------|----------|-----------|----------------------|
 | baudRate | [BaudRates](#baudrates) |   否   | 否  | 串口波特率，单位：比特/秒  |
@@ -946,9 +998,13 @@ function cancelSerialRight() {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型  |  只读 | 可选 | 说明    |
 |--------|--------|------|-------|--------|
-| portId | number | 否  |  否 | 端口号。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否  |  否 | 端口号。 |
 | deviceName | string | 否  |  否 | 串口设备名称。 |
 
 ## BaudRates
@@ -956,6 +1012,10 @@ function cancelSerialRight() {
 表示波特率的枚举，单位：比特/秒
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -996,6 +1056,10 @@ function cancelSerialRight() {
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
 | DATABIT_8 | 8 | 报文的有效数据位宽为8比特。 |
@@ -1008,6 +1072,10 @@ function cancelSerialRight() {
 表示校验位的校验方式的枚举
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
@@ -1022,6 +1090,10 @@ function cancelSerialRight() {
 表示停止位宽的枚举，单位：比特
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 值     | 说明    |
 |-----------|-----------|-----------|
