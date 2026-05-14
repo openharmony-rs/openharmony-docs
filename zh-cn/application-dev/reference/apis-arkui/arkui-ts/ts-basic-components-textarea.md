@@ -1541,15 +1541,15 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
 
 设置文本描边拐角样式。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1569,15 +1569,15 @@ shaderStyle(shader: ShaderStyle | undefined)
 >
 > shaderStyle的优先级高于[fontColor](#fontcolor)。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
