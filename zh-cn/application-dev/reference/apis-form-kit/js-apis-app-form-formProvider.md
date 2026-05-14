@@ -848,6 +848,8 @@ openFormManager(want: Want): void
 
 **系统能力：** SystemCapability.Ability.Form
 
+**设备行为差异：** 该接口在Wearable中调用会返回[16501000](./errorcode-form.md#16501000-内部功能错误)错误码。
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
