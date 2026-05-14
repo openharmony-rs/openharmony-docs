@@ -23,13 +23,13 @@ import { image } from '@kit.ImageKit';
 
 ## 属性
 
-**ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |

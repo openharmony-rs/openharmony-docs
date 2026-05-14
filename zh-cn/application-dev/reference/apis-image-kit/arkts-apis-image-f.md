@@ -2467,7 +2467,7 @@ ArkTS-Sta: createImageReceiver(size: Size, format: ImageFormat, capacity: int): 
 | 类型                             | 说明                                    |
 | -------------------------------- | --------------------------------------- |
 | ArkTS-Dyn: [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
-| ArkTS-Sta: [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
+| ArkTS-Sta: [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined| 如果操作成功，则返回ImageReceiver实例。 |
 
 **错误码：**
 

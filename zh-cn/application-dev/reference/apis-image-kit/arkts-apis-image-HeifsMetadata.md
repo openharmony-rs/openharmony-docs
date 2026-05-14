@@ -481,7 +481,7 @@ async function heifsMetadataClone(context: common.UIAbilityContext) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -561,7 +561,7 @@ async function heifsMetadataGetBlob(context: common.UIAbilityContext) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
