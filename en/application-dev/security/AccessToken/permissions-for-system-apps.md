@@ -6110,3 +6110,19 @@ Allows an application to query storage using CLI commands.
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | litewearables
 
 **Since**: 26.0.0
+
+## ohos.permission.ACCESS_MAPDATA_DIR
+
+Allows a system application to read and write map data.
+
+With this permission, the application can access and modify the offline map data downloaded to the device.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones
+
+**Since**: 20
