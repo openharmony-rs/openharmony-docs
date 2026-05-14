@@ -1315,7 +1315,7 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1377,7 +1377,7 @@ onStateChange(callback: StateChangeCallback): void
 
 | 参数名        | 类型        | 必填   | 说明                                                                                                |
 |------------|-----------|------|---------------------------------------------------------------------------------------------------|
-| callback   |  [StateChangeCallback](#statechangecallback26.0.0)   | 是    | 描述画中画生命周期状态变化回调。 |
+| callback   |  [StateChangeCallback](#statechangecallback)   | 是    | 描述画中画生命周期状态变化回调。 |
 
 **示例：**
 
@@ -1420,7 +1420,7 @@ off(type: 'stateChange'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1468,7 +1468,7 @@ on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#oncontrolpanelactionevent26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#oncontrolpanelactionevent)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1516,7 +1516,7 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 
 onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
 
-开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[onControlEvent](#oncontrolevent26.0.0)来开启画中画控制面板控件动作事件的监听。
+开启画中画控制面板控件动作事件的监听，建议在不需要使用时关闭监听，否则可能存在内存泄漏。推荐使用[onControlEvent](#oncontrolevent)来开启画中画控制面板控件动作事件的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1573,7 +1573,7 @@ on(type: 'controlEvent', callback: Callback&lt;ControlEventParam&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlEvent](#oncontrolevent26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlEvent](#oncontrolevent)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1679,7 +1679,7 @@ off(type: 'controlPanelActionEvent'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlPanelActionEvent](#offcontrolpanelactionevent26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlPanelActionEvent](#offcontrolpanelactionevent)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1701,7 +1701,7 @@ this.pipController.off('controlPanelActionEvent');
 
 offControlPanelActionEvent(): void
 
-关闭画中画控制面板控件动作事件的监听。推荐使用[offControlEvent](#offcontrolevent26.0.0)来关闭画中画控制面板控件动作事件的监听。
+关闭画中画控制面板控件动作事件的监听。推荐使用[offControlEvent](#offcontrolevent)来关闭画中画控制面板控件动作事件的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1727,7 +1727,7 @@ off(type: 'controlEvent', callback?: Callback&lt;ControlEventParam&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlEvent](#offcontrolevent26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlEvent](#offcontrolevent)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1788,7 +1788,7 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onPipWindowSizeChange](#onpipwindowsizechange26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPipWindowSizeChange](#onpipwindowsizechange)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1875,7 +1875,7 @@ off(type: 'pipWindowSizeChange', callback?: Callback&lt;PiPWindowSize&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offPipWindowSizeChange](#offpipwindowsizechange26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPipWindowSizeChange](#offpipwindowsizechange)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1982,7 +1982,7 @@ on(type: 'activeStatusChange', callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onActiveStatusChange](#onactivestatuschange26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onActiveStatusChange](#onactivestatuschange)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2043,7 +2043,7 @@ off(type: 'activeStatusChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offActiveStatusChange](#offactivestatuschange26.0.0)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offActiveStatusChange](#offactivestatuschange)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
