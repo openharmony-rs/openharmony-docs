@@ -132,7 +132,7 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefine
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
 | value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>23+</sup> \| undefined<sup>23+</sup> <br >ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| ComponentContentBase \| undefined | 是   | 自定义键盘。<br>传入undefined时默认使用系统键盘。|
-| options<sup>12+</sup> | ArkTS-Dyn: [KeyboardOptions](#keyboardoptions12) \| undefined<sup>23+</sup> <br > ArkTS-Sta: [KeyboardOptions](#keyboardoptions12) \| undefined      | 否   | 设置自定义键盘是否支持避让功能。 <br>传入undefined时默认不支持避让。|
+| options<sup>12+</sup> | ArkTS-Dyn: [KeyboardOptions](#keyboardoptions12) \| undefined<sup>23+</sup> <br > ArkTS-Sta: [KeyboardOptions](#keyboardoptions12) \| undefined      | 否   | 设置自定义键盘是否支持避让功能。 <br>传入undefined或缺省时默认不支持避让。|
 
 ### bindSelectionMenu
 
@@ -157,7 +157,7 @@ ArkTS-Sta: bindSelectionMenu(spanType: RichEditorSpanType | undefined, content: 
 | spanType     | ArkTS-Dyn: [RichEditorSpanType](#richeditorspantype) <br > ArkTS-Sta: [RichEditorSpanType](#richeditorspantype) \| undefined       | 是   | 菜单的类型。<br/>取值为undefined时，按照默认值处理。<br/>默认值：<br/>RichEditorSpanType.TEXT |
 | content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br > ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined     | 是   |  菜单的内容。<br/>取值为undefined时，取消绑定该种类型的选择菜单。 |
 | responseType | ArkTS-Dyn: [ResponseType](ts-appendix-enums.md#responsetype8)&nbsp; \| &nbsp;[RichEditorResponseType](#richeditorresponsetype11) <br > ArkTS-Sta: [ResponseType](ts-appendix-enums.md#responsetype8)&nbsp; \| &nbsp;[RichEditorResponseType](#richeditorresponsetype11) \| undefined | 是   | 菜单的响应类型。<br/>取值为undefined时，按照默认值处理。<br/> 默认值：<br/>ResponseType.LongPress |
-| options      | ArkTS-Dyn: [SelectionMenuOptions](#selectionmenuoptions) <br > ArkTS-Sta: [SelectionMenuOptions](#selectionmenuoptions) \| undefined              | 否   | 菜单的选项。<br/>取值为undefined时，按照[SelectionMenuOptions](#selectionmenuoptions)中的默认值处理。 |
+| options      | ArkTS-Dyn: [SelectionMenuOptions](#selectionmenuoptions) <br > ArkTS-Sta: [SelectionMenuOptions](#selectionmenuoptions) \| undefined              | 否   | 菜单的选项。<br/>取值为undefined或缺省时，按照[SelectionMenuOptions](#selectionmenuoptions)中的默认值处理。 |
 
 ### copyOptions
 
@@ -1732,7 +1732,7 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 | -------------- | ------ | ---- | ------- |
 | selectionStart | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中开始位置。 |
 | selectionEnd   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中结束位置。 |
-| options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。 |
+| options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。<br/>缺省时，按照[SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明)中的默认值处理。 |
 
 ### isEditing<sup>12+</sup>
 
@@ -1906,7 +1906,7 @@ ArkTS-Sta: addTextSpan(content: ResourceStr, options?: RichEditorTextSpanOptions
 | 参数名     | 类型                                     | 必填   | 说明  |
 | ------- | ---------------------------------------- | ---- | ----- |
 | content   | [ResourceStr](ts-types.md#resourcestr)   | 是    | 文本内容。 <br>从API version 20开始，支持Resource类型。|
-| options | [RichEditorTextSpanOptions](#richeditortextspanoptions) | 否    | 文本选项。 |
+| options | [RichEditorTextSpanOptions](#richeditortextspanoptions) | 否    | 文本选项。<br/>缺省时，按照[RichEditorTextSpanOptions](#richeditortextspanoptions)中的默认值生效。 |
 
 **返回值：**
 
@@ -1937,7 +1937,7 @@ ArkTS-Sta: addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImage
 | 参数名     | 类型                                     | 必填   | 说明  |
 | ------- | ---------------------------------------- | ---- | ----- |
 | value   | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr) | 是    | 图片内容。 |
-| options | [RichEditorImageSpanOptions](#richeditorimagespanoptions) | 否    | 图片选项。 |
+| options | [RichEditorImageSpanOptions](#richeditorimagespanoptions) | 否    | 图片选项。<br/>缺省时，按照[RichEditorImageSpanOptions](#richeditorimagespanoptions)中的默认值生效。 |
 
 **返回值：**
 
@@ -1981,7 +1981,7 @@ ArkTS-Sta: addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanO
 | 参数名     | 类型                                     | 必填   | 说明       |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | value   | [CustomBuilder](ts-types.md#custombuilder8) | 是    | 自定义组件。     |
-| options | [RichEditorBuilderSpanOptions](#richeditorbuilderspanoptions11) | 否    | builder选项。 |
+| options | [RichEditorBuilderSpanOptions](#richeditorbuilderspanoptions11) | 否    | builder选项。<br/>缺省时，按照[RichEditorBuilderSpanOptions](#richeditorbuilderspanoptions11)中的默认值生效。 |
 
 **返回值：**
 
@@ -2012,7 +2012,7 @@ ArkTS-Sta: addSymbolSpan(value: Resource, options?: RichEditorSymbolSpanOptions)
 | 参数名     | 类型                                     | 必填   | 说明  |
 | ------- | ---------------------------------------- | ---- | ----- |
 | value   | [Resource](ts-types.md#resource)         | 是    | 组件内容。 |
-| options | [RichEditorSymbolSpanOptions](#richeditorsymbolspanoptions11) | 否    | 组件选项。 |
+| options | [RichEditorSymbolSpanOptions](#richeditorsymbolspanoptions11) | 否    | 组件选项。<br/>缺省时，按照[RichEditorSymbolSpanOptions](#richeditorsymbolspanoptions11)中的默认值生效。 |
 
 **返回值：**
 
@@ -2086,7 +2086,7 @@ ArkTS-Sta: getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | 
 
 | 参数名   | 类型                                | 必填   | 说明        |
 | ----- | ----------------------------------- | ---- | ----------- |
-| value | [RichEditorRange](#richeditorrange) | 否    | 需要获取span范围。 |
+| value | [RichEditorRange](#richeditorrange) | 否    | 需要获取span范围。<br/>缺省时，获取所有span信息。 |
 
 **返回值：**
 
@@ -2134,7 +2134,7 @@ ArkTS-Sta: getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphRes
 
 | 参数名   | 类型                                | 必填   | 说明       |
 | ----- | ----------------------------------- | ---- | ---------- |
-| value | [RichEditorRange](#richeditorrange) | 否    | 需要获取段落的范围。 |
+| value | [RichEditorRange](#richeditorrange) | 否    | 需要获取段落的范围。<br/>缺省时，获取所有段落信息。 |
 
 **返回值：**
 
