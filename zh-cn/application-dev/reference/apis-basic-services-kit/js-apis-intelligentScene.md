@@ -100,17 +100,17 @@ isNotifyAllowedInDoNotDisturb(): Promise\<boolean>
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
 async function isNotifyAllowedInDoNotDisturb(): Promise<boolean> {
-  let isDoNotDisturbEnabled: boolean = false;
+  let isNotifyAllowedInDoNotDisturb: boolean = false;
   try {
-    isDoNotDisturbEnabled = await intelligentScene.isNotifyAllowedInDoNotDisturb();
+    isNotifyAllowedInDoNotDisturb = await intelligentScene.isNotifyAllowedInDoNotDisturb();
   } catch (err) {
     console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
   }
-  if (isDoNotDisturbEnabled) {
-    console.info('DoNotDisturb state is open');
+  if (isNotifyAllowedInDoNotDisturb) {
+    console.info('Allowed to notify in doNotDisturb state');
   } else {
-    console.info('DoNotDisturb state is closed');
+    console.info('Not allowed to notify in doNotDisturb state or doNotDisturb is closed');
   }
-  return isDoNotDisturbEnabled;
+  return isNotifyAllowedInDoNotDisturb;
 }
 ```
