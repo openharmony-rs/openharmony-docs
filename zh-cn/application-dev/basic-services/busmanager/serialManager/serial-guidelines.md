@@ -124,24 +124,25 @@
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import serial from '@ohos.busManager.serial'
-   import { BusinessError } from '@ohos.base'
+   import serial from '@ohos.busManager.serial';
+   import { BusinessError } from '@ohos.base';
    ```
 
 2. 获取串口设备列表。
 
-   <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
      const portList = await serial.getSerialPortList();
      console.info(`${TAG} getSerialPortList success, count: ${portList.length}`);
-     portList.forEach((port: serial.SerialPort, index: number) => {
-       console.info(`${TAG}   [${index}] portName=${port.portInfo.portName}, vendorId=${port.portInfo.vendorId}, productId=${port.portInfo.productId}`);
-     });
+     for (let i = 0; i < portList.length; i++) {
+       const port = portList[i];
+       console.info(`${TAG}   [${i}] portName=${port.portInfo.portName}, vendorId=${port.portInfo.vendorId}, productId=${port.portInfo.productId}`);
+     }
      if (portList.length > 0) {
        this.port = portList[0];
      }
@@ -153,7 +154,7 @@
 
 3. 打开串口设备。
 
-   <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -167,7 +168,7 @@
        stopBits: serial.StopBits.ONE,
        parity: serial.Parity.NONE
      };
-     await this.port.open(config);
+     await this.port!.open(config);
      console.info(`${TAG} open success`);
    } catch (err) {
      const e = err as BusinessError;
@@ -177,7 +178,7 @@
 
 4. 注册数据接收回调，监听串口数据。
 
-   <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -185,10 +186,11 @@
        console.error(`${TAG} No serial port found, please call getSerialPortList first`);
        return;
      }
-     this.dataCallback = (data: Uint8Array) => {
+     const callback = (data: Uint8Array): void => {
        console.info(`${TAG} onDataRead: ${Array.from(data).join(', ')}`);
      };
-     this.port.onDataRead(this.dataCallback);
+     this.dataCallback = callback;
+     this.port!.onDataRead(callback);
      console.info(`${TAG} onDataRead registered`);
    } catch (err) {
      const e = err as BusinessError;
@@ -198,7 +200,7 @@
 
 5. 通过串口写入数据。
 
-   <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -207,7 +209,7 @@
        return;
      }
      const data = new Uint8Array([0x48, 0x65, 0x6C, 0x6C, 0x6F]);
-     const writeLen = await this.port.write(data);
+     const writeLen = await this.port!.write(data);
      console.info(`${TAG} write success, length: ${writeLen}`);
    } catch (err) {
      const e = err as BusinessError;
@@ -217,7 +219,7 @@
 
 6. 刷新缓冲区与等待发送完成。
 
-   <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -225,7 +227,7 @@
        console.error(`${TAG} No serial port found, please call getSerialPortList first`);
        return;
      }
-     await this.port.flush();
+     await this.port!.flush();
      console.info(`${TAG} flush success`);
    } catch (err) {
      const e = err as BusinessError;
@@ -237,7 +239,7 @@
 
    * 设置RTS信号为高电平
 
-     <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -245,7 +247,7 @@
          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
          return;
        }
-       await this.port.setRts(true);
+       await this.port!.setRts(true);
        console.info(`${TAG} setRts(true) success`);
      } catch (err) {
        const e = err as BusinessError;
@@ -255,7 +257,7 @@
 
    * 获取CTS信号状态
 
-     <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -263,7 +265,7 @@
          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
          return;
        }
-       const ctsStatus = await this.port.getCts();
+       const ctsStatus = await this.port!.getCts();
        console.info(`${TAG} getCts success, CTS: ${ctsStatus}`);
      } catch (err) {
        const e = err as BusinessError;
@@ -273,7 +275,7 @@
 
    * 发送break信号
 
-     <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+     <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -281,7 +283,7 @@
          console.error(`${TAG} No serial port found, please call getSerialPortList first`);
          return;
        }
-       await this.port.sendBrk();
+       await this.port!.sendBrk();
        console.info(`${TAG} sendBrk success`);
      } catch (err) {
        const e = err as BusinessError;
@@ -291,7 +293,7 @@
 
 8. 注销数据接收回调和关闭串口设备。
 
-   <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -299,7 +301,7 @@
        console.error(`${TAG} No serial port found, please call getSerialPortList first`);
        return;
      }
-     await this.port.close();
+     await this.port!.close();
      console.info(`${TAG} close success`);
      this.port = null;
    } catch (err) {
