@@ -115,7 +115,7 @@
        this.avTranscoder?.onError((err: BusinessError) => {
          console.error(`AVTranscoder failed, code is ${err.code}, message is ${err.message}`);
        });
-       // 进度上报回调函数
+       // 进度上报回调函数。
        this.avTranscoder?.onProgressUpdate((progress: int) => {
          console.info(`AVTranscoder progressUpdate = ${progress}`);
          this.currentProgress = progress;
@@ -346,7 +346,7 @@
    };
    ```
 
-   调用Prepare()接口：
+   调用prepare()接口：
 
    <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
@@ -450,9 +450,10 @@
        if (this.avTranscoder != undefined) {
          // 1.销毁实例。
          await this.avTranscoder.release();
+         let lastFd = this.avTranscoder!.fdDst;
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
-         fileIo.closeSync(this.avTranscoder!.fdDst);
+         fs.closeSync(lastFd);
        }
      }
    }
