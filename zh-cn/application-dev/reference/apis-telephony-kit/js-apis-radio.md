@@ -1108,8 +1108,8 @@ console.info(`operator name is:` + operatorName);
 |      名称       |           类型              | 只读 | 可选 |      说明          |
 | --------------- | --------------------------- | ---- | ---- | ------------------ |
 | signalType      | [NetworkType](#networktype) | 否   | 否   | 网络信号强度类型。 |
-| signalLevel     | number                      | 否   | 否   | 网络信号强度等级，范围为0-5，超出范围返回错误。 |
-| dBm<sup>9+</sup>| number                      | 否   | 否   | 网络信号强度，范围为-140-140，超出范围返回错误。     |
+| signalLevel     | number                      | 否   | 否   | 网络信号强度等级，范围为[0, 5]，超出范围返回错误。 |
+| dBm<sup>9+</sup>| number                      | 否   | 否   | 网络信号强度，范围为[-140, 140]，超出范围返回错误。     |
 
 ## NetworkType
 
