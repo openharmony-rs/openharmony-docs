@@ -5653,3 +5653,19 @@ With the permission, the application can always use sensors.
 **Supported devices**: general devices
 
 **Since**: 24
+
+## ohos.permission.ACCESS_MAPDATA_DIR
+
+Allows a system application to read and write map data.
+
+With this permission, the application can access and modify the offline map data downloaded to the device.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones
+
+**Since**: 20
