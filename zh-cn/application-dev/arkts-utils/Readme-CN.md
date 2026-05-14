@@ -96,6 +96,7 @@
     - [基于Node-API加载模块](load-module-base-nodeapi.md)
     - [模块加载副作用及优化](arkts-module-side-effects.md)
     - [模块化调试工具](arkts-module-debug.md)
+    - [模块化常见问题](arkts-module-faq.md)
   - [ArkTS运行时常见问题](arkts-runtime-faq.md)
 - ArkTS编译工具链<!--arkts-compilation-tool-chain-->
   - [ArkTS编译工具链概述](compilation-tool-chain-overview.md)
