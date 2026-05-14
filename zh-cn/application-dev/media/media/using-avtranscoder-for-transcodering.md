@@ -450,10 +450,9 @@
        if (this.avTranscoder != undefined) {
          // 1.销毁实例。
          await this.avTranscoder.release();
-         let lastFd = this.avTranscoder!.fdDst;
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
-         fs.closeSync(lastFd);
+         fileIo.closeSync(this.avTranscoder!.fdDst);
        }
      }
    }
@@ -469,9 +468,10 @@
      if (this.avTranscoder != undefined) {
        // 1.释放转码实例。
        await this.avTranscoder!!.release();
+       let lastFd = this.avTranscoder!.fdDst;
        this.avTranscoder = undefined;
        // 2.关闭转码目标文件fd。
-       fs.closeSync(this.avTranscoder!.fdDst);
+       fs.closeSync(lastFd);
      }
    }
    ```
