@@ -63,6 +63,10 @@
    ArkTS-Sta：
 
    <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   this.avRecorder = await media.createAVRecorder();
+   ```
 
 2. 设置业务需要的监听事件，监听状态变化及错误上报。
    | 事件类型 | 说明 |
