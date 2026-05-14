@@ -1707,7 +1707,7 @@ offSeniorModeStateChange(callback?: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回true表示系统关怀模式已开启；返回false表示系统关怀模式已关闭。取消指定callback对象的事件响应。需与[accessibility.onSeniorModeStateChange](#accessibilityonseniormodestatechange)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回true表示系统关怀模式已开启；返回false表示系统关怀模式已关闭。<br>取消指定callback对象的事件响应。需与[accessibility.onSeniorModeStateChange](#accessibilityonseniormodestatechange)的callback一致。<br>缺省时，表示注销所有已注册事件。 |
 
 **示例：**
 

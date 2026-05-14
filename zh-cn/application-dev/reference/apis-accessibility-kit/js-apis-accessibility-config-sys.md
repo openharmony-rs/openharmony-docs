@@ -510,13 +510,13 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -568,13 +568,13 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -626,13 +626,13 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -680,13 +680,13 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1066,11 +1066,11 @@ type OnDisconnectCallback = () => void
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此类型仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-**模型约束：** 此类型仅可在Stage模型下使用。
 
 | 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
