@@ -1315,7 +1315,7 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange26)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1359,6 +1359,7 @@ this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string)
 });
 ```
 
+<a id="onStateChange26"></a>
 ### onStateChange
 
 onStateChange(callback: StateChangeCallback): void
@@ -1420,7 +1421,7 @@ off(type: 'stateChange'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange26)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1438,6 +1439,7 @@ off(type: 'stateChange'): void
 this.pipController.off('stateChange');
 ```
 
+<a id="offStateChange26"></a>
 ### offStateChange
 
 offStateChange(): void
@@ -1468,7 +1470,7 @@ on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#oncontrolpanelactionevent)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#oncontrolpanelactionevent26)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1512,6 +1514,7 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 });
 ```
 
+<a id="onControlPanelActionEvent26"></a>
 ### onControlPanelActionEvent
 
 onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
@@ -1697,8 +1700,8 @@ off(type: 'controlPanelActionEvent'): void
 this.pipController.off('controlPanelActionEvent');
 ```
 
-### offControlPanelActionEvent
 <a id="offcontrolpanelactionevent26"></a>
+### offControlPanelActionEvent
 
 offControlPanelActionEvent(): void
 
