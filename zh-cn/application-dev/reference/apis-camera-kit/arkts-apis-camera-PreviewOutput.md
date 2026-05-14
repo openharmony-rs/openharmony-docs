@@ -629,52 +629,6 @@ function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): b
 }
 ```
 
-## enableBandwidthCompression<sup>23+</sup>
-
-enableBandwidthCompression(enabled: boolean): void
-
-使能预览带宽压缩。
-
-使能之前，可先使用方法[isBandwidthCompressionSupported](#isbandwidthcompressionsupported23)对设备是否支持预览带宽压缩进行检查。
-
-> **说明：**
-> 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之前调用，否则会影响预览流出流格式。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名      | 类型                    | 必填 | 说明                                       |
-| -------- | ---------------------- | ---- | ------------------------------------------ |
-| enabled  | boolean | 是  | 是否使能预览带宽压缩。true表示使能，false表示不使能。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID    | 错误信息                                           |
-| -------- |----------------------------------------------- |
-| 7400102  | Operation not allowed. |
-| 7400103  | Session not config. |
-| 7400201  | Camera service fatal error. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled: boolean): void {
-  try {
-    previewOutput.enableBandwidthCompression(enabled);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The previewOutput.enableBandwidthCompression call failed. error code: ${err.code}`);
-  }
-}
-```
 ### addDeferredSurface<sup>24+</sup>
 
 addDeferredSurface(surfaceId: string): void
@@ -724,3 +678,4 @@ async function preview(cameraManager: camera.CameraManager, cameraInfo: camera.C
   previewOutput.addDeferredSurface(previewSurfaceId);
 }
 ```
+
