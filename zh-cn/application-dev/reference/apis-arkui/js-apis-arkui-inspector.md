@@ -59,6 +59,86 @@ createComponentObserver(id: string): ComponentObserver
 let listener:inspector.ComponentObserver = inspector.createComponentObserver('COMPONENT_ID'); // 监听id为COMPONENT_ID的组件回调事件
 ```
 
+## inspector.getInspectorByKey<sup>23+</sup>
+
+getInspectorByKey(id: string): string
+
+获取指定id组件的所有属性，不包括子组件信息。
+
+此接口仅用于对应用的测试，使用时建议等应用启动且布局完成后再调用。由于耗时长，不建议测试之外的场景使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| id | string | 是 | 要获取属性的组件id。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| string | 组件属性列表的JSON字符串。字符串信息包含组件的tag、id、位置信息（相对于窗口左上角的坐标）以及用于测试检查的组件所包含的相关属性信息。组件中每个字段的含义请参考[getInspectorInfo](js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+
+## inspector.getInspectorTree<sup>23+</sup>
+
+getInspectorTree(): RecordData
+
+获取组件树及组件属性。
+
+此接口仅用于对应用的测试。由于耗时长，不建议测试之外的场景使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| RecordData | 组件树及组件属性列表的JSON对象。组件中每个字段的含义请参考[getInspectorInfo](js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+
+## inspector.sendEventByKey<sup>23+</sup>
+
+sendEventByKey(id: string, action: int, params: string): boolean
+
+给指定id的组件发送事件。
+
+此接口仅用于对应用的测试。由于耗时长，不建议测试之外的场景使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| id | string | 是 | 要触发事件的组件id。 |
+| action | int | 是 | 要触发的事件类型，当前支持取值：<br/>-&nbsp;点击事件Click：10。<br/>-&nbsp;长按事件LongClick：11。 |
+| params | string | 是 | 事件参数，无参数时传空字符串""。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 找不到指定id的组件时返回false，其余情况返回true。 |
+
 ## ComponentObserver
 
 组件布局和组件绘制送显完成回调的句柄，包含了申请句柄时的首次查询结果。
