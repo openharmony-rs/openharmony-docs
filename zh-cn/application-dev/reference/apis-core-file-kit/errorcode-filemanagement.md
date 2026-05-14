@@ -880,6 +880,138 @@ Software caused connection abort
 
 2.检查Wi-Fi和蓝牙，确认状态正常。
 
+### 13900050 内部资源错误
+
+**错误信息**
+
+Internal resource error.
+
+**错误描述**
+
+内部资源错误。
+
+**可能原因**
+
+系统内部资源分配失败。
+
+**处理步骤**
+
+重新运行当前代码。
+
+### 13900051 缓冲区读写越界
+
+**错误信息**
+
+Buffer read/write out of bounds.
+
+**错误描述**
+
+mmap缓冲区读写越界。
+
+**可能原因**
+
+读写的数据长度超过了mmap映射区的剩余可用空间。
+
+**处理步骤**
+
+1.调用[remaining](js-apis-file-fs.md#remaining)确认映射区的剩余可用空间。
+
+2.如需操作更大范围，可先调用[setLimit](js-apis-file-fs.md#setlimit)调整限制值。
+
+### 13900052 mmap缓冲区已释放
+
+**错误信息**
+
+Mmap buffer released.
+
+**错误描述**
+
+mmap缓冲区已释放。
+
+**可能原因**
+
+1.对已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放的缓冲区进行操作。
+
+2.FileMapping对象的内部状态无效。
+
+**处理步骤**
+
+1.确认mmap缓冲区是否已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放。
+
+2.代码如果已经调用过[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)接口，则需重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)接口建立新的映射。
+
+### 13900053 mmap缓冲区只读
+
+**错误信息**
+
+Read-only mmap buffer.
+
+**错误描述**
+
+mmap缓冲区只读。
+
+**可能原因**
+
+以只读模式映射的缓冲区尝试进行写操作。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式或私有模式。
+
+### 13900054 mmap缓冲区不可访问
+
+**错误信息**
+
+Mmap buffer is inaccessible.
+
+**错误描述**
+
+mmap缓冲区不可访问。
+
+**可能原因**
+
+系统内存映射异常导致缓冲区指针失效。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)映射文件。
+
+### 13900055 mmap映射类型不支持该操作
+
+**错误信息**
+
+Mmap operation not supported.
+
+**错误描述**
+
+mmap映射类型不支持该操作。
+
+**可能原因**
+
+[msync](js-apis-file-fs.md#msync)写入磁盘时，映射区为只读模式或私有模式。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式。
+
+### 13900056 mmap不支持映射此文件
+
+**错误信息**
+
+Mmap does not support mapping this file.
+
+**错误描述**
+
+mmap不支持映射此文件。
+
+**可能原因**
+
+目标文件不是常规文件，如管道、socket、设备文件等。
+
+**处理步骤**
+
+请使用[read](js-apis-file-fs.md#fileioread)、[write](js-apis-file-fs.md#fileiowrite)或[Stream](js-apis-file-fs.md#stream)等文件访问接口替代mmap。
+
 ## 用户数据管理错误码
 
 ### 14000001 文件名非法
@@ -1225,7 +1357,7 @@ Failed to traverse the query data partition directory.
 重启设备后重试。
 
 ### 13600016 获取文件系统inode数失败
- 	 
+
 **错误信息**
 
 Failed to query the inode information of the data partition.
@@ -1277,6 +1409,204 @@ Failed to query the system data size.
 **处理步骤**
 
 重启设备后重试。
+
+### 13600023 光盘不可擦除
+
+**错误信息**
+
+Disc not erasable.
+
+**错误描述**
+
+光盘不可擦除。
+
+**可能原因**
+
+光盘类型不支持擦除操作，如CD-R等一次性写入光盘。
+
+**处理步骤**
+
+确认光盘类型为可擦写光盘（如CD-RW、DVD-RW等）。
+
+### 13600024 光盘为空
+
+**错误信息**
+
+Empty disc.
+
+**错误描述**
+
+光盘为空。
+
+**可能原因**
+
+光盘中没有数据或未被正确识别。
+
+**处理步骤**
+
+1.确认光盘已正确放入光驱。
+
+2.确认光盘包含有效数据。
+
+### 13600025 写入ISO文件失败
+
+**错误信息**
+
+Failed to write the ISO file.
+
+**错误描述**
+
+写入ISO文件失败。
+
+**可能原因**
+
+1.ISO文件损坏或格式不正确。
+
+2.写入过程中发生I/O错误。
+
+3.光盘写入权限不足。
+
+**处理步骤**
+
+1.检查ISO文件完整性。
+
+2.确认光盘状态正常且可写入。
+
+3.重试写入操作。
+
+### 13600026 光盘空间不足
+
+**错误信息**
+
+Insufficient disc space.
+
+**错误描述**
+
+光盘空间不足。
+
+**可能原因**
+
+待写入数据大小超过光盘剩余容量。
+
+**处理步骤**
+
+1.检查待写入数据大小。
+
+2.使用容量更大的光盘或减少写入数据。
+
+### 13600027 源数据未找到
+
+**错误信息**
+
+Source data not found.
+
+**错误描述**
+
+源数据未找到。
+
+**可能原因**
+
+1.源文件路径错误或文件不存在。
+
+2.源数据已被删除或移动。
+
+**处理步骤**
+
+1.确认源文件路径正确。
+
+2.确认源文件存在且可访问。
+
+### 13600028 刻录操作失败
+
+**错误信息**
+
+Burn operation failed.
+
+**错误描述**
+
+刻录操作失败。
+
+**可能原因**
+
+1.光驱硬件故障或连接异常。
+
+2.刻录过程中断或超时。
+
+3.光盘质量不佳或已损坏。
+
+**处理步骤**
+
+1.检查光驱已连接且处于正常识别的空闲状态。
+
+2.更换质量良好的光盘。
+
+3.降低刻录速度后重试。
+
+### 13600029 无正在进行的操作
+
+**错误信息**
+
+No ongoing operation.
+
+**错误描述**
+
+无正在进行的操作。
+
+**可能原因**
+
+查询不存在或未开始的刻录任务。
+
+**处理步骤**
+
+确认是否有正在进行的刻录操作。
+
+### 13600030 校验失败
+
+**错误信息**
+
+Verification failed.
+
+**错误描述**
+
+校验失败。
+
+**可能原因**
+
+1.刻录数据与源数据不一致。
+
+2.光盘读取错误。
+
+3.数据传输过程中出现错误。
+
+**处理步骤**
+
+1.重新进行刻录操作。
+
+2.检查光盘质量和光驱状态。
+
+3.验证源数据完整性。
+
+### 13600031 数据不匹配
+
+**错误信息**
+
+Data mismatch.
+
+**错误描述**
+
+数据不匹配。
+
+**可能原因**
+
+刻录后的数据与原始源数据存在差异。
+
+**处理步骤**
+
+1.重新刻录并校验数据。
+
+2.检查源文件在刻录过程中是否被修改。
+
+3.更换光盘或光驱后重试。
 
 ## 公共文件访问错误码
 

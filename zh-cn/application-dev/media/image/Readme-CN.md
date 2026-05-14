@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,6 +12,7 @@
     - [使用ImageSource完成图片解码](image-decoding.md)
     - [使用ImageSource完成多图对象解码](image-picture-decoding.md)
     - [图片解码内存优化(ArkTS)](image-allocator-type.md)
+    - [图片区域解码与下采样(ArkTS)](image-region-and-downsampling.md)
     - [使用ImageSource获取RAW数据](image-raw-data.md)
   - 图片编码<!--image-encoding-arts-->
     - [使用ImagePacker完成图片编码](image-encoding.md)
@@ -27,6 +28,7 @@
     - [使用Image_NativeModule完成图片解码](image-source-c.md)
     - [使用Image_NativeModule完成多图对象解码](image-source-picture-c.md)
     - [图片解码内存优化(C/C++)](image-allocator-type-c.md)
+    - [图片区域解码与下采样(C/C++)](image-region-and-downsampling-c.md)
   - 图片编码<!--image-encoding-c-->
     - [使用Image_NativeModule完成图片编码](image-packer-c.md)
     - [使用Image_NativeModule完成多图对象编码](image-packer-picture-c.md)

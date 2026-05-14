@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
-<!--Designer: @zhoulin_-->
+<!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -49,7 +49,7 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在Tablet设备的非电脑模式、Phone设备下可正常调用，在其他设备、Tablet设备的电脑模式下调用返回801错误码。
 
 **参数：**
 
@@ -151,6 +151,7 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
+| 1300034 | This operation conflicts with other floating windows. Possible cause: App has already started float view.</br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -565,6 +566,95 @@ floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
 });
 ```
 
+### onDestroy
+
+onDestroy(callback: Callback&lt;string&gt;): void
+
+注册闪控球销毁事件的监听。当闪控球销毁时，回调函数会接收到销毁原因的字符串。不再使用时，调用[offDestroy](#offdestroy)接口取消监听以避免内存泄漏。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| callback | Callback&lt;string&gt; | 是 | 回调函数。返回闪控球停止的原因。停止原因包括：<br>- "APP_STOP"：应用主动停止。<br>- "DUMPSTER_STOP"：拖动到垃圾桶触发停止。<br>- "LONG_PRESS_SINGLE_STOP"：长按单个闪控球触发停止。<br>- "LONG_PRESS_ALL_STOP"：长按全部闪控球触发停止。<br>- "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗口被销毁后触发停止。<br>- "SQUEEZE"：超出设备闪控球数量上限，被其他闪控球挤占停止。<br>- "FLOAT_VIEW_STOP"：与标准悬浮窗绑定后，绑定状态下跟随标准悬浮窗停止。<br>- "STOP_IN_SIDEBAR"：在侧边栏中被停止。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
+| 1300022 | Repeated floating ball operation. |
+| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+
+**示例：**
+
+```ts
+let onDestroy = (reason: string) => {
+  console.info('Floating ball has destroyed, reason: ' + reason);
+};
+try {
+  floatingBallController?.onDestroy(onDestroy);
+} catch(e) {
+  console.error(`Failed to onDestroy floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
+### offDestroy
+
+offDestroy(callback?: Callback&lt;string&gt;): void
+
+取消闪控球销毁事件的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| callback | Callback&lt;string&gt; | 否 | 回调函数。若传入参数，则取消该监听；若未传入参数，则取消所有闪控球销毁事件的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
+| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+
+**示例：**
+
+```ts
+let onDestroy = (reason: string) => {
+  console.info('Floating ball has destroyed, reason: ' + reason);
+};
+try {
+  floatingBallController?.offDestroy(onDestroy);
+} catch(e) {
+  console.error(`Failed to offDestroy floating ball. Cause:${e.code}, message:${e.message}`);
+}
+// 取消所有监听
+try {
+  floatingBallController?.offDestroy();
+} catch(e) {
+  console.error(`Failed to offDestroy all listeners. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ## FloatingBallParams
 
 启动和更新闪控球的配置参数。
@@ -577,6 +667,8 @@ floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
 | title | string | 否 | 否 | 闪控球标题，不可为空字符串，大小不超过64字节。 |
 | content | string | 否 | 是 | 闪控球内容，大小不超过64字节。不传入时默认为空字符串，不显示闪控球内容。 |
 | backgroundColor | string | 否 | 是 | 闪控球背景颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时闪控球跟随系统深浅色模式的默认背景色。 |
+| titleColor | string | 否 | 是 | 闪控球标题文字颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时根据背景色色度自动填充，若背景色为亮色则填充黑色('#E5000000')，若背景色为暗色则填充白色('#E5FFFFFF')。配置此属性时，必须配置背景色backgroundColor。<br>**起始版本**：26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| contentColor | string | 否 | 是 | 闪控球内容文字颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时根据背景色色度自动填充，若背景色为亮色则填充黑色('#99000000')，若背景色为暗色则填充白色('#99FFFFFF')。配置此属性时，必须配置背景色backgroundColor。<br>**起始版本**：26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 是 | 闪控球图标，图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取）。建议图标像素宽高为128px*128px。实际显示效果依赖于设备能力和闪控球UI样式。 |
 | textUpdateAnimationType | [FloatingBallTextUpdateAnimationType](#floatingballtextupdateanimationtype) | 否 | 是 | 闪控球文本更新时的动画类型。默认为FloatingBallTextUpdateAnimationType.ANIMATION_NONE。<br>**起始版本**：26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 

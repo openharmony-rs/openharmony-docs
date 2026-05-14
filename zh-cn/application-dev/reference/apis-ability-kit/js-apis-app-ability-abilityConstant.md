@@ -5,7 +5,7 @@
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AbilityConstant提供Ability相关的枚举，包括应用启动原因[LaunchReason](#launchreason)、上次退出原因[LastExitReason](#lastexitreason)、迁移结果[OnContinueResult](#oncontinueresult)等。
 
@@ -135,6 +135,36 @@ export default class MyAbility extends UIAbility {
 | timestamp | number | 否 | 否 | Ability上次退出时的时间戳。 <br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。|
 | processState<sup>20+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10) | 否 | 是 | Ability上次退出时的进程状态。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 | killReason<sup>24+</sup> | string | 否 | 是 | Ability上次退出时的原因，取值详见[应用终止事件reason字段说明](../../dfx/hiappevent-watcher-app-killed-events.md#reason字段说明)。<br/>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
+
+> **说明：**
+>
+> 建议通过[App Killed](../../dfx/appkilled-guidelines.md)检测来获取应用异常退出的信息，不再建议使用exitSubReason获取。
+>
+> exitSubReason取值的含义如下：
+> - 100：进入户外模式查杀。
+> - 101：退出户外模式查杀或未申请合理的后台任务，但是后台有大量音频播放，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+> - 102：户外模式中查杀或应用未申请合理的后台任务，但是后台有录音，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+> - 103：应用后台CPU高负载。
+> - 105：应用IO超限。
+> - 106：ION内存泄漏管控或恶意使用后台任务查杀，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+> - 107：后台应用内存占用超过检测阈值两倍，其中PSS内存占比最高。
+> - 108：后台应用内存占用超过特定阈值，其中PSS内存占比最高。
+> - 110：GPU内存泄漏管控。
+> - 111：VMA内存泄漏管控。
+> - 112：句柄泄漏管控。
+> - 113：线程泄漏管控。
+> - 114：ASHMEM内存泄漏管控。
+> - 117：页表泄漏管控。
+> - 301：GPU内存超限或热清理。
+> - 3000：冻结异常管控，后台存在不合理订阅导致的回调唤醒。
+> - 3001：冻结异常管控，后台存在不合理订阅导致应用处理回调卡死。
+> - 3002：GNSS工作异常清理。
+> - 3003：蓝牙工作异常清理。
+> - 3004：RunningLock持锁异常清理。
+> - 3005：Kernel锁异常清理。
+> - 3006：省电模式清理。
+> - 3007：模块高耗电异常清理。
+> - 3030：应急模式、超级省电模式或睡眠模式的清理，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
 
 **示例**:
 

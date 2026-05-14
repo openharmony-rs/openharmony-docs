@@ -176,6 +176,52 @@ A constructor used to create a **PixelMapDrawableDescriptor** object.
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | No| **PixelMap** image data.|
 
+### constructor
+
+constructor(src?: image.PixelMap | ResourceStr)
+
+A constructor used to create a **PixelMapDrawableDescriptor** object through the PixelMap type or **ResourceStr**.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name    | Type             | Mandatory | Description                                      |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No| **PixelMap** image data. You can use application resources, system resources, sandbox paths (file://\<bundleName\>/\<sandboxPath\>), and Base64 strings to create **PixelMapDrawableDescriptor** objects.|
+
+**Example**
+
+The following is the sample code for creating a **PixelMapDrawableDescriptor** object using **ResourceStr**:
+
+```ts
+// xxx.ets
+import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // Create a PixelMapDrawableDescriptor object using Resource.
+  // Replace $r('app.media.icon') with the image resource file you use.
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
+```
+
 ## LayeredDrawableDescriptor
 
 Creates a **LayeredDrawableDescriptor** object when the passed resource ID or name belongs to a JSON file that contains foreground and background resources. Inherits from [DrawableDescriptor](#drawabledescriptor).

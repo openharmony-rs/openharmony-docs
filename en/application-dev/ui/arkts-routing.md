@@ -97,16 +97,16 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
           hilog.error(DOMAIN, TAG,`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
-      })
+        hilog.info(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
+      });
     }
   
     build() {
-      // ···
+      // ...
     }
   }
   ```
-  
+    
   >**NOTE**
   >
   >In standard (multi-instance) mode, the **router.RouterMode.Standard** parameter can be omitted.
@@ -133,7 +133,7 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
           hilog.error(DOMAIN, TAG, `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+        hilog.info(DOMAIN, TAG, 'Invoke pushUrl succeeded.');
       });
     }
   
@@ -142,7 +142,7 @@ The **Router** module also provides two instance modes: **Standard** and **Singl
     }
   }
   ```
-  
+    
 - Scenario 4: There is a search result list page (**SearchResult**) and a search result details page (**SearchDetail**). You want to click a result on the **SearchResult** page to go to the **SearchDetail** page. In addition, if the result has been viewed before, clicking the result displays the existing details page, instead of creating a new one. In this scenario, you can use the **replaceUrl** API and use the **Single** instance mode.
 
   <!-- @[search_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/SearchResult.ets) -->
@@ -216,7 +216,7 @@ onJumpClick(): void {
       hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
-    hilog.error(DOMAIN, TAG,'Invoke pushUrl succeeded.');
+    hilog.info(DOMAIN, TAG,'Invoke pushUrl succeeded.');
   });
 }
 ```
@@ -278,7 +278,7 @@ this.getUIContext().getRouter().back();
   Return to the page through a common route.
 
   <!-- @[back_detail21](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome'
@@ -303,7 +303,7 @@ this.getUIContext().getRouter().back();
   Return to the page through a common route.
 
   <!-- @[back_detail31](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'pages/pageRouter/jumpPage/BackHome',
@@ -317,7 +317,7 @@ this.getUIContext().getRouter().back();
   Return to the page through a named route.
 
   <!-- @[back_detail32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/jumpPage/BackDetail.ets) -->
-
+  
   ``` TypeScript
   this.getUIContext().getRouter().back({
     url: 'myPage', // myPage is the alias of the page to return to.
@@ -364,7 +364,7 @@ struct Home {
 
 ## Lifecycle
 
-The [router](../reference/apis-arkui/js-apis-router.md) page lifecycle refers to the lifecycle of components decorated with [\@Entry](state-management/arkts-create-custom-components.md#entry). The following lifecycle callbacks are provided:
+The [router](../reference/apis-arkui/js-apis-router.md) refers to a lifecycle function of components decorated with [\@Entry](state-management/arkts-create-custom-components.md#entry) and provides the following lifecycle callbacks. For details about the lifecycle sequence diagram of **onPageShow** and **onPageHide**, see [Lifecycle](./arkts-router-to-navigation.md#lifecycle).
 
 - [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow): Invoked each time the page is displayed, for example, during page redirection or when the application is switched to the foreground.
 

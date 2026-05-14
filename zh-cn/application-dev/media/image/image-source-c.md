@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -293,7 +293,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
          OH_LOG_INFO(LOG_APP, "ModifyImageProperty value: %{public}s.", setValue.data);
      
          Image_ErrorCode errCode = OH_ImageSourceNative_ModifyImageProperty(g_thisImageSource->source, &setKey, &setValue);
-         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_ModifyImageProperty");
+         return GetJsResult(env, errCode);
      }
      ```
 
@@ -368,3 +368,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
        return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_Release");
    }
    ```
+   
+ ## 进阶主题
+
+- **内存优化解码**：使用DMA内存和YUV像素格式降低内存占用、提升解码性能，参见[图片解码内存优化](image-allocator-type-c.md)。
+- **区域解码**：解码图片指定区域，适用于大图局部查看和裁剪预览场景，参见[图片区域解码与下采样](image-region-and-downsampling-c.md)。
+- **下采样解码**：解码时直接缩放目标尺寸，避免解码后缩放的性能开销，适用于缩略图生成场景，参见[图片区域解码与下采样](image-region-and-downsampling-c.md)。
+- **多图对象解码**：解码包含主图和辅助图的Picture对象，适用于HDR图片和HEIF专业格式处理，参见[使用Image_NativeModule完成多图对象解码](image-source-picture-c.md)。

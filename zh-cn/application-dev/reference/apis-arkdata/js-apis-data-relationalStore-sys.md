@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 关系型数据库（Relational Database，RDB）是一种基于关系模型来管理数据的数据库。关系型数据库基于SQLite组件提供了一套完整的对本地数据库进行管理的机制，对外提供了一系列的增、删、改、查等接口，也可以直接运行用户输入的SQL语句来满足复杂的场景需要。不支持Worker线程。
@@ -75,6 +75,22 @@ import { relationalStore } from '@kit.ArkData';
 | 名称     | 类型    | 只读  | 可选 | 说明                                                         |
 | -------- | ------- | ----  | ---- | ------------------------------------------------------------ |
 | references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | 否 | 是   | 设置表之间的关联关系，可以设置多个字段的关联，子表和父表关联字段的值必须相同。默认数据库表之间无关联关系。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。|
+
+## CloudSyncConfig
+
+云同步配置信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明                                                                         |
+|------|------|------|------|----------------------------------------------------------------------------|
+| downloadOnly | boolean | 否 | 是 | 是否仅下行云端数据到本地。true表示仅下行云端数据到本地，false表示先下行云端数据到本地，再上行本地数据到云侧的同步流程。默认值为false。 |
 
 ## RdbStore
 
@@ -1205,7 +1221,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 >
 > 入参info中若要传入设备id信息，则设备id必须是已与当前设备建立网络连接的设备id。
 >
-> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedinfo24)，则只允许使用等于空或不等于空。
+> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedfield24)，则只允许使用等于空或不等于空。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 

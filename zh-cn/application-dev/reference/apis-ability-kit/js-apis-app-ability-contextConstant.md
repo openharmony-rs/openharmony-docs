@@ -4,7 +4,7 @@
 <!--Owner: @wkljy; @yangxuguang-huawei; @Luobniz21-->
 <!--Designer: @ccllee1; @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 ContextConstant提供Context相关的枚举，包含文件加密分区等级、UIAbility启动后的进程模式等。
 
@@ -156,7 +156,7 @@ export default class EntryAbility extends UIAbility {
 
 ## ContextType
 
-表示常见Context类型的枚举，用于[contextType](./js-apis-inner-application-context.md#contexttype)接口。
+表示常见Context类型的枚举，用于[isContextOf](./js-apis-inner-application-context.md#iscontextof)接口。
 
 **起始版本**：26.0.0
 
@@ -181,7 +181,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
-    let result = this.context.contextType(contextConstant.ContextType.UIABILITY_CONTEXT);
+    let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
 }

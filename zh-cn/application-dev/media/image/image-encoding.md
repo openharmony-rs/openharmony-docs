@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -23,7 +23,7 @@
    <!-- @[encodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPixelMap.ets) -->   
    
    ``` TypeScript
-   // 导入相关模块包。
+   // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
@@ -55,6 +55,13 @@
    > **说明：**
    >
    > 在进行编码前，需要先获取imageSource或pixelMap，可参考[使用ImageSource完成图片解码](./image-decoding.md)。
+
+   - 定义copyData，获取编码后的文件流，方便后续保存为图片或者用于解码显示。
+     <!-- @[create_copyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     let copyData: ArrayBuffer = new ArrayBuffer(0);
+     ```
    
    - pixelMap编码到ArrayBuffer。
      <!-- @[packToData_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
@@ -103,7 +110,7 @@
        let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
        const path : string = context.cacheDir + '/pixel_map.jpg';
        try {
-         let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+         let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
          await imagePackerApi.packToFile(pixelMap, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the pixelMap to file. And the error is: ' + error);
@@ -120,7 +127,7 @@
        let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
        const filePath : string = context.cacheDir + '/image_source.jpg';
        try {
-         let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+         let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
          await imagePackerApi.packToFile(imageSource, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the imageSource to file. And the error is: ' + error);

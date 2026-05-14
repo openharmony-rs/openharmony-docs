@@ -21,7 +21,7 @@
 
 ## 子组件
 
-无
+该组件为基础组件，不建议包含子组件。
 
 
 ## 接口
@@ -38,7 +38,7 @@ TextPicker(options?: TextPickerOptions)
 
 | 参数名  | 类型                                            | 必填 | 说明                   |
 | ------- | ----------------------------------------------- | ---- | ---------------------- |
-| options | [TextPickerOptions](#textpickeroptions对象说明) | 否   | 配置文本选择器的参数。 |
+| options | [TextPickerOptions](#textpickeroptions对象说明) | 否   | 配置文本选择器的参数。参数缺省时组件无法显示。 |
 
 ## TextPickerOptions对象说明
 

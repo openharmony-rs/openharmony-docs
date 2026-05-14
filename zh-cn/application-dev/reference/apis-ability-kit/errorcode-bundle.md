@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >
@@ -125,7 +125,7 @@ The specified permission is not found.
 The specified device ID is not found.
 
 **错误描述**<br/>
-调用[distributedBundle模块](../apis-ability-kit/js-apis-distributedBundleManager-sys.md)相关接口时，传入的设备id有误。
+调用[distributedBundleManager模块](../apis-ability-kit/js-apis-distributedBundleManager-sys.md)相关接口时，传入的设备id有误。
 
 **可能原因**<br/>
 1. 传入的deviceId拼写有误。
@@ -284,7 +284,7 @@ The preinstalled app cannot be uninstalled.
 The specified uid is invalid.
 
 **错误描述**<br/>
-调用bundleManager模块中的[getBundleNameByUid接口](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)时，指定的uid无效。
+调用bundleManager模块中的[getBundleNameByUid](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuid14)时，指定的uid无效。
 
 **可能原因**<br/>
 传入的uid对应的应用不存在。
@@ -381,7 +381,7 @@ The specified bundle is disabled.
 The distributed service is not running.
 
 **错误描述**<br/>
-当调用[distributedBundle模块](../apis-ability-kit/js-apis-distributedBundleManager-sys.md)的相关接口时，分布式服务未启动。
+当调用[distributedBundleManager模块](../apis-ability-kit/js-apis-distributedBundleManager-sys.md)的相关接口时，分布式服务未启动。
 
 **可能原因**<br/>
 设备未组网。
@@ -588,7 +588,7 @@ The specified bundle is a shared bundle which cannot be uninstalled.
 Failed to install the HAP because the installation is forbidden by enterprise device management.
 
 **错误描述**<br/>
-安装应用时，[企业设备管理](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)不允许安装。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
+安装应用时，[admin权限管理](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)不允许安装。[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。
 
 **可能原因**<br/>
 企业设备管理不允许安装该应用。
@@ -645,7 +645,7 @@ Failed to install the HAP because the isolationMode configured is not supported.
 Failed to uninstall the HAP because the uninstall is forbidden by enterprise device management.
 
 **错误描述**<br/>
-卸载应用时，[企业设备管理](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)不允许卸载。
+卸载应用时，[admin权限管理](../../reference/apis-mdm-kit/js-apis-enterprise-adminManager.md)不允许卸载。
 
 **可能原因**<br/>
 企业设备管理不允许安装该应用。
@@ -665,7 +665,7 @@ Failed to install the HAP because the VersionCode to be updated is not greater t
 2. installFlag被设置为NORMAL，此时待更新的应用的版本号必须大于当前已安装的版本。
 
 **处理步骤**<br/>
-1. 设置应用的版本号大于当前版本，查看版本号的方法请参考[17700017错误码](#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败)的操作步骤。
+1. 设置应用的版本号大于当前版本，查看版本号的方法请参考错误码[17700017](#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败)的操作步骤。
 2. 如果希望应用更新但版本号不升级，需要设置installFlag为REPLACE_EXISTING。
 
 ## 17700048 代码签名校验失败
@@ -771,7 +771,7 @@ Failed to install the HAP because the HAP requests wrong permissions.
 The specified link is invalid.
 
 **错误描述**<br/>
-调用bundleManager模块中的[canOpenLink接口](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagercanopenlink12)时，指定的link无效。
+调用bundleManager模块中的[canOpenLink](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagercanopenlink12)时，指定的link无效。
 
 **可能原因**<br/>
 输入的link格式有误。
@@ -785,7 +785,7 @@ The specified link is invalid.
 The scheme of the specified link is not in the querySchemes.
 
 **错误描述**<br/>
-调用bundleManager模块中的[canOpenLink接口](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagercanopenlink12)时，指定link的scheme未在querySchemes字段下配置。
+调用bundleManager模块中的[canOpenLink](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagercanopenlink12)时，指定link的scheme未在querySchemes字段下配置。
 
 **可能原因**<br/>
 未在querySchemes字段下配置指定link的scheme。
@@ -799,7 +799,7 @@ The scheme of the specified link is not in the querySchemes.
 Failed to uninstall updates because the HAP is not pre-installed.
 
 **错误描述**<br/>
-调用installer模块中的[uninstallUpdates接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstallupdates12)时，指定的应用不是预置应用。
+调用installer模块中的[uninstallUpdates](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstallupdates12)时，指定的应用不是预置应用。
 
 **可能原因**<br/>
 指定的应用不是预置应用，无法调用uninstallUpdates接口。
@@ -829,7 +829,7 @@ Failed to install the HAP because this application is prohibited from being inst
 The specified developerId is invalid.
 
 **错误描述**<br/>
-调用bundleManager模块中的[getAllBundleInfoByDeveloperId接口](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfobydeveloperid12)时，指定的developerId无效。
+调用bundleManager模块中的[getAllBundleInfoByDeveloperId](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetallbundleinfobydeveloperid12)时，指定的developerId无效。
 
 **可能原因**<br/>
 设备上未安装指定开发者ID的应用。
@@ -843,7 +843,7 @@ The specified developerId is invalid.
 The specified application cannot be uninstalled.
 
 **错误描述**<br/>
-调用BundleInstaller模块中的[uninstall接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstall)或bundleManager模块中的[switchUninstallState接口](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerswitchuninstallstate12)时，指定的应用不允许被卸载。
+调用BundleInstaller模块中的[uninstall接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstall)或bundleManager模块中的[switchUninstallState](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerswitchuninstallstate12)时，指定的应用不允许被卸载。
 
 **可能原因**<br/>
 1. 调用uninstall接口卸载指定应用时，应用由于自身业务拒绝了此次卸载操作。
@@ -892,7 +892,7 @@ Failed to uninstall the app because the app has uninstall rule.
 The ability specified by want in the ShortcutInfo struct cannot be started.
 
 **错误描述**<br/>
-调用launcherBundleManager模块中的[startShortcut接口](../apis-ability-kit/js-apis-launcherBundleManager-sys.md#launcherbundlemanagerstartshortcut12)时，ShortcutInfo结构体中的want指定的ability不支持被拉起。
+调用launcherBundleManager模块中的[startShortcut](../apis-ability-kit/js-apis-launcherBundleManager-sys.md#launcherbundlemanagerstartshortcut12)时，ShortcutInfo结构体中的want指定的ability不支持被拉起。
 
 **可能原因**<br/>
 ShortcutInfo结构体中的want指定的ability不存在，ShortcutInfo结构体中的want指定的ability不能被拉起等。
@@ -959,7 +959,7 @@ The specified shortcut id is illegal.
 It is not allowed to install the enterprise bundle.
 
 **错误描述**<br/>
-[特定的安装接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstallpreexistingapp12)，不允许通过其安装企业应用。
+[BundleInstaller.installPreexistingApp](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstallpreexistingapp12)，不允许通过其安装企业应用。
 
 **可能原因**<br/>
 因策略管制，不允许通过特定的接口，安装企业应用。

@@ -248,6 +248,8 @@ Describes the parameters used to maintain the relative position between the chil
 | currentLayoutMode             | string               | No  | Yes  | Current layout mode of the child window, which is used to control the UI effect customized by the application. If this parameter is not passed, the default value is an empty string.|
 | parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | No  | Yes  | Callback triggered when the parent window size changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window size changes. By default, this parameter is not passed, and notifications about the parent window size changes cannot be received.|
 | parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | No  | Yes  | Callback triggered when the parent window mode changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window mode changes. By default, this parameter is not passed, and notifications about the parent window mode changes cannot be received.|
+| isIntersectedWidthLimit | boolean | No| Yes| Whether the width of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the width of the child window and that of the bound main window cannot exceed the intersection of the width limits of the two windows. If there is no intersection between the width limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the width of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the width limits of all windows.<br>The value **false** indicates that the width of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.|
+| isIntersectedHeightLimit | boolean | No| Yes| Whether the height of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the height of the child window and that of the bound main window cannot exceed the intersection of the height limits of the two windows. If there is no intersection between the height limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the height of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the height limits of all windows.<br>The value **false** indicates that the height of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.|
 
 ## WindowLayoutMode<sup>(deprecated)</sup>
 
@@ -393,7 +395,7 @@ Minimizes all main windows on a display while keeping one window open. This API 
 | Name  | Type                     | Mandatory| Description          |
 | -------- | ------------------------- | ---- | -------------- |
 | displayId| number                    | Yes  | Display ID. The value must be an integer. Non-integer values are rounded down.|
-| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code [401](../errorcode-universal.md#401-parameter-check-failed) is thrown. If the window ID is greater than 0 but does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Floating-point numbers are rounded down.|
+| excludeWindowId | number              | Yes  | Window ID. You can call [getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window properties, in which **id** is the window ID. If the window ID is less than or equal to 0, or the window ID is null or undefined, error code 401 is thrown. If the window ID is greater than 0 but the window does not exist, error code 1300002 is thrown. If the window ID is greater than 0 but the window exists on another display, all main windows on the specified display are minimized. The value must be an integer. Floating-point numbers are rounded down.|
 
 **Return value**
 
@@ -1257,6 +1259,8 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 
 Creates a subwindow and binds it to the parent window. This API uses a promise to return the result.
 
+Only the main window can be bound as the parent window.
+
 The subwindow is displayed or hidden along with the parent window, but is not destroyed when the parent window is destroyed. The subwindow listens to the lifecycle changes of the parent window through a callback function.
 
 It is recommended that you destroy the created subwindow after the parent window is destroyed.
@@ -1293,7 +1297,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
 | 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
 | 1300003 | This window manager service works abnormally. |
-| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
+| 1300009 | The parent window is invalid. Possible cause: 1. The parent window does not exist or has been destroyed. 2. Invalid window type. Only main windows are supported.|
 
 **Example**
 
@@ -1590,7 +1594,7 @@ promise.then(() => {
 
 hideWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
-Hides this window and plays an animation during the process. This API uses an asynchronous callback to return the result. This API takes effect only for a system window.
+Hides this window and plays an animation during the process. This API uses an asynchronous callback to return the result. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -1632,7 +1636,7 @@ windowClass.hideWithAnimation((err: BusinessError) => {
 
 hideWithAnimation(): Promise&lt;void&gt;
 
-Hides this window and plays an animation during the process. This API uses a promise to return the result. This API takes effect only for a system window.
+Hides this window and plays an animation during the process. This API uses a promise to return the result. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -1672,7 +1676,7 @@ promise.then(() => {
 
 showWithAnimation(callback: AsyncCallback&lt;void&gt;): void
 
-Shows this window and plays an animation during the process. This API uses an asynchronous callback to return the result. This API takes effect only for a system window.
+Shows this window and plays an animation during the process. This API uses an asynchronous callback to return the result. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -1714,7 +1718,7 @@ windowClass.showWithAnimation((err: BusinessError) => {
 
 showWithAnimation(): Promise&lt;void&gt;
 
-Shows this window and plays an animation during the process. This API uses a promise to return the result. This API takes effect only for a system window.
+Shows this window and plays an animation during the process. This API uses a promise to return the result. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -1891,6 +1895,8 @@ Attaches a first-level child window to the main window to maintain a fixed relat
 
 The relative position is represented by the anchor point offset between the child window and the parent window. The child window and the parent window use the same window anchor point.
 
+This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). When this API is called by [independent child windows](../../windowmanager/window-terminology.md#application-window), result code 1300004 will be returned.
+
 > **NOTE**
 >
 > - Only first-level child windows can call this API. The child window must be in floating window mode (that is, the window mode is **window.WindowStatusType.FLOATING**).
@@ -1905,7 +1911,7 @@ The relative position is represented by the anchor point offset between the chil
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, this API does not take effect and no error is reported.
 
 **Parameters**
 
@@ -1964,7 +1970,9 @@ export default class EntryAbility extends UIAbility {
           },
           parentWindowStatusChangeCallback:(type: window.WindowStatusType) => {
             console.info(`Successfully accepted parentWindow status change, statusType: ${type}`);
-          }
+          },
+          isIntersectedWidthLimit: true,
+          isIntersectedHeightLimit: true
         }
         subWindow.attachLayoutToParentWindow(anchorInfo, attachOptions).then(() => {
           console.info("Succeeded in attaching to the main window");
@@ -1985,6 +1993,8 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 
 Detach a first-level child window from the main window to cancel a fixed relative position. This API uses a promise to return the result.
 
+This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). When this API is called by [independent child windows](../../windowmanager/window-terminology.md#application-window), result code 1300004 will be returned.
+
 > **NOTE**
 >
 > - When the child window calls this API, the child window must be in the attached state.
@@ -1999,7 +2009,7 @@ Detach a first-level child window from the main window to cancel a fixed relativ
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device supports freeform windows but is not in the freeform window state, no error is thrown and this API does not take effect until the device is in the freeform window state. If the device does not support freeform windows, this API does not take effect and no error is reported.
 
 **Return value**
 
@@ -2432,6 +2442,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
+**Example**
+
 ```ts
 let isSkip: boolean = true;
 try {
@@ -2445,7 +2457,7 @@ try {
 
 opacity(opacity: number): void
 
-Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the opacity for this window. This API can be used only when you [customize an animation to be played during the display or hiding](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window) of a system window, global floating window, and modal window.
 
 **System API**: This is a system API.
 
@@ -2482,7 +2494,7 @@ try {
 
 scale(scaleOptions: ScaleOptions): void
 
-Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the scale parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window) of a system window, global floating window, and modal window.
 
 **System API**: This is a system API.
 
@@ -2525,7 +2537,7 @@ try {
 
 rotate(rotateOptions: RotateOptions): void
 
-Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the rotation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window) of a system window, global floating window, and modal window.
 
 **System API**: This is a system API.
 
@@ -2569,7 +2581,7 @@ try {
 
 translate(translateOptions: TranslateOptions): void
 
-Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding of a system window](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window).
+Sets the translation parameters for this window. This API can be used only when you [customize an animation to be played during the display or hiding](../../windowmanager/system-window-stage-sys.md#customizing-an-animation-to-be-played-during-the-display-or-hiding-of-a-system-window) of a system window, global floating window, and modal window.
 
 **System API**: This is a system API.
 
@@ -2611,7 +2623,7 @@ try {
 
  getTransitionController(): TransitionController
 
-Obtains the transition animation controller.
+Obtains the transition animation controller. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2643,7 +2655,7 @@ let controller = windowClass.getTransitionController(); // Obtain the transition
 
 setBlur(radius: number): void
 
-Blurs this window.
+Blurs this window. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2680,7 +2692,7 @@ try {
 
 setBackdropBlur(radius: number): void
 
-Blurs the background of this window.
+Blurs the background of this window. This API can be used only for system windows, global floating windows, and modal windows.
 
 The window background refers to the lower-layer area covered by the window, which is the same as the window size.
 
@@ -2722,7 +2734,7 @@ try {
 
 setBackdropBlurStyle(blurStyle: BlurStyle): void
 
-Sets the blur style for the background of this window.
+Sets the blur style for the background of this window. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2759,7 +2771,7 @@ try {
 
 setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): void
 
-Sets the shadow for the window borders.
+Sets the shadow for the window borders. This API can be used only for system windows, application subwindows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2799,7 +2811,7 @@ try {
 
 setCornerRadius(cornerRadius: number): void
 
-Sets the radius of the rounded corners for this window.
+Sets the radius of the rounded corners for this window. This API can be used only for system windows, global floating windows, and modal windows.
 
 **System API**: This is a system API.
 
@@ -2832,45 +2844,6 @@ try {
 }
 ```
 
-### setTouchableAreas<sup>12+</sup>
-
-setTouchableAreas(rects: Array&lt;Rect&gt;): void
-
-Sets the touchable areas for this window. By default, the entire window is touchable. If a touchable area is set, touch events outside this area are transparently transmitted. The setting becomes invalid after the window rectangle changes.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Window.SessionManager
-
-**Parameters**
-
-| Name  | Type                     | Mandatory| Description      |
-| -------- | ------------------------- | ---- | ---------- |
-| rects | Array<[Rect](arkts-apis-window-i.md#rect7)> | Yes  | Touchable areas. The maximum number of touchable areas cannot exceed 10, and each touchable area cannot exceed the window area.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |
-
-**Example**
-
-```ts
-try {
-  windowClass.setTouchableAreas([{left: 100, top: 100, width: 200, height:200},
-    {left: 400, top: 100, width: 200, height:200}]);
-} catch (exception) {
-  console.error(`Failed to set touchable areas. Cause code: ${exception.code}, message: ${exception.message}`);
-}
-```
-
 ### raiseToAppTop<sup>10+</sup>
 
 raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
@@ -2878,6 +2851,8 @@ raiseToAppTop(callback: AsyncCallback&lt;void&gt;): void
 Raises the application child window to the top layer of the application. This API uses an asynchronous callback to return the result.
 
 Before calling this API, ensure that the child window has been created and [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed.
+
+This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-terminology.md#application-window).
 
 **System API**: This is a system API.
 
@@ -3095,6 +3070,8 @@ Raises a child window above a target child window. This API uses an asynchronous
 
 Before calling this API, ensure that the child window to raise and the target child window have been created and [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed for each.
 
+This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-terminology.md#application-window).
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Window.SessionManager
@@ -3169,6 +3146,8 @@ raiseAboveTarget(windowId: number): Promise&lt;void&gt;
 Raises a child window above a target child window. This API uses a promise to return the result.
 
 Before calling this API, ensure that the child window to raise and the target child window have been created and [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed for each.
+
+This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-terminology.md#application-window).
 
 **System API**: This is a system API.
 
@@ -3414,6 +3393,8 @@ Sets whether to enable a child window to raise itself by click. This API uses an
 Generally, when a user clicks a child window, the child window is displayed on the top. If the **enable** parameter is set to **false**, the child window is not displayed on the top when being clicked.
 
 Before calling this API, ensure that the child window has been created and [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed.
+
+This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-terminology.md#application-window).
 
 **System API**: This is a system API.
 
@@ -3717,7 +3698,7 @@ Sets whether the window uses the default density of the current screen. In the s
 
 If this API is not called, the default density is not used.
 
-If this API, [setDefaultDensityEnabled(true)](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12), and [setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15) are all called, the setting from the last called API will be applied.
+If this API, [setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12), and [setCustomDensity](arkts-apis-window-WindowStage.md#setcustomdensity15) are all called, the setting from the last called API will be applied.
 
 **System API**: This is a system API.
 
@@ -4004,7 +3985,9 @@ try {
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
 
-Shows or hides the maximize, minimize, and split-screen buttons on the title bar of the main window.
+Shows or hides the maximize, minimize, and split-screen buttons on the title bar.
+
+This API can be called only by the main window and [independent child windows](../../windowmanager/window-terminology.md#application-window). When this API is called by other windows, result code 1300004 will be returned.
 
 This API takes effect only for the title bar buttons (maximize, minimize, and split-screen) that are available in the current scenario.
 
@@ -4923,5 +4906,3 @@ Describes the parameters for creating a window for a UI ServiceExtensionAbility.
 | windowRect   | [Rect](arkts-apis-window-i.md#rect7) | No| No  | Rectangular area of the window.|
 | subWindowOptions   | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | No| Yes| Parameters used for creating a child window. There is no default value. This parameter is mandatory when **windowAttribute** is set to **SUB_WINDOW**. Otherwise, the window fails to be created.|
 | systemWindowOptions   | [SystemWindowOptions](#systemwindowoptions14) | No| Yes| Parameters for creating a system window. There is no default value. This parameter is mandatory when **windowAttribute** is set to **SYSTEM_WINDOW**. Otherwise, the window fails to be created.|
-
-<!--no_check-->

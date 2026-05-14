@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Enable via ACL" is not involved for permissions of the normal level.
+> "Certificate-based authorization" is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -669,7 +669,7 @@ With this permission, the application can apply HDR brightening effects to compo
 
 **Supported devices**: general devices
 
-**Valid since**: 24
+**Since**: 24
 
 ## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
@@ -683,7 +683,21 @@ With this permission, the application can query available types of pluggable emb
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
-**Valid since**: 24
+**Since**: 24
+
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+Allows an application to query the encryption and decryption status of a volume.
+
+With this permission, the application can obtain the encryption and decryption status of a volume and subscribe to system public events related to changes in the encryption and decryption status of a volume.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.STYLUS_FRAME_BOOST
 
@@ -695,6 +709,6 @@ With this permission, the application can improve handwriting performance, ensur
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
