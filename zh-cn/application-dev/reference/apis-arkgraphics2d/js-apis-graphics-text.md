@@ -2896,7 +2896,7 @@ import { text, drawing } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit'
  
 function textFunc(pixelmap: PixelMap) {
-  let canvas = new drawing.Canvas(pixelMap);
+  let canvas = new drawing.Canvas(pixelmap);
   let textData = "Hello World";
   let myTextStyle: text.TextStyle = {
     color: { alpha: 255, red: 255, green: 0, blue: 0 },
