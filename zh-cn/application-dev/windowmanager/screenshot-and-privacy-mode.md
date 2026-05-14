@@ -519,7 +519,7 @@ struct Index {
     } catch (err) {
       this.imageWidth = 0;
       this.imageHeight = 0;
-      this.statusText = `${source} success, but getImageInfoSync filed: ${JSON.stringify(err)}`;
+      this.statusText = `${source} success, but getImageInfoSync failed: ${JSON.stringify(err)}`;
     }
 
     hilog.info(DOMAIN, 'screenshotSample', this.statusText);
