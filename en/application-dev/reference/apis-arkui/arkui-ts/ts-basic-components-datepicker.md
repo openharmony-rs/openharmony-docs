@@ -417,8 +417,6 @@ struct DatePickerExample {
 }
 ```
 
-![datePicker](figures/DatePickerApi10.gif)
-
 ### Example 2: Setting the Text Style
 
 This example shows how to customize the text style using [disappearTextStyle](#disappeartextstyle10), [textStyle](#textstyle10), and [selectedTextStyle](#selectedtextstyle10).
