@@ -159,6 +159,10 @@
 7. 停止录制，调用[stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1)接口，此时进入stopped状态。
 
    <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   await this.avRecorder?.stop();
+   ```
 
 8. 重置资源，调用[reset](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#reset9-1)接口，重新进入idle状态，允许重新配置录制参数。
 
