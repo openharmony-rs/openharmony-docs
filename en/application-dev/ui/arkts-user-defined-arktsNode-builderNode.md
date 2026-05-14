@@ -1826,7 +1826,7 @@ struct Page2 {
 }
 ```
 
-![inheritFreezeOptions](figures/V2Routing.gif)
+
 
 In the preceding example:
 
@@ -2441,7 +2441,7 @@ struct FreezeBuildNode {
 }
 ```
 
-![inheritFreezeOptions](figures/V2RepeatTabs.gif)
+
 
 In the preceding example:
 

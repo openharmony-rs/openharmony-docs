@@ -26,7 +26,7 @@ The system distinguishes between system soft keyboards and custom keyboards. The
 
 The following demonstrates soft keyboard behavior during input field tapping, double-tapping, or long-pressing.
 
-![click](figures/click.gif)
+
 
 ### Programmatic Focus
 
@@ -131,7 +131,7 @@ struct Index {
 }
 ```
 
-![keyboard_textInput_user_close](figures/keyboard_textInput_user_close.gif)
+
 
 ### Text Dragging
 
@@ -167,7 +167,7 @@ struct Index {
 
 Swipe gestures hide the soft keyboard. The figure below demonstrates this dismissal scenario.
 
-![keyboard_textInput_gesture_return](figures/keyboard_textInput_gesture_return.gif)
+
 
 ### Page Navigation
 
@@ -294,7 +294,7 @@ struct textInputControllerCloseKeyboard {
   }
 }
 ```
-![stopEditing](figures/stopEditing.gif)
+
 
 ### Focus Transfer
 

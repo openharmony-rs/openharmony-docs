@@ -11,9 +11,9 @@ The digital signature can be used to verify whether the data came from the state
 
 This topic describes the supported algorithms and specifications for signing and signature verification.
 
-> **NOTE**
->
-> Currently, the C/C++ APIs support signature verification but not signing.
+ > **NOTE**
+ > 
+ > Currently, C/C++ APIs support signature verification since API version 12 and support signing since API version 20.
 
 ## RSA
 
@@ -34,7 +34,7 @@ The Crypto framework supports the following padding modes for RSA signing and si
   | md | MD algorithm.| 
   | mgf | Mask generation function. Currently, only MGF1 is supported.| 
   | mgf1_md | MD algorithm used in MGF1.| 
-  | saltLen | Salt length, in bites.| 
+  | saltLen | Salt length, in bytes.| 
   | trailer_field | Integer used for encoding. The value can only be **1**.| 
 
 > **NOTE**
@@ -70,7 +70,7 @@ As indicated by the last row in the preceding table, you can specify the RSA key
 
 When creating an RSA asymmetric signing (**Sign**) or signature verification (**Verify**) instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the asymmetric key type, padding mode PSS, MD, and mask digest with a vertical bar (|) in between.
 
-In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. For example, if the asymmetric key type is **RSA2048**, the padding mode is **PSS**, the MD algorithm is **SHA256**, and the mask digest is **MGF1_SHA256**, the string parameter is **RSA2048|PSS|SHA256|MGF1\_SHA256**.
+In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. For example, if the asymmetric key type is **RSA2048**, the padding mode is **PSS**, the MD algorithm is **SHA256**, and the mask digest is **MGF1_SHA256**, the string parameter is **RSA2048|PSS|SHA256|MGF1_SHA256**.
 
 > **NOTE**
 >
@@ -134,13 +134,13 @@ The following table lists the parameters that can be set or obtained when the PS
 | saltLen | PSS_SALT_LEN_NUM | √ | √ | 
 | trailer_field | PSS_TRAILER_FIELD_NUM | √ | - | 
 
-### Signing Mode OnlySign
+### OnlySign
 
 The Crypto framework provides RSA signing without MD.
 
 When creating an RSA asymmetric signing (**Sign**) instance, you need to specify the signing specifications in a string parameter. The string parameter consists of the asymmetric key type, padding mode, MD algorithm, and signing mode with a vertical bar (|) in between.
 
-In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. For example, if the asymmetric key type is **RSA2048**, the padding mode is **PKCS1**, the MD algorithm is **SHA256**, and the signing mode is **OnlySign**, the string parameter is **RSA2048|PKCS1|SHA256|OnlySign**.
+In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. For example, if the asymmetric key type is **RSA2048**, padding mode is **PKCS1**, MD algorithm is **SHA256**, and signing mode is **OnlySign**, the string parameter is **RSA2048|PKCS1|SHA256|OnlySign**.
 
 > **NOTE**
 >
@@ -170,7 +170,7 @@ The Crypto framework provides the functionality of recovering the original data 
 
 When creating an RSA signature verification (**Verify**) instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the asymmetric key type, padding mode, MD algorithm, and signature verification mode with a vertical bar (|) in between.
 
-In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. For example, if the asymmetric key type is **RSA2048**, the padding mode is **PKCS1**, the MD algorithm is **SHA256**, and the signature verification mode is **Recover**, the string parameter is **RSA2048|PKCS1|SHA256|Recover**.
+In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. For example, if the asymmetric key type is **RSA2048**, padding mode is **PKCS1**, MD algorithm is **SHA256**, and signature verification mode is **Recover**, the string parameter is **RSA2048|PKCS1|SHA256|Recover**.
 
 | Asymmetric Key Type| Padding Mode| MD Algorithm| Signing Mode| API Version| 
 | -------- | -------- | -------- | -------- | -------- | 
@@ -190,11 +190,11 @@ As indicated by the last row in the preceding table, you can specify the RSA key
 
 Elliptic Curve Digital Signature Algorithm (ECDSA) is a digital signature algorithm (DSA) based on Elliptic Curve Cryptography (ECC). Compared with the ordinary Discrete Logarithm Problem (DLP) and Integer Factorization Problem (IFP), the ECC provides a higher unit bit strength than other public-key cryptographic systems.
 
-The Crypto Framework provides ECDSA signing and signature verification capabilities that combine a variety of elliptic curves and digest algorithms.
+The Crypto framework provides ECDSA signing and signature verification capabilities that combine a variety of elliptic curves and MD algorithms.
 
 When creating an ECDSA asymmetric signing (**Sign**) or signature verification (**Verify**) instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the asymmetric key type and MD with a vertical bar (|) in between.
 
-In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. For example, if the asymmetric key type is **ECC224** and the MD algorithm is **SHA256**, the string parameter is **ECC224|SHA256**.
+In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. For example, if the asymmetric key type is **ECC224** and MD algorithm is **SHA256**, the string parameter is **ECC224|SHA256**.
 
 | Asymmetric Key Type| MD| API Version| 
 | -------- | -------- | -------- |
