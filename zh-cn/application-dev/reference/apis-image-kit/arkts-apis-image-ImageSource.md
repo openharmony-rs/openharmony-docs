@@ -785,7 +785,7 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
 | offset      | number              | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | number              | 是   | 当前buffer的长度。单位： 字节（byte）。            |
+| length     | number              | 是   | 当前buffer的长度。单位：字节（byte）。            |
 
 **返回值：**
 
