@@ -89,6 +89,17 @@
    ArkTS-Sta：
 
    <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   this.avRecorder?.onStateChange((state, reason) => {
+     console.info(`AVRecorder state is changed to ${state}, reason: ${reason}`);
+     // 用户可以在此补充状态发生切换后想要进行的动作。
+     onStateChanged(state, reason);
+   });
+   this.avRecorder?.onError((error) => {
+     console.error(`Error occurred in avRecorder, error code: ${error.code}, message: ${error.message}`);
+   });
+   ```
 
 3. 配置视频录制参数，调用[prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1)接口，此时进入prepared状态。
 
