@@ -103,6 +103,8 @@ import { accessibility } from '@kit.AccessibilityKit';
 | TYPE_FOUR_FINGER_SWIPE_RIGHT  |68| 表示四指向右滑动的手势。|
 | TYPE_PAGE_ACTIVE<sup>23+</sup> |69| 表示页面发生变化。 |
 | TYPE_NOTIFICATION_UPDATE |70| 表示通知发生变化。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TYPE_FOCUS_INVISIBLE |71| 表示焦点变为不可见状态。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TYPE_ONE_FINGER_DOUBLE_TAP |72| 表示单指双击的手势。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AccessibilityAction
 
@@ -138,6 +140,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | CONTROL_CENTER             | 19   | 显示控制中心。                  |
 | SPAN_CLICK                 | 20   | 对局部文本进行点击操作。             |
 | INJECT_ACTION              | 21   | 表示注入动作。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| EXECUTE_CUSTOM_ACTION      | 22   | 执行自定义操作。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。    |
 
 ## FocusMoveResultCode<sup>23+</sup>
 
@@ -177,3 +180,21 @@ import { accessibility } from '@kit.AccessibilityKit';
 | CLICK                      | 1    | 表示注入单击动作。         |
 | DOUBLE_CLICK               | 2    | 表示注入双击动作。         |
 | LONG_CLICK                 | 3    | 表示注入长按动作。         |
+
+## AccessibilityFocusScene
+
+表示无障碍聚焦的场景参数的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 名称                        | 值   | 说明                     |
+| -------------------------- | ---- | ------------------------ |
+| HOVER_FOCUS                |  1 | 表示当前聚焦的场景为点击聚焦。         |
+| SWIPE_FOCUS                |  2 | 表示当前聚焦的场景为滑动聚焦。         |
+| SCROLL_FOCUS               |  3 | 表示当前聚焦的场景为滚动聚焦。         |
