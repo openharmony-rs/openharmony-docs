@@ -2705,7 +2705,7 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 | NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | 普通文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23          |
 | NOTIFICATION_CONTENT_LONG_TEXT    | 1          | 长文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23         |
 | NOTIFICATION_CONTENT_PICTURE      | 2          | 图片类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23          |
-| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23|
+| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23|
 | NOTIFICATION_CONTENT_MULTILINE    | 4          | 多行文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23        |
 | NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | 系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
 | NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | 普通实况窗类型通知。仅系统应用可用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23  |
