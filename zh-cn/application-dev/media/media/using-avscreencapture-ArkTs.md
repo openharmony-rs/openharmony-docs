@@ -55,13 +55,12 @@
     this.screenCapture = await media.createAVScreenCaptureRecorder();
     ```
     ArkTs-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L29) -->
     ```javascript
     // 声明一个AVScreenCaptureRecorder类型的变量。
     private screenCapture?: media.AVScreenCaptureRecorder;
     ```
     ArkTs-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L54) -->
+    <!-- @[create_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
     ```javascript
     // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
     this.screenCapture = await media.createAVScreenCaptureRecorder();
@@ -120,7 +119,7 @@
     })
     ```
     ArkTS-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L67) -->
+    <!-- @[callback_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
     ```javascript
     // 监听屏幕捕获的状态更改
     this.screenCapture?.onStateChange((infoType: media.AVScreenCaptureStateCode) => {
@@ -208,20 +207,22 @@
     };
     ```
     ArkTS-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L176) -->
+    <!-- @[get_file_fd](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
     ```javascript
-    // 获取文件fd
-    this.fileName = systemDateTime.getTime(true).toString() + '.mp4';
-    this.path = filesDir + '/' + this.fileName;
-    try {
-      this.file = fs.openSync(this.path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    } catch (error) {
-      let err = error as BusinessError;
-      hilog.error(0x0000, 'testTag', `openSync fail. message = ${err.message}`);
+    public updateFileFd(filesDir: string): void {
+      // 获取文件fd
+      this.fileName = systemDateTime.getTime(true).toString() + '.mp4';
+      this.path = filesDir + '/' + this.fileName;
+      try {
+        this.file = fs.openSync(this.path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      } catch (error) {
+        let err = error as BusinessError;
+        hilog.error(0x0000, 'testTag', `openSync fail. message = ${err.message}`);
+      }
     }
     ```
     ArkTS-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L176) -->
+    <!-- @[set_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
     ```javascript
     // 配置屏幕录制参数
     let displayInfo: display.Display | undefined = await display.getDefaultDisplaySync();
@@ -251,9 +252,9 @@
     await this.screenCapture.init(this.captureConfig);
     ```
     ArkTS-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L176) -->
+    <!-- @[init_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
     ```javascript
-    await this.screenCapture?.init(this.captureConfig);
+    await this.screenCapture?.init(captureConfig);
     ```
 
 6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
@@ -270,7 +271,7 @@
     await this.screenCapture.startRecording();
     ```
     ArkTS-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L144) -->
+    <!-- @[start_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
     ```javascript
     await this.screenCapture?.startRecording();
     ```
@@ -286,7 +287,7 @@
       await this.screenCapture.stopRecording();
       ```
       ArkTS-Sta:
-      <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L161) -->
+      <!-- @[stop_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
       ```javascript
       await this.screenCapture?.stopRecording();
       ```
@@ -298,7 +299,7 @@
     await this.screenCapture.release();
     ```
     ArkTS-Sta:
-    <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets#L164) -->
+    <!-- @[release_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
     ```javascript
     await this.screenCapture?.release();
     ```
