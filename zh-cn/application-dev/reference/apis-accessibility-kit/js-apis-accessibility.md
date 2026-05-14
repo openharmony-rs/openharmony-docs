@@ -2336,7 +2336,7 @@ setSeniorModeStateForSelf(state: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型                           | 必填   | 说明                                    |
 | -------- | ---------------------------- | ---- | ------------------------------------- |
-| state | boolean | 是    | 设置应用“长辈模式”状态。 |
+| state | boolean | 是    | 设置应用“长辈模式”状态，true表示开启，false表示未开启。 |
 
 **返回值：**
 
