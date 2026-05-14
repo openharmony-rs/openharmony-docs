@@ -1360,7 +1360,7 @@ struct MyComponent {
 
 ArkTS-Dyn: getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined
 
-ArkTS-Sta: getNavigationInfoByUniqueId(id: long): observer.NavigationInfo | undefined
+ArkTS-Sta: getNavigationInfoByUniqueId(id: int): observer.NavigationInfo | undefined
 
 提供getNavigationInfoByUniqueId接口通过组件的uniqueId获取该节点对应的Navigation页面信息。
 1. 当uniqueId对应的节点在Navigation节点中，返回其对应的Navigation信息；
@@ -1378,7 +1378,7 @@ ArkTS-Sta: getNavigationInfoByUniqueId(id: long): observer.NavigationInfo | unde
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| id | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 节点对应的UniqueId。                          |
+| id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 节点对应的UniqueId。                          |
 
 **返回值：**
 
