@@ -624,7 +624,7 @@ async function exifMetadataClone(context: common.UIAbilityContext) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -704,7 +704,7 @@ async function exifMetadataGetBlob(context: common.UIAbilityContext) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
