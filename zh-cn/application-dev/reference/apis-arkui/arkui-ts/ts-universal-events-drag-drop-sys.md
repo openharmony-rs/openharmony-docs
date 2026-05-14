@@ -363,3 +363,4 @@ struct FollowHandMorphDemo {
   }
 }
 ```
+![morph_drag.gif](figures/morph_drag.gif)
