@@ -115,7 +115,7 @@ if (ret != AV_ERR_OK || encoder == nullptr) {
 
 ### 配置编码参数与前处理参数
 
-编码器参数配置[视频编码Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
+编码器参数配置参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
 
 ```cpp
 OH_AVFormat *format = OH_AVFormat_Create();
