@@ -2024,8 +2024,8 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| width    | number | 是   | 图像的默认宽度。单位：像素（px）。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
-| height   | number | 是   | 图像的默认高度。单位：像素（px）。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
+| width    | number | 是   | 图像的默认宽度。单位为像素（px）。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
+| height   | number | 是   | 图像的默认高度。单位为像素（px）。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
 | format   | number | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。  |
 | capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
@@ -2059,8 +2059,8 @@ createImageCreator(width: number, height: number, format: number, capacity: numb
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| width    | number | 是   | 图像的默认宽度。单位：px。       |
-| height   | number | 是   | 图像的默认高度。单位：px。       |
+| width    | number | 是   | 图像的默认宽度。单位为像素（px）。       |
+| height   | number | 是   | 图像的默认高度。单位为像素（px）。       |
 | format   | number | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
 | capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 

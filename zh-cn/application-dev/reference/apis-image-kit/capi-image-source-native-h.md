@@ -502,7 +502,7 @@ Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| float rotate | 旋转角度，单位为deg，默认值为0。 |
+| float rotate | 旋转角度，单位为角度（deg），默认值为0。取值范围为[0, 360]。 |
 
 **返回：**
 
