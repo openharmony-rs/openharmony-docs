@@ -1227,7 +1227,6 @@ invalidate(): void
 >
 >  textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
 
-
 ### constructor
 
 constructor(value?: ParagraphStyleInterface)
