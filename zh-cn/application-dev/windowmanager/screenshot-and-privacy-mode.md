@@ -554,7 +554,7 @@ struct Index {
       const pixelMap = await screenshot.capture({ displayId });
       this.updatePreview(pixelMap, `screenshot.capture(displayId=${displayId})`);
     } catch (err) {
-      this.statusText = `screenshot.capture failed: $JSON.stringify(err)}`;
+      this.statusText = `screenshot.capture failed: ${JSON.stringify(err)}`;
       hilog.error(DOMAIN, 'screenshotSample', this.statusText);
     }
   }
