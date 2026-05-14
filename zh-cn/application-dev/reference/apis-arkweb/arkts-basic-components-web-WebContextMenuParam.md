@@ -8,7 +8,7 @@
 
 实现长按页面元素或鼠标右键弹出的菜单信息。示例代码参考[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)。
 
-支持使用@ohos.transfer系统对象转换工具进行动静态类型转换。
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
 
 > **说明：**
 >

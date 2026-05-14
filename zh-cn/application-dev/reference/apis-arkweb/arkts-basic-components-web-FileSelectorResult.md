@@ -8,7 +8,7 @@
 
 通知Web组件的文件选择结果。当Web组件中的页面发起文件选择请求时，通过本类返回选择的文件列表。示例代码参考[onShowFileSelector](./arkts-basic-components-web-events.md#onshowfileselector9)。
 
-支持使用@ohos.transfer系统对象转换工具进行动静态类型转换。
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
 
 > **说明：**
 >
