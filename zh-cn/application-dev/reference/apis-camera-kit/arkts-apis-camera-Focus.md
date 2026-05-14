@@ -213,8 +213,6 @@ ArkTS-Dyn: getFocalLength(): number
 
 ArkTS-Sta: getFocalLength(): double
 
-getFocalLength(): number
-
 查询当前的焦距值。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
