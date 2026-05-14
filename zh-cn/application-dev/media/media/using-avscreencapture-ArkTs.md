@@ -223,13 +223,14 @@
     ```
     ArkTS-Sta:
     <!-- @[set_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-    ```javascript
+    
+    ``` TypeScript
     // 配置屏幕录制参数
     let displayInfo: display.Display | undefined = await display.getDefaultDisplaySync();
     if (displayInfo == undefined || displayInfo.width == undefined || displayInfo.height == undefined) {
       return;
     }
-
+    
     let captureConfig: media.AVScreenCaptureRecordConfig = {
       // 开发者可以根据自己的需要设置宽度和高度
       frameWidth: displayInfo.width.toInt(),
