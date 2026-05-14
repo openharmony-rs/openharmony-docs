@@ -5,7 +5,7 @@
 <!--Owner: @jayleehw-->
 <!--Designer: @jayleehw-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 - [Ability Kit简介](abilitykit-overview.md)
@@ -43,6 +43,7 @@
     - [组件启动规则（Stage模型）](component-startup-rules.md)
     - [应用启动框架AppStartup](app-startup.md)
     - [应用预加载](preload-application.md)
+    - [应用重启](app-restart.md)
     - [获取应用异常退出原因](ability-exit-info-record.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->
