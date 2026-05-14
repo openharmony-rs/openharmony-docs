@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Designer: @nyankomiya; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -54,7 +54,7 @@
 
 ## 旋转策略及设备差异性
 
-应用可以通过在[model.json5配置文件](../quick-start/module-configuration-file.md)中配置"orientation"字段或者在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的[orientation字段](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
+应用可以通过在[module.json5配置文件](../quick-start/module-configuration-file.md)中配置"orientation"字段或者在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的[orientation字段](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
 
 系统提供了18种的方向类型枚举，以应对不同场景的需要。根据使用场景的不同，这些方向类型可分为：固定方向类型、自动旋转方向类型、临时方向类型和其他方向类型。
 
@@ -136,7 +136,7 @@
 
 这3种方向类型是在以下特定场景下使用的：
 
-- “UNSPECIFIED”是未定义方向类型，即当应用既没有在model.json5文件设置，也没有在运行时调用setPreferredOrientation()设置时，系统默认应用使用该类型。此时，应用的显示方向由系统判定。通常直板机上默认竖屏显示且不支持旋转；平板上支持旋转到四个方向，且受控制中心系统旋转锁定开关控制。
+- “UNSPECIFIED”是未定义方向类型，即当应用既没有在module.json5文件设置，也没有在运行时调用setPreferredOrientation()设置时，系统默认应用使用该类型。此时，应用的显示方向由系统判定。通常直板机上默认竖屏显示且不支持旋转；平板上支持旋转到四个方向，且受控制中心系统旋转锁定开关控制。
 
 - “LOCKED”是锁定模式，通常用于应用拉起应用场景。设置该策略的应用，被其他应用拉起时，保持和前一个应用相同的方向。此策略生效时，应用的方向也可能因为应用的切换等原因而改变。
 
