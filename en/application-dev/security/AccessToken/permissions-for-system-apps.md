@@ -4266,6 +4266,20 @@ Allows an application to access the application lock.
 
 **Valid since**: 13
 
+## ohos.permission.ACCESS_CAR_CONTROL
+
+Allows an application to access or start the vehicle control interface.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 13
+
 ## ohos.permission.ACCESS_APP_SINGLE_PERMISSION_MANAGEMENT
 
 Allows an application to launch a page for modifying a specific permission of another application.
