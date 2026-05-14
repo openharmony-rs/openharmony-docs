@@ -172,6 +172,16 @@
    ArkTS-Sta：
 
    <!-- @[get_input_surface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   let surfaceId: string | undefined = undefined;
+   try {
+     surfaceId = await this.avRecorder?.getInputSurface();
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to get input surface, error code: ${err.code}, message: ${err.message}`);
+   }
+   ```
 
 5. 初始化视频数据输入源。该步骤需要在输入源模块完成，以相机为例，需要创建录像输出流，包括创建Camera对象、获取相机列表、创建相机输入流等，相机详细步骤请参考[相机-录像方案](../camera/camera-recording.md)。
 
