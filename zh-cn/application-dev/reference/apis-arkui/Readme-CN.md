@@ -548,6 +548,7 @@
     <!--DelEnd-->
   - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
+    - [WithEnv：环境变量容器](arkui-ts/ts-container-with-env.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
     - [像素单位](arkui-ts/ts-pixel-units.md)
