@@ -196,6 +196,8 @@ shaderStyle(shader: ShaderStyle | undefined)
 > **说明：**
 >
 >  当同时设置shaderStyle和[strokeWidth](#strokewidth20)时，shaderStyle不生效。
+>
+> shaderStyle的优先级高于[fontColor](#fontColor10)。
 
 **起始版本：** 26.0.0
 
