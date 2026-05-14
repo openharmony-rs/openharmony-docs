@@ -88,7 +88,7 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clearFocus' | 'clearSelection' |
   'click' | 'longClick' | 'cut' | 'copy' | 'paste' | 'select' | 'setText' | 'delete' |
   'scrollForward' | 'scrollBackward' | 'setSelection' | 'setCursorPosition' | 'home' |
-  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction'
+  'back' | 'recentTask' | 'notificationCenter' | 'controlCenter' | 'common' | 'injectAction' | 'executeCustomAction'
 
 应用所支持的目标动作，需要配置参数的目标动作已在描述中标明。
 
@@ -124,6 +124,7 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'controlCenter'       | 表示打开控制中心操作。   |
 | 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。   |
 | 'injectAction'          | 表示注入动作，需配置参数injectActionType。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<br>**起始版本：** 26.0.0   |
 
 ## Capability
 
@@ -545,7 +546,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |
 'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |
 'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |
-'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate'
+'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive' | 'notificationUpdate' | 'focusInvisible'
 
 无障碍事件类型。
 
@@ -575,6 +576,7 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
 | 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。 |
 | 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**起始版本：** 26.0.0 |
+| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<br>**起始版本：** 26.0.0 |
 
 ## TextMoveUnit
 
