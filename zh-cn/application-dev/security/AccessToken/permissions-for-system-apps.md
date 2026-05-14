@@ -6109,7 +6109,6 @@
 
 **起始版本**：26.0.0
 
-
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
 允许系统应用读写地图数据。
