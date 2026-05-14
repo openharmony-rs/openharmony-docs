@@ -143,6 +143,35 @@
    ArkTS-Sta：
 
    <!-- @[prepare_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   public async prepareAudioRecorder(context: common.Context): Promise<void> {
+     let path: string = context.filesDir + 'audio_example.m4a';
+     let file: fileIo.File = await fileIo.open(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+     this.fileFd = file.fd;
+   
+     let avRecorderConfig: media.AVRecorderConfig = {
+       audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // 音频源类型。
+       profile: {
+         audioBitrate: 112000, // 音频比特率。
+         audioChannels: 2, // 音频声道数。
+         audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
+         audioSampleRate: this.audioSampleRate, // 音频采样率。
+         fileFormat: media.ContainerFormatType.CFT_MPEG_4A // 封装格式。
+       },
+       url: 'fd://' + file.fd.toString()
+     };
+   
+     try {
+       if (this.avRecorder?.state === 'idle' || this.avRecorder?.state === 'stopped') {
+         await this.avRecorder?.prepare(avRecorderConfig);
+       }
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+     }
+   }
+   ```
 
 4. 开始录制，调用[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9-1)接口，此时进入started状态。
 
