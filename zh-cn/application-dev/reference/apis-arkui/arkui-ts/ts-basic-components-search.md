@@ -242,6 +242,8 @@ shaderStyle(shader: ShaderStyle | undefined)
 > **说明：**
 >
 >  当同时设置shaderStyle和[strokeWidth](#strokewidth20)时，shaderStyle不生效。
+>
+> shaderStyle的优先级高于[fontColor](#fontcolor10)。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -257,7 +259,7 @@ shaderStyle(shader: ShaderStyle | undefined)
 
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| shader         | [ShaderStyle](ts-text-common.md#shaderstyle20) \| undefined | 是 | 文本着色器效果。<br/>值为undefined时，重置为默认值，无任何渐变效果。 |
+| shader         | [ShaderStyle](ts-text-common.md#shaderstyle20) \| undefined | 是 | 文本着色器效果。<br/>值为undefined时，无渐变效果。 |
 
 ### copyOption<sup>9+</sup>
 
