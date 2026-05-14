@@ -12642,6 +12642,7 @@ async function example(context: Context) {
 | ARCHITECTURE<sup>23+</sup> |  15 | ARCHITECTURE表示建筑照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | LANDSCAPE<sup>23+</sup> |  16 | LANDSCAPE表示风景照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
+
 ## RecommendationOptions<sup>11+</sup>
 
 图片推荐选项（基于图片数据分析结果，依赖设备适配）。
