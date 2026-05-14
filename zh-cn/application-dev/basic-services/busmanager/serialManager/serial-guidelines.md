@@ -127,8 +127,8 @@
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import serial from '@ohos.busManager.serial';
-   import { BusinessError } from '@ohos.base';
+   import serial from '@ohos.busManager.serial'
+   import { BusinessError } from '@ohos.base'
    ```
 
 2. 获取串口设备列表。
