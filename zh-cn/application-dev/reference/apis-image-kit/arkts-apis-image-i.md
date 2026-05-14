@@ -188,7 +188,7 @@ PixelMap的初始化选项。
 
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
-| maxSize<sup>12+</sup> | [Size](#size) | 否   | 否   | 最大编码尺寸。默认值是（0, 0）。   |
+| maxSize<sup>12+</sup> | [Size](#size) | 否   | 否   |  最大编码尺寸。当指定有效的width或height（>0）时，原图尺寸超过限制将保持原宽高比进行缩放，确保图像尺寸不超过该边界。<br>默认值为 { width: 0, height: 0 }，表示不限制编码尺寸。 |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 否  | 采用的缩放算法。默认值是AntiAliasingLevel.NONE。 |
 
 ## PackingOption
@@ -205,9 +205,9 @@ PixelMap的初始化选项。
 | desiredDynamicRange<sup>12+</sup> | [PackingDynamicRange](arkts-apis-image-e.md#packingdynamicrange12) | 否   | 是   | 目标动态范围。默认值为SDR。 |
 | needsPackProperties<sup>12+</sup> | boolean | 否   | 是   | 是否需要编码图片属性信息，例如EXIF。true表示需要，false表示不需要。默认值为false。 |
 | maxEmbedThumbnailDimension | number | 否 | 是 | 用于指定编码过程中生成缩略图的最大边长（宽和高中较大的那一边），较短的一边会根据长边的缩放比例进行缩放。此参数仅在needsPackProperties设置为true时有效。<br>该值应为整数，默认值为0。<br>若未指定此参数，或根据该尺寸计算出生成的缩略图宽/高为0，则编码过程中不会生成缩略图。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| backgroundColor<sup>12+</sup> | number | 否   | 是   | 透明度区域显示的背景颜色。当图片像素为RGBA格式，但编码的目标格式不支持透明度（"image/jpeg"或"image/heif）时，可指定背景颜色（0xRRGGBB），默认值为 0（黑色）。<br>**颜色范围：** 0x000000-0xFFFFFF |
-| sizeLimit<sup>12+</sup> | PackingSizeLimit | 否   | 是   | 编码图像的最大尺寸限制。如果输入的图像宽或者高超过该限制，将保持宽高比进行缩小。默认值为不限制。 |
-| needsPackGPS<sup>12+</sup> | boolean | 否   | 是   | 是否需要编码图片时去除GPS隐私信息。true表示需要，false表示不需要。默认值为false。 |
+| backgroundColor<sup>12+</sup> | number | 否   | 是   | 用于指定编码过程中透明区域填充的背景颜色。当图片像素为RGBA_8888格式，且编码的目标格式不支持透明度（如"image/jpeg"或"image/heif）时，透明区域将填充为指定背景颜色（格式：0xRRGGBB），默认值为 0（黑色）。<br>**颜色范围：** 0x000000-0xFFFFFF |
+| sizeLimit<sup>12+</sup> | PackingSizeLimit | 否   | 是   | 用于指定编码输出图像的最大尺寸限制。<br>当原图宽度或高度超过最大尺寸限制时，保持宽高比不变进行等比例缩小，确保输出图像尺寸不超过指定边界。<br>缩放过程由 level 参数控制采用的缩放算法。<br>单位为像素（px）。<br>参数规则：<br>- maxSize = { 0, 0 }：不限制尺寸，按原图尺寸编码<br>- maxSize.width > 0：限制最大宽度，高度不限<br>- maxSize.height > 0：限制最大高度，宽度不限<br>- maxSize.width > 0 且 maxSize.height > 0：宽高同时限制<br>默认值： { maxSize: { width: 0, height: 0 }, level: AntiAliasingLevel.NONE } |
+| needsPackGPS<sup>12+</sup> | boolean | 否   | 是   | 是否在编码过程中保留GPS隐私信息。<br>true：表示保留GPS信息，不进行隐私处理。<br>false：表示移除GPS信息（仅在源图像包含EXIF且needsPackProperties设置为true时生效）。默认值为true。 |
 
 ## PackingOptionsForSequence<sup>18+</sup>
 
