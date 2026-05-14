@@ -456,7 +456,7 @@
 - 通过注册固定的captureReady回调函数获取监听可拍下一张结果，photoOutput创建成功时即可监听，当下一张可拍时触发，该事件返回结果为下一张可拍的相关信息。
 
   <!-- @[capture_ready](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-   
+  
   ``` TypeScript
   photoOutput.on('captureReady', (err: BusinessError) => {
     if (err !== undefined && err.code !== 0) {
