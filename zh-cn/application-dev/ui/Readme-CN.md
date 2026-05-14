@@ -294,7 +294,7 @@
   - 使用文本<!--arkts-build-text-ndk-->
       - [使用Text组件](ndk-use-text-component.md)
       - [使用属性字符串](ndk-styled-string.md)
-      - [输入框文本事件监听](ndk-textarea-event.md)
+      - [添加输入框文本事件监听](ndk-textarea-event.md)
   - 使用选择类组件<!--arkts-build-picker-ndk-->
       - [使用滑动选择器Picker](ndk-picker.md)
   - [显示图片（Image）](ndk-image-component.md)
