@@ -27,7 +27,7 @@ import { print } from '@kit.BasicServicesKit';
 
 on(type: 'block', callback: Callback&lt;void&gt;): void
 
-注册打印完成后的监听，使用callback异步回调。
+注册打印任务阻塞的监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -43,7 +43,7 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：block，<br/>表示打印阻塞。 |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务阻塞。 |
 
 **错误码：**
 
@@ -76,7 +76,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 onBlock(callback: Callback&lt;void&gt;): void
 
-注册打印完成后的监听，使用callback异步回调。
+注册打印任务阻塞的监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -91,7 +91,7 @@ onBlock(callback: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务阻塞。 |
 
 **错误码：**
 
@@ -124,7 +124,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'succeed', callback: Callback&lt;void&gt;): void
 
-注册打印完成后的监听，使用callback异步回调。
+注册打印任务成功的监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -173,7 +173,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 onSucceed(callback: Callback&lt;void&gt;): void
 
-注册打印完成后的监听，使用callback异步回调。
+注册打印任务成功的监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -221,7 +221,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'fail', callback: Callback&lt;void&gt;): void
 
-注册打印完成后的监听，使用callback异步回调。
+注册打印任务失败的监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -237,7 +237,7 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：fail，<br/>表示打印失败。 |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务失败。 |
 
 **错误码：**
 
@@ -270,7 +270,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 onFail(callback: Callback&lt;void&gt;): void
 
-注册打印完成后的监听，使用callback异步回调。
+注册打印任务失败的监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -285,7 +285,7 @@ onFail(callback: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务失败。 |
 
 **错误码：**
 
@@ -318,7 +318,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 on(type: 'cancel', callback: Callback&lt;void&gt;): void
 
-注册打印完成后的监听，使用callback异步回调。
+注册打印任务被取消的监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -334,7 +334,7 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：cancel，<br/>表示打印取消。 |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务被取消。 |
 
 **错误码：**
 
@@ -367,7 +367,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 onCancel(callback: Callback&lt;void&gt;): void
 
-注册打印完成后的监听，使用callback异步回调。
+注册打印任务被取消的监听，使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -382,7 +382,7 @@ onCancel(callback: Callback&lt;void&gt;): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 是 | 回调函数，返回打印完成后的监听。 |
+| callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务被取消。 |
 
 **错误码：**
 
