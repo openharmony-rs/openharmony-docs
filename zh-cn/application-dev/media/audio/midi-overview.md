@@ -148,5 +148,5 @@ UMP格式通过消息类型（Message Type）区分不同消息。MT是UMP数据
 ## 相关参考
 
 - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
-- [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md) API参考
+- - [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
 - MIDI状态码枚举：[OH_MIDIStatusCode](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midistatuscode)
