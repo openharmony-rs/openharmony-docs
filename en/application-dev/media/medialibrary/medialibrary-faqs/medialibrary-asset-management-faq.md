@@ -28,10 +28,10 @@ Media assets can be represented in different path formats, each corresponding to
 | :------------ | :------------ |
 | <!--DelRow-->Add (for system applications only) | [Create media assets](../photoAccessHelper-resource-guidelines.md#creating-a-media-asset) |
 | <!--DelRow-->Delete (for system applications only) | [Move media assets to the trash](../photoAccessHelper-resource-guidelines.md#moving-a-media-asset-to-the-trash) |
-| Obtain | [Obtain media assets](../photoAccessHelper-resource-guidelines.md#obtaining-media-assets)<br>[Obtain image and video thumbnails](../photoAccessHelper-resource-guidelines.md#obtaining-an-image-or-video-thumbnail)<br>[Select media assets using Picker](photoAccessHelper-photoviewpicker.md) |
+| Obtain | [Obtain media assets](../photoAccessHelper-resource-guidelines.md#obtaining-media-assets)<br>[Obtain image and video thumbnails](../photoAccessHelper-resource-guidelines.md#obtaining-an-image-or-video-thumbnail)<br>[Select media assets using Picker](../photoAccessHelper-photoviewpicker.md) |
 | Rename | [Rename media assets](../photoAccessHelper-resource-guidelines.md#renaming-a-media-asset) |
-| Save to Gallery | [Save media assets](photoAccessHelper-savebutton.md) |
-| Operate on media files in user albums | [Add images and videos to user albums](../photoAccessHelper-userAlbum-guidelines.md#adding-images-and-videos-to-user-albums)<br>[Obtain images and videos from user albums](../photoAccessHelper-userAlbum-guidelines.md#obtaining-images-and-videos-in-a-user-album)<br>[Remove images and videos from user albums](../photoAccessHelper-userAlbum-guidelines.md#removing-images-and-videos-from-a-user-album) |
+| Save to Gallery | [Save media assets](../photoAccessHelper-savebutton.md) |
+| Operate on media files in user albums | [Add images and videos to user albums](../photoAccessHelper-userAlbum-guidelines.md#adding-images-or-videos-to-a-user-album)<br>[Obtain images and videos from user albums](../photoAccessHelper-userAlbum-guidelines.md#obtaining-images-and-videos-in-a-user-album)<br>[Remove images and videos from user albums](../photoAccessHelper-userAlbum-guidelines.md#removing-images-and-videos-from-a-user-album) |
 
 ## FAQs
 
