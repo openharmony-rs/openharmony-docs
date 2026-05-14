@@ -71,7 +71,6 @@ OH_Telephony_GetNetworkState((data:state) => {
 });
 ```
 
-
 ### OH_Telephony_GetNetworkStateForSlot()
 
 ```c
