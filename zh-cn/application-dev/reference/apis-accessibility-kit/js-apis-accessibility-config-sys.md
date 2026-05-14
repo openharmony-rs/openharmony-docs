@@ -522,7 +522,7 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 应用“长辈模式”状态信息。 |
+| appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 修改应用的“长辈模式”的状态信息。 |
 
 **返回值：**
 
@@ -652,7 +652,7 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 **示例：**
 
 ```ts
-import { config } from '@ohos.accessibility.config';
+import { config } from '@kit.AccessibilityKit';
 
 @Entry
 @Component
@@ -662,7 +662,7 @@ struct Index {
   }
 
   aboutToAppear(): void {
-    accessibility.onSeniorModeStateChangeForApp(this.callback);
+    config.onSeniorModeStateChangeForApp(this.callback);
   }
 
   build() {
@@ -706,7 +706,7 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 **示例：**
 
 ```ts
-import { config } from '@ohos.accessibility.config';
+import { config } from '@kit.AccessibilityKit';
 
 @Entry
 @Component
@@ -716,11 +716,11 @@ struct Index {
   }
 
   aboutToAppear(): void {
-    accessibility.onSeniorModeStateChangeForApp(this.callback);
+    config.onSeniorModeStateChangeForApp(this.callback);
   }
 
   aboutToDisappear(): void {
-    accessibility.offSeniorModeStateChangeForApp(this.callback);
+    config.offSeniorModeStateChangeForApp(this.callback);
   }
 
   build() {
