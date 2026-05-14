@@ -4,7 +4,7 @@
 | --- | --- | --- | --- | --- | ---- |
 | docs/zh-cn/application-dev/application-models/context-switch.md | [applicationInfo: ApplicationInfo;](../reference/apis-ability-kit/js-apis-inner-application-context.md#context) | Ability Kit | Ability | 是 | 2026-05-07 |
 | docs/zh-cn/application-dev/reference/apis-localization-kit/js-apis-i18n.md | [原始偏移量](#getrawoffset) | Localization Kit | global | 是 | 2026-05-09 |
-| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md | [onStateChange](#onstatechange26) | Ability Kit | Ability | 是 | 2026-05-14 |
-| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md | [offStateChange](#offstatechange26) | Ability Kit | Ability | 是 | 2026-05-14 |
-| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md | [onControlPanelActionEvent](#oncontrolpanelactionevent26) | Ability Kit | Ability | 是 | 2026-05-14 |
-| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md | [offControlPanelActionEvent](#offcontrolpanelactionevent26) | Ability Kit | Ability | 是 | 2026-05-14 |
+| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md | [onStateChange](#onstatechange26) | ArkUI | Window | 是 | 2026-05-14 |
+| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md | [offStateChange](#offstatechange26) | ArkUI | Window | 是 | 2026-05-14 |
+| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md | [onControlPanelActionEvent](#oncontrolpanelactionevent26) | ArkUI | Window | 是 | 2026-05-14 |
+| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md | [offControlPanelActionEvent](#offcontrolpanelactionevent26) | ArkUI | Window | 是 | 2026-05-14 |
