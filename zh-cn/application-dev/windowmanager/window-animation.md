@@ -24,7 +24,7 @@
 <!--Del-->
 ## 设置系统窗口、全局悬浮窗及模态窗动效
 
-在Stage模型下，允许应用创建和管理窗口，包括全局悬浮窗、模态窗和音量条、壁纸、通知栏、导航栏、可设置窗口层级等系统窗口等。具体支持的系统窗口类型可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。
+在Stage模型下，允许应用创建和管理窗口，包括全局悬浮窗、模态窗和音量条、壁纸、通知栏、导航栏、可设置窗口层级等系统窗口。具体支持的系统窗口类型可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。
 
 此处以创建“可设置窗口层级的系统窗口”为例，设置其显示/隐藏过程中的组合动画效果。
 
