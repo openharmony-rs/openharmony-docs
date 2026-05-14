@@ -91,7 +91,7 @@ export struct DefaultAndTopToastExample {
 }
 ```
 
-![defaultToast](figures/defaultToast.gif)
+
 
 ## Creating a Toast
 

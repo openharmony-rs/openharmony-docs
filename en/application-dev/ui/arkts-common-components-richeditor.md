@@ -845,7 +845,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_oncut_paste_copy.gif)
+
 
 For details about all available events, see [RichEditor Events](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#events).
 
@@ -890,7 +890,7 @@ build() {
 }
 ```
 
-![alt text](figures/richeditor_image_caretcolor.gif)
+
 
 ### Adding a Callback for Caret Position and Selection Changes
 

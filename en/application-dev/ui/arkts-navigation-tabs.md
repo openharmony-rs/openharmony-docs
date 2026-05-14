@@ -451,7 +451,7 @@ You can use the [onContentWillChange](../reference/apis-arkui/arkui-ts/ts-contai
 ```
   **Figure 13** Customizing the page switching interception event
 
-![TabsChange3](figures/TabsChange3.gif)
+
 
 ## Supporting Aging-Friendly Design
 
