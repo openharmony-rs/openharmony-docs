@@ -522,7 +522,7 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
-| appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 需要修改的应用“长辈模式”信息。 |
+| appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 应用“长辈模式”状态信息。 |
 
 **返回值：**
 
