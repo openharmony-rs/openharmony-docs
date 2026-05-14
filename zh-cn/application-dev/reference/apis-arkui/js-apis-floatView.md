@@ -120,7 +120,7 @@ struct Index {
       floatView.create(config).then((data: floatView.FloatViewController) => {
         this.floatViewController = data;
         console.info(`Succeeded in creating float view controller. Data: ${data}`);
-      }).catch((err: BusinessError) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to create float view controller. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -179,6 +179,8 @@ bind(floatViewController: FloatViewController, floatingBallController: floatingB
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -194,9 +196,9 @@ struct Index {
 
     try {
       if (this.floatViewController && this.floatingBallController) {
-        floatView.bind(this.floatViewController, this.floatingBallController, floatingBallParams).then(() => {
+        floatView.bind(this.floatViewController!, this.floatingBallController!, floatingBallParams).then(() => {
           console.info('Succeeded in binding float view and floating ball.');
-        }).catch((err: BusinessError) => {
+        }).catch((err: BusinessError): void => {
           console.error(`Failed to bind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
@@ -254,9 +256,9 @@ struct Index {
     try {
       // 使用绑定时传入的标准悬浮窗和闪控球控制器
       if (this.floatViewController && this.floatingBallController) {
-        floatView.unbind(this.floatViewController, this.floatingBallController).then(() => {
+        floatView.unbind(this.floatViewController!, this.floatingBallController!).then(() => {
           console.info('Succeeded in unbinding float view and floating ball.');
-        }).catch((err: BusinessError) => {
+        }).catch((err: BusinessError): void => {
           console.error(`Failed to unbind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
@@ -305,7 +307,7 @@ getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimits
 **示例：**
 
 ```ts
-let limits: floatView.FloatViewLimits = floatView.getFloatViewLimits();
+let limits: floatView.FloatViewLimits = floatView.getFloatViewLimits(floatView.FloatViewTemplateType.ROUNDED_RECTANGLE);
 console.info('Float view limits: ' + JSON.stringify(limits));
 ```
 
@@ -329,8 +331,6 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 标准悬浮窗控制器实例。用于启动、停止标准悬浮窗以及注册回调等操作。
 
 下列API示例中都需先使用[floatView.create()](#floatviewcreate)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
-
-**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -380,7 +380,7 @@ struct Index {
     try {
       this.floatViewController?.setUIContext('pages/Index').then(() => {
         console.info('Succeeded in setting UI context.');
-      }).catch((err: BusinessError) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to set UI context. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -427,6 +427,8 @@ setWindowSize(size: window.Size): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -439,7 +441,7 @@ struct Index {
     try {
       this.floatViewController?.setWindowSize(size).then(() => {
         console.info('Succeeded in setting window size.');
-      }).catch((err: BusinessError) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to set window size. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -495,7 +497,7 @@ struct Index {
     try {
       this.floatViewController?.start().then(() => {
         console.info('Succeeded in starting float view.');
-      }).catch((err: BusinessError) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to start float view. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -546,7 +548,7 @@ struct Index {
     try {
       this.floatViewController?.stop().then(() => {
         console.info('Succeeded in stopping float view.');
-      }).catch((err: BusinessError) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to stop float view. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -603,7 +605,7 @@ struct Index {
     try {
       this.floatViewController?.setFloatViewVisibilityInApp(true).then(() => {
         console.info('Succeeded in setting float view visibility in app.');
-      }).catch((err: BusinessError) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to set float view visibility in app. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -664,7 +666,7 @@ struct Index {
     try {
       this.floatViewController?.restoreMainWindow(param).then(() => {
         console.info('Succeeded in restoring main window.');
-      }).catch((err: BusinessError) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to restore main window. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -1009,6 +1011,8 @@ struct Index {
 
 标准悬浮窗窗口的属性。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1067,7 +1071,7 @@ struct Index {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | state | [FloatViewState](#floatviewstate) | 否 | 否 | 标准悬浮窗的状态。 |
-| stopReason | string | 否 | 否 | 标准悬浮窗停止的原因。该参数仅在状态为FloatViewState.STOPPED时有效，在其他状态下默认为空字符串。停止原因和对应含义如下：<br/>"APP_STOP"：应用主动停止<br/>"APP_KILL_STOP"：应用进程被终止后停止<br/>"STOP_IN_SIDEBAR"：在侧边栏被关闭<br/>"TITLE_BAR_CLICK_STOP"：标题栏点击关闭按钮<br/>"DUMPSTER_STOP"：拖入垃圾桶停止<br/>"REPLACE_STOP"：被其他标准悬浮窗挤占<br/>"FLOATING_BALL_STOP"：绑定状态下跟随闪控球停止 <br/> "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗被销毁后停止 |
+| stopReason | string | 否 | 否 | 标准悬浮窗停止的原因。该参数仅在状态为FloatViewState.STOPPED时有效，在其他状态下默认为空字符串。停止原因和对应含义如下：<br/>"APP_STOP"：应用主动停止<br/>"STOP_IN_SIDEBAR"：在侧边栏被关闭<br/>"TITLE_BAR_STOP_CLICK"：标题栏点击关闭按钮<br/>"DUMPSTER_STOP"：拖入垃圾桶停止<br/>"REPLACE_STOP"：被其他标准悬浮窗挤占<br/>"FLOATING_BALL_STOP"：绑定状态下跟随闪控球停止 <br/> "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗被销毁后停止 |
 
 ## FloatViewState
 
