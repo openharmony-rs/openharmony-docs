@@ -130,7 +130,7 @@ getZoomPointInfos(): Array\<ZoomPointInfo\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not configured, only thrown in session usage.      |
+| 7400103                |  Session not config, only throw in session usage.      |
 
 **示例：**
 
