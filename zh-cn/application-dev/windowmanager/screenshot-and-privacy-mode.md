@@ -502,7 +502,7 @@ struct Index {
       this.statusText = `permission granted=${granted}`;
       return granted;
     } catch (err) {
-      this.statusText = `permission request failed: $JSON.stringify(err)}`;
+      this.statusText = `permission request failed: ${JSON.stringify(err)}`;
       return false;
     }
   }
