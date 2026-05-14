@@ -532,7 +532,7 @@ struct Index {
       this.pickRectText = `left=${result.pickRect.left}, top=${result.pickRect.top}, width=${result.pickRect.width}, height=${result.pickRect.height}`;
       this.updatePreview(result.pixelMap, 'screenshot.pick');
     } catch (err) {
-      this.statusText = `screenshot.pick failed: $JSON.stringify(err)}`;
+      this.statusText = `screenshot.pick failed: ${JSON.stringify(err)}`;
       hilog.error(DOMAIN, 'screenshotSample', this.statusText);
     }
   }
