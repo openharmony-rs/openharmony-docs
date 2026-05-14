@@ -317,3 +317,152 @@ async function audioRecording(context: common.Context): Promise<void> {
    ArkTS-Sta：
 
    <!-- @[full_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError } from '@ohos.base';
+   import media from '@ohos.multimedia.media';
+   import fileIo from '@ohos.file.fs';
+   import common from '@ohos.app.ability.common';
+   import { Resolution } from './CommonTypes';
+   
+   export default class AVRecorderService {
+     private avRecorder: media.AVRecorder | undefined = undefined;
+     private fileFd: int | undefined = undefined;
+   
+     private audioSampleRate: int = 48000;
+     private videoSourceType: media.VideoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV;
+     private videoResolution: Resolution = { frameWidth: 1920, frameHeight: 1080 } as Resolution;
+   
+     public async createRecorder(): Promise<void> {
+       await this.releaseRecorder();
+       try {
+         this.avRecorder = await media.createAVRecorder();
+       } catch (err) {
+         let error: BusinessError = err as BusinessError;
+         console.error(`Failed to create avRecorder, error code: ${error.code}, message: ${error.message}`);
+       }
+     }
+   
+     public setCallback(onStateChanged: media.OnAVRecorderStateChangeHandler): void {
+       if (this.avRecorder) {
+         console.info('setCallback');
+       }
+       this.avRecorder?.onStateChange((state, reason) => {
+         console.info(`AVRecorder state is changed to ${state}, reason: ${reason}`);
+         // 用户可以在此补充状态发生切换后想要进行的动作。
+         onStateChanged(state, reason);
+       });
+       this.avRecorder?.onError((error) => {
+         console.error(`Error occurred in avRecorder, error code: ${error.code}, message: ${error.message}`);
+       });
+     }
+   
+   // ...
+   
+     public async prepareAudioRecorder(context: common.Context): Promise<void> {
+       let path: string = context.filesDir + 'audio_example.m4a';
+       let file: fileIo.File = await fileIo.open(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+       this.fileFd = file.fd;
+   
+       let avRecorderConfig: media.AVRecorderConfig = {
+         audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // 音频源类型。
+         profile: {
+           audioBitrate: 112000, // 音频比特率。
+           audioChannels: 2, // 音频声道数。
+           audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
+           audioSampleRate: this.audioSampleRate, // 音频采样率。
+           fileFormat: media.ContainerFormatType.CFT_MPEG_4A // 封装格式。
+         },
+         url: 'fd://' + file.fd.toString()
+       };
+   
+       try {
+         if (this.avRecorder?.state === 'idle' || this.avRecorder?.state === 'stopped') {
+           await this.avRecorder?.prepare(avRecorderConfig);
+         }
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   
+   // ...
+   
+     public async startRecorder(): Promise<void> {
+       try {
+         if (this.avRecorder?.state === 'prepared') {
+           await this.avRecorder?.start();
+         }
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to start avRecorder, error code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   
+     public async pauseRecorder(): Promise<void> {
+       try {
+         if (this.avRecorder?.state === 'started') {
+           await this.avRecorder?.pause();
+         }
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to pause avRecorder, error code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   
+     public async resumeRecorder(): Promise<void> {
+       try {
+         if (this.avRecorder?.state === 'paused') {
+           await this.avRecorder?.resume();
+         }
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to resume avRecorder, error code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   
+     public async stopRecorder(): Promise<void> {
+       try {
+         if (this.avRecorder?.state === 'started' || this.avRecorder?.state === 'paused') {
+           await this.avRecorder?.stop();
+         }
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to stop avRecorder, error code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   
+     public async resetRecorder(): Promise<void> {
+       try {
+         await this.avRecorder?.reset();
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to reset avRecorder, error code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   
+     public async releaseRecorder(): Promise<void> {
+       try {
+         this.avRecorder?.offStateChange();
+         this.avRecorder?.offError();
+         await this.avRecorder?.release();
+         this.avRecorder = undefined;
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to release avRecorder, error code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   
+     public async closeFd(): Promise<void> {
+       try {
+         if (this.fileFd) {
+           await fileIo.close(this.fileFd!);
+           this.fileFd = undefined;
+         }
+       } catch (error) {
+         let err = error as BusinessError;
+         console.error(`Failed to close fd, error code: ${err.code}, message: ${err.message}`);
+       }
+     }
+   }
+   ```
