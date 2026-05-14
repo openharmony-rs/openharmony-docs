@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通知Web组件的文件选择结果。示例代码参考[onShowFileSelector](./arkts-basic-components-web-events.md#onshowfileselector9)。
+通知Web组件的文件选择结果。当Web组件中的页面发起文件选择请求时，通过本类返回选择的文件列表。示例代码参考[onShowFileSelector](./arkts-basic-components-web-events.md#onshowfileselector9)。
 
 支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
 
@@ -36,7 +36,7 @@ FileSelectorResult的构造函数。
 
 handleFileList(fileList: Array\<string\>): void
 
-通知Web组件进行文件选择操作。
+通过传入的文件列表（fileList）通知Web组件用户选择的文件，完成文件选择流程。Web组件可以使用传入的文件列表进行后续处理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

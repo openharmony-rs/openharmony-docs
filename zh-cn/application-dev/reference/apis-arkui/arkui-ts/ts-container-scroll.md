@@ -19,7 +19,7 @@
 >
 > - 该组件滚动的前提是主轴方向大小小于内容大小。
 >
-> - Scroll组件[通用属性clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
+> - Scroll组件通用属性[clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
 >
 > - Scroll组件的高度超出屏幕显示范围时，可以通过设置通用属性[layoutWeight](ts-universal-attributes-size.md#layoutweight)让Scroll高度适应主轴的剩余空间。
 >
@@ -80,7 +80,7 @@ ArkTS-Sta: scrollable(value: ScrollDirection | undefined)
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
 | value  | ArkTS-Dyn: [ScrollDirection](#scrolldirection枚举说明)<br/>ArkTS-Sta: [ScrollDirection](#scrolldirection枚举说明) \| undefined | 是   | 滚动方向。<br/>默认值：ScrollDirection.Vertical<br/>取值为undefined时，按默认值处理。 |
 
-当滚动方向设置为[ScrollDirection.FREE](#scrolldirection枚举说明)时，Scroll组件仅支持部分能力，见[自由滚动模式下支持的能力](#scrolldirection枚举说明)。
+当滚动方向设置为[ScrollDirection.FREE](#scrolldirection枚举说明)时，Scroll组件仅支持部分能力，见[ScrollDirection.FREE](#scrolldirection枚举说明)中自由滚动模式下支持的能力。
 
 ### scrollBar
 
@@ -376,7 +376,7 @@ attributeModifier(modifier: AttributeModifier\<ScrollAttribute> | AttributeModif
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<ScrollAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ScrollAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>ScrollAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ### maxZoomScale<sup>20+</sup>
 
