@@ -150,6 +150,39 @@
    ArkTS-Sta：
 
    <!-- @[prepare_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   public async prepareVideoRecorder(context: common.Context): Promise<void> {
+     let path: string = context.filesDir + 'video_example.mp4';
+     let file: fileIo.File = await fileIo.open(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+     this.fileFd = file.fd;
+   
+     let avRecorderConfig: media.AVRecorderConfig = {
+       videoSourceType: this.videoSourceType, // 视频源类型。
+       profile: {
+         videoBitrate: 3000000, // 视频比特率。
+         videoCodec: media.CodecMimeType.VIDEO_AVC, // 视频编码格式。
+         videoFrameWidth: this.videoResolution.frameWidth, // 视频分辨率的宽。
+         videoFrameHeight: this.videoResolution.frameHeight, // 视频分辨率的高。
+         videoFrameRate: 30, // 视频帧率。
+         fileFormat: media.ContainerFormatType.CFT_MPEG_4 // 封装格式。
+       },
+       metadata: {
+         videoOrientation: '90' // 视频旋转角度，默认为0不旋转，支持的值为0、90、180、270。
+       },
+       url: 'fd://' + file.fd.toString()
+     };
+   
+     try {
+       if (this.avRecorder?.state === 'idle' || this.avRecorder?.state === 'stopped') {
+         await this.avRecorder?.prepare(avRecorderConfig);
+       }
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`Failed to prepare avRecorder, error code: ${err.code}, message: ${err.message}`);
+     }
+   }
+   ```
 
 4. 获取视频录制需要的SurfaceID。
 
