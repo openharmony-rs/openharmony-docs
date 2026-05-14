@@ -2770,6 +2770,36 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample9.ets",
+				"functions":[
+					{
+						"end_line":149,
+						"name":"arkts_ellipsis_example_text",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"arkts_break_strategy_example_text",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets",
+				"functions":[
+					{
+						"end_line":90,
+						"name":"arkts_punctuation_compress_example_text",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -4454,6 +4484,21 @@
 						"end_line":90,
 						"name":"ts_text_metrics_get_all_case",
 						"start_line":55
+					},
+					{
+						"end_line":103,
+						"name":"ts_text_metrics_layout_with_constraints",
+						"start_line":91
+					},
+					{
+						"end_line":116,
+						"name":"ts_text_metrics_get_character_position",
+						"start_line":110
+					},
+					{
+						"end_line":136,
+						"name":"ts_text_metrics_glyph_character_range",
+						"start_line":117
 					}
 				]
 			}
@@ -4488,6 +4533,21 @@
 						"end_line":238,
 						"name":"c_text_metrics_get_all_case",
 						"start_line":206
+					},
+					{
+						"end_line":292,
+						"name":"c_text_metrics_char_position_step1",
+						"start_line":280
+					},
+					{
+						"end_line":310,
+						"name":"c_text_metrics_glyph_info_step1",
+						"start_line":294
+					},
+					{
+						"end_line":328,
+						"name":"c_text_metrics_glyph_info_step2",
+						"start_line":312
 					}
 				]
 			}
@@ -4582,6 +4642,21 @@
 						"end_line":998,
 						"name":"complex_text_c_style_copy_text",
 						"start_line":911
+					},
+					{
+						"end_line":1232,
+						"name":"complex_text_c_ellipsis_text",
+						"start_line":1189
+					},
+					{
+						"end_line":1538,
+						"name":"complex_text_c_break_strategy_text",
+						"start_line":1501
+					},
+					{
+						"end_line":1618,
+						"name":"complex_text_c_punctuation_compress_text",
+						"start_line":1591
 					}
 				]
 			}
