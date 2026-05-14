@@ -19,45 +19,17 @@ hdc shell hidumper -s WindowManagerService -a '<参数>'
 
 **参数列表**：
 
-| 参数 | 含义 | 命令示例 | 输出说明 |
+| 参数 | 含义 | 命令示例 | 使用场景 |
 |------|------|----------|----------|
-| `-h` | 查看帮助信息 | `hidumper -s WindowManagerService -a '-h'` | 显示所有可用参数及说明 |
-| `-a` | dump所有窗口信息 | `hidumper -s WindowManagerService -a '-a'` | 输出系统中所有窗口的列表、属性、焦点状态等完整信息 |
-| `-w {WinId}` | dump指定窗口详细信息 | `hidumper -s WindowManagerService -a '-w 13'` | 输出WinId为13的窗口详细属性（可见性、焦点、隐私模式等） |
-| `-w {WinId} {ArkUI option}` | dump指定窗口的ArkUI信息 | `hidumper -s WindowManagerService -a '-w 13 -arkui'` | 输出WinId为13窗口的ArkUI渲染详细信息 |
-| `-c` | dump窗口截图信息 | `hidumper -s WindowManagerService -a '-c'` | 输出窗口截图相关信息 |
-| `-p` | dump窗口树结构 | `hidumper -s WindowManagerService -a '-p'` | 输出窗口树结构，显示父子窗口关系 |
-| `-b` | dump窗口绑定的信息 | `hidumper -s WindowManagerService -a '-b'` | 输出窗口绑定信息（如绑定的surface、buffer等） |
-| `-v` | dump窗口可见性信息 | `hidumper -s WindowManagerService -a '-v'` | 输出窗口可见性详细信息 |
+| `-h` | 查看帮助信息 | `hidumper -s WindowManagerService -a '-h'` | 首次使用时查看完整参数说明 |
+| `-a` | dump所有窗口信息 | `hidumper -s WindowManagerService -a '-a'` | 需要查看所有窗口时使用（最常用） |
+| `-w {WinId}` | dump指定窗口详细信息 | `hidumper -s WindowManagerService -a '-w 13'` | 已知窗口ID，需要查看特定窗口详细信息 |
+| `-w {WinId} {ArkUI option}` | dump指定窗口的ArkUI信息 | `hidumper -s WindowManagerService -a '-w 13 -arkui'` | 需要查看窗口UI渲染细节时 |
+| `-p` | dump窗口树结构 | `hidumper -s WindowManagerService -a '-p'` | 排查窗口父子关系、层级树结构时 |
+| `-v` | dump窗口可见性信息 | `hidumper -s WindowManagerService -a '-v'` | 排查窗口显示/隐藏问题时 |
+| `-c` | dump窗口截图信息 | `hidumper -s WindowManagerService -a '-c'` | 高级调试场景（截图相关信息） |
+| `-b` | dump窗口绑定的信息 | `hidumper -s WindowManagerService -a '-b'` | 高级调试场景（surface、buffer绑定等） |
 
-**参数使用场景**：
-
-- **`-h`**：首次使用时查看完整参数说明
-- **`-a`**：需要查看所有窗口时使用（最常用）
-- **`-w {WinId}`**：已知窗口ID，需要查看特定窗口详细信息
-- **`-w {WinId} {ArkUI option}`**：需要查看窗口UI渲染细节时
-- **`-p`**：排查窗口父子关系、层级树结构时
-- **`-v`**：排查窗口显示/隐藏问题时
-- **`-c`、`-b`**：高级调试场景（截图、surface绑定等）
-
-**常用参数组合示例**：
-
-```bash
-# 查看帮助
-hdc shell hidumper -s WindowManagerService -a '-h'
-
-# 查看所有窗口列表
-hdc shell hidumper -s WindowManagerService -a '-a'
-
-# 查看WinId=13的窗口详情
-hdc shell hidumper -s WindowManagerService -a '-w 13'
-
-# 查看窗口树结构
-hdc shell hidumper -s WindowManagerService -a '-p'
-
-# 查看窗口可见性
-hdc shell hidumper -s WindowManagerService -a '-v'
-```
 
 ### 查看所有窗口列表
 
@@ -91,17 +63,7 @@ total window num: 12
 
 **前台窗口与后台窗口说明**：
 
-输出中通过分隔线`---------------------------------------------------------------------------------------`区分前台窗口和后台窗口：
-
-- **分隔线以上**：前台窗口（正在显示或可交互的窗口）
-  - `SystemUi_NavigationB`、`SystemUi_PrivacyIndi`、`SystemUi_StatusBar`、`note0`、`EntryView`
-  - 特征：`Flag=0`（显示状态），`ZOrd≥0`（参与层级竞争）
-  - 这些窗口当前可见，用户可以看到或交互
-
-- **分隔线以下**：后台窗口（隐藏或不在前台显示的窗口）
-  - `SystemUi_VolumePanel`、`ScreenLockWindow`、`RecentView`、`SystemUi_DropdownPan`、`SystemUi_BannerNotic`、`mms0`、`camera0`
-  - 特征：`Flag=1`（隐藏状态）或`ZOrd=-1`（隐藏层级）
-  - 这些窗口当前不可见或不在前台显示，处于后台状态
+输出中通过分隔线区分前台窗口和后台窗口：分隔线以上为前台窗口（正在显示或可交互），分隔线以下为后台窗口（隐藏或不在前台显示）。
 
 **字段含义详细说明**：
 
