@@ -453,5 +453,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/data-persistence-by-preferences.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets",
+				"functions":[
+					{
+						"end_line":148,
+						"name":"Flush",
+						"start_line":140
+					},
+					{
+						"end_line":185,
+						"name":"XMLOn",
+						"start_line":163
+					},
+					{
+						"end_line":213,
+						"name":"GSKVOn",
+						"start_line":200
+					},
+					{
+						"end_line":237,
+						"name":"DeleteXMLPreferences",
+						"start_line":228
+					}
+				]
+			}
+		]
 	}
 ]
