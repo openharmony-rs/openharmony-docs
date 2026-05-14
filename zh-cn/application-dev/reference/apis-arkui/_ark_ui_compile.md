@@ -678,13 +678,13 @@ No such \'xxx\' resource in current module.
 The wrapBuilder\'s parameter should be a \'@Builder\' function.
 
 **错误描述**<br>
-wrapBuilder的参数必须为@Builder方法。
+wrapBuilder的参数必须为全局@Builder函数。
 
 **可能原因**<br>
-开发者使用其他类型变量或是普通函数作为wrapBuilder函数的参数导致报错。
+开发者使用其他类型变量、普通函数或者方法作为wrapBuilder函数的参数导致报错。
 
 **处理步骤**<br>
-修改wrapBuilder的参数为@Builder装饰器装饰的方法。
+修改wrapBuilder的参数为@Builder装饰器装饰的全局函数。
 
 ## 10905110 @Styles校验异常
 **错误信息**<br>
