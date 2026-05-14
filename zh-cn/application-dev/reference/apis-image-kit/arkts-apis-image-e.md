@@ -405,7 +405,7 @@
 | LINEAR_RESPONSE_LIMIT | 'LinearResponseLimit' | 线性响应上限，有效值范围为[0.0, 1.0]。 |
 | CAMERA_SERIAL_NUMBER | 'CameraSerialNumber' | 相机序列号。 |
 | LENS_INFO | 'LensInfo' | 镜头信息。 |
-| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径，单位：像素（px）。 |
+| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径，单位为像素（px）。 |
 | ANTI_ALIAS_STRENGTH | 'AntiAliasStrength' | 抗锯齿滤波器强度。 |
 | SHADOW_SCALE | 'ShadowScale' | 阴影区域缩放因子。 |
 | DNG_PRIVATE_DATA | 'DNGPrivateData' | 厂商私有数据块。 |
