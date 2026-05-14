@@ -12654,7 +12654,6 @@ async function example(context: Context) {
 | recommendationTypeList<sup>23+</sup> | Array\<[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)>   | 否   | 是 | 如果需要根据枚举值同时推荐多个分类的图片，则配置此参数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | defaultRecommendationType<sup>24+</sup> | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 表示打开Picker直接显示的推荐标签。需要配置recommendationTypeList后，该配置才生效。<br>如果该标签存在，则默认显示该标签页。<br>如果该标签不存在，则默认显示“全部”标签页。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
-
 ## ThumbnailChangeStatus<sup>20+</sup>
 
 枚举，表示缩略图（包括图片/视频）更新的状态。
