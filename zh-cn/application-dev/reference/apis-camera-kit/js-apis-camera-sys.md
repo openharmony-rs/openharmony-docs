@@ -2574,7 +2574,7 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
 
 ## Zoom<sup>11+</sup>
 
-Zoom extend [ZoomQuery](#zoomquery12)
+Zoom extends [ZoomQuery](#zoomquery12)
 
 提供了处理设备变焦效果的相关方法，包括获取当前的变焦比，设置变焦比率，以及通过平滑方法设置目标变焦比，以及一些开启和结束变焦的函数。
 
