@@ -1785,7 +1785,7 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 | 参数名 | 类型                                            | 必填 | 说明                         |
 | ------ | ----------------------------------------------- | ---- | ---------------------------- |
 | buffer | ArrayBuffer                                     | 是   | 以buffer形式存放的图像数据。  |
-| size   | [Size](arkts-apis-image-i.md#size)                                   | 是   | 辅助图的尺寸。单位：px。    |
+| size   | [Size](arkts-apis-image-i.md#size)                                   | 是   | 辅助图的尺寸。单位为像素（px）。    |
 | type   | [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) | 是   | 辅助图类型。                 |
 
 **返回值：**
@@ -1937,7 +1937,7 @@ createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| options  | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图片的默认大小和同时访问的最大图片数。<br>未传入options时，默认的size为1920*1080，单位为px，表示期望接收宽为1920px，高为1080px的图片。<br>未传入options时，默认的capacity为3，表示期望同时最多有3张图片等待读取。       |
+| options  | [ImageReceiverOptions](arkts-apis-image-i.md#imagereceiveroptions23)  | 否   | 创建ImageReceiver的属性，包括图片的默认大小和同时访问的最大图片数。<br>未传入options时，默认的size为1920*1080，单位为像素（px），表示期望接收宽为1920px，高为1080px的图片。<br>未传入options时，默认的capacity为3，表示期望同时最多有3张图片等待读取。       |
 
 **返回值：**
 
@@ -2024,8 +2024,8 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| width    | number | 是   | 图像的默认宽度。单位：px。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
-| height   | number | 是   | 图像的默认高度。单位：px。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
+| width    | number | 是   | 图像的默认宽度。单位：像素（px）。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
+| height   | number | 是   | 图像的默认高度。单位：像素（px）。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
 | format   | number | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。  |
 | capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
