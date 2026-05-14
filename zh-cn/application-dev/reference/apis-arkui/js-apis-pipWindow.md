@@ -1315,7 +1315,7 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange26)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onStateChange26)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1359,7 +1359,7 @@ this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string)
 });
 ```
 
-<a id="onstatechange26"></a>
+<a id="onStateChange26"></a>
 ### onStateChange
 
 onStateChange(callback: StateChangeCallback): void
@@ -1421,7 +1421,7 @@ off(type: 'stateChange'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange26)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offStateChange26)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1439,7 +1439,7 @@ off(type: 'stateChange'): void
 this.pipController.off('stateChange');
 ```
 
-<a id="offstatechange26"></a>
+<a id="offStateChange26"></a>
 ### offStateChange
 
 offStateChange(): void
@@ -1470,7 +1470,7 @@ on(type: 'controlPanelActionEvent', callback: ControlPanelActionEventCallback): 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#oncontrolpanelactionevent26)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onControlPanelActionEvent](#onControlPanelActionEvent26)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1514,7 +1514,7 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 });
 ```
 
-<a id="oncontrolpanelactionevent26"></a>
+<a id="onControlPanelActionEvent26"></a>
 ### onControlPanelActionEvent
 
 onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
@@ -1682,7 +1682,7 @@ off(type: 'controlPanelActionEvent'): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlPanelActionEvent](#offcontrolpanelactionevent26)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offControlPanelActionEvent](#offControlPanelActionEvent26)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1700,7 +1700,7 @@ off(type: 'controlPanelActionEvent'): void
 this.pipController.off('controlPanelActionEvent');
 ```
 
-<a id="offcontrolpanelactionevent26"></a>
+<a id="offControlPanelActionEvent26"></a>
 ### offControlPanelActionEvent
 
 offControlPanelActionEvent(): void
