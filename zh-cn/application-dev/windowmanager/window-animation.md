@@ -30,7 +30,7 @@
 
 - 模态窗
 
-- 系统窗口：包括音量调、壁纸、通知栏、导航栏窗口等。系统窗口类型具体可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。
+- 系统窗口：包括音量条、壁纸、通知栏、导航栏窗口等。系统窗口类型具体可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。
 
 此处以创建“可设置窗口层级的系统窗口”为例，设置其显示/隐藏过程中的组合动画效果。
 
@@ -65,7 +65,7 @@
 
 2. 配置窗口显示/隐藏时的动画。
 
-   通过动画函数[animateTo()](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#显式动画-animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9)设置窗口不透明度，通过[scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9)设置缩放参数，通过[rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9)设置旋转参数，通过[translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9)设置平移参数。
+   通过动画函数[animateTo()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9)设置窗口不透明度，通过[scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9)设置缩放参数，通过[rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9)设置旋转参数，通过[translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9)设置平移参数。
 
    ```ts
    // pages/WindowAnimationDemo.ets
@@ -282,7 +282,7 @@ export default class EntryAbility extends UIAbility {
           // 设置窗口销毁时的动画
           let promise = windowClass.setWindowTransitionAnimation(window.WindowTransitionType.DESTROY, transitionAnimation);
           promise.then((data) => {
-            console.info('Succeeded in setting window transition animation. Cause:' + JSON.stringify(data));
+            console.info('Succeeded in setting window transition animation. Cause: ' + JSON.stringify(data));
           }).catch((err: BusinessError) => {
             console.error(`Failed to set window transition animation. Cause code: ${err.code}, message: ${err.message}`);
           });
