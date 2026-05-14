@@ -29,7 +29,7 @@ function getMediaTypeByMimeType(mimeType: string): string {
 }
 ```
 
-## Identify Burst Photo Assets by URI
+## Identifying Burst Photo Assets by URI
 
 The URI of an unrenamed burst photo contains specific identifiers. You can determine whether an asset is a burst photo by checking keywords in the URI.
 
