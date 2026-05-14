@@ -182,10 +182,10 @@
    // 获取视频缩略图（callback模式）。
    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
      if (err) {
-       console.error(TAG, `fetch failed, error = ${JSON.stringify(err)}`);
+       console.error(TAG, `fetch frame failed, error code: ${err.code}, error message: ${err.message}`);
        return;
      }
-     console.info(TAG, `fetch success.`);
+     console.info(TAG, `fetch frame successfully.`);
      if (frameInfo !== undefined && frameInfo.image !== undefined) {
        this.pixelMap = frameInfo.image;
      }
