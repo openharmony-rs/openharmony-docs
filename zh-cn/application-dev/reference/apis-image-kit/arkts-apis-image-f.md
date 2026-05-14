@@ -1583,8 +1583,7 @@ ArkTS-Sta: createImageSource(uri: string): ImageSource | undefined
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-| ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br> ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1649,8 +1648,7 @@ ArkTS-Sta: createImageSource(uri: string, options: SourceOptions): ImageSource |
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br> ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1714,8 +1712,7 @@ ArkTS-Sta: createImageSource(fd: int): ImageSource | undefined
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1785,8 +1782,7 @@ ArkTS-Sta: createImageSource(fd: int, options: SourceOptions): ImageSource | und
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined  | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1857,8 +1853,7 @@ ArkTS-Sta: createImageSource(buf: ArrayBuffer): ImageSource | undefined
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br> ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1919,8 +1914,7 @@ ArkTS-Sta: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSou
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br> ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1981,8 +1975,7 @@ ArkTS-Sta: createImageSource(rawfile: resourceManager.RawFileDescriptor, options
 
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
-|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br> ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -2062,8 +2055,7 @@ ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer): ImageSource | undefined
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
-| ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) <br> ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
@@ -2143,8 +2135,7 @@ ArkTS-Sta: CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): I
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource，失败时返回undefined。 |
-| ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
+| ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md)<br>ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined | 返回ImageSource，失败时返回undefined。 |
 
 **示例：**
 
@@ -2466,8 +2457,7 @@ ArkTS-Sta: createImageReceiver(size: Size, format: ImageFormat, capacity: int): 
 
 | 类型                             | 说明                                    |
 | -------------------------------- | --------------------------------------- |
-| ArkTS-Dyn: [ImageReceiver](arkts-apis-image-ImageReceiver.md) | 如果操作成功，则返回ImageReceiver实例。 |
-| ArkTS-Sta: [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined| 如果操作成功，则返回ImageReceiver实例。 |
+| ArkTS-Dyn: [ImageReceiver](arkts-apis-image-ImageReceiver.md)<br>ArkTS-Sta: [ImageReceiver](arkts-apis-image-ImageReceiver.md) \| undefined | 如果操作成功，则返回ImageReceiver实例。 |
 
 **错误码：**
 
