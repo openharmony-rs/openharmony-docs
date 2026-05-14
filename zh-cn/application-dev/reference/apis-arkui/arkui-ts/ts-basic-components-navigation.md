@@ -14,7 +14,7 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 >
 > - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性实现安全区避让。
 >
-> - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及[全模态](ts-universal-attributes-modal-transition.md)的生命周期进行联动。
+> - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及[全屏模态转场](ts-universal-attributes-modal-transition.md)的生命周期进行联动。
 >
 > - Navigation未设置主副标题（[title](#title)或[subTitle](#subtitledeprecated)）且[hideBackButton](#hidebackbutton)属性设置为true时，不显示标题栏。
 >
@@ -106,7 +106,7 @@ title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCus
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | 是   | 页面标题，使用NavigationCustomTitle类型设置height高度时，[titleMode](#titlemode)属性不会生效。<br/>字符串超长时，如果不设置副标题，先缩小再换行（2行）最后截断。如果设置副标题，先缩小最后截断。 |
-| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | 否   | 标题栏选项。 包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。                                                 |
+| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | 否   | 标题栏选项。包含标题栏背景颜色、标题栏背景模糊样式及模糊选项、标题栏背景属性、标题栏布局方式、标题栏滚动模糊效果选项、标题栏起始端内间距、标题栏结束端内间距、主标题属性修改器、子标题属性修改器、是否响应悬停态。                                                 |
 
 ### menus
 
@@ -547,7 +547,7 @@ enableModeChangeAnimation(isEnabled: Optional&lt;boolean&gt;)
 
 enableToolBarAdaptation(enable: Optional&lt;boolean&gt;)
 
-设置是否启用Navigation和NavDestination的工具栏[toolbarConfiguration](#toolbarconfiguration10)自适应能力。关闭此能力后，底部工具栏[toolbarConfiguration](#toolbarconfiguration10)将不会再移动至页面右上角的菜单中。该接口不适配于自定义菜单，使用该接口需采用[NavigationMenuItem](#navigationmenuitem)接口来定义[菜单](#menus)。
+设置是否启用Navigation和NavDestination的工具栏[toolbarConfiguration](#toolbarconfiguration10)自适应能力。关闭此能力后，底部工具栏[toolbarConfiguration](#toolbarconfiguration10)将不会再移动至页面右上角的菜单中。该接口不适配于自定义菜单，使用该接口需采用[NavigationMenuItem](#navigationmenuitem)接口来定义[menus](#menus)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -1928,7 +1928,42 @@ Navigation分割线颜色及上下边距。
 |---------| --- |------|
 |STANDARD | 0 | 指定该模式的标题栏或工具栏与内容区采用上下布局。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 |STACK | 1 | 指定该模式的标题栏或工具栏与内容区采用层叠布局，标题栏或工具栏布局在内容区上层。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-|SAFE_AREA_PADDING<sup>14+</sup> | 2 | 将指定该模式的标题栏或工具栏设置为[组件级安全区](./ts-universal-attributes-size.md#safeareapadding14)。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+|SAFE_AREA_PADDING<sup>14+</sup> | 2 | 将指定该模式的标题栏或工具栏设置为[safeAreaPadding](./ts-universal-attributes-size.md#safeareapadding14)。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
+
+## ScrollEffectType
+
+标题栏滚动模糊效果类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| COMMON_BLUR | 0 | 普通模糊样式，对背景做均匀模糊，模糊背景随透明渐变显隐。 |
+| GRADUAL_BLUR | 1 | 渐进模糊样式，对标题背景做均匀模糊且边界清晰，标题栏内容颜色或状态在滚动前后切换，并在滚动过程中随手势线性变化。 |
+
+## ScrollEffectOptions
+
+标题栏滚动模糊效果选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| scrollEffectType | [ScrollEffectType](#scrolleffecttype) | 否 | 是 | 标题栏滚动模糊效果类型。<br/>默认值：ScrollEffectType.COMMON_BLUR |
+| blurEffectiveStartOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 启用标题栏滚动模糊效果的最小滑动距离。<br/>默认值：0vp |
+| blurEffectiveEndOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 达到标题栏最终模糊样式的最大滑动距离。<br/>默认值：8vp |
 
 ## NavigationTitleOptions<sup>11+</sup>
 
@@ -1944,11 +1979,12 @@ Navigation分割线颜色及上下边距。
 | backgroundBlurStyleOptions<sup>19+</sup>   | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)        | 否    | 是    | 标题栏背景模糊选项。<br/>**说明：** <br/>只在设置了backgroundBlurStyle时生效。<br/>不建议与backgroundEffect同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>19+</sup>   | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)        | 否    | 是    | 设置标题栏背景属性包括：模糊半径，亮度，饱和度，颜色等。<br/>**说明：** <br/>不建议与backgroundBlurStyleOptions同时使用。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | barStyle<sup>12+</sup>   | [BarStyle](#barstyle12枚举说明)        | 否    | 是    | 设置标题栏布局方式。<br/>默认值：BarStyle.STANDARD<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| paddingStart<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏起始端内间距。<br/>仅支持以下任一场景：<br/>1. 显示返回图标，即[hideBackButton](#hidebackbutton)为false；<br/>2. 使用非自定义标题，即[标题value](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_left')`)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| paddingEnd<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏结束端内间距。<br/>仅支持以下任一场景：<br/>1. 使用非自定义菜单，即[菜单value](#menus)为Array&lt;NavigationMenuItem&gt;；<br/>2. 没有右上角菜单，且使用非自定义标题，即[标题value](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_right')`)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| paddingStart<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏起始端内间距。<br/>仅支持以下任一场景：<br/>1. 显示返回图标，即[hideBackButton](#hidebackbutton)为false；<br/>2. 使用非自定义标题，即[title](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_left')`)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| paddingEnd<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏结束端内间距。<br/>仅支持以下任一场景：<br/>1. 使用非自定义菜单，即[menus](#menus)为Array&lt;NavigationMenuItem&gt;；<br/>2. 没有右上角菜单，且使用非自定义标题，即[title](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_right')`)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | mainTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 主标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置；<br/>3. [Free](#navigationtitlemode枚举说明)模式下设置字体大小时，原有滑动改变标题大小的效果失效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | subTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 子标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | enableHoverMode<sup>13+</sup>   | boolean | 否    | 是    | 是否响应悬停态。<br/>使用规则：<br/>1. 需满足Navigation为全屏大小；<br/>2. 标题栏显示模式为[Free](#navigationtitlemode枚举说明)时或者标题栏布局方式为[STANDARD](#barstyle12枚举说明)时，此接口设置无效。<br/>true：响应悬停态；false：不响应悬停态。<br/>默认值：false<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| scrollEffectOptions | [ScrollEffectOptions](#scrolleffectoptions) | 否 | 是 | 标题栏滚动模糊效果选项。默认值undefined，不启用标题栏的滚动模糊。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## NavigationToolbarOptions<sup>11+</sup>
 
@@ -5375,3 +5411,73 @@ export struct NavigationMenu {
 > 5. 点击应用重新进入，可发现页面依然是点击跳转按钮后的页面。
 
 ![navigation_recoverable.gif](figures/navigation_recoverable.gif)
+
+### 示例19（设置ScrollEffectOptions开启标题栏滚动模糊）
+
+该示例演示如何使用[scrollEffectOptions](#scrolleffectoptions)配置项，开启标题栏滚动模糊效果。
+
+从API版本26.0.0开始，[title](#title)接口的参数options，新增了[scrollEffectOptions](#scrolleffectoptions)属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct NavigationExample {
+  private arr: number[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 50; i++) {
+      this.arr.push(i)
+    }
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        Column() {
+          List({ space: 12, initialIndex: 0 }) {
+            ListItem() {
+              Column() {
+                Blank()
+                  .width('100%')
+                  .height(128)
+              }
+            }
+            ForEach(this.arr, (item: number) => {
+              ListItem() {
+                Text('' + item)
+                  .width('90%')
+                  .height(72)
+                  .backgroundColor($r('sys.color.brand'))
+                  .borderRadius(24)
+                  .fontSize(16)
+                  .fontWeight(500)
+                  .textAlign(TextAlign.Center)
+              }
+            }, (item: number) => item.toString())
+          }
+          .height("100%")
+          .width('100%')
+        }
+        .width('100%')
+        .height('100%')
+      }
+      .title({ main: "Main Title", sub: "Sub Title" }, {
+        barStyle: BarStyle.STACK,
+        scrollEffectOptions: {
+          scrollEffectType: ScrollEffectType.COMMON_BLUR,
+          blurEffectiveStartOffset: LengthMetrics.vp(8),
+          blurEffectiveEndOffset: LengthMetrics.vp(56)
+        }
+      })
+      .titleMode(NavigationTitleMode.Full)
+      .hideTitleBar(false)
+      .hideToolBar(false)
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+![scrollEffect.gif](figures/scrollEffect.gif)
