@@ -423,7 +423,7 @@ ArkTS-Sta: getSync(id: string, options?: componentSnapshot.SnapshotOptions): ima
 
 | 类型                            | 说明       |
 | ----------------------------- | -------- |
-| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt;<br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null | 截图返回的结果。 |
+| ArkTS-Dyn: image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| null | 截图返回的结果。 |
 
 **错误码：** 
 
