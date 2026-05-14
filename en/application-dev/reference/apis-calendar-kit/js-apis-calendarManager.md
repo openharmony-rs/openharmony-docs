@@ -148,7 +148,7 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 
 Creates a **Calendar** object based on the calendar account information. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21
 
 ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
@@ -204,7 +204,7 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 
 Creates a **Calendar** object based on the calendar account information. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21
 
 ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
@@ -260,7 +260,7 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 
 Deletes a specified **Calendar** object. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21
 
 ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
@@ -325,7 +325,7 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 
 Deletes a specified **Calendar** object. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21
 
 ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
@@ -720,7 +720,7 @@ Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21
 
 ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
@@ -847,7 +847,7 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 Adds events in batches, with no event ID, **instanceStartTime**, and **instanceEndTime** specified in [Event](#event). This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21
 
 ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
@@ -916,7 +916,7 @@ addEvents(events: Event[]): Promise\<void>
 
 Adds events in batches, with no event ID, **instanceStartTime**, and **instanceEndTime** specified in [Event](#event). This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21
 
 ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
