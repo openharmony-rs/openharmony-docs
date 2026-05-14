@@ -30,6 +30,10 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
 | delayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int| 是   | 是   | AVIS图片的每帧播放时长。<br>该值为整数。单位为毫秒（ms）。 |

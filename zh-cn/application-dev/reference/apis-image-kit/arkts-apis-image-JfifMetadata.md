@@ -30,6 +30,10 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
 | densityUnit | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | 用于定义Xdensity（水平像素密度）和Ydensity（垂直像素密度）的物理度量单位。<br>- 0表示无单位（仅像素宽高比）。<br>- 1表示每英寸像素数（DPI）。<br>- 2表示每厘米像素数（DPC）。<br>该值为正整数。 |

@@ -30,6 +30,10 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
 | xPixelsPerMeter | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | PNG图像X方向每米像素数。<br>该值为正整数。 |
