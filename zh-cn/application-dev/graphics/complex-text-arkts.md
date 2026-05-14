@@ -1594,26 +1594,138 @@ struct Font08 {
 <!-- @[arkts_ellipsis_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample9.ets) -->
 
 ``` TypeScript
-// 设置文本样式，包含省略号字符串和省略号模式
-let myTextStyle: text.TextStyle = {
-  color: {
-    alpha: 255,
-    red: 0,
-    green: 0,
-    blue: 0
-  },
-  fontSize: 40,
-  // 设置省略号字符串
-  ellipsis: '...',
-  // 设置省略号模式为尾部省略
-  ellipsisMode: text.EllipsisMode.END
-};
-// 设置段落样式，包含最大行数
-let myParagraphStyle: text.ParagraphStyle = {
-  textStyle: myTextStyle,
-  // 设置最大显示行数为2
-  maxLines: 2
-};
+import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+import { UIContext } from '@kit.ArkUI'
+import { text } from '@kit.ArkGraphics2D'
+
+// 创建一个MyRenderNode类，并绘制带省略号的文本。
+class MyRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    let canvas = context.canvas;
+    // 设置文本样式，包含省略号字符串和省略号模式
+    let myTextStyle: text.TextStyle = {
+      color: {
+        alpha: 255,
+        red: 0,
+        green: 0,
+        blue: 0
+      },
+      fontSize: 40,
+      // 设置省略号字符串
+      ellipsis: '...',
+      // 设置省略号模式为尾部省略
+      ellipsisMode: text.EllipsisMode.END
+    };
+    // 设置段落样式，包含最大行数
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle,
+      // 设置最大显示行数为2
+      maxLines: 2
+    };
+    let fontCollection = text.FontCollection.getGlobalInstance();
+    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+    paragraphBuilder.pushStyle(myTextStyle);
+    paragraphBuilder.addText('This is a long text that will be truncated with ellipsis at the end. ' +
+      'When the text exceeds the maximum number of lines, the ellipsis will be shown.');
+    let paragraph = paragraphBuilder.build();
+    paragraph.layoutSync(800);
+    // 绘制尾部省略文本
+    paragraph.paint(canvas, 10, 0);
+    // 设置省略号模式为多行中部省略
+    let textStyleMiddle: text.TextStyle = {
+      color: {
+        alpha: 255,
+        red: 0,
+        green: 0,
+        blue: 0
+      },
+      fontSize: 40,
+      ellipsis: '...',
+      ellipsisMode: text.EllipsisMode.MULTILINE_MIDDLE
+    };
+    let paragraphStyleMiddle: text.ParagraphStyle = {
+      textStyle: textStyleMiddle,
+      maxLines: 2
+    };
+    let builderMiddle = new text.ParagraphBuilder(paragraphStyleMiddle, fontCollection);
+    builderMiddle.pushStyle(textStyleMiddle);
+    builderMiddle.addText('This is a long text that will be truncated with ellipsis in the middle. ' +
+      'When the text exceeds the maximum number of lines, the ellipsis will be shown in the middle.');
+    let paragraphMiddle = builderMiddle.build();
+    paragraphMiddle.layoutSync(800);
+    // 绘制多行中部省略文本
+    paragraphMiddle.paint(canvas, 10, 120);
+  }
+}
+
+const textNode = new MyRenderNode();
+textNode.frame = { x: 0, y: 0, width: 400, height: 600 };
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode {
+    this.rootNode = new FrameNode(uiContext);
+    if (this.rootNode == null) {
+      return this.rootNode;
+    }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      renderNode.frame = { x: 0, y: 0, width: 10, height: 500 };
+    }
+    return this.rootNode;
+  }
+
+  addNode(node: RenderNode): void {
+    if (this.rootNode == null) {
+      return;
+    }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      renderNode.appendChild(node);
+    }
+  }
+
+  clearNodes(): void {
+    if (this.rootNode == null) {
+      return;
+    }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      renderNode.clearChildren();
+    }
+  }
+}
+
+let myNodeController: MyNodeController = new MyNodeController();
+
+async function performTask() {
+  myNodeController.clearNodes();
+  myNodeController.addNode(textNode);
+}
+
+@Entry
+@Component
+struct EllipsisText {
+  @State src: Resource = $r('app.media.startIcon');
+  build() {
+    Column() {
+      Row() {
+        NodeContainer(myNodeController)
+          .height('100%')
+          .width('100%')
+        Image(this.src)
+          .width('0%').height('0%')
+          .onComplete(() => {
+            performTask();
+          })
+      }
+      .width('100%')
+    }
+  }
+}
 ```
 
 具体效果如下所示：
@@ -1633,12 +1745,76 @@ let myParagraphStyle: text.ParagraphStyle = {
 <!-- @[arkts_break_strategy_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets) -->
 
 ``` TypeScript
-// 设置断行策略为均衡策略（BALANCED）
-let myParagraphStyle: text.ParagraphStyle = {
-  textStyle: myTextStyle,
-  // 设置断行策略为均衡策略，各行宽度尽量均衡
-  breakStrategy: text.BreakStrategy.BALANCED
-};
+import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+import { UIContext } from '@kit.ArkUI'
+import { text } from '@kit.ArkGraphics2D'
+
+class MyRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    let canvas = context.canvas;
+    // 设置断行策略为均衡策略（BALANCED）
+    let myTextStyle: text.TextStyle = {
+      color: { alpha: 255, red: 0, green: 0, blue: 0 },
+      fontSize: 40
+    };
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle,
+      // 设置断行策略为均衡策略，各行宽度尽量均衡
+      breakStrategy: text.BreakStrategy.BALANCED
+    };
+    let fontCollection = text.FontCollection.getGlobalInstance();
+    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+    paragraphBuilder.pushStyle(myTextStyle);
+    paragraphBuilder.addText('This is a long text that demonstrates the balanced break strategy. ' +
+      'The lines will be distributed as evenly as possible to avoid wide spacing differences.');
+    let paragraph = paragraphBuilder.build();
+    paragraph.layoutSync(800);
+    paragraph.paint(canvas, 10, 0);
+  }
+}
+
+const textNode = new MyRenderNode();
+textNode.frame = { x: 0, y: 0, width: 400, height: 600 };
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  makeNode(uiContext: UIContext): FrameNode {
+    this.rootNode = new FrameNode(uiContext);
+    if (this.rootNode == null) { return this.rootNode; }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) { renderNode.frame = { x: 0, y: 0, width: 10, height: 500 }; }
+    return this.rootNode;
+  }
+  addNode(node: RenderNode): void {
+    if (this.rootNode == null) { return; }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) { renderNode.appendChild(node); }
+  }
+  clearNodes(): void {
+    if (this.rootNode == null) { return; }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) { renderNode.clearChildren(); }
+  }
+}
+
+let myNodeController: MyNodeController = new MyNodeController();
+async function performTask() { myNodeController.clearNodes(); myNodeController.addNode(textNode); }
+
+@Entry
+@Component
+struct BreakStrategyText {
+  @State src: Resource = $r('app.media.startIcon');
+  build() {
+    Column() {
+      Row() {
+        NodeContainer(myNodeController).height('100%').width('100%')
+        Image(this.src).width('0%').height('0%').onComplete(() => { performTask(); })
+      }.width('100%')
+    }
+  }
+}
 ```
 
 具体效果如下所示：
@@ -1655,11 +1831,79 @@ let myParagraphStyle: text.ParagraphStyle = {
 <!-- @[arkts_punctuation_compress_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets) -->
 
 ``` TypeScript
-// 开启行首标点压缩
-let myParagraphStyle: text.ParagraphStyle = {
-  textStyle: myTextStyle,
-  compressHeadPunctuation: true
-};
+import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+import { UIContext } from '@kit.ArkUI'
+import { text, drawing } from '@kit.ArkGraphics2D'
+
+class MyRenderNode extends RenderNode {
+  async draw(context: DrawContext) {
+    let canvas = context.canvas;
+    // 开启行首标点挤压
+    let myTextStyle: text.TextStyle = {
+      color: { alpha: 255, red: 0, green: 0, blue: 0 },
+      fontSize: 40
+    };
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle,
+      compressHeadPunctuation: true
+    };
+    let fontCollection = text.FontCollection.getGlobalInstance();
+    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+    paragraphBuilder.pushStyle(myTextStyle);
+    paragraphBuilder.addText('《你好世界》这是一个中文标点压缩的示例文字，用于展示标点在行首的挤压效果。通过对比可以观察到挤压前后的差异。');
+    let paragraph = paragraphBuilder.build();
+    paragraph.layoutSync(800);
+    let backgroundPen = new drawing.Pen();
+    backgroundPen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    canvas.attachPen(backgroundPen);
+    canvas.drawRect({ left: 10, top: 0, right: 810, bottom: paragraph.getHeight() });
+    canvas.detachPen();
+    paragraph.paint(canvas, 10, 0);
+  }
+}
+
+const textNode = new MyRenderNode();
+textNode.frame = { x: 0, y: 0, width: 400, height: 600 };
+textNode.pivot = { x: 0.2, y: 0.8 };
+textNode.scale = { x: 1, y: 1 };
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  makeNode(uiContext: UIContext): FrameNode {
+    this.rootNode = new FrameNode(uiContext);
+    if (this.rootNode == null) { return this.rootNode; }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) { renderNode.frame = { x: 0, y: 0, width: 10, height: 500 }; }
+    return this.rootNode;
+  }
+  addNode(node: RenderNode): void {
+    if (this.rootNode == null) { return; }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) { renderNode.appendChild(node); }
+  }
+  clearNodes(): void {
+    if (this.rootNode == null) { return; }
+    const renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) { renderNode.clearChildren(); }
+  }
+}
+
+let myNodeController: MyNodeController = new MyNodeController();
+async function performTask() { myNodeController.clearNodes(); myNodeController.addNode(textNode); }
+
+@Entry
+@Component
+struct PunctuationText {
+  @State src: Resource = $r('app.media.startIcon');
+  build() {
+    Column() {
+      Row() {
+        NodeContainer(myNodeController).height('100%').width('100%')
+        Image(this.src).width('0%').height('0%').onComplete(() => { performTask(); })
+      }.width('100%')
+    }
+  }
+}
 ```
 
 具体效果如下所示：

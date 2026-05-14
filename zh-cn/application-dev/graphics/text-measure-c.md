@@ -161,7 +161,7 @@
    使用[OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterpositionatcoordinatewithbuffer)获取指定编码类型下的字符位置。返回的`OH_Drawing_PositionAndAffinity`包含位置索引和亲和度信息。
 
    <!-- @[c_text_metrics_char_position_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    // 根据坐标获取字符位置，使用UTF-8编码
    OH_Drawing_PositionAndAffinity *charPos =
@@ -181,7 +181,7 @@
    使用[OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetcharacterrangeforglyphrangewithbuffer)根据字形范围获取对应的字符范围。
 
    <!-- @[c_text_metrics_glyph_info_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    // 根据字形范围[0, 5)获取对应的字符范围
    OH_Drawing_Range *actualGlyphRange = nullptr;
@@ -203,7 +203,7 @@
    使用[OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographygetglyphrangeforcharacterrangewithbuffer)根据字符范围获取对应的字形范围。
 
    <!-- @[c_text_metrics_glyph_info_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
-
+   
    ``` C++
    // 根据字符范围[0, 10)获取对应的字形范围
    OH_Drawing_Range *actualCharRange = nullptr;

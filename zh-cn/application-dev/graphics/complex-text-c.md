@@ -1058,6 +1058,9 @@ OH_Drawing_DestroyTypography(typography);
 <!-- @[complex_text_c_ellipsis_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
+// 创建 FontCollection
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+
 // 创建一个带有省略号设置的 TypographyStyle
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置最大行数为2，超过2行的部分将被省略
@@ -1067,6 +1070,36 @@ OH_Drawing_SetTypographyStyleAttributeInt(typoStyle,
     OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL, ELLIPSIS_MODAL_TAIL);
 // 设置自定义省略号字符串
 OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
+// 设置对齐方式为居中
+OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
+
+// 创建文本样式
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TWENTY(width_));
+
+// 创建段落并排版
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+const char *text =
+    "This is a long text that will be truncated with ellipsis at the tail. "
+    "The ellipsis will appear at the end of the text.";
+OH_Drawing_TypographyHandlerAddText(handler, text);
+
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
+
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 释放内存
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
 ```
 
 | 省略号模式 | 效果 |
@@ -1087,10 +1120,42 @@ OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
 <!-- @[complex_text_c_break_strategy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
+// 创建 FontCollection
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+
 // 创建一个设置了均衡断行策略的 TypographyStyle
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
 // 设置断行策略为 BALANCED（均衡策略）
 OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_BALANCED);
+// 设置对齐方式为居中
+OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
+
+// 创建文本样式
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TWENTY(width_));
+
+// 创建段落并排版
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+const char *text =
+    "This text demonstrates the balanced break strategy which makes line lengths more even.";
+OH_Drawing_TypographyHandlerAddText(handler, text);
+
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
+
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 释放内存
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
 ```
 
 | 换行方式 | 效果 |
@@ -1116,6 +1181,24 @@ OH_Drawing_ErrorCode errorCode = OH_Drawing_SetTypographyStyleAttributeBool(typo
 if (errorCode != OH_DRAWING_SUCCESS) {
     DRAWING_LOGE("SetTypographyStyleAttributeBool failed, errorCode: %{public}d", errorCode);
 }
+OH_Drawing_TypographyCreate *handlerCompress = OH_Drawing_CreateTypographyHandler(typoStyleCompress, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handlerCompress, txtStyle);
+OH_Drawing_TypographyHandlerAddText(handlerCompress, text);
+OH_Drawing_Typography *typographyCompress = OH_Drawing_CreateTypography(handlerCompress);
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typographyCompress, maxWidth);
+// 绘制红色边框
+OH_Drawing_CanvasAttachPen(cCanvas_, pen);
+double heightCompress = OH_Drawing_TypographyGetHeight(typographyCompress);
+double longestLineCompress = OH_Drawing_TypographyGetLongestLine(typographyCompress);
+double offsetY = DIV_TEN(width_) + heightNoCompress + DIV_TEN(width_);
+OH_Drawing_Rect *rectCompress = OH_Drawing_RectCreate(0, offsetY, longestLineCompress,
+    offsetY + heightCompress);
+OH_Drawing_CanvasDrawRect(cCanvas_, rectCompress);
+OH_Drawing_CanvasDetachPen(cCanvas_);
+OH_Drawing_RectDestroy(rectCompress);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typographyCompress, cCanvas_, 0, offsetY);
 ```
 
 | 是否开启行首标点压缩 | 效果 |

@@ -134,7 +134,7 @@
    使用[layoutWithConstraints()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#layoutwithconstraints24)接口可以在指定的宽高约束内进行排版，返回的结果包含实际排版尺寸（correctRect）和适配的字符串范围（fitStrRange）。
 
    <!-- @[ts_text_metrics_layout_with_constraints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // case6: 在限定宽高区域内排版文本，获取排版结果
    let constraint: text.TextRectSize = { width: 600, height: 200 };
@@ -154,7 +154,7 @@
    使用[getCharacterPositionAtCoordinate()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterpositionatcoordinate24)获取指定编码类型下的字符位置。返回的PositionWithAffinity包含字符索引和亲和度信息。
 
    <!-- @[ts_text_metrics_get_character_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // case8: 根据坐标获取字符位置（指定编码类型）
    let charPos: text.PositionWithAffinity =
@@ -168,7 +168,7 @@
    使用[getCharacterRangeForGlyphRange()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getcharacterrangeforglyphrange24)根据字形范围获取对应的字符范围，使用[getGlyphRangeForCharacterRange()](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getglyphrangeforcharacterrange24)根据字符范围获取对应的字形范围。返回的数组包含两个元素，第一个是目标范围，第二个是实际范围。编码类型支持UTF-8和UTF-16。
 
    <!-- @[ts_text_metrics_glyph_character_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/TextMetrics/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // case9: 根据字形范围获取字符范围
    let glyphRange: text.Range = { start: 0, end: 2 };
