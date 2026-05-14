@@ -2273,8 +2273,8 @@ screen.stopExpand(expandScreenIds).then(() => {
 | activeModeIndex   | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br/> **ArkTS-Dyn起始版本：** 10   <br/>  **ArkTS-Sta起始版本：** 23     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。**ArkTS-Dyn起始版本：** 15   <br/>  **ArkTS-Sta起始版本：** 23 |       
-
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。**ArkTS-Dyn起始版本：** 15   <br/>  **ArkTS-Sta起始版本：** 23 |
+| densityDpi<sup>26+</sup> | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。**ArkTS-Dyn起始版本：** 26   <br/>  **ArkTS-Sta起始版本：** 26 |
 ### setOrientation
 
 setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
