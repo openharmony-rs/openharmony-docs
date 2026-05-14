@@ -56,6 +56,13 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_FrameMetrics_GetVsyncTimestamp(const OH_WindowManager_FrameMetrics* metrics, uint64_t* timestamp)](#oh_windowmanager_framemetrics_getvsynctimestamp) | - | Obtains the timestamp when this frame starts.|
 | [int32_t OH_WindowManager_RegisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_registerframemetricsmeasuredcallback) | - | Registers a callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> The callback is triggered only when the client UI content is redrawn (for example, page switching, interaction with responsive components, or background color and opacity setting).<br> To cancel the registration, call the [OH_WindowManager_UnregisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_unregisterframemetricsmeasuredcallback) API.|
 | [int32_t OH_WindowManager_UnregisterFrameMetricsMeasuredCallback(int32_t windowId, OH_WindowManager_FrameMetricsMeasuredCallback callback)](#oh_windowmanager_unregisterframemetricsmeasuredcallback) | - | Unregisters the callback for window frame metric change events.<br> This API depends on the loading of the window page content. That is, this API can be called only after the **loadContent()** or **setUIContent()** API in ArkTS takes effect.<br> To register such a callback, call the [OH_WindowManager_RegisterFrameMetricsMeasuredCallback](capi-oh-window-h.md#oh_windowmanager_registerframemetricsmeasuredcallback) API.|
+| [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | Obtains the scale factor of the system default display size of the screen where the window is located.|
+| [int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getsystemdensity) | - | Obtains the scale factor of the system display size of the screen where the window is located.|
+| [int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getcustomdensity) | - | Obtains the scale factor of the custom display size of the window.|
+| [int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)](#oh_windowmanager_getdensityinfocopy) | - | Obtains window scale factor information, including the scale factors of the system display size, system default display size, and custom display size. The priorities in descending order are as follows:<br> Scale factor of the custom display size: window-level display scale factor, which affects only a single window.<br> Scale factor of the system display size: display size scale factor set in the current system.<br> Scale factor of the system default display size: default reference scale factor of the system.<br>|
+| [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Registers a callback for listening to window scale factor changes.<br> This callback will be triggered when any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.<br> To unregister this callback, use [OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback).|
+| [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | Unregisters the callback for listening to window scale factor changes.<br> This callback will not be triggered after being unregistered even if any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.<br>|
+| [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | Releases the memory occupied by the window scale factor object.|
 
 ## Function Description
 
@@ -815,7 +822,7 @@ Registers a callback for window frame metric change events.<br> This API depends
 
 | Type| Description|
 | -- | -- |
-| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window is not created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window has not been created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
 
 ### OH_WindowManager_UnregisterFrameMetricsMeasuredCallback()
 
@@ -840,4 +847,190 @@ Unregisters the callback for window frame metric change events.<br> This API dep
 
 | Type| Description|
 | -- | -- |
-| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window is not created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| int32_t | One of the following result codes:<br> **OK**: The function is successfully called.<br> **WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes:<br> 1. The window has not been created or has been destroyed.<br> 2. The window status is abnormal.<br> **WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: The parameter is incorrect. The value range of the parameter is improper.<br> For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_DensityInfo_GetDefaultDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**Description**
+
+Obtains the scale factor of the system default display size of the screen where the window is located.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| float* density | Pointer to the scale factor of the system default display size. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_DensityInfo_GetSystemDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**Description**
+
+Obtains the scale factor of the system display size of the screen where the window is located.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| float* density | Pointer to the scale factor of the system display size. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_DensityInfo_GetCustomDensity()
+
+```c
+int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)
+```
+
+**Description**
+
+Obtains the scale factor of the custom display size of the window.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information, which can be obtained through [OH_WindowManager_GetDensityInfoCopy](capi-oh-window-h.md#oh_windowmanager_getdensityinfocopy).|
+| float* density | Pointer to the scale factor of the custom display size of the window. The value ranges from 0.5 to 4.0. This parameter is used as an output parameter.<br>If this parameter is not set, the scale factor of the system display size is used. For a child window, global floating window, modal window, or system window, the scale factor of the custom display size is equal to the scale factor of the system display size (**systemDensity**).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_GetDensityInfoCopy()
+
+```c
+int32_t OH_WindowManager_GetDensityInfoCopy(int32_t windowId, const OH_WindowManager_DensityInfo** info)
+```
+
+**Description**
+
+Obtains window scale factor information, including the scale factors of the system display size, system default display size, and custom display size. The priorities in descending order are as follows:
+
+- Scale factor of the custom display size: window-level display scale factor, which affects only a single window.
+
+- Scale factor of the system display size: display size scale factor set in the current system.
+
+- Scale factor of the system default display size: default reference scale factor of the system.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID when the window is created.|
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)** info | Double pointer to the window scale factor information, which is used as an output parameter.<br>If the return value is **NULL**, the device does not support this API.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes: 1. The window has not been created or has been destroyed. 2. The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_RegisterDensityInfoChangeCallback()
+
+```c
+int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)
+```
+
+**Description**
+
+Registers a callback for listening to window scale factor changes.
+
+This callback will be triggered when any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.
+
+To unregister this callback, use [OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback).
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID when the window is created.|
+| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | Callback used to return the window scale factor.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes: 1. The window has not been created or has been destroyed. 2. The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_UnregisterDensityInfoChangeCallback()
+
+```c
+int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)
+```
+
+**Description**
+
+Unregisters the callback for listening to window scale factor changes.
+
+This callback will not be triggered after being unregistered even if any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| int32_t windowId | Window ID when the window is created.|
+| [OH_WindowManager_DensityInfoCallback](capi-oh-window-comm-h.md#oh_windowmanager_densityinfocallback) callback | Callback used to return the window scale factor.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal. Possible causes: 1. The window has not been created or has been destroyed. 2. The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+
+### OH_WindowManager_DensityInfo_Release()
+
+```c
+int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)
+```
+
+**Description**
+
+Releases the memory occupied by the window scale factor object.
+
+**Since:** 24
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [const OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)* info | Pointer to the window scale factor information. This parameter is used as an output parameter.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|

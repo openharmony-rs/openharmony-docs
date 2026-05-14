@@ -3394,8 +3394,6 @@ Generally, when a user clicks a child window, the child window is displayed on t
 
 Before calling this API, ensure that the child window has been created and [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed.
 
-This API can be called by non-[independent child windows](../../windowmanager/window-terminology.md#application-window). This API does not take effect and no error is reported when it is called by [independent child windows](../../windowmanager/window-terminology.md#application-window).
-
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Window.SessionManager
