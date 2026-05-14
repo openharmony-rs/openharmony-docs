@@ -148,9 +148,9 @@
     @State count: number = 10;
     ```
 
-2. \@State不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+2. \@State不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 
-   从API version 23开始，添加对\@State装饰Function类型变量的校验，编译期会报错。
+   从API version 23开始，在应用编译时添加了相关校验，\@State装饰Function类型变量会提示ERROR，应在代码中删除Function类型变量的\@State装饰器。
 
 3. 父组件传入undefined时，\@State装饰的变量仍使用本地默认值进行初始化。
    
