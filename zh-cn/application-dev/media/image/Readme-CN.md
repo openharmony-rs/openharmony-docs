@@ -29,7 +29,7 @@
     - [使用Image_NativeModule完成多图对象解码](image-source-picture-c.md)
     - [图片解码内存优化(C/C++)](image-allocator-type-c.md)
     - [图片区域解码与下采样(C/C++)](image-region-and-downsampling-c.md)
-    - [使用Image_NativeModule完成动图解码](image-anim ated-decoding-c.md)
+    - [使用Image_NativeModule完成动图解码](image-animated-decoding-c.md)
     - [使用Image_NativeModule完成HDR图片解码](image-hdr-decoding-c.md)
   - 图片编码<!--image-encoding-c-->
     - [使用Image_NativeModule完成图片编码](image-packer-c.md)
