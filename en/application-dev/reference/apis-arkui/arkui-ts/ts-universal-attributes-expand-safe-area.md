@@ -576,7 +576,6 @@ struct IgnoreLayoutSafeAreaTest1 {
   }
 }
 ```
-![ignoreLayoutSafeArea1](figures/ignoreLayoutSafeArea1.jpg)
 
 ### Example 9: Extending the Component Layout Area with ignoreLayoutSafeArea and LayoutPolicy.matchParent
 
