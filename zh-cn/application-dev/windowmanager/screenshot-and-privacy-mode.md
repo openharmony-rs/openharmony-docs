@@ -515,7 +515,7 @@ struct Index {
       const imageInfo = pixelMap.getImageInfoSync();
       this.imageWidth = imageInfo.size.width;
       this.imageHeight = imageInfo.size.height;
-      this.statusText = `${source} success, sze=${this.imageWidth}x${this.imageHeight}`;
+      this.statusText = `${source} success, size=${this.imageWidth}x${this.imageHeight}`;
     } catch (err) {
       this.imageWidth = 0;
       this.imageHeight = 0;
