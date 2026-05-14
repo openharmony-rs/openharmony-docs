@@ -69,6 +69,7 @@ To improve the performance of **Grid** in scenarios such as jumps and column qua
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name   | Type     | Read Only  | Optional| Description                   |
 | ----- | ------- | ---- | --  | --------------------- |
 | regularSize  | [number, number]  | No   | No| Number of rows and columns occupied by a grid item with regular size. The only supported value is **[1, 1]**, meaning that the grid item occupies one row and one column.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |

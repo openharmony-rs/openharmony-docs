@@ -118,7 +118,7 @@ getId(): string
 
 | 类型     | 说明        |
 | ------ | --------- |
-| string | 当前组件的[组件标识](./ts-universal-attributes-component-id.md#id)。 |
+| string | 当前组件的[组件标识](./ts-universal-attributes-component-id.md)。 |
 
 ### getUniqueId
 
@@ -723,6 +723,8 @@ getDistanceMap(): Map\<SourceTool, number\>
 
 手指信息类型。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选| 说明 |
@@ -737,6 +739,26 @@ getDistanceMap(): Map\<SourceTool, number\>
 | hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否  |  是     |表示事件是由左手点击还是右手点击触发。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | globalDisplayX<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的X坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | globalDisplayY<sup>20+</sup> | number | 否  |  是     |相对于全局屏幕的左上角的Y坐标，单位为vp。<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+
+### getCurrentLocalPosition
+
+getCurrentLocalPosition?(): Coordinate2D
+
+获取手指位置相对于当前组件实时位置的左上角坐标。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 手指位置相对于当前组件实时位置的左上角坐标。 |
 
 ## GestureType
 

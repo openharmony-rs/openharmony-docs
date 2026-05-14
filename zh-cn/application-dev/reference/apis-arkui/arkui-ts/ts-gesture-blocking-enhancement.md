@@ -153,7 +153,7 @@ onTouchTestDone(callback: TouchTestDoneCallback): T
 
 type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<GestureRecognizer\>) => void
 
-动态指定手势识别器是否参与手势处理的回调事件类型。
+动态指定手势识别器是否参与手势处理的回调事件类型，回调内参数的生命周期跟随回调本身，参数内的方法仅支持在回调内同步使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -218,6 +218,58 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 | 类型     | 说明        |
 | ------ | --------- |
 | [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。 |
+
+## shouldRecognizerParallelWith
+
+shouldRecognizerParallelWith(callback: ShouldRecognizerParallelWithCallback): T
+
+提供手势与响应链上其他组件的手势设置并行关系的回调事件。使用callback异步回调。此接口对应的C API接口为[setGestureParallelTo](../capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+| 参数名        | 类型                    | 必填  | 说明                          |
+| ---------- | -------------------------- | ------- | ----------------------------- |
+| callback      | [ShouldRecognizerParallelWithCallback](#shouldrecognizerparallelwithcallback) | 是   |  手势与响应链上其他组件的手势设置并行关系的回调事件，当该组件进行[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时，会触发用户定义的回调来形成手势并行关系。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## ShouldRecognizerParallelWithCallback
+
+type ShouldRecognizerParallelWithCallback = (current: GestureRecognizer, others: Array\<GestureRecognizer\>) => GestureRecognizer
+
+手势与响应链上其他组件的手势设置并行关系的回调事件类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 是   | 当前组件的手势识别器，当前仅支持[GestureType](./ts-gesture-common.md#gesturetype11).PAN_GESTURE类型的手势识别器。 |
+| others | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上优先级高于当前组件的其他组件所持有的同类型[GestureType](./ts-gesture-common.md#gesturetype11)的手势识别器。 |
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | 与current识别器绑定并行关系的某个手势识别器。 |
 
 ## 示例
 
@@ -925,3 +977,141 @@ struct Index {
 }
 ```
 ![example](figures/gestureCollectIntercept.gif)
+
+### 示例7（非内置手势嵌套滚动）
+
+该示例通过[shouldRecognizerParallelWith](#shouldrecognizerparallelwith)和[onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin)实现了嵌套滚动的功能。内部组件优先响应滑动手势，当内部组件滑动至顶部或底部时，外部组件能够接替滑动。
+
+从API版本26.0.0开始，新增shouldRecognizerParallelWith接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct FatherControlChild {
+  scroller: Scroller = new Scroller();
+  scroller2: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  private childRecognizer: GestureRecognizer = new GestureRecognizer();
+  private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+  private lastOffset: number = 0;
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart }) {
+      Scroll(this.scroller) { // 外部滚动容器
+        Column() {
+          Text("Scroll Area")
+            .width('90%')
+            .height(150)
+            .backgroundColor(0xFFFFFF)
+            .borderRadius(15)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+            .margin({ top: 10 })
+          Scroll(this.scroller2) { // 内部滚动容器
+            Column() {
+              Text("Scroll Area2")
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 10 })
+              Column() {
+                ForEach(this.arr, (item: number) => {
+                  Text(item.toString())
+                    .width('90%')
+                    .height(150)
+                    .backgroundColor(0xFFFFFF)
+                    .borderRadius(15)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .margin({ top: 10 })
+                }, (item: string) => item)
+              }.width('100%')
+            }
+          }
+          .id("inner")
+          .width('100%')
+          .height(800)
+        }.width('100%')
+      }
+      .id("outer")
+      .height(600)
+      .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+      .scrollBar(BarState.On) // 滚动条常驻显示
+      .scrollBarColor(Color.Gray) // 滚动条颜色
+      .scrollBarWidth(10) // 滚动条宽度
+      .edgeEffect(EdgeEffect.None)
+      .enableScrollInteraction(false)
+      .gesture(
+        PanGesture()
+          .onActionStart((event: GestureEvent) => {
+            this.lastOffset = this.scroller.currentOffset().yOffset; // 手势开始时，记录当前滚动位置
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            let moveY = event.offsetY; // 手势移动时，计算新位置
+            let targetOffset = this.lastOffset - moveY; // 目标位置 = 初始位置 - 移动距离
+            this.scroller.scrollTo({ xOffset: 0, yOffset: targetOffset });
+          })
+      )
+      .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+        for (let i = 0; i < others.length; i++) {
+          let target = others[i].getEventTargetInfo();
+          if (target) {
+            if (target.getId() == "inner" && others[i].isBuiltIn() &&
+              others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+              this.currentRecognizer = current; // 保存当前组件的识别器
+              this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+              return others[i]; // 返回将要组成并行手势的识别器
+            }
+          }
+        }
+        return undefined;
+      })
+      .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+        others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+        if (current) {
+          let target = current.getEventTargetInfo();
+          if (target) {
+            if (target.getId() == "outer" &&
+              current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+              if (others) {
+                for (let i = 0; i < others.length; i++) {
+                  let target = others[i].getEventTargetInfo() as ScrollableTargetInfo;
+                  if (target instanceof ScrollableTargetInfo && target.getId() == "inner") { // 找到响应链上对应并行的识别器
+                    let panEvent = event as PanGestureEvent;
+                    if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                      if (panEvent && panEvent.offsetY < 0) {
+                        this.childRecognizer.setEnabled(false);
+                        this.currentRecognizer.setEnabled(true);
+                      } else {
+                        this.childRecognizer.setEnabled(true);
+                        this.currentRecognizer.setEnabled(false);
+                      }
+                    } else if (target.isBegin()) {
+                      if (panEvent.offsetY > 0) {
+                        this.childRecognizer.setEnabled(false);
+                        this.currentRecognizer.setEnabled(true);
+                      } else {
+                        this.childRecognizer.setEnabled(true);
+                        this.currentRecognizer.setEnabled(false);
+                      }
+                    } else {
+                      this.childRecognizer.setEnabled(true);
+                      this.currentRecognizer.setEnabled(false);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        return GestureJudgeResult.CONTINUE;
+      })
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+  }
+}
+```
+![fatherControlChild](figures/fatherControlChild.gif)

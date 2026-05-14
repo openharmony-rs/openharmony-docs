@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
  可以进行页面下拉操作并显示刷新动效的容器组件。 
@@ -15,7 +15,7 @@
 >
 >  - 该组件从API version 12开始支持与垂直滚动的[Swiper](ts-container-swiper.md)和[Web](../arkui-js/js-components-basic-web.md)的联动。当[Swiper](ts-container-swiper.md)设置[loop](ts-container-swiper.md#loop)属性为true时，Refresh无法和[Swiper](ts-container-swiper.md)产生联动。
 >
->  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果，可以将[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，此时[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果，具体可以参考[示例9不满一屏实现下拉刷新](#示例9不满一屏场景实现下拉刷新)。
+>  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果，可以将[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，此时[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果，具体可以参考[示例9（不满一屏场景实现下拉刷新）](#示例9不满一屏场景实现下拉刷新)。
 >
 >  - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
 >
@@ -49,6 +49,7 @@ Refresh(value: RefreshOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称         | 类型                                      | 只读   | 可选 | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
 | refreshing | boolean                                  | 否    | 否 | 组件当前是否处于刷新中状态。true表示处于刷新中状态，false表示未处于刷新中状态。<br/>默认值：false<br/>该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
@@ -82,6 +83,28 @@ refreshOffset(value: number)
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | value  | number |  是 | 下拉偏移量，单位vp。<br/>默认值：未设置[promptText](#refreshoptions对象说明)参数时为64vp，设置了[promptText](#refreshoptions对象说明)参数时为96vp。 <br/>如果取值为0或负数的时候此接口采用默认值。|
+
+### refreshOffset
+
+refreshOffset(value: number | Resource)
+
+设置触发刷新的下拉偏移量，当下拉距离小于该属性设置值时离手不会触发刷新，支持Resource资源类型。
+
+未通过该接口设置时，当未设置[promptText](#refreshoptions对象说明)参数时，默认偏移量为64vp；设置了[promptText](#refreshoptions对象说明)参数时，默认偏移量为96vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| value  | number \| [Resource](ts-types.md#resource) |  是 | 下拉偏移量。<br/>单位：vp<br/>取值范围：(0, +∞)。值为0或负数时，按默认值处理。|
 
 ### pullToRefresh<sup>12+</sup>
 
@@ -146,6 +169,28 @@ maxPullDownDistance(distance: Optional\<number>)
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined<br/>单位：vp |
+
+### maxPullDownDistance
+
+maxPullDownDistance(distance: number | Resource | undefined)
+
+设置最大下拉距离，支持Resource资源类型。
+
+未通过该接口设置时，设置最大下拉距离为undefined。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| distance  | number \| [Resource](ts-types.md#resource) \| undefined |  是 | 最大下拉距离。<br/>默认值：undefined<br/>单位：vp<br/>取值范围：[0, +∞)，值小于0时按0处理。当该值小于刷新的下拉偏移量[refreshOffset](#refreshoffset12)时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理，即没有最大下拉距离限制。 |
 
 ## 事件
 

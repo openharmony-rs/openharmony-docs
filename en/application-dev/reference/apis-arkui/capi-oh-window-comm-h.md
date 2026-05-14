@@ -32,6 +32,7 @@ The file declares the common enums and definitions of the window manager.
 | [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md) | WindowManager_AvoidArea | Describes the avoid area.|
 | [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | Describes the main window information.|
 | [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | Describes the configuration of the main window screenshot.|
+| [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) | OH_WindowManager_FrameMetrics | Defines a frame metric data object.|
 
 
 ### Enums
@@ -41,6 +42,12 @@ The file declares the common enums and definitions of the window manager.
 | [WindowManager_ErrorCode](#windowmanager_errorcode) | WindowManager_ErrorCode | Enumerates the status codes returned by the window manager interface.|
 | [WindowManager_AvoidAreaType](#windowmanager_avoidareatype) | WindowManager_AvoidAreaType | Enumerates the avoid area types.|
 | [WindowManager_WindowType](#windowmanager_windowtype) | WindowManager_WindowType | Enumerates the window types.|
+
+### Functions
+
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | Callback for frame metrics.|
 
 ## Enum Description
 
@@ -111,3 +118,17 @@ Enumerates the window types.
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | Main window.|
 | WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Floating window.|
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | Modal window.|
+
+## Function Description
+
+### OH_WindowManager_FrameMetricsMeasuredCallback()
+
+```c
+typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)
+```
+
+**Description**
+
+Callback for frame metrics.
+
+**Since:** 26.0.0

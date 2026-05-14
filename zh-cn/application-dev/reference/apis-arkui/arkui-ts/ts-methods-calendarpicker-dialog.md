@@ -34,7 +34,7 @@ static show(options?: CalendarDialogOptions): void
 
 | 参数名  | 类型                                                    | 必填 | 说明                       |
 | ------- | ------------------------------------------------------- | ---- | -------------------------- |
-| options | [CalendarDialogOptions](#calendardialogoptions对象说明) | 否   | 配置日历选择器弹窗参数。 |
+| options | [CalendarDialogOptions](#calendardialogoptions对象说明) | 否   | 配置日历选择器弹窗参数。参数缺省时无法弹出弹窗。 |
 
 ## CalendarDialogOptions对象说明
 
@@ -46,6 +46,7 @@ static show(options?: CalendarDialogOptions): void
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称       | 类型                                            | 只读 | 可选 | 说明                                                        |
 | ---------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | onAccept   | [Callback](ts-types.md#callback12)\<Date> | 否  | 是  | 点击弹窗中的“确定”按钮时触发该回调。<br/>回调函数的参数表示选中的日期值。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |

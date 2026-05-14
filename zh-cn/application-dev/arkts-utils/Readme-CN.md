@@ -1,10 +1,10 @@
 # ArkTS（方舟编程语言）
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @flyingwolf-->
+<!--Owner: @flyingwolf; @wang_zhaoyong-->
 <!--Designer: @flyingwolf-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease; @ge-yafang-->
 
 - [ArkTS简介](arkts-overview.md)
 - ArkTS基础类库<!--arkts-utils-->
@@ -81,6 +81,7 @@
       - [自定义Native Transferable对象的多线程操作场景](napi-coerce-to-native-binding-object.md)
       - [自定义Native Sendable对象的多线程操作场景](napi-define-sendable-object.md)
       - [Worker常驻线程通过TaskPool进行多任务并发处理](worker-and-taskpool.md)
+      - [Sendable对象改造实践](sendable-trans-guide.md)
   - [并发常见问题](concurrency-faq.md)
 - [ArkTS跨语言交互](arkts-cross-language-interaction.md)
 - ArkTS运行时<!--arkts-runtime-->
@@ -94,6 +95,7 @@
     - [静态方式加载native模块](arkts-import-native-module.md)
     - [基于Node-API加载模块](load-module-base-nodeapi.md)
     - [模块加载副作用及优化](arkts-module-side-effects.md)
+    - [模块化调试工具](arkts-module-debug.md)
     - [模块化常见问题](arkts-module-faq.md)
   - [ArkTS运行时常见问题](arkts-runtime-faq.md)
 - ArkTS编译工具链<!--arkts-compilation-tool-chain-->

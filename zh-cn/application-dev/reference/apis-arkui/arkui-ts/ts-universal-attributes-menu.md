@@ -232,7 +232,7 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 | aboutToDisappear<sup>11+</sup> | ()&nbsp;=&gt;&nbsp;void                                      | 否   | 是  | 菜单退出动效前的事件回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                       |
 | backgroundColor<sup>11+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 | 菜单背板颜色。<br/>默认值：Color.Transparent。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 菜单背板模糊材质。<br/>默认值：BlurStyle.COMPONENT_ULTRA_THICK。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是  | 设置菜单显示和退出的过渡效果。<br/>**说明：**<br />菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。<br />详细描述见[TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明)对象说明。 <br/>动效曲线使用弹簧曲线，在动效退出时，由于弹簧曲线的回弹震荡，菜单消失后有较长的拖尾，使得其他事件无法响应。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是  | 设置菜单显示和退出的过渡效果。<br/>**说明：**<br />菜单退出动效过程中，进行横竖屏切换，菜单会避让。二级菜单不继承自定义动效。弹出过程可以点击二级菜单，退出动效执行过程不允许点击二级菜单。<br />详细描述见[TransitionEffect](ts-transition-animation-component.md#transitioneffect10对象说明)对象说明。 <br/>动效曲线使用弹簧曲线，在动效退出时，由于弹簧曲线的回弹震荡，菜单消失后有较长的拖尾，使得其他事件无法响应。<br/> 当设置transition自定义动效时，菜单的默认显示和退出动效不生效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | borderRadius<sup>12+</sup>  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](ts-types.md#localizedborderradiuses12) | 否   | 是  | 设置菜单的边框圆角半径。<br/>默认值：2in1设备上默认值8vp，其他设备上默认值20vp。<br />**说明：** <br /> 支持百分比。<br />当水平方向两个圆角半径之和的最大值超出菜单宽度或垂直方向两个圆角半径之和的最大值超出菜单高度时，采用菜单默认圆角半径值。<br/>当设置Length类型且传参为异常值时，菜单圆角取默认值。<br/>当设置BorderRadiuses或LocalizedBorderRadiuses类型且传参为异常值时，菜单默认没有圆角。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | backgroundBlurStyleOptions<sup>18+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | backgroundEffect<sup>18+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -248,8 +248,11 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 | onDidDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 是 | 菜单消失后的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2. onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidMode<sup>23+</sup> | [MenuKeyboardAvoidMode](#menukeyboardavoidmode23枚举说明) | 否 | 是 | 设置菜单是否避让软键盘。<br /> **说明：** <br />未设置或设置为undefined时，按照MenuKeyboardAvoidMode.NONE处理。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或者设置为undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或者设置为undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| colorMode | [AnchoredColorMode](ts-universal-attributes-popup.md#anchoredcolormode) | 否 | 是 | 设置菜单深浅色模式，默认跟随绑定组件深浅色模式。<br />默认值：AnchoredColorMode.FOLLOW_TARGET<br />**说明：**<br />1. 仅当绑定组件使用了[WithTheme](ts-container-with-theme.md#接口)标签时，该属性才会生效。<br />2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。<br />3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
+| targetSpace | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单与目标组件之间的间距。<br /> **说明：** <br />- 同时使用targetSpace与offset时，两者会叠加生效。推荐使用targetSpace设置菜单与目标的间距，使用offset设置菜单弹出位置的偏移量。<br />- 二级菜单会避让targetSpace范围。<br />- 设置为负数或undefined时，菜单与目标组件之间的间距为默认8vp，且子菜单不避让targetSpace。<br />- targetSpace属性在存在默认placement时可直接生效，无默认placement的场景，需配合placement属性使用才可生效。<br />- anchorPosition的优先级要高于targetSpace。<br />- 不支持设置百分比。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。材质设置为非法值、undefined时，按照不设置系统材质处理。<br />默认值： undefined<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **表1：同时设置offset与placement时菜单的偏移位置** 
 
@@ -298,6 +301,7 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 25%; 8%; 8%; 39%-->
 | 名称  | 类型                                       | 只读 | 可选 | 说明                                 |
 | ----- | ------------------------------------------ | ---- | ------------------------------------ | ------------------------------------ |
 | scale | [AnimationRange](#animationrange11)\<number> | 否   | 是  | 动画开始和结束时相对预览原图缩放比例。<br/>默认值：[0.95, 1.1]<br/>**说明：** <br/>缩放比例需要根据实际开发场景设置，建议设置值为小于预览图宽度或布局的最大限制。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -1567,3 +1571,97 @@ struct Index {
 ```
 
 ![maxHeight-menu](figures/menuMaxHeight.png)
+
+### 示例23（设置菜单与目标组件间距）
+
+该示例通过设置[ContextMenuOptions](#contextmenuoptions10)中的targetSpace属性，介绍如何增加菜单与目标组件之间的间距。
+
+从API版本26.0.0开始，在ContextMenuOptions中新增了targetSpace属性。
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Alone {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项1' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项2' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项3' })
+    }
+  }
+
+  build() {
+    Column() {
+      Stack() {
+        Column()
+          .width(120 + 40 * 2)
+          .height(120 + 40 * 2)
+          .borderWidth(2)
+          .borderColor(Color.Orange)
+          .borderStyle(BorderStyle.Dotted)
+
+        Image($r('app.media.startIcon'))
+          .width(120)
+          .height(120)
+          .bindMenu(this.MyMenu,
+            {
+              targetSpace: LengthMetrics.vp(40)
+            })
+      }.height('75%')
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+```
+
+![targetSpaceMenu](figures/targetSpaceMenu.png)
+
+### 示例24（设置菜单的系统材质）
+
+该示例通过设置[ContextMenuOptions](#contextmenuoptions10)中的systemMaterial属性，实现了菜单的系统材质视效。
+
+从API版本26.0.0开始，在ContextMenuOptions中新增了systemMaterial属性。
+
+```ts
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '菜单选项' })
+    }
+  }
+
+  build() {
+    Stack() {
+      Button('bindMenu with THICK material')
+        .bindMenu(this.MyMenu, {
+          systemMaterial: new uiMaterial.ImmersiveMaterial({
+            style: uiMaterial.ImmersiveStyle.THICK
+          })
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+未设置系统材质时：
+
+![menuWithoutNewMaterial](figures/menuWithoutNewMaterial.PNG)
+
+设置系统材质后：
+
+![menuNewMaterial](figures/menuNewMaterial.PNG)

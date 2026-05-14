@@ -1,8 +1,8 @@
 # 静态订阅公共事件（仅对系统应用开放）
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -40,7 +40,7 @@
    export default class StaticSubscriber extends StaticSubscriberExtensionAbility {
      onReceiveEvent(event: commonEventManager.CommonEventData): void {
        hilog.info(DOMAIN_NUMBER, TAG, 'onReceiveEvent, event: ' + event.event);
-       //...
+       // ...
      }
    }
    ```
@@ -49,7 +49,7 @@
 
    在完成静态订阅者的代码实现后，需要在[module.json5配置文件](../../quick-start/module-configuration-file.md)中进行配置订阅者信息。
 
-   ```json
+   ```json5
    {
      "module": {
     // ...
@@ -92,7 +92,7 @@
    >
    > 二级配置文件必须按照此形式进行声明，否则会无法正确识别。
 
-   ```json
+   ```json5
    {
      "commonEvents": [
        {
@@ -156,7 +156,7 @@
    - `app_signature`字段配置为应用的指纹信息。指纹信息的配置请参见[应用特权配置指南](../../../device-dev/subsystems/subsys-app-privilege-config-guide.md#install_list_capabilityjson中配置)，或者通过[bm工具](../../tools/bm-tool.md)获取并填写该应用的`appId`。
    - `allowCommonEvent`字段配置为允许静态广播拉起的公共事件项。
 
-   ```json
+   ```json5
    [
      // ...
      {

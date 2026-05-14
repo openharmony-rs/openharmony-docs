@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fangyuhao-->
+<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 瀑布流容器，由“行”和“列”分割的单元格所组成，通过容器自身的排列规则，将不同大小的“项目”自上而下，如瀑布般紧密布局。
@@ -621,7 +621,7 @@ onScrollIndex(event: (first: number, last: number) => void)
 | first  | number | 是   | 当前显示的瀑布流起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 | last   | number | 是   | 当前显示的瀑布流终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 
-通过`last`参数可以判断是否“继续加载数据”，参考[示例3使用分组](#示例3使用分组)中“即将触底时提前增加数据”的处理逻辑。
+通过`last`参数可以判断是否“继续加载数据”，参考[示例3（使用分组）](#示例3使用分组)中“即将触底时提前增加数据”的处理逻辑。
 
 当WaterFlow列表为空时，使用不同的WaterFlowOptions参数会导致onScrollIndex事件的返回值有所不同。具体差异请参见下表：
 
@@ -1009,7 +1009,7 @@ struct WaterFlowDemo {
 ### 示例2（自动计算列数）
 该示例通过auto-fill实现了自动计算列数的效果。
 
-WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts
@@ -1084,7 +1084,7 @@ struct WaterFlowDemo {
 
 如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
-WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts
@@ -1253,7 +1253,9 @@ struct WaterFlowDemo {
             console.info('update:' + result);
           })
           .margin({ top: 10, left: 20 })
+      }.margin({ bottom: 20 })
 
+      Row() {
         Button('delete')
           .height('5%')
           .onClick(() => {
@@ -1289,7 +1291,7 @@ struct WaterFlowDemo {
             console.info('count:' + this.sections.length());
           })
           .margin({ top: 10, left: 20 })
-      }.margin({ bottom: 20 })
+      }
 
       WaterFlow({ scroller: this.scroller, sections: this.sections }) {
         LazyForEach(this.dataSource, (item: number) => {
@@ -1337,7 +1339,7 @@ struct WaterFlowDemo {
 ### 示例4（双指缩放改变列数）
 该示例通过[priorityGesture](ts-gesture-settings.md#prioritygesture)和[PinchGesture](ts-basic-gestures-pinchgesture.md)实现了双指缩放改变列数效果。
 
-WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts
@@ -1537,7 +1539,7 @@ struct WaterFlowDemo {
 ### 示例5（设置边缘渐隐效果）
 该示例通过[fadingEdge](ts-container-scrollable-common.md#fadingedge14)实现了WaterFlow组件开启边缘渐隐效果，并通过fadingEdgeLength参数设置边缘渐隐长度。
 
-WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts
@@ -1611,7 +1613,7 @@ struct WaterFlowDemo {
 
 该示例通过[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)接口，实现了WaterFlow组件设置单边边缘效果。
 
-WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts
@@ -1685,7 +1687,7 @@ struct WaterFlowDemo {
 
 从API version 18开始，该示例通过[WaterFlowOptions对象说明](#waterflowoptions对象说明)的footerContent接口，实现了WaterFlow组件设置尾部组件。通过[ComponentContent](../js-apis-arkui-ComponentContent.md)的update函数更新尾部组件。
 
-WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts
@@ -1797,7 +1799,7 @@ struct Index {
 
 该示例通过[Refresh](ts-container-refresh.md)组件和WaterFlow组件，实现了下拉刷新瀑布流组件数据源。
 
-WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts
@@ -1970,7 +1972,7 @@ WaterFlow宽度属于lg及更大的断点区间时显示5列。
 
 从API version 22 开始，该示例通过WaterFlow组件，实现了获取内容高度。
 
-WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+WaterFlowDataSource说明及完整代码参考[示例1（使用基本瀑布流）](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts

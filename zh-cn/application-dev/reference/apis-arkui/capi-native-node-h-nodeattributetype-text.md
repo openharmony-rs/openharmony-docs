@@ -1,4 +1,4 @@
-# ArkUI_NodeAttributeType（文本类组件相关属性）
+# ArkUI_NodeAttributeType（文本显示类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6; @kangshihui-->
@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## 概述
 
-定义ArkUI在Native侧可以设置的文本类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。
+定义ArkUI在Native侧可以设置的文本显示类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。
 
 **起始版本：** 12
 

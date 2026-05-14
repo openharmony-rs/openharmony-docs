@@ -16,8 +16,9 @@
   - [AddrSanitizer（地址越界）检测](address-sanitizer-guidelines.md)
   - [AppFreeze（应用冻屏）检测](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [任务超时检测](apptask-timeout-guidelines.md)
-  - [应用终止检测](appkilled-guidelines.md)<!--RP2--><!--RP2End-->
-  - [页面切换日志](pageswitch-log.md) 
+  - [应用终止检测](appkilled-guidelines.md)
+  - 通用日志<!--general-log-->
+    - [页面切换日志](pageswitch-log.md)<!--RP2--><!--RP2End-->
 - 日志打印<!--hilog-dev-->
   - [使用HiLog打印日志（ArkTS）](hilog-guidelines-arkts.md)
   - [使用HiLog打印日志（C/C++）](hilog-guidelines-ndk.md)
@@ -36,6 +37,10 @@
         - [应用冻屏事件介绍](hiappevent-watcher-freeze-events.md)
         - [订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)
         - [订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)
+      - 应用冻屏告警事件<!--appfreezewarning-events-->
+        - [应用冻屏告警事件介绍](hiappevent-watcher-appfreezewarning-events.md)
+        - [订阅应用冻屏告警事件（ArkTS）](hiappevent-watcher-appfreezewarning-events-arkts.md)
+        - [订阅应用冻屏告警事件（C/C++）](hiappevent-watcher-appfreezewarning-events-ndk.md)
       - 资源泄漏事件<!--resource-leak-events-->
         - [资源泄漏事件介绍](hiappevent-watcher-resourceleak-events.md)
         - [订阅资源泄漏事件（ArkTS）](hiappevent-watcher-resourceleak-events-arkts.md)
@@ -85,17 +90,7 @@
 - 错误管理及应用恢复<!--error-manager-->
   - [错误管理开发指导](errormanager-guidelines.md)
   - [应用恢复开发指导](apprecovery-guidelines.md)
-- [Performance Analysis Kit术语](performance-analysis-kit-terminology.md)
-- 命令行工具<!--perform-command-line-utilities-->
-  - [hdc](hdc.md)
-  - [hilog](hilog.md)<!--RP4--><!--RP4End-->
-  - hidumper<!--hidumper-tool-->
-    - [hidumper](hidumper.md)
-    - [PrivacyManagerService](hidumper-PrivacyManagerService.md)
-  - [hitrace](hitrace.md)
-  - [hiperf](hiperf.md)
-  - [hiprofiler](hiprofiler.md)
-  - [uinput](uinput.md)
-  <!--Del-->
-  - [hisysevent（仅对系统应用开放）](hisysevent-sys.md)
-  <!--DelEnd-->
+- 应用灰度采集<!--hiretrieval-->
+  - [HiRetrieval介绍](hiretrieval-intro.md)
+  - [使用HiRetrieval进行应用灰度采集（ArkTS）](hiretrieval-guidelines-arkts.md)
+- [Performance Analysis Kit术语](performance-analysis-kit-terminology.md)<!--RP5--><!--RP5End-->

@@ -50,7 +50,8 @@ Provides options for configuring or querying the cross-language access permissio
 
 | Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| attributeSetting  | boolean | No  | Yes  | Whether the FrameNode supports cross-language settings.<br>The value **true** means the FrameNode supports cross-language settings, and **false** means the opposite.<br>Default value: **false**.|
+| attributeSetting  | boolean | No  | Yes  | Whether the FrameNode supports cross-language settings.<br>The value **true** means the FrameNode supports cross-language settings, and **false** means the opposite.<br>The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| treeOperating  | boolean | No  | Yes  | Whether the FrameNode supports cross-language operations on the component tree.<br>The value **true** means the FrameNode supports cross-language operations on the component tree, and **false** means the opposite.<br>The default value is **false**.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Note: When **treeOperating** is set to **true** for a FrameNode, the FrameNode can call [addChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild), [insertChildAfter](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter), [insertChildAt](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat), [insertChildBefore](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore), and [removeChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild) across languages.|
 
 ## ExpandMode<sup>15+</sup>
 
@@ -2039,7 +2040,7 @@ struct Index {
 
 setCrossLanguageOptions(options: CrossLanguageOptions): void
 
-Sets the cross-language access options for this FrameNode. This API allows you to specify whether a FrameNode created in ArkTS can be accessed or modified by non-ArkTS languages. If the current FrameNode is not modifiable or does not support setting cross-language access options, an exception will be thrown.
+Sets the cross-language access options for this FrameNode. For example, for nodes created using ArkTS, this API can set whether non-ArkTS languages are allowed to set the attributes of these nodes. Since API version 26.0.0, this API can set whether non-ArkTS languages are allowed to perform operations on the component tree. If the current FrameNode is not modifiable or does not support setting cross-language access options, an exception will be thrown.
 
 > **NOTE**
 >
@@ -2071,7 +2072,7 @@ See [Example of Node Operations](#example-of-node-operations).
 
 getCrossLanguageOptions(): CrossLanguageOptions
 
-Obtains the cross-language access options for this FrameNode. This API allows you to check whether a FrameNode created in ArkTS can be accessed or modified by non-ArkTS languages.
+Obtains the cross-language access options for this FrameNode. For example, for nodes created using ArkTS, this API can obtain whether non-ArkTS languages are allowed to set the properties of these nodes and perform operations on the cross-language component tree. Since API version 26.0.0, this API can obtain whether non-ArkTS languages are allowed to perform operations on the component tree.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -5916,7 +5917,7 @@ struct FrameNodeTypeTest {
 ### bindController('TextInput')<sup>20+</sup>
 bindController(node: FrameNode, controller: TextInputController, nodeType: 'TextInput'): void
 
-Binds the [TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8) to the [TextInput](#textinput12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds the [TextInputController](arkui-ts/ts-basic-components-textinput.md#textinputcontroller8) to the [TextInput](#textinput12) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -7332,7 +7333,7 @@ struct FrameNodeTypeTest {
 
 bindController(node: FrameNode, controller: TextAreaController, nodeType: 'TextArea'): void
 
-Binds a [TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8) instance to the [TextArea](#textarea14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API does not support declaratively created nodes.
+Binds a [TextAreaController](arkui-ts/ts-basic-components-textarea.md#textareacontroller8) instance to the [TextArea](#textarea14) node. Cross-language access must be enabled for nodes not created via ArkTS; otherwise, an exception will be thrown. This API supports declaratively created nodes since API version 26.0.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

@@ -386,11 +386,11 @@ getHitTest(): HitTestType
 
 loadData(options: { data: string, mimeType: string, encoding: string, baseUrl?: string, historyUrl?: string })
 
-baseUrl为空时，通过”data“协议加载指定的一段字符串。
+baseUrl为空时，通过“data”协议加载指定的一段字符串。
 
-当baseUrl为”data“协议时，编码后的data字符串将被Web组件作为”data"协议加载。
+当baseUrl为“data”协议时，编码后的data字符串将被Web组件作为“data”协议加载。
 
-当baseUrl为“http/https"协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
+当baseUrl为“http/https”协议时，编码后的data字符串将被Web组件以类似loadUrl的方式以非编码字符串处理。
 
 > **说明：**
 >
@@ -402,10 +402,10 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 | 参数名        | 类型   | 必填   | 说明                                     |
 | ---------- | ------ | ---- | ---------------------------------------- |
-| data       | string | 是   | 按照”Base64“或者”URL"编码后的一段字符串。              |
+| data       | string | 是   | 按照“Base64”或者“URL”编码后的一段字符串。              |
 | mimeType   | string | 是   | 媒体类型（MIME）。                              |
-| encoding   | string | 是   | 编码类型，具体为“Base64"或者”URL编码。                |
-| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
+| encoding   | string | 是   | 编码类型，具体为“Base64”或者“URL”编码。                |
+| baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/“data”协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
 | historyUrl | string | 否   | 历史记录URL。默认值为空字符串。非空时，可被历史记录管理，实现前进后退功能。当baseUrl为空时，此属性无效。 |
 
 **示例：**
@@ -620,7 +620,7 @@ refresh()
 
 registerJavaScriptProxy(options: { object: object, name: string, methodList: Array\<string\> })
 
-注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注册后，须调用[refresh](#refreshdeprecated)接口生效。
+注入JavaScript对象到window对象中，并在window对象中调用该对象的方法。注入的对象在页面下一次（重新）加载前不会出现在JavaScript中。
 
 > **说明：**
 >

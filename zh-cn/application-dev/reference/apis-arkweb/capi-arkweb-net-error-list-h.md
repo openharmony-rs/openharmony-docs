@@ -203,7 +203,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_PAC_NOT_IN_DHCP = -348 | 无法从DHCP检索PAC URL配置。这可能表明检索DHCP配置失败，或者在DHCP中没有配置PAC URL。 |
 | ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_DISPOSITION = -349 | HTTP响应包含多个Content-Disposition响应头。 |
 | ARKWEB_ERR_RESPONSE_HEADERS_MULTIPLE_LOCATION = -350 | HTTP响应包含了多个Location响应头。 |
-| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | HTTP/2服务器在未处理请求的情况下拒绝了请求，并发送了带有错误代码NO_ERROR和低于与请求对应的流ID的Last-Stream-ID的GOAWAY帧， |
+| ARKWEB_ERR_HTTP2_SERVER_REFUSED_STREAM = -351 | HTTP/2服务器在未处理请求的情况下拒绝了请求，并发送了带有错误代码NO_ERROR和低于与请求对应的流ID的Last-Stream-ID的GOAWAY帧。 |
 | ARKWEB_ERR_HTTP2_PING_FAILED = -352 | HTTP/2服务器未响应PING消息。 |
 | ARKWEB_ERR_CONTENT_LENGTH_MISMATCH = -354 | 当连接关闭时，HTTP响应主体传输的字节数少于Content-Length头中公布的字节数。 |
 | ARKWEB_ERR_INCOMPLETE_CHUNKED_ENCODING = -355 | HTTP响应体使用分块编码传输，但在连接关闭时，终止的零长度区块从未被发送。 |

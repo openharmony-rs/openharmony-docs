@@ -21,10 +21,10 @@
 
 - LazyForEach必须在容器组件内使用，仅有[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)组件支持数据懒加载（可配置cachedCount属性，即只加载可视部分以及其前后少量数据用于缓冲），其他组件仍然是一次性加载所有的数据。支持数据懒加载的父组件根据自身及子组件的高度或宽度计算可视区域内需布局的子节点数量，高度或宽度的缺失会导致部分场景[懒加载失效](#子组件尺寸缺失导致懒加载失效)。
 - LazyForEach依赖生成的键值判断是否刷新子组件，键值不变则不触发刷新。
-- 容器组件内只能包含一个LazyForEach。以List为例，不建议同时包含ListItem、ForEach、LazyForEach，不建议同时包含多个LazyForEach。
+- 容器组件内只能包含一个LazyForEach。以List为例，不建议同时包含[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[ForEach](./arkts-rendering-control-foreach.md)、LazyForEach，不建议同时包含多个LazyForEach。
 - LazyForEach在每次迭代中，必须创建且只允许创建一个子组件；即LazyForEach的子组件生成函数有且只有一个根组件。
 - 生成的子组件必须是允许包含在LazyForEach父容器组件中的子组件。
-- 允许LazyForEach包含在if/else条件渲染语句中，也允许LazyForEach中出现if/else条件渲染语句。
+- 允许LazyForEach包含在[if/else](./arkts-rendering-control-ifelse.md)条件渲染语句中，也允许LazyForEach中出现if/else条件渲染语句。
 - 键值生成器必须针对每个数据生成唯一的值，如果键值相同，将导致键值相同的UI组件渲染出现问题。
 - LazyForEach必须使用一个数据变化监听器DataChangeListener对象进行更新（具体参数使用参考[LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)），重新赋值第一个参数dataSource会导致异常；dataSource使用状态变量时，状态变量改变不会触发LazyForEach的UI刷新。
 - 为了高性能渲染，使用DataChangeListener对象的onDataChange方法更新UI时，需要生成不同于原来的键值来触发组件刷新。
@@ -1699,7 +1699,7 @@ struct UINotRerenderedChildComponent {
 ![LazyForEach-ObjectLink-NotRenderUI-Repair](figures/LazyForEach-ObjectLink-NotRenderUI-Repair.gif)
 
 ### 在List内使用屏幕闪烁
-在List的onScrollIndex方法中调用onDataReloaded可能会导致屏幕闪烁。
+在[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)的[onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)方法中调用onDataReloaded可能会导致屏幕闪烁。
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
@@ -1857,7 +1857,7 @@ struct ScreenFlickeringInList {
 
 ### 组件复用渲染异常
 
-`@Reusable装饰器`与[\@ComponentV2装饰器](../state-management/arkts-create-custom-components.md#componentv2)混用会导致组件渲染异常。
+[\@Reusable装饰器](../state-management/arkts-reusable.md)与[\@ComponentV2装饰器](../state-management/arkts-create-custom-components.md#componentv2)混用会导致组件渲染异常。
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 

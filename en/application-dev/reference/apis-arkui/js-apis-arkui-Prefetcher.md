@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->
-<!--Designer: @lixingchi1-->
-<!--Tester: @TerryTsao-->
+<!--Designer: @keerecles-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Used in conjunction with **LazyForEach**, the **Prefetcher** module provides content prefetching capabilities for container components such as **List**, **Grid**, **WaterFlow**, and **Swiper** during scrolling, to enhance the user browsing experience.

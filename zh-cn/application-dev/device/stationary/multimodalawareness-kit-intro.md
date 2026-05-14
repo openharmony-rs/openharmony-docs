@@ -15,3 +15,11 @@
 ## 约束与限制
 
 使用多模态融合感知，需要用户进行相关权限的申请。设备需要支持对应能力所需的传感器。
+
+<!--RP1-->
+### 模拟器支持情况
+ 
+本Kit支持模拟器。
+
+模拟器与真机存在通用差异，详情请参见[模拟器与真机的差异](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-emulator-specification)。
+<!--RP1End-->

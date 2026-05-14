@@ -27,7 +27,7 @@ The table below describes the content and operation mode of the OH_ImageSource_I
 | bool | isHdr | Whether the image is an HDR image.| [OH_ImageSourceInfo_GetDynamicRange](capi-image-source-native-h.md#oh_imagesourceinfo_getdynamicrange) |Obtains the dynamic range of an image.|
 | [Image_MimeType](capi-image-nativemodule-image-string.md) | mimeType | Pointer to the image MIME type.| [OH_ImageSourceInfo_GetMimetype](./capi-image-source-native-h.md#oh_imagesourceinfo_getmimetype) | Obtains the MIME type of an image.|
 
-**Since**: 13
+**Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)
 

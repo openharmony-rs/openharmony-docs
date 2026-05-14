@@ -1,8 +1,8 @@
 # native_render.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -46,6 +46,7 @@ Declares the APIs of **NativeRender**. For details, see [Building a Rendering No
 | [ArkUI_CommandPath](./capi-arkui-nativemodule-arkui-commandpathoption.md)               | ArkUI_CommandPathOption                                | Defines a struct for the custom path configuration.      |
 | [ArkUI_RenderNodeMaskOption](./capi-arkui-nativemodule-arkui-rendernodemaskoption.md)               | ArkUI_RenderNodeMaskOption                                | Defines a struct for the render node mask configuration.      |
 | [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)               | ArkUI_RenderNodeClipOption                                | Defines a struct for the render node clip configuration.      |
+| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)               | ArkUI_RenderBlurStyleOption                                | Defines a blur style.      |
 
 ### Functions
 
@@ -191,6 +192,15 @@ Declares the APIs of **NativeRender**. For details, see [Building a Rendering No
 | [void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)](#oh_arkui_rendernodeutils_disposerendernodeclipoption) | - | Disposes of the render node clip option.|
 | [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setrectshapeoptionvalue) | - | Sets the border range for a rectangle shape option. This function defines the geometric frame of a rectangle by specifying its position and size.|
 | [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setroundrectshapeoptionvalue) | - | Sets the border range for a rounded rectangle shape option. This function defines the geometric frame of a rounded rectangle by specifying its position and size.|
+| [ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()](#oh_arkui_rendernodeutils_createblurstyleoption) | - | Creates a blur style object.|
+| [void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_disposeblurstyleoption) | - | Dispose of a blur style object.|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)](#oh_arkui_rendernodeutils_setblurstyleoptionradius) | - | Sets a blur radius for a target blur style.|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setbackgroundbluroption) | - | Sets a background blur style for a render node.|
+| [int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetbackgroundbluroption) | - | Resets a background blur style for a render node.|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setforegroundbluroption) | - | Sets a foreground blur style for a render node.|
+| [int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetforegroundbluroption) | - | Resets a foreground blur style for a render node.|
+| [int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)](#oh_arkui_rendernodeutils_setcontentbluroption) | - | Sets a content blur style for a render node.|
+| [int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_resetcontentbluroption) | - | Resets a content blur style for a render node.|
 
 
 ## Function Description
@@ -3114,3 +3124,211 @@ Sets the border range for a rounded rectangle shape option. This function define
 | float y | Y coordinate of the upper left corner of the rectangle, which is used to determine the position of the upper boundary.|
 | float width | Width of the rectangle, which indicates the horizontal span starting from the X coordinate and is used to determine the position of the right boundary. That is, the X coordinate of the lower right corner of the rectangle is equal to **x** + **width**.|
 | float height | Height of the rectangle, which indicates the vertical span starting from the Y coordinate and is used to determine the position of the bottom boundary. That is, the Y coordinate of the lower right corner of the rectangle is equal to **y** + **height**.|
+
+### OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
+
+```c
+ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()
+```
+
+**Description**
+
+Creates a blur style object.
+
+**Since**: 26.0.0
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* | Pointer to a blur style object. The default blur radius is 0.0.|
+
+### OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption()
+
+```c
+void OH_ArkUI_RenderNodeUtils_DisposeBlurStyleOption(ArkUI_RenderBlurStyleOption* option)
+```
+
+**Description**
+
+Dispose of a blur style object.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md) pointer to the blur style object to be disposed of.|
+
+### OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius()
+
+```c
+int32_t OH_ArkUI_RenderNodeUtils_SetBlurStyleOptionRadius(ArkUI_RenderBlurStyleOption* option, float radius)
+```
+
+**Description**
+
+Sets a blur radius for a target blur style.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md) pointer to the target blur style for which the blur radius is to be set.|
+| float radius | Blur radius to be set. The value range is [0, +∞). Unit: px. The blur radius is used to control the blur density. A larger radius indicates a higher blur density. The value **0** indicates that no blur processing is performed. For background blur processing, a radius of 80 can achieve a good frosted glass effect. Avoid using a blur radius greater than 200 pixels, as this may cause performance degradation.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption()
+
+```c
+int32_t OH_ArkUI_RenderNodeUtils_SetBackgroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)
+```
+
+**Description**
+
+Sets a background blur style for a render node.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be set.|
+| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md) pointer to the blur style to be set.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
+
+### OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption()
+
+```c
+int32_t OH_ArkUI_RenderNodeUtils_ResetBackgroundBlurOption(ArkUI_RenderNodeHandle node)
+```
+
+**Description**
+
+Resets a background blur style for a render node. After the reset, there is no background blur style.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the background blur style is to be reset.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
+
+### OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption()
+
+```c
+int32_t OH_ArkUI_RenderNodeUtils_SetForegroundBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)
+```
+
+**Description**
+
+Sets a foreground blur style for a render node.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be set.|
+| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md) pointer to the blur style to be set.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
+
+### OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption()
+
+```c
+int32_t OH_ArkUI_RenderNodeUtils_ResetForegroundBlurOption(ArkUI_RenderNodeHandle node)
+```
+
+**Description**
+
+Resets a foreground blur style for a render node. After the reset, there is no foreground blur style.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the foreground blur style is to be reset.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
+
+### OH_ArkUI_RenderNodeUtils_SetContentBlurOption()
+
+```c
+int32_t OH_ArkUI_RenderNodeUtils_SetContentBlurOption(ArkUI_RenderNodeHandle node, ArkUI_RenderBlurStyleOption* option)
+```
+
+**Description**
+
+Sets a content blur style for a render node.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be set.|
+| [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)* option | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md) pointer to the blur style to be set.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|
+
+### OH_ArkUI_RenderNodeUtils_ResetContentBlurOption()
+
+```c
+int32_t OH_ArkUI_RenderNodeUtils_ResetContentBlurOption(ArkUI_RenderNodeHandle node)
+```
+
+**Description**
+
+Resets a content blur style for a render node. After the reset, there is no content blur style.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_RenderNodeHandle** pointer to the target render node for which the content blur style is to be reset.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.|

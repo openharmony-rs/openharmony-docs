@@ -34,7 +34,7 @@ import { media } from '@kit.MediaKit';
 | url<sup>9+</sup>                                    | string                                                       | No  | Yes  | URL of the media asset. It can be set only when the AVPlayer is in the idle state. <br>Supported video formats: MP4, MPEG-TS, and MKV.<br>Supported audio formats: M4A, AAC, MP3, OGG, WAV, FLAC, AMR, and APE.<br>**Example of supported URLs**:<br>1. FD: fd://xx<br>![](figures/en-us_image_url.png)<br>2. HTTP: http\://xx<br>3. HTTPS: https\://xx<br>4. HLS: http\://xx or https\://xx<br>**NOTE**<br>- To set the playback URL, you need to declare the [ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet) permission. The related error code is [201 Permission Denied](../errorcode-universal.md#201-permission-denied).<br>- WebM is no longer supported since API version 11.<br> - After the resource handle (FD) is transferred to an AVPlayer instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVPlayers use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | No  | Yes  | FD of the media asset. It can be set only when the AVPlayer is in the idle state.<br>**Use scenario**: This property is required when media assets of an application are continuously stored in a file.<br>The video formats MP4, MPEG-TS, and MKV are supported.<br>The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, AMR, and APE are supported.<br>**Example:**<br>Assume that a media file that stores continuous assets consists of the following:<br>Video 1 (address offset: 0, byte length: 100)<br>Video 2 (address offset: 101; byte length: 50)<br>Video 3 (address offset: 151, byte length: 150)<br>1. To play video 1: AVFileDescriptor { fd = resource handle; offset = 0; length = 100; }<br>2. To play video 2: AVFileDescriptor { fd = resource handle; offset = 101; length = 50; }<br>3. To play video 3: AVFileDescriptor { fd = resource handle; offset = 151; length = 150; }<br>To play an independent media file, use **src=fd://xx**.<br>**NOTE**<br>WebM is no longer supported since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | No  | Yes  | Descriptor of a streaming media asset. It can be set only when the AVPlayer is in the idle state.<br>**Use scenario**: An application plays a file that has been downloaded from a remote source and saved locally. When the application has not yet downloaded the complete audio or video resources, it can start playing the data that has already been retrieved. By writing the retrieved data to a local file and simultaneously reading from that file, the application can achieve the capability of playing while caching.<br>The video formats MP4, MPEG-TS, and MKV are supported.<br>The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, AMR, and APE are supported.<br>**Example:**<br>A user is obtaining an audio and video file from a remote server and wants to play the downloaded file content. To implement this scenario, do as follows:<br>1. Obtain the total file size, in bytes. If the total size cannot be obtained, set **fileSize** to **-1**.<br>2. Implement the **func** callback to fill in data. If **fileSize** is **-1**, the format of **func** is **func(buffer: ArrayBuffer, length: number)**, and the AVPlayer obtains data in sequence; otherwise, the format is **func(buffer: ArrayBuffer, length: number, pos: number)**, and the AVPlayer seeks and obtains data in the required positions.<br>3. Set **AVDataSrcDescriptor {fileSize = size, callback = func}**.<br>**Notes:**<br>If the media file to play is in MP4/M4A format, ensure that the **moov** field (specifying the media information) is before the **mdat** field (specifying the media data) or the fields before the **moov** field is less than 10 MB. Otherwise, the parsing fails and the media file cannot be played.<br>**NOTE**<br>WebM is no longer supported since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| surfaceId<sup>9+</sup>                              | string                                                       | No  | Yes  | Video window ID. By default, there is no video window.<br>This property can be set for the first time only when the AVPlayer is in the initialized state.<br>It can be updated when the AVPlayer is in the prepared, playing, paused, completed, or stopped state. After the reset, the video is played in the new window.<br>**Use scenario**: It is used to render the window for video playback (not involved in audio-only playback scenarios).<br>**Example:**<br>[Create a surface ID through XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| surfaceId<sup>9+</sup>                              | string                                                       | No  | Yes  | Video window ID. By default, there is no video window.<br>This property can be set for the first time only when the AVPlayer is in the initialized state.<br>It can be updated when the AVPlayer is in the prepared, playing, paused, completed, or stopped state. After the reset, the video is played in the new window.<br>**Use scenario**: It is used to render the window for video playback (not involved in audio-only playback scenarios).<br>**Example:**<br>Create a surface ID using the [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) API.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | loop<sup>9+</sup>                                   | boolean                                                      | No  | No  | Whether to loop playback. **true** to loop, **false** otherwise. The default value is **false**. It is a dynamic property<br>and can be set only when the AVPlayer is in the prepared, playing, paused, or completed state.<br>This setting is not supported in live mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | No  | Yes  | Video scale type. The default value is **VIDEO_SCALE_TYPE_FIT**. It is a dynamic property<br>and can be set only when the AVPlayer is in the prepared, playing, paused, or completed state.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | No  | Yes  | Audio interruption mode. The default value is **SHARE_MODE**. It is a dynamic property<br>and can be set only when the AVPlayer is in the prepared, playing, paused, or completed state.<br>To take effect, this property must be set before [play()](#play9) is called for the first time.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -45,6 +45,7 @@ import { media } from '@kit.MediaKit';
 | duration<sup>9+</sup> | number                                                       | Yes  | No  | Video duration, in ms. It can be used as a query parameter when the AVPlayer is in the prepared, playing, paused, or completed state.<br>The value **-1** indicates an invalid value.<br>In live mode, **-1** is returned by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | width<sup>9+</sup>                                  | number                                                       | Yes  | No  | Video width, in px. It can be used as a query parameter when the AVPlayer is in the prepared, playing, paused, or completed state.<br>The value **0** indicates an invalid value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | height<sup>9+</sup>                                 | number                                                       | Yes  | No  | Video height, in px. It can be used as a query parameter when the AVPlayer is in the prepared, playing, paused, or completed state.<br>The value **0** indicates an invalid value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| playlistLoopMode<sup>26+</sup>                         | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | No  | Yes  | Loop mode for playing the media list. The default value is **PLAYLIST_LOOP_MODE_ALL**, indicating that all items in the playlist are looped.|
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -364,6 +365,381 @@ async function test() {
   }).catch((err: BusinessError) => {
     console.error('Failed to setTrackSelectionFilter, error message is:' + err.message);
   });
+}
+```
+
+## addPlaybackMediaSource
+
+addPlaybackMediaSource(src: MediaSource, id?: string): Promise\<string>
+
+Adds a new media source to the playlist of the player. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                |
+| -------- | -------- | ---- | -------------------- |
+| src | [MediaSource](arkts-apis-media-MediaSource.md) | Yes  | Media source to add.|
+| id | string | No  | ID of the media source in the playlist. The new media source will be inserted before the specified media source. If this parameter is not set, the new media source will be added to the end of the list by default.|
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<string> | Promise used to return the ID of the media resource.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The media source ID does not exist in the playlist. Returned by promise.|
+
+**Example**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let source1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let source2 = await player.addPlaybackMediaSource(mediaSource2, source1);
+}
+```
+
+## removePlaybackMediaSource
+
+removePlaybackMediaSource(id: string): Promise\<void>
+
+Removes a specified media source from the playlist of the player. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - If the ID does not exist in the current playlist, an error code is returned.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                |
+| -------- | -------- | ---- | -------------------- |
+| id | string | Yes  | ID returned after a media source is added to the playlist.|
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The media source ID does not exist in the playlist. Returned via promise. |
+
+**Example**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId = await player.addPlaybackMediaSource(mediaSource1);
+  await player.removePlaybackMediaSource(sourceId);
+}
+```
+
+## clearPlaybackList
+
+clearPlaybackList(): Promise\<void>
+
+Clears all items in the playlist. The media source that is being played will be stopped immediately. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed or no next mediasource in the list. Return by promise. |
+
+**Example**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2, sourceId1);
+  await player.clearPlaybackList();
+}
+```
+
+## getCurrentMediaSource
+
+getCurrentMediaSource(): MediaSource | undefined;
+
+Obtains the media source object that is being played.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| MediaSource \| undefined | If the operation is successful, the current media source is returned. Otherwise, **undefined** is returned.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+
+**Example**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource);
+  let currentMediaSource: media.MediaSource | undefined = player.getCurrentMediaSource();
+}
+```
+
+## getMediaSources
+
+getMediaSources(): Array<MediaSource | undefined>
+
+Obtains the array of all media sources in the current playlist.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Array<[MediaSource](arkts-apis-media-MediaSource.md) \| undefined> | Array of media sources in the playlist.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+
+**Example**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2);
+  let sources: Array<media.MediaSource | undefined> = player.getMediaSources();
+}
+```
+
+## advanceToNextMediaSource
+
+advanceToNextMediaSource(): Promise\<void>
+
+Stops playing the current media source and starts playing the next media source in the media source list. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The previous mediasource does not exist in the playlist. Returned via promise. |
+
+**Example**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource2);
+
+  await player.prepare();
+  await player.play();
+  await player.advanceToNextMediaSource();
+}
+```
+
+## advanceToPrevMediaSource
+
+advanceToPrevMediaSource(): Promise\<void>
+
+Stops playing the current media source and starts playing the previous media source in the media source list. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The next mediasource does not exist in the playlist. Returned via promise. |
+
+**Example**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource2);
+  let mediaSource3: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video3.mp4", headers);
+  await player.addPlaybackMediaSource(mediaSource3);
+
+  await player.prepare();
+  await player.play();
+  await player.advanceToNextMediaSource();
+  await player.advanceToPrevMediaSource();
+}
+```
+
+## advanceToMediaSource
+
+advanceToMediaSource(id: string): Promise\<void>
+
+Stops playing the current media source and starts playing the specified media source in the playlist. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name| Type  | Description                                      |
+| ------ | ------ | ------------------------------------------ |
+| id    | string | ID of the specified media source.|
+
+**Return value**
+
+| Type          | Description                                      |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                 |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400108  | The mediasource does not exist in the playlist. Returned via promise. |
+
+**Example**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let headers: Record<string, string> = {"User-Agent" : "MyApp/1.0"};
+
+  let mediaSource1: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video1.mp4", headers);
+  let sourceId1 = await player.addPlaybackMediaSource(mediaSource1);
+  let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
+  let sourceId2 = await player.addPlaybackMediaSource(mediaSource2);
+  let mediaSource3: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video3.mp4", headers);
+  let sourceId3 = await player.addPlaybackMediaSource(mediaSource3);
+  await player.prepare();
+  await player.play();
+  await player.advanceToMediaSource(sourceId3);
 }
 ```
 
@@ -1226,7 +1602,7 @@ Obtains the current playback time. This API can be called only when the AVPlayer
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1835,7 +2211,7 @@ Obtains the list of seekable time ranges. This API uses a promise to return the 
 > - For local media resources and media resources that support segment-based requests, the time range is from 0 to the entire media duration.
 > - For media resources that support only chunk-based transmission, there is no seekable time range.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2099,7 +2475,9 @@ Sets the loudness gain of the AVPlayer. After this API is called, the loudness g
 >
 > - This API can be called when the AVPlayer is in the prepared, playing, paused, completed, or stopped state.
 > - Before calling this API, ensure that the audio rendering information has been set in **AVPlayer.audioRendererInfo** and the **usage** parameter in **audioRendererInfo** has been set to [STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage), [STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage), or [STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).
-
+> - Loudness settings are not supported for high-definition channels.
+> - The latency mode of the audio stream must be normal latency.
+> - The error information of this API is returned through the [on('error')](#onerror9) callback.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2114,16 +2492,6 @@ Sets the loudness gain of the AVPlayer. After this API is called, the loudness g
 | Type          | Description                                      |
 | -------------- | ------------------------------------------ |
 | Promise\<void> | Promise that returns no value.|
-
-**Error codes**
-
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
-
-| ID| Error Message                                  |
-| -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by promise. e.g. The function is called in an incorrect state, or the stream usage of audioRendererInfo is not one of [STREAM_USAGE_MUSIC](../apis-audio-kit/arkts-apis-audio-e.md#streamusage), [STREAM_USAGE_MOVIE](../apis-audio-kit/arkts-apis-audio-e.md#streamusage) or [STREAM_USAGE_AUDIOBOOK](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).|
-| 5400105  | Service died. |
-| 5400108  | Parameter check failed. Returned by promise. |
 
 **Example**
 
@@ -2219,7 +2587,7 @@ Unsubscribes from the event that checks whether the volume is successfully set.
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // After unsubscription, the callback for the volumeChange operation taking effect is no longer received.
+  // After unsubscription, the callback for the setVolume operation taking effect is no longer received.
   avPlayer.off('volumeChange');
 }
 ```
@@ -2491,7 +2859,7 @@ Unsubscribes from audio and video buffer changes.
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // After unsubscription, the callback for the audio and video buffer change is no longer received.
+  // After unsubscription, the callback for the media asset duration change event is no longer received.
   avPlayer.off('bufferingUpdate');
 }
 ```
@@ -3282,6 +3650,71 @@ async function test(){
   let avPlayer = await media.createAVPlayer();
   // After unsubscription, the callback for the event indicating that super resolution is enabled or disabled is no longer received.
   avPlayer.off('superResolutionChanged');
+}
+```
+
+## onPlaybackContentChanged
+
+onPlaybackContentChanged(callback: Callback\<string>):void;
+
+Registers a listener for playback content change events. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                                                        |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<string> | Yes| Callback triggered for the event.|
+
+**Example**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onPlaybackContentChanged((id: string) => {
+    console.info('MediaSourceChange called, SourceId:' + id);
+  });
+}
+```
+
+## offPlaybackContentChanged
+
+offPlaybackContentChanged(callback?: Callback\<string>):void;
+
+Unregisters a listener for the playback content change events.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                                                        |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<string> | No| Callback triggered for the event. If this parameter is not set, all listeners are unregistered.|
+
+**Example**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  let callback = (id: string) => {
+    console.info('MediaSourceChange callback called');
+  };
+
+  avPlayer.onPlaybackContentChanged(callback);
+  avPlayer.offPlaybackContentChanged(callback);
 }
 ```
 

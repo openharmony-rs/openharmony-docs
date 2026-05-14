@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @piggyguy; @jiyujia926; @hehongyang3-->
+<!--Designer: @piggyguy; @s10021109; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -540,14 +540,14 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称           | 说明                                       |
-| ------------ | ---------------------------------------- |
-| Start        | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
-| Center       | 元素在主轴方向中心对齐，第一个元素与行首的距离和最后一个元素与行尾的距离相同。   |
-| End          | 元素在主轴方向尾部对齐，最后一个元素与行尾对齐，其余元素与后一个对齐。      |
-| SpaceBetween | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。 |
-| SpaceAround  | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。 |
-| SpaceEvenly  | Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距均相同。 |
+| 名称           | 值 | 说明                                       |
+| ------------ | ------ | ---------------------------------------- |
+| Start        | 0 | 元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。    |
+| Center       | 1 | 元素在主轴方向中心对齐，第一个元素与行首的距离和最后一个元素与行尾的距离相同。   |
+| End          | 2 | 元素在主轴方向尾部对齐，最后一个元素与行尾对齐，其余元素与后一个对齐。      |
+| SpaceBetween | 3 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。 |
+| SpaceAround  | 4 | Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素到行首的距离和最后一个元素到行尾的距离是相邻元素之间距离的一半。 |
+| SpaceEvenly  | 5 | Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一个元素与行首的间距、最后一个元素到行尾的间距均相同。 |
 
 ## FlexDirection
 
@@ -559,12 +559,12 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称            | 说明               |
-| ------------- | ---------------- |
-| Row           | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 与Row方向相反方向进行布局。  |
-| Column        | 主轴与列方向一致作为布局模式。  |
-| ColumnReverse | 与Column相反方向进行布局。 |
+| 名称            | 值 | 说明               |
+| ------------- | ------ | ---------------- |
+| Row           | 0 | 主轴与行方向一致作为布局模式。  |
+| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
+| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
 
@@ -576,11 +576,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                          |
-| ----------- | --------------------------- |
-| NoWrap      | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
-| Wrap        | Flex容器的元素以多行/列排布，子项允许超出容器。   |
-| WrapReverse | Flex容器的元素以反向多行/列排布，子项允许超出容器。 |
+| 名称          | 值 | 说明                          |
+| ----------- | ------ | --------------------------- |
+| NoWrap      | 0 | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
+| Wrap        | 1 | Flex容器的元素以多行/列排布，子项允许超出容器。   |
+| WrapReverse | 2 | Flex容器的元素以反向多行/列排布，子项允许超出容器。 |
 
 ## FontStyle
 
@@ -722,11 +722,11 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明           |
-| ------ | ------------ |
-| Start  | 按照语言方向起始端对齐。 |
-| Center | 居中对齐，默认对齐方式。 |
-| End    | 按照语言方向末端对齐。  |
+| 名称     | 值 | 说明           |
+| ------ | ------ | ------------ |
+| Start  | 0 | 按照语言方向起始端对齐。 |
+| Center | 1 | 居中对齐，默认对齐方式。 |
+| End    | 2 | 按照语言方向末端对齐。  |
 
 ## HoverEffect<sup>8+</sup>
 
@@ -813,14 +813,14 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明                                       |
-| -------- | ---------------------------------------- |
-| Auto     | 使用Flex容器中的默认配置。                           |
-| Start    | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
-| Center   | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
-| End      | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
-| Stretch  | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
-| Baseline | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| 名称       | 值 | 说明                                       |
+| -------- | ------ | ---------------------------------------- |
+| Auto     | 0 | 使用Flex容器中的默认配置。                           |
+| Start    | 1 | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
+| Center   | 2 | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
+| End      | 3 | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
+| Stretch  | 4 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
+| Baseline | 5 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
 
 ## ImageRepeat
 
@@ -1323,7 +1323,7 @@ type Nullable\<T> = T | undefined
 | Down   | 0    | 手指按下时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | Up     | 1    | 手指抬起时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | Move   | 2    | 手指按压并在屏幕上移动时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Cancel | 3    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| Cancel | 3    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.<!--RP2--><!--RP2End-->手指触摸过程中存在手写笔操作，手指的触摸操作会收到Cancel事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | HOVER_ENTER<sup>20+</sup> | 9    | 无障碍模式下，手指按下时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | HOVER_MOVE<sup>20+</sup>   | 10    | 无障碍模式下，触摸移动时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | HOVER_EXIT<sup>20+</sup> | 11    | 无障碍模式下，抬手时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
@@ -1516,11 +1516,11 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明           |
-| ------ | ------------ |
-| Top    | 顶部对齐。        |
-| Center | 居中对齐，默认对齐方式。 |
-| Bottom | 底部对齐。        |
+| 名称     | 值 | 说明           |
+| ------ | ------ | ------------ |
+| Top    | 0 | 顶部对齐。        |
+| Center | 1 | 居中对齐，默认对齐方式。 |
+| Bottom | 2 | 底部对齐。        |
 
 ## Visibility
 
@@ -1592,7 +1592,7 @@ type Nullable\<T> = T | undefined
 | 名称                             | 说明                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
 | SURFACE                          | 用于EGL/OpenGLES和媒体数据写入，单独展示开发者定制的绘制内容到屏幕上。背景色设置为黑色时走显示子系统（DSS）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| COMPONENT<sup>(deprecated)</sup> | 使用[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TEXTURE                          | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 

@@ -1,7 +1,7 @@
 # 批量数据写数据库场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -323,8 +323,9 @@ struct Index {
 
 1. 定义数据库中的数据格式，采用Sendable，减少跨线程耗时。
 
-   ```ts
-   // SharedValuesBucket.ets
+   <!-- @[define_data_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SharedValuesBucket.ets) -->
+   
+   ``` TypeScript
    export interface IValueBucket {
      id: number;
      name: string;
@@ -334,43 +335,44 @@ struct Index {
    
    @Sendable
    export class SharedValuesBucket implements IValueBucket {
-     id: number = 0;
-     name: string = "";
-     age: number = 0;
-     salary: number = 0;
+     public id: number = 0;
+     public name: string = '';
+     public age: number = 0;
+     public salary: number = 0;
    
-     constructor(value: IValueBucket) {
-       this.id = value.id;
-       this.name = value.name;
-       this.age = value.age;
-       this.salary = value.salary;
+     constructor(v: IValueBucket) {
+       this.id = v.id;
+       this.name = v.name;
+       this.age = v.age;
+       this.salary = v.salary;
      }
    }
    ```
 
 2. 定义普通类实例对象，持有Sendable类实例对象。
 
-   ```ts
-   // Material.ets
+   <!-- @[define_normal_class_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Material.ets) -->
+   
+   ``` TypeScript
    import { SharedValuesBucket } from './SharedValuesBucket';
    import { collections } from '@kit.ArkTS';
-
+   
    export class Material {
-     seq: number = 0;
-     materialName: string = "";
+     public seq: number = 0;
+     public materialName: string = '';
      // ... 省略其他属性
-     buckets: collections.Array<SharedValuesBucket | undefined>;
-
+     public buckets: collections.Array<SharedValuesBucket | undefined>;
+   
      constructor(seq: number, materialName: string, buckets: collections.Array<SharedValuesBucket | undefined>) {
        this.seq = seq;
        this.materialName = materialName;
        this.buckets = buckets;
      }
-
+   
      getBuckets() : collections.Array<SharedValuesBucket | undefined>{
        return this.buckets;
      }
-
+   
      setBuckets(buckets: collections.Array<SharedValuesBucket | undefined>) {
        this.buckets = buckets;
      }
@@ -379,32 +381,33 @@ struct Index {
 
 3. UI主线程发起数据库操作请求，在子线程进行数据的增删改查等操作。
 
-   ```ts
-   // Index.ets
+   <!-- @[complex_class_instance_object_using_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ComplexClassInstanceObjectUsingSendable.ets) -->
+   
+   ``` TypeScript
    import { relationalStore, ValuesBucket } from '@kit.ArkData';
    import { collections, taskpool } from '@kit.ArkTS';
    import { IValueBucket, SharedValuesBucket } from './SharedValuesBucket';
    import { Material } from './Material';
-
+   
    @Concurrent
    async function create(context: Context): Promise<boolean> {
      const CONFIG: relationalStore.StoreConfig = {
-       name: "Store.db",
+       name: 'Store.db',
        securityLevel: relationalStore.SecurityLevel.S1,
      };
-
+   
      try {
        // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
        let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
        console.info('Create Store.db successfully!');
-
+   
        // 创建表
-       const CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS test (" +
-         "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-         "name TEXT NOT NULL, " +
-         "age INTEGER, " +
-         "salary REAL, " +
-         "blobType BLOB)";
+       const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
+         'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
+         'name TEXT NOT NULL, ' +
+         'age INTEGER, ' +
+         'salary REAL, ' +
+         'blobType BLOB)';
        await store.executeSql(CREATE_TABLE_SQL);
        console.info('Create table test successfully!');
        return true;
@@ -413,35 +416,35 @@ struct Index {
        return false;
      }
    }
-
+   
    @Concurrent
    async function insert(context: Context, valueBucketArray: collections.Array<SharedValuesBucket | undefined>) {
      const CONFIG: relationalStore.StoreConfig = {
-       name: "Store.db",
+       name: 'Store.db',
        securityLevel: relationalStore.SecurityLevel.S1,
      };
-
+   
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
      console.info('Create Store.db successfully!');
-
+   
      // 数据插入
-     await store.batchInsert("test", valueBucketArray as Object as Array<ValuesBucket>);
+     await store.batchInsert('test', valueBucketArray as Object as Array<ValuesBucket>);
    }
-
+   
    @Concurrent
    async function query(context: Context): Promise<collections.Array<SharedValuesBucket | undefined>> {
      const CONFIG: relationalStore.StoreConfig = {
-       name: "Store.db",
+       name: 'Store.db',
        securityLevel: relationalStore.SecurityLevel.S1,
      };
-
+   
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
      console.info('Create Store.db successfully!');
-
+   
      // 获取用于查询的谓词
-     let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates("test");
+     let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('test');
      // 查询所有数据
      let resultSet = await store.query(predicates);
      console.info(`Query data successfully! row count:${resultSet.rowCount}`);
@@ -450,51 +453,51 @@ struct Index {
      resultSet.goToFirstRow();
      do {
        let value: IValueBucket = {
-         id: resultSet.getLong(resultSet.getColumnIndex("id")),
-         name: resultSet.getString(resultSet.getColumnIndex("name")),
-         age: resultSet.getLong(resultSet.getColumnIndex("age")),
-         salary: resultSet.getLong(resultSet.getColumnIndex("salary"))
+         id: resultSet.getLong(resultSet.getColumnIndex('id')),
+         name: resultSet.getString(resultSet.getColumnIndex('name')),
+         age: resultSet.getLong(resultSet.getColumnIndex('age')),
+         salary: resultSet.getLong(resultSet.getColumnIndex('salary'))
        };
        result[index++] = new SharedValuesBucket(value);
      } while (resultSet.goToNextRow());
      resultSet.close();
      return result;
    }
-
+   
    @Concurrent
    async function deleteStore(context: Context) {
      const CONFIG: relationalStore.StoreConfig = {
-       name: "Store.db",
+       name: 'Store.db',
        securityLevel: relationalStore.SecurityLevel.S1,
      };
-
+   
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      await relationalStore.deleteRdbStore(context, CONFIG);
      console.info('Delete Store.db successfully!');
    }
-
-   function initMaterial() : Material {
+   
+   function initMaterial(): Material {
      // 数据准备
      const count = 5;
      let valueBucketArray = collections.Array.create<SharedValuesBucket | undefined>(count, undefined);
      for (let i = 0; i < count; i++) {
        let value: IValueBucket = {
          id: i,
-         name: "zhangsan" + i,
+         name: 'zhangsan' + i,
          age: 20,
          salary: 5000 + 50 * i
        };
        valueBucketArray[i] = new SharedValuesBucket(value);
      }
-     let material = new Material(1, "test", valueBucketArray);
+     let material = new Material(1, 'test', valueBucketArray);
      return material;
    }
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'Hello World';
-
+   
      build() {
        RelativeContainer() {
          Text(this.message)
@@ -506,11 +509,11 @@ struct Index {
              middle: { anchor: '__container__', align: HorizontalAlign.Center }
            })
            .onClick(async () => {
-             let context : Context = this.getUIContext().getHostContext() as Context;
+             let context: Context = this.getUIContext().getHostContext() as Context;
              let material = initMaterial();
              let ret = await taskpool.execute(create, context);
              if (!ret) {
-               console.error("Create db failed.");
+               console.error('Create db failed.');
                return;
              }
              await taskpool.execute(insert, context, material.getBuckets());

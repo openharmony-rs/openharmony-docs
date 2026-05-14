@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -30,7 +30,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
-| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式，包括：PNG、JPEG、BMP、GIF、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>。从API版本26.0.0开始，增加支持AVIF格式。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
+| supportedFormats | Array\<string> | 是   | 否   | 支持的图片格式。<br>包括：PNG、JPEG、BMP、GIF、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 
 ## getImageInfo
 
@@ -354,7 +354,9 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 > **说明：**
 >
-> 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> 
+> - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -411,7 +413,8 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 > **说明：**
 >
-> 调用modifyImageProperties修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperties会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperties修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperties会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperties接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -472,6 +475,7 @@ modifyImagePropertiesEnhanced(records: Record\<string, string | null\>): Promise
 > - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
 > - 支持修改JPEG、PNG、HEIF和WEBP文件类型的图片属性，图片需要包含Exif信息。
+> - 调用modifyImagePropertiesEnhanced接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -526,7 +530,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 
 读取图像源的元数据，使用propertyKeys指定元数据字段。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF、WEBP和DNG（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF、WebP、DNG、GIF、TIFF、HEIFS、JFIF和AVIS（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：**
 >
@@ -538,7 +542,14 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 > - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
 > - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
 > - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
-> - 从API版本24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
+> - 从API version 24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
+> - 从API version 24开始，支持读取HEIFS元数据。要查询的属性的具体信息请参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
+> - 从API版本26.0.0开始，支持读取PNG元数据。要查询的属性的具体信息请参考[PngPropertyKey](arkts-apis-image-e.md#pngpropertykey)。
+> - 从API版本26.0.0开始，支持读取JFIF元数据。要查询的属性的具体信息请参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
+> - 从API版本26.0.0开始，支持读取TIFF元数据。要查询的属性的具体信息请参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
+> - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+> - 从API版本26.0.0开始，支持读取JPEG、PNG、GIF、DNG、TIFF格式图片的XMP元数据。XMP元数据的操作方法可以参考[XMPMetadata](arkts-apis-image-XMPMetadata.md)。
+> - 从API版本26.0.0开始，支持读取AVIS元数据。要查询的属性的具体信息请参考[AvisPropertyKey](arkts-apis-image-e.md#avispropertykey)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -597,6 +608,8 @@ writeImageMetadata(imageMetadata: ImageMetadata): Promise\<void>
 > - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
 > - 支持修改JPEG、PNG和HEIF文件类型的图片属性，图片需要包含Exif信息。修改属性前，先通过supportedFormats属性查询设备是否支持HEIF格式的Exif读写。
+> - 从API版本26.0.0开始，支持修改JPEG、PNG、GIF格式图片的XMP元数据。XMP元数据的操作方法可以参考[XMPMetadata](arkts-apis-image-XMPMetadata.md)。
+> - 调用writeImageMetadata接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -649,13 +662,21 @@ readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise
 
 读取图像源的元数据，使用metadataTypes指定元数据类型。若未指定metadataTypes，则返回所有支持的元数据。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF、WEBP、DNG和HEIFS（不同硬件设备支持情况不同）文件。
+该接口仅支持JPEG、PNG、HEIF、WebP、DNG、GIF、TIFF、HEIFS、JFIF和AVIS（不同硬件设备支持情况不同）文件。
 
 > **说明：**
 >
 > - EXIF_METADATA元数据类型适用于JPEG、PNG、HEIF、WEBP和DNG格式图片。
 > - HEIFS_METADATA元数据类型适用于HEIFS格式图片。
 > - 当传入的MetadataType与图片格式无法匹配时，返回错误码7700102。
+> - 从API version 24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
+> - 从API version 24开始，支持读取HEIFS元数据。要查询的属性的具体信息请参考[HeifsPropertyKey](arkts-apis-image-e.md#heifspropertykey23)。
+> - 从API版本26.0.0开始，支持读取PNG元数据。要查询的属性的具体信息请参考[PngPropertyKey](arkts-apis-image-e.md#pngpropertykey)。
+> - 从API版本26.0.0开始，支持读取JFIF元数据。要查询的属性的具体信息请参考[JfifPropertyKey](arkts-apis-image-e.md#jfifpropertykey)。
+> - 从API版本26.0.0开始，支持读取TIFF元数据。要查询的属性的具体信息请参考[TiffPropertyKey](arkts-apis-image-e.md#tiffpropertykey)。
+> - 从API版本26.0.0开始，支持读取GIF元数据。要查询的属性的具体信息请参考[GifPropertyKey](arkts-apis-image-e.md#gifpropertykey20)。
+> - 从API版本26.0.0开始，支持读取JPEG、PNG、GIF、DNG、TIFF格式图片的XMP元数据。XMP元数据的操作方法可以参考[XMPMetadata](arkts-apis-image-XMPMetadata.md)。
+> - 从API版本26.0.0开始，支持读取AVIS元数据。要查询的属性的具体信息请参考[AvisPropertyKey](arkts-apis-image-e.md#avispropertykey)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -877,11 +898,13 @@ async function CreatePicture(imageSourceObj : image.ImageSource) {
 
 createPictureAtIndex(index: number): Promise\<Picture>
 
-通过指定序号的图片（目前仅支持GIF和HEIF<sup>23+</sup>图像序列格式）创建Picture对象。使用Promise异步回调。
+通过指定序号的图片创建Picture对象。使用Promise异步回调。
 
-由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法，及时释放内存。
-
-释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> - 支持GIF和HEIF<sup>23+</sup>图像序列格式。从API版本26.0.0开始，增加支持AVIS格式。
+> - 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2041,6 +2064,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
 > - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2088,6 +2112,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
 > - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

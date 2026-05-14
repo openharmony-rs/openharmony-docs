@@ -13,6 +13,6 @@ Game Controller Kit enables games to adapt to controller peripherals (only gamep
 
 Game Controller Kit supports the following capabilities:
 
-- Monitor game controller online/offline events and query details of all online controllers.
+- Monitor device online/offline events and query details of all online devices.
 
-- Listen for axis and button events of game controllers.
+- Listen for axis and button events of gamepads.

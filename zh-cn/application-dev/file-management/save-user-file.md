@@ -1,9 +1,9 @@
 # 保存用户文件
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 在从网络下载文件到本地或将已有用户文件另存为新的文件路径等场景下，需要使用FilePicker提供的保存用户文件的能力。需关注以下关键点：
@@ -14,6 +14,17 @@
 - 如果设置[autoCreateEmptyFile](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)参数为false，获取的URI除了具备**临时读写权限**外，还具备**临时创建和删除权限**。
 - 获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 - 使用Picker对音频、图片、视频、文档类文件的保存操作**无需申请权限**。
+
+**约束限制**
+
+如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用[canIUse](../reference/common/js-apis-syscap.md#caniuse)接口，确认设备是否具有该系统能力：
+
+```ts
+if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
+      console.error('This API is not supported on this device');
+      return;
+}
+```
 
 **系统隔离说明**
 

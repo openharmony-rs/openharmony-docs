@@ -71,11 +71,11 @@ SaveButton(options: SaveButtonOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| icon | [SaveIconStyle](#saveiconstyle枚举说明) | 否 | 是 | 设置保存控件的图标风格。<br/>不传入该参数表示没有图标。 |
-| text | [SaveDescription](#savedescription枚举说明) | 否 | 是 | 设置保存控件的文本描述。<br/>不传入该参数表示没有文字描述。 |
-| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype枚举说明) | 否 | 是 | 设置保存控件的背景样式。<br/>不传入该参数，系统默认提供Capsule类型按钮。 |
+| icon | [SaveIconStyle](#saveiconstyle) | 否 | 是 | 设置保存控件的图标风格。<br/>不传入该参数表示没有图标。 |
+| text | [SaveDescription](#savedescription) | 否 | 是 | 设置保存控件的文本描述。<br/>不传入该参数表示没有文字描述。 |
+| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | 否 | 是 | 设置保存控件的背景样式。<br/>不传入该参数，系统默认提供Capsule类型按钮。 |
 
-## SaveIconStyle枚举说明
+## SaveIconStyle
 
 保存控件的图标风格。
 
@@ -88,7 +88,7 @@ SaveButton(options: SaveButtonOptions)
 | FULL_FILLED | 0 | 保存控件展示填充样式图标。 |
 | LINES | 1 | 保存控件展示线条样式图标。 |
 
-## SaveDescription枚举说明
+## SaveDescription
 
 保存控件的文本描述。
 
@@ -110,7 +110,7 @@ SaveButton(options: SaveButtonOptions)
 | RESAVE_TO_GALLERY<sup>12+</sup> | 11 | 保存控件的文字描述为“重新保存”。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | SAVE_ALL<sup>18+</sup> | 12 | 保存控件的文字描述为“全部保存”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
-## SaveButtonOnClickResult枚举说明
+## SaveButtonOnClickResult
 
 保存控件点击后的授权结果。
 
@@ -137,7 +137,7 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
 | event | [ClickEvent](ts-universal-events-click.md#clickevent) |是 |见ClickEvent对象说明。|
-| result | [SaveButtonOnClickResult](#savebuttononclickresult枚举说明)| 是 | 授权的结果。|
+| result | [SaveButtonOnClickResult](#savebuttononclickresult)| 是 | 授权的结果。|
 | error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。<br>错误码0表示点击保存控件授权成功或用户取消授权。<br>错误码1表示系统内部错误，包括但不限于：<br>1. ipc通信失败。<br>2. 安全控件弹窗失败。<br>错误码2表示属性设置错误，包括但不限于：<br>1. 字体或图标设置过小。<br>2. 字体或图标与背托颜色相近。<br>3. 字体或图标颜色过于透明。<br>4. padding为负值。<br>5. 按钮被其他组件或窗口遮挡。<br>6. 文本超出背托范围。<br>7. 按钮超出窗口或屏幕。<br>8. 按钮整体尺寸过大。<br>9. 按钮文本被截断，显示不全。<br>10. 相关属性设置影响安全控件显示。|
 
 ## SaveButtonAttribute
@@ -251,7 +251,7 @@ userCancelEvent(enabled: boolean)
 
 ### symbolIconColor
 
-symbolIconColor(color: Array&lt;ResourceColor&gt; )
+symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
 设置安全控件Symbol图标颜色。
 
@@ -269,7 +269,7 @@ symbolIconColor(color: Array&lt;ResourceColor&gt; )
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[渲染策略](#symbolrenderingstrategy)下默认值不同。 |
+| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[symbolrenderingstrategy](#symbolrenderingstrategy)下默认值不同。 |
 
 ### symbolFontWeight
 
@@ -341,7 +341,7 @@ onClick(event: SaveButtonCallback)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| event | [SaveButtonCallback](#savebuttoncallback18) |是 |见SaveButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [SaveButtonOnClickResult](#savebuttononclickresult枚举说明)) => void。<br>从API18开始，变更为SaveButtonCallback。|
+| event | [SaveButtonCallback](#savebuttoncallback18) |是 |见SaveButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [SaveButtonOnClickResult](#savebuttononclickresult)) => void。<br>从API18开始，变更为SaveButtonCallback。|
 
 ## 示例1
 

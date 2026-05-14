@@ -19,7 +19,7 @@ For typical use cases (for example, long screenshots) and best practices of comp
 >
 > - In scenarios where [XComponent](arkui-ts/ts-basic-components-xcomponent.md) is used to, for example, display video or camera streams, obtain images through [createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11), instead of through an API in this module.
 >
-> - If the content of a component does not fill the entire area allocated for it, any remaining space in the snapshot will be rendered as transparent pixels. In addition, if the component uses [image effects](arkui-ts/ts-universal-attributes-image-effect.md) or other effect-related attributes, the resulting snapshot may not be as expected. To address these potential issues, check whether to fill the component's transparent content area or to use an alternative method such as taking a [window screenshot](arkts-apis-window-Window.md#snapshot9).
+> - If the content of a component does not fill the entire area allocated for it, any remaining space in the snapshot will be rendered as transparent pixels. In addition, if the component uses [image effects](arkui-ts/ts-universal-attributes-image-effect.md) or other effect-related attributes, the resulting snapshot may not be as expected. To address these potential issues, check whether the component's transparent content area needs to be filled, or use the window screenshot API [snapshot](arkts-apis-window-Window.md#snapshot9) instead.
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 
@@ -537,22 +537,48 @@ Obtains the size limit of a component screenshot.
 **Example**
 
 ```ts
-import { ComponentUtils } from '@kit.ArkUI';
+import { image } from '@kit.ImageKit';
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct Index {
+struct SnapshotColorModeExample {
+  @State pixmap: image.PixelMap | undefined = undefined;
+
   build() {
     Column() {
-      Button ("Obtain Screenshot Size Limit")
+      Row() {
+        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
+      }
+
+      Button("click to generate UI snapshot")
         .onClick(() => {
           let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // Check the size limit.
           let limitation = componentSnapshot.getSizeLimitation();
           console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-        })
+          // Check whether the node size meets the maximum size limit.
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+              if (error) {
+                console.error(`error:${JSON.stringify(error)}`)
+                return;
+              }
+              this.pixmap = pixmap
+            })
+          }
+        }).margin(10)
     }
     .width('100%')
     .height('100%')
+    .alignItems(HorizontalAlign.Center)
   }
 }
 ```
@@ -578,6 +604,7 @@ Defines the size limit of a component screenshot.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name          | Type           |    Read-Only      |    Optional          |   Description                   |
 | ---------------|------------     | -------------|---------------| -----------------------------|
 | scale           | number | No |  Yes| Scale ratio for rendering pixel maps during a snapshot. Note that a high scale ratio may increase the time taken for the snapshot or even result in a snapshot failure.<br>Value range: [0, +∞). If the value is less than or equal to 0, the default value is used.<br> Default value: **1**<br>**NOTE**<br>Avoid capturing images that are excessively large, ideally not larger than the screen size. If the size of the image to capture exceeds device-specific underlying limits, the capture will fail.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |

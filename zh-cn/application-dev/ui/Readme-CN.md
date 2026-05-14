@@ -153,8 +153,8 @@
     - [视频播放 (Video)](arkts-common-components-video-player.md)
     - [创建轮播 (Swiper)](arkts-layout-development-create-looping.md)
     - [创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)（圆形屏幕推荐使用）
-  - 表单选择<!--arkts-form-selection-->
-    - [表单与选择组件概述](arkts-forms-overview.md)
+  - 按钮与选择<!--arkts-form-selection-->
+    - [按钮与选择组件概述](arkts-forms-overview.md)
     - [按钮 (Button)](arkts-common-components-button.md)
     - [弧形按钮 (ArcButton)](arkts-advanced-components-arcbutton.md)（圆形屏幕推荐使用）
     - [单选框 (Radio)](arkts-common-components-radio-button.md)
@@ -287,6 +287,7 @@
   - 构建布局<!--arkts-build-layout-ndk-->
     - [使用布局组件](ndk-layout-container.md)
     - [设置通用布局属性](ndk-common-attribute-layout.md)
+  - 使用列表与网格<!--arkts-list-and-grid-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
