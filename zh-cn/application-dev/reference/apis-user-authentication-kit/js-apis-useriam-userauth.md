@@ -759,14 +759,17 @@ start(): void
 | -------- | ------------------------------------------------ |
 | 201      | Permission denied. Possible causes: <br>1.No permission to access biometric. <br>2.No permission to start authentication from background.|
 | 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
+| 12500001 | Authentication failed. <br> 适用版本：10-19                          |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
+| 12500004 | Authentication timeout. <br> 适用版本：10-19                         |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
+| 12500007 | Authentication service is busy. <br> 适用版本：10-19                 |
 | 12500009 | Authentication is locked out.                    |
 | 12500010 | The type of credential has not been enrolled.    |
 | 12500011 | Switched to the customized authentication process.   |
-| 12500013 | Operation failed because of PIN expired. |
+| 12500013 | Operation failed because of PIN expired. <br> 适用版本：12+ |
 
 **示例：**
 <!--code_no_check-->
@@ -1566,7 +1569,7 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 | 12500005 | The authentication type is not supported. |
 | 12500006 | The authentication trust level is not supported. |
 | 12500010 | The type of credential has not been enrolled. |
-| 12500013 | Operation failed because of PIN expired. |
+| 12500013 | Operation failed because of PIN expired.<br>适用版本：12+ |
 
 **示例：**
 
