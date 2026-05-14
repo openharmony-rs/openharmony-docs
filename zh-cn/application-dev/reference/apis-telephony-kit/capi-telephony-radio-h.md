@@ -67,7 +67,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 **示例：**
 ```ts
 OH_Telephony_GetNetworkState((data:state) => {
-    console.info("OH_Telephony_GetNetworkState, data:" + JSON.stringify(data));
+    console.info("Failed to do something.  Code is ${OH_Telephony_GetNetworkState}, message is ${state});
 });
 ```
 
@@ -108,7 +108,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Teleph
 **示例：**
 ```ts
 OH_Telephony_GetNetworkStateForSlot(slotId, (data:state) => {
-    console.info("OH_Telephony_GetNetworkStateForSlot, data:" + JSON.stringify(data));
+    console.info("Failed to do something.  Code is ${OH_Telephony_GetNetworkStateForSlot}, message is ${state});
 });
 ```
 
