@@ -193,7 +193,7 @@ try {
     }
   });
 } catch (error) {
-  // Check whether the permission is successfully applied for or whether the parameters are correct.
+  // Check whether the permission is granted or whether the parameters are correct.
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -249,7 +249,7 @@ const calendarAccount: calendarManager.CalendarAccount = {
 calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
   console.info(`Succeeded in creating calendar data->${JSON.stringify(data)}`);
 }).catch((error : BusinessError) => {
-  // Check whether the permission is successfully applied for or whether the parameters are correct.
+  // Check whether the permission is granted or whether the parameters are correct.
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 });
 ```
@@ -314,7 +314,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
     }
   });
 }).catch((error: BusinessError) => {
-  // Check whether the permission is successfully applied for or whether the parameters are correct.
+  // Check whether the permission is granted or whether the parameters are correct.
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 })
 ```
@@ -377,11 +377,11 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
       console.error(`Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    // Check whether the permission is successfully applied for or whether the parameters are correct.
+    // Check whether the permission is granted or whether the parameters are correct.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   });
 }).catch((error: BusinessError) => {
-  // Check whether the permission is successfully applied for or whether the parameters are correct.
+  // Check whether the permission is granted or whether the parameters are correct.
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
 })
 ```
@@ -427,7 +427,7 @@ import { calendarManager } from '@kit.CalendarKit';
 
 calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => {
   if (err) {
-    // Check whether the permission is successfully applied for or whether the parameters are correct.
+    // Check whether the permission is granted or whether the parameters are correct.
     console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
   } else {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
@@ -485,14 +485,14 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   calendarMgr?.getCalendar(calendarAccount, (err: BusinessError, data: calendarManager.Calendar) => {
     if (err) {
       console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
     } else {
       console.info(`Succeeded in getting calendar data -> ${JSON.stringify(data)}`);
     }
   });
 }).catch((error: BusinessError) => {
   console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
-  // Check whether the permission is successfully applied for or whether the parameters are correct.
+  // Check whether the permission is granted or whether the parameters are correct.
 })
 ```
 
@@ -762,7 +762,7 @@ calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
   calendar = data;
   calendar.addEvent(event, (err: BusinessError, data: number): void => {
     if (err) {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to addEvent. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info(`Succeeded in adding event, id -> ${data}`);
@@ -834,7 +834,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     calendar.addEvent(event).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to addEvent. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -900,7 +900,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     calendar = data;
     calendar.addEvents(events, (err: BusinessError) => {
       if (err) {
-        // Check whether the permission is successfully applied for or whether the parameters are correct.
+        // Check whether the permission is granted or whether the parameters are correct.
         console.error(`Failed to add events. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info('Succeeded in adding events');
@@ -975,7 +975,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     calendar.addEvents(events).then(() => {
       console.info('Succeeded in adding events');
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1034,7 +1034,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
         }
       });
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1088,13 +1088,13 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.info(`Succeeded in adding event, id -> ${data}`);
       id = data;
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.deleteEvent(id).then(() => {
       console.info('Succeeded in deleting event');
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to delete event. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1151,7 +1151,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.info(`Succeeded in adding event, id -> ${data}`);
       id1 = data;
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
@@ -1226,7 +1226,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.info(`Succeeded in adding event, id -> ${data}`);
       id1 = data;
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
@@ -1290,7 +1290,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       oriEvent.id = data;
       oriEvent.title = 'newUpdate';
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.updateEvent(oriEvent, (err: BusinessError) => {
@@ -1354,7 +1354,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       oriEvent.id = data;
       oriEvent.title = 'newUpdate';
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.updateEvent(oriEvent).then(() => {
@@ -1484,7 +1484,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event1).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
@@ -1570,7 +1570,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     // Perform fuzzy query based on MyEvent. If an event of the MyEvent1 type exists, the event can also be queried.
@@ -1666,7 +1666,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     calendar = data;
     calendar.setConfig(config, (err: BusinessError) => {
       if (err) {
-        // Check whether the permission is successfully applied for or whether the parameters are correct.
+        // Check whether the permission is granted or whether the parameters are correct.
         console.error(`Failed to set config. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info(`Succeeded in setting config, config -> ${JSON.stringify(config)}`);
@@ -1727,7 +1727,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     calendar.setConfig(config).then(() => {
       console.info(`Succeeded in setting config, data->${JSON.stringify(config)}`);
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to set config. Code: ${err.code}, message: ${err.message}`);
     });
   }
@@ -1834,7 +1834,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar?.queryEventInstances(date.getTime(), date.getTime() + 60 * 60 * 1000, undefined,
@@ -1913,7 +1913,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data: calendarManager.Calend
         console.info(`Succeeded in adding event id-> ${dataId}`);
         eventId = dataId;
       }).catch((err: BusinessError) => {
-        // Check whether the permission is successfully applied for or whether the parameters are correct.
+        // Check whether the permission is granted or whether the parameters are correct.
         console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
         return;
       });
@@ -2078,7 +2078,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.info(`Succeeded in adding event, id -> ${data}`);
       id1 = data;
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
@@ -2149,7 +2149,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event1).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
-      // Check whether the permission is successfully applied for or whether the parameters are correct.
+      // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     await calendar.addEvent(event2).then((data: number) => {
@@ -2214,7 +2214,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
     await calendar.addEvent(event).then((data: number) => {
       console.info(`Succeeded in adding event, id -> ${data}`);
     }).catch((err: BusinessError) => {
-       // Check whether the permission is successfully applied for or whether the parameters are correct.
+       // Check whether the permission is granted or whether the parameters are correct.
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     const filter = calendarManager.EventFilter.filterByTitle('MyEvent');
