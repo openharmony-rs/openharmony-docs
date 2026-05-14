@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @wyxpku-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -130,22 +130,25 @@ You can use the on-screen awareness feature through **capList** or **groupId**.
 
     |Capability|**Function**|
     | ---- | ------ |
-    |Acticle|Obtains the information about awareness in a reading scenario.|
+    |Article|Obtains the information about awareness in a reading scenario.|
     |ShortVideo|Obtains the information about awareness in a short video scenario.|
     |Todo|Obtains the information about awareness in a to-do scenario.|
     |Activity|Obtains the awareness information of basic services.|
     |UiImage|Obtains the information about sub-images on a page.|
     |JumpContext|Highlights and jumps to a specified context.|
     |QuickSnap|Obtains the information about a single snapshot.<br> **Usage specifications**: This capability is used only in the **trigger** API. It takes effect only when **capList** is set to **QuickSnap**. For other APIs, error code 401 is returned.|
-
+    |UiTree|Obtains the information about the JSON tree on a page.<br> **Since**: 26.0.0|
+    |InjectEvent|Injects an event.<br> **Since**: 26.0.0|
   * Capabilities supported by groupId<br>
   
     |Capability|Sub-capability|**Function**|
     | ---- | ------ | ------|
-    |SmartEdge|Acticle|Obtains the information about awareness in a reading scenario.|
+    |SmartEdge|Article|Obtains the information about awareness in a reading scenario.|
     |SmartEdge|ShortVideo|Obtains the information about awareness in a short video scenario.|
     |SmartEdge|Todo|Obtains the information about awareness in a to-do scenario.|
     |SmartEdge|Activity|Obtains the awareness information of basic services.|
+    |CeliaMemory|Article|Obtains the information about awareness in a reading scenario.|
+    |CeliaMemory|Todo|Obtains the information about awareness in a to-do scenario.|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -563,6 +566,7 @@ capList capabilities supported by the capture API
 | ---- | ------ |
 |UiImage|Obtains the information about sub-images on a page.|
 |QuickSnap|Obtains screenshot information.|
+|UiTree|Obtains the information about the JSON tree on a page.<br> **Since**: 26.0.0|
 
 **Return value**
 
@@ -622,6 +626,7 @@ capList capabilities supported by the interact API
 |capList Capability|**Function**|
 | ---- | ------ |
 |JumpContext|Highlights and jumps to a specified context.|
+|InjectEvent|Injects an event.<br> **Since**: 26.0.0|
 
 **Return value**
 
@@ -691,10 +696,12 @@ Proactively triggers screen content awareness to obtain the screen content for s
 groupId capabilities supported by the apperceive API
 |groupId Capability|Sub-capability|**Function**|
 | ---- | ------ | ------|
-|SmartEdge|Acticle|Obtains the information about awareness in a reading scenario.|
+|SmartEdge|Article|Obtains the information about awareness in a reading scenario.|
 |SmartEdge|ShortVideo|Obtains the information about awareness in a short video scenario.|
 |SmartEdge|Todo|Obtains the information about awareness in a to-do scenario.|
 |SmartEdge|Activity|Obtains the awareness information of basic services.|
+|CeliaMemory|Article|Obtains the information about awareness in a reading scenario.|
+|CeliaMemory|Todo|Obtains the information about awareness in a to-do scenario.|
 
 **Return value**
 

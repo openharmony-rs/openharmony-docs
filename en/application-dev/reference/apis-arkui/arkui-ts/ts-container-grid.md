@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @fangyuhao-->
+<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Grid** component consists of cells formed by rows and columns. You can specify the cells where items are located to form various layouts.
@@ -297,6 +297,29 @@ Sets the scrollbar width. This attribute cannot be set in percentage. After the 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | number&nbsp;\|&nbsp;string | Yes  | Scrollbar width.<br>Default value: **4**<br>Unit: vp<br>If this parameter is set to a value less than or equal to 0, the default value is used. The value **0** means not to show the scrollbar.|
+
+### scrollBarWidth
+
+scrollBarWidth(value: number | string | Resource)
+
+Sets the scrollbar width. This attribute cannot be set in percentage. After the width is set, the scrollbar is displayed with the set width in normal state and pressed state. If the set width exceeds the height of the **Grid** component on the main axis, the scrollbar reverts to 4 vp. The **Resource** type is supported.
+
+If this attribute is not set, the scrollbar width is 4 vp.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                      | Mandatory| Description                                     |
+| ------ | -------------------------- | ---- | ----------------------------------------- |
+| value  | number&nbsp;\|&nbsp;string \| [Resource](ts-types.md#resource) | Yes  | Scrollbar width.<br>Unit: vp<br>The value range is [0, +∞). If this parameter is set to a value less than 0, **4vp** is used. The value **0** means not to show the scrollbar.|
+
 
 ### cachedCount
 
@@ -619,6 +642,26 @@ Sets the options of the edit mode.
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options   | [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23) | No  | Edit mode options.|
+
+### enableEditMode
+
+enableEditMode(enabled: boolean | undefined)
+
+Sets whether to enable the edit mode for the **Grid** component. After the edit mode is enabled, you can swipe to select multiple [GridItem](ts-container-griditem.md) components in the **Grid** component. If this API is not called, the edit mode is not enabled.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                    |
+| ------ | ------ | ---- | ---------------------------------------- |
+| enabled  | boolean \| undefined | Yes  | Whether to enable the edit mode. **true** means to enable the edit mode and swiping to select multiple items is supported; **false** or **undefined** means to disable the edit mode and swiping to select multiple items is not supported.|
 
 ## GridItemAlignment<sup>12+</sup>
 
@@ -2271,12 +2314,22 @@ enum SlideActionType {
   END
 }
 // Hot zone
-const HOT_AREA_LENGTH =
-  Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
+let HOT_AREA_LENGTH: number;
+try {
+  HOT_AREA_LENGTH =
+    Math.round(display.getDefaultDisplaySync().densityDPI * 10 / 25.4 / display.getDefaultDisplaySync().densityPixels);
+} catch (error) {
+  console.info('Failed to get default display for HOT_AREA_LENGTH:', error);
+}
 // Scroll curve: Bezier curve
 const SLIDE_SELECT_SPEED_CURVE = curves.cubicBezierCurve(0.33, 0, 0.67, 1);
 // Scroll speed: maximum speed
-const AUTO_SPEED_MAX: number = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
+let AUTO_SPEED_MAX: number;
+try {
+  AUTO_SPEED_MAX = Math.round(2400 / display.getDefaultDisplaySync().densityPixels);
+} catch (error) {
+  console.info('Failed to get default display for AUTO_SPEED_MAX:', error);
+}
 @Entry
 @Component
 struct GridExample {
@@ -3143,3 +3196,68 @@ struct GridExample {
 ```
 
 ![gridMultiselectAnimation](figures/gridMultiselectAnimation.gif)
+
+### Example 21: Implementing Swipe-based Multi-Selection
+
+This example enables the swipe-based multi-selection mode of the **Grid** component and sets the default multi-selection style by setting **enableEditMode(true)**, achieving the effect of selecting items while swiping on the **Grid** component.
+
+Since API version 26.0.0, the **Grid** component provides the [enableEditMode](#enableeditmode) API.
+
+For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridExample {
+  numbers: GridDataSource = new GridDataSource([]);
+
+  aboutToAppear() {
+    let list: string[] = [];
+    for (let i = 0; i < 20; i++) {
+      for (let j = 0; j < 20; j++) {
+        list.push((20 * i + j + 1).toString());
+      }
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Grid() {
+        LazyForEach(this.numbers, (day: string, index: number) => {
+          GridItem() {
+            Stack() {
+              Text(day)
+                .fontSize(16)
+                .backgroundColor(0xF9CF93)
+                .width('100%')
+                .height(80)
+                .textAlign(TextAlign.Center)
+            }
+          }
+          .onSelect((isSelected: boolean) => {
+            console.info('item ' + index.toString() + ' is ' + (isSelected ? 'selected' : 'unselected'));
+          })
+        }, (index: number) => index.toString())
+      }
+      .columnsTemplate('1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(10)
+      .width('90%')
+      .height('50%')
+      .backgroundColor(0xFAEEE0)
+      .enableEditMode(true)
+      .editModeOptions({ useDefaultMultiSelectStyle: true })
+      .margin({
+        bottom: 30
+      })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+![gridEnableEditModeWithDefaultStyle](figures/gridEnableEditModeWithDefaultStyle.gif)

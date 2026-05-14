@@ -228,7 +228,7 @@ async function test(){
 
 setMediaSource(src:MediaSource, strategy?: PlaybackStrategy): Promise\<void>
 
-Sets a source of streaming media that can be pre-downloaded, downloads the media data, and temporarily stores the data in the memory. This API uses a promise to return the result.
+Sets the streaming media pre-download resource. This API is used to download the streaming media data corresponding to the URL and temporarily store the data in the memory. This API can be called only when the player is in the idle state. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -239,7 +239,7 @@ Sets a source of streaming media that can be pre-downloaded, downloads the media
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
 | src | [MediaSource](arkts-apis-media-MediaSource.md) | Yes  | Source of the streaming media to pre-download.|
-| strategy | [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12) | No  | strategy for playing the pre-downloaded streaming media.|
+| strategy | [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12) | No  | Strategy for playing the pre-downloaded streaming media.|
 
 **Return value**
 
@@ -276,11 +276,15 @@ async function test(){
 }
 ```
 
-## getTrackSelectionFilter<sup>24+</sup>
+## getTrackSelectionFilter
 
 getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
 
 Obtains the track selection filter configured for the player. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -288,7 +292,7 @@ Obtains the track selection filter configured for the player. This API uses a pr
 
 | Type          | Description                                      |
 | -------------- | ------------------------------------------ |
-| Promise\<[TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter24)> | Promise used to return the track selection filter configured for the player.|
+| Promise\<[TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter)> | Promise used to return the track selection filter configured for the player.|
 
 **Error codes**
 
@@ -312,11 +316,15 @@ async function test() {
 
 ```
 
-## setTrackSelectionFilter<sup>24+</sup>
+## setTrackSelectionFilter
 
 setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
 
 Sets a track selection filter for the player. The player will use this filter to select available tracks for playback. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -324,7 +332,7 @@ Sets a track selection filter for the player. The player will use this filter to
 
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
-| filter | [TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter24) | Yes  | Track selection filter.|
+| filter | [TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter) | Yes  | Track selection filter.|
 
 **Return value**
 
@@ -1642,7 +1650,9 @@ async function  test(){
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
-Selects a track when the AVPlayer plays multimedia resources with multiple audio or video tracks. This API uses a promise to return the result.
+When AVPlayer is used to play multi-audio and multi-video track resources, users can switch to a specified track in a specified mode to continue playback. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1652,8 +1662,8 @@ Selects a track when the AVPlayer plays multimedia resources with multiple audio
 
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
-| index | number | Yes  | Index of the track. You can call [getTrackDescription](#gettrackdescription9-1) to obtain all track information [MediaDescription](arkts-apis-media-i.md#mediadescription8) of the current resource.|
-| mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | No  | Video track mode. The default mode is **SMOOTH**. This parameter takes effect only for DASH/HLS network stream video track switching.<br>HLS network stream video is supported since API version 24.|
+| index | number | Yes  | Index of the multi-audio or multi-video track. The value must be an integer.<br>Value range: The value can be obtained from the key corresponding to MD_KEY_TRACK_INDEX in the audio and video track information returned by the [getTrackDescription](#gettrackdescription9-1) API.<br>For details about the object type and value range of each key, see the description of the key in [MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8).|
+| mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | No  | Mode of switching tracks.<br>Value range: This mode is applicable only to video track switching.<br>Default value: SMOOTH, which indicates that the switching is performed at the end of a segment to ensure the continuity of video playback. **This parameter is valid only for switching between video tracks in DASH/HLS streaming.**<br>HLS streaming is supported from API version 26.0.0.|
 
 **Return value**
 
@@ -1843,7 +1853,9 @@ Seeks to the specified playback position. This API can be called only when the A
 
 > **NOTE**
 >
-> Since API version 24, **seek** is supported in live streaming scenarios.
+> Starting from API version 26.0.0, the seek function is supported in live streaming scenarios.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1853,7 +1865,7 @@ Seeks to the specified playback position. This API can be called only when the A
 
 | Name| Type                  | Mandatory| Description                                                        |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| timeMs | number                 | Yes  | Position to seek to, in ms. The value range is [0, [duration](#properties)].<br>When the seek mode is [SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8), you can set this parameter to **-1** to end the **SEEK_CONTINUOUS** mode.|
+| timeMs | number                 | Yes  | Position to seek to, in ms. The value range is [0, [duration](#properties)].<br>When the seek mode is [SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8), you can set this parameter to **-1** to end the **SEEK_CONTINUOUS** mode. The value must be an integer.|
 | mode   | [SeekMode](arkts-apis-media-e.md#seekmode8) | No  | Seek mode based on the video I frame. The default value is **SEEK_PREV_SYNC**. **Set this parameter only for video playback.**|
 
 **Example**
@@ -2168,7 +2180,7 @@ async function test(){
 }
 ```
 
-## getLoadedTimeRanges<sup>24+</sup>
+## getLoadedTimeRanges
 
 getLoadedTimeRanges(): Promise\<Array\<Range>>
 
@@ -2178,6 +2190,10 @@ Obtains the list of loaded time ranges. This API uses a promise to return the re
 >
 > - For local media resources, the time range is from 0 to the entire media duration.
 > - For network media resources, the list of locally loaded time ranges is returned.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2193,14 +2209,14 @@ Obtains the list of loaded time ranges. This API uses a promise to return the re
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
-    console.info(`Succeeded getLoadedTimeRanges== ${range}`);
+    console.info(`Succeeded in calling getLoadedTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getLoadedTimeRanges, error message is :' + err.message);
+    console.error('Failed to getLoadedTimeRanges, error message is: ' + err.message);
   });
 }
 ```
 
-## getSeekableTimeRanges<sup>24+</sup>
+## getSeekableTimeRanges
 
 getSeekableTimeRanges(): Promise\<Array\<Range>>
 
@@ -2210,6 +2226,8 @@ Obtains the list of seekable time ranges. This API uses a promise to return the 
 >
 > - For local media resources and media resources that support segment-based requests, the time range is from 0 to the entire media duration.
 > - For media resources that support only chunk-based transmission, there is no seekable time range.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2227,18 +2245,22 @@ Obtains the list of seekable time ranges. This API uses a promise to return the 
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
-    console.info(`Succeeded getSeekableTimeRanges== ${range}`);
+    console.info(`Succeeded in calling getSeekableTimeRanges: ${range}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getSeekableTimeRanges, error message is :' + err.message);
+    console.error('Failed to getSeekableTimeRanges, error message is: ' + err.message);
   });
 }
 ```
 
-## seekToDefaultPosition<sup>24+</sup>
+## seekToDefaultPosition
 
 seekToDefaultPosition(): void
 
 Seeks to the default access point of the playback source. For live streams, the latest recommended access point is used. For on-demand videos, the start position of the video is used (equivalent to **seek(0)**).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2253,13 +2275,13 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 **Example**
 
 ```ts
-async function  test(){
+async function test(){
   let avPlayer = await media.createAVPlayer();
   try {
     avPlayer.seekToDefaultPosition()
-    console.info('Succeeded seekToDefaultPosition.');
+    console.info('Succeeded in calling seekToDefaultPosition.');
   } catch (err) {
-    console.error('Failed to seekToDefaultPosition, error message is :' + err.message);
+    console.error('Failed to seekToDefaultPosition, error message is: ' + err.message);
   }
 }
 ```
@@ -3125,8 +3147,8 @@ Adds an external subtitle to a video based on the FD. Currently, the external su
 | Name| Type                  | Mandatory| Description                                                        |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
 | fd | number   | Yes  | Resource handle, which is obtained by calling [resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9).|
-| offset | number | No  | Resource offset, which needs to be entered based on the preset asset information. An invalid value causes a failure to parse subtitle assets. The default value is **0**.|
-| length | number | No  | Resource length, which needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse subtitle assets. The default value is **0**.|
+| offset | number | No  | Resource offset. The value needs to be entered based on the preset resource information. An invalid value causes a failure to parse subtitle resources. The default value is **0**. The unit is bytes.|
+| length | number | No  | Resource length. It needs to be entered based on the preset asset information. The default value is the remaining bytes from the offset in the file. An invalid value causes a failure to parse subtitle assets. The default value is **0**.|
 
 **Return value**
 
@@ -3511,7 +3533,10 @@ setSuperResolution(enabled: boolean) : Promise\<void>
 
 Enables or disables super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. This API uses a promise to return the result.
 
-Before calling [prepare()](#prepare9), enable super resolution by using [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12).
+> **NOTE**
+>
+> - Before calling [prepare()](#prepare9), enable super resolution by using [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12).
+> - The default target resolution is 1920 x 1080 pixels.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -3544,6 +3569,12 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  let url: string = 'http://abc.bcd.efg/aa/test.mp4'; // Replace it with the actual URL of the resource file.
+  avPlayer.url = url;
+  let playStrategy : media.PlaybackStrategy = {
+      enableSuperResolution: true
+  };
+  avPlayer.setPlaybackStrategy(playStrategy);
   // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the initialized, prepared, playing, paused, completed, or stopped state before proceeding.
   avPlayer.setSuperResolution(true);
 }
@@ -3592,6 +3623,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
+  let url: string = 'http://abc.bcd.efg/aa/test.mp4'; // Replace it with the actual URL of the resource file.
+  avPlayer.url = url;
+  let playStrategy : media.PlaybackStrategy = {
+      enableSuperResolution: true
+  };
+  avPlayer.setPlaybackStrategy(playStrategy);
+  avPlayer.setSuperResolution(true);
   // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the initialized, prepared, playing, paused, completed, or stopped state before proceeding.
   avPlayer.setVideoWindowSize(1920, 1080);
 }
@@ -3808,5 +3846,64 @@ Unsubscribes from metric events during playback.
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.offMetricsEvent();
+}
+```
+
+## onTimedMetaData
+
+onTimedMetaData(callback: Callback\<AVTimedMetaData>): void
+
+Registers a listener to detect time-based metadata. Currently, only the #EXT-X-DATERANGE information in HLS and the Event Stream information in DASH are supported. For example, the metadata information of the inserted ads can be listened to. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                                                        |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | Yes  | Callback function, which returns the reported time-based metadata.|
+
+**Example**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.onTimedMetaData((data: media.AVTimedMetaData) => {
+  });
+}
+```
+
+## offTimedMetaData
+
+offTimedMetaData(callback?: Callback\<AVTimedMetaData>): void
+
+Cancels the registration of a listener to detect time-based metadata. Currently, only the #EXT-X-DATERANGE information of HLS and the event stream information of DASH are supported. For example, you can cancel the listener to detect the metadata of an inserted ad. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name  | Type    | Mandatory| Description                                                        |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[AVTimedMetaData](arkts-apis-media-i.md#avtimedmetadata)> | No  | Callback function, which returns the reported time-based metadata. The default value is the callback function of all events for canceling the subscription.|
+
+**Example**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.offTimedMetaData();
 }
 ```

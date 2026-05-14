@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **List** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
@@ -96,6 +96,7 @@ Defines the options of the **List** component.
 | ------------ | ------------------------------------------- | ---- | -- | ------------------------------------------------------------ |
 | initialIndex<sup>7+</sup> | number | No| Yes| Index of the item to be displayed at the start when the list is initially loaded.<br>Default value: **0**<br>**NOTE**<br>If the set value is a negative number or is greater than the index of the last item in the list, the value is invalid. In this case, the default value will be used.<br>Since API version 14, if the **scrollToIndex** or **scrollEdge** API without animation in **Scroller** is called after the **List** component is created but before its first layout (for example, in the [onAttach](ts-universal-events-show-hide.md#onattach12) event of the **List** component), the value will override the value of **initialIndex**.<br>After **initialIndex** is set, the list starts layout from the child component corresponding to **initialIndex**. The child components before **initialIndex** are not involved in layout and the exact size cannot be calculated. Therefore, the total scroll offset of the list obtained through the [currentOffset](ts-container-scroll.md#currentoffset) API is estimated and may have errors. You can set [childrenMainSize](#childrenmainsize12) to ensure the accuracy of the total scrolling offset of a list.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | space<sup>7+</sup>        | number&nbsp;\|&nbsp;string                  | No  | Yes| Spacing between list items along the main axis.<br>Default value: **0**<br>If the parameter type is number, the unit is vp.<br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used.<br>If this parameter is set to a value less than the width of the list divider, the width of the list divider is used as the spacing.<br> Child components of **List** whose **visibility** attribute is set to **None** are not displayed, but the spacing above and below them still takes effect.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| spaceWidth        | [Dimension](ts-types.md#dimension10)                  | No  | Yes| Spacing between list items along the main axis.<br>Default value: **0**<br><br>**NOTE**<br>If this parameter is set to a negative number or a value greater than or equal to the length of the list content area, the default value is used.<br>If this parameter is set to a value less than the width of the list divider, the width of the list divider is used as the spacing.<br>Child components of **List** whose **visibility** attribute is set to **None** are not displayed, but the spacing above and below them still takes effect. If both **spaceWidth** and **space** are set, **spaceWidth** takes precedence. When **spaceWidth** is **undefined** or **null**, **space** takes effect.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 | scroller<sup>7+</sup>      | [Scroller](ts-container-scroll.md#scroller) | No  | Yes| Scroller, After being bound to **List**, it can be used to control its scrolling.<br>**NOTE**<br>It cannot be bound to the same scrolling control object as other scrollable components, such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
@@ -1818,7 +1819,11 @@ struct ListExample {
     }
     this.arr = new ListDataSource(list);
     // The first five items do not have a default main axis size of 100; therefore, it is necessary to inform the list through the ChildrenMainSize.
-    this.listChildrenSize.splice(0, 5, [300, 300, 300, 300, 300]);
+    try {
+      this.listChildrenSize.splice(0, 5, [300, 300, 300, 300, 300]);
+    } catch (error) {
+      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+    }
   }
 
   build() {
@@ -1982,7 +1987,12 @@ struct ListItemGroupExample {
         PanGesture()
           .onActionUpdate((event: GestureEvent) => {
             if (event.fingerList[0] != undefined && event.fingerList[0].localX != undefined && event.fingerList[0].localY != undefined) {
-              this.listIndexInfo  = this.scroller.getVisibleListContentInfo(event.fingerList[0].localX, event.fingerList[0].localY);
+              try {
+                this.listIndexInfo =
+                  this.scroller.getVisibleListContentInfo(event.fingerList[0].localX, event.fingerList[0].localY);
+              } catch (error) {
+                console.info('Failed to get visible list content info:', error);
+              }
               let itemIndex:string = 'undefined';
               if (this.listIndexInfo.itemIndexInGroup != undefined ) {
                 itemIndex = this.listIndexInfo.itemIndexInGroup.toString();

@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
+<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Scroll** component scrolls the content when the layout size of a component exceeds the size of its parent component.
@@ -112,6 +112,7 @@ Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), this 
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Scrollbar color.<br>Default value: **'\#66182431'**.<br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.  |
 
+
 ### scrollBarWidth
 
 scrollBarWidth(value: number | string)
@@ -127,6 +128,28 @@ Sets the scrollbar width. This attribute cannot be set in percentage. After the 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | number&nbsp;\|&nbsp;string | Yes  | Scrollbar width.<br>Default value: **4**<br>Unit: vp<br>Values less than 0 are treated as the default value. The value **0** means not to show the scrollbar.|
+
+### scrollBarWidth
+
+scrollBarWidth(value: number | string | Resource)
+
+Sets the scrollbar width. This attribute cannot be set in percentage. After the width is set, the scrollbar is displayed with the set width in normal state and pressed state. If the set width exceeds the height of the **Scroll** component on the main axis, the scrollbar width changes to 4 vp. The **Resource** type is supported.
+
+If this attribute is not set, the scrollbar width is 4 vp.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                      | Mandatory| Description                                     |
+| ------ | -------------------------- | ---- | ----------------------------------------- |
+| value  | number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource) | Yes  | Scrollbar width.<br>Unit: vp<br>The value range is [0, +∞). If this parameter is set to a value less than 0, **4vp** is used. The value **0** means not to show the scrollbar.|
 
 ### scrollSnap<sup>10+</sup>
 
@@ -1354,7 +1377,11 @@ struct ScrollExample {
       Button('fling -3000')
         .height('5%')
         .onClick(() => { // Trigger a fling with an initial velocity of -3000 vp/s.
-          this.scroller.fling(-3000);
+          try {
+            this.scroller.fling(-3000);
+          } catch (error) {
+            console.error('Failed to execute fling scroll:', error);
+          }
         })
         .margin({ top: 260, left: 20 })
       Button('scroll to bottom 700')
@@ -1652,7 +1679,11 @@ struct ListExample {
     for (let i = 0; i < 10; i++) {
       this.arr.push(i);
     }
-    this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    try {
+      this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    } catch (error) {
+      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+    }
   }
   build() {
     Column() {
@@ -1678,7 +1709,11 @@ struct ListExample {
         PanGesture()
           .onActionUpdate((event: GestureEvent) => {
             if (event.fingerList[0] != undefined && event.fingerList[0].localX != undefined && event.fingerList[0].localY != undefined) {
-              this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              try {
+                this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              } catch (error) {
+                console.error('Failed to get item index from scroller:', error);
+              }
               this.itemBackgroundColorArr[this.listIndex] = true;
             }
           })
