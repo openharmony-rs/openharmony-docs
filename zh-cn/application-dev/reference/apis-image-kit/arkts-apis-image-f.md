@@ -1708,7 +1708,7 @@ ArkTS-Sta: createImageSource(fd: int): ImageSource | undefined
 
 | 参数名 | 类型   | 必填 | 说明          |
 | ------ | ------ | ---- | ------------- |
-| fd     | int | 是   | 文件描述符fd。|
+| fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符fd。|
 
 **返回值：**
 
@@ -1778,7 +1778,7 @@ ArkTS-Sta: createImageSource(fd: int, options: SourceOptions): ImageSource | und
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| fd      | int | 是   | 文件描述符fd。      |
+| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符fd。      |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
@@ -1858,7 +1858,7 @@ ArkTS-Sta: createImageSource(buf: ArrayBuffer): ImageSource | undefined
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
 |ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-| ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -1920,7 +1920,7 @@ ArkTS-Sta: createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSou
 | 类型                        | 说明                                         |
 | --------------------------- | -------------------------------------------- |
 |ArkTS-Dyn: [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
-|ArkTS-Sta:[ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
+|ArkTS-Sta: [ImageSource](arkts-apis-image-ImageSource.md) \| undefined| 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
 
@@ -2440,9 +2440,9 @@ function CreateAuxiliaryPictureUsingAllocator(info: image.AuxiliaryPictureInfo, 
 
 ## image.createImageReceiver<sup>11+</sup>
 
-createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver
+ArkTS-Dyn: createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageReceiver
 
-createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver | undefined
+ArkTS-Sta: createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver | undefined
 
 通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
@@ -2460,7 +2460,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiv
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。             |
-| capacity | int | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
+| capacity | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
 **返回值：**
 
