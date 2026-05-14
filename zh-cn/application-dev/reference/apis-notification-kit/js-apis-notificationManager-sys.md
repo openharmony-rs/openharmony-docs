@@ -6709,7 +6709,7 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
 
 snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 
-通知稍后提醒。此接口允许设置通知在指定时间间隔后再次发出提醒。使用Promise异步回调。
+设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
 
 **起始版本**：26.0.0
 
@@ -6726,7 +6726,7 @@ snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 | 参数名      | 类型                  | 必填 | 说明                         |
 | --------- | --------------------- | ---- | ---------------------------- |
 | hashCode   | string | 是  | 需要设置稍后提醒通知的唯一标识。 |
-| delayTime   | number | 是  | 稍后提醒的时间间隔，单位：秒。 |
+| delayTime   | number | 是  | 稍后提醒的时间间隔。<br/>单位：秒。 |
 
 **返回值：**
 
@@ -6742,7 +6742,6 @@ snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 801 | Capability not supported. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 1600007 | The notification does not exist. |
