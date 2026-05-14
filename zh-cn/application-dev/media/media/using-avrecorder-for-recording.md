@@ -44,6 +44,8 @@
    >
    > 需要在avRecorder完成赋值后，再进行剩余操作。
 
+   ArkTS-Dyn：
+
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -58,11 +60,17 @@
    }
    ```
 
+   ArkTS-Sta：
+
+   <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+
 2. 设置业务需要的监听事件，监听状态变化及错误上报。
    | 事件类型 | 说明 |
    | -------- | -------- |
    | stateChange | 必要事件，监听AVRecorder的state属性改变。 |
    | error | 必要事件，监听AVRecorder的错误信息。 |
+
+   ArkTS-Dyn：
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -79,6 +87,10 @@
    });
    ```
 
+   ArkTS-Sta：
+
+   <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+
 3. 配置音频录制参数，调用[prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1)接口，此时进入prepared状态。
 
    > **说明：**
@@ -91,6 +103,8 @@
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，具体录制参数需严格契合既定的[录制参数配置](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
    > - 示例中配置的audioCodec音频编码格式、aacProfile音频编码扩展格式、fileFormat封装格式请参考[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
+
+   ArkTS-Dyn：
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -126,53 +140,41 @@
    }
    ```
 
+   ArkTS-Sta：
+
+   <!-- @[prepare_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+
 4. 开始录制，调用[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9-1)接口，此时进入started状态。
 
-   ```ts
-   // 开始录制。
-   await this.avRecorder?.start();
-   ```
+   <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
 
 5. 暂停录制，调用[pause](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#pause9-1)接口，此时进入paused状态。
 
-   ```ts
-   // 暂停录制。
-   await this.avRecorder?.pause();
-   ```
+   <!-- @[pause_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
 
 6. 恢复录制，调用[resume](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#resume9-1)接口，此时再次进入started状态。
 
-   ```ts
-   // 恢复录制。
-   await this.avRecorder?.resume();
-   ```
+   <!-- @[resume_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
 
 7. 停止录制，调用[stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1)接口，此时进入stopped状态。
 
-   ```ts
-   // 停止录制。
-   await this.avRecorder?.stop();
-   ```
+   <!-- @[stop_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
 
 8. 重置资源，调用[reset](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#reset9-1)接口，重新进入idle状态，允许重新配置录制参数。
 
-   ```ts
-   // 重置资源。
-   await this.avRecorder?.reset();
-   ```
+   <!-- @[reset_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
 
 9. 销毁实例，调用[release](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#release9-1)接口，进入released状态，退出录制。
 
-   ```ts
-   // 销毁实例。
-   await this.avRecorder?.release();
-   ```
+   <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
 
 ## 完整示例
 
   参考以下示例，完成“开始录制-暂停录制-恢复录制-停止录制”的完整流程。
 
   使用当前示例代码时，需要申请**ohos.permission.MICROPHONE**麦克风权限。申请方式请参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
+   ArkTS-Dyn：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -311,3 +313,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   }
 }
 ```
+
+   ArkTS-Sta：
+
+   <!-- @[full_audio_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
