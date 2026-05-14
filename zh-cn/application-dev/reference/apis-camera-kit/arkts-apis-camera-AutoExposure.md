@@ -212,8 +212,6 @@ function setMeteringPoint(photoSession: camera.PhotoSession): void {
 
 ## setExposureBias<sup>11+</sup>
 
-setExposureBias(exposureBias: number): void
-
 ArkTS-Dyn: setExposureBias(exposureBias: number): void
 
 ArkTS-Sta: setExposureBias(exposureBias: double): void
