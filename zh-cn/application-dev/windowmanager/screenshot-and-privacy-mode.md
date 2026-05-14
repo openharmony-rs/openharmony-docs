@@ -529,7 +529,7 @@ struct Index {
   private async pickScreenArea(): Promise<void> {
     try {
       const result = await screenshot.pick();
-      this.pickRectText = `left=${result.pickRect.left}, tp=${result.pickRect.top}, width=${result.pickRect.width},   hight=${result.pickRect.height}`;
+      this.pickRectText = `left=${result.pickRect.left}, top=${result.pickRect.top}, width=${result.pickRect.width}, height=${result.pickRect.height}`;
       this.updatePreview(result.pixelMap, 'screenshot.pick');
     } catch (err) {
       this.statusText = `screenshot.pick failed: $JSON.stringify(err)}`;
