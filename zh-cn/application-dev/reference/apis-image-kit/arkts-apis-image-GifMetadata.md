@@ -12,7 +12,7 @@ GIF图像元数据类，用于存储图像的元数据。
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
