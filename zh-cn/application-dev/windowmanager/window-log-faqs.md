@@ -376,7 +376,7 @@ UINodeCount: 159
 
 开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1)接口，导致应用崩溃。
 
-#### 日志信息
+**日志信息**
 
 通过DevEco Studio或hdc查看崩溃日志：
 
@@ -400,7 +400,7 @@ Stack trace:
 - 堆栈：getLastWindow()调用位置
 - 文件名和行号：定位具体代码位置（如MyAbility.ts第50行）
 
-#### 分析定位
+**分析定位**
 
 **步骤1：查找getLastWindow调用位置**
 
@@ -459,7 +459,7 @@ onWindowStageDestroy() {
 }
 ```
 
-#### 解决步骤
+**解决步骤**
 
 避免在销毁流程中调用getLastWindow()，不在以下位置调用：
 - onWindowStageDestroy()
@@ -498,7 +498,7 @@ onWindowStageDestroy() {
 
 窗口异常检测日志用于监控窗口生命周期异常，常见异常类型包括伪冻屏/透明窗检测、窗口生命周期异常等。
 
-### 可能原因
+**可能原因**
 
 - 窗口创建后未在5秒内调用loadContent()或setUIContent()加载页面内容
 - 异步操作耗时过长，超过超时阈值
@@ -509,7 +509,7 @@ onWindowStageDestroy() {
 
 窗口创建后未在规定时间内（5秒）加载页面内容，导致窗口显示为透明或冻结状态。
 
-#### 日志信息
+**日志信息**
 
 ```
 MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bundleName], abilityName: [abilityName]
@@ -521,7 +521,7 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 - `bundleName`：包名
 - `abilityName`：实例名
 
-#### 分析定位
+**分析定位**
 
 检查代码流程：
 1. 是否在窗口创建后立即调用了loadContent()或setUIContent()
@@ -543,7 +543,7 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 });
 ```
 
-#### 解决步骤
+**解决步骤**
 
 确保窗口创建后立即加载页面内容，遵循正确调用顺序：先加载内容，后显示窗口。
 
