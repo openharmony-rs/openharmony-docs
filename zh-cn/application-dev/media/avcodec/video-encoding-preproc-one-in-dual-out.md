@@ -1,6 +1,13 @@
 # 编码支持一入二出
 
-从API version 26.0.0开始，支持编码一入二出编码，主副编码器分别支持前处理配置。
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650-->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
+从API version 26.0.0开始，支持一入二出编码，主副编码器分别支持前处理配置。
 
 
 ## 功能概述
@@ -13,7 +20,9 @@
 | 副编码器（Secondary） | `OH_VideoEncoder_CreateSecondaryFromPrimary` 从主编码器创建 | 共享主编码器的输入源，可配置独立的编码参数和前处理参数 | 26.0.0 |
 
 ### 架构图
+
 以下为一入二出架构图：
+
 ![one input dual output](figures/video-encoding-one-in-dual-out.png)
 
 ## 使用场景
@@ -45,7 +54,7 @@
 | `OH_VideoEncoder_RegisterParameterCallback` | × | × | 不支持随帧参数 |
 | `OH_VideoEncoder_PushInputParameter` | × | × | 不支持随帧参数 |
 | `OH_VideoEncoder_Configure` | √ | √ | 各自独立配置（分辨率、码率、前处理等均可不同） |
-| `OH_VideoEncoder_GetSurface` | √ **仅限此调用者** | × | 副编码器调用返回错误 |
+| `OH_VideoEncoder_GetSurface` | √ | × | **仅限主编码器调用者**，副编码器调用返回错误 |
 | `OH_VideoEncoder_Prepare` | √ | √ | 各自准备资源，参考普通编码器 |
 | `OH_VideoEncoder_Start` | √ | √ | 各自独立控制，参考普通编码器 |
 | `OH_VideoEncoder_Stop` | √ | √ | 各自独立控制，参考普通编码器 |
@@ -59,15 +68,15 @@
 | `OH_VideoEncoder_QueryInputBuffer` | × | × | 不支持同步模式 |
 | `OH_VideoEncoder_QueryOutputBuffer` | × | × | 不支持同步模式 |
 | `OH_VideoEncoder_GetInputDescription` | √ | √ | 含前处理元数据信息 |
-| `OH_VideoEncoder_GetOutputDescription` | √ | √ | |
-| `OH_VideoEncoder_IsValid` | √ | √ | |
+| `OH_VideoEncoder_GetOutputDescription` | √ | √ | 各自信息查询，参考普通编码器 |
+| `OH_VideoEncoder_IsValid` | √ | √ | 各自有效性判断，参考普通编码器 |
 | `OH_VideoEncoder_Destroy` | √ | √ | 先销毁 Secondary，再销毁 Primary |
 
 ### 配置约束
 
 | 约束项 | 说明 |
 |--------|------|
-| Surface 共享 | 主/副编码器共享同一个 Consumer Surface，仅需从 `GetSurface` 获取一次并绑定到数据源（Camera/XComponent）
+| Surface 共享 | 主/副编码器共享同一个 Consumer Surface，仅需从 `GetSurface` 获取一次并绑定到数据源（Camera/XComponent） |
 | Window 生命周期 | `OH_VideoEncoder_GetSurface` 获取的 window 实例需由开发者负责释放，在所有编码器 Destroy 之后调用 `OH_NativeWindow_DestroyNativeWindow(window)` 销毁 |
 | 前处理独立性 | 每个编码器可分别配置不同的降采样/裁剪/丢帧策略；但每个编码器内部降采样与裁剪仍然互斥 |
 | 回调独立性 | 两路的 `onNewOutputBuffer` 回调在不同线程中触发，需各自释放 FreeOutputBuffer |
@@ -132,7 +141,10 @@ if (ret != AV_ERR_OK) {
 OH_AVFormat_Destroy(format);
 ```
 
-> **注意**：Primary 的 WIDTH/HEIGHT 定义了共享输入 Surface 的尺寸，后续创建的 Secondary 在 Configure 时建议设置相同的输入尺寸值。
+> **注意：**
+>
+> Primary 的 WIDTH/HEIGHT 定义了共享输入 Surface 的尺寸，后续创建的 Secondary 在 Configure 时建议设置相同的输入尺寸值。
+>
 
 ### 从主编码器派生创建副编码器（Secondary）
 
@@ -150,7 +162,11 @@ if (ret != AV_ERR_OK || g_secondary == nullptr) {
 ### 注册副编码器回调
 
 和普通编码器实现一致，参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
-> **注意**：Primary 和 Secondary 的回调在**不同线程**中执行。两路都必须各自调用 `FreeOutputBuffer`，否则可能导致阻塞或饥饿。
+
+> **注意：**
+>
+> Primary 和 Secondary 的回调在**不同线程**中执行。两路都必须各自调用 `FreeOutputBuffer`，否则可能导致阻塞或饥饿。
+>
 
 ### 配置副编码器（含差异化前处理）
 
@@ -306,7 +322,6 @@ if (window != nullptr){
 > - 若违反顺序先 Destroy Primary，系统会**自动**先销毁关联的 Secondary 再释放 Primary
 > - 但仍建议显式遵循推荐顺序以确保代码清晰可控
 
----
 
 ## 推荐配置模式
 
@@ -315,35 +330,15 @@ if (window != nullptr){
 - **Primary**：原始分辨率，无前处理或轻度丢帧 → 录制/归档
 - **Secondary**：降采样到低分辨率 + 丢帧 → 预览/推流
 
-```
-输入: 1920x1080 @ 30fps
-  ├── Primary:   1920x1080 @ 30fps → HEVC @ 8Mbps   （录制文件）
-  └── Secondary: 854x480  @ 15fps → HEVC @ 1.5Mbps  （实时预览）
-```
-
 ### 模式 B：全帧 + ROI 裁剪
 
 - **Primary**：全帧编码 → 完整画面归档
 - **Secondary**：裁剪指定区域 → 局部分析/特写
 
-```
-输入: 3840x2160 (4K) @ 30fps
-  ├── Primary:   3840x2160 全帧 → HEVC @ 20Mbps  （完整归档）
-  └── Secondary: 裁剪 1920x1080 → HEVC @ 4Mbps    （ROI 区域分析）
-```
-
 ### 模式 C：多码率自适应（ABR）
 
 - **Primary**：全帧 + 适度丢帧 → 主码流
 - **Secondary**：大幅降采样 + 大幅丢帧 → 弱网备用码流
-
-```
-输入: 1920x1080 @ 30fps
-  ├── Primary:   1920x1080 @ 25fps → AVC @ 6Mbps  （正常播放）
-  └── Secondary: 854x480  @ 10fps → AVC @ 500Kbps （弱网降级）
-```
-
----
 
 ## 常见问题排查
 
@@ -354,5 +349,5 @@ if (window != nullptr){
 | Secondary Configure 报错 | 前处理参数不合法 | 检查降采样/裁剪参数完整性、范围合法性、Crop 与 Downsample 是否互斥设置 |
 | Secondary 调用 GetSurface 报错 | 使用了副编码器句柄调用 | **只能通过主编码器句柄**调用 GetSurface，两者返回的是同一个共享 Surface |
 | Secondary 无输出 | 未调用 Start / Surface 未绑定数据源 / 回调未正确注册 | 检查 Secondary 是否已 Start；确认 Primary 的 Surface 已绑定到 Camera/XComponent；确认回调函数非 null 且包含 FreeOutputBuffer |
-| Primary 回调阻塞导致 Secondary 饥饿 | Primary 的 onNeedOutputData 中耗时过长 | 确保 Primary 回调中尽快 FreeOutputBuffer，避免长时间阻塞 |
+| Primary 回调阻塞导致 Secondary 饥饿 | Primary 的 onNewOutputBuffer 中耗时过长 | 确保 Primary 回调中尽快 FreeOutputBuffer，避免长时间阻塞 |
 

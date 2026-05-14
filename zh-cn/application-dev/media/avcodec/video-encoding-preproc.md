@@ -1,5 +1,12 @@
 # 编码支持前处理
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650-->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 从API version 26.0.0开始，支持编码前处理功能。
 
 ## 功能概述
@@ -85,7 +92,7 @@
 
 ## 开发步骤
 
-支持前处理编码和普通编码器的使用流程一致，主要差异点主要有创建方式、支持前处理参数配置以及动态更新。本文主要对差异点进行详细说明。完整编码器开发流程参考[视频编码Surface模式](video-encoding.md#surface模式)
+支持前处理编码和普通编码器的使用流程一致，主要差异点在于创建方式、支持前处理参数配置以及动态更新。本文主要对差异点进行详细说明。完整编码器开发流程参考[视频编码Surface模式](video-encoding.md#surface模式)
 
 ### 创建支持前处理的编码器
 ```cpp
@@ -235,23 +242,23 @@ if (inputDesc != nullptr) {
 
 | 接口 | 是否可用 | 备注 |
 |------|:--------:|------|
-| `OH_VideoEncoder_RegisterCallback` | √ | |
+| `OH_VideoEncoder_RegisterCallback` | √ | 支持 |
 | `OH_VideoEncoder_RegisterParameterCallback` | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
 | `OH_VideoEncoder_PushInputParameter` | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
-| `OH_VideoEncoder_Configure` | √ | 含前处理参数 |
-| `OH_VideoEncoder_GetSurface` | √ | |
-| `OH_VideoEncoder_Prepare` | √ | 准备内部资源 |
-| `OH_VideoEncoder_Start` | √ | |
-| `OH_VideoEncoder_Stop` | √ | |
-| `OH_VideoEncoder_Flush` | √ | |
-| `OH_VideoEncoder_Reset` | √ | 重置到 Initialized 状态 |
-| `OH_VideoEncoder_SetParameter` | √ | 运行时动态调整前处理等参数 |
-| `OH_VideoEncoder_NotifyEndOfStream` | √ | Surface 模式专用 |
-| `OH_VideoEncoder_FreeOutputBuffer` | √ | |
-| `OH_VideoEncoder_GetInputDescription` | √ | 包含前处理元数据 |
-| `OH_VideoEncoder_GetOutputDescription` | √ | |
-| `OH_VideoEncoder_IsValid` | √ | |
-| `OH_VideoEncoder_Destroy` | √ | 销毁编码器实例 |
+| `OH_VideoEncoder_Configure` | √ | 支持，可配置含前处理参数 |
+| `OH_VideoEncoder_GetSurface` | √ | 支持 |
+| `OH_VideoEncoder_Prepare` | √ | 支持，准备内部资源 |
+| `OH_VideoEncoder_Start` | √ | 支持 |
+| `OH_VideoEncoder_Stop` | √ | 支持 |
+| `OH_VideoEncoder_Flush` | √ | 支持 |
+| `OH_VideoEncoder_Reset` | √ | 支持，重置到 Initialized 状态 |
+| `OH_VideoEncoder_SetParameter` | √ | 支持，运行时动态调整前处理等参数 |
+| `OH_VideoEncoder_NotifyEndOfStream` | √ | 支持，通知编码器EOS信息 |
+| `OH_VideoEncoder_FreeOutputBuffer` | √ | 支持 |
+| `OH_VideoEncoder_GetInputDescription` | √ | 支持，包含前处理元数据 |
+| `OH_VideoEncoder_GetOutputDescription` | √ | 支持 |
+| `OH_VideoEncoder_IsValid` | √ | 支持 |
+| `OH_VideoEncoder_Destroy` | √ | 支持，销毁编码器实例 |
 | `OH_VideoEncoder_PushInputData` | × | Buffer 模式不支持 |
 | `OH_VideoEncoder_PushInputBuffer` | × | Buffer 模式不支持 |
 | `OH_VideoEncoder_QueryInputBuffer` | × | 同步模式不支持 |
