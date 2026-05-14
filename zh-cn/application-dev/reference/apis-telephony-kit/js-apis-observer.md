@@ -162,7 +162,7 @@ on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
 | 参数名   | 类型                                                      | 必填 | 说明                                                              |
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | type     | string                                                    | 是   | 网络状态变化事件，参数固定为'networkStateChange'。                 |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 是   | 以callback形式异步返回结果。参考radio的[NetworkState](js-apis-radio.md#networkstate)。|
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 是   | 回调函数，返回网络状态对象。参考radio的[NetworkState](js-apis-radio.md#networkstate)。|
 
 **错误码：**
 
@@ -202,7 +202,7 @@ on\(type: \'networkStateChange\', options: ObserverOptions, callback: Callback\<
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | type     | string                                                    | 是   | 网络状态变化事件，参数固定为'networkStateChange'。                 |
 | options  | [ObserverOptions](#observeroptions11)                     | 是   | 电话相关事件订阅参数可选项。                                        |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 是   | 以callback形式异步返回结果，参考radio的[NetworkState](js-apis-radio.md#networkstate)。 |
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 是   | 回调函数，返回网络状态对象。参考radio的[NetworkState](js-apis-radio.md#networkstate)。 |
 
 **错误码：**
 
@@ -246,7 +246,7 @@ off\(type: \'networkStateChange\', callback?: Callback\<NetworkState\>\): void
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                    | 是   | 网络状态变化事件，参数固定为'networkStateChange'。                 |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 否   | 以callback形式异步返回结果，参考radio的[NetworkState](js-apis-radio.md#networkstate)。 |
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 否   | 回调函数，返回网络状态对象。参考radio的[NetworkState](js-apis-radio.md#networkstate)。 |
 
 **错误码：**
 
@@ -285,7 +285,7 @@ on\(type: \'signalInfoChange\', callback: Callback\<Array\<SignalInformation\>\>
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 信号状态变化事件，参数固定为'signalInfoChange'。              |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 是   | 以callback形式异步返回结果，参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 是   | 回调函数，返回信号格数对象。参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
 
 **错误码：**
 
@@ -324,7 +324,7 @@ on\(type: \'signalInfoChange\', options: ObserverOptions, callback: Callback\<Ar
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 信号状态变化事件，参数固定为'signalInfoChange'。              |
 | options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。                                   |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 是   | 以callback形式异步返回结果，参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 是   | 回调函数，返回信号格数对象。参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
 
 **错误码：**
 
@@ -369,7 +369,7 @@ off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 信号状态变化事件，参数固定为'signalInfoChange'。              |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 否   | 以callback形式异步返回结果，参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 否   | 回调函数，返回信号格数对象。参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
 
 **错误码：**
 
@@ -411,7 +411,7 @@ on(type: 'callStateChange', callback: Callback\<CallStateInfo\>): void
 | 参数名   | 类型                                           | 必填 | 说明                                                        |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | string                                        | 是   | 通话状态变化事件，参数固定为'callStateChange'。                |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\> | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
 
 **错误码：**
 
@@ -448,7 +448,7 @@ on(type: 'callStateChange', options: ObserverOptions, callback: Callback\<CallSt
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
 | options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。                                  |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 以callback形式异步返回结果。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
 
 **错误码：**
 
@@ -491,7 +491,7 @@ off(type: 'callStateChange', callback?: Callback\<CallStateInfo\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 否   | 以callback形式异步返回结果，参考call的[CallState](js-apis-call.md#callstate)。<br />number：电话号码。 |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 否   | 回调函数，返回通话状态信息对象。参考call的[CallState](js-apis-call.md#callstate)。<br />number：电话号码。 |
 
 **错误码：**
 
@@ -531,7 +531,7 @@ on(type: 'callStateChangeEx', callback: Callback\<TelCallState\>, options?: Obse
 | 参数名   | 类型                                           | 必填 | 说明                                                        |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | string                                        | 是   | 通话状态变化事件，参数固定为'callStateChangeEx'。                |
-| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到TelCallState。<br/> |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | 是   | 回调函数，返回通话状态对象。<br/>应用可获取到TelCallState。<br/> |
 | options  | [ObserverOptions](#observeroptions11)                              | 否 | 电话相关事件订阅参数可选项。                |
 
 **错误码：**
@@ -579,7 +579,7 @@ off(type: 'callStateChangeEx', callback?: Callback\<TelCallState\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
-| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | 否   | 以callback形式异步返回结果，参考call的[TelCallState](js-apis-call.md#telcallstate21)。<br /> |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | 否   | 回调函数，返回通话状态对象。参考call的[TelCallState](js-apis-call.md#telcallstate21)。<br /> |
 
 **错误码：**
 
@@ -619,7 +619,7 @@ on\(type: 'cellularDataConnectionStateChange', callback: Callback\<DataConnectio
 | 参数名   | 类型                               | 必填 | 说明                                                                 |
 | -------- | --------------------------------- | ---- | -------------------------------------------------------------------- |
 | type     | string                            | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\>  | 是   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\>  | 是   | 回调函数，返回数据连接状态信息对象。参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
 
 **错误码：**
 
@@ -656,7 +656,7 @@ on\(type: 'cellularDataConnectionStateChange', options: ObserverOptions, callbac
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
 | options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。             |
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 是   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 是   | 回调函数，返回数据连接状态信息对象。参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
 
 **错误码：**
 
@@ -699,7 +699,7 @@ off\(type: 'cellularDataConnectionStateChange',  callback?: Callback\<DataConnec
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 否   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 否   | 回调函数，返回数据连接状态信息对象。参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
 
 **错误码：**
 
@@ -739,7 +739,7 @@ on\(type: 'cellularDataFlowChange', callback: Callback\<DataFlowType\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是  | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。         |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 回调函数，返回数据流动类型对象。参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
 
 **错误码：**
 
@@ -778,7 +778,7 @@ on\(type: 'cellularDataFlowChange', options: ObserverOptions,  callback: Callbac
 | -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                     | 是   | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。         |
 | options   | [ObserverOptions](#observeroptions11)                     | 是   | 电话相关事件订阅参数可选项。                                                   |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 回调函数，返回数据流动类型对象。参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
 
 **错误码：**
 
@@ -823,7 +823,7 @@ off\(type: 'cellularDataFlowChange', callback?: Callback\<DataFlowType\>\): void
 | 参数名   | 类型                                                                | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                             | 是   | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。   |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 否   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 否   | 回调函数，返回数据流动类型对象。参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
 
 **错误码：**
 
@@ -869,7 +869,7 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 以callback形式异步返回结果。 |
+| callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
 
@@ -906,7 +906,7 @@ on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimSta
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
 | options   | [ObserverOptions](#observeroptions11)                       | 是   | 电话相关事件订阅参数可选项。                                  |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 以callback形式异步返回结果。 |
+| callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
 
@@ -949,7 +949,7 @@ off\(type: 'simStateChange', callback?: Callback\<SimStateData\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | 否   | 以callback形式异步返回结果。 |
+| callback | Callback\<[SimStateData](#simstatedata7)\> | 否   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
 
@@ -988,7 +988,7 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 卡帐户变化事件，参数固定为'iccAccountInfoChange'。                 |
-| callback | Callback\<void\> | 是   | 以callback形式异步返回结果。 |
+| callback | Callback\<void\> | 是   | 回调函数。当卡账户改变成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1028,7 +1028,7 @@ off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 卡帐户变化事件，参数固定为'iccAccountInfoChange'。                 |
-| callback | Callback\<void\> | 否   | 以callback形式异步返回结果。 |
+| callback | Callback\<void\> | 否   | 回调函数。当卡账户改变成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1151,7 +1151,7 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 
 |     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallState。<br/> |
 | options  | [ObserverOptions](#observeroptions11)                  | 否 | 电话相关事件订阅参数可选项。                |
 
 **错误码：**
@@ -1196,7 +1196,7 @@ offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
 |     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 否   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 否   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallState。<br/> |
 
 **错误码：**
 
