@@ -8,7 +8,7 @@
 
 ## Overview
 
-Defines APIs for game controllers.
+Defines APIs for gamepads.
 
 **Library:** libohgame_controller.z.so
 
