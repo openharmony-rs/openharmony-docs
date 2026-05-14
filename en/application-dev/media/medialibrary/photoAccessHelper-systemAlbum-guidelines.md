@@ -28,7 +28,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
@@ -65,7 +65,7 @@ Use [MediaAssetChangeRequest.setFavorite](../../reference/apis-media-library-kit
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Favorite an image.
 
@@ -108,7 +108,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain an image from **Favorites**.
 
@@ -162,7 +162,7 @@ Use [MediaAssetChangeRequest.setFavorite](../../reference/apis-media-library-kit
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Unfavorite an image.
 
@@ -217,7 +217,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
@@ -253,7 +253,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain a video in **Videos**.
 
@@ -311,7 +311,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
@@ -340,7 +340,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain a media asset from **Screenshots**.
 

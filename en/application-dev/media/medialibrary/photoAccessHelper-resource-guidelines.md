@@ -21,7 +21,7 @@ You can obtain media assets based on the specified conditions, such as the media
 
 Use [PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1) with the [FetchOptions](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions) object to specify the search criteria. Unless otherwise specified, all the media assets to be obtained in this document exist in the database. If no media asset is obtained, check whether the media assets exist in the database.
 
-> **NOTICE**
+> **NOTE**
 > When [PhotoAccessHelper.PhotoKeys](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys) is used as the search criterion, only the [DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) API is supported.
 
 To obtain the object at the specified position (for example, the first one, the last one, or the one with the specified index) in the result set, use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md).
@@ -29,7 +29,7 @@ To obtain the object at the specified position (for example, the first one, the 
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 - The [dataSharePredicates](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md) module is imported.
 
 ### Obtaining an Image or Video by Name
@@ -75,7 +75,7 @@ The thumbnails offer a quick preview on images and videos. You can use [PhotoAss
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 - The [dataSharePredicates](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md) module is imported.
 
 For example, obtain the file descriptor (FD) of an image, and decode the image into a PixelMap for display or processing. For details, see [Image Decoding](../image/image-decoding.md).
@@ -131,7 +131,7 @@ Use [MediaAssetChangeRequest](../../reference/apis-media-library-kit/arkts-apis-
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.WRITE_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.WRITE_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 ### Creating an Image or Video Asset (for System Applications Only)
 
@@ -179,7 +179,7 @@ Use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessH
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.WRITE_IMAGEVIDEO** and **ohos.permission.READ_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.WRITE_IMAGEVIDEO** and **ohos.permission.READ_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 The following example describes how to rename an image named **oldTestPhoto**.
 
@@ -234,7 +234,7 @@ The file moved to the trash will be retained for 30 days before being deleted pe
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- Request the **ohos.permission.WRITE_IMAGEVIDEO** and **ohos.permission.READ_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- The application has the **ohos.permission.WRITE_IMAGEVIDEO** and **ohos.permission.READ_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Move the first file in the result set to the trash.
 
