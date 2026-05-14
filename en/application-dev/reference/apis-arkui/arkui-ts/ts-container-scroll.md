@@ -60,7 +60,7 @@ Sets the scrolling direction. The scroll offset is reset when this value is chan
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
 | value  | [ScrollDirection](#scrolldirection) | Yes  | Scrolling direction.<br>Default value: **ScrollDirection.Vertical**|
 
-When the scrolling direction is set to [ScrollDirection.FREE](#scrolldirection), the **Scroll** component supports only a subset of its capabilities. For details, see [Capabilities Supported in Free Scrolling Mode](#scrolldirection).
+When the scrolling direction is set to [ScrollDirection.FREE](#scrolldirection), the **Scroll** component supports only partial capabilities. For details, see the capabilities supported in [ScrollDirection.FREE](#scrolldirection).
 
 ### scrollBar
 
