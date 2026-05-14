@@ -354,3 +354,4 @@ export default {
 }
 ```
 ![picker-view4](figures/picker-view4.png)
+<!--no_check-->
