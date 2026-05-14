@@ -16,7 +16,7 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 >
 > - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及[全屏模态转场](ts-universal-attributes-modal-transition.md)的生命周期进行联动。
 >
-> - Navigation未设置主副标题（[title](#title)或[subTitle](#subtitledeprecated)）且[hideBackButton](#hidebackbutton)属性设置为true时，不显示标题栏。
+> - Navigation未设置标题（[title](#title)）且[hideBackButton](#hidebackbutton)属性设置为true时，不显示标题栏。
 >
 > - Navigation的子页面切换时，新页面会主动请求焦点。
 >
