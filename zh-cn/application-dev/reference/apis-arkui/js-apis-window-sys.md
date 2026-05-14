@@ -1253,7 +1253,7 @@ try {
 }
 ```
 
-## window.createSubWindowAndBindParent<sup>24+</sup>
+## window.createSubWindowAndBindParent
 
 createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
 
@@ -1264,6 +1264,8 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 子窗跟随父窗显示/隐藏，但并不跟随父窗销毁，子窗通过回调函数监听父窗生命周期变化。
 
 建议在父窗销毁后主动销毁创建的子窗。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1278,7 +1280,7 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 | name | string | 是 | 窗口名称。|
 | parentId | number | 是 | 指定父窗口ID。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口ID属性。|
 | ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 当前应用上下文信息。|
-| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | 是 | 回调函数。返回绑定父窗的生命周期变化。|
+| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener) | 是 | 回调函数。返回绑定父窗的生命周期变化。|
 
 **返回值：**
 
