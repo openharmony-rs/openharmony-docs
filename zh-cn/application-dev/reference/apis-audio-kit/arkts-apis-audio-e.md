@@ -218,6 +218,7 @@
 | SAMPLE_RATE_96000 | 96000  | 采样率为96000。 |
 | SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。 |
 | SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。 |
+| SAMPLE_RATE_384000<sup>12+</sup> | 384000  | 采样率为384000。 |
 
 ## AudioEncodingType<sup>8+</sup>
 
