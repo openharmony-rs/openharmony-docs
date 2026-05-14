@@ -198,6 +198,10 @@
 11. 销毁实例，调用[release](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#release9-1)接口，进入released状态，退出录制，释放视频数据输入源相关资源，例如相机资源。
 
    <!-- @[release_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   await this.avRecorder?.release();
+   ```
 
 
 ## 完整示例
