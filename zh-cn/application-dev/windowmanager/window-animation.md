@@ -176,7 +176,7 @@
 
 ## 设置应用内Ability跳转淡入淡出动效
 
-在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起同名包的不同Ability时，可以通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)配置启动窗口的相关参数[WindowCreateParams](../reference/apis-arkui/arkts-apis-window-i.md#windowcreateparams20)。
+在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起同名包的不同Ability时，可以通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)中[WindowCreateParams](../reference/apis-arkui/arkts-apis-window-i.md#windowcreateparams20)配置窗口的启动动画。
 
 目前支持将窗口启动动画配置为淡入淡出动效[FADE_IN_OUT](../reference/apis-arkui/arkts-apis-window-e.md#animationtype20)。
 
