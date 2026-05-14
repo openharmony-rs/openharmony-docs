@@ -403,5 +403,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/arkts-more-cases.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"obtaining_the_type",
+						"start_line":19
+					}
+				]
+			}
+		]
 	}
 ]
