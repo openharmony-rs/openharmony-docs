@@ -11,10 +11,9 @@ The photoAccessHelper module provides APIs for managing system albums, including
 > **NOTE**
 >
 > Before you get started, obtain a PhotoAccessHelper instance and apply for required permissions. For details, see [Before You Start](photoAccessHelper-preparation.md).
->
 > Unless otherwise specified, the PhotoAccessHelper instance obtained in [Before You Start](photoAccessHelper-preparation.md) is used to call photoAccessHelper APIs. If the code for obtaining the PhotoAccessHelper instance is missing, an error will be reported to indicate that photoAccessHelper is not defined.
 
-To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following examples use promise-based APIs. For details about the APIs, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
+To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following examples of asynchronous API calls use the promise function. For more methods, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
 
 Unless otherwise specified, all the media assets to be obtained in this document exist in the database. If no media asset is obtained when the sample code is executed, check whether the media assets exist in the database.
 
@@ -29,24 +28,31 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
 1. Set the album type to **photoAccessHelper.AlbumType.SYSTEM** and the album subtype to **photoAccessHelper.AlbumSubtype.FAVORITE**.
 2. Call **PhotoAccessHelper.getAlbums** to obtain a Favorites object.
 
-```ts
+<!-- @[get_favorite_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getfavoriteobjectability/GetFavoriteObjectAbility.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
     let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
     console.info('get favorite album successfully, albumUri: ' + album.albumUri);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('get favorite album failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -59,7 +65,7 @@ Use [MediaAssetChangeRequest.setFavorite](../../reference/apis-media-library-kit
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Favorite an image.
 
@@ -102,7 +108,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain an image from **Favorites**.
 
@@ -113,9 +119,13 @@ Example: Obtain an image from **Favorites**.
 3. Call **Album.getAssets** to obtain the image assets.
 4. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the first image from the result set.
 
-```ts
+<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) -->
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -125,17 +135,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     console.info('get favorite album successfully, albumUri: ' + album.albumUri);
 
-    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await album.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getFirstObject();
     console.info('favorite album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName);
     photoFetchResult.close();
     albumFetchResult.close();
+    // ...
   } catch (err) {
     console.error('favorite failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -148,7 +162,7 @@ Use [MediaAssetChangeRequest.setFavorite](../../reference/apis-media-library-kit
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Unfavorite an image.
 
@@ -203,24 +217,31 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
 1. Set the album type to **photoAccessHelper.AlbumType.SYSTEM** and the album subtype to **photoAccessHelper.AlbumSubtype.VIDEO**.
 2. Use **PhotoAccessHelper.getAlbums** to obtain a Videos object.
 
-```ts
+<!-- @[get_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideoalbumability/GetVideoAlbumAbility.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO);
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO);
     let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
     console.info('get video album successfully, albumUri: ' + album.albumUri);
     fetchResult.close();
+    // ...
   } catch (err) {
     console.error('get video album failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -232,7 +253,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain a video in **Videos**.
 
@@ -243,9 +264,13 @@ Example: Obtain a video in **Videos**.
 3. Call **Album.getAssets** to obtain video assets.
 4. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the first video asset.
 
-```ts
+<!-- @[get_videos_from_video_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getvideosfromvideoalbumability/GetVideosFromVideoAlbumAbility.ets) --> 
+
+``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+// ...
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
@@ -255,17 +280,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO);
+    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
+      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.VIDEO);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     console.info('get video album successfully, albumUri: ' + album.albumUri);
 
-    let videoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await album.getAssets(fetchOptions);
+    let videoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
+      await album.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await videoFetchResult.getFirstObject();
     console.info('video album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName);
     videoFetchResult.close();
     albumFetchResult.close();
+    // ...
   } catch (err) {
     console.error('video failed with err: ' + err);
+    // ...
   }
 }
 ```
@@ -282,7 +311,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
@@ -311,7 +340,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain a media asset from **Screenshots**.
 
