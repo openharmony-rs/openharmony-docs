@@ -2555,7 +2555,9 @@ let receiver: image.ImageReceiver = image.createImageReceiver(options)!;
 
 ## image.createImageCreator<sup>11+</sup>
 
-createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator
+ArkTS-Dyn: createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCreator
+
+ArkTS-Sta: createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator
 
 通过图片大小、图片格式、容量创建ImageCreator实例。
 
@@ -2573,7 +2575,7 @@ createImageCreator(size: Size, format: ImageFormat, capacity: int): ImageCreator
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
-| capacity | int | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
+| capacity | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
 **返回值：**
 
