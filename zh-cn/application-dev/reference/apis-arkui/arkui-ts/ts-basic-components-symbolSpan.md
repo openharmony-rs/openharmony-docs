@@ -104,7 +104,7 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                          |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolSpan组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md) <br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolSpan组件大小。<br/>默认值：16fp<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>取值为undefined时，按默认值处理。|
 
 ### fontWeight
 

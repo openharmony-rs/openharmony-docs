@@ -103,7 +103,7 @@ ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
 | 参数名 | 类型     | 必填 |  说明   |
 | ------ | ------- | ---- | -------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>取值为undefined时，按默认值处理。|
 
 ### textCase
 
@@ -298,7 +298,7 @@ ArkTS-Sta: lineHeight(value: Length | undefined)
 
 | 参数名 | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br/> number类型时单位为[fp](ts-pixel-units.md)。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。<br/>取值为undefined时，使用默认行高高度。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br/> number类型时单位为[fp](ts-pixel-units.md#基本像素单位)。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。<br/>取值为undefined时，使用默认行高高度。|
 
 ### font<sup>10+</sup>
 

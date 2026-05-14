@@ -712,11 +712,11 @@ TextShadowStyle | GestureStyle | ImageAttachment | ParagraphStyle | LineHeightSt
 | ----------- | ---------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                               |
 | fontFamily  | string                                   | 是   | 是   | 获取属性字符串的文本字体。<br/>默认返回undefined。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                       |
-| fontSize    | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                   | 是   | 是   | 获取属性字符串的文本字体大小。<br/>单位：[vp](ts-pixel-units.md) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fontSize    | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                   | 是   | 是   | 获取属性字符串的文本字体大小。<br/>单位：[vp](ts-pixel-units.md#基本像素单位) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontWeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                   | 是   | 是   | 获取属性字符串的文本字体粗细。<br/>**说明：** <br/>实际返回是字符串，具体返回值和设置值关系参见下方表格。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle) | 是   | 是   | 获取属性字符串的文本字体样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 是   | 是   | 获取属性字符串的字体配置。<br/>默认返回undefined，表示未设置fontConfigs。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                                           |
-| strokeWidth<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                   | 是   | 是   | 获取属性字符串的文本描边宽度。<br/>默认返回0，单位为[vp](ts-pixel-units.md)。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
+| strokeWidth<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                                   | 是   | 是   | 获取属性字符串的文本描边宽度。<br/>默认返回0，单位为[vp](ts-pixel-units.md#基本像素单位)。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 是   | 是   | 获取属性字符串的文本描边颜色。<br/>默认返回字体颜色。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20枚举说明)  | 是   | 是   | 获取属性字符串的文本上下角标。<br/>默认值：SuperscriptStyle.NORMAL。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24                                           |
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 是 | 获取可变字体的属性数组。<br/>默认值：undefined，表示未设置可变字体的属性。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
@@ -764,7 +764,7 @@ constructor(value?: TextStyleInterface)
 | ----------- | ----------------------------------- | ---- | ---- |---------------------------- |
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 字体颜色。<br/>默认为主题色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontFamily  | [ResourceStr](ts-types.md#resourcestr)                           | 否   | 是 | 文本字体。<br/>默认为主题字体。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 字体大小。<br/>默认字体大小为16fp。<br/>如果LengthMetrics的unit值是percent，当前设置不生效，处理为16fp。<br/>单位：[fp](ts-pixel-units.md) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | 否   | 是 | 字体大小。<br/>默认字体大小为16fp。<br/>如果LengthMetrics的unit值是percent，当前设置不生效，处理为16fp。<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontWeight  | ArkTS-Dyn: number\| [FontWeight](ts-appendix-enums.md#fontweight) \| string<br/>ArkTS-Sta: int\| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 否   | 是 | 字体粗细。<br/>number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle)                      | 否   | 是 | 字体样式。<br/>默认值：FontStyle.Normal<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24对象说明)                      | 否   | 是 | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -901,7 +901,7 @@ constructor(value: DecorationStyleInterface, options?: DecorationOptions)
 
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| baselineOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否 | 获取属性字符串的文本基线偏移量。<br/>单位：[vp](ts-pixel-units.md) |
+| baselineOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否 | 获取属性字符串的文本基线偏移量。<br/>单位：[vp](ts-pixel-units.md#基本像素单位) |
 
 ### constructor
 
@@ -933,7 +933,7 @@ constructor(value: LengthMetrics)
 
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| letterSpacing  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否  | 获取属性字符串的文本字符间距。<br/>单位：[vp](ts-pixel-units.md) |
+| letterSpacing  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否  | 获取属性字符串的文本字符间距。<br/>单位：[vp](ts-pixel-units.md#基本像素单位) |
 
 ### constructor
 
@@ -963,7 +963,7 @@ constructor(value: LengthMetrics)
 
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| lineHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否  | 获取属性字符串的文本行高。<br/>单位：[vp](ts-pixel-units.md)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| lineHeight  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否  | 获取属性字符串的文本行高。<br/>单位：[vp](ts-pixel-units.md#基本像素单位)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | lineHeightMultiple  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  是  | 文本行高的倍数值。实际生效的行高为该行最高的字体高度与倍数的乘积。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ### constructor
@@ -1033,7 +1033,7 @@ ArkTS-Sta: constructor(lineHeight: LengthMetrics, lineHeightMultiple: double)
 
 | 名称           | 类型              | 只读   | 可选   | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| lineSpacing  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否  | 文本行间距。<br/>取值范围：[0, +∞)<br/>单位：[vp](ts-pixel-units.md) |
+| lineSpacing  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  是  |  否  | 文本行间距。<br/>取值范围：[0, +∞)<br/>单位：[vp](ts-pixel-units.md#基本像素单位) |
 | options  | [LineSpacingOptions](ts-text-common.md#linespacingoptions20对象说明) |  是  |  是  | 行间距配置项。 |
 
 ### constructor
@@ -1223,9 +1223,9 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
-| margin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [Margin](ts-types.md#margin) | 否   | 是 | 设置图片外边距。<br/>默认值：0<br/>单位：[vp](ts-pixel-units.md) |
-| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [Padding](ts-types.md#padding) | 否  | 是  | 设置图片内边距。<br/>默认值：0<br/>单位：[vp](ts-pixel-units.md) |
-| borderRadius | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [BorderRadiuses](ts-types.md#borderradiuses9) | 否   | 是 | 设置圆角。<br/>默认值：0<br/>单位：[vp](ts-pixel-units.md) |
+| margin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [Margin](ts-types.md#margin) | 否   | 是 | 设置图片外边距。<br/>默认值：0<br/>单位：[vp](ts-pixel-units.md#基本像素单位) |
+| padding | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [Padding](ts-types.md#padding) | 否  | 是  | 设置图片内边距。<br/>默认值：0<br/>单位：[vp](ts-pixel-units.md#基本像素单位) |
+| borderRadius | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| [BorderRadiuses](ts-types.md#borderradiuses9) | 否   | 是 | 设置圆角。<br/>默认值：0<br/>单位：[vp](ts-pixel-units.md#基本像素单位) |
 
 ## ResourceImageAttachmentOptions<sup>15+</sup>
 
@@ -1309,7 +1309,7 @@ invalidate(): void
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| fontSize | number |  否  | 否 | 设置文本字体大小。<br/>单位：[fp](ts-pixel-units.md) |
+| fontSize | number |  否  | 否 | 设置文本字体大小。<br/>单位：[fp](ts-pixel-units.md#基本像素单位) |
 
 ## CustomSpanMetrics对象说明
 
@@ -1319,8 +1319,8 @@ invalidate(): void
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| width | number |  否  | 否 | 自定义绘制Span的宽。<br/>单位：[vp](ts-pixel-units.md) |
-| height | number |  否  | 是 | 自定义绘制Span的高。<br/>单位：[vp](ts-pixel-units.md) |
+| width | number |  否  | 否 | 自定义绘制Span的宽。<br/>单位：[vp](ts-pixel-units.md#基本像素单位) |
+| height | number |  否  | 是 | 自定义绘制Span的高。<br/>单位：[vp](ts-pixel-units.md#基本像素单位) |
 
 ## CustomSpanDrawInfo对象说明
 
@@ -1330,10 +1330,10 @@ invalidate(): void
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| x | number |  否  | 否 | 自定义绘制Span相对于挂载组件的偏移。<br/>单位：[px](ts-pixel-units.md) |
-| lineTop | number |  否  | 否  | 自定义绘制Span相对于Text组件的上边距。<br/>单位：[px](ts-pixel-units.md) |
-| lineBottom | number |  否  | 否  | 自定义绘制Span相对于Text组件的下边距。<br/>单位：[px](ts-pixel-units.md) |
-| baseline | number |  否  | 否  | 自定义绘制Span的所在行的基线偏移量。<br/>单位：[px](ts-pixel-units.md) |
+| x | number |  否  | 否 | 自定义绘制Span相对于挂载组件的偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| lineTop | number |  否  | 否  | 自定义绘制Span相对于Text组件的上边距。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| lineBottom | number |  否  | 否  | 自定义绘制Span相对于Text组件的下边距。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| baseline | number |  否  | 否  | 自定义绘制Span的所在行的基线偏移量。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
 
 ## ParagraphStyle
 
@@ -1461,10 +1461,10 @@ abstract getLeadingMargin(): LengthMetrics
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| x | number |  否  | 否 | 当前行相对于组件的水平偏移。direction为RTL时，返回当前行右侧与组件右边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
-| top | number |  否  | 否  | 行顶与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
-| bottom | number |  否  | 否  | 行底与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
-| baseline | number |  否  | 否  | 当前行的基线与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md)<br/>取值范围：大于等于0。 |
+| x | number |  否  | 否 | 当前行相对于组件的水平偏移。direction为RTL时，返回当前行右侧与组件右边缘的距离。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>取值范围：大于等于0。 |
+| top | number |  否  | 否  | 行顶与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>取值范围：大于等于0。 |
+| bottom | number |  否  | 否  | 行底与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>取值范围：大于等于0。 |
+| baseline | number |  否  | 否  | 当前行的基线与组件上边缘的距离。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>取值范围：大于等于0。 |
 | direction | [TextDirection](ts-text-common.md#textdirection22) |  否  | 否  | 文本内容的方向。 |
 | start | number |  否  | 否  | 当前行的起始索引。<br/>取值范围：大于等于0。 |
 | end | number |  否  | 否  | 当前行的结束索引。<br/>取值范围：大于等于0。 |
@@ -3153,7 +3153,7 @@ struct leadingMarginSpanDemo {
 ![](figures/styledString_15.gif)
 
 ### 示例16（使用supportSvg2属性时，SVG图片的显示效果）
-从API version 22开始，该示例通过给[ResourceImageAttachmentOptions](#resourceimageattachmentoptions15)设置supportSvg2属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效。
+从API version 22开始，该示例通过给[ResourceImageAttachmentOptions](#resourceimageattachmentoptions15)设置supportSvg2属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)的[SVG易用性提升](ts-image-svg2-capabilities.md#svg易用性提升)能力生效。
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 import { LengthMetrics } from '@kit.ArkUI';
