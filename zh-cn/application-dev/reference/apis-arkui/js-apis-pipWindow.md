@@ -817,7 +817,7 @@ ArkTS-Sta: type ControlPanelActionEventCallback = (event: PiPActionEventType, st
 | status | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 表示可切换状态的控件当前的状态，如具备打开和关闭两种状态的麦克风控件组、摄像头控件组和静音控件组，打开为1，关闭为0。其余控件该参数返回默认值-1。 |
 
 
-## StateChangeCallback<sup>26+</sup>
+## StateChangeCallback
 
 type StateChangeCallback = (state: PiPState, reason: string) => void
 
@@ -1359,7 +1359,7 @@ this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string)
 });
 ```
 
-### onStateChange<sup>26+</sup>
+### onStateChange
 
 onStateChange(callback: StateChangeCallback): void
 
@@ -1438,7 +1438,7 @@ off(type: 'stateChange'): void
 this.pipController.off('stateChange');
 ```
 
-### offStateChange<sup>26+</sup>
+### offStateChange
 
 offStateChange(): void
 
@@ -1512,7 +1512,7 @@ this.pipController.on('controlPanelActionEvent', (event: PiPWindow.PiPActionEven
 });
 ```
 
-### onControlPanelActionEvent<sup>26+</sup>
+### onControlPanelActionEvent
 
 onControlPanelActionEvent(callback: ControlPanelActionEventCallback): void
 
@@ -1617,7 +1617,7 @@ this.pipController.on('controlEvent', (control) => {
 });
 ```
 
-### onControlEvent<sup>26+</sup>
+### onControlEvent
 
 onControlEvent(callback: Callback&lt;ControlEventParam&gt;): void
 
@@ -1697,7 +1697,7 @@ off(type: 'controlPanelActionEvent'): void
 this.pipController.off('controlPanelActionEvent');
 ```
 
-### offControlPanelActionEvent<sup>26+</sup>
+### offControlPanelActionEvent
 
 offControlPanelActionEvent(): void
 
@@ -1749,7 +1749,7 @@ let callbackFunc = (event: PiPWindow.ControlEventParam) => {
 this.pipController.off('controlEvent', callbackFunc);
 ```
 
-### offControlEvent<sup>26+</sup>
+### offControlEvent
 
 offControlEvent(callback?: Callback&lt;ControlEventParam&gt;): void
 
@@ -1823,7 +1823,7 @@ try {
 }
 ```
 
-### onPipWindowSizeChange<sup>26+</sup>
+### onPipWindowSizeChange
 
 onPipWindowSizeChange(callback: Callback&lt;PiPWindowSize&gt;): void
 
@@ -1920,7 +1920,7 @@ try {
 }
 ```
 
-### offPipWindowSizeChange<sup>26+</sup>
+### offPipWindowSizeChange
 
 offPipWindowSizeChange(callback?: Callback&lt;PiPWindowSize&gt;): void
 
@@ -2004,7 +2004,7 @@ let callback = (activeStatus: boolean) => {
 this.pipController.on('activeStatusChange', callback);
 ```
 
-### onActiveStatusChange<sup>26+</sup>
+### onActiveStatusChange
 
 onActiveStatusChange(callback: Callback&lt;boolean&gt;): void
 
@@ -2065,7 +2065,7 @@ let callback = (activeStatus: boolean) => {
 this.pipController.off('activeStatusChange', callback);
 ```
 
-### offActiveStatusChange<sup>26+</sup>
+### offActiveStatusChange
 
 off(callback?: Callback&lt;boolean&gt;): void
 
