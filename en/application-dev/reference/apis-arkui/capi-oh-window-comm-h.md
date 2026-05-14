@@ -143,6 +143,6 @@ typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_
 
 **Description**
 
-A callback for the window scale factor information.
+Callback for the window scale factor information.
 
 **Since:** 24
