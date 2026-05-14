@@ -4476,7 +4476,7 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 **描述**
 
-获取指定窗口的鼠标光标样式。
+获取指定窗口的鼠标光标样式。此接口仅支持获取本应用进程内窗口的鼠标光标样式。
 
 **设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
@@ -4504,7 +4504,7 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 
 **描述**
 
-设置指定窗口的鼠标光标样式。
+设置指定窗口的鼠标光标样式。此接口仅支持设置本应用进程内窗口的鼠标光标样式。
 
 **设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
@@ -4702,7 +4702,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 设置自定义鼠标光标样式。
 
-应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
+应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。此接口仅支持设置本应用进程内窗口的自定义鼠标光标样式。
 
 **起始版本：** 22
 
@@ -4798,7 +4798,7 @@ Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_Po
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
-| [Input_PointerStyle](capi-oh-pointer-style-h.md) | 鼠标光标信息的光标样式枚举，具体请参考[Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle)。|
+| [Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle) | 鼠标光标信息的光标样式枚举，具体请参考[Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle)。|
 
 **返回：**
 
