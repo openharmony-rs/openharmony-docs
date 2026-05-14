@@ -110,14 +110,16 @@ import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.onBlock(() => {
-        console.info('print state is block');
-    })
-    // ...
-}).catch((error: BusinessError) => {
+try {
+    print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+        printTask.onBlock(() => {
+            console.info('print state is block');
+        })
+        // ...
+    });
+} catch (error: BusinessError) {
     console.error('print err ' + JSON.stringify(error));
-})
+}
 ```
 
 ### PrintTask.on
@@ -207,14 +209,16 @@ import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.onSucceed(() => {
-        console.info('print state is succeed');
-    })
-    // ...
-}).catch((error: BusinessError) => {
+try {
+    print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+        printTask.onSucceed(() => {
+            console.info('print state is succeed');
+        })
+        // ...
+    });
+} catch (error: BusinessError) {
     console.error('print err ' + JSON.stringify(error));
-})
+}
 ```
 
 ### PrintTask.on
@@ -304,14 +308,16 @@ import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.onFail(() => {
-        console.info('print state is fail');
-    })
-    // ...
-}).catch((error: BusinessError) => {
+try {
+    print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+        printTask.onFail(() => {
+            console.info('print state is fail');
+        })
+        // ...
+    });
+} catch (error: BusinessError) {
     console.error('print err ' + JSON.stringify(error));
-})
+}
 ```
 
 ### PrintTask.on
@@ -401,14 +407,16 @@ import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.onCancel(() => {
-        console.info('print state is cancel');
-    })
-    // ...
-}).catch((error: BusinessError) => {
+try {
+    print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+        printTask.onCancel(() => {
+            console.info('print state is cancel');
+        })
+        // ...
+    });
+} catch (error: BusinessError) {
     console.error('print err ' + JSON.stringify(error));
-})
+}
 ```
 
 ### PrintTask.off
@@ -498,14 +506,16 @@ import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.offBlock(() => {
-        console.info('unregister state block');
-    })
-    // ...
-}).catch((error: BusinessError) => {
+try {
+    print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+        printTask.offBlock(() => {
+            console.info('unregister state block');
+        })
+        // ...
+    });
+} catch (error: BusinessError) {
     console.error('print err ' + JSON.stringify(error));
-})
+}
 ```
 
 ### PrintTask.off
@@ -595,14 +605,16 @@ import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.offSucceed(() => {
-        console.info('unregister state succeed');
-    })
-    // ...
-}).catch((error: BusinessError) => {
+try {
+    print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+        printTask.offSucceed(() => {
+            console.info('unregister state succeed');
+        })
+        // ...
+    });
+} catch (error: BusinessError) {
     console.error('print err ' + JSON.stringify(error));
-})
+}
 ```
 
 ### PrintTask.off
@@ -692,14 +704,16 @@ import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.offFail(() => {
-        console.info('unregister state fail');
-    })
-    // ...
-}).catch((error: BusinessError) => {
+try {
+    print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+        printTask.offFail(() => {
+            console.info('unregister state fail');
+        })
+        // ...
+    });
+} catch (error: BusinessError) {
     console.error('print err ' + JSON.stringify(error));
-})
+}
 ```
 
 ### PrintTask.off
@@ -789,14 +803,16 @@ import { BusinessError } from '@ohos.base';
 import { fileUri } from '@kit.CoreFileKit';
 
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
-print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
-    printTask.offCancel(() => {
-        console.info('unregister state cancel');
-    })
-    // ...
-}).catch((error: BusinessError) => {
+try {
+    print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
+        printTask.offCancel(() => {
+            console.info('unregister state cancel');
+        })
+        // ...
+    });
+} catch (error: BusinessError) {
     console.error('print err ' + JSON.stringify(error));
-})
+}
 ```
 
 ## PrintDocumentAdapter<sup>11+</sup>
