@@ -307,7 +307,7 @@ UINodeCount: 159
 
 2. **结合日志使用**：
    - hidumper提供实时窗口状态
-   - 系统日志（WINDOW_EXCEPTION_DETECTION）提供异常警告
+   - 系统日志（WINDOW_FROZEN_DETECTION）提供异常警告
    - 两者结合可以更快速定位问题
 
 3. **对比验证**：
@@ -456,9 +456,9 @@ onWindowStageDestroy() {
 >
 > 错误码1300002是窗口生命周期管理不当的典型错误。开发者应遵循"创建时缓存、活跃时使用、销毁时清理"的原则，避免在销毁流程中访问窗口。
 
-## 超时警告WINDOW_EXCEPTION_DETECTION的定位指导
+## 超时警告WINDOW_FROZEN_DETECTION的定位指导
 
-窗口异常检测日志用于监控窗口生命周期异常，常见异常类型包括伪冻屏/透明窗检测、窗口生命周期异常等。
+WINDOW_FROZEN_DETECTION异常检测事件用于伪冻屏检测，帮助开发者及时发现和定位窗口伪冻屏相关问题。常见的异常类型包括：伪冻屏/透明窗检测等。
 
 **可能原因**
 
