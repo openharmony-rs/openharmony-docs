@@ -36,7 +36,7 @@
 | scrollend | - | 列表滑动已经结束。 |
 | click | - | 点击动作触发该事件。 |
 | longpress | - | 长按动作触发该事件。 |
-| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | 组件上快速滑动后触发。 |
+| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | 组件上快速滑动后触发。 |
 | scrolltop<sup>8+</sup> | - | 当前列表已滑动到顶部位置。 |
 | scrollbottom<sup>8+</sup> | - | 当前列表已滑动到底部位置。 |
 
@@ -111,6 +111,9 @@ export default {
     },
     onShow() {
         this.$refs.listObj.rotation({focus: true})
+    },
+    onHide() {
+        this.$refs.listObj.rotation({focus: false})
     }
 }
 ```

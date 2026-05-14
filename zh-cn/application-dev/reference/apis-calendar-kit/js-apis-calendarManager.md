@@ -53,13 +53,13 @@ getCalendarManager(context: Context): CalendarManager
 
 | 参数名   | 类型                        | 必填 | 说明                                                                                                             |
 | -------- | --------------------------- | ---- |----------------------------------------------------------------------------------------------------------------|
-| context  | Context                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
 
 **返回值**：
 
 | 类型                           | 说明                                  |
 | ------------------------------ | ------------------------------------- |
-| CalendarManager | 返回创建的CalendarManager对象。 |
+| [CalendarManager](#calendarmanager) | 返回创建的CalendarManager对象。 |
 
 **示例**：
 
@@ -89,16 +89,16 @@ export let calendarMgr: calendarManager.CalendarManager | null = null;
 export let mContext: common.UIAbilityContext | null = null;
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    console.info("Ability onCreate");
+    console.info('Ability onCreate');
   }
 
   onDestroy(): void {
-    console.info("Ability onDestroy");
+    console.info('Ability onDestroy');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Main window is created, set main page for this ability
-    console.info("Ability onWindowStageCreate");
+    console.info('Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
@@ -120,17 +120,17 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageDestroy(): void {
     // 主窗口已销毁，释放 UI 相关资源
-    console.info("Ability onWindowStageDestroy");
+    console.info('Ability onWindowStageDestroy');
   }
 
   onForeground(): void {
     // Ability 进入前台
-    console.info("Ability onForeground");
+    console.info('Ability onForeground');
   }
 
   onBackground(): void {
     // Ability 进入后台
-    console.info("Ability onBackground");
+    console.info('Ability onBackground');
   }
 }
 ```
@@ -308,7 +308,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
           // 检查参数是否正确。
           console.error(`Failed to delete calendar. Code: ${err1.code}, message: ${err1.message}`);
         } else {
-          console.info("Succeeded in deleting calendar");
+          console.info('Succeeded in deleting calendar');
         }
       });
     }
@@ -371,7 +371,7 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
   calendarMgr?.getCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     calendarMgr?.deleteCalendar(data).then(() => {
-      console.info("Succeeded in deleting calendar");
+      console.info('Succeeded in deleting calendar');
     }).catch((err: BusinessError) => {
       // 检查参数是否正确。
       console.error(`Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
@@ -656,7 +656,9 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-通过跳转到日程创建页面创建单个日程，入参Event不填日程id，使用Promise异步回调。使用该接口创建的日程，系统日历可以进行查询和修改，申请到READ_WHOLE_CALENDAR权限的三方应用可以查询，申请到WRITE_WHOLE_CALENDAR权限的三方应用可以修改。
+通过跳转到日程创建页面创建单个日程，入参Event不填日程id，不支持设置instanceStartTime、instanceEndTime、identifier、attendee、service、isLunar和timeZone属性。使用Promise异步回调。
+
+使用该接口创建的日程，系统日历可以进行查询和修改，申请到READ_WHOLE_CALENDAR权限的三方应用可以查询，申请到WRITE_WHOLE_CALENDAR权限的三方应用可以修改。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -901,7 +903,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
         // 检查权限是否已成功申请或者参数是否正确。
         console.error(`Failed to add events. Code: ${err.code}, message: ${err.message}`);
       } else {
-        console.info("Succeeded in adding events");
+        console.info('Succeeded in adding events');
       }
     });
   }
@@ -971,7 +973,7 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
     console.info(`Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     calendar = data;
     calendar.addEvents(events).then(() => {
-      console.info("Succeeded in adding events");
+      console.info('Succeeded in adding events');
     }).catch((err: BusinessError) => {
       // 检查权限是否已成功申请或者参数是否正确。
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
@@ -1028,7 +1030,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
           // 检查参数是否正确。
           console.error(`Failed to delete event. Code: ${err.code}, message: ${err.message}`);
         } else {
-          console.info(`Succeeded in deleting event`);
+          console.info('Succeeded in deleting event');
         }
       });
     }).catch((err: BusinessError) => {
@@ -1090,7 +1092,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.deleteEvent(id).then(() => {
-      console.info("Succeeded in deleting event");
+      console.info('Succeeded in deleting event');
     }).catch((err: BusinessError) => {
       // 检查权限是否已成功申请或者参数是否正确。
       console.error(`Failed to delete event. Code: ${err.code}, message: ${err.message}`);
@@ -1164,7 +1166,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
         // 检查参数是否正确。
         console.error(`Failed to delete events. Code: ${err.code}, message: ${err.message}`);
       } else {
-        console.info("Succeeded in deleting events");
+        console.info('Succeeded in deleting events');
       }
     });
   }
@@ -1235,7 +1237,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar.deleteEvents([id1, id2]).then(() => {
-      console.info("Succeeded in deleting events");
+      console.info('Succeeded in deleting events');
     }).catch((err: BusinessError) => {
       // 检查参数是否正确。
       console.error(`Failed to delete events. Code: ${err.code}, message: ${err.message}`);
@@ -1296,7 +1298,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
         // 检查参数是否正确。
         console.error(`Failed to update event. Code: ${err.code}, message: ${err.message}`);
       } else {
-        console.info("Succeeded in updating event");
+        console.info('Succeeded in updating event');
       }
     });
   }
@@ -1836,7 +1838,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar?.queryEventInstances(date.getTime(), date.getTime() + 60 * 60 * 1000, undefined,
-      ["title", "startTime", "endTime", "instanceStartTime", "instanceEndTime",]).then((data: calendarManager.Event[]) => {
+      ['title', 'startTime', 'endTime', 'instanceStartTime', 'instanceEndTime',]).then((data: calendarManager.Event[]) => {
       console.info(`Succeeded in getting event instances, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       // 检查参数是否正确。
@@ -1857,7 +1859,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 | 名称        | 类型                          | 只读 | 可选 | 说明                                                                      |
 | ----------- | ----------------------------- | ---- |----|-------------------------------------------------------------------------|
-| name        | string                        | 是   | 否  | 账户名称（面向开发者），长度限制为[0,5000]字符，长度超限制可能会导致创建账户失败。                           |
+| name        | string                        | 是   | 否  | 账户名称（面向开发者），长度建议为[0,5000]字符。                           |
 | type        | [CalendarType](#calendartype) | 否   | 否  | 账户类型。                                                                   |
 | displayName | string                        | 否   | 是  | 账户显示在日历应用上的名称（面向用户）。不填时，默认为空字符串，长度限制为[0,64]字符，长度超限制会导致日历应用上账户名显示不全，被截断。 |
 
@@ -1880,23 +1882,23 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                                                                                                                                                                                                                          |
 | -------------- | --------------------------------- | ---- |----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
+| id             | number                            | 否   | 是  | 日程id。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，id为数据库自增字段，没有默认值，不填写此参数；当调用[deleteEvent()](#deleteevent)、[deleteEvents()](#deleteevents)删除日程时，日程id数组，日程id需为整数，传入其他非法入参会报错。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
 | type           | [EventType](#eventtype)           | 否   | 否  | 日程类型。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                |
-| title          | string                            | 否   | 是  | 日程标题。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败，不填时，默认为空字符串。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                   |
+| title          | string                            | 否   | 是  | 日程标题。长度建议为[0,5000]字符，不填时，默认为空字符串。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                   |
 | location       | [Location](#location)             | 否   | 是  | 日程地点。不填时，默认为undefined。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                               |
 | startTime      | number                            | 否   | 否  | 日程开始时间，需要13位时间戳。全天日程时，该字段转换为传入日期00:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
 | endTime        | number                            | 否   | 否  | 日程结束时间，需要13位时间戳。全天日程时，该字段转换为传入日期24:00对应的时间戳。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                          |
 | isAllDay       | boolean                           | 否   | 是  | 是否为全天日程。当取值为true时，说明为全天日程；当取值为false时，说明不是全天日程，默认为非全天日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                               |
 | attendee       | [Attendee](#attendee)[]           | 否   | 是  | 会议日程参与者。不填时，默认为null。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                                  |
-| timeZone       | string                            | 否   | 是  | 日程时区。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过[systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone)获取当前系统时区。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| timeZone       | string                            | 否   | 是  | 日程时区。长度建议为[0,5000]字符，不填或异常值时，默认为当前所在时区，当需要创建与当前不一样的时区时，可填入对应的时区。可通过[systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone)获取当前系统时区。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | reminderTime   | number[]                          | 否   | 是  | 日程提醒时间，单位为分钟。填写x分钟，即距开始时间提前x分钟提醒，不填时，默认为不提醒。为负值时表示延期多长时间提醒。全天日程时此字段表示上午9:00前x分钟提醒，可取负值，负值表示上午9:00后多长时间提醒。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                              |
-| recurrenceRule | [RecurrenceRule](#recurrencerule) | 否   | 是  | 日程重复规则，设置了此字段的日程为重复日程。不填时，默认为非重复日程。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                   |
-| description    | string                            | 否   | 是  | 日程描述。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败，不填时，默认为空字符串。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
+| recurrenceRule | [RecurrenceRule](#recurrencerule) | 否   | 是  | 日程重复规则，设置了此字段的日程为重复日程。不填时，默认为非重复日程，默认值为undefined。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                   |
+| description    | string                            | 否   | 是  | 日程描述。长度建议为[0,5000]字符，不填时，默认为空字符串。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
 | service        | [EventService](#eventservice)     | 否   | 是  | <!--RP1-->日程服务。不填时，默认没有一键服务。暂不支持此功能。<!--RP1End-->   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                    |
-| identifier<sup>12+</sup>     | string                            | 否   | 是  | 写入方可指定日程唯一标识。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败，不填时，默认为null。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                            |
+| identifier<sup>12+</sup>     | string                            | 否   | 是  | 写入方可指定日程唯一标识。长度建议为[0,5000]字符，不填时，默认为null。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                            |
 | isLunar<sup>12+</sup>     | boolean                            | 否   | 是  | 是否为农历日程。当取值为true时，说明为农历日程；当取值为false时，说明不是农历日程，默认为非农历日程。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                               |
-| instanceStartTime<sup>18+</sup> | number                            | 否   | 是  | 日程实例开始时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                    |
-| instanceEndTime<sup>18+</sup>   | number                            | 否   | 是  | 日程实例结束时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数。  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                   |
+| instanceStartTime<sup>18+</sup> | number                            | 否   | 是  | 日程实例开始时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数，默认值为undefined。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                    |
+| instanceEndTime<sup>18+</sup>   | number                            | 否   | 是  | 日程实例结束时间，需要13位时间戳。当调用[addEvent()](#addevent)、[addEvents()](#addevents)创建日程时，不填写此参数，默认值为undefined。  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                   |
 
 ## CalendarType
 
@@ -1924,7 +1926,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 | 名称      | 类型   | 只读 | 可选 | 说明                     |
 | --------- | ------ | ---- |----| ------------------------ |
-| location  | string | 否   | 是  | 地点位置。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败，不填时，默认为空字符串。 |
+| location  | string | 否   | 是  | 地点位置。长度建议为[0,5000]字符，不填时，默认为空字符串。 |
 | longitude | number | 否   | 是  | 地点经度。取值范围[-180, 180]，默认为undefined。超过取值范围地图将无法正常显示。    |
 | latitude  | number | 否   | 是  | 地点纬度。取值范围[-90, 90]，默认为undefined。超过取值范围地图将无法正常显示。    |
 
@@ -2092,7 +2094,7 @@ static filterByTitle(title: string): EventFilter
 
 | 参数名 | 类型   | 必填 | 说明       |
 | ------ | ------ | ---- | ---------- |
-| title  | string | 是   | 日程标题。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。 |
+| title  | string | 是   | 日程标题。长度建议为[0,5000]字符。 |
 
 **返回值**：
 
@@ -2194,8 +2196,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                                                                                                                                                                        |
 | ----- | ------ | ---- |----|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| name  | string | 否   | 否  | 会议日程参与者的姓名。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                        |
-| email | string | 否   | 否  | 会议日程参与者的邮箱，邮箱格式为“用户名@域名.后缀”，用户名部分只能包含字母、数字、下划线“_”、点 “.”、连字符 “-”。不能以点 “.” 开头或结尾。 不能连续出现两个点（即“..”）。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| name  | string | 否   | 否  | 会议日程参与者的姓名。长度建议为[0,5000]字符。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                        |
+| email | string | 否   | 否  | 会议日程参与者的邮箱，邮箱格式为“用户名@域名.后缀”，用户名部分只能包含字母、数字、下划线“_”、点 “.”、连字符 “-”。不能以点 “.” 开头或结尾。 不能连续出现两个点（即“..”）。长度建议为[0,5000]字符。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | role<sup>12+</sup>  | [AttendeeRole](#attendeerole12) | 否   | 是  | 会议日程参与者的角色，不填时默认为空。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                 |
 | status<sup>18+</sup> | [AttendeeStatus](#attendeestatus18) | 否   | 是 | 会议日程参与者的状态，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                |
 | type<sup>18+</sup>   | [AttendeeType](#attendeetype18)     | 否   | 是 | 会议日程参与者的类型，不填时默认为空。   <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                |
@@ -2211,8 +2213,8 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 | 名称        | 类型                        | 只读 | 可选 | 说明                                  |
 | ----------- | --------------------------- | ---- |----|-------------------------------------|
 | type        | [ServiceType](#servicetype) | 否   | 否  | 服务类型。                               |
-| uri         | string                      | 否   | 否  | 服务的uri，格式为DeepLink类型。可以跳转到三方应用相应界面。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败。 |
-| description | string                      | 否   | 是  | 服务辅助描述。长度限制为[0,5000]字符，长度超限制可能会导致日程创建失败，不填时，默认为空字符串。                 |
+| uri         | string                      | 否   | 否  | 服务的uri，格式为DeepLink类型。可以跳转到三方应用相应界面。长度建议为[0,5000]字符。 |
+| description | string                      | 否   | 是  | 服务辅助描述。长度建议为[0,5000]字符，不填时，默认为空字符串。                 |
 
 ## ServiceType
 

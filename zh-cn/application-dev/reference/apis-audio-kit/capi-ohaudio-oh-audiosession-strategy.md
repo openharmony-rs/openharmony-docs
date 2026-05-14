@@ -14,11 +14,15 @@ typedef struct OH_AudioSession_Strategy {...} OH_AudioSession_Strategy
 
 音频会话策略。
 
+从API version 24开始，此结构体由native_audio_session_manager.h移动至native_audio_session_base.h文件。
+
+在API version 24之前，使用该结构体请引用native_audio_session_manager.h头文件；从API version 24开始，引用native_audio_session_manager.h或native_audio_session_base.h均可正常使用该结构体。
+
 **起始版本：** 12
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
 
-**所在头文件：** [native_audio_session_manager.h](capi-native-audio-session-manager-h.md)
+**所在头文件：** [native_audio_session_base.h](capi-native-audio-session-base-h.md)
 
 ## 汇总
 
