@@ -981,7 +981,6 @@ struct DialogExample {
 }
 ```
 
-![en-us_image_0002_lifecycle](figures/en-us_image_0002_lifecycle.gif)
 
 
 
