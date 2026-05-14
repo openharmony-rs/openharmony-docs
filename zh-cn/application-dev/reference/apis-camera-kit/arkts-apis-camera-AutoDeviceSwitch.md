@@ -29,6 +29,7 @@ enableAutoDeviceSwitch(enabled: boolean): void
 使能或去使能自动切换镜头。可以先通过[isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13)获取当前设备是否支持自动切换镜头。
 
 > **说明：**
+> 
 > 该接口仅用于有多个前置镜头的折叠设备，在不同的折叠状态下可自动切换到当前可使用的前置镜头。无法实现前后置镜头的切换。
 
 **原子化服务API(仅ArkTS-Dyn)：** 从API version 19开始，该接口支持在原子化服务中使用。
