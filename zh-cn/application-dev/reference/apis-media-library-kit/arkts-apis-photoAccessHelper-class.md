@@ -1,11 +1,11 @@
 # Classes (其他)
 
-<!--Kit: Media Library Kit-->
-<!--Subsystem: Multimedia-->
-<!--Owner: @xuchangda-->
-<!--Designer: @guxinggang-->
-<!--Tester: @wangbeibei; @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+ <!--Kit: Media Library Kit-->	 
+ <!--Subsystem: Multimedia-->	 
+ <!--Owner: @xuchangda; @yixiaoff-->	 
+ <!--Designer: @guxinggang; @liweilu1-->	 
+ <!--Tester: @wangbeibei; @xchaosioda-->	 
+ <!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
