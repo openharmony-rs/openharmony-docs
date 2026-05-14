@@ -3517,7 +3517,7 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
 | 201 | Permission denied.|
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid type name. |
+| 12300002 | Invalid name. |
 
 **示例：**
 
@@ -3569,7 +3569,7 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
 | 201 | Permission denied.|
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid type name. |
+| 12300002 | Invalid name. |
 
 **示例：**
 
@@ -3621,7 +3621,7 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
 | 201 | Permission denied.|
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid type name. |
+| 12300002 | Invalid name. |
 
 **示例：**
 
@@ -3674,7 +3674,7 @@ offActivating(name: string, callback?: Callback&lt;int&gt;): void
 | 201 | Permission denied.|
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid type name. |
+| 12300002 | Invalid name. |
 
 **示例：**
 
@@ -3701,7 +3701,7 @@ onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switching')](#on12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on12)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3752,7 +3752,7 @@ offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switching')](#off12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off12)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3800,7 +3800,7 @@ onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switched')](#on12-1)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on12-1)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3851,7 +3851,7 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switched')](#off12-1)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off12-1)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4839,7 +4839,7 @@ try {
 | resultCode | [AuthorizationResultCode](#authorizationresultcode24) | 否 | 否 | 授权结果码。|
 | privilege | string | 否 | 否 | 与授权关联的权限。 |
 | isReused | boolean | 否 | 是 | 是否为复用的授权结果，默认为undefined。<br/>true:表示是复用的授权结果。false:表示不是复用的授权结果。 |
-| validityPeriod | number | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
+| validityPeriod | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
 | token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
 
 ## UserAuth<sup>8+</sup>
@@ -5238,7 +5238,6 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
 | 12300020 | Device hardware abnormal. |
@@ -6410,7 +6409,7 @@ try {
 
 ## DomainPluginAuthWithTokenFunc<sup>23+</sup>
 
-type DomainPluginAuthWithTokenFunc = (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+type DomainPluginAuthWithTokenFunc = (domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: IUserAuthCallback) => void
 
 使用授权令牌认证指定的域账号。
 
@@ -7822,9 +7821,11 @@ authWithPopup(callback: IUserAuthCallback): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：**
 
-从API version 11开始无需申请权限，建议升级SDK版本。
+API版本11+：N/A
+
+API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -7842,7 +7843,6 @@ authWithPopup(callback: IUserAuthCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -7904,9 +7904,11 @@ ArkTS-Sta: authWithPopup(localId: int, callback: IUserAuthCallback): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：**
 
-从API version 11开始无需申请权限，建议升级SDK版本。
+API版本11+：N/A
+
+API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -7925,7 +7927,6 @@ ArkTS-Sta: authWithPopup(localId: int, callback: IUserAuthCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -8550,7 +8551,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
@@ -8647,7 +8647,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Pro
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
@@ -10864,7 +10863,7 @@ ArkTS-Sta示例：
 | ----------- | ------ | ---- | ---- | ---------- |
 | fromAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换来源系统账号ID。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | toAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换目标系统账号ID。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| displayId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| displayId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ConstraintChangeInfo<sup>23+</sup>
 
@@ -10894,7 +10893,7 @@ ArkTS-Sta示例：
 
 | 名称      | 类型   | 只读  | 可选   | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| shortName | string | 否 | ArkTS-Dyn: 否<br>ArkTS-Sta: 是   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 <br>ArkTS-Dyn环境下必须指定；ArkTS-Sta环境下可以不指定。|
 | disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
@@ -10934,7 +10933,7 @@ ArkTS-Sta示例：
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
-表示[查询认证凭据信息](#getauthinfo12)的可选参数集合。
+表示查询认证凭据信息[getAuthInfo](#getauthinfo12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -10985,7 +10984,7 @@ ArkTS-Sta示例：
 
 ## AuthOptions<sup>12+</sup>
 
-表示[认证用户](#auth12)的可选参数集合。
+表示认证用户[auth](#auth12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -11003,7 +11002,7 @@ ArkTS-Sta示例：
 
 ## GetInputDataOptions<sup>12+</sup>
 
-表示[通知调用者获取数据](#ongetdata8)的可选参数集合。
+表示通知调用者获取数据[onGetData](#ongetdata8)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 

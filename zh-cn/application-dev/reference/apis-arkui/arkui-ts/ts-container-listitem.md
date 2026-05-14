@@ -199,7 +199,7 @@ ListItem吸顶效果枚举。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用List组件的[stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用List组件的[StickyStyle](ts-container-list.md#stickystyle9枚举说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -377,7 +377,7 @@ attributeModifier(modifier: AttributeModifier\<ListItemAttribute> | AttributeMod
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<ListItemAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ListItemAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>ListItemAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ## ListItemSwipeActionManager<sup>21+</sup>
 
