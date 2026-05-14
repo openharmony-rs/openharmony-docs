@@ -186,4 +186,4 @@ The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid ra
 
 **处理步骤**
 
-检查appIndex的值是否合法。
+检查应用分身索引的值是否合法。

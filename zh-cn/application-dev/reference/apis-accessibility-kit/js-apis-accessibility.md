@@ -2307,7 +2307,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   aboutToAppear(): void {
     accessibility.getSeniorModeStateForSelf().then((data: boolean) => {
-      console.info(`success data:getSeniorModeStateForSelf : ${JSON.stringify(data)}`);
+      console.info(`Succeeded in getting seniorModeStateForSelf, data: ${data}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to call getSeniorModeStateForSelf, Code is ${err.code}, message is ${err.message}`);
     });
@@ -2331,6 +2331,12 @@ setSeniorModeStateForSelf(state: boolean): Promise&lt;void&gt;
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名      | 类型                           | 必填   | 说明                                    |
+| -------- | ---------------------------- | ---- | ------------------------------------- |
+| state | boolean | 是    | 设置应用“长辈模式”状态。 |
 
 **返回值：**
 
@@ -2357,7 +2363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   aboutToAppear(): void {
     accessibility.setSeniorModeStateForSelf(true).then(() => {
-      console.info(`success setSeniorModeStateForSelf`);
+      console.info(`Succeeded in setting seniorModeStateForSelf`);
     }).catch((err: BusinessError) => {
       console.error(`failed to call setSeniorModeStateForSelf, Code is ${err.code}, message is ${err.message}`);
     });

@@ -556,7 +556,7 @@ let infos: config.AppSeniorModeInfo[] = [{
 config.setSeniorModeStateForApp(infos).then(() => {
   console.info(`Succeeded in setting seniorModeState for App.`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to setSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
+  console.error(`failed to call setSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -609,7 +609,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 config.getSeniorModeStateForApp("com.example.myapplication", 0).then((data: boolean) => {
   console.info(`Succeeded in getting seniorModeState for app, data: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to getSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
+  console.error(`failed to call getSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -676,7 +676,7 @@ struct Index {
 
 offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
-取消监听应用“长辈模式”的状态变化事件。使用callback异步回调。
+取消监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
 
 **起始版本：** 26.0.0
 
