@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -36,7 +36,8 @@ OH_MIDI的主要接口包括：
 - 设备管理接口：[OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)、[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)、[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)、[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)。
 - 端口管理接口：[OH_MIDIClient_GetPortCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportcount)、[OH_MIDIClient_GetPortInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getportinfos)、[OH_MIDIDevice_OpenInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openinputport)、[OH_MIDIDevice_OpenOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_openoutputport)、[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)、[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)。
 - 数据传输接口：[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)、[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)。
-- 回调接口：[OnDeviceChange](../../reference/apis-audio-kit/capi-native-midi-base-h.md)、[OnMIDIReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md)。
+- 回调接口：[OH_MIDICallback_OnDeviceChange](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midicallback_ondevicechange)、[OH_MIDIDevice_OnReceived](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_mididevice_onreceived)。
+ 
 
 ## 开发准备
 
@@ -91,7 +92,7 @@ MIDI功能的权限需求根据使用场景不同而有所区别。
 
 客户端是应用与MIDI系统服务的连接入口，负责管理与MIDI服务的所有交互。创建客户端前，需要先准备回调结构体：
 
-系统已定义[OH_MIDICallback](../../reference/apis-audio-kit/capi-native-midi-base-h.md)结构体，开发者需要实现其中的回调函数：
+系统已定义[OH_MIDICallbacks](../../reference/apis-audio-kit/capi-ohmidi-oh-midicallbacks.md)结构体，开发者需要实现其中的回调函数：
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。开发者在此回调中处理设备的接入和移除逻辑。
 - onError：当MIDI服务发生错误时调用。开发者在此回调中处理错误日志记录和异常恢复逻辑,如重新创建客户端。
 
@@ -900,7 +901,7 @@ static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t ev
 ## 相关参考
 
 - [OH_MIDI开发概述(C/C++)](midi-overview.md)
-- [OH_MIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
+- [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
 - [native_midi.h](../../reference/apis-audio-kit/capi-native-midi-h.md)
 - [native_midi_base.h](../../reference/apis-audio-kit/capi-native-midi-base-h.md)
 - [通用错误码](../../reference/errorcode-universal.md)说明
