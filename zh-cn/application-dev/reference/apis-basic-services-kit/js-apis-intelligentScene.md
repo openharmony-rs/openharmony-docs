@@ -3,7 +3,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @chenzhe123-->
-<!--Designer: @wangchun-->
+<!--Designer: @wangchun410-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu -->
 
