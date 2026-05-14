@@ -182,7 +182,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | LONG_CLICK                 | 3    | 表示注入长按动作。         |
 
 ## AccessibilityFocusScene
- 	 
+
 表示无障碍聚焦的场景参数的枚举。
 
 **起始版本：** 26.0.0
