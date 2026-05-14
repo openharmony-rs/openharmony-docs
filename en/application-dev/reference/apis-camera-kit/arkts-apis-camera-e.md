@@ -166,6 +166,7 @@ Enumerates the camera output formats.
 | CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010 image.     |
 | CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010 image.     |
 | CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF image.           |
+| CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  Digital Negative (DNG) image.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -252,15 +253,14 @@ Enumerates the flash modes.
 
 Enumerates the exposure modes.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                          | Value  | Description        |
 | ----------------------------- | ---- | ----------- |
-| EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
-| EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).<br>After this mode is used, it takes effect only for the first photo capture.|
-| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
+| EXPOSURE_MODE_UNSPECIFIED<sup>24+</sup>      | -1    | Unspecified exposure.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).<br>After this mode is used, it takes effect only for the first photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
 ## FocusMode
 
@@ -398,14 +398,12 @@ Enumerates the system pressure levels.
 
 Enumerates the effect types supported by the camera controller.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name     | Value| Description   |
 |-----------|---|---------|
-| BEAUTY    | 0 | Beauty effect.  |
-| PORTRAIT  | 1 | Portrait blur effect.|
+| BEAUTY    | 0 | Beauty effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.  |
+| PORTRAIT  | 1 | Portrait blur effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
@@ -419,3 +417,81 @@ Enumerates the photo quality prioritization strategies.
 |--------------|-------|---------|
 | HIGH_QUALITY | 0     | Focuses on image quality, which may increase the time required for capturing photos to ensure high-quality output.|
 | SPEED        | 1     | Focuses on performance, trading off image quality for faster capture times.|
+
+## SensorColorFilterArrangement<sup>24+</sup>
+
+Enumerates the arrangement modes of the sensor color filter.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                        | Value  | Description                                                             |
+| --------------------------- | ---- |-----------------------------------------------------------------|
+| BGGR                        | 0    | Blue-green-green-red filter arrangement.                                                       |
+| GBRG                        | 1    | Green-blue-red-green filter arrangement.                                                          |
+| GRBG                        | 2    | Green-red-blue-green arrangement mode.                                                          |
+| RGGB                        | 3    | Red-green-green-blue arrangement mode.                                                          |
+
+## FlashState<sup>24+</sup>
+
+Enumerates the flash states.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| FLASH_STATE_UNAVAILABLE      | 0    | The flash is unavailable. This is the default value.  |
+| FLASH_STATE_READY   | 1    | The flash is available.|
+| FLASH_STATE_FLASHING   | 2    | The flash is turned on.      |
+
+## ExposureMeteringMode<sup>24+</sup>
+
+Enumerates the exposure metering modes.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| MATRIX      | 0    | Matrix metering mode. A wide area of the screen is selected, which is ideal for shooting natural landscapes.  |
+| CENTER   | 1    | Center-weighted metering mode. Metering is performed on the entire image, with the center allocated with the maximum weight, which is ideal for shooting portraits.|
+| SPOT   | 2    | Spot metering mode. Metering is performed around 2.5% of the metering points, focusing on the light in a specific small area, such as the eyes of the subject.      |
+
+## OISMode<sup>24+</sup>
+
+Enumerates the optical image stabilization (OIS) mode.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| OFF      | 0    | OIS is disabled.  |
+| AUTO   | 1    | OIS is automatically controlled.|
+| CUSTOM   | 2    | OIS is controlled by the application.      |
+
+## OISAxes<sup>24+</sup>
+
+Enumerates the OIS axes.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| PITCH      | 0    | Pitch axis. It controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.  |
+| YAW   | 1    | Yaw axis. It controls the left-right rotation of the camera body, that is, the camera body rotates around the axis perpendicular to the lens.|
