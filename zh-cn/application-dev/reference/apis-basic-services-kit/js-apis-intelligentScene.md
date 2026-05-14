@@ -51,16 +51,19 @@ isDoNotDisturbEnabled(): Promise\<boolean>
 ```js
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
-let isDoNotDisturbEnabled: boolean = false;
-try {
-  isDoNotDisturbEnabled = await intelligentScene.isDoNotDisturbEnabled();
-} catch (err) {
-  console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
-}
-if (isDoNotDisturbEnabled) {
-  console.info('DoNotDisturb state is open');
-} else {
-  console.info('DoNotDisturb state is closed');
+async function isDoNotDisturbEnabled(): Promise<boolean> {
+  let isDoNotDisturbEnabled: boolean = false;
+  try {
+    isDoNotDisturbEnabled = await intelligentScene.isDoNotDisturbEnabled();
+  } catch (err) {
+    console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
+  }
+  if (isDoNotDisturbEnabled) {
+    console.info('DoNotDisturb state is open');
+  } else {
+    console.info('DoNotDisturb state is closed');
+  }
+  return isDoNotDisturbEnabled;
 }
 ```
 
@@ -96,15 +99,18 @@ isNotifyAllowedInDoNotDisturb(): Promise\<boolean>
 ```js
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
-let isNotifyAllowedInDoNotDisturb: boolean = false;
-try {
-  isNotifyAllowedInDoNotDisturb = await intelligentScene.isNotifyAllowedInDoNotDisturb();
-} catch (err) {
-  console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
-}
-if (isNotifyAllowedInDoNotDisturb) {
-  console.info('Allowed to notify in doNotDisturb state');
-} else {
-  console.info('Not allowed to notify in doNotDisturb state or doNotDisturb is closed');
+async function isNotifyAllowedInDoNotDisturb(): Promise<boolean> {
+  let isDoNotDisturbEnabled: boolean = false;
+  try {
+    isDoNotDisturbEnabled = await intelligentScene.isNotifyAllowedInDoNotDisturb();
+  } catch (err) {
+    console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
+  }
+  if (isDoNotDisturbEnabled) {
+    console.info('DoNotDisturb state is open');
+  } else {
+    console.info('DoNotDisturb state is closed');
+  }
+  return isDoNotDisturbEnabled;
 }
 ```
