@@ -9894,12 +9894,12 @@
 						"start_line":168
 					},
 					{
-						"end_line":47,
+						"end_line":49,
 						"name":"setDefaultDistributedTables",
 						"start_line":26
 					},
 					{
-						"end_line":98,
+						"end_line":99,
 						"name":"setSingleDistributedTables",
 						"start_line":28
 					}
