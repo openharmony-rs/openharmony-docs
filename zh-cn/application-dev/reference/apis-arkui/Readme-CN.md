@@ -859,6 +859,8 @@
     - [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)
     - [ArkUI_NativeGestureAPI_3](capi-arkui-nativemodule-arkui-nativegestureapi-3.md)
     - [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md)
+    - [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)
+    - [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)
