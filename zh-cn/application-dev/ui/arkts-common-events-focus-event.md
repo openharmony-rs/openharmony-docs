@@ -79,7 +79,7 @@ export struct FocusActiveExample {
 
 **层级页面**
 
-层级页面是焦点框架中特定容器组件的统称，涵盖Page、[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[SheetPage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[ModalPage](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md)、[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)、[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)等。这些组件通常具有以下关键特性：
+层级页面是焦点框架中特定容器组件的统称，涵盖Page、[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)、[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)等。这些组件通常具有以下关键特性：
 
 - 视觉层级独立性：从视觉呈现上看，这些组件独立于其他页面内容，并通常位于其上方，形成视觉上的层级差异。
 - 焦点跟随：此类组件在首次创建并展示之后，会立即将应用内焦点抢占。
