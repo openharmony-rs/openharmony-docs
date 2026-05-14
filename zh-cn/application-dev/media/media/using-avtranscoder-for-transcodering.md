@@ -108,7 +108,7 @@
      if (this.avTranscoder != undefined) {
        // 转码完成回调函数。
        this.avTranscoder?.onComplete(() => {
-         console.log(`AVTranscoder is completed`);
+         console.info(`AVTranscoder is completed`);
          this.releaseTranscoderingProcess();
        });
        // 错误上报回调函数。
