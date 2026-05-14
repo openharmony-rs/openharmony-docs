@@ -23,8 +23,8 @@
 | 名称   | 类型               | 只读|  可选| 说明                                                         |
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
 | pixels | ArrayBuffer        | 否 |   否  | 像素。仅支持BGRA_8888格式的图像像素数据。 |
-| offset | number             | 否 |   否  |  偏移量。单位：字节(byte)。                                                     |
-| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节（byte）。stride >= region.size.width*4。                   |
+| offset | number             | 否 |   否  |  偏移量。单位为字节(byte)。                                                     |
+| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位为字节（byte）。stride >= region.size.width*4。                   |
 | region | [Region](#region8) | 否 |   否  |区域，按照区域读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。 |
 
 ## ImageInfo
@@ -37,7 +37,7 @@
 | ---- | ------------- | --- |-----|---------- |
 | size | [Size](#size) | 否 |  否  |图片大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | density<sup>9+</sup> | number | 否  | 否 |像素密度，单位为ppi。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。单位：字节（byte）。stride >= region.size.width*4 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。单位为字节（byte）。stride >= region.size.width*4 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | pixelFormat<sup>12+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否  |  否 | 像素格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | 否  |  否  |透明度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | mimeType<sup>12+</sup> | string  |  否  |   否  |图片真实格式（MIME type）。<br>图片解码和图片编码支持格式的范围不同，请避免直接将解码得到的图片真实格式作为图片编码时[PackingOption](#packingoption)的format。<br>可以使用ImageSource[属性](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#属性)中的supportedFormats和ImagePacker[属性](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#属性)中的supportedFormats查看解码和编码支持的格式范围。  |
@@ -55,8 +55,8 @@
 
 | 名称   | 类型   | 只读 |  可选  |说明           |
 | ------ | ------ | -- |-----| -------------- |
-| height | number | 否  |  否  |输出图片的高，单位：像素（px）。 |
-| width  | number | 否  |  否 | 输出图片的宽，单位：像素（px）。 |
+| height | number | 否  |  否  |输出图片的高，单位为像素（px）。 |
+| width  | number | 否  |  否 | 输出图片的宽，单位为像素（px）。 |
 
 ## HdrComposeOptions<sup>23+</sup>
 
@@ -175,8 +175,8 @@ PixelMap的初始化选项。
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
 | size<sup>7+</sup> | [Size](#size) | 否   | 否   | 区域大小。   |
-| x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位：像素（px）。 |
-| y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位：像素（px）。 |
+| x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位为像素（px）。 |
+| y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位为像素（px）。 |
 
 ## PackingOption
 
@@ -324,7 +324,7 @@ Dng图像元数据类，用于存储图像的元数据。
 | linearResponseLimit | number | 是 | 是 | 线性响应上限。 |
 | cameraSerialNumber | string | 是 | 是 | 相机序列号。 |
 | lensInfo | number[] | 是 | 是 | 镜头信息。 |
-| chromaBlurRadius | number | 是 | 是 | 色度模糊半径，单位：像素（px）。 |
+| chromaBlurRadius | number | 是 | 是 | 色度模糊半径，单位为像素（px）。 |
 | antiAliasStrength | number | 是 | 是 | 抗锯齿滤波器强度。 |
 | shadowScale | number | 是 | 是 | 阴影区域缩放因子。 |
 | dngPrivateData | ArrayBuffer | 是 | 是 | 厂商私有数据块。 |
@@ -409,7 +409,7 @@ ImageReceiver的初始化选项。
 
 | 名称              | 类型                               | 只读 | 可选 | 说明               |
 | ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
-| size     | [Size](#size) | 否   | 是   | 图像的大小，包括宽与高，且值都大于0，单位为px。<br>该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
+| size     | [Size](#size) | 否   | 是   | 图像的大小，包括宽与高，且值都大于0，单位为像素（px）。<br>该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
 | capacity | number | 否   | 是   | 可同时访问的最大图像数量。该值必须为正整数，且小于或等于64张。<br>该参数仅作为期望值，实际capacity由设备硬件决定。     |
 
 ## ImageBufferData<sup>23+</sup>
