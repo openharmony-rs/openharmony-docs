@@ -31558,6 +31558,11 @@
 						"end_line":343,
 						"name":"allocator_called",
 						"start_line":323
+					},
+					{
+						"end_line":385,
+						"name":"allocator_yuv_called",
+						"start_line":362
 					}
 				]
 			}
@@ -31628,6 +31633,11 @@
 						"end_line":285,
 						"name":"create_pixelMap",
 						"start_line":253
+					},
+					{
+						"end_line":37,
+						"name":"get_supportedFormats",
+						"start_line":24
 					}
 				]
 			}
@@ -33188,6 +33198,11 @@
 						"end_line":154,
 						"name":"allocator_operations",
 						"start_line":15
+					},
+					{
+						"end_line":211,
+						"name":"allocator_yuv_operations",
+						"start_line":156
 					}
 				]
 			}
@@ -52415,6 +52430,56 @@
 						"end_line":499,
 						"name":"screenCapture_releaseScreenRecording",
 						"start_line":496
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/image/image-region-and-downsampling-c.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp",
+				"functions":[
+					{
+						"end_line":256,
+						"name":"decode_region",
+						"start_line":225
+					},
+					{
+						"end_line":287,
+						"name":"decode_downsample",
+						"start_line":258
+					},
+					{
+						"end_line":327,
+						"name":"decode_combined",
+						"start_line":289
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/image/image-region-and-downsampling.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets",
+				"functions":[
+					{
+						"end_line":406,
+						"name":"decode_region",
+						"start_line":387
+					},
+					{
+						"end_line":423,
+						"name":"decode_downsample",
+						"start_line":408
+					},
+					{
+						"end_line":446,
+						"name":"decode_combined",
+						"start_line":425
 					}
 				]
 			}
