@@ -2275,3 +2275,4 @@ struct DragEventAutoHideStaticSample {
   }
 }
 ```
+![autohide_drag.gif](figures/autohide_drag.gif)
