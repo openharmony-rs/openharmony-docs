@@ -547,7 +547,7 @@ function offIsoInfoChange(photoSession: camera.PhotoSession): void {
 
 onExposureInfoChange(callback: Callback\<ExposureInfo\>): void
 
-订阅曝光信息变化事件回调。曝光参数更改后，系统将返回更新后的曝光信息。
+订阅曝光信息变化事件回调。曝光参数更改后，系统将返回更新后的曝光信息。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
