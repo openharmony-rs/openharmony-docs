@@ -217,7 +217,7 @@ Defines the common types for the native module.
 | [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | Enumerates the animation playback directions.                          |
 | [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | Enumerates the item states of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component.|
 | [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | Enumerates the item edge effects of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Enumerates the swipe action menu display directions for **ListItem** components.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Enumerates the swipe action menu display directions for the **ListItem** component.|
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | Enumerates the playback states of the frame-by-frame animation.                      |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | Enumerates the states before and after execution of the frame-by-frame animation.            |
 | [ArkUI_ErrorCode](#arkui_errorcode)                                 | ArkUI_ErrorCode                 | Enumerates the error codes.                        |
@@ -518,8 +518,8 @@ Defines the common types for the native module.
 | [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | - | Checks whether cross-language attribute setting is allowed in the configuration option.|
 | [void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)](#oh_arkui_crosslanguageoption_settreeoperatingstatus) | - | Sets the node tree operation state of a cross-language configuration option.|
 | [OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_gettreeoperatingstatus) | - | Obtains the node tree operation state of a cross-language configuration option.|
-| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | Creates an instance of visible area change event parameters.|
-| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | Disposes of an instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | Creates an instance of the parameters for visible area change events.|
+| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | Disposes of the instance of the parameters for visible area change events.|
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | - | Sets the threshold ratios for visible area changes.|
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | - | Sets the expected update interval for visible area changes.  |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions *option, bool measureFromViewport)](#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) | - | Sets the visible area calculation mode.|
@@ -621,7 +621,7 @@ Defines the common types for the native module.
 | [bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfromstart) | - | Obtains the scrolling direction for looping the text marquee option.|
 | [void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)](#oh_arkui_textmarqueeoptions_setdelay) | - | Sets the delay of each loop for the text marquee option.|
 | [int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getdelay) | - | Obtains the delay of each loop for the text marquee option.|
-| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | - | Sets whether the text marquee option supports a fade-out effect when the text is too long. When supported, if the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied. If both ends have partially visible text, both ends will have the fade-out effect applied. When the fade-out effect is enabled, the [NODE_CLIP](./capi-native-node-h.md#arkui_nodeattributetype) attribute is automatically fixed at **true** and cannot be set to **false**.|
+| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | - | Sets whether the text marquee option supports a fade-out effect when the text is too long. When supported, if the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied. If both ends have partially visible text, both ends will have the fade-out effect applied. When the fade-out effect is enabled, the **NODE_CLIP** attribute in [ArkUI_NodeAttributeType](./capi-native-node-h.md#arkui_nodeattributetype) is automatically locked to **true** and cannot be set to **false**.|
 | [bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfadeout) | - | Obtains whether the text marquee option supports a fade-out effect when the text is too long.|
 | [void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)](#oh_arkui_textmarqueeoptions_setstartpolicy) | - | Sets the startup policy of the text marquee option.|
 | [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | - | Obtains the startup policy of the text marquee option.|
@@ -1475,7 +1475,7 @@ Enumerates the content clipping modes of scrollable components.
 | -- | -- |
 | ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY = 0 | Clip to the content area only.|
 | ARKUI_CONTENT_CLIP_MODE_BOUNDARY = 1 | Clip to the component's boundary area.|
-| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | Clip to the [safe area](./arkui-ts/ts-universal-attributes-expand-safe-area.md) area configured for the component.|
+| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | Clip to the [safe area](./arkui-ts/ts-universal-attributes-expand-safe-area.md) configured for the component.|
 
 ### ArkUI_WaterFlowLayoutMode
 
@@ -2124,7 +2124,7 @@ Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | Not resized, the image is aligned with the start edge at the bottom of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | Not resized, the image is horizontally centered at the bottom of the container.|
 | ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | Not resized, the image is aligned with the end edge at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The image maintains its original size. Must be used with [NODE_IMAGE_IMAGE_MATRIX](capi-native-node-h.md#arkui_nodeattributetype).<br>**Since**: 21|
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The image maintains its original size. Must be used with **NODE_IMAGE_IMAGE_MATRIX** in [ArkUI_NodeAttributeType](capi-native-node-h.md#arkui_nodeattributetype).<br>**Since**: 21|
 
 ### ArkUI_ImageInterpolation
 
@@ -2986,9 +2986,9 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  Parameter error. For details about the error code, see [100023 Parameter Error](../apis-arkui/errorcode-node.md#100023-parameter-error).<br>**Since**: 21|
 | ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  The **XComponent** is in an invalid or unsupported state. For details, see [XComponent Error Codes](../apis-arkui/errorcode-xcomponent.md).<br>**Since**: 19|
 | ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | The component does not support specific attributes or events. For details, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).|
-| ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE = 106103 | The corresponding operations cannot be performed on the node created by ArkTS. For details about the error code, see [106103 Operation Not Allowed on Nodes Created by ArkTS](../apis-arkui/errorcode-node.md#106103-operation-not-allowed-on-nodes-created-by-arkts).|
+| ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED = 106103 | The corresponding operations cannot be performed on the node created by ArkTS. For details about the error code, see [106103 Operation Not Allowed on Nodes Created by ArkTS](../apis-arkui/errorcode-node.md#106103-operation-not-allowed-on-nodes-created-by-arkts).|
 | ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | The adapter for lazy loading is not bound to the component. For details about the error code, see [106104 Adapter Not Bound](../apis-arkui/errorcode-nodeadapter.md#106104-adapter-not-bound).|
-| ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST = 106105 | The adapter already exists. For details about the error code, see [106105 Adapter Already Exists](../apis-arkui/errorcode-nodeadapter.md#106105-adapter-already-exists).|
+| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | The adapter already exists. For details about the error code, see [106105 Adapter Already Exists](../apis-arkui/errorcode-nodeadapter.md#106105-adapter-already-exists).|
 | ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | Failed to add the adapter because the corresponding node already has a subnode. For details about the error code, see [106106 Child Node Exists](../apis-arkui/errorcode-nodeadapter.md#106106-child-node-exists).|
 | ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | The parameter length in the parameter event exceeds the limit. For details about the error code, see [106107 Index Out of Range](../apis-arkui/errorcode-nodeadapter.md#106107-index-out-of-range).|
 | ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | The data does not exist in the component event. For details about the error code, see [106108 Data Not Found](../apis-arkui/errorcode-nodeadapter.md#106108-data-not-found).|
@@ -3010,8 +3010,8 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  Corresponding render child node not found. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
 | ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  The parameter value is out of range. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  The current rendering node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md). For details about the error code, see [106406 Current Render Node Is Obtained from FrameNode](../apis-arkui/errorcode-node-render.md#106406-current-render-node-is-obtained-from-framenode).<br>**Since**: 22|
-| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  The current rendering node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) and the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) has not been adopted as an affiliated node or has been disposed. For details about the error code, see [106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted](../apis-arkui/errorcode-node-render.md#106407-current-render-node-is-obtained-from-framenode-and-the-framenode-is-disposed-or-no-longer-adopted).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  The current render node is obtained from a [FrameNode](js-apis-arkui-frameNode.md). For details about the error code, see [106406 Current Render Node Is Obtained from FrameNode](../apis-arkui/errorcode-node-render.md#106406-current-render-node-is-obtained-from-framenode).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  The current render node is obtained from a [FrameNode](js-apis-arkui-frameNode.md) and the [FrameNode](js-apis-arkui-frameNode.md) has not been adopted as an affiliated node or has been disposed of. For details about the error code, see [106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted](../apis-arkui/errorcode-node-render.md#106407-current-render-node-is-obtained-from-framenode-and-the-framenode-is-disposed-or-no-longer-adopted).<br>**Since**: 22|
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  The current node is not in the adopted state. For details about the error code, see [106408 Current Node Is Not in Adopted State](../apis-arkui/errorcode-node-render.md#106408-current-node-is-not-in-adopted-state).<br>**Since**: 22|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  The current node is not focusable. For details about the error code, see [150001 Component Not Focusable](../apis-arkui/errorcode-focus.md#150001-component-not-focusable).<br>**Since**: 15|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  An ancestor of the current node is not focusable. For details about the error code, see [150002 Ancestor Component Not Focusable](../apis-arkui/errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since**: 15|
@@ -3226,7 +3226,7 @@ enum ArkUI_RouterPageState
 **Description**
 
 
-Enumerates the states of [Router Page](arkts-apis-uicontext-router.md).
+Enumerates the states of [Router](arkts-apis-uicontext-router.md).
 
 **Since**: 12
 
@@ -9756,7 +9756,7 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 **Description**
 
 
-Creates an instance of visible area change event parameters.
+Creates an instance of the parameters for visible area change events.
 
 **Since**: 17
 
@@ -9764,7 +9764,7 @@ Creates an instance of visible area change event parameters.
 
 | Type                                | Description|
 |------------------------------------| -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | Pointer to the created instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | Pointer to the instance of the parameters for visible area change events.|
 
 ### OH_ArkUI_VisibleAreaEventOptions_Dispose()
 
@@ -9775,7 +9775,7 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 **Description**
 
 
-Disposes of an instance of visible area change event parameters.
+Disposes of the instance of the parameters for visible area change events.
 
 **Since**: 17
 
@@ -12190,7 +12190,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 
 **Description**
 
-Sets whether the text marquee option supports a fade-out effect when the text is too long. When supported, if the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied.<br> If both ends have partially visible text, both ends will have the fade-out effect applied.<br> When the fade-out effect is enabled, the [NODE_CLIP](./capi-native-node-h.md#arkui_nodeattributetype) attribute is automatically fixed at **true** and cannot be set to **false**.
+Sets whether the text marquee option supports a fade-out effect when the text is too long. When supported, if the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied.<br> If both ends have partially visible text, both ends will have the fade-out effect applied.<br> When the fade-out effect is enabled, the **NODE_CLIP** attribute in [ArkUI_NodeAttributeType](./capi-native-node-h.md#arkui_nodeattributetype) is automatically locked to **true** and cannot be set to **false**.
 
 
 **Since**: 23

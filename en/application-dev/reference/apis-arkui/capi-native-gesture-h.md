@@ -1103,7 +1103,7 @@ Obtains whether this scrollable container component is scrolled to the top.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)* info | Pointer to the information about a gesture event target.|
-| bool* ret | Pointer to the parameter indicating whether this scrollable container component is scrolled to the top. The value **true** means that the component is scrolled to the top, and **false** means the opposite.|
+| bool* ret | Pointer to the **ret** parameter indicating whether this scrollable container component is scrolled to the top. The value **true** means that the component is scrolled to the top, and **false** means the opposite.|
 
 **Returns**
 
@@ -1130,7 +1130,7 @@ Obtains whether this scrollable container component is scrolled to the bottom.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)* info | Pointer to the information about a gesture event target.|
-| bool* ret | Pointer to the parameter indicating whether this scrollable container component is scrolled to the bottom. The value **true** means that the component is scrolled to the bottom, and **false** means the opposite.|
+| bool* ret | Pointer to the **ret** parameter indicating whether this scrollable container component is scrolled to the bottom. The value **true** means that the component is scrolled to the bottom, and **false** means the opposite.|
 
 **Returns**
 
@@ -1645,7 +1645,7 @@ Sets the minimum sliding distance threshold mapping for gesture recognition.
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | Pointer to the gesture recognizer instance.|
 | int size | Size of the array of minimum sliding distance thresholds.|
-| int* toolTypeArray | Pointer to the array of tool types for which thresholds are set. If a value other than [UI_INPUT_EVENT_TOOL_TYPE_XXX](./capi-ui-input-event-h.md#anonymous2) is set, the setting does not take effect.|
+| int* toolTypeArray | Pointer to the array of tool types for which thresholds are set. If a value other than [UI_INPUT_EVENT_TOOL_TYPE](./capi-ui-input-event-h.md#anonymous2)_XXX is set, the setting does not take effect.|
 | double* distanceArray | Pointer to the array of minimum sliding distances. The unit is px.|
 
 **Returns**
