@@ -147,6 +147,10 @@
 4. 开始录制，调用[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9-1)接口，此时进入started状态。
 
    <!-- @[start_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
+   
+   ``` TypeScript
+   await this.avRecorder?.start();
+   ```
 
 5. 暂停录制，调用[pause](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#pause9-1)接口，此时进入paused状态。
 
