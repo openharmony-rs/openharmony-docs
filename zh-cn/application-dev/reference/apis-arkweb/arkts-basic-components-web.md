@@ -5,6 +5,7 @@
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!--deprecated_code_no_check-->
 
 提供具有网页显示能力的Web组件，Web控制能力请参考[模块描述](arkts-apis-webview.md)。
 
@@ -432,6 +433,7 @@ ArkTS-Sta示例：
    ```
 
    ArkTS-Dyn示例：
+   <!--code_no_check-->
    ```ts
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
@@ -455,6 +457,7 @@ ArkTS-Sta示例：
    ```
 
    ArkTS-Sta示例：
+   <!--code_no_check-->
    ```ts
    // xxx.ets
    import { Web, Column, Component, Entry } from '@kit.ArkUI';
@@ -482,6 +485,7 @@ ArkTS-Sta示例：
 
    以filesDir为例，获取沙箱路径。若想获取其他路径，请参考[应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
+   <!--code_no_check-->
    ```ts
    // xxx.ets
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
