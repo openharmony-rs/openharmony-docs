@@ -524,7 +524,7 @@ getComponentUtils(): ComponentUtils
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -925,7 +925,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 在组件出现和消失时，可以通过[组件内转场](../apis-arkui/arkui-ts/ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[显式动画](./arkui-ts/ts-explicit-animation.md)中的[示例2](./arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > - 某些场景下，在[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
-> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish](arkui-ts/ts-explicit-animation.md#animateparam对象说明)动画播放完成回调。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
 > - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
 **参数：**
@@ -1360,7 +1360,7 @@ struct MyComponent {
 
 ArkTS-Dyn: getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined
 
-ArkTS-Sta: getNavigationInfoByUniqueId(id: long): observer.NavigationInfo | undefined
+ArkTS-Sta: getNavigationInfoByUniqueId(id: int): observer.NavigationInfo | undefined
 
 提供getNavigationInfoByUniqueId接口通过组件的uniqueId获取该节点对应的Navigation页面信息。
 1. 当uniqueId对应的节点在Navigation节点中，返回其对应的Navigation信息；
@@ -1378,7 +1378,7 @@ ArkTS-Sta: getNavigationInfoByUniqueId(id: long): observer.NavigationInfo | unde
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| id | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是    | 节点对应的UniqueId。                          |
+| id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 节点对应的UniqueId。                          |
 
 **返回值：**
 

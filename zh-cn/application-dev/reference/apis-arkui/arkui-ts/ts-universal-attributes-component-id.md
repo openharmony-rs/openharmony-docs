@@ -181,7 +181,9 @@ struct ComponentPage {
 
 ### sendEventByKey<sup>9+</sup>
 
-sendEventByKey(id: string, action: number, params: string): boolean
+ArkTS-Dyn: sendEventByKey(id: string, action: number, params: string): boolean
+
+ArkTS-Sta: sendEventByKey(id: string, action: int, params: string): boolean
 
 给指定id的组件发送事件。
 
@@ -200,7 +202,7 @@ sendEventByKey(id: string, action: number, params: string): boolean
 | 参数名       | 类型      | 必填       | 说明                         |
 | ------ | -------| ---- | -------------------------- |
 | id     | string | 是    | 要触发事件的组件的id。                      |
-| action | number | 是    | 要触发的事件类型，目前支持取值：<br/>-&nbsp;点击事件Click:&nbsp;10。<br/>-&nbsp;长按事件LongClick:&nbsp;11。 |
+| action | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 要触发的事件类型，目前支持取值：<br/>-&nbsp;点击事件Click:&nbsp;10。<br/>-&nbsp;长按事件LongClick:&nbsp;11。 |
 | params | string | 是    | 事件参数，无参数传空字符串&nbsp;""。            |
 
 **返回值:**

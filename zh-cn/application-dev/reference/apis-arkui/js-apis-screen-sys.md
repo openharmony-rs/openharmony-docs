@@ -765,7 +765,7 @@ ArkTS-Sta: makeUnique(uniqueScreen: Array&lt;long&gt;): Promise&lt;Array&lt;long
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效不报错。
+**设备行为差异：** 该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在Wearable设备中报801错误码，在其他设备中不生效也不报错。
 
 **参数：**
 

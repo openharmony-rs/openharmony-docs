@@ -66,9 +66,25 @@ ArkTS-Sta: Toolbar({toolBarList: ToolBarOptions, activateIndex?: int, controller
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 10
 
+## ToolBarOptions<sup>23+</sup>
+
+type ToolBarOptions = Array\<ToolBarOption>
+
+定义工具栏列表。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **ArkTS-Sta起始版本：** 23
+
+| 类型   | 说明   |
+| ------ | ------ |
+| Array\<[ToolBarOption](#toolbaroption)> | 表示工具栏列表。 |
 
 ## ToolBarOption
 
