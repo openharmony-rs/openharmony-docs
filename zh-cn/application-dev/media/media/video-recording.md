@@ -119,7 +119,7 @@
    > - 需要使用支持的[录制规格](media-kit-intro.md#支持的格式)，视频比特率、分辨率、帧率以实际硬件设备支持的范围为准。
    >
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要调用基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
-   > - 示例中配置的fileFormat视频文件封装格式、videoCodec视频编码格式请参考[录制参数配置](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)。
+   > - 示例中配置的fileFormat视频文件封装格式、videoCodec视频编码格式请参考录制参数配置（[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)）。
 
    ArkTS-Dyn：
 
