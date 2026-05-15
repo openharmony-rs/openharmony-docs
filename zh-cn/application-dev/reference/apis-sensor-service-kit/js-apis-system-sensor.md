@@ -182,7 +182,7 @@ export default {
   },
 
   pickerOnchange(e) {
-    console.info(this.TAG + 'current select:' + e.newValue);
+    console.info(this.TAG + 'current selected:' + e.newValue);
     this.currentSelect = e.newValue;
   },
 
