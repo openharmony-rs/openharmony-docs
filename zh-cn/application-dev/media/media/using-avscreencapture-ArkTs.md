@@ -59,7 +59,7 @@
     // 声明一个AVScreenCaptureRecorder类型的变量。
     private screenCapture?: media.AVScreenCaptureRecorder;
     ```
-    ArkTs-Sta:
+    ArkTS-Sta:
     <!-- @[create_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
     ```javascript
     // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
