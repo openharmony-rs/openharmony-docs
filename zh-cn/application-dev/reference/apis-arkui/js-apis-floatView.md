@@ -102,7 +102,6 @@ create(config: FloatViewConfiguration): Promise&lt;FloatViewController&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -120,7 +119,7 @@ struct Index {
       floatView.create(config).then((data: floatView.FloatViewController) => {
         this.floatViewController = data;
         console.info(`Succeeded in creating float view controller. Data: ${data}`);
-      }).catch((err: BusinessError) => {
+      }).catch((err) => {
         console.error(`Failed to create float view controller. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -194,9 +193,9 @@ struct Index {
 
     try {
       if (this.floatViewController && this.floatingBallController) {
-        floatView.bind(this.floatViewController, this.floatingBallController, floatingBallParams).then(() => {
+        floatView.bind(this.floatViewController!, this.floatingBallController!, floatingBallParams).then(() => {
           console.info('Succeeded in binding float view and floating ball.');
-        }).catch((err: BusinessError) => {
+        }).catch((err) => {
           console.error(`Failed to bind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
@@ -245,8 +244,6 @@ unbind(floatViewController: FloatViewController, floatingBallController: floatin
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct Index {
@@ -254,9 +251,9 @@ struct Index {
     try {
       // 使用绑定时传入的标准悬浮窗和闪控球控制器
       if (this.floatViewController && this.floatingBallController) {
-        floatView.unbind(this.floatViewController, this.floatingBallController).then(() => {
+        floatView.unbind(this.floatViewController!, this.floatingBallController!).then(() => {
           console.info('Succeeded in unbinding float view and floating ball.');
-        }).catch((err: BusinessError) => {
+        }).catch((err) => {
           console.error(`Failed to unbind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
@@ -305,7 +302,7 @@ getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimits
 **示例：**
 
 ```ts
-let limits: floatView.FloatViewLimits = floatView.getFloatViewLimits();
+let limits: floatView.FloatViewLimits = floatView.getFloatViewLimits(floatView.FloatViewTemplateType.ROUNDED_RECTANGLE);
 console.info('Float view limits: ' + JSON.stringify(limits));
 ```
 
@@ -371,8 +368,6 @@ setUIContext(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct Index {
@@ -380,7 +375,7 @@ struct Index {
     try {
       this.floatViewController?.setUIContext('pages/Index').then(() => {
         console.info('Succeeded in setting UI context.');
-      }).catch((err: BusinessError) => {
+      }).catch((err) => {
         console.error(`Failed to set UI context. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -439,7 +434,7 @@ struct Index {
     try {
       this.floatViewController?.setWindowSize(size).then(() => {
         console.info('Succeeded in setting window size.');
-      }).catch((err: BusinessError) => {
+      }).catch((err) => {
         console.error(`Failed to set window size. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -486,8 +481,6 @@ start(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct Index {
@@ -495,7 +488,7 @@ struct Index {
     try {
       this.floatViewController?.start().then(() => {
         console.info('Succeeded in starting float view.');
-      }).catch((err: BusinessError) => {
+      }).catch((err) => {
         console.error(`Failed to start float view. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -537,8 +530,6 @@ stop(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct Index {
@@ -546,7 +537,7 @@ struct Index {
     try {
       this.floatViewController?.stop().then(() => {
         console.info('Succeeded in stopping float view.');
-      }).catch((err: BusinessError) => {
+      }).catch((err) => {
         console.error(`Failed to stop float view. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -594,8 +585,6 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct Index {
@@ -603,7 +592,7 @@ struct Index {
     try {
       this.floatViewController?.setFloatViewVisibilityInApp(true).then(() => {
         console.info('Succeeded in setting float view visibility in app.');
-      }).catch((err: BusinessError) => {
+      }).catch((err) => {
         console.error(`Failed to set float view visibility in app. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -651,8 +640,6 @@ restoreMainWindow(wantParameters?: Record&lt;string, Object&gt;): Promise&lt;voi
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 @Entry
 @Component
 struct Index {
@@ -664,7 +651,7 @@ struct Index {
     try {
       this.floatViewController?.restoreMainWindow(param).then(() => {
         console.info('Succeeded in restoring main window.');
-      }).catch((err: BusinessError) => {
+      }).catch((err) => {
         console.error(`Failed to restore main window. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -1016,10 +1003,10 @@ struct Index {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 标准悬浮窗的模板类型。 |
-| windowId | number | 否 | 否 | 标准悬浮窗窗口ID。 |
-| displayId | number | 否 | 否 | 标准悬浮窗所在屏幕ID。 |
+| windowId | int | 否 | 否 | 标准悬浮窗窗口ID。 |
+| displayId | int | 否 | 否 | 标准悬浮窗所在屏幕ID。 |
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
-| windowScale | number | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
+| windowScale | double | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
 | avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 标准悬浮窗内容的避让区域。<br>**注意：**<br/>通过[setUIContext](#setuicontext)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。 |
 | inSidebar | boolean | 否 | 否 | 标准悬浮窗是否在侧边栏中。true为在侧边栏中，false为不在侧边栏中。 |
 
@@ -1035,8 +1022,8 @@ struct Index {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| minRatio | number | 否 | 否 | 标准悬浮窗的宽高比最小值。 |
-| maxRatio | number | 否 | 否 | 标准悬浮窗的宽高比最大值。 |
+| minRatio | double | 否 | 否 | 标准悬浮窗的宽高比最小值。 |
+| maxRatio | double | 否 | 否 | 标准悬浮窗的宽高比最大值。 |
 
 ## FloatViewLimits
 
@@ -1101,5 +1088,5 @@ struct Index {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
-| windowScale | number | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
+| windowScale | double | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
 | reason | string | 否 | 否 | 标准悬浮窗矩形区域变化的原因。原因和对应含义如下：<br/>"POSITION_CHANGE"：位置变化<br/>"SIZE_CHANGE"：大小变化<br/>"RECT_CHANGE"：位置大小同时变化 |
