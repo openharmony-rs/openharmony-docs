@@ -364,7 +364,7 @@ attributeModifier(modifier: AttributeModifier\<SideBarContainerAttribute> | Attr
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<SideBarContainerAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SideBarContainerAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>取值为undefined时，按当前组件的属性方法默认值处理。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>NavigationAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ### autoHide<sup>9+</sup>
 
@@ -534,9 +534,9 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 
 >  **说明：** 
 >
->  针对侧边栏子组件设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效。
+>  针对侧边栏子组件设置通用属性[width](ts-universal-attributes-size.md#width)和[height](ts-universal-attributes-size.md#height)时，宽高都不生效。
 >
->  针对侧边栏内容区设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
+>  针对侧边栏内容区设置通用属性[width](ts-universal-attributes-size.md#width)和[height](ts-universal-attributes-size.md#height)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
 >
 >  当[showSideBar](#showsidebar)属性未设置时，依据组件大小进行自动显示：
 >
@@ -589,7 +589,7 @@ ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                          |
 | ------ | ------- | ---- | ----------------------------- |
-| value  | ArkTS-Dyn: (value: boolean) => void<br/>ArkTS-Sta: ((value: boolean) => void) \| undefined| 是   | true表示显示，false表示隐藏。<br/>取值为undefined时，不使用回调函数。 |
+| callback  | ArkTS-Dyn: (value: boolean) => void<br/>ArkTS-Sta: ((value: boolean) => void) \| undefined| 是   | 侧边栏状态变化时触发的回调。<br/>value：侧边栏是否显示，true表示显示，false表示隐藏。<br/>取值为undefined时，不使用回调函数。 |
 
 
 ## 示例
