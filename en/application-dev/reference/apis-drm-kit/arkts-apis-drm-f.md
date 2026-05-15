@@ -78,7 +78,7 @@ Checks whether the device supports the specified DRM solution.
 
 | Type                                            | Description                          |
 | ----------------------------------------------- | ---------------------------- |
-| boolean          | Whether the specified DRM solution is supported. The value **true** indicates yes, and the value **false** indicate no.                  |
+| boolean          | Whether the specified DRM solution is supported. The value **true** indicates yes, and the value **false** indicates no.                  |
 
 **Error codes**
 
