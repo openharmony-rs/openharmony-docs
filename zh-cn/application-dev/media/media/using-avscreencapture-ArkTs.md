@@ -208,7 +208,8 @@
     ```
     ArkTS-Sta:
     <!-- @[get_file_fd](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-    ```javascript
+    
+    ``` TypeScript
     public updateFileFd(filesDir: string): void {
       // 获取文件fd
       this.fileName = systemDateTime.getTime(true).toString() + '.mp4';
