@@ -44,7 +44,7 @@
 
 1. 创建AVRecorder实例，实例创建完成进入idle状态。
 
-   ArkTS-Dyn：
+   ArkTS-Dyn示例：
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -60,7 +60,7 @@
    }
    ```
 
-   ArkTS-Sta：
+   ArkTS-Sta示例：
 
    <!-- @[create_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
    
@@ -74,7 +74,7 @@
    | stateChange | 必要事件，监听播放器的state属性改变。 |
    | error | 必要事件，监听播放器的错误信息。 |
 
-   ArkTS-Dyn：
+   ArkTS-Dyn示例：
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -90,7 +90,7 @@
    });
    ```
 
-   ArkTS-Sta：
+   ArkTS-Sta示例：
 
    <!-- @[set_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
    
@@ -121,7 +121,7 @@
    > - 录制输出的url地址（即示例里avConfig中的url），形式为fd://xx (fd number)。需要调用基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
    > - 示例中配置的fileFormat视频文件封装格式、videoCodec视频编码格式请参考录制参数配置（[AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9)）。
 
-   ArkTS-Dyn：
+   ArkTS-Dyn示例：
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -162,7 +162,7 @@
    }
    ```
 
-   ArkTS-Sta：
+   ArkTS-Sta示例：
 
    <!-- @[prepare_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
    
@@ -205,7 +205,7 @@
 
    输入源模块通过SurfaceID可以获取到Surface，通过Surface可以将视频数据流传递给AVRecorder，由AVRecorder再进行视频数据的处理。
 
-   ArkTS-Dyn：
+   ArkTS-Dyn示例：
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -217,7 +217,7 @@
    });
    ```
 
-   ArkTS-Sta：
+   ArkTS-Sta示例：
 
    <!-- @[get_input_surface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
    
@@ -285,7 +285,7 @@
 
 参考以下示例，完成“开始录制-暂停录制-恢复录制-停止录制”的完整流程。
 
-ArkTS-Dyn：
+ArkTS-Dyn示例：
 
 ```ts
 import { common } from '@kit.AbilityKit';
@@ -475,7 +475,7 @@ async function releaseCamera() {
 }
 ```
 
-ArkTS-Sta：
+ArkTS-Sta示例：
 
 <!-- @[full_video_recorder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/BasicFeature/Media/AVRecorder-sta/entry/src/main/ets/services/AVRecorderService.ets) -->
 
