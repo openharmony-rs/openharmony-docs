@@ -87,7 +87,7 @@ ArkTS-Sta: SecurityUIExtensionComponent(want: Want, options?: SecurityUIExtensio
 
 type ReceiveCallback = Callback<Record<string, RecordData>>
 
-回调函数，返回收到的来自对端Ability的数据
+回调函数，返回收到的来自对端Ability的数据。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
