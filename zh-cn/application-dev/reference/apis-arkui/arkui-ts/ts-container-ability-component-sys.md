@@ -1,7 +1,7 @@
 # AbilityComponent (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
