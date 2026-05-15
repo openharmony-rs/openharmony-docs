@@ -44,7 +44,7 @@ Creates a text-based download button with a progress indicator that shows the do
 | content                           | [ResourceStr](ts-types.md#resourcestr)                        | Yes | \@Require <br>\@Param | Button text.                                                                  |
 | progressButtonWidth               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | \@Param <br>\@Once  | Width of the button.<br>Default value: **44vp**                                                     |
 | onClicked                         | [ClickCallback](#clickcallback)                               | Yes | \@Param                | Callback invoked when the button is clicked.                                                                |
-| isEnabled                         | boolean                                                       | Yes | \@Param                | Whether the button can be clicked.<br> **true**: yes<br> **false**: no      |
+| isEnabled                         | boolean                                                       | Yes | \@Param                | Whether the button can be clicked.<br> **true**: The button can be clicked.<br> **false**: The button cannot be clicked.      |
 | colorOptions                      | [ProgressButtonV2Color](#progressbuttonv2color)               | No | \@Param                | Color options for the button.                                                     |
 | progressButtonRadius<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | \@Param                | Corner radius of the button. It cannot be set in percentage.<br>Value range: [0, **height**/2]<br>Default value: **height**/2<br>If an invalid value is set, the default value is used.|
 
