@@ -190,7 +190,7 @@ PixelMap的初始化选项。
 
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
-| maxSize | [Size](#size) | 否   | 否   |  最大编码尺寸。<br>当指定的width或者height大于0时，原图尺寸超过限制将保持原宽高比进行缩放，确保图像尺寸不超过该边界。<br>默认值为{width: 0, height: 0}，表示不限制编码尺寸。 |
+| maxSize | [Size](#size) | 否   | 否   |  最大编码尺寸。<br>当指定的width或者height大于0时，原图尺寸超过限制将保持原宽高比进行缩放，确保图像尺寸不超过该边界。<br>默认值为{width: 0, height: 0}，表示不限制编码尺寸。<br>单位为像素（px）。 |
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | 否   | 否  | 缩放时采用的缩放算法。默认值是AntiAliasingLevel.NONE。 |
 
 ## PackingOption
