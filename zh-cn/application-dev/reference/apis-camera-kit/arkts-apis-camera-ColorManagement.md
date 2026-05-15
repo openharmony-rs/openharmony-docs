@@ -59,7 +59,7 @@ P3广色域与HDR高动态范围成像：
 | HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010 | BT2020_HLG_LIMIT、<br>BT2020_HLG |
 | HDR_VIVID          | CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT、<br>BT2020_HLG |
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -105,7 +105,7 @@ getActiveColorSpace(): colorSpaceManager.ColorSpace
 
 获取当前设置的色彩空间。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

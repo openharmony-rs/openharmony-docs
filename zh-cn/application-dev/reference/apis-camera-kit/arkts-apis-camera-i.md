@@ -18,29 +18,29 @@
 
 | 名称                              | 类型                                  | 只读 | 可选 | 说明        |
 |---------------------------------|-------------------------------------| ---- |----|---------- |
-| cameraId                        | string                              | 是   | 否  | 相机ID。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
-| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否  | 相机位置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
-| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否  | 相机类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
-| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否  | 相机连接类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| cameraOrientation<sup>12+</sup> | number                              | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变。取值范围为[0, 360]。单位：度。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| lensEquivalentFocalLength<sup>24+</sup> | Array\<number\> | 是 | 是 | 相机镜头等效焦距。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成）, true表示是逻辑摄像头，false表示是物理摄像头。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 是 | 是 | 组成此逻辑相机的物理相机列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| lensFocalLength<sup>24+</sup> | number | 是 | 是 | 镜头实际焦距。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| minimumFocusDistance<sup>24+</sup> | number | 是 | 是 | 相机最小对焦距离。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| lensDistortion<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头畸变参数数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头内参标定参数数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| sensorPhysicalSize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器物理尺寸（宽度和高度）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| sensorPixelArraySize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器像素阵列尺寸（宽度和高度。单位：像素）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | 是 | 是 | 传感器颜色滤镜排列方式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| cameraId                        | string                              | 是   | 否  | 相机ID。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否  | 相机位置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。    |
+| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否  | 相机类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。    |
+| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否  | 相机连接类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| cameraOrientation<sup>12+</sup> | number                              | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变。取值范围为[0, 360]。单位：度。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| lensEquivalentFocalLength<sup>24+</sup> | Array\<number\> | 是 | 是 | 相机镜头等效焦距。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成）, true表示是逻辑摄像头，false表示是物理摄像头。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 是 | 是 | 组成此逻辑相机的物理相机列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensFocalLength<sup>24+</sup> | number | 是 | 是 | 镜头实际焦距。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| minimumFocusDistance<sup>24+</sup> | number | 是 | 是 | 相机最小对焦距离。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensDistortion<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头畸变参数数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| lensIntrinsicCalibration<sup>24+</sup> | Array\<number\> | 是 | 是 | 镜头内参标定参数数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorPhysicalSize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器物理尺寸（宽度和高度）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorPixelArraySize<sup>24+</sup> | Array\<number\> | 是 | 是 | 传感器像素阵列尺寸（宽度和高度。单位：像素）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | 是 | 是 | 传感器颜色滤镜排列方式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## CameraStatusInfo
 
 相机管理器回调返回的接口实例，该实例表示相机状态信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -53,7 +53,7 @@
 
 相机管理器回调返回的接口实例，表示折叠机折叠状态信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -66,7 +66,7 @@
 
 相机配置信息项。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -79,7 +79,7 @@
 
 帧率范围。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -92,7 +92,7 @@
 
 视频配置信息项，继承[Profile](#profile)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -104,7 +104,7 @@
 
 相机输出能力项。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -119,7 +119,7 @@
 
 手电筒回调返回的接口实例，表示手电筒状态信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -133,7 +133,7 @@
 
 尺寸参数。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -146,7 +146,7 @@
 
 点坐标用于对焦和曝光配置。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -159,7 +159,7 @@
 
 相机的输出并发能力信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -174,7 +174,7 @@
 
 图片地理位置信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -188,7 +188,7 @@
 
 拍摄照片的设置。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -203,7 +203,7 @@
 
 拍照帧输出信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -216,7 +216,7 @@
 
 拍照曝光结束信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -228,7 +228,7 @@
 
 拍照开始信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -241,7 +241,7 @@
 
 拍照停止信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -254,7 +254,7 @@
 
 自动切换镜头状态信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -271,7 +271,7 @@
 
 预览流的数据获取请参考[双路预览(ArkTs)](../../media/camera/camera-dual-channel-preview.md)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -286,7 +286,7 @@
 
 相机元能力信息，[CameraInput](arkts-apis-camera-CameraInput.md)相机信息中的数据来源，通过metadataOutput.on('metadataObjectsAvailable')接口获取。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -300,7 +300,7 @@
 
 平滑变焦参数信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -312,7 +312,7 @@
 
 相机控制器效果激活状态信息。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -325,7 +325,7 @@
 
 感光度（ISO）参数信息。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -337,7 +337,7 @@
 
 镜头遮挡或脏污检测回调返回的接口实例，表示镜头遮挡或脏污状态信息。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -350,7 +350,7 @@
 
 变焦范围。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -363,7 +363,7 @@
 
 物理光圈对象。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -376,7 +376,7 @@
 
 曝光信息对象。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

@@ -31,7 +31,7 @@ getExposureMode(): ExposureMode
 >
 > 若未通过[setExposureMode](arkts-apis-camera-AutoExposure.md#setexposuremode11)接口进行设置，直接调用该接口查询当前曝光模式，会返回无效值。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -73,7 +73,7 @@ setExposureMode(aeMode: ExposureMode): void
 
 设置曝光模式。进行设置之前，需要先检查设备是否支持指定的曝光模式，可使用方法[isExposureModeSupported](arkts-apis-camera-AutoExposureQuery.md#isexposuremodesupported11)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -114,7 +114,7 @@ getMeteringPoint(): Point
 
 查询曝光区域中心点。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -158,7 +158,7 @@ setMeteringPoint(point: Point): void
 
 此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触摸点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -201,7 +201,7 @@ setExposureBias(exposureBias: number): void
 
 进行设置之前，建议先通过方法[getExposureBiasRange](arkts-apis-camera-AutoExposureQuery.md#getexposurebiasrange11)查询支持的范围。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -245,7 +245,7 @@ getExposureValue(): number
 
 查询当前曝光值。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -288,7 +288,7 @@ getExposureMeteringMode(): ExposureMeteringMode
 
 获取当前曝光测光模式。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -331,7 +331,7 @@ setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 
 设置曝光测光模式。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -376,7 +376,7 @@ onExposureStateChange(callback: Callback\<ExposureState\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -412,7 +412,7 @@ offExposureStateChange(callback?: Callback\<ExposureState\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
