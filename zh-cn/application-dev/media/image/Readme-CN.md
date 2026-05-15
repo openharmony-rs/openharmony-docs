@@ -37,7 +37,7 @@
   - 图片编辑和处理<!--image-editing-c-->
     - [使用Image_NativeModule完成位图操作](pixelmap-c.md)
     - [使用ImageEffect编辑图片](image-effect-guidelines.md)<!--RP2--><!--RP2End-->
-    - [读取和编辑图片EXIF信息](image-tool-c.md)
+    - [使用Image_NativeModule读取和编辑图片Exif信息](image-tool-c.md)
   - 图片接收<!--image-receiving-c-->
     - [使用Image_NativeModule完成图片接收](image-receiver-c.md)
 - Image Kit常见问题<!--image-faqs-->
