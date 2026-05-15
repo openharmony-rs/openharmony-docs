@@ -1594,7 +1594,7 @@ let httpResponseCache = http.createHttpResponseCache();
 
 - **`no-store`**：表示不允许缓存资源，每次请求都必须从服务器获取资源。
 
-- **`max-age`**：指定缓存的最大时间(以s为单位)。例如，`Cache-Control: max-age=3600`表示缓存的有效期为1小时。
+- **`max-age`**：指定缓存的最大时间(以秒为单位)。例如，`Cache-Control: max-age=3600`表示缓存的有效期为1小时。
 
 - **`public`**：表明响应可以被任何对象(包括：发送请求的客户端，代理服务器等)缓存。
 
