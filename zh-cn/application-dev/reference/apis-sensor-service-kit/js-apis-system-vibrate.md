@@ -48,7 +48,7 @@ import { Vibrator } from '@kit.SensorServiceKit';
 | ------- | --------------------------------- | ---- | ---------- |
 | options | [VibrateOptions](#vibrateoptions) | 否   | 振动模式。 |
 
-**示例**：
+**ArkTS示例**：
 
 ```ts
 import { Vibrator, VibrateOptions } from '@kit.SensorServiceKit';
@@ -66,6 +66,26 @@ let vibrateOptions: VibrateOptions = {
   }
 };
 Vibrator.vibrate(vibrateOptions);
+```
+
+**JS示例**：
+
+```js
+import vibrator from '@system.sensor';
+
+let vibrateOptions = {
+  mode: 'short',
+  success: () => {
+    console.info('Succeed in vibrating');
+  },
+  fail: (data, code) => {
+    console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
+  },
+  complete: () => {
+    console.info('completed in vibrating');
+  }
+};
+vibrator.vibrate(vibrateOptions);
 ```
 
 ## VibrateOptions
