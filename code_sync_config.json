@@ -51934,9 +51934,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":863,
+						"end_line":916,
 						"name":"create_midi_client",
-						"start_line":835
+						"start_line":888
 					},
 					{
 						"end_line":911,
@@ -51954,14 +51954,14 @@
 						"start_line":1092
 					},
 					{
-						"end_line":1904,
+						"end_line":1940,
 						"name":"open_ble_device",
-						"start_line":1852
+						"start_line":1888
 					},
 					{
-						"end_line":1850,
+						"end_line":1886,
 						"name":"ble_device_opened_callback",
-						"start_line":1823
+						"start_line":1859
 					},
 					{
 						"end_line":1237,
@@ -51979,24 +51979,24 @@
 						"start_line":1240
 					},
 					{
-						"end_line":1332,
+						"end_line":1368,
 						"name":"open_input_port",
-						"start_line":1282
+						"start_line":1318
 					},
 					{
-						"end_line":1384,
+						"end_line":1420,
 						"name":"close_input_port",
-						"start_line":1334
+						"start_line":1370
 					},
 					{
-						"end_line":1437,
+						"end_line":1473,
 						"name":"open_output_port",
-						"start_line":1387
+						"start_line":1423
 					},
 					{
-						"end_line":1483,
+						"end_line":1519,
 						"name":"close_output_port",
-						"start_line":1439
+						"start_line":1475
 					},
 					{
 						"end_line":1532,
@@ -52004,9 +52004,9 @@
 						"start_line":1486
 					},
 					{
-						"end_line":1590,
+						"end_line":1626,
 						"name":"ump_helper_functions",
-						"start_line":1568
+						"start_line":1604
 					},
 					{
 						"end_line":1724,
