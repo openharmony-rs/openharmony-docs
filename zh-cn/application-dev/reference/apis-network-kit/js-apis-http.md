@@ -1365,7 +1365,7 @@ createHttpResponseCache(cacheSize?: number): HttpResponseCache
 
 | 参数名   | 类型                                    | 必填 | 说明       |
 | -------- | --------------------------------------- | ---- | ---------- |
-| cacheSize | number | 否 | 响应缓存大小，单位为Byte。取值范围为1\*1024\*1024到10\*1024\*1024，即1MB到10MB。默认值为10MB。 |
+| cacheSize | number | 否 | 响应缓存大小，单位为Byte。取值范围为1\*1024\*1024到10\*1024\*1024，即1MB到10MB。默认值为10MB。超出10MB时设置为10MB；小于1MB时，设置为1MB。 |
 
 **返回值：**
 
@@ -1407,7 +1407,7 @@ let httpResponseCache = http.createHttpResponseCache();
 
 - **`no-store`**：表示不允许缓存资源，每次请求都必须从服务器获取资源。
 
-- **`max-age`**：指定缓存的最大时间(以s为单位)。例如，`Cache-Control: max-age=3600`表示缓存的有效期为1小时。
+- **`max-age`**：指定缓存的最大时间(以秒为单位)。例如，`Cache-Control: max-age=3600`表示缓存的有效期为1小时。
 
 - **`public`**：表明响应可以被任何对象(包括：发送请求的客户端，代理服务器等)缓存。
 
