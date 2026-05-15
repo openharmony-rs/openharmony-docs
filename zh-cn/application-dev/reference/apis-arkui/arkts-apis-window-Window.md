@@ -2526,6 +2526,17 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  this.windowClass.getWindowStateSnapshot().then((data) => {
+    let jsonObj: object = JSON.parse(data);
+    console.info(`Succeeded, data=${data}, isPcMod=${jsonObj["isPcMode"]}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed. Cause code: ${err.code}, cancel message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Panic. Cause code: ${exception.code}, message: ${exception.message}`);
+}
 ```
 
 ## setPreferredOrientation<sup>9+</sup>
