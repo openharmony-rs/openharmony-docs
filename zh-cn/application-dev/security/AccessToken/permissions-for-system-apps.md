@@ -4267,7 +4267,7 @@
 **起始版本**：13
 
 ## ohos.permission.ACCESS_CAR_CONTROL
- 	 
+
 允许应用接入或拉起车辆控制界面。
 
 **权限级别**：system_basic
