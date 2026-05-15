@@ -195,7 +195,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of list items or list item groups to be cached (preloaded) and specifies whether to display the preloaded nodes.
 
-When **cachedCount** is set for the list, the system preloads and lays out the **cachedCount**-specified number of rows of list items both above and below the currently visible area of the list. When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [content clipping](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
+When **cachedCount** is set for the list, the system preloads and lays out the **cachedCount**-specified number of rows of list items both above and below the currently visible area of the list. When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [clipContent](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
 > **NOTE**
 >
@@ -725,6 +725,26 @@ Sets the system back button behavior of the **List** component.
 | Name| Type  | Mandatory| Description                                              |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | behavior  | [ListBackPressBehavior](#listbackpressbehavior) \| undefined | Yes  | System back button behavior of the **List** component. Currently, you can use the [ListBackPressBehavior](#listbackpressbehavior) parameter to configure whether to collapse the expanded swipe-out component of a **ListItem** when the system back button takes effect.<br>If this parameter is set to **undefined**, the default behavior is restored. That is, when the system back button takes effect, the expanded swipe-out component of the **ListItem** is collapsed.|
+
+### enableEditMode
+
+enableEditMode(enabled: boolean | undefined)
+
+Sets whether to enable the edit mode for the **List** component. After the edit mode is enabled, you can swipe to select multiple [ListItem](ts-container-listitem.md) components in the **List** component. If this API is not called, the edit mode is not enabled.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                    |
+| ------ | ------ | ---- | ---------------------------------------- |
+| enabled  | boolean \| undefined | Yes  | Whether to enable the edit mode.<br>**true** means to enable the edit mode and swiping to select multiple items is supported; **false** or **undefined** means to disable the edit mode and swiping to select multiple items is not supported.|
 
 ## ListItemAlign<sup>9+</sup>
 
@@ -2628,9 +2648,9 @@ struct ContactsList {
 
 ### Example 17: Setting the Multi-Selection Gather Animation
 
-This example demonstrates how to gather selected list items in the display area when [a long press triggers context menu](ts-universal-attributes-menu.md#bindcontextmenu8) on list items by enabling the multi-selection gather animation switch for **ListItem**.
+This example demonstrates how to gather selected list items in the visible area when a long press is performed on list items using [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), with the multi-selection gather animation switch enabled for **List**.
 
-From API version 23, the [edit mode options](#editmodeoptions23) API is added to the **List** component, which can be used to set the multi-selection gather animation.
+Since API version 23, the [editModeOptions](#editmodeoptions23) API is added to the **List** component  to set the multi-selection gather animation switch.
 
 For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
 
@@ -2725,3 +2745,55 @@ struct ListExample {
 ```
 
 ![listMultiselectAnimation](figures/listMultiselectAnimation.gif)
+
+### Example 18: Implementing Swipe-based Multi-Selection
+
+This example demonstrates how to use the [enableEditMode](#enableeditmode) API to change the selection status of a list item by swiping in the hot zone on the **List**.
+
+For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
+
+Since API version 26.0.0, the **enableEditMode** API is added.
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4]);
+  @State isSelected: boolean[] = [];
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 5; i++) {
+      this.isSelected.push(false);
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      List({ space: 10 }) {
+        LazyForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .backgroundColor(Color.White)
+              .width('100%')
+              .height(50)
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.isSelected[item])
+        }, (item: number) => item.toString())
+      }
+      .enableEditMode(true)
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+    }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![listSwipeSelect](figures/listSwipeSelect.gif)

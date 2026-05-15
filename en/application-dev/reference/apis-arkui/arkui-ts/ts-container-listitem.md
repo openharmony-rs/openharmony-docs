@@ -157,7 +157,7 @@ Enumerates the sticky effects for list items.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [stickyStyle](ts-container-list.md#stickystyle9) of the **List** component instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [StickyStyle](ts-container-list.md#stickystyle9) of the **List** component instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
