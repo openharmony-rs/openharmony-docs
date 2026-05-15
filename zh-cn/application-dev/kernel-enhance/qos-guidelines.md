@@ -168,7 +168,7 @@ int OH_QoS_ResetThreadQoS();
 
 **描述**
 
-取消某个任务设置的QoS等级。取消当前任务的QoS等级。参考[QoS实践指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-thread-priority-setting)。
+取消某个任务设置的QoS等级。参考[QoS实践指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-thread-priority-setting)。
 
 **样例**
 ```c++
