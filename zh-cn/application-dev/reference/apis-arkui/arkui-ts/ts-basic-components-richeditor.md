@@ -865,7 +865,31 @@ ArkTS-Sta: horizontalScrolling(enabled: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----- | ---- | ---- |
-| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用水平滚动。<br/>true表示启用水滚动，false表示禁用水平滚动，文本将自动换行。设置为undefined或null时，不启用水平滚动。|
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用水平滚动。<br/>true表示启用水平滚动，false表示禁用水平滚动，文本将自动换行。设置为undefined或null时，不启用水平滚动。|
+
+### punctuationOverflow
+
+ArkTS-Dyn: punctuationOverflow(enabled: Optional\<boolean>)
+
+ArkTS-Sta: punctuationOverflow(enabled: boolean | undefined)
+
+设置是否启用行尾标点符号悬挂。不通过该接口设置，默认标点符号不悬挂。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ----- | ---- | ---- |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用行尾标点符号悬挂。<br/>true表示启用行尾标点符号悬挂，false表示不启用行尾标点符号悬挂。设置为undefined或null时，不启用标点符号悬挂。|
 
 ## 事件
 
