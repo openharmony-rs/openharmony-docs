@@ -40469,9 +40469,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/workers/worker.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":34,
 						"name":"create_har_worker",
-						"start_line":27
+						"start_line":16
 					}
 				]
 			},
@@ -50544,7 +50544,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/CpuIntensiveTaskDevelopment.ets",
 				"functions":[
 					{
-						"end_line":98,
+						"end_line":100,
 						"name":"process_image_histogram",
 						"start_line":16
 					},
@@ -50624,7 +50624,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/IndependentTimeConsumingTask.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":51,
 						"name":"execute_task",
 						"start_line":16
 					}
@@ -52327,7 +52327,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":34,
 						"name":"transferableObject_Layout",
 						"start_line":15
 					}
@@ -52380,7 +52380,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigorfile.ts",
 				"functions":[
 					{
-						"end_line":34,
+						"end_line":30,
 						"name":"transferableObject_configPlugin",
 						"start_line":15
 					}
