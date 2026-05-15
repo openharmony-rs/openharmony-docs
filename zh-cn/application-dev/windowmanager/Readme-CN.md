@@ -13,7 +13,8 @@
 <!--Del-->
 - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](system-window-stage-sys.md)
 <!--DelEnd-->
-- 窗口模式<!--window-status-->
+- 窗口模式<!--window-mode-->
+  - [窗口模式简介](window-mode-overview.md)
   - 自由窗口<!--freeform-window-->
     - [自由窗口简介](freeform-window-overview.md)
     - [应用适配自由窗口](application-adaptation-freeform-window.md)
@@ -21,6 +22,7 @@
   - 窗口旋转<!--rotation-->
     - [窗口旋转](window-rotation.md)
     - [窗口旋转场景实例](window-rotation-practical-case.md)
+  - [窗口布局](window-layout.md)
   - [窗口焦点](window-focus-guide.md)
   - [窗口层级](window-zorder-guide.md)
   - [窗口沉浸式](immersive-window-feature.md)
