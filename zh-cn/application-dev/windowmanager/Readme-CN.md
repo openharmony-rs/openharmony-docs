@@ -23,16 +23,14 @@
     - [窗口旋转场景实例](window-rotation-practical-case.md)
   - [窗口焦点](window-focus-guide.md)
   - [窗口层级](window-zorder-guide.md)
-- [窗口元数据配置](window-config-m.md)
-- 自由窗口<!--freeform-window-->
-  - [自由窗口简介](freeform-window-overview.md)
-  - [应用适配自由窗口](application-adaptation-freeform-window.md)
-- [使用WindowManager管理多模输入事件（C/C++）](native-window-event-filter.md)
+  - [窗口沉浸式](immersive-window-feature.md)
 - 其他开发场景<!--other-scenarios-->
+  - [截图与隐私模式 (ArkTS)](screenshot-and-privacy-mode.md)
+  - [控制亮度与常亮 (ArkTS)](brightness-control.md)
   - [设置窗口动效 (ArkTS)](window-animation.md)
-  - [使用WindowManager管理多模输入事件 (C/C++)](native-window-event-filter.md)
-<!--RP1-->
-<!--RP1End-->
+  - [使用WindowManager管理多模输入事件（C/C++）](native-window-event-filter.md)
+  <!--RP1-->
+  <!--RP1End-->
 - 应用启动页的配置与使用<!--launch-page-->
   - [应用启动页简介](launch-page-overview.md)
   - [配置应用启动页](launch-page-config.md)
