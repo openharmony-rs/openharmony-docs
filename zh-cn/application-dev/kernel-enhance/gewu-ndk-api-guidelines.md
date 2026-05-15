@@ -179,7 +179,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 
 **参数**
 
-* `OH_QoS_GewuSession session`参数为请求所述的会话的句柄。
+* `OH_QoS_GewuSession session`参数为请求所属的会话的句柄。
 * `OH_QoS_GewuRequest request`参数为要中止的请求的句柄。
 
 **返回值**
