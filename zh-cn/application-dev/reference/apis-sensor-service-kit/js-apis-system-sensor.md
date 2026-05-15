@@ -86,6 +86,266 @@ let subscribeAccelerometerOptions = {
 Sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
 ```
 
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title">
+    {{ title }}
+  </text>
+  <text class="TextArea">{{ TextContent }}</text>
+  <picker-view type="text" value="{{ currentSelect }}" range="{{ sensorList }}" selected="
+    {{ currentSelect }}" @change="pickerOnchange" class="pickerText">
+  </picker-view>
+  <div class="BUTTON">
+    <input class="buttonText" type="button" onclick="subscribe">订阅</input>
+    <text class="EmptyText"></text>
+    <input class="buttonText" type="button" onclick="unsubscribe">取消订阅</input>
+  </div>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  background-color: #F1F3F5;
+}
+.title {
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  color: black;
+}
+.pickerText {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  selected-color: black;
+}
+.EmptyText {
+  width: 30px;
+  margin-left: 20px;
+}
+.TextArea {
+  background-color: white;
+  border-radius: 0px;
+  color: black;
+  height: 100px;
+  width: 100%;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+.buttonText {
+  background-color: blue;
+  radius: 30px;
+  text-color: white;
+  font-size: 25px;
+  width: 100px;
+  height: 100%;
+  margin-top: 5px;
+  margin-left: 80px;
+  font-weight: bolder;
+}
+.BUTTON {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+```
+
+```js
+import sensor from '@system.sensor';
+
+export default {
+  data: {
+    TAG: "WearLiteSample:",
+    title: "LiteWearableDemo",
+    TextContent: "AAA",
+    sensorList: ['ACCELEROMETER', 'MAGNETIC_FIELD', 'PROXIMITY',
+      'AMBIENT_LIGHT', 'PEDOMETER', 'BAROMETER',
+      'HEART_RATE', 'WEAR_DETECTION', 'ORIENTATION', 'GYROSCOPE', 'getOnBodyState'],
+    currentSelect: 'ACCELEROMETER'
+  },
+
+  pickerOnchange(e) {
+    console.info(this.TAG + 'current select:' + e.newValue);
+    this.currentSelect = e.newValue;
+  },
+
+  subscribe() {
+    try {
+      switch (this.currentSelect) {
+        case "ACCELEROMETER":
+          let subscribeAccelerometerOptions = {
+            interval: 'normal',
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. X-axis data: ' + ret.x);
+              console.info(this.TAG + 'Succeeded in subscribing. Y-axis data: ' + ret.y);
+              console.info(this.TAG + 'Succeeded in subscribing. Z-axis data: ' + ret.z);
+              this.TextContent = JSON.stringify(ret);
+            },
+            fail: (data, code) => {
+              console.error(this.TAG + `Failed to subscription. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
+        case "MAGNETIC_FIELD":
+          let subscribeCompassOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get data direction:' + ret.direction);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeCompass(subscribeCompassOptions);
+        case "PROXIMITY":
+          let subscribeProximityOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get data distance:' + ret.distance);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeProximity(subscribeProximityOptions);
+        case "AMBIENT_LIGHT":
+          let subscribeLightOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get data intensity:' + ret.intensity);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeLight(subscribeLightOptions);
+        case "PEDOMETER":
+          let subscribeStepCounterOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get step value:' + ret.steps);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeStepCounter(subscribeStepCounterOptions);
+        case "BAROMETER":
+          let subscribeBarometerOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get data value:' + ret.pressure);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+            };
+            sensor.subscribeBarometer(subscribeBarometerOptions);
+        case "HEART_RATE":
+          let subscribeHeartRateOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get heartRate value:' + ret.heartRate);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeHeartRate(subscribeHeartRateOptions);
+        case "WEAR_DETECTION":
+          let subscribeOnBodyStateOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Get on-body state value:' + ret.value);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
+        case "ORIENTATION":
+          let subscribeDeviceOrientationOptions = {
+            interval: 'normal',
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. Alpha data: ' + ret.alpha);
+              console.info(this.TAG + 'Succeeded in subscribing. Beta data: ' + ret.beta);
+              console.info(this.TAG + 'Succeeded in subscribing. Gamma data: ' + ret.gamma);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            }
+          };
+          sensor.subscribeDeviceOrientation(subscribeDeviceOrientationOptions);
+        case "GYROSCOPE":
+          let subscribeGyroscopeOptions = {
+            interval: 'normal',
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. X-axis data: ' + ret.x);
+              console.info(this.TAG + 'Succeeded in subscribing. Y-axis data: ' + ret.y);
+              console.info(this.TAG + 'Succeeded in subscribing. Z-axis data: ' + ret.z);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            }
+          };
+          sensor.subscribeGyroscope(subscribeGyroscopeOptions);
+        case "getOnBodyState":
+          let getOnBodyStateOptions = {
+            success: (ret) => {
+              console.info(this.TAG + 'Succeeded in subscribing. On body state: ' + ret.value);
+            },
+            fail: (data, code) => {
+              console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
+            },
+          };
+          sensor.getOnBodyState(getOnBodyStateOptions);
+      }
+    } catch (e) {
+      console.error(this.TAG + 'subscribe exception in, message:' + JSON.stringify(e))
+    }
+  },
+
+  unsubscribe() {
+    try {
+      switch (this.currentSelect) {
+        case "ACCELEROMETER":
+          sensor.unsubscribeAccelerometer();
+        case "MAGNETIC_FIELD":
+          sensor.unsubscribeCompass();
+        case "PROXIMITY":
+          sensor.unsubscribeProximity()
+        case "AMBIENT_LIGHT":
+          sensor.unsubscribeLight()
+        case "PEDOMETER":
+          sensor.unsubscribeStepCounter()
+        case "PEDOMETER":
+          sensor.unsubscribeBarometer();
+        case "HEART_RATE":
+          sensor.unsubscribeHeartRate()
+        case "WEAR_DETECTION":
+          sensor.unsubscribeOnBodyState()
+        case "ORIENTATION":
+          sensor.unsubscribeDeviceOrientation();
+        case "GYROSCOPE":
+          sensor.unsubscribeGyroscope();
+        }
+        this.TextContent = ""
+    } catch (e) {
+        console.error(this.TAG + 'unsubscribe exception in, message:' + JSON.stringify(e))
+    }
+  }
+}
+```
+
 > **说明：**
 > 建议在页面销毁时，即onDestroy回调中，取消数据订阅，避免不必要的性能开销。
 
