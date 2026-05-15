@@ -481,7 +481,7 @@
     - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
-    - [自定义组件内置方法（静态）](arkui-ts/ts-custom-component-api-sta.md)
+    - [自定义组件内置方法（ArkTS-Sta）](arkui-ts/ts-custom-component-api-sta.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
     - 动态ArkTS自定义组件<!--dynamic-arkts-custom-component-->
       - 自定义组件装饰器<!--custom-component-decorator-->
