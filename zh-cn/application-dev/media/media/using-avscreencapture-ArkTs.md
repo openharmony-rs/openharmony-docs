@@ -55,13 +55,8 @@
    // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
    this.screenCapture = await media.createAVScreenCaptureRecorder();
    ```
-   ArkTS-Sta:
-   
-   ``` TypeScript
-   // 声明一个AVScreenCaptureRecorder类型的变量。
-   private screenCapture?: media.AVScreenCaptureRecorder;
-   ```
-   ArkTS-Sta:
+
+   ArkTS-Sta示例：
    <!-- @[create_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
@@ -122,7 +117,7 @@
        console.error(`处理异常情况, code is ${err.code}, message is ${err.message}.`);
    })
    ```
-    ArkTS-Sta:
+    ArkTS-Sta示例：
    <!-- @[callback_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
@@ -212,7 +207,7 @@
        preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4
    };
    ```
-   ArkTS-Sta:
+   ArkTS-Sta示例：
    <!-- @[get_file_fd](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
@@ -228,7 +223,7 @@
      }
    }
    ```
-   ArkTS-Sta:
+   ArkTS-Sta示例：
    <!-- @[set_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
@@ -259,7 +254,7 @@
    ``` TypeScript
    await this.screenCapture.init(this.captureConfig);
    ```
-   ArkTS-Sta:
+   ArkTS-Sta示例：
    <!-- @[init_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
@@ -281,7 +276,7 @@
    ``` TypeScript
    await this.screenCapture.startRecording();
    ```
-   ArkTS-Sta:
+   ArkTS-Sta示例：
    <!-- @[start_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
@@ -299,7 +294,7 @@
      ``` TypeScript
      await this.screenCapture.stopRecording();
      ```
-     ArkTS-Sta:
+     ArkTS-Sta示例：
      <!-- @[stop_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
      
      ``` TypeScript
@@ -312,7 +307,7 @@
    ``` TypeScript
    await this.screenCapture.release();
    ```
-   ArkTS-Sta:
+   ArkTS-Sta示例：
    <!-- @[release_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
