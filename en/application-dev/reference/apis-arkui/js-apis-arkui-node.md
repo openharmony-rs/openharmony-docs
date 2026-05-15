@@ -1,4 +1,4 @@
-# @ohos.arkui.node 
+# @ohos.arkui.node (Custom Node)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->

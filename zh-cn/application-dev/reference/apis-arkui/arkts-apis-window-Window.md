@@ -9530,8 +9530,6 @@ setRaiseByClickEnabled(enable: boolean): Promise&lt;void&gt;
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow9)并执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
-
 **系统能力：** SystemCapability.Window.SessionManager
 
 **参数：**

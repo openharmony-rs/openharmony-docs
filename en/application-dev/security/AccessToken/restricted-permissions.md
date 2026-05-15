@@ -902,9 +902,11 @@ With this permission, the application can record the screen without showing a pr
 
 **Authorization mode**: manual_settings
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices | TVs
 
 **Since**: 22
+
+**Changelog**: Since API version 26.0.0, this permission is also available on TVs.
 
 ## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
 

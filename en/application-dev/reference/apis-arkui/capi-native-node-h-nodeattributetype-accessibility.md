@@ -36,13 +36,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | The value **1** means that the component and its all child components form an entire selectable component. In this case, the accessibility service will no longer be available for the content of its child components. The value is **1** or **0**.|
+| .value[0].i32 | The value **1** means that the component and all its child components form an entire selectable component. In this case, the accessibility service will no longer be available for the content of its child components. The value is **1** or **0**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | The value **1** means that the component and its all child components form an entire selectable component. In this case, the accessibility service will no longer be available for the content of its child components. The value is **1** or **0**.|
+| .value[0].i32 | The value **1** means that the component and all its child components form an entire selectable component. In this case, the accessibility service will no longer be available for the content of its child components. The value is **1** or **0**.|
 
 ## NODE_ACCESSIBILITY_TEXT
 

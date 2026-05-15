@@ -151,6 +151,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
+| 1300034 | This operation conflicts with other floating windows. Possible cause: App has already started float view.<br>Applicable versions: 26.0.0+|
 
 **Example**
 

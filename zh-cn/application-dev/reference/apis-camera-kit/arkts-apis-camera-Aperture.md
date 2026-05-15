@@ -68,7 +68,10 @@ function getPhysicalAperture(photoSession: camera.PhotoSession): number {
 
 setPhysicalAperture(aperture: number): void
 
-设置物理光圈值。
+设置物理光圈值。需要先通过[getSupportedPhysicalApertures](arkts-apis-camera-ApertureQuery.md#getsupportedphysicalapertures24)接口获取不同焦段支持的可设置光圈值，再通过调整焦段范围，设置支持的物理光圈值。
+
+例如，"zoomRange":[1, 4]支持可设置物理光圈列表为2.6，需要通过[setZoomRatio](arkts-apis-camera-Zoom.md#setzoomratio11)设置焦段在[1, 4]之间，才可成功设置物理光圈值2.6。
+
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 

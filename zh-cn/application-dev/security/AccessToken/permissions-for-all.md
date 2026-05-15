@@ -685,6 +685,20 @@
 
 **起始版本**：24
 
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+允许应用查询卷加解密状态。
+
+获取该权限后，应用可获取卷加解密状态、订阅卷加解密状态变化的系统公共事件等。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.STYLUS_FRAME_BOOST
 
 允许应用使用手写笔跟手性的增强接口。

@@ -4160,6 +4160,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：PC/2in1
+
 **起始版本**：14
 
 ## ohos.permission.UTILIZE_RECOVERY_KEY
@@ -4171,6 +4173,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：14
 
@@ -4207,6 +4211,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：14
 
@@ -4257,6 +4263,20 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**起始版本**：13
+
+## ohos.permission.ACCESS_CAR_CONTROL
+
+允许应用接入或拉起车辆控制界面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
 
 **起始版本**：13
 
@@ -4442,7 +4462,7 @@
 
 **是否支持证书授权**：true
 
-**起始版本**：18
+**起始版本**：16
 
 ## ohos.permission.GET_PAGE_INFO
 
@@ -4490,8 +4510,6 @@
 ## ohos.permission.ACCESS_STARTUPGUIDE
 
 允许系统应用访问开机向导应用的普通数据、普通公共事件。
-
-仅手机、平板、2in1设备应用可申请此权限。
 
 **权限级别**：system_basic
 
@@ -5881,6 +5899,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
+
+允许应用配置卷加密策略。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
 
 允许应用使用户外模式服务提供海拔订阅能力。
@@ -5967,7 +5999,7 @@
 
 ## ohos.permission.MANAGE_AOD
 
-通过API调用AOD Service，触发进入或退出AOD、状态管理等接口时，需要校验该权限。
+允许应用触发进入或退出熄屏显示（AOD），并管理AOD状态。
 
 **权限级别**：system_core
 
@@ -5976,6 +6008,62 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_VISION
+
+允许系统应用通过CLI命令查询无障碍视觉辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_HEARING
+
+允许系统应用通过CLI命令查询无障碍听觉辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_ACTION
+
+允许系统应用通过CLI命令查询无障碍行为辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.CONNECT_GAME_ACCELERATION
+
+允许应用调整游戏场景下策略配置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV
 
 **起始版本**：26.0.0
 
@@ -6006,3 +6094,33 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.cli.GET_STORAGE_MANAGER
+
+允许应用通过CLI命令查询存储。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_MAPDATA_DIR
+
+允许系统应用读写地图数据。
+
+获取该权限后，应用可访问、修改下载到设备的地图离线数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone
+
+**起始版本**：20

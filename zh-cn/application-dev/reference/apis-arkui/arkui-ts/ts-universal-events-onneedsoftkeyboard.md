@@ -24,7 +24,7 @@ onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | unde
 
 Web组件使用该方法时，如果返回值为`true`，Web组件会判断组件中是否有可编辑节点，如果有可编辑节点才会保留键盘，如果返回值为`false`，无论是否有可编辑节点，键盘都不会保留。
 
-XComponent组件使用该方法时，如果返回值为`true`且XComponent组件使用[OH_NativeXComponent_SetNeedSoftKeyboard](../capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard)设置了需要键盘，才会保留键盘，如果返回值为`false`，无论组件如何设置，键盘都不会保留。
+XComponent组件使用该方法时，如果返回值为`true`且XComponent组件使用[OH_ArkUI_XComponent_SetNeedSoftKeyboard()](../capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard)设置了需要键盘，才会保留键盘，如果返回值为`false`，无论组件如何设置，键盘都不会保留。
 
 当接口返回`true`时，应用的自绘制输入框需要主动[attach](../../apis-ime-kit/js-apis-inputmethod.md#attach15)，建立输入法框架和输入法应用的通信，否则点击键盘会失去响应（失焦时输入法框架和输入法应用的通信会断开）。
 

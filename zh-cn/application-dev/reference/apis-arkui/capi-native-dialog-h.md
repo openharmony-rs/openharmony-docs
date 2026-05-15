@@ -41,6 +41,7 @@
 | [ArkUI_DismissReason](#arkui_dismissreason) | ArkUI_DismissReason | 弹窗关闭的触发方式。 |
 | [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | 设置弹窗显示层级。 |
 | [ArkUI_ImmersiveMode](#arkui_immersivemode) | ArkUI_ImmersiveMode | 指定嵌入式弹窗的蒙层覆盖区域。 |
+| [ArkUI_DialogDisplayMode](#arkui_dialogdisplaymode) | ArkUI_DialogDisplayMode | 弹窗在子窗口中的显示模式。 |
 | [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState | 枚举对话框的状态。 |
 
 ### 函数
@@ -73,6 +74,7 @@
 | [int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)](#oh_arkui_customdialog_setmodalmode) | - | 设置自定义弹窗是否开启模态样式的弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)](#oh_arkui_customdialog_setautocancel) | - | 设置自定义弹窗是否允许点击遮罩层退出。 |
 | [int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)](#oh_arkui_customdialog_setsubwindowmode) | - | 设置弹窗是否在子窗口显示此弹窗。 |
+| [int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, ArkUI_DialogDisplayMode displayMode)](#oh_arkui_customdialog_setdisplaymodeinsubwindow) | - | 设置弹窗在子窗口中的显示模式。 |
 | [int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)](#oh_arkui_customdialog_setmask) | - | 设置自定义弹窗遮罩属性。 |
 | [int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#oh_arkui_customdialog_setkeyboardavoidmode) | - | 设置弹窗避让键盘的模式。 |
 | [int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)](#oh_arkui_customdialog_sethovermodeenabled) | - | 设置弹窗是否响应悬停态。 |
@@ -143,6 +145,24 @@ enum ArkUI_ImmersiveMode
 | -- | -- |
 | ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | 弹窗蒙层按照显示页面给定的布局约束显示。 |
 | ARKUI_IMMERSIVE_MODE_EXTEND = 1 | 弹窗蒙层可扩展至覆盖状态栏和导航条。 |
+
+### ArkUI_DialogDisplayMode
+
+```c
+enum ArkUI_DialogDisplayMode
+```
+
+**描述：**
+
+
+弹窗在子窗口中的显示模式。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0 | 弹窗在屏幕居中显示。 |
+| ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED = 1 | 弹窗在应用窗口居中显示。 |
 
 ### ArkUI_DialogState
 
@@ -870,6 +890,39 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | bool showInSubwindow | 设置弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true：弹窗可以显示在主窗口外，独立子窗口。值为false：弹窗显示在应用内，非独立子窗口。<br/>默认值：false|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow()
+
+```c
+int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, ArkUI_DialogDisplayMode displayMode)
+```
+
+**描述：**
+
+
+设置弹窗在子窗口中的显示模式。
+
+> **说明：**
+>
+> 本方法需要在调用[OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog)方法之前调用。
+>
+> 本方法仅在弹窗通过[OH_ArkUI_CustomDialog_SetSubwindowMode](#oh_arkui_customdialog_setsubwindowmode)设置为子窗口显示时生效。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
+| [ArkUI_DialogDisplayMode](capi-native-dialog-h.md#arkui_dialogdisplaymode) displayMode | 弹窗在子窗口中的显示模式，类型为[ArkUI_DialogDisplayMode](capi-native-dialog-h.md#arkui_dialogdisplaymode)。<br/>默认值：ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED |
 
 **返回：**
 
