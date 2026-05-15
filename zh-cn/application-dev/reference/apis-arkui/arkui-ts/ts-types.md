@@ -390,6 +390,10 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称             | 类型                     | 说明                             |
 | -------------- | ---------------------- | ------------------------------ |
 | width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
@@ -789,6 +793,10 @@ Navigation路由的构造方式类型。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型定义 | 描述       |
 | ------ | ----------------------| ---------- |

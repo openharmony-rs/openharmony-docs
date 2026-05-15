@@ -58,6 +58,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值 | 说明       |
 | ----------- | - | -------- |
 | TopStart    | 0 | 顶部起始端。   |
@@ -78,6 +82,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    |  值   | 说明                   |
 | ------  | ---- | -------------------- |
 | ROTATION | 0 | x、y、z方向的旋转角属性。该属性对应参数个数为3，属性的单位为度（°）。 |
@@ -94,6 +102,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      |值| 说明        |
 | ------- |-| --------- |
@@ -125,6 +137,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 值           | 说明                                     |
 | ------------- | -------------------------------------- | -------------------------------------- |
 | START | 'Start' | 水平方向：位于父组件最左侧；垂直方向：位于父组件最上侧。 |
@@ -140,6 +156,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值 | 说明     |
 | ---------- | -- | ------ |
@@ -202,6 +222,10 @@
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
 | VERTICAL_AXIS   | 0    | 垂直滚动轴。 |
@@ -252,6 +276,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 说明               | 动效参数                          | 默认缩放比                     |
 | ------ | --------------------------------- | --------------------------------- | --------------------------------- |
 | LIGHT  | 小面积（轻盈） | 弹簧动效， 刚性：410，阻尼：38，初始速度：1 | 90% |
@@ -291,6 +319,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    |  值   | 说明                   |
 | ------  | ---- | -------------------- |
 | SRGB | 0 | SRGB颜色空间，适用于大多数显示设备。 |
@@ -304,9 +336,9 @@
 
 | 名称     | 值 | 说明              |
 | ------ | --- | --------------- |
-| INVERT | invert | 设置前景色为控件背景色的反色。仅支持在[foregroundColor](ts-universal-attributes-foreground-color.md#foregroundcolor)中设置该枚举。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AVERAGE<sup>11+</sup> | average | 设置控件背景阴影色为控件背景阴影区域的平均色。仅支持在入参类型为ShadowOptions的[shadow](ts-universal-attributes-image-effect.md#shadow)中设置该枚举。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PRIMARY<sup>11+</sup> | primary | 设置控件背景阴影色为控件背景阴影区域的主色。仅支持在入参类型为ShadowOptions的[shadow](ts-universal-attributes-image-effect.md#shadow)中设置该枚举。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| INVERT | invert | 设置前景色为控件背景色的反色。仅支持在[foregroundColor](ts-universal-attributes-foreground-color.md#foregroundcolor)中设置该枚举。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| AVERAGE<sup>11+</sup> | average | 设置控件背景阴影色为控件背景阴影区域的平均色。仅支持在入参类型为ShadowOptions的[shadow](ts-universal-attributes-image-effect.md#shadow)中设置该枚举。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| PRIMARY<sup>11+</sup> | primary | 设置控件背景阴影色为控件背景阴影区域的主色。仅支持在入参类型为ShadowOptions的[shadow](ts-universal-attributes-image-effect.md#shadow)中设置该枚举。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## CopyOptions<sup>9+</sup>
 
@@ -316,10 +348,10 @@
 
 | 名称          | 值 | 说明       |
 | ----------- | --- | -------- |
-| None        | 0 | 不支持复制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| InApp       | 1 | 支持仅在当前应用内复制粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LocalDevice | 2 | 支持复制后在所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
+| None        | 0 | 不支持复制。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| InApp       | 1 | 支持仅在当前应用内复制粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| LocalDevice | 2 | 支持复制后在所有应用内粘贴。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
 
 ## CheckBoxShape<sup>11+</sup>
 
@@ -344,6 +376,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 |名称                | 值 | 说明                                   |
 |-------------------| -- | ------------------------------------- |
 | BEGIN<sup>(deprecated) </sup>             | 0  | 表冠开始转动。<br/> **说明：** 从API version 18 开始支持，从API version 24 开始废弃。                          |
@@ -357,6 +393,10 @@
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值  | 说明                                      |
 | -------------- | -- | ---------------------------------------- |
@@ -398,6 +438,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 值   | 说明                              |
 | --------- | ---- | --------------------------------- |
 | DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
@@ -429,6 +473,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值   | 说明          |
 | ---- | ---- | ----------- |
@@ -463,6 +511,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 值 | 说明                                       |
 | ------------------ | - | ---------------------------------------- |
 | FLOATING_ABOVE_MENU| 0 | 悬浮在Menu之上，默认值，不占用高度。      |
@@ -476,13 +528,13 @@
 
 | 名称                             | 值 | 说明                                                         |
 | -------------------------------- | --- | ------------------------------------------------------------ |
-| Top                              | 0 | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Center<sup>(deprecated) </sup>   | 1 | 竖直方向居中位置。<br/> 从API version 9开始废弃。            |
-| Bottom                           | 2 | 竖直方向下边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Baseline<sup>(deprecated) </sup> | 3 | 交叉轴方向文本基线位置。<br/> 从API version 9开始废弃。      |
-| Start                            | 4 | 水平方向起始位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Middle<sup>(deprecated) </sup>   | 5 | 水平方向居中位置。<br/> 从API version 9开始废弃。            |
-| End                              | 6 | 水平方向末尾位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Top                              | 0 | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Center<sup>(deprecated) </sup>   | 1 | 竖直方向居中位置。<br/> 从API version 9开始废弃。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| Bottom                           | 2 | 竖直方向下边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Baseline<sup>(deprecated) </sup> | 3 | 交叉轴方向文本基线位置。<br/> 从API version 9开始废弃。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| Start                            | 4 | 水平方向起始位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Middle<sup>(deprecated) </sup>   | 5 | 水平方向居中位置。<br/> 从API version 9开始废弃。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| End                              | 6 | 水平方向末尾位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## EdgeEffect
 
@@ -512,11 +564,11 @@
 
 | 名称  | 值 | 说明                                   |
 | ----- | --- | -------------------------------------- |
-| START  | 0 | 省略行首内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CENTER | 1 | 省略行中内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| END | 2 | 省略行末内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| MULTILINE_START<sup>24+</sup> | 3 | 省略行首内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| MULTILINE_CENTER<sup>24+</sup> | 4 | 省略行中内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| START  | 0 | 省略行首内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| CENTER | 1 | 省略行中内容。适用单行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| END | 2 | 省略行末内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| MULTILINE_START<sup>24+</sup> | 3 | 省略行首内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
+| MULTILINE_CENTER<sup>24+</sup> | 4 | 省略行中内容。适用单行文本和多行文本场景。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24 |
 
 ## EmbeddedType<sup>12+</sup>
 枚举类型，用于指定EmbeddedComponent可拉起的提供方类型。
@@ -540,6 +592,10 @@
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -582,6 +638,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        |值| 说明                                       |
 | --------- |-| ---------------------------------------- |
 | None      |0| 动画未执行时，不应用任何样式到目标；播放完成后，恢复初始默认状态。     |
@@ -598,6 +658,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值 | 说明                                       |
 | ------------ | ------ | ---------------------------------------- |
@@ -618,6 +682,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 值 | 说明               |
 | ------------- | ------ | ---------------- |
 | Row           | 0 | 主轴与行方向一致作为布局模式。  |
@@ -635,6 +703,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 值 | 说明                          |
 | ----------- | ------ | --------------------------- |
 | NoWrap      | 0 | Flex容器的元素以单行/列布局，子元素尽可能约束在容器内。当子元素有最小尺寸约束等设置时，Flex容器不会对其强制弹性压缩。  |
@@ -651,6 +723,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     |值| 说明       |
 | ------ |-| -------- |
 | Normal |0| 标准的字体样式。 |
@@ -665,6 +741,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    |   值   |  说明   |
 | ------- | ----- |----------- |
@@ -728,6 +808,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
 | DEFAULT         | 0    | 交叉轴方向键不允许换行。                                       |
@@ -742,6 +826,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 说明    |
 | ----------- | ----- |
@@ -765,6 +853,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值 | 说明           |
 | ------ | ------ | ------------ |
 | Start  | 0 | 按照语言方向起始端对齐。 |
@@ -778,6 +870,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值 | 说明             |
 | --------- | --- | -------------- |
@@ -798,12 +894,12 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称          | 值 | 说明                                       |
 | ----------- | --- | ---------------------------------------- |
-| Default     | 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Block       | 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Transparent | 2 | 自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| None        | 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
-| BLOCK_HIERARCHY<sup>20+</sup>   | 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| Default     | 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| Block       | 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| Transparent | 2 | 自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| None        | 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9 <br/>**ArkTS-Sta起始版本：** 23 |
+| BLOCK_HIERARCHY<sup>20+</sup>   | 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## HeightBreakpoint<sup>13+</sup>
 
@@ -812,6 +908,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 下表列出了典型设备默认高宽比断点的阈值划分，可在基于窗口高宽比布局设计时作为参考。个别设备可根据需求通过产品化配置调整断点阈值。
 
@@ -829,22 +929,22 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称        | 值    | 说明                              |
 | --------- | ----- | ------------------------------- |
-| Fill      | 0  | 不保持宽高比进行放大缩小，使得图片或视频充满显示边界，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples04](figures/image_fit_fill.png) |
-| Contain   | 1  | 保持宽高比进行缩小或者放大，使得图片或视频完全显示在显示边界内，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples01](figures/image_fit_contain.png) |
-| Cover     | 2  | 保持宽高比进行缩小或者放大，使得图片或视频两边都大于或等于显示边界，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples02](figures/image_fit_cover.png) |
-| Auto      | 3  | 图片或视频会根据其自身尺寸和组件的尺寸进行适当缩放，以在保持比例的同时填充视图，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples03](figures/image_fit_auto.png) |
-| None      | 5  | 保持原有尺寸进行显示，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples06](figures/image_fit_none.png) |
-| ScaleDown | 6  | 保持宽高比进行显示，图片或视频缩小或者保持不变，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples05](figures/image_fit_scaleDown.png) |
-| TOP_START<sup>12+</sup> | 7  | 图片或视频显示在组件的顶部起始端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples07](figures/image_fit_top_start.png) |
-| TOP<sup>12+</sup>       | 8  | 图片或视频显示在组件的顶部横向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples08](figures/image_fit_top.png)  |
-| TOP_END<sup>12+</sup>   | 9  | 图片或视频显示在组件的顶部尾端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples09](figures/image_fit_top_end.png) |
-| START<sup>12+</sup>     | 10  | 图片或视频显示在组件的起始端纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples10](figures/image_fit_start.png) |
-| CENTER<sup>12+</sup>    | 11  | 图片或视频显示在组件的横向和纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples11](figures/image_fit_center.png) |
-| END<sup>12+</sup>       | 12  | 图片或视频显示在组件的尾端纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples12](figures/image_fit_end.png) |
-| BOTTOM_START<sup>12+</sup> | 13  | 图片或视频显示在组件的底部起始端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples13](figures/image_fit_bottom_start.png) |
-| BOTTOM<sup>12+</sup>    | 14  | 图片或视频显示在组件的底部横向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples14](figures/image_fit_bottom.png) |
-| BOTTOM_END<sup>12+</sup>| 15  | 图片或视频显示在组件的底部尾端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples15](figures/image_fit_bottom_end.png) |
-| MATRIX<sup>15+</sup>| 16  | 配合[imageMatrix](ts-basic-components-image.md#imagematrix15)使用，使图像在Image组件自定义位置显示，且保持原有尺寸。不支持svg图源。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| Fill | 0 | 不保持宽高比进行放大缩小，使得图片或视频充满显示边界，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples04](figures/image_fit_fill.png)<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Contain | 1 | 保持宽高比进行缩小或者放大，使得图片或视频完全显示在显示边界内，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples01](figures/image_fit_contain.png)<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Cover | 2 | 保持宽高比进行缩小或者放大，使得图片或视频两边都大于或等于显示边界，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples02](figures/image_fit_cover.png)<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Auto | 3 | 图片或视频会根据其自身尺寸和组件的尺寸进行适当缩放，以在保持比例的同时填充视图，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples03](figures/image_fit_auto.png)<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| None | 5 | 保持原有尺寸进行显示，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples06](figures/image_fit_none.png)<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| ScaleDown | 6 | 保持宽高比进行显示，图片或视频缩小或者保持不变，对齐方式为水平居中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples05](figures/image_fit_scaleDown.png)<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| TOP_START<sup>12+</sup> | 7 | 图片或视频显示在组件的顶部起始端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples07](figures/image_fit_top_start.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| TOP<sup>12+</sup> | 8 | 图片或视频显示在组件的顶部横向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples08](figures/image_fit_top.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| TOP_END<sup>12+</sup> | 9 | 图片或视频显示在组件的顶部尾端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples09](figures/image_fit_top_end.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| START<sup>12+</sup> | 10 | 图片或视频显示在组件的起始端纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples10](figures/image_fit_start.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| CENTER<sup>12+</sup> | 11 | 图片或视频显示在组件的横向和纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples11](figures/image_fit_center.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| END<sup>12+</sup> | 12 | 图片或视频显示在组件的尾端纵向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples12](figures/image_fit_end.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| BOTTOM_START<sup>12+</sup> | 13 | 图片或视频显示在组件的底部起始端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples13](figures/image_fit_bottom_start.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| BOTTOM<sup>12+</sup> | 14 | 图片或视频显示在组件的底部横向居中，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples14](figures/image_fit_bottom.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| BOTTOM_END<sup>12+</sup> | 15 | 图片或视频显示在组件的底部尾端，且保持原有尺寸。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>![ImageFit-Examples15](figures/image_fit_bottom_end.png)<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| MATRIX<sup>15+</sup> | 16 | 配合[imageMatrix](ts-basic-components-image.md#imagematrix15)使用，使图像在Image组件自定义位置显示，且保持原有尺寸。不支持svg图源。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ItemAlign
 
@@ -855,6 +955,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值 | 说明                                       |
 | -------- | ------ | ---------------------------------------- |
@@ -875,6 +979,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       |值| 说明            |
 | -------- |-| ------------- |
 | NoRepeat |0| 不重复绘制图片。      |
@@ -890,10 +998,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称    | 值    | 说明                                  |
 | ------- | -------------------------- | ----------------------------------- |
-| Cover   | 1  | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Contain | 2  | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br /> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
-| Auto    | 0  | 保持原图的比例不变。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br /> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                         |
-| FILL<sup>12+</sup> | 3  | 不保持宽高比进行放大缩小，使得图片充满显示边界。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| Cover | 1 | 保持宽高比进行缩小或者放大，使得图片两边都大于或等于显示边界。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Contain | 2 | 保持宽高比进行缩小或者放大，使得图片完全显示在显示边界内。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br /> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Auto | 0 | 保持原图的比例不变。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br /> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| FILL<sup>12+</sup> | 3 | 不保持宽高比进行放大缩小，使得图片充满显示边界。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ImageSpanAlignment<sup>10+</sup>
 
@@ -903,11 +1011,11 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称     | 值 | 说明                           |
 | -------- | ------------------------------ |------------------------------ |
-| TOP      | 1 | 图片上边沿与行上边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CENTER   | 2 | 图片中间与行中间对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| BOTTOM   | 3 | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BASELINE | 4 | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| FOLLOW_PARAGRAPH<sup>20+</sup>  | 5 |对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| TOP | 1 | 图片上边沿与行上边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| CENTER | 2 | 图片中间与行中间对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| BOTTOM | 3 | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| BASELINE | 4 | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| FOLLOW_PARAGRAPH<sup>20+</sup> | 5 | 对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## InputEventInterceptAction
 
@@ -986,9 +1094,9 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称       | 值 | 说明         |
 | -------- | ---------- | ---------- |
-| Unknown  | 0 | 输入设备类型未知。  |
-| Keyboard | 4 | 输入设备类型为键盘。 |
-| JOYSTICK<sup>15+</sup> | 5 | 输入设备类型为游戏手柄。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| Unknown  | 0 | 输入设备类型未知。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23  |
+| Keyboard | 4 | 输入设备类型为键盘。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| JOYSTICK<sup>15+</sup> | 5 | 输入设备类型为游戏手柄。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## KeyType
 
@@ -997,6 +1105,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明    |
 | ---- | ----- | ----- |
@@ -1013,6 +1125,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | -------- | ---- | ------------- |
 | Miter | 0 | 使用尖角连接路径段。  |
@@ -1028,6 +1144,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值            | 说明       |
 | ------------- | ------------- | ------------- |
@@ -1051,6 +1171,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | ------ | ---- | ------------- |
 | Butt   | 0 | 线条两端为平行线，不额外扩展。    |
@@ -1065,6 +1189,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 值 | 说明                                                         |
 | ------------ | --- | ------------------------------------------------------------ |
 | GREEDY       | 0 | 使每一行尽可能显示多的字符，直到这一行不能显示更多字符时进行折行。 |
@@ -1078,6 +1206,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值 | 说明       |
 | ------- | -------- | -------- |
@@ -1096,13 +1228,13 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称      |  值  | 说明      |
 | ------- | ----- |  ------- |
-| Press   |   1   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Release |   2   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Move    |   3   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| Hover   |   4   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| ENTER_WINDOW<sup>23+</sup>   |   4   | 鼠标进入窗口。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   |
-| LEAVE_WINDOW<sup>23+</sup>   |   5   | 鼠标离开窗口。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。   |
-| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| Press   |   1   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| Release |   2   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| Move    |   3   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| Hover   |   4   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 |
+| ENTER_WINDOW<sup>23+</sup>   |   4   | 鼠标进入窗口。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
+| LEAVE_WINDOW<sup>23+</sup>   |   5   | 鼠标离开窗口。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
+| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**模型约束：** 该接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ModifierKey<sup>10+</sup>
 
@@ -1111,6 +1243,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 值 | 说明           |
 | ----- | ------------ | ------------ |
@@ -1125,6 +1261,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值      | 说明                     |
 | ---------- | ------------------------ | ------------------------ |
@@ -1195,6 +1335,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值 | 说明                     |
 | ----------- | -- | ------------------------ |
 | PLACEHOLDER | 0 |显示的数据为通用占位符。 |
@@ -1206,6 +1350,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值       | 说明                           |
 | ----------- | ------------------------------ | ------------------------------ |
@@ -1221,6 +1369,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 值 | 说明                                       |
 | ---------------- | ----- | ----------------------------------- |
@@ -1262,6 +1414,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     |值| 说明                            |
 | ------ | ----|----------------------------- |
 | NO_FORCE_ROUND |0| 非取整计算。|
@@ -1297,6 +1453,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    |  值   | 说明                   |
 | ------  |---- | -------------------- |
 | PIXEL_ROUND_ON_LAYOUT_FINISH | 0 | 在组件测量大小和位置后进行像素取整，默认值为0。 |
@@ -1309,6 +1469,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
@@ -1418,6 +1582,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
 | FAST | 0 | 在线绘制模式，组件进行圆角内容绘制时，绘制内容被裁剪成圆角，直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
@@ -1453,6 +1621,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 说明                                       |
 | -------- | ---------------------------------------- |
@@ -1503,6 +1675,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 值 | 说明                             |
 | ------ | ----- | ------------------------- |
 | All    | 0 | 指定当前的Transition动效在组件的所有变化场景中生效。 |
@@ -1519,6 +1695,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                | 值  | 说明                         |
 | ------------------- | --- | ---------------------------- |
 | DEFAULT | 0   | 表示分发的事件为非竞争手势。 |
@@ -1532,12 +1712,12 @@ type Nullable\<T> = T | undefined
 
 | 名称     |  值  | 说明                                       |
 | ------ | ------ | ---------------------------------------- |
-| Start                     |  0  | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| Start | 0 | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Center | 1 | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| End | 2 | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| JUSTIFY<sup>10+</sup> | 3 | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| LEFT<sup>23+</sup> | 4 | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
+| RIGHT<sup>23+</sup> | 5 | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## TextOverflow
 
@@ -1549,10 +1729,10 @@ type Nullable\<T> = T | undefined
 
 | 名称                    | 值 | 说明                  |
 | --------------------- | ------------ | ------------------- |
-| None                  | 0 | 文本超长时按最大行截断显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Clip                  | 1 | 文本超长时按最大行截断显示，与None效果相同。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Ellipsis              | 2 | 文本超长时显示不下的文本用省略号代替。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| MARQUEE<sup>10+</sup> | 3 | 文本超长时以跑马灯的方式展示。 |
+| None                  | 0 | 文本超长时按最大行截断显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Clip                  | 1 | 文本超长时按最大行截断显示，与None效果相同。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Ellipsis              | 2 | 文本超长时显示不下的文本用省略号代替。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| MARQUEE<sup>10+</sup> | 3 | 文本超长时以跑马灯的方式展示。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## TextDecorationType
 
@@ -1563,6 +1743,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值 | 说明        |
 | ----------- | ----------- | --------- |
@@ -1580,6 +1764,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值 | 说明         |
 | --------- | ----------- | ---------- |
@@ -1609,6 +1797,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 值 | 说明                                                         |
 | ------- | ----------- | ------------------------------------------------------------ |
 | DEFAULT | - | 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
@@ -1635,6 +1827,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值 | 说明        |
 | ----------- | --- | --------- |
@@ -1688,6 +1884,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值 | 说明               |
 | ------- | ---------------- | ---------------- |
