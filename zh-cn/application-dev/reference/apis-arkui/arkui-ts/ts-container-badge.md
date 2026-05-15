@@ -84,7 +84,7 @@ Badge(value: BadgeParamWithString)
 
 ### Badge<sup>23+</sup>
 
-Badge(value: BadgeParamWithNumber | BadgeParamWithString)
+Badge(value: BadgeParamWithNumber | BadgeParamWithString | undefined)
 
 根据数字或者字符串创建标记组件。
 
@@ -204,6 +204,26 @@ Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 ## 属性
 
 支持[通用属性](ts-component-general-attributes.md)。
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<BadgeAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<BadgeAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<BadgeAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Badge组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 

@@ -94,6 +94,10 @@ measureTextSize(options: MeasureOptions): SizeOptions
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                              | 必填   | 说明        |

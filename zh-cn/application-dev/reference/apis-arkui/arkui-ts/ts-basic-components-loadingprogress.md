@@ -44,6 +44,28 @@ LoadingProgress()
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
+### attributeModifier<sup>12+</sup>
+
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<LoadingProgressAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<LoadingProgressAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<LoadingProgressAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<LoadingProgressAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置LoadingProgress组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 >  **说明：**
 >
 > 组件应设置合理的宽高，当组件宽高设置过大时加载动效可能不符合预期效果。
@@ -115,13 +137,13 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[LoadingProgressConfiguration](#loadingprogressconfiguration12对象说明)>  \| undefined | 是   | 在LoadingProgress组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置undefined时显示内容重置为未设置contentModifier属性时的显示内容。 |
+| modifier  | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[LoadingProgressConfiguration](#loadingprogressconfiguration8对象说明)> <br/>ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[LoadingProgressConfiguration](#loadingprogressconfiguration8对象说明)>  \| undefined | 是   | 在LoadingProgress组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置undefined时显示内容重置为未设置contentModifier属性时的显示内容。 |
 
 ## 事件
 
 支持[通用事件](ts-component-general-events.md)。
 
-## LoadingProgressConfiguration<sup>12+</sup>对象说明
+## LoadingProgressConfiguration<sup>8+</sup>对象说明
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
@@ -129,7 +151,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -147,7 +169,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
