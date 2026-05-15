@@ -51,3 +51,4 @@
     - [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)
     - [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
     - [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md)
+    - [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)
