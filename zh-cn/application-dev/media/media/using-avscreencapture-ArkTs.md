@@ -68,7 +68,7 @@
 
 3. 对成员变量screenCapture设置监听函数，分别监听不同状态和异常情况。
 
-    ArkTS-Dyn:
+    ArkTS-Dyn示例：
     ```javascript
     this.screenCapture.on('stateChange', async (infoType: media.AVScreenCaptureStateCode) => {
       switch (infoType) {
@@ -181,7 +181,7 @@
 
     2in1设备配置displayId为扩展屏Id，可拉起录屏窗口选择界面，用户在界面上选择录屏内容，最终录屏内容以用户在弹窗界面上的选择为准。
 
-    ArkTS-Dyn:
+    ArkTS-Dyn示例：
     ```javascript
     const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let filePath: string = context.filesDir + '/screenCapture.mp4';
@@ -249,7 +249,7 @@
 
 5. 基于预先配置的屏幕录制参数，调用[init](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#init12)方法初始化screenCapture。
 
-    ArkTS-Dyn:
+    ArkTS-Dyn示例：
     ```javascript
     await this.screenCapture.init(this.captureConfig);
     ```
@@ -269,7 +269,7 @@
 
 7. 调用[startRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)方法开始进行屏幕录制，并通过监听函数监听状态。
 
-    ArkTS-Dyn:
+    ArkTS-Dyn示例：
     ```javascript
     await this.screenCapture.startRecording();
     ```
@@ -286,7 +286,7 @@
 
     - 应用主动调用[stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12)方法，停止录屏。
 
-      ArkTS-Dyn:
+      ArkTS-Dyn示例：
       ```javascript
       await this.screenCapture.stopRecording();
       ```
@@ -298,7 +298,7 @@
 
 9. 调用[release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12)方法销毁实例，释放资源。
 
-    ArkTS-Dyn:
+    ArkTS-Dyn示例：
     ```javascript
     await this.screenCapture.release();
     ```
