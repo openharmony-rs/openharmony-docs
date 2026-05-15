@@ -59,7 +59,7 @@ async function CreatePicture(context: Context) {
   let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
   let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
   if (pictureObj != null) {
-    console.info('Succeeded in creating picture');
+      console.info('Succeeded in creating picture.');
   } else {
     console.error('Failed to create picture');
   }
