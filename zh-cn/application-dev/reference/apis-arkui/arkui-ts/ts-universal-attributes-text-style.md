@@ -275,7 +275,7 @@ scrollToVisible(range?: TextRange): void
 
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
-| type  | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 设置文本装饰线类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| type  | ArkTS-Dyn: [TextDecorationType](ts-appendix-enums.md#textdecorationtype)<br/>ArkTS-Sta: [TextDecorationType](ts-appendix-enums.md#textdecorationtype) \| undefined | 否   | 否 | 设置文本装饰线类型。<br/>默认值：TextDecorationType.None<br/>取值undefined是，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | color  | &nbsp;[ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 设置文本装饰线颜色。<br/>默认值：Color.Black。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是 | 设置文本装饰线样式。<br/>默认值：TextDecorationStyle.SOLID。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | thicknessScale | number | 否   | 是 | 设置文本装饰线的粗细缩放比例。<br/>默认值：1.0 <br/>取值范围：[0, +∞) <br/>**说明：** 负值按默认值处理。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |

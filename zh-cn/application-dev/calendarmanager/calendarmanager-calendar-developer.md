@@ -51,23 +51,23 @@
     
     ``` TypeScript
     const DOMAIN = 0x0000;
-    
+        
     export let calendarMgr: calendarManager.CalendarManager | null = null;
     
     export let mContext: common.UIAbilityContext | null = null;
     
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onCreate");
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
       }
     
       onDestroy(): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onDestroy");
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
-        // Main window is created, set main page for this ability
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageCreate");
+        // 主窗口已创建，请为此Ability设置主页
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
@@ -87,18 +87,18 @@
       }
     
       onWindowStageDestroy(): void {
-        // Main window is destroyed, release UI related resources
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageDestroy");
+        // 主窗口已销毁，释放 UI 相关资源
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
       }
     
       onForeground(): void {
-        // Ability has brought to foreground
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onForeground");
+        // Ability 进入前台
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
       }
     
       onBackground(): void {
-        // Ability has back to background
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onBackground");
+        // Ability 进入后台
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
       }
     }
     ```
@@ -227,7 +227,7 @@
       return;
     }
     calendarMgr?.deleteCalendar(calendar).then(() => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s', "Succeeded in deleting calendar");
+      hilog.info(DOMAIN, 'testTag', '%{public}s', 'Succeeded in deleting calendar');
     }).catch((err: BusinessError) => {
       hilog.error(DOMAIN, 'testTag', `Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
     });

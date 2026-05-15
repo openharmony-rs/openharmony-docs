@@ -18,18 +18,24 @@
 ## 导入模块
 
 ```ts
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 ```
 
 ## serialManager.addSerialRight
 
-addSerialRight(tokenId: number, portId: number): void
+ArkTS-Dyn: addSerialRight(tokenId: number, portId: number): void
+
+ArkTS-Sta: addSerialRight(tokenId: int, portId: int): void
 
 为应用程序添加访问串口设备权限。
 
 serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRight不会触发弹窗，而是直接添加应用程序访问设备的权限。应用退出自动移除对串口设备的访问权限，在应用重启后需要重新申请授权。
 
 **系统接口：** 此接口为系统接口
+
+**ArkTS-Dyn起始版本**：19
+
+**ArkTS-Sta起始版本**：22
 
 **需要权限：**  ohos.permission.MANAGE_USB_CONFIG
 
@@ -39,8 +45,9 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 
 | 参数名     | 类型     | 必填 | 说明                                  |
 |---------|--------|----|-------------------------------------|
-| tokenId | number | 是  | 需要访问权限的tokenId。                  |
-| portId  | number | 是  | 端口号。 |
+| tokenId | ArkTS-Dyn: number<br> ArkTS-Sta: int| 是  | 需要访问权限的tokenId。|
+| portId  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 端口号。|
+
 
 **错误码：**
 
@@ -60,7 +67,7 @@ serialManager.requestSerialRight会触发弹窗请求用户授权；addSerialRig
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
-import serialManager from '@ohos.busManager.serial';
+import serialManager from '@ohos.usbManager.serial';
 
 // 获取串口列表
 function addSerialRight() {
@@ -71,7 +78,7 @@ function addSerialRight() {
     return;
   }
 
-  let portId: number = portList[0].portId;
+  let portId: int = portList[0].portId;
   // 串口增加权限
   let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {

@@ -109,19 +109,17 @@ ArkTS-Sta: alt(value:&nbsp;PixelMap | undefined)
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | 是   | 设置图片加载过程中显示的占位图，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型。<br/>默认值：null。<br/>设置undefined时按默认值处理。 |
 
-### attributeModifier<sup>12+</sup>
+### attributeModifier<sup>23+</sup>
 
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<ImageSpanAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ImageSpanAttribute> | AttributeModifier\<CommonMethod> | undefined)
+attributeModifier(modifier: AttributeModifier\<ImageSpanAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置组件的动态属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -129,7 +127,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ImageSpanAttribute> | 
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ImageSpanAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ImageSpanAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置ImageSpan组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ImageSpanAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置ImageSpan组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ### colorFilter<sup>14+</sup>
 
@@ -179,7 +177,7 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 
 ## 事件
 
-通用事件仅支持[点击事件](ts-universal-attributes-click.md)。还支持以下事件：
+通用事件仅支持[点击控制事件](ts-universal-attributes-click.md)。还支持以下事件：
 
 ### onComplete<sup>12+</sup>
 
@@ -259,15 +257,15 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 | 名称                       | 类型   | 只读 | 可选 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width                        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否 | 图片的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
-| height                       | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片的高。<br/>单位：[px](ts-pixel-units.md)                                    |
-| componentWidth               | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
-| componentHeight              | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件的高。<br/>单位：[px](ts-pixel-units.md)                                    |
+| width                        | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否 | 图片的宽。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| height                       | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片的高。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| componentWidth               | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件的宽。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| componentHeight              | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件的高。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
 | loadingStatus                | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
-| contentWidth   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片实际绘制的宽度。<br/>单位：[px](ts-pixel-units.md)<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentHeight  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片实际绘制的高度。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentWidth   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片实际绘制的宽度。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentHeight  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 图片实际绘制的高度。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
 
 
 
@@ -495,7 +493,7 @@ struct SpanExample {
 ![imagespan](figures/image_span_alt.gif)
 ### 示例6（使用supportSvg2属性时，SVG图片的显示效果）
 
-从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效。
+从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)的[SVG易用性提升](ts-image-svg2-capabilities.md#svg易用性提升)能力生效。
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';

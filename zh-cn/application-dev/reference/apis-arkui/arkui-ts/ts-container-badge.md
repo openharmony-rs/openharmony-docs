@@ -84,7 +84,7 @@ Badge(value: BadgeParamWithString)
 
 ### Badge<sup>23+</sup>
 
-Badge(value: BadgeParamWithNumber | BadgeParamWithString | undefined)
+Badge(value: BadgeParamWithNumber | BadgeParamWithString)
 
 根据数字或者字符串创建标记组件。
 
@@ -199,7 +199,7 @@ Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 | enableAutoAvoidance<sup>22+</sup> | boolean                                 | 否   | 是   | 增加角标文本延伸显示时是否避让。<br/>true表示避让，false表示不避让。<br/>默认值：true<br/> **说明：** <br/>1. 避让效果为角标文本向组件内部延伸显示。<br/>2. 当外描边的宽度大于0时，角标的延伸起点为外描边的内侧。<br/>3. 当position设置为具体坐标值时，角标不进行避让处理。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 
 > **说明：**
-> 当`borderWidth`大于0且`borderColor`与`badgeColor`颜色不一致时，先绘制角标，再绘制描边。由于边缘像素经过抗锯齿处理，抗锯齿产生半透明像素，四角会出现 `badgeColor` 颜色的描边线。如需实现相关场景，建议使用[Text](ts-basic-components-text.md)组件设置[outline](ts-universal-attributes-outline.md)代替Badge组件。
+> 当`borderWidth`大于0且`borderColor`与`badgeColor`颜色不一致时，先绘制角标，再绘制描边。由于边缘像素经过抗锯齿处理，抗锯齿产生半透明像素，四角会出现 `badgeColor` 颜色的描边线。如需实现相关场景，建议使用[Text](ts-basic-components-text.md)组件设置[outline](ts-universal-attributes-outline.md#outline)代替Badge组件。
 
 ## 属性
 
@@ -211,9 +211,9 @@ attributeModifier(modifier: AttributeModifier\<BadgeAttribute> | AttributeModifi
 
 设置组件的动态属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -223,7 +223,7 @@ attributeModifier(modifier: AttributeModifier\<BadgeAttribute> | AttributeModifi
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<BadgeAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<BadgeAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Badge组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<BadgeAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Badge组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 

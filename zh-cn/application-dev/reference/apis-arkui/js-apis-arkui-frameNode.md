@@ -4165,6 +4165,12 @@ Text类型的FrameNode节点类型。
 
 TextFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明[Text](./arkui-ts/ts-basic-components-text.md)类型的FrameNode。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
 ### initialize<sup>23+</sup>
 
 abstract initialize(content?: string | Resource, value?: TextOptions): TextAttribute
@@ -4263,13 +4269,13 @@ createTextNode(context: UIContext, options?: FrameNodeOptions): Text
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[createNode('Text')](#createnodetext12)。
 
 **ArkTS-Sta起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -4468,13 +4474,13 @@ bindTextController(node: FrameNode, controller: TextController): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[bindController('Text')](#bindcontrollertext20)。
 
 **ArkTS-Sta起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -7198,7 +7204,11 @@ Search类型的FrameNode节点类型。
 
 SearchFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Search类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 
@@ -7208,9 +7218,9 @@ abstract initialize(value?: SearchOptions): SearchAttribute
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -8256,7 +8266,11 @@ TextInput类型的FrameNode节点类型。
 
 TextInputFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明TextInput类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 
@@ -10386,7 +10400,11 @@ QRCode类型的FrameNode节点类型。
 
 QRCodeFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明QRCode类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 
@@ -10523,7 +10541,11 @@ Badge类型的FrameNode节点类型。
 
 BadgeFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Badge类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 
@@ -10561,9 +10583,9 @@ abstract initialize(value: BadgeParamWithString): BadgeAttribute
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 23
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -11271,7 +11293,11 @@ TextClock类型的FrameNode节点类型。
 
 TextClockFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明TextClock类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 
@@ -11408,7 +11434,11 @@ TextTimer类型的FrameNode节点类型。
 
 TextTimerFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明TextTimer类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 
@@ -11545,7 +11575,11 @@ Marquee类型的FrameNode节点类型。
 
 MarqueeFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明Marquee类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 
@@ -11710,7 +11744,11 @@ TextArea类型的FrameNode节点类型。
 
 TextAreaFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明TextArea类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 
@@ -12004,7 +12042,11 @@ SymbolGlyph类型的FrameNode节点类型。
 
 SymbolGlyphFrameNode继承自[TypedFrameNode](#typedframenode20)，用于声明SymbolGlyph类型的FrameNode。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ### initialize<sup>23+</sup>
 

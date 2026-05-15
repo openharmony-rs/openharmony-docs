@@ -16,6 +16,7 @@ ImageReceiver类，用于获取组件surface id、接收最新的图片和读取
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 
@@ -29,10 +30,14 @@ import { image } from '@kit.ImageKit';
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                         | 只读 | 可选 | 说明               |
 | -------- | ---------------------------- | ---- | ---- | ------------------ |
 | size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)  | 是   | 否   | 图片大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。         |
-| capacity<sup>9+</sup> | number    | 是   | 否   | 同时访问的图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
+| capacity<sup>9+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 否   | 同时访问的图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 | format<sup>9+</sup>   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 否   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。        |
 
 ## getReceivingSurfaceId<sup>9+</sup>
@@ -43,6 +48,10 @@ getReceivingSurfaceId(callback: AsyncCallback\<string>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                       |
@@ -51,6 +60,7 @@ getReceivingSurfaceId(callback: AsyncCallback\<string>): void
 
 **示例:**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -65,6 +75,27 @@ async function GetReceivingSurfaceId(receiver : image.ImageReceiver) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function GetReceivingSurfaceIdFunc(): void {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    receiver.getReceivingSurfaceId((err: BusinessError | null, id: string | undefined) => {
+      if (err) {
+        console.error(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId failed: ' + err);
+      } else {
+        console.info(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId success!');
+      }
+    });
+  } catch (err) {
+    console.error(0x00000, 'GetReceivingSurfaceIdFunc', 'GetReceivingSurfaceIdFunc failed: ' + err);
+  }
+}
+```
+
 ## getReceivingSurfaceId<sup>9+</sup>
 
 getReceivingSurfaceId(): Promise\<string>
@@ -72,6 +103,10 @@ getReceivingSurfaceId(): Promise\<string>
 用于获取一个surface id供Camera或其他组件使用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -81,6 +116,7 @@ getReceivingSurfaceId(): Promise\<string>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -90,6 +126,20 @@ async function GetReceivingSurfaceId(receiver : image.ImageReceiver) {
   }).catch((error: BusinessError) => {
     console.error(`Failed to get the ReceivingSurfaceId.code ${error.code},message is ${error.message}`);
   })
+}
+```
+
+ArkTS-Sta示例：
+```ts
+async function GetReceivingSurfaceIdFunc(): Promise<void> {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    await receiver.getReceivingSurfaceId();
+    console.info(0x00000, 'GetReceivingSurfaceIdFunc', 'getReceivingSurfaceId success!');
+  } catch (err) {
+    console.error(0x00000, 'GetReceivingSurfaceIdFunc', 'GetReceivingSurfaceIdFunc failed: ' + err);
+  }
 }
 ```
 
@@ -104,6 +154,10 @@ readLatestImage(callback: AsyncCallback\<Image>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                            | 必填 | 说明                     |
@@ -112,6 +166,7 @@ readLatestImage(callback: AsyncCallback\<Image>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -126,6 +181,28 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function ReadLatestImageFunc(): void {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    // 创建imageReceiver实例。
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    receiver.readLatestImage((err: BusinessError | null, img: image.Image | undefined) => {
+      if (err) {
+        console.error(0x00000, 'ReadLatestImageFunc', 'readLatestImage failed: ' + err);
+      } else {
+        console.info(0x00000, 'ReadLatestImageFunc', 'readLatestImage success!');
+      }
+    });
+  } catch (err) {
+    console.error(0x00000, 'ReadLatestImageFunc', 'ReadLatestImageFunc failed: ' + err);
+  }
+}
+```
+
 ## readLatestImage<sup>9+</sup>
 
 readLatestImage(): Promise\<Image>
@@ -137,6 +214,10 @@ readLatestImage(): Promise\<Image>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                      | 说明               |
@@ -145,6 +226,7 @@ readLatestImage(): Promise\<Image>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -154,6 +236,20 @@ async function ReadLatestImage(receiver : image.ImageReceiver) {
   }).catch((error: BusinessError) => {
     console.error(`Failed to read the latest Image.code ${error.code},message is ${error.message}`);
   });
+}
+```
+
+ArkTS-Sta示例：
+```ts
+async function ReadLatestImageFunc(): Promise<void> {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    await receiver.readLatestImage();
+    console.info(0x00000, 'ReadLatestImageFunc', 'readLatestImage success!');
+  } catch (err) {
+    console.error(0x00000, 'ReadLatestImageFunc', 'ReadLatestImageFunc failed: ' + err);
+  }
 }
 ```
 
@@ -168,6 +264,10 @@ readNextImage(callback: AsyncCallback\<Image>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                            | 必填 | 说明                       |
@@ -176,6 +276,7 @@ readNextImage(callback: AsyncCallback\<Image>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -190,6 +291,27 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function ReadNextImageFunc(): void {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    receiver.readNextImage((err: BusinessError | null, img: image.Image | undefined) => {
+      if (err) {
+        console.error(0x00000, 'ReadNextImageFunc', 'readNextImage failed: ' + err);
+      } else {
+        console.info(0x00000, 'ReadNextImageFunc', 'ReadNextImageFunc success!');
+      }
+    });
+  } catch (err) {
+    console.error(0x00000, 'ReadNextImageFunc', 'ReadNextImageFunc failed: ' + err);
+  }
+}
+```
+
 ## readNextImage<sup>9+</sup>
 
 readNextImage(): Promise\<Image>
@@ -201,6 +323,10 @@ readNextImage(): Promise\<Image>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                      | 说明                 |
@@ -209,6 +335,7 @@ readNextImage(): Promise\<Image>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -221,13 +348,33 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+async function ReleaseFunc(): Promise<void> {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    await receiver.release();
+    console.info(0x00000, 'ReleaseFunc', 'release success!');
+  } catch (err) {
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+  }
+}
+```
+
 ## on<sup>9+</sup>
 
 on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 
 接收图片时注册回调。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onImageArrival](#onimagearrival23)。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -246,13 +393,57 @@ async function On(receiver : image.ImageReceiver) {
 }
 ```
 
+## onImageArrival<sup>23+</sup>
+
+onImageArrival(callback: AsyncCallback\<void>): void
+
+接收图片时注册回调。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on9)。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                   |
+| -------- | -------------------- | ---- | ------------------------------------------------------ |
+| callback | AsyncCallback\<void> | 是   | 回调函数，当注册事件触发成功，err为undefined，否则为错误对象。                                        |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';
+
+function OnImageArrivalFunc(): void {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    receiver.onImageArrival(() => {
+      console.info(0x00000, 'OnFunc', 'on success!');
+    });
+  } catch (err) {
+    console.error(0x00000, 'OnFunc', 'OnFunc failed: ' + err);
+  }
+}
+```
+
 ## off<sup>13+</sup>
 
 off(type: 'imageArrival', callback?: AsyncCallback\<void>): void
 
 释放buffer时移除注册回调。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offImageArrival](#offimagearrival23)。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -273,6 +464,45 @@ async function Off(receiver : image.ImageReceiver) {
 }
 ```
 
+## offImageArrival<sup>23+</sup>
+
+offImageArrival(callback?: AsyncCallback\<void>): void
+
+释放buffer时移除注册回调。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off13)。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                     |
+| -------- | -------------------- |----|----------------------------------------|
+| callback | AsyncCallback\<void> | 否  | 移除的回调函数。         |
+
+**示例：**
+
+```ts
+function OffFunc(): void {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    receiver.onImageArrival(() => {
+      console.info(0x00000, 'OffFunc', 'on success!');
+    });
+    receiver.offImageArrival(() => {
+      console.info(0x00000, 'OffFunc', 'off success!');
+    });
+  } catch (err) {
+    console.error(0x00000, 'OffFunc', 'OffFunc failed: ' + err);
+  }
+}
+```
+
 ## release<sup>9+</sup>
 
 release(callback: AsyncCallback\<void>): void
@@ -285,6 +515,10 @@ release(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                     |
@@ -293,6 +527,7 @@ release(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -304,6 +539,27 @@ async function Release(receiver : image.ImageReceiver) {
       console.info('Succeeded in releasing the receiver.');
     }
   })
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function ReleaseFunc(): void {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    receiver.release((err: BusinessError | null) => {
+      if (err) {
+        console.error(0x00000, 'ReleaseFunc', 'release failed: ' + err);
+      } else {
+        console.info(0x00000, 'ReleaseFunc', 'ReleaseFunc success!');
+      }
+    });
+  } catch (err) {
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+  }
 }
 ```
 
@@ -319,6 +575,10 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明               |
@@ -327,6 +587,7 @@ release(): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -336,5 +597,19 @@ async function Release(receiver : image.ImageReceiver) {
   }).catch((error: BusinessError) => {
     console.error(`Failed to release the receiver.code ${error.code},message is ${error.message}`);
   })
+}
+```
+
+ArkTS-Sta示例：
+```ts
+function ReleaseFunc(): void {
+  let size: image.Size = { height: 8192, width: 8 };
+  try {
+    let receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
+    await receiver.release();
+    console.info(0x00000, 'ReleaseFunc', 'release success!');
+  } catch (err) {
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+  }
 }
 ```

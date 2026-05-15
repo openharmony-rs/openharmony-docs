@@ -62,6 +62,7 @@
 - [事件独占控制](ts-universal-attributes-monopolize-events.md)
 - [鼠标光标控制](ts-universal-attributes-cursor.md)
 - [特效绘制合并](ts-universal-attributes-use-effect.md)
+- [节点调测标签](ts-universal-attributes-inspector-label.md)
 - [点光源设置 (系统接口)](ts-universal-attributes-point-light-style-sys.md)
 - [图像效果 (系统接口)](ts-universal-attributes-image-effect-sys.md)
 <!--DelEnd-->

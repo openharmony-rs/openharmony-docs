@@ -283,7 +283,7 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| enableScanEffect | boolean | 否 | 是 | 扫光效果的开关。仅支持[Linear、Ring、Capsule](#progresstype8枚举说明)类型的进度条。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false |
+| enableScanEffect | boolean | 否 | 是 | 扫光效果的开关。仅支持[ProgressType](#progresstype8枚举说明)类型为Linear、Ring、Capsule的进度条。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false |
 
 ## ProgressStyleOptions<sup>8+</sup>
 

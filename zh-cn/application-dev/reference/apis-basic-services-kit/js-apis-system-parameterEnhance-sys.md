@@ -28,6 +28,10 @@ getSync(key: string, def?: string): string
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -71,6 +75,10 @@ get(key: string, callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -113,6 +121,10 @@ get(key: string, def: string, callback: AsyncCallback&lt;string&gt;): void
 获取系统参数Key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -158,6 +170,10 @@ get(key: string, def?: string): Promise&lt;string&gt;
 获取系统参数Key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -208,6 +224,10 @@ setSync(key: string, value: string): void
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -245,6 +265,10 @@ set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 设置系统参数Key对应的值，使用callback异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -289,6 +313,10 @@ set(key: string, value: string): Promise&lt;void&gt;
 设置系统参数Key对应的值，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Startup.SystemInfo
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

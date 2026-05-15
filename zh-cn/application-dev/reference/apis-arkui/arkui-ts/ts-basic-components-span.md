@@ -103,7 +103,7 @@ ArkTS-Sta: letterSpacing(value: double | string | undefined)
 
 | 参数名 | 类型     | 必填 |  说明   |
 | ------ | ------- | ---- | -------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: double \| string \| undefined | 是   | 文本字符间距。<br/>默认值：0<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。<br/>取值为undefined时，按默认值处理。|
 
 ### textCase
 
@@ -300,7 +300,7 @@ ArkTS-Sta: lineHeight(value: Length | undefined)
 
 | 参数名 | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br/> number类型时单位为[fp](ts-pixel-units.md)。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。<br/>取值为undefined时，使用默认行高高度。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 文本行高。 <br/> number类型时单位为[fp](ts-pixel-units.md#基本像素单位)。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。<br/>取值为undefined时，使用默认行高高度。|
 
 ### font<sup>10+</sup>
 
@@ -399,6 +399,8 @@ attributeModifier(modifier: AttributeModifier\<SpanAttribute> | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
@@ -478,6 +480,10 @@ onClick(event: Callback\<ClickEvent> | undefined)
 
 设置点击事件回调。
 
+>  **说明：**
+>
+>  点击事件不能在手指按下超过800ms后触发。手指按下后移动超过20px时，点击事件不能触发。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -490,15 +496,15 @@ onClick(event: Callback\<ClickEvent> | undefined)
 | -------- | -------- | -------- | -------- |
 | event | [Callback](ts-types.md#callback12)\<[ClickEvent](ts-universal-events-click.md#clickevent)> \| undefined | 是 | 点击事件回调。<br/>取值为undefined时，不使用回调函数。 |
 
->  **说明：**
->
->  点击事件不能在手指按下超过800ms后触发。手指按下后移动超过20px时，点击事件不能触发。
-
 ### onClick<sup>23+</sup>
 
 onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: double | undefined)
 
 设置点击事件回调及移动阈值。
+
+>  **说明：**
+>
+>  点击事件不能在手指按下超过800ms后触发。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -513,9 +519,6 @@ onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: double | un
 | event | [Callback](ts-types.md#callback12)\<[ClickEvent](ts-universal-events-click.md#clickevent)> \| undefined | 是 | 点击事件回调。<br/>取值为undefined时，不使用回调函数。 |
 | distanceThreshold | double \| undefined | 是 | 点击事件移动阈值。手指按下后移动超过该阈值时，点击事件不能触发。<br/>取值为undefined时，按默认值处理。 |
 
->  **说明：**
->
->  点击事件不能在手指按下超过800ms后触发。
 
 ### onHover<sup>23+</sup>
 

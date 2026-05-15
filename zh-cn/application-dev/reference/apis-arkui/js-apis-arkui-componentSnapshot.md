@@ -21,7 +21,7 @@
 >
 > - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用[createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
 >
-> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用[窗口截图](arkts-apis-window-Window.md#snapshot9)替代。
+> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用窗口截图接口[snapshot](arkts-apis-window-Window.md#snapshot9)替代。
 >
 > - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
@@ -481,7 +481,7 @@ ArkTS-Sta: getSync(id: string, options?: SnapshotOptions): image.PixelMap | null
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. <br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。  |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
 | 160003 | Unsupported color space or dynamic range mode in snapshot options. |

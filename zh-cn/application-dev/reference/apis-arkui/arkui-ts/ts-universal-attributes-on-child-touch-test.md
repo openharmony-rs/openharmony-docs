@@ -42,7 +42,7 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array&lt;TouchTestInfo&gt;) => Touch
 
 | 参数名 | 类型                                       | 必填 | 说明                   |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| event  | ArkTS-Dyn: (value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult<br/>ArkTS-Sta: ((value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult) \| undefined | 是   | 触摸事件信息。value的值为包含子节点信息的数组。<br/>传入undefined时无效果。 |
+| event  | ArkTS-Dyn: (value: Array<[TouchTestInfo](#touchtestinfo11)>) => TouchResult<br/>ArkTS-Sta: ((value: Array<[TouchTestInfo](#touchtestinfo11)>) => TouchResult) \| undefined | 是   | 触摸事件信息。value的值为包含子节点信息的数组。<br/>传入undefined时无效果。 |
 
 **返回值：**
 

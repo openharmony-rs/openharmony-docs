@@ -100,6 +100,7 @@
       - [Graphics (系统接口)](js-apis-arkui-graphics-sys.md)
       <!--DelEnd-->
   - 窗口管理<!--window-manager-api-->
+    - [@ohos.window.floatView (标准悬浮窗)](js-apis-floatView.md)
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
     - [@ohos.window.floatingBall (闪控球窗口)](js-apis-floatingBall.md)
     - @ohos.window (窗口)<!--js-apis-window-->
@@ -246,7 +247,7 @@
       - [节点调测标签](arkui-ts/ts-universal-attributes-inspector-label.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
-      - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
+      - [绑定手势事件](arkui-ts/ts-gesture-settings.md)
       - [设置组件绑定的手势](arkui-ts/ts-uigestureevent.md)
       - [手势处理器](arkui-ts/ts-gesturehandler.md)
     - 基础手势<!--basic-gestures-->
@@ -256,7 +257,7 @@
       - [PinchGesture](arkui-ts/ts-basic-gestures-pinchgesture.md)
       - [RotationGesture](arkui-ts/ts-basic-gestures-rotationgesture.md)
       - [SwipeGesture](arkui-ts/ts-basic-gestures-swipegesture.md)
-    - [组合手势](arkui-ts/ts-combined-gestures.md)
+    - [GestureGroup](arkui-ts/ts-combined-gestures.md)
     - 手势控制<!--gesture-control-->
       - [自定义手势判定](arkui-ts/ts-gesture-customize-judge.md)
       - [手势拦截增强](arkui-ts/ts-gesture-blocking-enhancement.md)
@@ -296,6 +297,7 @@
     - [FlowItem](arkui-ts/ts-container-flowitem.md)
     - [LazyVGridLayout](arkui-ts/ts-container-lazyvgridlayout.md)
     - [LazyVWaterFlowLayout](arkui-ts/ts-container-lazyvwaterflowlayout.md)
+    - [LazyColumnLayout](arkui-ts/ts-container-lazycolumnlayout.md)
     - [ScrollBar](arkui-ts/ts-basic-components-scrollbar.md)
     - [Refresh](arkui-ts/ts-container-refresh.md)
     - [ArcScrollBar](arkui-ts/ts-basic-components-arcscrollbar.md)
@@ -879,6 +881,7 @@
     - [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md)
     - [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md)
     - [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md)
+    - [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md)
     - [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)
     - [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md)
     - [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md)
@@ -931,6 +934,8 @@
     - [OH_ArkUI_ShadowOptions](capi-arkui-nativemodule-oh-arkui-shadowoptions.md)
     - [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)
     - [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)
+    - [ArkUI_NativeGestureAPI_3](capi-arkui-nativemodule-arkui-nativegestureapi-3.md)
+    - [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)

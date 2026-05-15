@@ -206,7 +206,7 @@ getId(): string
 
 | 类型     | 说明        |
 | ------ | --------- |
-| string | 当前组件的[组件标识](./ts-universal-attributes-component-id.md#id)。 |
+| string | 当前组件的[组件标识](./ts-universal-attributes-component-id.md)。 |
 
 ### getUniqueId
 
@@ -1016,7 +1016,7 @@ type GestureType = TapGesture | LongPressGesture | PanGesture | PinchGesture | S
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[GestureType](#gesturetype23)。
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 7
 
 | 类型 | 说明 |
 | -------- | -------- |

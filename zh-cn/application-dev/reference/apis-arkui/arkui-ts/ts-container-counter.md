@@ -46,9 +46,9 @@ attributeModifier(modifier: AttributeModifier\<CounterAttribute> | AttributeModi
 
 设置组件的动态属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -58,7 +58,7 @@ attributeModifier(modifier: AttributeModifier\<CounterAttribute> | AttributeModi
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CounterAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CounterAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Counter组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CounterAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Counter组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。|
 
 ### enableInc<sup>10+</sup>
 
@@ -155,7 +155,6 @@ ArkTS-Sta: onDec(event:&nbsp;VoidCallback | undefined)
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
 | event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12) <br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12)  \| undefined | 是   | Counter数值减少的回调函数。<br/>设置为undefined时不会执行回调。|
-
 
 ## 示例
 

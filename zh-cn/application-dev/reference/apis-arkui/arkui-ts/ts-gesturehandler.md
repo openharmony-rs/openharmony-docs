@@ -995,7 +995,7 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 
 ArkTS-Dyn: onCancel(event: Callback\<void>): GestureGroupHandler
 
-ArkTS-Sta: onCancel(event: Callback\<void>): this
+ArkTS-Sta: onCancel(event: VoidCallback): this
 
 设置手势组处理器取消回调。顺序组合手势（[GestureMode](./ts-combined-gestures.md#gesturemode枚举说明).Sequence）取消后触发回调。
 
@@ -1011,7 +1011,7 @@ ArkTS-Sta: onCancel(event: Callback\<void>): this
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<void> | 是 | 手势组处理器取消回调。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void><br/>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) | 是 | 手势组处理器取消回调。 |
 
 **返回值：**
 
@@ -1033,8 +1033,8 @@ ArkTS-Sta: onCancel(event: Callback\<void>): this
 
 | 名称         | 类型                               | 只读    | 可选 | 说明                 |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
-| mode    | [GestureMode](./ts-combined-gestures.md#gesturemode枚举说明)                        | 否 | 否   | 设置[组合手势](ts-combined-gestures.md)识别模式。<br/>默认值：GestureMode.Sequence      |
-| gestures | ArkTS-Dyn: [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[]<br/>ArkTS-Sta: [GestureHandler](#gesturehandler23)[] | 否 | 否   | 设置手势组中需要包含的手势集合。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在[组合手势](ts-combined-gestures.md)中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
+| mode    | [GestureMode](./ts-combined-gestures.md#gesturemode枚举说明)                        | 否 | 否   | 设置组合手势识别模式。<br/>默认值：GestureMode.Sequence      |
+| gestures | ArkTS-Dyn: [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[]<br/>ArkTS-Sta: [GestureHandler](#gesturehandler23)[] | 否 | 否   | 设置手势组中需要包含的手势集合。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在[GestureGroup](ts-combined-gestures.md)中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
 
 ## GesturePriority枚举说明
 

@@ -39,7 +39,7 @@
 > 文本内容变更后，需等待布局完成才可获取到最新的布局信息。
 
 ### 导入对象
-以Text组件为例，完整示例请参考Text组件的[示例10获取文本信息](./ts-basic-components-text.md#示例10获取文本信息)。
+以Text组件为例，完整示例请参考Text组件的[示例10（获取文本信息）](./ts-basic-components-text.md#示例10获取文本信息)。
 ```ts
 controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
@@ -87,8 +87,8 @@ ArkTS-Sta: getGlyphPositionAtCoordinate(x: double, y: double): PositionWithAffin
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
-| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -118,14 +118,14 @@ ArkTS-Sta: getCharacterPositionAtCoordinate(x: double, y: double): PositionWithA
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
-| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
 | 类型                                          | 说明        |
 | --------------------------------------------- | ----------- |
-| ArkTS-Dyn: [PositionWithAffinity](#positionwithaffinity12) <br/> ArkTS-Sta: [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字符的位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+| [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字符的位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
 
 ### getGlyphRangeForCharacterRange<sup>24+</sup>
 
@@ -256,7 +256,7 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
 | position  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 否   | 否   | 字形或字符相对于组件内容的索引，整数。  |
-| affinity  | [Affinity](#affinity12) | 否   | 否   | 位置亲和度。<br/>ArkTS-Sta系统能力：SystemCapability.Graphics.Drawing             |
+| affinity  | [Affinity](#affinity12) | 否   | 否   | 位置亲和度。             |
 
 ## TextMenuItemId<sup>12+</sup>
 
@@ -282,12 +282,12 @@ ArkTS-Sta: getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, height
 | TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译，为一级菜单项。对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 23 |
 | SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享，为一级菜单项。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23 |
 | SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18 <br>**ArkTS-Sta起始版本：** 23 |
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接，为一级菜单项。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件，为一级菜单项。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往，为一级菜单项。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程，为一级菜单项。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
-| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP2--><!--RP2End-->对选中的文本提供AI问询能力，为一级菜单项。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接，为一级菜单项。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件，为一级菜单项。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往，为一级菜单项。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程，为一级菜单项。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
+| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | <!--RP2--><!--RP2End-->对选中的文本提供AI问询能力，为一级菜单项。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**ArkTS-Dyn起始版本：** 20 |
 | autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
 | passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23 <br>**ArkTS-Sta起始版本：** 23 |
 ### of
@@ -348,16 +348,12 @@ equals(id: TextMenuItemId): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
-| content | [ResourceStr](ts-types.md#resourcestr) | 否   | 否 | 菜单名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 菜单图标。<br/>不支持网络图片。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| id | [TextMenuItemId](#textmenuitemid12) |  否   | 否  | 菜单id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| labelInfo<sup>15+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 快捷键提示。<br/>该字段仅2in1设备支持。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| content | [ResourceStr](ts-types.md#resourcestr) | 否   | 否 | 菜单名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 菜单图标。<br/>不支持网络图片。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| id | [TextMenuItemId](#textmenuitemid12) |  否   | 否  | 菜单id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| labelInfo<sup>15+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 快捷键提示。<br/>该字段仅2in1设备支持。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## EditMenuOptions
 
@@ -371,9 +367,9 @@ equals(id: TextMenuItemId): boolean
 
 | 名称  | 类型   | 只读 | 可选   | 说明  |
 | ------- | ------ | ---- | ----- | ----- |
-| onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | 否 | 是  | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。 </br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15 <br>**ArkTS-Sta起始版本：** 24|
-| onCreateMenu<sup>23+</sup> |ArkTS-Sta: [OnCreateMenuCallback](#oncreatemenucallback23) \| undefined | 否 | 否  | 在菜单创建时触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。 <br>**ArkTS-Sta起始版本：** 23<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。|
-| onMenuItemClick<sup>23+</sup> |ArkTS-Sta: [OnMenuItemClickCallback](#onmenuitemclickcallback23) \| undefined| 否 | 否  | 菜单项功能函数。 <br>**ArkTS-Sta起始版本：** 23<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。|
+| onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | 否 | 是  | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。 </br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 24|
+| onCreateMenu<sup>23+</sup> |ArkTS-Sta: [OnCreateMenuCallback](#oncreatemenucallback23) \| undefined | 否 | 否  | 在菜单创建时触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23<br/>取值为undefined时，不使用回调函数。|
+| onMenuItemClick<sup>23+</sup> |ArkTS-Sta: [OnMenuItemClickCallback](#onmenuitemclickcallback23) \| undefined| 否 | 否  | 菜单项功能函数。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23<br/>取值为undefined时，不使用回调函数。|
 
 ### onCreateMenu<sup>12+</sup>
 
@@ -676,10 +672,10 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 | 名称 | 类型  | 只读 | 可选 | 说明  |
 | ------ | -------- | ---- | ---- | ------------------------------------------- |
-| types   | [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] | 否 | 否  | 设置文本识别的实体类型。设置types为null或者[]时，识别所有类型的实体，否则只识别指定类型的实体。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 24 |
-| onDetectResultUpdate   | Callback\<string> | 否 | 是  | 文本识别成功后，触发onDetectResultUpdate回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 24 |
-| color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 设置文本识别成功后的实体颜色。<br/>默认值：'#ff0a59f7'<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 24 |
-| decoration<sup>20+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 24 |
+| types   | ArkTS-Dyn: [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[]<br/>ArkTS-Sta: [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] \| undefined \| null | 否 | 否  | 设置文本识别的实体类型。设置types为null或者undefined或者[]时，识别所有类型的实体，否则只识别指定类型的实体。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| onDetectResultUpdate   | Callback\<string> | 否 | 是  | 文本识别成功后，触发onDetectResultUpdate回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 设置文本识别成功后的实体颜色。<br/>默认值：'#ff0a59f7'<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
+| decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
 | enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**设备行为差异：** 该参数在Phone、Tablet中可正常调用，在PC/2in1、TV和Wearable等其他设备类型中无效果。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## PreviewText<sup>12+</sup>
@@ -692,7 +688,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
@@ -727,7 +723,9 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
@@ -743,7 +741,9 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
@@ -1089,16 +1089,14 @@ ArkTS-Sta: getStyledString(): MutableStyledString | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
-| type | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 装饰线类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 否   | 否   | 装饰线颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是   | 装饰线样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| thicknessScale<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | 装饰线粗细缩放比例。<br/>默认值：1.0<br/>取值范围：[0, +∞) <br/>**说明：** 负值按默认值处理。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| type | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 装饰线类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否   | 否   | 装饰线颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是   | 装饰线样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| thicknessScale<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | 装饰线粗细缩放比例。<br/>默认值：1.0<br/>取值范围：[0, +∞) <br/>**说明：** 负值按默认值处理。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## LineMetrics<sup>12+</sup>
 
@@ -1118,7 +1116,7 @@ ArkTS-Sta: type LineMetrics = text.LineMetrics
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) | 用于描述文本布局中单行文字的度量信息。 |
+| ArkTS-Dyn: [LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics) <br/>ArkTS-Sta: text.[LineMetrics](../../apis-arkgraphics2d/js-apis-graphics-text.md#linemetrics)| 用于描述文本布局中单行文字的度量信息。 |
 
 ## Affinity<sup>12+</sup>
 
@@ -1138,7 +1136,7 @@ ArkTS-Sta: type Affinity = text.Affinity
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
+| ArkTS-Dyn: [Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) <br/>ArkTS-Sta: text.[Affinity](../../apis-arkgraphics2d/js-apis-graphics-text.md#affinity) | 位置亲和度枚举。 |
 
 ## TextBox<sup>14+</sup>
 
@@ -1158,7 +1156,7 @@ ArkTS-Sta: type TextBox = text.TextBox
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
+| ArkTS-Dyn: [TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) <br/>ArkTS-Sta: text.[TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
 
 ## Paragraph<sup>20+</sup>
 
@@ -1178,7 +1176,7 @@ ArkTS-Sta: type Paragraph = text.Paragraph
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
+| ArkTS-Dyn: [Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) <br/>ArkTS-Sta: text.[Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
 
 ## RectHeightStyle<sup>14+</sup>
 
@@ -1198,7 +1196,7 @@ ArkTS-Sta: type RectHeightStyle = text.RectHeightStyle
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
+| ArkTS-Dyn: [RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) <br/>ArkTS-Sta: text.[RectHeightStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectheightstyle) | 矩形区域高度规格枚举。 |
 
 ## RectWidthStyle<sup>14+</sup>
 
@@ -1218,7 +1216,7 @@ ArkTS-Sta: type RectWidthStyle = text.RectWidthStyle
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
+| ArkTS-Dyn: [RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) <br/>ArkTS-Sta: text.[RectWidthStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#rectwidthstyle) | 矩形区域宽度规格枚举。 |
 
 ## TextChangeOptions<sup>15+</sup>对象说明
 
@@ -1496,35 +1494,7 @@ setExtraConfig(config: InputMethodExtraConfig): void
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| config  | [InputMethodExtraConfig](#inputmethodextraconfig22) | 是   | 输入法扩展信息。 |
-
-## TextChangeReason<sup>20+</sup>
-
-组件内容变化原因。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 24
-
-| 名称 | 值 | 说明 |
-| ------- | ---- | ------------------- |
-| UNKNOWN | 0 | 未知原因。 |
-| INPUT | 1 | 用户输入。 |
-| PASTE | 2 | 粘贴。 |
-| CUT | 3 | 剪切。 |
-| DRAG | 4 | 拖拽。 |
-| AUTO_FILL | 5 | 自动填充。 |
-| AI_WRITE | 6 | 小艺帮写。 |
-| REDO | 7 | 重做。 |
-| UNDO | 8 | 撤销。 |
-| CONTROLLER | 9 | 开发者API调用。 |
-| ACCESSIBILITY | 10 | 无障碍接口。 |
-| COLLABORATION | 11 | 跨端拍照。 |
-| STYLUS | 12 | 手写笔。 |
+| config  | ArkTS-Dyn: [InputMethodExtraConfig](#inputmethodextraconfig22)<br/>ArkTS-Sta: [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig)| 是   | 输入法扩展信息。 |
 
 ## MaxLinesOptions<sup>20+</sup>对象说明
 
@@ -1542,7 +1512,7 @@ setExtraConfig(config: InputMethodExtraConfig): void
 
 | 名称              | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------- | ------- | ------- | ------- | ------------------------------------------------------------ |
-| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置[TextArea](./ts-basic-components-textarea.md)组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[`textOverflow`](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
+| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置[TextArea](./ts-basic-components-textarea.md)组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[textOverflow](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
 
 ## MaxLinesMode<sup>20+</sup>
 
@@ -1774,11 +1744,17 @@ type InputMethodExtraConfig = InputMethodExtraConfig
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 22
+
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
 | [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |
 
-## FontVariation<sup>26.0.0</sup>
+## FontVariation
 
 ArkTS-Dyn: type FontVariation = FontVariation
 
@@ -1796,7 +1772,7 @@ ArkTS-Sta: type FontVariation = text.FontVariation
 
 | 类型                              | 说明   |
 | --------------------------------- | --------------------------------- |
-| [FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) | 可变字体的属性。 |
+| ArkTS-Dyn: [FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) <br/>ArkTS-Sta: text.[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) | 可变字体的属性。 |
 
 ## AccessibilitySpanOptions<sup>23+</sup>对象说明
 
