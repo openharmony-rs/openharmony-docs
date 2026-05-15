@@ -843,6 +843,67 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | RightBottom | 从右下向左上。   |
 | None        | 无。    |
 
+## GestureShortcut
+
+组件的智慧手势响应优先级枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| PRIMARY | 0 | 智慧手势响应优先级。当前智慧手势响应配置仅支持该取值。 |
+
+## SmartGestureAction
+
+智慧手势操作类型枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| NONE | 0 | 无动作。 |
+| PAGE_FORWARD | 1 | 向前翻页。包括向下和向右。 |
+| SCROLL_FORWARD | 2 | 向前滚动。包括向下和向右。 |
+| SELECT | 3 | 选中组件。 |
+| CLICK | 4 | 点击组件。 |
+| BACK_PRESS | 5 | 返回。 |
+
+## OperateIntention
+
+智慧手势原始操作意图枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| TAP | 0 | 敲一敲。 |
+| SLIDE_FORWARD | 1 | 划一划。 |
+| BACK_PRESS | 2 | 翻腕。 |
+
 ## HorizontalAlign
 
 定义子组件在水平方向上的对齐方式。
