@@ -311,7 +311,7 @@ export default {
           sensor.getOnBodyState(getOnBodyStateOptions);
       }
     } catch (e) {
-      console.error(this.TAG + 'subscribe exception in, message:' + JSON.stringify(e))
+      console.error(this.TAG + 'subscribe exception occurred, message:' + JSON.stringify(e))
     }
   },
 
@@ -341,7 +341,7 @@ export default {
         }
         this.TextContent = ""
     } catch (e) {
-        console.error(this.TAG + 'unsubscribe exception in, message:' + JSON.stringify(e))
+        console.error(this.TAG + 'unsubscribe exception occurred, message:' + JSON.stringify(e))
     }
   }
 }
