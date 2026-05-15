@@ -194,6 +194,8 @@ intelligence.splitText(splitText, splitConfig)
 | version    | [ModelVersion](#modelversion)           | 否 | 否   |模型的版本。 |
 | isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
 | cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。 |
+| modelInfo<sup>26+</sup>    | [CloudModelInfo](#cloudModelInfo)           | 否 | 是   |云侧模型类型和版本信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| networkPolicy<sup>26+</sup>    | [NetworkPolicy](#networkPolicy)           | 否 | 是   |下载云侧模型的网络策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 
 ## ModelVersion
 
@@ -204,6 +206,32 @@ intelligence.splitText(splitText, splitConfig)
 | 名称       | 值                   | 说明                   |
 | ---------- | ---------- | ---------------------- |
 | BASIC_MODEL     | 0     | 基本嵌入模型版本。   |
+
+## CloudModelInfo<sup>26+</sup> 
+
+云侧模型的配置信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称     | 类型              | 只读 | 可选| 说明                                                         |
+| ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
+| modelType    |    string        | 否 | 否   |模型类型名称。 |
+| modelVersionCode | boolean                | 否 | 是   | 模型版本。 |
+
+## NetworkPolicy<sup>26+</sup> 
+
+下载云侧模型的网络策略。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称       | 值         | 说明      |
+|----------|-----------|---------|
+| WIFI_ONLY  | 0 | 仅在wifi状态下下载模型。|
+| WIFI_AND_CELLULAR  | 1 | 在wifi和蜂窝网络状态下下载模型。 |
 
 ## Image
 
@@ -261,6 +289,20 @@ loadModel(): Promise&lt;void&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
 | 31300000     | Inner error. |
+
+### getSupportedCloudModel
+
+getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
+
+获取支持的云侧模型信息。使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**返回值：**
+
+| 类型                          | 说明                                 |
+| ----------------------------- | ------------------------------------ |
+| Promise&lt;Array&lt;CloudModelInfo&gt;&gt; | 返回云侧模型的Promise对象。 |
 
 **示例：**
 
