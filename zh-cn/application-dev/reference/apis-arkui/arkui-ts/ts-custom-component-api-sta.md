@@ -20,7 +20,11 @@
 
 可扩展组件，是自定义组件和自定义对话框的基类。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 ### queryNavDestinationInfo
 
@@ -28,7 +32,11 @@ queryNavDestinationInfo(): NavDestinationInfo | undefined;
 
 查询自定义组件所属的NavDestination信息，仅当自定义组件在NavDestination的内部时才生效。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -41,6 +49,8 @@ queryNavDestinationInfo(): NavDestinationInfo | undefined;
 queryNavDestinationInfo(isInner: boolean | undefined): NavDestinationInfo | undefined
 
 查询当前自定义组件距离最近的NavDestination信息（要求该NavDestination是Navigation的导航页或子页），isInner为true表示向内查找，false表示向外查找。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +86,11 @@ queryRouterPageInfo(): RouterPageInfo | undefined;
 
 获取RouterPageInfo实例对象。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -90,7 +104,11 @@ onWillApplyTheme(theme: Theme): void
 
 onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创建自定义组件的新实例后，在执行其build()函数之前执行。允许在onWillApplyTheme函数中改变状态变量，更改将在后续执行build()函数中生效。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
