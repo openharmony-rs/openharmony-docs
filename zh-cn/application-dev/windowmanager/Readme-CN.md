@@ -24,6 +24,9 @@
   - [自由窗口简介](freeform-window-overview.md)
   - [应用适配自由窗口](application-adaptation-freeform-window.md)
 - [使用WindowManager管理多模输入事件（C/C++）](native-window-event-filter.md)
+- 其他开发场景<!--other-scenarios-->
+  - [设置窗口动效 (ArkTS)](window-animation.md)
+  - [使用WindowManager管理多模输入事件 (C/C++)](native-window-event-filter.md)
 <!--RP1-->
 <!--RP1End-->
 - 应用启动页的配置与使用<!--launch-page-->
