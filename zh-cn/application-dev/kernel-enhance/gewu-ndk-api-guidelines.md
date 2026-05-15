@@ -188,7 +188,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 
 ## 示例
 
-示例如下:
+示例如下：
 
 ```CPP
 #include <future>
