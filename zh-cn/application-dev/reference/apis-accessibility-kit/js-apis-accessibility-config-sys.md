@@ -692,7 +692,7 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[onSeniorModeStateChangeForApp](#onSeniorModeStateChangeForApp)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[onSeniorModeStateChangeForApp](#onseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
