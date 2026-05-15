@@ -543,7 +543,7 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 
 窗口尺寸异常检测用于发现窗口尺寸超出合理范围的问题。当窗口尺寸小于最小尺寸限制或大于最大尺寸限制时，系统会生成故障日志。
 
-#### 日志信息
+**日志信息**
 
 故障日志格式：
 
@@ -566,7 +566,7 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 | `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值 |
 | `sessionRect` | 窗口矩形区域（像素） | 窗口的位置和尺寸，单位为像素 |
 
-#### 检测逻辑
+**检测逻辑**
 
 当窗口尺寸满足以下任一条件时触发异常：
 
@@ -575,7 +575,7 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 - `curHeight < minHeight`：当前高度小于最小高度限制
 - `curHeight > maxFloatingWindowSize`：当前高度大于最大尺寸限制
 
-#### 分析定位
+**分析定位**
 
 **步骤1：获取故障日志**
 
@@ -614,7 +614,7 @@ hdc shell hidumper -s WindowManagerService -a '-w <WinId>'
 
 检查WindowRect是否与故障日志中的sessionRect一致。
 
-#### 可能原因
+**可能原因**
 
 - 窗口resize()时设置了超出合理范围的尺寸（过小或过大）
 - 窗口模式切换时尺寸计算错误（如从全屏切换到浮动窗口）
@@ -630,7 +630,7 @@ windowClass.resize(50, 50); // 尺寸小于最小限制，触发WINDOW_RECT_CHEC
 windowClass.showWindow();
 ```
 
-#### 解决步骤
+**解决步骤**
 
 根据故障日志中的异常类型修复：
 
@@ -656,7 +656,7 @@ windowClass.resize(800, 600); // 尺寸小于maxFloatingWindowSize
 windowClass.showWindow();
 ```
 
-#### 检查清单
+**检查清单**
 
 1. 查看故障日志，确认windowName和异常尺寸值
 2. 对比curWidth、curHeight与minWidth、minHeight、maxFloatingWindowSize
