@@ -849,6 +849,54 @@ NODE_PICKER_SELECTION_INDICATOR = 1018003
 | -- | -- |
 | .object | 参数类型为[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)。 |
 
+## NODE_PICKER_DISPLAYED_ITEM_COUNT
+
+```c
+NODE_PICKER_DISPLAYED_ITEM_COUNT = 1018004
+```
+
+设置Picker容器可见选项的数量，语义与ArkTS侧[UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)的[displayedItemCount](arkui-ts/ts-container-ui-picker-component.md#displayeditemcount)一致。未设置时，可见选项为7行。Picker为立体滚轮样式时，除选中项外的选项会按角度旋转，实际可视高度会小于选项行高；若增大可见行数或行高，请相应增大容器高度，详见[UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 可见选项数量。取值范围为[2, 9]内的整数。传入小数时按向下取整处理；传入偶数时，会规范为不小于该值的奇数（例如2变为3、8变为9）。不在取值范围内时使用默认值7。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 当前可见选项数量。 |
+
+## NODE_PICKER_ITEM_HEIGHT
+
+```c
+NODE_PICKER_ITEM_HEIGHT = 1018005
+```
+
+设置Picker容器每个选项的高度，语义与ArkTS侧[UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)的[itemHeight](arkui-ts/ts-container-ui-picker-component.md#itemheight)一致。未设置时，每个选项高度为40vp。CAPI以vp为单位传入高度值。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 选项高度，单位为vp。有效范围为[40, 64]。小于40vp或大于64vp时使用默认值40vp。不支持百分比。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 当前选项高度，单位为vp。 |
+
 ## NODE_CALENDAR_PICKER_HINT_RADIUS
 
 ```c
