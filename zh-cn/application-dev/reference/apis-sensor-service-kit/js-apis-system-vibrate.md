@@ -110,7 +110,7 @@ export default {
   </text>
   <input class="buttonText" type="button" onclick="vibrate">点击振动</input>
 </div>
-````
+```
 
 ```css
 /* xxx.css */

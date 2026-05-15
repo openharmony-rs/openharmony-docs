@@ -328,7 +328,7 @@ export default {
           sensor.unsubscribeLight()
         case "PEDOMETER":
           sensor.unsubscribeStepCounter()
-        case "PEDOMETER":
+        case "BAROMETER":
           sensor.unsubscribeBarometer();
         case "HEART_RATE":
           sensor.unsubscribeHeartRate()
