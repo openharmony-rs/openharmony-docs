@@ -214,10 +214,10 @@
    ```
    ArkTS-Sta:
    <!-- @[get_file_fd](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-    
+   
    ``` TypeScript
    public updateFileFd(filesDir: string): void {
-      // 获取文件fd
+     // 获取文件fd
      this.fileName = systemDateTime.getTime(true).toString() + '.mp4';
      this.path = filesDir + '/' + this.fileName;
      try {
@@ -230,7 +230,7 @@
    ```
    ArkTS-Sta:
    <!-- @[set_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-    
+   
    ``` TypeScript
    // 配置屏幕录制参数
    let displayInfo: display.Display | undefined = await display.getDefaultDisplaySync();
