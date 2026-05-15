@@ -1533,10 +1533,7 @@ enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: number): void
 > 
 > 1. 若设备运行期间通过本接口设置的GWP-ASan应用数量超过配额限制，调用该接口将会失败并抛出错误码。请使用try-catch捕获异常，以避免应用异常退出。
 > 2. 设备重启后，本接口设置的GWP-ASan参数将会失效。
-
-> **注意**：
->
-> 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
+> 3. 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1597,20 +1594,35 @@ disableGwpAsanGrayscale(): void
 
 停止使能GWP-ASan。调用该接口将取消自定义配置，恢复默认参数[GwpAsanOptions](#gwpasanoptions20)。
 
+> **说明**：
+> 
+> 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
+
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **示例**：
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { taskpool } from '@kit.ArkTS';
 
-hidebug.disableGwpAsanGrayscale();
+@Concurrent
+function disableGwpAsanTask(): void {
+  hidebug.disableGwpAsanGrayscale();
+}
+taskpool.execute(disableGwpAsanTask).then(() => {
+  console.info(`Disable GWP-ASan succeeded.`);
+})
 ```
 
 ## hidebug.getGwpAsanGrayscaleState<sup>20+</sup>
 getGwpAsanGrayscaleState(): number
 
 获取当前GWP-ASan剩余使能天数。
+
+> **说明**：
+> 
+> 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1624,9 +1636,15 @@ getGwpAsanGrayscaleState(): number
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { taskpool } from '@kit.ArkTS';
 
-let remainDays: number = hidebug.getGwpAsanGrayscaleState();
-console.info(`remainDays: ${remainDays}`);
+@Concurrent
+function getGwpAsanStateTask(): number {
+  return hidebug.getGwpAsanGrayscaleState();
+}
+taskpool.execute(getGwpAsanStateTask).then((remainDays: Object) => {
+  console.info(`GWP-ASan remain days: ${remainDays as number}.`);
+})
 ```
 
 ## hidebug.setJsRawHeapTrimLevel<sup>20+</sup>
