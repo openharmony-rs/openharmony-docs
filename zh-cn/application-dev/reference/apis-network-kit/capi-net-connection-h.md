@@ -385,7 +385,9 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 
 **描述**
 
-注册自定义DNS解析器。
+注册自定义DNS解析器。不再使用时，应调用 [OH_NetConn_UnregisterDnsResolver](#oh_netconn_unregisterdnsresolver)注销自定义DNS解析处理器。
+
+建议使用[OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver)接口注册。当使用[OH_NetConn_RegisterCustomDnsResolver](#oh_netconn_registercustomdnsresolver)时，需要使用[OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)接口取消注册。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
@@ -432,7 +434,10 @@ int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolv
 
 **描述**
 
-注册自定义DNS解析器。
+注册自定义DNS解析处理器。注册后，系统DNS解析请求将优先回调该处理器，由开发者按需返回自定义解析结果；若未返回自定义结果，则继续使用系统默认DNS解析规则。
+同一时间全局仅支持一个自定义DNS解析处理器生效。如需更换处理器，应先调用[OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销已注册的处理器，再重新注册。
+
+作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用 [OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析处理器。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
