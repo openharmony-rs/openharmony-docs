@@ -10,6 +10,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.file.cloudSync (端云同步能力)](js-apis-file-cloudsync.md)。
 
@@ -23,6 +24,10 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 云图同步对象，用来支撑图库应用媒体资源端云同步流程。在使用前，需要先创建GallerySync实例。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 ### constructor
 
 constructor()
@@ -32,6 +37,10 @@ constructor()
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -45,11 +54,17 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 云图同步对象添加同步过程事件监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](#onprogress23)。
+
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -79,17 +94,74 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 });
 ```
 
+### onProgress<sup>23+</sup>
+
+onProgress(callback: Callback\<SyncProgress>): void
+
+添加同步过程事件监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on](#onprogress)。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| callback | Callback\<[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)> | 是   | 回调函数。同步过程事件，入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+let callback = (pg: cloudSync.SyncProgress): void => {
+  console.info("syncState: " + pg.state);
+};
+try {
+  gallerySync.onProgress(callback);
+} catch (error) {
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ### off('progress')
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 云图同步对象移除'progress'类型中指定的callback回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](#offprogress23)。
+
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -123,17 +195,69 @@ gallerySync.on('progress', callback);
 gallerySync.off('progress', callback);
 ```
 
+### offProgress<sup>23+</sup>
+
+offProgress(callback: Callback\<SyncProgress>): void
+
+移除同步过程事件监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#offprogress)。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| callback | Callback\<[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)> | 是   | 回调函数。同步过程事件，入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+let gallerySync = new cloudSync.GallerySync();
+let callback = (pg: cloudSync.SyncProgress): void => {
+  console.info("gallery sync state: " + pg.state + "error type: " + pg.error);
+}
+gallerySync.onProgress(callback);
+gallerySync.offProgress(callback);
+```
+
 ### off('progress')
 
 off(evt: 'progress'): void
 
 云图同步对象移除'progress'类型的所有回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](#offprogress23-1)。
+
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -164,6 +288,45 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 gallerySync.off('progress');
 ```
 
+### offProgress<sup>23+</sup>
+
+offProgress(): void
+
+移除同步过程事件监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#offprogress-1)。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Sta起始版本**：23
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+let gallerySync = new cloudSync.GallerySync();
+let callback = (pg: cloudSync.SyncProgress): void => {
+  console.info("gallery sync state: " + pg.state + "error type: " + pg.error);
+}
+gallerySync.onProgress(callback);
+gallerySync.offProgress();
+```
+
 ### start
 
 start(): Promise&lt;void&gt;
@@ -175,6 +338,10 @@ start(): Promise&lt;void&gt;
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -197,6 +364,8 @@ start(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -213,6 +382,23 @@ gallerySync.start().then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+let callback = (pg: cloudSync.SyncProgress): void => {
+  console.info("gallery sync state: " + pg.state + "error type: " + pg.error);
+}
+gallerySync.onProgress(callback);
+gallerySync.start().then((): void => {
+  console.info("start sync successfully");
+}).catch((err: BusinessError): void => {
+  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### start
 
 start(callback: AsyncCallback&lt;void&gt;): void
@@ -224,6 +410,10 @@ start(callback: AsyncCallback&lt;void&gt;): void
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -246,6 +436,8 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -253,6 +445,21 @@ let gallerySync = new cloudSync.GallerySync();
 
 gallerySync.start((err: BusinessError) => {
   if (err) {
+    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start sync successfully");
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+gallerySync.start((err: BusinessError<void> | null): void => {
+  if (err && err.code) {
     console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
   } else {
     console.info("start sync successfully");
@@ -276,6 +483,10 @@ stop(): Promise&lt;void&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                  | 说明             |
@@ -294,6 +505,8 @@ stop(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -302,6 +515,19 @@ let gallerySync = new cloudSync.GallerySync();
 gallerySync.stop().then(() => {
   console.info("stop sync successfully");
 }).catch((err: BusinessError) => {
+  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+gallerySync.stop().then<void>((): void => {
+  console.info("stop sync successfully");
+}, (err: BusinessError<void>): void => {
   console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
@@ -322,6 +548,10 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
@@ -340,6 +570,8 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -354,9 +586,28 @@ gallerySync.stop((err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let gallerySync = new cloudSync.GallerySync();
+gallerySync.stop((err: BusinessError<void> | null): void => {
+  if (err && err.code) {
+    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop sync successfully");
+  }
+});
+```
+
 ## Download
 
 云文件下载对象，用来支撑图库应用原图文件下载流程。在使用前，需要先创建Download实例。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 ### constructor
 
@@ -367,6 +618,10 @@ constructor()
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -380,11 +635,17 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 添加云文件下载过程事件监听。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onProgress](#onprogress23-1)。
+
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -414,17 +675,68 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 });
 ```
 
+### onProgress<sup>23+</sup>
+
+onProgress(callback: Callback\<DownloadProgress>): void
+
+添加云文件下载过程事件监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on](#onprogress-1)。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| callback | Callback\<[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)> | 是   | 回调函数。云文件下载过程事件，入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+let download = new cloudSync.Download();
+let callback = (pg: cloudSync.DownloadProgress): void => {
+  console.info("download state: " + pg.state + "error type: " + pg.error);
+}
+download.onProgress(callback);
+```
+
 ### off('progress')
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 云图下载对象移除'progress'类型中指定的callback回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](#offprogress23-2)。
+
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -458,17 +770,69 @@ download.on('progress', callback);
 download.off('progress', callback);
 ```
 
+### offProgress<sup>23+</sup>
+
+offProgress(callback: Callback\<DownloadProgress>): void
+
+移除云文件下载过程事件监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#offprogress-2)。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明 |
+| ---------- | ------ | ---- | ---- |
+| callback | Callback\<[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)> | 是   | 回调函数。云文件下载过程事件，入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+let download = new cloudSync.Download();
+let callback = (pg: cloudSync.DownloadProgress): void => {
+  console.info("download state: " + pg.state);
+}
+download.onProgress(callback);
+download.offProgress(callback);
+```
+
 ### off('progress')
 
 off(evt: 'progress'): void
 
 云图下载对象移除'progress'类型的所有回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offProgress](#offprogress23-3)。
+
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -499,6 +863,45 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 download.off('progress');
 ```
 
+### offProgress<sup>23+</sup>
+
+offProgress(): void
+
+移除云文件下载过程事件监听。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#offprogress-3)。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Sta起始版本**：23
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001  | IPC error. |
+
+**示例：**
+
+```ts
+let download = new cloudSync.Download();
+let callback = (pg: cloudSync.DownloadProgress): void => {
+  console.info("download state: " + pg.state);
+}
+download.onProgress(callback);
+download.offProgress();
+```
+
 ### start
 
 start(uri: string): Promise&lt;void&gt;
@@ -510,6 +913,10 @@ start(uri: string): Promise&lt;void&gt;
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -537,6 +944,8 @@ start(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -554,6 +963,24 @@ download.start(uri).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
+let callback = (pg: cloudSync.DownloadProgress): void => {
+  console.info("download state: " + pg.state);
+}
+download.on('progress', callback);
+download.start(uri).then<void>((): void => {
+  console.info("start download successfully");
+}).catch((err: BusinessError<void>): void => {
+  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ### start
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
@@ -565,6 +992,10 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -587,6 +1018,8 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -595,6 +1028,22 @@ let uri: string = "file:///media/Photo/1";
 
 download.start(uri, (err: BusinessError) => {
   if (err) {
+    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start download successfully");
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
+download.start(uri, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
     console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
   } else {
     console.info("start download successfully");
@@ -618,6 +1067,10 @@ stop(uri: string): Promise&lt;void&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
@@ -642,6 +1095,8 @@ stop(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -651,6 +1106,20 @@ let uri: string = "file:///media/Photo/1";
 download.stop(uri).then(() => {
   console.info("stop download successfully");
 }).catch((err: BusinessError) => {
+  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
+download.stop(uri).then<void>((): void => {
+  console.info("stop download successfully");
+}).catch((err: BusinessError<void>): void => {
   console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
@@ -671,6 +1140,10 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
@@ -690,6 +1163,8 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -705,9 +1180,29 @@ download.stop(uri, (err: BusinessError) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
+download.stop(uri, (err: BusinessError<void> | null): void => {
+  if (err && err.code) {
+    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop download successfully");
+  }
+});
+```
+
 ## FileSync<sup>12+</sup>
 
 云盘同步对象，用于支撑文件管理器应用完成云盘文件的端云同步流程。在使用前，需要先创建FileSync实例。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 ### constructor<sup>12+</sup>
 
@@ -718,6 +1213,10 @@ constructor(bundleName: string)
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -965,6 +1464,10 @@ fileSync.getUploadList(uris).then((progressList: Array<cloudSync.UploadProgress>
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 ### cleanCache<sup>11+</sup>
 
 cleanCache(uri: string): void
@@ -976,6 +1479,10 @@ cleanCache(uri: string): void
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -998,6 +1505,8 @@ cleanCache(uri: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -1013,6 +1522,22 @@ try {
   console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
 } 
 
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+try {
+  fileCache.cleanCache(uri);
+} catch (err) {
+  console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
+}
 ```
 
 ### getDownloadList
@@ -1130,6 +1655,10 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明 |
@@ -1157,6 +1686,8 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1171,6 +1702,21 @@ cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState
 
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uris: Array<string> = ["file://uri"];
+cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState>): void => {
+  for(let i = 0, len = syncStates.length; i < len; i++){
+    console.info("get file sync state successfully" + syncStates[i]);
+  }
+}).catch((err: BusinessError<void>): void => {
+  console.error("get file sync state failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ## cloudSync.getFileSyncState<sup>11+</sup>
 
 getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt;): void
@@ -1182,6 +1728,10 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1205,6 +1755,8 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1220,6 +1772,27 @@ cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSyn
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uris: Array<string> = ["file://uri"];
+cloudSync.getFileSyncState(uris, (err: BusinessError<void> | null, syncStates: Array<cloudSync.FileSyncState> | undefined): void => {
+  if (err && err.code) {
+    console.error("get file sync state with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    if (syncStates == undefined) {
+      console.error("get file sync state successfully, but syncStates is undefined.");
+      return;
+    }
+    for(let i = 0, len = syncStates.length; i < len; i++){
+      console.info("get file sync state successfully" + syncStates[i]);
+    }
+  }
+});
+```
+
 ## cloudSync.getFileSyncState<sup>12+</sup>
 
 getFileSyncState(uri: string): FileSyncState
@@ -1229,6 +1802,10 @@ getFileSyncState(uri: string): FileSyncState
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：该接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1260,6 +1837,8 @@ getFileSyncState(uri: string): FileSyncState
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
@@ -1274,6 +1853,21 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let path: string = "/data/storage/el2/cloud/1.txt";
+let uri: string = fileUri.getUriFromPath(path);
+try {
+  let state = cloudSync.getFileSyncState(uri);
+} catch (err) {
+  console.error("getFileSyncStatefailed with error: " + JSON.stringify(err));
+}
+```
+
 ## FileSyncState<sup>11+</sup>
 
 端云文件同步状态，为枚举类型。
@@ -1284,13 +1878,13 @@ try {
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
-| UPLOADING |  0 | 上行同步中。 |
-| DOWNLOADING |  1 | 下行同步中。 |
-| COMPLETED |  2 | 同步成功。 |
-| STOPPED |  3 | 同步已停止。 |
-| TO_BE_UPLOADED<sup>12+</sup> |  4 | 正在等待上行。 |
-| UPLOAD_SUCCESS<sup>12+</sup> |  5 | 文件已成功上行。 |
-| UPLOAD_FAILURE<sup>12+</sup> |  6 | 文件上行失败。 |
+| UPLOADING |  0 | 上行同步中。<br> **ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23 |
+| DOWNLOADING |  1 | 下行同步中。<br> **ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23 |
+| COMPLETED |  2 | 同步成功。<br> **ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23 |
+| STOPPED |  3 | 同步已停止。<br> **ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23 |
+| TO_BE_UPLOADED<sup>12+</sup> |  4 | 正在等待上行。<br> **ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| UPLOAD_SUCCESS<sup>12+</sup> |  5 | 文件已成功上行。<br> **ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| UPLOAD_FAILURE<sup>12+</sup> |  6 | 文件上行失败。<br> **ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
 
 ## cloudSync.optimizeStorage<sup>17+</sup>
 
@@ -1303,6 +1897,10 @@ optimizeStorage(): Promise&lt;void&gt;
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1323,12 +1921,26 @@ optimizeStorage(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 cloudSync.optimizeStorage().then(() => {
   console.info("optimize storage successfully");   // 前台UX按需阻塞等待
 }).catch((err: BusinessError) => {
+  console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+cloudSync.optimizeStorage().then<void>((): void => {
+  console.info("optimize storage successfully");   // 前台UX按需阻塞等待
+}).catch((err: BusinessError<void>): void => {
   console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
@@ -1346,6 +1958,10 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1375,6 +1991,8 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1395,6 +2013,28 @@ cloudSync.startOptimizeSpace(para, callback).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
+let callback = (data:cloudSync.OptimizeSpaceProgress): void => {
+  if (data.state == cloudSync.OptimizeState.FAILED) {
+    console.info("optimize space failed");
+  } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
+    console.info("optimize space successfully");
+  } else if (data.state == cloudSync.OptimizeState.RUNNING) {
+    console.info("optimize space progress: " + data.progress);
+  }
+}
+cloudSync.startOptimizeSpace(para, callback).then<void>((): void => {
+  console.info("start optimize space");
+}).catch((err: BusinessError<void>): void => {
+  console.error("start optimize space failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
 ## cloudSync.stopOptimizeSpace<sup>17+</sup>
 
 stopOptimizeSpace(): void
@@ -1406,6 +2046,10 @@ stopOptimizeSpace(): void
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -1420,11 +2064,30 @@ stopOptimizeSpace(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
 let callback = (data:cloudSync.OptimizeSpaceProgress) => {
+  if (data.state == cloudSync.OptimizeState.FAILED) {
+    console.info("optimize space failed");
+  } else if (data.state == cloudSync.OptimizeState.RUNNING) {
+    console.info("optimize space progress: " + data.progress);
+  }
+}
+cloudSync.startOptimizeSpace(para, callback);
+cloudSync.stopOptimizeSpace();   // 停止空间优化
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
+let callback = (data:cloudSync.OptimizeSpaceProgress): void => {
   if (data.state == cloudSync.OptimizeState.FAILED) {
     console.info("optimize space failed");
   } else if (data.state == cloudSync.OptimizeState.RUNNING) {
@@ -1443,6 +2106,10 @@ cloudSync.stopOptimizeSpace();   // 停止空间优化
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
 | RUNNING |  0 | 正在优化空间。 |
@@ -1458,10 +2125,14 @@ cloudSync.stopOptimizeSpace();   // 停止空间优化
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：23
+
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
 | state | [OptimizeState](#optimizestate17) | 否   | 否   | 枚举值，优化空间状态。|
-| progress | number | 否   | 否   | 优化进度百分比，范围[0,100]，单位：百分比。|
+| progress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 优化进度百分比，范围[0,100]，单位：百分比。|
 
 ## OptimizeSpaceParam<sup>17+</sup>
 
@@ -1471,10 +2142,14 @@ cloudSync.stopOptimizeSpace();   // 停止空间优化
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：17
+
+**ArkTS-Sta起始版本**：23
+
 | 名称     | 类型   | 只读 | 可选 | 说明 |
 | ---------- | ------ | ---- | ---- | ---- |
-| totalSize | number | 否   | 否   | 优化空间总大小。查询媒体库接口获得需要老化的所有文件总大小，由应用传入，单位byte。|
-| agingDays | number | 否   | 否   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频，单位：天。|
+| totalSize | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 优化空间总大小。查询媒体库接口获得需要老化的所有文件总大小，由应用传入，单位byte。|
+| agingDays | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频，单位：天。|
 
 ## UploadProgress
 
