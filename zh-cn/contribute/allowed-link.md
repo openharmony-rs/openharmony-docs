@@ -3,3 +3,6 @@
 | 文档路径 | 链接信息 | kit | 子系统 | 结对人是否对齐 | 时间 |
 | --- | --- | --- | --- | --- | ---- |
 | docs/zh-cn/application-dev/application-models/context-switch.md | [applicationInfo: ApplicationInfo;](../reference/apis-ability-kit/js-apis-inner-application-context.md#context) | Ability Kit | Ability | 是 | 2026-05-07 |
+| docs/zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md | [自定义弹窗的创建](./ts-methods-custom-dialog-box.md#open) | ArkUI Kit | ArkUI | 是 | 2026-05-11 |
+| docs/zh-cn/application-dev/ui/state-management/arkts-basic-syntax-overview.md | [属性方法](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) | ArkUI Kit | ArkUI | 是 | 2026-05-11 |
+| docs/zh-cn/application-dev/ui/state-management/arkts-basic-syntax-overview.md | [事件方法](../../reference/apis-arkui/arkui-ts/ts-component-general-events.md) | ArkUI Kit | ArkUI | 是 | 2026-05-11 |
