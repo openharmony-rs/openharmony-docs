@@ -731,7 +731,7 @@ SIM card activation or deactivation failed.
 1. 检查飞行模式是否关闭。
 2. 检查是否插入SIM卡。
 
-## 9201018 指定应用不持支操作
+## 9201018 指定应用不支持操作
 
 **错误信息**
 
@@ -749,7 +749,7 @@ The application is inoperable.
 
 指定应用不支持添加，请添加其他应用到栏。
 
-## 9201019 指定位置不持支操作
+## 9201019 指定位置不支持操作
 
 **错误信息**
 
@@ -1030,21 +1030,21 @@ Failed to install the HAP because the overlay check failed.
 
 **错误描述**
 
-当安装overlay特征的应用时，指定的应用和待安装的overlay特征应用不为预置应用，或者目标应用/目标module是overlay特征的应用/module
+当安装overlay特征的应用时，指定的应用和待安装的overlay特征应用不为预置应用，或者目标应用/目标module是overlay特征的应用/module。
 
 **可能原因**
 
 1. 使用应用间的overlay特性时，overlay特征应用必须为预置应用。
 2. 使用应用间的overlay特性时，目标应用必须为预置应用。
-3. 使用应用间的overlay特性时，目标应用不能是具有overlay特征的应用
+3. 使用应用间的overlay特性时，目标应用不能是具有overlay特征的应用。
 4. 目标module不能是具有overlay特征的module。
 
 **处理步骤**
 
 1. 检查overlay特征应用是否为预置应用。
 2. 检查目标应用是否为预置应用。
-3. 检查目标应用是否不为overlay特征的应用
-4. 检查目标module是否不为overlay特征的module。<!--DelEnd-->
+3. 检查目标应用是否不为overlay特征的应用。
+4. 检查目标module是否不为overlay特征的module。
 
 ## 9201034 HSP缺少必需权限导致应用安装失败
 
@@ -1158,3 +1158,21 @@ Failed to install the HAP due to enterprise device verification failure.
 **处理步骤**
 
 确认设备是否在企业设备管理范围内，并通过企业设备管理验证。
+
+## 9201043 API调用的前置条件未满足
+
+**错误信息**
+
+Prerequisites for the API call have not been satisfied. For example, distributed outgoing transmission is not disallowed before adding the distributed bidirectional collaboration trustlist.
+
+**错误描述**
+
+当API调用的前置条件未满足时，会产生此错误码。
+
+**可能原因**
+
+在添加允许分布式双向协同应用名单之前，设备间单向传输能力未被禁止。
+
+**处理步骤**
+
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。

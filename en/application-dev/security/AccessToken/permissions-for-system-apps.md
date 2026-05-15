@@ -4160,6 +4160,8 @@ Allows an application to create or remove the recovery key.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: PCs/2-in-1 devices
+
 **Valid since**: 14
 
 ## ohos.permission.UTILIZE_RECOVERY_KEY
@@ -4171,6 +4173,8 @@ Allows an application to utilize the recovery key to reset the lock screen passw
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 14
 
@@ -4207,6 +4211,8 @@ Allows an application to obtain brief information about the recovery key.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 14
 
@@ -4259,6 +4265,20 @@ Allows an application to access the application lock.
 **Certificate-based authorization**: true
 
 **Valid since**: 13
+
+## ohos.permission.ACCESS_CAR_CONTROL
+
+Allows an application to access or start the vehicle control interface.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 13
 
 ## ohos.permission.ACCESS_APP_SINGLE_PERMISSION_MANAGEMENT
 
@@ -4442,7 +4462,7 @@ Allows an application to read the data of Account Suggestions and start the UIEx
 
 **Certificate-based authorization**: true
 
-**Valid since**: 18
+**Valid since**: 16
 
 ## ohos.permission.GET_PAGE_INFO
 
@@ -5895,6 +5915,20 @@ Allows a system application to launch the intelligent customer service.
 
 **Since**: 26.0.0
 
+## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
+
+Allows an application to configure the encryption policy for a volume.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
 ## ohos.permission.ACCESS_DIGITAL_IDENTITY_ABILITY
 
 Allows a system application to use the unified management capabilities of the digital certificate service.
@@ -5993,6 +6027,62 @@ Allows a system application to generate integrity protection credentials for sen
 
 **Since**: 26.0.0
 
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_VISION
+
+Allows a system application to query the status of visual-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_HEARING
+
+Allows a system application to query the status of hearing-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_ACTION
+
+Allows a system application to query the status of interaction-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.CONNECT_GAME_ACCELERATION
+
+Allows an application to adjust the performance policy in gaming scenarios.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | TVs
+
+**Since**: 26.0.0
+
 ## ohos.permission.QUERY_CLI_TOOL
 
 Allows a system application to query CLI tools.
@@ -6020,3 +6110,33 @@ Allows a system application to run CLI tools.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.cli.GET_STORAGE_MANAGER
+
+Allows an application to query storage using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | litewearables
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_MAPDATA_DIR
+
+Allows a system application to read and write map data.
+
+With this permission, the application can access and modify the offline map data downloaded to the device.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones
+
+**Since**: 20

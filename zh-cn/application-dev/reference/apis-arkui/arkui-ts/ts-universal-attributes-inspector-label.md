@@ -12,7 +12,7 @@
 
 ## inspectorLabel
 
-inspectorLabel(value: string | undefined): T
+inspectorLabel(label: string | undefined): T
 
 设置组件的调测标签。未设置时，组件调测标签默认为空。如果同一个组件设置了多个调测标签，仅最后一次设置的生效。
 
@@ -28,7 +28,7 @@ inspectorLabel(value: string | undefined): T
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| value  | string \| undefined  |  是  | 组件的调测标签，请开发者保证标签的唯一性。如果传入undefined表示调测标签为空字符串。 |
+| label  | string \| undefined  |  是  | 组件的调测标签，请开发者保证标签的唯一性。如果传入undefined表示调测标签为空字符串。 |
 
 **返回值：**
 

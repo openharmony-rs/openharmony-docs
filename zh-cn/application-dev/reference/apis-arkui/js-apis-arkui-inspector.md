@@ -55,7 +55,7 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 ## ComponentObserver
 
-组件布局和组件绘制送显完成回调的句柄，包含了申请句柄时的首次查询结果。
+组件布局和组件绘制送显完成回调的句柄，通过该句柄可调用以下方法。
 
 ### on('layout')
 
