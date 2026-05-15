@@ -117,7 +117,7 @@
        console.error(`处理异常情况, code is ${err.code}, message is ${err.message}.`);
    })
    ```
-    ArkTS-Sta示例：
+   ArkTS-Sta示例：
    <!-- @[callback_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
