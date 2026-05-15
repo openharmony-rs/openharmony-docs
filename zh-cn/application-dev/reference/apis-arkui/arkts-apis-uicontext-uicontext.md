@@ -2404,11 +2404,12 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[组件错误码](./errorcode-node.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
+| 100023   | Unable to obtain current ui context. |
 
 **示例：**
 
@@ -2513,11 +2514,13 @@ ArkTS-Sta: getFilteredInspectorTreeById(id: string, depth: int, filters?: Array\
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[组件错误码](./errorcode-node.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
+| 100023   | Unable to obtain current ui context. |
+| 100024   | The parameter depth must be greater than 0. |
 
 **示例：**
 

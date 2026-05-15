@@ -367,6 +367,7 @@ HDR视频的高动态范围渲染类型。
 | ---- | -- | ---- |
 | DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
 | AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24|
+| EDR<sup>26.0.0+</sup> | 2 | EDR类型。<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## 事件
 
@@ -378,7 +379,7 @@ HDR视频的高动态范围渲染类型。
 
 仅type为SURFACE或TEXTURE时以下事件有效：
 
-### onLoad
+### onLoad<sup>18+</sup>
 
 ArkTS-Dyn: onLoad(callback: OnNativeLoadCallback)
 
@@ -400,7 +401,7 @@ ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
 | ----- | ------ | ---- | ---------------------------------------- |
 | callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是    | XComponent持有的Surface创建后回调事件。<br/>ArkTS-Sta模式下可不传。 |
 
-### onDestroy
+### onDestroy<sup>18+</sup>
 
 ArkTS-Dyn: onDestroy(event: VoidCallback)
 
