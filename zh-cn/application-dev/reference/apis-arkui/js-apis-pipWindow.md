@@ -1315,7 +1315,7 @@ on(type: 'stateChange', callback: (state: PiPState, reason: string) => void): vo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange26)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange-1)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1359,7 +1359,6 @@ this.pipController.on('stateChange', (state: PiPWindow.PiPState, reason: string)
 });
 ```
 
-<a id="onstatechange26"></a>
 ### onStateChange
 
 onStateChange(callback: StateChangeCallback): void
