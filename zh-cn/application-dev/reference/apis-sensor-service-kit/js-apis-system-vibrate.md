@@ -71,21 +71,73 @@ Vibrator.vibrate(vibrateOptions);
 **JS示例**：
 
 ```js
-import vibrator from '@system.sensor';
+import vibrator from '@system.vibrator';
 
-let vibrateOptions = {
-  mode: 'short',
-  success: () => {
-    console.info('Succeed in vibrating');
+export default {
+  data: {
+    TAG: "WearLiteSample:",
+    result: ''
   },
-  fail: (data, code) => {
-    console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
-  },
-  complete: () => {
-    console.info('completed in vibrating');
+  vibrate() {
+    try {
+      let vibrateOptions = {
+        mode: 'short',
+        success: () => {
+          console.info('Succeed in vibrating');
+          this.result = 'Succeed in vibrating';
+        },
+        fail: (data, code) => {
+          console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
+          this.result = `Failed to vibrate. Data: ${data}, code: ${code}`;
+        },
+        complete: () => {
+          console.info('completed in vibrating');
+        }
+      };
+      vibrator.vibrate(vibrateOptions);
+    } catch (e) {
+      console.error(this.TAG + 'vibrate exception in, message:' + JSON.stringify(e))
+    }
   }
 };
-vibrator.vibrate(vibrateOptions);
+```
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title">
+    {{ result }}
+  </text>
+  <input class="buttonText" type="button" onclick="vibrate">点击振动</input>
+</div>
+````
+
+```css
+/* xxx.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  width: 200px;
+  font-size: 30px;
+  text-align: center;
+}
+.buttonText {
+  background-color: blue;
+  radius: 30px;
+  text-color: white;
+  font-size: 25px;
+  width: 150px;
+  height:50px;
+  margin-top: 20px;
+  font-weight: bolder;
+  align-items: center;
+}
 ```
 
 ## VibrateOptions
