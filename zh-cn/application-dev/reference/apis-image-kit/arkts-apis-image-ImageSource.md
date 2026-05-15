@@ -905,7 +905,7 @@ async function WriteImageMetadata(imageSourceObj : image.ImageSource) {
     metaData.exifMetadata.imageLength = 3072;
   }
   await imageSourceObj.writeImageMetadata(metaData).then(() => {
-    console.info(`Succceed in writing image metadata.`);
+    console.info(`Succeeded in writing image metadata.`);
   }).catch((error: BusinessError) => {
     console.error(`Failed to write image metadata. error.code is ${error.code}, error.message is ${error.message}`);
   });
