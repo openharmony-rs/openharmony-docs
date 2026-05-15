@@ -1503,9 +1503,11 @@ getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): 
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2169,6 +2171,12 @@ struct CompV2 {
 
 **起始版本：** 26.0.0
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### getReusePool
 
 getReusePool(): IReusePool | undefined
@@ -2177,9 +2185,11 @@ getReusePool(): IReusePool | undefined
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -2227,23 +2237,31 @@ struct PoolOwner {
 
 **起始版本：** 26.0.0
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### getReusableInfo
 
-getReusableInfo(reusableComp: Function, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
 
 检索此复用池中给定可复用组件类型的回收实例信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名        | 类型                                 | 必填 |  说明            |
 | ------------ | ------------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------- |
-| reusableComp | Function | 是   | 要查询的可复用自定义组件的名称。|
+| constructor | [ReusableComponentConstructor](#reusablecomponentconstructor) | 是   | 要查询的可复用自定义组件的名称。|
 | reuseId      | string   | 否   | 可选的reuseId用于过滤结果。如果指定，则仅返回此特定reuseId复用池的信息。默认值是undefined，返回所有reuseId复用池信息。   |
 
 **返回值：**
@@ -2327,9 +2345,11 @@ preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2425,9 +2445,11 @@ struct CompA {
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称     | 类型   | 只读 | 可选 |  说明                               |
 | -------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -2513,3 +2535,17 @@ struct PoolOwner {
   }
 }
 ```
+
+## ReusableComponentConstructor
+
+type ReusableComponentConstructor = Function
+
+复用自定义组件初始化函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
