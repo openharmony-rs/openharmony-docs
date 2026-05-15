@@ -715,9 +715,9 @@ With this permission, the application can improve handwriting performance, ensur
 
 ## ohos.permission.ACCESS_CAR_AUDIO
 
-Allows an application to access and manager in-car audio.
+Allows an application to access and manage in-vehicle audio.
 
-With this permission, the application can set audio effects, manager audio zones, etc.
+With this permission, the application can set audio sound effects and manage audio zones.
 
 **Permission level**: normal
 
