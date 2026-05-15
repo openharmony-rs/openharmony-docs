@@ -316,7 +316,7 @@ async function heifsMetadataGetBlob(context: Context) {
   if (metaData != undefined && metaData.heifsMetadata != undefined) {
     let blob = await metaData.heifsMetadata.getBlob();
     if (blob != undefined) {
-      console.info("Succeeding in getting blob.");
+      console.info("Succeeded in getting blob.");
     }
   }
 }
