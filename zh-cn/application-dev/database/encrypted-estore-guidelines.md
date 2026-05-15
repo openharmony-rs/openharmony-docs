@@ -588,7 +588,7 @@ export class Mover {
 import { relationalStore } from '@kit.ArkData';
 
 export class Mover {
-  async move(eStore: relationalStore.RdbStore, cStore: relationalStore.RdbStore) {
+  async move(eStore: relationalStore.RdbStore, cStore: relationalStore.RdbStore): Promise<void> {
     if (eStore != null && cStore != null) {
       let predicates = new relationalStore.RdbPredicates('employee');
       let resultSet = await cStore.query(predicates);
