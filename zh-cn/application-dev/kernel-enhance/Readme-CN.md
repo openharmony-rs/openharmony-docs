@@ -1,7 +1,7 @@
 # Kernel Enhance Kit（内核增强能力）<!--kernel-enhance-kit-->
 <!--Kit: Kernel Enhance Kit-->
 <!--Subsystem: Kernel-->
-<!--Owner: @yzl-kongzhenhua; @Leibobo>
+<!--Owner: @yzl-kongzhenhua; @Leibobo-->
 <!--Designer: @wangxiayang-->
 <!--Tester: @lianxuanself; @laonie666; @panny060-->
 <!--Adviser: @fang-jinxu-->
