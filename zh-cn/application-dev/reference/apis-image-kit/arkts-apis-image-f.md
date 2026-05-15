@@ -61,7 +61,7 @@ async function CreatePicture(context: Context) {
   if (pictureObj != null) {
       console.info('Succeeded in creating picture.');
   } else {
-    console.error('Failed to create picture');
+    console.error('Failed to create picture.');
   }
 }
 ```
