@@ -118,6 +118,7 @@
        console.error(`处理异常情况, code is ${err.code}, message is ${err.message}.`);
    })
    ```
+   
    ArkTS-Sta示例：
 
    <!-- @[callback_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
@@ -209,6 +210,7 @@
        preset: media.AVScreenCaptureRecordPreset.SCREEN_RECORD_PRESET_H264_AAC_MP4
    };
    ```
+
    ArkTS-Sta示例：
 
    <!-- @[get_file_fd](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
@@ -226,24 +228,25 @@
      }
    }
    ```
+
    ArkTS-Sta示例：
 
    <!-- @[set_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
-   // 配置屏幕录制参数
+   // 配置屏幕录制参数。
    let displayInfo: display.Display | undefined = await display.getDefaultDisplaySync();
    if (displayInfo == undefined || displayInfo.width == undefined || displayInfo.height == undefined) {
      return;
    }
    
    let captureConfig: media.AVScreenCaptureRecordConfig = {
-     // 开发者可以根据自己的需要设置宽度和高度
+     // 开发者可以根据自己的需要设置宽度和高度。
      frameWidth: displayInfo.width.toInt(),
      frameHeight: displayInfo.height.toInt(),
-     // 用于写入文件的文件描述符（fd）
+     // 用于写入文件的文件描述符（fd）。
      fd: (this.file as fs.File).fd,
-     // 可选参数及其默认值
+     // 可选参数及其默认值。
      videoBitrate: 10000000,
      audioSampleRate: 48000,
      audioChannelCount: 2,
@@ -255,9 +258,11 @@
 5. 基于预先配置的屏幕录制参数，调用[init](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#init12)方法初始化screenCapture。
 
    ArkTS-Dyn示例：
+
    ``` TypeScript
    await this.screenCapture.init(this.captureConfig);
    ```
+
    ArkTS-Sta示例：
    
    <!-- @[init_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
@@ -267,6 +272,7 @@
    ```
 
 6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
+   
    ArkTS-Dyn示例：
 
    ``` TypeScript
@@ -281,6 +287,7 @@
    ``` TypeScript
    await this.screenCapture.startRecording();
    ```
+
    ArkTS-Sta示例：
 
    <!-- @[start_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
@@ -300,6 +307,7 @@
      ``` TypeScript
      await this.screenCapture.stopRecording();
      ```
+
      ArkTS-Sta示例：
 
      <!-- @[stop_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
@@ -309,11 +317,13 @@
      ```
 
 9. 调用[release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12)方法销毁实例，释放资源。
-
+   
    ArkTS-Dyn示例：
+   
    ``` TypeScript
    await this.screenCapture.release();
    ```
+   
    ArkTS-Sta示例：
 
    <!-- @[release_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
@@ -324,6 +334,8 @@
 ## 完整示例
 
 以下是通过AVScreenCaptureRecorder实现录屏存文件的完整代码示例。
+
+ArkTS-Sta示例：
 
 ``` TypeScript
 import { media } from '@kit.MediaKit';
