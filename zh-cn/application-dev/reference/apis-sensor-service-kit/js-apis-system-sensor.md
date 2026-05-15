@@ -167,6 +167,7 @@ Sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
 ```
 
 ```js
+// xxx.js
 import sensor from '@system.sensor';
 
 export default {
