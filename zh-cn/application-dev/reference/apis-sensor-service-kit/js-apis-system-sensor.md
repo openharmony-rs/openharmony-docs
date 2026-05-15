@@ -80,7 +80,7 @@ let subscribeAccelerometerOptions = {
     console.info('Succeeded in subscribing. Z-axis data: ' + ret.z);
   },
   fail: (data, code) => {
-    console.error(`Failed to subscription. Code: ${code}, data: ${data}`);
+    console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
   },
 };
 Sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
@@ -199,7 +199,7 @@ export default {
               this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
-              console.error(this.TAG + `Failed to subscription. Code: ${code}, data: ${data}`);
+              console.error(this.TAG + `Failed to subscribe. Code: ${code}, data: ${data}`);
             },
           };
           sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
@@ -953,7 +953,7 @@ Sensor.unsubscribeOnBodyState();
 | ------- | ----------------------------------------------- | ---- | -------------------------- |
 | options | [GetOnBodyStateOptions](#getonbodystateoptions) | 是   | 获取传感器所在设备穿戴状态时调用。 |
 
-**ArkTs示例**：
+**ArkTS示例**：
 
 ```ts
 import { Sensor, OnBodyStateResponse, GetOnBodyStateOptions } from '@kit.SensorServiceKit';

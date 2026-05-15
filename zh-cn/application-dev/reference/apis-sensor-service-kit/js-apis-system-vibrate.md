@@ -62,7 +62,7 @@ let vibrateOptions: VibrateOptions = {
     console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
   },
   complete: () => {
-    console.info('completed in vibrating');
+    console.info('vibration completed');
   }
 };
 Vibrator.vibrate(vibrateOptions);
@@ -91,7 +91,7 @@ export default {
           this.result = `Failed to vibrate. Data: ${data}, code: ${code}`;
         },
         complete: () => {
-          console.info('completed in vibrating');
+          console.info('vibration completed');
         }
       };
       vibrator.vibrate(vibrateOptions);
