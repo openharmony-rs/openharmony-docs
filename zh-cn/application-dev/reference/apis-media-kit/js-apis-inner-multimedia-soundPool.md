@@ -86,7 +86,7 @@ import { audio } from '@kit.AudioKit';
 >   - [on('playFinishedWithStreamId')](js-apis-inner-multimedia-soundPool.md#onplayfinishedwithstreamid18)：监听播放完成，同时返回播放结束的音频的streamId。
 >   - [on('playFinished')](js-apis-inner-multimedia-soundPool.md#onplayfinished)：监听播放完成。
 >   - [on('error')](js-apis-inner-multimedia-soundPool.md#onerror)：监听错误事件。
->   - [on('errorOccurred')](js-apis-inner-multimedia-soundPool.md#onerroroccurred20)：监听错误事件，同时返回[errorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)。
+>   - [on('errorOccurred')](js-apis-inner-multimedia-soundPool.md#onerroroccurred20)：监听错误事件，同时返回[ErrorInfo](js-apis-inner-multimedia-soundPool.md#errorinfo20)。
 > - SoundPool目前不支持后台播放、设置音频打断等音频焦点策略和跳过音频头尾的静音帧。SoundPool低时延播放可参考[使用SoundPool播放短音频(ArkTS)](../../media/media/using-soundpool-for-playback.md)。
 
 ### load
