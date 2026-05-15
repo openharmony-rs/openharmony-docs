@@ -83,8 +83,8 @@ export default {
       let vibrateOptions = {
         mode: 'short',
         success: () => {
-          console.info('Succeed in vibrating');
-          this.result = 'Succeed in vibrating';
+          console.info('Succeeded in vibrating');
+          this.result = 'Succeeded in vibrating';
         },
         fail: (data, code) => {
           console.error(`Failed to vibrate. Data: ${data}, code: ${code}`);
@@ -96,7 +96,7 @@ export default {
       };
       vibrator.vibrate(vibrateOptions);
     } catch (e) {
-      console.error(this.TAG + 'vibrate exception in, message:' + JSON.stringify(e))
+      console.error(this.TAG + 'vibrate exception occurred, message:' + JSON.stringify(e))
     }
   }
 };
