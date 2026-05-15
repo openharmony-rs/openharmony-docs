@@ -133,7 +133,8 @@ OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession sessi
         } else if (chatContext->responseContent.find("\n") != std::string::npos) {
     * "role": string. 消息的角色类型。其中"developer"表示开发者或系统提供的指示，"user"表示用户输入，"assistant"表示模型生成结果。
     * "content": string. 消息内容。
-    * "stream": boolean or null. 是否使能流式推理，默认为非流式。
+        * "content": string. 消息内容。
+        * "stream": boolean or null. 是否使能流式推理，默认为非流式。
         * "content": string. 消息内容。
     * "stream": boolean or null. 是否使能流式推理，默认为非流式。
 * `OH_QoS_GewuOnResponse callback`参数为请求的回调函数。
