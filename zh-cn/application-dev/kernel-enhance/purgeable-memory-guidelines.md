@@ -1,4 +1,4 @@
-# 内存管理purgeable内存开发指导
+# 内存管理 purgeable 内存开发指导
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->
