@@ -105,7 +105,7 @@ async function ReadPixelsToBuffer(context: Context) {
   let auxPictureObj: image.AuxiliaryPicture | null = pictureObj.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
   if(auxPictureObj != null) {
     await auxPictureObj.readPixelsToBuffer().then((pixelsBuffer: ArrayBuffer) => {
-      console.info('Succeeded in reading pixels to buffer success.' );
+      console.info('Succeeded in reading pixels to buffer.' );
     }).catch((error: BusinessError) => {
       console.error(`Failed to read pixels to buffer. error.code: ${error.code}, error.message: ${error.message}`);
     });
