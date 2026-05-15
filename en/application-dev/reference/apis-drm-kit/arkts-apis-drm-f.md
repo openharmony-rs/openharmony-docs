@@ -145,7 +145,7 @@ console.info("isMediaKeySystemSupported: ", supported);
 
 isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtectionLevel): boolean
 
-Checks whether the device supports the specified the DRM solution, MIME type, and content protection level.
+Checks whether the device supports the specified DRM solution, MIME type, and content protection level.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 

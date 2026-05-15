@@ -212,7 +212,7 @@ Checks whether the device supports the specified DRM solution and MIME type. You
 
 | Type| Description|
 | -- | -- |
-| bool |  Whether the specified DRM solution and MIME type are supported. If both are supported, **true** is returned. Otherwise, **false** is returned. If the **name** or **mimeType** parameter are not specified or invalid, **false** is returned.   |
+| bool |  Whether the specified DRM solution and MIME type are supported. If both are supported, **true** is returned. Otherwise, **false** is returned. If the **name** or **mimeType** parameter is not specified or invalid, **false** is returned.   |
 
 ### OH_MediaKeySystem_IsSupported3()
 
