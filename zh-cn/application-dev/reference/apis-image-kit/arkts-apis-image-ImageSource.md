@@ -401,7 +401,7 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
   imageSourceObj.getImageProperties(key).then((data) => {
     console.info(JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to get the properties, error.code ${error.code}, error.message ${error.message}`);
   });
 }
 ```
@@ -521,7 +521,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -600,7 +600,7 @@ ArkTS-Sta: modifyImageProperties(records: Record<string, string|null>): Promise\
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -811,7 +811,7 @@ async function ReadImageMetadata(imageSourceObj : image.ImageSource) {
         " HwMnoteIsXmageSupported: " + metaData.makerNoteHuaweiMetadata.isXmageSupported);
     }
   }).catch((error: BusinessError) => {
-    console.error(`ReadImageMetadata failed error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to read image metadata. error.code is ${error.code}, error.message is ${error.message}`);
   })
 }
 ```
@@ -905,9 +905,9 @@ async function WriteImageMetadata(imageSourceObj : image.ImageSource) {
     metaData.exifMetadata.imageLength = 3072;
   }
   await imageSourceObj.writeImageMetadata(metaData).then(() => {
-    console.info(`write image metadata success.`);
+    console.info(`Succeeded in writing image metadata.`);
   }).catch((error: BusinessError) => {
-    console.error(`writeImageMetadata failed error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to write image metadata. error.code is ${error.code}, error.message is ${error.message}`);
   });
 }
 ```
@@ -1013,7 +1013,7 @@ async function ReadImageMetadataByType(imageSource : image.ImageSource, type: im
       console.info("ImageWidth: " + metaData.exifMetadata.imageWidth);
     }
   }).catch((error: BusinessError) => {
-    console.error(`ReadImageMetadataByType failed error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to read image metadata by type. error.code is ${error.code}, error.message is ${error.message}`);
   })
 }
 ```
@@ -1071,7 +1071,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function createImageRawData(imageSourceObj: image.ImageSource) {
   await imageSourceObj.createImageRawData().then((data: image.ImageRawData) => {
-    console.info(`createImageRawData success. length: ${data.buffer.byteLength}, bitPerPixel:${data.bitsPerPixel}`);
+    console.info(`createImageRawData successfully. length: ${data.buffer.byteLength}, bitPerPixel:${data.bitsPerPixel}`);
     if (data.bitsPerPixel == 16) {
       let array: Uint16Array = new Uint16Array();
       let value: string = "";
@@ -1082,7 +1082,7 @@ async function createImageRawData(imageSourceObj: image.ImageSource) {
       console.info(`get dng rawdata is:${value}.`);
     }
   }).catch((error: BusinessError) => {
-    console.error(`createImageRawData failed error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to create image rawData. error.code is ${error.code}, error.message is ${error.message}`);
   });
 }
 ```
@@ -1108,13 +1108,13 @@ ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
 | offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 当前buffer的长度。单位：字节。            |
+| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 当前buffer的长度。单位：字节（byte）。            |
 
 **返回值：**
 
 | 类型           | 说明                       |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。|
+| Promise\<void> | Promise对象，无返回结果。|
 
 **示例：**
 
@@ -1165,7 +1165,7 @@ ArkTS-Sta: updateData(buf: ArrayBuffer, isFinished: boolean, offset: int, length
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
 | offset     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 当前buffer的长度。单位：字节。            |
+| length     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 是   | 当前buffer的长度。单位：字节（byte）。            |
 | callback   | AsyncCallback\<void> | 是   |  回调函数，当更新增量数据成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -1256,9 +1256,9 @@ async function CreatePicture() {
   };
   let pictureObj: image.Picture = await imageSourceApi.createPicture(options);
   if (pictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 }
 ```
@@ -1328,10 +1328,10 @@ async function CreatePictures() {
   let frameCount: number = await imageSourceApi.getFrameCount();
   for (let index = 0; index < frameCount; index++) {
     try {
-      let pictureObj: image.Picture = await imageSourceApi.createPictureAtIndex(index);
-      console.info('Create picture succeeded for frame: ' + index);
+      let pictureObj: image.Picture = await imageSourceObj.createPictureAtIndex(index);
+      console.info('Succeeded in creating picture for frame: ' + index);
     } catch (e) {
-      console.error('Create picture failed for frame: ' + index);
+      console.error('Failed to create picture for frame: ' + index);
     }
   }
 }
@@ -1720,7 +1720,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-> - 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
+> - 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时（如2000×3000像素的100帧GIF动图），会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2827,7 +2827,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3018,7 +3018,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **示例：**
 

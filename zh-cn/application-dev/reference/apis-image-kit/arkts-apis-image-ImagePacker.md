@@ -471,7 +471,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                                                   |
 | -------------- | ------------------------------------------------------ |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **示例：**
 
@@ -521,7 +521,7 @@ ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption, call
 | 参数名   | 类型                            | 必填 | 说明                           |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。                 |
-| fd       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。                   |
+| fd       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。取值范围为[0，65535]。                    |
 | options  | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，当编码进文件成功，err为undefined，否则为错误对象。  |
 
@@ -614,14 +614,14 @@ ArkTS-Sta: packToFile(source: ImageSource, fd: int, options: PackingOption): Pro
 | 参数名 | 类型                            | 必填 | 说明           |
 | ------ | ------------------------------- | ---- | -------------- |
 | source | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。 |
-| fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。   |
+| fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。文件描述符。取值范围为[0，65535]。   |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。 |
 
 **返回值：**
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -707,7 +707,7 @@ ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption,  callba
 | 参数名   | 类型                            | 必填 | 说明                           |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [PixelMap](arkts-apis-image-PixelMap.md)          | 是   | 编码的PixelMap资源。           |
-| fd       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。                   |
+| fd       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。取值范围为[0，65535]。                   |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，当编码图片进文件成功，err为undefined，否则为错误对象。  |
 
@@ -807,14 +807,14 @@ ArkTS-Sta: packToFile(source: PixelMap, fd: int, options: PackingOption): Promis
 | 参数名 | 类型                            | 必填 | 说明                 |
 | ------ | ------------------------------- | ---- | -------------------- |
 | source | [PixelMap](arkts-apis-image-PixelMap.md)          | 是   | 编码的PixelMap资源。 |
-| fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。         |
+| fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。取值范围为[0，65535]。          |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。       |
 
 **返回值：**
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -902,14 +902,14 @@ ArkTS-Sta: packToFile(picture: Picture, fd: int, options: PackingOption): Promis
 | 参数名  | 类型                         | 必填 | 说明                 |
 | ------- | ---------------------------- | ---- | -------------------- |
 | picture  | [Picture](arkts-apis-image-Picture.md)          | 是   | 编码的Picture资源。 |
-| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。         |
+| fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。取值范围为[0，65535]。          |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。       |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1002,14 +1002,14 @@ ArkTS-Sta: packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd
 | 参数名           | 类型                                                      | 必填 | 说明                   |
 | ---------------- | --------------------------------------------------------- | ---- | ---------------------- |
 | pixelmapSequence | Array<[PixelMap](arkts-apis-image-PixelMap.md)>                             | 是   | 待编码的PixelMap序列。 |
-| fd               | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。           |
+| fd               | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 文件描述符。取值范围为[0，65535]。            |
 | options          | [PackingOptionsForSequence](arkts-apis-image-i.md#packingoptionsforsequence18) | 是   | 动图编码参数。         |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
