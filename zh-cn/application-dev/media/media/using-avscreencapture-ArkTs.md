@@ -56,14 +56,14 @@
    this.screenCapture = await media.createAVScreenCaptureRecorder();
    ```
    ArkTS-Sta:
-
+   
    ``` TypeScript
    // 声明一个AVScreenCaptureRecorder类型的变量。
    private screenCapture?: media.AVScreenCaptureRecorder;
    ```
    ArkTS-Sta:
    <!-- @[create_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-
+   
    ``` TypeScript
    // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
    this.screenCapture = await media.createAVScreenCaptureRecorder();
@@ -124,7 +124,7 @@
    ```
     ArkTS-Sta:
    <!-- @[callback_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-
+   
    ``` TypeScript
    // 监听屏幕捕获的状态更改
    this.screenCapture?.onStateChange((infoType: media.AVScreenCaptureStateCode) => {
@@ -261,7 +261,7 @@
    ```
    ArkTS-Sta:
    <!-- @[init_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-
+   
    ``` TypeScript
    await this.screenCapture?.init(captureConfig);
    ```
@@ -301,7 +301,7 @@
      ```
      ArkTS-Sta:
      <!-- @[stop_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-
+     
      ``` TypeScript
      await this.screenCapture?.stopRecording();
      ```
@@ -314,7 +314,7 @@
    ```
    ArkTS-Sta:
    <!-- @[release_record](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
-
+   
    ``` TypeScript
    await this.screenCapture?.release();
    ```
