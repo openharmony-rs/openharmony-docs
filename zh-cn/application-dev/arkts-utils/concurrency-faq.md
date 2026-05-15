@@ -125,7 +125,7 @@
                   // 其他业务逻辑
                   // ...
                   let task: taskpool.Task = new taskpool.Task(createTask, 1, 2);
-                  taskpool.execute(task).then((res: object) => {
+                  taskpool.execute(task).then((res: Object) => {
                     // 任务执行完处理结果
                     this.message = '任务执行结果:'+ res;
                     // ...
