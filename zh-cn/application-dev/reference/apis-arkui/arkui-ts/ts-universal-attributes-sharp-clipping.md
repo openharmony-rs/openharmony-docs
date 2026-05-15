@@ -482,7 +482,7 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[maskShape<sup>12+</sup>](#clipshape12)和[maskShape<sup>18+</sup>](#clipshape18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[maskShape<sup>12+</sup>](#maskshape12)和[maskShape<sup>18+</sup>](#maskshape18)。
 
 **ArkTS-Sta起始版本：** 23
 

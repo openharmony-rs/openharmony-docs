@@ -198,7 +198,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, repeat?: ImageRepeat): T
 
 | 参数名 | 类型                                            | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap<sup>12+</sup>](../../apis-image-kit/arkts-apis-image-PixelMap.md)          | 是   | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。|
+| src    | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup>          | 是   | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。 从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。|
 | repeat | [ImageRepeat](ts-appendix-enums.md#imagerepeat) | 否   | 设置背景图片的重复样式，默认不重复。当设置的背景图片为透明底色图片，且同时设置了backgroundColor时，二者叠加显示，背景颜色在最底部。 |
 
 **返回值：**
@@ -970,7 +970,7 @@ backgroundBrightness(params: BackgroundBrightnessOptions | undefined): this
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundBrightness<sup>11+</sup>](#backgroundbrightness12)和[backgroundBrightness<sup>18+</sup>](#backgroundbrightness18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundBrightness<sup>12+</sup>](#backgroundbrightness12)和[backgroundBrightness<sup>18+</sup>](#backgroundbrightness18)。
 
 **ArkTS-Sta起始版本：** 23
 

@@ -125,7 +125,7 @@ foregroundBlurStyle(style: BlurStyle | undefined, options?: ForegroundBlurStyleO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[foregroundBlurStyle](#foregroundblurstyle)，[foregroundBlurStyle<sup>10+</sup>](#foregroundblurstyle18)和[foregroundBlurStyle<sup>10+</sup>](#foregroundblurstyle19)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[foregroundBlurStyle](#foregroundblurstyle)，[foregroundBlurStyle<sup>18+</sup>](#foregroundblurstyle18)和[foregroundBlurStyle<sup>19+</sup>](#foregroundblurstyle19)。
 
 **ArkTS-Sta起始版本：** 23
 

@@ -280,7 +280,7 @@ outlineWidth(value: Dimension | EdgeOutlineWidths | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[outlineWidth](#outlinewidth)和[outlineWidth<sup>18+</sup>](#outlinewidth23)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[outlineWidth](#outlinewidth)和[outlineWidth<sup>18+</sup>](#outlinewidth18)。
 
 **参数：**
 

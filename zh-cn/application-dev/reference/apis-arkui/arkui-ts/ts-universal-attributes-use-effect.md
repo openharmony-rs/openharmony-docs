@@ -111,7 +111,7 @@ useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined): t
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)，[useEffect<sup>14+</sup>](#effecttype14)和[useEffect<sup>18+</sup>](#useeffect18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)，[useEffect<sup>14+</sup>](#useeffect14)和[useEffect<sup>18+</sup>](#useeffect18)。
 
 **ArkTS-Sta起始版本：** 23
 
