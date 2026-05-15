@@ -13,7 +13,7 @@
 
 - Surface模式。
 
-  解码后的图像帧通过[OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来传递输出数据，可以与其他模块对接（如显示模块[自定义渲染(XComponent)](../../ui/napi-xcomponent-guidelines.md)）。适用于视频播放、实时预览等需要将画面渲染到屏幕的解码场景。
+  解码后的图像帧通过[NativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来传递输出数据，可以与其他模块对接（如显示模块[自定义渲染(XComponent)](../../ui/napi-xcomponent-guidelines.md)）。适用于视频播放、实时预览等需要将画面渲染到屏幕的解码场景。
 
 - Buffer模式。
 
@@ -25,7 +25,7 @@
 |    输出处理    | 不送显：调用OH_VideoDecoder_FreeOutputBuffer接口丢弃解码帧。<br>送显：调用OH_VideoDecoder_RenderOutputBuffer接口显示并释放解码帧，或调用OH_VideoDecoder_RenderOutputBufferAtTime接口在指定时间点显示并释放解码帧。如需实现音画同步或者控制显示速度，建议优先调用OH_VideoDecoder_RenderOutputBufferAtTime接口送显。| 输出数据处理后，必须调用OH_VideoDecoder_FreeOutputBuffer接口释放数据。|
 |  回调数据  | 在Surface模式下，只能获取到输出回调buffer的数据信息。 | 在Buffer模式下，可以获取到输出回调buffer的共享内存的地址和数据信息。 |
 
-当前支持的解码格式请参考AVCodec支持的格式文档中的[视频解码](avcodec-support-formats.md#视频解码)。
+AVCodec支持的视频解码格式请参考[视频解码](avcodec-support-formats.md#视频解码)。
 
 具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
@@ -1235,7 +1235,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 | --------------------------------------- | ----------------------------------------------------------------------- |
 | 动态分辨率切换         | 仅硬件解码器支持输入码流分辨率发生变化，发生变化后会触发OH_VideoDecoder_RegisterCallback接口设置的回调函数OnStreamChanged()。<br>具体可参考上文中：Surface模式步骤-3或Buffer模式步骤-3。  |
 | 动态切换surface  | 通过调用OH_VideoDecoder_SetSurface可动态切换OHNativeWindow，仅Surface模式支持。<br>具体可参考上文中：Surface模式步骤-6。    |
-| 低时延解码  | 通过调用OH_VideoDecoder_Configure接口配置低时键值，<br>具体可参考上文中：Surface模式的步骤-5或Buffer模式步骤-5。      |
+| 低时延解码  | 通过调用OH_VideoDecoder_Configure接口配置低时键值。<br>具体可参考上文中：Surface模式的步骤-5或Buffer模式步骤-5。      |
 
 
 

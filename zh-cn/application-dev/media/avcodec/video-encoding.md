@@ -13,7 +13,7 @@
 
 - Surface模式。
 
-  编码器通过[OHNativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来获取输入数据，可以与其他模块对接（如相机模块）。适用于与相机、屏幕录制等数据源直接对接的编码场景。
+  编码器通过[NativeWindow](../../reference/apis-arkgraphics2d/capi-nativewindow-nativewindow.md)来获取输入数据，可以与其他模块对接（如相机模块）。适用于与相机、屏幕录制等数据源直接对接的编码场景。
 
 - Buffer模式。
 
@@ -25,7 +25,7 @@
 |  数据输入   | 通过OHNativeWindow获取输入帧，数据通常由生产者模块（如相机）直接写入。| 通过OnNeedInputBuffer回调函数获取共享内存buffer信息，调用OH_VideoEncoder_PushInputBuffer送入数据。 |
 |   输入结束  | 必须调用OH_VideoEncoder_NotifyEndOfStream接口通知编码器输入结束。 | 在最后一个输入buffer的flags中设置AVCODEC_BUFFER_FLAGS_EOS标志。|
 
-当前支持的编码格式请参考AVCodec支持的格式文档中的[视频编码](avcodec-support-formats.md#视频编码)。
+AVCodec支持的视频编码格式请参考[视频编码](avcodec-support-formats.md#视频编码)。
 
 具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
@@ -1043,5 +1043,5 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 |          支持的能力                       |                              使用简述                                            |
 | --------------------------------------- | ---------------------------------------------------------------------------------- |
 | 分层编码、设置LTR帧、参考帧                      | 具体可参考：[时域可分层视频编码](video-encoding-temporal-scalability.md)。       |
-| 支持历史帧repeat编码                    | 具体可参考：native_avcodec_base.h[变量](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)中的OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER和OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT。    |
+| 支持历史帧repeat编码                    | 具体可参考：native_avcodec_base.h[变量][OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)中的OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_FRAME_AFTER和OH_MD_KEY_VIDEO_ENCODER_REPEAT_PREVIOUS_MAX_COUNT。    |
 <!--RP4--> <!--RP4End-->
