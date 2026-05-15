@@ -9,7 +9,7 @@
 
 The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting.
 
-This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now more easily manage dialog box data and states with greater flexibility, leading to faster UI updates.
+This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now manage dialog box data and states with greater flexibility, leading to faster UI updates.
 
 > **NOTE**
 >
@@ -179,7 +179,7 @@ Defines the event triggered when the visibility of the popover dialog box change
 
 | Name    | Type     | Mandatory| Description                                                                   |
 | :------ | :------ | :- |:----------------------------------------------------------------------|
-| visible | boolean | Yes | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed. **false**: The popover dialog box is hidden.                          |
+| visible | boolean | Yes | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed.<br>**false**: The popover dialog box is hidden.                          |
 
 ## PopoverDialogV2
 
@@ -195,7 +195,7 @@ Displays a popover dialog box that is positioned relative to the target componen
 
 | Name           | Type                                                               | Mandatory| Decorator              | Description                                                |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
-| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed. **false**: The popover dialog box is hidden.                                        |
+| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed.<br>**false**: The popover dialog box is hidden.                                        |
 | \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | No | @Event              | Callback invoked when the visibility of the dialog box changes. Use the **!!** syntax for two-way binding with **visible**.<br>By default, there is no event.|
 | popover       | [PopoverDialogV2Options](#popoverdialogv2options)                 | Yes | @Param<br>@Require | Options of the popover dialog box.                                        |
 | targetBuilder | [CustomBuilder](ts-types.md#custombuilder8)                       | Yes | @BuilderParam       | Target component relative to which the popover dialog box is positioned.                                     |
@@ -237,7 +237,7 @@ Defines the button used in a dialog box to perform actions.
 | Name          | Type                                                                    | Read-Only| Optional| Description                                                                         |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
 | content      | [ResourceStr](ts-types.md#resourcestr)                                 | No | No | Content of the button.<br>Decorator: @Trace                                                                     |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Action triggered when the button is clicked.<br>By default, there is no action.<br>Decorator: @Trace                                                       |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Event triggered when the button is clicked.<br>By default, there is no event.<br>Decorator: @Trace                                                       |
 | background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | No | Yes | Background of the button.<br>The setting follows **buttonStyle** by default.<br>Decorator: @Trace                                              |
 | fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | No | Yes | Font color of the button.<br>The setting follows **buttonStyle** by default.<br>Decorator: @Trace                                            |
 | buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11) | No | Yes | Style of the button.<br>Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices<br>Decorator: @Trace|
@@ -278,7 +278,7 @@ Provides options used to initialize an **AdvancedDialogV2Button** object.
 | Name          | Type                                                                    | Read-Only| Optional| Description                                                                         |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
 | content      | [ResourceStr](ts-types.md#resourcestr)                                 | No | No | Content of the button.                                                                     |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Action triggered when the button is clicked.<br>By default, there is no action.                                                       |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Event triggered when the button is clicked.<br>By default, there is no event.                                                       |
 | background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | No | Yes | Background of the button.<br> The setting follows **buttonStyle** by default.                                             |
 | fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | No | Yes | Font color of the button.<br>The setting follows **buttonStyle** by default.                                            |
 | buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11) | No | Yes | Style of the button.<br>Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices|
@@ -552,7 +552,7 @@ struct Index {
 
 ### Example 5: Loading Dialog Box
 
-This example implements a loading dialog box that contains a progress indicator.
+This example implements a loading dialog box with content specified by the **content** parameter.
 
 ```ts
 import { LoadingDialogV2, UIContext  } from '@kit.ArkUI';
