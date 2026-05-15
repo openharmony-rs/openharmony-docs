@@ -10,7 +10,7 @@ An application needs to obtain a PhotoAccessHelper instance before accessing or 
 
 ## Obtaining a PhotoAccessHelper Instance
 
-The application needs to call [getPhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper) to obtain a PhotoAccessHelper instance based on the application context. Then, the application can use the instance obtained to access or modify the media data (such as images and videos) in an album.
+The application must use the [Context](../../application-models/application-context-stage.md) and the [getPhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper) API to obtain a PhotoAccessHelper instance for accessing and modifying media data in albums, such as images and videos.
 
 **How to Develop**
 
@@ -18,7 +18,9 @@ The application needs to call [getPhotoAccessHelper](../../reference/apis-media-
 2. Call **getUIContext().getHostContext()** to obtain the application context.
 3. Obtain a PhotoAccessHelper instance.
 
-```ts
+<!-- @[photo_access_helper_preparation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/ResourceUsageSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 
@@ -31,7 +33,7 @@ struct Index {
 
   build() {
     Row() {
-      Button("example").onClick(async () => {
+      Button('example').onClick(async () => {
         let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
       }).width('100%')
@@ -51,11 +53,11 @@ Before requesting the permissions for the PhotoAccessHelper module, ensure that 
 | ohos.permission.WRITE_IMAGEVIDEO    | Allows an application to read and write images and videos in the media library.| user_grant |
 | ohos.permission.MEDIA_LOCATION    | Allows an application to access geographical locations in the user's media file.| user_grant |
 
-The required permissions must be authorized by the user. After adding the permissions in the **module.json5** file, use [abilityAccessCtrl.requestPermissionsFromUser](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to check whether the required permissions are granted by the user. If yes, the application can access and manipulate the data. Otherwise, display a dialog box to request user authorization.
+All of the preceding permissions use the user_grant authorization mode, which means that after the corresponding permissions are configured in the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md), the application must use the [abilityAccessCtrl.requestPermissionsFromUser](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) API to check whether the current user has granted the permissions. If yes, the application can access and manipulate the data. Otherwise, display a dialog box to request user authorization.
 
 **How to Develop**
 <!--RP1-->
-1. Request the required permissions via the ACL. For details, see [Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md).
+1. The **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions are restricted permissions. Before using them, you must additionally declare the required permissions in the Access Control List (ACL). For details, see [Requesting Restricted Permissions](../../security/AccessToken/declare-permissions-in-acl.md).
 2. [Declare the required permissions in the **module.json5** file](../../security/AccessToken/declare-permissions.md).
 3. [Request user authorization](../../security/AccessToken/request-user-authorization.md).
 <!--RP1End-->
