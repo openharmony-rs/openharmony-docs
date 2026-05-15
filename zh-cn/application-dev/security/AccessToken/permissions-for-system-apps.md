@@ -4269,15 +4269,15 @@
 ## ohos.permission.ACCESS_CAR_CONTROL
  	 
 允许应用接入或拉起车辆控制界面。
- 	 
+
 **权限级别**：system_basic
- 	 
+
 **授权方式**：系统授权（system_grant）
- 	 
+
 **是否支持证书授权**：true
- 	 
+
 **支持设备**：cars
- 	 
+
 **起始版本**：13
 
 ## ohos.permission.ACCESS_APP_SINGLE_PERMISSION_MANAGEMENT
