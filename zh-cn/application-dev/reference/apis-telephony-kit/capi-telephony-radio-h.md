@@ -107,7 +107,7 @@ Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Teleph
 
 **示例：**
 ```ts
-OH_Telephony_GetNetworkStateForSlot(slotId, (data:state) => {
+OH_Telephony_GetNetworkStateForSlot(slotId, (data: state) => {
     console.info(`OH_Telephony_GetNetworkState slotId ${JSON.stringify(state)}`);
 });
 ```
