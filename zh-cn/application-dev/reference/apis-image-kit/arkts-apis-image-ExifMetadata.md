@@ -452,7 +452,7 @@ async function exifMetadataGetBlob(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     let blob = await metaData.exifMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
     }
   }
 }
