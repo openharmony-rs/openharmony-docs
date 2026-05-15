@@ -38,6 +38,8 @@ Input service exception.
 
 状态错误，根据具体接口和场景有以下不同情况。
 
+The touch point ID is not within the valid range [0,9].
+
 **错误描述**
 
 该错误码在不同接口中表示不同的状态错误：
@@ -90,6 +92,21 @@ Input service exception.
 
   **处理步骤**：确保在调用updateAxis或endAxis之前，先调用beginAxis开始轴事件序列。
 
+- **touchDown 接口**：The touch point is touching the display. The touch point ID is not within the valid range [0,9].
+
+  当调用触控控制器的touchDown接口时，如果触点已接触屏幕或触点ID不在有效范围[0,9]内，会产生此错误码。
+
+  **可能原因**：触点已经处于按下状态，或触点ID不在有效范围[0,9]内。
+
+  **处理步骤**：调用touchDown前，请确保对应触点尚未接触屏幕，且触点ID在有效范围[0,9]内。
+
+- **touchMove/touchUp 接口**：The touch point is not touching the display. The touch point ID is not within the valid range [0,9].
+
+  当调用触控控制器的touchMove或touchUp接口时，如果触点尚未接触屏幕或触点ID不在有效范围[0,9]内，会产生此错误码。
+
+  **可能原因**：触点尚未处于按下状态，或触点ID不在有效范围[0,9]内。
+
+  **处理步骤**：调用touchMove或touchUp前，请先调用touchDown使对应触点接触屏幕，并确保触点ID在有效范围[0,9]内。
 ## 4300002 显示器不存在
 
 **错误信息**
@@ -98,7 +115,7 @@ The display does not exist.
 
 **错误描述**
 
-当调用鼠标控制器的moveTo接口时，如果指定的显示器不存在，会产生此错误码。
+当调用鼠标控制器的moveTo接口或触控控制器的touchDown接口时，如果指定的显示器不存在，会产生此错误码。
 
 **可能原因**
 
