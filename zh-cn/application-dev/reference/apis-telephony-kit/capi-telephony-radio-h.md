@@ -66,8 +66,8 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 
 **示例：**
 ```ts
-OH_Telephony_GetNetworkState((date: data) => {
-    console.info(`OH_Telephony_GetNetworkState ${JSON.stringify(data)}`);
+OH_Telephony_GetNetworkState((date: state) => {
+    console.info(`OH_Telephony_GetNetworkState ${JSON.stringify(state)}`);
 });
 ```
 
