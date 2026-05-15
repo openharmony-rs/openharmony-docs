@@ -2404,7 +2404,7 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[组件错误码](./errorcode-node.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[自定义节点错误码](./errorcode-node.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
@@ -2514,7 +2514,7 @@ ArkTS-Sta: getFilteredInspectorTreeById(id: string, depth: int, filters?: Array\
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[组件错误码](./errorcode-node.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[自定义节点错误码](./errorcode-node.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |

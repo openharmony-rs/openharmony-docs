@@ -379,7 +379,7 @@ HDR视频的高动态范围渲染类型。
 
 仅type为SURFACE或TEXTURE时以下事件有效：
 
-### onLoad<sup>18+</sup>
+### onLoad
 
 ArkTS-Dyn: onLoad(callback: OnNativeLoadCallback)
 
@@ -391,7 +391,7 @@ ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -401,7 +401,7 @@ ArkTS-Sta: onLoad(callback: VoidCallback | undefined)
 | ----- | ------ | ---- | ---------------------------------------- |
 | callback | ArkTS-Dyn: [OnNativeLoadCallback](#onnativeloadcallback18)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是    | XComponent持有的Surface创建后回调事件。<br/>ArkTS-Sta模式下可不传。 |
 
-### onDestroy<sup>18+</sup>
+### onDestroy
 
 ArkTS-Dyn: onDestroy(event: VoidCallback)
 
@@ -413,7 +413,7 @@ ArkTS-Sta: onDestroy(event: VoidCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
