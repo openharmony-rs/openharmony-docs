@@ -588,7 +588,7 @@ export class Mover {
 import { relationalStore } from '@kit.ArkData';
 
 export class Mover {
-  async move(eStore: relationalStore.RdbStore, cStore: relationalStore.RdbStore): Promise<void> {
+  async move(eStore: relationalStore.RdbStore, cStore: relationalStore.RdbStore) {
     if (eStore != null && cStore != null) {
       let predicates = new relationalStore.RdbPredicates('employee');
       let resultSet = await cStore.query(predicates);
@@ -734,8 +734,8 @@ export class Store {
     try {
       rdbStore = await relationalStore.getRdbStore(storeInfo.context!, storeInfo.config!);
       if (rdbStore.version == 0) {
-        await rdbStore.execute(SQL_CREATE_TABLE);
-        console.info(`ECDB_Encry succeeded in getting Store: ${storeInfo.storeId}`);
+        await rdbStore.executeSql(SQL_CREATE_TABLE);
+        console.info(`ECDB_Encry succeeded in getting Store ：${storeInfo.storeId}`);
         rdbStore.version = 1;
       }
     } catch (e) {
@@ -745,7 +745,7 @@ export class Store {
     return rdbStore;
   }
 
-  async putOnedata(rdbStore: relationalStore.RdbStore): Promise<void> {
+  async putOnedata(rdbStore: relationalStore.RdbStore) {
     if (rdbStore != undefined) {
       const valueBucket: relationalStore.ValuesBucket = {
         'ID': id++,
@@ -764,7 +764,7 @@ export class Store {
     }
   }
 
-  async getDataNum(rdbStore: relationalStore.RdbStore): Promise<void> {
+  async getDataNum(rdbStore: relationalStore.RdbStore) {
     if (rdbStore != undefined) {
       try {
         let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -778,7 +778,7 @@ export class Store {
     }
   }
 
-  async deleteAlldata(rdbStore: relationalStore.RdbStore): Promise<void> {
+  async deleteAlldata(rdbStore: relationalStore.RdbStore) {
     if (rdbStore != undefined) {
       try {
         let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -792,7 +792,7 @@ export class Store {
     }
   }
 
-  async updateOnedata(rdbStore: relationalStore.RdbStore): Promise<void> {
+  async updateOnedata(rdbStore: relationalStore.RdbStore) {
     if (rdbStore != undefined) {
       try {
         let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -893,7 +893,7 @@ export class SecretKeyObserver {
     this.storeManager = storeManager;
   }
 
-  updateLockStatus(code: Double): void {
+  updateLockStatus(code: Double) {
     if (this.lockStatus === SecretStatus.Lock) {
       this.onLock();
     } else {
@@ -905,7 +905,7 @@ export class SecretKeyObserver {
   private storeManager: ECStoreManager = new ECStoreManager();
 }
 
-export let lockObserve: SecretKeyObserver = new SecretKeyObserver();
+export let lockObserve = new SecretKeyObserver();
 ```
 
 
@@ -1204,15 +1204,15 @@ import { application, contextConstant } from '@kit.AbilityKit';
 
 const DOMAIN = 0x0000;
 
-export let storeManager: ECStoreManager = new ECStoreManager();
+export let storeManager = new ECStoreManager();
 
-export let e_secretKeyObserver: SecretKeyObserver = new SecretKeyObserver();
+export let e_secretKeyObserver = new SecretKeyObserver();
 
 let mover = new Mover();
 let subscriber: commonEventManager.CommonEventSubscriber | undefined;
 
 export function createCB(err: BusinessError | null,
-  commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined): void {
+  commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined) {
   if (!err) {
     console.info('ECDB_Encrypt createSubscriber');
     subscriber = commonEventSubscriber;
@@ -1255,7 +1255,7 @@ class EntryAbility extends UIAbility {
       storeId: 'cstore.db'
     };
     application.createModuleContext(this.context, 'entry').then((eContext) => {
-      eContext.createAreaModeContext(contextConstant.AreaMode.EL5);
+      eContext.area = contextConstant.AreaMode.EL5;
       eInfo = {
         context: eContext,
         config: {
