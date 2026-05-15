@@ -54,7 +54,7 @@
     // 创建一个AVScreenCaptureRecorder，并赋值给screenCapture成员变量。
     this.screenCapture = await media.createAVScreenCaptureRecorder();
     ```
-    ArkTs-Sta:
+    ArkTS-Sta:
     ```javascript
     // 声明一个AVScreenCaptureRecorder类型的变量。
     private screenCapture?: media.AVScreenCaptureRecorder;
