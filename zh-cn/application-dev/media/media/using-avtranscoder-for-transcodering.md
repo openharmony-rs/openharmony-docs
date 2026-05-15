@@ -34,7 +34,7 @@
 
    <!-- @[create_instance](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 1.创建转码实例。
    this.avTranscoder = await media.createAVTranscoder();
    ```
@@ -102,20 +102,20 @@
 
    <!-- @[create_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 注册avTranscoder回调函数。
    setAVTranscoderCallback(): void {
      if (this.avTranscoder != undefined) {
        // 转码完成回调函数。
        this.avTranscoder?.onComplete(() => {
-         console.info(`AVTranscoder is completed`);
+         console.log(`AVTranscoder is completed`);
          this.releaseTranscoderingProcess();
        });
        // 错误上报回调函数。
        this.avTranscoder?.onError((err: BusinessError) => {
          console.error(`AVTranscoder failed, code is ${err.code}, message is ${err.message}`);
        });
-       // 进度上报回调函数。
+       // 进度上报回调函数
        this.avTranscoder?.onProgressUpdate((progress: int) => {
          console.info(`AVTranscoder progressUpdate = ${progress}`);
          this.currentProgress = progress;
@@ -202,7 +202,7 @@
 
    <!-- @[transcoder_ui](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
    
-   ```ts
+   ``` TypeScript
    import { Entry, Text, TextAttribute, Column, Component, Button, ClickEvent, RelativeContainer, Progress, ProgressType } from '@ohos.arkui.component'
    import { Context, UIContext } from '@ohos.arkui.UIContext'
    import { State} from '@ohos.arkui.stateManagement'
@@ -249,10 +249,10 @@
 
    <!-- @[create_fdsrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
    this.rawFileDescriptor = await this.context!.resourceManager.getRawFd('H264_AAC.mp4');
-   // 将RawFileDescriptor转换为AVFileDescriptor。
+   // 将 RawFileDescriptor 转换为 AVFileDescriptor
    this.avTranscoder!.fdSrc = {
      fd: this.rawFileDescriptor!.fd,
      offset: this.rawFileDescriptor!.offset,
@@ -295,7 +295,7 @@
 
    <!-- @[create_fddst](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    this.outputFilePath = this.context!.filesDir + '/output.mp4';
    this.file = fs.openSync(this.outputFilePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
    this.avTranscoder!!.fdDst = this.file.fd;
@@ -336,7 +336,7 @@
 
    <!-- @[create_transcoderconfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    private avConfig: media.AVTranscoderConfig = {
      audioBitrate: 100000, // 音频比特率。
      audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
@@ -350,7 +350,7 @@
 
    <!-- @[doPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 3.配置转码参数完成准备工作。
    await this.avTranscoder!.prepare(this.avConfig);
    ```
@@ -379,7 +379,7 @@
 
    <!-- @[doStart](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 4.开始转码。
    await this.avTranscoder!.start();
    ```
@@ -402,8 +402,8 @@
    ArkTS-Sta示例：
 
    <!-- @[doPause](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
-    
-   ```ts
+   
+   ``` TypeScript
    // 暂停转码对应的流程。
    async pauseTranscoderingProcess(): Promise<void> {
      if (this.avTranscoder != undefined) { // 仅在调用start返回后调用pause为合理调用。
@@ -430,7 +430,7 @@
 
    <!-- @[doResume](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 恢复对应的转码流程。
    async resumeTranscoderingProcess(): Promise<void> {
      if (this.avTranscoder != undefined) { // 仅在调用pause返回后调用resume为合理调用。
@@ -462,16 +462,15 @@
 
    <!-- @[doRelease](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 释放转码流程。
    async releaseTranscoderingProcess(): Promise<void> {
      if (this.avTranscoder != undefined) {
        // 1.释放转码实例。
        await this.avTranscoder!!.release();
-       let lastFd = this.avTranscoder!.fdDst;
        this.avTranscoder = undefined;
        // 2.关闭转码目标文件fd。
-       fs.closeSync(lastFd);
+       fs.closeSync(this.avTranscoder!.fdDst);
      }
    }
    ```
@@ -491,12 +490,12 @@
 
     <!-- @[transcoder_process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
     
-    ```ts
+    ``` TypeScript
     // 一个完整的【开始转码-暂停转码-恢复转码-转码完成】示例。
     async avTranscoderDemo(){
       this.context = globalContext.getAbilityContext();
       await this.startTranscoderingProcess(); // 开始转码。
-      await this.pauseTranscoderingProcess(); // 暂停转码。
+      await this.pauseTranscoderingProcess(); //暂停转码。
       await this.resumeTranscoderingProcess(); // 恢复转码。
     }
     ```
