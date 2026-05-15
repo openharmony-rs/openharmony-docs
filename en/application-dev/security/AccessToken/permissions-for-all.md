@@ -712,3 +712,17 @@ With this permission, the application can improve handwriting performance, ensur
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.ACCESS_CAR_AUDIO
+
+Allows an application to access and manager in-car audio.
+
+With this permission, the application can set audio effects, manager audio zones, etc.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
