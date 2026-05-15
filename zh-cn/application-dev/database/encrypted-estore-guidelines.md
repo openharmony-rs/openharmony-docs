@@ -893,7 +893,7 @@ export class SecretKeyObserver {
     this.storeManager = storeManager;
   }
 
-  updateLockStatus(code: Double) {
+  updateLockStatus(code: Double): void {
     if (this.lockStatus === SecretStatus.Lock) {
       this.onLock();
     } else {
@@ -905,7 +905,7 @@ export class SecretKeyObserver {
   private storeManager: ECStoreManager = new ECStoreManager();
 }
 
-export let lockObserve = new SecretKeyObserver();
+export let lockObserve: SecretKeyObserver = new SecretKeyObserver();
 ```
 
 
