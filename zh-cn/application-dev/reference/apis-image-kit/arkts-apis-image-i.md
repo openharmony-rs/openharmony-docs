@@ -166,7 +166,7 @@ PixelMap的初始化选项。
 
 表示区域信息。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -178,11 +178,9 @@ PixelMap的初始化选项。
 | x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位：像素。 |
 | y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位：像素。 |
 
-## PackingSizeLimit<sup>12+</sup>
+## PackingSizeLimit
 
 图片编码大小限制。
-
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
