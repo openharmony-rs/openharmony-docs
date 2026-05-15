@@ -1204,15 +1204,15 @@ import { application, contextConstant } from '@kit.AbilityKit';
 
 const DOMAIN = 0x0000;
 
-export let storeManager = new ECStoreManager();
+export let storeManager: ECStoreManager = new ECStoreManager();
 
-export let e_secretKeyObserver = new SecretKeyObserver();
+export let e_secretKeyObserver: SecretKeyObserver = new SecretKeyObserver();
 
 let mover = new Mover();
 let subscriber: commonEventManager.CommonEventSubscriber | undefined;
 
 export function createCB(err: BusinessError | null,
-  commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined) {
+  commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined): void {
   if (!err) {
     console.info('ECDB_Encrypt createSubscriber');
     subscriber = commonEventSubscriber;
@@ -1255,7 +1255,7 @@ class EntryAbility extends UIAbility {
       storeId: 'cstore.db'
     };
     application.createModuleContext(this.context, 'entry').then((eContext) => {
-      eContext.area = contextConstant.AreaMode.EL5;
+      eContext.createAreaModeContext(contextConstant.AreaMode.EL5);
       eInfo = {
         context: eContext,
         config: {
