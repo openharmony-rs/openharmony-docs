@@ -1,7 +1,7 @@
 # OH_NativeXComponent_TouchEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @pengzhiwen3-->
+<!--Owner: @zjsxstar-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
