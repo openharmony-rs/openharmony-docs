@@ -306,7 +306,7 @@ release(): void
 
 ### getTrustedDeviceListSync
 
-
+getTrustedDeviceListSync(): Array&lt;DeviceInfo&gt;
 
 同步获取所有可信设备列表。
 
