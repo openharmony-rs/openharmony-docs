@@ -72,6 +72,7 @@
     - [@ohos.app.ability.UIServiceExtensionAbility (UIServiceExtensionAbility)(系统接口)](js-apis-app-ability-uiServiceExtensionAbility-sys.md)
     - [@ohos.app.ability.verticalPanelManager (垂域面板管理)(系统接口)](js-apis-app-ability-verticalpanelmanager-sys.md)
     - [@ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)(系统接口)](js-apis-app-ability-uiExtensionContentSession-sys.md)
+    - [@ohos.app.cli.cliManager (CLI工具管理)(系统接口)](js-apis-app-cli-cliManager-sys.md)
     <!--DelEnd-->
      - continuation<!--stage-model-continuation-->
        - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)
