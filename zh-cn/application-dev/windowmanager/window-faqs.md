@@ -440,7 +440,7 @@ supportWindowMode支持的取值如下：
 > 
 > - supportWindowMode字段类型为字符串数组，可缺省，缺省值为["fullscreen", "split", "floating"]。
 > 
-> - 在[自由窗口](window-terminology.md#自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以悬浮窗模式启动；如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
+> - 在[自由窗口](window-terminology.md#自由窗口)状态下同时配置fullscreen和split时，如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)小于15，窗口将以自由悬浮窗口模式启动；如果应用的[targetAPIVersion](../quick-start/app-configuration-file.md#配置文件标签)大于等于15，窗口将以全屏模式启动。
 
 module.json5配置示例如下：
 
@@ -500,7 +500,7 @@ module.json5配置示例如下：
 
 - 可通过[on('windowStatusChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowstatuschange11)接口监听窗口模式变化。
 
-  如果应用需要在窗口模式发生变化时（例如从全屏切换到悬浮窗）立即做出响应，可以使用此接口监听窗口模式变化，以实现对应业务适配。
+  如果应用需要在窗口模式发生变化时（例如从全屏切换到自由悬浮窗口模式）立即做出响应，可以使用此接口监听窗口模式变化，以实现对应业务适配。
 
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
