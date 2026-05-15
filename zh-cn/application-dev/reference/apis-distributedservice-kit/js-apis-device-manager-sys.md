@@ -487,7 +487,7 @@ getTrustedDeviceList(): Promise&lt;Array&lt;DeviceInfo&gt;&gt;
 
 ### getLocalDeviceInfoSync<sup>8+</sup>
 
-getLocalDeviceInfoSync(): [DeviceInfo](#deviceinfo)
+getLocalDeviceInfoSync(): DeviceInfo
 
 同步获取本地设备信息。
 
