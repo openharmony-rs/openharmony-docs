@@ -47,7 +47,7 @@
 
 2. 创建AVScreenCaptureRecorder类型的成员变量screenCapture。
 
-    ArkTS-Dyn:
+    ArkTS-Dyn示例：
     ```javascript
     // 声明一个AVScreenCaptureRecorder类型的变量。
     private screenCapture?: media.AVScreenCaptureRecorder;
