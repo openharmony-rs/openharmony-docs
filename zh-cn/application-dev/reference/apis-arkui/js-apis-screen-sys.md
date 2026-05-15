@@ -2274,7 +2274,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br/> **ArkTS-Dyn起始版本：** 10   <br/>  **ArkTS-Sta起始版本：** 23     |
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。**ArkTS-Dyn起始版本：** 15   <br/>  **ArkTS-Sta起始版本：** 23 |
-| densityDpi<sup>26+</sup> | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。**ArkTS-Dyn起始版本：** 26   <br/>  **ArkTS-Sta起始版本：** 26 |
+| densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br/>  **ArkTS-Sta起始版本：** 26.0.0 |
 ### setOrientation
 
 setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
