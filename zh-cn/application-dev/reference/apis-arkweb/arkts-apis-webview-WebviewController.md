@@ -11209,3 +11209,81 @@ struct WebComponent {
   }
 }
 ```
+
+## executeAIPageCommand<sup>26+</sup>
+
+executeAIPageCommand(command: string): Promise\<string\>
+
+异步执行AI页面命令操作。该接口作为AI页面命令的统一入口，通过JSON字符串形式的`command`参数指定要执行的方法及其参数，并通过Promise异步返回命令执行结果。
+
+> **说明：**
+>
+> - `command`参数必须为JSON格式字符串，且必须包含`method`字段。`params`字段为可选字段，用于传入对应命令所需参数。
+> - 当命令执行失败或无返回值时，Promise返回`null`。
+> - 不同`method`对应的`params`参数和返回结果以具体命令定义为准。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明 |
+| ------- | ------ | ---- | ---- |
+| command | string | 是   | JSON格式的命令参数。必须包含`method`字段，`params`字段可选。 |
+
+**返回值：**
+
+| 类型             | 说明 |
+| ---------------- | ---- |
+| Promise\<string\> | Promise实例，返回JSON格式的命令执行结果。执行失败或无返回值时，返回`null`。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100024 | Command format error. The command parameter does not conform to the JSON format requirements. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('executeAIPageCommand')
+        .onClick(async () => {
+          try {
+            let command: string = JSON.stringify({
+              method: 'getFullDom',
+              params: {
+                wants: {
+                  tag: true,
+                  attribute: ['id', 'class'],
+                  visible: true
+                }
+              }
+            });
+            let result: string = await this.controller.executeAIPageCommand(command);
+            console.info(`executeAIPageCommand result: ${result}`);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
