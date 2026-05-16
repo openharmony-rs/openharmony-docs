@@ -77,11 +77,13 @@
    notificationManager.isNotificationEnabled().then((data: boolean) => {
      hilog.info(DOMAIN_NUMBER, TAG, `isNotificationEnabled success, data:  ${data}`);
      if (!data) {
-       notificationManager.openNotificationSettings(context).then(() => {
-         hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettings success`);
+       notificationManager.openNotificationSettingsWithResult(context)
+       .then((result: notificationManager.NotificationSetting) => {
+         // result为当前设置的结果
+         hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettingsWithResult success, result: ${JSON.stringify(result)}`);
        }).catch((err: BusinessError) => {
          hilog.error(DOMAIN_NUMBER, TAG,
-           `[ANS] openNotificationSettings failed, code is ${err.code}, message is ${err.message}`);
+           `[ANS] openNotificationSettingsWithResult failed, code is ${err.code}, message is ${err.message}`);
        });
      }
    }).catch((err: BusinessError) => {
