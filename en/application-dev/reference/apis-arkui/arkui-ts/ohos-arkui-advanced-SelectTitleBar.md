@@ -18,7 +18,7 @@ The **SelectTitleBar** component represents a drop-down menu title bar - a title
 
 ## Modules to Import
 
-```
+```ts
 import { SelectTitleBar } from '@kit.ArkUI';
 ```
 
@@ -34,7 +34,7 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 SelectTitleBar({selected: number, options: Array&lt;SelectOption&gt;, menuItems?: Array&lt;SelectTitleBarMenuItem&gt;, subtitle?: ResourceStr, badgeValue?: number, hidesBackButton?: boolean, onSelected?: ((index: number) =&gt; void)})
 
-**Decorator**: @Component
+**Decorator**: \@Component
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -46,11 +46,11 @@ SelectTitleBar({selected: number, options: Array&lt;SelectOption&gt;, menuItems?
 | -------- | -------- | -------- | -------- | -------- |
 | selected | number | Yes| \@Prop | Index of the currently selected item.<br>The index of the first item is 0. If this attribute is not set, the default value **0** will be used.|
 | options | Array&lt;[SelectOption](ts-basic-components-select.md#selectoption)&gt; | Yes| - | Options in the drop-down menu.|
-| menuItems | Array&lt;[SelectTitleBarMenuItem](#selecttitlebarmenuitem)&gt;              | No| - | List of menu items on the right of the title bar.|
-| subtitle | [ResourceStr](ts-types.md#resourcestr)                                      | No| - | Subtitle.|
-| badgeValue | number                                                                      | No| - | Value for the badge.<br>Value range: [-2147483648, 2147483647]. If the value is out of the range, 4294967296 is added or subtracted so that the value is within the range. If the value is not an integer, it is rounded off to the nearest integer. For example, 5.5 is rounded off to 5.<br>Note: The badge will not be displayed if the value is less than or equal to 0.<br>The maximum number of messages is 99. If this limit is exceeded, only **99+** is displayed. Extremely large values are considered exceptional and will result in the badge not being displayed.|
+| menuItems | Array&lt;[SelectTitleBarMenuItem](#selecttitlebarmenuitem)&gt;              | No| - | List of menu items on the right of the title bar. This parameter is passed to add a list of menu items to the right side of the title bar. If this parameter is not specified, the menu area on the right is not displayed. |
+| subtitle | [ResourceStr](ts-types.md#resourcestr)                                      | No| - | Subtitle, used to display supplementary information. This parameter is passed to show the subtitle. If this parameter is not specified, the subtitle area is not displayed.|
+| badgeValue | number                                                                      | No| - | Value for the badge.<br>Value range: [-2147483648, 2147483647]. If the value is out of the range, 4294967296 is added or subtracted so that the value is within the range. If the value is not an integer, it is rounded off to the nearest integer. For example, 5.5 is rounded off to 5.<br>Note: The badge will not be displayed if the value is less than or equal to 0.<br>The maximum number of messages is 99. If this limit is exceeded, only **99+** is displayed. Extremely large values are considered invalid and will result in the badge not being displayed.|
 | hidesBackButton | boolean                                                                     | No| - | Whether to hide the back arrow on the left.<br>Default value: **false**. **true** to hide, **false** to show.|
-| onSelected | ((index: number) =&gt; void)                                   | No| - | Callback invoked when an option in the drop-down menu is selected. The index of the selected option is passed in.|
+| onSelected | ((index:&nbsp;number)&nbsp;=&gt;&nbsp;void)                                   | No| - | Callback invoked when an option in the drop-down menu is selected. The index of the selected option is passed in. This parameter is passed to handle specific service logic after an option in the drop-down menu is selected. This parameter can be omitted when there is no specific service logic.|
 
 > **NOTE**
 > 
@@ -62,16 +62,16 @@ SelectTitleBar({selected: number, options: Array&lt;SelectOption&gt;, menuItems?
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name| Type| Read-Only| Optional| Description|
-| -------- | -------- |---|---| -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | No| No| Icon resource.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon resource, which has higher priority than **value**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| label<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon label.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
-| isEnabled | boolean | No| Yes| Whether to enable the item.<br>Default value: **false**. **true** to enable, **false** to disable.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| action | () =&gt; void | No| Yes| Action to perform.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| accessibilityLevel<sup>18+<sup>       | string  | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| accessibilityText<sup>18+<sup>        | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of the **label** property if it is set and an empty string otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                    |
-| accessibilityDescription<sup>18+<sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.          |
+| Name                                    | Type| Read-Only| Optional| Description|
+|----------------------------------------| -------- |---|---| -------- |
+| value                                  | [ResourceStr](ts-types.md#resourcestr) | No| No| Icon resource.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| symbolStyle<sup>18+</sup>              | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol icon resource, which has higher priority than **value**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| label<sup>13+</sup>                    | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon label.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
+| isEnabled                              | boolean | No| Yes| Whether to enable the item.<br>Default value: **false**. **true** to enable, **false** to disable.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| action                                 | ()&nbsp;=&gt;&nbsp;void | No| Yes| Action to perform.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| accessibilityLevel<sup>18+</sup>       | string  | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of the **label** property if it is set and an empty string otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                    |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.          |
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.
@@ -239,7 +239,7 @@ struct Index {
         action: () => Prompt.showToast({ message: "show toast index 4" }),
         accessibilityText: 'Remove',
         accessibilityLevel: 'yes',
-        accessibilityDescription: 'Tap to remove the selected item',
+        accessibilityDescription: 'Tap to remove the current content',
       }
     ]
 
@@ -372,7 +372,7 @@ struct Index {
         action: () => Prompt.showToast({ message: "show toast index 4" }),
         accessibilityText: 'Remove',
         accessibilityLevel: 'yes',
-        accessibilityDescription: 'Tap to remove the selected item',
+        accessibilityDescription: 'Tap to remove the current content',
       }
     ]
 
