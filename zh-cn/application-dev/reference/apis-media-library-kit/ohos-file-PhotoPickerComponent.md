@@ -280,7 +280,7 @@ private isOnClickedNotify: boolean = false;
     };
 
     aboutToAppear(): void {
-        let params = router.getParams() as Checks;
+        let params = this.getUIContext().getRouter().getParams() as Checks;
 
         this.pickerOptions.isSlidingSelectionSupported = true;
         this.pickerOptions.isSearchSupported = false;
