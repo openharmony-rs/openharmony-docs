@@ -305,6 +305,27 @@ ArkTS-Sta示例：
 
 <!-- @[setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
+``` TypeScript
+// 设置默认输出设备为本机扬声器。
+audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+  console.info('Succeeded in setting default output device.');
+  // ...
+}).catch((err) => {
+  console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+  // ...
+});
+// ...
+
+// 设置默认输出设备为本机听筒。
+audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
+  console.info('Succeeded in setting default output device.');
+  // ...
+}).catch((err) => {
+  console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+  // ...
+});
+```
+
 ### 查询本机默认音频输出设备
 
 应用可以通过[getDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#getdefaultoutputdevice20)查询本机默认输出设备类型。
