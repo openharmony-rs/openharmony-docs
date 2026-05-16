@@ -384,6 +384,40 @@ ArkTS-Sta示例：
 
 <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
+  console.info(`Succeeded in using on or off function. CurrentOutputDeviceChangedEvent: ${JSON.stringify(currentOutputDeviceChangedEvent)}`);
+  // ...
+
+  switch (currentOutputDeviceChangedEvent.changeReason) {
+    case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
+      // 响应设备不可用事件,如果应用处于播放状态,应暂停播放,更新UX界面。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
+      // 应用根据业务情况响应设备可用事件。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
+      // 应用根据业务情况响应设备强选事件。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_SESSION_ACTIVATED:
+      // 应用根据业务情况响应audio session激活时的输出设备信息。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_STREAM_PRIORITY_CHANGED:
+      // 应用根据业务情况响应其它更高优先级的音频流触发的设备变更事件。
+      break;
+    case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
+      // 应用根据业务情况响应未知原因事件。
+      break;
+  }
+};
+// ...
+
+  audioSessionManager.onCurrentOutputDeviceChanged(currentOutputDeviceChangedCallback);
+```
+
 <!--Del-->
 ### 获取活跃输出设备信息（仅对系统应用开放）
 
