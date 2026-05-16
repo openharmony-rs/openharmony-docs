@@ -382,7 +382,7 @@ const TAG = 'UserStatusDemo';
 try {
   let mistouchFeatureId = userStatus.UserStatusFeature.ANTI_MISTOUCH;
   userStatus.subscribe(mistouchFeatureId, (data: userStatus.UserStatusData) => {
-    console.info(TAG, 'subscribe succeeded, result：' + data.result);
+    console.info(TAG, 'subscribe succeeded, result: ' + data.result);
   });
 } catch (err) {
   let error = err as BusinessError;
@@ -492,7 +492,7 @@ try {
     ]
   };
   const result = userStatus.configure(moodFeatureId, JSON.stringify(configData));
-  console.log("configure result:", result);
+  console.log("configure result: ", result);
 } catch (err) {
   let error = err as BusinessError;
   console.error("configure failed, err code is " + error.code);
@@ -540,7 +540,7 @@ try {
     userStatus.UserStatusAtomicCap.SENSOR_GYROSCOPE
   ];
   const result = userStatus.queryCapabilities(capabilities);
-  console.log("Query capabilities result:", result);
+  console.log("Query capabilities result: ", result);
 } catch (err) {
   let error = err as BusinessError;
   console.error("Query capabilities failed, err code is " + error.code);
