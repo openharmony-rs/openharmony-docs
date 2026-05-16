@@ -468,7 +468,7 @@ export default class DemoAgentForConnect extends AgentExtensionAbility {
       };
       console.info(`${TAG} start connect`);
       const connectId = agentManager.connectServiceExtensionAbility(this.context, want, options);
-      console.info(`${TAG} connect end, connectId=${connectId} `);
+      console.info(`${TAG} connect end, connectId=${connectId}`);
       return connectId;
     } catch (err) {
       console.error(`${TAG} connectServiceExtensionAbility failed.`);
