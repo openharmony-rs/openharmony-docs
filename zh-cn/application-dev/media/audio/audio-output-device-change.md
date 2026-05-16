@@ -233,3 +233,58 @@ ArkTS-Dyn示例：
   ArkTS-Sta示例：
 
 <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioRenderer: audio.AudioRenderer | null = null;
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+// ...
+
+  audio.createAudioRenderer(audioRendererOptions).then((data) => {
+    audioRenderer = data as audio.AudioRenderer;
+    // ...
+  }).catch((err) => {
+    console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+  // ...
+
+  let audioSessionManager = audio.getAudioManager().getSessionManager();
+  audioSessionManager.activateAudioSession({ concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS });
+  // 订阅监听音频流输出设备变化及原因。
+  audioSessionManager.onCurrentOutputDeviceChanged((deviceChangeInfo: audio.CurrentOutputDeviceChangedEvent) => {
+    console.info(`Succeeded in using on function. AudioStreamDeviceChangeInfo: ${JSON.stringify(deviceChangeInfo)}`);
+    // ...
+    switch (deviceChangeInfo.changeReason) {
+      case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
+        // 响应设备不可用事件，如果应用处于播放状态，应暂停播放，更新UX界面。
+        (audioRenderer as audio.AudioRenderer).pause();
+        console.info('REASON_OLD_DEVICE_UNAVAILABLE, pause audio is recommended');
+        break;
+      case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
+        // 应用根据业务情况响应设备可用事件。
+        break;
+      case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
+        // 应用根据业务情况响应设备强选事件。
+        break;
+      case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
+        // 应用根据业务情况响应未知原因事件。
+        break;
+    }
+  });
+```
