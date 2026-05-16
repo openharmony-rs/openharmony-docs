@@ -47,6 +47,7 @@
     - [@ohos.app.ability.UIExtensionAbility (带界面的ExtensionAbility组件)](js-apis-app-ability-uiExtensionAbility.md)
     - [@ohos.app.ability.UIExtensionContentSession (UIExtensionAbility界面操作类)](js-apis-app-ability-uiExtensionContentSession.md)
     - [@ohos.app.ability.sendableContextManager (sendable上下文管理)](js-apis-app-ability-sendableContextManager.md)
+    - [@ohos.app.ability.scriptManager (脚本管理)](js-apis-app-ability-scriptManager.md)
     - [@ohos.app.appstartup.StartupConfig (启动框架配置信息)](js-apis-app-appstartup-startupConfig.md)
     - [@ohos.app.appstartup.StartupConfigEntry (启动框架配置)](js-apis-app-appstartup-startupConfigEntry.md)
     - [@ohos.app.appstartup.StartupListener (启动框架任务监听器)](js-apis-app-appstartup-startupListener.md)
