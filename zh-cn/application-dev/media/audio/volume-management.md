@@ -184,6 +184,46 @@ ArkTS-Sta示例：
 
 <!-- @[setAppVolumePercentage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioManager = audio.getAudioManager();
+let audioVolumeManager = audioManager.getVolumeManager();
+// ...
+
+let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function. VolumeEvent: ${JSON.stringify(volumeEvent)}`);
+  // ...
+};
+// ...
+
+  audioVolumeManager.onAppVolumeChange(appVolumeChangeCallback);
+  // ...
+
+  audioVolumeManager.offAppVolumeChange(appVolumeChangeCallback);
+  // ...
+
+  // 设置应用的音量（范围为0到100）。
+  audioVolumeManager.setAppVolumePercentage(20).then(() => {
+    console.info('Succeeded in setting app volume percentage.');
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to set app volume percentage. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+  // ...
+
+  // 查询应用音量。
+  audioVolumeManager.getAppVolumePercentage().then((volume) => {
+    console.info(`Succeeded in getting app volume percentage. Volume: ${volume}`);
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to get app volume percentage. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
 <!--Del-->
 ### 根据UID调节应用音量（仅对系统应用开放）
 
