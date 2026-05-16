@@ -71,6 +71,19 @@ ArkTS-Sta示例：
 
 <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
+``` TypeScript
+// ...
+import { audio } from '@kit.AudioKit';
+// ...
+  audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting devices. AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}`);
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
 ## 监听设备连接状态变化
 
 可以设置监听事件来监听设备连接状态的变化，当有设备连接或断开时触发回调：
