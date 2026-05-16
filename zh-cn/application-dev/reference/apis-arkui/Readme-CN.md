@@ -43,6 +43,7 @@
       - [Class (OverlayManager)](arkts-apis-uicontext-overlaymanager.md)
       - [Class (PromptAction)](arkts-apis-uicontext-promptaction.md)
       - [Class (Router)](arkts-apis-uicontext-router.md)
+      - [Class (SmartGestureController)](arkts-apis-uicontext-smartgesturecontroller.md)
       - [Class (SwiperDynamicSyncScene)](arkts-apis-uicontext-swiperdynamicsyncscene.md)
       - [Class (TextMenuController)](arkts-apis-uicontext-textmenucontroller.md)
       - [Class (UIContext)](arkts-apis-uicontext-uicontext.md)
@@ -213,6 +214,7 @@
       - [拖拽排序](arkui-ts/ts-universal-attributes-drag-sorting.md)
       - [悬浮态效果](arkui-ts/ts-universal-attributes-hover-effect.md)
       - [点击音效](arkui-ts/ts-universal-attributes-click-sound.md)
+      - [智慧手势响应](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md)
       - 触摸交互控制<!--touch-interactions-->
         - [触摸热区设置](arkui-ts/ts-universal-attributes-touch-target.md)
         - [触摸测试控制](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -479,7 +481,7 @@
     - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
-    - [自定义组件内置方法（静态）](arkui-ts/ts-custom-component-api-sta.md)
+    - [自定义组件内置方法（ArkTS-Sta）](arkui-ts/ts-custom-component-api-sta.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
     - 动态ArkTS自定义组件<!--dynamic-arkts-custom-component-->
       - 自定义组件装饰器<!--custom-component-decorator-->
@@ -643,6 +645,8 @@
     - [RemoteWindow (系统接口)](arkui-ts/ts-basic-components-remotewindow-sys.md)
     - [PluginComponent (系统接口)](arkui-ts/ts-basic-components-plugincomponent-sys.md)
     - [UIExtensionComponent (系统接口)](arkui-ts/ts-container-ui-extension-component-sys.md)
+    - [SecurityUIExtensionComponent (系统接口)](arkui-ts/ts-container-security-ui-extension-component-sys.md)
+    - [DynamicComponent (系统接口)](arkui-ts/ts-container-dynamic-component-sys.md)
     - [UnionEffectContainer (系统接口)](arkui-ts/ts-container-unioneffectcomponent-sys.md)
     - [DistortionComponent (系统接口)](arkui-ts/ts-container-distortioncomponent-sys.md)
   <!--DelEnd-->

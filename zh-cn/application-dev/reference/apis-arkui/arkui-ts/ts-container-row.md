@@ -55,7 +55,7 @@ Row(options?: RowOptions)
 
 ArkTS-Dyn: Row(options?: RowOptions | RowOptionsV2)
 
-ArkTS-Sta: Row(options?: RowOptions | RowOptions | RowOptionsV2, content_?: CustomBuilder)
+ArkTS-Sta: Row(options?: RowOptions | RowOptions | RowOptionsV2)
 
 创建水平方向线性布局容器，可以设置子组件的间距。
 
@@ -74,7 +74,6 @@ ArkTS-Sta: Row(options?: RowOptions | RowOptions | RowOptionsV2, content_?: Cust
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | options | ArkTS-Dyn: [RowOptions](#rowoptions18对象说明) \| [RowOptionsV2](#rowoptionsv218对象说明)<br>ArkTS-Sta: [RowOptions](#rowoptions18对象说明) \| [RowOptions](#rowoptions18对象说明) \| [RowOptionsV2](#rowoptionsv218对象说明) | 否 | 横向布局元素间距，支持设置number、string或Resource类型。 |
-| content_ | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 定义子组件的Builder函数。 |
 
 ## RowOptions<sup>18+</sup>对象说明
 
@@ -96,7 +95,7 @@ ArkTS-Sta: Row(options?: RowOptions | RowOptions | RowOptionsV2, content_?: Cust
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | 否 | 是 | 横向布局元素间距。<br/>从API version 9开始，space为负数或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。<br/>默认值：0<br />单位：vp <br />非法值：按默认值处理。<br/>**说明：** <br/>space取值是大于等于0的数字，或者可以转换为数字的字符串。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| space<sup>7+</sup> | ArkTS-Dyn: string&nbsp;\|&nbsp;number<br/>ArkTS-Sta: string&nbsp;\|&nbsp;double | 否 | 是 | 横向布局元素间距。<br/>从API version 9开始，space为负数或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。<br/>默认值：0<br />单位：vp <br />非法值：按默认值处理。<br/>**说明：** <br/>space取值是大于等于0的数字，或者可以转换为数字的字符串。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RowOptionsV2<sup>18+</sup>对象说明
 

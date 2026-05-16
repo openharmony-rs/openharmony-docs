@@ -368,8 +368,8 @@ equals(id: TextMenuItemId): boolean
 | 名称  | 类型   | 只读 | 可选   | 说明  |
 | ------- | ------ | ---- | ----- | ----- |
 | onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | 否 | 是  | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。 </br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 24|
-| onCreateMenu<sup>23+</sup> |ArkTS-Sta: [OnCreateMenuCallback](#oncreatemenucallback23) \| undefined | 否 | 否  | 在菜单创建时触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23<br/>取值为undefined时，不使用回调函数。|
-| onMenuItemClick<sup>23+</sup> |ArkTS-Sta: [OnMenuItemClickCallback](#onmenuitemclickcallback23) \| undefined| 否 | 否  | 菜单项功能函数。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23<br/>取值为undefined时，不使用回调函数。|
+| onCreateMenu<sup>23+</sup> |ArkTS-Sta: [OnCreateMenuCallback](#oncreatemenucallback23) \| undefined | 否 | 否  | 在菜单创建时触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。 <br/>取值为undefined时，不使用回调函数。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
+| onMenuItemClick<sup>23+</sup> |ArkTS-Sta: [OnMenuItemClickCallback](#onmenuitemclickcallback23) \| undefined| 否 | 否  | 菜单项功能函数。 <br/>取值为undefined时，不使用回调函数。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Sta。<br>**ArkTS-Sta起始版本：** 23|
 
 ### onCreateMenu<sup>12+</sup>
 
@@ -1720,6 +1720,26 @@ constructor(options?: NumericTextTransitionOptions)
 | TOP                   | 0  | 内容区顶部对齐。 |
 | CENTER                | 1  | 内容区中心对齐。 |
 | BOTTOM                | 2  | 内容区底部对齐。 |
+
+## StrokeJoinStyle
+
+定义线条拐角的样式，即在绘制折线时线段拐角处的画笔样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称                   | 值  | 说明                  |
+| --------------------- | -------  | ------------------- |
+| MITER_JOIN            | 0  | 拐角类型为锐角。 |
+| ROUND_JOIN            | 1  | 拐角类型为圆角。 |
+| BEVEL_JOIN            | 2  | 拐角类型为平角。 |
 
 ## TextDirection<sup>22+</sup>
 

@@ -536,7 +536,7 @@ onHover(event: HoverCallback | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event | [HoverCallback](ts-universal-events-hover.md#hovercallback12) \| undefined | 是 | 悬浮事件回调。<br/>取值为undefined时，不使用回调函数。 |
+| event | [HoverCallback](ts-uicommonevent.md#hovercallback) \| undefined | 是 | 悬浮事件回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ## BaseSpan
 

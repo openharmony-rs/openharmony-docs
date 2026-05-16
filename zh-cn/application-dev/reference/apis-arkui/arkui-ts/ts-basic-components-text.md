@@ -2218,7 +2218,7 @@ Marquee初始化参数。
 | delay              | ArkTS-Dyn: number <br> ArkTS-Sta: int                                        | 否  | 是 | 设置每次滚动的时间间隔。<br/>默认值：0 <br/>单位：毫秒  <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                              |
 | fadeout            | boolean                                         | 否  | 是 | 设置文字超长时的渐隐效果。<br/>true表示支持渐隐效果，false表示不支持渐隐效果。<br/>当Text内容超出显示范围时，未完全展现的文字边缘将应用渐隐效果。若两端均有文字未完全显示，则两端同时应用渐隐效果。在渐隐效果开启状态下，clip属性将自动锁定为true，不允许设置为false。<br/>默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23    |
 | marqueeStartPolicy | [MarqueeStartPolicy](#marqueestartpolicy18枚举说明) | 否  | 是 | 设置跑马灯启动策略，该属性值生效需将start设置为true。<br/>默认值：TV设备上默认值为MarqueeStartPolicy.ON_FOCUS，其他设备默认值为MarqueeStartPolicy.DEFAULT <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                       |
-| marqueeUpdatePolicy<sup>23+</sup> | [MarqueeUpdatePolicy](#marqueeupdatepolicy18枚举说明) | 否  | 是 | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>当跑马灯为播放状态，且文本内容宽度超过跑马灯组件宽度时，该属性生效。<br/>默认值：MarqueeUpdatePolicy.DEFAULT <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
+| marqueeUpdatePolicy<sup>23+</sup> | [MarqueeUpdatePolicy](#marqueeupdatepolicy23枚举说明) | 否  | 是 | 跑马灯组件属性更新后，跑马灯的滚动策略。<br/>当跑马灯为播放状态，且文本内容宽度超过跑马灯组件宽度时，该属性生效。<br/>默认值：MarqueeUpdatePolicy.DEFAULT <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 <br/>  **ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## MarqueeStartPolicy<sup>18+</sup>枚举说明
 
@@ -2237,7 +2237,7 @@ Marquee的滚动方式，可选择默认持续滚动或条件触发滚动。
 | DEFAULT  | 0  | 默认持续滚动。       |
 | ON_FOCUS | 1  | 获焦以及鼠标悬浮时开始滚动。 |
 
-## MarqueeUpdatePolicy<sup>18+</sup>枚举说明
+## MarqueeUpdatePolicy<sup>23+</sup>枚举说明
 
 跑马灯组件属性更新后，跑马灯的滚动策略。
 
@@ -2245,7 +2245,7 @@ Marquee的滚动方式，可选择默认持续滚动或条件触发滚动。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
 

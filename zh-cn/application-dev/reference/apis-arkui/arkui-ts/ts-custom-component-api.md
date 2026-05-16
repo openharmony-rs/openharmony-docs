@@ -26,8 +26,6 @@ getUIContext(): UIContext
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型                                                      | 说明                    |
@@ -66,9 +64,7 @@ struct MyComponent {
 
 ## getUniqueId<sup>12+</sup>
 
-ArkTS-Dyn: getUniqueId(): number
-
-ArkTS-Sta: getUniqueId(): int
+getUniqueId(): number
 
 获取当前组件的UniqueId。UniqueId为系统为每个组件分配的Id，可保证当前应用中的唯一性。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
@@ -78,13 +74,11 @@ ArkTS-Sta: getUniqueId(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回当前Component的UniqueId。 |
+| number | 返回当前Component的UniqueId。 |
 
 **示例：**
 

@@ -141,6 +141,28 @@ ArkTS-Sta: order(value: int | GridColColumnOption | undefined)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) \| undefined | 是   | 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br/>取值为非负整数，默认值：0  <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
+### attributeModifier<sup>12+</sup>
+
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<GridColAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridColAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridColAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridColAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridCol组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ## GridColColumnOption
 
 用于自定义指定在不同宽度设备类型上，栅格子组件占据的栅格数量单位。
@@ -165,36 +187,18 @@ ArkTS-Sta: order(value: int | GridColColumnOption | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| xs  | number | 否 | 是  | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
-| sm  | number | 否 | 是  | 在栅格大小为sm的设备上，栅格容器组件的栅格列数。      |
-| md  | number | 否 | 是  | 在栅格大小为md的设备上，栅格容器组件的栅格列数。    |
-| lg  | number | 否 | 是  | 在栅格大小为lg的设备上，栅格容器组件的栅格列数。      |
-| xl  | number | 否 | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
-| xxl | number | 否 | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
-
-### attributeModifier<sup>12+</sup>
-
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<GridColAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridColAttribute> | AttributeModifier\<CommonMethod> | undefined)
-
-设置组件的动态属性。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
-
-| 参数名 | 类型                                                | 必填 | 说明                                                         |
-| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridColAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridColAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridCol组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| xs  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
+| sm  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为sm的设备上，栅格容器组件的栅格列数。      |
+| md  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为md的设备上，栅格容器组件的栅格列数。    |
+| lg  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为lg的设备上，栅格容器组件的栅格列数。      |
+| xl  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
+| xxl | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
 
 ## 事件
 支持[通用事件](ts-component-general-events.md)。

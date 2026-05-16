@@ -2166,6 +2166,10 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 获取虚拟键盘弹出时，页面的避让模式。
 
+> **说明：**
+>
+> 从API version 18开始，getKeyboardAvoidMode接口返回KeyboardAvoidMode枚举值，为整数类型。API version 18之前版本，getKeyboardAvoidMode接口返回字符串类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
@@ -2404,11 +2408,12 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[自定义节点错误码](./errorcode-node.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
+| 100023   | Unable to obtain current ui context. |
 
 **示例：**
 
@@ -2513,11 +2518,13 @@ ArkTS-Sta: getFilteredInspectorTreeById(id: string, depth: int, filters?: Array\
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[自定义节点错误码](./errorcode-node.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: <br /> 1. Mandatory parameters are left unspecified. <br /> 2. Incorrect parameters types. <br /> 3. Parameter verification failed.  |
+| 100023   | Unable to obtain current ui context. |
+| 100024   | The parameter depth must be greater than 0. |
 
 **示例：**
 
@@ -2609,6 +2616,32 @@ getContextMenuController(): ContextMenuController
 |类型|说明|
 |----|----|
 |[ContextMenuController](arkts-apis-uicontext-contextmenucontroller.md)| 获取ContextMenuController对象。|
+
+## getSmartGestureController
+
+getSmartGestureController(): SmartGestureController
+
+获取[SmartGestureController](arkts-apis-uicontext-smartgesturecontroller.md)对象，可通过该对象控制智慧手势处理流程。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [SmartGestureController](arkts-apis-uicontext-smartgesturecontroller.md) | SmartGestureController对象。 |
+
+**示例：**
+
+参考智慧手势控制器[示例1（启用智慧手势并自定义动作处理）](arkts-apis-uicontext-smartgesturecontroller.md#示例1启用智慧手势并自定义动作处理)。
 
 ## getMeasureUtils<sup>12+</sup>
 

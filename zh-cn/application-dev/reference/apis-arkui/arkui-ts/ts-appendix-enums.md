@@ -122,6 +122,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     |值| 说明                            |
 | ------ |-----| ----------------------------- |
 | ROTATION_0 |0| 应用方向为0度。|
@@ -261,6 +265,10 @@
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明                            |
 | ------ | --- | ----------------------------- |
@@ -526,6 +534,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                             | 值 | 说明                                                         |
 | -------------------------------- | --- | ------------------------------------------------------------ |
 | Top                              | 0 | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
@@ -774,6 +786,10 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                      |值| 说明         |
 | ----------------------  |----| ---------- |
 | FOLD_STATUS_UNKNOWN     |0| 表示设备当前折叠状态未知。 |
@@ -842,6 +858,67 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | RightTop    | 从右上向左下。   |
 | RightBottom | 从右下向左上。   |
 | None        | 无。    |
+
+## GestureShortcut
+
+组件的智慧手势响应优先级枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| PRIMARY | 0 | 智慧手势响应优先级。当前智慧手势响应配置仅支持该取值。 |
+
+## SmartGestureAction
+
+智慧手势操作类型枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| NONE | 0 | 无动作。 |
+| PAGE_FORWARD | 1 | 向前翻页。包括向下和向右。 |
+| SCROLL_FORWARD | 2 | 向前滚动。包括向下和向右。 |
+| SELECT | 3 | 选中组件。 |
+| CLICK | 4 | 点击组件。 |
+| BACK_PRESS | 5 | 返回。 |
+
+## OperateIntention
+
+智慧手势原始操作意图枚举。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| TAP | 0 | 敲一敲。 |
+| SLIDE_FORWARD | 1 | 划一划。 |
+| BACK_PRESS | 2 | 翻腕。 |
 
 ## HorizontalAlign
 
@@ -1106,14 +1183,11 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称   | 值 | 说明    |
 | ---- | ----- | ----- |
-| Down | 0 | 按键按下。 |
-| Up   | 1 | 按键松开。 |
+| Down | 0 | 按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| Up   | 1 | 按键松开。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
+| CANCEL   | 3 | 取消按键事件。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## LineJoinStyle
 
@@ -1922,6 +1996,10 @@ type Nullable\<T> = T | undefined
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 下表列出了典型设备默认宽度断点的阈值划分，可在基于窗口宽度断点布局设计时作为参考。个别设备可根据需求通过产品化配置调整断点阈值。
 

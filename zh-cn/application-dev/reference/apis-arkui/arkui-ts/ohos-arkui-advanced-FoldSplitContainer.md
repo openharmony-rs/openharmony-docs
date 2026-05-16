@@ -40,9 +40,7 @@ FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&g
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -54,6 +52,34 @@ FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&g
 | foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | 是 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 折叠态布局信息。 |
 | animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) \| null | 否 | [\@Prop](../../../ui/state-management/arkts-prop.md) | 设置动画效果相关的参数，null表示关闭动效。 |
 | onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | 否 | - | 折叠屏进入或退出悬停模式时触发的回调函数。 |
+
+## FoldSplitContainer<sup>23</sup>
+
+FoldSplitContainer({primary: RegionBuilder, secondary: RegionBuilder, extra?: RegionBuilder, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam, onHoverStatusChange?: OnHoverStatusChangeHandler, build(): void})
+
+实现折叠屏二分栏、三分栏在展开态、悬停态以及折叠态的区域控制的分栏布局。
+
+**装饰器类型：**[\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| primary | [RegionBuilder](#regionbuilder) | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 主要区域回调函数。 |
+| secondary | [RegionBuilder](#regionbuilder) | 是 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 次要区域回调函数。 |
+| extra | [RegionBuilder](#regionbuilder) | 否 | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | 扩展区域回调函数，不传入的情况，没有对应区域。 |
+| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | 是 | [\@PropRef](../../../ui/state-management-static/arkts-static-propref.md) | 展开态布局信息。 |
+| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | 是 | [\@PropRef](../../../ui/state-management-static/arkts-static-propref.md) | 悬停态布局信息。 |
+| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | 是 | [\@PropRef](../../../ui/state-management-static/arkts-static-propref.md) | 折叠态布局信息。 |
+| animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 否 | [\@PropRef](../../../ui/state-management-static/arkts-static-propref.md) | 设置动画效果相关的参数。 |
+| onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | 否 | - | 折叠屏进入或退出悬停模式时触发的回调函数。 |
+| build() | void | 是 | [\@Builder](../../../ui/state-management/arkts-builder.md) | 构造组件的方法。 |
 
 ## ExpandedRegionLayoutOptions
 
@@ -186,6 +212,18 @@ onHoverStatusChange事件处理。
 | LAYOUT_1V1 | ArkTS-Dyn: 1<br/>ArkTS-Sta: 1.0 | 1:1比例。 |
 | LAYOUT_3V2 | 1.5 | 3:2比例。 |
 | LAYOUT_2V3 | 0.6666666666666666 | 2:3比例。 |
+
+## RegionBuilder
+
+type RegionBuilder = () => void
+
+RegionBuilder类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 
