@@ -362,6 +362,21 @@ ArkTS-Sta示例：
 
 <!-- @[getDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+  try {
+    let deviceType = audioSessionManager.getDefaultOutputDevice();
+    console.info(`Succeeded in getting default output device. DeviceType: ${deviceType}`);
+    // ...
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get default output device. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
+```
+
 ### 监听输出设备变化
 
 应用可以通过注册[CurrentOutputDeviceChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#currentoutputdevicechangedevent20)监听输出设备的连接状态变化。
