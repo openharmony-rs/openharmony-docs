@@ -103,6 +103,25 @@ ArkTS-Sta示例：
 
 <!-- @[getVolumeByStream](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+    // 获取指定音频流的音量。
+    let volume = audioVolumeManager.getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+    console.info(`Succeeded in getting volume by stream. Volume: ${volume}`);
+    // ...
+
+    // 获取指定音频流的最小音量。
+    let volume = audioVolumeManager.getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+    console.info(`Succeeded in getting min volume by stream. Volume: ${volume}`);
+    // ...
+
+    // 获取指定音频流的最大音量。
+    let volume = audioVolumeManager.getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+    console.info(`Succeeded in getting max volume by stream. Volume: ${volume}`);
+```
+
 ### 监听系统音量变化
 
 通过设置监听事件，可以监听系统音量的变化：
