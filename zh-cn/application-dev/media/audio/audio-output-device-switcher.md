@@ -63,6 +63,30 @@
    ArkTS-Sta示例：
 
    <!-- @[audioRenderer_setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   // ...
+   
+       // 设置默认输出设备为本机扬声器。
+       (audioRenderer as audio.AudioRenderer).setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+         console.info('Succeeded in setting default output device.');
+         // ...
+       }).catch((err) => {
+         console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+         // ...
+       });
+       // ...
+   
+       // 设置默认输出设备为本机听筒。
+       (audioRenderer as audio.AudioRenderer).setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
+         console.info('Succeeded in setting default output device.');
+         // ...
+       }).catch((err) => {
+         console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+         // ...
+       });
+   ```
 
 2. 从API version 20开始，应用可使用AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置听筒和扬声器路由切换。
 
