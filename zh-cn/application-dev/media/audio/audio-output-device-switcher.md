@@ -120,3 +120,46 @@
    ArkTS-Sta示例：
 
    <!-- @[audioSessionManager_setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   // ...
+   
+   let audioManager = audio.getAudioManager();
+   let audioSessionManager = audioManager.getSessionManager();
+   // ...
+   
+     // 设置音频会话策略。
+     let strategy: audio.AudioSessionStrategy = {
+       concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+     };
+   
+     // 激活AudioSession。
+     audioSessionManager.activateAudioSession(strategy).then(() => {
+       console.info('Succeeded in activating audio session.');
+       // ...
+     }).catch((err) => {
+       console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+     // ...
+   
+     // 设置默认输出设备为本机扬声器。
+     audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+       console.info('Succeeded in setting default output device.');
+       // ...
+     }).catch((err) => {
+       console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+     // ...
+   
+     // 设置默认输出设备为本机听筒。
+     audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
+       console.info('Succeeded in setting default output device.');
+       // ...
+     }).catch((err) => {
+       console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+   ```
