@@ -102,7 +102,7 @@
 
    <!-- @[create_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 注册avTranscoder回调函数。
    setAVTranscoderCallback(): void {
      if (this.avTranscoder != undefined) {
@@ -249,7 +249,7 @@
 
    <!-- @[create_fdsrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
    this.rawFileDescriptor = await this.context!.resourceManager.getRawFd('H264_AAC.mp4');
    // 将RawFileDescriptor转换为AVFileDescriptor。
@@ -462,7 +462,7 @@
 
    <!-- @[doRelease](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
    
-   ```ts
+   ``` TypeScript
    // 释放转码流程。
    async releaseTranscoderingProcess(): Promise<void> {
      if (this.avTranscoder != undefined) {
@@ -491,7 +491,7 @@
 
     <!-- @[transcoder_process](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS-sta/entry/src/main/ets/transcoder/AVTranscoderManager.ets) -->
     
-    ```ts
+    ``` TypeScript
     // 一个完整的【开始转码-暂停转码-恢复转码-转码完成】示例。
     async avTranscoderDemo(){
       this.context = globalContext.getAbilityContext();
