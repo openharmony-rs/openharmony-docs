@@ -162,3 +162,69 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
 ArkTS-Sta示例：
 
 <!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->
+
+``` TypeScript
+// ...
+import { audio } from '@kit.AudioKit';
+// ...
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// ...
+let audioManager = audio.getAudioManager();
+let audioSessionManager = audioManager.getSessionManager();
+
+// ...
+  // 监听当前输入设备变化事件,当选择输入设备成功后会触发该回调。
+  audioSessionManager.onCurrentInputDeviceChanged((currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
+    console.info(`Succeeded in using on function. CurrentInputDeviceChangedEvent: ${JSON.stringify(currentInputDeviceChangedEvent)}`);
+    // ...
+  });
+  // ...
+
+  // 监听音频可选输入设备连接状态变化事件,当有输入设备上下线时会收到回调通知。
+  audioSessionManager.onAvailableDeviceChange(audio.DeviceUsage.MEDIA_INPUT_DEVICES, (deviceChanged: audio.DeviceChangeAction) => {
+    console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(deviceChanged)}`);
+    // ...
+  });
+  // ...
+
+  try {
+    // 获取当前可选的音频输入设备列表。
+    let data = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
+    console.info(`Succeeded in getting available devices. AudioDeviceDescriptors: ${JSON.stringify(data)}`);
+    // 当前可选音频输入设备列表不为空时,可进行选择。
+    audioSessionManager.selectMediaInputDevice(data[0]).then(() => {
+      console.info('Succeeded in selecting media input device.');
+      // ...
+    }).catch((err) => {
+      console.error(`Failed to select media input device. Code: ${err.code}, message: ${err.message}`);
+      // ...
+    });
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
+  // ...
+
+  try {
+    // 可通过该接口查询选择输入设备是否成功。
+    let device: audio.AudioDeviceDescriptor = audioSessionManager.getSelectedMediaInputDevice();
+    console.info(`Succeeded in getting selected media input device. Device: ${JSON.stringify(device)}`);
+    // ...
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to get selected media input device. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
+  // ...
+
+  // 清空通过selectMediaInputDevice选择的输入设备。
+  audioSessionManager.clearSelectedMediaInputDevice().then(() => {
+    console.info('Succeeded in clearing selected media input device.');
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to clear selected media input device. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
