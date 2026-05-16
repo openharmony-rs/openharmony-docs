@@ -280,6 +280,15 @@ ArkTS-Sta示例：
 
 <!-- @[getSessionManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioManager = audio.getAudioManager();
+// ...
+let audioSessionManager = audioManager.getSessionManager();
+```
+
 ### 设置本机默认音频输出设备
 
 [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)可以用于设置本机默认输出设备。
