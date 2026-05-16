@@ -266,6 +266,30 @@ ArkTS-Sta示例：
 
 <!-- @[setVolume](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
+``` TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+
+    (audioRenderer as audio.AudioRenderer).setVolume(0.1).then(() => {
+      console.info('Succeeded in setting volume.');
+      // ...
+    }).catch((err) => {
+      console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
+      // ...
+    });
+    // ...
+
+    try {
+      let volume = (audioRenderer as audio.AudioRenderer).getVolume();
+      console.info(`Succeeded in getting volume. Volume: ${volume}`);
+      // ...
+    } catch (err) {
+      let error = err as BusinessError;
+      console.error(`Failed to get volume. Code: ${error.code}, message: ${error.message}`);
+      // ...
+    }
+```
+
 <!--Del-->
 ### 监听活跃流变化（仅对系统应用开放）
 
