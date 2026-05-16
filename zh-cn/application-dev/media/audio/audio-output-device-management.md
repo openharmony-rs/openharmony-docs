@@ -211,6 +211,25 @@ ArkTS-Sta示例：
 
 <!-- @[getPreferOutputDeviceForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型：VoIP通话。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+// ...
+
+  audioRoutingManager.getPreferOutputDeviceForRendererInfo(audioRendererInfo).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting prefer output device for renderer info. AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}`);
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to get prefer output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
 ### 监听最高优先级输出设备变化
 
 ArkTS-Dyn示例：
