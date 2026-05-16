@@ -646,14 +646,14 @@
 						"start_line":127
 					},
 					{
-						"end_line":147,
+						"end_line":148,
 						"name":"doRelease",
 						"start_line":136
 					},
 					{
-						"end_line":163,
+						"end_line":164,
 						"name":"transcoder_process",
-						"start_line":155
+						"start_line":156
 					}
 				]
 			},
