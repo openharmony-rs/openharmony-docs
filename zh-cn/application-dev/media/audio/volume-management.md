@@ -43,6 +43,8 @@ OpenHarmony通过系统音量，应用音量和音频流音量协同的方式实
 
 通过AudioVolumeManager只能获取音量信息及监听音量变化，不能主动调节系统音量。如果应用需要调节系统音量，可以[使用音量面板调节系统音量](#使用音量面板调节系统音量)。
 
+ArkTS-Dyn示例：
+
 <!-- @[get_volumemanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
 ``` TypeScript
@@ -51,11 +53,17 @@ import { audio } from '@kit.AudioKit';
 let audioManager = audio.getAudioManager();
 let audioVolumeManager = audioManager.getVolumeManager();
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[getVolumeManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
 ### 获取音量信息
 
 管理系统音量的接口由AudioVolumeManager提供，在使用之前，需要使用[getVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
 
+ArkTS-Dyn示例：
+
 <!-- @[get_volumemanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
 ``` TypeScript
@@ -65,9 +73,15 @@ let audioManager = audio.getAudioManager();
 let audioVolumeManager = audioManager.getVolumeManager();
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[getVolumeManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
+
 使用[AudioVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md)获取指定流类型的音量信息。
 
 示例代码如下所示：
+
+ArkTS-Dyn示例：
 
 <!-- @[get_systemvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
@@ -85,9 +99,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
   audioVolumeManager.getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[getVolumeByStream](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
+
 ### 监听系统音量变化
 
 通过设置监听事件，可以监听系统音量的变化：
+
+ArkTS-Dyn示例：
 
 <!-- @[regist_volumechangecallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
@@ -102,6 +122,10 @@ import { audio } from '@kit.AudioKit';
     // ...
   });
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[onStreamVolumeChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
 <!--Del-->
 ### 调节系统音量（仅对系统应用开放）
@@ -122,6 +146,8 @@ import { audio } from '@kit.AudioKit';
 当[音量模式](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiovolumemode19)设置为APP_INDIVIDUAL时，可通过下面示例接口设置、查询应用音量。
 
 ### 调节应用音量
+
+ArkTS-Dyn示例：
 
 <!-- @[set_appvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
@@ -153,6 +179,10 @@ let audioVolumeManager = audioManager.getVolumeManager();
   audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
   audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[setAppVolumePercentage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
 <!--Del-->
 ### 根据UID调节应用音量（仅对系统应用开放）
@@ -198,18 +228,13 @@ audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 
 ## 音频流音量
 
-管理音频流音量的接口是AVPlayer或AudioRenderer的setVolume()方法，使用[AVPlayer](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9)设置音频流音量的示例代码如下：
-
-<!-- @[AVPlayerset_streamvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
-
-``` TypeScript
-let volume = 1.0;  // 指定的音量大小，取值范围为[0.00-1.00]，1表示最大音量。
-avPlayer.setVolume(volume);
-```
+管理音频流音量的接口是[AVPlayer](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavplayer9)或AudioRenderer的setVolume()方法。
 
 使用[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)的[setVolume](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setvolume9)和[getVolume](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#getvolume12)接口分别完成音频流音量的设置和获取。
 
 示例代码如下所示：
+
+ArkTS-Dyn示例：
 
 <!-- @[Renderset_streamvolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
 
@@ -236,6 +261,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
       // ...
     }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[setVolume](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/VolumeManagement.ets) -->
 
 <!--Del-->
 ### 监听活跃流变化（仅对系统应用开放）

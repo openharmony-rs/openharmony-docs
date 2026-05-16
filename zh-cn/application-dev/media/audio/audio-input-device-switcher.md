@@ -20,6 +20,8 @@
 >
 > 通话场景下，如果蓝牙或星闪设备在线，系统默认使用蓝牙或星闪设备作为输入设备。
 
+ArkTS-Dyn示例：
+
 <!-- @[set_BluetoothAndNearlinkPreferredRecordCategory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets) -->
 
 ``` TypeScript
@@ -42,6 +44,10 @@ let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioMa
   });
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[setBluetoothAndNearlinkPreferredRecordCategory](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->
+
 ## 选择任意设备进行录音
 
 应用可使用AudioSessionManager的[selectMediaInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21)选择输入设备。
@@ -49,6 +55,8 @@ let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioMa
 > **说明：**
 >
 > 通话场景下，输入设备跟随当前输出设备，此时其他与通话并发的录音流也会跟随通话输入设备。
+
+ArkTS-Dyn示例：
 
 <!-- @[select_MediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets) -->
 
@@ -132,3 +140,7 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
     // ...
   });
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->

@@ -14,6 +14,8 @@
 
 在使用AudioRoutingManager管理音频设备前，需要先导入模块并创建实例。
 
+ArkTS-Dyn示例：
+
 <!-- @[getRoutingManager_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
 
 ``` TypeScript
@@ -22,6 +24,10 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
 let audioManager = audio.getAudioManager(); // 需要先创建AudioManager实例。
 let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioManager的方法创建AudioRoutingManager实例。
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
 ## 支持的音频输入设备类型
 
@@ -39,6 +45,8 @@ let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioMan
 
 使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输入设备的信息。
 
+ArkTS-Dyn示例：
+
 <!-- @[getDevices_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
 
 ``` TypeScript
@@ -51,9 +59,15 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
   });
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
+
 ## 监听设备连接状态变化
 
 可以设置监听事件来监听设备连接状态的变化，当有设备连接或断开时触发回调：
+
+ArkTS-Dyn示例：
 
 <!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->  
 
@@ -76,6 +90,10 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
     console.info('Should be no callback.');
   });
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
 <!--Del-->
 ## 选择音频输入设备（仅对系统应用开放）

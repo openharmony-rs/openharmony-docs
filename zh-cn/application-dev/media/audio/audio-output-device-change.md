@@ -55,6 +55,8 @@
 
 ### AudioRenderer示例
 
+ArkTS-Dyn示例：
+
   <!-- @[all_outputDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets) -->
 
   ``` TypeScript	
@@ -110,7 +112,13 @@
     }	
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+
 ### AudioSessionManager示例
+
+ArkTS-Dyn示例：
 
   ```ts
   import { audio } from '@kit.AudioKit';
@@ -168,3 +176,7 @@
     }
   }
   ```
+
+  ArkTS-Sta示例：
+
+<!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
