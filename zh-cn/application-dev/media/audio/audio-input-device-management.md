@@ -29,6 +29,14 @@ ArkTS-Sta示例：
 
 <!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
+``` TypeScript
+// ...
+import { audio } from '@kit.AudioKit';
+// ...
+let audioManager = audio.getAudioManager();
+let audioRoutingManager = audioManager.getRoutingManager();
+```
+
 ## 支持的音频输入设备类型
 
 目前支持的音频输入设备见下表：
