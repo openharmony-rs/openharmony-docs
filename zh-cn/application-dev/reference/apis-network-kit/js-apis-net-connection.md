@@ -4081,7 +4081,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netCon: connection.NetConnection = connection.createNetConnection();
 
 // 先使用on接口订阅网络不可用事件。
-netCon.onNetUnavailable ((value) => {
+netCon.onNetUnavailable((value) => {
   console.info("Succeeded to get unavailable net event");
 });
 
