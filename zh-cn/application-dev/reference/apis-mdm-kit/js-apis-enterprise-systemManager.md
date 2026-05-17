@@ -303,7 +303,7 @@ try {
 
 notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;void&gt;
 
-通知系统更新包信息。内网升级场景下，需要先调用该接口通知系统更新包，再调用[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)设置升级策略。
+通知系统更新包信息。内网升级场景下，需要先调用该接口通知系统更新包，再调用[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)设置升级策略。使用Promise异步回调。
 > **说明：**
 > 
 > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
@@ -408,7 +408,7 @@ systemManager.notifyUpdatePackages(wantTemp, updatePackageInfo).then(() => {
 
 getUpdateResult(admin: Want, version: string): Promise&lt;UpdateResult&gt;
 
-获取系统更新结果。
+获取系统更新结果。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -943,7 +943,7 @@ addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
+| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见按键事件回调[onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
 
 **错误码**：
 
@@ -1107,7 +1107,7 @@ try {
 
 startCollectLog(admin: Want): Promise&lt;void&gt;
 
-开始收集设备上已生成并存储至硬盘的[faultlog](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
+开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
 
 - 调用接口后，系统会启动一个日志收集任务，任务启动后接口立即返回。任务可能会因为系统性能等原因导致收集失败。
 - 允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
@@ -1222,135 +1222,6 @@ try {
   console.info('Succeeded in finishing log collected.');
 } catch (err) {
   console.error(`Failed to finish log collected. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-## systemManager.setInstallLocalEnterpriseAppEnabledForAccount<sup>24+</sup>
-
-setInstallLocalEnterpriseAppEnabledForAccount(admin: Want, isEnable: boolean, accountId: number): void
-
-设置指定用户下是否支持本地安装企业应用。在具备本地安装能力的PC/2in1企业设备上下发支持本地企业应用策略后，用户可以在桌面或者文件管理器直接双击企业应用安装包，即可直接安装企业应用。
-
-仅支持enterprise_normal或enterprise_mdm签名类型的企业应用。
-
-> **说明：**
->
-> 满足以下任意条件，PC/2in1企业设备在当前用户下即支持本地安装企业应用：
->
-> 1. 已通过[setInstallLocalEnterpriseAppEnabled](#systemmanagersetinstalllocalenterpriseappenabled20)开启离线安装器；
-> 2. 已通过本接口设置当前用户支持本地安装企业应用。
-<!--RP7--><!--RP7End-->
-
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。任意一个MDM应用设置支持本地安装企业应用，则综合策略即为支持本地安装企业应用。
-
-**参数：**
-
-| 参数名   | 类型                                  | 必填  | 说明 |
-| ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| isEnable | boolean | 是 | 是否支持本地安装企业应用。true表示支持，false表示不支持。 |
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                      |
-| ------- | ---------------------------------------------------------------------------- |
-| 9200001 | The application is not an administrator application of the device. |
-| 9200002 | The administrator application does not have permission to manage the device. |
-| 9200012 | Parameter verification failed. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-
-**示例：**
-
-```ts
-
-import { systemManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 需根据实际情况进行替换
-let isEnable: boolean = true;
-let accountId: number = 100;
-try {
-  systemManager.setInstallLocalEnterpriseAppEnabledForAccount(wantTemp, isEnable, accountId);
-  console.info('Succeeded in setting InstallLocalEnterpriseAppEnabledForAccount.');
-} catch (err) {
-  console.error(`Failed to set installLocalEnterpriseAppEnabledForAccount. Code is ${err.code}, message is ${err.message}`);
-}
-```
-
-## systemManager.getInstallLocalEnterpriseAppEnabledForAccount<sup>24+</sup>
-
-getInstallLocalEnterpriseAppEnabledForAccount(admin: Want | null, accountId: number): boolean
-
-查询指定用户是否支持本地安装企业应用。
-
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**设备行为差异：** 该接口在PC/2in1企业设备中可正常调用，在其他设备中返回801错误码。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型                                                    | 必填 | 说明                   |
-| ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br/>当设备有多个MDM应用时，传入admin查询对应admin设置的策略。传入null时查询整机实际生效的策略。 |
-| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
-
-**返回值：**
-
-| 类型   | 说明                                |
-| ------ | ----------------------------------- |
-| boolean | 是否支持本地安装企业应用，true为支持，false为不支持。当admin为null时，查询系统当前是否支持本地安装企业应用。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012 | Parameter verification failed. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-
-**示例：**
-
-```ts
-import { systemManager } from '@kit.MDMKit';
-import { Want } from '@kit.AbilityKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-// 需根据实际情况进行替换
-let accountId: number = 100;
-try {
-  let isEnable: boolean = systemManager.getInstallLocalEnterpriseAppEnabledForAccount(wantTemp, accountId);
-  console.info('Succeeded in getting installLocalEnterpriseAppEnabled.');
-} catch (err) {
-  console.error(`Failed to get installLocalEnterpriseAppEnabled. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -1517,7 +1388,7 @@ try {
 
 ## KeyCode<sup>23+</sup>
 
-按键编码。[添加按键事件策略](#systemmanageraddkeyeventpolicies23)、[删除按键事件策略](#systemmanagerremovekeyeventpolicies23)、[获取按键事件策略](#systemmanagergetkeyeventpolicies23)和[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
+按键编码。添加按键事件策略[addKeyEventPolicies](#systemmanageraddkeyeventpolicies23)、删除按键事件策略[removeKeyEventPolicies](#systemmanagerremovekeyeventpolicies23)、获取按键事件策略[getKeyEventPolicies](#systemmanagergetkeyeventpolicies23)和按键事件回调[onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

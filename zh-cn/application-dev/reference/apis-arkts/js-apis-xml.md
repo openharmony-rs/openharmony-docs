@@ -12,10 +12,12 @@
 * [XmlSerializer](#xmlserializer)：适用于已知XML文本大小的情况。
 * [XmlDynamicSerializer<sup>20+</sup>](#xmldynamicserializer20)：适用于未知XML文本大小的情况。
 
+<!--Del-->
 本模块提供了两种解析XML文件的方式:
 * [XmlPullParser](#xmlpullparser)：适用于对xml文本进行随机访问和灵活解析的场景。
 * [XmlSAXParser<sup>24+</sup>](#xmlsaxparser24)：适用于流式解析xml文本的场景，当xml文本较大，其他解析方式会消耗较多内存，建议采用流式解析。
 
+<!--DelEnd-->
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -1523,6 +1525,7 @@ console.info(str);
 | ENTITY_REFERENCE | 9    | 实体引用事件。        |
 | WHITESPACE       | 10   | 空白事件。            |
 
+<!--Del-->
 ## XmlSAXParser<sup>24+</sup>
 
 XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取边处理的场景，支持从[stream.Readable](js-apis-stream.md#readable) 流中读取XML数据并进行解析。
@@ -1789,3 +1792,4 @@ readableStream.push(null);
 // endElement elementName: root
 // endDocument
 ```
+<!--DelEnd-->

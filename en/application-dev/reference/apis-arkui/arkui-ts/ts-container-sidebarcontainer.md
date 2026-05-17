@@ -1,9 +1,9 @@
 # SideBarContainer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **SideBarContainer** component contains a sidebar and content area as its child components. The sidebar is the first child component and can be shown or hidden as needed. The content area is the second child component.
@@ -128,7 +128,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Width of the sidebar.<br>Default value: **240vp**<br>Unit: vp<br>Value range: [0, +∞).<br>**NOTE**<br>In API version 9 and earlier versions, the default value is **200vp**. In API version 10, the default value is **240vp**.|
+| value  | number | Yes  | Width of the sidebar.<br>Default value: **240vp**<br>Unit: vp<br>Value range: [0, +∞).<br>**NOTE**<br>For versions earlier than API version 10, the default value is **200vp**. Since API version 10, the default value is **240vp**.|
 
 ### sideBarWidth<sup>9+</sup>
 
@@ -146,7 +146,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Width of the sidebar.<br>Default value: **240vp**<br>Unit: vp<br>Value range: [0, +∞).<br>**NOTE**<br>The default value is **200vp** in API version 9 and **240vp** in API version 10.|
+| value  | [Length](ts-types.md#length) | Yes  | Width of the sidebar.<br>Default value: **240vp**<br>Unit: vp<br>Value range: [0, +∞).<br>**NOTE**<br>For API version 9, the default value is **200vp**. Since API version 10, the default value is **240vp**.|
 
 ### minSideBarWidth
 
@@ -268,7 +268,7 @@ Sets the divider style.
 
 | Name| Type                                                     | Mandatory| Description                                                        |
 | ------ | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DividerStyle](#dividerstyle10)&nbsp;\|&nbsp;null | Yes  | Divider style.<br>- **DividerStyle** (default): The divider is displayed.<br>- **null** or **undefined**: No action is taken, and the divider style remains consistent with the default.<br>**NOTE**<br>In API version 11 and earlier versions, **null** results in the divider not being displayed.|
+| value  | [DividerStyle](#dividerstyle10)&nbsp;\|&nbsp;null| Yes  | Divider style.<br>- **DividerStyle** (default): The divider is displayed.<br>- **null** or **undefined**: No action is taken, and the divider style remains consistent with the default.<br>**NOTE**<br>In API version 11 and earlier versions, **null** results in the divider not being displayed.|
 
 ### minContentWidth<sup>10+</sup>
 
@@ -309,10 +309,10 @@ Describes the style of the sidebar control button.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| left | number | No| Yes| Spacing between the sidebar control button and the left of the container.<br>Default value: **16vp**<br>Unit: vp<br>Value range: [0, +∞).|
-| top | number | No| Yes| Spacing between the sidebar control button and the top of the container.<br>Default value: **48vp**<br>Unit: vp<br>Value range: [0, +∞).|
-| width | number | No| Yes| Width of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp<br>Value range: [0, +∞).|
-| height | number | No| Yes| Height of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp<br>Value range: [0, +∞).|
+| left | number | No| Yes| Spacing between the sidebar control button and the left of the container.<br>Default value: **16vp**<br>Unit: vp<br>Value range: [0, +∞).<br>If the value is abnormal, the default value is used.|
+| top | number | No| Yes| Spacing between the sidebar control button and the top of the container.<br>Default value: **48vp**<br>Unit: vp<br>Value range: [0, +∞).<br>If the value is abnormal, the default value is used.|
+| width | number | No| Yes| Width of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp<br>Value range: [0, +∞).<br>If the value is abnormal, the default value is used.| 
+| height | number | No| Yes| Height of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp<br>Value range: [0, +∞).<br>If the value is abnormal, the default value is used.| 
 | icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18) | No| Yes| Icons of the sidebar control button.<br>If the resource fails to be obtained or this attribute is not set, the default icon is used.|
 
 ## ButtonIconOptions<sup>18+</sup>
@@ -350,25 +350,28 @@ Enumerates the positions of the sidebar.
 
 Sets the divider style.
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-| Name       | Type     | Read-Only| Optional| Description                                    |
-| ----------- | ------------- | ---- | ---- | ---------------------------------------- |
-| strokeWidth | [Length](ts-types.md#length)        | No| No  | Stroke width of the divider.<br>Default value: **1vp**<br>Unit: vp<br>Value range: [0, +∞).<br>**NOTE**<br>Percentage values are not supported. The priority of this attribute is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). If the value of this attribute is greater than that of **height**, cropping is performed based on the **height** settings. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
-| color       | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Color of the divider.<br>Default value: **#000000, 3%**  |
-| startMargin | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the top of the sidebar.<br>Default value: **0**<br>Unit: vp<br>Value range: [0, +∞).|
-| endMargin   | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the bottom of the sidebar.<br>Default value: **0**<br>Unit: vp<br>Value range: [0, +∞).|
 >  **NOTE**
 >
 >  The settings of the [universal size attributes](ts-universal-attributes-size.md) **width** and **height** do not take effect for the sidebar child component.
+>
 >  The settings do not take effect for the sidebar content area either. By default, the sidebar content area takes up the remaining space of the sidebar container.
 >
 >  If the [showSideBar](#showsidebar) attribute is not set, the sidebar's visibility is subject to its size.
 >
 >  - If the size is less than the sum of [minSideBarWidth](#minsidebarwidth) and [minContentWidth](#mincontentwidth10), the sidebar is not displayed by default.
+>
 >  - If the size is greater than or equal to the sum of **minSideBarWidth** and **minContentWidth**, the sidebar is displayed by default.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name      | Type                          | Read-Only| Optional| Description                                       |
+| --------- | ------------------------------- | ---- | ---- | ------------------------------------------ |
+| strokeWidth | [Length](ts-types.md#length)        | No| No  | Stroke width of the divider.<br>Default value: **1vp**<br>Unit: vp<br>Value range: [0, +∞).<br>If the value is abnormal, the default value is used.<br>**NOTE**<br>Percentage values are not supported. The priority of this attribute is lower than that of the universal attribute [height](ts-universal-attributes-size.md#height). If the value of this attribute is greater than that of **height**, cropping is performed based on the **height** settings. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.|
+| color       | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Color of the divider.<br>Default value: **#000000**, 3%, black.  |
+| startMargin | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the top of the sidebar.<br>Default value: **0**<br>Unit: vp<br>Value range: [0, +∞).<br>If the value is abnormal, the default value is used.|
+| endMargin   | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the bottom of the sidebar.<br>Default value: **0**<br>Unit: vp<br>Value range: [0, +∞).<br>If the value is abnormal, the default value is used.|
 
 ## Events
 

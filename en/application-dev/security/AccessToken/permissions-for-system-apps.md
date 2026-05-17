@@ -279,7 +279,7 @@ Allows a system application to enable or disable the VPN function.
 
 **Valid since**: 10
 
-**Changelog**: For APIs versions 10 and 11, **Certificate-based authorization** is **false**. For API 12 and later, it is changed to **true**.
+**Changelog**: **Certificate-based authorization** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12.
 
 ## ohos.permission.WAKEUP_VISION
 
@@ -4098,6 +4098,18 @@ Allows an application to read weather data.
 
 **Valid since**: 14
 
+## ohos.permission.ACCESS_MCU_LOG_DIR
+
+Allows a system application to access the microcontroller unit (MCU) log directory.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Valid since**: 12
+
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
 Allows a system application or system service to grant third-party applications the temporary permission to save images and videos for the specified period of time.
@@ -4605,7 +4617,7 @@ Allows a system application to obtain historical network traffic.
 
 **Valid since**: 10
 
-**Changelog**: For APIs versions 10 and 11, **Certificate-based authorization** is **false**. For API 12 and later, it is changed to **true**.
+**Changelog**: **Certificate-based authorization** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12.
 
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
@@ -5639,7 +5651,7 @@ With this permission, the application can always use sensors.
 
 **Supported devices**: general devices
 
-**Valid since**: 24
+**Since**: 24
 
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
@@ -5655,4 +5667,4 @@ With this permission, the application can access and modify the offline map data
 
 **Supported devices**: phones
 
-**Valid since**: 20
+**Since**: 20

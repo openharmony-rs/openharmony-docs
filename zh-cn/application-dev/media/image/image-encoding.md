@@ -55,6 +55,13 @@
    > **说明：**
    >
    > 在进行编码前，需要先获取imageSource或pixelMap，可参考[使用ImageSource完成图片解码](./image-decoding.md)。
+
+   - 定义copyData，获取编码后的文件流，方便后续保存为图片或者用于解码显示。
+     <!-- @[create_copyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     let copyData: ArrayBuffer = new ArrayBuffer(0);
+     ```
    
    - pixelMap编码到ArrayBuffer。
      <!-- @[packToData_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   

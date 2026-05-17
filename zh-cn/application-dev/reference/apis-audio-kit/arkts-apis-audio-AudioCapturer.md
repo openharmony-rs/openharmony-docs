@@ -1416,54 +1416,6 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
-## setMuteHint<sup>24</sup>
-
-setMuteHint(mute: boolean): Promise&lt;void&gt;
-
-应用将当前录音流的自身静音状态传递给系统音频模块。<!--RP1-->该接口不会触发录音流静音，当前仅在部分PC/2in1设备上用于优化设备功耗。<!--RP1End-->使用Promise异步回调。
-
-> **说明：**
->
-> - 该接口用于向系统音频模块上报应用自身的静音状态，不会改变录音流的实际静音状态。
-> - 该接口仅在录音流处于运行态时允许调用，否则返回错误码6800103。
-> - 同一录音流同时设置流级静音提示接口（本接口）和会话级静音提示接口[AudioSessionManager.setCapturerMuteHint](arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24)时，流级[setMuteHint](#setmutehint24)优先级更高，数值以流级设置值为准。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-**参数：**
-
-| 参数名     | 类型             | 必填   | 说明                                                      |
-| ---------- |---------------- | ------ |---------------------------------------------------------|
-| mute | boolean  | 是  | 应用自身给系统音频模块上报的静音状态。true表示应用将当前流静音，false表示取消静音。 |
-
-**返回值：**
-
-| 类型                | 说明                          |
-| ------------------- | ----------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 6800103 | Operation not permitted at current state, stream is not running. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioCapturer.setMuteHint(true).then(() => {
-  console.info('setMuteHint Success!');
-}).catch((err: BusinessError) => {
-  console.error(`setMuteHint Fail: ${err}`);
-});
-```
-
 ## read<sup>(deprecated)</sup>
 
 read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer\>): void

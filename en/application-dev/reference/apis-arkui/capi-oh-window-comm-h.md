@@ -31,7 +31,8 @@ The file declares the common enums and definitions of the window manager.
 | [WindowManager_WindowProperties](capi-windowmanager-windowproperties.md) | WindowManager_WindowProperties | Describes the window properties.|
 | [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md) | WindowManager_AvoidArea | Describes the avoid area.|
 | [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | Describes the main window information.|
-| [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | Describes the configuration of the main window screenshot.|
+| [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | Describes the configuration of the main window screenshot.|<!--Del-->
+| [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | Defines window scale factor information, including the scale factors of the system display size, system default display size, and custom display size.|<!--DelEnd-->
 
 
 ### Enums
@@ -41,6 +42,14 @@ The file declares the common enums and definitions of the window manager.
 | [WindowManager_ErrorCode](#windowmanager_errorcode) | WindowManager_ErrorCode | Enumerates the status codes returned by the window manager interface.|
 | [WindowManager_AvoidAreaType](#windowmanager_avoidareatype) | WindowManager_AvoidAreaType | Enumerates the avoid area types.|
 | [WindowManager_WindowType](#windowmanager_windowtype) | WindowManager_WindowType | Enumerates the window types.|
+
+<!--Del-->
+### Functions
+
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | Callback for the window scale factor information.|
+<!--DelEnd-->
 
 ## Enum Description
 
@@ -111,3 +120,19 @@ Enumerates the window types.
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | Main window.|
 | WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Floating window.|
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | Modal window.|
+
+<!--Del-->
+## Function Description
+
+### OH_WindowManager_DensityInfoCallback()
+
+```c
+typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)
+```
+
+**Description**
+
+Callback for the window scale factor information.
+
+**Since:** 24
+<!--DelEnd-->

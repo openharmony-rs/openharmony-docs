@@ -1960,7 +1960,7 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
@@ -2003,7 +2003,7 @@ getData(): Promise&lt;PasteData&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 
@@ -2565,7 +2565,7 @@ getDataSync(): PasteData
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
 
@@ -2938,7 +2938,7 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| patterns | [Array&lt;Pattern&gt;](#pattern13) | 是 | 需要在剪贴板中检测的模式。 |
+| patterns | Array&lt;[Pattern](#pattern13)&gt; | 是 | 需要在剪贴板中检测的模式。 |
 
 **返回值：**
 

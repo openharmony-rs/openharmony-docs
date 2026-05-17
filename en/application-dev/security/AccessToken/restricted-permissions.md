@@ -13,7 +13,7 @@
 
 Restricted permissions are permissions available to normal applications but must be requested via [access control list (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
-To change the APL of a normal application to system_basic or higher, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
+To change the APL of a normal application to system_basic or higher, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
 
 **Modification mode**:
 
@@ -206,7 +206,7 @@ Allows an application to support persistent access to file URIs.
 
 > **NOTE**
 >
-> In API 12 and later versions, the permission level is changed to normal, and applications can directly [declear permissions](declare-permissions.md). If compatibility with versions earlier than API 12 is required, the permission must still be used following the [request method for restricted permissions](declare-permissions-in-acl.md).
+> In API 12 and later versions, the permission level is changed to normal, and applications can directly [declare permissions](declare-permissions.md). If compatibility with versions earlier than API 12 is required, the permission must still be used following the [request method for restricted permissions](declare-permissions-in-acl.md).
 
 <!--RP18--><!--RP18End-->
 

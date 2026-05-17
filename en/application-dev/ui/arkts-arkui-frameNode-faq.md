@@ -15,7 +15,7 @@ This topic addresses common issues related to imperative nodes.
 A [JS crash](../dfx/jscrash-guidelines.md) occurs after [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) is used in an improper way.
 
 <!--RP1-->
-![](figures/jscrash_happend.png)
+![](figures/jscrash_happened.png)
 <!--RP1End-->
 
 **Solution**
