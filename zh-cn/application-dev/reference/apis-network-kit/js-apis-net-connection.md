@@ -4060,6 +4060,8 @@ onNetUnavailable(callback: Callback<void>): void
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
