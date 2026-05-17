@@ -3681,6 +3681,8 @@ onNetBlockStatusChange(callback: Callback<NetBlockStatusInfo>): void;
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -3688,8 +3690,7 @@ onNetBlockStatusChange(callback: Callback<NetBlockStatusInfo>): void;
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
 | callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
-  
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
   
 ArkTS-Sta示例：
 ```ts
@@ -3730,6 +3731,8 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 **ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
+  
+ **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -3939,6 +3942,8 @@ onNetLost(callback: Callback<NetHandle>): void
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
