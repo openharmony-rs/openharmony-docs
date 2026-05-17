@@ -103,11 +103,11 @@ You can use logical operators (such as **and**, **or**, **not**, and **only**) t
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| and              | The **and** operator is used to combine multiple media features into one media query, in a logical AND operation. The query is valid only when all media features are true. It can also combine media types and media functions. For example, **screen and (device-type: wearable) and (max-height: 600px)** evaluates to **true** when the device type is wearable and the maximum height of the application is 600 pixel units.|
+| and              | The **and** operator is used to combine multiple media features into one media query, in a logical AND operation. The query is valid only when all media features are true. It can also combine media types and media functions. For example, **screen&nbsp;and&nbsp;(device-type:&nbsp;wearable)&nbsp;and&nbsp;(max-height:&nbsp;600px)** evaluates to **true** when the device type is wearable and the maximum height of the application is 600 pixel units.|
 | or               | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. For example, **screen and (max-height: 1000px) or (round-screen: true)** indicates that the query is valid when the maximum height of the application is 1000 pixel units or the device screen is round.|
-| not              | The **not** operator is used to perform a logical negation for a media query. It must be used in conjunction with **screen**. **true** is returned if the query condition is not met. Otherwise, **false** is returned. For example, **not screen and (min-height: 50px) and (max-height: 600px)** evaluates to **true** when the height of the application is less than 50 pixel units or greater than 600 pixel units.|
-| only             | The **only** operator must be used with **screen** to ensure that the styles are only applied when the media query matches. It has the same effect as using **screen** alone. Example: **only screen and (height &lt;= 50) **.|
-| comma (, ) | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator. For example, **screen and (min-height: 1000px), (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round.|
+| not              | The **not** operator is used to perform a logical negation for a media query. It must be used in conjunction with **screen**. **true** is returned if the query condition is not met. Otherwise, **false** is returned. For example, **not&nbsp;screen&nbsp;and&nbsp;(min-height:&nbsp;50px)&nbsp;and&nbsp;(max-height:&nbsp;600px)** evaluates to **true** when the height of the application is less than 50 pixel units or greater than 600 pixel units.|
+| only             | The **only** operator must be used with **screen** to ensure that the styles are only applied when the media query matches. It has the same effect as using **screen** alone. Example: **only&nbsp;screen&nbsp;and&nbsp;(height&nbsp;&lt;=&nbsp;50)&nbsp;**.|
+| comma (,&nbsp;) | The **or** operator is used to combine multiple media features into one media query, in a logical OR operation. The query is valid if a media feature is true. The effect of a comma operator is equivalent to that of the **or** operator. For example, **screen and (min-height: 1000px), (round-screen: true)** indicates that the query is valid when the minimum height of the application is 1000 pixel units or the device screen is round.|
 
 Media range operators include <=, >=, <, and >. For details, see the following table.
 
@@ -160,8 +160,6 @@ For width and height comparison, vp and px units are supported. If no unit is sp
 The following provides two examples of media query usage.
 
 In this example, media queries are used to apply different content and styles to the page text when the screen is switched between landscape and portrait modes.
-
-Stage model:
 
 <!--deprecated_code_no_check-->
 <!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
@@ -224,59 +222,6 @@ struct MediaQueryExample {
         .onClick(() => {
           this.changeOrientation(false);
         });
-    }
-    .width('100%').height('100%')
-  }
-}
-```
-
-FA model:
-
-<!--deprecated_code_no_check-->
-```ts
-import { mediaquery } from '@kit.ArkUI';
-import { featureAbility } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct MediaQueryExample {
-  @State color: string = '#DB7093';
-  @State text: string = 'Portrait';
-  listener:mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // The query is valid when the device is in landscape mode.
-
-  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) { // The callback is triggered when the query is valid.
-    if (mediaQueryResult.matches as boolean) { // Adjust the text content and font color when the device is in landscape mode.
-      this.color = '#FFD700';
-      this.text = 'Landscape';
-    } else {
-      this.color = '#DB7093';
-      this.text = 'Portrait';
-    }
-  }
-
-  aboutToAppear() {
-    // Bind to the current application instance.
-    this.listener.on('change', (mediaQueryResult:mediaquery.MediaQueryResult) => { this.onPortrait(mediaQueryResult) }); // Register the callback.
-  }
-
-  aboutToDisappear() {
-    // Unbind the callback function registered in the listener.
-    this.listener.off('change');
-  }
-
-  build() {
-    Column({ space: 50 }) {
-      Text(this.text).fontSize(50).fontColor(this.color)
-      Text('Landscape').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
-        .onClick(() => {
-          let context = featureAbility.getContext();
-          context.setDisplayOrientation(0); // Invoke this API to manually change the landscape/portrait mode of the device.
-        })
-      Text('Portrait').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
-        .onClick(() => {
-          let context = featureAbility.getContext();
-          context.setDisplayOrientation(1); // Invoke this API to manually change the landscape/portrait mode of the device.
-        })
     }
     .width('100%').height('100%')
   }
