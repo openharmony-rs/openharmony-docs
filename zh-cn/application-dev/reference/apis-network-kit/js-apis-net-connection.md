@@ -3689,6 +3689,8 @@ onNetBlockStatusChange(callback: Callback<NetBlockStatusInfo>): void;
 | type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
 | callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
   
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+  
 ArkTS-Sta示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3934,8 +3936,6 @@ onNetLost(callback: Callback<NetHandle>): void
 
 订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Sta起始版本：** 23
@@ -4051,8 +4051,6 @@ netCon.unregister((error: BusinessError|null) => {
 onNetUnavailable(callback: Callback<void>): void
 
 订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
