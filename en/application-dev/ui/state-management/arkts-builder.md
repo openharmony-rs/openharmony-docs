@@ -1716,7 +1716,7 @@ struct MakeBindingTest2 {
 
 ### Changing the Input Parameters in the @Builder Decorated Function
 
-If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used, the modification of parameter values in the function decorated by \@Builder does not take effect and may cause runtime errors. Since API version 23, error code [140109](../../reference/apis-arkui/errorcode-stateManagement.md##140109-builder-triggers-invalid-parameter-settings) will be returned.
+If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used, the modification of parameter values in the function decorated by \@Builder does not take effect and may cause runtime errors. Since API version 23, error code [140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder-triggers-invalid-parameter-settings) will be returned.
 
 **Incorrect Usage**
 <!-- @[changing_input_parameters_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingIncorrectUsage.ets) -->
