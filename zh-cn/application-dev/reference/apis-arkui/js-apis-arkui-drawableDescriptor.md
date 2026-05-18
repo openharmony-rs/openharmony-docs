@@ -674,6 +674,10 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称      | 值  | 说明              |
