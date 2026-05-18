@@ -869,6 +869,7 @@
    
    ``` TypeScript
    // 删除数据库
+   const context = new UIContext().getHostContext() as common.UIAbilityContext;
    relationalStore.deleteRdbStore(context, 'RdbTest.db', (err: BusinessError) => {
      if (err) {
        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
