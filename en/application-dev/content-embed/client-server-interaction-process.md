@@ -27,3 +27,4 @@ For details about client and server development steps, see [Client Application D
 6. Obtain the OE document snapshot: When the OE client embeds an OE document, the document can be displayed as a document snapshot in the OE client UI. After the OE Extension starts, the OE client obtains the document snapshot from the server.
 7. Edit the OE document: After the OE Extension starts, the OE client notifies the OE server to edit the OE document. The OE server application must then start the corresponding UIAbility to edit the document.
 
+<!--no_check-->
