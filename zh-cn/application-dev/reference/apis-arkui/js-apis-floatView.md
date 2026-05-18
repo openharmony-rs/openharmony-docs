@@ -28,13 +28,13 @@
   - 标准悬浮窗由系统管理并统一绘制UI，动效更为高端精致。
   - 标准悬浮窗支持与[闪控球](js-apis-floatingBall.md)互相绑定联合使用，实现更复杂场景。
 
-**起始版本：** 26.0.0
-
 > **说明：**
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 >
 > - 本模块接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -48,7 +48,9 @@ isFloatViewEnabled(): boolean
 
 判断当前设备是否支持标准悬浮窗功能。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -71,7 +73,9 @@ create(config: FloatViewConfiguration): Promise&lt;FloatViewController&gt;
 
 创建标准悬浮窗控制器。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -102,6 +106,7 @@ create(config: FloatViewConfiguration): Promise&lt;FloatViewController&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -119,7 +124,7 @@ struct Index {
       floatView.create(config).then((data: floatView.FloatViewController) => {
         this.floatViewController = data;
         console.info(`Succeeded in creating float view controller. Data: ${data}`);
-      }).catch((err) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to create float view controller. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -141,7 +146,9 @@ bind(floatViewController: FloatViewController, floatingBallController: floatingB
 > - 绑定成功后，用户可通过点击操作在标准悬浮窗窗口与闪控球之间进行切换。
 > - 绑定成功后，调用任一控制器的停止接口（[stop()](#stop)或[stopFloatingBall()](js-apis-floatingBall.md#stopfloatingball)）会同时销毁标准悬浮窗窗口和闪控球窗口，并触发对应窗口已注册的状态回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,6 +185,8 @@ bind(floatViewController: FloatViewController, floatingBallController: floatingB
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -195,7 +204,7 @@ struct Index {
       if (this.floatViewController && this.floatingBallController) {
         floatView.bind(this.floatViewController!, this.floatingBallController!, floatingBallParams).then(() => {
           console.info('Succeeded in binding float view and floating ball.');
-        }).catch((err) => {
+        }).catch((err: BusinessError): void => {
           console.error(`Failed to bind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
@@ -212,7 +221,9 @@ unbind(floatViewController: FloatViewController, floatingBallController: floatin
 
 解绑标准悬浮窗和闪控球。需要在[标准悬浮窗控制器](#floatviewcontroller)和[闪控球控制器](js-apis-floatingBall.md#floatingballcontroller)均停止后才可解绑。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -244,6 +255,8 @@ unbind(floatViewController: FloatViewController, floatingBallController: floatin
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -253,7 +266,7 @@ struct Index {
       if (this.floatViewController && this.floatingBallController) {
         floatView.unbind(this.floatViewController!, this.floatingBallController!).then(() => {
           console.info('Succeeded in unbinding float view and floating ball.');
-        }).catch((err) => {
+        }).catch((err: BusinessError): void => {
           console.error(`Failed to unbind float view and floating ball. Cause:${err.code}, message:${err.message}`);
         });
       }
@@ -270,7 +283,9 @@ getFloatViewLimits(templateType: FloatViewTemplateType): FloatViewLimits
 
 根据传入的模板类型获取对应标准悬浮窗窗口的限制，单位为px。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -310,7 +325,9 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 创建标准悬浮窗控制器时需要提供的参数配置。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -325,7 +342,9 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 切换悬浮窗模板并修改窗口尺寸时需要提供的参数配置。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -342,8 +361,6 @@ console.info('Float view limits: ' + JSON.stringify(limits));
 
 下列API示例中都需先使用[floatView.create()](#floatviewcreate)方法获取到标准悬浮窗控制器实例（即floatViewController），再通过此实例调用对应方法。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 ### setUIContext
@@ -352,7 +369,9 @@ setUIContext(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 根据当前工程中指定的页面路径为标准悬浮窗加载具体页面内容，通过LocalStorage传递状态属性至加载页面。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -383,6 +402,8 @@ setUIContext(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -390,7 +411,7 @@ struct Index {
     try {
       this.floatViewController?.setUIContext('pages/Index').then(() => {
         console.info('Succeeded in setting UI context.');
-      }).catch((err) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to set UI context. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -406,7 +427,9 @@ setWindowSize(size: window.Size): Promise&lt;void&gt;
 
 设置标准悬浮窗窗口大小。建议先调用[getFloatViewLimits](#floatviewgetfloatviewlimits)接口获取推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](#onrectchange)接口监听。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -437,6 +460,8 @@ setWindowSize(size: window.Size): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -449,7 +474,7 @@ struct Index {
     try {
       this.floatViewController?.setWindowSize(size).then(() => {
         console.info('Succeeded in setting window size.');
-      }).catch((err) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to set window size. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -465,7 +490,9 @@ switchTemplate(templateProperty: TemplateProperty): Promise&lt;void&gt;
 
 切换标准悬浮窗的模板并改变其窗口尺寸。建议先调用[getFloatViewLimits](#floatviewgetfloatviewlimits)接口获取目标模板类型推荐的宽高范围和宽高比范围，再根据推荐值调用本接口。窗口实际大小变化可通过[onRectChange](#onrectchange)接口监听。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -496,6 +523,8 @@ switchTemplate(templateProperty: TemplateProperty): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -511,7 +540,7 @@ struct Index {
     try {
       this.floatViewController?.switchTemplate(templateProperty).then(() => {
         console.info('Succeeded in switching window type and size.');
-      }).catch((err) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to switch window type and size. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -527,7 +556,9 @@ start(): Promise&lt;void&gt;
 
 启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](#onstatechange)接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](#setuicontext)后调用start()。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -558,6 +589,8 @@ start(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -565,7 +598,7 @@ struct Index {
     try {
       this.floatViewController?.start().then(() => {
         console.info('Succeeded in starting float view.');
-      }).catch((err) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to start float view. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -581,7 +614,9 @@ stop(): Promise&lt;void&gt;
 
 停止标准悬浮窗窗口。接口返回不表示stop流程结束，需要通过[onStateChange](#onstatechange)接口监听到STOPPED回调时判断停止成功。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -607,6 +642,8 @@ stop(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -614,7 +651,7 @@ struct Index {
     try {
       this.floatViewController?.stop().then(() => {
         console.info('Succeeded in stopping float view.');
-      }).catch((err) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to stop float view. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -632,7 +669,9 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 
 创建标准悬浮窗后未调用此接口前，默认其在应用处于前台时为可见状态。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -662,6 +701,8 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -669,7 +710,7 @@ struct Index {
     try {
       this.floatViewController?.setFloatViewVisibilityInApp(true).then(() => {
         console.info('Succeeded in setting float view visibility in app.');
-      }).catch((err) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to set float view visibility in app. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -685,7 +726,9 @@ restoreMainWindow(wantParameters?: Record&lt;string, Object&gt;): Promise&lt;voi
 
 恢复标准悬浮窗的主窗口到前台显示。如果主窗口已处于前台时调用，将抬升主窗口层级。此接口只能在标准悬浮窗窗口被点击后使用。当主窗口处于PAUSED生命周期或处于多任务状态时，调用接口将抛出错误码1300032。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -717,6 +760,8 @@ restoreMainWindow(wantParameters?: Record&lt;string, Object&gt;): Promise&lt;voi
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -728,7 +773,7 @@ struct Index {
     try {
       this.floatViewController?.restoreMainWindow(param).then(() => {
         console.info('Succeeded in restoring main window.');
-      }).catch((err) => {
+      }).catch((err: BusinessError): void => {
         console.error(`Failed to restore main window. Cause:${err.code}, message:${err.message}`);
       });
     } catch(e) {
@@ -744,7 +789,9 @@ getWindowProperties(): FloatViewProperties
 
 获取标准悬浮窗窗口的属性。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -788,7 +835,9 @@ onStateChange(callback: Callback&lt;FloatViewStateChangeInfo&gt;): void
 
 注册标准悬浮窗状态变化的监听事件。不再使用时，取消监听以避免内存泄漏。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -834,7 +883,9 @@ offStateChange(callback?: Callback&lt;FloatViewStateChangeInfo&gt;): void
 
 取消标准悬浮窗状态变化的监听事件。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -879,7 +930,9 @@ onRectChange(callback: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
 注册标准悬浮窗矩形区域（位置和大小）变化的监听事件。不再使用时，取消监听以避免内存泄漏。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -925,7 +978,9 @@ offRectChange(callback?: Callback&lt;FloatViewRectChangeInfo&gt;): void
 
 取消标准悬浮窗矩形区域变化的监听事件。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -970,7 +1025,9 @@ onLimitsChange(callback: Callback&lt;FloatViewLimits&gt;): void
 
 注册标准悬浮窗限制变化的监听事件，当限制规格变化时触发回调，例如设备折叠或者展开。不再使用时，取消监听以避免内存泄漏。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1016,7 +1073,9 @@ offLimitsChange(callback?: Callback&lt;FloatViewLimits&gt;): void
 
 取消标准悬浮窗限制变化的监听事件。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1059,7 +1118,9 @@ struct Index {
 
 标准悬浮窗模板类型的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1074,6 +1135,10 @@ struct Index {
 
 标准悬浮窗窗口的属性。
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1081,10 +1146,10 @@ struct Index {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | templateType | [FloatViewTemplateType](#floatviewtemplatetype) | 否 | 否 | 标准悬浮窗的模板类型。 |
-| windowId | int | 否 | 否 | 标准悬浮窗窗口ID。 |
-| displayId | int | 否 | 否 | 标准悬浮窗所在屏幕ID。 |
+| windowId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 标准悬浮窗窗口ID。 |
+| displayId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 标准悬浮窗所在屏幕ID。 |
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
-| windowScale | double | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
+| windowScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
 | avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 标准悬浮窗内容的避让区域。<br>**注意：**<br/>通过[setUIContext](#setuicontext)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。 |
 | inSidebar | boolean | 否 | 否 | 标准悬浮窗是否在侧边栏中。true为在侧边栏中，false为不在侧边栏中。 |
 
@@ -1092,7 +1157,9 @@ struct Index {
 
 标准悬浮窗的宽高比限制范围。宽高比比值由窗口矩形区域的宽除以高获得。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1100,14 +1167,16 @@ struct Index {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| minRatio | double | 否 | 否 | 标准悬浮窗的宽高比最小值。 |
-| maxRatio | double | 否 | 否 | 标准悬浮窗的宽高比最大值。 |
+| minRatio | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 标准悬浮窗的宽高比最小值。 |
+| maxRatio | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 标准悬浮窗的宽高比最大值。 |
 
 ## FloatViewLimits
 
 标准悬浮窗窗口的限制。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1123,7 +1192,9 @@ struct Index {
 
 标准悬浮窗状态变化信息。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1138,7 +1209,9 @@ struct Index {
 
 标准悬浮窗状态的枚举。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1157,7 +1230,9 @@ struct Index {
 
 标准悬浮窗矩形区域变化信息。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1166,5 +1241,5 @@ struct Index {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
-| windowScale | double | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
+| windowScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
 | reason | string | 否 | 否 | 标准悬浮窗矩形区域变化的原因。原因和对应含义如下：<br/>"POSITION_CHANGE"：位置变化<br/>"SIZE_CHANGE"：大小变化<br/>"RECT_CHANGE"：位置大小同时变化 |
