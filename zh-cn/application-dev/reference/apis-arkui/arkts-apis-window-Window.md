@@ -3581,6 +3581,8 @@ on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                | 必填 | 说明                                        |
@@ -3669,6 +3671,8 @@ on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3759,6 +3763,8 @@ on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
+
 **参数：**
 
 | 参数名   | 类型                | 必填 | 说明                                        |
@@ -3844,6 +3850,8 @@ on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
 
 **参数：**
 
