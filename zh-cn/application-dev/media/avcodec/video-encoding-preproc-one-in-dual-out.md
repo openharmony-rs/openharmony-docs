@@ -35,7 +35,7 @@
 
 ### 约束与限制
 
-#### 创建与生命周期约束
+**创建与生命周期约束**
 
 | 序号 | 约束规则 |
 |------|----------|
@@ -44,7 +44,7 @@
 | 3 | 生命周期关系：Primary是Secondary的所有者（Owner），Secondary不得脱离Primary独立存在。<br>- **推荐销毁顺序**：先`Destroy(Secondary)` → 再`Destroy(Primary)`，销毁后立即将对应指针赋值`nullptr`。<br>- **容错机制**：若违反顺序先 Destroy Primary，系统会级联释放关联的Secondary，但仍应显式遵循正确顺序。 |
 | 4 | 重建能力：Secondary销毁后，可以从同一个Primary重新创建新的Secondary。 |
 
-#### 接口可用性约束
+**接口可用性约束**
 
 | 接口 | 主编码器 | 副编码器 | 备注 |
 |------|:--------:|:--------:|------|
@@ -72,7 +72,7 @@
 | [OH_VideoEncoder_IsValid](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_isvalid) | √ | √ | 各自有效性判断，参考普通编码器。 |
 | [OH_VideoEncoder_Destroy](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy) | √ | √ | 先销毁Secondary，再销毁Primary。 |
 
-#### 配置约束
+**配置约束**
 
 | 约束项 | 说明 |
 |--------|------|

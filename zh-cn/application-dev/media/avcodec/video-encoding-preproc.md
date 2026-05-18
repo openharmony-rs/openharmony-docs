@@ -98,8 +98,8 @@
 |------|:--------:|------|
 | [OH_VideoEncoder_RegisterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registercallback) | √ | 支持。 |
 | [OH_VideoEncoder_RegisterParameterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registerparametercallback) | × | 不支持随帧参数配置，返回AV_ERR_OPERATE_NOT_PERMIT。 |
-| `OH_VideoEncoder_PushInputParameter` | × | 不支持随帧参数配置，返回AV_ERR_OPERATE_NOT_PERMIT。 |
-| [OH_VideoEncoder_PushInputParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputparameter) | √ | 支持，可配置含前处理参数。 |
+| [OH_VideoEncoder_PushInputParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputparameter) | × | 不支持随帧参数配置，返回AV_ERR_OPERATE_NOT_PERMIT。 |
+| [OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure) | √ | 支持，可配置含前处理参数。 |
 | [OH_VideoEncoder_GetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getsurface) | √ | 支持。 |
 | [OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare) | √ | 支持，准备内部资源。 |
 | [OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) | √ | 支持。 |
