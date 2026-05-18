@@ -7594,6 +7594,10 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 禁止/使能通过拖拽方式缩放主窗口或启用装饰的子窗口的功能。使用callback异步回调。
 
+> **说明：**
+>
+> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，非自由窗口状态下不生效不报错。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -7637,6 +7641,10 @@ try {
 setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
 禁止/使能通过拖拽方式缩放主窗口或启用装饰的子窗口的功能。使用Promise异步回调。
+
+> **说明：**
+>
+> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，非自由窗口状态下不生效不报错。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -9824,8 +9832,6 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 使能后，将允许通过鼠标操作或触摸对窗口进行拉伸操作。
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备上可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
