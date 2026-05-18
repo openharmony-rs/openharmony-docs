@@ -40,7 +40,7 @@ hdc shell hidumper -s WindowManagerService -a '-a'
 该命令输出窗口管理服务的完整状态信息，包括所有窗口的详细信息、焦点状态、层级关系等。`-a '-a'`参数表示dump所有窗口信息。
 
 输出示例：
-```
+```bash
 ----------------------------------WindowManagerService----------------------------------
 -------------------------------------ScreenGroup 1-------------------------------------
 WindowName           DisplayId Pid     WinId Type Mode Flag ZOrd Orientation [ x    y    w    h    ]
@@ -67,18 +67,18 @@ total window num: 12
 
 **字段含义详细说明**：
 
-| 字段 | 含义 | 示例值说明 |
-|------|------|----------|
+| 字段 | 含义 | 示例值说明                                        |
+|------|------|----------------------------------------------|
 | `WindowName` | 窗口名称 | `note0`（备忘录应用窗口），`SystemUi_StatusBar`（系统状态栏） |
-| `DisplayId` | 显示设备ID | `0`表示主屏幕，多屏场景下会有多个DisplayId |
-| `Pid` | 进程ID | `18299`表示创建该窗口的应用进程ID |
-| `WinId` | 窗口唯一标识符 | `13`表示窗口ID，用于唯一标识一个窗口实例 |
-| `Type` | 窗口类型 | 见下表详细说明 |
-| `Mode` | 窗口模式 | `1`表示全屏模式，`102`表示特定模式 |
-| `Flag` | 状态标志位 | `0`表示正常显示，`1`表示隐藏状态 |
-| `ZOrd` | 窗口层级（Z序） | 数值越大越靠前，`4`比`2`层级高 |
-| `Orientation` | 窗口方向 | `0`=未指定，`8`=竖屏等方向设置 |
-| `[ x y w h ]` | 窗口矩形区域 | `[0 0 720 1280]`表示位置(0,0)，大小720x1280 |
+| `DisplayId` | 显示设备ID | `0`表示主屏幕，多屏场景下会有多个DisplayId                  |
+| `Pid` | 进程ID | `18299`表示创建该窗口的应用进程ID                        |
+| `WinId` | 窗口唯一标识符 | `13`表示窗口ID，用于唯一标识一个窗口实例                      |
+| `Type` | 窗口类型 | 见下表详细说明                                      |
+| `Mode` | 窗口模式 | `1`表示全屏模式，`102`表示自由悬浮窗窗口模式                   |
+| `Flag` | 状态标志位 | `0`表示正常显示，`1`表示隐藏状态                          |
+| `ZOrd` | 窗口层级（Z序） | 数值越大越靠前，`4`比`2`层级高                           |
+| `Orientation` | 窗口方向 | `0`=未指定，`8`=竖屏等方向设置                          |
+| `[ x y w h ]` | 窗口矩形区域 | `[0 0 720 1280]`表示相对屏幕左顶点的位置(0,0)，大小720x1280 |
 
 ### 查看获焦窗口
 
@@ -91,9 +91,9 @@ Focus window: 13
 ```
 
 **含义解读**：
-- `Focus window: 13`：当前获焦窗口的WinId是13
-- 根据WinId=13，在窗口列表中找到对应窗口：`note0`
-- 结论：当前获焦窗口是`note0`（备忘录应用）
+- `Focus window: 13`：当前获焦窗口的WinId是13。
+- 根据WinId=13，在窗口列表中找到对应窗口：`note0`。
+- 结论：当前获焦窗口是`note0`（备忘录应用）。
 
 **详细定位获焦窗口**：
 
@@ -102,14 +102,14 @@ hdc shell hidumper -s WindowManagerService -a '-a' | grep "Focus window"
 ```
 
 输出示例：
-```
+```bash
 Focus window: 13
 ```
 
 根据Focus window的WinId值，结合窗口列表找到具体窗口：
-1. Focus window: 13 → 焦点窗口WinId=13
+1. Focus window: 13：焦点窗口WinId=13
 2. 在窗口列表中查找WinId=13的窗口：
-   ```
+   ```bash
    note0  0  18299  13  1  1  0  1  0  [ 0  0  720  1280 ]
    ```
 3. 确认获焦窗口：`note0`（备忘录应用主窗口）
@@ -159,7 +159,7 @@ hdc shell hidumper -s WindowManagerService -a '-w 13'
 `-w 13` 参数表示查看WinId为13的窗口详细信息。
 
 输出示例：
-```
+```bash
 ----------------------------------WindowManagerService----------------------------------
 WindowName: note0
 DisplayId: 0
@@ -207,33 +207,33 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 **问题1：窗口不显示**
 
 检查字段：
-- `VisibilityState: 1` → 窗口被隐藏，调用showWindow()显示
-- `Flag: 1` → 状态标志为隐藏，检查窗口是否调用hideWindow()
+- `VisibilityState: 1`：窗口被隐藏，调用showWindow()显示
+- `Flag: 1`：状态标志为隐藏，检查窗口是否调用hideWindow()
 
 **问题2：窗口无法接收键盘输入**
 
 检查字段：
-- `Focusable: false` → 窗口不可获焦，调用setWindowFocusable(true)设置可获焦
+- `Focusable: false`：窗口不可获焦，调用setWindowFocusable(true)设置可获焦
 - 确认窗口在前台区域（分隔线以上）
 
 **问题3：窗口被截屏泄露**
 
 检查字段：
-- `IsPrivacyMode: false` → 未启用隐私模式
-- `isSnapshotSkip: 0` → 允许截屏
+- `IsPrivacyMode: false`：未启用隐私模式
+- `isSnapshotSkip: 0`：允许截屏
 
 解决方案：调用setPrivacyMode(true)启用隐私模式。
 
 **问题4：窗口启动性能慢**
 
 检查字段：
-- `FirstFrameCallbackCalled: 0` → 首帧未完成，可能页面加载慢
+- `FirstFrameCallbackCalled: 0`：首帧未完成，可能页面加载慢
 - 结合日志分析启动耗时
 
 **问题5：窗口触摸区域异常**
 
 检查字段：
-- `TouchHotAreas` 尺寸异常 → 触摸热区设置错误
+- `TouchHotAreas`尺寸异常：触摸热区设置错误
 - 与WindowRect对比，确认是否正确
 
 ### 查看窗口ArkUI渲染信息
@@ -249,7 +249,7 @@ hdc shell hidumper -s WindowManagerService -a '-w 13 ArkUI option'
 该命令在窗口基础信息的基础上，额外输出ArkUI渲染相关的字段，用于分析UI渲染性能、节点数量等。
 
 输出示例：
-```
+```bash
 ----------------------------------WindowManagerService----------------------------------
 WindowName: note0
 DisplayId: 0
@@ -293,10 +293,10 @@ UINodeCount: 159
 
 | 问题 | 检查字段 | 判断标准 | 解决方案 |
 |------|----------|----------|----------|
-| UI渲染性能差（卡顿） | `UINodeCount`、`finishCount`、`LastRequestVsyncTime` | `UINodeCount`≥500 或 `finishCount`有任务堆积 | 简化UI结构，减少节点嵌套，优化渲染逻辑 |
-| 窗口停止渲染 | `last vsyncId`、`LastRequestVsyncTime` | VSync长时间未更新或时间戳过旧 | 检查VisibilityState，调用showWindow() |
-| UI节点异常多 | `UINodeCount` | 正常页面约100节点，异常页面≥500节点 | 使用懒加载、虚拟列表，移除隐藏节点 |
-| 渲染任务堆积 | `finishCount` | `finishCount`非空，存在未完成任务 | 减少UI更新频率，避免渲染线程耗时操作 |
+| UI渲染性能差（卡顿） | `UINodeCount`、`finishCount`、`LastRequestVsyncTime` | `UINodeCount`≥500 或 `finishCount`有任务堆积。 | 简化UI结构，减少节点嵌套，优化渲染逻辑。 |
+| 窗口停止渲染 | `last vsyncId`、`LastRequestVsyncTime` | VSync长时间未更新或时间戳过旧。 | 检查VisibilityState，调用showWindow()。 |
+| UI节点异常多 | `UINodeCount` | 正常页面约100节点，异常页面≥500节点。 | 使用懒加载、虚拟列表，移除隐藏节点。 |
+| 渲染任务堆积 | `finishCount` | `finishCount`非空，存在未完成任务。 | 减少UI更新频率，避免渲染线程耗时操作。 |
 
 ### 最佳实践
 
@@ -329,8 +329,7 @@ UINodeCount: 159
 
 ### 可能原因
 
-- 窗口对象已被销毁，但代码仍在尝试使用该窗口
-- 窗口处于不可操作状态（如已销毁、正在销毁）
+- 窗口已销毁或正在销毁，但代码仍在尝试使用该窗口对象
 - 窗口生命周期管理错误，如在销毁流程中调用getLastWindow()
 - 异步任务在销毁后执行，访问已销毁的窗口对象
 
@@ -350,7 +349,7 @@ hdc shell hilog | grep "1300002"
 
 ```
 Error Name: Error
-Error Message: This window state is abnormal
+Error Message: [window][getLastWindow]msg: xxx
 Error code: 1300002
 Stack trace:
   at window.getLastWindow (WindowManagerService)
@@ -360,7 +359,7 @@ Stack trace:
 关键信息：
 - 错误码：1300002
 - 堆栈：getLastWindow()调用位置
-- 文件名和行号：定位具体代码位置（如MyAbility.ts第50行）
+- 文件名和行号：定位具体代码位置
 
 **分析定位**
 
@@ -370,39 +369,14 @@ Stack trace:
 grep -n "getLastWindow" src/**/*.ts
 ```
 
-检查调用位置的上下文：
+根据日志堆栈定位到具体文件和行号，检查调用位置的上下文：
 - 是否在onWindowStageDestroy中？
 - 是否在aboutToDisappear中？
 - 是否在setTimeout、Promise等异步回调中？
 
 **步骤2：分析窗口生命周期**
 
-窗口销毁流程：
-```
-窗口创建 → 窗口显示 → 窗口激活 → 窗口销毁开始 → 窗口资源释放 → 窗口对象无效
-                                    ↑                    ↑
-                               getLastWindow失效点     禁止访问点
-```
-
-关键结论：
-- 窗口销毁开始后，getLastWindow()可能返回无效对象
-- 窗口资源释放后，任何窗口操作都会触发1300002崩溃
-
-**步骤3：使用hidumper验证窗口状态**
-
-销毁前：
-```bash
-hdc shell hidumper -s WindowManagerService -a '-a'
-```
-检查窗口是否存在、状态是否正常。
-
-销毁后：
-```bash
-hdc shell hidumper -s WindowManagerService -a '-a'
-```
-确认窗口已从列表中移除。
-
-对比前后状态，确认销毁时机。
+窗口销毁流程：窗口创建 → 窗口显示 → 窗口激活 → 窗口销毁开始 → 窗口资源释放 → 窗口对象无效。窗口销毁开始后getLastWindow失效，窗口资源释放后禁止访问。
 
 **错误示例**：
 
@@ -449,8 +423,6 @@ onWindowStageDestroy() {
 1. 找到所有getLastWindow()调用位置
 2. 检查是否在销毁流程中调用（onWindowStageDestroy等）
 3. 检查是否有异步任务在销毁后执行
-4. 检查窗口对象引用是否在销毁时清空
-5. 使用hidumper验证销毁前后窗口状态
 
 > **说明：**
 >
@@ -541,14 +513,14 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 
 ### window_rect_check（窗口尺寸异常检测）
 
-窗口尺寸异常检测用于发现窗口尺寸超出合理范围的问题。当窗口尺寸小于最小尺寸限制或大于最大尺寸限制时，系统会生成故障日志。
+窗口尺寸异常检测用于发现窗口尺寸超出合理范围的问题。当窗口设置的尺寸超过最大尺寸限制，或小于最小尺寸限制且小于屏幕尺寸时，系统会生成故障日志。
 
 **日志信息**
 
 故障日志格式：
 
 ```
-RectCheck err size cur persistentId: [persistentId], windowType: [windowType], windowName: [windowName], windowState: [windowState], curWidth: [curWidth], curHeight: [curHeight], minWidth: [minWidth], minHeight: [minHeight], maxFloatingWindowSize: [maxFloatingWindowSize], sessionRect: [sessionRect];
+RectCheck err size cur persistentId: [persistentId], windowType: [windowType], windowName: [windowName], windowState: [windowState], curWidth: [curWidth], curHeight: [curHeight], minWidth: [minWidth], minHeight: [minHeight], screenWidth: [screenWidth], screenHeight: [screenHeight], maxFloatingWindowSize: [maxFloatingWindowSize], sessionRect: [sessionRect];
 ```
 
 字段含义：
@@ -563,6 +535,8 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 | `curHeight` | 当前高度（vp） | 窗口当前实际高度，单位为vp |
 | `minWidth` | 最小宽度限制（vp） | 系统规定的最小宽度阈值 |
 | `minHeight` | 最小高度限制（vp） | 系统规定的最小高度阈值 |
+| `screenWidth` | 屏幕宽度（像素） | 当前屏幕的宽度，单位为像素 |
+| `screenHeight` | 屏幕高度（像素） | 当前屏幕的高度，单位为像素 |
 | `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值 |
 | `sessionRect` | 窗口矩形区域（像素） | 窗口的位置和尺寸，单位为像素 |
 
@@ -570,10 +544,8 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 
 当窗口尺寸满足以下任一条件时触发异常：
 
-- `curWidth < minWidth`：当前宽度小于最小宽度限制
-- `curWidth > maxFloatingWindowSize`：当前宽度大于最大尺寸限制
-- `curHeight < minHeight`：当前高度小于最小高度限制
-- `curHeight > maxFloatingWindowSize`：当前高度大于最大尺寸限制
+- 尺寸超过最大限制：`curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`
+- 尺寸小于最小限制且小于屏幕尺寸：`curWidth < minWidth` 且 `curWidth < screenWidthVp`，或 `curHeight < minHeight` 且 `curHeight < screenHeightVp`（非系统窗口类型）
 
 **分析定位**
 
@@ -589,30 +561,16 @@ hdc shell hilog | grep "RectCheck err"
 
 从故障日志中提取关键信息：
 - `windowName`：确认异常窗口名称
-- `curWidth`、`curHeight`：查看当前异常尺寸值
-- `minWidth`、`minHeight`、`maxFloatingWindowSize`：对比限制阈值
+- `curWidth`、`curHeight`：查看当前异常尺寸值（vp）
+- `minWidth`、`minHeight`、`maxFloatingWindowSize`：对比限制阈值（vp）
+- `screenWidth`、`screenHeight`：对比屏幕尺寸（像素，需转换为vp）
 
 **步骤3：判断异常类型**
 
-根据curWidth、curHeight与限制值的对比：
-- 如果 `curWidth < minWidth` → 窗口宽度过小
-- 如果 `curHeight < minHeight` → 窗口高度过小
-- 如果 `curWidth > maxFloatingWindowSize` → 窗口宽度过大
-- 如果 `curHeight > maxFloatingWindowSize` → 窗口高度过大
-
-**步骤4：使用hidumper验证窗口状态**
-
-```bash
-hdc shell hidumper -s WindowManagerService -a '-a'
-```
-
-找到对应windowName的窗口，确认其WinId，然后查看详细信息：
-
-```bash
-hdc shell hidumper -s WindowManagerService -a '-w <WinId>'
-```
-
-检查WindowRect是否与故障日志中的sessionRect一致。
+根据curWidth、curHeight与限制值、屏幕尺寸的对比：
+- 如果 `curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`：窗口尺寸超过最大限制
+- 如果 `curWidth < minWidth` 且 `curWidth < screenWidthVp`：窗口宽度过小且小于屏幕宽度
+- 如果 `curHeight < minHeight` 且 `curHeight < screenHeightVp`：窗口高度过小且小于屏幕高度
 
 **可能原因**
 
@@ -632,27 +590,13 @@ windowClass.showWindow();
 
 **解决步骤**
 
-根据故障日志中的异常类型修复：
-
-**情况1：窗口尺寸过小（curWidth < minWidth 或 curHeight < minHeight）**
-
-确保窗口尺寸大于最小限制：
+确保窗口尺寸在规定范围内：
 
 ```ts
-// 正确：设置大于最小限制的尺寸
+// 正确：设置在规定范围内的尺寸
 let windowClass = await windowStage.createSubWindow('subWindow');
-windowClass.resize(720, 640); // 尺寸大于minWidth和minHeight
-windowClass.showWindow();
-```
-
-**情况2：窗口尺寸过大（curWidth > maxFloatingWindowSize 或 curHeight > maxFloatingWindowSize）**
-
-确保窗口尺寸小于最大限制：
-
-```ts
-// 正确：设置小于最大限制的尺寸
-let windowClass = await windowStage.createSubWindow('subWindow');
-windowClass.resize(800, 600); // 尺寸小于maxFloatingWindowSize
+// 尺寸应在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内
+windowClass.resize(720, 640);
 windowClass.showWindow();
 ```
 
@@ -660,11 +604,11 @@ windowClass.showWindow();
 
 1. 查看故障日志，确认windowName和异常尺寸值
 2. 对比curWidth、curHeight与minWidth、minHeight、maxFloatingWindowSize
-3. 判断是尺寸过小还是过大
+3. 判断窗口尺寸是否不在规定范围内
 4. 检查代码中resize()调用位置的尺寸参数
 5. 确认窗口模式切换时的尺寸计算逻辑
 6. 使用hidumper验证修复后的窗口状态
 
 > **说明：**
 >
-> WINDOW_RECT_CHECK异常表示窗口尺寸超出系统规定的合理范围。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整resize()调用时的尺寸参数，确保窗口尺寸在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内。
+> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整resize()调用时的尺寸参数，确保窗口尺寸在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内。
