@@ -13,6 +13,7 @@
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 >  - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## 子组件
@@ -396,7 +397,7 @@ struct SpanExample {
   build() {
     Row() {
       Column({ space: 10 }) {
-        //创建ColorFilter对象的方式为图片设置颜色滤镜
+        // 创建ColorFilter对象的方式为图片设置颜色滤镜
         Text() {
           // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.sky'))
@@ -405,7 +406,7 @@ struct SpanExample {
             .colorFilter(this.DrawingColorFilterFirst)
         }
 
-        //通过drawing.ColorFilter的方式为图片设置颜色滤镜
+        // 通过drawing.ColorFilter的方式为图片设置颜色滤镜
         Text() {
           // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
           ImageSpan($r('app.media.sky'))

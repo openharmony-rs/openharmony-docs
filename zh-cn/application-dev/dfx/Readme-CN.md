@@ -86,4 +86,10 @@
 - 错误管理及应用恢复<!--error-manager-->
   - [错误管理开发指导](errormanager-guidelines.md)
   - [应用恢复开发指导](apprecovery-guidelines.md)
-- [Performance Analysis Kit术语](performance-analysis-kit-terminology.md)
+- 应用灰度采集<!--hiretrieval-->
+  - [HiRetrieval介绍](hiretrieval-intro.md)
+  - [使用HiRetrieval进行应用灰度采集（ArkTS）](hiretrieval-guidelines-arkts.md)
+  <!--Del-->
+  - [HiRetrieval云端功能说明](hiretrieval-cloud-server-guidelines.md)
+  <!--DelEnd-->
+- [Performance Analysis Kit术语](performance-analysis-kit-terminology.md)<!--RP5--><!--RP5End-->
