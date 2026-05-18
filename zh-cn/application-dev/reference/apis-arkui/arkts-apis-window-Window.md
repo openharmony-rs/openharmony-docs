@@ -2510,7 +2510,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | ------------------------------------- | ------------- |
-| Promise&lt;string&gt; | 设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。<br/>当前包含的字段说明如下： <br/>- isPcMode：表示是否处于PC模式，true表示处于PC模式，false表示不处于PC模式。|
+| Promise&lt;string&gt; | 设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。<br/>当前包含的字段说明如下： <br/>- isPcMode：表示是否处于PC模式，true表示处于PC模式，false表示不处于PC模式。<br/>&nbsp;&nbsp;**设备行为差异：** 在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下返回true；在其他设备和其他模式下返回false。<br/>- isSupportFreeWindowMode：表示是否支持[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)，true表示支持[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)，false表示不支持[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)。<br/>- systemUiVisible：由0和1组成的长度为4的字符串，0表示隐藏，1表示显示。从左到右每位分别代表状态栏、导航条、三键导航、导航栏的显隐状态，如“1010”表示状态栏显示、导航条隐藏、三键导航显示、导航栏隐藏。|
 
 **错误码：**
 
