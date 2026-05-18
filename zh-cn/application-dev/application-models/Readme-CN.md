@@ -41,7 +41,11 @@
       - [显式Want与隐式Want匹配规则](explicit-implicit-want-mappings.md)
       - [使用显式Want启动应用组件](ability-startup-with-explicit-want.md)
       - [常见action与entities（不推荐使用）](actions-entities.md)
-    - [组件启动规则（Stage模型）](component-startup-rules.md)
+    - 组件启动规则（Stage模型）<!--component-startup-rules-->
+      - [设备内组件启动规则（Stage模型）](component-startup-rules-inner-device.md)
+      <!--Del-->
+      - [设备内组件启动规则（Stage模型）（仅对系统应用开放）](component-startup-rules-inner-device-sys.md)
+      <!--DelEnd-->
     - [应用的启动](application-startup-options.md)
     - [应用启动框架AppStartup](app-startup.md)
     - [应用预加载](preload-application.md)
