@@ -2498,7 +2498,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowStateSnapshot(): Promise&lt;string&gt;
 
-获取窗口当前的设备形态信息，如是否处于PC模式等，仅供测试使用。
+获取窗口当前的设备形态信息，如是否处于PC模式等，使用Promise异步回调，仅限测试使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2510,7 +2510,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | ------------------------------------- | ------------- |
-| string | 设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。<br/>当前包含的字段说明如下： <br/>- isPcMode：表示是否处于PC模式，true表示处于PC模式，false表示不处于PC模式。|
+| Promise&lt;string&gt; | 设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。<br/>当前包含的字段说明如下： <br/>- isPcMode：表示是否处于PC模式，true表示处于PC模式，false表示不处于PC模式。|
 
 **错误码：**
 
