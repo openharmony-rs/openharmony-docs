@@ -281,7 +281,7 @@
        }
        await transaction!.commit();
        // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
-      }
+     }
    ```
 
    FA模型示例：
