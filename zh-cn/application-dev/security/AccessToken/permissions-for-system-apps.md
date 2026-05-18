@@ -6013,6 +6013,26 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+     
+允许系统应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_VISION
 
 允许系统应用通过CLI命令查询无障碍视觉辅助功能状态。
