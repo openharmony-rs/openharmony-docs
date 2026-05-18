@@ -74,7 +74,7 @@ intelligence.getTextEmbeddingModel(textConfig)
   })
 ```
 
-### intelligence.getSupportedCloudModel
+## intelligence.getSupportedCloudModel
 
 getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 
