@@ -294,7 +294,7 @@ function registerMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput)
 }
 ```
 
-## onMetadataObjectsAvailable<sup>22+</sup>
+## onMetadataObjectsAvailable<sup>23+</sup>
 
 onMetadataObjectsAvailable(callback: AsyncCallback\<Array\<MetadataObject\>\>): void
 
@@ -367,7 +367,7 @@ function unregisterMetadataObjectsAvailable(metadataOutput: camera.MetadataOutpu
 }
 ```
 
-## offMetadataObjectsAvailable<sup>22+</sup>
+## offMetadataObjectsAvailable<sup>23+</sup>
 
 offMetadataObjectsAvailable(callback?: AsyncCallback\<Array\<MetadataObject\>\>): void
 
@@ -436,7 +436,7 @@ function registerMetadataOutputError(metadataOutput: camera.MetadataOutput): voi
 }
 ```
 
-## onError<sup>22+</sup>
+## onError<sup>23+</sup>
 
 onError(callback: ErrorCallback): void
 
@@ -505,7 +505,7 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 }
 ```
 
-## offError<sup>22+</sup>
+## offError<sup>23+</sup>
 
 offError(callback?: ErrorCallback): void
 
