@@ -2,8 +2,8 @@
 <!--Kit: Kernel Enhance Kit-->
 <!--Subsystem: Kernel-->
 <!--Owner: @gatieme; @fang-jinxu; @yzl-kongzhenhua-->
-<!--Designer: @tanyihua; @lingminghw; @wangxiayang; @lizongfeng; @zzzuo-->
-<!--Tester: @panny060; @RayShih; @lianxuanself; @laonie666-->
+<!--Designer: @tanyihua; @lingminghw; @wangxiayang-->
+<!--Tester: @panny060; @RayShih; @lianxuanself-->
 <!--Adviser: @fang-jinxu-->
 
 ## 功能介绍
