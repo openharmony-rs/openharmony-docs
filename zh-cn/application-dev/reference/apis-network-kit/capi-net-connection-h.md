@@ -440,10 +440,11 @@ int32_t OH_NetConn_RegisterCustomDnsResolver(OH_NetConn_CustomDnsResolver resolv
 
 作用范围：适用于系统DNS查询，以及应用通过系统网络库发起的DNS查询；不适用于应用自行实现的HTTPDNS解析、加密DNS解析（如 DoH/DoT）等非系统 DNS 通道的解析请求。不再使用时，应调用 [OH_NetConn_UnregisterCustomDnsResolver](#oh_netconn_unregistercustomdnsresolver)注销自定义DNS解析器。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
 **起始版本：** 26.0.0
-
 
 **参数：**
 
@@ -466,6 +467,8 @@ int32_t OH_NetConn_UnregisterCustomDnsResolver(void)
 **描述**
 
 取消注册自定义DNS解析器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Communication.NetManager.Core
 
