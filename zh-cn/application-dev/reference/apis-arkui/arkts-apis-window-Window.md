@@ -2498,7 +2498,7 @@ export default class EntryAbility extends UIAbility {
 
 getWindowStateSnapshot(): Promise&lt;string&gt;
 
-获取窗口当前的设备形态信息，如是否处于PC模式等，使用Promise异步回调，仅限测试使用。
+获取当前窗口的设备形态信息，比如是否处于PC模式，是否支持自由窗口等，使用Promise异步回调，仅限测试使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2510,7 +2510,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | ------------------------------------- | ------------- |
-| Promise&lt;string&gt; | 设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。<br/>当前包含的字段说明如下： <br/>- isPcMode：表示是否处于PC模式，true表示处于PC模式，false表示不处于PC模式。<br/>&nbsp;&nbsp;**设备行为差异：** 在PC/2in1设备、其他设备的[电脑模式](../../windowmanager/window-terminology.md#电脑模式)下返回true；在其他设备和其他模式下返回false。<br/>- isSupportFreeWindowMode：表示是否支持[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)，true表示支持[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)，false表示不支持[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)。<br/>- systemUiVisible：由0和1组成的长度为4的字符串，0表示隐藏，1表示显示。从左到右每位分别代表状态栏、导航条、三键导航、导航栏的显隐状态，如“1010”表示状态栏显示、导航条隐藏、三键导航显示、导航栏隐藏。|
+| Promise&lt;string&gt; | 返回当前窗口的设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。返回示例：```{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}```。<br/>返回值包含的不同字段的含义如下： <br/>- isPcMode：表示当前设备是否处于[电脑模式](../../windowmanager/window-terminology.md#电脑模式)，true表示处于[电脑模式](../../windowmanager/window-terminology.md#电脑模式)，false表示不处于[电脑模式](../../windowmanager/window-terminology.md#电脑模式)。<br/>- isSupportFreeWindowMode：表示是否支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)，true表示支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)，false表示不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)。<br/>- systemUiVisible：表示系统UI的显隐状态，是由0和1组成的长度为4的字符串，其中0表示隐藏，1表示显示。从左到右每位分别代表状态栏、导航条、HarmonyOS设备三键导航栏、OpenHarmony设备三键导航栏的显隐状态，如“1100”表示状态栏和导航条处于显示状态，而HarmonyOS设备三键导航栏和OpenHarmony设备三键导航栏处于隐藏状态。|
 
 **错误码：**
 
@@ -2528,7 +2528,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  this.windowClass.getWindowStateSnapshot().then((data) => {
+  windowClass.getWindowStateSnapshot().then((data) => {
     let jsonObj: object = JSON.parse(data);
     console.info(`Succeeded, data=${data}, isPcMod=${jsonObj["isPcMode"]}`);
   }).catch((err: BusinessError) => {
