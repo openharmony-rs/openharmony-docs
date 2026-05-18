@@ -145,11 +145,11 @@
 
    ArkTS-Sta示例：
    <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
-    
+   
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
    
-   export async function setDefaultDistributedTables(context: common.UIAbilityContext | undefined) {
+   // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
        name: 'RdbTest.db', // 数据库文件名
        securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
@@ -163,7 +163,6 @@
      }).catch((err: Error) => {
        hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
      });
-   }
    ```
 
 4. 订阅组网内其他设备的数据变化消息。
