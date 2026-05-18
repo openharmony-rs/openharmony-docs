@@ -74,7 +74,7 @@
 | 1 | 必须完整配置：left、top、right、bottom 四个参数必须同时配置。若仅配置其中部分参数，返回 `AV_ERR_INVALID_VAL` |
 | 2 | 禁用条件：当 left、top、right、bottom **全部为 0** 时，裁剪功能被禁用 |
 | 3 | 有效范围：当裁剪的宽度、高度在支持的范围内时，裁剪功能被启用。建议通过 `OH_AVCapability_IsVideoSizeSupported` 查询支持的裁剪范围 |
-| 4 | 越界处理：当裁剪值不在支持范围内时，返回 `AV_ERR_INVALID_VAL` |
+| 4 | 越界处理：当裁剪值不在支持范围内时，返回`AV_ERR_INVALID_VAL` |
 | 5 | 与降采样互斥：不能与降采样参数（`DOWNSAMPLING_WIDTH/HEIGHT`）同时使用。若同时设置，返回 `AV_ERR_INVALID_VAL` |
 | 6 | 行为效果：裁剪启用时，编码器仅对输入帧的裁剪区域进行编码，裁剪矩形之外的内容将被丢弃 |
 
@@ -97,13 +97,13 @@
 | 接口 | 是否可用 | 备注 |
 |------|:--------:|------|
 | [OH_VideoEncoder_RegisterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registercallback) | √ | 支持 |
-| [OH_VideoEncoder_RegisterParameterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registercallback) | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
+| [OH_VideoEncoder_RegisterParameterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registerparametercallback) | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
 | `OH_VideoEncoder_PushInputParameter` | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
 | [OH_VideoEncoder_PushInputParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputparameter) | √ | 支持，可配置含前处理参数 |
 | [OH_VideoEncoder_GetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getsurface) | √ | 支持 |
 | [OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare) | √ | 支持，准备内部资源 |
 | [OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) | √ | 支持 |
-| [OH_VideoEncoder_Stop](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) | √ | 支持 |
+| [OH_VideoEncoder_Stop](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_stop) | √ | 支持 |
 | [OH_VideoEncoder_Flush](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_flush) | √ | 支持 |
 | [OH_VideoEncoder_Reset](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_reset) | √ | 支持，重置到 Initialized 状态 |
 | [OH_VideoEncoder_SetParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter) | √ | 支持，运行时动态调整前处理等参数 |
@@ -120,7 +120,7 @@
 
 ## 开发步骤
 
-支持前处理编码和普通编码器的使用流程一致，主要差异点在于创建方式、支持前处理参数配置以及动态更新。本文主要对差异点进行详细说明。完整编码器开发流程参考[视频编码Surface模式](video-encoding.md#surface模式)
+支持前处理编码和普通编码器的使用流程一致，主要差异点在于创建方式、支持前处理参数配置以及动态更新。本文主要对差异点进行详细说明。完整编码器开发流程参考视频编码[Surface模式](video-encoding.md#surface模式)
 
 ### 创建支持前处理的编码器
 ```cpp
@@ -139,11 +139,11 @@ if (ret != AV_ERR_OK || encoder == nullptr) {
 
 ### 注册回调
 
-参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
+参考视频编码[Surface模式](video-encoding.md#surface模式)的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
 
 ### 配置编码参数与前处理参数
 
-编码器参数配置参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
+编码器参数配置参考视频编码[Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
 
 ```cpp
 OH_AVFormat *format = OH_AVFormat_Create();
@@ -200,8 +200,8 @@ if (ret != AV_ERR_OK || window == nullptr) {
 ```
 
 > **重要规则**：
-> - **仅主编码器**可以调用 `GetSurface`，副编码器调用将返回 `AV_ERR_OPERATE_NOT_PERMIT`
-> - 对于一入二出场景，只需获取一次 Surface 即可（主/副共享同一输入源）
+> - **仅主编码器**可以调用 `GetSurface`，副编码器调用将返回`AV_ERR_OPERATE_NOT_PERMIT`
+> - 对于一入二出场景，只需获取一次Surface即可（主/副共享同一输入源）
 
 ### 准备、启动、写入编码图像
 参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤7、8、10。
