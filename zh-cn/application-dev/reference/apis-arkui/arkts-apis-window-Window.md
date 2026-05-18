@@ -9086,13 +9086,15 @@ try {
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
 
-设置主窗、子窗的窗口支持模式，使用Promise异步回调。
+设置主窗或子窗的窗口支持模式，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于自由窗口状态的设备中可正常调用且立即生效；在支持但不处于自由窗口状态的设备中可正常调用，切换为自由窗口状态时生效；在不支持自由窗口状态的设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备中可正常调用且立即生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备中可正常调用，切换为[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备中返回801错误码。
 
 **参数：**
 
@@ -9104,7 +9106,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 类型 | 说明 |
 | ------------------- | ------------------------ |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -9113,10 +9115,10 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.|
 | 1300003  | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. Possible cause: Only main windows and subwindows are supported. |
-| 1300016  | Parameter error. Possible cause: 1. When called on a main window, the parameter should not only contain SPLIT; 2. When called on a sub window, the parameter should not contain SPLIT. |
+| 1300016  | Parameter error. Possible cause: 1. When called on a main window, the parameter should not only contain SPLIT. 2. When called on a sub window, the parameter should not contain SPLIT. |
 
 **示例：**
 
