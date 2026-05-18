@@ -19,5 +19,5 @@
 - [容器类对象](container-object.md)：可直接传递已经支持的容器类对象（需满足序列化规范）。
 - [ArrayBuffer对象](arraybuffer-object.md)：用于二进制数据的高效传递，适用于大段连续内存数据（如图片、音频原始数据）。
 - [SharedArrayBuffer对象](shared-arraybuffer-object.md)：支持多线程共享内存，允许线程间直接访问同一块内存区域，提升数据传递效率。
-- [Transferable对象（NativeBinding对象）](transferabled-object.md)：支持跨线程转移对象所有权（如文件描述符、图形资源等），转移后原线程不再拥有访问权限。
+- [Transferable对象（NativeBinding对象）](transferable-object.md)：支持跨线程转移对象所有权（如文件描述符、图形资源等），转移后原线程不再拥有访问权限。
 - [Sendable对象](arkts-sendable.md)：符合ArkTS语言规范的可共享对象，需通过[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标记，并且满足Sendable约束，详情可查[Sendable使用规则与约束](sendable-constraints.md)。

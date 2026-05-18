@@ -599,14 +599,4 @@ workerPort.onmessage = (e : MessageEvents) => {
 }
 ```
 
-<!-- @[not_recommended_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ChildWorker.ets) -->
-```ts
-// ChildWorker.ets
-import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-
-const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
-
-workerPort.onmessage = (e: MessageEvents) => {
-  console.info('子Worker收到信息 ' + e.data);
-}
-```
+<!-- @[not_recommended_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ChildWorker.ets) --> 

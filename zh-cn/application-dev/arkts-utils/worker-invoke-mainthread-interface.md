@@ -57,7 +57,7 @@
       }
    ```
 
-2. 然后，在Worker中通过callGlobalCallObjectMethod接口可以调用宿主线程中的getMessage()方法。
+2. 然后，在Worker中通过[callGlobalCallObjectMethod](../reference/apis-arkts/js-apis-worker.md#callglobalcallobjectmethod11)接口可以调用宿主线程中的getMessage()方法。
 
    <!-- @[call_main_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets) -->
    

@@ -166,7 +166,7 @@ LightWeightSet依据泛型定义，采用更加轻量级的结构，初始默认
 
 LightWeightSet底层通过hash表结构实现value的唯一性，冲突策略采用线性探测法，查找策略基于二分查找法。
 
-LightWeightSet和[HashSet](../reference/apis-arkts/js-apis-hashset.md)都是用来存储键值的集合，但LightWeightSet的占用内存更小。
+LightWeightSet和[HashSet](../reference/apis-arkts/js-apis-hashset.md)都是用来存储值的集合，但LightWeightSet的占用内存更小。
 
 当需要存取某个集合或是对某个集合去重时，推荐使用占用内存更小的LightWeightSet。
 
