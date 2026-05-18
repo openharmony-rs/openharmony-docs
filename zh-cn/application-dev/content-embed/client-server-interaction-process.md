@@ -1,10 +1,10 @@
 # 客户端和服务端交互流程
 
 <!--Kit: Content Embed Kit-->
-<!--Subsystem: officeservice-->
-<!--Owner: @wanxiaoguo-->
-<!--Designer: @zhuwei; @wei-guoning-->
-<!--Tester: @yinjian-->
+<!--Subsystem: officeservice -->
+<!--Owner: @qq_41146650-->
+<!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
+<!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
 
 [OE](content-embed-kit-terminology.md#oe)框架采用ExtensionAbility机制进行扩展，主要架构元素包括：[OE Extension](content-embed-kit-terminology.md#oe-extension)和[OE SA](content-embed-kit-terminology.md#oe-sa)。外部依赖元素包括：[AMS](content-embed-kit-terminology.md#ams)和[BMS](content-embed-kit-terminology.md#bms)。

@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滑块视图容器，提供子组件滑动轮播显示的能力。 
@@ -136,7 +136,7 @@ indicator(value: DotIndicator | DigitIndicator | boolean)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [DotIndicator](#dotindicator10)<sup>10+</sup>&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)<sup>10+</sup>&nbsp;\|&nbsp;boolean | 是   | 可选导航点指示器样式。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>&nbsp;&nbsp;默认值：true<br/>&nbsp;&nbsp;默认类型：DotIndicator |
+| value  | [DotIndicator](#dotindicator10)<sup>10+</sup>&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)<sup>10+</sup>&nbsp;\|&nbsp;boolean | 是   | 可选导航点指示器样式。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>默认值：true<br/>默认类型：DotIndicator |
 
 ### indicator<sup>15+</sup>
 
@@ -158,7 +158,7 @@ indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicato
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| indicator  | [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)<sup>15+</sup>&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean| 是   | 可选导航点指示器样式。<br/>\- IndicatorComponentController：单独导航点指示器控制器。当使用单独导航点指示器控制器时，可以与外部单独导航点进行绑定，但是绑定的单独导航点和内置导航点不能同时存在。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>&nbsp;&nbsp;默认值：true<br/>&nbsp;&nbsp;默认类型：DotIndicator。|
+| indicator  | [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)<sup>15+</sup>&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean| 是   | 可选导航点指示器样式。<br/>\- IndicatorComponentController：单独导航点指示器控制器。当使用单独导航点指示器控制器时，可以与外部单独导航点进行绑定，但是绑定的单独导航点和内置导航点不能同时存在。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>默认值：true<br/>默认类型：DotIndicator|
 
 ### nestedScroll<sup>11+</sup>
 
@@ -502,13 +502,13 @@ displayMode(value: SwiperDisplayMode)
 
 nextMargin(value: Length, ignoreBlank?:boolean)
 
-设置后边距，用于露出后一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
+设置后边距，用于露出后一项的一小部分，使用效果可以参考[示例1](#示例1设置导航点交互及翻页动效)设置导航点交互及翻页动效。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
 当主轴方向为横向布局时，nextMargin或prevMargin中任意一个大于子组件测算的宽度，nextMargin和prevMargin均不显示。
 
 当主轴方向为纵向布局时，nextMargin或prevMargin中任意一个大于子组件测算的高度，nextMargin和prevMargin均不显示。
 
-使用nextMargin/prevMargin接口时，不要对子组件进行[尺寸范围限制](ts-universal-attributes-size.md#constraintsize)，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
+使用nextMargin/prevMargin接口时，不要对子组件设置[constraintSize](ts-universal-attributes-size.md#constraintsize)属性，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
 
 > **说明：**
 >
@@ -529,13 +529,13 @@ nextMargin(value: Length, ignoreBlank?:boolean)
 
 prevMargin(value: Length, ignoreBlank?:boolean)
 
-设置前边距，用于露出前一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
+设置前边距，用于露出前一项的一小部分，使用效果可以参考[示例1](#示例1设置导航点交互及翻页动效)设置导航点交互及翻页动效。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
 当主轴方向为横向布局时，nextMargin/prevMargin中任意一个大于子组件测算的宽度，nextMargin和prevMargin均不显示。
 
 当主轴方向为纵向布局时，nextMargin/prevMargin中任意一个大于子组件测算的高度，nextMargin和prevMargin均不显示。
 
-使用nextMargin/prevMargin接口时，不要对子组件进行[尺寸范围限制](ts-universal-attributes-size.md#constraintsize)，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
+使用nextMargin/prevMargin接口时，不要对子组件设置[constraintSize](ts-universal-attributes-size.md#constraintsize)属性，否则子节点主轴将不会被拉伸到预期长度，边距失去效果。
 
 > **说明：**
 >
@@ -1042,7 +1042,7 @@ bottom(bottom: LengthMetrics | Length, ignoreSize: boolean): T
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)| 是   | 设置导航点底部相对于Swiper的位置。<br/>未设置top和bottom时，进行自适应大小布局，按照指示器本身大小和Swiper的大小，在交叉轴方向上，位于底部，效果与设置bottom=0一致。<br/>设置为0时：按照0位置布局计算。<br/>优先级：低于top属性。<br/>取值范围：[0,Swiper高度-导航点区域高度]，超出该范围时，取最近的边界值。 |
-| ignoreSize  | boolean | 是   | 设置是否忽略导航点本身大小，默认false。<br/>设为true时可以将导航点更靠近Swiper底部，使用方法可以参考[示例9演示导航点space与bottom](#示例9演示导航点space与bottom)。<br/> 说明：[数字导航点](#digitindicator10)ignoreSize属性，不生效的场景如下：<br/> &bull;  当[vertical](#vertical) 设置为false，且bottom > 0。<br/>  &bull;  当[vertical](#vertical) 设置为true时：<br/>1、bottom > 0 时。<br/> 2、bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。|
+| ignoreSize  | boolean | 是   | 设置是否忽略导航点本身大小，默认false。<br/>设为true时可以将导航点更靠近Swiper底部，使用方法可以参考[示例9](#示例9演示导航点space与bottom)演示导航点space与bottom。<br/> 说明：当导航点为[DigitIndicator](#digitindicator10)的类型时，不生效的场景如下：<br/> &bull;  当[vertical](#vertical) 设置为false，且bottom > 0。<br/>  &bull;  当[vertical](#vertical) 设置为true时：<br/>1、bottom > 0 时。<br/> 2、bottom设为undefined。 <br/> 3、isSidebarMiddle设置为false时。|
 
 **返回值：**
 

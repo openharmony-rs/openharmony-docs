@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
@@ -194,7 +194,7 @@ cachedCount(count: number, show: boolean)
 
 设置列表中ListItem/ListItemGroup的预加载数量，并配置是否显示预加载节点。
 
-List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行ListItem。计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[裁剪](ts-universal-attributes-sharp-clipping.md#clip12)或[内容裁剪](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行ListItem。计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 > **说明：**
 >
@@ -1577,7 +1577,7 @@ struct ListExample {
 ### 示例2（设置子元素对齐）
 该示例展示了不同ListItemAlign枚举值下，List组件交叉轴方向子元素对齐效果。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1634,7 +1634,7 @@ struct ListLanesExample {
 ### 示例3（设置编辑模式）
 该示例展示了如何设置当前List组件是否处于可编辑模式。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1698,7 +1698,7 @@ struct ListExample {
 ### 示例4（设置限位对齐）
 该示例展示了List组件设置居中限位的实现效果。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1760,7 +1760,7 @@ struct ListExample {
 
 如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1782,7 +1782,11 @@ struct ListExample {
     }
     this.arr = new ListDataSource(list);
     // 前5个item的主轴大小不是默认大小100，因此需要通过ChildrenMainSize通知List。
-    this.listChildrenSize.splice(0, 5, [300, 300, 300, 300, 300]);
+    try {
+      this.listChildrenSize.splice(0, 5, [300, 300, 300, 300, 300]);
+    } catch (error) {
+      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+    }
   }
 
   build() {
@@ -1946,7 +1950,12 @@ struct ListItemGroupExample {
         PanGesture()
           .onActionUpdate((event: GestureEvent) => {
             if (event.fingerList[0] != undefined && event.fingerList[0].localX != undefined && event.fingerList[0].localY != undefined) {
-              this.listIndexInfo  = this.scroller.getVisibleListContentInfo(event.fingerList[0].localX, event.fingerList[0].localY);
+              try {
+                this.listIndexInfo =
+                  this.scroller.getVisibleListContentInfo(event.fingerList[0].localX, event.fingerList[0].localY);
+              } catch (error) {
+                console.info('Failed to get visible list content info:', error);
+              }
               let itemIndex:string = 'undefined';
               if (this.listIndexInfo.itemIndexInGroup != undefined ) {
                 itemIndex = this.listIndexInfo.itemIndexInGroup.toString();
@@ -1985,7 +1994,7 @@ interface TimeTable {
 ### 示例7（设置边缘渐隐）
 该示例实现了List组件开启边缘渐隐效果并设置边缘渐隐长度。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2025,7 +2034,7 @@ struct ListExample {
 
 该示例通过edgeEffect接口，实现了List组件设置单边边缘效果。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2112,7 +2121,7 @@ struct ListExample {
 
 该示例通过maintainVisibleContentPosition接口，实现了上滑无限加载历史消息场景。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2247,7 +2256,7 @@ struct ForEachSort {
 
 从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2582,9 +2591,9 @@ struct ContactsList {
 
 ### 示例17（设置多选聚拢动画）
 
-该示例通过打开List多选聚拢动画开关，实现了在ListItem上[长按弹出菜单](ts-universal-attributes-menu.md#bindcontextmenu8)时聚拢显示范围内被选中的ListItem。
+该示例通过打开List多选聚拢动画开关，实现了通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)在ListItem上长按弹出菜单时聚拢显示范围内被选中的ListItem。
 
-从API version 23开始，List组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
+从API version 23开始，List组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 

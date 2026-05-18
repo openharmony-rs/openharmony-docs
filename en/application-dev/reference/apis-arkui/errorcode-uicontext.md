@@ -1,8 +1,8 @@
 # UI Context Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -108,7 +108,7 @@ The UIContext is not available.
 
 **Description**
 
-The instance does not exist.
+This error code is reported when the instance does not exist.
 
 **Possible Causes**
 

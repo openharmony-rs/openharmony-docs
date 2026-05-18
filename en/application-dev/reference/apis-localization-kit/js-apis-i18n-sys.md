@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
  This module provides system-related or enhanced i18n capabilities, such as locale management, phone number formatting, and calendar, through supplementary i18n APIs that are not defined in ECMA 402. The [intl](js-apis-intl.md) module provides basic i18n capabilities through the standard i18n APIs defined in ECMA 402. It works with the **i18n** module to provide a complete suite of i18n capabilities.
 
@@ -14,7 +14,7 @@
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 >
->  - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.i18n (Internationalization)](js-apis-intl.md).
+>  - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.i18n (Internationalization)](js-apis-i18n.md).
 
 
 ## Modules to Import
@@ -436,7 +436,7 @@ Obtains the collation modes supported by the system and their names. If the syst
 
 | Type                    | Description   |
 | ---------------------- | ----- |
-| Map&lt;string, string&gt; | Collation modes supported by the system and their names. The **Map** object employs the key-value format, where the key is a string that indicates the collation mode, and the value is a string that indicates its name. The range of supported collation modes is subject to the system language.|
+| Map&lt;string, string&gt; | Collation modes supported by the system and their names. The **Map** object employs the key-value format, where the key is a string that indicates the collation mode, and the value is a string that indicates its name. The range of supported collation modes depends on the system language.|
 
 **Error codes**
 
@@ -551,7 +551,7 @@ Obtains the numbering systems supported by the system and examples. The examples
 
 | Type                    | Description   |
 | ---------------------- | ----- |
-| Map&lt;string, string&gt; | Numbering systems supported by the system and examples. The **Map** object employs the key-value format, where the key is a string that indicates the numbering system, and the value indicates an example. The range of supported numbering systems is subject to the system language.|
+| Map&lt;string, string&gt; | Numbering systems supported by the system and examples. The **Map** object employs the key-value format, where the key is a string that indicates the numbering system, and the value indicates an example. The range of supported collation modes depends on the system language.|
 
 **Error codes**
 
@@ -849,7 +849,7 @@ try {
 
 static getSystemNumericalDatePatterns(): Map&lt;string, string&gt;
 
-Obtains the numerical date patterns supported by the system and examples.
+Numerical date patterns supported by the system and examples.
 
 **System API**: This is a system API.
 

@@ -16,7 +16,7 @@ The **uiExtension** module provides APIs for the EmbeddedUIExtensionAbility (or 
 
 ## Modules to Import
 
-```
+```ts
 import { uiExtension } from '@kit.ArkUI';
 ```
 
@@ -81,6 +81,7 @@ export default class EntryAbility extends UIExtensionAbility {
       console.error(`Failed to hide the non-secure windows. Cause:${JSON.stringify(err)}`);
     })
   }
+  
   onSessionDestroy(session: UIExtensionContentSession) {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // Unhide non-secure windows.

@@ -142,7 +142,7 @@ struct Index {
 
 ## MovingPhotoViewController
 
-A MovingPhotoViewController object can be used to control a **MovingPhotoView** component. For details, see [Media Module](../apis-media-kit/arkts-apis-media.md).
+Controls a **MovingPhotoView**. For details about video playback instances, see [Module Description](../apis-media-kit/arkts-apis-media.md).
 
 ### pausePlayback<sup>20+</sup>
 

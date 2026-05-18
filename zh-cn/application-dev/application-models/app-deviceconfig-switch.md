@@ -5,7 +5,7 @@
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 为了便于开发者维护应用级别的属性配置，[Stage模型](ability-terminology.md#stage模型)将config.json中的app和deviceConfig标签提取到了app.json5中进行配置，并对部分标签名称进行了修改，具体差异见下表。

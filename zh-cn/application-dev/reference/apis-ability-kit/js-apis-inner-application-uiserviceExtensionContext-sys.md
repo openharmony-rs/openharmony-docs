@@ -5,7 +5,7 @@
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 UIServiceExtensionContext模块是[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 

@@ -163,7 +163,7 @@ struct BindContentCoverDemo {
 
       Column() {
         Text('G1234')
-        // Replace $r('app.string.Label_origin_station') with the actual resource file. In this example, the value in the resource file is "8 h 1 min."
+        // Replace $r('app.string.Label_start_time') with the actual resource file. In this example, the value in the resource file is "8 h 1 min."
         Text($r('app.string.Label_start_time'))
       }
       .width('25%')

@@ -58,7 +58,7 @@ The file declares the APIs used to decode an image source into a PixelMap.
 | [int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t index, struct OhosImageSourceInfo* info)](#oh_imagesource_getimageinfo) | Obtains image source information from an ImageSourceNative object by index.|
 | [int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)](#oh_imagesource_getimageproperty) | Obtains the value of an image property from an ImageSourceNative object.|
 | [int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosImageSourceUpdateData* data)](#oh_imagesource_updatedata) | Updates the data of an ImageSourceNative object.|
-| [int32_t OH_ImageSource_Release(ImageSourceNative* native)](#oh_imagesource_release) | Releases an ImageSourceNative object.|
+| [int32_t OH_ImageSource_Release(ImageSourceNative* native)](#oh_imagesource_release) | Releases an **ImageSourceNative** object.|
 
 ### Variables
 
@@ -305,7 +305,7 @@ Obtains all supported decoding formats.
 
 | Name| Description|
 | -- | -- |
-| struct OhosImageSourceSupportedFormatList* res | Pointer to the [OhosImageSourceSupportedFormatList](capi-image-ohosimagesourcesupportedformatlist.md) struct.<br>If the input **supportedFormatList** is a null pointer and **size** is 0, the size of the supported formats is returned through **ressize**.<br>To obtain all formats, a space larger than **size** is required. In addition, sufficient space must be reserved for each format supported.|
+| struct OhosImageSourceSupportedFormatList* res | Pointer to the [OhosImageSourceSupportedFormatList](capi-image-ohosimagesourcesupportedformatlist.md) struct. This struct contains the **supportedFormatList** and **size** properties.<br>This API needs to be called twice to correctly obtain the supported format list.<br>In the first call, **res->supportedFormatList** needs to be left empty, and **res->size** obtains the number of supported formats.<br>Before the second call, memory initialization must be completed. First, initialize **res->supportedFormatList** as a list containing **res->size** instances of [OhosImageSourceSupportedFormat](capi-image-ohosimagesourcesupportedformat.md). Then, allocate memory for each [OhosImageSourceSupportedFormat](capi-image-ohosimagesourcesupportedformat.md) to ensure that its **format** property has sufficient space to obtain image format information.|
 
 **Returns**
 
@@ -467,7 +467,7 @@ Obtains image source information from an ImageSourceNative object by index.
 | Name| Description|
 | -- | -- |
 | const [ImageSourceNative](capi-image-imagesourcenative-.md)* native | Pointer to an ImageSourceNative object.|
-| int32_t index | Index.|
+| int32_t index | Index of the frame count.|
 | struct [OhosImageSourceInfo](capi-image-ohosimagesourceinfo.md)* info | Pointer to the OhosImageSourceInfo object obtained.|
 
 **Returns**

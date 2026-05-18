@@ -293,7 +293,7 @@ try {
 
 isDeviceControlEnabled(deviceAddress: PartnerDeviceAddress): boolean
 
-Checks whether the interconnection feature of the device is disabled.
+Checks whether the interconnection feature of the device is enabled.
 
 - After the device is registered by calling the [bindDevice](#partneragentbinddevice) API, the interconnection feature of the device is enabled by default, and the enabling status of the feature can be displayed on the device details page in the system settings on the application.
 - If the feature is disabled, you can enable it by toggling on the corresponding switch on the device details page in the system settings on the application.
@@ -315,7 +315,7 @@ Checks whether the interconnection feature of the device is disabled.
 
 | **Type**                 | **Description**                 |
 | ------------------- | ------------------- |
-| boolean | Whether the interconnection feature is disabled. **true** if the interconnection feature is not disabled; **false** otherwise.|
+| boolean | Whether the interconnection feature of the device is enabled. **true**: enabled; **false**: disabled.|
 
 **Error codes**
 
@@ -356,8 +356,8 @@ Describes the capabilities supported for discovering the device.
 
 | **Name**                | **Type**  | **Read-Only**| **Optional**  | **Description**                                      |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| supportBR            | boolean | No| Yes   | Whether the device can be discovered by the [ACL](../../connectivity/terminology.md#acl) connection. If the ACL connection is established, the device is considered to be discovered successfully. **true** if connection-based discovery is supported; **false** otherwise.|
-| supportBleAdvertiser | boolean | No| Yes   | Whether the device can be discovered by the [BLE](../../connectivity/terminology.md#ble) scanning. If the device is found, the device is considered to be discovered successfully. **true** if BLE scanning-based discovery is supported; **false** otherwise.<br> Note:<br>  The [supportBleAdvertiser](#partneragentdevicecapability) option cannot be used alone, and must be used with the [supportBR](#partneragentdevicecapability) option.|
+| supportBR            | boolean | No| Yes   | Whether the device can be discovered by the [ACL](../../connectivity/terminology.md#acl) connection. If the ACL connection is established, the device is considered to be discovered successfully. After a device is discovered, the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process is started and the [onDeviceDiscovered](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md#ondevicediscovered) method in the process is called. **true** if connection-based discovery is supported; **false** otherwise. The default value is **false**.|
+| supportBleAdvertiser | boolean | No| Yes   | Whether the device can be discovered by the [BLE](../../connectivity/terminology.md#ble) scanning. If the device is found, the device is considered to be discovered successfully. After a device is discovered, the **PartnerAgentExtensionAbility** process is started and the **onDeviceDiscovered** method in the process is called. **true** if BLE scanning-based discovery is supported; **false** otherwise. The default value is **false**.<br> Note:<br>  If [supportBleAdvertiser](#partneragentdevicecapability) is selected and the device is scanned but no ACL connection is established within 3 minutes, [onDestroyWithReason](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md#ondestroywithreason) will be called to destroy the started **PartnerAgentExtensionAbility** process.|
 
 ## partnerAgent.BusinessCapability
 
@@ -369,8 +369,8 @@ Describes the service features supported by the device.
 
 | **Name**                | **Type**  | **Read-Only**| **Optional**  | **Description**                                      |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
-| supportMediaControl | boolean | No| Yes| Whether the device supports media control, such as controlling media playback, volume adjustment, and previous/next track. **true** if media control is supported; **false** otherwise.|
-| supportTelephonyControl | boolean | No| Yes| Whether the device supports call control, such as answering and ending a call. **true** if supported, **false** otherwise.|
+| supportMediaControl | boolean | No| Yes| Whether the device supports media control, such as controlling media playback, volume adjustment, and previous/next track. **true** if supported, **false** otherwise. The default value is **false**.|
+| supportTelephonyControl | boolean | No| Yes| Whether the device supports call control, such as answering and ending a call. **true** if supported, **false** otherwise. The default value is **false**.<br> Note:<br>  If both **supportMediaControl** and **supportTelephonyControl** are set to **false**, the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process is not started during [device discovery](#partneragentdevicecapability).|
 
 ## partnerAgent.PartnerDeviceAddress
 

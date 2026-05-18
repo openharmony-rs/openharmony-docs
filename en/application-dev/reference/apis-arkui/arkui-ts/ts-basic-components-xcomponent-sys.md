@@ -56,7 +56,7 @@ Ensure that **XComponent** components with independent layers are placed below a
 
 3. Use this API in static layout scenarios, such as non-page transition or static video subtitle display scenarios.
 
-**System API**: This attribute can be used in system APIs since API version 18.
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

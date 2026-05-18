@@ -85,7 +85,7 @@ PluginComponent(options: PluginComponentOptions)
 
 ## 事件
 
-支持[绑定手势方法](ts-gesture-settings.md)，并分发给提供方页面，在提供方页面内部处理。
+支持[绑定手势事件](ts-gesture-settings.md)，并分发给提供方页面，在提供方页面内部处理。
 
 除支持[通用事件](ts-component-general-events.md)，还支持以下事件：
 
@@ -166,7 +166,7 @@ onError(callback:&nbsp;PluginErrorCallback)
 
 ## 示例（加载PluginComponent）
 
-本示例展示PluginComponent组件的基础使用方式，需要创建一个bundleName为"com.example.user"的[使用方应用](#组件使用方)，和一个bundleName为"com.example.provider"的[提供方应用](#组件提供方)。应用项目构建完成后，具体测试步骤如下：
+本示例展示PluginComponent组件的基础使用方式，需要创建一个bundleName为"com.example.user"的[使用方](#组件使用方)应用，和一个bundleName为"com.example.provider"的[提供方](#组件提供方)应用。应用项目构建完成后，具体测试步骤如下：
 1. 将两个应用的hap包安装到设备上；
 2. 打开使用方应用页面，使用方与提供方内容都正确显示；
 3. 分别点击使用方的“Register Push Listener”按钮和提供方的“Register Request Listener”按钮注册监听；

@@ -5,7 +5,7 @@
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 AgentExtensionAbility继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
  
@@ -201,7 +201,7 @@ onAuth(proxy: AgentHostProxy, handshakeData: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |  -------- |
 | proxy | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md) | 是 | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md)对象，用于向客户端发送安全认证请求。 |
-| data | string | 是 | 表示接收到的安全认证数据。 |
+| handshakeData | string | 是 | 表示接收到的安全认证数据。 |
 
 **示例：**
 

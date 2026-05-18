@@ -1,7 +1,7 @@
 # hid_ddk_api.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -129,7 +129,7 @@ int32_t OH_Hid_DestroyDevice(int32_t deviceId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 调用接口成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接hid_ddk服务失败或者调用方不是设备的创建者。<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode) 对应设备不存在。 |
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode) 调用接口成功。<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode) 权限校验失败。<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode) 连接hid_ddk服务失败或者调用方不是设备的创建者。<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode) 对应设备不存在。 |
 
 ### OH_Hid_Init()
 

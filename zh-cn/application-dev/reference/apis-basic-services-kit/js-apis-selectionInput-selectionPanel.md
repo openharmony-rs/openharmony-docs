@@ -46,5 +46,5 @@ import { PanelInfo, PanelType } from '@kit.BasicServicesKit';
 
 | 名称          | 值   | 说明         |
 | ------------- | ---- | ------------ |
-| MENU_PANEL | 1    | 菜单面板类型。 |
-| MAIN_PANEL | 2    | 主面板类型。 |
+| MENU_PANEL | 1    | 菜单面板可以作为一级面板，显示当前应用程序可以提供的功能，如翻译、搜索等。 |
+| MAIN_PANEL | 2    | 主面板可以作为二级面板，当用户点击菜单面板中的功能按钮时弹出，显示特定的翻译或搜索结果等。 |

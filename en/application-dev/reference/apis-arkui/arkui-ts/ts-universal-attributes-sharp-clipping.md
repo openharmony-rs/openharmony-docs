@@ -52,7 +52,7 @@ Sets whether to clip the areas of child components that extend beyond this compo
 
 | Name| Type              | Mandatory                                                        | Description|
 | ------ | ------------------ | ------------------------------------------------------------ | ---- |
-| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes| Whether to clip the areas of child components that extend beyond the current component's bounds.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
+| clip   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes| Whether to clip the areas of child components that extend beyond the current component's bounds.<br>Note: If this parameter is set to **true**, child components exceeding the current component's bounds will not respond to bound gesture events.<br>If **clip** is set to **undefined**, clipping is disabled, and child components are not clipped.   |
 
 **Return value**
 
@@ -144,7 +144,7 @@ Clips this component according to the specified shape (which may include positio
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes  | Shape (which may include position information) to clip the current component.<br>Note: The clipped area remains responsive to bound gesture events.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes  | Shape (which may include position information) to clip the current component.<br>Note: The clipped area remains responsive to bound gesture events.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
 
 **Return value**
 
@@ -252,7 +252,7 @@ Adds a mask to the component to indicate the progress. Compared with [mask<sup>1
 
 | Name| Type                                                        | Mandatory| Description                            |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| mask | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ProgressMask](#progressmask10)> | Yes| Mask to add to the component, which allows for dynamic adjustment of progress, maximum value, and color settings.<br>If **mask** is set to **undefined**, the component to revert to its original effect without the mask to indicate the progress.    |
+| mask | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ProgressMask](#progressmask10)> | Yes| Mask to add to the component, which allows for dynamic adjustment of progress, maximum value, and color settings.<br>If **mask** is set to **undefined**, the component to revert to its original effect without the mask to indicate the progress.    |
 
 **Return value**
 
@@ -328,7 +328,7 @@ Adds a mask of the specified shape to the component. Compared with [maskShape<su
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes  | Mask of the specified shape to add to the component.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes  | Mask of the specified shape to add to the component.<br>If the value of **shape** is **undefined**, the current setting will be reset to its default state.|
 
 **Return value**
 
@@ -441,13 +441,13 @@ struct ClipAndMaskExample {
         .width('500px').height('280px')
 
       Text('mask').fontSize(12).width('75%').fontColor('#DCDCDC')
-      // Add a 500x280 px square mask to the image.
+      // Add a 500 × 280 px square mask to the image.
       // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .maskShape(new RectShape({ width: '500px', height: '280px' }).fill(Color.Gray))
         .width('500px').height('280px')
 
-      // Add a 280 x 280 px circular mask to the image.
+      // Add a 280 × 280 px circular mask to the image.
       // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .maskShape(new CircleShape({ width: '280px', height: '280px' }).fill(Color.Gray))
@@ -478,7 +478,7 @@ struct ProgressMaskExample {
   build() {
     Column({ space: 15 }) {
       Text('progress mask').fontSize(12).width('75%').fontColor('#DCDCDC')
-      // Add a 280x280 px progress mask to the image.
+      // Add a 280 × 280 px progress mask to the image.
       // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .width('500px').height('280px')
@@ -530,3 +530,4 @@ struct ProgressMaskExample {
 ```
 
 ![progressMask](figures/progressMask.gif)
+<!--no_check-->

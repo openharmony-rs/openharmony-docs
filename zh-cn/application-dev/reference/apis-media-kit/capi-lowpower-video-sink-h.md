@@ -1,7 +1,7 @@
 # lowpower_video_sink.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -464,9 +464,9 @@ OH_AVErrCode OH_LowPowerVideoSink_SetTargetStartFrame(OH_LowPowerVideoSink* sink
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const int64_t framePts | 渲染的目标视频帧的pts。 |
+| const int64_t framePts | 渲染的目标视频帧的pts。单位为微秒。 |
 | [OH_LowPowerVideoSink_OnTargetArrived](capi-lowpower-video-sink-base-h.md#oh_lowpowervideosink_ontargetarrived) onTargetArrived | OH_LowPowerVideoSink_OnTargetArrived方法，当目标帧渲染时触发该方法。 |
-| const int64_t timeoutMs | 如果等待第一帧的时间超过timeoutMs，则直接调用onTargetArrived。 |
+| const int64_t timeoutMs | 如果等待第一帧的时间超过timeoutMs，则直接调用onTargetArrived。单位为毫秒。 |
 | void* userData | 用户数据。 |
 
 **返回：**
@@ -492,7 +492,7 @@ OH_AVErrCode OH_LowPowerVideoSink_SetPlaybackSpeed(OH_LowPowerVideoSink* sink, c
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| const float speed | 播放速率的值。当前版本有效范围为[0.1，4.0]。 |
+| const float speed | 播放速率的值。当前版本有效范围为[0.25, 4.0]。 |
 
 **返回：**
 
@@ -542,7 +542,7 @@ OH_AVErrCode OH_LowPowerVideoSink_GetLatestPts(OH_LowPowerVideoSink *sink, int64
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) *sink | 指向OH_LowPowerVideoSink实例的指针。 |
-| int64_t *pts | 当前播放的pts。 |
+| int64_t *pts | 当前播放的pts。单位为微秒。 |
 
 **返回：**
 

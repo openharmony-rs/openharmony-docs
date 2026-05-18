@@ -14,6 +14,7 @@
 - Publishing a Notification<!--publish-notification-->
   - [Publishing a Text Notification](text-notification.md)
   - [Publishing a Progress Notification](progress-bar-notification.md)
+  - [Adding a Custom Ringtone to a Notification](notification-customized-ringtone.md)
   <!--Del-->
   - [Publishing a Live View Notification (for System Applications Only)](live-view-notification-sys.md)
   <!--DelEnd-->
@@ -30,7 +31,7 @@
   <!--DelEnd-->
   - [Clearing Repeated Notifications Across Devices](notification-distributed-messageid.md)
 - ExtensionAbility for Notification Subscription<!--notification-subscriber-extension-->
-  - [ExtensionAbility Overview for Notification Subscription](notification-subscriber-extension-ability.md)
+  - [Introduction to NotificationSubscriberExtensionAbility](notification-subscriber-extension-ability.md)
   - [Developing the ExtensionAbility for Notification Subscription](notification-subscriber-extension-ability-development-steps.md)
 <!--RP1--><!--RP1End-->
 <!--RP2--><!--RP2End-->

@@ -1,8 +1,8 @@
 # 使用AVImageGenerator提取视频指定时间图像(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -70,7 +70,7 @@
 参考以下示例，获取一个视频指定时间的缩略图。
 
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS)，并将示例工程的资源复制到对应目录。
-    ```
+    ```txt
     AVImageGeneratorArkTS
     entry/src/main/ets/
     └── pages

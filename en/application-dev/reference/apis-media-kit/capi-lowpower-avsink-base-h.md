@@ -1,8 +1,8 @@
 # lowpower_avsink_base.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -85,7 +85,7 @@ Obtains the remaining capacity available in an OH_AVSamplesBuffer instance.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Remaining capacity available in the OH_AVSamplesBuffer instance, in bytes. If **sampleBuffer** or data pointer is nullptr or invalid, **-1** is returned.|
+| int32_t | Remaining capacity available in the OH_AVSamplesBuffer instance, in bytes. If **sampleBuffer** or data pointer is nullptr or invalid, **3** is returned.|
 
 ### OH_LowPowerAVSink_GetCapability()
 

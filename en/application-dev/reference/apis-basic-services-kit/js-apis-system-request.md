@@ -35,9 +35,9 @@ Uploads a file. This API returns no value.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| options | [UploadRequestOptions](#uploadrequestoptionsdeprecated) | Yes| Upload configurations.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | options | [UploadRequestOptions](#uploadrequestoptionsdeprecated) | Yes| Upload configurations.|
 
 **Example**
 
@@ -86,27 +86,27 @@ Uploads a file. This API returns no value.
 > This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [UploadConfig](js-apis-request.md#uploadconfig) instead.
 
 **Parameters**
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| url | string | Yes| URL of the upload server.|
-| data | Array&lt;[RequestData](#requestdatadeprecated)&gt; | No| Form data in the request body.|
-| files | Array&lt;[RequestFile](#requestfiledeprecated)&gt; | Yes| List of files to upload, which is submitted through **multipart/form-data**.|
-| header | Object | No| Request header.|
-| method | string | No| Request method, which can be **'POST'** or **'PUT'**. The default value is **POST**.|
-| success | Function | No| Called when API call is successful.|
-| fail | Function | No| Called when API call has failed.|
-| complete | Function | No| Called when API call is complete.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | url | string | Yes| URL of the upload server.|
+  | data | Array&lt;[RequestData](#requestdatadeprecated)&gt; | No| Form data in the request body.|
+  | files | Array&lt;[RequestFile](#requestfiledeprecated)&gt; | Yes| List of files to upload, which is submitted through **multipart/form-data**.|
+  | header | Object | No| Request header.|
+  | method | string | No| Request method, which can be **'POST'** or **'PUT'**. The default value is **POST**.|
+  | success | Function | No| Called when API call is successful.|
+  | fail | Function | No| Called when API call has failed.|
+  | complete | Function | No| Called when API call is complete.|
 
 **success parameter**
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| data | [UploadResponse](#uploadresponsedeprecated) | Yes| Information returned when the upload task is successful.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | data | [UploadResponse](#uploadresponsedeprecated) | Yes| Information returned when the upload task is successful.|
 
 **fail parameters**
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| data | any | Yes| Header information returned when the upload task fails.|
-| code | number | Yes| HTTP status code returned when the upload task fails.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | data | any | Yes| Header information returned when the upload task fails.|
+  | code | number | Yes| HTTP status code returned when the upload task fails.|
 
 
 
@@ -114,33 +114,33 @@ Uploads a file. This API returns no value.
 
 **System capability**: SystemCapability.MiscServices.Upload
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| code | number | Yes| HTTP status code returned by the server.|
-| data | string | Yes| Content returned by the server. The value type is determined by the type in the returned headers.|
-| headers | Object | Yes| Headers returned by the server.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | code | number | Yes| HTTP status code returned by the server.|
+  | data | string | Yes| Content returned by the server. The value type is determined by the type in the returned headers.|
+  | headers | Object | Yes| Headers returned by the server.|
 
 
 ## RequestFile<sup>(deprecated)</sup>
 
 **System capability**: SystemCapability.MiscServices.Upload
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| filename | string | No| File name in the header when **multipart** is used.|
-| name | string | No| Name of a form item when **multipart** is used. The default value is **file**.|
-| uri | string | Yes| Local path for storing files.|
-| type | string | No| Type of the file content. By default, the type is obtained based on the extension of the file name or URI.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | filename | string | No| File name in the header when **multipart** is used.|
+  | name | string | No| Name of a form item when **multipart** is used. The default value is **file**.|
+  | uri | string | Yes| Local path for storing files.|
+  | type | string | No| Type of the file content. By default, the type is obtained based on the extension of the file name or URI.|
 
 
 ## RequestData<sup>(deprecated)</sup>
 
 **System capability**: SystemCapability.MiscServices.Upload
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| name | string | Yes| Name of the form element.|
-| value | string | Yes| Value of the form element.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | name | string | Yes| Name of the form element.|
+  | value | string | Yes| Value of the form element.|
 
 
 
@@ -154,9 +154,9 @@ Downloads a file. This API returns no value.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| options | [DownloadRequestOptions](#downloadrequestoptionsdeprecated) | Yes| Download configurations.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | options | [DownloadRequestOptions](#downloadrequestoptionsdeprecated) | Yes| Download configurations.|
 
 **Example**
 
@@ -197,34 +197,34 @@ Downloads a file. This API returns no value.
 > This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [UploadConfig](js-apis-request.md#uploadconfig) instead.
 
 **Parameters**
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| url | string | Yes| Resource URL.|
-| filename | string | No| Name of the file to download. The value is obtained from the current request or resource URL by default.|
-| header | Object | No| Request header.|
-| description | string | No| Download description. The default value is the file name.|
-| success | Function | No| Called when API call is successful.|
-| fail | Function | No| Called when API call has failed.|
-| complete | Function | No| Called when API call is complete.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | url | string | Yes| Resource URL.|
+  | filename | string | No| Name of the file to download. The value is obtained from the current request or resource URL by default.|
+  | header | Object | No| Request header.|
+  | description | string | No| Download description. The default value is the file name.|
+  | success | Function | No| Called when API call is successful.|
+  | fail | Function | No| Called when API call has failed.|
+  | complete | Function | No| Called when API call is complete.|
 
 **success parameter**
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| data | [DownloadResponse](#downloadresponsedeprecated) | Yes| Information returned when the download task is successful.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | data | [DownloadResponse](#downloadresponsedeprecated) | Yes| Information returned when the download task is successful.|
 
 **fail parameters**
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| data | any | Yes| Header information returned when the download task fails.|
-| code | number | Yes| HTTP status code returned when the download task fails.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | data | any | Yes| Header information returned when the download task fails.|
+  | code | number | Yes| HTTP status code returned when the download task fails.|
 
 ## DownloadResponse<sup>(deprecated)</sup>
 
 **System capability**: SystemCapability.MiscServices.Download
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| token | string | Yes| Download token, which is used to obtain the download status|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | token | string | Yes| Download token, which is used to obtain the download status|
 
 
 ## request.onDownloadComplete<sup>(deprecated)</sup>
@@ -237,9 +237,9 @@ Listens for download task status. This API returns no value.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| options | [OnDownloadCompleteOptions](#ondownloadcompleteoptionsdeprecated) | Yes| Configurations of the download task.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | options | [OnDownloadCompleteOptions](#ondownloadcompleteoptionsdeprecated) | Yes| Configurations of the download task.|
 
 **Example**
 
@@ -267,29 +267,29 @@ Listens for download task status. This API returns no value.
 
 **System capability**: SystemCapability.MiscServices.Download
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| token | string | Yes| Result token returned by the download API.|
-| success | Function | No| Called when API call is successful.|
-| fail | Function | No| Called when API call has failed.|
-| complete | Function | No| Called when API call is complete.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | token | string | Yes| Result token returned by the download API.|
+  | success | Function | No| Called when API call is successful.|
+  | fail | Function | No| Called when API call has failed.|
+  | complete | Function | No| Called when API call is complete.|
 
 **success parameter**
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| data | [OnDownloadCompleteResponse](#ondownloadcompleteresponsedeprecated) | Yes| Information returned when the download task is successful.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | data | [OnDownloadCompleteResponse](#ondownloadcompleteresponsedeprecated) | Yes| Information returned when the download task is successful.|
 
 **fail parameters**
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| data | any | Yes| Header information returned when the download task fails.|
-| code | number | Yes| HTTP status code returned when the download task fails.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | data | any | Yes| Header information returned when the download task fails.|
+  | code | number | Yes| HTTP status code returned when the download task fails.|
 
 
 ## OnDownloadCompleteResponse<sup>(deprecated)</sup>
 
 **System capability**: SystemCapability.MiscServices.Download
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| uri | string | Yes| URI of the download file.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | uri | string | Yes| URI of the download file.|

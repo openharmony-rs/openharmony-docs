@@ -1,9 +1,9 @@
 # @ohos.uiAppearance (UI Appearance) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **uiAppearance** module provides basic capabilities for managing the system appearance. It allows for color mode configuration currently, and will introduce more features over time.
@@ -31,6 +31,8 @@ Sets the system color mode. This API uses an asynchronous callback to return the
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
+
+**System API**: This is a system API.
 
 **Parameters**
 
@@ -79,6 +81,8 @@ Sets the system color mode. This API uses a promise to return the result.
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
 **System capability**: SystemCapability.ArkUI.UiAppearance
+
+**System API**: This is a system API.
 
 **Parameters**
 

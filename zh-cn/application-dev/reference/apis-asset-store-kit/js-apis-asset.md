@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -25,7 +25,7 @@ add(attributes: AssetMap): Promise\<void>
 
 新增一条关键资产。使用Promise异步回调。
 
-设置[IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限。
+设置[Tag.IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -45,7 +45,7 @@ add(attributes: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -92,7 +92,7 @@ addSync(attributes: AssetMap): void
 
 新增一条关键资产，使用同步方式返回结果。
 
-如果要设置[IS_PERSISTENT](#tag)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限。
+如果要设置[Tag.IS_PERSISTENT](#tag)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -106,7 +106,7 @@ addSync(attributes: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -169,7 +169,7 @@ remove(query: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -221,7 +221,7 @@ removeSync(query: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -278,7 +278,7 @@ update(query: AssetMap, attributesToUpdate: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -335,7 +335,7 @@ updateSync(query: AssetMap, attributesToUpdate: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -395,7 +395,7 @@ preQuery(query: AssetMap): Promise\<Uint8Array>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -428,7 +428,7 @@ function stringToArray(str: string): Uint8Array {
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 asset.preQuery(query).then((challenge: Uint8Array) => {
-  console.info(`Succeeded in pre-querying Asset.`);
+  console.info(`Succeeded in pre-querying Asset, the challenge is: `, challenge);
 });
 ```
 
@@ -456,7 +456,7 @@ preQuerySync(query: AssetMap): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -518,7 +518,7 @@ query(query: AssetMap): Promise\<Array\<AssetMap>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -588,7 +588,7 @@ querySync(query: AssetMap): Array\<AssetMap>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -655,7 +655,7 @@ postQuery(handle: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -698,7 +698,7 @@ postQuerySync(handle: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
@@ -816,7 +816,7 @@ asset.querySyncResult(query).then((res: asset.SyncResult) => {
 | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | TagType.BYTES &#124; 0x36 | 关键资产附属的本地信息，内容由业务自定义且**无完整性保护**，该项信息不会进行同步。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | TagType.BYTES &#124; 0x37 | 关键资产附属的本地信息，内容由业务自定义且**无完整性保护**，该项信息不会进行同步。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | RETURN_TYPE               | TagType.NUMBER &#124; 0x40 | 关键资产查询返回的结果类型。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
-| RETURN_LIMIT              | TagType.NUMBER &#124; 0x41                      | 关键资产查询返回的结果数量。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
+| RETURN_LIMIT              | TagType.NUMBER &#124; 0x41                      | 关键资产查询返回的结果的最大数量。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
 | RETURN_OFFSET             | TagType.NUMBER &#124; 0x42   | 关键资产查询返回的结果偏移量。<br>**说明：** 用于分批查询场景，指定从第几个开始返回。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                 |
 | RETURN_ORDERED_BY         | TagType.NUMBER &#124; 0x43 | 关键资产查询返回的结果排序依据，仅支持按照附属信息排序。<br>**说明：** 默认按照关键资产新增的顺序返回。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | CONFLICT_RESOLUTION       | TagType.NUMBER &#124; 0x44 | 新增关键资产时的冲突（如：别名相同）处理策略。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                             |

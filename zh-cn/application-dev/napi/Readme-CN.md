@@ -2,7 +2,7 @@
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @fang-jinxu-->
-<!--Designer: @lingminghw-->
+<!--Designer: @fang-jinxu-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 - [NDK开发导读](ndk-development-overview.md)
@@ -129,7 +129,7 @@
   - 内存管理<!--memory-management-->
     - [Purgeable memory开发指导](purgeable-memory-guidelines.md)
   - 包管理<!--bundle-management-->
-    - [NativeBundle开发指导](native-bundle-guidelines.md)
+    - [NativeBundle开发指导](native-bundle-guidelines.md)<!--RP3--><!--RP3End-->
 - 调试和性能分析<!--debugging-profiling-->
   - [调试和性能分析概述](debug-performance-profiling-overview.md)
   - [C/C++内存错误检测](debug-asan.md)<!--RP2--><!--RP2End-->

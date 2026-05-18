@@ -528,7 +528,7 @@ Sets whether to encrypt the database for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-co
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| bool isEncrypted | Whether to encrypt the RDB store. The value **true** means to encrypt the database; the value **false** means the opposite.|
+| bool isEncrypted | Whether to encrypt the RDB store. The value **true** means to encrypt the database; the value **false** means the opposite. After the database is created, this parameter cannot be modified directly. To change the database encryption status, call the [OH_Rdb_RekeyEx](capi-relational-store-h.md#oh_rdb_rekeyex) API.|
 
 **Returns**
 
@@ -792,7 +792,7 @@ Sets whether to persist an RDB store.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which specifies the database configuration.|
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance,<br>which specifies the database configuration.|
 | bool isPersistent | Whether to persist the database data.|
 
 **Returns**
@@ -2345,7 +2345,7 @@ Ensure that you comply with this constraint when calling this API to avoid error
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | const char *table | Name of the target table for data insertion.|
 | [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | Row of data to insert.|
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure and the actual change data cannot be obtained properly.|
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure<br>and the actual change data cannot be obtained properly.|
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance.|
 
 **Returns**
@@ -2374,7 +2374,7 @@ Updates data in the database based on specified conditions and outputs the chang
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *row | Row of data to update.|
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance.|
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure and the actual change data cannot be obtained properly.|
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure<br>and the actual change data cannot be obtained properly.|
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance.|
 
 **Returns**

@@ -41,13 +41,13 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## AddFormMenuItem 
 
-
+```ts
 AddFormMenuItem(
   want: Want,
   componentId: string,
   options?: AddFormOptions
 ): void
-
+```
 
 **Decorator**: @Builder
 
@@ -129,17 +129,17 @@ struct Index {
           formBindingData: formBindingData.createFormBindingData({}),
           // formBindingData: formBindingData.createFormBindingData({ data: 'share' }),
           callback: (error, formId) => {
-            hilog.info(0x3900, tag, `callback info: error = ${JSON.stringify(error)}, formId = ${formId}`);
+            hilog.info(0x3900, tag, `callback info: formId = ${formId}`);
             if (error?.code === 0) {
               hilog.info(0x3900, tag, "Added to the home screen.")
             } else {
-              hilog.info(0x3900, tag, "Failed to add to the home screen. Try another method.")
+              hilog.error(0x3900, tag, `Failed to add to the home screen. Try another method. Error code: ${error?.code}, error message: ${error?.message}`)
             }
           },
           style: {
             // options: {
             // startIcon: $r("app.media.icon"), // Menu icon, which can be provided by yourself. The default value is "sys.media.ic_public_add."
-            //   content: "Add to home screen",  //  Menu content, which can be provided by yourself. The default value is "sys.string.ohos_add_form_to_desktop."
+            //   content: "Add to home screen",  // Menu content, which can be provided by yourself. The default value is "sys.string.ohos_add_form_to_desktop."
             //   endIcon: $r("app.media.icon") // Menu icon, which can be provided by yourself.
             // }
           }

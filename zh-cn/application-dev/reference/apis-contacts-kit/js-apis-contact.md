@@ -4427,6 +4427,8 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 
 **需要权限**：ohos.permission.CHECK_CALL_LOG
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -4435,8 +4437,8 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码。                                           |
-| minDuration      | number                      | 是   | 最短通话时长，单位为秒，取值范围大于0。        |
-| withinTime       | number | 是   | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒。最多可设置6小时，超过6小时的默认以6小时查询。               |
+| minDuration      | number                      | 是   | 最短通话时长，单位为秒(s)，取值范围大于0。        |
+| withinTime       | number | 是   | 表示从当前时间开始计算，通话的起始时间和结束时间应在此时间范围内，单位为秒(s)。查询时间范围大于0且不超过6小时，超过6小时的以6小时查询。               |
 
 **返回值：**
 
@@ -4467,7 +4469,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-const phoneNumber = '13812345678';
+const phoneNumber = '138xxxxxxxx';
 const minDuration = 60;
 const withinTime = 2 * 60 *60;
 
@@ -4487,6 +4489,8 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 
 **需要权限**：ohos.permission.CHECK_CALL_LOG
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.ContactsData
 
 **参数：**
@@ -4495,7 +4499,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码。                                           |
-| minDuration      | number                      | 是   | 最短通话时长，单位为秒，取值范围大于0。       |
+| minDuration      | number                      | 是   | 最短通话时长，单位为秒(s)，取值范围大于0。       |
 
 **返回值：**
 
@@ -4526,7 +4530,7 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-const phoneNumber = '13812345678';
+const phoneNumber = '138xxxxxxxx';
 const minDuration = 60;
 // 调用接口查询，默认查询6小时以内的通话记录
 contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:boolean) => {

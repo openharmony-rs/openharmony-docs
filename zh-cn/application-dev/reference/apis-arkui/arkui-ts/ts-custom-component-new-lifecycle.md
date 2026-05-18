@@ -151,6 +151,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @ComponentBuilt
   myBuilt() {
+    // CustomComponentLifecycle.getCurrentState用于获得自定义组件当前的生命周期状态
     hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', UIUtils.getLifecycle(this).getCurrentState());
   }
   build() {
@@ -388,6 +389,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @ComponentBuilt
   myBuilt() {
+    // CustomComponentLifecycleState.BUILT代表自定义组件为已展开状态
     hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', CustomComponentLifecycleState.BUILT);
   }
   build() {
@@ -451,6 +453,7 @@ struct Child {
   @State switch: boolean = true;
   @ComponentInit
   myInit() {
+    // 自定义组件创建完毕后，触发myInit方法
     hilog.info(0x0000, 'testTag', 'Child myInit');
   }
   @ComponentAppear

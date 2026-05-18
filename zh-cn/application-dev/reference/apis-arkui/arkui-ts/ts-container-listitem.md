@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用来展示列表具体item，必须配合List来使用。
@@ -157,7 +157,7 @@ ListItem吸顶效果枚举。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用List组件的[stickyStyle枚举](ts-container-list.md#stickystyle9枚举说明)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用List组件的[StickyStyle](ts-container-list.md#stickystyle9枚举说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -433,7 +433,11 @@ struct ListItemExample2 {
     Row() {
       Button('Delete').margin('4vp')
       Button('Set').margin('4vp').onClick(() => {
-        this.scroller.closeAllSwipeActions();
+        try {
+          this.scroller.closeAllSwipeActions();
+        } catch (error) {
+          console.info('Failed to close all swipe actions:', error);
+        }
       })
     }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
   }

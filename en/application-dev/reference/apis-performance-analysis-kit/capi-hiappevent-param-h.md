@@ -36,6 +36,10 @@ Defines the names of all predefined event parameters. In addition to custom even
 | [MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT](#main_thread_jank_param_sample_count) "sample_count" | Number of stack samplings of the main thread timeout detection. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
 | [MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP](#main_thread_jank_param_report_times_per_app) "report_times_per_app" | Number of sampling reporting times of the main thread jank event detection within a single lifecycle of an application PID, which can only be set once in a lifecycle. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
 | [MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING](#main_thread_jank_param_auto_stop_sampling) "auto_stop_sampling" | Whether to stop sampling the main thread stack when the main thread jank event ends. This macro is used for **MAIN_THREAD_JANK_V2** events.<br>**Since**: 22|
+| [OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING](#oh_app_crash_param_extend_pc_lr_printing) "extend_pc_lr_printing"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print the memory contents of the extended byte ranges of the PC and LR.<br>**Since**: 24 |
+| [OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES](#oh_app_crash_param_log_file_cutoff_sz_bytes) "log_file_cutoff_sz_bytes"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, truncate **CPP_CRASH** logs based on the configured parameter value.<br>**Since**: 24 |
+| [OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING](#oh_app_crash_param_simplify_vma_printing) "simplify_vma_printing"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print only the VMA mapping information of the address in the crash log to reduce the size of the **CPP_CRASH** log file.<br>**Since**: 24 |
+| [OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG](#oh_app_crash_param_merge_cppcrash_app_log) "merge_cppcrash_app_log"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to combine the logs of the specified file in the application sandbox in the **CPP_CRASH** scenario.<br>**Since**: 24 |
 
 
 ## Macro Description
@@ -147,3 +151,51 @@ Number of sampling reporting times of the main thread jank event detection withi
 Whether to stop sampling the main thread stack. This macro is used for **MAIN_THREAD_JANK_V2** events.
 
 **Since**: 22
+
+### OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING
+
+```c
+#define OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING "extend_pc_lr_printing"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print the memory contents of the extended byte ranges of the PC and LR.
+
+**Since**: 24
+
+### OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES
+
+```c
+#define OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES "log_file_cutoff_sz_bytes"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, truncate **CPP_CRASH** logs based on the configured parameter value.
+
+**Since**: 24
+
+### OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING
+
+```c
+#define OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING "simplify_vma_printing"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print only the VMA mapping information of the address in the crash log to reduce the size of the **CPP_CRASH** log file.
+
+**Since**: 24
+
+### OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG
+
+```c
+#define OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG "merge_cppcrash_app_log"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to combine the logs of the specified file in the application sandbox in the **CPP_CRASH** scenario.
+
+**Since**: 24

@@ -31,8 +31,7 @@
 | [Camera_ErrorCode OH_CameraDevice_GetHostDeviceType(Camera_Device* camera, Camera_HostDeviceType* hostDeviceType)](#oh_cameradevice_gethostdevicetype) | 获取远程设备类型。 |
 | [Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Device* camera, uint32_t** equivalentFocalLengths, uint32_t* size)](#oh_cameradevice_getlensequivalentfocallengths) | 获取相机设备的等效焦距。 |
 | [Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bool* isLogicalCamera)](#oh_cameradevice_islogicalcamera) | 检查相机设备是否为逻辑摄像头（由一个或多个物理摄像头组成）。 |
-| [Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device** constituentCameras, uint32_t* size)](#oh_cameradevice_getlogicalcameraconstituentcameradevices) | 获取组成逻辑摄像头的所有物理摄像头。调用[OH_CameraDevice_DeleteConstituentCameraDevices](capi-camera-device-h.md#oh_cameradevice_deleteconstituentcameradevices)释放组成逻辑摄像头的所有物理摄像头。 |
-| [Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device* constituentCameras, uint32_t size)](#oh_cameradevice_deleteconstituentcameradevices) | 删除组成逻辑摄像头的所有物理摄像头。 |
+| [Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device** constituentCameras, uint32_t* size)](#oh_cameradevice_getlogicalcameraconstituentcameradevices) | 获取组成逻辑摄像头的所有物理摄像头。 |
 | [Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera, float* lensFocalLength)](#oh_cameradevice_getlensfocallength) | 获取相机镜头的焦距。 |
 | [Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* camera, float* minimumFocusDistance)](#oh_cameradevice_getminimumfocusdistance) | 获取相机设备的最小对焦距离。 |
 | [Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, float** lens, uint32_t* size)](#oh_cameradevice_getlensdistortion) | 获取相机设备的镜头畸变参数。 |
@@ -177,7 +176,7 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 
 **描述**
 
-获取组成逻辑摄像头的所有物理摄像头。调用[OH_CameraDevice_DeleteConstituentCameraDevices](capi-camera-device-h.md#oh_cameradevice_deleteconstituentcameradevices)释放组成逻辑摄像头的所有物理摄像头。
+获取组成逻辑摄像头的所有物理摄像头。
 
 **起始版本：** 24
 
@@ -194,32 +193,6 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 | 类型 | 说明 |
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
-
-### OH_CameraDevice_DeleteConstituentCameraDevices()
-
-```c
-Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device* constituentCameras, uint32_t size)
-```
-
-**描述**
-
-删除组成逻辑摄像头的所有物理摄像头。
-
-**起始版本：** 24
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| const [Camera_Device](capi-oh-camera-camera-device.md)* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
-| [Camera_Device](capi-oh-camera-camera-device.md)* constituentCameras | 期望被释放的组成逻辑摄像头的物理摄像头集合。 |
-| uint32_t size | 物理摄像头数量数组的大小。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或者参数不正确。 |
 
 ### OH_CameraDevice_GetLensFocalLength()
 

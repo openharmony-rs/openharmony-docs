@@ -218,7 +218,7 @@ addAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId:
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common-problem-of-application.md#什么是appidentifier)的数组，可以通过接口[bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。 <br>取值范围：<br> - 单个用户下该名单总数不能超过200。例如100用户下已经设置了50个、101用户未设置，则100用户还能再设置150个，101用户还能再设置200个。|
+| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common-problem-of-application.md#什么是appidentifier)的数组，可以通过接口[bundleManager.getInstalledBundleList](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。 <br>取值范围：<br> - 单个用户下该名单总数不能超过200。例如100用户下已经设置了50个、101用户未设置，则100用户还能再设置150个，101用户还能再设置200个。|
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -274,7 +274,7 @@ removeAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, account
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common-problem-of-application.md#什么是appidentifier)的数组。可以通过接口[bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。取值范围：数组长度不能超过200。|
+| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common-problem-of-application.md#什么是appidentifier)的数组。可以通过接口[bundleManager.getInstalledBundleList](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。取值范围：数组长度不能超过200。|
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -609,7 +609,7 @@ try {
   console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-<!--no-check-->
+<!--code_no_check-->
 ```ts
 // 返回示例
 [
@@ -687,7 +687,7 @@ let autoStartApps: Array<Want> = [
 
 try {
   applicationManager.addAutoStartApps(wantTemp, autoStartApps, 100, true);
-  console.info('Succeeded in adding auto start applications and set disllowModify.');
+  console.info('Succeeded in adding auto start applications and set disallowModify.');
 } catch(err) {
   console.error(`Failed to add auto start applications and set disallowModify. Code: ${err.code}, message: ${err.message}`);
 }
@@ -749,7 +749,7 @@ try {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-<!--no-check-->
+<!--code_no_check-->
 ```ts
 // 返回示例
 [
@@ -1330,7 +1330,7 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-设置Kiosk模式的特征。通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心、控制中心。
+设置Kiosk模式的特征。通过本接口可以控制在Kiosk模式下能否进入通知中心、控制中心。
 
 从API version 24开始，新增支持设置是否允许底部上滑进入最近任务栏，左滑或右滑悬停展示侧边DOCK栏。
 
@@ -2079,7 +2079,7 @@ try {
   console.error(`Failed to get dock apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-<!--no-check-->
+<!--code_no_check-->
 ```ts
 // 返回示例
 [

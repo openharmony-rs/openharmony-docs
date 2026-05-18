@@ -239,7 +239,7 @@ Describes the information about the audio stream timestamp and the current data 
 | Name| Type| Read-Only| Optional| Description                               |
 | ---------| ------ | ---- | ---- |-----------------------------------|
 | framePos | number | Yes  | No  | Position of the current data frame for playback or recording.                  |
-| timestamp | number | Yes  | No  | Timestamp corresponding to the current data frame position during playback or recording.|
+| timestamp | number | Yes  | No  | Timestamp corresponding to the current data frame position during playback or recording, in nanoseconds.|
 
 ## AudioCapturerInfo<sup>8+</sup>
 
@@ -260,7 +260,7 @@ Describes audio capturer configurations.
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
 | streamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | No| No| Audio stream information.<br>**System capability**: SystemCapability.Multimedia.Audio.Capturer  |
 | capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | No| No| Audio capturer information.<br>**System capability**: SystemCapability.Multimedia.Audio.Capturer       |
-| playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | No| Yes| Configuration for capturing played audio.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
+| playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | No| Yes| Defines configuration for capturing played audio.<br>**System capability**: SystemCapability.Multimedia.Audio.PlaybackCapture<br> This API is supported since API version 10 and deprecated since API version 12. You are advised to use [AVScreenCapture](../apis-media-kit/capi-avscreencapture.md) instead. |
 
 ## AudioInterrupt<sup>(deprecated)</sup>
 

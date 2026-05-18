@@ -495,7 +495,7 @@ getAudioTime(callback: AsyncCallback<number\>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioCapturer.getAudioTime((err: BusinessError, timestamp: number) => {
-  console.info(`Current timestamp: ${timestamp}`);
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 });
 ```
 
@@ -518,10 +518,10 @@ getAudioTime(): Promise<number\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioCapturer.getAudioTime().then((audioTime: number) => {
-  console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTime : Success ${audioTime}`);
+audioCapturer.getAudioTime().then((timestamp: number) => {
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: AudioCapturer Created : ERROR : ${err}`);
+  console.error(`Failed to get audio time. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -545,11 +545,11 @@ getAudioTimeSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let audioTime: number = audioCapturer.getAudioTimeSync();
-  console.info(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : Success ${audioTime}`);
+  let timestamp: number = audioCapturer.getAudioTimeSync();
+  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`AudioFrameworkRecLog: AudioCapturer getAudioTimeSync : ERROR : ${error}`);
+  console.error(`Failed to get audio time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 

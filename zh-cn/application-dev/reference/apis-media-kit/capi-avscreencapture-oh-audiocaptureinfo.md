@@ -1,8 +1,8 @@
 # OH_AudioCaptureInfo
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -28,7 +28,7 @@ typedef struct OH_AudioCaptureInfo {...} OH_AudioCaptureInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t audioSampleRate | 音频采样率，支持列表请查阅Audio Kit的[AudioSamplingRate](../apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8)。 |
+| int32_t audioSampleRate | 音频采样率，支持列表请查阅Audio Kit的[AudioSamplingRate](../apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8)。单位为赫兹（Hz）。 |
 | int32_t audioChannels | 音频声道数。 |
 | [OH_AudioCaptureSourceType](capi-native-avscreen-capture-base-h.md#oh_audiocapturesourcetype) audioSource | 音频源。 |
 

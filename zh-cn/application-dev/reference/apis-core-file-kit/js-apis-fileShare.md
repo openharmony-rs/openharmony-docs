@@ -28,9 +28,9 @@ import { fileShare } from '@kit.CoreFileKit';
 | ----- |-----|-----|
 | READ_MODE  | 0b1 | 读权限。 |
 | WRITE_MODE  | 0b10 | 写权限。 |
-| CREATE_MODE<sup>20+</sup>  | 0b100 | 创建文件/文件夹权限。 |
-| DELETE_MODE<sup>20+</sup>  | 0b1000 | 删除文件/文件夹权限。 |
-| RENAME_MODE<sup>20+</sup>  | 0b10000 | 重命名文件/文件夹权限。 |
+| CREATE_MODE<sup>20+</sup>  | 0b100 | 创建权限。父目录无写权限时，可单独为目标授予权限，支持文件/文件夹创建。当父目录有写权限时，无需单独授权。 |
+| DELETE_MODE<sup>20+</sup>  | 0b1000 | 删除权限。父目录无写权限时，可单独为目标授予权限，支持文件/文件夹删除。当父目录有写权限时，无需单独授权。 |
+| RENAME_MODE<sup>20+</sup>  | 0b10000 | 重命名权限。父目录无写权限时，可单独为目标授予权限，支持文件/文件夹重命名。当父目录有写权限时，无需单独授权。 |
 
 ## PolicyErrorCode<sup>11+</sup>
 

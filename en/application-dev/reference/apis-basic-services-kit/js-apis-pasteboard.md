@@ -345,6 +345,7 @@ Creates a **PasteData** object of the URI type.
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createUriData('dataability:///com.example.myapplication1/user.txt');
 ```
+
 ## pasteboard.createHtmlTextRecord<sup>(deprecated)</sup>
 
 createHtmlTextRecord(htmlText: string): PasteDataRecord
@@ -754,7 +755,7 @@ Obtains custom data of the specified MIME type from **PasteDataRecord**.
 
 | Type                                     | Description                                                                                                                  |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| Promise&lt;[ValueType](#valuetype9)&gt; | Promise used to return the custom data of the specified MIME type.<br>If **PasteDataRecord** contains data of multiple MIME types, the non-**PasteDataRecord** data of the default MIME type can be obtained only through this API.|
+| Promise&lt;[ValueType](#valuetype9)&gt; | Promise used to return the custom data of the specified MIME type in **PasteDataRecord**.<br>If **PasteDataRecord** contains data of multiple MIME types, the non-**PasteDataRecord** data of the default MIME type can be obtained only through this API.|
 
 **Error codes**
 
@@ -1044,6 +1045,7 @@ let htmlRecord: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.
 pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
 ```
+
 ### addRecord<sup>9+</sup>
 
 addRecord(mimeType: string, value: ValueType): void
@@ -1244,7 +1246,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | Error Code ID| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1303,7 +1305,7 @@ let tag: string = pasteData.getTag();
 
 hasType(mimeType: string): boolean
 
-Checks whether the pasteboard contains data of the specified type.
+Checks whether the pasteboard contains data of the specified MIME type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1313,7 +1315,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in Constants(#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type.|
+| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type.|
 
 **Return value**
 
@@ -1558,6 +1560,7 @@ Adds a URI record to this pasteboard, and adds **MIMETYPE_TEXT_URI** to **mimeTy
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 pasteData.addUriRecord('dataability:///com.example.myapplication1/user.txt');
 ```
+
 ### getRecordAt<sup>(deprecated)</sup>
 
 getRecordAt(index: number): PasteDataRecord
@@ -1633,6 +1636,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
 ```
+
 ### removeRecordAt<sup>(deprecated)</sup>
 
 removeRecordAt(index: number): boolean
@@ -2018,7 +2022,7 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 
 hasRemoteData(): boolean
 
-Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to check whether the pasteboard data contains custom data types or read the pasteboard data.
+Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to check on the UI thread whether the pasteboard data contains custom data types or read the pasteboard data.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -2919,6 +2923,8 @@ Describes the modes supported by the pasteboard.
 | URL                              | 0   | URL.                                                             |
 | NUMBER                        | 1   | Number.                                                   |
 | EMAIL_ADDRESS | 2   | Email address.|
+| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.<br> **Model constraint**: This API can be used only in the stage model.|
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.<br> **Model constraint**: This API can be used only in the stage model.|
 
 ### detectPatterns<sup>13+</sup>
 
@@ -2993,7 +2999,7 @@ Obtains the MIME type from the pasteboard. This API uses a promise to return the
 import { pasteboard, BusinessError } from '@kit.BasicServicesKit'
 
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-systemPasteboard.getMimeTypes().then((data: Array<String>) => {
+systemPasteboard.getMimeTypes().then((data: Array<string>) => {
     console.info('Succeeded in getting mimeTypes. mimeTypes: ' + data.sort().join(','));
 }).catch((err: BusinessError) => {
     console.error('Failed to get mimeTypes. Cause:' + err.message);
@@ -3123,7 +3129,7 @@ Callback to be invoked when the pasteboard content changes.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
-### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
+### onRemoteUpdate<sup>22+</sup>
 
 onRemoteUpdate(callback: UpdateCallback): void
 

@@ -187,7 +187,7 @@ A type mismatch error occurs when [connect](./js-apis-stateManagement.md#connect
 **Possible Causes**
 
 - The type of the **type** parameter is inconsistent with the return type of **defaultCreator**.
-- The persistent data structure is modified. As a result, when the data is read from the disk to the memory again, the type does not match.
+- The persistent data structure is modified. As a result, when the data is read from the disk to the memory again, the type does not match. In this case, only an error code is reported in the log, and no runtime exception is thrown.
 
 **Solution**
 
@@ -206,7 +206,7 @@ The [\@Type](../../ui/state-management/arkts-new-type.md) decorator is missing w
 
 **Possible Causes**
 
-When the **globalConnect** API is used to persist data, the \@Type decorator is missing in the data type.
+When the **globalConnect** API is used to persist data, the \@Type decorator is missing in the data type. This error code is reported in the log and no runtime exception is thrown.
 
 **Solution**
 

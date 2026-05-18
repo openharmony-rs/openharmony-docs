@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Msdp-->
 <!--Owner: @wuliangdong-->
-<!--Designer: @butterls-->
+<!--Designer: @guo867-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -71,7 +71,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
@@ -109,7 +109,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message         |
 | -------- | ----------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>Applicable versions: 12+|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Example**
@@ -171,66 +171,4 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let summary: Array<dragInteraction.Summary> = dragInteraction.getDataSummary();
 console.info(`Drag interaction summary: ${summary}`);
-```
-
-## dragInteraction.setDragSwitchState<sup>18+</sup>
-
-setDragSwitchState(enabled: boolean): void
-
-Sets the global drag-and-drop switch.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Msdp.DeviceStatus.Drag
-
-**Parameters**
-
-| Name  | Type                              | Mandatory| Description                                                                  |
-| -------- | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
-| enabled  | boolean                            | Yes  | State of the drag-and-drop switch.<br>**false**: disabled; **true**: enabled.                                             |
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message         |
-| -------- | ----------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-
-**Example**
-
-```ts
-dragInteraction.setDragSwitchState(false);
-```
-
-## dragInteraction.setAppDragSwitchState<sup>18+</sup>
-
-setAppDragSwitchState(enabled: boolean, bundleName: string): void
-
-Sets the drag-and-drop switch for a specific application.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Msdp.DeviceStatus.Drag
-
-**Parameters**
-
-| Name     | Type                              | Mandatory| Description                                                                  |
-| --------   | ---------------------------------- | ---- | ---------------------------------------------------------------------- |
-| enabled    | boolean                            | Yes  | State of the drag-and-drop switch.<br>**false**: disabled; **true**: enabled.|
-| bundleName | string                             | Yes  | Bundle name of a specified application. The value range is (0, 128].|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message         |
-| -------- | ----------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
-
-**Example**
-
-```ts
-dragInteraction.setAppDragSwitchState(true, "com.app.bundleName");
 ```

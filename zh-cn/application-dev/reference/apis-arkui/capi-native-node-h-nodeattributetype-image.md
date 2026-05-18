@@ -381,7 +381,7 @@ NODE_IMAGE_SOURCE_SIZE = 4013
 NODE_IMAGE_IMAGE_MATRIX = 4014
 ```
 
-设置图片的变换矩阵属性。支持属性设置，属性重置和属性获取接口。支持使用浮点数或矩阵对象实现仿射图像变换。<br>
+设置图片的变换矩阵属性。支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 21
@@ -392,14 +392,12 @@ NODE_IMAGE_IMAGE_MATRIX = 4014
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0...15].f32 | 4x4矩阵通过长度为16的浮点数数组来表示。当参数个数小于16，属性设置失败并返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)函数参数异常；当参数个数大于16，只取前16个数据。 |
-| .object | 参数类型为[ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | .value[0...15].f32 | 4x4矩阵通过长度为16的浮点数数组来表示。 |
-| .object | 参数类型为[ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)。 |
 
 ## NODE_IMAGE_MATCH_TEXT_DIRECTION
 

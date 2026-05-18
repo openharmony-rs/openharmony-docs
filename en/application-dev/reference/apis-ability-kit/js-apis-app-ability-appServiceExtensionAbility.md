@@ -17,7 +17,7 @@ The AppServiceExtensionAbility module provides extended capabilities for backgro
 ## Constraints
 
 - Currently, only 2-in-1 devices are supported.
-- To integrate an AppServiceExtensionAbility, applications must request the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION). This ACL permission is available only for enterprise applications.
+- To integrate an AppServiceExtensionAbility, applications must request the ACL permission (ohos.permission.SUPPORT_APP_SERVICE_EXTENSION). Currently, the ACL permission is available only to common enterprise applications. For details about how to apply for the permission, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).
 
 ## Lifecycle
 

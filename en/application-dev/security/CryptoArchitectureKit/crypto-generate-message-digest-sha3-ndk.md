@@ -36,12 +36,15 @@ The following provides examples with different data passing methods.
 
 The following describes how to obtain the digest calculation result when data is imported at a time.
 
-```c++
+<!-- @[message_digest_sha3_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha3/singleTime.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_digest.h"
-#include <string.h>
+#include <cstring>
 
-static OH_Crypto_ErrCode doTestMd()
+OH_Crypto_ErrCode doTestSha3Md()
 {
     OH_Crypto_ErrCode ret;
     OH_CryptoDigest *ctx = nullptr;
@@ -70,6 +73,7 @@ static OH_Crypto_ErrCode doTestMd()
 }
 ```
 
+
 ### Generating an MD by Passing In Data by Segment
 
 1. Call [OH_CryptoDigest_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-digest-h.md#oh_cryptodigest_create) with the MD algorithm **SHA3-256** to generate an MD operation instance (**OH_CryptoDigest**).
@@ -84,13 +88,18 @@ static OH_Crypto_ErrCode doTestMd()
 
 **Example**
 
-```c++
-#include <stdlib.h>
+<!-- @[message_digest_sha3_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageDigestComputation/entry/src/main/cpp/types/project/sha3/segmentation.cpp) -->
+
+``` C++
+
+#include <cstdlib>
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_digest.h"
 #define OH_CRYPTO_DIGEST_DATA_MAX (1024 * 1024 * 100)
 
-static OH_Crypto_ErrCode doLoopMd()
+static constexpr int INT_640 = 640;
+
+OH_Crypto_ErrCode doLoopSha3Md()
 {
     OH_Crypto_ErrCode ret;
     OH_CryptoDigest *ctx = nullptr;
@@ -109,9 +118,10 @@ static OH_Crypto_ErrCode doLoopMd()
         return ret;
     }
     do {
-        for (int i = 0; i < 640 / isBlockSize; i++) {
-            Crypto_DataBlob in = {.data = reinterpret_cast<uint8_t *>(testData + offset),
-                                .len = static_cast<size_t>(isBlockSize)};
+        for (int i = 0; i < INT_640 / isBlockSize; i++) {
+            Crypto_DataBlob in = {
+                .data = reinterpret_cast<uint8_t *>(testData + offset),
+                .len = static_cast<size_t>(isBlockSize)};
             ret = OH_CryptoDigest_Update(ctx, &in);
             if (ret != CRYPTO_SUCCESS) {
                 break;

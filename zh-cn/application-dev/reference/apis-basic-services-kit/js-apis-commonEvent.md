@@ -1,9 +1,8 @@
-# @ohos.commonEvent (公共事件模块)
-
+# @ohos.commonEvent (公共事件模块)(已废弃)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -49,7 +48,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 ```ts
 import Base from '@ohos.base';
 
-//发布公共事件回调
+// 发布公共事件回调
 function publishCB(err:Base.BusinessError) {
     if (err.code) {
         console.error(`publish failed, code is ${err.code}`);
@@ -58,7 +57,7 @@ function publishCB(err:Base.BusinessError) {
     }
 }
 
-//发布公共事件
+// 发布公共事件
 commonEvent.publish("event", publishCB);
 ```
 
@@ -88,14 +87,14 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-//公共事件相关信息
+// 公共事件相关信息
 let options:CommonEventManager.CommonEventPublishData = {
-    code: 0,             //公共事件的初始代码
-    data: "initial data",//公共事件的初始数据
-    isOrdered: true  //有序公共事件
+    code: 0,             // 公共事件的初始代码
+    data: "initial data",// 公共事件的初始数据
+    isOrdered: true  // 有序公共事件
 }
 
-//发布公共事件回调
+// 发布公共事件回调
 function publishCB(err:Base.BusinessError) {
     if (err.code) {
         console.error(`publish failed, code is ${err.code}`);
@@ -104,7 +103,7 @@ function publishCB(err:Base.BusinessError) {
     }
 }
 
-//发布公共事件
+// 发布公共事件
 commonEvent.publish("event", options, publishCB);
 ```
 

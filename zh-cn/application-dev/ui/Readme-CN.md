@@ -1,10 +1,11 @@
 # ArkUI（方舟UI框架）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @jiyujia926; @yangfan229-->
-<!--Designer: @piggyguy; @s10021109; @yangfan229-->
+<!--Owner: @tsj_20201-->
+<!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+
 - [ArkUI简介](arkui-overview.md)
 - UI开发 (ArkTS声明式开发范式)<!--arkts-ui-development-->
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
@@ -281,13 +282,13 @@
     - [拖拽事件](ndk-drag-event.md)
     - [监听组件布局和绘制送显事件](ndk-inspector-component-observer.md)
   - [使用动画](ndk-use-animation.md)
-  - 构建布局<!--arkts-build-layout-ndk-->
+  - 使用列表与网格<!--arkts-list-and-grid-ndk-->
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
     - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
       - [Text组件的文本绘制与显示](ndk-styled-string.md)
-      - [输入框文本事件监听](ndk-textarea-event.md)
+      - [添加输入框文本事件监听](ndk-textarea-event.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建自定义组件](ndk-build-custom-components.md)
   - [嵌入ArkTS组件](ndk-embed-arkts-components.md)

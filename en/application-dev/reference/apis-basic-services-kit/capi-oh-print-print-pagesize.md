@@ -28,5 +28,5 @@ Defines a struct for the page size.
 | --------------- | ---------- |
 | char *id        | Page ID. |
 | char *name      | Page name.|
-| uint32_t width  | Page width.|
-| uint32_t height | Page height.|
+| uint32_t width  | Page width, in millimeters.|
+| uint32_t height | Page height, in millimeters.|

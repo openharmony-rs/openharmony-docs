@@ -8,6 +8,8 @@
 
 ```c
 struct Image_String {...}
+typedef struct Image_String Image_MimeType
+typedef struct Image_String Image_String
 ```
 
 ## Overview
