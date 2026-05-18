@@ -70,7 +70,7 @@
 
    用户授权完成后会返回设置结果，其中包含通知授权开关以及锁屏、横幅、角标、铃声、振动的开关设置结果。
 
-   <!-- @[reapply_notify_auth_halfModal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
+   <!-- @[reapply_notify_auth_halfModal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->    
    
    ``` TypeScript
    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
