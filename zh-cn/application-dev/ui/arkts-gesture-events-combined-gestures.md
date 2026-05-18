@@ -70,9 +70,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
                 if (event.repeat) {
                   this.count++;
                 }
-                ;
               }
-              ;
               hilog.info(DOMAIN, TAG, 'LongPress onAction');
             })
             .onActionEnd(() => {
@@ -90,7 +88,6 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
                 this.offsetX = (this.positionX + event.offsetX);
                 this.offsetY = this.positionY + event.offsetY;
               }
-              ;
               hilog.info(DOMAIN, TAG, 'pan update');
             })
             .onActionEnd(() => {
@@ -254,11 +251,9 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
               if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
                 return GestureJudgeResult.CONTINUE;
               }
-              ;
               if (this.isLongPress) {
                 return GestureJudgeResult.CONTINUE;
               }
-              ;
               return GestureJudgeResult.REJECT;
             })
           .gesture(
@@ -271,8 +266,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
                 })
                 .onActionEnd(() => {
                   this.isLongPress = false;
-                })
-              ,
+                }),
               PanGesture()
                 .onActionStart(() => {
                   this.promptAction.showToast({ message: 'child pan start' });

@@ -139,17 +139,17 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      age: number = 25;
      // name被@Trace装饰，能够监听变化
      @Monitor(['name'])
-     onNameChange(monitor: IMonitor) {
+     onNameChange(monitor: IMonitor): void {
        console.info(`name change from ${monitor.value<string>()?.before} to ${monitor.value<string>()?.now}`);
      }
      // age未被@Trace装饰，不能监听变化
      @Monitor(['age'])
-     onAgeChange(monitor: IMonitor) {
+     onAgeChange(monitor: IMonitor): void {
        console.info(`age change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
      // region与job均被@Trace装饰，能够监听变化
      @Monitor(['region', 'job'])
-     onChange(monitor: IMonitor) {
+     onChange(monitor: IMonitor): void {
        monitor.dirty.forEach((path: string) => {
          console.info(`${path} change from ${monitor.value<string>(path)?.before} to ${monitor.value<string>(path)?.now}`);
        })
@@ -197,7 +197,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    class Outer {
      @Trace inner: Inner = new Inner();
      @Monitor(['inner.num'])
-     onChange(monitor: IMonitor) {
+     onChange(monitor: IMonitor): void {
        console.info(`inner.num change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
    }
@@ -228,7 +228,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      @Trace name: string;
      // 基类监听name属性
      @Monitor(['name'])
-     onBaseNameChange(monitor: IMonitor) {
+     onBaseNameChange(monitor: IMonitor): void {
        console.info('Base Class name change');
      }
      constructor(name: string) {
@@ -240,7 +240,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      @Trace age: int = 0;
      // 继承类监听name属性
      @Monitor(['name'])
-     onDerivedNameChange(monitor: IMonitor) {
+     onDerivedNameChange(monitor: IMonitor): void {
        console.info('Derived Class name change');
      }
      constructor(name: string) {
@@ -288,33 +288,33 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      @Trace infoArr: Info[] = [new Info('Jack', 24), new Info('Lucy', 18)];
      // dimensionTwo为二维简单类型数组，且被@Trace装饰，能够观测里面的元素变化
      @Monitor(['dimensionTwo.0.0', 'dimensionTwo.1.1'])
-     onDimensionTwoChange(monitor: IMonitor) {
+     onDimensionTwoChange(monitor: IMonitor): void {
        monitor.dirty.forEach((path: string) => {
          console.info(`dimensionTwo path: ${path} change from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}`);
        })
      }
      // dimensionThree为三维简单类型数组，且被@Trace装饰，能够观测里面的元素变化
      @Monitor(['dimensionThree.0.0.0', 'dimensionThree.1.1.0'])
-     onDimensionThreeChange(monitor: IMonitor) {
+     onDimensionThreeChange(monitor: IMonitor): void {
        monitor.dirty.forEach((path: string) => {
          console.info(`dimensionThree path: ${path} change from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}`);
        })
      }
      // Info类中属性name、age均被@Trace装饰，能够监听到变化
      @Monitor(['infoArr.0.name', 'infoArr.1.age'])
-     onInfoArrPropertyChange(monitor: IMonitor) {
+     onInfoArrPropertyChange(monitor: IMonitor): void {
        monitor.dirty.forEach((path: string) => {
          console.info(`infoArr path:${path} change from ${monitor.value<Any>(path)?.before} to ${monitor.value<Any>(path)?.now}`);
        })
      }
      // infoArr被@Trace装饰，能够监听到infoArr整体赋值的变化
      @Monitor(['infoArr'])
-     onInfoArrChange(monitor: IMonitor) {
+     onInfoArrChange(monitor: IMonitor): void {
        console.info('infoArr whole change');
      }
      // 能够监听到infoArr的长度变化
      @Monitor(['infoArr.length'])
-     onInfoArrLengthChange(monitor: IMonitor) {
+     onInfoArrLengthChange(monitor: IMonitor): void {
        console.info('infoArr length change');
      }
    }
@@ -372,11 +372,11 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    class Info {
      @Trace person: Person;
      @Monitor(['person.name'])
-     onNameChange(monitor: IMonitor) {
+     onNameChange(monitor: IMonitor): void {
        console.info(`name change from ${monitor.value<string>()?.before} to ${monitor.value<string>()?.now}`);
      }
      @Monitor(['person.age'])
-     onAgeChange(monitor: IMonitor) {
+     onAgeChange(monitor: IMonitor): void {
        console.info(`age change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
      constructor(name: string, age: number) {
@@ -426,7 +426,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    class Frequence {
      @Trace count: number = 0;
      @Monitor(['count'])
-     onCountChange(monitor: IMonitor) {
+     onCountChange(monitor: IMonitor): void {
        console.info(`count change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
    }
@@ -1010,19 +1010,19 @@ struct MonitorWildcardSet {
      @Trace t4: number = 0;
      @Trace t5: number = 0;
      @Monitor(['t1']) // 字符串字面量, 成功编译
-     onT1Change(monitor: IMonitor) {
+     onT1Change(monitor: IMonitor): void {
        console.info(`t1 change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
      }
      @Monitor([ENUM.T2]) // enum枚举值，成功编译
-     onT2Change(monitor: IMonitor) {
+     onT2Change(monitor: IMonitor): void {
        console.info(`t2 change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
      }
      @Monitor([t3]) // const常量，成功编译
-     onT3Change(monitor: IMonitor) {
+     onT3Change(monitor: IMonitor): void {
        console.info(`t3 change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
      }
      @Monitor([t4]) // 错误用法，编译报错
-     onT4Change(monitor: IMonitor) {
+     onT4Change(monitor: IMonitor): void {
        console.info(`t4 change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
      }
    }
@@ -1035,7 +1035,7 @@ struct MonitorWildcardSet {
    class Info {
      @Trace count: number = 0;
      @Monitor(['count'])
-     onCountChange(monitor: IMonitor) {
+     onCountChange(monitor: IMonitor): void {
        this.count++; // 应避免这种写法，会导致无限循环
      }
    }
@@ -1054,12 +1054,12 @@ struct MonitorWildcardSet {
     age: number = 25;
     // job属性被@Trace装饰，编译成功
     @Monitor(['job'])
-    onJobChange(monitor: IMonitor) {
+    onJobChange(monitor: IMonitor): void {
       console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
     // age属性未被@Trace装饰，编译成功，但会显示Plugin warning的告警
     @Monitor(['age'])
-    onAgeChange(monitor: IMonitor) {
+    onAgeChange(monitor: IMonitor): void {
       console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
   }
@@ -1121,16 +1121,16 @@ struct MonitorWildcardSet {
   class Info {
     @Trace age: number = 25;
     @Trace user: UserV2 = new UserV2();
-  
+
     // age1不存在，会导致编译报错
     @Monitor(['age1'])
-    onAgeChange(monitor: IMonitor) {
+    onAgeChange(monitor: IMonitor): void {
       console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
-    
+
     // user.age1不存在，会导致编译报错
     @Monitor(['user.age1'])
-    onUserAgeChange(monitor: IMonitor) {
+    onUserAgeChange(monitor: IMonitor): void {
       console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
     }
   }
@@ -1196,7 +1196,7 @@ class UIStyle {
   @Trace color: Color = Color.Black;
   @Trace fontSize: number = 45;
   @Monitor(['info.value'])
-  onValueChange(monitor: IMonitor) {
+  onValueChange(monitor: IMonitor): void {
     let lastValue: number = monitor.value<number>()?.before as number;
     let curValue: number = monitor.value<number>()?.now as number;
     if (lastValue != 0) {

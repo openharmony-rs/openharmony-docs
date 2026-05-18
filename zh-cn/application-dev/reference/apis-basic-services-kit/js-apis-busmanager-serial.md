@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import { serial } from "@kit.BasicServicesKit";
+import serial from '@ohos.busManager.serial';
 ```
 
 ## serial.getSerialPortList
@@ -51,7 +51,7 @@ getSerialPortList(): Promise&lt;[SerialPort](#serialport)[]&gt;
 **示例：**
 
 ```ts
-import { serial } from "@kit.BasicServicesKit";
+import serial from '@ohos.busManager.serial';
 
 // 获取串口设备列表
 serial.getSerialPortList().then((portList: serial.SerialPort[]) => {
@@ -124,7 +124,7 @@ open(config?: [SerialConfigs](#serialconfigs)): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 获取串口列表并打开第一个串口
 serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
@@ -178,7 +178,7 @@ close(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 关闭串口
 port.close().then(() => {
@@ -233,7 +233,7 @@ ArkTS-Sta: write(data: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 ```ts
 import { buffer } from '@kit.ArkTS';
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 向串口写入数据
 let writeData: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer);
@@ -277,7 +277,7 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 监听串口数据接收
 port.onDataRead((data: Uint8Array) => {
@@ -317,7 +317,7 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 取消监听串口数据接收
 port.offDataRead();
@@ -362,7 +362,7 @@ flush(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 刷新串口缓冲区
 port.flush().then(() => {
@@ -405,7 +405,7 @@ drain(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 等待所有写请求完成
 port.drain().then(() => {
@@ -454,7 +454,7 @@ setRts(enable: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 设置RTS信号
 port.setRts(true).then(() => {
@@ -497,7 +497,7 @@ getCts(): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 获取CTS信号状态
 port.getCts().then((cts: boolean) => {
@@ -540,7 +540,7 @@ sendBrk(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import serial from '@ohos.busManager.serial'
+import serial from '@ohos.busManager.serial';
 
 // 发送BRK信号
 port.sendBrk().then(() => {

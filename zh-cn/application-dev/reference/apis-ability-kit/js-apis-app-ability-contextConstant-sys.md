@@ -24,7 +24,7 @@ import { contextConstant } from '@kit.AbilityKit';
 
 ## ContextType
 
-表示常见Context类型的枚举，用于[contextType](./js-apis-inner-application-context.md#contexttype)接口。
+表示常见Context类型的枚举，用于[isContextOf](./js-apis-inner-application-context.md#iscontextof)接口。
 
 **起始版本**：26.0.0
 
@@ -47,7 +47,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryServiceExtAbility extends ServiceExtensionAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
-    let result = this.context.contextType(contextConstant.ContextType.SERVICE_EXTENSION_CONTEXT);
+    let result = this.context.isContextOf(contextConstant.ContextType.SERVICE_EXTENSION_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
 }

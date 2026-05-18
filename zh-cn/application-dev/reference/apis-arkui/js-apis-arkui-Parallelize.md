@@ -3,9 +3,9 @@
 提供声明式的并行化创建方法ParallelizeUI。ParallelizeUI方法内部的UI在子线程中创建，创建完成后，回到主线程完成树的挂载，后续更新、事件等操作都在主线程中进行。
 
 > **说明：**
-
 > - 本模块仅适用于ArkTS-Sta。
 > - 本模块接口从API version 23开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -30,7 +30,7 @@ import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 ## ParallelizeUI
 
-ParallelizeUI(options: ParallelOption | undefined, content_: () => void)
+ParallelizeUI(options: ParallelOption | undefined, content_: CustomBuilder): void
 
 声明式的并行化创建UI方法。options参数为undefined时，默认开启并行化创建。
 
@@ -45,7 +45,7 @@ ParallelizeUI(options: ParallelOption | undefined, content_: () => void)
 | 参数名  | 类型     | 必填 | 说明                                                           |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。 |
-| content_  | () => void | 是   | 定义要创建的UI内容，通过尾随闭包"{...}"的形式传入。 |
+| content_  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 是   | 定义要创建的UI内容，通过尾随闭包"{...}"的形式传入。 |
 
 > **说明：**
 >
@@ -167,7 +167,7 @@ struct Index {
 
 
 ## ParallelizeUI\<T\>
-ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_: (param: T) => void)
+ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_: CustomBuilderT\<T\>): void
 
 声明式UI并行化创建接口。该方法支持在并行化环境中安全地使用外部定义的状态变量。options参数为undefined时，默认开启并行化创建。
 
@@ -183,7 +183,7 @@ ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。|
 | param  | () => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。 |
-| content_  | (param: T) => void | 是   | 定义要创建的UI内容。|
+| content_  | [CustomBuilderT](arkui-ts/ts-types.md#custombuildertt23)\<T\> | 是   | 定义要创建的UI内容。|
 
 
 **示例：**
@@ -254,7 +254,7 @@ struct Index {
 
 ## ParallelizeUI\<V, T\><sup>23+</sup>
 
-ParallelizeUI\<V, T\>(options: ParallelOption | undefined, arr: Array\<V\>, param: (item: V, index: int) => T, content_: (param: T) => void): void
+ParallelizeUI\<V, T\>(options: ParallelOption | undefined, arr: Array\<V\>, param: (item: V, index: int) => T, content_: CustomBuilderT\<T\>): void
 
 声明式UI并行化循环创建接口。在非List和Grid中使用时，并行创建数组中定义的所有UI节点。在List或Grid容器中使用时，仅按需并行创建当前可见的节点。options参数为undefined时，默认开启并行化创建。
 
@@ -271,8 +271,7 @@ ParallelizeUI\<V, T\>(options: ParallelOption | undefined, arr: Array\<V\>, para
 | options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。|
 | arr  | Array\<V\> | 是   | 数据源，为Array类型的数组。 |
 | param  | (item: V, index: int) => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。<br/>说明：<br/>- item是当前数据项，index是数据项索引值。 |
-| content_  | (param: T) => void | 是   | 定义要创建的UI内容。- param参数（必选）：param函数调用后返回的对象。 |
-
+| content_  | [CustomBuilderT](arkui-ts/ts-types.md#custombuildertt23)\<T\> | 是   | 定义要创建的UI内容。param参数为param函数调用后返回的对象。 |
 
 **示例：**
 

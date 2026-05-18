@@ -70,7 +70,7 @@
 
 **解决措施**
 
-自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。实现方式请参考[属性字符串转Paragraph数组](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)<!--RP1--><!--RP1End-->。
+自行测算截断字符，并在行末添加`...展开`或者`...图标`作为组件内容。实现方式请参考[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)的示例<!--RP1--><!--RP1End-->。
 
 ### Text组件如何实现内容超长时自动显示省略样式吗？
 

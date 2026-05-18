@@ -20,7 +20,7 @@ PersistenceV2提供状态变量持久化能力，开发者可以通过[connect](
 >
 >globalConnect从API version 18开始支持，行为和connect保持一致，唯一的区别为connect的底层存储路径为module级别的路径，而globalConnect的底层存储路径为应用级别，详细区别见使用场景[在不同的module中使用connect和globalConnect](#在不同的module中使用connect和globalconnect)。
 >
->globalConnect从API version 23开始支持[集合类型](#globalconnect支持集合的类型)（Array、Map、Set、Date、[`collections.Array`](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)、[`collections.Map`](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)、[`collections.Set`](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)）的持久化，支持在UI线程持久化[@Sendable](../../arkts-utils/arkts-sendable.md)类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
+>globalConnect从API version 23开始支持[集合类型](#globalconnect支持集合的类型)（Array、Map、Set、Date、[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)、[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)、[collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)）的持久化，支持在UI线程持久化[@Sendable](../../arkts-utils/arkts-sendable.md)类型的数据持久化，支持持久化循环引用的对象，支持持久化单个key超过8k的数据。目前建议开发者使用API version 23的新增的globalConnect接口。
 
 ## 概述
 
@@ -46,7 +46,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 - save：手动持久化数据。
 - notifyOnError：响应序列化或反序列化失败的回调。将数据存入磁盘时，需要对数据进行序列化；当某个key序列化失败时，错误是不可预知的；可调用该接口捕获异常。
 
-以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-stateManagement.md)。
+以上接口详细描述请参考[PersistenceV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)和[AppStorageV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
 
 ## 使用限制
 
@@ -407,6 +407,8 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
 - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+
+14、不支持在使用connect或globalConnect的类中使用[\@Computed](./arkts-new-computed.md)。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。
 
 ## globalConnect支持的类型
 
