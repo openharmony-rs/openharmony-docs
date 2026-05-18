@@ -210,7 +210,7 @@
 
    ArkTS-Sta示例：
    <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
-    
+   
    ``` TypeScript
    // 订阅组网内其他设备的数据变化消息
    if (store) {
@@ -227,7 +227,7 @@
        }
        // 调用分布式数据订阅接口，注册数据库的观察者
        // 当分布式数据库中的数据发生更改时，将调用回调
-       store!.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (devices) => {
+       store!.onDataChange(relationalStore.SubscribeType.SUBSCRIBE_TYPE_REMOTE, (devices: string[]) => {
          for (let i = 0; i < devices.length; i++) {
            let device = devices[i];
            if (!store) {
@@ -235,11 +235,13 @@
            }
            hilog.info(DOMAIN, 'rdbDataSync', `The data of device:${device} has been changed.`);
            // 获取device对应的分布式表名。
-           const distributedTableName = await store!.obtainDistributedTableName(device, 'EMPLOYEE');
-           // 创建查询谓词，查询组网内设备分布式表的数据
-           const predicates = new relationalStore.RdbPredicates(distributedTableName);
-           const resultSet = await store!.query(predicates);
-           hilog.info(DOMAIN, 'rdbDataSync', `device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
+           store!.obtainDistributedTableName(device, 'EMPLOYEE').then((distributedTableName: string) => {
+             // 创建查询谓词，查询组网内设备分布式表的数据
+             const predicates = new relationalStore.RdbPredicates(distributedTableName);
+             store!.query(predicates).then((resultSet: relationalStore.ResultSet) => {
+               hilog.info(DOMAIN, 'rdbDataSync', `device ${device}, table EMPLOYEE rowCount is: ${resultSet.rowCount}`);
+             });
+           });
          }
        });
      } catch (err) {
