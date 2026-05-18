@@ -11,6 +11,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从 API version 20 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口。其他公开接口参见[@ohos.accessibility](js-apis-accessibility.md)。
 
@@ -29,6 +30,9 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：20
 
 | 名称                     | 值                    |说明|
 | ---------------------------------------- | ---- | ---------------------- |
@@ -112,9 +116,13 @@ import { accessibility } from '@kit.AccessibilityKit';
 
 无障碍节点元素是指，UI界面上可执行无障碍操作的一些组件，例如：按钮、文本输入框等组件。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：20
 
 | 名称                         | 值    | 说明                       |
 | -------------------------- | ---- | ------------------------ |
