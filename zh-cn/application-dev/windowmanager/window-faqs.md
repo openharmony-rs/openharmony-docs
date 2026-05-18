@@ -434,7 +434,7 @@ supportWindowMode支持的取值如下：
 | -------- | -------- |
 | "fullscreen" | 全屏模式 |
 | "split" | 分屏模式 |
-| "floating" | 悬浮窗模式 |
+| "floating" | 自由悬浮窗口模式 |
 
 > **说明：**
 > 
