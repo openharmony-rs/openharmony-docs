@@ -3690,6 +3690,8 @@ Allows a system application to access the over-the-air update directory.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: wearables
+
 **Valid since**: 12
 
 ## ohos.permission.MANAGE_MOUSE_CURSOR
