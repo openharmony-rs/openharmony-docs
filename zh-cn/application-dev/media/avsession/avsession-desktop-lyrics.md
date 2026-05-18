@@ -56,6 +56,7 @@ struct Index {
       // ...
       Text(this.message)
         .onClick(async () => {
+          console.info(`DesktopLyric set start`);
           let context = this.getUIContext().getHostContext() as Context;
           // 假设已经创建了一个session，如何创建session可以参考之前的案例。
           let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
@@ -73,7 +74,7 @@ struct Index {
 
           try {
             // 使能歌词组件
-            session.enableDesktopLyric(true);
+            await session.enableDesktopLyric(true);
           } catch (err) {
             console.error(`enableDesktopLyric err. Code: ${err.code}, message: ${err.message}`);
           }
@@ -110,6 +111,7 @@ struct Index {
             console.error(`setDesktopLyricState err. Code: ${err.code}, message: ${err.message}`);
           }
 
+          console.info(`DesktopLyric set done`);
         })
     }
     .width('100%')
