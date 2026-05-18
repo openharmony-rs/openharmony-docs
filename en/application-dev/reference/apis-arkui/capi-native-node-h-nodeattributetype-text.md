@@ -1085,7 +1085,7 @@ The format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-ark
 
 | Type| Description|
 | -- | -- |
-| .object | Text layout manager object. The parameter type is [ArkUI_LayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md).|
+| .object | Text layout manager object. The parameter type is [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md).|
 
 ## NODE_TEXT_EDIT_MENU_OPTIONS
 
@@ -1582,4 +1582,4 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the new SVG parsing capability is enabled.|
+| .value[0].i32 | Whether to enable the new SVG parsing capability.|
