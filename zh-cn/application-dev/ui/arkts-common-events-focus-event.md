@@ -666,11 +666,11 @@ focusOnTouch(value: boolean)
  
            Divider()
  
-           Row() {
+           Row({ space: 20 }) {
              Button('Button1')
                .width(140).height(70)
              Button('Button2')
-               .width(160).height(70)
+               .width(140).height(70)
            }
  
            Divider()
