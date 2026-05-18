@@ -1034,6 +1034,7 @@ call.rejectCall((err: BusinessError) => {
 拨打电话的可选参数。
 
 **系统能力**：SystemCapability.Applications.Contacts
+
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
