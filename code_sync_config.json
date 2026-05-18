@@ -29614,9 +29614,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":53,
-						"name":"pub_appmsgid_notify",
-						"start_line":30
+						"end_line":52,
+						"name":"pub_appMsgId_notify",
+						"start_line":29
 					}
 				]
 			}
@@ -29647,9 +29647,9 @@
 						"start_line":37
 					},
 					{
-						"end_line":80,
-						"name":"reapply_notify_auth_halfmodal",
-						"start_line":64
+						"end_line":81,
+						"name":"reapply_notify_auth_halfModal",
+						"start_line":63
 					}
 				]
 			}
@@ -29746,11 +29746,6 @@
 						"start_line":16
 					},
 					{
-						"end_line":112,
-						"name":"create_launch_uiability_agent_info",
-						"start_line":92
-					},
-					{
 						"end_line":52,
 						"name":"create_pub_event_agent_info",
 						"start_line":37
@@ -29764,6 +29759,11 @@
 						"end_line":160,
 						"name":"pub_want_agent_req_notify",
 						"start_line":126
+					},
+					{
+						"end_line":111,
+						"name":"create_launch_uiAbility_agent_info",
+						"start_line":91
 					}
 				]
 			}
