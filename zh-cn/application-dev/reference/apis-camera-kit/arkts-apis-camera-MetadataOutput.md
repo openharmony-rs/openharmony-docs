@@ -263,7 +263,7 @@ on(type: 'metadataObjectsAvailable', callback: AsyncCallback\<Array\<MetadataObj
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onMetadataObjectsAvailable](#onmetadataobjectsavailable22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMetadataObjectsAvailable](#onmetadataobjectsavailable23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
