@@ -341,6 +341,20 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 
 **Valid since**: 11
 
+## ohos.permission.THEME_SKIN
+
+Allows a system application to obtain theme skinning resources in the skin directory.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 20
+
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 Allows an application to read the accessibility configuration.
