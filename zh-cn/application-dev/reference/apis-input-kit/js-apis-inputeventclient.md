@@ -9,7 +9,9 @@
 
 输入事件注入模块，提供键盘、鼠标和触控输入事件模拟能力。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -143,7 +145,9 @@ createTouchController(): Promise&lt;TouchController&gt;
 
 创建触控控制器，用于模拟触控操作。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -686,7 +690,9 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 表示屏幕上的单个触点信息。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -712,7 +718,9 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 
 触点按下。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -802,7 +810,9 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 
 触点移动。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -842,7 +852,9 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 
 触点抬起。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

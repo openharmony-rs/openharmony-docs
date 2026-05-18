@@ -90,7 +90,7 @@ Input service exception.
 
   **处理步骤**：确保在调用updateAxis或endAxis之前，先调用beginAxis开始轴事件序列。
 
-- **touchDown 接口**：触点正在接触屏幕，或者触点ID不在有效范围[0,9]内。
+- **touchDown 接口**：触点已接触屏幕，或者触点ID不在有效范围[0, 9]内。
 
   当调用触控控制器的touchDown接口时，如果触点已接触屏幕或触点ID不在有效范围[0,9]内，会产生此错误码。
 
