@@ -2078,7 +2078,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 
 **示例：**
 ```ts
@@ -5089,7 +5089,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -5136,7 +5136,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -5184,7 +5184,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
 
-按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。
+按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。该接口支持鼠标跨屏拖拽操作。
 
 **起始版本：** 26.0.0
 
@@ -5317,7 +5317,7 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. function can not work correctly due to limited device capabilities. |
 
 **示例：**
 
@@ -5705,7 +5705,7 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls. |
 | 17000005 | This operation is not supported. |
-| 17000007 | Parameter verification failed. |
+| 17000007 | Parameter verification failed. Unsupported key, mode, and operation combination. |
 
 **示例：**
 
