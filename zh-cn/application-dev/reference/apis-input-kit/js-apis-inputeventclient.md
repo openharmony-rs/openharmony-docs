@@ -747,7 +747,7 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 4300002 | The display does not exist. |
 | 3800001 | Input service exception. |
 
@@ -839,7 +839,7 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 3800001 | Input service exception. |
 
 **示例：**
@@ -881,7 +881,7 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
 | 3800001 | Input service exception. |
 
 **示例：**
