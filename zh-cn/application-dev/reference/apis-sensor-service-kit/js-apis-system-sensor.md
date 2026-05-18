@@ -93,8 +93,8 @@ Sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
     {{ title }}
   </text>
   <text class="TextArea">{{ TextContent }}</text>
-  <picker-view type="text" value="{{ currentSelect }}" range="{{ sensorList }}" selected="
-    {{ currentSelect }}" @change="pickerOnchange" class="pickerText">
+  <picker-view type="text" range="{{ sensorList }}" selected="
+    {{ defaultSelect }}" @change="pickerOnchange" class="pickerText">
   </picker-view>
   <div class="BUTTON">
     <input class="buttonText" type="button" onclick="subscribe">订阅</input>
@@ -178,8 +178,14 @@ export default {
     sensorList: ['ACCELEROMETER', 'MAGNETIC_FIELD', 'PROXIMITY',
       'AMBIENT_LIGHT', 'PEDOMETER', 'BAROMETER',
       'HEART_RATE', 'WEAR_DETECTION', 'ORIENTATION', 'GYROSCOPE', 'getOnBodyState'],
+    defaultSelect: '',
     currentSelect: 'ACCELEROMETER'
   },
+
+  onInit() {
+    this.defaultSelect = 'ACCELEROMETER';
+  },
+
 
   pickerOnchange(e) {
     console.info(this.TAG + 'current selected:' + e.newValue);
@@ -203,6 +209,7 @@ export default {
             },
           };
           sensor.subscribeAccelerometer(subscribeAccelerometerOptions);
+          break;
         case "MAGNETIC_FIELD":
           let subscribeCompassOptions = {
             success: (ret) => {
@@ -213,6 +220,7 @@ export default {
             },
           };
           sensor.subscribeCompass(subscribeCompassOptions);
+          break;
         case "PROXIMITY":
           let subscribeProximityOptions = {
             success: (ret) => {
@@ -223,6 +231,7 @@ export default {
             },
           };
           sensor.subscribeProximity(subscribeProximityOptions);
+          break;
         case "AMBIENT_LIGHT":
           let subscribeLightOptions = {
             success: (ret) => {
@@ -233,6 +242,7 @@ export default {
             },
           };
           sensor.subscribeLight(subscribeLightOptions);
+          break;
         case "PEDOMETER":
           let subscribeStepCounterOptions = {
             success: (ret) => {
@@ -243,6 +253,7 @@ export default {
             },
           };
           sensor.subscribeStepCounter(subscribeStepCounterOptions);
+          break;
         case "BAROMETER":
           let subscribeBarometerOptions = {
             success: (ret) => {
@@ -253,6 +264,7 @@ export default {
             },
             };
             sensor.subscribeBarometer(subscribeBarometerOptions);
+            break;
         case "HEART_RATE":
           let subscribeHeartRateOptions = {
             success: (ret) => {
@@ -263,6 +275,7 @@ export default {
             },
           };
           sensor.subscribeHeartRate(subscribeHeartRateOptions);
+          break;
         case "WEAR_DETECTION":
           let subscribeOnBodyStateOptions = {
             success: (ret) => {
@@ -273,6 +286,7 @@ export default {
             },
           };
           sensor.subscribeOnBodyState(subscribeOnBodyStateOptions);
+          break;
         case "ORIENTATION":
           let subscribeDeviceOrientationOptions = {
             interval: 'normal',
@@ -286,6 +300,7 @@ export default {
             }
           };
           sensor.subscribeDeviceOrientation(subscribeDeviceOrientationOptions);
+          break;
         case "GYROSCOPE":
           let subscribeGyroscopeOptions = {
             interval: 'normal',
@@ -299,6 +314,7 @@ export default {
             }
           };
           sensor.subscribeGyroscope(subscribeGyroscopeOptions);
+          break;
         case "getOnBodyState":
           let getOnBodyStateOptions = {
             success: (ret) => {
@@ -309,9 +325,10 @@ export default {
             },
           };
           sensor.getOnBodyState(getOnBodyStateOptions);
+          break;
       }
     } catch (e) {
-      console.error(this.TAG + 'subscribe exception occurred, message:' + JSON.stringify(e))
+      console.error(this.TAG + `subscribe exception occurred, code: ${e.code}, message: ${e.message}`)
     }
   },
 
@@ -320,28 +337,38 @@ export default {
       switch (this.currentSelect) {
         case "ACCELEROMETER":
           sensor.unsubscribeAccelerometer();
+          break;
         case "MAGNETIC_FIELD":
           sensor.unsubscribeCompass();
+          break;
         case "PROXIMITY":
           sensor.unsubscribeProximity()
+          break;
         case "AMBIENT_LIGHT":
           sensor.unsubscribeLight()
+          break;
         case "PEDOMETER":
           sensor.unsubscribeStepCounter()
+          break;
         case "BAROMETER":
           sensor.unsubscribeBarometer();
+          break;
         case "HEART_RATE":
           sensor.unsubscribeHeartRate()
+          break;
         case "WEAR_DETECTION":
           sensor.unsubscribeOnBodyState()
+          break;
         case "ORIENTATION":
           sensor.unsubscribeDeviceOrientation();
+          break;
         case "GYROSCOPE":
           sensor.unsubscribeGyroscope();
+          break;
         }
         this.TextContent = ""
     } catch (e) {
-        console.error(this.TAG + 'unsubscribe exception occurred, message:' + JSON.stringify(e))
+        console.error(this.TAG + `unsubscribe exception occurred, code: ${e.code}, message: ${e.message}`)
     }
   }
 }
