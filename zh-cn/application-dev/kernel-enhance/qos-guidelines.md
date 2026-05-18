@@ -131,7 +131,7 @@ QoS_Level level
 
 **描述**
 
-为某个任务设置指定的QoS等级。设置当前任务的QoS等级。开发者可以根据当前任务的重要程度，为其标记不同等级的QoS，从而获得不同的调度供给。参考[QoS实践指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-thread-priority-setting)。
+为某个任务设置指定的QoS等级。开发者可以根据当前任务的重要程度，为其标记不同等级的QoS，从而获得不同的调度供给。参考[QoS实践指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-thread-priority-setting)。
 
 **样例**
 ```c++
