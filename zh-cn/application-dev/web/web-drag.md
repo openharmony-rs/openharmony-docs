@@ -340,67 +340,6 @@ struct Index {
 
 H5示例1:
 
-``` HTML
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>w3c通用属性/方法禁用拖拽</title>
-</head>
-<style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    .normal {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 40px;
-    }
-    .undraggable {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 40px;
-      -webkit-user-drag: none;
-    }
-
-</style>
-<body>
-
-<h2>w3c通用属性/方法禁用拖拽</h2>
-
-<!--一，通过显式设置draggable样式为false来禁用该元素的拖拽-->
-<!--仅对img或div这种整个元素节点的拖拽行为生效，对节点中选中的文字不生效-->
-<div>draggable设置禁用拖拽</div>
-<img class="normal" draggable="false" src="./any-pic.png"><br>
-
-<!--二，通过引用一个样式class，class中设置-webkit-user-drag为none来禁用拖拽-->
-<!--生效范围同方式一-->
-<div>-webkit-user-drag设置禁用拖拽</div>
-<img class="undraggable" src="./any-pic.png"><br>
-
-<!--三，通过对设置ondragstart事件监听并preventDefault来禁用拖拽-->
-<!--对任意内容的拖拽行为都生效-->
-<!--可通过扩大监听器监听的范围来禁用更大区域内的拖拽，比如监听在window上可实现整个Web组件的拖拽禁用-->
-<!--由于生效节点较靠后，拖拽事实上已进行部分，会对菜单功能产生影响-->
-<div>ondragstart设置禁用拖拽</div>
-<div ondragstart="dragstartHandler(event)">
-    <img class="normal" src="./any-pic.png">
-    <p>
-        此段文本用于验证ondragstart脚本对选中文本的禁用拖拽效果
-    </p>
-</div>
-
-<script>
-    function dragstartHandler(event) {
-        console.info('forbid drag when drag start');
-        event.preventDefault();
-    }
-</script>
-
-</body>
-</html>
-```
 
 ![w3c-forbid-drag](figures/w3c-forbid-drag.gif)
 
@@ -467,38 +406,6 @@ struct Index {
           try {
             // 使用runJavaScriptExt执行脚本添加dragstart事件监听器去禁用拖拽
             this.webViewController.runJavaScriptExt(
-              'window.addEventListener(\'dragstart\', (ev) => {\n' +
-                'ev.preventDefault();\n' +
-                '});',
-              (error, result) => {
-                if (error) {
-                  console.error(`run JavaScript error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`)
-                  return;
-                }
-              });
-          } catch (resError) {
-            console.error(`ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
-          }
-        })
-      Web({
-        src: $rawfile('w3c-forbid.html'),
-        controller: this.webViewController
-      })
-        .domStorageAccess(true)
-        .javaScriptAccess(true)
-        .fileAccess(true)
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-ArkTS-Sta示例：
-<!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
-
-``` TypeScript
-import webview from '@ohos.web.webview';
 import { Button, $rawfile, Column, Component, Entry, Web } from '@ohos.arkui.component';
 import { BusinessError } from '@ohos.base';
 
