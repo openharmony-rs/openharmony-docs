@@ -60,7 +60,7 @@
   - [@ohos.worker (启动一个Worker)(系统接口)](js-apis-worker-sys.md)
   <!--DelEnd-->
   - [@ohos.xml (xml解析与生成)](js-apis-xml.md)
-  - builtin相关接口（ArkTS-Sta）<!--js-apis-arkts-builtn-->
+  - builtin相关接口（ArkTS-Sta）<!--js-apis-arkts-builtin-->
     - ArkTS语言基本类型<!--js-apis-arkts-primitive-types-->
       - [Array](arkts-sta-array.md)
       - [Boolean](arkts-sta-boolean.md)
