@@ -44,7 +44,7 @@ JSON类型的对象。
 | START_CHAR | Char                               | 是   | 否    | 起始字符。        |
 | END_CHAR   | Char                               | 是   | 否    | 结束字符。        |
 | SEPARATOR  | Char                               | 是   | 否    | 键值间分隔字符。  |
-| DELIMETER  | Char                               | 是   | 否    | 键值对间分隔字符。|
+| DELIMITER  | Char                               | 是   | 否    | 键值对间分隔字符。|
 | EMPTY      | Char                               | 是   | 否    | 空对象字符串。    |
 
 
