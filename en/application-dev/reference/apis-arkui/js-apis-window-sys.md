@@ -1253,7 +1253,7 @@ try {
 }
 ```
 
-## window.createSubWindowAndBindParent<sup>24+</sup>
+## window.createSubWindowAndBindParent
 
 createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
 
@@ -1264,6 +1264,8 @@ Only the main window can be bound as the parent window.
 The subwindow is displayed or hidden along with the parent window, but is not destroyed when the parent window is destroyed. The subwindow listens to the lifecycle changes of the parent window through a callback function.
 
 It is recommended that you destroy the created subwindow after the parent window is destroyed.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1278,7 +1280,7 @@ It is recommended that you destroy the created subwindow after the parent window
 | name | string | Yes| Window name.|
 | parentId | number | Yes| Parent window ID. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 | ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Current application context.|
-| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | Yes| Callback used to return the lifecycle changes of the bound parent window.|
+| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener) | Yes| Callback used to return the lifecycle changes of the bound parent window.|
 
 **Return value**
 
