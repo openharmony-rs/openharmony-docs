@@ -165,6 +165,60 @@
      });
    ```
 
+   ArkTS-Dyn示例：
+   <!--@[setCollaborationDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
+   
+   ``` TypeScript
+   let store: relationalStore.RdbStore | undefined = undefined;
+   // ...
+   const STORE_CONFIG: relationalStore.StoreConfig = {
+     name: 'RdbTest.db', // 数据库文件名
+     securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
+   };
+   // 打开数据库并设置分布式表
+   const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
+     autoSync: false,
+     asyncDownloadAsset: false,
+     enableCloud: false
+   }
+   const context = new UIContext().getHostContext() as common.UIAbilityContext;
+   relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+     store = rdbStore;
+     await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
+     // 将已创建的表设置分布式表。
+     await store.setDistributedTables(['EMPLOYEE'], relationalStore.DistributedType.DISTRIBUTED_DEVICE, DISTRIBUTED_CONFIG);
+   }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+
+   ArkTS-Sta示例：
+   <!--@[setCollaborationDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
+    
+   ``` TypeScript
+   let store: relationalStore.RdbStore | undefined = undefined;
+   
+   const STORE_CONFIG: relationalStore.StoreConfig = {
+     name: 'RdbTest.db', // 数据库文件名
+     securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
+   };
+   // 打开数据库并设置分布式表
+   const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
+     autoSync: false,
+     asyncDownloadAsset: false,
+     enableCloud: false
+   }
+   relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+     store = rdbStore;
+     await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL)');
+     // 将已创建的表设置分布式表。
+     await store!.setDistributedTables(['EMPLOYEE'], relationalStore.DistributedType.DISTRIBUTED_DEVICE,
+      DISTRIBUTED_CONFIG);
+   }).catch((err: Error) => {
+     hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+
 4. 订阅组网内其他设备的数据变化消息。
    1. 调用[on('dataChange')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#ondatachange)接口监听其他设备的数据变化，当数据变化同步至当前设备时，将执行订阅的回调方法，入参为数据发生变化的设备ID列表。
    2. 通过设备ID获取与设备对应的分布式表表名，查询对应设备分布式表中的数据。
@@ -550,7 +604,7 @@
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
    
-   export async function setCollaborationDistributedTables(context: common.UIAbilityContext | undefined) {
+   // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {
        name: 'RdbTest.db', // 数据库文件名
        securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
@@ -559,17 +613,18 @@
      const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
        autoSync: false,
        asyncDownloadAsset: false,
-       enableCloud: false
+       enableCloud: false,
+       tableType: relationalStore.DistributedTableType.SINGLE_VERSION
      }
      relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
        store = rdbStore;
-       await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL)');
+       await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB)');
+       await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE2 (NAME TEXT NOT NULL UNIQUE, AGE INTEGER, SALARY REAL, CODES BLOB, PRIMARY KEY (NAME))');
        // 将已创建的表设置分布式表。
-       await store!.setDistributedTables(['EMPLOYEE'], relationalStore.DistributedType.DISTRIBUTED_DEVICE, DISTRIBUTED_CONFIG);
+       await store!.setDistributedTables(['EMPLOYEE', 'EMPLOYEE2'], relationalStore.DistributedType.DISTRIBUTED_DEVICE, DISTRIBUTED_CONFIG);
      }).catch((err: Error) => {
        hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
      });
-   }
    ```
 
 另外，在使用单版本表模式进行数据同步时，还需要配置schema文件，以指定需要同步的列及解决冲突的列。
