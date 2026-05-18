@@ -2194,4 +2194,4 @@ struct ChildComponent {
 }
 ```
 
-![observed_lazyforeach_refresh.gif](./figures/observed_lazyforeach_refresh.gif)
+

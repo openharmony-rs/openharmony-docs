@@ -24,7 +24,7 @@ The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mo
 
   **Figure 3** Adaptive layout (NavigationMode.Auto)
 
-![img](figures/NavigationModeAuto.gif)
+
 
 ### navBarPosition
 
@@ -231,4 +231,4 @@ struct Index {
 
 **Figure 10** Final effect
 
-![img](figures/NavigationSplitModeExample.gif)
+
