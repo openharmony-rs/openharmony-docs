@@ -194,29 +194,30 @@
 
    ArkTS-Sta示例：
    <!--@[setCollaborationDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
-    
+   
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
    
-   const STORE_CONFIG: relationalStore.StoreConfig = {
-     name: 'RdbTest.db', // 数据库文件名
-     securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
-   };
-   // 打开数据库并设置分布式表
-   const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
-     autoSync: false,
-     asyncDownloadAsset: false,
-     enableCloud: false
-   }
-   relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
-     store = rdbStore;
-     await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL)');
-     // 将已创建的表设置分布式表。
-     await store!.setDistributedTables(['EMPLOYEE'], relationalStore.DistributedType.DISTRIBUTED_DEVICE,
-      DISTRIBUTED_CONFIG);
-   }).catch((err: Error) => {
-     hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
-   });
+   // ...
+     const STORE_CONFIG: relationalStore.StoreConfig = {
+       name: 'RdbTest.db', // 数据库文件名
+       securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
+     };
+     // 打开数据库并设置分布式表
+     const DISTRIBUTED_CONFIG: relationalStore.DistributedConfig = {
+       autoSync: false,
+       asyncDownloadAsset: false,
+       enableCloud: false
+     }
+     relationalStore.getRdbStore(context!, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
+       store = rdbStore;
+       await store!.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL)');
+       // 将已创建的表设置分布式表。
+       await store!.setDistributedTables(['EMPLOYEE'], relationalStore.DistributedType.DISTRIBUTED_DEVICE,
+         DISTRIBUTED_CONFIG);
+     }).catch((err: Error) => {
+       hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+     });
    ```
 
 4. 订阅组网内其他设备的数据变化消息。
