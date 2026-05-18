@@ -272,8 +272,6 @@
    ```
 
 6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
-   
-   ArkTS-Dyn示例：
 
    ``` TypeScript
    let windowIDs = [57, 86];
@@ -334,8 +332,6 @@
 ## 完整示例
 
 以下是通过AVScreenCaptureRecorder实现录屏存文件的完整代码示例。
-
-ArkTS-Sta示例：
 
 ``` TypeScript
 import { media } from '@kit.MediaKit';
