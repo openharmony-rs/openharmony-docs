@@ -16,8 +16,8 @@
 
 | 编码器角色 | 创建方式 | 说明 |
 |-----------|----------|------|
-| 主编码器（Primary） | [OH_VideoEncoder_CreatePrimaryWithPreproc](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)创建 | 管理共享输入Surface，负责前处理管线调度，可配置独立的编码参数和前处理参数 |
-| 副编码器（Secondary） | [OH_VideoEncoder_CreateSecondaryFromPrimary](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary)从主编码器创建 | 共享主编码器的输入源，可配置独立的编码参数和前处理参数 |
+| 主编码器（Primary） | [OH_VideoEncoder_CreatePrimaryWithPreproc](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)创建 | 管理共享输入Surface，负责前处理管线调度，可配置独立的编码参数和前处理参数。 |
+| 副编码器（Secondary） | [OH_VideoEncoder_CreateSecondaryFromPrimary](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary)从主编码器创建 | 共享主编码器的输入源，可配置独立的编码参数和前处理参数。 |
 
 ### 架构图
 
@@ -29,9 +29,9 @@
 应用可依据自己的场景选择使用，场景使用举例见下表：
 | 场景 | 主编码器（Primary） | 副编码器（Secondary） | 用途说明 |
 |------|---------------------|----------------------|----------|
-| 多码率直播（ABR） | 高码率主码流 | 降采样 + 丢帧的低码流 | 根据网络带宽自适应切换 |
-| ROI 区域关注 | 全帧编码归档 | 裁剪感兴趣区域编码 | 监控全帧存储 + 局部区域分析 |
-| 多人视频通话 | 全分辨率、高帧率（本地显示） | 降采样 + 丢帧、低码率（远端传输） | 本地高清预览 + 远端低带宽实时通话 |
+| 多码率直播（ABR） | 高码率主码流。 | 降采样 + 丢帧的低码流。 | 根据网络带宽自适应切换。 |
+| ROI 区域关注 | 全帧编码归档。 | 裁剪感兴趣区域编码 | 监控全帧存储 + 局部区域分析。 |
+| 多人视频通话 | 全分辨率、高帧率（本地显示）。 | 降采样 + 丢帧、低码率（远端传输）。 | 本地高清预览 + 远端低带宽实时通话。 |
 
 ### 约束与限制
 
@@ -342,38 +342,38 @@ if (window != nullptr){
 
 ## 常见问题排查
 
-### Q1：CreateSecondaryFromPrimary返回`AV_ERR_INVALID_VAL`
+### 1：CreateSecondaryFromPrimary返回`AV_ERR_INVALID_VAL`
 
 **回答**：传入的不是有效的Primary句柄。
 
 **解决**：确保Primary由`CreatePrimaryWithPreproc`创建且已成功Configure。
 
-### Q2：CreateSecondaryFromPrimary返回`AV_ERR_OPERATE_NOT_PERMIT`
+### 2：CreateSecondaryFromPrimary返回`AV_ERR_OPERATE_NOT_PERMIT`
 
 **回答**：该Primary已挂载了Secondary。
 
 **解决**：先销毁旧的Secondary，再创建新Secondary；或检查是否有遗漏的Destroy调用。
 
-### Q3：Secondary Configure报错
+### 3：Secondary Configure报错
 
 **回答**：前处理参数不合法。
 
 **解决**：检查降采样/裁剪参数完整性、范围合法性、Crop 与 Downsample 是否互斥设置。
 
-### Q4：Secondary调用GetSurface报错
+### 4：Secondary调用GetSurface报错
 
 **回答**：使用了副编码器句柄调用。
 
 **解决**：**只能通过主编码器句柄**调用GetSurface，两者返回的是同一个共享Surface。
 
-### Q5：Secondary无输出
+### 5：Secondary无输出
 
 **回答**：未调用Start/Surface未绑定数据源/回调未正确注册。
 
 **解决**：检查Secondary是否已Start；确认Primary的Surface已绑定到Camera/XComponent；确认回调函数非null且包含FreeOutputBuffer。
 
 
-### Q6：Primary回调阻塞导致Secondary饥饿
+### 6：Primary回调阻塞导致Secondary饥饿
 
 **回答**：Primary的onNewOutputBuffer中耗时过长。
 
