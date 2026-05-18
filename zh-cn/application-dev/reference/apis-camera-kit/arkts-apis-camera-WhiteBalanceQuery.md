@@ -109,7 +109,7 @@ function getWhiteBalanceRange(session: camera.PhotoSession | camera.VideoSession
 }
 ```
 
-## getColorTintRange<sup>26+</sup>
+## getColorTintRange
 
 getColorTintRange(): Array\<number\>
 
@@ -119,7 +119,7 @@ getColorTintRange(): Array\<number\>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

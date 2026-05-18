@@ -186,7 +186,7 @@ function getWhiteBalance(session: camera.PhotoSession | camera.VideoSession): nu
 }
 ```
 
-## setColorTint<sup>26+</sup>
+## setColorTint
 
 setColorTint(colorTint: number): void
 
@@ -194,9 +194,11 @@ setColorTint(colorTint: number): void
 
 设置之前需要先检查设备支持配置的白平衡色调调节范围，具体方法请参考[getColorTintRange](arkts-apis-camera-WhiteBalanceQuery.md#getColorTintRange26)。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -230,15 +232,17 @@ function setColorTint(session: camera.PhotoSession | camera.VideoSession): void 
 }
 ```
 
-## getColorTint<sup>26+</sup>
+## getColorTint
 
 getColorTint(): number
 
 获取当前白平衡的色调调节值。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
