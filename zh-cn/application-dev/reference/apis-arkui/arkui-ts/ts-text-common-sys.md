@@ -24,6 +24,12 @@ TextInput、TextArea、Search组件的基础控制器。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 ### getText<sup>19+</sup>
 
 getText(range?: TextRange): string
@@ -35,6 +41,12 @@ getText(range?: TextRange): string
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -56,6 +68,12 @@ getText(range?: TextRange): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
 | NONE | 0 | 键盘无模糊效果。 |
@@ -68,6 +86,12 @@ getText(range?: TextRange): string
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
@@ -82,6 +106,12 @@ getText(range?: TextRange): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
 | gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 是   | 键盘的模糊效果。<br/>默认值：KeyboardGradientMode.NONE |
@@ -94,6 +124,12 @@ getText(range?: TextRange): string
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
@@ -122,6 +158,10 @@ getText(range?: TextRange): string
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                              | 只读 | 可选 | 说明                                                                                  |
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|

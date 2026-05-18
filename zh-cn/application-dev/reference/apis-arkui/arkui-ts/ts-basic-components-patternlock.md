@@ -44,6 +44,24 @@ PatternLock(controller?: PatternLockController)
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<PatternLockAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<PatternLockAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置PatternLock组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ### sideLength
 
 ArkTS-Dyn: sideLength(value: Length)
@@ -415,7 +433,9 @@ PatternLockController的构造函数。
 
 ### reset
 
-reset()
+ArkTS-Dyn: reset()
+
+ArkTS-Sta: reset(): void
 
 重置组件状态。
 

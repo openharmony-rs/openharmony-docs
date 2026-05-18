@@ -51,7 +51,7 @@ TextArea初始化参数。
 | 名称 | 类型  | 只读 | 可选   | 说明 |
 | ---- | ----- | ---- | ---- | ---- |
 | placeholder      | [ResourceStr](ts-types.md#resourcestr)  | 否    | 是 | 设置无输入时的提示文本。输入内容后，提示文本不显示。<br/>仅设置placeholder属性时，手柄依然跟随拖动，手柄松开后光标停留在文字开头位置。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23    |
-| text             | [ResourceStr](ts-types.md#resourcestr)  | 否    | 是 | 设置输入框当前的文本内容。</br>建议通过onChange事件将状态变量与文本实时绑定，</br>避免组件刷新时TextArea中的文本内容异常。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| text             | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr) <br/> ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| Bindable\<[ResourceStr](ts-types.md#resourcestr)> \| Bindable\<[Resource](ts-types.md#resource)> \| Bindable\<string>  | 否    | 是 | 设置输入框当前的文本内容。</br>建议通过onChange事件将状态变量与文本实时绑定，</br>避免组件刷新时TextArea中的文本内容异常。<br />从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>该属性支持Bindable双向绑定变量。<br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | controller<sup>8+</sup> | [TextAreaController](#textareacontroller8) | 否    | 是 | 设置TextArea控制器。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
 
 
@@ -64,6 +64,24 @@ TextArea初始化参数。
 >  [通用属性padding](ts-universal-attributes-size.md#padding)的默认值为：<br>{<br>&nbsp;top: '8vp',<br>&nbsp;right: '16vp',<br>&nbsp;bottom: '8vp',<br>&nbsp;left: '16vp'<br> }
 >
 >  从API version 11开始，多行输入框可设置.width('auto')使组件宽度自适应文本宽度，自适应时组件宽度受constraintSize属性以及父容器传递的最大最小宽度限制，其余使用方式参考[尺寸设置](ts-universal-attributes-size.md)。
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<TextAreaAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<TextAreaAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置TextArea组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ### placeholderColor
 
@@ -171,7 +189,9 @@ textDirection(direction: TextDirection | undefined)
 
 ### horizontalScrolling<sup>24+</sup>
 
-horizontalScrolling(enabled: Optional\<boolean>)
+ArkTS-Dyn: horizontalScrolling(enabled: Optional\<boolean>)
+
+ArkTS-Sta: horizontalScrolling(enabled: boolean | undefined)
 
 设置当文本宽度超过内容区宽度时是否启用水平滚动。未通过该接口设置时，禁用水平滚动。
 
@@ -185,11 +205,15 @@ horizontalScrolling(enabled: Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----- | ---- | ---- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否启用水平滚动。<br/>true表示启用水平滚动；false表示禁用水平滚动，文本将自动换行。|
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用水平滚动。<br/>true表示启用水平滚动；false表示禁用水平滚动，文本将自动换行。|
 
 ### caretColor
 
@@ -286,7 +310,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined)
 
 ArkTS-Dyn: fontWeight(value: number | FontWeight | ResourceStr)
 
-ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
+ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 设置文本的字体粗细，设置过大可能会在不同字体下有截断。
 
@@ -302,7 +326,7 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string \| undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。<br/>取值为undefined时，按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持Resource类型。<br/>取值为undefined时，按默认值处理。|
 
 ### fontFamily
 
@@ -407,7 +431,7 @@ ArkTS-Sta: maxLength(value: int | undefined)
 
 ArkTS-Dyn: showCounter(value: boolean, options?: InputCounterOptions)
 
-ArkTS-Sta: showCounter(value: boolean | undefined, options?: InputCounterOptions | undefined)
+ArkTS-Sta: showCounter(value: boolean | undefined, options?: InputCounterOptions)
 
 设置当通过InputCounterOptions输入的字符数超过阈值时显示计数器。
 
@@ -432,7 +456,7 @@ ArkTS-Sta: showCounter(value: boolean | undefined, options?: InputCounterOptions
 | 参数名                | 类型                                                         | 必填 | 说明             |
 | --------------------- | ------------------------------------------------------------ | ---- | ---------------- |
 | value                 | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否显示计数器。<br/>true表示显示计数器，false表示不显示。<br/>取值为undefined时，不显示计数器。 |
-| options<sup>11+</sup> | ArkTS-Dyn: [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)<br/>ArkTS-Sta: [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明) \| undefined | 否   | 计数器的配置项。<br/>取值为undefined时，按[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)中的默认值处理。 |
+| options<sup>11+</sup> | ArkTS-Dyn: [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)<br/>ArkTS-Sta: [InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明) | 否   | 计数器的配置项。<br/>取值为undefined时，按[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)中的默认值处理。 |
 
 ### style<sup>10+</sup>
 
@@ -678,7 +702,7 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefine
 
 | 参数名                | 类型                                        | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| ComponentContentBase | 是   | 自定义键盘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>取值为undefined时，不设置自定义键盘。|
+| value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| ComponentContentBase \| undefined | 是   | 自定义键盘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>取值为undefined时，不设置自定义键盘。|
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)   | 否   | 设置自定义键盘是否支持避让功能。                             |
 
 ### type<sup>11+</sup>
@@ -763,9 +787,7 @@ ArkTS-Sta: enableAutoFill(value: boolean | undefined)
 
 ### enableSelectedDataDetector<sup>22+</sup>
 
-ArkTS-Dyn: enableSelectedDataDetector(enable: boolean)
-
-ArkTS-Sta: enableSelectedDataDetector(enable: boolean | undefined)
+enableSelectedDataDetector(enable: boolean | undefined)
 
 设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
 
@@ -787,7 +809,7 @@ ArkTS-Sta: enableSelectedDataDetector(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br/>取值为undefined时，按默认值处理。 |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启识别，false：关闭识别。默认值为：true。<br/>取值为undefined时，按默认值处理。 |
 
 ### contentType<sup>12+</sup>
 
@@ -1867,7 +1889,7 @@ ArkTS-Sta: onWillCopy(callback:Callback\<string, boolean> \| undefined)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | ArkTS-Dyn: Callback\<string, boolean> ArkTS-Sta: Callback\<string, boolean> \| undefined | 是   | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。undefined时，恢复组件默认复制行为。 |
+| callback  | ArkTS-Dyn: Callback\<string, boolean><br/>ArkTS-Sta: Callback\<string, boolean> \| undefined | 是   | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。undefined时，恢复组件默认复制行为。 |
 
 ### onCut<sup>8+</sup>
 
@@ -1913,7 +1935,7 @@ ArkTS-Sta: onWillCut(callback:Callback\<string, boolean> \| undefined)
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| callback  | ArkTS-Dyn: Callback\<string, boolean> ArkTS-Sta: Callback\<string, boolean> \| undefined | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。undefined时，恢复组件默认剪切行为。 |
+| callback  | ArkTS-Dyn: Callback\<string, boolean><br/>ArkTS-Sta: Callback\<string, boolean> \| undefined | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。undefined时，恢复组件默认剪切行为。 |
 
 ### onPaste
 

@@ -48,6 +48,24 @@ SymbolGlyph(value?: Resource)
 
 支持[通用属性](ts-component-general-attributes.md)，不支持文本通用属性，仅支持以下特有属性：
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<SymbolGlyphAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolGlyphAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置SymbolGlyph组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ### fontColor
 
 ArkTS-Dyn: fontColor(value: Array&lt;ResourceColor&gt;)
@@ -68,7 +86,7 @@ ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -364,7 +382,7 @@ ArkTS-Sta: shaderStyle(shader: Array\<ShaderStyle | undefined\> | ShaderStyle | 
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -388,7 +406,7 @@ ArkTS-Sta: symbolShadow(shadow: ShadowOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
