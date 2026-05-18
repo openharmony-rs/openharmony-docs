@@ -769,10 +769,9 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 **参数：** 
 
-| 参数名 | 类型   | 必填 | 说明                                  |
-| ------ | ------ | ---- | ------------------------------------- |
-| first  | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 当前显示的瀑布流起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-| last   | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 当前显示的瀑布流终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (first: number, last: number) => void <br/>ArkTS-Sta: ((first: int, last: int) => void) \|&nbsp;undefined | 是 | 当前瀑布流显示的起始位置/终止位置的子组件发生变化时触发的回调。<br/>first：当前显示的瀑布流起始位置的索引值。取值范围：[0, 子节点总数-1]<br/>last：当前显示的瀑布流终止位置的索引值。取值范围：[0, 子节点总数-1]<br/>undefined：不使用该回调函数。 |
 
 通过`last`参数可以判断是否“继续加载数据”，参考[示例3（使用分组）](#示例3使用分组)中“即将触底时提前增加数据”的处理逻辑。
 

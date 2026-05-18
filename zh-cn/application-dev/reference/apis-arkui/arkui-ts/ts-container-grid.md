@@ -901,10 +901,9 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 **参数：** 
 
-| 参数名             | 类型   | 必填 | 说明                             |
-| ------------------ | ------ | ---- | -------------------------------- |
-| first              | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 当前显示的网格起始位置的索引值。 |
-| last<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 当前显示的网格终止位置的索引值。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (first: number, last: number) => void <br/>ArkTS-Sta: ((first: int, last: int) => void) \|&nbsp;undefined | 是 | 当前网格显示的起始位置/终止位置的item发生变化时触发的回调。<br/>first：当前显示的网格起始位置的索引值。<br/>last：当前显示的网格终止位置的索引值。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDragStart<sup>8+</sup>
 
@@ -940,7 +939,7 @@ ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
 
 ArkTS-Dyn: onItemDragEnter(event: (event: ItemDragInfo) => void)
 
-ArkTS-Sta: onItemDragEnter(event: (event: ItemDragInfo) => void | undefined)
+ArkTS-Sta: onItemDragEnter(event: ((event: ItemDragInfo) => void) | undefined)
 
 拖拽进入网格元素范围内时触发。
 
@@ -972,11 +971,9 @@ ArkTS-Sta: onItemDragMove(event: ((event: ItemDragInfo, itemIndex: int, insertIn
 
 **参数：** 
 
-| 参数名      | 类型                                  | 必填 | 说明           |
-| ----------- | ------------------------------------- | ---- | -------------- |
-| event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
-| itemIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 拖拽起始位置。 |
-| insertIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 拖拽插入位置。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int) => void) \|&nbsp;undefined | 是 | 在Grid的网格区域内拖拽移动GridItem时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置。<br/>insertIndex：拖拽插入位置。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDragLeave<sup>8+</sup>
 
@@ -996,10 +993,9 @@ ArkTS-Sta: onItemDragLeave(event: ((event: ItemDragInfo, itemIndex: int) => void
 
 **参数：** 
 
-| 参数名    | 类型                                  | 必填 | 说明                       |
-| --------- | ------------------------------------- | ---- | -------------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。             |
-| itemIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是   | 拖拽离开的网格元素索引值。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int) => void) \|&nbsp;undefined | 是 | 拖拽离开网格元素时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽离开的网格元素索引值。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDrop<sup>8+</sup>
 
@@ -1021,12 +1017,9 @@ ArkTS-Sta: onItemDrop(event: ((event: ItemDragInfo, itemIndex: int, insertIndex:
 
 **参数：** 
 
-| 参数名      | 类型                                  | 必填 | 说明           |
-| ----------- | ------------------------------------- | ---- | -------------- |
-| event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
-| itemIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 拖拽起始位置。 |
-| insertIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 拖拽插入位置。 |
-| isSuccess   | boolean                               | 是   | 拖拽释放位置是否在设置了onItemDrop的网格元素之内。<br/>true：表示拖拽释放位置在设置了onItemDrop的网格元素之内；false：表示拖拽释放位置在设置了onItemDrop的网格元素之外。  |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number, isSuccess: boolean) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int, isSuccess: boolean) => void) \|&nbsp;undefined | 是 | 当GridItem停止拖拽时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置。<br/>insertIndex：拖拽插入位置。<br/>isSuccess：拖拽释放位置是否在设置了onItemDrop的网格元素之内。true表示拖拽释放位置在设置了onItemDrop的网格元素之内；false表示拖拽释放位置在设置了onItemDrop的网格元素之外。<br/>undefined：不使用该回调函数。 |
 
 ### onScrollBarUpdate<sup>10+</sup>
 
@@ -1048,16 +1041,9 @@ ArkTS-Sta: onScrollBarUpdate(event: ((index: int, offset: double) => ComputedBar
 
 **参数：** 
 
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| index  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 当前显示的网格起始位置的索引值。                             |
-| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 当前显示的网格起始位置元素相对网格显示起始位置的偏移，单位vp。 |
-
-**返回值：** 
-
-| 类型                                                  | 说明                 |
-| ----------------------------------------------------- | -------------------- |
-| [ComputedBarAttribute](#computedbarattribute10对象说明) | 滚动条的位置及长度。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (index: number, offset: number) => [ComputedBarAttribute](#computedbarattribute10对象说明) <br/>ArkTS-Sta: ((index: int, offset: double) => [ComputedBarAttribute](#computedbarattribute10对象说明)) \|&nbsp;undefined | 是 | 在Grid每帧布局结束时触发的回调，用于设置滚动条的位置及长度。<br/>index：当前显示的网格起始位置的索引值。<br/>offset：当前显示的网格起始位置元素相对网格显示起始位置的偏移，单位vp。<br/>[ComputedBarAttribute](#computedbarattribute10对象说明)：返回滚动条的位置及长度。<br/>undefined：不使用该回调函数。 |
 
 ### onReachStart<sup>10+</sup>
 
@@ -1256,7 +1242,7 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
