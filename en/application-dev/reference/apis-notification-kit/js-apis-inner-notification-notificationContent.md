@@ -1,8 +1,8 @@
 # NotificationContent
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -118,7 +118,7 @@ Describe the notification capsule.
 | Name           | Type                                         | Read-Only| Optional| Description                           |
 | --------------- | -------------------------------------------- | --- | --- | -------------------------------- |
 | title           | string                                       | No | Yes | Title of the capsule, with a maximum of 200 bytes. Excess part will be truncated.                       |
-| icon            | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No | Yes | Icon of the capsule.                       |
+| icon            | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No | Yes | Icon of the capsule. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.                       |
 | backgroundColor | string                                       | No | Yes | Background color of the capsule.                       |
 
 
@@ -131,7 +131,7 @@ Describes the notification button.
 | Name | Type                                                  | Read-Only| Optional| Description            |
 | ----- | ----------------------------------------------------- | --- | --- | ----------------- |
 | names | Array\<string\>                                       | No |  Yes| Button names. A maximum of three names are supported.  |
-| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | No |  Yes| Button icons. A maximum of three icons are supported.  |
+| icons | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\> | No |  Yes| Button icons. A maximum of three icons are supported. The total number of the icon pixel bytes cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended icon size is 128 × 128 pixels. The display effect depends on the device capability and notification center UI style.  |
 | iconsResource<sup>12+</sup> | Array\<[Resource](../apis-arkui/arkui-ts/ts-types.md#resource)\> | No |  Yes| Button icon resources. A maximum of three icon resources are supported.  |
 
 ## NotificationTime<sup>11+</sup>
