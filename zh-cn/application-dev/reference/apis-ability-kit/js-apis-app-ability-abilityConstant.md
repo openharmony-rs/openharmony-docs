@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 AbilityConstant提供Ability相关的枚举，包括应用启动原因[LaunchReason](#launchreason)、上次退出原因[LastExitReason](#lastexitreason)、迁移结果[OnContinueResult](#oncontinueresult)等。

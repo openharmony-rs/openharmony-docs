@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 autoStartupManager模块提供应用开机自启动状态的监听能力，允许开发者通过回调机制感知应用自启动状态的变化。
