@@ -10,14 +10,33 @@
 
 2. 获取图片信息。
 
+   ArkTS-Dyn示例：
+
+   <!-- @[pixelmap_get_image_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
+
    // 获取图片大小。
-   pixelMap.getImageInfo().then( (info : image.ImageInfo) => {
+   pixelMap.getImageInfo().then((info: image.ImageInfo) => {
      console.info('info.width = ' + info.size.width);
      console.info('info.height = ' + info.size.height);
-   }).catch((err : BusinessError) => {
-     console.error("Failed to obtain the image pixel map information.And the error is: " + err);
+   }).catch((err: BusinessError) => {
+     console.error("Failed to obtain the image pixel map information. And the error is: " + err);
+   });
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[pixelmap_get_image_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
+   // 获取图片大小。
+   pixelMap.getImageInfo().then((info: image.ImageInfo) => {
+     console.info('info.width = ' + info.size.width);
+     console.info('info.height = ' + info.size.height);
+   }).catch((err) => {
+     console.error("Failed to obtain the image pixel map information. And the error is: " + String(err));
    });
    ```
 
@@ -29,17 +48,47 @@
 
    - 裁剪
 
+     ArkTS-Dyn示例：
+
+     <!-- @[pixelmap_crop_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      // x：裁剪起始点横坐标0。
      // y：裁剪起始点纵坐标0。
      // height：裁剪高度400，方向为从上往下（裁剪后的图片高度为400）。
      // width：裁剪宽度400，方向为从左到右（裁剪后的图片宽度为400）。
-     pixelMap.crop({x: 0, y: 0, size: { height: 400, width: 400 } });
+     pixelMap.crop({ x: 0, y: 0, size: { height: 400, width: 400 } });
+     ```
+
+     ArkTS-Sta示例：
+
+     <!-- @[pixelmap_crop_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+
+     ```ts
+     // x：裁剪起始点横坐标0。
+     // y：裁剪起始点纵坐标0。
+     // height：裁剪高度400，方向为从上往下（裁剪后的图片高度为400）。
+     // width：裁剪宽度400，方向为从左到右（裁剪后的图片宽度为400）。
+     pixelMap.crop({ x: 0, y: 0, size: { height: 400, width: 400 } });
      ```
 
      ![cropping](figures/cropping.jpeg)
 
    - 缩放
+
+     ArkTS-Dyn示例：
+
+     <!-- @[pixelmap_scale_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
+     ```ts
+     // 宽为原来的0.5。
+     // 高为原来的0.5。
+     pixelMap.scale(0.5, 0.5);
+     ```
+
+     ArkTS-Sta示例：
+
+     <!-- @[pixelmap_scale_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      // 宽为原来的0.5。
@@ -51,6 +100,20 @@
 
    - 偏移
 
+     ArkTS-Dyn示例：
+
+     <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
+     ```ts
+     // 向下偏移100。
+     // 向右偏移100。
+     pixelMap.translate(100, 100);
+     ```
+
+     ArkTS-Sta示例：
+
+     <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      // 向下偏移100。
      // 向右偏移100。
@@ -61,6 +124,19 @@
 
    - 旋转
 
+     ArkTS-Dyn示例：
+
+     <!-- @[pixelmap_rotate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
+     ```ts
+     // 顺时针旋转90°。
+     pixelMap.rotate(90);
+     ```
+
+     ArkTS-Sta示例：
+
+     <!-- @[pixelmap_rotate_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      // 顺时针旋转90°。
      pixelMap.rotate(90);
@@ -70,12 +146,38 @@
 
    - 翻转
 
+     ArkTS-Dyn示例：
+
+     <!-- @[pixelmap_vertical_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
+     ```ts
+     // 垂直翻转。
+     pixelMap.flip(false, true);
+     ```
+
+     ArkTS-Sta示例：
+
+     <!-- @[pixelmap_vertical_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+
      ```ts
      // 垂直翻转。
      pixelMap.flip(false, true);
      ```
 
      ![Vertical Flip](figures/vertical-flip.jpeg)
+
+     ArkTS-Dyn示例：
+
+     <!-- @[pixelmap_horizontal_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
+     ```ts
+     // 水平翻转。
+     pixelMap.flip(true, false);
+     ```
+
+     ArkTS-Sta示例：
+
+     <!-- @[pixelmap_horizontal_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      // 水平翻转。
@@ -85,6 +187,19 @@
      ![Horizontal Flip](figures/horizontal-flip.jpeg)
 
    - 透明度
+
+     ArkTS-Dyn示例：
+
+     <!-- @[pixelmap_change_opacity_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
+     ```ts
+     // 透明度0.5。
+     pixelMap.opacity(0.5);
+     ```
+
+     ArkTS-Sta示例：
+
+     <!-- @[pixelmap_change_opacity_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      // 透明度0.5。
