@@ -8408,12 +8408,12 @@ IPC上下文信息，包括PID和UID、本端和对端设备ID、检查接口调
 
 | 名称    | 类型            | 只读 | 可选 | 说明                                  |
 | ------- | --------------- | ---- | ---- |-------------------------------------- |
-| callerPid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 调用者的PID，仅RPC场景有效。 |
-| callerUid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 调用者的UID，仅RPC场景有效。 |
-| callerTokenId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 调用者的TokenId，仅RPC场景有效。 |
+| callerPid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 调用者的PID，仅IPC场景有效。 |
+| callerUid | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 调用者的UID，仅IPC场景有效。 |
+| callerTokenId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 调用者的TokenId，仅IPC场景有效。 |
 | remoteDeviceId   | string | 是   | 否   | 对端设备的设备ID，仅RPC场景有效。   |
 | localDeviceId   | string | 是   | 否   | 本端设备的设备ID，仅RPC场景有效。   |
-| isLocalCalling   | boolean | 是   | 否   | 当前通信对端是否为本设备进程。true：调用在同一台设备，false：调用未在同一台设备。   |
+| isLocalCalling   | boolean | 是   | 否   | 当前通信对端是否为本设备进程。true：调用在同一台设备(IPC场景)，false：调用未在同一台设备(RPC场景)。   |
 
 ## IRemoteObject
 
