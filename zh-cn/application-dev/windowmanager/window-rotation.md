@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Designer: @nyankomiya; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -21,7 +21,7 @@
 
 - 若应用主窗口全屏显示，改变旋转策略后，显示方向变化会立刻生效。
 
-- 若应用主窗口没有全屏显示，改变旋转策略后不会立刻生效，当应用主窗进入全屏显示后方向变化才会生效。
+- 若应用主窗口没有全屏显示，改变旋转策略后不会立刻生效，当应用主窗口进入全屏显示后方向变化才会生效。
 
 不同旋转策略之间的差异及设备相关差异性可见[旋转策略及设备差异性](#旋转策略及设备差异性)。不同应用场景的旋转策略呈现与限制可见[旋转接口的行为限制](#旋转接口的行为限制)。
 
@@ -54,7 +54,7 @@
 
 ## 旋转策略及设备差异性
 
-应用可以通过在[model.json5配置文件](../quick-start/module-configuration-file.md)中配置"orientation"字段或者在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的[orientation字段](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
+应用可以通过在[module.json5配置文件](../quick-start/module-configuration-file.md)中配置"orientation"字段或者在运行时调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置"orientation"字段，设置应用的显示方向。无论是哪种方式设置的[orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)字段含义都一样，即旋转显示方向类型枚举（也叫旋转策略）。详情可参考[设置窗口的旋转策略](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development#section58861731201715)。
 
 系统提供了18种的方向类型枚举，以应对不同场景的需要。根据使用场景的不同，这些方向类型可分为：固定方向类型、自动旋转方向类型、临时方向类型和其他方向类型。
 
@@ -105,7 +105,7 @@
 > 
 > - **系统旋转锁定开关打开**
 > 
->   在直板机或者设备处于类直板机形态时，“AUTO_ROTATION_RESTRICTED”和“AUTO_ROTATION_UNSPECIFIED”在都不支持锁定在横屏。当应用设置为这两个旋转策略且旋转到横屏时，再下拉控制中心开启旋转锁定，那么应用会被强制旋转到竖屏并保持旋转锁定状态。在平板或者设备处于类平板形态时， 这两个旋转策略则支持锁定在横屏。如果应用希望在直板机上支持自动旋转，且可以锁定到当前方向，则推荐优先使用“USER_ROTATION”类型的旋转策略。
+>   在直板机或者设备处于类直板机形态时，“AUTO_ROTATION_RESTRICTED”和“AUTO_ROTATION_UNSPECIFIED”都不支持锁定在横屏。当应用设置为这两个旋转策略且旋转到横屏时，再下拉控制中心开启旋转锁定，那么应用会被强制旋转到竖屏并保持旋转锁定状态。在平板或者设备处于类平板形态时， 这两个旋转策略则支持锁定在横屏。如果应用希望在直板机上支持自动旋转，且可以锁定到当前方向，则推荐优先使用“USER_ROTATION”类型的旋转策略。
 
 ### 临时方向类型
 
@@ -136,7 +136,7 @@
 
 这3种方向类型是在以下特定场景下使用的：
 
-- “UNSPECIFIED”是未定义方向类型，即当应用既没有在model.json5文件设置，也没有在运行时调用setPreferredOrientation()设置时，系统默认应用使用该类型。此时，应用的显示方向由系统判定。通常直板机上默认竖屏显示且不支持旋转；平板上支持旋转到四个方向，且受控制中心系统旋转锁定开关控制。
+- “UNSPECIFIED”是未定义方向类型，即当应用既没有在module.json5文件设置，也没有在运行时调用setPreferredOrientation()设置时，系统默认应用使用该类型。此时，应用的显示方向由系统判定。通常直板机上默认竖屏显示且不支持旋转；平板上支持旋转到四个方向，且受控制中心系统旋转锁定开关控制。
 
 - “LOCKED”是锁定模式，通常用于应用拉起应用场景。设置该策略的应用，被其他应用拉起时，保持和前一个应用相同的方向。此策略生效时，应用的方向也可能因为应用的切换等原因而改变。
 

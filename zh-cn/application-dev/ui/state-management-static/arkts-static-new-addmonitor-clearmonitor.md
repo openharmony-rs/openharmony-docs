@@ -48,13 +48,13 @@ class Test {
     this.arrayMonitor = UIUtils.addMonitor(callbackArray, this.onArrayChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<string>(path)?.before} to ${m.value<string>(path)?.now}`);
     });
   }
 
-  onArrayChange(m: IMonitor) {
+  onArrayChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] array ${path} value has changed from ${m.value<int>(path)?.before} to ${m.value<int>(path)?.now}`);
     });
@@ -106,7 +106,7 @@ class Test {
     this.valueMonitorDuplicated = UIUtils.addMonitor(() => this.value, this.onChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<int>(path)?.before} to ${m.value<int>(path)?.now}`);
     })
@@ -160,13 +160,13 @@ class Test {
     this.value2Monitor = UIUtils.addMonitor(() => this.value2, this.onSyncChange, { isSynchronous: true });
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value has changed from ${m.value<string>(path)?.before} to ${m.value<string>(path)?.now}`);
     });
   }
 
-  onSyncChange(m: IMonitor) {
+  onSyncChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value has changed synchronously from ${m.value<string>(path)?.before} to ${m.value<string>(path)?.now}`);
     });
@@ -464,7 +464,7 @@ class Test {
     this.valueMonitorDuplicated = UIUtils.addMonitor(() => this.valueError, this.onChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     // 日志正常打印
     console.info('[DynamicMonitor] Callback triggered.');
 
@@ -519,13 +519,13 @@ class Test {
     this.mapMonitor = UIUtils.addMonitor(() => this.map, this.onMapChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<Array<int>>(path)?.before} to ${m.value<Array<int>>(path)?.now}`);
     })
   }
 
-  onMapChange(m: IMonitor) {
+  onMapChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<Map<number, string>>(path)?.before} to ${m.value<Map<number, string>>(path)?.now}`);
     })
@@ -583,7 +583,7 @@ class Test {
   }
 
   @Monitor(['value'])
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<int>(path)?.before} to ${m.value<int>(path)?.now}`);
     })
@@ -639,7 +639,7 @@ class Test {
     this.valueMonitor = UIUtils.addMonitor(() => this.value, this.onChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<int>(path)?.before} to ${m.value<int>(path)?.now}`);
     })
@@ -724,7 +724,7 @@ class Test {
     this.arrayMonitor = UIUtils.addMonitor(callbackArray, this.onChange);
   }
 
-  onChange(monitor: IMonitor) {
+  onChange(monitor: IMonitor): void {
     console.info('[DynamicMonitor] Callback triggered.');
 
     monitor.dirty.forEach((path: string) => {
@@ -830,7 +830,7 @@ class Info {
     this.messageMonitor = UIUtils.addMonitor(() => this.message, this.onMessageChange);
     this.message = 'initialized';
   }
-  onMessageChange(monitor: IMonitor) {
+  onMessageChange(monitor: IMonitor): void {
     monitor.dirty.forEach((path: string) => {
       console.info(`message change from ${monitor.value<string>(path)?.before} to ${monitor.value<string>(path)?.now}`);
     });
@@ -872,7 +872,7 @@ class User {
   @Trace age: number = 10;
   ageMonitor?: IMonitorDecoratedVariable;
 
-  onChange(mon: IMonitor) {
+  onChange(mon: IMonitor): void {
     mon.dirty.forEach((path: string) => {
       console.info(`onChange: User property ${path} change from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
     });

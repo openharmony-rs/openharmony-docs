@@ -42,7 +42,7 @@ ArkTS-Sta: addGesture(gesture: GestureHandler, priority?: GesturePriority, mask?
 | ------ | ------ | ---- | -------------------------- |
 | gesture  |  ArkTS-Dyn: [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert)<br/>ArkTS-Sta: [GestureHandler](./ts-gesturehandler.md#gesturehandler23) | 是   | 手势处理器对象。 |
 | priority  |  [GesturePriority](./ts-gesturehandler.md#gesturepriority枚举说明) | 否   | 绑定手势的优先级。<br>默认值：GesturePriority.NORMAL |
-| mask  |  [GestureMask][GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ### addParallelGesture
 

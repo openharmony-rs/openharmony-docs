@@ -248,7 +248,7 @@ import { Computed } from '@kit.ArkUI';
      @Trace lastName: string = 'Li';
    
      @Computed
-     get fullName() {
+     get fullName(): string {
        console.info('---------Computed----------');
        return this.firstName + ' ' + this.lastName;
      }

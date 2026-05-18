@@ -661,10 +661,6 @@ static saveCookieAsync(callback: AsyncCallback\<void>): void
 
 将当前可通过fetchCookie获取到的所有需要持久化的cookie异步保存到磁盘中。
 
-> **说明：**
->
-> - Cookie信息存储在应用沙箱路径下/proc/{pid}/root/data/storage/el2/base/cache/web/Cookies。
-
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**

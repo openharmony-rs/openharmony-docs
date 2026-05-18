@@ -1,8 +1,8 @@
 # 自定义组件的生命周期（推荐）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @seaside_wu1; @xin11112-->
-<!--Designer: @chenbenzhi-->
+<!--Owner: @xin11112-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -119,6 +119,38 @@ ComponentRecycle: MethodDecorator
 **示例：**
 
 参见[生命周期使用示例](#生命周期使用示例)。
+
+## \@ComponentActive
+
+ArkTS-Dyn: ComponentActive: MethodDecorator
+
+自定义组件由非激活状态转变为激活状态后，调用此装饰器装饰的函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## \@ComponentInactive
+
+ArkTS-Dyn: ComponentInactive: MethodDecorator
+
+自定义组件由激活状态转变为非激活状态后，调用此装饰器装饰的函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+参见[激活状态生命周期使用示例](#激活状态生命周期使用示例)。
 
 ## CustomComponentLifecycle
 
@@ -529,6 +561,54 @@ struct Child {
 ## 激活状态生命周期使用示例
 
 以自定义组件复用场景为例，展示激活态与非激活态的状态切换与回调触发。
+
+**ArkTS-Dyn示例：**
+
+```ts
+import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State changeChild: boolean = false;
+
+  build() {
+    Column() {
+      Button('change').onClick(() => {
+        // 切换Child组件的显示状态，触发组件的回收或复用
+        this.changeChild = !this.changeChild;
+      })
+      if (this.changeChild) {
+        Child()
+      }
+    }
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @ComponentActive
+  myActive() {
+    // 组件从非激活状态变为激活状态时触发
+    console.info(`Child myActive`);
+  }
+
+  @ComponentInactive
+  myInactive() {
+    // 组件从激活状态变为非激活状态时触发
+    console.info(`Child myInactive`);
+  }
+
+  build() {
+    Text('Child')
+  }
+}
+```
+
+**ArkTS-Sta示例：**
 
 ```ts
 'use static'
