@@ -1507,6 +1507,8 @@ Obtains [CustomComponentContext](#customcomponentcontext) of the given @Componen
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name | Type                                | Mandatory|  Description             |
@@ -2169,6 +2171,12 @@ The **CustomComponentContext** class provides access to component-level services
 
 **Since**: 26.0.0
 
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
 ### getReusePool
 
 getReusePool(): IReusePool | undefined
@@ -2181,11 +2189,13 @@ Obtains the global reuse pool of the custom component. If the component does not
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type                                  |  Description                         |
 | -------------------------------------- | ------------------------------------------------ |
-| [IReusePool](#ireusepool) \| undefined | Reuse pool of the component (if configured); otherwise, the value is **undefined**.|
+| [IReusePool](#ireusepool) \| undefined | If a global reuse pool is configured for the current component, the reuse pool information is returned. Otherwise, **undefined** is returned.|
 
 **Example**
 
@@ -2207,9 +2217,9 @@ struct PoolOwner {
     const context = UIUtils.getCustomComponentContext(this);
     const pool = context.getReusePool();
     if (pool) {
-      console.info('A reuse pool has been configured.');
+      console.info('Global reuse pool configured.');
     } else {
-      console.info('No reuse pool exist for this component.');
+      console.info('No global reuse pool configured.');
     }
   }
 
@@ -2227,9 +2237,15 @@ The **IReusePool** API provides the features related to the global reuse pool of
 
 **Since**: 26.0.0
 
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
 ### getReusableInfo
 
-getReusableInfo(reusableComp: Function, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
 
 Obtains the information about the recycling instance of a given reusable component type in this reuse pool.
 
@@ -2239,11 +2255,13 @@ Obtains the information about the recycling instance of a given reusable compone
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name       | Type                                | Mandatory|  Description           |
 | ------------ | ------------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------- |
-| reusableComp | Function | Yes  | Name of the reusable custom component to be queried.|
+| constructor | [ReusableComponentConstructor](#reusablecomponentconstructor) | Yes  | Name of the reusable custom component to be queried.|
 | reuseId      | string   | No  | Reuse ID for filtering. If specified, only the information about the reuse pool with the reuse ID is returned. The default value is **undefined**, indicating that information about all reuse pools is returned.  |
 
 **Return value**
@@ -2286,7 +2304,7 @@ struct PoolOwner {
     // Query the type of components accepted by the pool.
     const info = pool.getReusableInfo(ReusableChild);
     if (info === undefined) {
-      console.info('ReusableChild is not accepted by this pool.');
+      console.info('No reuse pool that accepts ReusableChild');
     } else if (Array.isArray(info)) {
       // Multiple reuseId buckets are used.
       info.forEach((item: IReusableInfo, i: number) => {
@@ -2299,7 +2317,7 @@ struct PoolOwner {
 
     // Query a specific reuseId. A single IReusableInfo is always returned.
     const bucketInfo = pool.getReusableInfo(ReusableChild, 'A') as IReusableInfo;
-    console.info(`reuseId 'myId': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
+    console.info(`reuseId 'A': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
   }
 
   build() {
@@ -2330,6 +2348,8 @@ Pre-creates @Reusable/@ReusableV2 decorated components and places them in this r
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2429,6 +2449,8 @@ The **IReusableInfo** API provides information about the current number and maxi
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Parameter    | Type  | Read-Only| Optional|  Description                              |
 | -------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | count    | number | Yes  | No  | Number of components currently recycled in the pool. If **reuseId** is specified, **count** indicates the number of components with the reuse ID.                                  |
@@ -2513,5 +2535,19 @@ struct PoolOwner {
   }
 }
 ```
+
+## ReusableComponentConstructor
+
+type ReusableComponentConstructor = Function
+
+Function for initializing the reusable custom component.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 <!--no_check-->
