@@ -2748,3 +2748,5 @@ This section demonstrates the mechanism provided by ArkTS for creating GUIs. Ark
 [MVVM sample code](../ui/state-management/arkts-mvvm.md#sample-code) provides a complete ArkUI-based application to demonstrate its GUI programming features.
 
 For more details about ArkUI features, see [Basic Syntax Overview](../ui/state-management/arkts-basic-syntax-overview.md).
+
+<!--no_check-->
