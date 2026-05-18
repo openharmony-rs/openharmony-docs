@@ -201,7 +201,7 @@ onAuth(proxy: AgentHostProxy, handshakeData: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- |  -------- |
 | proxy | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md) | 是 | [AgentHostProxy](js-apis-inner-application-agentHostProxy.md)对象，用于向客户端发送安全认证请求。 |
-| data | string | 是 | 表示接收到的安全认证数据。 |
+| handshakeData | string | 是 | 表示接收到的安全认证数据。 |
 
 **示例：**
 
