@@ -23,8 +23,8 @@
 | 名称   | 类型               | 只读|  可选| 说明                                                         |
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
 | pixels | ArrayBuffer        | 否 |   否  | 像素。仅支持BGRA_8888格式的图像像素数据。 |
-| offset | number             | 否 |   否  |  偏移量。单位：字节。                                                     |
-| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位：字节。stride >= region.size.width*4。                   |
+| offset | number             | 否 |   否  |  偏移量。单位为字节（byte）。                                                     |
+| stride | number             | 否 |   否  | 跨距，内存中每行像素所占的空间。单位为字节（byte）。stride >= region.size.width*4。                   |
 | region | [Region](#region8) | 否 |   否  |区域，按照区域读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。 |
 
 ## ImageInfo
@@ -35,9 +35,9 @@
 
 | 名称 | 类型          | 只读 | 可选 | 说明       |
 | ---- | ------------- | --- |-----|---------- |
-| size<sup>6+</sup> | [Size](#size) | 否 |  否  |图片大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| size | [Size](#size) | 否 |  否  |图片大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | density<sup>9+</sup> | number | 否  | 否 |像素密度，单位为ppi。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。单位：字节。stride >= region.size.width*4 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。单位为字节（byte）。stride >= region.size.width*4 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | pixelFormat<sup>12+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否  |  否 | 像素格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | 否  |  否  |透明度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | mimeType<sup>12+</sup> | string  |  否  |   否  |图片真实格式（MIME type）。<br>图片解码和图片编码支持格式的范围不同，请避免直接将解码得到的图片真实格式作为图片编码时[PackingOption](#packingoption)的format。<br>可以使用ImageSource[属性](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#属性)中的supportedFormats和ImagePacker[属性](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#属性)中的supportedFormats查看解码和编码支持的格式范围。  |
@@ -55,8 +55,8 @@
 
 | 名称   | 类型   | 只读 |  可选  |说明           |
 | ------ | ------ | -- |-----| -------------- |
-| height | number | 否  |  否  |输出图片的高，单位：像素。 |
-| width  | number | 否  |  否 | 输出图片的宽，单位：像素。 |
+| height | number | 否  |  否  |输出图片的高，单位为像素（px）。 |
+| width  | number | 否  |  否 | 输出图片的宽，单位为像素（px）。 |
 
 ## HdrComposeOptions<sup>23+</sup>
 
@@ -80,7 +80,7 @@ Picture合成HDR时可配置的参数选项。
 | ------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | auxiliaryPictureType      | [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)              | 否   | 否   | 辅助图的图像类型。                                           |
 | size         | [Size](#size)                                                | 否   | 否   | 图片大小。 |
-| rowStride                 | number                                                       | 否   | 否   | 行距。单位为字节（Byte）。                                                       |
+| rowStride                 | number                                                       | 否   | 否   | 行距。单位为字节（byte）。                                                       |
 | pixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)                           | 否   | 否   | 像素格式。 |
 | colorSpace                | [colorSpaceManager.ColorSpaceManager](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspacemanager) | 否   | 否   | 目标色彩空间。                                               |
 
@@ -124,7 +124,7 @@ PixelMap的初始化选项。
 | 名称               | 类型                               | 只读 | 可选 | 说明             |
 | ------------------ | ---------------------------------- | ---- | ---- | ---------------- |
 | sampleSize         | number                             | 否   | 是   | 缩略图采样大小，默认值为1。当前只能取1。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| rotate             | number                             | 否   | 是   | 旋转角度。单位为度（deg）。默认值为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
+| rotate             | number                             | 否   | 是   | 旋转角度。单位为角度（deg）。默认值为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
 | editable           | boolean                            | 否   | 是   | 像素是否可被编辑。true表示可被编辑，false表示不可被编辑，默认值为false。<br>当取值为false时，可提升图片的渲染和传输性能，但是图片不可被二次编辑。例如，writePixels操作将失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。  |
 | desiredSize        | [Size](#size)                      | 否   | 是   | 期望输出大小，必须为正整数，若与原尺寸比例不一致，则会进行拉伸/缩放到指定尺寸，默认为原始尺寸。<br>注意：若解码接口同时传入了desiredSize参数与desiredRegion参数，需进一步传入cropAndScaleStrategy参数指定缩放与裁剪的先后顺序，推荐设置CROP_FIRST。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。   |
 | desiredRegion      | [Region](#region8)                 | 否   | 是   | 解码图像中由Region指定的矩形区域，当原始图像很大而只需要解码图像的一部分时，可以设置该参数，有助于提升性能，默认为原始大小。<br>注意：若解码接口同时传入了desiredSize参数与desiredRegion参数，需进一步传入cropAndScaleStrategy参数指定缩放与裁剪的先后顺序，推荐设置CROP_FIRST。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
@@ -175,8 +175,8 @@ PixelMap的初始化选项。
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
 | size<sup>7+</sup> | [Size](#size) | 否   | 否   | 区域大小。   |
-| x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位：像素。 |
-| y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位：像素。 |
+| x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位为像素（px）。 |
+| y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位为像素（px）。 |
 
 ## PackingOption
 
@@ -202,7 +202,7 @@ PixelMap的初始化选项。
 | 名称          | 类型           | 只读 | 可选 | 说明                                                         |
 | ------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
 | frameCount    | number         | 否   | 否   | GIF编码中指定的帧数。                                        |
-| delayTimeList | Array\<number> | 否   | 否   | GIF编码中设定每帧输出图像的延迟时间，取值需大于0。<br>- 单位为10毫秒。例如，取值为10时，实际单帧延迟是100毫秒。<br>- 如果长度小于frameCount，不足的部分将使用delayTimeList中的最后一个值进行填充。 |
+| delayTimeList | Array\<number> | 否   | 否   | GIF编码中设定每帧输出图像的延迟时间，取值需大于0。<br>- 单位为10毫秒（ms）。例如，取值为10时，实际单帧延迟是100毫秒。<br>- 如果长度小于frameCount，不足的部分将使用delayTimeList中的最后一个值进行填充。 |
 | disposalTypes | Array\<number> | 否   | 是   | GIF编码中设定每帧输出图像的帧过渡模式，如果长度小于frameCount，不足的部分将使用disposalTypes中的最后一个值进行填充，可取值如下：<br>- 0：不需要任何操作。<br>- 1：保持图形不变。<br>- 2：恢复背景色。<br>- 3：恢复到之前的状态。 |
 | loopCount     | number         | 否   | 是   | 表示在GIF编码中输出图片循环播放次数，取值范围为[0，65535]。<br>0表示无限循环；若无此字段，则表示不循环播放。 |
 
@@ -280,6 +280,7 @@ Gainmap图单个通道的数据内容，参考ISO 21496-1。
 | tiffMetadata | [TiffMetadata](arkts-apis-image-TiffMetadata.md) | 否   | 是   | TIFF图像元数据。<br>**起始版本：** 26.0.0 |
 | jfifMetadata | [JfifMetadata](arkts-apis-image-JfifMetadata.md) | 否   | 是   | JFIF图像元数据。<br>**起始版本：** 26.0.0 |
 | pngMetadata | [PngMetadata](arkts-apis-image-PngMetadata.md) | 否   | 是   | PNG图像元数据。<br>**起始版本：** 26.0.0 |
+| xmpMetadata | [XMPMetadata](arkts-apis-image-XMPMetadata.md) | 否   | 是   | XMP元数据。<br>**起始版本：** 26.0.0 |
 | avisMetadata | [AvisMetadata](arkts-apis-image-AvisMetadata.md) | 否   | 是   | AVIS图像元数据。<br>**起始版本：** 26.0.0 |
 
 ## DngMetadata<sup>24+</sup>
@@ -323,7 +324,7 @@ Dng图像元数据类，用于存储图像的元数据。
 | linearResponseLimit | number | 是 | 是 | 线性响应上限。 |
 | cameraSerialNumber | string | 是 | 是 | 相机序列号。 |
 | lensInfo | number[] | 是 | 是 | 镜头信息。 |
-| chromaBlurRadius | number | 是 | 是 | 色度模糊半径，单位：像素。 |
+| chromaBlurRadius | number | 是 | 是 | 色度模糊半径，单位为像素（px）。 |
 | antiAliasStrength | number | 是 | 是 | 抗锯齿滤波器强度。 |
 | shadowScale | number | 是 | 是 | 阴影区域缩放因子。 |
 | dngPrivateData | ArrayBuffer | 是 | 是 | 厂商私有数据块。 |
@@ -408,7 +409,7 @@ ImageReceiver的初始化选项。
 
 | 名称              | 类型                               | 只读 | 可选 | 说明               |
 | ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
-| size     | [Size](#size) | 否   | 是   | 图像的大小，包括宽与高，且值都大于0，单位为像素。<br>该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
+| size     | [Size](#size) | 否   | 是   | 图像的大小，包括宽与高，且值都大于0，单位为像素（px）。<br>该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
 | capacity | number | 否   | 是   | 可同时访问的最大图像数量。该值必须为正整数，且小于或等于64张。<br>该参数仅作为期望值，实际capacity由设备硬件决定。     |
 
 ## ImageBufferData<sup>23+</sup>
@@ -421,8 +422,8 @@ ImageReceiver的初始化选项。
 
 | 名称              | 类型              | 只读 | 可选 | 说明               |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |
-| rowStride   | number[]  | 是   | 否   | 颜色分量的行间距，单位为字节。<br>对于编码后的图片如JPEG，该属性无意义。<br>读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。|
-| pixelStride | number[]  | 是   | 否   | 颜色分量的像素间距，单位为字节。<br>对于编码后的图片如JPEG，该属性无意义。     |
+| rowStride   | number[]  | 是   | 否   | 颜色分量的行间距，单位为字节（byte）。<br>对于编码后的图片如JPEG，该属性无意义。<br>读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。|
+| pixelStride | number[]  | 是   | 否   | 颜色分量的像素间距，单位为字节（byte）。<br>对于编码后的图片如JPEG，该属性无意义。     |
 | byteBuffer  | ArrayBuffer | 是   | 否   | 图像缓冲区。     |
 
 ## ImageRawData<sup>24+</sup>
@@ -436,7 +437,54 @@ ImageReceiver的初始化选项。
 | 名称              | 类型              | 只读 | 可选 | 说明               |
 | ----------------- | ----------------- | ---- | ---- | ------------------ |
 | buffer  | ArrayBuffer | 否   | 否   | 图像缓冲区。     |
-| bitsPerPixel | number  | 否   | 否   | 每个像素在缓冲区数据中实际占用的位数，单位为比特。     |
+| bitsPerPixel | number  | 否   | 否   | 每个像素在缓冲区数据中实际占用的位数，单位为比特（bit）。     |
+
+## XMPTag
+
+表示XMP标签信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称          | 类型                                              | 只读 | 可选 | 说明              |
+| ------------- | ------------------------------------------------ | ---- | ---- | ---------------- |
+| xmpNamespace  | [XMPNamespace](#xmpnamespace)                    | 否   | 否   | XMP命名空间。     |
+| name          | string                                           | 否   | 否   | XMP标签名称。     |
+| type          | [XMPTagType](arkts-apis-image-e.md#xmptagtype)   | 否   | 否   | XMP标签类型。     |
+| value         | string                                           | 否   | 是   | XMP标签值。       |
+
+## XMPNamespace
+
+表示XMP命名空间。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称   | 类型    | 只读 | 可选 | 说明             |
+| ------ | ------ | ---- | ---- | --------------- |
+| uri    | string | 否   | 否   | XMP命名空间URI。 |
+| prefix | string | 否   | 否   | XMP命名空间前缀。 |
+
+## XMPEnumerateOptions
+
+表示XMP枚举选项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称          | 类型     | 只读 | 可选 | 说明                   |
+| ------------- | ------- | ---- | ---- | --------------------- |
+| isRecursive   | boolean | 否   | 是   | 表示是否进行递归遍历。<br>true表示进行递归遍历。false表示仅遍历直接子节点。默认为false。 |
+| onlyQualifier | boolean | 否   | 是   | 表示是否仅遍历限定符节点。<br>true表示仅遍历限定符节点。false表示遍历所有节点。默认为false。 |
 
 ## GetImagePropertyOptions<sup>(deprecated)</sup>
 

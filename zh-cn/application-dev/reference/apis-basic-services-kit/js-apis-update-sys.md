@@ -358,7 +358,7 @@ try {
 
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-获取新版本描述文件。使用callback异步回调。
+获取新版本描述信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -372,7 +372,7 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 | ------------------ | ---------------------------------------- | ---- | -------------- |
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息。         |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项。        |
-| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回新版本描述文件。 |
+| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回新版本描述信息。 |
 
 **错误码**：
 
@@ -423,7 +423,7 @@ try {
 
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
-获取新版本描述文件。使用Promise异步回调。
+获取新版本描述信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -442,7 +442,7 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 | 类型                                       | 说明                  |
 | ---------------------------------------- | ------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回新版本描述文件。 |
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回新版本描述信息。 |
 
 **错误码**：
 
@@ -600,7 +600,7 @@ try {
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-获取当前版本描述文件。使用callback异步回调。
+获取当前版本描述信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -613,7 +613,7 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 | 参数名                | 类型                                       | 必填   | 说明              |
 | ------------------ | ---------------------------------------- | ---- | --------------- |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项。          |
-| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回当前版本描述文件。 |
+| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回当前版本描述信息。 |
 
 **错误码**：
 
@@ -657,7 +657,7 @@ try {
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
-获取当前版本描述文件。使用Promise异步回调。
+获取当前版本描述信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -675,7 +675,7 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 | 类型                                       | 说明                   |
 | ---------------------------------------- | -------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回当前版本描述文件。 |
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回当前版本描述信息。 |
 
 **错误码**：
 
@@ -1712,7 +1712,7 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 | 参数名      | 类型                   | 必填   | 说明                                     |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当清除升级缓存成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当终止升级执行成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1912,7 +1912,7 @@ factoryReset(callback: AsyncCallback\<void>): void
 
 | 参数名      | 类型                   | 必填   | 说明                                     |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当恢复出厂执行失败时，err为错误对象，有回调；执行成功时，err为undefined，无回调。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当恢复出厂执行成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 

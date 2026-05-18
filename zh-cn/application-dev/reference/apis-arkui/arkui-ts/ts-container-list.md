@@ -195,7 +195,7 @@ cachedCount(count: number, show: boolean)
 
 设置列表中ListItem/ListItemGroup的预加载数量，并配置是否显示预加载节点。
 
-List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行ListItem。计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合[裁剪](ts-universal-attributes-sharp-clipping.md#clip12)或[内容裁剪](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+List设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行ListItem。计算ListItem行数时，会计算ListItemGroup内部的ListItem行数。如果ListItemGroup内没有ListItem，则整个ListItemGroup算一行。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 > **说明：**
 >
@@ -725,6 +725,26 @@ backPressBehavior(behavior: ListBackPressBehavior | undefined)
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | behavior  | [ListBackPressBehavior](#listbackpressbehavior) \| undefined | 是   | List组件的系统返回键行为选项。当前支持通过[ListBackPressBehavior](#listbackpressbehavior)参数，配置系统返回键生效时，是否收起已展开的ListItem的划出组件。<br/>设置为undefined时，恢复默认行为，即系统返回键生效时，收起已展开的ListItem的划出组件。|
+
+### enableEditMode
+
+enableEditMode(enabled: boolean | undefined)
+
+设置List是否启用编辑模式，启用编辑模式后可以在List组件内滑动多选[ListItem](ts-container-listitem.md)。未通过该接口设置时，不启用编辑模式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                     |
+| ------ | ------ | ---- | ---------------------------------------- |
+| enabled  | boolean \| undefined | 是   | 是否启用编辑模式。<br/>设置为true时启用编辑模式，可以滑动多选；设置为false或undefined时关闭编辑模式，不可滑动多选。 |
 
 ## ListItemAlign<sup>9+</sup>枚举说明
 
@@ -1614,7 +1634,7 @@ struct ListExample {
 ### 示例2（设置子元素对齐）
 该示例展示了不同ListItemAlign枚举值下，List组件交叉轴方向子元素对齐效果。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1671,7 +1691,7 @@ struct ListLanesExample {
 ### 示例3（设置编辑模式）
 该示例展示了如何设置当前List组件是否处于可编辑模式。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1735,7 +1755,7 @@ struct ListExample {
 ### 示例4（设置限位对齐）
 该示例展示了List组件设置居中限位的实现效果。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1797,7 +1817,7 @@ struct ListExample {
 
 如果配合状态管理V2使用，详情见：[List与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#滚动组件)。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2031,7 +2051,7 @@ interface TimeTable {
 ### 示例7（设置边缘渐隐）
 该示例实现了List组件开启边缘渐隐效果并设置边缘渐隐长度。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2071,7 +2091,7 @@ struct ListExample {
 
 该示例通过edgeEffect接口，实现了List组件设置单边边缘效果。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2158,7 +2178,7 @@ struct ListExample {
 
 该示例通过maintainVisibleContentPosition接口，实现了上滑无限加载历史消息场景。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2293,7 +2313,7 @@ struct ForEachSort {
 
 从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
 
-ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2628,9 +2648,9 @@ struct ContactsList {
 
 ### 示例17（设置多选聚拢动画）
 
-该示例通过打开List多选聚拢动画开关，实现了在ListItem上[长按弹出菜单](ts-universal-attributes-menu.md#bindcontextmenu8)时聚拢显示范围内被选中的ListItem。
+该示例通过打开List多选聚拢动画开关，实现了通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)在ListItem上长按弹出菜单时聚拢显示范围内被选中的ListItem。
 
-从API version 23开始，List组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
+从API version 23开始，List组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
 
@@ -2725,3 +2745,55 @@ struct ListExample {
 ```
 
 ![listMultiselectAnimation](figures/listMultiselectAnimation.gif)
+
+### 示例18（设置滑动多选）
+
+该示例通过使用[enableEditMode](#enableeditmode)接口，实现了在List上通过在热区中滑动改变ListItem的选中状态。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](#示例1添加滚动事件)。
+
+从API版本26.0.0开始，新增enableEditMode接口。
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4]);
+  @State isSelected: boolean[] = [];
+
+  onPageShow(): void {
+    let i: number = 0;
+    for (i = 0; i < 5; i++) {
+      this.isSelected.push(false);
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      List({ space: 10 }) {
+        LazyForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .fontSize(16)
+              .backgroundColor(Color.White)
+              .width('100%')
+              .height(50)
+              .textAlign(TextAlign.Center)
+          }
+          .selected(this.isSelected[item])
+        }, (item: number) => item.toString())
+      }
+      .enableEditMode(true)
+      .width('90%')
+      .height(300)
+      .scrollBar(BarState.Off)
+    }.width('100%').padding({ top: 10 }).backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+![listSwipeSelect](figures/listSwipeSelect.gif)

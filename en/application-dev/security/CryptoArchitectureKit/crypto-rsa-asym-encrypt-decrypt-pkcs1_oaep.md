@@ -17,7 +17,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1'** to create a **Cipher** instance for an RSA key. The key type is **RSA2048**, padding mode is **PKCS1_OAEP**, MD algorithm is **SHA256**, and mask digest algorithm is **MGF1_SHA1**.
 
-3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In **Cipher.init**, set **opMode** to **CryptoMode.ENCRYPT_MODE** (encryption) and **key** to **KeyPair.PubKey** (the key used for encryption).
+3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption) and key to **KeyPair.PubKey** (the key used for encryption).
    
    No encryption parameter is required for asymmetric key pairs. Therefore, set **params** to **null**.
 
@@ -30,7 +30,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 
 1. If RSA is used, the **Cipher** instance cannot be initialized repeatedly. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) to create a new **Cipher** instance.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In **Cipher.init**, set **opMode** to **CryptoMode.DECRYPT_MODE** (decryption) and **key** to **KeyPair.PriKey** (the key used for decryption). If PKCS1 is used, set **params** to **null**.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption) and key to **KeyPair.PriKey** (the key used for decryption). If PKCS1 is used, set **params** to **null**.
 
 3. Call [Cipher.setCipherSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setcipherspec10) to set the parameter **pSource** for **PKCS1_OAEP** before **Cipher.doFinal** is called. The value of **pSource** must be the same as that set in encryption. You can use [Cipher.getCipherSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getcipherspec10) to obtain OAEP-related parameters.
 

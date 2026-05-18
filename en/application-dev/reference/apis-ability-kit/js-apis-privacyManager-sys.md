@@ -76,7 +76,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0).then(() => {
   console.info('addPermissionUsedRecord success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 // with options param
@@ -86,7 +86,7 @@ let options: privacyManager.AddPermissionUsedRecordOptions = {
 };
 privacyManager.addPermissionUsedRecord(tokenID, 'ohos.permission.READ_AUDIO', 1, 0, options).then(() => {
   console.info('addPermissionUsedRecord success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`addPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -202,7 +202,7 @@ let request: privacyManager.PermissionUsedRequest = {
 
 privacyManager.getPermissionUsedRecord(request).then((data) => {
   console.info(`getPermissionUsedRecord success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedRecord fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -310,7 +310,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 privacyManager.setPermissionUsedRecordToggleStatus(true).then(() => {
   console.info('setPermissionUsedRecordToggleStatus success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`setPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -356,7 +356,7 @@ privacyManager.getPermissionUsedRecordToggleStatus().then((res) => {
   } else {
     console.info('get status is FALSE');
   }
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedRecordToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -411,7 +411,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -472,25 +472,25 @@ let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedT
 // without pid and usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with pid
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // with pid and usedType
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
   console.info('startUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -555,31 +555,31 @@ let usedType: privacyManager.PermissionUsedType = privacyManager.PermissionUsedT
 // Without the pid and usedType parameters
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // With the pid parameter
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // With the usedType parameter
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', -1, usedType).then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // With the pid and usedType parameters
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType).then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // With pid, usedType, and enhancedIdentity
 privacyManager.startUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, usedType, {enhancedIdentity: "test"}).then(() => {
   console.info('startUsingPermission success.');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`startUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -685,7 +685,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tokenID: number = 0; // Obtained from the accessTokenId field of ApplicationInfo in the BundleInfo of the application.
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -746,14 +746,14 @@ let pid: number = rpc.IPCSkeleton.getCallingPid();
 // without pid
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 
 // with pid
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -818,21 +818,21 @@ let pid: number = rpc.IPCSkeleton.getCallingPid();
 // Without the pid parameter
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO').then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 
 // With the pid parameter
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid).then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 
 // With the extended identity ID
 privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', pid, {enhancedIdentity: "test"}).then(() => {
   console.info('stopUsingPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`stopUsingPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1094,25 +1094,25 @@ let permissionName: Permissions = 'ohos.permission.CAMERA';
 // Without any parameter.
 privacyManager.getPermissionUsedTypeInfos().then(() => {
   console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in tokenId only.
 privacyManager.getPermissionUsedTypeInfos(tokenId).then(() => {
   console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in permissionName only.
 privacyManager.getPermissionUsedTypeInfos(null, permissionName).then(() => {
   console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 // Pass in tokenId and permissionName.
 privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then(() => {
   console.info('getPermissionUsedTypeInfos success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 ```

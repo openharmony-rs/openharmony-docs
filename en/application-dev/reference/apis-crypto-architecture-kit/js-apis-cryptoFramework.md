@@ -2037,7 +2037,7 @@ Generates a random key using this symmetric key generator. This API uses an asyn
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
-**RAND_priv_bytes()** of OpenSSL can be used to generate random keys.
+**RAND_priv_bytes()** of OpenSSL can be used as the underlying capability to generate random keys.
 
 > **NOTE**
 >
@@ -2082,7 +2082,7 @@ Generates a random key using this symmetric key generator. This API uses a promi
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
-**RAND_priv_bytes()** of OpenSSL can be used to generate random keys.
+**RAND_priv_bytes()** of OpenSSL can be used as the underlying capability to generate random keys.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2127,7 +2127,7 @@ Generates a random key using this symmetric key generator. This API returns the 
 
 This API can be used only after a **symKeyGenerator** instance is created by using [createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator).
 
-**RAND_priv_bytes()** of OpenSSL can be used to generate random keys.
+**RAND_priv_bytes()** of OpenSSL can be used as the underlying capability to generate random keys.
 
 > **NOTE**
 >

@@ -1178,7 +1178,7 @@ call.getCallTransferInfo(type, number)
 
 |          名称            |                 类型               | 必填 |       说明       |
 | ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](js-apis-call-sys.md#transferstatus8) |  是  | 转移状态。         |
+| status                   | TransferStatus |  是  | 转移状态。         |
 | number                   | string                             |  是  | 号码。             |
 | startHour   | number                             |  是  | 开始时间的小时数。 |
 | startMinute | number                             |  是  | 开始时间的分钟数。 |

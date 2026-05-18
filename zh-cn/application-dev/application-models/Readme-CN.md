@@ -43,8 +43,10 @@
       - [使用显式Want启动应用组件](ability-startup-with-explicit-want.md)
       - [常见action与entities（不推荐使用）](actions-entities.md)
     - [组件启动规则（Stage模型）](component-startup-rules.md)
+    - [应用的启动](application-startup-options.md)
     - [应用启动框架AppStartup](app-startup.md)
     - [应用预加载](preload-application.md)
+    - [应用重启](app-restart.md)
     - [获取应用异常退出原因](ability-exit-info-record.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->
@@ -73,7 +75,7 @@
       - [拉起快递类应用（startAbilityByType）](start-express-apps.md)
       - [拉起图片编辑类应用（startAbilityByType）](photoEditorExtensionAbility.md)
       - [拉起文件处理类应用（startAbility）](file-processing-apps-startup.md)
-    - [拉起系统应用](system-app-startup.md)<!--PR1--><!--PR1End-->
+    - [拉起系统应用](system-app-startup.md)<!--RP1--><!--RP1End-->
   - [进程模型](process-model-stage.md)
   - [线程模型](thread-model-stage.md)
   <!--Del-->

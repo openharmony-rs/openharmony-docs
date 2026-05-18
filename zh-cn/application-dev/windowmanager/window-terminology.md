@@ -28,7 +28,7 @@
 
   辅助窗口由应用自行管理创建和销毁，不会在“任务管理界面”中以一个独立的任务卡片显示，可以用于显示应用的辅助内容，例如弹窗等。
 
-  辅助窗口包括子窗口、全局悬浮窗、模态窗口、画中画和闪控球。其中子窗口分为独立子窗、非独立子窗。
+  辅助窗口包括子窗口、全局悬浮窗、模态窗口、画中画、闪控球和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)。其中子窗口分为独立子窗、非独立子窗。
 
   - 独立子窗：
   
@@ -38,7 +38,7 @@
     默认创建的子窗均为非独立子窗。创建子窗时[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened默认为false，此时创建的子窗为非独立子窗。
 ## 悬浮窗
 
-悬浮窗分为智慧多窗悬浮窗和全局悬浮窗。
+悬浮窗分为智慧多窗悬浮窗、全局悬浮窗和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)。
 
 - 智慧多窗悬浮窗是指设备屏幕上悬浮的、非全屏的应用窗口。
 
@@ -94,26 +94,6 @@
 电脑模式下，允许用户在一块屏幕上同时显示多个应用窗口。此时的应用窗口为[自由窗口](#自由窗口)。
 
 部分Tablet设备上，可通过下拉控制中心，点击“电脑模式”按钮开启电脑模式。
-
-## 沉浸式布局
-
-沉浸式布局是一种让应用界面聚焦内容，减少无关元素干扰的窗口状态。
-
-非[自由窗口](#自由窗口)可以通过调用[setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)进入沉浸式布局。
-
-| 非自由窗口的非沉浸式布局示意                    | 非自由窗口的沉浸式布局示意               |
-|----------------------------------------------|----------------------------------------|
-| ![no-immersive](figures/no-immersive.png)    | ![immersive](figures/immersive.png)    |
-
-自由窗口可以通过隐藏装饰栏进入沉浸式布局。
-
-| 自由窗口的非沉浸式布局示意                      | 自由窗口的沉浸式布局示意                 |
-|----------------------------------------------|----------------------------------------|
-| ![freewindow-no-immersive](figures/freewindow-no-immersive.png)    | ![freewindow-immersive](figures/freewindow-immersive.png)    |
-
-应用窗口进入沉浸式布局之后，页面的所有组件布局范围从安全区域扩展为整个窗口。可以通过[isImmersiveLayout](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20)判断当前窗口是否处于沉浸式布局。
-
-多设备场景下不同窗口形态的沉浸式开发与实现可以参考[窗口沉浸式最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive)。
 
 ## 全局坐标系
 

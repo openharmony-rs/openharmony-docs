@@ -332,7 +332,7 @@ Subscribes to transcoding progress updates. An application can subscribe to only
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'progressUpdate'** in this case. This event is triggered by the system during transcoding.|
-| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback used to return the progress update event. The **number** parameter in the function indicates the current transcoding progress.|
+| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback used to return the progress update event. The **number** parameter in the function indicates the current transcoding progress in percentage.|
 
 **Example**
 

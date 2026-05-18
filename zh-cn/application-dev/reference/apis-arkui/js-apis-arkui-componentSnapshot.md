@@ -19,7 +19,7 @@
 >
 > - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用[createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
 >
-> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用[窗口截图](arkts-apis-window-Window.md#snapshot9)替代。
+> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用窗口截图接口[snapshot](arkts-apis-window-Window.md#snapshot9)替代。
 >
 > - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
@@ -537,70 +537,47 @@ getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
 **示例：**
 
 ```ts
-import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
-import { UIContext } from '@kit.ArkUI';
-
-class MyNodeController extends NodeController {
-  public node: FrameNode | null = null;
-  public imageNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.node = new FrameNode(uiContext);
-    this.node.commonAttribute.width('100%').height('100%');
-
-    let image = typeNode.createNode(uiContext, 'Image');
-    image.initialize($r('app.media.startIcon')).width('100%').height('100%').autoResize(true);
-    this.imageNode = image;
-
-    this.node.appendChild(image);
-    return this.node;
-  }
-}
-
-const SNAPSHOT_NODE_WIDTH = 2000000;
-const SNAPSHOT_NODE_HEIGHT = 200;
+import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct SnapshotExample {
-  private myNodeController: MyNodeController = new MyNodeController();
+struct SnapshotColorModeExample {
   @State pixmap: image.PixelMap | undefined = undefined;
 
   build() {
     Column() {
-      Column() {
+      Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        NodeContainer(this.myNodeController).width(SNAPSHOT_NODE_WIDTH).height(SNAPSHOT_NODE_HEIGHT).margin(5)
+        Image($r('app.media.startIcon'))
+          .autoResize(true)
+          .width(200)
+          .height(200)
+          .margin(5)
+          .id("root")
       }
 
-      Button("UniqueId get snapshot")
+      Button("click to generate UI snapshot")
         .onClick(() => {
-          try {
-            let componentSnapshot = this.getUIContext().getComponentSnapshot();
-            // 检查尺寸限制
-            let limitation = componentSnapshot.getSizeLimitation();
-            console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-            // 验证节点尺寸是否符合最大尺寸限制
-            if (limitation.maxWidth > SNAPSHOT_NODE_WIDTH && limitation.maxHeight > SNAPSHOT_NODE_HEIGHT) {
-              this.getUIContext()
-                .getComponentSnapshot()
-                .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
-                  { scale: 2, waitUntilRenderFinished: true })
-                .then((pixmap: image.PixelMap) => {
-                  this.pixmap = pixmap;
-                })
-                .catch((err: Error) => {
-                  console.error(`error: ${err}`);
-                })
-            } else {
-              console.info(`The screenshot size is too big, exceeding the GPU limitation`);
-            }
-          } catch (error) {
-            console.error(`UniqueId get snapshot Error: ${JSON.stringify(error)}`);
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          // 检查尺寸限制
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+          // 验证节点尺寸是否符合最大尺寸限制
+          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
+            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
+            this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
+              if (error) {
+                console.error(`error:${JSON.stringify(error)}`)
+                return;
+              }
+              this.pixmap = pixmap
+            })
           }
         }).margin(10)
     }
+    .width('100%')
+    .height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 }
