@@ -23,7 +23,7 @@
 
 自定义手势判定涉及以下接口。
 
-| **接口** | **说明** |
+| 接口 | 说明 |
 | ------- | -------------- |
 |[onGestureJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#ongesturejudgebegin)|用于手势拦截，是通用事件。在手势满足系统触发阈值场景下，回调给应用判断是否拦截手势。|
 |[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截、获取手势识别器和设置手势识别器开闭状态。是onGestureJudgeBegin接口的能力扩展，可以代替onGestureJudgeBegin接口。<br>获取手势识别器时，会获取一次交互中手势响应链上的所有手势识别器，以及当前即将触发成功的手势识别器，此时可以设置手势的激活状态。|
@@ -130,7 +130,7 @@
                  try {
                    this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
                  } catch (error) {
-                   concole.error('ShowToast failed!')
+                   console.error('ShowToast failed!')
                  }
                })
                .width('200vp').height('200vp')
@@ -150,7 +150,7 @@
                    try {
                      this.promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt') });
                    } catch (error) {
-                     concole.error('ShowToast failed!')
+                     console.error('ShowToast failed!')
                    }
                  })
                  .tag('longPress')
@@ -265,15 +265,17 @@
 
 4. 动态开闭手势：指通过手势识别器的[setEnabled](../reference/apis-arkui/arkui-ts/ts-gesture-common.md#setenabled12)方法，控制手势是否响应用户回调。
 
-手势并行动态控制涉及以下接口。
+### 内置手势并行动态控制
 
-| **接口** | **说明** |
+内置手势并行动态控制涉及以下接口。
+
+| 接口 | 说明 |
 | ------- | -------------- |
 |[shouldBuiltInRecognizerParallelWith](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#shouldbuiltinrecognizerparallelwith)|用于设置系统组件内置手势与其他手势并行。|
 |[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于手势拦截，获取手势识别器，初始化手势识别器开闭状态。|
-|[parallelGesture](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)|可使开发者定义的手势，与比他优先级高的手势并行。|
+|[parallelGesture](arkts-gesture-events-binding.md#parallelgesture并行手势绑定方法)|可使开发者定义的手势，与比它优先级高的手势并行。|
 
-以下示例是两个[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件的嵌套滚动场景，使用手势控制的API去控制外部组件和内部组件的嵌套滚动联动。
+以下示例在两个[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)组件的嵌套滚动场景下，使用手势控制的接口控制外部组件和内部组件的嵌套滚动联动。
 
 1. 使用shouldBuiltInRecognizerParallelWith接口设置外部Scroll组件的PanGesture手势与内部Scroll组件的PanGesture手势并行。
 
@@ -517,7 +519,7 @@
    
    ``` TypeScript
    import { Entry, Component, Stack, Scroll, Column, Text, Scroller, Alignment, TextAlign, BarState, Color, EdgeEffect, GestureRecognizer, GestureControl, BaseGestureEvent, ScrollableTargetInfo, GestureJudgeResult, PanGesture, GestureEvent, GestureRecognizerState, PanGestureEvent, Margin, ForEach, ScrollDirection } from '@kit.ArkUI';
-
+   
    @Entry
    @Component
    struct FatherControlChild {
@@ -527,7 +529,7 @@
      private childRecognizer: GestureRecognizer = new GestureRecognizer();
      private currentRecognizer: GestureRecognizer = new GestureRecognizer();
      private lastOffset: double = 0;
-
+   
      build() {
        Stack({ alignContent: Alignment.TopStart }) {
          Scroll(this.scroller) { // 外部滚动容器
@@ -653,6 +655,334 @@
      }
    }
    ```
+
+### 非内置手势并行动态控制
+
+从API版本26.0.0开始，可以使用shouldRecognizerParallelWith接口设置非内置手势与其他手势并行。
+
+非内置手势并行动态控制涉及以下接口。
+
+| 接口 | 说明 |
+| ------- | -------------- |
+|[shouldRecognizerParallelWith](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#shouldrecognizerparallelwith)|用于设置组件非内置手势与其他手势并行。|
+|[onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin)|用于获取手势识别器，再通过控制手势识别器开闭状态拦截手势。|
+
+以下示例在嵌套滚动场景下，使用手势控制的接口控制外部的Column组件和内部的Scroll组件的嵌套滚动联动。
+
+1. 使用shouldRecognizerParallelWith接口设置外部Column组件的非内置PanGesture手势与内部Scroll组件的内置PanGesture手势并行。
+
+   <!-- @[gesture_simultaneously](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+     for (let i = 0; i < others.length; i++) {
+       let target = others[i].getEventTargetInfo();
+       if (target) {
+         if (target.getId() == 'inner' && others[i].isBuiltIn() &&
+           others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+           this.currentRecognizer = current; // 保存当前组件的识别器
+           this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+           return others[i]; // 返回将要组成并行手势的识别器
+         }
+       }
+     }
+     return undefined;
+   })
+   ```
+
+2. 使用onGestureRecognizerJudgeBegin接口获取到Column和Scroll组件的PanGesture手势识别器，同时根据内外组件的边界条件，设置内外手势的开闭状态。
+
+   <!-- @[gesture_openingclosing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+     others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+     let target = current.getEventTargetInfo();
+     if (target && target.getId() == 'outer' &&
+       current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+       for (let i = 0; i < others.length; i++) {
+         let target = others[i].getEventTargetInfo();
+         if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
+           let panEvent = event as PanGestureEvent;
+           if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+             if (panEvent && panEvent.offsetY < 0) {
+               this.childRecognizer.setEnabled(false);
+               this.currentRecognizer.setEnabled(true);
+             } else {
+               this.childRecognizer.setEnabled(true);
+               this.currentRecognizer.setEnabled(false);
+             }
+           } else if (target.isBegin()) {
+             if (panEvent.offsetY > 0) {
+               this.childRecognizer.setEnabled(false);
+               this.currentRecognizer.setEnabled(true);
+             } else {
+               this.childRecognizer.setEnabled(true);
+               this.currentRecognizer.setEnabled(false);
+             }
+           } else {
+             this.childRecognizer.setEnabled(true);
+             this.currentRecognizer.setEnabled(false);
+           }
+         }
+       }
+     }
+     return GestureJudgeResult.CONTINUE;
+   })
+   ```
+
+3. 代码完整示例。
+
+   ArkTS-Dyn示例：
+
+   <!-- @[gesture_motioncontrol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestureAndMotionControl/GestureControl.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct CustomGestureControlGroup {
+     @State offsetY: number = 0
+     scroller2: Scroller = new Scroller();
+     private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+     private childRecognizer: GestureRecognizer = new GestureRecognizer();
+     private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+     private lastOffset: number = 0;
+   
+     build() {
+       Stack({ alignContent: Alignment.TopStart }) {
+         Column() { // 外部滚动容器
+           Column() {
+             Text('Scroll Area')
+               .width('90%')
+               .height(150)
+               .backgroundColor(0xFFFFFF)
+               .borderRadius(15)
+               .fontSize(16)
+               .textAlign(TextAlign.Center)
+               .margin({ top: 10 })
+             Scroll(this.scroller2) { // 内部滚动容器
+               Column() {
+                 Text('Scroll Area2')
+                   .width('90%')
+                   .height(150)
+                   .backgroundColor(0xFFFFFF)
+                   .borderRadius(15)
+                   .fontSize(16)
+                   .textAlign(TextAlign.Center)
+                   .margin({ top: 10 })
+                 Column() {
+                   ForEach(this.arr, (item: number) => {
+                     Text(item.toString())
+                       .width('90%')
+                       .height(150)
+                       .backgroundColor(0xFFFFFF)
+                       .borderRadius(15)
+                       .fontSize(16)
+                       .textAlign(TextAlign.Center)
+                       .margin({ top: 10 })
+                   }, (item: string) => item)
+                 }.width('100%')
+               }
+             }
+             .id('inner')
+             .width('100%')
+             .height(800)
+           }
+           .width('100%')
+           .offset({ y: -this.offsetY })
+         }
+         .id('outer')
+         .height(600)
+         .clip(true)
+         .gesture(
+           PanGesture()
+             .onActionStart((event: GestureEvent) => {
+               this.lastOffset = this.offsetY // 手势开始时，记录当前滚动位置
+             })
+             .onActionUpdate((event: GestureEvent) => {
+               let moveY = event.offsetY; // 手势移动时，计算新位置
+               let targetOffset = this.lastOffset - moveY; // 目标位置 = 初始位置 - 移动距离
+               this.offsetY = Math.max(0, Math.min(360, targetOffset));
+             })
+         )
+         .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+           for (let i = 0; i < others.length; i++) {
+             let target = others[i].getEventTargetInfo();
+             if (target) {
+               if (target.getId() == 'inner' && others[i].isBuiltIn() &&
+                 others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+                 this.currentRecognizer = current; // 保存当前组件的识别器
+                 this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+                 return others[i]; // 返回将要组成并行手势的识别器
+               }
+             }
+           }
+           return undefined;
+         })
+         .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+           others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+           let target = current.getEventTargetInfo();
+           if (target && target.getId() == 'outer' &&
+             current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+             for (let i = 0; i < others.length; i++) {
+               let target = others[i].getEventTargetInfo();
+               if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
+                 let panEvent = event as PanGestureEvent;
+                 if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                   if (panEvent && panEvent.offsetY < 0) {
+                     this.childRecognizer.setEnabled(false);
+                     this.currentRecognizer.setEnabled(true);
+                   } else {
+                     this.childRecognizer.setEnabled(true);
+                     this.currentRecognizer.setEnabled(false);
+                   }
+                 } else if (target.isBegin()) {
+                   if (panEvent.offsetY > 0) {
+                     this.childRecognizer.setEnabled(false);
+                     this.currentRecognizer.setEnabled(true);
+                   } else {
+                     this.childRecognizer.setEnabled(true);
+                     this.currentRecognizer.setEnabled(false);
+                   }
+                 } else {
+                   this.childRecognizer.setEnabled(true);
+                   this.currentRecognizer.setEnabled(false);
+                 }
+               }
+             }
+           }
+           return GestureJudgeResult.CONTINUE;
+         })
+       }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   ``` TypeScript
+   import { Entry, Component, Stack, Scroll, State, Column, Text, Scroller, Alignment, TextAlign, Color, GestureRecognizer, GestureControl, BaseGestureEvent, ScrollableTargetInfo, GestureJudgeResult, PanGesture, GestureEvent, PanGestureEvent, Margin, ForEach } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct FatherControlChild {
+     @State offsetY: number = 0;
+     scroller2: Scroller = new Scroller();
+     private arr: int[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+     private childRecognizer: GestureRecognizer = new GestureRecognizer();
+     private currentRecognizer: GestureRecognizer = new GestureRecognizer();
+     private tempRecognizer: GestureRecognizer = new GestureRecognizer();
+     private lastOffset: number = 0;
+   
+     build() {
+       Stack({ alignContent: Alignment.TopStart }) {
+         Column() { // 外部滚动容器
+           Column() {
+             Text('Scroll Area')
+               .width('90%')
+               .height(150)
+               .backgroundColor(0xFFFFFF)
+               .borderRadius(15)
+               .fontSize(16)
+               .textAlign(TextAlign.Center)
+               .margin({ top: 10 })
+             Scroll(this.scroller2) { // 内部滚动容器
+               Column() {
+                 Text('Scroll Area2')
+                   .width('90%')
+                   .height(150)
+                   .backgroundColor(0xFFFFFF)
+                   .borderRadius(15)
+                   .fontSize(16)
+                   .textAlign(TextAlign.Center)
+                   .margin({ top: 10 })
+                 Column() {
+                   ForEach(this.arr, (item: int) => {
+                     Text(item.toString())
+                       .width('90%')
+                       .height(150)
+                       .backgroundColor(0xFFFFFF)
+                       .borderRadius(15)
+                       .fontSize(16)
+                       .textAlign(TextAlign.Center)
+                       .margin({ top: 10 })
+                   }, (item: int) => item.toString())
+                 }.width('100%')
+               }
+             }
+             .id('inner')
+             .width('100%')
+             .height(800)
+           }
+           .width('100%')
+           .offset({ y: -this.offsetY })
+         }
+         .id('outer')
+         .height(600)
+         .clip(true)
+         .gesture(
+           PanGesture()
+             .onActionStart((event: GestureEvent) => {
+               this.lastOffset = this.offsetY; // 手势开始时，记录当前滚动位置
+             })
+             .onActionUpdate((event: GestureEvent) => {
+               let moveY = event.offsetY; // 手势移动时，计算新位置
+               let targetOffset = this.lastOffset - moveY; // 目标位置 = 初始位置 - 移动距离
+               this.offsetY = Math.max(0, Math.min(360, targetOffset));
+             })
+         )
+         .shouldRecognizerParallelWith((current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+           for (let i = 0; i < others.length; i++) {
+             let target = others[i].getEventTargetInfo();
+             if (target) {
+               if (target.getId() == 'inner' && others[i].isBuiltIn() &&
+                 others[i].getType() == GestureControl.GestureType.PAN_GESTURE) { // 找到将要组成并行手势的识别器
+                 this.currentRecognizer = current; // 保存当前组件的识别器
+                 this.childRecognizer = others[i]; // 保存将要组成并行手势的识别器
+                 return others[i]; // 返回将要组成并行手势的识别器
+               }
+             }
+           }
+           return this.tempRecognizer;
+         })
+         .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+           others: Array<GestureRecognizer>) => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
+           let target = current.getEventTargetInfo();
+           if (target && target.getId() == 'outer' &&
+             current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+             for (let i = 0; i < others.length; i++) {
+               let target = others[i].getEventTargetInfo();
+               if (target instanceof ScrollableTargetInfo && target.getId() == 'inner') { // 找到响应链上对应并行的识别器
+                 let panEvent = event as PanGestureEvent;
+                 if (target.isEnd()) { // 根据当前组件状态以及移动方向动态控制识别器使能状态
+                   if (panEvent && panEvent.offsetY < 0) {
+                     this.childRecognizer.setEnabled(false);
+                     this.currentRecognizer.setEnabled(true);
+                   } else {
+                     this.childRecognizer.setEnabled(true);
+                     this.currentRecognizer.setEnabled(false);
+                   }
+                 } else if (target.isBegin()) {
+                   if (panEvent.offsetY > 0) {
+                     this.childRecognizer.setEnabled(false);
+                     this.currentRecognizer.setEnabled(true);
+                   } else {
+                     this.childRecognizer.setEnabled(true);
+                     this.currentRecognizer.setEnabled(false);
+                   }
+                 } else {
+                   this.childRecognizer.setEnabled(true);
+                   this.currentRecognizer.setEnabled(false);
+                 }
+               }
+             }
+           }
+           return GestureJudgeResult.CONTINUE;
+         })
+       }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+     }
+   }
+    ```
 
 ## 阻止手势参与识别
 
