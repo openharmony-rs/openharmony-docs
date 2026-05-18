@@ -452,7 +452,7 @@ function registerCameraInputError(cameraInput: camera.CameraInput, camera: camer
 }
 ```
 
-## onError<sup>22+</sup>
+## onError<sup>23+</sup>
 
 onError(camera: CameraDevice, callback: ErrorCallback): void
 
@@ -523,7 +523,7 @@ function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: cam
 }
 ```
 
-## offError<sup>22+</sup>
+## offError<sup>23+</sup>
 
 offError(camera: CameraDevice, callback?: ErrorCallback): void
 
@@ -552,7 +552,7 @@ function unregisterCameraInputError(cameraInput: camera.CameraInput, camera: cam
 }
 ```
 
-## isPhysicalCameraOrientationVariable<sup>22+</sup>
+## isPhysicalCameraOrientationVariable<sup>23+</sup>
 
 isPhysicalCameraOrientationVariable(): boolean
 
@@ -577,7 +577,7 @@ function isPhysicalCameraOrientationVariable(cameraInput: camera.CameraInput): b
 }
 ```
 
-## getPhysicalCameraOrientation<sup>22+</sup>
+## getPhysicalCameraOrientation<sup>23+</sup>
 
 getPhysicalCameraOrientation(): number
 
@@ -602,7 +602,7 @@ function getPhysicalCameraOrientation(cameraInput: camera.CameraInput): number {
 }
 ```
 
-## usePhysicalCameraOrientation<sup>22+</sup>
+## usePhysicalCameraOrientation<sup>23+</sup>
 
 usePhysicalCameraOrientation(isUsed: boolean): void
 
