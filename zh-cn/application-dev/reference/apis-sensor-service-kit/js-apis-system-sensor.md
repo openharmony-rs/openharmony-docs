@@ -214,6 +214,7 @@ export default {
           let subscribeCompassOptions = {
             success: (ret) => {
               console.info(this.TAG + 'Succeeded in subscribing. Get data direction:' + ret.direction);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -225,6 +226,7 @@ export default {
           let subscribeProximityOptions = {
             success: (ret) => {
               console.info(this.TAG + 'Succeeded in subscribing. Get data distance:' + ret.distance);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -236,6 +238,7 @@ export default {
           let subscribeLightOptions = {
             success: (ret) => {
               console.info(this.TAG + 'Succeeded in subscribing. Get data intensity:' + ret.intensity);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -247,6 +250,7 @@ export default {
           let subscribeStepCounterOptions = {
             success: (ret) => {
               console.info(this.TAG + 'Succeeded in subscribing. Get step value:' + ret.steps);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -258,6 +262,7 @@ export default {
           let subscribeBarometerOptions = {
             success: (ret) => {
               console.info(this.TAG + 'Succeeded in subscribing. Get data value:' + ret.pressure);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -269,6 +274,7 @@ export default {
           let subscribeHeartRateOptions = {
             success: (ret) => {
               console.info(this.TAG + 'Succeeded in subscribing. Get heartRate value:' + ret.heartRate);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -280,6 +286,7 @@ export default {
           let subscribeOnBodyStateOptions = {
             success: (ret) => {
               console.info(this.TAG + 'Succeeded in subscribing. Get on-body state value:' + ret.value);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -294,6 +301,7 @@ export default {
               console.info(this.TAG + 'Succeeded in subscribing. Alpha data: ' + ret.alpha);
               console.info(this.TAG + 'Succeeded in subscribing. Beta data: ' + ret.beta);
               console.info(this.TAG + 'Succeeded in subscribing. Gamma data: ' + ret.gamma);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -308,6 +316,7 @@ export default {
               console.info(this.TAG + 'Succeeded in subscribing. X-axis data: ' + ret.x);
               console.info(this.TAG + 'Succeeded in subscribing. Y-axis data: ' + ret.y);
               console.info(this.TAG + 'Succeeded in subscribing. Z-axis data: ' + ret.z);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
@@ -319,6 +328,7 @@ export default {
           let getOnBodyStateOptions = {
             success: (ret) => {
               console.info(this.TAG + 'Succeeded in subscribing. On body state: ' + ret.value);
+              this.TextContent = JSON.stringify(ret);
             },
             fail: (data, code) => {
               console.error(`Failed to subscribe. Code: ${code}, data: ${data}`);
