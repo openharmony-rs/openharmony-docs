@@ -605,6 +605,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
+
 **起始版本**：12
 
 ## ohos.permission.RECEIVE_ENTERPRISE_POLICY_EVENT
@@ -616,6 +618,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：14
 
@@ -4700,6 +4704,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
 
 **起始版本**：18
 

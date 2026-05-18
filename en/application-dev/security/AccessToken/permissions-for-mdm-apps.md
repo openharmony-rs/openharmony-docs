@@ -434,6 +434,8 @@ Allows an application to manage a device administrator application.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Valid since**: 12
 
 ## ohos.permission.ENTERPRISE_RECOVERY_KEY
@@ -461,6 +463,8 @@ Allows a device administrator application to delegate other applications to set 
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 14
 
