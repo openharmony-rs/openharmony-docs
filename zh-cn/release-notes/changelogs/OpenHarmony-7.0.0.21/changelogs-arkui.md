@@ -83,7 +83,7 @@ struct Demo {
 
 **变更原因**
 
-[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)获焦后，其拉起的EmbeddedUIExtensionAbility窗口内焦点不会停留在容器组件，而是下发到容器内第一个可获焦子节点。当获焦节点为[TextInput](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)时，会出现软键盘被意外拉起的情况。
+[EmbeddedComponent](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)获焦后，其拉起的EmbeddedUIExtensionAbility窗口内焦点不会停留在容器组件，而是下发到容器内第一个可获焦子节点。当获焦节点为[TextInput](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)时，会出现软键盘被意外拉起的情况。
 
 **变更影响**
 
@@ -105,7 +105,7 @@ struct Demo {
 
 **变更的接口/组件**
 
-[EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)。
+[EmbeddedComponent](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)。
 
 **适配指导**
 
