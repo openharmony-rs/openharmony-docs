@@ -918,7 +918,7 @@ on(type: "dataReceive", callback: Callback\<ArrayBuffer\>): void
 | 参数名   | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | type     | string                  | 是   | 订阅事件，固定为'headersReceive'。headersReceive：响应头接收事件。 |
-| callback | Callback\<ArrayBuffer\> | 是   | 回调函数。当订阅成功时，err为undefined，data为获取到的HTTP流式数据接收数据，类型为ArrayBuffer；否则为错误对象。 |
+| callback | Callback\<ArrayBuffer\> | 是   | 回调函数。当订阅成功时，err为undefined，data为获取到的HTTP流式数据，类型为ArrayBuffer；否则为错误对象。 |
 
 **示例：**
 
