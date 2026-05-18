@@ -851,7 +851,7 @@ ArkTS-Sta: requestInStream(url: string, options?: HttpRequestOptions): Promise\<
 
 | 类型                                                                          | 说明                   |
 |--------------------------------------------------------------------------- |-------------------- |
-| ArkTS-Dyn: Promise\<[number](#responsecode)\><br>ArkTS-Sta: Promise\<int\> | 以Promise形式返回发起请求的结果。 |
+| ArkTS-Dyn: Promise\<number\><br>ArkTS-Sta: Promise\<int\> | 以Promise形式返回发起请求的结果。 |
 
 **错误码：**
 
