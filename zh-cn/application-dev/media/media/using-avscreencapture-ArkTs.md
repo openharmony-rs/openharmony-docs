@@ -229,8 +229,6 @@
    }
    ```
 
-   ArkTS-Sta示例：
-
    <!-- @[set_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets) -->
    
    ``` TypeScript
