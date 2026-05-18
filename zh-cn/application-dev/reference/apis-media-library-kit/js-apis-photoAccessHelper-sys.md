@@ -4783,6 +4783,80 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### createAssetsWithAlbum
+
+createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: boolean, albumUri?: string): Promise\<string[]>
+
+批量创建资产，同时支持选择是否指定相册以及是否实时生成缩略图。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_IMAGEVIDEO
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| creationSettings | [CreationSetting](arkts-apis-photoAccessHelper-i.md#creationsetting23)[] | 是 | 创建资产的设置列表。 |
+| isRealTimeThumb | boolean | 是 | 表示创建资产时是否实时生成缩略图。true表示在创建资产时实时生成缩略图，false表示在创建资产时不实时生成缩略图。 |
+| albumUri | string | 否 | 创建资产时指定目标相册的URI。如果未指定，默认值为空字符串。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<string[]> | Promise对象，返回创建成功的资产URI数组，创建失败时返回null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 |Scenario-specific parameters are incorrect. Possible causes are as follows:<br>1. The input parameter creationSettings is null or undefined.<br>2. The array length of creationSettings is bigger than 500. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes:<br>1. Database corrupted; <br>2. The file system is abnormal; <br>3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async handleTestApi() {
+  try {
+    // 构造创建参数。
+    let creationSettings = [
+      {
+        title: this.title,
+        fileNameExtension: this.fileNameExtension,
+        photoType: this.photoType
+      }
+    ];
+    // 指定相册地址。
+    let finalAlbumUri = this.albumUri.trim() || undefined;
+    // 创建资产时不实时生成缩略图。
+    let whetherRealTimeThumb = false;
+
+    // 调用接口，创建资产。
+    let result = await phAccessHelper.createAssetsWithAlbum(
+      creationSettings,
+      whetherRealTimeThumb,
+      finalAlbumUri
+    );
+    console.info('Succeeded in creating assets with album, uri is ' + result);
+  } catch (err) {
+    console.error(`createAssetsWithAlbum failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
