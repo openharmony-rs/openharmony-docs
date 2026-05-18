@@ -501,7 +501,7 @@ off(type: 'error', camera: CameraDevice, callback?: ErrorCallback): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
