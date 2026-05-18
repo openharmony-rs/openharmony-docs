@@ -1712,6 +1712,8 @@ characters(content: string): void
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**

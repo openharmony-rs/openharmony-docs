@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## Function Description
 
@@ -40,11 +40,11 @@ resources
 >
 > - Files in resource directories and resource group directories are considered as resource files and will not be obfuscated during application packaging.
 >
+> - For details about the resource packaging policies in directories other than **resources**, see [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+>
 > - The common resource files used across projects in the stage model are stored in the **resources** directory under **AppScope**.
 >
-> - The resource files in the **AppScope** directory are merged into the **resources** directory. If files with the same name exist in these two directories, the ones in the **AppScope** directory are retained after build and packaging.
->
-> - For details about the resource packaging policies in directories other than **resources**, see [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+> - During compilation and build, resource files in the **AppScope** directory are merged into the resource files of modules. If resources with the same name exist in the same resource directory and resource group directory in multiple locations, resources are packaged based on the following priority order (from highest to lowest): resources in **AppScope**, the module of the HAP package itself, and dependent HAR modules. If resource conflicts exist among multiple dependent HAR modules, resources are overridden based on the dependency order under dependencies in **oh-package.json5**. Dependencies listed earlier have higher priority.
 
 ### Resource Directories
 
@@ -100,6 +100,7 @@ The name of a qualifiers directory consists of one or more qualifiers that repre
 
 Table 5 Requirements for qualifier values
 
+<!--Table: 20%; 80%-->
 | Qualifier Type      | Description and Value Range                                 |
 | ----------- | ---------------------------------------- |
 | MCC&MNC| Indicates the MCC and MNC, which are obtained from the network where the device is registered.<br>The MCC can be either followed by the MNC with an underscore (_) in between or be used independently. For example, **mcc460** represents China, and **mcc460_mnc00** represents China Mobile.<br>For details about the value range, see [ITU-T E.212](https://www.itu.int/rec/T-REC-E.212) (the international identification plan for public networks and subscriptions).|
@@ -287,15 +288,22 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 ## Accessing Resources
 
-### HAP Resources
+### Accessing Resources in the Current Module or HAR Dependencies
 
- - Access resources through `$r` or `$rawfile`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
+**Method 1**: Access resources through `$r` or `$rawfile`. This method is suitable for simple and static resource reference scenarios, such as directly referencing resources in UI components.
+
+- Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>
+- To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
 
    > **NOTE**
    >
-   > For details about how to use native APIs to access raw files, see [Raw File Development](../napi/rawfile-guidelines.md).
+   > - If multiple placeholders are used in **string.json**, for example, `%1$s` and `%2$d` in the resource value, access the resource in the form `$r('app.string.label', 'aaa', 444)`. where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.
+   >
+   > - For the same resource, the resource ID in the **Resource** object obtained through `$r` changes when the application is recompiled and is therefore not fixed. Caching resource IDs is not recommended. If you must cache resource IDs, fix the resource IDs first. For details, see [Fixing the Resource ID](../tools/restool.md#fixing-the-resource-id).
+   >
+   > - For native access methods of **rawfile**, see the [Raw File Development Guide](../napi/rawfile-guidelines.md).
 
-  [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows.
+  [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files. The following is an example:
 
   <!-- @[app_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
   
@@ -334,7 +342,14 @@ The following shows the **attr** attribute configured in **string**. The **strin
   Text($r('app.plural.eat_apple', 2, 2)).id('app_plural_resource')
   ```
 
-- After obtaining a **ResourceManager** object through the application context, call APIs of [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) to access different resources. For example, you can call **getContext().resourceManager.getStringByNameSync('test')** to obtain string resources, and call **getContext().resourceManager.getRawFd('rawfilepath')** to obtain the descriptor information of the HAP where the rawfile is located, and then use **{fd, offset, length}** to access the rawfile.<br>For API version 22 and earlier, when intermediate code HAR and bytecode HAR access resources through resource ID-related APIs, an exception is thrown due to invalid IDs.Starting from API version 23, if [compatibleSdkVersion](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619) is configured to 23 or higher, intermediate code HAR and bytecode HAR can access resources normally through resource ID-related APIs after the **onCreate()** callback of the [AbilityStage](../application-models/abilitystage.md) in the current module is executed.
+**Method 2**: Access resources through the [resourceManager API](../reference/apis-localization-kit/js-apis-resource-manager.md). This method offers more APIs and is suitable for building more complex application logic, such as image effect processing.
+
+After obtaining the **resourceManager** object from the context of the current module, call resource management APIs to access different types of resources by resource ID or resource name. For example, you can call `getContext().resourceManager.getStringByNameSync('test')` to obtain a string resource, or call `getContext().resourceManager.getRawFd('rawfilepath')` to obtain the descriptor information of the HAP package where the **rawfile** is located. You can then access the **rawfile** using **{fd, offset, length}**.
+
+> **NOTE**
+>
+> When a HAR module accesses its own resources, in API version 22 and earlier, intermediate-code HARs and bytecode HARs throw exceptions when accessing resources through resource ID-related APIs due to invalid resource IDs. Starting from API version 23, if [compatibleSdkVersion](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619) is set to **23** or later, intermediate-code HARs and bytecode HARs can properly access resources through resource ID-related APIs after the **onCreate()** callback of [AbilityStage](../application-models/abilitystage.md) in the current module is executed.
+ 
 
 ### Cross-HAP/HSP Resources
 
@@ -346,15 +361,22 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 **Inter-Bundle, Cross-Module Access**
 
-- Create the context of the corresponding module through the [createModuleContext(context, moduleName)](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext) API. After obtaining the **resourceManager** object, call different APIs of [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
+**Method 1**: Access resources across HSP packages through `$r` or `$rawfile`. This method is suitable for simple and static resource reference scenarios, such as directly referencing resources in UI components.
 
-- Access resources through `$r` or `$rawfile`. Specifically, perform either of the following:
+- Use `$r('[hsp].type.name')` to access resources in the **resources** directory, where **[hsp]** is the HSP module name, **type** is the resource type, and **name** is the resource name.
+- Use `$rawfile('[hsp].name')` to access resources in the **rawfile** directory. If the **rawfile** directory contains multiple levels of subdirectories, specify the path starting from the first directory under **rawfile**, for example, `$rawfile('[hsp].firstDir/secondDir/icon.png')`.
 
-  1. Add dependencies to the **oh-package.json5** file in the **entry** directory. For example, **"dependencies": {"library": "file:../library"}**.
+> **NOTE**
+>
+> When `$r` and `$rawfile` are used to access resources across HSP modules, resources are not validated during compilation. Ensure that the resources exist in the corresponding package.
 
-  ![Alt text](figures/add_dependencies.png)
+Example:
 
-  2. Obtain resources using variables or the literal **[*Module name*].*type*.*name***, where ***module name*** indicates the name of the HSP module, ***type*** indicates the resource type, and ***name*** indicates the resource name. The following is an example:
+1. Add dependencies to the **oh-package.json5** file in the **entry** directory. For example, **"dependencies": {"library": "file:../library"}**.
+
+    ![Alt text](figures/add_dependencies.png)
+
+2. Obtain resources.
 
    <!-- @[hsp_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Second.ets) -->
    
@@ -402,10 +424,52 @@ The following shows the **attr** attribute configured in **string**. The **strin
    }
    ```
 
-  > **NOTE**
-  >
-  > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, $rawfile('[hsp].firstDir/secondDir/icon.png'). When **$r** or **$rawfile** is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
 
+**Method 2**: Access resources across HAP/HSP packages through **createModuleContext**. This method is suitable for scenarios where resource file data needs to be processed based on service logic, such as image encoding and decoding or string concatenation, and is recommended for small amounts of data.
+
+Call the [createModuleContext(context, moduleName)](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext) API to create the context of another module in the same application. After obtaining the **resourceManager** object, call different [resource management APIs](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
+
+**Method 3**: Export HSP resources for use by other modules. When accessing resources in an HSP package across packages, you are advised to implement a resource management class to encapsulate exported resources. Other modules do not need to be aware of resource names inside the HSP. If resource names inside the HSP change, other modules are not affected.
+
+The implementation is as follows:
+1. Encapsulate the resources provided by the HSP into a resource management class.
+
+   ``` TypeScript
+   export class ResManager {
+     static getPic(): Resource {
+       return $r('app.media.image');
+     }
+     static getDesc(): Resource {
+       return $r('app.string.test_string');
+     }
+   }
+   ```
+2. Declare the APIs to expose in the HSP entry file **index.ets**.
+
+   ```TypeScript
+   export { ResManager } from './src/main/ets/common/ResManager';
+   ```
+3. Other modules can import **ResManager** to access resources exported by the HSP.
+
+   ``` TypeScript
+   import { ResManager } from 'library';
+
+   @Entry
+   @Component
+   struct Third {
+     build() {
+       Column() {
+         Text(ResManager.getDesc())
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+         Image(ResManager.getPic())
+           .height(100)
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
 
 ### System Resources
 

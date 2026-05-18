@@ -1416,7 +1416,7 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
-## setMuteHint<sup>24</sup>
+## setMuteHint<sup>24+</sup>
 
 setMuteHint(mute: boolean): Promise&lt;void&gt;
 

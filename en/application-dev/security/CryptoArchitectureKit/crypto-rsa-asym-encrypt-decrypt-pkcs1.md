@@ -17,7 +17,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 
 2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'RSA1024|PKCS1'** to create a **Cipher** instance for encryption. The key type is **RSA1024**, and the padding mode is **PKCS1**.
 
-3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In **Cipher.init**, set **opMode** to **CryptoMode.ENCRYPT_MODE** (encryption) and **key** to **KeyPair.PubKey** (the key used for encryption).
+3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.ENCRYPT_MODE** (encryption) and key to **KeyPair.PubKey** (the key used for encryption).
 
    No encryption parameter is required for asymmetric key pairs. Therefore, pass in **null** in **params**.
 
@@ -30,16 +30,18 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 
 1. If RSA is used, the **Cipher** instance cannot be initialized repeatedly. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) to create a new **Cipher** instance.
 
-2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In **Cipher.init**, set **opMode** to **CryptoMode.DECRYPT_MODE** (decryption) and **key** to **KeyPair.PriKey** (the key used for decryption). If PKCS1 is used, set **params** to **null**.
+2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. Specifically, set the mode to **cryptoFramework.CryptoMode.DECRYPT_MODE** (decryption) and key to **KeyPair.PriKey** (the key used for decryption). If PKCS1 is used, set **params** to **null**.
 
 3. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to pass in the ciphertext and decrypt it.
 
 - Example (using asynchronous APIs):
 
-  ```ts
+  <!-- @[rsa_pkcs1_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1/RSAPKCS1Async.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // Encrypt the message.
   async function encryptMessagePromise(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -47,7 +49,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let encryptData = await cipher.doFinal(plainText);
     return encryptData;
   }
-
+  
   // Decrypt the message.
   async function decryptMessagePromise(privateKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -55,17 +57,17 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let decryptData = await decoder.doFinal(cipherText);
     return decryptData;
   }
-
-  // Generates an RSA key pair.
+  
+  // Generate an RSA key pair.
   async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let keyPair = await rsaGenerator.convertKey(pubKeyBlob, priKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return keyPair;
   }
-
+  
   async function main() {
     let pkData =
       new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
@@ -111,22 +113,25 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let encryptText = await encryptMessagePromise(pubKey, plainText);
     let decryptText = await decryptMessagePromise(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       // Encode the Uint8Array into a string in UTF-8 format.
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string:' + messageDecrypted);
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```
 
+
 - Example (using synchronous APIs):
 
-  ```ts
+  <!-- @[rsa_pkcs1_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1/RSAPKCS1Sync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   // Encrypt the message.
   function encryptMessage(publicKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -134,7 +139,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let encryptData = cipher.doFinalSync(plainText);
     return encryptData;
   }
-
+  
   // Decrypt the message.
   function decryptMessage(privateKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -142,17 +147,17 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let decryptData = decoder.doFinalSync(cipherText);
     return decryptData;
   }
-
-  // Generates an RSA key pair.
+  
+  // Generate an RSA key pair.
   function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyData };
     let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
     let keyPair = rsaGenerator.convertKeySync(pubKeyBlob, priKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return keyPair;
   }
-
+  
   function main() {
     let pkData =
       new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
@@ -198,12 +203,12 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
     let encryptText = encryptMessage(pubKey, plainText);
     let decryptText = decryptMessage(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       // Encode the Uint8Array into a string in UTF-8 format.
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string:' + messageDecrypted);
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```

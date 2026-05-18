@@ -149,6 +149,48 @@ Allows an application to add, remove, and edit call logs.
 
 **Valid since**: 8
 
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_VISION
+
+Allows a system application to use visual-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_HEARING
+
+Allows a system application to use hearing-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_ACTION
+
+Allows a system application to use interaction-related accessibility functions via CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.cli.BUNDLE_ACTIVE_INFO
 
 Allows an application to query the running status of specific applications using CLI commands.
@@ -160,5 +202,75 @@ Allows an application to query the running status of specific applications using
 **Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.INSTALL_BUNDLE
+
+Allows an application to install and uninstall applications other than enterprise applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.UNINSTALL_BUNDLE
+
+Allows an application to uninstall specific applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.GET_BUNDLE_INFO_PRIVILEGED
+
+Allows an application to query information about specific applications using CLI commands, such as the bundle name and version.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.REMOVE_BUNDLE_DATA_AND_CACHE_FILES
+
+Allows an application to clear the cache and data (including internal and external storage) of a specified application using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.MANAGE_DISPOSED_APP_STATUS
+
+Allows an application to set and query the disposition status of specific applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: user_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Since**: 26.0.0

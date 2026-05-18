@@ -34,7 +34,6 @@
       <!--DelEnd-->
       - [EmbeddedUIExtensionAbility](embeddeduiextensionability.md)
       - [使用AppServiceExtensionAbility组件实现后台服务](app-service-extension-ability.md)
-      - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
     - [AbilityStage组件管理器](abilitystage.md)
     - [应用上下文Context](application-context-stage.md)
     - 信息传递载体Want<!--want-->
@@ -43,8 +42,10 @@
       - [使用显式Want启动应用组件](ability-startup-with-explicit-want.md)
       - [常见action与entities（不推荐使用）](actions-entities.md)
     - [组件启动规则（Stage模型）](component-startup-rules.md)
+    - [应用的启动](application-startup-options.md)
     - [应用启动框架AppStartup](app-startup.md)
     - [应用预加载](preload-application.md)
+    - [应用重启](app-restart.md)
     - [获取应用异常退出原因](ability-exit-info-record.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->
@@ -92,8 +93,9 @@
       - [使用装饰器开发意图](insight-intent-decorator-development.md)
       - [附录：标准意图接入规范](insight-intent-access-specifications.md)
     - [调试意图](insight-intent-debug.md)
-  - 智能体开发指导<!--agent-->
-    - [Agent配置文件说明](agent-extension-configuration.md)
+  - 基于AgentExtensionAbility的智能体开发指导<!--agent-->
+    - [使用AgentExtensionAbility组件实现智能体服务](agent-extension-ability.md)
+    - [AgentExtensionAbility配置文件说明](agent-extension-configuration.md)
 - FA模型开发指导<!--fa-model-development-->
   - [FA模型开发概述](fa-model-development-overview.md)
   - FA模型应用组件<!--fa-model-application-components-->
