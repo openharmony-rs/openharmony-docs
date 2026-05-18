@@ -7,41 +7,41 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 26.0.0开始，支持编码前处理功能。
+从API版本26.0.0开始，支持编码前处理功能。
 
-## 功能概述
+## 功能简介
 
-编码前处理是视频编码器在输入帧进入编码管线之前执行的预处理能力，通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建的主编码器支持以下三种前处理功能：
+编码前处理是视频编码器在输入帧进入编码管线之前执行的预处理能力，通过[OH_VideoEncoder_CreatePrimaryWithPreproc](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)创建的主编码器支持以下三种前处理功能：
 
-| 功能 | 说明 | 典型场景 | 引入版本 |
-|------|------|----------|--------|
-| 降采样（Downsampling） | 将高分辨率帧缩放到低分辨率后送入编码器 | 低分辨率编码输出 | 26.0.0 |
-| 裁剪（Crop） | 从原始画面中提取指定矩形区域进行编码 | ROI 区域关注、局部特写 | 26.0.0 |
-| 丢帧（Drop Frame） | 按目标帧率选择性丢弃输入帧 | 降低带宽占用、自适应码率 | 26.0.0 |
+| 功能 | 说明 | 典型场景 |
+|------|------|----------|
+| 降采样（Downsampling） | 将高分辨率帧缩放到低分辨率后送入编码器 | 低分辨率编码输出 |
+| 裁剪（Crop） | 从原始画面中提取指定矩形区域进行编码 | ROI区域关注、局部特写 |
+| 丢帧（Drop Frame） | 按目标帧率选择性丢弃输入帧 | 降低带宽占用、自适应码率 |
 
 > **互斥规则**：降采样参数与裁剪参数**不能同时使用**。丢帧可与降采样或裁剪**组合使用**。
 
 
-## 使用场景
+### 使用场景
 
-### 场景一：低分辨率编码输出
+#### 场景一：低分辨率编码输出
 
-- 通过降采样缩放到低分辨率编码输出
+通过降采样缩放到低分辨率编码输出
 
-### 场景二：ROI 区域关注编码
+#### 场景二：ROI 区域关注编码
 
 - 对大尺寸摄像头画面使用**裁剪**功能，仅提取感兴趣区域进行编码
 - 可配合一入二出实现：主路全帧归档 + 副路 ROI 裁剪区域实时分析
 
-### 场景三：自适应码率（ABR）
+#### 场景三：自适应码率（ABR）
 
 - 网络正常时：不丢帧或轻度丢帧，保证画质
 - 网络拥堵时：通过 `SetParameter` 动态加大丢帧力度，降低输出帧率以节省带宽
 - 网络恢复后：将丢帧目标设为 `0.0` 取消丢帧
 
-## 约束与限制
+### 约束与限制
 
-### 基本约束
+#### 基本约束
 
 | 约束项 | 说明 |
 |--------|------|
@@ -50,7 +50,7 @@
 | 数据通路 | **仅支持 Surface 异步模式**，Buffer 模式和同步模式均不支持（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
 | 随帧参数 | 不支持 `RegisterParameterCallback` 接口（返回 `AV_ERR_OPERATE_NOT_PERMIT`） |
 
-### 降采样（Downsampling）约束
+#### 降采样（Downsampling）约束
 
 | 序号 | 约束规则 |
 |------|----------|
@@ -60,7 +60,7 @@
 | 4 | 越界处理：当宽度或高度不在支持范围内时，Configure/SetParameter 返回 `AV_ERR_INVALID_VAL` |
 | 5 | 与裁剪互斥：不能与裁剪参数（`CROP_LEFT/TOP/RIGHT/BOTTOM`）同时使用。若同时设置了降采样和裁剪参数，返回 `AV_ERR_INVALID_VAL` |
 
-### 裁剪（Crop）约束
+#### 裁剪（Crop）约束
 
 坐标系统说明：
 - `(left, top)` 为裁剪矩形的左上角坐标
@@ -78,7 +78,7 @@
 | 5 | 与降采样互斥：不能与降采样参数（`DOWNSAMPLING_WIDTH/HEIGHT`）同时使用。若同时设置，返回 `AV_ERR_INVALID_VAL` |
 | 6 | 行为效果：裁剪启用时，编码器仅对输入帧的裁剪区域进行编码，裁剪矩形之外的内容将被丢弃 |
 
-### 丢帧（Drop Frame）约束
+#### 丢帧（Drop Frame）约束
 
 | 序号 | 约束规则 |
 |------|----------|
@@ -89,6 +89,34 @@
 | 5 | 非法值：设置为负数或大于等于原始帧率的值时，返回 `AV_ERR_INVALID_VAL` |
 | 6 | 可组合性：可与降采样参数**同时使用** |
 | 7 | 可组合性：可与裁剪参数**同时使用** |
+
+#### 接口可用性约束
+
+对于通过OH_VideoEncoder_CreatePrimaryWithPreproc创建的编码器，以下接口的可用性如下：
+
+| 接口 | 是否可用 | 备注 |
+|------|:--------:|------|
+| [OH_VideoEncoder_RegisterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registercallback) | √ | 支持 |
+| [OH_VideoEncoder_RegisterParameterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registercallback) | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
+| `OH_VideoEncoder_PushInputParameter` | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
+| [OH_VideoEncoder_PushInputParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputparameter) | √ | 支持，可配置含前处理参数 |
+| [OH_VideoEncoder_GetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getsurface) | √ | 支持 |
+| [OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare) | √ | 支持，准备内部资源 |
+| [OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) | √ | 支持 |
+| [OH_VideoEncoder_Stop](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) | √ | 支持 |
+| [OH_VideoEncoder_Flush](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_flush) | √ | 支持 |
+| [OH_VideoEncoder_Reset](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_reset) | √ | 支持，重置到 Initialized 状态 |
+| [OH_VideoEncoder_SetParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter) | √ | 支持，运行时动态调整前处理等参数 |
+| [OH_VideoEncoder_NotifyEndOfStream](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_notifyendofstream) | √ | 支持，通知编码器EOS信息 |
+| [OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer) | √ | 支持 |
+| [OH_VideoEncoder_GetInputDescription](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription) | √ | 支持，包含前处理元数据 |
+| [OH_VideoEncoder_GetOutputDescription](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputdescription) | √ | 支持 |
+| [OH_VideoEncoder_IsValid](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_isvalid) | √ | 支持 |
+| [OH_VideoEncoder_Destroy](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy) | √ | 支持，销毁编码器实例 |
+| [OH_VideoEncoder_PushInputData](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputdata)  | × | Buffer 模式不支持 |
+| [OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer) | × | Buffer 模式不支持 |
+| [OH_VideoEncoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer) | × | 同步模式不支持 |
+| [OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer) | × | 同步模式不支持 |
 
 ## 开发步骤
 
@@ -121,9 +149,9 @@ if (ret != AV_ERR_OK || encoder == nullptr) {
 OH_AVFormat *format = OH_AVFormat_Create();
 
 // 基础编码参数（必填）。
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920);         // 输入宽度（像素）
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080);        // 输入高度（像素）
-OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 原始帧率（丢帧功能的前置依赖）
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920);         // 输入宽度（像素）。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080);        // 输入高度（像素）。
+OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 原始帧率（丢帧功能的前置依赖）。
 
 // 前处理参数（按需选用）。
 // 方案 A：降采样示例。
@@ -166,9 +194,9 @@ if (ret != AV_ERR_OK || window == nullptr) {
     return -1;
 }
 
-// 将 window 绑定到 Camera / XComponent 等数据源。
-// 例如：cameraManager->SetPreviewSurface(window)
-//       nativeXComponent->SetSurface(window)
+// 将window绑定到Camera/XComponent等数据源。
+// 例如：cameraManager->SetPreviewSurface(window)。
+//       nativeXComponent->SetSurface(window)。
 ```
 
 > **重要规则**：
@@ -176,7 +204,7 @@ if (ret != AV_ERR_OK || window == nullptr) {
 > - 对于一入二出场景，只需获取一次 Surface 即可（主/副共享同一输入源）
 
 ### 准备、启动、写入编码图像
-参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤7、8、10。
+参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤7、8、10。
 
 ### 运行时动态调整（可选）
 
@@ -211,14 +239,14 @@ void AdjustDownsampling(OH_AVCodec *enc, int newWidth, int newHeight)
     OH_AVFormat_Destroy(param);
 }
 ```
-其他编码器仍可动态配置，参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤9。
+其他编码器仍可动态配置，参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤9。
 
 ### 通知编码结束、释放编码帧、销毁编码器
-和普通编码器一致，参考[视频编码Surface模式](video-encoding.md#surface模式)的步骤12、13、17。
+和普通编码器一致，参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤12、13、17。
 
 ## GetInputDescription 查询
 
-启用前处理后，可通过 `GetInputDescription` 查询预处理后的实际输入信息及配置参数：
+启用前处理后，可通过 `GetInputDescription`查询预处理后的实际输入信息及配置参数：
 
 ```cpp
 OH_AVFormat *inputDesc = OH_VideoEncoder_GetInputDescription(encoder);
@@ -235,32 +263,5 @@ if (inputDesc != nullptr) {
 }
 ```
 
-## API 参考
-### 标准编解码 API 可用性
 
-对于通过 `OH_VideoEncoder_CreatePrimaryWithPreproc` 创建的编码器，以下标准 API 的可用性如下：
-
-| 接口 | 是否可用 | 备注 |
-|------|:--------:|------|
-| `OH_VideoEncoder_RegisterCallback` | √ | 支持 |
-| `OH_VideoEncoder_RegisterParameterCallback` | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
-| `OH_VideoEncoder_PushInputParameter` | × | 不支持随帧参数配置，返回 AV_ERR_OPERATE_NOT_PERMIT |
-| `OH_VideoEncoder_Configure` | √ | 支持，可配置含前处理参数 |
-| `OH_VideoEncoder_GetSurface` | √ | 支持 |
-| `OH_VideoEncoder_Prepare` | √ | 支持，准备内部资源 |
-| `OH_VideoEncoder_Start` | √ | 支持 |
-| `OH_VideoEncoder_Stop` | √ | 支持 |
-| `OH_VideoEncoder_Flush` | √ | 支持 |
-| `OH_VideoEncoder_Reset` | √ | 支持，重置到 Initialized 状态 |
-| `OH_VideoEncoder_SetParameter` | √ | 支持，运行时动态调整前处理等参数 |
-| `OH_VideoEncoder_NotifyEndOfStream` | √ | 支持，通知编码器EOS信息 |
-| `OH_VideoEncoder_FreeOutputBuffer` | √ | 支持 |
-| `OH_VideoEncoder_GetInputDescription` | √ | 支持，包含前处理元数据 |
-| `OH_VideoEncoder_GetOutputDescription` | √ | 支持 |
-| `OH_VideoEncoder_IsValid` | √ | 支持 |
-| `OH_VideoEncoder_Destroy` | √ | 支持，销毁编码器实例 |
-| `OH_VideoEncoder_PushInputData` | × | Buffer 模式不支持 |
-| `OH_VideoEncoder_PushInputBuffer` | × | Buffer 模式不支持 |
-| `OH_VideoEncoder_QueryInputBuffer` | × | 同步模式不支持 |
-| `OH_VideoEncoder_QueryOutputBuffer` | × | 同步模式不支持 |
 
