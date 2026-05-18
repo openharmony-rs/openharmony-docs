@@ -1038,7 +1038,7 @@ Picker的颜色模式。
 ```ts
 // xxx.ets
 // 从API version 23开始，推荐使用统一导入方式，从'@kit.MediaLibraryKit'导入所需模块。
-// 在API version 23之前的版本中，推荐使用分别导入方式。
+// 在API version 23之前的版本中，需要使用分别导入方式。
 // import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType, MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement, ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, videoPlayStateChangedCallback, VideoPlayerState } from '@ohos.file.PhotoPickerComponent';
 // import { photoAccessHelper } from '@ohos.file.photoAccessHelper';
 import {
