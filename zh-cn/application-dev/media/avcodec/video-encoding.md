@@ -800,7 +800,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 7. （可选）在运行过程中动态配置编码器参数。
 
-  <!--RP11-->
+   <!--RP11-->
    ```c++
    auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
    if (format == nullptr) {
