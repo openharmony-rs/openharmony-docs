@@ -709,7 +709,7 @@ ArkTS-Sta: requestInStream(url: string, options: HttpRequestOptions, callback: A
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                                                                 | 是   | 发起网络请求的URL地址。                                |
 | options  | HttpRequestOptions                                                                     | 是   | 参考[HttpRequestOptions](#httprequestoptions)。 |
-| callback | ArkTS-Dyn: AsyncCallback\<[number](#responsecode)\><br>ArkTS-Sta: AsyncCallback\<int\> | 是   |  回调函数。当请求成功，err为undefined，返回[HTTP请求响应错误码](#responsecode)；否则为错误对象。                                        |
+| callback | ArkTS-Dyn: AsyncCallback\<number\><br>ArkTS-Sta: AsyncCallback\<int\> | 是   |  回调函数。当请求成功，err为undefined，返回HTTP请求响应错误码；否则为错误对象。                                        |
 
 **错误码：**
 
@@ -851,7 +851,7 @@ ArkTS-Sta: requestInStream(url: string, options?: HttpRequestOptions): Promise\<
 
 | 类型                                                                          | 说明                   |
 |--------------------------------------------------------------------------- |-------------------- |
-| ArkTS-Dyn: Promise\<[number](#responsecode)\><br>ArkTS-Sta: Promise\<int\> | 以Promise形式返回[发起请求的结果](#responsecode)。 |
+| ArkTS-Dyn: Promise\<[number](#responsecode)\><br>ArkTS-Sta: Promise\<int\> | 以Promise形式返回发起请求的结果。 |
 
 **错误码：**
 
