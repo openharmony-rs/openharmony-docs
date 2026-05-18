@@ -6,6 +6,57 @@
 
 与ArkTS1.0(基于JavaScript)所使用的NAPI（Node-API）不同，ANI是为静态类型的ArkTS1.2全新设计的。强调在编译期确定类型信息，提供更高效，类型更安全的互操作能力。
 
+### 开发调试：VerifyANI
+
+**VerifyANI** 是 ANI 的验证模式：在调用进入 Release 实现之前，对 `ani_env` / `ani_vm` 的入参、引用合法性、调用上下文等做额外校验，并输出结构化诊断信息，帮助在开发阶段尽早发现误用 ANI API 的问题（例如空指针、非法引用、跨线程使用 `ani_env` 等）。实现上通过替换 `c_api` 函数表，在常规实现与验证实现之间透明切换；公开 API 签名与语义不变。
+
+> **注意**：VerifyANI 会带来一定性能开销，仅建议在开发、调试、CI 或专项测试中启用，**不要**在正式发布版本中默认开启。
+
+**启用VerifyANI的方式**
+
+| 场景 | 启用方式 | 生效时机 |
+| ---- | ---- | ---- |
+| OpenHarmony 应用进程 | 系统参数 `debug.verifyANI.enable=true` | 应用启动时 |
+| 自管 VM 的原生程序 / 单元测试 | `ANI_CreateVM` 传入 `--verify:ani` | 创建 VM 时 |
+| 使用 Ark 运行时命令行启动 ETS | 运行时选项 `--verify-ani` | VM 初始化时 |
+
+**方式一：通过 OpenHarmony 系统参数（应用进程，推荐）**
+
++ 在OpenHarmony系统中，针对应用进程启用VerifyANI最常用的方式是通过设置系统参数。应用 VM 多在 appspawn 预建、通常不带 `--verify:ani`，通过系统参数在 应用 Postfork 后 启用 VerifyANI；改参后需重启应用。
+
++ 在设备上执行命令来启用或禁用VerifyANI：
+    + 启用：`hdc shell param set debug.verifyANI.enable true`
+    + 禁用：`hdc shell param set debug.verifyANI.enable false`
+
+**方式二：通过 `ANI_CreateVM` 启动选项**
+
++ 对于自管的VM原生程序或单元测试，可以在创建VM时通过 `ANI_CreateVM` 传入 `--verify:ani`选项来启用VerifyANI。
++ 示例代码片段：
+
+```cpp
+std::array vmOptions {
+    ani_option {"--ext:boot-panda-files=/path/to/etsstdlib.abc", nullptr},
+    ani_option {"--verify:ani", nullptr},
+};
+
+ani_options createVmArgs {vmOptions.size(), vmOptions.data()};
+ani_vm *vm = nullptr;
+ani_status status = ANI_CreateVM(&createVmArgs, ANI_VERSION_1, &vm);
+```
++ 通过这种方式，可以在VM创建时立即启用VerifyANI。
+
+**方式三：通过Ark CLI选项**
+
++ 若通过 Ark ETS 运行时（如 `ark` / 相关测试启动器）以命令行创建 VM，可在运行时参数中增加 `--verify-ani`。
+
++ 示例命令行（具体可执行文件名以本地构建产物为准）：
+
+```bash
+# 在已有 panda/ark 启动命令后追加
+./ark --boot-panda-files=$ENV{PANDA_HOME}/plugins/ets/etsstdlib.abc --load-runtimes=ets --verify-ani ${target_name}.abc ${target_name}.ETSGLOBAL::main
+```
++ 这种方式适用于通过命令行工具启动的应用或测试场景，在VM初始化时即启用VerifyANI来执行验证。
+
 ## 参考索引
 | 名称 | 资源链接 | 主要用途 | 定位 |
 | ---- | ---- | ---- | ---- |
