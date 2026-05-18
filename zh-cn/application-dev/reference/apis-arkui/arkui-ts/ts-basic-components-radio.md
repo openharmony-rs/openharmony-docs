@@ -261,7 +261,7 @@ attributeModifier(modifier: AttributeModifier\<RadioAttribute\> | AttributeModif
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[RadioAttribute](#属性)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<CommonMethod> \| undefined | 是   | 在Radio组件上，定制属性区的方法。CommonMethod表示[通用属性](ts-component-attributes.md)和[通用事件](ts-component-general-events.md)。<br/>modifier：属性修改器，开发者需要自定义class实现AttributeModifier接口。<br/>当modifier的值为undefined时，不使用属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[RadioAttribute](#属性)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<CommonMethod> \| undefined | 是   | 在Radio组件上，定制属性区的方法。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。<br/>modifier：属性修改器，开发者需要自定义class实现AttributeModifier接口。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
 ## 事件
 
