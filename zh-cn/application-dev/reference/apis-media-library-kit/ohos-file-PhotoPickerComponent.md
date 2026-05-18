@@ -226,7 +226,7 @@ import {
   PickerController,
   PickerOptions,
 } from '@kit.MediaLibraryKit';
-import { ClickResult, ItemClickedNotifyCallback } from '@ohos.file.PhotoPickerComponent'
+import { ClickResult, ItemClickedNotifyCallback } from '@ohos.file.PhotoPickerComponent';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'clickedNotifyDemo';
