@@ -303,7 +303,7 @@ ArkTS-Sta: getExposureValue(): double
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | 获取曝光值。曝光补偿存在补偿，由于设备差异，补偿也存在差异。例如补偿为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。<br>接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 获取曝光值。曝光存在补偿，由于设备差异，补偿也存在差异。例如补偿为0.5。则设置1.2时，获取到实际生效曝光补偿为1.0。<br>接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
