@@ -408,3 +408,49 @@ class MyAbilityStage extends AbilityStage {
   }
 }
 ```
+
+### onLaunchFromHyperSnap<sup>24+</sup>
+
+onLaunchFromHyperSnap(): void
+
+当进程从[应用快照](./js-apis-app-ability-hyperSnapManager.md#实现原理)启动时调用。
+
+开发者可以通过重写此方法来处理应用从快照恢复时的特定逻辑，例如重新初始化某些资源或状态。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**示例：**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onLaunchFromHyperSnap(): void {
+    console.info('Launched from Hyper Snap, reinitializing resources...');
+    // 在此添加从快照恢复时的初始化逻辑
+  }
+}
+```
+
+### onAboutToCreateAbility<sup>24+</sup>
+
+onAboutToCreateAbility(): void
+
+当AbilityStage即将创建第一个Ability时调用。
+
+开发者可以通过重写此方法来执行在创建第一个Ability之前的准备工作。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**示例：**
+
+```ts
+import { AbilityStage } from '@kit.AbilityKit';
+
+export default class MyAbilityStage extends AbilityStage {
+  onAboutToCreateAbility(): void {
+    console.info('About to create first ability, preparing...');
+    // 在此添加创建第一个Ability前的准备工作
+  }
+}
+```
