@@ -120,11 +120,11 @@ typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(
 **参数：**
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md) | HTTP请求数据包指针（仅在请求阶段有效）。 |
-| [OH_Http_Interceptor_Response](capi-netstack-http-interceptor-response.md) | HTTP响应数据包指针（仅在响应阶段有效）。 |
-| int32_t *isModified | 输出参数，标识拦截器是否修改了数据包，对OH_TYPE_READ_ONLY类型拦截器不生效。 |
+| [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md) *request| HTTP请求数据包指针（仅在请求阶段有效）。 |
+| [OH_Http_Interceptor_Response](capi-netstack-http-interceptor-response.md) *response| HTTP响应数据包指针（仅在响应阶段有效）。 |
+| int32_t *isModified | 标识拦截器是否修改了数据包。对OH_TYPE_READ_ONLY类型拦截器无效，可配置为nullptr。<br>- 0表示未对数据执行修改操作。<br>- 非0表示已对数据执行修改操作。 |
 
 **返回：**
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Interceptor_Result](#oh_interceptor_result) | 拦截器处理结果。<br> - OH_CONTINUE：继续处理 <br>- OH_ABORT：拦截处理 |
+| [OH_Interceptor_Result](#oh_interceptor_result) | 拦截器处理结果。<br>- OH_CONTINUE：继续处理 <br>- OH_ABORT：拦截处理 |
