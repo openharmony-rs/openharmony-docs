@@ -30,8 +30,6 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
 **参数：**
 
 | 参数名       | 类型                                    | 必填 | 说明                               |
@@ -74,6 +72,29 @@ intelligence.getTextEmbeddingModel(textConfig)
   .catch((err: BusinessError) => {
     console.error("Failed to get TextModel and code is " + err.code);
   })
+```
+
+### intelligence.getSupportedCloudModel
+
+getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
+
+获取支持的云侧模型信息。使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**返回值：**
+
+| 类型                          | 说明                                 |
+| ----------------------------- | ------------------------------------ |
+| Promise&lt;Array&lt;[CloudModelInfo](#cloudModelInfo)&gt;&gt; | 返回云侧模型的Promise对象。 |
+
+**示例：**
+
+```ts
+textEmbedding.getSupportedCloudModel()
+  .then((info: Array<intelligence.CloudModelInfo>) => {
+    console.info("Succeeded in getting CloudModelInfo");
+  });
 ```
 
 ## intelligence.getImageEmbeddingModel
@@ -273,8 +294,6 @@ loadModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
 **返回值：**
 
 | 类型                          | 说明                                 |
@@ -290,34 +309,6 @@ loadModel(): Promise&lt;void&gt;
 | 801          | Capability not supported. |
 | 31300000     | Inner error. |
 
-### getSupportedCloudModel
-
-getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
-
-获取支持的云侧模型信息。使用Promise异步回调。
-
-**系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
-
-**返回值：**
-
-| 类型                          | 说明                                 |
-| ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;CloudModelInfo&gt;&gt; | 返回云侧模型的Promise对象。 |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-textEmbedding.loadModel()
-  .then(() => {
-    console.info("Succeeded in loading Model");
-  })
-  .catch((err: BusinessError) => {
-    console.error("Failed to load Model and code is " + err.code);
-  })
-```
-
 ### releaseModel
 
 releaseModel(): Promise&lt;void&gt;
@@ -325,8 +316,6 @@ releaseModel(): Promise&lt;void&gt;
 释放文本嵌入模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
-
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -340,7 +329,6 @@ releaseModel(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -367,8 +355,6 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
 **参数：**
 
 | 参数名       | 类型                                    | 必填 | 说明                               |
@@ -388,7 +374,6 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -417,8 +402,6 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备类型中返回801错误码。
-
 **参数：**
 
 | 参数名       | 类型                                    | 必填 | 说明                               |
@@ -438,7 +421,6 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
