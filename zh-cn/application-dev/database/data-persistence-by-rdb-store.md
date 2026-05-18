@@ -179,6 +179,7 @@
        // 请确保获取到RdbStore实例，完成数据表创建后，再进行数据库的增、删、改、查等操作
      }
    ```
+   ArkTS-Sta示例：
    <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->     
    
    ``` TypeScript
