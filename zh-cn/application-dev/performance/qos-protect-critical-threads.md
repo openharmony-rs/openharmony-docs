@@ -235,7 +235,6 @@ static napi_value highQoSCalculate(napi_env env, napi_callback_info info) {
 | ----------- | -------- | ---------------- |
 | 低QoS等级 QOS_BACKGROUND（反例） | 34  | 726.8毫秒 |
 | 高QoS等级 QOS_USER_INTERACTIVE（正例）   | 34   | 323.9毫秒   |  
-| 高QoS等级 QOS_USER_INTERACTIVE（正例）   | 34   | 323.9毫秒   |
 
 通过上述对比可以发现，**高负载压力下**，高QoS优先级的线程可以更快的执行完计算任务。因此在实践中我们通过合理设置线程优先级，给关键线程以相对较高的QoS等级可以有效地避免关键线程被打断，从而保证应用程序的稳定性和响应性。    
 
