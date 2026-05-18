@@ -796,7 +796,7 @@ for (let i = 0; i < 10; i++) {
 axContext.injectGestureSync(gesturePath);
 ```
 
-## AccessibilityElement<sup>9+</sup>
+## AccessibilityElement
 
 Defines the **AccessibilityElement**. Before calling APIs of **AccessibilityElement**, you must call [AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated) or [AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated) to obtain an **AccessibilityElement** instance.
 

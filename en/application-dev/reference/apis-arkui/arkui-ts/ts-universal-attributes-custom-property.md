@@ -36,7 +36,7 @@ Sets a custom property for this component. This API does not work for [custom co
 | T | Current component.|
 
 
-## Optional\<T><sup>12+</sup>
+## Optional\<T>
 
 type Optional\<T> = T | undefined
 
