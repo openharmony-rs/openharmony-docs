@@ -807,7 +807,7 @@ attributeModifier(modifier: AttributeModifier\<TimePickerAttribute> | AttributeM
 
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[TimePickerAttribute]> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是    | 设置属性修改器。<br/>当modifier的值为undefined时，不设置属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<TimePickerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。<br/>当modifier的值为undefined时，不设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。 <br/>TimePickerAttribute表示当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ## OnTimePickerChangeCallback<sup>18+</sup>
 

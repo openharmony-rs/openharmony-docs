@@ -998,7 +998,7 @@ attributeModifier(modifier: AttributeModifier\<TextPickerAttribute> | AttributeM
 
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[TextPickerAttribute]> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是    | 设置属性修改器。<br/>当modifier的值为undefined时，不设置属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<TextPickerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。<br/>当modifier的值为undefined时，不设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。<br/>TextPickerAttribute表示当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ## 事件
 
@@ -1055,7 +1055,7 @@ onChange(callback: Optional\<OnTextPickerChangeCallback>)
 
 ### onChange<sup>23+</sup>
 
-onChange(callback: (selectItem: string | string[], index: int | int[]) => void | undefined)
+onChange(callback: OnTextPickerChangeCallback | undefined)
 
 滑动TextPicker文本内容后，选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。当显示文本或图片加文本列表时，selectItem值为选中项中的文本值，当显示图片列表时，selectItem值为空。
 
@@ -1073,7 +1073,7 @@ onChange(callback: (selectItem: string | string[], index: int | int[]) => void |
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | (selectItem: string \| string[], index: int \| int[]) => void \| undefined | 是   | 滑动选中TextPicker文本内容后，触发的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [OnTextPickerChangeCallback](#ontextpickerchangecallback18) \| undefined | 是   | 滑动选中TextPicker文本内容后，触发的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onScrollStop<sup>14+</sup>
 
@@ -1219,7 +1219,11 @@ onAccept(callback: (value: string, index: number) => void)
 
 从API version 8开始支持，从API version 10开始废弃，无替代接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1236,7 +1240,11 @@ onCancel(callback: () => void)
 
 从API version 8开始支持，从API version 10开始废弃，无替代接口。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 | 参数名 | 类型   | 必填 | 说明                 |
@@ -1262,7 +1270,7 @@ onCancel(callback: () => void)
 | color | [ResourceColor](ts-types.md#resourcecolor) | 否    | 是   | 文本颜色。                     |
 | font  | [Font](ts-types.md#font)                 | 否    | 是   | 文本样式。 |
 | minFontSize  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否    | 是   | 文本最小显示字号，与maxFontSize配合使用。当设置minFontSize和maxFontSize时，font中的size将不生效。默认最大行数为1，自适应高度方式为MIN_FONT_SIZE_FIRST。详细规则请参考Text组件的[minFontSize](ts-basic-components-text.md#minfontsize)属性。                     |
-| maxFontSize  | double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否    | 是   | 文本最大显示字号。详细规则请参考Text组件的[maxFontSize](ts-basic-components-text.md#maxfontsize)属性。                     |
+| maxFontSize  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否    | 是   | 文本最大显示字号。详细规则请参考Text组件的[maxFontSize](ts-basic-components-text.md#maxfontsize)属性。                     |
 |  overflow   |   [TextOverflow](ts-appendix-enums.md#textoverflow) | 否    | 是   | 文本截断方式。当设置为MARQUEE时，该属性不生效。详细规则请参考Text组件的[textOverflow](ts-basic-components-text.md#textoverflow)属性。                     |
 
 ## OnTextPickerChangeCallback<sup>18+</sup>
