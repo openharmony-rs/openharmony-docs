@@ -64,6 +64,10 @@ enum OH_AudioSession_ConcurrencyMode
 
 音频并发模式。
 
+从API version 24开始，此枚举由native_audio_session_manager.h移动至此头文件。
+
+在API version 24之前，使用该枚举请引用native_audio_session_manager.h头文件；从API version 24开始，引用native_audio_session_manager.h或native_audio_session_base.h均可正常使用该枚举。
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |

@@ -288,7 +288,7 @@
     - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
       - [Text组件的文本绘制与显示](ndk-styled-string.md)
-      - [输入框文本事件监听](ndk-textarea-event.md)
+      - [添加输入框文本事件监听](ndk-textarea-event.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
   - [构建自定义组件](ndk-build-custom-components.md)
   - [嵌入ArkTS组件](ndk-embed-arkts-components.md)

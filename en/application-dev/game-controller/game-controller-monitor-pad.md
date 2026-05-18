@@ -1,4 +1,4 @@
-# Listening for Game Controller Axis and Button Events (C/C++)
+# Listening for Gamepad Axis and Button Events (C/C++)
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
 <!--Owner: @zhaoshuhao123-->
@@ -7,12 +7,12 @@
 <!--Adviser: @luwy2025-->
 
 > **NOTE**<br>
-> You need to develop [game controller online/offline status monitoring](game-controller-monitor-device.md) before registering listeners for game controller axis and button events.
+> You need to develop [device online/offline status monitoring](game-controller-monitor-device.md) before registering listeners for gamepad axis and button events.
 
 
 ## When to Use
 
-Game Controller Kit provides the capability of listening for game controller axis and button events. After you register a listener for these events, callback notifications can be obtained when players operate the controller's buttons and joysticks.
+Game Controller Kit provides the capability of listening for gamepad axis and button events. After you register a listener for these events, callback notifications can be obtained when players operate the gamepad's buttons and joysticks.
 
 
 ## Buttons

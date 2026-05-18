@@ -325,7 +325,7 @@ cachedCount(count: number, show: boolean)
 
 设置预加载的GridItem数量，并配置是否显示预加载节点。
 
-设置缓存后会在Grid显示区域上下各缓存cachedCount*列数个GridItem。配合[裁剪](ts-universal-attributes-sharp-clipping.md#clip12)或[内容裁剪](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+设置缓存后会在Grid显示区域上下各缓存cachedCount*列数个GridItem。配合裁剪[clip](ts-universal-attributes-sharp-clipping.md#clip12)或内容裁剪[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -1243,7 +1243,7 @@ struct GridExample {
 
 [GridLayoutOptions](#gridlayoutoptions10对象说明)的使用：irregularIndexes与onGetIrregularSizeByIndex。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1337,7 +1337,7 @@ struct GridExample {
 
 [nestedScroll](#nestedscroll10)和[onScrollFrameBegin](#onscrollframebegin10)的使用。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1527,7 +1527,7 @@ struct GridExample {
 >
 > 预览器窗口不支持显示拖拽跟手。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1624,7 +1624,7 @@ struct GridExample {
 
 [layoutDirection](#layoutdirection8)、[maxCount](#maxcount8)、[minCount](#mincount8)、[cellLength](#celllength8)的使用。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1678,7 +1678,7 @@ struct GridExample {
 
 双指缩放修改Grid列数。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1835,7 +1835,7 @@ struct GridColumnsTemplate {
 
 在默认情况下，左右两个GridItem的高度可能是不同的；在设置了Grid的[alignItems](#alignitems12)属性为GridItemAlignment.STRETCH后，一行左右两个GridItem中原本高度较小的GridItem会以另一个高度较大的GridItem的高度作为自己的高度。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1902,7 +1902,7 @@ struct Index {
 ### 示例10（设置边缘渐隐）
 通过[fadingEdge](ts-container-scrollable-common.md#fadingedge14)属性来设置边缘渐隐效果。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -1959,7 +1959,7 @@ struct GridExample {
 
 该示例通过[edgeEffect](#edgeeffect10)接口，实现了Grid组件设置单边边缘效果。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2194,7 +2194,7 @@ struct Index {
 
 该示例通过[scrollToIndex](ts-container-scroll.md#scrolltoindex)接口，实现了Grid组件滚动到指定位置。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2257,7 +2257,7 @@ struct GridScrollToIndexSample {
 
 该示例通过[PanGesture](./ts-basic-gestures-pangesture.md#pangesture-1)接口，实现了Grid组件一边滑动一边选择的效果。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -2832,7 +2832,7 @@ struct GridItemExample {
 
 该示例通过[拖拽事件](./ts-universal-events-drag-drop.md)实现拖拽GridItem到Grid边缘时Grid自动滚动的功能。
 
-GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
 ```ts
@@ -3051,9 +3051,9 @@ struct GridExample {
 
 ### 示例20（设置多选聚拢动画）
 
-该示例通过打开Grid多选聚拢动画开关，实现了在GridItem上[长按弹出菜单](ts-universal-attributes-menu.md#bindcontextmenu8)时聚拢显示范围内被选中的GridItem。
+该示例通过打开Grid多选聚拢动画开关，实现了通过[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)在GridItem上长按弹出菜单时聚拢显示范围内被选中的GridItem。
 
-从API version 23开始，Grid组件新增[编辑模式选项](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
+从API version 23开始，Grid组件新增[editModeOptions](#editmodeoptions23)接口，可以设置多选聚拢动画开关。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 

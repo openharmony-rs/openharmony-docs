@@ -25,7 +25,7 @@ Allows an application to access OpenHarmony Security Detection and Response Fram
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -37,7 +37,7 @@ Allows an application to control lights, including turning on and off lights.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 11
 
@@ -49,7 +49,7 @@ Allows an application to obtain information about all application accounts.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 7
 
@@ -61,7 +61,7 @@ Allows an application to call interfaces of the DeviceAuthCredMgr application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -73,7 +73,7 @@ Allows an SA to register the executor.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 9
 
@@ -85,7 +85,7 @@ Allows the push service to write data to an application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -97,7 +97,7 @@ Allows the push service to read data from an application.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -109,7 +109,7 @@ Allows an SA to call the network diagnosis, Wi-Fi, network adapter listening, an
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -121,7 +121,7 @@ Allows networking between different devices.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 9
 
@@ -133,7 +133,7 @@ Allows a standby component to publish a customized network limit event.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -145,7 +145,7 @@ Allows a system service to access the cellular call SA.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -157,7 +157,7 @@ Allows a system service to access the IMS SA.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 10
 
@@ -169,7 +169,7 @@ Allows an SA to delete the IAM user information without a token.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 9
 
@@ -181,6 +181,6 @@ Allows a system service to enable distributed hardware resources.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: false
+**Certificate-based authorization**: false
 
 **Valid since**: 11

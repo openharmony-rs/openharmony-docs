@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @anxuesm-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -849,19 +849,20 @@ declare namespace Test {
 export default Test;
 ```
 
-<!-- @[ts_namespace_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/app.ets) -->  
+<!-- @[obtaining_the_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->
 
 ``` TypeScript
 // app.ets
 import test from './test';
 
-let option = { id: '', type: 0 };
+let option: test.I = { id: '', type: 0 };
 test.foo('', option);
 ```
 
 **Reason for change**
 
 The object literal lacks a type. According to the analysis of **test.foo**, the **option** type comes from the declaration file. Therefore, you only need to import the type.
+
 In **test.d.ets**, **I** is defined in **namespace**. Import **namespace** to the .ets file and then obtain the corresponding type by name.
 
 ### Passing Parameters from the Object Literal to the Object Type
@@ -1865,7 +1866,7 @@ In a class, if a property is not initialized and is not assigned a value in the 
 1. Whenever possible, initialize properties during declaration based on service logic or assign values to the properties in constructors. Example:
 
 ```typescript
-//code with error
+// code with error
 class Test {
   value: number
   flag: boolean
@@ -1894,7 +1895,7 @@ class Test {
 
 ​ Mode (ii): **prop?:A**
 
-​ Mode 3 (iii): **prop: A | undefined = undefined**
+​ Method (iii): **prop: A | undefined = undefined**
 
 - From the perspective of performance, the **null** type is used only for type check during compilation and has no impact on VM performance. In contrast, **undefined | A** is treated as a union type and may result in additional overhead at runtime.
 - In terms of code readability and simplicity, **prop?:A** is the syntax sugar of **prop: A | undefined = undefined**. You are advised to use optional properties.
@@ -1906,7 +1907,7 @@ class Test {
 ```typescript
 function foo(fn: (value?: string) => void, value: string): void {}
 
-foo((value: string) => {}, ''); //error
+foo((value: string) => {}, ''); // error
 ```
 
 **After adaptation**

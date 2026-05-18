@@ -1879,7 +1879,7 @@ initSession(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<Huk
 
 Initializes a session for a key operation. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1923,7 +1923,7 @@ initSession(keyAlias: string, options: HuksOptions) : Promise\<HuksSessionHandle
 
 Initializes a session for a key operation. This API uses a promise to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1972,7 +1972,7 @@ updateSession(handle: number, options: HuksOptions, callback: AsyncCallback\<Huk
 
 Updates the key operation. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2018,7 +2018,7 @@ updateSession(handle: number, options: HuksOptions, token: Uint8Array, callback:
 
 Updates the key operation. The **updateSession** operation is used for user identity authentication and access control. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2061,7 +2061,7 @@ updateSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promis
 
 Updates the key operation. This API uses a promise to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2113,7 +2113,7 @@ finishSession(handle: number, options: HuksOptions, callback: AsyncCallback\<Huk
 
 Finishes the key operation. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2160,7 +2160,7 @@ finishSession(handle: number, options: HuksOptions, token: Uint8Array, callback:
 
 Finishes the key operation. The **finishSession** operation is used for user identity authentication and access control. This API uses an asynchronous callback to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2204,7 +2204,7 @@ finishSession(handle: number, options: HuksOptions, token?: Uint8Array) : Promis
 
 Finishes the key operation. This API uses a promise to return the result.
 
-**huks.initSession**, **huks.updateSession**, and **huks.finishSession** must be used together.
+The **huks.initSession**, **huks.updateSession**, and **huks.finishSession** APIs must be used together.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3649,7 +3649,7 @@ init(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<HuksHandle
 
 Initializes a session for a key operation. This API uses an asynchronous callback to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -3671,7 +3671,7 @@ init(keyAlias: string, options: HuksOptions) : Promise\<HuksHandle>
 
 Initializes a session for a key operation. This API uses a promise to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -3698,7 +3698,7 @@ update(handle: number, token?: Uint8Array, options: HuksOptions, callback: Async
 
 Updates the key operation. This API uses an asynchronous callback to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -3721,7 +3721,7 @@ update(handle: number, token?: Uint8Array, options: HuksOptions) : Promise\<Huks
 
 Updates the key operation. This API uses a promise to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -3749,7 +3749,7 @@ finish(handle: number, options: HuksOptions, callback: AsyncCallback\<HuksResult
 
 Finishes the key operation. This API uses an asynchronous callback to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
@@ -3771,7 +3771,7 @@ finish(handle: number, options: HuksOptions) : Promise\<HuksResult>
 
 Finishes the key operation. This API uses a promise to return the result.
 
-**huks.init**, **huks.update**, and **huks.finish** must be used together.
+The **huks.init**, **huks.update**, and **huks.finish** APIs must be used together.
 
 > **NOTE**
 >
