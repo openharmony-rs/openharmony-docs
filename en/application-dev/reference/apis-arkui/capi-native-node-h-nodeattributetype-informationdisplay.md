@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the attributes that can be set by ArkUI on the native side for information display components including **LoadingProgress** and **Progress**.
+Enumerates the attribute types that can be set by ArkUI on the native side for information display components including **LoadingProgress** and **Progress**.
 
 **Since**: 12
 

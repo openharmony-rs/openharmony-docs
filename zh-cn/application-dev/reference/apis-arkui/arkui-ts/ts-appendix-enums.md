@@ -388,6 +388,23 @@
 | DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
 
+## DialogDisplayMode
+
+弹窗在子窗口中的显示模式。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值   | 说明                 |
+| ------------ | ---- | -------------------- |
+| SCREEN_BASED | 0    | 弹窗在屏幕居中显示。 |
+| WINDOW_BASED | 1    | 弹窗在应用窗口居中显示。 |
+
 ## Direction
 
 定义元素水平布局的方向。
@@ -712,6 +729,61 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | DISCARD_SELF      | 3 | 丢弃当前节点自身的手势和事件。当前节点的手势和事件将从手势树中排除。兄弟节点（左侧和右侧）以及祖先节点的手势仍会继续收集。 |
 | DISCARD_LOWER_PRIORITY_SIBLINGS     | 4 | 丢弃左侧兄弟节点中待收集的手势和事件。当前节点以及已收集的右侧兄弟节点的手势和事件将被保留。将继续处理父节点以及祖先节点的收集流程。   |
 
+## GestureShortcut
+
+组件的智慧手势响应优先级枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| PRIMARY | 0 | 智慧手势响应优先级。当前智慧手势响应配置仅支持该取值。 |
+
+## SmartGestureAction
+
+智慧手势操作类型枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| NONE | 0 | 无动作。 |
+| PAGE_FORWARD | 1 | 向前翻页。包括向下和向右。 |
+| SCROLL_FORWARD | 2 | 向前滚动。包括向下和向右。 |
+| SELECT | 3 | 选中组件。 |
+| CLICK | 4 | 点击组件。 |
+| BACK_PRESS | 5 | 返回。 |
+
+## OperateIntention
+
+智慧手势原始操作意图枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| TAP | 0 | 敲一敲。 |
+| SLIDE_FORWARD | 1 | 划一划。 |
+| BACK_PRESS | 2 | 翻腕。 |
+
 ## HorizontalAlign
 
 定义子组件在水平方向上的对齐方式。
@@ -904,7 +976,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | ---- | ----- | ----- |
 | Down | 0 | 按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Up   | 1 | 按键松开。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| CANCEL   | 2 | 取消按键事件。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| CANCEL   | 3 | 取消按键事件。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## LineJoinStyle
 
@@ -1323,7 +1395,7 @@ type Nullable\<T> = T | undefined
 | Down   | 0    | 手指按下时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | Up     | 1    | 手指抬起时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
 | Move   | 2    | 手指按压并在屏幕上移动时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Cancel | 3    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| Cancel | 3    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.<!--RP2--><!--RP2End-->手指触摸过程中存在手写笔操作，手指的触摸操作会收到Cancel事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | HOVER_ENTER<sup>20+</sup> | 9    | 无障碍模式下，手指按下时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | HOVER_MOVE<sup>20+</sup>   | 10    | 无障碍模式下，触摸移动时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | HOVER_EXIT<sup>20+</sup> | 11    | 无障碍模式下，抬手时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
@@ -1337,10 +1409,10 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                         |
-| ----------- | -------------------------- |
-| MainOnly    | 只有主标题时，标题栏的推荐高度（56vp）。      |
-| MainWithSub | 同时有主标题和副标题时，标题栏的推荐高度（82vp）。 |
+| 名称          | 值 |说明                         |
+| ----------- | ----| -------------------------- |
+| MainOnly    | 0 | 只有主标题时，标题栏的推荐高度（56vp）。      |
+| MainWithSub | 1 | 同时有主标题和副标题时，标题栏的推荐高度（82vp）。 |
 
 ## TransitionType
 
@@ -1592,7 +1664,7 @@ type Nullable\<T> = T | undefined
 | 名称                             | 说明                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
 | SURFACE                          | 用于EGL/OpenGLES和媒体数据写入，单独展示开发者定制的绘制内容到屏幕上。背景色设置为黑色时走显示子系统（DSS）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| COMPONENT<sup>(deprecated)</sup> | 使用[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TEXTURE                          | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 

@@ -176,7 +176,7 @@ contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
 **参数：**
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| modifier | [ContentModifier\<ProgressConfiguration\>](#progressconfiguration12) | 是   | 在progress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)> | 是   | 在progress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### privacySensitive<sup>12+</sup>
 
@@ -198,7 +198,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | [Optional\<boolean\>](ts-universal-attributes-custom-property.md#optionalt) | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br/> 默认值：false<br/>**说明：** <br/>设置null表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br/> 默认值：false<br/>**说明：** <br/>设置null表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 
@@ -235,7 +235,7 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| enableScanEffect | boolean | 否 | 是 | 扫光效果的开关。仅支持[Linear、Ring、Capsule](#progresstype8枚举说明)类型的进度条。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false |
+| enableScanEffect | boolean | 否 | 是 | 扫光效果的开关。仅支持[ProgressType](#progresstype8枚举说明)类型为Linear、Ring、Capsule的进度条。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false |
 
 ## ProgressStyleOptions<sup>8+</sup>
 

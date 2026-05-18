@@ -817,8 +817,8 @@ drawVertices(vertexMode: VertexMode, vertexCount: number, positions: Array\<comm
 | ----------- | -------------  | ---- | ------------------------------- |
 | vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | 是   | 绘制顶点的连接方式。 |
 | vertexCount   | number         | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
-| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
-| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| texs    | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
 | colors      | Array\<number> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
 | indexCount  | number         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
 | indices  | Array\<number> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
@@ -1381,10 +1381,10 @@ drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<c
 | 参数名          | 类型                                      | 必填  | 说明                                             |
 | ------         | -------------------                      | ---- | -----------                                      |
 | glyphIds       | Array\<number\>                             | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。                                     |
-| glyphIdOffset  | number                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为glyphIds[m]~glyphIds[m+n]的部分。如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。|
+| glyphIdOffset  | number                                      | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。<br>如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。<br>如果glyphIdOffset小于0则抛出错误码25900001。|
 | positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。                  |
-| positionOffset | number                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效positions数组范围为positions[m]~positions[m+n]的部分。如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。|
-| glyphCount     | number                                      | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容。                               |
+| positionOffset | number                                      | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。<br>如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。<br>如果positionOffset小于0则抛出错误码25900001。|
+| glyphCount     | number                                      | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容，并抛出错误码25900001。<br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。                               |
 | font           | [Font](arkts-apis-graphics-drawing-Font.md) | 是   | 用于绘图的字体。                                 |
 
 **错误码：**
@@ -1399,7 +1399,7 @@ drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<c
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
@@ -2701,6 +2701,8 @@ isOpaque(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
+
+**返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |

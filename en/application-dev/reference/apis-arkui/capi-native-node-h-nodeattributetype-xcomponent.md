@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the **XComponent** attributes that can be set by ArkUI on the native side.
+Enumerates the **XComponent** attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 

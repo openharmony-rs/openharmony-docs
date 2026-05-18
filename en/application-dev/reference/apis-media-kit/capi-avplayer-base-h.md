@@ -41,6 +41,7 @@ The file declares the structs and enums of the AVPlayer.
 | [AVPlayerOnInfoType](#avplayeroninfotype) | AVPlayerOnInfoType | Enumerates the types of messages received by the AVPlayer.<br> The enum can be used in **OH_AVPlayerOnInfoCallback** and **OH_AVPlayerOnInfo** (deprecated) to indicate the type of information received by the AVPlayer.<br> Since API version 12, you are advised to use [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback). Different information (**infoBody**) can be obtained for different **OnInfo** types. **infoBody** contains the key-value pairs. For details, see the following enumerated value table.<br> If you are using API version 11 for development, use **OH_AVPlayerOnInfo (deprecated)**. For details about the mappings used in this deprecated API, see [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo).|
 | [AVPlayerBufferingType](#avplayerbufferingtype) | AVPlayerBufferingType | Enumerates the types of buffer messages of the AVPlayer.|
 | [AVPlayerTrackSwitchMode](#avplayertrackswitchmode) | AVPlayerTrackSwitchMode | Enumerates the track switching modes.|
+| [OH_VideoOutputResult](#oh_videooutputresult) | OH_VideoOutputResult | Enumerates the video output results.|
 
 ### Functions
 
@@ -256,6 +257,23 @@ Enumerates the track switching modes.
 | AV_TRACK_SWITCH_MODE_SMOOTH = 0 | Switch tracks smoothly.|
 | AV_TRACK_SWITCH_MODE_SEGMENT = 1 | Switch tracks by segment.|
 | AV_TRACK_SWITCH_MODE_CLOSEST = 2 | Switch to the closest track.|
+
+### OH_VideoOutputResult
+
+```c
+enum OH_VideoOutputResult
+```
+
+**Description**
+
+Enumerates the video output results.
+
+**Since**: 26.0.0
+
+| Enum Item| Description|
+| -- | -- |
+| OH_VIDEO_OUTPUT_OK = 0 | A decoded video frame is output.|
+| OH_VIDEO_OUTPUT_NO_IMAGE = 1 | No frame is available for rendering.|
 
 
 ## Function Description

@@ -81,6 +81,7 @@ Advertising<br>
 WindowManager<br>
 ResourceSchedule<br>
 USB<br>
+BusManager<br>
 DistributedDataManager<br>
 Common<br>
 Window<br>

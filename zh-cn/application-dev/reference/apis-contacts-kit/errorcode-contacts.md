@@ -14,7 +14,7 @@
 
 **错误信息**
 
-general error.
+General error.
 
 **错误描述**
 
@@ -98,7 +98,7 @@ Failed to set value to contacts data.
 
 **错误信息**
 
-User canceled.
+User cancel.
 
 **错误描述**
 

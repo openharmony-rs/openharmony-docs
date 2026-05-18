@@ -137,6 +137,7 @@
 | [int OH_UdmfDataLoadInfo_GetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo)](#oh_udmfdataloadinfo_getrecordcount) | - | 获取数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
 | [void OH_UdmfDataLoadInfo_SetRecordCount(OH_UdmfDataLoadInfo* dataLoadInfo, unsigned int recordCount)](#oh_udmfdataloadinfo_setrecordcount) | - | 设置数据加载信息[OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)中的记录数量。 |
 | [OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int index)](#oh_udmf_getdataelementat) | - | 从统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)数组中获取指定下标的统一数据对象数据。 |
+| [int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)](#oh_udmfproperty_setauthpermission) | - | 在[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中设置权限，对[OH_UdmfData](capi-udmf-oh-udmfdata.md)生效。 |
 
 ## 枚举类型说明
 
@@ -2331,3 +2332,28 @@ OH_UdmfData* OH_UDMF_GetDataElementAt(OH_UdmfData** dataArray, unsigned int inde
 | 类型 | 说明 |
 | -- | -- |
 | [OH_UdmfData*](capi-udmf-oh-udmfdata.md) | 执行成功则返回一个指向统一数据对象[OH_UdmfData](capi-udmf-oh-udmfdata.md)实例对象的指针，如果输入数组为空，则返回空。 |
+
+### OH_UdmfProperty_SetAuthPermission()
+
+```c
+int OH_UdmfProperty_SetAuthPermission(OH_UdmfProperty* pThis, uint32_t authPolicy)
+```
+
+**描述**
+
+在[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中设置权限，对[OH_UdmfData](capi-udmf-oh-udmfdata.md)生效。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)* pThis | 表示指向[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)实例的指针。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
+| uint32_t authPolicy | 表示拖拽场景下的URI授权策略，默认值READ+WRITE+PERSIST，只对单次数据生效，优先级较低。具体策略见[Udmf_AuthPermission](capi-uds-h.md#udmf_authpermission)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。<br>返回UDMF_E_OK表示执行成功。<br>返回UDMF_E_INVALID_PARAM表示通用错误码。<br>具体请参见[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |

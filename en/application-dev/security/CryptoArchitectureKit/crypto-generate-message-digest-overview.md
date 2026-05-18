@@ -26,7 +26,10 @@ The **Supported Type** column in the following table lists the algorithm to be u
 | HASH | SHA256 | 32 | 9+ |
 | HASH | SHA384 | 48 | 9+ |
 | HASH | SHA512 | 64 | 9+ |
+| HASH | MD2 | 16 | 26.0.0+ |
+| HASH | MD4 | 16 | 26.0.0+ |
 | HASH | MD5 | 16 | 9+ |
+| HASH | RIPEMD160 | 20 | 26.0.0+ |
 | HASH | SM3 | 32 | 10+ |
 | HASH | SHA3-256 | 32 | 22+ |
 | HASH | SHA3-384 | 48 | 22+ |

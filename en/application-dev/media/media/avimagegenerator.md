@@ -1,8 +1,8 @@
 # Using AVImageGenerator to Extract Video Images at a Specified Time (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,9 +12,9 @@ The full process of obtaining the video thumbnail includes creating an AVImageGe
 
 ## How to Develop
 
-Read [AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md) for the API reference.
+For details about the APIs, see [AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md).
 
-1. Call **createAVImageGenerator()** to create an AVImageGenerator instance.
+1. Use [createAVImageGenerator()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavimagegenerator12-1) to create an instance.
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -70,7 +70,7 @@ Read [AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageG
 Refer to the sample project to obtain the video thumbnail at a specified time.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVImageGenerator/AVImageGeneratorArkTS), and copy its resources to the corresponding directories.
-    ```
+    ```txt
     AVImageGeneratorArkTS
     entry/src/main/ets/
     └── pages
