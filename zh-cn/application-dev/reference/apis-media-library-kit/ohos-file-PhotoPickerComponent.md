@@ -218,17 +218,14 @@ type ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => v
 
 ```ts
 import {
-    ClickResult,
-    ClickType,
-    DataType,
-    ItemInfo,
-    ItemClickedNotifyCallback,
-    PhotoPickerComponent,
-    PickerController,
-    PickerOptions,
+  ClickType,
+  DataType,
+  ItemInfo,
+  PhotoPickerComponent,
+  PickerController,
+  PickerOptions,
 } from '@kit.MediaLibraryKit';
-import { router } from '@kit.ArkUI';
-
+import { ClickResult, ItemClickedNotifyCallback } from '@ohos.file.PhotoPickerComponent';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'clickedNotifyDemo';
@@ -279,7 +276,7 @@ private isOnClickedNotify: boolean = false;
     };
 
     aboutToAppear(): void {
-        let params = router.getParams() as Checks;
+        let params = this.getUIContext().getRouter().getParams() as Checks;
 
         this.pickerOptions.isSlidingSelectionSupported = true;
         this.pickerOptions.isSearchSupported = false;
@@ -1041,7 +1038,10 @@ Picker的颜色模式。
 
 ```ts
 // xxx.ets
-// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.PhotoPickerComponent'的导入方式。
+// 从API version 23开始，推荐使用统一导入方式，从'@kit.MediaLibraryKit'导入所需模块。
+// 在API version 23之前的版本中，推荐使用分别导入方式。
+// import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType, MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement, ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, videoPlayStateChangedCallback, VideoPlayerState } from '@ohos.file.PhotoPickerComponent';
+// import { photoAccessHelper } from '@ohos.file.photoAccessHelper';
 import {
   PhotoPickerComponent,
   PickerController,
