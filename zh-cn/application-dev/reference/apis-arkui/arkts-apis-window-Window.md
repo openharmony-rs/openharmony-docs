@@ -9092,9 +9092,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-该接口在支持并处于自由窗口状态的设备中可正常调用且立即生效；在支持但不处于自由窗口状态的设备中可正常调用，切换为自由窗口状态时生效；在不支持自由窗口状态的设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于自由窗口状态的设备中可正常调用且立即生效；在支持但不处于自由窗口状态的设备中可正常调用，切换为自由窗口状态时生效；在不支持自由窗口状态的设备中返回801错误码。
 
 **参数：**
 
