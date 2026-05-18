@@ -201,7 +201,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Uid | 用户ID | 8 | 是 | - |
 | HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 仅故障线程开启HiTraceChain功能时提供，详见[HiTraceChain介绍](hitracechain-intro.md)。 |
 | Process name | 故障进程名 | 8 | 是 | - |
-| App running unique id | 应用运行时唯一关联的id。 | 24 | 是 | - |
+| App running unique id | 应用运行时唯一关联的id。 | 26.0.0 | 是 | - |
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存状态 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[实现原理](#实现原理)。 |
