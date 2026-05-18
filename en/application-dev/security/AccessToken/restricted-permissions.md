@@ -1218,6 +1218,26 @@ Allows an application to query the call forwarding status.
 
 **Since**: 26.0.0
 
+## ohos.permission.MANAGE_SKILL
+
+Allows an application to use Skills.
+
+With this permission, an application can:
+
+- Query information about Skill packages.
+- Listen for events such as the installation, update, and uninstallation of Skill packages.
+- Access the sandbox directory where Skill packages are installed.
+
+<!--RP87--><!--RP87End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1
+
+**Since**: 26.0.0
+
 ## ohos.permission.kernel.AS_LDK_DRIVER
 
 Allows an application to install the PCIe driver.
