@@ -13,7 +13,7 @@
 >
 > 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 考虑到图片数据向量化处理的计算量和资源占用较大，当前仅支持在PC/2in1设备上使用；文本数据向量化处理可在PC/2in1、phone和tablet设备上使用。
+> 考虑到图片数据向量化处理的计算量和资源占用较大，当前仅支持在PC/2in1设备上使用；文本数据向量化处理可在PC/2in1、Phone和Tablet设备上使用。
 
 
 ## 导入模块
@@ -30,7 +30,7 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在PC/2in1、phone和tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -86,7 +86,7 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在PC/2in1、phone和tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -298,7 +298,7 @@ type Image = string
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在PC/2in1、phone和tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 ### loadModel
 
@@ -308,7 +308,7 @@ loadModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在PC/2in1、phone和tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -347,7 +347,7 @@ releaseModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在PC/2in1、phone和tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -388,7 +388,7 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在PC/2in1、phone和tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -438,7 +438,7 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 该接口在PC/2in1、phone和tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
