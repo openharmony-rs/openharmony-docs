@@ -115,7 +115,7 @@ Starting from API version 24, custom crash log specification settings and the ap
 
 ### Parameter Setting Example
 
-Refer to [Subscribing to Crash Events (C/C++)](hiappevent-watcher-crash-events-ndk.md#how-to-develop) to subscribe to crash events and set log configuration parameters. Then, use the [external_log](#params) field to obtain the application log content concatenated with **NativeCrash** type crashes
+Refer to [Subscribing to Crash Events (C/C++)](hiappevent-watcher-crash-events-ndk.md#how-to-develop) to subscribe to crash events and set log configuration parameters. Then, use the [external_log](#params) field to obtain the application log content concatenated with **NativeCrash**-type crashes
 
 > **NOTE**
 >
