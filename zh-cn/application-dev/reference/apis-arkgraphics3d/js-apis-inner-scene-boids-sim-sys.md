@@ -190,7 +190,7 @@ function stopBoidsSim(world: BoidsSimWorld): void {
 
 addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 
-在指定结点上添加群组行为组件。
+在指定节点上添加群组行为组件。
 
 **起始版本：** 26.0.0
 
@@ -203,7 +203,7 @@ addBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 | param | [BoidsSimParameters](#boidssimparameters) | 是 | 群组行为参数。 |
 
 **示例：**
@@ -235,7 +235,7 @@ function manageBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 
 setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 
-更新指定结点上的群组行为组件。
+更新指定节点上的群组行为组件。
 
 **起始版本：** 26.0.0
 
@@ -248,7 +248,7 @@ setBoidsSimComponent(node: Node, param: BoidsSimParameters): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 | param | [BoidsSimParameters](#boidssimparameters) | 是 | 群组行为参数。 |
 
 **示例：**
@@ -270,7 +270,7 @@ function updateBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 
 addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
-在指定结点上添加引力场组件。
+在指定节点上添加引力场组件。
 
 **起始版本：** 26.0.0
 
@@ -283,7 +283,7 @@ addBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 | param | [BoidsSimGravityParameters](#boidssimgravityparameters) | 是 | 引力场参数。 |
 
 **示例：**
@@ -310,7 +310,7 @@ function manageBoidsSimGravityComponent(world: BoidsSimWorld, fieldNode: Node): 
 
 setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 
-更新指定结点上的引力场组件。
+更新指定节点上的引力场组件。
 
 **起始版本：** 26.0.0
 
@@ -323,7 +323,7 @@ setBoidsSimGravityComponent(node: Node, param: BoidsSimGravityParameters): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 | param | [BoidsSimGravityParameters](#boidssimgravityparameters) | 是 | 引力场参数。 |
 
 **示例：**
@@ -340,7 +340,7 @@ function updateBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void 
 
 addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void
 
-在指定结点上添加斥力场组件。
+在指定节点上添加斥力场组件。
 
 **起始版本：** 26.0.0
 
@@ -353,7 +353,7 @@ addBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 | param | [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) | 是 | 斥力场参数。 |
 
 **示例：**
@@ -380,7 +380,7 @@ function manageBoidsSimRepulsionComponent(world: BoidsSimWorld, fieldNode: Node)
 
 setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): void
 
-更新指定结点上的斥力场组件。
+更新指定节点上的斥力场组件。
 
 **起始版本：** 26.0.0
 
@@ -393,7 +393,7 @@ setBoidsSimRepulsionComponent(node: Node, param: BoidsSimRepulsionParameters): v
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 | param | [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) | 是 | 斥力场参数。 |
 
 **示例：**
@@ -410,7 +410,7 @@ function updateBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): voi
 
 getBoidsSimComponent(node: Node): BoidsSimParameters \| null
 
-获取指定结点上的群组行为参数。
+获取指定节点上的群组行为参数。
 
 **起始版本：** 26.0.0
 
@@ -423,12 +423,12 @@ getBoidsSimComponent(node: Node): BoidsSimParameters \| null
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| [BoidsSimParameters](#boidssimparameters) \| null | 返回群组行为参数，若结点未挂载该组件则返回null。 |
+| [BoidsSimParameters](#boidssimparameters) \| null | 返回群组行为参数，若节点未挂载该组件则返回null。 |
 
 **示例：**
 ```ts
@@ -446,7 +446,7 @@ function queryBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 
 getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters \| null
 
-获取指定结点上的引力场参数。
+获取指定节点上的引力场参数。
 
 **起始版本：** 26.0.0
 
@@ -459,12 +459,12 @@ getBoidsSimGravityComponent(node: Node): BoidsSimGravityParameters \| null
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| [BoidsSimGravityParameters](#boidssimgravityparameters) \| null | 返回引力场参数，若结点未挂载该组件则返回null。 |
+| [BoidsSimGravityParameters](#boidssimgravityparameters) \| null | 返回引力场参数，若节点未挂载该组件则返回null。 |
 
 **示例：**
 ```ts
@@ -482,7 +482,7 @@ function queryBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void {
 
 getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters \| null
 
-获取指定结点上的斥力场参数。
+获取指定节点上的斥力场参数。
 
 **起始版本：** 26.0.0
 
@@ -495,12 +495,12 @@ getBoidsSimRepulsionComponent(node: Node): BoidsSimRepulsionParameters \| null
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) \| null | 返回斥力场参数，若结点未挂载该组件则返回null。 |
+| [BoidsSimRepulsionParameters](#boidssimrepulsionparameters) \| null | 返回斥力场参数，若节点未挂载该组件则返回null。 |
 
 **示例：**
 ```ts
@@ -518,7 +518,7 @@ function queryBoidsSimRepulsionComponent(world: BoidsSimWorld, node: Node): void
 
 removeBoidsSimComponent(node: Node): void
 
-移除指定结点上的群组行为组件。
+移除指定节点上的群组行为组件。
 
 **起始版本：** 26.0.0
 
@@ -531,7 +531,7 @@ removeBoidsSimComponent(node: Node): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 
 **示例：**
 ```ts
@@ -546,7 +546,7 @@ function removeBoidsSimComponent(world: BoidsSimWorld, node: Node): void {
 
 removeBoidsSimGravityComponent(node: Node): void
 
-移除指定结点上的引力场组件。
+移除指定节点上的引力场组件。
 
 **起始版本：** 26.0.0
 
@@ -559,7 +559,7 @@ removeBoidsSimGravityComponent(node: Node): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 
 **示例：**
 ```ts
@@ -574,7 +574,7 @@ function removeBoidsSimGravityComponent(world: BoidsSimWorld, node: Node): void 
 
 removeBoidsSimRepulsionComponent(node: Node): void
 
-移除指定结点上的斥力场组件。
+移除指定节点上的斥力场组件。
 
 **起始版本：** 26.0.0
 
@@ -587,7 +587,7 @@ removeBoidsSimRepulsionComponent(node: Node): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的结点。 |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 目标场景的节点。 |
 
 **示例：**
 ```ts
