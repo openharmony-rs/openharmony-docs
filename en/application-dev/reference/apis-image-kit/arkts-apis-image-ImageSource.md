@@ -284,7 +284,7 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
   imageSourceObj.getImageProperties(key).then((data) => {
     console.info(JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get the properties, error.code ${error.code}, error.message ${error.message}`);
+    console.error(`Failed to get the properties, error.code ${err.code}, error.message ${err.message}`);
   });
 }
 ```
@@ -1920,7 +1920,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 
 Modifies the value of a property in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to JPEG, PNG, HEIF<sup>12+</sup>, and WEBP<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
