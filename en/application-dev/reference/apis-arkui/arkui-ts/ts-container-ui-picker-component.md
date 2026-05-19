@@ -352,8 +352,6 @@ struct UIPickerComponentEventsExample {
 }
 ```
 
-![containerPicker](./figures/ContainerPickerDemo2.gif)
-
 ### Example 3: Setting the Selected Item Index
 
 From API version 22, this example shows how to set the index of the selected item in the UIPickerComponent container.
