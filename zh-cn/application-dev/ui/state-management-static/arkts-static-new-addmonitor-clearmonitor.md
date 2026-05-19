@@ -30,7 +30,7 @@
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: string = '';
   @Trace arrayValue: Array<int> = [1, 2, 3, 4, 5];
   valueMonitor?: IMonitorDecoratedVariable;
@@ -48,13 +48,13 @@ class Test {
     this.arrayMonitor = UIUtils.addMonitor(callbackArray, this.onArrayChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<string>(path)?.before} to ${m.value<string>(path)?.now}`);
     });
   }
 
-  onArrayChange(m: IMonitor) {
+  onArrayChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] array ${path} value has changed from ${m.value<int>(path)?.before} to ${m.value<int>(path)?.now}`);
     });
@@ -94,7 +94,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: int = 0;
   valueMonitor?: IMonitorDecoratedVariable;
   valueMonitorDuplicated?: IMonitorDecoratedVariable;
@@ -106,7 +106,7 @@ class Test {
     this.valueMonitorDuplicated = UIUtils.addMonitor(() => this.value, this.onChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<int>(path)?.before} to ${m.value<int>(path)?.now}`);
     })
@@ -149,7 +149,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: string = '';
   @Trace value2: string = '';
   valueMonitor?: IMonitorDecoratedVariable;
@@ -160,13 +160,13 @@ class Test {
     this.value2Monitor = UIUtils.addMonitor(() => this.value2, this.onSyncChange, { isSynchronous: true });
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value has changed from ${m.value<string>(path)?.before} to ${m.value<string>(path)?.now}`);
     });
   }
 
-  onSyncChange(m: IMonitor) {
+  onSyncChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value has changed synchronously from ${m.value<string>(path)?.before} to ${m.value<string>(path)?.now}`);
     });
@@ -247,7 +247,7 @@ struct Page {
 import { UIUtils, IMonitor, IMonitorDecoratedVariable, Local, Entry, ComponentV2,
          Row, Column, Text, Button, UIUtils } from '@kit.ArkUI';
 
-interface Pair<R, V> {
+export interface Pair<R, V> {
   key: R;
   value: V;
 };
@@ -327,7 +327,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { Button, Column, ComponentV2, DatePicker, Divider, Entry, FontWeight, ForEach, IMonitor, IMonitorDecoratedVariable, Local, LocalStorageLink, ObservedV2, Param, Require, Row, Scroll, Set, TabContent, Tabs, Text, TextAlign, Trace, UIUtils } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, DatePicker, Divider, Entry, FontWeight, ForEach, IMonitor, IMonitorDecoratedVariable, Local, LocalStorageLink, ObservedV2, Param, Require, Row, Scroll, TabContent, Tabs, Text, TextAlign, Trace, UIUtils } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -358,7 +358,7 @@ struct TabContentTest {
 }
 
 @ObservedV2
-class Message {
+export class Message {
   @Trace message: number = 0;
 }
 
@@ -394,7 +394,8 @@ struct FreezeChild {
 ```typescript
 'use static'
 
-import { BusinessError, Button, Column, Component, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, State, Text, UIUtils } from '@kit.ArkUI';
+import { Button, Column, Component, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, State, Text, UIUtils } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Component
 struct Test {
@@ -449,7 +450,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: int = 0;
   @Trace valueError: number = 0;
   valueMonitor?: IMonitorDecoratedVariable;
@@ -464,7 +465,7 @@ class Test {
     this.valueMonitorDuplicated = UIUtils.addMonitor(() => this.valueError, this.onChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     // 日志正常打印
     console.info('[DynamicMonitor] Callback triggered.');
 
@@ -504,7 +505,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace array: Array<int> = [1, 2, 3, 4, 5];
   @Trace map: Map<number, string> = new Map<number, string>([[1, 'first'], [2, 'second']]);
 
@@ -519,13 +520,13 @@ class Test {
     this.mapMonitor = UIUtils.addMonitor(() => this.map, this.onMapChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<Array<int>>(path)?.before} to ${m.value<Array<int>>(path)?.now}`);
     })
   }
 
-  onMapChange(m: IMonitor) {
+  onMapChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<Map<number, string>>(path)?.before} to ${m.value<Map<number, string>>(path)?.now}`);
     })
@@ -570,7 +571,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, Monitor, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: int = 0;
   valueMonitor?: IMonitorDecoratedVariable;
   valueMonitorDuplicated?: IMonitorDecoratedVariable;
@@ -583,7 +584,7 @@ class Test {
   }
 
   @Monitor(['value'])
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<int>(path)?.before} to ${m.value<int>(path)?.now}`);
     })
@@ -630,7 +631,7 @@ import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable
 
 // class使用@ObservedV2修饰
 @ObservedV2
-class Test {
+export class Test {
   // @ObserevdV2与@Trace搭配使用
   @Trace value: int = 0;
   valueMonitor?: IMonitorDecoratedVariable;
@@ -639,7 +640,7 @@ class Test {
     this.valueMonitor = UIUtils.addMonitor(() => this.value, this.onChange);
   }
 
-  onChange(m: IMonitor) {
+  onChange(m: IMonitor): void {
     m.dirty.forEach((path: string) => {
       console.info(`[DynamicMonitor] value ${path} has changed from ${m.value<int>(path)?.before} to ${m.value<int>(path)?.now}`);
     })
@@ -707,7 +708,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace array: int[] = [1, 2, 3];
   arrayMonitor?: IMonitorDecoratedVariable;
 
@@ -724,7 +725,7 @@ class Test {
     this.arrayMonitor = UIUtils.addMonitor(callbackArray, this.onChange);
   }
 
-  onChange(monitor: IMonitor) {
+  onChange(monitor: IMonitor): void {
     console.info('[DynamicMonitor] Callback triggered.');
 
     monitor.dirty.forEach((path: string) => {
@@ -822,7 +823,7 @@ import { ObservedV2, Trace, Local, IMonitor, IMonitorDecoratedVariable, UIUtils,
          ComponentV2, Column, Entry, Button } from '@kit.ArkUI';
 
 @ObservedV2
-class Info {
+export class Info {
   @Trace message: string = 'not initialized';
   messageMonitor?: IMonitorDecoratedVariable;
 
@@ -830,7 +831,7 @@ class Info {
     this.messageMonitor = UIUtils.addMonitor(() => this.message, this.onMessageChange);
     this.message = 'initialized';
   }
-  onMessageChange(monitor: IMonitor) {
+  onMessageChange(monitor: IMonitor): void {
     monitor.dirty.forEach((path: string) => {
       console.info(`message change from ${monitor.value<string>(path)?.before} to ${monitor.value<string>(path)?.now}`);
     });
@@ -868,11 +869,11 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Param, Require, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class User {
+export class User {
   @Trace age: number = 10;
   ageMonitor?: IMonitorDecoratedVariable;
 
-  onChange(mon: IMonitor) {
+  onChange(mon: IMonitor): void {
     mon.dirty.forEach((path: string) => {
       console.info(`onChange: User property ${path} change from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
     });

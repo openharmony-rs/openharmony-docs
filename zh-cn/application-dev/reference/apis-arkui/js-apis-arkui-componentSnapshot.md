@@ -481,7 +481,7 @@ ArkTS-Sta: getSync(id: string, options?: SnapshotOptions): image.PixelMap | null
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. <br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。  |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
 | 160003 | Unsupported color space or dynamic range mode in snapshot options. |

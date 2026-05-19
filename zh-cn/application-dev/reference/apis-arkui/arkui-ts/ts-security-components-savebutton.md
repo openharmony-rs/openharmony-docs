@@ -34,6 +34,8 @@ SaveButton()
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[SaveButton](#savebutton-3)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -51,6 +53,8 @@ SaveButton(options: SaveButtonOptions)
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[SaveButton](#savebutton-3)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -75,6 +79,8 @@ SaveButton(options?: SaveButtonOptions)
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[SaveButton](#savebutton-1)和[SaveButton](#savebutton-2)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +110,8 @@ SaveButton(options?: SaveButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -122,6 +130,8 @@ SaveButton(options?: SaveButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -134,6 +144,8 @@ SaveButton(options?: SaveButtonOptions)
 ## SaveDescription
 
 保存控件的文本描述。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,6 +169,8 @@ SaveButton(options?: SaveButtonOptions)
 
 保存控件点击后的授权结果。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
@@ -174,6 +188,8 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -207,6 +223,8 @@ ArkTS-Sta: setIcon(icon: Resource | undefined)
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -231,6 +249,8 @@ ArkTS-Sta: setText(text: string | Resource | undefined)
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -252,6 +272,8 @@ ArkTS-Sta: iconSize(size: Dimension | SizeOptions | undefined)
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -277,6 +299,8 @@ ArkTS-Sta: iconBorderRadius(radius: Dimension | BorderRadiuses | undefined)
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -301,6 +325,8 @@ ArkTS-Sta: stateEffect(enabled: boolean | undefined)
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -322,6 +348,8 @@ ArkTS-Sta: userCancelEvent(enabled: boolean | undefined)
 **ArkTS-Dyn起始版本：** 21
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -434,6 +462,8 @@ ArkTS-Sta: onClick(event: SaveButtonCallback | undefined)
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 

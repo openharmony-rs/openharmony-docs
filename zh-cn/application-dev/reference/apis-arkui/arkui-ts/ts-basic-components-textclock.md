@@ -54,6 +54,8 @@ TextClock(options?: TextClockOptions)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -68,6 +70,24 @@ TextClock(options?: TextClockOptions)
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<TextClockAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<TextClockAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置TextClock组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ### format
 
@@ -271,6 +291,8 @@ ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefi
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -303,6 +325,8 @@ ArkTS-Sta: fontFeature(value: string | undefined)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -324,6 +348,8 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<TextClockConfiguration> | 
 定制TextClock内容区的方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -349,6 +375,8 @@ ArkTS-Sta: dateTimeOptions(dateTimeOptions: DateTimeOptions | undefined)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -367,7 +395,9 @@ ArkTS-Sta: dateTimeOptions(dateTimeOptions: DateTimeOptions | undefined)
 
 ### onDateChange
 
-onDateChange(event: (value: number) => void)
+ArkTS-Dyn: onDateChange(event: (value: number) => void)
+
+ArkTS-Sta: onDateChange(event: Callback&lt;long&gt; | undefined)
 
 提供时间变化回调，该事件回调间隔为秒。
 
@@ -391,7 +421,7 @@ onDateChange(event: (value: number) => void)
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | number | 是   | Unix Time Stamp，即自1970年1月1日（UTC）起经过的秒数。 |
+| event  | ArkTS-Dyn: (value: number) => void<br>ArkTS-Sta: Callback&lt;long&gt; \| undefined | 是   | 事件变化回调。回调返回值是Unix Time Stamp，即自1970年1月1日（UTC）起经过的秒数。<br/>取值为undefined时，不使用回调函数。|
 
 ## TextClockController
 
@@ -431,7 +461,9 @@ TextClockController的构造函数。
 
 ### start
 
-start()
+ArkTS-Dyn: start()
+
+ArkTS-Sta: start(): void
 
 启动文本时钟。
 
@@ -447,7 +479,9 @@ start()
 
 ### stop
 
-stop()
+ArkTS-Dyn: stop()
+
+ArkTS-Sta: stop(): void
 
 停止文本时钟。
 
@@ -466,6 +500,8 @@ stop()
 开发者需要自定义class实现ContentModifier接口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

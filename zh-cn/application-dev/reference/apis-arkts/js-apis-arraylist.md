@@ -1,8 +1,8 @@
 # @ohos.util.ArrayList (线性容器ArrayList)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -566,7 +566,7 @@ arrayList.removeByRange(2, 4);
 ArkTS-Sta示例：
 
 ```ts
-let arrayList: ArrayList<number> = new ArrayList<number>();
+let arrayList: ArrayList<int> = new ArrayList<int>();
 arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
@@ -972,12 +972,12 @@ console.info("result = ", result.length); // result = 4
 ArkTS-Sta示例：
 
 ```ts
-let arrayList: ArrayList<number> = new ArrayList<number>();
+let arrayList: ArrayList<int> = new ArrayList<int>();
 arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
-let result:  ArrayList<number> = arrayList.clone();
+let result:  ArrayList<int> = arrayList.clone();
 console.info("result = ", result.length); // result = 4
 ```
 
@@ -1430,6 +1430,8 @@ ArkTS-Sta: type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => 
 ArrayList中sort方法的回调函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

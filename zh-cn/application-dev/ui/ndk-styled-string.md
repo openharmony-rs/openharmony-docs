@@ -6,9 +6,9 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-部分框架或应用具备自研的文字排版能力，在移植时，这些能力会被对接到[方舟2D图形服务的文本引擎](../graphics/complex-text-c.md)。为了避免开发者重复开发文本组件，Text组件提供了接口[NODE_TEXT_CONTENT_WITH_STYLED_STRING](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)，可以直接渲染方舟文本引擎生成的文本。
+部分框架或应用具备自研的文字排版能力，在移植时，这些能力会被对接到[方舟2D图形服务的文本引擎](../graphics/complex-text-c.md)。为了避免开发者重复开发文本组件，Text组件提供了接口[NODE_TEXT_CONTENT_WITH_STYLED_STRING](../../application-dev/reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_content_with_styled_string)，可以直接渲染方舟文本引擎生成的文本。
 
-以下场景基于[接入ArkTS页面章节](../ui/ndk-access-the-arkts-page.md)，阐述了如何创建字体引擎文本，并利用[Text组件](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)进行渲染显示。
+以下场景基于[接入ArkTS页面章节](../ui/ndk-access-the-arkts-page.md)，阐述了如何创建字体引擎文本，并利用[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)为ARKUI_NODE_TEXT的组件进行渲染显示。
 
 > **说明：**
 >
@@ -386,8 +386,8 @@ void NodeManager::CreateNativeNode()
 
 - [StyledStringNDK示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StyledStringNDK)
 - [StyledStringSample示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StyledStringSample)
-- [Native Node API参考文档](../reference/apis-arkui/capi-native-node-h.md)
-- [StyledString API参考文档](../reference/apis-arkui/capi-styled-string-h.md)
-- [Drawing Typography API参考文档](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)
-- [Text组件属性文档](../reference/apis-arkui/capi-native-node-h.md)
+- [native_node.h](../reference/apis-arkui/capi-native-node-h.md)
+- [styled_string.h](../reference/apis-arkui/capi-styled-string-h.md)
+- [drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)
+- [ArkUI_NodeAttributeType（文本显示类组件相关属性）](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md)
 - [方舟2D图形服务文档](../graphics/complex-text-c.md)
