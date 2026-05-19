@@ -361,7 +361,7 @@
 
    ArkTS-Sta示例：
    <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
-    
+   
    ``` TypeScript
    // 同步当前设备数据变化至组网内其他设备
    if (store) {
@@ -459,7 +459,7 @@
 
    ArkTS-Sta示例：
    <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
-    
+   
    ``` TypeScript
    // 拉取组网内其他设备的数据变化
    if (store) {
@@ -536,7 +536,7 @@
 
    ArkTS-Sta示例：
    <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
-    
+   
    ``` TypeScript
    // 查询组网内指定设备上分布式表中的数据
    if (store) {
@@ -601,7 +601,7 @@
 
    ArkTS-Sta示例：
    <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->     
-    
+   
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
    
