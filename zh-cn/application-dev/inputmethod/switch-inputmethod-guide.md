@@ -18,6 +18,8 @@
 
 1. 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchCurrentInputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchcurrentinputmethodsubtype9)接口，传入当前输入法的子类型[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)作为参数即可切换当前输入法子类型。
 
+   ArkTS-Dyn示例：
+
    <!-- @[input_case_input_switchInputMethodgetInputMethods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
    
    ``` TypeScript
@@ -32,6 +34,9 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[input_case_input_switchInputMethodgetInputMethods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
 
 2. 输入法应用中注册子类型变化事件，根据不同子类型加载不同的输入界面。
 
@@ -53,21 +58,13 @@
 
     ArkTS-Sta示例：
    
-    ``` TypeScript
-    // 设置监听子类型事件，改变输入法应用界面
-    inputMethodAbility.onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
-      if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-        AppStorage.setOrCreate('subtypeChange', 0);
-      }
-      if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-        AppStorage.setOrCreate('subtypeChange', 1);
-      }
-    });
-    ```
+   <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
 ## 切换输入法应用
 
 在已完成一个输入法应用的基础上，当输入法应用是当前输入法时，在输入法应用中使用[switchInputMethod](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodswitchinputmethod9)接口，传入目标输入法的[InputMethodProperty](../reference/apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)信息，即可切换输入法到目标输入法。
+
+   ArkTS-Dyn示例：
 
    <!-- @[input_case_input_switchInputMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/Submenu.ets) -->
 
@@ -87,6 +84,10 @@
      }
    }
    ```
+
+   ArkTS-Dyn示例：
+
+   <!-- @[input_case_input_switchInputMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
 
 ## 切换输入法应用和子类型
 
