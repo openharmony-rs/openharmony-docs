@@ -112,6 +112,30 @@ ArkTS-Dyn:
 ArkTS-Sta:
 <!-- @[setMimeType_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 情况四：通过本地Raw文件中的m3u8文件播放在线流媒体资源
+/*
+// 通过本地m3u8文件名，获取文件描述符
+let fileDescriptor = await this.context.resourceManager.getRawFd(this.m3u8FileName);
+// 用文件描述符构造本地m3u8的URL
+let fdUrl : string = "fd://" + fileDescriptor.fd +
+  "?offset=" + fileDescriptor.offset + "&size=" + fileDescriptor.length;
+// 按需设置HTTP请求头
+let headers : Record<string,string> = {"User-Agent" : "User-Agent-Value", "Cookie" : "Cookie-Value"};
+// 通过本地m3u8的URL和HTTP请求头构造mediaSource媒体来源
+let mediaSource : media.MediaSource = media.createMediaSourceWithUrl(fdUrl, headers);
+
+// 设置媒体MIME类型为APPLICATION_M3U8
+let mimeType : media.AVMimeTypes = media.AVMimeTypes.APPLICATION_M3U8;
+mediaSource.setMimeType(mimeType);
+
+// 设置播放策略，设置缓冲区数据量为20s
+let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
+// 为avPlayer设置媒体来源和播放策略
+this.avPlayer!.setMediaSource(mediaSource, playbackStrategy);
+* */
+```
+
 **情况五：通过应用沙箱中的m3u8文件播放在线流媒体资源**
 
 当应用需要通过解析应用沙箱中的m3u8文件，播放在线流媒体资源时，可以通过[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)获取文件句柄，将其拼接成fdUrl，并通过[setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
