@@ -826,11 +826,15 @@ try {
 }
 ```
 
-## isFastPlaybackSupported<sup>26+</sup>
+## isFastPlaybackSupported
 
 isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
 
 查询指定音频流信息和使用场景下是否支持低时延播放。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -874,6 +878,10 @@ isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boo
 
 查询指定音频流信息和使用场景下是否支持低功耗通路播放。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **参数：**
@@ -915,6 +923,10 @@ try {
 isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
 
 查询指定音频流信息和使用场景下是否支持透传通路播放。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -958,6 +970,10 @@ isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boole
 
 查询指定音频流信息和音源类型下是否支持低时延录制。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **参数：**
@@ -999,6 +1015,10 @@ try {
 isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
 
 查询指定音频流信息和使用场景下是否支持多声道播放。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
