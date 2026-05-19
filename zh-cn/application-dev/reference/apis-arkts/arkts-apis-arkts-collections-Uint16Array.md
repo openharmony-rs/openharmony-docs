@@ -5,7 +5,7 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
-一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)实现。
+一种线性数据结构，底层基于[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)实现。
 
 > **说明：**
 >
