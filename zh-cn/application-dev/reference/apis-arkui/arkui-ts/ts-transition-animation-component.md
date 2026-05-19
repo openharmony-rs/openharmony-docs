@@ -578,10 +578,10 @@ constructor(type: 'identity' | 'slideSwitch', effect: undefined)
 
 **参数：**
 
-| 参数名 | 类型                                   | 必填 | 说明           |
-| ------ | ------------------------------------------ | ---- | ------------------ |
-| type  | 'identity' | 'slideSwitch'                 | 是   | 转场类型。 |
-| effect  | undefined  | 是   | 转场参数。 |
+| 参数名 | 类型                           | 必填 | 说明           |
+| ------ | ----------------------------- | ---- | ------------------ |
+| type  | 'identity' \| 'slideSwitch'     | 是   | 转场类型。 |
+| effect  | undefined                     | 是   | 转场参数。 |
 
 ### constructor<sup>23+</sup>
 
