@@ -2724,6 +2724,8 @@ Allows an application to read the pasteboard via silent access.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **Valid since**: 11
 
 ## ohos.permission.SET_CODE_PROTECT_INFO
