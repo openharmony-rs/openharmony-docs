@@ -25,7 +25,7 @@
    > **说明：**
    >
    > 开发者需根据实际情况，确认资源有效性并设置fdSrc：
-   > - 可以使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
+   > - 可以使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考ResourceManager API中的[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
    >
    > - 也可以使用应用沙箱路径访问对应资源（必须确认资源文件可用），参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
    >
@@ -107,7 +107,9 @@
 4. 释放资源：调用release()销毁实例，释放资源。
    ```ts
    // 释放资源（promise模式）。
-   avImageGenerator.release();
+   await avImageGenerator.release().catch((err: BusinessError) => {
+      console.error(`release failed, error code: ${err.code}, error message: ${err.message}`);
+   });
    ```
 
 ## 运行示例工程
