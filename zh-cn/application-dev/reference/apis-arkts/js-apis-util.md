@@ -5289,7 +5289,7 @@ const device = new DeviceManageViewModel("test");
 | length | number | 是 | 否 | 当前缓冲区中值的总数。 |
 
 **示例：**
-
+  <!--code_no_check-->
   ```ts
   let pro : util.LruBuffer<number,number>= new util.LruBuffer();
   pro.put(2,10);
