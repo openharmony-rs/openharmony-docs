@@ -77,7 +77,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 ```ts
 import { AbilityConstant, Want } from '@kit.AbilityKit';
-import DistributedExtension from '@ohos.application.DistributedExtensionAbility';
+import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import hilog from '@ohos.hilog'
 import { common } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
@@ -89,7 +89,7 @@ import { bundleManager } from '@kit.AbilityKit';
 const TAG = 'DistributedExtAbility';
 const DOMAIN = 0xFF00;
 
-export default class DistributedExtAbility extends DistributedExtension {
+export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 
   onCreate (want:Want) {
@@ -191,7 +191,7 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 ```ts
 import { AbilityConstant, Want } from '@kit.AbilityKit';
-import DistributedExtension from '@ohos.application.DistributedExtensionAbility';
+import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import hilog from '@ohos.hilog'
 import { common } from '@kit.AbilityKit';
 import rpc from '@ohos.rpc';
@@ -203,7 +203,7 @@ import { bundleManager } from '@kit.AbilityKit';
 const TAG = 'DistributedExtAbility';
 const DOMAIN = 0xFF00;
 
-export default class DistributedExtAbility extends DistributedExtension {
+export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 
   onCreate (want:Want) {
