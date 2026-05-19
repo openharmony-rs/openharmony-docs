@@ -1019,6 +1019,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1095,6 +1096,7 @@ getEncodedDer(format: string): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1142,6 +1144,7 @@ getEncodedPem(format: string): string
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1233,6 +1236,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1306,6 +1310,7 @@ getEncodedDer(format: string): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1355,6 +1360,7 @@ getEncodedPem(format: string): string
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1767,6 +1773,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1808,6 +1815,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1855,6 +1863,7 @@ generateSymKeySync(): SymKey
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1903,6 +1912,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | --------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                       |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                |
 
 **示例：**
 
@@ -1961,6 +1971,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | --------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                |
 
 **示例：**
 
@@ -2025,6 +2036,7 @@ convertKeySync(key: DataBlob): SymKey
 | -------- | --------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                       |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                     |
 
 **示例：**
 
