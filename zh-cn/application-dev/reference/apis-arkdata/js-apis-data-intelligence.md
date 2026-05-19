@@ -359,6 +359,7 @@ releaseModel(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 801          | Capability not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -406,6 +407,7 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801          | Capability not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -455,6 +457,7 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801          | Capability not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
