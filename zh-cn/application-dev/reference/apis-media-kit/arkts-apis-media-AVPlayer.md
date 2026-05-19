@@ -622,7 +622,7 @@ advanceToNextMediaSource(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -669,7 +669,7 @@ advanceToPrevMediaSource(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -725,7 +725,7 @@ advanceToMediaSource(id: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
