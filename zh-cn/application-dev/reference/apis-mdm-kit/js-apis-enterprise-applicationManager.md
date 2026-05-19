@@ -2132,6 +2132,7 @@ addAllowedNotificationBundles(admin: Want, bundleNames: Array\<string\>, account
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010  | A conflict policy has been configured. |
 | 9200012  | Parameter verification failed. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
@@ -2232,7 +2233,7 @@ getAllowedNotificationBundles(admin: Want \| null, accountId: number): Array\<st
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 否   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。|
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
 **返回值：**
