@@ -8,11 +8,11 @@
 
 ## 使用窗口hidumper命令查看窗口信息定位问题
 
-**hidumper**是OpenHarmony系统提供的诊断工具，可以实时查看系统中所有窗口的详细信息，帮助开发者快速定位窗口相关问题。
+**hidumper**是OpenHarmony系统提供的诊断工具，可以实时查看系统中所有窗口的详细信息，帮助开发者快速定位窗口的相关问题。
 
 ### hidumper参数说明
 
-基本命令格式：
+**基本命令格式**：
 ```bash
 hdc shell hidumper -s WindowManagerService -a '<参数>'
 ```
@@ -21,14 +21,14 @@ hdc shell hidumper -s WindowManagerService -a '<参数>'
 
 | 参数 | 含义 | 命令示例 | 使用场景 |
 |------|------|----------|----------|
-| `-h` | 查看帮助信息 | `hidumper -s WindowManagerService -a '-h'` | 首次使用时查看完整参数说明 |
-| `-a` | dump所有窗口信息 | `hidumper -s WindowManagerService -a '-a'` | 需要查看所有窗口时使用（最常用） |
-| `-w {WinId}` | dump指定窗口详细信息 | `hidumper -s WindowManagerService -a '-w 13'` | 已知窗口ID，需要查看特定窗口详细信息 |
-| `-w {WinId} {ArkUI option}` | dump指定窗口的ArkUI信息 | `hidumper -s WindowManagerService -a '-w 13 -arkui'` | 需要查看窗口UI渲染细节时 |
-| `-p` | dump窗口树结构 | `hidumper -s WindowManagerService -a '-p'` | 排查窗口父子关系、层级树结构时 |
-| `-v` | dump窗口可见性信息 | `hidumper -s WindowManagerService -a '-v'` | 排查窗口显示/隐藏问题时 |
-| `-c` | dump窗口截图信息 | `hidumper -s WindowManagerService -a '-c'` | 高级调试场景（截图相关信息） |
-| `-b` | dump窗口绑定的信息 | `hidumper -s WindowManagerService -a '-b'` | 高级调试场景（surface、buffer绑定等） |
+| `-h` | 查看帮助信息 | `hidumper -s WindowManagerService -a '-h'` | 首次使用时查看完整参数说明。 |
+| `-a` | 查看所有窗口信息 | `hidumper -s WindowManagerService -a '-a'` | 需要查看所有窗口时使用（最常用）。 |
+| `-w {WinId}` | 查看指定窗口详细信息 | `hidumper -s WindowManagerService -a '-w 13'` | 已知窗口ID，需要查看特定窗口详细信息。 |
+| `-w {WinId} {ArkUI option}` | 查看指定窗口的ArkUI渲染信息 | `hidumper -s WindowManagerService -a '-w 13 -arkui'` | 需要查看窗口UI节点数量、渲染状态等信息。 |
+| `-p` | 查看窗口父子树结构 | `hidumper -s WindowManagerService -a '-p'` | 排查窗口父子关系、层级树结构等问题。 |
+| `-v` | 查看窗口可见性信息 | `hidumper -s WindowManagerService -a '-v'` | 排查窗口显示/隐藏问题。 |
+| `-c` | 查看窗口截图信息 | `hidumper -s WindowManagerService -a '-c'` | 高级调试场景（截图相关信息）。 |
+| `-b` | 查看窗口绑定的信息 | `hidumper -s WindowManagerService -a '-b'` | 高级调试场景（surface、buffer绑定等）。 |
 
 
 ### 查看所有窗口列表
@@ -37,9 +37,9 @@ hdc shell hidumper -s WindowManagerService -a '<参数>'
 hdc shell hidumper -s WindowManagerService -a '-a'
 ```
 
-该命令输出窗口管理服务的完整状态信息，包括所有窗口的详细信息、焦点状态、层级关系等。`-a '-a'`参数表示dump所有窗口信息。
+该命令输出窗口管理服务的完整状态信息，包括所有窗口的详细信息、焦点状态、层级关系等。
 
-输出示例：
+**输出示例**：
 ```bash
 ----------------------------------WindowManagerService----------------------------------
 -------------------------------------ScreenGroup 1-------------------------------------
@@ -67,84 +67,40 @@ total window num: 12
 
 **字段含义详细说明**：
 
-| 字段 | 含义 | 示例值说明                                        |
-|------|------|----------------------------------------------|
-| `WindowName` | 窗口名称 | `note0`（备忘录应用窗口），`SystemUi_StatusBar`（系统状态栏） |
-| `DisplayId` | 显示设备ID | `0`表示主屏幕，多屏场景下会有多个DisplayId                  |
-| `Pid` | 进程ID | `18299`表示创建该窗口的应用进程ID                        |
-| `WinId` | 窗口唯一标识符 | `13`表示窗口ID，用于唯一标识一个窗口实例                      |
-| `Type` | 窗口类型 | 见下表详细说明                                      |
-| `Mode` | 窗口模式 | `1`表示全屏模式，`102`表示自由悬浮窗窗口模式                   |
-| `Flag` | 状态标志位 | `0`表示正常显示，`1`表示隐藏状态                          |
-| `ZOrd` | 窗口层级（Z序） | 数值越大越靠前，`4`比`2`层级高                           |
-| `Orientation` | 窗口方向 | `0`=未指定，`8`=竖屏等方向设置                          |
-| `[ x y w h ]` | 窗口矩形区域 | `[0 0 720 1280]`表示相对屏幕左顶点的位置(0,0)，大小720x1280 |
+| 字段 | 含义 | 说明 |
+|------|------|------|
+| WindowName | 窗口名称 | 应用窗口名称（如note0表示备忘录应用），系统窗口名称（如SystemUi_StatusBar表示系统状态栏）。 |
+| DisplayId | 显示设备ID | 0表示主屏幕，1表示副屏幕，多屏场景下会有多个DisplayId。 |
+| Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
+| WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
+| Type | 窗口类型 | 1=应用主窗口，2=应用子窗口，详见窗口类型说明。 |
+| Mode | 窗口模式 | 1=全屏模式，102=自由悬浮窗模式，详见窗口模式说明。 |
+| Flag | 状态标志位 | 0=正常显示状态，1=隐藏状态。 |
+| ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
+| Orientation | 窗口方向 | 0=未指定方向，1=竖屏，2=横屏，8=竖屏等方向设置。 |
+| [ x y w h ] | 窗口矩形区域 | 位置(x,y)和大小(width,height)，如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
 
 ### 查看获焦窗口
 
-**直接查看Focus window字段**：
-
-在输出的末尾可以直接看到获焦窗口信息：
-
-```
-Focus window: 13
-```
-
-**含义解读**：
-- `Focus window: 13`：当前获焦窗口的WinId是13。
-- 根据WinId=13，在窗口列表中找到对应窗口：`note0`。
-- 结论：当前获焦窗口是`note0`（备忘录应用）。
-
-**详细定位获焦窗口**：
+使用`-a`参数查看所有窗口信息时，输出中会显示获焦窗口：
 
 ```bash
 hdc shell hidumper -s WindowManagerService -a '-a' | grep "Focus window"
 ```
 
-输出示例：
-```bash
+**输出示例**：
+```
 Focus window: 13
 ```
 
-根据Focus window的WinId值，结合窗口列表找到具体窗口：
-1. Focus window: 13：焦点窗口WinId=13
-2. 在窗口列表中查找WinId=13的窗口：
-   ```bash
-   note0  0  18299  13  1  1  0  1  0  [ 0  0  720  1280 ]
-   ```
-3. 确认获焦窗口：`note0`（备忘录应用主窗口）
+根据WinId在窗口列表中找到对应窗口：`note0`（备忘录应用主窗口）。
 
 **前台窗口和后台窗口的焦点说明**：
 
-**前台窗口焦点**：
-
-焦点窗口通常在前台窗口中：
-
-```
-Focus window: 13
-```
-
-含义：
-- WinId=13（`note0`）是当前获焦窗口
-- `note0`位于前台窗口区域（分隔线以上）
-- 前台窗口才有机会获焦，后台窗口不会获焦
-
-**后台窗口焦点规则**：
-
-- 后台窗口（分隔线以下）通常`ZOrd=-1`或`Flag=1`，不参与焦点竞争
-- 只有前台窗口（分隔线以上）才能获焦
-- 窗口从前台切换到后台时，会自动失焦
-
-**焦点窗口切换示例**：
-
-当应用从前台切换到后台时：
-1. 前台状态：`note0` WinId=13, Flag=0, ZOrd=1, Focus window: 13
-2. 切换到后台：`note0` WinId=13, Flag=1, ZOrd=-1（移到分隔线以下）
-3. 焦点转移：Focus window变为其他前台窗口（如桌面EntryView）
-
-开发者可以通过分隔线快速判断：
-- 焦点窗口必然在前台窗口区域
-- 后台窗口区域不会有焦点窗口
+- 前台窗口才有机会获焦，后台窗口不会获焦。
+- 后台窗口通常`ZOrd=-1`，不参与焦点竞争。
+- 窗口从前台切换到后台时，会自动失焦。
+- 开发者可以通过分隔线快速判断：焦点窗口必然在前台窗口区域，后台窗口区域不会有焦点窗口。
 
 ### 查看指定窗口详细信息
 
@@ -158,7 +114,7 @@ hdc shell hidumper -s WindowManagerService -a '-w 13'
 
 `-w 13` 参数表示查看WinId为13的窗口详细信息。
 
-输出示例：
+**输出示例**：
 ```bash
 ----------------------------------WindowManagerService----------------------------------
 WindowName: note0
@@ -182,57 +138,57 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 **字段含义详细说明**：
 
-| 字段 | 含义 | 示例值解读 |
+| 字段 | 含义 | 取值说明 |
 |------|------|----------|
-| `WindowName` | 窗口名称 | `note0`表示备忘录应用窗口 |
-| `DisplayId` | 显示设备ID | `0`表示主屏幕显示 |
-| `WinId` | 窗口唯一标识符 | `13`表示窗口ID，用于唯一标识该窗口实例 |
-| `Pid` | 进程ID | `18299`表示创建该窗口的应用进程ID |
-| `Type` | 窗口类型 | `1`=应用主窗口 |
-| `Mode` | 窗口模式 | `1`=全屏模式 |
-| `Flag` | 状态标志位 | `0`=正常显示状态 |
-| `Orientation` | 窗口方向 | `0`=未指定方向 |
-| `IsStartingWindow` | 是否是启动窗口 | `false`=不是启动过渡窗口 |
-| `FirstFrameCallbackCalled` | 首帧回调状态 | `1`=首帧绘制回调已调用 |
-| `VisibilityState` | 可见性状态 | `0`=窗口可见 |
-| `Focusable` | 是否可获焦 | `true`=窗口可以获焦 |
-| `DecoStatus` | 装饰状态 | `true`=窗口装饰已启用（有标题栏等） |
-| `IsPrivacyMode` | 是否隐私模式 | `false`=不是隐私窗口 |
-| `isSnapshotSkip` | 是否跳过截屏 | `0`=可以被截屏 |
-| `WindowRect` | 窗口矩形区域 | `[ 0, 0, 720, 1280 ]`表示位置(0,0)，尺寸720x1280 |
-| `TouchHotAreas` | 触摸热区 | `[ 0, 0, 720, 1280 ]`表示整个窗口区域可触摸 |
+| WindowName | 窗口名称 | 应用自定义的窗口名称。如note0：表示为备忘录应用窗口；SystemUi_StatusBar：表示为系统状态栏窗口。 |
+| DisplayId | 显示设备ID | 显示设备标识。0：表示为主屏幕；1：表示为副屏幕。 |
+| WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。 |
+| Pid | 进程ID | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。 |
+| Type | 窗口类型 | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口。见上方窗口类型表。 |
+| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式；2：表示为分屏模式；102：表示为自由悬浮窗模式。见上方窗口模式表。 |
+| Flag | 状态标志位 | 窗口状态标志。0：表示为正常显示状态；1：表示为隐藏状态。 |
+| Orientation | 窗口方向 | 窗口显示方向。0：表示为未指定方向；1：表示为竖屏；2：表示为反向竖屏；3：表示为横屏；4：表示为反向横屏。 |
+| IsStartingWindow | 是否是应用启动过渡窗口 | 应用启动过渡窗口标识。true：表示为应用启动过程中显示的过渡窗口（在应用首帧绘制完成前显示）；false：表示为正常应用窗口。 |
+| FirstFrameCallbackCalled | 首帧回调状态 | 首帧绘制状态。0：表示为首帧未完成；1：表示为首帧绘制回调已调用。 |
+| VisibilityState | 可见性状态 | 窗口可见性。0：表示为窗口可见；1：表示为窗口隐藏；2：表示为窗口部分可见。 |
+| Focusable | 是否可获焦 | 窗口获焦能力。true：表示为窗口可以获焦；false：表示为窗口不可获焦。 |
+| DecoStatus | 装饰状态 | 窗口装饰状态。true：表示为窗口装饰已启用（有标题栏等）；false：表示为窗口无装饰。 |
+| IsPrivacyMode | 是否隐私模式 | 窗口隐私模式。true：表示为隐私窗口（截屏显示黑色）；false：表示为正常窗口（可截屏）。 |
+| isSnapshotSkip | 截屏时是否显示该窗口 | 截屏显示标识。0：表示为截屏时显示该窗口内容；1：表示为截屏时不显示该窗口内容（显示为黑色或空白）。 |
+| WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
+| TouchHotAreas | 触摸热区 | 窗口触摸响应区域，格式为[x, y, width, height]。如[0, 0, 720, 1280]：表示为整个窗口区域可触摸。 |
 
 **常见问题定位**：
 
 **问题1：窗口不显示**
 
-检查字段：
-- `VisibilityState: 1`：窗口被隐藏，调用showWindow()显示
-- `Flag: 1`：状态标志为隐藏，检查窗口是否调用hideWindow()
+**检查字段**：
+- `VisibilityState: 1`：窗口被隐藏，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)显示。
+- `Flag: 1`：状态标志为隐藏，检查窗口是否被隐藏。
 
 **问题2：窗口无法接收键盘输入**
 
-检查字段：
-- `Focusable: false`：窗口不可获焦，调用setWindowFocusable(true)设置可获焦
-- 确认窗口在前台区域（分隔线以上）
+**检查字段**：
+- `Focusable: false`：窗口不可获焦，调用[setWindowFocusable(true)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)设置可获焦。
+- 确认窗口在前台区域（分隔线以上）。
 
-**问题3：窗口被截屏泄露**
+**问题3：截屏时窗口内容未隐藏**
 
-检查字段：
+**检查字段**：
 - `IsPrivacyMode: false`：未启用隐私模式
-- `isSnapshotSkip: 0`：允许截屏
+- `isSnapshotSkip: 0`：截屏时显示窗口内容
 
-解决方案：调用setPrivacyMode(true)启用隐私模式。
+解决方案：调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式，截屏时窗口内容将显示为黑色。
 
 **问题4：窗口启动性能慢**
 
-检查字段：
+**检查字段**：
 - `FirstFrameCallbackCalled: 0`：首帧未完成，可能页面加载慢
 - 结合日志分析启动耗时
 
 **问题5：窗口触摸区域异常**
 
-检查字段：
+**检查字段**：
 - `TouchHotAreas`尺寸异常：触摸热区设置错误
 - 与WindowRect对比，确认是否正确
 
@@ -246,9 +202,9 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 hdc shell hidumper -s WindowManagerService -a '-w 13 ArkUI option'
 ```
 
-该命令在窗口基础信息的基础上，额外输出ArkUI渲染相关的字段，用于分析UI渲染性能、节点数量等。
+该命令除了输出窗口基础信息，还会额外输出ArkUI渲染相关信息，用于分析UI渲染性能和节点数量等。
 
-输出示例：
+**输出示例**：
 ```bash
 ----------------------------------WindowManagerService----------------------------------
 WindowName: note0
@@ -277,33 +233,35 @@ finishCount: [ ]
 UINodeCount: 159
 ```
 
-**ArkUI相关新增字段说明**：
+**ArkUI渲染相关字段说明**：
 
 | 字段 | 含义 | 示例值解读 |
 |------|------|----------|
-| `bundleName` | 应用包名 | `com.ohos.note`表示备忘录应用的包名 |
-| `moduleName` | 模块名称 | `default`表示默认模块 |
-| `LastRequestVsyncTime` | 最后请求VSync时间 | `17816965532004`表示上次请求垂直同步的时间戳（纳秒） |
-| `transactionFlags` | 事务标志 | `[18299,0]`表示渲染事务的进程ID和标志位 |
-| `last vsyncId` | 最后VSync ID | `1948`表示上次垂直同步的ID |
-| `finishCount` | 完成计数 | `[ ]`表示当前未完成的渲染任务计数 |
-| `UINodeCount` | UI节点数量 | `159`表示当前窗口的UI节点总数 |
+| `bundleName` | 应用包名 | `com.ohos.note`表示备忘录应用的包名。 |
+| `moduleName` | 模块名称 | `default`表示默认模块。 |
+| `LastRequestVsyncTime` | 最近一次请求屏幕刷新的时间 | `17816965532004`表示最近一次请求屏幕刷新的时间戳（纳秒），用于判断渲染是否活跃。 |
+| `transactionFlags` | 渲染事务标志 | `[18299,0]`表示渲染事务的进程ID和标志位。 |
+| `last vsyncId` | 最近一次屏幕刷新信号编号 | `1948`表示最近一次屏幕刷新信号的编号，编号持续增加说明渲染正常更新。 |
+| `finishCount` | 待处理的渲染任务数 | 空值`[ ]`表示所有渲染任务都已处理完成；有数值表示还有渲染任务在排队等待处理，可能导致界面卡顿。 |
+| `UINodeCount` | UI节点数量 | `159`表示当前窗口的UI节点总数。 |
 
 **常见问题定位**：
 
 | 问题 | 检查字段 | 判断标准 | 解决方案 |
 |------|----------|----------|----------|
 | UI渲染性能差（卡顿） | `UINodeCount`、`finishCount`、`LastRequestVsyncTime` | `UINodeCount`≥500 或 `finishCount`有任务堆积。 | 简化UI结构，减少节点嵌套，优化渲染逻辑。 |
-| 窗口停止渲染 | `last vsyncId`、`LastRequestVsyncTime` | VSync长时间未更新或时间戳过旧。 | 检查VisibilityState，调用showWindow()。 |
+| 窗口停止渲染 | `last vsyncId`、`LastRequestVsyncTime` | 屏幕刷新信号编号长时间不变或时间戳过旧。 | 检查VisibilityState，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)。 |
 | UI节点异常多 | `UINodeCount` | 正常页面约100节点，异常页面≥500节点。 | 使用懒加载、虚拟列表，移除隐藏节点。 |
 | 渲染任务堆积 | `finishCount` | `finishCount`非空，存在未完成任务。 | 减少UI更新频率，避免渲染线程耗时操作。 |
 
-### 最佳实践
+### 定位思路
 
 1. **问题定位流程**：
-   ```
-   发现问题 → 使用hidumper查看窗口状态 → 分析异常属性 → 定位代码位置 → 修复验证
-   ```
+   1. 发现问题
+   2. 使用hidumper查看窗口状态
+   3. 分析异常属性
+   4. 定位代码位置
+   5. 修复验证
 
 2. **结合日志使用**：
    - hidumper提供实时窗口状态
@@ -345,7 +303,7 @@ UINodeCount: 159
 hdc shell hilog | grep "1300002"
 ```
 
-典型日志示例：
+**典型日志示例**：
 
 ```
 Error Name: Error
@@ -356,77 +314,41 @@ Stack trace:
   at MyComponent.onWindowStageDestroy (MyAbility.ts:50)
 ```
 
-关键信息：
+**关键信息**：
 - 错误码：1300002
 - 堆栈：getLastWindow()调用位置
 - 文件名和行号：定位具体代码位置
 
 **分析定位**
 
-**步骤1：查找getLastWindow调用位置**
+根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用loadContent加载页面，销毁流程中错误调用getLastWindow导致崩溃。
 
-```bash
-grep -n "getLastWindow" src/**/*.ts
-```
-
-根据日志堆栈定位到具体文件和行号，检查调用位置的上下文：
-- 是否在onWindowStageDestroy中？
-- 是否在aboutToDisappear中？
-- 是否在setTimeout、Promise等异步回调中？
-
-**步骤2：分析窗口生命周期**
-
-窗口销毁流程：窗口创建 → 窗口显示 → 窗口激活 → 窗口销毁开始 → 窗口资源释放 → 窗口对象无效。窗口销毁开始后getLastWindow失效，窗口资源释放后禁止访问。
-
-**错误示例**：
+**示例对比**：
 
 ```ts
-// 错误：在onWindowStageDestroy中调用getLastWindow
-onWindowStageDestroy() {
-    let lastWindow = window.getLastWindow(this.context);
-    lastWindow.getWindowId(); // 1300002崩溃！
-}
-
-// 错误：销毁后异步调用getLastWindow
-onWindowStageDestroy() {
-    setTimeout(() => {
-        let lastWindow = window.getLastWindow(this.context); // 崩溃
-    }, 1000);
-}
-```
-
-**解决步骤**
-
-避免在销毁流程中调用getLastWindow()，不在以下位置调用：
-- onWindowStageDestroy()
-- aboutToDisappear()
-- onDestroy()
-- 窗口销毁回调中
-
-正确示例：
-
-```ts
-// 正确：在窗口活跃时调用getLastWindow
+// 错误：窗口创建时未加载页面，销毁流程中调用getLastWindow
 onWindowStageCreate(windowStage: window.WindowStage) {
-    let mainWindow = window.getLastWindow(this.context);
-    mainWindow.loadContent('pages/MainPage');
+    // 缺失：未调用loadContent加载页面
+    windowStage.getMainWindow((err, win) => {
+        win.showWindow(); // 直接显示空窗口
+    });
 }
 
-onWindowStageDestroy() {
-    // 销毁流程中不要调用getLastWindow，只做资源清理
-    this.cleanupResources();
+// 正确：窗口创建时立即加载页面，销毁流程只做资源清理
+onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow((err, win) => {
+        win.loadContent('pages/MainPage'); // 创建时加载页面
+    });
 }
 ```
 
-**检查清单**：
-
-1. 找到所有getLastWindow()调用位置
-2. 检查是否在销毁流程中调用（onWindowStageDestroy等）
-3. 检查是否有异步任务在销毁后执行
+**检查要点**：
+- getLastWindow()调用位置不在onWindowStageDestroy、aboutToDisappear、onDestroy等销毁回调中
+- 异步任务不会在销毁后执行getLastWindow()
 
 > **说明：**
 >
-> 错误码1300002是窗口生命周期管理不当的典型错误。开发者应遵循"创建时缓存、活跃时使用、销毁时清理"的原则，避免在销毁流程中访问窗口。
+> 错误码1300002通常因窗口销毁流程中错误调用getLastWindow导致。开发者应确保窗口创建时完成页面加载，销毁流程中仅做资源清理，避免调用getLastWindow等窗口操作接口。
 
 ## 超时警告WINDOW_FROZEN_DETECTION的定位指导
 
@@ -439,11 +361,13 @@ WINDOW_FROZEN_DETECTION异常检测事件用于伪冻屏检测，帮助开发者
 - 先调用showWindow()显示窗口，再调用loadContent()加载内容
 - 页面路径错误，导致加载失败
 
-### setUIContent timeout（伪冻屏/透明窗检测）
+### 定位窗口内容加载超时问题
 
 窗口创建后未在规定时间内（5秒）加载页面内容，导致窗口显示为透明或冻结状态。
 
-**日志信息**
+**典型日志信息**
+
+故障日志格式：
 
 ```
 MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bundleName], abilityName: [abilityName]
@@ -455,7 +379,11 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 - `bundleName`：包名
 - `abilityName`：实例名
 
-**分析定位**
+**检测逻辑**
+
+系统在窗口创建时启动定时器监控页面加载过程。如果窗口创建后5秒内未调用loadContent()或setUIContent()加载页面内容，系统判定为异常并生成故障日志。
+
+**排查思路**
 
 检查代码流程：
 1. 是否在窗口创建后立即调用了loadContent()或setUIContent()
@@ -463,7 +391,9 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 3. 是否先调用showWindow()再调用loadContent()
 4. 页面路径是否正确
 
-错误示例：
+**正反案例**
+
+**错误示例**
 
 ```ts
 // 错误：创建窗口后未加载内容
@@ -477,9 +407,7 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 });
 ```
 
-**解决步骤**
-
-确保窗口创建后立即加载页面内容，遵循正确调用顺序：先加载内容，后显示窗口。
+**正确示例**
 
 ```ts
 // 正确：创建窗口后立即加载内容
@@ -500,7 +428,7 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 });
 ```
 
-**检查清单**：
+**检查清单**
 
 1. 找到窗口创建代码，确认是否调用loadContent()或setUIContent()
 2. 检查页面加载和窗口显示之间是否有耗时操作
@@ -511,11 +439,11 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 >
 > 系统的超时检测机制是为了保障用户体验，避免用户长时间看到空白窗口。开发者应重视此警告并及时修复。
 
-### window_rect_check（窗口尺寸异常检测）
+### 定位窗口尺寸异常问题
 
 窗口尺寸异常检测用于发现窗口尺寸超出合理范围的问题。当窗口设置的尺寸超过最大尺寸限制，或小于最小尺寸限制且小于屏幕尺寸时，系统会生成故障日志。
 
-**日志信息**
+**典型日志信息**
 
 故障日志格式：
 
@@ -547,7 +475,7 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 - 尺寸超过最大限制：`curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`
 - 尺寸小于最小限制且小于屏幕尺寸：`curWidth < minWidth` 且 `curWidth < screenWidthVp`，或 `curHeight < minHeight` 且 `curHeight < screenHeightVp`（非系统窗口类型）
 
-**分析定位**
+**排查思路**
 
 **步骤1：获取故障日志**
 
@@ -579,7 +507,9 @@ hdc shell hilog | grep "RectCheck err"
 - 分屏或窗口调整时尺寸未正确更新
 - 自定义窗口尺寸时未考虑系统限制
 
-错误示例：
+**正反案例**
+
+**错误示例**
 
 ```ts
 // 错误：窗口尺寸过小
@@ -588,9 +518,7 @@ windowClass.resize(50, 50); // 尺寸小于最小限制，触发WINDOW_RECT_CHEC
 windowClass.showWindow();
 ```
 
-**解决步骤**
-
-确保窗口尺寸在规定范围内：
+**正确示例**
 
 ```ts
 // 正确：设置在规定范围内的尺寸
