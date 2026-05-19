@@ -342,38 +342,37 @@ if (window != nullptr){
 
 ## 常见问题排查
 
-### 1：CreateSecondaryFromPrimary返回`AV_ERR_INVALID_VAL`
+### CreateSecondaryFromPrimary返回`AV_ERR_INVALID_VAL`
 
 **回答**：传入的不是有效的Primary句柄。
 
 **解决**：确保Primary由`CreatePrimaryWithPreproc`创建且已成功Configure。
 
-### 2：CreateSecondaryFromPrimary返回`AV_ERR_OPERATE_NOT_PERMIT`
+### CreateSecondaryFromPrimary返回`AV_ERR_OPERATE_NOT_PERMIT`
 
 **回答**：该Primary已挂载了Secondary。
 
 **解决**：先销毁旧的Secondary，再创建新Secondary；或检查是否有遗漏的Destroy调用。
 
-### 3：Secondary Configure报错
+### Secondary Configure报错
 
 **回答**：前处理参数不合法。
 
 **解决**：检查降采样/裁剪参数完整性、范围合法性、Crop 与 Downsample 是否互斥设置。
 
-### 4：Secondary调用GetSurface报错
+### Secondary调用GetSurface报错
 
 **回答**：使用了副编码器句柄调用。
 
 **解决**：**只能通过主编码器句柄**调用GetSurface，两者返回的是同一个共享Surface。
 
-### 5：Secondary无输出
+### Secondary无输出
 
 **回答**：未调用Start/Surface未绑定数据源/回调未正确注册。
 
 **解决**：检查Secondary是否已Start；确认Primary的Surface已绑定到Camera/XComponent；确认回调函数非null且包含FreeOutputBuffer。
 
-
-### 6：Primary回调阻塞导致Secondary饥饿
+### Primary回调阻塞导致Secondary饥饿
 
 **回答**：Primary的onNewOutputBuffer中耗时过长。
 
