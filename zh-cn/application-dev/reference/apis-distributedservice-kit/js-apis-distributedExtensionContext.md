@@ -77,14 +77,13 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 ```ts
 import { AbilityConstant, Want } from '@kit.AbilityKit';
-import DistributedExtension from '@ohos.application.DistributedExtensionAbility';
-import hilog from '@ohos.hilog'
+import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { common } from '@kit.AbilityKit';
-import rpc from '@ohos.rpc';
+import { rpc } from '@kit.IPCKit';
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.AbilityKit';
-
 
 const TAG = 'DistributedExtAbility';
 const DOMAIN = 0xFF00;
@@ -191,10 +190,10 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 ```ts
 import { AbilityConstant, Want } from '@kit.AbilityKit';
-import DistributedExtension from '@ohos.application.DistributedExtensionAbility';
-import hilog from '@ohos.hilog'
+import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { common } from '@kit.AbilityKit';
-import rpc from '@ohos.rpc';
+import { rpc } from '@kit.IPCKit';
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { bundleManager } from '@kit.AbilityKit';
