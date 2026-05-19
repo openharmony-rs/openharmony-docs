@@ -19018,7 +19018,7 @@ static enableAdvancedSecurityMode(securityParams: SecurityParams): void
 
 | 参数名   | 类型    | 必填 | 说明        |
 | -------- | ------- | ---- | -------- |
-| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | 否 | 安全特性选项配置。 |
+| securityParams | [SecurityParams](./arkts-apis-webview-SecurityParams.md) | 是 | 安全特性选项配置。 |
 
 **示例：**
 
