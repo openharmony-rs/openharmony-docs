@@ -2131,7 +2131,7 @@ ArkTS-Sta: createHttpResponseCache(cacheSize?: int): HttpResponseCache
 
 **ArkTS-Dyn起始版本：**  9
 
-**ArkTS-Sta起始版本：**  23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
