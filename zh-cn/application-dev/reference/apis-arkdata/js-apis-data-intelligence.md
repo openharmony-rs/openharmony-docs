@@ -90,7 +90,7 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;[CloudModelInfo](#cloudModelInfo26)&gt;&gt; | 返回云侧模型的Promise对象。 |
+| Promise&lt;Array&lt;[CloudModelInfo](#cloudmodelinfo)&gt;&gt; | 返回云侧模型的Promise对象。 |
 
 **示例：**
 
@@ -219,8 +219,8 @@ intelligence.splitText(splitText, splitConfig)
 | version    | [ModelVersion](#modelversion)           | 否 | 否   |模型的版本。 |
 | isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
 | cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。 |
-| modelInfo<sup>26+</sup>    | [CloudModelInfo](#cloudmodelinfo)           | 否 | 是   |云侧模型类型和版本信息，通过[getSupportedCloudModel](#getsupportedcloudmodel)接口获取支持的模型信息，默认值为空。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
-| networkPolicy<sup>26+</sup>    | [NetworkPolicy](#networkpolicy)           | 否 | 是   |下载云侧模型的网络策略，默认值为WIFI_ONLY。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| modelInfo    | [CloudModelInfo](#cloudmodelinfo)           | 否 | 是   |云侧模型类型和版本信息，通过[getSupportedCloudModel](#getsupportedcloudmodel)接口获取支持的模型信息，默认值为空。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| networkPolicy    | [NetworkPolicy](#networkpolicy)           | 否 | 是   |下载云侧模型的网络策略，默认值为WIFI_ONLY。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 
 ## ModelVersion
 
@@ -249,7 +249,7 @@ intelligence.splitText(splitText, splitConfig)
 
 ## NetworkPolicy
 
-下载云侧模型的网络策略。
+下载云侧模型的网络策略枚举。
 
 **起始版本：** 26.0.0
 
@@ -316,6 +316,20 @@ loadModel(): Promise&lt;void&gt;
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | 801          | Capability not supported. |
 | 31300000     | Inner error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+textEmbedding.loadModel()
+  .then(() => {
+    console.info("Succeeded in loading Model");
+  })
+  .catch((err: BusinessError) => {
+    console.error("Failed to load Model and code is " + err.code);
+  })
+```
 
 ### releaseModel
 
