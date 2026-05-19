@@ -169,16 +169,16 @@
 
 | 接口 | 说明 |
 | ---------- | ---------- |
-| [isFastPlaybackSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastplaybacksupported26) | 查询是否支持低时延播放 |
-| [isMultichannelPlaybackSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#ismultichannelplaybacksupported26) | 查询是否支持多声道播放 |
-| [isDirectPlaybackSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isdirectplaybacksupported26) | 查询是否支持透传播放 |
-| [isOffloadPlaybackSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isoffloadplaybacksupported26) | 查询是否支持低功耗播放 |
+| [isFastPlaybackSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastplaybacksupported) | 查询是否支持低时延播放 |
+| [isMultichannelPlaybackSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#ismultichannelplaybacksupported) | 查询是否支持多声道播放 |
+| [isDirectPlaybackSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isdirectplaybacksupported) | 查询是否支持透传播放 |
+| [isOffloadPlaybackSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isoffloadplaybacksupported) | 查询是否支持低功耗播放 |
 
 ### 录制相关查询接口
 
 | 接口 | 说明 |
 | ---------- | ---------- |
-| [isFastRecordingSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastrecordingsupported26) | 查询是否支持低时延录制 |
+| [isFastRecordingSupported()](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastrecordingsupported) | 查询是否支持低时延录制 |
 
 > **说明：**
 > - 音频通路的支持情况取决于设备的硬件能力和系统配置，不同设备可能有所不同。
