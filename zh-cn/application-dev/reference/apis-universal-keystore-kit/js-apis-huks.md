@@ -1288,13 +1288,8 @@ anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksR
 | 12000011 | The queried entity does not exist. |
 | 12000012 | The device environment or input parameter is abnormal. |
 | 12000014 | The memory is insufficient. |
-| 12000018 | The parameter is incorrect. Possible causes:
-1. A mandatory parameter is left empty.
-2. The parameter type is incorrect.
-3. The parameter verification failed.
-4. The group ID specified by the access group tag is invalid. |
-| 12000024 | The operation times out. This may be caused by network jitter.
-You can try again later. |
+| 12000018 | The parameter is incorrect. Possible causes: 1. A mandatory parameter is left empty. 2. The parameter type is incorrect. 3. The parameter verification failed. 4. The group ID specified by the access group tag is invalid. |
+| 12000024 | The operation times out. This may be caused by network jitter. You can try again later. |
 | 12000027 | The network is unavailable. Check network connections. |
 
 **示例：**
