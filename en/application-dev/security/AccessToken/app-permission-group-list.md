@@ -15,7 +15,7 @@
 
   The following uses the Location and Camera permission groups as an example.
 
-  - When an application requests only the ohos.permission.APPROXIMATELY_LOCATION permission (belong to the Location permission group), a dialog box containing only the requested permission will be displayed to request user authorization.
+  - When an application requests only the ohos.permission.APPROXIMATELY_LOCATION permission (belonging to the Location permission group), a dialog box containing only the requested permission will be displayed to request user authorization.
   - When an application requests the ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions (belonging to the Location permission group), a dialog box containing only the requested permissions will be displayed to request user authorization.
   - When an application requests ohos.permission.APPROXIMATELY_LOCATION (belonging to the Location permission group) and ohos.permission.CAMERA (belonging to the Camera permission group), two dialog boxes will be displayed to request the location and camera permissions, respectively.
 
