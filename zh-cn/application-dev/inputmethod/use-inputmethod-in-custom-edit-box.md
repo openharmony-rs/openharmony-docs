@@ -143,6 +143,7 @@
    ``` TypeScript
    CustomInput()
    ```
+
    ArkTS-Sta示例：
 
    <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/pages/PrivatePreview.ets) -->
