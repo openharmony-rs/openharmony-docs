@@ -116,6 +116,14 @@ this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int)
     
     ArkTS-Sta:
     <!-- @[onAvailableBitrates](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 监听当前HLS协议流可用的码率
+    this.avPlayer?.onAvailableBitrates((bitrates: Array<int>) => {
+      console.info('availableBitrates called, and availableBitrates length is: ' + bitrates.length);
+      this.bitrate = bitrates[0]; // 保存需要切换的码率
+    })
+    ```
 
 2. 通过[setBitrate](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#setbitrate9)接口设置播放码率。若用户设置的码率不在可用码率中，播放器将选择最小且最接近的码率。该接口只能在prepared/playing/paused/completed状态下调用，可通过监听[bitrateDone](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onbitratedone9)事件确认是否生效。
 
