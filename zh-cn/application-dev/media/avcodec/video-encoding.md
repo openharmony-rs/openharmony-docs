@@ -78,7 +78,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 > **说明：**
 >
 > 上述'sample'字样仅为示例，此处由开发者根据实际工程目录自定义。
->
 
 ### 定义基础结构
 
@@ -294,7 +293,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    > **说明：**
    > 在回调函数中，对数据队列进行操作时，需要注意多线程同步的问题。
-   >
 
 4. （可选）调用OH_VideoEncoder_RegisterParameterCallback()在Configure接口之前注册随帧通路回调。
 
@@ -359,35 +357,34 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_HEIGHT, height); // 必须配置。
    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PIXEL_FORMAT, pixelFormat); // 必须配置，
 
-    OH_AVFormat_SetDoubleValue(format.get(), OH_MD_KEY_FRAME_RATE, frameRate);
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_RANGE_FLAG, rangeFlag);
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_COLOR_PRIMARIES, primary);
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_TRANSFER_CHARACTERISTICS, transfer);
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_MATRIX_COEFFICIENTS, matrix);
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_I_FRAME_INTERVAL, iFrameInterval);
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PROFILE, profile);
-    // 只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
-    if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CQ)) {
-        OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_QUALITY, quality);
-    } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_SQR)) {
-        // 只有当OH_BitrateMode = BITRATE_MODE_SQR时，才需要配置OH_MD_KEY_MAX_BITRATE和OH_MD_KEY_SQR_FACTOR。
-        OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_MAX_BITRATE, maxBitRate);
-        OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_SQR_FACTOR, sqrFactor);
-    } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR) ||
-               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_VBR) ||
-               rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY)){
-        OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_BITRATE, bitRate);
-    }
-    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, rateMode);
-    OH_AVErrCode ret = OH_VideoEncoder_Configure(videoEnc, format.get());
-    if (ret != AV_ERR_OK) {
-        // 异常处理。
-    }
-    ```
+   OH_AVFormat_SetDoubleValue(format.get(), OH_MD_KEY_FRAME_RATE, frameRate);
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_RANGE_FLAG, rangeFlag);
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_COLOR_PRIMARIES, primary);
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_TRANSFER_CHARACTERISTICS, transfer);
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_MATRIX_COEFFICIENTS, matrix);
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_I_FRAME_INTERVAL, iFrameInterval);
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_PROFILE, profile);
+   // 只有当OH_BitrateMode = BITRATE_MODE_CQ时，才需要配置OH_MD_KEY_QUALITY。
+   if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CQ)) {
+       OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_QUALITY, quality);
+   } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_SQR)) {
+       // 只有当OH_BitrateMode = BITRATE_MODE_SQR时，才需要配置OH_MD_KEY_MAX_BITRATE和OH_MD_KEY_SQR_FACTOR。
+       OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_MAX_BITRATE, maxBitRate);
+       OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_SQR_FACTOR, sqrFactor);
+   } else if (rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR) ||
+              rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_VBR) ||
+              rateMode == static_cast<int32_t>(OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY)){
+       OH_AVFormat_SetLongValue(format.get(), OH_MD_KEY_BITRATE, bitRate);
+   }
+   OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, rateMode);
+   OH_AVErrCode ret = OH_VideoEncoder_Configure(videoEnc, format.get());
+   if (ret != AV_ERR_OK) {
+       // 异常处理。
+   }
+   ```
 
    > **注意：**
    > 配置非必须参数错误时，会返回AV_ERR_INVALID_VAL错误码。但OH_VideoEncoder_Configure()不会失败，而是使用默认值继续执行。
-   >
 
 6. 获取surface。
 
@@ -604,7 +601,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     >
     > 1. 不能在回调函数中调用；
     > 2. 执行该步骤之后，需要开发者将videoEnc指向nullptr，防止野指针导致程序错误。
-    >
 
     ```c++
     std::unique_lock<std::shared_mutex> lock(codecMutex);
@@ -742,7 +738,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    > **说明：**
    >
    > 在回调函数中，对数据队列进行操作时，需要注意多线程同步的问题。
-   >
 
 4. 调用OH_VideoEncoder_Configure()配置编码器。
 

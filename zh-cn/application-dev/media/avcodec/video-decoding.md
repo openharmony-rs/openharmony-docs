@@ -289,7 +289,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    > 1. 在回调函数中，对数据队列进行操作时，需要注意多线程同步的问题。
    > 2. 播放视频时，若视频码流的SPS（Sequence Parameter Set）中包含颜色信息（如RangeFlag、ColorPrimary、MatrixCoefficient、TransferCharacteristic），解码器会把这些信息通过OH_AVCodecOnStreamChanged接口中的OH_AVFormat返回。
    > 3. 视频解码的Surface模式下，内部数据默认是走HEBC（High Efficiency Bandwidth Compression，高效带宽压缩），无法获取到widthStride和heightStride的值。
-   >
 
 4. （可选）OH_VideoDecoder_SetDecryptionConfig设置解密配置。在获取到DRM信息（参考[音视频解封装](audio-video-demuxer.md)开发步骤第4步），完成DRM许可证申请后，通过此接口进行解密配置。此接口需在Prepare前调用。在Surface模式下，DRM解密能力既支持安全视频通路，也支持非安全视频通路。DRM相关接口详见[DRM API文档](../../reference/apis-drm-kit/capi-drm.md)。
 
@@ -324,7 +323,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    MediaKeySession *session = nullptr;
    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
    ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-   if (ret != DRM_OK) {
+   if (ret != DRM_ERR_OK) {
        // 如创建失败，请查看DRM接口文档及日志信息。
        printf("create media key session failed.");
        return;
@@ -736,7 +735,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     >
     > 1. 不能在回调函数中调用；
     > 2. 执行该步骤之后，需要开发者将videoDec指向nullptr，防止野指针导致程序错误。
-    >
 
     ```c++
     std::unique_lock<std::shared_mutex> lock(codecMutex);
