@@ -1708,6 +1708,121 @@
    ArkTS-Sta示例：
 
    <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import {
+     Entry,
+     StorageLink,
+     Provide,
+     Component,
+     Column,
+     Row,
+     Stack,
+     $r,
+     InputType,
+     Watch,
+     Color,
+     FlexAlign,
+     AppStorage
+   } from '@kit.ArkUI';
+   import deviceInfo from '@ohos.deviceInfo';
+   import Log from '../../model/Log';
+   import { EditView } from '../../components/EditView';
+   import { InputHandler } from '../model/KeyboardController';
+   import { MenuType, SubMenuType } from './KeyboardKeyData';
+   import { KeyMenu } from '../../components/KeyMenu';
+   import { NumberMenu } from '../../components/NumberMenu';
+   import { StyleConfiguration, KeyStyle } from '../../common/StyleConfiguration';
+   import { SymbolMenu } from '../../components/SymbolMenu';
+   import { Submenu } from '../../components/Submenu';
+   import { TopMenu } from '../../components/TopMenu';
+   import { inputMethodEngine } from '@kit.IMEKit';
+   
+   
+   const DEVICE_TYPE: string = deviceInfo.deviceType;
+   const TAG: string = 'index->';
+   
+   @Entry
+   @Component
+   struct Index {
+     @Provide menuType: number = MenuType.NORMAL;
+     @StorageLink('inputPattern') @Watch('inputPatternChange') inputPattern: InputType =
+       InputType.fromValue(InputType.Normal)
+     @StorageLink('submenuType') submenuType: number = SubMenuType.NORMAL;
+     @StorageLink('isLandscape') @Watch('change') isLandscape: boolean = false;
+     @StorageLink('isRkDevice') isRkDevice: boolean = true;
+     @StorageLink('inputStyle') inputStyle: KeyStyle =
+       StyleConfiguration.getInputStyle(this.isLandscape, this.isRkDevice, DEVICE_TYPE);
+     private panel: inputMethodEngine.Panel | undefined;
+     @StorageLink('subtypeChange') subtypeChange: number = 0;
+   
+     aboutToAppear(): void {
+       // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
+       inputMethodEngine.getKeyboardDelegate()?.onEditorAttributeChanged((attr: inputMethodEngine.EditorAttribute) => {
+         console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
+         if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.IMMERSIVE) {
+           this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+           console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
+         }
+       })
+     }
+   
+     onBackPress(): boolean {
+       Log.showInfo(TAG, 'kikaInput onBackPress');
+       this.submenuType = SubMenuType.NORMAL;
+       InputHandler.getInstance().hideKeyboardSelf();
+       return true;
+     }
+   
+     inputPatternChange(value: string): void {
+       if (this.inputPattern === InputType.NUMBER || this.inputPattern === InputType.PhoneNumber) {
+         this.menuType = MenuType.NUMBER;
+       } else {
+         this.menuType = MenuType.NORMAL;
+       }
+     }
+   
+     change(value: string): void {
+       AppStorage.set('inputStyle', StyleConfiguration.getInputStyle(this.isLandscape, this.isRkDevice, DEVICE_TYPE));
+     }
+   
+     build() {
+       Stack() {
+         Column() {
+           TopMenu()
+           Column() {
+             if (this.submenuType > SubMenuType.NORMAL) {
+               if (this.submenuType === SubMenuType.MENU) {
+                 Submenu()
+               } else {
+                 EditView();
+               }
+             } else {
+               if (this.menuType === MenuType.NORMAL) {
+                 if (this.subtypeChange == 0) {
+                   KeyMenu()
+                 } else {
+                   NumberMenu()
+                 }
+               } else if (this.menuType === MenuType.NUMBER) {
+                 NumberMenu()
+               } else {
+                 SymbolMenu()
+               }
+             }
+           }
+           .width('100%')
+           .layoutWeight(1)
+           .justifyContent(FlexAlign.Center)
+           .backgroundColor('#D5D8DD')
+         }
+         .height('100%')
+       }
+       .height('100%')
+       .backgroundColor(Color.White)
+     }
+   }
+   ```
 
 5. main_pages.json文件。对应ets/InputMethodExtensionAbility/pages/路径下键盘的绘制页面。
 
