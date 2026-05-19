@@ -185,13 +185,6 @@ setDefaultEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示成功，false表示失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -301,13 +294,6 @@ on(event: string, callback: Callback<emitter.EventData>): void
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | 是 | 回调函数，返回事件传输的数据。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -346,13 +332,6 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 | -------- | -------- | -------- | -------- |
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | 否 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
 
 **示例：**
 
@@ -397,13 +376,6 @@ doInitialize(callback: Function): void
 | -------- | -------- | -------- | -------- |
 | callback | Function | 是 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -439,13 +411,6 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -480,13 +445,6 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 | -------- | -------- | -------- | -------- |
 | chunks    | string[] \|  Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
 
 **示例：**
 
@@ -574,13 +532,6 @@ Readable的构造函数。
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | -------- | -------- |
 | options   | [ReadableOptions](#readableoptions)   | 是 | Readable构造函数的选项信息。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
 
 **示例：**
 
@@ -730,13 +681,6 @@ setEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -811,13 +755,6 @@ pipe(destination: Writable, options?: Object): Writable
 | -------- | -------- |
 | [Writable](#writable) | 返回当前可写流对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -870,13 +807,6 @@ unpipe(destination?: Writable): Readable
 | -------- | -------- |
 | [Readable](#readable) | 返回当前可读流对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -928,13 +858,6 @@ on(event: string, callback: Callback<emitter.EventData>): void
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | 是 | 回调函数，返回事件数据。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -971,13 +894,6 @@ off(event: string, callback?: Callback<emitter.EventData>): void
 | -------- | -------- | -------- | -------- |
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | 否 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
 
 **示例：**
 
@@ -1020,13 +936,6 @@ doInitialize(callback: Function): void
 | -------- | -------- | -------- | -------- |
 | callback | Function | 是 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -1060,13 +969,6 @@ doRead(size: number): void
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
 | size | number | 是 | 读取数据的字节数。 取值范围：0 <= size <= Number.MAX_VALUE。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
 
 **示例：**
 
@@ -1298,13 +1200,6 @@ setDefaultEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -1410,13 +1305,6 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -1454,13 +1342,6 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 | -------- | -------- | -------- | -------- |
 | chunks    | string[] \| Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
 
 **示例：**
 
@@ -1529,13 +1410,6 @@ doTransform(chunk: string, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-
 **示例：**
 
 ```ts
@@ -1571,13 +1445,6 @@ doFlush(callback: Function): void
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback  | Function | 是   | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
 
 **示例：**
 
