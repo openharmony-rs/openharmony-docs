@@ -5059,7 +5059,7 @@ try {
 
 on(type: 'keyboardHeightChange', callback: Callback&lt;number&gt;): void
 
-开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5104,7 +5104,7 @@ try {
 
 onKeyboardHeightChange(callback: Callback&lt;int&gt;): void
 
-开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+开启固定态软键盘高度变化的监听。当软键盘从本窗口唤出且与窗口有重叠区域时，通知键盘高度变化。有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -5141,7 +5141,7 @@ try {
 
 off(type: 'keyboardHeightChange', callback?: Callback&lt;number&gt;): void
 
-关闭固定态软键盘高度变化的监听，使应用程序不再接收键盘高度变化的通知。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘高度变化的监听，使应用程序不再接收键盘高度变化的通知。有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5191,7 +5191,7 @@ try {
 
 offKeyboardHeightChange(callback?: Callback&lt;int&gt;): void
 
-关闭固定态软键盘高度变化的监听，使应用程序不再接收键盘高度变化的通知。从API version 10开始，有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
+关闭固定态软键盘高度变化的监听，使应用程序不再接收键盘高度变化的通知。有关将软键盘设置为固定态或悬浮态的方法，请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
