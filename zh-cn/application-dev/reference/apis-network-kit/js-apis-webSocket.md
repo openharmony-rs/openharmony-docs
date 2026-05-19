@@ -1769,7 +1769,7 @@ listAllConnections(): WebSocketConnection[]
 **返回值：**
 | 类型                                        | 说明                         |
 | ------------------------------------------- | ---------------------------- |
-| [WebSocketConnection[]](#websocketconnection19) | 以字符串数组形式返回所有客户端的信息。|
+| WebSocketConnection[] | 以字符串数组形式返回所有客户端的信息。|
 
 **错误码：**
 
