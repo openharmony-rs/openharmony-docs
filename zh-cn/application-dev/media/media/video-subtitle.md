@@ -37,6 +37,42 @@
    
    ArkTS-Sta:
    <!-- @[addSubtitleFromFd](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 通过UIAbilityContext的resourceManager成员的getRawFd接口获取媒体资源播放地址。
+   // 返回类型为{fd,offset,length},fd为HAP包fd地址，offset为媒体资源偏移量，length为播放长度。
+   if (this.context == undefined) return;
+   let fileDescriptorVideo = await this.context.resourceManager.getRawFd(this.fileName);
+   let avFileDescriptor: media.AVFileDescriptor =
+     { fd: fileDescriptorVideo.fd, offset: fileDescriptorVideo.offset, length: fileDescriptorVideo.length };
+   
+   if (this.avPlayer) {
+     console.info(`${this.tag}: init avPlayer release2createNew`);
+     this.avPlayer?.release();
+     await this.msleepAsync(1500);
+   }
+   // 创建avPlayer实例对象
+   this.avPlayer = await media.createAVPlayer();
+   
+   // 创建状态机变化回调函数
+   await this.setAVPlayerCallback((avPlayer: media.AVPlayer) => {
+     this.percent = avPlayer.width / avPlayer.height;
+     this.setVideoWH();
+     this.durationTime = this.getDurationTime();
+     setInterval(() => { // 更新当前时间
+       if (!this.isSwiping) {
+         this.currentTime = this.getCurrentTime();
+       }
+     }, SET_INTERVAL);
+   });
+   
+   // 为fdSrc赋值触发initialized状态机上报
+   this.avPlayer!.fdSrc = avFileDescriptor;
+   
+   // 设定字幕
+   let fileDescriptorSub = await this.context.resourceManager.getRawFd('test1.srt');
+   this.avPlayer!.addSubtitleFromFd(fileDescriptorSub.fd, fileDescriptorSub.offset, fileDescriptorSub.length);
+   ```
 
 2. 调用[on('subtitleUpdate')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onsubtitleupdate12)接口，注册字幕回调函数。
 
