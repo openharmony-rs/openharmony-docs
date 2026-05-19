@@ -2228,3 +2228,186 @@ try {
   console.error(`Failed to query bundle stats infos. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## applicationManager.addHideLauncherIcon
+
+addHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
+
+添加隐藏桌面应用图标名单。
+
+> **说明：**
+>
+> 1、本接口仅支持隐藏当前用户的桌面应用图标，不支持隐藏应用卡片。
+>
+> 2、如果被隐藏的应用有应用分身，会同步隐藏应用分身。
+>
+> 3、不能把桌面所有应用都添加到隐藏名单中，否则所有应用都会显示到桌面上。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要隐藏的应用，最大支持500个。                                 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let bundleNames: Array<string> = ['com.example.test'];
+try {
+  applicationManager.addHideLauncherIcon(wantTemp, bundleNames);
+  console.info('Succeeded in adding hide launcher icon.');
+} catch (err) {
+  console.error(`Failed to add hide launcher icon. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.removeHideLauncherIcon
+
+removeHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
+
+取消隐藏桌面应用图标名单。
+
+> **说明：**
+>
+> 取消隐藏的应用会从桌面第2屏开始找空位显示；如果第2~18屏无空位，则在第1屏找空位；如果第1屏无空位，则在第2屏第1个应用的位置创建小文件夹放置应用。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要取消隐藏的应用，最大支持500个。                                 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let bundleNames: Array<string> = ['com.example.test'];
+try {
+  applicationManager.removeHideLauncherIcon(wantTemp, bundleNames);
+  console.info('Succeeded in removing hide launcher icon.');
+} catch (err) {
+  console.error(`Failed to remove hide launcher icon. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.getHideLauncherIcon
+
+getHideLauncherIcon(admin: Want \| null): Array\<string\>
+
+查询当前用户下隐藏桌面应用图标名单。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 否   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br/>当设备有多个MDM应用时，传入admin查询对应admin设置的策略。传入null时查询整机实际生效的策略。                                               |
+
+**返回值：**
+
+| 类型                | 说明                             |
+| ------------------- | -------------------------------- |
+| Array&lt;string&gt; | 返回当前用户下的隐藏桌面应用图标名单。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let bundleNames: Array<string> = applicationManager.getHideLauncherIcon(wantTemp);
+  console.info('Succeeded in getting hide launcher icon.');
+} catch (err) {
+  console.error(`Failed to get hide launcher icon. Code is ${err.code}, message is ${err.message}`);
+}
+```
