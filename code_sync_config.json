@@ -53167,5 +53167,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/request/app-cache-download.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/CacheDownloadRetry.ets",
+				"functions":[
+					{
+						"end_line":222,
+						"name":"cache_download_with_retry",
+						"start_line":191
+					},
+					{
+						"end_line":181,
+						"name":"cache_download_register_callbacks",
+						"start_line":161
+					},
+					{
+						"end_line":189,
+						"name":"cache_download_unregister_callbacks",
+						"start_line":183
+					},
+					{
+						"end_line":236,
+						"name":"cache_download_cancel",
+						"start_line":224
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/CacheDownloadTimeout.ets",
+				"functions":[
+					{
+						"end_line":242,
+						"name":"cache_download_with_timeout",
+						"start_line":212
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/GlobalRetryOptions.ets",
+				"functions":[
+					{
+						"end_line":225,
+						"name":"set_global_retry_options",
+						"start_line":202
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/request/CacheDownload/entry/src/main/ets/pages/GlobalTimeoutOptions.ets",
+				"functions":[
+					{
+						"end_line":253,
+						"name":"set_global_timeout_options",
+						"start_line":228
+					}
+				]
+			}
+		]
 	}
 ]
