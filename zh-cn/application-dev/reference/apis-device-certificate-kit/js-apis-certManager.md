@@ -377,7 +377,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
-| 17500004 | The number of certificates or credentials reaches the maximum allowed.<br>**适用版本**：12+ |
+| 17500004 | The number of certificates or credentials reaches the maximum allowed.<br>适用版本：12+ |
 
 **示例**：
 ```ts
@@ -440,7 +440,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
-| 17500004 | The number of certificates or credentials reaches the maximum allowed.<br>**适用版本**：12+ |
+| 17500004 | The number of certificates or credentials reaches the maximum allowed.<br>适用版本：12+ |
 
 **示例**：
 
@@ -958,7 +958,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user.<br>**适用版本**：12+ |
+| 17500005 | The application is not authorized by the user.<br>适用版本：12+ |
 
 **示例**：
 ```ts
@@ -1020,7 +1020,7 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user.<br>**适用版本**：12+ |
+| 17500005 | The application is not authorized by the user.<br>适用版本：12+ |
 
 **示例**：
 ```ts
@@ -1838,7 +1838,7 @@ getCertificateStorePath(property: CertStoreProperty): string;
 |----------| ------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified.  |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm.<br>**适用版本**：20+ |
+| 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm.<br>适用版本：20+ |
 
 **示例**：
 ```ts
