@@ -83,7 +83,7 @@
 
 > **说明：**
 > 
-> - 应用子窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下支持FULL_SCREEN与MAXIMIZE模式，且需要在创建子窗时将maximizeSupported参数配置为true，或者通过setSupportedWindowModes配置支持。
+> - 应用子窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下支持FULL_SCREEN与MAXIMIZE模式，且需要在创建子窗时将maximizeSupported参数配置为true，或者通过[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setSupportedWindowModes26)配置支持。
 > 
 > - FULL_SCREEN与MAXIMIZE的主要差异：
 >
@@ -231,11 +231,11 @@
 
 ## 定制窗口模式支持策略
 
-应用可以通过多种方式配置窗口支持的模式，以满足不同设备和场景的需求。针对主窗窗口模式，提供了四种主要的配置方式，按优先级从高到低依次为：
+应用可以通过多种方式配置窗口支持的模式，以满足不同设备和场景的需求。针对主窗、子窗窗口模式，提供了四种主要的配置方式，按优先级从高到低依次为：
 
 | 优先级排序 | 配置方式 | 支持的窗口类型 | 生效范围 |
 | -------- | -------- | -------- | -------- |
-| 1 | [通过setSupportedWindowModes()接口配置](#通过setsupportedwindowmodes接口配置) | 应用主窗口 | 仅在自由窗口状态下生效 |
+| 1 | [通过setSupportedWindowModes()接口配置](#通过setsupportedwindowmodes接口配置) | 应用主窗口、应用子窗口 | 仅在自由窗口状态下生效 |
 | 2 | [通过startAbility()接口配置](#通过startability接口配置) | 应用主窗口 | 仅在自由窗口状态下生效 |
 | 3 | [通过module.json5配置文件中abilities标签下的metadata标签配置](#通过modulejson5配置文件中abilities标签下的metadata标签配置) | 应用主窗口 | 仅在自由窗口状态下生效 |
 | 4 | [通过module.json5配置文件中abilities标签下的supportWindowMode属性配置](#通过modulejson5配置文件中abilities标签下的supportwindowmode属性配置) | 应用主窗口 | 均生效 |
@@ -252,7 +252,7 @@
 
 ### 通过setSupportedWindowModes()接口配置
 
-通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)传入supportedWindowModes或调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes20)接口传入supportedWindowModes和 grayOutMaximizeButton，可以在运行时动态修改当前主窗口、子窗口支持的窗口模式。
+通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)传入supportedWindowModes或调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes20)接口传入supportedWindowModes和 grayOutMaximizeButton，可以在运行时动态修改当前主窗口支持的窗口模式。通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setSupportedWindowModes26)传入supportedWindowModes，可以在运行时动态修改当前子窗口的支持的窗口模式。
 
 支持配置的窗口模式如下所示：
 
