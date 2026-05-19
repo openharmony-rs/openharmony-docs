@@ -45,6 +45,11 @@
 
     ArkTS-Sta:
     <!-- @[create_AVPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSAudio/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 创建avPlayer实例对象
+    this.avPlayer = await media.createAVPlayer();
+    ```
 
 2. 设置业务需要的监听事件，搭配全流程场景使用。支持的监听事件包括：
 
