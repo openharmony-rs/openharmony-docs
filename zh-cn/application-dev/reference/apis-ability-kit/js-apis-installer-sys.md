@@ -167,7 +167,7 @@ install(hapFilePaths: Array&lt;string&gt;, installParam: InstallParam, callback:
 
 | 参数名           | 类型                                                 | 必填 | 说明                                                         |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP或APP的数据目录。当传入的路径是一个目录时，该目录下只能放同一个应用的HAP或一个APP。同一个应用的HAP的签名需要保持一致。 |
 | installParam           | [InstallParam](#installparam)                        | 是   | 指定安装所需的其他参数。                                     |
 | callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为undefined，否则为错误对象。 |
 
@@ -259,7 +259,7 @@ install(hapFilePaths: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | 参数名           | 类型                                                 | 必填 | 说明                                                         |
 | --------------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| hapFilePaths | Array&lt;string&gt;                                  | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP或APP的数据目录。当传入的路径是一个目录时，该目录下只能放同一个应用的HAP或一个APP。同一个应用的HAP的签名需要保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -346,7 +346,7 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 
 | 参数名       | 类型                          | 必填 | 说明                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| hapFilePaths | Array\<string\>               | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| hapFilePaths | Array\<string\>               | 是   | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP或APP的数据目录。当传入的路径是一个目录时，该目录下只能放同一个应用的HAP或一个APP。同一个应用的HAP的签名需要保持一致。 |
 | installParam | [InstallParam](#installparam) | 否   | 指定安装所需的其他参数，默认值：参照[InstallParam](#installparam)的默认值。                                     |
 
 **返回值：**
