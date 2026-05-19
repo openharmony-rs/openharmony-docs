@@ -435,7 +435,7 @@ RouterPageInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| Ark-Dyn: [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo)<br/>Ark-Sta: uiObserver.RouterPageInfo | 返回RouterPageInfo实例对象。 |
+| ArkTS-Dyn: [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo)<br/>ArkTS-Sta: uiObserver.RouterPageInfo | 返回RouterPageInfo实例对象。 |
 
 ## getDialogController<sup>18+</sup>
 
