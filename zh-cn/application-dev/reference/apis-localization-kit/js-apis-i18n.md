@@ -5120,7 +5120,7 @@ let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | ------- | ------- | ------- | --------------------------------------- |
 | dateFormat   | 'calendar' \| 'ordinal' \| 'week' |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
-| timePrecision   | 'dateOnly' \| 'hours' | 'minutes' | 'seconds' | 'milliSeconds' |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
+| timePrecision   | 'dateOnly' \| 'hours' \| 'minutes' \| 'seconds' \| 'milliSeconds' |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
 | separatorStyle  | 'extended' \| 'basic' |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
 | timeZone        | [TimeZone](#timezone) |   否   |   是   |  时区。默认值：**UTC**。   |
 | displayTimeZone     | boolean |   否  |   是   |  是否显示时区，true表示显示时区，false表示不显示时区。默认值：true。  |
