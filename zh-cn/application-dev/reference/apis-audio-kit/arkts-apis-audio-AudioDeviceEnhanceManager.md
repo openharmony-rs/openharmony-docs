@@ -101,21 +101,7 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let outputDevice: audio.AudioDeviceDescriptor = {
-  deviceRole: audio.DeviceRole.OUTPUT_DEVICE,
-  deviceType: audio.DeviceType.SPEAKER,
-  id: 1,
-  name: "speaker",
-  address: "0",
-  sampleRates: [48000],
-  channelCounts: [2],
-  channelMasks: [0],
-  networkId: "",
-  interruptGroupId: 1,
-  volumeGroupId: 1,
-  displayName: "speaker"
-};
-
+let outputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectOutputDevice(outputDevice).then(() => {
   console.info('Succeeded in selecting output device.');
 }).catch((err: BusinessError) => {
@@ -169,21 +155,7 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let inputDevice: audio.AudioDeviceDescriptor = {
-  deviceRole: audio.DeviceRole.INPUT_DEVICE,
-  deviceType: audio.DeviceType.MIC,
-  id: 1,
-  name: "mic",
-  address: "0",
-  sampleRates: [48000],
-  channelCounts: [2],
-  channelMasks: [0],
-  networkId: "",
-  interruptGroupId: 1,
-  volumeGroupId: 1,
-  displayName: "mic"
-};
-
+let inputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectInputDevice(inputDevice).then(() => {
   console.info('Succeeded in selecting input device.');
 }).catch((err: BusinessError) => {
