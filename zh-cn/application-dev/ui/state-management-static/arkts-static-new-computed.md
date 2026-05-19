@@ -84,7 +84,7 @@ import { Computed } from '@kit.ArkUI';
    }
    ```
 
-- 在\@Computed装饰的getter方法中，不能改变状态变量的值，否则会抛出运行时异常。
+- 在\@Computed装饰的getter方法中，不能改变状态变量的值，否则会抛出运行时异常。API version 26.0.0以后，在@Computed方法中修改状态变量会编译报错，报错消息是“State variables cannot be modified within a getter function decorated with '@Computed'.”。
 
    ```ts
    'use static'
