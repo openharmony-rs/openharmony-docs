@@ -4464,7 +4464,7 @@
 
 **是否支持证书授权**：true
 
-**起始版本**：18
+**起始版本**：16
 
 ## ohos.permission.GET_PAGE_INFO
 
