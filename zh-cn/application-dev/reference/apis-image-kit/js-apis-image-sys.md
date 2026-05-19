@@ -90,7 +90,8 @@ createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): 
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_FP16/RGBA_1010102/YCBCR_P010/YCRCB_P010. Or sdrPixelMap's PixelMapFormat is not RGBA_8888. |
+| 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_FP16\RGBA_1010102\YCBCR_P010\YCRCB_P010. Or sdrPixelMap's PixelMapFormat is not RGBA_8888. |
+|  202      | Non-system applications are not allowed to use system APIs. |
 
 **示例：**
 
@@ -160,7 +161,7 @@ async function CreatePictureTest(context: Context) {
  	 
  | 错误码ID | 错误信息                                                     |
  | -------- | ------------------------------------------------------------ |
- | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_FP16/RGBA_1010102/YCBCR_P010/YCRCB_P010. Or sdrPixelMap's PixelMapFormat is not RGBA_8888. |
+ | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_FP16\RGBA_1010102\YCBCR_P010\YCRCB_P010. Or sdrPixelMap's PixelMapFormat is not RGBA_8888. |
  |  202      | Non-system applications are not allowed to use system APIs. |
  	 
  **示例：**
