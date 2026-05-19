@@ -3507,7 +3507,7 @@ ArkTS-Sta: openBindSheet(bindSheetContent: ComponentContentBase, sheetOptions?: 
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: ComponentContentBase | 是 | 半模态页面中显示的组件内容。 |
+| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContentBase](js-apis-arkui-ComponentContent.md#componentcontentbase) | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 否    |   半模态页面样式。<br/>**说明：** <br/>1. 不支持设置SheetOptions.uiContext，该属性的值固定为当前实例的UIContext。<br/>2. 若不传递targetId，则不支持设置SheetOptions.preferType为POPUP样式，若设置了POPUP样式则使用CENTER样式替代。<br/>3. 若不传递targetId，则不支持设置SheetOptions.mode为EMBEDDED模式，默认为OVERLAY模式。<br/>4. 其余属性的默认值参考[SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)文档。 |
 | targetId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    |   需要绑定组件的ID，若不指定则不绑定任何组件。id不存在时返回错误码120004。在传入undefined时返回错误码401。 |
 
@@ -3646,7 +3646,7 @@ ArkTS-Sta: updateBindSheet(bindSheetContent: ComponentContentBase, sheetOptions:
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTs-Sta: ComponentContentBase | 是 | 半模态页面中显示的组件内容。 |
+| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTs-Sta: [ComponentContentBase](js-apis-arkui-ComponentContent.md#componentcontentbase) | 是 | 半模态页面中显示的组件内容。 |
 | sheetOptions | [SheetOptions](arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions) | 是    |   半模态页面样式。<br/>**说明：** <br/>不支持更新SheetOptions.uiContext、SheetOptions.mode、回调函数。 |
 | partialUpdate | boolean | 否    |   半模态页面更新方式, 默认值为false。<br/>**说明：** <br/>1. true为增量更新，保留当前值，更新SheetOptions中的指定属性。 <br/>2. false为全量更新，除SheetOptions中的指定属性，其他属性恢复默认值。 |
 
@@ -3780,7 +3780,7 @@ ArkTS-Sta: closeBindSheet(bindSheetContent: ComponentContentBase): Promise&lt;vo
 
 | 参数名     | 类型                                       | 必填   | 说明      |
 | ------- | ---------------------------------------- | ---- | ------- |
-| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: ComponentContentBase | 是 | 半模态页面中显示的组件内容。 |
+| bindSheetContent | ArkTS-Dyn: [ComponentContent\<T>](js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContentBase](js-apis-arkui-ComponentContent.md#componentcontentbase) | 是 | 半模态页面中显示的组件内容。 |
 
 **返回值：**
 
