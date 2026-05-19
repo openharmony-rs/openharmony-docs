@@ -1277,11 +1277,8 @@ anonAttestKeyItemOffline(keyAlias: string, params: HuksParam[]) : Promise\<HuksR
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | The API is not supported. |
 | 12000001 | The algorithm mode is not supported. |
-| 12000002 | The algorithm parameter is missing. |
-| 12000003 | The algorithm parameter is invalid. |
 | 12000004 | The file operation failed. |
 | 12000005 | The IPC communication failed. |
 | 12000006 | The encryption engine is faulty. |
