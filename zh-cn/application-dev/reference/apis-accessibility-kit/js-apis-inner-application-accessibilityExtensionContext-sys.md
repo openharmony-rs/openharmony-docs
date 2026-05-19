@@ -69,6 +69,10 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
 | rowIndex             | number | 否   |否 |网格行索引。                 |
@@ -82,6 +86,10 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                  | 类型     | 只读  |可选| 说明                                |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
@@ -101,6 +109,10 @@ type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' | 'checkSelf' | 'checkSe
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 | 类型            | 说明          |
 | -------- | ------- |
 | 'bypassSelf'       | 表示跳过对起始节点的检查，只检查其子节点。值固定为'bypassSelf'字符串。|
@@ -117,6 +129,10 @@ type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAnc
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 | 类型       | 说明      |
 | -------- | ------- |
@@ -496,13 +512,13 @@ holdRunningLockSync(): void
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -563,13 +579,13 @@ unholdRunningLockSync(): void
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -786,13 +802,13 @@ notifyDisconnect(): void
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -853,13 +869,13 @@ getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统接口**：此接口为系统接口。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值:**
 | 类型                                 | 描述                    |
@@ -1059,13 +1075,13 @@ getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#
 
 **需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统接口**：此接口为系统接口。
 
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2212,6 +2228,8 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 节点元素具备的属性名称及属性值类型信息。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
@@ -2220,15 +2238,15 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 | 名称                   | 类型                                                              | 只读 | 可选 | 说明              |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| accessibilityStateDescription<sup>23+</sup> | string                                      | 否   | 是   | 元素的自定义无障碍状态播报文本信息。<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| isEssential             | boolean              | 否   | 是   | 表示元素对用户是否是必需的。true表示元素是必需的，false表示元素不是必需的，默认值为false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| belongTreeId             | number              | 否   | 是   | 表示元素所属的组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| childrenTreeId             | number              | 否   | 是   | 表示元素的子组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| currentItem             | [AccessibilityGrid](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilitygrid20)              | 否   | 是   | 表示当前元素所在网格中的位置。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| span             | [AccessibilitySpan](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityspan20)[]              | 否   | 是   | 表示元素在网格布局中所跨越的行列范围数组。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| childrenIds             |      Array&lt;number&gt;         | 否   | 是   | 表示元素的子组件ID。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| parentId             | number              | 否   | 是   | 表示元素的父组件ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| mainWindowId             | number              | 否   | 是   | 表示元素的主窗口ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| accessibilityVisible             | boolean              | 否   | 是   | 表示元素是否是无障碍可见的。true表示元素是无障碍可见的，false表示元素是无障碍不可见的，默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| navDestinationId             | number              | 否   | 是   | 表示元素所关联的导航目标ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| customActions | Array\<string>                     | 否   | 是   | 元素支持的自定义操作列表。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| accessibilityStateDescription<sup>23+</sup> | string                                      | 否   | 是   | 元素的自定义无障碍状态播报文本信息。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：23|
+| isEssential             | boolean              | 否   | 是   | 表示元素对用户是否是必需的。true表示元素是必需的，false表示元素不是必需的，默认值为false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| belongTreeId             | number              | 否   | 是   | 表示元素所属的组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| childrenTreeId             | number              | 否   | 是   | 表示元素的子组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| currentItem             | [AccessibilityGrid](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilitygrid20)              | 否   | 是   | 表示当前元素所在网格中的位置。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| span             | [AccessibilitySpan](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityspan20)[]              | 否   | 是   | 表示元素在网格布局中所跨越的行列范围数组。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| childrenIds             |      Array&lt;number&gt;         | 否   | 是   | 表示元素的子组件ID。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| parentId             | number              | 否   | 是   | 表示元素的父组件ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| mainWindowId             | number              | 否   | 是   | 表示元素的主窗口ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| accessibilityVisible             | boolean              | 否   | 是   | 表示元素是否是无障碍可见的。true表示元素是无障碍可见的，false表示元素是无障碍不可见的，默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| navDestinationId             | number              | 否   | 是   | 表示元素所关联的导航目标ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| customActions | Array\<string>                     | 否   | 是   | 元素支持的自定义操作列表。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0|

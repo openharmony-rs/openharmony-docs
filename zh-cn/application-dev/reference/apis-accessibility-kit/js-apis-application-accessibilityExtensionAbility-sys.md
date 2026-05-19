@@ -176,11 +176,11 @@ onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean;
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

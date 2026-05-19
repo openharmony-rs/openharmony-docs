@@ -192,6 +192,10 @@ enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capab
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型                                                                           | 必填 | 说明 |
@@ -788,11 +792,11 @@ setMagnificationState(state: boolean): void
 
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1372,6 +1376,10 @@ config.highContrastText.off((data: boolean) => {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
@@ -1390,6 +1398,10 @@ type OnDisconnectCallback = () => void
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **模型约束**：此类型仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 
 ## DaltonizationColorFilter

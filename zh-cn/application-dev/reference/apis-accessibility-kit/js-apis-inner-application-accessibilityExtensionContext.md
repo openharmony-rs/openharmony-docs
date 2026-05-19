@@ -49,7 +49,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | bundleName           | string                                                             | 否   | 否   | 应用包名。<br>**ArkTS-Dyn起始版本**：9 |
 | checkable            | boolean                                                            | 否   | 否   | 表示元素是否支持点击操作。true表示元素支持点击操作，false表示元素不支持点击操作，默认值为false。<br>**ArkTS-Dyn起始版本**：9 |
 | checked              | boolean                                                            | 否   | 否   | 表示元素当前的可点击状态。true表示元素当前是可点击的，false表示元素当前是不可点击的，默认值为false。<br>**ArkTS-Dyn起始版本**：9 |
-| children             | Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;        | 否   | 否   | 所有子元素。<br>**ArkTS-Dyn起始版本**：9 |
+| children             | Array&lt;[AccessibilityElement](#accessibilityelement)&gt;        | 否   | 否   | 所有子元素。<br>**ArkTS-Dyn起始版本**：9 |
 | clickable            | boolean                                                            | 否   | 否   | 表示元素是否可点击。true表示元素可点击，false表示元素不可点击，默认值为false。<br>**ArkTS-Dyn起始版本**：9|
 | componentId          | number                                                             | 否   | 否   | 元素所属的组件ID。默认值为-1。<br>**ArkTS-Dyn起始版本**：9|
 | componentType        | string                                                             | 否   | 否   | 应与元素所属的组件类型所对应，如：按钮Button类型->'Button'、图像Image类型->'Image'。<br>**ArkTS-Dyn起始版本**：9 |
