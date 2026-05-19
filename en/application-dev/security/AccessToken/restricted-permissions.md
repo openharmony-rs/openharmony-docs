@@ -13,7 +13,7 @@
 
 Restricted permissions are permissions available to normal applications but must be requested via [access control list (ACL)](app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
-To change the APL of a normal application to system_basic or system_core, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
+To change the APL of a normal application to system_basic or system_core, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
 
 **Modification mode**:
 
