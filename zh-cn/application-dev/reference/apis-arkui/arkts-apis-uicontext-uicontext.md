@@ -4486,7 +4486,7 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 21
 
 **参数：**
 
