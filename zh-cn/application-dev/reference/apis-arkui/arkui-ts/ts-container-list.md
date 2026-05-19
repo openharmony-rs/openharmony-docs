@@ -305,6 +305,8 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 
 **相关接口:** 该接口对应的ArkTS-Sta接口是[edgeEffect](./ts-container-scrollable-common.md#edgeeffect11)。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -315,8 +317,8 @@ edgeEffect(value: EdgeEffect, options?: EdgeEffectOptions)
 
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                 | ArkTS-Dyn: [EdgeEffect](ts-appendix-enums.md#edgeeffect) <br/>ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect) \|&nbsp;undefined                | 是   | List组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：EdgeEffect.Spring<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| options<sup>11+</sup> | ArkTS-Dyn: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) <br/>ArkTS-Sta: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) \|&nbsp;undefined | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: false }<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。|
+| value                 | ArkTS-Dyn: [EdgeEffect](ts-appendix-enums.md#edgeeffect) <br/>ArkTS-Sta: [EdgeEffect](ts-appendix-enums.md#edgeeffect) \|&nbsp;undefined                | 是   | List组件的边缘滑动效果，支持弹簧效果和阴影效果。<br/>默认值：EdgeEffect.Spring |
+| options<sup>11+</sup> | ArkTS-Dyn: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) <br/>ArkTS-Sta: [EdgeEffectOptions](ts-container-scrollable-common.md#edgeeffectoptions11对象说明) \|&nbsp;undefined | 否   | 组件内容大小小于组件自身时，是否开启滑动效果。设置为{ alwaysEnabled: true }会开启滑动效果，{ alwaysEnabled: false }不开启。<br/>默认值：{ alwaysEnabled: false }|
 
 ### chainAnimation
 
@@ -389,6 +391,8 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -399,8 +403,8 @@ lanes(value: number | LengthConstrain, gutter?: Dimension)
 
 | 参数名               | 类型                                                         | 必填 | 说明                                     |
 | -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | 是   | List组件的布局列数或行数。<br/>默认值：1 <br/>取值范围：[1, +∞)<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
-| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距或行间距。<br />默认值：0 <br/>取值范围：[0, +∞)<br/>**说明：**<br/>gutter为列间距或行间距，当列数或行数大于1时生效。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。|
+| value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | 是   | List组件的布局列数或行数。<br/>默认值：1 <br/>取值范围：[1, +∞)|
+| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | 否   | 列间距或行间距。<br />默认值：0 <br/>取值范围：[0, +∞)<br/>**说明：**<br/>gutter为列间距或行间距，当列数或行数大于1时生效。|
 
 ### lanes<sup>22+</sup>
 
@@ -1094,11 +1098,9 @@ List的边缘效果为弹簧效果时，在List划动到边缘继续划动和松
 
 **参数：** 
 
-| 参数名               | 类型   | 必填 | 说明                                   |
-| -------------------- | ------ | ---- | -------------------------------------- |
-| start                | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | List显示区域内第一个子组件的索引值     |
-| end                  | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | List显示区域内最后一个子组件的索引值。 |
-| center<sup>10+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | List显示区域内中间位置子组件的索引值。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (start: number, end: number, center: number) => void <br/>ArkTS-Sta: ((start: int, end: int, center: int) => void) \|&nbsp;undefined | 是 | 有子组件划入或划出List显示区域时触发的回调。<br/>start：List显示区域内第一个子组件的索引值。<br/>end：List显示区域内最后一个子组件的索引值。<br/>center：List显示区域内中间位置子组件的索引值。<br/>undefined：不使用该回调函数。 |
 
 ### onReachStart
 
@@ -1258,10 +1260,9 @@ ArkTS-Sta: onItemMove(event: ((from: int, to: int) => boolean) | undefined)
 
 **参数：** 
 
-| 参数名 | 类型   | 必填 | 说明           |
-| ------ | ------ | ---- | -------------- |
-| from   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 移动前索引值。 |
-| to     | ArkTS-Dyn: number  <br/>ArkTS-Sta: int | 是   | 移动后索引值。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (from: number, to: number) => boolean <br/>ArkTS-Sta: ((from: int, to: int) => boolean) \|&nbsp;undefined | 是 | 列表元素发生移动时触发的回调。<br/>from：移动前索引值。<br/>to：移动后索引值。<br/>undefined：不使用该回调函数。 |
 
 **返回值：** 
 
@@ -1337,11 +1338,9 @@ ArkTS-Sta: onItemDragMove(event: ((event: ItemDragInfo, itemIndex: int, insertIn
 
 **参数：** 
 
-| 参数名      | 类型                                                      | 必填 | 说明           |
-| ----------- | --------------------------------------------------------- | ---- | -------------- |
-| event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
-| itemIndex   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int     | 是   | 拖拽起始位置。 |
-| insertIndex | ArkTS-Dyn: number  <br/>ArkTS-Sta: int     | 是   | 拖拽插入位置。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int) => void) \|&nbsp;undefined | 是 | 拖拽列表元素在列表范围内移动时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置。<br/>insertIndex：拖拽插入位置。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDragLeave<sup>8+</sup>
 
@@ -1361,10 +1360,9 @@ ArkTS-Sta: onItemDragLeave(event: ((event: ItemDragInfo, itemIndex: int) => void
 
 **参数：** 
 
-| 参数名    | 类型                                                      | 必填 | 说明                       |
-| --------- | --------------------------------------------------------- | ---- | -------------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。             |
-| itemIndex | ArkTS-Dyn: number  <br/>ArkTS-Sta: int         | 是   | 拖拽离开的列表元素索引值。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int) => void) \|&nbsp;undefined | 是 | 拖拽列表元素离开列表范围时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽离开的列表元素索引值。<br/>undefined：不使用该回调函数。 |
 
 ### onItemDrop<sup>8+</sup>
 
@@ -1386,12 +1384,9 @@ ArkTS-Sta: onItemDrop(event: ((event: ItemDragInfo, itemIndex: int, insertIndex:
 
 **参数：** 
 
-| 参数名      | 类型                                                      | 必填 | 说明           |
-| ----------- | --------------------------------------------------------- | ---- | -------------- |
-| event       | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。 |
-| itemIndex   | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                                                    | 是   | 拖拽起始位置。 |
-| insertIndex | ArkTS-Dyn: number  <br/>ArkTS-Sta: int                                                    | 是   | 拖拽插入位置。 |
-| isSuccess   | boolean                                                   | 是   | 是否成功释放。返回值为true时列表元素成功释放，返回值为false时列表元素没有成功释放。  |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event | ArkTS-Dyn: (event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: number, insertIndex: number, isSuccess: boolean) => void <br/>ArkTS-Sta: ((event: [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明), itemIndex: int, insertIndex: int, isSuccess: boolean) => void) \|&nbsp;undefined | 是 | 在列表范围内停止拖拽时触发的回调。<br/>event：拖拽点的信息。<br/>itemIndex：拖拽起始位置。<br/>insertIndex：拖拽插入位置。<br/>isSuccess：是否成功释放。返回值为true时列表元素成功释放，返回值为false时列表元素没有成功释放。<br/>undefined：不使用该回调函数。 |
 
 ### onScrollVisibleContentChange<sup>12+</sup>
 

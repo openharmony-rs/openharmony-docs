@@ -1,8 +1,8 @@
 # @ohos.util.ArrayList (线性容器ArrayList)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -566,7 +566,7 @@ arrayList.removeByRange(2, 4);
 ArkTS-Sta示例：
 
 ```ts
-let arrayList: ArrayList<number> = new ArrayList<number>();
+let arrayList: ArrayList<int> = new ArrayList<int>();
 arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
@@ -972,12 +972,12 @@ console.info("result = ", result.length); // result = 4
 ArkTS-Sta示例：
 
 ```ts
-let arrayList: ArrayList<number> = new ArrayList<number>();
+let arrayList: ArrayList<int> = new ArrayList<int>();
 arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
 arrayList.add(4);
-let result:  ArrayList<number> = arrayList.clone();
+let result:  ArrayList<int> = arrayList.clone();
 console.info("result = ", result.length); // result = 4
 ```
 

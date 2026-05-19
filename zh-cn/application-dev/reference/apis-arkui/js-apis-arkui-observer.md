@@ -658,7 +658,7 @@ offScrollEvent(callback?: Callback\<ScrollEventInfo\>): void
 
 **示例：**
 
-参考[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1)示例。
+参考[offscrollevent](#uiobserveroffscrollevent23-1)示例。
 
 ## uiObserver.on('scrollEvent')<sup>12+</sup>
 
@@ -936,7 +936,6 @@ offRouterPageUpdate(context: UIAbilityContext | UIContext, callback?: Callback\<
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
 | context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | 否   | 需要被注销的回调函数。                 |
 
