@@ -1243,11 +1243,9 @@ start(): void
 
 **需要权限：** 
 
-- API版本20+：ohos.permission.ACCESS_BIOMETRIC 或 ohos.permission.USER_AUTH_FROM_BACKGROUND（仅向系统应用开放）
+- API版本20+：ohos.permission.ACCESS_BIOMETRIC 或 ohos.permission.USER_AUTH_FROM_BACKGROUND（仅向系统应用开放，可在后台发起认证）
 
 - API版本10-19：ohos.permission.ACCESS_BIOMETRIC
-
-从API 20开始，仅系统应用可以通过申请ohos.permission.USER_AUTH_FROM_BACKGROUND，在后台发起认证。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
