@@ -962,7 +962,7 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 
 ## backgroundBrightness<sup>23+</sup> 
 
-backgroundBrightness(params: BackgroundBrightnessOptions | undefined): this
+backgroundBrightness(params: BackgroundBrightnessOptions | undefined)
 
 设置组件背景提亮效果。
 
@@ -979,12 +979,6 @@ backgroundBrightness(params: BackgroundBrightnessOptions | undefined): this
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | params | [BackgroundBrightnessOptions](#backgroundbrightnessoptions12对象说明) | 是   | 设置组件背景提亮效果，包括：亮度变化速率，提亮程度。<br/>当options的值为undefined时，恢复为无提亮效果的背景。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## BackgroundBrightnessOptions<sup>12+</sup>对象说明
 
