@@ -80,7 +80,11 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 
 获取支持的云侧模型信息。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -215,8 +219,8 @@ intelligence.splitText(splitText, splitConfig)
 | version    | [ModelVersion](#modelversion)           | 否 | 否   |模型的版本。 |
 | isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
 | cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。 |
-| modelInfo<sup>26+</sup>    | [CloudModelInfo](#cloudModelInfo26)           | 否 | 是   |云侧模型类型和版本信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
-| networkPolicy<sup>26+</sup>    | [NetworkPolicy](#networkPolicy26)           | 否 | 是   |下载云侧模型的网络策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| modelInfo<sup>26+</sup>    | [CloudModelInfo](#cloudmodelinfo)           | 否 | 是   |云侧模型类型和版本信息，通过[getSupportedCloudModel](#getsupportedcloudmodel)接口获取支持的模型信息，默认值为空。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| networkPolicy<sup>26+</sup>    | [NetworkPolicy](#networkpolicy)           | 否 | 是   |下载云侧模型的网络策略，默认值为WIFI_ONLY。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 
 ## ModelVersion
 
@@ -228,9 +232,11 @@ intelligence.splitText(splitText, splitConfig)
 | ---------- | ---------- | ---------------------- |
 | BASIC_MODEL     | 0     | 基本嵌入模型版本。   |
 
-## CloudModelInfo<sup>26+</sup> 
+## CloudModelInfo
 
 云侧模型的配置信息。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
@@ -239,11 +245,13 @@ intelligence.splitText(splitText, splitConfig)
 | 名称     | 类型              | 只读 | 可选| 说明                                                         |
 | ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
 | modelType    |    string        | 否 | 否   |模型类型名称。 |
-| modelVersionCode | boolean                | 否 | 是   | 模型版本。 |
+| modelVersionCode | string                | 否 | 是   | 模型版本，默认值为空。 |
 
-## NetworkPolicy<sup>26+</sup> 
+## NetworkPolicy
 
 下载云侧模型的网络策略。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
