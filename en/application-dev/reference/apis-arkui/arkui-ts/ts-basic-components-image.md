@@ -1631,7 +1631,7 @@ struct ImageContentExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view9.gif)
+![imageContent](figures/en-us_image_view9.gif)
 
 ### Example 12: Securing Sensitive Information
 
@@ -1656,7 +1656,7 @@ struct ImageExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view10.gif)
+![imageContent](figures/en-us_image_view10.gif)
 
 ### Example 13: Setting the Scan Effect for an Image
 
@@ -2552,4 +2552,3 @@ struct ImageExample {
 }
 ```
 
-![sandBox](figures/antialiased.PNG)
