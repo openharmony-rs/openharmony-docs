@@ -45,6 +45,7 @@
       - [Function Flow Runtime Kit（任务并发调度服务）](ffrt/Readme-CN.md)
       - [Input Kit（多模输入服务）](device/input/Readme-CN.md)
       - [MDM Kit（企业设备管理服务）](mdm/Readme-CN.md)
+      - [Kernel Enhance Kit（内核增强能力）](kernel-enhance/Readme-CN.md)
     - 硬件<!--system-hardware-->
       - [Driver Development Kit（驱动开发服务）](device/driver/Readme-CN.md)
       - [Multimodal Awareness Kit（多模态融合感知服务）](device/stationary/Readme-CN.md)

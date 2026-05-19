@@ -14,7 +14,15 @@
 
 在ArkTS-Sta中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-track.md)。
 
+## @Track
+
+@interface Track
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 

@@ -1790,6 +1790,8 @@ ArkTS-Sta: getInstalledBundleList(bundleFlags: int): Promise<Array\<BundleInfo>>
  
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**设备行为差异：** 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回201错误码。
+
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
@@ -1826,7 +1828,7 @@ let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
 try {
   bundleManager.getInstalledBundleList(bundleFlags).then((data) => {
     hilog.info(0x0000, 'testTag', 'getInstalledBundleList successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: BusinessError) => {
+  }).catch((err: Error) => {
     hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', err.message);
   });
 } catch (err) {

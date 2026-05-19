@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 从API version 7 开始，该接口不再维护，推荐使用新接口[`@ohos.mediaquery`](js-apis-mediaquery.md)。
+> - 从API version 7 开始，该接口不再维护，推荐使用新接口[@ohos.mediaquery](js-apis-mediaquery.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -101,7 +101,7 @@ addListener(callback: (event: MediaQueryEvent) => void): void
 
 | 参数名      | 类型                               | 必填   | 说明             |
 | -------- | -------------------------------- | ---- | -------------- |
-| callback | (event: MediaQueryEvent) => void | 是    | 匹配条件发生变化的响应函数。 |
+| callback | (event: [MediaQueryEvent](#mediaqueryevent)) => void | 是    | 匹配条件发生变化时触发的回调。 |
 
 **示例：**
 
@@ -132,7 +132,7 @@ removeListener(callback: (event: MediaQueryEvent) => void): void
 
 | 参数名      | 类型                                | 必填   | 说明             |
 | -------- | --------------------------------- | ---- | -------------- |
-| callback | (event: MediaQueryEvent) => void | 是    | 匹配条件发生变化的响应函数。 |
+| callback | (event: [MediaQueryEvent](#mediaqueryevent)) => void | 是    | 匹配条件发生变化时触发的回调。 |
 
 **示例：**
 
