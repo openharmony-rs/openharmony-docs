@@ -10,3 +10,4 @@
 | docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md | [唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) | MDM Kit | Customization | 是 | 2026-05-14 |
 | docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md | [deviceInfo.distributionOSReleaseType](../apis-basic-services-kit/js-apis-device-info.md) | MDM Kit | Customization | 是 | 2026-05-16 |
 | docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md | [协同服务](#servicetype) | MDM Kit | Customization | 是 | 2026-05-18 |
+| docs/zh-cn/application-dev/reference/development-intro-api.md | [系统能力SystemCapability列表](phone-syscap-list.md) | Common | Common | 是 | 2026-05-19 |
