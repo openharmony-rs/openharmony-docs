@@ -65,7 +65,7 @@ import { intl } from '@kit.LocalizationKit';
 
 constructor()
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[i18n.System.getSystemLocaleInstance](js-apis-i18n.md#getsystemlocaleinstance20)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.Locale.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)替代。
 
 创建区域对象。
 
