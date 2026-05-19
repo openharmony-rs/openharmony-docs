@@ -248,9 +248,9 @@ Allows an application to listen for input events.
 
 ## ohos.permission.SHORT_TERM_WRITE_IMAGEVIDEO
 
-Allows an application to save images and videos to the user public directory within
+Allows an application to save images and videos to the user public directory within 30 minutes after obtaining the permission.
 
-up to 30 minutes after obtaining the permission. If it exceeds 30 minutes, a dialog box will be displayed again to request user authorization.
+If it exceeds 30 minutes, a dialog box will be displayed again to request user authorization.
 
 <!--RP21--><!--RP21End-->
 

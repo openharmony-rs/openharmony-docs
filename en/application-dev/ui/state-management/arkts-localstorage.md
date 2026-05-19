@@ -79,7 +79,7 @@ By decorating a variable with \@LocalStorageProp(key), a one-way data synchroniz
 | Access from outside the component | No                                                                                 |
 
 
-![localstorageprop-initialization](figures/localstorageprop-initialization.png)
+
 
   **Figure 1** \@LocalStorageProp initialization rule
 
@@ -147,7 +147,7 @@ The following figure shows the data synchronization between LocalStorage and \@L
 | Access from outside the component | No                                                                                 |
 
 
-![localstoragelink-initialization](figures/localstoragelink-initialization.png)
+
 
   **Figure 3** \@LocalStorageLink initialization rule
 
@@ -1241,4 +1241,4 @@ struct Test {
 }
 ```
 
-<!--no_check-->
+
