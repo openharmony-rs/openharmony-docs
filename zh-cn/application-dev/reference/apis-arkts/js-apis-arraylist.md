@@ -139,7 +139,6 @@ insert(element: T, index: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
@@ -310,7 +309,6 @@ removeByIndex(index: number): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "index" is out of range. |
 | 10200011 | The removeByIndex method cannot be bound. |
 
@@ -392,7 +390,6 @@ removeByRange(fromIndex: number, toIndex: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The removeByRange method cannot be bound. |
 
@@ -438,7 +435,6 @@ callbackFn的参数说明：
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The replaceAllElements method cannot be bound. |
 
 **示例：**
@@ -486,7 +482,6 @@ callbackFn的参数说明：
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -528,7 +523,6 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 10200011 | The sort method cannot be bound. |
 
 **示例：**
@@ -573,7 +567,6 @@ subArrayList(fromIndex: number, toIndex: number): ArrayList&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The subArrayList method cannot be bound. |
 
@@ -791,7 +784,6 @@ console.info("result = ", result); // result =  false
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. |
 | 10200001 | The value of index is out of range. |
 
 **示例：**
@@ -828,7 +820,6 @@ increaseCapacityTo(newCapacity: number): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The increaseCapacityTo method cannot be bound. |
 
 **示例：**

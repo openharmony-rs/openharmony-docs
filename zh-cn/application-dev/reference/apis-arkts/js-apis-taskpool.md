@@ -56,11 +56,10 @@ execute(func: Function, ...args: Object[]): Promise\<Object>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                      |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200003 | Worker initialization failed. <br/> 适用版本：9-11 |
 | 10200006 | An exception occurred during serialization.  |
 | 10200014 | The function is not marked as concurrent.      |
@@ -105,11 +104,10 @@ execute<A extends Array\<Object>, R>(func: (...args: A) => R | Promise\<R>, ...a
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                      |
 | -------- | -------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | 10200006 | An exception occurred during serialization.  |
 | 10200014 | The function is not marked as concurrent.      |
 
@@ -171,11 +169,10 @@ execute(task: Task, priority?: Priority): Promise\<Object>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | ------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200003 | Worker initialization failed. <br/> 适用版本：9-17 |
 | 10200006 | An exception occurred during serialization. |
 | 10200014 | The function is not marked as concurrent.     |
@@ -307,11 +304,10 @@ execute任务的校验是结合new GenericsTask一起用的，参数、返回值
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | ------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | 10200006 | An exception occurred during serialization. |
 | 10200014 | The function is not marked as concurrent.     |
 | 10200051 | The periodic task cannot be executed again. |
@@ -571,11 +567,10 @@ executeDelayed(delayTime: number, task: Task, priority?: Priority): Promise\<Obj
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID   | 错误信息                         |
 | --------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200006 | An exception occurred during serialization. <br/> 适用版本：12+ |
 | 10200014 | The function is not marked as concurrent. <br/> 适用版本：12+ |
 | 10200028 | The delayTime is less than zero. |
@@ -632,11 +627,10 @@ executeDelayed任务的校验是结合new GenericsTask一起用的，参数、�
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID   | 错误信息                         |
 | --------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | 10200028 | The delayTime is less than zero. |
 | 10200051 | The periodic task cannot be executed again. |
 | 10200057 | The task cannot be executed by two APIs. <br/> 适用版本：18+  |
@@ -688,7 +682,6 @@ executePeriodically(period: number, task: Task, priority?: Priority): void
 
 | 错误码ID   | 错误信息                         |
 | ---------- | -------------------------------- |
-| 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200006   | An exception occurred during serialization. |
 | 10200014   | The function is not marked as concurrent. |
 | 10200028   | The period is less than zero. |
@@ -761,11 +754,10 @@ executePeriodically任务的校验是结合new GenericsTask一起用的，参数
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID   | 错误信息                         |
 | ---------- | -------------------------------- |
-| 401        | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | 10200006   | An exception occurred during serialization. |
 | 10200014   | The function is not marked as concurrent. |
 | 10200028   | The period is less than zero. |
@@ -918,11 +910,10 @@ cancel(group: TaskGroup): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                 |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200018 | The task group to cancel does not exist.      |
 
 **示例：**
@@ -1056,7 +1047,6 @@ terminateTask(longTask: LongTask): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1110,7 +1100,6 @@ isConcurrent(func: Function): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1297,11 +1286,10 @@ Task的构造函数。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | --------------------------------------- |
-| 401      | The input parameters are invalid. |
 | 10200014 | The function is not marked as concurrent. |
 
 **示例：**
@@ -1336,11 +1324,10 @@ Task的构造函数用于创建任务，并可指定任务名称。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 401      | The input parameters are invalid. |
 | 10200014 | The function is not marked as concurrent. |
 
 **示例：**
@@ -1449,11 +1436,10 @@ setTransferList(transfer?: ArrayBuffer[]): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                        |
 | -------- | -------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 10200029 | An ArrayBuffer cannot be set as both a transfer list and a clone list. <br/> 适用版本：11+ |
 
 **示例：**
@@ -1514,11 +1500,10 @@ setCloneList(cloneList: Object[] | ArrayBuffer[]): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                        |
 | -------- | -------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200029 | An ArrayBuffer cannot be set as both a transfer list and a clone list. |
 
 **示例：**
@@ -1677,11 +1662,10 @@ static sendData(...args: Object[]): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | --------------------------------------- |
-| 401       | The input parameters are invalid. |
 | 10200006  | An exception occurred during serialization. |
 | 10200022  | The function is not called in the TaskPool thread. |
 | 10200023  | The function is not called in the concurrent function. |
@@ -1770,7 +1754,6 @@ onReceiveData(callback?: Function): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **示例：**
 
@@ -1817,11 +1800,10 @@ addDependency(...tasks: Task[]): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200026 | There is a circular dependency. |
 | 10200052 | The periodic task cannot have a dependency. <br/> 适用版本：12+ |
 | 10200056 | The task has been executed by the AsyncRunner. <br/> 适用版本：18+ |
@@ -1877,11 +1859,10 @@ removeDependency(...tasks: Task[]): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200027 | The dependency does not exist. |
 | 10200052 | The periodic task cannot have a dependency. <br/> 适用版本：12+ |
 | 10200056 | The task has been executed by the AsyncRunner. <br/> 适用版本：18+ |
@@ -1942,11 +1923,10 @@ onEnqueued(callback: CallbackFunction): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401       | The input parameters are invalid. |
 | 10200034  | The executed task does not support the registration of listeners. |
 
 **示例：**
@@ -1991,11 +1971,10 @@ onStartExecution(callback: CallbackFunction): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401       | The input parameters are invalid. |
 | 10200034  | The executed task does not support the registration of listeners. |
 
 **示例：**
@@ -2039,11 +2018,10 @@ onExecutionFailed(callback: CallbackFunctionWithError): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401       | The input parameters are invalid. |
 | 10200034  | The executed task does not support the registration of listeners. |
 
 **示例：**
@@ -2093,11 +2071,10 @@ onExecutionSucceeded(callback: CallbackFunction): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401       | The input parameters are invalid. |
 | 10200034  | The executed task does not support the registration of listeners. |
 
 **示例：**
@@ -2252,11 +2229,10 @@ GenericsTask的构造函数。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | --------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | 10200014 | The function is not marked as concurrent. |
 
 **示例：**
@@ -2305,11 +2281,10 @@ GenericsTask的构造函数，可以指定任务名称。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 | 10200014 | The function is not marked as concurrent. |
 
 **示例：**
@@ -2368,7 +2343,6 @@ TaskGroup的构造函数，支持指定任务组名称。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2397,11 +2371,10 @@ addTask(func: Function, ...args: Object[]): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | --------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200014 | The function is not marked as concurrent. |
 
 **示例：**
@@ -2435,11 +2408,10 @@ addTask(task: Task): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | --------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200014 | The function is not marked as concurrent. |
 | 10200051 | The periodic task cannot be executed again. <br/> 适用版本：12+  |
 | 10200057 | The task cannot be executed by two APIs. <br/> 适用版本：18+ |
@@ -2494,7 +2466,6 @@ SequenceRunner的构造函数。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **示例：**
 
@@ -2530,7 +2501,6 @@ SequenceRunner的构造函数。构造一个全局串行队列，如果名字相
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -2567,11 +2537,10 @@ execute(task: Task): Promise\<Object>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200003 | Worker initialization failed. <br/> 适用版本：11-17 |
 | 10200006 | An exception occurred during serialization. |
 | 10200025 | dependent task not allowed.  |
@@ -2644,7 +2613,6 @@ AsyncRunner的构造函数。构造一个非全局的异步队列，如果参数
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -2681,7 +2649,6 @@ AsyncRunner的构造函数用于构造一个全局异步队列。如果队列名
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
