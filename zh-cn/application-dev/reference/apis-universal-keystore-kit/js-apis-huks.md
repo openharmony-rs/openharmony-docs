@@ -1119,7 +1119,9 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 
 <!--RP1--><!--RP1End-->
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
@@ -3618,7 +3620,7 @@ API version 11系统能力为SystemCapability.Security.Huks.Extension；从API v
 | HUKS_AUTH_STORAGE_LEVEL_ECE | 2    | 表示密钥仅在解锁状态时可访问。 |
 > **说明：**
 >
->  业务在使用存储等级为ECE的密钥时，建议通过感知[锁屏事件](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
+>  业务在使用存储等级为ECE的密钥时，建议通过感知[锁屏事件COMMON_EVENT_SCREEN_LOCKED](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
 ## HuksKeyWrapType<sup>20+</sup>
 
 表示密钥加密类型（加密导出或导入密钥）的枚举。
