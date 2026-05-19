@@ -103,37 +103,33 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
-
-**ArkTS-Sta起始版本**：23
-
 | 类型                      | 说明                 |
 | ----------------------- |--------------------|
-| 'click'                   | 表示点击操作。            |
-| 'longClick'               | 表示长按操作。            |
-| 'scrollForward'           | 表示向前滚动操作。 |
-| 'scrollBackward'          | 表示向后滚动操作。 |
-| 'focus'                   | 表示获得焦点操作。 |
-| 'clearFocus'              | 表示清除焦点操作。 |
-| 'clearSelection'          | 表示清除选择操作。当前版本暂不支持。 |
-| 'accessibilityFocus'      | 表示获得无障碍焦点操作。       |
-| 'clearAccessibilityFocus'      | 表示清除无障碍焦点操作。       |
-| 'cut'                     | 表示剪切操作。   |
-| 'copy'                    | 表示复制操作。   |
-| 'paste'                   | 表示粘贴操作。   |
-| 'select'                  | 表示选择操作。   |
-| 'setText'                 | 表示设置文本操作，需配置参数setText。 |
-| 'delete'                  | 表示删除操作。当前版本暂不支持。   |
-| 'setSelection'            | 表示选择操作，需配置参数selectTextBegin、selectTextEnd、selectTextInForWard。   |
-| 'common'            | 表示没有特定操作，用于主动聚焦、主动播报等场景。   |
-| 'home'                | 表示返回桌面操作。   |
-| 'back'                | 表示返回上一级操作。   |
-| 'recentTask'          | 表示打开最近任务操作。   |
-| 'notificationCenter'      | 表示打开通知栏操作。   |
-| 'controlCenter'       | 表示打开控制中心操作。   |
-| 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。   |
-| 'injectAction'          | 表示注入动作，需配置参数injectActionType。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
-| 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<br>**起始版本：** 26.0.0   |
+| 'click'                   | 表示点击操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'longClick'               | 表示长按操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'scrollForward'           | 表示向前滚动操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'scrollBackward'          | 表示向后滚动操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'focus'                   | 表示获得焦点操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'clearFocus'              | 表示清除焦点操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'clearSelection'          | 表示清除选择操作。当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'accessibilityFocus'      | 表示获得无障碍焦点操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'clearAccessibilityFocus'      | 表示清除无障碍焦点操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'cut'                     | 表示剪切操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'copy'                    | 表示复制操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'paste'                   | 表示粘贴操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'select'                  | 表示选择操作。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'setText'                 | 表示设置文本操作，需配置参数setText。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'delete'                  | 表示删除操作。当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'setSelection'            | 表示选择操作，需配置参数selectTextBegin、selectTextEnd、selectTextInForWard。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'common'            | 表示没有特定操作，用于主动聚焦、主动播报等场景。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'home'                | 表示返回桌面操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'back'                | 表示返回上一级操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'recentTask'          | 表示打开最近任务操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'notificationCenter'      | 表示打开通知栏操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'controlCenter'       | 表示打开控制中心操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'injectAction'          | 表示注入动作，需配置参数injectActionType。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
+| 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## Capability
 
@@ -838,31 +834,27 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Dyn起始版本**：7
-
-**ArkTS-Sta起始版本**：23
-
 | 类型                      | 说明                     |
 | ----------------------- |------------------------|
-| 'accessibilityFocus'      | 表示获得无障碍焦点的事件。          |
-| 'accessibilityFocusClear' | 表示清除无障碍焦点的事件。          |
-| 'click'                   | 表示点击组件的事件。             |
-| 'longClick'               | 表示长按组件的事件。             |
-| 'select'                  | 表示选择组件的事件。    |
-| 'hoverEnter'              | 表示悬停进入组件的事件。  |
-| 'hoverExit'               | 表示悬停离开组件的事件。  |
-| 'focus'                   | 表示组件获得焦点的事件，当前版本暂不支持。  |
-| 'textUpdate'              | 表示组件文本已更改的事件。 |
-| 'textSelectionUpdate'     | 表示选定文本已更改的事件，当前版本暂不支持。 |
-| 'scroll'                  | 表示滚动视图的事件。    |
-| 'requestFocusForAccessibility'     | 表示主动聚焦的事件。 |
-| 'announceForAccessibility'         | 表示主动播报的事件。 |
-| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。|
-| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。|
-| 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
-| 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。 |
-| 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**起始版本：** 26.0.0 |
-| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<br>**起始版本：** 26.0.0 |
+| 'accessibilityFocus'      | 表示获得无障碍焦点的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'accessibilityFocusClear' | 表示清除无障碍焦点的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'click'                   | 表示点击组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'longClick'               | 表示长按组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'select'                  | 表示选择组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'hoverEnter'              | 表示悬停进入组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'hoverExit'               | 表示悬停离开组件的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'focus'                   | 表示组件获得焦点的事件，当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'textUpdate'              | 表示组件文本已更改的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'textSelectionUpdate'     | 表示选定文本已更改的事件，当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'scroll'                  | 表示滚动视图的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'requestFocusForAccessibility'     | 表示主动聚焦的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'announceForAccessibility'         | 表示主动播报的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
+| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
+| 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
+| 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。<br>**ArkTS-Dyn起始版本**：23<br>**ArkTS-Sta起始版本**：23 |
+| 'notificationUpdate' | 表示通知变化的事件，值固定为'notificationUpdate'字符串。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
+| 'focusInvisible' | 表示焦点变为不可见状态，值固定为'focusInvisible'字符串。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## TextMoveUnit
 
@@ -1899,7 +1891,6 @@ onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在对象生命周期结束前使用[accessibility.offSeniorModeStateChange](#accessibilityoffseniormodestatechange)取消监听，否则可能会导致崩溃。
 
-**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2533,7 +2524,6 @@ offSeniorModeStateChange(callback?: Callback&lt;boolean&gt;): void
 
 取消监听系统关怀模式变化事件。使用callback异步回调。
 
-**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3118,7 +3108,6 @@ isSeniorModeEnabled(): Promise&lt;boolean&gt;
 
 判断系统关怀模式是否开启。使用Promise异步回调。
 
-**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

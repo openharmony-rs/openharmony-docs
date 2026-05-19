@@ -303,7 +303,7 @@ type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown' | 'r
 | 'fourFingerSwipeDown'<sup>11+</sup>          | 表示四指向下滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
 | 'fourFingerSwipeLeft'<sup>11+</sup>          | 表示四指向左滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
 | 'fourFingerSwipeRight'<sup>11+</sup>         | 表示四指向右滑动的手势。<br>**ArkTS-Dyn起始版本**：11 |
-| 'oneFingerDoubleTap'         | 表示单指双击的手势。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
+| 'oneFingerDoubleTap'         | 表示单指双击的手势。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0 |
 
 ## PageUpdateType
 
