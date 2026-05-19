@@ -65,11 +65,11 @@ import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async exampleFunction() {
-  try {
+  try { // 设置DLP特性开关状态
     let res: dlpSetDlpFeature.StatusInfoResult =
-      await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE);
+      await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE); // 记录执行结果
     console.info('setDlpFeature result: ', JSON.stringify(res));
-  } catch (err) {
+  } catch (err) { // 错误处理
     console.error('setDlpFeature failed', (err as BusinessError).code, (err as BusinessError).message);
   }
 }
