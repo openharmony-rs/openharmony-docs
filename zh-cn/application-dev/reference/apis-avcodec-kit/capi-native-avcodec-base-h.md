@@ -1090,9 +1090,9 @@ enum OH_FRAME_RETENTION_MODE
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_FRAME_RETENTION_MODE_FULL = 0 | 全量保留模式。解码器工作在透明直通状态，100%保留所有输入帧，实质上禁用了抽帧功能。所有底层的视觉感知算法将被完全跳过，实现零算法开销。<br>**起始版本：** 26.0.0 |
-| OH_FRAME_RETENTION_MODE_ADAPTIVE = 1 | 感知自适应保留模式。解码器动态分析视频特征，优先丢弃对视觉感知影响最小的帧，在最小化播放体验损失的同时保持视觉平滑度。为了获得最佳的算法准确性，强烈建议通过[OH_MD_KEY_VIDEO_DECODER_SPEED](capi-native-avcodec-base-h.md#变量)显式配置当前的播放倍速。<br>**起始版本：** 26.0.0 |
-| OH_FRAME_RETENTION_MODE_UNIFORM = 2 | 平滑定比保留模式。根据用户配置的保留比例（通过[OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO](capi-native-avcodec-base-h.md#变量)配置）均匀地保留视频帧。如果没有显式配置保留比例，解码器默认将输出限制在最高30fps。<br>**起始版本：** 26.0.0 |
+| OH_FRAME_RETENTION_MODE_FULL = 0 | 全量保留模式。<br>解码器工作在透明直通状态，100%保留所有输入帧，实质上禁用了抽帧功能。所有底层的视觉感知算法将被完全跳过，实现零算法开销。<br>**起始版本：** 26.0.0 |
+| OH_FRAME_RETENTION_MODE_ADAPTIVE = 1 | 感知自适应保留模式。<br>解码器动态分析视频特征，优先丢弃对视觉感知影响最小的帧，在最小化播放体验损失的同时保持视觉平滑度。为了获得最佳的算法准确性，强烈建议通过[OH_MD_KEY_VIDEO_DECODER_SPEED](capi-native-avcodec-base-h.md#变量)显式配置当前的播放倍速。<br>**起始版本：** 26.0.0 |
+| OH_FRAME_RETENTION_MODE_UNIFORM = 2 | 平滑定比保留模式。<br>根据用户配置的保留比例（通过[OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO](capi-native-avcodec-base-h.md#变量)配置）均匀地保留视频帧。如果没有显式配置保留比例，解码器默认将输出限制在最高30fps。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
