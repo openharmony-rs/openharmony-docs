@@ -3914,6 +3914,8 @@ Allows an application to connect to a telematics device.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | tablets | cars
+
 **Valid since**: 12
 
 ## ohos.permission.ACCESS_IDM_WIDGET

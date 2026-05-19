@@ -342,6 +342,8 @@ Allows an application to access the navigation service.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | tablets | cars
+
 **Valid since**: 12
 
 ## ohos.permission.PROTECT_SCREEN_LOCK_DATA
@@ -365,6 +367,8 @@ With this permission, the application can obtain the connection information betw
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 

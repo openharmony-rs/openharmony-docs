@@ -342,6 +342,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | Tablet | Car
+
 **起始版本**：12
 
 ## ohos.permission.PROTECT_SCREEN_LOCK_DATA
@@ -365,6 +367,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 

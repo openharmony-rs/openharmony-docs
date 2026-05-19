@@ -3914,6 +3914,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | Tablet | Car
+
 **起始版本**：12
 
 ## ohos.permission.ACCESS_IDM_WIDGET
