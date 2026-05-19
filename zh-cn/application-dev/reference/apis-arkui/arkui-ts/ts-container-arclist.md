@@ -534,7 +534,7 @@ ArkTS-Sta: onDidScroll(handler: OnScrollCallback | undefined)
 | ------------ | ------------------------------------------- | ---- | --- | ------------------------------------------------------------ |
 | initialIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                      | 否   | 是 | 设置当前ArcList初次加载时视窗起始位置显示的item的索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前ArcList最后一个item的索引值时视为无效取值，无效取值按默认值显示。<br/>取值为undefined时，按默认值处理。 |
 | scroller     | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器。与ArcList绑定后，可以通过它控制ArcList的滚动。<br/>**说明：** <br/>不允许和其他滚动类组件，如：ArcList、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
-| header       | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContentBase](../js-apis-arkui-ComponentContent.md)                            | 否   | 是 | 支持标题设置。<br/>取值为undefined时，不显示标题。 |
+| header       | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContentBase](../js-apis-arkui-ComponentContent.md#componentcontentbase23)  | 否   | 是 | 支持标题设置。<br/>取值为undefined时，不显示标题。 |
 
 ## ArcScrollIndexHandler
 

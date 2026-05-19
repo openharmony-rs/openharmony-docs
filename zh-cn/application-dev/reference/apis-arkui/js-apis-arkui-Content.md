@@ -20,7 +20,7 @@ import { Content } from '@kit.ArkUI';
 
 ## Content
 
-定义[ComponentContentBase](./js-apis-arkui-ComponentContent.md#componentcontentbase)和[NodeContent](./js-apis-arkui-NodeContent.md)的基类。
+定义[ComponentContentBase](./js-apis-arkui-ComponentContent.md#componentcontentbase23)和[NodeContent](./js-apis-arkui-NodeContent.md)的基类。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
