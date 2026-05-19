@@ -872,7 +872,7 @@ Scroll滚动时触发的回调。
 
 ArkTS-Dyn: type ScrollOnWillScrollCallback = (xOffset: number, yOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | OffsetResult
 
-ArkTS-Sta: type ScrollOnWillScrollCallback = (xOffset: double, yOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => undefined | OffsetResult
+ArkTS-Sta: type ScrollOnWillScrollCallback = (xOffset: double, yOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => (undefined | OffsetResult)
 
 Scroll滚动前触发的回调。
 

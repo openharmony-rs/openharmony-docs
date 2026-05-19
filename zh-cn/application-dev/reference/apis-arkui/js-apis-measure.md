@@ -30,7 +30,9 @@ import { MeasureText } from '@kit.ArkUI';
 
 ## MeasureText.measureText<sup>(deprecated)</sup>
 
-static measureText(options: MeasureOptions): number
+ArkTS-Dyn: static measureText(options: MeasureOptions): number
+
+ArkTS-Sta: static measureText(options: MeasureOptions): double
 
 计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
 
@@ -46,9 +48,9 @@ static measureText(options: MeasureOptions): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -60,7 +62,7 @@ static measureText(options: MeasureOptions): number
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| number        | 文本宽度。<br/>单位：px |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 文本宽度。<br/>单位：px |
 
 > **说明：**
 >

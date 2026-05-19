@@ -229,7 +229,9 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | ResourceStr | undefined)
 
 ### fontWeight<sup>24+</sup>
 
-fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
+ArkTS-Dyn: fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
+
+ArkTS-Sta: fontWeight(weight: int | FontWeight | ResourceStr | undefined, fontWeightConfigs?: FontWeightConfigs)
 
 设置文本的字体粗细。
 
@@ -245,7 +247,7 @@ fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWe
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal |
+| weight  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) <br/>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) \| undefined| 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal <br/>取值undefined时，按默认值处理。|
 | fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
 
 ### fontFamily
@@ -328,7 +330,9 @@ ArkTS-Sta: font(value: Font | undefined)
 
 ### font<sup>24+</sup>
 
-font(value: Font, fontConfigs?: FontConfigs)
+ArkTS-Dyn: font(value: Font, fontConfigs?: FontConfigs)
+
+ArkTS-Sta: font(value: Font | undefined, fontConfigs?: FontConfigs)
 
 设置文本样式。
 
@@ -342,7 +346,7 @@ font(value: Font, fontConfigs?: FontConfigs)
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
-| value  | [Font](ts-types.md#font) | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。 |
+| value  |ArkTS-Dyn: [Font](ts-types.md#font) <br/>ArkTS-Sta: [Font](ts-types.md#font) \| undefined | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。<br/>默认值：[Font](ts-types.md#font) <br/>取值undefined时，按默认值处理。 |
 | fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。 |
 
 ### textShadow<sup>11+</sup>
@@ -393,6 +397,81 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
 | fontVariations | ArkTS-Dyn: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; <br/>ArkTS-Sta: Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; \| undefined | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。<br/>设置为undefined时的效果等同于未设置fontVariations属性时的效果。<br/>fontVariations属性的优先级高于[fontWeight](#fontweight24)。 |
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<SpanAttribute> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SpanAttribute> \| undefined | 是   | 动态设置Span组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
+### id<sup>23+</sup>
+
+id(value: string | undefined)
+
+设置组件的唯一标识。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | string \| undefined | 是 | 组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
+
+### key<sup>23+</sup>
+
+key(value: string | undefined)
+
+设置组件的键值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | string \| undefined | 是 | 组件的键值。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
+
+### debugLine<sup>24+</sup>
+
+debugLine(sourceLine: string, moduleName?: string)
+
+设置组件源码重定向信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sourceLine | string | 是 | 源码行号。 |
+| moduleName | string | 否 | 组件所属模块名。 |
+
 ## 事件
 
 通用事件支持[点击事件onClick](ts-universal-events-click.md#onclick)、[悬浮事件onHover](ts-universal-events-hover.md#onhover)。
@@ -400,6 +479,70 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 >  **说明：**
 >
 >  由于Span组件无尺寸信息，因此点击事件返回的ClickEvent对象的target属性无效。
+
+### onClick<sup>23+</sup>
+
+onClick(event: Callback\<ClickEvent> | undefined)
+
+设置点击事件回调。
+
+>  **说明：**
+>
+>  点击事件不能在手指按下超过800ms后触发。手指按下后移动超过20px时，点击事件不能触发。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | [Callback](ts-types.md#callback12)\<[ClickEvent](ts-universal-events-click.md#clickevent)> \| undefined | 是 | 点击事件回调。<br/>取值为undefined时，不使用回调函数。 |
+
+### onClick<sup>23+</sup>
+
+onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: double | undefined)
+
+设置点击事件回调及移动阈值。
+
+>  **说明：**
+>
+>  点击事件不能在手指按下超过800ms后触发。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | [Callback](ts-types.md#callback12)\<[ClickEvent](ts-universal-events-click.md#clickevent)> \| undefined | 是 | 点击事件回调。<br/>取值为undefined时，不使用回调函数。 |
+| distanceThreshold | double \| undefined | 是 | 点击事件移动阈值。手指按下后移动超过该阈值时，点击事件不能触发。<br/>取值为undefined时，按默认值处理。 |
+
+
+### onHover<sup>23+</sup>
+
+onHover(event: HoverCallback | undefined)
+
+设置悬浮事件回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | [HoverCallback](ts-uicommonevent.md#hovercallback) \| undefined | 是 | 悬浮事件回调。<br/>取值为undefined时，不使用回调函数。 |
 
 ## BaseSpan
 
@@ -415,7 +558,9 @@ ArkTS-Sta: fontVariations(fontVariations: Array&lt;FontVariation&gt; | undefined
 
 ### textBackgroundStyle<sup>11+</sup>
 
-textBackgroundStyle(style: TextBackgroundStyle): T
+ArkTS-Dyn: textBackgroundStyle(style: TextBackgroundStyle): T
+
+ArkTS-Sta: textBackgroundStyle(style: TextBackgroundStyle | undefined): this
 
 设置背景样式。作为[ContainerSpan](ts-basic-components-containerspan.md)的子组件时可以继承它的此属性值，优先使用其自身的此属性。
 
@@ -433,17 +578,19 @@ textBackgroundStyle(style: TextBackgroundStyle): T
 
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---- | ---- | ---- |
-| style  | [TextBackgroundStyle](#textbackgroundstyle11对象说明) | 是   | 背景样式。<br />默认值:<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} |
+| style  | ArkTS-Dyn: [TextBackgroundStyle](#textbackgroundstyle11对象说明) <br/>ArkTS-Sta: [TextBackgroundStyle](#textbackgroundstyle11对象说明) \| undefined | 是   | 背景样式。<br />默认值:<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>取值undefined时，按默认值处理。 |
 
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| T | 返回当前Span的属性。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前Span的属性。 |
 
 ### baselineOffset<sup>12+</sup>
 
-baselineOffset(value: LengthMetrics): T
+ArkTS-Dyn: baselineOffset(value: LengthMetrics): T
+
+ArkTS-Sta: baselineOffset(value: LengthMetrics | undefined): this
 
 设置Span基线的偏移量。此属性与父组件的baselineOffset是共存的。
 
@@ -457,13 +604,13 @@ baselineOffset(value: LengthMetrics): T
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ----- | ---- | ---- | ---- |
-| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 设置Span基线的偏移量，设置该值为百分比时，按默认值显示。<br/>正数内容向上偏移，负数向下偏移。<br/>默认值：0<br/>在ImageSpan中，设置为非0时，[verticalAlign](ts-basic-components-imagespan.md#verticalalign)将固定为ImageSpanAlignment.BASELINE对齐；设置为0时，要使基线对齐策略生效，需同时设置[verticalAlign](ts-basic-components-imagespan.md#verticalalign)为ImageSpanAlignment.BASELINE。 |
+| value  | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| undefined | 是   | 设置Span基线的偏移量，设置该值为百分比时，按默认值显示。<br/>正数内容向上偏移，负数向下偏移。<br/>默认值：0<br/>在ImageSpan中，设置为非0时，[verticalAlign](ts-basic-components-imagespan.md#verticalalign)将固定为ImageSpanAlignment.BASELINE对齐；设置为0时，要使基线对齐策略生效，需同时设置[verticalAlign](ts-basic-components-imagespan.md#verticalalign)为ImageSpanAlignment.BASELINE。<br/>取值undefined时，按默认值处理。 |
 
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| T | 返回当前Span的属性。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前Span的属性。 |
 
 ## TextBackgroundStyle<sup>11+</sup>对象说明
 
