@@ -7628,7 +7628,7 @@ sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, (data: sensor.Accele
 
 ## sensor.once('SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION')<sup>(deprecated)</sup>
 
-once(type: ,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
+once(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback:Callback&lt;LinearAccelerometerResponse&gt;): void
 
 监听线性加速度传感器数据变化一次。
 
@@ -7636,7 +7636,7 @@ once(type: ,callback:Callback&lt;LinearAccelerometerResponse&gt;): void
 >
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.once.LINEAR_ACCELEROMETER](#sensoroncesensoridlinear_accelerometer9)替代。
 
-**需要权限**：ohos.permission.ACCELERATION
+**需要权限**：ohos.permission.ACCELEROMETER
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
