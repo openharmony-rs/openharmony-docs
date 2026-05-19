@@ -519,3 +519,39 @@ A system error has occurred.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
+
+## 19110005 指定的用户Id与当前用户Id不一致
+
+**错误信息**
+
+The specified userId is inconsistent with the current userId.
+
+**错误描述**
+
+指定的用户ID与当前用户ID不一致。
+
+**可能原因**
+
+指定的用户ID与当前用户ID不一致。
+
+**处理步骤**
+
+请传入正确的参数。
+
+## 19110006 指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**错误信息**
+
+The specified userId belongs to a personal space user and cannot be controlled.
+
+**错误描述**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**可能原因**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**处理步骤**
+
+请传入正确的参数。
