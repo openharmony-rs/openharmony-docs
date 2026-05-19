@@ -146,7 +146,6 @@
    
    @Component
    export struct CustomInput {
-     @State inputText: string = ''; // inputText作为Text组件要显示的内容
      private isAttach: boolean = false;
      private inputController: inputMethod.InputMethodController = inputMethod.getController();
    
@@ -210,7 +209,7 @@
    ```
 
    ArkTS-Sta示例：
-
+   
    <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/pages/PrivatePreview.ets) -->
 
 ## 示例效果图

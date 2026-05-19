@@ -68,9 +68,10 @@
     });
    ```
 
-    ArkTS-Sta示例：
-   
+   ArkTS-Sta示例：
+
    <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+
 
 ## 切换输入法应用
 
