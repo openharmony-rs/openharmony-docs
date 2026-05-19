@@ -102,6 +102,21 @@
    
    ArkTS-Sta:
    <!-- @[onSubtitleUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 字幕回调函数
+   this.avPlayer!.onSubtitleUpdate((info: media.SubtitleInfo) => {
+     if (!!info) {
+       let text = (!info.text) ? '' : info.text;
+       let startTime = (!info.startTime) ? 0 : info.startTime;
+       let duration = (!info.duration) ? 0 : info.duration;
+       console.info(`${this.tag}: subtitleUpdate info: text=${text} startTime=${startTime} duration=${duration}`);
+       this.subtitle = text;
+     } else {
+       console.info(`${this.tag}: subtitleUpdate info is null`);
+     }
+   });
+   ```
 
 3. (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
 
