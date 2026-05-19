@@ -847,18 +847,9 @@ isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolea
 | ------------ | --------------------------------------- |
 |  boolean     | 是否支持低时延播放。true表示支持，false表示不支持。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
-
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let streamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -898,18 +889,9 @@ isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boo
 | ------------ | --------------------------------------- |
 |  boolean     | 是否支持低功耗通路播放。true表示支持，false表示不支持。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
-
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let streamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -949,18 +931,9 @@ isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): bool
 | ------------ | --------------------------------------- |
 |  boolean     | 是否支持透传通路播放。true表示支持，false表示不支持。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
-
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let streamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -1000,18 +973,9 @@ isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boole
 | ------------ | --------------------------------------- |
 |  boolean     | 是否支持低时延录制。true表示支持，false表示不支持。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
-
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let streamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -1051,18 +1015,9 @@ isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage)
 | ------------ | --------------------------------------- |
 |  boolean     | 是否支持多声道播放。true表示支持，false表示不支持。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed. |
-
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let streamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
