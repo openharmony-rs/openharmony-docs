@@ -321,7 +321,7 @@ Stack trace:
 
 **分析定位**
 
-根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用loadContent加载页面，销毁流程中错误调用getLastWindow导致崩溃。
+根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)加载页面，销毁流程中错误调用getLastWindow导致崩溃。
 
 **示例对比**：
 
@@ -356,10 +356,10 @@ WINDOW_FROZEN_DETECTION异常检测事件用于伪冻屏检测，帮助开发者
 
 **可能原因**
 
-- 窗口创建后未在5秒内调用loadContent()或setUIContent()加载页面内容
-- 异步操作耗时过长，超过超时阈值
-- 先调用showWindow()显示窗口，再调用loadContent()加载内容
-- 页面路径错误，导致加载失败
+- 窗口创建后未在5秒内调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)加载页面内容。
+- 异步操作耗时过长，超过超时阈值。
+- 先调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)显示窗口，再调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)加载内容。
+- 页面路径错误，导致加载失败。
 
 ### 定位窗口内容加载超时问题
 
@@ -381,15 +381,15 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 
 **检测逻辑**
 
-系统在窗口创建时启动定时器监控页面加载过程。如果窗口创建后5秒内未调用loadContent()或setUIContent()加载页面内容，系统判定为异常并生成故障日志。
+系统在窗口创建时启动定时器监控页面加载过程。如果窗口创建后5秒内未调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)加载页面内容，系统判定为异常并生成故障日志。
 
 **排查思路**
 
 检查代码流程：
-1. 是否在窗口创建后立即调用了loadContent()或setUIContent()
-2. 是否在页面加载和窗口显示之间有耗时操作
-3. 是否先调用showWindow()再调用loadContent()
-4. 页面路径是否正确
+1. 是否在窗口创建后立即调用了[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)。
+2. 是否在页面加载和窗口显示之间有耗时操作。
+3. 是否先调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)再调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)。
+4. 页面路径是否正确。
 
 **正反案例**
 
@@ -430,10 +430,10 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 
 **检查清单**
 
-1. 找到窗口创建代码，确认是否调用loadContent()或setUIContent()
-2. 检查页面加载和窗口显示之间是否有耗时操作
-3. 确认调用顺序：先loadContent()后showWindow()
-4. 验证页面路径是否正确
+1. 找到窗口创建代码，确认是否调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)。
+2. 检查页面加载和窗口显示之间是否有耗时操作。
+3. 确认调用顺序：先[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)后[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)。
+4. 验证页面路径是否正确。
 
 > **说明：**
 >
@@ -502,10 +502,10 @@ hdc shell hilog | grep "RectCheck err"
 
 **可能原因**
 
-- 窗口resize()时设置了超出合理范围的尺寸（过小或过大）
-- 窗口模式切换时尺寸计算错误（如从全屏切换到浮动窗口）
-- 分屏或窗口调整时尺寸未正确更新
-- 自定义窗口尺寸时未考虑系统限制
+- 窗口调用[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)时设置了超出合理范围的尺寸（过小或过大）。
+- 窗口模式切换时尺寸计算错误（如从全屏切换到浮动窗口）。
+- 分屏或窗口调整时尺寸未正确更新。
+- 自定义窗口尺寸时未考虑系统限制。
 
 **正反案例**
 
@@ -530,13 +530,13 @@ windowClass.showWindow();
 
 **检查清单**
 
-1. 查看故障日志，确认windowName和异常尺寸值
-2. 对比curWidth、curHeight与minWidth、minHeight、maxFloatingWindowSize
-3. 判断窗口尺寸是否不在规定范围内
-4. 检查代码中resize()调用位置的尺寸参数
-5. 确认窗口模式切换时的尺寸计算逻辑
-6. 使用hidumper验证修复后的窗口状态
+1. 查看故障日志，确认windowName和异常尺寸值。
+2. 对比curWidth、curHeight与minWidth、minHeight、maxFloatingWindowSize。
+3. 判断窗口尺寸是否不在规定范围内。
+4. 检查代码中[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用位置的尺寸参数。
+5. 确认窗口模式切换时的尺寸计算逻辑。
+6. 使用hidumper验证修复后的窗口状态。
 
 > **说明：**
 >
-> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整resize()调用时的尺寸参数，确保窗口尺寸在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内。
+> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数，确保窗口尺寸在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内。
