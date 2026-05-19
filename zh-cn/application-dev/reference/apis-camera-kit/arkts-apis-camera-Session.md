@@ -429,7 +429,7 @@ start(): Promise\<void\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed. [since 12]                     |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 
