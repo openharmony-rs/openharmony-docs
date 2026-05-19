@@ -1578,5 +1578,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/using-avscreencapture-ArkTs.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample-sta/entry/src/main/ets/model/MyAVScreenCapture.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"create_record",
+						"start_line":54
+					},
+					{
+						"end_line":119,
+						"name":"callback_record",
+						"start_line":69
+					},
+					{
+						"end_line":190,
+						"name":"get_file_fd",
+						"start_line":178
+					},
+					{
+						"end_line":141,
+						"name":"set_config",
+						"start_line":121
+					},
+					{
+						"end_line":145,
+						"name":"init_config",
+						"start_line":143
+					},
+					{
+						"end_line":148,
+						"name":"start_record",
+						"start_line":146
+					},
+					{
+						"end_line":165,
+						"name":"stop_record",
+						"start_line":163
+					},
+					{
+						"end_line":169,
+						"name":"release_record",
+						"start_line":167
+					}
+				]
+			}
+		]
 	}
 ]
