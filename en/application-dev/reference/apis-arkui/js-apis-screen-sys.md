@@ -1496,7 +1496,8 @@ Before calling any API in Screen, you must use [getAllScreens()](#screengetallsc
 | activeModeIndex   | number                                         | Yes  | No  | Index of the active screen mode. The current value and value range of this parameter vary according to the screen resolution, refresh rate, and device hardware. The value is an integer.|
 | orientation       | [Orientation](#orientation)                     | Yes  | No  | Screen orientation.      |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | Yes  | No  | Source mode of the screen.    |
-| serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.|       
+| serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.|
+| densityDpi | number        | Yes  | Yes  | Physical pixel density of the screen, that is, the number of pixels per inch.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ### setOrientation
 
