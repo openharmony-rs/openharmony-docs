@@ -4842,7 +4842,7 @@ struct NavigationExample {
 }
 ```
 
-![zh-cn_image_navigation_toolbar_adaptation_landscape](figures/zh-cn_image_navigation_toolbar_adaptation_landscape.gif)
+![en-us_image_navigation_toolbar_adaptation_landscape](figures/en-us_image_navigation_toolbar_adaptation_landscape.gif)
 
 ### Example 16: Using NavDestination as a Navigation Page in Navigation
 
@@ -4925,7 +4925,7 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 }
 ```
 
-![zh-cn_image_navigation_home_NavDestination](figures/zh-cn_image_navigation_home_NavDestination.gif)
+![en-us_image_navigation_home_NavDestination](figures/en-us_image_navigation_home_NavDestination.gif)
 
 ### Example 17: Using New Navigation Controller APIs
 
