@@ -86,7 +86,7 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;[CloudModelInfo](#cloudModelInfo)&gt;&gt; | 返回云侧模型的Promise对象。 |
+| Promise&lt;Array&lt;[CloudModelInfo](#cloudModelInfo26)&gt;&gt; | 返回云侧模型的Promise对象。 |
 
 **示例：**
 
@@ -215,8 +215,8 @@ intelligence.splitText(splitText, splitConfig)
 | version    | [ModelVersion](#modelversion)           | 否 | 否   |模型的版本。 |
 | isNpuAvailable | boolean                | 否 | 否   | 指示是否使用NPU加速向量化过程，true表示使用，false表示不使用。如果设备不支持NPU，调用加载模型会失败，并抛出错误码31300000。 |
 | cachePath | string                | 否  | 是  | 如果使用NPU进行加速，则需要本地路径进行模型缓存。格式为/xxx/xxx/xxx，xxx为路径地址，例如"/data"。长度上限为512个字符。默认值为""。 |
-| modelInfo<sup>26+</sup>    | [CloudModelInfo](#cloudModelInfo)           | 否 | 是   |云侧模型类型和版本信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
-| networkPolicy<sup>26+</sup>    | [NetworkPolicy](#networkPolicy)           | 否 | 是   |下载云侧模型的网络策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| modelInfo<sup>26+</sup>    | [CloudModelInfo](#cloudModelInfo26)           | 否 | 是   |云侧模型类型和版本信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| networkPolicy<sup>26+</sup>    | [NetworkPolicy](#networkPolicy26)           | 否 | 是   |下载云侧模型的网络策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 
 ## ModelVersion
 
