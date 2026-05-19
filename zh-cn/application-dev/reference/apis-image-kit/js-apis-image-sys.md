@@ -75,7 +75,7 @@ createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): 
 
 | 参数名       | 类型                | 必填 | 说明             |
 | ------------ | ------------------- | ---- | ---------------- |
-| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_FP16/RGBA_1010102/YCBCR_P010/YCRCB_P010。 |
+| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA_1010102/YCBCR_P010/YCRCB_P010。 |
 | sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA8888。 |
 
 **返回值：**
@@ -90,7 +90,7 @@ createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap): 
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_FP16\RGBA_1010102\YCBCR_P010\YCRCB_P010. Or sdrPixelMap's PixelMapFormat is not RGBA_8888. |
+| 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010\YCRCB_P010. Or sdrPixelMap's PixelMapFormat is not RGBA_8888. |
 |  202      | Non-system applications are not allowed to use system APIs. |
 
 **示例：**
@@ -145,7 +145,7 @@ async function CreatePictureTest(context: Context) {
  	 
  | 参数名       | 类型                | 必填 | 说明             |
  | ------------ | ------------------- | ---- | ---------------- |
- | hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_FP16/RGBA_1010102/YCBCR_P010/YCRCB_P010。 |
+ | hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA_1010102/YCBCR_P010/YCRCB_P010。 |
  | sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA8888。 |
  | params | [GainmapParams](js-apis-image-sys.md) | 是   | Gainmap Params，包含一个bool类型的参数isFullSizeGainmap，来决定是否使用全尺寸Gainmap，默认值是{isFullSizeGainmap : false}。|
  	 
@@ -161,7 +161,7 @@ async function CreatePictureTest(context: Context) {
  	 
  | 错误码ID | 错误信息                                                     |
  | -------- | ------------------------------------------------------------ |
- | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_FP16\RGBA_1010102\YCBCR_P010\YCRCB_P010. Or sdrPixelMap's PixelMapFormat is not RGBA_8888. |
+ | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010\YCRCB_P010. Or sdrPixelMap's PixelMapFormat is not RGBA_8888. |
  |  202      | Non-system applications are not allowed to use system APIs. |
  	 
  **示例：**
