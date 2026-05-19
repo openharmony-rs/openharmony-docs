@@ -2372,7 +2372,7 @@ try {
     let jsonObj: object = JSON.parse(data);
     console.info(`Succeeded, data=${data}, isPcMode=${jsonObj["isPcMode"]}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed. Cause code: ${err.code}, cancel message: ${err.message}`);
+    console.error(`Failed. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Panic. Cause code: ${exception.code}, message: ${exception.message}`);
