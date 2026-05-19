@@ -279,6 +279,19 @@ ArkTS-Dyn:
 ArkTS-Sta:
 <!-- @[fd_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 情况二：本地文件播放
+/*
+// 通过UIAbilityContext的resourceManager成员的getRawFd接口获取媒体资源播放地址
+// 返回类型为{fd,offset,length},fd为HAP包fd地址，offset为媒体资源偏移量，length为播放长度
+let fileDescriptor = await this.context.resourceManager.getRawFd(this.fileName);
+let avFileDescriptor: media.AVFileDescriptor =
+  { fd: fileDescriptor.fd, offset: fileDescriptor.offset, length: fileDescriptor.length };
+// 为fdSrc赋值触发initialized状态机上报
+this.avPlayer!.fdSrc = avFileDescriptor;
+* */
+```
+
 ## 运行完整示例
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL)（也可直接运行），并将示例工程的以下资源复制到对应目录。
     ```txt
