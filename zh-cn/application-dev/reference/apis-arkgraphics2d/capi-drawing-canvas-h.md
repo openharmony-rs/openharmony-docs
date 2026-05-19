@@ -1888,16 +1888,16 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas
 | -- | -- |
 | [const OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向OH_Drawing_Canvas对象的指针。 |
 | const int* glyphIds | 字形ID的数组。 |
-| int glyphIdCount | 字形ID数组的大小。 |
-| int glyphIdOffset | 在字形ID数组绘制前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为glyphIds[m]~glyphIds[m+n]的部分。 |
+| int glyphIdCount | 字形ID数组的大小，需小于等于数组真实大小，超过数组长度无法校验，会导致绘制异常或卡顿。 |
+| int glyphIdOffset | 在字形ID数组绘制前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。 |
 | [const OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)* positions | 位置数组。 |
-| int positionCount | 位置数组的大小。 |
-| int positionOffset | 在位置数组绘制之前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效positions数组范围为positions[m]~positions[m+n]的部分。 |
-| int glyphCount | 要绘制的字形的数量。如果数量小于或等于0，则不绘制任何内容。 |
+| int positionCount | 位置数组的大小，需小于等于数组真实大小，超过数组长度无法校验，会导致绘制异常或卡顿。 |
+| int positionOffset | 在位置数组绘制之前要跳过的元素数量。<br>若glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。 |
+| int glyphCount | 要绘制的字形的数量。如果数量小于或等于0，则不绘制任何内容并返回错误码OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。<br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。 |
 | [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 绘制时使用的字体。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS表示操作成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示canvas、glyphIds、positions和font中的任何一个为nullptr。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，表示glyphIdOffset或positionOffset小于0，或者glyphIdCount小于glyphIdOffset + glyphCount，或者positionCount小于positionOffset + glyphCount。 |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 返回OH_DRAWING_SUCCESS表示操作成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，可能原因：canvas、glyphIds、positions和font中的任何一个为nullptr。<br>返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE，可能原因如下：<br> - glyphIdOffset或positionOffset小于0；<br> - glyphIdCount小于glyphIdOffset + glyphCount；<br> - positionCount小于positionOffset + glyphCount；<br> - glyphIdOffset小于0；<br> - positionOffset小于0；<br> - glyphCount小于或等于0。 |

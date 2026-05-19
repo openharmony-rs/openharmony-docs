@@ -33,6 +33,7 @@
 | [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | 主窗口信息。 |
 | [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | 主窗口截图的配置项。 |
 | [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) | OH_WindowManager_FrameMetrics | 帧率指标数据对象。 |
+| [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | 窗口缩放系数相关信息，包括系统显示大小缩放系数、系统默认显示大小缩放系数、自定义显示大小缩放系数。 |
 
 
 ### 枚举
@@ -48,6 +49,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | 帧率指标回调类型。 |
+| [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | 窗口缩放系数相关信息回调类型。 |
 
 ## 枚举类型说明
 
@@ -133,4 +135,14 @@ typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, 
 
 **起始版本：** 26.0.0
 
+### OH_WindowManager_DensityInfoCallback()
 
+```c
+typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)
+```
+
+**描述**
+
+窗口缩放系数相关信息回调类型。
+
+**起始版本：** 24

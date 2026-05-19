@@ -204,6 +204,10 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用支持持久化访问文件Uri。
 
+> **说明：**
+>
+> 在API 12及以上版本，该权限等级变更为normal，应用可直接[声明使用](declare-permissions.md)；若需兼容API12之前版本，仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
+
 <!--RP18--><!--RP18End-->
 
 **权限级别**：normal
@@ -916,9 +920,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：手动设置授权（manual_settings）
 
-**支持设备**：PC/2in1
+**支持设备**：PC/2in1 | TV
 
 **起始版本**：22
+
+**变更信息**：从API版本26.0.0开始，增加支持在TV上申请。
 
 ## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
 
@@ -1162,6 +1168,22 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：24
 
+## ohos.permission.GET_NETWORK_STATS
+
+允许应用查询其他应用的流量数据。
+
+<!--RP81--><!--RP81End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：10
+
+**变更信息**：API 10-11，ACL使能为false；从API 12开始，变更为true。对于API版本10-24，权限的开放范围为系统应用；从API版本26.0.0开始，开放范围变更为普通应用。
+
 ## ohos.permission.ACCESS_DLP_SERVICE
 
 允许应用或服务使用DLP提供的注册、解注册连云插件功能。
@@ -1172,7 +1194,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | PC/2in1 | Tablet | Car
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：26.0.0
 
@@ -1232,6 +1254,26 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_SKILL
+    
+允许应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+<!--RP87--><!--RP87End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.kernel.AS_LDK_DRIVER
 
 允许应用安装PCIe驱动。
@@ -1243,6 +1285,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.KNOCK_COLLABORATION
+
+允许应用通过碰一碰的形式连接指定设备并实现信息交互和应用互动。
+
+<!--RP88--><!--RP88End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
 
 **起始版本**：26.0.0
 

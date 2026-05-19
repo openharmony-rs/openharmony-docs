@@ -19,6 +19,7 @@ When creating a key agreement instance, you need to specify the algorithm specif
 
 | Asymmetric Key Algorithm| String Parameter| API Version| 
 | -------- | -------- | -------- |
+| ECC | ECC192 | 26.0.0+ |
 | ECC | ECC224 | 9+ | 
 | ECC | ECC256 | 9+ | 
 | ECC | ECC384 | 9+ | 

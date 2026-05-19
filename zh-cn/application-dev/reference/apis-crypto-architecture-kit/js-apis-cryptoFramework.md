@@ -167,14 +167,16 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 用于AEAD（带关联数据的认证加密）对称加解密的[init()](#init-1)方法参数，继承自[ParamsSpec](#paramsspec)。
 
-适用于[AES算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes)的CCM分组模式。
+适用于[AES算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes)的CCM/GCM分组模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式。
 
 > **说明：**
 >
-> 在AES-CCM模式下使用AeadParamsSpec加密时：
-> - 若加密时指定了tag长度，解密时必须传入相同长度。
->
+> 在使用AeadParamsSpec加密时：
+> - 若加密时指定了tagLen，解密时必须传入相同长度。
 > - 当前使用AeadParamsSpec参数，CCM模式下update(#update)与doFinal(#dofinal)只能调用其中一个进行加密或者解密。且每个方法只能调用一次。
+> - 对于AES算法的GCM模式与SM4算法的GCM模式，tagLen仅支持4、8、12、13、14、15、16，若不填则默认为16。
+> - 对于AES算法的CCM模式，tagLen仅支持4、6、8、10、12、14、16，若不填则默认为12。
+> - 对于ChaCha20算法的Poly1305模式，tagLen仅支持16。
 
 **起始版本：** 26.0.0
 
@@ -186,9 +188,9 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce，对于AES-CCM长度为7-13字节。                              |
+| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce。对于AES算法的CCM模式长度为7-13字节；对于AES算法的GCM模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式长度为1-128字节。       |
 | authenticatedData     | Uint8Array | 否   | 是   | 指明加解密参数aad，长度为任意字节。                             |
-| tagLen | number | 否   | 是   | 指定加解密参数authTag长度，对于AES-CCM若不填则长度默认为12字节。tagLen长度范围为4-16，并且为偶数。 |
+| tagLen | number | 否   | 是   | 指定加解密参数authTag长度，单位为字节。对于AES算法的CCM模式，tagLen仅支持4、6、8、10、12、14、16，若不填则默认为12；对于AES算法的GCM模式与SM4算法的GCM模式，tagLen仅支持4、8、12、13、14、15、16，若不填则默认为16；对于ChaCha20算法的Poly1305模式，tagLen仅支持16。 |
 
 ## CryptoMode
 
@@ -4620,7 +4622,7 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 根据对称加解密的模式不同，doFinalSync的输出有以下区别：
 
-- 对于GCM和CCM模式的对称加密：一次加密流程中，如果将每次updateSync和doFinalSync的结果拼接起来，会得到“密文 + authTag”。即末尾的16字节（GCM模式）或12字节（CCM模式）是authTag，其余部分均为密文。也就是说，如果doFinalSync的data参数传入null，则doFinalSync的结果就是 authTag。  
+- 对于GCM和CCM模式的对称加密：一次加密流程中，如果将每次updateSync和doFinalSync的结果拼接起来，会得到“密文 + authTag”。即末尾的16字节（GCM模式）或12字节（CCM模式）是authTag，其余部分均为密文。也就是说，如果doFinalSync的data参数传入null，则doFinalSync的结果就是 authTag。
 
   authTag需要填入解密时的[GcmParamsSpec](#gcmparamsspec)或[CcmParamsSpec](#ccmparamsspec)；密文则作为解密时的入参data。
 - 对于其他模式的对称加解密以及GCM和CCM模式的对称解密：在一次加/解密流程中，每次updateSync和doFinalSync的结果拼接起来，得到完整的明文或密文。

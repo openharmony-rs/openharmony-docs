@@ -501,6 +501,7 @@ BasicDataSource代码见LazyForEach开发者指南末尾BasicDataSource示例代
 import { BasicDataSource } from './BasicDataSource';
 
 class DataSource extends BasicDataSource {
+  public dataArray: string[] = [];
   public totalCount(): number {
     return this.dataArray.length;
   }

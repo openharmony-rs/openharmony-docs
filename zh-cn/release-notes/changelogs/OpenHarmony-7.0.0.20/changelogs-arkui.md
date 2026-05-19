@@ -276,7 +276,7 @@ AlphabetIndexer变更前后的效果图：
    ```
    更多配置说明参见[MaterialState](../../../application-dev/reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)。
 
-3. 如果开发者仅想关闭部分组件的沉浸式系统材质，可通过组件提供的组件级接口关闭指定组件的沉浸式系统材质功能。
+3. 如果开发者仅想关闭部分组件的沉浸式系统材质，可通过组件提供的组件级接口关闭指定组件的沉浸式系统材质功能。[AlphabetIndexer](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)和[文本选择菜单](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)没有支持组件级沉浸式系统材质接口，无法通过此方法关闭。
 
    为需要关闭材质的组件设置[systemMaterial](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)为uiMaterial.Material.[empty](../../../application-dev/reference/apis-arkui/arkts-apis-uimaterial.md#empty)。
 

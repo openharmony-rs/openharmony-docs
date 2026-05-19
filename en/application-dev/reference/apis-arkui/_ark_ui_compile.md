@@ -629,7 +629,7 @@ Unknown resource type \'xxx\'.
 This error code is reported when the resource type fails verification.
 
 **Possible Cause**<br>
-The provided resource name is incorrect.
+The provided resource type is incorrect.
 
 **Solution**<br>
 Make sure the resource type is correct.
@@ -678,13 +678,13 @@ Make sure the resource name and path used match those specified using **\$rawfil
 The wrapBuilder\'s parameter should be a \'@Builder\' function.
 
 **Description**<br>
-This error code is reported when the parameter of **wrapBuilder** is not an @Builder decorated method.
+The parameter of **wrapBuilder** must be a global function decorated with @Builder.
 
 **Possible Cause**<br>
-a variable of another type or a regular function is used as the parameter of **wrapBuilder**.
+This error code is reported when the parameter of **wrapBuilder** is not an @Builder decorated function.
 
 **Solution**<br>
-Change the parameter of **wrapBuilder** to an @Builder decorated method.
+Change the parameter of **wrapBuilder** to a global function decorated with @Builder.
 
 ## 10905110 @Styles Verification Exception
 **Error Message**<br>
@@ -1120,7 +1120,7 @@ Avoid using incompatible decorators on the same struct. Use only one appropriate
 Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for struct \'xxx\'.
 
 **Description**<br>
-TThis error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
+This error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Possible Cause**<br>
 The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
@@ -1188,7 +1188,7 @@ Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for 
 This error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog and is called by the parent component.
 
 **Possible Cause**<br>
-The child component is not decorated with the required decorators.
+The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Solution**<br>
 Make sure the child component is decorated with @Component, @ComponentV2, or @CustomDialog before calling it.
@@ -1439,3 +1439,16 @@ This error code is reported when **reuseId** is used for custom components decor
 
 **Solution**<br>
 Use the **reuseId** attribute in the correct scenario.
+
+## 10905363 V1 Decorator Cannot Decorate Variables of the Function or () => void Type
+**Error Message**<br>
+The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
+
+**Description**<br>
+Since API version 23, the V1 decorator cannot be used for variables of the **Function** or **() => void** type. Otherwise, an error will occur at runtime.
+
+**Possible Cause**<br>
+This error code is reported when the V1 decorator is used for a variable of the **Function** or **() => void** type.
+
+**Solution**<br>
+Delete the V1 decorator used for the variable of the **Function** or **() => void** type based on the error description.

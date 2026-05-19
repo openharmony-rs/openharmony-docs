@@ -34,6 +34,8 @@ Allows an application to update the file guard policy.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
+**Supported devices**: PCs/2-in-1 devices
+
 **Valid since**: 10
 
 **Changelog**: For API versions 10 to 14, this permission is of the system_core level and available only to MDM applications. Starting from API version 14, the permission level is changed to system_basic and this permission is accessible to normal enterprise applications.
@@ -50,6 +52,8 @@ Currently, the extended attributes include the file security level and file labe
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 10
 

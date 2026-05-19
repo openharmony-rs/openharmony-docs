@@ -25,7 +25,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 **Encryption**
 
-1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'ChaCha20|Poly1305'** to create a **Cipher** instance for encryption. The key type is ChaCha20, and the mode is Poly1305.
+1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **ChaCha20|Poly1305** to create a **Cipher** instance for encryption. The symmetric key type is **ChaCha20**, and the mode is **Poly1305**.
 
 2. Call [OH_CryptoSymCipherParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_create) to create a parameter object and call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set encryption parameters.
 
@@ -47,7 +47,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 **Decryption**
 
-1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'ChaCha20|Poly1305'** to create a **Cipher** instance for decryption. The key type is ChaCha20, and the mode is Poly1305.
+1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **ChaCha20|Poly1305** to create a **Cipher** instance for decryption. The symmetric key type is **ChaCha20**, and the mode is **Poly1305**.
 
 2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_DECRYPT_MODE**, and specify the decryption key (**OH_CryptoSymKey**) and the decryption parameter instance (**OH_CryptoSymCipherParams**) corresponding to the Poly1305 mode.
 
@@ -55,16 +55,99 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 
-```c++
+<!-- @[poly1305_encrypt_decrypt_chacha20_symkey](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/cpp/types/project/chacha20_poly1305_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestChaCha20Poly1305()
+// Set the parameter.
+static OH_Crypto_ErrCode doChaCha20Poly1305SetParams(Crypto_DataBlob *ivData, Crypto_DataBlob *aadData,
+    Crypto_DataBlob *tagData, OH_CryptoSymCipherParams **params)
+{
+    OH_Crypto_ErrCode ret = OH_CryptoSymCipherParams_Create(params);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    ret = OH_CryptoSymCipherParams_SetParam(*params, CRYPTO_IV_DATABLOB, ivData);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipherParams_SetParam(*params, CRYPTO_AAD_DATABLOB, aadData);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipherParams_SetParam(*params, CRYPTO_TAG_DATABLOB, tagData);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    return ret;
+
+end:
+    OH_CryptoSymCipherParams_Destroy(*params);
+    *params = nullptr;
+    return ret;
+}
+
+// Encryption function.
+static OH_Crypto_ErrCode doChaCha20Poly1305Encrypt(OH_CryptoSymKey *keyCtx, OH_CryptoSymCipherParams *params,
+    Crypto_DataBlob *msgBlob, Crypto_DataBlob *outUpdate, Crypto_DataBlob *tagOutPut)
+{
+    OH_CryptoSymCipher *encCtx = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoSymCipher_Create("ChaCha20|Poly1305", &encCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Update(encCtx, msgBlob, outUpdate);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Final(encCtx, nullptr, tagOutPut);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+
+end:
+    OH_CryptoSymCipher_Destroy(encCtx);
+    return ret;
+}
+
+// Decryption function.
+static OH_Crypto_ErrCode doChaCha20Poly1305Decrypt(OH_CryptoSymKey *keyCtx, OH_CryptoSymCipherParams *params,
+    Crypto_DataBlob *tagOutPut, Crypto_DataBlob *outUpdate, Crypto_DataBlob *decUpdate)
+{
+    OH_CryptoSymCipher *decCtx = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoSymCipherParams_SetParam(params, CRYPTO_TAG_DATABLOB, tagOutPut);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+    ret = OH_CryptoSymCipher_Create("ChaCha20|Poly1305", &decCtx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+    ret = OH_CryptoSymCipher_Final(decCtx, outUpdate, decUpdate);
+    if (ret != CRYPTO_SUCCESS) {
+        goto end;
+    }
+
+end:
+    OH_CryptoSymCipher_Destroy(decCtx);
+    return ret;
+}
+
+OH_Crypto_ErrCode doTestChaCha20Poly1305()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
-    OH_CryptoSymCipher *encCtx = nullptr;
-    OH_CryptoSymCipher *decCtx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
     OH_CryptoSymCipherParams *params = nullptr;
 
@@ -73,16 +156,14 @@ static OH_Crypto_ErrCode doTestChaCha20Poly1305()
 
     uint8_t aad[8] = {1, 2, 3, 4, 5, 6, 7, 8};
     uint8_t tag[16] = {0};
-    uint8_t iv[16] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4, 2, 4, 12, 3}; // iv is generated from an array of secure random numbers.
+    uint8_t iv[12] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4}; // iv is generated from an array of secure random numbers.
     Crypto_DataBlob ivData = {.data = iv, .len = sizeof(iv)};
     Crypto_DataBlob aadData = {.data = aad, .len = sizeof(aad)};
     Crypto_DataBlob tagData = {.data = tag, .len = sizeof(tag)};
     Crypto_DataBlob tagOutPut = {.data = nullptr, .len = 0};
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
-    // Generate a symmetric key.
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("ChaCha20", &genCtx);
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("ChaCha20", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -91,56 +172,20 @@ static OH_Crypto_ErrCode doTestChaCha20Poly1305()
         goto end;
     }
 
-    // Set parameters.
-    ret = OH_CryptoSymCipherParams_Create(&params);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipherParams_SetParam(params, CRYPTO_IV_DATABLOB, &ivData);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipherParams_SetParam(params, CRYPTO_AAD_DATABLOB, &aadData);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipherParams_SetParam(params, CRYPTO_TAG_DATABLOB, &tagData);
+    // Set the parameter.
+    ret = doChaCha20Poly1305SetParams(&ivData, &aadData, &tagData, &params);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
 
     // Encrypt data.
-    ret = OH_CryptoSymCipher_Create("ChaCha20|Poly1305", &encCtx);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Init(encCtx, CRYPTO_ENCRYPT_MODE, keyCtx, params);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Update(encCtx, &msgBlob, &outUpdate);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Final(encCtx, nullptr, &tagOutPut);
+    ret = doChaCha20Poly1305Encrypt(keyCtx, params, &msgBlob, &outUpdate, &tagOutPut);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
 
     // Decrypt data.
-    ret = OH_CryptoSymCipher_Create("ChaCha20|Poly1305", &decCtx);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipherParams_SetParam(params, CRYPTO_TAG_DATABLOB, &tagOutPut);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Init(decCtx, CRYPTO_DECRYPT_MODE, keyCtx, params);
-    if (ret != CRYPTO_SUCCESS) {
-        goto end;
-    }
-    ret = OH_CryptoSymCipher_Final(decCtx, &outUpdate, &decUpdate);
+    ret = doChaCha20Poly1305Decrypt(keyCtx, params, &tagOutPut, &outUpdate, &decUpdate);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -148,8 +193,6 @@ static OH_Crypto_ErrCode doTestChaCha20Poly1305()
     // Release the instance.
 end:
     OH_CryptoSymCipherParams_Destroy(params);
-    OH_CryptoSymCipher_Destroy(encCtx);
-    OH_CryptoSymCipher_Destroy(decCtx);
     OH_CryptoSymKeyGenerator_Destroy(genCtx);
     OH_CryptoSymKey_Destroy(keyCtx);
     OH_Crypto_FreeDataBlob(&outUpdate);
