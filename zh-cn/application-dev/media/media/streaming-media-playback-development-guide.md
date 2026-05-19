@@ -88,6 +88,12 @@ this.avPlayer.on('bufferingUpdate', (infoType : media.BufferingInfoType, value :
 ArkTS-Sta:
 <!-- @[onBufferingUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int) => {
+  console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
+})
+```
+
 ### HLS切换码率
 
 当前流媒体HLS协议流支持多码率播放，默认情况下，播放器会根据网络下载速度选择合适的码率。
