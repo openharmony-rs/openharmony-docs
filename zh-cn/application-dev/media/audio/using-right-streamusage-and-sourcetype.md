@@ -146,7 +146,7 @@
 
   AVRecorder.prepare的参数config类型为AVRecorderConfig，使用AVRecorderConfig.audioSourceType可指定音源类型。
 
- ## 使用不同音频通路
+## 使用不同音频通路
 
 音频通路是指音频数据在系统内部的传输和处理路径，包括从应用到硬件输出的完整处理流程。不同的音频通路采用不同的数据处理策略和硬件资源分配方式，在延迟、功耗、音质等方面各有侧重。
 
