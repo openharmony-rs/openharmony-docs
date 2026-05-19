@@ -234,6 +234,23 @@ DASH流媒体资源包含多路不同分辨率、码率、采样率、编码格�
 
     ArkTS-Sta:
     <!-- @[selectTrack](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 切换至目标视频轨道
+    try {
+      this.avPlayer!.selectTrack(track);
+    } catch (error) {
+      console.error(`${this.tag}: selectTrack failed, error message is = ${JSON.stringify(error.message)}`);
+    }
+    // 取消选择目标视频轨道
+    /*
+    try {
+      this.avPlayer.deselectTrack(track);
+    } catch (error) {
+      console.error(`${this.tag}: deselectTrack failed, error message is = ${JSON.stringify(error.message)}`);
+    }
+    * */
+    ```
 
 ## 异常场景说明
 
