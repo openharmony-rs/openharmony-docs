@@ -73,6 +73,14 @@ getPixelMap(): image.PixelMap
 | ---------------------------------------- | -------- |
 | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | PixelMap |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[DrawableDescriptor错误码](errorcode-drawable-descriptor.md)。
+
+| 错误码ID | 错误信息     |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+
 **示例：**
 
 示例请参考[LayeredDrawableDescriptor](#layereddrawabledescriptor)中的示例代码。
@@ -100,6 +108,7 @@ loadSync(): DrawableDescriptorLoadedResult
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
 
 ```ts
 import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
@@ -138,6 +147,7 @@ load(): Promise\<DrawableDescriptorLoadedResult>
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
 
 ```ts
 import {
@@ -155,6 +165,65 @@ drawable.load().then((result: DrawableDescriptorLoadedResult) => {
   console.info(`load failed`)
 })
 ```
+
+### release
+
+release(): void
+
+释放DrawableDescriptor持有的资源。调用release后，该对象将不可用，再调用[getPixelMap](#getpixelmap)、[getForeground](#getforeground)、[getBackground](#getbackground)、[getMask](#getmask)、[loadSync](#loadsync21)、[load](#load21)等接口会抛出111002错误。重复调用release不会崩溃。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+```ts
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private resManager = this.getUIContext().getHostContext()?.resourceManager;
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private drawable: DrawableDescriptor | undefined =
+    this.resManager?.getDrawableDescriptor($r('app.media.startIcon').id);
+
+  build() {
+    Column() {
+      Button('release')
+        .onClick(() => {
+          this.drawable?.release()
+        })
+      Button('isReleased')
+        .onClick(() => {
+          let released = this.drawable?.isReleased()
+          console.info(`isReleased = ${released}`)
+        })
+    }
+  }
+}
+```
+
+### isReleased
+
+isReleased(): boolean
+
+查询DrawableDescriptor是否已被释放。返回true表示已释放，此时调用[getPixelMap](#getpixelmap)、[getForeground](#getforeground)、[getBackground](#getbackground)、[getMask](#getmask)、[loadSync](#loadsync21)、[load](#load21)等接口会抛出111002错误；返回false表示未释放，对象可正常使用。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型    | 说明                            |
+| ------- | ------------------------------- |
+| boolean | DrawableDescriptor是否已被释放。true表示已释放，false表示未释放。 |
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
@@ -354,6 +423,14 @@ getForeground(): DrawableDescriptor
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | DrawableDescriptor对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[DrawableDescriptor错误码](errorcode-drawable-descriptor.md)。
+
+| 错误码ID | 错误信息     |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+
 **示例：**
 ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
@@ -413,6 +490,14 @@ getBackground(): DrawableDescriptor
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | DrawableDescriptor对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[DrawableDescriptor错误码](errorcode-drawable-descriptor.md)。
+
+| 错误码ID | 错误信息     |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+
 **示例：**
 ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
@@ -466,6 +551,14 @@ getMask(): DrawableDescriptor
 | 类型                                       | 说明                   |
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | DrawableDescriptor对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[DrawableDescriptor错误码](errorcode-drawable-descriptor.md)。
+
+| 错误码ID | 错误信息     |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
 
 **示例：**
 ```ts

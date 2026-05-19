@@ -8,8 +8,11 @@
 
 >**说明：**
 >
->文本类组件公共接口。
->本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 文本类组件公共接口。
 
 ## CaretStyle<sup>10+</sup>
 
@@ -1273,6 +1276,24 @@ constructor(options?: NumericTextTransitionOptions)
 | TOP                   | 0  | 内容区顶部对齐。 |
 | CENTER                | 1  | 内容区中心对齐。 |
 | BOTTOM                | 2  | 内容区底部对齐。 |
+
+## StrokeJoinStyle
+
+定义线条拐角的样式，即在绘制折线时线段拐角处的画笔样式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                   | 值  | 说明                  |
+| --------------------- | -------  | ------------------- |
+| MITER_JOIN            | 0  | 拐角类型为锐角。 |
+| ROUND_JOIN            | 1  | 拐角类型为圆角。 |
+| BEVEL_JOIN            | 2  | 拐角类型为平角。 |
 
 ## TextDirection<sup>22+</sup>
 

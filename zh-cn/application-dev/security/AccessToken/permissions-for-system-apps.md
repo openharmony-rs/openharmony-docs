@@ -813,6 +813,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：8
 
 ## ohos.permission.READ_DFX_XPOWER
@@ -825,6 +827,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：12
 
 ## ohos.permission.PERMISSION_USED_STATS
@@ -836,6 +840,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：9
 
@@ -1262,6 +1268,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
 **起始版本**：12
 
 ## ohos.permission.START_SHORTCUT
@@ -1431,6 +1439,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：9
 
@@ -3690,6 +3700,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Wearable
+
 **起始版本**：12
 
 ## ohos.permission.MANAGE_MOUSE_CURSOR
@@ -4266,6 +4278,20 @@
 
 **起始版本**：13
 
+## ohos.permission.ACCESS_CAR_CONTROL
+
+允许应用接入或拉起车辆控制界面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：13
+
 ## ohos.permission.ACCESS_APP_SINGLE_PERMISSION_MANAGEMENT
 
 允许应用拉起用于修改其他应用授权的界面。
@@ -4612,20 +4638,6 @@
 **是否支持证书授权**：true
 
 **起始版本**：18
-
-## ohos.permission.GET_NETWORK_STATS
-
-允许系统应用获取历史流量。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：10
-
-**变更信息**：API 10-11，是否支持证书授权为false；从API 12开始，变更为true。
 
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
@@ -6011,6 +6023,26 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+     
+允许系统应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_VISION
 
 允许系统应用通过CLI命令查询无障碍视觉辅助功能状态。
@@ -6106,6 +6138,34 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.START_ABILITY
+
+允许智能体应用通过CLI命令启动指定应用。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.KILL_APP_PROCESSES
+
+允许智能体应用通过CLI命令停止指定应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **起始版本**：26.0.0
 

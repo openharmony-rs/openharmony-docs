@@ -348,7 +348,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of grid items to be cached (preloaded) and specifies whether to display the preloaded nodes.
 
-The number of the grid items to be cached before and after the currently displayed one equals the value of **cachedCount** multiplied by the number of columns. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [content clipping](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
+The number of the grid items to be cached before and after the currently displayed one equals the value of **cachedCount** multiplied by the number of columns. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [clipContent](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -3094,9 +3094,9 @@ struct GridExample {
 
 ### Example 20: Setting the Multi-selection Gather Animation
 
-This example demonstrates how to gather selected grid items in the display area when [a long press triggers context menu](ts-universal-attributes-menu.md#bindcontextmenu8) on grid items by enabling the multi-selection gather animation switch for **Grid**.
+This example demonstrates how to gather selected grid items in the visible area when a long press is performed on grid items using [bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8), with the multi-selection gather animation switch enabled for **Grid**.
 
-Starting from API version 23, the **Grid** component has added the [edit mode options](#editmodeoptions23) API, which can be used to set the multi-selection gather animation switch.
+Since API version 23, the [editModeOptions](#editmodeoptions23) API is added to the **Grid** component to set the multi-selection gather animation switch.
 
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 

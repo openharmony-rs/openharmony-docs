@@ -789,6 +789,8 @@ Allows an application to modify HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
 **Valid since**: 10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -801,6 +803,8 @@ Allows an application to access HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
 **Valid since**: 10
 
 ## ohos.permission.READ_DFX_SYSEVENT
@@ -812,6 +816,8 @@ Allows an application to access system event logging data.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 8
 
@@ -1262,6 +1268,8 @@ Allows a system application or system service to start the DLP credential manage
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 12
 
 ## ohos.permission.START_SHORTCUT
@@ -1431,6 +1439,8 @@ Allows configuration and management of the permissions on .dlp files.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Valid since**: 9
 
@@ -3690,6 +3700,8 @@ Allows a system application to access the over-the-air update directory.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: wearables
+
 **Valid since**: 12
 
 ## ohos.permission.MANAGE_MOUSE_CURSOR
@@ -4266,6 +4278,20 @@ Allows an application to access the application lock.
 
 **Valid since**: 13
 
+## ohos.permission.ACCESS_CAR_CONTROL
+
+Allows an application to access or start the vehicle control interface.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 13
+
 ## ohos.permission.ACCESS_APP_SINGLE_PERMISSION_MANAGEMENT
 
 Allows an application to launch a page for modifying a specific permission of another application.
@@ -4614,20 +4640,6 @@ Allows an application to access the list of applications that can be started in 
 **Certificate-based authorization**: true
 
 **Valid since**: 18
-
-## ohos.permission.GET_NETWORK_STATS
-
-Allows a system application to obtain historical network traffic.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Valid since**: 10
-
-**Changelog**: **Certificate-based authorization** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12.
 
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
@@ -5817,6 +5829,26 @@ Allows an application to trigger the Always On Display (AOD) mode or exit it, an
 
 **Since**: 26.0.0
 
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+
+Allows a system application to use Skills.
+
+With this permission, an application can:
+
+- Query information about Skill packages.
+- Listen for events such as the installation, update, and uninstallation of Skill packages.
+- Access the sandbox directory where Skill packages are installed.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: General
+
+**Since**: 26.0.0
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 Allows an application and a service to access the device-side model deployment management.
@@ -6108,6 +6140,34 @@ Allows an application to query storage using CLI commands.
 **Certificate-based authorization**: true
 
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | litewearables
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.START_ABILITY
+
+Allows an agent application to start specific applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.KILL_APP_PROCESSES
+
+Allows an agent application to stop specific applications using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Since**: 26.0.0
 

@@ -1503,7 +1503,7 @@ getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): 
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2171,7 +2171,7 @@ struct CompV2 {
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2185,7 +2185,7 @@ getReusePool(): IReusePool | undefined
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2195,7 +2195,7 @@ getReusePool(): IReusePool | undefined
 
 | 类型                                   |  说明                          |
 | -------------------------------------- | ------------------------------------------------ |
-| [IReusePool](#ireusepool) \| undefined | 此组件的复用池（如果已配置）；否则为 `undefined`。 |
+| [IReusePool](#ireusepool) \| undefined | 当前组件配置全局复用池时，返回复用池信息，否则返回`undefined`。 |
 
 **示例：**
 
@@ -2217,9 +2217,9 @@ struct PoolOwner {
     const context = UIUtils.getCustomComponentContext(this);
     const pool = context.getReusePool();
     if (pool) {
-      console.info('已配置复用池');
+      console.info('Global reuse pool configured.');
     } else {
-      console.info('此组件上没有复用池');
+      console.info('No global reuse pool configured.');
     }
   }
 
@@ -2237,7 +2237,7 @@ struct PoolOwner {
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2251,7 +2251,7 @@ getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IR
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2304,7 +2304,7 @@ struct PoolOwner {
     // 查询池接受的组件类型。
     const info = pool.getReusableInfo(ReusableChild);
     if (info === undefined) {
-      console.info('ReusableChild 不被此池接受');
+      console.info('No reuse pool that accepts ReusableChild');
     } else if (Array.isArray(info)) {
       // 使用了多个 reuseId 桶。
       info.forEach((item: IReusableInfo, i: number) => {
@@ -2317,7 +2317,7 @@ struct PoolOwner {
 
     // 查询特定的 reuseId — 始终返回单个 IReusableInfo。
     const bucketInfo = pool.getReusableInfo(ReusableChild, 'A') as IReusableInfo;
-    console.info(`reuseId 'myId': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
+    console.info(`reuseId 'A': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
   }
 
   build() {
@@ -2345,7 +2345,7 @@ preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2445,7 +2445,7 @@ struct CompA {
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2513,11 +2513,11 @@ struct PoolOwner {
 
   build() {
     Column() {
-      Button('切换 A')
+      Button('切换A')
         .onClick(() => {
           this.showA = !this.showA;
         })
-      Button('切换 B')
+      Button('切换B')
         .onClick(() => {
           this.showB = !this.showB;
         })
@@ -2544,7 +2544,7 @@ type ReusableComponentConstructor = Function
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
