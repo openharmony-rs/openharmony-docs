@@ -315,7 +315,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 5. 调用OH_VideoEncoder_Configure()配置编码器。
 
-   详细可配置选项的说明请参考[视频专有键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
+   详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)中的视频专有键值对。
 
    参数校验规则请参考[OH_VideoEncoder_Configure()参考文档](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)。
 
