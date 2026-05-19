@@ -872,7 +872,7 @@ try {
 }
 ```
 
-## isOffloadPlaybackSupported<sup>26+</sup>
+## isOffloadPlaybackSupported
 
 isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
 
@@ -918,7 +918,7 @@ try {
 }
 ```
 
-## isDirectPlaybackSupported<sup>26+</sup>
+## isDirectPlaybackSupported
 
 isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
 
@@ -964,7 +964,7 @@ try {
 }
 ```
 
-## isFastRecordingSupported<sup>26+</sup>
+## isFastRecordingSupported
 
 isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boolean
 
@@ -1010,7 +1010,7 @@ try {
 }
 ```
 
-## isMultichannelPlaybackSupported<sup>26+</sup>
+## isMultichannelPlaybackSupported
 
 isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
 
