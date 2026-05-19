@@ -2,13 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Indicator** component provides two types of navigation indicators: dot indicators and digit indicators.
 
-It encapsulates the existing [indicator](ts-container-swiper.md#indicator) capabilities—previously part of the [Swiper](ts-container-swiper.md) component—and delivers them as a standalone component. You can use the **Indicator** component independently or bind it to a **Swiper** component through **IndicatorComponentController**.
+It encapsulates the existing [indicator](ts-container-swiper.md#indicator) capabilities—previously part of the [Swiper](ts-container-swiper.md) component—and delivers them as a standalone component. You can use the **Indicator** component independently or bind it to a **Swiper** component through [IndicatorComponentController](#indicatorcomponentcontroller).
 
 When multiple **Indicator** components are bound to a single **Swiper**, only the last bound **Indicator** is active.
 
@@ -67,7 +67,7 @@ Sets the style of the navigation indicator.
 
 > **NOTE**
 >
-> The **maxDisplayCount** property has no effect when the **DotIndicator** type (configured in **indicatorStyle**) is not bound to a **Swiper** component.
+> The [maxDisplayCount](ts-container-swiper.md#maxdisplaycount12) property has no effect when the **DotIndicator** type (configured in **indicatorStyle**) is not bound to a **Swiper** component.
 
 ### count
 
@@ -147,7 +147,7 @@ This attribute does not take effect when the **Indicator** component is bound to
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| isVertical  | boolean | Yes  | Whether vertical swiping is used. The value **true** means vertical swiping, and **false** means horizontal swiping.<br>Default value: **false**.|
+| isVertical  | boolean | Yes  | Whether vertical swiping is used. The value **true** means vertical swiping, and **false** means horizontal swiping.<br>Default value: **false**|
 
 ## Events
 
@@ -228,7 +228,7 @@ Navigates to the specified indicator.
 | Name     | Type      | Mandatory | Description    |
 | -------- | ---------- | ---- | -------- |
 | index| number | Yes   | Target indicator index.<br>**NOTE**<br>If the value specified is less than 0 or greater than the maximum indicator index, the value **0** is used.|
-| useAnimation| boolean | No   | Whether to use an animation for when the target index is reached. The value **true** means to use an animation, and **false** means the opposite.<br>Default value: **false**.|
+| useAnimation| boolean | No   | Whether to use an animation for when the target index is reached. The value **true** means to use an animation, and **false** means the opposite.<br>Default value: **false**|
 
 ## Example
 

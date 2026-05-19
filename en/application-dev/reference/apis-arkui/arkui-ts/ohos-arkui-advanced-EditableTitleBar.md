@@ -1,7 +1,7 @@
 # EditableTitleBar
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -51,8 +51,8 @@ EditableTitleBar({leftIconStyle: EditableLeftIconType, imageItem?: EditableTitle
 | onCancel | ()&nbsp;=&gt;&nbsp;void | No| - | Cancel action event, which is triggered when the left button is of the Cancel type. This parameter is required to customize the return or cancel operation logic. If this parameter is not specified, clicking the button on the left does not respond.<br>Default value: **() => void**<br>Back action event, which is triggered when the button on the left side is of the Back type, since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                               |
 | options<sup>12+</sup> | [EditableTitleBarOptions](#editabletitlebaroptions12) | Yes| - | Title style.<br>Default value:<br>{<br>safeAreaTypes: [SafeAreaType.SYSTEM],<br>safeAreaEdges: [SafeAreaEdge.TOP], <br>backgroundColor: '#00000000'<br>}<br>**NOTE**<br>If not decorated by @Require, this parameter is not subject to mandatory validation during construction.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | No| @Prop | Content margin. Negative numbers are not supported.<br>Default value:<br> {start: LengthMetrics.resource(*$r('sys.float.margin_left')*), end: LengthMetrics.resource(*$r('sys.float.margin_right')*)}<br>**Atomic service API**: This API can be used in atomic services since API version 12.                              |
-| leftIconDefaultFocus<sup>18+</sup> | boolean  | No| - | Whether the left icon is the default focus.<br>Default value: **false**, indicating that the left icon is not the default focus.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                    |
-| saveIconDefaultFocus<sup>18+</sup> | boolean  | No| - | Whether the save icon is the default focus.<br>Default value: **false**, indicating that the save icon is not the default focus.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                              |
+| leftIconDefaultFocus<sup>18+</sup> | boolean  | No| - | Whether the left icon is the default focus.<br>Default value: **false**, indicating that this icon is not the default focus.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                    |
+| saveIconDefaultFocus<sup>18+</sup> | boolean  | No| - | Whether the save icon is the default focus.<br>Default value: **false**, indicating that this icon is not the default focus.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                              |
 
 > **NOTE**
 > 
@@ -78,6 +78,7 @@ EditableTitleBar({leftIconStyle: EditableLeftIconType, imageItem?: EditableTitle
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name| Type| Read-Only| Optional| Description                                                                                                                                                                                                                                                         |
 | -------- | -------- |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | value | [ResourceStr](ts-types.md#resourcestr) | No| No| Icon resource.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                  |
