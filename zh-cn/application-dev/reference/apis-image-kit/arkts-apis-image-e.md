@@ -69,6 +69,7 @@
 | UNREFOCUS_MAP | 3    | 未重对焦原图（UnReFocus Map）。<br>用于保存拍摄时未重对焦的图片像素内容。<br>可用于人像虚化等后期处理，便于用户自由选择焦点区域。  |
 | LINEAR_MAP    | 4    | 线性图（Linear Map）。<br>以线性方式记录光照、颜色或其他视觉要素，为图像处理提供补充信息。<br>可用于视觉效果增强与色彩后期处理。  |
 | FRAGMENT_MAP  | 5    | 水印裁剪图（Fragment Map）。<br>记录原图中被水印遮挡的区域，可能是从原图裁剪得到，也可能只是填充特定数值的像素数据作为占位符。<br>可用于水印移除、原图恢复等场景。 |
+| LHDR_GAINMAP  | 10    | 特殊增益图（LHDR Gain Map）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## MetadataType<sup>13+</sup>
 
