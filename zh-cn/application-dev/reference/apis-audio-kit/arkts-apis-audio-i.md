@@ -22,7 +22,7 @@
 | channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。<br>**ArkTS-Dyn起始版本：** 8<br> ** ArkTS-Sta起始版：** 23|
 | sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)         | 否 | 否 | 音频采样格式。<br>**ArkTS-Dyn起始版本：** 8<br> ** ArkTS-Sta起始版：** 23|
 | encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。<br>**ArkTS-Dyn起始版本：** 8<br> ** ArkTS-Sta起始版：** 23|
-| channelLayout<sup>11+</sup> | [AudioChannelLayout](arkts-apis-audio-e.md#audiochannellayout11)  | 否 | 是 | 音频声道布局，默认值为0x0。<br>**ArkTS-Dyn起始版本：** 11<br> ** ArkTS-Sta起始版本：** 23|
+| channelLayout<sup>11+</sup> | [AudioChannelLayout](arkts-apis-audio-e.md#audiochannellayout11)  | 否 | 是 | 音频声道布局，默认值为0x0。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
 
 ## AudioRendererInfo<sup>8+</sup>
 
