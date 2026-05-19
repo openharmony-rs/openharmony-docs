@@ -825,7 +825,7 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 ArkTS-Dyn: animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
-ArkTS-Sta: animateToImmediately(value: AnimateParam, processor: VoidCallback): void
+ArkTS-Sta: animateToImmediately(param: AnimateParam, processor: VoidCallback): void
 
 通过UIContext对象指定明确的动画主实例上下文，并触发显式动画立即下发。避免由于找不到实例或实例不对，导致的动画不执行或动画结束回调不执行问题。使用callback异步回调。
 
@@ -843,7 +843,7 @@ ArkTS-Sta: animateToImmediately(value: AnimateParam, processor: VoidCallback): v
 
 | 参数名   | 类型                                   | 必填  |    说明                          |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| ArkTS-Dyn: param<br/>ArkTS-Sta: value | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
+| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。                           |
 | processor | ArkTS-Dyn: Callback&lt;void&gt;<br/>ArkTS-Sta: [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 是    | 回调函数。指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 **示例：**
