@@ -11248,7 +11248,7 @@ parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
+| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is too large.                                    |
 | 19030001 | crypto operation error.                           |
 | 19030008 | maybe wrong password.            |
 
