@@ -198,6 +198,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：用户授权（user_grant）
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：11
 
 ## ohos.permission.FILE_ACCESS_PERSIST
@@ -371,6 +373,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：14
 
