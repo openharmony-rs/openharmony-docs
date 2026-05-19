@@ -1,7 +1,7 @@
 # Requesting Frame Rates for Animations
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
+<!--Owner: @wh_qwe-->
 <!--Designer: @hudi33-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->

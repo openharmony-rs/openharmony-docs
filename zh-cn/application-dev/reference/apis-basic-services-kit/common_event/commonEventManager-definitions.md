@@ -112,7 +112,7 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的安装事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的安装事件。
+> 三方应用默认只能监听自身应用的安装事件。若三方应用需要监听InHouse应用的安装事件，需要被监听的InHouse应用在app.json5的[allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md)中配置本应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -135,7 +135,7 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的卸载事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的卸载事件。
+> 三方应用默认只能监听自身应用的卸载事件。若三方应用需要监听InHouse应用的卸载事件，需要被监听的InHouse应用在app.json5的[allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md)中配置本应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -188,7 +188,7 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的更改事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的更改事件。
+> 三方应用默认只能监听自身应用的更改事件。若三方应用需要监听InHouse应用的更新事件，需要被监听的InHouse应用在app.json5的[allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md)中配置本应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -211,7 +211,7 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的缓存清理事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的缓存清理事件。
+> 三方应用默认只能监听自身应用的缓存清理事件。若三方应用需要监听InHouse应用的缓存清理事件，需要被监听的InHouse应用在app.json5的[allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md)中配置本应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 

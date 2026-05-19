@@ -28,7 +28,7 @@ GridItem(value?: GridItemOptions)
 
 创建网格容器中单项内容容器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +52,7 @@ ArkTS-Sta: rowStart(value: int | undefined)
 
 设置当前元素起始行号。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +74,7 @@ ArkTS-Sta: rowEnd(value: int | undefined)
 
 设置当前元素终点行号。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,7 +96,7 @@ ArkTS-Sta: columnStart(value: int | undefined)
 
 设置当前元素起始列号。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,7 +118,7 @@ ArkTS-Sta: columnEnd(value: int | undefined)
 
 设置当前元素终点列号。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,7 +194,7 @@ ArkTS-Sta: selectable(value: boolean | undefined)
 
 该属性需要在设置[多态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,7 +222,7 @@ ArkTS-Sta：从API version 23开始，该属性支持[$$](../../../ui/state-mana
 
 该属性需要在设置[多态样式](./ts-universal-attributes-polymorphic-style.md)前使用才能生效选中态样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,7 +240,7 @@ ArkTS-Sta：从API version 23开始，该属性支持[$$](../../../ui/state-mana
 
 GridItem样式对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -256,7 +256,7 @@ GridItem样式对象。
 
 GridItem样式枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -283,7 +283,7 @@ ArkTS-Sta: onSelect(event:&nbsp;((isSelected:&nbsp;boolean)&nbsp;=&gt;&nbsp;void
 
 GridItem元素被鼠标框选的状态改变时触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

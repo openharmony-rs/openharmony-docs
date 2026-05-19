@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 SendableContext符合[Sendable协议](../../arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)。

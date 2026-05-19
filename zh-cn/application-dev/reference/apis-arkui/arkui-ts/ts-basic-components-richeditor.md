@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @carnivore233-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @mateng_Holtens-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 10开始支持。后续版本新增内容，采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
@@ -132,7 +134,7 @@ ArkTS-Sta: customKeyboard(value: CustomBuilder | ComponentContentBase | undefine
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
 | value                 | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>23+</sup> \| undefined<sup>23+</sup> <br >ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| ComponentContentBase \| undefined | 是   | 自定义键盘。<br>传入undefined时默认使用系统键盘。|
-| options<sup>12+</sup> | ArkTS-Dyn: [KeyboardOptions](#keyboardoptions12) \| undefined<sup>23+</sup> <br > ArkTS-Sta: [KeyboardOptions](#keyboardoptions12) \| undefined      | 否   | 设置自定义键盘是否支持避让功能。 <br>传入undefined时默认不支持避让。|
+| options<sup>12+</sup> | ArkTS-Dyn: [KeyboardOptions](#keyboardoptions12) \| undefined<sup>23+</sup> <br > ArkTS-Sta: [KeyboardOptions](#keyboardoptions12) \| undefined      | 否   | 设置自定义键盘是否支持避让功能。 <br>传入undefined或缺省时默认不支持避让。|
 
 ### bindSelectionMenu
 
@@ -157,7 +159,7 @@ ArkTS-Sta: bindSelectionMenu(spanType: RichEditorSpanType | undefined, content: 
 | spanType     | ArkTS-Dyn: [RichEditorSpanType](#richeditorspantype) <br > ArkTS-Sta: [RichEditorSpanType](#richeditorspantype) \| undefined       | 是   | 菜单的类型。<br/>取值为undefined时，按照默认值处理。<br/>默认值：<br/>RichEditorSpanType.TEXT |
 | content      | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br > ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined     | 是   |  菜单的内容。<br/>取值为undefined时，取消绑定该种类型的选择菜单。 |
 | responseType | ArkTS-Dyn: [ResponseType](ts-appendix-enums.md#responsetype8)&nbsp; \| &nbsp;[RichEditorResponseType](#richeditorresponsetype11) <br > ArkTS-Sta: [ResponseType](ts-appendix-enums.md#responsetype8)&nbsp; \| &nbsp;[RichEditorResponseType](#richeditorresponsetype11) \| undefined | 是   | 菜单的响应类型。<br/>取值为undefined时，按照默认值处理。<br/> 默认值：<br/>ResponseType.LongPress |
-| options      | ArkTS-Dyn: [SelectionMenuOptions](#selectionmenuoptions) <br > ArkTS-Sta: [SelectionMenuOptions](#selectionmenuoptions) \| undefined              | 否   | 菜单的选项。<br/>取值为undefined时，按照[SelectionMenuOptions](#selectionmenuoptions)中的默认值处理。 |
+| options      | ArkTS-Dyn: [SelectionMenuOptions](#selectionmenuoptions) <br > ArkTS-Sta: [SelectionMenuOptions](#selectionmenuoptions) \| undefined              | 否   | 菜单的选项。<br/>取值为undefined或缺省时，按照[SelectionMenuOptions](#selectionmenuoptions)中的默认值处理。 |
 
 ### copyOptions
 
@@ -865,7 +867,31 @@ ArkTS-Sta: horizontalScrolling(enabled: boolean | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----- | ---- | ---- |
-| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用水平滚动。<br/>true表示启用水滚动，false表示禁用水平滚动，文本将自动换行。设置为undefined或null时，不启用水平滚动。|
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用水平滚动。<br/>true表示启用水平滚动，false表示禁用水平滚动，文本将自动换行。设置为undefined或null时，不启用水平滚动。|
+
+### punctuationOverflow
+
+ArkTS-Dyn: punctuationOverflow(enabled: Optional\<boolean>)
+
+ArkTS-Sta: punctuationOverflow(enabled: boolean | undefined)
+
+设置是否启用行尾标点符号悬挂。不通过该接口设置，默认标点符号不悬挂。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ----- | ---- | ---- |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用行尾标点符号悬挂。<br/>true表示启用行尾标点符号悬挂，false表示不启用行尾标点符号悬挂。设置为undefined或null时，不启用标点符号悬挂。|
 
 ## 事件
 
@@ -1412,6 +1438,7 @@ Span类型信息。
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeWidth<sup>23+</sup> | ArkTS-Dyn: number  <br/>ArkTS-Sta: double   | 否   | 是   | 文本描边宽度。<br/>单位为[vp](ts-pixel-units.md#基本像素单位)。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 否   | 是   | 文本描边颜色。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 在RichEditorTextStyle中，fontWeight是设置字体粗细的输入参数。
 
@@ -1732,7 +1759,7 @@ selectionStart和selectionEnd均为-1时表示全选，均为0时可以清空选
 | -------------- | ------ | ---- | ------- |
 | selectionStart | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中开始位置。 |
 | selectionEnd   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 选中结束位置。 |
-| options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。 |
+| options<sup>12+</sup>   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。<br/>缺省时，按照[SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明)中的默认值处理。 |
 
 ### isEditing<sup>12+</sup>
 
@@ -1906,7 +1933,7 @@ ArkTS-Sta: addTextSpan(content: ResourceStr, options?: RichEditorTextSpanOptions
 | 参数名     | 类型                                     | 必填   | 说明  |
 | ------- | ---------------------------------------- | ---- | ----- |
 | content   | [ResourceStr](ts-types.md#resourcestr)   | 是    | 文本内容。 <br>从API version 20开始，支持Resource类型。|
-| options | [RichEditorTextSpanOptions](#richeditortextspanoptions) | 否    | 文本选项。 |
+| options | [RichEditorTextSpanOptions](#richeditortextspanoptions) | 否    | 文本选项。<br/>缺省时，按照[RichEditorTextSpanOptions](#richeditortextspanoptions)中的默认值生效。 |
 
 **返回值：**
 
@@ -1937,7 +1964,7 @@ ArkTS-Sta: addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImage
 | 参数名     | 类型                                     | 必填   | 说明  |
 | ------- | ---------------------------------------- | ---- | ----- |
 | value   | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr) | 是    | 图片内容。 |
-| options | [RichEditorImageSpanOptions](#richeditorimagespanoptions) | 否    | 图片选项。 |
+| options | [RichEditorImageSpanOptions](#richeditorimagespanoptions) | 否    | 图片选项。<br/>缺省时，按照[RichEditorImageSpanOptions](#richeditorimagespanoptions)中的默认值生效。 |
 
 **返回值：**
 
@@ -1981,7 +2008,7 @@ ArkTS-Sta: addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanO
 | 参数名     | 类型                                     | 必填   | 说明       |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | value   | [CustomBuilder](ts-types.md#custombuilder8) | 是    | 自定义组件。     |
-| options | [RichEditorBuilderSpanOptions](#richeditorbuilderspanoptions11) | 否    | builder选项。 |
+| options | [RichEditorBuilderSpanOptions](#richeditorbuilderspanoptions11) | 否    | builder选项。<br/>缺省时，按照[RichEditorBuilderSpanOptions](#richeditorbuilderspanoptions11)中的默认值生效。 |
 
 **返回值：**
 
@@ -2012,7 +2039,7 @@ ArkTS-Sta: addSymbolSpan(value: Resource, options?: RichEditorSymbolSpanOptions)
 | 参数名     | 类型                                     | 必填   | 说明  |
 | ------- | ---------------------------------------- | ---- | ----- |
 | value   | [Resource](ts-types.md#resource)         | 是    | 组件内容。 |
-| options | [RichEditorSymbolSpanOptions](#richeditorsymbolspanoptions11) | 否    | 组件选项。 |
+| options | [RichEditorSymbolSpanOptions](#richeditorsymbolspanoptions11) | 否    | 组件选项。<br/>缺省时，按照[RichEditorSymbolSpanOptions](#richeditorsymbolspanoptions11)中的默认值生效。 |
 
 **返回值：**
 
@@ -2086,7 +2113,7 @@ ArkTS-Sta: getSpans(value?: RichEditorRange): Array<RichEditorImageSpanResult | 
 
 | 参数名   | 类型                                | 必填   | 说明        |
 | ----- | ----------------------------------- | ---- | ----------- |
-| value | [RichEditorRange](#richeditorrange) | 否    | 需要获取span范围。 |
+| value | [RichEditorRange](#richeditorrange) | 否    | 需要获取span范围。<br/>缺省时，获取所有span信息。 |
 
 **返回值：**
 
@@ -2134,7 +2161,7 @@ ArkTS-Sta: getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphRes
 
 | 参数名   | 类型                                | 必填   | 说明       |
 | ----- | ----------------------------------- | ---- | ---------- |
-| value | [RichEditorRange](#richeditorrange) | 否    | 需要获取段落的范围。 |
+| value | [RichEditorRange](#richeditorrange) | 否    | 需要获取段落的范围。<br/>缺省时，获取所有段落信息。 |
 
 **返回值：**
 
@@ -2468,7 +2495,7 @@ SymbolSpan样式选项。
 | paragraphSpacing<sup>19+</sup> | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 否    | 是 | 设置段落间距大小。<br/>单位：fp<br/>段落间距默认大小为0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
 | textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是 | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | textDirection<sup>23+</sup> | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本书写方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
-
+| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  是  |  是  | 设置文本着色器效果。<br/>该接口与[RichEditorTextStyle](#richeditortextstyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[RichEditorTextStyle](#richeditortextstyle)的fontColor。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 ## LeadingMarginPlaceholder<sup>11+</sup>
 
 前导边距占位符，用于表示文本段落左侧与组件边缘之间的距离。
@@ -2539,6 +2566,7 @@ SymbolSpan样式选项。
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeWidth<sup>23+</sup> | ArkTS-Dyn: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number  <br/>ArkTS-Sta: [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| double     | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br/>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br/>默认值：0vp。<br/>单位：LengthMetrics类型时跟随LengthMetrics，number或double类型时是vp。<br/>取值范围：(-∞, +∞)<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值：跟随字体颜色。<br/>设置异常值时跟随字体颜色。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PlaceholderStyle<sup>12+</sup>
 
