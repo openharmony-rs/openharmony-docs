@@ -623,7 +623,7 @@ constructor(type: 'move', effect: TransitionEdge)
 | 参数名 | 类型                                   | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | ------------------ |
 | type  | 'move'                 | 是   | 转场类型。 |
-| effect  | TransitionEdge  | 是   | 转场参数。 |
+| effect  | [TransitionEdge](#transitionedge10)  | 是   | 转场参数。 |
 
 ### constructor<sup>23+</sup>
 
