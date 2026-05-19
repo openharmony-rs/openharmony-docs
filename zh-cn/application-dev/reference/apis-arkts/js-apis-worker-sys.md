@@ -55,7 +55,6 @@ RestrictedWorker构造函数。使用以下方法前，均需先构造Restricted
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200003 | Worker initialization failure. |
 | 10200007 | The worker file patch is invalid path. |
 
