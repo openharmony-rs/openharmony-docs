@@ -3028,6 +3028,8 @@ Allows an application to query the location of an offline device.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | wearables | PCs/2-in-1 devices | tablets
+
 **Valid since**: 12
 
 ## ohos.permission.REGISTER_FINDNETWORK_ACCESSORY
@@ -3039,6 +3041,8 @@ Allows an application or system ability to initiate the process for registering 
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | PCs/2-in-1 devices | tablets
 
 **Valid since**: 13
 
