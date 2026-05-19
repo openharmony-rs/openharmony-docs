@@ -177,7 +177,7 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | pageType | [CertificateDialogPageType](#certificatedialogpagetype)                   | 是   | 表示页面类型。 |
 
 **返回值**：
@@ -240,7 +240,7 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型，目前支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。 |
 | certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前支持CURRENT_USER、NOT_SPECIFIED。 |
 | cert | Uint8Array                  | 是   | 表示安装证书数据。 |
@@ -317,7 +317,7 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | certType | [CertificateType](#certificatetype14)                   | 是   | 表示删除证书类型。 |
 | certUri | string                  | 是   | 表示待删除证书的唯一标识符，最大长度为256字节。 |
 
@@ -388,7 +388,7 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | cert     | Uint8Array                                                   | 是   | 表示安装证书数据。             |
 | property | [CertificateDialogProperty](#certificatedialogproperty18) | 是   | 表示拉起证书管理对话框的属性。 |
 
@@ -458,7 +458,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 
 **返回值**：
 
@@ -521,7 +521,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 | authorizeRequest | [AuthorizeRequest](#authorizerequest22) | 是  | 表示授权请求信息。 |
 
 **返回值**：
@@ -594,7 +594,7 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 | ukeyAuthRequest | [UkeyAuthRequest](#ukeyauthrequest22) | 是  | 表示USB凭据授权请求信息。 |
 
 **返回值**：
