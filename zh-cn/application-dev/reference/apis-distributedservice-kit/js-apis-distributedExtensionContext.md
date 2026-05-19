@@ -76,51 +76,79 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 **示例：**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
-import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
+import { AbilityConstant, Want } from '@kit.AbilityKit';
+import DistributedExtension from '@ohos.application.DistributedExtensionAbility';
+import hilog from '@ohos.hilog'
+import { common } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+
+const TAG = 'DistributedExtAbility';
+const DOMAIN = 0xFF00;
 
 export default class DistributedExtAbility extends DistributedExtension {
 
-  context:DistributedExtensionContext = new DistributedExtensionContext;
 
   onCreate (want:Want) {
+    hilog.info(DOMAIN, TAG, 'onCreate');
     this.testConnectServiceExtensionAbility();
   }
 
-  onDestroy () {
-    this.testDisconnectServiceExtensionAbility();
+  onCollaborate (wantParam: Record<string, Object>) {
+    hilog.info(DOMAIN, TAG, 'onCollaborate');
+    return AbilityConstant.CollaborateResult.ACCEPT;
   }
-  
-  connectId:long = -1;
-  
+
+  onDestroy () {
+    hilog.info(DOMAIN, TAG, 'onDestroy');
+  }
+
+  connectId:number = -1;
   private testConnectServiceExtensionAbility() {
+    hilog.info(DOMAIN, TAG, 'testConnectServiceExtensionAbility');
     let deviceId1: string = '';
     try {
       let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
       deviceId1 = dmInstance.getLocalDeviceId();
+      const message: string = 'local device id: ' + deviceId1;
+      hilog.info(DOMAIN, TAG, message);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
+      console.error('getLocalDeviceId errCode:' + e.code + ',errMessage:' + e.message);
     }
     const targetWant:Want = {
       deviceId: deviceId1,
-      bundleName: 'com.example.test0001',
-      abilityName: 'EntryServiceExtAbility',
+      bundleName: 'com.example.test0002',
+      abilityName: 'ServiceExtAbility',
     }
-    const options: ConnectOptions = {
-      onConnect: (name: ElementName, remote: rpc.IRemoteObject): void => {
+    const options: common.ConnectOptions = {
+      onConnect: (name: bundleManager.ElementName, remote: rpc.IRemoteObject): void => {
+        const message: string = 'onConnect: ' + name;
+        hilog.info(DOMAIN, TAG, message);
       },
-      onDisconnect: (name: ElementName): void => {
+      onDisconnect: (name: bundleManager.ElementName): void => {
+        const message: string = 'onDisconnect: ' + name;
+        hilog.info(DOMAIN, TAG, message);
       },
-      onFailed: (code: int): void => {
+      onFailed: (code: number): void => {
+        const message: string = 'onFailed: code=' + code;
+        hilog.info(DOMAIN, TAG, message);
       }
     };
     try {
       const id = this.context.connectServiceExtensionAbility(targetWant, options);
       this.connectId = id;
+      const message: string = 'connect called, id=' + id;
+      hilog.info(DOMAIN, TAG, message);
     } catch (err) {
+      const message: string = 'connect error: ' + err;
+      hilog.info(DOMAIN, TAG, message);
     }
   }
+}
 ```
 
 
@@ -162,25 +190,40 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 **示例：**
 
 ```ts
-import { Want } from '@kit.AbilityKit';
-import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
+import { AbilityConstant, Want } from '@kit.AbilityKit';
+import DistributedExtension from '@ohos.application.DistributedExtensionAbility';
+import hilog from '@ohos.hilog'
+import { common } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+
+const TAG = 'DistributedExtAbility';
+const DOMAIN = 0xFF00;
 
 export default class DistributedExtAbility extends DistributedExtension {
 
-  context:DistributedExtensionContext = new DistributedExtensionContext;
 
   onCreate (want:Want) {
-    this.testConnectServiceExtensionAbility();
+    hilog.info(DOMAIN, TAG, 'onCreate');
+  }
+
+  onCollaborate (wantParam: Record<string, Object>) {
+    hilog.info(DOMAIN, TAG, 'onCollaborate');
+    return AbilityConstant.CollaborateResult.ACCEPT;
   }
 
   onDestroy () {
+    hilog.info(DOMAIN, TAG, 'onDestroy');
     this.testDisconnectServiceExtensionAbility();
   }
-  
-  connectId:long = -1;
-  
+
+  connectId:number = -1;
+
   private testDisconnectServiceExtensionAbility() {
+    hilog.info(DOMAIN, TAG, 'testDisconnectServiceExtensionAbility');
     this.context.disconnectServiceExtensionAbility(this.connectId);
   }
 }
