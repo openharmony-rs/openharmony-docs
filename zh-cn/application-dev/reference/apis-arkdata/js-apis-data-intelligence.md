@@ -308,6 +308,8 @@ loadModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**设备行为差异：** 该接口在2in1、phone、tablet设备中可正常调用，在其他设备类型中返回801错误码。
+
 **返回值：**
 
 | 类型                          | 说明                                 |
