@@ -3255,3 +3255,132 @@ struct StyledStringExample {
 }
 ```
 ![StyledStringFontVariations](figures/FontVariations.gif)
+
+### 示例20（设置文本着色器效果）
+
+该示例通过[ParagraphStyle](#paragraphstyle)中shaderStyle接口实现文本着色效果。
+
+从API版本26.0.0开始，ParagraphStyle新增shaderStyle接口。
+
+```ts
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
+  paragraphStyle1: ParagraphStyle =
+    new ParagraphStyle({ shaderStyle: this.linearGradientOptions1 });
+  style1: StyledString =
+    new StyledString(this.message,
+      [
+        {
+          start: 0,
+          length: this.message.length,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.paragraphStyle1
+        }
+      ]
+    );
+  paragraphStyle2: ParagraphStyle =
+    new ParagraphStyle({ shaderStyle: this.linearGradientOptions2 });
+  style2: StyledString =
+    new StyledString(this.message,
+      [
+        {
+          start: 0,
+          length: this.message.length,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.paragraphStyle2
+        }
+      ]
+    );
+  paragraphStyle3: ParagraphStyle =
+    new ParagraphStyle({ shaderStyle: this.radialGradientOptions });
+  style3: StyledString =
+    new StyledString(this.message,
+      [
+        {
+          start: 0,
+          length: this.message.length,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.paragraphStyle3
+        }
+      ]
+    );
+  paragraphStyle4: ParagraphStyle =
+    new ParagraphStyle({ shaderStyle: this.colorShaderStyle });
+  style4: StyledString =
+    new StyledString(this.message,
+      [
+        {
+          start: 0,
+          length: this.message.length,
+          styledKey: StyledStringKey.PARAGRAPH_STYLE,
+          styledValue: this.paragraphStyle4
+        }
+      ]
+    );
+  controller1: TextController = new TextController();
+  controller2: TextController = new TextController();
+  controller3: TextController = new TextController();
+  controller4: TextController = new TextController();
+
+  aboutToAppear() {
+    this.controller1.setStyledString(this.style1);
+    this.controller2.setStyledString(this.style2);
+    this.controller3.setStyledString(this.style3);
+    this.controller4.setStyledString(this.style4);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Text(undefined, { controller: this.controller1 })
+        .fontSize(20)
+        .width('80%')
+        .margin({ top: 10 })
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Text(undefined, { controller: this.controller2 })
+        .fontSize(20)
+        .width('80%')
+        .margin({ top: 10 })
+      Text('径向渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Text(undefined, { controller: this.controller3 })
+        .fontSize(20)
+        .width('80%')
+        .margin({ top: 10 })
+      Text('纯色').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Text(undefined, { controller: this.controller4 })
+        .fontSize(20)
+        .width('80%')
+        .margin({ top: 10 })
+    }
+  }
+}
+```
+![StyledStringShaderStyle](figures/styledStringShaderStyle.png)
