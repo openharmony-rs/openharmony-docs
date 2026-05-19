@@ -595,47 +595,12 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
 }
 ```
 
-## isBandwidthCompressionSupported<sup>23+</sup>
-
-isBandwidthCompressionSupported(): boolean
-
-检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型            | 说明                     |
-| -------------- | ----------------------- |
-| boolean | 是否支持预览带宽压缩。true表示支持，false表示不支持。 |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function isBandwidthCompressionSupported(previewOutput: camera.PreviewOutput): boolean {
-  let supported: boolean = false;
-  try {
-    supported = previewOutput.isBandwidthCompressionSupported();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The previewOutput.isBandwidthCompressionSupported call failed. error code: ${err.code}`);
-  }
-  return supported;
-}
-```
-
 ## enableBandwidthCompression<sup>23+</sup>
 
 enableBandwidthCompression(enabled: boolean): void
 
 使能预览带宽压缩。
 
-使能之前，可先使用方法[isBandwidthCompressionSupported](#isbandwidthcompressionsupported23)对设备是否支持预览带宽压缩进行检查。
 
 > **说明：**
 > 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之前调用，否则会影响预览流出流格式。
