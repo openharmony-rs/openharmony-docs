@@ -906,9 +906,7 @@ backgroundImageResizable(value: ResizableOptions | undefined): this
 
 ## backgroundBrightness<sup>12+</sup> 
 
-ArkTS-Dyn: backgroundBrightness(params: BackgroundBrightnessOptions): T
-
-ArkTS-Sta: backgroundBrightness(params: BackgroundBrightnessOptions | undefined): this
+backgroundBrightness(params: BackgroundBrightnessOptions): T
 
 设置组件背景提亮效果。
 
@@ -916,21 +914,23 @@ ArkTS-Sta: backgroundBrightness(params: BackgroundBrightnessOptions | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundBrightness<sup>23+</sup>](#backgroundbrightness23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| params | ArkTS-Dyn: [BackgroundBrightnessOptions](#backgroundbrightnessoptions12对象说明)<br/>ArkTS-Sta: BackgroundBrightnessOptions \| undefined | 是   | 设置组件背景提亮效果，包括：亮度变化速率，提亮程度。 |
+| params | [BackgroundBrightnessOptions](#backgroundbrightnessoptions12对象说明) | 是   | 设置组件背景提亮效果，包括：亮度变化速率，提亮程度。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## backgroundBrightness<sup>18+</sup> 
 

@@ -315,9 +315,7 @@ rotate(options: RotateOptions): TransitionEffect
 
 ### scale<sup>10+</sup>
 
-ArkTS-Dyn: scale(options: ScaleOptions): TransitionEffect\<"scale">
-
-ArkTS-Sta: scale(options: ScaleOptions): TransitionEffect;
+scale(options: ScaleOptions): TransitionEffect\<"scale">
 
 设置组件转场时的缩放效果。
 
@@ -327,7 +325,35 @@ ArkTS-Sta: scale(options: ScaleOptions): TransitionEffect;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[scale<sup>23+</sup>](#scale23)。
+
 **ArkTS-Dyn起始版本：** 10
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时，组件入场动画的缩放值将从0.4开始执行。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>-&nbsp;centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| [TransitionEffect](#transitioneffect10对象说明)\<"scale"> | 当前动画缩放效果。 |
+
+### scale<sup>23+</sup>
+
+scale(options: ScaleOptions): TransitionEffect
+
+设置组件转场时的缩放效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[scale<sup>10+</sup>](#scale10)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -341,7 +367,7 @@ ArkTS-Sta: scale(options: ScaleOptions): TransitionEffect;
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"scale"><br/>ArkTS-Sta: TransitionEffect | 当前动画缩放效果。 |
+| [TransitionEffect](#transitioneffect10对象说明) | 当前动画缩放效果。 |
 
 ### opacity<sup>10+</sup>
 
