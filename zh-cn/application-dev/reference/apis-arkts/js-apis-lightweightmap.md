@@ -1,8 +1,8 @@
 # @ohos.util.LightWeightMap (非线性容器LightWeightMap)  
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -984,7 +984,7 @@ getValueAt(index: number): V
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[getValueAt](#getkeyat23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getValueAt](#getvalueat23)。
 
 **系统能力：** SystemCapability.Utils.Lang
 
