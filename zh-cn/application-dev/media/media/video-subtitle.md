@@ -16,6 +16,7 @@
 
 1. 调用[addSubtitleFromFd](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#addsubtitlefromfd12)，使用视频播放的AVPlayer实例设置外挂字幕资源。
 
+   ArkTS-Dyn:
    ```ts
     import { media } from '@kit.MediaKit';
     import { common } from '@kit.AbilityKit';
@@ -33,9 +34,13 @@
     let fileDescriptorSub = await this.context?.resourceManager.getRawFd('xxx.srt');
     this.avPlayer.addSubtitleFromFd(fileDescriptorSub.fd, fileDescriptorSub.offset, fileDescriptorSub.length);
    ```
+   
+   ArkTS-Sta:
+   <!-- @[addSubtitleFromFd](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
 
 2. 调用[on('subtitleUpdate')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onsubtitleupdate12)接口，注册字幕回调函数。
 
+   ArkTS-Dyn:
    ```ts
     import { media } from '@kit.MediaKit';
     // 类成员定义用来显示的字幕字符串。
@@ -58,9 +63,13 @@
       }
     });
    ```
+   
+   ArkTS-Sta:
+   <!-- @[onSubtitleUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
 
 3. (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
 
+   ArkTS-Dyn:
    ```ts
     import { media } from '@kit.MediaKit';
     // 类成员定义avPlayer和context。
@@ -69,12 +78,15 @@
     this.avPlayer = await media.createAVPlayer();
     this.avPlayer?.off('subtitleUpdate');
    ```
+   
+   ArkTS-Sta:
+   <!-- @[offSubtitleUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
 
 
 ## 运行完整示例
 
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle)，并将示例工程的以下资源复制到对应目录。
-    ```
+    ```txt
     AVPlayerArkTSSubtitle
     entry/src/main/ets/
     └── pages

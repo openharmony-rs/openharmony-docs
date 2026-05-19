@@ -61,6 +61,7 @@
    | videoSizeChange | 用于视频播放，监听视频播放的宽高信息，可用于调整窗口大小、比例。 |
    | audioInterrupt | 监听音频焦点切换信息，搭配属性audioInterruptMode使用。<br/>如果当前设备存在多个媒体正在播放，音频焦点被切换（即播放其他媒体如通话等）时将上报该事件，应用可以及时处理。 |
 
+    ArkTS-Dyn:
     ```ts
     // 此处仅为示例，开发者根据需要设置合适的监听事件。
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -106,6 +107,9 @@
         // 开发者根据需要写入业务逻辑。
     });
     ```
+    
+    ArkTS-Sta:
+    <!-- @[registration_callback](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
 
 3. 设置资源：设置属性url，AVPlayer进入initialized状态。
    > **说明：**

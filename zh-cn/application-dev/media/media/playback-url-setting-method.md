@@ -77,6 +77,8 @@
 **情况四：通过本地Raw文件中的m3u8文件播放在线流媒体资源**
 
 当应用需要通过解析本地Raw文件中的m3u8文件，播放在线流媒体资源时，可以通过[resourceManager.getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取文件描述符，将其拼接成fdUrl，并通过[setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
+
+ArkTS-Dyn:
 ```ts
  import { media } from '@kit.MediaKit';
  import { common } from '@kit.AbilityKit';
@@ -107,9 +109,14 @@
  this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
 ```
 
+ArkTS-Sta:
+<!-- @[setMimeType_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
+
 **情况五：通过应用沙箱中的m3u8文件播放在线流媒体资源**
 
 当应用需要通过解析应用沙箱中的m3u8文件，播放在线流媒体资源时，可以通过[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync)获取文件句柄，将其拼接成fdUrl，并通过[setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12)设置MIME类型为APPLICATION_M3U8。
+
+ArkTS-Dyn:
 ```ts
  import { media } from '@kit.MediaKit';
  import { fileIo } from '@kit.CoreFileKit';
@@ -147,8 +154,12 @@
  this.avPlayer.setMediaSource(mediaSource, playbackStrategy);
 ```
 
+ArkTS-Sta:
+<!-- @[setMimeType_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
+
 ## 本地raw文件播放场景下设置URL
 **情况一：应用沙箱文件播放**
+ArkTS-Dyn:
 ```ts
  import { media } from '@kit.MediaKit';
  import { fileIo } from '@kit.CoreFileKit';
@@ -172,11 +183,15 @@
  this.avPlayer.url = fdPath;
 ```
 
+ArkTS-Sta:
+<!-- @[fd_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
+
 **情况二：本地文件播放**
 
 > **说明：**
 > 当使用AVPlayer播放本地资源时，AVPlayer会独占此fd。
 
+ArkTS-Dyn:
 ```ts
  import { media } from '@kit.MediaKit';
  import { common } from '@kit.AbilityKit';
@@ -197,6 +212,9 @@
  // 为fdSrc赋值触发initialized状态机上报。
  this.avPlayer.fdSrc = avFileDescriptor;
 ```
+
+ArkTS-Sta:
+<!-- @[fd_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
 
 ## 运行完整示例
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL)（也可直接运行），并将示例工程的以下资源复制到对应目录。
