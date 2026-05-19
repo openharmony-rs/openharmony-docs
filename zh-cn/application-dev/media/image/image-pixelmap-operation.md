@@ -60,12 +60,8 @@
    ArkTS-Dyn示例：
 
    <!-- @[pixelmap_bitmap_operation_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
-   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
-   import { image } from '@kit.ImageKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
    // 场景一：读取并修改整张图片数据。
    // 按照PixelMap的像素格式，读取PixelMap的图像像素数据，并写入缓冲区中。
    const buffer = new ArrayBuffer(pixelBytesNumber);
@@ -80,7 +76,11 @@
    }).catch((error: BusinessError) => {
      console.error('Failed to write image pixel data. The error is: ' + error);
    })
+   ```
 
+   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    // 场景二：读取并修改指定区域内的图片数据。
    // 固定按照BGRA_8888格式，读取PixelMap指定区域内的图像像素数据，并写入PositionArea.pixels缓冲区中，该区域由PositionArea.region指定。
    const area : image.PositionArea = {
@@ -105,11 +105,8 @@
    ArkTS-Sta示例：
 
    <!-- @[pixelmap_bitmap_operation_all](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
    
    ```ts
-   import { image } from '@kit.ImageKit';
-
    // 场景一：读取并修改整张图片数据。
    // 按照PixelMap的像素格式，读取PixelMap的图像像素数据，并写入缓冲区中。
    const buffer = new ArrayBuffer(pixelBytesNumber);
@@ -124,7 +121,11 @@
    }).catch((error) => {
      console.error('Failed to write image pixel data. The error is: ' + String(error));
    })
+   ```
 
+   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    // 场景二：读取并修改指定区域内的图片数据。
    // 固定按照BGRA_8888格式，读取PixelMap指定区域内的图像像素数据，并写入PositionArea.pixels缓冲区中，该区域由PositionArea.region指定。
    const area : image.PositionArea = {
