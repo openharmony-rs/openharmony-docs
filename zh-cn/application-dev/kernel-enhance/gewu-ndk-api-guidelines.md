@@ -130,7 +130,7 @@ OH_QoS_GewuSubmitRequestResult OH_QoS_GewuSubmitRequest(OH_QoS_GewuSession sessi
 
 * `OH_QoS_GewuSession session`参数是会话句柄，表示请求要提交到哪个会话。
 * `const char* request`参数为请求的json字符串，支持以下字段：
-    * "messages": array. 表示消息的数组其中每个元素支持以下字段：
+        * "messages": array. 表示消息的数组，其中每个元素支持以下字段：
         * "role": string. 消息的角色类型。其中"developer"表示开发者或系统提供的指示，"user"表示用户输入，"assistant"表示模型生成结果。
         * "content": string. 消息内容。
     * "stream": boolean or null. 是否使能流式推理，默认为非流式。
@@ -176,7 +176,7 @@ OH_QoS_GewuErrorCode OH_QoS_GewuAbortRequest(OH_QoS_GewuSession session, OH_QoS_
 
 **参数**
 
-* `OH_QoS_GewuSession session`参数为请求所述的会话的句柄。
+* `OH_QoS_GewuSession session`参数为请求所属的会话的句柄。
 * `OH_QoS_GewuRequest request`参数为要中止的请求的句柄。
 
 **返回值**
