@@ -3378,7 +3378,7 @@ async function getExcludedDevices(){
 ```
 
 ### restoreOutputDeviceByFilter
- 	 
+
 restoreOutputDeviceByFilter(filter: AudioRendererFilter): Promise&lt;void&gt;
 
 根据指定的音频渲染过滤条件恢复音频输出设备。使用Promise异步回调。
