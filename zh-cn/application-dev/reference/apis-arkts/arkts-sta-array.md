@@ -544,7 +544,7 @@ push()
 
 所有以`push`开头的方法都是push的别名，都将一个或多个元素添加到数组的末尾，并返回数组的新长度。推荐直接调用push方法。
 
-**示例·：**
+**示例：**
 ```ts
 const arr = new Array<number>(0);
 arr.push(10); // 调用 pushOne
