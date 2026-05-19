@@ -210,6 +210,19 @@ ArkTS-Dyn:
 ArkTS-Sta:
 <!-- @[fd_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+/*
+// 情况一：应用沙箱文件播放
+let fdPath = 'fd://';
+// 通过UIAbilityContext获取沙箱地址filesDir，以Stage模型为例
+let path = `${this.context.filesDir}/${this.fileName}`;
+// 打开相应的资源文件地址获取fd，并为url赋值触发initialized状态机上报
+let file = await fs.open(path);
+fdPath = fdPath + '' + file.fd;
+this.avPlayer!.url = fdPath;
+* */
+```
+
 **情况二：本地文件播放**
 
 > **说明：**
