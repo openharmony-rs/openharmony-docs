@@ -4268,7 +4268,7 @@ let options = formatter.resolvedOptions(); // options.timeStyle = 'short', optio
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| amPMSymbol     | string[] |   否 |   是   |  指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
+| amPMSymbol     | string[] \| undefined |   否 |   是   |  指定的上午和下午符号，要求数组长度不小于2，其中第一个元素为上午符号，第二个元素为下午符号。默认值：区域默认的符号。   |
 
 ### ResolvedSymbolDateTimeFormatOptions
 
@@ -4499,9 +4499,9 @@ let result = formatter.format(new Date(2026, 2, 15, 12, 0, 0));
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | ------- | ------- | ------- | --------------------------------------- |
-| dateFormat   | string |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
-| timePrecision   | string |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
-| separatorStyle  | string |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
+| dateFormat   | 'calendar' \| 'ordinal' \| 'week' |   否   |   是   |  日期格式。取值包括：<br>**calendar**：日期模式为**YYYY-MM-DD**。<br>**ordinal**：日期模式为**YYYY-DDD**。<br>**week**：日期模式为**YYYY-Www-D**。<br>默认值：**calendar**。模式中字符含义参考[日期字段符号表](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table)。   |
+| timePrecision   | 'dateOnly' \| 'hours' | 'minutes' | 'seconds' | 'milliSeconds' |   否   |   是   |  时间精度。取值包括：<br>**dateOnly**：只显示日期。<br>**hours**：显示小时。<br>**minutes**：显示时分。<br>**seconds**：显示时分秒。<br>**milliSeconds**：显示时分秒毫秒。<br>默认值：**seconds**。  |
+| separatorStyle  | 'extended' \| 'basic' |   否   |   是   |  分隔符风格。取值包括：<br>**extended**：显示日期和时间分隔符。<br>**basic**：不显示日期和时间分隔符。<br>默认值：**extended**。   |
 | timeZone        | [TimeZone](#timezone) |   否   |   是   |  时区。默认值：**UTC**。   |
 | displayTimeZone     | boolean |   否  |   是   |  是否显示时区，true表示显示时区，false表示不显示时区。默认值：true。  |
 
@@ -4884,12 +4884,12 @@ let result = formatter.resolvedOptions(); // result.style = 'unit', result.unit 
 
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
-| zero     | string  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
-| nan     | string  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
-| minusSign     | string  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
-| plusSign     | string  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
-| infinity     | string  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
-| groupingSeparator     | string |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
+| zero     | string \| undefined  |   否    |   是   |  零符号。默认值：区域默认的符号。   |
+| nan     | string \| undefined  |   否    |   是   |  NaN符号。默认值：区域默认的符号。   |
+| minusSign     | string \| undefined  |   否    |   是   |  减符号。默认值：区域默认的符号。   |
+| plusSign     | string \| undefined  |   否    |   是   |  加符号。默认值：区域默认的符号。   |
+| infinity     | string \| undefined  |   否    |   是   |  无穷符号。默认值：区域默认的符号。   |
+| groupingSeparator     | string \| undefined |   否    |   是   |  分组符号。默认值：区域默认的符号。   |
 
 ### ResolvedSymbolNumberFormatOptions
 
