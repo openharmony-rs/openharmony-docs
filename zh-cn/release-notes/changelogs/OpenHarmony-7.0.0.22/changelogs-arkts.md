@@ -14,11 +14,17 @@
 
 从OpenHarmony SDK 7.0.0.22开始，JSVM Wasm相关接口补充了jitless下默认行为，不再返回错误码[JSVM_JIT_MODE_EXPECTED](../../../application-dev/reference/common/capi-jsvm-types-h.md#jsvm_status)，Wasm解释器正常运行。
 
-| 接口名称 | --jitless 原行为 | --jitless 目标行为 |
-|---------|-----------------|-------------------|
-| [OH_JSVM_CompileWasmModule](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_compilewasmmodule) | 返回错误码 [JSVM_JIT_MODE_EXPECTED](../../../application-dev/reference/common/capi-jsvm-types-h.md#jsvm_status)，并设置JSVM异常 | WasmCache不生效，其他行为与JIT模式一致 |
-| [OH_JSVM_CompileWasmFunction](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_compilewasmfunction) | 返回错误码 [JSVM_JIT_MODE_EXPECTED](../../../application-dev/reference/common/capi-jsvm-types-h.md#jsvm_status)，并设置JSVM异常 | 直接返回JSVM_OK（解释执行不依赖当前接口） |
-| [OH_JSVM_CreateWasmCache](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_createwasmcache) | 返回错误码 [JSVM_JIT_MODE_EXPECTED](../../../application-dev/reference/common/capi-jsvm-types-h.md#jsvm_status)，并设置JSVM异常 | 直接返回JSVM_OK，并将WasmCache置为空 |
+变更前：
+
+[OH_JSVM_CompileWasmModule](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_compilewasmmodule)，返回错误码 [JSVM_JIT_MODE_EXPECTED](../../../application-dev/reference/common/capi-jsvm-types-h.md#jsvm_status)，并设置JSVM异常。<br>
+[OH_JSVM_CompileWasmFunction](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_compilewasmfunction)，返回错误码 [JSVM_JIT_MODE_EXPECTED](../../../application-dev/reference/common/capi-jsvm-types-h.md#jsvm_status)，并设置JSVM异常。<br>
+[OH_JSVM_CreateWasmCache](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_createwasmcache)，返回错误码 [JSVM_JIT_MODE_EXPECTED](../../../application-dev/reference/common/capi-jsvm-types-h.md#jsvm_status)，并设置JSVM异常。<br>
+
+变更后：
+
+[OH_JSVM_CompileWasmModule](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_compilewasmmodule)，WasmCache不生效，其他行为与JIT模式一致。<br>
+[OH_JSVM_CompileWasmFunction](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_compilewasmfunction)，直接返回JSVM_OK（解释执行不依赖当前接口）。<br>
+[OH_JSVM_CreateWasmCache](../../../application-dev/reference/common/capi-jsvm-h.md#oh_jsvm_createwasmcache)，直接返回JSVM_OK，并将WasmCache置为空。<br>
 
 **起始 API Level**
 

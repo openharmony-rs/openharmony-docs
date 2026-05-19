@@ -14,6 +14,14 @@
 
 从上游社区300+ issue说明、社区5000+ ReleaseNotes以及JSVM xts/tdd用例测试，当前共发现38项需要开发者注意的变更点，请参考[JSVM 132 内核升级 144 内核版本差异总结](https://gitcode.com/openharmony/arkcompiler_jsvm/blob/master/ReleaseNote/JSVM_132_144.md)。
 
+变更前：
+
+使用JSVM的应用正常执行。
+
+变更后：
+
+使用JSVM的应用出现卡死、闪退等问题。
+
 **起始 API Level**
 
 不涉及
