@@ -383,9 +383,8 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 
 系统在窗口创建时启动定时器监控页面加载过程。如果窗口创建后5秒内未调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)加载页面内容，系统判定为异常并生成故障日志。
 
-**排查思路**
+**排查步骤**
 
-检查代码流程：
 1. 是否在窗口创建后立即调用了[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)。
 2. 是否在页面加载和窗口显示之间有耗时操作。
 3. 是否先调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)再调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)。
