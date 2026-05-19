@@ -766,7 +766,7 @@ console.info(a.isGreaterThan(55)); // 输出：true
 
 ## isGreaterEqualThan
 
-isGreaterThan(other: Int): boolean
+isGreaterEqualThan(other: Int): boolean
 
 判断当前值是否大于等于other值。
 
