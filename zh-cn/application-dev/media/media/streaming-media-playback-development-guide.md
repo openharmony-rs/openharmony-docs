@@ -146,6 +146,13 @@ this.avPlayer?.onBufferingUpdate((infoType: media.BufferingInfoType, value: int)
 
     ArkTS-Sta:
     <!-- @[onBitrateDone](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSStreamingMedia/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    // 监听码率设置是否生效
+    this.avPlayer?.onBitrateDone((bitrate: int) => {
+      console.info('bitrateDone called, and bitrate value is: ' + bitrate);
+    })
+    ```
 
 ### DASH设置视频起播策略
 
