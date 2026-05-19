@@ -357,6 +357,10 @@
       - [在ArkTS-Sta中使用ArkTS-Dyn的帧动画（Animator）](arkts-sta-interop-dyn-animator.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的矩阵变换（matrix4）](arkts-sta-interop-dyn-matrix4.md)
       - [在ArkTS-Sta中使用ArkTS-Dyn的资源（Resource）](arkts-sta-interop-dyn-resource.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的自定义组件](arkts-dyn-interop-sta-component.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的自定义构建函数（@Builder）](arkts-dyn-interop-sta-builder.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）](arkts-dyn-interop-sta-wrappedbuilder.md)
+      - [在ArkTS-Dyn中使用ArkTS-Sta的@BuilderParam（引用@Builder函数）](arkts-dyn-interop-sta-builderparam.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的组件导航（Navigation）](arkts-dyn-interop-sta-navigation.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的帧动画（Animator）](arkts-dyn-interop-sta-animator.md)
       - [在ArkTS-Dyn中使用ArkTS-Sta的矩阵变换（matrix4）](arkts-dyn-interop-sta-matrix4.md)
@@ -375,6 +379,7 @@
         - [在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态](arkts-dyn-interop-sta-statemanagement-v2.md)
         - [在ArkTS-Dyn中使用ArkTS-Sta的@ObservedV2和@Trace（类属性变化观测）](arkts-dyn-interop-sta-observedv2.md)
         - [在ArkTS-Dyn中使用ArkTS-Sta管理应用拥有的状态](arkts-dyn-interop-sta-storages-v2.md)
+      - [状态管理V1和V2混合使用的互操作](arkts-sta-interop-dyn-statemanagement-v1-v2.md)
       <!--ui-arkts-sta-interop-dyn-state-management-v1-v2-->
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
