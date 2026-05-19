@@ -62,6 +62,7 @@ toybox的执行方式有两种：
 | :- | :- |
 | factor     | 分解质因数。<br/>usage: factor [-hx] NUMBER... |
 | mcookie    | 生成128位强随机数。<br/>usage: mcookie [-vV] |
+| mkpasswd | 对密码进行加密。<br/>usage: mkpasswd [-P FD] [-m TYPE] [-S SALT] [PASSWORD] [SALT] |
 | uuidgen    | 创建并打印新的RFC4122随机UUID。<br/>usage: uuidgen |
 
 ### 终端操作
@@ -79,8 +80,10 @@ toybox的执行方式有两种：
 
 | 命令 | 说明 |
 | :- | :- |
+| false | 返回非零值。<br/>usage: false |
 | sh    | shell命令解释器。 |
 | test  | 通过执行测试返回true或false。没有参数时返回false。<br/>usage: test [-bcdefghkLprSsuwx PATH] [-nz STRING] [-t FD] [X ?? Y] |
+| true  | 返回零。<br/>usage: true |
 | yes   | 反复输出行直到被杀死。如果没有参数，则输出“y”。<br/>usage: yes [args...] |
 
 ### 系统操作
@@ -88,6 +91,7 @@ toybox的执行方式有两种：
 | 命令 | 说明 |
 | :- | :- |
 | dmesg     | 显示或控制内核环形缓冲区。<br/>usage: dmesg [-Cc] [-r \| -t \| -T] [-n LEVEL] [-s SIZE] [-w \| -W] |
+| getconf   | 获取系统配置值，部分值需要path参数。<br/>usage: getconf -a [PATH] \| -l \| NAME [PATH] |
 | env       | 设置命令调用的环境，或列出环境变量。<br/>usage: env [-0i] [-e FILE] [-u NAME] [NAME=VALUE...] [COMMAND...] |
 | hostname  | 获取当前主机名。<br/>usage: hostname [-bdsf] [-F FILENAME] [newname] |
 | insmod    | 加载内核模块。<br/>usage: insmod MODULE [OPTION...] |
@@ -98,6 +102,7 @@ toybox的执行方式有两种：
 | swapoff   | 停用交换空间。<br/>usage: swapoff FILE |
 | swapon    | 在指定的设备或文件上，使能内存交换。<br/>usage: swapon [-d] [-p priority] filename |
 | uname     | 打印系统信息。<br/>usage: uname [-asnrvmo] |
+| vmstat    | 打印虚拟内存信息。<br/>usage: vmstat [-n] [DELAY [COUNT]] |
 
 ### 时间日期
 
@@ -108,6 +113,7 @@ toybox的执行方式有两种：
 | sleep   | 等待设置的时间后再退出。可以是小数。可选的后缀可以是“m”（分钟）、“h”（小时）、“d”（天）或“s”（秒，默认值）。<br/>usage: sleep DURATION... |
 | time    | 运行命令行并报告真实时间、用户时间和系统时间（以秒为单位）。(真实时间=时钟时间，用户时间=命令代码使用cpu的时间，系统时间=操作系统使用cpu的时间。)<br/>usage: time [-pv] COMMAND... |
 | uptime  | 显示当前时间，系统运行了多长时间，用户数量，以及过去1、5和15分钟的系统负载平均值。<br/>usage: uptime [-ps] |
+| usleep  | 等待设置的时间后再退出，单位微秒。<br/>usage: usleep MICROSECONDS |
 
 ### 登录用户操作
 
@@ -127,14 +133,17 @@ toybox的执行方式有两种：
 | kill      | 向进程发送信号。<br/>usage: kill [-l [SIGNAL] \| -s SIGNAL \| -SIGNAL] pid... |
 | killall   | 向具有给定名称的所有进程发送信号（默认：SIGTERM）。<br/>usage: killall [-l] [-iqv] [-SIGNAL \| -s SIGNAL] PROCESS_NAME... |
 | pidof   | 打印具有给定名称的所有进程的PID。<br/>usage: pidof [-s] [-o omitpid[,omitpid...]] [NAME...] |
+| pkill   | 按照进程名来杀死进程。<br/>usage: pkill [-fnovx] [-SIGNAL \| -l SIGNAL] [PATTERN] [-G GID,] [-g PGRP,] [-P PPID,] [-s SID,] [-t TERM,] [-U UID,] [-u EUID,] |
 | ps      | 显示进程信息。<br/>usage: ps [-AadefLlnwZ] [-gG GROUP,] [-k FIELD,] [-o FIELD,] [-p PID,] [-t TTY,] [-uU USER,] |
 | pwdx    | 打印进程的工作目录。<br/>usage: pwdx PID... |
+| renice  | 调整进程/组/用户级别的进程优先级。<br/>usage: renice [-gpu] -n INCREMENT ID... |
 | setsid  | 在新的会话中运行命令。<br/>usage: setsid [-t] command [args...] |
 | taskset | 启动一个仅在指定处理器上运行的任务，或者修改已经存在的进程的处理器偏好。<br/>usage: taskset [-ap] [mask] [PID \| cmd [args...]] |
 | timeout | 创建子进程执行命令，如果子进程超时未退出，则向子进程发送一个信号。DURATION可以是小数。可选的后缀可以是“m”（分钟）、“h”（小时）、“d”（天）或“s”（秒，默认值）。<br/>usage: timeout [-k DURATION] [-s SIGNAL] DURATION COMMAND... |
 | top     | 实时显示进程信息。<br/>usage: top [-Hhbq] [-k FIELD,] [-o FIELD,] [-s SORT] [-n NUMBER] [-m LINES] [-d SECONDS] [-p PID,] [-u USER,] |
 | nice    | 以指定的优先级运行命令。<br/>usage: nice [-n PRIORITY] COMMAND... |
 | nsenter | 在特定的命名空间中运行指令。<br/>usage: nsenter [-t pid] [-F] [-i] [-m] [-n] [-p] [-u] [-U] COMMAND... |
+| ulimit/prlimit | 显示或者设置进程的资源限制。<br/>usage: ulimit/prlimit [-P PID] [-SHRacdefilmnpqrstuv] [LIMIT] |
 | watch   | 每隔-n秒运行一次参数中的命令，显示执行结果。按q退出。<br/>usage: watch [-tebx] [-n SEC] COMMAND... |
 | xargs   | 运行命令行一次或多次，附加标准输入设备中的参数。<br/>usage: xargs [-0Pprt] [-snE STR] COMMAND... |
 
@@ -148,6 +157,8 @@ toybox的执行方式有两种：
 | freeramdisk | 释放特定ramdisk的所有内存。<br/>usage: freeramdisk [RAM device] |
 | fstype      | 打印文件系统的类型。<br/>usage: fstype DEV... |
 | fsync       | 将文件状态与存储设备同步。<br/>usage: fsync [-d] [FILE...] |
+| lspci       | 显示 PCI 设备信息。<br/>usage: lspci [-ekmn] [-i FILE ] |
+| lsusb       | 显示 USB 设备信息。<br/>usage: lsusb |
 | mount       | 在目录上挂载新的文件系统。如果没有参数，则显示现有的挂载。<br/>usage: mount [-afFrsvw] [-t TYPE] [-o OPTION,] [[DEVICE] DIR] |
 | mountpoint  | 检查目录或者设备是否是挂载点。<br/>usage: mountpoint [-qd] DIR <br/>&emsp;&emsp;&emsp;mountpoint [-qx] DEVICE |
 | sync        | 将缓存的数据写到磁盘。<br/>usage: sync |
@@ -163,11 +174,15 @@ toybox的执行方式有两种：
 | ifconfig      | 显示或配置网络接口。<br/>usage: ifconfig [-aS] [INTERFACE [ACTION...]] |
 | netstat   | 显示网络信息。<br/>usage: netstat [-pWrxwutneal] |
 | ping/ping6    | 检测网络连通性。ping6自带-6选项。<br/>usage: ping/ping6 [OPTIONS] HOST |
+| telnet  | 连接telnet服务器。<br/>usage: telnet HOST [PORT] |
+| traceroute/traceroute6 | 跟踪报文到HOST的路径。traceroute6自带-6选项。<br/>usage: traceroute [-46FUIldnvr] [-f 1ST_TTL] [-m MAXTTL] [-p PORT] [-q PROBES]<br/>[-s SRC_IP] [-t TOS] [-w WAIT_SEC] [-g GATEWAY] [-i IFACE] [-z PAUSE_MSEC] HOST [BYTES]<br/>usage: traceroute6 [-dnrv] [-m MAXTTL] [-p PORT] [-q PROBES][-s SRC_IP] [-t TOS] [-w WAIT_SEC]<br/>&emsp;[-i IFACE] HOST [BYTES] |
+| wget    | 从网络上下载资源。<br/>usage: wget [OPTIONS]... [URL]<br/>[OPTIONS] = --max-redirect x -d -O filename -p data |
 
 ### 文件操作
 
 | 命令 | 说明 |
 | :- | :- |
+| awk       | awk是一个处理文本的工具，可对文档内容进行筛选、分析。<br/>usage: awk [-F sepstring] [-v assignment]... program [argument...]<br/>&emsp;or:<br/>&emsp;&emsp;&emsp;awk [-F sepstring] -f progfile [-f progfile]... [-v assignment]...<br/>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[argument...] |
 | base64    | 通过base64算法进行加密/解密。<br/>usage: base64 [-di] [-w COLUMNS] [FILE...] |
 | basename  | 返回删除后缀的路径名的非目录部分。<br/>usage: basename [-a] [-s SUFFIX] NAME... \| NAME [SUFFIX] |
 | cat       | 复制（连接）文件到标准输出设备。如果未列出任何文件，则从标准输入设备复制。“-”代表标准输入设备。<br/>usage: cat [-etuv] [FILE...] |
@@ -183,9 +198,12 @@ toybox的执行方式有两种：
 | crc32     | 输出每个文件的crc32校验和。<br/>usage: crc32 [file...] |
 | cut       | 将每个FILE中的行的选定部分打印到标准输出。每个选择列表以逗号分隔，可以是数字（从1开始计数）或破折号分隔的范围（其中X-表示X到行尾，-X表示从开始到X）。<br/>usage: cut [-Ds] [-bcCfF LIST] [-dO DELIM] [FILE...] |
 | dd        |  用于转换和复制文件的命令，可以用于创建磁盘镜像、备份数据、转换字符编码等任务。<br/>usage: dd [if \| of=FILE] [ibs \| obs \| bs \| count \| seek \| skip=N] [conv \| status \| iflag \| oflag=FLAG[,FLAG...]] |
+| diff      | 比较文件/文件夹，输出差异。<br/>usage: diff [-abBdiNqrTstw] [-L LABEL] [-S FILE] [-U LINES] [-F REGEX ] FILE1 FILE2 |
 | dirname   | 显示路径的目录部分。<br/>usage: dirname PATH... |
 | dos2unix  | 将换行符格式从dos“\\r\\n”转换为unix“\\n”。如果没有列出文件，从标准输入设备获取输入。“-”代表标准输入设备。<br/>usage: dos2unix [FILE...] |
 | echo      | 将每个参数写入标准输出设备，每个参数之间有一个空格，后跟一个换行符。<br/>usage: echo [-Een] [ARG...] |
+| grep/egrep/fgrep | 显示匹配正则表达式的行。如果没有-e，则第一个参数为要匹配的正则表达式。没有文件（或“-”文件名）读取标准输入设备。如果匹配，则返回0；如果找不到匹配，则返回1；如果命令错误，则返回2。<br/>egrep自带-E选项，fgrep自带-F选项。E和F选项不能同时选。<br/>usage: grep/egrep/fgrep [-EFrivwcloqsHbhn] [-ABC NUM] [-m MAX] [-e REGEX]... [-MS PATTERN]... [-f REGFILE] [FILE]... |
+| gzip      | 压缩文件。<br/>usage: gzip [-19cdfkt] [FILE...] |
 | expand    | 根据输入参数将制表符展开为空格。<br/>usage: expand [-t TABLIST] [FILE...] |
 | fallocate | 让文件系统给文件预留空间。<br/>usage: fallocate [-o OFFSET] -l SIZE FILE |
 | file      | 检查给定的文件并描述其内容类型。<br/>usage: file [-bhLs] [FILE...] |
@@ -196,6 +214,8 @@ toybox的执行方式有两种：
 | head      | 将文件中的第一行复制到标准输出设备中。如果未列出任何文件，从标准输入设备拷贝。“-”代表标准输入设备。<br/>usage: head [-cn NUM] [-qv] [FILE...] |
 | hexedit   | 十六进制文件编辑器，所有修改立刻写入磁盘。<br/>usage: hexedit [-r] FILE |
 | iconv     | 转换文件编码。<br/>usage: iconv [-f FROM] [-t TO] [FILE...] |
+| inotifyd  | 在文件系统事件出现的时候，运行特定的程序。<br/>usage: inotifyd PROG FILE[:MASK] ... |
+| install   | 复制文件并设置文件属性。<br/>usage: install [-dDpsv] [-o USER] [-g GROUP] [-m MODE] [-t TARGET] [SOURCE...] [DEST] |
 | link      | 创建文件的硬链接。<br/>usage: link FILE NEWLINK |
 | ln        | 在 FROM 和 TO 之间创建软/硬链接。<br/>usage: ln [-fnrsTv] [-t DIR] [FROM...] TO |
 | ls        | 查看当前目录有哪些文件/文件夹。<br/>usage: ls [-1ACFHLNRSUXZabcdfghilmnopqrstuwx] [--color[=auto]] [FILE...] |
@@ -288,7 +308,7 @@ cat可以打印文件内容，如果试图cat一个目录，会有报错 "Is a d
 
 1. 实际调用的是shell的实现而非toybox。
 
-   对于time/test/pwd/realpath/kill等命令，shell会直接使用自己的实现。
+   对于time/test/pwd/realpath/ulimit/kill等命令，shell会直接使用自己的实现。
 
    此时如果想要调用toybox命令，请使用"toybox [COMMAND] [ARGUMENTS...]"的格式。
 
