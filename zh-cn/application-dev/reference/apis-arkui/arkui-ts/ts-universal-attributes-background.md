@@ -331,7 +331,7 @@ ArkTS-Sta: backgroundImageSize(value: SizeOptions | ImageSize | undefined): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## backgroundImagePosition
 
@@ -361,7 +361,7 @@ ArkTS-Sta: backgroundImagePosition(value: Position | Alignment | undefined): thi
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## BlurStyle<sup>9+</sup>
 
@@ -906,7 +906,9 @@ backgroundImageResizable(value: ResizableOptions | undefined): this
 
 ## backgroundBrightness<sup>12+</sup> 
 
-backgroundBrightness(params: BackgroundBrightnessOptions): T
+ArkTS-Dyn: backgroundBrightness(params: BackgroundBrightnessOptions): T
+
+ArkTS-Sta: backgroundBrightness(params: BackgroundBrightnessOptions | undefined): this
 
 设置组件背景提亮效果。
 
@@ -914,23 +916,21 @@ backgroundBrightness(params: BackgroundBrightnessOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundBrightness<sup>23+</sup>](#backgroundbrightness23)。
-
 **ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| params | [BackgroundBrightnessOptions](#backgroundbrightnessoptions12对象说明) | 是   | 设置组件背景提亮效果，包括：亮度变化速率，提亮程度。 |
+| params | ArkTS-Dyn: [BackgroundBrightnessOptions](#backgroundbrightnessoptions12对象说明)<br/>ArkTS-Sta: BackgroundBrightnessOptions \| undefined | 是   | 设置组件背景提亮效果，包括：亮度变化速率，提亮程度。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
 
 ## backgroundBrightness<sup>18+</sup> 
 

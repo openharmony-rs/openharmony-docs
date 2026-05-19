@@ -186,10 +186,10 @@ TransitionEffect以函数的形式指定转场效果。提供了以下接口：
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | ---------- | -------- | -------- | -------- |
-| IDENTITY | [TransitionEffect](#transitioneffect10对象说明)\<"identity"> | 是 | 否| 禁用转场效果。 |
-| OPACITY | [TransitionEffect](#transitioneffect10对象说明)\<"opacity"> | 是 | 否| 为组件添加透明度转场效果，出现时透明度从0到1、消失时透明度从1到0，相当于TransitionEffect.opacity(0)。 |
-| SLIDE | [TransitionEffect](#transitioneffect10对象说明)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; }> | 是 | 否 | 相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。 |
-| SLIDE_SWITCH | [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"> | 是 | 否 | 指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
+| IDENTITY | ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"identity"><br/>ArkTS-Sta: [TransitionEffect](#transitioneffect10对象说明) | 是 | 否| 禁用转场效果。 |
+| OPACITY | ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"opacity"><br/>ArkTS-Sta: [TransitionEffect](#transitioneffect10对象说明) | 是 | 否| 为组件添加透明度转场效果，出现时透明度从0到1、消失时透明度从1到0，相当于TransitionEffect.opacity(0)。 |
+| SLIDE | ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"asymmetric", { appear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; disappear: [TransitionEffect](#transitioneffect10对象说明)\<"move", [TransitionEdge](#transitionedge10)>; }><br/>ArkTS-Sta: [TransitionEffect](#transitioneffect10对象说明) | 是 | 否 | 相当于TransitionEffect.asymmetric(TransitionEffect.move(TransitionEdge.START), TransitionEffect.move(TransitionEdge.END))。从START边滑入，END边滑出。即在LTR模式下，从左侧滑入，右侧滑出；在RTL模式下，从右侧滑入，左侧滑出。 |
+| SLIDE_SWITCH | ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"slideSwitch"><br/>ArkTS-Sta: [TransitionEffect](#transitioneffect10对象说明) | 是 | 否 | 指定出现时从右侧先缩小再放大滑入、消失时从左侧先缩小再放大滑出的转场效果。自带动画参数，也可覆盖动画参数，自带的动画参数时长600ms，指定动画曲线cubicBezierCurve(0.24, 0.0, 0.50, 1.0)，最小缩放比例为0.8。|
 
 >  **说明：**
 >
@@ -315,7 +315,9 @@ rotate(options: RotateOptions): TransitionEffect
 
 ### scale<sup>10+</sup>
 
-scale(options: ScaleOptions): TransitionEffect\<"scale">
+ArkTS-Dyn: scale(options: ScaleOptions): TransitionEffect\<"scale">
+
+ArkTS-Sta: scale(options: ScaleOptions): TransitionEffect;
 
 设置组件转场时的缩放效果。
 
@@ -325,35 +327,7 @@ scale(options: ScaleOptions): TransitionEffect\<"scale">
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[scale<sup>23+</sup>](#scale23)。
-
 **ArkTS-Dyn起始版本：** 10
-
-**参数：**
-
-| 参数名 | 类型                                   | 必填 | 说明           |
-| ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时，组件入场动画的缩放值将从0.4开始执行。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>-&nbsp;centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10对象说明)\<"scale"> | 当前动画缩放效果。 |
-
-### scale<sup>23+</sup>
-
-scale(options: ScaleOptions): TransitionEffect
-
-设置组件转场时的缩放效果。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[scale<sup>10+</sup>](#scale10)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -367,7 +341,7 @@ scale(options: ScaleOptions): TransitionEffect
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10对象说明) | 当前动画缩放效果。 |
+| ArkTS-Dyn: [TransitionEffect](#transitioneffect10对象说明)\<"scale"><br/>ArkTS-Sta: TransitionEffect | 当前动画缩放效果。 |
 
 ### opacity<sup>10+</sup>
 
@@ -551,9 +525,11 @@ constructor(type: Type, effect: Effect)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -561,6 +537,153 @@ constructor(type: Type, effect: Effect)
 | ------ | ------------------------------------------ | ---- | ------------------ |
 | type  | [Type](ts-appendix-enums.md#transitiontype)                                    | 是   | 转场类型。 |
 | effect  | [Effect](#transitioneffect10对象说明)                                     | 是   | 转场参数。 |
+
+### constructor<sup>23+</sup>
+
+constructor(type: 'identity' | 'slideSwitch', effect: undefined)
+
+构造TransitionEffect对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| type  | 'identity' | 'slideSwitch'                 | 是   | 转场类型。 |
+| effect  | undefined  | 是   | 转场参数。 |
+
+### constructor<sup>23+</sup>
+
+constructor(type: 'opacity', effect: double)
+
+构造TransitionEffect对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| type  | 'opacity'                 | 是   | 转场类型。 |
+| effect  | double  | 是   | 转场参数。 |
+
+### constructor<sup>23+</sup>
+
+constructor(type: 'move', effect: TransitionEdge)
+
+构造TransitionEffect对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| type  | 'move'                 | 是   | 转场类型。 |
+| effect  | TransitionEdge  | 是   | 转场参数。 |
+
+### constructor<sup>23+</sup>
+
+constructor(type: 'translate', effect: TranslateOptions)
+
+构造TransitionEffect对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| type  | 'translate'                 | 是   | 转场类型。 |
+| effect  | TranslateOptions  | 是   | 转场参数。 |
+
+### constructor<sup>23+</sup>
+
+constructor(type: 'rotate', effect: RotateOptions)
+
+构造TransitionEffect对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| type  | 'rotate'                 | 是   | 转场类型。 |
+| effect  | RotateOptions  | 是   | 转场参数。 |
+
+### constructor<sup>23+</sup>
+
+constructor(type: 'scale', effect: ScaleOptions)
+
+构造TransitionEffect对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| type  | 'scale'                 | 是   | 转场类型。 |
+| effect  | ScaleOptions  | 是   | 转场参数。 |
+
+### constructor<sup>23+</sup>
+
+constructor(type: 'asymmetric', effect: AsymmetricTransitionOption)
+
+构造TransitionEffect对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明           |
+| ------ | ------------------------------------------ | ---- | ------------------ |
+| type  | 'asymmetric'                 | 是   | 转场类型。 |
+| effect  | AsymmetricTransitionOption  | 是   | 转场参数。 |
 
 ### combine<sup>10+</sup>
 
@@ -654,6 +777,10 @@ TransitionOptions通过指定结构体内的参数来指定转场效果。
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[TransitionEffect](#transitioneffect10对象说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |

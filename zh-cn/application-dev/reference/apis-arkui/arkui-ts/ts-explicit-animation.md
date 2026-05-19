@@ -45,7 +45,9 @@
 
 ### interpolate<sup>9+</sup>
 
-interpolate(fraction:&nbsp;number): number
+ArkTS-Dyn: interpolate(fraction: number): number
+
+ArkTS-Sta: interpolate(fraction: double): double
 
 插值曲线的插值计算函数，可以通过传入的归一化时间参数返回当前的插值
 
@@ -55,17 +57,21 @@ interpolate(fraction:&nbsp;number): number
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| fraction | number | 是   | 当前的归一化时间参数。<br/>取值范围：[0,1]<br/>**说明：** <br/>设置的值小于0时，按0处理；设置的值大于1时，按1处理。 |
+| fraction | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 当前的归一化时间参数。<br/>取值范围：[0,1]<br/>**说明：** <br/>设置的值小于0时，按0处理；设置的值大于1时，按1处理。 |
 
 **返回值：**
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 返回归一化time时间点对应的曲线插值。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回归一化time时间点对应的曲线插值。 |
 
 ## FinishCallbackType<sup>11+</sup>
 

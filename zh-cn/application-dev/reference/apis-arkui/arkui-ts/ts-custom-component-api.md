@@ -419,7 +419,9 @@ struct MyComponent {
 
 ## RouterPageInfo<sup>12+</sup>
 
-type RouterPageInfo = RouterPageInfo
+ArkTS-Dyn: type RouterPageInfo = RouterPageInfo
+
+ArkTS-Sta: type RouterPageInfo = uiObserver.RouterPageInfo
 
 RouterPageInfo实例对象。
 
@@ -433,7 +435,7 @@ RouterPageInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | 返回RouterPageInfo实例对象。 |
+| Ark-Dyn: [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo)<br/>Ark-Sta: uiObserver.RouterPageInfo | 返回RouterPageInfo实例对象。 |
 
 ## getDialogController<sup>18+</sup>
 
