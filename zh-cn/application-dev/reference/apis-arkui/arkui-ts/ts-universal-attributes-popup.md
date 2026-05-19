@@ -106,6 +106,8 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onWillAppear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡显示动画开始前的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | onDidAppear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡显示时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupMessageOptions<sup>10+</sup>类型说明
 
@@ -198,6 +200,8 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onWillAppear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡显示动画开始前的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | onDidAppear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡显示时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupCommonOptions<sup>18+</sup>类型说明
 
@@ -238,6 +242,8 @@ ArkTS-Sta: bindPopup(show: boolean | undefined, popup: PopupOptions | CustomPopu
 | onWillAppear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡显示动画开始前的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | onDidAppear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡显示时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | onDidDisappear<sup>23+</sup>          | [VoidCallback](ts-types.md#voidcallback12) | 否   | 是   | 弹出气泡关闭时的回调函数。<br/>**系统能力：** SystemCapability.ArkUI.ArkUI.Full<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否 | 是 | 背景模糊效果。默认值请参考BackgroundBlurStyleOptions类型说明。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| backgroundEffect | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | 否 | 是 | 背景效果参数。默认值请参考BackgroundEffectOptions类型说明。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## PopupStateChangeParam<sup>18+</sup>类型说明
 
@@ -1192,3 +1198,112 @@ struct PopupExample {
 ```
 
 ![](figures/popup_07.gif)
+
+### 示例10（自定义气泡背景效果参数）
+
+该示例通过配置[PopupOptions](#popupoptions类型说明)的backgroundBlurStyleOptions和backgroundEffect属性，实现自定义气泡背景效果。
+
+从API版本26.0.0开始，在PopupOptions中新增了backgroundBlurStyleOptions和backgroundEffect属性。
+
+ArkTS-Dyn示例：
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Popup自定义背景效果1')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        .bindPopup(this.handlePopup!!, {
+          message: 'popup message '.repeat(20),
+          backgroundBlurStyleOptions: {
+            colorMode: ThemeColorMode.LIGHT,
+            adaptiveColor: AdaptiveColor.AVERAGE,
+            scale: 0.5,
+            blurOptions: { grayscale: [20, 20] },
+          }
+        })
+        .position({ x: 100, y: 150 }) 
+
+      Button('Popup自定义背景效果2')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        .bindPopup(this.handlePopup!!, {
+          message: 'popup message '.repeat(20),
+          backgroundEffect: {
+            radius: 60,
+            saturation: 0,
+            brightness: 1,
+            color: Color.Pink,
+            blurOptions: { grayscale: [20, 20] }
+          }
+        })
+        .position({ x: 100, y: 400 }) 
+    }.width('100%')
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({width: '100%', height: '100%'})
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+import { Entry, Component, Flex, FlexDirection, Button, AvoidanceMode, Placement, PopupOptions, Position, Padding,
+  BackgroundBlurStyleOptions, BackgroundEffectOptions, ThemeColorMode, AdaptiveColor, Color, $r, State} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PopupExample {
+  @State handlePopup: boolean = false;
+
+  build() {
+    Flex({ direction: FlexDirection.Column }) {
+      Button('Popup自定义背景效果1')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        .bindPopup(this.handlePopup, {
+          message: 'popup message '.repeat(20),
+          backgroundBlurStyleOptions: {
+            colorMode: ThemeColorMode.LIGHT,
+            adaptiveColor: AdaptiveColor.AVERAGE,
+            scale: 0.5,
+            blurOptions: { grayscale: [20, 20] },
+          } as BackgroundBlurStyleOptions
+        } as PopupOptions)
+        .position({ x: 100, y: 150 }) 
+
+      Button('Popup自定义背景效果2')
+        .onClick(() => {
+          this.handlePopup = !this.handlePopup
+        })
+        .bindPopup(this.handlePopup, {
+          message: 'popup message '.repeat(20),
+          backgroundEffect: {
+            radius: 60,
+            saturation: 0,
+            brightness: 1,
+            color: Color.Pink,
+            blurOptions: { grayscale: [20, 20] }
+          } as BackgroundEffectOptions
+        } as PopupOptions)
+        .position({ x: 100, y: 400 }) 
+    }.width('100%')
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({width: '100%', height: '100%'})
+  }
+}
+```
+
+![](figures/popupBackgroundEffect.gif)

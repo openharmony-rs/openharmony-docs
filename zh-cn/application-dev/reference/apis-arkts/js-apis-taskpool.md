@@ -840,9 +840,8 @@ cancel(task: Task): void
 | 错误码ID | 错误信息                                      |
 | -------- | -------------------------------------------- |
 | 10200015 | The task to cancel does not exist. |
-| 10200055 | The asyncRunner task has been canceled. |
-
-从API version 10开始，此接口调用时不再涉及上报错误码10200016。
+| 10200016 | The task to cancel is being executed. <br/> 适用版本：9-17 |
+| 10200055 | The asyncRunner task has been canceled. <br/> 适用版本：18+ |
 
 **正在执行的任务取消示例：**
 
@@ -1214,7 +1213,7 @@ function dealTask() {
 
 ## Priority
 
-表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../napi/qos-guidelines.md#qos等级定义)。
+表示所创建任务（Task）执行时的优先级。工作线程优先级跟随任务优先级更新，对应关系参考[QoS等级定义](../../kernel-enhance/qos-guidelines.md#qos等级定义)。
 
 **系统能力：** SystemCapability.Utils.Lang
 

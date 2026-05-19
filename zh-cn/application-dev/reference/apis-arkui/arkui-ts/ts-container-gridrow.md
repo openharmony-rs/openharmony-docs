@@ -62,7 +62,7 @@ GridRow(option?: GridRowOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-|columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  否 | 是  |设置布局列数。<br />取值为大于0的整数。<br/>- API version 20之前：默认值为12。<br/>- API version 20及之后：默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 } <br />非法值：按默认值处理。|
+|columns| ArkTS-Dyn: number \| [GridRowColumnOption](#gridrowcolumnoption)<br/>ArkTS-Sta: int \| [GridRowColumnOption](#gridrowcolumnoption) |  否 | 是  |设置布局列数。<br />取值为大于0的整数。<br/>- API version 20之前：默认值为12。<br/>- API version 20及之后：默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 } <br />非法值：按默认值处理。|
 |gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|  否 | 是  |栅格布局间距。<br />默认值：0 <br />非法值：按默认值处理。<br />单位：vp |
 |breakpoints|[BreakPoints](#breakpoints)|  否 | 是  |设置断点值的断点数组以及基于应用窗口或容器尺寸的相应参照。<br />默认值：<br />{<br />value: ["320vp", "600vp", "840vp"],<br />reference: BreakpointsReference.WindowSize<br />} <br />非法值：按默认值处理。<br />单位：vp |
 |direction|[GridRowDirection](#gridrowdirection枚举说明)|  否 | 是  |栅格布局排列方向。<br />默认值：GridRowDirection.Row <br />非法值：按默认值处理。 |
@@ -120,12 +120,12 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| xs  | number | 否   | 是   | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
-| sm  | number | 否    | 是  | 在栅格大小为sm的设备上，栅格容器组件的栅格列数。      |
-| md  | number | 否    | 是  | 在栅格大小为md的设备上，栅格容器组件的栅格列数。    |
-| lg  | number | 否   | 是   | 在栅格大小为lg的设备上，栅格容器组件的栅格列数。      |
-| xl  | number | 否    | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
-| xxl | number | 否    | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
+| xs  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
+| sm  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是  | 在栅格大小为sm的设备上，栅格容器组件的栅格列数。      |
+| md  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是  | 在栅格大小为md的设备上，栅格容器组件的栅格列数。    |
+| lg  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 在栅格大小为lg的设备上，栅格容器组件的栅格列数。      |
+| xl  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
+| xxl | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
 
 ## GridRowSizeOption
 
@@ -306,7 +306,7 @@ ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefi
 
 | 参数名   | 类型   | 必填   | 说明   |
 | ----- | ------ | ---- | ---------------------------------------- |
-| callback | ArkTS-Dyn: (breakpoints: string) => void<br/>ArkTS-Sta: ((breakpoints: string) => void) \| undefined |是|breakpoints取值为`"xs"`、`"sm"`、`"md"`、`"lg"`、`"xl"`、`"xxl"`。<br/>取值为undefined时，不使用回调函数。|
+| callback | ArkTS-Dyn: (breakpoints: string) => void<br/>ArkTS-Sta: ((breakpoints: string) => void) \| undefined |是|断点发生变化时触发的回调。<br/>breakpoints：断点值，取值为`"xs"`、`"sm"`、`"md"`、`"lg"`、`"xl"`、`"xxl"`。<br/>取值为undefined时，不使用回调函数。|
 
 ## 示例
 

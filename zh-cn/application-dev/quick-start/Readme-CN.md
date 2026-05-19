@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 <!--Del-->
 - 快速入门<!--quick-start-->
@@ -57,6 +57,25 @@
     - [适配指导案例](arkts-more-cases.md)
   - 从ArkTS-Dyn到ArkTS-Sta的适配指导<!--arkts-dyn-to-arkts-sta-migration-->
     - [ArkTS Migration Visualizer使用指南](arkts-migration-visualizer-instructions.md)
+    - [ArkTS-Sta builtin迁移规则](arkts-dyn-to-sta-builtin-rules.md)
+      - [Array](builtin/arkts-dyn-to-sta-builtin-Array.md)
+      - [Constructor](builtin/arkts-dyn-to-sta-builtin-Constructor.md)
+      - [ReadOnly](builtin/arkts-dyn-to-sta-builtin-ReadOnly.md)
+      - [Annotations](builtin/arkts-dyn-to-sta-builtin-annotations.md)
+      - [stdlib1](builtin/arkts-dyn-to-sta-builtin-stdlib1.md)
+      - [stdlib2](builtin/arkts-dyn-to-sta-builtin-stdlib2.md)
+      - [stdlib3](builtin/arkts-dyn-to-sta-builtin-stdlib3.md)
+      - [BigUint64Array](builtin/arkts-dyn-to-sta-builtin-BigUint64Array.md)
+      - [BigInt64Array](builtin/arkts-dyn-to-sta-builtin-BigInt64Array.md)
+      - [Float32Array](builtin/arkts-dyn-to-sta-builtin-Float32Array.md)
+      - [Float64Array](builtin/arkts-dyn-to-sta-builtin-Float64Array.md)
+      - [Int8Array](builtin/arkts-dyn-to-sta-builtin-Int8Array.md)
+      - [Int16Array](builtin/arkts-dyn-to-sta-builtin-Int16Array.md)
+      - [Int32Array](builtin/arkts-dyn-to-sta-builtin-Int32Array.md)
+      - [Uint8Array](builtin/arkts-dyn-to-sta-builtin-Uint8Array.md)
+      - [Uint16Array](builtin/arkts-dyn-to-sta-builtin-Uint16Array.md)
+      - [Uint32Array](builtin/arkts-dyn-to-sta-builtin-Uint32Array.md)
+      - [Uint8ClampedArray](builtin/arkts-dyn-to-sta-builtin-Uint8ClampedArray.md)
   - [ArkTS高性能编程实践](arkts-high-performance-programming.md)
   - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
     - [从Java到ArkTS的迁移指导](getting-started-with-arkts-for-java-programmers.md)

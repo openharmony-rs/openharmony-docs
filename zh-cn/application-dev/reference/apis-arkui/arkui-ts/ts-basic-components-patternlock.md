@@ -44,6 +44,24 @@ PatternLock(controller?: PatternLockController)
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<PatternLockAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<PatternLockAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置PatternLock组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ### sideLength
 
 ArkTS-Dyn: sideLength(value: Length)
@@ -259,6 +277,8 @@ ArkTS-Sta: activateCircleStyle(options: CircleStyleOptions | undefined)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -280,6 +300,8 @@ ArkTS-Sta: skipUnselectedPoint(skipped: boolean | undefined)
 设置未选中的宫格圆点在密码路径经过时是否自动选中。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -355,6 +377,8 @@ ArkTS-Sta: onDotConnect(callback: Callback\<int\> | undefined)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -370,6 +394,8 @@ ArkTS-Sta: onDotConnect(callback: Callback\<int\> | undefined)
 ## CircleStyleOptions<sup>12+</sup>对象说明
 
 圆环样式的参数说明。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -407,7 +433,9 @@ PatternLockController的构造函数。
 
 ### reset
 
-reset()
+ArkTS-Dyn: reset()
+
+ArkTS-Sta: reset(): void
 
 重置组件状态。
 
@@ -427,6 +455,8 @@ setChallengeResult(result: PatternLockChallengeResult): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -442,6 +472,8 @@ setChallengeResult(result: PatternLockChallengeResult): void
 图案密码状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

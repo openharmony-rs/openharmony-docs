@@ -172,6 +172,7 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
+| 1300034 | This operation conflicts with other floating windows. Possible cause: App has already started float view.</br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -823,6 +824,99 @@ floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
 }).catch((err: BusinessError) => {
   console.error(`Failed to set floating ball visibility. Cause code: ${err.code}, message: ${err.message}`);
 });
+```
+
+### onDestroy
+
+onDestroy(callback: Callback&lt;string&gt;): void
+
+注册闪控球销毁事件的监听。当闪控球销毁时，回调函数会接收到销毁原因的字符串。不再使用时，调用[offDestroy](#offdestroy)接口取消监听以避免内存泄漏。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| callback | Callback&lt;string&gt; | 是 | 回调函数。返回闪控球停止的原因。停止原因包括：<br>- "APP_STOP"：应用主动停止。<br>- "DUMPSTER_STOP"：拖动到垃圾桶触发停止。<br>- "LONG_PRESS_SINGLE_STOP"：长按单个闪控球触发停止。<br>- "LONG_PRESS_ALL_STOP"：长按全部闪控球触发停止。<br>- "MAIN_WINDOW_DESTROY_STOP"：context关联的主窗口被销毁后触发停止。<br>- "SQUEEZE"：超出设备闪控球数量上限，被其他闪控球挤占停止。<br>- "FLOAT_VIEW_STOP"：与标准悬浮窗绑定后，绑定状态下跟随标准悬浮窗停止。<br>- "STOP_IN_SIDEBAR"：在侧边栏中被停止。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
+| 1300022 | Repeated floating ball operation. |
+| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+
+**示例：**
+
+```ts
+let onDestroy = (reason: string) => {
+  console.info('Floating ball has destroyed, reason: ' + reason);
+};
+try {
+  floatingBallController?.onDestroy(onDestroy);
+} catch(e) {
+  console.error(`Failed to onDestroy floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
+### offDestroy
+
+offDestroy(callback?: Callback&lt;string&gt;): void
+
+取消闪控球销毁事件的监听。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| callback | Callback&lt;string&gt; | 否 | 回调函数。若传入参数，则取消该监听；若未传入参数，则取消所有闪控球销毁事件的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
+| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+
+**示例：**
+
+```ts
+let onDestroy = (reason: string) => {
+  console.info('Floating ball has destroyed, reason: ' + reason);
+};
+try {
+  floatingBallController?.offDestroy(onDestroy);
+} catch(e) {
+  console.error(`Failed to offDestroy floating ball. Cause:${e.code}, message:${e.message}`);
+}
+// 取消所有监听
+try {
+  floatingBallController?.offDestroy();
+} catch(e) {
+  console.error(`Failed to offDestroy all listeners. Cause:${e.code}, message:${e.message}`);
+}
 ```
 
 ## FloatingBallParams

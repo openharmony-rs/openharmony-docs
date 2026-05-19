@@ -231,13 +231,13 @@ class BasicDataSource<string> implements IDataSource<string> {
     });
   }
 
-  registerDataChangeListener(listener: DataChangeListener) {
+  registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
       this.listeners.push(listener);
     }
   }
 
-  unregisterDataChangeListener(listener: DataChangeListener) {
+  unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener)
     if (pos >= 0) {
       this.listeners.splice(pos, 1);
@@ -650,13 +650,13 @@ class BasicDataSource<string> implements IDataSource<string> {
     });
   }
 
-  registerDataChangeListener(listener: DataChangeListener) {
+  registerDataChangeListener(listener: DataChangeListener): void {
     if (this.listeners.indexOf(listener) < 0) {
       this.listeners.push(listener);
     }
   }
 
-  unregisterDataChangeListener(listener: DataChangeListener) {
+  unregisterDataChangeListener(listener: DataChangeListener): void {
     const pos = this.listeners.indexOf(listener)
     if (pos >= 0) {
       this.listeners.splice(pos, 1);

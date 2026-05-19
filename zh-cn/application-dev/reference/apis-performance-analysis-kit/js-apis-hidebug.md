@@ -1832,6 +1832,7 @@ ArkTS-Sta: enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): voi
 > 
 > 1. 若设备运行期间通过本接口设置的GWP-ASan应用数量超过配额限制，调用该接口将会失败并抛出错误码。请使用try-catch捕获异常，以避免应用异常退出。
 > 2. 设备重启后，本接口设置的GWP-ASan参数将会失效。
+> 3. 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1858,42 +1859,48 @@ ArkTS-Sta: enableGwpAsanGrayscale(options?: GwpAsanOptions, duration?: int): voi
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let options: hidebug.GwpAsanOptions = {
-  alwaysEnabled: true,
-  sampleRate: 2500,
-  maxSimutaneousAllocations: 5000,
-};
-let duration: number = 4;
-
-try {
+@Concurrent
+function enableGwpAsanTask(): void {
+  let options: hidebug.GwpAsanOptions = {
+    alwaysEnabled: true,
+    sampleRate: 2500,
+    maxSimutaneousAllocations: 5000,
+  };
+  let duration: number = 4;
   hidebug.enableGwpAsanGrayscale(options, duration);
+}
+
+taskpool.execute(enableGwpAsanTask).then(() => {
   console.info(`Succeeded in enabling GWP-ASan.`);
-} catch (error) {
+}).catch((error: BusinessError) => {
   const err: BusinessError = error as BusinessError;
   console.error(`Failed to enable GWP-ASan. Code: ${err.code}, message: ${err.message}`);
-}
+})
 ```
 ## GwpAsanOptions<sup>20+</sup>
 GWP-ASan配置项。可用于配置是否使能、采样频率，以及最大分配的插槽数。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**ArkTS-Dyn起始版本**：20
-
-**ArkTS-Sta起始版本**：23
 
 | 名称         | 类型  | 只读  | 可选 | 说明 |
 |--------------|------|-------|-------|-----|
-|alwaysEnabled | boolean | 否  | 是 | true：100%使能GWP-ASan。<br/>false：1/128概率使能GWP-ASan。<br/> 默认值：false。|
-|sampleRate    |ArkTS-Dyn: number<br/>ArkTS-Sta: int| 否  |是|GWP-ASan采样频率，默认值为2500，需要传入大于0的正整数，若传入小数则向上取整。<br/> 1/sampleRate的概率对分配的内存进行采样。<br/> 建议值：>=1000，过小会显著影响性能。|
-|maxSimultaneousAllocations|ArkTS-Dyn: number<br/>ArkTS-Sta: int|否|是|最大分配的插槽数，默认值为1000，需要传入大于0的正整数，若传入小数则向上取整。<br/>当插槽用尽时，新分配的内存将不再受监控。<br/>释放已使用的内存后，其占用的插槽将自动复用，以便于后续内存的监控。<br/> 建议值：<=20000，过大会可能导致VMA超限崩溃。|
+|alwaysEnabled | boolean | 否  | 是 | true：100%使能GWP-ASan。<br/>false：1/128概率使能GWP-ASan。<br/> 默认值：false。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23|
+|sampleRate    |ArkTS-Dyn: number<br/>ArkTS-Sta: int| 否  |是|GWP-ASan采样频率，默认值为2500，需要传入大于0的正整数，若传入小数则向上取整。<br/> 1/sampleRate的概率对分配的内存进行采样。<br/> 建议值：>=1000，过小会显著影响性能。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23|
+|maxSimultaneousAllocations|ArkTS-Dyn: number<br/>ArkTS-Sta: int|否|是|最大分配的插槽数，默认值为1000，需要传入大于0的正整数，若传入小数则向上取整。<br/>当插槽用尽时，新分配的内存将不再受监控。<br/>释放已使用的内存后，其占用的插槽将自动复用，以便于后续内存的监控。<br/> 建议值：<=20000，过大会可能导致VMA超限崩溃。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23|
+|isRecover<sup>24+</sup>|boolean|否|是|用于控制应用以100%概率开启GWP-ASan时，是否以可恢复模式运行。<br/>true：当GWP-ASan以100%概率开启时，应用以可恢复模式运行。在该模式下，系统检测到地址越界故障后，避免因检测机制本身导致进程崩溃；但对于已造成非法内存访问的错误，应用仍可能发生崩溃。<br/>false：当GWP-ASan以100%概率开启时，应用以不可恢复模式运行。<br/>默认值：false。<br/>注意：该参数只在“以100%概率开启GWP-ASan”场景下生效；1/128概率开启场景下默认为可恢复，不受isRecover控制。<br>**模型约束**：此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24|
 
 ## hidebug.disableGwpAsanGrayscale<sup>20+</sup>
 disableGwpAsanGrayscale(): void
 
 停止使能GWP-ASan。调用该接口将取消自定义配置，恢复默认参数[GwpAsanOptions](#gwpasanoptions20)。
+
+> **说明**：
+> 
+> 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1905,8 +1912,15 @@ disableGwpAsanGrayscale(): void
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { taskpool } from '@kit.ArkTS';
 
-hidebug.disableGwpAsanGrayscale();
+@Concurrent
+function disableGwpAsanTask(): void {
+  hidebug.disableGwpAsanGrayscale();
+}
+taskpool.execute(disableGwpAsanTask).then(() => {
+  console.info(`Disable GWP-ASan succeeded.`);
+})
 ```
 
 ## hidebug.getGwpAsanGrayscaleState<sup>20+</sup>
@@ -1915,6 +1929,10 @@ ArkTS-Dyn: getGwpAsanGrayscaleState(): number
 ArkTS-Sta: getGwpAsanGrayscaleState(): int
 
 获取当前GWP-ASan剩余使能天数。
+
+> **说明**：
+> 
+> 由于该接口涉及跨进程通信，耗时较长，为了避免引入性能问题，建议不要在主线程中直接调用该接口。可以通过[@ohos.taskpool](../apis-arkts/js-apis-taskpool.md)或[@ohos.worker](../apis-arkts/js-apis-worker.md)开启异步线程，以避免应用卡顿。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1932,9 +1950,15 @@ ArkTS-Sta: getGwpAsanGrayscaleState(): int
 
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { taskpool } from '@kit.ArkTS';
 
-let remainDays: number = hidebug.getGwpAsanGrayscaleState();
-console.info(`remainDays: ${remainDays}`);
+@Concurrent
+function getGwpAsanStateTask(): number {
+  return hidebug.getGwpAsanGrayscaleState();
+}
+taskpool.execute(getGwpAsanStateTask).then((remainDays: Object) => {
+  console.info(`GWP-ASan remain days: ${remainDays as number}.`);
+})
 ```
 
 ## hidebug.setJsRawHeapTrimLevel<sup>20+</sup>

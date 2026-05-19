@@ -1,8 +1,8 @@
 # NativeDisplaySoloist开发指导 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
-<!--Designer: @hudi33-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -303,11 +303,11 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
        if (render != nullptr) {
            DisplaySoloist_ExpectedRateRange range;
            bool useExclusiveThread = false;
-           if (id == "xcomponentId30") {
+           if (id == "xcomponentId_30") {
                range = {30, 120, 30};
            }
    
-           if (id == "xcomponentId120") {
+           if (id == "xcomponentId_120") {
                range = {30, 120, 120};
            }
            ExecuteDisplaySoloist(id, range, useExclusiveThread, nativeXComponent);
