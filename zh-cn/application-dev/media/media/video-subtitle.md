@@ -117,6 +117,13 @@
    
    ArkTS-Sta:
    <!-- @[offSubtitleUpdate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSSubtitle/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数
+   // async avTurnOffSubtitle() {
+   //   this.avPlayer?.offSubtitleUpdate();
+   // }
+   ```
 
 
 ## 运行完整示例
