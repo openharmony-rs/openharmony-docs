@@ -4970,7 +4970,8 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>适用版本：12-21 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>适用版本：22+ |
 
 **示例：**
 
@@ -8110,8 +8111,10 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>适用版本：12-21  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>适用版本：22+  |
 
 **示例：**
 
