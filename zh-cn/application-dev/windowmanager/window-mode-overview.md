@@ -252,7 +252,7 @@
 
 ### 通过setSupportedWindowModes()接口配置
 
-通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)传入supportedWindowModes或调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes20)接口传入supportedWindowModes和 grayOutMaximizeButton，可以在运行时动态修改当前主窗口支持的窗口模式。
+通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)传入supportedWindowModes或调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes20)接口传入supportedWindowModes和 grayOutMaximizeButton，可以在运行时动态修改当前主窗口、子窗口支持的窗口模式。
 
 支持配置的窗口模式如下所示：
 
