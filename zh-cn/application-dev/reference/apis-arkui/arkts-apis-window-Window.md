@@ -2530,7 +2530,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   windowClass.getWindowStateSnapshot().then((data) => {
     let jsonObj: object = JSON.parse(data);
-    console.info(`Succeeded, data=${data}, isPcMod=${jsonObj["isPcMode"]}`);
+    console.info(`Succeeded, data=${data}, isPcMode=${jsonObj["isPcMode"]}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed. Cause code: ${err.code}, cancel message: ${err.message}`);
   });
