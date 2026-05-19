@@ -18,7 +18,7 @@
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明               |
 | ------------ | ------------------------------------------------- | ---- |---| ------------------ |
-| samplingRate | ArkTS-Dyn:[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| number<br> ArkTS-Sta:[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| int| 否 | 否 | 音频文件的采样率，单位为赫兹（Hz）。支持传入[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)。<br>从API版本26.0.0开始：<br>- 参数samplingRate在ArkTS-Dyn上支持number类型, ArkTS-Sta上支持int类型。<br>- 音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。<br>**ArkTS-Dyn起始版本：** 8<br> ** ArkTS-Sta起始版：** 23|
+| samplingRate | ArkTS-Dyn:[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| number<br> ArkTS-Sta:[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| int| 否 | 否 | 音频文件的采样率，单位为赫兹（Hz）。支持传入[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)。<br>从API版本26.0.0开始：<br>- 参数samplingRate在ArkTS-Dyn上支持number类型, ArkTS-Sta上支持int类型。<br>- 音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版：** 23|
 | channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版：** 23|
 | sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)         | 否 | 否 | 音频采样格式。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版：** 23|
 | encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版：** 23|
