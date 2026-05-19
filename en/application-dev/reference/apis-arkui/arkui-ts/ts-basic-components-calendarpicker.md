@@ -313,5 +313,3 @@ struct CalendarPickerExample {
   }
 }
 ```
-
-![CalendarPicker](figures/calendar_picker_mark_disabled.gif)

@@ -450,8 +450,6 @@ struct Index {
 >
 > Icons in bold and italics are not preset in the system. The sample code uses the default icons. You need to replace the icons in **editorMenuOptions** with the desired icons.
 
-![selectionmenu](figures/selectionmenu.gif)
-
 ### Example 2: Setting the Symbol Icon
 
 This example demonstrates how to use **symbolStyle** in [EditorMenuOptions](#editormenuoptions) to set custom symbol icons. This functionality is supported since API version 11.
