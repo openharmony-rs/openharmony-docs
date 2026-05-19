@@ -139,7 +139,7 @@ compare(lhs: Char, rhs: Char): boolean
 ```typescript
 const lhs = new Char(c'A');
 const rhs = new Char(c'A');
-console.info(Char.compare(lhs, rhs)); // 输出：ture
+console.info(Char.compare(lhs, rhs)); // 输出：true
 ```
 
 ## compareTo
