@@ -44,7 +44,7 @@ submitMetadata(metadata: string): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 32100001 | Internal handling failed. Set Meta data to screenshot app fail. |
+| 32100001 | Internal handling failed. |
 
 **示例**：
 
@@ -186,7 +186,7 @@ off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback&lt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 32100001 | Internal handling failed. Service exception. |
+| 32100001 | Internal handling failed. |
 | 32100005 | Unsubscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality. |
 
 **示例**：
