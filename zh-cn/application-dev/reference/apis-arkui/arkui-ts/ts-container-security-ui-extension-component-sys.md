@@ -525,8 +525,16 @@ import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { State } from '@ohos.arkui.stateManagement'
-import { Column, Button, Text, Component, Entry, Color, SecurityUIExtensionComponent } from '@ohos.arkui.component';
-import { SecurityUIExtensionProxy } from '@ohos.arkui.node';
+import {
+  Column,
+  Button,
+  Text,
+  Component,
+  Entry,
+  Color,
+  SecurityUIExtensionComponent,
+  SecurityUIExtensionProxy
+} from '@ohos.arkui.component';
 
 @Entry
 @Component
@@ -534,18 +542,13 @@ struct Index {
   @State message: string = 'Hello World';
   @State receiveData: string = '';
   private want: Want = {
-    bundleName: 'com.example.suecdemo',
+    bundleName: 'com.example.securityUIExtProvider',
     abilityName: 'SecurityUIExtProvider',
     parameters: {
-      'ability.want.params.uiExtensionType': 'sys/commonUI',
+      'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
     },
   }
   private proxy: SecurityUIExtensionProxy | null = null;
-
-  aboutToDisappear(): void {
-    this.proxy?.offAsyncReceiverRegister();
-    this.proxy?.offSyncReceiverRegister();
-  }
 
   build() {
     Column() {
@@ -556,18 +559,14 @@ struct Index {
         .width('90%')
         .height('60%')
         .backgroundColor(Color.Green)
-        .onRemoteReady((proxy: SecurityUIExtensionProxy) => {
+        .onRemoteReady((proxy1: SecurityUIExtensionProxy) => {
           hilog.info(0x0000, 'SUECDemo', 'onRemoteReady');
-          this.proxy = proxy;
+          this.proxy = proxy1;
 
-          this.proxy.onAsyncReceiverRegister((proxy: SecurityUIExtensionProxy) => {
-            hilog.info(0x0000, 'SUECDemo', 'onAsyncReceiverRegister');
-          });
-          this.proxy.onSyncReceiverRegister((proxy: SecurityUIExtensionProxy) => {
-            hilog.info(0x0000, 'SUECDemo', 'onSyncReceiverRegister');
-          });
+          this.proxy!.onAsyncReceiverRegister(asyncRegisterCallback);
+          this.proxy!.onSyncReceiverRegister(syncRegisterCallback);
         })
-        .onReceive((data: Record<string, Object>) => {
+        .onReceive((data) => {
           this.receiveData = JSON.stringify(data['data']);
           hilog.info(0x0000, 'SUECDemo', 'onReceive: ' + this.receiveData);
         })
@@ -579,26 +578,52 @@ struct Index {
           hilog.info(0x0000, 'SUECDemo', 'onTerminated: code=' + info.code);
         })
 
-      Button('发送异步数据').onClick(() => {
-        if (this.proxy) {
-          this.proxy.send({ data: '来自使用方的异步消息' });
-        }
-      }).margin(5)
-
-      Button('发送同步数据').onClick(() => {
-        if (this.proxy) {
-          try {
-            let result = this.proxy.sendSync({ data: '来自使用方的同步消息' });
-            hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
-          } catch (err) {
-            hilog.error(0x0000, 'SUECDemo', `sendSync failed: ${(err as BusinessError).message}`);
+      Button('发送异步数据')
+        .margin(5)
+        .onClick(() => {
+          if (this.proxy != undefined) {
+            this.proxy!.send({ "data": '来自使用方的异步消息' });
           }
-        }
-      }).margin(5)
+        })
+
+      Button('发送同步数据')
+        .margin(5)
+        .onClick(() => {
+          if (this.proxy != undefined) {
+            try {
+              let result = this.proxy!.sendSync({ "data": '来自使用方的同步消息' });
+              hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
+            } catch (err) {
+              hilog.error(0x0000, 'SUECDemo', `sendSync failed: ${(err as BusinessError).message}`);
+            }
+          }
+        })
+
+      Button('取消异步注册监听')
+        .margin(5)
+        .onClick(() => {
+          this.proxy?.offSyncReceiverRegister()
+          hilog.info(0x0000, 'SUECDemo', `offSyncReceiverRegister`);
+        })
+
+      Button('取消同步注册监听')
+        .margin(5)
+        .onClick(() => {
+          this.proxy?.offAsyncReceiverRegister()
+          hilog.info(0x0000, 'SUECDemo', `offAsyncReceiverRegister`);
+        })
     }
     .height('90%')
     .width('90%')
   }
+}
+
+function asyncRegisterCallback(proxy: SecurityUIExtensionProxy) {
+  hilog.info(0x0000, 'SUECDemo', 'onAsyncReceiverRegister');
+}
+
+function syncRegisterCallback(proxy: SecurityUIExtensionProxy) {
+  hilog.info(0x0000, 'SUECDemo', 'onSyncReceiverRegister');
 }
 ```
 
@@ -637,7 +662,11 @@ export default class SecurityUIExtProvider extends UIExtensionAbility {
       'session': session
     };
     let storage: LocalStorage = new LocalStorage(param);
-    session.loadContent('pages/SecurityExtension', storage);
+    try {
+      session.loadContent('pages/SecurityExtension', storage);
+    } catch (error) {
+      hilog.error(0x0000, TAG, 'onSessionCreate loadContent error: ', JSON.stringify(error));
+    }
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
@@ -652,76 +681,123 @@ export default class SecurityUIExtProvider extends UIExtensionAbility {
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-let storage = new LocalStorage();
+let storage = LocalStorage.getShared()
+AppStorage.setOrCreate('message', 'UIExtensionAbility')
 
 @Entry(storage)
 @Component
 struct SecurityExtension {
+  @StorageLink('message') storageLink: string = '';
+  @State backColor: Color = Color.Brown;
   private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
-
-  aboutToAppear() {
-    if (this.session) {
-      this.session.setReceiveDataCallback((data) => {
-        hilog.info(0x0000, 'SecurityExtension', 'setReceiveDataCallback: ' + JSON.stringify(data));
-      });
-
-      this.session.setReceiveDataForResultCallback((data: Record<string, Object>): Record<string, Object> => {
-        hilog.info(0x0000, 'SecurityExtension', 'setReceiveDataForResultCallback: ' + JSON.stringify(data));
-        return { result: '已收到同步数据' };
-      });
-    }
-  }
+  controller: TextInputController = new TextInputController()
 
   build() {
-    Column() {
-      Text('SecurityUIExtension提供方页面').fontSize(20).margin(10)
+    Scroll() {
+      Column() {
+        Text(this.storageLink)
+          .fontSize(10)
+          .fontWeight(FontWeight.Bold)
+          .width("80%")
+          .height("10%")
 
-      Button('向使用方发送数据').onClick(() => {
-        if (this.session) {
-          this.session.sendData({ data: '来自提供方的数据' });
-          hilog.info(0x0000, 'SecurityExtension', 'sendData');
-        }
-      }).margin(5)
-
-      Button('正常退出').onClick(() => {
-        if (this.session) {
-          this.session.terminateSelf();
-        }
-      }).margin(5)
-
-      Button('带结果退出').onClick(() => {
-        if (this.session) {
-          this.session.terminateSelfWithResult({
-            resultCode: 0,
-            want: {
-              bundleName: 'com.example.suecdemo',
-              parameters: { result: '处理完成' }
+        Button("点击向Component发送数据")
+          .fontSize(12)
+          .width("80%")
+          .height("10%")
+          .margin(1)
+          .onClick(() => {
+            hilog.info(0x0000, 'SecurityExtension', 'send 543321, for test start')
+            if (this.session != undefined) {
+              this.session.sendData({ "data": "Component应该接收到的数据" })
+              hilog.info(0x0000, 'SecurityExtension', 'send for test')
             }
-          });
-        }
-      }).margin(5)
+          })
+
+        Button("terminate")
+          .fontSize(12)
+          .width("80%")
+          .height("10%")
+          .margin(1)
+          .onClick(() => {
+            hilog.info(0x0000, 'SecurityExtension', 'terminate')
+            if (this.session != undefined) {
+              this.session.terminateSelf();
+            }
+            storage.clear()
+          })
+
+        Button("terminate with result")
+          .fontSize(12)
+          .width("80%")
+          .height("10%")
+          .margin(1)
+          .onClick(() => {
+            hilog.info(0x0000, 'SecurityExtension', 'terminateSelfWithResult')
+            if (this.session != undefined) {
+              this.session.terminateSelfWithResult({
+                resultCode: 0,
+                want: {
+                  bundleName: "myBundleName",
+                  parameters: { "result": 123456 }
+                }
+              })
+            }
+            storage.clear()
+          })
+
+        Button("setReceiveDataCallback")
+          .fontSize(12)
+          .width("80%")
+          .height("10%")
+          .margin(1)
+          .onClick(() => {
+            this.session?.setReceiveDataCallback((data) => {
+              this.storageLink = JSON.stringify(data)
+              hilog.info(0x0000, 'SecurityExtension', "test setReceiveDataCallback successfully: " + this.storageLink);
+            })
+          })
+
+        Button("setReceiveDataForResultCallback")
+          .fontSize(12)
+          .width("80%")
+          .height("10%")
+          .margin(1)
+          .onClick(() => {
+            this.session?.setReceiveDataForResultCallback(func1)
+          })
+      }
     }
-    .height('100%')
-    .width('100%')
+    .id("providerScroll")
+    .width("100%")
+    .height("100%")
   }
+}
+
+function func1(data: Record<string, Object>): Record<string, Object> {
+  let linkToMsg: SubscribedAbstractProperty<string> = AppStorage.link('message');
+  linkToMsg.set(JSON.stringify(data))
+  hilog.info(0x0000, 'SecurityExtension',
+    "invoke for test, handle callback set by setReceiveDataForResultCallback successfully");
+  return data;
 }
 ```
 
 - 提供方module.json5配置
 
 ```json
-{
-  "module": {
-    "name": "entry",
-    "type": "entry",
-    "extensionAbilities": [
+"extensionAbilities": [
       {
         "name": "SecurityUIExtProvider",
         "srcEntry": "./ets/uiextensionability/SecurityUIExtProvider.ets",
-        "type": "sys/commonUI",
-        "exported": true
+        "description": "$string:module_desc",
+        "label": "$string:EntryAbility_desc",
+        "type": "sysPicker/photoPicker",
+        "exported": true,
+        "metadata" : [{
+          "name" : "supportUIInteraction",
+          "value": "false"
+        }]
       }
     ]
-  }
-}
 ```
