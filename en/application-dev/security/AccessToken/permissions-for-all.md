@@ -304,6 +304,8 @@ Allows an application that has accessed the cloud to obtain its device-cloud syn
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | litewearables | smartlock
+
 **Valid since**: 11
 
 ## ohos.permission.STORE_PERSISTENT_DATA
