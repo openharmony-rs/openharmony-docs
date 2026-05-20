@@ -321,7 +321,7 @@ Provides parameter configuration required for creating a float view controller.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name| Type| Read-Only| No| Description|
+| Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No| No| Context environment.|
 | templateType | [FloatViewTemplateType](#floatviewtemplatetype) | No| No| Template type of the float view.|
@@ -336,7 +336,7 @@ Provides parameter configuration required for switching the float view template 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name| Type| Read-Only| No| Description|
+| Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
 | templateType | [FloatViewTemplateType](#floatviewtemplatetype) | No| No| Template type of the float view.|
 | size | [window.Size](arkts-apis-window-i.md#size7) | No| No| Window size required for updating the template type.|
@@ -1097,7 +1097,7 @@ Provides the properties of the float view.
 
 **Model restriction**: This API can be used only in the stage model.
 
-| Name| Type| Read-Only| No| Description|
+| Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
 | templateType | [FloatViewTemplateType](#floatviewtemplatetype) | No| No| Template type of the float view.|
 | windowId | number | No| No| Float view ID.|
@@ -1117,7 +1117,7 @@ Provides the aspect ratio range of the float view. The aspect ratio is obtained 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name| Type| Read-Only| No| Description|
+| Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
 | minRatio | number | No| No| Minimum aspect ratio of the float view.|
 | maxRatio | number | No| No| Maximum aspect ratio of the float view.|
@@ -1132,7 +1132,7 @@ Provides the limits of the float view.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name| Type| Read-Only| No| Description|
+| Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
 | minSize | [window.Size](arkts-apis-window-i.md#size7) | No| No| Minimum size of the float view.|
 | maxSize | [window.Size](arkts-apis-window-i.md#size7) | No| No| Maximum size of the float view.|
@@ -1148,7 +1148,7 @@ Provides the state change information of the float view.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name| Type| Read-Only| No| Description|
+| Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
 | state | [FloatViewState](#floatviewstate) | No| No| State of the float view.|
 | stopReason | string | No| No| Reason why the float view stops. This parameter is valid only when **state** is set to **FloatViewState.STOPPED**. In other states, this parameter is an empty string by default. The stop reasons and their meanings are as follows:<br>**"APP_STOP"**: The application proactively stops the float view.<br>**"STOP_IN_SIDEBAR"**: The float view is closed in the sidebar.<br>**"TITLE_BAR_STOP_CLICK"**: The float view is closed by clicking the close button on the title bar.<br>**"DUMPSTER_STOP"**: The float view is dragged to the trash can.<br>**"REPLACE_STOP"**: The float view is occupied by another float view.<br>**"FLOATING_BALL_STOP"**: The float view stops when the bound floating ball stops.<br> **"MAIN_WINDOW_DESTROY_STOP"**: The float view stops after the main window associated with the context is destroyed.|
@@ -1182,7 +1182,7 @@ Provides the rectangle area change information of the float view.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name| Type| Read-Only| No| Description|
+| Name| Type| Read-Only| Optional| Description|
 |------------|------------|------------|------------|------------|
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | No| No| Rectangle area of the float view.|
 | windowScale | number | No| No| Scale factor of the float view.|
