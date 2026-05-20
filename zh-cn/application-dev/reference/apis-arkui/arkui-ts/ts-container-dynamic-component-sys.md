@@ -189,25 +189,16 @@ struct Index {
 ArkTS-Sta示例：
 
 ``` TypeScript
-import { worker } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { State } from '@ohos.arkui.stateManagement'
-import { Column, Text, Component, Entry, DynamicComponent } from '@ohos.arkui.component';
+import { Column, Text, Component, Entry, DynamicComponent, Color } from '@ohos.arkui.component';
 
 @Entry
 @Component
 struct Index {
   @State errorMessage: string = '';
-  private workerInstance: worker.Worker | null = null;
-
-  aboutToAppear(): void {
-    this.workerInstance = new worker.Worker('workers/DynamicWorker.ets');
-  }
-
-  aboutToDisappear(): void {
-    this.workerInstance?.terminate();
-  }
+  @State worker: EAWorker = new EAWorker(true);
 
   build() {
     Column() {
@@ -218,8 +209,8 @@ struct Index {
       }
 
       DynamicComponent({
-        entryPoint: 'DynamicPage',
-        worker: this.workerInstance!,
+        entryPoint: 'com.example.myapplication/entry/ets/pages/DynamicPage',
+        worker: this.worker!,
         backgroundTransparent: false,
         allowCrossProcessNesting: false,
         allowOccupied: false,
@@ -230,6 +221,8 @@ struct Index {
           this.errorMessage = `code: ${error.code}, message: ${error.message}`;
           hilog.error(0x0000, 'DynamicComponentDemo', 'onError: ' + this.errorMessage);
         })
+        .borderWidth(10)
+        .borderColor(Color.Red)
     }
     .height('100%')
     .width('100%')
@@ -237,30 +230,24 @@ struct Index {
 }
 ```
 
-**Worker线程文件** workers/DynamicWorker.ets
-
-```ts
-import { worker } from '@kit.ArkTS';
-
-const workerInstance = new worker.Worker('workers/DynamicWorker.ets');
-
-workerInstance.onmessage = (event: MessageEvents) => {
-  // 处理主线程发送的消息
-};
-```
-
 **Abc页面入口** DynamicPage.ets
 
-```ts
+``` TypeScript
+import { Column, Text, Component, Entry, Color } from '@ohos.arkui.component';
+
 @Entry
 @Component
 struct DynamicPage {
   build() {
     Column() {
-      Text('这是DynamicComponent加载的Abc页面').fontSize(20).margin(10)
+      Text('this is ability in DC')
+        .fontSize(20)
+        .margin(10)
     }
     .height('100%')
     .width('100%')
+    .borderWidth(10)
+    .borderColor(Color.Blue)
   }
 }
 ```
