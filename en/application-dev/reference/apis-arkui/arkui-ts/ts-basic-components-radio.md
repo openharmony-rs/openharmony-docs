@@ -201,7 +201,7 @@ Triggered when the selected state of the radio button changes. Compared with [on
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optional)\<[OnRadioChangeCallback](#onradiochangecallback18)> | Yes  | Callback for radio button selection state changes.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnRadioChangeCallback](#onradiochangecallback18)> | Yes  | Callback for radio button selection state changes.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ## OnRadioChangeCallback<sup>18+</sup>
 
