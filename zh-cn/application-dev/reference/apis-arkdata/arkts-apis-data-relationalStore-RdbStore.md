@@ -5410,8 +5410,8 @@ stopCloudSync(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 801       | Capability not supported because the device does not support the device-cloud capability. |
-| 14800000  | Inner error. |
+| 801       | Capability not supported because the device does not support the cloud synchronization capability. |
+| 14800000  | Internal error. |
 | 14800014  | The target instance is already closed. |
 
 **示例：**
@@ -6993,6 +6993,7 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 示例1：使用默认的加密参数
@@ -7029,6 +7030,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 示例2：使用自定义的加密参数
@@ -7126,6 +7128,7 @@ rekey(encryptionKey: Uint8Array): Promise\<void>
 示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7264,6 +7267,7 @@ rekeyEx(cryptoParam: CryptoParam): Promise\<void>
 **示例1：原数据库为默认参数加密数据库，更换密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7309,6 +7313,7 @@ export default class EntryAbility extends UIAbility {
 **示例2：原数据库为自定义参数加密数据库，更换自定义密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7364,6 +7369,7 @@ export default class EntryAbility extends UIAbility {
 **示例3：原数据库为默认参数加密库，更换自定义密钥和加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7410,6 +7416,7 @@ export default class EntryAbility extends UIAbility {
 **示例4：原数据库为自定义参数加密数据库，更换数据库生成密钥和自定义加密参数**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7465,6 +7472,7 @@ export default class EntryAbility extends UIAbility {
 **示例5：原数据库为自定义参数加密数据库，更换为非加密数据库**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -7516,6 +7524,7 @@ export default class EntryAbility extends UIAbility {
 **示例6：原数据库为非加密数据库，更换为自定义参数加密数据库**
 
 ```ts
+// EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
