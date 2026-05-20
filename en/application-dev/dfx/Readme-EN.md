@@ -17,6 +17,8 @@
   - [Application Freeze Detection](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [Task Timeout Detection](apptask-timeout-guidelines.md)
   - [Application Killed Detection](appkilled-guidelines.md)<!--RP2--><!--RP2End-->
+    - General Logs<!--general-log-->
+    - [Page Switch Logs](pageswitch-log.md)<!--RP2--><!--RP2End-->
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
