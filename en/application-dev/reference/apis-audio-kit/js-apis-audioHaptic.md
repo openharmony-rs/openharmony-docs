@@ -482,7 +482,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 audioHapticPlayerInstance.stop().then(() => {
   console.info('Succeeded in stopping.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to stop Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 

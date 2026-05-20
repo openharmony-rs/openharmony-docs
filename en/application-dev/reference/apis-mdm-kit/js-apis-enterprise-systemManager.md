@@ -223,7 +223,7 @@ try {
 let otaUpdatePolicy5: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.POSTPONE,
   "version": "version_1.0.0.4",
-  "delayUpdateTime": 5, // Unit: hour
+  "delayUpdateTime": 5, // The unit is hours.
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy5);
