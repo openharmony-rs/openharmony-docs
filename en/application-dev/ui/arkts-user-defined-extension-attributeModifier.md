@@ -1,8 +1,8 @@
 # Attribute Modifier (AttributeModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -65,13 +65,13 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
 
 ## How to Use
 
-- The **attributeModifier** method accepts an instance that implements the **AttributeModifier\<T>** API. Here, **T** must be the specific attribute type corresponding to the component, or it must be **CommonAttribute**.
+- The common component method **attributeModifier** allows you to pass an instance that implements the **AttributeModifier&lt;T&gt;** API. **T** must be specified as the **Attribute** type corresponding to the component or as a [universal attribute](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md).
 - When a component is initialized for the first time or when its associated state variable changes, if the passed instance implements the corresponding API, the **applyNormalAttribute** callback will be invoked.
-- When the **applyNormalAttribute** callback is invoked, a component attribute object is passed in. Through this object, you can set the attributes and events of the current component. 
+- When the [applyNormalAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applynormalattribute) callback is called, the component attribute object will be passed. This object can be used to set the attributes and events of the current component.
 - If an attempt is made to execute attributes or events that are not yet supported, an exception will be thrown during execution.
 - When an attribute change triggers the **apply*Xxx*Attribute** API, any attributes that were previously set on the component but not included in the current change will revert to their default values.
-- The API can be used to leverage polymorphic styling capabilities. For example, if you need to set certain attributes when the component enters a pressed state, you can implement the **applyPressedAttribute** method to achieve this.
-- If the same attribute is set on a component using both attribute methods and **applyNormalAttribute**, the principle of property override is followed, which means that the last set attributes take effect.
+- This API can be used to implement polymorphic styles. For example, if you need to set certain attributes when a component enters the pressed state, you can customize the [applyPressedAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applypressedattribute) method to achieve this.
+- Ensure that the attributes set in **attributeModifier** are different from those set in other methods. Otherwise, **attributeModifier** does not take effect when the page is refreshed.
 - A single **Modifier** instance object can be used across multiple components.
 - If **applyNormalAttribute** is used multiple times on a single component with different **Modifier** instances, each time the state variables are updated, the attribute settings of these instances will be executed in the order they were applied, which also follows the principle of property override.
 
@@ -138,7 +138,6 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
 
   ![AttributeModifier](figures/AttributeModifier01.gif)
 
-If the same attribute is set on a component using both attribute methods and **applyNormalAttribute**, the principle of property override is followed, which means that the last set attributes take effect.
 
   <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
   
@@ -462,6 +461,7 @@ You can use **AttributeModifier** to set polymorphic styles and events, which en
   | Navigation | [toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10) | 10 | 20 |
   | Navigation | [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) | 11 | 20 |
   | Navigation | [systemBarStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#systembarstyle12) | 12 | 20 |
+  | Navigation | [enableVisibilityLifecycleWithContentCover](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enablevisibilitylifecyclewithcontentcover21) | 21 | 23 |
   | PatternLock | [backgroundColor](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md#backgroundcolor) | 9 | 20 |
   | PatternLock | [onDotConnect](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md#ondotconnect11) | 11 | 20 |
   | Progress | [privacySensitive](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#privacysensitive12) | 12 | 20 |

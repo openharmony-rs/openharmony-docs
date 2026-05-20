@@ -164,7 +164,7 @@ The following examples demonstrate how to use **viewPort**:
   }
   ```
 
-  ![viewport (2)](figures/viewport (2).jpg)
+  ![viewport2](figures/viewport2.jpg)
 
 - Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport. Then, apply a translation of 150 units right and 150 units down to the viewport.
 
@@ -198,7 +198,7 @@ The following examples demonstrate how to use **viewPort**:
   }
   ```
 
-  ![viewport (3)](figures/viewport (3).jpg)
+  ![viewport3](figures/viewport3.jpg)
 
 
 ## Setting Styles

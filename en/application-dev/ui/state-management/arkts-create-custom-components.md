@@ -18,7 +18,7 @@ Custom components offer the following features:
 
 >**NOTE**
 >
->Starting from API version 24, you can enable custom components to support cross-[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md) migration by configuring the [metadata](./../../quick-start/module-configuration-file.md#metadata) in the [module.json5 configuration file](./../../quick-start/module-configuration-file.md) of your application project. The configuration method is as follows: Add [name](./../../quick-start/module-configuration-file.md#metadata) as **enableCustomComponentCrossAbility** and [value](./../../quick-start/module-configuration-file.md#metadata) as **true**. Since custom components provide UIAbility, the term ability here specifically refers to [UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md). For details, see [Cross-Ability Migration of Custom Components](#cross-ability migration of custom components).
+>Starting from API version 24, you can enable custom components to support cross-[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md) migration by configuring the [metadata](./../../quick-start/module-configuration-file.md#metadata) in the [module.json5 configuration file](./../../quick-start/module-configuration-file.md) of your application project. The configuration method is as follows: Add [name](./../../quick-start/module-configuration-file.md#metadata) as **enableCustomComponentCrossAbility** and [value](./../../quick-start/module-configuration-file.md#metadata) as **true**. Since custom components provide UIAbility, the term ability here specifically refers to [UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md). For details, see [Cross-Ability Migration of Custom Components](#cross-ability-migration-of-custom-components).
 
 
 ## Basic Usage of Custom Components
@@ -71,15 +71,24 @@ struct ParentComponent {
 
 To fully understand the preceding example, a knowledge of the following concepts is essential:
 
-- [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
-
-- [Member Functions/Variables](#member-functionsvariables)
-
-- [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
-
-- [build() Implementation Rules](#build-implementation-rules)
-
-- [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
+- [Creating a Custom Component](#creating-a-custom-component)
+  - [Basic Usage of Custom Components](#basic-usage-of-custom-components)
+  - [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
+    - [struct](#struct)
+    - [@Entry](#entry)
+    - [@Component](#component)
+    - [@ComponentV2](#componentv2)
+    - [build()](#build)
+    - [@Reusable](#reusable)
+    - [@ReusableV2](#reusablev2)
+  - [Member Functions/Variables](#member-functionsvariables)
+  - [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
+  - [build() Implementation Rules](#build-implementation-rules)
+  - [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
+  - [Cross-Ability Migration of Custom Components](#cross-ability-migration-of-custom-components)
+  - [Constraints](#constraints)
+    - [V1 Custom Components Do Not Support Static Code Blocks](#v1-custom-components-do-not-support-static-code-blocks)
+    - [Mixing @Component and @ComponentV2](#mixing-component-and-componentv2)
 
 
 ## Basic Structure of a Custom Component
