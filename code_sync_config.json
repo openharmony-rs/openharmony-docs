@@ -2785,9 +2785,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":34,
 						"name":"arkts_break_strategy_example_text",
-						"start_line":16
+						"start_line":27
 					}
 				]
 			},
@@ -2795,9 +2795,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":33,
 						"name":"arkts_punctuation_compress_example_text",
-						"start_line":16
+						"start_line":27
 					}
 				]
 			}
