@@ -1028,7 +1028,7 @@ for(let i = 0; i < 10; i++) {
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1067,7 +1067,7 @@ type TreeSetForEachCb\<T\> = (value: T, key: T, set: TreeSet\<T\>) => void
 
 TreeSet中forEach方法的回调函数。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1089,7 +1089,7 @@ type TreeSetComparator\<T\> = (firstValue: T, secondValue: T) => double
 
 TreeSet中[constructor](#constructor23)方法的回调函数。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
