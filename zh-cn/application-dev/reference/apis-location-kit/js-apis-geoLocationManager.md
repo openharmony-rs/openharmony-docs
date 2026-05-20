@@ -3149,7 +3149,6 @@ getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
   }
   ```
 
-
 ## geoLocationManager.findMatchingWlan
 
 findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean):Promise&lt;Array&lt;MatchingWlanInfo&gt;&gt;
