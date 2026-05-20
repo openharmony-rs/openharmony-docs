@@ -594,8 +594,8 @@ updateProgress(value: double): void
 
 **参数：**
 
-| 参数名 |          类型 |   必填 | 说明 |
-| -------- | ---------- | ------ | --------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | --- | --------- |
 | value  | double   | 是 | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
 
 ### updateColor<sup>10+</sup>
@@ -614,8 +614,8 @@ updateColor(value: ResourceColor): void
 
 **参数：**
 
-| 参数名    |       类型 |    必填 | 说明 |
-| -------- | ---------- | ------ | --------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------------------------------------- | ------ | -------------- |
 | value  | [ResourceColor](ts-types.md#resourcecolor) | 是 | 进度遮罩的颜色。 |
 
 ### enableBreathingAnimation<sup>12+</sup>
@@ -634,7 +634,7 @@ enableBreathingAnimation(value: boolean): void
 
 **参数：**
 
-| 参数名 | 类型                | 必填 | 说明         |
+| 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------------------ | ---- | ---------------- |
 | value  | boolean | 是   | 是否开启呼吸光晕动画。<br/>true：开启呼吸光晕动画。<br/>false：关闭呼吸光晕动画。 |
 
