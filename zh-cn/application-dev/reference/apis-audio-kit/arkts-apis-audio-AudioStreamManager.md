@@ -922,7 +922,7 @@ try {
 
 isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolean
 
-查询指定音频流信息和使用场景下是否支持透传通路播放。
+查询指定音频流信息和使用场景下是否支持直通播放。
 
 **起始版本：** 26.0.0
 
@@ -941,7 +941,7 @@ isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): bool
 
 | 类型         | 说明                                   |
 | ------------ | --------------------------------------- |
-|  boolean     | 是否支持透传通路播放。true表示支持，false表示不支持。 |
+|  boolean     | 是否支持直通播放。true表示支持，false表示不支持。 |
 
 **示例：**
 

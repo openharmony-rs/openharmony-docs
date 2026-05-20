@@ -159,7 +159,7 @@
 | **低时延播放通路** | 游戏音效、K歌耳返、乐器演奏、实时通信等对延迟敏感的场景。 |
 | **低时延录制通路** | K歌场景。 |
 | **多声道通路** | 多声道播放场景。 |
-| **透传通路** | 播放高质量无损音乐、Hi-Fi音频等。 |
+| **直通通路** | 播放高质量无损音乐、Hi-Fi音频等。 |
 | **低功耗通路** | 长时间播放音乐、视频等。 |
 | **普通通路** | 普通音乐播放、视频播放、录音等。 |
 
@@ -171,7 +171,7 @@
 | ---------- | ---------- |
 | [isFastPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastplaybacksupported) | 查询是否支持低时延播放 |
 | [isMultichannelPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#ismultichannelplaybacksupported) | 查询是否支持多声道播放 |
-| [isDirectPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isdirectplaybacksupported) | 查询是否支持透传播放 |
+| [isDirectPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isdirectplaybacksupported) | 查询是否支持直通播放 |
 | [isOffloadPlaybackSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isoffloadplaybacksupported) | 查询是否支持低功耗播放 |
 
 ### 录制相关查询接口
