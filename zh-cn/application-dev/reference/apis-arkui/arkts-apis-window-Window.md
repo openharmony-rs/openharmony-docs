@@ -8360,10 +8360,10 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.                               |
+| 201      | Permission verification failed. The application does not have the permission required or a non-system application calls the API.                    |
 | 1300002  | This window state is abnormal.    |
 | 1300003  | This window manager service works abnormally.                                                                      |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
 **示例：**
 
