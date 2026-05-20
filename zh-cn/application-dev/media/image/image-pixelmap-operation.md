@@ -39,7 +39,7 @@
 
    <!-- @[pixelmap_get_pixelmap_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
    
-   ``` 
+   ``` TypeScript
    // 获取图像像素的总字节数。
    let pixelBytesNumber: int = this.pixelMap!.getPixelBytesNumber();
    Logger.info('Total bytes: ', pixelBytesNumber.toString());
