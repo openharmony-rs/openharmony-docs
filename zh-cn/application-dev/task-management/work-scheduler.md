@@ -131,17 +131,19 @@
    - srcEntry标签设置为当前ExtensionAbility组件所对应的代码路径。
 
    <!-- @[workScheduler_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/module.json5) -->
-
-   ```json
+   
+   ``` JSON5
    {
      "module": {
-         "extensionAbilities": [
-           {
-             "name": "MyWorkSchedulerExtensionAbility",
-             "srcEntry": "./ets/WorkSchedulerExtension/WorkSchedulerExtension.ets",
-             "type": "workScheduler"
-           }
-         ]
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "WorkSchedulerAbility",
+           "srcEntry": "./ets/WorkSchedulerAbility/WorkSchedulerAbility.ets",
+           "type": "workScheduler",
+           // ...
+         }
+       ]
      }
    }
    ```
