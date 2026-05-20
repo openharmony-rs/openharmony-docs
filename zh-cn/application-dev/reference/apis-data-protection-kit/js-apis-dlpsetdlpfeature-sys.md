@@ -6,13 +6,13 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-本模块提供数据防泄漏（Data Loss Prevention，简称为DLP）特性开关的控制能力，包括开启和关闭DLP特性开关、返回特性开关状态设置是否成功等。<br>
+本模块提供数据防泄漏（Data Loss Prevention，简称为DLP）特性开关的控制能力，包括开启和关闭DLP特性开关、返回特性开关设置结果等。<br>
 **使用场景**： 
 - 企业环境中对敏感数据进行保护，防止数据泄露 
 - 需要满足数据安全合规要求的场景 
 - 对机密文件进行访问控制和加密保护
 
-**起始版本：** 26.0.0
+本模块首批接口从API version 26开始支持。
 
 > **说明：**
 >
@@ -28,9 +28,12 @@ import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 
 setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
-设置DLP特性开关状态。使用Promise异步回调。
+设置DLP特性开关状态。使用Promise异步回调。调用成功后，DLP特性开关将设置为指定状态，系统将根据该状态启用或禁用DLP保护功能。
 
-当特性开关处于开启状态时，右键单击可加密文件，菜单中会显示“加密保护”选项。
+**使用场景**： 
+- 设备管理应用，根据企业策略开启或关闭数据防泄漏功能
+
+当特性开关处于开启状态时，右键单击支持加密的文件，菜单中会显示"加密保护"选项。（可加密类型包括：.txt，.pdf，.xls，.xlsx，.ppt，.pptx，.doc，.docx）
 
 **起始版本：** 26.0.0
 
@@ -44,13 +47,13 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| status | [DlpFeatureStatus](#dlpfeaturestatus) | 是 | DLP特性开关状态。 |
+| status | [DlpFeatureStatus](#dlpfeaturestatus) | 是 | DLP特性开关状态。ENABLED_FEATURE用于开启DLP特性，右键单击可加密文件菜单中会显示"加密保护"选项，NOT_ENABLED_FEATURE用于关闭DLP特性，菜单中不显示"加密保护"选项。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise对象，返回DLP特性开关状态设置的结果信息。 |
+| Promise&lt;[StatusInfoResult](#statusinforesult)&gt; | Promise对象，返回DLP特性开关状态设置的结果信息。成功时返回StatusInfoResult对象，失败时抛出BusinessError错误。 |
 
 **错误码：**
 
@@ -109,7 +112,7 @@ DLP特性开关的状态信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| dlpFeatureStatus | [DlpFeatureStatus](#dlpfeaturestatus) | 否 | 否 | DLP特性开关的状态。 |
+| dlpFeatureStatus | [DlpFeatureStatus](#dlpfeaturestatus) | 否 | 否 | DLP特性开关的状态，包含NOT_ENABLED_FEATURE和ENABLED_FEATURE。 |
 
 ## DlpFeatureStatus
 
