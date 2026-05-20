@@ -95,9 +95,11 @@
 
 1. 新建工程目录。
 
-   在工程entry Module对应的ets目录(./entry/src/main/ets)下，新建目录及ArkTS文件，例如新建一个目录并命名为WorkSchedulerExtension。在WorkSchedulerExtension目录下，新建一个ArkTS文件并命名为WorkSchedulerExtension.ets，用以实现延迟任务回调接口。
+   在工程entry Module对应的ets目录(./entry/src/main/ets)下，新建目录及ArkTS文件，例如新建一个目录并命名为WorkSchedulerAbility。在WorkSchedulerAbility目录下，新建一个ArkTS文件并命名为WorkSchedulerAbility.ets，用以实现延迟任务回调接口。
 
 2. 导入模块。
+
+   <!-- @[extension_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ```ts
    import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
@@ -128,6 +130,8 @@
 
    - srcEntry标签设置为当前ExtensionAbility组件所对应的代码路径。
 
+   <!-- @[workScheduler_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/module.json5) -->
+
    ```json
    {
      "module": {
@@ -146,6 +150,8 @@
 ### 实现延迟任务调度
 
 1. 导入模块。
+
+   <!-- @[workScheduler_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
    ```ts
    import { workScheduler } from '@kit.BackgroundTasksKit';
