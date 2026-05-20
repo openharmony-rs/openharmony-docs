@@ -384,7 +384,7 @@ struct SubHeaderExample {
 
 ![Subheader 1](figures/en-us_image_subheader_example01.png)
 
-### Example 2: Implementing a Double-Line Text Content-rich Subheader
+### Example 2: Implementing a Double-Line Text Content Subheader
 This example showcases a subheader with a primary title and a secondary title on the left, and a text button with a right arrow on the right.
 
 ```ts
@@ -435,7 +435,7 @@ struct SubHeaderExample {
 
 ![Subheader 2](figures/en-us_image_subheader_example02.png)
 
-### Example 3: Implementing a Spinner Content-rich Subheader
+### Example 3: Implementing a Spinner Content Subheader
 This example showcases a subheader with content and events for selection on the left, and an icon-attached button on the right.
 
 ```ts
