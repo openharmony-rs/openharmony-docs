@@ -68,13 +68,13 @@ class MyGrid extends ExtendableGrid {
   }
 
   height(): this {
-    super.width('100%');
+    super.height('100%');
     return this;
   }
 
   // 自定义属性
   newAttribute(): this {
-    super..columnsGap(10);
+    super.columnsGap(10);
     super.rowsGap(10);
     super.height(100);
     return this;
@@ -90,7 +90,8 @@ struct Index {
     MyGrid() {
       ForEach(this.data, (item: number) => {
         GridItem() {
-          Text('N' + item).height(80)
+          Text('N' + item)
+            .height(80)
         }
         .backgroundColor(Color.Orange)
       })

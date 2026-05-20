@@ -67,7 +67,7 @@ class MyGridItem extends ExtendableGridItem {
   }
 
   height(): this {
-    super.width('100%');
+    super.height('100%');
     return this;
   }
 
@@ -88,7 +88,8 @@ struct Index {
     Grid() {
       ForEach(this.data, (item: number) => {
         MyGridItem() {
-          Text('N' + item).height(80)
+          Text('N' + item)
+            .height(80)
         }
         .newAttribute() // 调用自定义属性
       })

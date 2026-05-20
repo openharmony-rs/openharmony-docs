@@ -67,7 +67,7 @@ class MyStack extends ExtendableStack {
   }
 
   height(): this {
-    super.width('100%');
+    super.height('100%');
     return this;
   }
 
@@ -86,8 +86,16 @@ struct Index {
     Column() {
       // 调用扩展组件
       MyStack({ alignContent: Alignment.Bottom }) {
-        Text('Hello World').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
-        Text('Hello ArkUI').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
+        Text('Hello World')
+          .width('90%')
+          .height('100%')
+          .backgroundColor(0xd2cab3)
+          .align(Alignment.Top)
+        Text('Hello ArkUI')
+          .width('70%')
+          .height('60%')
+          .backgroundColor(0xc1cbac)
+          .align(Alignment.Top)
       }
       .height('50%')
       .width() // 调用重写属性

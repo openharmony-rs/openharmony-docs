@@ -67,7 +67,7 @@ class MyList extends ExtendableList {
   }
 
   height(): this {
-    super.width('100%');
+    super.height('100%');
     return this;
   }
 
@@ -102,7 +102,8 @@ struct Index {
             .onClick(() => {
               this.arr[0] += 'a';
             })
-        }.margin(10)
+        }
+        .margin(10)
         .borderRadius(10)
         .backgroundColor('#FFFFFFFF')
       }, (item: string) => item)

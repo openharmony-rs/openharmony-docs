@@ -67,14 +67,14 @@ class MyListItem extends ExtendableListItem {
   }
   
   height(): this {
-    super.width('100%');
+    super.height('100%');
     return this;
   }
 
   // 自定义属性
   newAttribute(): this {
     super.margin(10);
-    super..borderRadius(10);
+    super.borderRadius(10);
     return this;
   }
 }

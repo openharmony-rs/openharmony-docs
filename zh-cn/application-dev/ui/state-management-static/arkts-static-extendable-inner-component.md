@@ -1,12 +1,16 @@
 # 内置组件扩展
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--Designer: @shiyu_huang_plus-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 开发者可以使用现有的内置组件实现预期的UI效果，但无法在其之上进行扩展，无法添加自定义的行为。当存在多处均需要相同属性的内置组件时，开发者只能编写类似代码，无法实现代码复用。从API版本26.0.0开始，内置组件扩展支持开发者重写已有属性和新增自定义属性。
 
 > **说明：**
 >
-> 在ArkTS-Sta上下文中，从API版本26.0.0开始，支持内置组件扩展。
->
-> 在ArkTS-Sta上下文中，支持12个内置组件的扩展，详见[支持扩展的内置组件](#支持扩展的内置组件)。
+> 在ArkTS-Sta上下文中，从API版本26.0.0开始，支持内置组件扩展，具体范围详见[支持扩展的内置组件](#支持扩展的内置组件)。
 
 在静态语言上下文中使用时，需要导入内置组件扩展类，以ExtendableButton为例，导入方式如下：
 
@@ -27,7 +31,7 @@ import { ExtendableText } from '@kit.ArkUI';
 
 class MyText extends ExtendableText {
   // Text中的属性
-  fontSize() {
+  fontSize(): this {
     super.fontSize(30);
     return this;
   }
@@ -60,7 +64,7 @@ import { ExtendableText, TextOptions, Length, Entry, Component, Text, Column } f
 
 class MyText extends ExtendableText {
   // Text中的属性
-  fontSize() {
+  fontSize(): this {
     super.fontSize(30);
     return this;
   }
@@ -78,9 +82,9 @@ struct Index {
   build() {
     Column() {
       MyText('Hello World')
-      .fontSize()
-      .height('30%')
-      .width()
+        .fontSize()
+        .height('30%')
+        .width()
     }
   }
 }
@@ -97,7 +101,7 @@ import { ExtendableText, TextOptions, Length, Entry, Component, Text, Column } f
 
 class MyText extends ExtendableText {
   // 可变属性样式
-  newAttribute(fontSize: double, height: Length, width: Length, value: string): this {
+  newAttribute(fontSize: double, height: Length, width: Length): this {
     // 批量设置属性
     super.fontSize(fontSize);
     super.height(height);
@@ -120,10 +124,14 @@ class MyText extends ExtendableText {
 struct Index {
   build() {
     Column() {
-      MyText('Hello World').newAttribute(20, '20%', '50%')
-      MyText('Hello ArkUI').newAttribute(30, '20%', '75%')
-      MyText('Hello Today').newAttribute()
-      MyText('Hello Tomorrow').newAttribute()
+      MyText('Hello World')
+        .newAttribute(20, '20%', '50%')
+      MyText('Hello ArkUI')
+        .newAttribute(30, '20%', '75%')
+      MyText('Hello Today')
+        .fixedNewAttribute()
+      MyText('Hello Tomorrow')
+        .fixedNewAttribute()
     }
   }
 }

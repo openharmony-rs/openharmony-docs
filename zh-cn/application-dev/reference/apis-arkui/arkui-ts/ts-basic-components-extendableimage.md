@@ -89,7 +89,7 @@ setImageOptions(src: PixelMap | ResourceStr | DrawableDescriptor | ImageContent 
 
 | 参数名 | 类型                                    | 必填 | 说明                 |
 | ------- | --------------------------------------- | ---- | -------------------- |
-| src | [PixelMap](ts-image-common.md#pixelmap) \| [ResourceStr](ts-types.md#resourcestr) \| [DrawableDescriptor](ts-basic-components-image.md#drawabledescriptor10) \| [ImageContent](./ts-basic-components-image.md#imagecontent12) \| undefined | 是   | 图片资源类型。 |
+| src | [PixelMap](ts-image-common.md#pixelmap) \| [ResourceStr](ts-types.md#resourcestr) \| [DrawableDescriptor](ts-basic-components-image.md#drawabledescriptor10) \| [ImageContent](./ts-basic-components-image.md#imagecontent12) \| undefined | 是   | 图片的数据源，支持本地图片和网络图片。 |
 | reloadKey | string | 否   | 图片重新加载的标识。当reloadKey的值发生变化时，将不使用缓存重新加载图片。适用于图片源地址不变但图片内容已更新的场景（例如本地图片内容被重写）。<br/>默认值：空字符串。 |
 
 ## 事件

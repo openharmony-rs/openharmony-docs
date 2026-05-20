@@ -67,7 +67,7 @@ class MyColumn extends ExtendableColumn {
   }
 
   height(): this {
-    super.width('100%');
+    super.height('100%');
     return this;
   }
 
