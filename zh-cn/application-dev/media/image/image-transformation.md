@@ -27,14 +27,15 @@
    ArkTS-Sta示例：
 
    <!-- @[pixelmap_get_image_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
+   
+   ``` TypeScript
    // 获取图片大小。
-   pixelMap.getImageInfo().then((info: image.ImageInfo) => {
-     console.info('info.width = ' + info.size.width);
-     console.info('info.height = ' + info.size.height);
+   await this.pixelMap!.getImageInfo().then((info: image.ImageInfo) => {
+     this.imageInfo = info;
+     Logger.info('Image width: ', info.size.width.toString());
+     Logger.info('Image height: ', info.size.height.toString());
    }).catch((err) => {
-     console.error("Failed to obtain the image pixel map information. And the error is: " + String(err));
+     Logger.error('Failed to obtain the image information. The error is: ', String(err));
    });
    ```
 
@@ -59,13 +60,15 @@
      ArkTS-Sta示例：
 
      <!-- @[pixelmap_crop_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      // x：裁剪起始点横坐标0。
      // y：裁剪起始点纵坐标0。
      // height：裁剪高度400，方向为从上往下（裁剪后的图片高度为400）。
      // width：裁剪宽度400，方向为从左到右（裁剪后的图片宽度为400）。
-     pixelMap.crop({ x: 0, y: 0, size: { height: 400, width: 400 } });
+     this.pixelMap!.crop({ x: 0, y: 0, size: { height: 400, width: 400 } }).then(() => {
+       // ...
+     });
      ```
 
      ![cropping](figures/cropping.jpeg)
@@ -83,11 +86,13 @@
      ArkTS-Sta示例：
 
      <!-- @[pixelmap_scale_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
-     // 宽为原来的0.5。
-     // 高为原来的0.5。
-     pixelMap.scale(0.5, 0.5);
+     
+     ``` TypeScript
+     // 宽为原来的0.5倍。
+     // 高为原来的0.5倍。
+     this.pixelMap!.scale(0.5, 0.5).then(() => {
+       // ...
+     });
      ```
 
      ![zoom](figures/zoom.jpeg)
@@ -105,11 +110,13 @@
      ArkTS-Sta示例：
 
      <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      // 向下平移100。
      // 向右平移100。
-     pixelMap.translate(100, 100);
+     this.pixelMap!.translate(100, 100).then(() => {
+       // ...
+     });
      ```
 
      ![offsets](figures/offsets.jpeg)
@@ -126,10 +133,12 @@
      ArkTS-Sta示例：
 
      <!-- @[pixelmap_rotate_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      // 顺时针旋转90°。
-     pixelMap.rotate(90);
+     this.pixelMap!.rotate(90).then(() => {
+       // ...
+     });
      ```
 
      ![rotate](figures/rotate.jpeg)
@@ -146,10 +155,12 @@
      ArkTS-Sta示例：
 
      <!-- @[pixelmap_vertical_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      // 垂直翻转。
-     pixelMap.flip(false, true);
+     this.pixelMap!.flip(false, true).then(() => {
+       // ...
+     });
      ```
 
      ![Vertical Flip](figures/vertical-flip.jpeg)
@@ -164,10 +175,12 @@
      ArkTS-Sta示例：
 
      <!-- @[pixelmap_horizontal_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
+     
+     ``` TypeScript
      // 水平翻转。
-     pixelMap.flip(true, false);
+     this.pixelMap!.flip(true, false).then(() => {
+       // ...
+     });
      ```
 
      ![Horizontal Flip](figures/horizontal-flip.jpeg)
@@ -184,10 +197,12 @@
      ArkTS-Sta示例：
 
      <!-- @[pixelmap_change_opacity_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
-
-     ```ts
-     // 透明度0.5。
-     pixelMap.opacity(0.5);
+     
+     ``` TypeScript
+     // 所有像素的透明度改为0.5。
+     this.pixelMap!.opacity(0.5).then(() => {
+       // ...
+     });
      ```
 
      ![Transparency](figures/transparency.png)
