@@ -1885,7 +1885,7 @@ try {
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | 否 | 否 | 表示DLP沙箱应用索引。 |
 | tokenID | number | 否 | 否 | 表示DLP沙箱应用的tokenID。 |
-| bindAppIndex<sup>24+</sup> | number | 否 | 是 | 表示被绑定的DLP沙箱应用的应用索引。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| bindAppIndex<sup>24+</sup> | number | 否 | 是 | 表示被绑定的DLP沙箱应用的应用索引。默认不返回，仅当沙箱应用是预览时返回。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPSandboxState
 
