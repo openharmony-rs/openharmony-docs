@@ -121,19 +121,22 @@
 
    <!-- @[continuous_task_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/module.json5) -->
    
-   ``` json5
+   ``` JSON5
    "module": {
-       "abilities": [
-           {
-              "backgroundModes": [
-              // 长时任务类型的配置项
-              "audioRecording",
-              "bluetoothInteraction",
-              "audioPlayback"
-              ]
-           }
-       ],
-       // ...
+     // ...
+     "abilities": [
+       {
+         // ...
+         "backgroundModes": [
+           // 长时任务类型的配置项
+           "audioRecording",
+           "bluetoothInteraction",
+           "audioPlayback"
+         ],
+         // ...
+       }
+     ],
+     // ...
    }
    ```
 
@@ -144,7 +147,7 @@
 
     <!-- @[continuous_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
     
-    ```ts
+    ``` TypeScript
     import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
@@ -175,7 +178,7 @@
    
    @Entry
    @Component
-   struct Index {
+   struct AudioPlaybackIndex {
      @State message: string = 'ContinuousTask';
      // 通过getUIContext().getHostContext()方法，来获取page所在的UIAbility上下文
      private context: Context | undefined = this.getUIContext().getHostContext();

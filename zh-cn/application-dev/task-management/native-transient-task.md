@@ -262,7 +262,7 @@
      RequestSuspendDelay() {
        let requestId = testTransientTask.RequestSuspendDelay();
        // ...
-       console.info('The return requestId is ' + requestId);
+       console.info('The returned requestId is ' + requestId);
      }
    
      GetRemainingDelayTime() {
@@ -271,13 +271,13 @@
      }
    
      CancelSuspendDelay() {
-       let ret = testTransientTask.CancelSuspendDelay();
-       console.info('The ret is ' + ret);
+       let result = testTransientTask.CancelSuspendDelay();
+       console.info('The return value is ' + result);
      }
    
      GetTransientTaskInfo() {
-       let ret = testTransientTask.GetTransientTaskInfo();
-       console.info('The ret is ' + JSON.stringify(ret));
+       let info = testTransientTask.GetTransientTaskInfo();
+       console.info('The transientTaskInfo is ' + JSON.stringify(info));
      }
    }
    ```
@@ -286,7 +286,9 @@
 
 配置`CMakeLists.txt`，本模块需要用到的共享库是`libtransient_task.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
-   ```txt
+   <!-- @[dependent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
    target_link_libraries(entry PUBLIC libace_napi.z.so libtransient_task.so)
    ```
 

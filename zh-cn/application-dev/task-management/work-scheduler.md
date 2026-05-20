@@ -99,8 +99,10 @@
 
 2. 导入模块。
    
-   ```ts
-   import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
+   <!-- @[extension_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
+   
+   ``` TypeScript
+   import {workScheduler, WorkSchedulerExtensionAbility} from '@kit.BackgroundTasksKit';
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
@@ -130,16 +132,18 @@
 
    <!-- @[workScheduler_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/module.json5) -->
 
-   ```json
+   ``` JSON5
    {
      "module": {
-         "extensionAbilities": [
-           {
-             "name": "MyWorkSchedulerExtensionAbility",
-             "srcEntry": "./ets/WorkSchedulerExtension/WorkSchedulerExtension.ets",
-             "type": "workScheduler"
-           }
-         ]
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "WorkSchedulerAbility",
+           "srcEntry": "./ets/WorkSchedulerAbility/WorkSchedulerAbility.ets",
+           "type": "workScheduler",
+           // ...
+         }
+       ]
      }
    }
    ```
@@ -151,9 +155,9 @@
 
    <!-- @[workScheduler_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
-   ```ts
-   import { workScheduler } from '@kit.BackgroundTasksKit';
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { workScheduler } from '@kit.BackgroundTasksKit';
    ```
 
 2. 申请延迟任务。
