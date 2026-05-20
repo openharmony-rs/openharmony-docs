@@ -3584,7 +3584,6 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
   
   // Unregister event
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
-
 ```
 
 ## wifiManager.isWlanSupported
