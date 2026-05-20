@@ -1,4 +1,4 @@
-# Popup Component FAQs
+# FAQs About Popup Component
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->

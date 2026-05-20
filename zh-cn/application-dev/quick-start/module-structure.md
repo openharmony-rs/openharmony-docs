@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 module对象包含HAP的配置信息。
 

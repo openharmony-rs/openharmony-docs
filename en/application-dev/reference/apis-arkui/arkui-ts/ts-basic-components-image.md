@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Image** component is usually used to display images in applications. It supports data sources of the following types: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md), [ResourceStr](ts-types.md#resourcestr), and [DrawableDescriptor](#drawabledescriptor10). Supported image formats include PNG, JPG, JPEG, BMP, SVG, WEBP, GIF, HEIF, and TIFF. Note that the APNG and SVGA formats are not supported.
+The **Image** component is usually used to display images in apps. It supports data sources of the following types: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md), [ResourceStr](ts-types.md#resourcestr), and [DrawableDescriptor](#drawabledescriptor10). Supported image formats include PNG, JPG, JPEG, BMP, SVG, WEBP, GIF, HEIF, and TIFF. Note that the APNG and SVGA formats are not supported.
 
 > **NOTE**
 >
@@ -14,7 +14,7 @@ The **Image** component is usually used to display images in applications. It su
 >
 > - This component supports the TIFF image format since API version 23.
 >
-> - When keyboard shortcuts are used to copy an **Image** component, the **Image** component must be in a focused state. For instructions on how to set focus, see [Setting Whether a Component Is Focusable](../../../ui/arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable). By default, the **Image** component is not focusable. To enable it to gain focus, set both the [focusable](ts-universal-attributes-focus.md#focusable) and [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9) attributes to **true**.
+> - When keyboard shortcuts are used to copy an **Image** component, the **Image** component must be in a focused state. For instructions on how to set focus, see [Setting Whether a Component Is Focusable](../../../ui/arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable). By default, the **Image** component is not focusable. Set the [focusable](ts-universal-attributes-focus.md#focusable) attribute to **true** to enable focus switching to the component via the Tab key, and set the [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9) attribute to **true** to enable focus acquisition upon tap.
 >
 > - The **Image** component supports SVG image sources. For details about SVG tags, see [SVG Tags](./ts-basic-svg.md).
 >
@@ -70,9 +70,10 @@ If the **Image** component does not have its width and height set, its size adap
 
 **Parameters**
 
+<!--Table: 10%; 20%; 10%; 60%-->
 | Name | Type                                    | Mandatory  | Description                                    |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>1. **PixelMap**: a pixel map storing graphical information, commonly used for image editing scenarios.<br>2. **ResourceStr**: a string or a Resource object.<br>The string type can be used to load local images and, more frequently, online images. When [using a local image referenced using a relative path](#example-25-displaying-an-image-using-a-relative-path), the **Image** component cannot be called across bundles or modules. If an image needs to be used globally, you are advised to use the Resource format.<br>Since DevEco Studio 6.0.0 Beta2, resources in non-**resource** directories are not packaged by default for new projects or modules. To enable packaging, go to **buildOption** > **resOptions** > **copyCodeResource** to set **enable** to **true** in the module's **build-profile.json5** file. For details, see [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).<br>- Base64 strings are supported.<br>- When providing an HTTPS network image URL, refer to [Example 2: Downloading and Displaying Static Online Images](#example-2-downloading-and-displaying-static-online-images) for implementation guidance.<br>- Strings prefixed with the **file://** path are supported (application sandbox URI: **file://\<bundleName>/\<sandboxPath>**). For details about how to construct the application sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an application sandbox URI using the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the application has the read permission to the files in the specified path.<br>The Resource format allows for access across bundles and modules. It is recommended for accessing local images. For details, see [Cross-HAP/HSP Resources](../../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).<br>3. **DrawableDescriptor**: an object created when the passed resource ID or name belongs to a common image. The [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) type can be passed to play animations from a **PixelMap** array.<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
+| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>1. **PixelMap**: a pixel map storing graphical information, commonly used for image editing scenarios.<br>2. **ResourceStr**: a string or a Resource object.<br>The string type can be used to load local images and, more frequently, online images. When [using a local image referenced using a relative path](#example-25-displaying-an-image-using-a-relative-path), the **Image** component cannot be called across bundles or modules. If an image needs to be used globally, you are advised to use the Resource format.<br>Since DevEco Studio 6.0.0 Beta2, resources in non-**resource** directories are not packaged by default for new projects or modules. To enable packaging, go to **buildOption** > **resOptions** > **copyCodeResource** to set **enable** to **true** in the module's **build-profile.json5** file. For details, see [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).<br>- Base64 strings are supported.<br>- When providing an HTTPS network image URL, refer to [Example 2: Downloading and Displaying Static Online Images](#example-2-downloading-and-displaying-static-online-images) for implementation guidance.<br>- Strings prefixed with the **file://** path are supported (app sandbox URI: **file://\<bundleName>/\<sandboxPath>**). For details about how to construct the app sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an app sandbox URI via the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the app has the read permission to the files in the specified path.<br>The Resource format supports cross-package or cross-module access to resource files and is the recommended way to access local images. For details, see [Cross-HAP/HSP Resources](../../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).<br>3. **DrawableDescriptor**: an object created when the passed resource ID or name belongs to a common image. The [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) type can be passed to play animations from a **PixelMap** array.<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
 
 ### Image<sup>12+</sup>
 
@@ -137,7 +138,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | Yes  | Placeholder image displayed during loading. Local images (in PNG, JPG, BMP, SVG, GIF, or HEIF format) and [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) objects are supported, but online images are not.<br>- Base64 strings are supported.<br>- Strings prefixed with the **file://** path are supported (application sandbox URI: **file://\<bundleName>/\<sandboxPath>**). For details about how to construct the application sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an application sandbox URI using the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the application has the read permission to the files in the specified path.<br>Default value: **null**<br>When the value is switched from a valid one (an image resource that can be parsed and loaded correctly) to an invalid one (an image path that cannot be parsed or loaded), the component retains the previously successfully loaded image content without clearing or resetting it.|
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | Yes  | Placeholder image displayed during loading. Local images (in PNG, JPG, BMP, SVG, GIF, or HEIF format) and [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) objects are supported, but online images are not.<br>- Base64 strings are supported.<br>- Strings prefixed with the **file://** path are supported (app sandbox URI: **file://\<bundleName>/\<sandboxPath>**). For details about how to construct the app sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an app sandbox URI via the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the app has the read permission to the files in the specified path.<br>Default value: **null**<br>When the value is switched from a valid one (an image resource that can be parsed and loaded correctly) to an invalid one (an image path that cannot be parsed or loaded), the component retains the previously successfully loaded image content without clearing or resetting it.|
 
 ### alt<sup>22+</sup>
 
@@ -163,7 +164,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|&nbsp;[ImageAlt](#imagealt22) | Yes  | Placeholder image displayed during loading or in case of loading failure. Local images (in PNG, JPG, BMP, SVG, GIF, or HEIF format) and [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) objects are supported, but online images are not.<br>- Base64 strings are supported.<br>- Strings prefixed with the **file://** path are supported (application sandbox URI: **file://\<bundleName>/\<sandboxPath>**). For details about how to construct the application sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an application sandbox URI using the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the application has the read permission to the files in the specified path.|
+| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|&nbsp;[ImageAlt](#imagealt22) | Yes  | Placeholder image displayed during loading or in case of loading failure. Local images (in PNG, JPG, BMP, SVG, GIF, or HEIF format) and [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) objects are supported, but online images are not.<br>- Base64 strings are supported.<br>- Strings prefixed with the **file://** path are supported (app sandbox URI: **file://\<bundleName>/\<sandboxPath>**). For details about how to construct the app sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an app sandbox URI via the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the app has the read permission to the files in the specified path.|
 
 ### objectFit
 
@@ -227,7 +228,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 interpolation(value: ImageInterpolation)
 
-Sets the interpolation effect of the image, which can alleviate aliasing that occurs when the image is zoomed. This attribute is not applicable to SVG images.
+Defines the image interpolation effect. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
@@ -621,7 +622,7 @@ If this attribute and the [dynamicRangeMode](#dynamicrangemode12) attribute are 
 
 | Name  | Type   | Mandatory| Description                  |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | Yes  | Brightness of HDR images displayed by the component. This API only takes effect for HDR image sources.<br>Default value: **1.0**<br>Value range: [0.0,1.0]. Values less than 0 or greater than 1.0 are clamped to **1.0**. **0**: The image is displayed at SDR brightness.<br>**1.0**: The image is displayed at the highest allowed HDR brightness. |
+| brightness | number | Yes  | Brightness of HDR images displayed by the component. This API only takes effect for HDR image sources.<br>Default value: **1.0**<br>Value range: [0.0, 1.0]. Values less than 0 or greater than 1.0 are clamped to **1.0**. **0**: The image is displayed at SDR brightness.<br>**1.0**: The image is displayed at the highest allowed HDR brightness. |
 
 ### supportSvg2<sup>21+</sup>
 
@@ -839,7 +840,7 @@ Represents a color filter object.
 | ------ | ---------- |
 | [ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)  | Color filter created.|
 
-## DrawingLattice<sup>12+<sup>
+## DrawingLattice<sup>12+</sup>
 
 type DrawingLattice = Lattice
 
@@ -1175,7 +1176,7 @@ struct Index {
     // Provide configuration options for the cached download task.
     let options: cacheDownload.CacheDownloadOptions = {};
     try {
-      // Perform cached download. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.
+      // Perform cached download. If the download is successful, the resource will be cached to the specified file in the app memory or sandbox directory.
       cacheDownload.download(this.src, options);
       console.info(`success to download the resource. `);
     } catch (err) {
@@ -1631,7 +1632,7 @@ struct ImageContentExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view9.gif)
+![imageContent](figures/en-us_image_view9.gif)
 
 ### Example 12: Securing Sensitive Information
 
@@ -1656,7 +1657,7 @@ struct ImageExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view10.gif)
+![imageContent](figures/en-us_image_view10.gif)
 
 ### Example 13: Setting the Scan Effect for an Image
 
@@ -2319,9 +2320,9 @@ struct fillColorMetricsDemo {
 ![colorMetrics](figures/colorMetrics.gif)
 
 
-### Example 24: Displaying an Image Using an Application Sandbox Path
+### Example 24: Displaying an Image Using an App Sandbox Path
 
-This example demonstrates how to display an image using the application sandbox path, where a preloaded image named **cloud.png** is placed in the **haps/entry/files** directory of the current application.
+This example demonstrates how to display an image using the app sandbox path, where a preloaded image named **cloud.png** is placed in the **haps/entry/files** directory of the current app.
 
 ```ts
 import { fileUri } from '@kit.CoreFileKit';
@@ -2335,7 +2336,7 @@ struct Index {
       return '';
     }
     // /data/storage/el2/base/haps/entry/files/cloud.png
-    // Obtain the URI from the file path in the application sandbox.
+    // Obtain the URI from the file path in the app sandbox.
     // Replace '/cloud.png' with the image resource file you use.
     return fileUri.getUriFromPath(context.filesDir + '/cloud.png');
   }
@@ -2552,4 +2553,4 @@ struct ImageExample {
 }
 ```
 
-![sandBox](figures/antialiased.PNG)
+

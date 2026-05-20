@@ -49,7 +49,7 @@
 | [int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)](#oh_windowmanager_getmainwindowsnapshot) | - | 获取一个或多个指定windowId的主窗口截图。 |
 | [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | 释放主窗口截图列表的内存。 |
 | [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - | 锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随鼠标移动。仅支持获焦窗口调用，失焦之后会自动取消锁定。 |
-| [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | 清除窗口设置的鼠标光标指定的模式。 |<!--Del-->
+| [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | 清除窗口设置的鼠标光标指定的模式。 |
 | [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | 获取窗口所在屏幕的系统默认显示大小缩放系数。 |
 | [int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getsystemdensity) | - | 获取窗口所在屏幕的系统显示大小缩放系数。 |
 | [int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getcustomdensity) | - | 获取窗口的自定义显示大小缩放系数。 |
@@ -57,7 +57,6 @@
 | [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | 监听窗口缩放系数相关信息的变化。  <br> 当窗口所在屏幕的系统显示大小缩放系数、系统默认显示大小的缩放系数或自定义显示大小的缩放系数任一项发生变化时，会触发该回调函数。  <br> 如需取消监听窗口缩放系数相关信息的变化，请调用[OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback)。 |
 | [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | 取消监听窗口缩放系数相关信息的变化。 <br> 当窗口所在屏幕的系统显示大小缩放系数、系统默认显示大小缩放系数或自定义显示大小的缩放系数任一项发生变化时，不会触发已取消注册的回调函数。  <br> |
 | [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | 释放窗口缩放系数相关信息对象占用的内存。 |
-<!--DelEnd-->
 
 ## 函数说明
 
@@ -694,7 +693,6 @@ int32_t OH_WindowManager_UnlockCursor(int32_t windowId)
 | -- | -- |
 | int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_NO_PERMISSION，表示没有权限调用该接口。<br>返回WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED，表示不支持该设备。<br>返回WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL，表示窗口状态异常。<br>返回WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL，表示窗口管理器服务异常。 |
 
-<!--Del-->
 ### OH_WindowManager_DensityInfo_GetDefaultDensity()
 
 ```c
@@ -880,4 +878,3 @@ int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo*
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回结果代码。<br>返回OK，表示函数调用成功。<br>返回WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM，表示参数错误。可能原因：参数取值范围无效。<br>具体可见[WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode)。 |
-<!--DelEnd-->

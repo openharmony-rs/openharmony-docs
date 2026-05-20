@@ -5,7 +5,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
@@ -44,7 +44,7 @@ When the scheduling conditions are met or the task scheduling ends, the system c
 
 - **Scheduling delay**: The system schedules deferred tasks in a unified manner based on the memory, power consumption, device temperature, and user habits. For example, when the system memory resources are insufficient or the temperature reaches a certain level, the system delays task scheduling.
 
-- **Restrictions for WorkSchedulerExtensionAbility**: The following APIs cannot be called in the WorkSchedulerExtensionAbility:
+- **Restrictions for WorkSchedulerExtensionAbility**: To ensure system security and stability and prevent deferred tasks from abusing system resources, the **WorkSchedulerExtensionAbility** capability is controlled. Calls of the following APIs are restricted in the **WorkSchedulerExtensionAbility**:
 
   [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)
 
@@ -104,7 +104,7 @@ The development of deferred task scheduling consists of two steps: implementing 
    ```
 
 3. Implement the lifecycle callbacks for the WorkSchedulerExtensionAbility.
-   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
+   <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
    ```ts
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
@@ -153,7 +153,7 @@ The development of deferred task scheduling consists of two steps: implementing 
    ```
 
 2. Start a deferred task.
-   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
    ``` TypeScript
    let workInfo: workScheduler.WorkInfo = {
@@ -174,7 +174,7 @@ The development of deferred task scheduling consists of two steps: implementing 
    ```
 
 3. Cancel the deferred task.
-   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/SystemFeature/TaskManagement/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
+   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
 
    ```ts
    // Create workinfo.
