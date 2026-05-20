@@ -63,6 +63,17 @@
    ArkTS-Sta示例：
 
    <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
+   inputMethodEngine.getKeyboardDelegate()?.onEditorAttributeChanged((attr: inputMethodEngine.EditorAttribute) => {
+     console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
+     if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.IMMERSIVE) {
+       this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+       console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
+     }
+   })
+   ```
 
 
 3. 输入法应用设置输入法应用的沉浸模式：[setImmersiveMode](../reference/apis-ime-kit/js-apis-inputmethodengine.md#setimmersivemode15)。 
