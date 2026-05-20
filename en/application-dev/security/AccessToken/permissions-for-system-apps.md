@@ -789,6 +789,8 @@ Allows an application to modify HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
 **Valid since**: 10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -801,6 +803,8 @@ Allows an application to access HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
 **Valid since**: 10
 
 ## ohos.permission.READ_DFX_SYSEVENT
@@ -812,6 +816,8 @@ Allows an application to access system event logging data.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 8
 
@@ -1262,6 +1268,8 @@ Allows a system application or system service to start the DLP credential manage
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 12
 
 ## ohos.permission.START_SHORTCUT
@@ -1431,6 +1439,8 @@ Allows configuration and management of the permissions on .dlp files.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Valid since**: 9
 
@@ -3018,6 +3028,8 @@ Allows an application to query the location of an offline device.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | wearables | PCs/2-in-1 devices | tablets
+
 **Valid since**: 12
 
 ## ohos.permission.REGISTER_FINDNETWORK_ACCESSORY
@@ -3029,6 +3041,8 @@ Allows an application or system ability to initiate the process for registering 
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | PCs/2-in-1 devices | tablets
 
 **Valid since**: 13
 
@@ -3689,6 +3703,8 @@ Allows a system application to access the over-the-air update directory.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: wearables
 
 **Valid since**: 12
 
@@ -4628,20 +4644,6 @@ Allows an application to access the list of applications that can be started in 
 **Certificate-based authorization**: true
 
 **Valid since**: 18
-
-## ohos.permission.GET_NETWORK_STATS
-
-Allows a system application to obtain historical network traffic.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Valid since**: 10
-
-**Changelog**: **Certificate-based authorization** is **false** for this permission in API versions 10 to 11, and is changed to **true** since API version 12.
 
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
@@ -5828,6 +5830,26 @@ Allows an application to trigger the Always On Display (AOD) mode or exit it, an
 **Certificate-based authorization**: true
 
 **Supported devices**: Phone | Tablet
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+
+Allows a system application to use Skills.
+
+With this permission, an application can:
+
+- Query information about Skill packages.
+- Listen for events such as the installation, update, and uninstallation of Skill packages.
+- Access the sandbox directory where Skill packages are installed.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: General
 
 **Since**: 26.0.0
 

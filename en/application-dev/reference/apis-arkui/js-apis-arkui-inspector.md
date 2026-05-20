@@ -55,7 +55,7 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 ## ComponentObserver
 
-Implements an observer for layout and drawing completion callbacks for components, containing the initial query results from when the observer was created.
+Defines the handle for component layout and drawing completion callbacks. You can call the following APIs through this handle:
 
 ### on('layout')
 

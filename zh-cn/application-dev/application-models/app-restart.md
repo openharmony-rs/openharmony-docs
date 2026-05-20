@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 应用重启用于在不同场景下重新初始化应用或恢复应用正常状态。系统提供了应用主动重启、原子化服务主动重启和应用故障恢复被动重启等，开发者可根据实际需求选择合适方案。
