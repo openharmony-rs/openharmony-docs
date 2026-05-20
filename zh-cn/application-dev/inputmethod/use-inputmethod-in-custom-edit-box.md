@@ -246,6 +246,10 @@
    ArkTS-Sta示例：
    
    <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/pages/PrivatePreview.ets) -->
+   
+   ``` TypeScript
+   CustomInput()
+   ```
 
 ## 示例效果图
   ![示例效果图](./figures/image-1.png)
