@@ -146,6 +146,7 @@
    
    @Component
    export struct CustomInput {
+     @State inputText: string = ''; // inputText作为Text组件要显示的内容
      private isAttach: boolean = false;
      private inputController: inputMethod.InputMethodController = inputMethod.getController();
    
