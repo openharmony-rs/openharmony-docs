@@ -43,7 +43,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
 下面提供一个UI测试的简单示例，介绍如何在单元测试脚本基础上进行UI测试的增量开发，具体实现功能如下：
 
-1. 调用<!--RP1-->[程序框架服务](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)<!--RP1End-->能力，启动目标被测应用，并确认应用运行状态。
+1. 调用<!--RP1-->[AbilityDelegator](../reference/apis-test-kit/js-apis-inner-application-abilityDelegator.md)<!--RP1End-->能力，启动目标被测应用，并确认应用运行状态。
 2. 调用UI测试框架能力，页面中执行点击操作。
 3. 通过<!--RP2-->[添加断言](unittest-guidelines.md#断言能力)<!--RP2End-->，验证操作后当前页面的实际变化是否与预期结果一致。
 
@@ -217,7 +217,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
 ### 控件查找与操作
 
-UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->[对控件对象进行操作或获取控件的属性信息](../reference/apis-test-kit/js-apis-uitest.md#component9)<!--RP4End-->。
+UITest支持<!--RP3-->依据多种属性构造匹配器[On](../reference/apis-test-kit/js-apis-uitest.md#on9)<!--RP3End-->进行控件查找；支持查找当前页面符合匹配条件的单个或多个目标控件，并返回控件对象；支持在滚动组件内部进行滚动查找目标控件；支持<!--RP4-->对控件对象[Component](../reference/apis-test-kit/js-apis-uitest.md#component9)进行操作或获取控件的属性信息<!--RP4End-->。
 
 如下给出控件查找与操作的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
@@ -472,7 +472,7 @@ export default function abilityTest(): void {
 
 ### 模拟文本输入
 
-UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!--RP5-->[指定输入方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)<!--RP5End-->：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
+UITest支持向指定坐标点或指定控件输入文本内容，同时支持<!--RP5-->指定[输入文本的方式](../reference/apis-test-kit/js-apis-uitest.md#inputtextmode20)<!--RP5End-->：输入文本时是否以复制粘贴方式输入、是否以追加的方式进行输入。
 
 如下给出文本输入的示例，包括基于控件的文本输入和基于坐标的文本输入两种方式。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
