@@ -101,8 +101,8 @@
 
    <!-- @[extension_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
-   ```ts
-   import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
+   ``` TypeScript
+   import {workScheduler, WorkSchedulerExtensionAbility} from '@kit.BackgroundTasksKit';
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
