@@ -99,7 +99,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_DATE_PICKER_SELECTED = 13003
 ```
 
-Selected date of the date picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+Date of the selected item in the date picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
