@@ -36170,47 +36170,47 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets",
 				"functions":[
 					{
-						"end_line":104,
+						"end_line":110,
 						"name":"create_AudioLoopback",
 						"start_line":16
 					},
 					{
-						"end_line":374,
+						"end_line":380,
 						"name":"get_Status",
 						"start_line":18
 					},
 					{
-						"end_line":133,
+						"end_line":139,
 						"name":"set_Volume",
 						"start_line":19
 					},
 					{
-						"end_line":184,
+						"end_line":190,
 						"name":"set_ReverbPreset",
-						"start_line":20
-					},
-					{
-						"end_line":383,
-						"name":"get_ReverbPreset",
-						"start_line":21
-					},
-					{
-						"end_line":235,
-						"name":"set_EqualizerPreset",
-						"start_line":22
-					},
-					{
-						"end_line":392,
-						"name":"get_EqualizerPreset",
 						"start_line":23
 					},
 					{
-						"end_line":349,
-						"name":"enable",
+						"end_line":474,
+						"name":"get_ReverbPreset",
 						"start_line":24
 					},
 					{
-						"end_line":350,
+						"end_line":241,
+						"name":"set_EqualizerPreset",
+						"start_line":25
+					},
+					{
+						"end_line":483,
+						"name":"get_EqualizerPreset",
+						"start_line":26
+					},
+					{
+						"end_line":355,
+						"name":"enable",
+						"start_line":27
+					},
+					{
+						"end_line":356,
 						"name":"all_audioLoopback",
 						"start_line":15
 					}
