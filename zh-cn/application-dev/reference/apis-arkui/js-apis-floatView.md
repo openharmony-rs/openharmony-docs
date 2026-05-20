@@ -54,6 +54,8 @@ isFloatViewEnabled(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**返回值：**
+
 | 类型 | 说明 |
 |------------|------------|
 | boolean  | 当前设备是否支持标准悬浮窗功能。true表示支持，false则表示不支持。 |
@@ -173,7 +175,7 @@ bind(floatViewController: FloatViewController, floatingBallController: floatingB
 | 201 | Permission verification failed. Possible cause: The application does not have the permission required to call the API. |
 | 801 | Capability not supported on this device. Possible cause: Call api on unsupported device. |
 | 1300019 | Wrong parameters for operating the floating ball. Possible cause: Invalid floating ball params. |
-| 1300025 | The floatingBall state does not support this operation. Possible cause: 1.The floating ball has started but not stopped yet. 2.The floating ball controller has been bound. |
+| 1300025 | The floating ball state does not support this operation. Possible cause: 1.The floating ball has started but not stopped yet. 2.The floating ball controller has been bound. |
 | 1300031 | The floatView state does not support this operation. Possible cause: 1.The float view has started but not stopped yet. 2.The float view controller has been bound. |
 
 **示例：**
@@ -477,7 +479,7 @@ start(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 |------------|------------|
-| 201 | Permission verification failed, usually returned by VerifyAccessToken. |
+| 201 | Permission verification failed. Possible cause: The application does not have the permission required to call the API. |
 | 1300002 | This window state is abnormal. Possible cause: The float view controller object is null. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | 1300030 | Repeated operations on the float view. Possible cause: The float view is starting or has already started. |
