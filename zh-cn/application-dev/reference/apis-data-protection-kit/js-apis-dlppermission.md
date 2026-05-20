@@ -1084,7 +1084,7 @@ isDLPFeatureProvided(): Promise&lt;boolean&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-dlpPermission.isDLPFeatureProvided().then((res) => {
+dlpPermission.isDLPFeatureProvided().then((res) => { // 查询当前系统是否提供加密保护特性。
   console.info('res', JSON.stringify(res));
 }).catch((err: BusinessError) => {
   console.error('error', (err as BusinessError).code, (err as BusinessError).message); // 失败报错。
@@ -1458,8 +1458,8 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let dlpFd : number | undefined = undefined;
-let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp";
+let dlpFd : number | undefined = undefined; // 待查询策略的DLP文件描述符。
+let dlpFilePath: string = "file://docs/storage/Users/currentUser/Documents/test.txt.dlp"; // 打开DLP文件获取文件描述符。
 dlpFd = fileIo.openSync(dlpFilePath, fileIo.OpenMode.READ_ONLY).fd;
 dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
   console.info('DLP policy:' + policy);
@@ -1592,15 +1592,15 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
   private accountId: string;
   private accountName: string;
   constructor() {
-    this.accountId = 'accountId';
+    this.accountId = 'accountId'; // 初始化账号信息。
     this.accountName = 'accountName';
   }
 
   connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
     let callbackJson = JSON.stringify({
       'requestId': requestId,
-    });
-    callback(callbackJson);
+    }); // 构造回调JSON数据
+    callback(callbackJson);  // 调用回调函数返回结果。
   }
 }
 
@@ -1689,7 +1689,7 @@ export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
   private accountId: string;
   private accountName: string;
   constructor() {
-    this.accountId = 'accountId';
+    this.accountId = 'accountId'; // 初始化账号信息。
     this.accountName = 'accountName';
   }
 
@@ -1800,7 +1800,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: dlpPermission.DlpFileQueryOptions = {
   classificationLabel: 'label1'
-};
+}; // 设置查询选项，指定分类标签。
 dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) => {
   console.info("try to query opened enterprise dlp files, result: ", JSON.stringify(uris));
 }).catch((error: BusinessError)=> {
