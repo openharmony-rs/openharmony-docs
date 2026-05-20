@@ -6206,3 +6206,17 @@ With this permission, the system application can obtain and delete all credentia
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+## ohos.permission.TV_ACCESSORY_MANAGE
+
+Allows a system application to query and set Vision Accessory information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: TVs
+
+**Since**: 26.0.0
