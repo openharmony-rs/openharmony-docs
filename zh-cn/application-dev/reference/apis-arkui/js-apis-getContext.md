@@ -49,9 +49,7 @@ getContext(component?: Object):Context
 
 ## Context
 
-ArkTS-Dyn: type Context = Context
-
-ArkTS-Sta: type Context = OriginalContext
+type Context = Context
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -59,13 +57,9 @@ ArkTS-Sta: type Context = OriginalContext
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 类型 | 说明                             |
 | ------ | ------------------------------- |
-| ArkTS-Dyn: [Context](../../application-models/application-context-stage.md)<br/>ArkTS-Sta: OriginalContext  | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。    |
+| [Context](../../application-models/application-context-stage.md)  | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。    |
 
 **示例：**
 
