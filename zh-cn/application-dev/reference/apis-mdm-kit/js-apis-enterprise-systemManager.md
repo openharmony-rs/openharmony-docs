@@ -141,7 +141,7 @@ setOtaUpdatePolicy(admin: Want, policy: OtaUpdatePolicy): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+**冲突规则：** [独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)。
 
 **参数：**
 
@@ -943,7 +943,7 @@ addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
+| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | 是   | 按键策略。支持物理按键（电源键、音量加、音量减），导航键（回退、主页、最近打开）。物理键支持任意组合为组合键，导航键不支持组合。组合键事件响应详见按键事件回调[onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口。 |
 
 **错误码**：
 
@@ -1107,7 +1107,7 @@ try {
 
 startCollectLog(admin: Want): Promise&lt;void&gt;
 
-开始收集设备上已生成并存储至硬盘的[faultlog](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
+开始收集设备上已生成并存储至硬盘的[FaultType](../apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)类型的faultlog日志，不支持收集未存储至硬盘的faultlog日志、应用业务日志和系统运行日志。
 
 - 调用接口后，系统会启动一个日志收集任务，任务启动后接口立即返回。任务可能会因为系统性能等原因导致收集失败。
 - 允许多个MDM应用调用，不同MDM应用在不同用户下收集的日志分开保存，互不影响。同一时间只允许一个MDM应用启动日志收集任务，在任务执行完成前调用本接口会返回错误码9201009，任务执行完成后，允许其他MDM应用调用。
@@ -1238,6 +1238,8 @@ setActivationLockDisabled(admin: Want, isDisabled: boolean, credential?: string)
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
 
 **参数：**
 
@@ -1638,7 +1640,7 @@ try {
 
 ## KeyCode<sup>23+</sup>
 
-按键编码。[添加按键事件策略](#systemmanageraddkeyeventpolicies23)、[删除按键事件策略](#systemmanagerremovekeyeventpolicies23)、[获取按键事件策略](#systemmanagergetkeyeventpolicies23)和[按键事件回调](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
+按键编码。添加按键事件处理策略[addKeyEventPolicies](#systemmanageraddkeyeventpolicies23)、删除按键事件处理策略[removeKeyEventPolicies](#systemmanagerremovekeyeventpolicies23)、获取按键事件处理策略[getKeyEventPolicies](#systemmanagergetkeyeventpolicies23)和按键事件回调[onKeyEvent](js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23)接口通过按键编码映射到设备对应实际按键。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
