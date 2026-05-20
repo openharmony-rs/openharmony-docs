@@ -23,46 +23,5 @@
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称                  | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| systemMaterial<sup>23+</sup> | [SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23) | 否 | 是 | 设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。材质设置为非法值、undefined时，按照不设置系统材质处理。<br />**默认值：** undefined<br />**系统接口：** 此接口为系统接口。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
-
-## 示例
-### 示例1（设置菜单的系统材质）
-
-该示例通过设置[ContextMenuOptions](#contextmenuoptions10)中的systemMaterial属性，实现了菜单的系统材质视效。
-
-从API version 23开始，在ContextMenuOptions中新增了systemMaterial属性。
-
-```ts
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  @Builder
-  MyMenu() {
-    Menu() {
-      MenuItem({ startIcon: this.iconStr, content: '菜单选项' })
-      MenuItem({ startIcon: this.iconStr, content: '菜单选项' })
-      MenuItem({ startIcon: this.iconStr, content: '菜单选项' })
-    }
-  }
-
-  build() {
-    Column() {
-      Button('bindMenu with THICK material')
-        .bindMenu(this.MyMenu, {
-          systemMaterial: new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT })
-        })
-    }
-    // $r('app.media.img')需要替换为开发者所需的图像资源文件。
-    .backgroundImage($r('app.media.img'))
-  }
-}
-```
-未设置系统材质
-
-![menuWithoutNewMaterial](figures/menuWithoutNewMaterial.PNG)
-
-设置系统材质
-
-![menuNewMaterial](figures/menuNewMaterial.PNG)
+| distortionMode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 否 | 是 | 设置新材质下菜单的非线性动画模式。<br />**默认值：** DistortionMode.DISTORTION_AUTO <br/>**起始版本：** 26.0.0 <br />**系统接口：** 此接口为系统接口。<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
+| edgeLightMode | [EdgeLightMode](./ts-appendix-enums-sys.md#edgelightmode)| 否 | 是 | 设置新材质下菜单的流光动画模式。<br />**默认值：** EdgeLightMode.EDGELIGHT_DISABLED <br/>**起始版本：** 26.0.0 <br />**系统接口：** 此接口为系统接口。<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |

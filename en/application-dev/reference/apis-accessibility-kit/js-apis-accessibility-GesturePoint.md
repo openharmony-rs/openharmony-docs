@@ -7,7 +7,8 @@
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
 
-The **GesturePoint** module provides APIs for creating gesture touch point information required for an accessibility application to inject gestures.
+The **GesturePoint** module provides APIs
+for creating gesture touch point information required for an accessibility application to inject gestures.
 
 > **NOTE**
 >
@@ -29,8 +30,8 @@ Defines a gesture touch point.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| positionX | number | No   | No   | X coordinate of the touch point.|
-| positionY | number | No   | No   | Y coordinate of the touch point.|
+| positionX | number | No   | No   | X coordinate of the touch point, in pixels (px).|
+| positionY | number | No   | No   | Y coordinate of the touch point, in pixels (px).|
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -48,8 +49,8 @@ Defines a constructor used to create a **GesturePoint** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| positionX | number | Yes| X coordinate of the touch point.|
-| positionY | number | Yes | Y coordinate of the touch point.|
+| positionX | number | Yes| X coordinate of the touch point, in pixels (px).|
+| positionY | number | Yes | Y coordinate of the touch point, in pixels (px).|
 
 **Example**
 

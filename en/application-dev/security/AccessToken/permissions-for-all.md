@@ -162,6 +162,8 @@ Allows an application to read data from a gyroscope sensor or uncalibrated gyros
 
 Allows an application to access the Internet.
 
+With this permission, an application can obtain IP addresses, perform DNS resolution, or customize DNS rules.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
@@ -684,6 +686,20 @@ With this permission, the application can query available types of pluggable emb
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Since**: 24
+
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+Allows an application to query the encryption and decryption status of a volume.
+
+With this permission, the application can obtain the encryption and decryption status of a volume and subscribe to system public events related to changes in the encryption and decryption status of a volume.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.STYLUS_FRAME_BOOST
 

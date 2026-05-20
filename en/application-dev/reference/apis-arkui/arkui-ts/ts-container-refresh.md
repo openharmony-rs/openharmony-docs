@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
  The **Refresh** component is a container that provides the pull-to-refresh feature.
@@ -84,6 +84,28 @@ Sets the minimum pull-down offset required to trigger a refresh. If the distance
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | value  | number |  Yes| Pull-down offset, in vp.<br>Default value: 96 vp when [promptText](#refreshoptions) is set and 64 vp when [promptText](#refreshoptions) is not set.<br>If the value specified is 0 or less than 0, the default value is used.|
 
+### refreshOffset
+
+refreshOffset(value: number | Resource)
+
+Sets the pull-down offset that triggers the refresh. When the pull-down distance is less than the value of this attribute, releasing the pull-down gesture does not trigger the refresh. The resource type is supported.
+
+If this API and [promptText](#refreshoptions) are not set, the default offset is 64 vp. If [promptText](#refreshoptions) is set, the default offset is 96 vp.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                       | Mandatory| Description                                                      |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| value  | number \| [Resource](ts-types.md#resource) |  Yes| Pull-down offset.<br>Unit: vp<br>Value range: (0, +∞). If the value is 0 or a negative number, the default value will be used.|
+
 ### pullToRefresh<sup>12+</sup>
 
 pullToRefresh(value: boolean)
@@ -147,6 +169,28 @@ Sets the maximum pull-down distance.
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  Yes| Maximum pull-down distance. The minimum value for the maximum pull-down distance is 0. Values less than 0 are treated as **0**. If this value is less than the refresh offset (**refreshOffset**), the refresh action will not be triggered when the pull-down gesture is released.<br>If set to **undefined** or **null**, this parameter is considered not set.<br>Default value: **undefined**.<br>Unit: vp|
+
+### maxPullDownDistance
+
+maxPullDownDistance(distance: number | Resource | undefined)
+
+Sets the maximum pull-down distance. The resource type is supported.
+
+If this API is not set, the maximum pull-down distance is **undefined**.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                       | Mandatory| Description                                                      |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| distance  | number \| [Resource](ts-types.md#resource) \| undefined |  Yes| Maximum pull-down distance.<br>Default value: **undefined**.<br>Unit: vp<br>Value range: [0, +∞). If the value is less than 0, **0** is used. If this value is less than the [refreshOffset](#refreshoffset12), the refresh action will not be triggered when the pull-down gesture is released.<br>If this parameter is set to **undefined** or **null**, it is considered that this attribute is not set, meaning there is no limit on the maximum pull-down distance.|
 
 ## Events
 
