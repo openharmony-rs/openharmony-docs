@@ -124,9 +124,7 @@ outline(value: OutlineOptions | undefined): this
 
 ## outlineStyle
 
-ArkTS-Dyn: outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
-
-ArkTS-Sta: outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): this;
+outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
 
 设置元素的外描边样式。不设置该接口时，默认显示为一条实线。
 
@@ -141,8 +139,6 @@ ArkTS-Sta: outlineStyle(value: OutlineStyle | EdgeOutlineStyles | undefined): th
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[outlineStyle<sup>23+</sup>](#outlinestyle23)。
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
