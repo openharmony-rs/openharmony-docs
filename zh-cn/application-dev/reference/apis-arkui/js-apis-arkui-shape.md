@@ -89,9 +89,9 @@ constructor(options?: ShapeSize)
 
 **参数：** 
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
+| 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------| ------- | ------- | --------|
-| options | [ShapeSize](#shapesize) | 否 | 是  | 形状的大小。 |
+| options | [ShapeSize](#shapesize) | 否 | 形状的大小。 |
 
 ## PathShape
 
@@ -127,9 +127,9 @@ constructor(options?: PathShapeOptions)
 
 **参数：** 
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
+| 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------| ------- | ------- | --------|
-| options | [PathShapeOptions](#pathshapeoptions) | 否 | 是  | 路径参数。 |
+| options | [PathShapeOptions](#pathshapeoptions) | 否 | 路径参数。 |
 
 ### commands
 
@@ -257,7 +257,9 @@ radiusWidth(rWidth: number | string): RectShape
 
 ### radiusWidth<sup>23+</sup>
 
-radiusWidth(rWidth: double | string): this
+ArkTS-Dyn: radiusWidth(rWidth: number | string): RectShape
+
+ArkTS-Sta: radiusWidth(rWidth: double | string): this
 
 设置矩形形状圆角半径的宽度。
 
@@ -273,7 +275,7 @@ radiusWidth(rWidth: double | string): this
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | double &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。 | 
+| rWidth | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。 | 
 
 **返回值：**
 
@@ -283,7 +285,9 @@ radiusWidth(rWidth: double | string): this
 
 ### radiusHeight
 
-radiusHeight(rHeight: number | string): RectShape
+ArkTS-Dyn: radiusHeight(rHeight: number | string): RectShape
+
+ArkTS-Sta: radiusHeight(rHeight: double | string): this;
 
 设置矩形形状圆角半径的高度。
 
@@ -339,7 +343,9 @@ radiusHeight(rHeight: double | string): this
 
 ### radius
 
-radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
+ArkTS-Dyn: radius(radius: number | string | Array<number | string>): RectShape;
+
+ArkTS-Sta: radius(radius: double | string | Array<double | string>): this;
 
 设置矩形形状的圆角半径。
 
@@ -666,7 +672,9 @@ size(size: SizeOptions): this
 
 ### offset
 
-offset(offset: Position): T
+ArkTS-Dyn: offset(offset: Position): T
+
+ArkTS-Sta: offset(offset: Position): this
 
 设置相对于组件布局位置的坐标偏移。
 
@@ -676,35 +684,9 @@ offset(offset: Position): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[offset<sup>23+</sup>](#offset23)。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
-
-**参数：** 
-
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| offset | [Position](arkui-ts/ts-types.md#position) | 是 | 相对于组件布局位置的坐标偏移。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前对象。 |
-
-### offset<sup>23+</sup>
-
-offset(offset: Position): this
-
-设置相对于组件布局位置的坐标偏移。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[offset](#offset)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -718,12 +700,13 @@ offset(offset: Position): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| this | 返回当前对象。 |
-
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ### fill
 
-fill(color: ResourceColor): T
+ArkTS-Dyn: fill(color: ResourceColor): T
+
+ArkTS-Sta: fill(color: ResourceColor): this
 
 设置形状的填充区域的透明度，黑色表示完全透明，白色表示完全不透明。
 
@@ -747,33 +730,7 @@ fill(color: ResourceColor): T
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前对象。 |
-
-### fill<sup>23+</sup>
-
-fill(color: ResourceColor): this
-
-设置形状的填充区域的透明度，黑色表示完全透明，白色表示完全不透明。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[fill](#fill)。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
-
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| color | [ResourceColor](arkui-ts/ts-types.md#resourcecolor) | 是 | 形状的填充区域的透明度，黑色表示完全透明，白色表示完全不透明。 |
-
-**返回值：**
-
-| 类型   | 说明                                         |
-| ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前对象。 |
 
 ### position
 
