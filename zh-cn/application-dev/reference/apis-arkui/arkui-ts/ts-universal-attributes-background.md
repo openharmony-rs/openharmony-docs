@@ -970,7 +970,7 @@ backgroundBrightness(params: BackgroundBrightnessOptions | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundBrightness<sup>11+</sup>](#backgroundbrightness12)和[backgroundBrightness<sup>18+</sup>](#backgroundbrightness18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundBrightness<sup>12+</sup>](#backgroundbrightness12)和[backgroundBrightness<sup>18+</sup>](#backgroundbrightness18)。
 
 **ArkTS-Sta起始版本：** 23
 
