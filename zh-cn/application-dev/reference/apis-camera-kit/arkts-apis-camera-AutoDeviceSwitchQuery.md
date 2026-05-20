@@ -43,7 +43,7 @@ isAutoDeviceSwitchSupported(): boolean
  
 | 错误码ID                                             | 错误信息          |
 | ----------------------------------------------- |-------------|
-| 7400103               | 是否支持自动切换镜头，true为支持，false为不支持。 |
+| 7400103               | Session not config, only throw in session usage.<br>适用版本：13-17 |
 
 **示例：**
 
