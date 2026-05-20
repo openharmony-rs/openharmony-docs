@@ -94,7 +94,7 @@ getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt;
 
 | 类型                          | 说明                                 |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;Array&lt;[CloudModelInfo](#cloudmodelinfo)&gt;&gt; | Promise对象，返回支持的云侧模型信息。。 |
+| Promise&lt;Array&lt;[CloudModelInfo](#cloudmodelinfo)&gt;&gt; | Promise对象，返回支持的云侧模型信息。 |
 
 **示例：**
 
@@ -248,7 +248,7 @@ intelligence.splitText(splitText, splitConfig)
 
 | 名称     | 类型              | 只读 | 可选| 说明                                                         |
 | ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
-| modelType    |    string        | 否 | 否   |模型类型名称。 |
+| modelType    |    string        | 否 | 否   |模型类型名称。如：<br/>“arkdata_text_embedding”：arkdata云侧文本向量模型。 |
 | modelVersionCode | string                | 否 | 是   | 模型版本，默认值为空。 |
 
 ## NetworkPolicy
