@@ -48,7 +48,7 @@ ArkTS-Sta: drawModifier(modifier: DrawModifier | undefined): this
 
 | 类型 | 说明 |
 | --- | --- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## DrawModifier
 
@@ -268,7 +268,9 @@ invalidate(): void
 
 ### DrawContext
 
-type DrawContext = DrawContext
+ArkTS-Dyn: type DrawContext = DrawContext
+
+ArkTS-Sta: type DrawContext = _DrawContext
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -276,7 +278,7 @@ type DrawContext = DrawContext
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
+| ArkTS-Dyn: [DrawContext](../js-apis-arkui-graphics.md#drawcontext)<br/>ArkTS-Sta: DrawContext | 图形绘制上下文。 |
 
 ## 示例
 
