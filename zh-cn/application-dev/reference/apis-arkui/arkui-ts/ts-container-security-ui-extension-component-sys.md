@@ -438,15 +438,6 @@ ArkTS-Dyn示例：
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { SecurityUIExtensionProxy, UIExtensionProxy } from '@kit.ArkUI';
-
-function asyncRegisterCallback(proxy: UIExtensionProxy) {
-  hilog.info(0x0000, 'SUECDemo', 'asyncReceiverRegister callback');
-}
-
-function syncRegisterCallback(proxy: UIExtensionProxy) {
-  hilog.info(0x0000, 'SUECDemo', 'syncReceiverRegister callback');
-}
 
 @Entry
 @Component
@@ -454,18 +445,13 @@ struct Index {
   @State message: string = 'Hello World';
   @State receiveData: string = '';
   private want: Want = {
-    bundleName: 'com.example.suecdemo',
+    bundleName: 'com.example.securityUIExtProvider',
     abilityName: 'SecurityUIExtProvider',
     parameters: {
-      'ability.want.params.uiExtensionType': 'sys/commonUI',
+      'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
     },
   }
-  private proxy: SecurityUIExtensionProxy | null = null;
-
-  aboutToDisappear(): void {
-    this.proxy?.off('syncReceiverRegister');
-    this.proxy?.off('asyncReceiverRegister');
-  }
+  private proxy: UIExtensionProxy | null = null;
 
   build() {
     Column() {
@@ -476,7 +462,7 @@ struct Index {
         .width('90%')
         .height('60%')
         .backgroundColor(Color.Green)
-        .onRemoteReady((proxy: SecurityUIExtensionProxy) => {
+        .onRemoteReady((proxy: UIExtensionProxy) => {
           hilog.info(0x0000, 'SUECDemo', 'onRemoteReady');
           this.proxy = proxy;
 
@@ -495,26 +481,54 @@ struct Index {
           hilog.info(0x0000, 'SUECDemo', 'onTerminated: code=' + info.code);
         })
 
-      Button('发送异步数据').onClick(() => {
-        if (this.proxy) {
-          this.proxy.send({ data: '来自使用方的异步消息' });
-        }
-      }).margin(5)
-
-      Button('发送同步数据').onClick(() => {
-        if (this.proxy) {
-          try {
-            let result = this.proxy.sendSync({ data: '来自使用方的同步消息' });
-            hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
-          } catch (err) {
-            hilog.error(0x0000, 'SUECDemo', `sendSync failed: ${(err as BusinessError).message}`);
+      Button('发送异步数据')
+        .margin(5)
+        .onClick(() => {
+          if (this.proxy) {
+            this.proxy.send({ data: '来自使用方的异步消息' });
           }
-        }
-      }).margin(5)
+        })
+
+      Button('发送同步数据')
+        .margin(5)
+        .onClick(() => {
+          if (this.proxy) {
+            try {
+              let result = this.proxy.sendSync({ data: '来自使用方的同步消息' });
+              hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
+            } catch (err) {
+              hilog.error(0x0000, 'SUECDemo', `sendSync failed: ${(err as BusinessError).message}`);
+            }
+          }
+        })
+
+
+      Button('取消异步注册监听')
+        .margin(5)
+        .onClick(() => {
+          this.proxy!.off('syncReceiverRegister')
+          hilog.info(0x0000, 'SUECDemo', `offSyncReceiverRegister`);
+        })
+
+      Button('取消同步注册监听')
+        .margin(5)
+        .onClick(() => {
+          this.proxy!.off('asyncReceiverRegister')
+          hilog.info(0x0000, 'SUECDemo', `offAsyncReceiverRegister`);
+        })
     }
     .height('90%')
     .width('90%')
   }
+}
+
+
+function asyncRegisterCallback(proxy: UIExtensionProxy) {
+  hilog.info(0x0000, 'SUECDemo', 'onAsyncReceiverRegister');
+}
+
+function syncRegisterCallback(proxy: UIExtensionProxy) {
+  hilog.info(0x0000, 'SUECDemo', 'onSyncReceiverRegister');
 }
 ```
 
