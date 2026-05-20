@@ -80,7 +80,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 
 1. 自定义ability通过UIExtensionAbility扩展实现。
 
-2. 注册的UIExtensionAbility可以通过证书管理kit提供的[openUKeyAuthDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)接口统一拉起。
+2. 注册的UIExtensionAbility可以通过证书管理kit提供的[openUKeyAuthDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)接口统一拉起。
   
 3. 系统拉起自定义弹窗时会通过want接口向开发者传递以下参数：
 
