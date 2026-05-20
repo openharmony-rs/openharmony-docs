@@ -218,7 +218,7 @@
 | SAMPLE_RATE_96000 | 96000  | 采样率为96000。单位为赫兹（Hz）。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
 | SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。单位为赫兹（Hz）。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23|
 | SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。单位为赫兹（Hz）。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23|
-| SAMPLE_RATE_384000 | 384000  | 采样率为384000。单位为赫兹（Hz）<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br> **ArkTS-Sta起始版：** 26.0.0|
+| SAMPLE_RATE_384000 | 384000  | 采样率为384000。单位为赫兹（Hz）<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br> **ArkTS-Sta起始版本：** 26.0.0|
 
 ## AudioEncodingType<sup>8+</sup>
 
