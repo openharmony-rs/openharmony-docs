@@ -2746,8 +2746,8 @@ async function asyRunner2() {
 
 | 名称          | 类型                              | 只读 | 可选 | 说明                  |
 | ------------- | -------------------------------- | ---- | ---- | -------------------- |
-| threadInfos   | [ThreadInfo[]]    | 否   | 否   | 工作线程的内部信息。不建议修改此值。|
-| taskInfos     | [TaskInfo[]]        | 否   | 否   | 任务的内部信息。不建议修改此值。 |
+| threadInfos   | [ThreadInfo](#threadinfo10)\[]    | 否   | 否   | 工作线程的内部信息。不建议修改此值。|
+| taskInfos     | [TaskInfo](#taskinfo10)\[]        | 否   | 否   | 任务的内部信息。不建议修改此值。 |
 
 ## TaskResult<sup>20+</sup>
 
