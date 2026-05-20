@@ -88,7 +88,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
     **ArkTS-Sta示例：**
 
-    <!-- @[clickToAfter_sta](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/ets/pages/ClickToAfter.ets) -->
+    <!-- @[clickToAfter_sta](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/ets/pages/ClickToAfter.ets) -->
 
     ``` TypeScript
     @Entry
@@ -101,10 +101,10 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
         Row() {
           Column() {
             Text(this.message)
-              .fontSize(50)
+              .fontSize(10)
               .fontWeight(FontWeight.Bold)
             Text('Next')
-              .fontSize(50)
+              .fontSize(10)
               .margin({ top: 20 })
               .fontWeight(FontWeight.Bold)
               .onClick((event?: ClickEvent) => {
@@ -170,7 +170,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
     **ArkTS-Sta示例：**
 
-    <!-- @[click_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
+    <!-- @[click_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
 
     ``` TypeScript
     import { describe, expect, it, Level } from '../../../../hypium/index';
@@ -199,16 +199,17 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
           const ability: UIAbility = await delegator.getCurrentTopAbility();
           expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
 
+          // 依据指定文本"toClickToAfterIndex"查找目标控件
+          const toClick: Component | null = await driver.findComponent(ON.text('toClickToAfterIndex'));
+          // 点击目标控件
+          await toClick!.click();
           // 依据指定文本"Next"查找目标控件
           const next: Component | null = await driver.findComponent(ON.text('Next'));
-          if (next) {
-            // 点击目标控件
-            await next.click();
-            await driver.waitForIdle(4000, 5000);
-            // 通过断言文本为"after click"的控件存在，确认操作后页面变化符合预期
-            await driver.assertComponentExist(ON.text('after click'));
-            await driver.pressBack();
-          }
+          // 点击目标控件
+          await next!.click();
+          // 通过断言文本为"after click"的控件存在，确认操作后页面变化符合预期
+          await driver.assertComponentExist(ON.text('after click'));
+          await driver.pressBack();
         })
       })
     }
@@ -264,7 +265,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[findAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
+<!-- @[findAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
 
 ``` TypeScript
 import { describe, it, TestType } from '../../../../../hypium/index';
@@ -280,7 +281,7 @@ export default function abilityTest(): void {
       let driver: Driver = Driver.create();
       await driver.delayMs(1000);
       let button: Component | null = await driver.findComponent(ON.type('Button'));
-      if (button) {
+      if (button != null) {
         await button.click();
       }
     })
@@ -288,12 +289,10 @@ export default function abilityTest(): void {
     /**
      * 利用相对位置查找控件，查找'Scroll'类型控件中文本内容为'123'的控件
      */
-    it('relativePositioncomponentSearch', TestType.FUNCTION, async (): Promise<void> => {
+    it('relativeComponentSearch', TestType.FUNCTION, async (): Promise<void> => {
       let driver: Driver = Driver.create();
       let on: On = ON.text('123').within(ON.type('Scroll'));
       let items: Array<Component> | null = await driver.findComponents(on);
-      if (items) {
-      }
     })
 
     /**
@@ -302,7 +301,7 @@ export default function abilityTest(): void {
     it('componentPinch', TestType.FUNCTION, async (): Promise<void> => {
       let driver: Driver = Driver.create();
       let image: Component | null = await driver.findComponent(ON.type('Image'));
-      if (image) {
+      if (image != null) {
         await image.pinchOut(1.5);
       }
     })
@@ -362,7 +361,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[touchScreen_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/TouchScreenEvent.test.ets) -->
+<!-- @[touchScreen_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/TouchScreenEvent.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -442,29 +441,30 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[waitForComp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/WaitForCom.test.ets) -->
+<!-- @[waitForComp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/WaitForCom.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
 // 导入测试依赖kit
 import { abilityDelegatorRegistry, Component, Driver, ON } from '@kit.TestKit';
+import { Utils, startAbility, stopApplication } from '../../Util.test';
 
 const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 // 指定被测应用包名、ability名，请开发者替换为被测应用包名和ability名
-const bundleName: string = 'com.uitestScene.acts';
-const abilityName: string = 'com.uitestScene.acts.MainAbility';
+const bundleName: string = 'com.uitest.acts.static';
 
 export default function abilityTest(): void {
   describe('waitForComp_sample', (): void => {
     it('testWaitForComponent_static', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3,
       async (): Promise<void> => {
-        let driver: Driver = Driver.create();
         // 拉起目标应用
-        await delegator.executeShellCommand(`aa start -b ${bundleName} -a ${abilityName}`).then((_result) => {
-        }).catch((_err: Error) => {
-        })
+        await startAbility(bundleName, 'EntryAbility');
+        await Utils.msSleep(2000);
+        let driver: Driver = Driver.create();
+        await Utils.pushUrl('pages/Click', 'Click');
+        await Utils.msSleep(2000);
         // 通过等待目标应用首页上的指定控件出现，判断应用拉起完成
-        let button: Component | null = await driver.waitForComponent(ON.text('StartAbility Success!'), 1000);
+        await driver.waitForComponent(ON.text('singleClick'), 1000);
       })
   })
 }
@@ -548,7 +548,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[inputText_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/InputText.test.ets) -->
+<!-- @[inputText_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/InputText.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -679,7 +679,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[screenCap_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/ScreenCap.test.ets) -->
+<!-- @[screenCap_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/ScreenCap.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -754,17 +754,17 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[eventObserver_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/EventObserver.test.ets) -->
+<!-- @[eventObserver_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/EventObserver.test.ets) -->
 
 ``` TypeScript
 import { describe, it, TestType } from "../../../../../hypium/index";
 // 导入测试依赖kit
 import { Driver, UIElementInfo } from '@kit.TestKit';
 
-export default function abilityTest() {
-  describe('eventObserver_sample', () => {
+export default function abilityTest(): void {
+  describe('eventObserver_sample', (): void => {
     // 监听Toast控件出现
-    it('toastObserver', TestType.FUNCTION, async () => {
+    it('toastObserver', TestType.FUNCTION, async (): Promise<void> => {
       let driver = Driver.create();
       let observer = driver.createUIEventObserver();
       let callback = (uiElementInfo: UIElementInfo) => {
@@ -828,19 +828,19 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[mouseAndKey_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
+<!-- @[mouseAndKey_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
 
 ``` TypeScript
-import { describe, it, Level, Size, TestType } from '../../../../../hypium/index';
+import { beforeAll, describe, expect, it, Level, Size, TestType } from "../../../../../hypium/index";
 // 导入测试依赖kit
 import { Driver, MouseButton } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
 export default function abilityTest(): void {
-  describe('mouseAndKey_sample', (): void => {
+  describe('mouseAndKey_sample', () => {
     // 模拟键盘按键输入、组合键输入
-    it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      let driver: Driver = Driver.create();
+    it('keyBoardOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
       // 键盘按键输入（注入返回键）
       await driver.triggerKey(KeyCode.KEYCODE_BACK);
       // 键盘组合键输入（注入保存组合键）
@@ -848,8 +848,8 @@ export default function abilityTest(): void {
     })
 
     // 模拟鼠标左键单击、鼠标移动、鼠标拖拽操作
-    it('mouseOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      let driver: Driver = Driver.create();
+    it('mouseOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
       // 鼠标左键单击
       await driver.mouseClick({ x: 100, y: 100 }, MouseButton.MOUSE_BUTTON_LEFT);
       // 鼠标移动
@@ -859,8 +859,8 @@ export default function abilityTest(): void {
     })
 
     // 模拟键盘、鼠标组合操作
-    it('combinedOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (): Promise<void> => {
-      let driver: Driver = Driver.create();
+    it('combinedOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
+      let driver = Driver.create();
       // 按下左CTRL键，同时鼠标滚轮滚动
       await driver.mouseScroll({ x: 100, y: 100 }, true, 30, KeyCode.KEYCODE_CTRL_LEFT);
       // 按下左CTRL键，同时鼠标左键长按
@@ -904,7 +904,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[findWindowAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
+<!-- @[findWindowAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, TestType } from "../../../../../hypium/index";
@@ -969,7 +969,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[touchPadOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
+<!-- @[touchPadOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -1032,7 +1032,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[penOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/PenOp.test.ets) -->
+<!-- @[penOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/PenOp.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -1093,13 +1093,14 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[watchOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/WatchOp.test.ets) -->
+<!-- @[watchOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/WatchOp.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from "../../../../../hypium/index";
 // 导入测试依赖kit
 import { Driver } from '@kit.TestKit';
 import { BusinessError } from '@ohos.base';
+import { Utils, startAbility, stopApplication } from '../../Util.test';
 
 // 设备不支持时的错误代码
 const CapabilityCode: int = 801;
@@ -1156,12 +1157,13 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[displayOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitest/entry/src/main/src/test/operationExampleTest/ui/DisplayOp.test.ets) -->
+<!-- @[displayOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/DisplayOp.test.ets) -->
 
 ``` TypeScript
-import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
+import { expect, describe, it, Level, Size, TestType } from "../../../../../hypium/index";
 // 导入测试依赖kit
 import { DisplayRotation, Driver, Point } from '@kit.TestKit';
+const waitUiReadyMs: int = 1000;
 
 export default function abilityTest(): void {
   describe('displayOp_sample', (): void => {
@@ -1174,8 +1176,48 @@ export default function abilityTest(): void {
       let density: Point = await driver.getDisplayDensity();
       // 唤醒屏幕
       await driver.wakeUpDisplay();
-      // 屏幕顺时针旋转90度
-      await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
+      // 屏幕顺时针旋转垂直
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_0);
+      await driver.delayMs(waitUiReadyMs);
+      let rotation = await driver!.getDisplayRotation();
+      if (rotation == DisplayRotation.ROTATION_90) {
+        console.info('The device is displayed in horizontal on default');
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
+        await driver.delayMs(waitUiReadyMs);
+        let rotation1 = await driver!.getDisplayRotation();
+        expect(rotation1 == DisplayRotation.ROTATION_0).assertTrue();
+
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
+        await driver.delayMs(waitUiReadyMs);
+        let rotation2 = await driver!.getDisplayRotation();
+        expect(rotation2 == DisplayRotation.ROTATION_270).assertTrue();
+
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_270);
+        await driver.delayMs(waitUiReadyMs);
+        let rotation3 = await driver!.getDisplayRotation();
+        expect(rotation3 == DisplayRotation.ROTATION_180).assertTrue();
+
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
+      } else if (rotation == DisplayRotation.ROTATION_0) {
+        console.info('The device is displayed in vertical on default');
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_90);
+        await driver.delayMs(waitUiReadyMs)
+        let rotation1 = await driver!.getDisplayRotation();
+        expect(rotation1 == DisplayRotation.ROTATION_90).assertTrue();
+
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
+        await driver.delayMs(waitUiReadyMs);
+        let rotation2 = await driver!.getDisplayRotation();
+        expect(rotation2 == DisplayRotation.ROTATION_180).assertTrue();
+
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_270);
+        await driver.delayMs(waitUiReadyMs);
+        let rotation3 = await driver!.getDisplayRotation();
+        expect(rotation3 == DisplayRotation.ROTATION_270).assertTrue();
+
+        await driver.setDisplayRotation(DisplayRotation.ROTATION_0);
+        await driver.delayMs(waitUiReadyMs);
+      }
     })
   })
 }
