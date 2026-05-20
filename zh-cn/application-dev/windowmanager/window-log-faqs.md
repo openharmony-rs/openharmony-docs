@@ -358,7 +358,7 @@ hdc shell hilog | grep "RectCheck err"
 
 **正反案例**
 
-**错误示例**
+错误示例
 
 ```ts
 // 错误：窗口尺寸过小
@@ -367,7 +367,7 @@ windowClass.resize(50, 50); // 尺寸小于最小限制，触发WINDOW_RECT_CHEC
 windowClass.showWindow();
 ```
 
-**正确示例**
+正确示例
 
 ```ts
 // 正确：设置在规定范围内的尺寸
