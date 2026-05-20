@@ -1390,7 +1390,9 @@ getCliPermissionRequestInfo(agentID: string, cliInfoList: Array&lt;CliInfo&gt;):
 
 查询CLI（Command Line Interface，命令行界面）命令是否需要权限弹窗。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.QUERY_TOOL_PERMISSIONS
 
