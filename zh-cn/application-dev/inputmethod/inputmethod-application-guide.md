@@ -1427,6 +1427,177 @@
 
    <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/pages/KeyboardKeyData.ets) -->
    
+   ``` TypeScript
+   export const numberSourceListData: sourceListType[] = [
+     {
+       content: '1'
+     },
+     {
+       content: '2'
+     },
+     {
+       content: '3'
+     },
+     {
+       content: '4'
+     },
+     {
+       content: '5'
+     },
+     {
+       content: '6'
+     },
+     {
+       content: '7'
+     },
+     {
+       content: '8'
+     },
+     {
+       content: '9'
+     },
+     {
+       content: '0'
+     },
+     {
+       content: '@'
+     },
+     {
+       content: '#'
+     },
+     {
+       content: '$'
+     },
+     {
+       content: '%'
+     },
+     {
+       content: '&'
+     },
+     {
+       content: '-'
+     },
+     {
+       content: '+'
+     },
+     {
+       content: '('
+     },
+     {
+       content: ')'
+     },
+     {
+       content: '/'
+     },
+     {
+       content: '*'
+     },
+     {
+       content: '"'
+     },
+     {
+       content: "'"
+     },
+     {
+       content: ':'
+     },
+     {
+       content: ';'
+     },
+     {
+       content: '!'
+     },
+     {
+       content: '?'
+     },
+   
+   ]
+   
+   export const symbolSourceListData: sourceListType[] = [
+     {
+       content: '~'
+     },
+     {
+       content: '`'
+     },
+     {
+       content: '|'
+     },
+     {
+       content: '\u2022'
+     },
+     {
+       content: '\u221A'
+     },
+     {
+       content: '\u03A0'
+     },
+     {
+       content: '\u00F7'
+     },
+     {
+       content: '\u00D7'
+     },
+     {
+       content: String.fromCharCode(182)
+     },
+     {
+       content: '\u2206'
+     },
+     {
+       content: String.fromCharCode(163)
+     },
+     {
+       content: '\u20ac'
+     },
+     {
+       content: String.fromCharCode(165)
+     },
+     {
+       content: String.fromCharCode(162)
+     },
+     {
+       content: String.fromCharCode(94)
+     },
+     {
+       content: '\u00B0'
+     },
+     {
+       content: '='
+     },
+     {
+       content: String.fromCharCode(123)
+     },
+     {
+       content: String.fromCharCode(125)
+     },
+     {
+       content: String.fromCharCode(44)
+     },
+     {
+       content: String.fromCharCode(92)
+     },
+     {
+       content: String.fromCharCode(169)
+     },
+     {
+       content: String.fromCharCode(174)
+     },
+     {
+       content: '\u2122'
+     },
+     {
+       content: '\u2105'
+     },
+     {
+       content: '['
+     },
+     {
+       content: ']'
+     }
+   ]
+   ```
+   
 
 4. Index.ets文件。主要描绘了具体按键功能。如按下数字键，就会将数字内容在输入框中打印出来，按下删除键，就会将内容删除。
 
