@@ -7106,6 +7106,8 @@ rekey(encryptionKey: Uint8Array): Promise\<void>
 | ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
 | encryptionKey  | Uint8Array | 是   | 指定用户自定义的加密密钥。|
 
+**返回值：**
+
 | 类型          | 说明                       |
 | -------------- | ------------------------ |
 | Promise\<void> | Promise对象，无返回结果。 |
@@ -7121,7 +7123,7 @@ rekey(encryptionKey: Uint8Array): Promise\<void>
 | 14800014     | The target instance is already closed.                                 |
 | 14800015     | The database does not respond.                                         |
 | 14800024     | SQLite: The database file is locked.                              |
-| 14800043     | Database does not support this scenario. Possible causes: This is a readonly db.  |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not support;2. The table is not supported;3. This is a read-only database.  |
 
 **示例：**
 
@@ -7133,7 +7135,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onCreate() {
+  async onCreate() {
     let cryptoParam: relationalStore.CryptoParam = {
       encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
     }
@@ -7142,7 +7144,7 @@ export default class EntryAbility extends UIAbility {
       securityLevel: relationalStore.SecurityLevel.S2,
       encrypt: true,
       vector: true,
-      cryptionParam: cryptoParam,
+      cryptoParam: cryptoParam,
     };
 
     let rdbStore: relationalStore.RdbStore = await relationalStore.getRdbStore(this.context, STORE_CONFIG1);
