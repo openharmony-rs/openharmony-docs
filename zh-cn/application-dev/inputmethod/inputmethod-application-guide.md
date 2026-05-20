@@ -78,6 +78,24 @@
    ArkTS-Sta示例：
 
    <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
+   
+   ``` TypeScript
+   import { Want } from '@kit.AbilityKit';
+   import { keyboardController } from './model/KeyboardController';
+   import { InputMethodExtensionAbility } from '@kit.IMEKit';
+   
+   const TAG: string = 'InputMethodService->';
+   
+   export default class InputMethodService extends InputMethodExtensionAbility {
+     onCreate(want: Want): void {
+       keyboardController.onCreate(this.context); // 初始化窗口并注册对输入法框架的事件监听
+     }
+   
+     onDestroy(): void {
+       keyboardController.onDestroy(); // 销毁窗口并去注册事件监听
+     }
+   }
+   ```
 
 
 2. KeyboardController.ets文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取输入法键盘相对系统面板的偏移区域([getSystemPanelCurrentInsets](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21))，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
