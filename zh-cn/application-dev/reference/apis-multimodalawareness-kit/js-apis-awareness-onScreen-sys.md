@@ -586,7 +586,7 @@ capture接口支持的capList能力列表
 | 34000001 | Service exception. |
 | 34000002 | The application or page is not supported. |
 
-**示例**：
+**UiImage 示例**：
 
 ```ts
 import onScreen from "@ohos.multimodalAwareness.onScreen";
@@ -603,6 +603,22 @@ try {
 }
 ```
 
+**UiTree 示例**：
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'UiTree	',
+  ]
+}
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
+  console.error(`capture resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.info(`capture failed, error: ${err}`);
+}
+```
 ## onScreen.interact<sup>23+</sup>
 
 interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
@@ -646,7 +662,7 @@ interact接口支持的capList能力列表
 | 34000001 | Service exception. |
 | 34000002 | The application or page is not supported. |
 
-**示例**：
+**JumpContext 示例**：
 
 ```ts
 import onScreen from "@ohos.multimodalAwareness.onScreen";
@@ -673,7 +689,36 @@ try {
   console.info(`interact failed, error: ${err}`);
 }
 ```
+**InjectEvent 示例**：
 
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'InjectEvent',
+  ]
+}
+
+let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  parameters: {
+    "InjectEvent" : {
+      "componentType":'Button',
+      "action": 'click',
+      "params": {}
+    }
+    "comId": ["89"],
+    "windowId": 66,
+    "displayId": -1
+  }
+}
+
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
+  console.error(`interact resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.info(`interact failed, error: ${err}`);
+}
+```
 ## onScreen.apperceive<sup>23+</sup>
 
 apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
