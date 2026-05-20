@@ -42,7 +42,7 @@ ArkTS-Sta: hasPrivateWindow(displayId: long): boolean
 
 | 参数名 | 类型                      | 必填 | 说明       |
 | ------ | ------------------------- | ---- |----------|
-| displayId    | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是   | 屏幕ID，该参数仅支持整数输入。该参数大于等于0。 |
+| displayId    | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是   | 屏幕ID，该参数仅支持整数输入。该参数大于等于0。 |
 
 **返回值：**
 
@@ -493,7 +493,7 @@ ArkTS-Sta: addVirtualScreenBlocklist(windowIds: Array\<int>): Promise\<void>
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| windowIds     | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt;  | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowIds     | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;int&gt;  | 是   | 窗口id列表，传入子窗窗口id时不生效。窗口id为大于0的整数。推荐使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 
 **返回值：**
 
