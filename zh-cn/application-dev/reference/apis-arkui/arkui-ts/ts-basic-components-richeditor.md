@@ -8316,3 +8316,85 @@ struct HorizontalScrollDemo {
 ```
 
 ![enableHorizontalScroll](figures/richEditorHorizontalScroll.gif)
+
+### 示例42（设置文本着色器效果）
+
+该示例通过[RichEditorParagraphStyle](#richeditorparagraphstyle11)中shaderStyle接口实现文本着色效果。
+
+从API版本26.0.0开始，RichEditorParagraphStyle新增shaderStyle接口。
+
+```ts
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  controller1: RichEditorController = new RichEditorController();
+  options1: RichEditorOptions = { controller: this.controller1 };
+  controller2: RichEditorController = new RichEditorController();
+  options2: RichEditorOptions = { controller: this.controller2 };
+  controller3: RichEditorController = new RichEditorController();
+  options3: RichEditorOptions = { controller: this.controller3 };
+
+  build() {
+    Column({ space: 5 }) {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options)
+        .width('80%')
+        .margin({ top: 10 })
+        .onReady(() => {
+          this.controller.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions1 } })
+        }).borderWidth(1)
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options1)
+        .width('80%')
+        .margin({ top: 10 })
+        .onReady(() => {
+          this.controller1.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions2 } })
+        }).borderWidth(1)
+      Text('径向渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options2)
+        .width('80%')
+        .margin({ top: 10 })
+        .onReady(() => {
+          this.controller2.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.radialGradientOptions } })
+        }).borderWidth(1)
+      Text('纯色').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options3)
+        .width('80%')
+        .margin({ top: 10 })
+        .onReady(() => {
+          this.controller3.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.colorShaderStyle } })
+        }).borderWidth(1)
+    }
+  }
+}
+```
+![RichEditorShaderStyle](figures/richEditorShaderStyle.png)
