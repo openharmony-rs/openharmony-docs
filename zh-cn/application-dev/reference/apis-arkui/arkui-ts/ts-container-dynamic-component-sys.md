@@ -129,3 +129,138 @@ DynamicComponent运行过程中发生异常时触发该回调。使用callback�
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | ArkTS-Dyn: [ErrorCallback](#errorcallback)<br/>ArkTS-Sta: [ErrorCallback](#errorcallback)\<[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)> \| undefined | 是 | 回调函数，入参用于接收异常信息。<br/>ArkTS-Sta模式下，可传入undefined，表示取消回调函数。 |
+
+## 示例
+
+### 示例1（DynamicComponent使用）
+
+本示例展示了DynamicComponent的基本用法，通过配置DynamicOptions加载指定Worker线程中运行的Abc页面，并通过onError回调处理运行异常。
+
+**组件使用方**
+
+ArkTS-Dyn示例：
+
+``` TypeScript
+import { worker } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State errorMessage: string = '';
+  private workerInstance: worker.Worker | null = null;
+
+  aboutToAppear(): void {
+    this.workerInstance = new worker.Worker('workers/DynamicWorker.ets');
+  }
+
+  aboutToDisappear(): void {
+    this.workerInstance?.terminate();
+  }
+
+  build() {
+    Column() {
+      Text('DynamicComponent示例').fontSize(20).margin(10)
+
+      if (this.errorMessage) {
+        Text('错误信息: ' + this.errorMessage).fontSize(14).fontColor(Color.Red).margin(10)
+      }
+
+      DynamicComponent({
+        entryPoint: 'DynamicPage',
+        worker: this.workerInstance!,
+        backgroundTransparent: false,
+        allowCrossProcessNesting: false,
+      })
+        .width('100%')
+        .height('60%')
+        .onError((error: BusinessError) => {
+          this.errorMessage = `code: ${error.code}, message: ${error.message}`;
+          hilog.error(0x0000, 'DynamicComponentDemo', 'onError: ' + this.errorMessage);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` TypeScript
+import { worker } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { State } from '@ohos.arkui.stateManagement'
+import { Column, Text, Component, Entry, DynamicComponent } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct Index {
+  @State errorMessage: string = '';
+  private workerInstance: worker.Worker | null = null;
+
+  aboutToAppear(): void {
+    this.workerInstance = new worker.Worker('workers/DynamicWorker.ets');
+  }
+
+  aboutToDisappear(): void {
+    this.workerInstance?.terminate();
+  }
+
+  build() {
+    Column() {
+      Text('DynamicComponent示例').fontSize(20).margin(10)
+
+      if (this.errorMessage) {
+        Text('错误信息: ' + this.errorMessage).fontSize(14).fontColor(Color.Red).margin(10)
+      }
+
+      DynamicComponent({
+        entryPoint: 'DynamicPage',
+        worker: this.workerInstance!,
+        backgroundTransparent: false,
+        allowCrossProcessNesting: false,
+        allowOccupied: false,
+      })
+        .width('100%')
+        .height('60%')
+        .onError((error: BusinessError) => {
+          this.errorMessage = `code: ${error.code}, message: ${error.message}`;
+          hilog.error(0x0000, 'DynamicComponentDemo', 'onError: ' + this.errorMessage);
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+**Worker线程文件** workers/DynamicWorker.ets
+
+```ts
+import { worker } from '@kit.ArkTS';
+
+const workerInstance = new worker.Worker('workers/DynamicWorker.ets');
+
+workerInstance.onmessage = (event: MessageEvents) => {
+  // 处理主线程发送的消息
+};
+```
+
+**Abc页面入口** DynamicPage.ets
+
+```ts
+@Entry
+@Component
+struct DynamicPage {
+  build() {
+    Column() {
+      Text('这是DynamicComponent加载的Abc页面').fontSize(20).margin(10)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
