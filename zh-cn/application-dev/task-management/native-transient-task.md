@@ -287,8 +287,8 @@
 配置`CMakeLists.txt`，本模块需要用到的共享库是`libtransient_task.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
    <!-- @[dependent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/CMakeLists.txt) -->
-
-   ```txt
+   
+   ``` Text
    target_link_libraries(entry PUBLIC libace_napi.z.so libtransient_task.so)
    ```
 
