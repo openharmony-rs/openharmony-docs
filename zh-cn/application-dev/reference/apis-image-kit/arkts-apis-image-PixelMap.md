@@ -71,7 +71,7 @@ readAllPixelsToBuffer(dst: ArrayBuffer): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -125,7 +125,7 @@ readAllPixelsToBufferSync(dst: ArrayBuffer): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -329,7 +329,7 @@ readPixelsToArea(area: PositionArea): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -420,7 +420,7 @@ readPixelsToAreaSync(area: PositionArea): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -717,7 +717,7 @@ writePixelsFromArea(area: PositionArea): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -825,7 +825,7 @@ writePixelsFromAreaSync(area: PositionArea): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -1148,7 +1148,7 @@ writeAllPixelsFromBuffer(src: ArrayBuffer): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -1211,7 +1211,7 @@ writeAllPixelsFromBufferSync(src: ArrayBuffer): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -1677,7 +1677,7 @@ ArkTS-Sta: setOpacity(value: double): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -1750,7 +1750,7 @@ ArkTS-Sta: setOpacitySync(value: double): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -2013,7 +2013,7 @@ extractAlphaPixelMap(): Promise\<PixelMap>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -2068,7 +2068,7 @@ extractAlphaPixelMapSync(): PixelMap
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -2273,7 +2273,7 @@ ArkTS-Sta: applyScale(x: double, y: double, level?: AntiAliasingLevel): Promise\
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -2355,7 +2355,7 @@ ArkTS-Sta: applyScaleSync(x: double, y: double, level?: AntiAliasingLevel): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -3207,7 +3207,7 @@ ArkTS-Sta: applyTranslate(x: double, y: double): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -3288,7 +3288,7 @@ ArkTS-Sta: applyTranslateSync(x: double, y: double): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -3578,7 +3578,7 @@ ArkTS-Sta: applyRotate(angle: double): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -3656,7 +3656,7 @@ ArkTS-Sta: applyRotateSync(angle: double): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -3938,7 +3938,7 @@ applyFlip(horizontal: boolean, vertical: boolean): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -3992,7 +3992,7 @@ applyFlipSync(horizontal: boolean, vertical: boolean): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -4193,7 +4193,7 @@ applyCrop(region: Region): Promise\<void>
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
@@ -4256,7 +4256,7 @@ applyCropSync(region: Region): void
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
-| 错误码 | 错误信息 |
+| 错误码ID | 错误信息 |
 | ------ | --------------------------------------------|
 | 7600104 | Failed to get image data. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
 | 7600105 | The PixelMap has been released. |
