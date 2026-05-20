@@ -323,7 +323,7 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 >
 > - 应用最多可添加5个水印。
 >
-> - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startRecording12)接口调用前调用addWatermark接口。
+> - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用addWatermark接口。
 
 **起始版本：** 26.0.0
 
