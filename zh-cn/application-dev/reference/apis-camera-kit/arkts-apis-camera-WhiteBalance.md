@@ -202,6 +202,12 @@ setColorTint(colorTint: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**参数：**
+
+| 参数名      | 类型                     | 必填 | 说明                 |
+| -------- | ----------------------- | ---- | ------------------- |
+| colorTint | number | 是   | 设置手动白平衡色调调节值。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
