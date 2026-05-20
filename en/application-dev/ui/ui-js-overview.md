@@ -38,7 +38,7 @@ ArkUI with the JavaScript-compatible web-like development paradigm consists of t
 
 ## ArkUI.Full and ArkUI.Lite
 
-The JS-compatible web-like development paradigm is divided into two versions based on functional completeness and applicable scenarios: ArkUI.Full and ArkUI.Lite. ArkUI.Lite is a subset of ArkUI.Full. ArkUI.Full includes all capabilities of ArkUI.Lite while providing additional components and features. You can choose the appropriate version based on the complexity and resource requirements of their applications.
+The JS-compatible web-like development paradigm is divided into two versions based on functional completeness and applicable scenarios: ArkUI.Full and ArkUI.Lite. ArkUI.Lite is a subset of ArkUI.Full. ArkUI.Full includes all capabilities of ArkUI.Lite while providing additional components and features. You can choose the appropriate version based on the complexity and resource requirements of your applications.
 
 - **ArkUI.Full**: The complete web-like development paradigm, offering comprehensive UI development capabilities. It supports full container components, basic components, media components, canvas components, grid components, SVG components, and custom components. Designed for devices such as smartphones and tablets, it is suitable for developing feature-rich, highly interactive applications.<!--RP2--><!--RP2End-->
 

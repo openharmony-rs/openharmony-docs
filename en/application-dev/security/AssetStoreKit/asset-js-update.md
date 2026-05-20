@@ -15,7 +15,7 @@ The following table describes the attributes of **AssetMap** for updating an ass
 
 > **NOTE**
 >
-> In the following table, the attributes **ALIAS** and those containing with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> In the following table, the attributes **ALIAS** and those containing **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 - Attributes in **query**:
 

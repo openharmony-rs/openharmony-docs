@@ -19,7 +19,7 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-creat
 
 ## Overview
 
-AppStorageV2 is a singleton created when the application UI is started. It is used to provide a central storage of application status data that can be accessed at the application level. and remains persistent throughout the application lifecycle. Properties in AppStorageV2 are accessed using unique key strings. It should be noted that data between AppStorage and AppStorageV2 is not shared.
+AppStorageV2 is a singleton created when the application UI is started. It is used to provide a central storage of application status data that can be accessed at the application level and remains persistent throughout the application lifecycle. Properties in AppStorageV2 are accessed using unique key strings. It should be noted that data between AppStorage and AppStorageV2 is not shared.
 
 The **connect** API of AppStorageV2 enables customizable synchronization between stored data and UI components.
 

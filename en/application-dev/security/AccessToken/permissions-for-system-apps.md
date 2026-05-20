@@ -789,6 +789,8 @@ Allows an application to modify HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
 **Valid since**: 10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -801,6 +803,8 @@ Allows an application to access HiView data.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
 **Valid since**: 10
 
 ## ohos.permission.READ_DFX_SYSEVENT
@@ -812,6 +816,8 @@ Allows an application to access system event logging data.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
 **Valid since**: 8
 
@@ -1262,6 +1268,8 @@ Allows a system application or system service to start the DLP credential manage
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 12
 
 ## ohos.permission.START_SHORTCUT
@@ -1431,6 +1439,8 @@ Allows configuration and management of the permissions on .dlp files.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Valid since**: 9
 

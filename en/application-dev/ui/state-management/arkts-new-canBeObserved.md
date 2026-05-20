@@ -235,7 +235,7 @@ struct TrackChild {
 }
 ```
 
-When an object property is decorated with the [@Track](./arkts-track.md) decorator, the decorator information collection specifications are the same as those of the V2 component decorator. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios- where-v2-component-objects-can-be-observed).
+When an object property is decorated with the [@Track](./arkts-track.md) decorator, the decorator information collection specifications are the same as those of the V2 component decorator. For details, see [Scenarios Where V2 Component Objects Can Be Observed](#scenarios-where-v2-component-objects-can-be-observed).
 
 Returned result:
 

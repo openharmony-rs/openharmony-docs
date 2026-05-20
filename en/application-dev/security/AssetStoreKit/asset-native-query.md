@@ -15,7 +15,7 @@ The following table describes the attributes for querying an asset.
 
 > **NOTE**
 >
-> In the following table, the attributes **ASSET_TAG_ALIAS** and those containing with **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> In the following table, the attributes **ASSET_TAG_ALIAS** and those containing **ASSET_TAG_DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 > It takes a long time to query the plaintext of the asset attribute **ASSET_TAG_SECRET** due to the need of decryption. Therefore, **Asset_ReturnType** must be set to **ASSET_RETURN_ALL**. For other asset attributes, decryption is not required, so the query takes a short time. Therefore, **Asset_ReturnType** must be set to **ASSET_RETURN_ATTRIBUTES**.
 
 | Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory| Description                                                        |
