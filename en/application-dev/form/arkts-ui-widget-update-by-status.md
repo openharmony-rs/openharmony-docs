@@ -1,9 +1,9 @@
 # Updating Widget Content by State
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 There are cases where multiple copies of the same widget are added to the home screen to accommodate different needs. In these cases, the widget content needs to be dynamically updated based on the state. This topic exemplifies how this is implemented. In the following example, two copies of the weather widget are added to the home screen: one for displaying the weather of London, and the other Beijing, both configured to be updated at 07:00 every morning. The widget provider detects the target city, and then displays the city-specific weather information on the widgets.
