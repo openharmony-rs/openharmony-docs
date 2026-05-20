@@ -88,7 +88,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
     **ArkTS-Sta示例：**
 
-    <!-- @[clickToAfter_sta](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/ets/pages/ClickToAfter.ets) -->
+    <!-- @[clickToAfter_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/ets/pages/ClickToAfter.ets) -->
 
     ``` TypeScript
     @Entry
@@ -170,7 +170,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
 
     **ArkTS-Sta示例：**
 
-    <!-- @[click_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
+    <!-- @[click_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
 
     ``` TypeScript
     import { describe, expect, it, Level } from '../../../../hypium/index';
@@ -265,7 +265,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[findAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
+<!-- @[findAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
 
 ``` TypeScript
 import { describe, it, TestType } from '../../../../../hypium/index';
@@ -361,7 +361,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[touchScreen_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/TouchScreenEvent.test.ets) -->
+<!-- @[touchScreen_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/TouchScreenEvent.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -441,7 +441,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[waitForComp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/WaitForCom.test.ets) -->
+<!-- @[waitForComp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/WaitForCom.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -548,7 +548,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[inputText_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/InputText.test.ets) -->
+<!-- @[inputText_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/InputText.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -679,7 +679,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[screenCap_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/ScreenCap.test.ets) -->
+<!-- @[screenCap_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/ScreenCap.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -754,7 +754,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[eventObserver_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/EventObserver.test.ets) -->
+<!-- @[eventObserver_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/EventObserver.test.ets) -->
 
 ``` TypeScript
 import { describe, it, TestType } from "../../../../../hypium/index";
@@ -828,7 +828,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[mouseAndKey_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
+<!-- @[mouseAndKey_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
 
 ``` TypeScript
 import { beforeAll, describe, expect, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -904,7 +904,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[findWindowAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
+<!-- @[findWindowAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, TestType } from "../../../../../hypium/index";
@@ -969,7 +969,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[touchPadOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
+<!-- @[touchPadOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -1032,7 +1032,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[penOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/PenOp.test.ets) -->
+<!-- @[penOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/PenOp.test.ets) -->
 
 ``` TypeScript
 import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -1093,7 +1093,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[watchOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/WatchOp.test.ets) -->
+<!-- @[watchOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/WatchOp.test.ets) -->
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from "../../../../../hypium/index";
@@ -1157,7 +1157,7 @@ export default function abilityTest() {
 
 **ArkTS-Sta示例：**
 
-<!-- @[displayOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/DisplayOp.test.ets) -->
+<!-- @[displayOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/DisplayOp.test.ets) -->
 
 ``` TypeScript
 import { expect, describe, it, Level, Size, TestType } from "../../../../../hypium/index";
