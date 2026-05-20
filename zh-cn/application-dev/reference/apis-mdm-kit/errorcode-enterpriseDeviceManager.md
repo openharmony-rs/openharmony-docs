@@ -112,6 +112,7 @@ Failed to deactivate the administrator application of the device.
 2. 检查解除激活时设备管理应用中指定设备管理元能力组件是否激活过。
 3. 检查调用者是否解除激活自身，设备管理器应用不能解除激活其他设备管理器应用。
 
+<!--Del-->
 ## 9200006 指定的用户ID非法
 
 **错误信息**
@@ -154,6 +155,7 @@ The system ability works abnormally.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
+<!--DelEnd-->
 
 ## 9200008 系统订阅事件无效
 
@@ -403,17 +405,25 @@ Failed to install the application.
 
 **可能原因**
 
-该错误码表示安装企业应用失败，可能原因如下。
+该错误码表示安装企业应用失败。
+
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，可能原因如下。
 1. 应用安装路径为空、不存在、无效路径。
 2. 安装多个不同包名的应用。
 3. 当安装参数flag为0时再次安装已存在的应用。
 4. 传入无效用户id。
 
+<!--RP3--><!--RP3End-->
+
 **处理步骤**
+
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，处理步骤如下。
 
 1. 检查应用安装路径是有效的安装路径。
 2. 检查安装参数是有效的安装参数。
 3. 检查安装的是同一应用。
+
+<!--RP4--><!--RP4End-->
 
 ## 9201003 创建账号失败
 
@@ -804,3 +814,21 @@ A lock screen password has been set for the device.
 **处理步骤**
 
 删除锁屏密码。
+
+## 9201043 API调用的前置条件未满足
+
+**错误信息**
+
+Prerequisites for the API call have not been satisfied. For example, distributed outgoing transmission is not disallowed before adding the distributed bidirectional collaboration trustlist.
+
+**错误描述**
+
+当API调用的前置条件未满足时，会产生此错误码。
+
+**可能原因**
+
+在添加允许分布式双向协同应用名单之前，设备间单向传输能力未被禁止。
+
+**处理步骤**
+
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。

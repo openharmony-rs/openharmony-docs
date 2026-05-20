@@ -365,11 +365,11 @@ chainMode(direction: Axis, style: ChainStyle): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                                                         |
-| ------------- | ------------------------------------------------------------ |
-| SPREAD        | 组件在约束锚点间均匀分布。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
-| SPREAD_INSIDE | 除首尾2个子组件的其他组件在约束锚点间均匀分布。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
-| PACKED        | 链内子组件无间隙。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
+| 名称          | 值 | 说明                                                         |
+| ------------- | ------- | ------------------------------------------------------------ |
+| SPREAD        | 0 | 组件在约束锚点间均匀分布。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
+| SPREAD_INSIDE | 1 | 除首尾2个子组件的其他组件在约束锚点间均匀分布。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
+| PACKED        | 2 | 链内子组件无间隙。详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。 |
 
 >  **说明：**
 >

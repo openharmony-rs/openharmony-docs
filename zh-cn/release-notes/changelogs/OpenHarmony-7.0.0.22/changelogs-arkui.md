@@ -178,7 +178,7 @@ ArkUI API version 10及以上的全量接口。
 
 推荐使用Stage模型。Stage模型是当前系统主推的应用模型，请参考[Stage模型开发概述](../../../application-dev/application-models/stage-model-development-overview.md)和[FA模型开发概述](../../../application-dev/application-models/fa-model-development-overview.md)了解模型差异，进行应用适配。 
 
-## c1.arkui.3 主页NavDestination中使用queryNavDestinationInfo接口的行为变更
+## cl.arkui.3 主页NavDestination中使用queryNavDestinationInfo接口的行为变更
 
 **访问级别**
 
@@ -301,7 +301,7 @@ struct Index {
 }
 ```
 
-## c1.arkui.4 主页NavDestination的onResult接口行为变更
+## cl.arkui.4 主页NavDestination的onResult接口行为变更
 
 **访问级别**
 
@@ -397,3 +397,151 @@ struct Index {
   }
 }
 ```
+
+## cl.arkui.5 NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL事件回调的返回值行为变更
+
+**访问级别**
+
+公开接口
+
+**变更原因**
+
+[NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL](../../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件回调返回值中的主轴方向上页面的长度ArkUI_NodeComponentEvent.data[3].f32，和实际长度不符。
+
+**变更影响**
+
+此变更涉及应用适配。
+
+- 变更前：NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL的返回值中的ArkUI_NodeComponentEvent.data[3].f32不符合页面的实际主轴长度。例如实际长度为100vp，开发者接收vp单位时，返回的值是100/屏幕像素密度，开发者接收px单位时，返回的值是100。
+  
+- 变更后：NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL的返回值中的ArkUI_NodeComponentEvent.data[3].f32符合页面的实际主轴长度。例如实际长度为100vp，开发者接收vp单位时，返回的值是100，开发者接收px单位时，返回的值是100*屏幕像素密度。
+
+**起始API Level**
+
+12
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.22开始。
+
+**变更的接口/组件**
+
+[NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL](../../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)的返回参数值ArkUI_NodeComponentEvent.data[3].f32。
+
+**适配指导**
+
+原先的返回值不符合实际页面主轴长度，开发者在使用时需要给获取的返回值*屏幕像素密度。变更后可以直接使用正确的长度值进行业务开发。
+
+```cpp
+static ArkUI_NativeNodeAPI_1 *nodeAPI_ = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+    OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
+
+static napi_value CreateSwiperNode(napi_env env, napi_callback_info info) {
+    const int size = 11;
+    const char *arr[size] = {"0", "1", "2", "3"};
+    static ArkUI_NodeHandle swiper = nodeAPI_->createNode(ARKUI_NODE_SWIPER);
+
+    for (int j = ConstIde::NUMBER_0; j < size; j++) {
+        ArkUI_NodeHandle textNode = nodeAPI_->createNode(ARKUI_NODE_TEXT);
+        ArkUI_AttributeItem content = {.string = arr[j]};
+        nodeAPI_->setAttribute(textNode, NODE_TEXT_CONTENT, &content);
+
+        ArkUI_NumberValue value[] = {0};
+        ArkUI_AttributeItem item = {.value = value, .size = 1};
+        value[ConstIde::NUMBER_0].f32 = ConstIde::TEXT_HEIGHT_VP;
+        nodeAPI_->setAttribute(textNode, NODE_HEIGHT, &item);
+        value[ConstIde::NUMBER_0].u32 = ConstIde::TEXT_BG_COLOR;
+        nodeAPI_->setAttribute(textNode, NODE_BACKGROUND_COLOR, &item);
+        value[ConstIde::NUMBER_0].i32 = ConstIde::TEXT_ALIGN_CENTER;
+        nodeAPI_->setAttribute(textNode, NODE_TEXT_ALIGN, &item);
+        value[ConstIde::NUMBER_0].f32 = ConstIde::TEXT_FONT_SIZE_VP;
+        nodeAPI_->setAttribute(textNode, NODE_FONT_SIZE, &item);
+
+        ArkUI_AttributeItem textId = {.string = "SwiperAutoPlayText"};
+        nodeAPI_->setAttribute(textNode, NODE_ID, &textId);
+        nodeAPI_->addChild(swiper, textNode);
+    }
+    ArkUI_NumberValue value[] = {};
+    ArkUI_AttributeItem item = {.value = value, .size = 1};
+    
+    value[0].f32 = 300;
+    nodeAPI_->setAttribute(swiper, NODE_WIDTH, &item);
+
+    nodeAPI_->setLengthMetricUnit(swiper, ArkUI_LengthMetricUnit::ARKUI_LENGTH_METRIC_UNIT_PX);
+    nodeAPI_->registerNodeEvent(swiper, NODE_SWIPER_EVENT_ON_CONTENT_DID_SCROLL, 0, nullptr);
+    nodeAPI_->addNodeEventReceiver(swiper, [](ArkUI_NodeEvent *event) {
+        ArkUI_NodeComponentEvent* compEvent = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event) ; 
+        int selectedIndex = compEvent->data[0].i32; 
+        int index = compEvent->data[1].i32;
+        float position = compEvent->data[2].f32; 
+        float maxAxisLength = compEvent->data[3].f32;
+        // 变更前页面真实的长度为maxAxisLength * 屏幕像素密度，变更后为maxAxisLength
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "maxAxisLength: %{public}f", maxAxisLength);
+    });
+}
+```
+
+## cl.arkui.6 内置文本的组件文本样式优化
+
+**访问级别**
+
+公共能力
+
+**变更原因**
+
+部分ArkUI组件内置了文本功能，文本存在孤字换行、小语种（藏语、缅甸语）行高异常截断、文本按单词换行导致单词截断的问题。为提升组件内文本的可阅读性，针对上述三种场景进行默认优化。
+
+**变更影响**
+
+此变更涉及应用适配。
+
+**场景一：孤字换行优化**
+
+变更前：系统语言为中文时，组件内文本显示换行后存在单独文字，孤字会独立在一行显示。
+
+变更后：系统语言为中文时，组件内文本显示换行后存在单独文字，前一行尾部的文字会跟随显示到第二行，不会出现孤字显示一行的情况。
+
+
+孤字换行变更前后效果如下图所示：
+
+![wordBreak](./figures/wordBreak.png)
+
+**场景二：小语种行高优化**
+
+变更前：系统语言为小语种（藏语、缅甸语）时，文本显示存在重叠，截断的问题。
+
+变更后：系统语言为小语种（藏语、缅甸语）时，文本显示时行高会自动调整，不会出现文本重叠和截断的现象。
+
+小语种行高优化变更前后效果如下图所示：
+
+![lineHeight](./figures/lineheight.png)
+
+**场景三：单词换行改为音节换行**
+
+变更前：系统语言为英语、意大利语等外语时，组件内文本的单词较长时会按照单词换行的方式进行换行，如果单词长度超过显示宽度，单词会被截断。
+
+变更后：系统语言为英语、意大利语等外语时，组件内文本的单词较长时会按照音节换行的方式进行换行，同一个单词内部换行后会使用连字符连接，不会出现单词截断问题。
+
+文本按单词换行改为按音节换行变更前后效果如下图所示：
+
+![syllableBreak](./figures/syllableBreak.png)
+
+**起始 API Level**
+
+12
+
+**变更发生版本**
+
+从OpenHarmony SDK 7.0.0.22开始。
+
+**变更的接口/组件**
+
+[bindPopup](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)，[bindTips](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-tips.md#bindtips)，[showToast](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)，[openToast](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opentoast18)，[Menu](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)，[MenuItem](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md)，[Slider](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)，[Select](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-select.md)，[showAlertDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)，[showActionSheet](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)，[showActionMenu](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11)，[showDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)，[ArcButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md)，[Search](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-search.md)，[Hyperlink](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)，[Marquee](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md)，[TextClock](../../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md)，[Badge](../../../application-dev/reference/apis-arkui/arkui-ts/ts-container-badge.md)，[Chip](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)，[ChipGroup](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)，[SegmentButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)，[SegmentButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)，[bindSheet](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)，[Dialog](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)，[showDatePickerDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog)，[showTimePickerDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog)，[showTextPickerDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtextpickerdialog)，[CalendarPickerDialog](../../../application-dev/reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)
+
+
+**适配指导**
+
+1. 默认效果变更，组件内置文本的换行策略、行高变化后，组件的布局大小存在变化，应用需根据实际显示效果进行调整适配。
+
+2. 变更针对的是系统设置的语言，而非应用实际使用的语言。比如当前应用并未适配藏语和缅甸语，当用户将系统语言切换为藏语或缅甸语后，应用显示的文本依然为中文，但仍会受到本次文本样式变更的影响，行高会自动撑开，相关组件布局大小会发生改变。

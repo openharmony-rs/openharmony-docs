@@ -136,7 +136,7 @@ When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis
 
 **Solution**
 
-Ensure that **defaultCreator** passed by **connect** or **globalConnect** is of the **StorageDefaultCreator\<T\>** type. **globalConnect** is used as an example. For details, see the [globalConnect example](./js-apis-stateManagement.md#globalconnect18).
+Ensure that **defaultCreator** passed by **connect** or **globalConnect** is of the **StorageDefaultCreator\<T\>** type. The following uses **globalConnect** as an example. For details, see [globalConnect](./js-apis-stateManagement.md#globalconnect18).
 
 ## 140105 PersistenceV2 Mixes connect and globalConnect That Use the Same Key
 
@@ -168,7 +168,7 @@ The encryption level set for [globalConnect](./js-apis-stateManagement.md#global
 
 **Possible Causes**
 
-The value of the [areaMode](./js-apis-stateManagement.md#connectoptions18) attribute of [ConnectOptions](./js-apis-stateManagement.md#connectoptions18) of **globalConnect** is not within the range of EL1 to EL5.
+The value of the [areaMode](./js-apis-stateManagement.md#connectoptionst18) attribute of [ConnectOptions](./js-apis-stateManagement.md#connectoptionst18) of **globalConnect** is not within the range of EL1 to EL5.
 
 **Solution**
 
@@ -340,3 +340,5 @@ The key is not of the string or [TypeConstructorWithArgs\<T\>](./js-apis-stateMa
 **Solution**
 
 Ensure that the key passed for using the **remove** API of **AppStorageV2** and **PersistenceV2** and the **save** API of **PersistenceV2** is of the string or **TypeConstructorWithArgs\<T\>** type.
+
+<!--no_check-->

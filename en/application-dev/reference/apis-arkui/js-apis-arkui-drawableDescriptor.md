@@ -73,6 +73,14 @@ Obtains this **PixelMap** instance.
 | ---------------------------------------- | -------- |
 | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | **PixelMap** object.|
 
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+
 **Example**
 
 For details, see [LayeredDrawableDescriptor](#layereddrawabledescriptor).
@@ -100,6 +108,7 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 | ID| Error Message    |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
 
 ```ts
 import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
@@ -138,6 +147,7 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 | ID| Error Message    |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
 
 ```ts
 import {
@@ -155,6 +165,65 @@ drawable.load().then((result: DrawableDescriptorLoadedResult) => {
   console.info(`load failed`)
 })
 ```
+
+### release
+
+release(): void
+
+Releases the resource held by **DrawableDescriptor**. After the **release** API is called, the object becomes unavailable. In this case, if you call APIs such as [getPixelMap](#getpixelmap), [getForeground](#getforeground), [getBackground](#getbackground), [getMask](#getmask), [loadSync](#loadsync21), and [load](#load21) again, error code 111002 will be thrown. No crash occurs when the **release** API is called repeatedly.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Example**
+
+```ts
+import { DrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private resManager = this.getUIContext().getHostContext()?.resourceManager;
+  // Replace $r('app.media.startIcon') with the image resource file you use.
+  private drawable: DrawableDescriptor | undefined =
+    this.resManager?.getDrawableDescriptor($r('app.media.startIcon').id);
+
+  build() {
+    Column() {
+      Button('release')
+        .onClick(() => {
+          this.drawable?.release()
+        })
+      Button('isReleased')
+        .onClick(() => {
+          let released = this.drawable?.isReleased()
+          console.info(`isReleased = ${released}`)
+        })
+    }
+  }
+}
+```
+
+### isReleased
+
+isReleased(): boolean
+
+Checks whether **DrawableDescriptor** is released. If **true** is returned, the object has been released. In this case, calling APIs such as [getPixelMap](#getpixelmap), [getForeground](#getforeground), [getBackground](#getbackground), [getMask](#getmask), [loadSync](#loadsync21), and [load](#load21) will throw error code 111002. If **false** is returned, the object has not been released and can be used normally.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type   | Description                           |
+| ------- | ------------------------------- |
+| boolean | Whether **DrawableDescriptor** is released. The value **true** indicates that the object is released, and **false** indicates that the object is not released.|
 
 ## PixelMapDrawableDescriptor<sup>12+</sup>
 
@@ -175,6 +244,52 @@ A constructor used to create a **PixelMapDrawableDescriptor** object.
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | No| **PixelMap** image data.|
+
+### constructor
+
+constructor(src?: image.PixelMap | ResourceStr)
+
+A constructor used to create a **PixelMapDrawableDescriptor** object through the PixelMap type or **ResourceStr**.
+
+**Since:** 26.0.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name    | Type             | Mandatory | Description                                      |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No| **PixelMap** image data. You can use application resources, system resources, sandbox paths (file://\<bundleName\>/\<sandboxPath\>), and Base64 strings to create **PixelMapDrawableDescriptor** objects.|
+
+**Example**
+
+The following is the sample code for creating a **PixelMapDrawableDescriptor** object using **ResourceStr**:
+
+```ts
+// xxx.ets
+import { PixelMapDrawableDescriptor } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct PixelMapDrawableDescriptorExample {
+  // Create a PixelMapDrawableDescriptor object using Resource.
+  // Replace $r('app.media.icon') with the image resource file you use.
+  @State drawable: DrawableDescriptor = new PixelMapDrawableDescriptor($r('app.media.icon'))
+
+  build() {
+    Column() {
+      Image(this.drawable)
+        .width(100)
+        .height(100)
+        .margin({ bottom: 20 })
+    }
+  }
+}
+```
 
 ## LayeredDrawableDescriptor
 
@@ -308,6 +423,14 @@ Obtains the **DrawableDescriptor** object of the foreground.
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
 
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+
 **Example**
 ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
@@ -367,6 +490,14 @@ Obtains the **DrawableDescriptor** object of the background.
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
 
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+
 **Example**
 ```ts
 import { DrawableDescriptor, LayeredDrawableDescriptor } from '@kit.ArkUI';
@@ -420,6 +551,14 @@ Obtains the **DrawableDescriptor** object of the mask.
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
 | [DrawableDescriptor](#drawabledescriptor) | **DrawableDescriptor** object.|
+
+**Error codes**
+
+For details about the error codes, see [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md).
+
+| ID| Error Message    |
+| -------- | ------------ |
+| 111002 | The native memory referenced by the drawableDescriptor has been released. |
 
 **Example**
 ```ts
@@ -567,7 +706,7 @@ Enumerates the stop modes of an animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name     | **Value** | Description             |
 | ---------- | ---- |------------------------ |
@@ -587,7 +726,7 @@ Provides the configuration options for animation playback, including the playbac
 | iterations | number | No  | Yes|Number of playback times for the image sequence.<br>A value of **-1** indicates infinite playback, **0** indicates no playback, and a value greater than 0 represents the number of playback times.<br>The default value is **1**.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | frameDurations<sup>21+</sup> | Array\<number> | No| Yes|Per-frame playback duration. The setting overrides **duration** if specified.<br>If **duration** and **frameDurations** are set, **duration** is ignored.<br>If the value of **frameDurations** is inconsistent with the image count, animation timing distributes across the total duration.<br>Unit: ms.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
 | autoPlay<sup>21+</sup> | boolean | No | Yes|Whether to enable autoplay.<br> **true** to enable, **false** otherwise.<br>The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
-| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.<br> **Model constraint**: This API can be used only in the stage model.|
+| stopMode<sup>24+</sup> | [AnimationStopMode](#animationstopmode24) | No | Yes|Sets the stop mode for an animation.<br> The default value is **AnimationStopMode.FIRST_FRAME**, indicating that the animation returns to the first frame when it stops.<br> **Atomic service API**: This API can be used in atomic services since API version 24.<br> **Model restriction**: This API can be used only in the stage model.|
 
 **Example**
 

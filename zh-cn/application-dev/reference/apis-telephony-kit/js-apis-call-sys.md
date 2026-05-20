@@ -3023,8 +3023,8 @@ getCallTransferInfo\(slotId: number, type: CallTransferType, callback: AsyncCall
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| type     | [CallTransferType](#calltransfertype8)                       | 是   | 呼叫转移类型。                         |
-| callback | AsyncCallback&lt;[CallTransferResult](#calltransferresult8)&gt; | 是   | 回调函数。返回呼叫转移信息。           |
+| type     | [CallTransferType](js-apis-call.md#calltransfertype)                       | 是   | 呼叫转移类型。                         |
+| callback | AsyncCallback&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | 是   | 回调函数。返回呼叫转移信息。           |
 
 **错误码：**
 
@@ -3072,13 +3072,13 @@ getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTran
 | 参数名 | 类型                                   | 必填 | 说明                                   |
 | ------ | -------------------------------------- | ---- | -------------------------------------- |
 | slotId | number                                 | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| type   | [CallTransferType](#calltransfertype8) | 是   | 呼叫转移类型。                         |
+| type   | [CallTransferType](js-apis-call.md#calltransfertype) | 是   | 呼叫转移类型。                         |
 
 **返回值：**
 
 | 类型                                                      | 说明                        |
 | --------------------------------------------------------- | --------------------------- |
-| Promise&lt;[CallTransferResult](#calltransferresult8)&gt; | 以Promise形式异步返回结果。 |
+| Promise&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | 以Promise形式异步返回结果。 |
 
 **错误码：**
 
@@ -4844,9 +4844,10 @@ IP多媒体系统调用模式。
 
 |                名称               |                  类型                 | 必填  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| audioDeviceList   | [Array\<AudioDevice\>](#audiodevice10) | 是   | 音频设备列表。    |
+| audioDeviceList   | Array\<[AudioDevice](#audiodevice10)\> | 是   | 音频设备列表。    |
 | currentAudioDevice | [AudioDevice](#audiodevice10)          | 是   | 当前音频设备。    |
 | isMuted            | boolean                               | 是   | 是否静音。        |
+| isMicDisabled<sup>24+</sup>     |  boolean                                | 是    | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -4879,27 +4880,13 @@ IP多媒体系统调用模式。
 |          名称            | 类型                                                 | 必填 | 说明             |
 | ------------------------ | ---------------------------------------------------- | ---- | ---------------- |
 | transferNum              | string                                               | 是   | 转移编号。         |
-| type                     | [CallTransferType](#calltransfertype8)               | 是   | 呼叫转移类型。     |
+| type                     | [CallTransferType](js-apis-call.md#calltransfertype)               | 是   | 呼叫转移类型。     |
 | settingType              | [CallTransferSettingType](#calltransfersettingtype8) | 是   | 设置呼叫转移类型。 |
 | startHour<sup>9+</sup>   | number                                               | 否   | 开始时间的小时数。 |
 | startMinute<sup>9+</sup> | number                                               | 否   | 开始时间的分钟数。 |
 | endHour<sup>9+</sup>     | number                                               | 否   | 结束时间的小时数。 |
 | endMinute<sup>9+</sup>   | number                                               | 否   | 结束时间的分钟数。 |
 
-## CallTransferType<sup>8+</sup>
-
-呼叫转移类型。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-| 名称                        | 值   | 说明         |
-| --------------------------- | ---- | ------------ |
-| TRANSFER_TYPE_UNCONDITIONAL | 0    | 无条件转移。   |
-| TRANSFER_TYPE_BUSY          | 1    | 忙线转移。     |
-| TRANSFER_TYPE_NO_REPLY      | 2    | 无回复转移。   |
-| TRANSFER_TYPE_NOT_REACHABLE | 3    | 无法访问转移。 |
 
 ## CallTransferSettingType<sup>8+</sup>
 
@@ -5126,23 +5113,6 @@ VoIP通话信息。
 |     名称       | 类型   | 必填 | 说明     |
 | -------------- | ------ | ---- | -------- |
 | messageContent | string | 是   | 消息内容。 |
-
-## CallTransferResult<sup>8+</sup>
-
-呼叫转移结果。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-|          名称            |                 类型               | 必填 |       说明       |
-| ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](#transferstatus8) |  是  | 转移状态。         |
-| number                   | string                             |  是  | 号码。             |
-| startHour<sup>9+</sup>   | number                             |  是  | 开始时间的小时数。 |
-| startMinute<sup>9+</sup> | number                             |  是  | 开始时间的分钟数。 |
-| endHour<sup>9+</sup>     | number                             |  是  | 结束时间的小时数。 |
-| endMinute<sup>9+</sup>   | number                             |  是  | 结束时间的分钟数。 |
 
 ## CallWaitingStatus<sup>7+</sup>
 
@@ -5430,7 +5400,7 @@ controlCamera\(callId: number, cameraId: string\): Promise\<void\>
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
 | callId | number                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
-| cameraId | string                     | 是   | 相机Id。cameraId获取方式可参考[相机管理](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)。|
+| cameraId | string                     | 是   | 相机ID。cameraId获取方式可参考相机管理[getSupportedCameras](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口。|
 
 **返回值：**
 
@@ -5634,7 +5604,7 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 | 参数名   | 类型                                        | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
 | type     | string                                     | 是   | 视频通话时监听通话模式的变化，参数固定为'imsCallModeChange'。 |
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | 是   | 以回调函数的方式返回订阅imsCallModeChange事件的结果。         |
+| callback | Callback<[ImsCallModeInfo](#imscallmodeinfo11)> | 是   | 以回调函数的方式返回订阅imsCallModeChange事件的结果。         |
 
 **错误码：**
 
@@ -5677,7 +5647,7 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 | 参数名   | 类型                                        | 必填 | 说明                               |
 | -------- | ------------------------------------------ | ---- | ---------------------------------- |
 | type     | string                                     | 是   | 视频通话时取消监听通话模式的变化，参数固定为'imsCallModeChange'。 |
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
+| callback | Callback<[ImsCallModeInfo](#imscallmodeinfo11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
 
 **错误码：**
 

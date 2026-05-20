@@ -2236,7 +2236,7 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | The scenario parameter verification fails, Invalid tokenId.|
+| 23800151 | The capability is invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -2348,22 +2348,22 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MedialibraryAvailability
+  changeData: photoAccessHelper.MediaLibraryAvailability
 ) => void;
 
-onMedialibraryAvailability = async () => {
+onMediaLibraryAvailability = async () => {
   try {
     this.handleMediaLibraryChange = (
-      changeData: photoAccessHelper.MedialibraryAvailability
+      changeData: photoAccessHelper.MediaLibraryAvailability
     ) => {
       const availabilityStatus = changeData.availabilityStatus;
       const unavailabilityReason = changeData.unavailabilityReason;
       console.info(`媒体库状态变化：状态=${availabilityStatus}，原因=${unavailabilityReason}`);
     };
-    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
+    this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
     console.info('媒体库监听注册成功');
   } catch (err) {
-    console.error(`onMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+    console.error(`onMediaLibraryAvailability failed::${err.code}, ${err.message} !`);
   }
 };
 ```
@@ -2403,16 +2403,16 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MedialibraryAvailability
+  changeData: photoAccessHelper.MediaLibraryAvailability
 ) => void;
 
-offMedialibraryAvailability1 = async () => {
+offMediaLibraryAvailability = async () => {
   try {
-    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
-    await this.helper.offMedialibraryAvailability(this.handleMediaLibraryChange);
+    this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+    this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
     console.info('媒体库监听解除成功');
   } catch (err) {
-    console.error(`offMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+    console.error(`offMediaLibraryAvailability failed::${err.code}, ${err.message} !`);
   }
 };
 ```

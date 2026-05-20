@@ -38,6 +38,8 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
    ```ts
    // Create a Worker object.
    private workerInstance?: worker.ThreadWorker;
+   @State currentProgress: number = 0;
+   
    this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
 
    // Register the onmessage callback. When the host thread receives a message from the Worker thread through the workerPort.postMessage interface, this callback is invoked and executed in the host thread.
@@ -141,13 +143,13 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
        // Callback function for the completion of transcoding.
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
-         fs.closeSync(transcoder.fdDst); // Close fdDst.
+         fileIo.closeSync(transcoder.fdDst); // Close fdDst.
          await transcoder?.release()
          workerPort.postMessage('complete');
        })
        // Callback function for transcoding errors.
        transcoder.on('error', async (err: BusinessError) => {
-         fs.closeSync(transcoder.fdDst);
+         fileIo.closeSync(transcoder.fdDst);
          await transcoder?.release();
        })
        // Callback function for updating the transcoding progress.
@@ -165,7 +167,7 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
        }
        // Set the output file path. context.filesDir is the sandbox path of the application.
        let fdPath = context.filesDir + "/" + "VID_" + Date.parse(new Date().toString()) + ".mp4";
-       let file = fs.openSync(fdPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+       let file = fileIo.openSync(fdPath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
        let fd = file.fd;
        console.info(`file fd ${fd}`);
        transcoder.fdDst = file.fd;
@@ -190,7 +192,7 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
    // Callback function for the completion of transcoding.
    transcoder.on('complete', async () => {
      console.info(`transcode complete`);
-     fs.closeSync(transcoder.fdDst); // Close fdDst.
+     fileIo.closeSync(transcoder.fdDst); // Close fdDst.
      await transcoder?.release()
      workerPort.postMessage('complete');
    })
@@ -219,7 +221,7 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
 Refer to the sample project to use a Worker thread to implement asynchronous transcoding.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder), and copy its resources to the corresponding directories.
-    ```
+    ```txt
     AsyncTranscoder
     entry/build-profile.json5 (Configure fields to package Worker thread files into the application.)
     entry/src/main/ets/

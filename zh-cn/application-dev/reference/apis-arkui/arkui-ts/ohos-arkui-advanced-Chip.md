@@ -491,7 +491,7 @@ struct Index {
           console.info('chip on clicked');
         }
       })
- 	    // 点击“改变激活状态”，用于控制操作块的激活与关闭。
+      // 点击“改变激活状态”，用于控制操作块的激活与关闭。
       Button('改变激活状态')
         .onClick(() => {
           this.isActivated = !this.isActivated;

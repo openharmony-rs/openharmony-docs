@@ -97,6 +97,8 @@ onClick(event: (event: ClickEvent) => void): T
 
 继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
@@ -123,6 +125,26 @@ onClick(event: (event: ClickEvent) => void): T
 | --------- | ------- |
 | 100017       | Component does not support prevent function. |
 
+### getCurrentLocalPosition
+
+getCurrentLocalPosition?(): Coordinate2D
+
+获取点击位置相对于当前组件实时位置的左上角坐标。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 点击位置相对于当前组件实时位置的左上角坐标。 |
+
 ## EventTarget<sup>8+</sup>
 
 [BaseEvent](ts-gesture-customize-judge.md#baseevent8)中参数target的类型。
@@ -138,7 +160,9 @@ onClick(event: (event: ClickEvent) => void): T
 
 ## 示例
 
-该示例通过按钮设置点击事件，点击按钮可获取点击事件的相关参数。
+### 示例1（获取点击事件相关参数）
+
+该示例通过按钮设置点击事件[ClickEvent](#clickevent)，点击按钮可获取点击事件的相关参数。
 
 ```ts
 // xxx.ets
@@ -173,3 +197,38 @@ struct ClickExample {
 ```
 
 ![click](figures/click.gif)
+
+### 示例2（获取组件实时位置）
+
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .onClick((event?: ClickEvent) => {
+          if (event) {
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event?.getCurrentLocalPosition?.();
+              this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x}\n  y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+![click](figures/localPosition1.gif)

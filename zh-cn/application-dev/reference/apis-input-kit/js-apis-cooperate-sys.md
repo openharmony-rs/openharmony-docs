@@ -65,15 +65,15 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDeviceCooperate.enable(true, (error: BusinessError) => {
+           inputDeviceCooperate.enable(true, (error: BusinessError) => {
               if (error) {
-                console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to enable keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Keyboard mouse crossing enable success.`);
+              console.info(`Succeeded in enabling keyboard mouse crossing.`);
             });
           } catch (error) {
-            console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to enable keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -126,15 +126,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          try {
-            inputDeviceCooperate.enable(true).then(() => {
-              console.info(`Keyboard mouse crossing enable success.`);
-            }, (error: BusinessError) => {
-              console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
-          } catch (error) {
-            console.error(`Keyboard mouse crossing enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+          inputDeviceCooperate.enable(true).then(() => {
+            console.info(`Succeeded in enabling keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to enable keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -189,13 +185,13 @@ struct Index {
           try {
             inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId, (error: BusinessError) => {
               if (error) {
-                console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Start Keyboard mouse crossing success.`);
+              console.info(`Succeeded in starting keyboard mouse crossing.`);
             });
           } catch (error) {
-            console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -255,15 +251,11 @@ struct Index {
         .onClick(() => {
           const sinkDeviceDescriptor = "descriptor";
           const srcInputDeviceId = 0;
-          try {
-            inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
-              console.info(`Start Keyboard mouse crossing success.`);
-            }, (error: BusinessError) => {
-              console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
-          } catch (error) {
-            console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+          inputDeviceCooperate.start(sinkDeviceDescriptor, srcInputDeviceId).then(() => {
+            console.info(`Succeeded in starting keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to start keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -312,13 +304,13 @@ struct Index {
           try {
             inputDeviceCooperate.stop((error: BusinessError) => {
               if (error) {
-                console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to stop keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Stop Keyboard mouse crossing success.`);
+              console.info(`Succeeded in stopping keyboard mouse crossing.`);
             });
           } catch (error) {
-            console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to stop keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -357,15 +349,11 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          try {
-            inputDeviceCooperate.stop().then(() => {
-              console.info(`Stop Keyboard mouse crossing success.`);
-            }, (error: BusinessError) => {
-              console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
-          } catch (error) {
-            console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+          inputDeviceCooperate.stop().then(() => {
+            console.info(`Succeeded in stopping keyboard mouse crossing.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to stop keyboard mouse crossing, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -417,13 +405,13 @@ struct Index {
           try {
             inputDeviceCooperate.getState(deviceDescriptor, (error: BusinessError, data: object) => {
               if (error) {
-                console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to get status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Get the status success, data: ${JSON.stringify(data)}`);
+              console.info(`Succeeded in getting status, data: ${JSON.stringify(data)}.`);
             });
           } catch (error) {
-            console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to get status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -478,15 +466,11 @@ struct Index {
       Text()
         .onClick(() => {
           let deviceDescriptor = "descriptor";
-          try {
-            inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
-              console.info(`Get the status success, data: ${JSON.stringify(data)}`);
-            }, (error: BusinessError) => {
-              console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-            });
-          } catch (error) {
-            console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
+          inputDeviceCooperate.getState(deviceDescriptor).then((data: object) => {
+            console.info(`Succeeded in getting the status, data: ${JSON.stringify(data)}.`);
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get the status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -501,7 +485,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#oncooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.on](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateoncooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -534,13 +518,13 @@ struct Index {
       Text()
         .onClick(() => {
           let callback = (msg: object) => {
-            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
             return false;
           }
           try {
             inputDeviceCooperate.on('cooperation', callback);
           } catch (error) {
-            console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to register keyboard and mouse traversal status, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -556,7 +540,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 > **说明：**
 >
->从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#offcooperatemessage11)替代。
+>从 API version 9开始支持，从API version 23开始废弃。建议使用[cooperate.off](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md#cooperateoffcooperatemessage11)替代。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Cooperator
 
@@ -590,14 +574,14 @@ struct Index {
         .onClick(() => {
           // 取消注册单个回调函数
           let callbackOn = (msg: object) => {
-            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
             return false;
           }
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
             inputDeviceCooperate.off("cooperation", callbackOn);
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -616,14 +600,14 @@ struct Index {
         .onClick(() => {
           // 取消注册所有回调函数
           let callback = (msg: object) => {
-            console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
+            console.info(`Succeeded in monitoring cooperation, msg: ${JSON.stringify(msg)}.`);
             return false;
           }
           try {
             inputDeviceCooperate.on('cooperation', callback);
             inputDeviceCooperate.off("cooperation");
           } catch (error) {
-            console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(``Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

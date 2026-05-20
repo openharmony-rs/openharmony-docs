@@ -30,6 +30,7 @@
 | -- | -- | -- |
 | [MediaKeySession](capi-avplayer-mediakeysession.md) | MediaKeySession | MediaKeySession类型。 |
 | [DRM_MediaKeySystemInfo](capi-avplayer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | DRM_MediaKeySystemInfo类型。 |
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) | OH_AVPlayerVideoOutput | OH_AVPlayerVideoOutput字段。 |
 
 ### 函数
 
@@ -112,6 +113,8 @@
 | [uint32_t OH_AVPlayer_GetTrackCount(OH_AVPlayer *player)](#oh_avplayer_gettrackcount) | - | 获取播放器媒体源的轨道数量。 |
 | [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | 通过索引获取播放器轨道信息。 |
 | [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | 获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态时，可调用该接口。<br> 需要注意返回值[OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。 |
+| [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | 设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。 |
+| [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | 获得一个视频解码帧。当播放处于paused或playing状态时，可调用此接口。 |
 
 ## 函数说明
 
@@ -2108,5 +2111,54 @@ OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 执行成功返回播放器的统计指标信息（键值详情请参考avplayer_base.h中的[变量](../apis-media-kit/capi-avplayer-base-h.md#变量)信息），否则返回nullptr。<br> 可能的失败原因：传入player指针不合法。 |
+
+### OH_AVPlayer_SetVideoSideOutput()
+
+```c
+OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)
+```
+
+**描述**
+
+设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| OHNativeWindow *window | 指向OHNativeWindow实例的指针，具体请参阅OHNativeWindow。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVPlayerVideoOutput*](capi-avplayer-oh-avplayervideooutput.md) | 返回指向OH_AVPlayerVideoOutput实例的指针，nullptr表示失败。<br> 可能故障原因：<br> 1. 传入player指针不合法。<br> 2. 传入window指针不合法。 |
+
+### OH_AVPlayerVideoOutput_GetNewestVideoSample()
+
+```c
+OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)
+```
+
+**描述**
+
+获得一个视频解码帧。当播放处于paused或playing状态时，可调用此接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md) *videoOutput | 指向OH_AVPlayer_SetVideoSideOutput返回的OH_AVPlayerVideoOutput实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_VideoOutputResult](capi-avplayer-base-h.md#oh_videooutputresult) | OH_VIDEO_OUTPUT_OK：获得一个视频解码帧。<br>         OH_VIDEO_OUTPUT_NO_IMAGE：没有可渲染的帧。 |
 
 

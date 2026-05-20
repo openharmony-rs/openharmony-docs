@@ -1,8 +1,8 @@
 # Interface (AudioCapturer)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -1416,7 +1416,7 @@ audioCapturer.setWillMuteWhenInterrupted(true).then(() => {
 });
 ```
 
-## setMuteHint<sup>24</sup>
+## setMuteHint<sup>24+</sup>
 
 setMuteHint(mute: boolean): Promise&lt;void&gt;
 

@@ -216,6 +216,8 @@
 | com.apple.iwork.keynote.key                                     |                 general.composite-object,com.apple.iwork                                                            | .key                            |    application/vnd.apple.keynote                   |  iWork Keynote演示文稿文件。<!--RP1-->从OpenHarmony 6.1开始支持此类型。<!--RP1End-->         |
 | com.apple.iwork.numbers.numbers                                     |                 general.composite-object,com.apple.iwork                                                            | .numbers                            |    application/vnd.apple.numbers                   |  iWork Numbers电子表格文件。<!--RP1-->从OpenHarmony 6.1开始支持此类型。<!--RP1End-->         |
 | com.apple.iwork.pages.pages                                     |                 general.composite-object,com.apple.iwork                                                            | .pages                            |    application/vnd.apple.pages                   |  iWork Pages文档文件。<!--RP1-->从OpenHarmony 6.1开始支持此类型。<!--RP1End-->         |
+| com.huawei.hmos.musiccreate.gofile                                     |                 general.archive                                                          | .gomusic                            |    -    |  musiccreate文件格式。<!--RP2-->从OpenHarmony 6.1开始支持此类型。<!--RP2End-->         |
+| com.apple.coreaudio-format                                     |                 general.audio                                                            | .caf                            |    audio/x-caf                   |  CAF音频数据文件。<!--RP2-->从OpenHarmony 6.1开始支持此类型。<!--RP2End-->         |
 
 
 ## 系统关联类型

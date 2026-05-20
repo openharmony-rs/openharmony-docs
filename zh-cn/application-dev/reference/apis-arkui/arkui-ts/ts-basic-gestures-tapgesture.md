@@ -53,7 +53,7 @@ TapGesture(value?: TapGestureParameters)
 
 >  **说明：**
 >
->  组件通过手势事件绑定不同GestureType的手势对象，各手势对象在响应手势操作的事件回调中提供手势相关信息。下面通过TapGesture手势对象的[onAction](#onaction)事件响应点击事件，获取事件相关信息。其余手势对象的事件定义见各个手势对象章节。 若需绑定多种手势，请使用[组合手势](ts-combined-gestures.md)。
+>  组件通过手势事件绑定不同GestureType的手势对象，各手势对象在响应手势操作的事件回调中提供手势相关信息。下面通过TapGesture手势对象的[onAction](#onaction)事件响应点击事件，获取事件相关信息。其余手势对象的事件定义见各个手势对象章节。 若需绑定多种手势，请使用[GestureGroup](ts-combined-gestures.md)。
 >
 >  在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
 
@@ -77,6 +77,8 @@ onAction(event: (event: GestureEvent) => void)
 
 用于点击手势获取点击位置坐标。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -89,6 +91,26 @@ onAction(event: (event: GestureEvent) => void)
 | displayY | number | 否 | 否 | 相对于屏幕的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | globalDisplayX<sup>23+</sup> | number | 否 | 是 | 相对于主屏幕左上角为原点的坐标系中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | globalDisplayY<sup>23+</sup> | number | 否 | 是 | 相对于主屏幕左上角为原点的坐标系中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+
+### getCurrentLocalPosition
+
+getCurrentLocalPosition?(): Coordinate2D
+
+获取点击位置相对于当前组件实时位置的左上角坐标。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 点击位置相对于当前组件实时位置的左上角坐标。 |
 
 ## 示例
 
@@ -169,3 +191,40 @@ struct TapGestureExample {
 ![TapGestureExample](figures/tapGestureExample.png)
 
 
+### 示例3（获取组件实时位置）
+
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+
+从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('点击获取点击位置相对于当前组件实时位置左上角的坐标').translate({ y: this.textOffsetY })
+        .gesture(
+          TapGesture({ count: 1 })
+            .onAction((event: GestureEvent) => {
+              if (event) {
+                this.textOffsetY = -200;
+                setTimeout(() => {
+                  let localPos: Coordinate2D | undefined = event?.tapLocation?.getCurrentLocalPosition?.();
+                  this.positionText = `相对于当前组件实时位置左上角的坐标:\n  x: ${localPos?.x ?? 0}\n  y: ${localPos?.y ?? 0}`;
+                }, 2000);
+              }
+            })
+        )
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+![tap](figures/localPosition2.gif)

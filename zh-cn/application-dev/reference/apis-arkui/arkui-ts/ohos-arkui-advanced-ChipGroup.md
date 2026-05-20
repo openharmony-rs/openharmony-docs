@@ -1,4 +1,4 @@
-﻿# ChipGroup
+# ChipGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xieziang-->

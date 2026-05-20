@@ -329,7 +329,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_
 | 参数项 | 描述 |
 | -- | -- |
 | [const ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *parentStorage | 指向OE文档父Storage对象指针。<br>                      当需要从父Storage对象删除指定的子Storage对象时，可以调用[OH_ContentEmbed_Storage_DeleteEntry](capi-content-embed-document-h.md#oh_contentembed_storage_deleteentry)。<br>                      当需要从父Storage对象删除所有的子Storage对象时，可以调用[OH_ContentEmbed_Storage_DeleteAllEntry](capi-content-embed-document-h.md#oh_contentembed_storage_deleteallentry)。 |
-| const char *name | 要创建的子Storage的名称。 |
+| const char *name | 要创建的子Storage的名称。该参数不能为空字符串，名称长度应不超过31个字符且不能包含非法字符，如：'/'、'\\'、':'和'!'。 |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) **childStorage | 输出参数。调用成功后，该指针指向新创建的OE文档子Storage对象。 |
 
 **返回：**
@@ -355,7 +355,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStorage(const ContentEmbed_Sto
 | 参数项 | 描述 |
 | -- | -- |
 | [const ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *parentStorage | 指向OE文档父Storage对象指针。 |
-| const char *name | 要获取的子Storage的名称。 |
+| const char *name | 要获取的子Storage的名称。该参数不能为空字符串，名称长度应不超过31个字符且不能包含非法字符，如：'/'、'\\'、':'和'!'。 |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) **childStorage | 输出参数。调用成功后，该指针指向找到的OE文档子Storage对象。 |
 
 **返回：**
@@ -381,7 +381,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStream(ContentEmbed_Storage
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *parentStorage | 指向OE文档父Storage对象指针。<br>                      当需要从父Storage对象删除指定的子Stream对象时，可以调用[OH_ContentEmbed_Storage_DeleteEntry](capi-content-embed-document-h.md#oh_contentembed_storage_deleteentry)。<br>                      当需要从父Storage对象删除所有的子Stream对象时，可以调用[OH_ContentEmbed_Storage_DeleteAllEntry](capi-content-embed-document-h.md#oh_contentembed_storage_deleteallentry)。 |
-| const char *name | 要创建的Stream的名称，用于标识和查找该Stream。 |
+| const char *name | 要创建的Stream的名称，用于标识和查找该Stream。该参数不能为空字符串，名称长度应不超过31个字符且不能包含非法字符，如：'/'、'\\'、':'和'!'。 |
 | [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) **childStream | 输出参数。调用成功后，该指针指向新创建的OE文档Stream对象。 |
 
 **返回：**
@@ -407,7 +407,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetStream(ContentEmbed_Storage *p
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *parentStorage | 指向OE文档父Storage对象指针。 |
-| const char *name | 要获取的OE文档Stream对象的名称。 |
+| const char *name | 要获取的OE文档Stream对象的名称。该参数不能为空字符串，名称长度应不超过31个字符且不能包含非法字符，如：'/'、'\\'、':'和'!'。 |
 | [ContentEmbed_Stream](capi-contentembed-contentembed-stream.md) **childStream | 输出参数。调用成功后，该指针指向找到的OE文档Stream对象。 |
 
 **返回：**
@@ -433,7 +433,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_DeleteEntry(ContentEmbed_Storage 
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *parentStorage | 指向OE文档父Storage对象指针。 |
-| const char *name | 要删除的子Storage对象或子Stream对象的名称。 |
+| const char *name | 要删除的子Storage对象或子Stream对象的名称。该参数不能为空字符串，名称长度应不超过31个字符且不能包含非法字符，如：'/'、'\\'、':'和'!'。 |
 
 **返回：**
 

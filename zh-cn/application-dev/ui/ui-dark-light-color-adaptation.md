@@ -1,9 +1,9 @@
 # 应用深浅色适配
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -65,7 +65,7 @@
 
 2. 图片资源适配
 
-    采用资源限定词目录的方式。参照颜色适配的方法，需要将深色模式下对应的同名图片放到 dark/media 目录下，再通过$r的方式加载图片资源的key值，系统做深浅色模式切换时，会自动加载对应资源文件中的value值。
+    采用资源限定词目录的方式。参照颜色适配的方法，需要将深色模式下对应的同名图片放到 dark/media 目录下，再通过[$r](../reference/apis-arkui/js-apis-arkui-resource.md#r)的方式加载图片资源的key值，系统做深浅色模式切换时，会自动加载对应资源文件中的value值。
 
     对于 SVG 格式的一些简单图标，可以使用[fillColor](arkts-graphics-display.md#显示矢量图)属性配合系统资源改变图片的绘制颜色。不通过两套图片资源的方式，也可以实现深浅色模式适配。
 
@@ -113,7 +113,7 @@
 
     应用可以主动监听系统深浅色模式变化，进行其他类型的资源初始化等自定义逻辑。应用使用[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)手动设置深浅色的情况下，将不会收到onConfigurationUpdate回调。除此之外，无论应用是否跟随系统深浅色模式变化，该监听方式均可生效。
 
-    a. 在 AbilityStage 的 onCreate() 生命周期中获取APP当前的颜色模式并保存到 AppStorage。
+    a. 在 AbilityStage的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期中获取APP当前的颜色模式并保存到[AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)。
 
     <!-- @[create_set_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -124,7 +124,7 @@
     }
     ```
 
-    b. 在AbilityStage的onConfigurationUpdate()生命周期中获取最新更新的颜色模式并刷新到AppStorage。
+    b. 在AbilityStage的[onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)生命周期中获取最新更新的颜色模式并刷新到AppStorage。
 
     <!-- @[update_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -135,7 +135,7 @@
     }
     ```
 
-    c. 在Page中通过 @StorageProp + @Watch 方式获取当前最新颜色并监听设备深色模式变化。
+    c. 在Page中通过[@StorageProp](state-management/arkts-appstorage.md#storageprop) + [@Watch](state-management/arkts-watch.md)方式获取当前最新颜色并监听设备深色模式变化。
 
     <!-- @[prop_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -144,7 +144,7 @@
       ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
     ```
 
-    d. 在 aboutToAppear 初始化函数中根据当前最新颜色模式刷新状态变量。
+    d. 在[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)初始化函数中根据当前最新颜色模式刷新状态变量。
 
     <!-- @[color_mode_change_appear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     

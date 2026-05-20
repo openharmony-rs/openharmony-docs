@@ -1,9 +1,9 @@
 # @ohos.app.form.formInfo (formInfo)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formInfo模块提供了卡片信息和状态等相关类型和枚举。
@@ -217,7 +217,7 @@ import { formInfo } from '@kit.FormKit';
 | abilityName | string | 否  | 是   | 趣味交互场景 extensionAbility 名称，默认为空。 |
 | targetBundleName  | string | 否  | 否   | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。        |
 | subBundleName  | string | 否  | 否   | 趣味交互场景趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。 |
-| keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为[0,10000]的整数，超过取值范围则取默认值10000。 |
+| keepStateDuration  | number | 否  | 是   | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。 |
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -409,3 +409,48 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
 | 名称        |  值   | 说明         |
 | ----------- | ---- | ------------ |
 | SHAKE | 1   | 摇一摇。 |
+
+## GetWantParamsCallback
+
+type GetWantParamsCallback = (formInfo: Array&lt;FormInfo&gt;) => Array&lt;Record&lt;string, Object&gt;&gt;
+
+获取卡片参数回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------|------|----|------|
+| formInfo | Array&lt;[FormInfo](#forminfo)&gt; | 是 | 卡片信息列表。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Array&lt;Record&lt;string, Object&gt;&gt; | 返回卡片参数列表，与输入的卡片信息列表一一对应。 |
+
+**示例：**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let getWantParamsCallback: formInfo.GetWantParamsCallback =
+  (formInfo: Array<formInfo.FormInfo>): Array<Record<string, Object>> => {
+    console.info('get want params callback, form count: ' + formInfo.length);
+    let wantParamsList: Array<Record<string, Object>> = [];
+    for (let i = 0; i < formInfo.length; i++) {
+      let params: Record<string, Object> = {
+        'key': 'value'
+      };
+      wantParamsList.push(params);
+    }
+    return wantParamsList;
+  };
+```

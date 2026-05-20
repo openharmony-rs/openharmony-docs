@@ -124,5 +124,6 @@
     - [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)
     - [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md)
     - [OH_MultiDisplayCapability](capi-avscreencapture-oh-multidisplaycapability.md)
+    - [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md)
 - 错误码<!--media-arkts-errcode-->
   - [Media错误码](errorcode-media.md)

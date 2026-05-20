@@ -338,7 +338,7 @@ try {
 
 ## display.getBrightnessInfo<sup>22+</sup>
 
-getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
+getBrightnessInfo(displayId: number): BrightnessInfo
 
 获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
@@ -1482,7 +1482,7 @@ makeUnique(screenId:number): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.ACCESS_VIRTUAL_SCREEN
 
-**设备行为差异**：该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异**：该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在Wearable设备中报801错误码，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -1757,6 +1757,7 @@ promise.then((data: Array<display.Display>) => {
 下列API示例中都需先使用[getAllDisplays()](#displaygetalldisplays9)、[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)中的任一方法获取到Display实例，再通过此实例调用对应方法。
 
 ### 属性
+<!--Table: 26%; 20%; 7%; 7%; 40% -->
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                            |
 | -------- | -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------|
