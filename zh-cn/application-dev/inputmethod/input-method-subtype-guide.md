@@ -76,19 +76,7 @@
 
     ArkTS-Sta示例：
 
-    <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-    
-    ``` TypeScript
-    // 设置监听子类型事件，改变输入法应用界面
-    inputMethodAbility?.onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
-      if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-        AppStorage.setOrCreate('subtypeChange', 0);
-      }
-      if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-        AppStorage.setOrCreate('subtypeChange', 1);
-      }
-    });
-    ```
+    <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
 
 ## 输入法子类型相关信息的获取

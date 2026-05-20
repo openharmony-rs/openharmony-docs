@@ -36,19 +36,8 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[input_case_input_switchInputMethodgetInputMethods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
-   
-   ``` TypeScript
-   async switchCurrentInputMethodSubtype(item: InputMethodSubtype) {
-     try {
-       await inputMethod.switchCurrentInputMethodSubtype(item);
-       this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
-     } catch (err) {
-       console.error(`SwitchCurrentInputMethodSubtype error: ${err.code} ${err.message}`);
-       let error: BusinessError = err as BusinessError;
-     }
-   }
-   ```
+   <!-- @[input_case_input_switchInputMethodgetInputMethods](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
+
 
 2. 输入法应用中注册子类型变化事件，根据不同子类型加载不同的输入界面。
 
@@ -70,19 +59,7 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
-   
-   ``` TypeScript
-   // 设置监听子类型事件，改变输入法应用界面
-   inputMethodAbility?.onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
-     if (inputMethodSubtype.id === 'InputMethodExtAbility') {
-       AppStorage.setOrCreate('subtypeChange', 0);
-     }
-     if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
-       AppStorage.setOrCreate('subtypeChange', 1);
-     }
-   });
-   ```
+   <!-- @[input_case_input_KeyboardControllersetSubtype](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
 
 
 ## 切换输入法应用
@@ -112,24 +89,7 @@
 
    ArkTS-Sta示例：
 
-   <!-- @[input_case_input_switchInputMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
-   
-   ``` TypeScript
-   async switchInputMethod(item: string) {
-     try {
-       this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
-       let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
-       for (let i = 0; i < this.inputMethods.length; i++) {
-         if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
-           await inputMethod.switchInputMethod(this.inputMethods[i]);
-         }
-       }
-     } catch (err) {
-       let error = err as BusinessError;
-       Log.showError(TAG, `switchInputMethod catch error: ${error.code} ${error.message}`);
-     }
-   }
-   ```
+   <!-- @[input_case_input_switchInputMethod](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
 
 ## 切换输入法应用和子类型
 
