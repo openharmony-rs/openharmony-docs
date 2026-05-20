@@ -239,7 +239,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onerror23](#onerror23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -343,7 +343,7 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[onerror](#onerror9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onerror9](#onerror9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -357,7 +357,7 @@ onError(callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Meida错误码](errorcode-media.md)。
 
 在API version 9-13，针对网络、服务器等数据流异常，接口上报5400103；从API version 14开始，对应错误细化为错误码5411001-5411011。
 
@@ -404,7 +404,7 @@ offError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[offerror](#offerror9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[offerror9](#offerror9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2490,7 +2490,7 @@ onSpeedDone(callback: Callback\<int>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('seedDone')](#onspeeddone9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('speedDone')](#onspeeddone9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4208,7 +4208,7 @@ on(type: 'audioInterrupt', callback: Callback\<audio.InterruptEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt)](#onaudiointerrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onaudiointerrupt23)](#onaudiointerrupt23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4245,7 +4245,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt)](#offaudiointerrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offaudiointerrupt23](#offaudiointerrupt23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4280,7 +4280,7 @@ onVideoSizeChange(callback: OnVideoSizeChangeHandler): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onVideoSizeChange')](#onvideosizechange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('videoSizeChange')](#onvideosizechange9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4439,7 +4439,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioOutputDeviceChangeWithInfo)](#offaudiooutputdevicechangewithinfo23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offaudiooutputdevicechangewithinfo23)](#offaudiooutputdevicechangewithinfo23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4620,7 +4620,7 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate](#onsubtitleupdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsubtitleupdate23](#onsubtitleupdate23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4861,7 +4861,7 @@ on(type: 'seiMessageReceived', payloadTypes: Array\<number>, callback: OnSeiMess
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onseimessagereceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onseimessagereceived23](#onseimessagereceived23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5266,7 +5266,7 @@ onTrackChange(callback: OnTrackChangeHandler): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('trackChange')](#ontrackchange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[ontrackchange12](#ontrackchange12)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -5384,7 +5384,7 @@ onAmplitudeUpdate(callback: Callback\<Array\<double>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('amplitudeUpdate')](#onamplitudeupdate13)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onamplitudeupdate13](#onamplitudeupdate13)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
