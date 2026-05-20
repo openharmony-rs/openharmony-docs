@@ -486,7 +486,7 @@ type DoubleLengthDetents = [(SheetSize | Length),SheetSize | Length | undefined]
 
 type SingleLengthDetent = [SheetSize | Length]
 
-定义了单个长度的延迟。
+定义了单个高度的挡位。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -495,6 +495,10 @@ type SingleLengthDetent = [SheetSize | Length]
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
+
+| 类型      | 说明                          |
+| -----------| ---------------------------- |
+| [SheetSize](#sheetsize枚举说明) \| [Length](ts-types.md#length)   | 挡位的高度，表示值类型为枚举或尺寸。 |
 
 ## 示例
 ### 示例1（不同高度的半模态弹窗）
