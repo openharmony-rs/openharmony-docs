@@ -871,7 +871,7 @@ Sets the date and time for a **Calendar** object based on the input **Date** obj
 
 | Name | Type  | Mandatory  | Description               |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | Yes   | Data and time. Note: The month starts from **0**. For example, **0** indicates January.|
+| date | Date | Yes   | Date and time. Note: The month starts from **0**. For example, **0** indicates January.|
 
 **Example**
   ```ts
@@ -1165,7 +1165,7 @@ Checks whether a given date is a weekend in this **Calendar** object.
 
 | Name | Type  | Mandatory  | Description                                      |
 | ---- | ---- | ---- | ---------------------------------------- |
-| date | Date | No   | Data and time. Note: The month starts from **0**. For example, **0** indicates January.<br>The default value is current date of the **Calendar** object.|
+| date | Date | No   | Date and time. Note: The month starts from **0**. For example, **0** indicates January.<br>The default value is current date of the **Calendar** object.|
 
 **Return value**
 
@@ -1268,7 +1268,7 @@ Compares the current date of this **Calendar** object with the specified date fo
 
 | Name | Type  | Mandatory  | Description                                      |
 | ---- | ---- | ---- | ---------------------------------------- |
-| date | Date | Yes   | Data and time. Note: The month starts from **0**. For example, **0** indicates January.|
+| date | Date | Yes   | Date and time. Note: The month starts from **0**. For example, **0** indicates January.|
 
 **Return value**
 
@@ -2375,7 +2375,7 @@ let dateFormat: string =
 
 isDaylightSavingTime(date: Date): boolean
 
-Checks whether the specified data and time is in the daylight saving time.
+Checks whether the specified date and time is in the daylight saving time.
 
 **Since**: 26.0.0
 
@@ -2389,7 +2389,7 @@ Checks whether the specified data and time is in the daylight saving time.
 
 | Name| Type  | Mandatory| Description                    |
 | ------ | ------ | ---- | ------------------------ |
-| date   | Date   | Yes  | Data and time. The month starts from **0**, indicating January.|
+| date   | Date   | Yes  | Date and time. The month starts from **0**, indicating January.|
 
 **Return value**
 
@@ -3673,7 +3673,7 @@ Determines whether the specified date is a holiday.
 
 |   Name |      Type     | Mandatory|     Description     |
 | --------- | ---------------| ---- | ------------- |
-| date      | Date           | No  | Data and time. Note: The month starts from **0**. For example, **0** indicates January.<br>The default value is the current date.|
+| date      | Date           | No  | Date and time. Note: The month starts from **0**. For example, **0** indicates January.<br>The default value is the current date.|
 
 **Return value**
 
@@ -3988,7 +3988,7 @@ Formats the date and time.
 
 | Name | Type  | Mandatory  | Description               |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | Yes   | Data and time. Note: The month starts from **0**. For example, **0** indicates January.|
+| date | Date | Yes   | Date and time. Note: The month starts from **0**. For example, **0** indicates January.|
 
 **Return value**
 
@@ -4453,7 +4453,7 @@ let formatter = new i18n.ISO8601DateTimeFormat({
 
 format(date: Date): string
 
-Formats the date and time into a data and time string that complies with ISO 8601.
+Formats the date and time into a date and time string that complies with ISO 8601.
 
 **Since**: 26.0.0
 
@@ -4467,7 +4467,7 @@ Formats the date and time into a data and time string that complies with ISO 860
 
 | Name | Type  | Mandatory  | Description               |
 | ---- | ---- | ---- | ----------------- |
-| date | Date | Yes   | Data and time. The month starts from **0**, indicating January.|
+| date | Date | Yes   | Date and time. The month starts from **0**, indicating January.|
 
 **Return value**
 
