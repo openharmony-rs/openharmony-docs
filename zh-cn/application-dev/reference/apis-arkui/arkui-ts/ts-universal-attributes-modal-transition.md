@@ -18,12 +18,9 @@
 >
 >  - 不支持路由跳转。
 
+## bindContentCover
 
-## bindContentCover<sup>23+</sup>
-
-ArkTS-Dyn: bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition): T
-
-ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, type?: ModalTransition): this
+bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition): T
 
 给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
 
@@ -35,7 +32,37 @@ ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, bu
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[bindContentCover<sup>23+</sup>](#bindcontentcover23)。
+
 **ArkTS-Dyn起始版本：** 10
+
+**参数：** 
+
+| 参数名  | 类型                                        | 必填 | 说明                                                         |
+| ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| isShow  | boolean                        | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。builder里面的根节点需要唯一。                           |
+| type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 与transition同时设置时，此属性不生效。                                 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
+
+## bindContentCover<sup>23+</sup>
+
+bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, type?: ModalTransition): this
+
+给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[bindContentCover](#bindcontentcover)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -43,29 +70,57 @@ ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, bu
 
 | 参数名  | 类型                                        | 必填 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isShow  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable\<boolean\> \| undefined       | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
-| builder | ArkTS-Dyn:  [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: CustomBuilder \| undefined | 是   | 配置全屏模态页面内容。                                       |
+| isShow  | boolean \| Bindable\<boolean\> \| undefined       | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
+| builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置全屏模态页面内容。                                       |
 | type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。                                 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
+| this | 返回当前组件。 |
 
-## bindContentCover<sup>23+</sup>
+## bindContentCover
 
-ArkTS-Dyn: bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T
+bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCoverOptions): T
 
-ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: ContentCoverOptions): this
-
-给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
+给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，可自定义设置转场方式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[bindContentCover<sup>23+</sup>](#bindcontentcover23-1)。
+
 **ArkTS-Dyn起始版本：** 10
+
+**参数：** 
+
+| 参数名  | 类型                                        | 必填 | 说明                                                         |
+| ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| isShow  | boolean                        | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。                                       |
+| options | [ContentCoverOptions](#contentcoveroptions) | 否   | 配置全屏模态页面的可选属性。                                 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
+
+## bindContentCover<sup>23+</sup>
+
+bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: ContentCoverOptions): this
+
+给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[bindContentCover](#bindcontentcover-1)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -73,15 +128,15 @@ ArkTS-Sta: bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, bu
 
 | 参数名  | 类型                                        | 必填 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isShow  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable\<boolean\> \| undefined                      | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
-| builder | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: CustomBuilder \| undefined  | 是   | 配置全屏模态页面内容。 |
+| isShow  | boolean \| Bindable\<boolean\> \| undefined                      | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
+| builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined  | 是   | 配置全屏模态页面内容。                                      |
 | options | [ContentCoverOptions](#contentcoveroptions) | 否   | 配置全屏模态页面的可选属性。                                 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
+| this | 返回当前组件。 |
 
 ## ContentCoverOptions
 继承自[BindOptions](ts-universal-attributes-sheet-transition.md#bindoptions)。
