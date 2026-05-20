@@ -259,7 +259,7 @@ ArkTS-Sta: radiusWidth(rWidth: double | string): this
 
 ArkTS-Dyn: radiusHeight(rHeight: number | string): RectShape
 
-ArkTS-Sta: radiusHeight(rHeight: double | string): this;
+ArkTS-Sta: radiusHeight(rHeight: double | string): this
 
 设置矩形形状圆角半径的高度。
 
