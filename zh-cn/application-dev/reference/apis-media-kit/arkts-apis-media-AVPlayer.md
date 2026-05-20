@@ -239,7 +239,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onerror23](#onerror23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError()](#onerror23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
