@@ -99,3 +99,11 @@ struct styled_string_paraStyle_demo {
   }
 }
 ```
+
+变更前效果：
+
+![Before](figures/bef.png)
+
+变更后效果：
+
+![After](figures/after.png)
