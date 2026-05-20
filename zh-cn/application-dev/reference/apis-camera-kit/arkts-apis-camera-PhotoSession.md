@@ -544,7 +544,7 @@ function offIsoInfoChange(photoSession: camera.PhotoSession): void {
 ```
 
 ## onExposureInfoChange<sup>24+</sup>
- 	 
+
 onExposureInfoChange(callback: Callback\<ExposureInfo\>): void
 
 订阅曝光信息变化事件回调。曝光参数更改后，系统将返回更新后的曝光信息。使用callback异步回调。
