@@ -843,7 +843,7 @@ isFastPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boolea
 | 参数名   | 类型                               | 必填    | 说明                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
 | streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
-| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
 
 **返回值：**
 
@@ -889,7 +889,7 @@ isOffloadPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): boo
 | 参数名   | 类型                               | 必填    | 说明                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
 | streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
-| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
 
 **返回值：**
 
@@ -935,7 +935,7 @@ isDirectPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage): bool
 | 参数名   | 类型                               | 必填    | 说明                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
 | streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
-| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
 
 **返回值：**
 
@@ -981,7 +981,7 @@ isFastRecordingSupported(streamInfo: AudioStreamInfo, source: SourceType): boole
 | 参数名   | 类型                               | 必填    | 说明                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
 | streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
-| source | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 是 | 音源类型。 |
+| source | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 是 | 音源类型，用于决定音频设备和通路类型的选择结果。 |
 
 **返回值：**
 
@@ -1027,7 +1027,7 @@ isMultichannelPlaybackSupported(streamInfo: AudioStreamInfo, usage: StreamUsage)
 | 参数名   | 类型                               | 必填    | 说明                        |
 | -------- | ----------------------------------- | -------- | --------------------------- |
 | streamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 是 | 音频流信息，用于描述基础音频格式。 |
-| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景。 |
+| usage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是 | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
 
 **返回值：**
 
