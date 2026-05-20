@@ -114,6 +114,23 @@
    ArkTS-Sta示例：
 
    <!-- @[input_case_input_switchInputMethod](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
+   
+   ``` TypeScript
+   async switchInputMethod(item: string) {
+     try {
+       this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
+       let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
+       for (let i = 0; i < this.inputMethods.length; i++) {
+         if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
+           await inputMethod.switchInputMethod(this.inputMethods[i]);
+         }
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       Log.showError(TAG, `switchInputMethod catch error: ${error.code} ${error.message}`);
+     }
+   }
+   ```
 
 ## 切换输入法应用和子类型
 
