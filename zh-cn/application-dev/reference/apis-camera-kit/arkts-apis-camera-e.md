@@ -403,7 +403,7 @@
 | BEAUTY    | 0 | 美颜。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 | PORTRAIT  | 1 | 人像虚化。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | AUTO_FRAMING<sup>24+</sup> | 2 | 自动对焦。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| COLOR_EFFECT<sup>26+</sup> | 3 | 色彩效果。<br> **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。 |
+| COLOR_EFFECT | 3 | 色彩效果。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 

@@ -119,7 +119,7 @@ getColorTintRange(): Array\<number\>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -127,7 +127,15 @@ getColorTintRange(): Array\<number\>
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| Array\<number\>   | 用于获取色调调节值的可调范围，如[-100，100]，实际情况根据底层能力返回为准。若接口调用失败，返回undefined。|
+| Array\<number\>   | 用于获取色调调节值的可调范围。如[-100，100]，实际情况根据底层能力返回为准。若接口调用失败，返回undefined。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.                                  |
 
 **示例：**
 
