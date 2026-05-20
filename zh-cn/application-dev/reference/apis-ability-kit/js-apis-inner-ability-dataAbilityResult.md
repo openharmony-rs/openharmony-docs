@@ -9,9 +9,11 @@
 定义DataAbility数据操作结果，通过[executeBatch](js-apis-inner-ability-dataAbilityHelper.md#dataabilityhelperexecutebatch)操作数据库时，操作结果使用DataAbilityResult对象返回。
 
 > **说明：**
-> 
+>
+> 本模块仅支持ArkTS-Dyn。
+>
 > 本接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
+>
 > 此接口仅可在FA模型下使用。
 
 ## 导入模块
@@ -23,6 +25,10 @@ import ability from '@ohos.ability.ability';
 ## 属性
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 | 名称      | 类型  | 只读  | 可选    |       说明   |
 | -------- | -------- | -------- | -------- | -------- |
