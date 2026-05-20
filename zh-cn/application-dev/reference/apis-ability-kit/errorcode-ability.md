@@ -2717,6 +2717,42 @@ Maximum number of processes has been reached.
 
 等待部分工具执行结束后重新发起连接。
 
+## 35600032 指定的session不存在
+
+**错误信息**
+
+The session does not exist.
+
+**错误描述**
+
+指定的session不存在。
+
+**可能原因**
+
+传入了错误的sessionId。
+
+**处理步骤**
+
+检查sessionId是否正确，传入正确的sessionId。
+
+## 35600033 向工具进程写入消息失败
+
+**错误信息**
+
+Failed to write message to tool.
+
+**错误描述**
+
+向工具进程写入消息失败。
+
+**可能原因**
+
+write系统调用失败。
+
+**处理步骤**
+
+缓冲区满或对端异常，尝试等待一会重新写入。
+
 ## 35600050 偶发性报错
 
 **错误信息**
@@ -2773,4 +2809,3 @@ The current process still has another UIAbility, and this API cannot be called.
 **处理步骤**
 
 调用方保证当前进程中只有一个UIAbility且处于退出状态。
-
