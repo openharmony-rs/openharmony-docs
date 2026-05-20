@@ -1956,7 +1956,7 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
