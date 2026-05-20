@@ -4578,7 +4578,7 @@ on(type: 'subtitleUpdate', callback: Callback\<SubtitleInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onsubtitleupdate)](#onsubtitleupdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsubtitleupdate](#onsubtitleupdate23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4911,7 +4911,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onseimessagereceived)](#onseimessagereceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onseimessagereceived](#onseimessagereceived23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
