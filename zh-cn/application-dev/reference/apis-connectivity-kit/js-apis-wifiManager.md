@@ -675,6 +675,8 @@ WAPI认证方式的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 
@@ -1043,7 +1045,7 @@ connectToCandidateConfig(networkId: number): void
 
 ## wifiManager.connectToCandidateConfig
 
-connectToCandidateConfig(settings: ConnectSettings): void
+connectToCandidateConfig(settings: ConnectSettings): Promise&lt;void&gt;
 
 应用使用该接口连接到自己添加的候选网络，支持设置自定义参数。
 
@@ -1070,10 +1072,12 @@ connectToCandidateConfig(settings: ConnectSettings): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 | 2501001  | Wi-Fi STA disabled.|
+| 2501005  | The user does not respond.|
+| 2501006  | The user refused the action.|
+| 2501007  | Parameter validation failed.|
 
 **示例：**
 ```ts
@@ -3580,4 +3584,29 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
   
   // Unregister event
   wifiManager.off("p2pDiscoveryChange", recvP2pDiscoveryChangeFunc);
+
 ```
+
+## wifiManager.isWlanSupported
+
+isWlanSupported(): boolean;
+
+查询是否可用Wi-Fi网络。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true表示Wi-Fi可用，&nbsp;false表示Wi-Fi不可用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码 | 错误信息 |
+| -------- | -------- |
+| 2501000  | Operation failed. |
