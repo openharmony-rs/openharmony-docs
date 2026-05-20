@@ -6162,3 +6162,19 @@ With this permission, the application can access and modify the offline map data
 **Supported devices**: phones
 
 **Since**: 20
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+Allows a system application to use the credential management feature of the passkey service.
+
+With this permission, the system application can obtain and delete all credentials of the passkey service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
