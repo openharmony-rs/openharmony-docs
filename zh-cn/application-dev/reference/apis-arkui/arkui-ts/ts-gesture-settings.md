@@ -1,4 +1,4 @@
-# 绑定手势方法
+# 绑定手势事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->

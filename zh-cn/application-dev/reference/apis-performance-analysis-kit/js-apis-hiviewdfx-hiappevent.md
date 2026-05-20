@@ -397,7 +397,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 > **说明：**
 >
-> 不建议在回调函数中执行[移除观察者](#hiappeventremovewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
+> 不建议在回调函数中执行[removeWatcher](#hiappeventremovewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
 
 ## TriggerCondition
 
@@ -1301,6 +1301,8 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 ## hiAppEvent.domain<sup>11+</sup>
 
+### 常量
+
 提供领域名称常量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -1341,6 +1343,8 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | appFreezeWarning | string | 是 | 应用冻屏告警事件。系统事件名称常量。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
+
+### 常量
 
 提供参数名称常量。
 

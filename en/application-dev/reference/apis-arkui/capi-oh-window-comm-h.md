@@ -33,6 +33,7 @@ The file declares the common enums and definitions of the window manager.
 | [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | Describes the main window information.|
 | [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | Describes the configuration of the main window screenshot.|
 | [OH_WindowManager_FrameMetrics](capi-windowmanager-oh-windowmanager-framemetrics.md) | OH_WindowManager_FrameMetrics | Defines a frame metric data object.|
+| [OH_WindowManager_DensityInfo](capi-windowmanager-oh-windowmanager-densityinfo.md) | OH_WindowManager_DensityInfo | Defines window scale factor information, including the scale factors of the system display size, system default display size, and custom display size.|
 
 
 ### Enums
@@ -48,6 +49,7 @@ The file declares the common enums and definitions of the window manager.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | Callback for frame metrics.|
+| [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | Callback for the window scale factor information.|
 
 ## Enum Description
 
@@ -132,3 +134,15 @@ typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, 
 Callback for frame metrics.
 
 **Since:** 26.0.0
+
+### OH_WindowManager_DensityInfoCallback()
+
+```c
+typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)
+```
+
+**Description**
+
+Callback for the window scale factor information.
+
+**Since:** 24

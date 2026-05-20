@@ -15,7 +15,7 @@ The **deviceConfig** tag contains device-specific configuration of the applicati
 <!--RP1-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
-| default | Default device type. For details, see [Standard-System Development Boards](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/dev-board-on-the-master.md#standard-system-development-boards).| Object| Yes (initial value: left empty)|
+| default | Default device type. For details, see [Standard-System Development Boards](../../device-dev/dev-board-on-the-master.md#standard-system-development-boards).| Object| Yes (initial value: left empty)|
 | tablet | Application configuration specific to tablets.| Object| Yes (initial value: left empty)|
 | tv | Application configuration specific to smart TVs.| Object| Yes (initial value: left empty)|
 | car | Application configuration specific to telematics devices.| Object| Yes (initial value: left empty)|
@@ -30,6 +30,7 @@ For details about the properties of the **deviceConfig** tag, see [Internal Stru
 
 **Table 2** Internal structure of deviceConfig's properties
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | process | Name of the process running the application or ability. If the **process** property is configured in the **deviceConfig** tag, all abilities of the application run in this process. You can set the **process** property for a specific ability in the **abilities** tag, so that the ability can run in the particular process. The value can contain a maximum of 31 characters.| String| Yes (initial value: left empty)|

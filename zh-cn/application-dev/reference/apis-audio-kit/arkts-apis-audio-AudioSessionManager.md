@@ -1,8 +1,8 @@
 # Interface (AudioSessionManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -963,7 +963,7 @@ audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOther
 ```
 
 
-## setCapturerMuteHint<sup>24</sup>
+## setCapturerMuteHint<sup>24+</sup>
 
 setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
 

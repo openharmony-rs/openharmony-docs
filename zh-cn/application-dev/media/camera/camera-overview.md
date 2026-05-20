@@ -43,3 +43,5 @@
 针对相机开发，有以下相关实例可供参考：
 
 - [相机和媒体库(ArkTS) (Full SDK)（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/Camera)
+
+<!--RP1--><!--RP1End-->

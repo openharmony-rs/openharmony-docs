@@ -832,6 +832,120 @@ if (needStop) {
 }
 ```
 
+### startTransfer
+
+startTransfer(targetUri: string, callback: Callback&lt;TransferProgress&gt;): void
+
+将云盘目录下已完成本地下载的文件搬迁至指定目录，过程中通过回调上报搬迁进度。使用callback异步回调。
+
+同一应用存在正在执行的搬迁任务的情况下，重复触发会返回错误信息（22400006）。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CLOUDFILE_SYNC_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                                                |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
+| targetUri | string | 是  | 用于存放搬迁后的文件路径URI，必须以“/file://docs/storage/Users/currentUser/”为前缀。 |
+| callback | Callback&lt;[TransferProgress](js-apis-file-cloudsyncmanager-sys.md#transferprogress)&gt; | 是   | 回调函数，返回搬迁进度。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                                                                                                                          |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201      | Permission verification failed.                                                                                                                                                   |
+| 202      | The caller is not a system application.                                                                                                                                           |
+| 13900001 | Operation not permitted. Possible causes:<br>1.The DowngradeDownload task is running.<br>2.The full data synchronization task is running.                                         |
+| 13900002 | No such file or directory.                                                                                                                                                        |
+| 13900010 | Try again.                                                                                                                                                                        |
+| 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified.<br>2.The length of the input uri does not meet the value range requirement.<br>3.The input uri does not belong to a File Manager public directory. |
+| 22400006 | The same task is already in progress.                                                                                                                                             |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let targetPath: string = "/file://docs/storage/Users/currentUser/Download/";
+try {
+    let downgradeMgr = new cloudSyncManager.DowngradeDownload("com.demo");
+    downgradeMgr.startTransfer(targetPath, (data: cloudSyncManager.TransferProgress) => {
+        console.info(`Transfer progress: successfulCount: ${data.successfulCount}, totalCount: ${data.totalCount}`);
+    });
+} catch (err) {
+    let e = err as BusinessError;
+    console.error("transfer files failed with error message: " + e.message + ", error code: " + e.code);
+}
+```
+
+## TransferProgress
+
+搬迁任务的进度信息。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称            | 类型                                        | 只读 | 可选 | 说明                                                                          |
+| --------------- | ------------------------------------------- | ---- | ---- | ----------------------------------------------------------------------------- |
+| state           | [TransferState](#transferstate)             | 否   | 否   | 搬迁任务的状态。                                                              |
+| successfulCount | number                                      | 否   | 否   | 已搬迁的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
+| failedCount     | number                                      | 否   | 否   | 搬迁失败的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。      |
+| totalCount      | number                                      | 否   | 否   | 待搬迁文件总个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
+| transferredSize | number                                      | 否   | 否   | 已搬迁的数据大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
+| totalSize       | number                                      | 否   | 否   | 需要搬迁的文件总大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
+| stopReason      | [TransferStopReason](#transferstopreason)   | 否   | 否   | 搬迁停止的原因。                                                              |
+
+## TransferState
+
+搬迁任务状态的枚举。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称      | 值  | 说明       |
+| --------- | --- | ---------- |
+| RUNNING   | 0   | 搬迁中。   |
+| COMPLETED | 1   | 搬迁完成。 |
+| STOPPED   | 2   | 搬迁停止。 |
+
+## TransferStopReason
+
+搬迁停止原因的枚举。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+| 名称                | 值  | 说明                                                   |
+| ------------------- | --- | ------------------------------------------------------ |
+| SWITCH_OFF          | 0   | 搬迁过程中，云服务开关关闭。                                         |
+| ACCOUNT_LOGOUT      | 1   | 搬迁过程中，账户登出。               |
+| OTHER_REASON        | 2   | 搬迁过程中，其他原因导致停止。                         |
+
   ## LocalFilePresentStatus<sup>23+</sup>
 
   检测结果对象，包含应用包名及其在云盘存储空间内是否存在未上云文件的状态信息。

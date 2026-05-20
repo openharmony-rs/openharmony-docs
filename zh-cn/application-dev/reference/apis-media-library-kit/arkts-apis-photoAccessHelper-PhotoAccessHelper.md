@@ -2236,7 +2236,7 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | The scenario parameter verification fails, Invalid tokenId.|
+| 23800151 | The capability is invalid. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**

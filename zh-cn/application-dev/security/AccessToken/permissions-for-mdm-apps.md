@@ -496,6 +496,8 @@
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：12
 
 ## ohos.permission.ENTERPRISE_RECOVERY_KEY

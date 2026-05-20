@@ -5243,7 +5243,7 @@ onResult: (code: number, result?: AuthResult) =&gt; void
         authType: 'getSocialData'
       }
     };
-    callback.onResult(appAccount.ResultCode.SUCCESS, result);
+    callback.onResult(0, result);
   }).catch((err: BusinessError) => {
     console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
   });
@@ -5290,7 +5290,7 @@ onRequestRedirected: (request: Want) =&gt; void
           authType: 'getSocialData'
         }
       };
-      callback.onResult(appAccount.ResultCode.SUCCESS, result);
+      callback.onResult(0, result);
     }
   }
   ```

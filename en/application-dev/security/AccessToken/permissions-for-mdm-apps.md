@@ -447,6 +447,8 @@ Allows an application to manage the enterprise recovery keys.
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
 
+**Supported devices**: PCs/2-in-1 devices
+
 **Valid since**: 13
 
 ## ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY

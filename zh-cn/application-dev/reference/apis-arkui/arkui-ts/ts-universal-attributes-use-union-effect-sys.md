@@ -1,4 +1,4 @@
-# 融合效果（系统接口）
+# 融合效果 (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
