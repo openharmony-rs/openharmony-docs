@@ -1290,7 +1290,7 @@ struct Index {
 
 ### 示例9（设置自定义无障碍操作）
 
-本示例主要演示如何使用[accessibilityCustomActions](#accessibilitycustomactions)为组件设置自定义无障碍操作。开发者可以按操作名为组件进行自定义操作的回调绑定。
+本示例主要演示如何使用[accessibilityCustomActions](#accessibilitycustomactions)为组件设置自定义无障碍操作。开发者可以通过操作名为组件进行自定义操作的回调绑定。
 
 从API版本26.0.0开始，新增accessibilityCustomActions。
 
