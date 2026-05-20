@@ -3,7 +3,7 @@
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
 <!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Designer: @zhanglu161-->
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @jinqiuheng-->
 
