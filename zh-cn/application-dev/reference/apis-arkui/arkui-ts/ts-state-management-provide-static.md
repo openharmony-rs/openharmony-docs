@@ -14,7 +14,15 @@
 
 在ArkTS-Sta中使用时，开发指南参考：[\@Provide装饰器和\@Consume装饰器：与后代组件双向同步（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-provide-and-consume.md)。
 
+## @Provide
+
+@interface Provide
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -53,4 +61,3 @@ struct Child {
   }
 }
 ```
-

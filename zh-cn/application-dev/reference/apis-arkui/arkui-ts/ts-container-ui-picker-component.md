@@ -53,7 +53,9 @@ UIPickerComponent容器是用于实现用户选择操作的组件。它支持从
 
 ## 接口
 
-UIPickerComponent(options?: UIPickerComponentOptions)
+ArkTS-Dyn: UIPickerComponent(options?: UIPickerComponentOptions)
+
+ArkTS-Sta: UIPickerComponent(options?: UIPickerComponentOptions, content_?: CustomBuilder)
 
 创建UIPickerComponent容器，其选中项由options参数中的selectedIndex属性值决定。
 
@@ -72,6 +74,7 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | options |  [UIPickerComponentOptions](#uipickercomponentoptions对象说明)| 否 | 配置UIPickerComponent容器的参数。参数缺省时组件占位，但内容显示为空。 |
+| content_<sup>23+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否  | 定义子组件的Builder函数。<br/>**ArkTS模式:** 该接口仅适用于ArkTS-Sta。|
 
 ## UIPickerComponentOptions对象说明
 
@@ -240,7 +243,7 @@ attributeModifier(modifier: AttributeModifier\<UIPickerComponentAttribute> | Att
 
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[UIPickerComponentAttribute]> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<UIPickerComponentAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。 <br/>UIPickerComponentAttribute表示当前组件的[属性](#属性)和[事件](#事件)。|
 
 ## 事件
 
