@@ -101,8 +101,8 @@
 
    <!-- @[extension_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
-   ```ts
-   import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
+   ``` TypeScript
+   import {workScheduler, WorkSchedulerExtensionAbility} from '@kit.BackgroundTasksKit';
    ```
 
 3. 实现WorkSchedulerExtension生命周期接口。
@@ -132,16 +132,18 @@
 
    <!-- @[workScheduler_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/module.json5) -->
 
-   ```json
+   ``` JSON5
    {
      "module": {
-         "extensionAbilities": [
-           {
-             "name": "MyWorkSchedulerExtensionAbility",
-             "srcEntry": "./ets/WorkSchedulerExtension/WorkSchedulerExtension.ets",
-             "type": "workScheduler"
-           }
-         ]
+       // ...
+       "extensionAbilities": [
+         {
+           "name": "WorkSchedulerAbility",
+           "srcEntry": "./ets/WorkSchedulerAbility/WorkSchedulerAbility.ets",
+           "type": "workScheduler",
+           // ...
+         }
+       ]
      }
    }
    ```
@@ -153,13 +155,13 @@
 
    <!-- @[workScheduler_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
-   ```ts
-   import { workScheduler } from '@kit.BackgroundTasksKit';
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { workScheduler } from '@kit.BackgroundTasksKit';
    ```
 
 2. 申请延迟任务。
-   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->  
+   <!-- @[startWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
    ``` TypeScript
    let workInfo: workScheduler.WorkInfo = {
@@ -180,7 +182,7 @@
    ```
 
 3. 取消延迟任务。
-   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->  
+   <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
 
    ```ts
    // 创建workinfo
