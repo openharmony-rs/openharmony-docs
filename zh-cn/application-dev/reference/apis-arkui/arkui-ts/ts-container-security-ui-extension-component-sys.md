@@ -426,11 +426,11 @@ offSyncReceiverRegister(callback?: Callback\<SecurityUIExtensionProxy\>): void
 
 ## 示例
 
-### 示例1（SecurityUIExtensionComponent基础使用）
+### 示例1（SecurityUIExtensionComponent使用）
 
-本示例展示了SecurityUIExtensionComponent的基本用法，通过配置Want拉起指定Ability的UIExtensionAbility，并在连接异常时通过onError回调获取错误信息。
+本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置Want拉起指定Ability的UIExtensionAbility，通过onRemoteReady获取SecurityUIExtensionProxy，使用send/sendSync发送数据，以及通过onReceive、onError、onTerminated等回调处理事件。
 
-从API版本26.0.0开始，新增[onError](#onerror)事件。
+**组件使用方**
 
 ArkTS-Dyn示例：
 
@@ -438,38 +438,79 @@ ArkTS-Dyn示例：
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { SecurityUIExtensionProxy, UIExtensionProxy } from '@kit.ArkUI';
+
+function asyncRegisterCallback(proxy: UIExtensionProxy) {
+  hilog.info(0x0000, 'SUECDemo', 'asyncReceiverRegister callback');
+}
+
+function syncRegisterCallback(proxy: UIExtensionProxy) {
+  hilog.info(0x0000, 'SUECDemo', 'syncReceiverRegister callback');
+}
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  @State want: Want = {
-    bundleName: 'com.ohos.myapplication',
-    abilityName: 'SUIExtensionProvider',
+  @State receiveData: string = '';
+  private want: Want = {
+    bundleName: 'com.example.suecdemo',
+    abilityName: 'SecurityUIExtProvider',
     parameters: {
-      'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
+      'ability.want.params.uiExtensionType': 'sys/commonUI',
     },
+  }
+  private proxy: SecurityUIExtensionProxy | null = null;
+
+  aboutToDisappear(): void {
+    this.proxy?.off('syncReceiverRegister');
+    this.proxy?.off('asyncReceiverRegister');
   }
 
   build() {
     Column() {
-      Button('top')
-        .width('80%')
-        .height(40)
-        .margin(3)
+      Text(this.message).fontSize(20).margin(10)
+      Text('收到数据: ' + this.receiveData).fontSize(16).margin(10)
 
       SecurityUIExtensionComponent(this.want)
         .width('90%')
-        .height('90%').backgroundColor(Color.Green)
+        .height('60%')
+        .backgroundColor(Color.Green)
+        .onRemoteReady((proxy: SecurityUIExtensionProxy) => {
+          hilog.info(0x0000, 'SUECDemo', 'onRemoteReady');
+          this.proxy = proxy;
+
+          this.proxy.on('asyncReceiverRegister', asyncRegisterCallback);
+          this.proxy.on('syncReceiverRegister', syncRegisterCallback);
+        })
+        .onReceive((data: Record<string, Object>) => {
+          this.receiveData = JSON.stringify(data['data']);
+          hilog.info(0x0000, 'SUECDemo', 'onReceive: ' + this.receiveData);
+        })
         .onError((error: BusinessError) => {
           this.message = 'Error: ' + JSON.stringify(error);
-          hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
+          hilog.error(0x0000, 'SUECDemo', 'onError: ' + error.message);
+        })
+        .onTerminated((info) => {
+          hilog.info(0x0000, 'SUECDemo', 'onTerminated: code=' + info.code);
         })
 
-      Button('bottom')
-        .width('80%')
-        .height(40)
-        .margin(3)
+      Button('发送异步数据').onClick(() => {
+        if (this.proxy) {
+          this.proxy.send({ data: '来自使用方的异步消息' });
+        }
+      }).margin(5)
+
+      Button('发送同步数据').onClick(() => {
+        if (this.proxy) {
+          try {
+            let result = this.proxy.sendSync({ data: '来自使用方的同步消息' });
+            hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
+          } catch (err) {
+            hilog.error(0x0000, 'SUECDemo', `sendSync failed: ${(err as BusinessError).message}`);
+          }
+        }
+      }).margin(5)
     }
     .height('90%')
     .width('90%')
@@ -480,48 +521,207 @@ struct Index {
 ArkTS-Sta示例：
 
 ``` TypeScript
-
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { State } from '@ohos.arkui.stateManagement'
-import { Column, Button, Component, Entry, Color, SecurityUIExtensionComponent } from '@ohos.arkui.component';
+import { Column, Button, Text, Component, Entry, Color, SecurityUIExtensionComponent } from '@ohos.arkui.component';
+import { SecurityUIExtensionProxy } from '@ohos.arkui.node';
 
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
+  @State receiveData: string = '';
   private want: Want = {
-    bundleName: 'com.ohos.myapplication',
-    abilityName: 'SUIExtensionProvider',
+    bundleName: 'com.example.suecdemo',
+    abilityName: 'SecurityUIExtProvider',
     parameters: {
-      'ability.want.params.uiExtensionType': 'sysPicker/photoPicker',
+      'ability.want.params.uiExtensionType': 'sys/commonUI',
     },
+  }
+  private proxy: SecurityUIExtensionProxy | null = null;
+
+  aboutToDisappear(): void {
+    this.proxy?.offAsyncReceiverRegister();
+    this.proxy?.offSyncReceiverRegister();
   }
 
   build() {
     Column() {
-      Button('top')
-        .width('80%')
-        .height(40)
-        .margin(3)
+      Text(this.message).fontSize(20).margin(10)
+      Text('收到数据: ' + this.receiveData).fontSize(16).margin(10)
 
       SecurityUIExtensionComponent(this.want)
         .width('90%')
-        .height('90%')
+        .height('60%')
         .backgroundColor(Color.Green)
+        .onRemoteReady((proxy: SecurityUIExtensionProxy) => {
+          hilog.info(0x0000, 'SUECDemo', 'onRemoteReady');
+          this.proxy = proxy;
+
+          this.proxy.onAsyncReceiverRegister((proxy: SecurityUIExtensionProxy) => {
+            hilog.info(0x0000, 'SUECDemo', 'onAsyncReceiverRegister');
+          });
+          this.proxy.onSyncReceiverRegister((proxy: SecurityUIExtensionProxy) => {
+            hilog.info(0x0000, 'SUECDemo', 'onSyncReceiverRegister');
+          });
+        })
+        .onReceive((data: Record<string, Object>) => {
+          this.receiveData = JSON.stringify(data['data']);
+          hilog.info(0x0000, 'SUECDemo', 'onReceive: ' + this.receiveData);
+        })
         .onError((error: BusinessError) => {
           this.message = 'Error: ' + JSON.stringify(error);
-          hilog.info(0x0000, 'SecurityUIExtensionComponentDemo', this.message);
+          hilog.error(0x0000, 'SUECDemo', 'onError: ' + error.message);
+        })
+        .onTerminated((info) => {
+          hilog.info(0x0000, 'SUECDemo', 'onTerminated: code=' + info.code);
         })
 
-      Button('bottom')
-        .width('80%')
-        .height(40)
-        .margin(3)
+      Button('发送异步数据').onClick(() => {
+        if (this.proxy) {
+          this.proxy.send({ data: '来自使用方的异步消息' });
+        }
+      }).margin(5)
+
+      Button('发送同步数据').onClick(() => {
+        if (this.proxy) {
+          try {
+            let result = this.proxy.sendSync({ data: '来自使用方的同步消息' });
+            hilog.info(0x0000, 'SUECDemo', 'sendSync result: ' + JSON.stringify(result));
+          } catch (err) {
+            hilog.error(0x0000, 'SUECDemo', `sendSync failed: ${(err as BusinessError).message}`);
+          }
+        }
+      }).margin(5)
     }
     .height('90%')
     .width('90%')
+  }
+}
+```
+
+**组件提供方**
+
+提供方包含两个文件需要修改：
+
+- 提供方新增扩展入口文件/src/main/ets/uiextensionability/SecurityUIExtProvider.ets
+
+```ts
+import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[SecurityUIExtAbility]';
+
+export default class SecurityUIExtProvider extends UIExtensionAbility {
+  onCreate() {
+    hilog.info(0x0000, TAG, 'onCreate');
+  }
+
+  onForeground() {
+    hilog.info(0x0000, TAG, 'onForeground');
+  }
+
+  onBackground() {
+    hilog.info(0x0000, TAG, 'onBackground');
+  }
+
+  onDestroy() {
+    hilog.info(0x0000, TAG, 'onDestroy');
+  }
+
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    hilog.info(0x0000, TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+    let param: Record<string, UIExtensionContentSession> = {
+      'session': session
+    };
+    let storage: LocalStorage = new LocalStorage(param);
+    session.loadContent('pages/SecurityExtension', storage);
+  }
+
+  onSessionDestroy(session: UIExtensionContentSession) {
+    hilog.info(0x0000, TAG, 'onSessionDestroy');
+  }
+}
+```
+
+- 提供方扩展Ability入口页面文件/src/main/ets/pages/SecurityExtension.ets
+
+```ts
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let storage = new LocalStorage();
+
+@Entry(storage)
+@Component
+struct SecurityExtension {
+  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+
+  aboutToAppear() {
+    if (this.session) {
+      this.session.setReceiveDataCallback((data) => {
+        hilog.info(0x0000, 'SecurityExtension', 'setReceiveDataCallback: ' + JSON.stringify(data));
+      });
+
+      this.session.setReceiveDataForResultCallback((data: Record<string, Object>): Record<string, Object> => {
+        hilog.info(0x0000, 'SecurityExtension', 'setReceiveDataForResultCallback: ' + JSON.stringify(data));
+        return { result: '已收到同步数据' };
+      });
+    }
+  }
+
+  build() {
+    Column() {
+      Text('SecurityUIExtension提供方页面').fontSize(20).margin(10)
+
+      Button('向使用方发送数据').onClick(() => {
+        if (this.session) {
+          this.session.sendData({ data: '来自提供方的数据' });
+          hilog.info(0x0000, 'SecurityExtension', 'sendData');
+        }
+      }).margin(5)
+
+      Button('正常退出').onClick(() => {
+        if (this.session) {
+          this.session.terminateSelf();
+        }
+      }).margin(5)
+
+      Button('带结果退出').onClick(() => {
+        if (this.session) {
+          this.session.terminateSelfWithResult({
+            resultCode: 0,
+            want: {
+              bundleName: 'com.example.suecdemo',
+              parameters: { result: '处理完成' }
+            }
+          });
+        }
+      }).margin(5)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+- 提供方module.json5配置
+
+```json
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "extensionAbilities": [
+      {
+        "name": "SecurityUIExtProvider",
+        "srcEntry": "./ets/uiextensionability/SecurityUIExtProvider.ets",
+        "type": "sys/commonUI",
+        "exported": true
+      }
+    ]
   }
 }
 ```
