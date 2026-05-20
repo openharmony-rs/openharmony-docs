@@ -1452,7 +1452,9 @@ getCliPermissions(hostTokenID: number, agentID: string, cliInfoList: Array&lt;Cl
 
 查询指定应用的CLI权限信息。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
 
@@ -1515,7 +1517,9 @@ generateCliAuthResult(hostTokenID: number, agentID: string, authInfoList: Array&
 
 根据CLI授权信息生成授权结果。使用Promise异步回调。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
 
@@ -1581,7 +1585,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 权限决策状态枚举。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1602,7 +1608,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 表示CLI（Command Line Interface，命令行界面）信息。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1619,7 +1627,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 表示单条命令的权限弹窗信息。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1638,7 +1648,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 表示权限弹窗查询结果。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1654,7 +1666,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 表示CLI指令声明的单个CLI权限的状态信息。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1672,7 +1686,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 表示单条CLI命令的权限信息。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1688,7 +1704,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 表示CLI权限查询结果。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1704,7 +1722,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 表示CLI授权信息。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1722,7 +1742,9 @@ atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: 
 
 表示工具授权结果。
 
-**起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
