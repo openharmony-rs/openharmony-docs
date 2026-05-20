@@ -12,12 +12,12 @@
 
 ### hidumper参数说明
 
-**基本命令格式**：
+基本命令格式：
 ```bash
 hdc shell hidumper -s WindowManagerService -a '<参数>'
 ```
 
-**参数列表**：
+参数列表：
 
 | 参数 | 含义 | 命令示例 | 使用场景 |
 |------|------|----------|----------|
@@ -39,7 +39,7 @@ hdc shell hidumper -s WindowManagerService -a '-a'
 
 该命令输出窗口管理服务的完整状态信息，包括所有窗口的详细信息、焦点状态、层级关系等。
 
-**输出示例**：
+输出示例：
 ```bash
 ----------------------------------WindowManagerService----------------------------------
 -------------------------------------ScreenGroup 1-------------------------------------
@@ -61,11 +61,11 @@ Focus window: 13
 total window num: 12
 ```
 
-**前台窗口与后台窗口说明**：
+前台窗口与后台窗口说明：
 
 输出中通过分隔线区分前台窗口和后台窗口：分隔线以上为前台窗口（正在显示或可交互），分隔线以下为后台窗口（隐藏或不在前台显示）。
 
-**字段含义详细说明**：
+字段含义详细说明：
 
 | 字段 | 含义 | 说明 |
 |------|------|------|
@@ -88,7 +88,7 @@ total window num: 12
 hdc shell hidumper -s WindowManagerService -a '-a' | grep "Focus window"
 ```
 
-**输出示例**：
+输出示例：
 ```
 Focus window: 13
 ```
@@ -104,7 +104,7 @@ Focus window: 13
 
 ### 查看指定窗口详细信息
 
-**基本命令格式**：
+基本命令格式：
 
 使用 `-w WinId` 参数查看特定窗口的详细信息：
 
@@ -114,7 +114,7 @@ hdc shell hidumper -s WindowManagerService -a '-w 13'
 
 `-w 13` 参数表示查看WinId为13的窗口详细信息。
 
-**输出示例**：
+输出示例：
 ```bash
 ----------------------------------WindowManagerService----------------------------------
 WindowName: note0
@@ -136,7 +136,7 @@ WindowRect: [ 0, 0, 720, 1280 ]
 TouchHotAreas: [ 0, 0, 720, 1280 ]
 ```
 
-**字段含义详细说明**：
+字段含义详细说明：
 
 | 字段 | 含义 | 取值说明 |
 |------|------|----------|
@@ -158,59 +158,54 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
 | TouchHotAreas | 触摸热区 | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。 |
 
-**常见问题定位**：
+常见问题定位：
 
-**问题1：窗口不显示**
+问题1：窗口不显示
 
-**检查字段**：
 - `VisibilityState`为1：窗口被隐藏，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)显示。
 - `Flag`为1：状态标志为隐藏，检查窗口是否被隐藏。
 
-**问题2：窗口无法接收键盘输入**
+问题2：窗口无法接收键盘输入
 
-**检查字段**：
 - `Focusable`为false：窗口不可获焦，调用[setWindowFocusable(true)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)设置可获焦。
 - 确认窗口在前台区域（分隔线以上）。
 
-**问题3：截屏时窗口内容未隐藏**
+问题3：截屏时窗口内容未隐藏
 
-**检查字段**：
 - `IsPrivacyMode`为false：未启用隐私模式。
 - `isSnapshotSkip`为0：截屏时显示窗口内容。
 
 解决方案：调用[setWindowPrivacyMode(true)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式。
 
-**问题4：窗口启动性能慢**
+问题4：窗口启动性能慢
 
-**检查字段**：
 - `FirstFrameCallbackCalled`为0：首帧未完成，可能页面加载慢。
 - 结合日志分析启动耗时。
 
-**问题5：窗口触摸区域异常**
+问题5：窗口触摸区域异常
 
-**检查字段**：
 - `TouchHotAreas`尺寸异常：触摸热区设置错误。
 - 与WindowRect对比，确认是否正确
 
 ### 定位思路
 
-1. **问题定位流程**：
+1. 问题定位流程：
    1. 发现问题
    2. 使用hidumper查看窗口状态
    3. 分析异常属性
    4. 定位代码位置
    5. 修复验证
 
-2. **结合日志使用**：
+2. 结合日志使用：
    - hidumper提供实时窗口状态
    - 系统日志（WINDOW_FROZEN_DETECTION）提供异常警告
    - 两者结合可以更快速定位问题
 
-3. **对比验证**：
+3. 对比验证：
    - 执行操作前后对比窗口状态
    - 确认操作是否生效
 
-4. **关注关键属性**：
+4. 关注关键属性：
    - VisibilityState：确认窗口是否显示
    - ZOrder：确认层级关系
    - WindowRect：确认窗口大小和位置
