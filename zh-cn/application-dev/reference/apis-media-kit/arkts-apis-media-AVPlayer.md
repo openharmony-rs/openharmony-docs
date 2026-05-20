@@ -357,7 +357,7 @@ onError(callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Meida错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 在API version 9-13，针对网络、服务器等数据流异常，接口上报5400103；从API version 14开始，对应错误细化为错误码5411001-5411011。
 
@@ -937,7 +937,7 @@ advanceToMediaSource(id: string): Promise\<void>
 
 | 参数名 | 类型 | 必填  | 说明                                       |
 | ------ | ------ | ---- | ------------------------------------------ |
-| id    | string | 是 |指定媒体源的唯一标识符ID。 |
+| id    | string | 是 | 指定媒体源的唯一标识符ID。 |
 
 **返回值：**
 
@@ -4208,7 +4208,7 @@ on(type: 'audioInterrupt', callback: Callback\<audio.InterruptEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onaudiointerrupt23)](#onaudiointerrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onaudiointerrupt23](#onaudiointerrupt23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4439,7 +4439,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offaudiooutputdevicechangewithinfo23)](#offaudiooutputdevicechangewithinfo23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offaudiooutputdevicechangewithinfo23](#offaudiooutputdevicechangewithinfo23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
