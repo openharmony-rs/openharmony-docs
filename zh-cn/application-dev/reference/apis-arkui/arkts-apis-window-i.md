@@ -376,8 +376,8 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。<br/> **原子化服务：** 从API版本15开始，该接口支持在原子化服务中使用。|
-| windowAlpha | number  | 否 | 是 | 窗口透明度。有效值范围为[0.0, 1.0]，0.0表示完全透明，1.0表示完全不透明。默认值是-1.0，表示未查询到窗口透明度或者查询失败。<br/>说明：本透明度非窗口背景色透明度（可通过[setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口设置）。<br/>**起始版本**： 26.0.0<br/>**原子化服务：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。<br/> **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| windowAlpha | number  | 否 | 是 | 窗口透明度。有效值范围为[0.0, 1.0]，0.0表示完全透明，1.0表示完全不透明。默认值是-1.0，表示未查询到窗口透明度或者查询失败。<br/>说明：本透明度非窗口背景色透明度（可通过[setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口设置）。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## KeyboardInfo<sup>18+</sup>
 
