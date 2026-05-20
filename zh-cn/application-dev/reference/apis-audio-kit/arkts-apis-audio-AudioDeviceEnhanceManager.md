@@ -155,7 +155,7 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let outputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
+let inputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectInputDevice(inputDevice).then(() => {
   console.info('Succeeded in selecting input device.');
 }).catch((err: BusinessError) => {
