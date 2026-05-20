@@ -37,7 +37,7 @@ ImageAnimator()
 
 images(value: Array&lt;ImageFrameInfo&gt;)
 
-设置图片帧信息集合。不支持动态更新。
+设置图片帧信息集合。不支持动态更新，动态更新可能会导致不可预期的行为。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
