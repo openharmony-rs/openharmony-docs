@@ -785,7 +785,7 @@ onOpen(callback: Callback\<OpenResult\>): void
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Start。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1769,7 +1769,7 @@ listAllConnections(): WebSocketConnection[]
 **返回值：**
 | 类型                                        | 说明                         |
 | ------------------------------------------- | ---------------------------- |
-| WebSocketConnection[] | 以字符串数组形式返回所有客户端的信息。|
+| [WebSocketConnection](#websocketconnection19)[] | 以字符串数组形式返回所有客户端的信息。|
 
 **错误码：**
 
@@ -2323,7 +2323,7 @@ on(type: 'close', callback: ClientConnectionCloseCallback): void
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | -------- | ----------------------------------------------- | ---- | ----------------------------------- |
 | type     | string                                          | 是  | 事件回调类型，支持的事件为'close'，当onclose()调用完成，连接关闭成功。 |
-| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback23) | 是  | 回调函数。<br>close：close错误码；reason：错误码说明。 |
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | 是  | 回调函数。<br>close：close错误码；reason：错误码说明。 |
 
 **示例：**
 
@@ -2350,7 +2350,7 @@ onWebSocketServerClose(callback: ClientConnectionCloseCallback): void
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | -------- | ----------------------------------------------- | ---- | ----------------------------------- |
-| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback23) | 是  | 回调函数。<br>close：close错误码；reason：错误码说明。 |
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | 是  | 回调函数。<br>close：close错误码；reason：错误码说明。 |
 
 **示例：**
 
@@ -2382,7 +2382,7 @@ off(type: 'close', callback?: ClientConnectionCloseCallback): void
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | -------- | ----------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                          | 是  | 事件回调类型，支持的事件为'close'，当offclose()调用完成，取消订阅连接关闭事件成功。 |
-| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback23) | 否  | 回调函数。<br>close：close错误码；reason：错误码说明。 |
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | 否  | 回调函数。<br>close：close错误码；reason：错误码说明。 |
 
 **示例：**
 
@@ -2411,7 +2411,7 @@ offWebSocketServerClose(callback?: ClientConnectionCloseCallback): void
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
 | -------- | ----------------------------------------------- | ---- | ---------------------------------- |
-| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback23) | 否  | 回调函数，用于指定需要移除的回调。 |
+| callback | [ClientConnectionCloseCallback](#clientconnectionclosecallback19) | 否  | 回调函数，用于指定需要移除的回调。 |
 
 **示例：**
 
@@ -2759,13 +2759,17 @@ type HttpProxy = connection.HttpProxy
 | clientIP   | string | 否   | 否   | 客户端的ip地址。     |
 | clientPort | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 客户端的端口号port。 |
 
-## ClientConnectionCloseCallback<sup>23+</sup>
+## ClientConnectionCloseCallback<sup>19+</sup>
 
 type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, closeReason: CloseResult) => void
 
 关闭WebSocketServer连接时，订阅close事件得到的指定客户端的关闭结果。
 
 **系统能力：** SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
