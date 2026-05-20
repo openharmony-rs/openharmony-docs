@@ -1229,7 +1229,7 @@ DLP文件授权类型的枚举。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | dlpFileAccess | [DLPFileAccess](#dlpfileaccess) | 否 | 否 | 表示DLP文件针对用户的授权类型，例如：只读。 |
-| flags | number | 否 | 否 | 表示DLP文件的详细操作权限，是不同[ActionFlagType](#actionflagtype)的组合。 |
+| flags | number | 否 | 否 | 表示DLP文件的详细操作权限，取值范围由不同[ActionFlagType](#actionflagtype)的组合决定，超出此范围抛出异常。 |
 
 ## AccessedDLPFileInfo
 
@@ -1616,11 +1616,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 import { Callback } from '@kit.BasicServicesKit';
 
 export default class DataCapsulePlugin implements dlpPermission.DlpConnPlugin {
-  private accountId: string;
-  private accountName: string;
   constructor() {
-    this.accountId = 'accountId'; // 初始化账号信息。
-    this.accountName = 'accountName';
   }
 
   connectServer(requestId: string, requestData: string, callback: Callback<string>): void {
@@ -1694,7 +1690,7 @@ static registerPlugin(plugin: DlpConnPlugin): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 注册结果，代表该回调的id。取值范围为[0, 2<sup>64</sup>-1]。|
+| number | 注册结果，返回该回调的唯一标识ID。取值范围为[0, 2<sup>64</sup>-1]。|
 
 **错误码：**
 
@@ -1772,7 +1768,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 
 表示企业DLP文件的查询选项。
 
-**起始版本**：26.0.0
+**起始版本**：从API version 26开始支持
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1782,7 +1778,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 | -------- | -------- | -------- | -------- | -------- |
 | classificationLabel | string | 否 | 是 | 表示企业DLP文件的用户定义分类标签。最大长度为255字节，超出此范围抛出错误码。 |
 
-## dlpPermission.queryOpenedEnterpriseDlpFiles
+## dlpPermission.queryOpenedEnterpriseDlpFiles<sup>26+</sup>
 
 queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&lt;string&gt;&gt;
 
@@ -1827,7 +1823,7 @@ queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&l
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { dlpPermission } from '@kit.DataProtectionKit';
 
 let options: dlpPermission.DlpFileQueryOptions = {
   classificationLabel: 'label1'
@@ -1841,7 +1837,7 @@ dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) 
 });
 ```
 
-## dlpPermission.closeOpenedEnterpriseDlpFiles
+## dlpPermission.closeOpenedEnterpriseDlpFiles<sup>26+</sup>
 
 closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt;
 
@@ -1886,7 +1882,6 @@ closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: dlpPermission.DlpFileQueryOptions = {
   classificationLabel: 'label1'
