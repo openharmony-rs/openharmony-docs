@@ -669,41 +669,10 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`Failed to create AV session, code: ${err.code}, message: ${err.message}`);
-                return;
-              }
-              currentAVSession = data;
-              let eventName = "dynamic_lyric";
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
-                  console.info('Succeeded in dispatching session event.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+let eventName = "dynamic_lyric";
+currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
+  console.info('Succeeded in dispatching session event.');
+});
 ```
 
 ## dispatchSessionEvent<sup>10+</sup>
@@ -739,45 +708,16 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`Failed to create AV session, code: ${err.code}, message: ${err.message}`);
-                return;
-              }
-              currentAVSession = data;
-              let eventName: string = "dynamic_lyric";
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
-                  if (err) {
-                    console.error(`Failed to dispatch session event, code: ${err.code}, message: ${err.message}`);
-                    return;
-                  }
-                  console.info('Succeeded in dispatching session event.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
+let eventName: string = "dynamic_lyric";
+currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to dispatch session event, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
+  console.info('Succeeded in dispatching session event.');
+});
 ```
 
 ## setAVQueueItems<sup>10+</sup>
@@ -818,56 +758,38 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 // Index.ets
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
-import { avSession } from '@kit.AVSessionKit';
 
-interface ExtrasType {
-  extras: string;
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-    }
-  }
-}
-
-let currentAVSession: avSession.AVSession;
-
-async function setAVQueueItems() {
-  let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-  let imageSource = await image.createImageSource(value.buffer);
-  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-  let queueItemDescription_1: avSession.AVMediaDescription = {
-    assetId: '001',
-    title: 'music_name',
-    subtitle: 'music_sub_name',
-    description: 'music_description',
-    mediaImage : imagePixel,
-    extras: {extras:'any'}
-  };
-  let queueItem_1: avSession.AVQueueItem = {
-    itemId: 1,
-    description: queueItemDescription_1
-  } as avSession.AVQueueItem;
-  let queueItemDescription_2: avSession.AVMediaDescription = {
-    assetId: '002',
-    title: 'music_name',
-    subtitle: 'music_sub_name',
-    description: 'music_description',
-    mediaImage: imagePixel,
-    extras: {extras:'any'}
-  };
-  let queueItem_2: avSession.AVQueueItem = {
-    itemId: 2,
-    description: queueItemDescription_2
-  } as avSession.AVQueueItem;
-  let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-  currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
-    console.info('Succeeded in setting AVQueueItems.');
-  });
-}
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = await image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+let queueItemDescription_1: avSession.AVMediaDescription = {
+  assetId: '001',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage : imagePixel,
+  extras: {extras:'any'}
+};
+let queueItem_1: avSession.AVQueueItem = {
+  itemId: 1,
+  description: queueItemDescription_1
+} as avSession.AVQueueItem;
+let queueItemDescription_2: avSession.AVMediaDescription = {
+  assetId: '002',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: {extras:'any'}
+};
+let queueItem_2: avSession.AVQueueItem = {
+  itemId: 2,
+  description: queueItemDescription_2
+} as avSession.AVQueueItem;
+let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
+  console.info('Succeeded in setting AVQueueItems.');
+});
 ```
 
 ## setAVQueueItems<sup>10+</sup>
@@ -901,61 +823,43 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 // Index.ets
 import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
-import { avSession } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-interface ExtrasType {
-  extras: string;
-}
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-    }
+let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+let imageSource = await image.createImageSource(value.buffer);
+let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
+let queueItemDescription_1: avSession.AVMediaDescription = {
+  assetId: '001',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: { extras: 'any' }
+};
+let queueItem_1: avSession.AVQueueItem = {
+  itemId: 1,
+  description: queueItemDescription_1
+};
+let queueItemDescription_2: avSession.AVMediaDescription = {
+  assetId: '002',
+  title: 'music_name',
+  subtitle: 'music_sub_name',
+  description: 'music_description',
+  mediaImage: imagePixel,
+  extras: { extras: 'any' }
+};
+let queueItem_2: avSession.AVQueueItem = {
+  itemId: 2,
+  description: queueItemDescription_2
+};
+let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set AVQueueItems, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
-
-let currentAVSession: avSession.AVSession;
-
-async function setAVQueueItems() {
-  let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
-  let imageSource = await image.createImageSource(value.buffer);
-  let imagePixel = await imageSource.createPixelMap({ desiredSize: { width: 150, height: 150 } });
-  let queueItemDescription_1: avSession.AVMediaDescription = {
-    assetId: '001',
-    title: 'music_name',
-    subtitle: 'music_sub_name',
-    description: 'music_description',
-    mediaImage: imagePixel,
-    extras: { extras: 'any' }
-  };
-  let queueItem_1: avSession.AVQueueItem = {
-    itemId: 1,
-    description: queueItemDescription_1
-  };
-  let queueItemDescription_2: avSession.AVMediaDescription = {
-    assetId: '002',
-    title: 'music_name',
-    subtitle: 'music_sub_name',
-    description: 'music_description',
-    mediaImage: imagePixel,
-    extras: { extras: 'any' }
-  };
-  let queueItem_2: avSession.AVQueueItem = {
-    itemId: 2,
-    description: queueItemDescription_2
-  };
-  let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-  currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to set AVQueueItems, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in setting AVQueueItems.');
-  });
-}
+  console.info('Succeeded in setting AVQueueItems.');
+});
 ```
 
 ## setAVQueueTitle<sup>10+</sup>
@@ -1074,41 +978,9 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(() => {
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`Failed to create AV session, code: ${err.code}, message: ${err.message}`);
-                return;
-              }
-              currentAVSession = data;
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}).then(() => {
-                    console.info('Succeeded in setting extras.');
-                  })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => {
+  console.info('Succeeded in setting extras.');
+});
 ```
 
 ## setExtras<sup>10+</sup>
@@ -1139,45 +1011,15 @@ setExtras(extras:{[key: string]: Object}, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`Failed to create AV session, code: ${err.code}, message: ${err.message}`);
-                return;
-              }
-              currentAVSession = data;
-              if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
-                  if (err) {
-                    console.error(`Failed to set extras, code: ${err.code}, message: ${err.message}`);
-                    return;
-                  }
-                  console.info('Succeeded in setting extras.');
-                })
-              }
-            });
-          })
-      }
-    .width('100%')
-    .height('100%')
+currentAVSession.setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to set extras, code: ${err.code}, message: ${err.message}`);
+    return;
   }
-}
+  console.info('Succeeded in setting extras.');
+})
 ```
 
 ## sendCustomData<sup>20+</sup>
@@ -1215,41 +1057,9 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() { 
-    Column() {
-        Text(this.message)
-          .onClick(()=>{
-            let currentAVSession: avSession.AVSession | undefined = undefined;
-            let tag = "createNewSession";
-            let context: Context = this.getUIContext().getHostContext() as Context;
-
-            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-              if (err) {
-                console.error(`Failed to create AV session, code: ${err.code}, message: ${err.message}`);
-                return;
-              }
-              currentAVSession = data;
-            });
-            if (currentAVSession !== undefined) {
-              (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
-                  console.info('Succeeded in sending custom data.');
-              })
-            }
-          })
-      }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.sendCustomData({customData : "This is custom data"}).then(() => {
+  console.info('Succeeded in sending custom data.');
+});
 ```
 ## enableDesktopLyric<sup>23+</sup>
 
@@ -1473,15 +1283,12 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 **示例：**
 
 ```ts
-if (currentAVSession !== undefined) {
-  (currentAVSession as avSession.AVSession).setDesktopLyricState({extras : "This is custom media packet"}, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to set extras, code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-  console.info('Succeeded in setting extras.');
-  })
-}
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+currentAVSession.setDesktopLyricState(state).then(() => {
+  console.info('Succeeded in setting desktop lyric state.');
+})
 ```
 
 ## getDesktopLyricState<sup>23+</sup>
@@ -1623,41 +1430,10 @@ setBackgroundPlayMode(mode: BackgroundPlayMode): Promise\<void>
 
 **示例：**
 ```ts
-// Index.ets
-import { BusinessError } from '@kit.BasicServicesKit';
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              currentAVSession = data;
-            }
-          });
-          if (currentAVSession !== undefined) {
-            try {
-              (currentAVSession as avSession.AVSession).setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
-            } catch (err) {
-              console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
-            }
-          }
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
+try {
+  currentAVSession.setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
+} catch (err) {
+  console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -2910,40 +2686,9 @@ on(type: 'commonCommand', callback: (command :string, args:{[key: string]: Objec
 **示例：**
 
 ```ts
-// Index.ets
-import { avSession } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`Failed to create AV session, code: ${err.code}, message: ${err.message}`);
-              return;
-            }
-            currentAVSession = data;
-          });
-          if (currentAVSession !== undefined) {
-                (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
-                    console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
-                });
-              }
-            });
-        }
-    .width('100%')
-    .height('100%')
-  }
-}
+currentAVSession.on('commonCommand', (commonCommand, args) => {
+  console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
+});
 ```
 
 ## off('play')<sup>10+</sup>
