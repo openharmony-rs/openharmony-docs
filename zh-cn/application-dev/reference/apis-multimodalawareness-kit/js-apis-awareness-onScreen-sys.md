@@ -609,7 +609,7 @@ try {
 import onScreen from "@ohos.multimodalAwareness.onScreen";
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
-    'UiTree	',
+    'UiTree',
   ]
 }
 try {
