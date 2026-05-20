@@ -29,11 +29,33 @@
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. 获取图片。
+2. （可选）查询设备解码能力。
+
+   部分图片格式的解码能力依赖于设备硬件，解码前可先查询设备支持的解码格式列表：
+
+   <!-- @[get_supportedFormats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
+   
+   ``` TypeScript
+   // 获取当前设备支持的解码格式列表。
+   export function getSupportedFormats(): string[] {
+     let formats = image.getImageSourceSupportedFormats();
+     console.info('Supported formats: ' + formats);
+     return formats;
+   }
+   
+   // 检查指定格式是否支持解码。
+   export function isFormatSupported(format: string): boolean {
+     let formats = image.getImageSourceSupportedFormats();
+     return formats.includes(format);
+   }
+   ```
+
+3. 获取图片。
+
    - 方法一：通过沙箱路径直接获取。该方法仅适用于应用沙箱中的图片。更多细节请参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
      
      <!-- @[get_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
@@ -63,7 +85,7 @@
      }
      ```
       
-   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[getRawFileContent](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)。该方法需要导入\@kit.LocalizationKit模块。
 
      <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -84,7 +106,7 @@
      }
      ```
       
-   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)。该方法需要导入\@kit.LocalizationKit模块。
    
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -102,7 +124,7 @@
      }
      ```
    
-3. 创建ImageSource实例。
+4. 创建ImageSource实例。
 
    - 方法一：通过沙箱路径创建ImageSource。沙箱路径可以通过步骤2的方法一获取。
 
@@ -138,7 +160,7 @@
      const imageSource: image.ImageSource = image.createImageSource(rawFileDescriptor);
      ```
 
-4. 设置解码参数DecodingOptions，解码获取pixelMap图片对象。
+5. 设置解码参数DecodingOptions，解码获取pixelMap图片对象。
 
    配置解码选项参数进行解码：
 
@@ -180,7 +202,7 @@
       
    解码完成，获取到pixelMap对象后，可以进行后续[图片处理](image-transformation.md)。
    
-5. 释放pixelMap和imageSource。
+6. 释放pixelMap和imageSource。
 
    确认pixelMap和imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
@@ -198,6 +220,13 @@
    > **补充说明：**
    > 1. 释放imageSource的合适时机：createPixelMap执行完成，成功获取pixelMap后，如果确定不再使用imageSource的其他方法，可以手动释放imageSource。由于解码得到的pixelMap是一个独立的实例，imageSource的释放不会导致pixelMap不可用。
    > 2. 释放pixelMap的合适时机：如果使用系统的[Image组件](../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)进行图片显示，无需手动释放，Image组件会自动管理传递给它的pixelMap；如果应用自行处理pixelMap，则推荐在页面切换、应用退后台等场景下手动释放老页面pixelMap；在内存资源紧张的场景，推荐释放除当前页面外其他不可见页面的PixelMap。
+
+## 进阶主题
+
+- **内存优化解码**：使用DMA内存和YUV像素格式降低内存占用、提升解码性能，参见[图片解码内存优化](image-allocator-type.md)。
+- **区域解码**：解码图片指定区域，适用于大图局部查看和裁剪预览场景，参见[图片区域解码与下采样](image-region-and-downsampling.md)。
+- **下采样解码**：解码时直接缩放目标尺寸，避免解码后缩放的性能开销，适用于缩略图生成场景，参见[图片区域解码与下采样](image-region-and-downsampling.md)。
+- **多图对象解码**：解码包含主图和辅助图的Picture对象，适用于HDR图片和HEIF专业格式处理，参见[使用ImageSource完成多图对象解码](image-picture-decoding.md)。
 
 ## 相关实例
 
