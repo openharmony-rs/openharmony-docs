@@ -54,18 +54,6 @@
    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr: inputMethodEngine.EditorAttribute) => {
      console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
      if (attr.immersiveMode == 1) {
-   <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
-   
-   ``` TypeScript
-   // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
-   inputMethodEngine.getKeyboardDelegate()?.onEditorAttributeChanged((attr: inputMethodEngine.EditorAttribute) => {
-     console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
-     if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.IMMERSIVE) {
-       this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
-       console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
-     }
-   })
-   ```
        console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
      }
    })
@@ -86,24 +74,10 @@
    })
    ```
 
-
 3. 输入法应用[设置沉浸模式](../reference/apis-ime-kit/js-apis-inputmethodengine.md#setimmersivemode15)。 
    - IMMERSIVE表示沉浸模式由输入法应用决定。
    - 输入法应用不能设置IMMERSIVE模式给输入法框架。
    - 如果输入法应用收到前台应用期望的沉浸模式为IMMERSIVE，建议输入法应用根据当前系统所处颜色模式，将最终沉浸模式设置为浅色沉浸模式（LIGHT_IMMERSIVE）或深色沉浸模式（DARK_IMMERSIVE）。
-
-   <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
-   
-   ``` TypeScript
-   // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
-   inputMethodEngine.getKeyboardDelegate()?.onEditorAttributeChanged((attr: inputMethodEngine.EditorAttribute) => {
-     console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
-     if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.IMMERSIVE) {
-       this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
-       console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
-     }
-   })
-   ```
 
    ArkTS-Dyn示例：
 
