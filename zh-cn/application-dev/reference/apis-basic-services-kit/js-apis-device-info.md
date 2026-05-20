@@ -351,21 +351,19 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 // Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
 if (deviceInfo.apiAvailable("26.0.0")) {
-   ...
+   // 需要版本隔离的方法
 }
 
 
 // Check API 5.0.1 (Distribution OS version, API 26-)
 if (deviceInfo.apiAvailable("5.0.1")) {
-   ...
+   // 需要版本隔离的方法
 }
 
 
-import { deviceInfo } from '@kit.BasicServicesKit';
-
 // Check API 13 (OpenHarmony SDK version, API 26-)
 if (deviceInfo.apiAvailable(13)) {
-   ...
+   // 需要版本隔离的方法
 }
 
 ```
