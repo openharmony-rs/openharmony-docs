@@ -619,12 +619,9 @@ struct Test {
 
 ![zh-cn_image_0000001174422898](figures/zh-cn_image_0000001174422898.png)
 
-
 ### transformPoint
 
-ArkTS-Dyn: transformPoint(options: [number, number]): [number, number]
-
-ArkTS-Sta: transformPoint(options: [double, double]): [double, double]
+transformPoint(options: [number, number]): [number, number]
 
 Matrix的坐标点转换函数，可以将当前的变换效果作用到一个坐标点上。
 
