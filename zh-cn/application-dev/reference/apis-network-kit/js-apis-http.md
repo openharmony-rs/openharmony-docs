@@ -1360,6 +1360,7 @@ httpRequest.off("dataSendProgress");
 | reuseConnections | boolean | 否 | 是 | HTTP请求是否复用连接。默认值为true，表示复用已有的连接；设置为false时，每次请求将建立新的连接，不再复用已有连接。本字段可与inactivityMs字段搭配使用，自定义连接超时关闭时间。<br />- 连接复用是指在完成一次HTTP请求后，底层的TCP连接不会被立即关闭，而是保持在连接池中，后续的HTTP请求如果目标地址相同，可以重用该连接，从而减少TCP握手和TLS握手的开销，提高性能。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | inactivityMs | number | 否 | 是 | 连接池中的连接最大空闲时间，超过该时间后连接将被关闭。单位为毫秒（ms），默认配置值为118秒。系统内部比较时间时会先计算连接空闲时间的差值，然后向下取整到秒，再与配置的值进行比较。<br/>- 取值范围是(0, 2147483647]，传入小于等于0的数值时系统使用默认值118秒。当reuseConnections配置为false时，该参数不生效。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | usingSocks5Proxy | [Socks5Proxy](#socks5proxy) | 否 | 是 | SOCKS5代理配置，该项不配置时不启动SOCKS5代理。<br />当该项被正确配置时，如果同时配置了usingProxy，usingProxy不生效。<br />**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| enablePartialChain | boolean | 否 | 是 | 是否允许在证书链验证时使用信任库中的中间CA证书作为信任锚点。设置为false时，证书链必须逐级验证至受信任的根CA证书。设置为true时，若信任库中存在中间CA证书，则证书链验证到该中间CA时即可视为通过，无需继续追溯至根CA证书。当[SslType](#ssltype20)使用默认值或设置为TLS时，默认值为true；当[SslType](#ssltype20)设置为TLCP时，默认值为false。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## RequestMethod
 
