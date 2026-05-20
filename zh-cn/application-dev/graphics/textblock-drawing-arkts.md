@@ -177,7 +177,7 @@ canvas.detachBrush();
 <!-- @[arkts_graphics_draw_theme_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
 
 ``` TypeScript
-// 创建线性渐变着色器
+// 创建字型对象
 const font = new drawing.Font();
 // 设置文字大小
 font.setSize(100);
