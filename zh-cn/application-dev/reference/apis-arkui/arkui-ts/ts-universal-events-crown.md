@@ -66,9 +66,9 @@ ArkTS-Sta: onDigitalCrown(handler: Callback&lt;CrownEvent&gt; | undefined): this
 
 | 名称                   | 类型       | 只读    |  可选   |  说明                                                       |
 | --------------------- | ------------- | ---------- |------------ |-------------------------------------- |
-| timestamp         | ArkTS-Dyn: number<br/>ArkTS-Sta: long   |  否     | 否    |时间戳。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                                  |
-| angularVelocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |旋转角速度，每秒转的角度(°/s)。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                   |
-| degree          | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |相对旋转角度。<br>单位：度。<br>取值范围:[-360, 360]。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23     |
+| timestamp         | ArkTS-Dyn: number<br/>ArkTS-Sta: long   |  否     | 否    |时间戳。触发事件时距离系统启动的时间间隔。<br>单位：ns <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                                  |
+| angularVelocity | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |旋转角速度。<br>单位：deg/s <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23                   |
+| degree          | ArkTS-Dyn: number<br/>ArkTS-Sta: double   |  否     | 否    |相对旋转角度。<br>单位：deg <br>取值范围:[-360, 360]。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23     |
 | action          | [CrownAction](ts-appendix-enums.md#crownaction18)   |  否     | 否    |表冠动作。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23  |
 | stopPropagation | Callback\<void>    |  否      | 否    |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 18                         |
 
