@@ -1,7 +1,7 @@
 # SubHeaderV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -9,7 +9,7 @@
 
 The component is positioned at the top of list items or content sections, organizing lists or content into distinct groups. The subheader text summarizes the content within each respective section.
 
-This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now more easily manage subheader data and states with greater flexibility, leading to faster UI updates.
+This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now manage subheader data and states with greater flexibility, leading to faster UI updates.
 
 
 
@@ -51,7 +51,7 @@ The component represents a subheader that signifies the top of a list or the beg
 | -------- |---------------------------------------------------------| -------- | -------- |----------------------------------------|
 | icon| [SubHeaderV2IconType](#subheaderv2icontype)             | No| @Param | Icon.<br>Default value: **undefined**<br>**icon** takes effect only when **secondaryTitle** is used for **title**.             |
 | title| [SubHeaderV2Title](#subheaderv2title)                   | No| @Param| Title of the subheader.<br>Default value: **undefined**             |
-| select| [SubHeaderV2Select](#subheaderv2select)                 | No| @Param | Content and events for selection.<br>Default value: **undefined**      |
+| select| [SubHeaderV2Select](#subheaderv2select)                 | No| @Param | Selection content and associated events.<br>Default value: **undefined**      |
 | operationType | [SubHeaderV2OperationType](#subheaderv2operationtype)   | No| @Param| Style of elements in the operation area.<br>Default value: **SubHeaderV2OperationType.BUTTON**|
 | operationItems | [SubHeaderV2OperationItem](#subheaderv2operationitem)[] | No| @Param| Items in the operation area.<br>Default value: **undefined**           |
 | titleBuilder | [SubHeaderV2TitleBuilder](#subheaderv2titlebuilder)                            | No| @BuilderParam | Custom content for the title area.<br>Default value: **() => void**         |
@@ -74,7 +74,7 @@ Defines the union type for the icon content.
 | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | Symbol type for defining symbol icons.|
 
 ## SubHeaderV2Title
-Defines the title settings for the subheader.
+Defines title configurations for the subheader.
 
 **Decorator**: @ObservedV2
 
@@ -86,11 +86,12 @@ Defines the title settings for the subheader.
 
 | Name| Type| Read-Only| Optional| Description                          |
 | -------- | -------- |---|----|------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>When **primaryTitle**, **secondaryTitle**, and **icon** are used simultaneously in [SubHeaderV2](#subheaderv2-1), **primaryTitle** does not take effect.<br>Default value: **undefined**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.                    |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>When **primaryTitle**, **secondaryTitle**, and **icon** are all used in [SubHeaderV2](#subheaderv2-1), **primaryTitle** does not take effect.<br>Default value: **undefined**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.                    |
 | secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Secondary title.<br>Default value: **undefined**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.                    |
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Customized content to be read in the title.<br>Default value: **undefined**<br>If the value is **undefined**, the title content displayed by the component is read by default.<br>Decorator: @Trace<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Customized content to be read in the title.<br>Default value: **undefined**<br>If the value is **undefined**, the title content displayed by the component is read by default.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| id<sup>24+</sup>|  string  | No| Yes | Title ID. Set this parameter when you need to set an ID for the title. By default, this parameter is not specified.<br>Default value: **undefined**, indicating that no title ID is set.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ### constructor
 
@@ -124,17 +125,16 @@ Defines the options for initializing a **SubHeaderV2Title** object.
 | secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Secondary title.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                   |
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Customized content to be read in the title.<br>Default value: **undefined**<br>If the value is **undefined**, the title content displayed by the component is read by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Customized content to be read in the title.<br>Default value: **undefined**<br>If the value is **undefined**, the title content displayed by the component is read by default.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| id<sup>24+</sup>|   string | No| Yes | Title ID. Set this parameter when you need to set an ID for the title. By default, this parameter is not specified.<br>Default value: **undefined**, indicating that no title ID is set.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## SubHeaderV2Select
 
-Defines the content and events for selection.
+Defines selection content and associated events.
 
 **Decorator**: @ObservedV2
 
 ### Properties
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,11 +142,12 @@ Defines the content and events for selection.
 
 | Name| Type                                                              | Read-Only| Optional| Description                                                                       |
 | -------- |------------------------------------------------------------------|----|----|---------------------------------------------------------------------------|
-| options | [SelectOption](ts-basic-components-select.md#selectoption)[] |  No | No | Options for the drop-down list box.<br>Decorator: @Trace                                                                  |
-| selectedIndex | number                                                           |  No | Yes | Index of the initially selected item in the drop-down list box.<br>The index of the first item is 0.<br>If this property is not set, the default value **-1** is used, indicating that no item is selected.<br>Decorator: @Trace|
-| selectedContent | [ResourceStr](ts-types.md#resourcestr)                         |  No | Yes | Text content of the drop-down button. Default value: **''**. The Resource type is supported since API version 20.<br>Decorator: @Trace                            |
-| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  No | Yes | Callback invoked when an item in the drop-down list box is selected.<br>Default value: **undefined**<br>Decorator: @Trace                                              |
-| defaultFocus | boolean |  No | Yes |Whether the drop-down button is the default focus.<br>**true**: The drop-down button is the default focus.<br>**false**: The drop-down button is not the default focus.<br>Default value: **false**<br>Decorator: @Trace                                 |
+| options | [SelectOption](ts-basic-components-select.md#selectoption)[] |  No | No | Options for the drop-down list box.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.         |
+| selectedIndex | number       |  No | Yes | Index of the initially selected item in the drop-down list box.<br>The index of the first item is 0.<br>If this property is not set, the default value **-1** is used, indicating that no item is selected.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| selectedContent | [ResourceStr](ts-types.md#resourcestr)                         |  No | Yes | Text content of the drop-down button. Default value: **''**. The Resource type is supported since API version 20.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
+| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  No | Yes | Callback invoked when an item in the drop-down list box is selected.<br>Default value: **undefined**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
+| defaultFocus | boolean |  No | Yes |Whether the drop-down button is the default focus.<br>**true**: The drop-down button is the default focus.<br>**false**: The drop-down button is not the default focus.<br>Default value: **false**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
+| id<sup>24+</sup> | string |  No | Yes |Drop-down button ID. Set this parameter when you need to set an ID for the drop-down button. By default, this parameter is not specified.<br>Default value: **undefined**, indicating that no drop-down button ID is set.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ### constructor
 
@@ -164,13 +165,11 @@ A constructor used to create a **SubHeaderV2SelectOptions** object.
 
 | Name   | Type                           | Mandatory| Description            |
 | --------- |-------------------------------| ------ | ------------------ |
-| options | [SubHeaderV2SelectOptions](#subheaderv2selectoptions) | Yes  | Options of the drop-down list box.|
+| options | [SubHeaderV2SelectOptions](#subheaderv2selectoptions) | Yes  | Options for the drop-down list box.|
 
 ## SubHeaderV2SelectOptions
 
 Defines the options for initializing a **SubHeaderV2Select** object.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,11 +177,12 @@ Defines the options for initializing a **SubHeaderV2Select** object.
 
 | Name| Type                                                              | Read-Only| Optional| Description                                                                       |
 | -------- |------------------------------------------------------------------|----|----|---------------------------------------------------------------------------| 
-| options | [SelectOption](ts-basic-components-select.md#selectoption)[] |  No | No | Options for the drop-down list box.                                                                  |
-| selectedIndex | number                                                           |  No | Yes | Index of the initially selected item in the drop-down list box.<br>The index of the first item is 0.<br>If this property is not set, the default value **-1** is used, indicating that no item is selected.|
-| selectedContent | [ResourceStr](ts-types.md#resourcestr)                                                           |  No | Yes | Text content of the drop-down button. Default value: **''**. The Resource type is supported since API version 20.                                                     |
-| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          |  No | Yes | Callback invoked when an item in the drop-down list box is selected.<br>Default value: **undefined**                                               |
-| defaultFocus | boolean |  No | Yes | Whether the drop-down button is the default focus.<br>**true**: The drop-down button is the default focus.<br>**false**: The drop-down button is not the default focus.<br>Default value: **false**                                 |
+| options | [SelectOption](ts-basic-components-select.md#selectoption)[] |  No | No | Options for the drop-down list box.<br>**Atomic service API**: This API can be used in atomic services since API version 18.          |
+| selectedIndex | number        |  No | Yes | Index of the initially selected item in the drop-down list box.<br>The index of the first item is 0.<br>If this property is not set, the default value **-1** is used, indicating that no item is selected.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| selectedContent | [ResourceStr](ts-types.md#resourcestr)       |  No | Yes | Text content of the drop-down button. Default value: **''**. The Resource type is supported since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          |  No | Yes | Callback invoked when an item in the drop-down list box is selected.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.          |
+| defaultFocus | boolean |  No | Yes | Whether the drop-down button is the default focus.<br>**true**: The drop-down button is the default focus.<br>**false**: The drop-down button is not the default focus.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| id<sup>24+</sup> | string |  No | Yes | Drop-down button ID. Set this parameter when you need to set an ID for the drop-down button. By default, this parameter is not specified.<br>Default value: **undefined**, indicating that no drop-down button ID is set.<br>**Atomic service API**: This API can be used in atomic services since API version 24.   |
 
 ## SubHeaderV2SelectOnSelect
 
@@ -205,7 +205,7 @@ Defines the callback invoked when an item in the drop-down list box is selected.
 
 ## SubHeaderV2OperationType
 
-Defines the style of elements in the operation area.
+Enumerates styles for elements in the operation area.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -239,13 +239,11 @@ Defines the union type for the content of elements in the operation area.
 
 ## SubHeaderV2OperationItem
 
-Represents an item in the operation area.
+Defines an item in the operation area.
 
 **Decorator**: @ObservedV2
 
 ### Properties
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,12 +251,13 @@ Represents an item in the operation area.
 
 | Name| Type| Read-Only| Optional| Description                                                                                                                                                                                                                                             |
 | -------- | -------- |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content |  [SubHeaderV2OperationItemType](#subheaderv2operationitemtype)  | No| No| Content of the item in the operation area.<br>Decorator: @Trace                                                                                                                                                                                                                                       |
-| action | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)| No| Yes| Event triggered when the item is operated. Default value: **() => void**.<br>Decorator: @Trace                                                                                                                                                                                                                          |
-| accessibilityText |[ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the icon on the right side of the subheader.<br>Default value: **undefined**<br>Decorator: @Trace                                                                                                                                                                                                          |
-| accessibilityLevel | string | No| Yes| Accessibility level of the icon on the right side of the subheader.<br>The options are as follows:<br>**"auto"**: The icon's recognizability by accessibility services is determined by the accessibility grouping service and ArkUI.<br>**"yes"**: The icon can be recognized by accessibility services.<br>**"no"**: The icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.<br>Default value: **"yes"**<br>Decorator: @Trace| 
-| accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility description.<br>Default value: **"Double-tap to activate"**<br>Decorator: @Trace                                                                                                                                                                                            |
-| defaultFocus | boolean | No| Yes| Whether to receive default focus.<br>**true**: Receive default focus.<br>**false**: Do not receive default focus.<br>Default value: **false**<br>Decorator: @Trace                                                                                                                                                                 |
+| content |  [SubHeaderV2OperationItemType](#subheaderv2operationitemtype)  | No| No| Content of the item in the operation area.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.            |
+| action | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)| No| Yes| Event triggered when the item is operated. Default value: **() => void**.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
+| accessibilityText |[ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the icon on the right side of the subheader.<br>Default value: **undefined**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
+| accessibilityLevel | string | No| Yes| Accessibility level of the icon on the right side of the subheader.<br>The options are as follows:<br>**"auto"**: The icon's recognizability by accessibility services is determined by the accessibility grouping service and ArkUI.<br>**"yes"**: The icon can be recognized by accessibility services.<br>**"no"**: The icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.<br>Default value: **"yes"**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.| 
+| accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility description.<br>Default value: **"Double-tap to activate"**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.        |
+| defaultFocus | boolean | No| Yes| Whether to receive default focus.<br>**true**: Receive default focus.<br>**false**: Do not receive default focus.<br>Default value: **false**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.      |
+| id<sup>24+</sup> | string | No| Yes| Button ID. Set this parameter when you need to set an ID for the button. By default, this parameter is not specified.<br>Default value: **undefined**, indicating that no button ID is set.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 24.  |
 
 ### constructor
 
@@ -295,20 +294,19 @@ Defines the callback for items in the operation area.
 
 Defines the options for initializing a **SubHeaderV2OperationItem** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name                      | Type                                         | Read-Only| Optional| Description                                                                                                                                                                                                                                             |
-|--------------------------|---------------------------------------------|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | No| No| Content of the item in the operation area.                |
-| action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | No| Yes| Event triggered when the item is operated. Default value: **() => void**.                                                                                                                                                                                                                         |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | No| Yes| Accessibility text of the icon on the right side of the subheader.<br>Default value: **undefined**                                                                                                                                                                                                           |
-| accessibilityLevel       | string | No| Yes| Accessibility level of the icon on the right side of the subheader.<br>The options are as follows:<br>**"auto"**: The icon's recognizability by accessibility services is determined by the accessibility grouping service and ArkUI.<br>**"yes"**: The icon can be recognized by accessibility services.<br>**"no"**: The icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.<br>Default value: **"yes"**| 
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | No| Yes| Accessibility description.<br>Default value: **"Double-tap to activate"**                                                                                                                                                                                            |
-| defaultFocus | boolean | No| Yes| Whether to receive default focus.<br>**true**: Receive default focus.<br>**false**: Do not receive default focus.<br>Default value: **false**                                                                                                                                                                 |
+| Name                    | Type                    | Read-Only| Optional| Description                       |
+|--------------------------|-------------------------|---|---|-----------------------------|
+| content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | No| No| Content of the item in the operation area.<br>**Atomic service API**: This API can be used in atomic services since API version 18.      |
+| action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | No| Yes| Event triggered when the item is operated. Default value: **() => void**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.            |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | No| Yes| Accessibility text of the icon on the right side of the subheader.<br>Default value: **undefined**<br>**Atomic service API**: This API can be used in atomic services since API version 18.               |
+| accessibilityLevel       | string | No| Yes| Accessibility level of the icon on the right side of the subheader.<br>The options are as follows:<br>**"auto"**: The icon's recognizability by accessibility services is determined by the accessibility grouping service and ArkUI.<br>**"yes"**: The icon can be recognized by accessibility services.<br>**"no"**: The icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.<br>Default value: **"yes"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.| 
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | No| Yes| Accessibility description.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.             |
+| defaultFocus | boolean | No| Yes| Whether to receive default focus.<br>**true**: Receive default focus.<br>**false**: Do not receive default focus.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18.            |
+| id<sup>24+</sup> | string | No| Yes| Button ID. Set this parameter when you need to set an ID for the button. By default, this parameter is not specified.<br>Default value: **undefined**, indicating that no button ID is set.<br>**Atomic service API**: This API can be used in atomic services since API version 24.    |
 
 ## SubHeaderV2TitleBuilder
 
@@ -386,7 +384,7 @@ struct SubHeaderExample {
 
 ![Subheader 1](figures/en-us_image_subheader_example01.png)
 
-### Example 2: Implementing a Double-Line Text Content-rich Subheader
+### Example 2: Implementing a Double-Line Text Content Subheader
 This example showcases a subheader with a primary title and a secondary title on the left, and a text button with a right arrow on the right.
 
 ```ts
@@ -437,7 +435,7 @@ struct SubHeaderExample {
 
 ![Subheader 2](figures/en-us_image_subheader_example02.png)
 
-### Example 3: Implementing a Spinner Content-rich Subheader
+### Example 3: Implementing a Spinner Content Subheader
 This example showcases a subheader with content and events for selection on the left, and an icon-attached button on the right.
 
 ```ts
