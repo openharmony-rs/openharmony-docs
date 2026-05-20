@@ -38,7 +38,7 @@ isAutoDeviceSwitchSupported(): boolean
 | boolean               | 是否支持自动切换镜头，true为支持，false为不支持。 |
 
  **错误码：**
- 	 
+ 
 以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
  
 | 错误码ID                                             | 错误信息          |
