@@ -37,6 +37,18 @@
    ArkTS-Sta示例：
 
    <!-- @[input_case_input_switchInputMethodgetInputMethods](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/Submenu.ets) -->
+   
+   ``` TypeScript
+   async switchCurrentInputMethodSubtype(item: InputMethodSubtype) {
+     try {
+       await inputMethod.switchCurrentInputMethodSubtype(item);
+       this.currentInputMethodSubtype = inputMethod.getCurrentInputMethodSubtype().id;
+     } catch (err) {
+       console.error(`SwitchCurrentInputMethodSubtype error: ${err.code} ${err.message}`);
+       let error: BusinessError = err as BusinessError;
+     }
+   }
+   ```
 
 
 2. 输入法应用中注册子类型变化事件，根据不同子类型加载不同的输入界面。
