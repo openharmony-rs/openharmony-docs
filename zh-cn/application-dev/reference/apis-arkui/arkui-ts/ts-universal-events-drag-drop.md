@@ -1129,7 +1129,7 @@ ArkTS-Sta: type SpringLoadingContext = dragController.SpringLoadingContext
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| ArkTS-Dyn: [SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)<br/>ArkTS-Sta: dragController.SpringLoadingContext | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，以便应用程序能访问拖拽状态。|
+| ArkTS-Dyn: [SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20)<br/>ArkTS-Sta: dragController.[SpringLoadingContext](../js-apis-arkui-dragController.md#springloadingcontext20) | 定义回调上下文信息的类，用于在悬停检测回调中传递给应用程序，以便应用程序能访问拖拽状态。|
 
 ## 示例
 
