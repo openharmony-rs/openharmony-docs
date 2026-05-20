@@ -278,7 +278,7 @@ ArkTS-Sta: type DrawContext = _DrawContext
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| ArkTS-Dyn: [DrawContext](../js-apis-arkui-graphics.md#drawcontext)<br/>ArkTS-Sta: DrawContext | 图形绘制上下文。 |
+| ArkTS-Dyn: [DrawContext](../js-apis-arkui-graphics.md#drawcontext)<br/>ArkTS-Sta: \_[DrawContext](../js-apis-arkui-graphics.md#drawcontext) | 图形绘制上下文。 |
 
 ## 示例
 
