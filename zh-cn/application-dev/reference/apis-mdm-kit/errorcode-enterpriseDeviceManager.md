@@ -405,17 +405,25 @@ Failed to install the application.
 
 **可能原因**
 
-该错误码表示安装企业应用失败，可能原因如下。
+该错误码表示安装企业应用失败。
+
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，可能原因如下。
 1. 应用安装路径为空、不存在、无效路径。
 2. 安装多个不同包名的应用。
 3. 当安装参数flag为0时再次安装已存在的应用。
 4. 传入无效用户id。
 
+<!--RP3--><!--RP3End-->
+
 **处理步骤**
+
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，处理步骤如下。
 
 1. 检查应用安装路径是有效的安装路径。
 2. 检查安装参数是有效的安装参数。
 3. 检查安装的是同一应用。
+
+<!--RP4--><!--RP4End-->
 
 ## 9201003 创建账号失败
 

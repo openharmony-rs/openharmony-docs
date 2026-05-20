@@ -1,9 +1,9 @@
 # Ability Kit（程序框架服务）<!--ability-api-->
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @wanghang-->
+<!--Owner: @wanghang904; @dsz2025-->
 <!--Designer: @hanfeng6; @lihaitao-->
-<!--Tester: @kongjing2-->
+<!--Tester: @kongjing2; @dsz2025-->
 <!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--ability-arkts-->
@@ -72,6 +72,7 @@
     - [@ohos.app.ability.UIServiceExtensionAbility (UIServiceExtensionAbility)(系统接口)](js-apis-app-ability-uiServiceExtensionAbility-sys.md)
     - [@ohos.app.ability.verticalPanelManager (垂域面板管理)(系统接口)](js-apis-app-ability-verticalpanelmanager-sys.md)
     - [@ohos.app.ability.UIExtensionContentSession (带界面扩展能力的界面操作类)(系统接口)](js-apis-app-ability-uiExtensionContentSession-sys.md)
+    - [@ohos.app.cli.cliManager (CLI工具管理)(系统接口)](js-apis-app-cli-cliManager-sys.md)
     <!--DelEnd-->
      - continuation<!--stage-model-continuation-->
        - [continuationExtraParams](js-apis-continuation-continuationExtraParams.md)

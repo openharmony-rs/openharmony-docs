@@ -79,7 +79,7 @@ getPixelMap(): image.PixelMap
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br/>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -108,7 +108,7 @@ loadSync(): DrawableDescriptorLoadedResult
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br/>适用版本：26.0.0+ |
 
 ```ts
 import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
@@ -147,7 +147,7 @@ load(): Promise\<DrawableDescriptorLoadedResult>
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br/>适用版本：26.0.0+ |
 
 ```ts
 import {
@@ -177,6 +177,8 @@ release(): void
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -218,6 +220,8 @@ isReleased(): boolean
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -429,7 +433,7 @@ getForeground(): DrawableDescriptor
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br/>适用版本：26.0.0+ |
 
 **示例：**
 ```ts
@@ -496,7 +500,7 @@ getBackground(): DrawableDescriptor
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br/>适用版本：26.0.0+ |
 
 **示例：**
 ```ts
@@ -558,7 +562,7 @@ getMask(): DrawableDescriptor
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br/>适用版本：26.0.0+ |
 
 **示例：**
 ```ts
