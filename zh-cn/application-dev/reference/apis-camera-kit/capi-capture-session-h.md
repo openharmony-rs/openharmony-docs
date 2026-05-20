@@ -2997,7 +2997,7 @@ Camera_ErrorCode OH_CaptureSession_GetRAWCaptureZoomRatioRange(const Camera_Capt
 
 | 类型 | 说明 |
 | -- | -- |
-CAMERA_OPERATION_NOT_ALLOWED：操作不允许, 会话或相机状态异常。
+| CAMERA_OPERATION_NOT_ALLOWED | 操作不允许, 会话或相机状态异常。|
 
 ### OH_CaptureSession_IsOISModeSupported()
 
