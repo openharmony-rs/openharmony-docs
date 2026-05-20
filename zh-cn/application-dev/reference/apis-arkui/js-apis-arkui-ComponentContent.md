@@ -31,7 +31,7 @@ import { ComponentContent, ReactiveComponentContent } from '@kit.ArkUI';
 
 ## ComponentContentBase<sup>23+</sup>
 
-继承自[Content](js-apis-arkui-Content.md#content-1)，定义[ComponentContent](#componentcontent)和[ReactiveComponentContent](#reactivecomponentcontent22)的基类。
+继承自[Content](js-apis-arkui-Content.md#content-1)，定义ComponentContent和[ReactiveComponentContent](#reactivecomponentcontent22)的基类。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
