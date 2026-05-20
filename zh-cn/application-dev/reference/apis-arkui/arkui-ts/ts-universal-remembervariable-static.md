@@ -114,8 +114,6 @@ struct Index {
 
 ## MutableVariable\<T\>
 
-interface MutableVariable\<T\>
-
 rememberVariable创建的状态变量类型。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
