@@ -188,7 +188,7 @@
 
 ### 在index.ets文件中调用函数
 
-   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->   
    
    ``` TypeScript
    import testTransientTask from 'libentry.so';
@@ -297,21 +297,21 @@
 2. 点击 `申请短时任务` 按钮，控制台会打印日志，示例如下：
 
    ```txt
-   The return requestId is 1
+   The returned requestId is 1
    ```
 
 3. 点击 `获取剩余时间` 按钮，控制台会打印日志，示例如下：
 
    ```txt
-   The return requestId is 18000
+   The time is 18000
    ```
 4. 点击 `取消短时任务` 按钮，控制台会打印日志，示例如下：
 
    ```txt
-   The ret is 0
+   The return value is 0
    ```
 5. 点击 `获取所有短时任务信息` 按钮，控制台会打印日志，示例如下：
 
    ```txt
-   The ret is {"remainingQuota":600000,"transientTasks":[]}
+   The transientTaskInfo is {"remainingQuota":600000,"transientTasks":[]}
    ```
