@@ -264,7 +264,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          }
          int32_t* referenceIds;
          size_t referenceIdsCount;
-         if (!OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_TRACK_REFERENCE_TYPE, &referenceIds, &referenceIdsCount)) {
+         if (!OH_AVFormat_GetIntBuffer(trackFormat, OH_MD_KEY_REFERENCE_TRACK_IDS, &referenceIds, &referenceIdsCount)) {
             printf("get reference track ids from auxiliary track failed");
          }
          // 根据辅助轨类型处理轨道参考关系。
