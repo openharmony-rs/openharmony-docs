@@ -1655,7 +1655,7 @@ let myParagraphStyle: text.ParagraphStyle = {
 <!-- @[arkts_punctuation_compress_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets) -->
 
 ``` TypeScript
-// 开启行首标点压缩
+// 开启行首标点挤压
 let myParagraphStyle: text.ParagraphStyle = {
   textStyle: myTextStyle,
   compressHeadPunctuation: true
