@@ -165,8 +165,8 @@ struct Index {
 ```
 
  **Worker线程文件** workers/Worker.ets
- 	 
- ```ts
+
+```ts
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
 const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
@@ -197,7 +197,7 @@ workerPort.onmessageerror = (event: MessageEvents) => {
  */
 workerPort.onerror = (event: ErrorEvent) => {
 };
- ```
+```
 
 **Abc页面入口** DynamicPage.ets
 
