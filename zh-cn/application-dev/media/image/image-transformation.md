@@ -12,8 +12,6 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[pixelmap_get_image_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
-
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -44,13 +42,11 @@
 
    原图：
 
-     ![Original drawing](figures/original-drawing.jpeg)
+   ![Original drawing](figures/original-drawing.jpeg)
 
    - 裁剪
 
      ArkTS-Dyn示例：
-
-     <!-- @[pixelmap_crop_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      // x：裁剪起始点横坐标0。
@@ -78,8 +74,6 @@
 
      ArkTS-Dyn示例：
 
-     <!-- @[pixelmap_scale_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
-
      ```ts
      // 宽为原来的0.5。
      // 高为原来的0.5。
@@ -98,15 +92,13 @@
 
      ![zoom](figures/zoom.jpeg)
 
-   - 偏移
+   - 平移
 
      ArkTS-Dyn示例：
 
-     <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
-
      ```ts
-     // 向下偏移100。
-     // 向右偏移100。
+     // 向下平移100。
+     // 向右平移100。
      pixelMap.translate(100, 100);
      ```
 
@@ -115,8 +107,8 @@
      <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Image/PixelMap_Static/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
-     // 向下偏移100。
-     // 向右偏移100。
+     // 向下平移100。
+     // 向右平移100。
      pixelMap.translate(100, 100);
      ```
 
@@ -125,8 +117,6 @@
    - 旋转
 
      ArkTS-Dyn示例：
-
-     <!-- @[pixelmap_rotate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      // 顺时针旋转90°。
@@ -148,8 +138,6 @@
 
      ArkTS-Dyn示例：
 
-     <!-- @[pixelmap_vertical_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
-
      ```ts
      // 垂直翻转。
      pixelMap.flip(false, true);
@@ -167,8 +155,6 @@
      ![Vertical Flip](figures/vertical-flip.jpeg)
 
      ArkTS-Dyn示例：
-
-     <!-- @[pixelmap_horizontal_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      // 水平翻转。
@@ -189,8 +175,6 @@
    - 透明度
 
      ArkTS-Dyn示例：
-
-     <!-- @[pixelmap_change_opacity_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
 
      ```ts
      // 透明度0.5。
