@@ -153,8 +153,8 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | VisibilityState | 可见性状态 | 窗口可见性。0：表示为窗口可见；1：表示为窗口隐藏；2：表示为窗口部分可见。 |
 | Focusable | 是否可获焦 | 窗口获焦能力。true：表示为窗口可以获焦；false：表示为窗口不可获焦。 |
 | DecoStatus | 装饰状态 | 窗口装饰状态。true：表示为窗口装饰已启用（有标题栏等）；false：表示为窗口无装饰。 |
-| IsPrivacyMode | 是否隐私模式 | 窗口隐私模式。true：表示为隐私窗口（截屏显示黑色）；false：表示为正常窗口（可截屏）。 |
-| isSnapshotSkip | 截屏时是否显示该窗口 | 截屏显示标识。0：表示为截屏时显示该窗口内容；1：表示为截屏时不显示该窗口内容（显示为黑色或空白）。 |
+| IsPrivacyMode | 是否隐私模式 | 窗口隐私模式。true：表示为隐私窗口；false：表示为正常窗口。隐私窗口在不同设备上的截屏表现不同，详见[隐私模式](./screenshot-and-privacy-mode.md#规格表现)。 |
+| isSnapshotSkip | 截屏时是否显示该窗口 | 截屏显示标识。0：表示为截屏时显示该窗口内容；1：表示为截屏时不显示该窗口内容。 |
 | WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
 | TouchHotAreas | 触摸热区 | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。 |
 
@@ -178,7 +178,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 - `IsPrivacyMode`为false：未启用隐私模式。
 - `isSnapshotSkip`为0：截屏时显示窗口内容。
 
-解决方案：调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式，截屏时窗口内容将显示为黑色。
+解决方案：调用[setWindowPrivacyMode(true)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式。
 
 **问题4：窗口启动性能慢**
 
@@ -191,68 +191,6 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 **检查字段**：
 - `TouchHotAreas`尺寸异常：触摸热区设置错误。
 - 与WindowRect对比，确认是否正确
-
-### 查看窗口ArkUI渲染信息
-
-**基本命令格式**：
-
-使用 `-w WinId ArkUI option` 参数查看窗口的ArkUI渲染详细信息：
-
-```bash
-hdc shell hidumper -s WindowManagerService -a '-w 13 ArkUI option'
-```
-
-该命令除了输出窗口基础信息，还会额外输出ArkUI渲染相关信息，用于分析UI渲染性能和节点数量等。
-
-**输出示例**：
-```bash
-----------------------------------WindowManagerService----------------------------------
-WindowName: note0
-DisplayId: 0
-WinId: 13
-Pid: 18299
-Type: 1
-Mode: 1
-Flag: 0
-Orientation: 0
-IsStartingWindow: false
-FirstFrameCallbackCalled: 1
-VisibilityState: 2
-Focusable: true
-DecoStatus: true
-IsPrivacyMode: false
-isSnapshotSkip: 0
-WindowRect: [ 0, 0, 720, 1280 ]
-TouchHotAreas: [ 0, 0, 720, 1280 ]
-bundleName: com.ohos.note
-moduleName: default
-LastRequestVsyncTime: 17816965532004
-transactionFlags: [18299,0]
-last vsyncId: 1948
-finishCount: [ ]
-UINodeCount: 159
-```
-
-**ArkUI渲染相关字段说明**：
-
-| 字段 | 含义 | 示例值解读 |
-|------|------|----------|
-| `bundleName` | 应用包名 | `com.ohos.note`表示备忘录应用的包名。 |
-| `moduleName` | 模块名称 | `default`表示默认模块。 |
-| `LastRequestVsyncTime` | 最近一次请求屏幕刷新的时间 | `17816965532004`表示最近一次请求屏幕刷新的时间戳（纳秒），用于判断渲染是否活跃。 |
-| `transactionFlags` | 渲染事务标志 | `[18299,0]`表示渲染事务的进程ID和标志位。 |
-| `last vsyncId` | 最近一次屏幕刷新信号编号 | `1948`表示最近一次屏幕刷新信号的编号，编号持续增加说明渲染正常更新。 |
-| `finishCount` | 待处理的渲染任务数 | 空值`[ ]`表示所有渲染任务都已处理完成；有数值表示还有渲染任务在排队等待处理，可能导致界面卡顿。 |
-| `UINodeCount` | UI节点数量 | `159`表示当前窗口的UI节点总数。 |
-
-**常见问题定位**：
-
-| 问题 | 检查字段 | 判断标准 | 解决方案 |
-|------|----------|----------|----------|
-| UI渲染性能差（卡顿） | `UINodeCount`、`finishCount`、`LastRequestVsyncTime` | `UINodeCount`≥500 或 `finishCount`有任务堆积。 | 简化UI结构，减少节点嵌套，优化渲染逻辑。 |
-| 窗口停止渲染 | `last vsyncId`、`LastRequestVsyncTime` | 屏幕刷新信号编号长时间不变或时间戳过旧。 | 检查VisibilityState，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)。 |
-| UI节点异常多 | `UINodeCount` | 正常页面约100节点，异常页面≥500节点。 | 使用懒加载、虚拟列表，移除隐藏节点。 |
-| 渲染任务堆积 | `finishCount` | `finishCount`非空，存在未完成任务。 | 减少UI更新频率，避免渲染线程耗时操作。 |
 
 ### 定位思路
 
@@ -309,9 +247,9 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 
 系统在窗口创建时启动定时器监控页面加载过程。如果窗口创建后5秒内未调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)加载页面内容，系统判定为异常并生成故障日志。
 
-**排查步骤**
+**分析定位及解决**
 
-检查代码流程：
+排查步骤：
 1. 是否在窗口创建后立即调用了[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)。
 2. 是否在页面加载和窗口显示之间有耗时操作。
 3. 是否先调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)再调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)。
@@ -391,10 +329,14 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 
 当窗口尺寸满足以下任一条件时触发异常：
 
-- 尺寸超过最大限制：`curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`
-- 尺寸小于最小限制且小于屏幕尺寸：`curWidth < minWidth` 且 `curWidth < screenWidthVp`，或 `curHeight < minHeight` 且 `curHeight < screenHeightVp`（非系统窗口类型）
+1. 尺寸超过最大限制：`curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`。
+2. 尺寸小于最小限制且小于屏幕尺寸（非系统窗口类型）：`curWidth < minWidth` 且 `curWidth < screenWidthVp`，或 `curHeight < minHeight` 且 `curHeight < screenHeightVp`。
 
-**排查思路**
+> **说明：**
+>
+> 条件2需要同时满足"小于最小限制"和"小于屏幕尺寸"两个条件，原因如下：当窗口尺寸小于最小限制但已接近屏幕尺寸时，说明设备屏幕本身较小，属于设备限制而非开发者设置错误；只有当窗口尺寸同时小于最小限制和屏幕尺寸时，才说明开发者设置的窗口尺寸过小，需要调整。
+
+**分析定位及解决**
 
 **步骤1：获取故障日志**
 
@@ -418,13 +360,6 @@ hdc shell hilog | grep "RectCheck err"
 - 如果 `curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`：窗口尺寸超过最大限制
 - 如果 `curWidth < minWidth` 且 `curWidth < screenWidthVp`：窗口宽度过小且小于屏幕宽度
 - 如果 `curHeight < minHeight` 且 `curHeight < screenHeightVp`：窗口高度过小且小于屏幕高度
-
-**可能原因**
-
-- 窗口调用[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)时设置了超出合理范围的尺寸（过小或过大）。
-- 窗口模式切换时尺寸计算错误（如从全屏切换到浮动窗口）。
-- 分屏或窗口调整时尺寸未正确更新。
-- 自定义窗口尺寸时未考虑系统限制。
 
 **正反案例**
 
