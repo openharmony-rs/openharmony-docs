@@ -323,7 +323,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 ```
 
 
-## apiAvailable
+## deviceInfo.apiAvailable
 
 apiAvailable(version: string | number): boolean;
 <!--RP13-->
