@@ -3964,7 +3964,7 @@ let netCon: connection.NetConnection = connection.createNetConnection();
 
 // 先使用on接口订阅网络丢失事件
 netCon.onNetLost((value) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
 });
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
