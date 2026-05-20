@@ -599,8 +599,8 @@ struct SnapshotColorModeExample {
 
 | 名称        | 类型     | 只读 | 可选 | 说明                   |
 | --------- | ------ | ---- | ---- | -------------------- |
-| maxWidth  | number | 是   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
-| maxHeight | number | 是   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxWidth  | number | 否   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxHeight | number | 否   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
 
 ## SnapshotOptions<sup>12+</sup>
 

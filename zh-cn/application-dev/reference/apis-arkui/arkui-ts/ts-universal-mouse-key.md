@@ -64,6 +64,26 @@ onMouse(event: (event: MouseEvent) => void): T
 | globalDisplayY<sup>20+</sup> | number      | 否      |  是    |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | eventHandleId<sup>24+</sup> | number | 否 | 是 | 用于事件处理的唯一标识。<br/> 取值范围：[0, +∞)<br/> **说明：** 在使用[postInputEventWithStrategy](../js-apis-arkui-builderNode.md#postinputeventwithstrategy24)接口分发事件时会使用该字段，事件每分发一次字段会增加100000。<br/> 多次使用相同的eventHandleId进行事件分发将导致事件响应异常。仅在构造事件的时候需要对此字段赋值，其余情况开发者无需处理。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
+### getCurrentLocalPosition
+
+getCurrentLocalPosition?(): Coordinate2D
+
+获取鼠标位置相对于当前组件实时位置的左上角坐标。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| [Coordinate2D](ts-types.md#coordinate2d) | 鼠标位置相对于当前组件实时位置的左上角坐标。 |
+
 ### getHistoricalPoints
  
 getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
@@ -102,8 +122,6 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
 
  5. 数据分析：历史点中的timestamp可用于计算鼠标移动速度。
 
-### 属性
-
  **起始版本：** 26.0.0
 
  **模型约束：** 此接口仅可在Stage模型下使用。
@@ -123,26 +141,6 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  | globalDisplayX | number| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br>单位：vp  |
  | globalDisplayY | number| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br>单位：vp  |
  | timestamp  | number    | 否   | 否   | 鼠标事件的时间戳。<br>单位：ns                              |
-
-### getCurrentLocalPosition
-
-getCurrentLocalPosition?(): Coordinate2D
-
-获取鼠标位置相对于当前组件实时位置的左上角坐标。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：** 
-
-| 类型    | 说明                                                  |
-| ------- | ----------------------------------------------------- |
-| [Coordinate2D](ts-types.md#coordinate2d) | 鼠标位置相对于当前组件实时位置的左上角坐标。 |
 
 ## 示例
 
