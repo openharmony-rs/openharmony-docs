@@ -225,9 +225,11 @@ constructor(options?: RectShapeOptions | RoundRectShapeOptions)
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
 | options | [RectShapeOptions](#rectshapeoptions) &nbsp;\|&nbsp; [RoundRectShapeOptions](#roundrectshapeoptions) | 否 | 矩形形状参数。 |
 
-### radiusWidth
+### radiusWidth<sup>12+</sup>
 
-radiusWidth(rWidth: number | string): RectShape
+ArkTS-Dyn: radiusWidth(rWidth: number | string): RectShape
+
+ArkTS-Sta: radiusWidth(rWidth: double | string): this
 
 设置矩形形状圆角半径的宽度。
 
@@ -237,37 +239,7 @@ radiusWidth(rWidth: number | string): RectShape
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[radiusWidth<sup>23+</sup>](#radiuswidth23)。
-
 **ArkTS-Dyn起始版本：** 12
-
-**参数：** 
-
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为number时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 | 
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| [RectShape](#rectshape) | 返回RectShape对象。 |
-
-### radiusWidth<sup>23+</sup>
-
-ArkTS-Dyn: radiusWidth(rWidth: number | string): RectShape
-
-ArkTS-Sta: radiusWidth(rWidth: double | string): this
-
-设置矩形形状圆角半径的宽度。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[radiusWidth](#radiuswidth)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -275,13 +247,13 @@ ArkTS-Sta: radiusWidth(rWidth: double | string): this
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。 | 
+| rWidth | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 | 
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| this | 返回当前对象。 |
+| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ### radiusHeight
 
@@ -297,35 +269,7 @@ ArkTS-Sta: radiusHeight(rHeight: double | string): this;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[radiusHeight<sup>23+</sup>](#radiusheight23)。
-
 **ArkTS-Dyn起始版本：** 12
-
-**参数：** 
-
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rHeight | number &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的高度。 <br/> 类型为number时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| [RectShape](#rectshape) | 返回RectShape对象。 |
-
-### radiusHeight<sup>23+</sup>
-
-radiusHeight(rHeight: double | string): this
-
-设置矩形形状圆角半径的宽度。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[radiusHeight](#radiusheight)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -333,19 +277,19 @@ radiusHeight(rHeight: double | string): this
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | double &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。 | 
+| rHeight | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: double \| string | 是 | 矩形形状圆角半径的高度。 <br/> 类型为number时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| this | 返回当前对象。 |
+| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回RectShape对象。 |
 
-### radius
+### radius<sup>12+</sup>
 
-ArkTS-Dyn: radius(radius: number | string | Array<number | string>): RectShape;
+ArkTS-Dyn: radius(radius: number | string | Array<number | string>): RectShape
 
-ArkTS-Sta: radius(radius: double | string | Array<double | string>): this;
+ArkTS-Sta: radius(radius: double | string | Array<double | string>): this
 
 设置矩形形状的圆角半径。
 
@@ -355,35 +299,7 @@ ArkTS-Sta: radius(radius: double | string | Array<double | string>): this;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[radius<sup>23+</sup>](#radius23)。
-
 **ArkTS-Dyn起始版本：** 12
-
-**参数：** 
-
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| radius | number &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<number &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| [RectShape](#rectshape) | 返回RectShape对象。 |
-
-### radius<sup>23+</sup>
-
-radius(radius: double | string | Array<double &nbsp;\|&nbsp; string>): this
-
-设置矩形形状的圆角半径。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[radius](#radius)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -391,14 +307,13 @@ radius(radius: double | string | Array<double &nbsp;\|&nbsp; string>): this
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| radius | double &nbsp;\|&nbsp; string &nbsp;\|&nbsp; Array<double &nbsp;\|&nbsp; string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。 |
+| radius | ArkTS-Dyn: number \| string \| Array<number \| string><br/>ArkTS-Sta: double \| string \| Array<double \| string> | 是 | 矩形形状的圆角半径。仅接受数组的前四个元素，分别为矩形左上，右上，左下，右下的圆角半径。<br/> 类型为number时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| this | 返回当前对象。 |
-
+| ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回RectShape对象。 |
 
 ## ShapeSize
 

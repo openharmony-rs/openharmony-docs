@@ -42,7 +42,7 @@ ArkTS-Sta: bindSheet(isShow: boolean | Bindable<boolean\> | undefined, builder: 
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isShow  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| Bindable<boolean\> \| undefined | 是   | 是否显示半模态页面。<br/>true：显示半模态页面。<br/>false：隐藏半模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
 | builder | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置半模态页面内容。                                         |
-| options | ArkTS-Dyn: [SheetOptions](#sheetoptions)<br/>ArkTS-Sta: [SheetOptions](#sheetoptions) | 否   | 配置半模态页面的可选属性。  |
+| options | [SheetOptions](#sheetoptions) | 否   | 配置半模态页面的可选属性。  |
 
 **返回值：**
 
@@ -369,20 +369,32 @@ dismiss(): void
 
 半模态关闭前的回调。
 
+### 属性
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称              | 类型                                       | 只读   | 可选   | 说明            |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
-| dismiss | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void><br/>ArkTS-Sta: void | 否    | 否    | 半模态页面关闭回调函数。开发者需要退出页面时调用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否    | 否    | 半模态页面关闭回调函数。开发者需要退出页面时调用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Dyn起始版本：** 12 |
 | reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否    | 否    | 返回本次半模态页面退出的操作类型。<br />**说明：**<br /> DismissReason.SLIDE只生效半模态侧边弹窗形态，表示右滑退出。若镜像场景则表示左滑退出。<br /> DismissReason.SLIDE_DOWN生效半模态底部弹窗形态和居中弹窗形态，表示下滑退出。<br /> 半模态气泡弹窗形态无滑动退出能力。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+
+### dismiss<sup>23+</sup>
+
+dismiss(): void
+
+半模态面板关闭回调函数。开发者需要退出时调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ## SpringBackAction<sup>12+</sup>
 
@@ -425,10 +437,6 @@ springBack(): void
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称           | 值   | 说明                         |
 | ------------------------- | ---- | -------------------------------- |
