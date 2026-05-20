@@ -17,7 +17,7 @@ Since API version 24, the [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-co
 
 ## Creating a DynamicLayout
 
-Create a [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#APIs) component and set the layout algorithm by passing in a parameter of type [LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1). A variable of type [LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) can be assigned a specific layout algorithm class object, including [built-in layout algorithms](#built-in-layout-algorithms) and [custom layout algorithms](#custom-layout-algorithms).
+Create a [DynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-dynamiclayout.md#apis) component and set the layout algorithm by passing in a parameter of type [LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1). A variable of type [LayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) can be assigned a specific layout algorithm class object, including [built-in layout algorithms](#built-in-layout-algorithms) and [custom layout algorithms](#custom-layout-algorithms).
 
 <!-- @[CreateDynamicLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/basic/CreateDynamicLayout.ets) -->
 
@@ -979,7 +979,7 @@ struct TagCloudExample {
 
 ## Switching Layout Algorithms
 
-When switching layout algorithms, **DynamicLayout** preserves the state of child components, such as input field content, toggle state, and slider value. The following example demonstrates how [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#APIs), [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#APIs), [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#APIs), and [CheckBox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md) components maintain their state during layout switching, while using [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) to add smooth animation effects to the layout transition.
+When switching layout algorithms, **DynamicLayout** preserves the state of child components, such as input field content, toggle state, and slider value. The following example demonstrates how [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#apis), [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#apis), [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#apis), and [CheckBox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md) components maintain their state during layout switching, while using [animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto) to add smooth animation effects to the layout transition.
 
 <!-- @[ReserveChildState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DynamicLayout/entry/src/main/ets/pages/responsivelayout/ReserveChildState.ets) -->
 
@@ -1514,4 +1514,3 @@ struct StatePreservationExample {
   ```
 
  
-<!--no_check-->

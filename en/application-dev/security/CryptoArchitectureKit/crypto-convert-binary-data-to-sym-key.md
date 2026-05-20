@@ -50,7 +50,7 @@ For details about the algorithm specifications, see [3DES](crypto-sym-key-genera
           console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
           return;
         }
-        console.info('key algName: '+ key.algName);
+        console.info('key algName: ' + key.algName);
         console.info('key format: ' + key.format);
         let encodedKey = key.getEncoded(); // Obtain the binary data of the symmetric key and output the data as a byte array. The length is 24 bytes.
         console.info('key getEncoded hex: ' + encodedKey.data);
@@ -86,20 +86,14 @@ For details about the algorithm specifications, see [3DES](crypto-sym-key-genera
     // Convert the data into a symmetric key.
     let keyMaterialBlob = genKeyMaterialBlob();
     try {
-      symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
-        if (error) {// If the service logic fails to be executed, the first parameter of the callback returns error information, that is, throw an exception asynchronously.
-          let e: BusinessError = error as BusinessError;
-          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
-          return;
-        }
-        console.info('key algName: '+ key.algName);
-        console.info('key format: ' + key.format);
-        let encodedKey = key.getEncoded () // Obtain the binary data of the symmetric key and output the data as a byte array. The length is 24 bytes.
-        console.info('key getEncoded hex: ' + encodedKey.data);
-      })
+      let key = symKeyGenerator.convertKeySync(keyMaterialBlob);
+      console.info('key algName: ' + key.algName);
+      console.info('key format: ' + key.format);
+      let encodedKey = key.getEncoded(); // Obtain the binary data of the symmetric key. The length is 24 bytes.
+      console.info('key getEncoded length: ' + encodedKey.data.length);
     } catch (error) {// Throw an exception immediately when an error is detected during parameter check.
       let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
+      console.error(`convertKeySync failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -120,11 +114,11 @@ For details, see [HMAC](crypto-sym-key-generation-conversion-spec.md#hmac).
 - Example using **await** to generate a HMAC key:
 
   <!-- @[generate_hmac_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Await.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   async function testConvertHmacKey() {
     // The symmetric key length is 64 bytes, that is, 512 bits.
     let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
@@ -142,11 +136,11 @@ For details, see [HMAC](crypto-sym-key-generation-conversion-spec.md#hmac).
 - Example using synchronous API [convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12):
 
   <!-- @[generate_hmac_key_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ConvertSymmetricKeyBinaryFormatArkTS/entry/src/main/ets/pages/hmac/Sync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function testConvertKeySync() {
     // The symmetric key length is 64 bytes, that is, 512 bits.
     let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
