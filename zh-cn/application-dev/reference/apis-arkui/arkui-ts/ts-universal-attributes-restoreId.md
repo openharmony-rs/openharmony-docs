@@ -40,7 +40,7 @@ ArkTS-Sta: restoreId(value: int | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 支持的组件
 
