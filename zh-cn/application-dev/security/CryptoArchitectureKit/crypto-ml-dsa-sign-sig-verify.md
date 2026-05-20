@@ -87,3 +87,48 @@
 - 同步方法示例：
 
   <!-- @[signature_verification_with_ml_dsa_key_pair_ark_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ml_dsa_signature_verification/ml_dsa_signature_verification_synchronous.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan', 'utf-8').buffer) };
+  let context: Uint8Array = new Uint8Array(buffer.from('test', 'utf-8').buffer);
+  
+  function signMessageSync(priKey: cryptoFramework.PriKey) {
+    let signer = cryptoFramework.createSign('ML-DSA');
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_CONTEXT_UINT8ARR, context);
+    signer.initSync(priKey);
+    let signData = signer.signSync(input);
+    return signData;
+  }
+  
+  function verifyMessageSync(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
+    let verifier = cryptoFramework.createVerify('ML-DSA');
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_CONTEXT_UINT8ARR, context);
+    verifier.initSync(pubKey);
+    let res = verifier.verifySync(input, signMessageBlob);
+    console.info('verify result: ' + res);
+    return res;
+  }
+  
+  function main() {
+    try {
+      let generator = cryptoFramework.createAsyKeyGenerator('ML-DSA-87');
+      let keyPair = generator.generateKeyPairSync();
+      let signData = signMessageSync(keyPair.priKey);
+      let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+        return 'Success';
+      } else {
+        console.error('verify result: failed.');
+        return 'Fail';
+      }
+    } catch (error) {
+      console.error(`verify failed, error: + ${JSON.stringify(error)}`);
+      return 'Fail';
+    }
+  }
+  ```
