@@ -628,7 +628,7 @@ This error code is reported when an enterprise device administrator fails to add
 
 **Possible Causes**
 
-The specified application has already in the Dock.
+The specified application is already in the Dock.
 
 **Solution**
 
