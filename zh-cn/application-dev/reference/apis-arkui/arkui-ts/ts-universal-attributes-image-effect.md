@@ -138,9 +138,7 @@ blur(blurRadius: double | undefined, options?: BlurOptions, sysOptions?: SystemA
 
 ## shadow
 
-ArkTS-Dyn: shadow(value: ShadowOptions | ShadowStyle): T
-
-ArkTS-Sta: shadow(value: ShadowOptions | ShadowStyle | undefined): this
+shadow(value: ShadowOptions | ShadowStyle): T
 
 为组件添加阴影效果。
 
@@ -150,21 +148,23 @@ ArkTS-Sta: shadow(value: ShadowOptions | ShadowStyle | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[shadow<sup>23+</sup>](#shadow23)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ShadowOptions](#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](#shadowstyle10枚举说明)<sup>10+</sup><br/>ArkTS-Sta: ShadowOptions \| ShadowStyle \| undefined | 是   | 为当前组件添加阴影效果。<br/>入参类型为ShadowOptions时，可以指定模糊半径、阴影的颜色、X轴和Y轴的偏移量。<br/>入参类型为ShadowStyle时，可指定不同阴影样式。<br/>当value的值为undefined时，恢复为无样式的阴影效果。 |
+| value  | [ShadowOptions](#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](#shadowstyle10枚举说明)<sup>10+</sup> | 是   | 为当前组件添加阴影效果。<br/>入参类型为ShadowOptions时，可以指定模糊半径、阴影的颜色、X轴和Y轴的偏移量。<br/>入参类型为ShadowStyle时，可指定不同阴影样式。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## shadow<sup>18+</sup>
 
@@ -195,6 +195,32 @@ shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
+
+## shadow<sup>23+</sup>
+
+shadow(value: ShadowOptions | ShadowStyle | undefined): this
+
+为组件添加阴影效果。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[shadow](#shadow)和[shadow<sup>18+</sup>](#shadow18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名                | 类型                                                         | 必填 | 说明                                                         |
+| --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | [ShadowOptions](#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle<sup>10+</sup>](#shadowstyle10枚举说明) \| undefined | 是   | 为当前组件添加阴影效果。<br/>入参类型为ShadowOptions时，可以指定模糊半径、阴影的颜色、X轴和Y轴的偏移量。<br/>入参类型为ShadowStyle时，可指定不同阴影样式。<br/>当value的值为undefined时，恢复为无样式的阴影效果。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
 
 ## grayscale
 
@@ -1063,9 +1089,7 @@ renderGroup(value: boolean | undefined): this
 
 ## blendMode<sup>11+</sup>
 
-ArkTS-Dyn: blendMode(value: BlendMode, type?: BlendApplyType): T
-
-ArkTS-Sta: blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
+blendMode(value: BlendMode, type?: BlendApplyType): T
 
 将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。
 
@@ -1075,22 +1099,24 @@ ArkTS-Sta: blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[blendMode<sup>23+</sup>](#blendmode23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
 | 参数名 | 类型                                | 必填 | 说明                                                         |
 | ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [BlendMode](#blendmode11枚举说明)<br/>ArkTS-Sta: BlendMode \| undefined   | 是   | 混合模式。<br/>默认值：BlendMode.NONE<br/>**说明：**<br/>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
+| value  | [BlendMode](#blendmode11枚举说明)   | 是   | 混合模式。<br/>默认值：BlendMode.NONE<br/>**说明：**<br/>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
 | type   | [BlendApplyType](#blendapplytype11枚举说明) | 否   | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur12)、[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)、[brightness](#brightness)、[blur](#blur)等需要截屏的接口无法截取到正确的画面。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## blendMode<sup>18+</sup> 
 
@@ -1122,6 +1148,32 @@ blendMode(mode: Optional\<BlendMode>, type?: BlendApplyType): T
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
+
+## blendMode<sup>23+</sup> 
+blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
+
+将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[blendMode<sup>11+</sup>](#blendmode11)和[grayscale<sup>18+</sup>](#blendmode18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                | 必填 | 说明                                                         |
+| ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | [BlendMode](#blendmode11枚举说明) \| undefined   | 是   | 混合模式。<br/>默认值：BlendMode.NONE<br/>当mode的值为undefined时，恢复为内容不进行混合的效果。<br/>**说明：**<br/>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
+| type   | [BlendApplyType](#blendapplytype11枚举说明) | 否   | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur12)，[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)，[brightness](#brightness)等需要截屏的接口无法截取到正确的画面。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
 
 ## BlendApplyType<sup>11+</sup>枚举说明
 
@@ -1252,19 +1304,45 @@ sphericalEffect(value: number): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## sphericalEffect<sup>18+</sup>
+
+sphericalEffect(effect: Optional\<number>): T
+
+设置组件的图像球面化程度。与[sphericalEffect<sup>12+</sup>](#sphericaleffect12)相比，effect参数新增了对undefined类型的支持。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[sphericalEffect<sup>23+</sup>](#sphericaleffect23)。
+
+**ArkTS-Dyn起始版本：** 18
+
+**参数：** 
+
+| 参数名 | 类型              | 必填 | 说明                                                         |
+| ------ | ----------------- | ---- | ------------------------------------------------------------ |
+| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`effect < 0 `或者` effect > 1`为异常情况，`effect < 0`按0处理，`effect > 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br/>3. 设置effect大于0时，组件冻屏并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把effect设置为0。<br/>当effect的值为undefined时，恢复为图像球面化程度为0的效果。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
+
 ## sphericalEffect<sup>23+</sup>
 
-ArkTS-Dyn: sphericalEffect(effect: Optional\<number>): T
-
-ArkTS-Sta: sphericalEffect(value: double | undefined): this
+sphericalEffect(value: double | undefined): this
 
 设置组件的图像球面化程度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Dyn起始版本：** 18
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[sphericalEffect<sup>12+</sup>](#sphericaleffect12)和[sphericalEffect<sup>18+</sup>](#sphericaleffect18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1272,19 +1350,17 @@ ArkTS-Sta: sphericalEffect(value: double | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| ArkTS-Dyn: effect<br/>ArkTS-Sta: value  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number><br/>double \| undefined | 是   | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`value < 0 `或者` value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br>3. 设置value大于0时，组件冻屏不更新并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把value设置为0。<br/>当value的值为undefined时，恢复为图像球面化程度为0的效果。 |
+| value  | double \| undefined | 是   | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`value < 0 `或者` value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br>3. 设置value大于0时，组件冻屏不更新并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把value设置为0。<br/>当value的值为undefined时，恢复为图像球面化程度为0的效果。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
+| this | 返回当前组件。 |
 
 ## lightUpEffect<sup>12+</sup> 
 
-ArkTS-Dyn: lightUpEffect(value: number): T
-
-ArkTS-Sta: lightUpEffect(value: double | undefined): this
+lightUpEffect(value: number): T
 
 设置组件图像亮起程度。
 
@@ -1292,21 +1368,23 @@ ArkTS-Sta: lightUpEffect(value: double | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[lightUpEffect<sup>23+</sup>](#lightupeffect23)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined | 是   | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`value < 0` 或者 `value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>当value的值为undefined时，恢复为亮起为1的效果。 |
+| value  | number | 是   | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`value < 0` 或者 `value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前组件。 |
+| T | 返回当前组件。 |
 
 ## lightUpEffect<sup>18+</sup> 
 
@@ -1336,6 +1414,32 @@ lightUpEffect(degree: Optional\<number>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## lightUpEffect<sup>23+</sup> 
+
+lightUpEffect(value: double | undefined): this
+
+设置组件图像亮起程度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[lightUpEffect<sup>12+</sup> ](#lightupeffect12)和[lightUpEffect<sup>18+</sup>](#lightupeffect18)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| value  | double \| undefined | 是   | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`value < 0` 或者 `value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>当value的值为undefined时，恢复为亮起为1的效果。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| this | 返回当前组件。 |
+
 ## pixelStretchEffect<sup>12+</sup> 
 
 pixelStretchEffect(options: PixelStretchEffectOptions): T
@@ -1364,19 +1468,46 @@ pixelStretchEffect(options: PixelStretchEffectOptions): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
+## pixelStretchEffect<sup>18+</sup> 
+
+pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
+
+设置组件的图像边缘像素扩展距离。与[pixelStretchEffect<sup>12+</sup>](#pixelstretcheffect12)相比，options参数新增了对undefined类型的支持。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[pixelStretchEffect<sup>23+</sup>](#pixelstretcheffect23)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+<!--Table: 10%; auto; 10%; auto-->
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PixelStretchEffectOptions](#pixelstretcheffectoptions10)> | 是   | 设置组件的图像边缘像素扩展距离。<br/>参数`options`包括上下左右四个方向的边缘像素扩展距离。<br/>**说明：**<br/>1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。<br/>2. 如果距离为负值，表示内缩，但是最终图像大小不变。<br/>内缩方式：<br/>图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。<br/>图像用边缘像素扩展到原来大小。<br/>3. 对`options`的输入约束：<br/>上下左右四个方向的扩展统一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。<br/>所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。<br/>所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。<br/>当options的值为undefined时，恢复为无像素扩展效果。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| ArkTS-Dyn: T <br/> ArkTS-Sta: this | 返回当前组件。 |
+
 ## pixelStretchEffect<sup>23+</sup> 
 
-ArkTS-Dyn: pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
-
-ArkTS-Sta: pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
+pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
 
 设置组件的图像边缘像素扩展距离。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 18
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[pixelStretchEffect<sup>12+</sup>](#pixelstretcheffect12)和[pixelStretchEffect<sup>18+</sup>](#pixelstretcheffect18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1384,7 +1515,7 @@ ArkTS-Sta: pixelStretchEffect(options: PixelStretchEffectOptions | undefined): t
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PixelStretchEffectOptions](#pixelstretcheffectoptions10)><br/>ArkTS-Sta: PixelStretchEffectOptions | 是   | 设置组件的图像边缘像素扩展距离。<br/>参数`options`包括上下左右四个方向的边缘像素扩展距离。<br/>**说明：**<br/>1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。<br/>2. 如果距离为负值，表示内缩，但是最终图像大小不变。<br/>内缩方式：<br/>图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。<br/>图像用边缘像素扩展到原来大小。<br/>3. 对`options`的输入约束：<br/>上下左右四个方向的扩展统一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。<br/>所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。<br/>所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。<br/>当options的值为undefined时，恢复为无像素扩展效果。 |
+| options | [PixelStretchEffectOptions](#pixelstretcheffectoptions10) \| undefined | 是   | 设置组件的图像边缘像素扩展距离。<br/>参数`options`包括上下左右四个方向的边缘像素扩展距离。<br/>**说明：**<br/>1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。<br/>2. 如果距离为负值，表示内缩，但是最终图像大小不变。<br/>内缩方式：<br/>图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。<br/>图像用边缘像素扩展到原来大小。<br/>3. 对`options`的输入约束：<br/>上下左右四个方向的扩展统一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。<br/>所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。<br/>所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。<br/>当options的值为undefined时，恢复为无像素扩展效果。 |
 
 **返回值：**
 
