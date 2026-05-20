@@ -4872,7 +4872,7 @@ let result = formatter.resolvedOptions(); // result.style = 'unit', result.unit 
 
 ### SymbolNumberFormatOptions
 
-Describes optional configuration items for creating the number object using custom symbols. This API inherits from **Intl.NumberFormatOption**, supports all its configuration items, and provides the same functionality.
+Describes optional configuration items for creating the number object using custom symbols. This API inherits from **Intl.NumberFormatOptions**, supports all its configuration items, and provides the same functionality.
 
 **Since**: 26.0.0
 
