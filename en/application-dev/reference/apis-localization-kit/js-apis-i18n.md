@@ -366,7 +366,7 @@ Checks whether the 24-hour clock is used. To listen for system time format chang
 
 | Type     | Description                                      |
 | ------- | ---------------------------------------- |
-| boolean | Whether the 24-hour clock is used. The value **true** indicates that the 24-hour clock is used, the the value **false** indicates that the 12-hour clock is used.|
+| boolean | Whether the 24-hour clock is used. The value **true** indicates that the 24-hour clock is used, and the value **false** indicates that the 12-hour clock is used.|
 
 **Example**
   ```ts
