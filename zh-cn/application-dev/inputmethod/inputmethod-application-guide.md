@@ -928,6 +928,90 @@
    ```
 
    <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   
+   ``` TypeScript
+   private registerListener(): void {
+     this.inputHandle.addLog('registerListener');
+     try {
+       display.onChange(() => {
+         this.inputHandle.addLog('screenChangeEvent');
+         this.resizePanel();
+       });
+     } catch (err) {
+       let error = err as BusinessError;
+       Log.showError(TAG, `display on change catch error: ${error.code} ${error.message}`);
+     }
+     inputMethodAbility?.onInputStart(
+       (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
+         this.inputHandle.addLog('keyboard inputStart');
+         this.inputHandle.onInputStart(kbController, textInputClient);
+       })
+   
+     // 设置监听子类型事件，改变输入法应用界面
+     inputMethodAbility?.onSetSubtype((inputMethodSubtype: InputMethodSubtype) => {
+       if (inputMethodSubtype.id === 'InputMethodExtAbility') {
+         AppStorage.setOrCreate('subtypeChange', 0);
+       }
+       if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
+         AppStorage.setOrCreate('subtypeChange', 1);
+       }
+     });
+   
+     inputMethodAbility?.onInputStop((): void => {
+       this.inputHandle.addLog('keyboard inputStop');
+       this.onDestroy();
+       if (this.mContext) {
+         this.mContext?.destroy();
+       }
+     });
+   
+     this.inputHandle.addLog('pre on privateCommand');
+     try {
+       inputMethodAbility?.onPrivateCommand((record: Record<string, inputMethodEngine.CommandDataType>) => {
+         this.inputHandle.addLog(`keyboard privateCommand : ${record}`);
+         Object.keys(record).forEach((key: string) => {
+           this.inputHandle.addLog(`onPageShow private command key: ${key}, value: ${record[key]}`);
+         })
+       });
+     } catch (err) {
+       let error = err as BusinessError;
+       this.inputHandle.addLog(`on privateCommand sendPrivateCommand catch error: ${error.code} ${error.message}`);
+     }
+   
+     this.mKeyboardDelegate = inputMethodEngine.getKeyboardDelegate();
+   
+     this.mKeyboardDelegate?.onKeyDown((keyEvent: inputMethodEngine.KeyEvent) => {
+       if (this.isKeyboardShow) {
+         this.inputHandle.hideKeyboardSelf();
+       }
+       this.inputHandle.addLog(`keyDown: code = ${keyEvent.keyCode}`);
+       let result = this.onKeyDown(keyEvent);
+       this.inputHandle.addLog(`keyDown: result = ${result}`);
+       return result;
+     });
+   
+     this.mKeyboardDelegate?.onKeyUp((keyEvent: inputMethodEngine.KeyEvent) => {
+       this.inputHandle.addLog(`keyUp: code = ${keyEvent.keyCode}`);
+       let result = this.onKeyUp(keyEvent);
+       this.inputHandle.addLog(`keyUp: result = ${result}`);
+       return result;
+     });
+     this.mKeyboardDelegate?.onCursorContextChange((x: double, y: double, height: double) => {
+       let cursorInfo: CursorInfo = { x: x, y: y, height: height };
+       this.inputHandle.setCursorInfo(cursorInfo);
+     });
+     if (isDebug) {
+       this.mKeyboardDelegate?.onSelectionChange(
+         (oldBegin: int, oldEnd: int, newBegin: int, newEnd: int) => {
+           this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' +
+             newEnd + ')');
+         });
+       this.mKeyboardDelegate?.onTextChange((text: string) => {
+         this.inputHandle.setTextInfo('textInfo: ' + text);
+       });
+     }
+   }
+   ```
 
    <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
