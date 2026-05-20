@@ -7080,7 +7080,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## rekey<sup>26+</sup>
+## rekey
 
 rekey(encryptionKey: Uint8Array): Promise\<void>
 
