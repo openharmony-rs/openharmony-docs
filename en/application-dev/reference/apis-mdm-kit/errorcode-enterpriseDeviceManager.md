@@ -585,7 +585,7 @@ Failed to enable or disable the activation lock.
 
 **Description**
 
-Failed to disable or enable the activation lock.
+Failed to enable or disable the activation lock.
 
 **Possible Causes**
 
@@ -616,7 +616,7 @@ The number of applications in the Dock has reached the maximum.
 
 Delete unnecessary applications from the Dock.
 
-## 9201014 Specified Application Already in Docker
+## 9201014 Specified Application Already in Dock
 
 **Error Message**
 
