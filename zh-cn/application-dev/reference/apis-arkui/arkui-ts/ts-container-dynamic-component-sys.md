@@ -149,15 +149,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct Index {
   @State errorMessage: string = '';
-  private workerInstance: worker.Worker | null = null;
-
-  aboutToAppear(): void {
-    this.workerInstance = new worker.Worker('workers/DynamicWorker.ets');
-  }
-
-  aboutToDisappear(): void {
-    this.workerInstance?.terminate();
-  }
+  private worker?: worker.ThreadWorker = new worker.ThreadWorker(
+    "entry/ets/workers/Worker.ets", { name: "dc-worker" }
+  )
 
   build() {
     Column() {
@@ -168,10 +162,10 @@ struct Index {
       }
 
       DynamicComponent({
-        entryPoint: 'DynamicPage',
-        worker: this.workerInstance!,
+        entryPoint: 'com.example.myapplication/entry/ets/pages/DynamicPage',
+        worker: this.worker,
         backgroundTransparent: false,
-        allowCrossProcessNesting: false,
+        allowCrossProcessNesting: false
       })
         .width('100%')
         .height('60%')
@@ -179,9 +173,32 @@ struct Index {
           this.errorMessage = `code: ${error.code}, message: ${error.message}`;
           hilog.error(0x0000, 'DynamicComponentDemo', 'onError: ' + this.errorMessage);
         })
+        .borderWidth(10)
+        .borderColor(Color.Red)
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+**Abc页面入口** DynamicPage.ets
+
+``` TypeScript
+@Entry
+@Component
+struct DynamicPage {
+  build() {
+    Column() {
+      Text('this is ability in DC')
+        .fontSize(20)
+        .margin(10)
+    }
+    .height('100%')
+    .width('100%')
+    .borderWidth(10)
+    .borderColor(Color.Blue)
+    .align(Alignment.Top)
   }
 }
 ```
