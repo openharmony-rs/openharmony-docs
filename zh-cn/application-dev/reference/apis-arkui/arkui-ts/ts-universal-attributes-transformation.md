@@ -378,7 +378,7 @@ transform(value: Matrix4Transit | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | [Matrix4Transit](../js-apis-matrix4.md) \| undefined | 是   | 设置当前组件的变换矩阵。object当前仅支持[Matrix4Transit](../js-apis-matrix4.md)矩阵对象类型。<br/>当value的值为undefined时，恢复为单位矩阵的效果。 |
+| value  | [Matrix4Transit](../js-apis-matrix4.md#matrix4transit) \| undefined | 是   | 设置当前组件的变换矩阵。object当前仅支持[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)矩阵对象类型。<br/>当value的值为undefined时，恢复为单位矩阵的效果。 |
 
 **返回值：**
 
