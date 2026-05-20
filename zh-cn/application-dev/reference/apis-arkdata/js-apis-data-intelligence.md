@@ -28,7 +28,7 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -306,7 +306,7 @@ loadModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -345,7 +345,7 @@ releaseModel(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **返回值：**
 
@@ -386,7 +386,7 @@ getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
@@ -436,7 +436,7 @@ getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;numb
 
 **系统能力：** SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-**设备行为差异：** 在API version 26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API version 26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异：** 在API版本26.0.0之前，该接口在PC/2in1设备中可正常调用，在其他设备类型中返回801错误码；从API版本26.0.0开始，该接口在PC/2in1、Phone和Tablet设备中可正常调用，在其他设备类型中返回801错误码。
 
 **参数：**
 
