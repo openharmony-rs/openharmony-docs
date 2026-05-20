@@ -505,6 +505,175 @@
    ArkTS-Sta示例：
    <!-- @[input_case_input_KeyboardController358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
+   ``` TypeScript
+   export class KeyboardController {
+     private barPosition: number = 0;
+     private keyCodes: Array<number> = [];
+     private mContext: InputMethodExtensionContext | undefined;
+     private panel: inputMethodEngine.Panel | undefined;
+     private isSpecialKeyPress: boolean = false;
+     private isKeyboardShow: boolean = false;
+     private inputHandle: InputHandler = InputHandler.getInstance();
+     private mKeyboardDelegate: inputMethodEngine.KeyboardDelegate | null;
+   
+     constructor() {
+       this.mContext = undefined;
+       this.panel = undefined;
+       this.mKeyboardDelegate = null;
+     }
+   
+     public onCreate(context: InputMethodExtensionContext): void {
+       this.mContext = context;
+       this.inputHandle.addLog('onCreate');
+       this.initWindow();
+       this.registerListener();
+     }
+   
+     public onDestroy(): void {
+       this.inputHandle.addLog('onDestroy');
+       this.unRegisterListener();
+       this.destroyPanel();
+     }
+   
+     private initWindow(): void {
+       if (this.mContext === undefined) {
+         return;
+       }
+       this.inputHandle.addLog('initWindow');
+       let dis: display.Display | undefined = undefined;
+       try {
+         dis = display.getDefaultDisplaySync();
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `getDefaultDisplaySync catch error: ${error.code} ${error.message}`);
+         return;
+       }
+       if (dis == undefined) {
+         return;
+       }
+       this.inputHandle.addLog("initWindow-oncall display");
+       let dWidth = dis.width;
+       let dHeight = dis.height;
+       let navigationBar_height = NAVIGATIONBAR_HEIGHT_DEFAULT;
+       let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
+       AppStorage.setOrCreate('windowWidth', dis.width);
+       AppStorage.setOrCreate('windowHeight', dis.height);
+       let isLandscape = false;
+       let isRkDevice = false;
+       if (dis.width > dis.height) {
+         isLandscape = true;
+         AppStorage.setOrCreate('isLandscape', true);
+       } else {
+         AppStorage.setOrCreate('isLandscape', false);
+       }
+       if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
+       } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
+       } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
+         navigationBar_height = KEYBOARD_HEIGHT_RATE_DEFAULT;
+         AppStorage.setOrCreate('isRkDevice', true);
+         isRkDevice = true;
+       } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
+       } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
+         navigationBar_height = 0;
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
+       }
+       let keyHeight = Double.toLong(dHeight * keyHeightRate);
+       this.barPosition = dHeight - keyHeight - navigationBar_height;
+       this.inputHandle.addLog(`initWindow-dWidth = ${dWidth};dHeight = ${dHeight};keyboard height = ${keyHeight};;navibar height = navigationBar_height`);
+       this.inputHandle.addLog(`initWindow-deviceType = ${deviceInfo.deviceType}`);
+       let panelInfo: inputMethodEngine.PanelInfo = {
+         type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
+         flag: inputMethodEngine.PanelFlag.FLG_FIXED
+       }
+       let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
+       AppStorage.setOrCreate('inputStyle', inputStyle);
+       try {
+         inputMethodAbility?.createPanel(this.mContext!, panelInfo).then((inputPanel: inputMethodEngine.Panel) => {
+           this.panel = inputPanel;
+           if (this.panel) {
+             this.panel?.resize(dWidth, keyHeight)!;
+             this.panel?.setUiContent('InputMethodExtensionAbility/pages/Index')!;
+           }
+         });
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `Failed to createPanel: ${err.code} ${err.message}`);
+       }
+     }
+   
+     private destroyPanel(): void {
+       this.inputHandle.addLog('destroyPanel');
+       if (this.panel) {
+         try {
+           inputMethodAbility?.destroyPanel(this.panel!).then(() => {
+             this.inputHandle.addLog('Succeeded in destroyPanel.');
+           })
+         } catch (err) {
+           let error = err as BusinessError;
+           Log.showError(TAG, `Failed to destroyPanel: ${err.code} ${err.message}`);
+         }
+       }
+     }
+   
+     private resizePanel(): void {
+       this.inputHandle.addLog('resizeWindow');
+       let dis: display.Display | undefined = undefined;
+       try {
+         dis = display.getDefaultDisplaySync();
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `getDefaultDisplaySync catch error: ${error.code} ${error.message}`);
+         return;
+       }
+       if (dis == undefined) {
+         return;
+       }
+       this.inputHandle.addLog('resizeWindow-oncall display');
+       let dWidth = dis.width;
+       let dHeight = dis.height;
+       let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
+       AppStorage.setOrCreate<number>('windowWidth', dis.width);
+       AppStorage.setOrCreate<number>('windowHeight', dis.height);
+       let isLandscape = false;
+       let isRkDevice = false;
+       if (dis.width > dis.height) {
+         isLandscape = true;
+         AppStorage.setOrCreate('isLandscape', true);
+       } else {
+         AppStorage.setOrCreate('isLandscape', false);
+       }
+       if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
+       } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
+       } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
+         AppStorage.setOrCreate('isRkDevice', true);
+         isRkDevice = true;
+       } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
+       } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
+         keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
+       }
+       let keyHeight = Double.toLong(dHeight * keyHeightRate);
+       let inputStyle = StyleConfiguration.getInputStyle(isLandscape, isRkDevice, deviceInfo.deviceType);
+       AppStorage.setOrCreate('inputStyle', inputStyle);
+       if (this.panel) {
+         try {
+           this.panel?.resize(dWidth, keyHeight);
+         } catch (err) {
+           let error = err as BusinessError;
+           Log.showError(TAG, `Failed to resizePanel: ${err.code} ${err.message}`);
+         }
+       }
+     }
+   ```
+   
    <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
