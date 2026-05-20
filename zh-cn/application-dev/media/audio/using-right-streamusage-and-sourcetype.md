@@ -181,5 +181,6 @@
 | [isFastRecordingSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isfastrecordingsupported) | 查询是否支持低时延录制。 |
 
 > **说明：**
+>
 > - 音频通路的支持情况取决于设备的硬件能力和系统配置，不同设备有所不同。
 > - 查询接口返回的结果仅表示在指定参数下系统是否支持对应的音频通路，音频流实际使用的通路还需结合系统当前的运行状态和资源配置情况确定。
