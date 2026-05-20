@@ -247,7 +247,7 @@ ArkTS-Sta: radiusWidth(rWidth: double | string): this
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| rWidth | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: double &nbsp;\|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 | 
+| rWidth | ArkTS-Dyn: number \| string<br/>ArkTS-Sta: double \|&nbsp; string | 是 | 矩形形状圆角半径的宽度。<br/> 类型为double时取值范围是[0, +∞)，类型为string时是[Length](arkui-ts/ts-types.md#length)。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 | 
 
 **返回值：**
 
