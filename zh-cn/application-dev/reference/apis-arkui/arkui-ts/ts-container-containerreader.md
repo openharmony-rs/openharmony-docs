@@ -257,7 +257,7 @@ struct Index {
 }
 ```
 
-通过单击按钮改变ContainerReader的宽度，返回不同的宽度断点值，从而调整布局方向。
+通过单击按钮改变父容器的宽度，返回不同的宽度断点值，从而调整布局方向。
 
 ![](figures/containerReader_Demo002.gif)
 
