@@ -343,7 +343,7 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[onerror9](#onerror9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -404,7 +404,7 @@ offError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[offerror9](#offerror9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4578,7 +4578,7 @@ on(type: 'subtitleUpdate', callback: Callback\<SubtitleInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate)](#onsubtitleupdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsubtitleupdate)](#onsubtitleupdate23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4911,7 +4911,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onseimessagereceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onseimessagereceived)](#onseimessagereceived23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5266,7 +5266,7 @@ onTrackChange(callback: OnTrackChangeHandler): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[ontrackchange12](#ontrackchange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('trackChange')](#ontrackchange12)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -5384,7 +5384,7 @@ onAmplitudeUpdate(callback: Callback\<Array\<double>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[onamplitudeupdate13](#onamplitudeupdate13)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('amplitudeUpdate')](#onamplitudeupdate13)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
