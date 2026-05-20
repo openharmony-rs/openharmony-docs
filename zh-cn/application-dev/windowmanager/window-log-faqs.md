@@ -73,12 +73,12 @@ total window num: 12
 | DisplayId | 显示设备ID | 0表示主屏幕，1表示副屏幕，多屏场景下会有多个DisplayId。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
-| Type | 窗口类型 | 1=应用主窗口，2=应用子窗口，详见窗口类型说明。 |
-| Mode | 窗口模式 | 1=全屏模式，102=自由悬浮窗模式，详见窗口模式说明。 |
-| Flag | 状态标志位 | 0=正常显示状态，1=隐藏状态。 |
+| Type | 窗口类型 | 1：应用主窗口；2：应用子窗口。详见窗口类型说明。 |
+| Mode | 窗口模式 | 1：全屏模式；102：自由悬浮窗模式。详见窗口模式说明。 |
+| Flag | 状态标志位 | 0：正常显示状态；1：隐藏状态。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
-| Orientation | 窗口方向 | 0=未指定方向，1=竖屏，2=横屏，8=竖屏等方向设置。 |
-| [ x y w h ] | 窗口矩形区域 | 位置(x,y)和大小(width,height)，如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
+| Orientation | 窗口方向 | 0：未指定方向；1：竖屏；2：横屏；8：竖屏等方向设置。 |
+| [ x y w h ] | 窗口矩形区域 | 位置和大小，如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
 
 ### 查看获焦窗口
 
@@ -144,8 +144,8 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | DisplayId | 显示设备ID | 显示设备标识。0：表示为主屏幕；1：表示为副屏幕。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。 |
-| Type | 窗口类型 | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口。见上方窗口类型表。 |
-| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式；2：表示为分屏模式；102：表示为自由悬浮窗模式。见上方窗口模式表。 |
+| Type | 窗口类型 | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口；2000+：表示为系统窗口。 |
+| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式；2：表示为分屏模式；102：表示为自由悬浮窗模式。 |
 | Flag | 状态标志位 | 窗口状态标志。0：表示为正常显示状态；1：表示为隐藏状态。 |
 | Orientation | 窗口方向 | 窗口显示方向。0：表示为未指定方向；1：表示为竖屏；2：表示为反向竖屏；3：表示为横屏；4：表示为反向横屏。 |
 | IsStartingWindow | 是否是应用启动过渡窗口 | 应用启动过渡窗口标识。true：表示为应用启动过程中显示的过渡窗口（在应用首帧绘制完成前显示）；false：表示为正常应用窗口。 |
@@ -155,41 +155,41 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | DecoStatus | 装饰状态 | 窗口装饰状态。true：表示为窗口装饰已启用（有标题栏等）；false：表示为窗口无装饰。 |
 | IsPrivacyMode | 是否隐私模式 | 窗口隐私模式。true：表示为隐私窗口（截屏显示黑色）；false：表示为正常窗口（可截屏）。 |
 | isSnapshotSkip | 截屏时是否显示该窗口 | 截屏显示标识。0：表示为截屏时显示该窗口内容；1：表示为截屏时不显示该窗口内容（显示为黑色或空白）。 |
-| WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
-| TouchHotAreas | 触摸热区 | 窗口触摸响应区域，格式为[x, y, width, height]。如[0, 0, 720, 1280]：表示为整个窗口区域可触摸。 |
+| WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
+| TouchHotAreas | 触摸热区 | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。 |
 
 **常见问题定位**：
 
 **问题1：窗口不显示**
 
 **检查字段**：
-- `VisibilityState: 1`：窗口被隐藏，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)显示。
-- `Flag: 1`：状态标志为隐藏，检查窗口是否被隐藏。
+- `VisibilityState`为1：窗口被隐藏，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)显示。
+- `Flag`为1：状态标志为隐藏，检查窗口是否被隐藏。
 
 **问题2：窗口无法接收键盘输入**
 
 **检查字段**：
-- `Focusable: false`：窗口不可获焦，调用[setWindowFocusable(true)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)设置可获焦。
+- `Focusable`为false：窗口不可获焦，调用[setWindowFocusable(true)](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)设置可获焦。
 - 确认窗口在前台区域（分隔线以上）。
 
 **问题3：截屏时窗口内容未隐藏**
 
 **检查字段**：
-- `IsPrivacyMode: false`：未启用隐私模式
-- `isSnapshotSkip: 0`：截屏时显示窗口内容
+- `IsPrivacyMode`为false：未启用隐私模式。
+- `isSnapshotSkip`为0：截屏时显示窗口内容。
 
 解决方案：调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式，截屏时窗口内容将显示为黑色。
 
 **问题4：窗口启动性能慢**
 
 **检查字段**：
-- `FirstFrameCallbackCalled: 0`：首帧未完成，可能页面加载慢
-- 结合日志分析启动耗时
+- `FirstFrameCallbackCalled`为0：首帧未完成，可能页面加载慢。
+- 结合日志分析启动耗时。
 
 **问题5：窗口触摸区域异常**
 
 **检查字段**：
-- `TouchHotAreas`尺寸异常：触摸热区设置错误
+- `TouchHotAreas`尺寸异常：触摸热区设置错误。
 - 与WindowRect对比，确认是否正确
 
 ### 查看窗口ArkUI渲染信息
@@ -281,85 +281,11 @@ UINodeCount: 159
 >
 > hidumper命令需要在设备或模拟器上执行，开发者可以通过hdc shell连接设备后执行。hidumper输出的是实时窗口状态，可能随窗口操作而变化，建议在问题发生时立即执行查询以获取准确信息。
 
-## 1300002错误码的定位指导
-
-错误码1300002表示窗口状态异常或窗口对象无效。
-
-### 可能原因
-
-- 窗口已销毁或正在销毁，但代码仍在尝试使用该窗口对象
-- 窗口生命周期管理错误，如在销毁流程中调用getLastWindow()
-- 异步任务在销毁后执行，访问已销毁的窗口对象
-
-### 窗口销毁时调用getLastWindow崩溃
-
-开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1)接口，导致应用崩溃。
-
-**日志信息**
-
-通过DevEco Studio或hdc查看崩溃日志：
-
-```bash
-hdc shell hilog | grep "1300002"
-```
-
-**典型日志示例**：
-
-```
-Error Name: Error
-Error Message: [window][getLastWindow]msg: xxx
-Error code: 1300002
-Stack trace:
-  at window.getLastWindow (WindowManagerService)
-  at MyComponent.onWindowStageDestroy (MyAbility.ts:50)
-```
-
-**关键信息**：
-- 错误码：1300002
-- 堆栈：getLastWindow()调用位置
-- 文件名和行号：定位具体代码位置
-
-**分析定位**
-
-根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)加载页面，销毁流程中错误调用getLastWindow导致崩溃。
-
-**示例对比**：
-
-```ts
-// 错误：窗口创建时未加载页面，销毁流程中调用getLastWindow
-onWindowStageCreate(windowStage: window.WindowStage) {
-    // 缺失：未调用loadContent加载页面
-    windowStage.getMainWindow((err, win) => {
-        win.showWindow(); // 直接显示空窗口
-    });
-}
-
-// 正确：窗口创建时立即加载页面，销毁流程只做资源清理
-onWindowStageCreate(windowStage: window.WindowStage) {
-    windowStage.getMainWindow((err, win) => {
-        win.loadContent('pages/MainPage'); // 创建时加载页面
-    });
-}
-```
-
-**检查要点**：
-- getLastWindow()调用位置不在onWindowStageDestroy、aboutToDisappear、onDestroy等销毁回调中
-- 异步任务不会在销毁后执行getLastWindow()
-
-> **说明：**
->
-> 错误码1300002通常因窗口销毁流程中错误调用getLastWindow导致。开发者应确保窗口创建时完成页面加载，销毁流程中仅做资源清理，避免调用getLastWindow等窗口操作接口。
-
 ## 超时警告WINDOW_FROZEN_DETECTION的定位指导
-
-WINDOW_FROZEN_DETECTION异常检测事件用于伪冻屏检测，帮助开发者及时发现和定位窗口伪冻屏相关问题。常见的异常类型包括：伪冻屏/透明窗检测等。
 
 **可能原因**
 
-- 窗口创建后未在5秒内调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)加载页面内容。
-- 异步操作耗时过长，超过超时阈值。
-- 先调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)显示窗口，再调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)加载内容。
-- 页面路径错误，导致加载失败。
+WINDOW_FROZEN_DETECTION 是一个窗口伪冻屏检测事件。当出现未设置成功UIContent、布局异常等情形时会触发此事件，可为排查伪冻屏问题提供线索，但事件触发并不等同于伪冻屏已实际发生。常见的异常类型包括：SetUIContent timeout（窗口内容加载超时）、RectCheck err（窗口尺寸异常）等。
 
 ### 定位窗口内容加载超时问题
 
@@ -385,6 +311,7 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 
 **排查步骤**
 
+检查代码流程：
 1. 是否在窗口创建后立即调用了[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)。
 2. 是否在页面加载和窗口显示之间有耗时操作。
 3. 是否先调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)再调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)。
@@ -427,13 +354,6 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 });
 ```
 
-**检查清单**
-
-1. 找到窗口创建代码，确认是否调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)。
-2. 检查页面加载和窗口显示之间是否有耗时操作。
-3. 确认调用顺序：先[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)后[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)。
-4. 验证页面路径是否正确。
-
 > **说明：**
 >
 > 系统的超时检测机制是为了保障用户体验，避免用户长时间看到空白窗口。开发者应重视此警告并及时修复。
@@ -465,7 +385,7 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 | `screenWidth` | 屏幕宽度（像素） | 当前屏幕的宽度，单位为像素 |
 | `screenHeight` | 屏幕高度（像素） | 当前屏幕的高度，单位为像素 |
 | `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值 |
-| `sessionRect` | 窗口矩形区域（像素） | 窗口的位置和尺寸，单位为像素 |
+| `sessionRect` | 窗口矩形区域（像素） | 窗口的位置和尺寸，单位为像素，坐标以屏幕左顶点为原点 |
 
 **检测逻辑**
 
@@ -539,3 +459,70 @@ windowClass.showWindow();
 > **说明：**
 >
 > WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数，确保窗口尺寸在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内。
+
+## 1300002错误码的定位指导
+
+错误码1300002表示窗口状态异常或窗口对象无效。
+
+### 窗口销毁时调用getLastWindow崩溃
+
+开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1)接口，导致应用崩溃。
+
+**典型日志信息**
+
+故障日志格式：
+
+```
+Error Name: Error
+Error Message: [window][getLastWindow]msg: xxx
+Error code: 1300002
+Stack trace:
+  at window.getLastWindow (WindowManagerService)
+  at MyComponent.onWindowStageDestroy (MyAbility.ts:50)
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：getLastWindow()调用位置
+- 文件名和行号：定位具体代码位置
+
+**分析定位及解决**
+
+根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)加载页面，销毁流程中错误调用getLastWindow导致崩溃。
+
+解决要点：
+- getLastWindow()调用位置不在onWindowStageDestroy、aboutToDisappear、onDestroy等销毁回调中
+- 异步任务不会在销毁后执行getLastWindow()
+
+**正反案例**
+
+错误示例
+
+```ts
+// 错误：窗口创建时未加载页面，销毁流程中调用getLastWindow
+onWindowStageCreate(windowStage: window.WindowStage) {
+    // 缺失：未调用loadContent加载页面
+    windowStage.getMainWindow((err, win) => {
+        win.showWindow(); // 直接显示空窗口
+    });
+}
+
+onWindowStageDestroy() {
+    let lastWindow = window.getLastWindow(this.context); // 崩溃！
+}
+```
+
+正确示例
+
+```ts
+// 正确：窗口创建时立即加载页面，销毁流程只做资源清理
+onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow((err, win) => {
+        win.loadContent('pages/MainPage'); // 创建时加载页面
+    });
+}
+
+onWindowStageDestroy() {
+    this.cleanupResources(); // 只做资源清理，不调用getLastWindow
+}
+```
