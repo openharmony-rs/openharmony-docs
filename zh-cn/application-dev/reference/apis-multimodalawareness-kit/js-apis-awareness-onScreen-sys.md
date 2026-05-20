@@ -642,7 +642,7 @@ interact接口支持的capList能力列表
 |capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
-|InjectEvent|注入事件<br> **起始版本：** 26.0.0|
+|InjectEvent|注入事件，capList为InjectEvent场景，options为必传选项，否则注入失败抛出34000001错误码<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
@@ -700,14 +700,14 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 }
 
 let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
-  parameters: {
+  "InjectEvent": {
     "InjectEvent" : {
-      "componentType":'Button',
-      "action": 'click',
+      "componentType":'',
+      "action": 'back',
       "params": {}
     }
-    "comId": ["89"],
-    "windowId": 66,
+    "comId": ["0"],
+    "windowId": 0,
     "displayId": -1
   }
 }
