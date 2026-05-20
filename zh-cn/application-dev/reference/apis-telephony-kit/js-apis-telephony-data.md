@@ -9,7 +9,7 @@
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。 
 
-## 导入模块
+## 导入模块getDefaultCellularDataSlotIdSync(): int
 
 ```ts
 import { data } from '@kit.TelephonyKit';
@@ -27,7 +27,7 @@ ArkTS-Sta: getDefaultCellularDataSlotId(callback: AsyncCallback\<int\>): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -124,7 +124,7 @@ ArkTS-Sta: getDefaultCellularDataSlotIdSync(): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -148,6 +148,8 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 获取蜂窝数据业务的上下行状态，使用callback方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **ArkTS-Dyn起始版本：** 7
@@ -159,6 +161,14 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 | 参数名   | 类型                                           | 必填 | 说明       |
 | -------- | ---------------------------------------------- | ---- | ---------- |
 | callback | AsyncCallback\<[DataFlowType](#dataflowtype)\> | 是   | 以callback形式异步返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -196,17 +206,27 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 获取蜂窝数据业务的上下行状态，使用Promise方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                     | 说明                                            |
 | ---------------------------------------- | ----------------------------------------------- |
 | Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回获取蜂窝数据业务的上下行状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -241,17 +261,27 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 获取蜂窝数据业务的连接状态，使用callback方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                                                   | 必填 | 说明       |
 | -------- | ------------------------------------------------------ | ---- | ---------- |
 | callback | AsyncCallback\<[DataConnectState](#dataconnectstate)\> | 是   | 以callback形式异步返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -289,17 +319,27 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 获取蜂窝数据业务的连接状态，使用Promise方式作为异步方法。
 
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
 **系统能力**：SystemCapability.Telephony.CellularData
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                                             | 说明                                  |
 | ------------------------------------------------ | ------------------------------------- |
 | Promise\<[DataConnectState](#dataconnectstate)\> | 以Promise形式返回获取PS域的连接状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 
 **示例：**
 
@@ -340,7 +380,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -403,7 +443,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -461,7 +501,7 @@ isCellularDataEnabledSync(): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -509,7 +549,7 @@ ArkTS-Sta: isCellularDataRoamingEnabled(slotId: int, callback: AsyncCallback\<bo
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -575,7 +615,7 @@ ArkTS-Sta: isCellularDataRoamingEnabled(slotId: int): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -643,7 +683,7 @@ ArkTS-Sta: isCellularDataRoamingEnabledSync(slotId: int): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -697,7 +737,7 @@ ArkTS-Sta: getDefaultCellularDataSimId(): int
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -726,7 +766,7 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -783,7 +823,7 @@ ArkTS-Sta: queryApnIds(apnInfo: ApnInfo): Promise\<Array\<int\>\>
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -867,7 +907,7 @@ ArkTS-Sta: setPreferredApn(apnId: int): Promise\<boolean\>
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -930,7 +970,7 @@ getActiveApnName(): Promise\<string\>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -981,7 +1021,7 @@ data.getActiveApnName().then((apn: string) => {
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值   | 说明                                       |
 | ---------------------- | ---- | ------------------------------------------ |
@@ -999,7 +1039,7 @@ data.getActiveApnName().then((apn: string) => {
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 值   | 说明                       |
 | ----------------------- | ---- | -------------------------- |
@@ -1017,7 +1057,7 @@ APN信息。
 
 **ArkTS-Dyn起始版本：** 16
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型      | 只读    |  可选      | 说明         |
 |------------|----------|---------|------------|-------------|
