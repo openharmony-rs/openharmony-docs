@@ -2153,8 +2153,8 @@ Enumerates the dynamic range modes (for example, SDR/HDR) for images, controllin
 | Value| Description|
 | -- | -- |
 | ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image. A wider range makes image brightness closer to real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments.|
-| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
-| ARKUI_DYNAMIC_RANGE_MODE_STANDARD | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed to white.|
+| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT = 1 | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
+| ARKUI_DYNAMIC_RANGE_MODE_STANDARD = 2 | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed.|
 
 ### ArkUI_ImageRotateOrientation
 
@@ -2172,14 +2172,14 @@ Enumerates image rotation directions.
 | Value| Description|
 | -- | -- |
 | ARKUI_ORIENTATION_AUTO = 0 | Use EXIF metadata for display orientation, with support for rotation and mirroring. EXIF is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos.|
-| ARKUI_ORIENTATION_UP | Display original pixel data without transformation.|
-| ARKUI_ORIENTATION_RIGHT | Display the image after rotating it 90 degrees clockwise.|
-| ARKUI_ORIENTATION_DOWN  | Display the image after rotating it 180 degrees clockwise.|
-| ARKUI_ORIENTATION_LEFT | Display the image after rotating it 270 degrees clockwise.|
-| ARKUI_ORIENTATION_UP_MIRRORED | Display the image after flipping it horizontally.|
-| ARKUI_ORIENTATION_RIGHT_MIRRORED  | Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.|
-| ARKUI_ORIENTATION_DOWN_MIRRORED | Display the image after flipping it vertically.|
-| ARKUI_ORIENTATION_LEFT_MIRRORED | Display the image after flipping it horizontally and then rotating it 270 degrees clockwise.|
+| ARKUI_ORIENTATION_UP = 1 | Display original pixel data without transformation.|
+| ARKUI_ORIENTATION_RIGHT = 2 | Display the image after rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN = 3 | Display the image after rotating it 180 degrees clockwise.|
+| ARKUI_ORIENTATION_LEFT = 4 | Display the image after rotating it 270 degrees clockwise.|
+| ARKUI_ORIENTATION_UP_MIRRORED = 5 | Display the image after flipping it horizontally.|
+| ARKUI_ORIENTATION_RIGHT_MIRRORED = 6 | Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN_MIRRORED = 7 | Display the image after flipping it vertically.|
+| ARKUI_ORIENTATION_LEFT_MIRRORED = 8 | Display the image after flipping it horizontally and then rotating it 270 degrees clockwise.|
 
 ### ArkUI_BlendMode
 
@@ -14813,7 +14813,7 @@ Obtains whether the line spacing is evenly distributed to the top and bottom of 
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | Pointer to the text style of the **TextEditor** component.|
-| bool* halfLeading | Pointer to the **halfLeading** parameter indicating whether to enable half leading.<br>                    **true** means to enable, and **false** means the opposite. The default value is **false**.|
+| bool* halfLeading | Pointer to the **halfLeading** parameter indicating whether half leading is enabled.<br>                    **true** means half leading is enabled, and **false** means the opposite. The default value is **false**.|
 
 **Returns**
 

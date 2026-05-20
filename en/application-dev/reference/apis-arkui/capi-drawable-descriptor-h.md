@@ -28,9 +28,9 @@ Declares the APIs of **NativeDrawableDescriptor**.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a struct for the **DrawableDescriptor** object.|
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a **DrawableDescriptor** object.|
 | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | - | Defines an **OH_PixelmapNative** object on the native side using Image Kit.|
-| [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines a struct for the pointer to an **OH_PixelmapNative** object.|
+| [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines the pointer to an **OH_PixelmapNative** object.|
 | [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | Defines the ArkUI native component instance object.<br>**Since**: 22|
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer type for an ArkUI native component instance object.<br>**Since**: 22|
 | [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | Defines the DrawableDescriptor animation controller object.<br>**Since**: 22|
@@ -558,7 +558,7 @@ Disposes of the DrawableDescriptor animation controller.
 ### OH_ArkUI_DrawableDescriptor_StartAnimation()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
+int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
 **Description**
@@ -582,7 +582,7 @@ Starts playback from the first frame.
 ### OH_ArkUI_DrawableDescriptor_StopAnimation()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
+int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
 **Description**
@@ -606,7 +606,7 @@ Stops the DrawableDescriptor animation and returns to the first frame.
 ### OH_ArkUI_DrawableDescriptor_ResumeAnimation()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
+int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
 **Description**
@@ -630,7 +630,7 @@ Resumes the DrawableDescriptor animation from the current frame.
 ### OH_ArkUI_DrawableDescriptor_PauseAnimation()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
+int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
 **Description**
@@ -654,7 +654,7 @@ Pauses playback on the current frame.
 ### OH_ArkUI_DrawableDescriptor_GetAnimationStatus()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status);
+int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status)
 ```
 
 **Description**
