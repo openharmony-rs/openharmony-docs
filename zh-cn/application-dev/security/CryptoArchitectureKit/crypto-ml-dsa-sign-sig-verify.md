@@ -38,6 +38,51 @@
 - 异步方法示例：
 
   <!-- @[signature_verification_with_ml_dsa_key_pair_ark_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ml_dsa_signature_verification/ml_dsa_signature_verification_asynchronous.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan', 'utf-8').buffer) };
+  let context: Uint8Array = new Uint8Array(buffer.from('test', 'utf-8').buffer);
+  
+  async function signMessagePromise(priKey: cryptoFramework.PriKey) {
+    let signer = cryptoFramework.createSign('ML-DSA');
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_CONTEXT_UINT8ARR, context);
+    await signer.init(priKey);
+    let signData = await signer.sign(input);
+    return signData;
+  }
+  
+  async function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
+    let verifier = cryptoFramework.createVerify('ML-DSA');
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_CONTEXT_UINT8ARR, context);
+    await verifier.init(pubKey);
+    let res = await verifier.verify(input, signMessageBlob);
+    console.info('verify result: ' + res);
+    return res;
+  }
+  
+  async function main() {
+    try {
+      let generator = cryptoFramework.createAsyKeyGenerator('ML-DSA-87');
+      let keyPair = await generator.generateKeyPair();
+      let signData = await signMessagePromise(keyPair.priKey);
+      let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
+      if (verifyResult === true) {
+        console.info('verify result: success.');
+        return 'Success';
+      } else {
+        console.error('verify result: failed.');
+        return 'Fail';
+      }
+    } catch (error) {
+      console.error(`verify failed, error: + ${JSON.stringify(error)}`);
+      return 'Fail';
+    }
+  }
+  ```
 
 - 同步方法示例：
 
