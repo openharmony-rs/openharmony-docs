@@ -33,7 +33,8 @@ export struct OnClickGesture {
             .width('60%')
             .height('50%')
             .backgroundColor(Color.Grey)
-            .onClick (() => { // 1. A click event is registered on the child component. Normally, clicking the child component triggers its own click handler first.
+            .onClick(() => {
+              // 1. A click event is registered on the child component. Normally, clicking the child component triggers its own click handler first.
               console.info('Clicked on child');
               this.increaseJudgeGuard();
             })
@@ -51,7 +52,8 @@ export struct OnClickGesture {
         .justifyContent(FlexAlign.Center)
         .backgroundColor(Color.Green)
         .gesture(
-          TapGesture() // 2. A tap gesture is registered on the parent component. Normally, tapping inside the child area gives priority to the child's click event.
+          // 2. A tap gesture is registered on the parent component. Normally, tapping inside the child area gives priority to the child's click event.
+          TapGesture()
             .onAction(() => {
               console.info('Clicked on parent');
               this.increaseJudgeGuard();
@@ -338,7 +340,7 @@ export struct Pinch {
             PinchGesture({ fingers: 3 })
               .onActionStart((event: GestureEvent | undefined) => {
                 console.info('Pinch start');
-              // When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
+              })// When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
               .onActionUpdate((event: GestureEvent | undefined) => {
                 if (event) {
                   this.scaleValue = this.pinchValue * event.scale;
@@ -365,7 +367,7 @@ export struct Pinch {
 ```
 
 
-![pinch](figures/pinch.png)
+
 
 
 ## Rotation Gesture (RotationGesture)
@@ -405,7 +407,7 @@ export struct Rotation {
                   if(event){
                     this.angle = this.rotateValue + event.angle;
                   }
-                  console.info('RotationGesture is onActionEnd');
+                  console.info('RotationGesture is onActionUpdate');
                 })
                   // When fingers lift, fix the component at the final rotation angle.
                 .onActionEnd(() => {
@@ -435,7 +437,7 @@ export struct Rotation {
 ```
 
 
-![rotation](figures/rotation.png)
+
 
 
 ## Swipe Gesture (SwipeGesture)
