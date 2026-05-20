@@ -1147,7 +1147,7 @@ let timer: reminderAgentManager.ReminderRequestTimer = {
 
 let reminderId: int = 1;
 reminderAgentManager.updateReminder(reminderId, timer).then(() => {
-  console.info(`Succeed in update reminder.`);
+  console.info(`Succeeded in updating reminder.`);
 }).catch((err: BusinessError): void => {
   console.error(`Failed to update reminder. Code is ${err.code}, message is ${err.message}`);
 });
