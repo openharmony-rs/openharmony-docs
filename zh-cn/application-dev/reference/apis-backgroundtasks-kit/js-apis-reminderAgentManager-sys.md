@@ -32,7 +32,7 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| ACTION_BUTTON_TYPE_CUSTOM<sup>10+</sup>  | 2 | 表示自定义的按钮。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| ACTION_BUTTON_TYPE_CUSTOM  | 2 | 表示自定义的按钮。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## ActionButton
 
@@ -42,10 +42,10 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| wantAgent<sup>10+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否 | 是 | 点击按钮跳转的ability信息。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
-| dataShareUpdate<sup>11+</sup> | [DataShareUpdate](#datashareupdate11) | 否 | 是 | 点击按钮将更新应用数据库。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| wantAgent | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否 | 是 | 点击按钮跳转的ability信息。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| dataShareUpdate | [DataShareUpdate](#datashareupdate) | 否 | 是 | 点击按钮将更新应用数据库。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 
-## DataShareUpdate<sup>11+</sup>
+## DataShareUpdate
 
 更新数据库需要的参数信息。<br/>
 数据提供方需要在module.json5中的proxyData节点定义要共享的表的标识，读写权限和基本信息。配置方式请见[数据提供方应用的开发](../../database/share-data-by-silent-access-sys.md#数据提供方应用的开发)。
@@ -70,7 +70,7 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| rruleWantAgent<sup>12+</sup> | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否 | 是 | 自定义重复日程，指明需要拉起的 Service Extension。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| rruleWantAgent | [WantAgent](./js-apis-reminderAgentManager.md#wantagent) | 否 | 是 | 自定义重复日程，指明需要拉起的 Service Extension。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## ReminderRequest
 
@@ -80,5 +80,5 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| notDistributed<sup>23+</sup> | boolean | 否 | 是 | 通知是否不进行全场景跨设备协同显示，默认为false。具体请参考[NotificationRequest.notDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)。<br> - 设置为true时：通知仅在本设备上显示。<br> - 设置为false时：通知将在所有协同设备上显示。<br> **系统接口：** 此接口为系统接口。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 |
-| forceDistributed<sup>23+</sup> | boolean | 否 | 是 | 通知是否强制进行全场景跨设备协同显示，默认为false。具体请参考[NotificationRequest.forceDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)。<br> - 设置为true时：通知将在所有协同设备上显示。<br> - 设置为false时：通知将按照协同管控名单显示。<br> **系统接口：** 此接口为系统接口。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 |
+| notDistributed | boolean | 否 | 是 | 通知是否不进行全场景跨设备协同显示，默认为false。具体请参考[NotificationRequest.notDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)。<br> - 设置为true时：通知仅在本设备上显示。<br> - 设置为false时：通知将在所有协同设备上显示。<br> **系统接口：** 此接口为系统接口。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 |
+| forceDistributed | boolean | 否 | 是 | 通知是否强制进行全场景跨设备协同显示，默认为false。具体请参考[NotificationRequest.forceDistributed](../apis-notification-kit/js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)。<br> - 设置为true时：通知将在所有协同设备上显示。<br> - 设置为false时：通知将按照协同管控名单显示。<br> **系统接口：** 此接口为系统接口。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 23 |
