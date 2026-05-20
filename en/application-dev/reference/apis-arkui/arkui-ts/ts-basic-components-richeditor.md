@@ -1900,7 +1900,7 @@ Defines the paragraph style.
 | wordBreak<sup>12+</sup> |  [WordBreak](ts-appendix-enums.md#wordbreak11) | No   | Yes| Sets the word break rule.<br>Default value: **WordBreak.BREAK_WORD**<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | lineBreakStrategy<sup>12+</sup> | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | No| Yes| Sets the line break rule.<br>Default value: **LineBreakStrategy.GREEDY**<br>This parameter takes effect when **wordBreak** is not set to **breakAll**. Hyphens are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | paragraphSpacing<sup>19+</sup> | number | No   | Yes| Spacing between paragraphs.<br>Unit: fp<br>Default value: **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  No | Yes| Vertical alignment mode of text paragraphs.<br>Default value: **TextVerticalAlign.BASELINE**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  No | Yes| Vertical alignment mode of text paragraphs.<br>Default value: **TextVerticalAlign.BASELINE**<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | textDirection<sup>23+</sup> | [TextDirection](ts-text-common.md#textdirection22) |  No | Yes| Text direction.<br>Default value: **TextDirection.DEFAULT**<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## LeadingMarginPlaceholder<sup>11+</sup>
@@ -3428,7 +3428,7 @@ struct Index {
           })
         })
 
-        Button("Apply Paragraph Spacing (50)").onClick (() => {
+        Button("Apply Paragraph Spacing (50)").onClick(() => {
           this.controller.updateParagraphStyle({ start: -1, end: -1,
             style: {
               paragraphSpacing: 50
@@ -5206,7 +5206,7 @@ struct Index {
               this.controller.setStyledString(this.richEditorStyledString)
               this.controller.setCaretOffset(this.richEditorStyledString.length)
           })
-          Button("Insert Text").onClick () => {
+          Button("Insert Text").onClick(() => {
             // Obtain the styled string displayed in the component.
             this.richEditorStyledString = this.controller.getStyledString();
             this.richEditorStyledString.appendStyledString(this.styledString)
@@ -5750,7 +5750,7 @@ struct StyledUndo {
     Column() {
       Column() {
         Row({space:2}) {
-          Button("Insert Text").onClick () => {
+          Button("Insert Text").onClick(() => {
             this.controller.addTextSpan("Insert text",
               {
                 style:
@@ -5760,7 +5760,7 @@ struct StyledUndo {
                 }
               })
           })
-          Button("Insert Image").onClick () => {
+          Button("Insert Image").onClick(() => {
             // Replace $r('app.media.startIcon') with the image resource file you use.
             this.controller.addImageSpan($r('app.media.startIcon'),
               {
@@ -6107,7 +6107,7 @@ struct AutoSpacing {
     Column() {
       Column() {
         Row({ space: 2 }) {
-          Button("Insert Chinese & Western Text").onClick (() ==> {
+          Button("Insert Chinese & Western Text").onClick(() ==> {
             this.controller.addTextSpan("Add a text span",
               {
                 style:
@@ -6117,7 +6117,7 @@ struct AutoSpacing {
                 }
               })
           })
-          Button("Insert Image").onClick () => {
+          Button("Insert Image").onClick(() => {
             // Replace $r('app.media.startIcon') with the image resource file you use.
             this.controller.addImageSpan($r('app.media.startIcon'),
               {
@@ -6380,14 +6380,14 @@ struct RichEditorExample {
         .includeFontPadding(this.includeFontPadding)
         .fallbackLineSpacing(this.fallbackLineSpacing)
       Row() {
-        Button ('Enable Adaptive Line Spacing')
+        Button('Enable Adaptive Line Spacing')
           .onClick(() => {
             this.fallbackLineSpacing = true
           })
           .width("45%")
           .height("10%")
           .margin({ right: 10 })
-        Button ('Disable Adaptive Line Spacing')
+        Button('Disable Adaptive Line Spacing')
           .onClick(() => {
             this.fallbackLineSpacing = false
           })
@@ -6398,14 +6398,14 @@ struct RichEditorExample {
       .margin({ top: 20 })
 
       Row() {
-        Button ('Enable Font Padding')
+        Button('Enable Font Padding')
           .onClick(() => {
             this.includeFontPadding = true
           })
           .width("45%")
           .height("10%")
           .margin({ right: 10 })
-        Button ('Disable Font Padding')
+        Button('Disable Font Padding')
           .onClick(() => {
             this.includeFontPadding = false
           })
@@ -6452,7 +6452,7 @@ struct CompressLeadingPunctuationDemo {
         Button("Enable Leading Punctuation Compression").onClick(() => {
           this.compressLeadingPunctuation = true
         }).margin({ top: 10 })
-        Button("Disable Leading Punctuation Compression").onClick (() => {
+        Button("Disable Leading Punctuation Compression").onClick(() => {
           this.compressLeadingPunctuation = false
         }).margin({ top: 10 })
       }
