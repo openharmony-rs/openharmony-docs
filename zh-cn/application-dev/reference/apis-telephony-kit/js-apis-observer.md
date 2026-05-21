@@ -1183,7 +1183,7 @@ off\(type: 'simStateChange', callback?: Callback\<SimStateData\>\): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -1226,7 +1226,7 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 
 订阅卡帐户变化事件，使用callback方式作为异步方法。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
