@@ -31,6 +31,10 @@ getContext(component?: Object):Context
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：** 
 
 | 参数名 | 类型          | 必填 | 说明                             |

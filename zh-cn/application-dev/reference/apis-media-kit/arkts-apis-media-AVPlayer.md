@@ -45,7 +45,7 @@ import { media } from '@kit.MediaKit';
 | duration<sup>9+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频时长，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | width<sup>9+</sup>                                  | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>9+</sup>                                 | ArkTS-Dyn: number<br>ArkTS-Sta: int                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| playlistLoopMode                      | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| playlistLoopMode                      | [PlaylistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -239,7 +239,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError()](#onerror23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -343,7 +343,7 @@ onError(callback: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[onerror](#onerror9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -357,7 +357,7 @@ onError(callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 在API version 9-13，针对网络、服务器等数据流异常，接口上报5400103；从API version 14开始，对应错误细化为错误码5411001-5411011。
 
@@ -404,7 +404,7 @@ offError(callback?: ErrorCallback): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[offerror](#offerror9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -840,7 +840,7 @@ advanceToNextMediaSource(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -889,7 +889,7 @@ advanceToPrevMediaSource(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -935,9 +935,9 @@ advanceToMediaSource(id: string): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型   | 说明                                       |
-| ------ | ------ | ------------------------------------------ |
-| id    | string | 指定媒体源的唯一标识符ID。 |
+| 参数名 | 类型 | 必填  | 说明                                       |
+| ------ | ------ | ---- | ------------------------------------------ |
+| id    | string | 是 | 指定媒体源的唯一标识符ID。 |
 
 **返回值：**
 
@@ -947,7 +947,7 @@ advanceToMediaSource(id: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2490,7 +2490,7 @@ onSpeedDone(callback: Callback\<int>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('seedDone')](#onspeeddone9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('speedDone')](#onspeeddone9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4208,7 +4208,7 @@ on(type: 'audioInterrupt', callback: Callback\<audio.InterruptEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt)](#onaudiointerrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt()](#onaudiointerrupt23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4245,7 +4245,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt)](#offaudiointerrupt23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt](#offaudiointerrupt23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4280,7 +4280,7 @@ onVideoSizeChange(callback: OnVideoSizeChangeHandler): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onVideoSizeChange')](#onvideosizechange9)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('videoSizeChange')](#onvideosizechange9)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -4439,7 +4439,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioOutputDeviceChangeWithInfo)](#offaudiooutputdevicechangewithinfo23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offaudiooutputdevicechangewithinfo23](#offaudiooutputdevicechangewithinfo23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4578,7 +4578,7 @@ on(type: 'subtitleUpdate', callback: Callback\<SubtitleInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate)](#onsubtitleupdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsubtitleupdate](#onsubtitleupdate23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4620,7 +4620,7 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSubtitleUpdate](#onsubtitleupdate23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onsubtitleupdate23](#onsubtitleupdate23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4861,7 +4861,7 @@ on(type: 'seiMessageReceived', payloadTypes: Array\<number>, callback: OnSeiMess
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onseimessagereceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onseimessagereceived23](#onseimessagereceived23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -4911,7 +4911,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSeiMessageReceived)](#onseimessagereceived23)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onseimessagereceived](#onseimessagereceived23)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -5266,7 +5266,7 @@ onTrackChange(callback: OnTrackChangeHandler): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('trackChange')](#ontrackchange12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('trackChange')](#ontrackchange12)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
@@ -5384,7 +5384,7 @@ onAmplitudeUpdate(callback: Callback\<Array\<double>>): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('amplitudeUpdate')](#onamplitudeupdate13)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('amplitudeUpdate')](#onamplitudeupdate13)。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 

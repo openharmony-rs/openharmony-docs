@@ -1036,12 +1036,13 @@ Enter键的功能类型。
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 <!--Table: 20%; 20%; 10%; 10%; 40%-->
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| textInputType | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| enterKeyType | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| 名称 | 类型 | 只读 | 可选 | 说明                                                                                                                                                                                                                                          |
+| -------- | -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| textInputType | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                 |
+| enterKeyType | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                                                                                                                                                             |
 | placeholder<sup>20+</sup> | string | 否 | 是 | 编辑框设置的占位符信息。 <br/>- 编辑框设置占位符信息时，长度不超过255个字符（如果超出将会自动截断为255个字符），用于提示或引导用户输入临时性文本或符号。（例如：提示输入项为"必填"或"非必填"的输入结果反馈。）<br/>- 编辑框没有设置占位符信息时，默认为空字符串。<br/>- 该字段在调用[attach](#attach10)时提供给输入法应用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| abilityName<sup>20+</sup> | string | 否 | 是 | 编辑框设置的ability名称。<br/>- 编辑框设置ability名称时，长度不超过127个字符（如果超出将会自动截断为127个字符）。<br/>- 编辑框未设置ability名称时，默认为空字符串。<br/>- 该字段在调用绑定[attach](#attach10)时提供给输入法应用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName<sup>20+</sup> | string | 否 | 是 | 编辑框设置的ability名称。<br/>- 编辑框设置ability名称时，长度不超过127个字符（如果超出将会自动截断为127个字符）。<br/>- 编辑框未设置ability名称时，默认为空字符串。<br/>- 该字段在调用绑定[attach](#attach10)时提供给输入法应用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23                                      |
+| consumeKeyEvents | boolean | 否 | 是 | 编辑框是否具有完整处理字母、字符、功能等按键的能力。默认值为false。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>- 该字段在调用绑定[attach](#attach10) / [InputAttribute](#inputattribute10)时提供给输入法应用。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。  |
 
 ## TextConfig<sup>10+</sup>
 
@@ -1075,7 +1076,7 @@ Enter键的功能类型。
 | top | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
 | width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
 | height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
-| displayId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 是 | 光标所在显示器的ID。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
+| displayId | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 是 | 光标所在显示器的ID。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。|
 
 ## Range<sup>10+</sup>
 

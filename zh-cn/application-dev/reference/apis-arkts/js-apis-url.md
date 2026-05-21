@@ -1,8 +1,8 @@
 # @ohos.url (URL字符串解析)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -44,14 +44,6 @@ URLParams的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | init | ArkTS-Dyn: string[][] <br> ArkTS-Sta: [string, string][] \| Record&lt;string, string&gt; \| string \| URLParams | 否 | 入参对象。<br/>- string[][]：字符串二维数组。<br/>- Record&lt;string, string&gt;：对象列表。<br/>- string：字符串。<br/>- URLParams：对象。<br/>- 默认值：null。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 
 **示例：**
 
@@ -111,14 +103,6 @@ append(name: string, value: string): void
 | name | string | 是 | 需要插入搜索参数的键名。 |
 | value | string | 是 | 需要插入搜索参数的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -147,14 +131,6 @@ delete(name: string): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 需要删除的键值名称。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -190,14 +166,6 @@ getAll(name: string): string[]
 | 类型 | 说明 |
 | -------- | -------- |
 | string[] | 返回指定名称的所有键对应值的集合。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -288,14 +256,6 @@ forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => voi
 | key | string | 是 | 当前遍历到的键名。 |
 | searchParams | [URLParams](#urlparams9) | 是 | 当前调用forEach方法的实例对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -373,14 +333,6 @@ ArkTS-Sta: get(name: string): string | undefined
 | -------- | -------- |
 | ArkTS-Dyn: string \| null <br> ArkTS-Sta: string \| undefined | 返回第一个值，如果没找到，返回 null。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -416,14 +368,6 @@ has(name: string): boolean
 | -------- | -------- |
 | boolean | 是否存在相对应的key值，存在返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -455,14 +399,6 @@ set(name: string, value: string): void
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 将要设置的参数的键值名。 |
 | value | string | 是 | 所要设置的参数值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -827,11 +763,10 @@ static parseURL(url: string, base?: string | URL): URL
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200002 | Invalid url string. |
 
 **示例：**

@@ -82,9 +82,9 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 
 | 名称                              | 类型                                      | 只读 | 可选  | 说明                                                                       |
 |---------------------------------|-----------------------------------------|-----|-----|--------------------------------------------------------------------------|
-| checkBoxColor                   | string                                  | 否  | 是 | 勾选框的背景色。格式为8位十六进制颜色代码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
+| checkBoxColor                   | string                                  | 否  | 是 | 勾选框的背景色。<br>格式为8位十六进制颜色代码。前2位表示透明度，后6位表示RGB颜色值。<br>示例：'#FFFFFFFF'表示白色不透明背景；'#80FF0000'表示半透明红色背景。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
 | backgroundColor                 | string                                  | 否  | 是 | picker宫格页面背景色。格式为8位十六进制颜色代码。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                             |
-| isRepeatSelectSupported         | boolean                                 | 否  | 是 | 是否支持单张图片重复选择。true表示支持。默认不支持。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
+| isRepeatSelectSupported         | boolean                                 | 否  | 是 | 是否支持单张图片重复选择。true表示支持，false表示不支持。默认值为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                   |
 | checkboxTextColor               | string                                  | 否  | 是 | 勾选框内文本颜色。格式为8位十六进制颜色代码（该能力从API version 19开始支持，API version 19之前系统默认为白色）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
 | photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode)     | 否  | 是 | 大图背景颜色。包括跟随系统、浅色模式以及深色模式，默认为跟随系统。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                        |
 | maxSelectedReminderMode         | [ReminderMode](#remindermode)           | 否  | 是 | 选择数量达到最大时的提示方式。包括弹toast提示、不提示以及蒙层提示，默认为弹toast提示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
@@ -92,7 +92,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | selectMode                      | [SelectMode](#selectmode)               | 否  | 是  | 选择模式。包括多选和单选，默认为多选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                      |
 | maxPhotoSelectNumber            | number                                  | 否  | 是 | 图片最大的选择数量。最大值为500，受到最大选择总数的限制。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
 | maxVideoSelectNumber            | number                                  | 否  | 是 | 视频最大的选择数量。最大值为500，受到系统中所有媒体文件最大选择总数的限制。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否  | 是 | 是否支持滑动多选，true表示支持。默认不支持。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                            |
+| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | 否  | 是 | 是否支持滑动多选，true表示支持，false表示不支持。默认值为false。重复选择场景不支持滑动多选。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                            |
 | photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | 否  | 是 | 设置大图页checkbox的位置。第一个参数为X方向偏移量，第二个参数为Y方向偏移量。传参范围[0, 1]，代表距离组件左上角0%-100%的偏移量。默认值为[0, 0]。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | 否  | 是 | 设置组件宫格页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | 否  | 是 | 设置组件大图页margin。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -107,6 +107,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| contextRecoveryInfo        | [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)                        | 否   | 是 | 用于恢复上次退出时PhotoPicker现场的信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0 |
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
@@ -218,17 +219,14 @@ type ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => v
 
 ```ts
 import {
-    ClickResult,
-    ClickType,
-    DataType,
-    ItemInfo,
-    ItemClickedNotifyCallback,
-    PhotoPickerComponent,
-    PickerController,
-    PickerOptions,
+  ClickType,
+  DataType,
+  ItemInfo,
+  PhotoPickerComponent,
+  PickerController,
+  PickerOptions,
 } from '@kit.MediaLibraryKit';
-import { router } from '@kit.ArkUI';
-
+import { ClickResult, ItemClickedNotifyCallback } from '@ohos.file.PhotoPickerComponent';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'clickedNotifyDemo';
@@ -279,7 +277,7 @@ private isOnClickedNotify: boolean = false;
     };
 
     aboutToAppear(): void {
-        let params = router.getParams() as Checks;
+        let params = this.getUIContext().getRouter().getParams() as Checks;
 
         this.pickerOptions.isSlidingSelectionSupported = true;
         this.pickerOptions.isSearchSupported = false;
@@ -552,7 +550,7 @@ setPhotoBrowserUIElementVisibility(elements: Array&lt;PhotoBrowserUIElement&gt;,
 | 参数名         | 类型                                                             | 必填  | 说明                |
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | elements    | Array&lt;[PhotoBrowserUIElement](#photobrowseruielement13)&gt; | 是 | 大图页大图预览组件外其他UI元素。 |
-| isVisible | boolean                                                        | 是 | 是否可见。true表示可见，默认为false。             |
+| isVisible | boolean                                                        | 是 | 设置的elements元素是否可见。true表示可见，false表示不可见。默认值为false。             |
 
 ### replacePhotoPickerPreview<sup>15+</sup>
 
@@ -677,6 +675,26 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | 类型   | 说明                     |
 | ------ | ------------------------ |
 | Promise\<void> | Promise对象，无返回结果。 |
+
+### completed
+
+completed(): Promise\<CompletedResult>
+
+应用可通过该接口，在Picker界面完成选择操作后获取完整现场数据，下一次启动Picker时可以使用该数据恢复现场。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| Promise\<[CompletedResult](#completedresult)> | Promise对象，返回恢复现场的信息。 |
 
 ## BaseItemInfo
 
@@ -846,6 +864,24 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | functionName | string | 否   | 否 |产生错误的接口名称。 |
 | errorCode | number | 否   | 否 | 错误码。 |
 | message | string | 否   | 否 | 接口返回的具体错误描述信息。 |
+
+## CompletedResult
+
+Picker上次退出时现场的信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称 | 类型                                             | 只读 | 可选 | 说明      |
+| ---- | ------------------------------------------------ | ---- | ---- |---------|
+| photoUris | Array&lt;string&gt; | 否   | 否 | 已选择的图片或视频URI。该URI数组仅支持通过临时授权方式调用photoAccessHelper.getAssets使用。 |
+| contextRecoveryInfo |  [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)   | 否   | 否 | PhotoPicker退出状态的上下文信息。  |
+| movingPhotoBadgeStates | Array&lt;[photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)&gt;  | 否   | 否 | 已选择媒体文件的动态照片状态。当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates包含动态照片状态；否则为空。 |
 
 ## DataType
 
@@ -1041,7 +1077,10 @@ Picker的颜色模式。
 
 ```ts
 // xxx.ets
-// 在API version 23之前的版本中，需要使用 'import { api1, api2, ... } from @ohos.file.PhotoPickerComponent'的导入方式。
+// 从API version 23开始，推荐使用统一导入方式，从'@kit.MediaLibraryKit'导入所需模块。
+// 在API version 23之前的版本中，需要使用分别导入方式。
+// import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType, MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement, ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, videoPlayStateChangedCallback, VideoPlayerState } from '@ohos.file.PhotoPickerComponent';
+// import { photoAccessHelper } from '@ohos.file.photoAccessHelper';
 import {
   PhotoPickerComponent,
   PickerController,

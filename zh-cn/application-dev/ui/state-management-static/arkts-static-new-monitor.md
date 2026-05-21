@@ -84,7 +84,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    
    import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, Text } from '@kit.ArkUI';
    
-   class Info {
+   export class Info {
      name: string;
      age: number;
      constructor(name: string, age: number) {
@@ -132,7 +132,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace name: string = 'Tom';
      @Trace region: string = 'North';
      @Trace job: string = 'Teacher';
@@ -190,11 +190,11 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Inner {
+   export class Inner {
      @Trace num: number = 0;
    }
    @ObservedV2
-   class Outer {
+   export class Outer {
      @Trace inner: Inner = new Inner();
      @Monitor(['inner.num'])
      onChange(monitor: IMonitor): void {
@@ -224,7 +224,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Base {
+   export class Base {
      @Trace name: string;
      // 基类监听name属性
      @Monitor(['name'])
@@ -236,7 +236,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      }
    }
    @ObservedV2
-   class Derived extends Base {
+   export class Derived extends Base {
      @Trace age: int = 0;
      // 继承类监听name属性
      @Monitor(['name'])
@@ -272,7 +272,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace name: string;
      @Trace age: number;
      
@@ -282,7 +282,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      }
    }
    @ObservedV2
-   class ArrMonitor {
+   export class ArrMonitor {
      @Trace dimensionTwo: number[][] = [[1,1,1],[2,2,2],[3,3,3]];
      @Trace dimensionThree: number[][][] = [[[1],[2],[3]],[[4],[5],[6]],[[7],[8],[9]]];
      @Trace infoArr: Info[] = [new Info('Jack', 24), new Info('Lucy', 18)];
@@ -369,7 +369,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace person: Person;
      @Monitor(['person.name'])
      onNameChange(monitor: IMonitor): void {
@@ -384,7 +384,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
      }
    }
    @ObservedV2
-   class Person {
+   export class Person {
      @Trace name: string;
      @Trace age: number;
      constructor(name: string, age: number) {
@@ -423,7 +423,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
-   class Frequence {
+   export class Frequence {
      @Trace count: number = 0;
      @Monitor(['count'])
      onCountChange(monitor: IMonitor): void {
@@ -1003,7 +1003,7 @@ struct MonitorWildcardSet {
    const t3: string = 't3'; // const常量
    let t4: string = 't4'; // 变量
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace t1: number = 0;
      @Trace t2: number = 0;
      @Trace t3: number = 0;
@@ -1032,7 +1032,7 @@ struct MonitorWildcardSet {
 
    ```ts
    @ObservedV2
-   class Info {
+   export class Info {
      @Trace count: number = 0;
      @Monitor(['count'])
      onCountChange(monitor: IMonitor): void {
@@ -1047,7 +1047,7 @@ struct MonitorWildcardSet {
   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
 
   @ObservedV2
-  class Info {
+  export class Info {
     @Trace name: string = 'Tom';
     @Trace region: string = 'North';
     @Trace job: string = 'Teacher';
@@ -1055,12 +1055,12 @@ struct MonitorWildcardSet {
     // job属性被@Trace装饰，编译成功
     @Monitor(['job'])
     onJobChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<string>()?.before} to ${monitor.value<string>()?.now}`);
     }
     // age属性未被@Trace装饰，编译成功，但会显示Plugin warning的告警
     @Monitor(['age'])
     onAgeChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
     }
   }
   ```
@@ -1073,7 +1073,7 @@ struct MonitorWildcardSet {
   import { Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Param, Trace } from '@kit.ArkUI';
   
   @ObservedV2
-  class UserV2 {
+  export class UserV2 {
     @Trace name: string = 'Tom';
     age: number = 1;
   }
@@ -1089,12 +1089,12 @@ struct MonitorWildcardSet {
     // 编译成功
     @Monitor(['user'])
     onUserChange(monitor: IMonitor) {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<UserV2>()?.before} to ${monitor.value<UserV2>()?.now}`);
     }
     // 编译成功，但会显示Plugin warning的告警
     @Monitor(['age']) 
     onAgeChange(monitor: IMonitor) {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
     }
     
     build() {
@@ -1112,26 +1112,26 @@ struct MonitorWildcardSet {
   import { Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
   
   @ObservedV2 
-  class UserV2 {
+  export class UserV2 {
     @Trace name: string = 'Tom';
     age: number = 1;
   }
   
   @ObservedV2
-  class Info {
+  export class Info {
     @Trace age: number = 25;
     @Trace user: UserV2 = new UserV2();
-
+  
     // age1不存在，会导致编译报错
     @Monitor(['age1'])
     onAgeChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
     }
-
+  
     // user.age1不存在，会导致编译报错
     @Monitor(['user.age1'])
     onUserAgeChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
     }
   }
   
@@ -1144,13 +1144,13 @@ struct MonitorWildcardSet {
     // user1不存在，会导致编译报错
     @Monitor(['user1'])  
     onUserChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
     } 
   
     // user.age1不存在，会导致编译报错
     @Monitor(['user.age1'])  
     onUserAgeChange(monitor: IMonitor): void {
-      console.info(`change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+      console.info(`change from ${monitor.value<Any>()?.before} to ${monitor.value<Any>()?.now}`);
     }
   
     build() {
@@ -1187,11 +1187,11 @@ struct MonitorWildcardSet {
 import { Button, Color, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
-class Info {
+export class Info {
   @Trace value: number = 50;
 }
 @ObservedV2
-class UIStyle {
+export class UIStyle {
   info: Info = new Info();
   @Trace color: Color = Color.Black;
   @Trace fontSize: number = 45;

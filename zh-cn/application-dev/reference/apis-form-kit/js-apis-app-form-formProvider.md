@@ -1,9 +1,9 @@
 # @ohos.app.form.formProvider (formProvider)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间等能力。
@@ -847,6 +847,8 @@ openFormManager(want: Want): void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**设备行为差异：** 该接口在Wearable中调用会返回[16501000](./errorcode-form.md#16501000-内部功能错误)错误码。
 
 **ArkTS-Dyn起始版本：** 18
 

@@ -33,9 +33,9 @@ IndicatorComponent(controller?: IndicatorComponentController)
 
 单独导航点组件的构造函数，可配置该组件的控制器。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,9 +63,9 @@ ArkTS-Sta: style(indicatorStyle: DotIndicator | DigitIndicator | undefined)
 
 设置可选导航点指示器样式。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,9 +93,9 @@ ArkTS-Sta: count(totalCount: int | undefined)
 
 单独导航点组件和Swiper绑定的时候，以Swiper的页面数量为准。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,9 +119,9 @@ ArkTS-Sta: initialIndex(index: int | undefined)
 
 单独导航点组件和Swiper绑定的时候，该属性不生效。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,9 +145,9 @@ ArkTS-Sta: loop(isLoop: boolean | undefined)
 
 单独导航点组件和Swiper绑定的时候，该属性不生效。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,9 +171,9 @@ ArkTS-Sta: vertical(isVertical: boolean | undefined)
 
 单独导航点组件和Swiper绑定的时候，该属性不生效。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,9 +199,9 @@ ArkTS-Sta: onChange(event: Callback\<int> | undefined)
 
 当前显示的选中导航点索引变化时触发该事件，可通过回调函数获取当前选中导航点的索引值。取值为undefined时，不使用回调函数。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -225,9 +225,9 @@ constructor()
 
 IndicatorComponentController的构造函数。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -241,9 +241,9 @@ showNext(): void
 
 跳转到下一导航点。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -257,9 +257,9 @@ showPrevious(): void
 
 跳转到上一导航点。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -275,9 +275,9 @@ ArkTS-Sta: changeIndex(index: int | undefined, useAnimation?: boolean): void
 
 翻至指定导航点。
 
-**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

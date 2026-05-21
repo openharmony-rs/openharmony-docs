@@ -52,14 +52,14 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                          |
-| 1600007  | The notification does not exist.                     |
+| 1600007  | The notification does not exist.<br> 适用版本：11                     |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                       |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                                 |
+| 1600014  | No permission.<br> 适用版本：11                                       |
+| 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11 |
+| 1600016  | The notification version for this update is too low.<br> 适用版本：11 |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：12 |
+| 2300007  | Network unreachable.<br> 适用版本：11                                 |
 
 **示例：**
 
@@ -156,14 +156,14 @@ publish(request: NotificationRequest): Promise\<void\>
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                          |
-| 1600007  | The notification does not exist.                     |
+| 1600007  | The notification does not exist.<br> 适用版本：11                     |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                       |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                                 |
+| 1600014  | No permission.<br> 适用版本：11                                       |
+| 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11 |
+| 1600016  | The notification version for this update is too low.<br> 适用版本：11 |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：12 |
+| 2300007  | Network unreachable.<br> 适用版本：11                                 |
 
 **示例：**
 
@@ -1314,7 +1314,7 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int): Promise\<void\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18 |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1376,7 +1376,7 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int, callback: AsyncCallback\<void\>): vo
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18 |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1891,7 +1891,7 @@ notificationManager.cancelGroup(groupName).then(() => {
 
 isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): void
 
-在使用[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
+在使用[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md#notificationtemplate-1)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -1953,7 +1953,7 @@ notificationManager.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-在使用[NotificationTemplate](./js-apis-inner-notification-notificationTemplate.md)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。
+在使用[NotificationTemplate](js-apis-inner-notification-notificationTemplate.md#notificationtemplate-1)发布通知前，可以通过该接口查询是否支持对应的通知模板。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2046,8 +2046,8 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> 适用版本：11         |
+| 1600013  | A notification dialog box is already displayed.<br> 适用版本：11           |
 
 **示例：**
 
@@ -2140,8 +2140,8 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> 适用版本：11          |
+| 1600013  | A notification dialog box is already displayed.<br> 适用版本：11           |
 
 **示例：**
 
@@ -2219,8 +2219,8 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> 适用版本：11          |
+| 1600013  | A notification dialog box is already displayed.<br> 适用版本：11           |
 
 **示例：**
 
@@ -2268,8 +2268,8 @@ requestEnableNotification(): Promise\<void\>
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> 适用版本：11          |
+| 1600013  | A notification dialog box is already displayed.<br> 适用版本：11           |
 
 **示例：**
 
@@ -2436,7 +2436,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18 |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 | 1600018  | The notification settings window is already displayed.           |
@@ -2696,7 +2696,7 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 
 通知内容类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2705,7 +2705,7 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 | NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | 普通文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23          |
 | NOTIFICATION_CONTENT_LONG_TEXT    | 1          | 长文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23         |
 | NOTIFICATION_CONTENT_PICTURE      | 2          | 图片类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23          |
-| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23|
+| NOTIFICATION_CONTENT_CONVERSATION | 3          | 社交类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23|
 | NOTIFICATION_CONTENT_MULTILINE    | 4          | 多行文本类型通知。<br/>**ArkTS-Dyn起始版本**：9<br/>**ArkTS-Sta起始版本**：23        |
 | NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | 系统实况窗类型通知。不支持三方应用直接创建该类型通知。系统代理创建系统实况窗类型通知后，三方应用可以通过发布相同ID的通知来更新指定内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
 | NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | 普通实况窗类型通知。仅系统应用可用。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23  |
@@ -2733,7 +2733,7 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 
 通知渠道类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Notification.Notification
 

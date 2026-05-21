@@ -26,7 +26,7 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -220,7 +220,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 
 此接口在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -466,7 +466,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 | 名称        | 类型                    | 只读 | 可选 | 说明                                                         |
 | ----------- | ----------------------- | ---- | ---- | ------------------------------------------------------------ |
-| uri<sup>12+</sup>         | string                  | 是   | 否   | 媒体文件资源URI（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件URI介绍中的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| uri<sup>12+</sup>         | string                  | 是   | 否   | 媒体文件资源URI（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件URI介绍中的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoType   | [PhotoType](#phototype) | 是   | 否   | 媒体文件类型。                                               |
 | displayName | string                  | 是   | 否   | 显示文件名，包含后缀名。字符串长度的取值范围为[1, 255]。                                     |
 
@@ -638,7 +638,7 @@ commitModify(): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1319,7 +1319,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 枚举，媒体文件类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1332,7 +1332,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 枚举，不同[PhotoAsset](#photoasset)的类型。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

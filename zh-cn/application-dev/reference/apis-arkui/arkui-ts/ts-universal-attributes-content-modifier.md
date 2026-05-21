@@ -25,7 +25,7 @@ ArkTS-Sta: applyContent(): WrappedBuilder<CustomBuilderT\<T\>>
 
 定制内容区的Builder。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +50,7 @@ ButtonConfiguration、CheckBoxConfiguration、CheckBoxGroupConfiguration、DataP
 
 开发者需要自定义class实现ContentModifier接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
