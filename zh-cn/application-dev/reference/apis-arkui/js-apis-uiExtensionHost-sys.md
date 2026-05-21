@@ -52,6 +52,8 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -104,6 +106,8 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 **ArkTS-Dyn起始版本：** 11
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -150,6 +154,8 @@ onAvoidAreaChange(callback: Callback<uiExtension.AvoidAreaInfo>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -190,6 +196,8 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -235,6 +243,8 @@ offAvoidAreaChange(callback?: Callback<uiExtension.AvoidAreaInfo>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -275,6 +285,8 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -322,6 +334,8 @@ onWindowSizeChange(callback: Callback<window.Size>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -361,6 +375,8 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -405,6 +421,8 @@ offWindowSizeChange(callback?: Callback<window.Size>): void
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -452,6 +470,8 @@ hideNonSecureWindows(shouldHide: boolean): Promise&lt;void&gt;
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -826,6 +846,8 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -923,6 +945,8 @@ hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 23
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **参数：**
@@ -996,6 +1020,8 @@ export default class EntryAbility extends UIExtensionAbility {
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
