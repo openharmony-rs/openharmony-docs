@@ -65,6 +65,8 @@ ArkTS-Sta: onVisibleAreaChange(ratios: Array&lt;double&gt; | undefined, event: V
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 22
@@ -107,6 +109,8 @@ ArkTS-Sta: onVisibleAreaApproximateChange(options: VisibleAreaEventOptions | und
 > 从API version 23开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,6 +166,8 @@ ArkTS-Sta: type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio:
 组件可见区域变化事件的回调类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
