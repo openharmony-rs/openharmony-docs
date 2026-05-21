@@ -479,7 +479,7 @@ function testGetActiveProfile(videoOutput: camera.VideoOutput): camera.Profile |
 }
 ```
 
-## isMirrorSupported
+## isMirrorSupported<sup>15+</sup>
 
 isMirrorSupported(): boolean
 
@@ -504,7 +504,7 @@ function testIsMirrorSupported(videoOutput: camera.VideoOutput): boolean {
 }
 ```
 
-## enableMirror
+## enableMirror<sup>15+</sup>
 
 enableMirror(enabled: boolean): void
 
@@ -523,6 +523,15 @@ enableMirror(enabled: boolean): void
 | 参数名      | 类型                    | 必填 | 说明                        |
 |----------| ---------------------- | ---- |---------------------------|
 | enabled | boolean                | 是   | 启用/关闭镜像录像。true为开启镜像录像，false为关闭镜像录像。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                     |
+| -------- |------------------------------------------------|
+| 7400101  | Parameter missing or parameter type incorrect. |
+| 7400103  | Session not config.                    |
 
 **示例：**
 

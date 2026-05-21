@@ -55,11 +55,11 @@
 | CAMERA_CONNECTION_USB_PLUGIN | 1    | USB连接的相机。 |
 | CAMERA_CONNECTION_REMOTE     | 2    | 远程连接的相机。 |
 
-## HostDeviceType
+## HostDeviceType<sup>15+</sup>
 
 枚举，远端相机设备类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
