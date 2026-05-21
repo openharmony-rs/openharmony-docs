@@ -408,7 +408,7 @@ function syncRegisterCallback(proxy: UIExtensionProxy) {
 
 **组件提供方**
 
-提供方包含两个文件需要修改：
+提供方包含两个文件需要修改。
 
 - 提供方新增扩展入口文件`/src/main/ets/uiextensionability/SecurityUIExtProvider.ets`。
 
