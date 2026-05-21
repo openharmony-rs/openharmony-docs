@@ -15,16 +15,16 @@ For details about the related APIs, see [LazyForEach](../../reference/apis-arkui
 > **NOTE**
 >
 > In scenarios involving a large number of child components, **LazyForEach**, when combined with techniques such as cached list items, dynamic preloading, and component reuse, can significantly improve scrolling frame rates while reducing memory usage. For best practices, see [Optimizing Frame Loss for Long List Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-best-practices-long-list).
-> The [Repeat](./arkts-new-rendering-control-repeat.md) component also provides the iterative rendering capability. Compared with **LazyForEach**, **Repeat** listens for data source changes based on state management, which is more convenient. In addition, **Repeat** supports child component reuse, improving the UI rendering efficiency. Therefore, **Repeat** is recommended. You can migrate the existing **LazyForEach** component to the **Repeat** component by referring to [Migrating from LazyForEach to Repeat](./arkts-lazyforeach-repeat-migration-guide.md).
+> The [Repeat](./arkts-new-rendering-control-repeat.md) component also provides the iterative rendering capability. Compared with **LazyForEach**, **Repeat** listens for data source changes based on state management, which is more convenient. In addition, **Repeat** supports child component reuse, improving the UI rendering efficiency. Therefore, **Repeat** is recommended. You can also refer to [Migration for Repeated Content Rendering](../state-management/arkts-v1-v2-migration-rendering-control-repeat.md) to migrate the existing **LazyForEach** component to **Repeat**.
 
 ## Constraints
 
 - **LazyForEach** must be used within a container component. Only the following components support lazy loading with configurable **cachedCount** (to load only the visible portion plus a small buffer of data before and after): [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md), [ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md), [Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md), [Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md), and [WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md). Other components load all data at once. The parent component supporting lazy loading calculates the number of child components to render in the visible area based on its own and the children's dimensions. If height or width values are missing, lazy loading may fail in certain scenarios. For details, see [Lazy Loading Failure](#lazy-loading-failure).
 - **LazyForEach** uses the generated key value to determine whether to refresh child components. Components with unchanged key values will not be refreshed.
-- A container component may contain only one **LazyForEach**. For example, in a **List** component, avoid mixing **ListItem**, **ForEach**, **LazyForEach**, or multiple **LazyForEach** components simultaneously.
+- A container component may contain only one **LazyForEach**. For example, you are advised not to use [ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md), [ForEach](./arkts-rendering-control-foreach.md) and **LazyForEach** in a **List**, or to use multiple **LazyForEach** components in a **List** simultaneously.
 - Each iteration of **LazyForEach** must generate exactly one child component. The child component generator function should return a single root component.
 - Generated child components must be valid within the parent container component of **LazyForEach**.
-- **LazyForEach** can be used within **if/else** statements and may itself contain such statements.
+- **LazyForEach** can be used within [if/else](./arkts-rendering-control-ifelse.md) statements and may itself contain such statements.
 - The key generation function must produce unique values for each data item. Duplicate key values will cause rendering issues.
 - **LazyForEach** must be updated through a **DataChangeListener** object (for details, see [LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)). Reassigning **dataSource** (first parameter) causes an exception. If **dataSource** uses a state variable, changes to the state variable will not trigger UI refresh in **LazyForEach**.
 - For optimal rendering performance, ensure the **onDataChange** API of **DataChangeListener** generates new key values different from previous ones to trigger component re-rendering.
@@ -42,7 +42,7 @@ The core implementation requires the following APIs from **IDataSource**: [total
 
 ### Key Generation Rules
 
-During **LazyForEach** rendering, the system generates a unique, persistent key for each item to identify the owing component. When the key changes, the ArkUI framework considers that the array element has been replaced or modified and creates a component based on the new key.
+During **LazyForEach** rendering, the system generates a unique, persistent key for each item to identify the owning component. When the key changes, the ArkUI framework considers that the array element has been replaced or modified and creates a component based on the new key.
 
 **LazyForEach** provides the **keyGenerator** parameter for custom key generation. If this parameter is undefined, the framework uses the default function: **(item: Object, index: number) => { return viewId + '-' + index.toString(); }**, where **viewId** is compiler-generated and consistent within the same **LazyForEach** component.
 
@@ -54,7 +54,7 @@ These requirements ensure correct and efficient child component updates. Violati
 
 ### Component Creation Rules
 
-After the key generation rules are determined, the **itemGenerator** function – the second parameter in **LazyForEach** – creates a component for each array item of the data source based on the rules. Component creation involves two scenarios: [initial rendering](#initial-rendering) and [date updates](#data-update) in non-initial rendering.
+After the key generation rules are determined, the **itemGenerator** function – the second parameter in **LazyForEach** – creates a component for each array item of the data source based on the rules. Component creation involves two scenarios: [initial rendering](#initial-rendering) and [data updates](#data-update) in non-initial rendering.
 
 ### Initial Rendering
 
@@ -69,7 +69,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -109,7 +109,7 @@ struct InitialRendering {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -120,7 +120,7 @@ struct InitialRendering {
 }
 ```
 
-In the preceding code, the return value of the **keyGenerator** function is **item**. During iterative rendering, **LazyForEach** generates keys in the sequence of **Hello 0**, **Hello 1**, ..., **Hello 20** for the array item of the data source, creates the corresponding **ListItem** child components and render them on the GUI.
+In the preceding code, the return value of the **keyGenerator** function is **item**. During iterative rendering, **LazyForEach** uses **keyGenerator** to generate keys in the sequence of **Hello 0**, **Hello 1**, ..., **Hello 20** for the array item of the data source, creates the corresponding **ListItem** child components and render them on the GUI.
 
 The figure below shows the effect.
 
@@ -134,7 +134,7 @@ When identical keys are generated for different data items, framework behavior b
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -197,11 +197,11 @@ LazyForEach(this.data, (item: string) => {
     Row() {
       Text(item).fontSize(50)
         .onAppear(() => {
-          hilog.info(DOMAIN, TAG, 'appear: ${item}');
+          hilog.info(DOMAIN, TAG, `appear: ${item}`);
         })
     }.margin({ left: 10, right: 10 })
   }
-}, (item: string, index: number) => `${item}-${index}`) // The customize the key generation function generates unique keys.
+}, (item: string, index: number) => `${item}-${index}`) // Defines a custom key generation function that generates a unique key.
 ```
 
 The corrected implementation produces the following rendering behavior.
@@ -220,7 +220,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 <!-- @[add_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/AddingData.ets) -->
 
 ``` TypeScript
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -289,7 +289,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -337,7 +337,7 @@ struct DataDeletion {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -367,7 +367,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -418,7 +418,7 @@ struct SwappingData {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -452,7 +452,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -496,7 +496,7 @@ struct ModifyingIndividualDataItems {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -525,7 +525,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -574,7 +574,7 @@ struct ModifyingMultipleDataItems {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -604,7 +604,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -667,7 +667,7 @@ struct PreciselyModifyingData {
             Row() {
               Text(item).fontSize(35)
                 .onAppear(() => {
-                  hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                  hilog.info(DOMAIN, TAG, `appear: ${item}`);
                 })
             }.margin({ left: 10, right: 10 })
           }
@@ -680,9 +680,9 @@ struct PreciselyModifyingData {
 }
 ```
 
-The **onDatasetChange** API allows you to notify **LazyForEach** at a time to add, delete, move, and exchange data. In the preceding scenario, after **change data** is clicked, multiple operations are executed simultaneously: The second item moves to the fourth, the fifth and seventh items exchange positions, items **Hello 1** and **Hello 2** are inserted starting at the ninth position, and two items are deleted beginning at the eleventh position. 
+The **onDatasetChange** API allows you to notify **LazyForEach** at a time to add, delete, move, and swap data. In the preceding scenario, after **change data** is clicked, multiple operations are executed simultaneously: The second item moves to the fourth, the fifth and seventh items swap positions, items **Hello 1** and **Hello 2** are inserted starting at the ninth position, and two items are deleted beginning at the eleventh position. 
 
-**Modifying Data in Batches in LazyForEach** 
+**Modifying Multiple Data Items in LazyForEach** 
 ![LazyForEach-Change-MultiData](figures/LazyForEach-Change-MultiData.gif)  
 
 In this approach, array modification is performed through direct value assignment rather than using **splice()**. The resulting **operations** values are derived by comparing the original and modified arrays.
@@ -693,7 +693,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -750,7 +750,7 @@ struct PreciselyModifyingDataTwo {
             Row() {
               Text(item).fontSize(35)
                 .onAppear(() => {
-                  hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                  hilog.info(DOMAIN, TAG, `appear: ${item}`);
                 })
             }.margin({ left: 10, right: 10 })
           }
@@ -762,7 +762,7 @@ struct PreciselyModifyingDataTwo {
 }
 ```
 
-**Modifying Multiple Data Items in LazyForEach** 
+**Modifying Data in Batches in LazyForEach** 
 ![LazyForEach-Change-MultiData2](figures/LazyForEach-Change-MultiData2.gif)  
 
 Key usage considerations:
@@ -779,13 +779,13 @@ Key usage considerations:
    ['Hello a','Hello c','Hello d','Hello b','Hello g','Hello f','Hello e','Hello h','Hello 1','Hello 2','Hello i','Hello j','Hello m','Hello n','Hello o','Hello p','Hello q','Hello r']
    ```
 
-   **Hello b** moves from index 2 to index 4. Therefore, the first **operation** is written in **type: DataOperationType.MOVE, index: { from: 1, to: 3 } }**.
+   **Hello b** moves from index 1 to index 3. Therefore, the first **operation** is **{ type: DataOperationType.MOVE, index: { from: 1, to: 3 } }**.
 
-   **Hello e** (at index 4) and **Hello g** (at index 6) swap positions. Therefore, the second **operation** is written in **{ type: DataOperationType.EXCHANGE, index: { start: 4, end: 6 } }**.
+   **Hello e** (at index 4) and **Hello g** (at index 6) swap positions. Therefore, the second **operation** is **{ type: DataOperationType.EXCHANGE, index: { start: 4, end: 6 } }**.
 
-   **Hello 1** and **Hello 2** are inserted after **Hello h** (at index 7) in the original array. Therefore, the third **operation** is written in **{ type: DataOperationType.ADD, index: 8, count: 2 }**.
+   **Hello 1** and **Hello 2** are inserted after **Hello h** (at index 7) in the original array. Therefore, the third **operation** is **{ type: DataOperationType.ADD, index: 8, count: 2 }**.
 
-   **Hello k** (at index 10) and **Hello l** (at index 11) are deleted in the original array. Therefore, the fourth **operation** is written in **{ type: DataOperationType.DELETE, index: 10, count: 2 }**.
+   **Hello k** (at index 10) and **Hello l** (at index 11) are deleted in the original array. Therefore, the fourth **operation** is **{ type: DataOperationType.DELETE, index: 10, count: 2 }**.
 
 3. When data is processed in batches within the same **onDatasetChange** callback, if multiple **DataOperation** instances target the same index, only the first **DataOperation** will take effect.
 4. In operations where you specify keys on your own, **LazyForEach** does not call the key generator to obtain keys. As such, make sure the specified keys are correct.
@@ -795,7 +795,7 @@ Key usage considerations:
 
 ### Modifying Data Sub-Properties Using State Management V1
 
-When **LazyForEach** is used for UI re-rendering, traditional data item changes require destroying and rebuilding the entire child component. This approach becomes inefficient with complex component structures. To address this, the framework provides the [\@Observed and \@ObjectLink](../state-management/arkts-observed-and-objectlink.md) mechanism for fine-grained property observation, enabling targeted component re-rendering and improved rendering performance. You can select a re-rendering mode that better suits your needs.
+When **LazyForEach** is used for UI re-rendering, traditional data item changes require destroying and rebuilding the entire child component. This approach becomes inefficient with complex component structures. To address this, state management V1 provides the [\@Observed and \@ObjectLink](../state-management/arkts-observed-and-objectlink.md) mechanism for fine-grained property observation, enabling targeted component re-rendering and improved rendering performance. You can select a re-rendering mode that better suits your needs.
 
 For details about the **GenericBasicDataSource** implementation, see [BasicDataSource Implementation for Generic Arrays](#basicdatasource-implementation-for-generic-arrays).
 
@@ -1137,7 +1137,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 <!-- @[drag_sorting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/DragandDropSorting.ets) -->
 
 ``` TypeScript
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class DragAndDropDataSource extends BasicDataSource {
@@ -1208,7 +1208,7 @@ struct DragandDropSorting {
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1278,7 +1278,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -1327,7 +1327,7 @@ struct UnexpectedRenderingResults {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -1344,7 +1344,7 @@ struct UnexpectedRenderingResults {
 }
 ```
 
-After a data item is deleted, the **reloadData** method is called to rebuild the subsequent data items to update the indexes. Use the **reloadData** method to rebuild a data item, you should ensure that the data item can generate a new key. **item + index.toString()** is used to rebuild the data items following the deleted data item. If **item + Date.now().toString()** is used instead, all data items generate new keys. As a result, all data items are rebuilt. This method has the same effect, but the performance is slightly poor.
+After a data item is deleted, the **reloadData** method is called to rebuild the subsequent data items to update the indexes. To ensure that the **reloadData** method rebuilds a data item, you should ensure that the data item can generate a new key. **item + index.toString()** is used to rebuild the data items following the deleted data item. If **item + Date.now().toString()** is used instead, all data items generate new keys. As a result, all data items are rebuilt. This method has the same effect, but the performance is slightly poor.
 
 **Fixing Unexpected Data Deletion in LazyForEach** 
 ![LazyForEach-Render-Not-Expected-Repair](figures/LazyForEach-Render-Not-Expected-Repair.gif)
@@ -1354,7 +1354,7 @@ After a data item is deleted, the **reloadData** method is called to rebuild the
 For details about the **GenericBasicDataSource** implementation, see [BasicDataSource Implementation for Generic Arrays](#basicdatasource-implementation-for-generic-arrays).
 
 ```ts
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1419,7 +1419,7 @@ struct MyComponent {
           item.message += '00';
           this.data.reloadData();
         })
-      }, (item: StringData, index: number) => item.message) // Key values depend on the message property.
+      }, (item: StringData, index: number) => item.message) // Modifying the message property will change key values.
     }.cachedCount(5)
   }
 }
@@ -1508,7 +1508,7 @@ struct ImageFlickeringChildComponent {
     Column() {
       Text(this.data.message).fontSize(50)
         .onAppear(() => {
-          hilog.info(DOMAIN, TAG, 'appear: ${this.data.message}');
+          hilog.info(DOMAIN, TAG, `appear: ${this.data.message}`);
         })
       Image(this.data.imgSrc)
         .width(500)
@@ -1526,7 +1526,7 @@ struct ImageFlickeringChildComponent {
 For details about the **GenericBasicDataSource** implementation, see [BasicDataSource Implementation for Generic Arrays](#basicdatasource-implementation-for-generic-arrays).
 
 ```ts
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1699,12 +1699,12 @@ struct UINotRerenderedChildComponent {
 ![LazyForEach-ObjectLink-NotRenderUI-Repair](figures/LazyForEach-ObjectLink-NotRenderUI-Repair.gif)
 
 ### Screen Flickering
-Invoking the **onDataReloaded** method within the **List** component's **onScrollIndex** callback can cause visible screen flickering during scrolling operations.
+Calling **onDataReloaded** in the [onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex) method of [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md) may cause screen flickering.
 
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1774,7 +1774,7 @@ struct MyComponent {
 **Screen Flickering When the List Is Scrolled to the Bottom** 
 ![LazyForEach-Screen-Flicker](figures/LazyForEach-Screen-Flicker.gif)
 
-Replacing **onDataReloaded** by **onDatasetChange** cannot only fix this issue but can improve load performance.
+Replacing **onDataReloaded** by **onDatasetChange** not only fixes this issue but also improves load performance.
 
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
@@ -1782,7 +1782,7 @@ For details about the code of **BasicDataSource**, see [BasicDataSource Implemen
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// For details about the BasicDataSource implementation of the String array, see the sample code at the end of this topic.
+// For details about the BasicDataSource implementation of the String array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 const TAG = '[Sample_RenderingControl]';
 const DOMAIN = 0xF811;
@@ -1836,7 +1836,7 @@ struct ScreenFlickeringInList {
               .height(80)
               .backgroundColor(Color.Gray)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -1852,17 +1852,17 @@ struct ScreenFlickeringInList {
 }
 ```
 
-**Smooth Scrolling Without Screen Flickering After optimization** 
+**Smooth Scrolling Without Screen Flickering After Optimization** 
 ![LazyForEach-Screen-Flicker-Repair](figures/LazyForEach-Screen-Flicker-Repair.gif)
 
 ### Component Reuse Rendering Exception
 
-Using @Reusable with [\@ComponentV2](../state-management/arkts-create-custom-components.md#componentv2) causes abnormal component rendering behavior.
+Using [\@Reusable](../state-management/arkts-reusable.md) together with [\@ComponentV2](../state-management/arkts-create-custom-components.md#componentv2) causes abnormal component rendering.
 
 For details about the **GenericBasicDataSource** implementation, see [BasicDataSource Implementation for Generic Arrays](#basicdatasource-implementation-for-generic-arrays).
 
 ```ts
-/** For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section. **/
+// For details about the GenericBasicDataSource implementation, see the BasicDataSource Implementation for Generic Arrays section.
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1954,7 +1954,7 @@ You need to define a proper function for key generation and return a key associa
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -2033,7 +2033,7 @@ The parent component supporting lazy loading calculates the number of child comp
 For details about the code of **BasicDataSource**, see [BasicDataSource Implementation for the String Array](#basicdatasource-implementation-for-the-string-array).
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+// For details about the BasicDataSource implementation of the string array, see "BasicDataSource Implementation for the String Array" in this topic.
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -2068,7 +2068,7 @@ struct MyComponent {
     List() {
       LazyForEach(this.data, (item: string, index: number) => {
         ChildComponent({ message: item, index: index })
-        // The child component lacks explicit height, causing full rendering.
+        // Without a default height for the child component, all data item components are created during initial rendering.
         // .height(60)
       }, (item: string, index: number) => item + index)
     }
@@ -2109,10 +2109,9 @@ LazyForEach(this.data, (item: string, index: number) => {
 
 ### BasicDataSource Implementation for the String Array
 
-<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->    
+<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->
 
 ``` TypeScript
-// BasicDataSource.ets
 // BasicDataSource implements the IDataSource API to manage listeners and notify LazyForEach of data updates.
 export class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -2177,7 +2176,7 @@ export class BasicDataSource implements IDataSource {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
       // Method 2: listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 
@@ -2194,7 +2193,6 @@ export class BasicDataSource implements IDataSource {
 <!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/GenericBasicDataSource.ets) -->
 
 ``` TypeScript
-// GenericBasicDataSource.ets
 // GenericBasicDataSource implements the IDataSource API to manage listeners and notify LazyForEach of data updates.
 export class GenericBasicDataSource<T> implements IDataSource {
   private listeners: DataChangeListener[] = [];

@@ -81,6 +81,14 @@ On some phones, you can enable free windows mode by pulling down Control Panel a
 
 ![freeWindows](figures/freeWindows.png)
 
+### Desktop Mode
+
+Desktop mode is an interaction method that supports users in performing multitasking on mobile devices.
+
+It allows multiple application windows to be displayed on a single screen simultaneously. These windows are known as [freeform window](#freeform-window).
+
+On some tablets, you can enable desktop mode by pulling down Control Panel and tapping the **Desktop mode** button.
+
 ## Immersive Layout
 
 An immersive layout is a window state that helps an application UI focus on content by reducing distractions from irrelevant elements.
