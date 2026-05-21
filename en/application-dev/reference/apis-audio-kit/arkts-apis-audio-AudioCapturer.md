@@ -575,7 +575,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 6800103 | Operation not permit at current state. |
+| 6800103 | Operation not permitted at current state. |
 
 **Example**
 
@@ -609,7 +609,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 6800103 | Operation not permit at current state. |
+| 6800103 | Operation not permitted at current state. |
 
 **Example**
 
@@ -1450,7 +1450,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 6800103 | Operation not permitted at current state, stream is not running. |
+| 6800103 | Operation not permitted at current state. The stream is not running. |
 
 **Example**
 
@@ -1571,7 +1571,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | ID| Error Message|
 | ------- | ---------------------------------------------|
 | 6800101 | Parameter verification failed. |
-| 6800103 | Operation not permit at current state. |
+| 6800103 | Operation not permitted at current state. |
 
 **Example**
 
