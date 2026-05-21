@@ -20,13 +20,19 @@ import { vcard } from '@kit.TelephonyKit';
 
 ## vcard.importVCard
 
-importVCard\(context: Context, filePath: string, accountId: number, callback: AsyncCallback\<void\>\): void
+**ArkTS-Dyn**: importVCard\(context: Context, filePath: string, accountId: number, callback: AsyncCallback\<void\>\): void
+
+**ArkTS-Sta**:  importVCard\(context: Context, filePath: string, accountId: int, callback: AsyncCallback\<void\>\): void
 
 将VCard文件导入联系人数据库。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -71,13 +77,19 @@ class EntryAbility extends UIAbility {
 
 ## vcard.importVCard
 
-importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<void\>
+**ArkTS-Dyn**: importVCard\(context: Context, filePath: string, accountId?: number\): Promise\<void\>
+
+**ArkTS-Sta**:  importVCard\(context: Context, filePath: string, accountId?: int\): Promise\<void\>
 
 将VCard文件导入联系人数据库。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -131,9 +143,15 @@ importVCard\(context: Context, filePath: string, callback: AsyncCallback\<void\>
 
 将VCard文件导入联系人数据库。使用callback异步回调。
 
+**ArkTS模式**：该接口同时适用于ArkTS-Dyn和ArkTS-Sta。
+
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -180,9 +198,15 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 将联系人导出为 VCF(vcard file)文件。使用callback异步回调。
 
+**ArkTS模式**：该接口同时适用于ArkTS-Dyn和ArkTS-Sta。
+
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -236,9 +260,15 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 将联系人导出为 VCF(vcard file)文件。使用Promise异步回调。
 
+**ArkTS模式**：该接口同时适用于ArkTS-Dyn和ArkTS-Sta。
+
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -300,7 +330,13 @@ exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicat
 
 **需要权限**：ohos.permission.WRITE_CONTACTS 和 ohos.permission.READ_CONTACTS
 
+**ArkTS模式**：该接口同时适用于ArkTS-Dyn和ArkTS-Sta。
+
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
