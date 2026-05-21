@@ -5460,9 +5460,9 @@ struct RichEditorDemo {
 ![PreventDefaultExample](figures/richEditorPreventDefault.gif)
 
 ### 示例15（配置文字特性效果）
-通过[addTextSpan](#addtextspan)接口设置文字特性效果（[fontFeature](#richeditortextstyle)）。当添加“ss01”特性的FontFeature属性时，数字“0”由原来的椭圆形改变为带有倒圆角形。
+该示例通过[addTextSpan](#addtextspan)接口设置文字特性效果（[fontFeature](#richeditortextstyle)）。当添加“ss01”特性的FontFeature属性时，数字“0”由原来的椭圆形改变为带有倒圆角形。同时通过[RichEditorTextStyle](#richeditortextstyle)的strokeJoinStyle接口设置文本描边拐角样式。
 
-从API版本26.0.0开始，[RichEditorTextStyle](#richeditortextstyle)新增strokeJoinStyle接口，支持设置文本描边拐角样式。
+从API版本26.0.0开始，[RichEditorTextStyle](#richeditortextstyle)新增strokeJoinStyle接口。
 
 ```ts
 @Entry
