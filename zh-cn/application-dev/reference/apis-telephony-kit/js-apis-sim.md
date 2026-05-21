@@ -111,7 +111,7 @@ console.info(`the sim is active:` + isSimActive);
 
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
-getDefaultVoiceSlotId\(callback: AsyncCallback\<number\>\): void
+getDefaultVoiceSlotId\(callback: AsyncCallback\<int\>\): void
 
 获取默认语音业务的卡槽ID。使用callback异步回调。
 
@@ -136,7 +136,7 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
-getDefaultVoiceSlotId\(\): Promise\<number\>
+getDefaultVoiceSlotId\(\): Promise\<int\>
 
 获取默认语音业务的卡槽ID。使用Promise异步回调。
 
