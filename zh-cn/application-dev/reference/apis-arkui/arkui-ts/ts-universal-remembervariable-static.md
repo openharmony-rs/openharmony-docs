@@ -16,7 +16,11 @@ rememberVariable\<T\>(initialValue: RememberInitialType\<T\>): MutableVariable\<
 
 **装饰器类型：** @Builder
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -62,7 +66,11 @@ type RememberInitialType\<T\> = (() => T) | T
 
 状态变量初始值入参类型。基础类型使用类型T直接传入；复杂类型（interface、class和包含Array、Map、Set和Date的内置类型）使用回调（() => T）初始化能避免重复创建实例，性能更高。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -108,9 +116,19 @@ struct Index {
 
 rememberVariable创建的状态变量类型。
 
-### 属性
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+### 属性
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                    | 只读 | 可选 | 说明      |
 | ------- | ---------------------- | ---- | ---  | -------- |

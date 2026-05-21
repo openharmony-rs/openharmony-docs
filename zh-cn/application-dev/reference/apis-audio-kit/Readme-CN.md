@@ -1,8 +1,8 @@
 # Audio Kit（音频服务）
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -11,6 +11,7 @@
     - [模块描述](arkts-apis-audio.md)
     - [Functions](arkts-apis-audio-f.md)
     - [Interface (AudioCapturer)](arkts-apis-audio-AudioCapturer.md)
+    - [Interface (AudioDeviceEnhanceManager)](arkts-apis-audio-AudioDeviceEnhanceManager.md)
     - [Interface (AudioManager)](arkts-apis-audio-AudioManager.md)
     - [Interface (AudioRenderer)](arkts-apis-audio-AudioRenderer.md)
     - [Interface (AudioRoutingManager)](arkts-apis-audio-AudioRoutingManager.md)
