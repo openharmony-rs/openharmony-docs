@@ -300,7 +300,7 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 ## 示例
 
-### 示例1（SecurityUIExtensionComponent使用）
+### 示例1（SecurityUIExtensionComponent拉起远程UIExtensionAbility并进行双向数据通信）
 
 本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置[Want](../../apis-ability-kit/js-apis-app-ability-want.md#want)拉起指定Ability的UIExtensionAbility，通过[onRemoteReady](#onremoteready)获取[SecurityUIExtensionProxy](#securityuiextensionproxy)，使用[send](#send)或[sendSync](#sendsync)发送数据，以及通过[onReceive](#onreceive)、[onError](#onerror)、[onTerminated](#onterminated)等回调处理事件。
 
