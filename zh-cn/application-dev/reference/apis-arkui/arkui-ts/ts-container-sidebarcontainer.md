@@ -50,7 +50,7 @@ SideBarContainer( type?: SideBarContainerType )
 | -------- | -------- |-------- |
 | Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于[minContentWidth](#mincontentwidth10) + [minSideBarWidth](#minsidebarwidth)，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth + minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth + minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth + minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth + minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## 属性
 
@@ -260,6 +260,8 @@ divider(value: DividerStyle | null)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -288,6 +290,8 @@ Embed场景下，增大组件尺寸时仅增大内容区的尺寸。
 minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBarWidth属性，minContentWidth未设置时默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -322,6 +326,8 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -361,6 +367,8 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 >  - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
