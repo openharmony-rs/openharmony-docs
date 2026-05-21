@@ -1192,7 +1192,7 @@ abstract initialize(options?: GridColOptions): GridColAttribute
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| options | GridColOptions | 否   | 栅栏布局子组件参数。<br/> GridColOptions请参考[GridColOptions对象说明](../apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption) |
+| options | GridColOptions | 否   | 栅栏布局子组件参数。<br/> GridColOptions请参考[GridColOptions对象说明](../apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明) |
 
 **返回值：**
 
@@ -5378,7 +5378,7 @@ createXComponentNodeWithOptions(context: UIContext, value: XComponentOptions, op
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
 | context | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| value | [XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions)[XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions12) | 是 | 定义XComponent的具体配置参数，包括组件类型等。 |
+| value | [XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions12) | 是 | 定义XComponent的具体配置参数，包括组件类型等。 |
 | options<sup>24+</sup> | [FrameNodeOptions](#framenodeoptions24) | 否   | FrameNode创建时的可选参数。默认值：undefined，表示不支持多线程操作。 |
 
 **返回值：**
@@ -5824,7 +5824,7 @@ createXComponentNodeWithOptions(context: UIContext, value: XComponentOptions, op
 | 参数名 | 类型 | 必填 | 说明  |
 | --- | --- | --- | --- |
 | context | [UIContext](arkts-apis-uicontext-uicontext.md) | 是 | UIContext实例。 |
-| value | [XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions)[XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions12) | 是 | 定义XComponent的具体配置参数。 |
+| value | [XComponentOptions](./arkui-ts/ts-basic-components-xcomponent.md#xcomponentoptions12) | 是 | 定义XComponent的具体配置参数。 |
 | options | [FrameNodeOptions](#framenodeoptions24) | 否 | FrameNode创建的配置选项。 |
 
 **返回值：**
