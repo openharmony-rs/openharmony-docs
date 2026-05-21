@@ -171,7 +171,7 @@ OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotat
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVRecorder](capi-avrecorder-oh-avrecorder.md) *recorder | 指向OH_AVRecorder实例的指针。 |
-| int32_t rotation | 视频旋转角度，必须是整数 [0, 90, 180, 270] 中的一个。 |
+| int32_t rotation | 视频旋转角度，单位为度（°），必须是整数 [0, 90, 180, 270] 中的一个。 |
 
 **返回：**
 
