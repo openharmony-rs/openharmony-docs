@@ -148,7 +148,7 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDevice(OH_AudioDev
 
 > **说明：** 
 >
-> 此设置对应用创建的所有录音流生效，除非某个流已经单独指定了专属输入设备。
+> 此设置对应用创建的所有录制流生效，除非某个流已经单独指定了专属输入设备。
 > 当应用实现输入设备选择功能时，可以通过[OH_AudioRoutingManager_GetAvailableDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getavailabledevices)获取可用输入设备列表，
 > 并通过[OH_AudioRoutingManager_GetPreferredInputDevice](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getpreferredinputdevice)获取当前首选输入设备。
 > 应用退出或所选设备离线后，此选择会失效。应用重启或设备重新上线后，需要重新设置才会生效。
@@ -215,7 +215,7 @@ OH_AudioCommon_Result OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapt
 > **说明：** 
 > 
 > 应用需要确保指定的音频录制流有效。
-> 此选择仅对指定流生效，应用内其他录音流会继续使用应用级选择设备或系统默认输入设备。
+> 此选择仅对指定流生效，应用内其他录制流会继续使用应用级选择设备或系统默认输入设备。
 > 应用退出或所选设备离线后，此选择会失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > 当系统不支持此功能时，会为该音频录制流选择默认输入设备。
 
