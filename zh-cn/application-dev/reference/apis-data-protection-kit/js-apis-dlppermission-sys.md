@@ -53,7 +53,6 @@ getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   try {
@@ -99,7 +98,6 @@ getDLPGatheringPolicy(callback: AsyncCallback&lt;GatheringPolicyType&gt;): void
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   dlpPermission.getDLPGatheringPolicy((err, res) => {
@@ -159,7 +157,6 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   try {
@@ -212,7 +209,6 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 try {
@@ -272,7 +268,6 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promi
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -323,7 +318,6 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callba
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -380,7 +374,6 @@ on(type: 'uninstallDLPSandbox', listener: Callback&lt;DLPSandboxState&gt;): void
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   dlpPermission.on('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) => {
@@ -427,7 +420,6 @@ off(type: 'uninstallDLPSandbox', listener?: Callback&lt;DLPSandboxState&gt;): vo
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   dlpPermission.off('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) => {
@@ -495,7 +487,6 @@ addDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -567,7 +558,6 @@ addDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -645,7 +635,6 @@ stopFuseLink(): Promise&lt;void&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -716,7 +705,6 @@ stopFuseLink(callback: AsyncCallback&lt;void&gt;): void
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -795,7 +783,6 @@ resumeFuseLink(): Promise&lt;void&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -867,7 +854,6 @@ resumeFuseLink(callback: AsyncCallback&lt;void&gt;): void
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -952,7 +938,6 @@ replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1026,7 +1011,6 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): v
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1112,7 +1096,6 @@ deleteDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1184,7 +1167,6 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): vo
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1274,7 +1256,6 @@ recoverDLPFile(plaintextFd: number): Promise&lt;void&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1356,7 +1337,6 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback&lt;void&gt;): void
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1442,7 +1422,6 @@ closeDLPFile(): Promise&lt;void&gt;
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1515,7 +1494,6 @@ closeDLPFile(callback: AsyncCallback&lt;void&gt;): void
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1603,7 +1581,6 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let dlpUri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1684,7 +1661,6 @@ DLP管理应用调用该接口，将明文文件加密生成权限受控文件�
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let dlpUri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt';
@@ -1777,7 +1753,6 @@ DLP管理应用调用该接口，打开DLP文件。调用成功后返回DLPFile�
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ExampleFunction() {
   let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
@@ -1856,7 +1831,6 @@ DLP管理应用调用该接口，打开DLP文件。使用callback方式异步返
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 let file: number | undefined = undefined;
