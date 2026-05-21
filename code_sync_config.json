@@ -53622,5 +53622,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/CryptoArchitectureKit/crypto-ml-dsa-sign-sig-verify.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ml_dsa_signature_verification/ml_dsa_signature_verification_asynchronous.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"signature_verification_with_ml_dsa_key_pair_ark_async",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ml_dsa_signature_verification/ml_dsa_signature_verification_synchronous.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"signature_verification_with_ml_dsa_key_pair_ark_sync",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
