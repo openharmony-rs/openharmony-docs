@@ -94,7 +94,7 @@ Allows an application to modify the audio files in a user directory.
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-Allows an application to access the images/videos in a user directory.
+Allows an application to read image or video files from users' local public directories.
 
 <!--RP27--><!--RP27End-->
 
@@ -103,6 +103,8 @@ Allows an application to access the images/videos in a user directory.
 **Authorization mode**: user_grant
 
 **Since**: 9
+
+**Changelog**: In API versions 9 to 24, this permission allows an application to access images or videos stored on the cloud or locally. From API version 26.0.0, this permission allows an application to read only images or videos in users' local public directories.
 
 ## ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1176,7 +1178,7 @@ Allows an application or a service to use the DLP to register or unregister the 
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.0.0
 

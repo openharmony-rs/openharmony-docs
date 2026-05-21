@@ -284,7 +284,7 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
   imageSourceObj.getImageProperties(key).then((data) => {
     console.info(JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get the properties, error.code ${error.code}, error.message ${error.message}`);
+    console.error(`Failed to get the properties, error.code ${err.code}, error.message ${err.message}`);
   });
 }
 ```

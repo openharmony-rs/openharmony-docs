@@ -1872,7 +1872,7 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create JS value failed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create js value failed. |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -1912,7 +1912,7 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create JS value failed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Create js value failed. |
 
 **示例：**
 
@@ -2492,6 +2492,51 @@ export default class EntryAbility extends UIAbility {
     });
   }
 };
+```
+
+## getWindowStateSnapshot<sup>23+</sup>
+
+getWindowStateSnapshot(): Promise&lt;string&gt;
+
+获取当前窗口的设备形态信息，比如是否处于[电脑模式](../../windowmanager/window-terminology.md#电脑模式)，是否支持自由窗口等，使用Promise异步回调，仅限测试使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------------------------- | ------------- |
+| Promise&lt;string&gt; | 返回当前窗口的设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。返回示例：`{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`。<br/>返回值包含的不同字段的含义如下： <br/>- isPcMode：表示当前设备是否处于[电脑模式](../../windowmanager/window-terminology.md#电脑模式)，true表示处于[电脑模式](../../windowmanager/window-terminology.md#电脑模式)，false表示不处于[电脑模式](../../windowmanager/window-terminology.md#电脑模式)。当前在PC/2in1设备上返回true。<br/>- isSupportFreeWindowMode：表示当前设备是否支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)，true表示支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)，false表示不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)。<br/>- systemUiVisible：表示系统UI的显隐状态，是由0和1组成的长度为4的字符串，其中0表示隐藏，1表示显示。从左到右，第一位表示状态栏的显隐状态，第二位表示导航条的显隐状态，<!--RP17-->第三位在OpenHarmony设备上暂不支持，默认值为0，第四位表示三键导航栏的显隐状态。<!--RP17End-->|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 801      | Capability not supported. Failed to call the api due to limited device capabilities. Possible cause: The device does not support the api itself. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.getWindowStateSnapshot().then((data) => {
+    let jsonObj: object = JSON.parse(data);
+    console.info(`Succeeded, data=${data}, isPcMode=${jsonObj["isPcMode"]}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed. Cause code: ${err.code}, cancel message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Panic. Cause code: ${exception.code}, message: ${exception.message}`);
+}
 ```
 
 ## setPreferredOrientation<sup>9+</sup>
@@ -7549,7 +7594,7 @@ maximizeWithOptions(maximizeOptions?: MaximizeOptions): Promise&lt;void&gt;
 | 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and maximizable subwindows are supported; 2. The acrossDisplayPresentation parameter only supports main windows. |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and maximizable subwindows are supported; 2. The acrossDisplayPresentation parameter only supports main windows; 3. The snapshotAnimationConfig parameter only supports main windows. |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
 **示例：**
@@ -7594,6 +7639,10 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 禁止/使能通过拖拽方式缩放主窗口或启用装饰的子窗口的功能。使用callback异步回调。
 
+> **说明：**
+>
+> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，非自由窗口状态下不生效不报错。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -7637,6 +7686,10 @@ try {
 setResizeByDragEnabled(enable: boolean): Promise&lt;void&gt;
 
 禁止/使能通过拖拽方式缩放主窗口或启用装饰的子窗口的功能。使用Promise异步回调。
+
+> **说明：**
+>
+> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，非自由窗口状态下不生效不报错。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -7778,6 +7831,7 @@ recover(snapshotAnimationConfig: WindowSnapshotAnimationConfig): Promise&lt;void
 | 1300001 | Repeated operation. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The window does not support floating mode. |
 | 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: 1. The snapshotAnimationConfig parameter only supports main windows. |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
 **示例：**
@@ -9824,8 +9878,6 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 使能后，将允许通过鼠标操作或触摸对窗口进行拉伸操作。
 
 **系统能力：** SystemCapability.Window.SessionManager
-
-**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备上可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

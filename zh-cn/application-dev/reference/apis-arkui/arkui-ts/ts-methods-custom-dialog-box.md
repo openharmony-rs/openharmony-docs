@@ -29,7 +29,7 @@ dialogController : CustomDialogController | null = new CustomDialogController(Cu
 >
 > - CustomDialogController仅在作为@CustomDialog和@Component struct成员变量，且在@Component struct内部定义时赋值才有效，具体用法可参考下方示例。
 >
-> - 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在所有controller的后面。详细用法可参考[示例1弹出嵌套弹窗](#示例1弹出嵌套弹窗)。
+> - 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在所有controller的后面。详细用法可参考[示例1（弹出嵌套弹窗）](#示例1弹出嵌套弹窗)。
 
 ### constructor
 
@@ -39,7 +39,7 @@ constructor(value: CustomDialogControllerOptions)
 
 > **说明：**
 >
-> 自定义弹窗的所有参数，不支持动态刷新，但可以通过设置customStyle为true，并在自定义组件上设置[背景色](ts-universal-attributes-background.md#backgroundcolor)、[背景模糊](ts-universal-attributes-background.md#backgroundblurstyle9)、[宽高](ts-universal-attributes-size.md)等属性，通过属性绑定的状态变量来实现动态刷新的效果。
+> 自定义弹窗的所有参数，不支持动态刷新，但可以通过设置customStyle为true，并在自定义组件上设置背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)、[尺寸设置](ts-universal-attributes-size.md)等属性，通过属性绑定的状态变量来实现动态刷新的效果。
 >
 > 在CustomDialogController作为全局变量以实现全局自定义弹窗的场景下，若对controller重新赋值，则无法通过其关闭之前的弹窗。建议在重新赋值前先关闭弹窗。
 >
@@ -155,7 +155,7 @@ type PromptActionCommonState = promptAction.CommonState
 | onDidDisappear<sup>19+</sup> | Callback&lt;void&gt; | 否 | 是 | 弹窗消失后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>onWillDisappear>>onDidDisappear。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidDistance<sup>15+</sup>       | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是  | 弹窗避让键盘后，和键盘之间的距离。<br />**说明：**<br />- 默认值：16vp。<br />- 默认单位：vp。<br />- 当且仅当keyboardAvoidMode属性设置为DEFAULT时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelMode<sup>15+</sup>       | [LevelMode](../js-apis-promptAction.md#levelmode15枚举说明) | 否   | 是  | 设置弹窗显示层级。<br />**说明：**<br />- 默认值：LevelMode.OVERLAY。<br />- 当且仅当showInSubWindow属性设置为false时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
-| levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级弹窗需要显示的层级下的[节点UniqueID](../js-apis-arkui-frameNode.md#getuniqueid12)。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| levelUniqueId<sup>15+</sup>       | number | 否   | 是  | 设置页面级弹窗需要显示的层级下的节点UniqueID，UniqueID可以通过[getUniqueId](../js-apis-arkui-frameNode.md#getuniqueid12)获取。<br/>取值范围：大于等于0的数字。<br />**说明：**<br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15枚举说明) | 否   | 是  | 设置页面内弹窗蒙层效果。<br />**说明：**<br />- 默认值：ImmersiveMode.DEFAULT <br />- 当且仅当levelMode属性设置为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | 否   | 是  | 设置弹窗显示的顺序。<br />**说明：**<br />- 默认值：LevelOrder.clamp(0) <br />- 不支持动态刷新顺序。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | focusable<sup>19+</sup>       | boolean | 否   | 是  | 设置弹窗是否获取焦点。值为true表示获取焦点，值为false表示不获取焦点。<br />默认值：true <br />**说明：**<br />只有弹出覆盖在当前窗口之上的弹窗才可以获取焦点。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
@@ -1119,7 +1119,7 @@ struct Example3 {
 
 ### 示例10（不同customStyle下的弹窗示例）
 
-该示例是在对齐方式为[DialogAlignment.Bottom](#customdialogcontrolleroptions对象说明)时，展示[customStyle](#customdialogcontrolleroptions对象说明)不同值下，弹窗内容与安全区域的效果。
+该示例是在对齐方式为[DialogAlignment.Bottom](ts-methods-alert-dialog-box.md#dialogalignment枚举说明)时，展示[customStyle](#customdialogcontrolleroptions对象说明)不同值下，弹窗内容与安全区域的效果。
 
 ```ts
 @CustomDialog

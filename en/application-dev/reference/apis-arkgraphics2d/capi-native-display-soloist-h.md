@@ -1,8 +1,8 @@
 # native_display_soloist.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
-<!--Designer: @hudi33-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
