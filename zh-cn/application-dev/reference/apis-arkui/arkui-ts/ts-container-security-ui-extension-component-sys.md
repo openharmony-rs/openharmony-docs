@@ -411,172 +411,172 @@ function syncRegisterCallback(proxy: UIExtensionProxy) {
 提供方包含三个文件需要修改。
 
 - 提供方新增扩展入口文件`/src/main/ets/uiextensionability/SecurityUIExtProvider.ets`。
-
-```ts
-import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const TAG: string = '[SecurityUIExtAbility]';
-
-export default class SecurityUIExtProvider extends UIExtensionAbility {
-  onCreate() {
-    hilog.info(0x0000, TAG, 'onCreate');
-  }
-
-  onForeground() {
-    hilog.info(0x0000, TAG, 'onForeground');
-  }
-
-  onBackground() {
-    hilog.info(0x0000, TAG, 'onBackground');
-  }
-
-  onDestroy() {
-    hilog.info(0x0000, TAG, 'onDestroy');
-  }
-
-  onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
-    let param: Record<string, UIExtensionContentSession> = {
-      'session': session
-    };
-    let storage: LocalStorage = new LocalStorage(param);
-    try {
-      session.loadContent('pages/SecurityExtension', storage);
-    } catch (error) {
-      hilog.error(0x0000, TAG, 'onSessionCreate loadContent error: ', JSON.stringify(error));
+  
+  ```ts
+  import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG: string = '[SecurityUIExtAbility]';
+  
+  export default class SecurityUIExtProvider extends UIExtensionAbility {
+    onCreate() {
+      hilog.info(0x0000, TAG, 'onCreate');
+    }
+  
+    onForeground() {
+      hilog.info(0x0000, TAG, 'onForeground');
+    }
+  
+    onBackground() {
+      hilog.info(0x0000, TAG, 'onBackground');
+    }
+  
+    onDestroy() {
+      hilog.info(0x0000, TAG, 'onDestroy');
+    }
+  
+    onSessionCreate(want: Want, session: UIExtensionContentSession) {
+      hilog.info(0x0000, TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+      let param: Record<string, UIExtensionContentSession> = {
+        'session': session
+      };
+      let storage: LocalStorage = new LocalStorage(param);
+      try {
+        session.loadContent('pages/SecurityExtension', storage);
+      } catch (error) {
+        hilog.error(0x0000, TAG, 'onSessionCreate loadContent error: ', JSON.stringify(error));
+      }
+    }
+  
+    onSessionDestroy(session: UIExtensionContentSession) {
+      hilog.info(0x0000, TAG, 'onSessionDestroy');
     }
   }
-
-  onSessionDestroy(session: UIExtensionContentSession) {
-    hilog.info(0x0000, TAG, 'onSessionDestroy');
-  }
-}
-```
+  ```
 
 - 提供方扩展Ability入口页面文件/src/main/ets/pages/SecurityExtension.ets
-
-```ts
-import { UIExtensionContentSession } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let storage = LocalStorage.getShared()
-AppStorage.setOrCreate('message', 'UIExtensionAbility')
-
-@Entry(storage)
-@Component
-struct SecurityExtension {
-  @StorageLink('message') storageLink: string = '';
-  @State backColor: Color = Color.Brown;
-  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
-  controller: TextInputController = new TextInputController()
-
-  build() {
-    Scroll() {
-      Column() {
-        Text(this.storageLink)
-          .fontSize(10)
-          .fontWeight(FontWeight.Bold)
-          .width('80%')
-          .height('10%')
-
-        Button('点击向Component发送数据')
-          .fontSize(12)
-          .width('80%')
-          .height('10%')
-          .margin(1)
-          .onClick(() => {
-            hilog.info(0x0000, 'SecurityExtension', 'send 543321, for test start')
-            if (this.session != undefined) {
-              this.session.sendData({ 'data': 'Component应该接收到的数据' })
-              hilog.info(0x0000, 'SecurityExtension', 'send for test')
-            }
-          })
-
-        Button('terminate')
-          .fontSize(12)
-          .width('80%')
-          .height('10%')
-          .margin(1)
-          .onClick(() => {
-            hilog.info(0x0000, 'SecurityExtension', 'terminate')
-            if (this.session != undefined) {
-              this.session.terminateSelf();
-            }
-            storage.clear()
-          })
-
-        Button('terminate with result')
-          .fontSize(12)
-          .width('80%')
-          .height('10%')
-          .margin(1)
-          .onClick(() => {
-            hilog.info(0x0000, 'SecurityExtension', 'terminateSelfWithResult')
-            if (this.session != undefined) {
-              this.session.terminateSelfWithResult({
-                resultCode: 0,
-                want: {
-                  bundleName: 'myBundleName',
-                  parameters: { 'result': 123456 }
-                }
-              })
-            }
-            storage.clear()
-          })
-
-        Button('setReceiveDataCallback')
-          .fontSize(12)
-          .width('80%')
-          .height('10%')
-          .margin(1)
-          .onClick(() => {
-            this.session?.setReceiveDataCallback((data) => {
-              this.storageLink = JSON.stringify(data)
-              hilog.info(0x0000, 'SecurityExtension', 'test setReceiveDataCallback successfully: ' + this.storageLink);
+  
+  ```ts
+  import { UIExtensionContentSession } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  let storage = LocalStorage.getShared()
+  AppStorage.setOrCreate('message', 'UIExtensionAbility')
+  
+  @Entry(storage)
+  @Component
+  struct SecurityExtension {
+    @StorageLink('message') storageLink: string = '';
+    @State backColor: Color = Color.Brown;
+    private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+    controller: TextInputController = new TextInputController()
+  
+    build() {
+      Scroll() {
+        Column() {
+          Text(this.storageLink)
+            .fontSize(10)
+            .fontWeight(FontWeight.Bold)
+            .width('80%')
+            .height('10%')
+  
+          Button('点击向Component发送数据')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              hilog.info(0x0000, 'SecurityExtension', 'send 543321, for test start')
+              if (this.session != undefined) {
+                this.session.sendData({ 'data': 'Component应该接收到的数据' })
+                hilog.info(0x0000, 'SecurityExtension', 'send for test')
+              }
             })
-          })
-
-        Button('setReceiveDataForResultCallback')
-          .fontSize(12)
-          .width('80%')
-          .height('10%')
-          .margin(1)
-          .onClick(() => {
-            this.session?.setReceiveDataForResultCallback(func1)
-          })
+  
+          Button('terminate')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              hilog.info(0x0000, 'SecurityExtension', 'terminate')
+              if (this.session != undefined) {
+                this.session.terminateSelf();
+              }
+              storage.clear()
+            })
+  
+          Button('terminate with result')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              hilog.info(0x0000, 'SecurityExtension', 'terminateSelfWithResult')
+              if (this.session != undefined) {
+                this.session.terminateSelfWithResult({
+                  resultCode: 0,
+                  want: {
+                    bundleName: 'myBundleName',
+                    parameters: { 'result': 123456 }
+                  }
+                })
+              }
+              storage.clear()
+            })
+  
+          Button('setReceiveDataCallback')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              this.session?.setReceiveDataCallback((data) => {
+                this.storageLink = JSON.stringify(data)
+                hilog.info(0x0000, 'SecurityExtension', 'test setReceiveDataCallback successfully: ' + this.storageLink);
+              })
+            })
+  
+          Button('setReceiveDataForResultCallback')
+            .fontSize(12)
+            .width('80%')
+            .height('10%')
+            .margin(1)
+            .onClick(() => {
+              this.session?.setReceiveDataForResultCallback(func1)
+            })
+        }
       }
+      .id('providerScroll')
+      .width('100%')
+      .height('100%')
     }
-    .id('providerScroll')
-    .width('100%')
-    .height('100%')
   }
-}
-
-function func1(data: Record<string, Object>): Record<string, Object> {
-  let linkToMsg: SubscribedAbstractProperty<string> = AppStorage.link('message');
-  linkToMsg.set(JSON.stringify(data))
-  hilog.info(0x0000, 'SecurityExtension',
-    'invoke for test, handle callback set by setReceiveDataForResultCallback successfully');
-  return data;
-}
-```
+  
+  function func1(data: Record<string, Object>): Record<string, Object> {
+    let linkToMsg: SubscribedAbstractProperty<string> = AppStorage.link('message');
+    linkToMsg.set(JSON.stringify(data))
+    hilog.info(0x0000, 'SecurityExtension',
+      'invoke for test, handle callback set by setReceiveDataForResultCallback successfully');
+    return data;
+  }
+  ```
 
 - 提供方module.json5配置
-
-```json
-"extensionAbilities": [
-      {
-        "name": "SecurityUIExtProvider",
-        "srcEntry": "./ets/uiextensionability/SecurityUIExtProvider.ets",
-        "description": "$string:module_desc",
-        "label": "$string:EntryAbility_desc",
-        "type": "sysPicker/photoPicker",
-        "exported": true,
-        "metadata" : [{
-          "name" : "supportUIInteraction",
-          "value": "false"
-        }]
-      }
-    ]
-```
+  
+  ```json
+  "extensionAbilities": [
+        {
+          "name": "SecurityUIExtProvider",
+          "srcEntry": "./ets/uiextensionability/SecurityUIExtProvider.ets",
+          "description": "$string:module_desc",
+          "label": "$string:EntryAbility_desc",
+          "type": "sysPicker/photoPicker",
+          "exported": true,
+          "metadata" : [{
+            "name" : "supportUIInteraction",
+            "value": "false"
+          }]
+        }
+      ]
+  ```
