@@ -88,6 +88,35 @@ struct Index {
 
 <!-- @[across_concurrent_instance_transfer_large_data ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/sendable.ets) --> 
 
+``` TypeScript
+// 将数据量较大的数据在Sendable class中组装
+@Sendable
+export class TestTypeA {
+  public name: string = 'A';
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Sendable
+export class TestTypeB {
+  public name: string = 'B';
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+@Sendable
+export class Test {
+  public data1: TestTypeA;
+  public data2: TestTypeB;
+  constructor(arg1: TestTypeA, arg2: TestTypeB) {
+    this.data1 = arg1;
+    this.data2 = arg2;
+  }
+}
+```
+
 
 
 ## 跨并发实例传递带方法的class实例对象
