@@ -289,7 +289,7 @@ let avFileDescriptor: media.AVFileDescriptor =
   { fd: fileDescriptor.fd, offset: fileDescriptor.offset, length: fileDescriptor.length };
 // 为fdSrc赋值触发initialized状态机上报
 this.avPlayer!.fdSrc = avFileDescriptor;
-* */
+ */
 ```
 
 ## 运行完整示例
