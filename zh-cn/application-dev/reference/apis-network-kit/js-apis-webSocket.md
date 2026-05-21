@@ -956,7 +956,7 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
     if (value?.protocol != undefined) {
         console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
     } else {
-        console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+        console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
     }
  }
  ws.on('openInfo', callback1);
