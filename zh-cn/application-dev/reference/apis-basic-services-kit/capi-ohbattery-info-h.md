@@ -64,7 +64,7 @@ enum BatteryInfo_BatteryPluggedType
 | PLUGGED_TYPE_AC = 1 | 电源是交流充电。 |
 | PLUGGED_TYPE_USB = 2 | 电源是USB DC充电。 |
 | PLUGGED_TYPE_WIRELESS = 3 | 电源为无线充电。 |
-| PLUGGED_TYPE_BUTT = 4 | 未知类型 |
+| PLUGGED_TYPE_BUTT = 4 | 未知类型。 |
 
 
 ## 函数说明

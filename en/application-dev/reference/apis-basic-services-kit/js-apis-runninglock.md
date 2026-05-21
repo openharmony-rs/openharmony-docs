@@ -23,7 +23,7 @@ import {runningLock} from '@kit.BasicServicesKit';
 
 isSupported(type: RunningLockType): boolean
 
-Checks whether a specified type of **RunningLock** is supported.
+Checks whether a specified type of {@link RunningLock} is supported.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -102,7 +102,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-Creates a **RunningLock** object. This API uses a promise to return the result.
+Creates a {@link RunningLock} object.. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -149,7 +149,7 @@ isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boo
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
-Checks whether a specified type of **RunningLock** is supported. This API uses an asynchronous callback to return the result.
+Checks whether a specified type of {@link RunningLock} is supported. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -178,7 +178,7 @@ isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
-Checks whether a specified type of **RunningLock** is supported. This API uses a promise to return the result.
+Checks whether a specified type of {@link RunningLock} is supported. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -212,7 +212,7 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
-Creates a **RunningLock** object. This API uses an asynchronous callback to return the result.
+Creates a {@link RunningLock} object. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -222,9 +222,9 @@ Creates a **RunningLock** object. This API uses an asynchronous callback to retu
 
 | Name  | Type                                      | Mandatory| Description                                                        |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| name     | string                                     | Yes  | Name of the **RunningLock** object.                                                  |
+| name     | string                                     | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix. |
 | type     | [RunningLockType](#runninglocktype)        | Yes  | Type of the **RunningLock** object to be created.                                          |
-| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object. **AsyncCallback** has encapsulated an API of the **RunningLock** class. |
 
 **Example**
 
@@ -244,7 +244,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
-Creates a **RunningLock** object. This API uses a promise to return the result.
+Creates a {@link RunningLock} object.. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -254,7 +254,7 @@ Creates a **RunningLock** object. This API uses a promise to return the result.
 
 | Name| Type                               | Mandatory| Description              |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| name   | string                              | Yes  | Name of the **RunningLock** object.        |
+| name   | string                              | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix. |
 | type   | [RunningLockType](#runninglocktype) | Yes  | Type of the **RunningLock** object to be created.|
 
 **Returns**

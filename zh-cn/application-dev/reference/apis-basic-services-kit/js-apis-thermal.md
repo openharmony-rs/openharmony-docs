@@ -125,7 +125,7 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | 是   | 回调函数。AsyncCallback只返回一个参数，为热档位信息。|
+| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | 是   | 回调函数，返回变化后的热档位；该参数是一个函数类型。|
 
 **示例：**
 

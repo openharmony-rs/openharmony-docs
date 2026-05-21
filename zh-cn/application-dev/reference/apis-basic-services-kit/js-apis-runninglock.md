@@ -45,7 +45,7 @@ isSupported(type: RunningLockType): boolean
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **示例：**
 
@@ -82,7 +82,7 @@ create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLo
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **示例：**
@@ -127,7 +127,7 @@ create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **示例：**
@@ -222,9 +222,9 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| name     | string                                     | 是   | 锁的名字。                                                   |
+| name     | string                                     | 是   | 锁的名字。建议使用包名或类名加后缀的方式命名。                   |
 | type     | [RunningLockType](#runninglocktype)        | 是   | 要创建的锁的类型。                                           |
-| callback | AsyncCallback<[RunningLock](#runninglock)> | 是   | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象。 |
+| callback | AsyncCallback<[RunningLock](#runninglock)> | 是   | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象。AsyncCallback封装了一个RunningLock类型的类。 |
 
 **示例：**
 
@@ -254,7 +254,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 | 参数名 | 类型                                | 必填 | 说明               |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| name   | string                              | 是   | 锁的名字。         |
+| name   | string                              | 是   | 锁的名字。建议使用包名或类名加后缀的方式命名。|
 | type   | [RunningLockType](#runninglocktype) | 是   | 要创建的锁的类型。 |
 
 **返回值：**
