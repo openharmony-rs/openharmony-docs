@@ -73,7 +73,7 @@ total window num: 12
 | DisplayId | 显示设备ID | 0表示主屏幕，1表示副屏幕，多屏场景下会有多个DisplayId。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
-| Type | 窗口类型 | 应用窗口：1表示应用主窗口其他值详见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7) |
+| Type | 窗口类型 | 应用窗口：1表示应用主窗口，其他值详见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7) |
 | Mode | 窗口模式 | 1表示全屏模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
 | Flag | 状态标志位 | 0：正常显示状态；1：隐藏状态。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
@@ -98,7 +98,7 @@ Focus window: 13
 前台窗口和后台窗口的焦点说明：
 
 - 前台窗口才有机会获焦，后台窗口不会获焦。
-- 后台窗口通常`ZOrd=-1`，不参与焦点竞争。
+- 后台窗口通常`ZOrd为-1`，不参与焦点竞争。
 - 窗口从前台切换到后台时，会自动失焦。
 - 开发者可以通过分隔线快速判断：焦点窗口必然在前台窗口区域，后台窗口区域不会有焦点窗口。
 
@@ -218,13 +218,13 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 **可能原因**
 
-WINDOW_FROZEN_DETECTION 是一个窗口伪冻屏检测事件。当出现未设置成功UIContent、布局异常等情形时会触发此事件，可为排查伪冻屏问题提供线索，但事件触发并不等同于伪冻屏已实际发生。常见的异常类型包括：SetUIContent timeout（窗口内容加载超时）、RectCheck err（窗口尺寸异常）等。
+WINDOW_FROZEN_DETECTION 是一个窗口伪冻屏检测事件。当未成功设置UIContent、布局异常等情形时会触发此事件，可为排查伪冻屏问题提供线索，但事件触发并不等同于伪冻屏已实际发生。常见的异常类型包括：SetUIContent timeout（窗口内容加载超时）、RectCheck err（窗口尺寸异常）等。
 
 ### 定位窗口内容加载超时问题
 
 窗口创建后未在规定时间内（5秒）加载页面内容，导致窗口显示为透明或冻结状态。
 
-典型日志信息
+**典型日志信息**
 
 故障日志格式：
 
@@ -241,6 +241,10 @@ MSG = SetUIContent timeout uid: [uid], windowName: [windowName], bundleName: [bu
 **检测逻辑**
 
 系统在窗口创建时启动定时器监控页面加载过程。如果窗口创建后5秒内未调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)或[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)加载页面内容，系统判定为异常并生成故障日志。
+
+> **说明：**
+>
+> 系统的超时检测机制是为了保障用户体验，避免用户长时间看到空白窗口。开发者应重视此警告并及时修复。
 
 **分析定位及解决**
 
@@ -287,10 +291,6 @@ windowStage.createSubWindow('subWindow', (err, windowClass) => {
 });
 ```
 
-> **说明：**
->
-> 系统的超时检测机制是为了保障用户体验，避免用户长时间看到空白窗口。开发者应重视此警告并及时修复。
-
 ### 定位窗口尺寸异常问题
 
 窗口尺寸异常检测用于发现窗口尺寸超出合理范围的问题。当窗口设置的尺寸超过最大尺寸限制，或小于最小尺寸限制且小于屏幕尺寸时，系统会生成故障日志。
@@ -329,32 +329,33 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 
 > **说明：**
 >
+> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数，确保窗口尺寸在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内。
 > 条件2需要同时满足"小于最小限制"和"小于屏幕尺寸"两个条件，原因如下：当窗口尺寸小于最小限制但已接近屏幕尺寸时，说明设备屏幕本身较小，属于设备限制而非开发者设置错误；只有当窗口尺寸同时小于最小限制和屏幕尺寸时，才说明开发者设置的窗口尺寸过小，需要调整。
 
 **分析定位及解决**
 
-步骤1：获取故障日志
+1. 获取故障日志。通过DevEco Studio的FaultLog或hdc查看故障日志：
 
-通过DevEco Studio的FaultLog或hdc查看故障日志：
+   ```bash
+   hdc shell hilog | grep "RectCheck err"
+   ```
 
-```bash
-hdc shell hilog | grep "RectCheck err"
-```
+2. 解析故障日志字段。从故障日志中提取关键信息：
+   - `windowName`：确认异常窗口名称
+   - `curWidth`、`curHeight`：查看当前异常尺寸值（vp）
+   - `minWidth`、`minHeight`、`maxFloatingWindowSize`：对比限制阈值（vp）
+   - `screenWidth`、`screenHeight`：对比屏幕尺寸（像素，需转换为vp）
 
-步骤2：解析故障日志字段
+3. 判断异常类型。根据curWidth、curHeight与限制值、屏幕尺寸的对比：
+   - 如果 `curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`：窗口尺寸超过最大限制
+   - 如果 `curWidth < minWidth` 且 `curWidth < screenWidthVp`：窗口宽度过小且小于屏幕宽度
+   - 如果 `curHeight < minHeight` 且 `curHeight < screenHeightVp`：窗口高度过小且小于屏幕高度
 
-从故障日志中提取关键信息：
-- `windowName`：确认异常窗口名称
-- `curWidth`、`curHeight`：查看当前异常尺寸值（vp）
-- `minWidth`、`minHeight`、`maxFloatingWindowSize`：对比限制阈值（vp）
-- `screenWidth`、`screenHeight`：对比屏幕尺寸（像素，需转换为vp）
+4. 检查代码中[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用位置的尺寸参数。
 
-步骤3：判断异常类型
+5. 确认窗口模式切换时的尺寸计算逻辑。
 
-根据curWidth、curHeight与限制值、屏幕尺寸的对比：
-- 如果 `curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`：窗口尺寸超过最大限制
-- 如果 `curWidth < minWidth` 且 `curWidth < screenWidthVp`：窗口宽度过小且小于屏幕宽度
-- 如果 `curHeight < minHeight` 且 `curHeight < screenHeightVp`：窗口高度过小且小于屏幕高度
+6. 使用hidumper验证修复后的窗口状态。
 
 **正反案例**
 
@@ -376,19 +377,6 @@ let windowClass = await windowStage.createSubWindow('subWindow');
 windowClass.resize(720, 640);
 windowClass.showWindow();
 ```
-
-**检查清单**
-
-1. 查看故障日志，确认windowName和异常尺寸值。
-2. 对比curWidth、curHeight与minWidth、minHeight、maxFloatingWindowSize。
-3. 判断窗口尺寸是否不在规定范围内。
-4. 检查代码中[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用位置的尺寸参数。
-5. 确认窗口模式切换时的尺寸计算逻辑。
-6. 使用hidumper验证修复后的窗口状态。
-
-> **说明：**
->
-> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数，确保窗口尺寸在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内。
 
 ## 1300002错误码的定位指导
 
