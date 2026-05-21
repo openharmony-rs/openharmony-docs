@@ -1177,8 +1177,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     uint8_t* src = new uint8_t[srcRect.hStride * srcRect.wStride * 3 / 2]; // 源内存区域的指针。
     uint8_t* dstTemp = dst;
     uint8_t* srcTemp = src;
-    rect.height = ((rect.height + 1) / 2)  * 2 // 避免height为奇数；
-    rect.width = ((rect.width + 1) / 2)  * 2 // 避免width为奇数；
+    rect.height = ((rect.height + 1) / 2)  * 2; // 避免height为奇数；
+    rect.width = ((rect.width + 1) / 2)  * 2; // 避免width为奇数；
 
     // Y 将Y区域的源数据复制到另一个区域的目标数据中。
     for (int32_t i = 0; i < rect.height; ++i) {
