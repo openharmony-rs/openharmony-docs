@@ -9,7 +9,7 @@
 > **说明：**
 > 
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。<br>
-> 相关文档：[DLP开发指南](../../security/DataProtectionKit)、[DLP API参考](../apis-data-protection-kit)。
+> 相关文档：[DLP开发指南](../../security/DataProtectionKit/dlp-guidelines.md)。
 
 ## 19100001 入参错误
 
