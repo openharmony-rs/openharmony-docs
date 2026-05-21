@@ -1,7 +1,7 @@
 # @ohos.arkui.uiExtension (uiExtension)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @chbchb12-->
+<!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
