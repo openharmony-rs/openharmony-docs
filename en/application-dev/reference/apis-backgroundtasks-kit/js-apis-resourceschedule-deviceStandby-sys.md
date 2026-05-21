@@ -4,15 +4,15 @@
 <!--Owner: @geng_wd-->
 <!--Designer: @geng_wd-->
 <!--Tester: @wzzqishi-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 A device enters standby mode if it is unused for a long period of time or after the Power button is pressed. The standby mode prolongs the battery life without affecting the use of applications. The **deviceStandby** module provides APIs for you to check whether a device is in standby mode and request or cancel standby resource control for an application.
 
 >  **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this module are system APIs.
+> The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -42,7 +42,7 @@ Obtains the list of applications that can still use resources of the specified t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202 | Not System App. |
@@ -99,7 +99,7 @@ Obtains the list of applications that can still use resources of the specified t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202 | Not System App. |
@@ -148,7 +148,7 @@ Requests exemption, so that the application can use restricted resources when th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202 | Not System App. |
@@ -195,7 +195,7 @@ Cancels exemption for the application.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202 | Not System App. |
