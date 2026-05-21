@@ -2303,5 +2303,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/graphics/textblock-drawing-arkts.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets",
+				"functions":[
+					{
+						"end_line":134,
+						"name":"arkts_graphics_draw_theme_text",
+						"start_line":123
+					}
+				]
+			}
+		]
 	}
 ]
