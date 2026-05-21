@@ -143,9 +143,9 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
-ArkTS-Dyn: getDefaultVoiceSlotId(): Promise<number>
+ArkTS-Dyn: getDefaultVoiceSlotId(): Promise\<number\>
 
-ArkTS-Sta: getDefaultVoiceSlotId(): Promise<int>
+ArkTS-Sta: getDefaultVoiceSlotId(): Promise\<int\>
 
 获取默认语音业务的卡槽ID。使用Promise异步回调。
 
