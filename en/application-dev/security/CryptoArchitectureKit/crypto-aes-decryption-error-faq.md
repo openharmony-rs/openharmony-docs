@@ -1,4 +1,4 @@
-# AES Decryption Failure Returning 17630001
+# AES Decryption Failure Returning Error Code 17630001
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -47,7 +47,7 @@ During decryption, **doFinal** fails to be called, and error code 17630001 is re
 
 > **NOTE**
 >
-> AES-CBC is a block cipher algorithm, so it requires the padding algorithm PKCS7 padding to pad the plaintext to an integer multiple of the block size.
+> AES-CBC is a block cipher algorithm, so it requires the padding algorithm PKCS7 to pad the plaintext to an integer multiple of the block size.
 >
 > During decryption, the **doFinal** API verifies the padding.
 

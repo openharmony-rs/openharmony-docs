@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Focus inherits from [FocusQuery](arkts-apis-camera-FocusQuery.md).
+**Focus** inherits from [FocusQuery](arkts-apis-camera-FocusQuery.md).
 
 It provides APIs related to focus operations.
 

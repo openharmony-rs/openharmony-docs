@@ -1,9 +1,9 @@
 # @ohos.app.form.FormExtensionAbility (FormExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
@@ -178,7 +178,7 @@ onChangeFormVisibility(newStatus: Record\<string, number>): void
 
 | 参数名  | 类型   | 必填 | 说明                   |
 | ------- | ------ | ---- | ---------------------- |
-| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。<br>**说明：** number参数是取值范围[0, 2]的整数，0是未知类型，1是可见状态，2是不可见状态。 |
+| newStatus  | Record\<string, number> | 是   | 请求修改的卡片标识和可见状态。<br>**说明：** number参数是取值范围[0, 2]的整数，0是未知类型，1是可见状态，2是不可见状态。<br>详细参考 [formInfo.VisibilityType](js-apis-app-form-formInfo.md#visibilitytype) |
 
 **示例：**
 
@@ -314,7 +314,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 onAcquireFormState?(want: Want): formInfo.FormState
 
-卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态(该方法可以选择性重写)。
+卡片提供方接收查询卡片状态通知接口，默认返回卡片初始状态（该方法可以选择性重写）。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

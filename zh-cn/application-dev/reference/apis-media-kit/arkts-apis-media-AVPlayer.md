@@ -45,7 +45,7 @@ import { media } from '@kit.MediaKit';
 | duration<sup>9+</sup> | number                                                       | 是   | 否   | 视频时长，单位为毫秒（ms），可查询参数。<br/>返回为（-1）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。<br/>直播场景默认返回（-1）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | width<sup>9+</sup>                                  | number                                                       | 是   | 否   | 视频宽，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | height<sup>9+</sup>                                 | number                                                       | 是   | 否   | 视频高，单位为像素（px），可查询参数。<br/>返回为（0）表示无效值，**prepared**/**playing**/**paused**/**completed**状态下有效。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| playlistLoopMode<sup>26+</sup>                         | [playlistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。 |
+| playlistLoopMode                     | [PlaylistLoopMode](arkts-apis-media-e.md#playlistloopmode)      | 否   | 是   | 在播放媒体列表时，设置循环模式。默认值为PLAYLIST_LOOP_MODE_ALL，表示循环播放列表中的所有项目。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## on('stateChange')<sup>9+</sup>
 
@@ -622,7 +622,7 @@ advanceToNextMediaSource(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -669,7 +669,7 @@ advanceToPrevMediaSource(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -713,9 +713,9 @@ advanceToMediaSource(id: string): Promise\<void>
 
 **参数：**
 
-| 参数名 | 类型   | 说明                                       |
-| ------ | ------ | ------------------------------------------ |
-| id    | string | 指定媒体源的唯一标识符ID。 |
+| 参数名 | 类型   | 必填 | 说明                                       |
+| ------ | ------ | ---- | ------------------------------------------ |
+| id    | string | 是 |指定媒体源的唯一标识符ID。 |
 
 **返回值：**
 
@@ -725,7 +725,7 @@ advanceToMediaSource(id: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Media 错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码 ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -3147,8 +3147,8 @@ addSubtitleFromFd(fd: number, offset?: number, length?: number): Promise\<void>
 | 参数名 | 类型                   | 必填 | 说明                                                         |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
 | fd | number   | 是   | 资源句柄，通过[resourceManager.getRawFd](../apis-localization-kit/js-apis-resource-manager.md#getrawfd9)获取。 |
-| offset | number | 否   | 资源偏移量，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
-| length | number | 否   | 资源长度，默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕频资源解析错误，默认值:0。 |
+| offset | number | 否   | 资源偏移量。需要基于预置资源的信息输入，非法值会造成字幕资源解析错误。默认值为0。单位为字节。|
+| length | number | 否   | 资源长度。默认值为文件中从偏移量开始的剩余字节，需要基于预置资源的信息输入，非法值会造成字幕资源解析错误，默认值为0。|
 
 **返回值：**
 
@@ -3569,9 +3569,8 @@ setSuperResolution(enabled: boolean) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
-  avPlayer.fdSrc = fileDescriptor
+  let url: string = 'http://abc.bcd.efg/aa/test.mp4';    // 此处仅为示意，请替换为真实资源文件URL。
+  avPlayer.url = url;
   let playStrategy : media.PlaybackStrategy = {
       enableSuperResolution: true
   };
@@ -3624,9 +3623,8 @@ setVideoWindowSize(width: number, height: number) : Promise\<void>
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
-  avPlayer.fdSrc = fileDescriptor
+  let url: string = 'http://abc.bcd.efg/aa/test.mp4';    // 此处仅为示意，请替换为真实资源文件URL。
+  avPlayer.url = url;
   let playStrategy : media.PlaybackStrategy = {
       enableSuperResolution: true
   };

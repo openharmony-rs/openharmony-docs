@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -17,9 +17,9 @@
 5. **数据交互**：  
    - **接收**：通过回调函数接收UMP（Universal MIDI Packet 通用MIDI数据包）格式的MIDI数据。  
    - **发送**：构建UMP（Universal MIDI Packet 通用MIDI数据包）数据包并通过输出端口发送。  
-6. **释放资源**：使用完毕后关闭端口、设备并销毁客户端。  
+6. **释放资源**：使用完毕后关闭端口、设备并销毁客户端。
 
-**引用文件：** <midi/native_midi.h>
+**引用文件：** <ohmidi/native_midi.h>
 
 **库：** libohmidi.so
 
@@ -124,7 +124,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| const [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | size_t *count | 输出参数，用于接收设备数量。 |
 
 **返回：**
@@ -153,7 +153,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos(const OH_MIDIClient *client, OH_M
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| const [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | [OH_MIDIDeviceInformation](capi-ohmidi-oh-midideviceinformation.md) *infos | 用户分配的该缓冲区，用于存储设备信息。 |
 | size_t capacity | 缓冲区可容纳的最大元素数量。 |
 | size_t *actualDeviceCount | 输出参数，用于接收实际写入的设备数量。 |
@@ -272,7 +272,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| const [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | int64_t deviceId | 目标设备ID。 |
 | size_t *count | 输出参数，用于接收端口数量。 |
 
@@ -302,7 +302,7 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortInfos(const OH_MIDIClient *client, int64_
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
+| const [OH_MIDIClient](capi-ohmidi-oh-midiclientstruct.md) *client | MIDI客户端句柄。传入的client指针必须为[OH_MIDIClient_Create](capi-native-midi-h.md#oh_midiclient_create)创建的实例。 |
 | int64_t deviceId | 目标设备ID。 |
 | [OH_MIDIPortInformation](capi-ohmidi-oh-midiportinformation.md) *infos | 用户分配的缓冲区，用于存储端口信息。 |
 | size_t capacity | infos缓冲区可容纳的最大元素数量。 |

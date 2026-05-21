@@ -1,7 +1,7 @@
 # 分布式媒体会话概述(仅对系统应用开放)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->

@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **vibrator** module allows precise control over the vibration of device vibrators. With the APIs provided by this module, you can start vibration in various modes such as specified duration, preset effect, and custom effect and stop any or all of them.
@@ -1478,7 +1478,7 @@ Describes the FD of a custom vibration configuration file. Ensure that the file 
 
 ## VibratorEventType<sup>18+</sup>
 
-Vibration event type.
+Enumerates vibration event types.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 
@@ -1501,7 +1501,7 @@ Defines the gain relative to the vibration intensity.
 
 ## VibratorEvent<sup>18+</sup>
 
-Vibration event.
+Enumerates vibration events.
 
 **System capability**: SystemCapability.Sensors.MiscDevice
 

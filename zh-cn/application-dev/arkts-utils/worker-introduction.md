@@ -2,7 +2,7 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
-<!--Designer: @weng-changcheng-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -146,6 +146,10 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
    <!-- @[create_har_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/har/src/main/ets/workers/worker.ets) -->
    
    ``` TypeScript
+   import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
+   
+   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
+   // ...
    workerPort.onmessage = (e: MessageEvents) => {
      console.info('worker thread receive message: ', e.data);
      workerPort.postMessage('worker thread post message to main thread');

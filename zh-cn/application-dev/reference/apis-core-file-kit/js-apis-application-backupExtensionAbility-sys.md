@@ -77,7 +77,7 @@ getBackupCompatibilityInfo(extInfo: string): Promise&lt;string&gt;
     async getBackupCompatibilityInfo(extInfo: string): Promise<string> {
       let ret: string = '';
       try {
-        // 此处仅以Json为示范，相应判断逻辑及相应字段由应用自定义
+        // 此处仅以JSON为示范，相应判断逻辑及相应字段由应用自定义
         if (!extInfo) {
           ret = '{"dbVersion": "1.0", "isThemCardEnable": "true"}';
         } else {
@@ -125,7 +125,7 @@ getRestoreCompatibilityInfo(extInfo: string): Promise&lt;string&gt;
     async getRestoreCompatibilityInfo(extInfo: string): Promise<string> {
       let ret: string = '';
       try {
-        // 此处仅以Json为示范，相应判断逻辑及相应字段由应用自定义
+        // 此处仅以JSON为示范，相应判断逻辑及相应字段由应用自定义
         if (!extInfo) {
           ret = '{"dbVersion": "1.0", "isThemCardEnable": "true"}';
         } else {

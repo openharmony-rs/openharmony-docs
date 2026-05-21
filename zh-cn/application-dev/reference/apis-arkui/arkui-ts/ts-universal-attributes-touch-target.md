@@ -19,7 +19,7 @@
 
 responseRegion(value: Array&lt;Rectangle&gt; | Rectangle): T
 
-设置一个或多个触摸热区。
+设置一个或多个触摸热区。从API版本26.0.0开始，未主动设置时[Button](./ts-basic-components-button.md)、[Button模式的Toggle](./ts-basic-components-toggle.md)、[Select](./ts-basic-components-select.md)、[Chip](./ohos-arkui-advanced-Chip.md)和[ChipGroup](./ohos-arkui-advanced-ChipGroup.md)组件的触摸热区默认最小高度从28vp变更为32vp。该变更仅影响触摸命中范围，不影响组件实际显示高度。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -102,7 +102,7 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
   >
   > - x和y可以设置正负值百分比。当x设置为'100%'时表示热区往右偏移组件本身宽度大小，当x设置为'-100%'时表示热区往左偏移组件本身宽度大小。当y设置为'100%'时表示热区往下偏移组件本身高度大小，当y设置为'-100%'时表示热区往上偏移组件本身高度大小。
   >
-  > - width和height只能设置正值百分比。width：'100%'表示热区宽度设置为该组件本身的宽度。比如组件本身宽度是100vp，那么'100%'表示热区宽度也为100vp。height：'100%'表示热区高度设置为该组件本身的高度。
+  > - width和height设置百分比时，只能设置正值百分比。width：'100%'表示热区宽度设置为该组件本身的宽度。比如组件本身宽度是100vp，那么'100%'表示热区宽度也为100vp。height：'100%'表示热区高度设置为该组件本身的高度。
   >
   > - 百分比相对于组件自身宽高进行计算。
   >

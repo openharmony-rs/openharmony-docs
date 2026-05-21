@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 应用包信息，通过接口[freeInstall.getBundlePackInfo](js-apis-freeInstall-sys.md#getbundlepackinfo)获取。
 
@@ -143,7 +143,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | 名称        | 类型   | 只读 | 可选 | 说明                 |
 | ----------- | ------ | ---- | ---- | -------------------- |
 | releaseType | string | 是   | 否   | 版本的名称。         |
-| compatible  | number | 是   | 否   | 版本的最小兼容代码。 |
+| compatible  | number | 是   | 否   | 最小兼容版本号。 |
 | target      | number | 是   | 否   | 目标版本号。         |
 
 ## Version

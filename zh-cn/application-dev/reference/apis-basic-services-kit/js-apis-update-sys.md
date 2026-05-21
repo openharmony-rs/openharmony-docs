@@ -145,6 +145,8 @@ try {
 
 ## Updater
 
+提供系统在线更新功能的工具类。
+
 ### checkNewVersion
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
@@ -356,7 +358,7 @@ try {
 
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-获取新版本描述文件。使用callback异步回调。
+获取新版本描述信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -370,7 +372,7 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 | ------------------ | ---------------------------------------- | ---- | -------------- |
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | 是    | 版本摘要信息。         |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项。        |
-| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回新版本描述文件。 |
+| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回新版本描述信息。 |
 
 **错误码**：
 
@@ -421,7 +423,7 @@ try {
 
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
-获取新版本描述文件。使用Promise异步回调。
+获取新版本描述信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -440,7 +442,7 @@ getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOption
 
 | 类型                                       | 说明                  |
 | ---------------------------------------- | ------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回新版本描述文件。 |
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回新版本描述信息。 |
 
 **错误码**：
 
@@ -598,7 +600,7 @@ try {
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-获取当前版本描述文件。使用callback异步回调。
+获取当前版本描述信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -611,7 +613,7 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: A
 | 参数名                | 类型                                       | 必填   | 说明              |
 | ------------------ | ---------------------------------------- | ---- | --------------- |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | 是    | 描述文件选项。          |
-| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回当前版本描述文件。 |
+| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | 是    | 回调函数，返回当前版本描述信息。 |
 
 **错误码**：
 
@@ -655,7 +657,7 @@ try {
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
-获取当前版本描述文件。使用Promise异步回调。
+获取当前版本描述信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -673,7 +675,7 @@ getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<A
 
 | 类型                                       | 说明                   |
 | ---------------------------------------- | -------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回当前版本描述文件。 |
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise对象，返回当前版本描述信息。 |
 
 **错误码**：
 
@@ -1421,7 +1423,7 @@ clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Pr
 | 参数名               | 类型                                      | 必填   | 说明     |
 | ----------------- | --------------------------------------- | ---- | ------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | 是    | 版本摘要信息。 |
-| clearOptions      | [ClearOptions](#clearoptions)           | 是    | 更新选项。   |
+| clearOptions      | [ClearOptions](#clearoptions)           | 是    | 清除选项。   |
 
 **返回值：**
 
@@ -1592,7 +1594,7 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 | 参数名      | 类型                              | 必填   | 说明            |
 | -------- | ------------------------------- | ---- | ------------- |
 | policy   | [UpgradePolicy](#upgradepolicy) | 是    | 升级策略。          |
-| callback | AsyncCallback\<void>            | 是    | 回调函数，返回设置结果对象。 |
+| callback | AsyncCallback\<void>            | 是    | 回调函数。当设置升级策略成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1710,7 +1712,7 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 | 参数名      | 类型                   | 必填   | 说明                                     |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当清除升级缓存成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当终止升级执行成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1892,6 +1894,8 @@ try {
 
 ## Restorer
 
+提供设备恢复出厂设置功能的工具类。
+
 ### factoryReset
 
 factoryReset(callback: AsyncCallback\<void>): void
@@ -1908,7 +1912,7 @@ factoryReset(callback: AsyncCallback\<void>): void
 
 | 参数名      | 类型                   | 必填   | 说明                                     |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | 是    | 回调函数。当恢复出厂执行失败时，err为错误对象，有回调；执行成功时，err为undefined，无回调。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当恢复出厂执行成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -1949,7 +1953,7 @@ factoryReset(): Promise\<void>
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。当恢复出厂执行失败时，有回调；执行成功无回调。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -1993,7 +1997,7 @@ forceFactoryReset(): Promise\<void>
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2047,7 +2051,7 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise 对象。无返回结果。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2140,6 +2144,8 @@ try {
 
 ## LocalUpdater
 
+提供本地固件更新功能的工具类。
+
 ### verifyUpgradePackage
 
 verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: AsyncCallback\<void>): void
@@ -2158,7 +2164,7 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 | ----------- | --------------------------- | ---- | ---------------- |
 | upgradeFile | [UpgradeFile](#upgradefile) | 是    | 升级文件。             |
 | certsFile   | string                      | 是    | 证书文件路径。           |
-| callback    | AsyncCallback\<void>        | 是    | 回调函数，返回升级包校验结果对象。 |
+| callback    | AsyncCallback\<void>        | 是    | 回调函数。当校验成功时，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -2212,7 +2218,7 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 
 | 类型             | 说明                     |
 | -------------- | ---------------------- |
-| Promise\<void> | Promise对象，返回升级包校验结果对象。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -2248,7 +2254,8 @@ try {
 ```
 
 ### applyNewVersion
-applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>, callback: AsyncCallback\<void>): void
+
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void>): void
 
 安装升级包。使用callback异步回调。
 
@@ -2296,7 +2303,7 @@ try {
 
 ### applyNewVersion
 
-applyNewVersion(upgradeFiles: Array\<[UpgradeFile](#upgradefile)>): Promise\<void>
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>): Promise\<void>
 
 安装升级包。使用Promise异步回调。
 

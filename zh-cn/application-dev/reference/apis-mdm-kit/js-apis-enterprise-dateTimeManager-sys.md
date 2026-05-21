@@ -103,7 +103,7 @@ setDateTime(admin: Want, time: number): Promise\<void>
 
 | 类型   | 说明                                  |
 | ----- | ----------------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | 无返回结果的Promise对象。当设置系统时间失败时，抛出错误对象。 |
 
 **错误码**：
 
@@ -330,7 +330,7 @@ isModifyDateTimeDisallowed(admin: Want): Promise\<boolean>
 
 | 类型   | 说明                                  |
 | ----- | ----------------------------------- |
-| Promise\<boolean> | Promise对象。promise方式返回是否禁止修改系统时间策略，true表示禁止修改系统时间，否则表示允许修改系统时间。 |
+| Promise\<boolean> | Promise对象。Promise方式返回是否禁止修改系统时间策略，true表示禁止修改系统时间，否则表示允许修改系统时间。 |
 
 **错误码**：
 

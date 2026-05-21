@@ -105,11 +105,12 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
+| 1300002  | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -150,11 +151,12 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -192,11 +194,12 @@ on(type: 'windowSizeChange', callback: Callback<window.Size>): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
+| 1300002  | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -237,11 +240,12 @@ off(type: 'windowSizeChange', callback?: Callback<window.Size>): void
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
+| 1300002  | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -282,12 +286,13 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listener has been registered. 3. The UIExtension window proxy is abnormal. |
 
 **示例：**
 
@@ -330,12 +335,13 @@ off(type: 'rectChange', callback?: Callback&lt;RectChangeOptions&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | Abnormal state. Possible causes: 1. The listening type is not supported. 2. The listening type is not registered. 3. The listener has not been registered. 4. The UIExtension window proxy is abnormal. |
 
 **示例：**
 

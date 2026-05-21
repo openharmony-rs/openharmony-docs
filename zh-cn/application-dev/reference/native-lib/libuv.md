@@ -1343,7 +1343,7 @@ after_work_cb：loop所在线程要执行的回调函数。
 
 另外，`uv_queue_work`仅限于在loop线程中调用，这样不会有多线程安全问题。**请不要把uv_queue_work作为线程间通信的手段，即A线程获取到B线程的loop，并通过`uv_queue_work`抛异步任务的方式，把execute置为空任务，而把complete回调放在B线程中执行。** 这种方式不仅低效，而且还增加了发生故障时定位问题的难度。为了避免低效的任务提交，请使用[napi_threadsafe_function相关函数](../../napi/use-napi-thread-safety.md)。
 
-### OpenHarmony中libuv的使用现状
+### libuv的使用现状
 
 当前OpenHarmony系统中涉及到libuv的线程主要有主线程、JS Worker线程、Taskpool中的TaskWorker线程以及IPC线程。除了主线程采用了eventhandler作为主循环，其他线程都是使用libuv中的UV_RUN_DEFAULT运行模式作为当前线程的事件主循环来执行任务。在主线程中，eventhandler通过fd驱动的方式来触发任务的执行，eventhandler监听了uv_loop中的backend_fd。当loop中有fd事件触发的时候，eventhandler会执行一次`uv_run`来执行一遍libuv中的任务。
 

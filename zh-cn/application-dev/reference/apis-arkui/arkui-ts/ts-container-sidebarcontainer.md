@@ -1,9 +1,9 @@
 # SideBarContainer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 提供侧边栏可以显示和隐藏的容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区。
@@ -44,15 +44,14 @@ SideBarContainer( type?: SideBarContainerType )
 
 容器内侧边栏样式枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- |-------- |
-| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于[minContentWidth](#mincontentwidth10) + [minSideBarWidth](#minsidebarwidth)，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。|
-| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。 |
-| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth + minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth + minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。|
+| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于[minContentWidth](#mincontentwidth10) + [minSideBarWidth](#minsidebarwidth)，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth + minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth + minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| DISPLACE | 3 | 侧边栏和内容区并列显示，内容区超出部分移出组件外。侧边栏展开时，内容区显示灰色蒙层（颜色为#33000000）并被禁用事件，点击内容区可收起侧边栏。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -128,7 +127,7 @@ sideBarWidth(value: number)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。 |
+| value  | number | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 10以下版本的默认值为200vp，API version 10及以上版本的默认值为240vp。 |
 
 ### sideBarWidth<sup>9+</sup>
 
@@ -146,7 +145,7 @@ sideBarWidth(value: Length)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9的默认值为200vp，API version 10的默认值为240vp。 |
+| value  | [Length](ts-types.md#length) | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9的默认值为200vp，API version 10及以上版本的默认值为240vp。 |
 
 ### minSideBarWidth
 
@@ -299,6 +298,39 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [Dimension](ts-types.md#dimension10) | 是   | SideBarContainer组件内容区可显示的最小宽度。<br/>默认值：360vp<br/>单位：vp |
 
+### showSideBarWithGesture
+
+showSideBarWithGesture(value: boolean)
+
+设置是否支持通过手势滑动来显示或隐藏侧边栏。未通过该接口设置时，不支持通过手势滑动显示或隐藏侧边栏。
+
+> **说明：** 
+>
+> - 手势滑动生效范围为侧边栏+内容区（不含分割线），滑动距离达到100vp时改变侧边栏显示或隐藏状态，最大可滑动距离等于侧边栏宽度。
+>
+> - 当侧边栏位于容器左侧时：
+>   - 侧边栏隐藏时可向右滑动展开侧边栏。
+>   - 侧边栏显示时可向左滑动关闭侧边栏。
+>
+> - 当侧边栏位于容器右侧时：
+>   - 侧边栏隐藏时可向左滑动展开侧边栏。
+>   - 侧边栏显示时可向右滑动关闭侧边栏。
+>
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型                                 | 必填 | 说明                                                         |
+| ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | boolean | 是   | 设置是否支持通过手势滑动显示或隐藏侧边栏。<br/>true：支持通过手势滑动显示或隐藏侧边栏。<br/>false：不支持通过手势滑动显示或隐藏侧边栏。 |
+
 ## ButtonStyle对象说明
 
 设置侧边栏控制按钮的样式。
@@ -309,10 +341,10 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| left | number | 否 | 是 | 设置侧边栏控制按钮距离容器左界限的间距。<br/>默认值：16vp<br>单位：vp<br/>取值范围：[0, +∞) |
-| top | number | 否 | 是 | 设置侧边栏控制按钮距离容器上界限的间距。<br/>默认值：48vp<br/>单位：vp<br/>取值范围：[0, +∞) |
-| width | number | 否 | 是 | 设置侧边栏控制按钮的宽度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞) |
-| height | number | 否 | 是 | 设置侧边栏控制按钮的高度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞) |
+| left | number | 否 | 是 | 设置侧边栏控制按钮距离容器左界限的间距。<br/>默认值：16vp<br>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
+| top | number | 否 | 是 | 设置侧边栏控制按钮距离容器上界限的间距。<br/>默认值：48vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
+| width | number | 否 | 是 | 设置侧边栏控制按钮的宽度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 | 
+| height | number | 否 | 是 | 设置侧边栏控制按钮的高度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 | 
 | icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18对象说明) | 否 | 是 | 设置侧边栏控制按钮的图标。<br/>资源获取错误以及未设置该属性时，使用默认图标。 |
 
 ## ButtonIconOptions<sup>18+</sup>对象说明
@@ -350,25 +382,28 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 
 设置分割线的样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称        | 类型      | 只读 | 可选 | 说明                                     |
-| ----------- | ------------- | ---- | ---- | ---------------------------------------- |
-| strokeWidth | [Length](ts-types.md#length)        | 否 | 否   | 分割线的线宽。<br/>默认值：1vp<br/>单位：vp<br/>取值范围：[0, +∞)。<br/>**说明**：<br>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
-| color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#000000，3%   |
-| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
-| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)。 |
 >  **说明：** 
 >
 >  针对侧边栏子组件设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效。
+>
 >  针对侧边栏内容区设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
 >
 >  当[showSideBar](#showsidebar)属性未设置时，依据组件大小进行自动显示：
 >
 >  - 小于[minSideBarWidth](#minsidebarwidth) + [minContentWidth](#mincontentwidth10)：默认不显示侧边栏。
+>
 >  - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称       | 类型                           | 只读 | 可选 | 说明                                        |
+| --------- | ------------------------------- | ---- | ---- | ------------------------------------------ |
+| strokeWidth | [Length](ts-types.md#length)        | 否 | 否   | 分割线的线宽。<br/>默认值：1vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。<br/>**说明**：<br>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
+| color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#000000，3%，黑色。   |
+| startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
+| endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 
 ## 事件
 

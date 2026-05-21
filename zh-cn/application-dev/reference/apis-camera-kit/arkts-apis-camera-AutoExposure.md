@@ -89,7 +89,7 @@ setExposureMode(aeMode: ExposureMode): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                | Operation not allowed.                                 |
+| 7400102                | Operation not allowed.<br>适用版本：19+                                 |
 | 7400103                |  Session not config.                                   |
 
 **示例：**
@@ -217,7 +217,7 @@ setExposureBias(exposureBias: number): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>适用版本：12+                 |
 | 7400103                |  Session not config.                                   |
 
 **示例：**
@@ -384,22 +384,18 @@ onExposureStateChange(callback: Callback\<ExposureState\>): void
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | 是   | 回调函数，返回当前曝光状态。            |
+| callback | Callback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | 是   | 回调函数，返回当前曝光状态。            |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callback(err: BusinessError, exposureState: camera.ExposureState): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
+function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function registerPhotoOutputCaptureStart(captureSession: camera.captureSession): void {
+function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
   captureSession.onExposureStateChange(callback);
 }
 ```
@@ -422,26 +418,22 @@ offExposureStateChange(callback?: Callback\<ExposureState\>): void
 
 | 参数名      | 类型                    | 必填 | 说明                                       |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | 否   | 回调函数，如果指定参数则取消对应callback，callback对象如果为空或为匿名函数，则取消所有callback。     |
+| callback | Callback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | 否   | 回调函数，如果指定参数则取消对应callback，callback对象如果为空或为匿名函数，则取消所有callback。     |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function callback(err: BusinessError, exposureState: camera.ExposureState): void {
-  if (err !== undefined && err.code !== 0) {
-    console.error(`Callback Error, errorCode: ${err.code}`);
-    return;
-  }
+function callback(exposureState: camera.ExposureState): void {
   console.info(`exposureState: ${exposureState}`);
 }
 
-function unregisterPhotoOutputCaptureStart(captureSession: camera.captureSession): void {
+function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange(callback);
 }
 
-function unregisterPhotoOutputCaptureStartWithOutParam(captureSession: camera.captureSession): void {
+function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
   captureSession.offExposureStateChange();
 }
 ```

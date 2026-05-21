@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 当AutoFillExtensionAbility触发回调函数时，会提供给开发者页面数据及回调接口。
 

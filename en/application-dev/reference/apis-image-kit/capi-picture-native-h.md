@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -44,7 +44,7 @@ The file declares the APIs for obtaining picture data and information.
 | [Image_ErrorCode OH_ComposeOptions_Create(OH_ComposeOptions **options)](#oh_composeoptions_create) | Creates an **OH_ComposeOptions** instance.|
 | [Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT desiredPixelFormat)](#oh_composeoptions_setdesiredpixelformat) | Sets the pixel format in **OH_ComposeOptions**.|
 | [Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT *desiredPixelFormat)](#oh_composeoptions_getdesiredpixelformat) | Obtains the pixel format in **OH_ComposeOptions**.|
-| [Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)](#oh_composeoptions_release) | Release the pointer to **OH_ComposeOptions**.|
+| [Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)](#oh_composeoptions_release) | Releases the pointer to **OH_ComposeOptions**.|
 | [Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, OH_PictureNative **picture)](#oh_picturenative_createpicture) | Creates the pointer to an OH_PictureNative object.|
 | [Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_PixelmapNative **mainPixelmap)](#oh_picturenative_getmainpixelmap) | Obtains the pointer to the OH_PixelmapNative object of a main picture.|
 | [Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *picture, OH_PixelmapNative **hdrPixelmap)](#oh_picturenative_gethdrcomposedpixelmap) | Obtains the pointer to the OH_PixelmapNative object of an HDR picture.|
@@ -824,7 +824,7 @@ Obtains the row stride in **OH_AuxiliaryPictureInfo**.
 | Name| Description|
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
-| uint32_t *rowStride | Pointer to the row stride, which is the number of bytes from one row of pixels in memory to the next row of pixels in memory.|
+| uint32_t *rowStride | Pointer to the row stride, which is the space occupied by each row of pixels in memory.|
 
 **Returns**
 
@@ -849,7 +849,7 @@ Sets the row stride in **OH_AuxiliaryPictureInfo**.
 | Name| Description|
 | -- | -- |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the OH_AuxiliaryPictureInfo object.|
-| uint32_t rowStride | Row stride, which is the number of bytes from one row of pixels in memory to the next row of pixels in memory.|
+| uint32_t rowStride | Row stride, which is the space occupied by each row of pixels in memory.|
 
 **Returns**
 

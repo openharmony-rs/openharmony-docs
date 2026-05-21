@@ -36,6 +36,12 @@
 | [OH_UdsContentForm](capi-udmf-oh-udscontentform.md) | OH_UdsContentForm | 描述内容卡片类型的统一数据结构。       |
 | [OH_UdsDetails](capi-udmf-oh-udsdetails.md) | OH_UdsDetails | 描述字典类型的统一数据结构。 |
 
+### 枚举
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [Udmf_AuthPermission](#udmf_authpermission) | Udmf_AuthPermission | 拖拽场景下的URI授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。|
+
 ### 函数
 
 | 名称                                                         | 描述                                                         |
@@ -127,7 +133,62 @@
 | [int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)](#oh_udsdetails_setvalue) | 向字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中添加键值对数据。 |
 | [const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)](#oh_udsdetails_getvalue) | 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中指定的键对应的值。 |
 | [char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)](#oh_udsdetails_getallkeys) | 获取字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)中所有键的结果集。 |
+| [int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)](#oh_udshtml_setauthpolicy) | 给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
+| [int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)](#oh_udsfileuri_setauthpolicy) | 给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。<br>说明：此授权策略仅在拖拽场景下生效，其他场景不生效。 |
 
+
+## 枚举类型说明
+
+### Udmf_AuthPermission
+
+```c
+enum Udmf_AuthPermission
+```
+
+**描述**
+
+拖拽场景下的URI授权策略。
+
+> **说明：**
+>
+> 此授权策略仅在拖拽场景下生效，其他场景不生效。
+
+支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：
+
+- 仅使用NONE：不做任何文件授权。
+
+- 仅使用READ：仅做单次只读授权。
+
+- 仅使用WRITE：做单次读、写授权（写授权包含读授权）。
+
+- READ+WRITE：做单次读、写授权，与仅写授权等同。
+
+- READ+PERSIST：做持久化读授权。
+
+- WRITE+PERSIST：做持久化读写授权。
+
+- READ+WRITE+PERSIST：做持久化读写授权。
+
+拖拽授权策略应用规则（按优先级从高到低）：
+
+- 单个数据级别：FileUri、HTML两个UDS支持配置授权策略参数，仅对单个record单次生效，优先级最高。
+
+- [OH_UdmfData](capi-udmf-oh-udmfdata.md)级别：[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)中提供的授权参数对单次拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。
+
+- 默认级别：若单个数据和[OH_UdmfProperty](capi-udmf-oh-udmfproperty.md)均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：
+
+- FileUri类型数据：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。
+
+- HTML类型数据，仅针对HTML文本中img标签下的uri做读授权。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| UDMF_PERM_NONE = 0 | 表示未授予任何权限。 |
+| UDMF_PERM_READ = 1u << 0 | 表示读取或查看数据的权限。 |
+| UDMF_PERM_WRITE = 1u << 1 | 表示修改数据的权限（包含READ）。 |
+| UDMF_PERM_PERSIST = 1u << 2 | 表示持久化文件的权限。 |
 
 ## 函数说明
 
@@ -2224,3 +2285,61 @@ char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)
 | 类型 | 说明 |
 | -- | -- |
 | char** | 执行成功时返回字典类型中键的结果集，否则返回nullptr。<br>当使用[OH_UdsDetails_Destroy](capi-uds-h.md#oh_udsdetails_destroy)销毁字典类型[OH_UdsDetails](capi-udmf-oh-udsdetails.md)指针指向的实例对象，该返回值也会被释放。 |
+
+### OH_UdsHtml_SetAuthPolicy()
+
+```c
+int OH_UdsHtml_SetAuthPolicy(OH_UdsHtml* pThis, uint32_t authPolicy)
+```
+
+**描述**
+
+给[OH_UdsHtml](capi-udmf-oh-udshtml.md)设置授权策略。
+
+> **说明：** 
+>
+> 此授权策略仅在拖拽场景下生效，其他场景不生效。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsHtml](capi-udmf-oh-udshtml.md)* pThis | 表示指向[OH_UdsHtml](capi-udmf-oh-udshtml.md)实例的指针。 |
+| uint32_t authPolicy | 表示拖拽场景下的URI授权策略，默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高。具体策略见[Udmf_AuthPermission](capi-uds-h.md#udmf_authpermission)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。<br>返回UDMF_E_OK表示执行成功。<br>返回UDMF_E_INVALID_PARAM表示通用错误码。<br>具体请参见[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |
+
+### OH_UdsFileUri_SetAuthPolicy()
+
+```c
+int OH_UdsFileUri_SetAuthPolicy(OH_UdsFileUri* pThis, uint32_t authPolicy)
+```
+
+**描述**
+
+给[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)设置授权策略。
+
+> **说明：**
+>
+> 此授权策略仅在拖拽场景下生效，其他场景不生效。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)* pThis | 表示指向[OH_UdsFileUri](capi-udmf-oh-udsfileuri.md)实例的指针。 |
+| uint32_t authPolicy | 表示拖拽场景下的URI授权策略，默认值为READ+WRITE+PERSIST（读+写+持久化授权），只针对单个record使用，优先级最高。具体策略见[Udmf_AuthPermission](capi-uds-h.md#udmf_authpermission)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回执行的状态代码。<br>返回UDMF_E_OK表示执行成功。<br>返回UDMF_E_INVALID_PARAM表示通用错误码。<br>具体请参见[Udmf_ErrCode](capi-udmf-err-code-h.md#udmf_errcode)。 |

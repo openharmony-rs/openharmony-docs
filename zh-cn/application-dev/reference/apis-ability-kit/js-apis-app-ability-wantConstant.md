@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 
 wantConstant模块提供了[Want](js-apis-app-ability-want.md)操作相关的系统预设枚举和常量，例如在启动Ability时常用的Flag、Param参数等。

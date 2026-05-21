@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 自动填充气泡弹窗的尺寸和位置信息。
 

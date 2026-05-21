@@ -14,7 +14,9 @@
 
 不规范地使用[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)后出现[JS Crash](../dfx/jscrash-guidelines.md)。
 
-![](figures/jscrash_happend.png)
+<!--RP1-->
+![](figures/jscrash_happened.png)
+<!--RP1End-->
 
 **解决措施**
 
@@ -58,7 +60,9 @@ struct FrameNodeTypeTest {
 
 开发者对[ArkUI_NodeHandle](./../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)执行[disposeNode](./../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)前，未清理节点相关的资源对象（如回调、捕获引用等），导致节点下树后高概率发生程序崩溃，崩溃原因为释放后使用（Use After Free）。
 
+<!--RP2-->
 ![](figures/cppcrash_happened.png)
+<!--RP2End-->
 
 下图为此类问题的典型故障日志，日志中的Reason:Signal字段为SIGSEGV(SEGV_MAPERR)，表示崩溃地址不固定，可能提示野指针或空指针解引用。此时崩溃栈内各个栈帧基本均为系统栈，如DetachFromMainTree、~FrameNode等系统函数，此类系统函数多与disposeNode接口和节点下树析构相关。
 

@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -25,3 +25,16 @@
 | type<sup>12+</sup> | [SourceType](./arkts-apis-webview-e.md#sourcetype12) | 否 | 否 | 媒体源的类型。 |
 | source<sup>12+</sup> | string | 否 | 否 | 媒体源地址。 |
 | format<sup>12+</sup> | string | 否 | 否 | 媒体源格式，可能为空，需要开发者自行判断格式。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+const mediaInfo: webview.MediaSourceInfo = {
+  type: webview.SourceType.URL,
+  source: 'https://example.com/video.mp4',
+  format: 'mp4'
+};
+```

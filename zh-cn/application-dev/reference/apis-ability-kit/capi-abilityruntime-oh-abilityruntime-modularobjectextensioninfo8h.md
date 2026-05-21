@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yzkp-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct OH_AbilityRuntime_ModularObjectExtensionInfo* OH_AbilityRuntime_ModObjExtensionInfoHandle

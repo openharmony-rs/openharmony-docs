@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yangzhongkai-->
 <!--Designer: @yangzhongkai-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct AbilityRuntime_ExtensionInstance* AbilityRuntime_ExtensionInstanceHandle

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yuhong35-->
 <!--Designer: @xukeke-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供垂域面板管理能力，当前仅支持启动垂域应用面板选择器。
 

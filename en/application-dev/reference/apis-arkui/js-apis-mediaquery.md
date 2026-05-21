@@ -52,7 +52,7 @@ Sets the media query condition. This API returns the corresponding media query l
 
 | Type              | Description                                        |
 | ------------------ | -------------------------------------------- |
-| [MediaQueryListener](#mediaquerylistener) | Media query listener, which is used to register or deregister the listening callback.|
+| [MediaQueryListener](#mediaquerylistener) | Media query listener, which is used to register or unregister the listening callback.|
 
 **Example**
 
@@ -107,7 +107,7 @@ Registers a media query listener. The callback is triggered when the media attri
 
 off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 
-Deregisters a media query listener, so that no callback is triggered when the media attributes change.
+Unregisters a media query listener, so that no callback is triggered when the media attributes change.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 

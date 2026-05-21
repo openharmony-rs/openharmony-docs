@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -14,7 +14,7 @@ ImagePacker类，用于图片压缩和编码。
 
 由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
-当前支持的格式有：jpeg、webp、png、heic<sup>12+</sup>、gif<sup>18+</sup>（不同硬件设备支持情况不同，可通过ImagePacker的supportedFormats属性查看）。
+当前支持的格式有：JPEG、WebP、PNG、HEIC<sup>12+</sup>、GIF<sup>18+</sup>、从API版本26.0.0开始支持TIFF格式（不同硬件设备支持情况不同，可通过ImagePacker的supportedFormats属性查看）。
 
 > **说明：**
 >
@@ -32,7 +32,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称             | 类型           | 只读 | 可选 | 说明                       |
 | ---------------- | -------------- | ---- | ---- | -------------------------- |
-| supportedFormats | Array\<string> | 是   | 否   | 图片编码支持的格式，包括：jpeg、webp、png、heic<sup>12+</sup>、gif<sup>18+</sup>（不同硬件设备支持情况不同）。 |
+| supportedFormats | Array\<string> | 是   | 否   | 图片编码支持的格式，包括：JPEG、WebP、PNG、HEIC<sup>12+</sup>、GIF<sup>18+</sup>、从API版本26.0.0开始支持TIFF格式（不同硬件设备支持情况不同）。 |
 
 ## packToData<sup>13+</sup>
 
@@ -328,7 +328,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                                                   |
 | -------------- | ------------------------------------------------------ |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **示例：**
 
@@ -358,7 +358,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | 参数名   | 类型                            | 必填 | 说明                           |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。                 |
-| fd       | number                          | 是   | 文件描述符。                   |
+| fd       | number                          | 是   | 文件描述符。取值范围为[0，65535]。                   |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，当编码进文件成功，err为undefined，否则为错误对象。  |
 
@@ -415,14 +415,14 @@ packToFile (source: ImageSource, fd: number, options: PackingOption): Promise\<v
 | 参数名 | 类型                            | 必填 | 说明           |
 | ------ | ------------------------------- | ---- | -------------- |
 | source | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。 |
-| fd     | number                          | 是   | 文件描述符。   |
+| fd     | number                          | 是   | 文件描述符。取值范围为[0，65535]。   |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。 |
 
 **返回值：**
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -478,7 +478,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption,  callback: Asy
 | 参数名   | 类型                            | 必填 | 说明                           |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [PixelMap](arkts-apis-image-PixelMap.md)          | 是   | 编码的PixelMap资源。           |
-| fd       | number                          | 是   | 文件描述符。                   |
+| fd       | number                          | 是   | 文件描述符。取值范围为[0，65535]。                   |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，当编码图片进文件成功，err为undefined，否则为错误对象。  |
 
@@ -539,14 +539,14 @@ packToFile (source: PixelMap, fd: number, options: PackingOption): Promise\<void
 | 参数名 | 类型                            | 必填 | 说明                 |
 | ------ | ------------------------------- | ---- | -------------------- |
 | source | [PixelMap](arkts-apis-image-PixelMap.md)          | 是   | 编码的PixelMap资源。 |
-| fd     | number                          | 是   | 文件描述符。         |
+| fd     | number                          | 是   | 文件描述符。取值范围为[0，65535]。         |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。       |
 
 **返回值：**
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -601,14 +601,14 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise\<void>
 | 参数名  | 类型                         | 必填 | 说明                 |
 | ------- | ---------------------------- | ---- | -------------------- |
 | picture  | [Picture](arkts-apis-image-Picture.md)          | 是   | 编码的Picture资源。 |
-| fd      | number                       | 是   | 文件描述符。         |
+| fd      | number                       | 是   | 文件描述符。取值范围为[0，65535]。         |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。       |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -667,14 +667,14 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: number, o
 | 参数名           | 类型                                                      | 必填 | 说明                   |
 | ---------------- | --------------------------------------------------------- | ---- | ---------------------- |
 | pixelmapSequence | Array<[PixelMap](arkts-apis-image-PixelMap.md)>                             | 是   | 待编码的PixelMap序列。 |
-| fd               | number                                                    | 是   | 文件描述符。           |
+| fd               | number                                                    | 是   | 文件描述符。取值范围为[0，65535]。           |
 | options          | [PackingOptionsForSequence](arkts-apis-image-i.md#packingoptionsforsequence18) | 是   | 动图编码参数。         |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -713,6 +713,154 @@ async function PackToFile(context : Context) {
     }).catch((error: BusinessError) => {
     console.error('Failed to packToFileMultiFrames.');
   })
+}
+```
+
+## packBinaryImageToTiffFile
+
+packBinaryImageToTiffFile(bufferInfo: BinaryBufferInfo, fd: number, options?: PackingOptionsForTiff): Promise\<void>
+
+将二值图像数据编码到入参fd对应的TIFF文件。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| bufferInfo | [BinaryBufferInfo](arkts-apis-image-i.md#binarybufferinfo) | 是 | 图像缓冲区信息。 |
+| fd | number | 是 | 文件描述符ID。该值必须为正整数。 |
+| options | [PackingOptionsForTiff](arkts-apis-image-i.md#packingoptionsfortiff) | 否 | TIFF图像编码选项。<br>未传入options时，默认的compression为4（CCITT G4）。<br>未传入options时，默认的orientation为1（TOP_LEFT），表示图像未旋转。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 7800202 | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
+| 7800301 | Encode failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+
+const DOMAIN = 0X00000;
+const TAG: string = 'PackBinaryImageToTiffFile';
+
+async function PackBinaryImageToTiffFile(context: Context) {
+  const width = 100;
+  const height = 100;
+  const rowBytes = 13;
+  const bufferSize = rowBytes * height;
+  const data: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+  let bufferInfo: image.BinaryBufferInfo = {
+    size: { width: width, height: height },
+    data: data,
+    bytesPerRow: rowBytes
+  };
+
+  const filePath: string = context.filesDir + "/output.tiff";
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+
+  let tiffOptions: image.PackingOptionsForTiff = {
+    compression: 4 // CCITT G4压缩
+  };
+
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  await imagePackerObj.packBinaryImageToTiffFile(bufferInfo, file.fd, tiffOptions)
+    .then(() => {
+      hilog.info(DOMAIN, TAG, 'Succeeded in packing binary image to tiff file.');
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `Failed to pack binary image to tiff file. code ${error.code}, message is ${error.message}`);
+    });
+  fileIo.closeSync(file);
+}
+```
+
+## packBinaryImageToTiffData
+
+packBinaryImageToTiffData(bufferInfo: BinaryBufferInfo, options?: PackingOptionsForTiff): Promise\<ArrayBuffer>
+
+将二值图像数据编码为TIFF数据，以ArrayBuffer的形式返回。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| bufferInfo | [BinaryBufferInfo](arkts-apis-image-i.md#binarybufferinfo) | 是 | 图像缓冲区信息。 |
+| options | [PackingOptionsForTiff](arkts-apis-image-i.md#packingoptionsfortiff) | 否 | TIFF图像编码选项。<br>未传入options时，默认的compression为4（CCITT G4）。<br>未传入options时，默认的orientation为1（TOP_LEFT），表示图像未旋转。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<ArrayBuffer> | Promise对象，返回编码后的数据。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 7800202 | Invalid parameter. Possible causes: 1. Invalid FD; 2. Compression algorithm mismatch. |
+| 7800301 | Encode failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { image } from '@kit.ImageKit';
+
+const DOMAIN = 0X00000;
+const TAG: string = 'PackBinaryImageToTiffData';
+
+async function PackBinaryImageToTiffData() {
+  const width = 100;
+  const height = 100;
+  const rowBytes = 13;
+  const bufferSize = rowBytes * height;
+  const data: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+  let bufferInfo: image.BinaryBufferInfo = {
+    size: { width: width, height: height },
+    data: data,
+    bytesPerRow: rowBytes
+  };
+
+  let tiffOptions: image.PackingOptionsForTiff = {
+    compression: 4 // CCITT G4压缩
+  };
+
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+  await imagePackerObj.packBinaryImageToTiffData(bufferInfo, tiffOptions)
+    .then((data: ArrayBuffer) => {
+      hilog.info(DOMAIN, TAG, 'Succeeded in packing binary image to tiff data.');
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `Failed to pack binary image to tiff data. code ${error.code}, message is ${error.message}`);
+    });
 }
 ```
 

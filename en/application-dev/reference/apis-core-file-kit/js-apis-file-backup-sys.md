@@ -2,8 +2,8 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **file.backup** module provides APIs for backing up and restoring data for applications.

@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @ccllee1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 应用模型的构成要素
 

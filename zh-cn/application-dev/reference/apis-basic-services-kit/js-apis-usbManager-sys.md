@@ -20,54 +20,6 @@
 import { usbManager } from '@kit.BasicServicesKit';
 ```
 
-## addRight <sup>(deprecated)</sup>
-
-addRight(bundleName: string, deviceName: string): boolean
-
-添加软件包访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。
-
-usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；addRight不会触发弹框，而是直接添加软件包访问设备的权限。
-
-> **说明：**
->
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [addDeviceAccessRight](#adddeviceaccessright12) 替代。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：**  SystemCapability.USB.USBManager
-
-**参数：**
-
-| 参数名     | 类型   | 必填 | 说明         |
-| ---------- | ------ | ---- | ------------ |
-| deviceName | string | 是   | 设备名称。   |
-| bundleName | string | 是   | 软件包名称。 |
-
-**返回值：**
-
-| 类型    | 说明                                                                      |
-| ------- | ------------------------------------------------------------------------- |
-| boolean | 返回权限添加结果。返回true表示权限添加成功；返回false则表示权限添加失败。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                                                |
-| -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
-
-**示例：**
-
-```ts
-let devicesName: string = "1-1";
-let bundleName: string = "com.example.hello";
-if (usbManager.addRight(bundleName, devicesName)) {
-  console.info(`Succeed in adding right`);
-}
-```
-
 ## usbFunctionsFromString<sup>(deprecated)</sup>
 
 usbFunctionsFromString(funcs: string): number

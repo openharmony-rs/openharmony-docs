@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 AbilityStateData是Ability状态信息的数据结构。使用[on](js-apis-app-ability-appManager.md#appmanageronapplicationstate14)注册生命周期变化监听后，可以通过[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)的onAbilityStateChanged回调的入参获取该数据结构。
 
 > **说明：**

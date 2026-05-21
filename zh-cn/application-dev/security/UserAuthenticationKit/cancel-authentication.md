@@ -36,11 +36,11 @@ handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampl
   // ...
     // 启动认证
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
     // ...
       // 取消认证
       userAuthInstance.cancel();
-      Logger.info('auth cancel successfully');
+      Logger.info('auth cancel successfully.');
       // ...
 }
 
@@ -66,7 +66,7 @@ cancelingUserAuthentication() {
     };
     // 获取认证对象
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     this.handleAuthResultAndCanceling(userAuthInstance, ResultIndex.CANCEL);
   } catch (error) {
     const err: BusinessError = error as BusinessError;

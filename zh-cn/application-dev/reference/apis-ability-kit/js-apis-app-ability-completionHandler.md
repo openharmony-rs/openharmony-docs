@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @yangxuguang-huawei; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 CompletionHandler作为[StartOptions](js-apis-app-ability-startOptions.md#startoptions)和[OpenLinkOptions](js-apis-app-ability-openLinkOptions.md#openlinkoptions)的可选参数，用于处理拉起应用请求的结果。
 

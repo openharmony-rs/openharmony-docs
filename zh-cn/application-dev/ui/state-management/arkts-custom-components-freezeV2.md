@@ -36,7 +36,7 @@
 
 页面1：
 
-<!-- @[freeze_template1_Page1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page1.ets) -->    
+<!-- @[freeze_template1_Page1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page1.ets) -->     
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -70,6 +70,7 @@ export struct Page1 {
         .onClick(() => {
           this.bookTest.name = 'The Old Man and the Sea';
         })
+      // 点击Button，路由跳转到页面2
       Button('go to next page').fontSize(25)
         .onClick(() => {
           this.getUIContext().getRouter().pushUrl({ url: 'pages/freeze/template1/Page2' });
@@ -86,7 +87,7 @@ export struct Page1 {
 
 页面2：
 
-<!-- @[freeze_template1_Page2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page2.ets) -->
+<!-- @[freeze_template1_Page2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page2.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -95,6 +96,7 @@ struct Page2 {
   build() {
     Column() {
       Text('This is the page2').fontSize(25)
+      // 点击Button，路由跳转回页面1
       Button('Back')
         .onClick(() => {
           this.getUIContext().getRouter().back();
@@ -129,7 +131,7 @@ Trace如下：
 
 ![freezeWithTab](./figures/freezewithTabs.png)
 
-<!-- @[freeze_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets) --> 
+<!-- @[freeze_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -145,6 +147,7 @@ struct TabContentTest {
   build() {
     Row() {
       Column() {
+        // 点击Button修改message，可见的TabContent触发onMessageUpdated回调
         Button('change message').onClick(() => {
           this.message++;
         })
@@ -512,7 +515,7 @@ struct ChildComponent1 {
 
 如果开发者只想冻结某个子组件，可以选择只在子组件设置freezeWhenInactive为true。
 
-<!-- @[freeze_template5_PageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageA.ets) -->
+<!-- @[freeze_template5_PageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageA.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/freeze/template5/PageA.ets
@@ -539,6 +542,7 @@ struct PageA {
       Navigation(this.pageInfo) {
         Child()
 
+        // 点击Button，跳转页面至PageB
         Button('Go to next page').fontSize(30)
           .onClick(() => {
             this.pageInfo.pushPathByName('PageB', null);
@@ -578,7 +582,7 @@ export struct Child {
 ```
 
 
-<!-- @[freeze_template5_PageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageB.ets) -->
+<!-- @[freeze_template5_PageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template5/PageB.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/freeze/template5/PageB.ets
@@ -596,6 +600,7 @@ struct PageB {
       Column() {
         Text('This is the PageB')
 
+        // 点击Button，页面跳转回PageA
         Button('Back').fontSize(30)
           .onClick(() => {
             this.pathStack.pop();
@@ -637,7 +642,7 @@ struct PageB {
 
 **Navigation和TabContent的混用**
 
-<!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) --> 
+<!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -777,6 +782,7 @@ struct PageOneStack1 {
   build() {
     NavDestination() {
       Column() {
+        // NavDestination中创建TabContent
         TabsComponent()
 
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })

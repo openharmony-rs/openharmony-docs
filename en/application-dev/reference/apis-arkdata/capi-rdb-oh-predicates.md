@@ -24,7 +24,7 @@ Defines a **predicates** object.
 
 | Name      | Description                            |
 | ---------- | -------------------------------- |
-| int64_t id | Unique identifier of the **H_Predicates** struct.|
+| int64_t id | Unique identifier of the **OH_Predicates** struct.|
 
 ### Member Functions
 

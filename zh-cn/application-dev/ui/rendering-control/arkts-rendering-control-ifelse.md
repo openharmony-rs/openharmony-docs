@@ -81,7 +81,7 @@ if语句的每个分支都包含一个构建函数。此类构建函数必须创
 
 2. 执行新分支的构造函数，将生成的子组件添加到其父组件中。
 
-在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构造函数，创建一个Text组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从Column组件中删除。由于没有else分支，因此不会执行新的构造函数。
+在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构造函数，创建一个[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)组件中删除。由于没有else分支，因此不会执行新的构造函数。
 
 ### if ... else ...语句和子组件状态
 

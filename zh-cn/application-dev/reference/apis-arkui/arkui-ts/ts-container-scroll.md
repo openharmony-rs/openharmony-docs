@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
+<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 可滚动的容器组件，当子组件的布局尺寸超过父组件的尺寸时，内容可以滚动。
@@ -13,7 +13,7 @@
 >  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >  - 该组件嵌套List子组件滚动时，若List不设置宽高，则默认全部加载，在对性能有要求的场景下建议指定List的宽高，最佳实践请参考[懒加载优化性能-Scroll嵌套List导致按需加载失效](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization#section6296154115367)。
 >  - 该组件滚动的前提是主轴方向大小小于内容大小。
->  - Scroll组件[通用属性clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
+>  - Scroll组件通用属性[clip](ts-universal-attributes-sharp-clipping.md#clip12)的默认值为true。
 >  - Scroll组件的高度超出屏幕显示范围时，可以通过设置通用属性[layoutWeight](ts-universal-attributes-size.md#layoutweight)让Scroll高度适应主轴的剩余空间。
 >  - 手指触摸屏幕时，会停止当前触摸范围内所有滚动组件的滚动动画（[scrollTo](#scrollto)和[scrollToIndex](#scrolltoindex)接口触发的滚动动画除外），包括边缘回弹动画。
 >  - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
@@ -60,7 +60,7 @@ scrollable(value: ScrollDirection)
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
 | value  | [ScrollDirection](#scrolldirection枚举说明) | 是   | 滚动方向。<br/>默认值：ScrollDirection.Vertical |
 
-当滚动方向设置为[ScrollDirection.FREE](#scrolldirection枚举说明)时，Scroll组件仅支持部分能力，见[自由滚动模式下支持的能力](#scrolldirection枚举说明)。
+当滚动方向设置为[ScrollDirection.FREE](#scrolldirection枚举说明)时，Scroll组件仅支持部分能力，见[ScrollDirection.FREE](#scrolldirection枚举说明)中自由滚动模式下支持的能力。
 
 ### scrollBar
 
@@ -112,6 +112,7 @@ scrollBarColor(color: Color | number | string | Resource)
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 滚动条的颜色。<br/>默认值：'\#66182431'<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。   |
 
+
 ### scrollBarWidth
 
 scrollBarWidth(value: number | string)
@@ -127,6 +128,28 @@ scrollBarWidth(value: number | string)
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | number&nbsp;\|&nbsp;string | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。|
+
+### scrollBarWidth
+
+scrollBarWidth(value: number | string | Resource)
+
+设置滚动条的宽度，不支持百分比设置。宽度设置后，滚动条正常状态和按压状态宽度均为滚动条的宽度值。如果滚动条的宽度超过Scroll组件主轴方向的高度，则滚动条的宽度会变为4vp，支持Resource资源类型。
+
+未通过该接口设置时，设置滚动条的宽度为4vp。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                       | 必填 | 说明                                      |
+| ------ | -------------------------- | ---- | ----------------------------------------- |
+| value  | number&nbsp;\|&nbsp;string \|&nbsp;[Resource](ts-types.md#resource) | 是   | 滚动条的宽度。<br/>单位：vp <br/>取值范围：[0, +∞)。设置为小于0的值时，按4vp处理。设置为0时，不显示滚动条。|
 
 ### scrollSnap<sup>10+</sup>
 
@@ -1354,7 +1377,11 @@ struct ScrollExample {
       Button('fling -3000')
         .height('5%')
         .onClick(() => { // 点击后触发初始速度为-3000vp/s的惯性滚动
-          this.scroller.fling(-3000);
+          try {
+            this.scroller.fling(-3000);
+          } catch (error) {
+            console.error('Failed to execute fling scroll:', error);
+          }
         })
         .margin({ top: 260, left: 20 })
       Button('scroll to bottom 700')
@@ -1652,7 +1679,11 @@ struct ListExample {
     for (let i = 0; i < 10; i++) {
       this.arr.push(i);
     }
-    this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    try {
+      this.listChildrenSize.splice(0, 5, [100, 100, 100, 100, 100]);
+    } catch (error) {
+      console.info('Failed to splice childrenMainSize for first 5 items:', error);
+    }
   }
   build() {
     Column() {
@@ -1678,7 +1709,11 @@ struct ListExample {
         PanGesture()
           .onActionUpdate((event: GestureEvent) => {
             if (event.fingerList[0] != undefined && event.fingerList[0].localX != undefined && event.fingerList[0].localY != undefined) {
-              this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              try {
+                this.listIndex = this.scroller.getItemIndex(event.fingerList[0].localX, event.fingerList[0].localY);
+              } catch (error) {
+                console.error('Failed to get item index from scroller:', error);
+              }
               this.itemBackgroundColorArr[this.listIndex] = true;
             }
           })

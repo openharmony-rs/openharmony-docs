@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1; @wendel; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AtomicServiceOptions可以作为[openAtomicService()](js-apis-inner-application-uiAbilityContext.md#openatomicservice12)的入参，用于携带参数。继承于[StartOptions](js-apis-app-ability-startOptions.md)。
 

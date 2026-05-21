@@ -60,7 +60,7 @@ handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumbe
     });
     // 启动认证
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
     // ...
 }
 
@@ -86,7 +86,7 @@ applyingCustomAuthentication() {
     };
     // 获取认证对象
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // 订阅认证结果
     this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
   } catch (error) {

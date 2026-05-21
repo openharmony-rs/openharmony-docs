@@ -60,7 +60,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| NOT_SPECIFIED<sup>18+</sup>  | 0      | 未指定用户。 |
+| NOT_SPECIFIED<sup>18+</sup>  | 0      | 不指定使用范围。 |
 | CURRENT_USER | 1      | 当前用户。 |
 | GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。 |
 
@@ -140,7 +140,7 @@ USB证书凭据授权请求信息。
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-表示拉起证书管理对话框，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理对话框，显示相应的页面。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -152,7 +152,7 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | pageType | [CertificateDialogPageType](#certificatedialogpagetype)                   | 是   | 表示页面类型。 |
 
 **返回值**：
@@ -185,7 +185,8 @@ let pageType: certificateManagerDialog.CertificateDialogPageType = certificateMa
 try {
   certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
     console.info('Succeeded in opening certificate manager dialog.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open certificate manager dialog. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -196,7 +197,7 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -210,7 +211,7 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型，目前支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。 |
 | certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前支持CURRENT_USER、NOT_SPECIFIED。 |
 | cert | Uint8Array                  | 是   | 表示安装证书数据。 |
@@ -229,11 +230,12 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>适用版本：26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the installation operation.     |
 | 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
-| 29700004 | The API is not supported on this device.     |
-| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
+| 29700004 | To ensure user security, the current device does not support this API. When certType is set to CA_CERT, this API can be invoked only on 2in1 devices. This error code is returned on other devices. |
+| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.<br>适用版本：18+ |
 
 **示例**：
 ```ts
@@ -255,7 +257,8 @@ let caCert: Uint8Array = new Uint8Array([
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert).then((uri: string) => {
     console.info('Succeeded in opening install certificate');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -267,7 +270,7 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-表示拉起证书管理删除证书向导，显示相应的页面，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理删除证书向导，显示相应的页面。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -281,7 +284,7 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | certType | [CertificateType](#certificatetype14)                   | 是   | 表示删除证书类型。 |
 | certUri | string                  | 是   | 表示待删除证书的唯一标识符，最大长度为256字节。 |
 
@@ -314,14 +317,15 @@ import { UIContext } from '@kit.ArkUI';
 
 /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
-/* certificateType为证书类型，此处赋值CA_CERT，即安装CA证书 */
+/* certificateType为证书类型，此处赋值CA_CERT，即删除CA证书 */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certUri为业务安装证书返回的唯一标识符，此处仅为示例 */
 let certUri: string = "test";
 try {
   certificateManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri).then(() => {
     console.info('Succeeded in opening uninstall certificate');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open uninstall certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -333,7 +337,7 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-表示拉起证书管理对话框显示证书的详情，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理对话框显示证书的详情。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -347,7 +351,7 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | 是   | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
 | cert     | Uint8Array                                                   | 是   | 表示安装证书数据。             |
 | property | [CertificateDialogProperty](#certificatedialogproperty18) | 是   | 表示拉起证书管理对话框的属性。 |
 
@@ -388,7 +392,8 @@ let property: certificateManagerDialog.CertificateDialogProperty = {
 try {
   certificateManagerDialog.openCertificateDetailDialog(context, caCert, property).then(() => {
     console.info('Succeeded opening certificate detail dialog.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to open certificate detail dialog. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -400,7 +405,7 @@ try {
 
 openAuthorizeDialog(context: common.Context): Promise\<string>
 
-打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise方式异步返回结果。
+打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -412,7 +417,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 
 **返回值**：
 
@@ -428,6 +433,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
+| 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>适用版本：26.0.0+ |
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 
@@ -441,14 +447,15 @@ import { UIContext } from '@kit.ArkUI';
 /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
-    certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-        console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
-    });
+  certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
+    console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to authorize certificate. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to authorize certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## certificateManagerDialog.openAuthorizeDialog<sup>22+</sup>
@@ -469,7 +476,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 | authorizeRequest | [AuthorizeRequest](#authorizerequest22) | 是  | 表示授权请求信息。 |
 
 **返回值**：
@@ -508,15 +515,16 @@ let certTypes: Array<certificateManagerDialog.CertificateType> = [
 let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
 let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
 try {
-    certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
-      let reference = certReference;
-      console.info(`Succeeded in opening authorize dialog.`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
-    });
+  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
+    let reference = certReference;
+    console.info(`Succeeded in opening authorize dialog.`)
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 ## certificateManagerDialog.openUkeyAuthDialog<sup>22+</sup>
@@ -537,7 +545,7 @@ openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): P
 
 | 参数名     | 类型                                                                 | 必填 | 说明          |
 |---------|--------------------------------------------------------------------|----|-------------|
-| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | 是  | 表示应用的上下文信息。 |
+| context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | 是  | 表示应用的上下文信息。 |
 | ukeyAuthRequest | [UkeyAuthRequest](#ukeyauthrequest22) | 是  | 表示USB凭据授权请求信息。 |
 
 **返回值**：
@@ -572,14 +580,15 @@ let context: common.Context = new UIContext().getHostContext() as common.Context
 let keyUri: string = "test"
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
 try {
-    certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-        console.info(`Succeeded in opening ukey authorization dialog`)
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
-    });
+  certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
+    console.info(`Succeeded in opening ukey authorization dialog`)
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
+  });
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -589,11 +598,11 @@ supportsCACertDialog(): boolean
 
 判断设备是否支持打开CA证书管理对话框。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**起始版本：** 26.0.0
 
 **返回值**：
 
@@ -618,7 +627,7 @@ try {
   let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
   console.info(`Succeeded in checking whether the device supports CA dialog.`)
 } catch (err) {
-    let error = err as BusinessError;
-    console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
+  let error = err as BusinessError;
+  console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```

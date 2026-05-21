@@ -2,16 +2,16 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @guozejun-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 该组件用于实现支持懒加载的网格布局。
 
 API版本26.0.0之前，其父组件支持[WaterFlow](ts-container-waterflow.md)和[FlowItem](ts-container-flowitem.md)组件，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在WaterFlow或FlowItem中。
 
-从API版本26.0.0开始，其父组件新增支持[List](ts-container-list.md)和[Scroll](ts-container-scroll.md)，同时新增支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在List或Scroll中。
+从API版本26.0.0开始，其父组件新增支持[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)和[LazyColumnLayout](ts-container-lazycolumnlayout.md)，同时新增支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
 
 > **说明：**
 >
