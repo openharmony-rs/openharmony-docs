@@ -874,6 +874,44 @@ observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionS
 });
 ```
 
+## observer.oncellularDataConnectionStateChange<sup>23+</sup>
+
+oncellularDataConnectionStateChange(callback: Callback\<DataConnectionStateInfo\>\): void
+
+订阅蜂窝数据链路连接状态，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                               | 必填 | 说明                                                                 |
+| -------- | --------------------------------- | ---- | -------------------------------------------------------------------- |
+| type     | string                            | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\>  | 是   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：111**
+
+```ts
+observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionStateInfo) => {
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+});
+```
 
 ## observer.on('cellularDataConnectionStateChange')<sup>7+</sup>
 
@@ -904,6 +942,48 @@ on\(type: 'cellularDataConnectionStateChange', options: ObserverOptions, callbac
 | 8300999  | Unknown error.                               |
 
 **示例：**
+
+```ts
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('cellularDataConnectionStateChange', options, (data: observer.DataConnectionStateInfo) => {
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+});
+```
+## observer.oncellularDataConnectionStateChange<sup>23+</sup>
+
+oncellularDataConnectionStateChange(options: ObserverOptions, callback: Callback\<DataConnectionStateInfo\>\): void
+
+订阅指定卡槽位的蜂窝数据链路连接状态，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
+| options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。             |
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 是   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：111**
 
 ```ts
 let options: observer.ObserverOptions = {
@@ -958,6 +1038,52 @@ observer.off('cellularDataConnectionStateChange', callback);
 observer.off('cellularDataConnectionStateChange');
 ```
 
+## observer.offcellularDataConnectionStateChange<sup>23+</sup>
+
+offcellularDataConnectionStateChange(callback?: Callback\<DataConnectionStateInfo\>\): void
+
+移除订阅蜂窝数据链路连接状态，使用callback方式作为异步方法。
+
+> **说明：**
+>
+> 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。 
+
+**系统能力**：SystemCapability.Telephony.StateRegistry  
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 否   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：11111**
+
+```ts
+let callback: (data: observer.DataConnectionStateInfo) => void = (data: observer.DataConnectionStateInfo) => {
+    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+}
+observer.on('cellularDataConnectionStateChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('cellularDataConnectionStateChange', callback);
+observer.off('cellularDataConnectionStateChange');
+```
 
 ## observer.on('cellularDataFlowChange')<sup>7+</sup>
 
@@ -995,7 +1121,86 @@ observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
     console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
+## observer.oncellularDataFlowChange<sup>23+</sup>
 
+oncellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
+
+订阅蜂窝数据业务的上下行数据流状态，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是  | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。         |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：111**
+
+```ts
+import { data } from '@kit.TelephonyKit';
+
+observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
+});
+```
+
+## observer.offcellularDataFlowChange<sup>23+</sup>
+
+offcellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
+
+取消订阅蜂窝数据业务的上下行数据流状态，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是  | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。         |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+
+observer.off('cellularDataFlowChange', (data: data.DataFlowType) => {
+    console.info("off cellularDataFlowChange, data:" + JSON.stringify(data));
+});
+```
 
 ## observer.on('cellularDataFlowChange')<sup>7+</sup>
 
@@ -1038,6 +1243,50 @@ observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
 });
 ```
 
+## observer.oncellularDataFlowChange<sup>23+</sup>
+
+oncellularDataFlowChange(options: ObserverOptions,  callback: Callback\<DataFlowType\>\): void
+
+订阅指定卡槽位的蜂窝数据业务的上下行数据流状态，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                       | 必填 | 说明                                                         |
+| -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                                     | 是   | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。         |
+| options   | [ObserverOptions](#observeroptions11)                     | 是   | 电话相关事件订阅参数可选项。                                                   |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：111**
+
+```ts
+import { data } from '@kit.TelephonyKit';
+
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
+    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
+});
+``` 
 
 ## observer.off('cellularDataFlowChange')<sup>7+</sup>
 
