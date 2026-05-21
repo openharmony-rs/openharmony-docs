@@ -192,7 +192,7 @@ setColorTint(colorTint: number): void
 
 设置白平衡的色调调节值。
 
-设置之前需要先检查设备支持配置的白平衡色调调节范围，具体方法请参考[getColorTintRange](arkts-apis-camera-WhiteBalanceQuery.md#getColorTintRange)。
+设置之前需要先检查设备支持配置的白平衡色调调节范围，具体方法请参考[getColorTintRange](arkts-apis-camera-WhiteBalanceQuery.md#getcolortintrange)。
 
 **起始版本：** 26.0.0
 
