@@ -104,6 +104,9 @@
   - 窗口管理<!--window-manager-api-->
     - [@ohos.window.floatView (标准悬浮窗)](js-apis-floatView.md)
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
+    <!--Del-->
+    - [@ohos.PiPWindow (画中画窗口)(系统接口)](js-apis-pipWindow-sys.md)
+    <!--DelEnd-->
     - [@ohos.window.floatingBall (闪控球窗口)](js-apis-floatingBall.md)
     - @ohos.window (窗口)<!--js-apis-window-->
       - [模块描述](arkts-apis-window.md)
