@@ -83,7 +83,7 @@
 
 > **说明：**
 > 
-> - 应用子窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下支持FULL_SCREEN与MAXIMIZE模式，且需要在创建子窗时将maximizeSupported参数配置为true，或者通过[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setSupportedWindowModes26)配置支持。
+> - 应用子窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下支持FULL_SCREEN与MAXIMIZE模式，且需要在创建子窗时将maximizeSupported参数配置为true，或者通过[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes26)配置支持。
 > 
 > - FULL_SCREEN与MAXIMIZE的主要差异：
 >
@@ -252,7 +252,7 @@
 
 ### 通过setSupportedWindowModes()接口配置
 
-通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)传入supportedWindowModes或调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes20)接口传入supportedWindowModes和 grayOutMaximizeButton，可以在运行时动态修改当前主窗口支持的窗口模式。通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setSupportedWindowModes26)传入supportedWindowModes，可以在运行时动态修改当前子窗口支持的窗口模式。
+通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes15)传入supportedWindowModes或调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#setsupportedwindowmodes20)接口传入supportedWindowModes和 grayOutMaximizeButton，可以在运行时动态修改当前主窗口支持的窗口模式。通过调用[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes26)传入supportedWindowModes，可以在运行时动态修改当前子窗口支持的窗口模式。
 
 支持配置的窗口模式如下所示：
 
