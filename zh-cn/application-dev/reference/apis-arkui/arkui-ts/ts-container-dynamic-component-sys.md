@@ -164,7 +164,7 @@ struct Index {
 }
 ```
 
- **Worker线程文件** workers/Worker.ets
+**Worker线程文件** workers/Worker.ets
 
 ```ts
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
