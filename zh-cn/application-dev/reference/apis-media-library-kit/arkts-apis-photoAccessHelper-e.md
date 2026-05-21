@@ -79,6 +79,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | VIDEO  | 1026       | 视频相册。|
 | IMAGE<sup>12+</sup>               | 1031       | 图片相册。|
 | SOURCE\_GENERIC<sup>23+</sup>     | 2049       | 来源相册。|
+| SOURCE_GENERIC_FROM_FILE_MANAGER     | 2050       | 来自文件管理的来源相册。<br>**起始版本：** 26.0.0|
 | ANY    | 2147483647 | 任意相册。|
 
 ## PositionType<sup>16+</sup>
