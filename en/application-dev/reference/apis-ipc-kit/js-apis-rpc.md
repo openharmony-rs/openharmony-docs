@@ -1482,7 +1482,7 @@ Reads the **Parcelable** object from this **MessageSequence** object to the spec
 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| dataIn | [Parcelable](#parcelable9) | Yes  | **Parcelable** object to read.|
+| dataIn | [Parcelable](#parcelable9) | Yes  | Object for reading member variables from **MessageSequence**. Ensure that the **Parcelable** object is instantiated before use.|
 
 **Error codes**
 
@@ -2871,8 +2871,7 @@ Reads the **Parcelable** array from this **MessageSequence** object.
 
 | Name         | Type        | Mandatory| Description                      |
 | --------------- | ------------ | ---- | -------------------------- |
-| parcelableArray | [Parcelable](#parcelable9)[] | Yes  | **Parcelable** array to read.|
-
+| parcelableArray | [Parcelable](#parcelable9)[] | Yes  | Array of **Parcelable** objects to read. Instantiate the objects before use. The lengths of the serialized and deserialized arrays must be consistent.|
 **Error codes**
 
 For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
@@ -4622,7 +4621,7 @@ Writes a long int value to this **MessageParcel** object.
 
   | Name| Type  | Mandatory| Description            |
   | ------ | ------ | ---- | ---------------- |
-  | val    | number | Yes  | Long int value to write.|
+  | val    | number | Yes  | Long integer to write.|
 
 **Return value**
 
@@ -7417,12 +7416,12 @@ Defines the IPC context, including the PID and UID, local and remote device IDs,
 
 | Name   | Type           | Read-Only| Optional| Description                                 |
 | ------- | --------------- | ---- | ---- |-------------------------------------- |
-| callerPid | number          | Yes  | No  | PID of the caller.                             |
-| callerUid    | number          | Yes  | No  | UID of the caller.                           |
-| callerTokenId | number | Yes  | No  | Token ID of the caller.|
+| callerPid | number          | Yes  | No  | PID of the caller, which is valid only in the IPC scenario.                             |
+| callerUid    | number          | Yes  | No  | UID of the caller, which is valid only in the IPC scenario.                           |
+| callerTokenId | number | Yes  | No  | Token ID of the caller, which is valid only in the IPC scenario.|
 | remoteDeviceId   | string | Yes  | No  | Remote device ID. This parameter is valid only in RPC scenarios.  |
 | localDeviceId   | string | Yes  | No  | Local device ID. This parameter is valid only in RPC scenarios.  |
-| isLocalCalling   | boolean | Yes  | No  | Whether the peer end of the current communication is a process on the local device. Returns **true** if the local and peer processes are on the same device; returns **false** otherwise.  |
+| isLocalCalling   | boolean | Yes  | No  | Whether the peer end of the current communication is a process on the local device. The value **true** indicates that the local and peer processes are on the same device (IPC scenario), and the value **false** indicates that they are not on the same device (RPC scenario). |
 
 ## IRemoteObject
 
@@ -7486,7 +7485,7 @@ Obtains the string of the interface descriptor.
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message does not contain any content. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the API returns immediately and **reply** is empty. If the synchronous mode is set in **options**, the response is returned when **sendRequest** returns, and **reply** contains the response content.
 
 > **NOTE**
 >
@@ -7513,7 +7512,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the response result is returned immediately and **reply** is empty. The specific reply needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response result is returned when **sendMessageRequest** returns, and **reply** contains the response content. This API returns the result asynchronously through a promise.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7530,7 +7529,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
   | Type                        | Description                                     |
   | ---------------------------- | ----------------------------------------- |
-  | Promise&lt;[RequestResult](#requestresult9)&gt; | Promise used to return a **requestResult** instance.|
+  | Promise&lt;[RequestResult](#requestresult9)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -7544,7 +7543,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the response result is returned immediately and **reply** is empty. The specific reply needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response result is returned when **sendRequest** returns, and **reply** contains the response content. This API returns the result asynchronously through a promise.
 
 > **NOTE**
 >
@@ -7565,7 +7564,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 | Type                                                        | Description                                         |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise used to return a **sendRequestResult** instance.|
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise used to return the result.|
 
 ### sendMessageRequest<sup>9+</sup>
 
@@ -7669,7 +7668,7 @@ Adds a callback for receiving death notifications of the remote object.
 
 unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
 
-Unregisters from the callback used to receive death notifications of the remote object.
+Unregisters the callback used to receive death notifications of the remote object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7791,7 +7790,7 @@ Provides APIs to implement **IRemoteObject**.
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the API returns immediately and **reply** is empty. The specific reply needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response is returned when **sendRequest** returns, and **reply** contains the response content.
 
 > **NOTE**
 >
@@ -7891,7 +7890,7 @@ try {
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the response result is returned immediately and **reply** is empty. The specific reply needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response result is returned when **sendMessageRequest** returns, and **reply** contains the response content. This API returns the result asynchronously through a promise.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7908,7 +7907,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
   | Type                        | Description                                     |
   | ---------------------------- | ----------------------------------------- |
-  | Promise&lt;[RequestResult](#requestresult9)&gt; | Promise used to return a **requestResult** instance.|
+  | Promise&lt;[RequestResult](#requestresult9)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -8001,7 +8000,7 @@ try {
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the response result is returned immediately and **reply** is empty. The specific reply needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response result is returned when **sendRequest** returns, and **reply** contains the response content. This API returns the result asynchronously through a promise.
 
 > **NOTE**
 >
@@ -8022,7 +8021,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 | Type                                                        | Description                                         |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise used to return a **sendRequestResult** instance.|
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise used to return the result.|
 
 **Example**
 
@@ -8502,7 +8501,7 @@ if (proxy != undefined) {
 
 unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
 
-Unregisters from the callback used to receive death notifications of the remote object.
+Unregisters the callback used to receive death notifications of the remote object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -8914,7 +8913,7 @@ Defines the options used to construct the **MessageOption** object.
   | ------------- | ------ | ----- | ----- | ------------------------------------------------------------------------ |
   | TF_SYNC       | number | Yes   | No   | Synchronous call.                                                           |
   | TF_ASYNC      | number | Yes   | No   | Asynchronous call.                                                           |
-  | TF_ACCEPT_FDS | number | Yes   | No   | Indication to **sendMessageRequest<sup>9+</sup>** for passing the file descriptor.              |
+  | TF_ACCEPT_FDS | number | Yes   | No   | Indicates that the [sendMessageRequest](#sendmessagerequest9-2) API can transfer the file descriptor. |
   | TF_WAIT_TIME  | number | Yes   | No   | RPC wait time, in seconds. This parameter cannot be used in IPC. The default waiting time is 8 seconds. You are advised not to change the waiting time.|
 
 ### constructor<sup>9+</sup>
@@ -8956,7 +8955,7 @@ A constructor used to create a **MessageOption** object.
   | Name   | Type  | Mandatory| Description                                         |
   | --------- | ------ | ---- | --------------------------------------------- |
   | syncFlags | number | No  | Call flag to set. The options are as follows: 0 (synchronous call) and 1 (asynchronous call). The default value is **synchronous**.       |
-  | waitTime  | number | No  | Maximum wait time for an RPC call, in seconds. The default value is **TF_WAIT_TIME**.|
+  | waitTime  | number | No  | Maximum wait time for an RPC call, in seconds.<br>Default value: **8**<br>Value range: [0, 3000]|
 
 **Example**
 
@@ -9048,13 +9047,13 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   let option = new rpc.MessageOption();
-  hilog.info(0x0000, 'testTag', 'create object successfully');
+  hilog.info(0x0000, 'testTag', 'Succeeded in creating object');
   let flag = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag is ' + flag);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag is ' + flag);
   option.setFlags(rpc.MessageOption.TF_ASYNC);
-  hilog.info(0x0000, 'testTag', 'run setFlags success');
+  hilog.info(0x0000, 'testTag', 'Succeeded in running setFlags');
   let flag2 = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag2 is ' + flag2);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag2 is ' + flag2);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9083,9 +9082,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let option = new rpc.MessageOption();
   option.setFlags(rpc.MessageOption.TF_ASYNC);
-  hilog.info(0x0000, 'testTag', 'run setFlags success');
+  hilog.info(0x0000, 'testTag', 'Succeeded in running setFlags');
   let flag = option.getFlags();
-  hilog.info(0x0000, 'testTag', 'run getFlags success, flag is ' + flag);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getFlags, flag is ' + flag);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9103,7 +9102,7 @@ Obtains the maximum wait time for an RPC call.
 
   | Type  | Description             |
   | ------ | ----------------- |
-  | number | Maximum wait time for an RPC call, in seconds. The default value is **TF_WAIT_TIME**.|
+  | number | Maximum wait time for an RPC call, in seconds.|
 
 **Example**
 
@@ -9114,10 +9113,10 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let option = new rpc.MessageOption();
   let time = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time);
   option.setWaitTime(16);
   let time2 = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time2);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time2);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9147,7 +9146,7 @@ try {
   let option = new rpc.MessageOption();
   option.setWaitTime(16);
   let time = option.getWaitTime();
-  hilog.info(0x0000, 'testTag', 'run getWaitTime success, time is ' + time);
+  hilog.info(0x0000, 'testTag', 'Succeeded in running getWaitTime, time is ' + time);
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'error ' + error);
 }
@@ -9652,7 +9651,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): boolean
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the API returns immediately and **reply** is empty. The specific reply needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response is returned when **sendRequest** returns, and **reply** contains the response content.
 
 > **NOTE**
 >
@@ -9716,7 +9715,7 @@ try {
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the response result is returned immediately and **reply** is empty. The specific reply needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response result is returned when **sendMessageRequest** returns, and **reply** contains the response content. This API returns the result asynchronously through a promise.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9733,7 +9732,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 
 | Type                                           | Description                                     |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise&lt;[RequestResult](#requestresult9)&gt; | Promise used to return a **RequestResult** instance.|
+| Promise&lt;[RequestResult](#requestresult9)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -9793,7 +9792,7 @@ try {
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If the asynchronous mode is set in **options**, the response result is returned immediately and **reply** is empty. The specific reply needs to be obtained from the callback on the service side. If the synchronous mode is set in **options**, the response result is returned when **sendRequest** returns, and **reply** contains the response content. This API returns the result asynchronously through a promise.
 
 > **NOTE**
 >
@@ -9814,7 +9813,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 | Type                                                        | Description                                         |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise used to return a **sendRequestResult** instance.|
+| Promise&lt;[SendRequestResult](#sendrequestresultdeprecated)&gt; | Promise used to return the result.|
 
 **Example**
 

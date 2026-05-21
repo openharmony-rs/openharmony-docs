@@ -10,8 +10,8 @@ The **FormProvider** module provides APIs related to the widget provider. You ca
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This module is deprecated since API version 9. You are advised to use [formProvider](js-apis-app-form-formProvider.md) instead.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This module is deprecated since API version 9. You are advised to use [formProvider](js-apis-app-form-formProvider.md) instead.
 
 ## Modules to Import
 

@@ -9,8 +9,8 @@ The **FormBindingData** module provides APIs for widget data binding. You can us
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This module is deprecated since API version 9. You are advised to use [formBindingData](js-apis-app-form-formBindingData.md) instead.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This module is deprecated since API version 9. You are advised to use [formBindingData](js-apis-app-form-formBindingData.md) instead.
 ## Modules to Import
 
 ```ts

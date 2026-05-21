@@ -1,7 +1,7 @@
 # @ohos.enterprise.dateTimeManager (System Time Management) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -103,7 +103,7 @@ Sets the system time. This API uses a promise to return the result.
 
 | Type  | Description                                 |
 | ----- | ----------------------------------- |
-| Promise\<void> | Promise that returns no value.|
+| Promise\<void> | Promise that returns no value. An error object is thrown when the device fails to modify the system time.|
 
 **Error codes**
 

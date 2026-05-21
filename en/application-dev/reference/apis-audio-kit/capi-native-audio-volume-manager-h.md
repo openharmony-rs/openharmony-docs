@@ -2,15 +2,13 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The file declares the functions related to an audio volume manager.
-
-You can call the functions to create an audio volume manager.
+The file declares the functions related to an audio volume manager.<br> You can call the functions to create an audio volume manager.
 
 **File to include**: <ohaudio/native_audio_volume_manager.h>
 

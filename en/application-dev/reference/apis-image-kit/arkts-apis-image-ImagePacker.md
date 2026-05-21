@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -358,7 +358,7 @@ Encodes the image source into a file based on the specified encoding parameters.
 | Name  | Type                           | Mandatory| Description                          |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [ImageSource](arkts-apis-image-ImageSource.md)     | Yes  | Image source to encode.                |
-| fd       | number                          | Yes  | File descriptor.                  |
+| fd       | number                          | Yes  | File descriptor. The value range is [0, 65535].                  |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | Yes  | Encoding parameters.                |
 | callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
@@ -415,7 +415,7 @@ Encodes the image source into a file based on the specified encoding parameters.
 | Name| Type                           | Mandatory| Description          |
 | ------ | ------------------------------- | ---- | -------------- |
 | source | [ImageSource](arkts-apis-image-ImageSource.md)     | Yes  | Image source to encode.|
-| fd     | number                          | Yes  | File descriptor.  |
+| fd     | number                          | Yes  | File descriptor. The value range is [0, 65535].  |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | Yes  | Encoding parameters.|
 
 **Return value**
@@ -478,7 +478,7 @@ Encodes the PixelMap into a file based on the specified encoding parameters. Thi
 | Name  | Type                           | Mandatory| Description                          |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [PixelMap](arkts-apis-image-PixelMap.md)          | Yes  | PixelMap to encode.          |
-| fd       | number                          | Yes  | File descriptor.                  |
+| fd       | number                          | Yes  | File descriptor. The value range is [0, 65535].                  |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | Yes  | Encoding parameters.                |
 | callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
@@ -539,7 +539,7 @@ Encodes the PixelMap into a file based on the specified encoding parameters. Thi
 | Name| Type                           | Mandatory| Description                |
 | ------ | ------------------------------- | ---- | -------------------- |
 | source | [PixelMap](arkts-apis-image-PixelMap.md)          | Yes  | PixelMap to encode.|
-| fd     | number                          | Yes  | File descriptor.        |
+| fd     | number                          | Yes  | File descriptor. The value range is [0, 65535].        |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | Yes  | Encoding parameters.      |
 
 **Return value**
@@ -601,14 +601,14 @@ Encodes the Picture into a file based on the specified encoding parameters. This
 | Name | Type                        | Mandatory| Description                |
 | ------- | ---------------------------- | ---- | -------------------- |
 | picture  | [Picture](arkts-apis-image-Picture.md)          | Yes  | Picture to encode.|
-| fd      | number                       | Yes  | File descriptor.        |
+| fd      | number                       | Yes  | File descriptor. The value range is [0, 65535].        |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | Yes  | Encoding parameters.      |
 
 **Return value**
 
 | Type          | Description                     |
 | -------------- | ------------------------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -667,14 +667,14 @@ Encodes multiple PixelMaps into a GIF file. This API uses a promise to return th
 | Name          | Type                                                     | Mandatory| Description                  |
 | ---------------- | --------------------------------------------------------- | ---- | ---------------------- |
 | pixelmapSequence | Array<[PixelMap](arkts-apis-image-PixelMap.md)>                             | Yes  | PixelMaps to encode.|
-| fd               | number                                                    | Yes  | File descriptor.          |
+| fd               | number                                                    | Yes  | File descriptor. The value range is [0, 65535].          |
 | options          | [PackingOptionsForSequence](arkts-apis-image-i.md#packingoptionsforsequence18) | Yes  | Options for encoding animated images.        |
 
 **Return value**
 
 | Type          | Description                     |
 | -------------- | ------------------------- |
-| Promise\<void> | that returns no value.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 

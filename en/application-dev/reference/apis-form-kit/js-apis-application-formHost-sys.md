@@ -10,9 +10,9 @@ The **formHost** module provides APIs related to the widget host, which is an ap
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This module is deprecated since API version 9. You are advised to use [formHost](js-apis-app-form-formHost-sys.md) instead.
-> - The APIs provided by this module are system APIs.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This module is deprecated since API version 9. You are advised to use [formHost](js-apis-app-form-formHost-sys.md) instead.
+> The APIs provided by this module are system APIs.
 
 ## Modules to Import
 

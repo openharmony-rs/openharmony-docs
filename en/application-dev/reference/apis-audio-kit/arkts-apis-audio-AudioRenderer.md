@@ -1,8 +1,8 @@
 # Interface (AudioRenderer)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -2289,9 +2289,12 @@ audioRenderer.off('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallba
 
 on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
 
-Subscribes to the audio data write event, which is triggered when audio data needs to be written. This API uses an asynchronous callback to return the result.
+Subscribes to the audio data write event (triggered when audio data needs to be written). This API uses an asynchronous callback to return the result.
 
-The callback function is used only to write audio data. Do not call AudioRenderer APIs in it.
+> **NOTE**
+>
+> - The callback function is used only to write audio data. Do not call AudioRenderer APIs in it.
+> - To avoid audio artifacts caused by data discontinuity during playback start and stop, the system typically applies a fade-in/fade-out of less than 20 ms to the audio data.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
@@ -2782,4 +2785,3 @@ let strategy: audio.AudioSessionStrategy = {
 let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
 ```
-<!--no_check-->
