@@ -477,26 +477,26 @@ struct SecurityExtension {
         Text(this.storageLink)
           .fontSize(10)
           .fontWeight(FontWeight.Bold)
-          .width("80%")
-          .height("10%")
+          .width('80%')
+          .height('10%')
 
-        Button("点击向Component发送数据")
+        Button('点击向Component发送数据')
           .fontSize(12)
-          .width("80%")
-          .height("10%")
+          .width('80%')
+          .height('10%')
           .margin(1)
           .onClick(() => {
             hilog.info(0x0000, 'SecurityExtension', 'send 543321, for test start')
             if (this.session != undefined) {
-              this.session.sendData({ "data": "Component应该接收到的数据" })
+              this.session.sendData({ 'data': 'Component应该接收到的数据' })
               hilog.info(0x0000, 'SecurityExtension', 'send for test')
             }
           })
 
-        Button("terminate")
+        Button('terminate')
           .fontSize(12)
-          .width("80%")
-          .height("10%")
+          .width('80%')
+          .height('10%')
           .margin(1)
           .onClick(() => {
             hilog.info(0x0000, 'SecurityExtension', 'terminate')
@@ -506,10 +506,10 @@ struct SecurityExtension {
             storage.clear()
           })
 
-        Button("terminate with result")
+        Button('terminate with result')
           .fontSize(12)
-          .width("80%")
-          .height("10%")
+          .width('80%')
+          .height('10%')
           .margin(1)
           .onClick(() => {
             hilog.info(0x0000, 'SecurityExtension', 'terminateSelfWithResult')
@@ -517,39 +517,39 @@ struct SecurityExtension {
               this.session.terminateSelfWithResult({
                 resultCode: 0,
                 want: {
-                  bundleName: "myBundleName",
-                  parameters: { "result": 123456 }
+                  bundleName: 'myBundleName',
+                  parameters: { 'result': 123456 }
                 }
               })
             }
             storage.clear()
           })
 
-        Button("setReceiveDataCallback")
+        Button('setReceiveDataCallback')
           .fontSize(12)
-          .width("80%")
-          .height("10%")
+          .width('80%')
+          .height('10%')
           .margin(1)
           .onClick(() => {
             this.session?.setReceiveDataCallback((data) => {
               this.storageLink = JSON.stringify(data)
-              hilog.info(0x0000, 'SecurityExtension', "test setReceiveDataCallback successfully: " + this.storageLink);
+              hilog.info(0x0000, 'SecurityExtension', 'test setReceiveDataCallback successfully: ' + this.storageLink);
             })
           })
 
-        Button("setReceiveDataForResultCallback")
+        Button('setReceiveDataForResultCallback')
           .fontSize(12)
-          .width("80%")
-          .height("10%")
+          .width('80%')
+          .height('10%')
           .margin(1)
           .onClick(() => {
             this.session?.setReceiveDataForResultCallback(func1)
           })
       }
     }
-    .id("providerScroll")
-    .width("100%")
-    .height("100%")
+    .id('providerScroll')
+    .width('100%')
+    .height('100%')
   }
 }
 
@@ -557,7 +557,7 @@ function func1(data: Record<string, Object>): Record<string, Object> {
   let linkToMsg: SubscribedAbstractProperty<string> = AppStorage.link('message');
   linkToMsg.set(JSON.stringify(data))
   hilog.info(0x0000, 'SecurityExtension',
-    "invoke for test, handle callback set by setReceiveDataForResultCallback successfully");
+    'invoke for test, handle callback set by setReceiveDataForResultCallback successfully');
   return data;
 }
 ```
