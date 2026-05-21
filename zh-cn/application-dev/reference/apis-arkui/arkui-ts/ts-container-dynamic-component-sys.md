@@ -150,7 +150,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @State errorMessage: string = '';
   private worker?: worker.ThreadWorker = new worker.ThreadWorker(
-    "entry/ets/workers/Worker.ets", { name: "dc-worker" }
+    'entry/ets/workers/Worker.ets', { name: 'dc-worker' }
   )
 
   build() {
