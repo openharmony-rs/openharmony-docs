@@ -88,7 +88,7 @@
     LOG("OH_AVPlayer_SetPlayerOnErrorCallback ret:%{public}d", ret);
     ```
 
-3. 设置资源：调用[OH_AVPlayer_SetURLSource()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seturlsource)，设置属性URL，AVPlayer进入[初始化](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_INITIALIZED）状态。
+3. 设置资源：调用[OH_AVPlayer_SetURLSource()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seturlsource)，设置属性URL（支持点播和直播源），AVPlayer进入[初始化](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_INITIALIZED）状态。
 
   <!-- @[OH_AVPlayer_SetURLSource] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -99,7 +99,23 @@
   LOG("OH_AVPlayer_SetUrlSource ret:%{public}d", ret);
   ```
 
-4. （可选）设置音频流类型：调用[OH_AVPlayer_SetAudioRendererInfo()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiorendererinfo)，设置AVPlayer音频流类型。
+4. （可选）设置智能追帧：直播场景下调用[OH_AVPlayer_SetPlaybackStrategy()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setplaybackstrategy)，设置AVPlayer启用智能追帧。
+
+  <!-- @[OH_AVPlayer_SetPlaybackStrategy] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+
+  ``` C++
+  void OHAVPlayerSetPlaybackStrategy(OH_AVPlayer *player) {
+    // 设置播放策略
+    OH_AVPlaybackStrategy *myStrategy = OH_AVPlaybackStrategy_Create();
+    double waterLine = 6.0;
+    OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); //直播场景设置智能追帧
+    int32_t ret = OH_AVPlayer_SetPlaybackStrategy(player, myStrategy);
+    LOG("OH_AVPlayer_SetPlaybackStrategy ret:%{public}d", ret);
+    OH_AVPlaybackStrategy_Destroy(myStrategy);
+  }
+  ```
+
+5. （可选）设置音频流类型：调用[OH_AVPlayer_SetAudioRendererInfo()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiorendererinfo)，设置AVPlayer音频流类型。
 
   <!-- @[OH_AVPlayer_SetAudioRendererInfo] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -111,7 +127,7 @@
   LOG("OH_AVPlayer_SetAudioRendererInfo ret:%{public}d", ret);
   ```
 
-5. （可选）设置音频打断模式：调用[OH_AVPlayer_SetAudioInterruptMode()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)，设置AVPlayer音频流打断模式。
+6. （可选）设置音频打断模式：调用[OH_AVPlayer_SetAudioInterruptMode()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudiointerruptmode)，设置AVPlayer音频流打断模式。
 
   <!-- @[OH_AVPlayer_SetAudioInterruptMode] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -123,7 +139,7 @@
   LOG("OH_AVPlayer_SetAudioInterruptMode ret:%{public}d", ret);
   ```
 
-6. 设置播放画面窗口：调用[OH_AVPlayer_SetVideoSurface()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setvideosurface)设置播放画面窗口。此函数必须在SetSource之后，Prepare之前调用。
+7. 设置播放画面窗口：调用[OH_AVPlayer_SetVideoSurface()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setvideosurface)设置播放画面窗口。此函数必须在SetSource之后，Prepare之前调用。
 
   <!-- @[OH_AVPlayer_SetVideoSurface] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -132,7 +148,7 @@
   LOG("OH_AVPlayer_SetVideoSurface ret:%{public}d", ret);
   ```
 
-7. 准备播放：调用[OH_AVPlayer_Prepare()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_prepare)，AVPlayer进入[准备](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_PREPARED）状态，此时可以获取时长，设置音量。
+8. 准备播放：调用[OH_AVPlayer_Prepare()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_prepare)，AVPlayer进入[准备](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_PREPARED）状态，此时可以获取时长，设置音量。
 
   <!-- @[OH_AVPlayer_Prepare] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -144,7 +160,7 @@
   }
   ```
 
-8. （可选）设置音频音效模式：调用[OH_AVPlayer_SetAudioEffectMode()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudioeffectmode)，设置AVPlayer音频音效模式。
+9. （可选）设置音频音效模式：调用[OH_AVPlayer_SetAudioEffectMode()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setaudioeffectmode)，设置AVPlayer音频音效模式。
 
   <!-- @[OH_AVPlayer_SetAudioEffectMode] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -154,7 +170,7 @@
   LOG("OH_AVPlayer_SetAudioEffectMode ret:%{public}d", ret);
   ```
 
-9. 视频播控：包含播放[OH_AVPlayer_Play()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_play)、暂停[OH_AVPlayer_Pause()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_pause)、跳转[OH_AVPlayer_Seek()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seek)、停止[OH_AVPlayer_Stop()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_stop)等操作。
+10. 视频播控：包含播放[OH_AVPlayer_Play()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_play)、暂停[OH_AVPlayer_Pause()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_pause)、跳转[OH_AVPlayer_Seek()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seek)、停止[OH_AVPlayer_Stop()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_stop)等操作。
 
   <!-- @[OH_AVPlayer_Play] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -252,7 +268,7 @@
   }
   ```
 
-10. （可选）更换资源：调用[OH_AVPlayer_Reset()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_reset)重置资源，AVPlayer重新进入[空闲](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_IDLE）状态，允许更换资源URL。
+11. （可选）更换资源：调用[OH_AVPlayer_Reset()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_reset)重置资源，AVPlayer重新进入[空闲](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_IDLE）状态，允许更换资源URL。
 
   <!-- @[OH_AVPlayer_Reset] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -272,7 +288,7 @@
   }
   ```
 
-11. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_release)销毁实例，AVPlayer进入[释放](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_RELEASED）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用闪退等情况。
+12. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_release)销毁实例，AVPlayer进入[释放](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_RELEASED）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用闪退等情况。
 
   <!-- @[OH_AVPlayer_Release] (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
