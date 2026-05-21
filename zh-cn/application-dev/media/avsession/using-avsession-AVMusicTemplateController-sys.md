@@ -120,6 +120,7 @@
        try {
          // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
          avMusicTemplate.onAVMusicTemplateCreate(this.templateCreateCallback);
+
          // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
          avMusicTemplate.onAVMusicTemplateDestroy(this.templateDestroyCallback);
        } catch (e) {
