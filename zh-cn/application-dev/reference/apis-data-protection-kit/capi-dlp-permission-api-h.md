@@ -22,8 +22,6 @@
 
 **相关模块：** [DlpPermissionApi](capi-dlppermissionapi.md)
 
-**相关文档：**[DLP CAPI开发指南](../../security/DataProtectionKit)。
-
 ## 汇总
 
 ### 枚举
