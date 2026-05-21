@@ -7,7 +7,8 @@
 <!--Adviser: @zengyawen-->
 
 数据防泄漏(Data Loss Prevention,DLP)是系统级的数据防泄漏解决方案,提供跨设备文件的权限管理、加密存储、授权访问等能力。DLP通过加密技术对敏感文件进行保护,生成.dlp格式的加密文件(称为DLP文件)。当打开DLP文件时,系统会自动创建隔离的DLP沙箱环境,确保文件内容不会泄漏到非授权环境。企业级DLP文件支持细粒度的权限控制,包括查看、编辑、复制、打印、截屏等操作权限的管理。
-<br>**使用场景**： 
+
+**使用场景**： 
 - 企业办公场景下，保护敏感文档不被非授权访问和泄露 
 - 多设备协同办公，确保文档在不同设备间的安全流转 
 - 文档分享与协作，实现细粒度的权限控制 
@@ -904,7 +905,7 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 19100001 | Invalid parameter value. || 19100011 | The system ability works abnormally. |
+| 19100001 | Invalid parameter value. | 19100011 | The system ability works abnormally. |
 | 19100016 | The uri field is missing in the want parameter. |
 | 19100017 | The displayName field is missing in the want parameter. |
 
