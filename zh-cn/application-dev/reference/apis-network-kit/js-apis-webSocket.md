@@ -884,12 +884,14 @@ ws.offOpen(callback1);
 on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
 
 订阅WebSocket的打开信息事件，使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect)发起连接请求前调用。
-
- **起始版本：** 26.0.0
  
  **系统能力**：SystemCapability.Communication.NetStack
  
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+ **ArkTS-Dyn起始版本：** 26.0.0
+ 
+ **ArkTS-Sta起始版本：** 26.0.0
+ 
+ **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
  
  **模型约束**：此接口仅可在Stage模型下使用。
  
@@ -926,9 +928,11 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
  >
  > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
- **起始版本：** 26.0.0
-
  **系统能力**：SystemCapability.Communication.NetStack
+ 
+ **ArkTS-Dyn起始版本：** 26.0.0
+ 
+ **ArkTS-Sta起始版本：** 26.0.0
  
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
