@@ -314,6 +314,21 @@
 
 <!-- @[transferableObject_observeJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/concurrentFunc.ets) -->
 
+``` TypeScript
+import { LayoutS } from '../turbotrans_JSON/layout';
+import { testJSON1, testJSON2 } from '../turbotrans_JSON/test1';
+
+@Concurrent
+export function observeJSON1(): LayoutS {
+  return testJSON1();
+}
+
+@Concurrent
+export function observeJSON2(): LayoutS {
+  return testJSON2();
+}
+```
+
 定义observeProtobuf并发任务
 
 ``` TypeScript
