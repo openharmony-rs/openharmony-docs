@@ -187,3 +187,4 @@
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
   <!--DelEnd-->
+  - [System Parameter Error Codes](errorcode-device-info.md)

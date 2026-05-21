@@ -89,7 +89,7 @@ Provides data items for setting the general information about the device.
 | CONTACT_METADATA_SYNC_STATUS<sup>(deprecated21)</sup>     | string | Yes | Whether contacts metadata synchronization is enabled.<br>- **true**: Contacts metadata synchronization is enabled.<br>- **false**: Contacts metadata synchronization is disabled. (This constant is deprecated.)                                                                               |
 | DEVICE_NAME                                               | string | Yes | Device name.                                                                                                                                            |
 | USB_STORAGE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether USB mass storage is enabled.<br>- **true**: USB mass storage is enabled.<br>- **false**: USB mass storage is disabled. (This constant is deprecated.)                                                                   |
-| DEBUGGER_WAITING<sup>(deprecated21)</sup>                 | string | Yes | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**:The device does not wait for the debugger and the application runs normally. (This constant is deprecated.)                                                         |
+| DEBUGGER_WAITING<sup>(deprecated21)</sup>                 | string | Yes | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**: The device does not wait for the debugger and the application runs normally. (This constant is deprecated.)                                                         |
 | DEBUG_APP_PACKAGE<sup>(deprecated21)</sup>                | string | Yes | Bundle name of the application to be debugged. (This constant is deprecated.)                                                                                                                  |
 | ACCESSIBILITY_STATUS<sup>(deprecated21)</sup>             | string | Yes | Whether accessibility is enabled.<br>- **1**: Accessibility is enabled.<br>- **0**: Accessibility is disabled. (This constant is deprecated.)                                                                                      |
 | ACTIVATED_ACCESSIBILITY_SERVICES<sup>(deprecated21)</sup> | string | Yes | List of activated accessibility features. (This constant is deprecated.)                                                                                                                           |
@@ -315,7 +315,7 @@ Sets the value for a data item. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
@@ -522,7 +522,7 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Update the value of .SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
+// Update the value of SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);
@@ -606,7 +606,7 @@ Sets the value for a data item. Unlike **setValue**, this API returns the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
@@ -727,7 +727,7 @@ Opens the WLAN settings window. This API uses a promise to return the result.
 
 For details about the error codes, see [Settings Error Codes](./errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 14800000 | Parameter error.        |
 | 14800010 | Original service error. |
@@ -1118,13 +1118,13 @@ Open the input method settings page.
 
 | Name  | Type                  | Mandatory| Description                                                                                                                                        |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and UIExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 
 **Error codes**
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
@@ -1157,7 +1157,7 @@ Opens the input method details page.
 
 | Name  | Type                  | Mandatory| Description                                                                                                                                        |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and UIExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | bundleName      | string          | Yes  | Bundle name of the input method to be started.|
 | inputMethodId   | string          | Yes  | Unique [ID](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8) of the input method extension in the application.|
 
@@ -1165,7 +1165,7 @@ Opens the input method details page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
@@ -1182,4 +1182,88 @@ const context: Context = this.getUIContext().getHostContext() as common.UIAbilit
 let bundleName: string = "target inputMethod bundle name";
 let inputMethodId: string = "target inputMethod id";
 settings.openInputMethodDetail(context, bundleName, inputMethodId);
+```
+
+## settings.openBiometricsSettingsPage<sup>24+</sup>
+
+openBiometricsSettingsPage(context: Context): void
+
+Opens the biometric recognition and password settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| Error Code   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openBiometricsSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the biometrics and password settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openNfcSettingsPage<sup>24+</sup>
+
+openNfcSettingsPage(context: Context): void
+
+Opens the NFC settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| Error Code   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openNfcSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
+}
 ```

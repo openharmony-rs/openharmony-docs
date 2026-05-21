@@ -24,9 +24,9 @@ import { PanelInfo, PanelType } from '@kit.BasicServicesKit';
 
 Describes the properties of the word selection panel.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 | Name| Type| Read-Only| Optional| Description|
 | --------- | -------- | -------- | -------- | -------- |
@@ -40,11 +40,11 @@ Describes the properties of the word selection panel.
 
 Enumerates the word selection panel types.
 
-**System capability**: SystemCapability.SelectionInput.Selection
+**System capability:** SystemCapability.SelectionInput.Selection
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 | Name         | Value  | Description        |
 | ------------- | ---- | ------------ |
-| MENU_PANEL | 1    | Menu panel.|
-| MAIN_PANEL | 2    | Main panel.|
+| MENU_PANEL | 1    | The menu panel can serve as a primary panel to display the functions that the current application can provide, such as translation and search.|
+| MAIN_PANEL | 2    | The main panel can serve as a secondary panel that pops up when the user clicks on the function buttons on the menu panel, displaying specific translation or search results.|
