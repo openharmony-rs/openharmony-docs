@@ -153,7 +153,7 @@
 
     <!-- @[continuous_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets) -->
     
-    ```ts
+    ``` TypeScript
     import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { window } from '@kit.ArkUI';
