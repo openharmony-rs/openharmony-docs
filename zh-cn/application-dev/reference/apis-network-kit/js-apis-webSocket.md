@@ -909,7 +909,7 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
  let ws = webSocket.createWebSocket();
  ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
 	if (value?.protocol != undefined) {
- 	    	console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+ 	    	console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
  	} else {
  	     	console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
  	}
@@ -950,7 +950,7 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
  let ws = webSocket.createWebSocket();
  let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
  	if (value?.protocol != undefined) {
- 		console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+ 		console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
  	} else {
  	    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
  	}
