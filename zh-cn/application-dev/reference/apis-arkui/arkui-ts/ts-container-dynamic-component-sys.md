@@ -256,7 +256,7 @@ ArkTS-Sta示例：
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { State } from '@ohos.arkui.stateManagement'
+import { State } from '@ohos.arkui.stateManagement';
 import { Column, Text, Component, Entry, DynamicComponent, Color } from '@ohos.arkui.component';
 
 @Entry
