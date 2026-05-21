@@ -299,3 +299,20 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
 若本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详见[OH_AudioRenderer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setindependentaudiosessionstrategy)；对于录音流，详见[OH_AudioCapturer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setindependentaudiosessionstrategy)。
 
 <!-- @[cset_session_behavior](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+
+``` C++
+// AUDIO_SESSION_SCENE_MEDIA 仅为示例，实际使用时请根据具体情况进行修改。
+OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
+    
+// 本接口应在激活音频会话前调用。
+// 若音频会话在激活状态时调用此接口后，必须重新激活音频会话使其生效。
+// behavior参数支持位或操作，可同时设置多个会话行为标志。
+uint32_t behavior =
+    OH_AudioSession_BehaviorFlags::MUTE_WHEN_INTERRUPTED | OH_AudioSession_BehaviorFlags::VOIP_PRIVACY_TYPE_PUBLIC;
+OH_AudioSessionManager_SetBehavior(audioSessionManager, behavior);
+    
+OH_AudioSession_Strategy strategy = {CONCURRENCY_PAUSE_OTHERS};
+    
+// 设置音频并发模式并激活音频会话。
+OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+```
