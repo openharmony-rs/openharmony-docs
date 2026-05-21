@@ -270,43 +270,43 @@
 
 11. （可选）更换资源：调用[OH_AVPlayer_Reset()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_reset)重置资源，AVPlayer重新进入[空闲](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_IDLE）状态，允许更换资源URL。
 
-   <!-- @[OH_AVPlayer_Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[OH_AVPlayer_Reset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
     
-   ``` C++
-   static napi_value NAPI_Global_Reset(napi_env env, napi_callback_info info) {
-       int ret = 100;
-       auto context = SampleManager::GetInstance();
-       if (context->player_ != NULL) {
-           ret = OH_AVPlayer_Reset(context->player_);
-           LOG("OH_AVPlayer_Reset ret:%{public}d", ret);
-       } else {
-           LOG("no found Player Instances");
-       }
-       napi_value value;
-       napi_create_int32(env, ret, &value);
-       return value;
-     }
-   ```
+    ``` C++
+    static napi_value NAPI_Global_Reset(napi_env env, napi_callback_info info) {
+        int ret = 100;
+        auto context = SampleManager::GetInstance();
+        if (context->player_ != NULL) {
+            ret = OH_AVPlayer_Reset(context->player_);
+            LOG("OH_AVPlayer_Reset ret:%{public}d", ret);
+        } else {
+            LOG("no found Player Instances");
+        }
+        napi_value value;
+        napi_create_int32(env, ret, &value);
+        return value;
+      }
+    ```
 
 12. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_release)销毁实例，AVPlayer进入[释放](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_RELEASED）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用闪退等情况。
 
    <!-- @[OH_AVPlayer_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
-   static napi_value NAPI_Global_Release(napi_env env, napi_callback_info info) {
-       int ret = -1;
-       auto context = SampleManager::GetInstance();
-       if (context->player_ != NULL) {
-           ret = OH_AVPlayer_Release(context->player_);
-           LOG("OH_AVPlayer_Release ret:%{public}d", ret);
-       } else {
-           LOG("no found Player Instances");
-       }
-       napi_value value;
-       napi_create_int32(env, ret, &value);
-       return value;
-     }
-   ```
+    ``` C++
+    static napi_value NAPI_Global_Release(napi_env env, napi_callback_info info) {
+        int ret = -1;
+        auto context = SampleManager::GetInstance();
+        if (context->player_ != NULL) {
+            ret = OH_AVPlayer_Release(context->player_);
+            LOG("OH_AVPlayer_Release ret:%{public}d", ret);
+        } else {
+            LOG("no found Player Instances");
+        }
+        napi_value value;
+        napi_create_int32(env, ret, &value);
+        return value;
+      }
+    ```
 
 ## 运行完整示例
 
