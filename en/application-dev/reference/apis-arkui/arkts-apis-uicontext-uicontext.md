@@ -837,7 +837,7 @@ Adds transition animations for state changes in closure code.
 > - When **animateTo** is called in [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear), the component's build method is not executed yet, and internal components are not created. This means the animation has no initial values to work with and will not function as expected.
 > - During execution of [aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear), the component is being destroyed, so animations should not be used.
 > - When a component appears or disappears, animation effects can be added through [component transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md).
-> - For properties that component transitions do not support, refer to [Example 2: Enabling Component Disappearance After Animation Completion](./arkui-ts/ts-explicit-animation.md#example-2-enabling-component-disappearance-after-animation-completion), which uses **animateTo** to achieve the effect of the component disappearing after the animation finishes.
+> - For properties that component transitions do not support, refer to [Example 2: Enabling Component Disappearance After Animation Completion](./arkui-ts/ts-explicit-animation.md#example-2-enabling-a-component-to-disappear-after-the-animation), which uses **animateTo** to achieve the effect of the component disappearing after the animation finishes.
 > - In certain scenarios, using animateTo with [state management V2](../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
 > - When a UIAbility switches from the foreground to the background, any limited iteration animations that are currently running will end immediately, thereby triggering the [onFinish](arkui-ts/ts-explicit-animation.md#animateparam) callback.
 > - If transition animations are turned off in Developer options, animations end on the current frame, and the **onFinish** callback is executed immediately. Avoid placing timing-dependent functional logic inside this callback.
@@ -3949,8 +3949,8 @@ For details about the error codes, see UI Context Error Codes.
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
 | 100101 | The parameter is less than 0. |
-| 100102 | The parameter value cannot be a floating point number. |
-| 100103 | The function cannot be called from a non main thread. |
+| 100102 | The parameter value cannot be a floating-point number. |
+| 100103 | The function cannot be called from a non-main thread. |
 
 **Example**
 

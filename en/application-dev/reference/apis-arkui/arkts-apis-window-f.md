@@ -49,8 +49,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 801     | Capability not supported. createWindow cannot work correctly due to limited device capabilities. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and cannot be created again. |
 | 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
 | 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
 | 1300006 | This window context is abnormal. |
@@ -125,8 +125,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 801     | Capability not supported. createWindow cannot work correctly due to limited device capabilities. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and cannot be created again. |
 | 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
 | 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
 | 1300006 | This window context is abnormal. |
@@ -568,7 +568,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | ------- | --------------------------------------------- |
-| 801     | Capability not supported. Function shiftAppWindowTouchEvent can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function shiftAppWindowTouchEvent cannot work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. SourceWindow cannot find: not created or not belong to current process; 2. TargetWindow cannot find: not created or not belong to current process; 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported; 2. The two windows are not from the same process. |
@@ -710,7 +710,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message|
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo cannot work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **Example**
@@ -755,7 +755,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission. |
-| 801     | Capability not supported. Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function getVisibleWindowInfo cannot work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **Example**
@@ -815,7 +815,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message|
 |----------| ------------------------------ |
-| 801      | Capability not supported. function getGlobalWindowMode can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. function getGlobalWindowMode cannot work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range; 2. The parameter format is incorrect. |
 
@@ -863,7 +863,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                                 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not to work correctly due to limited device capabilities. |
+| 801       | Capability not supported. Function setWatermarkImageForAppWindows cannot to work correctly due to limited device capabilities. |
 | 1300003   | This window manager service works abnormally.                                                                             |
 | 1300016   | Parameter error. Possible cause: 1. Invalid parameter range.                                                              |
 
@@ -931,7 +931,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported.function setStartWindowBackgroundColor can not to work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function setStartWindowBackgroundColor cannot work correctly due to limited device capabilities.|
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 | 1300016 | Parameter error. Possible cause: Parameter exceeds the allowed length. |
 
