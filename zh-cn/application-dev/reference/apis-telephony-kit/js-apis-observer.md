@@ -1095,7 +1095,7 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 >
 > 此接口不包含sim卡的激活状态，具体请参见[sim.isSimActive](js-apis-sim.md#simissimactive7)接口。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -1135,7 +1135,7 @@ on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimSta
 
 订阅指定卡槽位的sim状态更改事件，使用callback方式作为异步方法。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
@@ -1320,9 +1320,9 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-ArkTS-Dyn起始版本： 23
+**ArkTS-Dyn起始版本：** 23
 
-ArkTS-Sta起始版本： 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
