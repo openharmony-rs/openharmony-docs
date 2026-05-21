@@ -153,9 +153,9 @@
 
    <!-- @[workScheduler_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
    
-   ```ts
-   import { workScheduler } from '@kit.BackgroundTasksKit';
+   ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { workScheduler } from '@kit.BackgroundTasksKit';
    ```
 
 2. 申请延迟任务。
