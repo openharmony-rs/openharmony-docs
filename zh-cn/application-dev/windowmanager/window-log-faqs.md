@@ -185,7 +185,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 问题5：窗口触摸区域异常
 
 - `TouchHotAreas`尺寸异常：触摸热区设置错误。
-- 与WindowRect对比，确认是否正确
+- 与`WindowRect`对比，确认是否正确设置
 
 ### 定位思路
 
