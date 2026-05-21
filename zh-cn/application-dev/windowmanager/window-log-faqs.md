@@ -73,8 +73,8 @@ total window num: 12
 | DisplayId | 显示设备ID | 0表示主屏幕，1表示副屏幕，多屏场景下会有多个DisplayId。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
-| Type | 窗口类型 | 1：应用主窗口；2：应用子窗口。详见[窗口类型](window-terminology.md#窗口类型)。 |
-| Mode | 窗口模式 | 1：全屏模式；102：自由悬浮窗模式。详见[应用窗口模式](window-overview.md#应用窗口模式)。 |
+| Type | 窗口类型 | 应用窗口：1表示应用主窗口，2表示应用子窗口。系统窗口：值与[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)枚举对应，如2108表示状态栏窗口。 |
+| Mode | 窗口模式 | 1表示全屏模式，102表示自由悬浮窗模式。其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
 | Flag | 状态标志位 | 0：正常显示状态；1：隐藏状态。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
 | Orientation | 窗口方向 | 0：未指定方向；1：竖屏；2：横屏；8：竖屏等方向设置。 |
