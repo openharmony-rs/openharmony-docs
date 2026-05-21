@@ -185,3 +185,37 @@ struct Index {
 ```
 
 <!-- @[across_concurrent_instance_pass_class_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/crossconcurrency/src/main/ets/pages/sendable.ets) --> 
+
+``` TypeScript
+// 定义模拟类Test，模仿开发过程中需传递带方法的class
+import { lang, collections } from '@kit.ArkTS'
+
+export type ISendable = lang.ISendable;
+
+@Sendable
+export class SendableTestClass {
+  public name: string = 'John';
+  public age: number = 20;
+  public sex: string = 'man';
+  public arr: collections.Array<number> = new collections.Array<number>(1, 2, 3);
+
+  constructor() {
+  }
+
+  setAge(age: number): void {
+    this.age = age;
+  }
+
+  printName(): string {
+    return this.name;
+  }
+
+  printAge(): number {
+    return this.age;
+  }
+
+  printSex(): string {
+    return this.sex;
+  }
+}
+```
