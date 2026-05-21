@@ -35,8 +35,6 @@
    - [onAVMusicTemplateCreate](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatecreate)：监听音频模板创建事件。
    - [onAVMusicTemplateDestroy](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatedestroy)：监听音频模板销毁事件。
 
-   <!-- @[create_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
@@ -230,8 +228,6 @@
 
    例如，实现音频模板系统主界面显示需要先调用接口[queryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#querymaintabs)获取媒体应用主标签数据，再调用接口[queryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#querymediatabcontent)获取媒体应用标签页内容。
 
-   <!-- @[query_home_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
@@ -287,8 +283,6 @@
 
    例如，搜播需要调用接口[playForSearch](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#playforsearch)下发搜播指令给媒体应用（该接口支持音视频，示例仅以音频为例）。视频需将参数实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
 
-   <!-- @[play_for_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
@@ -340,8 +334,6 @@
 
    例如，在登录导致用户信息变化的场景下，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#onuserinfochange)。因为用户在音频模板系统界面扫码登录时，登录状态只有媒体应用能感知。
 
-      <!-- @[register_user_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-      
       ``` TypeScript
       import { avMusicTemplate } from '@kit.AVSessionKit';
       // ...
@@ -367,8 +359,6 @@
 
 5. 在音频模板系统应用退出时及时取消事件监听，并释放资源。注销音频模板接口详情请查看[@ohos.multimedia.avMusicTemplate(音频模板)(系统接口)](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md)，注销事件监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md)。
 
-   <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
    // ...
