@@ -1516,8 +1516,6 @@ struct MyApp {
 
 ## Binding\<T\>
 
-class Binding\<T\>
-
 只读数据绑定的泛型类可以绑定任意类型的数据（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1562,8 +1560,6 @@ function CustomButton(readOnlyParam: Binding<number>) {
 ```
 
 ## MutableBinding\<T\>
-
-class MutableBinding\<T\>
 
 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
 

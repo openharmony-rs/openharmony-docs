@@ -118,7 +118,7 @@ enum WindowManager_WindowType
 | -- | -- |
 | WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | 子窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | 主窗口。 |
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 悬浮窗口。 |
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 全局悬浮窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | 模态窗口。 |
 
 ## 函数说明
