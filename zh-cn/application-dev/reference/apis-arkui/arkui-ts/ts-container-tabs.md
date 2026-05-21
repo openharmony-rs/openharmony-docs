@@ -575,7 +575,7 @@ Scrollable模式下的TabBar的布局样式对象。
 | 小于等于2个 | 小于600vp | 固定值168vp。   |
 | 小于等于2个 | 大于等于600vp | 固定值184vp。   |
 | 3个 | 小于600vp | 固定值248vp。   |
-| 3个 | 大于等于600vp | 固定值278vp。   |
+| 3个 | 大于等于600vp | 固定值272vp。   |
 | 大于等于4个 | 小于600vp | Tabs宽度 - 2 * [barSideMargin](#floatingtabbarstyle)。   |
 | 大于等于4个 | 大于等于600vp，小于840vp | Tabs宽度 - 2 * (barSideMargin + 12vp + TabBar高度)。   |
 | 大于等于4个 | 大于840vp | (Tabs宽度 / 2 - 2 * barSideMargin) * 2。   |
