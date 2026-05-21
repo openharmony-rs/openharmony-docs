@@ -1,4 +1,4 @@
-# @ohos.account.osAccount (System Account Management)
+# @ohos.account.osAccount (OS Account Management)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
@@ -7,7 +7,7 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-The osAccount module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling a system account.
+The **osAccount** module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling an OS account.
 
 > **NOTE**
 >
@@ -41,7 +41,7 @@ Obtains an **AccountManager** instance.
 
 ## OsAccountType
 
-Enumerates the system account types.
+Enumerates the OS account types.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -53,13 +53,13 @@ Enumerates the system account types.
 
 ## AccountManager
 
-Provides APIs for managing system accounts.
+Provides APIs for managing OS accounts.
 
 ### checkMultiOsAccountEnabled<sup>9+</sup>
 
 checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether multiple system accounts are supported. This API uses an asynchronous callback to return the result.
+Checks whether multiple OS accounts are supported. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -67,13 +67,13 @@ Checks whether multiple system accounts are supported. This API uses an asynchro
 
 | Name  | Type                        | Mandatory| Description                                                    |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------ |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means multiple system accounts are supported; the value **false** means the opposite.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means multiple OS accounts are supported; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -102,7 +102,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
 
-Checks whether multiple system accounts are supported. This API uses a promise to return the result.
+Checks whether multiple OS accounts are supported. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -110,13 +110,13 @@ Checks whether multiple system accounts are supported. This API uses a promise t
 
 | Type                  | Description                                                       |
 | :--------------------- | :--------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means multiple system accounts are supported; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means multiple OS accounts are supported; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -142,7 +142,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account is activated. This API uses an asynchronous callback to return the result.
+Checks whether an OS account is activated. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -156,14 +156,14 @@ Checks whether a system account is activated. This API uses an asynchronous call
 
 | Name  | Type                        | Mandatory| Description                                                    |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------ |
-| localId  | number                       | Yes  | ID of the target system account.                                            |
+| localId  | number                       | Yes  | ID of the target OS account.                                            |
 | callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the account is activated; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -171,7 +171,9 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**Example**: Check whether system account 100 is activated.
+**Example**
+
+Check whether OS account 100 is activated.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -196,7 +198,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
-Checks whether a system account is activated. This API uses a promise to return the result.
+Checks whether an OS account is activated. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -210,7 +212,7 @@ Checks whether a system account is activated. This API uses a promise to return 
 
 | Name | Type  | Mandatory| Description                              |
 | ------- | ------ | ---- | --------------------------------- |
-| localId | number | Yes  | ID of the target system account.|
+| localId | number | Yes  | ID of the target OS account.|
 
 **Return value**
 
@@ -222,7 +224,7 @@ Checks whether a system account is activated. This API uses a promise to return 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -230,7 +232,9 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**Example**: Check whether system account 100 is activated.
+**Example**
+
+Check whether OS account 100 is activated.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -253,7 +257,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
-Checks whether a constraint is enabled for this system account. This API uses a promise to return the result.
+Checks whether a constraint is enabled for the current OS account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -273,12 +277,14 @@ Checks whether a constraint is enabled for this system account. This API uses a 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
-**Example**: Check whether system account 100 is forbidden to use Wi-Fi.
+**Example**
+
+Check whether OS account 100 is forbidden to use Wi-Fi.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -301,7 +307,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether the specified constraint is enabled for a system account. This API uses an asynchronous callback to return the result.
+Checks whether the specified constraint is enabled for an OS account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -315,7 +321,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
 | Name    | Type                        | Mandatory| Description                                                              |
 | ---------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
-| localId    | number                       | Yes  | ID of the target system account.                                |
+| localId    | number                       | Yes  | ID of the target OS account.                                |
 | constraint | string                       | Yes  | [Constraint](#constraints) to check.                               |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the specified constraint is enabled; the value **false** means the opposite.|
 
@@ -323,7 +329,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -331,7 +337,9 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300002 | Invalid localId or constraint.    |
 | 12300003 | Account not found. |
 
-**Example**: Check whether system account 100 is forbidden to use Wi-Fi.
+**Example**
+
+Check whether OS account 100 is forbidden to use Wi-Fi.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -357,7 +365,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;boolean&gt;
 
-Checks whether the specified constraint is enabled for a system account. This API uses a promise to return the result.
+Checks whether the specified constraint is enabled for an OS account. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -371,7 +379,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
 | Name    | Type  | Mandatory| Description                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| localId    | number | Yes  | ID of the target system account. |
+| localId    | number | Yes  | ID of the target OS account. |
 | constraint | string | Yes  | [Constraint](#constraints) to check.|
 
 **Return value**
@@ -384,7 +392,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -392,7 +400,9 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300002 | Invalid localId or constraint.    |
 | 12300003 | Account not found. |
 
-**Example**: Check whether system account 100 is forbidden to use Wi-Fi.
+**Example**
+
+Check whether OS account 100 is forbidden to use Wi-Fi.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -416,7 +426,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether this system account is a test account. This API uses an asynchronous callback to return the result.
+Checks whether the current OS account is a test account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -430,7 +440,7 @@ Checks whether this system account is a test account. This API uses an asynchron
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -459,7 +469,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountTestable(): Promise&lt;boolean&gt;
 
-Checks whether this system account is a test account. This API uses a promise to return the result.
+Checks whether the current OS account is a test account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -473,7 +483,7 @@ Checks whether this system account is a test account. This API uses a promise to
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -499,7 +509,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
-Checks whether this system account is unlocked. This API uses a promise to return the result.
+Checks whether the current OS account is unlocked. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -507,13 +517,13 @@ Checks whether this system account is unlocked. This API uses a promise to retur
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account is unlocked; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -539,7 +549,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account has been verified. This API uses an asynchronous callback to return the result.
+Checks whether the current OS account is unlocked. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -551,13 +561,13 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
 | Name  | Type                        | Mandatory| Description                                                           |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -585,7 +595,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountVerified(): Promise&lt;boolean&gt;
 
-Checks whether this system account has been verified. This API uses a promise to return the result.
+Checks whether the current OS account has been verified. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -597,13 +607,13 @@ Checks whether this system account has been verified. This API uses a promise to
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this system account has been verified; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -629,7 +639,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account has been verified. This API uses an asynchronous callback to return the result.
+Checks whether an OS account has been verified. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -643,14 +653,14 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
 | Name  | Type                        | Mandatory| Description                                                           |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------- |
-| localId  | number                       | Yes  | ID of the target system account.                             |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
+| localId  | number                       | Yes  | ID of the target OS account.                             |
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -683,7 +693,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
-Checks whether a system account has been verified. This API uses a promise to return the result.
+Checks whether an OS account has been verified. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -697,19 +707,19 @@ Checks whether a system account has been verified. This API uses a promise to re
 
 | Name | Type  | Mandatory| Description                                                             |
 | ------- | ------ | ---- | --------------------------------------------------------------- |
-| localId | number | Yes  | ID of the target system account. If this parameter is not specified, this API checks whether the current system account has been verified.|
+| localId | number | Yes  | ID of the target OS account. If this parameter is not specified, this API checks whether the current OS account has been verified.|
 
 **Return value**
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -740,7 +750,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the number of system accounts created. This API uses an asynchronous callback to return the result.
+Obtains the number of OS accounts created. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -750,13 +760,13 @@ Obtains the number of system accounts created. This API uses an asynchronous cal
 
 | Name  | Type                       | Mandatory| Description                                                                        |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the number of created system accounts. If the operation fails, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the number of created OS accounts. If the operation fails, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -786,7 +796,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountCount(): Promise&lt;number&gt;
 
-Obtains the number of system accounts created. This API uses a promise to return the result.
+Obtains the number of OS accounts created. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -796,13 +806,13 @@ Obtains the number of system accounts created. This API uses a promise to return
 
 | Type                 | Description                                   |
 | --------------------- | -------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the number of created system accounts.|
+| Promise&lt;number&gt; | Promise used to return the number of created OS accounts.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | The system service works abnormally. |
@@ -829,7 +839,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the ID of the system account to which the current process belongs. This API uses an asynchronous callback to return the result.
+Obtains the ID of the OS account to which the current process belongs. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -837,13 +847,13 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 | Name  | Type                       | Mandatory| Description                                                                          |
 | -------- | --------------------------- | ---- | ---------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account ID obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account ID obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -872,7 +882,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalId(): Promise&lt;number&gt;
 
-Obtains the ID of the system account to which the current process belongs. This API uses a promise to return the result.
+Obtains the ID of the OS account to which the current process belongs. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -880,13 +890,13 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 | Type                 | Description                                     |
 | --------------------- | ---------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the system account ID obtained.|
+| Promise&lt;number&gt; | Promise used to return the OS account ID obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -912,7 +922,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the system account ID based on the process UID. This API uses an asynchronous callback to return the result.
+Obtains the OS account ID based on the process UID. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -921,19 +931,21 @@ Obtains the system account ID based on the process UID. This API uses an asynchr
 | Name  | Type                       | Mandatory| Description                                                                   |
 | -------- | --------------------------- | ---- | --------------------------------------------------------------------- |
 | uid      | number                      | Yes  | Process UID.                                                             |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account ID obtained. Otherwise, **data** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account ID obtained. Otherwise, **data** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message        |
+| Error Code| Error Message        |
 | -------- | --------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid.    |
 
-**Example**: Obtain the ID of the system account whose process UID is **12345678**.
+**Example**
+
+Obtain the ID of the OS account whose process UID is **12345678**.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -957,7 +969,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
 
-Obtains the system account ID based on the process UID. This API uses a promise to return the result.
+Obtains the OS account ID based on the process UID. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -971,19 +983,21 @@ Obtains the system account ID based on the process UID. This API uses a promise 
 
 | Type                 | Description                                    |
 | --------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the system account ID obtained.|
+| Promise&lt;number&gt; | Promise used to return the OS account ID obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
 
-**Example**: Obtain the ID of the system account whose process UID is **12345678**.
+**Example**
+
+Obtain the ID of the OS account whose process UID is **12345678**.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1006,7 +1020,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalIdForUidSync(uid: number): number
 
-Obtains the system account ID based on the process UID. The API returns the result synchronously.
+Obtains the OS account ID based on the process UID. The API returns the result synchronously.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1020,18 +1034,20 @@ Obtains the system account ID based on the process UID. The API returns the resu
 
 | Type                 | Description                                    |
 | --------------------- | --------------------------------------- |
-| number | System account ID obtained.|
+| number | OS account ID obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300002 | Invalid uid. |
 
-**Example**: Obtain the ID of the system account whose process UID is **12345678**.
+**Example**
+
+Obtain the ID of the OS account whose process UID is **12345678**.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1051,7 +1067,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the system account ID based on the domain account information. This API uses an asynchronous callback to return the result.
+Obtains the OS account ID based on the domain account information. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -1062,13 +1078,13 @@ Obtains the system account ID based on the domain account information. This API 
 | Name    | Type                                   | Mandatory| Description                                                                        |
 | ---------- | --------------------------------------- | ---- | -------------------------------------------------------------------------- |
 | domainInfo | [DomainAccountInfo](#domainaccountinfo8) | Yes  | Domain account information.                                                               |
-| callback   | AsyncCallback&lt;number&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the ID of the system account associated with the domain account. Otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;number&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the ID of the OS account associated with the domain account. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1100,7 +1116,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&gt;
 
-Obtains the system account ID based on the domain account information. This API uses a promise to return the result.
+Obtains the OS account ID based on the domain account information. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -1116,13 +1132,13 @@ Obtains the system account ID based on the domain account information. This API 
 
 | Type                 | Description                                   |
 | :-------------------- | :------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the ID of the system account associated with the domain account.|
+| Promise&lt;number&gt; | Promise used to return the ID of the OS account associated with the domain account.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1152,7 +1168,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Obtains all constraints enabled for a system account. This API uses an asynchronous callback to return the result.
+Obtains all constraints enabled for an OS account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1166,14 +1182,14 @@ Obtains all constraints enabled for a system account. This API uses an asynchron
 
 | Name  | Type                                    | Mandatory| Description                                                                                          |
 | -------- | ---------------------------------------- | ---- | -------------------------------------------------------------------------------------------- |
-| localId  | number                                   | Yes  | ID of the target system account.                                                                                 |
+| localId  | number                                   | Yes  | ID of the target OS account.                                                                                 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is all [constraints](#constraints) obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1181,7 +1197,9 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**Example**: Obtain all constraints of system account 100.
+**Example**
+
+Obtain all constraints of OS account 100.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1206,7 +1224,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains all constraints enabled for a system account. This API uses a promise to return the result.
+Obtains all constraints enabled for an OS account. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1220,19 +1238,19 @@ Obtains all constraints enabled for a system account. This API uses a promise to
 
 | Name | Type  | Mandatory| Description        |
 | ------- | ------ | ---- | ------------ |
-| localId | number | Yes  | ID of the target system account.|
+| localId | number | Yes  | ID of the target OS account.|
 
 **Return value**
 
 | Type                              | Description                                                      |
 | ---------------------------------- | ---------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](#constraints) enabled for the system account.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](#constraints) enabled for the OS account.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1240,7 +1258,9 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**Example**: Obtain all constraints of system account 100.
+**Example**
+
+Obtain all constraints of OS account 100.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1263,7 +1283,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
-Obtains information about all activated system accounts. This API uses an asynchronous callback to return the result.
+Obtains information about all activated OS accounts. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1271,13 +1291,13 @@ Obtains information about all activated system accounts. This API uses an asynch
 
 | Name  | Type                                    | Mandatory| Description                                                  |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of activated system accounts. Otherwise, **data** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of activated OS accounts. Otherwise, **data** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -1309,7 +1329,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;number&gt;&gt;
 
-Obtains information about all activated system accounts. This API uses a promise to return the result.
+Obtains information about all activated OS accounts. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1317,13 +1337,13 @@ Obtains information about all activated system accounts. This API uses a promise
 
 | Type                              | Description                                              |
 | :--------------------------------- | :------------------------------------------------ |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the information about all activated system accounts.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the information about all activated OS accounts.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | ------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -1349,7 +1369,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
-Obtains information about the system account to which the current process belongs. This API uses an asynchronous callback to return the result.
+Obtains information about the OS account to which the current process belongs. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1363,13 +1383,13 @@ Obtains information about the system account to which the current process belong
 
 | Name  | Type                                                | Mandatory| Description                                          |
 | -------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | AsyncCallback&lt;[OsAccountInfo](#osaccountinfo)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account information obtained. Otherwise, **data** is an error object.|
+| callback | AsyncCallback&lt;[OsAccountInfo](#osaccountinfo)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account information obtained. Otherwise, **data** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1399,7 +1419,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
-Obtains information about the system account to which the current process belongs. This API uses a promise to return the result.
+Obtains information about the OS account to which the current process belongs. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1413,13 +1433,13 @@ Obtains information about the system account to which the current process belong
 
 | Type                                          | Description                                      |
 | ---------------------------------------------- | ----------------------------------------- |
-| Promise&lt;[OsAccountInfo](#osaccountinfo)&gt; | Promise used to return the system account information obtained.|
+| Promise&lt;[OsAccountInfo](#osaccountinfo)&gt; | Promise used to return the OS account information obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied. |
 | 12300001 | The system service works abnormally. |
@@ -1454,13 +1474,13 @@ Obtains the type of the account to which the current process belongs. This API u
 
 | Name  | Type                                                | Mandatory| Description                                                |
 | -------- | ---------------------------------------------------- | ---- | ---------------------------------------------------- |
-| callback | AsyncCallback&lt;[OsAccountType](#osaccounttype)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account type obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[OsAccountType](#osaccounttype)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account type obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1497,13 +1517,13 @@ Obtains the type of the account to which the current process belongs. This API u
 
 | Type                                          | Description                                            |
 | ---------------------------------------------- | ----------------------------------------------- |
-| Promise&lt;[OsAccountType](#osaccounttype)&gt; | Promise used to return the system account type obtained.|
+| Promise&lt;[OsAccountType](#osaccounttype)&gt; | Promise used to return the OS account type obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -1545,7 +1565,7 @@ Queries the ID of a distributed virtual device. This API uses an asynchronous ca
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1591,7 +1611,7 @@ Queries the ID of this distributed virtual device. This API uses a promise to re
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | The system service works abnormally. |
@@ -1618,7 +1638,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the system account ID based on the SN. This API uses an asynchronous callback to return the result.
+Obtains the OS account ID based on the SN. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1627,20 +1647,22 @@ Obtains the system account ID based on the SN. This API uses an asynchronous cal
 | Name      | Type                       | Mandatory| Description                                                                          |
 | ------------ | --------------------------- | ---- | ---------------------------------------------------------------------------- |
 | serialNumber | number                      | Yes  | Account SN.                                                                   |
-| callback     | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account ID obtained. Otherwise, **err** is an error object.|
+| callback     | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account ID obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message              |
+| Error Code| Error Message              |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid serialNumber. |
 | 12300003 | The account indicated by serialNumber does not exist. |
 
-**Example**: Obtain the ID of the system account whose SN is 12345.
+**Example**
+
+Obtain the ID of the OS account whose SN is 12345.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1665,7 +1687,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise&lt;number&gt;
 
-Obtains the system account ID based on the SN. This API uses a promise to return the result.
+Obtains the OS account ID based on the SN. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1679,20 +1701,22 @@ Obtains the system account ID based on the SN. This API uses a promise to return
 
 | Type                 | Description                                        |
 | --------------------- | -------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the system account ID obtained.|
+| Promise&lt;number&gt; | Promise used to return the OS account ID obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message              |
+| Error Code| Error Message              |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid serialNumber. |
 | 12300003 | The account indicated by serialNumber does not exist. |
 
-**Example**: Obtain the ID of the system account whose SN is 12345.
+**Example**
+
+Obtain the ID of the OS account whose SN is 12345.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1715,7 +1739,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the SN of a system account based on the account ID. This API uses an asynchronous callback to return the result.
+Obtains the SN of an OS account based on the account ID. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1723,21 +1747,23 @@ Obtains the SN of a system account based on the account ID. This API uses an asy
 
 | Name  | Type                       | Mandatory| Description                                                                        |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------- |
-| localId  | number                      | Yes  | ID of the target system account.                                                                |
+| localId  | number                      | Yes  | ID of the target OS account.                                                                |
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the SN obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**Example**: Obtain the SN of the system account 100.
+**Example**
+
+Obtain the SN of the OS account 100.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1762,7 +1788,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
-Obtains the SN of a system account based on the account ID. This API uses a promise to return the result.
+Obtains the SN of an OS account based on the account ID. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -1770,7 +1796,7 @@ Obtains the SN of a system account based on the account ID. This API uses a prom
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ----------- |
-| localId | number | Yes  | ID of the target system account.|
+| localId | number | Yes  | ID of the target OS account.|
 
 **Return value**
 
@@ -1782,14 +1808,16 @@ Obtains the SN of a system account based on the account ID. This API uses a prom
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message            |
+| Error Code| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**Example**: Obtain the SN of the system account 100.
+**Example**
+
+Obtain the SN of the OS account 100.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1812,7 +1840,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 isMultiOsAccountEnable(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether multiple system accounts are supported. This API uses an asynchronous callback to return the result.
+Checks whether multiple OS accounts are supported. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1824,7 +1852,7 @@ Checks whether multiple system accounts are supported. This API uses an asynchro
 
 | Name  | Type                        | Mandatory| Description                                                    |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------ |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means multiple system accounts are supported; the value **false** means the opposite.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means multiple OS accounts are supported; the value **false** means the opposite.|
 
 **Example**
 
@@ -1845,7 +1873,7 @@ Checks whether multiple system accounts are supported. This API uses an asynchro
 
 isMultiOsAccountEnable(): Promise&lt;boolean&gt;
 
-Checks whether multiple system accounts are supported. This API uses a promise to return the result.
+Checks whether multiple OS accounts are supported. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1857,7 +1885,7 @@ Checks whether multiple system accounts are supported. This API uses a promise t
 
 | Type                  | Description                                                      |
 | :--------------------- | :--------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means multiple system accounts are supported; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means multiple OS accounts are supported; the value **false** means the opposite.|
 
 **Example**
 
@@ -1876,7 +1904,7 @@ Checks whether multiple system accounts are supported. This API uses a promise t
 
 isOsAccountActived(localId: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account is activated. This API uses an asynchronous callback to return the result.
+Checks whether an OS account is activated. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1890,10 +1918,12 @@ Checks whether a system account is activated. This API uses an asynchronous call
 
 | Name  | Type                        | Mandatory| Description                                                    |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------ |
-| localId  | number                       | Yes  | ID of the target system account.                                           |
+| localId  | number                       | Yes  | ID of the target OS account.                                           |
 | callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the account is activated; the value **false** means the opposite.|
 
-**Example**: Check whether system account 100 is activated.
+**Example**
+
+Check whether OS account 100 is activated.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1913,7 +1943,7 @@ Checks whether a system account is activated. This API uses an asynchronous call
 
 isOsAccountActived(localId: number): Promise&lt;boolean&gt;
 
-Checks whether a system account is activated. This API uses a promise to return the result.
+Checks whether an OS account is activated. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1927,7 +1957,7 @@ Checks whether a system account is activated. This API uses a promise to return 
 
 | Name | Type  | Mandatory| Description                              |
 | ------- | ------ | ---- | --------------------------------- |
-| localId | number | Yes  | ID of the target system account.|
+| localId | number | Yes  | ID of the target OS account.|
 
 **Return value**
 
@@ -1935,7 +1965,9 @@ Checks whether a system account is activated. This API uses a promise to return 
 | --------------------- | ----------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the account is activated; the value **false** means the opposite.|
 
-**Example**: Check whether system account 100 is activated.
+**Example**
+
+Check whether OS account 100 is activated.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1953,7 +1985,7 @@ Checks whether a system account is activated. This API uses a promise to return 
 
 isOsAccountConstraintEnable(localId: number, constraint: string, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether the specified constraint is enabled for a system account. This API uses an asynchronous callback to return the result.
+Checks whether the specified constraint is enabled for an OS account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1967,11 +1999,13 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
 | Name    | Type                        | Mandatory| Description                                                               |
 | ---------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
-| localId    | number                       | Yes  | ID of the target system account.                                |
+| localId    | number                       | Yes  | ID of the target OS account.                                |
 | constraint | string                       | Yes  | [Constraint](#constraints) to check.                               |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the specified constraint is enabled; the value **false** means the opposite.|
 
-**Example**: Check whether system account 100 is forbidden to use Wi-Fi.
+**Example**
+
+Check whether OS account 100 is forbidden to use Wi-Fi.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1992,7 +2026,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
 isOsAccountConstraintEnable(localId: number, constraint: string): Promise&lt;boolean&gt;
 
-Checks whether the specified constraint is enabled for a system account. This API uses a promise to return the result.
+Checks whether the specified constraint is enabled for an OS account. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2006,7 +2040,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
 | Name    | Type  | Mandatory| Description                                |
 | ---------- | ------ | ---- | ---------------------------------- |
-| localId    | number | Yes  | ID of the target system account. |
+| localId    | number | Yes  | ID of the target OS account. |
 | constraint | string | Yes  | [Constraint](#constraints) to check.|
 
 **Return value**
@@ -2015,7 +2049,9 @@ Checks whether the specified constraint is enabled for a system account. This AP
 | ---------------------- | --------------------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the specified constraint is enabled; the value **false** means the opposite.|
 
-**Example**: Check whether system account 100 is forbidden to use Wi-Fi.
+**Example**
+
+Check whether OS account 100 is forbidden to use Wi-Fi.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2034,7 +2070,7 @@ Checks whether the specified constraint is enabled for a system account. This AP
 
 isTestOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether this system account is a test account. This API uses an asynchronous callback to return the result.
+Checks whether the current OS account is a test account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2067,7 +2103,7 @@ Checks whether this system account is a test account. This API uses an asynchron
 
 isTestOsAccount(): Promise&lt;boolean&gt;
 
-Checks whether this system account is a test account. This API uses a promise to return the result.
+Checks whether the current OS account is a test account. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2098,7 +2134,7 @@ Checks whether this system account is a test account. This API uses a promise to
 
 isOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account has been verified. This API uses an asynchronous callback to return the result.
+Checks whether an OS account has been verified. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2112,7 +2148,7 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
 | Name  | Type                        | Mandatory| Description                                                           |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
 
 **Example**
 
@@ -2133,7 +2169,7 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
 isOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account has been verified. This API uses an asynchronous callback to return the result.
+Checks whether an OS account has been verified. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2147,8 +2183,8 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
 | Name  | Type                        | Mandatory| Description                                                           |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------- |
-| localId  | number                       | Yes  | ID of the target system account.                            |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
+| localId  | number                       | Yes  | ID of the target OS account.                            |
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
 
 **Example**
 
@@ -2170,7 +2206,7 @@ Checks whether a system account has been verified. This API uses an asynchronous
 
 isOsAccountVerified(localId?: number): Promise&lt;boolean&gt;
 
-Checks whether a system account has been verified. This API uses a promise to return the result.
+Checks whether an OS account has been verified. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2184,13 +2220,13 @@ Checks whether a system account has been verified. This API uses a promise to re
 
 | Name | Type  | Mandatory| Description                                                             |
 | ------- | ------ | ---- | ---------------------------------------------------------------- |
-| localId | number | No  | ID of the target system account. If this parameter is not specified, this API checks whether the current system account has been verified. The default value is **-1**.|
+| localId | number | No  | ID of the target OS account. If this parameter is not specified, this API checks whether the current OS account has been verified. The default value is **-1**.|
 
 **Return value**
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
 
 **Example**
 
@@ -2209,7 +2245,7 @@ Checks whether a system account has been verified. This API uses a promise to re
 
 getCreatedOsAccountsCount(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the number of system accounts created. This API uses an asynchronous callback to return the result.
+Obtains the number of OS accounts created. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2223,7 +2259,7 @@ Obtains the number of system accounts created. This API uses an asynchronous cal
 
 | Name  | Type                       | Mandatory| Description                                                                        |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the number of created system accounts. If the operation fails, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the number of created OS accounts. If the operation fails, **err** is an error object.|
 
 **Example**
 
@@ -2244,7 +2280,7 @@ Obtains the number of system accounts created. This API uses an asynchronous cal
 
 getCreatedOsAccountsCount(): Promise&lt;number&gt;
 
-Obtains the number of system accounts created. This API uses a promise to return the result.
+Obtains the number of OS accounts created. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2258,7 +2294,7 @@ Obtains the number of system accounts created. This API uses a promise to return
 
 | Type                 | Description                                   |
 | --------------------- | -------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the number of created system accounts.|
+| Promise&lt;number&gt; | Promise used to return the number of created OS accounts.|
 
 **Example**
 
@@ -2277,7 +2313,7 @@ Obtains the number of system accounts created. This API uses a promise to return
 
 getOsAccountLocalIdFromProcess(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the ID of the system account to which the current process belongs. This API uses an asynchronous callback to return the result.
+Obtains the ID of the OS account to which the current process belongs. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2289,7 +2325,7 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 | Name  | Type                       | Mandatory| Description                                                                          |
 | -------- | --------------------------- | ---- | ---------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account ID obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account ID obtained. Otherwise, **err** is an error object.|
 
 **Example**
 
@@ -2310,7 +2346,7 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 getOsAccountLocalIdFromProcess(): Promise&lt;number&gt;
 
-Obtains the ID of the system account to which the current process belongs. This API uses a promise to return the result.
+Obtains the ID of the OS account to which the current process belongs. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2322,7 +2358,7 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 | Type                 | Description                                     |
 | :-------------------- | :--------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the system account ID obtained.|
+| Promise&lt;number&gt; | Promise used to return the OS account ID obtained.|
 
 **Example**
 
@@ -2341,7 +2377,7 @@ Obtains the ID of the system account to which the current process belongs. This 
 
 getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the system account ID based on the process UID. This API uses an asynchronous callback to return the result.
+Obtains the OS account ID based on the process UID. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2354,9 +2390,11 @@ Obtains the system account ID based on the process UID. This API uses an asynchr
 | Name  | Type                       | Mandatory| Description                                                                   |
 | -------- | --------------------------- | ---- | --------------------------------------------------------------------- |
 | uid      | number                      | Yes  | Process UID.                                                             |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account ID obtained. Otherwise, **data** is an error object.|
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account ID obtained. Otherwise, **data** is an error object.|
 
-**Example**: Obtain the ID of the system account whose process UID is **12345678**.
+**Example**
+
+Obtain the ID of the OS account whose process UID is **12345678**.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2376,7 +2414,7 @@ Obtains the system account ID based on the process UID. This API uses an asynchr
 
 getOsAccountLocalIdFromUid(uid: number): Promise&lt;number&gt;
 
-Obtains the system account ID based on the process UID. This API uses a promise to return the result.
+Obtains the OS account ID based on the process UID. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2394,9 +2432,11 @@ Obtains the system account ID based on the process UID. This API uses a promise 
 
 | Type                 | Description                                 |
 | :-------------------- | :----------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the system account ID obtained.|
+| Promise&lt;number&gt; | Promise used to return the OS account ID obtained.|
 
-**Example**: Obtain the ID of the system account whose process UID is **12345678**.
+**Example**
+
+Obtain the ID of the OS account whose process UID is **12345678**.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2414,7 +2454,7 @@ Obtains the system account ID based on the process UID. This API uses a promise 
 
 getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the system account ID based on the domain account information. This API uses an asynchronous callback to return the result.
+Obtains the OS account ID based on the domain account information. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2429,7 +2469,7 @@ Obtains the system account ID based on the domain account information. This API 
 | Name    | Type                                   | Mandatory| Description                                                                        |
 | ---------- | --------------------------------------- | ---- | --------------------------------------------------------------------------- |
 | domainInfo | [DomainAccountInfo](#domainaccountinfo8) | Yes  | Domain account information.                                                               |
-| callback   | AsyncCallback&lt;number&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account ID obtained. Otherwise, **err** is an error object.|
+| callback   | AsyncCallback&lt;number&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account ID obtained. Otherwise, **err** is an error object.|
 
 **Example**
 
@@ -2451,7 +2491,7 @@ Obtains the system account ID based on the domain account information. This API 
 
 getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise&lt;number&gt;
 
-Obtains the system account ID based on the domain account information. This API uses a promise to return the result.
+Obtains the OS account ID based on the domain account information. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2471,7 +2511,7 @@ Obtains the system account ID based on the domain account information. This API 
 
 | Type                 | Description                                   |
 | :-------------------- | :------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the ID of the system account associated with the domain account.|
+| Promise&lt;number&gt; | Promise used to return the ID of the OS account associated with the domain account.|
 
 **Example**
 
@@ -2491,7 +2531,7 @@ Obtains the system account ID based on the domain account information. This API 
 
 getOsAccountAllConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Obtains all constraints enabled for a system account. This API uses an asynchronous callback to return the result.
+Obtains all constraints enabled for an OS account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2505,10 +2545,12 @@ Obtains all constraints enabled for a system account. This API uses an asynchron
 
 | Name  | Type                                    | Mandatory| Description                                                                                            |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
-| localId  | number                                   | Yes  | ID of the target system account.                                                                                   |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all [constraints](#constraints) enabled for the system account. Otherwise, **err** is an error object.|
+| localId  | number                                   | Yes  | ID of the target OS account.                                                                                   |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all [constraints](#constraints) enabled for the OS account. Otherwise, **err** is an error object.|
 
-**Example**: Obtain all constraints of system account 100.
+**Example**
+
+Obtain all constraints of OS account 100.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2528,7 +2570,7 @@ Obtains all constraints enabled for a system account. This API uses an asynchron
 
 getOsAccountAllConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains all constraints enabled for a system account. This API uses a promise to return the result.
+Obtains all constraints enabled for an OS account. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2542,15 +2584,17 @@ Obtains all constraints enabled for a system account. This API uses a promise to
 
 | Name | Type  | Mandatory| Description        |
 | ------- | ------ | ---- | ------------ |
-| localId | number | Yes  | ID of the target system account.|
+| localId | number | Yes  | ID of the target OS account.|
 
 **Return value**
 
 | Type                              | Description                                                        |
 | :--------------------------------- | :----------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](#constraints) enabled for the system account.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](#constraints) enabled for the OS account.|
 
-**Example**: Obtain all constraints of system account 100.
+**Example**
+
+Obtain all constraints of OS account 100.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2568,7 +2612,7 @@ Obtains all constraints enabled for a system account. This API uses a promise to
 
 queryActivatedOsAccountIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
-Obtains information about all activated system accounts. This API uses an asynchronous callback to return the result.
+Obtains information about all activated OS accounts. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2580,7 +2624,7 @@ Obtains information about all activated system accounts. This API uses an asynch
 
 | Name  | Type                                    | Mandatory| Description                                                  |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of activated system accounts. Otherwise, **data** is an error object.|
+| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of activated OS accounts. Otherwise, **data** is an error object.|
 
 **Example**
 
@@ -2608,7 +2652,7 @@ queryActivatedOsAccountIds(): Promise&lt;Array&lt;number&gt;&gt;
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1) instead.
 
-Obtains information about all activated system accounts. This API uses a promise to return the result.
+Obtains information about all activated OS accounts. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2616,7 +2660,7 @@ Obtains information about all activated system accounts. This API uses a promise
 
 | Type                              | Description                                              |
 | ---------------------------------- | ------------------------------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the information about all activated system accounts.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the information about all activated OS accounts.|
 
 **Example**
 
@@ -2635,7 +2679,7 @@ Obtains information about all activated system accounts. This API uses a promise
 
 queryCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
-Obtains information about the system account to which the current process belongs. This API uses an asynchronous callback to return the result.
+Obtains information about the OS account to which the current process belongs. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2649,7 +2693,7 @@ Obtains information about the system account to which the current process belong
 
 | Name  | Type                                                | Mandatory| Description                                          |
 | -------- | ---------------------------------------------------- | ---- | ---------------------------------------------- |
-| callback | AsyncCallback&lt;[OsAccountInfo](#osaccountinfo)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account information obtained. Otherwise, **data** is an error object.|
+| callback | AsyncCallback&lt;[OsAccountInfo](#osaccountinfo)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account information obtained. Otherwise, **data** is an error object.|
 
 **Example**
 
@@ -2670,7 +2714,7 @@ Obtains information about the system account to which the current process belong
 
 queryCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
-Obtains information about the system account to which the current process belongs. This API uses a promise to return the result.
+Obtains information about the OS account to which the current process belongs. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2684,7 +2728,7 @@ Obtains information about the system account to which the current process belong
 
 | Type                                          | Description                                      |
 | ---------------------------------------------- | ------------------------------------------ |
-| Promise&lt;[OsAccountInfo](#osaccountinfo)&gt; | Promise used to return the system account information obtained.|
+| Promise&lt;[OsAccountInfo](#osaccountinfo)&gt; | Promise used to return the OS account information obtained.|
 
 **Example**
 
@@ -2715,7 +2759,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 | Name  | Type                                                | Mandatory| Description                                                |
 | -------- | ---------------------------------------------------- | ---- | ---------------------------------------------------- |
-| callback | AsyncCallback&lt;[OsAccountType](#osaccounttype)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account type obtained. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[OsAccountType](#osaccounttype)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account type obtained. Otherwise, **err** is an error object.|
 
 **Example**
 
@@ -2748,7 +2792,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 | Type                                          | Description                                           |
 | ---------------------------------------------- | ----------------------------------------------- |
-| Promise&lt;[OsAccountType](#osaccounttype)&gt; | Promise used to return the system account type obtained.|
+| Promise&lt;[OsAccountType](#osaccounttype)&gt; | Promise used to return the OS account type obtained.|
 
 **Example**
 
@@ -2835,7 +2879,7 @@ Obtains the ID of this distributed virtual device. This API uses a promise to re
 
 getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the system account ID based on the SN. This API uses an asynchronous callback to return the result.
+Obtains the OS account ID based on the SN. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2848,9 +2892,11 @@ Obtains the system account ID based on the SN. This API uses an asynchronous cal
 | Name      | Type                       | Mandatory| Description                                                                              |
 | ------------ | --------------------------- | ---- | -------------------------------------------------------------------------------- |
 | serialNumber | number                      | Yes  | Account SN.                                                                       |
-| callback     | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the system account ID obtained. Otherwise, **err** is an error object.|
+| callback     | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the OS account ID obtained. Otherwise, **err** is an error object.|
 
-**Example**: Obtain the ID of the system account whose SN is 12345.
+**Example**
+
+Obtain the ID of the OS account whose SN is 12345.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2870,7 +2916,7 @@ Obtains the system account ID based on the SN. This API uses an asynchronous cal
 
 getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise&lt;number&gt;
 
-Obtains the system account ID based on the SN. This API uses a promise to return the result.
+Obtains the OS account ID based on the SN. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2888,9 +2934,11 @@ Obtains the system account ID based on the SN. This API uses a promise to return
 
 | Type                 | Description                                                        |
 | --------------------- | -------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the system account ID obtained.|
+| Promise&lt;number&gt; | Promise used to return the OS account ID obtained.|
 
-**Example**: Obtain the ID of the system account whose SN is 12345.
+**Example**
+
+Obtain the ID of the OS account whose SN is 12345.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2908,7 +2956,7 @@ Obtains the system account ID based on the SN. This API uses a promise to return
 
 getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the SN of a system account based on the account ID. This API uses an asynchronous callback to return the result.
+Obtains the SN of an OS account based on the account ID. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -2920,10 +2968,12 @@ Obtains the SN of a system account based on the account ID. This API uses an asy
 
 | Name  | Type                       | Mandatory| Description                                                                        |
 | -------- | --------------------------- | ---- | --------------------------------------------------------------------------- |
-| localId  | number                      | Yes  | ID of the target system account.                                                                |
+| localId  | number                      | Yes  | ID of the target OS account.                                                                |
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the SN obtained. Otherwise, **err** is an error object.|
 
-**Example**: Obtain the SN of the system account 100.
+**Example**
+
+Obtain the SN of the OS account 100.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2943,7 +2993,7 @@ Obtains the SN of a system account based on the account ID. This API uses an asy
 
 getSerialNumberByOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
-Obtains the SN of a system account based on the account ID. This API uses a promise to return the result.
+Obtains the SN of an OS account based on the account ID. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -2955,7 +3005,7 @@ Obtains the SN of a system account based on the account ID. This API uses a prom
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ----------- |
-| localId | number | Yes  | ID of the target system account.|
+| localId | number | Yes  | ID of the target OS account.|
 
 **Return value**
 
@@ -2963,7 +3013,9 @@ Obtains the SN of a system account based on the account ID. This API uses a prom
 | --------------------- | -------------------------------------- |
 | Promise&lt;number&gt; | Promise used to return the SN obtained.|
 
-**Example**: Obtain the SN of the system account 100.
+**Example**
+
+Obtain the SN of the OS account 100.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2981,7 +3033,7 @@ Obtains the SN of a system account based on the account ID. This API uses a prom
 
 getOsAccountName(): Promise&lt;string&gt;
 
-Obtains the name of the system account of the caller. This API uses a promise to return the result.
+Obtains the name of the OS account of the caller. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -2989,13 +3041,13 @@ Obtains the name of the system account of the caller. This API uses a promise to
 
 | Type                     | Description                    |
 | :------------------------ | ----------------------- |
-| Promise&lt;string&gt; | Promise used to return the system account name obtained.|
+| Promise&lt;string&gt; | Promise used to return the OS account name obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -3021,7 +3073,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getForegroundOsAccountLocalId(): Promise&lt;number&gt;
 
-Obtains the ID of the foreground system account. This API uses a promise to return the result.
+Obtains the ID of the foreground OS account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -3029,13 +3081,13 @@ Obtains the ID of the foreground system account. This API uses a promise to retu
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the result.|
+| Promise&lt;number&gt; | Promise used to return the ID of the foreground OS account.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | ------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -3061,7 +3113,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
-Obtains the domain account information associated with a specified system account. This API uses a promise to return the result.
+Obtains the domain account information associated with a specified OS account. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_DOMAIN_ACCOUNTS and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available to system applications and enterprise applications)
 
@@ -3071,19 +3123,19 @@ Obtains the domain account information associated with a specified system accoun
 
 | Name | Type  | Mandatory| Description         |
 | ------- | ------ | ---- | ----------- |
-| localId | number | Yes  | ID of the target system account.|
+| localId | number | Yes  | ID of the target OS account.|
 
 **Return value**
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise used to return the result.|
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise used to return the domain account information obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message      |
+| Error Code| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3140,7 +3192,7 @@ Updates information of a domain account. This API uses a promise to return the r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3172,25 +3224,25 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 ## OsAccountInfo
 
-Represents information about a system account.
+Represents information about an OS account.
 
 **System capability**: SystemCapability.Account.OsAccount
 
 | Name                        | Type                                                        | Read-Only | Optional | Description                             |
 | ------------------------------ | ------------------------------------------------------------ | ---- | ---- | --------------------------------- |
-| localId                        | number                                                       | No| No | ID of the target system account.                     |
-| localName                      | string                                                       | No| No | Name of the system account.                   |
-| type                           | [OsAccountType](#osaccounttype)                              | No| No | Type of the system account.                     |
-| constraints                    | Array&lt;string&gt;                                          | No| No | [Constraints](#constraints) of the system account. By default, no value is passed in.|
+| localId                        | number                                                       | No| No | ID of the target OS account.                     |
+| localName                      | string                                                       | No| No | Name of the OS account.                   |
+| type                           | [OsAccountType](#osaccounttype)                              | No| No | Type of the OS account.                     |
+| constraints                    | Array&lt;string&gt;                                          | No| No | [Constraints](#constraints) of the OS account. By default, no value is passed in.|
 | isVerified<sup>(deprecated)</sup> | boolean                                                   | No| No | Whether the account has been verified. The value **true** means the specified account has been verified; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isUnlocked** instead.          |
 | isUnlocked<sup>11+</sup>      | boolean                                                       | No| No | Whether the account is unlocked (whether the **el2/** directory is decrypted). The value **true** means the specified account is unlocked; the value **false** means the opposite.                     |
-| photo<sup>8+</sup>             | string                                                       | No| No | Avatar of the system account. By default, no value is passed in.                     |
-| createTime<sup>8+</sup>        | number                                                       | No| No | Time when the system account was created.                 |
-| lastLoginTime<sup>8+</sup>     | number                                                       | No| No | Last login time of the system account. By default, no value is passed in.         |
-| serialNumber<sup>8+</sup>      | number                                                       | No| No | SN of the system account.                     |
-| isActived<sup>(deprecated)</sup>         | boolean                                            | No| No | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isActivated** instead.                 |
-| isActivated<sup>11+</sup>         | boolean                                                   | No| No | Whether the system account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.                 |
-| isCreateCompleted<sup>8+</sup> | boolean                                                      | No| No | Whether the system account information is complete. The value **true** means the specified account is complete; the value **false** means the opposite.             |
+| photo<sup>8+</sup>             | string                                                       | No| No | Avatar of the OS account. By default, no value is passed in.                     |
+| createTime<sup>8+</sup>        | number                                                       | No| No | Time when the OS account was created.                 |
+| lastLoginTime<sup>8+</sup>     | number                                                       | No| No | Last login time of the OS account. This parameter is left empty by default.         |
+| serialNumber<sup>8+</sup>      | number                                                       | No| No | SN of the OS account.                     |
+| isActived<sup>(deprecated)</sup>         | boolean                                            | No| No | Whether the OS account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.<br>Note: This parameter is supported since API version 7 and deprecated since API version 11. You are advised to use **isActivated** instead.                 |
+| isActivated<sup>11+</sup>         | boolean                                                   | No| No | Whether the OS account is activated. The value **true** means the specified account is activated; the value **false** means the opposite.                 |
+| isCreateCompleted<sup>8+</sup> | boolean                                                      | No| No | Whether the OS account information is complete. The value **true** means the specified account is complete; the value **false** means the opposite.             |
 | distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | No| No | Distributed account information. By default, no value is passed in.                   |
 | domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | No| No | Domain account information. By default, no value is passed in.                       |
 
@@ -3248,7 +3300,7 @@ Adds domain server configuration. This API uses a promise to return the result.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3301,7 +3353,7 @@ Removes domain server configuration. This API uses a promise to return the resul
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3355,7 +3407,7 @@ Updates the domain server configuration. This API uses a promise to return the r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3414,7 +3466,7 @@ Obtains the domain server configuration. This API uses a promise to return the r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3463,7 +3515,7 @@ Obtains the configurations of all domain servers. This API uses a promise to ret
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3517,7 +3569,7 @@ Obtains the server configuration of a domain account. This API uses a promise to
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                    |
+| Error Code| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3589,7 +3641,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | constraint.parent.profile.app.linking | Disallow the application in the parent profile from handling web links from the managed profiles.|
 | constraint.audio.record | Disallow audio recording.|
 | constraint.camera.use | Disallow the use of cameras.|
-| constraint.os.account.background.run | Disallow background system accounts.|
+| constraint.os.account.background.run | Disallow background OS accounts.|
 | constraint.data.roam | Disallow the use of cellular data when roaming.|
 | constraint.os.account.set.icon | Disallow setting of user icons.|
 | constraint.wallpaper.set | Disallow setting of wallpapers.|
@@ -3599,7 +3651,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | constraint.autofill | Disallow the use of the autofill service.|
 | constraint.content.capture | Disallow capturing of the screen content.|
 | constraint.content.suggestions | Disallow receiving of content suggestions.|
-| constraint.os.account.activate | Disallow activating of system accounts in the foreground.|
+| constraint.os.account.activate | Disallow activating of OS accounts in the foreground.|
 | constraint.location.set | Disallow setting of the location service.|
 | constraint.airplane.mode.set | Disallow setting of the airplane mode.|
 | constraint.brightness.set | Disallow setting of the brightness.|

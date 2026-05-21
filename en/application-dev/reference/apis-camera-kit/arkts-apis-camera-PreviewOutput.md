@@ -257,7 +257,7 @@ which can be obtained by calling [getSupportedFrameRates](#getsupportedframerate
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID       | Error Message       |
+| Error Code       | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400110                |  Unresolved conflicts with current configurations.     |
@@ -317,7 +317,7 @@ Obtains the profile that takes effect currently.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                        |
+| Error Code  | Error Message                        |
 |---------|------------------------------|
 | 7400201 | Camera service fatal error.  |
 
@@ -347,7 +347,7 @@ Obtains the preview rotation angle.
 
 - Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
-- [Screen rotation](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-direction#section15598121101615): indicates the clockwise rotation angle of the device screen.
+- [Screen Rotation](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-direction#section737072712182): indicates the clockwise rotation angle of the device screen.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -371,7 +371,7 @@ Obtains the preview rotation angle.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                        |
+| Error Code  | Error Message                        |
 |---------|------------------------------|
 | 7400201 | Camera service fatal error.  |
 
@@ -428,7 +428,7 @@ Sets the preview rotation angle.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                        |
+| Error Code  | Error Message                        |
 |---------|------------------------------|
 | 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
@@ -472,7 +472,7 @@ Starts to output preview streams. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -513,7 +513,7 @@ Starts to output preview streams. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -654,7 +654,7 @@ Before enabling this feature, you can call [isBandwidthCompressionSupported](#is
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID   | Error Message                                          |
+| Error Code   | Error Message                                          |
 | -------- |----------------------------------------------- |
 | 7400102  | Operation not allowed. |
 | 7400103  | Session not config. |
@@ -675,11 +675,12 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
   }
 }
 ```
-### addDeferredSurface<sup>24+</sup>
+
+## addDeferredSurface<sup>24+</sup>
 
 addDeferredSurface(surfaceId: string): void
 
-Adds a surface for delayed preview. This API can run after [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) or [Session.start](arkts-apis-camera-Session.md#start11-1) is called.
+Adds a surface for delayed preview. This API can run after [commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) or [start](arkts-apis-camera-Session.md#start11-1) is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -695,7 +696,7 @@ Adds a surface for delayed preview. This API can run after [Session.commitConfig
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 
