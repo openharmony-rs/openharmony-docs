@@ -156,7 +156,7 @@ if (encodeImage) {
         });
 } else {
     console.warn("encodeImage is undefined, skip decodeImage");
-    captrueMetadata = "";
+    captureMetadata = "";
 }
 ```
 
