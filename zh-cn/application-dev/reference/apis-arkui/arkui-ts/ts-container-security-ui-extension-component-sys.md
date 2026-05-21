@@ -430,6 +430,8 @@ offSyncReceiverRegister(callback?: Callback\<SecurityUIExtensionProxy\>): void
 
 本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置Want拉起指定Ability的UIExtensionAbility，通过onRemoteReady获取SecurityUIExtensionProxy，使用send/sendSync发送数据，以及通过onReceive、onError、onTerminated等回调处理事件。
 
+从API版本26.0.0开始，新增[onError](#onerror)事件。
+
 **组件使用方**
 
 ArkTS-Dyn示例：
