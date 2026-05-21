@@ -132,7 +132,7 @@ setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.<br>适用版本：11 - 17             |
+| 7400103                |  Session not config.<br>适用版本：11-17             |
 
 **示例：**
 
