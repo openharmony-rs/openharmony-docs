@@ -699,7 +699,7 @@ let signalInfo: Array<radio.SignalInformation> = radio.getSignalInformationSync(
 console.info(`signal information size is:` + signalInfo.length);
 ```
 
-## radio.isNrSupported<sup>8+(deprecated)</sup>
+## radio.isNrSupported<sup>(deprecated)</sup>
 
 isNrSupported\(\): boolean
 
@@ -763,7 +763,13 @@ isNRSupported\(\): boolean
 
 判断当前设备是否支持NR(New Radio)。
 
+**ArkTS模式**：该接口同时适用于ArkTS-Dyn和ArkTS-Sta。
+
 **系统能力**：SystemCapability.Telephony.CoreService
+
+ **ArkTS-Dyn起始版本：** 9
+ 	 
+ **ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -781,11 +787,17 @@ console.info("Result: "+ result);
 
 ## radio.isNRSupported<sup>9+</sup>
 
-isNRSupported\(slotId: number\): boolean
+**ArkTS-Dyn**: isNRSupported\(slotId: number\): boolean
+
+**ArkTS-Sta**: isNRSupported\(slotId: int\): boolean
 
 判断当前设备是否支持NR(New Radio)。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+ **ArkTS-Dyn起始版本：** 9
+ 	 
+ **ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -801,9 +813,18 @@ isNRSupported\(slotId: number\): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let slotId: number = 0;
 let result: boolean = radio.isNRSupported(slotId);
+console.info("Result: "+ result);
+```
+ArkTS-Sta示例：
+
+```ts
+let slotId: number = 0;
+let result: boolean = radio.isNRSupported(int);
 console.info("Result: "+ result);
 ```
 
