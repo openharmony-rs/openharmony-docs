@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 从API version 12开始废弃，建议使用类型为[XComponent](./js-apis-arkui-frameNode.md#xcomponent12)的typeNode的方式实现。
+> - 从API version 12开始废弃，建议使用类型为[XComponent](./js-apis-arkui-typeNode.md#xcomponent)的typeNode的方式实现。
 >
 > - 本模块接口仅可在Stage模型下使用。
 >
@@ -35,7 +35,7 @@ XComponentNode的构造函数。
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 12开始废弃，建议使用[createNode](./js-apis-arkui-frameNode.md#createnodexcomponent12)替代。
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[createNode](./js-apis-arkui-typeNode.md#createnodexcomponent)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
