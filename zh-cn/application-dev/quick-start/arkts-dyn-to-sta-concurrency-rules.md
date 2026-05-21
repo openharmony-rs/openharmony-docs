@@ -1364,3 +1364,57 @@ function cancelRunningTaskTest() {
   taskpool.cancel(task);
 }
 ```
+
+## taskpool的LongTask不需要调用terminateTask终止
+
+**规则：** `arkts-not-need-terminate-long-task`
+
+**规则解释：**
+
+ArkTS-Sta中taskpool的LongTask基于协程模型实现，任务执行完毕后自动释放资源，不需要调用taskpool.terminateTask来终止LongTask。
+
+**变更原因：**
+
+ArkTS-Dyn中LongTask独占工作线程，需要通过taskpool.terminateTask主动终止并释放线程资源；ArkTS-Sta中LongTask基于协程调度执行，任务结束后资源自动回收，terminateTask为空实现（仅保留API兼容性），无需调用。
+
+**适配建议：**
+
+删除[taskpool.terminateTask](../reference/native-lib/arkts-sta-taskpool.md#taskpoolterminatetask)的调用。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+import { taskpool } from '@kit.ArkTS';
+
+@Concurrent
+function longRunningTask(duration: number): string {
+  let start = Date.now();
+  while ((Date.now() - start) < duration) {
+    continue;
+  }
+  return 'success';
+}
+
+let longTask = new taskpool.LongTask(longRunningTask, 5000);
+taskpool.execute(longTask);
+// 需要终止时调用terminateTask释放线程资源
+taskpool.terminateTask(longTask);
+```
+
+ArkTS-Sta
+
+```typescript
+function longRunningTask(duration: int): string {
+  let start = Date.now();
+  while ((Date.now() - start) < duration) {
+    continue;
+  }
+  return 'success';
+}
+
+// ArkTS-Sta中LongTask不需要调用terminateTask，任务结束后资源自动释放
+let longTask = new taskpool.LongTask(longRunningTask, 5000);
+taskpool.execute(longTask);
+```

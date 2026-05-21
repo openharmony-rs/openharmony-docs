@@ -7,6 +7,7 @@
 ArkTS-Sta内存天然共享，无需使用`@Sendable`装饰器。
 
 文档中涉及到的各种任务概念：
+- 长时间任务：对应为[LongTask](#longtask)任务。
 - 任务组任务：对应为[TaskGroup](#taskgroup)任务。
 - 串行队列任务：对应为[SequenceRunner](#sequencerunner)任务。
 - 异步队列任务：对应为[AsyncRunner](#asyncrunner)任务。
@@ -78,6 +79,7 @@ execute(task: Task, priority?: Priority): Promise\<Any>
 | groupTask cannot execute outside. | 不能执行任务组任务。<br>可能原因：执行的任务是任务组任务。<br>处理步骤：调用时，确保任务不是任务组任务。无法保证时，需捕获异常。 |
 | seqRunnerTask cannot execute outside. | 不能执行串行队列任务。<br>可能原因：执行的任务是串行队列任务。<br>处理步骤：调用时，确保任务不是串行队列任务。无法保证时，需捕获异常。 |
 | executedTask with dependency cannot execute again. | 有依赖关系的已执行任务不能被再次执行。<br>可能原因：执行的任务是有依赖关系的已执行任务。<br>处理步骤：调用时，确保任务不是已执行的任务。无法保证时，需捕获异常。 |
+| The long task can only be executed once. | 长时间任务只能执行一次。<br>可能原因：LongTask已被执行过。<br>处理步骤：确保LongTask未被重复执行。无法保证时，需捕获异常。 |
 | task has been executed. | 任务已被执行。<br>可能原因：该任务已被执行过。<br>处理步骤：执行任务前确保任务未被执行过。无法保证时，需捕获异常。 |
 
 **示例：**
@@ -331,6 +333,7 @@ executeDelayed(delayTime: int, task: Task, priority?: Priority): Promise\<Any>
 | groupTask cannot executeDelayed outside. | 不能延时执行任务组任务。<br>可能原因：执行的任务是任务组任务。<br>处理步骤：调用时，确保任务不是任务组任务。无法保证时，需捕获异常。 |
 | seqRunnerTask cannot executeDelayed outside. | 不能延时执行串行队列任务。<br>可能原因：执行的任务是串行队列任务。<br>处理步骤：调用时，确保任务不是串行队列任务。无法保证时，需捕获异常。 |
 | executedTask with dependency cannot execute again. | 有依赖关系的已执行任务不能再次执行。<br>可能原因：执行的任务是有依赖关系且已执行的。<br>处理步骤：执行任务前确保任务未被执行过。无法保证时，需捕获异常。 |
+| Multiple executions of LongTask are not supported in the executeDelayed. | 延时执行不支持多次执行LongTask。<br>可能原因：LongTask已被执行过。<br>处理步骤：确保LongTask未被重复执行。无法保证时，需捕获异常。 |
 | the periodicTask cannot executeDelayed. | 周期任务不能延时执行。<br>可能原因：该任务是周期任务。<br>处理步骤：执行任务前确保不是周期任务。无法保证时，需捕获异常。 |
 
 **示例：**
@@ -636,6 +639,44 @@ function concurrentFunc() {
 }
 
 concurrentFunc();
+```
+
+## taskpool.terminateTask
+
+terminateTask(longTask: LongTask): void
+
+终止LongTask任务。ArkTS-Sta中LongTask基于协程模型执行，该接口为空实现，仅保留API兼容性，调用后不会产生实际效果。
+
+> **说明：**
+>
+> - ArkTS-Sta中LongTask基于协程调度执行，任务结束后资源自动回收，无需调用此接口终止任务。
+> - 此接口仅为兼容ArkTS-Dyn API而保留，建议不再调用。
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                 |
+| ------- | ----------------------- | ---- | -------------------- |
+| longTask | [LongTask](#longtask) | 是   | 需要终止的LongTask任务。 |
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog';
+
+function longRunningTask(duration: int): string {
+    let start = Date.now();
+    while ((Date.now() - start) < duration) {
+        continue;
+    }
+    return 'success';
+}
+
+let longTask: taskpool.LongTask = new taskpool.LongTask(longRunningTask, 5000);
+taskpool.execute(longTask).then((value: Any) => {
+  hilog.info(0x0000, "testTag", "longTask result: " + value);
+});
+// ArkTS-Sta中无需调用terminateTask，此调用不会产生实际效果
+taskpool.terminateTask(longTask);
 ```
 
 ## taskpool.getTaskPoolInfo
@@ -1362,6 +1403,7 @@ addTask(task: Task): void
 | 错误信息                                     | 说明                                        |
 | ------------------------------------------- | ------------------------------------------- |
 | taskGroup cannot add groupTask. | 任务组不能添加任务组任务。<br>可能原因：添加的任务是任务组任务。<br>处理步骤：添加任务需确保任务不是任务组任务。无法保证时，需捕获异常。 |
+| The interface does not support the long task. | 任务组不支持添加长时间任务。<br>可能原因：添加的任务是LongTask。<br>处理步骤：确保添加的任务不是LongTask。无法保证时，需捕获异常。 |
 | The interface does not support the periodicTask. | 周期任务不能再次执行。<br>可能原因：周期任务已被执行过。<br>处理步骤：执行任务前确保任务未被执行过。无法保证时，需捕获异常。  |
 | taskGroup cannot add seqRunnerTask or executedTask. | 任务组不能添加串行队列任务或已执行任务。<br>可能原因：添加的任务是串行队列任务或已执行任务。<br>处理步骤：确保添加的任务不是串行队列任务或已执行任务。无法保证时，需捕获异常。 |
 | dependent task not allowed. | 不允许有依赖关系的任务。<br>可能原因：添加的任务有依赖关系。<br>处理步骤：确保添加的任务没有依赖关系。无法保证时，需捕获异常。 |
@@ -1387,6 +1429,79 @@ taskGroup.addTask(task);
 | 名称  | 类型   | 只读 | 可选  | 说明                         |
 | ---- | ------ | ---- | ---- | ---------------------------- |
 | name | string | 否   | 否   | 创建任务组时指定的任务组名称。无长度限制和其他格式要求。 |
+
+## LongTask
+
+使用constructor方法构造长时间任务（LongTask）。LongTask仅支持执行一次，不支持添加到任务组、不支持添加到串行队列、不支持添加到异步队列、不支持设置依赖关系、不支持延时执行、不支持周期执行。
+
+> **说明：**
+>
+> - ArkTS-Sta中LongTask基于协程模型执行，任务执行完毕后资源自动释放，无需调用[taskpool.terminateTask](#taskpoolterminatetask)终止任务。
+
+### constructor
+
+constructor(func: Function, ...args: Any[])
+
+LongTask类的构造函数，用于初始化LongTask对象。
+
+**参数：**
+
+| 参数名  | 类型      | 必填 | 说明                                                                  |
+| ------ | --------- | ---- | -------------------------------------------------------------------- |
+| func   | Function  | 是   | 执行的逻辑需要传入函数。     |
+| args   | Any[] | 否   | 任务执行时传入函数的参数。默认值为undefined。|
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog';
+
+function longRunningTask(duration: int): string {
+    let start = Date.now();
+    while ((Date.now() - start) < duration) {
+        continue;
+    }
+    return 'success';
+}
+
+let longTask: taskpool.LongTask = new taskpool.LongTask(longRunningTask, 5000);
+taskpool.execute(longTask).then((value: Any) => {
+  hilog.info(0x0000, "testTag", "longTask result: " + value);
+});
+```
+
+### constructor
+
+constructor(name: string, func: Function, ...args: Any[])
+
+LongTask的构造函数支持指定任务名称。
+
+**参数：**
+
+| 参数名  | 类型          | 必填 | 说明                                           |
+| ------ | ------------- | ---- | --------------------------------------------- |
+| name   | string        | 是   | 任务名称。无长度限制，也无其他格式要求。          |
+| func   | Function      | 是   | 执行的逻辑需要传入函数。     |
+| args   | Any[] | 否   | 任务执行时传入函数的参数。默认值为undefined。 |
+
+**示例：**
+
+```ts
+import hilog from '@ohos.hilog';
+
+function longRunningTask(duration: int): string {
+    let start = Date.now();
+    while ((Date.now() - start) < duration) {
+        continue;
+    }
+    return 'success';
+}
+
+let longTask: taskpool.LongTask = new taskpool.LongTask("MyLongTask", longRunningTask, 5000);
+taskpool.execute(longTask).then((value: Any) => {
+  hilog.info(0x0000, "testTag", "longTask result: " + value);
+});
+```
 
 ## SequenceRunner
 
