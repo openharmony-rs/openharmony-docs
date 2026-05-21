@@ -247,7 +247,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
+通过PhotoAsset对象删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -305,7 +305,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
+通过uri删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -667,7 +667,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 saveCameraPhoto(imageFileType: ImageFileType): void
 
-保存相机拍摄的照片。
+保存相机拍摄的照片。需要指定保存的类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
