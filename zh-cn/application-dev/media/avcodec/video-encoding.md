@@ -51,7 +51,7 @@ AVCodec支持的视频编码格式请参考[视频编码](avcodec-support-format
 6. 释放状态（Released）。
    - 使用完编码器后，必须调用OH_VideoEncoder_Destroy接口销毁编码器实例，使编码器进入Released状态。
 
-**图1** 状态机调用关系图示意图
+**图1** 状态机调用关系示意图
 
 ![Invoking relationship of state](figures/state-invocation.png)
 
