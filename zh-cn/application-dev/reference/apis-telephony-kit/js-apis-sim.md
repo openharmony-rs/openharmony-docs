@@ -113,6 +113,7 @@ console.info(`the sim is active:` + isSimActive);
 
 ArkTS-Dyn: getDefaultVoiceSlotId\(callback: AsyncCallback\<number\>\): void
 
+
 ArkTS-Sta: getDefaultVoiceSlotId\(callback: AsyncCallback\<int\>\): void
 
 获取默认语音业务的卡槽ID。使用callback异步回调。
