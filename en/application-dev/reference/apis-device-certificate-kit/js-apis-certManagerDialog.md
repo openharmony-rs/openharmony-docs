@@ -60,7 +60,7 @@ Defines the usage scope of the certificate to be installed.
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| NOT_SPECIFIED<sup>18+</sup>  | 0      | No user is specified.|
+| NOT_SPECIFIED<sup>18+</sup>  | 0      | The usage scope is not specified.|
 | CURRENT_USER | 1      | The installed certificate is accessible only to the current user.|
 | GLOBAL_USER<sup>18+</sup> | 2      | The installed certificate is accessible to all users.|
 
@@ -137,7 +137,7 @@ Represents the authorization request information of the certificate.
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-Opens the certificate management dialog box and displays the page of the specified type. This API uses a promise to return the result.
+Opens the certificate management dialog box. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -162,7 +162,7 @@ Opens the certificate management dialog box and displays the page of the specifi
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -222,7 +222,7 @@ Opens a dialog box for installing a certificate. This API uses a promise to retu
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -251,7 +251,7 @@ let caCert: Uint8Array = new Uint8Array([
 ]);
 try {
   certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert).then((uri: string) => {
-    console.info('Succeeded opening install certificate');
+    console.info('Succeeded in opening install certificate');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -292,7 +292,7 @@ Opens a dialog box for deleting a certificate. This API uses a promise to return
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -311,13 +311,13 @@ import { UIContext } from '@kit.ArkUI';
 
 /* context is application context information, which is obtained by the caller. The context here is only an example. */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
-/* certificateType specifies the certificate type. The value CA_CERT here indicates a CA certificate. */
+/* certificateType specifies the certificate type. The value CA_CERT indicates a CA certificate is deleted. */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certUri is the unique identifier of the certificate installed. The value here is only an example. */
 let certUri: string = "test";
 try {
   certificateManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri).then(() => {
-    console.info('Succeeded opening uninstall certificate');
+    console.info('Succeeded in opening uninstall certificate');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open uninstall certificate dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -358,7 +358,7 @@ Opens the certificate management dialog box and displays the certificate details
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -384,7 +384,7 @@ let property: certificateManagerDialog.CertificateDialogProperty = {
 };
 try {
   certificateManagerDialog.openCertificateDetailDialog(context, caCert, property).then(() => {
-    console.info('Succeeded opening certificate detail dialog.');
+    console.info('Succeeded in opening certificate detail dialog.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to open certificate detail dialog. Code: ${err.code}, message: ${err.message}`);
   })
@@ -421,7 +421,7 @@ Opens the authorization page of the certificate management dialog box to grant a
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -439,7 +439,7 @@ import { UIContext } from '@kit.ArkUI';
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
     certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-        console.info(`Success to authorize certificate, uri: ${uri}`)
+        console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
     });
@@ -479,7 +479,7 @@ Opens the PIN authentication dialog box of the USB credential. On the displayed 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 801      | Capability not supported.  |
@@ -507,7 +507,7 @@ let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: c
 try {
     certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
       let reference = certReference;
-      console.info(`Success to open authorize dialog.`)
+      console.info(`Succeeded in opening authorize dialog.`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
     });
@@ -547,7 +547,7 @@ Opens the PIN authentication dialog box of the USB credential. On the displayed 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 801      | Capability not supported.  |
@@ -570,7 +570,7 @@ let keyUri: string = "test"
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
 try {
     certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-        console.info(`Success to open ukey authorization dialog`)
+        console.info(`Succeeded in opening ukey authorization dialog`)
     }).catch((err: BusinessError) => {
         console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
     });
