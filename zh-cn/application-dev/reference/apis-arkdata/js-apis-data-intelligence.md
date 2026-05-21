@@ -355,8 +355,8 @@ intelligence.splitText(splitText, splitConfig)
 
 | 名称       | 值         | 说明      |
 |----------|-----------|---------|
-| WIFI_ONLY  | 0 | 仅在wifi状态下下载模型。|
-| WIFI_AND_CELLULAR  | 1 | 在wifi和蜂窝网络状态下下载模型。 |
+| WIFI_ONLY  | 0 | 仅在WiFi状态下下载模型。|
+| WIFI_AND_CELLULAR  | 1 | 在WiFi和蜂窝网络状态下下载模型。 |
 
 ## Image
 
