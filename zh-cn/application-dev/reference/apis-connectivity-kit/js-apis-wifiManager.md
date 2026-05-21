@@ -3600,7 +3600,7 @@ isWlanSupported(): boolean;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true表示Wi-Fi可用，&nbsp;false表示Wi-Fi不可用。 |
+  | boolean | Wi-Fi是否可用。true表示Wi-Fi可用，&nbsp;false表示Wi-Fi不可用。 |
 
 **错误码：**
 
