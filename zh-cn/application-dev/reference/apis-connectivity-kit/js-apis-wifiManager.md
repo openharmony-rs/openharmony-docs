@@ -3588,7 +3588,7 @@ off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 ## wifiManager.isWlanSupported
 
-isWlanSupported(): boolean;
+isWlanSupported(): boolean
 
 查询是否可用Wi-Fi网络。
 
