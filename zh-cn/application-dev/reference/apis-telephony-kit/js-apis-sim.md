@@ -1542,7 +1542,7 @@ sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
 
 ArkTS-Dyn: getSimLabel(slotId: number): Promise<SimLabel>
 
-ArkTS-Sta: getSimLabel(slotId: number): Promise<SimLabel>
+ArkTS-Sta: getSimLabel(slotId: int): Promise<SimLabel>
 
 获取SIM卡的标签信息。使用Promise异步回调。
 
