@@ -913,7 +913,7 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
     if (value?.protocol != undefined) {
             console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
     } else {
-            console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+            console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
     }
   });
 ```
@@ -2890,6 +2890,6 @@ WebSocket连接成功后的详细信息。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| status | number | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为websocket协议。 |
+| status | number | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为WebSocket协议。 |
 | message | string | 否 | 否 | 服务器返回的状态信息。与status字段对应，例如：status=101时，该字段返回"Switching Protocols"。 |
 | protocol | string | 否 | 是 | 服务器返回的协商后的协议。 |
