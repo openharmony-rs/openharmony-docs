@@ -110,7 +110,7 @@ ArkTS-Dyn:
 ```
 
 ArkTS-Sta:
-<!-- @[setMimeType_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[setMimeType_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVPlayer-sta/AVPlayerArkTSURL/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 情况四：通过本地Raw文件中的m3u8文件播放在线流媒体资源
