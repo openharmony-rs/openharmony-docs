@@ -1,8 +1,8 @@
 # notification.h
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -46,4 +46,4 @@ Checks whether the notification of the specified application is enabled.
 
 | Type| Description|
 | -- | -- |
-| bool | **true** - Notification is enabled for the specified application.<br>**false** - Notification is not enabled for the specified application. |
+| bool | **true** - Notification is enabled for the specified application.<br>         **false** - Notification is not enabled for the specified application.|

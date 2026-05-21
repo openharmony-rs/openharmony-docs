@@ -45,7 +45,7 @@ createKeyboardController(): Promise&lt;KeyboardController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
 | 3800001  | Input service exception.  |
 
@@ -103,7 +103,7 @@ createMouseController(): Promise&lt;MouseController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
 | 3800001  | Input service exception.  |
 
@@ -159,7 +159,7 @@ createTouchController(): Promise&lt;TouchController&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 801  | Capability not supported.  |
 | 3800001  | Input service exception.  |
 
@@ -231,9 +231,9 @@ pressKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The key has been pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.  |
+| 4300001  | The key is already pressed and is not the most recently pressed key.  |
 
 **示例：**
 
@@ -302,9 +302,9 @@ releaseKey(keyCode: KeyCode): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The key has not been pressed.  |
+| 4300001  | The key is not pressed.  |
 
 **示例：**
 
@@ -355,7 +355,7 @@ moveTo(displayId: number, displayX: number, displayY: number): Promise&lt;void&g
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
 | 4300002  | The display does not exist.  |
 
@@ -422,9 +422,9 @@ pressButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The mouse button has been pressed.  |
+| 4300001  | The mouse button is already pressed.  |
 
 **示例：**
 
@@ -493,9 +493,9 @@ releaseButton(button: Button): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The mouse button has not been pressed.  |
+| 4300001  | The mouse button is not pressed.  |
 
 **示例：**
 
@@ -536,9 +536,9 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | An axis event is in progress.  |
+| 4300001  | The axis event in progress.  |
 
 **示例：**
 
@@ -612,9 +612,9 @@ updateAxis(axis: Axis, value: number): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | No axis event is in progress.  |
+| 4300001  | The axis event is not in progress.  |
 
 **示例：**
 
@@ -654,9 +654,9 @@ endAxis(axis: Axis): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | No axis event is in progress.  |
+| 4300001  | The axis event is not in progress.  |
 
 **示例：**
 
@@ -718,8 +718,8 @@ touchDown(touch: TouchPoint): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is touching the display; 2. The touch point ID is not within the valid range [0,9]. |
 | 4300002 | The display does not exist. |
 | 3800001 | Input service exception. |
 
@@ -808,8 +808,8 @@ touchMove(touch: TouchPoint): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
 | 3800001 | Input service exception. |
 
 **示例：**
@@ -848,8 +848,8 @@ touchUp(touch: TouchPoint): Promise&lt;void&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0, 9]. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API.  |
+| 4300001 | Invalid input event sequence. Possible causes: 1. The touch point is not touching the display; 2. The touch point ID is not within the valid range [0,9]. |
 | 3800001 | Input service exception. |
 
 **示例：**

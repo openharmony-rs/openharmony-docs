@@ -341,6 +341,20 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 
 **Valid since**: 11
 
+## ohos.permission.THEME_SKIN
+
+Allows a system application to obtain theme skinning resources in the skin directory.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 20
+
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 Allows an application to read the accessibility configuration.
@@ -2724,6 +2738,8 @@ Allows an application to read the pasteboard via silent access.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **Valid since**: 11
 
 ## ohos.permission.SET_CODE_PROTECT_INFO
@@ -3921,6 +3937,8 @@ Allows an application to connect to a telematics device.
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 
@@ -6188,5 +6206,21 @@ With this permission, the application can access and modify the offline map data
 **Certificate-based authorization**: true
 
 **Supported devices**: phones
+
+**Since**: 20
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+Allows a system application to use the credential management feature of the passkey service.
+
+With this permission, the system application can obtain and delete all credentials of the passkey service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20

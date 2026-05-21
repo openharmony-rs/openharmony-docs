@@ -1634,6 +1634,73 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+### setOrientation
+
+setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions): Promise\<void>
+
+Sets the screen orientation. This API uses a promise to return the result.
+
+You can use the **orientationOptions** parameter to specify whether to use an animation during rotation and whether to ignore the rotation lock of the system window.
+
+The screen orientation changes only when the specified orientation complies with the application rotation policy (which can be set using the **orientation** field of **abilities** in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+**Parameters**
+
+| Name     | Type                       | Mandatory| Description      |
+| ----------- | --------------------------- | ---- | ---------- |
+| orientation | [Orientation](#orientation) | Yes  | Screen orientation.|
+| orientationOptions | [OrientationOptions](#orientationoptions) | No| Optional parameters for setting the screen orientation. By default, the screen rotates with an animation and the rotation lock of the system window is not ignored.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+| 1400003 | This display manager service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let orientationOptions : screen.OrientationOptions = {
+  needAnimation: true,
+  ignoreRotationLock: false,
+};
+
+let screenClass: screen.Screen | null = null;
+let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+screensPromise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
+    promise.then(() => {
+      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the vertical orientation with orientationOptions. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code:${err.code}, message is ${err.message}`);
+});
+```
+
 ### setScreenActiveMode
 
 setScreenActiveMode(modeIndex: number, callback: AsyncCallback&lt;void&gt;): void
@@ -1967,3 +2034,20 @@ Describes the rectangle information.
 | top     | number   | No  | No  | Y coordinate of the vertex in the top-left corner of the rectangle, in px. The value must be an integer.|
 | width   | number   | No  | No  | Width of the rectangle, in px. The value must be an integer.            |
 | height  | number   | No  | No  | Height of the rectangle, in px. The value must be an integer.            |
+
+## OrientationOptions
+
+Sets optional parameters for the screen orientation.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
+| Name       | Type| Read-Only| Optional| Description                                              |
+| ----------- | -------- | ---- | ---- | -------------------------------------------------- |
+| needAnimation          | boolean   | No  | Yes  |  Whether to rotate with an animation. The value **true** indicates that the screen rotates with an animation, and **false** indicates the opposite. The default value is **true**.| 
+| ignoreRotationLock     | boolean   | No  | Yes  |  Whether to ignore the rotation lock. The value **true** indicates that the screen rotation is allowed even if some system windows lock the screen rotation. The value **false** indicates that the screen rotation is not allowed when system windows lock the screen rotation. The default value is **false**.<br> **Device behavior differences**: This field takes effect only on PCs/2-in-1 devices (non-foldable PCs) and other devices in desktop mode. For other devices, it does not take effect and no error is reported.|

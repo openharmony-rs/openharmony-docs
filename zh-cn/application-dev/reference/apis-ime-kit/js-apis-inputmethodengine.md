@@ -4907,20 +4907,21 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-| 名称         | 类型 | 只读 | 可选 | 说明               |
-| ------------ | -------- | ---- | ---- | ------------------ |
-| enterKeyType | number   | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。 |
-| inputPattern | number   | 是   | 否   | 编辑框的文本属性，详见[常量中的编辑框定义](#常量)。 |
-| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。 |
-| bundleName<sup>14+</sup> | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。 |
-| immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。 |
-| windowId<sup>18+</sup> | number | 是 | 是 | 编辑框设置所属窗口ID。 |
-| displayId<sup>18+</sup> | number | 是   | 是   | 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。|
-| placeholder<sup>20+</sup> | string | 是 | 是 | 编辑框设置的占位符信息。|
-| abilityName<sup>20+</sup> | string | 是 | 是 | 编辑框设置的ability名称。|
-| capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
-| gradientMode<sup>20+</sup> | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。|
-| extraConfig<sup>22+</sup> | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。|
+| 名称                                   | 类型 | 只读 | 可选 | 说明                                                                                                                              |
+|--------------------------------------| -------- | ---- | ---- |---------------------------------------------------------------------------------------------------------------------------------|
+| enterKeyType                         | number   | 是   | 否   | 编辑框的功能属性，详见[常量中的功能键定义](#常量)。                                                                                                    |
+| inputPattern                         | number   | 是   | 否   | 编辑框的文本属性，详见[常量中的编辑框定义](#常量)。                                                                                                    |
+| isTextPreviewSupported<sup>12+</sup> | boolean | 否 | 否 | 编辑框是否支持预上屏。<br/>- 值为true，表示支持。<br/>- 值为false，表示不支持。                                                                             |
+| bundleName<sup>14+</sup>             | string | 是 | 是 | 编辑框所属应用包名；该值可能为""，使用该属性时需要考虑为""的场景。                                                                                             |
+| immersiveMode<sup>15+</sup>          | [ImmersiveMode](#immersivemode15) | 是   | 是   | 输入法沉浸模式。                                                                                                                        |
+| windowId<sup>18+</sup>               | number | 是 | 是 | 编辑框设置所属窗口ID。                                                                                                                    |
+| displayId<sup>18+</sup>              | number | 是   | 是   | 编辑框设置窗口对应的屏幕ID。如果没有设置windowId，取当前焦点窗口屏幕ID。                                                                                      |
+| placeholder<sup>20+</sup>            | string | 是 | 是 | 编辑框设置的占位符信息。                                                                                                                    |
+| abilityName<sup>20+</sup>            | string | 是 | 是 | 编辑框设置的ability名称。                                                                                                                |
+| capitalizeMode<sup>20+</sup>         | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。                                                                                         |
+| gradientMode<sup>20+</sup>           | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。                                                                                                    |
+| extraConfig<sup>22+</sup>            | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。                                                                                                                        |
+| consumeKeyEvents      | boolean   | 是   | 是   | 编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>**起始版本：** 26.0.0。 <br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 
 ## KeyEvent
 

@@ -94,7 +94,7 @@ Allows an application to modify the audio files in a user directory.
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-Allows an application to access the images/videos in a user directory.
+Allows an application to read image or video files from users' local public directories.
 
 <!--RP27--><!--RP27End-->
 
@@ -103,6 +103,8 @@ Allows an application to access the images/videos in a user directory.
 **Authorization mode**: user_grant
 
 **Since**: 9
+
+**Changelog**: In API versions 9 to 24, this permission allows an application to access images or videos stored on the cloud or locally. From API version 26.0.0, this permission allows an application to read only images or videos in users' local public directories.
 
 ## ohos.permission.WRITE_IMAGEVIDEO
 
@@ -195,6 +197,8 @@ Allows an application to read **Pasteboard** data.
 **Permission level**: system_basic
 
 **Authorization mode**: user_grant
+
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **Since**: 11
 
@@ -363,6 +367,8 @@ Allows an application to set or remove the pasteable range of pasteboard data.
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **Since**: 14
 
