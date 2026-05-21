@@ -1,12 +1,12 @@
 # ArkTS
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025; @xliu-huanwei-->
-<!--Designer: @weng-changcheng; @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
-- ArkTS APIs<!--arkts-arkts--> 
+- ArkTS APIs<!--arkts-arkts-->
   - @arkts.collections (ArkTS Collections)<!--js-apis-arkts-collections-->
     - [Module Description](arkts-apis-arkts-collections.md)
     - [Class (Array)](arkts-apis-arkts-collections-Array.md)
@@ -60,7 +60,7 @@
   - [@ohos.worker (Starting the Worker) (System API)](js-apis-worker-sys.md)
   <!--DelEnd-->
   - [@ohos.xml (XML Parsing and Generation)](js-apis-xml.md)
-  - APIs No Longer Maintained<!--arkts-arkts-dep--> 
+  - APIs No Longer Maintained<!--arkts-arkts-dep-->
     - [@ohos.util.Vector (Linear Container Vector)](js-apis-vector.md)
 - Error Codes<!--arkts-arkts-errcode-->
   - [Utils Error Codes](errorcode-utils.md)
