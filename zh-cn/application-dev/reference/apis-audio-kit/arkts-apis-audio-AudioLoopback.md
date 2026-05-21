@@ -218,7 +218,7 @@ getSupportedDevicePairs(): Array<AudioDevicePair\>
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Array<[AudioDevicePair](arkts-apis-audio-i.md#audiodevicepair)\> | 返回支持返听的音频输入输出设备数组。<br>如果没有可用输入输出设备组合，则返回空数组。 |
+| Array<[AudioDevicePair](arkts-apis-audio-i.md#audiodevicepair)\> | 返回支持返听的音频输入输出设备数组。<br>如果没有可用的输入输出设备组合，则返回空数组。 |
 
 **示例：**
 
@@ -245,7 +245,7 @@ getPreferredDevicePair(): AudioDevicePair | null
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| [AudioDevicePair](arkts-apis-audio-i.md#audiodevicepair) \| null | 返回系统推荐的音频输入输出设备组合。<br>如果没有可用输入输出设备组合，则返回null。 |
+| [AudioDevicePair](arkts-apis-audio-i.md#audiodevicepair) \| null | 返回系统推荐的音频输入输出设备组合。<br>如果没有可用的输入输出设备组合，则返回null。 |
 
 **示例：**
 
