@@ -1,10 +1,4 @@
 # Data Protection Kit（数据保护服务）
-Data Protection Kit 提供数据防泄漏和敏感内容识别能力，帮助开发者保护应用中的敏感数据安全。 
-**主要功能**： 
-- 数据防泄漏：防止敏感数据被未授权访问和泄露 
-- 敏感内容识别：自动识别文档中的敏感信息 
-**适用场景**： 
-- 企业办公应用中的文档保护
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
