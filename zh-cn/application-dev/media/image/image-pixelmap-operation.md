@@ -130,9 +130,9 @@
    const regionWidth: int = 200;
    const regionHeight: int = 100;
    const area: image.PositionArea = {
-     pixels: new ArrayBuffer(regionWidth * regionHeight * 4), // BGRA_8888格式的每个像素占4字节
+     pixels: new ArrayBuffer(regionWidth * regionHeight * 4), // BGRA_8888格式的每个像素占4字节。
      offset: 0,
-     stride: regionWidth * 4, // 指定区域的行跨距
+     stride: regionWidth * 4, // 指定区域的行跨距。
      region: {
        x: 0,
        y: 0,
