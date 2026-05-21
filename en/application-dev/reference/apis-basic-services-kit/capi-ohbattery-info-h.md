@@ -33,7 +33,7 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 | Name| Description|
 | -- | -- |
-| [int32_t OH_BatteryInfo_GetCapacity()](#oh_batteryinfo_getcapacity) | Obtains the current battery capacity.|
+| [int32_t OH_BatteryInfo_GetCapacity()](#oh_batteryinfo_getcapacity) | Obtains the current battery capacity in percent.|
 | [BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()](#oh_batteryinfo_getpluggedtype) | Obtains the battery plugged type.|
 
 ### Variables
@@ -64,7 +64,7 @@ Enumerates the battery plugged types.
 | PLUGGED_TYPE_AC = 1 | AC charging.|
 | PLUGGED_TYPE_USB = 2 | USB DC charging.|
 | PLUGGED_TYPE_WIRELESS = 3 | Wireless charging.|
-| PLUGGED_TYPE_BUTT = 4 | Reserved.|
+| PLUGGED_TYPE_BUTT = 4 | Unknown type.|
 
 
 ## Function Description
@@ -77,7 +77,7 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 **Description**
 
-Obtains the current battery capacity, in percentage.
+Obtains the current battery capacity in percent.
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
