@@ -210,10 +210,85 @@ AudioLoopback是音频返听器，可将音频以更低时延的方式实时传�
     > 若未设置均衡器类型，查询得到将是默认均衡器类型[FULL](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioloopbackequalizerpreset21)。
 
     <!-- @[get_EqualizerPreset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+    ``` TypeScript
+    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
+    // ...
+        try {
+          let equalizerPreset = audioLoopback.getEqualizerPreset();
+        } catch (err) {
+          console.error(`getEqualizerPreset:ERROR: ${err}`);
+          // ...
+        }
+    ```
 
 11. 调用[enable](../../reference/apis-audio-kit/arkts-apis-audio-AudioLoopback.md#enable20)方法，启用或禁用音频返听功能。
 
     <!-- @[enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets) -->
+   
+    ``` TypeScript
+    import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
+    // ...
+    // 设置监听事件，启用音频返听。
+    async function enable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+      if (audioLoopback !== undefined) {
+        try {
+          let status = await audioLoopback.getStatus();
+          if (status == audio.AudioLoopbackStatus.AVAILABLE_IDLE) {
+            // 注册监听。
+            audioLoopback.on('statusChange', statusChangeCallback);
+            // 启动返听。
+            let success = await audioLoopback.enable(true);
+            if (success) {
+              console.info('Invoke enable succeeded');
+              // ...
+            } else {
+              status = await audioLoopback.getStatus();
+              statusChangeCallback(status);
+            }
+          } else {
+            statusChangeCallback(status);
+          }
+        } catch (err) {
+          console.error(`Invoke enable failed, code is ${err.code}, message is ${err.message}.`);
+          // ...
+        }
+      } else {
+        console.error('Audio loopback not created.');
+        // ...
+      }
+    }
+    
+    // 禁用音频返听，关闭监听事件。
+    async function disable(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+      if (audioLoopback !== undefined) {
+        try {
+          let status = await audioLoopback.getStatus();
+          if (status == audio.AudioLoopbackStatus.AVAILABLE_RUNNING) {
+            // 禁用返听。
+             let success = await audioLoopback.enable(false);
+            if (success) {
+              console.info('Invoke disable succeeded');
+              // ...
+              // 关闭监听。
+              audioLoopback.off('statusChange', statusChangeCallback);
+            } else {
+              status = await audioLoopback.getStatus();
+              statusChangeCallback(status);
+            }
+          } else {
+            statusChangeCallback(status);
+          }
+        } catch (err) {
+          console.error(`Invoke disable failed, code is ${err.code}, message is ${err.message}.`);
+          // ...
+        }
+      } else {
+        console.error('Audio loopback not created.');
+        // ...
+      }
+    }
+    ```
 
 ### 完整示例
 
