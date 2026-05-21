@@ -68,6 +68,8 @@ ChipGroup({
 
 **装饰器类型：** [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
+### 属性
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -97,6 +99,22 @@ ChipGroup({
 >
 > 3. 图标填充色（`fillColor`和`activedFillColor`）的设置应与字体颜色（`fontColor`）保持一致。如果需要设置不同的颜色，可以在传入`[ChipGroupSpaceOptions](#chipgroupspaceoptions)`时使用`prefixSymbol`。
 
+### build<sup>23+</sup>
+
+build(): void
+
+build函数用于构造ChipGroup高级组件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**装饰器类型：** [\@Builder](../../../ui/state-management/arkts-builder.md)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Sta起始版本：** 23
+
 ## ChipGroupItemOptions
 
 ChipGroupItemOptions定义每个Chip的非通用属性。
@@ -109,7 +127,7 @@ ChipGroupItemOptions定义每个Chip的非通用属性。
 | ----------   | ----------------------------- | ---- | ----------------------------------- | ----------------------------------- |
 | prefixIcon   | [IconOptions](#iconoptions)   | 否  | 是  | 前缀Image图标属性。<br>默认值：没有前缀Image图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 | prefixSymbol | [ChipSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsymbolglyphoptions12) | 否  | 是  | 前缀SymbolGlyph图标属性。<br>默认值：没有前缀SymbolGlyph图标。<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| label        | [LabelOptions](#labeloptions) | 否  | 否  | 文本属性。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23                           |
+| label        | ArkTS-Dyn: [LabelOptions](#labeloptions) <br/> ArkTS-Sta: [ChipItemLabelOptions](#chipitemlabeloptions23) | 否  | 否  | 文本属性。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23                           |
 | suffixIcon<sup>(deprecated)</sup>   | [IconOptions](#iconoptions) | 否  | 是 | 后缀Image图标属性。<br/>默认值：不显示后缀Image图标。<br>值为undefined时，按默认值处理。<br/> **说明：** 从API version 12开始支持，从API version 14开始废弃，建议使用suffixImageIcon替代。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>  **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br/> **ArkTS-Dyn起始版本：** 12 <br/>|
 | suffixSymbol | [ChipSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsymbolglyphoptions12) | 否  | 是 | 后缀SymbolGlyph图标属性。<br>默认值：不显示后缀SymbolGlyph图标。<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 | allowClose   | boolean                       | 否  | 是  | 删除图标是否显示。<br/>false表示删除图标不显示，true表示删除图标显示。<br/>默认值：false <br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
@@ -242,6 +260,8 @@ IconGroupSuffix({items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItem
 
 **装饰器类型：**@Component
 
+### 属性
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -260,6 +280,22 @@ IconGroupSuffix({items: Array<IconItemOptions | SymbolGlyphModifier | SymbolItem
 >
 > 传参SymbolGlyphModifier时，不支持使用symbolEffect修改动效类型和[effectStrategy](./ts-basic-components-symbolGlyph.md#effectstrategy)设置动效。
 >
+
+### build<sup>23+</sup>
+
+build(): void
+
+build函数用于构造ChipGroup高级组件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**装饰器类型：** [\@Builder](../../../ui/state-management/arkts-builder.md)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Sta起始版本：** 23
 
 ## IconItemOptions
 
@@ -304,9 +340,9 @@ Label定义图标属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 12
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 

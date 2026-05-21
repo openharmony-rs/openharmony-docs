@@ -304,8 +304,7 @@ isControlSupported(mechDeviceType?: MechDeviceType): boolean
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| true | 当前设备支持某类设备的具身控制。 |
-| false | 当前设备不支持某类设备的具身控制。 |
+| boolean | 当前设备是否支持某类设备的具身控制。true表示支持，false表示不支持。 |
 
 **示例：**
 

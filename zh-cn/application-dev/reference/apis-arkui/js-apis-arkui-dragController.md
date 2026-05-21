@@ -1609,10 +1609,10 @@ animate(options: AnimationOptions, handler: () => void): void
 
 | 名称                 | 类型   |只读| 可选 | 说明                                   |
 | --------------------- | ------ | ---- | --- | ---------------------------------------------------- |
-| stillTimeLimit         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |进入悬停检测BEGIN状态所需保持静止的时间（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值500。 |
-| updateInterval         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的时间间隔（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。|
+| stillTimeLimit         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |进入悬停检测BEGIN状态所需保持静止的时间，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值500。 |
+| updateInterval         | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的时间间隔，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。|
 | updateNotifyCount      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |进入悬停检测UPDATE状态后，更新通知的最大次数。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值3。|
-| updateToFinishInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |从UPDATE状态到END状态的最长等待时间（ms）。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。 |
+| updateToFinishInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   |    是   |从UPDATE状态到END状态的最长等待时间，单位：ms。取值范围为[0, 2<sup>31</sup>-1]的整数。输入浮点数时只取整数部分。输入非法值（负数、null、undefined、NaN）时取默认值100。 |
 
 ## SpringLoadingDragInfos<sup>20+</sup>
 
