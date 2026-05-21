@@ -1,9 +1,9 @@
 # Class (Router)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Provides APIs to access pages through URLs. You can use the APIs to navigate to a specified page in an application, replace the current page with another one in the same application, and return to the previous page or a specified page.
@@ -452,7 +452,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -605,7 +605,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -762,7 +762,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -921,7 +921,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1078,7 +1078,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1232,7 +1232,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
