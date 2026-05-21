@@ -292,11 +292,14 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
+| 12000017 | the key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
 | 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
 | 12000020 | the provider operation failed. |
-| 12000024 | the provider or Ukey is busy. |
+| 12000021 | the UKey PIN is locked. |
+| 12000023 | the UKey PIN not authenticated. |
+| 12000024 | the provider or UKey is busy. |
+| 12000026 | the secure element is not available. |
 
 **示例：**
 
@@ -650,7 +653,7 @@ importKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
+| 12000017 | the key with same alias is already exist. |
 | 12000018 | the group id specified by the access group tag is invalid. |
 
 **示例：**
@@ -1676,7 +1679,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000014 | memory is insufficient. |
 | 12000018 | the group id specified by the access group tag is invalid. |
 | 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
+| 12000024 | the provider or Ukey is busy. |
 | 12000026 | the secure element is not available. |
 
 **示例：**
@@ -3271,8 +3274,8 @@ async function testListAliases() {
 | HUKS_ERR_CODE_PIN_NO_AUTH<sup>22+</sup>  | 12000023 | Ukey PIN码未认证。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.CryptoExtension    |
 | HUKS_ERR_CODE_BUSY<sup>22+</sup>  | 12000024 | 设备或资源繁忙。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
 | HUKS_ERR_CODE_EXCEED_LIMIT<sup>22+</sup>  | 12000025 | 资源超过限制。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
-| HUKS_ERR_CODE_SE_FAULT<sup>26+</sup>  | 12000026 | 安全元件故障。<br>**起始版本：** 26.0.0。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
-| HUKS_ERR_CODE_NETWORK_UNAVAILABLE<sup>26+</sup>  | 12000027 | 网络不可用。<br>**起始版本：** 26.0.0。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Extension    |
+| HUKS_ERR_CODE_SE_FAULT  | 12000026 | 安全元件故障。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Security.Huks.Core    |
+| HUKS_ERR_CODE_NETWORK_UNAVAILABLE  | 12000027 | 网络不可用。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Security.Huks.Extension    |
 
 
 ## HuksKeyPurpose
