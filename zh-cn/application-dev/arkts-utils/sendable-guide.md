@@ -18,6 +18,73 @@ Sendable对象在不同并发实例间默认采用引用传递，这种方式比
 **示例：**
 <!-- @[across_concurrent_instance_transfer_large_data ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+import { taskpool } from '@kit.ArkTS';
+import { TestTypeA, TestTypeB, Test } from './sendable';
+import { BusinessError, emitter } from '@kit.BasicServicesKit';
+
+// 在并发函数中模拟数据处理
+@Concurrent
+async function taskFunc(obj: Test) {
+  console.info('test task res1 is: ' + obj.data1.name + ' res2 is: ' + obj.data2.name);
+}
+
+async function test() {
+  // 使用taskpool传递数据
+  let a: TestTypeA = new TestTypeA('testTypeA');
+  let b: TestTypeB = new TestTypeB('testTypeB');
+  let obj: Test = new Test(a, b);
+  let task: taskpool.Task = new taskpool.Task(taskFunc, obj);
+  await taskpool.execute(task);
+}
+
+@Concurrent
+function sensorListener() {
+  // 监听逻辑
+  // ...
+  console.info('Monitoring logic');
+}
+
+@Entry
+@Component
+struct Index {
+  @State listenerTask: string = 'Listener task';
+  @State dataProcessingTask: string = 'Data processing task';
+
+  build() {
+    Column() {
+      Text(this.listenerTask)
+        .id('Listener task')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          let sensorTask = new taskpool.LongTask(sensorListener);
+          emitter.on({ eventId: 0 }, (data) => {
+            // Do something here
+            console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}`);
+          });
+          taskpool.execute(sensorTask).then(() => {
+            console.info('Add listener of ACCELEROMETER success');
+          }).catch((e: BusinessError) => {
+            // Process error
+          })
+          this.listenerTask = 'success';
+        })
+      Text(this.dataProcessingTask)
+        .id('Data processing task')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          test();
+          this.dataProcessingTask = 'success';
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 
 <!-- @[across_concurrent_instance_transfer_large_data ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/sendable.ets) --> 
 
