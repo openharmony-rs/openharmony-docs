@@ -8,7 +8,7 @@
 
 Aperture继承自[ApertureQuery](arkts-apis-camera-ApertureQuery.md)。
 
-物理光圈对象。
+物理光圈对象。11
 
 > **说明：**
 >
