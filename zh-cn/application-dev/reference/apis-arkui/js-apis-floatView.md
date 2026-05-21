@@ -54,6 +54,8 @@ isFloatViewEnabled(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**返回值：**
+
 | 类型 | 说明 |
 |------------|------------|
 | boolean  | 当前设备是否支持标准悬浮窗功能。true表示支持，false则表示不支持。 |
@@ -173,19 +175,22 @@ bind(floatViewController: FloatViewController, floatingBallController: floatingB
 | 201 | Permission verification failed. Possible cause: The application does not have the permission required to call the API. |
 | 801 | Capability not supported on this device. Possible cause: Call api on unsupported device. |
 | 1300019 | Wrong parameters for operating the floating ball. Possible cause: Invalid floating ball params. |
-| 1300025 | The floatingBall state does not support this operation. Possible cause: 1.The floating ball has started but not stopped yet. 2.The floating ball controller has been bound. |
-| 1300031 | The floatView state does not support this operation. Possible cause: 1.The float view has started but not stopped yet. 2.The float view controller has been bound. |
+| 1300025 | The floating ball state does not support this operation. Possible cause: 1. The floating ball has started but not stopped yet. 2. The floating ball controller has been bound. |
+| 1300031 | The floatView state does not support this operation. Possible cause: 1. The float view has started but not stopped yet. 2. The float view controller has been bound. |
 
 **示例：**
 
 ```ts
+// Entry.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatingBall } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
   private floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
-  // 创建闪控球控制器
+  private floatViewController: floatView.FloatViewController | undefined = undefined;
+  // 创建控制器
   // ...
   public bindController(): void {
     let floatingBallParams: floatingBall.FloatingBallParams = {
@@ -241,17 +246,23 @@ unbind(floatViewController: FloatViewController, floatingBallController: floatin
 | 错误码ID | 错误信息 |
 |------------|------------|
 | 801 | Capability not supported on this device. Possible cause: Call api on unsupported device. |
-| 1300025 | The floating ball state does not support this operation. Possible cause: 1.The floating ball has started but not stopped yet. 2.The floatingBallController has not been bound. |
-| 1300031 | The floatView state does not support this operation. Possible cause: 1.The float view has started but not stopped yet. 2.The floatViewController has not been bound. 3.The floatViewController and the floatingBallController are not bound together. |
+| 1300025 | The floating ball state does not support this operation. Possible cause: 1. The floating ball has started but not stopped yet. 2. The floatingBallController has not been bound. |
+| 1300031 | The floatView state does not support this operation. Possible cause: 1. The float view has started but not stopped yet. 2. The floatViewController has not been bound. 3. The floatViewController and the floatingBallController are not bound together. |
 
 **示例：**
 
 ```ts
+// Entry.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { floatingBall } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
+  private floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
+  private floatViewController: floatView.FloatViewController | undefined = undefined;
+  // 创建控制器
+  // ...
   public unbindController(): void {
     try {
       // 使用绑定时传入的标准悬浮窗和闪控球控制器
@@ -388,20 +399,14 @@ setUIContext(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  public setUIContext(): void {
-    try {
-      this.floatViewController?.setUIContext('pages/Index').then(() => {
-        console.info('Succeeded in setting UI context.');
-      }).catch((err: BusinessError): void => {
-        console.error(`Failed to set UI context. Cause:${err.code}, message:${err.message}`);
-      });
-    } catch(e) {
-      console.error(`Failed to set UI context. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+try {
+  this.floatViewController?.setUIContext('pages/Index').then(() => {
+    console.info('Succeeded in setting UI context.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to set UI context. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e) {
+  console.error(`Failed to set UI context. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -443,26 +448,20 @@ setWindowSize(size: window.Size): Promise&lt;void&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
-@Entry
-@Component
-struct Index {
-  public setWindowSize(): void {
-    let size: window.Size = {
-      width: 400,
-      height: 600
-    };
-
-    try {
-      this.floatViewController?.setWindowSize(size).then(() => {
-        console.info('Succeeded in setting window size.');
-      }).catch((err: BusinessError): void => {
-        console.error(`Failed to set window size. Cause:${err.code}, message:${err.message}`);
-      });
-    } catch(e) {
-      console.error(`Failed to set window size. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let size: window.Size = {
+  width: 400,
+  height: 600
+};
+try {
+  this.floatViewController?.setWindowSize(size).then(() => {
+    console.info('Succeeded in setting window size.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to set window size. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e) {
+  console.error(`Failed to set window size. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -504,29 +503,24 @@ switchTemplate(templateProperty: TemplateProperty): Promise&lt;void&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
-@Entry
-@Component
-struct Index {
-  public switchTemplate(): void {
-    let newSize: window.Size = {
-      width: 800,
-      height: 100
-    };
-    let templateProperty: floatView.TemplateProperty = {
-      templateType: floatView.FloatViewTemplateType.HORIZONTAL_BAR,
-      size: newSize,
-    }
-    try {
-      this.floatViewController?.switchTemplate(templateProperty).then(() => {
-        console.info('Succeeded in switching window type and size.');
-      }).catch((err: BusinessError): void => {
-        console.error(`Failed to switch window type and size. Cause:${err.code}, message:${err.message}`);
-      });
-    } catch(e) {
-      console.error(`Failed to switch window type and size. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let newSize: window.Size = {
+  width: 800,
+  height: 100
+};
+let templateProperty: floatView.TemplateProperty = {
+  templateType: floatView.FloatViewTemplateType.HORIZONTAL_BAR,
+  size: newSize,
+}
+try {
+  this.floatViewController?.switchTemplate(templateProperty).then(() => {
+    console.info('Succeeded in switching window type and size.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to switch window type and size. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e) {
+  console.error(`Failed to switch window type and size. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -556,7 +550,7 @@ start(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 |------------|------------|
-| 201 | Permission verification failed, usually returned by VerifyAccessToken. |
+| 201 | Permission verification failed. Possible cause: The application does not have the permission required to call the API. |
 | 1300002 | This window state is abnormal. Possible cause: The float view controller object is null. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
 | 1300030 | Repeated operations on the float view. Possible cause: The float view is starting or has already started. |
@@ -569,20 +563,14 @@ start(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  public startFloatView(): void {
-    try {
-      this.floatViewController?.start().then(() => {
-        console.info('Succeeded in starting float view.');
-      }).catch((err: BusinessError): void => {
-        console.error(`Failed to start float view. Cause:${err.code}, message:${err.message}`);
-      });
-    } catch(e) {
-      console.error(`Failed to start float view. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+try {
+  this.floatViewController?.start().then(() => {
+    console.info('Succeeded in starting float view.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to start float view. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e) {
+  console.error(`Failed to start float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -620,20 +608,14 @@ stop(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  public stopFloatView(): void {
-    try {
-      this.floatViewController?.stop().then(() => {
-        console.info('Succeeded in stopping float view.');
-      }).catch((err: BusinessError): void => {
-        console.error(`Failed to stop float view. Cause:${err.code}, message:${err.message}`);
-      });
-    } catch(e) {
-      console.error(`Failed to stop float view. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+try {
+  this.floatViewController?.stop().then(() => {
+    console.info('Succeeded in stopping float view.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to stop float view. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e) {
+  console.error(`Failed to stop float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -677,20 +659,14 @@ setFloatViewVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  public setFloatViewVisibility(): void {
-    try {
-      this.floatViewController?.setFloatViewVisibilityInApp(true).then(() => {
-        console.info('Succeeded in setting float view visibility in app.');
-      }).catch((err: BusinessError): void => {
-        console.error(`Failed to set float view visibility in app. Cause:${err.code}, message:${err.message}`);
-      });
-    } catch(e) {
-      console.error(`Failed to set float view visibility in app. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+try {
+  this.floatViewController?.setFloatViewVisibilityInApp(true).then(() => {
+    console.info('Succeeded in setting float view visibility in app.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to set float view visibility in app. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e) {
+  console.error(`Failed to set float view visibility in app. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -734,24 +710,18 @@ restoreMainWindow(wantParameters?: Record&lt;string, Object&gt;): Promise&lt;voi
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry
-@Component
-struct Index {
-  public restoreMainWindow(): void {
-    let param: Record<string, Object> = {
-      "info": "helloworld",
-    };
-    // 标准悬浮窗状态需是STARTED
-    try {
-      this.floatViewController?.restoreMainWindow(param).then(() => {
-        console.info('Succeeded in restoring main window.');
-      }).catch((err: BusinessError): void => {
-        console.error(`Failed to restore main window. Cause:${err.code}, message:${err.message}`);
-      });
-    } catch(e) {
-      console.error(`Failed to restore main window. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let param: Record<string, Object> = {
+  "info": "helloworld",
+};
+// 标准悬浮窗状态需是STARTED
+try {
+  this.floatViewController?.restoreMainWindow(param).then(() => {
+    console.info('Succeeded in restoring main window.');
+  }).catch((err: BusinessError): void => {
+    console.error(`Failed to restore main window. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e) {
+  console.error(`Failed to restore main window. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -785,17 +755,11 @@ getWindowProperties(): FloatViewProperties
 **示例：**
 
 ```ts
-@Entry
-@Component
-struct Index {
-  public getFloatViewWindowProperties(): void {
-    try {
-      let properties: floatView.FloatViewProperties | undefined = this.floatViewController?.getWindowProperties();
-      console.info('Float view properties: ' + JSON.stringify(properties));
-    } catch(e) {
-      console.error(`Failed to get window properties. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+try {
+  let properties: floatView.FloatViewProperties | undefined = this.floatViewController?.getWindowProperties();
+  console.info('Float view properties: ' + JSON.stringify(properties));
+} catch(e) {
+  console.error(`Failed to get window properties. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -829,19 +793,13 @@ onStateChange(callback: Callback&lt;FloatViewStateChangeInfo&gt;): void
 **示例：**
 
 ```ts
-@Entry
-@Component
-struct Index {
-  public onStateChange(): void {
-    let onStateChange = (info: floatView.FloatViewStateChangeInfo) => {
-      console.info('Float view stateChange: ' + JSON.stringify(info));
-    };
-    try {
-      this.floatViewController?.onStateChange(onStateChange);
-    } catch(e) {
-      console.error(`Failed to on stateChange float view. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let onStateChange = (info: floatView.FloatViewStateChangeInfo) => {
+  console.info('Float view stateChange: ' + JSON.stringify(info));
+};
+try {
+  this.floatViewController?.onStateChange(onStateChange);
+} catch(e) {
+  console.error(`Failed to on stateChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -874,19 +832,13 @@ offStateChange(callback?: Callback&lt;FloatViewStateChangeInfo&gt;): void
 **示例：**
 
 ```ts
-@Entry
-@Component
-struct Index {
-  public offStateChange(): void {
-    let onStateChange = (info: floatView.FloatViewStateChangeInfo) => {
-      console.info('Float view stateChange: ' + JSON.stringify(info));
-    };
-    try {
-      this.floatViewController?.offStateChange(onStateChange);
-    } catch(e) {
-      console.error(`Failed to off stateChange float view. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let onStateChange = (info: floatView.FloatViewStateChangeInfo) => {
+  console.info('Float view stateChange: ' + JSON.stringify(info));
+};
+try {
+  this.floatViewController?.offStateChange(onStateChange);
+} catch(e) {
+  console.error(`Failed to off stateChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -920,19 +872,13 @@ onRectChange(callback: Callback&lt;FloatViewRectChangeInfo&gt;): void
 **示例：**
 
 ```ts
-@Entry
-@Component
-struct Index {
-  public onRectChange(): void {
-    let onRectChange = (info: floatView.FloatViewRectChangeInfo) => {
-      console.info('Float view rectChange: ' + JSON.stringify(info));
-    };
-    try {
-      this.floatViewController?.onRectChange(onRectChange);
-    } catch(e) {
-      console.error(`Failed to on rectChange float view. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let onRectChange = (info: floatView.FloatViewRectChangeInfo) => {
+  console.info('Float view rectChange: ' + JSON.stringify(info));
+};
+try {
+  this.floatViewController?.onRectChange(onRectChange);
+} catch(e) {
+  console.error(`Failed to on rectChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -965,19 +911,13 @@ offRectChange(callback?: Callback&lt;FloatViewRectChangeInfo&gt;): void
 **示例：**
 
 ```ts
-@Entry
-@Component
-struct Index {
-  public offRectChange(): void {
-    let onRectChange = (info: floatView.FloatViewRectChangeInfo) => {
-      console.info('Float view rectChange: ' + JSON.stringify(info));
-    };
-    try {
-      this.floatViewController?.offRectChange(onRectChange);
-    } catch(e) {
-      console.error(`Failed to off rectChange float view. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let onRectChange = (info: floatView.FloatViewRectChangeInfo) => {
+  console.info('Float view rectChange: ' + JSON.stringify(info));
+};
+try {
+  this.floatViewController?.offRectChange(onRectChange);
+} catch(e) {
+  console.error(`Failed to off rectChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -1011,19 +951,13 @@ onLimitsChange(callback: Callback&lt;FloatViewLimits&gt;): void
 **示例：**
 
 ```ts
-@Entry
-@Component
-struct Index {
-  public onLimitsChange(): void {
-    let onLimitsChange = (limits: floatView.FloatViewLimits) => {
-      console.info('Float view limitsChange: ' + JSON.stringify(limits));
-    };
-    try {
-      this.floatViewController?.onLimitsChange(onLimitsChange);
-    } catch(e) {
-      console.error(`Failed to on limitsChange float view. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let onLimitsChange = (limits: floatView.FloatViewLimits) => {
+  console.info('Float view limitsChange: ' + JSON.stringify(limits));
+};
+try {
+  this.floatViewController?.onLimitsChange(onLimitsChange);
+} catch(e) {
+  console.error(`Failed to on limitsChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -1056,19 +990,13 @@ offLimitsChange(callback?: Callback&lt;FloatViewLimits&gt;): void
 **示例：**
 
 ```ts
-@Entry
-@Component
-struct Index {
-  public offLimitsChange(): void {
-    let onLimitsChange = (limits: floatView.FloatViewLimits) => {
-      console.info('Float view limitsChange: ' + JSON.stringify(limits));
-    };
-    try {
-      this.floatViewController?.offLimitsChange(onLimitsChange);
-    } catch(e) {
-      console.error(`Failed to off limitsChange float view. Cause:${e.code}, message:${e.message}`);
-    }
-  }
+let onLimitsChange = (limits: floatView.FloatViewLimits) => {
+  console.info('Float view limitsChange: ' + JSON.stringify(limits));
+};
+try {
+  this.floatViewController?.offLimitsChange(onLimitsChange);
+} catch(e) {
+  console.error(`Failed to off limitsChange float view. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
