@@ -304,6 +304,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable | SmartLock
+
 **起始版本**：11
 
 ## ohos.permission.STORE_PERSISTENT_DATA
