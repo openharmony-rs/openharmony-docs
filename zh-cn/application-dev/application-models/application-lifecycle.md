@@ -78,6 +78,38 @@
 
 <!-- @[lifecycle_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets) -->
 
+``` TypeScript
+import { UIAbility, ApplicationStateChangeCallback } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[LifecycleAbility]';
+const DOMAIN = 0xF811;
+
+export default class LifecycleAbility extends UIAbility {
+  onCreate() {
+    let applicationStateChangeCallback: ApplicationStateChangeCallback = {
+      onApplicationForeground() {
+        hilog.info(DOMAIN, TAG, 'applicationStateChangeCallback onApplicationForeground');
+      },
+      onApplicationBackground() {
+        hilog.info(DOMAIN, TAG, 'applicationStateChangeCallback onApplicationBackground');
+      }
+    }
+
+    // 1.获取applicationContext
+    let applicationContext = this.context.getApplicationContext();
+    try {
+      // 2.通过applicationContext注册应用前后台状态监听
+      applicationContext.on('applicationStateChange', applicationStateChangeCallback);
+    } catch (paramError) {
+      hilog.error(DOMAIN, TAG, `error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+    }
+    hilog.info(DOMAIN, TAG, 'Register applicationStateChangeCallback');
+  }
+}
+```
+
 > **说明：**
 >
 > 上述的回调事件都是异步回调，并无严格的时序关系。
