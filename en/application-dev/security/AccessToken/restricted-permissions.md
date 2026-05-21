@@ -196,6 +196,8 @@ Allows an application to read **Pasteboard** data.
 
 **Authorization mode**: user_grant
 
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **Since**: 11
 
 ## ohos.permission.FILE_ACCESS_PERSIST
@@ -363,6 +365,8 @@ Allows an application to set or remove the pasteable range of pasteboard data.
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **Since**: 14
 
