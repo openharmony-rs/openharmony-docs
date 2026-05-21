@@ -238,7 +238,7 @@ struct DynamicPage {
 }
 ```
 
-**配置路由** main_pages.json
+- 提供方module.json5配置
 
 ``` JSON
 {
@@ -318,7 +318,7 @@ struct DynamicPage {
 ```
 
 
-**配置路由** main_pages.json
+- 提供方module.json5配置
 
 ``` JSON
 {
