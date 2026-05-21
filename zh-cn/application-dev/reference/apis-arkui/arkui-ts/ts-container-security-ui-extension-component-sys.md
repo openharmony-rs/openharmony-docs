@@ -540,7 +540,7 @@ ArkTS-Sta示例：
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { State } from '@ohos.arkui.stateManagement'
+import { State } from '@ohos.arkui.stateManagement';
 import {
   Column,
   Button,
