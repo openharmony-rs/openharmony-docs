@@ -426,11 +426,11 @@ offSyncReceiverRegister(callback?: Callback\<SecurityUIExtensionProxy\>): void
 
 ## 示例
 
-### 示例1（SecurityUIExtensionComponent使用）
+### 示例1（拉起远程UIExtensionAbility并进行双向数据通信）
 
-本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置Want拉起指定Ability的UIExtensionAbility，通过onRemoteReady获取SecurityUIExtensionProxy，使用send/sendSync发送数据，以及通过onReceive、onError、onTerminated等回调处理事件。
+本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置[Want](../../apis-ability-kit/js-apis-app-ability-want.md#want)拉起指定Ability的UIExtensionAbility，通过[onRemoteReady](#onremoteready)获取[SecurityUIExtensionProxy](#securityuiextensionproxy)，使用[send](#send)或[sendSync](#sendsync)发送数据，以及通过[onReceive](#onreceive)、[onError](#onerror)、[onTerminated](#onterminated)等回调处理事件。
 
-从API版本26.0.0开始，新增[onError](#onerror)事件。
+从API版本26.0.0开始，新增[onRemoteReady](#onremoteready)、[onReceive](#onreceive)、[onError](#onerror)、[onTerminated](#onterminated)事件。
 
 **组件使用方**
 
