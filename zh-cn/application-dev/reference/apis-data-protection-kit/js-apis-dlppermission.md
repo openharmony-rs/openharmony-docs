@@ -38,7 +38,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 isDLPFile(fd: number): Promise&lt;boolean&gt;
 
-根据文件的fd，查询该文件是否是DLP文件。调用成功后返回查询结果，true表示是DLP文件，false表示非DLP文件。使用场景:在文件处理流程中,需要先判断文件是否为DLP文件,再决定后续处理策略(如是否需要通过DLP沙箱打开)。使用Promise方式异步返回结果。
+根据文件的fd，查询该文件是否是DLP文件。调用成功后返回查询结果，true表示是DLP文件，false表示非DLP文件。使用场景：在文件处理流程中，需要先判断文件是否为DLP文件，再决定后续处理策略（如是否需要通过DLP沙箱打开）。使用Promise方式异步返回结果。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
