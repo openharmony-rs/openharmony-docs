@@ -8377,13 +8377,16 @@ struct ShaderColorStyle {
         .onReady(() => {
           let spans: Array<RichEditorImageSpanResult | RichEditorTextSpanResult> =
               this.controller.getSpans();
-            if (spans.length > 0 && (spans[0] as RichEditorTextSpanResult).paragraphStyle) {
-              let shaderStyle: ShaderStyle | undefined =
-                (spans[0] as RichEditorTextSpanResult).paragraphStyle?.shaderStyle;
-              if (shaderStyle) {
-                let LinearGradientOptions :LinearGradientStyle = shaderStyle as LinearGradientStyle
-              } else {
-              }
+          if (spans.length > 0 && (spans[0] as RichEditorTextSpanResult).paragraphStyle) {
+            let shaderStyle: ShaderStyle | undefined =
+              (spans[0] as RichEditorTextSpanResult).paragraphStyle?.shaderStyle;
+            if (typeof (shaderStyle as ColorShaderStyle)['color'] != 'undefined') {
+              console.info(' color shaderStyle : ' + JSON.stringify(shaderStyle));
+            } else if (typeof (shaderStyle as RadialGradientStyle)['options']['center'] != 'undefined') {
+              console.info(' radial gradient shaderStyle : ' + JSON.stringify(shaderStyle));
+            } else if (typeof (shaderStyle as LinearGradientStyle)['options']['colors'] != 'undefined') {
+              console.info(' linear gradient shaderStyle : ' + JSON.stringify(shaderStyle));
+            }
           }
         }).borderWidth(1)
       Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
