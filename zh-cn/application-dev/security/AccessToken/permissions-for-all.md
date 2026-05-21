@@ -86,8 +86,6 @@
 
 **授权方式**：系统授权（system_grant）
 
-**是否支持证书授权**：true
-
 **起始版本**：7
 
 ## ohos.permission.ACCESS_BIOMETRIC
@@ -157,8 +155,6 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
 
 **起始版本**：7
 
@@ -251,8 +247,6 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
 
 **起始版本**：7
 
