@@ -1621,8 +1621,6 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 **废弃版本：** 26.0.0
 
-**设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **参数：**
@@ -1667,8 +1665,6 @@ isDistributedEnabled(): Promise\<boolean>
 **起始版本：** 9
 
 **废弃版本：** 26.0.0
-
-**设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
 
 **系统能力**：SystemCapability.Notification.Notification
 
