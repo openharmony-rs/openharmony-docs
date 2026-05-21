@@ -69,7 +69,6 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 ```ts
 import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 async exampleFunction() {
   try { // 设置DLP特性开关状态
