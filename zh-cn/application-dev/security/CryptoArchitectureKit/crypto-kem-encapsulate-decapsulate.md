@@ -49,3 +49,27 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是一种基于格�
 - 同步方法示例：
 
   <!-- @[kem_encapsulate_decapsulate_sync_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KemEncapsulateDecapsulate/entry/src/main/ets/pages/Sync.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  namespace Kem {
+    export function kemDecapsulateSync() {
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
+      let keyPair = asyKeyGenerator.generateKeyPairSync();
+      let kem : cryptoFramework.Kem= cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
+      try {
+        let encapResult : cryptoFramework.KemEncapResult= kem.encapsulateSync(keyPair.pubKey, null);
+        let sharedSecret : Uint8Array = kem.decapsulateSync(keyPair.priKey, encapResult.wrappedKey);
+        console.info('decapsulateSync success');
+        console.info('sharedSecret length: ' + sharedSecret.length);
+        return 'Success';
+      } catch (err) {
+        let e: BusinessError = err as BusinessError;
+        console.error(`decapsulateSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+        return 'Failed';
+      }
+    }
+  }
+  ```
