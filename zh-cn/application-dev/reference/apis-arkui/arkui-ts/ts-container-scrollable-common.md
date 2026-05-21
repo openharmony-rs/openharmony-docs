@@ -984,7 +984,7 @@ List/Grid组件编辑模式选项属性参数对象。
 
 ArkTS-Dyn: type OnWillScrollCallback = (scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | ScrollResult
 
-ArkTS-Sta: type OnWillScrollCallback = (scrollOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => undefined | ScrollResult
+ArkTS-Sta: type OnWillScrollCallback = (scrollOffset: double, scrollState: ScrollState, scrollSource: ScrollSource) => (undefined | ScrollResult)
 
 滚动组件滑动前触发的回调。
 
@@ -1039,7 +1039,7 @@ ArkTS-Sta: type OnScrollCallback = (scrollOffset: double, scrollState: ScrollSta
 
 ArkTS-Dyn: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) => CustomBuilder
 
-ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) => CustomBuilder
+ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) => (CustomBuilder | undefined)
 
 开始拖拽列表或网格元素时触发的回调。
 
@@ -1068,7 +1068,7 @@ ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) 
 
 ArkTS-Dyn: type OnGetPreviewBadgeCallback = () => boolean | number
 
-ArkTS-Sta: type OnGetPreviewBadgeCallback = () => boolean | int
+ArkTS-Sta: type OnGetPreviewBadgeCallback = () => (boolean | int)
 
 即将启动多选长按聚拢动画时，触发用于获取选中数量的回调。
 

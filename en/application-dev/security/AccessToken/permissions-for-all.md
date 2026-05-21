@@ -162,6 +162,8 @@ Allows an application to read data from a gyroscope sensor or uncalibrated gyros
 
 Allows an application to access the Internet.
 
+With this permission, an application can obtain IP addresses, perform DNS resolution, or customize DNS rules.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant

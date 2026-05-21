@@ -43,6 +43,7 @@
       - [Class (OverlayManager)](arkts-apis-uicontext-overlaymanager.md)
       - [Class (PromptAction)](arkts-apis-uicontext-promptaction.md)
       - [Class (Router)](arkts-apis-uicontext-router.md)
+      - [Class (SmartGestureController)](arkts-apis-uicontext-smartgesturecontroller.md)
       - [Class (SwiperDynamicSyncScene)](arkts-apis-uicontext-swiperdynamicsyncscene.md)
       - [Class (TextMenuController)](arkts-apis-uicontext-textmenucontroller.md)
       - [Class (UIContext)](arkts-apis-uicontext-uicontext.md)
@@ -88,6 +89,7 @@
       - [BuilderNode (ArkTS-Sta)](js-apis-arkui-builderNode-static.md)
       - [ComponentContent](js-apis-arkui-ComponentContent.md)
       - [FrameNode](js-apis-arkui-frameNode.md)
+      - [typeNode](js-apis-arkui-typeNode.md)
       - [Graphics](js-apis-arkui-graphics.md)
       - [LayoutAlgorithm](js-apis-arkui-layoutAlgorithm.md)
       - [NodeController](js-apis-arkui-nodeController.md)
@@ -102,6 +104,9 @@
   - 窗口管理<!--window-manager-api-->
     - [@ohos.window.floatView (标准悬浮窗)](js-apis-floatView.md)
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
+    <!--Del-->
+    - [@ohos.PiPWindow (画中画窗口)(系统接口)](js-apis-pipWindow-sys.md)
+    <!--DelEnd-->
     - [@ohos.window.floatingBall (闪控球窗口)](js-apis-floatingBall.md)
     - @ohos.window (窗口)<!--js-apis-window-->
       - [模块描述](arkts-apis-window.md)
@@ -213,6 +218,7 @@
       - [拖拽排序](arkui-ts/ts-universal-attributes-drag-sorting.md)
       - [悬浮态效果](arkui-ts/ts-universal-attributes-hover-effect.md)
       - [点击音效](arkui-ts/ts-universal-attributes-click-sound.md)
+      - [智慧手势响应](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md)
       - 触摸交互控制<!--touch-interactions-->
         - [触摸热区设置](arkui-ts/ts-universal-attributes-touch-target.md)
         - [触摸测试控制](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -479,7 +485,7 @@
     - [自定义组件的生命周期（推荐）](arkui-ts/ts-custom-component-new-lifecycle.md)
     - [自定义组件的自定义布局](arkui-ts/ts-custom-component-layout.md)
     - [自定义组件内置方法](arkui-ts/ts-custom-component-api.md)
-    - [自定义组件内置方法（静态）](arkui-ts/ts-custom-component-api-sta.md)
+    - [自定义组件内置方法（ArkTS-Sta）](arkui-ts/ts-custom-component-api-sta.md)
     - [自定义组件参数](arkui-ts/ts-custom-component-parameter.md)
     - 动态ArkTS自定义组件<!--dynamic-arkts-custom-component-->
       - 自定义组件装饰器<!--custom-component-decorator-->
@@ -559,8 +565,10 @@
     <!--DelEnd-->
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
+    - [应用级变量的状态管理 (ArkTS-Sta)](arkui-ts/ts-state-management-Static.md)
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
     - [状态变量变化监听](arkui-ts/ts-state-management-watch-monitor.md)
+    - [组件双向绑定 (ArkTS-Sta)](js-apis-twoWayBinding-static.md)
     - [内置环境变量说明](arkui-ts/ts-state-management-environment-variables.md)
     - [If (ArkTS-Sta)](arkui-ts/ts-rendering-control-ifelse-sta.md)
     - [ForEach (ArkTS-Dyn)](arkui-ts/ts-rendering-control-foreach.md)
@@ -643,6 +651,8 @@
     - [RemoteWindow (系统接口)](arkui-ts/ts-basic-components-remotewindow-sys.md)
     - [PluginComponent (系统接口)](arkui-ts/ts-basic-components-plugincomponent-sys.md)
     - [UIExtensionComponent (系统接口)](arkui-ts/ts-container-ui-extension-component-sys.md)
+    - [SecurityUIExtensionComponent (系统接口)](arkui-ts/ts-container-security-ui-extension-component-sys.md)
+    - [DynamicComponent (系统接口)](arkui-ts/ts-container-dynamic-component-sys.md)
     - [UnionEffectContainer (系统接口)](arkui-ts/ts-container-unioneffectcomponent-sys.md)
     - [DistortionComponent (系统接口)](arkui-ts/ts-container-distortioncomponent-sys.md)
   <!--DelEnd-->

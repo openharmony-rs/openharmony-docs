@@ -20,7 +20,7 @@
 >
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-apis-uicontext-uicontext.md)说明。
 >
-> - 如果使用传入callback形式的[pushUrl](arkts-apis-uicontext-router.md#pushurl-1)或[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1)接口，callback中通过[getLength](arkts-apis-uicontext-router.md#getlengthdeprecated)等接口获取的栈信息为中间态的栈信息，可能与栈操作完全结束后，再通过[getLength](arkts-apis-uicontext-router.md#getlengthdeprecated)等接口获取的栈信息不一致。
+> - 如果使用传入callback形式的[pushUrl](arkts-apis-uicontext-router.md#pushurl-1)或[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1)接口，callback中通过[getStackSize](arkts-apis-uicontext-router.md#getstacksize23)等接口获取的栈信息为中间态的栈信息，可能与栈操作完全结束后，再通过[getStackSize](arkts-apis-uicontext-router.md#getstacksize23)等接口获取的栈信息不一致。
 
 ## 导入模块
 
@@ -1639,7 +1639,7 @@ this.getUIContext().getRouter().getParams();
 
 以下代码仅适用于javascript文件，不适用于ArkTS文件
 
-<!--code_no_check-->
+<!--deprecated_code_no_check-->
 
 ```js
 // 在当前页面中
@@ -1654,7 +1654,7 @@ export default {
   }
 }
 ```
-<!--code_no_check-->
+<!--deprecated_code_no_check-->
 
 ```js
 // 在detail页面中
@@ -1671,7 +1671,6 @@ export default {
 > 
 > 直接使用router可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
 
-<!--deprecated_code_no_check-->
 ```ts
 // 通过router.pushUrl跳转至目标页携带params参数
 import { router } from '@kit.ArkUI';
@@ -1946,6 +1945,8 @@ pages
    ├─ routerPage.hml
    └─ routerPage.js
 ```
+
+<!--code_no_check-->
 ```css
 /* index.css */
 .page {
@@ -2002,7 +2003,9 @@ pages
   background-color: #16a34a;
 }
 ```
-```hml
+
+<!--code_no_check-->
+```html
 <!--index.hml-->
 <div class="page">
     <text class="page-name">{{ pageName }}</text>
@@ -2012,6 +2015,8 @@ pages
     <input class="action-button action-button-secondary" type="button" value="replaceUrl to routerPage" onclick="replaceUrlToRouterPage"></input>
 </div>
 ```
+
+<!--deprecated_code_no_check-->
 ```js
 // index.js
 import router from '@ohos.router';
@@ -2040,6 +2045,8 @@ export default {
     }
 }
 ```
+
+<!--code_no_check-->
 ```css
 /* routerPage.css */
 .page {
@@ -2096,7 +2103,9 @@ export default {
   background-color: #16a34a;
 }
 ```
-```hml
+
+<!--code_no_check-->
+```html
 <!--routerPage.hml-->
 <div class="page">
     <text class="page-name">{{ pageName }}</text>
@@ -2106,6 +2115,8 @@ export default {
     <input class="action-button action-button-secondary" type="button" value="replaceUrl to index" onclick="replaceUrlToIndex"></input>
 </div>
 ```
+
+<!--deprecated_code_no_check-->
 ```js
 // routerPage.js
 import router from '@ohos.router';

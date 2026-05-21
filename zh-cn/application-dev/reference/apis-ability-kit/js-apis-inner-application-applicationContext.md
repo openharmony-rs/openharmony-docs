@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 ApplicationContext作为应用上下文，继承自[Context](js-apis-inner-application-context.md)，提供了应用生命周期监听、进程管理、应用环境设置等应用级别的管控能力。
@@ -1461,3 +1461,217 @@ export default class MyAbilityStage extends AbilityStage {
   }
 }
 ```
+
+## ApplicationContext.enableDelayedProcessExit
+
+enableDelayedProcessExit(): Promise\<void>
+
+启用当前进程延迟退出功能，使用Promise异步回调。仅支持主线程调用。
+
+在正常情况下，应用进程中最后一个UIAbility退出后，进程将退出。调用此接口，在最后一个UIAbility退出后，进程将延迟10秒退出。如果在当前进程的10秒内启动该进程的新UIAbility，进程将不再退出。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000150 | The current process has no UIAbility, and this API cannot be called. |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'
+import { hilog } from '@kit.PerformanceAnalysisKit'
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.getApplicationContext()
+        .enableDelayedProcessExit()
+        .then(() => {
+          hilog.info(0x0000, 'testTag', 'enableDelayedProcessExit succeed');
+        })
+        .catch((error) => {
+          hilog.error(0x0000, 'testTag',
+            `enableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
+        });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag',
+        `enableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
+    }
+  }
+}
+```
+
+## ApplicationContext.disableDelayedProcessExit
+
+disableDelayedProcessExit(): Promise\<void>
+
+禁用当前进程延迟退出功能，使用Promise异步回调。仅支持主线程调用。
+
+调用此API将会取消[ApplicationContext.enableDelayedProcessExit](#applicationcontextenabledelayedprocessexit)的作用。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000150 | The current process has no UIAbility, and this API cannot be called. |
+
+**示例：**
+
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit'
+import { hilog } from '@kit.PerformanceAnalysisKit'
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.getApplicationContext()
+        .disableDelayedProcessExit()
+        .then(() => {
+          hilog.info(0x0000, 'testTag', 'disableDelayedProcessExit succeed');
+        })
+        .catch((error) => {
+          hilog.error(0x0000, 'testTag',
+            `disableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
+        });
+    } catch (error) {
+      hilog.error(0x0000, 'testTag',
+        `disableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
+    }
+  }
+}
+```
+
+## ApplicationContext.startSelfUIAbility
+
+startSelfUIAbility(want: Want): Promise\<void>
+
+当前进程延迟退出期间，在当前进程启动一个自身UIAbility，启动成功后，当前进程不再退出。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**参数：**
+
+| 参数名 | 类型                                | 必填 | 说明                                        |
+| ------ | ----------------------------------- | ---- | ------------------------------------------- |
+| want   | [Want](js-apis-app-ability-want.md) | 是   | Want类型参数，传入需要启动的UIAbility信息。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported.                                    |
+| 16000001 | The specified ability does not exist.                        |
+| 16000008 | The crowdtesting application expires.                        |
+| 16000009 | An ability cannot be started or stopped in Wukong mode.      |
+| 16000050 | Internal error. Possible causes: Fail to connect system service. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported.                           |
+| 16000124 | Starting a remote UIAbility is not supported.                |
+| 16000125 | Starting a plugin UIAbility is not supported.                |
+| 16000130 | The UIAbility does not belong to the caller.                 |
+| 16000161 | Delayed process exit is not pending in the current process, and this API cannot be called. |
+| 16000162 | The current process still has another UIAbility, and this API cannot be called. |
+
+**示例：**
+
+```ts
+'use static'
+
+import { Entry, Text, Column, Component, Button } from '@ohos.arkui.component'
+import hilog from '@ohos.hilog'
+import { common, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private abilityContext: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column(undefined) {
+      Text('进程延迟退出测试').fontSize(20)
+      Button('startSelfUIAbility')
+        .onClick(() => {
+          try {
+            // 构造启动主界面的 want
+            const mainWant: Want = {
+              bundleName: 'com.example.myapplication',
+              abilityName: 'EntryAbility',
+              parameters: {
+                'pageName': 'IndexNew'  // 标记启动主页面
+              }
+            };
+            // 在延迟退出期间启动主界面
+            this.abilityContext.terminateSelf().then(() => {
+              // 设置延时2000 ms以确保主应用完全退出后再调用startSelfUIAbility接口。
+              setTimeout(() => {
+                this.abilityContext.getApplicationContext().startSelfUIAbility(mainWant).then(() => {
+                  hilog.info(0x0000, 'testTag', 'startSelfUIAbility succeed');
+                }).catch((error) => {
+                  hilog.error(0x0000, 'testTag',
+                    `startSelfUIAbility failed.  code: ${error.code}, error msg: ${error.message}`);
+                });
+              }, 2000);
+            });
+          } catch (error) {
+            hilog.error(0x0000, 'testTag', `启动主界面失败, code: ${error.code}, error msg: ${error.message}`);
+          }
+        })
+    }
+  }
+}
+```
+

@@ -162,15 +162,15 @@ ArkTS-Sta: default getHistoricalPoints(): MouseHistoricalPoint[] | undefined
  
 | 名称         | 类型        | 只读 | 可选 | 说明                                      |
 | ---------- | --------- | ---- | ---- | --------------------------------------- |
-| x          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 否   | 鼠标指针相对于被点击组件左上角的X坐标。<br>单位：vp          |
-| y          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 否   | 鼠标指针相对于被点击组件左上角的Y坐标。<br>单位：vp          |
-| displayX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 否   | 鼠标指针相对于整个屏幕左上角的X坐标。<br>单位：vp            |
-| displayY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 否   | 鼠标指针相对于整个屏幕左上角的Y坐标。<br>单位：vp            |
-| windowX    | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 否   | 鼠标指针相对于应用窗口左上角的X坐标。<br>单位：vp            |
-| windowY    | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 是   | 否   | 鼠标指针相对于应用窗口左上角的Y坐标。<br>单位：vp            |
-| globalDisplayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 是   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br>单位：vp  |
-| globalDisplayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 是   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br>单位：vp  |
-| timestamp  | ArkTS-Dyn: number<br/>ArkTS-Sta: long      | 是   | 否   | 鼠标事件的时间戳。<br>单位：ns                              |
+| x          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于被点击组件左上角的X坐标。<br>单位：vp          |
+| y          | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于被点击组件左上角的Y坐标。<br>单位：vp          |
+| displayX   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于整个屏幕左上角的X坐标。<br>单位：vp            |
+| displayY   | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于整个屏幕左上角的Y坐标。<br>单位：vp            |
+| windowX    | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于应用窗口左上角的X坐标。<br>单位：vp            |
+| windowY    | ArkTS-Dyn: number<br/>ArkTS-Sta: double    | 否   | 否   | 鼠标指针相对于应用窗口左上角的Y坐标。<br>单位：vp            |
+| globalDisplayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br>单位：vp  |
+| globalDisplayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br>单位：vp  |
+| timestamp  | ArkTS-Dyn: number<br/>ArkTS-Sta: long      | 否   | 否   | 鼠标事件的时间戳。<br>单位：ns                              |
 
 ## 示例
 

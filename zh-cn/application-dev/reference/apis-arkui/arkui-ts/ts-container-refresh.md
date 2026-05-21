@@ -274,9 +274,9 @@ ArkTS-Sta: onStateChange(callback: ((state: RefreshStatus) => void) | undefined)
 
 **参数：** 
 
-| 参数名 | 类型                                    | 必填 | 说明       |
-| ------ | --------------------------------------- | ---- | ---------- |
-| state  | [RefreshStatus](#refreshstatus枚举说明) | 是   | 刷新状态。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| callback | ArkTS-Dyn: (state: [RefreshStatus](#refreshstatus枚举说明)) => void <br/>ArkTS-Sta: ((state: [RefreshStatus](#refreshstatus枚举说明)) => void) \|&nbsp;undefined | 是 | 当前刷新状态变更时触发的回调。<br/>state：刷新状态。<br/>undefined：不使用该回调函数。 |
 
 ### onRefreshing
 

@@ -4,7 +4,7 @@
 <!--Owner: @hw-xpc-->
 <!--Designer: @xuchuanqi87-->
 <!--Tester: @sl_sunshineGirl-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用域名校验能力，支持查询应用与域名之间的映射关系。
 

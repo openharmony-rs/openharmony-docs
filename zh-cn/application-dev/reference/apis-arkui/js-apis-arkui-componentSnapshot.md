@@ -534,136 +534,6 @@ struct SnapshotExample {
 
 ![componentget](figures/componentget.gif)
 
-## componentSnapshot.getSizeLimitation
-
-getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
-
-查询组件截图的最大尺寸限制。
-
-> **说明：**
->
-> 该接口需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**返回值：**
-
-| 类型                                                           | 说明             |
-| ------------------------------------------------------------ | -------------- |
-| componentSnapshot.[SnapshotSizeLimitation](#snapshotsizelimitation) | 组件截图的尺寸限制信息。 |
-
-**示例：**
-
-ArkTS-Dyn示例：
-
-```ts
-import { image } from '@kit.ImageKit';
-import { colorSpaceManager } from '@kit.ArkGraphics2D';
-
-@Entry
-@Component
-struct SnapshotColorModeExample {
-  @State pixmap: image.PixelMap | undefined = undefined;
-
-  build() {
-    Column() {
-      Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
-          .autoResize(true)
-          .width(200)
-          .height(200)
-          .margin(5)
-          .id("root")
-      }
-
-      Button("click to generate UI snapshot")
-        .onClick(() => {
-          let componentSnapshot = this.getUIContext().getComponentSnapshot();
-          // 检查尺寸限制
-          let limitation = componentSnapshot.getSizeLimitation();
-          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-          // 验证节点尺寸是否符合最大尺寸限制
-          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
-            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
-            this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
-              if (error) {
-                console.error(`error: ${JSON.stringify(error)}`)
-                return;
-              }
-              this.pixmap = pixmap
-            })
-          }
-        }).margin(10)
-    }
-    .width('100%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { Entry, Image, $r, Row, HorizontalAlign, Column, Component, Button, Color } from '@kit.ArkUI';
-import { BusinessError } from '@ohos.base';
-import { State } from '@ohos.arkui.stateManagement';
-import image from '@ohos.multimedia.image';
-import { colorSpaceManager } from '@kit.ArkGraphics2D';
-
-@Entry
-@Component
-struct SnapshotColorModeExample {
-  @State pixmap: image.PixelMap | undefined = undefined;
-
-  build() {
-    Column() {
-      Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
-          .autoResize(true)
-          .width(200)
-          .height(200)
-          .margin(5)
-          .id('root')
-      }
-
-      Button('click to generate UI snapshot')
-        .onClick(() => {
-          let componentSnapshot = this.getUIContext().getComponentSnapshot();
-          // 检查尺寸限制
-          let limitation = componentSnapshot.getSizeLimitation();
-          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-          // 验证节点尺寸是否符合最大尺寸限制
-          if (limitation.maxWidth >= this.getUIContext().vp2px(200) &&
-            limitation.maxHeight >= this.getUIContext().vp2px(200)) {
-            this.getUIContext().getComponentSnapshot().get('root', (error: BusinessError|null, pixmap: image.PixelMap|undefined) => {
-              if (pixmap) {
-                this.pixmap = pixmap
-              } else {
-                console.error('error: ' + JSON.stringify(error))
-                return;
-              }
-            })
-          }
-        }).margin(10)
-    }
-    .width('100%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
-
 ## SnapshotSizeLimitation
 
 定义组件截图的尺寸限制。
@@ -680,8 +550,8 @@ struct SnapshotColorModeExample {
 
 | 名称        | 类型     | 只读 | 可选 | 说明                   |
 | --------- | ------ | ---- | ---- | -------------------- |
-| maxWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
-| maxHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
 
 ## SnapshotOptions<sup>12+</sup>
 

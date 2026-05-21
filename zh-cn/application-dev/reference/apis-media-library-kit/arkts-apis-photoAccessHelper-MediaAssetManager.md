@@ -390,7 +390,7 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 
 加载应用沙箱的动态照片。使用Promise异步回调。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

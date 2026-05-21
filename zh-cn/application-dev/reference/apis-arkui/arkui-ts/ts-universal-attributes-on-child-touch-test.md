@@ -30,7 +30,7 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array&lt;TouchTestInfo&gt;) => Touch
 >
 > - 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +54,7 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array&lt;TouchTestInfo&gt;) => Touch
 
 当前屏幕触点所在组件的坐标系、id和尺寸相关信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,7 +77,7 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array&lt;TouchTestInfo&gt;) => Touch
 
 位置和尺寸类型，用于描述组件的位置和宽高。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,7 +96,7 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array&lt;TouchTestInfo&gt;) => Touch
 
 自定义事件分发结果，开发者通过返回结果来影响事件分发。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,9 +113,9 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array&lt;TouchTestInfo&gt;) => Touch
 
 事件派发策略。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -33,7 +33,7 @@ import { image } from '@kit.ImageKit';
 | 名称     | 类型               | 只读 | 可选 | 说明                                               |
 | -------- | ------------------ | ---- | ---- | -------------------------------------------------- |
 | clipRect<sup>9+</sup> | [Region](arkts-apis-image-i.md#region8) | 否   | 否   | 要裁剪的图像区域。恒等于整个图像，不支持修改。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23 |
-| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。<br>如果Image对象所存储的是相机预览流数据（YUV图像数据），那么获取到的size中的宽和高分别对应YUV图像的宽和高。<br>如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。<br>Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的是previewOutput还是captureOutput。<br>相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../media/camera/camera-shooting-case.md)。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23|
+| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。<br>如果Image对象所存储的是相机预览流数据（YUV图像数据），那么获取到的size中的宽和高分别对应YUV图像的宽和高。<br>如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。<br>Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId通过[createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)接口还是[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutputdeprecated)接口传给相机。<br>相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../media/camera/camera-shooting-case.md)。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23|
 | format<sup>9+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23 |
 | timestamp<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long         | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取EXIF时间戳信息。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23|
 | colorSpace<sup>23+</sup> | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 是 | 否 | 图像色彩空间，色域枚举类型。</br>**ArkTS-Dyn起始版本：** 23</br>**ArkTS-Sta起始版本：** 23<br />**模型约束：** 此接口仅可在Stage模型下使用。|
@@ -226,7 +226,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                  |
 | -------------- | --------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -351,7 +351,7 @@ async function GetMetadata(img : image.Image) {
     let staticMetadata = img.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
     console.info(`getMetadata:${staticMetadata}`);
   } catch (err) {
-    console.error('getMetadata failed' + err);
+    console.error('Failed to getMetadata.' + err);
   }
 }
 ```

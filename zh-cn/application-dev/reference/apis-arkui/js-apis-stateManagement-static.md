@@ -616,9 +616,11 @@ struct Index {
 
 globalConnect参数类型。
 
-**起始版本：** 26.0.0
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称           | 类型                       | 只读 | 可选 | 说明                                                                                                                                                                                                                                      |
 | -------------- | -------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -648,6 +650,8 @@ connect参数类型。
 
 UIUtils是状态管理提供的工具，用于处理可观察数据。
 
+**ArkTS-Sta起始版本：** 23
+
 ### makeObserved
 
 static makeObserved\<T extends object \| null \| undefined\>(source: T): T
@@ -664,7 +668,7 @@ static makeObserved\<T extends object \| null \| undefined\>(source: T): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -789,9 +793,11 @@ static getTarget\<T extends object\>(source: T): T
 
 获取状态管理框架包装前的原始对象。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -837,9 +843,9 @@ static getLifecycle\<T extends IVariableOwner\>(customComponent: T): CustomCompo
 
 getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 24
 
@@ -1028,7 +1034,11 @@ static addMonitor(valueCallback: MonitorValueCallback | MonitorValueCallback[], 
 
 动态地为状态变量注册监听。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1150,7 +1160,11 @@ static clearMonitor(monitor: IMonitorDecoratedVariable): void
 
 动态地为状态变量解绑监听。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1281,7 +1295,11 @@ static getCustomComponentContext\<T extends IVariableOwner\>(customComponent: T)
 
 设置监听的行为。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
@@ -1386,7 +1404,11 @@ type GetterCallback\<T\> = () => T
 
 获取绑定值的回调方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1434,7 +1456,11 @@ type SetterCallback\<T\> = (newValue: T) => void
 
 设置绑定值的回调方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1492,12 +1518,22 @@ struct MyApp {
 
 只读数据绑定的泛型类可以绑定任意类型的数据（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 ### value
 get value(): T
 
 提供get访问器以获取当前绑定值。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1527,12 +1563,22 @@ function CustomButton(readOnlyParam: Binding<number>) {
 
 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 ### value
 set value(newValue: T)
 
 提供set访问器，用于设置当前绑定值。构造MutableBinding类实例时必须提供set访问器，否则会触发运行时错误。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1641,7 +1687,7 @@ function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: Muta
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |

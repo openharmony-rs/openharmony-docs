@@ -173,6 +173,14 @@ typedef enum {
     JSVM_COMPILE_COMPILE_PROFILE,
     /** switch for source map support. */
     JSVM_COMPILE_ENABLE_SOURCE_MAP,
+    /** background deserialize code cache result.
+     * @since 24
+     */
+    JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT,
+    /** whether the code cache is rejected.
+     * @since 24
+     */
+    JSVM_COMPILE_CODE_CACHE_REJECTED,
 } JSVM_CompileOptionId;
 ```
 
@@ -2543,3 +2551,16 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
 场景示例：
 
 [使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute_tasks.md)
+
+### 后台反序列化
+
+**场景介绍**
+
+后台反序列化允许在后台线程中异步反序列化代码缓存，通过减少同步反序列化时间提升应用启动性能。
+
+**接口说明**
+
+| 接口 | 功能说明 |
+| -------- | -------- |
+| OH_JSVM_BackgroundDeserialize | 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。 |
+| OH_JSVM_ReleaseDeserializeResult | 当 *JSVM_DeserializeResult* 不再被使用时进行释放。|
