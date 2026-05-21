@@ -39,7 +39,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认照片类型。 |
+| DEFAULT |  0 |  默认照片文件类型。 |
 | MOVING_PHOTO |  3 |  动态照片文件类型。 |
 | BURST |  4 |  连拍照片文件类型。 |
 
@@ -175,7 +175,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
-| NOTIFY_ADD                | 0    | 添加文件集或相册通知的类型。     |
+| NOTIFY_ADD                | 0    | 添加文件集或相册的通知类型。     |
 | NOTIFY_UPDATE             | 1    | 文件集或相册的更新通知类型。     |
 | NOTIFY_REMOVE             | 2    | 删除文件集或相册的通知类型。     |
 | NOTIFY_ALBUM_ADD_ASSET    | 3    | 在相册中添加的文件集的通知类型。 |
@@ -329,9 +329,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
-| NOTIFY_CHANGE_ADD         | 0    | 媒体资产（图片/视频）或相册已经创建。     |
-| NOTIFY_CHANGE_UPDATE      | 1    | 媒体资产（图片/视频）或相册已经修改。     |
-| NOTIFY_CHANGE_REMOVE      | 2    | 媒体资产（图片/视频）或相册已经删除。     |
+| NOTIFY_CHANGE_ADD         | 0    | 媒体资产（图片/视频）或相册创建事件的通知类型。     |
+| NOTIFY_CHANGE_UPDATE      | 1    | 媒体资产（图片/视频）或相册修改事件的通知类型。     |
+| NOTIFY_CHANGE_REMOVE      | 2    | 媒体资产（图片/视频）或相册删除事件的通知类型。     |
 
 ## PhotoSource<sup>20+</sup>
 
@@ -428,11 +428,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | NOT_BETWEEN    | 14   | 匹配超出指定范围内的字段。<br>不包含两端边界值，为左开右开区间。取value数组的前两个元素与谓词匹配，超出长度取前2个，分别表示左右边界。例如：[1, 2, 3, 4]中取前两个，1表示左边界，2表示右边界。 |
 
 ## GridLevel<sup>23+</sup>
- 	  	 
+
 枚举类型，用于设置拉起picker后的宫格列数档位。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
- 	
+
 **模型约束**： 此接口仅可在Stage模型下使用。
 
 **系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
