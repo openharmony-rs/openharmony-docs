@@ -133,7 +133,7 @@ mediaSource.setMimeType(mimeType);
 let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
 // 为avPlayer设置媒体来源和播放策略
 this.avPlayer!.setMediaSource(mediaSource, playbackStrategy);
-* */
+ */
 ```
 
 **情况五：通过应用沙箱中的m3u8文件播放在线流媒体资源**
