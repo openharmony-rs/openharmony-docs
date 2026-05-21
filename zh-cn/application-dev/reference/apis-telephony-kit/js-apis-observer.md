@@ -1270,7 +1270,7 @@ off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
