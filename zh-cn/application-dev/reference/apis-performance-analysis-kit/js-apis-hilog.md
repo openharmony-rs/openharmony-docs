@@ -496,7 +496,7 @@ setOutputTypeByDomainID(type: OutputType, domainIDs: Array&lt;number&gt;, isExcl
 **示例：**
 
 ```js
-hilog.setOutputTypeByDomainID(hilog.OutputType.SHARE_SANDBOX_ONLY, [1, 2, 3], false);
+hilog.setOutputTypeByDomainID(hilog.OutputType.SHARE_SANDBOX_ONLY, [0x0001, 0x0002, 0x0003], false);
 hilog.info(0x0001, "testTag", 'sandbox log to share sandbox only');
 hilog.info(0x0002, "testTag", 'sandbox log to share sandbox only');
 hilog.info(0x0003, "testTag", 'sandbox log to share sandbox only');
