@@ -2103,5 +2103,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-makeObserved.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"function_threadGetData",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
