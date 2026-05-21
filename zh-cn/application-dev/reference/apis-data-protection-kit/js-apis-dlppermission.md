@@ -112,7 +112,6 @@ isDLPFile(fd: number, callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
@@ -378,7 +377,6 @@ isInSandbox(): Promise&lt;boolean&gt;
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.isInSandbox().then((res) => { // 是否在沙箱内。
   console.info('res', res);
@@ -415,7 +413,6 @@ isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.isInSandbox((err, data) => {
   if (err) {
@@ -1074,7 +1071,6 @@ isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 dlpPermission.isDLPFeatureProvided().then((isFeatureProvided) => { // 查询当前系统是否提供加密保护特性。
   console.info('isFeatureProvided', JSON.stringify(isFeatureProvided));
