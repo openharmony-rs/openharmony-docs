@@ -241,7 +241,7 @@ bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *stre
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | 音频流管理器句柄。通过[OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager)获取句柄。 |
-| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo| 音频流信息指针，用于描述基础音频格式。 |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | 音频流信息指针，用于描述基础音频格式。 |
 | [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 音频流使用场景，用于决定音频设备和通路类型的选择结果。 |
 
 **返回：**
