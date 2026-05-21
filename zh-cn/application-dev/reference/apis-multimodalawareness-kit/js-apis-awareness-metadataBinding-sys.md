@@ -148,7 +148,7 @@ let captureMetadata: string = "";
 if (encodeImage) {
     metadataBinding.decodeImage(encodeImage)
         .then((metadata: string) => {
-            captrueMetadata = metadata;
+            captureMetadata = metadata;
         })
         .catch((error: Error) => {
             const err = error as BusinessError;
