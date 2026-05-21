@@ -280,9 +280,9 @@ Describes the device power consumption information.
 
 | Name | Type                               | Read-Only| Optional| Description                  |
 | ----- | ----------------------------------- | ---- | ---- | ---------------------- |
-| uid   | number                              | No  | No  | The uid related with the power consumption info.   |
-| type  | [ConsumptionType](#consumptiontype) | No  | No  | The type related with the power consumption info.  |
-| power | number                              | No  | No  | The power consumption value, in unit of mAh.       |
+| uid   | number                              | No  | No  | The uid related to power consumption information.   |
+| type  | [ConsumptionType](#consumptiontype) | No  | No  | The power consumption type.  |
+| power | number                              | No  | No  | The power consumption, in unit of mAh.       |
 
 ## ConsumptionType
 
