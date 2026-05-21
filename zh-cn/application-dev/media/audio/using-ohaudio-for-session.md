@@ -290,3 +290,12 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
     OH_AudioCommon_Result resultUnregister = OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(
         audioSessionManager, MyAudioSessionDeactivatedCallback);
 ```
+
+## 设置音频会话行为
+从API version 24开始，应用可以通过[OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
+
+例如，在游戏直播场景中，游戏应用可以设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).VOIP_PRIVACY_TYPE_PUBLIC会话行为，使游戏组队的VoIP录音与直播录音可以同时进行。又如，在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
+
+若本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详见[OH_AudioRenderer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setindependentaudiosessionstrategy)；对于录音流，详见[OH_AudioCapturer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setindependentaudiosessionstrategy)。
+
+<!-- @[cset_session_behavior](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
