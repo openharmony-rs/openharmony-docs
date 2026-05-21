@@ -2740,6 +2740,8 @@
 
 **起始版本**：11
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
 允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
