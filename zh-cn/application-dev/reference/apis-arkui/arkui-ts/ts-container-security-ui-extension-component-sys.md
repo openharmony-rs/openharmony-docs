@@ -410,7 +410,7 @@ function syncRegisterCallback(proxy: UIExtensionProxy) {
 
 提供方包含两个文件需要修改：
 
-- 提供方新增扩展入口文件/src/main/ets/uiextensionability/SecurityUIExtProvider.ets
+- 提供方新增扩展入口文件`/src/main/ets/uiextensionability/SecurityUIExtProvider.ets`。
 
 ```ts
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
