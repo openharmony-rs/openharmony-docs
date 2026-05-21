@@ -148,3 +148,129 @@
 **是否支持证书授权**：true
 
 **起始版本**：8
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_VISION
+
+允许系统应用通过CLI命令使用无障碍视觉辅助功能。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_HEARING
+
+允许系统应用通过CLI命令使用无障碍听觉辅助功能。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.WRITE_ACCESSIBILITY_CONFIG_ACTION
+
+允许系统应用通过CLI命令使用无障碍行为辅助功能。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.BUNDLE_ACTIVE_INFO
+
+允许应用通过CLI命令查询应用运行状态。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.INSTALL_BUNDLE
+
+允许应用通过CLI命令安装、卸载除企业应用外的其他应用。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.UNINSTALL_BUNDLE
+
+允许应用通过CLI命令卸载应用。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.GET_BUNDLE_INFO_PRIVILEGED
+
+允许应用通过CLI命令查询应用信息，如应用包名、版本等。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.REMOVE_BUNDLE_DATA_AND_CACHE_FILES
+
+允许应用通过CLI命令清理指定应用的缓存和数据（包括内部存储和外部存储）。
+
+**权限级别**：system_basic
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.MANAGE_DISPOSED_APP_STATUS
+
+允许应用通过CLI命令设置和查询应用的处置状态。
+
+**权限级别**：system_core
+
+**授权方式**：用户授权（user_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0

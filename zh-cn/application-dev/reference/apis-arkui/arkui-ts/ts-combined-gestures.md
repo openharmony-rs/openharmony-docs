@@ -1,4 +1,4 @@
-# 组合手势
+# GestureGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->

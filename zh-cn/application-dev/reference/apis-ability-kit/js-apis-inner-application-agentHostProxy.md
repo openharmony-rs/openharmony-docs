@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 AgentHostProxy用于从[AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)服务端向客户端发送数据或安全认证请求。

@@ -162,6 +162,8 @@ Allows an application to read data from a gyroscope sensor or uncalibrated gyros
 
 Allows an application to access the Internet.
 
+With this permission, an application can obtain IP addresses, perform DNS resolution, or customize DNS rules.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
@@ -338,9 +340,13 @@ Allows an application to read the login status of user accounts.
 
 Allows an application to access the navigation service.
 
+With this permission, the application can set navigation information and process navigation instructions sent from other applications
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 
@@ -365,6 +371,8 @@ With this permission, the application can obtain the connection information betw
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 
@@ -684,6 +692,20 @@ With this permission, the application can query available types of pluggable emb
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Since**: 24
+
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+Allows an application to query the encryption and decryption status of a volume.
+
+With this permission, the application can obtain the encryption and decryption status of a volume and subscribe to system public events related to changes in the encryption and decryption status of a volume.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
 
 ## ohos.permission.STYLUS_FRAME_BOOST
 

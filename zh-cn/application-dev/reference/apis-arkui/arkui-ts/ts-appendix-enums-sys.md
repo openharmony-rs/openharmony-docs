@@ -57,3 +57,40 @@
 | BOTTOM         | 5   | 边缘流光在底部。              |
 | LEFT           | 6   | 边缘流光在左边。              |
 | RIGHT          | 7   | 边缘流光在右边。              |
+
+## DistortionMode
+
+非线性动效模式枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 值 | 说明              |
+| ------ | --- | --------------- |
+| DISTORTION_AUTO | 0 | 当设置[IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial)类型的材质，依据设备算力档位自动生效非线性效果。高档算力设备生效，中低档算力设备不生效。 |
+| DISTORTION_ENABLED | 1 | 新材质下非线性动画生效。|
+| DISTORTION_DISABLED | 2 | 新材质下非线性动画不生效。 |
+
+
+## EdgeLightMode
+
+流光动效模式枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 值 | 说明              |
+| ------ | --- | --------------- |
+| EDGELIGHT_AUTO | 0 | 当设置[IMMERSIVE](../arkts-apis-uimaterial.md#immersivematerial)类型的材质，依据设备算力档位自动生效流光效果。中高档算力设备生效，低档算力设备不生效。 |
+| EDGELIGHT_ENABLED | 1 | 新材质下流光动画生效。|
+| EDGELIGHT_DISABLED | 2 | 新材质下流光动画不生效。 |

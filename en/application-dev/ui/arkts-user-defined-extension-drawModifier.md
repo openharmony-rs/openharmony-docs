@@ -1,8 +1,8 @@
 # Custom Drawing Modifier (DrawModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -29,11 +29,11 @@ declare class DrawModifier {
 }
 ```
 
-The **DrawModifier** API allows you to define drawing methods at different layers of a component: mask overlay (**drawOverlay**), foreground (**drawForeground**), content foreground (**drawFront**), content (**drawContent**), and content background (**drawBehind**). You need to override these methods and use the [Canvas](arkts-drawing-customization-on-canvas.md) API to implement custom drawing. The following figure illustrates the layers of custom drawing.
+You can set the drawing methods for the mask overlay ([drawOverlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawoverlay23)), foreground ([drawForeground](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawforeground20)), content foreground ([drawFront](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawfront)), content ([drawContent](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawcontent)), and content background ([drawBehind](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawbehind)) using **DrawModifier**. You need to override these methods and use the [Canvas](arkts-drawing-customization-on-canvas.md) API for custom drawing. The following figure illustrates the layers of custom drawing.
 
 ![](figures/drawModifier.png)
 
-**DrawModifier** also provides the **invalidate** method to trigger redrawing. This method cannot be overridden.
+**DrawModifier** also provides the [invalidate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#invalidate) method to actively trigger redrawing. This API does not need to be and cannot be overridden. Calling it will trigger redrawing of the bound component.
 
 > **NOTE**
 >
@@ -58,7 +58,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 import { AnimatorResult } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const LOG_PRINT_DOMAIN:  number = 0xFF00;
+const LOG_PRINT_DOMAIN: number = 0xFF00;
 const PREFIX: string = '[Sample]'
 
 class MyFullDrawModifier extends DrawModifier {
@@ -428,20 +428,20 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({x:10,y:10})
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({ x: 10, y: 10 })
       }
       .borderWidth(1)
       .height(200)
       .width('45%')
 
       Column() {
-        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({x:10,y:10})
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({ x: 10, y: 10 })
       }
       .borderWidth(1)
       .height(200)
       .width('45%')
     }.height('100%')
-    .width('100%').position({x:10,y:10})
+    .width('100%').position({ x: 10, y: 10 })
 
   }
 }

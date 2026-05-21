@@ -142,6 +142,39 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 
    trace文件说明参考：[web端加载trace说明](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_systemtrace.md)。
 
+### 日志采集限制说明
+
+1. trace采集
+
+   trace采集限制：一个应用一天内最多触发一次。
+
+   开发者可通过以下两种方式查看trace采集相关日志：
+
+   - 在DevEco Studio的底部，切换到“Log”窗口，过滤open trace result关键字日志。
+
+   - 命令行窗口使用hdc shell命令在线查看日志：
+
+     ```shell
+     PS D:\xxx\xxx> hdc shell
+     $ hilog | grep "open trace result"
+     ```
+
+   trace采集结果：
+
+   - result结果为0，表示触发成功。**采集trace成功后，多次触发将不会有日志打印**。
+
+   - result结果为1203，表示触发失败，原因是触发次数超过限制。
+
+2. 堆栈采集
+
+    默认情况：应用在一个生命周期内，一天最多触发一次主线程超时事件堆栈采集流程。
+
+    开发者可通过自定义参数接口设置采集次数：
+
+    - [setEventConfig接口参数设置说明](hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)中的report_times_per_app参数，取值范围为[1, 3]。
+
+    - [configEventPolicy接口参数设置说明](hiappevent-watcher-mainthreadjank-events.md#configeventpolicy接口参数设置说明)中的reportTimesPerApp参数，取值范围为[1, 3]。
+
 ## 任务执行超时检测
 
 ### 检测原理
