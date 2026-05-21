@@ -11,6 +11,10 @@
 
 本章节介绍如何从显式Want跳转切换到应用链接跳转。
 
+> **说明：**
+>
+> 暂不支持显式Want中flag字段的转换。如需使用flag字段，建议仍采用显式Want跳转的方式。
+
 ## 启动其他应用的UIAbility
 
 1. 将待跳转的应用安装到设备，在其对应UIAbility的[module.json5配置文件](../quick-start/module-configuration-file.md)中配置skills标签的entities字段、actions字段和uri字段：
