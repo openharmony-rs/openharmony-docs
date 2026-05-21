@@ -130,7 +130,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let encodeImage: image.PixelMap | undefined = undefined;
-let captrueMetadata: string = "";
+let captureMetadata: string = "";
 metadataBinding.decodeImage(encodeImage).then((metadata: string) =>{
     captrueMetadata = metadata;
 }).catch((error:BusinessError)=>{
@@ -144,7 +144,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let encodeImage: image.PixelMap | undefined = undefined;
-let captrueMetadata: string = "";
+let captureMetadata: string = "";
 if (encodeImage) {
     metadataBinding.decodeImage(encodeImage)
         .then((metadata: string) => {
