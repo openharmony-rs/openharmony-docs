@@ -23,7 +23,7 @@
 | ----------- | ------------------ | ---------------------------------------- |
 |    配置    | 在调用OH_VideoEncoder_Prepare接口前，必须调用OH_VideoEncoder_GetSurface接口获取OHNativeWindow，用于传递视频数据。 |      -      |
 |  数据输入   | 通过OHNativeWindow获取输入帧，数据通常由生产者模块（如相机）直接写入。| 通过OnNeedInputBuffer回调函数获取共享内存buffer信息，调用OH_VideoEncoder_PushInputBuffer送入数据。 |
-|   输入结束  | 必须调用OH_VideoEncoder_NotifyEndOfStream接口通知编码器输入结束。 | 在最后一个输入buffer的flags中设置AVCODEC_BUFFER_FLAGS_EOS标志。|
+|   输入结束  | 必须调用OH_VideoEncoder_NotifyEndOfStream接口通知编码器输入结束。 | 编码至最后一帧数据时，需将输入buffer的flags字段设置为AVCODEC_BUFFER_FLAGS_EOS标志，以通知编码器输入结束。|
 
 AVCodec支持的视频编码格式请参考[视频编码](avcodec-support-formats.md#视频编码)。
 
