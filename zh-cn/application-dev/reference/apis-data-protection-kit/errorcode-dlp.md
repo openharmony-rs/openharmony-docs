@@ -8,7 +8,7 @@
 
 > **说明：**
 > 
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。<br>
 > 相关文档：[DLP开发指南](../../security/DataProtectionKit)、[DLP API参考](../apis-data-protection-kit)。
 
 ## 19100001 入参错误
@@ -23,7 +23,7 @@ Invalid parameter value.
 
 **可能原因**
 
-1. 账号长度为空或长度大于1024。
+1. 账号为空或账号长度大于1024。
 
 2. 账号类型错误。
 
@@ -43,7 +43,7 @@ Invalid parameter value.
 
 **处理步骤**
 
-请传入正确的参数。
+请检查并传入符合要求的参数，包括账号长度、类型、aesKey、iv格式、系统时间与授权时间关系、Fd、tokenId、包名、appIndex、userId等。
 
 ## 19100002 加解密出错
 
@@ -53,7 +53,7 @@ Credential service busy due to too many tasks or duplicate tasks.
 
 **错误描述**
 
-启动加解密出错。
+加解密服务繁忙。
 
 **可能原因**
 
@@ -63,7 +63,7 @@ Credential service busy due to too many tasks or duplicate tasks.
 
 **处理步骤**
 
-请等待一段时间后重试。
+请等待一段时间后重试，或控制并发任务数不超过100个以避免此类错误。
 
 ## 19100003 加解密超时
 
@@ -73,7 +73,7 @@ Credential task time out.
 
 **错误描述**
 
-加解密超时。
+DLP文件加解密操作在规定时间内未完成，导致操作超时失败。
 
 **可能原因**
 
@@ -81,7 +81,7 @@ DLP文件加解密时间超过10秒。
 
 **处理步骤**
 
-请等待一段时间后重试。
+请根据以下情况处理： 1. 若当前加解密任务数过多，请等待一段时间后重试。 2. 若加解密任务重复，请取消重复任务后重试。
 
 ## 19100004 凭据服务错误
 
@@ -91,7 +91,7 @@ Credential service error.
 
 **错误描述**
 
-凭据服务错误。
+DLP凭据服务发生内部错误，无法正常提供凭据相关服务。
 
 **可能原因**
 
@@ -111,7 +111,7 @@ Credential authentication server error.
 
 **错误描述**
 
-凭据认证服务器错误。
+与凭据认证服务器通信时发生错误，无法完成凭据认证流程。
 
 **可能原因**
 
@@ -139,7 +139,7 @@ No permission to call this API, which is available only for DLP sandbox applicat
 
 **处理步骤**
 
-请确认调用场景后重试。
+请确认当前应用是否为DLP沙箱应用，该接口仅允许DLP沙箱应用调用。
 
 ## 19100007 DLP沙箱应用不允许调用此接口
 
@@ -157,7 +157,7 @@ No permission to call this API, which is available only for non-DLP sandbox appl
 
 **处理步骤**
 
-请确认调用场景后重试。
+请确认当前应用不是DLP沙箱应用，该接口不允许DLP沙箱应用调用。
 
 ## 19100008 非DLP文件
 
@@ -171,7 +171,7 @@ The file is not a DLP file.
 
 **可能原因**
 
-操作非DLP文件格式文件。
+对非DLP格式的文件执行了DLP相关操作。
 
 **处理步骤**
 
@@ -195,13 +195,13 @@ Failed to operate the DLP file.
 
 3. 关联link文件失败。
 
-4. 打开DLP文件数大于1000。
+4. 同时打开的DLP文件数超过1000个。
 
 **处理步骤**
 
 1. 请确认访问权限。
 
-2. 请等待一段时间或重启后重试。
+2. 请等待一段时间或重启后重试，并注意控制同时打开的DLP文件数量不超过1000个。
 
 <!--Del-->
 ## 19100010 只读DLP文件
@@ -212,7 +212,7 @@ The DLP file is read only.
 
 **错误描述**
 
-DLP文件只读。
+DLP文件被设置为只读模式，不允许进行写入或修改权限等操作。
 
 **可能原因**
 
@@ -222,7 +222,7 @@ DLP文件只读。
 
 **处理步骤**
 
-请确认文件权限。
+该DLP文件为只读文件，请勿尝试修改其权限或写入内容。
 <!--DelEnd-->
 
 ## 19100011 系统服务工作异常
@@ -233,7 +233,7 @@ The system ability works abnormally.
 
 **错误描述**
 
-系统服务工作异常。
+DLP相关的系统服务无法正常运行，导致相关功能不可用。
 
 **可能原因**
 
@@ -259,7 +259,7 @@ System memory is insufficient.
 
 **错误描述**
 
-内存申请失败。
+系统申请失败，无法为DLP操作申请所需的内存资源。
 
 **可能原因**
 
@@ -267,7 +267,7 @@ System memory is insufficient.
 
 **处理步骤**
 
-系统内存不足，请稍后重试，或者重启设备。
+系统内存不足，请稍后重试或重启设备。
 
 ## 19100013 用户无权限
 
@@ -277,7 +277,7 @@ The user does not have the permission.
 
 **错误描述**
 
-用户无权限。
+当前登录用户没有执行该操作或访问该DLP文件的权限。
 
 **可能原因**
 
@@ -285,7 +285,7 @@ The user does not have the permission.
 
 **处理步骤**
 
-请检查权限。
+请检查当前登录账号是否有该文件的访问权限。
 
 ## 19100014 账号未登录
 
@@ -295,7 +295,7 @@ Account not logged in.
 
 **错误描述**
 
-账号未登录。
+执行该操作需要用户先登录账号，当前账号未登录或登录状态已失效。
 
 **可能原因**
 
@@ -314,7 +314,7 @@ The system needs to be upgraded.
 
 **错误描述**
 
-系统需要升级。
+当前系统版本不支持该DLP功能，需要升级系统到支持版本才能使用。
 
 **可能原因**
 
@@ -333,11 +333,11 @@ The uri field is missing in the want parameter.
 
 **错误描述**
 
-want参数中没有uri。
+调用接口时want参数中缺少必需的uri字段。
 
 **可能原因**
 
-want参数中没有uri。
+ 调用DLP文件打开相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
 
 **处理步骤**
 
@@ -351,11 +351,11 @@ The displayName field is missing in the want parameter.
 
 **错误描述**
 
-want参数中parameters内没有displayName。
+调用接口时want参数的parameters对象中缺少必需的displayName字段。
 
 **可能原因**
 
-want参数中parameters内没有displayName。
+调用DLP文件相关API时，want参数的parameters字段中未包含displayName。displayName参数在DLP文件操作中为必填参数。
 
 **处理步骤**
 
@@ -369,7 +369,7 @@ The application is not authorized.
 
 **错误描述**
 
-应用未授权。
+当前应用未在DLP授权名单中，无权访问或操作DLP相关功能。
 
 **可能原因**
 
@@ -377,7 +377,7 @@ The application is not authorized.
 
 **处理步骤**
 
-接入授信应用名单。<!--RP1--><!--RP1End-->
+请申请加入授信应用名单，具体流程请联系相关管理人员。<!--RP1--><!--RP1End-->
 
 <!--Del-->
 ## 19100019 DLP文件已过期
@@ -388,7 +388,7 @@ The DLP file has expired.
 
 **错误描述**
 
-DLP文件已过期。
+DLP文件已超过授权期限，无法继续访问或操作文件内容。
 
 **可能原因**
 
@@ -408,7 +408,7 @@ No network connection.
 
 **错误描述**
 
-网络未连接。
+执行该操作需要网络连接，当前设备网络未连接或未认证。
 
 **可能原因**
 
@@ -455,7 +455,7 @@ Parameter error.
 
 **处理步骤**
 
-请传入正确的参数。
+请检查以下参数： 1. 确保策略格式符合要求。 2. 确保参数在有效范围内。
 
 ## 19110002 文件敏感信息识别超时
 
@@ -495,7 +495,7 @@ The file is not supported.
 
 **处理步骤**
 
-请确认传入的文件是否正确。
+请检查以下内容： 1. 确保文件路径存在且可访问。 2. 确保文件类型受支持。 3. 确保文件权限满足要求。
 
 ## 19110004 系统功能运行异常
 
@@ -519,4 +519,4 @@ A system error has occurred.
 
 **处理步骤**
 
-系统服务内部工作异常，请稍后重试，或者重启设备尝试。
+系统服务内部工作异常，请稍后重试或重启设备。
