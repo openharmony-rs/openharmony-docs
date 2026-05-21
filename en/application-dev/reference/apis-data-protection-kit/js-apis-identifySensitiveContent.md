@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -23,9 +23,9 @@ scanFile(filePath: string, identifyPolicies:Array&lt;Policy&gt;): Promise&lt;Arr
 
 Identifies sensitive content in a specified file based on the configured policy. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
+**Required permissions:** ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 **Parameters**
 
@@ -41,9 +41,9 @@ Identifies sensitive content in a specified file based on the configured policy.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Error Codes](errorcode-dlp.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | permission denied. |
 | 801 | Capability not supported. |
@@ -76,7 +76,7 @@ try {
 
 Defines the policy for sensitive content identification.
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -88,7 +88,7 @@ Defines the policy for sensitive content identification.
 
 Displays the identification result of sensitive content.
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |

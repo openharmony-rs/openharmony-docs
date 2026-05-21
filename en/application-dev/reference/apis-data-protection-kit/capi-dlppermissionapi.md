@@ -2,17 +2,17 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
 ## Overview
 
-Data loss prevention (DLP) is a system solution provided to prevent data disclosure. The **dlppermissionapi** file provides APIs for cross-device file access management, encrypted storage, and access authorization.
+Data loss prevention (DLP) is a system solution provided to prevent data disclosure. This module provides APIs for cross-device file access management, encrypted storage, and access authorization.
 
-**Since**: 14
+**Since:**:14
 
-## File Summary
+## Files
 
 | Name| Description|
 | -- | -- |
