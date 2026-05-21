@@ -204,7 +204,7 @@ mediaSource.setMimeType(mimeType);
 let playbackStrategy : media.PlaybackStrategy = {preferredBufferDuration: 20};
 // 为avPlayer设置媒体来源和播放策略
 this.avPlayer!.setMediaSource(mediaSource, playbackStrategy);
-* */
+ */
 ```
 
 ## 本地raw文件播放场景下设置URL
