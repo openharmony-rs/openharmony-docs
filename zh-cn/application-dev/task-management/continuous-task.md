@@ -130,19 +130,22 @@
 
    <!-- @[continuous_task_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/module.json5) -->
    
-   ``` json5
+   ``` JSON5
    "module": {
-       "abilities": [
-           {
-              "backgroundModes": [
-              // 长时任务类型的配置项
-              "audioRecording",
-              "bluetoothInteraction",
-              "audioPlayback"
-              ]
-           }
-       ],
-       // ...
+     // ...
+     "abilities": [
+       {
+         // ...
+         "backgroundModes": [
+           // 长时任务类型的配置项
+           "audioRecording",
+           "bluetoothInteraction",
+           "audioPlayback"
+         ],
+         // ...
+       }
+     ],
+     // ...
    }
    ```
 
