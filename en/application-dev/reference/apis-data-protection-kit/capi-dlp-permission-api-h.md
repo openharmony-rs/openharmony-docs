@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -10,15 +10,15 @@
 
 Defines the APIs for cross-device file access management, encrypted storage, and access authorization.
 
-**Library**: libohdlp_permission.so
+**Library:** libohdlp_permission.so
 
-**File to include**: <DataProtectionKit/dlp_permission_api.h>
+**File to include:** <DataProtectionKit/dlp_permission_api.h>
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
-**Since**: 14
+**Since:** 14
 
-**Related module**: [DlpPermissionApi](capi-dlppermissionapi.md)
+**Related module:** [DlpPermissionApi](capi-dlppermissionapi.md)
 
 ## Summary
 
@@ -52,7 +52,7 @@ enum DLP_ErrCode
 
 Enumerates the DLP error codes.
 
-**Since**: 14
+**Since:** 14
 
 | Enum| Description|
 | -- | -- |
@@ -74,7 +74,7 @@ enum DLP_FileAccess
 
 Enumerates the permissions on a DLP file.
 
-**Since**: 14
+**Since:** 14
 
 | Enum| Description|
 | -- | -- |
@@ -96,7 +96,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 Obtains the permission information of this DLP file.
 
-**Since**: 14
+**Since:** 14
 
 
 **Parameters**
@@ -122,7 +122,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 Obtains the original file name of a DLP file.
 
-**Since**: 14
+**Since:** 14
 
 
 **Parameters**
@@ -148,7 +148,7 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 
 Checks whether this application is running in a DLP sandbox environment.
 
-**Since**: 14
+**Since:** 14
 
 
 **Parameters**
@@ -173,7 +173,7 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 
 Sets sandbox application configuration.
 
-**Since**: 14
+**Since:** 14
 
 
 **Parameters**
@@ -198,7 +198,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 Obtains the sandbox application configuration.
 
-**Since**: 14
+**Since:** 14
 
 
 **Parameters**
@@ -223,7 +223,7 @@ DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 
 Cleans the sandbox application configuration.
 
-**Since**: 14
+**Since:** 14
 
 **Return value**
 
