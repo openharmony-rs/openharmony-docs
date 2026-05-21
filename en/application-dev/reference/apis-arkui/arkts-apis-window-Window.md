@@ -1919,7 +1919,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 <!--RP14-->Sets whether to show the status bar and three-button navigation bar in the main window. The visibility of the status bar and three-button navigation bar is controlled by **status** and **navigation**, respectively.<!--RP14End--> This API uses a promise to return the result.
 
-The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as floating windows or split-screen mode). It takes effect once the main window enters full-screen or maximized mode.
+The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as floating window or split-screen mode). It takes effect once the main window enters full-screen or maximized mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1996,7 +1996,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 Sets whether to show the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> of the main window. This API uses a promise to return the result.
 
-The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. This API does not take effect when it is called by a child window. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as floating windows or split-screen mode). It takes effect once the main window enters full-screen or maximized mode.
+The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. This API does not take effect when it is called by a child window. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as floating window or split-screen mode). It takes effect once the main window enters full-screen or maximized mode.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -2075,7 +2075,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 Sets the properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar of the main window. This API uses a promise to return the result.
 
-This API does not take effect when it is called by a child window. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as floating windows or split-screen mode). It takes effect once the main window enters full-screen or maximized mode.
+This API does not take effect when it is called by a child window. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as floating window or split-screen mode). It takes effect once the main window enters full-screen or maximized mode.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -2211,7 +2211,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 Sets the text color of the status bar in the main window. This API uses a promise to return the result.
 
-Setting the status bar text color is not supported for child windows. Calling this API on a child window will have no effect. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as floating windows or split-screen mode). It takes effect once the main window enters full-screen or maximized mode.
+Setting the status bar text color is not supported for child windows. Calling this API on a child window will have no effect. The setting does not take effect when the main window is in non-full-screen or non-maximized mode (such as floating window or split-screen mode). It takes effect once the main window enters full-screen or maximized mode.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -5211,7 +5211,7 @@ on(type: 'windowWillClose', callback: Callback&lt;void, Promise&lt;boolean&gt;&g
 
 Subscribes to main window or child window closing events. This event is triggered only when the user clicks the close button in the system-provided title bar to close the window. It is not triggered when the window is closed in other ways.
 
-The callback function triggered by this API is executed asynchronously. For synchronous close events of child windows, refer to [on('subWindowClose')](#onsubwindowclose12). For synchronous close events of the main window, refer to [on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14).
+The callback function in this API is executed synchronously. For synchronous close events of child windows, refer to [on('subWindowClose')](#onsubwindowclose12). For synchronous close events of the main window, refer to [on('windowStageClose')](arkts-apis-window-WindowStage.md#onwindowstageclose14).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -5940,7 +5940,7 @@ Sets whether the main window displays a shadow. This API uses a promise to retur
 
 **Device behavior differences**:
 - Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices but returns error code 801 on other devices.
-- Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, and on tablets when the [free window](../../windowmanager/window-terminology.md#freeform-window) or [desktop](../../windowmanager/window-terminology.md#desktop-mode) mode is enabled. In other scenarios, this API returns error code 801.
+- Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, and on tablets when the [free window](../../windowmanager/window-terminology.md#freeform-window) or [desktop mode](../../windowmanager/window-terminology.md#desktop-mode) is enabled. In other scenarios, this API returns error code 801.
 
 **Required permission**: ohos.permission.SET_WINDOW_TRANSPARENT
 
@@ -10139,7 +10139,7 @@ Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on
 
 | Type| Description|
 | ---------------------- | ------------------------------------------------------------------------------------ |
-| number | Radius of the rounded corner of the child window or floating window, measured in vp.|
+| number | Radius of the rounded corner of the child window or global floating window, in vp.|
 
 **Error codes**
 
@@ -11014,7 +11014,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 <!--RP14-->Sets whether to show the status bar and three-button navigation bar in the main window. The visibility of the status bar and three-button navigation bar is controlled by **status** and **navigation**, respectively.<!--RP14End--> This API uses an asynchronous callback to return the result.<br>From API version 12, <!--RP5-->this API does not take effect on 2-in-1 devices.<!--RP5End-->
 
-The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. This API does not take effect when it is called by a child window. The configuration does not take effect in non-full-screen mode (such as floating window or split-screen mode).
+The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. This API does not take effect when it is called by a child window. The setting does not take effect in non-full-screen mode (such as floating window or split-screen mode).
 
 > **NOTE**
 >
@@ -11860,7 +11860,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallbac
 
 <!--RP14-->Sets whether to show the status bar and three-button navigation bar in the main window. The visibility of the status bar and three-button navigation bar is controlled by **status** and **navigation**, respectively.<!--RP14End--> This API uses an asynchronous callback to return the result.<br>From API version 12, <!--RP5-->this API does not take effect on 2-in-1 devices.<!--RP5End-->
 
-The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. This API does not take effect when it is called by a child window. The configuration does not take effect in non-full-screen mode (such as floating window or split-screen mode).
+The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. This API does not take effect when it is called by a child window. The setting does not take effect in non-full-screen mode (such as floating window or split-screen mode).
 
 > **NOTE**
 >
@@ -11917,7 +11917,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
 <!--RP14-->Sets whether to show the status bar and three-button navigation bar in the main window. The visibility of the status bar and three-button navigation bar is controlled by **status** and **navigation**, respectively.<!--RP14End--> This API uses a promise to return the result.<br>From API version 12, <!--RP5-->this API does not take effect on 2-in-1 devices.<!--RP5End-->
 
-The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. This API does not take effect when it is called by a child window. The configuration does not take effect in non-full-screen mode (such as floating window or split-screen mode).
+The return value does not indicate that the status bar and <!--RP15-->three-button navigation bar<!--RP15End--> are shown or hidden. This API does not take effect when it is called by a child window. The setting does not take effect in non-full-screen mode (such as floating window or split-screen mode).
 
 > **NOTE**
 >
@@ -11977,7 +11977,7 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: Async
 
 Sets the properties of the <!--Del-->three-button navigation bar and <!--DelEnd-->status bar of the main window. This API uses an asynchronous callback to return the result. <!--RP5-->This API does not take effect on 2-in-1 devices.<!--RP5End-->
 
-This API does not take effect when it is called by a child window. The configuration does not take effect in non-full-screen mode (such as floating window or split-screen mode).
+This API does not take effect when it is called by a child window. The setting does not take effect in non-full-screen mode (such as floating window or split-screen mode).
 
 > **NOTE**
 >
@@ -13095,3 +13095,4 @@ promise.then(() => {
   console.error(`Failed to set the window to be touchable. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+<!--no_check-->
