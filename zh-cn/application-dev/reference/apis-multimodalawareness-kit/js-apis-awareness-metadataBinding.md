@@ -243,7 +243,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName: string = '';
 try {
-  metadataBinding.offOperationSubmitMetadata(bundleName, (evnet: int)=>{});
+  metadataBinding.offOperationSubmitMetadata(bundleName, (event: int)=>{});
 } catch (error) {
   console.error("Unsubscribe screenshot event" + error);
 }
