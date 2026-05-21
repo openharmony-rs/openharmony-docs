@@ -246,7 +246,7 @@ let path = `${this.context.filesDir}/${this.fileName}`;
 let file = await fs.open(path);
 fdPath = fdPath + '' + file.fd;
 this.avPlayer!.url = fdPath;
-* */
+ */
 ```
 
 **情况二：本地文件播放**
