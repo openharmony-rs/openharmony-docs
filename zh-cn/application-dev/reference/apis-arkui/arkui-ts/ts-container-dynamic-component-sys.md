@@ -204,7 +204,7 @@ struct Index {
   }
   ```
 
-- 为提供方页面配置路由main_pages.json
+- 为提供方页面配置路由`main_pages.json`。
 
   ``` JSON
   {
