@@ -8,12 +8,12 @@
 
 ![mouse](figures/device_mouse.png)
 
-The mouse is a key input device, especially for 2-in-1 devices. It can perform actions such as tapping or swiping via button clicks and trigger scrolling gestures using the wheel. Additional mouse buttons generate events that are delivered to applications through **MouseEvent** and **AxisEvent**.
+The mouse device is an essential input device for 2-in-1 devices. It enables click or swipe actions through button presses, scrolling through the scroll wheel, and also has other buttons. These are reported to the application via [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) and [AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent), respectively.
 
 >**NOTE**
 >
 >All single-finger touch events and gesture events can be triggered and responded to using a left mouse click.
-> - For example, to implement page redirection invoked by clicking a button with support for finger touches and left mouse clicks, you only need to bind an **onClick** event to the button.
+> - For example, to implement a feature where clicking a [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) navigates to another page, supporting both finger tap and left mouse click, you can achieve this by simply binding a single [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) event.
 > - If you want to implement different effects for the finger touch and the left mouse click, use the **source** parameter in the **onClick** callback to determine whether the current event is triggered by a finger touch or a mouse device.
 
 ## Processing Mouse Movement
@@ -29,7 +29,7 @@ onMouse(event: (event?: MouseEvent) => void)
 Triggered when a mouse event occurs. If the mouse pointer performs an action (**MouseAction**) on a component bound to this API, the corresponding callback is triggered and receives a [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) object as its parameter. Event bubbling is supported and can be customized; by default, events bubble between parent and child components. This API is typically used to implement custom mouse interaction logic.
 
 
-The **MouseEvent** object in the callback provides the following information: coordinates (displayX, displayY, windowX, windowY, x, y), button ([MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)), action ([MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)), timestamp ([timestamp](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)), target area ([EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)), and event source ([SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype8)). The **stopPropagation** callback of **MouseEvent** can be used to prevent the event from bubbling up.
+The **MouseEvent** object in the callback provides the following information: coordinates (displayX, displayY, windowX, windowY, x, y), button ([MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)), action ([MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)), timestamp ([timestamp](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#properties)), target area ([EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)), and event source ([SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype8)). The **stopPropagation** callback of **MouseEvent** can be used to prevent the event from bubbling up.
 
 > **NOTE**
 >
@@ -211,7 +211,7 @@ When the mouse pointer moves from inside the **Button** component to outside, th
 
 ## Processing Mouse Buttons
 
-When a user presses a mouse button, a mouse press event is triggered. You can access key details about the event through the [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) object, such as the timestamp and the specific button pressed (**MouseButton**: such as left or right). In addition, the [getModifierKeyState](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#getmodifierkeystate12) API allows you to detect the state of modifier keys (**Ctrl**, **Alt**, and **Shift**) on the physical keyboard at the time of the mouse interaction. By combining mouse and keyboard input, you can implement advanced interaction patterns like multi-selection.
+When a user presses a mouse button, a mouse down event is triggered. You can access key details about the event through the [MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent) object, such as the timestamp and the specific button pressed (**MouseButton**: such as left or right). In addition, the [getModifierKeyState](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#getmodifierkeystate12) API allows you to detect the state of modifier keys (**Ctrl**, **Alt**, and **Shift**) on the physical keyboard at the time of the mouse interaction. By combining mouse and keyboard input, you can implement advanced interaction patterns like multi-selection.
 
 The following example demonstrates multi-selection functionality using mouse button processing:
 
@@ -310,7 +310,11 @@ struct ListExample {
               // Check the Ctrl key state.
               let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
+                try {
+                  isCtrlPressing = event.getModifierKeyState(['Ctrl']);
+                } catch (error) {
+                  console.error('Get modifier key state failed!')
+                }
               }
               // If the mouse is clicked without the Ctrl key held down, forcefully clear other selected items and keep only the current item selected.
               if (!isCtrlPressing) {
@@ -335,6 +339,7 @@ struct ListExample {
       .friction(0.6)
       .edgeEffect(EdgeEffect.Spring)
       .width('90%')
+      .height('100%')
     }
     .width('100%')
     .height('100%')
@@ -353,7 +358,7 @@ The mouse wheel is primarily used for vertical scrolling. When a user scrolls th
 Mouse wheel axis events follow a structured lifecycle: Each scroll interaction begins with an [AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN event. When scrolling ends, an [AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).End event is emitted. For slow or intermittent scrolling, multiple **BEGIN** and **END** events may be reported. The **axisVertical** value represents the angular change during a single scroll tick. Key characteristics include:
 - It reflects the delta of one scroll action, not the cumulative scroll distance.
 - The value is influenced by system-level wheel sensitivity settings.
-- The system's zoom configuration is communicated using the **scrollStep** property in the **AxisEvent** object.
+- The sensitivity is specified by the [AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent) parameter **scrollStep** in system settings.
 - A forward scroll (wheel up) yields a negative value. A backward scroll (wheel down) yields a positive value.
 
 Built-in scrollable components automatically handle wheel input. No additional configuration is required.
