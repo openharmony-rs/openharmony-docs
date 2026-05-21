@@ -905,7 +905,8 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 19100001 | Invalid parameter value. | 19100011 | The system ability works abnormally. |
+| 19100001 | Invalid parameter value. |
+| 19100011 | The system ability works abnormally. |
 | 19100016 | The uri field is missing in the want parameter. |
 | 19100017 | The displayName field is missing in the want parameter. |
 
