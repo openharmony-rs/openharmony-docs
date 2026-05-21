@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-ColorManagement 继承自 [ColorManagementQuery](arkts-apis-camera-ColorManagementQuery.md)。
+ColorManagement继承自[ColorManagementQuery](arkts-apis-camera-ColorManagementQuery.md)。
 
 色彩管理类，用于设置色彩空间参数。
 

@@ -31,10 +31,13 @@ The following provides examples with different data passing methods.
 
 7. Call [OH_CryptoMac_GetLength](../../reference/apis-crypto-architecture-kit/capi-crypto-mac-h.md#oh_cryptomac_getlength) to obtain the length of the MAC, in bytes.
 
-```C++
+<!-- @[message_auth_hmac_single_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/hmac/singleTime.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
 static OH_CryptoSymKey *GenerateHmacKey(const char *algoName)
 {
@@ -52,19 +55,10 @@ static OH_CryptoSymKey *GenerateHmacKey(const char *algoName)
     return keyCtx;
 }
 
-static OH_Crypto_ErrCode doTestHmacOnce()
+static OH_Crypto_ErrCode CreateHmacContext(OH_CryptoSymKey *keyCtx, OH_CryptoMac **ctx)
 {
-    // Generate an HMAC key, using SM3 as the digest algorithm.
-    OH_CryptoSymKey *keyCtx = GenerateHmacKey("HMAC|SM3");
-    if (keyCtx == nullptr) {
-        return CRYPTO_OPERTION_ERROR;
-    }
-
-    // Create an HMAC generator.
-    OH_CryptoMac *ctx = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("HMAC", &ctx);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("HMAC", ctx);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
@@ -74,71 +68,112 @@ static OH_Crypto_ErrCode doTestHmacOnce()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(digestName)),
         .len = strlen(digestName)
     };
-    ret = OH_CryptoMac_SetParam(ctx, CRYPTO_MAC_DIGEST_NAME_STR, &digestNameData);
+    ret = OH_CryptoMac_SetParam(*ctx, CRYPTO_MAC_DIGEST_NAME_STR, &digestNameData);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_CryptoMac_Destroy(*ctx);
         return ret;
     }
 
     // Initialize the HMAC object.
-    ret = OH_CryptoMac_Init(ctx, keyCtx);
+    ret = OH_CryptoMac_Init(*ctx, keyCtx);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_CryptoMac_Destroy(*ctx);
         return ret;
     }
 
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode UpdateHmacData(OH_CryptoMac *ctx)
+{
     // Pass in full data.
     const char *message = "hmacTestMessage";
     Crypto_DataBlob input = {
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(message)),
         .len = strlen(message)
     };
-    ret = OH_CryptoMac_Update(ctx, &input);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Update(ctx, &input);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode FinalizeHmac(OH_CryptoMac *ctx, Crypto_DataBlob *out, uint32_t *macLen)
+{
     // Finalize HMAC generation and obtain the result.
-    Crypto_DataBlob out = {0};
-    ret = OH_CryptoMac_Final(ctx, &out);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Final(ctx, out);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
     // Obtain the length of the HMAC value.
-    uint32_t macLen = 0;
-    ret = OH_CryptoMac_GetLength(ctx, &macLen);
+    ret = OH_CryptoMac_GetLength(ctx, macLen);
     if (ret != CRYPTO_SUCCESS) {
-        OH_Crypto_FreeDataBlob(&out);
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_Crypto_FreeDataBlob(out);
         return ret;
+    }
+
+    return CRYPTO_SUCCESS;
+}
+
+OH_Crypto_ErrCode doTestHmacOnce()
+{
+    OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoMac *ctx = nullptr;
+    Crypto_DataBlob out = {0};
+    OH_Crypto_ErrCode ret = CRYPTO_SUCCESS;
+    uint32_t macLen = 0;
+
+    // Generate an HMAC key, using SM3 as the digest algorithm.
+    keyCtx = GenerateHmacKey("HMAC|SM3");
+    if (keyCtx == nullptr) {
+        ret = CRYPTO_OPERTION_ERROR;
+        goto cleanup;
+    }
+
+    // Create an HMAC context.
+    ret = CreateHmacContext(keyCtx, &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // Pass in full data.
+    ret = UpdateHmacData(ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // Complete HMAC calculation.
+    ret = FinalizeHmac(ctx, &out, &macLen);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
     }
 
     printf("HMAC calculation success, length: %u\n", macLen);
 
+cleanup:
     // Free resources.
     OH_Crypto_FreeDataBlob(&out);
     OH_CryptoMac_Destroy(ctx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    return CRYPTO_SUCCESS;
+    return ret;
 }
 ```
+
 
 ### Generating an HMAC by Passing in Data by Segment
 
 Unlike the first method, this one requires calling [OH_CryptoMac_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-mac-h.md#oh_cryptomac_update) multiple times to process segmented data.
 
-```C++
+<!-- @[message_auth_hmac_segmentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/cpp/types/project/hmac/segmentation.cpp) -->
+
+``` C++
+
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
 static OH_CryptoSymKey *GenerateHmacKey(const char *algoName)
 {
@@ -156,19 +191,10 @@ static OH_CryptoSymKey *GenerateHmacKey(const char *algoName)
     return keyCtx;
 }
 
-static OH_Crypto_ErrCode doTestHmacBySegments()
+static OH_Crypto_ErrCode CreateHmacContext(OH_CryptoSymKey *keyCtx, OH_CryptoMac **ctx)
 {
-    // Generate an HMAC key, using SM3 as the digest algorithm.
-    OH_CryptoSymKey *keyCtx = GenerateHmacKey("HMAC|SM3");
-    if (keyCtx == nullptr) {
-        return CRYPTO_OPERTION_ERROR;
-    }
-
-    // Create an HMAC generator.
-    OH_CryptoMac *ctx = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("HMAC", &ctx);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Create("HMAC", ctx);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
@@ -178,21 +204,24 @@ static OH_Crypto_ErrCode doTestHmacBySegments()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(digestName)),
         .len = strlen(digestName)
     };
-    ret = OH_CryptoMac_SetParam(ctx, CRYPTO_MAC_DIGEST_NAME_STR, &digestNameData);
+    ret = OH_CryptoMac_SetParam(*ctx, CRYPTO_MAC_DIGEST_NAME_STR, &digestNameData);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_CryptoMac_Destroy(*ctx);
         return ret;
     }
 
     // Initialize the HMAC object.
-    ret = OH_CryptoMac_Init(ctx, keyCtx);
+    ret = OH_CryptoMac_Init(*ctx, keyCtx);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_CryptoMac_Destroy(*ctx);
         return ret;
     }
 
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode ProcessHmacSegments(OH_CryptoMac *ctx)
+{
     // Pass in data by segment.
     const char *message = "aaaaa.....bbbbb.....ccccc.....ddddd.....eee";
     size_t messageLen = strlen(message);
@@ -204,39 +233,73 @@ static OH_Crypto_ErrCode doTestHmacBySegments()
             .data = reinterpret_cast<uint8_t *>(const_cast<char *>(message + i)),
             .len = currentSize
         };
-        ret = OH_CryptoMac_Update(ctx, &segment);
+        OH_Crypto_ErrCode ret = OH_CryptoMac_Update(ctx, &segment);
         if (ret != CRYPTO_SUCCESS) {
-            OH_CryptoMac_Destroy(ctx);
-            OH_CryptoSymKey_Destroy(keyCtx);
             return ret;
         }
     }
 
+    return CRYPTO_SUCCESS;
+}
+
+static OH_Crypto_ErrCode FinalizeHmac(OH_CryptoMac *ctx, Crypto_DataBlob *out, uint32_t *macLen)
+{
     // Finalize HMAC generation and obtain the result.
-    Crypto_DataBlob out = {0};
-    ret = OH_CryptoMac_Final(ctx, &out);
+    OH_Crypto_ErrCode ret = OH_CryptoMac_Final(ctx, out);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
         return ret;
     }
 
     // Obtain the length of the HMAC value.
-    uint32_t macLen = 0;
-    ret = OH_CryptoMac_GetLength(ctx, &macLen);
+    ret = OH_CryptoMac_GetLength(ctx, macLen);
     if (ret != CRYPTO_SUCCESS) {
-        OH_Crypto_FreeDataBlob(&out);
-        OH_CryptoMac_Destroy(ctx);
-        OH_CryptoSymKey_Destroy(keyCtx);
+        OH_Crypto_FreeDataBlob(out);
         return ret;
+    }
+
+    return CRYPTO_SUCCESS;
+}
+
+OH_Crypto_ErrCode doTestHmacBySegments()
+{
+    OH_CryptoSymKey *keyCtx = nullptr;
+    OH_CryptoMac *ctx = nullptr;
+    Crypto_DataBlob out = {0};
+    OH_Crypto_ErrCode ret = CRYPTO_SUCCESS;
+    uint32_t macLen = 0;
+
+    // Generate an HMAC key, using SM3 as the digest algorithm.
+    keyCtx = GenerateHmacKey("HMAC|SM3");
+    if (keyCtx == nullptr) {
+        ret = CRYPTO_OPERTION_ERROR;
+        goto cleanup;
+    }
+
+    // Create an HMAC context.
+    ret = CreateHmacContext(keyCtx, &ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // Process data by segment.
+    ret = ProcessHmacSegments(ctx);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
+    }
+
+    // Complete HMAC calculation.
+    ret = FinalizeHmac(ctx, &out, &macLen);
+    if (ret != CRYPTO_SUCCESS) {
+        goto cleanup;
     }
 
     printf("HMAC calculation success, length: %u\n", macLen);
 
+cleanup:
     // Free resources.
     OH_Crypto_FreeDataBlob(&out);
     OH_CryptoMac_Destroy(ctx);
     OH_CryptoSymKey_Destroy(keyCtx);
-    return CRYPTO_SUCCESS;
+    return ret;
 }
 ```

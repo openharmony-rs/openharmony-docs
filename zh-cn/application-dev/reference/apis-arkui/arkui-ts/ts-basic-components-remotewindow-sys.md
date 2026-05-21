@@ -60,11 +60,11 @@ RemoteWindow(target: WindowAnimationTarget)
 
 | 名称 | 类型 | 只读  | 可选 | 说明 |
 | ------- | ------ | ------ | ------ | ----------------------- |
-| left   | number | 否 | 否 | 动画窗口左上角相对于屏幕横坐标。|
-| top    | number | 否 | 否 | 动画窗口左上角相对于屏幕纵坐标。|
-| width  | number | 否 | 否 | 动画窗口宽度大小。|
-| height | number | 否 | 否 | 动画窗口高度大小。|
-| radius | number | 否 | 否 | 动画窗口圆角大小。|
+| left   | number | 否 | 否 | 动画窗口左上角相对于屏幕横坐标，单位为px。 |
+| top    | number | 否 | 否 | 动画窗口左上角相对于屏幕纵坐标，单位为px。 |
+| width  | number | 否 | 否 | 动画窗口宽度大小，单位为px。 |
+| height | number | 否 | 否 | 动画窗口高度大小，单位为px。 |
+| radius | number | 否 | 否 | 动画窗口圆角大小，单位为px。 |
 
 ## 属性
 

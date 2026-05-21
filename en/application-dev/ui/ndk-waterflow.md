@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fangyuhao-->
+<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The ArkUI framework provides a waterfall flow container component through NDK APIs. This component arranges items of different sizes in a waterfall-like manner from top to bottom.
@@ -14,7 +14,7 @@ To use the NDK APIs for building UIs, follow the instructions in [Integrating wi
 
 ## Implementing Lazy Loading
 ### NodeAdapter Overview
-The NDK provides the **NodeAdapter** object as an alternative to the **LazyForEach** functionality in ArkTS for on-demand generation of child components. For details, see [NodeAdapter Overview](../ui/ndk-loading-long-list.md#nodeadapter-overview).
+The NDK provides the **NodeAdapter** object to replace the [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md) function on the ArkTS side for generating child components as needed. For details, see [NodeAdapter Overview](../ui/ndk-loading-long-list.md#nodeadapter-overview).
 
 ### Lazy Loading Adapter Implementation
 
@@ -201,17 +201,17 @@ private:
 
 } // namespace NativeModule
 
-#endif //MYAPPLICATION_FLOWITEMADAPTER_H
+#endif // MYAPPLICATION_FLOWITEMADAPTER_H
 ```
 
 ## Creating a Section
-Implement the **WaterflowSection** class to manage grouping within WaterFlow components, where **SectionOption** describes the configuration parameters for each section. In the class constructor, create an **ArkUI_WaterFlowSectionOption** object, which is destroyed in the destructor.
+Use the **WaterflowSection** class to manage groups in [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md). **SectionOption** is used to describe the configuration information of a section. Create a [ArkUI_WaterFlowSectionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md) object in the constructor of the class and destroy it in the destructor.
 
 
-<!-- @[worterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
+<!-- @[waterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
 
 ``` C
-//WaterflowSection.h
+// WaterflowSection.h
 
 #ifndef MYAPPLICATION_WATERFLOWSECTION_H
 #define MYAPPLICATION_WATERFLOWSECTION_H

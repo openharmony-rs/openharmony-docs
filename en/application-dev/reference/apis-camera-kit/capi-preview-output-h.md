@@ -52,6 +52,7 @@ The file declares the preview output concepts.
 | [Camera_ErrorCode OH_PreviewOutput_GetActiveFrameRate(Camera_PreviewOutput* previewOutput, Camera_FrameRateRange* frameRateRange)](#oh_previewoutput_getactiveframerate) | - | Obtains the active frame rates of a PreviewOutput instance.|
 | [Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)](#oh_previewoutput_isbandwidthcompressionsupported) | - | Checks whether preview bandwidth compression is supported. This involves reducing data volume through encoding to minimize bandwidth usage during transmission.|
 | [Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutput* previewOutput, bool enabled)](#oh_previewoutput_enablebandwidthcompression) | - | Enables preview bandwidth compression.<br>This function must be called prior to [OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig). Otherwise, the preview output stream format will be affected.|
+| [Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput* previewOutput, const char* surfaceId)](#oh_previewoutput_adddeferredsurface) | - | Adds a surface for delayed preview.|
 
 ## Function Description
 
@@ -499,7 +500,7 @@ Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutpu
 
 **Description**
 
-Enables preview bandwidth compression.<br>This function must be called prior to [OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig). Otherwise, the preview output stream format will be affected.
+Enables preview bandwidth compression.<br> This function must be called prior to [OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig). Otherwise, the preview output stream format will be affected.
 
 **Since**: 23
 
@@ -515,3 +516,28 @@ Enables preview bandwidth compression.<br>This function must be called prior to 
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>     **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>    **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The camera session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+
+### OH_PreviewOutput_AddDeferredSurface()
+
+```c
+Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput* previewOutput, const char* surfaceId)
+```
+
+**Description**
+
+Adds a surface for delayed preview.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | Pointer to the **PreviewOutput** instance of the surface ID to add.|
+| const char* surfaceId | Pointer to the surface ID used for creating the **Camera_PreviewOutput** instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.|

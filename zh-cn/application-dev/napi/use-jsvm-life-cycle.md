@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行生命周期相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -209,7 +209,7 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
         return nullptr;
     }
 
-    //  减少传入引用的引用计数并返回生成的引用计数
+    // 减少传入引用的引用计数并返回生成的引用计数
     uint32_t num = 0u;
     OH_JSVM_ReferenceUnref(env, g_ref, &num);
     OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_ReferenceUnref, count = %{public}d.", num);

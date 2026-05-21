@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ExtensionContext是[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的上下文环境，继承自[Context](js-apis-inner-application-context.md#context)。
 

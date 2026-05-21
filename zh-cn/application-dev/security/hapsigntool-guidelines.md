@@ -227,6 +227,23 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
         ├── -inForm          # 输入的原始文件的格式，枚举值：zip、elf或bin；zip应用包对应zip，二进制工具对应elf，bin应用包为bin，默认zip；可选项
     ```
 
+13. 企业应用包重签名。
+
+    ```log
+    resign-enterprise-app : 企业应用包重签名
+        ├── -mode          # 签名模式，必填项，包括localSign、remoteSign
+        ├── -keyAlias      # 密钥别名，必填项
+        ├── -keyPwd        # 密钥口令，localSign模式时为必填项
+        ├── -appCertFile   # 应用签名证书文件（证书链，顺序为实体证书-中间CA证书-根证书），必填项
+        ├── -inForm        # 输入的原始文件的格式，枚举值：zip；当前只支持zip应用包；可选项
+        ├── -inFile        # 输入的原始文件，已签名的企业应用包，必填项
+        ├── -signAlg       # 签名算法，必填项，包括SHA256withECDSA / SHA384withECDSA
+        ├── -keystoreFile  # 密钥库文件，localSign模式时为必填项
+        ├── -keystorePwd   # 密钥库口令，localSign模式时为必填项
+        ├── -outFile       # 输出重签名后的包文件，必填项
+        ├── -pwdInputMode  # 密码输入模式，0表示密码从命令行参数中获取，1表示通过控制台交互输入密码，默认为0，可选项
+    ```
+
 ### 签名步骤
 对应用包签名的完整步骤为：
 
@@ -577,7 +594,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
    - **可能原因**
 
-     （1）openharmmony系统的配置文件不支持该app包的设备类型
+     （1）openharmony系统的配置文件不支持该app包的设备类型
 
      （2）debug类型的json文件中device-ids中没有你的设备udid
 

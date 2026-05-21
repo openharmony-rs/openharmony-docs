@@ -1,7 +1,7 @@
 # @ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -95,8 +95,8 @@ onCancelMessages(hashCodes: Array\<string>): void
 const TAG = 'NotificationSubscriberExtAbility';
 
 export default class NotificationSubscriberExtAbility extends NotificationSubscriberExtensionAbility {
-    onCancelMessages(hashCodes: Array<string>): void {
-        console.info(`${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
-    }
+  onCancelMessages(hashCodes: Array<string>): void {
+    console.info(`${TAG} onCancelMessages. hashCodes: ${JSON.stringify(hashCodes)}`);
+  }
 }
 ```

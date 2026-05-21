@@ -21,17 +21,6 @@
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 ```
 
-## ShellCmdResult
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
-| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| stdResult | string | 否   | 否   | Shell命令的标准输出内容。 |
-| exitCode  | number | 否   | 否   | Shell命令的结果码。 |
-
 ## 使用说明
 
 通过abilityDelegator中的[executeShellCommand](js-apis-inner-application-abilityDelegator.md#executeshellcommand)方法来获取。
@@ -53,3 +42,14 @@ abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data) => {
   }
 });
 ```
+
+## ShellCmdResult
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
+| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| stdResult | string | 否   | 否   | Shell命令的标准输出内容。 |
+| exitCode  | number | 否   | 否   | Shell命令的结果码。 |

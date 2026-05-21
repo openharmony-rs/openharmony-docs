@@ -1,8 +1,8 @@
 # 自定义组件的生命周期（推荐）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @seaside_wu1; @xin11112-->
-<!--Designer: @chenbenzhi-->
+<!--Owner: @xin11112-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -120,6 +120,42 @@ ComponentRecycle: MethodDecorator
 
 参见[生命周期使用示例](#生命周期使用示例)。
 
+## \@ComponentActive
+
+ComponentActive: MethodDecorator
+
+自定义组件由非激活状态转变为激活状态后，调用此装饰器装饰的函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+参见[激活和非激活生命周期使用示例](#激活和非激活生命周期使用示例)。
+
+## \@ComponentInactive
+
+ComponentInactive: MethodDecorator
+
+自定义组件由激活状态转变为非激活状态后，调用此装饰器装饰的函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**示例：**
+
+参见[激活和非激活生命周期使用示例](#激活和非激活生命周期使用示例)。
+
 ## CustomComponentLifecycle
 
 CustomComponentLifecycle用于监控自定义组件生命周期的变化，开发者可以通过[UIUtils.getLifecycle](../js-apis-stateManagement.md#getlifecycle23)获取CustomComponentLifecycle实例。
@@ -151,6 +187,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @ComponentBuilt
   myBuilt() {
+    // CustomComponentLifecycle.getCurrentState用于获得自定义组件当前的生命周期状态
     hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', UIUtils.getLifecycle(this).getCurrentState());
   }
   build() {
@@ -243,7 +280,7 @@ aboutToDisappear函数在自定义组件被销毁之前执行。不建议在abou
 
 aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
-当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造函数。当params存在时，表示V1组件的复用回调。
+当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造参数。当params存在时，表示V1组件的复用回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -388,6 +425,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 struct Index {
   @ComponentBuilt
   myBuilt() {
+    // CustomComponentLifecycleState.BUILT代表自定义组件为已展开状态
     hilog.info(0x0000, 'testTag', 'Index Lifecycle is %{public}d', CustomComponentLifecycleState.BUILT);
   }
   build() {
@@ -451,6 +489,7 @@ struct Child {
   @State switch: boolean = true;
   @ComponentInit
   myInit() {
+    // 自定义组件创建完毕后，触发myInit方法
     hilog.info(0x0000, 'testTag', 'Child myInit');
   }
   @ComponentAppear
@@ -485,6 +524,60 @@ struct Child {
     }
     .borderWidth(1)
     .height(100)
+  }
+}
+```
+
+## 激活和非激活生命周期使用示例
+
+本示例展示了组件回收复用场景下，自定义组件激活和非激活生命周期回调函数触发情况，建议按以下步骤执行：
+
+1. 点击change，Child组件第一次创建。
+
+2. 点击change，Child组件触发回收事件和\@ComponentInactive装饰的函数。
+
+3. 点击change，Child组件触发复用事件和\@ComponentActive装饰的函数。
+
+```ts
+import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  @State changeChild: boolean = false;
+
+  build() {
+    Column() {
+      Button('change').onClick(() => {
+        // 切换Child组件的显示状态，触发组件的回收或复用
+        this.changeChild = !this.changeChild;
+      })
+      if (this.changeChild) {
+        Child()
+      }
+    }
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @ComponentActive
+  myActive() {
+    // 组件从非激活状态变为激活状态时触发
+    console.info(`Child myActive`);
+  }
+
+  @ComponentInactive
+  myInactive() {
+    // 组件从激活状态变为非激活状态时触发
+    console.info(`Child myInactive`);
+  }
+
+  build() {
+    Text('Child')
   }
 }
 ```

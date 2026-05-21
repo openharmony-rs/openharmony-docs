@@ -1,8 +1,8 @@
 # ArkWeb_ControllerAPI
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -12,7 +12,7 @@ typedef struct {...} ArkWeb_ControllerAPI
 
 ## 概述
 
-Controller相关的Native API结构体。在调用接口前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。Controller相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
+Controller相关的Native API结构体。在调用接口前建议通过[ARKWEB_MEMBER_MISSING](capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致崩溃。Controller相关接口需在UI线程中调用OH_ArkWeb_GetNativeAPI方法获取。
 
 **起始版本：** 12
 
@@ -62,7 +62,7 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 | 参数项 | 描述 |
 | -- | -- |
 | const char* webTag | Web组件名称。                   |
-|const ArkWeb_JavaScriptObject* javascriptObject  | 注入的JavaScript对象。           |
+| const ArkWeb_JavaScriptObject* javascriptObject  | 注入的JavaScript对象。           |
 
 ### registerJavaScriptProxy()
 
@@ -195,7 +195,7 @@ ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_
 
 | 类型 | 说明                                                                                                                                                         |
 |----|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 返回值错误码。   | [ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 执行成功。<br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。<br>[ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode) 初始化失败，没有找到与webTag绑定的Web组件。 |
+| [ArkWeb_ErrorCode](capi-arkweb-error-code-h.md#arkweb_errorcode)   | 返回值错误码。<br>[ARKWEB_SUCCESS](capi-arkweb-error-code-h.md#arkweb_errorcode) 执行成功。<br>[ARKWEB_INVALID_PARAM](capi-arkweb-error-code-h.md#arkweb_errorcode) 参数无效。<br>[ARKWEB_INIT_ERROR](capi-arkweb-error-code-h.md#arkweb_errorcode) 初始化失败，没有找到与webTag绑定的Web组件。 |
 
 ### getLastJavascriptProxyCallingFrameUrl()
 
@@ -205,7 +205,7 @@ const char* (*getLastJavascriptProxyCallingFrameUrl)()
 
 **描述：**
 
-获取调用JavaScriptProxy最后一帧的url。在JavaScriptProxy调用的线程上调用。通过registerJavaScriptProxy或者javaScriptProxy注入JavaScript对象到window对象中。该接口可以获取最后一次调用注入对象frame的url。在被调用函数内部获取url才能获取到正确值，可以在函数里内部获取url后保存下来。
+获取调用JavaScriptProxy最后一帧的url。在JavaScriptProxy调用的线程上调用。通过registerJavaScriptProxy或者javaScriptProxy注入JavaScript对象到window对象中。该接口可以获取最后一次调用注入对象frame的url。在被调用函数内部获取url才能获取到正确值，可以在函数内部获取url后保存下来。
 
 **起始版本：** 14
 
@@ -218,7 +218,7 @@ const char* (*getLastJavascriptProxyCallingFrameUrl)()
 ### registerJavaScriptProxyEx()
 
 ```c
-void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject,const char* permission)
+void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)
 ```
 
 **描述：**
@@ -233,7 +233,7 @@ void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWi
 | -- | -- |
 | const char* webTag | Web组件名称。 |
 |  const [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md)* proxyObject | 注册的对象。 |
-| const char* permission | json格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 |
+| const char* permission | JSON格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 |
 
 ### registerAsyncJavaScriptProxyEx()
 
@@ -253,5 +253,5 @@ void (*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObj
 | -------- | -------- |
 | const char* webTag | Web组件名称。  | 
 | const ArkWeb_ProxyObject* proxyObject | 注册的对象。  | 
-| const char* permission | json格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 | 
+| const char* permission | JSON格式字符串，默认值为空。该字符串用来配置JSBridge的权限限制，可以配置对象和方法级别。 | 
 

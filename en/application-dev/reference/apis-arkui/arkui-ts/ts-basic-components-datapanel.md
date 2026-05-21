@@ -105,7 +105,7 @@ Sets an array of data segment colors.
 
 | Name| Type                                                        | Mandatory| Description                                                       |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | Yes  | Array of data segment colors. A value of the **ResourceColor** type indicates a solid color, and A value of the **LinearGradient** type indicates a color gradient.|
+| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | Yes  | Array of data segment colors. A value of the **ResourceColor** type indicates a solid color, and a value of the **LinearGradient** type indicates a color gradient. The array defaults to gradient colors.<br>Default colors for the nine data segments: [{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }], [{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }], [{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }], [{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }], [{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }], [{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }], [{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }], [{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }], [{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }]|
 
 ### trackBackgroundColor<sup>10+</sup>
 
@@ -266,7 +266,7 @@ struct DataPanelExample {
           DataPanel({ values: [50, 12, 8, 5], max: 100, type: DataPanelType.Circle }).width(168).height(168)
           Column() {
             Text('75').fontSize(35).fontColor('#182431')
-            Text('Used: 98 GB/128 GB') .fontSize(8.17).lineHeight(11.08).fontWeight(500).opacity(0.6)
+            Text('Used: 98 GB/128 GB').fontSize(8.17).lineHeight(11.08).fontWeight(500).opacity(0.6)
           }
 
           Text('%')

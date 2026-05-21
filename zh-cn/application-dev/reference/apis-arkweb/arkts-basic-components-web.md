@@ -1,8 +1,8 @@
 # 组件描述
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -58,7 +58,7 @@ Web(value: WebOptions)
 >
 > 不支持转场动画。
 >
-> 同一页面的多个Web组件，必须绑定不同的WebviewController。
+> 为了保证各Web组件间的独立性和性能隔离，同一页面内的多个Web组件应分别绑定不同的WebviewController实例。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -66,7 +66,7 @@ Web(value: WebOptions)
 
 | 参数名        | 类型                                     | 必填   | 说明                                     |
 | ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | 定义Web选项。 |
+| value        | [WebOptions](./arkts-basic-components-web-i.md#weboptions)   | 是    | Web组件的初始化配置选项，用于设置加载的网页资源（src）、绑定的控制器（controller）以及渲染模式等行为参数。具体属性结构请参考WebOptions接口定义。 |
 
 **示例：**
 
@@ -211,7 +211,7 @@ Web组件指定共享渲染进程。
   }
   ```
 
-在“src\main\resources\rawfile”文件夹下创建index.html：
+在“src/main/resources/rawfile”文件夹下创建index.html：
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -269,6 +269,7 @@ Web组件指定共享渲染进程。
    }
    ```
 
+   <!--code_no_check-->
    ```ts
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
@@ -295,6 +296,7 @@ Web组件指定共享渲染进程。
 
    以filesDir为例，获取沙箱路径。若想获取其他路径，请参考[应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
+   <!--code_no_check-->
    ```ts
    // xxx.ets
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

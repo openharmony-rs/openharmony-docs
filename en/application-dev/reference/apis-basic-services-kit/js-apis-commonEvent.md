@@ -1,4 +1,4 @@
-# @ohos.commonEvent (Common Event)
+# @ohos.commonEvent (Common Event) (Deprecated)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
@@ -10,9 +10,8 @@
 The **CommonEvent** module provides capabilities to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data.
 
 > **NOTE**
-> - The APIs provided by this module are no longer maintained since API version 9. You are advised to use [@ohos.commonEventManager](js-apis-commonEventManager.md).
 >
-> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [@ohos.commonEventManager](js-apis-commonEventManager.md) instead.
 
 ## Modules to Import
 
@@ -33,7 +32,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 Publishes a common event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -49,7 +48,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 ```ts
 import Base from '@ohos.base';
 
-// Callback for common event publication
+// Callback for common event publication.
 function publishCB(err:Base.BusinessError) {
     if (err.code) {
         console.error(`publish failed, code is ${err.code}`);
@@ -69,7 +68,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 Publishes a common event with given properties. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish-1) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish-1) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -91,11 +90,11 @@ import CommonEventManager from '@ohos.commonEventManager';
 // Information of a common event.
 let options:CommonEventManager.CommonEventPublishData = {
     code: 0,             // Initial code of the common event.
-    data: "initial data",// Initial data of the common event.
+    data: "initial data", // Initial data of the common event.
     isOrdered: true  // The common event is an ordered one.
 }
 
-// Callback for common event publication
+// Callback for common event publication.
 function publishCB(err:Base.BusinessError) {
     if (err.code) {
         console.error(`publish failed, code is ${err.code}`);
@@ -115,7 +114,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 Creates a subscriber. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->This API is supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -161,7 +160,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 Creates a subscriber. This API uses a promise to return the result.
 
 > **NOTE**
->This API is supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -205,7 +204,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 Subscribes to common events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->This API is supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.subscribe](js-apis-commonEventManager.md#commoneventmanagersubscribe) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.subscribe](js-apis-commonEventManager.md#commoneventmanagersubscribe) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -261,7 +260,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 Unsubscribes from common events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->This API is supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.unsubscribe](js-apis-commonEventManager.md#commoneventmanagerunsubscribe) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [commonEventManager.unsubscribe](js-apis-commonEventManager.md#commoneventmanagerunsubscribe) instead.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 

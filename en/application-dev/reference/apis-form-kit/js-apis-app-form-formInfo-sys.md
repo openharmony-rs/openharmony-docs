@@ -1,17 +1,17 @@
 # @ohos.app.form.formInfo (formInfo) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **formInfo** module provides types and enums related to the widget information and state.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md).
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md).
 
 ## Modules to Import
 
@@ -33,9 +33,10 @@ Defines the widget information.
 | resizable<sup>20+</sup> | boolean  | Yes   | Yes    | Whether the widget can be resized by dragging. The value must be in the **supportDimensions** configuration list of the widget or the widget with the same **groupId**.<br>- **true**: The widget can be resized.<br>- **false**: The widget cannot be resized.|
 | groupId<sup>20+</sup> | string     | Yes   | Yes    | Common ID of a group of widgets. If the values of **groupId** of multiple widgets are the same and the value of **resizable** is **true**, the **supportDimensions** configuration of multiple widgets is shared. For example, if the **groupId** values of widgets A and B are the same and the **resizable** values are **true**, widget A can be adjusted to any size specified by **supportDimensions**.<br>It is recommended that this field be set when multiple widgets with the same functionality need to be resized.|
 | isTemplateForm<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is a template widget.<br>- **true**: The widget is a template widget.<br>- **false**: The widget is not a template widget.|
-| isStandbySupported<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| isStandbyAdapted<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget has been adapted to the landscape standby mode.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| isPrivacySensitive<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is privacy-sensitive.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| isStandbySupported<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
+| isStandbyAdapted<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget has been adapted to the landscape standby mode.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
+| isPrivacySensitive<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is privacy-sensitive.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.<br>**Atomic service API**: This API can be used in atomic services since API version 23.<br>**Model restriction**: This API can be used only in the stage model.|
+| isFontScaleFollowSystem | boolean  | No   | Yes    | Whether the widget font scales with the system settings. The default value is **true**.<br>-&nbsp;**true**: yes<br>-&nbsp;**false**: no<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
 
 ##  FormParam
 
@@ -52,6 +53,8 @@ Enumerates widget parameters.
 | TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | Template widget data.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | Display name of a template widget.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | Template widget description.<br>**System API**: This is a system API. |
+| FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | Widget font size scaling key.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0 |
+| FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | Widget font weight scaling key.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0 |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -227,7 +230,7 @@ Defines the parameters for a scene-based widget.
 | Name| Type| Read-Only| Optional| Description                                                                                                                                             |
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | No| No | ExtensionAbility name, for example, LiveFormExtensionAbility name of the widget provider.                                    |
-| disabledDesktopBehaviors | string | No| Yes | The options are **SWIPE_DESKTOP**, **PULL_DOWN_SEARCH**, **LONG_CLICK**, and **DRAG**. You can select one or more options. Use a vertical bar (\|) in between to concatenate two different operations, for example, SWIPE_DESKTOP\|PULL_DOWN_SEARCH. By default, no operation is disabled.|
+| disabledDesktopBehaviors | string | No| Yes | The options are **SWIPE_DESKTOP**, **PULL_DOWN_SEARCH**, **LONG_CLICK**, and **DRAG**. If multiple options are used, use vertical bars (\|) to separate them. For example, **SWIPE_DESKTOP\|PULL_DOWN_SEARCH**. By default, no operation is disabled.|
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 

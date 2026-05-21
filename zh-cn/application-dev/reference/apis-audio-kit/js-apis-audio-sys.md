@@ -1,8 +1,8 @@
 # @ohos.multimedia.audio (音频管理)(系统接口)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -453,9 +453,26 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                                | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
+| processedStreamInfo<sup>24+</sup> | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 处理后的音频流信息。 |
 | micInStreamInfo                          | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)                      | 否 | 否 | 麦克风音频流信息。   |
 | capturerInfo                        | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。         |
 | ecStreamInfo | [AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8) | 否 | 是 | 回声消除音频流信息。<br>若未设置此属性，采集器将仅录制麦克风输入的音频流。    |
+
+## AudioCapturerMicInData<sup>24+</sup>
+
+音频采集器数据，包含处理后的音频数据和未经任何处理的麦克风输入（mic-in）音频数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
+| data | ArrayBuffer | 否 | 否 | 处理后的音频数据缓冲区。 |
+| micInData | ArrayBuffer | 否 | 否 | 麦克风输入音频数据缓冲区。 |
+| ecData | ArrayBuffer | 否 | 是 | 回声参考音频数据缓冲区。<br>如果采集器配置未设置ecStreamInfo，则该字段为空，详情请参考[AudioCapturerMicInConfig](#audiocapturermicinconfig23)。 |
 
 ## VolumeAdjustType<sup>10+</sup>
 
@@ -842,7 +859,7 @@ forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | volumeType     | [AudioVolumeType](#audiovolumetype)                       | 是   | 应用程序期望控制的音频音量类型。 |
-| duration |number | 是   | 无音量键事件时，控制音量类型的持续时间。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
+| duration |number | 是   | 无音量键事件时，控制音量类型的持续时间，单位为秒。当计时器到期时，强制音量类型设置将被取消，最大持续时间不得超过10秒。如果持续时间设置为-1，则取消该设置。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
@@ -987,7 +1004,7 @@ try {
 
 getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
-根据应用ID获取指定应用的音量（范围为0到100）。使用Promise异步回调。
+根据应用ID获取指定应用的音量百分比（范围为0到100）。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -1003,7 +1020,7 @@ getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回应用的音量（范围为[0, 100]）。 |
+| Promise&lt;number&gt; | Promise对象，返回应用的音量百分比，范围为[0, 100]。 |
 
 **错误码：**
 
@@ -1029,7 +1046,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-根据应用ID设置指定应用的音量（范围为[0, 100]）。使用Promise异步回调。
+根据应用ID设置指定应用的音量百分比（范围为[0, 100]）。使用Promise异步回调。
 
 **系统接口：** 该接口为系统接口。
 
@@ -1040,7 +1057,7 @@ setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 | 参数名     | 类型                                      | 必填 | 说明       |
 | ---------- | ---------------------------------------- | ---- |----------|
 | uid    | number                                   | 是   | 表示应用ID。   |
-| volume    | number                                   | 是   | 要设置的音量值。 |
+| volume    | number                                   | 是   | 要设置的音量百分比，范围为[0, 100]。 |
 
 **返回值：**
 
@@ -3264,6 +3281,45 @@ async function getExcludedDevices(){
 }
 ```
 
+## getActiveOutputDeviceDescriptors
+
+getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
+
+获取当前音频设备场景下的活跃输出设备描述符。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型                                                         | 说明                      |
+| ------------------------------------------------------------ | ------------------------- |
+| Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise对象，返回活跃输出设备描述符列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system application. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Succeeded in getting active output device descriptors, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get active output device descriptors. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## AudioRendererChangeInfo<sup>9+</sup>
 
 描述音频渲染器更改信息。
@@ -3930,7 +3986,7 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean\>): void
 取消监听空间音频渲染开关状态变化事件。使用callback异步回调。
 
 > **说明：**
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offspatializationenabledchangeforanydevice12)替代。
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off('spatializationEnabledChangeForAnyDevice')](#offspatializationenabledchangeforanydevice12)替代。
 
 **系统接口：** 该接口为系统接口。
 
@@ -4370,7 +4426,7 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean\>): void
 取消监听头动跟踪开关状态变化事件。使用callback异步回调。
 
 > **说明：**
-> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#offheadtrackingenabledchangeforanydevice12)替代。
+> 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用[off('headTrackingEnabledChangeForAnyDevice')](#offheadtrackingenabledchangeforanydevice12)替代。
 
 **系统接口：** 该接口为系统接口。
 
@@ -5676,3 +5732,215 @@ audio.createMicInAudioCapturer(audioCapturerMicInConfig).then((data) => {
   console.error(`AudioCapturer Created : ERROR : ${err}`);
 });
 ```
+
+### onReadMicInData<sup>24+</sup>
+
+onReadMicInData(callback: Callback\<AudioCapturerMicInData>): void
+
+订阅Mic-In音频数据读取回调。使用callback异步回调。
+
+> **说明：**
+>
+> - 此回调的优先级高于`onReadData`回调。如果同时订阅两者，仅会触发此回调。
+> - 当有可供读取的音频缓冲区、可继续读取更多音频数据时，会触发此回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| callback | Callback<[AudioCapturerMicInData](#audiocapturermicindata24)> | 是 | 回调函数，返回读取到的音频数据缓冲区。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Caller is not a system application. |
+| 6800103 | Operation not permitted at running state. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioEcStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioProcessedStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioMicInStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT,
+  capturerFlags: 0
+};
+
+let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
+  processedStreamInfo: audioProcessedStreamInfo,
+  micInStreamInfo: audioMicInStreamInfo,
+  ecStreamInfo: audioEcStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+// data表示处理后的音频数据，micInData表示原始Mic-In音频数据。
+// ecData表示回声参考音频数据；如果未配置ecStreamInfo，该字段可能为空。
+let readMicInDataCallback: Callback<audio.AudioCapturerMicInData> =
+  (data: audio.AudioCapturerMicInData): void => {
+    let ecDataLength: number = data.ecData ? data.ecData.byteLength : 0;
+    console.info(`processed data length: ${data.data.byteLength}`);
+    console.info(`mic-in data length: ${data.micInData.byteLength}`);
+    console.info(`echo reference data length: ${ecDataLength}`);
+  };
+
+async function registerReadMicInDataCallback(): Promise<void> {
+  try {
+    // 先创建Mic-In采集器实例，再注册数据读取回调。
+    let audioCapturer: audio.AudioCapturer | null =
+      await audio.createMicInAudioCapturer(audioCapturerMicInConfig);
+    if (audioCapturer === null) {
+      console.error('AudioCapturer Created : ERROR : audioCapturer is null');
+      return;
+    }
+    // 注册成功后，当有可读取的音频缓冲区时会触发readMicInDataCallback。
+    audioCapturer.onReadMicInData(readMicInDataCallback);
+    console.info('Succeeded in registering onReadMicInData callback.');
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to create AudioCapturer. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+### offReadMicInData<sup>24+</sup>
+
+offReadMicInData(callback?: Callback\<AudioCapturerMicInData>): void
+
+取消监听Mic-In音频数据读取回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| callback | Callback<[AudioCapturerMicInData](#audiocapturermicindata24)> | 否 | 需要取消监听的回调函数，默认值为空。不传入时，表示取消该事件的所有监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permitted at running state. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioMicInStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT,
+  capturerFlags: 0
+};
+
+let audioCapturerMicInConfig: audio.AudioCapturerMicInConfig = {
+  micInStreamInfo: audioMicInStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let readMicInDataCallback: Callback<audio.AudioCapturerMicInData> =
+  (data: audio.AudioCapturerMicInData): void => {
+    console.info(`mic-in data length: ${data.micInData.byteLength}`);
+  };
+
+async function unregisterReadMicInDataCallback(): Promise<void> {
+  try {
+    let audioCapturer: audio.AudioCapturer | null =
+      await audio.createMicInAudioCapturer(audioCapturerMicInConfig);
+    if (audioCapturer === null) {
+      console.error('AudioCapturer Created : ERROR : audioCapturer is null');
+      return;
+    }
+
+    audioCapturer.onReadMicInData(readMicInDataCallback);
+
+    // 取消指定回调的监听。
+    audioCapturer.offReadMicInData(readMicInDataCallback);
+
+    // 取消该事件的所有监听。
+    audioCapturer.offReadMicInData();
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to create AudioCapturer. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
+## AudioRendererOptions<sup>8+</sup>
+
+音频渲染器选项信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称         | 类型                                               | 只读 | 可选 | 说明               |
+| ------------ | ------------------------------------------------- | ---- |---| ------------------ |
+| originalAppIdInfo | [AppIdInfo](#appidinfo) | 否 | 是 | 表示音频流的原始应用ID信息。<br> **起始版本：** 26.0.0 |
+
+## AppIdInfo
+
+应用ID信息，包含应用的UID（标识应用身份）、PID（标识运行中的进程）、Token ID（用于常规身份识别与权限校验）和FullToken ID（携带应用完整身份权限信息，用于原始应用溯源与全链路权限校验）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称         | 类型                                               | 只读 | 可选 | 说明               |
+| ------------ | ------------------------------------------------- | ---- |---| ------------------ |
+| appUid       | number                                            | 否   | 否 | 应用UID，用于标识应用身份。    |
+| appPid       | number                                            | 否   | 否 | 应用PID，用于标识运行中的进程。    |
+| appTokenId   | number                                            | 否   | 否 | 应用Token ID，用于常规身份识别与权限校验。    |
+| appFullTokenId | number                                            | 否   | 否 | 应用FullToken ID，携带应用完整身份权限信息，用于原始应用溯源与全链路权限校验。    |

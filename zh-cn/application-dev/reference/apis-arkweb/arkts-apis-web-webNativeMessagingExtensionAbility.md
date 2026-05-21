@@ -30,13 +30,13 @@ import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ------ | ------ | ------ |
-| context | [WebNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md) | 否 | 否 | Web原生信息通信上下文。 |
+| context | [WebNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md) | 否 | 否 | Web原生消息通信上下文。 |
 
 ### onConnectNative
 
 onConnectNative(info: ConnectionInfo): void
 
-Web原生信息连接建立时回调此方法。
+Web原生消息连接建立时回调此方法。
 
 **系统能力:** SystemCapability.Web.Webview.Core
 
@@ -67,7 +67,7 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
 
 onDisconnectNative(info: ConnectionInfo): void
 
-Web原生信息连接断开时回调此方法。
+Web原生消息连接断开时回调此方法。
 
 **系统能力:** SystemCapability.Web.Webview.Core
 

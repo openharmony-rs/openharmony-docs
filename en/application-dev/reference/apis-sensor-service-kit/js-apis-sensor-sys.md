@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **Sensor** module provides APIs for obtaining the sensor list and subscribing to sensor data. It also provides some common sensor algorithms.
@@ -445,5 +445,5 @@ Defines sensor parameters.
 
 | Name        | Type    | Read-Only| Optional| Description                     |
 | ----------- | -------- | ---- | ---- | -------------------------- |
-| deviceId    | number   | No  | Yes  | Device ID. The default value is **-1**, indicating the local device. You can use [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or [on](js-apis-sensor.md#sensorstatuschange19) to obtain the device ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.  |
-| sensorIndex   | number | No  | Yes  | Sensor index. The default value is **0**, which indicates the default sensor on the device. You can use [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or [on](js-apis-sensor.md#sensorstatuschange19) to obtain the sensor ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| deviceId    | number   | No  | Yes  | Device ID. The default value is **-1**, indicating the local device. You can use [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or [sensorStatusChange](js-apis-sensor.md#sensorstatuschange19) to obtain the device ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.  |
+| sensorIndex   | number | No  | Yes  | Sensor index. The default value is **0**, which indicates the default sensor on the device. You can use [getSensorList](js-apis-sensor.md#sensorgetsensorlist9) or [sensorStatusChange](js-apis-sensor.md#sensorstatuschange19) to obtain the sensor ID.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|

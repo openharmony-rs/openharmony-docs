@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @Fouckttt1-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -198,7 +198,7 @@ foo(c);
     export let v = 0;
     console.info(`u: ${u}`);
     
-    //应用加载失败
+    // 应用加载失败
     ```
 
 **与标准TS/JS的差异**

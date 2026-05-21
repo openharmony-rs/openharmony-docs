@@ -490,6 +490,8 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 >**NOTE**
 >
+> When the application no longer uses the network or the network is unavailable, you need to unbind the application from the specified network to prevent the application from failing to access the Internet.
+> 
 > To unbind the application from the specified network, call [setAppNet](#connectionsetappnet9) and pass a **NetHandle** object with **netId** set to **0**. For details, see the following example.
 
 ```ts
@@ -519,24 +521,55 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
+If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
+
+The following example binds the application to a Wi-Fi network. It uses the [on("netAvailable")](#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on("netLost")](#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
+// Create a NetConnection object. To bind only to the Wi-Fi network, set the network type to Wi-Fi.
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
-  // The application accesses the network using the default network.
+});
+
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
     if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   });
 });
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // When the network is lost, proactively unbind the specified network.
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -557,17 +590,17 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 >**NOTE**
 >
+> When the application no longer uses the network or the network is unavailable, you need to unbind the application from the specified network to prevent the application from failing to access the Internet.
+> 
 > To unbind the application from the specified network, call [setAppNet](#connectionsetappnet9) and pass a **NetHandle** object with **netId** set to **0**. For details, see the following example.
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
-  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
-    if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success");
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
 });
 ```
 
@@ -591,22 +624,51 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
+If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
+
+The following example binds the application to a Wi-Fi network. It uses the [on("netAvailable")](#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on("netLost")](#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
+// Create a NetConnection object. To bind only to the Wi-Fi network, set the network type to Wi-Fi.
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
+});
 
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("success");
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
 });
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // When the network is lost, proactively unbind the specified network.
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+
 ```
 
 ## connection.getAllNets
@@ -1908,8 +1970,8 @@ Sets the URL of the Proxy Auto-Configuration Script (PAC) and enables the PAC pr
 
 >**NOTE**
 >
-> 1. Currently, this API can be used to parse scripts and enable the PAC proxy capability only on PCs. For other device types, only the script address is saved and the PAC proxy capability is not enabled.<br>
-> 2. This API does not verify the URL authenticity. After the URL is set on the PC, the PAC proxy is started. If the URL is incorrect, the proxy fails to be started and the error code 2100002 is returned.
+> 1. This API can parse scripts and enable the PAC proxy capability on **PC/2in1<sup>20+</sup>**, **Phone<sup>23+</sup>**, **Tablet<sup>23+</sup>** and **TV<sup>23+</sup>** devices. For wearable devices, only the script address is saved, and the PAC proxy capability is not enabled.<br>
+> 2. This API does not verify the URL authenticity. If the URL is incorrect when the PAC proxy is enabled, the proxy fails to be enabled and error code 2100002 is returned.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 
@@ -1978,8 +2040,8 @@ Parses the specified URL proxy address based on the configured PAC script and re
 > **NOTE**
 >
 > 1. You can use [setPacFileUrl](#connectionsetpacfileurl20) or [setPacUrl](#connectionsetpacurl15) to set the PAC script.<br>
-> 2. If no PAC script is set before this interface is called, an empty string is returned.
-> 3. Currently, the [setPacFileUrl](#connectionsetpacfileurl20) interface can be used to parse scripts and enable the PAC proxy capability only for PCs. Therefore, this interface can be used to obtain PAC proxy information only for PCs. If other devices call this API, the function does not take effect and an empty string is returned.
+> 2. If no PAC script is set before this interface is called, an empty string is returned.<br>
+> 3. The [setPacFileUrl](#connectionsetpacfileurl20) API supports parsing scripts and enabling the PAC proxy capability on PC/2in1<sup>20+</sup>, Phone<sup>23+</sup>, Tablet<sup>23+</sup> and TV<sup>23+</sup> devices. Therefore, this API can be used to obtain the PAC proxy information on the preceding devices. For wearable devices, this API does not take effect, and an empty string is returned.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
@@ -2598,6 +2660,123 @@ connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) =>
   }
 }).catch((error: BusinessError) => {
   console.error(`Error fetching getSystemNetPortStates. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.queryTraceRoute
+
+queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<TraceRouteInfo[]\>
+
+Queries the network route tracing information. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> To call this API, the application needs to apply for the precise location permission. <!--RP1-->According to [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md)<!--RP1End-->, the caller needs to apply for both **ohos.permission.APPROXIMATELY_LOCATION** and **ohos.permission.LOCATION**.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.INTERNET, ohos.permission.ACCESS_NET_TRACE_INFO, ohos.permission.LOCATION, and ohos.permission.APPROXIMATELY_LOCATION
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| destination | string | Yes| Target domain name or IP address, for example, www.example.com or 8.8.8.8.|
+| option | [TraceRouteOptions](#tracerouteoptions) | No| Options for route tracing. If this parameter is not specified, the default configuration is used.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<[TraceRouteInfo](#tracerouteinfo)[]\> | Promise used to return the array of route tracing information.|
+
+**Error codes**
+
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**Example**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let options: connection.TraceRouteOptions = {
+    maxJumpNumber: 30,
+    packetsType: connection.PacketsType.NETCONN_PACKETS_ICMP
+};
+
+connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
+    console.info(JSON.stringify(data));
+}).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
+});
+```
+
+
+## connection.queryProbeResult
+
+queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInfo\>
+
+Queries network probe results. If an exception (for example, network disconnection) occurs and the request fails to be sent, the API immediately returns the result without performing subsequent probe. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is used to perform network probe on a target host for a period of time to obtain the packet loss rate and RTT information.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.INTERNET
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| destination | string | Yes| Target domain name or IP address, for example, www.example.com or 8.8.8.8.|
+| duration | number | Yes| Probe duration, in seconds. The value range is [1, 1000]. The probe interval is one second. If no exception (such as network disconnection) occurs, the probe result is returned when the probe duration expires. This field indicates the total probe duration. If the value is too large, application thread resources may be occupied for a long time.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<[ProbeResultInfo](#proberesultinfo)\> | Promise used to return the probe result.|
+
+**Error codes**
+For details about the error codes, see [Network Connection Management Error Codes](errorcode-net-connection.md) and [Universal Error Codes](../errorcode-universal.md).
+  
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**Example**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let duration: number = 10;
+
+connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
+    console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+}).catch((err: BusinessError) => {
+    console.error(JSON.stringify(err));
 });
 ```
 
@@ -3458,17 +3637,32 @@ Enumerates TCP states.
 
 |            Name        | Value  | Description       |
 | ----------------------- | ---- | ---------- |
-| ESTABLISHED | 1  | The connection is established, and data can be sent and received properly. |
-| SYN_SENT    | 2  | The client sends SYN and waits for ACK+SYN from the server (the first step of the three-way handshake).|
-| SYN_RECV    | 3  | The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).|
-| FIN_WAIT1   | 4  | The active end sends FIN and waits for ACK from the peer end.|
-| FIN_WAIT2   | 5  | The active end receives ACK of FIN and waits for ACK from the peer end.|
-| TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.|
-| CLOSE       | 7  | Initial/closed state, with no connection.|
-| CLOSE_WAIT  | 8  | The passive end receives FIN and sends ACK, and waits for FIN from the peer end.|
-| LAST_ACK    | 9  | The passive end sends FIN and waits for ACK from the peer end.|
-| LISTEN      | 10 | The server listens and waits for the client to connect.|
-| CLOSING     | 11 | Both ends send FIN and wait for ACK from each other.  |
+| TCP_ESTABLISHED | 1  | The connection is established, and data can be sent and received properly. |
+| TCP_SYN_SENT    | 2  | The client sends SYN and waits for ACK+SYN from the server (the first step of the three-way handshake).|
+| TCP_SYN_RECV    | 3  | The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).|
+| TCP_FIN_WAIT1   | 4  | The active end sends FIN and waits for ACK from the peer end.|
+| TCP_FIN_WAIT2   | 5  | The active end receives ACK of FIN and waits for ACK from the peer end.|
+| TCP_TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.|
+| TCP_CLOSE       | 7  | Initial/closed state, with no connection.|
+| TCP_CLOSE_WAIT  | 8  | The passive end receives FIN and sends ACK, and waits for FIN from the peer end.|
+| TCP_LAST_ACK    | 9  | The passive end sends FIN and waits for ACK from the peer end.|
+| TCP_LISTEN      | 10 | The server listens and waits for the client to connect.|
+| TCP_CLOSING     | 11 | Both ends send FIN and wait for ACK from each other.  |
+  
+  ## PacketsType
+
+Defines the type of network probe data packets.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| NETCONN_PACKETS_ICMP | 0 | ICMP packet type.|
+| NETCONN_PACKETS_UDP | 1 | UDP packet type.|
 
 ## HttpProxy<sup>10+</sup>
 
@@ -3592,8 +3786,8 @@ Defines the network connection properties.
 | routes        | Array\<[RouteInfo](#routeinfo)>     | No| No| Network route information.                                                                                         |
 | dnses         | Array\<[NetAddress](#netaddress)>   | No| No| Network address. For details, see [NetAddress](#netaddress).                                                             |
 | mtu           | number                              | No| No| Maximum transmission unit (MTU).                                                                                       |
-| isIPv4LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv4 route does not exist.|
-| isIPv6LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv4 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv6 route does not exist.|
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv4 route does not exist.<br>**Model restriction**: This API can be used only in the stage model.|
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv6 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv6 route does not exist.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## RouteInfo
 
@@ -3708,12 +3902,12 @@ Describes the TCP port state information.
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | No| No|Local IP address of the TCP network.                      |
-| tcpLocalPort  | number | No| Yes|Local port of the TCP network. The value range is [0, 65535]. The default value is **0**.|
-| tcpRemoteIp   | string | No| Yes|Remote IP address of the TCP network. The default value is **0.0.0.0**. |
-| tcpRemotePort | number | No| Yes|Remote port of the TCP network. The value range is [0, 65535]. The default value is **0**.|
-| tcpUid        | number | No| Yes|UID of the process that listens for the TCP port. The default value is **0**.|
-| tcpPid        | number | No| Yes|UID of the user who listens for the TCP port. The default value is **0**.|
-| tcpState      | [TcpState](#tcpstate24) | No| Yes|TCP network state. The default value is **0**. |
+| tcpLocalPort  | number | No| No|Local port of the TCP network. The value range is \[0, 65535].|
+| tcpRemoteIp   | string | No| No|Remote IP address of the TCP network. |
+| tcpRemotePort | number | No| No|Remote port of the TCP network. The value range is \[0, 65535].|
+| tcpUid        | number | No| No|UID of the user who listens for the TCP port.|
+| tcpPid        | number | No| No|PID of the process that listens for the TCP port.|
+| tcpState      | [TcpState](#tcpstate24) | No| No|TCP network status. |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
@@ -3727,9 +3921,9 @@ Describes the UDP port state information.
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
 | udpLocalIp    | string | No| No|Local IP address of the UDP network.                      |
-| udpLocalPort  | number | No| Yes|Local port of the UDP network. The value range is [0, 65535]. The default value is **0**.|
-| udpUid        | number | No| Yes|UID of the process that listens for the UDP port. The default value is **0**.|
-| udpPid        | number | No| Yes|UID of the user who listens for the UDP port. The default value is **0**.|
+| udpLocalPort  | number | No| No|Local port of the UDP network. The value range is \[0, 65535].|
+| udpUid        | number | No| No|UID of the user who listens for the UDP port.|
+| udpPid        | number | No| No|PID of the process that listens for the UDP port.|
 
 
 ## NetPortStatesInfo<sup>24+</sup>
@@ -3742,5 +3936,54 @@ Describes the information about the TCP and UDP ports that are currently listene
 
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
-| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | No| No| TCP information currently listened for by the system.  |
-| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | No| No| UDP information currently listened for by the system.  |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo](#tcpnetportstatesinfo24)\> | No| Yes| TCP information currently listened for by the system.  |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo](#udpnetportstatesinfo24)\> | No| Yes| UDP information currently listened for by the system.  |
+  
+ 
+## TraceRouteOptions
+
+Defines options for route tracing.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| maxJumpNumber | number | No| Yes| Maximum number of jumps. The value range is \[1, 30\]. The default value is **30**.|
+| packetsType | [PacketsType](#packetstype) | No| Yes| Type of the data packet used for probe. The default value is **NETCONN_PACKETS_ICMP**.|
+  
+
+## TraceRouteInfo
+
+Defines the route tracing information.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| jumpNo | number | No| No| Jump number.|
+| address | string | No| No| IP address to jump to.|
+| rtt | number[] | No| No| Round-trip time (RTT), in milliseconds. Five probe packets are sent for each jump. The array elements are the minimum, average, maximum, and standard deviation of the RTTs of these probe packets, respectively.|
+  
+
+## ProbeResultInfo
+
+Defines the network probe result information.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name| Type| Read Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| lossRate | number | No| No| Packet loss rate. The value range is \[0, 100\]. For example, 100 indicates 100% packet loss, and 50 indicates 50% packet loss.|
+| rtt | number[] | No| No| Round-trip time (RTT), in milliseconds. Multiple probe packets are sent to the target host. The number of probe packets is determined by the **duration** parameter in the [queryProbeResult](#connectionqueryproberesult) API. The array elements are the minimum, average, maximum, and standard deviation of the RTTs of these probe packets, respectively.|

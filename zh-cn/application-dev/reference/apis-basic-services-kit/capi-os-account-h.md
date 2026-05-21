@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明访问和管理系统帐号信息的API。
+声明访问和管理系统账号信息的API。
 
 **库：** libos_account_ndk.so
 
@@ -26,7 +26,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)](#oh_osaccount_getname) | 获取调用方进程所属的系统帐号的名称。 |
+| [OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)](#oh_osaccount_getname) | 获取调用方进程所属的系统账号的名称。 |
+| [OsAccount_ErrCode OH_OsAccount_GetNameByLocalId(int32_t localId, char *name, size_t name_size)](#oh_osaccount_getnamebylocalid) | 根据本地ID获取目标系统账号的名称。 |
 
 ## 函数说明
 
@@ -38,7 +39,7 @@ OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 
 **描述**
 
-获取调用方进程所属的系统帐号的名称。
+获取调用方进程所属的系统账号的名称。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -56,4 +57,34 @@ OsAccount_ErrCode OH_OsAccount_GetName(char *buffer, size_t buffer_size)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OsAccount_ErrCode](capi-os-account-common-h.md#osaccount_errcode) | OS_ACCOUNT_ERR_OK：表示成功。<br>OS_ACCOUNT_ERR_INTERNAL_ERROR：表示内部错误。<br>OS_ACCOUNT_ERR_INVALID_PARAMETER：表示buffer为NULL指针，或名称（不包括结束字符'\0'）的长度大于等于buffer_size。 |
+| [OsAccount_ErrCode](capi-os-account-common-h.md#osaccount_errcode) | OS_ACCOUNT_ERR_OK：表示成功。<br>         OS_ACCOUNT_ERR_INTERNAL_ERROR：表示内部错误。<br>         OS_ACCOUNT_ERR_INVALID_PARAMETER：表示buffer为NULL指针，或名称（不包括结束字符'\0'）的长度大于等于buffer_size。 |
+
+### OH_OsAccount_GetNameByLocalId()
+
+```c
+OsAccount_ErrCode OH_OsAccount_GetNameByLocalId(int32_t localId, char *name, size_t name_size)
+```
+
+**描述**
+
+根据本地ID获取目标系统账号的名称。
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t localId | 目标系统账号的本地ID。 |
+| char *name | 名称字符数组应包含名称及终止符（“\0”），最大长度为LOGIN_NAME_MAX（256）。 |
+| size_t name_size | 名称字符数组的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OsAccount_ErrCode](capi-os-account-common-h.md#osaccount_errcode) | OS_ACCOUNT_ERR_OK：表示成功；<br>         OS_ACCOUNT_ERR_PERMISSION_DENIED：表示权限被拒绝；<br>         OS_ACCOUNT_ERR_INTERNAL_ERROR：表示内部错误；<br>         OS_ACCOUNT_ERR_INVALID_PARAMETER：表示name为空指针或名称长度（包括结束符'\0'）大于name_size；<br>         OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND：表示未找到账号；<br>         OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT：表示账号受限，无法查询； |
+
+

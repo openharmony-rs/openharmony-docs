@@ -1,8 +1,8 @@
 # @ohos.fastbuffer (FastBuffer)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -293,7 +293,7 @@ from(array: number[]): FastBuffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| array | number[] | 是 | 指定数组。 |
+| array | number[] | 是 | 指定数组，数组内各元素的取值范围为[0, 255]。 |
 
 **返回值：**
 

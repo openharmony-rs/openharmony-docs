@@ -28,6 +28,10 @@ onRequestStart(callback: (request: WebSchemeHandlerRequest, handler: WebResource
 
 当请求开始时的回调，在该回调函数中可以决定是否拦截该请求。当回调返回false时，表示不拦截此请求，此时handler失效；当回调返回true时，表示拦截此请求。
 
+> **说明：**
+>
+> - 重定向后的URL无法单独拦截。如需拦截，必须同时对原始请求URL进行拦截。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数**：
@@ -146,9 +150,9 @@ onRequestStop(callback: Callback\<WebSchemeHandlerRequest\>): void
 
 当请求完成时的回调，仅当[onRequestStart](#onrequeststart12)回调决定拦截此请求时触发。触发的时机有以下两点：
 
-1.WebResourceHandler调用didFail或者didFinish。
+1. WebResourceHandler调用didFail或者didFinish。
 
-2.此请求因为其他原因中断。
+2. 此请求因为其他原因中断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

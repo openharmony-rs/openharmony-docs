@@ -102,7 +102,7 @@ OH_Drawing_BrushDestroy(brush);
 
 ### 接口说明
 
-矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_matrix.h](../reference/apis-arkgraphics2d/capi-drawing-matrix-h.md)。
+矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |

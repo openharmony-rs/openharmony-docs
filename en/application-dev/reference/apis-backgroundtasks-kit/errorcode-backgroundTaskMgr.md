@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -78,7 +78,7 @@ System service operation failed.
 
 **Description**
 
-When an API related to a continuous task is called, the client process fails to obtain the system service.
+When an API related to a continuous task is called, the client process fails to request the system service.
 
 **Possible Causes**
 
@@ -188,8 +188,8 @@ This error code is reported when caller information verification in a transient 
 
 **Possible Causes**
 
-1. Failed to obtain the UID or PID of the caller.
-2. Failed to obtain the bundle name of the caller.
+1. The UID or PID of the caller fails to be obtained. As a result, the verification fails.
+2. The bundle name of the caller fails to be obtained. As a result, the verification fails.
 3. The request ID passed in the API used to cancel the transient task is invalid.
 
 **Solution**
@@ -250,7 +250,7 @@ System service operation failed.
 
 **Description**
 
-When an API related to a transient task is called, the client process fails to obtain the system service.
+When an API related to a transient task is called, the client process fails to request the system service.
 
 **Possible Causes**
 
@@ -309,7 +309,7 @@ System service operation failed.
 
 **Description**
 
-When an API related to efficiency resources is called, the client process fails to obtain the system service.
+When an API related to efficiency resources is called, the client process fails to request the system service.
 
 **Possible Causes**
 

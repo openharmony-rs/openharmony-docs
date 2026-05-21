@@ -1,8 +1,8 @@
 # @ohos.util.json (JSON解析与生成)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -93,15 +93,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Object \| null | 返回ArkTS对象或null。当入参是null时，返回null。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| Object \| null | 返回ArkTS对象或null。当入参字符串为'null'时，返回null。|
 
 **示例：**
 
@@ -164,14 +156,6 @@ stringify(value: Object, replacer?: (number | string)[] | null, space?: string |
 | -------- | -------- |
 | string | 转换后的JSON字符串。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -197,7 +181,7 @@ console.info(rstStrSpace);
   "name": "John",
   "age": 30
 }
-*/
+ */
 
 let rstStrStar = JSON.stringify(person, ["name", "age"], '  &&');
 console.info(rstStrStar);
@@ -207,7 +191,7 @@ console.info(rstStrStar);
   &&"name": "John",
   &&"age": 30
 }
-*/
+ */
 
 let bigIntObj = BigInt(112233445566778899n);
 console.info(JSON.stringify(bigIntObj));
@@ -237,14 +221,6 @@ stringify(value: Object, replacer?: Transformer, space?: string | number): strin
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 转换后的JSON字符串。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -276,7 +252,7 @@ console.info(JSON.stringify(inputObj, replacer, '  '));
   "age": 30,
   "city": "CHONGQING"
 }
-*/
+ */
 ```
 
 ## JSON.has
@@ -301,14 +277,6 @@ has(obj: object, property: string): boolean
 | 类型 | 说明 |
 | -------- | -------- |
 | boolean | 返回ArkTS对象是否包含某种属性结果。true表示包含，false表示不包含。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -339,14 +307,6 @@ remove(obj: object, property: string): void
 | -------- | -------- | -------- | -------- |
 | obj | object | 是 | ArkTS对象。|
 | property | string | 是 | 属性名。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 

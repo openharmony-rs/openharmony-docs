@@ -23,13 +23,13 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份生成密钥，使用Promise方式异步返回结果。基于密钥不出TEE原则，通过promise不会返回密钥材料内容，只用于表示此次调用是否成功。
+指定用户身份生成密钥，使用Promise方式异步返回结果。基于密钥不出[TEE](../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，通过promise不会返回密钥材料内容，只用于表示此次调用是否成功。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -128,11 +128,11 @@ deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 指定用户身份删除密钥，使用Promise方式异步返回结果。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -241,11 +241,11 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 指定用户身份导入明文密钥，使用Promise方式异步返回结果。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -347,11 +347,11 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 指定用户身份获取密钥证书，使用Promise方式异步返回结果。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ATTEST_KEY, ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS 必须同时拥有两个权限。
+**需要权限：** ohos.permission.ATTEST_KEY 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -503,11 +503,11 @@ anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptio
 
 该操作需要联网进行，且耗时较长。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -665,11 +665,11 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params[]: HuksP
 
 **起始版本：** 26.0.0
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -727,7 +727,6 @@ const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const keyAliasString = "key anon local attest as user";
 
-const securityLevel = StringToUint8Array('sec_level');
 const challenge = StringToUint8Array('challenge_data');
 
 async function generateKey(alias: string) {
@@ -783,16 +782,14 @@ async function anonAttestKeyItemOfflineAsUser() {
   ];
 
   await generateKey(aliasString);
-  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, {
-    properties: properties
-  }).then((data) => {
+  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, properties).then((data) => {
     console.info('anonAttestationOffline ok!')
     console.debug(`'CERT:${JSON.stringify(data)}`)
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`CERT${i}是${data.certChains[i]}`)
     }
     console.info("anonAttestationOffline Success")
-  }).catch((err: Business) => {
+  }).catch((err: BusinessError) => {
     console.error("anonAttestationOffline fail，erroCode： " + err.code + " erroInfo： " + err.message)
   })
 }
@@ -804,11 +801,11 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 
 指定用户身份安全导入密钥，使用Promise方式异步返回结果。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1471,11 +1468,11 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 
 指定用户身份导出密钥，使用Promise方式回调异步返回的结果。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1591,11 +1588,11 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 
 指定用户身份获取密钥属性，使用Promise回调异步返回结果。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1708,11 +1705,11 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 
 指定用户身份判断密钥是否存在，使用Promise回调异步返回结果。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1824,11 +1821,11 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 
 指定用户身份操作密钥接口，使用Promise方式异步返回结果。huks.initSessionAsUser, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1838,7 +1835,7 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 | keyAlias | string                                            | 是   | initSessionAsUser操作密钥的别名。                             |
 | huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions)        | 是   | initSessionAsUser参数集合。                                   |
 
-**返回值**：
+**返回值：**
 
 | 类型                                | 说明                                               |
 | ----------------------------------- | -------------------------------------------------- |

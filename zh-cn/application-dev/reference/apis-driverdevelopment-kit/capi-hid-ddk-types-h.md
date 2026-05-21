@@ -1,10 +1,10 @@
 # hid_ddk_types.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 概述
 
@@ -183,7 +183,7 @@ enum Hid_KeyCode
 | HID_KEY_SEMICOLON = 39 | 键; |
 | HID_KEY_APOSTROPHE = 40 | 键' |
 | HID_KEY_SPACE = 57 | 键空格 |
-| HID_KEY_SLASH = 53 | 键 |
+| HID_KEY_SLASH = 53 | 键/ |
 | HID_KEY_COMMA = 51 | 键, |
 | HID_KEY_PERIOD = 52 | 键. |
 | HID_KEY_RIGHT_SHIFT = 54 | 键右shift |
@@ -197,8 +197,8 @@ enum Hid_KeyCode
 | HID_KEY_NUMPAD_7 = 71 | 数字键7 |
 | HID_KEY_NUMPAD_8 = 72 | 数字键8 |
 | HID_KEY_NUMPAD_9 = 73 | 数字键9 |
-| HID_KEY_NUMPAD_DIVIDE = 70 | 数字键 |
-| HID_KEY_NUMPAD_MULTIPLY = 55 | 数字键 |
+| HID_KEY_NUMPAD_DIVIDE = 70 | 数字小键盘上的斜杠键（/） |
+| HID_KEY_NUMPAD_MULTIPLY = 55 | 数字小键盘上的星号键（*） |
 | HID_KEY_NUMPAD_SUBTRACT = 74 | 数字键- |
 | HID_KEY_NUMPAD_ADD = 78 | 数字键+ |
 | HID_KEY_NUMPAD_DOT = 83 | 数字键. |

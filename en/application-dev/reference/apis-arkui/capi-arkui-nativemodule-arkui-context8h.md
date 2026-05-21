@@ -1,8 +1,8 @@
 # ArkUI_Context*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_Context* ArkUI_ContextHandle
 
 ## Overview
 
-Defines the handle to the ArkUI native UI context.
+Defines the pointer to the ArkUI native UI context.
 
 **Since**: 12
 

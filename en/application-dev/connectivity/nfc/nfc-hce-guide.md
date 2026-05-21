@@ -303,7 +303,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### OFFHOST Card Swipping
+### OFFHOST Card Swiping
 1. Declare the OFFHOST action, AIDs for application matching, and SEs in the **module.json5** file.
 2. Set the OFFHOST application as the default payment application.
 

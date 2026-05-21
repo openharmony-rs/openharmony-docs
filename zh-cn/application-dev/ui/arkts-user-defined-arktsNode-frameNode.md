@@ -1,8 +1,8 @@
 # 自定义组件节点 (FrameNode)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@
 
 ![zh-cn_image_frame-node01](figures/frame-node01.png)
 
-上述转换过程需要依赖额外的数据驱动，绑定至[Builder](../ui/state-management/arkts-builder.md)中，较为复杂且性能欠佳。这类框架通常依赖于ArkUI的布局、事件处理、基础的节点操作和自定义能力。大部分组件通过自定义实现，但需结合使用部分系统组件以实现混合显示，如下图示例既使用了FrameNode的自定义方法进行绘制，又使用了系统组件Column及其子组件Text，通过BuilderNode的方式将其挂载到根节点的FrameNode上混合显示。
+上述转换过程需要依赖额外的数据驱动，绑定至[Builder](../ui/state-management/arkts-builder.md)中，较为复杂且性能欠佳。这类框架通常依赖于ArkUI的布局、事件处理、基础的节点操作和自定义能力。大部分组件通过自定义实现，但需结合使用部分系统组件以实现混合显示，如下图示例既使用了[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)的自定义方法进行绘制，又使用了系统组件[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)及其子组件[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)，通过[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)的方式将其挂载到根节点的FrameNode上混合显示。
 
 ![zh-cn_image_frame-node02](figures/frame-node02.png)
 
@@ -959,7 +959,7 @@ struct Index {
 ```
 ## 通过typeNode创建具体类型的FrameNode节点
 
-通过TypeNode创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
+通过[typeNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typenode12)创建具体类型的FrameNode节点，可以根据属性获取接口来检索用户设置的属性信息。
 
 <!-- @[frameNodeTypeNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTypeNode.ets) --> 
 
@@ -1286,7 +1286,7 @@ struct Index {
 
 > **说明：**
 >
-> 在调用dispose方法后，FrameNode对象不再对应任何实际的FrameNode节点。此时，若尝试调用以下查询接口：getMeasuredSize、getLayoutPosition、getUserConfigBorderWidth、getUserConfigPadding、getUserConfigMargin、getUserConfigSize，将导致应用程序触发[jscrash](../ui/arkts-stability-guide.md#jscrash)。
+> 在调用dispose方法后，FrameNode对象不再对应任何实际的FrameNode节点。此时，若尝试调用以下查询接口：[getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)、[getLayoutPosition](../reference/apis-arkui/js-apis-arkui-frameNode.md#getlayoutposition12)、[getUserConfigBorderWidth](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigborderwidth12)、[getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12)、[getUserConfigMargin](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigmargin12)、[getUserConfigSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigsize12)，将导致应用程序触发[jscrash](../ui/arkts-stability-guide.md#jscrash)。
 >
 > 通过[getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体FrameNode节点。
 
@@ -1470,7 +1470,7 @@ struct Index {
 ```
 ## FrameNode的数据懒加载能力
 
-提供[NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12)对象替代ArkTS侧的LazyForEach功能，提供自定义节点的数据懒加载功能，实现按需迭代数据。
+提供[NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12)对象替代ArkTS侧的[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)功能，提供自定义节点的数据懒加载功能，实现按需迭代数据。
 
 > **说明：**
 >

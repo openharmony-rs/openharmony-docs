@@ -128,6 +128,8 @@ This action is not supported.
 
 确认该无障碍节点元素支持的操作列表中是否包含该操作。
 
+<!--Del-->
+
 ## 9300006 目标应用和无障碍服务建立连接失败
 
 **错误信息**
@@ -164,3 +166,24 @@ Trigger magnification failed.
 **处理步骤**
 
 先开启放大手势功能并配置放大模式。
+<!--DelEnd-->
+
+## 9300008 应用分身索引不合法
+
+**错误信息**
+
+The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist.
+
+**错误描述**
+
+应用分身索引不合法。
+
+**可能原因**
+
+该错误码表示应用分身索引不合法，可能原因如下：
+1. 应用分身索引不在合法范围，要求是大于等于0的整数。
+2. 该索引对应的应用不存在。
+
+**处理步骤**
+
+检查应用分身索引的值是否合法。

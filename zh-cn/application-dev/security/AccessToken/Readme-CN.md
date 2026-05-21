@@ -28,7 +28,7 @@
     <!--DelEnd-->
     - [企业类应用可用权限](permissions-for-enterprise-apps.md)
     - [仅MDM应用可用权限](permissions-for-mdm-apps.md)
-  - [应用权限组列表](app-permission-group-list.md)
+  - [应用权限组列表](app-permission-group-list.md)<!--RP3--><!--RP3End-->
 - 使用安全控件<!--security-components-->
   - [安全控件概述](security-component-overview.md)
   - [使用粘贴控件](pastebutton.md)

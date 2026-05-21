@@ -33,7 +33,7 @@ hasFlash(): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 设备是否支持闪光灯。true表示支持，false表示不支持。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| boolean    | 表示设备是否支持闪光灯。true表示支持闪光灯，false表示不支持闪光灯。<br>如果返回false，则[isFlashModeSupported](#isflashmodesupported11)、[setFlashMode](arkts-apis-camera-Flash.md#setflashmode11)和[getFlashMode](arkts-apis-camera-Flash.md#getflashmode11)都不会生效。<br>接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 

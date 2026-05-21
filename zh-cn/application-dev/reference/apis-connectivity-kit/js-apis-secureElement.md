@@ -1529,7 +1529,7 @@ transmit(command: number[]): Promise\<number[]>
 
 | **类型** | **说明**       |
 | -------- | -------------- |
-| Promise\<number[]> | 以Promise形式异步返回接收到的响应APDU数据，number数组。 |
+| Promise\<number[]> | 以Promise形式异步返回接收到的响应APDU数据，number数组。若芯片捕获未知异常则返回全0。 |
 
 **错误码：**
 
@@ -1556,6 +1556,7 @@ let seChannel : omapi.Channel;
 let cmdData = [0x01, 0x02, 0x03, 0x04]; // 请更改为正确的data
 try {
     seChannel.transmit(cmdData).then((response) => {
+        // 若芯片捕获未知异常则response返回全0
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'transmit error = %{public}s.', JSON.stringify(error));
@@ -1578,7 +1579,7 @@ transmit(command: number[], callback: AsyncCallback\<number[]>): void
 | **参数名** | **类型**                | **必填** | **说明**                              |
 | ---------- | ----------------------- | ------ | ------------------------------------- |
 | command    | number[]                | 是      | 需要发送到SE的APDU数据。 |
-| callback   | AsyncCallback\<number[]> | 是      | 返回接收到的响应APDU数据，number数组。  |
+| callback   | AsyncCallback\<number[]> | 是      | 返回接收到的响应APDU数据，number数组。若芯片捕获未知异常则返回全0。 |
 
 **错误码：**
 
@@ -1608,6 +1609,7 @@ try {
     if (error) {
         hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
     } else {
+        // 若芯片捕获未知异常则response返回全0
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }
     });

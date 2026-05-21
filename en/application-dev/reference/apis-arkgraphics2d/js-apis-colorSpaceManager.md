@@ -27,7 +27,7 @@ Enumerates the color space types.
 
 | Name                        | Value    | Description                   |
 | --------------------------- | ------ | ----------------------- |
-| UNKNOWN                           | 0      | Unknown type.|
+| UNKNOWN                           | 0      | Unknown type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | ADOBE_RGB_1998                    | 1      | Adobe RGB (1998).<br>The conversion function is of the Adobe RGB (1998) type.<br>The encoding range is of the Full type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | DCI_P3                            | 2      | DCI-P3.<br>The conversion function is of the Gamma 2.6 type.<br>The encoding range is of the Full type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | DISPLAY_P3                        | 3      | Display P3.<br>The conversion function is of the SRGB type.<br>The encoding range is of the Full type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -63,7 +63,7 @@ Enumerates the color space types.
 
 ## ColorSpacePrimaries
 
-Defines the color space primaries. A color space is defined by chromaticity coordinates of the red, green, and blue additive primaries, the white point, and the gamma.
+The three primary colors (red, green, blue) and white as defined by the gamut standard, whose positions in the color space are represented by (x, y) coordinates based on real-world chromaticity.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -88,7 +88,7 @@ Creates a standard color space object.
 
 **Parameters**
 
-| Parameter          | Type                    | Mandatory| Description                         |
+| Name          | Type                    | Mandatory| Description                         |
 | --------------- | ------------------------ | ---- | -----------------------------|
 | colorSpaceName  | [ColorSpace](#colorspace)| Yes  | Type of the color space.<br>**UNKNOWN** and **CUSTOM** cannot be used when creating standard color space objects.         |
 
@@ -110,11 +110,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let colorSpace: colorSpaceManager.ColorSpaceManager;
 try {
-    colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
+  let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 } catch (err) {
-    console.error(`Failed to create SRGB colorSpace. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create SRGB colorSpace. Cause: ` + JSON.stringify(err));
 }
 ```
 
@@ -128,7 +127,7 @@ Creates a custom color space object.
 
 **Parameters**
 
-| Parameter          | Type                                      | Mandatory| Description                         |
+| Name          | Type                                      | Mandatory| Description                         |
 | --------------- | ------------------------------------------ | ---- | -----------------------------|
 | primaries       | [ColorSpacePrimaries](#colorspaceprimaries)| Yes  | Primaries of the color space.              |
 | gamma           | number                                     | Yes  | Gamma value of the color space, which is a floating point number greater than 0.|
@@ -146,27 +145,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | ----------------------- |
 | 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
-| 18600001 | Invalid parameter value. Possible cause: Used UNKNOWN or CUSTOM color space type enum values to directly create a colorSpaceManager object. |
+| 18600001 | The parameter value is abnormal. |
 
 **Example**
 
 ```ts
-let colorSpace: colorSpaceManager.ColorSpaceManager;
 try {
-    let primaries: colorSpaceManager.ColorSpacePrimaries = {
-        redX: 0.1,
-        redY: 0.1,
-        greenX: 0.2,
-        greenY: 0.2,
-        blueX: 0.3,
-        blueY: 0.3,
-        whitePointX: 0.4,
-        whitePointY: 0.4
-    };
-    let gamma = 2.2;
-    colorSpace = colorSpaceManager.create(primaries, gamma);
+  let primaries: colorSpaceManager.ColorSpacePrimaries = {
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+  };
+  let gamma = 2.2;
+  let colorSpace = colorSpaceManager.create(primaries, gamma);
 } catch (err) {
-    console.error(`Failed to create colorSpace with customized primaries and gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create colorSpace with customized primaries and gamma. Cause: ` + JSON.stringify(err));
 }
 ```
 
@@ -190,21 +188,14 @@ Obtains the color space type.
 | ------------------ | ------------------------ |
 | [ColorSpace](#colorspace)  | Color space type.|
 
-**Error codes**
-
-For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
-
-| ID| Error Message|
-| ------- | ----------------------- |
-| 18600001 | The parameter value is abnormal. |
-
 **Example**
 
 ```ts
 try {
-    let spaceName = colorSpace.getColorSpaceName();
+  let spaceName = colorSpace.getColorSpaceName();
+  console.info(`spaceName: ` + spaceName.toString());
 } catch (err) {
-    console.error(`Fail to get colorSpace's name. Cause: ` + JSON.stringify(err));
+  console.error(`Fail to get colorSpace's name. Cause: ` + JSON.stringify(err));
 }
 ```
 
@@ -222,21 +213,14 @@ Obtains the coordinates of the white point in the color space.
 | ------------------ | ------------------------ |
 | Array\<number\>  | Coordinates [x, y] of the white point.|
 
-**Error codes**
-
-For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
-
-| ID| Error Message|
-| ------- | ----------------------- |
-| 18600001 | Invalid parameter value. Possible cause: Used UNKNOWN or CUSTOM color space type enum values to directly create a colorSpaceManager object. |
-
 **Example**
 
 ```ts
 try {
-    let point = colorSpace.getWhitePoint();
+  let point = colorSpace.getWhitePoint();
+  console.info(`point: ` + point.toString());
 } catch (err) {
-    console.error(`Failed to get white point. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get white point. Cause: ` + JSON.stringify(err));
 }
 ```
 
@@ -254,20 +238,13 @@ Obtains the gamma of the color space.
 | ------------------ | ------------------------ |
 | number  | Gamma of the color space.|
 
-**Error codes**
-
-For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
-
-| ID| Error Message|
-| ------- | ----------------------- |
-| 18600001 | Invalid parameter value. Possible cause: Used UNKNOWN or CUSTOM color space type enum values to directly create a colorSpaceManager object. |
-
 **Example**
 
 ```ts
 try {
-    let gamma = colorSpace.getGamma();
+  let gamma = colorSpace.getGamma();
+  console.info(`gamma: ` + gamma.toString());
 } catch (err) {
-    console.error(`Failed to get gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get gamma. Cause: ` + JSON.stringify(err));
 }
 ```

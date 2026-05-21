@@ -1,10 +1,10 @@
 # UsbDeviceMemMap
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
@@ -12,7 +12,7 @@ typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
 
 ## 概述
 
-设备内存映射，通过OH_Usb_CreateDeviceMemMap创建设备内存映射，使用内存映射后的缓冲区，可提升数据传输性能。
+设备内存映射，通过[OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap)创建设备内存映射，使用内存映射后的缓冲区，可提升数据传输性能。
 
 **起始版本：** 10
 

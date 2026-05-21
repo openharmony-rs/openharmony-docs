@@ -1,8 +1,8 @@
 # 使用AVRecorder录制音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -32,6 +32,7 @@
 - 如果需要持续录制或后台录制，请申请长时任务避免进入挂起（Suspend）状态。具体参考[长时任务开发指导](../../task-management/continuous-task.md)。
 - 录制需要在前台启动，启动后可以退后台。在后台启动录制将会失败。
 - 应用录制音频时需要使用合适的录制流类型，请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)。
+- 应用录制音频时需要切换输入设备路由，请参考[实现音频输入设备路由切换](../audio/audio-input-device-switcher.md)。
 
 ## 开发步骤及注意事项
 
@@ -94,7 +95,7 @@
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // 音频比特率。
@@ -107,7 +108,7 @@
    
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
    let filePath: string = context.filesDir + '/example.mp3';
-   let audioFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+   let audioFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    let fileFd: number = audioFile.fd; // 获取文件fd。
     
    let avConfig: media.AVRecorderConfig = {
@@ -177,7 +178,7 @@
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function audioRecording(context: common.Context): Promise<void> {
   // 创建avRecorder对象。
@@ -220,15 +221,15 @@ async function audioRecording(context: common.Context): Promise<void> {
   };
 
   // 创建文件以及设置avConfig.url。
-  let audioFile: fs.File | undefined = undefined;
+  let audioFile: fileIo.File | undefined = undefined;
   try {
     let path: string = context.filesDir + '/example.mp3'; // 文件沙箱路径，文件后缀名应与封装格式对应。
-    audioFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE); // 打开文件。
+    audioFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); // 打开文件。
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to open file, error code: ${err.code}, message: ${err.message}`);
   }
-  if (audioFile !== undefined) {
+  if (audioFile) {
     avConfig.url = 'fd://' + audioFile.fd; // 更新url。
   }
   
@@ -301,8 +302,8 @@ async function audioRecording(context: common.Context): Promise<void> {
 
   // 关闭录制文件fd。
   try {
-    if (audioFile !== undefined) {
-      await fs.close(audioFile.fd);
+    if (audioFile) {
+      await fileIo.close(audioFile.fd);
     }
   } catch (error) {
     let err = error as BusinessError;

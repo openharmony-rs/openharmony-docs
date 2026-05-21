@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -100,7 +100,7 @@ external_log日志文件所在目录的空间已达到上限，但无法删除ex
 **代码示例**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -132,22 +132,22 @@ import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
               let externalLog: string = eventInfo.params['external_log'][index];
               hilog.info(0x0000, 'testTag', `externalLog=${externalLog}`);
               // 验证访问权限：
-              let res = fs.accessSync(externalLog);
+              let res = fileIo.accessSync(externalLog);
               if (res) {
                 hilog.info(0x0000, 'testTag', `HiAppEvent file exists`);
               } else {
                 hilog.error(0x0000, 'testTag', `HiAppEvent file does not exist`);
               }
               // 验证读写权限：
-              fs.open(externalLog, fs.OpenMode.READ_WRITE).then((file: fs.File) => {
+              fileIo.open(externalLog, fileIo.OpenMode.READ_WRITE).then((file: fileIo.File) => {
               hilog.info(0x0000, 'testTag', `HiAppEvent file=${externalLog} fd=${file.fd}`);
-              fs.closeSync(file);
+              fileIo.closeSync(file);
               }).catch((err: BusinessError) => {
                 hilog.info(0x0000, 'testTag',
                 `HiAppEvent open file=${externalLog} failed with error message=${err.message}, error code=${err.code}`);
               });
               // 删除external_log日志文件：
-              fs.unlink(externalLog).then(() => {
+              fileIo.unlink(externalLog).then(() => {
                 console.info("HiAppEvent remove file:" + externalLog + " succeed");
               }).catch((err: BusinessError) => {
                 console.error("HiAppEvent remove file:" + externalLog + " failed with error message: " + err.message +

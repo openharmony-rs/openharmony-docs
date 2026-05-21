@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -794,7 +794,7 @@ struct ReusableV2Component {
 
 Repeat组件非懒加载场景中，会在删除/创建子树时触发回收/复用。
 
-<!-- @[ComponentEachPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentEachPage.ets) -->
+<!-- @[ComponentEachPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/ComponentEachPage.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -810,6 +810,7 @@ struct Index {
 
   build() {
     Column({ space: 10 }) {
+      // 点击Button切换condition，删除/创建ReusableV2Component
       Button('Delete/Create Repeat')
         .width('60%')
         .onClick(() => {

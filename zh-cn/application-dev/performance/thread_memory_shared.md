@@ -7,11 +7,15 @@
 <!--Adviser: @huipeizi-->
 
 ## 概述
+
 在应用开发中，为了避免主线程阻塞，提高应用性能，需要将一些耗时操作放在子线程中执行。此时，子线程就需要访问主线程中的数据。ArkTS采用了基于消息通信的Actor并发模型，具有内存隔离的特性，所以跨线程传输数据时需要将数据序列化，但是ArkTS支持通过可共享对象SharedArrayBuffer实现直接的共享内存。
 
 在开发应用时，如果遇到数据量较大，并且需要多个线程同时操作的情况，推荐使用SharedArrayBuffer共享内存，可以减少数据在线程间传递时需要复制和序列化的额外开销。比如，音视频解码播放、多个线程同时读取写入文件等场景。由于内存是共享的，所以在多个线程同时操作同一块内存时，可能会引起数据的紊乱，这时就需要使用锁来确保数据操作的有序性。本文将基于此具体展开说明。关于多线程的使用和原理，可参考[OpenHarmony多线程能力场景化示例实践](./multi_thread_capability.md)，本文将不再详细讲述。
+
 ## 工作原理
+
 可共享对象SharedArrayBuffer，是拥有固定长度的原始二进制数据缓冲区，可以存储任何类型的数据，包括数字、字符串等。它支持在多线程之间传递，传递之后的SharedArrayBuffer对象和原始的SharedArrayBuffer对象可以指向同一块内存，进而达到共享内存的目的。SharedArrayBuffer对象存储的数据在子线程中被修改时，需要通过原子操作保证其同步性，即下个操作开始之前务必需要保证上个操作已经结束。下面将通过示例说明原子操作保证同步性的必要性，详细代码请参考[AtomicsUsage.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/memoryShared/src/main/ets/pages/AtomicsUsage.ets)。
+
 ### 非原子操作
 
 ```javascript
@@ -83,14 +87,17 @@ sharedArrayBufferUsage(isAtomics: boolean) {
 }
 
 ```
-在这段代码中，创建了2个task，对SharedArrayBuffer分别进行了10000次自增操作，预期的结果应该是20000。点击按钮查看计算结果，就会发现最后的结果并不一定是20000，并且每次点击后，计算的结果都可能是不同的。
-这是因为SharedArrayBuffer是共享内存的，多个线程同时进行自增时，是操作的同一块内存，而自增操作并不是原子操作，需要经过以下三个步骤：
+
+在这段代码中，创建了2个task，对SharedArrayBuffer分别进行了10000次自增操作，预期的结果应该是20000。点击按钮查看计算结果，就会发现最后的结果并不一定是20000，并且每次点击后，计算的结果都可能是不同的。 这是因为SharedArrayBuffer是共享内存的，多个线程同时进行自增时，是操作的同一块内存，而自增操作并不是原子操作，需要经过以下三个步骤：
+
 - 第一步，从内存中取值
 - 第二步，对取出的值+1
 - 第三步，将结果写入内存
 
 当多个线程同时操作时，就会发生这样一种情况：A线程在第一步取值1000，第二步+1操作后是1001，在执行第三步之前，B线程也去取值了，这时由于A线程还没有将结果写入内存，所以B线程取到的值依然是1000，然后A执行第三步将1001写入了内存，而B会对1000进行+1操作并将结果1001写入同一块内存。这样就会导致明明进行了两次+1的操作，但是结果并没有变成预期的1002，而是1001。所以在这个示例中会出现结果不符合预期的情况。
+
 ### 原子操作
+
 下面修改一下代码，将自增操作改为使用Atomics.add()方法的原子操作。
 
 ```javascript
@@ -106,12 +113,16 @@ Button("原子操作")
 // ...
 
 ```
+
 点击按钮查看计算结果，就会发现不论计算多少次，结果一直都是20000。这是因为，原子操作是不可中断的一个或者一系列操作，可以保证在A线程执行完取值、计算、写入内存这三个步骤之前，不会被B线程中断，也就不会发生非原子操作示例中B线程取到旧值的情况，而是每次都能拿到A线程写入内存的新值。所以，在使用SharedArrayBuffer共享内存时，一定要注意使用原子操作保证同步性，否则就可能会造成数据的紊乱。
+
 ## 场景示例
+
 在应用开发中使用多线程时，会遇到处理复杂逻辑的情况，是无法保证整个线程都是一个原子操作的，此时就可以使用锁来解决一段代码的原子性问题。
+
 ### 锁的实现
-并发编程重在解决线程间分工、同步与互斥的问题，而实现互斥的重要方式是通过锁。示例通过Atomics和SharedArrayBuffer简单实现不可重入锁类NonReentrantLock。
-constructor()通过传入可共享对象SharedArrayBuffer初始化锁，实现多线程共享同一块内存，以作为共同操作的标志位，从而控制锁的状态。
+
+并发编程重在解决线程间分工、同步与互斥的问题，而实现互斥的重要方式是通过锁。示例通过Atomics和SharedArrayBuffer简单实现不可重入锁类NonReentrantLock。 constructor()通过传入可共享对象SharedArrayBuffer初始化锁，实现多线程共享同一块内存，以作为共同操作的标志位，从而控制锁的状态。
 
 ```javascript
 const UNLOCKED = 0;
@@ -135,6 +146,7 @@ export class NonReentrantLock {
 }
 
 ```
+
 lock()方法用于获取锁，如果获取锁失败，则线程进入阻塞状态。
 
 ```javascript
@@ -154,6 +166,7 @@ lock(): void {
 }
 
 ```
+
 tryLock()方法用于尝试获取锁，如果获取锁成功则返回true，失败返回false，但不会阻塞线程。
 
 ```javascript
@@ -163,6 +176,7 @@ tryLock(): boolean {
 }
 
 ```
+
 unlock()方法用于释放锁。
 
 ```javascript
@@ -178,9 +192,10 @@ unlock(): void {
 }
 
 ```
+
 ### 锁的应用
-示例通过多线程写入文件的场景，展示多线程不合理操作共享内存时，出现的线程不安全问题，进而导致输出文件乱码的情况。并通过使用上文实现的NonReentrantLock，解决该问题。
-主线程通过startWrite(useLock: boolean)方法，开启多线程写入文件，并通过useLock参数控制是否使用锁。
+
+示例通过多线程写入文件的场景，展示多线程不合理操作共享内存时，出现的线程不安全问题，进而导致输出文件乱码的情况。并通过使用上文实现的NonReentrantLock，解决该问题。 主线程通过startWrite(useLock: boolean)方法，开启多线程写入文件，并通过useLock参数控制是否使用锁。
 
 ```javascript
 @Component
@@ -249,6 +264,7 @@ export struct LockUsage {
 }
 
 ```
+
 子线程根据偏移量在指定位置写入文件，并通过偏移量自增，指定下次的写入位置。
 
 ```javascript
@@ -267,8 +283,8 @@ async function createWriteTask(baseDir: string, writeText: number, sabInLock: Sh
   // 初始化输出文件目录
   let filePath: string | undefined = undefined;
   filePath = baseDir + useLock ? "/useLock.txt" : "/unusedLock.txt";
-  if (!fs.accessSync(baseDir)) {
-    fs.mkdirSync(baseDir);
+  if (!fileIo.accessSync(baseDir)) {
+    fileIo.mkdirSync(baseDir);
   }
   // 利用主线程传入的SharedArrayBuffer初始化锁
   let nrl: NonReentrantLock | undefined = undefined;
@@ -284,13 +300,13 @@ async function createWriteTask(baseDir: string, writeText: number, sabInLock: Sh
       nrl.lock();
     }
     // 写入文件
-    let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
     try {
-      fs.writeSync(file.fd, str, new Option(whichLineToWrite[0], str.length));
+      fileIo.writeSync(file.fd, str, new Option(whichLineToWrite[0], str.length));
     } catch (err) {
       logger.error(`errorCode : ${err.code},errMessage : ${err.message}`);
     }
-    fs.closeSync(file);
+    fileIo.closeSync(file);
     // 修改偏移量，指定下次写入时的位置
     whichLineToWrite[0] += str.length;
     // 释放锁
@@ -301,6 +317,7 @@ async function createWriteTask(baseDir: string, writeText: number, sabInLock: Sh
 }
 
 ```
+
 从应用沙箱地址查看写入的文件，可以看到unusedLock.txt文件，所写行数不足1000行，且存在乱码，如图1所示。
 
 图1 不使用锁写入的文件

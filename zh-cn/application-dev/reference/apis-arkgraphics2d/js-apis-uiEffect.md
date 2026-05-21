@@ -13,7 +13,7 @@
 - [VisualEffect](#visualeffect)：用于添加指定VisualEffect效果到组件上。
 
 > **说明：**
-> 
+>
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -46,6 +46,8 @@ createEffect(): VisualEffect
 
 创建VisualEffect实例用于给组件添加多种effect效果。
 
+**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **返回值：**
@@ -73,7 +75,7 @@ blur(blurRadius: number): Filter
 **参数：**
 | 参数名       | 类型   | 必填 | 说明       |
 | ----------- | -------| ---- | --------- |
-| blurRadius  | number | 是   | 模糊半径。<br/>取值需大于等于0，模糊半径越大，模糊效果越强。<br/>模糊半径为0时无模糊效果。 |
+| blurRadius  | number | 是   | 模糊半径，单位为px。<br/>取值需大于等于0，模糊半径越大，模糊效果越强。<br/>模糊半径为0时无模糊效果。 |
 
 **返回值：**
 
@@ -109,6 +111,7 @@ struct UIEffectFilterExample {
     }
 }
 ```
+![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
 
 ### hdrBrightnessRatio<sup>24+</sup>
 hdrBrightnessRatio(ratio: number): Filter

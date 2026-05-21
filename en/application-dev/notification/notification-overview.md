@@ -68,3 +68,5 @@ Common notification styles in Notification Kit are as follows.
 - Notifications created by Notification Kit are displayed in the notification center or other system entries in real time. To display some scheduled notifications to remind users after the application is switched to the background or the process is terminated, for example, reminders for flash sales in shopping applications, you can use [Background Tasks Kit](../task-management/background-task-overview.md) to create notifications. Currently, notifications based on countdown, calendar, and alarm clocks are supported.
 - You can use the [getWantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent) API of [Ability Kit](../application-models/abilitykit-overview.md) to set the **WantAgent** triggered when a user taps a notification.<!--RP2-->
 <!--RP2End-->
+
+<!--RP4--><!--RP4End-->

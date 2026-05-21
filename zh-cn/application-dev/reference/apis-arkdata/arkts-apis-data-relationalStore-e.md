@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -199,6 +199,7 @@ export default class EntryAbility extends UIAbility {
 | ASSET_DELETE | 4 | 表示资产需要在云端删除。 |
 | ASSET_ABNORMAL    | 5   | 表示资产状态异常。      |
 | ASSET_DOWNLOADING | 6   | 表示资产正在下载到本地设备。 |
+| ASSET_TO_DOWNLOAD | 7 | 表示资产待下载。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SyncMode
 
@@ -298,6 +299,22 @@ export default class EntryAbility extends UIAbility {
 | ON_CONFLICT_IGNORE   | 4    | 表示当冲突发生时，跳过包含违反约束的行并继续处理 SQL 语句的后续行。 |
 | ON_CONFLICT_REPLACE  | 5    | 表示当冲突发生时，在插入或更新当前行之前删除导致约束违例的预先存在的行，并且命令会继续正常执行。 |
 
+## AssetConflictPolicy
+
+资产冲突策略枚举。请使用枚举名称而非枚举值。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+|------|---|--------------------|
+| CONFLICT_POLICY_DEFAULT | 0 | 默认冲突策略，按照端云同步模式[SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)执行。 |
+| CONFLICT_POLICY_TIME_FIRST | 1 | 基于时间优先的冲突策略。 |
+| CONFLICT_POLICY_TEMP_PATH | 2 | 基于临时路径的冲突策略。 |
+
 ## Progress<sup>10+</sup>
 
 描述端云同步过程的枚举。请使用枚举名称而非枚举值。
@@ -316,16 +333,17 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称                  | 值   | 说明                                                         |
-| --------------------- | ---- | ------------------------------------------------------------ |
-| SUCCESS               | 0    | 表示端云同步过程成功。                                       |
-| UNKNOWN_ERROR         | 1    | 表示端云同步过程遇到未知错误。                               |
-| NETWORK_ERROR         | 2    | 表示端云同步过程遇到网络错误。                               |
-| CLOUD_DISABLED        | 3    | 表示云端不可用。                                             |
+| 名称                  | 值   | 说明                                                            |
+| --------------------- | ---- |---------------------------------------------------------------|
+| SUCCESS               | 0    | 表示端云同步过程成功。                                                   |
+| UNKNOWN_ERROR         | 1    | 表示端云同步过程遇到未知错误。                                               |
+| NETWORK_ERROR         | 2    | 表示端云同步过程遇到网络错误。                                               |
+| CLOUD_DISABLED        | 3    | 表示云端不可用。                                                      |
 | LOCKED_BY_OTHERS      | 4    | 表示有其他设备正在端云同步，本设备无法进行端云同步。<br>请确保无其他设备占用云端资源后，再使用本设备进行端云同步任务。 |
-| RECORD_LIMIT_EXCEEDED | 5    | 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。 |
-| NO_SPACE_FOR_ASSET    | 6    | 表示云空间剩余空间小于待同步的资产大小。                     |
-| BLOCKED_BY_NETWORK_STRATEGY<sup>12+</sup>    | 7    | 表示端云同步被网络策略限制。                     |
+| RECORD_LIMIT_EXCEEDED | 5    | 表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。                             |
+| NO_SPACE_FOR_ASSET    | 6    | 表示云空间剩余空间小于待同步的资产大小。                                          |
+| BLOCKED_BY_NETWORK_STRATEGY<sup>12+</sup>    | 7    | 表示端云同步被网络策略限制。                                                |
+| STOP_CLOUD_SYNC    | 8    | 表示端云同步被停止。<br/>**起始版本**：26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。                                                    |
 
 ## TransactionType<sup>14+</sup>
 
@@ -369,3 +387,28 @@ export default class EntryAbility extends UIAbility {
 | ------------------ | --- | ---------------------------------------- |
 | DEVICE_COLLABORATION | 0  | 多设备协同表，各设备的数据将被隔离存储在独立的分布式表中，而非写入本地表，分布式表名为在原来表名前拼接对端设备的DeviceID标识符。|
 | SINGLE_VERSION  | 1   | 单版本表，数据通过分布式数据管理框架直接写入对端设备的本地表中。|
+
+## SyncResultCode
+
+描述设备同步状态的枚举。请使用枚举名称而非枚举值。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+| 名称                | 值   | 说明                                    |
+| ------------------ | --- | ---------------------------------------- |
+| SUCCESS | 0  | 表示同步成功。|
+| FAIL  | 1   | 表示同步失败。|
+| OFFLINE | 2  | 表示远端设备离线。|
+| INVALID_ARGS  | 3  | 表示参数无效。|
+| DISTRIBUTED_TABLE_NOT_SET | 4  | 表示本端设备或远端设备未设置分布式表。|
+| TABLE_FIELD_MISMATCH  | 5   | 表示对端设备与本端设备本地表的同步字段不一致。|
+| DISTRIBUTED_SCHEMA_MISMATCH | 6  | 表示对端设备与本端设备分布式表的Schema字段不一致，或者存在一个分布式表没有配置Schema。|
+| BUSY  | 7   | 表示数据库繁忙。|
+| CORRUPTED | 8  | 表示数据库损坏。|
+| TIMEOUT  | 9   | 表示同步操作因超时失败。常见原因包括：对端设备数据库未创建、连接中断或网络抖动导致丢包。|
+| SCHEMA_CHANGED | 10  | 表示在同步过程中表结构已更改。|
+| CONSTRAINT_VIOLATION  | 11   | 表示同步数据时违反约束条件。|

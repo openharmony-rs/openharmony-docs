@@ -276,6 +276,7 @@ export class VpnTest extends VpnExtensionAbility {
 
 ## VPN Config参数说明
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称       | 类型                                       | 只读 |可选| 说明          |
 | ------------------- | ------------------------------------------------------------ | ---- | ---|------------------------------------------------------------ |
 | addresses           | Array\<[LinkAddress](../reference/apis-network-kit/js-apis-net-connection.md#linkaddress)\> | 否   |否| VPN虚拟网卡的IP地址。                                          |

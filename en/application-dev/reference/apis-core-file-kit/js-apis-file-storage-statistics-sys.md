@@ -1,9 +1,9 @@
 # @ohos.file.storageStatistics (Application Storage Statistics) (System API)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **storageStatistics** module provides APIs for obtaining storage space information, including the space of built-in and plug-in memory cards, space occupied by different types of data, and space of application data.
@@ -554,7 +554,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
-Obtains the storage statistics of the specified user, in bytes. This API uses a promise to return the result.
+Obtains the storage statistics (in bytes) of the specified user. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 

@@ -1,13 +1,13 @@
 # Drawing Geometric Shapes (Shape)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The drawing components are used to draw graphs on the page. The **Shape** component serves as the parent container for all drawing components, and its attributes are common attributes supported by every drawing component. For details, see [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md).
+The drawing components are used to draw graphs on the page. The **Shape** component serves as the parent container for all drawing components and contains the common attributes shared by all drawing components. For details, see [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md).
 
 
 ## Creating a Drawing Component
@@ -164,7 +164,7 @@ The following examples demonstrate how to use **viewPort**:
   }
   ```
 
-  ![viewport (2)](figures/viewport (2).jpg)
+  ![viewport2](figures/viewport2.jpg)
 
 - Create a **Shape** component with a 300 x 300 size and yellow background. Set the viewport to 300 x 300. Fill the viewport with a blue rectangle and draw a 75-radius circle in the viewport. Then, apply a translation of 150 units right and 150 units down to the viewport.
 
@@ -198,7 +198,7 @@ The following examples demonstrate how to use **viewPort**:
   }
   ```
 
-  ![viewport (3)](figures/viewport (3).jpg)
+  ![viewport3](figures/viewport3.jpg)
 
 
 ## Setting Styles
@@ -309,7 +309,7 @@ You can customize the component style by setting various style attributes.
 
 - Use [antiAlias](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md#antialias) to control whether to enable anti-aliasing. The default value is **true**, indicating that anti-aliasing is enabled.
 
-  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  <!-- @[antialias_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
   // Enable anti-aliasing.
@@ -323,7 +323,7 @@ You can customize the component style by setting various style attributes.
 
   ![untitled](figures/untitled.png)
 
-  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) -->
+  <!-- @[antialias_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/AntiAlias.ets) --> 
   
   ``` TypeScript
   // Disable anti-aliasing.
@@ -547,7 +547,7 @@ You can customize the component style by setting various style attributes.
   >
   > This example uses the **strokeDashArray** attribute to create a red dashed ring by specifying the pattern of dashes and gaps along the border. For details about **strokeDashArray**, see [strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray). 
 
-  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -557,7 +557,7 @@ You can customize the component style by setting various style attributes.
       Column({ space: 10 }) {
         // Draw a circle whose diameter is 150.
         Circle({ width: 150, height: 150 })
-        // Draw a ring with a diameter of 150 mm and a red dotted border.
+        // Draw a ring with a diameter of 150 and a red dotted border.
         Circle()
           .width(150)
           .height(200)
@@ -577,10 +577,10 @@ You can customize the component style by setting various style attributes.
 
 >  **NOTE**
 >
-> Universal style attributes such as [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) and [linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md) are applied to the component's background area, not its content area.
+> Universal style attributes such as [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) and [linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient) are applied to the component's background area, not its content area.
 
 
-  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) --> 
   
   ``` TypeScript
   @Entry

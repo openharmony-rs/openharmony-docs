@@ -1,14 +1,14 @@
 # 自定义组合
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 
-自定义组合提供组件粒度的自定义能力，开发者可通过自定义组件组合已有组件来构建特定的符合业务逻辑的高级组件。组件组合的过程中可以使用布局容器和通用布局属性来对子组件进行自定义的位置排布，可以使用Canvas组件完成纯自绘，也可以使用Shape类组件，通过形状的组合，构建几何图形，实现带交互的图形动画。动画模块可针对不同类型的属性，实现灵活的动画效果。
+自定义组合提供组件粒度的自定义能力，开发者可通过自定义组件组合已有组件来构建特定的符合业务逻辑的高级组件。组件组合的过程中可以使用布局容器和通用布局属性来对子组件进行自定义的位置排布，可以使用[Canvas](arkts-drawing-customization-on-canvas.md)组件完成纯自绘，也可以使用[Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md)类组件，通过形状的组合，构建几何图形，实现带交互的图形动画。动画模块可针对不同类型的属性，实现灵活的动画效果。
 
 ## 基本概念
 

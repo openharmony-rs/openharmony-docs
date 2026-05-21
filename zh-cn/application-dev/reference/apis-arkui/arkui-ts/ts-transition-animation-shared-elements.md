@@ -27,7 +27,7 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 |      id          |  string         | 是                                         |    两个页面中id值相同且不为空字符串的组件即为共享元素，在页面转场时可显示共享元素转场动效。|
-|     options          |  [sharedTransitionOptions](#sharedtransitionoptions)       | 否     |  共享元素转场动画参数。 |
+|     options          |  [sharedTransitionOptions](#sharedtransitionoptions)       | 否     |  共享元素转场动画参数。不设置时使用默认转场动画参数。各参数具体默认值参考[sharedTransitionOptions](#sharedtransitionoptions)。 |
 
 **返回值：**
 
@@ -53,7 +53,7 @@ sharedTransition(id: string, options?: sharedTransitionOptions): T
 | ----------------- | -------------|------- | ------- | --------------------------------------------------------------|
 | duration          |     number   |  否  |    是          | 描述共享元素转场动效播放时长。<br>默认值：1000 <br>单位：毫秒<br/>取值范围：[0, +∞) |
 | curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)  | 否 | 是 | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
-| delay          |     number   |  否  |  是         | 延迟播放时间。<br>默认值：0 <br>单位：毫秒 |
+| delay          |     number   |  否  |  是         | 延迟播放时间。<br/>取值范围：[0, +∞)<br>默认值：0 <br>单位：毫秒 |
 | motionPath          | [MotionPathOptions](./ts-motion-path-animation.md#motionpathoptions)  |  否   |  是        | 运动路径信息。 |
 | zIndex          |     number   |  否   |   是           | 设置Z轴。<br/>取值范围：(-∞, +∞)<br>默认值：0 |
 | type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   |  否  |  是 | 动画类型。<br>默认值：SharedTransitionEffectType.Exchange |

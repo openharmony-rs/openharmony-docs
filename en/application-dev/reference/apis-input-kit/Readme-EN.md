@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - ArkTS APIs<!--input-arkts-->
   - [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md)
@@ -62,3 +62,4 @@
   - [Shortcut Key Error Codes](errorcode-inputconsumer.md)
   - [Input Device Error Codes](errorcode-inputdevice.md)
   - [Mouse Pointer Error Codes](errorcode-pointer.md)
+  - [IR Management Error Codes](errorcode-infraredemitter.md)

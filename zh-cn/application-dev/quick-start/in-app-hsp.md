@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 HSP（Harmony Shared Package）是动态共享包，包含代码、C++库、资源和配置文件，通过HSP可以实现代码和资源的共享。HSP不支持独立发布上架，而是跟随宿主应用的APP包一起发布，与宿主应用同进程，具有相同的包名和生命周期。
 > **说明：**
@@ -169,7 +169,7 @@ Image($r('app.media.example'))
   .borderRadius('48px')
 // // 错误用例
 Image("../../resources/base/media/example.png")
-  .id('example')
+  .id('example1')
   .borderRadius('48px')
 ```
 
@@ -422,7 +422,6 @@ export function PageOneBuilder() {
   Library_Menu()
 }
 
-@Entry
 @Component
 export struct Library_Menu {
   @State message: string = 'Hello World';

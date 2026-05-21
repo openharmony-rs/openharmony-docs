@@ -319,7 +319,7 @@ let options: AnimatorOptions = {
 let optionsNew: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200)
   .duration(2000)
   .iterations(3)
-  .delay(1000)
+  .delay(1000);
 let animatorResult: AnimatorResult = animator.create(options);
 animatorResult.reset(optionsNew);
 ```
@@ -998,7 +998,7 @@ struct AnimatorTest {
 
   aboutToDisappear() {
     // When the custom component disappears, call finish to end incomplete animations and prevent them from continuing.
-    // Since backAnimator references this in onFrame, and this holds backAnimator,
+    // backAnimator references this in onFrame, and this saves backAnimator.
     // set backAnimator stored in the custom component to undefined when the component disappears to avoid memory leak.
     this.backAnimator?.finish();
     this.backAnimator = undefined;
@@ -1139,18 +1139,18 @@ struct AnimatorTest {
     this.backAnimator = this.getUIContext()?.createAnimator(
       new SimpleAnimatorOptions(0, 100)
     )
-    this.backAnimator.onFinish = ()=> {
+    this.backAnimator.onFinish = () => {
       this.flag = true
       console.info(this.TAG, 'backAnimator onFinish')
     }
-    this.backAnimator.onFrame = (value:number)=> {
+    this.backAnimator.onFrame = (value:number) => {
       this.translate_ = value
     }
   }
 
   aboutToDisappear() {
     // When the custom component disappears, call finish to end incomplete animations and prevent them from continuing.
-    // Since backAnimator references this in onFrame, and this holds backAnimator,
+    // backAnimator references this in onFrame, and this saves backAnimator.
     // set backAnimator stored in the custom component to undefined when the component disappears to avoid memory leak.
     this.backAnimator?.finish();
     this.backAnimator = undefined;

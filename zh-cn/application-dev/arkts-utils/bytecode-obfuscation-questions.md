@@ -2,9 +2,9 @@
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao-->
-<!--Designer: @hufeng20-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 字节码混淆与源码混淆差异
 
@@ -97,9 +97,9 @@ nameCache.json文件：
 
 ### 切换注意点
 
-**UI混淆差异**
+**UI组件混淆差异**
 
-字节码混淆不提供UI混淆的能力。
+字节码混淆不提供UI组件混淆能力。
 
 由于字节码中UI组件存在大量字符串的形式绑定属性、方法、类、变量等，字节码混淆已通过系统白名单扫描的机制，保证功能正常。
 
@@ -127,7 +127,7 @@ this.__messageStr = new ObservedPropertySimplePU('Hello World', this, "messageSt
 
 在中间文件转换过程中，message以字面量形式进行了绑定；此时，存在messageStr这个属性被混淆了，但是这个方法的字符串参数没有混淆，导致UI失效。
 
-**解决办法**：收集struct里所有成员，加入白名单，不参与混淆。目前由于字节码混淆不提供UI混淆能力，系统会自动识别添加到白名单，不需要开发者配置。
+**解决办法**：收集struct里所有成员，加入白名单，不参与混淆。目前由于字节码混淆不提供UI组件混淆能力，系统会自动识别添加到白名单，不需要开发者配置。
 
 **字节码中通过字符串绑定属性**
 

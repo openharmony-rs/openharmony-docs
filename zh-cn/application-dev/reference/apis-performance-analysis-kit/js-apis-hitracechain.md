@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -90,9 +90,9 @@ begin(name: string, flags?: number): HiTraceId
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| name  | string | 是 | 跟踪业务名。 |
+| 参数名 | 类型 | 必填 | 说明                                             |
+| -------- | -------- | -------- |------------------------------------------------|
+| name  | string | 是 | 跟踪业务名。<br/>建议该参数的长度不要超过63Byte，超出部分将被截断。    |
 | flags | number | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
 
 **返回值：**

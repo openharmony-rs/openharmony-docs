@@ -22,6 +22,7 @@
     - [Class (PrefetchOptions)](arkts-apis-webview-PrefetchOptions.md)
     - [Class (ProxyController)](arkts-apis-webview-ProxyController.md)
     - [Class (ProxyRule)](arkts-apis-webview-ProxyRule.md)
+    - [Class (SecurityParams)](arkts-apis-webview-SecurityParams.md)
     - [Class (WebviewController)](arkts-apis-webview-WebviewController.md)
     - [Class (WebCookieManager)](arkts-apis-webview-WebCookieManager.md)
     - [Class (WebDataBase)](arkts-apis-webview-WebDataBase.md)

@@ -16,7 +16,7 @@ GestureGroup(mode:GestureMode, gesture:GestureType[])
 
 - **mode**: recognition mode of combined gestures. The value belongs to the **GestureMode** enumeration class.
 
-- **gesture**: array of multiple gestures.  .
+- **gesture**: array of multiple gestures.  
 
 
 ## Sequential Recognition
@@ -32,8 +32,10 @@ The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transfo
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  
   const DOMAIN = 0x0001;
   const TAG = 'Sample_gesturegroup';
+  
   @Entry
   @Component
   struct sequenceIdentification {
@@ -46,9 +48,11 @@ The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transfo
   
     build() {
       Column() {
-        Text('sequence gesture\n' + 'LongPress onAction:' + this.count + '\nPanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
+        Text('sequence gesture\n' + 'LongPress onAction:' + this.count + '\nPanGesture offset:\nX: ' + this.offsetX +
+          '\n' + 'Y: ' + this.offsetY)
           .fontSize(28)
-      }.margin(10)
+      }
+      .margin(10)
       .borderWidth(1)
       // Bind the translate attribute to translate the component.
       .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
@@ -61,30 +65,33 @@ The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transfo
           // The first gesture recognized in the combined gestures is the long press gesture, which can be responded to for multiple times.
           LongPressGesture({ repeat: true })
           // When the long press gesture is successfully recognized, the value of count displayed on the Text component increments.
-            .onAction((event: GestureEvent|undefined) => {
-              if(event){
+            .onAction((event: GestureEvent | undefined) => {
+              if (event) {
                 if (event.repeat) {
                   this.count++;
-                };
-              };
-              hilog.info(DOMAIN, TAG,'LongPress onAction');
+                }
+                ;
+              }
+              ;
+              hilog.info(DOMAIN, TAG, 'LongPress onAction');
             })
             .onActionEnd(() => {
-              hilog.info(DOMAIN, TAG,'LongPress end');
+              hilog.info(DOMAIN, TAG, 'LongPress end');
             }),
           // The pan gesture is triggered when the component is dragged after the long press gesture is recognized.
           PanGesture()
             .onActionStart(() => {
               this.borderStyles = BorderStyle.Dashed;
-              hilog.info(DOMAIN, TAG,'pan start');
+              hilog.info(DOMAIN, TAG, 'pan start');
             })
             // When the gesture is triggered, the pan distance is obtained based on the callback, and the displacement distance of the component is modified. In this way, the component is translated.
-            .onActionUpdate((event: GestureEvent|undefined) => {
-              if(event){
+            .onActionUpdate((event: GestureEvent | undefined) => {
+              if (event) {
                 this.offsetX = (this.positionX + event.offsetX);
                 this.offsetY = this.positionY + event.offsetY;
-              };
-              hilog.info(DOMAIN, TAG,'pan update');
+              }
+              ;
+              hilog.info(DOMAIN, TAG, 'pan update');
             })
             .onActionEnd(() => {
               this.positionX = this.offsetX;
@@ -93,7 +100,7 @@ The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transfo
             })
         )
           .onCancel(() => {
-            hilog.info(DOMAIN, TAG,'sequence gesture canceled');
+            hilog.info(DOMAIN, TAG, 'sequence gesture canceled');
           })
       )
     }
@@ -126,7 +133,8 @@ For example, if the tap gesture and the double-tap gesture are bound to the **Co
   
     build() {
       Column() {
-        Text('Parallel gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
+        Text('Parallel gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 +
+          '\n')
           .fontSize(28);
       }
       .height(200)
@@ -181,7 +189,8 @@ For example, when both the tap gesture and double-tap gesture are bound to a **C
   
     build() {
       Column() {
-        Text('Exclusive gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 + '\n')
+        Text('Exclusive gesture\n' + 'tapGesture count is 1:' + this.count1 + '\ntapGesture count is 2:' + this.count2 +
+          '\n')
           .fontSize(28)
       }
       .height(200)
@@ -241,15 +250,17 @@ The following example implements a child component bound to both a long press ge
           .borderRadius(12)
           // Use a custom gesture judgment callback to reject the child's pan gesture when the long press gesture fails, allowing the parent Swiper component's swipe gesture to succeed.
           .onGestureRecognizerJudgeBegin(
-            (event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>)=>{
-            if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
-              return GestureJudgeResult.CONTINUE;
-            };
-            if (this.isLongPress) {
-              return GestureJudgeResult.CONTINUE;
-            };
-            return GestureJudgeResult.REJECT;
-          })
+            (event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => {
+              if (current.getType() !== GestureControl.GestureType.PAN_GESTURE) {
+                return GestureJudgeResult.CONTINUE;
+              }
+              ;
+              if (this.isLongPress) {
+                return GestureJudgeResult.CONTINUE;
+              }
+              ;
+              return GestureJudgeResult.REJECT;
+            })
           .gesture(
             // Bind a parallel gesture group to allow long press and pan gestures to trigger simultaneously.
             GestureGroup(GestureMode.Parallel,

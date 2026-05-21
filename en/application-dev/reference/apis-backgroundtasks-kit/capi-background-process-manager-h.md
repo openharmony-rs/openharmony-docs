@@ -9,7 +9,7 @@
 
 ## Overview
 
-The **background_process_manager.h** file declares the APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through **OH_Ability_StartNativeChildProcess**.
+The **background_process_manager.h** file declares the APIs for background child process management. You can use these APIs to suppress and unsuppress child processes to prevent child processes from occupying too many system resources and causing system stuttering. The APIs take effect only for the child processes created through [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess).
 
 **File to include**: <background_process_manager/background_process_manager.h>
 
@@ -94,10 +94,10 @@ Sets the child process priority. After a child process is suppressed, the CPU re
 
 | Name| Description|
 | -- | -- |
-| int pid | ID of the child process to be suppressed, which is returned when the child process is created through **OH_Ability_StartNativeChildProcess**.|
+| int pid | ID of the child process to be suppressed, which is the value of the **pid** parameter after the child process is created through the [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess) API.|
 | [BackgroundProcessManager_ProcessPriority](capi-background-process-manager-h.md#backgroundprocessmanager_processpriority) priority | Suppression priority.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
@@ -120,9 +120,9 @@ Unsuppresses the child process. In this case, the child process follows the sche
 
 | Name| Description|
 | -- | -- |
-| int pid | Child process ID, which is returned when the child process is created through **OH_Ability_StartNativeChildProcess**.|
+| int pid | ID of the child process, which is the value of the **pid** parameter of the [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess) API.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |

@@ -318,10 +318,10 @@ Sets the background corner radius for a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  float topLeft | Radius of the upper left corner of the background for the custom dialog box, in vp.|
-|  float topRight | Radius of the upper right corner of the background for the custom dialog box, in vp.|
-| float bottomLeft | Radius of the lower left corner of the background for the custom dialog box, in vp.|
-|  float bottomRight | Radius of the lower right corner of the background for the custom dialog box, in vp.|
+|  float topLeft | Radius of the upper left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+|  float topRight | Radius of the upper right corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+| float bottomLeft | Radius of the lower left corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+|  float bottomRight | Radius of the lower right corner of the background for the custom dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
 
 **Returns**
 
@@ -364,7 +364,7 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 
 **Description**
 
-Specifies whether to use a custom style for a custom dialog box.
+Specifies whether to use a custom style for the custom dialog box.
 
 > **NOTE**
 >

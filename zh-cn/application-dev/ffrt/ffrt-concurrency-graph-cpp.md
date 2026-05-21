@@ -83,18 +83,30 @@ task5(OUT A);
 
 借助FFRT提供了图依赖并发范式，可以描述任务依赖关系，同时并行化上述视频处理流程，代码如下所示：
 
-```cpp
+<!-- @[parallel_dep_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.h) -->
+
+``` C
 #include <iostream>
+#include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
 
-int main()
+#undef LOG_TAG
+#define LOG_TAG "ParallelCppTag"
+```
+
+<!-- @[parallel_dep_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.cpp) -->
+
+``` C++
+const int FIB_NUM = 5;
+
+int DependenceCppExec()
 {
     // 提交任务
-    auto handle_A = ffrt::submit_h([] () { std::cout << "视频解析" << std::endl; });
-    auto handle_B = ffrt::submit_h([] () { std::cout << "视频转码" << std::endl; }, {handle_A});
-    auto handle_C = ffrt::submit_h([] () { std::cout << "视频生成缩略图" << std::endl; }, {handle_A});
-    auto handle_D = ffrt::submit_h([] () { std::cout << "视频添加水印" << std::endl; }, {handle_B, handle_C});
-    ffrt::submit([] () { std::cout << "视频发布" << std::endl; }, {handle_D});
+    auto handle_A = ffrt::submit_h([] () { OH_LOG_INFO(LOG_APP, "视频解析"); });
+    auto handle_B = ffrt::submit_h([] () { OH_LOG_INFO(LOG_APP, "视频转码"); }, {handle_A});
+    auto handle_C = ffrt::submit_h([] () { OH_LOG_INFO(LOG_APP, "视频生成缩略图"); }, {handle_A});
+    auto handle_D = ffrt::submit_h([] () { OH_LOG_INFO(LOG_APP, "视频添加水印"); }, {handle_B, handle_C});
+    ffrt::submit([] () { OH_LOG_INFO(LOG_APP, "视频发布"); }, {handle_D});
 
     // 等待所有任务完成
     ffrt::wait();
@@ -116,19 +128,31 @@ int main()
 
 斐波那契数列中每个数字是前两个数字之和，计算斐波那契数的过程可以很好地通过数据对象来表达任务依赖关系。使用FFRT并发编程框架计算斐波那契数的代码如下所示：
 
-```cpp
+<!-- @[parallel_dep_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.h) -->
+
+``` C
 #include <iostream>
+#include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
 
+#undef LOG_TAG
+#define LOG_TAG "ParallelCppTag"
+```
+
+<!-- @[parallel_fib_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.cpp) -->
+
+``` C++
 void Fib(int x, int& y)
 {
     if (x <= 1) {
         y = x;
     } else {
-        int y1, y2;
+        int y1;
+        int y2;
 
         // 提交任务并构建数据依赖
         ffrt::submit([&]() { Fib(x - 1, y1); }, {&x}, {&y1});
+        // 斐波那契数列所需递归-2
         ffrt::submit([&]() { Fib(x - 2, y2); }, {&x}, {&y2});
 
         // 等待任务完成
@@ -137,11 +161,13 @@ void Fib(int x, int& y)
     }
 }
 
-int main()
+int FibCppExec()
 {
     int y;
-    Fib(5, y);
+    Fib(FIB_NUM, y);
     std::cout << "Fibonacci(5) is " << y << std::endl;
+    OH_LOG_INFO(LOG_APP, "Fibonacci(5) is %{public}d", y);
+    return y;
 }
 ```
 

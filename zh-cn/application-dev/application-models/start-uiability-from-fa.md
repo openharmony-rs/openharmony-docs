@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 本文介绍[FA模型](ability-terminology.md#fa模型)的三种应用组件如何启动[Stage模型](ability-terminology.md#stage模型)的UIAbility组件。
 

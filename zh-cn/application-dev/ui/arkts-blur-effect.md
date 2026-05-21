@@ -702,8 +702,8 @@ struct motionBlurTest {
           })
           .animation({
             duration: 2000,
-            iterations:1,
-            playMode:PlayMode.Alternate,
+            iterations: 1,
+            playMode: PlayMode.Alternate,
             onFinish: () => {
               this.radius = 0;
             }

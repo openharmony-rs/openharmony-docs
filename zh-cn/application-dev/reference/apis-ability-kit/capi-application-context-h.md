@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -96,7 +96,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(Ability
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 查询成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或者writeLength为空，或者缓冲区大小小于需要写入的大小。<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 应用上下文不存在，如在应用创建的[子进程](capi-childprocess.md)中应用级别上下文不存在。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 查询成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - areaMode为null。<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 应用上下文不存在，如在应用创建的[子进程](capi-childprocess.md)中应用级别上下文不存在。 |
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleName()
 
@@ -576,7 +576,7 @@ void demo()
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextGetLaunchParameter
+### OH_AbilityRuntime_ApplicationContextGetLaunchParameter()
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
@@ -625,7 +625,7 @@ static napi_value GetLaunchParameter(napi_env env, napi_callback_info info)
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextGetLatestParameter
+### OH_AbilityRuntime_ApplicationContextGetLatestParameter()
 
 ```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
@@ -674,7 +674,7 @@ static napi_value GetLatestParameter(napi_env env, napi_callback_info info)
 }
 ```
 
-### OH_AbilityRuntime_ApplicationContextNotifyPageChanged
+### OH_AbilityRuntime_ApplicationContextNotifyPageChanged()
 
 ```cpp
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(

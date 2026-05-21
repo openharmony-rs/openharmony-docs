@@ -93,7 +93,7 @@ let name: string = 'com.ohos.example/axExtension';
 let capability: accessibility.Capability[] = ['retrieve'];
 
 config.enableAbility(name, capability).then(() => {
-  console.info(`Succeeded  in enable ability, name is ${name}, capability is ${capability}`);
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
 });
@@ -145,7 +145,7 @@ config.enableAbility(name, capability, (err: BusinessError) => {
     console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`); 
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`); 
 });
 ```
 
@@ -203,7 +203,7 @@ let connectCallback: config.ConnectCallback = {
 }
 
 config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
-  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`);
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
 });
@@ -253,7 +253,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name).then(() => {
-  console.info(`Succeeded in disable ability, name is ${name}`);
+  console.info(`Succeeded in disabling ability, name is ${name}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
 })
@@ -299,10 +299,10 @@ let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name, (err: BusinessError) => {
   if (err) {
-    console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in disable, name is ${name}`);
+  console.info(`Succeeded in disabling, name is ${name}`);
 });
 ```
 
@@ -502,6 +502,234 @@ try {
 }
 ```
 
+## setSeniorModeStateForApp
+
+setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Promise&lt;void&gt;
+
+设置应用状态为“长辈模式”。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| appSeniorModeInfos | Array&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 修改应用的“长辈模式”的状态信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 9300000 | System abnormality.  |
+| 9300008 | The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let infos: config.AppSeniorModeInfo[] = [{
+  bundleName: 'com.example.myapplication',
+  appIndex: 0,
+  seniorModeState: true
+}];
+
+config.setSeniorModeStateForApp(infos).then(() => {
+  console.info(`Succeeded in setting seniorModeState for App.`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to call setSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## getSeniorModeStateForApp
+
+getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;boolean&gt;
+
+查询应用“长辈模式”的状态。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| bundleName | string | 是 | 查询“长辈模式”的应用包名。 |
+| appIndex | number | 否 | 应用包的分身索引标识。<br>取值范围：大于等于0的整数。缺省时，appIndex默认为0。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise对象，返回true表示应用“长辈模式”已启用；返回false表示应用“长辈模式”已关闭。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 9300000 | System abnormality.  |
+| 9300008 | The appIndex is invalid. Possible causes: 1. The appIndex is out of the valid range. 2. The application corresponding to the appIndex does not exist. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+config.getSeniorModeStateForApp("com.example.myapplication", 0).then((data: boolean) => {
+  console.info(`Succeeded in getting seniorModeState for app, data: ${data}`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to call getSeniorModeStateForApp, Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## onSeniorModeStateChangeForApp
+
+onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
+
+监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
+
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在对象生命周期结束前使用[offSeniorModeStateChangeForApp](#offseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是 | 回调函数。返回被修改的应用“长辈模式”信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback = (data: config.AppSeniorModeInfo) => {
+    console.info(`callback data, name: ${data.bundleName}, appIndex: ${data.appIndex}, seniorModeState: ${data.seniorModeState}`);
+  }
+
+  aboutToAppear(): void {
+    config.onSeniorModeStateChangeForApp(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## offSeniorModeStateChangeForApp
+
+offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
+
+取消监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[onSeniorModeStateChangeForApp](#onseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { config } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback = (data: config.AppSeniorModeInfo) => {
+    console.info(`callback data, name: ${data.bundleName}, appIndex: ${data.appIndex}, seniorModeState: ${data.seniorModeState}`);
+  }
+
+  aboutToAppear(): void {
+    config.onSeniorModeStateChangeForApp(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    config.offSeniorModeStateChangeForApp(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ## Config
 
 用于属性的设置、获取与监听。
@@ -549,7 +777,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let value: boolean = true;
 
 config.highContrastText.set(value).then(() => {
-  console.info(`Succeeded in set highContrastText value is ${value}`);
+  console.info(`succeeded in setting highContrastText value is ${value}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
 });
@@ -597,7 +825,7 @@ config.highContrastText.set(value, (err: BusinessError) => {
     console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in set highContrastText, value is ${value}`);
+  console.info(`succeeded in setting highContrastText, value is ${value}`);
 });
 ```
 
@@ -633,7 +861,7 @@ import { config } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 config.highContrastText.get().then((data: boolean) => {
-  console.info(`Succeeded in get highContrastText, data is ${data}`);
+  console.info(`succeeded in getting highContrastText, data is ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
 });
@@ -674,7 +902,7 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
     console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get highContrastText, data is ${data}`);
+  console.info(`succeeded in getting highContrastText, data is ${data}`);
 });
 ```
 
@@ -832,3 +1060,20 @@ type OnDisconnectCallback = () => void
 | Long     | 表示长。  |
 | Longest  | 表示最长。 |
 
+## AppSeniorModeInfo
+
+“长辈模式”在应用中的状态信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此类型仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
+| ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
+| bundleName | string | 否   | 否   | 应用包名。 |
+| appIndex | number | 否   | 是   | 应用包的分身索引标识。<br>取值大于等于0的整数，缺省时默认为0。|
+| seniorModeState | boolean | 否   | 否   | 应用是否开启状态为“长辈模式”，true表示开启，false表示未开启。|

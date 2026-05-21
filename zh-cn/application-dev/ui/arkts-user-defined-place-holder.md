@@ -1,8 +1,8 @@
 # 自定义占位节点
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -26,7 +26,7 @@ ArkUI提供了系统组件[NodeContainer](../../application-dev/reference/apis-a
 
 ## 基本概念
 
-- 自定义节点：使用ArkUI提供的接口，以命令式创建的节点。包括自定义组件节点（FrameNode）、自定义渲染节点（RenderNode）、自定义声明式节点（BuilderNode）、[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)等。
+- 自定义节点：使用ArkUI提供的接口，以命令式创建的节点。包括自定义组件节点（[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)）、自定义渲染节点（[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)）、自定义声明式节点（[BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md)）、[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)等。
 
 - 自定义节点树：根节点为自定义节点的节点树。
 

@@ -41,3 +41,8 @@ IPC and RPC use the client-server model where the client process obtains the pro
 - During cross-process communication, a proxy object cannot be passed back to the device that hosts the stub object pointed to by the proxy object.
 
 - The proxy object pointing to the stub object of the remote device cannot be passed across processes twice on the local device.
+
+
+ <!--RP1-->
+ 	 
+ <!--RP1End-->

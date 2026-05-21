@@ -34,10 +34,10 @@ The file declares the MediaKeySession APIs for DRM operations.  <br> The APIs ca
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef  Drm_ErrCode (\*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)](#mediakeysession_eventcallback) | MediaKeySession_EventCallback | Defines the callback used to listen for media key session events, for example, key expiration events.|
-| [typedef  Drm_ErrCode (\*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable)](#mediakeysession_keychangecallback) | MediaKeySession_KeyChangeCallback | Defines the callback used to listen for media key change events.|
-| [typedef Drm_ErrCode (\*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysession_eventcallback) | OH_MediaKeySession_EventCallback | Defines the callback used to listen for media key session events.|
-| [typedef Drm_ErrCode (\*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable)](#oh_mediakeysession_keychangecallback) | OH_MediaKeySession_KeyChangeCallback | Defines the callback used to listen for media key change events.|
+| [typedef  Drm_ErrCode (\*MediaKeySession_EventCallback)(DRM_EventType eventType, uint8_t *info,int32_t infoLen, char *extra)](#mediakeysession_eventcallback) | MediaKeySession_EventCallback | Defines the callback function called when a MediaKeySession event is triggered, such as a key expiration event.|
+| [typedef  Drm_ErrCode (\*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo, bool newKeysAvailable)](#mediakeysession_keychangecallback) | MediaKeySession_KeyChangeCallback | Defines the callback function called for key change events.|
+| [typedef Drm_ErrCode (\*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKeySession, DRM_EventType eventType,uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysession_eventcallback) | OH_MediaKeySession_EventCallback | Defines the callback function called when an event occurs. The event originates from DRM events during media playback and is triggered through the MediaKeySession instance.|
+| [typedef Drm_ErrCode (\*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *mediaKeySession, DRM_KeysInfo *keysInfo, bool newKeysAvailable)](#oh_mediakeysession_keychangecallback) | OH_MediaKeySession_KeyChangeCallback | Defines the callback function called for key change events.|
 | [Drm_ErrCode OH_MediaKeySession_GenerateMediaKeyRequest(MediaKeySession *mediaKeySession, DRM_MediaKeyRequestInfo *info, DRM_MediaKeyRequest *mediaKeyRequest)](#oh_mediakeysession_generatemediakeyrequest) | - | Generates a media key request.|
 | [Drm_ErrCode OH_MediaKeySession_ProcessMediaKeyResponse(MediaKeySession *mediaKeySession, uint8_t *response, int32_t responseLen, uint8_t *offlineMediaKeyId, int32_t *offlineMediaKeyIdLen)](#oh_mediakeysession_processmediakeyresponse) | - | Processes the response to a media key request.|
 | [Drm_ErrCode OH_MediaKeySession_CheckMediaKeyStatus(MediaKeySession *mediaKeySession, DRM_MediaKeyStatus *mediaKeyStatus)](#oh_mediakeysession_checkmediakeystatus) | - | Checks the status of a media key.|
@@ -47,8 +47,8 @@ The file declares the MediaKeySession APIs for DRM operations.  <br> The APIs ca
 | [Drm_ErrCode OH_MediaKeySession_RestoreOfflineMediaKeys(MediaKeySession *mediaKeySession, uint8_t *offlineMediaKeyId, int32_t offlineMediaKeyIdLen)](#oh_mediakeysession_restoreofflinemediakeys) | - | Restores offline media keys.|
 | [Drm_ErrCode OH_MediaKeySession_GetContentProtectionLevel(MediaKeySession *mediaKeySession, DRM_ContentProtectionLevel *contentProtectionLevel)](#oh_mediakeysession_getcontentprotectionlevel) | - | Obtains the content protection level of a media key session.|
 | [Drm_ErrCode OH_MediaKeySession_RequireSecureDecoderModule(MediaKeySession *mediaKeySession, const char *mimeType, bool *status)](#oh_mediakeysession_requiresecuredecodermodule) | - | Checks whether secure decoding is required.|
-| [Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *mediaKeySession, MediaKeySession_Callback *callback)](#oh_mediakeysession_setmediakeysessioncallback) | - | Sets a media key session event callback.|
-| [Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_MediaKeySession_Callback *callback)](#oh_mediakeysession_setcallback) | - | Sets a media key session event callback.|
+| [Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *mediaKeySession, MediaKeySession_Callback *callback)](#oh_mediakeysession_setmediakeysessioncallback) | - | Sets a media key session event callback. This callback does not return a MediaKeySession instance and applies to the scenario where a single MediaKeySession is used.|
+| [Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession, OH_MediaKeySession_Callback *callback)](#oh_mediakeysession_setcallback) | - | Sets a media key session event callback. This callback returns a MediaKeySession instance, making it suitable for scenarios where multiple MediaKeySessions are used.|
 | [Drm_ErrCode OH_MediaKeySession_Destroy(MediaKeySession *mediaKeySession)](#oh_mediakeysession_destroy) | - | Destroys a MediaKeySession instance.|
 
 ## Function Description
@@ -61,7 +61,7 @@ typedef  Drm_ErrCode (*MediaKeySession_EventCallback)(DRM_EventType eventType, u
 
 **Description**
 
-Defines the callback used to listen for media key session events, for example, key expiration events.
+Defines the callback function called when a MediaKeySession event is triggered, such as a key expiration event.
 
 **Since**: 11
 
@@ -70,10 +70,10 @@ Defines the callback used to listen for media key session events, for example, k
 
 | Name| Description|
 | -- | -- |
-| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type.|
-|  uint8_t *info | Pointer to the event information obtained from the media key session.|
-| int32_t infoLen | Length of the event information.|
-|  char *extra | Pointer to the additional information obtained from the media key session.|
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type. This is an input parameter.|
+|  uint8_t *info | Pointer to the event information obtained from the media key session. This is an output parameter.|
+| int32_t infoLen | Event information length. This is an output parameter.|
+|  char *extra | Pointer to the extra information obtained from the media key session. This is an output parameter.|
 
 **Returns**
 
@@ -89,7 +89,7 @@ typedef  Drm_ErrCode (*MediaKeySession_KeyChangeCallback)(DRM_KeysInfo *keysInfo
 
 **Description**
 
-Defines the callback used to listen for media key change events.
+Defines the callback function called for key change events.
 
 **Since**: 11
 
@@ -115,7 +115,7 @@ typedef Drm_ErrCode (*OH_MediaKeySession_EventCallback)(MediaKeySession *mediaKe
 
 **Description**
 
-Defines the callback used to listen for media key session events.
+Defines the callback function called when an event occurs. The event originates from DRM events during media playback and is triggered through the MediaKeySession instance.
 
 **Since**: 12
 
@@ -124,11 +124,11 @@ Defines the callback used to listen for media key session events.
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
-| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type.|
-| uint8_t *info | Pointer to the event information.|
-|  int32_t infoLen | Length of the event information.|
-|  char *extra | Pointer to the additional information.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the session instance, which identifies the event source. This is an input parameter.|
+| [DRM_EventType](capi-native-drm-common-h.md#drm_eventtype) eventType | Event type. This is an input parameter.|
+| uint8_t *info | Pointer to the event information which originates from the DRM event. This is an output parameter.|
+|  int32_t infoLen | Event information length. This is an output parameter.|
+|  char *extra | Pointer to the extra information from the DRM event. This is an output parameter.|
 
 **Returns**
 
@@ -144,7 +144,7 @@ typedef Drm_ErrCode (*OH_MediaKeySession_KeyChangeCallback)(MediaKeySession *med
 
 **Description**
 
-Defines the callback used to listen for media key change events.
+Defines the callback function called for key change events.
 
 **Since**: 12
 
@@ -236,8 +236,8 @@ Checks the status of a media key.
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
-| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) *mediaKeyStatus | Pointer to the media key status obtained.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance. This is an input parameter which is mandatory.|
+| [DRM_MediaKeyStatus](capi-drm-drm-mediakeystatus.md) *mediaKeyStatus | Pointer to the media key status. This is an output parameter which is mandatory.|
 
 **Returns**
 
@@ -287,11 +287,11 @@ Generates a request to release offline media keys.
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
-| uint8_t *offlineMediaKeyId | Pointer to the ID of an offline media key.|
-| int32_t *releaseRequestLen | Length of the offline media key ID.|
-| uint8_t *releaseRequest | Pointer to the request to release offline media keys.|
-| int32_t *releaseRequestLen | Length of the request to release offline media keys.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance. This is an input parameter.|
+| uint8_t *offlineMediaKeyId | Pointer to the offline media key ID. This is an input parameter. The value range is [1, 64], and the unit is bytes.|
+| int32_t offlineMediaKeyIdLen | Length of the offline media key ID. This is an input parameter. The value range is [1, 64].|
+| uint8_t *releaseRequest | Pointer to the offline media key release request. This is an output parameter.|
+| int32_t *releaseRequestLen | Pointer to the length of the offline media key release request. This is an output parameter.|
 
 **Returns**
 
@@ -416,7 +416,7 @@ Drm_ErrCode OH_MediaKeySession_SetMediaKeySessionCallback(MediaKeySession *media
 
 **Description**
 
-Sets a media key session event callback.
+Sets a media key session event callback. This callback does not return a MediaKeySession instance and applies to the scenario where a single MediaKeySession is used.
 
 **Since**: 11
 
@@ -425,8 +425,8 @@ Sets a media key session event callback.
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
-| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) *callback | Pointer to the callback for the media key session event.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance. This is an input parameter.|
+| [MediaKeySession_Callback](capi-drm-mediakeysession-callback.md) *callback | Pointer to the callback structure of the MediaKeySession. This is an input parameter.|
 
 **Returns**
 
@@ -442,7 +442,7 @@ Drm_ErrCode OH_MediaKeySession_SetCallback(MediaKeySession *mediaKeySession,OH_M
 
 **Description**
 
-Sets a media key session event callback.
+Sets a media key session event callback. This callback returns a MediaKeySession instance, making it suitable for scenarios where multiple MediaKeySessions are used.
 
 **Since**: 12
 
@@ -451,8 +451,8 @@ Sets a media key session event callback.
 
 | Name| Description|
 | -- | -- |
-| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance.|
-| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) *callback | Pointer to the callback for the media key session event.|
+| [MediaKeySession](capi-drm-mediakeysession.md) *mediaKeySession | Pointer to the MediaKeySession instance. This is an input parameter.|
+| [OH_MediaKeySession_Callback](capi-drm-oh-mediakeysession-callback.md) *callback | Pointer to the callback structure of the MediaKeySession. This is an input parameter.|
 
 **Returns**
 

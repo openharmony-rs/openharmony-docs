@@ -83,55 +83,70 @@ task5(OUT A);
 
 借助FFRT提供了图依赖并发范式，可以描述任务依赖关系，同时并行化上述视频处理流程，代码如下所示：
 
-```c
-#include <stdio.h>
+<!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
+
+``` C
+#include <cstdio>
+#include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
 
-void func_TaskA(void* arg)
+#undef LOG_TAG
+#define LOG_TAG "ParallelTag"
+```
+
+<!-- @[parallel_dep_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.cpp) -->
+
+``` C++
+void FuncTaskA(void* arg)
 {
+    OH_LOG_INFO(LOG_APP, "视频解析");
     printf("视频解析\n");
 }
 
-void func_TaskB(void* arg)
+void FuncTaskB(void* arg)
 {
+    OH_LOG_INFO(LOG_APP, "视频转码");
     printf("视频转码\n");
 }
 
-void func_TaskC(void* arg)
+void FuncTaskC(void* arg)
 {
+    OH_LOG_INFO(LOG_APP, "视频生成缩略图");
     printf("视频生成缩略图\n");
 }
 
-void func_TaskD(void* arg)
+void FuncTaskD(void* arg)
 {
+    OH_LOG_INFO(LOG_APP, "视频添加水印");
     printf("视频添加水印\n");
 }
 
-void func_TaskE(void* arg)
+void FuncTaskE(void* arg)
 {
+    OH_LOG_INFO(LOG_APP, "视频发布");
     printf("视频发布\n");
 }
 
-int main()
+int DependenceCExec()
 {
     // 提交任务A
-    ffrt_task_handle_t hTaskA = ffrt_submit_h_f(func_TaskA, NULL, NULL, NULL, NULL);
+    ffrt_task_handle_t hTaskA = ffrt_submit_h_f(FuncTaskA, NULL, NULL, NULL, NULL);
 
     // 提交任务B和C
     ffrt_dependence_t taskA_deps[] = {{ffrt_dependence_task, hTaskA}};
     ffrt_deps_t dTaskA = {1, taskA_deps};
-    ffrt_task_handle_t hTaskB = ffrt_submit_h_f(func_TaskB, NULL, &dTaskA, NULL, NULL);
-    ffrt_task_handle_t hTaskC = ffrt_submit_h_f(func_TaskC, NULL, &dTaskA, NULL, NULL);
+    ffrt_task_handle_t hTaskB = ffrt_submit_h_f(FuncTaskB, NULL, &dTaskA, NULL, NULL);
+    ffrt_task_handle_t hTaskC = ffrt_submit_h_f(FuncTaskC, NULL, &dTaskA, NULL, NULL);
 
     // 提交任务D
     ffrt_dependence_t taskBC_deps[] = {{ffrt_dependence_task, hTaskB}, {ffrt_dependence_task, hTaskC}};
     ffrt_deps_t dTaskBC = {2, taskBC_deps};
-    ffrt_task_handle_t hTaskD = ffrt_submit_h_f(func_TaskD, NULL, &dTaskBC, NULL, NULL);
+    ffrt_task_handle_t hTaskD = ffrt_submit_h_f(FuncTaskD, NULL, &dTaskBC, NULL, NULL);
 
     // 提交任务E
     ffrt_dependence_t taskD_deps[] = {{ffrt_dependence_task, hTaskD}};
     ffrt_deps_t dTaskD = {1, taskD_deps};
-    ffrt_submit_f(func_TaskE, NULL, &dTaskD, NULL, NULL);
+    ffrt_submit_f(FuncTaskE, NULL, &dTaskD, NULL, NULL);
 
     // 等待所有任务完成
     ffrt_wait();
@@ -162,27 +177,39 @@ int main()
 
 斐波那契数列中每个数字是前两个数字之和，计算斐波那契数的过程可以很好地通过数据对象来表达任务依赖关系。使用FFRT并发编程框架计算斐波那契数的代码如下所示：
 
-```c
-#include <stdio.h>
+<!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
+
+``` C
+#include <cstdio>
+#include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
 
+#undef LOG_TAG
+#define LOG_TAG "ParallelTag"
+```
+
+<!-- @[parallel_fib_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.cpp) -->
+
+``` C++
+const int FIB_NUM = 5;
 typedef struct {
     int x;
     int* y;
-} fib_ffrt_s;
+} FibFfrtS;
 
-void fib_ffrt(void* arg)
+void FibFfrt(void* arg)
 {
-    fib_ffrt_s* p = (fib_ffrt_s*)arg;
+    FibFfrtS* p = (FibFfrtS*)arg;
     int x = p->x;
     int* y = p->y;
 
     if (x <= 1) {
         *y = x;
     } else {
-        int y1, y2;
-        fib_ffrt_s s1 = {x - 1, &y1};
-        fib_ffrt_s s2 = {x - 2, &y2};
+        int y1;
+        int y2;
+        FibFfrtS s1 = {x - 1, &y1};
+        FibFfrtS s2 = {x - 2, &y2};
 
         // 构建数据依赖
         ffrt_dependence_t dx_deps[] = {{ffrt_dependence_data, &x}};
@@ -195,8 +222,8 @@ void fib_ffrt(void* arg)
         ffrt_deps_t dy12 = {2, dy12_deps};
 
         // 分别提交任务
-        ffrt_submit_f(fib_ffrt, &s1, &dx, &dy1, NULL);
-        ffrt_submit_f(fib_ffrt, &s2, &dx, &dy2, NULL);
+        ffrt_submit_f(FibFfrt, &s1, &dx, &dy1, NULL);
+        ffrt_submit_f(FibFfrt, &s2, &dx, &dy2, NULL);
 
         // 等待任务完成
         ffrt_wait_deps(&dy12);
@@ -204,18 +231,19 @@ void fib_ffrt(void* arg)
     }
 }
 
-int main()
+int FibCExec()
 {
     int r;
-    fib_ffrt_s s = {5, &r};
+    FibFfrtS s = {FIB_NUM, &r};
     ffrt_dependence_t dr_deps[] = {{ffrt_dependence_data, &r}};
     ffrt_deps_t dr = {1, dr_deps};
-    ffrt_submit_f(fib_ffrt, &s, NULL, &dr, NULL);
+    ffrt_submit_f(FibFfrt, &s, NULL, &dr, NULL);
 
     // 等待任务完成
     ffrt_wait_deps(&dr);
+    OH_LOG_INFO(LOG_APP, "Fibonacci result: %{public}d", r);
     printf("Fibonacci(5) is %d\n", r);
-    return 0;
+    return r;
 }
 ```
 

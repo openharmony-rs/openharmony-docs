@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供目录环境能力：获取内存存储根目录、公共文件根目录的JS接口。
+该模块提供目录环境能力：获取内存存储根目录、公共文件根目录的ArkTS接口。
 
 > **说明：**
 >

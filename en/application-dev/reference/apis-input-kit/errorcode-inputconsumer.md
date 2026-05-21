@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -23,13 +23,13 @@ This error code is reported if the shortcut key has been registered by a system 
 
 **Possible Cause**
 
-1. The shortcut key has been registered by a system application.
+The shortcut key has been registered by a system application.
 
 **Solution**
 
-1. You can call [getAllSystemHotkeys](js-apis-inputconsumer.md#inputconsumergetallsystemhotkeys) to query all system shortcut keys.
+You can call [getAllSystemHotkeys](js-apis-inputconsumer.md#inputconsumergetallsystemhotkeys) to query all system shortcut keys.
 
-## 4200003 Shortcut Key Already Registered by a Third-party Application
+## 4200003 Shortcut Key Already Registered by Another Application
 
 **Error Message**
 
@@ -37,17 +37,17 @@ The hotkey has been subscribed to by another.
 
 **Description**
 
-This error code is generated when the shortcut key is registered by a third-party application.
+This error code is reported when the shortcut key has been registered by another application.
 
 **Possible Cause**
 
-1. The shortcut key has been registered by a third-party application.
+The shortcut key has been registered by another application.
 
 **Solution**
 
-1. In the cmd window, run **hidumper -s 3101 -a -s** to query all registered shortcut keys and use any available shortcut keys.
+In the cmd window, run **hidumper -s 3101 -a -s** to query all registered shortcut keys and register an available shortcut key.
 
-## 3800001 Multimodal input internal error
+## 3800001 Multimodal Input Service Internal Error
 
 **Error Message**
 
@@ -55,11 +55,11 @@ Input service exception. Possible causes: 1. Memory allocation failure. 2. Threa
 
 **Description**
 
-Internal error of the multimodal input service.
+An internal error of the multimodal input service occurred.
 
 **Possible Cause**
 
-Unexpected errors, such as memory allocation failure, busy thread, and abnormal service exit, occur.
+An unexpected error occurred, such as memory allocation failure, busy thread, or service execution exception.
 
 **Solution**
 

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -142,9 +142,10 @@ V2:
 - 声明\@ObservedV2装饰的MyStorage类，并import到需要使用的页面中。
 - 声明被\@Trace的属性作为页面间共享的可观察的数据。
 
-<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) -->
+<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) --> 
 
 ``` TypeScript
+// 声明@ObservedV2装饰的MyStorage类
 @ObservedV2
 export class MyStorage {
   public static singleton_: MyStorage;
@@ -577,9 +578,10 @@ V2：
 
 声明\@ObservedV2装饰的class代替LocalStorage。其中LocalStorage的key可以用\@Trace装饰的属性代替。
 
-<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) -->
+<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) --> 
 
 ``` TypeScript
+// @ObservedV2装饰的class代替LocalStorage
 @ObservedV2
 export class MyStorageA {
   @Trace public propA: string = 'Hello';
@@ -1303,7 +1305,7 @@ export let env: Env = new Env();
 
 在`onCreate`里获取需要的系统环境变量。
 
-<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) -->
+<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) --> 
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1311,6 +1313,7 @@ import { window } from '@kit.ArkUI';
 import { env } from '../pages/Env';
 
 export default class EntryAbility extends UIAbility {
+  // 在onCreate里获取需要的系统环境变量
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     env.language = this.context.config.language;
     env.colorMode = this.context.config.colorMode;

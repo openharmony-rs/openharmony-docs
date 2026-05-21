@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 定义应用启动和退出的状态监听，可以作为[appManager.on('appForegroundState')](js-apis-app-ability-appManager-sys.md#appmanageronappforegroundstate11)的入参监听所有应用的启动和退出的变化。
 

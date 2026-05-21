@@ -1,7 +1,7 @@
 # @ohos.inputMethod (Input Method Framework)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -35,6 +35,7 @@ Describes the input method application attributes.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | name<sup>9+</sup>  | string | Yes| No| Mandatory. Name of the input method package.|
@@ -338,6 +339,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let extra: Record<string, string> = {}
+// For details, see the parameter description of **InputMethodSubtype**.
 inputMethod.switchCurrentInputMethodSubtype({
   id: "ServiceExtAbility",
   label: "",
@@ -407,6 +409,7 @@ For details about the error codes, see [Input Method Framework Error Codes](erro
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let extra: Record<string, string> = {}
+// For details, see the parameter description of **InputMethodSubtype**.
 inputMethod.switchCurrentInputMethodSubtype({
   id: "ServiceExtAbility",
   label: "",
@@ -793,6 +796,7 @@ Describes the attributes of the edit box, including the text input type and Ente
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | textInputType  | [TextInputType](#textinputtype10) | No| No| Enumerates the text input types.|
@@ -806,6 +810,7 @@ Describes the configuration of the edit box.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | inputAttribute  | [InputAttribute](#inputattribute10) | No| No| Edit box attribute.|
@@ -827,6 +832,7 @@ Represents the cursor information.
 | top  | number | No| No| Vertical coordinate of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
 | width  | number | No| No| Width of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the width of the current screen.|
 | height  | number | No| No| Height of the cursor, in px. The value must be an integer. The minimum value is 0 and the maximum value is the height of the current screen.|
+| displayId  | number | No| Yes| ID of the monitor where the cursor is located.<br>**Since**: 26.0.0|
 
 ## Range<sup>10+</sup>
 
@@ -932,7 +938,7 @@ let messageHandler: inputMethod.MessageHandler = {
     console.info('OnTerminated.');
   },
   onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-    console.info('recv message.');
+    console.info(`recv message, msg: ${msgId}, msgParam: ${JSON.stringify(msgParam)}`);
   }
 };
 inputMethodController.recvMessage(messageHandler);
@@ -962,7 +968,7 @@ let messageHandler: inputMethod.MessageHandler = {
     console.info('OnTerminated.');
   },
   onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-    console.info('recv message.');
+    console.info(`recv message, msg: ${msgId}, msgParam: ${JSON.stringify(msgParam)}`);
   }
 };
 inputMethodController.recvMessage(messageHandler);
@@ -3667,7 +3673,7 @@ Obtains a list of all input methods. This API uses an asynchronous callback to r
 
 **Error codes**
 
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -3977,7 +3983,7 @@ Obtains the input method state. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Input Method Framework Error Codes](errorcode-inputmethod-framework.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |

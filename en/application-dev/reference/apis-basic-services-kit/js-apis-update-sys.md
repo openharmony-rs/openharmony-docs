@@ -4,15 +4,17 @@
 <!--Owner: @RainyDay_005; @huangsiping3-->
 <!--Designer: @zhangzhengxue; @jackd320-->
 <!--Tester: @mamba-ting-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 The **update** module implements update of the entire system, including built-in resources and preset applications, but not third-party applications.
 
-There are two types of updates: SD card update and over the air (OTA) update.
+There are three types of updates: SD card update, over the air (OTA) update, and factory reset update.
 
 - The SD card update depends on the update packages and SD cards.
 
 - The OTA update depends on the server deployed by the device manufacturer for managing update packages. The OTA server IP address is passed by the caller. The request interface is fixed and developed by the device manufacturer.
+
+- The factory reset update object provides the API for restoring factory settings.
 
 > **NOTE**
 >
@@ -32,7 +34,9 @@ getOnlineUpdater(upgradeInfo: UpgradeInfo): Updater
 
 Obtains an **OnlineUpdater** object.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 **Parameters**
 
@@ -58,17 +62,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 try {
-      const upgradeInfo: update.UpgradeInfo = {
-        upgradeApp: "com.ohos.ota.updateclient",
-        businessType: {
-          vendor: update.BusinessVendor.PUBLIC,
-          subType: update.BusinessSubType.FIRMWARE
-        }
-      };
-      let updater = update.getOnlineUpdater(upgradeInfo);
-    } catch(error) {
-      console.error(`Fail to get updater error: ${error}`);
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
     }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ## update.getRestorer
@@ -77,7 +81,9 @@ getRestorer(): Restorer
 
 Obtains a **Restorer** object for restoring factory settings.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 **Return value**
 
@@ -109,7 +115,9 @@ getLocalUpdater(): LocalUpdater
 
 Obtains a **LocalUpdater** object.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 **Return value**
 
@@ -137,21 +145,25 @@ try {
 
 ## Updater
 
+Defines a tool class for updating the system online.
+
 ### checkNewVersion
 
 checkNewVersion(callback: AsyncCallback\<CheckResult>): void
 
 Checks whether a new version is available. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description            |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| callback | AsyncCallback\<[CheckResult](#checkresult)> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<[CheckResult](#checkresult)> | Yes   | Callback used to return the package check result.|
 
 **Error codes**
 
@@ -168,9 +180,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
-      console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
-    });
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.checkNewVersion((err: BusinessError, result: update.CheckResult) => {
+  console.info(`checkNewVersion isExistNewVersion  ${result?.isExistNewVersion}`);
+});
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### checkNewVersion
@@ -179,15 +203,17 @@ checkNewVersion(): Promise\<CheckResult>
 
 Checks whether a new version is available. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
 | Type                                   | Description                 |
 | ------------------------------------- | ------------------- |
-| Promise\<[CheckResult](#checkresult)> | Promise used to return the result.|
+| Promise\<[CheckResult](#checkresult)> | Promise used to return the package check result.|
 
 **Error codes**
 
@@ -204,15 +230,26 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.checkNewVersion()
-      .then((result: update.CheckResult) => {
-        console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
-        // Version digest information
-        console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
-      })
-      .catch((err: BusinessError)=>{
-        console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
-      });
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.checkNewVersion().then((result: update.CheckResult) => {
+    console.info(`checkNewVersion isExistNewVersion: ${result.isExistNewVersion}`);
+    // Version digest information
+    console.info(`checkNewVersion versionDigestInfo: ${result.newVersionInfo.versionDigestInfo.versionDigest}`);
+    }).catch((err: BusinessError)=>{
+      console.error(`checkNewVersion promise error ${JSON.stringify(err)}`);
+    });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
+
 ```
 
 ###  getNewVersionInfo
@@ -221,15 +258,17 @@ getNewVersionInfo(callback: AsyncCallback\<NewVersionInfo>): void
 
 Obtains information about the new version. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description             |
 | -------- | ---------------------------------------- | ---- | --------------- |
-| callback | AsyncCallback\<[NewVersionInfo](#newversioninfo)> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<[NewVersionInfo](#newversioninfo)> | Yes   | Callback used to return the new version information.|
 
 **Error codes**
 
@@ -245,11 +284,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
-      console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
-      console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionInfo((err: BusinessError, info: update.NewVersionInfo) => {
+    console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+    console.info(`info innerVersion = ${info?.versionComponents[0].innerVersion}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getNewVersionInfo
@@ -258,15 +308,17 @@ getNewVersionInfo(): Promise\<NewVersionInfo>
 
 Obtains information about the new version. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
-| Promise\<[NewVersionInfo](#newversioninfo)> | Promise used to return the result.|
+| Promise\<[NewVersionInfo](#newversioninfo)> | Promise used to return the new version information.|
 
 **Error codes**
 
@@ -282,24 +334,37 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionInfo().then((info: update.NewVersionInfo) => {
     console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
     console.info(`info innerVersion = ${info.versionComponents[0].innerVersion}`);
-}).catch((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`getNewVersionInfo promise error ${JSON.stringify(err)}`);
-});
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getNewVersionDescription
 
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-Obtains the description file of the new version. This API uses an asynchronous callback to return the result.
+Obtains the description of the new version. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -307,7 +372,7 @@ Obtains the description file of the new version. This API uses an asynchronous c
 | ------------------ | ---------------------------------------- | ---- | -------------- |
 | versionDigestInfo  | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.        |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | Yes   | Options of the description file.       |
-| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | Yes   | Callback used to return the result.|
+| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | Yes   | Callback used to return the description of the new version.|
 
 **Error codes**
 
@@ -336,22 +401,35 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // Chinese
 };
 
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
+    console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
+    console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getNewVersionDescription
 
 getNewVersionDescription(versionDigestInfo: VersionDigestInfo, descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
-Obtains the description file of the new version. This API uses a promise to return the result.
+Obtains the description of the new version. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -364,7 +442,7 @@ Obtains the description file of the new version. This API uses a promise to retu
 
 | Type                                      | Description                 |
 | ---------------------------------------- | ------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise used to return the result.|
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise used to return the description of the new version.|
 
 **Error codes**
 
@@ -393,11 +471,24 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // Chinese
 };
 
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getNewVersionDescription(versionDigestInfo, descriptionOptions)
+    .then((info: Array<update.ComponentDescription>)=> {
+    console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getCurrentVersionInfo
@@ -406,15 +497,17 @@ getCurrentVersionInfo(callback: AsyncCallback\<CurrentVersionInfo>): void
 
 Obtains information about the current version. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description              |
 | -------- | ---------------------------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<[CurrentVersionInfo](#currentversioninfo)> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<[CurrentVersionInfo](#currentversioninfo)> | Yes   | Callback used to return information about the current version.|
 
 **Error codes**
 
@@ -431,11 +524,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
-  console.info(`info osVersion = ${info?.osVersion}`);
-  console.info(`info deviceName = ${info?.deviceName}`);
-  console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionInfo((err: BusinessError, info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info?.osVersion}`);
+    console.info(`info deviceName = ${info?.deviceName}`);
+    console.info(`info displayVersion = ${info?.versionComponents[0].displayVersion}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getCurrentVersionInfo
@@ -444,15 +549,17 @@ getCurrentVersionInfo(): Promise\<CurrentVersionInfo>
 
 Obtains information about the current version. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
 | Type                                      | Description                 |
 | ---------------------------------------- | ------------------- |
-| Promise\<[CurrentVersionInfo](#currentversioninfo)> | Promise used to return the result.|
+| Promise\<[CurrentVersionInfo](#currentversioninfo)> | Promise used to return information about the current version.|
 
 **Error codes**
 
@@ -468,32 +575,45 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
-  console.info(`info osVersion = ${info.osVersion}`);
-  console.info(`info deviceName = ${info.deviceName}`);
-  console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
-}).catch((err: BusinessError) => {
-  console.error(`getCurrentVersionInfo promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionInfo().then((info: update.CurrentVersionInfo) => {
+    console.info(`info osVersion = ${info.osVersion}`);
+    console.info(`info deviceName = ${info.deviceName}`);
+    console.info(`info displayVersion = ${info.versionComponents[0].displayVersion}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getCurrentVersionInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getCurrentVersionDescription
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions, callback: AsyncCallback\<Array\<ComponentDescription>>): void
 
-Obtains the description file of the current version. This API uses an asynchronous callback to return the result.
+Obtains the description of the current version. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name               | Type                                      | Mandatory  | Description             |
 | ------------------ | ---------------------------------------- | ---- | --------------- |
 | descriptionOptions | [DescriptionOptions](#descriptionoptions) | Yes   | Options of the description file.         |
-| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | Yes   | Callback used to return the result.|
+| callback           | AsyncCallback\<Array\<[ComponentDescription](#componentdescription)>> | Yes   | Callback used to return the description of the current version.|
 
 **Error codes**
 
@@ -515,21 +635,35 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // Chinese
 };
 
-updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
-  console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
-  console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionDescription(descriptionOptions, (err, info) => {
+    console.info(`getCurrentVersionDescription info ${JSON.stringify(info)}`);
+    console.info(`getCurrentVersionDescription err ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getCurrentVersionDescription
 
 getCurrentVersionDescription(descriptionOptions: DescriptionOptions): Promise\<Array\<ComponentDescription>>
 
-Obtains the description file of the current version. This API uses a promise to return the result.
+Obtains the description of the current version. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -541,7 +675,7 @@ Obtains the description file of the current version. This API uses a promise to 
 
 | Type                                      | Description                  |
 | ---------------------------------------- | -------------------- |
-| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise used to return the result.|
+| Promise\<Array\<[ComponentDescription](#componentdescription)>> | Promise used to return the description of the current version.|
 
 **Error codes**
 
@@ -563,11 +697,23 @@ const descriptionOptions: update.DescriptionOptions = {
   format: update.DescriptionFormat.STANDARD, // Standard format
   language: "zh-cn" // Chinese
 };
-updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
-  console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getCurrentVersionDescription promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getCurrentVersionDescription(descriptionOptions).then((info: Array<update.ComponentDescription>) => {
+    console.info(`getCurrentVersionDescription promise info ${JSON.stringify(info)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getCurrentVersionDescription promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  getTaskInfo
@@ -576,15 +722,17 @@ getTaskInfo(callback: AsyncCallback\<TaskInfo>): void
 
 Obtains information about the update task. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name     | Type                                   | Mandatory  | Description              |
 | -------- | ------------------------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<[TaskInfo](#taskinfo)> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<[TaskInfo](#taskinfo)> | Yes   | Callback used to return information about the update task.|
 
 **Error codes**
 
@@ -601,9 +749,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
-  console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getTaskInfo((err: BusinessError, info: update.TaskInfo) => {
+    console.info(`getTaskInfo isexistTask= ${info?.existTask}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getTaskInfo
@@ -612,15 +772,17 @@ getTaskInfo(): Promise\<TaskInfo>
 
 Obtains information about the update task. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
 | Type                             | Description                 |
 | ------------------------------- | ------------------- |
-| Promise\<[TaskInfo](#taskinfo)> | Promise used to return the result.|
+| Promise\<[TaskInfo](#taskinfo)> | Promise used to return information about the update task.|
 
 **Error codes**
 
@@ -637,11 +799,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-updater.getTaskInfo().then((info: update.TaskInfo) => {
-  console.info(`getTaskInfo isexistTask= ${info.existTask}`);
-}).catch((err: BusinessError) => {
-  console.error(`getTaskInfo promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getTaskInfo().then((info: update.TaskInfo) => {
+    console.info(`getTaskInfo isexistTask= ${info.existTask}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getTaskInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  download
@@ -650,9 +824,11 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions,
 
 Downloads the new version. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -660,7 +836,7 @@ Downloads the new version. This API uses an asynchronous callback to return the 
 | ----------------- | --------------------------------------- | ---- | ---------------------------------- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.                            |
 | downloadOptions   | [DownloadOptions](#downloadoptions)     | Yes   | Download options.                              |
-| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the download is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -688,9 +864,21 @@ const downloadOptions: update.DownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // Whether to allow download over data network
   order: update.Order.DOWNLOAD // Download
 };
-updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
-  console.info(`download error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.download(versionDigestInfo, downloadOptions, (err: BusinessError) => {
+    console.info(`download error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### download
@@ -699,9 +887,11 @@ download(versionDigestInfo: VersionDigestInfo, downloadOptions: DownloadOptions)
 
 Downloads the new version. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -742,11 +932,23 @@ const downloadOptions: update.DownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // Whether to allow download over data network
    order: update.Order.DOWNLOAD // Download
 };
-updater.download(versionDigestInfo, downloadOptions).then(() => {
-  console.info(`download start`);
-}).catch((err: BusinessError) => {
-  console.error(`download error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.download(versionDigestInfo, downloadOptions).then(() => {
+    console.info(`download start`);
+  }).catch((err: BusinessError) => {
+    console.error(`download error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  resumeDownload
@@ -755,9 +957,11 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 Resumes download of the new version. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -765,7 +969,7 @@ Resumes download of the new version. This API uses an asynchronous callback to r
 | --------------------- | ---------------------------------------- | ---- | ------------------------------------ |
 | versionDigestInfo     | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.                              |
 | resumeDownloadOptions | [ResumeDownloadOptions](#resumedownloadoptions) | Yes   | Options for resuming download.                              |
-| callback              | AsyncCallback\<void>                     | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback              | AsyncCallback\<void>                     | Yes   | Callback used to return the result. If the download is resumed successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -792,9 +996,21 @@ const versionDigestInfo : update.VersionDigestInfo= {
 const resumeDownloadOptions : update.ResumeDownloadOptions= {
   allowNetwork: update.NetType.CELLULAR, // Whether to allow download over data network
 };
-updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
-  console.info(`resumeDownload error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.resumeDownload(versionDigestInfo, resumeDownloadOptions, (err: BusinessError) => {
+    console.info(`resumeDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### resumeDownload
@@ -803,9 +1019,11 @@ resumeDownload(versionDigestInfo: VersionDigestInfo, resumeDownloadOptions: Resu
 
 Resumes download of the new version. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -845,11 +1063,23 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const resumeDownloadOptions: update.ResumeDownloadOptions = {
   allowNetwork: update.NetType.CELLULAR, // Whether to allow download over data network
 };
-updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
-  console.info(`resumeDownload start`);
-}).catch((err: BusinessError) => {
-  console.error(`resumeDownload error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.resumeDownload(versionDigestInfo, resumeDownloadOptions).then(() => {
+    console.info(`resumeDownload start`);
+  }).catch((err: BusinessError) => {
+    console.error(`resumeDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  pauseDownload
@@ -858,9 +1088,11 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 Pauses download of the new version. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -868,7 +1100,7 @@ Pauses download of the new version. This API uses an asynchronous callback to re
 | -------------------- | ---------------------------------------- | ---- | ------------------------------------ |
 | versionDigestInfo    | [VersionDigestInfo](#versiondigestinfo)  | Yes   | Version digest information.                              |
 | pauseDownloadOptions | [PauseDownloadOptions](#pausedownloadoptions) | Yes   | Options for pausing download.                              |
-| callback             | AsyncCallback\<void>                     | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback             | AsyncCallback\<void>                     | Yes   | Callback used to return the result. If the download is paused successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -895,9 +1127,21 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // Whether to allow automatic resuming of download
 };
-updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
-  console.info(`pauseDownload error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.pauseDownload(versionDigestInfo, pauseDownloadOptions, (err: BusinessError) => {
+    console.info(`pauseDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### pauseDownload
@@ -906,9 +1150,11 @@ pauseDownload(versionDigestInfo: VersionDigestInfo, pauseDownloadOptions: PauseD
 
 Pauses download of the new version. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -948,11 +1194,23 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const pauseDownloadOptions: update.PauseDownloadOptions = {
   isAllowAutoResume: true // Whether to allow automatic resuming of download
 };
-updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
-  console.info(`pauseDownload`);
-}).catch((err: BusinessError)  => {
-  console.error(`pauseDownload error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.pauseDownload(versionDigestInfo, pauseDownloadOptions).then(() => {
+    console.info(`pauseDownload`);
+  }).catch((err: BusinessError)  => {
+    console.error(`pauseDownload error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  upgrade
@@ -961,9 +1219,11 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions, ca
 
 Updates the version. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -971,7 +1231,7 @@ Updates the version. This API uses an asynchronous callback to return the result
 | ----------------- | --------------------------------------- | ---- | ------------------------------------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.                              |
 | upgradeOptions    | [UpgradeOptions](#upgradeoptions)       | Yes   | Update options.                                |
-| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the update is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -998,9 +1258,21 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // Installation command
 };
-updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
-  console.info(`upgrade error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.upgrade(versionDigestInfo, upgradeOptions, (err: BusinessError) => {
+    console.info(`upgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### upgrade
@@ -1009,9 +1281,11 @@ upgrade(versionDigestInfo: VersionDigestInfo, upgradeOptions: UpgradeOptions): P
 
 Updates the version. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1051,22 +1325,36 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const upgradeOptions: update.UpgradeOptions = {
   order: update.Order.INSTALL // Installation command
 };
-updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
-  console.info(`upgrade start`);
-}).catch((err: BusinessError) => {
-  console.error(`upgrade error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.upgrade(versionDigestInfo, upgradeOptions).then(() => {
+    console.info(`upgrade start`);
+  }).catch((err: BusinessError) => {
+    console.error(`upgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  clearError
 
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions, callback: AsyncCallback\<void>): void
 
-Clears errors. This API uses an asynchronous callback to return the result.
+Clears errors. If an exception occurs during version download or installation, the update package and update status are cleared. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1074,7 +1362,7 @@ Clears errors. This API uses an asynchronous callback to return the result.
 | ----------------- | --------------------------------------- | ---- | ------------------------------------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.                              |
 | clearOptions      | [ClearOptions](#clearoptions)           | Yes   | Clear options.                                |
-| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback          | AsyncCallback\<void>                    | Yes   | Callback used to return the result. If errors are cleared successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1101,27 +1389,41 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
-updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
-  console.info(`clearError error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.clearError(versionDigestInfo, clearOptions, (err: BusinessError) => {
+    console.info(`clearError error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### clearError
 
 clearError(versionDigestInfo: VersionDigestInfo, clearOptions: ClearOptions): Promise\<void>
 
-Clears errors. This API uses a promise to return the result.
+Clears errors. If an exception occurs during version download or installation, the update package and update status are cleared. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name              | Type                                     | Mandatory  | Description    |
 | ----------------- | --------------------------------------- | ---- | ------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo) | Yes   | Version digest information.|
-| clearOptions      | [ClearOptions](#clearoptions)           | Yes   | Update options.  |
+| clearOptions      | [ClearOptions](#clearoptions)           | Yes   | Clear options.  |
 
 **Return value**
 
@@ -1154,11 +1456,23 @@ const versionDigestInfo: update.VersionDigestInfo = {
 const clearOptions: update.ClearOptions = {
   status: update.UpgradeStatus.UPGRADE_FAIL,
 };
-updater.clearError(versionDigestInfo, clearOptions).then(() => {
-  console.info(`clearError success`);
-}).catch((err: BusinessError) => {
-  console.error(`clearError error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.clearError(versionDigestInfo, clearOptions).then(() => {
+    console.info(`clearError success`);
+  }).catch((err: BusinessError) => {
+    console.error(`clearError error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getUpgradePolicy
@@ -1167,15 +1481,17 @@ getUpgradePolicy(callback: AsyncCallback\<UpgradePolicy>): void
 
 Obtains the update policy. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description             |
 | -------- | ---------------------------------------- | ---- | --------------- |
-| callback | AsyncCallback\<[UpgradePolicy](#upgradepolicy)> | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<[UpgradePolicy](#upgradepolicy)> | Yes   | Callback used to return the update policy.|
 
 **Error codes**
 
@@ -1191,11 +1507,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
-  console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
-  console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getUpgradePolicy((err: BusinessError, policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy?.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy?.autoUpgradeStrategy}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### getUpgradePolicy
@@ -1204,15 +1531,17 @@ getUpgradePolicy(): Promise\<UpgradePolicy>
 
 Obtains the update policy. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
 | Type                                      | Description                   |
 | ---------------------------------------- | --------------------- |
-| Promise\<[UpgradePolicy](#upgradepolicy)> | Promise used to return the result.|
+| Promise\<[UpgradePolicy](#upgradepolicy)> | Promise used to return the update policy.|
 
 **Error codes**
 
@@ -1228,13 +1557,24 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
-  console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
-  console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
-}).catch((err: BusinessError)  => {
-  console.error(`getUpgradePolicy promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.getUpgradePolicy().then((policy: update.UpgradePolicy) => {
+    console.info(`policy downloadStrategy = ${policy.downloadStrategy}`);
+    console.info(`policy autoUpgradeStrategy = ${policy.autoUpgradeStrategy}`);
+  }).catch((err: BusinessError)  => {
+    console.error(`getUpgradePolicy promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### setUpgradePolicy
@@ -1243,16 +1583,18 @@ setUpgradePolicy(policy: UpgradePolicy, callback: AsyncCallback\<void>): void
 
 Sets the update policy. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name     | Type                             | Mandatory  | Description           |
 | -------- | ------------------------------- | ---- | ------------- |
 | policy   | [UpgradePolicy](#upgradepolicy) | Yes   | Update policy.         |
-| callback | AsyncCallback\<void>            | Yes   | Callback used to return the result.|
+| callback | AsyncCallback\<void>            | Yes   | Callback used to return the result. If the upgrade policy is set successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1274,9 +1616,21 @@ const policy: update.UpgradePolicy = {
   autoUpgradeStrategy: false,
   autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic update period, in minutes
 };
-updater.setUpgradePolicy(policy, (err: BusinessError) => {
-  console.info(`setUpgradePolicy result: ${err}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.setUpgradePolicy(policy, (err: BusinessError) => {
+    console.info(`setUpgradePolicy result: ${err}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### setUpgradePolicy
@@ -1285,9 +1639,11 @@ setUpgradePolicy(policy: UpgradePolicy): Promise\<void>
 
 Sets the update policy. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1321,11 +1677,23 @@ const policy: update.UpgradePolicy = {
   autoUpgradeStrategy: false,
   autoUpgradePeriods: [ { start: 120, end: 240 }] // Automatic update period, in minutes
 };
-updater.setUpgradePolicy(policy).then(() => {
-  console.info(`setUpgradePolicy success`);
-}).catch((err: BusinessError) => {
-  console.error(`setUpgradePolicy promise error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.setUpgradePolicy(policy).then(() => {
+    console.info(`setUpgradePolicy success`);
+  }).catch((err: BusinessError) => {
+    console.error(`setUpgradePolicy promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ###  terminateUpgrade
@@ -1334,15 +1702,17 @@ terminateUpgrade(callback: AsyncCallback\<void>): void
 
 Terminates the update. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name     | Type                  | Mandatory  | Description                                    |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the update is terminated successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1358,10 +1728,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.terminateUpgrade((err: BusinessError) => {
-  console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.terminateUpgrade((err: BusinessError) => {
+    console.info(`terminateUpgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### terminateUpgrade
@@ -1370,9 +1751,11 @@ terminateUpgrade(): Promise\<void>
 
 Terminates the update. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Return value**
 
@@ -1394,12 +1777,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-updater.terminateUpgrade().then(() => {
-  console.info(`terminateUpgrade success`);
-}).catch((err: BusinessError) => {
-  console.error(`terminateUpgrade error ${JSON.stringify(err)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.terminateUpgrade().then(() => {
+    console.info(`terminateUpgrade success`);
+  }).catch((err: BusinessError) => {
+    console.error(`terminateUpgrade error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### on
@@ -1407,7 +1801,9 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 Enables listening for update events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 **Parameters**
 
@@ -1431,10 +1827,21 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // Listening for update events
   extraInfo: ""
 };
-
-updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.info(`updater on ${JSON.stringify(eventInfo)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.on(eventClassifyInfo, (eventInfo: update.EventInfo) => {
+    console.info(`updater on ${JSON.stringify(eventInfo)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ### off
@@ -1442,7 +1849,9 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 Disables listening for update events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 **Parameters**
 
@@ -1466,29 +1875,44 @@ const eventClassifyInfo: update.EventClassifyInfo = {
   eventClassify: update.EventClassify.TASK, // Listening for update events
   extraInfo: ""
 };
-
-updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
-  console.info(`updater off ${JSON.stringify(eventInfo)}`);
-});
+try {
+  const upgradeInfo: update.UpgradeInfo = {
+    upgradeApp: "com.ohos.ota.updateclient",
+    businessType: {
+      vendor: update.BusinessVendor.PUBLIC,
+      subType: update.BusinessSubType.FIRMWARE
+    }
+  };
+  let updater = update.getOnlineUpdater(upgradeInfo);
+  updater.off(eventClassifyInfo, (eventInfo: update.EventInfo) => {
+    console.info(`updater off ${JSON.stringify(eventInfo)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get updater error: ${error}`);
+}
 ```
 
 ## Restorer
+
+Defines a tool class for restoring factory settings.
 
 ### factoryReset
 
 factoryReset(callback: AsyncCallback\<void>): void
 
-Restores a device to its factory settings. This API uses an asynchronous callback to return the result.
+Clears the user data partition. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.FACTORY_RESET
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.FACTORY_RESET
 
 **Parameters**
 
 | Name     | Type                  | Mandatory  | Description                                    |
 | -------- | -------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation fails, **err** is an error object and a callback is returned. If the operation is successful, **err** is undefined and no callback is returned.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the factory reset is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1503,58 +1927,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-restorer.factoryReset((err) => {
-  console.info(`factoryReset error ${JSON.stringify(err)}`);
-});
+try {
+  let restorer = update.getRestorer();
+  restorer.factoryReset((err) => {
+    console.info(`factoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 ```
 
 ### factoryReset
 
 factoryReset(): Promise\<void>
 
-Restores a device to its factory settings. This API uses a promise to return the result.
+Clears the user data partition. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.FACTORY_RESET
+**System capability:** SystemCapability.Update.UpdateService
 
-**Return value**
-
-| Type            | Description                        |
-| -------------- | -------------------------- |
-| Promise\<void> | Promise that returns no value. If the operation fails, a callback is returned. If the operation is successful, no callback is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
-
-| ID      | Error Message                                                 |
-| -------  | ---------------------------------------------------- |
-| 201      | Permission denied.       |
-| 202      | Permission verification failed. A non-system application calls a system API. |
-| 11500104 | IPC error.               |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-restorer.factoryReset().then(() => {
-  console.info(`factoryReset success`);
-}).catch((err: BusinessError) => {
-  console.error(`factoryReset error ${JSON.stringify(err)}`);
-});
-```
-
-### forceFactoryReset<sup>23+</sup>
-
-forceFactoryReset(): Promise\<void>
-
-Forcibly restores a device to its factory settings. This API uses a promise to return the result.
-
-**System capability**: SystemCapability.Update.UpdateService
-
-**Required permissions**: ohos.permission.FORCE_FACTORY_RESET
+**Required permissions:** ohos.permission.FACTORY_RESET
 
 **Return value**
 
@@ -1576,15 +1969,182 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let restorer = update.getRestorer();
+  restorer.factoryReset().then(() => {
+    console.info(`factoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`factoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
 
-restorer.forceFactoryReset().then(() => {
-  console.info(`forceFactoryReset success`);
-}).catch((err: BusinessError) => {
-  console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
-});
+### forceFactoryReset<sup>23+</sup>
+
+forceFactoryReset(): Promise\<void>
+
+Clears the user data partition and the file key. This API uses a promise to return the result.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.FORCE_FACTORY_RESET
+
+**Return value**
+
+| Type            | Description                        |
+| -------------- | -------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
+
+| ID      | Error Message                                                 |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let restorer = update.getRestorer();
+  restorer.forceFactoryReset().then(() => {
+    console.info(`forceFactoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+### deepFactoryReset
+
+deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
+
+Clears the user data partition and OS partition by means of overwriting. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.FACTORY_RESET
+
+**Parameters**
+
+| Name               | Type                                      | Mandatory  | Description            |
+| ------------------ | ---------------------------------------- | ---- | -------------- |
+| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | Yes| Factory reset strategy.        |
+
+**Return value**
+
+| Type            | Description                        |
+| -------------- | -------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
+
+| ID      | Error Message                                                 |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let restorer = update.getRestorer();
+  let factoryResetStrategy: update.FactoryResetStrategy = {
+    scope: update.FactoryResetScope.DATA,
+    strategy: "deepFactoryReset test"
+  };
+  restorer.deepFactoryReset(factoryResetStrategy).then(() => {
+    console.info(`deepFactoryReset success`);
+  }).catch((err: BusinessError) => {
+    console.error(`deepFactoryReset error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
+```
+
+### getDeepFactoryResetInfo
+
+getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<FactoryResetInfo>
+
+Obtains the factory reset information. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.FACTORY_RESET
+
+**Parameters**
+
+| Name               | Type                                      | Mandatory  | Description            |
+| ------------------ | ---------------------------------------- | ---- | -------------- |
+| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | Yes| Factory reset strategy.        |
+
+**Return value**
+
+| Type                             | Description                 |
+| ------------------------------- | ------------------- |
+| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise used to return the factory reset information.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Update Error Codes](errorcode-update.md).
+
+| ID      | Error Message                                                 |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let factoryResetStrategy: update.FactoryResetStrategy = {
+  scope: update.FactoryResetScope.DATA,
+  strategy: "deepFactoryReset"
+};
+try {
+  let restorer = update.getRestorer();
+  restorer.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
+    console.info(`getDeepFactoryResetInfo success`);
+  }).catch((err: BusinessError) => {
+    console.error(`getDeepFactoryResetInfo promise error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get restorer: ${error}`);
+}
 ```
 
 ## LocalUpdater
+
+Defines a tool class for updating the local firmware.
 
 ### verifyUpgradePackage
 
@@ -1592,9 +2152,11 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string, callback: Asyn
 
 Verifies the update package. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1602,7 +2164,7 @@ Verifies the update package. This API uses an asynchronous callback to return th
 | ----------- | --------------------------- | ---- | ---------------- |
 | upgradeFile | [UpgradeFile](#upgradefile) | Yes   | Update file.            |
 | certsFile   | string                      | Yes   | Path of the certificate file.          |
-| callback    | AsyncCallback\<void>        | Yes   | Callback used to return the result.|
+| callback    | AsyncCallback\<void>        | Yes   | Callback used to return the result. If the verification is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1623,9 +2185,14 @@ const upgradeFile: update.UpgradeFile = {
   filePath: "path" // Path of the local update package
 };
 
-localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
-  console.info(`factoryReset error ${JSON.stringify(err)}`);
-});
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.verifyUpgradePackage(upgradeFile, "certFilePath", (err) => {
+    console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### verifyUpgradePackage
@@ -1634,9 +2201,11 @@ verifyUpgradePackage(upgradeFile: UpgradeFile, certsFile: string): Promise\<void
 
 Verifies the update package. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
@@ -1649,7 +2218,7 @@ Verifies the update package. This API uses a promise to return the result.
 
 | Type            | Description                    |
 | -------------- | ---------------------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -1671,28 +2240,37 @@ const upgradeFile: update.UpgradeFile = {
   fileType: update.ComponentType.OTA, // OTA package
   filePath: "path" // Path of the local update package
 };
-localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath").then(() => {
-  console.info(`verifyUpgradePackage success`);
-}).catch((err: BusinessError) => {
-  console.error(`verifyUpgradePackage error ${JSON.stringify(err)}`);
-});
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.verifyUpgradePackage(upgradeFile, "certFilePath").then(() => {
+    console.info(`verifyUpgradePackage success`);
+  }).catch((err: BusinessError) => {
+    console.error(`verifyUpgradePackage error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### applyNewVersion
-applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>, callback: AsyncCallback\<void>): void
+
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>, callback: AsyncCallback\<void>): void
 
 Installs the update package. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
 
 **Parameters**
 
 | Name        | Type                                | Mandatory  | Description                                     |
 | ----------- | ---------------------------------- | ---- | --------------------------------------- |
-| upgradeFile | Array<[UpgradeFile](#upgradefile)> | Yes   | Update file.                                   |
-| callback    | AsyncCallback\<void>               | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an **Error** object.|
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | Yes   | Update file.                                   |
+| callback    | AsyncCallback\<void>               | Yes   | Callback used to return the result. If the update package is installed successfully, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1713,20 +2291,33 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
   filePath: "path" // Path of the local update package
 }];
 
-localUpdater.applyNewVersion(upgradeFiles, (err) => {
-  console.info(`applyNewVersion error ${JSON.stringify(err)}`);
-});
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.applyNewVersion(upgradeFiles, (err) => {
+    console.info(`applyNewVersion error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### applyNewVersion
 
-applyNewVersion(upgradeFiles: Array<[UpgradeFile](#upgradefile)>): Promise\<void>
+applyNewVersion(upgradeFiles: Array\<UpgradeFile>): Promise\<void>
 
 Installs the update package. This API uses a promise to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
 
-**Required permission**: ohos.permission.UPDATE_SYSTEM
+**System capability:** SystemCapability.Update.UpdateService
+
+**Required permissions:** ohos.permission.UPDATE_SYSTEM
+
+**Parameters**
+
+| Name        | Type                                | Mandatory  | Description                                     |
+| ----------- | ---------------------------------- | ---- | --------------------------------------- |
+| upgradeFiles | Array\<[UpgradeFile](#upgradefile)> | Yes   | Update file.                                   |
 
 **Return value**
 
@@ -1754,11 +2345,17 @@ const upgradeFiles: Array<update.UpgradeFile> = [{
   fileType: update.ComponentType.OTA, // OTA package
   filePath: "path" // Path of the local update package
 }];
-localUpdater.applyNewVersion(upgradeFiles).then(() => {
-  console.info(`applyNewVersion success`);
-}).catch((err: BusinessError) => {
-  console.error(`applyNewVersion error ${JSON.stringify(err)}`);
-});
+
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.applyNewVersion(upgradeFiles).then(() => {
+    console.info(`applyNewVersion success`);
+  }).catch((err: BusinessError) => {
+    console.error(`applyNewVersion error ${JSON.stringify(err)}`);
+  });
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### on
@@ -1766,7 +2363,9 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 Enables listening for update events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 **Parameters**
 
@@ -1795,7 +2394,12 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
   console.info(`on eventInfo id `, eventInfo.eventId);
 };
 
-localUpdater.on(eventClassifyInfo, onTaskUpdate);
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.on(eventClassifyInfo, onTaskUpdate);
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ### off
@@ -1803,7 +2407,9 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 Disables listening for update events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 **Parameters**
 
@@ -1832,14 +2438,21 @@ let onTaskUpdate: update.UpgradeTaskCallback = (eventInfo: update.EventInfo) => 
   console.info(`on eventInfo id `, eventInfo.eventId);
 };
 
-localUpdater.off(eventClassifyInfo, onTaskUpdate);
+try {
+  let localUpdater = update.getLocalUpdater();
+  localUpdater.off(eventClassifyInfo, onTaskUpdate);
+} catch(error) {
+  console.error(`Fail to get localUpdater error: ${error}`);
+}
 ```
 
 ## UpgradeInfo
 
 Represents update information.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name          | Type                         | Read-Only| Optional| Description    |
 | ------------ | ----------------------------- | ---- | ---- | ------ |
@@ -1850,7 +2463,9 @@ Represents update information.
 
 Represents an update service type.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name     | Type                               | Read-Only| Optional|  Description  |
 | ------- | ----------------------------------- | ---- | ---- | ---- |
@@ -1861,7 +2476,9 @@ Represents an update service type.
 
 Represents the package check result.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name               | Type                             | Read-Only| Optional| Description    |
 | ----------------- | --------------------------------- | ---- | ---- | ------ |
@@ -1872,7 +2489,9 @@ Represents the package check result.
 
 Represents information about the new version.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name               | Type                                    | Read-Only| Optional| Description  |
 | ----------------- | ---------------------------------------- | ---- | ---- |---- |
@@ -1883,7 +2502,9 @@ Represents information about the new version.
 
 Represents version digest information.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name           | Type  | Read-Only| Optional| Description  |
 | ------------- | ------ | ---- | ---- | ---- |
@@ -1893,7 +2514,9 @@ Represents version digest information.
 
 Represents a version component.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name             | Type                               | Read-Only| Optional| Description      |
 | --------------- | ----------------------------------- | ---- | ---- | -------- |
@@ -1902,7 +2525,7 @@ Represents a version component.
 | upgradeAction   | [UpgradeAction](#upgradeaction)     | No| No| Update mode.    |
 | displayVersion  | string                              | No| No| Display version number.   |
 | innerVersion    | string                              | No| No| Internal version number.     |
-| size            | number                              | No| No| Size of the update package, in bytes.   |
+| size            | int                              | No| No| Size of the update package, in bytes.   |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | No| No| Effective mode.    |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | No| No| Information about the version description file.|
 | otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | No| Yes| OTA mode.    |
@@ -1911,7 +2534,9 @@ Represents a version component.
 
 Represents options of the description file.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name      | Type                                   | Read-Only| Optional| Description    |
 | -------- | --------------------------------------- | ---- | ---- | ------ |
@@ -1922,7 +2547,9 @@ Represents options of the description file.
 
 Represents a component description file.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name             | Type                               | Read-Only| Optional| Description    |
 | --------------- | ----------------------------------- | ---- | ---- | ------ |
@@ -1933,7 +2560,9 @@ Represents a component description file.
 
 Represents information about the version description file.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name             | Type                               | Read-Only| Optional| Description    |
 | --------------- | ----------------------------------- | ---- | ---- | ------ |
@@ -1944,7 +2573,9 @@ Represents information about the version description file.
 
 Represents information about the current version.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name               | Type                                    | Read-Only| Optional| Description   |
 | ----------------- | ---------------------------------------- | ---- | ---- | ----- |
@@ -1956,7 +2587,9 @@ Represents information about the current version.
 
 Represents download options.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name          | Type               | Read-Only| Optional  | Description  |
 | ------------ | ------------------- | ---- | ---- | ---- |
@@ -1967,7 +2600,9 @@ Represents download options.
 
 Represents options for resuming download.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name          | Type               | Read-Only| Optional| Description  |
 | ------------ | ------------------- | ---- | ---- | ---- |
@@ -1977,7 +2612,9 @@ Represents options for resuming download.
 
 Represents options for pausing download.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name               | Type| Read-Only| Optional| Description      |
 | ----------------- | ---- | ---- |---- | -------- |
@@ -1987,7 +2624,9 @@ Represents options for pausing download.
 
 Represents update options.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name   | Type           | Read-Only| Optional| Description  |
 | ----- | --------------- | ---- | ---- |---- |
@@ -1997,7 +2636,9 @@ Represents update options.
 
 Represents options for clearing errors.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name    | Type                           | Read-Only| Optional| Description  |
 | ------ | ------------------------------- | ---- | ---- | ---- |
@@ -2007,7 +2648,9 @@ Represents options for clearing errors.
 
 Represents an update policy.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name                 | Type                                   | Read-Only| Optional| Description     |
 | ------------------- | --------------------------------------- | ---- | ---- | ------- |
@@ -2019,18 +2662,22 @@ Represents an update policy.
 
 Represents an automatic update period.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name   | Type  | Read-Only| Optional| Description|
 | ----- | ------ | ---- | ---- | ---- |
-| start | number | No| No| Start time.|
-| end   | number | No| No| End time.|
+| start | int | No| No| Start time.|
+| end   | int | No| No| End time.|
 
 ## TaskInfo
 
 Task information.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name       | Type                 | Read-Only| Optional| Description|
 | --------- | --------------------- | ---- | ------ |------ |
@@ -2039,9 +2686,11 @@ Task information.
 
 ## EventInfo
 
-Represents event information.
+Describes event information.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name      | Type                 | Read-Only| Optional| Description|
 | -------- | --------------------- | ---- | ---- | ---- |
@@ -2052,15 +2701,17 @@ Represents event information.
 
 Represents task data.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name               | Type                                    | Read-Only| Optional| Description  |
 | ----------------- | ---------------------------------------- | ---- | ---- | ---- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | No|  No   | Version digest information.|
 | status            | [UpgradeStatus](#upgradestatus)          | No|  No   | Update status.|
-| subStatus         | number                                   | No|  No   | Sub-status. |
-| progress          | number                                   | No|  No   | Progress.  |
-| installMode       | number                                   | No|  No   | Installation mode.|
+| subStatus         | int                                   | No|  No   | Sub-status. |
+| progress          | int                                   | No|  No   | Progress.  |
+| installMode       | int                                   | No|  No   | Installation mode.|
 | errorMessages     | Array\<[ErrorMessage](#errormessage)>    | No|  No   | Error message.|
 | versionComponents | Array\<[VersionComponent](#versioncomponent)> | No| No   | Version components.|
 
@@ -2068,18 +2719,22 @@ Represents task data.
 
 Represents an error message.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name          | Type  | Read-Only| Optional | Description  |
 | ------------ | ------ | ---- | ---- | ---- |
-| errorCode    | number | No| No | Error code. |
+| errorCode    | int | No| No | Error code. |
 | errorMessage | string | No| No | Error message.|
 
 ## EventClassifyInfo
 
-Represents event type information.
+Describes event type information.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name           | Type                           | Read-Only| Optional | Description  |
 | ------------- | ------------------------------- | ---- | ---- | ---- |
@@ -2090,12 +2745,64 @@ Represents event type information.
 
 Represents an update file.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name      | Type                           | Read-Only| Optional| Description  |
 | -------- | ------------------------------- | ---- | ---- | ---- |
 | fileType | [ComponentType](#componenttype) | No   | No| File type.|
 | filePath | string                          | No   | No| File path.|
+
+## FactoryResetStrategy
+
+Describes the factory reset strategy.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
+
+| Name      | Type                           | Read-Only| Optional| Description  |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| scope | [FactoryResetScope](#factoryresetscope) | No   | No| Reset scope.|
+| strategy | string                          | No   | No| Reset strategy.|
+
+## FactoryResetInfo
+
+Describes the information of restoring factory settings.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
+
+| Name      | Type                           | Read-Only| Optional| Description  |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| duration | int                          | No   | No| Duration required for restoring factory settings.|
+
+## FactoryResetScope
+
+Describes the scope of restoring factory settings.
+
+**Since**: 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
+
+| Name          | Value | Description  |
+| ------------- | ---- | ---- |
+| DATA | 1    | User data.|
+| DATA_AND_OS | 2    | User data and operating system.|
 
 ## UpgradeTaskCallback<sup>23+</sup>
 
@@ -2103,7 +2810,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 Represents an event callback.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name       | Type                   | Mandatory  | Description  |
 | --------- | ----------------------- | ---- | ---- |
@@ -2113,7 +2822,9 @@ Represents an event callback.
 
 Represents a device vendor.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name   | Value     | Description  |
 | ------ | -------- | ---- |
@@ -2123,7 +2834,9 @@ Represents a device vendor.
 
 Represents an update type.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name     | Value | Description  |
 | -------- | ---- | ---- |
@@ -2133,7 +2846,9 @@ Represents an update type.
 
 Represents a component type.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name | Value | Description  |
 | ---- | ---- | ---- |
@@ -2141,9 +2856,11 @@ Represents a component type.
 
 ## UpgradeAction
 
-Enumerates update actions.
+Represents an update mode.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name     | Value       | Description  |
 | -------- | ---------- | ---- |
@@ -2154,7 +2871,9 @@ Enumerates update actions.
 
 Enumerates effective modes.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name          | Value | Description  |
 | ------------- | ---- | ---- |
@@ -2164,9 +2883,11 @@ Enumerates effective modes.
 
 ## OtaMode<sup>20+</sup>
 
-Enumerates update modes.
+Enumerates the update modes.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name          | Value | Description  |
 | ------------- | ---- | ---- |
@@ -2179,7 +2900,9 @@ Enumerates update modes.
 
 Enumerates description file types.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name    | Value | Description  |
 | ------- | ---- | ---- |
@@ -2190,7 +2913,9 @@ Enumerates description file types.
 
 Enumerates description file formats.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name       | Value | Description  |
 | ---------- | ---- | ---- |
@@ -2201,7 +2926,9 @@ Enumerates description file formats.
 
 Enumerates network types.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name              | Value | Description       |
 | ----------------- | ---- | --------- |
@@ -2215,7 +2942,9 @@ Enumerates network types.
 
 Enumerates update commands.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name                 | Value | Description   |
 | -------------------- | ---- | ----- |
@@ -2229,7 +2958,9 @@ Enumerates update commands.
 
 Enumerates update states.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name             | Value | Description  |
 | ---------------- | ---- | ---- |
@@ -2248,7 +2979,9 @@ Enumerates update states.
 
 Represents an event type.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name  | Value       | Description  |
 | ---- | ---------- | ---- |
@@ -2258,7 +2991,9 @@ Represents an event type.
 
 Enumerates event IDs.
 
-**System capability**: SystemCapability.Update.UpdateService
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Update.UpdateService
 
 | Name                    | Value       | Description    |
 | ---------------------- | ---------- | ------ |

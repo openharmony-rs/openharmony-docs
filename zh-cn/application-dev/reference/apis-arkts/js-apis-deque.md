@@ -1,8 +1,8 @@
 # @ohos.util.Deque (线性容器Deque)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -292,11 +292,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -312,10 +311,10 @@ deque.forEach((value: number, index: number): void => {
 });
 /*
 输出结果：value:1 index:0
-        value:2 index:1
-        value:3 index:2
-        value:4 index:3
-*/
+         value:2 index:1
+         value:3 index:2
+         value:4 index:3
+ */
 ```
 
 ### getFirst
@@ -427,11 +426,12 @@ for (let item of deque) {
   console.info("value:" + item);
 }
 /*
-输出结果：4
-        5
-        4
-        2
-*/
+输出结果：
+value:4
+value:5
+value:4
+value:2
+ */
 
 // 使用方法二：
 let iter = deque[Symbol.iterator]();
@@ -441,9 +441,10 @@ while(!temp.done) {
   temp = iter.next();
 }
 /*
-输出结果：4
-        5
-        4
-        2
-*/
+输出结果：
+value:4
+value:5
+value:4
+value:2
+ */
 ```

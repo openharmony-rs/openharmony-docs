@@ -2,7 +2,7 @@
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
 <!--Owner: @jiyujia926--> 
-<!--Designer: @s10021109--> 
+<!--Designer: @zhangboren--> 
 <!--Tester: @zhangwenhan12--> 
 <!--Adviser: @zhang_yixin13-->
 
@@ -707,9 +707,9 @@ struct ListItemGroupAndReusable {
   }
 
   aboutToAppear() {
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 10000; i++) { // 循环10000次
       let data = new DataSrc();
-      for (let j = 0; j < 12; j++) {
+      for (let j = 0; j < 12; j++) { // 循环12次
         data.dataScr1.push(`测试条目数据: ${i} - ${j}`);
       }
       this.dataSource.push(data);

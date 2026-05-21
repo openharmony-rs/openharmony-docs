@@ -42,7 +42,7 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -70,11 +70,13 @@ try {
 }
 ```
 
-## notificationExtensionSubscription.openSubscriptionSettingsWithResult<sup>26+</sup>
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult
 
 openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
 
 Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can toggle on the **Allow access to notifications on this device** switch and grant access to notifications for specified applications. This API uses a promise to return the result. When the semi-modal window is closed, the user-defined authorization result is returned.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -92,7 +94,7 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 | Type    | Description| 
 | ------- |--|
-| Promise\<[UserGrantSetting](#usergrantsetting26)\> | Promise used to return the result of the authorization set by the user.| 
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise used to return the result of the authorization set by the user.|
 
 **Error codes**
 
@@ -148,7 +150,7 @@ Subscribes to the notification extension. You can subscribe to the notification 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
@@ -193,7 +195,7 @@ Unsubscribes from the notification extension. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -230,7 +232,7 @@ Obtains the subscription information about the notification extension of this ap
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -267,7 +269,7 @@ Checks whether the **Allow access to notifications on this device** switch is to
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
@@ -308,7 +310,7 @@ Obtains the applications that are allowed to access device notifications. This A
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -385,11 +387,13 @@ Describes the bundle information of the authorized application.
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | Bundle information of the authorized application.|
 
-## UserGrantSetting<sup>26+</sup>
+## UserGrantSetting
 
 type UserGrantSetting = _UserGrantSetting
 
 Describes the user authorization settings.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -397,4 +401,4 @@ Describes the user authorization settings.
 
 | Type| Description|
 | --- | --- |
-| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting26) | User authorization settings.|
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting) | User authorization settings.|

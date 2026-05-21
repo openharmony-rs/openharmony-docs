@@ -1,8 +1,8 @@
 # 状态管理V1和V2混用指导（API version 19前）
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
-<!--Owner: @zzq212050299--> 
-<!--Designer: @s10021109--> 
+<!--Owner: @jiyujia926--> 
+<!--Designer: @zhangboren--> 
 <!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
 

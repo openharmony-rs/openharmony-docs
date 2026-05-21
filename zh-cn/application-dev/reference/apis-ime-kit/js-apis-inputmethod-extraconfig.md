@@ -1,7 +1,7 @@
 # @ohos.inputMethod.ExtraConfig (输入法扩展信息)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->

@@ -973,7 +973,7 @@ function OpacitySync(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(): Promise\<PixelMap>
 
-Creates a PixelMap object that contains only the alpha channel information. This object can be used for the shadow effect. It is invalid for YUV images. This API uses a promise to return the result.
+Creates a PixelMap object that contains only the alpha channel information based on the alpha channel information. This object is not editable and can be used for the shadow effect. The YUV format is not supported by this API. This API uses a promise to return the result.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1007,7 +1007,7 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
-Creates a PixelMap object that contains only the alpha channel information. This object can be used for the shadow effect. It is invalid for YUV images. This API returns the result through a callback.
+Creates a PixelMap object that contains only the alpha channel information based on the alpha channel information. This object is not editable and can be used for the shadow effect. The YUV format is not supported by this API. This API returns the result asynchronously through a callback.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1044,7 +1044,7 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 
 createAlphaPixelmapSync(): PixelMap
 
-Creates a PixelMap object that contains only the alpha channel information. This object can be used for the shadow effect. This API returns the result synchronously. It is invalid for YUV images.
+Creates a PixelMap object that contains only the alpha channel information based on the alpha channel information. This object is not editable and can be used for the shadow effect. The YUV format is not supported by this API. This API returns a PixelMap object synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1320,7 +1320,7 @@ function ScaleSync(pixelMap: image.PixelMap) {
 
 createScaledPixelMap(x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
 
-Creates an image that has been resized based on the specified anti-aliasing level and the scale factors of the width and height. This API uses a promise to return the result.
+Creates an image that has been resized based on the specified anti-aliasing level and the scale factors of the width and height. The generated PixelMap is not editable. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -1369,7 +1369,7 @@ async function CreateScaledPixelMap(pixelMap:image.PixelMap) {
 
 createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): PixelMap
 
-Creates an image that has been resized based on the specified anti-aliasing level and the scale factors of the width and height. This API returns the result synchronously.
+Creates an image that has been resized based on the specified anti-aliasing level and the scale factors of the width and height. The generated PixelMap is not editable. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

@@ -95,6 +95,16 @@ getNetAccessPolicy(): Promise\<NetAccessPolicy>
 | ------------------------------------------------------- | ----------------------------- |
 | Promise\<[NetAccessPolicy](#netaccesspolicy)>  |Promise对象。返回应用自身联网策略。|
 
+**错误码：**
+
+以下错误码的详细介绍参见[应用联网错误码](errorcode-net-policy.md)。
+
+| 错误码ID | 错误信息                                     |
+| --------- | -------------------------------------------- |
+| 2100002   | Failed to connect to the service.            |
+| 2100003   | System internal error, such as nullptr.    |
+
+
 **示例：**
 ```ts
 import { policy } from '@kit.NetworkKit';

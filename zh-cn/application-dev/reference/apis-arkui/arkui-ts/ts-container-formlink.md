@@ -1,9 +1,9 @@
 # FormLink
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @Brilliantry_Rui-->
 
 提供静态卡片交互组件，用于静态卡片内部和卡片提供方应用间的交互，当前支持router、message和call三种类型的事件。
@@ -46,6 +46,7 @@ FormLink(options: FormLinkOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称      | 类型 | 只读 | 可选 | 说明                                                     |
 | ----------- | -------- | ---- |  ---- |------------------------------------------------------------ |
 | action      | string | 否  | 否   | action的类型，支持三种预定义的类型：<br/>-&nbsp;router：跳转到提供方应用的指定UIAbility。<br/>-&nbsp;message：自定义消息，触发后会调用提供方FormExtensionAbility的[onFormEvent()](../../apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonformevent)生命周期回调。<br/>-&nbsp;call：后台启动提供方应用。触发后会拉起提供方应用的指定UIAbility（仅支持launchType为[singleton](../../../application-models/uiability-launch-type.md#singleton启动模式)的UIAbility，即启动模式为单实例的UIAbility），但不会调度到前台。提供方应用需要具备后台运行权限([ohos.permission.KEEP_BACKGROUND_RUNNING](../../../security/AccessToken/permissions-for-all.md#ohospermissionkeep_background_running))。 <br/>**说明：** <br/>不推荐使用router事件刷新卡片UI。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |

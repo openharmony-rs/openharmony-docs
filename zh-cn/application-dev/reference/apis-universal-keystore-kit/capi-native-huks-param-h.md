@@ -29,7 +29,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_initparamset) | 初始化参数集，无参数信息，分配参数集默认可用内存空间。初始化后的参数集需要通过OH_Huks_FreeParamSet释放。添加参数的参数集需要使用OH_Huks_AddParams添加参数并且必须使用OH_Huks_BuildParamSet构造参数集。 |
+| [struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_initparamset) | 初始化参数集，无参数信息，分配参数集默认可用内存空间。初始化后的参数集需要通过[OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset)释放。添加参数的参数集需要使用[OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams)添加参数并且必须使用[OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset)构造参数集。 |
 | [struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)](#oh_huks_addparams) | 添加参数到参数集里面。 |
 | [struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_buildparamset) | 构造参数集，在初始化参数集和添加参数操作之后，序列化参数集，将blob类型的数据拷贝到paramSet结构尾部相邻内存区域。 |
 | [void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)](#oh_huks_freeparamset) | 销毁参数集。 |
@@ -51,7 +51,7 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 
 **描述**
 
-初始化参数集，无参数信息，分配参数集默认可用内存空间。初始化后的参数集需要通过OH_Huks_FreeParamSet释放。添加参数的参数集需要使用OH_Huks_AddParams添加参数并且必须使用OH_Huks_BuildParamSet构造参数集。
+初始化参数集，无参数信息，分配参数集默认可用内存空间。初始化后的参数集需要通过[OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset)释放。添加参数的参数集需要使用[OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams)添加参数并且必须使用[OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset)构造参数集。
 
 **起始版本：** 9
 

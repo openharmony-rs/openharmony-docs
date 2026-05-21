@@ -756,7 +756,7 @@ Notification.cancelGroup(groupName).then(() => {
 
 isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): void
 
-Checks whether a specified template exists. This API uses an asynchronous callback to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -764,7 +764,7 @@ Checks whether a specified template exists. This API uses an asynchronous callba
 
 | Name      | Type                    | Mandatory| Description                      |
 | ------------ | ------------------------ | ---- | -------------------------- |
-| templateName | string                   | Yes  | Template name.                  |
+| templateName | string                   | Yes  | Template name. Currently, only **downloadTemplate** is supported.                  |
 | callback     | AsyncCallback\<boolean\> | Yes  | Callback used to return the result.|
 
 **Example**
@@ -788,7 +788,7 @@ Notification.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-Checks whether a specified template exists. This API uses a promise to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -796,7 +796,7 @@ Checks whether a specified template exists. This API uses a promise to return th
 
 | Name      | Type  | Mandatory| Description    |
 | ------------ | ------ | ---- | -------- |
-| templateName | string | Yes  | Template name.|
+| templateName | string | Yes  | Template name. Currently, only **downloadTemplate** is supported.|
 
 **Return value**
 

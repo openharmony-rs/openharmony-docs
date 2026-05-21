@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 > **说明：**
 >
@@ -92,3 +92,57 @@ Setting the power mode failed.
 **处理步骤**
 
 当前电源模式不可切换至目标电源模式，可使用[getPowerMode](js-apis-power.md#powergetpowermode9)接口查询当前电源模式。
+
+## 4900400 接口入参错误
+
+**错误信息**
+
+The input parameter is invalid.
+
+**错误描述**
+
+接口的入参错误。
+
+**可能原因**
+
+入参超出范围或为空。
+
+**处理步骤**
+
+此错误说明入参值不符合要求，请检查入参值是否正确。
+
+## 4900501 读电源配置节点失败
+
+**错误信息**
+
+Failed to read the power configuration value.
+
+**错误描述**
+
+读操作失败。
+
+**可能原因**
+
+节点不存在。
+
+**处理步骤**
+
+请检查入参节点是否存在。
+
+## 4900601 写电源配置节点失败
+
+**错误信息**
+
+Failed to write the power configuration value.
+
+**错误描述**
+
+写操作失败。
+
+**可能原因**
+
+节点不存在。
+
+**处理步骤**
+
+请检查入参节点是否存在。

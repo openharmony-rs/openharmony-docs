@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -11,7 +11,7 @@ When there is a large amount of page information, to enable the user to focus on
 
 ## Basic Layout
 
-The **Tabs** component consists of two parts: [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) and [TabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar). **TabContent** is the content page, and **TabBar** is the navigation tab bar. The following figure shows the page structure. The layout varies according to the navigation type. In bottom navigation, top navigation, and side navigation, the navigation tab bar is located at the bottom, top, and edge, respectively.
+  The **Tabs** component consists of two parts: [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) and [TabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar). **TabContent** is the content page, and **TabBar** is the navigation tab bar. The following figure shows the page structure. The layout varies according to the navigation type. In bottom navigation, top navigation, and side navigation, the navigation tab bar is located at the bottom, top, and edge, respectively.
 
   **Figure 1** Tabs component layout 
 
@@ -98,7 +98,7 @@ Bottom navigation is the most common navigation mode in applications. The bottom
 ![bottom-navigation](figures/bottom-navigation.gif)
 
 
-You set the position of the navigation bar through the **barPosition** parameter of the **Tabs** component. By default, **barPosition** is set to **BarPosition.Start**, which means that the navigation bar is located on the top. To display the navigation bar at the bottom, set **barPosition** to **BarPosition.End**.
+The position of the navigation bar is specified by the [barPosition](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabsoptions15) attribute of **Tabs**. By default, **barPosition** is set to **BarPosition.Start**, which means that the navigation bar is located on the top. To display the navigation bar at the bottom, set **barPosition** to **BarPosition.End**.
 
 
 <!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
@@ -110,7 +110,7 @@ Tabs({ barPosition: BarPosition.End }) {
 }
 ```
 
-You can customize the appearance of the bottom navigation bar by setting the [BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9) attribute of **TabContent**. For details, see [Example 9: Using Symbol Icons for Bottom Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#example-9-using-symbol-icons-for-bottom-tabs).
+You can customize the appearance of the bottom navigation bar by setting the [BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9) attribute of **TabContent**. For details, see [Example 8: Using Symbol Icons for Bottom Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#example-8-using-symbol-icons-for-bottom-tabs).
 
 
 ## Top Navigation
@@ -169,14 +169,14 @@ To implement the side navigation bar, set the [vertical](../reference/apis-arkui
 
 ## Restricting the Scrolling of the Navigation Bar
 
-By default, the navigation bar is scrollable. On some pages that require multi-level classification of content, for example, when both bottom navigation and top navigation are used, the scroll effect of the bottom navigation bar may conflict with that of the top navigation bar. In this case, the scrolling of the bottom navigation bar needs to be restricted to improve user experience.
-
+  By default, the navigation bar is scrollable. On some pages that require multi-level classification of content, for example, when both bottom navigation and top navigation are used, the scroll effect of the bottom navigation bar may conflict with that of the top navigation bar. In this case, the scrolling of the bottom navigation bar needs to be restricted to improve user experience.
+  
   **Figure 6** Restricting the scrolling of the bottom navigation bar 
 
 ![restricted-navigation](figures/restricted-navigation.gif)
 
 
-The attribute that enables or disables the scrolling is **scrollable**. Its default value is **true**, indicating that scrolling is enabled. To disable the scrolling, set the attribute to **false**.
+The attribute that controls the scrolling is [scrollable](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#scrollable). The default value is **true**, indicating that scrolling is allowed. To restrict swipe-to-switch tabs, set this attribute to **false**.
 
 <!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
@@ -317,7 +317,9 @@ Since API version 18, the **Tabs** component supports the [onSelected](../refere
 <!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
 
 ``` TypeScript
-@Entry
+
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct ContentPageNoAndTabLinkage {
 
@@ -428,26 +430,26 @@ To enable switching between content pages and tabs without swiping, you can pass
                   this.controller.changeIndex(index);
                 })
 ```
-
+  
   **Figure 12** Switching to a specific tab page   
 
 ![Switching to a Specified Tab Page](figures/TabsChange.gif)
 
 You can use the [onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12) API of the **Tabs** component to customize the interception callback. The interception callback function is called when a new page is about to be displayed. If the callback returns **true**, the tab can switch to the new page. If the callback returns **false**, the tab cannot switch to the new page and will remain on the current page.
-
+  
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
 ``` TypeScript
-  Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
-    // ···
+Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
+  // ...
+}
+// ...
+.onContentWillChange((currentIndex, comingIndex) => {
+  if (comingIndex === 2) {
+    return false;
   }
-// ···
-  .onContentWillChange((currentIndex, comingIndex) => {
-    if (comingIndex == 2) {
-      return false;
-    }
-    return true;
-  })
+  return true;
+})
 ```
   **Figure 13** Customizing the page switching interception event
 
@@ -459,7 +461,7 @@ In aging-friendly scenarios with large font sizes, the bottom tab bar offers a d
 
 >  **NOTE**
 >
-> The dialog box applies only to bottom tab bars, that is, tab bars in the style of **BottomTabBarStyle**.
+> The dialog box is applicable only to the bottom tab bar [BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9).
 
 **Figure 14** Displaying an aging-friendly dialog box by long-pressing the bottom tab bar in an aging-friendly scenario
 
@@ -476,7 +478,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'AgeFriendlyTabs';
-@Entry
+
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct AgeFriendlyTabs {
   @State fontColor: string = '#182431';
@@ -644,11 +648,13 @@ Since API version 19, you can use the [cachedMaxCount](https://../reference/apis
 <!-- @[number_of_caches_tabBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets) -->
 
 ``` TypeScript
-@Entry
+
+// To use it as the entry of a page, uncomment @Entry and delete the export keyword.
+// @Entry
 @Component
 export struct NumberOfCachesTabBar {
   build() {
-    // ···
+    // ...
           Tabs({ barPosition: BarPosition.Start }) {
             TabContent() {
               MyComponent({ color: '#00CB87' })
@@ -674,7 +680,7 @@ export struct NumberOfCachesTabBar {
           .height(296)
           .backgroundColor('#F1F3F5')
           .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
-        // ···
+          // ...
   }
 }
 

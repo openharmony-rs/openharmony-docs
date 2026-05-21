@@ -2,13 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
 \@Provider和\@Consumer用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
 
-\@Provider和\@Consumer属于状态管理V2装饰器，所以只能在\@ComponentV2中才能使用，在\@Component中使用会编译报错。
+\@Provider和\@Consumer属于状态管理V2装饰器，所以只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中才能使用，在[\@Component](./arkts-create-custom-components.md)中使用会编译报错。
 
 \@Provider和\@Consumer提供了跨组件层级数据双向同步的能力。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。常见问题请参考[组件内状态变量常见问题](./arkts-state-management-faq-inner-component.md)。
 
@@ -136,7 +136,7 @@ struct Child {
 | 传递规则       | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
 | 从父组件初始化 | \@Provider和\@Consumer装饰的变量仅允许本地初始化，不允许从外部传入初始化。 |
-| 初始化子组件   | \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。 |
+| 初始化子组件   | \@Provider和\@Consumer装饰的变量可以初始化子组件中[\@Param](./arkts-new-param.md)装饰的变量。 |
 
 ## 使用限制
 
@@ -241,7 +241,7 @@ struct Child {
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->
+<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -256,6 +256,7 @@ struct Parent {
           Text(`parent: ${item}`).fontSize(30)
           Divider()
         })
+        // count被@Provider装饰，可以被观察到Array整体的赋值以及调用Array接口带来的变化
         Button('push').onClick(() => {
           this.count.push(111);
         })
@@ -283,6 +284,7 @@ struct Child {
         Text(`child: ${item}`).fontSize(30)
         Divider()
       })
+      // count被@Consumer装饰，可以被观察到Array整体的赋值以及调用Array接口带来的变化
       Button('push').onClick(() => {
         this.count.push(222);
       })
@@ -302,7 +304,7 @@ struct Child {
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->
+<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -313,6 +315,7 @@ struct Parent {
   build() {
     Column() {
       Text(`parent: ${this.selectedDate}`)
+      // selectedDate被@Provider装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('update the new date')
         .onClick(() => {
           this.selectedDate = new Date('2023-07-07');
@@ -341,6 +344,7 @@ struct Child {
   build() {
     Column() {
       Text(`child: ${this.selectedDate}`)
+      // selectedDate被@Consumer装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('update the new date')
         .onClick(() => {
           this.selectedDate = new Date('2025-01-01');
@@ -366,7 +370,7 @@ struct Child {
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->
+<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -382,6 +386,7 @@ struct Parent {
         Text(`${item[1]}`).fontSize(30)
         Divider()
       })
+      // message被@Provider装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
       Button('init map').onClick(() => {
         this.message = new Map([[0, 'aa'], [1, 'bb'], [3, 'cc']]);
       })
@@ -414,6 +419,7 @@ struct Child {
         Text(`${item[1]}`).fontSize(30)
         Divider()
       })
+      // message被@Consumer装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
       Button('init map').onClick(() => {
         this.message = new Map([[0, 'dd'], [1, 'ee'], [3, 'ff']]);
       })
@@ -438,7 +444,7 @@ struct Child {
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口 `add`, `clear`, `delete`带来的变化。
 
-<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->
+<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -453,6 +459,7 @@ struct Parent {
         Text(`${item[0]}`).fontSize(30)
         Divider()
       })
+      // message被@Provider装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
       Button('init set').onClick(() => {
         this.message = new Set([1, 2, 3, 4]);
       })
@@ -481,6 +488,7 @@ struct Child {
         Text(`${item[0]}`).fontSize(30)
         Divider()
       })
+      // message被@Consumer装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
       Button('init set').onClick(() => {
         this.message = new Set([1, 2, 3, 4, 5, 6]);
       })
@@ -545,14 +553,15 @@ struct Child {
 
 ### \@Provider和\@Consumer装饰复杂类型，配合\@Trace一起使用
 
-1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，必须配合\@Trace一起使用。
+1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，可以配合\@Trace一起使用，也可以使用[makeObserved](./arkts-new-makeObserved.md)将非可观察数据变为可观察数据。
 2. 装饰内置类型：Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同[\@Trace](./arkts-new-observedV2-and-trace.md#观察变化)。
 
-<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->
+<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) --> 
 
 ``` TypeScript
 @ObservedV2
 class User {
+  // 复杂数据类型的属性被@Trace装饰，可以被观察到属性变化
   @Trace public name: string;
   @Trace public age: number;
 
@@ -657,7 +666,7 @@ struct Child {
 
 \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。
 
-<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->
+<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -668,6 +677,7 @@ struct Index {
   build() {
     Column() {
       Text(`Index @Provider val: ${this.val}`).fontSize(30)
+      // @Provider装饰的变量val可以初始化@Param装饰的变量val2
       Parent({ val2: this.val })
     }
   }
@@ -685,6 +695,7 @@ struct Parent {
         this.val++;
       })
       Text(`Parent @Param val2: ${this.val2}`).fontSize(30)
+      // @Consumer装饰的变量val可以初始化@Param装饰的变量val
       Child({ val: this.val })
     }.border({ width: 2, color: Color.Green })
   }
@@ -717,7 +728,7 @@ struct Child {
 下面给出一个示例，实现如下功能：
 1. BuilderNode通过[全局自定义构建函数](arkts-builder.md#全局自定义构建函数)构建组件树，组件树的根[FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md)节点可通过[getFrameNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode)获取，该节点可直接由[NodeController](../../reference/apis-arkui/js-apis-arkui-nodeController.md)返回并挂载于[NodeContainer](../../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)节点下。
 2. 挂载到自定义组件节点树时，BuilderNode会通过addBuilderNode方法挂载在自定义组件下，此时BuilderNode节点下的\@Consumer会向上查找\@Provider，根据key的匹配规则找到最近的\@Provider后，会和\@Provider建立双向同步关系。如果找不到配对的\@Provider，则\@Consumer仍使用默认值。
-3. 建立双向同步的关系后，如果\@Provider装饰变量的值和\@Consumer的默认值不同，则会回调\@Consumer的\@Monitor方法，以及与\@Consumer有同步关系的变量的\@Monitor方法，例如：\@Consumer通知其子组件中的\@Param触发\@Monitor方法。
+3. 建立双向同步的关系后，如果\@Provider装饰变量的值和\@Consumer的默认值不同，则会回调\@Consumer的\@Monitor方法，以及与\@Consumer有同步关系的变量的[\@Monitor](./arkts-new-monitor.md)方法，例如：\@Consumer通知其子组件中的\@Param触发\@Monitor方法。
 4. BuilderNode从组件树卸载后，\@Consumer会再次试图查找对应的\@Provider，如果发现从组件树卸载后无法再找到之前配对的\@Provider，则断开和\@Provider的双向同步关系，\@Consumer装饰的变量恢复成默认值。
 5. \@Consumer断开和\@Provider的连接，恢复成默认值时，会判断\@Consumer装饰变量的值相对于从\@Provider变为\@Consumer的默认值是否有变化，如果有变化，则会回调\@Consumer的\@Monitor方法以及与该\@Consumer存在同步关系的变量的\@Monitor方法。
 

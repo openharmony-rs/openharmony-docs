@@ -1,0 +1,33 @@
+# OH_AudioConverter_Format
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioConverter_Format {...} OH_AudioConverter_Format
+```
+
+## Overview
+
+This struct defines the audio converter format data structure, which is used to describe the basic audio format.
+
+**Since**: 26.0.0
+
+**Related module**: AudioConverter](capi-audioconverter.md)
+
+**Header file**: [native_audio_converter.h](capi-native-audio-converter-h.md)
+
+## Summary
+
+### Member Variables
+
+| Name| Description|
+| -- | -- |
+| [OH_Audio_EncodingType](capi-native-audio-suite-base-h.md#oh_audio_encodingtype) encodingType | Audio encoding format type.<br>**Since**: 26.0.0|
+| [OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate) samplingRate | Audio sampling rate.<br>**Since**: 26.0.0|
+| OH_AudioChannelLayout channelLayout | Audio channel layout.<br>**Since**: 26.0.0|
+| [OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat) sampleFormat | Audio sample format.<br>**Since**: 26.0.0|
+<!--no_check-->

@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 场景介绍
@@ -42,7 +42,7 @@
 
 2. 控制设备上的振动器，需要申请权限ohos.permission.VIBRATE。具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-   <!-- @[vibrator_capi_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorCapiSamples/entry/src/main/module.json5) --> 
+   <!-- @[vibrator_capi_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/module.json5) --> 
    
    ``` JSON5
    "requestPermissions": [
@@ -63,7 +63,7 @@
 
 4. 导入模块。
 
-   <!-- @[vibrator_capi_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
+   <!-- @[vibrator_capi_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
    
    ``` C++
    #include <sensors/vibrator.h>
@@ -78,7 +78,7 @@
 
 5. 定义常量。
 
-   <!-- @[vibrator_capi_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
+   <!-- @[vibrator_capi_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
    
    ``` C++
    const int VIBRATOR_LOG_DOMAIN = 0xD002701;
@@ -88,7 +88,7 @@
 
 6. 控制马达在指定时间内持续振动和停止马达振动。
 
-   <!-- @[vibrator_capi_vibrate_in_duration_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
+   <!-- @[vibrator_capi_vibrate_in_duration_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
    
    ``` C++
    static napi_value PlayVibrationInDuration(napi_env env, napi_callback_info info)
@@ -115,7 +115,7 @@
 
 7. 播放自定义振动序列。
 
-   <!-- @[vibrator_capi_vibrate_in_custom_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
+   <!-- @[vibrator_capi_vibrate_in_custom_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
    
    ``` C++
    static napi_value PlayVibrationCustom(napi_env env, napi_callback_info info)
@@ -170,7 +170,7 @@
 
 8. 在Init函数中补充接口。
 
-   <!-- @[vibrator_capi_init_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
+   <!-- @[vibrator_capi_init_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/oh_vibrator_capi.cpp) --> 
    
    ``` C++
    EXTERN_C_START
@@ -188,7 +188,7 @@
 
 9. 在types/libentry路径下index.d.ts文件中引入Napi接口。
 
-   <!-- @[vibrator_capi_dependency_napi_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorCapiSamples/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
+   <!-- @[vibrator_capi_dependency_napi_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
    
    ``` TypeScript
    export const playVibrationInDuration: () => object;
@@ -197,7 +197,7 @@
 
 10. 编写程序入口调用代码。
 
-    <!-- @[vibrator_capi_index_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorCapiSamples/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @[vibrator_capi_index_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorCapiSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';

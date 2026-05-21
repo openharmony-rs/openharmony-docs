@@ -1,8 +1,8 @@
 # native_interface.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -113,3 +113,21 @@ do {                                                                            
 Obtains the corresponding struct pointer based on the struct type. This API takes parameters of **nativeAPIVariantKind** (an enumeration of type [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)), **structType** (of type const char*), **structPtr** (of type structType\*). It calls [OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname) to obtain a native API pointer, casts it to structType*, and assigns the result to **structPtr**.
 
 **Since**: 12
+
+### OH_ArkUI_NativeModule_GetErrorMessage()
+
+```c
+const char* OH_ArkUI_NativeModule_GetErrorMessage()
+```
+
+**Description**
+
+Obtains the latest error information, including the error codes, method names, and error causes. For details about the error codes, see [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode). When an error code is returned by another API, the corresponding error information is saved. You can use this API to obtain the saved error information. The returned string is a thread-local global string created by the system, and cannot be modified. If you need to edit the string, create a copy of the string content. The information returned by this API may vary with version evolution. Therefore, the information is used only for output to assist in analysis and troubleshooting, and should not be used as a basis for logic judgment. The returned error information does not need to be manually released.
+
+**Since**: 26.0.0
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| const char* | Pointer to the latest error information, including the error codes, method names, and error causes.|

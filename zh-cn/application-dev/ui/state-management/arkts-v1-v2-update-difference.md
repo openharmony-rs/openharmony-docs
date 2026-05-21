@@ -1,8 +1,8 @@
 # 状态管理V1和V2更新机制差异
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @s10021109-->
-<!--Designer: @s10021109-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 

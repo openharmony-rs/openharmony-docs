@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -204,20 +204,21 @@
 
 | 名称              |  值    | 说明            |
 | ----------------- | ------ | --------------- |
-| SAMPLE_RATE_8000  | 8000   | 采样率为8000。  |
-| SAMPLE_RATE_11025 | 11025  | 采样率为11025。 |
-| SAMPLE_RATE_12000 | 12000  | 采样率为12000。 |
-| SAMPLE_RATE_16000 | 16000  | 采样率为16000。 |
-| SAMPLE_RATE_22050 | 22050  | 采样率为22050。 |
-| SAMPLE_RATE_24000 | 24000  | 采样率为24000。 |
-| SAMPLE_RATE_32000 | 32000  | 采样率为32000。 |
-| SAMPLE_RATE_44100 | 44100  | 采样率为44100。 |
-| SAMPLE_RATE_48000 | 48000  | 采样率为48000。 |
-| SAMPLE_RATE_64000 | 64000  | 采样率为64000。 |
-| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。 |
-| SAMPLE_RATE_96000 | 96000  | 采样率为96000。 |
-| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。 |
-| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。 |
+| SAMPLE_RATE_8000  | 8000   | 采样率为8000。单位为赫兹（Hz）。  |
+| SAMPLE_RATE_11025 | 11025  | 采样率为11025。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_12000 | 12000  | 采样率为12000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_16000 | 16000  | 采样率为16000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_22050 | 22050  | 采样率为22050。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_24000 | 24000  | 采样率为24000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_32000 | 32000  | 采样率为32000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_44100 | 44100  | 采样率为44100。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_48000 | 48000  | 采样率为48000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_64000 | 64000  | 采样率为64000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_96000 | 96000  | 采样率为96000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_384000 | 384000  | 采样率为384000。单位为赫兹（Hz）<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AudioEncodingType<sup>8+</sup>
 
@@ -542,6 +543,8 @@
 
 表示音频并发模式的枚举。
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 | 名称                   | 值 | 说明      |
@@ -596,6 +599,8 @@
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可取消静音。 |
 | AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  静音播放建议。<br/>当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | 取消静音播放建议。<br/>当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE<sup>24+</sup>    | 8      |  提示音频会话静音。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE<sup>24+</sup>  | 9      | 提示音频会话解除静音，恢复播放。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
@@ -647,7 +652,7 @@
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[InterruptType](#interrupttype)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -703,3 +708,17 @@
 | FLAT   | 1     | 保持原始声音，不进行均衡调节。|
 | FULL   | 2     | 使人声更饱满（默认的均衡器类型）。|
 | BRIGHT | 3     | 使人声更明亮。|
+
+## AudioSessionBehaviorFlags<sup>24+</sup>
+
+表示音频会话行为的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                   | 值 | 说明      |
+| :--------------------- |:--|:--------|
+| DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | 默认行为，用于清空音频会话行为设置。 |
+| VOIP_PRIVACY_TYPE_PUBLIC | 0x00000001 | 非隐私VoIP，允许VoIP录音流与其他应用的录音流同时进行录音。<br/>**注意：** VoIP通话流属于隐私流，请谨慎使用该接口并确保符合隐私保护要求。<br/>**起始版本：** 26.0.0 |
+| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | 当音频流被打断时，使用静音替代。<br/>通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置该行为的同时，也需要调用接口[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)使其生效。<br/>当播放被静音时，应用将收到[InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE通知，并且在恢复时会收到[InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE通知。 |
