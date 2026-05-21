@@ -1,8 +1,8 @@
 # 窗口开发常见日志问题与定位
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @JUGaaab-->
-<!--Designer: @ki_ja-->
+<!--Owner: @liangryan-->
+<!--Designer: @liangryan-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
