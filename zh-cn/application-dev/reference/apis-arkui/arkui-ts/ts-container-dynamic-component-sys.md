@@ -168,6 +168,8 @@ struct Index {
 
 **Worker线程文件** workers/Worker.ets
 
+以下为用于运行Abc的Worker线程对象的实现。
+
 ```ts
 import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
 
