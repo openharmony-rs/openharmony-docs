@@ -278,7 +278,7 @@ import { call } from '@kit.TelephonyKit';
 
 | 错误码ID | 错误信息（此处仅提供错误抛出的关键信息） |
 | -------- | ---------------------------------------- |
-| 1300001  | This is repeat operation. <br>适用版本：x-y （SDK注释中错误码如标记为[since x-y]时，采用此方式。）        |
+| 1300001  | This is a repeat operation. <br>适用版本：x-y （SDK注释中错误码如标记为[since x-y]时，采用此方式。）        |
 | 1300002  | This window state is abnormal. <br>适用版本：y+  （SDK注释中错误码如标记为[since y]时，采用此方式。）   |
 
 **示例：**
