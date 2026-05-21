@@ -111,11 +111,17 @@ console.info(`the sim is active:` + isSimActive);
 
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
-getDefaultVoiceSlotId\(callback: AsyncCallback\<int\>\): void
+ArkTS-Dyn: getDefaultVoiceSlotId\(callback: AsyncCallback\<number\>\): void
+
+ArkTS-Sta: getDefaultVoiceSlotId\(callback: AsyncCallback\<int\>\): void
 
 获取默认语音业务的卡槽ID。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -136,11 +142,17 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
-getDefaultVoiceSlotId\(\): Promise\<int\>
+ArkTS-Dyn: getDefaultVoiceSlotId(): Promise<number>
+
+ArkTS-Sta: getDefaultVoiceSlotId(): Promise<int>
 
 获取默认语音业务的卡槽ID。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1481,13 +1493,19 @@ promise.then((data: number) => {
 
 ## sim.getSimLabel<sup>20+</sup>
 
-getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
+ArkTS-Dyn: getSimLabel(slotId: number, callback: AsyncCallback<SimLabel>): void
+
+ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback<SimLabel>): void
 
 查看卡槽ID和SIM卡的对应关系：
 - 卡槽1对应SIM卡1或SIM卡2
 - 卡槽2对应SIM卡2或ESIMX
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1521,11 +1539,17 @@ sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
 
 ## sim.getSimLabel<sup>20+</sup>
 
-getSimLabel(slotId: number): Promise\<SimLabel\>
+ArkTS-Dyn: getSimLabel(slotId: number): Promise
+
+ArkTS-Sta: getSimLabel(slotId: number): Promise
 
 获取SIM卡的标签信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1567,11 +1591,17 @@ sim.getSimLabel(0).then((data: sim.SimLabel) => {
 
 ## sim.getSimLabelSync<sup>20+</sup>
 
-getSimLabelSync(slotId: number): SimLabel
+ArkTS-Dyn:getSimLabelSync(slotId: number): SimLabel
+
+ArkTS-Sta: getSimLabelSync(slotId: int): SimLabel
 
 通过传入SIM卡槽的ID，获取对应的SIM卡标签。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

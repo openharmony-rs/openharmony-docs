@@ -1095,7 +1095,11 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 >
 > 此接口不包含sim卡的激活状态，具体请参见[sim.isSimActive](js-apis-sim.md#simissimactive7)接口。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1125,13 +1129,17 @@ observer.on('simStateChange', (data: observer.SimStateData) => {
 ```
 
 
-## observer.on('simStateChange')<sup>7+</sup>
+## observer.on('simStateChange')<sup>11+</sup>
 
 on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimStateData\>\): void
 
 订阅指定卡槽位的sim状态更改事件，使用callback方式作为异步方法。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1175,7 +1183,11 @@ off\(type: 'simStateChange', callback?: Callback\<SimStateData\>\): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1214,7 +1226,11 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 
 订阅卡帐户变化事件，使用callback方式作为异步方法。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1254,7 +1270,11 @@ off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn.
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -1290,13 +1310,19 @@ observer.off('iccAccountInfoChange');
 
 ## observer.onGetSimActiveState<sup>23+</sup>
 
-onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
+ArkTS-Dyn: onGetSimActiveState\(slotId: number, callback: Callback\<boolean\>\): void
+
+ArkTS-Sta: onGetSimActiveState\(slotId: int, callback: Callback\<boolean\>\): void
 
 SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+ArkTS-Dyn起始版本： 23
+
+ArkTS-Sta起始版本： 23
 
 **参数：**
 
