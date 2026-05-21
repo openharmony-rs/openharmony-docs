@@ -19,9 +19,9 @@
 
 ## 开发建议
 
-当前指导仅介绍如何实现流媒体资源播放，如需播放本地资源，[请参考](using-ndk-avplayer-for-playback.md)，如果在应用开发过程中涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
-
-- 如果应用要实现后台播放或熄屏播放，需要[接入AVSession](../avsession/avsession-access-scene.md)和申请[长时任务(ArkTS)](../../task-management/continuous-task.md)，避免播放被系统强制中断。此功能仅适用ArkTS API，如需使用此功能请使用[ArkTS进行开发](video-playback.md#开发建议)。
+当前指导仅介绍如何实现流媒体资源播放，如需播放本地资源，请参考[使用AVPlayer播放视频](using-ndk-avplayer-for-playback.md)，如果在应用开发过程中涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
+ 
+- 如果应用要实现后台播放或熄屏播放，需要[接入AVSession](../avsession/avsession-access-scene.md)和申请[长时任务(ArkTS)](../../task-management/continuous-task.md)，避免播放被系统强制中断。此功能仅适用ArkTS API，如需使用此功能请参考[使用AVPlayer播放视频(ArkTS)](video-playback.md#开发建议)。
 - 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点变化](../audio/audio-playback-concurrency.md#处理音频焦点变化)事件），会存在被其他应用打断的情况，建议通过[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)主动监听音频打断事件[AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_INTERRUPT_EVENT，根据具体内容提示，做出相应的处理，避免出现应用状态与预期效果不一致的问题。
 - 面对设备同时连接多个音频输出设备的情况，建议通过[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)主动监听音频输出设备改变事件[AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE，并做出相应处理。
 - 应用在播放过程中，系统内部会因为网络数据下载失败、媒体服务死亡不可用等发生异常。建议通过[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置错误监听回调函数，根据不同错误类型，做出相应处理，避免出现播放异常。
@@ -172,101 +172,101 @@
 
 10. 视频播控：包含播放[OH_AVPlayer_Play()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_play)、暂停[OH_AVPlayer_Pause()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_pause)、跳转[OH_AVPlayer_Seek()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seek)、停止[OH_AVPlayer_Stop()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_stop)等操作。
 
-   <!-- @[OH_AVPlayer_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[OH_AVPlayer_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
-   static napi_value NAPI_Global_Play(napi_env env, napi_callback_info info) {
-     int ret = -1;
-     auto context = SampleManager::GetInstance();
-     if (context->player_ != NULL) {
-         ret = OH_AVPlayer_Play(context->player_);
-         LOG("OH_AVPlayer_Play ret:%{public}d", ret);
-     } else {
-         LOG("no found Player Instances");
-     }
-     napi_value value;
-     napi_create_int32(env, ret, &value);
-     return value;
-   }
-   ```
+    ``` C++
+    static napi_value NAPI_Global_Play(napi_env env, napi_callback_info info) {
+      int ret = -1;
+      auto context = SampleManager::GetInstance();
+      if (context->player_ != NULL) {
+          ret = OH_AVPlayer_Play(context->player_);
+          LOG("OH_AVPlayer_Play ret:%{public}d", ret);
+      } else {
+          LOG("no found Player Instances");
+      }
+      napi_value value;
+      napi_create_int32(env, ret, &value);
+      return value;
+    }
+    ```
 
-   <!-- @[OH_AVPlayer_Pause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[OH_AVPlayer_Pause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
-   static napi_value NAPI_Global_Pause(napi_env env, napi_callback_info info) {
-     int ret = 100;
-     auto context = SampleManager::GetInstance();
-     if (context->player_ != NULL) {
-         ret = OH_AVPlayer_Pause(context->player_);
-         LOG("OH_AVPlayer_Pause ret:%{public}d", ret);
-     } else {
-         LOG("no found Player Instances");
-     }
-     napi_value value;
-     napi_create_int32(env, ret, &value);
-     return value;
-   }
-   ```
+    ``` C++
+    static napi_value NAPI_Global_Pause(napi_env env, napi_callback_info info) {
+      int ret = 100;
+      auto context = SampleManager::GetInstance();
+      if (context->player_ != NULL) {
+          ret = OH_AVPlayer_Pause(context->player_);
+          LOG("OH_AVPlayer_Pause ret:%{public}d", ret);
+      } else {
+          LOG("no found Player Instances");
+      }
+      napi_value value;
+      napi_create_int32(env, ret, &value);
+      return value;
+    }
+    ```
 
-   <!-- @[OH_AVPlayer_Seek](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[OH_AVPlayer_Seek](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
-   static napi_value NAPI_Global_Seek(napi_env env, napi_callback_info info) {
-     size_t argc = 2;
-     napi_value args[2] = {nullptr};
-     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-     int seekValue;
-     napi_get_value_int32(env, args[0], &seekValue);
-     int mode;
-     napi_get_value_int32(env, args[1], &mode);
-     auto context = SampleManager::GetInstance();
-     if (context->player_ != NULL) {
-         int ret;
-         switch (mode) {
-         case 0:
-             LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_NEXT_SYNC", seekValue);
-             ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_NEXT_SYNC);
-             break;
-         case 1:
-             LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_PREVIOUS_SYNC", seekValue);
-             ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_PREVIOUS_SYNC);
-             break;
-         case 2:
-             LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_CLOSEST", seekValue);
-             ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_CLOSEST);
-             break;
-         default:
-             LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_PREVIOUS_SYNC", seekValue);
-             ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_PREVIOUS_SYNC);
-             break;
-         }
-         LOG("OH_AVPlayer_Seek ret:%{public}d", ret);
-     } else {
-         LOG("no found Player Instances");
-     }
-     napi_value value;
-     napi_create_int32(env, 0, &value);
-     return value;
-   }
-   ```
+    ``` C++
+    static napi_value NAPI_Global_Seek(napi_env env, napi_callback_info info) {
+      size_t argc = 2;
+      napi_value args[2] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+      int seekValue;
+      napi_get_value_int32(env, args[0], &seekValue);
+      int mode;
+      napi_get_value_int32(env, args[1], &mode);
+      auto context = SampleManager::GetInstance();
+      if (context->player_ != NULL) {
+          int ret;
+          switch (mode) {
+          case 0:
+              LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_NEXT_SYNC", seekValue);
+              ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_NEXT_SYNC);
+              break;
+          case 1:
+              LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_PREVIOUS_SYNC", seekValue);
+              ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_PREVIOUS_SYNC);
+              break;
+          case 2:
+              LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_CLOSEST", seekValue);
+              ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_CLOSEST);
+              break;
+          default:
+              LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_PREVIOUS_SYNC", seekValue);
+              ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_PREVIOUS_SYNC);
+              break;
+          }
+          LOG("OH_AVPlayer_Seek ret:%{public}d", ret);
+      } else {
+          LOG("no found Player Instances");
+      }
+      napi_value value;
+      napi_create_int32(env, 0, &value);
+      return value;
+    }
+    ```
 
-   <!-- @[OH_AVPlayer_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[OH_AVPlayer_Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
-   static napi_value NAPI_Global_Stop(napi_env env, napi_callback_info info) {
-     int ret = 100;
-     auto context = SampleManager::GetInstance();
-     if (context->player_ != NULL) {
-         ret = OH_AVPlayer_Stop(context->player_);
-         LOG("OH_AVPlayer_Stop ret:%{public}d", ret);
-     } else {
-         LOG("no found Player Instances");
-     }
-     napi_value value;
-     napi_create_int32(env, ret, &value);
-     return value;
-   }
-   ```
+    ``` C++
+    static napi_value NAPI_Global_Stop(napi_env env, napi_callback_info info) {
+      int ret = 100;
+      auto context = SampleManager::GetInstance();
+      if (context->player_ != NULL) {
+          ret = OH_AVPlayer_Stop(context->player_);
+          LOG("OH_AVPlayer_Stop ret:%{public}d", ret);
+      } else {
+          LOG("no found Player Instances");
+      }
+      napi_value value;
+      napi_create_int32(env, ret, &value);
+      return value;
+    }
+    ```
 
 11. （可选）更换资源：调用[OH_AVPlayer_Reset()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_reset)重置资源，AVPlayer重新进入[空闲](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_IDLE）状态，允许更换资源URL。
 
