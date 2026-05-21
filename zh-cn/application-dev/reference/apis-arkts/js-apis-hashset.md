@@ -1,8 +1,8 @@
 # @ohos.util.HashSet (非线性容器HashSet)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -186,17 +186,6 @@ has(value: T): boolean
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200011 | The has method cannot be bound. |
-
-ArkTS-Sta错误码：
-
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
@@ -241,17 +230,6 @@ add(value: T): boolean
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200011 | The add method cannot be bound. |
-
-ArkTS-Sta错误码：
-
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
@@ -294,17 +272,6 @@ remove(value: T): boolean
 | boolean | 成功删除指定元素返回true，否则返回false。 |
 
 **错误码：**
-
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200011 | The remove method cannot be bound. |
-
-ArkTS-Sta错误码：
 
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
@@ -432,11 +399,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**

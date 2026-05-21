@@ -1078,7 +1078,7 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long): Promise&lt;Array&lt;WindowLa
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
@@ -1776,7 +1776,9 @@ onApplicationFocusStateChange(callback: Callback\<boolean\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1809,7 +1811,9 @@ offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 

@@ -4279,6 +4279,10 @@ static destroyUIContextWithoutWindow(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 17
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 ```ts

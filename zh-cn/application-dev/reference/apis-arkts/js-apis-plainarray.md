@@ -1,8 +1,8 @@
 # @ohos.util.PlainArray (非线性容器PlainArray)  
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -145,17 +145,6 @@ ArkTS-Sta: has(key: int): boolean
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The has method cannot be bound. |
-
-ArkTS-Sta错误码：
-
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
@@ -199,11 +188,10 @@ get(key: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The get method cannot be bound. |
 
 **示例：**
@@ -286,17 +274,6 @@ ArkTS-Sta: getIndexOfKey(key: int): int
 | ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回指定key对应的下标值，查找失败返回-1。 |
 
 **错误码：**
-
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The getIndexOfKey method cannot be bound. |
-
-ArkTS-Sta错误码：
 
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
@@ -391,17 +368,6 @@ ArkTS-Sta: getKeyAt(index: int): int
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The getKeyAt method cannot be bound. |
-
-ArkTS-Sta错误码：
-
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
@@ -447,18 +413,6 @@ ArkTS-Sta: getValueAt(index: int): T
 | T | 返回该下标元素键值对中的value值，失败返回undefined。 |
 
 **错误码：**
-
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of index is out of range. |
-| 10200011 | The getValueAt method cannot be bound. |
-
-ArkTS-Sta错误码：
 
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
@@ -540,17 +494,6 @@ ArkTS-Sta: add(key: int, value: T): void
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The add method cannot be bound. |
-
-ArkTS-Sta错误码：
-
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
@@ -593,11 +536,10 @@ remove(key: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The remove method cannot be bound. |
 
 **示例：**
@@ -638,11 +580,10 @@ removeAt(index: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The removeAt method cannot be bound. |
 
 **示例：**
@@ -768,18 +709,6 @@ ArkTS-Sta: removeRangeFrom(index: int, size: int): int
 
 **错误码：**
 
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of index is out of range. |
-| 10200011 | The removeRangeFrom method cannot be bound. |
-
-ArkTS-Sta错误码：
-
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
@@ -821,18 +750,6 @@ ArkTS-Sta: setValueAt(index: int, value: T): void
 | value | T | 是 | 替换键值对中的值。 |
 
 **错误码：**
-
-ArkTS-Dyn错误码：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of index is out of range. |
-| 10200011 | The setValueAt method cannot be bound. |
-
-ArkTS-Sta错误码：
 
 以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
@@ -967,11 +884,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**

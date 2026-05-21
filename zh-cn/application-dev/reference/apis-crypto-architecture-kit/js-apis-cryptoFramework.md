@@ -32,7 +32,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                   |
 | ERR_RUNTIME_ERROR                     | 17620002 | 表示在ArkTS和C之间转换参数失败。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
-| ERR_INVALID_CALL          | 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。           |
+| ERR_INVALID_CALL          | 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。          |
 | ERR_CRYPTO_OPERATION                  | 17630001 | 调用三方算法库API出错。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
 
 ## DataBlob
@@ -1112,6 +1112,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1188,6 +1189,7 @@ getEncodedDer(format: string): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1235,6 +1237,7 @@ getEncodedPem(format: string): string
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1426,6 +1429,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1503,6 +1507,7 @@ getEncodedDer(format: string): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1552,6 +1557,7 @@ getEncodedPem(format: string): string
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2064,6 +2070,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2105,6 +2112,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2152,6 +2160,7 @@ generateSymKeySync(): SymKey
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2200,6 +2209,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | --------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                       |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                |
 
 **示例：**
 
@@ -2258,6 +2268,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | --------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                |
 
 **示例：**
 
@@ -2322,6 +2333,7 @@ convertKeySync(key: DataBlob): SymKey
 | -------- | --------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                       |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                     |
 
 **示例：**
 
@@ -8416,3 +8428,350 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
     }
   }
   ```
+
+## KemAlgNameId
+
+表示密钥封装（Kem）算法名称的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+| 名称          | 值   | 说明                        |
+| ------------- | ---- | --------------------------- |
+| ML_KEM_512    | 0    | 表示ML-KEM-512算法名称ID。  |
+| ML_KEM_768    | 1    | 表示ML-KEM-768算法名称ID。  |
+| ML_KEM_1024   | 2    | 表示ML-KEM-1024算法名称ID。 |
+
+## KemEncapResult
+
+表示密钥封装的结果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+| 名称         | 类型       | 只读 | 可选 | 说明                     |
+| ------------ | ---------- | ---- | ---- | ------------------------ |
+| sharedSecret | Uint8Array | 否   | 否   | 密钥封装生成的共享密钥。 |
+| wrappedKey   | Uint8Array | 否   | 否   | 密钥封装生成的封装密钥。 |
+
+## cryptoFramework.createKem
+
+createKem(algNameId: KemAlgNameId): Kem
+
+生成Kem实例，用于密钥封装和解封装操作。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**参数：**
+
+| 参数名    | 类型                              | 必填 | 说明                          |
+| --------- | --------------------------------- | ---- | ----------------------------- |
+| algNameId | [KemAlgNameId](#kemalgnameid)     | 是   | 指定密钥封装算法的名称ID。    |
+
+**返回值：**
+
+| 类型        | 说明                          |
+| ----------- | ----------------------------- |
+| [Kem](#kem) | 返回根据输入算法生成的Kem对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                  |
+| -------- | --------------------------------------------------------- |
+| 17620001 | memory operation failed.                                  |
+| 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed.                                   |
+| 17630001 | crypto operation error.                                   |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function createKem() {
+  try {
+    let kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
+    console.info('create kem success');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`create kem failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+## Kem
+
+Kem类，使用密钥封装方法之前需要创建该类的实例进行操作，通过[createKem](#cryptoframeworkcreatekem)方法构造此实例。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+### encapsulate
+
+encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise\<KemEncapResult>
+
+基于传入的公钥进行密钥封装。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**参数：**
+
+| 参数名 | 类型                | 必填 | 说明                                                         |
+| ------ | ------------------- | ---- | ------------------------------------------------------------ |
+| pubKey | [PubKey](#pubkey)   | 是   | 用于密钥封装的公钥。                                         |
+| ikme   | Uint8Array \| null  | 是   | 用于生成临时密钥的ikme。若传入null，则由算法库内部随机生成。 |
+
+**返回值：**
+
+| 类型                                          | 说明                       |
+| --------------------------------------------- | -------------------------- |
+| Promise\<[KemEncapResult](#kemencapresult)>   | Promise对象，返回密钥封装的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                  |
+| -------- | --------------------------------------------------------- |
+| 17620001 | memory operation failed.                                  |
+| 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed.                                   |
+| 17630001 | crypto operation error.                                   |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function kemEncapsulate() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
+    let keyPair = await asyKeyGenerator.generateKeyPair();
+    let kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
+    let encapResult = await kem.encapsulate(keyPair.pubKey, null);
+    console.info('encapsulate success');
+    console.info('sharedSecret length: ' + encapResult.sharedSecret.length);
+    console.info('wrappedKey length: ' + encapResult.wrappedKey.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`encapsulate failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### encapsulateSync
+
+encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
+
+以同步方式基于传入的公钥进行密钥封装。
+
+> **说明：**
+>
+> 建议优先使用异步接口[encapsulate](#encapsulate)，同步接口可能因系统繁忙、负载高等原因耗时较长而阻塞主线程，建议在子线程中调用同步接口以避免阻塞主线程。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**参数：**
+
+| 参数名 | 类型                | 必填 | 说明                                                         |
+| ------ | ------------------- | ---- | ------------------------------------------------------------ |
+| pubKey | [PubKey](#pubkey)   | 是   | 用于密钥封装的公钥。                                         |
+| ikme   | Uint8Array \| null  | 是   | 用于生成临时密钥的ikme。若传入null，则由算法库内部随机生成。 |
+
+**返回值：**
+
+| 类型                                | 说明               |
+| ----------------------------------- | ------------------ |
+| [KemEncapResult](#kemencapresult)   | 密钥封装的结果。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                  |
+| -------- | --------------------------------------------------------- |
+| 17620001 | memory operation failed.                                  |
+| 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed.                                   |
+| 17630001 | crypto operation error.                                   |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function kemEncapsulateSync() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
+    let keyPair = asyKeyGenerator.generateKeyPairSync();
+    let kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
+    let encapResult = kem.encapsulateSync(keyPair.pubKey, null);
+    console.info('encapsulateSync success');
+    console.info('sharedSecret length: ' + encapResult.sharedSecret.length);
+    console.info('wrappedKey length: ' + encapResult.wrappedKey.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`encapsulateSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### decapsulate
+
+decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise\<Uint8Array>
+
+基于传入的私钥和封装密钥进行密钥解封装。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**参数：**
+
+| 参数名     | 类型              | 必填 | 说明                             |
+| ---------- | ----------------- | ---- | -------------------------------- |
+| priKey     | [PriKey](#prikey) | 是   | 用于密钥解封装的私钥。           |
+| wrappedKey | Uint8Array        | 是   | 密钥封装时生成的封装密钥（wrappedKey）。 |
+
+**返回值：**
+
+| 类型                  | 说明                                 |
+| --------------------- | ------------------------------------ |
+| Promise\<Uint8Array>  | Promise对象，返回密钥解封装得到的共享密钥。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                  |
+| -------- | --------------------------------------------------------- |
+| 17620001 | memory operation failed.                                  |
+| 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed.                                   |
+| 17630001 | crypto operation error.                                   |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function kemDecapsulate() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
+    let keyPair = await asyKeyGenerator.generateKeyPair();
+    let kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
+    let encapResult = await kem.encapsulate(keyPair.pubKey, null);
+    let sharedSecret = await kem.decapsulate(keyPair.priKey, encapResult.wrappedKey);
+    console.info('decapsulate success');
+    console.info('sharedSecret length: ' + sharedSecret.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`decapsulate failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### decapsulateSync
+
+decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array
+
+以同步方式基于传入的私钥和封装的密钥进行密钥解封装。
+
+> **说明：**
+>
+> 建议优先使用异步接口[decapsulate](#decapsulate)，同步接口可能因系统繁忙、负载高等原因耗时较长而阻塞主线程，建议在子线程中调用同步接口以避免阻塞主线程。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**参数：**
+
+| 参数名     | 类型              | 必填 | 说明                             |
+| ---------- | ----------------- | ---- | -------------------------------- |
+| priKey     | [PriKey](#prikey) | 是   | 用于密钥解封装的私钥。           |
+| wrappedKey | Uint8Array        | 是   | 密钥封装时生成的封装密钥（wrappedKey）。 |
+
+**返回值：**
+
+| 类型       | 说明                           |
+| ---------- | ------------------------------ |
+| Uint8Array | 密钥解封装得到的共享密钥。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                  |
+| -------- | --------------------------------------------------------- |
+| 17620001 | memory operation failed.                                  |
+| 17620002 | failed to convert parameters between arkts and c.         |
+| 17620003 | parameter check failed.                                   |
+| 17630001 | crypto operation error.                                   |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function kemDecapsulateSync() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ML-KEM-768');
+    let keyPair = asyKeyGenerator.generateKeyPairSync();
+    let kem = cryptoFramework.createKem(cryptoFramework.KemAlgNameId.ML_KEM_768);
+    let encapResult = kem.encapsulateSync(keyPair.pubKey, null);
+    let sharedSecret = kem.decapsulateSync(keyPair.priKey, encapResult.wrappedKey);
+    console.info('decapsulateSync success');
+    console.info('sharedSecret length: ' + sharedSecret.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`decapsulateSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```

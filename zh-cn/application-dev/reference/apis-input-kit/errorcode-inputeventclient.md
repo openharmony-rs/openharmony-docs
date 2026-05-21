@@ -42,15 +42,15 @@ Input service exception.
 
 该错误码在不同接口中表示不同的状态错误：
 
-- **pressKey 接口**：The key has been pressed and is not the most recently pressed key, or the number of pressed keys exceeds 5.
+- **pressKey 接口**：The key is already pressed and is not the most recently pressed key.
 
-  当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，或已按下的按键数超过了5个，会产生此错误码。
+  当调用键盘控制器的pressKey接口时，如果按键已被按下且不是最近按下的按键，会产生此错误码。
 
-  **可能原因**：按键已经被按下且不是最近按下的按键，或已按下的按键数量超过了5个。
+  **可能原因**：按键已经被按下且不是最近按下的按键。
 
-  **处理步骤**：确保按键在抬起状态下才能被按下；如果按键已被按下，确保它是最近按下的按键；确保同时按下的按键数量不超过5个。
+  **处理步骤**：确保按键在抬起状态下才能被按下；如果按键已被按下，确保它是最近按下的按键。
 
-- **releaseKey 接口**：The key has not been pressed.
+- **releaseKey 接口**：The key is not pressed.
 
   当调用键盘控制器的releaseKey接口时，如果按键未被按下，会产生此错误码。
 
@@ -58,7 +58,7 @@ Input service exception.
 
   **处理步骤**：确保只抬起已经被按下的按键。
 
-- **pressButton 接口**：The mouse button has been pressed.
+- **pressButton 接口**：The mouse button is already pressed.
 
   当调用鼠标控制器的pressButton接口时，如果鼠标按键已被按下，会产生此错误码。
 
@@ -66,7 +66,7 @@ Input service exception.
 
   **处理步骤**：确保鼠标按键在抬起状态下才能被按下。
 
-- **releaseButton 接口**：The mouse button has not been pressed.
+- **releaseButton 接口**：The mouse button is not pressed.
 
   当调用鼠标控制器的releaseButton接口时，如果鼠标按键未被按下，会产生此错误码。
 
@@ -74,7 +74,7 @@ Input service exception.
 
   **处理步骤**：确保只抬起已经被按下的鼠标按键。
 
-- **beginAxis 接口**：An axis event is in progress.
+- **beginAxis 接口**：The axis event in progress.
 
   当调用鼠标控制器的beginAxis接口时，如果已有轴事件正在进行中，会产生此错误码。
 
@@ -82,7 +82,7 @@ Input service exception.
 
   **处理步骤**：确保在开始新的轴事件序列之前，先结束当前正在进行的轴事件序列。
 
-- **updateAxis/endAxis 接口**：No axis event is in progress.
+- **updateAxis/endAxis 接口**：The axis event is not in progress.
 
   当调用鼠标控制器的updateAxis或endAxis接口时，如果没有轴事件正在进行中，会产生此错误码。
 
@@ -90,6 +90,21 @@ Input service exception.
 
   **处理步骤**：确保在调用updateAxis或endAxis之前，先调用beginAxis开始轴事件序列。
 
+- **touchDown 接口**：触点已接触屏幕，或者触点ID不在有效范围[0, 9]内。
+
+  当调用触控控制器的touchDown接口时，如果触点已接触屏幕或触点ID不在有效范围[0, 9]内，会产生此错误码。
+
+  **可能原因**：触点已经处于按下状态，或触点ID不在有效范围[0, 9]内。
+
+  **处理步骤**：调用touchDown前，请确保对应触点尚未接触屏幕，且触点ID在有效范围[0, 9]内。
+
+- **touchMove/touchUp 接口**：触点未接触屏幕，或者触点ID不在有效范围[0, 9]内。
+
+  当调用触控控制器的touchMove或touchUp接口时，如果触点尚未接触屏幕或触点ID不在有效范围[0, 9]内，会产生此错误码。
+
+  **可能原因**：触点尚未处于按下状态，或触点ID不在有效范围[0, 9]内。
+
+  **处理步骤**：调用touchMove或touchUp前，请先调用touchDown使对应触点接触屏幕，并确保触点ID在有效范围[0, 9]内。
 ## 4300002 显示器不存在
 
 **错误信息**
@@ -98,7 +113,7 @@ The display does not exist.
 
 **错误描述**
 
-当调用鼠标控制器的moveTo接口时，如果指定的显示器不存在，会产生此错误码。
+当调用鼠标控制器的moveTo接口或触控控制器的touchDown接口时，如果指定的显示器不存在，会产生此错误码。
 
 **可能原因**
 

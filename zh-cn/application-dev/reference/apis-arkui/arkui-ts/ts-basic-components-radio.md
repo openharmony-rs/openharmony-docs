@@ -15,6 +15,8 @@
 >  - API version 12开始，Radio选中默认样式由RadioIndicatorType.DOT变为RadioIndicatorType.TICK。
 >
 >  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 该组件默认有[margin](ts-universal-attributes-size.md#margin)间距，默认值为：{&nbsp;top: '14px',&nbsp;right: '14px',&nbsp;bottom: '14px',&nbsp;left: '14px' }。
 
 ## 子组件
 
@@ -259,7 +261,7 @@ attributeModifier(modifier: AttributeModifier\<RadioAttribute\> | AttributeModif
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[RadioAttribute](ts-basic-components-radio.md#属性)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | 在Radio组件上，定制属性区的方法。<br/>modifier：属性修改器，开发者需要自定义class实现AttributeModifier接口。<br/>当modifier的值为undefined时，不使用属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<RadioAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<CommonMethod> \| undefined | 是   | 在Radio组件上，定制属性区的方法。<br/>RadioAttribute表示[属性](ts-basic-components-radio.md#属性)。<br/>CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。<br/>modifier：属性修改器，开发者需要自定义class实现AttributeModifier接口。<br/>当modifier的值为undefined时，不使用属性修改器。 |
 
 ## 事件
 
