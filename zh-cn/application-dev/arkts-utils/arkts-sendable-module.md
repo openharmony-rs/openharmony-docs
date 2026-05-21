@@ -81,6 +81,35 @@
 
 1. 共享模块导出Sendable对象。
    <!-- @[export_sendable_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/sharedModule.ets) --> 
+   
+   ``` TypeScript
+   // 共享模块
+   import { ArkTSUtils } from '@kit.ArkTS';
+   
+   // 声明当前模块为共享模块，只能导出可Sendable数据
+   'use shared'
+   
+   // 共享模块，SingletonA全局唯一
+   @Sendable
+   class SingletonA {
+     private count_: number = 0;
+     public lock_: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
+   
+     public async getCount(): Promise<number> {
+       return this.lock_.lockAsync(() => {
+         return this.count_;
+       })
+     }
+   
+     public async increaseCount() {
+       await this.lock_.lockAsync(() => {
+         this.count_++;
+       })
+     }
+   }
+   
+   export let singletonA = new SingletonA();
+   ```
 
 2. 在多个线程中操作共享模块导出的对象。
    <!-- @[multi_thread_operate_exported_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsSendableModule.ets) --> 
