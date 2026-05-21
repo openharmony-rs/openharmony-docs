@@ -187,7 +187,7 @@ observer.on('networkStateChange', (data: observer.NetworkState) => {
 
 ## observer.onNetworkStateChange<sup>23+</sup>
 
-on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
+onNetworkStateChange\(callback: Callback\<NetworkState\>\): void
 
 订阅网络状态变化事件，使用callback方式作为异步方法。
 
@@ -222,8 +222,8 @@ on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
 **示例：**
 
 ```ts
-observer.on('networkStateChange', (data: observer.NetworkState) => {
-    console.info("on networkStateChange, data:" + JSON.stringify(data));
+observer.onNetworkStateChange((data: observer.NetworkState) => {
+    console.info("onNetworkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -272,7 +272,7 @@ observer.on('networkStateChange', options, (data: observer.NetworkState) => {
 
 ## observer.onNetworkStateChange<sup>23+</sup>
 
-on\(type: \'networkStateChange\', options: ObserverOptions, callback: Callback\<NetworkState\>\): void
+onNetworkStateChange\(options: ObserverOptions, callback: Callback\<NetworkState\>\): void
 
 订阅指定卡槽位的网络状态变化事件，使用callback方式作为异步方法。
 
@@ -311,8 +311,8 @@ on\(type: \'networkStateChange\', options: ObserverOptions, callback: Callback\<
 let options: observer.ObserverOptions = {
     slotId: 0
 }
-observer.on('networkStateChange', options, (data: observer.NetworkState) => {
-    console.info("on networkStateChange, data:" + JSON.stringify(data));
+observer.onNetworkStateChange( options, (data: observer.NetworkState) => {
+    console.info("onNetworkStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -362,7 +362,7 @@ observer.off('networkStateChange');
 
 ## observer.offNetworkStateChange
 
-off\(type: \'networkStateChange\', callback?: Callback\<NetworkState\>\): void
+offNetworkStateChange\(callback?: Callback\<NetworkState\>\): void
 
 取消订阅网络状态变化事件，使用callback方式作为异步方法。
 
@@ -399,12 +399,12 @@ off\(type: \'networkStateChange\', callback?: Callback\<NetworkState\>\): void
 
 ```ts
 let callback: (data: observer.NetworkState) => void = (data: observer.NetworkState) => {
-    console.info("on networkStateChange, data:" + JSON.stringify(data));
+    console.info("onNetworkStateChange, data:" + JSON.stringify(data));
 }
-observer.on('networkStateChange', callback);
+observer.onNetworkStateChange(callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
-observer.off('networkStateChange', callback);
-observer.off('networkStateChange');
+observer.offNetworkStateChange(callback);
+observer.offNetworkStateChange();
 ```
 
 ## observer.on('signalInfoChange')
@@ -446,7 +446,7 @@ observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
 
 ## observer.onSignalInfoChange<sup>23+</sup>
 
-on\(type: \'signalInfoChange\', callback: Callback\<Array\<SignalInformation\>\>): void
+onSignalInfoChange\(callback: Callback\<Array\<SignalInformation\>\>): void
 
 订阅信号状态变化事件，使用callback方式作为异步方法。
 
@@ -480,7 +480,7 @@ on\(type: \'signalInfoChange\', callback: Callback\<Array\<SignalInformation\>\>
 ```ts
 import { radio } from '@kit.TelephonyKit';
 
-observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
+observer.onSignalInfoChange((data: Array<radio.SignalInformation>) => {
     console.info("on signalInfoChange, data:" + JSON.stringify(data));
 });
 ```
@@ -529,7 +529,7 @@ observer.on('signalInfoChange', options, (data: Array<radio.SignalInformation>) 
 
 ## observer.onSignalInfoChange<sup>23+</sup>
 
-on\(type: \'signalInfoChange\', options: ObserverOptions, callback: Callback\<Array\<SignalInformation\>\>): void
+onSignalInfoChange\(options: ObserverOptions, callback: Callback\<Array\<SignalInformation\>\>): void
 
 订阅指定卡槽位的信号状态变化事件，使用callback方式作为异步方法。
 
@@ -567,8 +567,8 @@ import { radio } from '@kit.TelephonyKit';
 let options: observer.ObserverOptions = {
     slotId: 0
 }
-observer.on('signalInfoChange', options, (data: Array<radio.SignalInformation>) => {
-    console.info("on signalInfoChange, data:" + JSON.stringify(data));
+observer.onSignalInfoChange(options, (data: Array<radio.SignalInformation>) => {
+    console.info("onSignalInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -618,9 +618,9 @@ observer.off('signalInfoChange', callback);
 observer.off('signalInfoChange');
 ```
 
-## observer.offSignalInfoChange
+## observer.offSignalInfoChange<sup>23+</sup>
 
-off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>\>): void
+offSignalInfoChange\(callback?: Callback\<Array\<SignalInformation\>\>): void
 
 取消订阅信号状态变化事件，使用callback方式作为异步方法。
 
@@ -659,12 +659,12 @@ off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
-    console.info("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info("onSignalInfoChange, data:" + JSON.stringify(data));
 }
-observer.on('signalInfoChange', callback);
+observer.onSignalInfoChange(callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
-observer.off('signalInfoChange', callback);
-observer.off('signalInfoChange');
+observer.offSignalInfoChange(callback);
+observer.offSignalInfoChange();
 ```
 
 
