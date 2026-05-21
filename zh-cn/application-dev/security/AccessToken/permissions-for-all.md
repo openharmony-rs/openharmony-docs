@@ -722,3 +722,15 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+允许应用在支持的设备上为自身安装和卸载自分发插件。
+
+**权限级别** system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
