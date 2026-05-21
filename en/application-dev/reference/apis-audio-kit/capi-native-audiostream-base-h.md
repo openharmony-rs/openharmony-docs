@@ -1,8 +1,8 @@
 # native_audiostream_base.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -67,7 +67,7 @@ The file declares the basic data structure of OHAudio.
 | [typedef void (\*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* renderer, void* userData, OH_AudioStream_DeviceChangeReason reason)](#oh_audiorenderer_outputdevicechangecallback) | OH_AudioRenderer_OutputDeviceChangeCallback | Defines a pointer to the callback invoked when the audio capturer device changes.|
 | [typedef void (\*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* renderer, uint32_t samplePos, void* userData)](#oh_audiorenderer_onmarkreachedcallback) | OH_AudioRenderer_OnMarkReachedCallback | Defines a pointer to the callback invoked when the mark position is reached.|
 | [typedef int32_t (\*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize, void* metadata, int32_t metadataSize)](#oh_audiorenderer_writedatawithmetadatacallback) | OH_AudioRenderer_WriteDataWithMetadataCallback | Defines a function pointer to the callback used to write audio data and metadata.|
-| [typedef OH_AudioData_Callback_Result (\*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallback) | OH_AudioRenderer_OnWriteDataCallback | Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.<br> The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).|
+| [typedef OH_AudioData_Callback_Result (\*OH_AudioRenderer_OnWriteDataCallback)(OH_AudioRenderer* renderer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiorenderer_onwritedatacallback) | OH_AudioRenderer_OnWriteDataCallback | Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact amount of playback data specified by **audioDataSize**; otherwise, noise may occur during playback.<br> The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).<br> To avoid audio artifacts caused by data discontinuity during playback start and stop, the system typically applies a fade-in/fade-out of less than 20 ms to the audio data.|
 
 ## Enum Description
 
@@ -154,7 +154,7 @@ enum OH_AudioStream_Usage
 
 **Description**
 
-Enumerates the usage scenarios of audio streams.<br> that is, usage scenarios of audio output streams.
+Enumerates the usage scenarios of audio streams,<br> that is, usage scenarios of audio output streams.
 
 **Since**: 10
 
@@ -574,7 +574,7 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 
 **Description**
 
-Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes its execution, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact length (specified by **audioDataSize**) of data designated for playback; otherwise, noises may occur during playback.<br> The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).
+Defines a function pointer to the callback used to write audio data.<br> The callback is used only to write audio data. Do not call AudioRenderer APIs in it.<br> The return result indicates whether the data filled in the buffer is valid. If the data is invalid, the data entered by the user will not be played.<br> Once the callback finishes, the audio service queues the data pointed to by **audioData** for playback. Therefore, do not change the data outside the callback. It is crucial to fill **audioData** with the exact amount of playback data specified by **audioDataSize**; otherwise, noise may occur during playback.<br> The **audioDataSize** parameter can be set by calling [OH_AudioStreamBuilder_SetFrameSizeInCallback](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback).<br> To avoid audio artifacts caused by data discontinuity during playback start and stop, the system typically applies a fade-in/fade-out of less than 20 ms to the audio data.
 
 **Since**: 12
 

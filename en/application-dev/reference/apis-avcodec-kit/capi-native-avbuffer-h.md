@@ -223,26 +223,6 @@ uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 
 Obtains the virtual address of a data buffer.
 
-The capability to obtain virtual addresses varies in scenarios, as described in the table below.
-
-**Encoding**
-
-| Mode| Data Filling Mode|  Capability to Obtain Virtual Addresses|
-| --------------- | -------- | -------- |
-| Surface| OnNeedInputBuffer input | Not supported|
-| Surface| OnNewOutputBuffer output | Supported|
-| Buffer | OnNeedInputBuffer input | Supported|
-| Buffer | OnNewOutputBuffer output | Supported|
-
-**Decoding**
-
-| Mode| Data Filling Mode|  Capability to Obtain Virtual Addresses|
-| --------------- | -------- | -------- |
-| Surface| OnNeedInputBuffer input | Supported|
-| Surface| OnNewOutputBuffer output | Not supported|
-| Buffer | OnNeedInputBuffer input | Supported|
-| Buffer | OnNewOutputBuffer output | Supported|
-
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 11

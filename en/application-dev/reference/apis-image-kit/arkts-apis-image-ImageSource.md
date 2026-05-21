@@ -188,7 +188,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 
 Obtains the value of a property with the specified index in this image. This API uses a promise to return the result.
 
-This API applies only to JPEG, PNG, HEIF<sup>12+</sup>, WEBP<sup>23+</sup>, and DNG<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, WEBP<sup>23+</sup>, or DNG<sup>23+</sup> format and contain Exif information. (The supported formats may vary depending on the hardware.)
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -246,7 +246,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 
 Obtains the values of properties with the given names in this image. This API uses a promise to return the result.
 
-This API applies only to JPEG, PNG, HEIF, WEBP<sup>23+</sup>, and DNG<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF, WEBP<sup>23+</sup>, or DNG<sup>23+</sup>format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 
@@ -297,7 +297,7 @@ Obtains the value of a specified Exif property. This API returns the result sync
 
 >**NOTE**
 >
-> - This API applies only to JPEG, PNG, HEIF, WEBP<sup>23+</sup>, and DNG<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+> - This API applies only to images that are in JPEG, PNG, HEIF, WEBP<sup>23+</sup>, or DNG<sup>23+</sup>format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 >
 > - Exif information is metadata of the image, including shooting time, camera model, aperture, focal length, and ISO.
 >
@@ -350,7 +350,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 Modifies the value of a property in this image. This API uses a promise to return the result.
 
-This API applies only to JPEG, PNG, HEIF<sup>12+</sup>, and WEBP<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -409,7 +409,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 Modifies the values of properties in this image. This API uses a promise to return the result.
 
-This API applies only to JPEG, PNG, HEIF, and WEBP<sup>23+</sup> images that contain the Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -474,7 +474,7 @@ Modifies image properties in batches. This API uses a promise to return the resu
 >
 > - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7) instance by passing a file descriptor or an [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource) instance by passing a URI.
 > - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties12).
-> - This API applies only to JPEG, PNG, HEIF, and WEBP images that contain the Exif information.
+> - This API applies only to images that are in JPEG, PNG, HEIF, or WEBP format and contain the Exif information.
 > - When calling the **modifyImagePropertiesEnhanced** API to modify the **Exif** field, ensure that the corresponding image file has write permission. Otherwise, the field modification will fail.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
@@ -600,7 +600,7 @@ Modifies image properties in batches. This API uses a promise to return the resu
 >
 > - Calling this API to modify properties alters the property byte length. You are advised to create an [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7) instance by passing a file descriptor or an [image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource) instance by passing a URI.
 > - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties12).
-> - This API applies only to JPEG, PNG, and HEIF images that contain Exif information. Before modifying properties, use the **supportedFormats** property to check whether the device supports Exif information read/write in HEIF format.
+> - This API applies only to images that are in JPEG, PNG, or HEIF format and contain the Exif information. Before modifying properties, use the **supportedFormats** property to check whether the device supports Exif information read/write in HEIF format.
 > - When calling the **writeImageMetadata** API to modify the **Exif** field, ensure that the corresponding image file has write permission. Otherwise, the field modification will fail.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1754,7 +1754,7 @@ getImageProperty(key:string, options?: GetImagePropertyOptions): Promise\<string
 
 Obtains the value of a property with the specified index in this image. This API uses a promise to return the result.
 
-This API applies only to JPEG, PNG, HEIF<sup>12+</sup>, and WEBP<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -1796,7 +1796,7 @@ getImageProperty(key:string, callback: AsyncCallback\<string>): void
 
 Obtains the value of a property with the specified index in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to JPEG, PNG, HEIF<sup>12+</sup>, and WEBP<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -1833,7 +1833,7 @@ getImageProperty(key:string, options: GetImagePropertyOptions, callback: AsyncCa
 
 Obtains the value of a property in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to JPEG, PNG, HEIF<sup>12+</sup>, and WEBP<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -1872,7 +1872,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 
 Modifies the value of a property in this image. This API uses a promise to return the result.
 
-This API applies only to JPEG, PNG, HEIF<sup>12+</sup>, and WEBP<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >
@@ -1920,7 +1920,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 
 Modifies the value of a property in this image. This API uses an asynchronous callback to return the result.
 
-This API applies only to JPEG, PNG, HEIF<sup>12+</sup>, and WEBP<sup>23+</sup> images that contain Exif information. (The supported formats may vary depending on the hardware.)
+This API applies only to images that are in JPEG, PNG, HEIF<sup>12+</sup>, or WEBP<sup>23+</sup> format and contain the Exif information. (The supported formats may vary depending on the hardware.)
 
 > **NOTE**
 >

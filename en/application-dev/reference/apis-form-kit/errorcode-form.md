@@ -1,9 +1,9 @@
 # Widget Error Codes
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 > **NOTE**
@@ -440,4 +440,3 @@ An internal service execution exception occurs.
 
 1. Restart the system and try again.
 2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
-<!--no_check-->

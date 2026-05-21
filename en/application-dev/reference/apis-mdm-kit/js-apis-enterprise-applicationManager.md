@@ -1,20 +1,20 @@
 # @ohos.enterprise.applicationManager (Application Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **applicationManager** module provides application management capabilities, including adding, removing, and obtaining the applications that are forbidden to run.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md). The [applicationManager.isAppKioskAllowed](#applicationmanagerisappkioskallowed20) API is available to all applications.
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md). The [applicationManager.isAppKioskAllowed](#applicationmanagerisappkioskallowed20) API is available to all applications.
 >
 
 ## Modules to Import
@@ -42,7 +42,7 @@ Adds the applications that are not allowed to run by the current or specified us
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>Note: From API version 21 onwards, the **appId** and **appIdentifier** of the app can be passed. **appIdentifier** is recommended. In API version 20 and earlier versions, only **appId** can be passed.|
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: From API version 21 onwards, the [appId](../../quick-start/common-problem-of-application.md#what-is-appid) and [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of the app can be passed. **appIdentifier** is recommended. In API version 20 and earlier versions, only **appId** can be passed.|
 | accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -199,11 +199,11 @@ Adds the applications that are allowed to run under specified users.
 
 > **NOTE**
 >
-> - Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
+> 1. Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
 >
-> - If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)<!--DelEnd-->.
+> 2. If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)<!--DelEnd-->.
 >
-> - This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.
+> 3. This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -218,7 +218,7 @@ Adds the applications that are allowed to run under specified users.
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of app unique identifiers. You can obtain **bundleInfo.signatureInfo.appIdentifier** through the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
+| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of application [unique identifiers](../../quick-start/common-problem-of-application.md#what-is-appidentifier). You can obtain **bundleInfo.signatureInfo.appIdentifier** through the [bundleManager.getInstalledBundleList](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API.<br>Value range:<br> - The total number of entries in this list for a single user must not exceed 200. For example, if 50 entries have been set for user 100 and none for user 101, user 100 can add 150 more entries, while user 101 can add up to 200 entries.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -274,7 +274,7 @@ Removes the applications that are allowed to run by the specified user.
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of unique identifiers of an app. You can obtain the **bundleInfo.signatureInfo.appIdentifier** by calling the [bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
+| appIdentifiers    | Array&lt;string&gt;                             | Yes  | Array of unique identifiers of an app. You can obtain **bundleInfo.signatureInfo.appIdentifier** through the [bundleManager.getInstalledBundleList](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20) API. Value range: The array length cannot exceed 200.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
 
 **Error codes**
@@ -375,7 +375,7 @@ Adds the auto-start applications for the current user. Applications added to the
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.
+**Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21. Since API version 24, this API allows you to configure whether to hide the UI when applications automatically start upon device startup. This capability is available only on PCs/2-in-1 devices and tablets in PC mode.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -386,7 +386,7 @@ Adds the auto-start applications for the current user. Applications added to the
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
-| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The maximum array length is 10. For example, if there are already 5 applications in the list, a maximum of 5 more can be added via this API. **Want** must contain **bundleName** and **abilityName**. The ability can be UIAbility or ServiceExtensionAbility. If the value of **exported** in the [abilities](../../quick-start/module-configuration-file.md#abilities) tag is **false**, the ability cannot be started.|
+| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The maximum array length is 10. For example, if there are already 5 applications in the list, a maximum of 5 more can be added via this API. **Want** must contain **bundleName** and **abilityName**. The ability can be UIAbility or ServiceExtensionAbility. If the value of **exported** in the [abilities](../../quick-start/module-configuration-file.md#abilities) tag is **false**, the ability cannot be started. Since API version 24, you can specify whether to hide the UI when applications automatically start upon device startup by setting **isHiddenStart** in the **parameters** attribute of Want. The value **true** indicates that yes, and the value **false** indicates no. The default value is **false**. If the **true** value is used, the applications must be <!--RP8-->integrated with the status bar<!--RP8End-->. Otherwise, the auto-start setting fails. (If only one application is set to hide the UI upon auto-start but the application is not integrated with the status bar, error 401 is reported. This API returns success as long as one application is successfully set.) After the setting is successful, the applications do not display the UI but their UI processes exist. The capability of hiding the UI is available only on PCs/2-in-1 devices and tablets in PC mode.|
 
 **Error codes**
 
@@ -414,7 +414,12 @@ let autoStartApps: Array<Want> = [
   {
     // Replace it as required.
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EntryAbility',
+    // The following parameters are optional.
+    parameters: {
+      // Since API version 24, you can configure whether to hide the UI when applications automatically start upon device startup. The value true indicates yes. If this parameter is set to true, the applications must be integrated with the status bar. Otherwise, the automatic startup setting fails and error 401 is reported.
+      isHiddenStart: true
+    }
   }
 ];
 
@@ -572,7 +577,7 @@ Checks the auto-start applications for the current user.
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | List of the auto-start applications obtained.|
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | List of the auto-start applications obtained. Since API version 24, the setting of whether the UI is hidden can be returned.|
 
 **Error codes**
 
@@ -604,18 +609,33 @@ try {
   console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+<!--code_no_check-->
+```ts
+// Return value example.
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // Supported since API version 24.
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
+]
+```
 
 ## applicationManager.addAutoStartApps<sup>20+</sup>
 
 addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, disallowModify: boolean): void
 
-Adds a list of applications that automatically start upon system startup for a specified user, and sets whether to forbid the user to manually cancel the automatic startup of applications<!--RP4--><!--RP4End-->.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
+Adds a list of applications that automatically start upon device startup for a specified user, and sets whether to prohibit the user from manually canceling application auto-start<!--RP4--><!--RP4End-->.<br>Applications can be added to the auto-start list via this API and the [addAutoStartApps](#applicationmanageraddautostartapps) API. Settings from both APIs can take effect simultaneously. For a single user, the auto-start list supports a maximum of 10 applications. For example, if there are already 3 applications in the current list, a maximum of 7 more can be added for the user via this API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21.
+**Device behavior differences**: For API version 20 and earlier versions, this API can be properly called on PCs/2-in-1 devices and does not work on other devices. This API can be used on phones, tablets, PCs/2-in-1 devices since API version 21. Since API version 24, this API allows you to configure whether to hide the UI when applications automatically start upon device startup. This capability is available only on PCs/2-in-1 devices and tablets in PC mode.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -626,9 +646,9 @@ Adds a list of applications that automatically start upon system startup for a s
 | Name       | Type                                                        | Mandatory| Description                                  |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                        |
-| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The array can contain a maximum of 10 applications. **Want** must contain **bundleName** and **abilityName**. The ability can be UIAbility or ServiceExtensionAbility. If the value of **exported** in the [abilities](../../quick-start/module-configuration-file.md#abilities) tag is **false**, the ability cannot be started.|
+| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | Yes  | Array of auto-start applications. The array can contain a maximum of 10 applications. **Want** must contain **bundleName** and **abilityName**. The ability can be UIAbility or ServiceExtensionAbility. If the value of **exported** in the [abilities](../../quick-start/module-configuration-file.md#abilities) tag is **false**, the ability cannot be started. Since API version 24, you can specify whether to hide the UI when applications automatically start upon device startup by setting **isHiddenStart** in the **parameters** attribute of Want. The value **true** indicates that yes, and the value **false** indicates no. The default value is **false**. If the **true** value is used, the applications must be <!--RP8-->integrated with the status bar<!--RP8End-->. Otherwise, the auto-start setting fails. (If only one application is set to hide the UI upon auto-start but the application is not integrated with the status bar, error 401 is reported. This API returns success as long as one application is successfully set.) After the setting is successful, the applications do not display the UI but their UI processes exist. The capability of hiding the UI is available only on PCs/2-in-1 devices and tablets in PC mode.|
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
-| disallowModify | boolean | Yes  | Whether to disable the user from manually disabling automatic application startup. The value **true** indicates that auto-start is disabled, and the value **false** indicates the opposite.<!--RP1--><!--RP1End-->|
+| disallowModify | boolean | Yes  | Whether to prohibit the user from manually disabling application auto-start. The value **true** indicates yes and the value **false** indicates no.<!--RP1--><!--RP1End-->|
 
 **Error codes**
 
@@ -656,13 +676,18 @@ let autoStartApps: Array<Want> = [
   // Replace it as required.
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EntryAbility',
+    // The following parameters are optional.
+    parameters: {
+      // Since API version 24, you can configure whether to hide the UI when applications automatically start upon device startup. The value true indicates yes. If this parameter is set to true, the applications must be integrated with the status bar. Otherwise, the automatic startup setting fails and error 401 is reported.
+      isHiddenStart: true
+    }
   }
 ];
 
 try {
   applicationManager.addAutoStartApps(wantTemp, autoStartApps, 100, true);
-  console.info('Succeeded in adding auto start applications and set disllowModify.');
+  console.info('Succeeded in adding auto start applications and set disallowModify.');
 } catch(err) {
   console.error(`Failed to add auto start applications and set disallowModify. Code: ${err.code}, message: ${err.message}`);
 }
@@ -693,7 +718,7 @@ Checks the auto-start applications for the specified user.
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | List of the auto-start applications obtained.|
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | List of the auto-start applications obtained. Since API version 24, the setting of whether the UI is hidden can be returned.|
 
 **Error codes**
 
@@ -724,12 +749,27 @@ try {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+<!--code_no_check-->
+```ts
+// Return value example.
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // Supported since API version 24.
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
+]
+```
 
 ## applicationManager.isModifyAutoStartAppsDisallowed<sup>20+</sup>
 
 isModifyAutoStartAppsDisallowed(admin: Want, autoStartApp: Want, accountId: number): boolean
 
-Checks whether the auto-start of an application is disabled for the specified user.
+Checks whether a specified user is prohibited from canceling application auto-start.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -751,7 +791,7 @@ Checks whether the auto-start of an application is disabled for the specified us
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| boolean | Whether to disable the user from disabling automatic application startup. The value **true** indicates that auto-start is disabled, and the value **false** indicates the opposite.<!--PR1--><!--PR1End-->|
+| boolean | Whether the user is prohibited from canceling application auto-startup. The value **true** indicates yes and the value **false** indicates no.<!--PR1--><!--PR1End-->|
 
 **Error codes**
 
@@ -793,7 +833,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number): void
 
-Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. After the device is powered on or the application is killed, the system will proactively restart these application processes. <!--RP7--><!--RP7End-->Applications added to the keep-alive list via this API cannot be manually removed from keep-alive status by users on the device<!--RP6--><!--RP6End-->. However, they can be removed from the keep-alive list using the [removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14) API. If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.
+Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. After the device is powered on or the application is killed, the system will proactively restart these application processes.<!--RP7--><!--RP7End--><br>For applications added to the keep-alive list via this API, users cannot manually revoke their keep-alive status on the device <!--RP6--><!--RP6End-->. However, you can call the [removeKeepAliveApps](#applicationmanagerremovekeepaliveapps14) API to remove them from the keep-alive list.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>To use similar functions on phones or tablets, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the relevant documents.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -853,7 +893,7 @@ try {
 
 addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, disallowModify: boolean): void
 
-Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. You can also set whether to disable manual keep-alive cancellation. After the device is powered on or the application is killed, the system will proactively restart these application processes.<br>Applications can be added to the keep-alive list via this API and the [addKeepAliveApps](#applicationmanageraddkeepaliveapps14) API. Settings from both APIs can take effect simultaneously. For a single user, the keep-alive list supports a maximum of 5 applications. For example, if there are already 3 applications in the current list, a maximum of 2 more can be added for the user via this API.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.
+Adds applications to the keep-alive list; once added, the application processes will be kept alive automatically. You can also set whether to disable manual keep-alive cancellation. After the device is powered on or the application is killed, the system will proactively restart these application processes.<br>Applications can be added to the keep-alive list via this API and the [addKeepAliveApps](#applicationmanageraddkeepaliveapps14) API. Settings from both APIs can take effect simultaneously. For a single user, the keep-alive list supports a maximum of 5 applications. For example, if there are already 3 applications in the current list, a maximum of 2 more can be added for the user via this API.<br>If applications are disallowed to run by calling [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync), they cannot be kept alive. Otherwise, error code 9200010 will be reported.<br>To use similar functions on phones or tablets, call [addUserNonStopApps](#applicationmanageraddusernonstopapps22) or [addFreezeExemptedApps](#applicationmanageraddfreezeexemptedapps22). For details, see the relevant documents.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -872,7 +912,7 @@ Adds applications to the keep-alive list; once added, the application processes 
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
 | bundleNames    | Array&lt;string&gt;                                     | Yes  | Array of application bundle names, which specifies the applications to be kept alive. A maximum of 5 applications are supported.<br>Applications must be installed under user 1 (a user who supports single-instance running of third-party applications) and have integrated [background services](../../application-models/app-service-extension-ability.md#implementing-a-background-service)<!--RP3--><!--RP3End-->. Otherwise, the error code 9201005 will be reported. |
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
-| disallowModify | boolean | Yes  | Whether to forbid users to manually cancel the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End--> |
+| disallowModify | boolean | Yes  | Whether to restrict users from manually canceling the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End--> |
 
 **Error codes**
 
@@ -1051,7 +1091,7 @@ Checks whether the application is forbidden to cancel the keep-alive status.
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| boolean | Whether to forbid users to manually cancel the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End-->|
+| boolean | Whether to restrict users from manually canceling the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End-->|
 
 **Error codes**
 
@@ -1290,7 +1330,11 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-Sets the features of kiosk mode. When [kiosk mode is activated](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode), the system disables capabilities such as the notification center, control panel, and recent tasks panel by default. This API can be used to disable or restore some capabilities.
+Sets the features of kiosk mode. You can use this API to control whether the notification center and control panel can be accessed in kiosk mode.
+
+Since API version 24, you can set whether to allow users to swipe up from the bottom to access the recent taskbar and swipe left or right to display the side dock.
+
+In non-kiosk mode, this API can be called normally but does not take effect. The settings will take effect after kiosk mode is enabled.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -1300,12 +1344,14 @@ Sets the features of kiosk mode. When [kiosk mode is activated](../apis-ability-
 
 **Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
+**Device behavior differences**: This API has no effect on PCs/2-in-1 devices, but can be properly called on phones and tablets.
+
 **Parameters**
 
 | Name      | Type                                                   | Mandatory| Description                  |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.        |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | Yes  | Features of kiosk mode.<br> If an empty array is passed, the system will clear all previously configured features and restore kiosk mode to its default state, where capabilities such as the notification center, control panel, and recent tasks panel are disabled.|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | Yes  | Feature set of the Kiosk mode. (Since API version 24, swiping up from the bottom to access the recent taskbar and swiping left or right to display the side dock are supported.)<br> If an empty array is passed, the system will clear all previously delivered features and restore the kiosk mode to its default state. To be specific, abilities such as the notification center, control panel, recent task bar, and side dock are disabled.|
 
 **Error codes**
 
@@ -1332,6 +1378,8 @@ let wantTemp: Want = {
 let kioskFeatures: Array<applicationManager.KioskFeature> = [];
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_NOTIFICATION_CENTER);
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_CONTROL_CENTER);
+kioskFeatures.push(applicationManager.KioskFeature.ALLOW_GESTURE_CONTROL);
+kioskFeatures.push(applicationManager.KioskFeature.ALLOW_SIDE_DOCK);
 try {
   applicationManager.setKioskFeatures(wantTemp, kioskFeatures);
   console.info('Succeeded in setting kiosk feature.');
@@ -1340,33 +1388,21 @@ try {
 }
 ```
 
-## KioskFeature<sup>20+</sup>
-
-Defines the features of the kiosk mode.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Name                       | Value | Description   |
-| ----------------------------| ----| ------------------------------- |
-| ALLOW_NOTIFICATION_CENTER   | 1   | Allow access to the notification center.|
-| ALLOW_CONTROL_CENTER        | 2   | Allow access to the control panel.|
-
 ## applicationManager.addUserNonStopApps<sup>22+</sup>
 
 addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Adds applications to the non-stoppable application list for a specified user. This policy only applies to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
+Adds applications to the non-stoppable application list for a specified user. This policy only applies to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list. Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
 
-Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
-<br>Non-stoppable applications cannot be closed by swiping up in the task center. After a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable.
+On phones and tablets, non-stoppable applications cannot be closed by swiping up in the task center. After a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable, and the disable button does not take effect.
+
+On PCs/2-in-1 devices, after a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable, and the disable button does not take effect.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices.
+**Device behavior differences**: This API can be called on phones and tablets but has no effect on other devices. Since API version 24, this API can be properly called on PCs/2-in-1 devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1542,10 +1578,9 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications and becomes invalid after the device is restarted. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
+Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications and becomes invalid after the device is restarted. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list. Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
 
-Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
-<br>Freezing operations include suspending the target application, and managing software resource agents, hardware resource agents, and high-power consumption.
+Freezing operations include suspending the target application, and managing software resource agents, hardware resource agents, and high-power consumption.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1843,3 +1878,245 @@ try {
   console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## applicationManager.addDockApp<sup>24+</sup>
+
+addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void
+
+Adds an application to the bottom shortcut bar of a PC/2-in-1 device based on the location index. Then users can tap the application icon in the shortcut bar to directly launch the application. The application icon is the default icon displayed on the home screen.
+
+> **NOTE**
+>
+> 1. If location 0 or 1 is already occupied by the application center or task center, adding an application to that location returns error code 9201019. If that location is occupied by another app, the addition succeeds.
+>
+> 2. The following applications cannot be added to the shortcut bar using this API: Application Center, Task Center, Files, and Recycle Bin.
+>
+> 3. Only applications with an entry (that is, an icon) can be added.
+>
+> 4. Only the shortcut bar of the current user can be configured. Each user's shortcut bar can contain a maximum of 100 applications.
+>
+> 5. When a new application is inserted into an occupied location, the new application will directly take that location, and the original application along with all subsequent applications will shift back by one location.
+>
+> 6. If the **index** parameter is not passed or the passed value is greater than the number of applications in the shortcut bar, the new application is added to the end of the shortcut bar by default.
+>
+> 7. After an application is added to the shortcut bar using this API, users can manually remove the application or adjust its position.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API takes effect only on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| bundleName   | string                                                  | Yes  | Bundle name of the application.|
+| abilityName  | string                                                  | Yes  | Ability name of the application. Only the application entry ability is supported.|
+| index        | number                                                  | No  | Location index of the application in the shortcut bar. The value range is [0, 100). The default value is 99.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200015  | The ability does not exist. |
+| 9201013  | The number of applications in the Dock has reached the maximum. |
+| 9201014  | The application is already in the Dock. |
+| 9201015  | The application is not installed. |
+| 9201018  | The application is inoperable. |
+| 9201019  | The location is inoperable. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace it as required.
+  let bundleName: string = 'com.example.exampleapplication';
+  let abilityName: string = 'EntryAbility';
+  applicationManager.addDockApp(wantTemp, bundleName, abilityName, 3);
+  console.info('Succeeded in adding dock app.');
+} catch(err) {
+  console.error(`Failed to add dock app. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeDockApp<sup>24+</sup>
+
+removeDockApp(admin: Want, bundleName: string, abilityName: string): void
+
+Removes an application from the shortcut bar.
+
+> **NOTE**
+>
+> The following applications cannot be removed from the shortcut bar using this API: Application Center, Task Center, Files, and Recycle Bin. Otherwise, error code 9201018 will be reported.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API takes effect only on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+| bundleName   | string                                                  | Yes  | Bundle name of the application.|
+| abilityName  | string                                                  | Yes  | Ability name of the application. |
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9201016  | The application has not been added to the Dock. |
+| 9201018  | The application is inoperable. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace it as required.
+  let bundleName: string = 'com.example.exampleapplication';
+  let abilityName: string = 'EntryAbility';
+  applicationManager.removeDockApp(wantTemp, bundleName, abilityName);
+  console.info('Succeeded in removing dock app.');
+} catch(err) {
+  console.error(`Failed to remove dock app. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getDockApps<sup>24+</sup>
+
+getDockApps(admin: Want): Array\<DockInfo>
+
+Obtains the list of applications in the shortcut bar currently.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: This API takes effect only on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                                                        |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
+
+**Return value**
+
+| Type                                                        | Description                |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[DockInfo](#dockinfo24)&gt; | Array of application information in the shortcut bar.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**Example**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace it as required.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<applicationManager.DockInfo> = applicationManager.getDockApps(wantTemp);
+  console.info(`Succeeded in getting dock apps, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get dock apps. Code: ${err.code}, message: ${err.message}`);
+}
+```
+<!--code_no_check-->
+```ts
+// Return value example.
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    "index": 5
+  },
+  // ...
+]
+```
+
+## KioskFeature<sup>20+</sup>
+
+Defines the features of the kiosk mode.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name                       | Value | Description   |
+| ----------------------------| ----| ------------------------------- |
+| ALLOW_NOTIFICATION_CENTER   | 1   | Allow access to the notification center (by swiping down from the upper left corner with one finger).|
+| ALLOW_CONTROL_CENTER        | 2   | Allow access to the control panel (by swiping down from the upper right corner with one finger).|
+| ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | Allow access to the recent task bar (by swiping up from the bottom with one finger and holding).|
+| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | Allow access to the side dock (by swiping inward from the edge with one finger and holding).|
+
+## DockInfo<sup>24+</sup>
+
+Describes information about an application in the shortcut bar.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name        | Type  | Read-Only | Optional |Description         |
+| ----------- | ------ |------ |------| ---------------|
+| bundleName  | string | No   | No  | Bundle name of the application.|
+| abilityName | string | No   | No  | Ability name of the application. |
+| index       | number | No   | No  | Location index of the application in the shortcut bar.|
