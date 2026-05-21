@@ -28930,23 +28930,11 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/Index.ets",
-				"functions":[
-					{
-						"end_line":333,
-						"name":"continuous_task",
-						"start_line":22
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets",
-				"functions":[
-					{
-						"end_line":278,
-						"name":"continuous_task_await",
-						"start_line":22
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets",
@@ -28955,6 +28943,41 @@
 						"end_line":144,
 						"name":"continuous_task_call",
 						"start_line":23
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":110,
+						"name":"continuous_task_configure",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/AudioPlaybackIndex.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"continuous_include",
+						"start_line":16
+					},
+					{
+						"end_line":339,
+						"name":"continuous_task",
+						"start_line":28
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/audioPlayback/IndexAsyncAndAwait.ets",
+				"functions":[
+					{
+						"end_line":278,
+						"name":"continuous_task_await",
+						"start_line":22
 					}
 				]
 			}
@@ -28978,6 +29001,11 @@
 						"end_line":38,
 						"name":"workSchedulerExtension",
 						"start_line":21
+					},
+					{
+						"end_line":18,
+						"name":"extension_include",
+						"start_line":16
 					}
 				]
 			},
@@ -28993,6 +29021,21 @@
 						"end_line":65,
 						"name":"stopWork",
 						"start_line":46
+					},
+					{
+						"end_line":19,
+						"name":"workScheduler_include",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"workScheduler_configure",
+						"start_line":16
 					}
 				]
 			}
@@ -37580,6 +37623,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/CMakeLists.txt",
+				"functions":[
+					{
+						"end_line":18,
+						"name":"dependent",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -37607,6 +37660,11 @@
 						"end_line":64,
 						"name":"cancel_suspend_delay",
 						"start_line":55
+					},
+					{
+						"end_line":19,
+						"name":"include",
+						"start_line":16
 					}
 				]
 			}
