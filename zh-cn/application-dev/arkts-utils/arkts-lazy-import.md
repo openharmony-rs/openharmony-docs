@@ -1,4 +1,4 @@
-# 延迟加载（lazy import）
+# 延迟加载 (lazy import)
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @DaiHuina1997-->

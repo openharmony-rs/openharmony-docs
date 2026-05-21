@@ -1,4 +1,4 @@
-# 异步并发（Promise和async/await）
+# 异步并发 (Promise和async/await)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->

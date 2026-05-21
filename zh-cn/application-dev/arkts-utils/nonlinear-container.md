@@ -1,8 +1,8 @@
 # 非线性容器
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -118,7 +118,7 @@ TreeSet支持增、删、改、查操作，常用API如下：
 | --------- | ------- | ------- |
 | 增加元素 | add(value: T) | 增加一个值。 |
 | 访问元素 | values() | 返回一个迭代器对象，包含set中的所有value值。 |
-| 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
+| 访问元素 | entries() | 返回一个迭代器对象，包含值的数组，值都是value。 |
 | 访问元素 | getFirstValue() | 获取set中排在首位的value值。 |
 | 访问元素 | getLastValue() | 获取set中排在末位的value值。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: TreeSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
@@ -178,7 +178,7 @@ LightWeightSet支持增、删、改、查操作。常用API如下：
 | 访问元素 | getIndexOf(key: T) | 获取对应的index值。 |
 | 访问元素 | getValueAt(index: number) | 获取指定index对应的value值。 |
 | 访问元素 | values() | 返回一个迭代器对象，包含set中的所有value值。 |
-| 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
+| 访问元素 | entries() | 返回一个迭代器对象，包含值的数组，值都是value。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
