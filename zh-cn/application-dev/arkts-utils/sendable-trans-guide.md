@@ -132,11 +132,6 @@
        let layoutS = layoutSendable as LayoutS;
        return layoutS;
      }
-     
-     export function testJSON() {
-       testJSON1();
-       testJSON2();
-     }
      ```
 
 4. 将普通对象转换为Sendable对象（toSendable）。
