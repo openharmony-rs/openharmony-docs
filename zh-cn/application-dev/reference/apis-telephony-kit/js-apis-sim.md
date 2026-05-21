@@ -1494,9 +1494,9 @@ promise.then((data: number) => {
 
 ## sim.getSimLabel<sup>20+</sup>
 
-ArkTS-Dyn: getSimLabel(slotId: number, callback: AsyncCallback<SimLabel>): void
+ArkTS-Dyn: getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
 
-ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback<SimLabel>): void
+ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback\<SimLabel\>): void
 
 查看卡槽ID和SIM卡的对应关系：
 - 卡槽1对应SIM卡1或SIM卡2
@@ -1540,9 +1540,9 @@ sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
 
 ## sim.getSimLabel<sup>20+</sup>
 
-ArkTS-Dyn: getSimLabel(slotId: number): Promise<SimLabel>
+ArkTS-Dyn: getSimLabel(slotId: number): Promise\<SimLabel\>
 
-ArkTS-Sta: getSimLabel(slotId: int): Promise<SimLabel>
+ArkTS-Sta: getSimLabel(slotId: int): Promise\<SimLabel\>
 
 获取SIM卡的标签信息。使用Promise异步回调。
 
