@@ -1159,7 +1159,7 @@ listAllConnections(): WebSocketConnection[]
 **返回值：**
 | 类型                                        | 说明                         |
 | ------------------------------------------- | ---------------------------- |
-| [WebSocketConnection[]](#websocketconnection19) | 以字符串数组形式返回所有客户端的信息。|
+| [WebSocketConnection](#websocketconnection19)[] | 以字符串数组形式返回所有客户端的信息。|
 
 **错误码：**
 
@@ -1732,7 +1732,9 @@ TLS协议类型。
 
 **起始版本：** 26.0.0
 
-**系统能力**：SystemCapability.Communication.NetStack
+**系统能力：** SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 |            名称         | 值   | 说明        |
 | :----------------------- | :---- | :---------- |
