@@ -186,7 +186,7 @@ struct Index {
             // 获取输入设备列表
             inputDevice.getDeviceList().then((ids: Array<int>) => {
               console.info(`Succeeded in getting device id list: ${JSON.stringify(ids)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get device id list, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -379,7 +379,7 @@ struct Index {
             // 获取输入设备信息
             inputDevice.getDeviceInfo(1).then((deviceData: inputDevice.InputDeviceData) => {
               console.info(`Succeeded in getting device info: ${JSON.stringify(deviceData)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get device info, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -1144,7 +1144,7 @@ struct Index {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_DOWN, KeyCode.KEYCODE_VOLUME_MUTE, KeyCode.KEYCODE_DEL];
             inputDevice.supportKeys(1, keys).then((supportResult: Array<Boolean>) => {
               console.info(`Succeeded in querying support keys, result: ${JSON.stringify(supportResult)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to query support Keys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -1611,7 +1611,7 @@ struct Index {
             // 查询功能键是否使能
             inputDevice.isFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK).then((state: boolean) => {
               console.info(`Succeeded in getting capslock state: ${JSON.stringify(state)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get capslock state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -1711,7 +1711,7 @@ struct Index {
             // 设置功能键使能状态
             inputDevice.setFunctionKeyEnabled(inputDevice.FunctionKey.CAPS_LOCK, true).then(() => {
               console.info(`Succeeded in setting capslock state.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to set capslock state, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             });
           } catch (error) {
@@ -1792,7 +1792,7 @@ struct Index {
             // 获取距上次输入的时间间隔
             inputDevice.getIntervalSinceLastInput().then((timeInterval: long) => {
               console.info(`Succeeded in getting interval since last input: ${JSON.stringify(timeInterval)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get interval since last input, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {

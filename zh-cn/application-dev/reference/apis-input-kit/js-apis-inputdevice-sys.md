@@ -208,7 +208,7 @@ struct Index {
             // 设置按键重复延迟350ms
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
               console.info(`Succeeded in setting keyboard repeat delay.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
@@ -398,7 +398,7 @@ struct Index {
             // 获取键盘重复延迟
             inputDevice.getKeyboardRepeatDelay().then((delay: int) => {
               console.info(`Succeeded in getting keyboard repeat delay.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
@@ -592,7 +592,7 @@ struct Index {
           try {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
               console.info(`Succeeded in setting keyboard repeat rate.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to set keyboard, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
@@ -671,6 +671,7 @@ struct Index {
 ArkTS-Sta示例:
 
 ```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
 import { inputDevice } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -878,7 +879,7 @@ struct Index {
           try {
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
               console.info(`Succeeded in setting input device enabled.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to set device enable, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
