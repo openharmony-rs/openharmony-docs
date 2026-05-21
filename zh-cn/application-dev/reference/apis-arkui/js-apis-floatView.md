@@ -410,6 +410,87 @@ try {
 }
 ```
 
+### setUIContextByName
+
+setUIContextByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
+
+根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| name | string | 是 | 命名路由页面的名称。 |
+| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否 | 页面级UI状态存储单元，用于为加载到窗口的页面内容传递状态属性。默认值为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|------------|------------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300002 | This window state is abnormal. Possible cause: The float view controller object is null. |
+| 1300016 | Parameter error. Possible causes: Invalid name. |
+
+**示例：**
+
+<!--code_no_check-->
+```ts
+// Index.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { entryName } from './Hello'; // 导入命名路由页面
+
+@Entry
+@Component
+struct Index {
+  private floatViewController: floatView.FloatViewController | undefined = undefined;
+  // 创建控制器
+  // ...
+  public setUIContextByName(): void {
+    try {
+      this.floatViewController?.setUIContextByName(entryName).then(() => {
+        console.info('Succeeded in loading the content.');
+      }).catch((err: BusinessError): void => {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (e) {
+      console.error(`Failed to load the content. Cause code: ${e.code}, message: ${e.message}`);
+    }
+  }
+}
+```
+<!--code_no_check-->
+```ts
+// Hello.ets
+export const entryName : string = 'Hello';
+@Entry({routeName: entryName, useSharedStorage: true})
+@Component
+export struct Hello {
+  @State message: string = 'Hello World'
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### setWindowSize
 
 setWindowSize(size: window.Size): Promise&lt;void&gt;
@@ -528,7 +609,7 @@ try {
 
 start(): Promise&lt;void&gt;
 
-启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](#onstatechange)接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](#setuicontext)后调用start()。使用Promise异步回调。
+启动标准悬浮窗窗口。接口返回不表示start流程结束，需要通过[onStateChange](#onstatechange)接口监听到STARTED回调时判断启动成功。建议在调用[setUIContext()](#setuicontext)或[setUIContextByName()](#setuicontextbyname)后调用start()。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1032,7 +1113,7 @@ try {
 | displayId | number | 否 | 否 | 标准悬浮窗所在屏幕ID。 |
 | windowRect | [window.Rect](arkts-apis-window-i.md#rect7) | 否 | 否 | 标准悬浮窗窗口矩形区域。 |
 | windowScale | number | 否 | 否 | 标准悬浮窗窗口缩放比例。 |
-| avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 标准悬浮窗内容的避让区域。<br>**注意：**<br/>通过[setUIContext](#setuicontext)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。 |
+| avoidArea | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 否 | 否 | 标准悬浮窗内容的避让区域。<br>**注意：**<br/>通过[setUIContext()](#setuicontext)或[setUIContextByName()](#setuicontextbyname)加载的页面中，位于避让区域的组件将不响应手势事件，添加需要手势响应事件的组件时，请注意避让这些区域。 |
 | inSidebar | boolean | 否 | 否 | 标准悬浮窗是否在侧边栏中。true为在侧边栏中，false为不在侧边栏中。 |
 
 ## RatioLimit
