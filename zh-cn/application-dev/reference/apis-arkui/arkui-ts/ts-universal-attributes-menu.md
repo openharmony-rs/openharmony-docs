@@ -81,6 +81,8 @@ ArkTS-Sta: bindMenu(isShow: boolean \| Bindable\<boolean\> \| undefined, content
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -155,6 +157,8 @@ ArkTS-Sta: bindContextMenu(isShown: boolean \| Bindable\<boolean\> \| undefined,
 >
 >  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -223,14 +227,16 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 | 名称                     | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | value                    | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 否   | 菜单项文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| icon<sup>10+</sup>       | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 菜单项图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
-| enabled<sup>11+</sup>    | boolean                                                      | 否   | 是   | 菜单条目是否可进行交互。<br/>true：菜单条目可以进行交互；false：菜单条目不可以进行交互。<br/>默认值：true<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
+| icon<sup>10+</sup>       | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 菜单项图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 23 |
+| enabled<sup>11+</sup>    | boolean                                                      | 否   | 是   | 菜单条目是否可进行交互。<br/>true：菜单条目可以进行交互；false：菜单条目不可以进行交互。<br/>默认值：true<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 23 |
 | action                   | ()&nbsp;=&gt;&nbsp;void                                      | 否   | 否   | 点击菜单项的事件回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7 <br/>**ArkTS-Sta起始版本：** 23 |
-| symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | 否   | 是   | 设置菜单项图标。通过Modifier配置菜单项图标，若同时配置symbolIcon和icon的情况下，icon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| symbolIcon<sup>12+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | 否   | 是   | 设置菜单项图标。通过Modifier配置菜单项图标，若同时配置symbolIcon和icon的情况下，icon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## MenuOptions<sup>10+</sup>
 
 菜单项的信息，继承自[ContextMenuOptions](#contextmenuoptions10)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -242,6 +248,8 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 ## ContextMenuOptions<sup>10+</sup>
 
 菜单项的信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,6 +326,8 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -332,6 +342,8 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 ## ContextMenuAnimationOptions<sup>11+</sup>
 
 长按预览时显示的样式信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -348,6 +360,8 @@ ArkTS-Sta: bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType\> \
 type AnimationNumberRange = [ double, double ]
 
 动画开始和结束时相对预览原图缩放比例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -383,6 +397,8 @@ type AnimationRange\<T\>=[from: T, to: T]
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -403,6 +419,8 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 19
@@ -421,6 +439,8 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -437,6 +457,8 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 子窗菜单的模态模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -456,6 +478,8 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -473,6 +497,8 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 预览图宽高设置为百分比时的参考可布局区域大小。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
