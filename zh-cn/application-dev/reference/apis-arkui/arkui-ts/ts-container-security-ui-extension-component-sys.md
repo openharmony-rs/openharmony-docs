@@ -454,7 +454,7 @@ function syncRegisterCallback(proxy: UIExtensionProxy) {
   }
   ```
 
-- 提供方扩展Ability入口页面文件/src/main/ets/pages/SecurityExtension.ets
+- 提供方扩展Ability入口页面文件`/src/main/ets/pages/SecurityExtension.ets`。
   
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
