@@ -113,7 +113,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) |返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](./errorcode-dlp.md)<br> 0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100006 - 非DLP沙箱应用。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) |返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](errorcode-dlp.md)<br> 0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100006 - 非DLP沙箱应用。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_GetOriginalFileName()
 
@@ -140,7 +140,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) |返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](./errorcode-dlp.md)<br> 0 - 操作成功。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) |返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](errorcode-dlp.md)<br> 0 - 操作成功。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_IsInSandbox()
 
@@ -166,7 +166,7 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](./errorcode-dlp.md)<br>0 - 操作成功。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](errorcode-dlp.md)<br>0 - 操作成功。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_SetSandboxAppConfig()
 
@@ -192,7 +192,7 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](./errorcode-dlp.md)<br>0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](errorcode-dlp.md)<br>0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
 
 ### OH_DLP_GetSandboxAppConfig()
 
@@ -218,7 +218,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](./errorcode-dlp.md)<br>0 - 操作成功。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](errorcode-dlp.md)<br>0 - 操作成功。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。<br>         19100018 - 应用未授权。 |
 
 ### OH_DLP_CleanSandboxAppConfig()
 
@@ -238,6 +238,6 @@ DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](./errorcode-dlp.md)<br> 0 - 操作成功。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP_ErrCode错误码定义](errorcode-dlp.md)<br> 0 - 操作成功。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
 
 
