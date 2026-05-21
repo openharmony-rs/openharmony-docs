@@ -275,7 +275,7 @@ async function GetBlob(context: Context) {
 
 ## setBlob<sup>23+</sup>
 
-setBlob(blob: ArrayBuffer): 
+setBlob(blob: ArrayBuffer): Promise\<void>
 
 使用二进制数据替换当前元数据。使用Promise异步回调。
 

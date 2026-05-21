@@ -53,7 +53,7 @@ Read [CameraPicker](../../reference/apis-camera-kit/js-apis-cameraPicker.md) for
      return pickerProfile;
    }
    ```
-   For details about how to call the **fileIo** API, see [createRandomAccessFileSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fscreaterandomaccessfilesync10) and [getUriFromPath](../../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath).
+   For details about how to call the **fileIo** API, see [createRandomAccessFileSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreaterandomaccessfilesync10) and [getUriFromPath](../../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath).
 
 3. Call the **picker** API to obtain the photo or video capture result.
    ```ts

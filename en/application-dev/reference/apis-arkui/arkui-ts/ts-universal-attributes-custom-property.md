@@ -27,7 +27,7 @@ Sets a custom property for this component. This API does not work for [custom co
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | name  | string | Yes  | Name of the custom property.|
-| value  | [Optional](#optionalt12)\<Object> | Yes  | Value of the custom property.|
+| value  | [Optional](#optionalt)\<Object> | Yes  | Value of the custom property.|
 
 **Return value**
 
@@ -36,7 +36,7 @@ Sets a custom property for this component. This API does not work for [custom co
 | T | Current component.|
 
 
-## Optional\<T><sup>12+</sup>
+## Optional\<T>
 
 type Optional\<T> = T | undefined
 

@@ -73,7 +73,7 @@ You can resize a freeform window by dragging its edges and move its position by 
 
 Free windows mode is an interaction method that enables multitasking on mobile devices. 
 
-It allows multiple application windows to be displayed on a single screen simultaneously. These windows are known as [freeform window](#freeform-window).
+It allows multiple application windows to be displayed on a single screen simultaneously. These windows are known as [freeform windows](#freeform-window).
 
 On some tablets, you can enable free windows mode by pulling down Control Panel and tapping the **Free windows** button.
 

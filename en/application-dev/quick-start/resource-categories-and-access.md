@@ -427,7 +427,7 @@ Example:
 
 **Method 2**: Access resources across HAP/HSP packages through **createModuleContext**. This method is suitable for scenarios where resource file data needs to be processed based on service logic, such as image encoding and decoding or string concatenation, and is recommended for small amounts of data.
 
-Call the [createModuleContext(context, moduleName)](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext) API to create the context of another module in the same application. After obtaining the **resourceManager** object, call different [resource management APIs](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
+Call the createModuleContext(context, moduleName) API to create the context of another module in the same application. After obtaining the **resourceManager** object, call different [resource management APIs](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
 
 **Method 3**: Export HSP resources for use by other modules. When accessing resources in an HSP package across packages, you are advised to implement a resource management class to encapsulate exported resources. Other modules do not need to be aware of resource names inside the HSP. If resource names inside the HSP change, other modules are not affected.
 
