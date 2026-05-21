@@ -37,14 +37,12 @@
 
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-   // ...
-   
+
    const TAG: string = 'ControllerManager';
-   
+
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
      private currentBundleName: string | undefined = undefined;
-     // ...
      private templateCreateCallback: Callback<avMusicTemplate.AVMusicTemplateDescriptor> =
        (descriptor: avMusicTemplate.AVMusicTemplateDescriptor) => {
          if (this.isInvalid(descriptor)) {
@@ -71,8 +69,7 @@
          this.unregisterListener();
          this.destroyController();
        };
-     // ...
-   
+
      /**
       * 通过getAllAVMusicTemplateDescriptors创建模板。
       */
@@ -103,19 +100,19 @@
          console.error(TAG, `getAllAVMusicTemplateDescriptors failed, errCode: ${e?.code}`);
        }
      };
-   
+
      private isInvalid<T>(obj: T): boolean {
        return obj === undefined || obj === null;
      }
-   
+
      private isStringEmpty(str: string | undefined): boolean {
        return str === undefined || str === null || str.trim().length === 0;
      }
-   
+
      private isEmptyArray<T>(array: T[]): boolean {
        return this.isInvalid(array) || array.length <= 0;
      }
-   
+
      /**
       * 注册模板监听。
       */
@@ -129,7 +126,7 @@
          console.error(TAG, `registerAVMusicTemplateListener: errCode: ${e?.code}`);
        }
      }
-   
+
      private createController(sessionId: string, bundleName: string) {
        if (this.currentBundleName === null || this.currentBundleName === undefined) {
          console.warn(TAG, 'createController: sessionId is invalid');
@@ -154,13 +151,11 @@
        try {
          this.controller = avMusicTemplate.createAVMusicTemplateController(sessionId);
          console.info(TAG, `createController success, bundleName: ${this.currentBundleName}`);
-         // ...
        } catch (e) {
          console.error(TAG, `createController: errCode: ${e?.code}`);
        }
      }
-   
-     // ...
+
      /**
       * 注销监听。
       */
@@ -198,7 +193,7 @@
        // 注销通知媒体中心拉起指定三方应用界面的信息的监听。
        this.controller?.offExtensionAbilityChange();
      }
-   
+
      /**
       * 销毁控制器。
       */
@@ -208,7 +203,7 @@
        this.controller = undefined;
        this.currentBundleName = undefined;
      }
-   
+
      /**
       * 反注册模板监听。
       */
@@ -220,7 +215,6 @@
          console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);
        }
      }
-     // ...
    }
    ```
 
@@ -230,14 +224,12 @@
 
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-   // ...
-   
+
    const TAG: string = 'ControllerManager';
-   
+
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
-     // ...
-   
+
      /**
       * 查询主标签。
       */
@@ -255,7 +247,7 @@
        }
        return tabs;
      }
-   
+
      /**
       * 模拟查询媒体标签页内容。
       *
@@ -275,7 +267,6 @@
          return undefined;
        }
      }
-     // ...
    }
    ```
 
@@ -285,14 +276,12 @@
 
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-   // ...
-   
+
    const TAG: string = 'ControllerManager';
-   
+
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
-     // ...
-   
+
      /**
       * 模拟搜播。
       *
@@ -326,7 +315,6 @@
          return false;
        }
      };
-     // ...
    }
    ```
 
@@ -336,24 +324,19 @@
 
       ``` TypeScript
       import { avMusicTemplate } from '@kit.AVSessionKit';
-      // ...
-      
+
       const TAG: string = 'ControllerManager';
-      
+
       export class ControllerManager {
         private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
-        // ...
         private userInfoChangeCallback: Callback<avMusicTemplate.UserInfo> = (userInfo: avMusicTemplate.UserInfo) => {
           console.info(TAG, 'userInfoChangeCallback');
         };
-        // ...
       
         private registerListener() {
           // 注册用户信息改变的监听。
           this.controller?.onUserInfoChange(this.userInfoChangeCallback);
-          // ...
         }
-        // ...
       }
       ```
 
@@ -361,14 +344,13 @@
 
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-   // ...
-   
+
    const TAG: string = 'ControllerManager';
-   
+
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
      private currentBundleName: string | undefined = undefined;
-     // ...
+
      /**
       * 注销监听。
       */
@@ -406,7 +388,7 @@
        // 注销通知媒体中心拉起指定三方应用界面的信息的监听。
        this.controller?.offExtensionAbilityChange();
      }
-   
+
      /**
       * 销毁控制器。
       */
@@ -416,7 +398,7 @@
        this.controller = undefined;
        this.currentBundleName = undefined;
      }
-   
+
      /**
       * 反注册模板监听。
       */
@@ -428,6 +410,5 @@
          console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);
        }
      }
-     // ...
    }
    ```
