@@ -18,7 +18,7 @@ Operation failed.
 
 **错误描述**
 
-WIFI服务内部查询或配置设备级能力时出现未知错误。
+调用syscap为SystemCapability.Communication.WiFi.Core的接口时，WIFI服务内部出现未知错误。
 
 **可能原因**
 
