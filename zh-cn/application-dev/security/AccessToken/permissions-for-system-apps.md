@@ -2196,6 +2196,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：11
 
 ## ohos.permission.PERCEIVE_TRAIL

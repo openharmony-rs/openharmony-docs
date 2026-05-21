@@ -2196,6 +2196,8 @@ Allows a system application to enable the ScreenHop feature, which allows the us
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Valid since**: 11
 
 ## ohos.permission.PERCEIVE_TRAIL
