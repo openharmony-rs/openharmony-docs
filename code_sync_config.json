@@ -2278,5 +2278,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/application-models/app-stop.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/GuideForAppExit/terminateSelf/src/main/ets/terminateselfability/TerminateSelfAbility.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"appStop_terminateSelf",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/GuideForAppExit/onBackPressed/src/main/ets/onbackpressedability/OnBackPressedAbility.ets",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"appStop_backPressed",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
