@@ -302,11 +302,11 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
 ### 示例1（SecurityUIExtensionComponent使用）
 
-本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置Want拉起指定Ability的UIExtensionAbility，通过onRemoteReady获取SecurityUIExtensionProxy，使用send/sendSync发送数据，以及通过onReceive、onError、onTerminated等回调处理事件。
-
-**组件使用方**
+本示例展示了SecurityUIExtensionComponent的使用方法，包括通过配置Want拉起指定Ability的UIExtensionAbility，通过onRemoteReady获取SecurityUIExtensionProxy，使用send或sendSync发送数据，以及通过onReceive、onError、onTerminated等回调处理事件。
 
 从API版本26.0.0开始，新增[onError](#onerror)事件。
+
+**组件使用方**
 
 ``` TypeScript
 import { Want } from '@kit.AbilityKit';
@@ -408,7 +408,7 @@ function syncRegisterCallback(proxy: UIExtensionProxy) {
 
 **组件提供方**
 
-提供方包含两个文件需要修改。
+提供方包含三个文件需要修改。
 
 - 提供方新增扩展入口文件`/src/main/ets/uiextensionability/SecurityUIExtProvider.ets`。
 
