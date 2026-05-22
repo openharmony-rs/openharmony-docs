@@ -3281,6 +3281,63 @@ async function getExcludedDevices(){
 }
 ```
 
+### restoreOutputDeviceByFilter
+
+restoreOutputDeviceByFilter(filter: AudioRendererFilter): Promise&lt;void&gt;
+
+根据指定的音频渲染过滤条件恢复音频输出设备。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名                       | 类型                                                         | 必填 | 说明                      |
+| --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
+| filter          | [AudioRendererFilter](#audiorendererfilter9)          | 是   | 过滤条件。               |
+
+**返回值：**
+
+| 类型                  | 说明                         |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+audioRoutingManager.restoreOutputDeviceByFilter(outputAudioRendererFilter).then(() => {
+  console.info('Succeeded in restoring output device by filter.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to restore output device by filter. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getActiveOutputDeviceDescriptors
 
 getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
