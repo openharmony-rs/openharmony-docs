@@ -171,7 +171,7 @@ Obtains the length of metadata.
 | Name| Description|
 | -- | -- |
 | [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
-| bool withStaticMeta | Whether the output length includes static metadata. The **value** true indicates that the output length includes static metadata, and the value **false** indicates that the output length includes only dynamic metadata.|
+| bool withStaticMeta | Whether the output length includes static metadata. The value **true** indicates that the output length includes static metadata, and the value **false** indicates that the output length includes only dynamic metadata.|
 | int32_t *len | Pointer used to receive the metadata length. The unit is bytes.|
 
 **Returns**
@@ -197,7 +197,7 @@ Obtains the metadata buffer.
 | Name| Description|
 | -- | -- |
 | [const OH_AudioVividMetaBuilder](capi-core-oh-audiovividmetabuilderstruct.md) *builder | Pointer to **OH_AudioVividMetaBuilder**.|
-| bool withStaticMeta | Whether the output buffer includes static metadata. The **value** true indicates that the output buffer includes static metadata, and the value **false** indicates that the output buffer includes only dynamic metadata.|
+| bool withStaticMeta | Whether the output buffer includes static metadata. The value **true** indicates that the output buffer includes static metadata, and the value **false** indicates that the output buffer includes only dynamic metadata.|
 | uint8_t *buffer | Pointer to the buffer for receiving the metadata.|
 | int32_t len | Buffer length, in bytes.|
 
