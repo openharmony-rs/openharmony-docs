@@ -113,7 +113,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) |返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP服务错误码](errorcode-dlp.md)<br> 0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100006 - 非DLP沙箱应用。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP服务错误码](errorcode-dlp.md)<br> 0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100006 - 非DLP沙箱应用。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_GetOriginalFileName()
 
