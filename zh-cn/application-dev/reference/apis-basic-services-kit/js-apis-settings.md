@@ -1314,7 +1314,7 @@ try {
 
 isDoubleClickAppForSelf(): Promise\<boolean>
 
-查询当前双击下键默认应用是否为拉起方应用自身。
+判断双击下按键的默认启动应用是否为本应用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
