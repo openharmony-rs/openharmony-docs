@@ -95,6 +95,9 @@
       - [Resource](js-apis-arkui-resource.md)
   - Window Manager<!--window-manager-api-->
     - [@ohos.PiPWindow (PiP Window)](js-apis-pipWindow.md)
+    <!--Del-->
+    - [@ohos.PiPWindow (PiP Window) (System API)](js-apis-pipWindow-sys.md)
+    <!--DelEnd-->
     - [@ohos.window.floatingBall (Floating Ball Window)](js-apis-floatingBall.md)
     - @ohos.window (Window)<!--js-apis-window-->
       - [Module Description](arkts-apis-window.md)

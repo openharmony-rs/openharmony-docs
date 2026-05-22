@@ -116,7 +116,7 @@ Enumerates the window types.
 | -- | -- |
 | WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | Child window.|
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | Main window.|
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Floating window.|
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | Global floating window.|
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | Modal window.|
 
 ## Function Description
