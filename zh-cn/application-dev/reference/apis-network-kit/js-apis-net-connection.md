@@ -354,14 +354,14 @@ getDefaultHttpProxy(): Promise\<HttpProxy>
 | 2100002  | Failed to connect to the service.            |
 | 2100003  | System internal error.                       |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
   console.info(JSON.stringify(error));
 });
@@ -429,14 +429,14 @@ getAppNet(): Promise\<NetHandle>
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getAppNet().then((data: connection.NetHandle) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
   console.info(JSON.stringify(error));
 });
@@ -465,7 +465,7 @@ getAppNetSync(): NetHandle
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -523,7 +523,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
@@ -972,7 +972,7 @@ getNetCapabilities(netHandle: NetHandle, callback: AsyncCallback\<NetCapabilitie
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1031,7 +1031,7 @@ getNetCapabilities(netHandle: NetHandle): Promise\<NetCapabilities>
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1130,7 +1130,7 @@ isDefaultNetMetered(callback: AsyncCallback\<boolean>): void
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1138,7 +1138,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.info('data: ' + data);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1174,7 +1174,7 @@ isDefaultNetMetered(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.info('data: ' + data);
+console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1239,7 +1239,7 @@ hasDefaultNet(callback: AsyncCallback\<boolean>): void
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1247,7 +1247,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
   console.error(JSON.stringify(error));
-  console.info('data: ' + data);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1283,7 +1283,7 @@ hasDefaultNet(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.info('data: ' + data);
+ console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1355,7 +1355,7 @@ reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): v
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1401,7 +1401,7 @@ reportNetConnected(netHandle: NetHandle): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1442,7 +1442,7 @@ reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;)
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1496,7 +1496,7 @@ reportNetDisconnected(netHandle: NetHandle): Promise&lt;void&gt;
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1762,7 +1762,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1865,7 +1865,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1948,7 +1948,7 @@ clearCustomDnsRules(): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2021,7 +2021,7 @@ getPacFileUrl(): string
 | -------- | --------------------------------- |
 | 2100002  | Failed to connect to the service.                 |
 
-**示例：**
+**示例：111**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
@@ -2057,7 +2057,7 @@ findProxyForUrl(url: string): string
 | string   | 返回代理信息。              |
 
 
-**示例：**
+**示例：111**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
@@ -2174,7 +2174,7 @@ setNetExtAttribute(netHandle: NetHandle, netExtAttribute: string): Promise\<void
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2271,7 +2271,7 @@ getNetExtAttribute(netHandle: NetHandle): Promise\<string\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2324,7 +2324,7 @@ getNetExtAttributeSync(netHandle: NetHandle): string
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2378,12 +2378,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
   if (data.length !== 0) {
-    console.info(`ipAddress:${data[0].ipAddress}`);
-    console.info(`ifaceName:${data[0].iface}`);
-    console.info(`macAddress:${data[0].macAddress}`);
+    console.info(`Succeeded to get ipAddress: ' + JSON.stringify(data.ipAddress));
+    console.info(`Succeeded to get ifaceName: ' + JSON.stringify(data.iface));
+    console.info(`Succeeded to get macAddress: ' +JOSN.stringify(data.macAddress));
   }
 }).catch((error: BusinessError) => {
-  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+  console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2429,7 +2429,7 @@ getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress
 | 2100301 | Incorrect usage in non-VPN application. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2441,7 +2441,7 @@ let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port:
 connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
   console.info(`uid: ${uid}`);
 }).catch((error: BusinessError) => {
-  console.error(`getConnectOwnerUid failed. errorCode: ${error.code} message:${error.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
 });
 ```
 
@@ -2489,7 +2489,7 @@ getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAdd
 | 2100301 | Incorrect usage in non-VPN application. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2503,7 +2503,7 @@ try {
   console.info(`uid: ${uid}`);
 } catch (e) {
   let err = e as BusinessError;
-  console.error(`getConnectOwnerUid failed. errorCode: ${err.code} message:${err.message}`);
+   console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
 }
 ```
 
@@ -2545,7 +2545,7 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 
-**示例：**
+**示例：111**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
@@ -2587,7 +2587,7 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 
-**示例：**
+**示例：111**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
@@ -2635,7 +2635,7 @@ getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2703,7 +2703,7 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 | 2100001 | Invalid parameter value. |
 | 2100003 | Internal error. |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2763,7 +2763,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 | 2100001 | Invalid parameter value. |
 | 2100003 | Internal error. |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2828,7 +2828,7 @@ register(callback: AsyncCallback\<void>): void
 | 2101008 | The callback already exists.                         |
 | 2101022 | The number of requests exceeded the maximum allowed. |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2867,7 +2867,7 @@ unregister(callback: AsyncCallback\<void>): void
 | 2100003 | System internal error.            |
 | 2101007 | The callback does not exist.      |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2896,7 +2896,7 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 | type     | string                             | 是   | 订阅事件，固定为'netAvailable'。<br>netAvailable：数据网络可用事件。 |
 | callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，返回数据网络句柄。|
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2936,7 +2936,7 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 | type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
 | callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2978,7 +2978,7 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 | type     | string                                                       | 是   | 订阅事件，固定为'netCapabilitiesChange'。<br/>netCapabilitiesChange：网络能力变化事件。 |
 | callback | Callback<[NetCapabilityInfo](#netcapabilityinfo10)>          | 是   | 回调函数，返回数据网络句柄(netHandle)和网络的能力信息(netCap)。|
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3018,7 +3018,7 @@ on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPrope
 | type     | string                                                       | 是   | 订阅事件，固定为'netConnectionPropertiesChange'。<br/>netConnectionPropertiesChange：网络连接信息变化事件。 |
 | callback | Callback<[NetConnectionPropertyInfo](#netconnectionpropertyinfo11)> | 是   | 回调函数，获取网络连接属性信息。|
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3060,7 +3060,7 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 | type     | string                             | 是   | 订阅事件，固定为'netLost'。<br/>netLost：网络严重中断或正常断开事件。 |
 | callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，数据网络句柄(netHandle)。|
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3102,7 +3102,7 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 | type     | string          | 是   | 订阅事件，固定为'netUnavailable'。<br/>netUnavailable：网络不可用事件。 |
 | callback | Callback\<void> | 是   | 回调函数，无返回结果。|
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3167,7 +3167,7 @@ bindSocket(socketParam: TCPSocket \| UDPSocket, callback: AsyncCallback\<void>):
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection, socket } from '@kit.NetworkKit';
@@ -3260,7 +3260,7 @@ bindSocket(socketParam: TCPSocket \| UDPSocket): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection, socket } from '@kit.NetworkKit';
@@ -3477,7 +3477,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+    console.error(`Failed to get ERROR msg: ${JSON.stringify(err)}`)
   });
 });
 ```
@@ -3724,7 +3724,7 @@ SOCKS5代理配置信息。
 | netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
 | bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
