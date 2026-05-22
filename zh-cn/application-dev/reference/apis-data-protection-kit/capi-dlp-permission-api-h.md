@@ -212,7 +212,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| configInfo |char **|是| 输出参数，返回沙箱应用配置信息，为JSON格式字符串。 该字符串由系统分配内存，使用完毕后需要调用者调用free()函数释放内存。|
+| configInfo | char** | 是 | 输出参数，返回沙箱应用配置信息，为JSON格式字符串。该字符串由系统分配内存，使用完毕后需要调用者调用free()函数释放内存。|
 
 **返回：**
 
