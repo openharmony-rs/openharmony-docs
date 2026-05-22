@@ -53322,32 +53322,32 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":70,
 						"name":"dynamic_call_add_dependencies",
 						"start_line":23
 					},
 					{
-						"end_line":88,
+						"end_line":71,
 						"name":"const_dynamic_import_har_dependencies",
 						"start_line":24
 					},
 					{
-						"end_line":89,
+						"end_line":72,
 						"name":"const_dynamic_import_hsp_dependencies",
 						"start_line":25
 					},
 					{
-						"end_line":90,
+						"end_line":73,
 						"name":"const_dynamic_import_crypto_dependencies",
 						"start_line":26
 					},
 					{
-						"end_line":91,
+						"end_line":74,
 						"name":"const_dynamic_import_ohpm_dependencies",
 						"start_line":27
 					},
 					{
-						"end_line":92,
+						"end_line":75,
 						"name":"hap_const_dynamic_import_native_dependencies",
 						"start_line":28
 					},
@@ -53362,14 +53362,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":98,
+						"end_line":103,
 						"name":"dynamic_load_har_module_reflect_call",
-						"start_line":80
+						"start_line":85
 					},
 					{
-						"end_line":106,
+						"end_line":111,
 						"name":"const_dynamic_import_har_name",
-						"start_line":101
+						"start_line":106
 					},
 					{
 						"end_line":27,
@@ -53377,19 +53377,19 @@
 						"start_line":21
 					},
 					{
-						"end_line":114,
+						"end_line":119,
 						"name":"const_dynamic_import_har_path",
-						"start_line":109
+						"start_line":114
 					},
 					{
-						"end_line":122,
+						"end_line":127,
 						"name":"const_dynamic_import_hsp_name",
-						"start_line":117
+						"start_line":122
 					},
 					{
-						"end_line":130,
+						"end_line":135,
 						"name":"const_dynamic_import_hsp_path",
-						"start_line":125
+						"start_line":130
 					},
 					{
 						"end_line":138,
@@ -53402,9 +53402,9 @@
 						"start_line":141
 					},
 					{
-						"end_line":154,
+						"end_line":159,
 						"name":"hap_const_dynamic_import",
-						"start_line":149
+						"start_line":154
 					},
 					{
 						"end_line":162,
@@ -53412,24 +53412,24 @@
 						"start_line":157
 					},
 					{
-						"end_line":192,
+						"end_line":197,
 						"name":"hap_const_dynamic_import_api",
-						"start_line":165
+						"start_line":170
 					},
 					{
-						"end_line":210,
+						"end_line":215,
 						"name":"variable_dynamic_import",
-						"start_line":194
+						"start_line":199
 					},
 					{
-						"end_line":219,
+						"end_line":224,
 						"name":"hap_variable_dynamic_import_har",
-						"start_line":213
+						"start_line":218
 					},
 					{
-						"end_line":228,
+						"end_line":233,
 						"name":"hap_variable_dynamic_import_hsp",
-						"start_line":222
+						"start_line":227
 					},
 					{
 						"end_line":237,
@@ -53442,9 +53442,9 @@
 						"start_line":240
 					},
 					{
-						"end_line":255,
+						"end_line":260,
 						"name":"hap_variable_dynamic_import_calc",
-						"start_line":249
+						"start_line":254
 					},
 					{
 						"end_line":264,
@@ -53452,9 +53452,9 @@
 						"start_line":258
 					},
 					{
-						"end_line":297,
+						"end_line":302,
 						"name":"hap_variable_dynamic_import_api",
-						"start_line":267
+						"start_line":272
 					},
 					{
 						"end_line":305,
@@ -53507,39 +53507,39 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/build-profile.json5",
 				"functions":[
 					{
-						"end_line":113,
+						"end_line":116,
 						"name":"hap_variable_dynamic_import_har_runtimeOnly",
-						"start_line":18
-					},
-					{
-						"end_line":114,
-						"name":"hap_variable_dynamic_import_hsp_runtimeOnly",
 						"start_line":19
 					},
 					{
-						"end_line":116,
-						"name":"hap_variable_dynamic_import_har_crypto_runtimeOnly",
-						"start_line":21
-					},
-					{
-						"end_line":115,
-						"name":"hap_variable_dynamic_import_ohpm_runtimeOnly",
+						"end_line":117,
+						"name":"hap_variable_dynamic_import_hsp_runtimeOnly",
 						"start_line":20
 					},
 					{
-						"end_line":142,
-						"name":"hap_variable_dynamic_import_calc_runtimeOnly",
-						"start_line":24
-					},
-					{
-						"end_line":117,
-						"name":"hap_variable_dynamic_import_native_runtimeOnly",
+						"end_line":118,
+						"name":"hap_variable_dynamic_import_har_crypto_runtimeOnly",
 						"start_line":22
 					},
 					{
-						"end_line":112,
-						"name":"hap_decoupled_runtimeOnly",
+						"end_line":119,
+						"name":"hap_variable_dynamic_import_ohpm_runtimeOnly",
+						"start_line":21
+					},
+					{
+						"end_line":120,
+						"name":"hap_variable_dynamic_import_calc_runtimeOnly",
+						"start_line":25
+					},
+					{
+						"end_line":121,
+						"name":"hap_variable_dynamic_import_native_runtimeOnly",
 						"start_line":23
+					},
+					{
+						"end_line":122,
+						"name":"hap_decoupled_runtimeOnly",
+						"start_line":24
 					}
 				]
 			},
