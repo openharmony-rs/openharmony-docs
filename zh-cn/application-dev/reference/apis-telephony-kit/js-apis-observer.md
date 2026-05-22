@@ -986,11 +986,8 @@ onCellularDataConnectionStateChange(options: ObserverOptions, callback: Callback
 **示例：**
 
 ```ts
-let options: observer.ObserverOptions = {
-    slotId: 0
-}
-observer.onCellularDataConnectionStateChange(options, (data: observer.DataConnectionStateInfo) => {
-    console.info("onCellularDataConnectionStateChange, data:" + JSON.stringify(data));
+observer.onCellularDataConnectionStateChange((data: observer.DataConnectionStateInfo) => {
+    console.info('onCellularDataConnectionStateChange, data->${JSON.stringify(data)}');
 });
 ```
 
