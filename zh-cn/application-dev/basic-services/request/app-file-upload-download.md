@@ -538,6 +538,70 @@ ArkTS-Sta示例：
 
 <!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
+``` TypeScript
+async docFileAgentTask(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 创建文件管理器选项实例。
+  try {
+    const documentSaveOptions: picker.DocumentSaveOptions = {
+      newFileNames: [fileName],
+      fileSuffixChoices: ['文档|.txt', '.pdf']
+    };
+    let uri: string = '';
+    // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+    const documentViewPicker = new picker.DocumentViewPicker(context);
+    let documentSaveResult: string[] = await documentViewPicker.save(documentSaveOptions);
+    uri = documentSaveResult[0];
+    logger.info(TAG, `DocumentViewPicker.save to file succeed and uri is ${uri}`);
+      
+    if (uri != '') {
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: url,
+        // saveas字段是DocumentViewPicker保存的文件的uri
+        saveas: uri,
+        gauge: true,
+        // overwrite字段必须为true
+        overwrite: true,
+        network: request.agent.Network.WIFI,
+        // mode字段必须为request.agent.Mode.FOREGROUND
+        mode: request.agent.Mode.FOREGROUND,
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(context, config);
+          
+        // 注册回调
+        task.onProgress((progress: request.agent.Progress): void => {
+          logger.info(TAG, `download status ${progress.state}, downloaded ${progress.processed}`);
+        });
+        task.onCompleted((progress: request.agent.Progress): void => {
+          logger.info(TAG, `download completed ${JSON.stringify(progress)}`);
+          callback(100, true);
+          request.agent.remove(task.tid);
+        });
+        task.onFailed((progress: request.agent.Progress): void => {
+          logger.error(TAG, `download failed ${JSON.stringify(progress)}`);
+          callback(100, false);
+          request.agent.remove(task.tid);
+        });
+          
+        // 启动任务
+        await task.start();
+      } catch (error) {
+        let err: Error = error;
+        logger.error(TAG, `Failed to create a download task, message=${err.message}`);
+        callback(100, false);
+      }
+    }
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `Failed to create a documentSaveOptions, message=${err.message}`);
+    callback(100, false);
+    return;
+  }
+}
+```
+
 ### 下载音频类文件
 
 开发者可以通过调用[AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
