@@ -189,30 +189,10 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 
 <!--code_no_check-->
 ```ts
-enum MonitorObjectType {
-  ALL = -1, 
-  CUSTOM_COMPONENT = 1 << 0,
-  WINDOW = 1 << 1,
-  NODE_CONTAINER = 1 << 2,
-  X_COMPONENT = 1 << 3,
-  ABILITY = 1 << 4
-};
-
-interface LeakWatcherConfig {
-  monitorObjectTypes: MonitorObjectType;
-  objectUniqueIDs: Array<number>;
-  checkInterval: number;
-  fgLeakCountThreshold: number;
-  bgLeakCountThreshold: number;
-  maxStoredHeapDumps: number;
-  dumpHeapWaitTimeMs: number;
-  exclusionList: Array<string>;
-};
-
 // 监测ArkTS对象CustomComponent和Window的内存泄漏
 // 对象中类型传入空值或假值代表该属性设置为默认值
-let config: LeakWatcherConfig = {
-    monitorObjectTypes: MonitorObjectType.CUSTOM_COMPONENT | MonitorObjectType.WINDOW,
+let config: jsLeakWatcher.LeakWatcherConfig = {
+    monitorObjectTypes: jsLeakWatcher.MonitorObjectType.CUSTOM_COMPONENT | jsLeakWatcher.MonitorObjectType.WINDOW,
     objectUniqueIDs: [],
     checkInterval: 10000,
     fgLeakCountThreshold: 5,
