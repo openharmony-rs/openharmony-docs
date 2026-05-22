@@ -1428,7 +1428,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 
 inheritFreezeOptions(enabled: boolean): void
 
-查询当前BuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则BuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
+设置当前BuilderNode对象是否继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则BuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
 
 > **说明：**
 >
@@ -2712,7 +2712,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 
 inheritFreezeOptions(enabled: boolean): void
 
-查询当前ReactiveBuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则ReactiveBuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
+设置当前ReactiveBuilderNode对象是否继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则ReactiveBuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
 
 > **说明：**
 >
