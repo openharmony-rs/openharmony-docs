@@ -70,7 +70,7 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 ```ts
 import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 
-async exampleFunction() {
+async function exampleFunction() {
   let statusInfoResult: dlpSetDlpFeature.StatusInfoResult =
     await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE); // 记录执行结果
   console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult));
