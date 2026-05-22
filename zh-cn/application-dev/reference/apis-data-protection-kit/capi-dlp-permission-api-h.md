@@ -134,7 +134,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
 | fileName | const char* | 是 | 指定要查询的文件名，不能为空指针。取值原则：需为有效的DLP文件名，支持绝对路径和相对路径。传入空指针或无效文件名时返回19100001错误码。 |
-| originalFileName |char **|是| DLP文件的原始文件名。用于接收查询到的原始文件名字符串，该字符串由系统分配内存，使用完毕后需要调用者调用free()函数释放内存。 |
+| originalFileName | char** | 是 | DLP文件的原始文件名。用于接收查询到的原始文件名字符串，该字符串由系统分配内存，使用完毕后需要调用者调用free()函数释放内存。 |
 
 **返回：**
 
