@@ -4971,7 +4971,8 @@ static prefetchResource(request: RequestInfo, additionalHeaders?: Array\<WebHead
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>适用版本：12-21 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>适用版本：22+ |
 
 **示例：**
 
@@ -8111,8 +8112,10 @@ injectOfflineResources(resourceMaps: Array\<[OfflineResourceMap](./arkts-apis-we
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.<br>适用版本：12-21  |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.<br>适用版本：22+  |
 
 **示例：**
 
@@ -10365,7 +10368,7 @@ Scroll Test
 
 static setActiveWebEngineVersion(engineVersion: ArkWebEngineVersion): void
 
-设置ArkWeb内核版本。若系统不支持指定版本，则设置无效。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
+设置ArkWeb内核版本。若系统不支持指定版本，则设置无效，使用系统默认内核（可参考[约束与限制](../../web/web-component-overview.md#约束与限制)）。该接口为全局静态API，须在调用initializeWebEngine前执行，若已加载任何Web组件，则该设置无效。
 
 **遗留内核适配：**
 
