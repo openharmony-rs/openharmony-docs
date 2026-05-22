@@ -834,8 +834,8 @@ let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
     console.info("on callStateChangeEx, data:" + JSON.stringify(data));
 }
 observer.oncallStateChangeEx(callback);
-observer.offCallStateChangeEx(callback);
-observer.offCallStateChangeEx();
+observer.offcallStateChangeEx(callback);
+observer.offcallStateChangeEx();
 ```
 
 
