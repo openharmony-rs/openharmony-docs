@@ -74,19 +74,19 @@
 
    <!-- @[OH_AVPlayer_SetOnInfoCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
-    ``` C++
-    LOG("call OH_AVPlayer_SetPlayerOnInfoCallback");
-    int32_t ret = OH_AVPlayer_SetOnInfoCallback(player, OHAVPlayerOnInfoCallback, nullptr);
-    LOG("OH_AVPlayer_SetPlayerOnInfoCallback ret:%{public}d", ret);
-    ```
+   ``` C++
+   LOG("call OH_AVPlayer_SetPlayerOnInfoCallback");
+   int32_t ret = OH_AVPlayer_SetOnInfoCallback(player, OHAVPlayerOnInfoCallback, nullptr);
+   LOG("OH_AVPlayer_SetPlayerOnInfoCallback ret:%{public}d", ret);
+   ```
 
    <!-- @[OH_AVPlayer_SetOnErrorCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
 
-    ``` C++
-    LOG("call OH_AVPlayer_SetPlayerOnErrorCallback");
-    ret = OH_AVPlayer_SetOnErrorCallback(player, OHAVPlayerOnErrorCallback, nullptr);
-    LOG("OH_AVPlayer_SetPlayerOnErrorCallback ret:%{public}d", ret);
-    ```
+   ``` C++
+   LOG("call OH_AVPlayer_SetPlayerOnErrorCallback");
+   ret = OH_AVPlayer_SetOnErrorCallback(player, OHAVPlayerOnErrorCallback, nullptr);
+   LOG("OH_AVPlayer_SetPlayerOnErrorCallback ret:%{public}d", ret);
+   ```
 
 3. 设置资源：调用[OH_AVPlayer_SetURLSource()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seturlsource)，设置属性URL（支持点播和直播源），AVPlayer进入[初始化](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)（AV_INITIALIZED）状态。
 
@@ -105,13 +105,13 @@
 
    ``` C++
    void OHAVPlayerSetPlaybackStrategy(OH_AVPlayer *player) {
-     // 设置播放策略
-     OH_AVPlaybackStrategy *myStrategy = OH_AVPlaybackStrategy_Create();
-     double waterLine = 6.0;
-     OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); //直播场景设置智能追帧
-     int32_t ret = OH_AVPlayer_SetPlaybackStrategy(player, myStrategy);
-     LOG("OH_AVPlayer_SetPlaybackStrategy ret:%{public}d", ret);
-     OH_AVPlaybackStrategy_Destroy(myStrategy);
+       // 设置播放策略
+       OH_AVPlaybackStrategy *myStrategy = OH_AVPlaybackStrategy_Create();
+       double waterLine = 6.0;
+       OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); //直播场景设置智能追帧
+       int32_t ret = OH_AVPlayer_SetPlaybackStrategy(player, myStrategy);
+       LOG("OH_AVPlayer_SetPlaybackStrategy ret:%{public}d", ret);
+       OH_AVPlaybackStrategy_Destroy(myStrategy);
    }
    ```
 
@@ -176,17 +176,17 @@
 
     ``` C++
     static napi_value NAPI_Global_Play(napi_env env, napi_callback_info info) {
-      int ret = -1;
-      auto context = SampleManager::GetInstance();
-      if (context->player_ != NULL) {
-          ret = OH_AVPlayer_Play(context->player_);
-          LOG("OH_AVPlayer_Play ret:%{public}d", ret);
-      } else {
-          LOG("no found Player Instances");
-      }
-      napi_value value;
-      napi_create_int32(env, ret, &value);
-      return value;
+        int ret = -1;
+        auto context = SampleManager::GetInstance();
+        if (context->player_ != NULL) {
+            ret = OH_AVPlayer_Play(context->player_);
+            LOG("OH_AVPlayer_Play ret:%{public}d", ret);
+        } else {
+            LOG("no found Player Instances");
+        }
+        napi_value value;
+        napi_create_int32(env, ret, &value);
+        return value;
     }
     ```
 
@@ -194,17 +194,17 @@
 
     ``` C++
     static napi_value NAPI_Global_Pause(napi_env env, napi_callback_info info) {
-      int ret = 100;
-      auto context = SampleManager::GetInstance();
-      if (context->player_ != NULL) {
-          ret = OH_AVPlayer_Pause(context->player_);
-          LOG("OH_AVPlayer_Pause ret:%{public}d", ret);
-      } else {
-          LOG("no found Player Instances");
-      }
-      napi_value value;
-      napi_create_int32(env, ret, &value);
-      return value;
+        int ret = 100;
+        auto context = SampleManager::GetInstance();
+        if (context->player_ != NULL) {
+            ret = OH_AVPlayer_Pause(context->player_);
+            LOG("OH_AVPlayer_Pause ret:%{public}d", ret);
+        } else {
+            LOG("no found Player Instances");
+        }
+        napi_value value;
+        napi_create_int32(env, ret, &value);
+        return value;
     }
     ```
 
@@ -212,41 +212,41 @@
 
     ``` C++
     static napi_value NAPI_Global_Seek(napi_env env, napi_callback_info info) {
-      size_t argc = 2;
-      napi_value args[2] = {nullptr};
-      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-      int seekValue;
-      napi_get_value_int32(env, args[0], &seekValue);
-      int mode;
-      napi_get_value_int32(env, args[1], &mode);
-      auto context = SampleManager::GetInstance();
-      if (context->player_ != NULL) {
-          int ret;
-          switch (mode) {
-          case 0:
-              LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_NEXT_SYNC", seekValue);
-              ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_NEXT_SYNC);
-              break;
-          case 1:
-              LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_PREVIOUS_SYNC", seekValue);
-              ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_PREVIOUS_SYNC);
-              break;
-          case 2:
-              LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_CLOSEST", seekValue);
-              ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_CLOSEST);
-              break;
-          default:
-              LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_PREVIOUS_SYNC", seekValue);
-              ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_PREVIOUS_SYNC);
-              break;
-          }
-          LOG("OH_AVPlayer_Seek ret:%{public}d", ret);
-      } else {
-          LOG("no found Player Instances");
-      }
-      napi_value value;
-      napi_create_int32(env, 0, &value);
-      return value;
+        size_t argc = 2;
+        napi_value args[2] = {nullptr};
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+        int seekValue;
+        napi_get_value_int32(env, args[0], &seekValue);
+        int mode;
+        napi_get_value_int32(env, args[1], &mode);
+        auto context = SampleManager::GetInstance();
+        if (context->player_ != NULL) {
+            int ret;
+            switch (mode) {
+            case 0:
+                LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_NEXT_SYNC", seekValue);
+                ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_NEXT_SYNC);
+                break;
+            case 1:
+                LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_PREVIOUS_SYNC", seekValue);
+                ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_PREVIOUS_SYNC);
+                break;
+            case 2:
+                LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_CLOSEST", seekValue);
+                ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_CLOSEST);
+                break;
+            default:
+                LOG("call NAPI_Global_Seek value:%{public}d  mode:AV_SEEK_PREVIOUS_SYNC", seekValue);
+                ret = OH_AVPlayer_Seek(context->player_, seekValue, AV_SEEK_PREVIOUS_SYNC);
+                break;
+            }
+            LOG("OH_AVPlayer_Seek ret:%{public}d", ret);
+        } else {
+            LOG("no found Player Instances");
+        }
+        napi_value value;
+        napi_create_int32(env, 0, &value);
+        return value;
     }
     ```
 
@@ -254,17 +254,17 @@
 
     ``` C++
     static napi_value NAPI_Global_Stop(napi_env env, napi_callback_info info) {
-      int ret = 100;
-      auto context = SampleManager::GetInstance();
-      if (context->player_ != NULL) {
-        ret = OH_AVPlayer_Stop(context->player_);
-        LOG("OH_AVPlayer_Stop ret:%{public}d", ret);
-      } else {
-        LOG("no found Player Instances");
-      }
-      napi_value value;
-      napi_create_int32(env, ret, &value);
-      return value;
+        int ret = 100;
+        auto context = SampleManager::GetInstance();
+        if (context->player_ != NULL) {
+            ret = OH_AVPlayer_Stop(context->player_);
+            LOG("OH_AVPlayer_Stop ret:%{public}d", ret);
+        } else {
+            LOG("no found Player Instances");
+        }
+        napi_value value;
+        napi_create_int32(env, ret, &value);
+        return value;
     }
     ```
 
@@ -274,17 +274,17 @@
     
     ``` C++
     static napi_value NAPI_Global_Reset(napi_env env, napi_callback_info info) {
-      int ret = 100;
-      auto context = SampleManager::GetInstance();
-      if (context->player_ != NULL) {
-        ret = OH_AVPlayer_Reset(context->player_);
-        LOG("OH_AVPlayer_Reset ret:%{public}d", ret);
-        } else {
-          LOG("no found Player Instances");
-        }
-      napi_value value;
-      napi_create_int32(env, ret, &value);
-      return value;
+        int ret = 100;
+        auto context = SampleManager::GetInstance();
+        if (context->player_ != NULL) {
+            ret = OH_AVPlayer_Reset(context->player_);
+            LOG("OH_AVPlayer_Reset ret:%{public}d", ret);
+            } else {
+            LOG("no found Player Instances");
+            }
+        napi_value value;
+        napi_create_int32(env, ret, &value);
+        return value;
     }
     ```
 
@@ -294,17 +294,17 @@
 
     ``` C++
     static napi_value NAPI_Global_Release(napi_env env, napi_callback_info info) {
-      int ret = -1;
-      auto context = SampleManager::GetInstance();
-      if (context->player_ != NULL) {
-        ret = OH_AVPlayer_Release(context->player_);
-        LOG("OH_AVPlayer_Release ret:%{public}d", ret);
-      } else {
-        LOG("no found Player Instances");
-      }
-      napi_value value;
-      napi_create_int32(env, ret, &value);
-      return value;
+        int ret = -1;
+        auto context = SampleManager::GetInstance();
+        if (context->player_ != NULL) {
+            ret = OH_AVPlayer_Release(context->player_);
+            LOG("OH_AVPlayer_Release ret:%{public}d", ret);
+        } else {
+            LOG("no found Player Instances");
+        }
+        napi_value value;
+        napi_create_int32(env, ret, &value);
+        return value;
     }
     ```
 
