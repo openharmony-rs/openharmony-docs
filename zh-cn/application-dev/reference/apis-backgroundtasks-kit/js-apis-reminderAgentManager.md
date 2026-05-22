@@ -1109,8 +1109,8 @@ ReminderRequestTimer extends ReminderRequest
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。<br> 单位：s |
-| repeatInterval | number | 否 | 是 | 重复周期，无默认值，未赋值时，无重复周期。需和repeatCount一起使用。<br/>单位：s，范围：[86400, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 |
-| repeatCount | number | 否 | 是 | 重复次数，默认值为0，无限次重复。需和repeatInterval一起使用。<br/>范围：[0, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 |
+| repeatInterval | number | 否 | 是 | 重复周期，无默认值，未赋值时，无重复周期。需和repeatCount一起使用。<br/>单位：s，范围：[86400, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| repeatCount | number | 否 | 是 | 重复次数，默认值为0，无限次重复。需和repeatInterval一起使用。<br/>范围：[0, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## LocalDateTime
