@@ -1465,7 +1465,7 @@ dlpPermission.decryptDlpFile(dlpFd, plaintextFd).then((res) => {
 
 queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
-在DLP文件中解析文件头，获取DLP明文策略。返回的策略json字符串包含[DLPProperty](#dlpproperty21)和[CustomProperty](#customproperty21)信息。
+在DLP文件中解析文件头，获取DLP明文策略。返回的策略JSON字符串包含[DLPProperty](#dlpproperty21)和[CustomProperty](#customproperty21)信息。
 
 > **说明：**
 >
