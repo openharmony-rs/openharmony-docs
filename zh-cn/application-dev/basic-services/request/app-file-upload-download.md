@@ -216,6 +216,63 @@ async requestUploadFile(fileName: string, callback: (progress: int, isSuccess: b
 
 <!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/upload/RequestUpload.ets)--> 
 
+``` TypeScript
+async requestAgentUpload(fileName: string, callback: (progress: int, isSucceed: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let url: string = await urlUtils.getUrl(context);
+  let cacheDir: string = context.cacheDir;
+
+  let attachments: request.agent.FormItem[] = [{
+    name: 'test',
+    value: [
+      {
+        filename: fileName,
+        path: cacheDir + '/' + fileName,
+      },
+    ]
+  }];
+  let config: request.agent.Config = {
+    action: request.agent.Action.UPLOAD,
+    url: url,
+    mode: request.agent.Mode.FOREGROUND,
+    overwrite: true,
+    method: 'POST',
+    headers: {
+      'key1': 'value1',
+      'key2': 'value2'
+    },
+    data: attachments
+  };
+  try {
+    let task: request.agent.Task = await request.agent.create(context, config);
+      
+    // 注册回调
+    task.onProgress((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request upload status ${progress.state}, uploaded ${progress.processed}`);
+    });
+    task.onCompleted((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request upload completed`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    });
+    task.onFailed((progress: request.agent.Progress): void => {
+      logger.error(TAG, `Request upload failed, ${JSON.stringify(progress)}`);
+      callback(100, false);
+      request.agent.remove(task.tid);
+    });
+      
+    // 启动任务
+    await task.start();
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Failed to start the upload task, code=${err.code}, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
 
 ## 下载网络资源文件至应用文件目录
 
