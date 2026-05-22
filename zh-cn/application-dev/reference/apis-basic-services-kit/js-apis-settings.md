@@ -1334,7 +1334,7 @@ isDoubleClickAppForSelf(): Promise\<boolean>
 import { settings } from '@kit.BasicServicesKit';
 
 settings.isDoubleClickAppForSelf().then((result: boolean) => {
-	console.log(`isDoubleClickAppForSelf result: ${result}`);
+  console.info(`isDoubleClickAppForSelf result: ${result}`);
 })
 ```
 
