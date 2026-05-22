@@ -47,6 +47,8 @@ TapGesture(value?: TapGestureParameters)
 
 点击手势参数。继承自[BaseHandlerOptions](./ts-gesturehandler.md#basehandleroptions15)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |

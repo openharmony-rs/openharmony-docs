@@ -52,14 +52,14 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                          |
-| 1600007  | The notification does not exist.                     |
+| 1600007  | The notification does not exist.<br> 适用版本：11                     |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                       |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                                 |
+| 1600014  | No permission.<br> 适用版本：11                                       |
+| 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11 |
+| 1600016  | The notification version for this update is too low.<br> 适用版本：11 |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：12 |
+| 2300007  | Network unreachable.<br> 适用版本：11                                 |
 
 **示例：**
 
@@ -156,14 +156,14 @@ publish(request: NotificationRequest): Promise\<void\>
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                          |
-| 1600007  | The notification does not exist.                     |
+| 1600007  | The notification does not exist.<br> 适用版本：11                     |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                       |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                                 |
+| 1600014  | No permission.<br> 适用版本：11                                       |
+| 1600015  | The current notification status does not support duplicate configurations.<br> 适用版本：11 |
+| 1600016  | The notification version for this update is too low.<br> 适用版本：11 |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> 适用版本：12 |
+| 2300007  | Network unreachable.<br> 适用版本：11                                 |
 
 **示例：**
 
@@ -1314,7 +1314,7 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int): Promise\<void\>
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18 |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1376,7 +1376,7 @@ ArkTS-Sta: setBadgeNumber(badgeNumber: int, callback: AsyncCallback\<void\>): vo
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18 |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -2046,8 +2046,8 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> 适用版本：11         |
+| 1600013  | A notification dialog box is already displayed.<br> 适用版本：11           |
 
 **示例：**
 
@@ -2140,8 +2140,8 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> 适用版本：11          |
+| 1600013  | A notification dialog box is already displayed.<br> 适用版本：11           |
 
 **示例：**
 
@@ -2219,8 +2219,8 @@ requestEnableNotification(callback: AsyncCallback\<void\>): void
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> 适用版本：11          |
+| 1600013  | A notification dialog box is already displayed.<br> 适用版本：11           |
 
 **示例：**
 
@@ -2268,8 +2268,8 @@ requestEnableNotification(): Promise\<void\>
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> 适用版本：11          |
+| 1600013  | A notification dialog box is already displayed.<br> 适用版本：11           |
 
 **示例：**
 
@@ -2436,7 +2436,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> 适用版本：18 |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 | 1600018  | The notification settings window is already displayed.           |

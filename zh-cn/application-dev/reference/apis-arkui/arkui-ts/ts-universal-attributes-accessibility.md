@@ -10,8 +10,7 @@
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
->
+
 > - 从API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
@@ -914,7 +913,7 @@ ArkTS-Sta: accessibilityCustomActions(actions: Array&lt;AccessibilityCustomActio
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| actions  | Array&lt;[AccessibilityCustomAction](ts-types.md#accessibilitycustomaction)&gt; \| undefined | 是   | 自定义无障碍操作数组，每个操作包含操作名称和回调，用于给组件按操作名进行自定义操作的回调绑定。<br/>取值为undefined时，不设置自定义操作。 |
+| actions  | Array&lt;[AccessibilityCustomAction](ts-types.md#accessibilitycustomaction)&gt; \| undefined | 是   | 自定义无障碍操作数组，每个操作包含操作名称和回调，用于给组件按操作名进行自定义操作的回调绑定。<br/>**说明：**<br/>数组长度最大支持16个，超出部分将不生效。<br/>取值为undefined时，不设置自定义操作。 |
 
 **返回值：**
 
