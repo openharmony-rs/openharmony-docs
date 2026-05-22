@@ -32,7 +32,7 @@ The caller does not have the permission to access the URI or path.
 
 1. Check whether the caller cannot use the URI shared by another application. For details, see [access control mechanisms](../../security/AccessToken/access-token-overview.md) of the system.
 
-2. Check whether the permission is obtained by Picker. The permission obtained by Picker is temporary. For details, see [System Pickers](../../application-models/system-app-startup.md#methods-of-starting-a-system-application).
+2. Check whether the URI obtained through the system picker has only temporary permissions. For details, see [Starting a System Application](../../application-models/system-app-startup.md#methods-of-starting-a-system-application). If the application needs to continue accessing the URI after the application exits or the device restarts, the process of [Persisting Temporary Permissions (ArkTS)](../../file-management/file-persistPermission.md) must be followed.
 
 3. Check whether the URI is a concatenated path, which has no permission by default.
 
@@ -48,11 +48,27 @@ The file or directory does not exist.
 
 **Possible Causes**
 
-The file or directory does not exist.
+1. The passed path is not a sandbox path, or the file or directory does not exist in the application sandbox.
+
+2. A URI is passed to an API that supports only sandbox paths.
+
+3. For an API that supports URIs, an incorrect URI combined by the application or obtained after secondary encoding or decoding is passed.
+
+4. The API supports only file or directory names encoded in UTF-8. If other encoding formats are used, the file may not be found.
+
+5. When a file is created, the directory where the target file is located does not exist in the path.
 
 **Solution**
 
-Check whether the file directory exists.
+1. Check whether the passed path is a sandbox path and whether the path exists in the sandbox.
+
+2. Check whether the parameter type is incorrect.
+
+3. Check whether an incorrect URI combined by the application or obtained after secondary encoding or decoding is passed.
+
+4. Check whether the encoding format of the file or directory name is UTF-8.
+
+5. When creating a file, check whether the parent directory of the file exists.
 
 ### 13900003 Process Not Found
 
@@ -366,7 +382,7 @@ The specified directory is invalid.
 
 **Solution**
 
-Check that the specified directory is correct.
+Check that the specified data is correct.
 
 ### 13900019 The Specified Object Is a Directory
 
@@ -384,7 +400,7 @@ The specified object is a directory.
 
 **Solution**
 
-Check that the specified directory is correct.
+Check that the specified data is correct.
 
 ### 13900020 Invalid Parameter
 

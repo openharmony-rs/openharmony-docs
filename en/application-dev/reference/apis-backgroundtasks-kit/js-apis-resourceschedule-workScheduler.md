@@ -219,7 +219,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## workScheduler.obtainAllWorks<sup>(deprecated)</sup>
 
-obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 Obtains all the deferred tasks. This API uses an asynchronous callback to return the result.
 
@@ -254,7 +254,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## workScheduler.obtainAllWorks<sup>10+</sup>
 
-obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
+obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 Obtains all the deferred tasks. This API uses an asynchronous callback to return the result.
 
@@ -400,7 +400,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ## workScheduler.isLastWorkTimeOut<sup>10+</sup>
 
-isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
 Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result.
 
