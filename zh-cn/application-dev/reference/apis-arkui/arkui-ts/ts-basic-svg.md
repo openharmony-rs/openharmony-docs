@@ -201,7 +201,7 @@ struct Index {
 | 元素 | 说明 | 特有属性 | 通用属性 |
 | :-------- | :-------- | :-------- | :-------- |
 | \<svg\> | 容器，定义个svg片段 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> width：宽度； <br>height：高度；<br> viewBox：视口| fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
-| \<g\> | 分组 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> width：宽度；<br> height：高度 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
+| \<g\> | 分组 | width：宽度；<br> height：高度 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
 | \<use\> | 复用已有元素 | x：x轴偏移分量；<br> y：y轴偏移分量；<br> href：目标元素 | fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
 | \<defs\> | 定义可复用对象 |无特有属性 |fill、fill-rule、fill-opacity、stroke、stroke-dasharray、stroke-dashoffset、stroke-opacity、stroke-width、stroke-linecap、stroke-linejoin、stroke-miterlimit、transform |
 
