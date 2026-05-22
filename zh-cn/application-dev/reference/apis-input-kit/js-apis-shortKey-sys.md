@@ -205,7 +205,7 @@ struct Index {
             // 设置延迟拉起时间500ms
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
               console.info(`Succeeded in setting key down duration.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
