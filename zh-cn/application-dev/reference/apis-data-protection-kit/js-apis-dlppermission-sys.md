@@ -12,7 +12,6 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.dlpPermission (数据防泄漏)](js-apis-dlppermission.md)。
-> - 支持的设备类型：手机、平板和二合一设备。
 
 ## 导入模块
 
@@ -24,9 +23,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 
-查询DLP沙箱聚合策略。使用Promise方式异步返回结果。调用成功后返回当前DLP沙箱聚合策略类型。
-
-**使用场景：** 企业安全管理应用需要获取当前系统的DLP聚合策略配置，以决定是否将同权限类型的DLP文件在同一个沙箱内打开。
+查询DLP沙箱聚合策略。使用Promise方式异步返回结果。**使用场景：** 企业安全管理应用需要获取当前系统的DLP聚合策略配置，以决定是否将同权限类型的DLP文件在同一个沙箱内打开。
 
 **系统接口：** 此接口为系统接口。
 
@@ -67,9 +64,7 @@ dlpPermission.getDLPGatheringPolicy().then((gatheringPolicy: dlpPermission.Gathe
 
 getDLPGatheringPolicy(callback: AsyncCallback&lt;GatheringPolicyType&gt;): void
 
-查询DLP沙箱聚合策略。使用callback方式异步返回结果。调用成功后返回当前DLP沙箱聚合策略类型。
-
-**使用场景：** 企业安全管理应用需要获取当前系统的DLP聚合策略配置。
+查询DLP沙箱聚合策略。使用callback方式异步返回结果。**使用场景：** 企业安全管理应用需要获取当前系统的DLP聚合策略配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -113,11 +108,7 @@ dlpPermission.getDLPGatheringPolicy((err, gatheringPolicy) => {
 
 installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri: string): Promise&lt;DLPSandboxInfo&gt;
 
-安装一个应用的DLP沙箱。DLP沙箱为受保护的DLP文件创建独立的运行环境，与原应用进程隔离，确保数据在授权范围内安全流转。沙箱应用继承原应用的功能但仅能访问授权的DLP文件。使用Promise方式异步返回结果。调用成功后，系统为应用创建DLP沙箱环境并返回沙箱信息。
-
-**配对调用：** 调用installDLPSandbox成功后必须在使用完毕后调用uninstallDLPSandbox卸载沙箱。
-
-**使用场景：** DLP文件管理应用打开受保护文件前，需要先为目标应用安装DLP沙箱。
+安装一个应用的DLP沙箱。DLP沙箱为受保护的DLP文件创建独立的运行环境，与原应用进程隔离，确保数据在授权范围内安全流转。沙箱应用继承原应用的功能但仅能访问授权的DLP文件。使用Promise方式异步返回结果。**配对调用：** 调用installDLPSandbox成功后必须在使用完毕后调用uninstallDLPSandbox卸载沙箱。**使用场景：** DLP文件管理应用打开受保护文件前，需要先为目标应用安装DLP沙箱。
 
 **系统接口：** 此接口为系统接口。
 
@@ -170,11 +161,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 
 installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri:string, callback: AsyncCallback&lt;DLPSandboxInfo&gt;): void
 
-安装一个应用的DLP沙箱。使用callback方式异步返回结果。调用成功后，系统为应用创建DLP沙箱环境并返回沙箱信息。
-
-**配对调用：** 调用installDLPSandbox成功后必须在使用完毕后调用uninstallDLPSandbox卸载沙箱。
-
-**使用场景：** DLP文件管理应用打开受保护文件前，需要先为目标应用安装DLP沙箱。
+安装一个应用的DLP沙箱。使用callback方式异步返回结果。调用成功后，系统为应用创建DLP沙箱环境并返回沙箱信息。**配对调用：** 调用installDLPSandbox成功后必须在使用完毕后调用uninstallDLPSandbox卸载沙箱。**使用场景：** DLP文件管理应用打开受保护文件前，需要先为目标应用安装DLP沙箱。
 
 **系统接口：** 此接口为系统接口。
 
@@ -223,11 +210,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 
 uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promise&lt;void&gt;
 
-卸载一个应用的DLP沙箱。使用Promise方式异步返回结果。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。
-
-**使用场景：** DLP文件关闭后，需要清理对应的沙箱环境。
-
-**配对调用：** 必须在调用installDLPSandbox安装沙箱后才能调用此方法卸载。
+卸载一个应用的DLP沙箱。使用Promise方式异步返回结果。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。**使用场景：** DLP文件关闭后，需要清理对应的沙箱环境。**配对调用：** 必须在调用installDLPSandbox安装沙箱后才能调用此方法卸载。
 
 **系统接口：** 此接口为系统接口。
 
@@ -280,9 +263,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 
 uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callback: AsyncCallback&lt;void&gt;): void
 
-卸载一个应用的DLP沙箱。使用callback方式异步返回结果。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。
-
-**使用场景：** DLP文件关闭后需要清理沙箱环境。
+卸载一个应用的DLP沙箱。使用callback方式异步返回结果。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。**使用场景：** DLP文件关闭后需要清理沙箱环境。
 
 **系统接口：** 此接口为系统接口。
 
@@ -336,11 +317,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 
 on(type: 'uninstallDLPSandbox', listener: Callback&lt;DLPSandboxState&gt;): void
 
-注册监听DLP沙箱卸载事件，用于感知沙箱环境的变化。注册成功后，当DLP沙箱被卸载时，系统会通过回调函数通知应用。
-
-**配对调用：** 调用on()注册监听后，建议在不需要监听时调用off()取消监听释放资源。
-
-**使用场景：** DLP管理应用需要追踪沙箱的创建和销毁状态，以便维护沙箱列表或执行相关的清理操作。
+注册监听DLP沙箱卸载事件，用于感知沙箱环境的变化。注册成功后，当DLP沙箱被卸载时，系统会通过回调函数通知应用。**配对调用：** 调用on()注册监听后，建议在不需要监听时调用off()取消监听释放资源。**使用场景：** DLP管理应用需要追踪沙箱的创建和销毁状态，以便维护沙箱列表或执行相关的清理操作。
 
 **系统接口：** 此接口为系统接口。
 
@@ -380,11 +357,7 @@ dlpPermission.on('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) =>
 
 off(type: 'uninstallDLPSandbox', listener?: Callback&lt;DLPSandboxState&gt;): void
 
-取消监听DLP沙箱卸载事件。调用成功后，应用不再接收DLP沙箱卸载事件的回调通知。
-
- **配对调用：**  必须在调用on()注册监听后才能调用此方法取消监听。
- 
- **使用场景：** DLP管理应用退出或不再需要追踪沙箱状态变化时，取消事件订阅以释放监听资源。
+取消监听DLP沙箱卸载事件。调用成功后，应用不再接收DLP沙箱卸载事件的回调通知。**配对调用：**  必须在调用on()注册监听后才能调用此方法取消监听。**使用场景：** DLP管理应用退出或不再需要追踪沙箱状态变化时，取消事件订阅以释放监听资源。
 
 **系统接口：** 此接口为系统接口。
 
@@ -438,9 +411,7 @@ dlpPermission.off('uninstallDLPSandbox', (info: dlpPermission.DLPSandboxState) =
 
 addDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-在FUSE文件系统(Filesystem in Userspace)添加link文件。FUSE是一种用户空间文件系统框架，允许在用户空间实现自定义文件系统逻辑。link文件是FUSE中映射到DLP密文的虚拟文件，对该文件的读写操作会同步到实际DLP文件。使用Promise方式异步返回结果。
-
-**使用场景：** DLP应用需要通过标准文件接口访问加密文件内容时，先添加link文件将DLP文件映射为虚拟明文文件，应用可像操作普通文件一样读写该link文件。
+在FUSE文件系统(Filesystem in Userspace)添加link文件。FUSE是一种用户空间文件系统框架，允许在用户空间实现自定义文件系统逻辑。link文件是FUSE中映射到DLP密文的虚拟文件，对该文件的读写操作会同步到实际DLP文件。使用Promise方式异步返回结果。**使用场景：** DLP应用需要通过标准文件接口访问加密文件内容时，先添加link文件将DLP文件映射为虚拟明文文件，应用可像操作普通文件一样读写该link文件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -509,9 +480,7 @@ ExampleFunction();
 
 addDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 
-在FUSE文件系统添加link文件。使用callback方式异步返回结果。调用成功后，在FUSE文件系统中创建一个映射到DLP文件密文的虚拟文件。
-
-**使用场景：** DLP应用需要通过标准文件接口访问加密文件内容。
+在FUSE文件系统添加link文件。使用callback方式异步返回结果。调用成功后，在FUSE文件系统中创建一个映射到DLP文件密文的虚拟文件。**使用场景：** DLP应用需要通过标准文件接口访问加密文件内容。
 
 **系统接口：** 此接口为系统接口。
 
@@ -578,11 +547,7 @@ ExampleFunction();
 
 stopFuseLink(): Promise&lt;void&gt;
 
-停止FUSE关联读写。使用Promise方式异步返回结果。调用成功后，暂停对link文件的读写操作。
-
-**配对调用：** 调用stopFuseLink()暂停FUSE关联读写后，必须调用resumeFuseLink()恢复读写功能。
-
-**使用场景：** 在删除link文件前，需要先停止关联读写以确保文件操作安全。
+停止FUSE关联读写。使用Promise方式异步返回结果。调用成功后，暂停对link文件的读写操作。**配对调用：** 调用stopFuseLink()暂停FUSE关联读写后，必须调用resumeFuseLink()恢复读写功能。**使用场景：** 在删除link文件前，需要先停止关联读写以确保文件操作安全。
 
 **系统接口：** 此接口为系统接口。
 
@@ -644,9 +609,7 @@ ExampleFunction();
 
 stopFuseLink(callback: AsyncCallback&lt;void&gt;): void
 
-停止FUSE关联读写。使用callback方式异步返回结果。调用成功后，暂停对link文件的读写操作。
-
-**使用场景：** 删除link文件前需要暂停读写关联。
+停止FUSE关联读写。使用callback方式异步返回结果。调用成功后，暂停对link文件的读写操作。**使用场景：** 删除link文件前需要暂停读写关联。
 
 **系统接口：** 此接口为系统接口。
 
@@ -713,11 +676,7 @@ ExampleFunction();
 
 resumeFuseLink(): Promise&lt;void&gt;
 
-恢复FUSE关联读写。使用Promise方式异步返回结果。调用成功后，恢复对link文件的读写操作。
-
- **配对调用：** 必须在调用stopFuseLink()暂停读写后才能调用此方法恢复读写功能。
- 
- **使用场景：** link文件替换完成后，需要恢复读写关联以继续正常的文件访问。
+恢复FUSE关联读写。使用Promise方式异步返回结果。调用成功后，恢复对link文件的读写操作。 **配对调用：** 必须在调用stopFuseLink()暂停读写后才能调用此方法恢复读写功能。**使用场景：** link文件替换完成后，需要恢复读写关联以继续正常的文件访问。
 
 **系统接口：** 此接口为系统接口。
 
@@ -781,9 +740,7 @@ ExampleFunction();
 
 resumeFuseLink(callback: AsyncCallback&lt;void&gt;): void
 
-恢复FUSE关联读写，使用callback方式异步返回结果。调用成功后，恢复对link文件的读写操作。
-
-**使用场景：** link文件替换完成后需要恢复读写关联。
+恢复FUSE关联读写，使用callback方式异步返回结果。调用成功后，恢复对link文件的读写操作。**使用场景：** link文件替换完成后需要恢复读写关联。
 
 **系统接口：** 此接口为系统接口。
 
@@ -851,9 +808,7 @@ ExampleFunction();
 
 replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-替换link文件。使用Promise方式异步返回结果。调用成功后，使用新的link文件名替换当前link文件。
-
-**使用场景**：需要切换访问不同的DLP文件时，通过替换link文件实现文件映射的切换。
+替换link文件。使用Promise方式异步返回结果。调用成功后，使用新的link文件名替换当前link文件。**使用场景**：需要切换访问不同的DLP文件时，通过替换link文件实现文件映射的切换。
 
 **系统接口：** 此接口为系统接口。
 
@@ -925,9 +880,7 @@ ExampleFunction();
 
 replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 
-替换link文件，使用callback方式异步返回结果。调用成功后，使用新的link文件名替换当前link文件。
-
-**使用场景**：需要切换访问不同的DLP文件时替换link文件。
+替换link文件，使用callback方式异步返回结果。调用成功后，使用新的link文件名替换当前link文件。**使用场景**：需要切换访问不同的DLP文件时替换link文件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -994,9 +947,7 @@ ExampleFunction();
 
 deleteDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-删除FUSE文件系统中创建的link文件。使用Promise方式异步返回结果。调用成功后，从FUSE文件系统中移除指定的link文件。
-
-**使用场景**：DLP文件访问结束后清理link文件映射。
+删除FUSE文件系统中创建的link文件。使用Promise方式异步返回结果。调用成功后，从FUSE文件系统中移除指定的link文件。**使用场景**：DLP文件访问结束后清理link文件映射。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1066,9 +1017,7 @@ ExampleFunction();
 
 deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除FUSE文件系统中创建的link文件，使用callback方式异步返回结果。调用成功后，从FUSE文件系统中移除指定的link文件。
-
-**使用场景：** DLP文件访问结束后清理link文件映射。
+删除FUSE文件系统中创建的link文件，使用callback方式异步返回结果。调用成功后，从FUSE文件系统中移除指定的link文件。**使用场景：** DLP文件访问结束后清理link文件映射。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1136,9 +1085,7 @@ ExampleFunction();
 
 recoverDLPFile(plaintextFd: number): Promise&lt;void&gt;
 
-移除DLP文件的权限控制，恢复成明文文件。使用Promise方式异步返回结果。
-
-**使用场景：** 文件所有者决定取消文件的DLP保护，将其转换为普通文件以便自由分享。
+移除DLP文件的权限控制，恢复成明文文件。使用Promise方式异步返回结果。**使用场景：** 文件所有者决定取消文件的DLP保护，将其转换为普通文件以便自由分享。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1217,9 +1164,7 @@ ExampleFunction();
 
 recoverDLPFile(plaintextFd: number, callback: AsyncCallback&lt;void&gt;): void
 
-移除DLP文件的权限控制，恢复成明文文件，使用callback方式异步返回结果。
-
-**使用场景：** 文件所有者决定取消文件的DLP保护。
+移除DLP文件的权限控制，恢复成明文文件，使用callback方式异步返回结果。**使用场景：** 文件所有者决定取消文件的DLP保护。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1295,11 +1240,7 @@ ExampleFunction();
 
 closeDLPFile(): Promise&lt;void&gt;
 
-关闭DLPFile，释放对象。使用Promise方式异步返回结果。
-
-**配对调用：** 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
-
-**使用场景：** 文件所有者决定关闭DLP文件。
+关闭DLPFile，释放对象。使用Promise方式异步返回结果。**配对调用：** 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。**使用场景：** 文件所有者决定关闭DLP文件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1364,11 +1305,7 @@ ExampleFunction();
 
 closeDLPFile(callback: AsyncCallback&lt;void&gt;): void
 
-关闭DLPFile，释放对象，使用callback方式异步返回结果。
-
-**配对调用：** 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
-
-**使用场景：** 文件所有者决定关闭DLP文件。
+关闭DLPFile，释放对象，使用callback方式异步返回结果。**配对调用：** 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。**使用场景：** 文件所有者决定关闭DLP文件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1437,11 +1374,7 @@ ExampleFunction();
 
 generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty): Promise&lt;DLPFile&gt;
 
-DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise方式异步返回返回DLPFile管理对象。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。
-
-**使用场景：** 企业文档管理系统需要将敏感文档加密为DLP文件，并设置访问权限列表，以实现文档的安全分享和权限管理。
-
-**配对调用：** 调用generateDLPFile成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。
+DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise方式异步返回返回DLPFile管理对象。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。**配对调用：** 调用generateDLPFile成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。**使用场景：** 企业文档管理系统需要将敏感文档加密为DLP文件，并设置访问权限列表，以实现文档的安全分享和权限管理。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1522,9 +1455,7 @@ ExampleFunction();
 
 generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty, callback: AsyncCallback&lt;DLPFile&gt;): void
 
-DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。获取DLPFile管理对象，使用callback方式异步返回结果。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。
-
-**配对调用：** 调用generateDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
+DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。获取DLPFile管理对象，使用callback方式异步返回结果。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。**配对调用：** 调用generateDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1595,11 +1526,7 @@ dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // 生成D
 
 openDLPFile(ciphertextFd: number, appId: string): Promise&lt;DLPFile&gt;
 
-DLP管理应用调用该接口，打开DLP文件。调用成功后返回DLPFile管理对象，可用于管理DLP文件的权限和进行相关操作。使用Promise方式异步返回结果。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。
-
- **配对调用：** 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
- 
- **使用场景：** DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先打开文件获取管理对象。
+DLP管理应用调用该接口，打开DLP文件。调用成功后返回DLPFile管理对象，可用于管理DLP文件的权限和进行相关操作。使用Promise方式异步返回结果。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。**配对调用：** 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。**使用场景：** DLP管理应用或授权应用需要访问受保护的DLP文件内容时，先打开文件获取管理对象。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1783,23 +1710,3 @@ DLP沙箱聚合策略类型的枚举。沙箱聚合表示同一权限类型的DL
 | -------- | -------- | -------- |
 | GATHERING | 1 | 表示沙箱聚合。 |
 | NON_GATHERING | 2 | 表示沙箱非聚合。 |
-
-## 错误码汇总表
-
-| 错误码ID | 错误信息 | 可能返回的接口 |
-| -------- | -------- |-------- |
-| 201 | Permission denied. | getDLPGatheringPolicy，installDLPSandbox，uninstallDLPSandbox等 |
-| 202 | Non-system applications use system APIs. | getDLPGatheringPolicy，installDLPSandbox，uninstallDLPSandbox等 |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. | getDLPGatheringPolicy，installDLPSandbox，uninstallDLPSandbox等 |
-| 19100001 | Invalid parameter value. | getDLPGatheringPolicy，installDLPSandbox，uninstallDLPSandbox等 |
-| 19100002 | Credential service busy due to too many tasks or duplicate tasks. | recoverDLPFile，generateDLPFile，openDLPFile等 |
-| 19100003 | Credential task time out. |recoverDLPFile，generateDLPFile，openDLPFile等 |
-| 19100004 | Credential service error. |recoverDLPFile，generateDLPFile，openDLPFile等 |
-| 19100005 | Credential authentication server error. |recoverDLPFile，generateDLPFile，openDLPFile等 |
-| 19100008 | The file is not a DLP file. | recoverDLPFile，openDLPFile |
-| 19100009 | Failed to operate the DLP file. | addDLPLinkFile，stopFuseLink，resumeFuseLink等 |
-| 19100010 | The DLP file is read only. | recoverDLPFile |
-| 19100011 | The system ability works abnormally. | getDLPGatheringPolicy，installDLPSandbox，uninstallDLPSandbox等 |
-| 19100018 | The application is not authorized. | openDLPFile |
-| 19100019 | The DLP file has expired. | openDLPFile |
-| 19100020 | No network connection. | openDLPFile |
