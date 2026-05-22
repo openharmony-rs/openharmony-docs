@@ -33,7 +33,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 | UPLOAD_FAILED |  1 | 上行同步失败。 |
 | DOWNLOADING |  2 | 下行同步中。 |
 | DOWNLOAD_FAILED |  3 | 下行同步失败。 |
-| COMPLETED |  4 | 同步成功。 |
+| COMPLETED |  4 | 同步成功或首次注册同步状态回调成功均返回。 |
 | STOPPED |  5 | 同步已停止。 |
 
 ## ErrorType<sup>12+</sup>
