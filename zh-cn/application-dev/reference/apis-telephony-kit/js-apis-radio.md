@@ -701,7 +701,7 @@ console.info(`signal information size is:` + signalInfo.length);
 
 ## radio.isNrSupported<sup>(deprecated)</sup>
 
-**ArkTS-Dyn**:isNrSupported\(\): boolean
+isNrSupported\(\): boolean
 
 判断当前设备是否支持NR(New Radio)。
 
@@ -730,7 +730,7 @@ console.info("Result: "+ result);
 
 ## radio.isNrSupported<sup>(deprecated)</sup>
 
-**ArkTS-Dyn**:isNrSupported\(slotId: number\): boolean
+isNrSupported\(slotId: number\): boolean
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
