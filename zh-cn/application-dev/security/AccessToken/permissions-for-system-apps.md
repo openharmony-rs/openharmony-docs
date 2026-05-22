@@ -803,6 +803,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -814,6 +816,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：10
 
@@ -841,8 +845,6 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
-
 **起始版本**：12
 
 ## ohos.permission.PERMISSION_USED_STATS
@@ -854,8 +856,6 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
-
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：9
 
