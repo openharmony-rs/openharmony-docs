@@ -74,15 +74,15 @@ total window num: 12
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
 | Type | 窗口类型 | 应用窗口：1表示应用主窗口，其他值详见[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)。 |
-| Mode | 窗口模式 | 1表示全屏模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
+| Mode | 窗口模式 | 1表示全屏模式，102表示自由悬浮窗模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
 | Flag | 状态标志位 | 0：正常显示状态；1：隐藏状态。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
-| Orientation | 窗口方向 | 0：未指定方向；1：竖屏；2：横屏；8：竖屏等方向设置。 |
-| [ x y w h ] | 窗口矩形区域 | 位置和大小，如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
+| Orientation | 窗口方向 | 0：未指定方向；1：竖屏；2：横屏；8：受控自动旋转。其他值详见[Orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)。 |
+| [ x y w h ] | 窗口矩形区域 | 窗口位置和大小，坐标以屏幕左顶点为原点。如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
 
 ### 查看获焦窗口
 
-使用`-a`参数查看所有窗口信息时，输出中会显示获焦窗口：
+使用`-a`参数查看所有窗口信息时，输出中会显示获取焦点的窗口：
 
 ```bash
 hdc shell hidumper -s WindowManagerService -a '-a' | grep "Focus window"
@@ -145,7 +145,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。 |
 | Type | 窗口类型 | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口；2000+：表示为系统窗口。 |
-| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式；2：表示为分屏模式；102：表示为自由悬浮窗模式。 |
+| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式；2：表示为分屏模式；102：表示为自由悬浮窗模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
 | Flag | 状态标志位 | 窗口状态标志。0：表示为正常显示状态；1：表示为隐藏状态。 |
 | Orientation | 窗口方向 | 窗口显示方向。0：表示为未指定方向；1：表示为竖屏；2：表示为反向竖屏；3：表示为横屏；4：表示为反向横屏。 |
 | IsStartingWindow | 是否是应用启动过渡窗口 | 应用启动过渡窗口标识。true：表示为应用启动过程中显示的过渡窗口（在应用首帧绘制完成前显示）；false：表示为正常应用窗口。 |
@@ -317,7 +317,7 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 | `minHeight` | 最小高度限制（vp） | 系统规定的最小高度阈值 |
 | `screenWidth` | 屏幕宽度（像素） | 当前屏幕的宽度，单位为像素 |
 | `screenHeight` | 屏幕高度（像素） | 当前屏幕的高度，单位为像素 |
-| `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值 |
+| `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值。若未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)设置窗口尺寸限制，该值等于[getWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits9)返回的最大尺寸。推荐开发者先通过getWindowLimits查询系统默认限制后再设置。 |
 | `sessionRect` | 窗口矩形区域（像素） | 窗口的位置和尺寸，单位为像素，坐标以屏幕左顶点为原点 |
 
 **检测逻辑**
@@ -329,7 +329,9 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 
 > **说明：**
 >
-> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数，确保窗口尺寸在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内。
+> `screenWidthVp`、`screenHeightVp`为屏幕尺寸的vp值，由系统内部根据故障日志中的`screenWidth`、`screenHeight`（像素值）除以屏幕密度计算得到。故障日志中不直接输出这两个值，开发者可通过`screenWidthVp = screenWidth / density`自行计算。
+>
+> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数。`maxFloatingWindowSize`为系统规定的最大尺寸阈值（宽度和高度共用），窗口宽度应在[minWidth, maxFloatingWindowSize]范围内，窗口高度应在[minHeight, maxFloatingWindowSize]范围内。
 >
 > 条件2需要同时满足"小于最小限制"和"小于屏幕尺寸"两个条件，原因如下：当窗口尺寸小于最小限制但已接近屏幕尺寸时，说明设备屏幕本身较小，属于设备限制而非开发者设置错误；只有当窗口尺寸同时小于最小限制和屏幕尺寸时，才说明开发者设置的窗口尺寸过小，需要调整。
 
@@ -372,9 +374,11 @@ windowClass.showWindow();
 正确示例
 
 ```ts
-// 正确：设置在规定范围内的尺寸
+// 正确：先查询系统限制，再设置在规定范围内的尺寸
 let windowClass = await windowStage.createSubWindow('subWindow');
-// 尺寸应在[minWidth, maxFloatingWindowSize]和[minHeight, maxFloatingWindowSize]范围内
+// 通过getWindowLimits查询窗口尺寸限制范围
+let windowLimits = windowClass.getWindowLimits();
+// 确保设置的尺寸在[windowLimits.minWidth, windowLimits.maxWidth]和[windowLimits.minHeight, windowLimits.maxHeight]范围内
 windowClass.resize(720, 640);
 windowClass.showWindow();
 ```
