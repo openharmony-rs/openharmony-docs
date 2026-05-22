@@ -123,7 +123,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 **描述**
 
-获取指定DLP文件名的原始文件名。DLP文件在加密后会在原文件名后添加.dlp后缀，该接口通过去除.dlp后缀获取原始文件名。调用成功后，通过originalFileName参数返回原始文件名。调用者需使用free()释放originalFileName指向的内存。 
+获取指定DLP文件名的原始文件名。DLP文件在加密后会在原文件名后添加.dlp后缀，该接口通过去除.dlp后缀获取原始文件名。调用成功后，通过originalFileName参数返回原始文件名。调用者需使用free()释放originalFileName指向的内存。
 
 **起始版本：** 14
 
