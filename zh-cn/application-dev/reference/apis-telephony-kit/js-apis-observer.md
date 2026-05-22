@@ -1077,7 +1077,7 @@ offCellularDataConnectionStateChange(callback?: Callback\<DataConnectionStateInf
 ```ts
 let callback: (data: observer.DataConnectionStateInfo) => void = (data: observer.DataConnectionStateInfo) => {
     console.info('oncellularDataConnectionStateChange, data-->${JSON.stringify(data)}');
-}
+    console.info('onCellularDataConnectionStateChange, data-->${JSON.stringify(data)}');
 observer.on('cellularDataConnectionStateChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 observer.off('cellularDataConnectionStateChange', callback);
