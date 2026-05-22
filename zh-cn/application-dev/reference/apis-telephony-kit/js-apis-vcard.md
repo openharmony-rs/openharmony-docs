@@ -162,7 +162,7 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-ArkTS-Dyn示例：
+ArkTS-Sta示例：
 
 ```ts
 import { window } from '@kit.ArkUI';
