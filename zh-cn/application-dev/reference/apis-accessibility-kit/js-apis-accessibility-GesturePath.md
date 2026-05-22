@@ -39,7 +39,7 @@ import { GesturePath } from '@kit.AccessibilityKit';
 
 ### constructor<sup>(deprecated)</sup>
 
-constructor(durationTime: number);
+constructor(durationTime: number)
 
 构造函数。
 

@@ -171,7 +171,7 @@ let capability: accessibility.Capability[] = ['retrieve'];
 
 config.enableAbility(name, capability, (err: BusinessError | null) => {
   if (err?.code) {
-    console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to enable ability, Code is ${err?.code}, message is ${err?.message}`);
     return;
   }
   console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`); 
@@ -359,7 +359,7 @@ let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name, (err: BusinessError | null) => {
   if (err?.code) {
-    console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to disable ability, Code is ${err?.code}, message is ${err?.message}`);
     return;
   }
   console.info(`Succeeded in disabling, name is ${name}`);
@@ -1174,7 +1174,7 @@ let value: boolean = true;
 
 config.highContrastText.set(value, (err: BusinessError | null) => {
   if (err?.code) {
-    console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to set highContrastText, Code is ${err?.code}, message is ${err?.message}`);
     return;
   }
   console.info(`succeeded in setting highContrastText, value is ${value}`);
@@ -1276,7 +1276,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 config.highContrastText.get((err: BusinessError | null, data: boolean | undefined) => {
   if (err?.code) {
-    console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to get highContrastText, Code is ${err?.code}, message is ${err?.message}`);
     return;
   }
   console.info(`succeeded in getting highContrastText, data is ${data}`);

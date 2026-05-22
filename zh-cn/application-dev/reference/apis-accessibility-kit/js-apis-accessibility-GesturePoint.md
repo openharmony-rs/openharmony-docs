@@ -39,7 +39,7 @@ import { GesturePoint } from '@kit.AccessibilityKit';
 
 ### constructor<sup>(deprecated)</sup>
 
-constructor(positionX: number, positionY: number);
+constructor(positionX: number, positionY: number)
 
 构造函数。
 

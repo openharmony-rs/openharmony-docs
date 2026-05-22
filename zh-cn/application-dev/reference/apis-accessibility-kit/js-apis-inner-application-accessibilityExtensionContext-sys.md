@@ -333,7 +333,7 @@ ArkTS-Sta示例：
 ```ts
 import {
   AccessibilityElement,
-  AccessibilityEvent, 
+  AccessibilityEventInfo, 
   AccessibilityExtensionContext
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -349,15 +349,15 @@ export default class AccessibilityManager {
     return AccessibilityManager.instance;
   }
 
-  onStart(context: AccessibilityExtensionContext) {
+  onStart(context: AccessibilityExtensionContext): void {
     this.context = context;
   }
 
-  onStop() {
+  onStop(): void {
     this.context = undefined;
   }
 
-  onEvent(accessibilityEvent: AccessibilityEvent): void {
+  onEvent(accessibilityEvent: AccessibilityEventInfo): void {
     if (!this.context) {
       console.error('context is not available!');
       return;
@@ -366,7 +366,7 @@ export default class AccessibilityManager {
     let windowId: int = 10;
     let elementId: long = 10;
 
-    axContext.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
+    this.context.getElements(windowId, elementId).then((data:AccessibilityElement[]) => {
       console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
@@ -463,7 +463,7 @@ ArkTS-Sta示例：
 
 ```ts
 import {
-  AccessibilityEvent, 
+  AccessibilityEventInfo, 
   AccessibilityExtensionContext
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -479,15 +479,15 @@ export default class AccessibilityManager {
     return AccessibilityManager.instance;
   }
 
-  onStart(context: AccessibilityExtensionContext) {
+  onStart(context: AccessibilityExtensionContext): void {
     this.context = context;
   }
 
-  onStop() {
+  onStop(): void {
     this.context = undefined;
   }
 
-  onEvent(accessibilityEvent: AccessibilityEvent): void {
+  onEvent(accessibilityEvent: AccessibilityEventInfo): void {
     if (!this.context) {
       console.error('context is not available!');
       return;
@@ -495,7 +495,7 @@ export default class AccessibilityManager {
 
     let windowId: int = 10;
 
-    axContext.getDefaultFocusedElementIds(windowId).then((data: long[]) => {
+    this.context.getDefaultFocusedElementIds(windowId).then((data: long[]) => {
       console.info(`Succeeded in get default focus, ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to get default focus, Code is ${err.code}, message is ${err.message}`);
@@ -1026,7 +1026,7 @@ ArkTS-Sta示例：
 ```ts
 import {
   AccessibilityElement,
-  AccessibilityEvent, 
+  AccessibilityEventInfo, 
   AccessibilityExtensionContext
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1042,15 +1042,15 @@ export default class AccessibilityManager {
     return AccessibilityManager.instance;
   }
 
-  onStart(context: AccessibilityExtensionContext) {
+  onStart(context: AccessibilityExtensionContext): void {
     this.context = context;
   }
 
-  onStop() {
+  onStop(): void {
     this.context = undefined;
   }
 
-  onEvent(accessibilityEvent: AccessibilityEvent): void {
+  onEvent(accessibilityEvent: AccessibilityEventInfo): void {
     if (!this.context) {
       console.error('context is not available!');
       return;
@@ -1058,7 +1058,7 @@ export default class AccessibilityManager {
 
     let windowId: int = 0;
 
-    axContext.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
+    this.context.getRootInActiveWindow(windowId).then((element: AccessibilityElement) => {
       console.info(`Succeeded in getting root inactive window element, ${element.bundleName}`);
     }).catch((err: BusinessError) => {
       console.error(`failed to get root inactive window element, Code is ${err.code}, message is ${err.message}`);
@@ -1662,7 +1662,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement是AccessibilityElement的实例
 rootElement.getCursorPosition((err: BusinessError | null, data: int | undefined) => {
   if (err?.code) {
-    console.error(`failed to get cursor position, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to get cursor position, Code is ${err?.code}, message is ${err?.message}`);
     return;
   }
   console.info(`succeeded in getting cursor position, ${data}`);
