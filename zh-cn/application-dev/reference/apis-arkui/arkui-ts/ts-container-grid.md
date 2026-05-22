@@ -1209,6 +1209,28 @@ Grid滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。
 | ------ | ------ | ------ | ------|
 | handler | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12) \| undefined | 是 | Grid滑动时触发的回调。<br/>取值为undefined时，不使用回调函数。 |
 
+### onEditModeChange
+
+onEditModeChange(callback: Callback\<boolean\> | undefined)
+
+[enableEditMode](#enableeditmode)编辑模式状态变化时触发。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                     |
+| ------ | ------ | ---- | ---------------------------------------- |
+| callback  |  [Callback](ts-types.md#callback12)\<boolean\> \| undefined  | 是   | 编辑模式状态变化时触发的回调。回调参数类型为boolean，true表示进入编辑模式，false表示退出编辑模式。<br>传入undefined时取消回调注册。 |
+
 ### attributeModifier<sup>23+</sup>
 
 attributeModifier(modifier: AttributeModifier\<GridAttribute> | AttributeModifier\<CommonMethod> | undefined)
@@ -1269,7 +1291,7 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 | totalLength   | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 否 | 否 |  Grid内容总长度，单位px。    |
 
 ## UIGridEvent<sup>19+</sup>
-frameNode中[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)方法的返回值，可用于给Grid节点设置滚动事件。
+[typeNode](../js-apis-arkui-typeNode.md)中[getEvent('Grid')](../js-apis-arkui-typeNode.md#geteventgrid19)方法的返回值，可用于给Grid节点设置滚动事件。
 
 UIGridEvent继承于[UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19)。
 
@@ -2457,7 +2479,7 @@ struct GridExample {
 
 ### 示例13（设置滚动事件）
 
-该示例通过FrameNode中的[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
+该示例通过[typeNode](../js-apis-arkui-typeNode.md)中的[getEvent('Grid')](../js-apis-arkui-typeNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
 
 从API version 19开始，新增UIGridEvent接口。
 
@@ -3514,9 +3536,9 @@ struct GridExample {
 
 ### 示例21（设置滑动多选）
 
-该示例通过设置`enableEditMode(true)`打开Grid滑动多选模式并设置默认多选样式，实现了在Grid上边滑动边选择的效果。
+该示例通过使用`enableEditMode`双向绑定和`onEditModeChange`事件监听在Grid上双指滑动进入多选模式的通知，实现了在Grid上边滑动边选择的效果。
 
-从API版本26.0.0开始，Grid组件新增[enableEditMode](#enableeditmode)接口。
+从API版本26.0.0开始，Grid组件新增[enableEditMode](#enableeditmode)接口和[onEditModeChange](#oneditmodechange)事件。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -3529,6 +3551,17 @@ import { GridDataSource } from './GridDataSource';
 @Component
 struct GridExample {
   numbers: GridDataSource = new GridDataSource([]);
+  @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
+  @State enableTwoFingerSelect: boolean = false;
+  @State selectedIndexes: number[] = [];
+
+  onEditModeChanged() {
+    console.info(`enableEditMode changed to: ${this.enableEditMode}`);
+    if (!this.enableEditMode) {
+      console.info('enableEditMode changed to false, clearing selectedIndexes');
+      this.selectedIndexes = [];
+    }
+  }
 
   aboutToAppear() {
     let list: string[] = [];
@@ -3554,8 +3587,17 @@ struct GridExample {
                 .textAlign(TextAlign.Center)
             }
           }
+          .selected(this.selectedIndexes.includes(index))
           .onSelect((isSelected: boolean) => {
             console.info('item ' + index.toString() + ' is ' + (isSelected ? 'selected' : 'unselected'));
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
           })
         }, (index: number) => index.toString())
       }
@@ -3565,8 +3607,21 @@ struct GridExample {
       .width('90%')
       .height('50%')
       .backgroundColor(0xFAEEE0)
-      .enableEditMode(true)
-      .editModeOptions({ useDefaultMultiSelectStyle: true })
+      .enableEditMode(this.enableEditMode!!)
+      .onEditModeChange((data: boolean) => {
+        // 也可以不使用enableEditMode双向绑定，在此处实现onEditModeChanged中的业务逻辑
+        console.info(`onEditModeChange:${data}`)
+      })
+      .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: this.enableTwoFingerSelect })
+
+      Row() {
+        Button('EditMode: ' + this.enableEditMode).onClick(() => {
+          this.enableEditMode = !this.enableEditMode;
+        })
+        Button('TwoFinger: ' + this.enableTwoFingerSelect).onClick(() => {
+          this.enableTwoFingerSelect = !this.enableTwoFingerSelect
+        })
+      }
       .margin({
         bottom: 30
       })
@@ -3575,4 +3630,4 @@ struct GridExample {
 }
 ```
 
-![gridEnableEditModeWithDefaultStyle](figures/gridEnableEditModeWithDefaultStyle.gif)
+![grid_two_finger_select](figures/grid_two_finger_select.gif)
