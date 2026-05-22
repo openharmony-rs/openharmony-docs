@@ -276,7 +276,7 @@ async requestAgentUpload(fileName: string, callback: (progress: int, isSucceed: 
 
 ## 下载网络资源文件至应用文件目录
 
-开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的下载接口将网络资源文件下载到应用文件目录。对已下载的网络资源应用文件，开发者可以使用基础文件IO接口（[ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）对其进行访问，使用方式与[应用文件访问](../../file-management/app-file-access.md)一致。文件下载过程使用系统服务代理完成，在api12中request.agent.create接口增加了设置代理地址参数，支持用户设置自定义代理地址。
+开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的下载接口将网络资源文件下载到应用文件目录。对已下载的网络资源应用文件，开发者可以使用基础文件IO接口（[ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）对其进行访问，使用方式与[应用文件访问](../../file-management/app-file-access.md)一致。文件下载过程使用系统服务代理完成，在API version 12中request.agent.create接口增加了设置代理地址参数，支持用户设置自定义代理地址。
 
 > **说明：**
 >
@@ -455,7 +455,7 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: i
 ```
 
 ## 下载网络资源文件至用户文件
-开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
+开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent.create<sup>10+</sup>](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
 
 > **说明：**
 >
@@ -1253,6 +1253,92 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
 ArkTS-Sta示例：
 
 <!-- @[want_agent_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/WantAgentDownload.ets)-->
+
+``` TypeScript
+async wantAgentDownload(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+
+  // 创建wantAgentInfo对象，用于定义点击通知后要执行的操作
+  let wantAgentInfo: wantAgent.WantAgentInfo = {
+    wants: [
+      {
+        deviceId: '',
+        bundleName: 'com.samples.uploaddownloadstatic', // 替换为实际应用的包名
+        abilityName: 'EntryAbility', // 替换为实际的ability名称
+        action: '',
+        entities: [],
+        uri: '',
+        parameters: {} // 可以传递自定义参数
+      }
+    ],
+    actionType: wantAgent.OperationType.START_ABILITY,
+    requestCode: 0,
+    actionFlags: [wantAgent.WantAgentFlags.CONSTANT_FLAG]
+  };
+
+  // 获取WantAgent实例
+  let wantAgentInstance: WantAgent;
+  try {
+    wantAgentInstance = await wantAgent.getWantAgent(wantAgentInfo);
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `Failed to get WantAgent, message: ${err.message}`);
+    callback(100, false);
+    return;
+  }
+
+  let filesDir: string = context.cacheDir;
+  // 创建下载任务配置，包含wantAgent参数
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: url, // 替换为实际的下载地址
+    title: '下载任务通知标题',
+    description: '下载任务通知描述',
+    mode: request.agent.Mode.BACKGROUND,
+    overwrite: true,
+    method: 'GET',
+    saveas: fileName,
+    network: request.agent.Network.ANY,
+    gauge: true,
+    notification: {
+      visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
+      wantAgent: wantAgentInstance,
+    }
+  };
+
+  // 创建并启动下载任务
+  try {
+    let task: request.agent.Task = await request.agent.create(context, config);
+      
+    // 注册回调
+    task.onProgress((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+    });
+    task.onCompleted((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+      let filePath: string = filesDir + '/' + fileName;
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize: Long = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    });
+    task.onFailed((progress: request.agent.Progress): void => {
+      logger.error(TAG, `Request download failed, ${JSON.stringify(progress)}`);
+      callback(100, false);
+      request.agent.remove(task.tid);
+    });
+      
+    // 启动任务
+    await task.start();
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `Failed to operate a download task, message: ${err.message}`);
+    callback(100, false);
+  }
+}
+```
 
 
 ### 配置说明
