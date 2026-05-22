@@ -199,7 +199,7 @@ struct Index {
   };
   ```
 
-- Abc页面入口`/src/main/ets/pages/DynamicPage.ets`。
+- 嵌入显示的Abc页面`/src/main/ets/pages/DynamicPage.ets`。
 
   ``` TypeScript
   @Entry
