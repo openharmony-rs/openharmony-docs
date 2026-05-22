@@ -661,7 +661,7 @@ enableEditMode(enabled: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| enabled  | boolean \| undefined | 是   | 是否启用编辑模式。设置为true时启用编辑模式，可以滑动多选，设置为false或undefined时关闭编辑模式，不可滑动多选。 |
+| enabled  | boolean \| undefined | 是   | 是否启用编辑模式，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。设置为true时启用编辑模式，可以滑动多选，设置为false或undefined时关闭编辑模式，不可滑动多选。 |
 
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
@@ -956,6 +956,26 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 | ------ | ------ | ------ | ------|
 | scrollOffset | number | 是 | 相对于上一帧的偏移量，Grid的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
+
+### onEditModeChange
+
+onEditModeChange(callback: Callback\<boolean\> | undefined)
+
+[enableEditMode](#enableeditmode)编辑模式状态变化时触发。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                     |
+| ------ | ------ | ---- | ---------------------------------------- |
+| callback  | [Callback](ts-types.md#callback12)\<boolean\> \| undefined | 是   | 编辑模式状态变化时触发的回调。回调参数类型为boolean，true表示进入编辑模式，false表示退出编辑模式。<br>传入undefined时取消回调。 |
 
 ## ComputedBarAttribute<sup>10+</sup>对象说明
 
@@ -3199,9 +3219,9 @@ struct GridExample {
 
 ### 示例21（设置滑动多选）
 
-该示例通过设置`enableEditMode(true)`打开Grid滑动多选模式并设置默认多选样式，实现了在Grid上边滑动边选择的效果。
+该示例通过使用`enableEditMode`双向绑定和`onEditModeChange`事件监听在Grid上双指滑动进入多选模式的通知，实现了在Grid上边滑动边选择的效果。
 
-从API版本26.0.0开始，Grid组件新增[enableEditMode](#enableeditmode)接口。
+从API版本26.0.0开始，Grid组件新增[enableEditMode](#enableeditmode)接口和[onEditModeChange](#oneditmodechange)事件。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
@@ -3214,6 +3234,17 @@ import { GridDataSource } from './GridDataSource';
 @Component
 struct GridExample {
   numbers: GridDataSource = new GridDataSource([]);
+  @State @Watch('onEditModeChanged') enableEditMode: boolean = false;
+  @State enableTwoFingerSelect: boolean = false;
+  @State selectedIndexes: number[] = [];
+
+  onEditModeChanged() {
+    console.info(`enableEditMode changed to: ${this.enableEditMode}`);
+    if (!this.enableEditMode) {
+      console.info('enableEditMode changed to false, clearing selectedIndexes');
+      this.selectedIndexes = [];
+    }
+  }
 
   aboutToAppear() {
     let list: string[] = [];
@@ -3239,8 +3270,17 @@ struct GridExample {
                 .textAlign(TextAlign.Center)
             }
           }
+          .selected(this.selectedIndexes.includes(index))
           .onSelect((isSelected: boolean) => {
             console.info('item ' + index.toString() + ' is ' + (isSelected ? 'selected' : 'unselected'));
+            if (isSelected) {
+              this.selectedIndexes.push(index);
+            } else {
+              let deleted = this.selectedIndexes.findIndex((value) => value === index);
+              if (deleted !== -1) {
+                this.selectedIndexes.splice(deleted, 1);
+              }
+            }
           })
         }, (index: number) => index.toString())
       }
@@ -3250,8 +3290,21 @@ struct GridExample {
       .width('90%')
       .height('50%')
       .backgroundColor(0xFAEEE0)
-      .enableEditMode(true)
-      .editModeOptions({ useDefaultMultiSelectStyle: true })
+      .enableEditMode(this.enableEditMode!!)
+      .onEditModeChange((data: boolean) => {
+        // 也可以不使用enableEditMode双向绑定，在此处实现onEditModeChanged中的业务逻辑
+        console.info(`onEditModeChange:${data}`)
+      })
+      .editModeOptions({ useDefaultMultiSelectStyle: true, enableTwoFingerMultiSelect: this.enableTwoFingerSelect })
+
+      Row() {
+        Button('EditMode: ' + this.enableEditMode).onClick(() => {
+          this.enableEditMode = !this.enableEditMode;
+        })
+        Button('TwoFinger: ' + this.enableTwoFingerSelect).onClick(() => {
+          this.enableTwoFingerSelect = !this.enableTwoFingerSelect
+        })
+      }
       .margin({
         bottom: 30
       })
@@ -3260,4 +3313,4 @@ struct GridExample {
 }
 ```
 
-![gridEnableEditModeWithDefaultStyle](figures/gridEnableEditModeWithDefaultStyle.gif)
+![grid_two_finger_select](figures/grid_two_finger_select.gif)
