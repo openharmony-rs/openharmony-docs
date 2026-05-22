@@ -8,7 +8,8 @@
 
 > **说明：**
 > 
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。<br>
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+>
 > 相关文档：[DLP开发指南](../../security/DataProtectionKit/dlp-guidelines.md)。
 
 ## 19100001 入参错误
@@ -81,7 +82,7 @@ DLP文件加解密时间超过10秒。
 
 **处理步骤**
 
-请根据以下情况处理： 1. 若当前加解密任务数过多，请等待一段时间后重试。 2. 若加解密任务重复，请取消重复任务后重试。
+请根据以下情况处理： 1. 若当前加解密任务数过多，请等待1分钟后重试。 2. 若加解密任务重复，请取消重复任务后重试。
 
 ## 19100004 凭据服务错误
 
@@ -139,7 +140,7 @@ No permission to call this API, which is available only for DLP sandbox applicat
 
 **处理步骤**
 
-请确认当前应用是否为DLP沙箱应用，该接口仅允许DLP沙箱应用调用。
+请确认当前应用是否为DLP沙箱应用，当前接口仅允许DLP沙箱应用调用。
 
 ## 19100007 DLP沙箱应用不允许调用此接口
 
@@ -337,7 +338,7 @@ The uri field is missing in the want parameter.
 
 **可能原因**
 
- 调用DLP文件打开相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
+调用DLP文件打开相关API时，want参数中未包含uri参数。want参数用于指定操作目标和参数配置，uri参数为必填参数。
 
 **处理步骤**
 
