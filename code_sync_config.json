@@ -2653,5 +2653,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-ear-monitor-loopback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopback.ets",
+				"functions":[
+					{
+						"end_line":427,
+						"name":"get_SupportedDevicePairs",
+						"start_line":21
+					},
+					{
+						"end_line":458,
+						"name":"get_PreferredDevicePair",
+						"start_line":22
+					},
+					{
+						"end_line":395,
+						"name":"get_Volume",
+						"start_line":20
+					},
+					{
+						"end_line":483,
+						"name":"get_EqualizerPreset",
+						"start_line":26
+					},
+					{
+						"end_line":355,
+						"name":"enable",
+						"start_line":27
+					}
+				]
+			}
+		]
 	}
 ]
