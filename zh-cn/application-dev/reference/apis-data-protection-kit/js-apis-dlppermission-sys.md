@@ -865,7 +865,7 @@ replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | 是 | 用于fuse文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
+| linkFileName | string | 是 | 用于FUSE文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
 
 **返回值：**
 
