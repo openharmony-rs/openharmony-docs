@@ -36256,6 +36256,21 @@
 						"end_line":356,
 						"name":"all_audioLoopback",
 						"start_line":15
+					},
+					{
+						"end_line":427,
+						"name":"get_SupportedDevicePairs",
+						"start_line":21
+					},
+					{
+						"end_line":458,
+						"name":"get_PreferredDevicePair",
+						"start_line":22
+					},
+					{
+						"end_line":395,
+						"name":"get_Volume",
+						"start_line":20
 					}
 				]
 			}
