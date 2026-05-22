@@ -300,7 +300,7 @@ struct DynamicPage {
 ```
 
 
-- 提供方module.json5配置
+- 提供方module.json5配置。
 
 ``` JSON
 {
