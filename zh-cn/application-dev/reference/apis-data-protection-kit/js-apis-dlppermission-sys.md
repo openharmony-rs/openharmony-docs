@@ -35,7 +35,7 @@ getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[GatheringPolicyType](#gatheringpolicytype)&gt; | Promise对象。返回当前DLP沙箱聚合策略，可能的取值：GATHERING（表示沙箱聚合）、NON_GATHERING（表示沙箱非聚合）。 |
+| Promise&lt;[GatheringPolicyType](#gatheringpolicytype)&gt; | Promise对象。返回当前DLP沙箱聚合策略。 |
 
 **错误码：**
 
