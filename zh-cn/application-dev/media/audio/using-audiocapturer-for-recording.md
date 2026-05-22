@@ -1,4 +1,4 @@
-# 使用AudioCapturer开发音频录制功能(ArkTs)
+# 使用AudioCapturer开发音频录制功能(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zyy0412-->
