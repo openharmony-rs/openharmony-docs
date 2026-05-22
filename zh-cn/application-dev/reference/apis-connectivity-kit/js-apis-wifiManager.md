@@ -836,7 +836,7 @@ removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1079,6 +1079,12 @@ connectToCandidateConfig(settings: ConnectSettings): Promise&lt;void&gt;
   | -------- | -------- | -------- | -------- |
   | settings | [ConnectSettings](#connectsettings) | 是 | 连接WLAN设置信息。 |
 
+ **返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
@@ -1135,7 +1141,7 @@ connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
