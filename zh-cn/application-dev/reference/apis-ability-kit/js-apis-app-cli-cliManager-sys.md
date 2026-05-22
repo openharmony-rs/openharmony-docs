@@ -1,4 +1,4 @@
-# @ohos.app.number.cliManager (CLI工具管理)(系统接口)
+# @ohos.app.cli.cliManager (CLI工具管理)(系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
@@ -340,5 +340,260 @@ atManager.generateCliAuthResult(tokenId, agentId, authInfoList).then(async (resu
 } catch (error) {
 const err = error as BusinessError;
 console.error(`execTool error, code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## cliManager.subscribeSession
+
+subscribeSession(sessionId: string, callback: ToolEventCallback): Promise\<void>
+
+订阅指定CLI工具会话的事件。会话运行期间，CLI工具产生的标准输出、标准错误、退出或错误事件通过回调返回。
+
+> **说明：**
+>
+> 会话仅限创建进程管理：只有调用`execTool`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.EXEC_CLI_TOOL
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名    | 类型                                      | 必填 | 说明                         |
+| --------- | ----------------------------------------- | ---- | ---------------------------- |
+| sessionId | string                                    | 是   | 目标CLI工具进程的会话ID。    |
+| callback  | [ToolEventCallback](js-apis-inner-application-toolEventCallback-sys.md) | 是   | CLI工具会话事件的回调函数。  |
+
+**返回值：**
+
+| 类型           | 说明                                 |
+| -------------- | ------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。             |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 35600032 | The session does not exist.                                  |
+| 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { cliManager, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sessionId = 'example_session_id';
+let callback: common.ToolEventCallback = {
+  onEvent: (event: common.CliToolEvent) => {
+    console.info('subscribeSession event type: ' + event.toolEventType + ', data: ' + event.data);
+  }
+};
+
+try {
+  cliManager.subscribeSession(sessionId, callback).then(() => {
+    console.info('subscribeSession success.');
+  }).catch((error: BusinessError) => {
+    console.error('subscribeSession failed, error: ' + error.message);
+  });
+} catch (error) {
+  console.error('subscribeSession failed, error: ' + JSON.stringify(error));
+}
+```
+
+## cliManager.clearSession
+
+clearSession(sessionId: string): Promise\<void>
+
+关闭指定CLI工具会话，并强制结束对应的工具进程。
+
+> **说明：**
+>
+> 会话仅限创建进程管理：只有调用`execTool`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.EXEC_CLI_TOOL
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                      |
+| --------- | ------ | ---- | ------------------------- |
+| sessionId | string | 是   | 目标CLI工具进程的会话ID。 |
+
+**返回值：**
+
+| 类型           | 说明                     |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 35600032 | The session does not exist.                                  |
+| 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { cliManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sessionId = 'example_session_id';
+try {
+  cliManager.clearSession(sessionId).then(() => {
+    console.info('clearSession success.');
+  }).catch((error: BusinessError) => {
+    console.error('clearSession failed, error: ' + error.message);
+  });
+} catch (error) {
+  console.error('clearSession failed, error: ' + JSON.stringify(error));
+}
+```
+
+## cliManager.querySession
+
+querySession(sessionId: string): Promise\<CliSessionInfo>
+
+查询指定CLI工具会话的状态和执行结果。
+
+> **说明：**
+>
+> 会话仅限创建进程管理：只有调用`execTool`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.EXEC_CLI_TOOL
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                      |
+| --------- | ------ | ---- | ------------------------- |
+| sessionId | string | 是   | 目标CLI工具进程的会话ID。 |
+
+**返回值：**
+
+| 类型                                      | 说明                               |
+| ----------------------------------------- | ---------------------------------- |
+| Promise\<[CliSessionInfo](#clisessioninfo)> | Promise对象，返回CLI工具会话信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 35600032 | The session does not exist.                                  |
+| 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { cliManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sessionId = 'example_session_id';
+try {
+  cliManager.querySession(sessionId).then((sessionInfo) => {
+    console.info('querySession success, status: ' + sessionInfo.status);
+  }).catch((error: BusinessError) => {
+    console.error('querySession failed, error: ' + error.message);
+  });
+} catch (error) {
+  console.error('querySession failed, error: ' + JSON.stringify(error));
+}
+```
+
+## cliManager.sendMessage
+
+sendMessage(sessionId: string, message: string): Promise\<void>
+
+向指定CLI工具会话对应的进程发送消息。
+
+> **说明：**
+>
+> 会话仅限创建进程管理：只有调用`execTool`创建该会话的进程可以调用本接口。其他进程即使获取到`sessionId`，调用本接口也会抛出错误码201（Permission denied）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.EXEC_CLI_TOOL
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                  |
+| --------- | ------ | ---- | ------------------------------------- |
+| sessionId | string | 是   | 目标CLI工具进程的会话ID。             |
+| message   | string | 是   | 要发送的消息，最大长度为10240。超过最大长度时抛出错误码401。 |
+
+**返回值：**
+
+| 类型           | 说明                     |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 35600032 | The session does not exist.                                  |
+| 35600033 | Failed to write message to tool.                             |
+| 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
+
+**示例：**
+
+```ts
+import { cliManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let sessionId = 'example_session_id';
+let message = 'example message';
+try {
+  cliManager.sendMessage(sessionId, message).then(() => {
+    console.info('sendMessage success.');
+  }).catch((error: BusinessError) => {
+    console.error('sendMessage failed, error: ' + error.message);
+  });
+} catch (error) {
+  console.error('sendMessage failed, error: ' + JSON.stringify(error));
 }
 ```
