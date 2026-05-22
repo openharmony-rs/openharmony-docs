@@ -610,7 +610,7 @@ off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
-    console.info(onSignalInfoChange, data:" + JSON.stringify(data));
+    console.info("on signalInfoChange:" + JSON.stringify(data));
 }
 observer.on('signalInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
