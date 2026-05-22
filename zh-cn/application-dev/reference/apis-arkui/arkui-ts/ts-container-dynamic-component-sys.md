@@ -182,11 +182,7 @@ struct Index {
 }
 ```
 
- - 以下为用于运行Abc的Worker线程对象的实现文件`/src/main/ets/workers/Worker.ets`。
-
-  ```ts
-  import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-
+- 以下为用于运行Abc的Worker线程对象的实现文件`/src/main/ets/workers/Worker.ets`。
   const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
   workerPort.onmessage = (event: MessageEvents) => {
@@ -220,7 +216,7 @@ struct Index {
   }
   ```
 
-- 提供方页面配置路由main_pages.json
+- 为提供方页面配置路由`main_pages.json`。
 
   ``` JSON
   {
@@ -277,36 +273,36 @@ struct Index {
 }
 ```
 
-**Abc页面入口** DynamicPage.ets
+- 嵌入显示的Abc页面`/src/main/ets/pages/DynamicPage.ets`。
 
-``` TypeScript
-import { Column, Text, Component, Entry, Color } from '@ohos.arkui.component';
-
-@Entry
-@Component
-struct DynamicPage {
-  build() {
-    Column() {
-      Text('this is ability in DC')
-        .fontSize(20)
-        .margin(10)
+  ``` TypeScript
+  import { Column, Text, Component, Entry, Color } from '@ohos.arkui.component';
+  
+  @Entry
+  @Component
+  struct DynamicPage {
+    build() {
+      Column() {
+        Text('this is ability in DC')
+          .fontSize(20)
+          .margin(10)
+      }
+      .height('100%')
+      .width('100%')
+      .borderWidth(10)
+      .borderColor(Color.Blue)
+      .align(Alignment.Top)
     }
-    .height('100%')
-    .width('100%')
-    .borderWidth(10)
-    .borderColor(Color.Blue)
   }
-}
-```
+  ```
 
+- 为提供方页面配置路由`main_pages.json`。
 
-- 提供方module.json5配置。
-
-``` JSON
-{
-  "src": [
-    "pages/Index",
-    "pages/DynamicPage"
-  ]
-}
-```
+  ``` JSON
+  {
+    "src": [
+      "pages/Index",
+      "pages/DynamicPage"
+    ]
+  }
+  ```
