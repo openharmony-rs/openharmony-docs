@@ -1,7 +1,7 @@
 # 菜单控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -127,7 +127,7 @@ bindContextMenu(isShown: boolean, content: CustomBuilder, options?: ContextMenuO
 
 当isShown为true时，弹出菜单；为false时，隐藏菜单。菜单项支持自定义。
 
-菜单弹出位置仅由placement设置决定，与点击位置无关。
+菜单弹出位置仅由[placement](ts-appendix-enums.md#placement8)设置决定，与点击位置无关。
 
 >  **说明：**
 >
@@ -181,6 +181,111 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 | options      | [ContextMenuOptions](#contextmenuoptions10)        | 否   | 配置弹出菜单的参数。             |
 
 **返回值：**
+
+|类型|说明|
+|---|---|
+|T|返回当前组件。|
+
+## bindContextMenuByResponseType
+
+bindContextMenuByResponseType(content: CustomBuilder | Array<MenuElement&gt;, responseType: ResponseType, options?: ContextMenuOptions): T
+
+给组件绑定菜单，控制菜单显隐的触发方式为长按或右键点击。支持自定义或固定样式的菜单项。
+
+> **说明：**
+>
+> - 不支持在输入法类型窗口中使用bindContextMenuWithResponse（默认子窗实现），详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名       | 类型                                               | 必填 | 说明                             |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------- |
+| content      | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\| Array<[MenuElement](#menuelement)&gt;&nbsp;  | 是   | 自定义组件，或使用固定样式菜单。当传入undefined时，无菜单弹出。           |
+| responseType | [ResponseType](ts-appendix-enums.md#responsetype8) | 是   | 菜单弹出条件，长按或者右键点击。不支持鼠标长按。 |
+| options      | [ContextMenuOptions](#contextmenuoptions10)        | 否   | 配置弹出菜单的参数。             |
+
+**返回值：**
+
+|类型|说明|
+|---|---|
+|T|返回当前组件。|
+
+## bindContextMenuWithResponse
+
+bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | Array<MenuElement&gt; | undefined, options?: ContextMenuOptions): T
+
+给组件绑定菜单，控制菜单显隐的触发方式为长按或右键点击。支持自定义或固定样式的菜单项，当为自定义菜单项时开发者可以根据触发方式实现差异化内容。
+
+> **说明：**
+>
+> - 不支持在输入法类型窗口中使用bindContextMenuWithResponse（默认子窗实现），详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名       | 类型                                               | 必填 | 说明                             |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------- |
+| content      | [CustomBuilderT](ts-types.md#custombuildertt23)\<[ResponseType](ts-appendix-enums.md#responsetype8)>&nbsp;\|&nbsp; Array<[MenuElement](#menuelement)&gt; \|&nbsp;undefined  | 是   | 自定义菜单内容构造器。入参为触发菜单的方式，开发者可据此实现差异化的内容。或使用固定样式菜单。当传入undefined时，无菜单弹出。           |
+| options      | [ContextMenuOptions](#contextmenuoptions10)        | 否   | 配置弹出菜单的参数。             |
+
+**返回值：**
+
+|类型|说明|
+|---|---|
+|T|返回当前组件。|
+
+## bindContextMenuByIsShow
+
+bindContextMenuByIsShow(isShown: boolean, content: CustomBuilder | Array<MenuElement&gt;, options?: ContextMenuOptions): T
+
+给组件绑定菜单，菜单的显隐通过控制绑定的isShown触发。
+
+菜单项支持自定义和固定样式数组。
+
+菜单弹出位置仅由[placement](ts-appendix-enums.md#placement8)设置决定，与点击位置无关。
+
+> **说明：**
+>
+> - 不支持在输入法类型窗口中使用bindContextMenu(默认子窗实现)，详情见输入法框架的约束与限制说明[createPanel](../../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+>
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名       | 类型                                               | 必填 | 说明                                         |
+| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
+| isShown | boolean | 是   | 是否支持开发者通过状态变量控制菜单显隐。菜单必须等待页面全部构建完成后才能展示，如果在页面构建前或构建中设置为true，可能导致显示位置及形状错误、无法正常弹出显示等问题。不支持长按触发拖拽。该参数支持[!!语法](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>true：弹出菜单；false：关闭菜单。<br/>默认值：false |
+| content      | [CustomBuilder](ts-types.md#custombuilder8) \| Array<[MenuElement](#menuelement)&gt;       | 是   | 自定义菜单内容构造器或固定样式菜单。 |
+| options      | [ContextMenuOptions](#contextmenuoptions10)                      | 否   | 配置弹出菜单的参数。                         |
+
+**返回值：** 
 
 |类型|说明|
 |---|---|
@@ -262,6 +367,7 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 | colorMode | [AnchoredColorMode](ts-universal-attributes-popup.md#anchoredcolormode) | 否 | 是 | 设置菜单深浅色模式，默认跟随绑定组件深浅色模式。<br />默认值：AnchoredColorMode.FOLLOW_TARGET<br />**说明：**<br />1. 仅当绑定组件使用了[WithTheme](ts-container-with-theme.md#接口)标签时，该属性才会生效。<br />2. 该属性仅影响组件的默认样式，以及开发者设置的涉及深浅色资源的属性。<br />3. 设置为AnchoredColorMode.FOLLOW_SYSTEM时，模糊材质可以跟随，文字颜色以及涉及深浅色资源的属性仍保持跟随绑定组件的深浅色配置。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
 | targetSpace | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单与目标组件之间的间距。<br /> **说明：** <br />- 同时使用targetSpace与offset时，两者会叠加生效。推荐使用targetSpace设置菜单与目标的间距，使用offset设置菜单弹出位置的偏移量。<br />- 二级菜单会避让targetSpace范围。<br />- 设置为负数或undefined时，菜单与目标组件之间的间距为默认8vp，且子菜单不避让targetSpace。<br />- targetSpace属性在存在默认placement时可直接生效，无默认placement的场景，需配合placement属性使用才可生效。<br />- anchorPosition的优先级要高于targetSpace。<br />- 不支持设置百分比。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是 | 设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。材质设置为非法值、undefined时，按照不设置系统材质处理。<br />默认值： undefined<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br />**模型约束：** 此接口仅可在Stage模型下使用。 |
+| gridStyle | [MenuGridStyleOptions](#menugridstyleoptions) | 否 | 是 | 设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](#bindmenu)、[bindContextMenu](#bindcontextmenu8)、[bindContextMenuByResponseType](#bindcontextmenubyresponsetype)、[bindContextMenuByIsShow](#bindcontextmenubyisshow)、[bindContextMenuWithResponse](#bindcontextmenuwithresponse)中使用[MenuElement](#menuelement)或在[MenuItem](ts-basic-components-menuitem.md)中使用MenuItemOptions。<br />**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **表1：同时设置offset与placement时菜单的偏移位置** 
 
@@ -447,6 +553,41 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 | ----- | -  | --------------------------------------|
 | NONE  | 0  | 菜单不避让软键盘。 |
 | TRANSLATE_AND_RESIZE | 1 | 菜单避让软键盘。如果空间不足，会平移或重新调整菜单大小避让软键盘。 |
+
+## MenuGridPosition
+
+栅格菜单在菜单中的位置枚举值。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称  | 值 | 说明                                   |
+| ----- | -  | --------------------------------------|
+| TOP  | 0  | 栅格在上方。 |
+| BOTTOM | 1 | 栅格在下方。 |
+
+## MenuGridStyleOptions
+
+菜单栅格样式选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----- | ---- | ---- | ---- | ---- |
+| count | number | 否 | 是 | 栅格中元素的数量。<br/>默认值：3<br/>取值范围：<br/>当为上图下文形的栅格样式时，元素数量范围为[0, 6]。<br/>当为纯图标形的栅格样式时，元素数量范围[0, 4]。 <br/>未设置、异常值按照默认值处理。 |
+| horizontalSize | number | 否 | 是 | 栅格中元素的水平尺寸，表示栅格内每行可显示的元素数量。<br/>默认值：3<br/>**说明：** <br/>当为上图下文形的栅格样式时，水平尺寸范围为[1, 3]，即栅格行数为[1, 2]。<br/>当为纯图标形的栅格样式时，水平尺寸范围为[1, 4]，即栅格行数为1。<br/>未设置、异常值按照默认值处理。 |
+| position | [MenuGridPosition](#menugridposition) | 否 | 是 | 栅格在菜单中的位置。<br/>默认值：MenuGridPosition.TOP |
 
 ## 示例
 
@@ -1692,3 +1833,56 @@ struct Index {
 设置系统材质后：
 
 ![menuNewMaterial](figures/menuNewMaterial.PNG)
+
+### 示例25（使用gridStyle设置栅格菜单）
+
+该示例展示了如何在[bindContextMenuByIsShow](#bindcontextmenubyisshow)中使用gridStyle设置栅格菜单样式。通过设置count、horizontalSize和position属性，可以自定义菜单的栅格布局。
+
+从API版本26.0.0开始，新增了[bindContextMenuByIsShow](#bindcontextmenubyisshow)的接口；在[ContextMenuOptions](#contextmenuoptions10)中新增了gridStyle属性。
+
+ ```ts
+ @Entry
+ @Component
+ struct ContextMenuGridStyleExample {
+   @State isShown: boolean = false;
+
+   @Builder
+   MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '复制' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '粘贴' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '剪切' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '删除' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '分享' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '全选' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '翻译' })
+      MenuItem({ startIcon: $r('app.media.startIcon'), content: '收藏' })
+    }
+    .width(150)
+   }
+ 
+   build() {
+     Column({ space: 20 }) {
+       Text('bindContextMenuByIsShow grid menu')
+         .fontSize(20)
+         .bindContextMenu(this.isShown, this.MyMenu, {
+           gridStyle: {
+             count: 4,
+             horizontalSize: 3,
+             position: MenuGridPosition.BOTTOM
+           },
+           onWillDisappear: () => {
+             this.isShown = false;
+           },
+         })
+         .onClick(() => {
+           this.isShown = true;
+         })
+     }
+     .width('100%')
+     .margin({ top: 50 })
+   }
+ }
+ ```
+
+ ![menuGrid](figures/grid_menu.png)
