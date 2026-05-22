@@ -140,7 +140,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) |返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP服务错误码](errorcode-dlp.md)<br> 0 - 操作成功。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 返回DLP错误码，表示操作结果。<br>可能原因及处理步骤请参见[DLP服务错误码](errorcode-dlp.md)<br> 0 - 操作成功。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_IsInSandbox()
 
