@@ -121,11 +121,11 @@ import { fileIo } from '@kit.CoreFileKit';
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 file = fileIo.openSync(uri).fd;
-dlpPermission.isDLPFile(file, (err, res) => {
+dlpPermission.isDLPFile(file, (err, isDLPFile) => {
  if (err != undefined) {
     console.error('isDLPFile error,', err.code, err.message);
   } else {
-    console.info('res', res);
+    console.info('isDLPFile:', isDLPFile);
   }
   fileIo.closeSync(file);
 });
@@ -204,7 +204,6 @@ getDLPPermissionInfo(callback: AsyncCallback&lt;DLPPermissionInfo&gt;): void
 
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
 
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
@@ -397,8 +396,8 @@ isInSandbox(): Promise&lt;boolean&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.isInSandbox().then((res) => { // 是否在沙箱内。
-  console.info('res', res);
+dlpPermission.isInSandbox().then((isInSandbox) => { // 是否在沙箱内。
+  console.info('isInSandbox', isInSandbox);
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -435,11 +434,11 @@ isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.isInSandbox((err, data) => {
+dlpPermission.isInSandbox((err, isInSandbox) => {
   if (err) {
     console.error('isInSandbox error', err.code, err.message);
   } else {
-    console.info('isInSandbox, data', JSON.stringify(data));
+    console.info('isInSandbox：', JSON.stringify(isInSandbox));
   }
 }); // 是否在沙箱内。
 ```
@@ -605,12 +604,12 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 dlpPermission.isInSandbox().then((inSandbox) => { // 是否在沙箱内。
   if (inSandbox) {
-    dlpPermission.setRetentionState([uri], (err, res) => {
+    dlpPermission.setRetentionState([uri], (err, retentionState) => {
       if (err != undefined) {
         console.error('setRetentionState error,', err.code, err.message);
       } else {
         console.info('setRetentionState success');
-        console.info('res', JSON.stringify(res));
+        console.info('retentionState：', JSON.stringify(retentionState));
       }
     }); // 设置沙箱保留。
   }
@@ -825,11 +824,11 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.getRetentionSandboxList((err, res) => {
+dlpPermission.getRetentionSandboxList((err, retentionSandboxList) => {
   if (err != undefined) {
     console.error('getRetentionSandboxList error,', err.code, err.message);
   } else {
-    console.info('res', JSON.stringify(res));
+    console.info('res', JSON.stringify(retentionSandboxList));
   }
 }); // 获取沙箱保留列表。
 ```
@@ -1014,8 +1013,8 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.setSandboxAppConfig('configInfo').then((res) => { // 设置沙箱应用配置信息。
-  console.info('res', res);
+dlpPermission.setSandboxAppConfig('configInfo').then((configInfo) => { // 设置沙箱应用配置信息。
+  console.info('configInfo：', configInfo);
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
@@ -1052,8 +1051,8 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 ```ts
 import { dlpPermission } from '@kit.DataProtectionKit';
 
-dlpPermission.cleanSandboxAppConfig().then((res) => { // 清理沙箱应用配置信息。
-  console.info('res', res);
+dlpPermission.cleanSandboxAppConfig().then((configInfo) => { // 清理沙箱应用配置信息。
+  console.info('configInfo：', configInfo);
 }).catch((error: BusinessError)=> {
   console.error(JSON.stringify(error));
 });
