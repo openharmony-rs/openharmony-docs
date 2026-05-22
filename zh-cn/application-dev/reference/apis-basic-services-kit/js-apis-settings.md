@@ -1292,8 +1292,8 @@ openDoubleClickSettingsPage(context: Context): void
 
 | 错误码ID    | 错误信息                    |
 |----------|-------------------------|
-| 16900010 | Parameter error.        |
-| 16900020 | Failed to open the settings page via redirection. |
+| 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.       |
+| 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |
 
 **示例**：
 
