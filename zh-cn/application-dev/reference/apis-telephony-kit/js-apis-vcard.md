@@ -57,6 +57,8 @@ import { vcard } from '@kit.TelephonyKit';
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
@@ -67,6 +69,26 @@ class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
         let filePath: string = "/data/storage/vcf/contacts.vcf";
         let accountId: number = 0;
+        vcard.importVCard(this.context, filePath, accountId, (err: BusinessError) => {
+            console.error(`callback: err->${JSON.stringify(err)}`);
+        });
+    }
+}
+
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vcard } from '@kit.TelephonyKit';
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        let filePath: string = "/data/storage/vcf/contacts.vcf";
+        let accountId: int = 0;
         vcard.importVCard(this.context, filePath, accountId, (err: BusinessError) => {
             console.error(`callback: err->${JSON.stringify(err)}`);
         });
@@ -119,6 +141,8 @@ class EntryAbility extends UIAbility {
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
@@ -129,6 +153,27 @@ class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
         let filePath: string = "/data/storage/vcf/contacts.vcf";
         let accountId: number = 0;
+        vcard.importVCard(this.context, filePath, accountId).then(() => {
+            console.info(`importVCard success.`);
+        }).catch((err: BusinessError) => {
+            console.error(`importVCard failed, promise: err->${JSON.stringify(err)}`);
+        });
+    }
+}
+```
+
+ArkTS-Dyn示例：
+
+```ts
+import { window } from '@kit.ArkUI';
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vcard } from '@kit.TelephonyKit';
+
+class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+        let filePath: string = "/data/storage/vcf/contacts.vcf";
+        let accountId: int = 0;
         vcard.importVCard(this.context, filePath, accountId).then(() => {
             console.info(`importVCard success.`);
         }).catch((err: BusinessError) => {
