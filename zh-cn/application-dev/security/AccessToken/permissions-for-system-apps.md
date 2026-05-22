@@ -4474,6 +4474,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：PC/2in1 | Phone | Tablet
+
 **起始版本**：18
 
 ## ohos.permission.ACCESS_FUSION_AWARENESS_DATA
