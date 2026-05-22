@@ -270,7 +270,7 @@ let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100,
   uri).then(async (dlpSandboxInfo: dlpPermission.DLPSandboxInfo) => {
   console.info('dlpSandboxInfo：', JSON.stringify(dlpSandboxInfo));
-  await dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex); // 卸载DLP沙箱。
+  await dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, dlpSandboxInfo.appIndex); // 卸载DLP沙箱。
 }).catch((error: BusinessError)=> {
   console.error(error.message);
 }); // 安装后卸载DLP沙箱。
@@ -320,7 +320,7 @@ let uri = 'file://docs/storage/Users/currentUser/Desktop/test.txt.dlp';
 dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.READ_ONLY, 100,
   uri).then((dlpSandboxInfo: dlpPermission.DLPSandboxInfo) => {
   console.info('dlpSandboxInfo：', JSON.stringify(dlpSandboxInfo));
-  dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, res.appIndex, (err, res) => {
+  dlpPermission.uninstallDLPSandbox('com.ohos.note', 100, dlpSandboxInfo.appIndex, (err, res) => {
     if (err !== undefined) {
       console.error('uninstallDLPSandbox error,', err.code, err.message);
     } else {
@@ -958,10 +958,6 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): v
 **示例：**
 
 ```ts
-import { dlpPermission } from '@kit.DataProtectionKit';
-import { fileIo } from '@kit.CoreFileKit';
-import { bundleManager } from '@kit.AbilityKit';
-
 import { dlpPermission } from '@kit.DataProtectionKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { bundleManager } from '@kit.AbilityKit';
@@ -1672,7 +1668,7 @@ async function ExampleFunction() {
   }
 }
 
-ExampleFunction()
+ExampleFunction();
 ```
 
 ## dlpPermission.openDLPFile<sup>11+</sup>
