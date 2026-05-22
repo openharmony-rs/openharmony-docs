@@ -32,7 +32,7 @@ The caller does not have the permission to access the URI or path.
 
 1. Check whether the caller cannot use the URI shared by another application. For details, see [access control mechanisms](../../security/AccessToken/access-token-overview.md) of the system.
 
-2. Check whether the URI obtained through the system picker has only temporary permissions. For details, see [Starting a System Application](../../application-models/system-app-startup.md#starting-a-system-application). If the application needs to continue accessing the URI after the application exits or the device restarts, the process of [Persisting Temporary Permissions (ArkTS)](../../file-management/file-persistPermission.md) must be followed.
+2. Check whether the URI obtained through the system picker has only temporary permissions. For details, see [System Picker](../../application-models/system-app-startup.md#starting-a-system-application). If the application needs to continue accessing the URI after the application exits or the device restarts, the process of [Persisting Temporary Permissions (ArkTS)](../../file-management/file-persistPermission.md) must be followed.
 
 3. Check whether the URI is a concatenated path, which has no permission by default.
 
