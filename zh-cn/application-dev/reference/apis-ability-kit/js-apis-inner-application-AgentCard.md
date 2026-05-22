@@ -12,6 +12,8 @@ AgentCard相当于Agent(智能体)的"名片"，用于描述Agent的能力和技
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 24 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -29,6 +31,10 @@ import { common } from '@kit.AbilityKit';
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                  | 类型                                                     | 只读 | 可选 | 说明                                      |
 | --------------------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------ |
@@ -58,6 +64,10 @@ import { common } from '@kit.AbilityKit';
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称               | 类型    | 只读 | 可选 | 说明                               |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |
 | organization     | string  | 否   | 否   | Agent提供商的组织名称。标识开发或提供该Agent的公司、组织或个人名称。 |
@@ -72,6 +82,10 @@ import { common } from '@kit.AbilityKit';
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称               | 类型    | 只读 | 可选 | 说明                               |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |
@@ -90,6 +104,10 @@ import { common } from '@kit.AbilityKit';
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称               | 类型    | 只读 | 可选 | 说明                               |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |
@@ -111,6 +129,10 @@ Agent的应用信息。
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称               | 类型    | 只读 | 可选 | 说明                               |
 | -------------------| ------- | ---- | ---- | ---------------------------------- |
