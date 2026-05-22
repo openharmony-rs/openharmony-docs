@@ -30,7 +30,7 @@ import { StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
 
 | 名称    | 类型                                                         | 只读 | 可选 | 说明     |
 | ------- | ------------------------------------------------------------ | ---- | ---- | -------- |
-| context<sup>10+</sup> | [StaticSubscriberExtensionContext](js-apis-application-StaticSubscriberExtensionContext-sys.md) | 否   | 否   | 上下文。 |
+| context<sup>10+</sup> | [StaticSubscriberExtensionContext](js-apis-application-StaticSubscriberExtensionContext-sys.md) | 否   | 否   | 上下文。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 
 ## StaticSubscriberExtensionAbility.onReceiveEvent
 
@@ -42,6 +42,10 @@ onReceiveEvent(event: CommonEventData): void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -49,12 +53,13 @@ onReceiveEvent(event: CommonEventData): void
 | event | [CommonEventData](./js-apis-inner-commonEvent-commonEventData.md) | 是 | 静态订阅者通用事件回调。 |
 
 **示例：**
+
   ```ts
   import { commonEventManager } from '@kit.BasicServicesKit';
 
-    class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
-        onReceiveEvent(event: commonEventManager.CommonEventData) {
-            console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
-        }
-    }
+  class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
+    onReceiveEvent(event: commonEventManager.CommonEventData) {
+      console.info(`onReceiveEvent, event: ${JSON.stringify(event)}`);
+      }
+  }
   ```

@@ -14,6 +14,8 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[Class (UIContext)](arkts-apis-uicontext-uicontext.md)。
@@ -338,7 +340,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance枚举说明](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
+设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
 
 **系统接口：** 此接口为系统接口。
 

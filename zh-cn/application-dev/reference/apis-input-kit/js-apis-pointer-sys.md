@@ -1209,8 +1209,12 @@ struct Index {
         .onClick(() => {
           try {
             // 获取鼠标主键
-            pointer.getMousePrimaryButton((error: BusinessError<pointer.PrimaryButton>|null, primary: pointer.PrimaryButton|undefined) => {
-              console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
+            pointer.getMousePrimaryButton((error: BusinessError<void>|null, primary: pointer.PrimaryButton|undefined) => {
+              if (error) {
+                console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              } else {
+                console.info(`Succeeded in getting mouse primary button, primary: ${JSON.stringify(primary)}.`);
+              }
             });
           } catch (error) {
             console.error(`Failed to get mouse primary button, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1582,7 +1586,7 @@ struct Index {
         .onClick(() => {
           try {
             // 获取鼠标滚动行数
-            pointer.getMouseScrollRows((error: BusinessError<int>|null, rows: int|undefined) => {
+            pointer.getMouseScrollRows((error: BusinessError<void>|null, rows: int|undefined) => {
               if (error) {
                 console.error(`Failed to get mouse scroll rows, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -3063,7 +3067,7 @@ struct Index {
         .onClick(() => {
           try {
             // 获取触摸板指针速度
-            pointer.getTouchpadPointerSpeed((error: BusinessError<int>|null, speed: int|undefined) => {
+            pointer.getTouchpadPointerSpeed((error: BusinessError<void>|null, speed: int|undefined) => {
               if (error) {
                 console.error(`Failed to get touchpad pointer speed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -4165,8 +4169,12 @@ struct Index {
         .onClick(() => {
           try {
             // 获取触摸板右键点击类型
-            pointer.getTouchpadRightClickType((error: BusinessError<pointer.RightClickType>|null, type: pointer.RightClickType|undefined) => {
-              console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
+            pointer.getTouchpadRightClickType((error: BusinessError<void>|null, type: pointer.RightClickType|undefined) => {
+              if (error) {
+                console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              } else {
+                console.info(`Succeeded in getting touchpad right click type, type: ${JSON.stringify(type)}.`);
+              }
             });
           } catch (error) {
             console.error(`Failed to get touchpad right click type, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -4625,7 +4633,7 @@ struct Index {
         .onClick(() => {
           try {
             // 获取鼠标指针大小
-            pointer.getPointerSize((error: BusinessError<int>|null, size: int|undefined) => {
+            pointer.getPointerSize((error: BusinessError<void>|null, size: int|undefined) => {
               if (error) {
                 console.error(`Failed to get pointer size, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
@@ -5186,7 +5194,7 @@ struct Index {
         .onClick(() => {
           try {
             // 获取鼠标指针颜色
-            pointer.getPointerColor((error: BusinessError<int>|null, color: int|undefined) => {
+            pointer.getPointerColor((error: BusinessError<void>|null, color: int|undefined) => {
               if (error) {
                 console.error(`Failed to get pointer color, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;

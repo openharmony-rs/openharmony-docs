@@ -676,7 +676,7 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
   }
 }
 ```
-### addDeferredSurface<sup>24+</sup>
+## addDeferredSurface<sup>24+</sup>
 
 addDeferredSurface(surfaceId: string): void
 
