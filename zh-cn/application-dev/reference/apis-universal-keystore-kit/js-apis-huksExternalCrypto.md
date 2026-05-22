@@ -626,9 +626,7 @@ setProperty(resourceId: string, propertyId: string, params?: HuksExternalCryptoP
 
 调用此接口设置属性值。使用Promise异步回调。
 
-外部密钥管理扩展的set-type操作支持调用自定义接口。自定义接口必须在provider中注册。
-
-propertyId表示设置属性的ID信息，推荐使用GMT 0016-2023中定义的SKF接口名作为属性ID。
+propertyId表示设置属性的ID信息，由[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)实现方提供，推荐使用GMT 0016-2023中定义的SKF接口名作为属性ID。
 
 **起始版本：** 26.0.0
 
