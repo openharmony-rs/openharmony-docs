@@ -441,11 +441,13 @@ ArkTS-Sta: width(width: Length): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 形状的宽度。<br/>单位：vp<br/>取值为异常值时按照0vp处理。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 形状的宽度。 |
 
 ### height
 
-height(height: Length): T
+ArkTS-Dyn: height(height: Length): T
+
+ArkTS-Sta: height(height: Length): this
 
 设置形状的高度。
 
@@ -461,6 +463,8 @@ height(height: Length): T
 
 **ArkTS-Dyn起始版本：** 12
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名         | 类型                                               | 必填 | 说明                                         |
@@ -471,37 +475,13 @@ height(height: Length): T
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前对象。 |
-
-### height<sup>23+</sup>
-
-height(height: Length): this
-
-设置形状的高度。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[height](#height)。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
-
-| 参数名         | 类型                                               | 必填 | 说明                                         |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| height | [Length](arkui-ts/ts-types.md#length) | 是 | 形状的高度。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 形状的高度。 |
 
 ### size
 
-size(size: SizeOptions): T
+ArkTS-Dyn: size(size: SizeOptions): T
+
+ArkTS-Sta: size(size: SizeOptions): this
 
 设置形状的大小。
 
@@ -513,9 +493,9 @@ size(size: SizeOptions): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[size<sup>23+</sup>](#size23)。
-
 **ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -527,33 +507,7 @@ size(size: SizeOptions): T
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| T | 返回当前对象。 |
-
-### size<sup>23+</sup>
-
-size(size: SizeOptions): this
-
-设置形状的大小。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[size](#size)。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
-
-| 参数名         | 类型                                               | 必填 | 说明                                                                                 |
-| ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
-| size | [SizeOptions](arkui-ts/ts-types.md#sizeoptions) | 是 | 形状的大小。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ## CommonShapeMethod
 
