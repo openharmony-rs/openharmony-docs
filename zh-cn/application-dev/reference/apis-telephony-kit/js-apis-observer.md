@@ -1139,7 +1139,7 @@ on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimSta
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
