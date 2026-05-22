@@ -47,7 +47,7 @@ Provides immersive material types and API declarations for ArkUI on the native s
 | [ArkUI_MaterialLevel OH_ArkUI_NativeModule_GetGlobalMaterialLevel()](#oh_arkui_nativemodule_getglobalmateriallevel) | - | Obtains the global material level, which is related to the device computing power. This configuration item is defined by the device and cannot be modified.|
 | [ArkUI_ImmersiveMaterialHandle OH_ArkUI_NativeModule_ImmersiveMaterial_Create(ArkUI_ImmersiveStyle style)](#oh_arkui_nativemodule_immersivematerial_create) | - | Creates an immersive material object with a specified style. The material level of the created object follows the global material level, which can be obtained through [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](#oh_arkui_nativemodule_getglobalmateriallevel).|
 | [void OH_ArkUI_NativeModule_ImmersiveMaterial_Destroy(ArkUI_ImmersiveMaterialHandle material)](#oh_arkui_nativemodule_immersivematerial_destroy) | - | Destroys the immersive material object.|
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle style)](#oh_arkui_nativemodule_immersivematerial_setstyle) | - | Sets a style for an immersive material object. This parameter is valid only for display effects of devices with high- and mid-computing power. It does not take effect for devices with low-computing power, but no error is reported.|
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle style)](#oh_arkui_nativemodule_immersivematerial_setstyle) | - | Sets a style for an immersive material object. This parameter is valid only for display effects of devices with high- and mid-level computing power. It does not take effect for devices with low-level computing power, but no error is reported.|
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_ImmersiveMaterialHandle material, ArkUI_ImmersiveStyle* style)](#oh_arkui_nativemodule_immersivematerial_getstyle) | - | Obtains the style of an immersive material object.|
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t color)](#oh_arkui_nativemodule_immersivematerial_setmaterialcolor) | - | Sets a material color for an immersive material object. This parameter is valid only for display effects of devices with high- and mid-computing power. It does not take effect for devices with low-computing power, but no error is reported. If this parameter is not set, the default value **0** is used, indicating the transparent color.|
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_ImmersiveMaterialHandle material, uint32_t* color)](#oh_arkui_nativemodule_immersivematerial_getmaterialcolor) | - | Obtains the material color of an immersive material object.|
@@ -95,9 +95,9 @@ You can use [OH_ArkUI_NativeModule_GetGlobalMaterialLevel](#oh_arkui_nativemodul
 
 | Enum Item| Description|
 | -- | -- |
-| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 | Material level of devices with high-computing power.|
-| ARKUI_MATERIAL_LEVEL_GENTLE = 1 | Material level of devices with mid-computing power.|
-| ARKUI_MATERIAL_LEVEL_SMOOTH = 2 | Material level of devices with low-computing power.|
+| ARKUI_MATERIAL_LEVEL_EXQUISITE = 0 | Material level of devices with high-level computing power.|
+| ARKUI_MATERIAL_LEVEL_GENTLE = 1 | Material level of devices with mid-level computing power.|
+| ARKUI_MATERIAL_LEVEL_SMOOTH = 2 | Material level of devices with low-level computing power.|
 
 ## Function Description
 
@@ -189,7 +189,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetStyle(ArkUI_Immersive
 
 **Description**
 
-Sets a style for an immersive material object. This parameter is valid only for display effects of devices with high- and mid-computing power. It does not take effect for devices with low-computing power, but no error is reported.
+Sets a style for an immersive material object. This parameter is valid only for display effects of devices with high- and mid-level computing power. It does not take effect for devices with low-level computing power, but no error is reported.
 
 **Since**: 26.0.0
 
@@ -239,7 +239,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetMaterialColor(ArkUI_I
 
 **Description**
 
-Sets a material color for an immersive material object. This parameter is valid only for display effects of devices with high- and mid-computing power. It does not take effect for devices with low-computing power, but no error is reported. If this parameter is not set, the default value **0** is used, indicating the transparent color.
+Sets a material color for an immersive material object. This parameter is valid only for display effects of devices with high- and mid-level computing power. It does not take effect for devices with low-level computing power, but no error is reported. If this parameter is not set, the default value **0** is used, indicating the transparent color.
 
 **Since**: 26.0.0
 
