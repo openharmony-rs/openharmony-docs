@@ -552,7 +552,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码,在Car中capList为UiTree可正常调用。
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码，在Car中capList为UiTree可正常调用。
 
 **参数**：
 
