@@ -223,7 +223,7 @@ onNetworkStateChange\(callback: Callback\<NetworkState\>\): void
 
 ```ts
 observer.onNetworkStateChange((data: observer.NetworkState) => {
-    console.info("onNetworkStateChange, data:" + JSON.stringify(data));
+    console.info(`onNetworkStateChange, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -312,7 +312,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.onNetworkStateChange( options, (data: observer.NetworkState) => {
-    console.info("onNetworkStateChange, data:" + JSON.stringify(data));
+    console.info(`onNetworkStateChange, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -399,7 +399,7 @@ offNetworkStateChange\(callback?: Callback\<NetworkState\>\): void
 
 ```ts
 let callback: (data: observer.NetworkState) => void = (data: observer.NetworkState) => {
-    console.info("onNetworkStateChange, data:" + JSON.stringify(data));
+    console.info(`onNetworkStateChange, data->${JSON.stringify(data)}`);
 }
 observer.onNetworkStateChange(callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -481,7 +481,7 @@ onSignalInfoChange\(callback: Callback\<Array\<SignalInformation\>\>): void
 import { radio } from '@kit.TelephonyKit';
 
 observer.onSignalInfoChange((data: Array<radio.SignalInformation>) => {
-    console.info("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info(`onSignalInfoChange, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -568,7 +568,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.onSignalInfoChange(options, (data: Array<radio.SignalInformation>) => {
-    console.info("onSignalInfoChange, data:" + JSON.stringify(data));
+    console.info(`onSignalInfoChange, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -610,7 +610,7 @@ off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
-    console.info("on signalInfoChange, data:" + JSON.stringify(data));
+    console.info(onSignalInfoChange, data:" + JSON.stringify(data));
 }
 observer.on('signalInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
@@ -659,7 +659,7 @@ offSignalInfoChange\(callback?: Callback\<Array\<SignalInformation\>\>): void
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.SignalInformation>) => void = (data: Array<radio.SignalInformation>) => {
-    console.info("onSignalInfoChange, data:" + JSON.stringify(data));
+    console.info(`onSignalInfoChange, data->${JSON.stringify(data)}`);
 }
 observer.onSignalInfoChange(callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
