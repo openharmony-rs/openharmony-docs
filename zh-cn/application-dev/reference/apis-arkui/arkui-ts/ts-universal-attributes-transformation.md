@@ -1,8 +1,8 @@
 # 图形变换
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -416,7 +416,9 @@ ArkTS-Sta: transform3D(transform: Matrix4Transit | undefined): this
 
 ## Matrix4Transit<sup>20+</sup>
 
-type Matrix4Transit = Matrix4Transit
+ArkTS-Dyn: type Matrix4Transit = Matrix4Transit
+
+ArkTS-Sta: type Matrix4Transit = matrix4.Matrix4Transit
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -428,7 +430,7 @@ type Matrix4Transit = Matrix4Transit
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| [Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
+| ArkTS-Dyn: [Matrix4Transit](../js-apis-matrix4.md#matrix4transit)<br/>ArkTS-Sta: matrix4.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
 
 ## RotateOptions对象说明
 
@@ -458,6 +460,8 @@ type Matrix4Transit = Matrix4Transit
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 20
 
