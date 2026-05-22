@@ -144,7 +144,7 @@
      Logger.info('Succeeded in reading the image data from the area.');
      // ...
    }).catch((error) => {
-     Logger.error('Failed to read the image data in the area. The error is: ' + String(error));
+Logger.error('Failed to read image data from the specified area. The error is: ' + String(error));
    })
    // 读取PositionArea.pixels缓冲区内的图像像素数据，并按照BGRA_8888像素格式将其写入PixelMap的指定区域，该区域由PositionArea.region指定。
    await this.pixelMap!.writePixels(area).then(() => {
