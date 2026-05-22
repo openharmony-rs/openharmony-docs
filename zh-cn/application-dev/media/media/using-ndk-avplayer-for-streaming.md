@@ -19,9 +19,9 @@
 
 ## 开发建议
 
-当前指导仅介绍如何实现流媒体资源播放，如需播放本地资源，请参考[使用AVPlayer播放视频](using-ndk-avplayer-for-video-playback.md)，如果在应用开发过程中涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
+当前指导仅介绍如何实现流媒体资源播放，如需播放本地资源，请参考[使用AVPlayer播放视频(C/C++)](using-ndk-avplayer-for-video-playback.md)。如果在应用开发过程中涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
  
-- 如果应用要实现后台播放或熄屏播放，需要[接入AVSession](../avsession/avsession-access-scene.md)和申请[长时任务(ArkTS)](../../task-management/continuous-task.md)，避免播放被系统强制中断。此功能仅适用ArkTS API，如需使用此功能请参考[使用AVPlayer播放视频(ArkTS)](video-playback.md)。
+- 如果应用要实现后台播放或熄屏播放，需要接入AVSession（请参考[应用接入AVSession场景介绍](../avsession/avsession-access-scene.md)和申请[长时任务(ArkTS)](../../task-management/continuous-task.md)），避免播放被系统强制中断。此功能仅适用ArkTS API，如需使用此功能请参考[使用AVPlayer播放视频(ArkTS)](video-playback.md)。
 - 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点变化](../audio/audio-playback-concurrency.md#处理音频焦点变化)事件），会存在被其他应用打断的情况，建议通过[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)主动监听音频打断事件[AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_INTERRUPT_EVENT，根据具体内容提示，做出相应的处理，避免出现应用状态与预期效果不一致的问题。
 - 面对设备同时连接多个音频输出设备的情况，建议通过[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)主动监听音频输出设备改变事件[AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE，并做出相应处理。
 - 应用在播放过程中，系统内部会因为网络数据下载失败、媒体服务死亡不可用等发生异常。建议通过[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置错误监听回调函数，根据不同错误类型，做出相应处理，避免出现播放异常。
@@ -76,7 +76,7 @@
    <!-- @[OH_AVPlayer_SetOnInfoCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   // 设置回调，监听信息。
+   // 设置回调，监听信息
    LOG("call OH_AVPlayer_SetPlayerOnInfoCallback");
    int32_t ret = OH_AVPlayer_SetOnInfoCallback(player, OHAVPlayerOnInfoCallback, nullptr);
    LOG("OH_AVPlayer_SetPlayerOnInfoCallback ret:%{public}d", ret);
@@ -108,10 +108,10 @@
    ``` C++
    void OHAVPlayerSetPlaybackStrategy(OH_AVPlayer *player)
    {
-       // 设置播放策略。
+       // 设置播放策略
        OH_AVPlaybackStrategy *myStrategy = OH_AVPlaybackStrategy_Create();
        double waterLine = 6.0;
-       OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); // 直播场景设置智能追帧。
+       OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); // 直播场景设置智能追帧
        int32_t ret = OH_AVPlayer_SetPlaybackStrategy(player, myStrategy);
        LOG("OH_AVPlayer_SetPlaybackStrategy ret:%{public}d", ret);
        OH_AVPlaybackStrategy_Destroy(myStrategy);
