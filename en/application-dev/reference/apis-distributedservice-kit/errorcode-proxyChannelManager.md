@@ -1,8 +1,8 @@
 # Proxy Channel Management Error Codes
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
-<!--Owner: @wangJE-->
-<!--Designer: @lee_jet520-->
+<!--Owner: @jzy_123-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @w_Machine_cc-->
 > **NOTE**
@@ -118,7 +118,7 @@ This error code is reported if an API call is restricted.
 
 **Possible Causes**
 
-The callers is not authorized to perform the operation.
+The caller is not authorized to perform the operation.
 
 **Solution**
 
