@@ -304,6 +304,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable | SmartLock
+
 **起始版本**：11
 
 ## ohos.permission.STORE_PERSISTENT_DATA
@@ -340,9 +342,13 @@
 
 允许应用访问导航信息服务。
 
+获取该权限后，应用可设置导航信息、处理其他应用发送的导航指令等。
+
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -367,6 +373,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 

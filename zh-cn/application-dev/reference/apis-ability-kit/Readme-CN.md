@@ -136,6 +136,7 @@
     - [@ohos.bundle.launcherBundleManager (launcherBundleManager模块)](js-apis-launcherBundleManager.md)
     - [@ohos.bundle.overlay (overlay模块)](js-apis-overlay.md)
     - [@ohos.bundle.shortcutManager (shortcutManager模块)](js-apis-shortcutManager.md)
+    - [@ohos.bundle.skillManager (skillManager模块)](js-apis-skillManager.md)
     <!--Del-->
     - [@ohos.bundle.appControl (appControl模块)(系统接口)](js-apis-appControl-sys.md)
     - [@ohos.bundle.appDomainVerify (应用域名校验)(系统接口)](js-apis-appDomainVerify-sys.md)
@@ -235,6 +236,7 @@
       - [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)
       - [Skill](js-apis-bundleManager-skill.md)
       - [shortcutInfo](js-apis-bundleManager-shortcutInfo.md)
+      - [skillInfo](js-apis-bundleManager-SkillInfo.md)
       <!--Del-->
       - [ApplicationInfo (系统接口)](js-apis-bundleManager-ApplicationInfo-sys.md)
       - [AppProvisionInfo (系统接口)](js-apis-bundleManager-AppProvisionInfo-sys.md)
