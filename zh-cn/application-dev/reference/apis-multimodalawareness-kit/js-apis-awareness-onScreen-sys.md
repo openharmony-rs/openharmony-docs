@@ -768,7 +768,7 @@ try {
 ```
 
 **InjectEvent 示例**：
- 	 
+ 
 ```ts
 import onScreen from "@ohos.multimodalAwareness.onScreen";
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
