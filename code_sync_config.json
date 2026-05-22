@@ -27699,13 +27699,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets",
-				"functions":[
-					{
-						"end_line":45,
-						"name":"lifecycle_ability_start",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/entrylifecycleability/EntryLifecycleAbility.ets",
@@ -53716,6 +53710,21 @@
 						"end_line":60,
 						"name":"signature_verification_with_ml_dsa_key_pair_ark_sync",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/application-models/application-lifecycle.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/ApplicationContextDemo/entry/src/main/ets/lifecycleability/LifecycleAbility.ets",
+				"functions":[
+					{
+						"end_line":45,
+						"name":"lifecycle_ability_start",
+						"start_line":15
 					}
 				]
 			}
