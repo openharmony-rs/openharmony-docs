@@ -49,7 +49,7 @@ ArkTS-Dyn: images(value: Array\<ImageFrameInfo>)
 
 ArkTS-Sta: images(value: Array\<ImageFrameInfo> | undefined)
 
-设置图片帧信息集合。不支持动态更新。
+设置图片帧信息集合。不支持动态更新，动态更新可能会导致不可预期的行为。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
