@@ -257,7 +257,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 
 // exclusionStr以字符串的形式列出不使用代理的主机名，以逗号为分隔符。
-let exclusionStr = "192.168,baidu.com";
+let exclusionStr = "192.168,test.com";
 // exclusionArray将exclusionStr以逗号分割为数组。
 let exclusionArray = exclusionStr.split(',');
 connection.setAppHttpProxy({
@@ -270,15 +270,15 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
 };
 // 发起一个HTTP请求。
-httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
-   console.info(`Result: ${data.result}`);
-   console.info(`code: ${data.responseCode}`);
-   console.info(`type: ${JSON.stringify(data.resultType)}`);
-   console.info(`header: ${JSON.stringify(data.header)}`);
-   console.info(`cookies: ${data.cookies}`); // 从API version 8开始支持cookie。
+   console.info('Succeeded to get Result: ' + JSON.stringify(data.result));
+   console.info('Succeeded to get code:' + JSON.stringify(data.responseCode));
+   console.info('Succeeded to get type:' + JSON.stringify(data.resultType));
+   console.info('Succeeded to get header: '+JSON.stringify(data.header));
+   console.info('Succeeded to get cookies:' + JSON.stringify(data.cookies)); // 从API version 8开始支持cookie。
   } else {
-   console.error(`error: ${JSON.stringify(err)}`);
+   console.error(`Failed to get request. Code:${err.code}, message:${err.message} `);
   }
 });
 ```
