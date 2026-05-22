@@ -36,7 +36,7 @@ The caller does not have the permission to access the URI or path.
 
 3. Check whether the URI is a concatenated path, which has no permission by default.
 
-### 13900002 File or Directory Not Exist
+### 13900002 File or Directory Not Found
 
 **Error Message**
 
@@ -70,7 +70,7 @@ The file or directory does not exist.
 
 5. When creating a file, check whether the parent directory of the file exists.
 
-### 13900003 Process Not Exist
+### 13900003 Process Not Found
 
 **Error Message**
 
@@ -138,7 +138,7 @@ Underlying I/O error: It is usually related to hardware or driver device faults.
 
 3. Check and update the driver.
 
-### 13900006 Device or Address Not Exist
+### 13900006 Device or Address Not Found
 
 **Error Message**
 
@@ -196,7 +196,7 @@ The file descriptor is abnormal.
 
 2. Check that the permissions on the file match the settings.
 
-### 13900009 Child Process Not Exist
+### 13900009 Child Process Not Found
 
 **Error Message**
 
@@ -348,7 +348,7 @@ The link between devices is incorrect.
 
 Check the devices and create the link correctly.
 
-### 13900017 Device Not Exist
+### 13900017 Device Not Found
 
 **Error Message**
 
@@ -1173,7 +1173,7 @@ The specified directory or node has been deleted.
 
 Check whether the specified directory or node exists.
 
-### 13600008 Object Not Exist
+### 13600008 Object Not Found
 
 **Error Message**
 
@@ -1607,7 +1607,7 @@ A task of the same type is running.
 
 Wait until the existing tasks of the same type are complete, or call **stop()** to stop the existing tasks and trigger a new task.
 
-### 22400007 Historical File Specified to Replace the Original File Not Exist
+### 22400007 Historical File Specified to Replace the Original File Not Found
 
 **Error Message**
 
