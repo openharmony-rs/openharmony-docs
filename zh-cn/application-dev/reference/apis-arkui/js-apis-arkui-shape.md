@@ -645,7 +645,7 @@ ArkTS-Sta: fill(color: ResourceColor): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Dyn: this | 返回当前对象。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ### position
 
