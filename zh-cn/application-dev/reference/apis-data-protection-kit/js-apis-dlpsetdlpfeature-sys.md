@@ -71,14 +71,12 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 
 async exampleFunction() {
-  try { // 设置DLP特性开关状态
-    let res: dlpSetDlpFeature.StatusInfoResult =
-      await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE); // 记录执行结果
-    console.info('setDlpFeature result: ', JSON.stringify(res));
-  } catch (err) { // 错误处理
-    console.error('setDlpFeature failed', (err as BusinessError).code, (err as BusinessError).message);
-  }
+  let statusInfoResult: dlpSetDlpFeature.StatusInfoResult =
+    await dlpSetDlpFeature.setDlpFeature(dlpSetDlpFeature.DlpFeatureStatus.ENABLED_FEATURE); // 记录执行结果
+  console.info('setDlpFeature result: ', JSON.stringify(statusInfoResult));
 }
+
+exampleFunction();
 ```
 
 ## StatusInfoResult
