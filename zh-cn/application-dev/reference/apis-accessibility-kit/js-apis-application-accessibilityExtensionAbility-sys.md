@@ -30,7 +30,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 ### 属性
 
@@ -58,7 +58,7 @@ onAccessibilityConnect(): void
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -97,7 +97,7 @@ onAccessibilityDisconnect(): void
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **错误码：**
 
@@ -122,7 +122,7 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
 
 ## AccessibilityExtensionAbility.onAccessibilityEventInfo
 
-onAccessibilityEventInfo(event: AccessibilityEventInfo): void;
+onAccessibilityEventInfo(event: AccessibilityEventInfo): void
 
 在应用和事件发生时回调该接口，根据事件信息处理业务逻辑。通常需要重写。
 
@@ -134,7 +134,7 @@ onAccessibilityEventInfo(event: AccessibilityEventInfo): void;
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

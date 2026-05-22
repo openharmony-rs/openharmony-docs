@@ -121,13 +121,13 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'setText'                 | 表示设置文本操作，需配置参数setText。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
 | 'delete'                  | 表示删除操作。当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
 | 'setSelection'            | 表示选择操作，需配置参数selectTextBegin、selectTextEnd、selectTextInForWard。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'common'            | 表示没有特定操作，用于主动聚焦、主动播报等场景。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
-| 'home'                | 表示返回桌面操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
-| 'back'                | 表示返回上一级操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
-| 'recentTask'          | 表示打开最近任务操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
-| 'notificationCenter'      | 表示打开通知栏操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
-| 'controlCenter'       | 表示打开控制中心操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
-| 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'common'<sup>12+</sup>            | 表示没有特定操作，用于主动聚焦、主动播报等场景。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'home'<sup>12+</sup>                | 表示返回桌面操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'back'<sup>12+</sup>                | 表示返回上一级操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'recentTask'<sup>12+</sup>          | 表示打开最近任务操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'notificationCenter'<sup>12+</sup>      | 表示打开通知栏操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'controlCenter'<sup>12+</sup>       | 表示打开控制中心操作。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'setCursorPosition'<sup>12+</sup>     | 表示设置光标位置操作，需配置参数offset。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
 | 'injectAction'          | 表示注入动作，需配置参数injectActionType。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 | 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 
@@ -253,9 +253,9 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 ### on('enableChange')<sup>(deprecated)</sup>
 
-on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
+on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 
-监听字幕配置启用状态变化事件，使用callback异步回调。
+监听字幕配置启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -358,9 +358,9 @@ struct Index {
 
 ### on('styleChange')<sup>(deprecated)</sup>
 
-on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void;
+on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 
-监听字幕风格变化事件，使用callback异步回调。
+监听字幕风格变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -463,9 +463,9 @@ struct Index {
 
 ### off('enableChange')<sup>(deprecated)</sup>
 
-off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void;
+off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听字幕配置启用状态变化事件，使用callback异步回调。
+取消监听字幕配置启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -576,9 +576,9 @@ struct Index {
 
 ### off('styleChange')<sup>(deprecated)</sup>
 
-off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void;
+off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
-取消字幕风格变化监听事件，使用callback异步回调。
+取消字幕风格变化监听事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -908,7 +908,7 @@ type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
 getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;
 
-查询辅助应用列表，使用Promise异步回调。
+查询辅助应用列表。使用Promise异步回调。
 
 > **说明：**
 >
@@ -953,7 +953,7 @@ accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibili
 
 getAbilityLists(abilityType: AbilityType, stateType: AbilityState,callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;): void
 
-查询辅助应用列表，使用callback异步回调。
+查询辅助应用列表。使用callback异步回调。
 
 > **说明：**
 >
@@ -995,7 +995,7 @@ accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, da
 
 getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState): Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;
 
-查询辅助应用列表，使用Promise异步回调。
+查询辅助应用列表。使用Promise异步回调。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1082,7 +1082,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 
 getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;): void
 
-查询辅助应用列表，使用callback异步回调。
+查询辅助应用列表。使用callback异步回调。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1330,7 +1330,7 @@ let captionsManager = accessibility.getCaptionsManager();
 
 on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听辅助应用启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+监听辅助应用启用状态变化事件。使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
 > **说明：**
 >
@@ -1432,7 +1432,7 @@ struct Index {
 
 on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听触摸浏览功能启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+监听触摸浏览功能启用状态变化事件。使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
 > **说明：**
 >
@@ -1531,7 +1531,7 @@ struct Index {
 
 on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听屏幕朗读功能启用状态变化事件，使用callback异步回调。
+监听屏幕朗读功能启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -1627,7 +1627,7 @@ struct Index {
 
 on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
-监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -1980,7 +1980,7 @@ struct Index {
 
 off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听辅助应用启用状态变化事件，使用callback异步回调。
+取消监听辅助应用启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2075,7 +2075,7 @@ struct Index {
 
 off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听触摸浏览启用状态变化事件，使用callback异步回调。
+取消监听触摸浏览启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2170,7 +2170,7 @@ struct Index {
 
 off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听屏幕朗读启用状态变化事件，使用callback异步回调。
+取消监听屏幕朗读启用状态变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2265,7 +2265,7 @@ struct Index {
 
 off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
-取消监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+取消监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2326,7 +2326,7 @@ struct Index {
 
 offTouchModeChange(callback?: Callback&lt;string&gt;): void
 
-取消监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+取消监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
@@ -2616,7 +2616,7 @@ struct Index {
 
 isOpenAccessibility(): Promise&lt;boolean&gt;
 
-判断是否启用了辅助应用，使用Promise异步回调。
+判断是否启用了辅助应用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2651,7 +2651,7 @@ accessibility.isOpenAccessibility().then((data: boolean) => {
 
 isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 
-判断是否启用了辅助应用，使用callback异步回调。
+判断是否启用了辅助应用。使用callback异步回调。
 
 > **说明：**
 >
@@ -2722,7 +2722,7 @@ let status: boolean = accessibility.isOpenAccessibilitySync();
 
 isOpenTouchGuide(): Promise&lt;boolean&gt;
 
-判断触摸浏览模式是否开启，使用Promise异步回调。
+判断触摸浏览模式是否开启。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2757,7 +2757,7 @@ accessibility.isOpenTouchGuide().then((data: boolean) => {
 
 isOpenTouchGuide(callback: AsyncCallback&lt;boolean&gt;): void
 
-判断触摸浏览模式是否开启，使用callback异步回调。
+判断触摸浏览模式是否开启。使用callback异步回调。
 
 > **说明：**
 >
@@ -3265,7 +3265,7 @@ struct Index {
 
 sendEvent(event: EventInfo): Promise&lt;void&gt;
 
-发送无障碍事件，使用Promise异步回调。
+发送无障碍事件。使用Promise异步回调。
 
 > **说明：**
 >
@@ -3312,7 +3312,7 @@ accessibility.sendEvent(eventInfo).then(() => {
 
 sendEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-发送无障碍事件，使用callback异步回调。
+发送无障碍事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -3356,7 +3356,7 @@ accessibility.sendEvent(eventInfo, (err: BusinessError) => {
 
 sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
-发送无障碍事件，使用Promise异步回调。
+发送无障碍事件。使用Promise异步回调。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -3411,7 +3411,7 @@ accessibility.sendAccessibilityEvent(eventInfo).then(() => {
 
 sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-发送无障碍事件，使用callback异步回调。
+发送无障碍事件。使用callback异步回调。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 

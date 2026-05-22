@@ -27,25 +27,25 @@ import { config } from '@kit.AccessibilityKit';
 
 | 名称                                 | 类型                                                                                     | 只读 | 可选 | 说明                         |
 |------------------------------------|--------------------------------------------------------------------------------------------| -------- | -------- |-----------------------------------------------------------|
-| highContrastText                   | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示高对比度文字功能启用状态。true表示已启用高对比度文字功能，false表示未启用高对比度文字功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20                   |
-| invertColor                        | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示颜色反转功能启用状态。true表示已启用颜色反转功能，false表示未启用颜色反转功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20       |
-| daltonizationState<sup>11+</sup>   | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示颜色滤镜功能启动状态。配合daltonizationColorFilter使用。true表示已启用颜色滤镜功能，false表示未启用颜色滤镜功能，默认值为false。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20   |
-| daltonizationColorFilter           | [Config](#config)&lt;[DaltonizationColorFilter](#daltonizationcolorfilter)&gt;             | 否 | 否 | 表示颜色滤镜功能配置。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20            |
-| contentTimeout                     | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<int>                | 否 | 否 | 表示内容显示建议时长配置。取值范围为0~5000，单位为毫秒。默认值为0。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20      |
-| animationOff                       | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示关闭动画功能启用状态。true表示已启用关闭动画功能，false表示未启用关闭动画功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20                 |
-| brightnessDiscount                 | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<double>             | 否 | 否 | 表示亮度折扣系统配置。取值范围为0~1.0。默认值为1.0。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20          |
-| mouseKey                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示鼠标键功能启用状态。true表示已启用鼠标键功能，false表示未启用鼠标键功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20                  |
-| mouseAutoClick                     | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<int>                | 否 | 否 | 表示鼠标自动点击操作的配置。取值范围0-5000，单位为毫秒，0表示不生效，其他值表示鼠标悬停相应的时长即触发自动点击操作，默认值为0，即默认不生效。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20     |
-| shortkey                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助扩展快捷键功能启用状态。true表示已启用辅助扩展快捷键功能，false表示未启用辅助扩展快捷键功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20               |
-| shortkeyTarget                     | [Config](#config)\<string>                                                                 | 否 | 否 | 表示辅助扩展快捷键的目标配置。取值为辅助应用的名称，格式为：'bundleName/abilityName'。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20  |
-| captions                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助字幕功能启用状态。true表示已启用辅助字幕功能，false表示未启用辅助字幕功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20          |
-| captionsStyle                      | [Config](#config)\<[accessibility.CaptionsStyle](js-apis-accessibility.md#captionsstyle8)> | 否 | 否 | 表示辅助字幕的配置。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：20            |
-| audioMono<sup>10+</sup>            | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示单声道音频的配置。true表示已启用单声道音频，false表示未启用单声道音频，默认值为false。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20               |
-| audioBalance<sup>10+</sup>         | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<double>             | 否 | 否 | 表示左右声道音量平衡的配置。取值范围为-1.0~1.0。默认值为0.0。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：20         |
-| shortkeyMultiTargets<sup>11+</sup> | [Config](#config)&lt;Array\<string>&gt;                                                    | 否 | 否 | 表示辅助扩展快捷键的列表配置。取值为辅助应用的名称，格式为：['bundleName/abilityName']。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20 |
-| clickResponseTime<sup>11+</sup>    | [Config](#config)&lt;[ClickResponseTime](#clickresponsetime11)&gt;                         | 否 | 否 | 表示点击持续时间功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20             |
-| ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20    |
-| repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：20          |
+| highContrastText                   | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示高对比度文字功能启用状态。true表示已启用高对比度文字功能，false表示未启用高对比度文字功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23                   |
+| invertColor                        | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示颜色反转功能启用状态。true表示已启用颜色反转功能，false表示未启用颜色反转功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23       |
+| daltonizationState<sup>11+</sup>   | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示颜色滤镜功能启动状态。配合daltonizationColorFilter使用。true表示已启用颜色滤镜功能，false表示未启用颜色滤镜功能，默认值为false。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23   |
+| daltonizationColorFilter           | [Config](#config)&lt;[DaltonizationColorFilter](#daltonizationcolorfilter)&gt;             | 否 | 否 | 表示颜色滤镜功能配置。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23            |
+| contentTimeout                     | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<int>                | 否 | 否 | 表示内容显示建议时长配置。取值范围为0~5000，单位为毫秒。默认值为0。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23      |
+| animationOff                       | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示关闭动画功能启用状态。true表示已启用关闭动画功能，false表示未启用关闭动画功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23                 |
+| brightnessDiscount                 | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<double>             | 否 | 否 | 表示亮度折扣系统配置。取值范围为0~1.0。默认值为1.0。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23          |
+| mouseKey                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示鼠标键功能启用状态。true表示已启用鼠标键功能，false表示未启用鼠标键功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23                  |
+| mouseAutoClick                     | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<int>                | 否 | 否 | 表示鼠标自动点击操作的配置。取值范围0-5000，单位为毫秒，0表示不生效，其他值表示鼠标悬停相应的时长即触发自动点击操作，默认值为0，即默认不生效。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23     |
+| shortkey                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助扩展快捷键功能启用状态。true表示已启用辅助扩展快捷键功能，false表示未启用辅助扩展快捷键功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23               |
+| shortkeyTarget                     | [Config](#config)\<string>                                                                 | 否 | 否 | 表示辅助扩展快捷键的目标配置。取值为辅助应用的名称，格式为：'bundleName/abilityName'。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23  |
+| captions                           | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示辅助字幕功能启用状态。true表示已启用辅助字幕功能，false表示未启用辅助字幕功能，默认值为false。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23          |
+| captionsStyle                      | [Config](#config)\<[accessibility.CaptionsStyle](js-apis-accessibility.md#captionsstyle8)> | 否 | 否 | 表示辅助字幕的配置。<br>**ArkTS-Dyn起始版本**：9<br>**ArkTS-Sta起始版本**：23            |
+| audioMono<sup>10+</sup>            | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示单声道音频的配置。true表示已启用单声道音频，false表示未启用单声道音频，默认值为false。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23               |
+| audioBalance<sup>10+</sup>         | ArkTS-Dyn: [Config](#config)\<number><br>ArkTS-Sta: [Config](#config)\<double>             | 否 | 否 | 表示左右声道音量平衡的配置。取值范围为-1.0~1.0。默认值为0.0。<br>**ArkTS-Dyn起始版本**：10<br>**ArkTS-Sta起始版本**：23         |
+| shortkeyMultiTargets<sup>11+</sup> | [Config](#config)&lt;Array\<string>&gt;                                                    | 否 | 否 | 表示辅助扩展快捷键的列表配置。取值为辅助应用的名称，格式为：['bundleName/abilityName']。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23 |
+| clickResponseTime<sup>11+</sup>    | [Config](#config)&lt;[ClickResponseTime](#clickresponsetime11)&gt;                         | 否 | 否 | 表示点击持续时间功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23             |
+| ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23    |
+| repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23          |
 
 ## enableAbility
 
@@ -61,7 +61,7 @@ enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): 
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -108,7 +108,7 @@ config.enableAbility(name, capability).then(() => {
 
 enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-启用辅助扩展，使用callback异步回调。
+启用辅助扩展。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -118,7 +118,7 @@ enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-a
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -256,7 +256,7 @@ disableAbility(name: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -300,7 +300,7 @@ config.disableAbility(name).then(() => {
 
 disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-关闭辅助扩展，使用callback异步回调。
+关闭辅助扩展。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -310,7 +310,7 @@ disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -359,10 +359,10 @@ let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name, (err: BusinessError | null) => {
   if (err?.code) {
-    console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in disable, name is ${name}`);
+  console.info(`Succeeded in disabling, name is ${name}`);
 });
 ```
 
@@ -370,7 +370,7 @@ config.disableAbility(name, (err: BusinessError | null) => {
 
 on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&gt;): void
 
-添加启用的辅助扩展的列表变化监听，使用callback异步回调。
+添加启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -378,7 +378,7 @@ on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&g
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onEnabledAccessibilityExtensionListChange](#onenabledaccessibilityextensionlistchange22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onEnabledAccessibilityExtensionListChange](#onenabledaccessibilityextensionlistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -411,7 +411,7 @@ config.on('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## onEnabledAccessibilityExtensionListChange<sup>22+</sup>
+## onEnabledAccessibilityExtensionListChange<sup>23+</sup>
 
 onEnabledAccessibilityExtensionListChange(callback: Callback&lt;void&gt;): void
 
@@ -427,7 +427,7 @@ onEnabledAccessibilityExtensionListChange(callback: Callback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -472,7 +472,7 @@ struct Index {
 
 off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void&gt;): void
 
-取消启用的辅助扩展的列表变化监听，使用callback异步回调。
+取消启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -480,7 +480,7 @@ off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offEnabledAccessibilityExtensionListChange](#offenabledaccessibilityextensionlistchange22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offEnabledAccessibilityExtensionListChange](#offenabledaccessibilityextensionlistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -513,7 +513,7 @@ config.off('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## offEnabledAccessibilityExtensionListChange
+## offEnabledAccessibilityExtensionListChange<sup>23+</sup>
 
 offEnabledAccessibilityExtensionListChange(callback?: Callback&lt;void&gt;): void
 
@@ -529,7 +529,7 @@ offEnabledAccessibilityExtensionListChange(callback?: Callback&lt;void&gt;): voi
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -578,7 +578,7 @@ struct Index {
 
 on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): void
 
-添加已安装的辅助扩展的列表变化监听，使用callback异步回调。
+添加已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -586,7 +586,7 @@ on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): vo
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onInstalledAccessibilityListChange](#oninstalledaccessibilitylistchange22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onInstalledAccessibilityListChange](#oninstalledaccessibilitylistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -619,7 +619,7 @@ config.on('installedAccessibilityListChange', () => {
 });
 ```
 
-## onInstalledAccessibilityListChange<sup>22+</sup>
+## onInstalledAccessibilityListChange<sup>23+</sup>
 
 onInstalledAccessibilityListChange(callback: Callback&lt;void&gt;): void
 
@@ -635,7 +635,7 @@ onInstalledAccessibilityListChange(callback: Callback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -680,7 +680,7 @@ struct Index {
 
 off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): void
 
-取消已安装的辅助扩展的列表变化监听，使用callback异步回调。
+取消已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -688,7 +688,7 @@ off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): 
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offInstalledAccessibilityListChange](#offinstalledaccessibilitylistchange22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offInstalledAccessibilityListChange](#offinstalledaccessibilitylistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -721,7 +721,7 @@ config.off('installedAccessibilityListChange', () => {
 });
 ```
 
-## offInstalledAccessibilityListChange<sup>22+</sup>
+## offInstalledAccessibilityListChange<sup>23+</sup>
 
 offInstalledAccessibilityListChange(callback?: Callback&lt;void&gt;): void
 
@@ -737,7 +737,7 @@ offInstalledAccessibilityListChange(callback?: Callback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1073,7 +1073,7 @@ set(value: T): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1116,7 +1116,7 @@ config.highContrastText.set(value).then(() => {
 
 set(value: T, callback: AsyncCallback&lt;void&gt;): void
 
-设置属性，使用callback异步回调。
+设置属性。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1126,7 +1126,7 @@ set(value: T, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1193,7 +1193,7 @@ get(): Promise&lt;T&gt;
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1227,7 +1227,7 @@ config.highContrastText.get().then((data: boolean) => {
 
 get(callback: AsyncCallback&lt;T&gt;): void
 
-获取属性，使用callback异步回调。
+获取属性。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1235,7 +1235,7 @@ get(callback: AsyncCallback&lt;T&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1287,7 +1287,7 @@ config.highContrastText.get((err: BusinessError | null, data: boolean | undefine
 
 on(callback: Callback&lt;T&gt;): void
 
-添加属性变化监听，使用callback异步回调。
+添加属性变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1297,7 +1297,7 @@ on(callback: Callback&lt;T&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1329,7 +1329,7 @@ config.highContrastText.on((data: boolean) => {
 
 off(callback?: Callback&lt;T&gt;): void
 
-取消属性变化监听，使用callback异步回调。
+取消属性变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1339,7 +1339,7 @@ off(callback?: Callback&lt;T&gt;): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1416,7 +1416,7 @@ type OnDisconnectCallback = () => void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 说明 |
 | -------- | -------- |
@@ -1435,7 +1435,7 @@ type OnDisconnectCallback = () => void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称          | 说明         |
 |-------------|------------|
@@ -1455,7 +1455,7 @@ type OnDisconnectCallback = () => void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称       | 说明    |
 |----------|-------|
