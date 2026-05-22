@@ -1221,6 +1221,10 @@ blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值       | 说明        |
 | ------- | --------- | --------- |
 | FAST           | 0 |  在目标图像上按顺序混合视图的内容。                        |
