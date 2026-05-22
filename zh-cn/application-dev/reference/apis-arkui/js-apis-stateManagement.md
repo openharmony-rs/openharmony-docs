@@ -2226,6 +2226,10 @@ struct PoolOwner {
   build() {
     Column() {
       ReusableChild()
+      Button('Check Pool')
+        .onClick(() => {
+          this.checkPool();
+        })
     }
   }
 }
@@ -2245,7 +2249,7 @@ struct PoolOwner {
 
 ### getReusableInfo
 
-getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
 
 检索此复用池中给定可复用组件类型的回收实例信息。
 
@@ -2268,7 +2272,7 @@ getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IR
 
 | 类型 | 说明 |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [IReusableInfo](#ireusableinfo) \| [IReusableInfo](#ireusableinfo)[] \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
 
 **示例：**
 
@@ -2339,7 +2343,7 @@ struct PoolOwner {
 
 ### preRender
 
-preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
+preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
 预创建@Reusable/@ReusableV2组件并将它们放入此复用池中。
 
@@ -2355,8 +2359,8 @@ preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
 
 | 参数名  | 类型                 | 必填 |  说明                            |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`n`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
-| n   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
+| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
+| times   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
 
 **返回值：**
 
