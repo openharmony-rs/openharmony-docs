@@ -24,6 +24,8 @@
 
 以下示例代码展示了两种将缓存文件上传至服务器的方法：
 
+ArkTS-Dyn示例：
+
 <!-- @[request_upload_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/upload/RequestUpload.ets)-->
 
 ``` TypeScript
@@ -141,6 +143,15 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[request_upload_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/upload/RequestUpload.ets)-->
+
+<!-- -->
+
+<!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/upload/RequestUpload.ets)--> 
+
+
 ## 下载网络资源文件至应用文件目录
 
 开发者可以使用上传下载模块（[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)）的下载接口将网络资源文件下载到应用文件目录。对已下载的网络资源应用文件，开发者可以使用基础文件IO接口（[ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）对其进行访问，使用方式与[应用文件访问](../../file-management/app-file-access.md)一致。文件下载过程使用系统服务代理完成，在api12中request.agent.create接口增加了设置代理地址参数，支持用户设置自定义代理地址。
@@ -152,6 +163,8 @@ async requestAgentUpload(fileName: string, callback: (progress: number, isSuccee
 > 使用上传下载模块，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
 
 以下示例代码展示了将网络资源文件下载到应用内部文件目录的两种方法（示例requestDownloadFile中的clearExistFile方法可点击代码块右下角链接查看）：
+
+ArkTS-Dyn示例：
 
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/RequestDownload.ets)-->
 
@@ -228,6 +241,14 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/RequestDownload.ets)-->
+
+<!-- -->
+
+<!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/RequestDownload.ets)-->
+
 ## 下载网络资源文件至用户文件
 开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
 
@@ -238,6 +259,8 @@ async requestAgentDownload(url: string, fileName: string, callback: (progress: n
 ### 下载文档类文件
 
 开发者可以通过调用[DocumentViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
+
+ArkTS-Dyn示例：
 
 <!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/DocumentDownload.ets)-->
 
@@ -306,9 +329,15 @@ async docFileAgentTask(url: string, fileName: string, callback: (progress: numbe
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[doc_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/userFile/DocumentDownload.ets)-->
+
 ### 下载音频类文件
 
 开发者可以通过调用[AudioViewPicker](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)的[save()](../../reference/apis-core-file-kit/js-apis-file-picker.md#save-3)接口保存文件并获得用户文件的uri，将此uri作为[Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10)的saveas字段值进行下载。
+
+ArkTS-Dyn示例：
 
 <!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/AudioDownload.ets)-->
 
@@ -370,6 +399,10 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/userFile/AudioDownload.ets)-->
+
 
 ### 下载图片或视频类文件
 
@@ -378,6 +411,8 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 需要权限：[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
 
 权限[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)是[权限机制中的基本概念](../../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)中system_basic(系统基础服务)级别的[受限开放权限](../../security/AccessToken/restricted-permissions.md)，normal等级的应用需要将自身的APL等级声明为system_basic及以上。授权方式为user_grant，需要[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
+ArkTS-Dyn示例：
 
 <!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)--> 
 
@@ -477,12 +512,18 @@ async mediaFileAgentTask(url: string, callback: (progress: number, isSuccess: bo
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/userFile/MediaDownload.ets)--> 
+
 
 ## 添加任务速度限制与超时限制
 
 开发者可以使用[ohos.request (上传下载)](../../reference/apis-basic-services-kit/js-apis-request.md)模块中的接口上传本地文件或下载网络资源文件。为方便对任务速度及时长进行限制，分别在API version 18中增加了[setMaxSpeed](../../reference/apis-basic-services-kit/js-apis-request.md#setmaxspeed18)接口，支持用户设置任务的最高速度限制；在API version 20的[request.agent.create](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10-1)接口中增加了最低限速及超时参数，支持用户自定义最低速度限制以及超时时间。
 
 以下是对下载任务进行速度限制与超时限制的方式的示例代码演示：
+
+ArkTS-Dyn示例：
 
 <!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/SpeedLimitDownload.ets)--> 
 
@@ -556,6 +597,9 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[speed_limit_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/SpeedLimitDownload.ets)--> 
 
 ## 添加网络配置
 
@@ -602,6 +646,8 @@ async speedLimitDownload(url: string, fileName: string, callback: (progress: num
 ### 示例代码
 
 以下示例代码展示了如何创建一个带有wantAgent功能的下载任务：
+
+ArkTS-Dyn示例：
 
 <!-- @[want_agent_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/WantAgentDownload.ets)-->
 
@@ -689,6 +735,10 @@ async wantAgentDownload(url: string, fileName: string, callback: (progress: numb
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[want_agent_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/WantAgentDownload.ets)-->
 
 
 ### 配置说明
