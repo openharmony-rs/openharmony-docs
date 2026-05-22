@@ -3797,3 +3797,85 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+### startSelfUIAbilityInChildProcess
+
+startSelfUIAbilityInChildProcess(want: Want, specifiedFlag: string): Promise\<void>
+
+在子进程中启动当前应用的UIAbility。使用Promise异步回调。子进程中的UIAbility支持加载Native模块。
+
+> **说明：**
+>
+> 子进程生命周期跟随父进程，父进程退出时子进程自动退出。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的必要信息。只支持[显式启动](../../application-models/explicit-implicit-want-mappings.md#显式want匹配原理)，不支持[隐式启动](../../application-models/explicit-implicit-want-mappings.md#隐式want匹配原理)。 |
+| specifiedFlag | string  | 是 | 开发者自定义的UIAbility标识。该标识不能与已启动的UIAbility标识相同，否则将返回错误。 <br>**说明：**<br>当通过该接口拉起启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility时，将不会触发[onAcceptWant](./js-apis-app-ability-abilityStage.md#onacceptwant)回调。 |
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 801 | Capability not supported. |
+| 16000001 | The specified ability does not exist. |
+| 16000008 | The crowdtesting application expires. |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000011 | The context does not exist.        |
+| 16000050 | Internal error. Connect to system service failed. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000122 | The target component is blocked by the system module and does not support startup. |
+| 16000123 | Implicit startup is not supported. |
+| 16000124 | Starting a remote UIAbility is not supported. |
+| 16000130 | The UIAbility not belong to caller. |
+| 16000131 | The UIAbility is already exist, can not start again. |
+
+**示例：**
+
+```ts
+'use static'
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onForeground(): void {
+    let want: Want = {
+      bundleName: 'com.example.myapplication',
+      abilityName: 'ChildProcessAbility'
+    };
+    let instanceFlag = 'instance1';
+    try {
+      this.context.startSelfUIAbilityInChildProcess(want, instanceFlag)
+        .then(() => {
+          console.info('startSelfUIAbilityInChildProcess succeed');
+        })
+        .catch((err: Error) => {
+          console.error(`startSelfUIAbilityInChildProcess failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`startSelfUIAbilityInChildProcess failed, code is ${code}, message is ${message}`);
+    }
+  }
+}
+```
