@@ -641,7 +641,7 @@ propertyId表示设置属性的ID信息，推荐使用GMT 0016-2023中定义的S
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ------- | ---- | ----------|
 | resourceId | string | 是   | 资源ID。可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。 |
-| propertyId | string | 是   | 设置操作的属性名称 |
+| propertyId | string | 是   | 设置操作的属性名称。 |
 | params  | [HuksExternalCryptoParam](#huksexternalcryptoparam)[] | 否   | 需要传递给[CryptoExtensionAbility](js-apis-CryptoExtensionAbility.md)的输入参数，包含与propertyId相关的操作参数。不传入时，不向Extension Ability传递额外参数。 |
 
 **返回值：**
