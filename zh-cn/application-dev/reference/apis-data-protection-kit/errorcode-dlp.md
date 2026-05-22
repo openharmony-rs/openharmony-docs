@@ -454,21 +454,23 @@ Parameter error.
 
 **处理步骤**
 
-请传入正确的参数。
+请检查以下参数：
+1. 确保策略格式符合要求。
+2. 确保参数在有效范围内。
 
 ## 19110002 文件敏感信息识别超时
 
 **错误信息**
 
-Sensitive file content identification timed out.
+The identification of sensitive information in the file times out. As a result, the identification process cannot be completed within the specified time.
 
 **错误描述**
 
-文件敏感信息识别超时。
+对文件进行敏感信息识别时超时，无法在规定时间内完成识别流程。
 
 **可能原因**
 
-文件敏感信息识别超时。
+文件敏感信息识别处理时间超过系统设定的超时阈值。可能原因包括：文件过大、文件内容复杂度高、系统资源占用较高等。
 
 **处理步骤**
 
@@ -478,11 +480,11 @@ Sensitive file content identification timed out.
 
 **错误信息**
 
-The file is not supported.
+The input file is not supported by the current operation. The possible cause is that the file path, type, or permission does not meet the requirements.
 
 **错误描述**
 
-文件不支持。
+传入的文件不被当前操作支持，可能是路径、类型或权限不符合要求。
 
 **可能原因**
 
@@ -494,17 +496,20 @@ The file is not supported.
 
 **处理步骤**
 
-请确认传入的文件是否正确。
+请检查以下内容：
+1. 确保文件路径存在且可访问。
+2. 确保文件类型受支持。
+3. 确保文件权限满足要求。
 
 ## 19110004 系统功能运行异常
 
 **错误信息**
 
-A system error has occurred.
+The internal function module of the system is running improperly. As a result, operations related to sensitive information identification cannot be performed properly.
 
 **错误描述**
 
-系统功能运行异常。
+系统内部功能模块运行异常，导致文件敏感信息识别相关操作无法正常执行。
 
 **可能原因**
 
@@ -518,4 +523,4 @@ A system error has occurred.
 
 **处理步骤**
 
-系统服务内部工作异常，请稍后重试，或者重启设备尝试。
+系统服务内部工作异常，请稍后重试或重启设备。
