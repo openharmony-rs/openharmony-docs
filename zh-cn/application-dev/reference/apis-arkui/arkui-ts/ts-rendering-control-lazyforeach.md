@@ -497,6 +497,7 @@ LazyForEach内存优化策略枚举。
 
 BasicDataSource代码见LazyForEach开发者指南末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#string类型数组的basicdatasource代码)。
 
+<!--code_no_check-->
 ```ts
 import { BasicDataSource } from './BasicDataSource';
 
