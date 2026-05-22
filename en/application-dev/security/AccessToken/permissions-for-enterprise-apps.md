@@ -585,6 +585,23 @@ With this permission, the application can update print status and printer inform
 
 **Valid since**: 24
 
+## ohos.permission.DLP_POLICY_MANAGER
+
+Allows common enterprise applications to manage transparent encryption/decryption policies through the data loss prevention capability.
+
+With this permission, an application can manage transparent encryption/decryption policies, such as specifying files of other applications that require transparent encryption/decryption and specifying encryption/decryption algorithms.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
 Allows an enterprise common application to obtain the list of all installed applications.
