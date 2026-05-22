@@ -855,7 +855,7 @@ CSS样式属性，设置文本是否可选中。
 
 ## W
 
-### Web Element Focus；网页内元素焦点
+### Web Element Focus；网页元素焦点
 
 当前网页界面上唯一的一个可交互元素。
 
