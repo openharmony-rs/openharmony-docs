@@ -701,15 +701,19 @@ console.info(`signal information size is:` + signalInfo.length);
 
 ## radio.isNrSupported<sup>(deprecated)</sup>
 
-isNrSupported\(\): boolean
+**ArkTS-Dyn**:isNrSupported\(\): boolean
 
 判断当前设备是否支持NR(New Radio)。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 > **说明：**
 >
 > 从 API version 7开始支持，从API version 9开始废弃。建议使用[isNRSupported](#radioisnrsupported9)替代。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+ **ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -726,7 +730,9 @@ console.info("Result: "+ result);
 
 ## radio.isNrSupported<sup>(deprecated)</sup>
 
-isNrSupported\(slotId: number\): boolean
+**ArkTS-Dyn**:isNrSupported\(slotId: number\): boolean
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 判断当前设备是否支持NR(New Radio)。
 
@@ -735,6 +741,8 @@ isNrSupported\(slotId: number\): boolean
 > 从 API version 8开始支持，从API version 9开始废弃。建议使用[isNRSupported](#radioisnrsupported9-1)替代。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+ **ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
