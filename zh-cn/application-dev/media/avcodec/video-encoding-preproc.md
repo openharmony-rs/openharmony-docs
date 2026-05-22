@@ -174,7 +174,7 @@ OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEI
 // OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0)
 
 // 执行配置。
-ret = OH_VideoEncoder_Configure(encoder, format);
+OH_AVErrCode ret = OH_VideoEncoder_Configure(encoder, format);
 if (ret != AV_ERR_OK) {
     // 错误处理。
     OH_AVFormat_Destroy(format);
@@ -188,7 +188,7 @@ OH_AVFormat_Destroy(format);
 ```cpp
 // 关键：只能通过主编码器句柄获取 Surface。
 OHNativeWindow *window = nullptr;
-ret = OH_VideoEncoder_GetSurface(encoder, &window);
+OH_AVErrCode ret = OH_VideoEncoder_GetSurface(encoder, &window);
 if (ret != AV_ERR_OK || window == nullptr) {
     // 异常处理
     return -1;

@@ -86,7 +86,7 @@
 
 ### 创建主编码器（Primary）
 
-```cpp
+```c++
 static OH_AVCodec *g_primary = nullptr;
 OH_AVErrCode ret = OH_VideoEncoder_CreatePrimaryWithPreproc(OH_AVCODEC_MIMETYPE_VIDEO_AVC, &g_primary);
 if (ret != AV_ERR_OK || g_primary == nullptr) {
@@ -103,7 +103,7 @@ if (ret != AV_ERR_OK || g_primary == nullptr) {
 
 编码器参数配置参考视频编码[Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
 
-```cpp
+```c++
 OH_AVFormat *format = OH_AVFormat_Create();
 
 // 基础编码参数（必填）。
@@ -132,7 +132,7 @@ OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DOWNSAMPLING_HEI
 // OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0);
 
 // 执行配置。
-ret = OH_VideoEncoder_Configure(encoder, format);
+OH_AVErrCode ret = OH_VideoEncoder_Configure(g_primary, format);
 if (ret != AV_ERR_OK) {
     // 错误处理。
     OH_AVFormat_Destroy(format);
@@ -148,11 +148,11 @@ OH_AVFormat_Destroy(format);
 
 ### 从主编码器派生创建副编码器（Secondary）
 
-```cpp
+```c++
 static OH_AVCodec *g_secondary = nullptr;
 
 // 必须在Primary成功创建之后才能创建Secondary。
-ret = OH_VideoEncoder_CreateSecondaryFromPrimary(g_primary, &g_secondary);
+OH_AVErrCode ret = OH_VideoEncoder_CreateSecondaryFromPrimary(g_primary, &g_secondary);
 if (ret != AV_ERR_OK || g_secondary == nullptr) {
     // 异常处理。
     return -1;
@@ -170,7 +170,7 @@ if (ret != AV_ERR_OK || g_secondary == nullptr) {
 
 ### 配置副编码器（含差异化前处理）
 
-```cpp
+```c++
 OH_AVFormat *secFmt = OH_AVFormat_Create();
 
 // 输入尺寸与 Primary 一致（共享同一输入源）。
@@ -200,7 +200,7 @@ OH_AVFormat_SetDoubleValue(secFmt,
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT, 1439);
 // OH_AVFormat_SetIntValue(secFmt, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_BOTTOM, 809);
 
-ret = OH_VideoEncoder_Configure(g_secondary, secFmt);
+OH_AVErrCode ret = OH_VideoEncoder_Configure(g_secondary, secFmt);
 OH_AVFormat_Destroy(secFmt);
 
 if (ret != AV_ERR_OK) {
@@ -209,12 +209,12 @@ if (ret != AV_ERR_OK) {
 }
 ```
 
-### 获取共享 Surface 并绑定数据源
+### 获取共享Surface并绑定数据源
 
-```cpp
+```c++
 // 关键规则：只能通过主编码器获取 Surface。
 OHNativeWindow *window = nullptr;
-ret = OH_VideoEncoder_GetSurface(g_primary, &window);
+OH_AVErrCode ret = OH_VideoEncoder_GetSurface(g_primary, &window);
 if (ret != AV_ERR_OK || window == nullptr) {
     // 异常处理。
     return -1;
@@ -232,8 +232,8 @@ if (ret != AV_ERR_OK || window == nullptr) {
 
 ### 完成编码器准备并启动两个编码器
 
-```cpp
-ret = OH_VideoEncoder_Prepare(g_primary);
+```c++
+OH_AVErrCode ret = OH_VideoEncoder_Prepare(g_primary);
 if (ret != AV_ERR_OK) {
     // 异常处理。
 }
@@ -254,9 +254,9 @@ if (ret != AV_ERR_OK) {
 
 ### 运行时动态调整（可选）
 
-可在运行时通过 `SetParameter` 动态修改 Secondary 的前处理参数：
+可在运行时通过 `SetParameter` 动态修改Secondary的前处理参数：
 
-```cpp
+```c++
 // 动态调整副编码器的降采样目标分辨率。
 void ChangeSecondaryResolution(int newWidth, int newHeight)
 {
@@ -288,7 +288,7 @@ void AdjustSecondaryDropRate(double targetFps)
 
 ### 停止与销毁
 
-```cpp
+```c++
 // 停止编码器。
 OH_VideoEncoder_Stop(g_secondary);
 OH_VideoEncoder_Stop(g_primary);
