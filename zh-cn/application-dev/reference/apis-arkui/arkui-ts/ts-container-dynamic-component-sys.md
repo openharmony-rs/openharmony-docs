@@ -233,8 +233,6 @@ struct Index {
 
 ArkTS-Sta示例：
 
-**组件使用方**
-
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
