@@ -1195,7 +1195,7 @@ offCellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
 ```ts
 
 observer.offCellularDataFlowChange((data: data.DataFlowType) => {
-    console.info("offCellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info('offCellularDataFlowChange, data->${JSON.stringify(data)}');
 });
 ```
 
@@ -1281,7 +1281,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.onCellularDataFlowChange(options, (data: data.DataFlowType) => {
-    console.info("onCellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info('onCellularDataFlowChange, data:->${JSON.stringify(data)}');
 });
 ``` 
 
