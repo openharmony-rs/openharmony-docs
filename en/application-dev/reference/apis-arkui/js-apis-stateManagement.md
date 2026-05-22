@@ -950,7 +950,7 @@ This API can be used together with [enableV2Compatibility](#enablev2compatibilit
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>The classes decorated with [@arkts.collections](../apis-arkts/arkts-apis-arkts-collections.md) and [@Sendable](../../arkts-utils/arkts-sendable.md) are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
+| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>[@arkts.collections](../apis-arkts/arkts-apis-arkts-collections.md) (ArkTS containers) and classes decorated with [@Sendable](../../arkts-utils/arkts-sendable.md) are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
 
 **Return value**
 

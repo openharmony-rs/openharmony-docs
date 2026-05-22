@@ -44,7 +44,7 @@ Checks whether the current device supports the PiP feature.
 
 **Since**: 18
 
-**Returns value**
+**Return value**
 
 | Type     | Description                                 |
 |----------|-------------------------------------|
