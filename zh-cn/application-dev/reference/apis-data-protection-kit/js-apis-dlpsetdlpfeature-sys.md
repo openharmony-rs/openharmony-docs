@@ -59,11 +59,11 @@ setDlpFeature(status: DlpFeatureStatus): Promise&lt;StatusInfoResult&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[DLP服务错误码](errorcode-dlp.md)。
 
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 202 | Non-system applications use system APIs. |
-| 19100001 | Invalid parameter value. |
-| 19100011 | The system ability works abnormally. |
+| 错误码ID | 错误信息 | 说明 |
+| -------- | -------- | -------- |
+| 202 | Non-system applications use system APIs. | 非系统应用使用了系统接口。请确认应用具有系统权限或申请相应系统权限。 |
+| 19100001 | Invalid parameter value. | 参数值无效。请检查status参数是否为有效的DlpFeatureStatus枚举值。 |
+| 19100011 | The system ability works abnormally. | 系统能力工作异常。请检查系统服务是否正常运行，或稍后重试。 |
 
 **示例：**
 
