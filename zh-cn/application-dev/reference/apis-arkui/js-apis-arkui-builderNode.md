@@ -13,7 +13,9 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 若传入的Builder的根节点为语法节点（[if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)…）、[Span](./arkui-ts/ts-basic-components-span.md)、[ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md)、[SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md)或自定义组件，将额外生成一个[FrameNode](./js-apis-arkui-frameNode.md)，在节点树中显示为“BuilderProxyNode”，这会导致树结构变化，影响某些测试的传递过程。详情参见[BuilderNode内的BuilderProxyNode导致树结构发生变化](../../ui/arkts-user-defined-arktsNode-builderNode.md#buildernode内的builderproxynode导致树结构发生变化)。
 >
 > - 如果在跨页面复用BuilderNode时显示异常，可参考[跨页面复用注意事项](../../ui/arkts-user-defined-arktsNode-builderNode.md#跨页面复用注意事项)。
@@ -1607,7 +1609,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 
 inheritFreezeOptions(enabled: boolean): void
 
-查询当前BuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则BuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
+设置当前BuilderNode对象是否继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则BuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
 
 > **说明：**
 >
@@ -3071,7 +3073,7 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 
 inheritFreezeOptions(enabled: boolean): void
 
-查询当前ReactiveBuilderNode对象是否设置为继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则ReactiveBuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
+设置当前ReactiveBuilderNode对象是否继承父组件中自定义组件的冻结策略。如果设置继承状态为false，则ReactiveBuilderNode对象的冻结策略为false。在这种情况下，节点在不活跃状态下不会被冻结。
 
 > **说明：**
 >
