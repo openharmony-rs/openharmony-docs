@@ -187,7 +187,7 @@ observer.on('networkStateChange', (data: observer.NetworkState) => {
 
 ## observer.onNetworkStateChange<sup>23+</sup>
 
-**ArkTS-Sta**: onNetworkStateChange\(callback: Callback\<NetworkState\>\): void
+onNetworkStateChange\(callback: Callback\<NetworkState\>\): void
 
 订阅网络状态变化事件，使用callback方式作为异步方法。
 
@@ -272,7 +272,7 @@ observer.on('networkStateChange', options, (data: observer.NetworkState) => {
 
 ## observer.onNetworkStateChange<sup>23+</sup>
 
-**ArkTS-Dyn**: onNetworkStateChange\(options: ObserverOptions, callback: Callback\<NetworkState\>\): void
+onNetworkStateChange\(options: ObserverOptions, callback: Callback\<NetworkState\>\): void
 
 订阅指定卡槽位的网络状态变化事件，使用callback方式作为异步方法。
 
@@ -362,7 +362,7 @@ observer.off('networkStateChange');
 
 ## observer.offNetworkStateChange
 
-**ArkTS-Dyn**: offNetworkStateChange\(callback?: Callback\<NetworkState\>\): void
+offNetworkStateChange\(callback?: Callback\<NetworkState\>\): void
 
 取消订阅网络状态变化事件，使用callback方式作为异步方法。
 
@@ -446,7 +446,7 @@ observer.on('signalInfoChange', (data: Array<radio.SignalInformation>) => {
 
 ## observer.onSignalInfoChange<sup>23+</sup>
 
-**ArkTS-Dyn**: onSignalInfoChange\(callback: Callback\<Array\<SignalInformation\>\>): void
+onSignalInfoChange\(callback: Callback\<Array\<SignalInformation\>\>): void
 
 订阅信号状态变化事件，使用callback方式作为异步方法。
 
@@ -529,7 +529,7 @@ observer.on('signalInfoChange', options, (data: Array<radio.SignalInformation>) 
 
 ## observer.onSignalInfoChange<sup>23+</sup>
 
-**ArkTS-Dyn**: onSignalInfoChange\(options: ObserverOptions, callback: Callback\<Array\<SignalInformation\>\>): void
+onSignalInfoChange\(options: ObserverOptions, callback: Callback\<Array\<SignalInformation\>\>): void
 
 订阅指定卡槽位的信号状态变化事件，使用callback方式作为异步方法。
 
@@ -620,7 +620,7 @@ observer.off('signalInfoChange');
 
 ## observer.offSignalInfoChange<sup>23+</sup>
 
-**ArkTS-Dyn**: offSignalInfoChange\(callback?: Callback\<Array\<SignalInformation\>\>): void
+offSignalInfoChange\(callback?: Callback\<Array\<SignalInformation\>\>): void
 
 取消订阅信号状态变化事件，使用callback方式作为异步方法。
 
