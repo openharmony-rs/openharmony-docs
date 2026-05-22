@@ -709,7 +709,7 @@ let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
     "comId": ["0"],
     "windowId": 0,
     "displayId": -1
-  }
+   }
 }
 
 try {
