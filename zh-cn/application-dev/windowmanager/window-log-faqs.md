@@ -14,7 +14,7 @@
 
 **典型日志信息**
 
-```
+```text
 Error Name: Error
 Error Message: [PiPWindow][stopPiP]msg: The window is not created or destroyed.
 Error code: 1300012
@@ -23,13 +23,16 @@ Error code: 1300012
 **分析定位及解决**
 
 1. 是否在画中画生命周期状态变化的监听函数回调状态为`ABOUT_TO_STOP`或`STOPPED`。
-答：在该状态时，代表画中画窗口即将停止或已经停止，此时不可调用`stopPiP`接口。
+
+- 答：在该状态时，代表画中画窗口即将停止或已经停止，此时不可调用`stopPiP`接口。
 
 2. 是否在`aboutToDisappear`生命周期方法中。
-答: 在该生命周期时，代表画中画窗口即将被销毁，此时调用`stopPiP`接口可能会导致错误。
+
+- 答: 在该生命周期时，代表画中画窗口即将被销毁，此时调用`stopPiP`接口可能会导致错误。
 
 3. 是否在`setTimeout`、`Promise`等异步回调中，且回调执行时窗口可能已销毁。
-答：在异步回调函数中，可能会存在画中画窗口已经被销毁，但未获取其状态，调用`stopPiP`接口会导致错误。
+
+- 答：在异步回调函数中，可能会存在画中画窗口已经被销毁，但未获取其状态，调用`stopPiP`接口会导致错误。
 
 
 
@@ -37,6 +40,7 @@ Error code: 1300012
 
 错误示例
 
+<!>
 ```ts
 // 错误：异步任务在窗口销毁后执行
 topPipTimer() {
