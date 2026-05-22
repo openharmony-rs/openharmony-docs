@@ -136,7 +136,7 @@ defaultCreator不是StorageDefaultCreator\<T\>类型。
 
 **处理步骤**
 
-确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect示例](./js-apis-stateManagement.md#globalconnect18)。
+确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect](./js-apis-stateManagement.md#globalconnect18)。
 
 ## 140105 PersistenceV2混用connect和globalConnect并使用相同的key
 
