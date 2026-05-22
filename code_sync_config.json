@@ -2688,5 +2688,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/using-audiorenderer-for-playback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets",
+				"functions":[
+					{
+						"end_line":193,
+						"name":"init_callback",
+						"start_line":52
+					}
+				]
+			}
+		]
 	}
 ]
