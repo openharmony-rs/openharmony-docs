@@ -809,7 +809,7 @@ ArkTS-Sta: isNRSupported\(slotId: int\): boolean
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | <br/>ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
