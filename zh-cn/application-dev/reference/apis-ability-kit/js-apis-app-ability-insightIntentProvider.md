@@ -10,9 +10,9 @@
 本模块为意图提供方提供管理能力，如主动发送指定意图的执行结果。
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -22,9 +22,11 @@ import { insightIntentProvider } from '@kit.AbilityKit';
 
 ## insightIntentProvider.sendExecuteResult
 
-sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Promise&lt;void&gt;
+ArkTS-Dyn: sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Promise&lt;void&gt;
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果，适用于[配置类意图](../../application-models/insight-intent-config-development.md)。使用Promise异步回调。<br/>
+ArkTS-Sta: sendExecuteResult(instanceId: int, result: insightIntent.ExecuteResult): Promise&lt;void&gt;
+
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果，适用于[配置类意图](../../application-models/insight-intent-config-development.md)。使用Promise异步回调。<br/>
 意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecuteInUIAbilityForegroundMode接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)或[onExecuteInUIExtensionAbility接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -33,12 +35,16 @@ sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Prom
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | [instanceId](./js-apis-app-ability-insightIntentContext.md#属性) | number | 是 | 意图实例唯一ID。 |
-  | result | [insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult) | 是 | 返回意图执行结果，表示本次意图执行返回给系统入口的数据。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| [instanceId](./js-apis-app-ability-insightIntentContext.md#属性) | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 意图实例唯一ID。 |
+| result | [insightIntent.ExecuteResult](js-apis-app-ability-insightIntent.md#executeresult) | 是 | 返回意图执行结果，表示本次意图执行返回给系统入口的数据。 |
 
 **返回值：**
 
@@ -56,6 +62,8 @@ sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Prom
 | 16000050      | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 设置意图执行结果延迟返回示例：
 ```ts
@@ -144,25 +152,132 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+
+设置意图执行结果延迟返回示例：
+
+```ts
+import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
+import { window, LocalStorage } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+export default class InsightIntentExecutorUI extends InsightIntentExecutor {
+  onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+    pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+    hilog.info(0x0000, 'testTag', 'onExecuteInUIAbilityForegroundMode %{public}s', name);
+    let result: insightIntent.ExecuteResult;
+    result = {
+      code: 0,
+      result: {
+        'message': 'Unsupported insight intent.',
+      } as Record<string, RecordData>,
+    };
+    try {
+      // 设置意图执行结果的返回形式为延迟返回
+      this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let msg = (error as BusinessError).message;
+      console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, error msg: ${msg}.`);
+    }
+    // 将意图实例的id通过localStorage传入目标页面中
+    let localStorageData: Record<string, number> = {
+      'insightId': this.context.instanceId,
+    };
+    let storage: LocalStorage = new LocalStorage(localStorageData);
+    // 通过pageLoader加载页面
+    pageLoader.loadContent('pages/UIAbilityIndex', storage, (error, data): void => {
+      let err = error as BusinessError;
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+      } else {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Succeeded in loading the content');
+      }
+    });
+    return result;
+  }
+}
+```
+
+主动发送意图执行结果示例：
+
+```ts
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { insightIntent, insightIntentProvider } from '@kit.AbilityKit';
+import { Entry, Column, Button, Component } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  insightId: int | undefined = this.storage?.get<int>('insightId');
+
+  build() {
+    Column() {
+      // 通过sendExecuteResult接口主动返回意图执行结果
+      Button('insightIntentProvider sendExecuteResult')
+        .onClick(() => {
+          this.sendExecuteResultFun();
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+
+  private sendExecuteResultFun() {
+    try {
+      let result: insightIntent.ExecuteResult;
+      result = {
+        code: 0,
+        result: {
+          'message': 'Unsupported insight intent.',
+        } as Record<string, RecordData>,
+      };
+
+      if (this.insightId == undefined) {
+        return;
+      }
+      insightIntentProvider.sendExecuteResult(this.insightId as int, result)
+        .then(() => {
+          console.info('testTag sendExecuteResult success');
+        })
+        .catch((error: BusinessError): void => {
+          console.error(`testTag sendExecuteResult fail1, error code: ${error.code}, error msg: ${error.message}.`);
+        });
+    } catch (e) {
+      let code = (e as BusinessError).code;
+      let msg = (e as BusinessError).message;
+      console.error(`testTag sendExecuteResult fail2, error code: ${code}, error msg: ${msg}`);
+    }
+  }
+}
+```
+
 ## insightIntentProvider.sendIntentResult
 
 sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;): Promise&lt;void&gt;
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)修饰的[装饰器类意图](../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。<br/>
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)修饰的[装饰器类意图](../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。<br/>
 意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecute接口](./js-apis-app-ability-InsightIntentEntryExecutor.md#onexecute)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | [instanceId](./js-apis-app-ability-insightIntentContext.md#属性) | number | 是 | 意图实例唯一ID。 |
-  | result | [insightIntent.IntentResult\<T>](js-apis-app-ability-insightIntent.md#intentresultt20) | 是 | 返回意图执行结果，表示本次意图执行返回给系统入口的数据。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| [instanceId](./js-apis-app-ability-insightIntentContext.md#属性) | number | 是 | 意图实例唯一ID。 |
+| result | [insightIntent.IntentResult\<T>](js-apis-app-ability-insightIntent.md#intentresultt20) | 是 | 返回意图执行结果，表示本次意图执行返回给系统入口的数据。 |
 
 **返回值：**
 
