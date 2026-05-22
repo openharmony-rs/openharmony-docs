@@ -909,7 +909,9 @@ onCellularDataConnectionStateChange(callback: Callback\<DataConnectionStateInfo\
 
 ```ts
 observer.onCellularDataConnectionStateChange((data: observer.DataConnectionStateInfo) => {
-console.info("Succeeded to get data:" + ${JSON.stringify(value)});
+observer.onCellularDataConnectionStateChange((data: observer.DataConnectionStateInfo) => {
+console.info("Succeeded to get data:" + JSON.stringify(data));
+});
 });
 ```
 
