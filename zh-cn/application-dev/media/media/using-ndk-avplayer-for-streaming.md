@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 11开始，支持使用[AVPlayer](../../reference/apis-media-kit/capi-avplayer.md)可以实现端到端播放流媒体资源。本开发指导将以完整地播放一个视频作为示例，向开发者讲解AVPlayer视频播放相关功能。
+从API version 11开始，支持使用[AVPlayer](../../reference/apis-media-kit/capi-avplayer.md)实现端到端播放流媒体资源。本开发指导将以完整地播放一个流媒体作为示例，向开发者讲解AVPlayer流媒体播放相关功能。
 
 播放的全流程包含：创建AVPlayer、设置回调监听函数、设置播放资源、设置播放参数（音量/倍速/焦点模式）、设置播放窗口、播放控制（播放/暂停/跳转/停止）、重置、销毁播放器实例。
 
