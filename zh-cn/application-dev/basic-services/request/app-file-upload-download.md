@@ -407,6 +407,53 @@ async requestDownloadFile(url: string, fileName: string, callback: (progress: in
 
 <!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/RequestDownload.ets)-->
 
+``` TypeScript
+async requestAgentDownload(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let filesDir: string = context.cacheDir;
+
+  let config: request.agent.Config = {
+    action: request.agent.Action.DOWNLOAD,
+    url: url,
+    saveas: fileName,
+    gauge: true,
+    overwrite: true,
+    network: request.agent.Network.WIFI,
+  };
+  try {
+    let task: request.agent.Task = await request.agent.create(context, config);
+      
+    // 注册回调
+    task.onProgress((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+    });
+    task.onCompleted((progress: request.agent.Progress): void => {
+      logger.info(TAG, `Request download completed`);
+      let filePath: string = filesDir + '/' + fileName;
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize: Long = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+      request.agent.remove(task.tid);
+    });
+    task.onFailed((progress: request.agent.Progress): void => {
+      logger.error(TAG, `Request download failed, ${JSON.stringify(progress)}`);
+      callback(100, false);
+      request.agent.remove(task.tid);
+    });
+      
+    // 启动任务
+    await task.start();
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `download agent task catch error, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
 ## 下载网络资源文件至用户文件
 开发者可以使用[ohos.request](../../reference/apis-basic-services-kit/js-apis-request.md)的[request.agent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentcreate10)接口下载网络资源文件到指定的用户文件目录。
 
