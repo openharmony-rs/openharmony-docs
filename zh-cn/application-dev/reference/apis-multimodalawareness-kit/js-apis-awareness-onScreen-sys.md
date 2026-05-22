@@ -396,7 +396,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
-| callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -552,7 +552,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：该接口仅支持 Phone、Tablet 以及 Car 设备（Car 设备下需满足 capList 为 UiTree），在其余设备类型中调用将触发 801 错误码。
 
 **参数**：
 
@@ -572,7 +572,7 @@ capture接口支持的capList能力列表
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
  
 **错误码**：
 
@@ -586,7 +586,7 @@ capture接口支持的capList能力列表
 | 34000001 | Service exception. |
 | 34000002 | The application or page is not supported. |
 
-**示例**：
+**UiImage 示例**：
 
 ```ts
 import onScreen from "@ohos.multimodalAwareness.onScreen";
@@ -603,6 +603,22 @@ try {
 }
 ```
 
+**UiTree 示例**：
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'UiTree',
+  ]
+}
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
+  console.error(`capture resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.info(`capture failed, error: ${err}`);
+}
+```
 ## onScreen.interact<sup>23+</sup>
 
 interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
@@ -613,7 +629,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：该接口仅支持 Phone、Tablet 以及 Car 设备（Car 设备下需满足 capList 为 InjectEvent），在其余设备类型中调用将触发 801 错误码。
 
 **参数**：
 
@@ -626,13 +642,13 @@ interact接口支持的capList能力列表
 |capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
-|InjectEvent|注入事件<br> **起始版本：** 26.0.0|
+|InjectEvent|注入事件，capList为InjectEvent场景，options为必传选项，否则注入失败抛出34000001错误码<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -646,7 +662,7 @@ interact接口支持的capList能力列表
 | 34000001 | Service exception. |
 | 34000002 | The application or page is not supported. |
 
-**示例**：
+**JumpContext 示例**：
 
 ```ts
 import onScreen from "@ohos.multimodalAwareness.onScreen";
@@ -673,7 +689,36 @@ try {
   console.info(`interact failed, error: ${err}`);
 }
 ```
+**InjectEvent 示例**：
 
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'InjectEvent',
+  ]
+}
+
+let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  "InjectEvent": {
+    "InjectEvent" : {
+      "componentType":'',
+      "action": 'back',
+      "params": {}
+    }
+    "comId": ["0"],
+    "windowId": 0,
+    "displayId": -1
+   }
+}
+
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
+  console.error(`interact resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.info(`interact failed, error: ${err}`);
+}
+```
 ## onScreen.apperceive<sup>23+</sup>
 
 apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
@@ -707,7 +752,7 @@ apperceive接口支持的groupId能力列表
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
