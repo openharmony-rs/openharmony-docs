@@ -76,7 +76,7 @@
    <!-- @[OH_AVPlayer_SetOnInfoCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   // 设置回调，监听信息
+   // 设置回调，监听信息。
    LOG("call OH_AVPlayer_SetPlayerOnInfoCallback");
    int32_t ret = OH_AVPlayer_SetOnInfoCallback(player, OHAVPlayerOnInfoCallback, nullptr);
    LOG("OH_AVPlayer_SetPlayerOnInfoCallback ret:%{public}d", ret);
@@ -108,10 +108,10 @@
    ``` C++
    void OHAVPlayerSetPlaybackStrategy(OH_AVPlayer *player)
    {
-       // 设置播放策略
+       // 设置播放策略。
        OH_AVPlaybackStrategy *myStrategy = OH_AVPlaybackStrategy_Create();
        double waterLine = 6.0;
-       OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); // 直播场景设置智能追帧
+       OH_AVPlaybackStrategy_SetThresholdForAutoQuickPlay(myStrategy, waterLine); // 直播场景设置智能追帧。
        int32_t ret = OH_AVPlayer_SetPlaybackStrategy(player, myStrategy);
        LOG("OH_AVPlayer_SetPlaybackStrategy ret:%{public}d", ret);
        OH_AVPlaybackStrategy_Destroy(myStrategy);
