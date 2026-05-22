@@ -12,6 +12,8 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 当前不支持在预览器中使用FrameNode节点。
 >
 > - FrameNode节点暂不支持拖拽。
@@ -19,6 +21,8 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 > - FrameNode对象不支持使用JSON序列化。
 >
 > - 在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](#framenode-1)对象的接口时，建议使用[UIContext](./arkts-apis-uicontext-uicontext.md)的[runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask)接口明确UI上下文，参考[执行绑定UI实例的闭包](../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
+>
+> - FrameNode的接口中，仅[Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt)类型的必选参数支持传入null或undefined。
 
 ## 导入模块
 
@@ -53,7 +57,7 @@ import { FrameNode, LayoutConstraint, ExpandMode, ChildrenCountMode, typeNode, N
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | attributeSetting  | boolean | 否   | 是   | FrameNode是否支持跨ArkTS语言进行属性设置。<br/>true表示支持跨ArkTS语言进行属性设置，false表示不支持跨ArkTS语言进行属性设置。<br/>默认值为false。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
-| treeOperating  | boolean | 否   | 是   | FrameNode是否支持跨ArkTS语言进行组件树操作。<br/>true表示支持跨ArkTS语言进行组件树操作，false表示不支持跨ArkTS语言进行组件树操作。<br/>默认值为false。<br/>**起始版本：** 26.0.0 <br/> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 当FrameNode启用了跨ArkTS语言进行组件树操作的选项后，支持该FrameNode跨ArkTS语言调用[addChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)、[insertChildAfter](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter)、[insertChildAt](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat)、[insertChildBefore](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore)和[removeChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)。|
+| treeOperating  | boolean | 否   | 是   | FrameNode是否支持跨ArkTS语言进行组件树操作。<br/>true表示支持跨ArkTS语言进行组件树操作，false表示不支持跨ArkTS语言进行组件树操作。<br/>默认值为false。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 当FrameNode启用了跨ArkTS语言进行组件树操作的选项后，支持该FrameNode跨ArkTS语言调用[addChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)、[insertChildAfter](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildafter)、[insertChildAt](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildat)、[insertChildBefore](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#insertchildbefore)和[removeChild](./capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)。|
 
 ## ExpandMode<sup>15+</sup>
 
@@ -82,11 +86,11 @@ import { FrameNode, LayoutConstraint, ExpandMode, ChildrenCountMode, typeNode, N
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 值 | 是否展开懒加载节点 | 说明 | 使用场景 |
-| -------- | -------- | -------- | -------- | -------- |
-| ALL_EXPAND | 0 | 是 | 展开模式。当遇到懒加载节点（如[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)）时，展开节点并返回所有子节点数量。 | 默认行为，向后兼容。 |
-| ONLY_EXPANDED | 1 | 否 | 计数已展开模式。不展开懒加载节点，只返回当前已展开的子节点数量。未展开的懒加载节点不包含在计数中。 | 快速查询，不触发懒加载。 |
-| ALL_NOT_EXPAND | 2 | 否 | 计数所有模式。不展开懒加载节点，但返回包含所有潜在子节点的数量（包括已展开和未展开的懒加载节点）。此模式提供潜在子节点总数而不触发展开操作。 | 获取总数但不展开，性能优化。 |
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ALL_EXPAND | 0 | 展开模式。当遇到懒加载节点（如[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)）时，展开节点并返回所有子节点数量。<br/>是否展开懒加载节点：是 <br/> 使用场景：需要展开并返回所有子节点数量的场景。 |
+| ONLY_EXPANDED | 1 | 计数已展开模式。不展开懒加载节点，只返回当前已展开的子节点数量。未展开的懒加载节点不包含在计数中。<br/> 是否展开懒加载节点：否 <br/> 使用场景：仅查询已展开子节点数量的场景。 |
+| ALL_NOT_EXPAND | 2 | 计数所有模式。不展开懒加载节点，但返回包含所有潜在子节点的数量（包括已展开和未展开的懒加载节点）。此模式提供潜在子节点总数而不触发展开操作。<br/> 是否展开懒加载节点：否 <br/> 使用场景：需要获取所有子节点数量的场景，与ALL_EXPAND相比，该模式不会展开子节点。 |
 
 ## InteractionEventBindingInfo<sup>19+</sup>
 
@@ -531,7 +535,7 @@ getChildrenCount(): number
 
 ### getChildrenCount
 
-getChildrenCount(countMode?: ChildrenCountMode): number
+getChildrenCount(countMode?: ChildrenCountMode): int
 
 根据指定的计数模式获取当前FrameNode的子节点数量。
 
@@ -551,7 +555,7 @@ getChildrenCount(countMode?: ChildrenCountMode): number
 **返回值：**
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| number | 根据计数模式返回当前FrameNode的子节点数量。 |
+| int | 根据计数模式返回的，当前FrameNode的子节点数量。 |
 
 **示例：**
 
@@ -601,7 +605,6 @@ class BasicDataSource implements IDataSource {
   notifyDataAdd(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataAdd(index);
-      // 写法2：listener.onDatasetChange([{type: DataOperationType.ADD, index: index}]);
     })
   }
 
@@ -609,7 +612,6 @@ class BasicDataSource implements IDataSource {
   notifyDataChange(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataChange(index);
-      // 写法2：listener.onDatasetChange([{type: DataOperationType.CHANGE, index: index}]);
     })
   }
 
@@ -617,7 +619,6 @@ class BasicDataSource implements IDataSource {
   notifyDataDelete(index: number): void {
     this.listeners.forEach(listener => {
       listener.onDataDelete(index);
-      // 写法2：listener.onDatasetChange([{type: DataOperationType.DELETE, index: index}]);
     })
   }
 
@@ -625,7 +626,6 @@ class BasicDataSource implements IDataSource {
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-      // 写法2：listener.onDatasetChange([{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     })
   }
 
@@ -721,12 +721,12 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
-  getChildCountALLExpand() {
+  getChildCountAllExpand() {
     const childCount = this.rootNode?.getChildrenCount(ChildrenCountMode.ALL_EXPAND);
     console.info(TEST_TAG + 'ALL_EXPAND, childCount=' + childCount);
   }
 
-  getChildCountOnlyExpand() {
+  getChildCountOnlyExpanded() {
     const childCount = this.rootNode?.getChildrenCount(ChildrenCountMode.ONLY_EXPANDED);
     console.info(TEST_TAG + 'ONLY_EXPANDED, childCount=' + childCount);
   }
@@ -762,12 +762,12 @@ struct Index {
         Button('getChildCount(ALL_EXPAND)')
           .width(300)
           .onClick(() => {
-            this.myNodeController.getChildCountALLExpand();
+            this.myNodeController.getChildCountAllExpand();
           })
         Button('getChildCount(ONLY_EXPANDED)')
           .width(300)
           .onClick(() => {
-            this.myNodeController.getChildCountOnlyExpand();
+            this.myNodeController.getChildCountOnlyExpanded();
           })
         Button('getChildCount(ALL_NOT_EXPAND)')
           .width(300)
@@ -1862,7 +1862,7 @@ LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点
 
 get gestureEvent(): UIGestureEvent
 
-获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过声明式手势接口（[绑定手势事件](./arkui-ts/ts-gesture-settings.md)）绑定的手势，两者同时设置了手势时，优先回调声明式接口设置的手势事件。
+获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过[绑定手势事件](./arkui-ts/ts-gesture-settings.md)绑定的手势，两者同时设置了手势时，优先回调绑定手势事件设置的手势事件。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
