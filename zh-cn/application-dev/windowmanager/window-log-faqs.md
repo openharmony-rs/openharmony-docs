@@ -70,14 +70,14 @@ total window num: 12
 | 字段 | 含义 | 说明 |
 |------|------|------|
 | WindowName | 窗口名称 | 应用窗口名称（如note0表示备忘录应用），系统窗口名称（如SystemUi_StatusBar表示系统状态栏）。 |
-| DisplayId | 显示设备ID | 0表示主屏幕，1表示副屏幕，多屏场景下会有多个DisplayId。 |
+| DisplayId | 显示设备ID | 屏幕设备的唯一标识，0表示主屏幕，多屏场景下可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕的DisplayId。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
 | Type | 窗口类型 | 应用窗口：1表示应用主窗口，其他值详见[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)。 |
 | Mode | 窗口模式 | 1表示全屏模式，102表示自由悬浮窗模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
 | Flag | 状态标志位 | 0：正常显示状态；1：隐藏状态。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
-| Orientation | 窗口方向 | 0：未指定方向；1：竖屏；2：横屏；8：受控自动旋转。其他值详见[Orientation](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)。 |
+| Orientation | 窗口方向 | 窗口的实际显示方向。0：竖屏；1：反向横屏；2：反向竖屏；3：横屏。该定义与[RotationChangeInfo](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)中的orientation一致，与设置旋转策略的[Orientation枚举](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义不同。 |
 | [ x y w h ] | 窗口矩形区域 | 窗口位置和大小，坐标以屏幕左顶点为原点。如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
 
 ### 查看获焦窗口
@@ -141,14 +141,14 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | 字段 | 含义 | 取值说明 |
 |------|------|----------|
 | WindowName | 窗口名称 | 应用自定义的窗口名称。如note0：表示为备忘录应用窗口；SystemUi_StatusBar：表示为系统状态栏窗口。 |
-| DisplayId | 显示设备ID | 显示设备标识。0：表示为主屏幕；1：表示为副屏幕。 |
+| DisplayId | 显示设备ID | 显示设备标识。0：表示为主屏幕；其他值：表示为其他屏幕。多屏场景可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕信息。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。 |
 | Type | 窗口类型 | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口；2000+：表示为系统窗口。 |
 | Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式；2：表示为分屏模式；102：表示为自由悬浮窗模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
 | Flag | 状态标志位 | 窗口状态标志。0：表示为正常显示状态；1：表示为隐藏状态。 |
-| Orientation | 窗口方向 | 窗口显示方向。0：表示为未指定方向；1：表示为竖屏；2：表示为反向竖屏；3：表示为横屏；4：表示为反向横屏。 |
-| IsStartingWindow | 是否是应用启动过渡窗口 | 应用启动过渡窗口标识。true：表示为应用启动过程中显示的过渡窗口（在应用首帧绘制完成前显示）；false：表示为正常应用窗口。 |
+| Orientation | 窗口方向 | 窗口的实际显示方向。0：表示为竖屏；1：表示为反向横屏；2：表示为反向竖屏；3：表示为横屏。该定义与[RotationChangeInfo](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)中的orientation一致，与设置旋转策略的[Orientation枚举](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义不同。 |
+| IsStartingWindow | 是否是启动页窗口 | 启动页标识。true：表示为[应用启动页](launch-page-overview.md)窗口；false：表示为正常应用窗口。启动页是应用冷启动时显示的首个页面，在应用内容加载完成前显示。 |
 | FirstFrameCallbackCalled | 首帧回调状态 | 首帧绘制状态。0：表示为首帧未完成；1：表示为首帧绘制回调已调用。 |
 | VisibilityState | 可见性状态 | 窗口可见性。0：表示为窗口可见；1：表示为窗口隐藏；2：表示为窗口部分可见。 |
 | Focusable | 是否可获焦 | 窗口获焦能力。true：表示为窗口可以获焦；false：表示为窗口不可获焦。 |
