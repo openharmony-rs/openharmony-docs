@@ -1155,7 +1155,7 @@ onCellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
 import { data } from '@kit.TelephonyKit';
 
 observer.onCellularDataFlowChange((data: data.DataFlowType) => {
-    console.info("onCellularDataFlowChange, data:" + JSON.stringify(data));
+    console.info('onCellularDataFlowChange, data->${JSON.stringify(data)}');
 });
 ```
 
