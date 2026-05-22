@@ -81,11 +81,10 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------- | --------------------------------------------------- |
-| 401      | Parameter error.                                    |
 | 10200012 | The Array's constructor cannot be directly invoked. |
 
 **示例：**
@@ -111,11 +110,10 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------- | --------------------------------------------------- |
-| 401      | Parameter error.                                    |
 | 10200012 | The Array's constructor cannot be directly invoked. |
 
 **示例：**
@@ -150,11 +148,10 @@ static create\<T>(arrayLength: number, initialValue: T): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The create method cannot be bound. <br/> 适用版本：12-17 |
 
 **示例：**
@@ -187,11 +184,10 @@ static from\<T>(arrayLike: ArrayLike\<T>): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The from method cannot be bound. <br/> 适用版本：12-17 |
 
 **示例：**
@@ -233,11 +229,10 @@ static from\<T>(iterable: Iterable\<T>): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The from method cannot be bound. <br/> 适用版本：12-17 |
 
 **示例：**
@@ -274,14 +269,6 @@ static from\<T>(arrayLike: ArrayLike\<T> | Iterable\<T>, mapFn: ArrayFromMapFn\<
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -313,14 +300,6 @@ static from\<U, T>(arrayLike: ArrayLike\<U> | Iterable\<U>, mapFn: ArrayFromMapF
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -351,14 +330,6 @@ static isArray(value: Object | undefined | null): boolean
 | --------- | ----------------------- |
 | boolean | 假如给定对象是ArkTS Array数组，返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -388,14 +359,6 @@ static of\<T>(...items: T\[]): Array\<T>
 | 类型      | 说明                    |
 | --------- | ----------------------- |
 | Array\<T> | 新的ArkTS Array实例。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -429,11 +392,10 @@ copyWithin(target: number, start: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------ |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
@@ -548,11 +510,10 @@ reduceRight(callbackFn: ArrayReduceCallback\<T, T, Array\<T>>): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.          |
 
@@ -589,11 +550,10 @@ reduceRight\<U = T>(callbackFn: ArrayReduceCallback\<U, T, Array\<T>>, initialVa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.          |
 
@@ -662,11 +622,10 @@ push(...items: T[]): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The push method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -701,11 +660,10 @@ join(separator?: string): string
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -805,11 +763,10 @@ unshift(...items: T[]): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The unshift method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -877,11 +834,10 @@ slice(start?: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error.    |
 
@@ -916,11 +872,10 @@ sort(compareFn?: (a: T, b: T) => number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -957,11 +912,10 @@ indexOf(searchElement: T, fromIndex?: number): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -990,11 +944,10 @@ forEach(callbackFn: (value: T, index: number, array: Array\<T>) => void): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -1031,11 +984,10 @@ map\<U>(callbackFn: (value: T, index: number, array: Array\<T>) => U): Array\<U>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1074,11 +1026,10 @@ filter(predicate: (value: T, index: number, array: Array\<T>) => boolean): Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1113,11 +1064,10 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1153,11 +1103,10 @@ reduce\<U>(callbackFn: (previousValue: U, currentValue: T, currentIndex: number,
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1194,11 +1143,10 @@ at(index: number): T | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error.               |
 | 10200011 | The at method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1336,11 +1284,10 @@ find(predicate: (value: T, index: number, obj: Array\<T>) => boolean): T | undef
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1376,11 +1323,10 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------ |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error.       |
 
@@ -1415,11 +1361,10 @@ findIndex(predicate: (value: T, index: number, obj: Array\<T>) => boolean): numb
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.        |
 
@@ -1456,11 +1401,10 @@ fill(value: T, start?: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1489,11 +1433,10 @@ shrinkTo(arrayLength: number): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The shrinkTo method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1526,11 +1469,10 @@ extendTo(arrayLength: number, initialValue: T): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The extendTo method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1568,11 +1510,10 @@ concat(...items: ConcatArray\<T>[]): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | ------- | -------- |
-| 401 |  Parameter error. Not a valid array. |
 | 10200011 | The concat method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1610,11 +1551,10 @@ splice(start: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The splice method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1722,11 +1662,10 @@ splice(start: number, deleteCount: number, ...items: T[]): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The splice method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1806,11 +1745,10 @@ for (let item of array) {
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                             |
 | ------- | ------------------------------------ |
-| 401 |        Parameter error.                  |
 | 10200001 | The value of index is out of range. |
 
 **示例：**

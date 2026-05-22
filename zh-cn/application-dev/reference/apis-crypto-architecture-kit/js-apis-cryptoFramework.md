@@ -32,7 +32,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                   |
 | ERR_RUNTIME_ERROR                     | 17620002 | 表示在ArkTS和C之间转换参数失败。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
-| ERR_INVALID_CALL          | 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。           |
+| ERR_INVALID_CALL          | 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。          |
 | ERR_CRYPTO_OPERATION                  | 17630001 | 调用三方算法库API出错。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
 
 ## DataBlob
@@ -1110,6 +1110,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1186,6 +1187,7 @@ getEncodedDer(format: string): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1233,6 +1235,7 @@ getEncodedPem(format: string): string
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1424,6 +1427,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1501,6 +1505,7 @@ getEncodedDer(format: string): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1550,6 +1555,7 @@ getEncodedPem(format: string): string
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2062,6 +2068,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2103,6 +2110,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2150,6 +2158,7 @@ generateSymKeySync(): SymKey
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
+| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2198,6 +2207,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | --------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                       |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                |
 
 **示例：**
 
@@ -2256,6 +2266,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | --------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                |
 
 **示例：**
 
@@ -2320,6 +2331,7 @@ convertKeySync(key: DataBlob): SymKey
 | -------- | --------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                       |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                     |
 
 **示例：**
 

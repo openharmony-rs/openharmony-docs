@@ -13,7 +13,7 @@
 
 以下权限的开放范围为普通应用，但需要通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
-normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
+normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式：**
 
@@ -94,7 +94,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-允许读取用户公共目录的图片或视频文件。
+允许读取用户本地公共目录的图片或视频文件。
 
 <!--RP27--><!--RP27End-->
 
@@ -103,6 +103,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：用户授权（user_grant）
 
 **起始版本**：9
+
+**变更信息**：在API版本9-24，申请该权限可访问云上和本地图片或视频文件；从API版本26.0.0开始，申请该权限仅能读取用户本地公共目录的图片或视频文件。
 
 ## ohos.permission.WRITE_IMAGEVIDEO
 
@@ -1233,6 +1235,26 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_SKILL
+    
+允许应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+<!--RP87--><!--RP87End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
 
 **起始版本**：26.0.0
 

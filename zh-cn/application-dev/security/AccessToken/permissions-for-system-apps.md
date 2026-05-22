@@ -341,6 +341,20 @@
 
 **起始版本**：11
 
+## ohos.permission.THEME_SKIN
+
+允许系统应用获取到skin目录下的换肤资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 允许应用读取无障碍配置信息。
@@ -4464,7 +4478,7 @@
 
 **是否支持证书授权**：true
 
-**起始版本**：18
+**起始版本**：16
 
 ## ohos.permission.GET_PAGE_INFO
 
@@ -6027,6 +6041,26 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+     
+允许系统应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
 ## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_VISION
 
 允许系统应用通过CLI命令查询无障碍视觉辅助功能状态。
@@ -6138,5 +6172,21 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone
+
+**起始版本**：20
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+允许系统应用使用通行密钥服务的管理凭据功能。
+
+获取此权限后，应用可获取、删除通行密钥服务的全量凭据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
