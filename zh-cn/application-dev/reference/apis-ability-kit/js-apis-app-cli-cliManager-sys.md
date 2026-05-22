@@ -1,4 +1,4 @@
-# @ohos.app.number.cliManager (CLI工具管理)(系统接口)
+# @ohos.app.cli.cliManager (CLI工具管理)(系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->

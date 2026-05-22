@@ -50,7 +50,7 @@
    ![component-startup-rules-inner-device-sys](figures/component-startup-rules-inner-device-sys.png)
 
 
-   通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口跨应用启动UIAbility组件时，需要具备两个条件：1.申请ohos.permission.ABILITY_BACKGROUND_COMMUNICATION（下文简称CALL）权限，权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)；2.目标UIAbility组件的exported为true，若申请ohos.permission.START_INVISIBLE_ABILITY（下文简称INVISIBLE）权限，可不受该条规则约束，权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+   通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口跨应用启动UIAbility组件时，需要具备两个条件：1.申请ohos.permission.ABILITY_BACKGROUND_COMMUNICATION（下文简称CALL）权限，权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)；2.目标UIAbility组件的exported为true（若申请INVISIBLE权限，可不受该条规则约束，权限的申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)）。
 
    | 应用状态 | 组件可见性     | 权限要求                                  |
    | -------- | -------------- | ----------------------------------------- |
