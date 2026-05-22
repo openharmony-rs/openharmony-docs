@@ -354,7 +354,7 @@ getDefaultHttpProxy(): Promise\<HttpProxy>
 | 2100002  | Failed to connect to the service.            |
 | 2100003  | System internal error.                       |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -429,7 +429,7 @@ getAppNet(): Promise\<NetHandle>
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -523,7 +523,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
@@ -592,7 +592,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 | --------- | ------------------------------------------------------------ | ---- | ---------------- |
 | netHandle | [NetHandle](#nethandle)                                      | 是   | 网络句柄。 |
 
->**说明：**
+>**说明：111**
 >
 > 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
 > 
@@ -626,7 +626,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
@@ -1239,7 +1239,7 @@ hasDefaultNet(callback: AsyncCallback\<boolean>): void
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1355,7 +1355,7 @@ reportNetConnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;): v
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1632,7 +1632,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.         |
 
-**示例：**
+**示例：111**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2828,7 +2828,7 @@ register(callback: AsyncCallback\<void>): void
 | 2101008 | The callback already exists.                         |
 | 2101022 | The number of requests exceeded the maximum allowed. |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2867,7 +2867,7 @@ unregister(callback: AsyncCallback\<void>): void
 | 2100003 | System internal error.            |
 | 2101007 | The callback does not exist.      |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2896,7 +2896,7 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 | type     | string                             | 是   | 订阅事件，固定为'netAvailable'。<br>netAvailable：数据网络可用事件。 |
 | callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，返回数据网络句柄。|
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2936,7 +2936,7 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 | type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
 | callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2978,7 +2978,7 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 | type     | string                                                       | 是   | 订阅事件，固定为'netCapabilitiesChange'。<br/>netCapabilitiesChange：网络能力变化事件。 |
 | callback | Callback<[NetCapabilityInfo](#netcapabilityinfo10)>          | 是   | 回调函数，返回数据网络句柄(netHandle)和网络的能力信息(netCap)。|
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3018,7 +3018,7 @@ on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPrope
 | type     | string                                                       | 是   | 订阅事件，固定为'netConnectionPropertiesChange'。<br/>netConnectionPropertiesChange：网络连接信息变化事件。 |
 | callback | Callback<[NetConnectionPropertyInfo](#netconnectionpropertyinfo11)> | 是   | 回调函数，获取网络连接属性信息。|
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3060,7 +3060,7 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 | type     | string                             | 是   | 订阅事件，固定为'netLost'。<br/>netLost：网络严重中断或正常断开事件。 |
 | callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，数据网络句柄(netHandle)。|
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3102,7 +3102,7 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 | type     | string          | 是   | 订阅事件，固定为'netUnavailable'。<br/>netUnavailable：网络不可用事件。 |
 | callback | Callback\<void> | 是   | 回调函数，无返回结果。|
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -3724,7 +3724,7 @@ SOCKS5代理配置信息。
 | netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
 | bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
