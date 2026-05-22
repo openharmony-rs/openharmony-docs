@@ -225,7 +225,7 @@ constructor(options?: RectShapeOptions | RoundRectShapeOptions)
 | ----------- | -------------------------------------------------- | ---- | -------------------------------------------- |
 | options | [RectShapeOptions](#rectshapeoptions) &nbsp;\|&nbsp; [RoundRectShapeOptions](#roundrectshapeoptions) | 否 | 矩形形状参数。 |
 
-### radiusWidth<sup>12+</sup>
+### radiusWidth
 
 ArkTS-Dyn: radiusWidth(rWidth: number | string): RectShape
 
