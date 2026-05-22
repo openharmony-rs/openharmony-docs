@@ -1129,7 +1129,7 @@ observer.on('simStateChange', (data: observer.SimStateData) => {
 ```
 
 
-## observer.on('simStateChange')<sup>11+</sup>
+## observer.on('simStateChange')<sup>7+</sup>
 
 on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimStateData\>\): void
 
