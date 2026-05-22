@@ -2740,6 +2740,8 @@
 
 **起始版本**：11
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
 允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
@@ -3935,6 +3937,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -6218,3 +6222,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
+
+## ohos.permission.TV_ACCESSORY_MANAGE
+
+允许系统应用查询与设置智慧屏配件信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0

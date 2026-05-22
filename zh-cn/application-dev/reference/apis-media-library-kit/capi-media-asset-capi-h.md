@@ -393,7 +393,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, u
 
 **描述**
 
-获取图像的旋转角度，单位为度。
+获取图像的旋转角度，单位为度（°）。
 
 **起始版本：** 12
 
@@ -403,7 +403,7 @@ MediaLibrary_ErrorCode OH_MediaAsset_GetOrientation(OH_MediaAsset* mediaAsset, u
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)* mediaAsset | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md)实例。 |
-| uint32_t* orientation | 图像的旋转角度，单位为度。 |
+| uint32_t* orientation | 图像的旋转角度，单位为度（°）。 |
 
 **返回：**
 

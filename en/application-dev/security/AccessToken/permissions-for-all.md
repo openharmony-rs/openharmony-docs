@@ -304,6 +304,8 @@ Allows an application that has accessed the cloud to obtain its device-cloud syn
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables | smart locks
+
 **Valid since**: 11
 
 ## ohos.permission.STORE_PERSISTENT_DATA
@@ -340,9 +342,13 @@ Allows an application to read the login status of user accounts.
 
 Allows an application to access the navigation service.
 
+With this permission, the application can set navigation information and process navigation instructions sent from other applications
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 
@@ -367,6 +373,8 @@ With this permission, the application can obtain the connection information betw
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 
