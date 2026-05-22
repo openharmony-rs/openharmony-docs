@@ -832,7 +832,7 @@ ArkTS-Sta示例：
 
 ```ts
 let slotId: int = 0;
-let result: boolean = radio.isNRSupported(int);
+let result: boolean = radio.isNRSupported(slotId);
 console.info("Result: "+ result);
 ```
 
