@@ -367,6 +367,42 @@ ArkTS-Sta示例：
 
 <!-- @[request_download_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/RequestDownload.ets)-->
 
+``` TypeScript
+async requestDownloadFile(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let filesDir: string = context.cacheDir;
+  let filePath: string = filesDir + '/' + fileName;
+  this.clearExistFile(filePath);
+  try {
+    let downloadTask: request.DownloadTask = await request.downloadFile(context, {
+      url: url,
+      filePath: filePath,
+    });
+    downloadTask.onProgress((receivedSize: Long, totalSize: Long): void => {
+      let progress: int = totalSize > 0 ? Long.toInt(receivedSize * 100 / totalSize) : 0;
+      logger.info(TAG, `download progress=${progress}%`);
+    });
+    downloadTask.onComplete(() => {
+      // 获取文件状态信息，其中包含大小
+      let fileStat = fileIo.statSync(filePath);
+      let fileSize: Long = fileStat.size;
+      logger.info(TAG, `download complete, file= ${url}, size=${fileSize}, progress = 100%`);
+      callback(100, true);
+    });
+    downloadTask.onFail((err: int): void => {
+      logger.error(TAG, `download failed, err=${err}`);
+      callback(100, false);
+    });
+  } catch (error) {
+    let err: Error = error;
+    logger.error(TAG, `downloadFile catch error, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
 <!-- -->
 
 <!-- @[download_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/RequestDownload.ets)-->
