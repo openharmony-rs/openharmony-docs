@@ -159,8 +159,7 @@ ArkTS-Sta: getDefaultVoiceSlotId(): Promise\<int\>
 
 | 类型              | 说明                                    |
 | ----------------- | --------------------------------------- |
-| ArkTS-Dyn:Promise\<number\> <br/> ArkTS-Sta:Promise\<int\>
-| 以Promise形式返回默认语音业务的卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
+| ArkTS-Dyn: Promise\<number\> <br/> ArkTS-Sta: Promise\<int\>| 以Promise形式返回默认语音业务的卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
 
 **示例：**
 
