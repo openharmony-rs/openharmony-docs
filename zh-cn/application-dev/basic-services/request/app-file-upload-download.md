@@ -672,6 +672,69 @@ ArkTS-Sta示例：
 
 <!-- @[audio_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/download/userFile/AudioDownload.ets)-->
 
+``` TypeScript
+async audioFileAgentTask(url: string, fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 创建文件管理器选项实例。
+  const audioSaveOptions: picker.AudioSaveOptions = {
+    newFileNames: [fileName]
+  };
+
+  let uri: string = '';
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  const audioViewPicker = new picker.AudioViewPicker(context);
+  try {
+    let audioSelectResult: string[] = await audioViewPicker.save(audioSaveOptions);
+    uri = audioSelectResult[0];
+    logger.info(TAG, `AudioViewPicker.save to file succeed and uri is ${uri}`);
+      
+    if (uri != '') {
+      let config: request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: url,
+        // saveas字段是AudioViewPicker保存的文件的uri
+        saveas: uri,
+        gauge: true,
+        // overwrite字段必须为true
+        overwrite: true,
+        network: request.agent.Network.WIFI,
+        // mode字段必须为request.agent.Mode.FOREGROUND
+        mode: request.agent.Mode.FOREGROUND,
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(context, config);
+          
+        // 注册回调
+        task.onProgress((progress: request.agent.Progress): void => {
+          logger.info(TAG, `Request download status ${progress.state}, downloaded ${progress.processed}`);
+        });
+        task.onCompleted((progress: request.agent.Progress): void => {
+          logger.info(TAG, `Request download completed, ${JSON.stringify(progress)}`);
+          callback(100, true);
+          request.agent.remove(task.tid);
+        });
+        task.onFailed((progress: request.agent.Progress): void => {
+          logger.error(TAG, `Request download failed, ${JSON.stringify(progress)}`);
+          callback(100, false);
+          request.agent.remove(task.tid);
+        });
+          
+        // 启动任务
+        await task.start();
+      } catch (error) {
+        let err: Error = error;
+        logger.error(TAG, `Failed to create a download task, message=${err.message}`);
+        callback(100, false);
+      }
+    }
+  } catch (err) {
+    let error: Error = err;
+    logger.error(TAG, `Invoke audioViewPicker.save failed, message is ${error.message}`);
+    callback(100, false);
+  }
+}
+```
+
 
 ### 下载图片或视频类文件
 
