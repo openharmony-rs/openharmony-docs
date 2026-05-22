@@ -550,8 +550,8 @@ constructor(value: double, total: double, color: ResourceColor)
 
 **参数：**
 
-| 参数名 | 类型    | 必填 | 说明        
-| -------- | ---------- | ------ | ------ | 
+| 参数名 | 类型    | 必填 | 说明        |
+| -------- | ---------- | ------ | ------ |
 | value  | double                                     | 是 | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
 | total  | double                                     | 是 | 进度遮罩的最大值。<br/> 取值范围：[0.0, +∞) |
 | color  | [ResourceColor](ts-types.md#resourcecolor) | 是 | 进度遮罩的颜色。   |
