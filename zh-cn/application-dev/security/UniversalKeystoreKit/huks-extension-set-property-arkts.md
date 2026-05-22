@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.0开始，huksExternalCrypto提供属性设置功能接口。外部密钥管理扩展的set-type操作支持调用自定义接口，自定义接口必须在provider中注册。应用可通过setProperty接口设置指定资源的属性值，推荐使用GMT 0016-2023中定义的SKF接口名作为属性ID。具体的场景介绍及规格，请参考[通用查询介绍及规格](huks-ukey-general-query-overview.md)。
+从API版本26.0.0开始，huksExternalCrypto提供设置属性的功能接口。外部密钥管理扩展的set-type操作支持调用自定义接口，自定义接口必须在provider中注册。应用可通过setProperty接口设置指定资源的属性值，推荐使用GMT 0016-2023中定义的SKF接口名作为属性ID。具体的场景介绍及规格，请参考[通用查询介绍及规格](huks-ukey-general-query-overview.md)。
 
 ## 开发步骤
 
