@@ -79,7 +79,7 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 
 | ID| Error Message    |
 | -------- | ------------ |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
 
@@ -108,7 +108,7 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 | ID| Error Message    |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 ```ts
 import { AnimatedDrawableDescriptor, DrawableDescriptor, DrawableDescriptorLoadedResult, AnimationOptions } from '@kit.ArkUI';
@@ -147,7 +147,7 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 | ID| Error Message    |
 | -------- | ------------ |
 | 111001   | resource loading failed. |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 ```ts
 import {
@@ -177,6 +177,8 @@ Releases the resource held by **DrawableDescriptor**. After the **release** API 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Example**
 
@@ -218,6 +220,8 @@ Checks whether **DrawableDescriptor** is released. If **true** is returned, the 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -429,7 +433,7 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 
 | ID| Error Message    |
 | -------- | ------------ |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
 ```ts
@@ -496,7 +500,7 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 
 | ID| Error Message    |
 | -------- | ------------ |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
 ```ts
@@ -558,7 +562,7 @@ For details about the error codes, see [DrawableDescriptor Error Codes](errorcod
 
 | ID| Error Message    |
 | -------- | ------------ |
-| 111002 | The native memory referenced by the drawableDescriptor has been released. |
+| 111002 | The native memory referenced by the drawableDescriptor has been released.<br>Applicable versions: 26.0.0+|
 
 **Example**
 ```ts
