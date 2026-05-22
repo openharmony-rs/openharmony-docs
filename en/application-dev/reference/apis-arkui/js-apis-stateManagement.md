@@ -1513,7 +1513,7 @@ Defines a synchronous callback.
 
 ## MonitorOptions<sup>20+</sup>
 
-Defines the optional parameter of [addMonitor](#addmonitor20), which is used to configure the callback type.
+Defines the optional parameters of [addMonitor](#addmonitor20), which are used to configure the callback type.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
