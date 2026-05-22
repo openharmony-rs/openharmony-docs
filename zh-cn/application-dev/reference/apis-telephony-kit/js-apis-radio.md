@@ -825,7 +825,7 @@ ArkTS-Dyn示例：
 
 ```ts
 let slotId: number = 0;
-let result: boolean = radio.isNRSupported(number);
+let result: boolean = radio.isNRSupported(slotId);
 console.info("Result: "+ result);
 ```
 ArkTS-Sta示例：
