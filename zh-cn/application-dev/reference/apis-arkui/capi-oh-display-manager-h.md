@@ -1019,7 +1019,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 获取屏幕的位置信息，即相对于原点（主屏左上角）的x坐标和y坐标。
 
-仅当屏幕当前的显示模式为DISPLAY_SOURCE_MODE_MAIN或DISPLAY_SOURCE_MODE_EXTEND时返回实际值，其余默认返回0。
+仅当屏幕当前的显示模式为DISPLAY_SOURCE_MODE_MAIN或DISPLAY_SOURCE_MODE_EXTEND时返回实际值。
 
 屏幕的显示模式可通过[OH_NativeDisplayManager_GetDisplaySourceMode()](#oh_nativedisplaymanager_getdisplaysourcemode)接口获取。
 
