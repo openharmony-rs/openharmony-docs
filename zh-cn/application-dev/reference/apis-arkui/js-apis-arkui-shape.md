@@ -51,11 +51,15 @@ constructor(options?: ShapeSize)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
+| 参数名 | 类型 | 必填 | 说明 |
 | --------- | ------| ------- | ------- | --------|
-| options | [ShapeSize](#shapesize) | 否 | 是  | 形状的大小。 |
+| options | [ShapeSize](#shapesize) | 否 | 形状的大小。 |
 
 ## EllipseShape
 
