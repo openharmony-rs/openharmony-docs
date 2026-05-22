@@ -30,7 +30,7 @@
 | 场景 | 主编码器（Primary） | 副编码器（Secondary） | 用途说明 |
 |------|---------------------|----------------------|----------|
 | 多码率直播（ABR） | 高码率主码流。 | 降采样 + 丢帧的低码流。 | 根据网络带宽自适应切换。 |
-| ROI 区域关注 | 全帧编码归档。 | 裁剪感兴趣区域编码 | 监控全帧存储 + 局部区域分析。 |
+| ROI 区域关注 | 全帧编码归档。 | 裁剪感兴趣区域编码。 | 监控全帧存储 + 局部区域分析。 |
 | 多人视频通话 | 全分辨率、高帧率（本地显示）。 | 降采样 + 丢帧、低码率（远端传输）。 | 本地高清预览 + 远端低带宽实时通话。 |
 
 ### 约束与限制
@@ -166,7 +166,6 @@ OH_AVFormat_Destroy(format);
 > **注意：**
 >
 > Primary 的 WIDTH/HEIGHT 定义了共享输入 Surface 的尺寸，后续创建的 Secondary 在 Configure 时建议设置相同的输入尺寸值。
->
 
 ### 从主编码器派生创建副编码器（Secondary）
 
@@ -188,7 +187,6 @@ if (ret != AV_ERR_OK || g_secondary == nullptr) {
 > **注意：**
 >
 > Primary 和 Secondary 的回调在**不同线程**中执行。两路都必须各自调用 `FreeOutputBuffer`，否则可能导致阻塞或饥饿。
->
 
 ### 配置副编码器（含差异化前处理）
 
@@ -248,9 +246,9 @@ if (ret != AV_ERR_OK || window == nullptr) {
 ```
 
 > **核心规则**：
-> - **仅主编码器**可以合法调用 `GetSurface`
-> - 副编码器调用将直接返回 `AV_ERR_OPERATE_NOT_PERMIT`
-> - 主/副共享同一个 Consumer Surface，只需获取和绑定一次
+> - **仅主编码器**可以合法调用`GetSurface`。
+> - 副编码器调用将直接返回 `AV_ERR_OPERATE_NOT_PERMIT`。
+> - 主/副共享同一个 Consumer Surface，只需获取和绑定一次。
 
 ### 完成编码器准备并启动两个编码器
 
@@ -340,9 +338,9 @@ if (window != nullptr){
 ```
 
 > **销毁规则**：
-> - **推荐顺序**：先 Destroy Secondary → 再 Destroy Primary
-> - 若违反顺序先 Destroy Primary，系统会**自动**先销毁关联的 Secondary 再释放 Primary
-> - 但仍建议显式遵循推荐顺序以确保代码清晰可控
+> - **推荐顺序**：先 Destroy Secondary → 再 Destroy Primary。
+> - 若违反顺序先 Destroy Primary，系统会**自动**先销毁关联的 Secondary 再释放 Primary。
+> - 但仍建议显式遵循推荐顺序以确保代码清晰可控。
 
 
 ## 推荐配置模式
@@ -366,37 +364,37 @@ if (window != nullptr){
 
 ### CreateSecondaryFromPrimary返回`AV_ERR_INVALID_VAL`
 
-**回答**：传入的不是有效的Primary句柄。
+**可能原因**：传入的不是有效的Primary句柄。
 
-**解决**：确保Primary由`CreatePrimaryWithPreproc`创建且已成功Configure。
+**解决措施**：确保Primary由`CreatePrimaryWithPreproc`创建且已成功Configure。
 
 ### CreateSecondaryFromPrimary返回`AV_ERR_OPERATE_NOT_PERMIT`
 
-**回答**：该Primary已挂载了Secondary。
+**可能原因**：该Primary已挂载了Secondary。
 
-**解决**：先销毁旧的Secondary，再创建新Secondary；或检查是否有遗漏的Destroy调用。
+**解决措施**：先销毁旧的Secondary，再创建新Secondary；或检查是否有遗漏的Destroy调用。
 
 ### Secondary Configure报错
 
-**回答**：前处理参数不合法。
+**可能原因**：前处理参数不合法。
 
-**解决**：检查降采样/裁剪参数完整性、范围合法性、Crop 与 Downsample 是否互斥设置。
+**解决措施**：检查降采样/裁剪参数完整性、范围合法性、Crop 与 Downsample 是否互斥设置。
 
 ### Secondary调用GetSurface报错
 
-**回答**：使用了副编码器句柄调用。
+**可能原因**：使用了副编码器句柄调用。
 
-**解决**：**只能通过主编码器句柄**调用GetSurface，两者返回的是同一个共享Surface。
+**解决措施**：**只能通过主编码器句柄**调用GetSurface，两者返回的是同一个共享Surface。
 
 ### Secondary无输出
 
-**回答**：未调用Start/Surface未绑定数据源/回调未正确注册。
+**可能原因**：未调用Start/Surface未绑定数据源/回调未正确注册。
 
-**解决**：检查Secondary是否已Start；确认Primary的Surface已绑定到Camera/XComponent；确认回调函数非null且包含FreeOutputBuffer。
+**解决措施**：检查Secondary是否已Start；确认Primary的Surface已绑定到Camera/XComponent；确认回调函数非null且包含FreeOutputBuffer。
 
 ### Primary回调阻塞导致Secondary饥饿
 
-**回答**：Primary的onNewOutputBuffer中耗时过长。
+**可能原因**：Primary的onNewOutputBuffer中耗时过长。
 
-**解决**：确保Primary回调中尽快FreeOutputBuffer，避免长时间阻塞。
+**解决措施**：确保Primary回调中尽快FreeOutputBuffer，避免长时间阻塞。
 

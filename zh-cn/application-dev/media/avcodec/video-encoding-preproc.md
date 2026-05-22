@@ -125,7 +125,7 @@
 ### 创建支持前处理的编码器
 
 在创建前处理编码器之前，建议先通过能力查询接口确认当前编码器是否支持所需的前处理特性：
-```cpp
+```c++
 const char *mime = OH_AVCODEC_MIMETYPE_VIDEO_AVC;
 
 OH_AVCapability *capability = OH_AVCodec_GetCapability(mime, true);
@@ -157,7 +157,7 @@ if (ret != AV_ERR_OK || encoder == nullptr) {
 
 编码器参数配置参考视频编码[Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
 
-```cpp
+```c++
 OH_AVFormat *format = OH_AVFormat_Create();
 
 // 基础编码参数（必填）。
@@ -202,7 +202,7 @@ OH_AVFormat_Destroy(format);
 
 ### 获取 Surface
 
-```cpp
+```c++
 // 关键：只能通过主编码器句柄获取 Surface。
 OHNativeWindow *window = nullptr;
 OH_AVErrCode ret = OH_VideoEncoder_GetSurface(encoder, &window);
@@ -217,8 +217,8 @@ if (ret != AV_ERR_OK || window == nullptr) {
 ```
 
 > **重要规则**：
-> - **仅主编码器**可以调用 `GetSurface`，副编码器调用将返回`AV_ERR_OPERATE_NOT_PERMIT`
-> - 对于一入二出场景，只需获取一次Surface即可（主/副共享同一输入源）
+> - **仅主编码器**可以调用 `GetSurface`，副编码器调用将返回`AV_ERR_OPERATE_NOT_PERMIT`。
+> - 对于一入二出场景，只需获取一次Surface即可（主/副共享同一输入源）。
 
 ### 准备、启动、写入编码图像
 参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤7、8、10。
@@ -227,7 +227,7 @@ if (ret != AV_ERR_OK || window == nullptr) {
 
 可通过 `SetParameter` 在运行时动态修改前处理参数：
 
-```cpp
+```c++
 // 动态调整丢帧目标帧率（例如响应网络状态变化）。
 // 网络拥堵可以选择大幅丢帧，如：AdjustDropFrameRate(encoder, 10.0);
 // 网络恢复可取消丢帧：AdjustDropFrameRate(encoder, 0.0);
@@ -265,7 +265,7 @@ void AdjustDownsampling(OH_AVCodec *enc, int newWidth, int newHeight)
 
 启用前处理后，可通过 `GetInputDescription`查询预处理后的实际输入信息及配置参数：
 
-```cpp
+```c++
 OH_AVFormat *inputDesc = OH_VideoEncoder_GetInputDescription(encoder);
 if (inputDesc != nullptr) {
     int32_t originWidth = 0, originHeight = 0;
