@@ -1,4 +1,10 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn的自定义构建函数（@Builder）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -19,7 +25,7 @@
 
 ### 按回调传递参数
 
-开发者可以通过[`UIUtils.makeBinding()`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebindingt)函数、[`Binding`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
+开发者可以通过[`UIUtils.makeBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebindingt)函数、[`Binding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
 
 在ArkTS-Sta调用ArkTS-Dyn自定义构建函数的场景下，ArkTS-Dyn侧@Builder需要接收动态`Binding`或动态`MutableBinding`类型。由于ArkTS-Sta侧通过`UIUtils.makeBinding()`创建的是静态`Binding`或静态`MutableBinding`，与ArkTS-Dyn的参数类型不兼容。因此在传递给@Builder之前，需要使用`transfer.transferDynamic()`将其转换为动态`Binding`或动态`MutableBinding`类型。
 
@@ -60,10 +66,14 @@ import { MutableBinding, Binding } from '@kit.ArkUI';
 export function CustomButton(num1: MutableBinding<number>, num2: Binding<number>) {
   Column() {
     Text(`CustomButton num1: ${num1.value}, num2: ${num2.value}`)
+      .fontSize(20)
+      .margin(10)
     Button('change num1')
       .onClick(() => {
         num1.value++;
       })
+      .width(300)
+      .margin(10)
   }
 }
 ```
@@ -109,16 +119,25 @@ struct Parent {
         )
       )
       Text(`num1: ${this.num1}`)
+        .fontSize(20)
+        .margin(10)
       Button('change num1')
         .onClick(() => {
           this.num1++;
         })
+        .width(300)
+        .margin(10)
       Text(`num2: ${this.num2}`)
+        .fontSize(20)
+        .margin(10)
       Button('change num2')
         .onClick(() => {
           this.num2++;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -131,6 +150,9 @@ struct Parent {
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-builder-demo1](figures/arkts-sta-interop-dyn-builder-demo1.gif)
 
 ### 按引用传递参数
 
@@ -197,7 +219,11 @@ import { Person } from 'static_module';
 export function personInfo(person: Person) { // 按引用传递参数
   Column(){
     Text(`Name: ${person.name}`)
+      .fontSize(20)
+      .margin(10)
     Text(`Age: ${person.age}`)
+      .fontSize(20)
+      .margin(10)
   }
 }
 ```
@@ -238,15 +264,20 @@ struct Parent {
       personInfo({ name: this.name, age: this.age })
       Button('changeName')
         .onClick(() => {
-          // 变化状态变量name，触发@Builder内部UI刷新
+          // 修改状态变量name，触发@Builder内部UI刷新
           this.name += 'a';
         })
+        .width(300)
+        .margin(10)
       Button('changeAge')
         .onClick(() => {
-          // 变化状态变量age，触发@Builder内部UI刷新
+          // 修改状态变量age，触发@Builder内部UI刷新
           this.age += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -259,6 +290,9 @@ struct Parent {
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-builder-demo2](figures/arkts-sta-interop-dyn-builder-demo2.gif)
 
 ### 按值传递参数
 
@@ -293,7 +327,7 @@ project/
 @Builder
 export function showTextBuilder(input: string) { // 按值传递参数，不会触发UI刷新
   Text(input)
-    .fontSize(30)
+    .fontSize(20)
 }
 ```
 
@@ -337,6 +371,9 @@ struct MainPage {
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-builder-demo3](figures/arkts-sta-interop-dyn-builder-demo3.png)
 
 ## 常见问题
 

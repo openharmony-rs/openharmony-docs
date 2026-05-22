@@ -1,4 +1,10 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta管理组件拥有的状态
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -69,12 +75,14 @@ export struct MainPage {
   // 通过@Event与ArkTS-Dyn父组件进行交互
   @Event changeFactory: () => void = () => {};
 
-  build() {
+  build(): void {
     Column() {
       Text(this.paramMessage)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Text(this.consumerMessage)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 通过@Consumer修改ArkTS-Dyn父组件的状态变量
           this.consumerMessage += '!';
@@ -84,8 +92,10 @@ export struct MainPage {
           // 通过@Event修改ArkTS-Dyn父组件的状态变量
           this.changeFactory();
         })
+        .width(300)
+        .margin(10)
     }
-    .padding(20)
+    .width('100%')
   }
 }
 ```
@@ -126,11 +136,15 @@ struct ParentComp {
           // 通过@Local修改本组件的状态变量
           this.localMessage += '~';
         })
+        .width(300)
+        .margin(10)
       Button(this.consumerMessage)
         .onClick(() => {
           // 通过@Provider修改本组件的状态变量
           this.consumerMessage += '~';
         })
+        .width(300)
+        .margin(10)
       MainPage({
         paramMessage: this.localMessage,
         changeFactory: () => {
@@ -144,3 +158,7 @@ struct ParentComp {
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-statemanagement-v2-demo1](figures/arkts-dyn-interop-sta-statemanagement-v2-demo1.gif)

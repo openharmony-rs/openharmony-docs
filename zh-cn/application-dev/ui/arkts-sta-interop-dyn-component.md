@@ -1,10 +1,16 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn的自定义组件
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
 从API version 23开始，支持在ArkTS-Sta中使用ArkTS-Dyn自定义组件。
 
-在互操作场景下，[占位组件](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
+在互操作场景下，[compatibleComponent](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
 
 
 ## 使用限制
@@ -34,6 +40,7 @@ struct Index {
       }
       .width(100)
     }
+    .width('100%')
   }
 }
 ```
@@ -46,7 +53,8 @@ export struct MainPage { // 从ArkTS-Dyn模块中导出
 
   build() {
     Text(this.message)
-      .fontSize(30)
+      .fontSize(20)
+      .margin(10)
   }
 }
 ```
@@ -91,9 +99,10 @@ export struct ChildComponent {
   build() {
     Column() {
       Text(this.message)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
     .padding(20)
     .backgroundColor(Color.White)
   }
@@ -106,9 +115,10 @@ export struct ChildComponentV2 {
   build() {
     Column() {
       Text(this.message)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
     .padding(20)
     .backgroundColor(Color.White)
   }
@@ -165,6 +175,7 @@ struct MainPage {
     Column() {
       ChildComponent()
     }
+    .width('100%')
   }
 }
 
@@ -189,6 +200,11 @@ struct MainPageV2 {
     Column() {
       ChildComponentV2()
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-sta-interop-dyn-component-demo1](figures/arkts-sta-interop-dyn-component-demo1.png)
