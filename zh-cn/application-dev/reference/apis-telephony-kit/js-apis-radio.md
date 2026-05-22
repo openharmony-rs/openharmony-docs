@@ -771,8 +771,6 @@ isNRSupported\(\): boolean
 
 判断当前设备是否支持NR(New Radio)。
 
-**ArkTS模式**：该接口同时适用于ArkTS-Dyn和ArkTS-Sta。
-
 **系统能力**：SystemCapability.Telephony.CoreService
 
 **ArkTS-Dyn起始版本：** 9
@@ -795,9 +793,9 @@ console.info("Result: "+ result);
 
 ## radio.isNRSupported<sup>9+</sup>
 
-**ArkTS-Dyn**: isNRSupported\(slotId: number\): boolean
+ArkTS-Dyn: isNRSupported\(slotId: number\): boolean
 
-**ArkTS-Sta**: isNRSupported\(slotId: int\): boolean
+ArkTS-Sta: isNRSupported\(slotId: int\): boolean
 
 判断当前设备是否支持NR(New Radio)。
 
