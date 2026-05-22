@@ -276,7 +276,7 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 
 setScreenOffTime(timeout: number): void
 
-设置熄屏超时时间，单位毫秒。
+设置熄屏超时时间。
 
 **系统接口：** 此接口为系统接口。
 

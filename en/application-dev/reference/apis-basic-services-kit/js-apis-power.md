@@ -198,4 +198,4 @@ Enumerates the power key filtering strategies.
 | Name                   | Value  | Description                  |
 | ----------------------- | ---- | ---------------------- |
 | DISABLE_LONG_PRESS_FILTERING | 0  | Disable the filtering of power key long-press event. This is the default value.|
-| LONG_PRESS_FILTERING_ONCE | 1  | Filters the long-press event of the current power key once. The next is not filtered by default.|
+| LONG_PRESS_FILTERING_ONCE | 1  | Filters the current power key long-press event once. Subsequent long-press events are not filtered by default.|

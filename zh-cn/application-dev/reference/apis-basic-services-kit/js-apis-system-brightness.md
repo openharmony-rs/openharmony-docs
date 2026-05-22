@@ -112,10 +112,6 @@ setValue(options?: SetBrightnessOptions): void
 
 设置设备当前的屏幕亮度值。
 
-> **注意：**
->
-> - 除Lite Wearable外，从API version 7开始不再维护，建议使用[brightness.setValue](./js-apis-brightness-sys.md#brightnesssetvalue)替代。
-
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**

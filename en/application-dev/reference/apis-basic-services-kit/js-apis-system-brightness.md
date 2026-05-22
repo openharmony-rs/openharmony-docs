@@ -112,10 +112,6 @@ setValue(options?: SetBrightnessOptions): void
 
 Sets the screen brightness.
 
-> **NOTE**
->
-> This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [brightness.setValue](./js-apis-brightness-sys.md#brightnesssetvalue) instead.
-
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **Parameters**

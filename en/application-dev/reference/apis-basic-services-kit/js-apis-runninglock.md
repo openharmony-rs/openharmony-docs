@@ -23,7 +23,7 @@ import {runningLock} from '@kit.BasicServicesKit';
 
 isSupported(type: RunningLockType): boolean
 
-Checks whether a specified type of [RunningLock](#runninglock) is supported.
+Checks whether a specified type of **RunningLock** is supported.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -102,7 +102,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-Creates a [RunningLock](#runninglock) object.. This API uses a promise to return the result.
+Creates a **RunningLock** object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -147,7 +147,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a specified type of [RunningLock](#runninglock) is supported. This API uses an asynchronous callback to return the result.
+Checks whether a specified type of **RunningLock** is supported. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
@@ -176,7 +176,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 
 isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
-Checks whether a specified type of [RunningLock](#runninglock) is supported. This API uses a promise to return the result.
+Checks whether a specified type of **RunningLock** is supported. This API uses a promise to return the result.
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
@@ -210,7 +210,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 
 createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-Creates a [RunningLock](#runninglock) object. This API uses an asynchronous callback to return the result.
+Creates a **RunningLock** object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
@@ -242,7 +242,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-Creates a [RunningLock](#runninglock) object. This API uses a promise to return the result.
+Creates a **RunningLock** object. This API uses a promise to return the result.
 
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 

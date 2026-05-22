@@ -276,7 +276,7 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
 
 setScreenOffTime(timeout: number): void
 
-Sets the screen-off timeout duration, in unit of ms.
+Sets the screen-off timeout duration.
 
 **System API**: This is a system API.
 
