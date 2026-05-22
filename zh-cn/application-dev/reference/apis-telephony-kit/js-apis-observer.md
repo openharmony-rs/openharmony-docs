@@ -874,9 +874,9 @@ observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionS
 });
 ```
 
-## observer.oncellularDataConnectionStateChange<sup>23+</sup>
+## observer.onCellularDataConnectionStateChange<sup>23+</sup>
 
-oncellularDataConnectionStateChange(callback: Callback\<DataConnectionStateInfo\>\): void
+onCellularDataConnectionStateChange(callback: Callback\<DataConnectionStateInfo\>\): void
 
 订阅蜂窝数据链路连接状态，使用callback方式作为异步方法。
 
@@ -905,11 +905,11 @@ oncellularDataConnectionStateChange(callback: Callback\<DataConnectionStateInfo\
 | 8300003  | System internal error.                       |
 | 8300999  | Unknown error.                               |
 
-**示例：111**
+**示例：**
 
 ```ts
-observer.on('cellularDataConnectionStateChange', (data: observer.DataConnectionStateInfo) => {
-    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+observer.onCellularDataConnectionStateChange((data: observer.DataConnectionStateInfo) => {
+    console.info("onCellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -951,9 +951,9 @@ observer.on('cellularDataConnectionStateChange', options, (data: observer.DataCo
     console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
-## observer.oncellularDataConnectionStateChange<sup>23+</sup>
+## observer.onCellularDataConnectionStateChange<sup>23+</sup>
 
-oncellularDataConnectionStateChange(options: ObserverOptions, callback: Callback\<DataConnectionStateInfo\>\): void
+onCellularDataConnectionStateChange(options: ObserverOptions, callback: Callback\<DataConnectionStateInfo\>\): void
 
 订阅指定卡槽位的蜂窝数据链路连接状态，使用callback方式作为异步方法。
 
@@ -983,14 +983,14 @@ oncellularDataConnectionStateChange(options: ObserverOptions, callback: Callback
 | 8300003  | System internal error.                       |
 | 8300999  | Unknown error.                               |
 
-**示例：111**
+**示例：**
 
 ```ts
 let options: observer.ObserverOptions = {
     slotId: 0
 }
-observer.on('cellularDataConnectionStateChange', options, (data: observer.DataConnectionStateInfo) => {
-    console.info("on cellularDataConnectionStateChange, data:" + JSON.stringify(data));
+observer.onCellularDataConnectionStateChange(options, (data: observer.DataConnectionStateInfo) => {
+    console.info("onCellularDataConnectionStateChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -1038,9 +1038,9 @@ observer.off('cellularDataConnectionStateChange', callback);
 observer.off('cellularDataConnectionStateChange');
 ```
 
-## observer.offcellularDataConnectionStateChange<sup>23+</sup>
+## observer.offCellularDataConnectionStateChange<sup>23+</sup>
 
-offcellularDataConnectionStateChange(callback?: Callback\<DataConnectionStateInfo\>\): void
+offCellularDataConnectionStateChange(callback?: Callback\<DataConnectionStateInfo\>\): void
 
 移除订阅蜂窝数据链路连接状态，使用callback方式作为异步方法。
 
@@ -1073,7 +1073,7 @@ offcellularDataConnectionStateChange(callback?: Callback\<DataConnectionStateInf
 | 8300003  | System internal error.                       |
 | 8300999  | Unknown error.                               |
 
-**示例：11111**
+**示例：**
 
 ```ts
 let callback: (data: observer.DataConnectionStateInfo) => void = (data: observer.DataConnectionStateInfo) => {
@@ -1121,9 +1121,9 @@ observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
     console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
-## observer.oncellularDataFlowChange<sup>23+</sup>
+## observer.onCellularDataFlowChange<sup>23+</sup>
 
-oncellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
+onCellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
 
 订阅蜂窝数据业务的上下行数据流状态，使用callback方式作为异步方法。
 
@@ -1152,19 +1152,19 @@ oncellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
 | 8300003  | System internal error.                       |
 | 8300999  | Unknown error.                               |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-observer.on('cellularDataFlowChange', (data: data.DataFlowType) => {
-    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
+observer.onCellularDataFlowChange((data: data.DataFlowType) => {
+    console.info("onCellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
-## observer.offcellularDataFlowChange<sup>23+</sup>
+## observer.offCellularDataFlowChange<sup>23+</sup>
 
-offcellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
+offCellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
 
 取消订阅蜂窝数据业务的上下行数据流状态，使用callback方式作为异步方法。
 
@@ -1197,8 +1197,8 @@ offcellularDataFlowChange(callback: Callback\<DataFlowType\>\): void
 
 ```ts
 
-observer.off('cellularDataFlowChange', (data: data.DataFlowType) => {
-    console.info("off cellularDataFlowChange, data:" + JSON.stringify(data));
+observer.offCellularDataFlowChange((data: data.DataFlowType) => {
+    console.info("offCellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -1243,9 +1243,9 @@ observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
 });
 ```
 
-## observer.oncellularDataFlowChange<sup>23+</sup>
+## observer.onCellularDataFlowChange<sup>23+</sup>
 
-oncellularDataFlowChange(options: ObserverOptions,  callback: Callback\<DataFlowType\>\): void
+onCellularDataFlowChange(options: ObserverOptions,  callback: Callback\<DataFlowType\>\): void
 
 订阅指定卡槽位的蜂窝数据业务的上下行数据流状态，使用callback方式作为异步方法。
 
@@ -1275,7 +1275,7 @@ oncellularDataFlowChange(options: ObserverOptions,  callback: Callback\<DataFlow
 | 8300003  | System internal error.                       |
 | 8300999  | Unknown error.                               |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { data } from '@kit.TelephonyKit';
@@ -1283,8 +1283,8 @@ import { data } from '@kit.TelephonyKit';
 let options: observer.ObserverOptions = {
     slotId: 0
 }
-observer.on('cellularDataFlowChange', options, (data: data.DataFlowType) => {
-    console.info("on cellularDataFlowChange, data:" + JSON.stringify(data));
+observer.onCellularDataFlowChange(options, (data: data.DataFlowType) => {
+    console.info("onCellularDataFlowChange, data:" + JSON.stringify(data));
 });
 ``` 
 
