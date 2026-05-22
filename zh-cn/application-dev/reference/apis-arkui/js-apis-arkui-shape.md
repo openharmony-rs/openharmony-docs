@@ -441,7 +441,7 @@ ArkTS-Sta: width(width: Length): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 形状的宽度。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ### height
 
@@ -475,7 +475,7 @@ ArkTS-Sta: height(height: Length): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 形状的高度。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前对象。 |
 
 ### size
 
