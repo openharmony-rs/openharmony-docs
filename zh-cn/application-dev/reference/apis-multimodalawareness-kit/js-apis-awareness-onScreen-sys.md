@@ -552,7 +552,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码，在Car中capList为UiTree可正常调用。
+**设备行为差异**：该接口仅支持 Phone、Tablet 以及 Car 设备（Car 设备下需满足 capList 为 UiTree），在其余设备类型中调用将触发 801 错误码。
 
 **参数**：
 
@@ -629,7 +629,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码，在Car中capList为InjectEvent可正常调用。
+**设备行为差异**：该接口仅支持 Phone、Tablet 以及 Car 设备（Car 设备下需满足 capList 为 InjectEvent），在其余设备类型中调用将触发 801 错误码。
 
 **参数**：
 
