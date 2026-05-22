@@ -458,7 +458,7 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;):
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise<number> | 操作结果，0表示本次调用成功。  |
+  | Promise&lt;number&gt; | 操作结果，0表示本次调用成功。  |
 
 **错误码：**
 
@@ -579,7 +579,7 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise<string> | 指定名称长度最大字节数的本机设备显示名。 |
+  | Promise&lt;string&gt; | 指定名称长度最大字节数的本机设备显示名。 |
 
 **错误码：**
 
@@ -634,7 +634,7 @@ setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise<number> | 操作结果，0表示本次调用成功。 |
+  | Promise&lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -693,7 +693,7 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise<number> | 操作结果，0表示本次调用成功。 |
+  | Promise&lt;number&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
