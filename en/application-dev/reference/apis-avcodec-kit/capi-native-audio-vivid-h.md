@@ -230,3 +230,4 @@ Destroys an Audio Vivid metadata builder and releases resources.
 | Type| Description|
 | -- | -- |
 | [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The **builder** parameter is a null pointer.|
+<!--no_check-->
