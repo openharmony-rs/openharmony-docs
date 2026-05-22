@@ -7,7 +7,7 @@
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
 
-Use **cancel()** to terminate the authentication process when needed.
+The unified user authentication framework provides **cancel()** for terminating the authentication process.
 
 ## Available APIs
 
@@ -36,11 +36,11 @@ handleAuthResultAndCanceling(userAuthInstance: userAuth.UserAuthInstance, exampl
   // ...
     // Start authentication.
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
     // ...
       // Cancel the authentication.
       userAuthInstance.cancel();
-      Logger.info('auth cancel successfully');
+      Logger.info('auth cancel successfully.');
       // ...
 }
 
@@ -66,7 +66,7 @@ cancelingUserAuthentication() {
     };
     // Obtain an authentication object.
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     this.handleAuthResultAndCanceling(userAuthInstance, ResultIndex.CANCEL);
   } catch (error) {
     const err: BusinessError = error as BusinessError;

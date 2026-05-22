@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -22,7 +22,7 @@ The DLP solution consists of the following components:
 
 - Cloud module (implemented by developers)
 
-  Sends DLP certificates to the cloud for account-based authentication, generates certificates, and decrypts the DLP files.
+  Sends DLP certificates to the cloud for account-based authentication, certificate generation, and decryption of DLP files.
 
 ## Working Principles
 
