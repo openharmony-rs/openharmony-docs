@@ -1272,7 +1272,7 @@ try {
 
 openDoubleClickSettingsPage(context: Context): void
 
-打开按键设置-双击右下键页面。
+打开按键设置-双击下按键页面。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
