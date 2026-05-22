@@ -12,6 +12,8 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该接口为[UIContext](../arkts-apis-uicontext-uicontext.md)类的成员函数，需要通过UIContext实例对象调用。
