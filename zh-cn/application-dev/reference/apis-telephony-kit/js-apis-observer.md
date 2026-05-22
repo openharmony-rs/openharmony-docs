@@ -404,7 +404,11 @@ on(type: 'callStateChange', callback: Callback\<CallStateInfo\>): void
 
 订阅通话状态变化事件，使用callback方式作为异步方法。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本**： 11
 
 **参数：**
 
@@ -440,7 +444,11 @@ on(type: 'callStateChange', options: ObserverOptions, callback: Callback\<CallSt
 
 订阅通话状态变化事件，使用callback方式作为异步方法。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本**： 11
 
 **参数：**
 
@@ -518,6 +526,44 @@ observer.on('callStateChange', options, (data: observer.CallStateInfo) => {
 
 ## observer.oncallStateChange<sup>23+</sup>
 
+oncallStateChange(callback: Callback\<CallStateInfo\>): void
+
+订阅通话状态变化事件，使用callback方式作为异步方法。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Sta起始版本**： 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 以callback形式异步返回结果。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+observer.on('callStateChange', (data: observer.CallStateInfo) => {
+    console.info("on callStateChange, data:" + JSON.stringify(data));
+});
+```
+
+## observer.oncallStateChange<sup>23+</sup>
+
 oncallStateChange(options: ObserverOptions, callback: Callback\<CallStateInfo\>): void
 
 订阅通话状态变化事件，使用callback方式作为异步方法。
@@ -569,7 +615,11 @@ off(type: 'callStateChange', callback?: Callback\<CallStateInfo\>): void
 >
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本**： 11
 
 **参数：**
 
