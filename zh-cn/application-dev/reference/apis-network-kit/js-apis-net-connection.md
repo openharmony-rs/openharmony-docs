@@ -363,7 +363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -438,7 +438,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getAppNet().then((data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+ console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -570,7 +570,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
   }
 });
 
@@ -669,7 +669,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
   if (error) {
-    console.error(JSON.stringify(error));
+     console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
   }
 });
 
@@ -991,7 +991,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+     console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -1046,7 +1046,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+     console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -1137,7 +1137,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
   console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
@@ -1246,7 +1246,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
   console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
@@ -1363,7 +1363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle, (error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
   });
 });
 ```
@@ -1771,7 +1771,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+     console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 })
 ```
 
@@ -1874,7 +1874,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.removeCustomDnsRule("xxxx").then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 })
 ```
 
@@ -1957,7 +1957,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.clearCustomDnsRules().then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 })
 ```
 
@@ -2836,7 +2836,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -2875,7 +2875,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -2912,12 +2912,12 @@ netCon.on('netAvailable', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 
 // 使用unregister接口取消订阅网络可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -2952,12 +2952,12 @@ netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 
 // 使用unregister接口取消订阅网络阻塞状态事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -2994,12 +2994,12 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 
 // 使用unregister接口取消订阅网络能力变化事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -3034,12 +3034,12 @@ netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionProper
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 
 // 使用unregister接口取消订阅网络连接信息变化事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -3076,12 +3076,12 @@ netCon.on('netLost', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 
 // 使用unregister接口取消订阅网络丢失事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -3118,12 +3118,12 @@ netCon.on('netUnavailable', () => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -3745,7 +3745,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
    bearerPrivateIdentifier: `${networkId}`
  });
  netConnectionWlan.register((error: BusinessError) => {
-   console.error(JSON.stringify(error));
+   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
  });
 });
 ```
