@@ -442,6 +442,10 @@ Codec MIME类型枚举。
 | WINDOW_ONLY | 0    | 仅显示窗口列表。 |
 | SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
 | SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
+| APP_ONLY | 3    | 仅显示应用模式。<br>**起始版本：** 26.0.0 |
+| WINDOW_AND_APP | 4    | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0 |
+| SCREEN_AND_APP | 5    | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0 |
+| SCREEN_WINDOW_AND_APP | 6    | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0 |
 
 ## AVMetricsEventType<sup>23+</sup>
 
