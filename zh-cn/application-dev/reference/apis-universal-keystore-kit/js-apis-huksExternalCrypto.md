@@ -631,7 +631,7 @@ huksExternalCrypto.closeResource(testResourceId)
 
 setProperty(resourceId: string, propertyId: string, params?: HuksExternalCryptoParam[]): Promise&lt;void&gt;
 
-调用此接口设置属性值。使用Promise异步回调。
+调用此接口设置由resourceId标识的UKey资源的属性值。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
