@@ -481,7 +481,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0]?.f32 | Blur radius of the shadow, in px.|
-| .value[1]?.i32 | Whether to enable the the coloring strategy. The value **1** means to enable the coloring strategy, and **0** means the opposite. The default value is **0**.|
+| .value[1]?.i32 | Whether to enable the coloring strategy. The value **1** means to enable the coloring strategy, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.f32 | Offset of the shadow along the x-axis, in px.|
 | .value[3]?.f32 | Offset of the shadow along the y-axis, in px.|
 | .value[4]?.i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
@@ -1097,7 +1097,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Two components bound to the shared element. The value is **1** or **0**. The default value is **false**. By default, the out component does not continue to participate in the shared element animation when not yet deleted, which means that it stays in its original position.|
+| .value[0].i32 | Two components bound to the shared element. The value is **1** or **0**. By default, the out component does not continue to participate in the shared element animation when not yet deleted, which means that it stays in its original position.|
 | .string | ID used to set up a binding relationship. If this attribute is set to an empty string **""**, the binding relationship is cleared. The value can be dynamically changed to refresh the binding relationship. One ID can be bound to only two components, which function as in and out components.|
 
 ## NODE_RENDER_FIT
