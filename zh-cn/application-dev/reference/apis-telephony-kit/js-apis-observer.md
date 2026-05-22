@@ -1576,7 +1576,7 @@ let slotId = 0;
 let simActiveState: Callback<boolean> = (isSimActive: boolean) => {
     console.info(`simActiveState slotId ${JSON.stringify(isSimActive)}`);
 }
-observer.onGetSimActiveState(sislotId, simActiveState);
+observer.onGetSimActiveState(slotId, simActiveState);
 ```
 
 ## observer.offGetSimActiveState<sup>23+</sup>
