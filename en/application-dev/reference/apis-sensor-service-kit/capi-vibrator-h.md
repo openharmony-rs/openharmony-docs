@@ -51,13 +51,13 @@ Controls the vibrator to vibrate continuously for a given duration.
 | Name| Description|
 | -- | -- |
 | int32_t duration | Vibration duration, in milliseconds.|
-| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) attribute | Vibration attribute. For details, see **VibrateAttribute**.|
+| [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md) attribute | Vibration attribute. For details, see [VibrateAttribute](js-apis-vibrator.md#vibrateattribute9).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **0** if the operation is successful; returns a non-zero value otherwise. For details, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode).|
+| int32_t | If the operation is successful, **0** is returned. Otherwise, an error code in [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) is returned.|
 
 ### OH_Vibrator_PlayVibrationCustom()
 
@@ -84,7 +84,7 @@ Configure the vibrator to vibrate with the custom sequence.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **0** if the operation is successful; returns a non-zero value otherwise. For details, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode).|
+| int32_t | If the operation is successful, **0** is returned. Otherwise, an error code in [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) is returned.|
 
 ### OH_Vibrator_Cancel()
 
@@ -104,4 +104,4 @@ Stops the vibration.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **0** if the operation is successful; returns a non-zero value otherwise. For details, see [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode).|
+| int32_t | If the operation is successful, **0** is returned. Otherwise, an error code in [Vibrator_ErrorCode](capi-vibrator-type-h.md#vibrator_errorcode) is returned.|
