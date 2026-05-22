@@ -128,8 +128,7 @@ ArkTS-Sta: getDefaultVoiceSlotId\(callback: AsyncCallback\<int\>\): void
 
 | 参数名   | 类型                        | 必填 | 说明       |
 | -------- | --------------------------- | ---- | ---------- |
-| callback | ArkTS-Dyn:AsyncCallback&lt;number&gt;
- ArkTS-Sta:AsyncCallback&lt;int&gt;| 是   | 回调函数。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
+| callback | ArkTS-Dyn:AsyncCallback&lt;number&gt;<br />ArkTS-Sta:AsyncCallback&lt;int&gt;| 是   | 回调函数。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
 
 **示例：**
 
@@ -160,7 +159,7 @@ ArkTS-Sta: getDefaultVoiceSlotId(): Promise\<int\>
 
 | 类型              | 说明                                    |
 | ----------------- | --------------------------------------- |
-| ArkTS-Dyn:Promise\<number\> ArkTS-Sta:Promise\<int\>
+| ArkTS-Dyn:Promise\\<number\\> ArkTS-Sta:Promise\\<int\\>
 | 以Promise形式返回默认语音业务的卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
 
 **示例：**
