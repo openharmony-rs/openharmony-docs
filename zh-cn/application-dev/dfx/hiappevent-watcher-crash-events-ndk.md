@@ -183,6 +183,9 @@
           // 开启拼接应用日志
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG, "true");
 
+          // native崩溃场景，使能minidump
+          OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_COLLECT_MINIDUMP, "true");
+
           // 3. 应用配置到 EVENT_APP_CRASH 事件
           int ret = OH_HiAppEvent_SetEventConfig(EVENT_APP_CRASH, config);
           if (ret == HIAPPEVENT_SUCCESS) {
