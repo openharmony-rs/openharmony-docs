@@ -1133,7 +1133,7 @@ observer.on('simStateChange', (data: observer.SimStateData) => {
 
 on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimStateData\>\): void
 
-订阅指定卡槽位的sim状态更改事件，使用callback方式作为异步方法。
+订阅指定卡槽位的SIM状态更改事件，使用callback方式作为异步方法。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -1224,7 +1224,7 @@ observer.off('simStateChange');
 
 on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 
-订阅卡帐户变化事件，使用callback方式作为异步方法。
+订阅卡账户变化事件，使用callback方式作为异步方法。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
