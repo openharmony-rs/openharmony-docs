@@ -106,7 +106,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| dlpFileAccess | [DLP_FileAccess](#dlp_fileaccess)* | 是 |表示DLP文件针对用户的授权类型，返回值为DLP_FileAccess枚举值，包括NO_PERMISSION（无权限）、READ_ONLY（只读）、CONTENT_EDIT（编辑）、FULL_CONTROL（完全控制）。 |
+| dlpFileAccess | [DLP_FileAccess](#dlp_fileaccess)* | 是 | 表示DLP文件针对用户的授权类型，返回值为DLP_FileAccess枚举值，包括NO_PERMISSION（无权限）、READ_ONLY（只读）、CONTENT_EDIT（编辑）、FULL_CONTROL（完全控制）。 |
 | flags | uint32_t* | 是 | 输出参数，表示DLP文件的详细操作权限，取值为位掩码，支持通过按位或运算组合多个权限。支持的权限位：<br>0x00000000-表示无文件权限。<br>0x00000001-表示文件的查看权限。<br>0x00000002-表示文件的保存权限。<br>0x00000004-表示文件的另存为权限。<br>0x00000008-表示文件的编辑权限。<br>0x00000010-表示文件的截屏权限。<br>0x00000020-表示文件的共享屏幕权限。<br>0x00000040-表示文件的录屏权限。<br>0x00000080-表示文件的复制权限。<br>0x00000100-表示文件的打印权限。<br>0x00000200-表示文件的导出权限。<br>0x00000400-表示文件的修改文件权限。 |
 
 **返回：**
