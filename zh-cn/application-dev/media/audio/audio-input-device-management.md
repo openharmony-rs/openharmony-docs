@@ -114,7 +114,7 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
 
 ArkTS-Sta示例：
 
-<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
+<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->  
 
 <!--Del-->
 ## 选择音频输入设备（仅对系统应用开放）
