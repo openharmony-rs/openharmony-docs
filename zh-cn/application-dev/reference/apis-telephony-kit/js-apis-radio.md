@@ -817,13 +817,13 @@ ArkTS-Dyn示例：
 
 ```ts
 let slotId: number = 0;
-let result: boolean = radio.isNRSupported(slotId);
+let result: boolean = radio.isNRSupported(number);
 console.info("Result: "+ result);
 ```
 ArkTS-Sta示例：
 
 ```ts
-let slotId: number = 0;
+let slotId: int = 0;
 let result: boolean = radio.isNRSupported(int);
 console.info("Result: "+ result);
 ```
