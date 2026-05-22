@@ -37,7 +37,7 @@ Error code: 1300012
 
 ```ts
 // 错误：异步任务在窗口销毁后执行
-topPipTimer() {
+stopPipTimer() {
     setTimeout(() => {
         // 用户可能在 1 秒内退出了画中画，窗口已销毁
         this.pipController.stopPiP();
