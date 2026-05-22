@@ -9,18 +9,18 @@
 数据防泄漏（Data Loss Prevention，简称为DLP）是系统级的数据防泄漏解决方案,提供跨设备文件的权限管理、加密存储、授权访问等能力。DLP通过加密技术对敏感文件进行保护,生成.dlp格式的加密文件(称为DLP文件)。当打开DLP文件时,系统会自动创建隔离的DLP沙箱环境,确保文件内容不会泄漏到非授权环境。企业级DLP文件支持细粒度的权限控制,包括查看、编辑、复制、打印、截屏等操作权限的管理。
 
 **使用场景**： 
-- 企业办公场景下，保护敏感文档不被非授权访问和泄露 
-- 多设备协同办公，确保文档在不同设备间的安全流转 
-- 文档分享与协作，实现细粒度的权限控制 
+- 企业办公场景下，保护敏感文档不被非授权访问和泄露
+- 多设备协同办公，确保文档在不同设备间的安全流转
+- 文档分享与协作，实现细粒度的权限控制
 
 **解决的问题**：
-- 解决企业数据在不同设备和人员间流转时的安全管控问题 
-- 防止敏感数据被未授权访问、复制或传播 
+- 解决企业数据在不同设备和人员间流转时的安全管控问题
+- 防止敏感数据被未授权访问、复制或传播
 - 解决跨设备文档权限管理的一致性问题
 
 **带来的收益**：  
-- 提升企业数据安全性，降低数据泄露风险 
-- 实现文档的细粒度权限控制，满足合规要求 
+- 提升企业数据安全性，降低数据泄露风险
+- 实现文档的细粒度权限控制，满足合规要求
 - 支持安全的文档协作，提升办公效率
 
 > **说明：**
@@ -262,7 +262,7 @@ console.info('originalFileName:', originalFileName);
 
 getDLPSuffix(): string
 
-获取DLP文件扩展名。接口为同步接口。
+获取DLP文件扩展名。调用成功后返回DLP文件扩展名（如'.dlp'）。接口为同步接口。
 
 **使用场景:** 用于获取DLP文件的标准扩展名，便于构建DLP文件名或进行文件类型判断。
 
@@ -370,7 +370,7 @@ dlpPermission.off('openDLPFile', (info: dlpPermission.AccessedDLPFileInfo) => {
 
 isInSandbox(): Promise&lt;boolean&gt;
 
-查询当前应用是否运行在DLP沙箱环境。使用Promise方式异步返回结果。
+查询当前应用是否运行在DLP沙箱环境。调用成功后返回boolean值，true表示运行在沙箱中，false表示不在沙箱中。使用Promise方式异步返回结果。
 
 **使用场景:** 用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
 
@@ -534,7 +534,7 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。Array不限长度，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
 
 **返回值：**
 
@@ -582,7 +582,7 @@ setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。Array不限长度，每个string长度范围[0, 4095]字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要设置保留状态的文件uri列表。不对Array长度进行限制，每个string长度范围[0, 4095]字节，超出此范围抛出错误码19100001。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
@@ -632,7 +632,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。Array不限长度，每个string长度范围[0, 4095]字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string长度范围[0, 4095]字节，超出此范围抛出错误码19100001。 |
 
 **返回值：**
 
@@ -677,7 +677,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。Array不限长度，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 是 | 表示需要取消保留状态的文件uri列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。err为undefined时表示设置成功；否则为错误对象。 |
 
 **错误码：**
@@ -1293,7 +1293,7 @@ DLP文件授权类型的枚举。
 | -------- | -------- | -------- | -------- | -------- |
 | appIndex | number | 否 | 否 | 表示DLP沙箱应用索引。取值范围为1001到1100。 |
 | bundleName | string | 否 | 否 | 表示应用包名。最小7字节，最大128字节，超出此范围抛出错误码19100001。 |
-| docUris | Array&lt;string&gt; | 否 | 否 | 表示DLP文件的URI列表。Array不限长度，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
+| docUris | Array&lt;string&gt; | 否 | 否 | 表示DLP文件的URI列表。不对Array长度进行限制，每个string不超过4095字节，超出此范围抛出错误码19100001。 |
 
 ## EnterprisePolicy<sup>21+</sup>
 
