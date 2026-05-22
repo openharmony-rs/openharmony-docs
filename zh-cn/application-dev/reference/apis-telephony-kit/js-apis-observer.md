@@ -835,7 +835,7 @@ let callback: (data: call.TelCallState) => void = (data: call.TelCallState) => {
 }
 observer.oncallStateChangeEx(callback);
 observer.offCallStateChangeEx(callback);
-observer.offcallStateChangeEx();
+observer.offCallStateChangeEx();
 ```
 
 
