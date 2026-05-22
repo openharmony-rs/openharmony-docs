@@ -77,7 +77,7 @@ total window num: 12
 | Mode | 窗口模式 | 1表示全屏模式，102表示自由悬浮窗模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
 | Flag | 状态标志位 | 0：正常显示状态；1：隐藏状态。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
-| Orientation | 窗口方向 | 窗口的实际显示方向。0：竖屏；1：反向横屏；2：反向竖屏；3：横屏。该定义与[RotationChangeInfo](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)中的orientation一致，与设置旋转策略的[Orientation枚举](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义不同。 |
+| Orientation | 窗口方向 | 窗口的实际显示方向。0：竖屏；1：反向横屏；2：反向竖屏；3：横屏。该定义与[RotationChangeInfo](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)中的orientation一致|
 | [ x y w h ] | 窗口矩形区域 | 窗口位置和大小，坐标以屏幕左顶点为原点。如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
 
 ### 查看获焦窗口
