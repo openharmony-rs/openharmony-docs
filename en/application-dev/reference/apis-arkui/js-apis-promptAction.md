@@ -1526,3 +1526,5 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 See the example of [promptAction.openCustomDialog](#promptactionopencustomdialogdeprecated).
+
+<!--no_check-->
