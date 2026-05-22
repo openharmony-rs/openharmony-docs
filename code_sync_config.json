@@ -37656,9 +37656,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":45,
 						"name":"request_suspend_delay",
-						"start_line":19
+						"start_line":21
 					},
 					{
 						"end_line":53,
