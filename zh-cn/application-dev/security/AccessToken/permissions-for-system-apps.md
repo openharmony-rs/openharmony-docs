@@ -341,6 +341,20 @@
 
 **起始版本**：11
 
+## ohos.permission.THEME_SKIN
+
+允许系统应用获取到skin目录下的换肤资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 允许应用读取无障碍配置信息。
@@ -2726,6 +2740,8 @@
 
 **起始版本**：11
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
 允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
@@ -3040,6 +3056,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | Wearable | PC/2in1 | Tablet
+
 **起始版本**：13
 
 ## ohos.permission.MANAGE_SHUTDOWN_FINDNETWORK
@@ -3051,6 +3069,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | Wearable | PC/2in1 | Tablet
 
 **起始版本**：15
 
@@ -3917,6 +3937,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -6184,3 +6206,33 @@
 **支持设备**：Phone
 
 **起始版本**：20
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+允许系统应用使用通行密钥服务的管理凭据功能。
+
+获取此权限后，应用可获取、删除通行密钥服务的全量凭据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
+## ohos.permission.TV_ACCESSORY_MANAGE
+
+允许系统应用查询与设置智慧屏配件信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
+
+**起始版本**：26.0.0

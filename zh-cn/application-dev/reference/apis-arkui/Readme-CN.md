@@ -104,6 +104,9 @@
   - 窗口管理<!--window-manager-api-->
     - [@ohos.window.floatView (标准悬浮窗)](js-apis-floatView.md)
     - [@ohos.PiPWindow (画中画窗口)](js-apis-pipWindow.md)
+    <!--Del-->
+    - [@ohos.PiPWindow (画中画窗口)(系统接口)](js-apis-pipWindow-sys.md)
+    <!--DelEnd-->
     - [@ohos.window.floatingBall (闪控球窗口)](js-apis-floatingBall.md)
     - @ohos.window (窗口)<!--js-apis-window-->
       - [模块描述](arkts-apis-window.md)
@@ -607,6 +610,7 @@
     - [native_interface_focus.h](capi-native-interface-focus-h.md)
     - [native_interface_xcomponent.h](capi-native-interface-xcomponent-h.md)
     - [native_key_event.h](capi-native-key-event-h.md)
+    - [native_material.h](capi-native-material-h.md)
     - [native_node.h](capi-native-node-h.md)
       - [ArkUI_NodeAttributeType（基础属性）](capi-native-node-h-nodeattributetype-base.md)
       - [ArkUI_NodeAttributeType（通用属性）](capi-native-node-h-nodeattributetype-common.md)
@@ -820,6 +824,10 @@
     - [ArkUI_CommandPathOption](capi-arkui-nativemodule-arkui-commandpathoption.md)
     - [ArkUI_FloatAnimatablePropertyHandle](capi-arkui-nativemodule-arkui-floatanimatablepropertyhandle.md)
     - [ArkUI_FloatPropertyHandle](capi-arkui-nativemodule-arkui-floatpropertyhandle.md)
+    - [ArkUI_ImmersiveMaterial](./capi-arkui-nativemodule-arkui-immersivematerial.md)
+    - [ArkUI_ImmersiveMaterial*](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md)
+    - [ArkUI_LightEffectOptions](./capi-arkui-nativemodule-arkui-lighteffectoptions.md)
+    - [ArkUI_LightEffectOptions*](./capi-arkui-nativemodule-arkui-lighteffectoptionshandle.md)
     - [ArkUI_NodeBorderColorOption](capi-arkui-nativemodule-arkui-nodebordercoloroption.md)
     - [ArkUI_NodeBorderRadiusOption](capi-arkui-nativemodule-arkui-nodeborderradiusoption.md)
     - [ArkUI_NodeBorderStyleOption](capi-arkui-nativemodule-arkui-nodeborderstyleoption.md)

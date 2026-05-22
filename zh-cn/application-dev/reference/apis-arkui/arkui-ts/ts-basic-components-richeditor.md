@@ -4785,7 +4785,9 @@ struct RichEditorDemo {
 ![PreventDefaultExample](figures/richEditorPreventDefault.gif)
 
 ### 示例15（配置文字特性效果）
-通过[addTextSpan](#addtextspan)接口设置文字特性效果（[fontFeature](#richeditortextstyle)）。当添加“ss01”特性的FontFeature属性时，数字“0”由原来的椭圆形改变为带有倒圆角形。
+该示例通过[addTextSpan](#addtextspan)接口设置文字特性效果（[fontFeature](#richeditortextstyle)）。当添加“ss01”特性的FontFeature属性时，数字“0”由原来的椭圆形改变为带有倒圆角形。同时通过[RichEditorTextStyle](#richeditortextstyle)的strokeJoinStyle接口设置文本描边拐角样式。
+
+从API版本26.0.0开始，[RichEditorTextStyle](#richeditortextstyle)新增strokeJoinStyle接口。
 
 ```ts
 @Entry
@@ -4812,7 +4814,8 @@ struct RichEditorExample {
                 style:
                 {
                   fontSize: 30,
-                  fontFeature: "\"ss01\" 1"
+                  fontFeature: "\"ss01\" 1",
+                  strokeJoinStyle: StrokeJoinStyle.MITER_JOIN
                 }
               })
           })
@@ -6771,3 +6774,98 @@ struct HorizontalScrollDemo {
 }
 ```
 ![enableHorizontalScroll](figures/richEditorHorizontalScroll.gif)
+
+### 示例42（设置文本着色器效果）
+
+该示例通过[RichEditorParagraphStyle](#richeditorparagraphstyle11)中shaderStyle接口实现文本着色效果。
+
+从API版本26.0.0开始，RichEditorParagraphStyle新增shaderStyle接口。
+
+```ts
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  controller1: RichEditorController = new RichEditorController();
+  options1: RichEditorOptions = { controller: this.controller1 };
+  controller2: RichEditorController = new RichEditorController();
+  options2: RichEditorOptions = { controller: this.controller2 };
+  controller3: RichEditorController = new RichEditorController();
+  options3: RichEditorOptions = { controller: this.controller3 };
+
+  aboutToAppear() {
+    this.controller.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions1 } })
+    this.controller1.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions2 } })
+    this.controller2.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.radialGradientOptions } })
+    this.controller3.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.colorShaderStyle } })
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options)
+        .width('80%')
+        .margin({ top: 10 })
+        .onReady(() => {
+          let spans: Array<RichEditorImageSpanResult | RichEditorTextSpanResult> =
+              this.controller.getSpans();
+          if (spans.length > 0 && (spans[0] as RichEditorTextSpanResult).paragraphStyle) {
+            let shaderStyle: ShaderStyle | undefined =
+              (spans[0] as RichEditorTextSpanResult).paragraphStyle?.shaderStyle;
+            if (typeof (shaderStyle as ColorShaderStyle)['color'] != 'undefined') {
+              console.info(' color shaderStyle : ' + JSON.stringify(shaderStyle));
+            } else if (typeof (shaderStyle as RadialGradientStyle)['options']['center'] != 'undefined') {
+              console.info(' radial gradient shaderStyle : ' + JSON.stringify(shaderStyle));
+            } else if (typeof (shaderStyle as LinearGradientStyle)['options']['colors'] != 'undefined') {
+              console.info(' linear gradient shaderStyle : ' + JSON.stringify(shaderStyle));
+            }
+          }
+        }).borderWidth(1)
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options1)
+        .width('80%')
+        .margin({ top: 10 })
+        .borderWidth(1)
+      Text('径向渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options2)
+        .width('80%')
+        .margin({ top: 10 })
+        .borderWidth(1)
+      Text('纯色').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options3)
+        .width('80%')
+        .margin({ top: 10 })
+        .borderWidth(1)
+    }
+  }
+}
+```
+![RichEditorShaderStyle](figures/richEditorShaderStyle.png)

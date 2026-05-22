@@ -23,7 +23,7 @@ Drag operations support both gesture-based and mouse-based interactions, which a
 
 ### ​Gesture-based Drag
 
-When dragging is initiated by a gesture, ArkUI first verifies that the component supports dragging. For components that are draggable by default ([Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md), [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)), ArkUI checks whether the [draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable) attribute is set to **true**<!--Del--> (the initial value of this attribute can be configured for these components through [system resources](../quick-start/resource-categories-and-access.md#system-resources))<!--DelEnd-->. For other components, ArkUI checks whether the [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) callback is configured. If the requirement is satisfied, dragging starts after the user has long pressed the component for 500 ms, and a drag preview is displayed after the user has long pressed the component for 800 ms. When combining drag operations with menus controlled by the **isShow** property in [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11), avoid adding an 800 ms delay before showing the menu after a user action, as this may lead to unexpected behavior.
+When dragging is initiated by a gesture, ArkUI first verifies that the component supports dragging. For components that are draggable by default ([Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md), [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md), [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md), [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md), [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md), [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md), and [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)), ArkUI checks whether the [draggable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#draggable) attribute is set to **true**<!--Del--> (the initial value of this attribute can be configured for these components by [obtaining resources for a specific configuration](../quick-start/resource-categories-and-access.md#obtaining-resources-for-a-specific-configuration))<!--DelEnd-->. For other components, ArkUI checks whether the [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) callback is configured. If the requirement is satisfied, dragging starts after the user has long pressed the component for 500 ms, and a drag preview is displayed after the user has long pressed the component for 800 ms. When combining drag operations with menus controlled by the **isShow** property in [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11), avoid adding an 800 ms delay before showing the menu after a user action, as this may lead to unexpected behavior.
 
 Below you can see the drag process initiated by a gesture (finger or stylus).
 
@@ -37,9 +37,9 @@ When a mouse device is used as the pointer, dragging starts as soon as the point
 
 Drag and drop can occur within a single application or span multiple applications. The following callback events allow you to detect drag status and intervene in the system's default drag behavior.
 
-| Callback Event| Description|
+| Callback Event| **Description**|
 | ---------------- | ------------------------|
-| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | Triggered when a draggable component starts being dragged.<br>You can use this callback to set drag data and preview. To avoid extra performance overhead, provide the preview as a pixel map, instead of using **customBuilder**.|
+| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart) | Triggered when a draggable component starts being dragged.<br>You can use this callback to set drag data and preview. You are advised to use the **pixelMap** field in [DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) to return the background image. Avoid using [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) as it may incur additional performance overhead.|
 | [onDragEnter](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | Triggered when the drag point enters the bounds of the component. This callback fires only if the component also listens for the [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop) event.|
 | [onDragMove](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove) | Triggered when the drag point moves within the bounds of the component. This callback fires only if the component also listens for the **onDrop** event.<br>During movement, you can use the **setResult** API in [DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) to affect the system's visual feedback.<br>1. Set **DragResult.DROP\_ENABLED** to signal that the component can accept a drop.<br>2. Set **DragResult.DROP\_DISABLED** to signal that the component cannot accept a drop.|
 | [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | Triggered when the drag point leaves the bounds of the component. This callback fires only if the component also listens for the **onDrop** event.<br>By default, the **onDragLeave** callback is not triggered in the following cases:<br>1. An item in a parent component is dragged to one of its child components.<br>2. The layout of the drop target component overlaps that of the drag source component.<br>Since API version 12, the [setDragEventStrictReportingEnabled](../reference/apis-arkui/arkts-apis-uicontext-dragcontroller.md#setdrageventstrictreportingenabled12) API in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) can be used to trigger the **onDragLeave** event in a strict fashion.|
@@ -82,7 +82,7 @@ You can use the getter methods supported by [DragEvent](../reference/apis-arkui/
 
 ## Drag Preview
 
-The drag preview is an image displayed during the drag and drop operation. It is a visual representation of the drag data, not the component itself. You can set it to any supported image that you want to display to users. The **customBuilder** or **pixelMap** object returned by the **onDragStart** callback can be used to set the drag preview displayed during dragging and moving, with a snapshot of the component being used as the default drag preview during a lift animation. The **customBuilder** or **pixelMap** object set by the **dragPreview** attribute can be used to set the drag preview during a lift animation and dragging. If no custom drag preview is set, the system uses a snapshot of the component by default.
+The drag preview is an image displayed during the drag and drop operation. It is a visual representation of the drag data, not the component itself. You can set it to any supported image that you want to display to users. Specifically, the **pixelMap** field of [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) or [DragItemInfo](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo) returned in the **onDragStart** callback can be used to set the drag preview. By default, the floating image is the screenshot of the component itself. The **pixelMap** field of **CustomBuilder** or **DragItemInfo** in the [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11) attribute can be used to configure the drag preview. If no custom drag preview is set, the system uses a snapshot of the component by default.
 
 You can configure opacity, rounded corners, shadow, and blur effects for the drag preview. For details, see [Drag and Drop Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md).
 
@@ -90,8 +90,8 @@ You can configure opacity, rounded corners, shadow, and blur effects for the dra
 
 **Constraints**:
 
-* For a container component, if the internal content exceeds the bounds of the component due to **position**, **offset**, or other settings, the component snapshot does not capture the excess content. To show the excess content, you can expand the container scope or use a custom container.
-* Regardless of whether you use a custom builder or rely on the default snapshot mechanism, the snapshot process does not support transformation APIs, including [scale](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale) and [rotate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#rotate).
+* For a container component, if the drawing area of internal content exceeds the container's bounds due to the use of APIs such as [position](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#position) and [offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset), the system screenshot will not capture content outside the bounds. To show the excess content, you can expand the container scope or use a custom container.
+* Regardless of whether you use a **CustomBuilder** or rely on the default snapshot mechanism, the snapshot process does not support transformation APIs, including [scale](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale) and [rotate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#rotate).
 
 ## Drag and Drop Implementation
 
@@ -499,7 +499,7 @@ export struct DefaultDrag {
 
 ### Multi-Select Drag and Drop Adaptation
 
-Since API version 12, the **GridItem** and **ListItem** components, which are child components of [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) and [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), respectively, support multi-select drag and drop, which can be initiated through the **onDragStart** API.
+Since API version 12, the [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) and [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) components in the [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) and [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) components support the multi-select drag and drop functions. Currently, only the **onDragStart** API can be used to trigger these functions.
 
 The following uses **Grid** as an example to describe the basic procedure for multi-select drag and drop development and key considerations during development.
 
@@ -529,7 +529,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
    }
    ```
 
-   Multi-select drag and drop is disabled by default. To enable it, set **isMultiSelectionEnabled** to **true** in the **DragInteractionOptions** parameter of the [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11) API. **DragInteractionOptions** also has the **defaultAnimationBeforeLifting** parameter, which, when set to **true**, applies a default scaling down animation as the lift animation for the component.
+   Multi-select drag and drop is disabled by default. To enable it, set **isMultiSelectionEnabled** to **true** in the **DragInteractionOptions** parameter of the [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11) API. **options** also has the **defaultAnimationBeforeLifting** parameter, which, when set to **true**, applies a default scaling down animation as the lift animation for the component.
 
    <!-- @[dragPreviewOptions_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -538,7 +538,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
      { isMultiSelectionEnabled: true, defaultAnimationBeforeLifting: true })
    ```
 
-   To maintain the selected state, set the **selected** attribute of the **GridItem** components to **true**. For example, you can use [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) to set a specific component to the selected state.
+   To ensure that the component is selected, set [selected](../reference/apis-arkui/arkui-ts/ts-container-griditem.md#selected10) of the **GridItem** child component to **true**. For example, you can use [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) to set a specific component to the selected state.
 
    <!-- @[grid_isSelected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -553,7 +553,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
 
 2. Optimize the multi-select drag and drop performance.
 
-   In multi-select drag and drop scenarios, there is a clustering animation effect when multiple items are selected. This effect captures a snapshot of the selected components currently displayed on the screen, which can incur high performance costs if there are too many selected components. To save on performance, multi-select drag and drop allows for the use of a snapshot from **dragPreview** as the basis for the clustering animation.
+   In multi-select drag and drop scenarios, there is a clustering animation effect when multiple items are selected. This effect captures a snapshot of the selected components currently displayed on the screen, which can incur high performance costs if there are too many selected components. To optimize performance, the multi-select drag and drop function can obtain screenshots from the [dragPreview](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreview11) to implement the clustering animation effect, thereby effectively saving system resources.
 
    <!-- @[dragPreview_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
    
@@ -615,7 +615,7 @@ The following uses **Grid** as an example to describe the basic procedure for mu
 
 4. Adapt the number badge.
 
-    Configure the number badge for multi-select drag and drop using the **numberBadge** parameter in **dragPreviewOptions**, adjusting it based on the number of selected items.
+    Currently, the number badge for multi-select drag and drop needs to be set by the application using the **numberBadge** parameter in [dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11). You need to set the number badge based on the number of selected nodes.
 
     <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
     
@@ -779,7 +779,7 @@ When you need to create custom drop animations, you can disable the default syst
 
 3. Trigger the custom drop animation.
 
-   Configure the **onDrop** callback to receive the drag data. Execute your custom drop animation using the [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18) API. Set [useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7) to **true** to disable the default system animation.
+   Configure the **onDrop** callback to receive the drag data. Execute your custom drop animation using the [executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18) API. Set [useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#properties) to **true** to disable the default system animation.
 
    <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
@@ -1225,7 +1225,7 @@ Beyond view transitions, spring loading can also activate specific UI elements. 
 
 ### Implementation Principle
 
-To implement this feature, register the **onDragSpringLoading** API on a component and pass a callback to handle hover trigger notifications. Once registered, the component acts as a drop target (similar to components using the **onDrop** API) and follows the same hit detection rules: Only the topmost component under the hover position receives the drag event response.
+To implement these capabilities, you need to register the [onDragSpringLoading](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragspringloading20) API on the component and pass a callback to handle notifications triggered by drag hover. Once registered, the component acts as a drop target (similar to components using the **onDrop** API) and follows the same hit detection rules: Only the topmost component under the hover position receives the drag event response.
 
 The spring loading process follows three distinct phases: hover detection -> callback notification -> completion. If the user continues dragging before completion, spring loading is automatically canceled, triggering a cancellation notification to the application. However, if dragging is resumed during the hover detection phase before the spring loading state is entered, no cancellation notification is sent.
 
@@ -1308,7 +1308,7 @@ The following example demonstrates how to implement the device search functional
 
 1. Prepare components.
 
-  For simplicity, create two core components: a draggable text component and a button component. The button responds to spring loading to activate a view implemented using **bindSheet**, containing a text box for receiving dragged text and a text component for displaying search results.
+  For simplicity, create two core components: a draggable text component and a button component. The activated view is implemented via [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet). It contains an input box control for receiving dragged text and a text component for displaying search results.
 
   <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   

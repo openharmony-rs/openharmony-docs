@@ -1,8 +1,8 @@
 # NotificationUserInput
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -16,6 +16,6 @@ The **NotificationUserInput** module provides APIs for defining the notification
 
 **System capability**: SystemCapability.Notification.Notification
 
-| Name    | Type   | Read-Only| Optional| Description                         |
+| Name    | Type   | Read Only| Optional| Description                         |
 | -------- | ------ |----- | ---- | ----------------------------- |
 | inputKey | string | No  |  No | Key to identify the user input.|
