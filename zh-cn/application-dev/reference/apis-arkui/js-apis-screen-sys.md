@@ -499,9 +499,9 @@ ArkTS-Sta: makeMirror(mainScreen:long, mirrorScreen:Array&lt;long&gt;, callback:
 
 | 参数名       | 类型                        | 必填 | 说明                 |
 | ------------ | --------------------------- | ---- |--------------------|
-| mainScreen   | ArkTs-Dyn: number <br> ArkTs-Sta: long                      | 是   | 主屏幕ID，该参数仅支持整数输入。  |
-| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 |
-| callback     | ArkTs-Dyn: AsyncCallback&lt;number&gt; <br> ArkTs-Sta: AsyncCallback&lt;long&gt; | 是   | 回调函数。返回镜像屏幕的群组id，其中id为整数。  |
+| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long                      | 是   | 主屏幕ID，该参数仅支持整数输入。  |
+| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 |
+| callback     | ArkTS-Dyn: AsyncCallback&lt;number&gt; <br> ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 回调函数。返回镜像屏幕的群组id，其中id为整数。  |
 
 **错误码：**
 
@@ -569,14 +569,14 @@ ArkTS-Sta: makeMirror(mainScreen:long, mirrorScreen:Array&lt;long&gt;): Promise&
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | ArkTs-Dyn: number <br> ArkTs-Sta: long              | 是   | 主屏幕ID，该参数仅支持整数输入。  |
-| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为整数。 |
+| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long              | 是   | 主屏幕ID，该参数仅支持整数输入。  |
+| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为整数。 |
 
 **返回值：**
 
 | 类型                  | 说明                              |
 | --------------------- |---------------------------------|
-| ArkTs-Dyn: Promise&lt;number&gt; <br> ArkTs-Sta: Promise&lt;long&gt; | Promise对象。返回镜像屏幕的群组id，其中id为整数。 |
+| ArkTS-Dyn: Promise&lt;number&gt; <br> ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回镜像屏幕的群组id，其中id为整数。 |
 
 **错误码：**
 
@@ -638,7 +638,7 @@ ArkTS-Sta: stopMirror(mirrorScreen:Array&lt;long&gt;, callback: AsyncCallback&lt
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -705,7 +705,7 @@ ArkTS-Sta: stopMirror(mirrorScreen:Array&lt;long&gt;): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                 |
 | ------------ | ------------------- | --- |--------------------|
-| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合，其中ID应为整数。mirrorScreen数组大小不应超过1000。 |
 
 **返回值：**
 
@@ -771,13 +771,13 @@ ArkTS-Sta: makeUnique(uniqueScreen: Array&lt;long&gt;): Promise&lt;Array&lt;long
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| uniqueScreen  | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 异源屏幕ID集合。其中ID应为大于0的整数，否则返回401错误码。 |
+| uniqueScreen  | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt; | 是   | 异源屏幕ID集合。其中ID应为大于0的整数，否则返回401错误码。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| ArkTs-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br> ArkTs-Sta: Promise&lt;Array&lt;long&gt;&gt; | Promise对象。返回异源屏幕的displayId集合，其中id为大于0的整数。|
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt; <br> ArkTS-Sta: Promise&lt;Array&lt;long&gt;&gt; | Promise对象。返回异源屏幕的displayId集合，其中id为大于0的整数。|
 
 **错误码：**
 
@@ -1024,7 +1024,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long, callback: AsyncCallback&lt;void&g
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| screenId | ArkTs-Dyn: number <br> ArkTs-Sta: long             | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
+| screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long             | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当销毁虚拟屏幕成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1092,7 +1092,7 @@ ArkTS-Sta: destroyVirtualScreen(screenId:long): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明       |
 | -------- | ------ | ---- | ---------- |
-| screenId | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。 |
+| screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -1161,7 +1161,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string, callback: A
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
+| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
 | surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
@@ -1258,7 +1258,7 @@ ArkTS-Sta: setVirtualScreenSurface(screenId:long, surfaceId: string): Promise&lt
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。    |
+| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕的id，该参数仅支持整数输入。    |
 | surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 
 **返回值：**
@@ -1352,7 +1352,7 @@ ArkTS-Sta: setScreenPrivacyMaskImage(screenId:long, image?: image.PixelMap): Pro
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 屏幕的id，该参数仅支持正整数输入。    |
+| screenId  | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 屏幕的id，该参数仅支持正整数输入。    |
 | image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 屏幕的隐私蒙版图片，不传入则使用默认隐私蒙版图片。 |
 
 **返回值：**
@@ -1682,8 +1682,8 @@ ArkTS-Sta: setMultiScreenMode(primaryScreenId: long, secondaryScreenId: long, se
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是  | 主屏的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
-| secondaryScreenId | ArkTs-Dyn: number <br> ArkTs-Sta: long           | 是  | 扩展屏幕的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| primaryScreenId   | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 主屏的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| secondaryScreenId | ArkTS-Dyn: number <br> ArkTS-Sta: long           | 是  | 扩展屏幕的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
 **返回值：**
@@ -1890,8 +1890,8 @@ ArkTS-Sta: makeMirrorWithRegion(mainScreen:long, mirrorScreen:Array&lt;long&gt;,
 
 | 参数名       | 类型                | 必填 | 说明                 |
 | ------------ | ------------------- | ---- |--------------------|
-| mainScreen   | ArkTs-Dyn: number <br> ArkTs-Sta: long              | 是   | 主屏幕ID，该参数仅支持正整数输入。  |
-| mirrorScreen | ArkTs-Dyn: Array&lt;number&gt; <br> ArkTs-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为正整数。  |
+| mainScreen   | ArkTS-Dyn: number <br> ArkTS-Sta: long              | 是   | 主屏幕ID，该参数仅支持正整数输入。  |
+| mirrorScreen | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;long&gt; | 是   | 镜像屏幕ID集合。其中ID应为正整数。  |
 | mainScreenRegion | [Rect](#rect19) | 是   | 主屏创建镜像的矩形区域。         |
 
 **返回值：**
@@ -2190,9 +2190,9 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称     | 类型 | 只读 | 可选 | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
-| screenId | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的id，该参数应为整数。          |
-| startX   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标，该参数应为整数。 |
-| startY   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标，该参数应为整数。 |
+| screenId | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的id，该参数应为整数。          |
+| startX   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标，该参数应为整数。 |
+| startY   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标，该参数应为整数。 |
 
 ## MultiScreenMode<sup>13+</sup>
 
@@ -2225,9 +2225,9 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称    | 类型     | 只读 | 可选  | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
-| id       | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的ID，该参数应为正整数，非正整数会作为非法参数报错。|
-| startX   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
-| startY   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
+| id       | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的ID，该参数应为正整数，非正整数会作为非法参数报错。|
+| startX   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
+| startY   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
 
 ## VirtualScreenOption
 
@@ -2244,9 +2244,9 @@ screen.stopExpand(expandScreenIds).then(() => {
 | 名称      | 类型 | 只读 | 可选 | 说明                       |
 | --------- | -------- | ---- | ---- |--------------------------|
 | name      | string   | 否   | 否   | 指定虚拟屏幕的名称。               |
-| width     | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为整数。 |
-| height    | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为整数。 |
-| density   | ArkTs-Dyn: number <br> ArkTs-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
+| width     | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为整数。 |
+| height    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为整数。 |
+| density   | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
 | supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
 | userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。 |
@@ -2266,11 +2266,11 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称              | 类型                                       | 只读 | 可选 | 说明                                                          |
 | ----------------- | ---------------------------------------------- | ---- | ---- |-------------------------------------------------------------|
-| id                | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 屏幕的ID，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23      |
-| rsId<sup>21+</sup> |ArkTs-Dyn: number <br> ArkTs-Sta: long | 是 | 否 | 屏幕端口的id，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 21   <br/>  **ArkTS-Sta起始版本：** 23|
-| parent            | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。 <br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23     |
+| id                | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 屏幕的ID，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23      |
+| rsId<sup>21+</sup> |ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 屏幕端口的id，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 21   <br/>  **ArkTS-Sta起始版本：** 23|
+| parent            | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。 <br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23     |
 | supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
-| activeModeIndex   | ArkTs-Dyn: number <br> ArkTs-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
+| activeModeIndex   | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br/> **ArkTS-Dyn起始版本：** 10   <br/>  **ArkTS-Sta起始版本：** 23     |
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。**ArkTS-Dyn起始版本：** 15   <br/>  **ArkTS-Sta起始版本：** 23 |
@@ -2478,6 +2478,104 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+
+### setOrientation
+
+setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions): Promise\<void>
+
+设置屏幕方向，使用Promise异步回调。
+
+可通过orientationOptions参数指定旋转时是否带有动画、是否忽略系统窗口的旋转锁定。
+
+当设置的方向符合应用旋转策略（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛出异常。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                        | 必填 | 说明       |
+| ----------- | --------------------------- | ---- | ---------- |
+| orientation | [Orientation](#orientation) | 是   | 屏幕方向。 |
+| orientationOptions | [OrientationOptions](#orientationoptions) | 否 | 设置屏幕旋转时的可选参数。默认带动画旋转屏幕，不忽略旋转锁定。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API.|
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let orientationOptions : screen.OrientationOptions = {
+  needAnimation: true,
+  ignoreRotationLock: false,
+};
+
+let screenClass: screen.Screen | null = null;
+let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+screensPromise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    screenClass = data[0];
+    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
+    promise.then(() => {
+      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to set the vertical orientation with orientationOptions. Code:${err.code}, message is ${err.message}`);
+    });
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code:${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let orientationOptions : screen.OrientationOptions = {
+  needAnimation: true,
+  ignoreRotationLock: false,
+};
+
+let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
+screensPromise.then((data: Array<screen.Screen>) => {
+  if (data.length > 0) {
+    let screenClass: screen.Screen = data[0];
+    let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
+    promise.then(() => {
+      console.info('Succeeded in setting the vertical orientation with orientationOptions.');
+    }).catch((err: Error) => {
+      console.error(`Failed to set the vertical orientation with orientationOptions. Code:${err?.code}, message is ${err?.message}`);
+    });
+  }
+}).catch((err: Error) => {
+  console.error(`Failed to get all screens. Code:${err?.code}, message is ${err?.message}`);
+});
+```
+
 ### setScreenActiveMode
 
 ArkTS-Dyn: setScreenActiveMode(modeIndex: number, callback: AsyncCallback&lt;void&gt;): void
@@ -2498,7 +2596,7 @@ ArkTS-Sta: setScreenActiveMode(modeIndex: long, callback: AsyncCallback&lt;void&
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| modeIndex | ArkTs-Dyn: number <br> ArkTs-Sta: long      | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中[ScreenModeInfo](#screenmodeinfo)属性的模式id。 |
+| modeIndex | ArkTS-Dyn: number <br> ArkTS-Sta: long      | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中[ScreenModeInfo](#screenmodeinfo)属性的模式id。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置屏幕当前显示模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -2604,7 +2702,7 @@ ArkTS-Sta: setScreenActiveMode(modeIndex: long): Promise&lt;void&gt;
 
 | 参数名    | 类型   | 必填 | 说明       |
 | --------- | ------ | ---- | ---------- |
-| modeIndex | ArkTs-Dyn: number <br> ArkTs-Sta: long | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。 |
+| modeIndex | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -2954,10 +3052,10 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
-| id          | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 模式ID，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
-| width       | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的宽度，单位为px，该参数为整数。                                |
-| height      | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 屏幕的高度，单位为px，该参数为整数。                                |
-| refreshRate | ArkTs-Dyn: number <br> ArkTs-Sta: int   | 否   | 否   | 屏幕的刷新率，单位为hz，该参数为整数。                                     |
+| id          | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 模式ID，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
+| width       | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的宽度，单位为px，该参数为整数。                                |
+| height      | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 屏幕的高度，单位为px，该参数为整数。                                |
+| refreshRate | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否   | 否   | 屏幕的刷新率，单位为hz，该参数为整数。                                     |
 
 ## Rect<sup>19+</sup>
 
@@ -2973,7 +3071,26 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
-| left    | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形左上角顶点的X轴坐标，单位为px，该参数应为整数。 |
-| top     | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形左上角顶点的Y轴坐标，单位为px，该参数应为整数。 |
-| width   | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形的宽度，单位为px，该参数应为整数。             |
-| height  | ArkTs-Dyn: number <br> ArkTs-Sta: long   | 否   | 否   | 矩形的高度，单位为px，该参数应为整数。             |
+| left    | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形左上角顶点的X轴坐标，单位为px，该参数应为整数。 |
+| top     | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形左上角顶点的Y轴坐标，单位为px，该参数应为整数。 |
+| width   | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形的宽度，单位为px，该参数应为整数。             |
+| height  | ArkTS-Dyn: number <br> ArkTS-Sta: long   | 否   | 否   | 矩形的高度，单位为px，该参数应为整数。             |
+
+## OrientationOptions
+
+设置屏幕方向的可选参数。
+
+**模型约束：** 此字段仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称        | 类型 | 只读 | 可选 | 说明                                               |
+| ----------- | -------- | ---- | ---- | -------------------------------------------------- |
+| needAnimation          | boolean   | 否   | 是   |  是否带动画旋转。true表示带动画旋转屏幕，false表示不带动画旋转屏幕。默认值为true。 | 
+| ignoreRotationLock     | boolean   | 否   | 是   |  是否忽略旋转锁定。true表示即使某些系统窗口锁定屏幕旋转，也允许屏幕旋转；false表示当系统窗口锁定屏幕旋转时，不允许屏幕旋转。默认值为false。<br> **设备行为差异：** 该字段仅在PC/2in1设备（非折叠PC）和其他设备的电脑模式下生效，在其他设备中调用不生效不报错。|

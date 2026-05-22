@@ -1266,6 +1266,26 @@ Failed to uninstall the plugin because the specified plugin is not found.
 
 <!--DelEnd-->
 
+## 17700093 指定的skillName不存在
+
+**错误信息**
+
+The specified skillName is not found.
+
+**错误描述**
+
+未找到与指定skillName匹配的Skill信息，指定的skillName不存在。
+
+**可能原因**
+
+1. 传入查询接口的skillName有误。
+2. 传入查询接口的Skill没有安装。
+
+**处理步骤**
+
+1. 排查skillName，确认拼写无误。
+2. 使用[bm工具](../../tools/bm-tool.md)安装对应Skill所在的应用。
+
 ## 17700101 包管理服务异常
 **错误信息**<br/>
 Bundle manager service exception.

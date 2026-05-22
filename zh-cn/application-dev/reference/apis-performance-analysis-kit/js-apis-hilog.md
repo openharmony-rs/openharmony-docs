@@ -2,14 +2,16 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @liuyifeifei;@buzhenwang-->
-<!--Designer: @shenchenkai-->
+<!--Owner: @buzhenwang-->
+<!--Designer: @milkbread123-->
 <!--Tester: @liyang2235-->
 <!--Adviser: @jinqiuheng-->
 
 hilog日志系统，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容，帮助开发者了解应用/服务的运行状态，更好地调试程序。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -21,7 +23,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 ## hilog.isLoggable
 
-isLoggable(domain: number, tag: string, level: LogLevel) : boolean
+ArkTS-Dyn: isLoggable(domain: number, tag: string, level: LogLevel): boolean
+
+ArkTS-Sta: isLoggable(domain: int, tag: string, level: LogLevel): boolean
 
 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。
 
@@ -29,11 +33,15 @@ isLoggable(domain: number, tag: string, level: LogLevel) : boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                                                         |
 | ------ | --------------------- | ---- | ------------------------------------------------------------ |
-| domain | number                | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int    | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string                | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | level  | [LogLevel](#loglevel) | 是   | 日志级别。                                                   |
 
@@ -57,6 +65,10 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 | 名称  |   值   | 说明                                                         |
 | ----- | ------ | ------------------------------------------------------------ |
 | DEBUG | 3      | 详细的流程记录，通过该级别的日志可以更详细地分析业务流程和定位分析问题。 |
@@ -67,7 +79,9 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 ## hilog.debug
 
-debug(domain: number, tag: string, format: string, ...args: any[]) : void
+ArkTS-Dyn: debug(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: debug(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印DEBUG级别的日志。
 
@@ -77,14 +91,18 @@ DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。 |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
-| args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
+| args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
 **示例：**
 
@@ -104,7 +122,9 @@ hilog.debug(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 ## hilog.info
 
-info(domain: number, tag: string, format: string, ...args: any[]) : void
+ArkTS-Dyn: info(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: info(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印INFO级别的日志。
 
@@ -112,14 +132,18 @@ info(domain: number, tag: string, format: string, ...args: any[]) : void
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
-| args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
+| args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
 **示例：**
 
@@ -139,7 +163,9 @@ hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 ## hilog.warn
 
-warn(domain: number, tag: string, format: string, ...args: any[]) : void
+ArkTS-Dyn: warn(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: warn(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印WARN级别的日志。
 
@@ -147,14 +173,18 @@ warn(domain: number, tag: string, format: string, ...args: any[]) : void
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
-| args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
+| args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
 **示例：**
 
@@ -174,7 +204,9 @@ hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 ## hilog.error
 
-error(domain: number, tag: string, format: string, ...args: any[]) : void
+ArkTS-Dyn: error(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: error(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印ERROR级别的日志。
 
@@ -182,14 +214,18 @@ error(domain: number, tag: string, format: string, ...args: any[]) : void
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。 tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。|
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
-| args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
+| args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
 **示例：**
 
@@ -209,7 +245,9 @@ hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 ## hilog.fatal
 
-fatal(domain: number, tag: string, format: string, ...args: any[]) : void
+ArkTS-Dyn: fatal(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: fatal(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印FATAL级别的日志。
 
@@ -217,14 +255,18 @@ fatal(domain: number, tag: string, format: string, ...args: any[]) : void
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
+**ArkTS-Dyn起始版本**：7
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| domain | number | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
+| domain | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 日志对应的领域标识，范围是0x0~0xFFFF，超出范围则日志无法打印。<br/>建议开发者在应用内根据需要自定义划分。  |
 | tag    | string | 是   | 指定日志标识，可以为任意字符串，建议用于标识调用所在的类或者业务行为。tag长度最多为31字节，超出后会截断，不建议使用中文字符，可能出现乱码或者对齐问题。 |
 | format | string | 是   | 格式字符串，用于日志的格式化输出。格式字符串中可以设置多个参数，参数需要包含参数类型、隐私标识。<br/>隐私标识分为{public}和{private}，缺省为{private}。标识{public}的内容明文输出，标识{private}的内容以\<private>过滤回显。 |
-| args   | any[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
+| args   | ArkTS-Dyn: any[]<br>ArkTS-Sta: [RecordData](../apis-arkdata/js-apis-data-preferences.md#recorddata23)[]  | 否   | 与格式字符串format对应的可变长度参数列表。参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
 **示例：**
 
@@ -257,6 +299,10 @@ setMinLogLevel(level: LogLevel): void
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -309,6 +355,10 @@ setLogLevel(level: LogLevel, prefer: PreferStrategy): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                                                         |
@@ -323,6 +373,10 @@ setLogLevel(level: LogLevel, prefer: PreferStrategy): void
 **原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
 
 | 名称  |   值   | 说明                                                         |
 | ------ | --------------------- | ------------------------------------------------------------ |

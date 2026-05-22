@@ -846,7 +846,7 @@ Failed to obtain the target application information.
 
 **错误描述**
 
-调用[URI授权相关接口](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
+调用[@ohos.application.uriPermissionManager (URI权限管理)(系统接口)](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
 
 **可能原因**
 
@@ -860,6 +860,24 @@ Failed to obtain the target application information.
 2. 检查分身应用索引是否在允许范围内。
 3. 检查目标应用是否创建了该索引对应的分身应用。
 <!--DelEnd-->
+
+## 16000082 UIAbility正在启动中
+
+**错误信息**
+
+The UIAbility is being started.
+
+**错误描述**
+
+UIAbility正在启动中，onCreate或onWindowStageCreate生命周期回调尚未完成。
+
+**可能原因**
+
+UIAbility仍处于启动阶段，onCreate或onWindowStageCreate回调尚未执行完成。
+
+**处理步骤**
+
+等待UIAbility完成onCreate或onWindowStageCreate生命周期回调后再执行相关操作。
 
 ## 16000083 不允许该类型ExtensionAbility启动指定Ability
 
@@ -2683,3 +2701,39 @@ Maximum connections from the same caller have been reached.
 **处理步骤**
 
 调用方断开一些连接后重新发起连接。
+
+## 16000161 当前进程的处理流程尚未结束，无法调用此API
+
+**错误信息**
+
+Delayed process exit is not pending in the current process, and this API cannot be called.
+
+**错误描述**
+
+在当前进程中，由于延迟退出进程未处于等待状态，因此无法调用此API。
+
+**可能原因**
+
+调用方在调用该API前，未启用当前进程延迟退出功能。
+
+**处理步骤**
+
+调用方先调用启用当前进程延迟退出接口，再调用该API。
+
+## 16000162 当前的进程中仍有其他UIAbility，无法调用此API
+
+**错误信息**
+
+The current process still has another UIAbility, and this API cannot be called.
+
+**错误描述**
+
+当前的进程中仍有其他UIAbility，此API无法被调用。
+
+**可能原因**
+
+调用方当前进程中还存在其他的UIAbility。
+
+**处理步骤**
+
+调用方保证当前进程中只有一个UIAbility且处于退出状态。
