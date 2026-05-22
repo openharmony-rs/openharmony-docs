@@ -285,7 +285,7 @@ ArkTS-Sta: radiusHeight(rHeight: double | string): this
 | ------ | ------------------------ |
 | ArkTS-Dyn: [RectShape](#rectshape)<br/>ArkTS-Sta: this | 返回RectShape对象。 |
 
-### radius<sup>12+</sup>
+### radius
 
 ArkTS-Dyn: radius(radius: number | string | Array<number | string>): RectShape
 
