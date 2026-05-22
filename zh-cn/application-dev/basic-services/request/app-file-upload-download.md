@@ -147,6 +147,71 @@ ArkTS-Sta示例：
 
 <!-- @[request_upload_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/upload/RequestUpload.ets)-->
 
+``` TypeScript
+async requestUploadFile(fileName: string, callback: (progress: int, isSuccess: boolean) => void,
+  context: common.UIAbilityContext): Promise<void> {
+  // 获取应用文件路径
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+  let url: string = await urlUtils.getUrl(context);
+  let cacheDir: string = context.cacheDir;
+
+  // 新建一个本地应用文件
+  try {
+    let file = fileIo.openSync(cacheDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, 'upload file test');
+    fileIo.closeSync(file);
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
+  }
+
+  // 上传任务配置项
+  let files: request.File[] = [
+    // uri前缀internal://cache 对应cacheDir目录
+    {
+      filename: fileName,
+      name: 'test',
+      uri: 'internal://cache/' + fileName,
+      type: 'txt'
+    }
+  ];
+  let data: request.RequestData[] = [{ name: 'name', value: 'value' }];
+  let uploadConfig: request.UploadConfig = {
+    url: url,
+    header: {
+      'key1': 'value1',
+      'key2': 'value2'
+    },
+    method: 'POST',
+    files: files,
+    data: data
+  };
+
+  // 将本地应用文件上传至网络服务器
+  try {
+    let uploadTask: request.UploadTask = await request.uploadFile(context, uploadConfig);
+    uploadTask.onProgress((uploadedSize: Long, totalSize: Long): void => {
+      let progress: int = totalSize > 0 ? Long.toInt(uploadedSize * 100 / totalSize) : 0;
+      logger.info(TAG, `upload progress=${progress}%`);
+    });
+    uploadTask.onComplete((taskStates: request.TaskState[]): void => {
+      for (let i: int = 0; i < taskStates.length; i++) {
+        logger.info(TAG, `upload complete taskState: ${JSON.stringify(taskStates[i])}`);
+      }
+      callback(100, true);
+    });
+    uploadTask.onFail((taskStates: request.TaskState[]): void => {
+      logger.error(TAG, `upload failed taskState: ${JSON.stringify(taskStates)}`);
+      callback(100, false);
+    });
+  } catch (error) {
+    let err: BusinessError = error as BusinessError;
+    logger.error(TAG, `Invoke uploadFile failed, code=${err.code}, message=${err.message}`);
+    callback(100, false);
+  }
+}
+```
+
 <!-- -->
 
 <!-- @[upload_agent_task](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/request/UploadDownloadStatic/entry/src/main/ets/upload/RequestUpload.ets)--> 
