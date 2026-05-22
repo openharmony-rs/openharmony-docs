@@ -3259,7 +3259,7 @@ ArkTS-Dyn: getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;)
 
 ArkTS-Sta: getBundleIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
 
-通过uid查询对应的bundleId，使用callback异步回调。
+通过uid查询对应的bundleId。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3337,7 +3337,7 @@ ArkTS-Dyn: getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
 ArkTS-Sta: getBundleIdForUid(uid: int): Promise&lt;int&gt;
 
-通过uid查询对应的bundleId，使用Promise异步回调。
+通过uid查询对应的bundleId。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3896,7 +3896,7 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询当前进程是否处于主用户，使用callback异步回调。
+查询当前进程是否处于主用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3971,7 +3971,7 @@ ArkTS-Sta示例：
 
 isMainOsAccount(): Promise&lt;boolean&gt;
 
-查询当前进程是否处于主用户，使用Promise异步回调。
+查询当前进程是否处于主用户。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4207,7 +4207,7 @@ ArkTS-Dyn: getOsAccountConstraintSourceTypes(localId: number, constraint: string
 
 ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, callback: AsyncCallback&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;): void
 
-查询指定系统账号的指定约束来源信息，使用callback异步回调。
+查询指定系统账号的指定约束来源信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4290,7 +4290,7 @@ ArkTS-Dyn: getOsAccountConstraintSourceTypes(localId: number, constraint: string
 
 ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
 
-查询指定系统账号的指定约束来源信息，使用Promise异步回调。
+查询指定系统账号的指定约束来源信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4375,7 +4375,7 @@ ArkTS-Dyn: getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 ArkTS-Sta: getOsAccountType(localId: int): Promise&lt;OsAccountType&gt;
 
-查询指定系统账号的类型，使用Promise异步回调。
+查询指定系统账号的类型。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -8523,26 +8523,26 @@ ArkTS-Sta示例：
 
 ### getAccessToken<sup>11+</sup>
 
-ArkTS-Dyn: getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&lt;Uint8Array&gt;): void
+getAccessToken(businessParams: Record&lt;string, Object&gt;, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: AsyncCallback&lt;Uint8Array&gt;): void
-
-获取当前域账号的业务访问令牌，使用callback异步回调。
+获取当前域账号的业务访问令牌。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getAccessToken](#getaccesstoken23)。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
-| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 指示结果回调。如果获取成功，err返回null，否则为错误对象。|
+| businessParams | Record&lt;string, Object&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 回调函数。如果获取成功，err返回null，否则为错误对象。|
 
 **错误码：**
 
@@ -8563,7 +8563,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: 
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8587,7 +8586,48 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例：
+### getAccessToken<sup>23+</sup>
+
+getAccessToken(businessParams: Record&lt;string, RecordData&gt;, callback: AsyncCallback&lt;Uint8Array&gt;): void
+
+获取当前域账号的业务访问令牌。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getAccessToken](#getaccesstoken11)。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| businessParams | Record&lt;string, RecordData&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 回调函数。如果获取成功，err返回null，否则为错误对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid business parameters. |
+| 12300003 | Domain account not found. |
+| 12300013 | Network exception. |
+| 12300014 | The domain account is not authenticated. |
+| 12300111 | The operation time out. |
+| 12300114 | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8614,25 +8654,25 @@ ArkTS-Sta示例：
 
 ### getAccessToken<sup>11+</sup>
 
-ArkTS-Dyn: getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt;
+getAccessToken(businessParams: Record&lt;string, Object&gt;): Promise&lt;Uint8Array&gt;
 
-ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uint8Array&gt;
-
-查询当前域账号的业务访问令牌，使用promise异步回调。
+查询当前域账号的业务访问令牌。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getAccessToken](#getaccesstoken23-1)。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| businessParams | Record&lt;string, Object&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
 
 **返回值：**
 
@@ -8659,7 +8699,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Pro
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8681,7 +8720,53 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例：
+### getAccessToken<sup>23+</sup>
+
+getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uint8Array&gt;
+
+查询当前域账号的业务访问令牌。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getAccessToken](#getaccesstoken11-1)。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| businessParams | Record&lt;string, RecordData&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| :------------------------ | ----------------------- |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid business parameters. |
+| 12300003 | Domain account not found. |
+| 12300013 | Network exception. |
+| 12300014 | The domain account is not authenticated. |
+| 12300111 | The operation time out. |
+| 12300114 | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -9355,7 +9440,7 @@ ArkTS-Sta示例：
 
 delUser(token: Uint8Array, callback: IIdmCallback): void
 
-删除具有身份验证令牌的用户，使用callback异步回调。
+删除具有身份验证令牌的用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
