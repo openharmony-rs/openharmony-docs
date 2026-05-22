@@ -48,6 +48,8 @@ enableNestedScroll(enabled: Optional\<boolean>)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -71,6 +73,8 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 设置滚动条滑块的颜色，仅滚动条不放置子组件时生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
