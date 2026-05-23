@@ -196,21 +196,21 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 6. 发现结束或页面退出时，调用停止发现接口释放发现监听。
 
    <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
-
+   
    ``` TypeScript
    stopDeviceDiscovery(): void {
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
-
+     logger.info('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery');
      try {
        this.deviceManager.stopDiscovering();
        this.deviceManager.off('discoverSuccess');
        this.deviceManager.off('discoverFailure');
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+     } catch (e) {
+       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + e.toString());
      }
    }
    ```
