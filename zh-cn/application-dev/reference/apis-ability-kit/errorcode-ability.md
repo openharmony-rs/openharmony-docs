@@ -846,7 +846,7 @@ Failed to obtain the target application information.
 
 **错误描述**
 
-调用[URI授权相关接口](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
+调用[@ohos.application.uriPermissionManager (URI权限管理)(系统接口)](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
 
 **可能原因**
 
@@ -2679,3 +2679,97 @@ Maximum connections from the same caller have been reached.
 **处理步骤**
 
 调用方断开一些连接后重新发起连接。
+
+<!--Del-->
+## 35600030 CLI工具不存在
+
+**错误信息**
+
+No tool with the specified name exists.
+
+**错误描述**
+
+指定的工具不存在。
+
+**可能原因**
+
+系统内不存在此工具。
+
+**处理步骤**
+
+检查传入的cliName是否正确，需重新传入正确的cliName。
+
+## 35600031 工具并发数已达上限
+
+**错误信息**
+
+Maximum number of processes has been reached.
+
+**错误描述**
+
+工具并发数已达上限。
+
+**可能原因**
+
+系统内正在运行的工具已达到系统允许的上限，不允许再发起新的连接请求。
+
+**处理步骤**
+
+等待部分工具执行结束后重新发起连接。
+
+## 35600032 指定的session不存在
+
+**错误信息**
+
+The session does not exist.
+
+**错误描述**
+
+指定的session不存在。
+
+**可能原因**
+
+传入了错误的sessionId。
+
+**处理步骤**
+
+检查sessionId是否正确，传入正确的sessionId。
+
+## 35600033 向工具进程写入消息失败
+
+**错误信息**
+
+Failed to write message to tool.
+
+**错误描述**
+
+向工具进程写入消息失败。
+
+**可能原因**
+
+write系统调用失败。
+
+**处理步骤**
+
+缓冲区满或对端异常，尝试等待一会重新写入。
+
+## 35600050 偶发性报错
+
+**错误信息**
+
+System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module.
+
+**错误描述**
+
+系统运行过程中出现的一些应用无法解决的偶发性报错。
+
+**可能原因**
+
+1. 不能连接到系统服务。
+2. 系统服务之间通信失败。
+
+**处理步骤**
+
+1. 退出应用后重新尝试。
+2. 重启设备后重新尝试。
+<!--DelEnd-->
