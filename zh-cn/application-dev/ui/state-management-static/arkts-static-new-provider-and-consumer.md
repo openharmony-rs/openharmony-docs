@@ -6,7 +6,9 @@
 
 \@Provider，即数据提供方，其所有的子组件都可以通过\@Consumer绑定相同的key来获取\@Provider提供的数据。
 
-\@Consumer，即数据消费方，可以通过绑定同样的key获取其最近父节点的\@Provider的数据，当查找不到\@Provider的数据时，使用本地默认值。
+\@Consumer，即数据消费方，可以通过绑定同样的key获取其最近父节点的\@Provider的数据，当查找不到\@Provider的数据时，使用本地默认值。图示如下。
+
+![ProviderConsumer_1](../figures/Provider_Consumer_1.png)
 
 \@Provider和\@Consumer装饰的数据类型需要一致。
 
