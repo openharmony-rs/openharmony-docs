@@ -766,9 +766,9 @@ constructor()
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[constructor](#constructor)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1390,9 +1390,9 @@ onAccessibilityStateChange(callback: Callback&lt;boolean&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('accessibilityStateChange')](#accessibilityonaccessibilitystatechange)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1489,9 +1489,9 @@ onTouchGuideStateChange(callback: Callback&lt;boolean&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('touchGuideStateChange')](#accessibilityontouchguidestatechange)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -1585,9 +1585,9 @@ onScreenReaderStateChange(callback: Callback&lt;boolean&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('screenReaderStateChange')](#accessibilityonscreenreaderstatechange18)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1695,9 +1695,9 @@ onTouchModeChange(callback: Callback&lt;string&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('touchModeChange')](#accessibilityontouchmodechange20)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2081,9 +2081,9 @@ off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offTouchGuideStateChange](#accessibilityofftouchguidestatechange23)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2176,9 +2176,9 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offScreenReaderStateChange](#accessibilityoffscreenreaderstatechange23)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2271,9 +2271,9 @@ off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offTouchModeChange](#accessibilityofftouchmodechange23)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2332,9 +2332,9 @@ offTouchModeChange(callback?: Callback&lt;string&gt;): void
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('touchModeChange')](#accessibilityofftouchmodechange20)。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
