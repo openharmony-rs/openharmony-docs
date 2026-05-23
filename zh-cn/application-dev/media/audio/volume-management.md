@@ -76,13 +76,13 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
   // 获取指定流的音量。
-  audioVolumeManager.getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  let streamVolume = audioVolumeManager.getVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
   // ...
   // 获取指定流的最小音量。
-  audioVolumeManager.getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  let minVolume = audioVolumeManager.getMinVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
 
   // 获取指定流的最大音量。
-  audioVolumeManager.getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  let maxVolume = audioVolumeManager.getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
 ```
 
 ### 监听系统音量变化
@@ -96,9 +96,7 @@ import { audio } from '@kit.AudioKit';
 // ...
   audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC,
     (streamVolumeEvent: audio.StreamVolumeEvent) => {
-    console.info(`StreamUsagem: ${streamVolumeEvent.streamUsage} `);
-    console.info(`Volume level: ${streamVolumeEvent.volume} `);
-    console.info(`Whether to updateUI: ${streamVolumeEvent.updateUi} `);
+    console.info(`Succeeded in using on function. StreamVolumeEvent: ${JSON.stringify(streamVolumeEvent)}`);
     // ...
   });
 ```
@@ -133,21 +131,19 @@ let audioVolumeManager = audioManager.getVolumeManager();
 // ...
   // 设置应用的音量（范围为0到100）。
   audioVolumeManager.setAppVolumePercentage(20).then(() => {
-    console.info(`set app volume success.`);
+    console.info('Succeeded in setting app volume percentage.');
     // ...
   });
 
   // 查询应用音量。
   audioVolumeManager.getAppVolumePercentage().then((value: number) => {
-    console.info(`app volume is ${value}.`);
+    console.info(`Succeeded in getting app volume percentage, app volume is ${value}.`);
     // ...
   });
 
   // 监听应用音量变化，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
   let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
-    console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-    console.info(`Volume level: ${volumeEvent.volume} `);
-    console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+    console.info(`Succeeded in using on or off function. VolumeEvent: ${JSON.stringify(volumeEvent)}`);
     // ...
   };
   audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
@@ -218,21 +214,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // ...
     // 设置音频流音量。
     audioRenderer.setVolume(0.5).then(() => {  // 音量范围为[0.0-1.0]。
-      console.info('Invoke setVolume succeeded.');
+      console.info('Succeeded in setting volume.');
       // ...
     }).catch((err: BusinessError) => {
-      console.error(`Invoke setVolume failed, code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
       // ...
     });
 
     // 获取音频流音量。
     try {
       let value: number = audioRenderer.getVolume();
-      console.info(`Indicate that the volume is obtained ${value}.`);
+      console.info(`Succeeded in getting volume, volume is ${value}.`);
       // ...
     } catch (err) {
       let error = err as BusinessError;
-      console.error(`Failed to obtain the volume, error ${error}.`);
+      console.error(`Failed to get volume. Code: ${err.code}, message: ${err.message}`);
       // ...
     }
 ```
