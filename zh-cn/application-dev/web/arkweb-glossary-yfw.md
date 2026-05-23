@@ -1,5 +1,11 @@
 # ArkWeb术语解释
 
+## 2
+
+### 2in1设备
+
+2in1 Device，支持触屏和键盘输入的二合一设备类型。
+
 ## A
 
 ### addIntelligentTrackingPreventionBypassingList
@@ -775,9 +781,3 @@ Register Method，注入到前端页面的应用侧方法。
 ### 自定义User-Agent
 
 Custom User-Agent，开发者自定义的用户代理字符串。
-
-## 其他
-
-### 2in1设备
-
-2in1 Device，支持触屏和键盘输入的二合一设备类型。
