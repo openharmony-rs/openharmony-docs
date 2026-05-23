@@ -16,9 +16,9 @@ Safe Area，屏幕中未被设备硬件或系统UI遮挡的区域。
 
 背景颜色设置接口，用于设置Web组件的背景颜色属性。
 
-### 白屏
+### White Screen；白屏
 
-White Screen，Web页面内容无法正常显示呈现空白状态的问题。
+Web页面内容无法正常显示呈现空白状态的问题。
 
 ## C
 
@@ -525,10 +525,6 @@ Irregular Screen，具有特殊形状的屏幕，如刘海屏、挖孔屏等。
 ### 异步渲染模式
 
 Async Render Mode，Web组件作为图形surface节点独立送显的渲染模式。
-
-### 页面白屏
-
-Page White Screen，页面加载后内容无法显示呈现白色的状态。
 
 ### 页面闪烁
 
