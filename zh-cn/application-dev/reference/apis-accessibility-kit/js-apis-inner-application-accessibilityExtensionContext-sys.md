@@ -718,7 +718,7 @@ export default class AccessibilityManager {
 
 ## AccessibilityExtensionContext.onPreDisconnect<sup>23+</sup>
 
-onPreDisconnect(callback: Callback<void>): void
+onPreDisconnect(callback: Callback\<void>): void
 
 向无障碍服务注册回调函数，在无障碍服务关闭该无障碍扩展服务前会执行该回调函数。使用callback异步回调。
 
@@ -874,7 +874,7 @@ export default class AccessibilityManager {
 
 ## AccessibilityExtensionContext.offPreDisconnect<sup>23+</sup>
 
-offPreDisconnect(callback?: Callback<void>): void
+offPreDisconnect(callback?: Callback\<void>): void
 
 取消已经向无障碍服务注册的预关闭回调函数，无障碍服务关闭该扩展服务前不再执行该回调。使用callback异步回调。
 
@@ -1519,7 +1519,7 @@ export default class AccessibilityManager {
 }
 ```
 
-### findElement('elementId')
+### findElement('elementId')<sup>12+</sup>
 
 findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
@@ -1623,7 +1623,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 });
 ```
 
-### findElement('textType')
+### findElement('textType')<sup>12+</sup>
 
 findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
