@@ -2277,13 +2277,13 @@ try {
 
 addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
 
-为指定用户添加允许使用分布式能力的应用名单，名单中的应用在指定用户下可以使用指定的分布式能力。
+为指定用户下的特定分布式业务添加允许跨设备的应用名单。即名单中的应用可以不受[设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)的限制，通过使用该特定分布式业务跨设备传输数据。
 
-当前支持的分布式类型有：[协同服务](#servicetype)。
+当前支持的分布式业务类型有：[协同业务](#servicetype)。
 > **说明：**
 >
-> 1.如果要设置允许使用协同服务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
-> 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用协同服务的应用名单会被同步清除。
+> 1.如果要设置允许使用特定分布式业务的应用名单，在调用本接口前必须已经通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了向其他设备传输数据的设备间单向传输数据的能力，否则会抛出错误码9201043。<br>
+> 2.当向其他设备传输数据的设备间单向传输数据的能力被解除禁用时，通过本接口设置的允许使用特定分布式业务的应用名单会被同步清除。
 
 **起始版本：** 26.0.0
 
@@ -2301,7 +2301,7 @@ addAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;str
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appIdentifiers | Array&lt;string&gt;                                   | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。允许列表总数不能超过200个。 |
-| serviceType | [ServiceType](#servicetype) | 是   | 分布式能力类型。 |
+| serviceType | [ServiceType](#servicetype) | 是   | 分布式业务类型。 |
 | accountId  | number      | 是   | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -2338,7 +2338,7 @@ try {
   console.error(`Failed to set distributedTransmissionOutgoing disabled. Code is ${err.code}, message is ${err.message}`);
 }
 
-// 步骤2. 设置100用户下允许使用协同服务的应用名单
+// 步骤2. 设置100用户下允许使用某种分布式业务（例如协同业务）的应用名单
 try {
   // 需根据实际情况进行替换
   let appIdentifiers: Array<string> = ['6917****3569'];
@@ -2347,15 +2347,15 @@ try {
 } catch(err) {
   console.error(`Failed to add allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
 }
-// 执行以上两个步骤后，在100用户下，仅应用6917****3569可以向其他设备传输数据，其他应用无法向其他设备传输数据。
-// 注意：禁用某用户下的设备间单向传输数据能力后，是否需要添加允许使用协同服务的应用名单，应根据实际业务需求判断。
+// 执行以上两个步骤后，在100用户下，仅应用6917****3569可以通过协同业务向其他设备传输数据，其他应用无法向其他设备传输数据。
+// 注意：禁用某用户下的设备间单向传输数据能力后，是否需要添加允许使用协同业务的应用名单，应根据实际业务需求判断。
 ```
 
 ## applicationManager.removeAllowedDistributeAbilityConnBundles
 
 removeAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;string&gt;, serviceType: ServiceType, accountId: number): void
 
-为指定用户移除允许使用分布式能力的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用在指定用户下可以使用指定类型的分布式能力；若名单中已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用指定类型的分布式能力。
+为指定用户下的特定分布式业务移除允许跨设备的应用名单。移除后，若名单中还有剩余的应用，则仅名单中的应用可以不受[设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)的限制，通过使用该特定分布式业务跨设备传输数据；若名单已被清空，无剩余的应用，则所有应用在指定用户下都不允许使用该特定分布式业务跨设备传输数据。
 
 **起始版本：** 26.0.0
 
@@ -2373,7 +2373,7 @@ removeAllowedDistributeAbilityConnBundles(admin: Want, appIdentifiers: Array&lt;
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | appIdentifiers | Array&lt;string&gt;                                   | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。允许列表总数不能超过200个。 |
-| serviceType | [ServiceType](#servicetype) | 是   | 分布式能力类型。 |
+| serviceType | [ServiceType](#servicetype) | 是   | 分布式业务类型。 |
 | accountId  | number      | 是   | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -2405,7 +2405,7 @@ try {
   let accountId: number = 100;
   applicationManager.removeAllowedDistributeAbilityConnBundles(wantTemp, appIdentifiers, applicationManager.ServiceType.COLLABORATION_SERVICE, accountId);
   console.info('Succeeded in removing allowed distribute ability conn bundles.');
-  // 注意：移除用户下允许使用协同服务的应用名单后，是否需要解除禁用该用户下的设备间单向传输数据能力，应根据实际业务需求判断。
+  // 注意：移除用户下允许使用协同业务的应用名单后，是否需要解除禁用该用户下的设备间单向传输数据能力，应根据实际业务需求判断。
 } catch(err) {
   console.error(`Failed to remove allowed distribute ability conn bundles. Code: ${err.code}, message: ${err.message}`);
 }
@@ -2415,7 +2415,7 @@ try {
 
 getAllowedDistributeAbilityConnBundles(admin: Want | null, serviceType: ServiceType, accountId: number): Array&lt;string&gt;
 
-获取指定用户下允许使用指定类型的分布式能力的应用名单。
+获取指定用户下特定分布式业务的允许跨设备应用名单。
 
 **起始版本：** 26.0.0
 
@@ -2430,14 +2430,14 @@ getAllowedDistributeAbilityConnBundles(admin: Want | null, serviceType: ServiceT
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| serviceType | [ServiceType](#servicetype) | 是   | 分布式能力类型。 |
+| serviceType | [ServiceType](#servicetype) | 是   | 分布式业务类型。 |
 | accountId  | number | 是 | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array&lt;string&gt; | 允许使用指定类型的分布式能力的应用的[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组。|
+| Array&lt;string&gt; | 指定用户下特定分布式业务的允许跨设备应用的[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)数组。|
 
 **错误码**：
 
@@ -2613,7 +2613,7 @@ Kiosk模式的特征。
 
 ## ServiceType
 
-分布式能力类型。
+分布式业务类型。
 
 **起始版本：** 26.0.0
 
@@ -2623,7 +2623,7 @@ Kiosk模式的特征。
 
 | 名称         | 值   | 说明  |
 | ----------- | ------ |------ |
-| COLLABORATION_SERVICE  | 0 | 协同服务。允许使用协同服务的应用，可以向其他设备传输数据。 |
+| COLLABORATION_SERVICE  | 0 | 协同业务。允许使用协同业务的应用，可以通过使用[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)中的API或[跨设备连接UIAbility开发指南](../../distributedservice/abilityconnectmanager-guidelines.md)中的方式，跨设备拉起其他应用的页面并向其传输数据。 |
 
 ## applicationManager.queryBundleStatsInfos
 
