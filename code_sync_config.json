@@ -2783,5 +2783,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/application-models/insight-intent-decorator-development.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"insight_intent_play_music",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ArtistClassDef.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"insight_intent_artist_information",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/OrnamentIntent/feature/src/main/ets/insightintents/PlayMusicDemo.ets",
+				"functions":[
+					{
+						"end_line":107,
+						"name":"insight_intent_use_intent",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
