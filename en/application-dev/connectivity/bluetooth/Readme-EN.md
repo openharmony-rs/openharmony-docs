@@ -8,11 +8,21 @@
 <!--Adviser: @zhang_yixin13-->
 
 - [Bluetooth Overview](bluetooth-overview.md)
+
 - [Bluetooth Setting](br-development-guide.md)
-- Classic Bluetooth
+
+- Bluetooth Classic<!--bluetooth-br-->
+
   - [Device Discovery](br-discovery-development-guide.md)
+
   - [Device Pairing](br-pair-device-development-guide.md)
+
   - [SPP-based Connection and Data Transmission](spp-development-guide.md)
-- Bluetooth Low Energy
+
+  - [HID Device Implementation Guide](hid-device-development-guide.md)
+
+- Bluetooth Low Energy<!--bluetooth-ble-->
+
   - [BLE Advertising and Scanning Development](ble-development-guide.md)
+
   - [GATT-based BLE Connection and Data Transmission Development](gatt-development-guide.md)
