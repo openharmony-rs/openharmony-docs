@@ -1,15 +1,10 @@
 # @ohos.hichecker (检测模式)
 
-<!--Kit: Performance Analysis Kit-->
-<!--Subsystem: HiviewDFX-->
-<!--Owner: @Lutao98-->
-<!--Designer: @martin_duan-->
-<!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @jinqiuheng-->
-
 HiChecker可以作为应用开发阶段使用的检测工具，用于检测代码运行过程中部分易忽略的问题，如应用线程出现耗时调用、应用进程中Ability资源泄露等问题。开发者可以通过日志记录或进程crash等形式查看具体问题并进行修改，提升应用的使用体验。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -28,12 +23,11 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 
 | 名称                                             | 类型      | 值         | 说明                                                   |
 | ------------------------------------------------ | -------- | -----------| ------------------------------------------------------ |
-| RULE_CAUTION_PRINT_LOG                           | bigint   | 1ULL << 63 | 告警规则，当有告警时记录日志。                            |
-| RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | 告警规则，当有告警时让应用退出。                          |
-| RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | 检测规则，检测是否有耗时函数被调用。                      |
-| RULE_THREAD_CHECK_NETWORK_USAGE                  | bigint   | 1ULL << 1  | 检测规则，检测线程是否调用网络耗时接口。<br>**起始版本**: 26.0.0  |
-| RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | 检测规则，检测是否发生ability泄露。                      |
-| RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | 检测规则，检测arkui性能。                               |
+| RULE_CAUTION_PRINT_LOG                           | bigint   | 1ULL << 63 | 告警规则，当有告警时记录日志。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                            |
+| RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | 告警规则，当有告警时让应用退出。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                          |
+| RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | 检测规则，检测是否有耗时函数被调用。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                      |
+| RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | 检测规则，检测是否发生ability泄露。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                      |
+| RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | 检测规则，检测arkui性能。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                               |
 
 ## hichecker.addCheckRule<sup>9+</sup>
 
@@ -42,6 +36,10 @@ addCheckRule(rule: bigint): void
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈，当有相应规则触发时可在hilog中grep HiChecker查看运行信息。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -79,6 +77,10 @@ removeCheckRule(rule: bigint): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明             |
@@ -114,6 +116,10 @@ containsCheckRule(rule: bigint): boolean
 当前已添加的规则集中是否包含了某一个特定的规则。如果传入的规则级别为线程级别，则仅在当前线程中进行查询。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -156,11 +162,15 @@ addRule(rule: bigint): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[hichecker.addCheckRule](#hicheckeraddcheckrule9)替代。
+> 从 API Version 9 开始废弃，建议使用[hichecker.addCheckRule](#hicheckeraddcheckrule9)替代。
 
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -185,11 +195,15 @@ removeRule(rule: bigint): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[hichecker.removeCheckRule](#hicheckerremovecheckrule9)替代。
+> 从 API Version 9 开始废弃，建议使用[hichecker.removeCheckRule](#hicheckerremovecheckrule9)替代。
 
 删除一条或多条规则，删除的规则后续将不再生效。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -216,6 +230,10 @@ getRule(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型   | 说明                   |
@@ -229,7 +247,7 @@ getRule(): bigint
 hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
 
 // 获取已添加的规则
-hichecker.getRule(); // return 1n;
+hichecker.getRule();   // return 1n;
 ```
 
 ## hichecker.contains<sup>(deprecated)</sup>
@@ -238,11 +256,15 @@ contains(rule: bigint): boolean
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[hichecker.containsCheckRule](#hicheckercontainscheckrule9)替代。
+> 从 API Version 9 开始废弃，建议使用[hichecker.containsCheckRule](#hicheckercontainscheckrule9)替代。
 
 当前已添加的规则集中是否包含了某一个特定的规则。如果传入的规则级别为线程级别，则仅在当前线程中进行查询。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
+
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
