@@ -6163,6 +6163,34 @@ Allows an application to query storage using CLI commands.
 
 **Since**: 26.0.0
 
+## ohos.permission.cli.START_ABILITY
+
+Allows an agent application to start specific applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.KILL_APP_PROCESSES
+
+Allows an agent application to stop specific applications using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
 Allows a system application to read and write map data.
