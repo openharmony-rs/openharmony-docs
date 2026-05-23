@@ -20,10 +20,6 @@ WebviewController接口，判断当前页面是否可前进或后退指定步数
 
 ### Alert Dialog；警告框
 
-显示包含可选信息的对话框。
-
-### AlertDialog
-
 ArkUI提供的警告对话框组件，用于显示包含可选信息的对话框。
 
 ### ArkUI Gestures；ArkUI手势
@@ -221,10 +217,6 @@ H5拖拽事件，放置元素时触发。
 ### editMenuOptions
 
 Web组件接口，对文本选中菜单进行自定义操作。
-
-### EditMenuOptions
-
-文本选中菜单自定义选项对象，包含onCreateMenu和onMenuItemClick方法。
 
 ### enableDataDetector
 
