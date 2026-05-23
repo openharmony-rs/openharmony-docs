@@ -384,7 +384,7 @@ Data transmission can be implemented by reading and writing characteristics, rea
 **4.1 Subscribing to Characteristic Read or Write Events**<br>
 You can subscribe to characteristic read or write events to obtain the operation requests of the client. For details about the related APIs, see [on('characteristicRead ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicread) and [on('characteristicWrite ')](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#oncharacteristicwrite).
 
-- When receiving a characteristic read request, call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) needs to be called to return the value of the corresponding characteristic.
+- When receiving a characteristic read request, call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) to return the value of the corresponding characteristic.
 
 - When receiving a characteristic write request, save the characteristic value written by the client. Based on the **needRsp** parameter in [CharacteristicWriteRequest](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#characteristicwriterequest), determine whether to call [sendResponse](../../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#sendresponse) to acknowledge the write operation.
 
