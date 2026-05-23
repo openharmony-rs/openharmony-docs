@@ -25,13 +25,13 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 
 描述CLI工具的基本信息。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
-
-**起始版本：** 26.0.0
 
 | 名称               | 类型                                                   | 只读 | 可选 | 说明                                                         |
 | ------------------ | ------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
@@ -40,24 +40,24 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 | description        | string                                                 | 是   | 否   | CLI工具的功能描述。该描述应清晰说明工具的核心功能和用途，帮助用户理解工具能做什么。 |
 | executablePath     | string                                                 | 是   | 否   | CLI工具的可执行文件路径。必须是绝对路径。                    |
 | requirePermissions | Array\<string>                                         | 是   | 是   | CLI工具所需的权限列表。所有权限项必须为唯一的字符串。        |
-| inputSchema        | Record<string, Object> \| Record<string, RecordData>     | 是   | 否   | CLI工具的输入模式定义。使用JSON Schema格式定义输入参数的结构和类型，用于描述工具接受的输入数据格式。 |
-| outputSchema       | Record<string, Object> \| Record<string, RecordData>     | 是   | 否   | CLI工具的输出模式定义。使用JSON Schema格式定义输出数据的结构和类型，用于描述工具返回的输出数据格式。 |
+| inputSchema        | Record<string, Object>     | 是   | 否   | CLI工具的输入模式定义。使用JSON Schema格式定义输入参数的结构和类型，用于描述工具接受的输入数据格式。 |
+| outputSchema       | Record<string, Object>     | 是   | 否   | CLI工具的输出模式定义。使用JSON Schema格式定义输出数据的结构和类型，用于描述工具返回的输出数据格式。 |
 | eventTypes         | Array\<string>                                         | 是   | 是   | CLI工具支持的自定义事件类型列表。所有事件类型必须为唯一的字符串。 |
-| eventSchemas       | Record<string, Record<string, Object>> \| Record<string, Record<string, RecordData>> | 是   | 是   | 自定义事件的模式定义。以键值对形式存储，键为事件类型，值为该事件的JSON Schema定义。 |
-| hasSubCommand      | boolean                                                | 是   | 是   | 指示该工具是否有子命令。true表示工具支持子命令，false表示不支持。 |
+| eventSchemas       | Record<string, Record<string, Object>> | 是   | 是   | 自定义事件的模式定义。以键值对形式存储，键为事件类型，值为该事件的JSON Schema定义。 |
+| hasSubCommand      | boolean                                                | 是   | 是   | 指示该工具是否支持子命令。true表示工具支持子命令，false表示不支持子命令。 |
 | subcommands        | Record<string, [SubCommandInfo](#subcommandinfo)>       | 是   | 是   | 子命令信息列表。以键值对形式存储，键为子命令名称，值为子命令的详细信息。 |
 
 ## ToolSummary
 
 描述CLI工具的摘要信息。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
-
-**起始版本：** 26.0.0
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                                         |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -69,19 +69,19 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 
 描述CLI工具子命令的信息。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
-**起始版本：** 26.0.0
-
 | 名称               | 类型                                                   | 只读 | 可选 | 说明                                                         |
 | ------------------ | ------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | description        | string                                                 | 是   | 否   | 子命令的描述。应清晰说明该子命令的具体功能和使用场景。       |
 | requirePermissions | Array\<string>                                         | 是   | 是   | 子命令所需的权限列表。所有权限项必须为唯一的字符串。         |
-| inputSchema        | Record<string, Object> \| Record<string, RecordData>   | 是   | 否   | 子命令的输入模式定义。使用JSON Schema格式定义输入参数的结构和类型。 |
-| outputSchema       | Record<string, Object> \| Record<string, RecordData>   | 是   | 否   | 子命令的输出模式定义。使用JSON Schema格式定义输出数据的结构和类型。 |
+| inputSchema        | Record<string, Object>  | 是   | 否   | 子命令的输入模式定义。使用JSON Schema格式定义输入参数的结构和类型。 |
+| outputSchema       | Record<string, Object>  | 是   | 否   | 子命令的输出模式定义。使用JSON Schema格式定义输出数据的结构和类型。 |
 | eventTypes         | Array\<string>                                         | 是   | 是   | 子命令支持的自定义事件类型列表。所有事件类型必须为唯一的字符串。 |
-| eventSchemas       | Record<string, Record<string, Object>> \| Record<string, Record<string, RecordData>> | 是   | 是   | 子命令自定义事件的模式定义。以键值对形式存储，键为事件类型，值为该事件的JSON Schema定义。 |
+| eventSchemas       | Record<string, Record<string, Object>> | 是   | 是   | 子命令自定义事件的模式定义。以键值对形式存储，键为事件类型，值为该事件的JSON Schema定义。 |
