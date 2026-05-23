@@ -1583,7 +1583,7 @@ onScreenReaderStateChange(callback: Callback&lt;boolean&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[on('screenReaderStateChange')](#accessibilityonscreenreaderstatechange18)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('screenReaderStateChange')](#accessibilityonscreenreaderstatechange18)。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1636,7 +1636,7 @@ on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onScreenReaderStateChange](#accessibilityontouchmodechange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onTouchModeChange](#accessibilityontouchmodechange23)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2174,7 +2174,7 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offScreenReaderStateChange](#accessibilityoffscreenreaderstatechange22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offScreenReaderStateChange](#accessibilityoffscreenreaderstatechange23)。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2269,7 +2269,7 @@ off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offScreenReaderStateChange](#accessibilityofftouchmodechange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offTouchModeChange](#accessibilityofftouchmodechange23)。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2330,7 +2330,7 @@ offTouchModeChange(callback?: Callback&lt;string&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('screenTouchModeChange')](#accessibilityofftouchmodechange20)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('touchModeChange')](#accessibilityofftouchmodechange20)。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 

@@ -725,11 +725,11 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
 
 injectGesture(gesturePath: GesturePath): Promise\<void>;
 
+注入手势。使用Promise异步回调。
+
 > **说明：**
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
-
-注入手势。使用Promise异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -780,11 +780,11 @@ axContext.injectGesture(gesturePath).then(() => {
 
 injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
+注入手势。使用callback异步回调。
+
 > **说明：**
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
-
-注入手势。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -876,12 +876,6 @@ axContext.injectGestureSync(gesturePath);
 无障碍节点元素，在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
 **模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
-**ArkTS-Dyn起始版本**：9
-
-**ArkTS-Sta起始版本**: 23
 
 ### attributeNames<sup>(deprecated)</sup>
 

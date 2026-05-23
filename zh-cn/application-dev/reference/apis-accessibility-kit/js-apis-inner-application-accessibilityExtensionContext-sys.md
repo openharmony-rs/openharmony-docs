@@ -716,6 +716,86 @@ export default class AccessibilityManager {
 }
 ```
 
+## AccessibilityExtensionContext.onPreDisconnect<sup>23+</sup>
+
+onPreDisconnect(callback: Callback<void>): void
+
+向无障碍服务注册回调函数，在无障碍服务关闭该无障碍扩展服务前会执行该回调函数。使用callback异步回调。
+
+此注册函数需要与[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)配合使用，如果不调用[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 是 |回调函数，在无障碍扩展服务即将关闭时回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                     |
+| ------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import {
+  AccessibilityEventInfo, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext): void {
+    this.context = context;
+  }
+
+  onStop(): void {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEventInfo): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.onPreDisconnect(() => {
+        console.info(`To do something before accessibilityExtension disconnect.`);
+      });
+    } catch (err: BusinessError) {
+      console.error(`Failed to register, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
 ## AccessibilityExtensionContext.off('preDisconnect')<sup>20+</sup>
 
 off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
@@ -787,6 +867,84 @@ export default class AccessibilityManager {
       });
     } catch (err) {
       console.error(`Failed to unRegister, code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+## AccessibilityExtensionContext.offPreDisconnect<sup>23+</sup>
+
+offPreDisconnect(callback?: Callback<void>): void
+
+取消已经向无障碍服务注册的预关闭回调函数，无障碍服务关闭该扩展服务前不再执行该回调。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('preDisconnect')](#accessibilityextensioncontextoffpredisconnect20)。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;void&gt; | 否 |回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[onPreDisconnect](#accessibilityextensioncontextonpredisconnect23)的callback一致。缺省时，表示注销所有已注册事件。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                     |
+| ------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import {
+  AccessibilityEventInfo, 
+  AccessibilityExtensionContext
+} from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class AccessibilityManager {
+  private static instance: AccessibilityManager;
+  context?: AccessibilityExtensionContext;
+
+  static getInstance(): AccessibilityManager {
+    if (!AccessibilityManager.instance) {
+      AccessibilityManager.instance = new AccessibilityManager();
+    }
+    return AccessibilityManager.instance;
+  }
+
+  onStart(context: AccessibilityExtensionContext): void {
+    this.context = context;
+  }
+
+  onStop(): void {
+    this.context = undefined;
+  }
+
+  onEvent(accessibilityEvent: AccessibilityEventInfo): void {
+    if (!this.context) {
+      console.error('context is not available!');
+      return;
+    }
+
+    try {
+      this.context.offPreDisconnect(() => {
+        console.info(`To do something before accessibilityExtension disconnect.`);
+      });
+    } catch (err: BusinessError) {
+      console.error(`Failed to register, code is ${err.code}, message is ${err.message}`);
     }
   }
 }
@@ -938,9 +1096,9 @@ export default class AccessibilityManager {
 
 ## getRootInActiveWindow<sup>20+</sup>
 
-ArkTS-Dyn: getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement)>;
+ArkTS-Dyn: getRootInActiveWindow(windowId ?: number): Promise\<AccessibilityElement>;
 
-ArkTS-Sta: getRootInActiveWindow(windowId ?: int): Promise\<[AccessibilityElement](#accessibilityelement)>;
+ArkTS-Sta: getRootInActiveWindow(windowId ?: int): Promise\<AccessibilityElement>;
 
 获取活动窗口根元素。使用Promise异步回调。
 
@@ -1069,7 +1227,9 @@ export default class AccessibilityManager {
 
 ## getAccessibilityWindowsSync<sup>20+</sup>
 
-getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement)>
+ArkTS-Dyn: getAccessibilityWindowsSync(displayId?: number): Array\<AccessibilityElement>
+
+ArkTS-Sta: getAccessibilityWindowsSync(displayId?: long): Array\<AccessibilityElement>
 
 获取窗口列表。
 
@@ -1367,7 +1527,7 @@ findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[findElementByElementId](#findelementbyelementid22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[findElementByElementId](#findelementbyelementid23)。
 
 **系统接口**：此接口为系统接口。
 
@@ -1471,7 +1631,7 @@ findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityE
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[findElementByTextType](#findelementbytexttype22)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[findElementByTextType](#findelementbytexttype23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1567,9 +1727,9 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 ### getCursorPosition<sup>12+</sup>
 
-AtkTS-Dyn: getCursorPosition(): Promise\<number>
+ArkTS-Dyn: getCursorPosition(): Promise\<number>
 
-AtkTS-Sta: getCursorPosition(): Promise\<int>
+ArkTS-Sta: getCursorPosition(): Promise\<int>
 
 获取文本组件中光标位置。使用Promise异步回调。
 
@@ -1617,9 +1777,9 @@ rootElement.getCursorPosition().then((data: int) => {
 
 ### getCursorPosition<sup>12+</sup>
 
-AtkTS-Dyn: getCursorPosition(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getCursorPosition(callback: AsyncCallback\<number>): void
 
-AtkTS-Sta: getCursorPosition(callback: AsyncCallback\<int>): void
+ArkTS-Sta: getCursorPosition(callback: AsyncCallback\<int>): void
 
 获取文本组件中光标位置。使用callback异步回调。
 
@@ -1677,13 +1837,13 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 **需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2107,7 +2267,9 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 ### findElementById<sup>20+</sup>
 
-findElementById(condition: number): Promise\<AccessibilityElement>
+ArkTS-Dyn: findElementById(condition: number): Promise\<AccessibilityElement>;
+
+ArkTS-Sta: findElementById(condition: long): Promise\<AccessibilityElement>;
 
 根据元素 ID 查找元素。使用Promise异步回调。
 
@@ -2125,7 +2287,7 @@ findElementById(condition: number): Promise\<AccessibilityElement>
 
 | 名称 | 类型 | 必填 | 描述 |
 | -------- | ---- | -------- | ------------------------------------------------------------ |
-| condition | number | 是 | 元素 ID。 |
+| condition | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 元素 ID。 |
 
 **返回值：**
 
