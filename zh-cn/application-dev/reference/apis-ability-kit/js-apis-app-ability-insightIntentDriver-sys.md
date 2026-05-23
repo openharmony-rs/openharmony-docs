@@ -295,6 +295,7 @@ EntryIntentInfo用于描述[@InsightIntentEntry](./js-apis-app-ability-InsightIn
 | -------- | -------- | -------- |
 | CONFIGURATION  | 'configuration' | 使用配置文件开发的意图。 |
 | DECORATOR | 'decorator' | 使用装饰器开发的意图。 |
+
 ## EntityInfo<sup>20+</sup>
 
 EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intententitydecoratorinfo)，用于描述[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器定义的意图实体的信息。
@@ -305,17 +306,15 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
-| className | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。 |
-| entityId | string | 是 | 否 | 表示意图实体的ID。 |
-| entityCategory | string | 是 | 否 | 表示意图实体类别。 |
-| parameters | string | 是 | 否 | 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。 |
-| parentClassName | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。 |
+| className | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类名。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| entityId | string | 是 | 否 | 表示意图实体的ID。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| entityCategory | string | 是 | 否 | 表示意图实体类别。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| parameters | string | 是 | 否 | 表示意图实体参数的数据格式声明，用于意图调用时定义实体参数的数据格式。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| parentClassName | string | 是 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的类的父类名。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| isQueryable | boolean | 是 | 是 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的意图实体类是否支持查询，只有继承自[insightIntent.AppIntentEntity](./js-apis-app-ability-insightIntent.md#appintententity)类的意图实体支持查询。<br> - true：支持查询。<br> - false：不支持查询。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| supportedQueryProperties | string[] | 是 | 是 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器修饰的意图实体支持通过哪些属性进行查询。意图实体查询参数[parameters](./js-apis-app-ability-insightIntent.md#queryentityparam)的key值必须在该属性列表中。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## InsightIntentInfo<sup>20+</sup>
 
@@ -394,6 +393,29 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 | entities | 否 | 否 |
 | developType<sup>23+</sup> | 是 | 是 |
 | subIntentInfoForConfiguration<sup>23+</sup> | 否 | 否 |
+
+## QueryParam
+
+意图实体查询参数，用于筛选设备上符合条件的意图实体。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| bundleName  | string | 否   | 否   | 目标意图实体所属的应用包名称。 |
+| moduleName  | string | 否   | 否   | 目标意图实体所属的模块名称。 |
+| intentName  | string | 否   | 否   | 目标意图实体所属的意图名称。 |
+| className | string | 否 | 否 | 表示[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)修饰的目标意图实体的类名。 |
+| queryEntityParam | [insightIntent.QueryEntityParam](./js-apis-app-ability-insightIntent.md#queryentityparam) | 否 | 否 | 意图实体查询参数，包含查询模式及查询条件，用于指定意图实体查询方式。 |
+| userId      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 目标意图实体所属的用户ID。<br/>**说明：**<br/>如果调用方应用的用户ID与目标意图实体所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。   |
 
 ## insightIntentDriver.execute
 
@@ -764,7 +786,7 @@ function getInfoByIntentName() {
   try {
     let bundleName = "com.example.intent"; // 开发者需自行修改为实际包名
     let moduleName = "entry"; // 开发者需自行修改为实际模块名
-    let intentName = "play"; // 开发者需自行修改为实际意图名
+    let intentName = "PlayMusic"; // 开发者需自行修改为实际意图名
     insightIntentDriver.getInsightIntentInfoByIntentName(
       bundleName, moduleName, intentName, insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT |
     insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO)
@@ -819,6 +841,7 @@ getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array\<In
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Not system application.                                      |
+| 16000006 | Cross-user operations are not allowed.                       |
 | 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.|
 
 **示例：**
@@ -833,7 +856,7 @@ function getInfoByFilter() {
     intentFlags: insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO,
     bundleName: 'com.example.intent', // 开发者需自行修改为实际包名
     moduleName: 'entry', // 开发者需自行修改为实际模块名
-    intentName: 'play', // 开发者需自行修改为实际意图名
+    intentName: 'PlayMusic', // 开发者需自行修改为实际意图名
     userId: 100, // 开发者需自行修改为实际userId
   };
 
@@ -847,6 +870,125 @@ function getInfoByFilter() {
     });
   } catch (error) {
     hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByFilter error caught %{public}s', JSON.stringify(error));
+  }
+}
+```
+
+## insightIntentDriver.queryEntityInfo
+
+ArkTS-Dyn: queryEntityInfo(param: QueryParam): Promise\<Array\<Record\<string, Object>>><br/>ArkTS-Sta: queryEntityInfo(param: QueryParam): Promise\<Array\<Record\<string, RecordData>>>
+
+根据[QueryParam](#queryparam)查询应用的动态意图实体信息。使用Promise异步回调。<br/>如果调用方应用的用户ID与目标用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.EXECUTE_INSIGHT_INTENT
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| param | [QueryParam](#queryparam) | 是 | 意图实体参数，描述意图实体的查询条件，用于查询应用中符合条件的意图实体。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: Promise\<Array\<Record\<string, Object>>><br/>ArkTS-Sta: Promise\<Array\<Record\<string, RecordData>>> | Promise对象，返回应用返回的意图实体数组。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { insightIntent, insightIntentDriver } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function queryEntityInfoByPromise() {
+  let queryParam: insightIntentDriver.QueryParam = {
+    bundleName: 'com.example.intent', // 开发者需自行修改为实际包名
+    moduleName: 'entry', // 开发者需自行修改为实际模块名
+    intentName: 'PlayMusic', // 开发者需自行修改为实际意图名
+    className: 'AppIntentEntityImpl', // 开发者需自行修改为实际的类名
+    queryEntityParam: {
+      queryType: insightIntent.QueryType.BY_PROPERTY,
+      parameters: { // 开发者需自行修改为实际的查询参数
+        'entityId': 'default'
+      },
+    },
+    userId: 100,
+  }
+
+  try {
+    insightIntentDriver.queryEntityInfo(queryParam)
+      .then((data: Array<Record<string, Object>> | undefined) => {
+        hilog.info(0x0000, 'testTag', 'queryEntityInfo return %{public}s', JSON.stringify(data));
+      })
+      .catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'queryEntityInfo errCode: %{public}d', err.code);
+        hilog.error(0x0000, 'testTag', 'queryEntityInfo errMessage %{public}s', err.message);
+      });
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', 'queryEntityInfo error caught %{public}s', JSON.stringify(error));
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { insightIntent, insightIntentDriver } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function queryEntityInfoByPromise() {
+  let queryParam: insightIntentDriver.QueryParam = {
+    bundleName: 'com.example.intent', // 开发者需自行修改为实际包名
+    moduleName: 'entry', // 开发者需自行修改为实际模块名
+    intentName: 'PlayMusic', // 开发者需自行修改为实际意图名
+    className: 'AppIntentEntityImpl', // 开发者需自行修改为实际的类名
+    queryEntityParam: {
+      queryType: insightIntent.QueryType.BY_PROPERTY,
+      parameters: { // 开发者需自行修改为实际的查询参数
+        'entityId': 'default'
+      },
+    },
+    userId: 100,
+  }
+
+  try {
+    insightIntentDriver.queryEntityInfo(queryParam)
+      .then((data: Array<Record<string, RecordData>> | undefined) => {
+        hilog.info(0x0000, 'testTag', 'queryEntityInfo return %{public}s', JSON.stringify(data));
+      })
+      .catch((err) => {
+        hilog.error(0x0000, 'testTag', 'queryEntityInfo errCode: %{public}d', err.code);
+        hilog.error(0x0000, 'testTag', 'queryEntityInfo errMessage %{public}s', err.message);
+      });
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', 'queryEntityInfo error caught %{public}s', JSON.stringify(error));
   }
 }
 ```

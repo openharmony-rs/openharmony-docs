@@ -272,6 +272,8 @@ sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;
 
 **ArkTS-Dyn起始版本：** 23
 
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -295,6 +297,8 @@ sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;
 | 16000050      | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 设置意图执行结果延迟返回示例：
 ```ts
@@ -367,6 +371,74 @@ export default class PlayVideo extends InsightIntentEntryExecutor<PlayVideoResul
 }
 ```
 
+ArkTS-Sta示例：
+
+设置意图执行结果延迟返回示例：
+```ts
+'use static'
+
+import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor } from '@kit.AbilityKit';
+import { RecordData } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
+import { LocalStorage } from '@ohos.arkui.stateManagement';
+
+export class PlayMusicResultDef {
+  msg: string = '';
+}
+
+// 播放视频
+@InsightIntentEntry({
+  intentName: 'PlayVideo',
+  domain: 'VideosDomain',
+  intentVersion: '1.0.2',
+  displayName: '播放视频',
+  displayDescription: '播放视频意图',
+  schema: 'PlayVideo',
+  icon: "$r('app.media.background')", // 请将$r('app.media.background')替换为实际资源文件
+  llmDescription: '播放视频意图',
+  keywords: ['视频播放', '播放视频', 'PlayVideo'],
+  abilityName: 'EntryAbility1',
+  executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
+})
+export default class PlayVideo extends InsightIntentEntryExecutor<string> {
+  onExecute(): Promise<insightIntent.IntentResult<string>> {
+    console.info('testTag', 'PlayVideo onExecute success')
+    let result: insightIntent.IntentResult<string> = {
+      code: 0,
+      result:'play music succeed'
+    }
+    let instanceId: number = this.context.instanceId;
+    try {
+      // 设置意图执行结果的返回形式为延迟返回
+      this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
+      console.info('testTag: setReturnModeForUIAbilityForeground success');
+    } catch (error) {
+      let code = (error as BusinessError).code;
+      let msg = (error as BusinessError).message;
+      console.error(`testTag: setReturnModeForUIAbilityForeground failed, error code: ${code}, error msg: ${msg}.`);
+    }
+
+    try {
+      // 将意图实例的id通过localStorage传入目标页面中
+      let storageData: Record<string, int> = {
+        'insightId': this.context.instanceId,
+      }
+      let storage_fill: LocalStorage = new LocalStorage(storageData);
+      // 通过pageLoader加载页面
+      this.windowStage?.loadContent('pages/Index', storage_fill);
+      console.info('testTag', 'Succeeded in loading the content1')
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let msg = (err as BusinessError).message;
+      console.error(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
+    }
+    return Promise.resolve(result);
+  }
+}
+```
+
+ArkTS-Dyn示例：
+
 主动发送意图执行结果示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -416,6 +488,58 @@ struct Index {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+主动发送意图执行结果示例：
+```ts
+'use static'
+import { Entry, Column, Component, Button, ButtonAttribute, ClickEvent } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement' // should be insert by ui-plugins
+import hilog from '@ohos.hilog'
+import insightIntent from '@ohos.app.ability.insightIntent';
+import { BusinessError } from '@ohos.base'
+import { LocalStorage } from '@ohos.arkui.stateManagement';
+import insightIntentProvider from '@ohos.app.ability.insightIntentProvider';
+
+@Entry
+@Component
+struct Index {
+  @State stateVar: string = 'state var';
+  storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  insightId: int | undefined = this.storage?.get<int>('insightId');
+  message: string = 'var';
+  build() {
+    Column(undefined) {
+      Button("sendIntentResult").backgroundColor('#FFFF00FF')
+        .onClick((e: ClickEvent) => {
+          hilog.info(0x0000, 'testTag', `sendIntentResult start`);
+          try {
+            const result: insightIntent.IntentResult<string> = {
+              code: 12377121,
+              result: 'result131131'
+            }
+            insightIntentProvider.sendIntentResult(this.insightId as int, result)
+              .then(()=>{
+                hilog.info(0x0000, 'testTag', `sendIntentResult success`);
+              })
+              .catch((error: Error)=>{
+                let code = (error as BusinessError).code;
+                let msg = (error as BusinessError).message;
+                hilog.info(0x0000, 'testTag', `sendIntentResult BusinessError, error code: ${code}, error msg: ${msg}`);
+              })
+          } catch (e) {
+            let code = (e as BusinessError).code;
+            let msg = (e as BusinessError).message;
+            console.error(`testTag sendIntentResult fail, error code: ${code}, error msg: ${msg}`);
+          }
+
+        }).margin(5)
+    }.height("100%")
+    .width("100%")
   }
 }
 ```
