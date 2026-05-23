@@ -168,6 +168,7 @@ async function CreatePictureTest(context: Context) {
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
 
 async function CreatePictureTest(context: Context) {
   const resourceMgr = context.resourceManager;
