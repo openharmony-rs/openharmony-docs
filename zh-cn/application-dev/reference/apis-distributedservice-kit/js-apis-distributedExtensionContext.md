@@ -88,7 +88,7 @@ import { bundleManager } from '@kit.AbilityKit';
 const TAG = 'DistributedExtAbility';
 const DOMAIN = 0xFF00;
 
-export default class DistributedExtAbility extends DistributedExtension {
+export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 
   onCreate (want:Want) {
@@ -202,7 +202,7 @@ import { bundleManager } from '@kit.AbilityKit';
 const TAG = 'DistributedExtAbility';
 const DOMAIN = 0xFF00;
 
-export default class DistributedExtAbility extends DistributedExtension {
+export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 
   onCreate (want:Want) {
