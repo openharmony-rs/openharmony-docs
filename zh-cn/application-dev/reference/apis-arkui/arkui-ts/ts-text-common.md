@@ -479,6 +479,23 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | LIGHT_IMMERSIVE | 2 | 浅色沉浸式风格。|
 | DARK_IMMERSIVE | 3 | 深色沉浸式风格。|
 
+## IncrementalUpdatePolicy
+
+文本渲染的增量更新策略。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| ------- | ---- | ------------------- |
+| NONE | 0 | 不启用增量更新，采用全量布局渲染。 |
+| PARAGRAPH_CACHE | 1 | 启用增量更新，使用段落级缓存。该策略生效的前提是文本绑定的属性字符串对象保持不变，若属性字符串对象发生变化则无法命中缓存。 |
+
 ## InsertValue<sup>12+</sup>对象说明
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
