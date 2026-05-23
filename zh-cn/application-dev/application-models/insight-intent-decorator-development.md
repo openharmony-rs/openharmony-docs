@@ -93,6 +93,62 @@
     
     <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
     
+    ``` TypeScript
+    // `insight_intent.json`文件的"insightIntentsSrcEntry"字段的实现
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
+    
+    // 意图执行返回值数据格式定义
+    class PlayMusicResultDef {
+      public msg?: string = '';
+    }
+    
+    // 意图定义
+    @InsightIntentEntry({
+      intentName: 'PlayMusic',
+      domain: 'MusicDomain',
+      intentVersion: '1.0.1',
+      displayName: '播放歌曲',
+      displayDescription: '播放音乐意图',
+      icon: $r('app.media.playMusic'), // 请将$r('app.media.playMusic')替换为实际资源文件
+      llmDescription: '支持传递歌曲名称，播放音乐',
+      keywords: ['音乐播放', '播放歌曲', 'PlayMusic'],
+      abilityName: 'EntryAbility',
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
+      parameters: {
+        'type': 'object',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
+          },
+          'singer': {
+            'type': 'string',
+            'description': 'The name of the singer',
+            'minLength': 1
+          }
+        },
+        'required': ['songName']
+      }
+    })
+    export default class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
+      public songName: string = '';
+      public singer?: string = '';
+    
+      onExecute(): Promise<insightIntent.IntentResult<PlayMusicResultDef>> {
+        // 执行音乐播放逻辑
+        let result: insightIntent.IntentResult<PlayMusicResultDef> = {
+          code: 123,
+          result: {
+            msg: 'play music succeed'
+          }
+        };
+        return Promise.resolve(result);
+      };
+    }
+    ```
+    
     ArkTS-Sta示例：
     
     ```typescript
@@ -161,6 +217,62 @@
     
     <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
     
+    ``` TypeScript
+    // `insight_intent.json`文件的"insightIntentsSrcEntry"字段的实现
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
+    
+    // 意图执行返回值数据格式定义
+    class PlayMusicResultDef {
+      public msg?: string = '';
+    }
+    
+    // 意图定义
+    @InsightIntentEntry({
+      intentName: 'PlayMusic',
+      domain: 'MusicDomain',
+      intentVersion: '1.0.1',
+      displayName: '播放歌曲',
+      displayDescription: '播放音乐意图',
+      icon: $r('app.media.playMusic'), // 请将$r('app.media.playMusic')替换为实际资源文件
+      llmDescription: '支持传递歌曲名称，播放音乐',
+      keywords: ['音乐播放', '播放歌曲', 'PlayMusic'],
+      abilityName: 'EntryAbility',
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
+      parameters: {
+        'type': 'object',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
+          },
+          'singer': {
+            'type': 'string',
+            'description': 'The name of the singer',
+            'minLength': 1
+          }
+        },
+        'required': ['songName']
+      }
+    })
+    export default class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
+      public songName: string = '';
+      public singer?: string = '';
+    
+      onExecute(): Promise<insightIntent.IntentResult<PlayMusicResultDef>> {
+        // 执行音乐播放逻辑
+        let result: insightIntent.IntentResult<PlayMusicResultDef> = {
+          code: 123,
+          result: {
+            msg: 'play music succeed'
+          }
+        };
+        return Promise.resolve(result);
+      };
+    }
+    ```
+    
     ArkTS-Dyn示例：
     
     ``` TypeScript
@@ -220,6 +332,62 @@
     ```
     
     <!-- @[insight_intent_play_music](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/PlayMusicImpl.ets) -->
+    
+    ``` TypeScript
+    // `insight_intent.json`文件的"insightIntentsSrcEntry"字段的实现
+    import { InsightIntentEntryExecutor, insightIntent, InsightIntentEntry } from '@kit.AbilityKit';
+    
+    // 意图执行返回值数据格式定义
+    class PlayMusicResultDef {
+      public msg?: string = '';
+    }
+    
+    // 意图定义
+    @InsightIntentEntry({
+      intentName: 'PlayMusic',
+      domain: 'MusicDomain',
+      intentVersion: '1.0.1',
+      displayName: '播放歌曲',
+      displayDescription: '播放音乐意图',
+      icon: $r('app.media.playMusic'), // 请将$r('app.media.playMusic')替换为实际资源文件
+      llmDescription: '支持传递歌曲名称，播放音乐',
+      keywords: ['音乐播放', '播放歌曲', 'PlayMusic'],
+      abilityName: 'EntryAbility',
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
+      parameters: {
+        'type': 'object',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
+          },
+          'singer': {
+            'type': 'string',
+            'description': 'The name of the singer',
+            'minLength': 1
+          }
+        },
+        'required': ['songName']
+      }
+    })
+    export default class PlayMusicImpl extends InsightIntentEntryExecutor<PlayMusicResultDef> {
+      public songName: string = '';
+      public singer?: string = '';
+    
+      onExecute(): Promise<insightIntent.IntentResult<PlayMusicResultDef>> {
+        // 执行音乐播放逻辑
+        let result: insightIntent.IntentResult<PlayMusicResultDef> = {
+          code: 123,
+          result: {
+            msg: 'play music succeed'
+          }
+        };
+        return Promise.resolve(result);
+      };
+    }
+    ```
     
     ArkTS-Sta示例：
     
@@ -305,6 +473,43 @@
     **示例：**
 
     <!-- @[insight_intent_artist_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ArtistClassDef.ets) -->
+    
+    ``` TypeScript
+    import { insightIntent, InsightIntentEntity } from '@kit.AbilityKit';
+    
+    @InsightIntentEntity({
+      entityCategory: 'artist entity category',
+      parameters: {
+        '$id': '/schemas/ArtistClassDef',
+        'type': 'object',
+        'description': 'Information about the artist',
+        'properties': {
+          'country': {
+            'type': 'string',
+            'description': 'The artist\'s country of origin',
+            'default': 'zh'
+          },
+          'city': {
+            'type': 'string',
+            'description': 'The artist\'s city of origin'
+          },
+          'name': {
+            'type': 'string',
+            'description': 'The name of the artist',
+            'minLength': 1
+          }
+        },
+        // name为必选参数
+        'required': ['name']
+      }
+    })
+    export class ArtistClassDef implements insightIntent.IntentEntity {
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
+    }
+    ```
 
     ArkTS-Dyn示例：
 
@@ -346,6 +551,43 @@
     ```
 
     <!-- @[insight_intent_artist_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/entry/src/main/ets/insightintents/ArtistClassDef.ets) -->
+    
+    ``` TypeScript
+    import { insightIntent, InsightIntentEntity } from '@kit.AbilityKit';
+    
+    @InsightIntentEntity({
+      entityCategory: 'artist entity category',
+      parameters: {
+        '$id': '/schemas/ArtistClassDef',
+        'type': 'object',
+        'description': 'Information about the artist',
+        'properties': {
+          'country': {
+            'type': 'string',
+            'description': 'The artist\'s country of origin',
+            'default': 'zh'
+          },
+          'city': {
+            'type': 'string',
+            'description': 'The artist\'s city of origin'
+          },
+          'name': {
+            'type': 'string',
+            'description': 'The name of the artist',
+            'minLength': 1
+          }
+        },
+        // name为必选参数
+        'required': ['name']
+      }
+    })
+    export class ArtistClassDef implements insightIntent.IntentEntity {
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
+    }
+    ```
 
     ArkTS-Sta示例：
 
@@ -392,6 +634,99 @@
     **示例：**
 
     <!-- @[insight_intent_use_intent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/feature/src/main/ets/insightintents/PlayMusicDemo.ets) -->
+    
+    ``` TypeScript
+    import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor, InsightIntentEntity } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const LOG_TAG: string = 'testTag-EntryIntent';
+    
+    @InsightIntentEntity({
+      entityCategory: 'artist entity category',
+      // @InsightIntentEntry装饰器中parameters中已描述ArtistClassDef意图实体信息，此处parameters可不写
+    })
+    export class ArtistClassDef implements insightIntent.IntentEntity {
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
+    }
+    
+    // 使用@InsightIntentEntry装饰器定义意图
+    @InsightIntentEntry({
+      intentName: 'PlayMusic',
+      domain: 'MusicDomain',
+      intentVersion: '1.0.1',
+      displayName: '播放歌曲',
+      displayDescription: '播放音乐意图',
+      icon: $r('app.media.app_icon'), // 请将$r('app.media.app_icon')替换为实际资源文件
+      llmDescription: '支持传递歌曲名称，播放音乐',
+      keywords: ['音乐播放', '播放歌曲', 'PlayMusic'],
+      abilityName: 'EntryAbility',
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
+      parameters: {
+        'schema': 'http://json-schema.org/draft-07/schema#',
+        'type': 'object',
+        'title': 'Song Schema',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
+          },
+          'artist': {
+            'type': 'object',
+            'description': 'Information about the artist',
+            'properties': {
+              'country': {
+                'type': 'string',
+                'description': 'The artist\'s country of origin',
+                'default': 'zh'
+              },
+              'city': {
+                'type': 'string',
+                'description': 'The artist\'s city of origin'
+              },
+              'name': {
+                'type': 'string',
+                'description': 'The name of the artist',
+                'minLength': 1
+              }
+            },
+            'required': ['name']
+          }
+        },
+        'required': ['songName']
+      }
+    })
+    export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
+      public songName: string = '';
+      // 使用意图实体
+      public artist?: ArtistClassDef;
+    
+      onExecute(): Promise<insightIntent.IntentResult<string>> {
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo executeMode %{public}s', JSON.stringify(this.executeMode));
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo artist %{public}s', JSON.stringify(this.artist));
+        let storage = new LocalStorage();
+        storage.setOrCreate('songName', this.songName);
+        storage.setOrCreate('artist', this.artist);
+        // 根据 `executeMode` 参数的不同情况，提供不同的方式拉起 `PlayMusicPage` 页面。
+        if (this.executeMode == insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND) {
+          this.windowStage?.loadContent('pages/PlayMusicPage', storage);
+        } else if (this.executeMode == insightIntent.ExecuteMode.UI_EXTENSION_ABILITY) {
+          this.uiExtensionSession?.loadContent('pages/PlayMusicPage', storage);
+        }
+        // 定义意图的执行结果
+        let result: insightIntent.IntentResult<string> = {
+          code: 123,
+          result: 'execute success'
+        }
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo return %{public}s', JSON.stringify(result));
+        return Promise.resolve(result);
+      }
+    }
+    ```
 
     ArkTS-Dyn示例：
     
@@ -489,6 +824,99 @@
     ```
     
     <!-- @[insight_intent_use_intent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/OrnamentIntent/feature/src/main/ets/insightintents/PlayMusicDemo.ets) -->
+    
+    ``` TypeScript
+    import { insightIntent, InsightIntentEntry, InsightIntentEntryExecutor, InsightIntentEntity } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const LOG_TAG: string = 'testTag-EntryIntent';
+    
+    @InsightIntentEntity({
+      entityCategory: 'artist entity category',
+      // @InsightIntentEntry装饰器中parameters中已描述ArtistClassDef意图实体信息，此处parameters可不写
+    })
+    export class ArtistClassDef implements insightIntent.IntentEntity {
+      public entityId: string = '0x11';
+      public country?: string = '';
+      public city?: string = '';
+      public name: string = '';
+    }
+    
+    // 使用@InsightIntentEntry装饰器定义意图
+    @InsightIntentEntry({
+      intentName: 'PlayMusic',
+      domain: 'MusicDomain',
+      intentVersion: '1.0.1',
+      displayName: '播放歌曲',
+      displayDescription: '播放音乐意图',
+      icon: $r('app.media.app_icon'), // 请将$r('app.media.app_icon')替换为实际资源文件
+      llmDescription: '支持传递歌曲名称，播放音乐',
+      keywords: ['音乐播放', '播放歌曲', 'PlayMusic'],
+      abilityName: 'EntryAbility',
+      executeMode: [insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND],
+      parameters: {
+        'schema': 'http://json-schema.org/draft-07/schema#',
+        'type': 'object',
+        'title': 'Song Schema',
+        'description': 'A schema for describing songs and their artists',
+        'properties': {
+          'songName': {
+            'type': 'string',
+            'description': 'The name of the song',
+            'minLength': 1
+          },
+          'artist': {
+            'type': 'object',
+            'description': 'Information about the artist',
+            'properties': {
+              'country': {
+                'type': 'string',
+                'description': 'The artist\'s country of origin',
+                'default': 'zh'
+              },
+              'city': {
+                'type': 'string',
+                'description': 'The artist\'s city of origin'
+              },
+              'name': {
+                'type': 'string',
+                'description': 'The name of the artist',
+                'minLength': 1
+              }
+            },
+            'required': ['name']
+          }
+        },
+        'required': ['songName']
+      }
+    })
+    export default class PlayMusicDemo extends InsightIntentEntryExecutor<string> {
+      public songName: string = '';
+      // 使用意图实体
+      public artist?: ArtistClassDef;
+    
+      onExecute(): Promise<insightIntent.IntentResult<string>> {
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo executeMode %{public}s', JSON.stringify(this.executeMode));
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo artist %{public}s', JSON.stringify(this.artist));
+        let storage = new LocalStorage();
+        storage.setOrCreate('songName', this.songName);
+        storage.setOrCreate('artist', this.artist);
+        // 根据 `executeMode` 参数的不同情况，提供不同的方式拉起 `PlayMusicPage` 页面。
+        if (this.executeMode == insightIntent.ExecuteMode.UI_ABILITY_FOREGROUND) {
+          this.windowStage?.loadContent('pages/PlayMusicPage', storage);
+        } else if (this.executeMode == insightIntent.ExecuteMode.UI_EXTENSION_ABILITY) {
+          this.uiExtensionSession?.loadContent('pages/PlayMusicPage', storage);
+        }
+        // 定义意图的执行结果
+        let result: insightIntent.IntentResult<string> = {
+          code: 123,
+          result: 'execute success'
+        }
+        hilog.info(0x0000, LOG_TAG, 'PlayMusicDemo return %{public}s', JSON.stringify(result));
+        return Promise.resolve(result);
+      }
+    }
+    ```
     
     ArkTS-Sta示例：
     
