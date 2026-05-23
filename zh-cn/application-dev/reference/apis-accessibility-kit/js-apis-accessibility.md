@@ -39,8 +39,8 @@ type AbilityState = 'enable' | 'disable' | 'install'
 | 类型      | 说明       |
 | ------- | -------- |
 | 'enable'  | 表示辅助应用已启用。 |
-| 'disable'  | 辅助应用已禁用。 |
-| 'install'  | 辅助应用已安装。 |
+| 'disable'  | 表示辅助应用已禁用。 |
+| 'install'  | 表示辅助应用已安装。 |
 
 ## AbilityType
 
@@ -1941,11 +1941,13 @@ onSeniorModeStateChangeForSelf(callback: Callback&lt;boolean&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在对象生命周期结束前使用[accessibility.offSeniorModeStateChangeForSelf](#accessibilityoffseniormodestatechangeforself)取消监听，否则可能会导致崩溃。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -2573,11 +2575,13 @@ offSeniorModeStateChangeForSelf(callback?: Callback&lt;boolean&gt;): void
 
 取消监听应用自身“长辈模式”变化事件。使用callback异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -3161,11 +3165,13 @@ getSeniorModeStateForSelf(): Promise&lt;boolean&gt;
 
 判断应用是否开启“长辈模式”。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **返回值：**
 
@@ -3211,11 +3217,13 @@ setSeniorModeStateForSelf(state: boolean): Promise&lt;void&gt;
 
 设置应用是否开启“长辈模式”。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 

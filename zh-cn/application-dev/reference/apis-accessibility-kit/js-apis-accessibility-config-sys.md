@@ -833,8 +833,6 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 
 设置应用状态为“长辈模式”。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -842,6 +840,10 @@ setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Pr
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -891,8 +893,6 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 
 查询应用“长辈模式”的状态。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -900,6 +900,10 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -949,8 +953,6 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
 > - 调用此方法后，务必在对象生命周期结束前使用[offSeniorModeStateChangeForApp](#offseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -958,6 +960,10 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 **需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -1003,8 +1009,6 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
 取消监听所有应用“长辈模式”的状态变化事件。使用callback异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
@@ -1012,6 +1016,10 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 **需要权限**：ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -1469,13 +1477,15 @@ type OnDisconnectCallback = () => void
 
 “长辈模式”在应用中的状态信息。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此类型仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 | 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
