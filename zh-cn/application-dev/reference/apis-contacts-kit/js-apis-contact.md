@@ -4552,6 +4552,115 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 });
 ```
 
+## contact.syncContacts<sup>26+</sup>
+
+syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;int&gt;&gt;
+
+批量同步多个联系人至联系人数据库。最多可批量同步400个联系人。调用方必须处于前台。
+
+**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.WRITE_CONTACTS
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+**参数：**
+
+| 参数名  | 类型                | 必填 | 说明                                                         |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| mode | [ContactSyncMode](#contactsyncmode26)                                  | 是   | 表示联系人同步模式的类型。                                           |
+| progress      | [ContactSyncProgress](#contactsyncprogress26)                       | 是   | 表示联系人同步进度的相关信息。       |
+| contacts      | Array&lt;[Contact](#contact)&gt;                      | 是   | 表示需要同步至数据库的联系人信息数组。       |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可为通过 {@link Contact#getId()})获得的值表示创建成功。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
+| 16700002      | Invalid parameter value. |
+| 16700003      | Background usage is prohibited. |
+| 16700004      | The number of contacts exceeds the limit. |
+| 16700103      | User canceled. |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+// fengyang todo 
+```
+
+## contact.queryContactSyncInfo<sup>26+</sup>
+
+queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&gt;
+
+查询调用应用程序正在进行的联系人同步信息。如果返回的联系人同步信息为空，则调用方未进行联系人同步或联系人同步已完成。
+
+**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.WRITE_CONTACTS
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+**参数：**
+
+| 参数名  | 类型                | 必填 | 说明                                                         |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;Array&lt;[ContactSyncInfo](#contactsyncinfo26)&gt;&gt; | Promise对象，返回调用应用程序的联系人同步信息数组。如果没有正在同步的联系人，则返回null。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 201      | Permission denied. |
+| 16700001      | General error. |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+// fengyang todo 
+```
+
 ## ContactSelectionOptions<sup>10+</sup>
 
 选择联系人条件。
@@ -5313,4 +5422,48 @@ let website: contact.Website = {
     website: "website"
 };
 ```
+
+
+## ContactSyncMode<sup>26+</sup>
+
+枚举，同步模式的类型。
+
+**原子化服务API**：从API version 26 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+| 名称                  | 值 | 说明                               |
+| --------------------- | ---- | ---------------------------------- |
+| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。<br/>**系统能力**：SystemCapability.Applications.Contacts                 |
+
+## ContactSyncProgress<sup>26+</sup>
+
+联系人同步进度的信息。包含同步ID、当前批次和总批次。
+
+**原子化服务API**：从API version 26 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+|                名称               |                  类型                 |  只读  | 可选    |        说明      |
+| --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
+| syncId        | int |  否  |  否   |  表示用于同步所有联系人的同步标识符。该值应从0开始。     |
+| currentBatch        | int |  否  |  否    | 表示要同步的当前联系人批次的标识符。值的范围是从1到totalBatches。     |
+| totalBatches        | int |  否  |  否    | 表示要同步的联系人批次总数。     |
+
+## ContactSyncInfo<sup>26+</sup>
+
+调用应用程序相关的联系人同步的信息。
+
+**原子化服务API**：从API version 26 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+|                名称               |                  类型                 |  只读  | 可选    |        说明      |
+| --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
+| mode        | [ContactSyncMode](#contactsyncmode26) |  否  |  否   |  联系人同步模式。     |
+| syncId        | int |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
+| completedBatches        | Array&lt;int&gt; |  否  |  否    | 表示已成功同步的联系人的批处理标识符数组。值的范围是从1到totalBatches。     |
+| totalBatches        | int |  否  |  否    | 指示要同步的联系人批次总数。     |
+| lastSyncTime        | int |  否  |  否    | 指示联系人同步的最新时间戳（毫秒）。|
 
