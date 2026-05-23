@@ -514,7 +514,7 @@ ArkTS-Sta: blockSize(value: SizeOptions | undefined)
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [SizeOptions](ts-types.md#sizeoptions)<br/>ArkTS-Sta: [SizeOptions](ts-types.md#sizeoptions) \| undefined | 是   | 滑块大小。取值为undefined时，按默认值处理。<br/>默认值：当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).OutSet时为{width: 18, height: 18}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).InSet时为{width: 12, height: 12}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).NONE时为，此字段不生效。<br/>当设置的blockSize的宽高值不相等时，取较小值的尺寸，当设置的宽高值中有一个或两个都小于等于0的时候，取默认值。 |
+| value  | ArkTS-Dyn: [SizeOptions](ts-types.md#sizeoptions)<br/>ArkTS-Sta: [SizeOptions](ts-types.md#sizeoptions) \| undefined | 是   | 滑块大小。取值为undefined时，按默认值处理。<br/>默认值：当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).OutSet时为{width: 18, height: 18}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).InSet时为{width: 12, height: 12}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).NONE时，此字段不生效。<br/>当设置的blockSize的宽高值不相等时，取较小值的尺寸，当设置的宽高值中有一个或两个都小于等于0的时候，取默认值。 |
 
 ### blockStyle<sup>10+</sup>
 
