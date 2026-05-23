@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 开发者可以通过该模块引用Ability公共模块类。
@@ -35,7 +35,7 @@ ServiceExtensionContext二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ServiceExtensionContext.default](js-apis-inner-application-serviceExtensionContext-sys.md) | ServiceExtensionContext二级模块。 |
+| [ServiceExtensionContext](js-apis-inner-application-serviceExtensionContext-sys.md) | ServiceExtensionContext二级模块。 |
 
 ## AutoFillExtensionContext<sup>11+</sup>
 
@@ -49,7 +49,7 @@ AutoFillExtensionContext二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AutoFillExtensionContext.default](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
+| [AutoFillExtensionContext](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
 
 ## AutoStartupInfo<sup>11+</sup>
 
@@ -91,7 +91,7 @@ UIServiceExtensionContext二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UIServiceExtensionContext.default](js-apis-inner-application-uiserviceExtensionContext-sys.md) | UIServiceExtensionContext二级模块。 |
+| [UIServiceExtensionContext](js-apis-inner-application-uiserviceExtensionContext-sys.md) | UIServiceExtensionContext二级模块。 |
 
 ## UIServiceHostProxy<sup>14+</sup>
 
@@ -105,7 +105,7 @@ UIServiceHostProxy二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UIServiceHostProxy.default](js-apis-inner-application-uiservicehostproxy-sys.md) | UIServiceHostProxy二级模块。 |
+| [UIServiceHostProxy](js-apis-inner-application-uiservicehostproxy-sys.md) | UIServiceHostProxy二级模块。 |
 
 ## AgentProxy<sup>24+</sup>
 
@@ -143,6 +143,78 @@ AgentExtensionConnectCallback二级模块。
 | --- | --- |
 | [_AgentExtensionConnectCallback](../apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md) | 提供回调接口给开发者来接收服务端发送的数据和安全认证请求，以及感知AgentExtensionAbility服务端的断开连接操作。 |
 
+## ToolInfo
+
+type ToolInfo = _ToolInfo
+
+[ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo)用于描述系统命令行工具（CLI）的基本信息。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolInfo](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolinfo) | 用于描述系统命令行工具（CLI）的基本信息。 |
+
+## ToolSummary
+
+type ToolSummary = _ToolSummary
+
+[ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolsummary)用于描述系统命令行工具（CLI）的摘要信息。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolSummary](../apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md#toolsummary) | 用于描述系统命令行工具（CLI）的摘要信息。 |
+
+## CliToolEvent
+
+type CliToolEvent = _CliToolEvent
+
+[CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md)用于描述CLI工具进程运行期间产生的会话事件信息。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
+
+## ToolEventCallback
+
+type ToolEventCallback = _ToolEventCallback
+
+[ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md)用于接收CLI工具进程运行期间产生的会话事件。
+
+**起始版本：** 26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AgentRuntime.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
+
 **示例：**
 
 ```ts
@@ -166,4 +238,8 @@ let uiServiceExtensionContext: common.UIServiceExtensionContext;
 let uiServiceHostProxy: common.UIServiceHostProxy;
 let agentProxy: common.AgentProxy;
 let agentExtensionConnectCallback: common.AgentExtensionConnectCallback;
+let toolInfo: common.ToolInfo;
+let toolSummary: common.ToolSummary;
+let cliToolEvent: common.CliToolEvent;
+let toolEventCallback: common.ToolEventCallback;
 ```

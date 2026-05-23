@@ -48,7 +48,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | 帧率指标回调类型。 |
+| [typedef void (\*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)](#oh_windowmanager_framemetricsmeasuredcallback) | OH_WindowManager_FrameMetricsMeasuredCallback | 帧率指标回调类型。 |
 | [typedef void (\*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfocallback) | OH_WindowManager_DensityInfoCallback | 窗口缩放系数相关信息回调类型。 |
 
 ## 枚举类型说明
@@ -118,7 +118,7 @@ enum WindowManager_WindowType
 | -- | -- |
 | WINDOW_MANAGER_WINDOW_TYPE_APP = 0 | 子窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_MAIN = 1 | 主窗口。 |
-| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 悬浮窗口。 |
+| WINDOW_MANAGER_WINDOW_TYPE_FLOAT = 8 | 全局悬浮窗口。 |
 | WINDOW_MANAGER_WINDOW_TYPE_DIALOG = 16 | 模态窗口。 |
 
 ## 函数说明
@@ -126,7 +126,8 @@ enum WindowManager_WindowType
 ### OH_WindowManager_FrameMetricsMeasuredCallback()
 
 ```c
-typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, OH_WindowManager_FrameMetrics* metrics)
+typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(
+    int32_t windowId, const OH_WindowManager_FrameMetrics* metrics)
 ```
 
 **描述**
