@@ -1,8 +1,8 @@
 # 背景设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -341,7 +341,7 @@ ArkTS-Sta: backgroundImageSize(value: SizeOptions | ImageSize | undefined): this
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## backgroundImagePosition
 
@@ -365,13 +365,13 @@ ArkTS-Sta: backgroundImagePosition(value: Position | Alignment | undefined): thi
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Position](ts-types.md#position)&nbsp;\|&nbsp;[Alignment](ts-appendix-enums.md#alignment)<br> ArkTS-Sta: [Position](ts-types.md#position)&nbsp;\|&nbsp;[Alignment](ts-appendix-enums.md#alignment) \| undefined | 是   | 设置背景图在组件中显示位置，即相对于组件左上角的坐标。<br/> x和y值设置百分比时，偏移量是相对组件自身宽高计算的。 |
+| value  | ArkTS-Dyn: [Position](ts-types.md#position)&nbsp;\|&nbsp;[Alignment](ts-appendix-enums.md#alignment)<br>ArkTS-Sta: [Position](ts-types.md#position)&nbsp;\|&nbsp;[Alignment](ts-appendix-enums.md#alignment) \| undefined | 是   | 设置背景图在组件中显示位置，即相对于组件左上角的坐标。<br/> x和y值设置百分比时，偏移量是相对组件自身宽高计算的。 |
 
 **返回值：**
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## BlurStyle<sup>9+</sup>
 
@@ -998,7 +998,7 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 
 ## backgroundBrightness<sup>23+</sup> 
 
-backgroundBrightness(params: BackgroundBrightnessOptions | undefined): this
+backgroundBrightness(params: BackgroundBrightnessOptions | undefined)
 
 设置组件背景提亮效果。
 
@@ -1014,13 +1014,7 @@ backgroundBrightness(params: BackgroundBrightnessOptions | undefined): this
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| params | [BackgroundBrightnessOptions](#backgroundbrightnessoptions12对象说明) | 是   | 设置组件背景提亮效果，包括：亮度变化速率，提亮程度。<br/>当options的值为undefined时，恢复为无提亮效果的背景。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
+| params | [BackgroundBrightnessOptions](#backgroundbrightnessoptions12对象说明) | 是   | 设置组件背景提亮效果，包括：亮度变化速率，提亮程度。<br/>当params的值为undefined时，恢复为无提亮效果的背景。 |
 
 ## BackgroundBrightnessOptions<sup>12+</sup>对象说明
 
