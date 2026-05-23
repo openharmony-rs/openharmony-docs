@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @li-weifeng2024; @xuzhihao666-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 TestRunner模块提供了框架测试的能力。包括准备单元测试环境、运行测试用例。
 
@@ -25,159 +25,17 @@ import { TestRunner } from '@kit.TestKit';
 
 ## TestRunner
 
-### 属性
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| onPrepare | [OnPrepareFn](#onpreparefn23) | 否    | 否    | 为运行测试用例准备单元测试环境。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onPrepare()方法变更为当前属性，调用方式不变。 |
-| onRun | [OnRunFn](#onrunfn23) | 否    | 否    | 运行全部测试用例。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onRun()方法变更为当前属性，调用方式不变。 |
-
-## TestRunner.onPrepare
-
-onPrepare(): void
-
-为运行测试用例准备单元测试环境。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
+| onPrepare | ArkTS-Dyn: (): void <br> ArkTS-Sta: [OnPrepareFn](#onpreparefn) | 否    | 否    | 为运行测试用例准备单元测试环境。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 <br/> |
+| onRun | ArkTS-Dyn: (): void <br> ArkTS-Sta: [OnRunFn](#onrunfn) | 否    | 否    | 运行全部测试用例。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/>**ArkTS-Sta起始版本：** 23 <br/> |
+| onStop | [onStopFn](#onstopfn) | 否 | 是 | 当测试完成时，系统会在测试环境退出前触发该回调。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 **示例：**
 
-```ts
-import { TestRunner } from '@kit.TestKit';
-
-export default class UserTestRunner implements TestRunner {
-  onPrepare() {
-    console.info('Trigger onPrepare');
-  }
-
-  onRun() {
-  }
-}
-```
-
-## TestRunner.onRun
-
-onRun(): void
-
-运行测试用例。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
-
-**ArkTS-Dyn起始版本：** 8
-
-**示例：**
-
-```ts
-import { TestRunner } from '@kit.TestKit';
-
-export default class UserTestRunner implements TestRunner {
-  onPrepare() {
-  }
-
-  onRun() {
-    console.info('Trigger onRun');
-  }
-}
-```
-
-## OnPrepareFn<sup>23+</sup>
-
-type OnPrepareFn = () => void
-
-当单元测试环境准备完成时，会触发该回调。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-**示例：**
-
-```ts
-// ArkTS-Sta示例
-import { TestRunner } from '@kit.TestKit';
-
-type OnPrepareFn = () => void;
-type OnRunFn = () => void;
-
-export default class UserTestRunner implements TestRunner {
-  onPrepare:OnPrepareFn = () => {
-    console.info('Trigger onPrepare');
-  }
-    
-  onRun: OnRunFn = () => {
-  }
-}
-```
-
-## OnRunFn<sup>23+</sup>
-
-type OnRunFn = () => void
-
-当运行测试用例时，会触发该回调。
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
-**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本：** 23
-
-**示例：**
-
-```ts
-// ArkTS-Sta示例
-import { TestRunner } from '@kit.TestKit';
-
-type OnPrepareFn = () => void;
-type OnRunFn = () => void;
-
-export default class UserTestRunner implements TestRunner {
-  onPrepare:OnPrepareFn = () => {
-  }
-    
-  onRun: OnRunFn = () => {
-    console.info('Trigger onRunFn');
-  }
-}
-```
-
-## TestRunner.onStop
-
-onStop(): void
-
-当测试完成时，系统会在测试环境退出前触发该回调。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**示例：**
-
+ArkTS-Dyn示例：
 ```ts
 import { TestRunner } from '@kit.TestKit';
 
@@ -195,3 +53,66 @@ export default class UserTestRunner implements TestRunner {
   }
 }
 ```
+
+ArkTS-Sta示例：
+```ts
+import { TestRunner } from '@kit.TestKit';
+
+export default class UserTestRunner implements TestRunner {
+  public onPrepare: () => void = () => {
+    console.info('Trigger onPrepare');
+  }
+
+  public onRun: () => void = () => {
+    console.info('Trigger onRun');
+  }
+
+  public onStop?: () => void = () => {
+    console.info('Trigger onStop');
+  }
+}
+```
+
+## OnPrepareFn
+
+type OnPrepareFn = () => void
+
+当单元测试环境准备完成时，会触发该回调。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+## OnRunFn
+
+type OnRunFn = () => void
+
+当运行测试用例时，会触发该回调。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+## OnStopFn
+
+type OnStopFn = () => void
+
+当测试完成时，系统会在测试环境退出前触发该回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
