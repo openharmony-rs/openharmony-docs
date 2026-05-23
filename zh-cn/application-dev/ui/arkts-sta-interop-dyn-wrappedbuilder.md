@@ -1,10 +1,16 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn的wrapBuilder（封装全局@Builder）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
 从API version 23开始，支持在ArkTS-Sta中使用ArkTS-Dyn的[WrappedBuilder对象](./state-management/arkts-wrapBuilder.md)。适用于ArkTS-Sta互操作中封装全局[\@Builder](./state-management/arkts-builder.md)的场景。
 
-在互操作场景下，[compatibleWrappedBuilder方法](../reference/apis-arkui/arkui-ts/ts-interop-compatible-WrappedBuilder.md)将ArkTS-Dyn的WrappedBuilder对象转换为占位组件，从而链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
+在互操作场景下，[compatibleWrappedBuilder](../reference/apis-arkui/arkui-ts/ts-interop-compatible-WrappedBuilder.md)将ArkTS-Dyn的WrappedBuilder对象转换为占位组件，从而链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
 
 
 ## 使用限制
@@ -57,7 +63,10 @@ class Tmp {
 function overBuilder(param: Tmp) { // 按引用传递参数，可以触发UI更新
   Column() {
     Text(param.prop)
+      .fontSize(20)
+      .margin(10)
   }
+  .width('100%')
 }
 
 // 导出WrappedBuilder对象
@@ -115,9 +124,15 @@ struct MainPage {
           this.stateVar = 'Hello dynamic!';
         }
       })
+        .width(300)
+        .margin(10)
     }
     .width('100%')
     .height('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-sta-interop-dyn-wrappedbuilder-demo1](figures/arkts-sta-interop-dyn-wrappedbuilder-demo1.gif)

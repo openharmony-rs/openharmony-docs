@@ -1,4 +1,10 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta自定义组件
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -45,7 +51,7 @@ export struct MainPage { // 从ArkTS-Sta模块中导出
 
   build() {
     Text(this.message)
-      .fontSize(30)
+      .fontSize(20)
   }
 }
 ```
@@ -90,12 +96,13 @@ import { Text, Column, Component, ComponentV2, Color } from '@ohos.arkui.compone
 export struct ChildComponentV1 {
   message: string = 'Hello World V1!';
 
-  build() {
+  build(): void {
     Column() {
       Text(this.message)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
     }
-    .padding(20)
+    .width('100%')
   }
 }
 
@@ -103,12 +110,13 @@ export struct ChildComponentV1 {
 export struct ChildComponentV2 {
   message: string = 'Hello World V2!';
 
-  build() {
+  build(): void {
     Column() {
       Text(this.message)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
     }
-    .padding(20)
+    .width('100%')
   }
 }
 ```
@@ -167,7 +175,7 @@ struct MainPage {
 
 @ComponentV2
 struct IndexV2 {
-  build() {
+  build(): void {
     Column() {
       // 直接使用ArkTS-Sta自定义组件
       ChildComponentV2()
@@ -182,7 +190,7 @@ struct IndexV2 {
 
 @ComponentV2
 struct MainPageV2 {
-  build() {
+  build(): void {
     Column() {
       // 使用ArkTS-Sta自定义组件
       ChildComponentV2()
@@ -191,3 +199,7 @@ struct MainPageV2 {
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-component-demo1](figures/arkts-dyn-interop-sta-component-demo1.png)

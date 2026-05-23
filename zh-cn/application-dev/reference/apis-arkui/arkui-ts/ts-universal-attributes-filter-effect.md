@@ -1,8 +1,8 @@
 # 视效设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,6 +11,8 @@
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -176,7 +178,9 @@ ArkTS-Sta: materialFilter(filter: Filter | undefined): this
 
 ## Filter
 
-type Filter = Filter
+ArkTS-Dyn: type Filter = Filter
+
+ArkTS-Sta: type Filter = uiEffect.Filter
 
 导入Filter类型对象。
 
@@ -190,11 +194,13 @@ type Filter = Filter
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | 用于将相应的效果添加到指定的组件上。 |
+| ArkTS-Dyn: [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter)<br/>ArkTS-Sta: uiEffect.Filter | 用于将相应的效果添加到指定的组件上。 |
 
 ## VisualEffect
 
-type VisualEffect = VisualEffect
+ArkTS-Dyn: type VisualEffect = VisualEffect
+
+ArkTS-Sta: type VisualEffect = uiEffect.VisualEffect
 
 导入VisualEffect类型对象。
 
@@ -208,7 +214,7 @@ type VisualEffect = VisualEffect
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
+| ArkTS-Dyn: [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect)<br/>ArkTS-Sta: uiEffect.[VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
 
 ## 示例
 
