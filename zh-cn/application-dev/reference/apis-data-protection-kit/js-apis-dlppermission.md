@@ -13,20 +13,49 @@
 - 多设备协同办公，确保文档在不同设备间的安全流转
 - 文档分享与协作，实现细粒度的权限控制
 
-**解决的问题**：
-- 解决企业数据在不同设备和人员间流转时的安全管控问题
-- 防止敏感数据被未授权访问、复制或传播
-- 解决跨设备文档权限管理的一致性问题
-
-**带来的收益**：  
-- 提升企业数据安全性，降低数据泄露风险
-- 实现文档的细粒度权限控制，满足合规要求
-- 支持安全的文档协作，提升办公效率
-
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - @ohos.dlpPermission归属的Kit已由`DataLossPreventionKit`变更为`DataProtectionKit`，建议开发者使用新模块名`@kit.DataProtectionKit`完成模块导入。如果使用`@kit.DataLossPreventionKit`导入，仅能调用改名前的接口，无法使用新增接口。
+
+## 关键 Class/Interface 介绍
+
+### 核心枚举类型
+- **ActionFlagType**:  DLP 文件可执行操作类型的标志枚举，用于细粒度权限控制
+- **DLPFileAccess**:  DLP 文件授权类型枚举，定义文件的访问级别
+- **ActionType**:  文件权限到期后执行动作的枚举
+- **AccountType**:  授权账号类型枚举
+
+### 核心接口类型
+
+- **DlpConnPlugin**：用于注册云端认证回调能力的接口，包含连接服务器方法（参数：请求标识、请求数据、回调函数）
+- **Callback\<string>**：字符串类型回调，用于云端认证结果的异步返回
+- **Callback\<AccessedDLPFileInfo>**：DLP文件访问信息回调，用于监听DLP文件打开事件
+- **AsyncCallback\<boolean>**：布尔类型异步回调，用于isDLPFile、isInSandbox等查询结果返回
+- **AsyncCallback\<DLPPermissionInfo>**：DLP权限信息异步回调，用于返回沙箱权限查询结果
+- **AsyncCallback\<Array\<string>>**：字符串数组异步回调，用于返回支持的文件类型列表
+- **AsyncCallback\<void>**：无返回值异步回调，用于操作完成通知
+- **AsyncCallback\<Array\<RetentionSandboxInfo>>**：保留沙箱信息列表异步回调，用于返回沙箱查询结果
+- **AsyncCallback\<Array\<AccessedDLPFileInfo>>**：DLP文件访问记录列表异步回调，用于返回文件访问历史
+
+### 核心类
+
+- **DlpConnManager**：是数据防泄漏系统的核心管理类，负责管理 DLP 文件与云端服务之间的通信能力。
+
+```mermaid
+classDiagram
+    class DlpConnManager {
+        +constructor()
+        +static registerPlugin(plugin: DlpConnPlugin) number
+        +static unregisterPlugin() void
+    }
+    class DlpConnPlugin {
+        <<interface>>
+        +connectServer(requestId: string, requestData: string, callback: Callback~string~) void
+    }
+    DlpConnManager ..> DlpConnPlugin : uses
+   
+```
 
 ## 导入模块
 
