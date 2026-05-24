@@ -111,7 +111,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 
 getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 
-查询DLP沙箱聚合策略。使用Promise方式异步返回结果。**使用场景：** 企业安全管理应用需要获取当前系统的DLP聚合策略配置，以决定是否将同权限类型的DLP文件在同一个沙箱内打开。
+查询DLP沙箱聚合策略。使用Promise方式异步返回结果。**使用场景：** 企业安全管理应用需要获取当前系统的DLP沙箱聚合策略配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -152,7 +152,7 @@ dlpPermission.getDLPGatheringPolicy().then((gatheringPolicy: dlpPermission.Gathe
 
 getDLPGatheringPolicy(callback: AsyncCallback&lt;GatheringPolicyType&gt;): void
 
-查询DLP沙箱聚合策略。使用callback方式异步返回结果。**使用场景：** 企业安全管理应用需要获取当前系统的DLP聚合策略配置。
+查询DLP沙箱聚合策略。使用callback方式异步返回结果。**使用场景：** 企业安全管理应用需要获取当前系统的DLP沙箱聚合策略配置。
 
 **系统接口：** 此接口为系统接口。
 
@@ -209,7 +209,7 @@ installDLPSandbox(bundleName: string, access: DLPFileAccess, userId: number, uri
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码19100001。 |
-| access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | 是 | DLP文件授权类型。设置不同的授权类型将决定用户对DLP文件的访问权限范围，具体权限类型参见[DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess)。超出范围时抛出错误码19100001。 |
+| access | [DLPFileAccess](js-apis-dlppermission.md#dlpfileaccess) | 是 | DLP文件授权类型。设置不同的授权类型将决定用户对DLP文件的访问权限范围。超出范围时抛出错误码19100001。 |
 | userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。传入无效值时抛出错误码19100001。 |
 | uri | string | 是 |  DLP文件的URI。不超过4095字节。超出范围时抛出错误码19100001。 |
 
@@ -298,7 +298,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 
 uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promise&lt;void&gt;
 
-卸载一个应用的DLP沙箱。使用Promise方式异步返回结果。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。**使用场景：** DLP文件关闭后，需要清理对应的沙箱环境。**配对调用：** 必须在调用installDLPSandbox安装沙箱后才能调用此方法卸载。
+卸载一个应用的DLP沙箱。使用Promise方式异步返回结果。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。**使用场景：** 需要清理对应的沙箱环境。**配对调用：** 必须在调用installDLPSandbox安装沙箱后才能调用此方法卸载。
 
 **系统接口：** 此接口为系统接口。
 
@@ -318,7 +318,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promi
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve时表示卸载成功，reject时抛出错误表示失败。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -351,7 +351,7 @@ dlpPermission.installDLPSandbox('com.ohos.note', dlpPermission.DLPFileAccess.REA
 
 uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callback: AsyncCallback&lt;void&gt;): void
 
-卸载一个应用的DLP沙箱。使用callback方式异步返回结果。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。**使用场景：** DLP文件关闭后需要清理沙箱环境。
+卸载一个应用的DLP沙箱。使用callback方式异步返回结果。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。**使用场景：** 需要清理沙箱环境。
 
 **系统接口：** 此接口为系统接口。
 
@@ -366,7 +366,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callba
 | bundleName | string | 是 | 应用包名。最小7字节，最大128字节。超出范围时抛出错误码19100001。 |
 | userId | number | 是 | 当前的用户ID，通过账号子系统获取的系统账号ID，默认主用户ID：100。超出范围时抛出错误码19100001。 |
 | appIndex | number | 是 | DLP沙箱号，即installDLPSandbox接口调用成功后的返回值，用于标识已安装的DLP沙箱。取值范围为[1000, 1100]。超出范围时抛出错误码19100001。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收卸载结果。回调参数包括：err（错误对象，成功时为undefined）。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收卸载结果。|
 
 **错误码：**
 
@@ -417,7 +417,7 @@ on(type: 'uninstallDLPSandbox', listener: Callback&lt;DLPSandboxState&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'uninstallDLPSandbox' | 是 | 监听事件类型。固定值为'uninstallDLPSandbox'：DLP沙箱卸载事件。 |
-| listener | Callback&lt;[DLPSandboxState](#dlpsandboxstate)&gt; | 是 | 回调函数，用于接收沙箱应用卸载事件。回调参数包括：info（DLPSandboxState对象，包含bundleName和appIndex）。 |
+| listener | Callback&lt;[DLPSandboxState](#dlpsandboxstate)&gt; | 是 | 回调函数，用于接收沙箱应用卸载事件。 |
 
 **错误码：**
 
@@ -517,7 +517,7 @@ addDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve时表示添加link文件成功，reject时抛出错误表示失败。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -581,7 +581,7 @@ addDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | linkFileName | string | 是 | 用于FUSE文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收添加link文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收添加link文件的结果。 |
 
 **错误码：**
 
@@ -647,7 +647,7 @@ stopFuseLink(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve时表示停止FUSE关联读写成功，reject时抛出错误表示失败。|
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。|
 
 **错误码：**
 
@@ -776,7 +776,7 @@ resumeFuseLink(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve时表示恢复FUSE关联读写成功，reject时抛出错误表示失败。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -840,7 +840,7 @@ resumeFuseLink(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收恢复FUSE关联的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收恢复FUSE关联的结果。|
 
 **错误码：**
 
@@ -1053,7 +1053,7 @@ deleteDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve时表示删除link文件成功，reject时抛出错误表示失败。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1118,7 +1118,7 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): vo
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | linkFileName | string | 是 | 用于fuse文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收删除link文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收删除link文件的结果。 |
 
 **错误码：**
 
@@ -1191,7 +1191,7 @@ recoverDLPFile(plaintextFd: number): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve时表示恢复DLP文件成功，reject时抛出错误表示失败。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1344,7 +1344,7 @@ closeDLPFile(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。resolve时表示关闭DLPFile成功，reject时抛出错误表示失败。 |
+| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1409,7 +1409,7 @@ closeDLPFile(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收关闭DLPFile的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收关闭DLPFile的结果。 |
 
 **错误码：**
 
@@ -1462,7 +1462,7 @@ ExampleFunction();
 
 generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty): Promise&lt;DLPFile&gt;
 
-DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise方式异步返回返回DLPFile管理对象。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。**配对调用：** 调用generateDLPFile成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。**使用场景：** 企业文档管理系统需要将敏感文档加密为DLP文件，并设置访问权限列表，以实现文档的安全分享和权限管理。
+DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise方式异步返回DLPFile管理对象。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。**配对调用：** 调用generateDLPFile成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。**使用场景：** 企业文档管理系统需要将敏感文档加密为DLP文件，并设置访问权限列表，以实现文档的安全分享和权限管理。
 
 **系统接口：** 此接口为系统接口。
 
