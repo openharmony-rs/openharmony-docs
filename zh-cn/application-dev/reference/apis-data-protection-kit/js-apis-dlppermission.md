@@ -6,7 +6,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-数据防泄漏（Data Loss Prevention，简称为DLP）是系统级的数据防泄漏解决方案,提供跨设备文件的权限管理、加密存储、授权访问等能力。DLP通过加密技术对敏感文件进行保护,生成.dlp格式的加密文件(称为DLP文件)。当打开DLP文件时,系统会自动创建隔离的DLP沙箱环境,确保文件内容不会泄漏到非授权环境。企业级DLP文件支持细粒度的权限控制,包括查看、编辑、复制、打印、截屏等操作权限的管理。
+数据防泄漏（Data Loss Prevention，简称为DLP）是系统级的数据防泄漏解决方案，提供跨设备文件的权限管理、加密存储、授权访问等能力。DLP通过加密技术对敏感文件进行保护,生成.dlp格式的加密文件(称为DLP文件)。当打开DLP文件时，系统会自动创建隔离的DLP沙箱环境，确保文件内容不会泄漏到非授权环境。企业级DLP文件支持细粒度的权限控制，包括查看、编辑、复制、打印、截屏等操作权限的管理。
 
 **使用场景**： 
 - 企业办公场景下，保护敏感文档不被非授权访问和泄露
@@ -28,19 +28,21 @@
 
 ### 核心接口类型
 
+- **CustomProperty**：表示自定义策略，包含企业定制策略的json字符串和企业DLP文件的查询选项
+- **DLPProperty**：表示授权相关信息，包含权限设置者账号、权限设置者账号的ID和权限设置者账号类型等
+- **AuthUser**：表示授权用户数据，包含被授权用户账号、被授权用户账号类型和被授予的权限等
 - **DlpConnPlugin**：用于注册云端认证回调能力的接口，包含连接服务器方法（参数：请求标识、请求数据、回调函数）
-- **Callback\<string>**：字符串类型回调，用于云端认证结果的异步返回
+
+### 核心回调类型
+
 - **Callback\<AccessedDLPFileInfo>**：DLP文件访问信息回调，用于监听DLP文件打开事件
-- **AsyncCallback\<boolean>**：布尔类型异步回调，用于isDLPFile、isInSandbox等查询结果返回
 - **AsyncCallback\<DLPPermissionInfo>**：DLP权限信息异步回调，用于返回沙箱权限查询结果
-- **AsyncCallback\<Array\<string>>**：字符串数组异步回调，用于返回支持的文件类型列表
-- **AsyncCallback\<void>**：无返回值异步回调，用于操作完成通知
 - **AsyncCallback\<Array\<RetentionSandboxInfo>>**：保留沙箱信息列表异步回调，用于返回沙箱查询结果
 - **AsyncCallback\<Array\<AccessedDLPFileInfo>>**：DLP文件访问记录列表异步回调，用于返回文件访问历史
 
 ### 核心类
 
-- **DlpConnManager**：是数据防泄漏系统的核心管理类，负责管理 DLP 文件与云端服务之间的通信能力。
+- **DlpConnManager**：是数据防泄漏系统的核心管理类，在SA（System Ability）中注册或注销回调能力。
 
 ```mermaid
 classDiagram
@@ -62,16 +64,14 @@ classDiagram
 | 首次调用 | 配对调用 | 说明 |
 |---------|---------|------|
 | on('openDLPFile', listener) | off('openDLPFile', listener) | 订阅DLP文件打开事件，在页面销毁或不再需要时取消订阅以释放资源 |
-| DlpConnManager.registerPlugin() | DlpConnManager.unregisterPlugin() | 注册云端认证插件能力，在应用退出或不再需要时注销插件 |
+| DlpConnManager.registerPlugin() | DlpConnManager.unregisterPlugin() | 在SA中注册回调能力，在应用退出或不再需要时注销能力 |
 | setRetentionState() | cancelRetentionState() | 设置沙箱保留状态以便快速重新打开文件，不再需要时取消保留以释放系统资源 |
 | setSandboxAppConfig() | cleanSandboxAppConfig() | 设置沙箱应用自定义配置，使用完毕后清理配置恢复默认状态 |
 | generateDlpFileForEnterprise() | decryptDlpFile() | 将明文文件加密生成企业DLP文件，或将DLP文件解密还原为明文文件，两者互为逆向操作 |
-| queryOpenedEnterpriseDlpFiles() | closeOpenedEnterpriseDlpFiles() | 查询当前已打开的企业DLP文件列表，随后可批量关闭指定文件以释放句柄资源 |
 | setSandboxAppConfig() | getSandboxAppConfig() | 设置沙箱配置后，通过查询接口验证配置是否生效或读取当前配置状态 |
 | isInSandbox() | getDLPPermissionInfo() | 判断当前处于沙箱环境后，再调用权限查询接口获取具体权限信息以控制应用行为 |
 | isDLPFile() | getOriginalFileName() | 判断文件为DLP文件后，获取原始文件名以确定文件类型并选择合适的应用打开 |
 | isDLPFeatureProvided() | generateDlpFileForEnterprise() 或 startDLPManagerForResult() | 确认系统支持DLP加密特性后，再调用相关功能接口，避免在不支持的设备上执行失败 |
-| generateDlpFileForEnterprise() | queryDlpPolicy() | 生成企业DLP文件时写入策略，后续可通过查询接口读取文件中的DLP策略信息 |
 
 ## 导入模块
 
@@ -1743,8 +1743,6 @@ let dlpConnManager: dlpPermission.DlpConnManager = new dlpPermission.DlpConnMana
 static registerPlugin(plugin: DlpConnPlugin): number
   
 该接口提供将回调注册到SA（System Ability）侧的功能。
-
-**使用场景**：可用于企业应用在SA中注册自定义的连云能力回调，以便SA在需要进行云服务认证时调用应用的通信能力。
 
 > **说明：**
 >
