@@ -94,11 +94,11 @@ classDiagram
 
 | 首次调用 | 配对调用 | 说明 |
 | -------- | -------- | -------- |
-| installDLPSandbox() | uninstallDLPSandbox() |	沙箱安装后必须卸载。 |
-| on('uninstallDLPSandbox') | off('uninstallDLPSandbox') |	注册监听后应取消监听。 |
-| generateDLPFile() | closeDLPFile() |	生成DLP文件后必须关闭。 |
-| openDLPFile() | closeDLPFile() |	打开DLP文件后必须关闭。 |
-| addDLPLinkFile() | deleteDLPLinkFile() |	FUSE映射创建后应删除。 |
+| installDLPSandbox() | uninstallDLPSandbox() | 沙箱安装后必须卸载。 |
+| on('uninstallDLPSandbox') | off('uninstallDLPSandbox') | 注册监听后应取消监听。 |
+| generateDLPFile() | closeDLPFile() | 生成DLP文件后必须关闭。 |
+| openDLPFile() | closeDLPFile() | 打开DLP文件后必须关闭。 |
+| addDLPLinkFile() | deleteDLPLinkFile() | FUSE映射创建后应删除。 |
 | stopFuseLink() | resumeFuseLink() | 停止读写后也可恢复。 |
 
 ## 导入模块
