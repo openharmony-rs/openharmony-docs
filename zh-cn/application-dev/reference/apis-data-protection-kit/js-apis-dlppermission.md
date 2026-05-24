@@ -57,6 +57,22 @@ classDiagram
    
 ```
 
+## API组合使用关系说明
+
+| 首次调用 | 配对调用 | 说明 |
+|---------|---------|------|
+| on('openDLPFile', listener) | off('openDLPFile', listener) | 订阅DLP文件打开事件，在页面销毁或不再需要时取消订阅以释放资源 |
+| DlpConnManager.registerPlugin() | DlpConnManager.unregisterPlugin() | 注册云端认证插件能力，在应用退出或不再需要时注销插件 |
+| setRetentionState() | cancelRetentionState() | 设置沙箱保留状态以便快速重新打开文件，不再需要时取消保留以释放系统资源 |
+| setSandboxAppConfig() | cleanSandboxAppConfig() | 设置沙箱应用自定义配置，使用完毕后清理配置恢复默认状态 |
+| generateDlpFileForEnterprise() | decryptDlpFile() | 将明文文件加密生成企业DLP文件，或将DLP文件解密还原为明文文件，两者互为逆向操作 |
+| queryOpenedEnterpriseDlpFiles() | closeOpenedEnterpriseDlpFiles() | 查询当前已打开的企业DLP文件列表，随后可批量关闭指定文件以释放句柄资源 |
+| setSandboxAppConfig() | getSandboxAppConfig() | 设置沙箱配置后，通过查询接口验证配置是否生效或读取当前配置状态 |
+| isInSandbox() | getDLPPermissionInfo() | 判断当前处于沙箱环境后，再调用权限查询接口获取具体权限信息以控制应用行为 |
+| isDLPFile() | getOriginalFileName() | 判断文件为DLP文件后，获取原始文件名以确定文件类型并选择合适的应用打开 |
+| isDLPFeatureProvided() | generateDlpFileForEnterprise() 或 startDLPManagerForResult() | 确认系统支持DLP加密特性后，再调用相关功能接口，避免在不支持的设备上执行失败 |
+| generateDlpFileForEnterprise() | queryDlpPolicy() | 生成企业DLP文件时写入策略，后续可通过查询接口读取文件中的DLP策略信息 |
+
 ## 导入模块
 
 ```ts
