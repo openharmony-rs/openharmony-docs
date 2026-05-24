@@ -6,12 +6,101 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-数据防泄漏（Data Loss Prevention，简称为DLP）是系统提供的系统级的数据防泄漏解决方案，提供跨设备的文件的权限管理、加密存储、授权访问等能力。
+## 模型简介
+dlpPermission 模块是系统级的数据防泄漏解决方案，属于 Data Protection Kit 的核心组件。该模块提供跨设备文件的权限管理、加密存储、授权访问等能力，通过（Data Loss Prevention，简称为DLP）沙箱技术实现应用进程隔离，确保敏感数据在授权范围内安全流转。
+
+典型应用场景：
+
+- 企业安全管理应用获取DLP聚合策略配置
+- DLP文件管理应用安装/卸载沙箱环境
+- 企业文档管理系统生成受保护的DLP文件并设置访问权限
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.dlpPermission (数据防泄漏)](js-apis-dlppermission.md)。
+
+## 关键Class/Interface介绍
+
+### 核心枚举类
+
+- GatheringPolicyType: DLP沙箱聚合策略类型枚举，用于控制同权限类型DLP文件的沙箱打开方式。
+
+### 核心接口类型
+
+- DLPSandboxInfo: 表示DLP沙箱的安装信息，由 installDLPSandbox() 返回。
+- DLPSandboxState: 表示DLP沙箱的状态信息，用于事件回调。
+
+### 核心回调类型
+
+- AsyncCallback\<DLPSandboxInfo>: 沙箱安装回调
+- AsyncCallback\<DLPFile>: 文件操作回调
+- AsyncCallback\<GatheringPolicyType>: 策略查询回调
+- AsyncCallback\<void>: 通用操作回调
+
+### 核心类
+
+- **DLPFile**: 表示一个DLP文件对象。
+
+```mermaid
+classDiagram
+    class dlpPermission {
+        <<module>>
+        +getDLPGatheringPolicy() Promise~GatheringPolicyType~
+        +installDLPSandbox() Promise~DLPSandboxInfo~
+        +uninstallDLPSandbox() Promise~void~
+        +on(event, callback) void
+        +off(event, callback) void
+        +generateDLPFile() Promise~DLPFile~
+        +openDLPFile() Promise~DLPFile~
+    }
+    
+    class DLPFile {
+        -dlpProperty: DLPProperty
+        +addDLPLinkFile(linkFileName: string) Promise~void~
+        +replaceDLPLinkFile(linkFileName: string) Promise~void~
+        +deleteDLPLinkFile(linkFileName: string) Promise~void~
+        +stopFuseLink() Promise~void~
+        +resumeFuseLink() Promise~void~
+        +recoverDLPFile(plaintextFd: number) Promise~void~
+        +closeDLPFile() Promise~void~
+    }
+    
+    class GatheringPolicyType {
+        <<enumeration>>
+        GATHERING = 1
+        NON_GATHERING = 2
+    }
+    
+    class DLPSandboxInfo {
+        <<interface>>
+        +appIndex: number
+        +tokenID: number
+        +bindAppIndex?: number
+    }
+    
+    class DLPSandboxState {
+        <<interface>>
+        +bundleName: string
+        +appIndex: number
+    }
+    
+    dlpPermission ..> DLPFile : creates
+    dlpPermission ..> GatheringPolicyType : returns
+    dlpPermission ..> DLPSandboxInfo : returns
+    dlpPermission ..> DLPSandboxState : uses
+```
+
+### API配对调用关系表
+
+| 首次调用 | 配对调用 | 说明 |
+| -------- | -------- | -------- |
+| installDLPSandbox() | uninstallDLPSandbox() |	沙箱安装后必须卸载。
+| on('uninstallDLPSandbox') | off('uninstallDLPSandbox') |	注册监听后应取消监听。
+| generateDLPFile() | closeDLPFile() |	生成DLP文件后必须关闭。
+| openDLPFile() | closeDLPFile() |	打开DLP文件后必须关闭。
+| addDLPLinkFile() | deleteDLPLinkFile() |	FUSE映射创建后应删除。
+| stopFuseLink() | resumeFuseLink() | 停止读写后应恢复。
 
 ## 导入模块
 
