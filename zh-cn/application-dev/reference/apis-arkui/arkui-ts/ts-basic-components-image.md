@@ -139,7 +139,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor | ImageContent, reloadKey
 
 ### Image
 
-Image(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions: ImageAIOptions, reloadKey?: string)
+Image(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions?: ImageAIOptions, reloadKey?: string)
 
 获取图片，支持通过[ImageAIOptions](ts-image-common.md#imageaioptions12)参数设置AI分析选项。当reloadKey的值发生变化时，将不使用缓存重新加载图片。
 
@@ -156,7 +156,7 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions: ImageAIO
 | 参数名  | 类型                                  | 必填   | 说明                                      |
 | ----    | ---------------------------------------- | ---- | ---------------------------------------- |
 | src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>PixelMap、ResourceStr和DrawableDescriptor的使用请参考[Image](#image-1)的src参数说明。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
-| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 是   | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 |
+| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 否   | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 |
 | reloadKey  | string | 否   | 图片重新加载的标识。当reloadKey的值发生变化时，将不使用缓存重新加载图片。适用于图片源地址不变但图片内容已更新的场景（例如本地图片内容被重写）。<br/>默认值：空字符串。 |
 
 ## 属性
