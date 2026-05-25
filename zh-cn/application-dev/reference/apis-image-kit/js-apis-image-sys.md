@@ -21,7 +21,7 @@ import { image } from '@kit.ImageKit';
 ```
 
  ## GainmapParams<sup>26+</sup>
- 	 
+
  Gainmap参数设置选项。
 
  **系统接口：** 该接口为系统接口。
@@ -146,7 +146,7 @@ async function CreatePictureTest(context: Context) {
  | hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA_1010102/YCBCR_P010/YCRCB_P010。 |
  | sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA8888。 |
  | params | [GainmapParams](js-apis-image-sys.md) | 是   | Gainmap Params，包含一个bool类型的参数isFullSizeGainmap，来决定是否使用全尺寸Gainmap，默认值是{isFullSizeGainmap : false}。|
- 	 
+
  **返回值：**
 
  | 类型               | 说明              |
