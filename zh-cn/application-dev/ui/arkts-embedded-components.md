@@ -20,7 +20,7 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)组件
 
-  提供方应用中定义使用，用于实现跨进程界面嵌入功能，仅能被同应用的UIAbility启动，并需在多进程权限的场景下使用。
+  提供方应用中定义使用，用于实现跨进程界面嵌入功能，仅能被同应用的UIAbility拉起，并需在多进程权限的场景下使用。
 
 ## 使用约束
 
@@ -42,9 +42,9 @@ EmbeddedComponent组件主要用于实现跨模块、跨进程的嵌入式界面
 
 - 事件调用
 
-  与屏幕坐标相关的事件信息会基于EmbeddedComponent的位置宽高进行坐标转换后传递给被启动的EmbeddedUIExtensionAbility处理。
+  与屏幕坐标相关的事件信息会基于EmbeddedComponent的位置宽高进行坐标转换后传递给被拉起的EmbeddedUIExtensionAbility处理。
 
-  EmbeddedComponent组件不支持[点击](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)等通用事件，仅支持[onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)事件、[onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件和[onDrawReady](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#ondrawready)事件。
+  EmbeddedComponent组件不支持[点击](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md)等通用事件，仅支持[onTerminated](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated)事件和[onError](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror)事件。从API版本26.0.0开始，新增支持[onDrawReady](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md#ondrawready)事件。
 
 ## 获焦能力说明
 
@@ -89,7 +89,7 @@ export struct Embedded {
               this.message = `Error: code = ${error.code}`;
             })
             .onDrawReady(() => {
-              // 被启动的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
             })
         }
         .width('100%')

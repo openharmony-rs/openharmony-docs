@@ -24,7 +24,7 @@ EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIE
 
 EmbeddedComponent仅支持在拥有多进程权限的设备上使用。
 
-EmbeddedComponent只能在UIAbility中使用，且被启动的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
+EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensionAbility需与UIAbility属于同一应用。
 
 ## 子组件
 
@@ -58,7 +58,7 @@ EmbeddedComponent(loader: Want, type: EmbeddedType, options?: EmbeddedOptions)
 
 ## 事件
 
-与屏幕坐标相关的事件信息会基于EmbeddedComponent的位置宽高进行坐标转换后传递给被启动的EmbeddedUIExtensionAbility处理。
+与屏幕坐标相关的事件信息会基于EmbeddedComponent的位置宽高进行坐标转换后传递给被拉起的EmbeddedUIExtensionAbility处理。
 
 不支持[点击](ts-universal-events-click.md)等通用事件。仅支持以下事件：
 
@@ -66,7 +66,7 @@ EmbeddedComponent(loader: Want, type: EmbeddedType, options?: EmbeddedOptions)
 
 onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
-被启动的EmbeddedUIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时，触发本回调函数。
+被拉起的EmbeddedUIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时，触发本回调函数。
 
 > **说明：**
 >
@@ -91,7 +91,7 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 onError(callback: ErrorCallback)
 
-被启动的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
+被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
 > **说明：**
 >
@@ -110,7 +110,7 @@ onError(callback: ErrorCallback)
 > **说明：**
 >
 > 如下情形会触发本回调：
-> - 通知提供方启动EmbeddedUIExtensionAbility失败。
+> - 通知提供方拉起EmbeddedUIExtensionAbility失败。
 > - 通知提供方EmbeddedUIExtensionAbility切后台失败。
 > - 通知提供方销毁EmbeddedUIExtensionAbility失败。
 > - 提供方EmbeddedUIExtensionAbility异常退出。
@@ -120,7 +120,7 @@ onError(callback: ErrorCallback)
 
 onDrawReady(callback: Callback\<void>)
 
-被启动的[EmbeddedUIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md#embeddeduiextensionability)绘制第一帧时触发该回调。
+被拉起的[EmbeddedUIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md#embeddeduiextensionability)绘制第一帧时触发该回调。
 
 **起始版本：** 26.0.0
 
@@ -191,7 +191,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 
 ## TerminationInfo
 
-用于表示被启动的EmbeddedUIExtensionAbility的返回结果。
+用于表示被拉起的EmbeddedUIExtensionAbility的返回结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -199,12 +199,14 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
-| code | number                                                     | 否 | 否 | 被启动EmbeddedUIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被启动EmbeddedUIExtensionAbility退出时返回的数据。   |
+| code | number                                                     | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
+| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
 
 ## 示例（加载EmbeddedComponent）
 
-本示例展示`EmbeddedComponent`组件和`EmbeddedUIExtensionAbility`的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo", 同应用下被启动的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。本示例仅支持在拥有多进程权限的设备上运行，如PC/2in1。
+本示例展示`EmbeddedComponent`组件和`EmbeddedUIExtensionAbility`的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo", 同应用下被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。本示例仅支持在拥有多进程权限的设备上运行，如PC/2in1。
+
+从API版本26.0.0开始，新增[onDrawReady](#ondrawready)接口。
 
 - 示例应用中的`EntryAbility(UIAbility)`加载首页文件`ets/pages/Index.ets`，其中内容如下：
 
@@ -237,8 +239,9 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
       bundleName: "com.example.embeddeddemo",
       abilityName: "ExampleEmbeddedAbility",
     };
-    @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.     FOLLOW_UI_EXTENSION_ABILITY_DPI;
-    @State windowStrategy: EmbeddedWindowModeFollowStrategy = EmbeddedWindowModeFollowStrategy.   FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
+    @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
+    @State windowStrategy: EmbeddedWindowModeFollowStrategy =
+    EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
     private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params);
     private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params);
 
@@ -268,7 +271,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
               this.message = 'Error: code = ' + error.code;
             })
             .onDrawReady(() => {
-              // 被启动的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
+              // 从API版本26.0.0开始，新增支持被拉起的EmbeddedUIExtensionAbility绘制第一帧时触发onDrawReady回调，文本框显示如下信息
               this.message = `onDrawReady`;
             })
         }
@@ -279,7 +282,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
   }
   ```
 
-- `EmbeddedComponent`启动的`ExampleEmbeddedAbility(EmbeddedUIExtensionAbility)`在`ets/extensionAbility/ExampleEmbeddedAbility.ets`文件中实现，内容如下：
+- `EmbeddedComponent`拉起的`ExampleEmbeddedAbility(EmbeddedUIExtensionAbility)`在`ets/extensionAbility/ExampleEmbeddedAbility.ets`文件中实现，内容如下：
 
   ```ts
   import { EmbeddedUIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
