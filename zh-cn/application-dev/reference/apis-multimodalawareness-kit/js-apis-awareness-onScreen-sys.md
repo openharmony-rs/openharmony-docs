@@ -700,13 +700,13 @@ try {
 
 interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
-主动触发屏幕行为交互，实现对界面行为的识别与行为回执。例如：点击链接后，通过回执信息精准跳转至指定段落并实现文字高亮。
+主动触发屏幕行为交互，实现对界面行为的识别与行为回执。例如：当capList能力列表为JumpContext时，点击后通过回执信息精准跳转至指定段落并实现文字高亮。当capList能力列表为InjectEvent时，点击后执行相应的点击事件。
 
 **需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-**设备行为差异**：该接口仅支持 Phone、Tablet 以及 Car 设备（Car 设备下需满足 capList 为 InjectEvent），在其余设备类型中调用将触发 801 错误码。
+**设备行为差异**：该接口仅支持Phone、Tablet以及Car设备（Car 设备下需满足 capList 为 InjectEvent），在其余设备类型中调用将触发801错误码。
 
 **参数**：
 
@@ -719,7 +719,7 @@ interact接口支持的capList能力列表
 |capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
-|InjectEvent|注入事件。当 capList能力列表为 InjectEvent 时，options 字段为必填项，且其内容必须符合 InjectEvent 选项的规范（详见示例）。若 options 不符合规范，注入操作将失败，并返回错误码 34000001。<br> **起始版本：** 26.0.0|
+|InjectEvent|注入事件。当capList能力列表为InjectEvent时，options字段为必填项，且其内容必须符合InjectEvent选项的规范（详见示例）。若options不符合规范，注入操作将失败，并返回错误码34000001。<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
@@ -771,17 +771,19 @@ try {
 import onScreen from "@ohos.multimodalAwareness.onScreen";
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
-    'InjectEvent',
+    'InjectEvent',    //（必填字段）注入事件能力：表示当前业务需要使用事件注入（如按键、点击、返回等系统事件注入）。
   ]
 }
 
 let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  // （必填字段）注入事件命令，用于向系统注入按键/操作事件。
   parameters: {
+    // （injectEvent必填，其他可选）注入事件的具体内容：JSON字符串格式，包含组件类型、执行动作、参数。
     "InjectEvent": {
       "injectEvent": '{"componentType":"","action":"back","params":{}}',
-      "compId": ["0"],
-      "windowId": 0,
-      "displayId": -1
+      "compId": ["0"],    //（可选）目标组件ID数组：指定要注入事件的组件。
+      "windowId": 0,      //（可选）窗口ID：指定注入事件的目标窗口，0表示当前激活窗口。
+      "displayId": -1     //（可选）显示设备ID：-1表示使用默认显示设备。
     }
   }
 }
