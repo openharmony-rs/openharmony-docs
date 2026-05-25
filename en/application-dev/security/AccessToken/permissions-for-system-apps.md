@@ -4472,6 +4472,8 @@ Allows a system application to obtain the group information of Family Sharing.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Since**: 18
 
 ## ohos.permission.ACCESS_FUSION_AWARENESS_DATA
