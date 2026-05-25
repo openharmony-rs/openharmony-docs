@@ -14,7 +14,7 @@
 
 2. 创建[AVSession实例](../avsession/avsession-access-scene.md#创建不同类型的会话)，通过[设置元数据](../avsession/avsession-access-scene.md#设置元数据)填入LRC格式的歌词数据，包含时间标签及对应的歌词文本。不符合LRC格式的歌词数据，系统可能存在解析异常导致无法展示歌词内容。
 
-3. 调用[enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口进行使能，需传入参数true打开歌词组件。
+3. 调用[enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口进行使能需传入参数true打开歌词组件。
 
 4. 歌词组件使能打开后默认是隐藏（不显示），应用可以通过接口主动显示/隐藏歌词组件，具体接口如下：
    
@@ -38,80 +38,84 @@
    >
    > 确保AVSession对象在后台播放期间不被系统回收/应用不主动释放，否则会导致歌词组件异常。
 
-   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DesktopLyric.ets) --> 
-
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-// ...
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let context = this.getUIContext().getHostContext() as Context;
-          // 假设已经创建了一个session，如何创建session可以参考之前的案例。
-          let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
-
-          // 系统是否支持歌词组件
-          let isDesktopLyricSupported: boolean = false;
-          try {
-            isDesktopLyricSupported = await AVSessionManager.isDesktopLyricSupported();
-          } catch (err) {
-            console.error(`Failed to get isDesktopLyricSupported. Code: ${err.code}, message: ${err.message}`);
-          }
-          if (!isDesktopLyricSupported) {
-            return;
-          }
-
-          try {
-            // 使能歌词组件
-            session.enableDesktopLyric(true);
-          } catch (err) {
-            console.error(`enableDesktopLyric err. Code: ${err.code}, message: ${err.message}`);
-          }
-
-          try {
-            // 监听歌词组件是否显示
-            session.onDesktopLyricVisibilityChanged((isVisible: boolean) => {
-              console.info(`onDesktopLyricVisibilityChanged changed: ${isVisible}`)
-            });
-          } catch (err) {
-            console.error(`onDesktopLyricVisibilityChanged err. Code: ${err.code}, message: ${err.message}`);
-          }
-
-          try {
-            // 监听歌词组件锁定状态
-            session.onDesktopLyricStateChanged((state) => {
-              console.info(`onDesktopLyricStateChanged changed: ${state.isLocked}`)
-            });
-          } catch (err) {
-            console.error(`onDesktopLyricStateChanged err. Code: ${err.code}, message: ${err.message}`);
-          }
-
-          try {
-            // 显示或隐藏歌词组件，歌词组件使能后默认隐藏
-            await session.setDesktopLyricVisible(true);
-          } catch (err) {
-            console.error(`setDesktopLyricVisible err. Code: ${err.code}, message: ${err.message}`);
-          }
-
-          try {
-            // 锁定或解锁歌词组件，歌词组件使能后默认是解锁状态
-            await session.setDesktopLyricState({isLocked: true});
-          } catch (err) {
-            console.error(`setDesktopLyricState err. Code: ${err.code}, message: ${err.message}`);
-          }
-
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DesktopLyric.ets) -->
+   
+   ``` TypeScript
+   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'hello world';
+     // ...
+   
+     build() {
+       Column() {
+         // ...
+         Text(this.message)
+           .onClick(async () => {
+             console.info(`DesktopLyric set start`);
+             let context = this.getUIContext().getHostContext() as Context;
+             // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+             let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+   
+             // 系统是否支持歌词组件
+             let isDesktopLyricSupported: boolean = false;
+             try {
+               isDesktopLyricSupported = await AVSessionManager.isDesktopLyricSupported();
+             } catch (err) {
+               console.error(`Failed to get isDesktopLyricSupported. Code: ${err.code}, message: ${err.message}`);
+             }
+             if (!isDesktopLyricSupported) {
+               return;
+             }
+   
+             try {
+               // 使能歌词组件
+               await session.enableDesktopLyric(true);
+             } catch (err) {
+               console.error(`enableDesktopLyric err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 监听歌词组件是否显示
+               session.onDesktopLyricVisibilityChanged((isVisible: boolean) => {
+                 console.info(`onDesktopLyricVisibilityChanged changed: ${isVisible}`)
+               });
+             } catch (err) {
+               console.error(`onDesktopLyricVisibilityChanged err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 监听歌词组件锁定状态
+               session.onDesktopLyricStateChanged((state) => {
+                 console.info(`onDesktopLyricStateChanged changed: ${state.isLocked}`)
+               });
+             } catch (err) {
+               console.error(`onDesktopLyricStateChanged err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 显示或隐藏歌词组件，歌词组件使能后默认隐藏
+               await session.setDesktopLyricVisible(true);
+             } catch (err) {
+               console.error(`setDesktopLyricVisible err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 锁定或解锁歌词组件，歌词组件使能后默认是解锁状态
+               await session.setDesktopLyricState({isLocked: true});
+             } catch (err) {
+               console.error(`setDesktopLyricState err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             console.info(`DesktopLyric set done`);
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
