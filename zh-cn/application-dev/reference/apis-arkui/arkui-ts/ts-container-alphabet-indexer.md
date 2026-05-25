@@ -117,7 +117,7 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为半透明蓝色。<br/>取值为undefined时，按默认值处理。 |
 
 ### popupColor
 
@@ -139,7 +139,7 @@ ArkTS-Sta: popupColor(value: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>  ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为半透明蓝色。<br/>取值为undefined时，按默认值处理。 |
 
 ### selectedBackgroundColor
 
