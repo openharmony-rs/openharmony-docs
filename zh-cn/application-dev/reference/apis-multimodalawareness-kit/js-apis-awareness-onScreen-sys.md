@@ -642,7 +642,7 @@ interact接口支持的capList能力列表
 |capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
-|InjectEvent|注入事件，capList为InjectEvent场景，options为必传选项，否则注入失败抛出34000001错误码<br> **起始版本：** 26.0.0|
+|InjectEvent|注入事件。当 capList能力列表为 InjectEvent 时，options 字段为必填项，且其内容必须符合 InjectEvent 选项的规范（详见示例）。若 options 不符合规范，注入操作将失败，并返回错误码 34000001。<br> **起始版本：** 26.0.0|
 
 **返回值：**
 
