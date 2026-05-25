@@ -477,8 +477,6 @@ ArkTS-Sta: type Matrix4Transit = matrix4.Matrix4Transit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
