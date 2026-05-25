@@ -12,7 +12,7 @@
 
 在进行应用开发的过程中，开发者可以通过AVPlayer的信息监听回调函数[OH_AVPlayerOnInfoCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](../../reference/apis-media-kit/capi-avplayer-base-h.md#oh_avplayeronerrorcallback)主动获取播放过程信息。如果应用在视频播放器处于错误状态时执行操作，系统会抛出异常或生成其他未定义的行为。
 
-状态的详细说明请参考[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)。当播放处于prepared/playing/paused/completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，做好资源利用。
+状态的详细说明请参考[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate)。当播放处于prepared/playing/paused/completed状态时，播放引擎处于工作状态，这需要占用系统较多的运行内存。当客户端暂时不使用播放器时，调用reset()或release()回收内存资源，合理利用资源。
 
 **播放状态变化示意图：**
 ![Playback status change](figures/playback-status-change-ndk.png)
@@ -21,10 +21,10 @@
 
 当前指导仅介绍如何实现流媒体资源播放，如需播放本地资源，请参考[使用AVPlayer播放视频(C/C++)](using-ndk-avplayer-for-video-playback.md)。如果在应用开发过程中涉及后台播放、播放冲突等情况，请根据实际需要参考以下说明。
  
-- 如果应用要实现后台播放或熄屏播放，需要接入AVSession（请参考[应用接入AVSession场景介绍](../avsession/avsession-access-scene.md)和申请[长时任务(ArkTS)](../../task-management/continuous-task.md)），避免播放被系统强制中断。此功能仅适用ArkTS API，如需使用此功能请参考[使用AVPlayer播放视频(ArkTS)](video-playback.md)。
+避免播放被系统强制中断。此功能仅适用于ArkTS API，如需使用此功能请参考[使用AVPlayer播放视频(ArkTS)](video-playback.md)。
 - 应用在播放过程中，若播放的媒体数据涉及音频，根据系统音频管理策略（参考[处理音频焦点变化](../audio/audio-playback-concurrency.md#处理音频焦点变化)事件），会存在被其他应用打断的情况，建议通过[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)主动监听音频打断事件[AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_INTERRUPT_EVENT，根据具体内容提示，做出相应的处理，避免出现应用状态与预期效果不一致的问题。
-- 面对设备同时连接多个音频输出设备的情况，建议通过[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)主动监听音频输出设备改变事件[AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE，并做出相应处理。
-- 应用在播放过程中，系统内部会因为网络数据下载失败、媒体服务死亡不可用等发生异常。建议通过[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置错误监听回调函数，根据不同错误类型，做出相应处理，避免出现播放异常。
+- 面对设备同时连接多个音频输出设备的情况，建议通过[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)主动监听音频输出设备变更事件[AVPlayerOnInfoType](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayeroninfotype).AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE，并做出相应处理。
+- 应用在播放过程中，系统内部会因为网络数据下载失败、媒体服务异常终止等发生异常。建议通过[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置错误监听回调函数，根据不同错误类型，做出相应处理，避免出现播放异常。
 
 ## 开发步骤及注意事项
 
@@ -52,7 +52,7 @@
   target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
   ```
 
-开发者通过引入[avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md)、[avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用视频播放相关API。
+开发者通过引入[avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md)、[avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md)和[native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md)头文件，使用流媒体播放相关API。
 
 详细的API说明请参考[AVPlayer](../../reference/apis-media-kit/capi-avplayer.md)。
 
@@ -64,7 +64,7 @@
    OH_AVPlayer *player = OH_AVPlayer_Create();
    ```
 
-2. 设置回调监听函数：使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)和[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，搭配全流程场景使用。获取更多信息的同时还可以通过设置userData区分不同播放实例。
+2. 设置回调监听函数：使用[OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback)和[OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口设置信息监听回调函数和错误监听回调函数，配合全流程场景使用。获取更多信息的同时还可以通过设置userData区分不同播放实例。
 
    支持的监听事件如下所示：
  
@@ -173,7 +173,7 @@
    LOG("OH_AVPlayer_SetAudioEffectMode ret:%{public}d", ret);
    ```
 
-10. 视频播控：包含播放[OH_AVPlayer_Play()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_play)、暂停[OH_AVPlayer_Pause()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_pause)、跳转[OH_AVPlayer_Seek()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seek)、停止[OH_AVPlayer_Stop()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_stop)等操作。
+10. 播放控制：包含播放[OH_AVPlayer_Play()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_play)、暂停[OH_AVPlayer_Pause()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_pause)、跳转[OH_AVPlayer_Seek()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_seek)、停止[OH_AVPlayer_Stop()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_stop)等操作。
 
     <!-- @[OH_AVPlayer_Play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
     
@@ -291,7 +291,7 @@
     }
     ```
 
-12. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_release)销毁实例，AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate).AV_RELEASED（释放）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用闪退等情况。
+12. 退出播放：调用[OH_AVPlayer_Release()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_release)销毁实例，AVPlayer进入[AVPlayerState](../../reference/apis-media-kit/capi-avplayer-base-h.md#avplayerstate).AV_RELEASED（释放）状态，退出播放。如果后续再操作AVPlayer实例，则行为未知，可能导致应用进程崩溃，应用异常退出等情况。
 
     <!-- @[OH_AVPlayer_Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
     
