@@ -2388,8 +2388,6 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -2445,8 +2443,6 @@ setDistributedEnable(enable: boolean): Promise\<void>
 **替代接口：** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2505,8 +2501,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 **替代接口：** [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2571,8 +2565,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -2636,8 +2628,6 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -2696,8 +2686,6 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 **替代接口：** [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -2759,8 +2747,6 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -2811,8 +2797,6 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 **废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3630,8 +3614,6 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3689,8 +3671,6 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 **废弃版本：** 26.0.0
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
