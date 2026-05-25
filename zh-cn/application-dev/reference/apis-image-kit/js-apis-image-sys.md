@@ -23,7 +23,7 @@ import { image } from '@kit.ImageKit';
  ## GainmapParams<sup>26+</sup>
  	 
  Gainmap参数设置选项。
- 	 
+
  **系统接口：** 该接口为系统接口。
 
  **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -31,7 +31,6 @@ import { image } from '@kit.ImageKit';
 | 名称               | 类型              | 只读 | 可选 | 说明             |
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
 | isFullSizeGainmap<sup>26+</sup> | [boolean] | 否   | 否   | 返回Picture中的GainMap是否使用全尺寸图，默认值为false；<br/>false: GainMap不使用全尺寸图，宽高均为主图的一半;<br/>true: GainMap使用全尺寸图，宽高和主图一致。 |
- 	 
 
 ## DecodingOptions<sup>7+</sup>
 
@@ -131,17 +130,17 @@ async function CreatePictureTest(context: Context) {
 ```
 
 ## image.createPictureByHdrAndSdrPixelMap<sup>26+</sup>
- 	 
+
  createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, params: GainmapParams): Promise\<Picture>
- 	 
+
 根据HDR PixelMap和SDR PixelMap创建Picture对象。系统将使用HDR和SDR PixelMap生成一个增益图（gainmap），返回的Picture对象将包含SDR PixelMap和生成的gainmap PixelMap，像素格式为RGBA8888。gainmap PixelMap的尺寸可以通过设置params进行选择。使用Promise异步回调。
- 	 
+
  **系统接口：** 该接口为系统接口。
- 	 
+
  **系统能力：** SystemCapability.Multimedia.Image.Core
- 	 
+
  **参数：**
- 	 
+
  | 参数名       | 类型                | 必填 | 说明             |
  | ------------ | ------------------- | ---- | ---------------- |
  | hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA_1010102/YCBCR_P010/YCRCB_P010。 |
@@ -149,22 +148,22 @@ async function CreatePictureTest(context: Context) {
  | params | [GainmapParams](js-apis-image-sys.md) | 是   | Gainmap Params，包含一个bool类型的参数isFullSizeGainmap，来决定是否使用全尺寸Gainmap，默认值是{isFullSizeGainmap : false}。|
  	 
  **返回值：**
- 	 
+
  | 类型               | 说明              |
  | ------------------ | ----------------- |
  |Promise\<[Picture](arkts-apis-image-Picture.md)> | 返回Picture包含sdr和gainmap，像素格式为RGBA8888。 |
- 	 
+
  **错误码：**
- 	 
+
  以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)和[通用错误码](zh-cn/application-dev/reference/errorcode-universal.md)。
- 	 
+
  | 错误码ID | 错误信息                                                     |
  | -------- | ------------------------------------------------------------ |
  | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
  |  202      | Non-system applications are not allowed to use system APIs. |
- 	 
+
  **示例：**
- 	 
+
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
