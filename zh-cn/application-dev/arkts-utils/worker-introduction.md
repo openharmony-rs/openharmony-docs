@@ -76,9 +76,9 @@ const worker1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/
 
 ``` TypeScript
 import { worker } from '@kit.ArkTS';
-// worker线程文件所在路径："entry/src/main/ets/workers/worker.ets"
+// Worker线程文件所在路径："entry/src/main/ets/workers/worker.ets"
 const workerInstance1: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/worker.ets');
-// worker线程文件所在路径："testworkers/src/main/ets/ThreadFile/workers/worker.ets"
+// Worker线程文件所在路径："testworkers/src/main/ets/ThreadFile/workers/worker.ets"
 const workerInstance2: worker.ThreadWorker = new worker.ThreadWorker('testworkers/ets/ThreadFile/workers/worker.ets');
 ```
 
@@ -104,7 +104,7 @@ const workerInstance3: worker.ThreadWorker = new worker.ThreadWorker('@har/ets/w
 ``` TypeScript
 import { worker } from '@kit.ArkTS';
 // 相对路径加载形式：
-// worker线程文件所在路径: "har/src/main/ets/workers/worker.ets"
+// Worker线程文件所在路径: "har/src/main/ets/workers/worker.ets"
 // 创建Worker对象的文件所在路径："har/src/main/ets/components/mainpage/MainPage.ets"
 const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../workers/worker.ets');
 ```
@@ -359,7 +359,7 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
 <!-- @[recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/managers/recommend.ets) -->
 
 ``` TypeScript
-// 在宿主线程中创建Worker线程（父Worker），在worker线程中再次创建Worker线程（子Worker）
+// 在宿主线程中创建Worker线程（父Worker），在Worker线程中再次创建Worker线程（子Worker）
 import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
 // 宿主线程中创建父Worker对象
@@ -367,21 +367,21 @@ const parentWorker = new worker.ThreadWorker('entry/ets/workers/ParentWorker.ets
 
 // 接收父Worker返回的消息
 parentWorker.onmessage = (e: MessageEvents) => {
-  console.info('宿主线程收到父worker线程信息 ' + e.data);
+  console.info('宿主线程收到父Worker线程信息 ' + e.data);
 }
 
 // 父Worker正常退出后的回调
 parentWorker.onexit = () => {
-  console.info('父worker退出');
+  console.info('父Worker退出');
 }
 
 // 父Worker运行过程中发生未被捕获的异常或运行错误时的回调
 parentWorker.onAllErrors = (err: ErrorEvent) => {
-  console.error('宿主线程接收到父worker报错 ' + err.message);
+  console.error('宿主线程接收到父Worker报错 ' + err.message);
 }
 
 // 向父Worker发送启动消息，用于触发其onmessage中的处理逻辑
-parentWorker.postMessage('宿主线程发送消息给父worker-推荐示例');
+parentWorker.postMessage('宿主线程发送消息给父Worker-推荐示例');
 ```
 <!-- @[recommended_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/src/main/ets/workers/ParentWorker.ets) -->
 
@@ -394,7 +394,7 @@ const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
 workerPort.onmessage = (e : MessageEvents) => {
   // 收到宿主线程指令后，创建子Worker
-  if (e.data == '宿主线程发送消息给父worker-推荐示例') {
+  if (e.data == '宿主线程发送消息给父Worker-推荐示例') {
     let childWorker = new worker.ThreadWorker('entry/ets/workers/ChildWorker.ets');
 
     // 接收子Worker的执行结果
