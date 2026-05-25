@@ -4908,7 +4908,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getDeepOptimizeSpace(): Promise&lt;number&gt;
 
-获取可以深度优化存储空间的大小，单位为字节（Byte）。使用Promise异步回调。
+获取可以深度优化存储空间的大小，单位为字节（byte）。使用Promise异步回调。
 
 > - 此接口耗时较长，建议先调用[canPerformDeepOptimizeSpace](#canperformdeepoptimizespace)确认当前系统状态是否允许执行。
 > - 仅在返回true时调用此接口。
