@@ -21,9 +21,11 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 ## Available
 
 **ArkTS-Dyn：**
+
 @interface Available { minApiVersion: string = '' }
 
 **ArkTS-Sta：**
+
 @Retention('SOURCE')
 @interface Available { minApiVersion: string = '' }
 
