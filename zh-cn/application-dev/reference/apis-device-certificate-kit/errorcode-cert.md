@@ -267,7 +267,7 @@ Unknown critical extension.
 
 **处理步骤**
 
-可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误，然后通过证书算法库相关接口获取该扩展数据自行进行校验。
+可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误，然后通过证书算法库相关接口获取该扩展数据自行进行校验。
 
 ## 19030012 主机名不匹配
 
@@ -285,7 +285,7 @@ Hostname mismatch.
 
 **处理步骤**
 
-检查[hostnames](js-apis-cert.md#x509certvalidatorparams)参数是否正确。若正确，请不要信任该证书。
+检查[hostnames](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030013 邮箱地址不匹配
 
@@ -303,7 +303,7 @@ Email address mismatch.
 
 **处理步骤**
 
-检查[emailAddresses](js-apis-cert.md#x509certvalidatorparams)参数是否正确。若正确，请不要信任该证书。
+检查[emailAddresses](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030014 密钥用法不匹配
 
@@ -321,7 +321,7 @@ Key usage mismatch.
 
 **处理步骤**
 
-检查[keyUsage](js-apis-cert.md#x509certvalidatorparams)参数是否正确。若正确，请不要信任该证书。
+检查[keyUsage](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030015 未找到CRL
 
@@ -344,7 +344,7 @@ CRL not found.
 1. 检查是否提供了CRL数据。
 2. 若开启了在线下载CRL，检查证书是否包含CDP扩展。
 3. 若开启了在线下载CRL，检查网络连接是否正常，且保证可以正常访问网络。
-4. 若允许在校验证书吊销状态时忽略未找到证书吊销列表的错误，可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误。
+4. 若允许在校验证书吊销状态时忽略未找到证书吊销列表的错误，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
 
 ## 19030016 CRL未生效
 
@@ -362,9 +362,9 @@ CRL的生效时间晚于当前验证时间。
 
 **处理步骤**
 
-1. 若允许CRL的生效时间晚于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误。
-2. 若未配置[date](js-apis-cert.md#x509certvalidatorparams)参数，请检查设备时间是否正确。
-3. 若配置了[date](js-apis-cert.md#x509certvalidatorparams)参数，请检查该参数是否合理。
+1. 若允许CRL的生效时间晚于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
+2. 若未配置[date](js-apis-cert.md#certvalidationparams)参数，请检查设备时间是否正确。
+3. 若配置了[date](js-apis-cert.md#certvalidationparams)参数，请检查该参数是否合理。
 
 ## 19030017 CRL已过期
 
@@ -382,9 +382,9 @@ CRL的失效时间早于当前验证时间。
 
 **处理步骤**
 
-1. 若允许CRL的失效时间早于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误。
-2. 若未配置[date](js-apis-cert.md#x509certvalidatorparams)参数，请检查设备时间是否正确。
-3. 若配置了[date](js-apis-cert.md#x509certvalidatorparams)参数，请检查该参数是否合理。
+1. 若允许CRL的失效时间早于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
+2. 若未配置[date](js-apis-cert.md#certvalidationparams)参数，请检查设备时间是否正确。
+3. 若配置了[date](js-apis-cert.md#certvalidationparams)参数，请检查该参数是否合理。
 
 ## 19030018 CRL签名验证失败
 
@@ -443,7 +443,7 @@ OCSP response not found.
 1. 检查是否提供了OCSP响应数据。
 2. 若开启了在线OCSP检查，检查证书是否包含OCSP URL。
 3. 若开启了在线OCSP检查，检查网络连接是否正常，且保证可以正常访问网络。
-4. 若允许在校验证书吊销状态时忽略未找到OCSP响应的错误，可以通过设置[ignoreErrs](js-apis-cert.md#x509certvalidatorparams)参数忽略该错误。
+4. 若允许在校验证书吊销状态时忽略未找到OCSP响应的错误，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
 
 ## 19030021 无效的OCSP响应
 
