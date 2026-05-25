@@ -2922,7 +2922,7 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"wifiScanStateChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回: 0: 扫描失败; 1: 扫描成功|
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回: 0: 扫描失败; 1: 扫描成功。|
 
 **扫描状态改变事件的枚举：**
 
