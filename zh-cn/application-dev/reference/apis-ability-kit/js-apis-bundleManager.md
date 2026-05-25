@@ -856,7 +856,7 @@ try {
 
 getLaunchWant(): Want
 
-获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#uiability)的Want参数。
+获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#入口uiability)的Want参数。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
