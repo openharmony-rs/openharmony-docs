@@ -44,7 +44,7 @@
 
 - **DlpConnManager**：是数据防泄漏系统的核心管理类，在SA（System Ability）中注册或注销回调能力。
 
-![UML](figure/normal_dlpPermission_main_class.png)
+![](figures/normal_dlpPermission_main_class.png)
 
 ## API组合使用关系说明
 
