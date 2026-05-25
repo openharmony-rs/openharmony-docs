@@ -39,5 +39,7 @@
     - [在Taihe中使用关键字避让](use-taihe-about-rename.md)
     - [使用Taihe进行import相关开发](use-taihe-about-import.md)
     - [使用Taihe进行ANI协同开发](use-taihe-about-devlop-with-ani.md)
+    - [为Taihe生成的ANI代码开启性能拆解模式](use-taihe-about-ani-perf-trace.md)
+    - [为Taihe生成的ANI代码开启Debug模式](use-taihe-about-ani-debug-checked-call.md)
     - [使用Taihe进行ets协同开发](use-taihe-about-devlop-with-ets.md)
     - [深入解析Taihe生成的代码 (ANI桥接层)](taihe-generated-code-ani.md)
