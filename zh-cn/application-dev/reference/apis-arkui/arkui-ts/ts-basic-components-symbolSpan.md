@@ -258,7 +258,7 @@ id(value: string | undefined)
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：''<br/>取值为undefined时，按默认值处理。 |
 
-### debugLine<sup>24+</sup>
+### debugLine<sup>26+</sup>
 
 debugLine(sourceLine: string, moduleName?: string)
 
@@ -268,7 +268,7 @@ debugLine(sourceLine: string, moduleName?: string)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26
 
 **参数：**
 
