@@ -66,7 +66,7 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 1. 应用在实现自定义音量条的过程中，建议使用音频框架的音量变化监听接口，通过接口回调的音量类型volumeEvent.volumeType，音量等级volumeEvent.volume以及是否显示音量条volumeEvent.updateUi等信息，应用可以判断是否需要处理当前数据和显示自定义的音量条，具体可参考[on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20)介绍。
 2. 为确保用户能感知音量变化，不允许应用后台调节音量，系统会做出对应的控制措施。
-3. 系统提供音量面板的目的是，由用户在应用界面主动操作来调节系统音量，而不是应用主动调节系统音量。因此，若应用通过设置音量面板位置参数隐藏了系统默认音量面板，必须提供应用自定义的音量面板来让用户进行音量调节。
+3. 系统提供音量面板的目的是，由用户在应用界面主动操作来调节系统音量，而非应用主动调节。因此，若应用通过设置音量面板位置参数隐藏了系统默认音量面板，必须提供应用自定义的音量面板，以确保用户正常进行音量调节。
 
 ## 示例
 
