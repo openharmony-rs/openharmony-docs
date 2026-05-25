@@ -34,11 +34,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
-**卡片能力（仅ArkTS-Sta）：** 从API version 26.0.0开始，该接口支持在ArkTS卡片中使用。
-
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**原子化服务API（仅ArkTS-Sta）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
