@@ -1839,7 +1839,7 @@ dlpPermission.openDLPFile(file, appId, (err, res) => { // 打开DLP文件。
 
 ## DLPSandboxState
 
-DLP沙箱状态信息。
+DLP沙箱的状态信息。
 
 **系统接口：** 此接口为系统接口。
 
