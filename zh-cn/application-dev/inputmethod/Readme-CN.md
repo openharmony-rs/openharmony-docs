@@ -7,6 +7,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 - [IME Kit简介](ime-kit-intro.md)
+- [输入法开发服务术语](ime-kit-skill.md)
 - [实现一个输入法应用](inputmethod-application-guide.md)
 - [在自绘编辑框中使用输入法](use-inputmethod-in-custom-edit-box.md)
 - [切换输入法应用](switch-inputmethod-guide.md)
