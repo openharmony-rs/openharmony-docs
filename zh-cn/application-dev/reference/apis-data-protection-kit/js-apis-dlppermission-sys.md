@@ -1477,7 +1477,7 @@ ExampleFunction();
 
 generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty): Promise&lt;DLPFile&gt;
 
-DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise方式异步返回DLPFile管理对象。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。
+DLP管理应用调用该接口，将明文文件加密生成DLPFile管理对象，对象仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise异步回调。
 
 调用generateDLPFile成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。
 
@@ -1633,7 +1633,7 @@ dlpPermission.generateDLPFile(file, dlp, dlpProperty, (err, res) => { // 生成D
 
 openDLPFile(ciphertextFd: number, appId: string): Promise&lt;DLPFile&gt;
 
-DLP管理应用调用该接口，打开DLP文件。调用成功后返回DLPFile管理对象，可用于管理DLP文件的权限和进行相关操作。使用Promise异步回调。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。
+DLP管理应用调用该接口，打开DLP文件。调用成功后返回DLPFile管理对象，可用于管理DLP文件的权限和进行相关操作。使用Promise异步回调。
 
 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。
 
