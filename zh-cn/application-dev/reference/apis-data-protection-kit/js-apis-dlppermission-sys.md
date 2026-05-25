@@ -84,10 +84,10 @@ classDiagram
         appIndex: number
     }
     
-    dlpPermission ..> DLPFile : creates
-    dlpPermission ..> GatheringPolicyType : returns
-    dlpPermission ..> DLPSandboxInfo : returns
-    dlpPermission ..> DLPSandboxState : uses
+    dlpPermission ..> DLPFile : Dependency
+    dlpPermission ..> GatheringPolicyType : Dependency
+    dlpPermission ..> DLPSandboxInfo : Dependency
+    dlpPermission ..> DLPSandboxState : Dependency
 ```
 
 ### API配对调用关系表
