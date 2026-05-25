@@ -24,10 +24,10 @@
 
 ### 结构体
 
-| 名称 | typedef关键字 | 描述 |	 
-| -- | -- | -- |	 
-| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | 包含了[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)回调函数指针的集合。应用需注册此结构体到OH_AVPlayer实例中，并处理回调上报的信息，保证AVPlayer的正常运行(API version 12废弃) 。|	 
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | 初始化AVPlayer。 |	 
+| 名称 | typedef关键字 | 描述 | 
+| -- | -- | -- | 
+| [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | 包含了[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)回调函数指针的集合。应用需注册此结构体到OH_AVPlayer实例中，并处理回调上报的信息，保证AVPlayer的正常运行(API version 12废弃) 。| 
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | 初始化AVPlayer。 | 
 | [OH_AVSeiMessageArray](./capi-avplayer-oh-avseimessagearray.md) | OH_AVSeiMessageArray | SEI消息数组。 | 
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) | OH_AVPlaybackStrategy | 音视频播放策略的结构体类型。 |
 
@@ -346,9 +346,9 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |	 
-| [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。具体请参见[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)。 |	 
-| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 |	 
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 | 
+| [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | 信息类型。具体请参见[AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype)。 | 
+| [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* infoBody | 指向携带具体消息的指针，仅在该回调方法内有效。 | 
 | void *userData | 指向应用调用者设置该回调函数时提供的实例的指针。 |
 
 ### OH_AVPlayerOnError()
@@ -373,8 +373,8 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |	 	 
-| int32_t errorCode | 错误码。<br>                  AV_ERR_NO_MEMORY：无内存，取值为1。<br>                  AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。<br>                  AV_ERR_INVALID_VAL：无效值，取值为3。<br>                  AV_ERR_IO：IO错误，取值为4。<br>                  AV_ERR_TIMEOUT：超时错误，取值为5。<br>                  AV_ERR_UNKNOWN：未知错误，取值为6。<br>                  AV_ERR_SERVICE_DIED：服务死亡，取值为7。<br>                  AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。<br>                  AV_ERR_UNSUPPORT：未支持的接口，取值为9。<br>                  AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |	 
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |  
+| int32_t errorCode | 错误码。<br>                  AV_ERR_NO_MEMORY：无内存，取值为1。<br>                  AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。<br>                  AV_ERR_INVALID_VAL：无效值，取值为3。<br>                  AV_ERR_IO：IO错误，取值为4。<br>                  AV_ERR_TIMEOUT：超时错误，取值为5。<br>                  AV_ERR_UNKNOWN：未知错误，取值为6。<br>                  AV_ERR_SERVICE_DIED：服务死亡，取值为7。<br>                  AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。<br>                  AV_ERR_UNSUPPORT：未支持的接口，取值为9。<br>                  AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 | 
 | const char \*errorMsg | 错误消息。 |
 
 ### OH_AVPlayerOnErrorCallback()
@@ -395,7 +395,7 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |	 
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 | 
 | int32_t errorCode | 错误码。<br>                  AV_ERR_NO_MEMORY：无内存，取值为1。<br>                  AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。<br>                  AV_ERR_INVALID_VAL：无效值，取值为3。<br>                  AV_ERR_IO：IO错误。API version 12-13取值为4；API version 14及以后，对应错误细化为错误码5411001~5411011。<br>                  AV_ERR_TIMEOUT：超时错误，取值为5。<br>                  AV_ERR_UNKNOWN：未知错误，取值为6。<br>                  AV_ERR_SERVICE_DIED：服务死亡，取值为7。<br>                  AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。<br>                  AV_ERR_UNSUPPORT：未支持的接口，取值为9。<br>                  AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |
 | const char \*errorMsg | 错误消息。 | 
 | void \*userData | 原样返回用户设置回调时传入的userData数据。 |
