@@ -51,7 +51,6 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // 指定当前UIAbility
           let want: Want = {
             bundleName: 'com.example.restartapp',
             abilityName: 'EntryAbility'
