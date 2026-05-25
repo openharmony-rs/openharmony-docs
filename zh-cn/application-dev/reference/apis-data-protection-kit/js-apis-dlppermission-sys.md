@@ -41,7 +41,7 @@
 
 - **DLPFile**：表示一个DLP文件对象。
 
-![UML](figure/dlpPermission_main_class.png)
+![](figures/dlpPermission_main_class.png)
 
 ### API配对调用关系表
 
