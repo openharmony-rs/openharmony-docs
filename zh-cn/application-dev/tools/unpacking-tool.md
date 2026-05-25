@@ -166,10 +166,10 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 
 | 类名               | 接口原型                                                     | 类型     | 接口详细描述                                                            |
 | ------------------ | ------------------------------------------------------------ | -------- |-------------------------------------------------------------------|
-| UncompressEntrance | UncompressResult parseApp(String appPath, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析app包的pack.info信息。<br/>输入参数：appPath app包路径，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
-| UncompressEntrance | UncompressResult parseApp(InputStream input, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析app包的pack.info信息。<br/>输入参数：input app文件流，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
-| UncompressEntrance | UncompressResult parseHap(String hapPath)                    | Java接口 | 接口功能：根据参数解析app包的json配置文件。<br/>输入参数：hapPath HAP包路径。<br/>返回值：UncompressResult。    |
-| UncompressEntrance | UncompressResult parseHap(InputStream input)                 | Java接口 | 接口功能：根据参数解析app包的json配置文件。<br/>输入参数：input HAP包文件流。<br/>返回值：UncompressResult。   |
+| UncompressEntrance | UncompressResult parseApp(String appPath, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析App包的pack.info信息。<br/>输入参数：appPath App包路径，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
+| UncompressEntrance | UncompressResult parseApp(InputStream input, ParseAppMode parseMode, String hapName) | Java接口 | 接口功能：根据参数解析App包的pack.info信息。<br/>输入参数：input App文件流，parseMode 解析模式枚举（ALL/HAP_LIST/HAP_INFO），hapName hap包名（parseMode为HAP_INFO时需要配置）。<br/>返回值：UncompressResult。 |
+| UncompressEntrance | UncompressResult parseHap(String hapPath)                    | Java接口 | 接口功能：根据参数解析HAP包的json配置文件。<br/>输入参数：hapPath HAP包路径。<br/>返回值：UncompressResult。    |
+| UncompressEntrance | UncompressResult parseHap(InputStream input)                 | Java接口 | 接口功能：根据参数解析HAP包的json配置文件。<br/>输入参数：input HAP包文件流。<br/>返回值：UncompressResult。   |
 
 ## 拆包工具信息字段
 
@@ -235,15 +235,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | compileSdkType                 | String  | 标识编译该应用时使用的sdk类别。   | 仅限API10及以后的应用。   |
 | labels                         | HashMap\<String, String> | 标识多语言应用程序AppJson的标签。 | NA          |
 | descriptions                   | HashMap\<String, String> | 标识多语言应用程序AppJson的说明。 | NA          |
-| alternateIcons                  | List\<AlternateIcon> | 标识应用的动态图标列表。 | stage模型新增。 |
 | buildVersion                    | String  | 标识App中的[buildVersion](../quick-start/app-configuration-file.md#配置文件标签)信息。  | 从API version 23开始支持。          |
-
-### AlternateIcon结构体信息
-
-| 字段  | 类型   | 描述                           | 备注 |
-| ----- | ------ | ------------------------------ | ---- |
-| name  | String | 标识动态图标的名称。           | NA   |
-| icon  | String | 标识动态图标的资源路径。       | NA   |
 
 ### HapInfo结构体信息
 
