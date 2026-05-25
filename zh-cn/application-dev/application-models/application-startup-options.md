@@ -35,7 +35,6 @@
 
 <!-- @[startOptions_windowMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/StartWithSpecifiedWindowMode/src/main/ets/pages/Index.ets) --> 
 
-
 ``` TypeScript
 import { common, Want, AbilityConstant, StartOptions } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
