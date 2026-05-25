@@ -30,6 +30,7 @@
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) | OH_AuxiliaryPictureNative | AuxiliaryPicture结构体类型，用于执行AuxiliaryPicture相关操作。 |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) | OH_AuxiliaryPictureInfo | AuxiliaryPictureInfo结构体类型，用于执行AuxiliaryPictureInfo相关操作。 |
 | [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md) | OH_ComposeOptions | OH_ComposeOptions是native层封装的合成HDR选项参数结构体，用于设置合成选项参数。用于指定合成HDR所用的参数，例如目标像素格式。 |
+| [OH_DecomposeOptions](#oh_decomposeoptions) | OH_DecomposeOptions | OH_DecomposeOptions是native层封装的HDR分解选项参数结构体，用于指定HDR分解所用的参数，包括增益图尺寸和目标像素格式。 |
 
 ### 枚举
 
@@ -45,11 +46,18 @@
 | [Image_ErrorCode OH_ComposeOptions_SetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT desiredPixelFormat)](#oh_composeoptions_setdesiredpixelformat) | 设置OH_ComposeOptions中的目标像素格式。 |
 | [Image_ErrorCode OH_ComposeOptions_GetDesiredPixelFormat(OH_ComposeOptions *options, PIXEL_FORMAT *desiredPixelFormat)](#oh_composeoptions_getdesiredpixelformat) | 获取OH_ComposeOptions中的像素格式。 |
 | [Image_ErrorCode OH_ComposeOptions_Release(OH_ComposeOptions *options)](#oh_composeoptions_release) | 释放OH_ComposeOptions指针。 |
+| [Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **options)](#oh_decomposeoptions_create) | 创建OH_DecomposeOptions实例。 |
+| [Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *options, bool isFullSizeGainmap)](#oh_decomposeoptions_setisfullsizegainmap) | 设置是否生成全尺寸增益图。 |
+| [Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *options, bool *isFullSizeGainmap)](#oh_decomposeoptions_getisfullsizegainmap) | 获取是否生成全尺寸增益图。 |
+| [Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t desiredPixelFormat)](#oh_decomposeoptions_setdesiredpixelformat) | 设置HDR分解后SDR PixelMap的像素格式。 |
+| [Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t *desiredPixelFormat)](#oh_decomposeoptions_getdesiredpixelformat) | 获取HDR分解后SDR PixelMap的像素格式。 |
+| [Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)](#oh_decomposeoptions_release) | 释放OH_DecomposeOptions指针。 |
 | [Image_ErrorCode OH_PictureNative_CreatePicture(OH_PixelmapNative *mainPixelmap, OH_PictureNative **picture)](#oh_picturenative_createpicture) | 创建OH_PictureNative指针。 |
 | [Image_ErrorCode OH_PictureNative_GetMainPixelmap(OH_PictureNative *picture, OH_PixelmapNative **mainPixelmap)](#oh_picturenative_getmainpixelmap) | 获取主图的OH_PixelmapNative指针。 |
 | [Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmap(OH_PictureNative *picture, OH_PixelmapNative **hdrPixelmap)](#oh_picturenative_gethdrcomposedpixelmap) | 获取hdr图的OH_PixelmapNative指针。 |
 | [Image_ErrorCode OH_PictureNative_GetHdrComposedPixelmapWithOptions(OH_PictureNative *picture, OH_ComposeOptions *options, OH_PixelmapNative **hdrPixelmap)](#oh_picturenative_gethdrcomposedpixelmapwithoptions) | 通过设置合成选项OH_ComposeOptions获取HDR图的OH_PixelmapNative指针。 |
 | [Image_ErrorCode OH_PictureNative_GetGainmapPixelmap(OH_PictureNative *picture, OH_PixelmapNative **gainmapPixelmap)](#oh_picturenative_getgainmappixelmap) | 获取增益图的OH_PixelmapNative指针。 |
+| [Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelmap, OH_DecomposeOptions *options, OH_PictureNative **picture)](#oh_picturenative_decomposetopicture) | 将HDR PixelMap分解为包含SDR PixelMap和增益图的Picture对象。 |
 | [Image_ErrorCode OH_PictureNative_SetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative *auxiliaryPicture)](#oh_picturenative_setauxiliarypicture) | 设置辅助图。 |
 | [Image_ErrorCode OH_PictureNative_GetAuxiliaryPicture(OH_PictureNative *picture, Image_AuxiliaryPictureType type, OH_AuxiliaryPictureNative **auxiliaryPicture)](#oh_picturenative_getauxiliarypicture) | 根据类型获取辅助图。 |
 | [Image_ErrorCode OH_PictureNative_GetMetadata(OH_PictureNative *picture, Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturenative_getmetadata) | 获取主图的元数据。 |
@@ -930,5 +938,191 @@ Image_ErrorCode OH_AuxiliaryPictureInfo_Release(OH_AuxiliaryPictureInfo *info)
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_BAD_PARAMETER：参数错误。 |
+
+### OH_DecomposeOptions
+
+```c
+typedef struct OH_DecomposeOptions OH_DecomposeOptions
+```
+
+**描述**
+
+OH_DecomposeOptions是native层封装的HDR分解选项参数结构体，用于指定HDR分解所用的参数，包括增益图尺寸（全尺寸或1/2缩小）以及分解后SDR PixelMap和增益图的像素格式。
+
+**起始版本：** 26
+
+### OH_DecomposeOptions_Create()
+
+```c
+Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **options)
+```
+
+**描述**
+
+创建OH_DecomposeOptions实例。
+
+**起始版本：** 26
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_DecomposeOptions](#oh_decomposeoptions) **options | 被操作的OH_DecomposeOptions指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>         IMAGE_ALLOC_FAILED：内存分配失败。 |
+
+### OH_DecomposeOptions_SetIsFullSizeGainmap()
+
+```c
+Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *options, bool isFullSizeGainmap)
+```
+
+**描述**
+
+设置是否生成全尺寸增益图。若不设置，默认值为false，即生成1/2缩小的增益图。
+
+**起始版本：** 26
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| bool isFullSizeGainmap | 是否生成全尺寸增益图。设置为true时生成全尺寸增益图，设置为false时生成1/2缩小的增益图。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。 |
+
+### OH_DecomposeOptions_GetIsFullSizeGainmap()
+
+```c
+Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *options, bool *isFullSizeGainmap)
+```
+
+**描述**
+
+获取是否生成全尺寸增益图。
+
+**起始版本：** 26
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| bool *isFullSizeGainmap | 指向bool值的指针，用于接收是否生成全尺寸增益图的设置。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options或isFullSizeGainmap为nullptr。 |
+
+### OH_DecomposeOptions_SetDesiredPixelFormat()
+
+```c
+Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t desiredPixelFormat)
+```
+
+**描述**
+
+设置HDR分解后SDR PixelMap和增益图的像素格式。若不设置，默认值为RGBA_8888。
+
+**起始版本：** 26
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| int32_t desiredPixelFormat | 分解后SDR PixelMap和增益图的像素格式，支持RGBA_8888、NV12和NV21格式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。<br>         IMAGE_UNSUPPORTED_OPERATION：不支持的像素格式。 |
+
+### OH_DecomposeOptions_GetDesiredPixelFormat()
+
+```c
+Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *options, int32_t *desiredPixelFormat)
+```
+
+**描述**
+
+获取HDR分解后SDR PixelMap和增益图的像素格式。
+
+**起始版本：** 26
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+| int32_t *desiredPixelFormat | 指向int32_t的指针，用于接收像素格式设置。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options或desiredPixelFormat为nullptr。 |
+
+### OH_DecomposeOptions_Release()
+
+```c
+Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)
+```
+
+**描述**
+
+释放OH_DecomposeOptions指针。
+
+**起始版本：** 26
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | 被操作的OH_DecomposeOptions指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如options为nullptr。 |
+
+### OH_PictureNative_DecomposeToPicture()
+
+```c
+Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelmap, OH_DecomposeOptions *options, OH_PictureNative **picture)
+```
+
+**描述**
+
+将HDR PixelMap分解为包含SDR PixelMap和增益图（gainmap）的Picture对象。
+
+**起始版本：** 26
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *hdrPixelmap | 被分解的HDR PixelMap指针，像素格式需为RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。 |
+| [OH_DecomposeOptions](#oh_decomposeoptions) *options | HDR分解配置选项，此参数为必填。 |
+| [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | 指向被创建的Picture对象指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_INVALID_PARAMETER：参数错误，例如hdrPixelmap、options或picture为nullptr。<br>         IMAGE_UNSUPPORTED_OPERATION：hdrPixelmap的像素格式不是RGBA_F16、RGBA_1010102、YCBCR_P010或YCRCB_P010。<br>         IMAGE_DECOMPOSE_FAILED：HDR分解处理失败。<br>         IMAGE_ALLOC_FAILED：内存分配失败。 |
 
 
