@@ -43,7 +43,7 @@
 
 3. 再在onWindowStageCreate函数中，配置HiRetrievalConfig，调用participate方法参与应用灰度活动。最后调用run接口使能应用灰度采集的完整功能。
 
-   <!-- @[hiretrieval](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   <!-- @[hiretrieval_sample_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiRetrieval/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ```ts
    export default class EntryAbility extends UIAbility {
