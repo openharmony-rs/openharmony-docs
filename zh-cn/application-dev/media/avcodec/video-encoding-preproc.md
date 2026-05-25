@@ -188,7 +188,7 @@ if (supportDownsampling) {
 
 // 方案 C：丢帧示例。
 // 以下示例为从 30fps 降到 15fps（可单独使用或与降采样/裁剪组合）。
-// OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0)
+// OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE, 15.0);
 
 // 执行配置。
 OH_AVErrCode ret = OH_VideoEncoder_Configure(encoder, format);
