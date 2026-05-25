@@ -1140,6 +1140,6 @@ type ResponsiveFillType = PresetFillType
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| action | [GestureShortcut](ts-appendix-enums.md#gestureshortcut) | 否 | 是 | 智慧手势响应优先级。当前仅支持GestureShortcut.PRIMARY。<br/>当未显式传入该参数或参数异常时，会清空当前组件的智慧手势响应行为配置。 |
+| action | [GestureShortcut](ts-appendix-enums.md#gestureshortcut) | 否 | 是 | 智慧手势响应优先级。当前仅支持GestureShortcut.PRIMARY，表示组件在智慧手势的滑动，点击等操作中作为首选响应目标。<br/>默认值为GestureShortcut.PRIMARY。 |
 | enabled | boolean | 否 | 是 | 当前组件是否响应智慧手势。<br/>true表示组件响应智慧手势，false表示组件不响应智慧手势。<br/>默认值为false。 |
 | selectable | boolean | 否 | 是 | 组件被智慧手势操作选中后是否展示并保留选中态。<br/>true表示显示选中框，false表示不显示选中框。<br/>当enabled为true时，默认值为true；当enabled为false时，默认值为false。 |
