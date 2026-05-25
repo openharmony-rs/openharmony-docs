@@ -94,9 +94,11 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 ## ResolutionQuality<sup>12+</sup>
 
-type ResolutionQuality = ResolutionQuality
+ArkTS-Dyn: type ResolutionQuality = import('../api/@ohos.multimedia.image').default.ResolutionQuality
 
-图像解码时的图像解码分辨率选项。
+ArkTS-Sta: type ResolutionQuality = image.ResolutionQuality;
+
+画质效果等级类型。
 
 **系统接口：** 此接口为系统接口。
 
@@ -104,6 +106,10 @@ type ResolutionQuality = ResolutionQuality
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明       |
 | ------ | ---------- |
-| [ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 画质效果等级。 |
+| [ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 画质效果等级类型。 |
