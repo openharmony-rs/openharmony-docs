@@ -177,7 +177,7 @@ if (supportDownsampling) {
 // 方案 B：裁剪示例。
 // 以下示例为从 1920x1080 中裁剪中心 1280x720 区域。
 // 注意：left/top/right/bottom 必须全部同时出现。
-//       降采样与裁剪互斥，不能同时使用。
+// 降采样与裁剪互斥，不能同时使用。
 // 举例：left = 320, top = 180, right = 1599, bottom = 899; 对应：宽=1599-320+1=1280, 高=899-180+1=720。
 // if (supportCrop) {
 //     OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT, 320);

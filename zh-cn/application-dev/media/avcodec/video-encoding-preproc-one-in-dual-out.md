@@ -124,8 +124,8 @@ if (ret != AV_ERR_OK || g_primary == nullptr) {
 OH_AVFormat *format = OH_AVFormat_Create();
 
 // 基础编码参数（必填）。
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920);         // 输入宽度（像素）。
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080);        // 输入高度（像素）。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1920);         // 编码宽度（像素）。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1080);        // 编码高度（像素）。
 OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 原始帧率（丢帧功能的前置依赖）。
 
 // 前处理参数（按需选用，先通过IsFeatureSupported确认特性支持后再配置）。
@@ -140,7 +140,7 @@ if (supportDownsampling) {
 // 方案 B：裁剪示例。
 // 以下示例为从 1920x1080 中裁剪中心 1280x720 区域。
 // 注意：left/top/right/bottom 必须全部同时出现。
-//       降采样与裁剪互斥，不能同时使用。
+// 降采样与裁剪互斥，不能同时使用。
 // 举例：left = 320, top = 180, right = 1599, bottom = 899; 对应：宽=1599-320+1=1280, 高=899-180+1=720。
 // if (supportCrop) {
 //     OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT, 320);
@@ -163,9 +163,6 @@ if (ret != AV_ERR_OK) {
 OH_AVFormat_Destroy(format);
 ```
 
-> **注意：**
->
-> Primary 的 WIDTH/HEIGHT 定义了共享输入 Surface 的尺寸，后续创建的 Secondary 在 Configure 时建议设置相同的输入尺寸值。
 
 ### 从主编码器派生创建副编码器（Secondary）
 
