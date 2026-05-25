@@ -979,7 +979,7 @@ replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | 是 | 用于fuse文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
+| linkFileName | string | 是 | 用于FUSE文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收替换link文件的结果。回调参数包括：err（错误对象，成功时为undefined）。 |
 
 **错误码：**
@@ -1048,7 +1048,7 @@ DLP文件访问结束后清理link文件映射时使用此接口。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | 是 | 用于fuse文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
+| linkFileName | string | 是 | 用于FUSE文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
 
 **返回值：**
 
@@ -1120,7 +1120,7 @@ DLP文件访问结束后清理link文件映射时使用此接口。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| linkFileName | string | 是 | 用于fuse文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
+| linkFileName | string | 是 | 用于FUSE文件系统的link文件名。不超过255字节。超出范围时抛出错误码19100001。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，用于接收删除link文件的结果。 |
 
 **错误码：**
