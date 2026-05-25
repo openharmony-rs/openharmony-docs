@@ -444,6 +444,8 @@ job.Await();
 ## WorkerPriority
 表示EAWorker线程的优先级的枚举值，开发者可以通过调用[setPriority](#setpriority)为EAWorker设置线程QoS(quality-of-service)等级，对应关系参考[QoS等级定义](../../napi/qos-guidelines.md#qos等级定义)。
 
+EAWorker的默认优先级为PRIORITY_HIGH。
+
 |名称|值|说明|
 |-|-|-|
 |PRIORITY_IDLE|0|适用于数据同步等用户不可见的后台任务，任务完成需要几分钟甚至几小时。对应QOS_BACKGROUND。|
