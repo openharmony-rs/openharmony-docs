@@ -1129,7 +1129,7 @@ try {
 }
 ```
 
-## distributedMissionManager.on('continueStateChange')<sup>11+</sup>
+## distributedMissionManager.on('continueStateChange')<sup>10+</sup>
 
 on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;): void
 
@@ -1192,7 +1192,7 @@ try {
 }
 ```
 
-## distributedMissionManager.off('continueStateChange')<sup>11+</sup>
+## distributedMissionManager.off('continueStateChange')<sup>10+</sup>
 
 off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt;): void
 
