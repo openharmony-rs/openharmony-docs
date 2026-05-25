@@ -1439,6 +1439,76 @@ Dynamic icons cannot take effect due to existing custom themes.
 1. 检查当前使用的主题是否为自定义主题。<br/>
 2. 可以切换为官方主题后重新调用使能接口。<!--DelEnd-->
 
+## 17700308 备用图标名称没有在配置文件中配置
+**错误信息**
+
+The alternateIconName must match the name field under alternateIcons in the app.json5 file.
+
+**错误描述**
+
+备用图标名称必须与app.json5中[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)配置的name字段匹配。
+
+**可能原因**
+
+传入的alternateIconName在app.json5的[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)中未配置。
+
+**处理步骤**
+
+1. alternateIconName传入app.json5的[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)中配置的name。
+2. 在app.json5的[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)中配置接口传入的alternateIconName。
+
+## 17700309 当前没有设置备用图标
+**错误信息**
+
+No alternate icon is enabled.
+
+**错误描述**
+
+没有设置备用图标。
+
+**可能原因**
+
+当前应用未设置备用图标，在alternateIconName传入空字符串恢复默认图标时会抛出17700309。
+
+**处理步骤**
+
+当前应用未设置备用图标，不需要取消备用图标。
+
+## 17700310 设置备用图标失败
+**错误信息**
+
+Failed to set the alternate icon.
+
+**错误描述**
+
+设置备用图标失败。
+
+**可能原因**
+
+1. 分身应用暂不支持设置备用图标。
+2. 用户使用了自定义主题（例如在主题应用中设置了非官方的主题），主题包内包含了本应用的图标资源。此时调用接口启用备用图标会失败，并抛出17700310错误码。
+
+**处理步骤**
+
+检查当前使用的主题是否为自定义主题，可以切换为官方主题后重新调用接口。
+
+## 17700311 查询备用图标失败
+**错误信息**
+
+Failed to obtain alternate icon.
+
+**错误描述**
+
+查询备用图标失败。
+
+**可能原因**
+
+分身应用暂不支持备用图标。当分身应用查询备用图标会失败，抛出17700311错误码。
+
+**处理步骤**
+
+检查当前应用是否是分身应用，分身应用暂不支持查询备用图标，请使用主应用查询备用图标。
+
 <!--Del-->
 ## 17700351 无效的文件类型
 **错误信息**<br/>
