@@ -18,7 +18,7 @@
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - @ohos.dlpPermission归属的Kit已由`DataLossPreventionKit`变更为`DataProtectionKit`，建议开发者使用新模块名`@kit.DataProtectionKit`完成模块导入。如果使用`@kit.DataLossPreventionKit`导入，仅能调用改名前的接口，无法使用新增接口。
 
-## 关键 Class/Interface 介绍
+## 关键Class/Interface介绍
 
 ### 核心枚举类型
 - **ActionFlagType**：DLP 文件可执行操作类型的标志枚举，用于细粒度权限控制。
