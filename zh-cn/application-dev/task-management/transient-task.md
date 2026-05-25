@@ -47,8 +47,10 @@
 ## 开发步骤
 
 1. 导入模块。
+
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
    
-   ```ts
+   ``` TypeScript
    import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```

@@ -1,7 +1,7 @@
 # Class (Map)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -56,11 +56,10 @@ constructor(entries?: readonly (readonly [K, V])[] | null)
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                        |
 | 10200012 | The ArkTS Map's constructor cannot be directly invoked. |
 
 **示例：**
@@ -112,11 +111,10 @@ constructor(iterable: Iterable\<readonly \[K, V]>)
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                        |
 | 10200012 | The ArkTS Map's constructor cannot be directly invoked. |
 
 **示例：**
@@ -325,11 +323,10 @@ delete(key: K): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 401      | Parameter error.                                     |
 | 10200011 | The delete method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                   |
 
@@ -372,11 +369,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
-| 401      | Parameter error.                                      |
 | 10200011 | The forEach method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                    |
 
@@ -429,11 +425,10 @@ get(key: K): V | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                                  |
 | 10200011 | The get method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                |
 
@@ -472,11 +467,10 @@ has(key: K): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                                  |
 | 10200011 | The has method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                |
 
@@ -516,11 +510,10 @@ set(key: K, value: V): Map<K, V>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                                  |
 | 10200011 | The set method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                |
 

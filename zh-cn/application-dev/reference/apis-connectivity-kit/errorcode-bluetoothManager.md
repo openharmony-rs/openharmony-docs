@@ -275,7 +275,7 @@ Operation failed.
 
 **错误描述**
 
-操作失败。
+操作失败。发生内部系统错误，包括SA异常，IPC异常等。
 
 **可能原因**
 
@@ -285,7 +285,7 @@ Operation failed.
 
 **处理步骤**
 
-请重试该操作。
+1. 检查接口调用的前置依赖条件，具体处理步骤可参考[蓝牙接口调用报错2900099](../../connectivity/bluetooth/bluetooth-faq-2900099-errorcode.md)
 
 ## 2900100
 

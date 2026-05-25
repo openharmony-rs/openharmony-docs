@@ -303,6 +303,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -318,6 +320,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -425,6 +429,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型                       | 只读 | 可选 | 说明            |
@@ -436,6 +442,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型                       | 只读 | 可选 | 说明            |
@@ -446,6 +454,8 @@ onDatasetChange(dataOperations: DataOperation[]): void
 ## ExchangeKey<sup>12+</sup>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -497,6 +507,7 @@ LazyForEach内存优化策略枚举。
 
 BasicDataSource代码见LazyForEach开发者指南末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#string类型数组的basicdatasource代码)。
 
+<!--code_no_check-->
 ```ts
 import { BasicDataSource } from './BasicDataSource';
 

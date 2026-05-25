@@ -12,7 +12,13 @@ EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIE
 
 > **说明：**
 >
-> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>- 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>- 本模块接口仅可在Stage模型下使用。
+>
+>- API版本26.0.0之前，EmbeddedComponent组件获焦时，其拉起的EmbeddedUIExtensionAbility进程内焦点直接下发到第一个可获焦子节点。从API版本26.0.0开始，
+> 如果外部走焦到EmbeddedUIExtensionAbility，焦点正常下发到第一个可获焦子节点。
+> 如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，则与UIAbility保持统一规则。两者在拉起一个层级页面且该页面未设置[defaultFocus](ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](../../../ui/arkts-common-events-focus-event.md#主动获焦失焦)时，焦点均停留在根容器，不下发到子节点。
 
 ## 使用约束
 

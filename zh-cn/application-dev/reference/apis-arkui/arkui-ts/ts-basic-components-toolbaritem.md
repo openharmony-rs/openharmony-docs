@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  该组件从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  - 该组件从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  - 本模块接口仅可在Stage模型下使用。
 >
 >  该组件一般配合[toolbar](ts-universal-attributes-toolbar.md#toolbar)通用属性进行使用。
 

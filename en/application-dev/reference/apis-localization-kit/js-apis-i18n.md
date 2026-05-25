@@ -7,15 +7,15 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
-This module provides system-related and enhanced [i18n](../../internationalization/i18n-l10n.md) capabilities, such as locale management, phone number formatting, and calendar, through supplementary i18n APIs that are not defined in [ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/). The [intl](js-apis-intl.md) module provides basic i18n capabilities through the standard i18n APIs defined in ECMA 402. It works with the **i18n** module to provide a complete suite of i18n capabilities. The terms used in the APIs are defined as follows:
-- Pattern string, which is a string consisting of [Unicode date field symbols](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table) and custom text enclosed by single quotation marks.
+This module provides system-related and enhanced [i18n](../../internationalization/i18n-l10n.md) capabilities, such as locale management, phone number formatting, and calendar, through supplementary i18n APIs that are not defined in [ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/). The [Internationalization](js-apis-intl.md) module provides basic i18n APIs defined in ECMA 402. It works with this module to provide a complete suite of i18n capabilities. The terms used in the APIs are defined as follows:
+- Pattern string: a string that consists of [Unicode date field symbols](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table) and custom text enclosed by single quotation marks.
 - Skeleton string: a string that consists of [Unicode date field symbols](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table) and does not support custom text.
 
 >  **NOTE**
 >
 >  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [date and time formatting API](#simplenumberformat18) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the date and time formatting API is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 
@@ -284,7 +284,7 @@ Obtains the current system language. To listen for system language changes, enab
 
 static getSystemRegion(): string
 
-Obtains the current system country/region. To listen for system region changes, enable listening for [COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed). For details, see [System Language and Region](../../internationalization/i18n-system-language-region.md#how-to-develop).
+Obtains the current system country/region. To listen for system locale changes, enable listening for [COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed). For details, see [System Language and Region](../../internationalization/i18n-system-language-region.md#how-to-develop).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -366,7 +366,7 @@ Checks whether the 24-hour clock is used. To listen for system time format chang
 
 | Type     | Description                                      |
 | ------- | ---------------------------------------- |
-| boolean | Whether the 24-hour clock is used. The value **true** indicates yes, and the value **false** indicates no.|
+| boolean | Whether the 24-hour clock is used. The value **true** indicates that the 24-hour clock is used, and the value **false** indicates that the 12-hour clock is used.|
 
 **Example**
   ```ts
@@ -1318,7 +1318,7 @@ Obtains the lunar calendar object of a specified region.
 
 | Name   | Type    | Mandatory  | Description                                      |
 | ------ | ------ | ---- | ---------------------------------------- |
-| locale | Intl.Locale | No  | **Locale** object. The default value is the current system locale.|
+| locale | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | No  | **Locale** object. The default value is the current system locale.|
 
 **Return value**
 
@@ -2375,7 +2375,7 @@ let dateFormat: string =
 
 isDaylightSavingTime(date: Date): boolean
 
-Checks whether the specified time and date are in the daylight saving time.
+Checks whether the specified date and time is in the daylight saving time.
 
 **Since**: 26.0.0
 
@@ -2807,7 +2807,7 @@ Checks whether the input character is a space.
 
 static isWhitespace(ch: string): boolean
 
-Checks whether the input character is a whitespace.
+Checks whether the input character is a whitespace character.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3024,6 +3024,8 @@ Detects the encoding information of the input byte stream.
 
 **System capability**: SystemCapability.Global.I18n
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name | Type    | Mandatory  | Description   |
@@ -3053,6 +3055,8 @@ Describes the encoding information.
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
 **System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name | Type  | Read-Only  | Optional  | Description               |
 | ---- | ---- | ---- | ---- | ----------------- |
@@ -3430,7 +3434,7 @@ Adjusts a locale ID to a format that complies with the [BCP47](https://www.rfc-e
 
 | Name| Type  | Mandatory| Description                    |
 | ------ | ------ | ---- | ------------------------ |
-| locale | string | No   | Locale ID.|
+| locale | string | Yes   | Locale ID.|
 
 **Return value**
 
@@ -3990,7 +3994,7 @@ Formats the date and time.
 
 | Type                    | Description   |
 | ---------------------- | ----- |
-| string | A string containing the formatted date and time.|
+| string | String of the formatted date and time.|
 
 **Example**
   ```ts
@@ -4016,6 +4020,272 @@ Formats the date and time.
   }
   ```
 
+## SymbolDateTimeFormat
+
+Provides the capability of customizing date and time symbols. This API inherits from [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) and supports methods of [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat).
+
+### constructor
+
+constructor(locale?: Intl.Locale, options?: SymbolDateTimeFormatOptions)
+
+Creates a date and time formatting object that uses custom symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type    | Mandatory  | Description   |
+| ---- | ------ | ---- | ----- |
+| locale  | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | No   | **Locale** object. The default value is the current system locale.|
+| options | [SymbolDateTimeFormatOptions](#symboldatetimeformatoptions) | No   | Configuration items for date and time formatting using custom symbols. The default value is the locale object's default symbol set.|
+
+**Error codes**
+
+For details about the error codes, see [i18n Error Codes](errorcode-i18n.md).
+
+| ID | Error Message                  |
+| ------ | ---------------------- |
+| 8900001 | Invalid parameter. Possible causes: Parameter verification failed. |
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['AM', 'PM']
+});
+```
+
+### format
+
+format(date?: Date | number): string
+
+Formats the date and time into a date and time string that uses custom symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description               |
+| ---- | ---- | ---- | ----------------- |
+| date | Date \| number | No   | Date and time object or the millisecond value corresponding to the date and time. The default value is the current system time.|
+
+**Return value**
+
+| Type                    | Description   |
+| ---------------------- | ----- |
+| string | Date and time string that uses custom symbols.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['AM', 'PM']
+});
+let result = formatter.format(new Date(2026, 3, 26, 14, 20, 0)); // result = '2:20 AM'
+```
+
+### formatToParts
+
+formatToParts(date?: Date | number): Intl.DateTimeFormatPart[]
+
+Formats the date and time and returns an array of date and time elements using custom symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description               |
+| ---- | ---- | ---- | ----------------- |
+| date | Date \| number | No   | Date and time object or the millisecond value corresponding to the date and time. The default value is the current system time.|
+
+**Return value**
+
+| Type                    | Description   |
+| ---------------------- | ----- |
+| Intl.DateTimeFormatPart[] | Array of date and time elements using custom symbols.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['AM', 'PM']
+});
+let parts = formatter.formatToParts(new Date(2026, 3, 26, 14, 20, 0)); // parts[0].type = 'dayPeriod'
+```
+
+### formatRange
+
+formatRange(startDate: Date | number | bigint, endDate: Date | number | bigint): string
+
+Formats the date and time range. This API does not support custom symbols currently.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description               |
+| ---- | ---- | ---- | ----------------- |
+| startDate | Date \| number \| bigint | Yes   | Date and time object or the millisecond value corresponding to the date and time.|
+| endDate | Date \| number \| bigint | Yes   | Date and time object or the millisecond value corresponding to the date and time.|
+
+**Return value**
+
+| Type                    | Description   |
+| ---------------------- | ----- |
+| string | String of the formatted date and time range.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['AM', 'PM']
+});
+let startDate = new Date(2026, 3, 27, 14, 20, 0);
+let endDate = new Date(2026, 3, 27, 18, 20, 0);
+let result = formatter.formatRange(startDate, endDate); // result = '2:20 PM–6:20 PM'
+```
+
+### formatRangeToParts
+
+formatRangeToParts(startDate: Date | number | bigint, endDate: Date | number | bigint): Intl.DateTimeRangeFormatPart[]
+
+Formats a date and time range into an array of date and time elements. This API does not support custom symbols currently.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description               |
+| ---- | ---- | ---- | ----------------- |
+| startDate | Date \| number \| bigint | Yes   | Date and time object or the millisecond value corresponding to the date and time.|
+| endDate | Date \| number \| bigint | Yes   | Date and time object or the millisecond value corresponding to the date and time.|
+
+**Return value**
+
+| Type                    | Description   |
+| ---------------------- | ----- |
+| Intl.DateTimeRangeFormatPart[] | Array of date and time range elements.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['AM', 'PM']
+});
+let startDate = new Date(2026, 3, 27, 14, 20, 0);
+let endDate = new Date(2026, 3, 27, 18, 20, 0);
+let parts = formatter.formatRangeToParts(startDate, endDate); // parts[0].type = 'dayPeriod'
+```
+
+### resolvedOptions
+
+resolvedOptions(): ResolvedSymbolDateTimeFormatOptions
+
+Parses the configuration items for customizing the date and time symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+|       Type       |         Description         |
+| ----------------- | ----------------------|
+| [ResolvedSymbolDateTimeFormatOptions](#resolvedsymboldatetimeformatoptions)  | Parsing result of the configuration items of the time and date formatting object using custom symbols.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolDateTimeFormat(locale, {
+  timeStyle: 'short',
+  amPMSymbol: ['AM', 'PM']
+});
+let options = formatter.resolvedOptions(); // options.timeStyle = 'short', options.amPMSymbol = ['AM', 'PM']
+```
+
+### SymbolDateTimeFormatOptions
+
+Describes optional configuration items for creating the time and date formatting object using custom symbols. This API inherits from **Intl.DateTimeFormatOptions**, supports all its configuration items, and provides the same functionality.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name           | Type            |  Read-Only  |  Optional  |  Description                                  |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| amPMSymbol     | string[] |   No|   Yes  |  Specifies the symbols for AM and PM. The array length must be no less than 2, where the first element represents the AM symbol and the second element represents the PM symbol. The default value is the locale's default symbol set.  |
+
+### ResolvedSymbolDateTimeFormatOptions
+
+Describes the parsing result of the configuration items of the time and date formatting object using custom symbols. This API inherits from **Intl.ResolvedDateTimeFormatOptions**, supports all its configuration items, and provides the same functionality.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name           | Type            |  Read-Only  |  Optional  |  Description                                  |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| amPMSymbol     | string[] |   No  |  Yes  |  Specifies the symbols for AM and PM. The first element represents the AM symbol and the second element represents the PM symbol. The default value is the locale's default symbol set.  |
+
 ## StyledDateTimeFormat<sup>23+</sup>
 
 Formats the rich text time and date.
@@ -4028,7 +4298,7 @@ Formats the rich text time and date.
 
 constructor(dateTimeFormat: Intl.DateTimeFormat | SimpleDateTimeFormat, options?: StyledDateTimeFormatOptions)
 
-Creates an object for formatting the time and date that need to be displayed in rich text.
+Creates an object for formatting the time and date that needs to be displayed in rich text.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -4168,7 +4438,7 @@ Creates a date formatting object that complies with ISO 8601.
 
 | Name| Type  | Mandatory| Description                    |
 | ------ | ------ | ---- | ------------------------ |
-| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | Yes   | Options for creating a date formatting object that complies with ISO 8601.|
+| options | [ISO8601DateTimeFormatOptions](#iso8601datetimeformatoptions) | No   | Options for creating a date formatting object that complies with ISO 8601. The default value is an **ISO8601DateTimeFormatOptions** object with all properties set to their default values.|
 
 **Example**
 ```ts
@@ -4183,7 +4453,7 @@ let formatter = new i18n.ISO8601DateTimeFormat({
 
 format(date: Date): string
 
-Formats the date and time into a data and time string that complies with ISO 8601.
+Formats the date and time into a date and time string that complies with ISO 8601.
 
 **Since**: 26.0.0
 
@@ -4203,7 +4473,7 @@ Formats the date and time into a data and time string that complies with ISO 860
 
 | Type                    | Description   |
 | ---------------------- | ----- |
-| string | A string containing the formatted date and time.|
+| string | String of the formatted date and time.|
 
 **Example**
 ```ts
@@ -4371,6 +4641,277 @@ try {
   console.error(`call SimpleNumberFormat.format failed, error code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+## SymbolNumberFormat
+
+Provides the capability of customizing numeric symbols. This API inherits from [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) and supports methods of [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat).
+
+### constructor
+
+constructor(locale?: Intl.Locale, options?: SymbolNumberFormatOptions)
+
+Creates a number formatting object that uses custom symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type    | Mandatory  | Description   |
+| ---- | ------ | ---- | ----- |
+| locale  | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | No   | **Locale** object. The default value is the current system locale.|
+| options | [SymbolNumberFormatOptions](#symbolnumberformatoptions) | No   | Configuration items for number formatting using custom symbols. The default value is the locale's default symbol set.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+```
+
+### format
+
+format(value: number | bigint): string
+
+Formats a number and returns a numeric string using a custom symbol.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description               |
+| ---- | ---- | ---- | ----------------- |
+| value | number \| bigint | Yes   | Number to be formatted.|
+
+**Return value**
+
+| Type                    | Description   |
+| ---------------------- | ----- |
+| string | Numeric string that uses a custom symbol.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.format(10); // result = '1(0) days'
+```
+
+### formatToParts
+
+formatToParts(value?: number \| bigint): Intl.NumberFormatPart[]
+
+Formats a number and returns an array of numeric elements using custom symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description               |
+| ---- | ---- | ---- | ----------------- |
+| value | number \| bigint | No   | Number to be formatted. The default value is **NaN**.|
+
+**Return value**
+
+| Type                    | Description   |
+| ---------------------- | ----- |
+| Intl.NumberFormatPart[] | Array of numeric elements using custom symbols.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatToParts(10); // result[0].type = 'integer'
+```
+
+### formatRange
+
+formatRange(startRange: number, endRange: number): string
+
+Formats a number range and returns a number range string using custom symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description               |
+| ---- | ---- | ---- | ----------------- |
+| startRange | number | Yes   | Start number.|
+| endRange | number | Yes   | End number.|
+
+**Return value**
+
+| Type                    | Description   |
+| ---------------------- | ----- |
+| string | Number range string using custom symbols.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatRange(10, 20); // result = '1(0)-2(0) days'
+```
+
+### formatRangeToParts
+
+formatRangeToParts(startRange: number, endRange: number): Intl.NumberFormatPart[]
+
+Formats a number range and returns an array of numeric elements using custom symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type  | Mandatory  | Description               |
+| ---- | ---- | ---- | ----------------- |
+| startRange | number | Yes   | Start number.|
+| endRange | number | Yes   | End number.|
+
+**Return value**
+
+| Type                    | Description   |
+| ---------------------- | ----- |
+| Intl.NumberFormatPart[] | Array of numeric elements using custom symbols.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.formatRangeToParts(10, 20); // result[0].type = 'integer'
+```
+
+### resolvedOptions
+
+resolvedOptions(): ResolvedSymbolNumberFormatOptions
+
+Parses the configuration items for customizing number symbols.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+|       Type       |         Description         |
+| ----------------- | ----------------------|
+| [ResolvedSymbolNumberFormatOptions](#resolvedsymbolnumberformatoptions)  | Parsing result of the configuration items of the number formatting object using custom symbols.|
+
+**Example**
+```ts
+import { i18n } from '@kit.LocalizationKit';
+
+let locale = new Intl.Locale('zh-Hans-CN');
+let formatter = new i18n.SymbolNumberFormat(locale, {
+  style: 'unit',
+  unit: 'day',
+  zero: '(0)'
+});
+let result = formatter.resolvedOptions(); // result.style = 'unit', result.unit = 'day', result.zero = '(0)'
+```
+
+### SymbolNumberFormatOptions
+
+Describes optional configuration items for creating the number object using custom symbols. This API inherits from **Intl.NumberFormatOptions**, supports all its configuration items, and provides the same functionality.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name           | Type            |  Read-Only  |  Optional  |  Description                                  |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| zero     | string  |   No   |   Yes  |  Zero. The default value is the locale's default symbol.  |
+| nan     | string  |   No   |   Yes  |  NaN. The default value is the locale's default symbol.  |
+| minusSign     | string  |   No   |   Yes  |  Minus sign. The default value is the locale's default symbol.  |
+| plusSign     | string  |   No   |   Yes  |  Plus sign. The default value is the locale's default symbol.  |
+| infinity     | string  |   No   |   Yes  |  Infinity symbol. The default value is the locale's default symbol.  |
+| groupingSeparator     | string |   No   |   Yes  |  Grouping symbol. The default value is the locale's default symbol.  |
+
+### ResolvedSymbolNumberFormatOptions
+
+Describes the parsing result of the configuration items of the number formatting object using custom symbols. This API inherits from **Intl.ResolvedNumberFormatOptions**, supports all its configuration items, and provides the same functionality.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Global.I18n
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name           | Type            |  Read-Only  |  Optional  |  Description                                  |
+| --------------- | --------------- | ------  | ------  | --------------------------------------- |
+| zero     | string  |   No   |   Yes  |  Zero. The default value is the locale's default symbol.  |
+| nan     | string  |   No   |   Yes  |  NaN. The default value is the locale's default symbol.  |
+| minusSign     | string  |   No   |   Yes  |  Minus sign. The default value is the locale's default symbol.  |
+| plusSign     | string  |   No   |   Yes  |  Plus sign. The default value is the locale's default symbol.  |
+| infinity     | string  |   No   |   Yes  |  Infinity symbol. The default value is the locale's default symbol.  |
+| groupingSeparator     | string |   No   |   Yes  |  Grouping symbol. The default value is the locale's default symbol.  |
+
 
 ## StyledNumberFormat<sup>18+</sup>
 
@@ -4564,7 +5105,7 @@ Represents optional configuration items for the **NumberFormat** object.
 
 ## AdvancedMeasureFormat<sup>23+</sup>
 
-Performs number formatting.
+Provides the number formatting capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -5083,7 +5624,7 @@ isWhitespace(ch: string): boolean
 
 > This API is supported since API version 8 and is deprecated since API version 9. You are advised to use [isWhitespace](#iswhitespace9) instead.
 
-Checks whether the input character is a whitespace.
+Checks whether the input character is a whitespace character.
 
 **System capability**: SystemCapability.Global.I18n
 

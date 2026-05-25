@@ -1,8 +1,8 @@
 # Class (Canvas)
 <!--Kit: ArkGraphics 2D-->
-<!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Subsystem: Graphics-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 

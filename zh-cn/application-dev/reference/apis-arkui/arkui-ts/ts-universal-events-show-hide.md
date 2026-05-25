@@ -26,6 +26,8 @@ onAttach(callback: Callback\<void>): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -48,6 +50,8 @@ onDetach(callback: Callback\<void>): T
 组件从组件树卸载时触发此回调。建议使用[onDisAppear](#ondisappear)替代此接口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

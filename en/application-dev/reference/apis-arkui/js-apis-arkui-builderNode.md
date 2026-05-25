@@ -2982,7 +2982,7 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 
 **offsetA** indicates the **BuilderNode**'s offset relative to its parent component, **offsetB** the hit position's offset relative to the **BuilderNode**, **offsetC** the composite offset (offsetA + offsetB) passed to the **postInputEvent**.
 
-! [API coordinate conversion example](figures/postTouchEvent.PNG)
+![API coordinate conversion example](figures/postTouchEvent.PNG)
 
 > **NOTE**
 >
