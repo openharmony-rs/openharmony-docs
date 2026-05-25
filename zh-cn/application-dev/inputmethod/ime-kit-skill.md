@@ -66,7 +66,7 @@ Extension能力的上下文环境，提供启动、停止、绑定、解绑Abili
 
 输入法面板的沉浸显示模式，包括浅色沉浸、深色沉浸，由输入法应用设置。
 
-- **InputMethodExtensionAbility；**
+- **InputMethodExtensionAbility；输入法扩展能力**
 
 输入法Extension ability组件，支持开发者自行开发输入法应用。
 
