@@ -42,6 +42,8 @@
 
 ## RichEditorChangeValue<sup>12+</sup>
 
+图文变化信息。
+
 **系统能力：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
