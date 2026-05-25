@@ -25,7 +25,7 @@
    import { http } from '@kit.NetworkKit';
    ```
 
-3. 在EntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
+3. 在WgtImgUpdateEntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
 
    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
@@ -68,7 +68,7 @@
    }
    ```
 
-4. 在EntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
+4. 在WgtImgUpdateEntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
 
    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
@@ -156,7 +156,7 @@
    
    ```
 
-5. 在卡片页面通过backgroundImage属性展示EntryFormAbility传递过来的卡片内容。
+5. 在卡片页面通过backgroundImage属性展示WgtImgUpdateEntryFormAbility传递过来的卡片内容。
 
    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
    
