@@ -86,16 +86,16 @@ struct Index {
 
 1. 指定当前UIAbility，重启后刷新当前窗口至初始状态。
    <!-- @[restartapp_withOldWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index2.ets) --> 
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { common, Want } from '@kit.AbilityKit';
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'restartApp with window';
-
+   
      build() {
        RelativeContainer() {
          Button(this.message)
