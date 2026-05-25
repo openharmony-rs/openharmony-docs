@@ -852,6 +852,7 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
     let currentLineWidth = 0;
     let totalHeight = 0;
     let maxLineWidth = 0;
+    let currentLineHeight = 0;
 
     for (let i = 0; i < childCount; i++) {
       const child = self.getChild(i);
@@ -864,23 +865,25 @@ class TagCloudLayout extends CustomLayoutAlgorithm {
         };
         child.measure(childConstraint);
         const childSize = child.getMeasuredSize();
+
         // 检查是否需要换行
         if (currentLineWidth + childSize.width > maxWidth && currentLineWidth > 0) {
-          // 换行
-          totalHeight += this.verticalGap;
-          currentLineWidth = childSize.width;
-          totalHeight += childSize.height;
+          // 换行前，累加上一行的高度
+          totalHeight += currentLineHeight + this.verticalGap;
+          currentLineWidth = childSize.width + this.horizontalGap;
+          currentLineHeight = childSize.height;
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         } else {
           // 继续当前行
           currentLineWidth += childSize.width + this.horizontalGap;
-          if (i === 0) {
-            totalHeight = childSize.height;
-          }
+          currentLineHeight = Math.max(currentLineHeight, childSize.height);
           maxLineWidth = Math.max(maxLineWidth, currentLineWidth - this.horizontalGap);
         }
       }
     }
+    // 累加最后一行的高度
+    totalHeight += currentLineHeight;
+
     self.setMeasuredSize({
       width: Math.min(maxLineWidth, maxWidth),
       height: totalHeight
