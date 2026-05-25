@@ -159,8 +159,8 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo)  | 是    | 注册监听时的设备信息。   |
-| options   | <a href="#missioncallback">MissionCallback</a> | 是    | 注册的回调方法。|
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10)  | 是    | 注册监听时的设备信息。   |
+| options   | <a href="#missioncallback10">MissionCallback</a> | 是    | 注册的回调方法。|
 
 **返回值：**
 
@@ -273,7 +273,7 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | 是    | 注册监听时的设备信息。    |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 注册监听时的设备信息。    |
 | callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，取消监听成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -422,7 +422,7 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 
 | 参数名       | 类型                                    | 必填   | 说明        |
 | --------- | ------------------------------------- | ---- | --------- |
-| parameter | [MissionParameter](#missionparameter) | 是    | 同步信息。     |
+| parameter | [MissionParameter](#missionparameter10) | 是    | 同步信息。     |
 | callback  | AsyncCallback&lt;void&gt;             | 是    | 回调函数，同步远端任务列表成功时，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -588,7 +588,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | 是    | 同步信息。     |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 同步信息。     |
 | callback  | AsyncCallback&lt;void&gt;               | 是    | 回调函数，停止同步远端任务列表成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -666,7 +666,7 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| parameter | [MissionDeviceInfo](#missiondeviceinfo) | 是    | 同步信息。 |
+| parameter | [MissionDeviceInfo](#missiondeviceinfo10) | 是    | 同步信息。 |
 
 **返回值：**
 
