@@ -193,7 +193,6 @@ notificationManager.publish(notificationRequest).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 通知Request对象
 let notificationRequest: notificationManager.NotificationRequest = {
@@ -209,7 +208,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 };
 notificationManager.publish(notificationRequest).then(() => {
   console.info(`Succeeded in publishing notification.`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
 });
 
