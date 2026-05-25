@@ -2391,6 +2391,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/concurrentFunc.ets",
+				"functions":[
+					{
+						"end_line":28,
+						"name":"transferableObject_observeJSON",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -2909,6 +2919,91 @@
 						"end_line":86,
 						"name":"startOptions_hidesplash",
 						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/arkts-sendable-module.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/sharedModule.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"export_sendable_object",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/ArktsSendableModule.ets",
+				"functions":[
+					{
+						"end_line":93,
+						"name":"multi_thread_operate_exported_obj",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/sendable-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":-1,
+						"name":"across_concurrent_instance_transfer_large_data ",
+						"start_line":-1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/sendable.ets",
+				"functions":[
+					{
+						"end_line":-1,
+						"name":"across_concurrent_instance_transfer_large_data ",
+						"start_line":-1
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/crossconcurrency/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":72,
+						"name":"across_concurrent_instance_pass_class_method",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/crossconcurrency/src/main/ets/pages/sendable.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"across_concurrent_instance_pass_class_method",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/worker-introduction.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/mainAbility/src/main/ets/workers/ChildWorker.ets",
+				"functions":[
+					{
+						"end_line":27,
+						"name":"not_recommended_example_two",
+						"start_line":16
 					}
 				]
 			}
