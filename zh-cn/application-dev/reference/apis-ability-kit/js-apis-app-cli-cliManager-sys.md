@@ -25,7 +25,7 @@ import { cliManager } from '@kit.AbilityKit';
 
 queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
-查询所有CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段。
+查询所有CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -45,7 +45,7 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -77,7 +77,7 @@ try {
 
 queryTools(): Promise\<Array\<ToolInfo>>
 
-查询所有CLI工具的详细信息。
+查询所有CLI工具的详细信息，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -97,7 +97,7 @@ queryTools(): Promise\<Array\<ToolInfo>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -129,7 +129,7 @@ try {
 
 getToolInfoByName(toolName: string): Promise\<ToolInfo>
 
-根据工具名称获取单个工具的详细信息。
+根据工具名称获取单个工具的详细信息，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -155,7 +155,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
