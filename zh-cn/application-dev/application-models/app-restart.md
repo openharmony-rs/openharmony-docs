@@ -129,16 +129,16 @@ struct Index {
 
 2. 指定应用内其他UIAbility，重启后跳转并打开新的Ability窗口。
    <!-- @[restartapp_withNewWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index3.ets) --> 
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { common, Want } from '@kit.AbilityKit';
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'restartApp to new page';
-
+   
      build() {
        RelativeContainer() {
          Button(this.message)
