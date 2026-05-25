@@ -55,7 +55,7 @@ classDiagram
         <<interface>>
         +connectServer(requestId: string, requestData: string, callback: Callback~string~) void
     }
-    DlpConnManager ..> DlpConnPlugin : uses
+    DlpConnManager ..> DlpConnPlugin : Dependency
    
 ```
 
