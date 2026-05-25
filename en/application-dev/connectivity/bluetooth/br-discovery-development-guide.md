@@ -118,7 +118,7 @@ try {
   // Obtain information about the paired devices.
   let devices = connection.getPairedDevices();
   console.info('pairedDevices: ' + JSON.stringify(devices));
-  // If the device address is known, check whether the device has been paired.
+  // If the device address is known, you can actively query whether the device is paired.
   if (devices.length > 0) {
     let pairState = connection.getPairState(devices[0]);
     console.info('device: '+ devices[0] + ' pairState is ' + pairState);
@@ -191,7 +191,7 @@ export class DiscoveryDeviceManager {
       // Obtain information about the paired devices.
       let devices = connection.getPairedDevices();
       console.info('pairedDevices: ' + JSON.stringify(devices));
-      // If the device address is known, check whether the device has been paired.
+      // If the device address is known, you can actively query whether the device is paired.
       if (devices.length > 0) {
         let pairState = connection.getPairState(devices[0]);
         console.info('device: '+ devices[0] + ' pairState is ' + pairState);
