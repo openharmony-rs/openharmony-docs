@@ -465,14 +465,14 @@ getAppNetSync(): NetHandle
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
 
 // 获取App绑定的网络信息
 let netHandle = connection.getAppNetSync();
-console.info(JSON.stringify(netHandle));
+console.info(Succeeded to getappnetSync:' + JSON.stringify(netHandle));
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -592,7 +592,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 | --------- | ------------------------------------------------------------ | ---- | ---------------- |
 | netHandle | [NetHandle](#nethandle)                                      | 是   | 网络句柄。 |
 
->**说明：111**
+>**说明：**
 >
 > 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
 > 
@@ -601,7 +601,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success");
+    console.info("Succeeded to setAppNet");
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -626,7 +626,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
@@ -648,7 +648,7 @@ let netCon = connection.createNetConnection({
 netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -660,7 +660,7 @@ netCon.on('netLost', (netHandle: connection.NetHandle) => {
   // 网络丢失时，需要主动解除指定网络的绑定关系
   netHandle.netId = 0;
   connection.setAppNet(netHandle).then(() => {
-    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
     console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
@@ -972,7 +972,7 @@ getNetCapabilities(netHandle: NetHandle, callback: AsyncCallback\<NetCapabilitie
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1031,7 +1031,7 @@ getNetCapabilities(netHandle: NetHandle): Promise\<NetCapabilities>
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1130,7 +1130,7 @@ isDefaultNetMetered(callback: AsyncCallback\<boolean>): void
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1401,14 +1401,14 @@ reportNetConnected(netHandle: NetHandle): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.info(`report success`);
+    console.info(`Succeeded to report `);
   });
 });
 ```
@@ -1442,7 +1442,7 @@ reportNetDisconnected(netHandle: NetHandle, callback: AsyncCallback&lt;void&gt;)
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1458,7 +1458,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("report success");
+    console.info("Succeeded to report");
   });
 });
 ```
@@ -1496,14 +1496,14 @@ reportNetDisconnected(netHandle: NetHandle): Promise&lt;void&gt;
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -1632,7 +1632,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.         |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1643,7 +1643,7 @@ let option: connection.QueryOptions = {
 connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
   console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+  console.error(`Failed to get msg: ${JSON.stringify(err)}`)
 });
 ```
 
@@ -1762,7 +1762,7 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1865,7 +1865,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -1948,7 +1948,7 @@ clearCustomDnsRules(): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2021,13 +2021,13 @@ getPacFileUrl(): string
 | -------- | --------------------------------- |
 | 2100002  | Failed to connect to the service.                 |
 
-**示例：111**
+**示例：**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
-console.info(pacFileUrl);
+console.info("Succeeded to pacFileUrl");
 ```
 
 ## connection.findProxyForUrl<sup>20+</sup>
@@ -2057,7 +2057,7 @@ findProxyForUrl(url: string): string
 | string   | 返回代理信息。              |
 
 
-**示例：111**
+**示例：**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
@@ -2174,7 +2174,7 @@ setNetExtAttribute(netHandle: NetHandle, netExtAttribute: string): Promise\<void
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2187,7 +2187,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
   let netExtAttribute: string = "xxx";
   connection.setNetExtAttribute(netHandle, netExtAttribute).then(() => {
-    console.info("setNetExtAttribute success");
+    console.info("Succeeded to setNetExtAttribute");
   }).catch((error: BusinessError) => {
     console.error("setNetExtAttribute failed, err: " + error.code);
   })
@@ -2271,7 +2271,7 @@ getNetExtAttribute(netHandle: NetHandle): Promise\<string\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2283,7 +2283,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     return;
   }
   connection.getNetExtAttribute(netHandle).then((netExtAttribute: string) => {
-    console.info("getNetExtAttribute: " + netExtAttribute);
+    console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
   }).catch((error: BusinessError) => {
     console.error("getNetExtAttribute failed, err: " + error.code);
   })
@@ -2324,7 +2324,7 @@ getNetExtAttributeSync(netHandle: NetHandle): string
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2333,7 +2333,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netHandle = connection.getDefaultNetSync();
 if (netHandle.netId != 0) {
   let netExtAttribute: string = connection.getNetExtAttributeSync(netHandle);
-  console.info("getNetExtAttribute: " + netExtAttribute);
+  console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
 }
 ```
 
@@ -2429,7 +2429,7 @@ getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress
 | 2100301 | Incorrect usage in non-VPN application. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2439,7 +2439,7 @@ let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
 let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
 connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 }).catch((error: BusinessError) => {
   console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
 });
@@ -2489,7 +2489,7 @@ getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAdd
 | 2100301 | Incorrect usage in non-VPN application. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2500,7 +2500,7 @@ let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 
 let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
 try {
   let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 } catch (e) {
   let err = e as BusinessError;
    console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
@@ -2545,15 +2545,15 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 
-**示例：111**
+**示例：**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.xn--fsq092h.com
+console.info(Succeeded to result);  // 预期结果：www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+console.info(Succeeded to result);  // 预期结果：www.example.com
 ```
 
 ## connection.getDnsUnicode<sup>23+</sup>
@@ -2587,15 +2587,15 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
 
-**示例：111**
+**示例：**
 
 ```typescript
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
+console.info(Succeeded to result);  // 预期结果：www.示例.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+console.info(Succeeded to result);  // 预期结果：www.example.com
 ```
 
 ## connection.getSystemNetPortStates<sup>24+</sup>
@@ -2635,7 +2635,7 @@ getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 | 2100002 | Failed to connect to the service.|
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2703,7 +2703,7 @@ queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<Trace
 | 2100001 | Invalid parameter value. |
 | 2100003 | Internal error. |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2716,9 +2716,9 @@ let options: connection.TraceRouteOptions = {
 };
 
 connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
-    console.info(JSON.stringify(data));
+    console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error('Failed to get request. Code:${err.code},message:${err.message}');
 });
 ```
 
@@ -2763,7 +2763,7 @@ queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInf
 | 2100001 | Invalid parameter value. |
 | 2100003 | Internal error. |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
@@ -2773,9 +2773,9 @@ let dest: string = "www.example.com";
 let duration: number = 10;
 
 connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
-    console.info(`LossRate: ${data.lossRate}, RTT: ${data.rtt}`);
+    console.info(`Succeeded to get LossRate: ${data.lossRate}, Succeeded to getRTT: ${data.rtt}`);
 }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error('Failed to get request.Code:${err.code},message:${err.message}');
 });
 ```
 
@@ -3167,7 +3167,7 @@ bindSocket(socketParam: TCPSocket \| UDPSocket, callback: AsyncCallback\<void>):
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection, socket } from '@kit.NetworkKit';
@@ -3190,7 +3190,7 @@ interface Data {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error('Failed to bind');
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
@@ -3198,13 +3198,13 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+         console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("Succeeded to  get message, message:" + value.message + ",Succeeded to  get remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -3221,7 +3221,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
@@ -3260,7 +3260,7 @@ bindSocket(socketParam: TCPSocket \| UDPSocket): Promise\<void\>
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
 
-**示例：111**
+**示例：**
 
 ```ts
 import { connection, socket } from '@kit.NetworkKit';
@@ -3284,11 +3284,11 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error('Failed to bind');
         return;
       }
       netHandle.bindSocket(tcp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -3308,7 +3308,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
         console.info("Succeeded to get data: " + JSON.stringify(data));
       });
       netHandle.bindSocket(udp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
