@@ -28,8 +28,6 @@ ArkTS-Sta: visibility(value: Visibility | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 23
