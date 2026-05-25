@@ -39,7 +39,7 @@
 
 ### 核心类
 
-- **DLPFile**: 表示一个DLP文件对象。
+- **DLPFile**：表示一个DLP文件对象。
 
 ![UML图](./figure/dlpPermission_main_class.png)
 
