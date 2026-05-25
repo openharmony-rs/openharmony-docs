@@ -257,7 +257,7 @@ class Options {
 // ...
 
 let audioRenderer: audio.AudioRenderer | undefined = undefined;
-// 从API版本26.0.0开始，参数samplingRate在ArkTS-Dyn上支持number类型，ArkTS-Sta上支持int类型。
+// 从API版本26.0.0开始，参数samplingRate支持number类型。
 // 音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。
 let audioStreamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
