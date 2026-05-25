@@ -159,7 +159,7 @@
    ret = OH_AVPlayer_Prepare(player); // 设置播放源后触发该状态上报。
    if (ret != AV_ERR_OK) {
        // 处理异常。
-       LOG("player  %{public}s", "OH_AVPlayer_Prepare Err");
+       LOG("player %{public}s", "OH_AVPlayer_Prepare Err");
    }
    ```
 
