@@ -268,6 +268,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | APE         | 1 ~ 2147483647  |
 
    ```cpp
+   // 以下配置的值仅为示例值，开发者需根据实际解码能力动态设置。
    // 配置音频采样率（必须）。
    constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
    // 配置音频码率（可选）。
