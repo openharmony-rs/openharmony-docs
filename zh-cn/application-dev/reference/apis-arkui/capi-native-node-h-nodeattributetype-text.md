@@ -1325,7 +1325,7 @@ NODE_TEXT_SELECTED_DRAG_PREVIEW_STYLE = 1053
 NODE_TEXT_CONTROLLER = 1054
 ```
 
-文本组件属性字符串控制器，支持属性设置。<br>
+设置文本的控制器。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 26.0.0
@@ -1335,7 +1335,7 @@ NODE_TEXT_CONTROLLER = 1054
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 属性字符串控制器。参数类型为[ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)。 |
+| .object | 设置文本的控制器。参数类型为[ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)。 |
 
 
 ## NODE_SPAN_CONTENT
