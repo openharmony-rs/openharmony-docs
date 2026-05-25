@@ -1257,7 +1257,7 @@ try {
 
 ```
 
-## MissionCallback
+## MissionCallback<sup>10+</sup>
 
 type MissionCallback = _MissionCallback
 
@@ -1271,7 +1271,7 @@ type MissionCallback = _MissionCallback
 | --- | --- |
 | [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | 作为可以registerMissionListener的入参，表示开始同步后，建立的回调函数。 |
 
-## MissionParameter
+## MissionParameter<sup>10+</sup>
 
 type MissionParameter = _MissionParameter
 
@@ -1285,7 +1285,7 @@ type MissionParameter = _MissionParameter
 | --- | --- |
 | [_MissionParameter](js-apis-inner-application-missionParameter-sys.md) | 作为startSyncRemoteMissions的入参，表示同步时所需参数的枚举。 |
 
-## MissionDeviceInfo
+## MissionDeviceInfo<sup>10+</sup>
 
 type MissionDeviceInfo = _MissionDeviceInfo
 
