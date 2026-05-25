@@ -750,6 +750,32 @@ try {
 }
 ```
 
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'InjectEvent',
+  ]
+}
+
+let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  parameters: {
+    "InjectEvent": {
+      "injectEvent": '{"componentType":"","action":"back","params":{}}',
+      "compId": ["0"],
+      "windowId": 0,
+      "displayId": -1
+    }
+  }
+}
+
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
+  console.error(`interact resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.info(`interact failed, error: ${err}`);
+}
+```
 ## onScreen.apperceive<sup>23+</sup>
 
 apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
