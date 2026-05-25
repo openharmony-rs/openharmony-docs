@@ -167,7 +167,7 @@ dlpPermission.isDLPFile(file, (err, isDLPFile) => {
 
 getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt;
 
-查询当前DLP沙箱的权限信息。仅支持在DLP沙箱应用中调用。返回的权限信息包括文件的授权类型和可执行的操作权限(如查看、编辑、复制等)。使用Promise异步回调。
+查询当前DLP沙箱的权限信息，包括文件授权类型及可执行操作（如查看、编辑、复制等）。仅支持在DLP沙箱应用中调用，使用Promise异步回调。
 
 在DLP沙箱中处理文件时，可根据权限信息判断当前用户可以执行哪些操作，避免调用无权限的功能。
 
@@ -402,7 +402,7 @@ dlpPermission.off('openDLPFile', (info: dlpPermission.AccessedDLPFileInfo) => {
 
 isInSandbox(): Promise&lt;boolean&gt;
 
-查询当前应用是否运行在DLP沙箱环境。调用成功后返回boolean值，true表示运行在沙箱中，false表示不在沙箱中。使用Promise异步回调。
+查询当前应用是否运行在DLP沙箱环境。使用Promise异步回调。
 
 该接口用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
 
@@ -558,8 +558,6 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景，可提升文件打开效率。使用Promise异步回调。
 
-该接口用于设置DLP沙箱的保留状态，避免频繁打开同一DLP文件时重复创建沙箱环境，提升文件访问效率。
-
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **参数：**
@@ -605,8 +603,6 @@ dlpPermission.isInSandbox().then(async (inSandbox) => {
 setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景，可提升文件打开效率。
-
-该接口用于设置DLP沙箱的保留状态，避免频繁打开同一DLP文件时重复创建沙箱环境，提升文件访问效率。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1823,7 +1819,7 @@ import { dlpPermission } from '@kit.DataProtectionKit';
 dlpPermission.DlpConnManager.unregisterPlugin();
 ```
 
-## DlpFileQueryOptions<sup>26+</sup>
+## DlpFileQueryOptions
 
 表示企业DLP文件的查询选项。
 
@@ -1837,7 +1833,7 @@ dlpPermission.DlpConnManager.unregisterPlugin();
 | -------- | -------- | -------- | -------- | -------- |
 | classificationLabel | string | 否 | 是 | 表示企业DLP文件的用户定义分类标签。最大长度为255字节，超出此范围抛出错误码19100001。 |
 
-## dlpPermission.queryOpenedEnterpriseDlpFiles<sup>26+</sup>
+## dlpPermission.queryOpenedEnterpriseDlpFiles
 
 queryOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;Array&lt;string&gt;&gt;
 
@@ -1898,7 +1894,7 @@ dlpPermission.queryOpenedEnterpriseDlpFiles(options).then((uris: Array<string>) 
 });
 ```
 
-## dlpPermission.closeOpenedEnterpriseDlpFiles<sup>26+</sup>
+## dlpPermission.closeOpenedEnterpriseDlpFiles
 
 closeOpenedEnterpriseDlpFiles(options?: DlpFileQueryOptions): Promise&lt;void&gt;
 
