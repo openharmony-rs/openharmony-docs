@@ -1335,7 +1335,7 @@ NODE_TEXT_CONTROLLER = 1054
 
 | 参数项 | 描述 |
 | -- | -- |
-| .object | 设置文本的控制器。参数类型为[ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)。 |
+| .object | 文本的控制器。参数类型为[ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)。 |
 
 
 ## NODE_SPAN_CONTENT
