@@ -155,6 +155,7 @@ enum AVPlayerSeekMode
 | AV_SEEK_CLOSEST = 2 | 同步到距离指定时间点最近的帧。<br>**起始版本：** 12 |
 | AV_SEEK_CONTINUOUS = 3 | 连续拖动模式下的跳转（seek）。该模式可提供更流畅的拖拽体验，但要求设备支持对当前流执行连续跳转。在调用连续跳转前，请先检查是否支持，参见[OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported)。<br/>**起始版本：** 23 |
 
+
 ### AVPlaybackSpeed
 
 ```c
@@ -290,7 +291,6 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 信息类型（type）和信息（extra）的对应关系如表所示。 
 
-
 | 信息类型（type） | 对应的extra描述 | 
 | -------- | -------- | 
 | AV_INFO_TYPE_SEEKDONE | 跳转到对应播放位置时返回消息，extra表示跳转到的位置。 | 
@@ -397,6 +397,8 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |	 
 | int32_t errorCode | 错误码。<br>                  AV_ERR_NO_MEMORY：无内存，取值为1。<br>                  AV_ERR_OPERATE_NOT_PERMIT：操作不允许，取值为2。<br>                  AV_ERR_INVALID_VAL：无效值，取值为3。<br>                  AV_ERR_IO：IO错误。API version 12-13取值为4；API version 14及以后，对应错误细化为错误码5411001~5411011。<br>                  AV_ERR_TIMEOUT：超时错误，取值为5。<br>                  AV_ERR_UNKNOWN：未知错误，取值为6。<br>                  AV_ERR_SERVICE_DIED：服务死亡，取值为7。<br>                  AV_ERR_INVALID_STATE：当前状态不支持此操作，取值为8。<br>                  AV_ERR_UNSUPPORT：未支持的接口，取值为9。<br>                  AV_ERR_EXTEND_START：扩展错误码初始值，取值为100。 |
+| const char \*errorMsg | 错误消息。 | 
+| void \*userData | 原样返回用户设置回调时传入的userData数据。 |
 
 ### OH_AVPlayerOnAmplitudeUpdateCallback()
 
