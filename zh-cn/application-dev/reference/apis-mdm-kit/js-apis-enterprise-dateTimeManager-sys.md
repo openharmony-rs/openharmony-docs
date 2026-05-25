@@ -330,7 +330,7 @@ isModifyDateTimeDisallowed(admin: Want): Promise\<boolean>
 
 | 类型   | 说明                                  |
 | ----- | ----------------------------------- |
-| Promise\<boolean> | Promise对象。promise方式返回是否禁止修改系统时间策略，true表示禁止修改系统时间，否则表示允许修改系统时间。 |
+| Promise\<boolean> | Promise对象。Promise方式返回是否禁止修改系统时间策略，true表示禁止修改系统时间，否则表示允许修改系统时间。 |
 
 **错误码**：
 

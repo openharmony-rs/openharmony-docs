@@ -60,16 +60,12 @@ import {eap} from '@kit.NetworkKit';
 let netType = 1;
 let eapCode = 1;
 let eapType = 25;
-let  eapData = (eapData:eap.EapData):void => {
-  console.info("rsp result",JSON.stringify(eapData))
-}
-    
-try {
-  eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
-  console.info('regCustomEapHandler success');
-} catch (err) {
-  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
+let eapData = (eapData:eap.EapData):void => {
+  console.info("rsp result", JSON.stringify(eapData));
+};
+
+eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
+console.info('regCustomEapHandler success');
 ```
 
 ## eap.unregCustomEapHandler
@@ -111,16 +107,12 @@ import {eap} from '@kit.NetworkKit';
 let netType = 1;
 let eapCode = 1;
 let eapType = 25;
-let  eapData = (eapData:eap.EapData):void => {
-  console.info("rsp result",JSON.stringify(eapData))
-}
-    
-try {
-  eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
-  console.info('unregCustomEapHandler success');
-} catch (err) {
-  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
+let eapData = (eapData:eap.EapData):void => {
+  console.info("rsp result", JSON.stringify(eapData));
+};
+
+eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
+console.info('unregCustomEapHandler success');
 ```
 
 ## eap.replyCustomEapData

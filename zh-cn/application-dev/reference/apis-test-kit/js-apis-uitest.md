@@ -28,7 +28,7 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 ## 导入模块
 
 ```ts
-import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY, KeyOptions, TouchOptions, PenKey, PenMode, PenKeyOperation, PenKeyOperationOptions } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -306,6 +306,66 @@ UI事件的相关信息。
 | speed | number | 否  | 是  | 操作速率，取值范围为200-40000的整数，默认值为600，单位：px/s。取值为超出取值范围的非负数或为null/undefined时按照默认值600处理，为负数时抛出17000007错误码。 |
 | duration | number | 否  | 是  | 操作持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。取值小于1500时抛出17000007错误码，为null或undefined时使用默认值。 |
 | pressure | number | 否  | 是  | 触摸的压力值，取值范围为0-1，默认值为0。取值为null或undefined时按照默认值处理，其他超出取值范围情况时抛出17000007错误码。 |
+
+## PenKey
+
+手写笔按键类型枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| HANDWRITING | 0 | 书写键。 |
+| SMART | 1 | 智慧键。 |
+| AIR_MOUSE | 2 | 空鼠键。 |
+
+## PenMode
+
+手写笔模式枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| HANDWRITING | 0 | 手写模式。 |
+| AIR_MOUSE | 1 | 空鼠模式。 |
+
+## PenKeyOperation
+
+手写笔按键操作类型枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| CLICK | 0 | 单击。 |
+| DOUBLE_CLICK | 1 | 双击。 |
+
+## PenKeyOperationOptions
+
+手写笔按键操作选项。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---------- | ------ |----|----|--------------------------------------------------------|
+| point | [Point](#point9) | 否  | 是  | 空鼠模式下的坐标点，在[triggerPenKey](#triggerpenkey)接口中，当参数key设置为[AIR_MOUSE](#penkey)时必须设置该属性，否则接口调用抛出17000007错误码。 |
 
 ## On<sup>9+</sup>
 
@@ -873,6 +933,51 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Button').isBefore(ON.text('123')); // 查找text为123之前的第一个Button组件
 ```
 
+### isBefore
+
+isBefore(com: Component): On
+
+指定目标控件位于给出的特征控件之前，返回On对象自身。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型       | 必填 | 说明                 |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | 是   | 特征控件。 <!--RP3--><!--RP3End-->  |
+
+**返回值：**
+
+| 类型       | 说明                                                 |
+| ---------- | ---------------------------------------------------- |
+| [On](#on9) | 返回指定目标控件位于给出的特征控件之前的On对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').isBefore(com); // 查找第一个Text组件之前的text为123的组件
+}
+```
+
 ### isAfter<sup>9+</sup>
 
 isAfter(on: On): On
@@ -913,6 +1018,51 @@ import { On, ON } from '@kit.TestKit';
 let on: On = ON.type('Text').isAfter(ON.text('123')); // 查找 text为123之后的第一个Text组件
 ```
 
+### isAfter
+
+isAfter(com: Component): On
+
+指定目标控件位于给出的特征控件之后，返回On对象自身。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型       | 必填 | 说明                 |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | 是   | 特征控件。 <!--RP3--><!--RP3End-->  |
+
+**返回值：**
+
+| 类型       | 说明                                                 |
+| ---------- | ---------------------------------------------------- |
+| [On](#on9) | 返回指定目标控件位于给出的特征控件之后的On对象。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').isAfter(com); // 查找第一个Text组件之后的text为123的组件
+}
+```
+
 ### within<sup>10+</sup>
 
 within(on: On): On
@@ -951,6 +1101,51 @@ import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之内。
 let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroller里面的text为java的子组件
+```
+
+### within
+
+within(com: Component): On
+
+指定目标控件位于给出的特征控件之内，返回On对象自身。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型       | 必填 | 说明                 |
+| ------ | ---------- | ---- | -------------------- |
+| com     | [Component](#component9) | 是   | 特征控件。<!--RP3--><!--RP3End-->  |
+
+**返回值：**
+
+| 类型       | 说明                                               |
+| ---------- | -------------------------------------------------- |
+| [On](#on9) | 返回指定目标控件位于给出的特征控件内的On对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000007      | Parameter verification failed.|
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Component, Driver, On, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver = Driver.create();
+  let com: Component = await driver.findComponent(ON.type('Text'));
+  let on: On = ON.text('123').within(com); // 查找第一个Text组件内部的text为123的组件
+}
 ```
 
 ### inWindow<sup>10+</sup>
@@ -1883,7 +2078,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 
 **示例：**
 ```ts
@@ -3507,7 +3702,6 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 | 错误码ID | 错误信息                               |
 | -------- | ---------------------------------------- |
 | 17000002 | The API does not support concurrent calls. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 
 **示例：**
 
@@ -4895,7 +5089,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点。使用Promise异步回调。从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4942,7 +5136,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<void>
 
-鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。
+鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间。使用Promise异步回调。从API版本26.0.0开始，该接口支持鼠标跨屏拖拽操作。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4990,7 +5184,7 @@ async function demo() {
 
 mouseDrag(from: Point, to: Point, touchOptions?: TouchOptions, keyOptions?: KeyOptions): Promise\<void>
 
-按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。
+按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定触摸选项和按键选项。使用Promise异步回调。该接口支持鼠标跨屏拖拽操作。
 
 **起始版本：** 26.0.0
 
@@ -5123,7 +5317,7 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. function can not work correctly due to limited device capabilities. |
 
 **示例：**
 
@@ -5471,6 +5665,65 @@ async function demo() {
 }
 ```
 
+### triggerPenKey
+
+triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: PenKeyOperationOptions): Promise\<void>
+
+触发手写笔按键操作。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型       | 必填 | 说明                                                                 |
+| ------ | ---------- | ---- | -------------------------------------------------------------------- |
+| key | [PenKey](#penkey) | 是   | 手写笔按键。                                                   |
+| mode | [PenMode](#penmode) | 是   | 手写笔模式。                                                   |
+| operation | [PenKeyOperation](#penkeyoperation) | 是   | 操作类型。                                                     |
+| options | [PenKeyOperationOptions](#penkeyoperationoptions) | 否   | 操作选项，包括可选的坐标点。默认值继承[PenKeyOperationOptions](#penkeyoperationoptions)各属性默认值。 |
+
+**支持的参数组合：**
+- mode取值为[HANDWRITING](#penmode)时**：支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)。
+- mode取值为[AIR_MOUSE](#penmode)时**：支持key取值为[AIR_MOUSE](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)（需要在options中指定point）；支持key取值为[HANDWRITING](#penkey)，operation取值为[CLICK](#penkeyoperation)或[DOUBLE_CLICK](#penkeyoperation)；支持key取值为[SMART](#penkey)，operation取值为[CLICK](#penkeyoperation)。
+- 使用其他参数组合将抛出17000007错误码。
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The API does not support concurrent calls. |
+| 17000005 | This operation is not supported. |
+| 17000007 | Parameter verification failed. Unsupported key, mode, and operation combination. |
+
+**示例：**
+
+```ts
+// xxx.test.ets
+import { Driver, PenKey, PenMode, PenKeyOperation } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // 手写模式下触发手写键单击
+  await driver.triggerPenKey(PenKey.HANDWRITING, PenMode.HANDWRITING, PenKeyOperation.CLICK);
+  // 空鼠模式下触发空鼠键双击
+  await driver.triggerPenKey(PenKey.AIR_MOUSE, PenMode.AIR_MOUSE, PenKeyOperation.DOUBLE_CLICK, { point: { x: 500, y: 500 } });
+  // 空鼠模式下触发智慧键单击
+  await driver.triggerPenKey(PenKey.SMART, PenMode.AIR_MOUSE, PenKeyOperation.CLICK);
+}
+```
+
 ### crownRotate<sup>20+</sup>
 
 crownRotate(d: number, speed?: number): Promise\<void>
@@ -5504,7 +5757,7 @@ crownRotate(d: number, speed?: number): Promise\<void>
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 17000007 |  Parameter verification failed. |
-| 801 | Capability not support, function can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 

@@ -257,6 +257,10 @@ Enumerates the screen capture states.
 | OH_SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE = 8 | The system enters a privacy screen.|
 | OH_SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE = 9 | The system exits a privacy screen.|
 | OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES = 10 | Screen capture is interrupted by system user switching.|
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_USER = 11 | Screen capture is paused by the user.<br>**Since**: 26.0.0|
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_USER = 12 | Screen capture is resumed by the user.<br>**Since**: 26.0.0|
+| OH_SCREEN_CAPTURE_STATE_PAUSED_BY_APP = 13 | Screen capture is paused by the application.<br>**Since**: 26.0.0|
+| OH_SCREEN_CAPTURE_STATE_RESUMED_BY_APP = 14 | Screen capture is resumed by the application.<br>**Since**: 26.0.0|
 
 ### OH_AVScreenCaptureBufferType
 
@@ -332,7 +336,7 @@ Enumerates the image fill modes.
 | Enum Item| Description|
 | -- | -- |
 | OH_SCREENCAPTURE_FILLMODE_ASPECT_SCALE_FIT = 0 | Keeps the original aspect ratio of the image to fit the target size. Black bars may appear if the aspect ratios differ.|
-| OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | Stretches the image to fill the target size. The image may stretch and distort if the aspect ratios differ.|
+| OH_SCREENCAPTURE_FILLMODE_SCALE_TO_FILL = 1 | Stretches the image to fit the target size. The image may be distorted if the aspect ratios differ.|
 
 ### OH_ScreenCaptureHighlightMode
 

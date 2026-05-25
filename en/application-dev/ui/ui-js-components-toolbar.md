@@ -77,7 +77,7 @@ toolbar-item{
 }
 ```
 
-![en-us_image_0000001175828962](figures/en-us_image_0000001175828962.gif)
+
 
 
 ## Setting Styles

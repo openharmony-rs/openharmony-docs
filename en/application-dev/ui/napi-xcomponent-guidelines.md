@@ -77,13 +77,13 @@ For scenarios where development is performed using encapsulated APIs on the ArkT
 
   ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed1.png)
 
-For complex interactive logic that requires cross-language development, pursuit of extreme rendering performance, or business needs demanding autonomous control over surface creation and destruction, you are advised to use **OH_ArkUI_SurfaceHolder** on the native side to manage the surface lifecycle. The lifecycle trigger conditions are as follows:
+For complex interaction logic that requires cross-language development, for scenarios pursuing extreme rendering performance, or for business needs that require independent control over Surface creation and destruction, [OH_ArkUI_SurfaceHolder](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) is recommended on the native side to manage the Surface lifecycle. The lifecycle trigger conditions are as follows:
 
 - OnSurfaceCreated   
 
   Triggered when the **XComponent** component is created, the surface is bound to a lifecycle callback, and any of the following conditions is met:
   1. The component is attached to the component tree with **autoInitialize = true**.
-  2. The **OH_ArkUI_XComponent_Initialize** API is called.
+  2. Call [OH_ArkUI_XComponent_Initialize](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_initialize).
 
   Native-side sequence
 
@@ -98,7 +98,7 @@ For complex interactive logic that requires cross-language development, pursuit 
 
 - OnSurfaceDestroyed
 
-  Triggered when the component is detached from the component tree with **autoInitialize=true** or the **OH_ArkUI_XComponent_Finalize** API is called.
+  Triggered when the component is removed from the tree and **autoInitialize** is set to **true**, or after [OH_ArkUI_XComponent_Finalize](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_finalize) is called.
 
   Native-side sequence
 
@@ -110,7 +110,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
 
 - Create a component using the declarative UI description in ArkTS and use **XComponentController** to manage the lifecycle of **Surface**.
 
-  <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
 
   ``` TypeScript
   import nativeRender from 'libnativerender.so';
@@ -171,7 +171,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   
 - Use the declarative UI description in ArkTS to create a component and use **OH_ArkUI_SurfaceHolders** to manage the lifecycle of the surface.
 
-  <!-- @[surface_holder_declarative_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
+  <!-- @[surface_holder_declarative_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
 
   ``` typescript
   import native from 'libnativerender.so';
@@ -210,7 +210,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   ```
   Obtains SurfaceHolder on the native side and binds the surface lifecycle callback.
 
-  <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   ``` c++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
   {
@@ -286,7 +286,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   ```
   
 - Use the ArkTS custom component nodes to create a component and use **OH_ArkUI_SurfaceHolder** to manage the lifecycle of the surface.
-  <!-- @[surface_holder_type_node_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderTypeNode.ets) -->
+  <!-- @[surface_holder_type_node_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderTypeNode.ets) -->
   ``` typescript
   import native from 'libnativerender.so';
   import { FrameNode, NodeController, typeNode, UIContext } from '@kit.ArkUI';
@@ -339,7 +339,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   ```
   Code for binding the surface lifecycle callback on the native side:
 
-  <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   ``` c++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
   {
@@ -365,7 +365,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   ```
   
 - Use NDK APIs to create components and use **OH_ArkUI_SurfaceHolder** to manage the lifecycle of the surface.
-  <!-- @[surface_holder_ndk_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets) -->
+  <!-- @[surface_holder_ndk_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets) -->
   ``` typescript
   @Component
   export struct SurfaceHolderNDK {
@@ -395,7 +395,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
   ```
   Code for implementing **createNativeNode** on the native side:
 
-  <!-- @[surface_holder_ndk_createNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_ndk_createNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   ``` c++
   napi_value PluginManager::createNativeNode(napi_env env, napi_callback_info info)
   {
@@ -437,7 +437,7 @@ By combining the methods for [creating an XComponent](#creating-an-xcomponent) a
 
   Code for creating an **XComponent** component and using **SurfaceHolder** to manage the surface lifecycle:
 
-  <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->    
+  <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->    
   
   ``` C++
   ArkUI_NodeHandle CreateNodeHandleUsingSurfaceHolder(const std::string &tag)
@@ -481,7 +481,7 @@ Given the above issues, you are advised to use the **OHArkUI_SurfaceHolder**-rel
 The main differences during component creation are as follows: When using **OH_NativeXComponent**, the **id** and **libraryname** attributes must be passed to support obtaining the corresponding **OH_NativeXComponent** instance on the native side. When using **OH_ArkUI_SurfaceHolder** to manage the surface lifecycle, the **XComponent** component no longer requires passing the **id** and **libraryname** attributes in its constructor parameters. Instead, the **FrameNode** node corresponding to the component is directly passed to the native side for lifecycle binding and other configurations.
 
 - OH_NativeXComponent
-  <!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
+  <!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
   
   ``` TypeScript
   XComponent({
@@ -500,7 +500,7 @@ The main differences during component creation are as follows: When using **OH_N
   ```
 
 - OH_ArkUI_SurfaceHolder
-  <!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
+  <!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
   
   ``` TypeScript
   XComponent({
@@ -526,7 +526,7 @@ The main differences during component creation are as follows: When using **OH_N
 The main difference in binding surface lifecycle callbacks lies in the APIs used to register lifecycle callbacks, while the logic executed within the specific callbacks remains largely unchanged.
 
 - OH_NativeXComponent
-  <!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   void PluginManager::Export(napi_env env, napi_value exports)
@@ -574,7 +574,7 @@ The main difference in binding surface lifecycle callbacks lies in the APIs used
 
   Code for registering the surface lifecycle callback:
 
-  <!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
+  <!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
   
   ``` C++
   void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
@@ -589,7 +589,7 @@ The main difference in binding surface lifecycle callbacks lies in the APIs used
   ```
 
 - OH_ArkUI_SurfaceHolder
-  <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
@@ -624,7 +624,7 @@ The differences in obtaining the NativeWindow are as follows:
 
   Obtain from the parameter (**void *window**) returned by the lifecycle callback such as **OnSurfaceCreated**.
 
-  <!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window)
@@ -649,7 +649,7 @@ The differences in obtaining the NativeWindow are as follows:
 
   Call the **OH_ArkUI_XComponent_GetNativeWindow** API to obtain the NativeWindow from **OH_ArkUI_SurfaceHolder**.
 
-  <!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
@@ -665,7 +665,7 @@ When using **OH_NativeXComponent** to listen to interaction events, you can only
 
 - OH_NativeXComponent
 
-  <!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
+  <!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
   
   ``` C++
   renderCallback_.DispatchTouchEvent = DispatchTouchEventCB; // Register the touch event callback.
@@ -683,7 +683,7 @@ When using **OH_NativeXComponent** to listen to interaction events, you can only
 
   The following uses the touch event as an example to demonstrate how to register an event. For details about how to bind other events such as the mouse and key events, see [Binding Basic Input Events](./ndk-bind-input-events.md).
 
-  <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
+  <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   if (!nodeAPI->addNodeEventReceiver(handle, onEvent)) { // Add an event listener. The return code 0 indicates success.
@@ -1851,6 +1851,5 @@ The following demonstrates how to create an **XComponent** of the surface type o
 
  
 
--  
+- [ArkTSXComponent(API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)
 <!--RP1End-->
-<!--no_check-->

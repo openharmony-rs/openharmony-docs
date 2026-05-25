@@ -39,6 +39,8 @@ RotationGesture(options?: RotationGestureHandlerOptions)
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -125,6 +127,8 @@ onActionCancel(event: Callback\<GestureEvent\>)
 Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

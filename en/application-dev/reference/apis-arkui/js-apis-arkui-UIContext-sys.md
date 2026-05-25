@@ -10,11 +10,13 @@ In the stage model, a window stage or window can use the **loadContent** API to 
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The APIs of this module can be used only in the stage model.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [Class (UIContext)](arkts-apis-uicontext-uicontext.md).
+> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+>
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [Class (UIContext)](arkts-apis-uicontext-uicontext.md).
 
 ## UIContext
 
@@ -321,7 +323,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
+Configures the keyboard appearance, including blur effects and fluid lighting effects. These effects are only available in immersive mode. For details about the immersive mode, see [KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15). The fluid lighting effect requires the blur effect to be enabled. The final display depends on input method implementation.
 
 **System API**: This is a system API.
 

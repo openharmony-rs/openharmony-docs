@@ -41,6 +41,7 @@
 | [AVPlayerOnInfoType](#avplayeroninfotype) | AVPlayerOnInfoType | OnInfo类型。<br> 可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo(已废弃)，用于表示收到的播放器信息类型。<br> 从API 12开始，推荐用户使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型，可获取到不同信息（infoBody），infoBody中包含key-value关系表，详见下述枚举值表。<br> 使用API 11版本的开发者，需要使用旧接口。针对已废弃接口OH_AVPlayerOnInfo中使用的对应关系，可直接参考[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)的API说明。 |
 | [AVPlayerBufferingType](#avplayerbufferingtype) | AVPlayerBufferingType | 播放缓冲消息类型定义。 |
 | [AVPlayerTrackSwitchMode](#avplayertrackswitchmode) | AVPlayerTrackSwitchMode | 枚举轨道切换模式。 |
+| [OH_VideoOutputResult](#oh_videooutputresult) | OH_VideoOutputResult | 视频输出结果。 |
 
 ### 函数
 
@@ -256,6 +257,23 @@ enum AVPlayerTrackSwitchMode
 | AV_TRACK_SWITCH_MODE_SMOOTH = 0 | 平滑切换轨道。 |
 | AV_TRACK_SWITCH_MODE_SEGMENT = 1 | 按片段切换轨道。 |
 | AV_TRACK_SWITCH_MODE_CLOSEST = 2 | 切换到最接近的轨道。 |
+
+### OH_VideoOutputResult
+
+```c
+enum OH_VideoOutputResult
+```
+
+**描述**
+
+视频输出结果。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_VIDEO_OUTPUT_OK = 0 | 输出1个解码视频帧。 |
+| OH_VIDEO_OUTPUT_NO_IMAGE = 1 | 没有可渲染的帧。 |
 
 
 ## 函数说明

@@ -57,7 +57,7 @@ export struct ArcListShow {
                 Image($r('app.media.wlan')).width('99px').height('99px')
                   .borderRadius('50px').margin({ left: 7 })
                 Column() {
-                  Text($r('app.string.ArcListStyles_waln')).fontSize('38px').fontColor('#FFFFFFFF')
+                  Text($r('app.string.ArcListStyles_wlan')).fontSize('38px').fontColor('#FFFFFFFF')
                   Text($r('app.string.ArcListStyles_open')).fontSize('20px').fontColor('#FFFFFFFF')
                 }.width('190px')
 
@@ -276,14 +276,14 @@ export struct ArcListContents {
    ``` TypeScript
    ArcList({ header: this.arcListHeader }) {
      ArcListItem() {
-     // ···
+       // ...
      }
-     // ···
+     // ...
    
      ArcListItem() {
-     // ···
+       // ...
      }
-     // ···
+     // ...
    }
    ```
 
@@ -299,7 +299,7 @@ export struct ArcListContents {
 
 ``` TypeScript
 ArcList({ initialIndex: 2 }) {
-  // ···
+  // ...
 }
 .space(LengthMetrics.px(30))
 ```
@@ -335,11 +335,11 @@ ArcListItem() {
 
 ``` TypeScript
 ArcList({ header: this.arcListHeader }) {
-  // ···
+  // ...
 }
 .scrollBar(BarState.Auto)
 .scrollBarWidth(LengthMetrics.px(10))
-.scrollBarColor(ColorMetrics.resourceColor(Color.White))
+.scrollBarColor(ColorMetrics.numeric(Color.White))
 ```
 
   **图6** 弧形列表的内置滚动条 
@@ -365,7 +365,7 @@ ArcList({ header: this.arcListHeader }) {
    ``` TypeScript
    // 将arcListScroller用于初始化ArcList组件的scroller参数，完成arcListScroller与弧形列表的绑定。
    ArcList({ scroller: this.arcListScroller, header: this.arcListHeader }) {
-     // ···
+     // ...
    }
    ```
 

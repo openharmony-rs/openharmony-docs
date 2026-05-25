@@ -10,8 +10,10 @@ The **Counter** component provides an operation to increase or decrease the numb
 
 >  **NOTE**
 >
-> This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
-
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> 
+> - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
+> 
 
 ## Child Components
 
@@ -148,4 +150,4 @@ struct CounterExample {
 }
 ```
 
-![en-us_image_0000001212378424](figures/en-us_image_0000001212378424.gif)
+![en-us_image_0000001219982711](figures/en-us_image_0000001219982711.gif)

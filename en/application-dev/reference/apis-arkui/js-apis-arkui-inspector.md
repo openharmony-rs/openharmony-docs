@@ -10,7 +10,9 @@ The **Inspector** module provides APIs for registering the component layout and 
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -55,7 +57,7 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 ## ComponentObserver
 
-Implements an observer for layout and drawing completion callbacks for components, containing the initial query results from when the observer was created.
+Defines the handle for component layout and drawing completion callbacks. You can call the following APIs through this handle:
 
 ### on('layout')
 
@@ -199,51 +201,9 @@ To stop triggering a specific callback after the child component layout is compl
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | callback | Callback\<void\>   | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback can be successfully unregistered only when it matches the callback in the [onLayoutChildren23+](#onlayoutchildren23) method.|
 
-### onDrawChildren<sup>24+</sup>
+**Example**
 
-onDrawChildren(callback: Callback\<number[]\>): void
-
-Registers a callback used to listen for the **drawChildren** event using [ComponentObserver](#componentobserver). This API uses an asynchronous callback to return the result.
-
-When the node that is currently listened is used as the root node, the callback will be triggered after the child components of the component complete drawing. When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled, other **drawChildren** callbacks will not take effect.
-
-**Atomic service API**: This API can be used in atomic services since API version 24.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Parameters**
-
-| Name  | Type  | Mandatory| Description                                                        |
-| -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<number[]\>  | Yes  | Child component drawing completion callback.                             |
-
-### offDrawChildren<sup>24+</sup>
-
-offDrawChildren(callback?: Callback\<number[]\>): void
-
-Unregisters the callback used to listen for the **drawChildren** event. This API uses an asynchronous callback to return the result.
-
-To stop triggering a specific callback after the child component layout is complete, you only need to unregister the callback based on the corresponding query condition using its handle.
-
-**Atomic service API**: This API can be used in atomic services since API version 24.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Parameters**
-
-| Name  | Type  | Mandatory| Description                                                        |
-| -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<number[]\>   | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback can be successfully unregistered only when it matches the callback in the [onDrawChildren](#ondrawchildren24) method.|
-
-## Example
-
-The following example demonstrates how to register the component layout and drawing completion callbacks. In addition, you can use the [onLayoutChildren](#onlayoutchildren23) API to listen for the callback event triggered when the layout of a node in the subtree is complete. After the rendering of the node in the subtree is complete, you can use the [onDrawChildren](#ondrawchildren24) API to return the unique ID of the node through a callback.
-
-The **onLayoutChildren** API is added since API version 23, and the **onDrawChildren** API is added since API version 24.
+The following example demonstrates how to register the component layout and drawing completion callbacks. In addition, you can use the [onLayoutChildren<sup>23+</sup>](#onlayoutchildren23) API to listen for the callback event triggered when the layout of a node in the subtree is complete.
 
 ```ts
 import { inspector } from '@kit.ArkUI';
@@ -299,18 +259,129 @@ struct ImageExample {
     let onLayoutChildrenComplete: () => void = (): void => {
       // After the LayoutChildren event is received, you can customize the implementation logic.
     }
+
+    let uniqueId: number = this.getUniqueId();
+    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
+    listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
+  }
+
+  // Unregister callbacks through the handle. You should decide when to call these APIs.
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+}
+```
+
+### onDrawChildren<sup>24+</sup>
+
+onDrawChildren(callback: Callback\<number[]\>): void
+
+Registers a callback used to listen for the **drawChildren** event using [ComponentObserver](#componentobserver). This API uses an asynchronous callback to return the result.
+
+When the node that is currently listened is used as the root node, the callback will be triggered after the child components of the component complete drawing. When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled, other **drawChildren** callbacks will not take effect.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                                        |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<number[]\>  | Yes  | Child component drawing completion callback.                             |
+
+**Example**
+
+The following example demonstrates how to register the component layout and drawing completion callbacks. After the rendering of the node in the subtree is complete, you can use the [onDrawChildren<sup>24+</sup>](#ondrawchildren24) API to return the unique ID of the node through a callback.
+
+```ts
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+        .id('ROW_ID')
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID')
+
+  aboutToAppear() {
     let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
       // The onDrawChildren API is added since API version 24. After the DrawChildren event is received, you can customize the implementation logic.
     }
 
     let uniqueId: number = this.getUniqueId();
-    let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
-    listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
     this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
   }
+}
+```
 
+### offDrawChildren<sup>24+</sup>
+
+offDrawChildren(callback?: Callback\<number[]\>): void
+
+Unregisters the callback used to listen for the **drawChildren** event. This API uses an asynchronous callback to return the result.
+
+To stop triggering a specific callback after the child component layout is complete, you only need to unregister the callback based on the corresponding query condition using its handle.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                                                        |
+| -------- | ------ | ---- | ------------------------------------------------------------ |
+| callback | Callback\<number[]\>   | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback can be successfully unregistered only when it matches the callback in the [onDrawChildren](#ondrawchildren24) method.|
+
+**Example**
+
+```ts
+import { inspector } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ImageExample {
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image($r('app.media.startIcon'))
+            .width(110)
+            .height(110)
+            .border({ width: 1 })
+            .id('IMAGE_ID')
+        }
+        .id('ROW_ID')
+      }
+    }.height(320).width(360).padding({ right: 10, top: 10 })
+  }
+
+  listenerForRow: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver('ROW_ID')
+
+  aboutToAppear() {
+    let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
+      // The onDrawChildren API is added since API version 24. After the DrawChildren event is received, you can customize the implementation logic.
+    }
+
+    let uniqueId: number = this.getUniqueId();
+    this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
+  }
   // Unregister callbacks through the handle. You should decide when to call these APIs.
-  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
   // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
 }
 ```

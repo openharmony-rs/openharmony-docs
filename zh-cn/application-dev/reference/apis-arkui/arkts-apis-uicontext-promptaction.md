@@ -308,10 +308,12 @@ showToast(options: promptAction.ShowToastOptions): void
 
 **示例：**
 
-该示例通过调用showToast接口，创建并显示即时反馈。
+该示例通过showToast接口，并设置options参数中的systemMaterial属性，实现了Toast的系统材质视效。
+
+从API版本26.0.0开始，参数options的类型[promptAction.ShowToastOptions](js-apis-promptAction.md#showtoastoptions)中新增了systemMaterial属性。
 
 ```ts
-import { PromptAction } from '@kit.ArkUI';
+import { PromptAction, uiMaterial } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -322,11 +324,16 @@ struct Index {
   build() {
     Column() {
       Button('showToast')
+        .position({x: 125, y:300})
         .onClick(() => {
           try {
             this.promptAction.showToast({
               message: 'Message Info',
-              duration: 2000
+              duration: 2000,
+              // 控制是否设置系统材质
+              systemMaterial: new uiMaterial.ImmersiveMaterial({
+                style: uiMaterial.ImmersiveStyle.THIN
+              })
             });
           } catch (error) {
             let message = (error as BusinessError).message;
@@ -334,10 +341,23 @@ struct Index {
             console.error(`showToast args error code is ${code}, message is ${message}`);
           };
         })
-    }.height('100%').width('100%').justifyContent(FlexAlign.Center)
+    }
+    .width('100%')
+    .height('100%')
+    // 请开发者替换为实际资源文件
+    .backgroundImage($r("app.media.img"))
+    .backgroundImageSize({width: '100%', height: '100%'})
   }
 }
 ```
+
+未设置系统材质时：
+
+![](figures/toastNoMaterial.gif)
+
+设置系统材质后：
+
+![](figures/toastMaterial.gif)
 
 ## showDialog
 
@@ -1056,7 +1076,7 @@ struct Index {
                 .catch((error: BusinessError) => {
                   console.error(`updateCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
-            }, 2000); //2秒后自动更新弹窗位置
+            }, 2000); // 2秒后自动更新弹窗位置
           })
       }
       .width('100%')
@@ -1153,7 +1173,7 @@ struct Index {
                 .catch((error: BusinessError) => {
                   console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
                 })
-            }, 2000); //2秒后自动关闭
+            }, 2000); // 2秒后自动关闭
           })
       }
       .width('100%')

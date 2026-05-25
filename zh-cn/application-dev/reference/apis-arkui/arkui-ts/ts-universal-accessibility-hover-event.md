@@ -1,7 +1,7 @@
 # 无障碍悬浮事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,8 +10,11 @@
 
 >  **说明：**
 >
->  - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->  - 目前仅支持通过开启无障碍模式触发。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 目前仅支持通过开启无障碍模式触发。
 
 ## onAccessibilityHover
 

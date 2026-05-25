@@ -198,7 +198,7 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 | -- | -- |
 | int32_t | 0 - 成功。<br>         201 - 权限被拒。<br>         401 - 参数错误。 |
 
-### OH_Netstack_IsCleartextCfgByComponent
+### OH_Netstack_IsCleartextCfgByComponent()
 
 ```c
 int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);

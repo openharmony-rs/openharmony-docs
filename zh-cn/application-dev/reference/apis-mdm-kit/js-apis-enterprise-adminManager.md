@@ -27,7 +27,7 @@ disableAdmin(admin: Want, userId?: number): Promise\<void>
 解除激活指定用户的设备管理应用。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）或ohos.permission.START_PROVISIONING_MESSAGE或ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
-<br/>- 从API version 23开始，支持申请ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN权限。仅当SDA或DA设备管理应用解除激活自身时，可以申请该权限。<br/>- 从API version 20开始，支持申请ohos.permission.START_PROVISIONING_MESSAGE权限。仅当BYOD设备管理应用解除激活自身时，可以申请该权限。<br/>- API 19及之前的版本，需要申请ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）。
+<br/>- 从API version 23开始，支持申请ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN权限。仅当[SDA](../../mdm/mdm-kit-term.md#sda)或[DA](../../mdm/mdm-kit-term.md#da)设备管理应用解除激活自身时，可以申请该权限。<br/>- 从API version 20开始，支持申请ohos.permission.START_PROVISIONING_MESSAGE权限。仅当[BYOD](../../mdm/mdm-kit-term.md#byod)设备管理应用解除激活自身时，可以申请该权限。<br/>- API 19及之前的版本，需要申请ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN（仅系统应用支持申请）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -658,6 +658,7 @@ try {
 | MANAGED_EVENT_STARTUP_GUIDE_COMPLETED<sup>24+</sup> | 8    | 开机向导完成事件。**模型约束**：此接口仅可在Stage模型下使用。 |
 | MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | 设备启动完成事件。**模型约束**：此接口仅可在Stage模型下使用。 |
 | MANAGED_EVENT_BUNDLE_UPDATED                | 10    | 应用更新事件。**模型约束**：此接口仅可在Stage模型下使用。**起始版本**：26.0.0。 |
+| MANAGED_EVENT_POLICIES_CHANGED                | 11    | 策略变更事件。仅支持超级设备管理应用订阅该事件，其他类型设备管理应用订阅该事件时返回9200002错误码。**模型约束**：此接口仅可在Stage模型下使用。**起始版本**：26.0.0。 |
 
 ## AdminType<sup>15+</sup>
 

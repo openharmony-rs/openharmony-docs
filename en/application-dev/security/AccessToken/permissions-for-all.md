@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Enable via ACL" is not involved for permissions of the normal level.
+> **Certificate-based authorization** is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -162,6 +162,8 @@ Allows an application to read data from a gyroscope sensor or uncalibrated gyros
 
 Allows an application to access the Internet.
 
+With this permission, an application can obtain IP addresses, perform DNS resolution, or customize DNS rules.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
@@ -302,6 +304,8 @@ Allows an application that has accessed the cloud to obtain its device-cloud syn
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables | smart locks
+
 **Valid since**: 11
 
 ## ohos.permission.STORE_PERSISTENT_DATA
@@ -338,9 +342,13 @@ Allows an application to read the login status of user accounts.
 
 Allows an application to access the navigation service.
 
+With this permission, the application can set navigation information and process navigation instructions sent from other applications
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 
@@ -366,6 +374,8 @@ With this permission, the application can obtain the connection information betw
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | tablets | cars
+
 **Valid since**: 12
 
 ## ohos.permission.WINDOW_TOPMOST
@@ -382,7 +392,7 @@ Allows an application to set pinned windows.
 
 ## ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
-Allows a system application to use infrared interfaces.
+Allows an application to use infrared interfaces.
 
 With this permission, the application can obtain the maximum frequency supported by the infrared module and send infrared signals at a specific frequency.
 
@@ -519,7 +529,7 @@ This permission can be requested when the application meets the following condit
 
 Allows an application to set the main window container to be transparent and remove the shadow of the outer border of the main window.
 
-With this permission, the application can set the background color the shadow visibility of the main window.
+With this permission, the application can set the background color and the shadow visibility of the main window.
 
 **Permission level**: normal
 
@@ -563,7 +573,7 @@ This permission applies only to independent binary programs, not to HAPs.
 
 Allows an application to turn off the screen but keep it unlocked after a timeout.
 
-With this permission, the application prevents the device from locking by default when the screen turns off after a timeout.
+The device locks by default when the screen turns off after a timeout. With this permission, the application does not enter the lock screen when the screen turns off after a timeout.
 
 **Permission level**: normal
 
@@ -684,6 +694,20 @@ With this permission, the application can query available types of pluggable emb
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Since**: 24
+
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+Allows an application to query the encryption and decryption status of a volume.
+
+With this permission, the application can obtain the encryption and decryption status of a volume and subscribe to system public events related to changes in the encryption and decryption status of a volume.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
 
 ## ohos.permission.STYLUS_FRAME_BOOST
 

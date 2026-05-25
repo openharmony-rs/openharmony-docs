@@ -61,15 +61,16 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置延迟拉起时间500ms
             shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
               if (error) {
-                console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set key down duration success`);
+              console.info(`Succeeded in setting key down duration.`);
             });
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -121,13 +122,14 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置延迟拉起时间500ms
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
-              console.info(`Set key down duration success`);
+              console.info(`Succeeded in setting key down duration.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set key down failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

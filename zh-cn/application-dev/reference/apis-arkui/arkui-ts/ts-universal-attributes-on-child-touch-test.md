@@ -12,6 +12,8 @@
 >
 > - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - onClick和旋转、捏合手势经过自定义事件分发后，可能会因为未命中触摸热区导致事件不响应。
 
 ## onChildTouchTest<sup>11+</sup>
@@ -34,7 +36,7 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
 | 参数名 | 类型                                       | 必填 | 说明                   |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| event  | (value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult | 是   | 触摸事件信息。value的值为包含子节点信息的数组。 |
+| event  | (value: Array<[TouchTestInfo](#touchtestinfo11)>) => TouchResult | 是   | 触摸事件信息。value的值为包含子节点信息的数组。 |
 
 **返回值：** 
 

@@ -1,7 +1,7 @@
 # 使用AVMetadataExtractor获取元数据(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->

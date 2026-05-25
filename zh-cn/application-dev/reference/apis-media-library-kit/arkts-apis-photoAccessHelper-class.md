@@ -48,8 +48,9 @@
 | autoPlayScenes<sup>23+</sup>      | Array\<[AutoPlayScene](#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 | globalMovingPhotoState<sup>23+</sup>       | [MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否   | 是 | 设置全局动态照片的效果，当前仅支持MOVING_PHOTO_ENABLED和MOVING_PHOTO_DISABLED。默认为MOVING_PHOTO_ENABLED。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | gridPinchMode<sup>23+</sup>       | [GridPinchMode](arkts-apis-photoAccessHelper-i.md#gridpinchmode23) | 否   | 是 | picker内宫格捏合模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| showDateOnScrollBar<sup>24+</sup>       | boolean | 否   | 是 | 是否在拖动滚动条时展示日期分组信息，true表示展示，false表示不展示，默认为false。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| showDateOnScrollbar<sup>24+</sup>       | boolean | 否   | 是 | 是否在拖动滚动条时展示日期分组信息，true表示展示，false表示不展示，默认为false。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | assetCompatibleCapability<sup>24+</sup>       | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)  | 否   | 是 | 资产兼容性能力配置。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| preferredCompatibleMode       | [PreferredCompatibleMode](arkts-apis-photoAccessHelper-e.md#preferredcompatiblemode)  | 否   | 是 | 资产兼容性模式配置。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0  |
 
 ## PhotoSelectOptions
 
@@ -70,6 +71,8 @@ PhotoSelectOptions extends BaseSelectOptions
 | maxPhotoSelectNumber<sup>23+</sup> | number  | 否  | 是 |支持设置的图片最大的选择数量。单位：个。<br>受到最大选择总数的限制，最大值为500。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。                                     |
 | maxVideoSelectNumber<sup>23+</sup> | number  | 否  | 是 | 支持设置的视频最大的选择数量。单位：个。<br>受到系统中所有媒体文件最大选择总数的限制，最大值为500。默认为500。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | isReturnToPhotoBrowserEnabled<sup>23+</sup>       | boolean | 否   | 是 | 在单选模式下，拍完照是否能自动跳转到大图预览模式，true表示支持，false表示不支持，默认为false。<br>**注意：** 该参数配置为true时仅在[SingleSelectionMode](arkts-apis-photoAccessHelper-e.md#singleselectionmode18)为BROWSER_MODE（大图预览模式）或者BROWSER_AND_SELECT_MODE（兼容模式）并且[BaseSelectOptions.isPreviewForSingleSelectionSupported](arkts-apis-photoAccessHelper-class.md#baseselectoptions)参数为true时生效。<br>**模型约束**： 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。     |
+| isSelectionNumberVisible       | boolean | 否   | 是 | 是否支持选择序号。true表示支持，false表示不支持，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
+| isSelectionOrderAdjustable      | boolean | 否   | 是 | 是否支持调整选择顺序。true表示支持，false表示不支持，默认值为false。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**起始版本：** 26.0.0     |
 
 ## PhotoSelectResult
 
@@ -79,7 +82,7 @@ PhotoSelectOptions extends BaseSelectOptions
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| photoUris       | Array&lt;string&gt; | 否   | 否 | 返回图库选择后的媒体文件的URI数组。<br>此URI数组只能通过临时授权的方式调用[photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口去使用，具体使用方式请参考[媒体文件URI的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
+| photoUris       | Array&lt;string&gt; | 否   | 否 | 返回图库选择后的媒体文件的URI数组。<br>此URI数组只能通过临时授权的方式调用[photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口去使用，具体使用方式请参考[媒体文件URI的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。<br>**注意：**<br>当资源为连拍照片类型时，则返回该连拍组的所有资源，判断是否为连拍图的方式请参考[通过URI判断连拍图资源](../../media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md#通过uri判断连拍图资源)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
 | isOriginalPhoto       | boolean | 否   | 否 | 返回图库选择后的媒体文件是否为原图。true表示是原图，false表示不是原图，默认值是false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
 | contextRecoveryInfo<sup>21+</sup>         | [ContextRecoveryInfo](#contextrecoveryinfo21)    | 否   | 否 | 当用户完成选择时返回的photoSelectResult将包含退出picker的上下文信息contextRecoveryInfo，支持应用下次启动PhotoPicker时设置给PhotoSelectOptions用于上次退出时现场的恢复。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | movingPhotoBadgeStates<sup>22+</sup>         | Array\<[MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)\>    | 否   | 否 | 返回图库选择的媒体文件动态照片状态数组。<br>当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates携带动态照片状态，反之为空。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |

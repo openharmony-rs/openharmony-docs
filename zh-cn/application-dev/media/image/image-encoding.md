@@ -8,9 +8,11 @@
 
 图片编码指将PixelMap压缩成不同格式的图片文件，用于保存和传输。
 
-支持使用[PackToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13-1)和[PackToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)将[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)编码为JPEG、WebP、PNG和HEIC格式。
+支持使用[PackToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13-1)和[PackToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)将[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)编码为JPEG、WebP、PNG、HEIC和TIFF格式。
 
 从API version 18开始，支持使用[PackToDataFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodatafrompixelmapsequence18)和[PackToFileFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofilefrompixelmapsequence18)将多个PixelMap编码为GIF格式。
+
+从API版本26.0.0开始，支持使用[PackBinaryImageToTiffFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packbinaryimagetotifffile)和[PackBinaryImageToTiffData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packbinaryimagetotiffdata)将二值图像数据编码为TIFF格式。
 
 ## 开发步骤
 
@@ -55,6 +57,13 @@
    > **说明：**
    >
    > 在进行编码前，需要先获取imageSource或pixelMap，可参考[使用ImageSource完成图片解码](./image-decoding.md)。
+
+   - 定义copyData，获取编码后的文件流，方便后续保存为图片或者用于解码显示。
+     <!-- @[create_copyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+     
+     ``` TypeScript
+     let copyData: ArrayBuffer = new ArrayBuffer(0);
+     ```
    
    - pixelMap编码到ArrayBuffer。
      <!-- @[packToData_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   

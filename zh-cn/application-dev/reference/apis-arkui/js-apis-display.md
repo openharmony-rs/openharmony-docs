@@ -265,7 +265,7 @@ type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 | name      | string   | 否   | 否   | 指定虚拟屏幕的名称，用户可自行定义。               |
 | width     | number   | 否   | 否   | 指定虚拟屏幕的宽度，单位为px，该参数应为正整数。 |
 | height    | number   | 否   | 否   | 指定虚拟屏幕的高度，单位为px，该参数应为正整数。 |
-| density   | number   | 否   | 否   | 指定虚拟屏幕的密度，单位为px，该参数为浮点数。 |
+| density   | number   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId，用户可自行定义，该参数最大长度为4096个字节，超出最大长度时则取前4096个字节。        |
 | supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
 
@@ -338,7 +338,7 @@ try {
 
 ## display.getBrightnessInfo<sup>22+</sup>
 
-getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
+getBrightnessInfo(displayId: number): BrightnessInfo
 
 获取指定displayId对应屏幕的亮度信息。如果屏幕不支持HDR，返回的[BrightnessInfo](#brightnessinfo22)对象中的currentHeadroom和maxHeadroom为默认值。虚拟屏的BrightnessInfo对象中sdrNits为默认值。
 
@@ -1482,7 +1482,7 @@ makeUnique(screenId:number): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.ACCESS_VIRTUAL_SCREEN
 
-**设备行为差异**：该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中不生效也不报错。
+**设备行为差异**：该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在Wearable设备中报801错误码，在其他设备中不生效也不报错。
 
 **参数：**
 
@@ -1757,6 +1757,7 @@ promise.then((data: Array<display.Display>) => {
 下列API示例中都需先使用[getAllDisplays()](#displaygetalldisplays9)、[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)中的任一方法获取到Display实例，再通过此实例调用对应方法。
 
 ### 属性
+<!--Table: 26%; 20%; 7%; 7%; 40% -->
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                                                            |
 | -------- | -------- | -------- | -------- |---------------------------------------------------------------------------------------------------------------|

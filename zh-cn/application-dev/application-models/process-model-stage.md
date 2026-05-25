@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 ## 概述
@@ -43,7 +43,7 @@
 ![process-model-stage02](figures/process-model-stage02.png)
 
 <!--Del-->
-在上述模型基础上，对于系统应而言，往往是提供不同的对外系统能力，每一个能力或多个能力需要运行在同一进程中，依赖更灵活的进程模型。系统应用可以通过申请allowAppMultiProcess多进程特权为指定HAP配置一个自定义进程名，该HAP中的UIAbility、DataShareExtensionAbility、ServiceExtensionAbility就会运行在自定义进程中（如下图3所示），具体申请方式请参考[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)。不同的HAP可以通过配置[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的process属性自定义进程名。
+在上述模型基础上，对于系统应用而言，往往是提供不同的对外系统能力，每一个能力或多个能力需要运行在同一进程中，依赖更灵活的进程模型。系统应用可以通过申请allowAppMultiProcess多进程特权为指定HAP配置一个自定义进程名，该HAP中的UIAbility、DataShareExtensionAbility、ServiceExtensionAbility就会运行在自定义进程中（如下图3所示），具体申请方式请参考[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)。不同的HAP可以通过配置[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的process属性自定义进程名。
 
 **图3** 多进程示意图
 

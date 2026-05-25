@@ -27,6 +27,8 @@ SaveButton()
 
 为避免控件样式不合法导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -38,6 +40,8 @@ SaveButton(options: SaveButtonOptions)
 创建包含指定元素的保存控件。
 
 为避免控件样式不合法导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -65,6 +69,8 @@ SaveButton(options: SaveButtonOptions)
 >   ButtonType默认样式为Capsule。
 > - icon、text、buttonType不支持动态修改。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -79,6 +85,8 @@ SaveButton(options: SaveButtonOptions)
 
 保存控件的图标风格。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -91,6 +99,8 @@ SaveButton(options: SaveButtonOptions)
 ## SaveDescription
 
 保存控件的文本描述。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -114,6 +124,8 @@ SaveButton(options: SaveButtonOptions)
 
 保存控件点击后的授权结果。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
@@ -127,6 +139,8 @@ SaveButton(options: SaveButtonOptions)
 type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, error?: BusinessError&lt;void&gt;) =&gt; void
 
 点击保存控件触发该回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -151,6 +165,8 @@ setIcon(icon: Resource)
 
 设置保存控件的图标。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -168,6 +184,8 @@ setIcon(icon: Resource)
 setText(text: string | Resource)
 
 设置保存控件的文本。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
@@ -187,6 +205,8 @@ iconSize(size: Dimension | SizeOptions)
 
 设置保存控件的图标尺寸。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -202,6 +222,8 @@ iconSize(size: Dimension | SizeOptions)
 iconBorderRadius(radius: Dimension | BorderRadiuses)
 
 设置保存控件图标的边框圆角半径。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
@@ -221,6 +243,8 @@ stateEffect(enabled: boolean)
 
 设置保存控件的按压效果。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -239,6 +263,8 @@ userCancelEvent(enabled: boolean)
 
 设置接收保存控件的用户取消授权事件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -253,7 +279,7 @@ userCancelEvent(enabled: boolean)
 
 symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
-设置安全控件Symbol图标颜色。
+设置保存控件Symbol图标颜色。
 
 **起始版本：** 26.0.0
 
@@ -269,13 +295,13 @@ symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[渲染策略](#symbolrenderingstrategy)下默认值不同。 |
+| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置保存控件Symbol图标颜色。<br/> 默认值：不同[symbolrenderingstrategy](#symbolrenderingstrategy)下默认值不同。 |
 
 ### symbolFontWeight
 
 symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
-设置安全控件Symbol图标粗细。
+设置保存控件Symbol图标粗细。
 
 **起始版本：** 26.0.0
 
@@ -291,13 +317,13 @@ symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| fontWeight  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 |
+| fontWeight  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) | 是   | 设置保存控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 |
 
 ### symbolRenderingStrategy
 
 symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
-设置安全控件Symbol图标渲染策略。
+设置保存控件Symbol图标渲染策略。
 
 **起始版本：** 26.0.0
 
@@ -313,7 +339,7 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| strategy  | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 是   | 安全控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 |
+| strategy  | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 是   | 保存控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 |
 
 不同渲染策略效果可参考以下示意图。
 
@@ -332,6 +358,8 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 onClick(event: SaveButtonCallback)
 
 点击动作触发该回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

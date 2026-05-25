@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -152,6 +152,167 @@ async function Marshalling_UnMarshalling(context: Context) {
 }
 ```
 
+## image.createPixelMapFromPixels
+
+createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Promise\<PixelMap\>
+
+Creates a PixelMap based on the pixel data and image properties. The passed pixel data is copied and converted into the pixel format specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat to initialize the pixels of the PixelMap. This API returns the result asynchronously through a promise.
+
+> **NOTE**
+>
+> - This API cannot create PixelMaps of the RGBA_1010102, YCBCR_P010, YCRCB_P010, or ASTC_4x4 format.
+> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name | Type                                            | Mandatory| Description                                                            |
+| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
+| pixels  | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap.<br>The pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat. If the pixel format is not specified, the BGRA_8888 format will be used by default.<br>**Note:** Length of the buffer = Width × Height × Number of bytes per pixel|
+| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Image properties, including the dimensions, pixel format, transparency type, scaling mode, and editability.<br>**Note:** If the pixel format is set to ASTC_4x4, the default pixel format defined in this type will be used.|
+
+**Return value**
+
+| Type                            | Description                                                                   |
+| -------------------------------- | ----------------------------------------------------------------------- |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise used to return the created PixelMap object.                     |
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| Error Code| Error Message|
+| ------ | --------------------------------------------|
+| 7600206 | Invalid parameter. Possible cause: Size of the pixel data buffer does not match InitializationOptions.size. |
+| 7600207 | Unsupported pixel format. |
+| 7600301 | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| 7600305 | Failed to create the PixelMap. Possible causes: 1. Failed to perform pixel format conversion. 2. Internal data is corrupted. Please check the logs for detailed information. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreatePixelMapFromPixels() {
+  const size: image.Size = {
+    width: 6,
+    height: 4
+  };
+  const pixels = new ArrayBuffer(size.width * size.height * 4); // 4 indicates the number of bytes per pixel in RGBA format.
+  const pixelsArr = new Uint8Array(pixels);
+  for (let i = 0; i < pixelsArr.length; i += 4) {
+    // In RGBA_8888 format, the following array indexes correspond to the R, G, B, and A channels in sequence.
+    pixelsArr[i] = 0xFF;
+    pixelsArr[i + 1] = 0x00;
+    pixelsArr[i + 2] = 0x00;
+    pixelsArr[i + 3] = 0xFF;
+  }
+  const config: image.InitializationOptions = {
+    size,
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the new PixelMap.
+    editable: true
+  };
+
+  image.createPixelMapFromPixels(pixels, config)
+    .then((pixelMap: image.PixelMap) => {
+      console.info('PixelMap created successfully.');
+    }).catch((e: BusinessError) => {
+      console.error (`Failed to create the PixelMap. Error code: ${e.code}; Error message: ${e.message}`);
+    });
+}
+```
+
+## image.createPixelMapFromPixelsSync
+
+createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions): PixelMap
+
+Creates a PixelMap based on the pixel data and image properties. The passed pixel data is copied and converted into the pixel format specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat to initialize the pixels of the PixelMap.
+
+> **NOTE**
+>
+> - This API cannot create PixelMaps of the RGBA_1010102, YCBCR_P010, YCRCB_P010, or ASTC_4x4 format.
+> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name | Type                                            | Mandatory| Description                                                            |
+| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
+| pixels  | ArrayBuffer                                      | Yes  | Buffer for storing the pixel data. It is used to initialize the pixels of the PixelMap.<br>The pixel format in the buffer must be specified by [InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat. If the pixel format is not specified, the BGRA_8888 format will be used by default.<br>**Note:** Length of the buffer = Width × Height × Number of bytes per pixel|
+| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Image properties, including the dimensions, pixel format, transparency type, scaling mode, and editability.<br>**Note:** If the pixel format is set to ASTC_4x4, the default pixel format defined in this type will be used.|
+
+**Return value**
+
+| Type                            | Description                                                                   |
+| -------------------------------- | ----------------------------------------------------------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | Created PixelMap.                                            |
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| Error Code| Error Message|
+| ------ | --------------------------------------------|
+| 7600206 | Invalid parameter. Possible cause: Size of the pixel data buffer does not match InitializationOptions.size. |
+| 7600207 | Unsupported pixel format. |
+| 7600301 | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| 7600305 | Failed to create the PixelMap. Possible causes: 1. Failed to perform pixel format conversion. 2. Internal data is corrupted. Please check the logs for detailed information. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreatePixelMapFromPixelsSync() {
+  const size: image.Size = {
+    width: 6,
+    height: 4
+  };
+  const pixels = new ArrayBuffer(size.width * size.height * 4); // 4 indicates the number of bytes per pixel in RGBA format.
+  const pixelsArr = new Uint8Array(pixels);
+  for (let i = 0; i < pixelsArr.length; i += 4) {
+    // In RGBA_8888 format, the following array indexes correspond to the R, G, B, and A channels in sequence.
+    pixelsArr[i] = 0xFF;
+    pixelsArr[i + 1] = 0x00;
+    pixelsArr[i + 2] = 0x00;
+    pixelsArr[i + 3] = 0xFF;
+  }
+  const config: image.InitializationOptions = {
+    size,
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the source pixel data in the buffer.
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the new PixelMap.
+    editable: true
+  };
+
+  try {
+    const pixelMap = image.createPixelMapFromPixelsSync(pixels, config);
+    console.info('PixelMap created successfully.');
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error (`Failed to create the PixelMap. Error code: ${e.code}; Error message: ${e.message}`);
+  }
+}
+```
+
 ## image.createPixelMap<sup>8+</sup>
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<PixelMap>
@@ -159,6 +320,8 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<Pi
 Creates a PixelMap based on the pixel data and image properties. The input pixel data is parsed in BGRA_8888 format by default. This API returns the result asynchronously through a promise.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+Since API version 26.0.0, you are advised to use [createPixelMapFromPixels](#imagecreatepixelmapfrompixels) instead for better exception handling.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -203,6 +366,8 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: As
 Creates a PixelMap based on the pixel data and image properties. The input pixel data is parsed in BGRA_8888 format by default. This API uses an asynchronous callback to return the result.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+Since API version 26.0.0, you are advised to use [createPixelMapFromPixels](#imagecreatepixelmapfrompixels) instead for better exception handling.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -677,6 +842,8 @@ Creates a PixelMap based on the pixel data and image properties. The input pixel
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
+Since API version 26.0.0, you are advised to use [createPixelMapFromPixelsSync](#imagecreatepixelmapfrompixelssync) instead for better exception handling.
+
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 **Parameters**
@@ -716,6 +883,71 @@ function CreatePixelMapSync() {
 }
 ```
 
+## image.createEmptyPixelMap
+
+createEmptyPixelMap(param: InitializationOptions): PixelMap
+
+Creates an empty PixelMap based on image properties.
+
+> **NOTE**
+>
+> - This API cannot create PixelMaps of the ASTC_4x4 format.
+> - Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.0.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Parameters**
+
+| Name | Type                                            | Mandatory| Description                                                            |
+| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
+| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | Yes  | Image properties, including the dimensions, pixel format, transparency type, scaling mode, and editability.<br>**Note:** If the pixel format is set to ASTC_4x4, the default pixel format defined in this type will be used.|
+
+**Return value**
+
+| Type                            | Description                                                                   |
+| -------------------------------- | ----------------------------------------------------------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | Promise used to return the created empty PixelMap.                                        |
+
+**Error codes**
+
+For details about the error codes, see [Image Error Codes](errorcode-image.md).
+
+| Error Code| Error Message|
+| ------ | --------------------------------------------|
+| 7600206 | Invalid parameter. |
+| 7600301 | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| 7600305 | Failed to create the PixelMap. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreateEmptyPixelMap() {
+  const config: image.InitializationOptions = {
+    size: { width: 6, height: 4 },
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // Pixel format of the new PixelMap.
+    editable: true
+  };
+
+  try {
+    const pixelMap = image.createEmptyPixelMap(config);
+    console.info('Empty PixelMap created successfully.');
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error (`Failed to create the empty PixelMap. Error code: ${e.code}; Error message: ${e.message}`);
+  }
+}
+```
+
 ## image.createPixelMapSync<sup>12+</sup>
 
 createPixelMapSync(options: InitializationOptions): PixelMap
@@ -723,6 +955,8 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 Creates an empty PixelMap based on image properties. This API returns the result synchronously.
 
 Images occupy a large amount of memory. When you finish using a PixelMap instance, call [release](./arkts-apis-image-PixelMap.md#release7) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
+Since API version 26.0.0, you are advised to use [createEmptyPixelMap](#imagecreateemptypixelmap) instead for better exception handling.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -1099,7 +1333,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name| Type  | Mandatory| Description                              |
 | ------ | ------ | ---- | ---------------------------------- |
-| uri    | string | Yes  | Image path. Currently, only the application sandbox path is supported.<br>Currently, the following formats are supported: .jpg, .png, .gif, .bmp, .webp, .dng, .heic<sup>12+</sup>, .wbmp<sup>23+</sup>, .heifs<sup>23+</sup>, .tiff<sup>23+</sup>, [.svg<sup>10+</sup>](#svg-tags), and .ico<sup>11+</sup>. Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
+| uri    | string | Yes  | Image path. Currently, only the application sandbox path is supported.<br>Currently, the following formats are supported: JPEG, PNG, GIF, BMP, WebP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, TIFF<sup>23+</sup>, [SVG<sup>10+</sup>](#svg-tags), and ICO<sup>11+</sup>. Since API version 26.0.0, the AVIF and AVIS formats are supported.<br>Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
 
 **Return value**
 
@@ -1134,7 +1368,7 @@ Images occupy a large amount of memory. When you finish using an ImageSource ins
 
 | Name | Type                           | Mandatory| Description                               |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| uri     | string                          | Yes  | Image path. Currently, only the application sandbox path is supported.<br>Currently, the following formats are supported: .jpg, .png, .gif, .bmp, .webp, .dng, .heic<sup>12+</sup>, .wbmp<sup>23+</sup>, .heifs<sup>23+</sup>, .tiff<sup>23+</sup>, [.svg<sup>10+</sup>](#svg-tags), and .ico<sup>11+</sup>. Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats<sup>20+</sup>](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
+| uri     | string                          | Yes  | Image path. Currently, only the application sandbox path is supported.<br>Currently, the following formats are supported: JPEG, PNG, GIF, BMP, WebP, DNG, HEIC<sup>12+</sup>, WBMP<sup>23+</sup>, HEIFS<sup>23+</sup>, TIFF<sup>23+</sup>, [SVG<sup>10+</sup>](#svg-tags), and ICO<sup>11+</sup>. Since API version 26.0.0, the AVIF and AVIS formats are supported.<br>Decoding support for certain formats depends on the specific device hardware. You are advised to use the [image.getImageSourceSupportedFormats](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20) API before calling this API to dynamically query the decoding capabilities of the current device.|
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | Yes  | Image properties, including the image pixel density, pixel format, and image size.|
 
 **Return value**
@@ -1881,4 +2115,3 @@ The SVG tags are supported since API version 10. The used version is (SVG) 1.1, 
 - textPath
 - tspan
 - use
-<!--no_check-->

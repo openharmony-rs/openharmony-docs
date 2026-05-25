@@ -86,4 +86,4 @@ There is no binding relationship.
 
 **处理步骤**
 
-请按照接口调用顺序，先调用 `bindDriverWithDeviceId` 接口，并确认调用成功的情况下，调用 `unbindDriverWithDeviceId` 接口。
+请按照接口调用顺序，先调用[bindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerbinddriverwithdeviceid19)接口，并确认调用成功的情况下，调用[unbindDriverWithDeviceId](js-apis-driver-deviceManager.md#devicemanagerunbinddriverwithdeviceid19)接口。

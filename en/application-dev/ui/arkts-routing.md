@@ -1,9 +1,9 @@
 # Page Routing (@ohos.router) (Not Recommended)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -360,7 +360,7 @@ struct Home {
 >
 >When the **back** API is used to return to a specified page, all pages between the top page (included) and the specified page (excluded) are pushed from the page stack and destroyed.
 >
-> If the **back** API is used to return to the original page, the original page will not be created repeatedly. Therefore, the variable declared using \@State will not be declared repeatedly, and the **aboutToAppear** lifecycle callback of the page will not be triggered. If you want to use the custom parameters transferred from the returned page on the original page, you can parse the parameters in the required position. For example, parameter parsing can be performed in the **onPageShow** lifecycle callback.
+> Additionally, if you use the **back** method to return to the previous page, the original page will not be recreated. Therefore, variables declared with [\@State](state-management/arkts-state.md) will not be redeclared, and the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) lifecycle callback will not be triggered. If you want to use the custom parameters transferred from the returned page on the original page, you can parse the parameters in the required position. For example, parameter parsing can be performed in the **onPageShow** lifecycle callback.
 
 ## Lifecycle
 
