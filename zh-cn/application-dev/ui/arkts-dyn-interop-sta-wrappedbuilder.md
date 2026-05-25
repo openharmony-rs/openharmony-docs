@@ -1,4 +1,10 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta的wrapBuilder（封装全局@Builder）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -80,7 +86,11 @@ import { Person } from 'dynamic_module'; // 引入ArkTS-Dyn子模块的Person类
 function personInfo(person: Person) { // 按引用传递参数，对象字面量包含状态变量时，其变化会触发UI刷新
   Column() {
     Text(`Name: ${person.name}`)
+      .fontSize(20)
+      .margin(10)
     Text(`Age: ${person.age}`)
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -123,12 +133,17 @@ struct Parent {
           // 修改name状态变量，触发UI刷新
           this.name += 'a';
         })
+        .width(300)
+        .margin(10)
       Button('changeAge')
         .onClick(() => {
           // 修改age状态变量，触发UI刷新
           this.age += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -140,6 +155,10 @@ struct Parent {
   "static_module": "file:../static_module"
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-wrappedbuilder-demo1](figures/arkts-dyn-interop-sta-wrappedbuilder-demo1.gif)
 
 
 ### 按值传递参数
@@ -179,7 +198,7 @@ import { Builder, WrappedBuilder, wrapBuilder, Text } from '@ohos.arkui.componen
 @Builder
 function showTextBuilder(input: string) { // 按值传递参数，状态变量变化不会触发UI刷新
   Text(input)
-    .fontSize(30)
+    .fontSize(20)
 }
 
 // 使用wrapBuilder封装全局@Builder并导出
@@ -224,6 +243,10 @@ struct Parent {
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-wrappedbuilder-demo2](figures/arkts-dyn-interop-sta-wrappedbuilder-demo2.png)
 
 
 ## 常见问题

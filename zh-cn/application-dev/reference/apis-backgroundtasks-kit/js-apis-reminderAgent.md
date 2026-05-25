@@ -529,9 +529,9 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 | actionButton | [[ActionButton](#actionbuttondeprecated)?, [ActionButton](#actionbuttondeprecated)?] | 否 | 是 | 弹出的提醒通知栏中显示的按钮（参数可选，支持0/1/2个按钮）。 |
 | wantAgent | WantAgent | 否 | 是 | 点击通知后需要跳转的目标ability信息。 |
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | 否 | 是 | 提醒到达时跳转的目标包。如果设备正在使用中，则弹出一个通知框。 |
-| ringDuration | number | 否 | 是 | 指明响铃时长（单位：秒），默认1秒。 |
+| ringDuration | number | 否 | 是 | 指明响铃时长。<br> 单位：s，默认1秒。 |
 | snoozeTimes | number | 否 | 是 | 指明延迟提醒次数，默认0次。 |
-| timeInterval | number | 否 | 是 | 执行延迟提醒间隔（单位：秒），默认0秒。 |
+| timeInterval | number | 否 | 是 | 执行延迟提醒间隔。<br> 单位：s，默认0秒。 |
 | title | string | 否 | 是 | 指明提醒标题。 |
 | content | string | 否 | 是 | 指明提醒内容。 |
 | expiredContent | string | 否 | 是 | 指明提醒过期后需要显示的内容。 |
@@ -585,7 +585,7 @@ reminderAgent.removeNotificationSlot(notification.SlotType.CONTENT_INFORMATION).
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。 |
+| triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。<br> 单位：s |
 
 
 ## LocalDateTime<sup>(deprecated)</sup>

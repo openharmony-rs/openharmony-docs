@@ -367,7 +367,7 @@ ArkTS-Dyn: symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
 ArkTS-Sta: symbolIconColor(color: Array&lt;ResourceColor&gt; | undefined)
 
-设置安全控件Symbol图标颜色。
+设置保存控件Symbol图标颜色。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -385,7 +385,7 @@ ArkTS-Sta: symbolIconColor(color: Array&lt;ResourceColor&gt; | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| color  |  ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\> <br> ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[symbolRenderingStrategy](#symbolrenderingstrategy)下默认值不同。<br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。 |
+| color  |  ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\> <br> ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | 设置保存控件Symbol图标颜色。<br/> 默认值：不同[symbolRenderingStrategy](#symbolrenderingstrategy)下默认值不同。<br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。 |
 
 ### symbolFontWeight
 
@@ -393,7 +393,7 @@ ArkTS-Dyn: symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
 ArkTS-Sta: symbolFontWeight(fontWeight: int | FontWeight | string | Resource | undefined)
 
-设置安全控件Symbol图标粗细。
+设置保存控件Symbol图标粗细。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -411,7 +411,7 @@ ArkTS-Sta: symbolFontWeight(fontWeight: int | FontWeight | string | Resource | u
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| fontWeight  | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| undefined \| [Resource](ts-types.md#resource) | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
+| fontWeight  | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| undefined \| [Resource](ts-types.md#resource) | 是   | 设置保存控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
 
 ### symbolRenderingStrategy
 
@@ -419,7 +419,7 @@ ArkTS-Dyn: symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 ArkTS-Sta: symbolRenderingStrategy(strategy: SymbolRenderingStrategy | undefined)
 
-设置安全控件Symbol图标渲染策略。
+设置保存控件Symbol图标渲染策略。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -437,7 +437,7 @@ ArkTS-Sta: symbolRenderingStrategy(strategy: SymbolRenderingStrategy | undefined
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| strategy  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) <br> ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | 安全控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
+| strategy  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) <br> ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | 保存控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
 
 不同渲染策略效果可参考以下示意图。
 

@@ -87,7 +87,7 @@ type CustomStyles = (instance: CommonMethod) => void
 | disabled | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件禁用状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | focused | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件获焦状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | clicked | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件点击状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| selected<sup>10+</sup> | ArkTS-Dyn: object <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| selected<sup>10+</sup> | ArkTS-Dyn: object <br/> ArkTS-Sta: [CustomStyles](#customstyles23) | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 
 **selected选中状态说明**
 

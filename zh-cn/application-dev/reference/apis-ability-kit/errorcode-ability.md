@@ -861,6 +861,24 @@ Failed to obtain the target application information.
 3. 检查目标应用是否创建了该索引对应的分身应用。
 <!--DelEnd-->
 
+## 16000082 UIAbility正在启动中
+
+**错误信息**
+
+The UIAbility is being started.
+
+**错误描述**
+
+UIAbility正在启动中，onCreate或onWindowStageCreate生命周期回调尚未完成。
+
+**可能原因**
+
+UIAbility仍处于启动阶段，onCreate或onWindowStageCreate回调尚未执行完成。
+
+**处理步骤**
+
+等待UIAbility完成onCreate或onWindowStageCreate生命周期回调后再执行相关操作。
+
 ## 16000083 不允许该类型ExtensionAbility启动指定Ability
 
 **错误信息**

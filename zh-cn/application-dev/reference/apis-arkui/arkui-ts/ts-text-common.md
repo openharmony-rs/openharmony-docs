@@ -649,6 +649,25 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | insertOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否 | 插入的值的位置信息。 |
 | insertValue  | string | 否   | 否   | 插入的值。 |
 
+## IncrementalUpdatePolicy
+
+文本渲染的增量更新策略。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| ------- | ---- | ------------------- |
+| NONE | 0 | 不启用增量更新，采用全量布局渲染。 |
+| PARAGRAPH_CACHE | 1 | 启用增量更新，使用段落级缓存。该策略生效的前提是文本绑定的属性字符串对象保持不变，若属性字符串对象发生变化则无法命中缓存。 |
+
 ## DeleteValue<sup>12+</sup>对象说明
 
 删除内容对象。

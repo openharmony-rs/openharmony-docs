@@ -1,4 +1,11 @@
 # UI互操作声明文件规范
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 ## 概述
 在ArkTS-Dyn与ArkTS-Sta的互操作工程中，语言编译器在一次编译过程中只支持处理一种语法（ArkTS-Dyn或ArkTS-Sta）。
 
@@ -167,6 +174,7 @@ export class Person{
   @Track age: number = 20;
 }
 
+// 状态管理V1装饰器
 @Component
 export struct Child {
   @State stateVar: string = 'stateVar';
@@ -285,9 +293,14 @@ struct Parent {
         person: this.person
       })
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-ui-interop-declaration-spec-demo1](figures/arkts-ui-interop-declaration-spec-demo1.png)
 
 **状态管理V2装饰器**
 
@@ -339,6 +352,7 @@ export class Person{
   @Trace age: number = 20;
 }
 
+// 状态管理V2装饰器
 @ComponentV2
 export struct ChildV2 {
   @Local localVar: string = 'localVar';
@@ -443,9 +457,14 @@ struct Index {
     Column() {
       ChildV2()
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-ui-interop-declaration-spec-demo2](figures/arkts-ui-interop-declaration-spec-demo2.png)
 
 **\@Builder，WrappedBuilder，\@BuilderParam**
 
@@ -571,9 +590,14 @@ struct Parent {
       staticBuilder('dynamicBuilder', 20)
       staticWrappedBuilder.builder('dynamicWrappedBuilder', 20)
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-ui-interop-declaration-spec-demo3](figures/arkts-ui-interop-declaration-spec-demo3.png)
 
 ### ArkTS-Sta调用ArkTS-Dyn
 结合[声明文件转换规格](#arkts-sta调用arkts-dyn)，下文依次给出状态管理V1装饰器，状态管理V2装饰器，以及[\@Builder](./state-management/arkts-builder.md)，[WrappedBuilder](./state-management/arkts-wrapBuilder.md)，[\@BuilderParam](./state-management/arkts-builderparam.md)的使用场景。
@@ -624,6 +648,7 @@ export class Person{
   @Track age: number = 20;
 }
 
+// 状态管理V1装饰器
 @Component
 export struct Child {
   @State stateVar: string = 'stateVar';
@@ -747,6 +772,10 @@ struct Parent {
 }
 ```
 
+示例效果图：
+
+![arkts-ui-interop-declaration-spec-demo4](figures/arkts-ui-interop-declaration-spec-demo4.png)
+
 **状态管理V2装饰器**
 
 完整示例结构如下所示：
@@ -793,6 +822,7 @@ export class Person{
   @Trace age: number = 20;
 }
 
+// 状态管理V2装饰器
 @ComponentV2
 export struct ChildV2 {
   @Local localVar: string = 'localVar';
@@ -904,6 +934,10 @@ struct Index {
   }
 }
 ```
+
+示例效果图：
+
+![arkts-ui-interop-declaration-spec-demo5](figures/arkts-ui-interop-declaration-spec-demo5.png)
 
 **\@Builder，WrappedBuilder，\@BuilderParam**
 完整示例结构如下所示：
@@ -1033,3 +1067,7 @@ struct Parent {
   }
 }
 ```
+
+示例效果图：
+
+![arkts-ui-interop-declaration-spec-demo6](figures/arkts-ui-interop-declaration-spec-demo6.png)

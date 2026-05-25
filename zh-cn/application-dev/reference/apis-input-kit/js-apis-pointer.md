@@ -196,7 +196,7 @@ struct Index {
             // 设置鼠标指针可见性
             pointer.setPointerVisible(false).then(() => {
               console.info(`Succeeded in setting pointer cursor visible.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to set pointer cursor, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
@@ -445,7 +445,7 @@ struct Index {
             // 查询鼠标指针是否可见
             pointer.isPointerVisible().then((visible: boolean) => {
               console.info(`Succeeded in getting pointer visible, visible: ${JSON.stringify(visible)}.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
               console.error(`Failed to get pointer, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
@@ -1028,7 +1028,7 @@ struct Index {
             // 设置鼠标指针样式
             pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
               console.info(`Succeeded in setting pointer style.`);
-            }).catch((error: BusinessError) => {
+            }).catch((error) => {
                 console.error(`Failed to set pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
               });
           } catch (error) {
