@@ -44,20 +44,7 @@
 
 - **DlpConnManager**：是数据防泄漏系统的核心管理类，在SA（System Ability）中注册或注销回调能力。
 
-```mermaid
-classDiagram
-    class DlpConnManager {
-        +constructor()
-        +static registerPlugin(plugin: DlpConnPlugin) number
-        +static unregisterPlugin() void
-    }
-    class DlpConnPlugin {
-        <<interface>>
-        +connectServer(requestId: string, requestData: string, callback: Callback~string~) void
-    }
-    DlpConnManager ..> DlpConnPlugin : Dependency
-   
-```
+![UML图](./figure/normal_dlpPermission_main_class.png)
 
 ## API组合使用关系说明
 
