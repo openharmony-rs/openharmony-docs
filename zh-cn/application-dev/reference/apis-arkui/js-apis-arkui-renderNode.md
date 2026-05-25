@@ -4213,7 +4213,7 @@ set backgroundBlur(blurValue: BackgroundBlur | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4233,7 +4233,7 @@ get backgroundBlur(): BackgroundBlur
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4306,7 +4306,7 @@ set contentBlur(blurValue: ContentBlur | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4326,7 +4326,7 @@ get contentBlur(): ContentBlur
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4432,7 +4432,7 @@ set foregroundBlur(blurValue: ForegroundBlur | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4452,7 +4452,7 @@ get foregroundBlur(): ForegroundBlur
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
