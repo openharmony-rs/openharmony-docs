@@ -113,7 +113,7 @@ getDLPGatheringPolicy(): Promise&lt;GatheringPolicyType&gt;
 
 查询DLP沙箱聚合策略。使用Promise异步回调。
 
-企业安全管理应用需要获取当前系统的DLP沙箱聚合策略配置。
+应用需要获取当前系统的DLP沙箱聚合策略配置时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -156,7 +156,7 @@ getDLPGatheringPolicy(callback: AsyncCallback&lt;GatheringPolicyType&gt;): void
 
 查询DLP沙箱聚合策略。使用callback异步回调。
 
-企业安全管理应用需要获取当前系统的DLP沙箱聚合策略配置。
+应用需要获取当前系统的DLP沙箱聚合策略配置时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -312,7 +312,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number): Promi
 
 卸载一个应用的DLP沙箱。使用Promise异步回调。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。
 
-需要清理对应的沙箱环境。
+需要清理对应的沙箱环境时使用此接口。
 
 必须在调用installDLPSandbox安装沙箱后才能调用此方法卸载。
 
@@ -369,7 +369,7 @@ uninstallDLPSandbox(bundleName: string, userId: number, appIndex: number, callba
 
 卸载一个应用的DLP沙箱。使用callback异步回调。调用成功后，系统销毁指定的DLP沙箱环境并释放相关资源。
 
-需要清理沙箱环境。
+需要清理沙箱环境时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -469,7 +469,7 @@ off(type: 'uninstallDLPSandbox', listener?: Callback&lt;DLPSandboxState&gt;): vo
 
 取消监听DLP沙箱卸载事件。调用成功后，应用不再接收DLP沙箱卸载事件的回调通知。
 
- 必须在调用on()注册监听后才能调用此方法取消监听。
+必须在调用on()注册监听后才能调用此方法取消监听。
 
 DLP管理应用退出或不再需要追踪沙箱状态变化时，取消事件订阅以释放监听资源。
 
@@ -598,7 +598,7 @@ addDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 
 在FUSE文件系统添加link文件。使用callback异步回调。调用成功后，在FUSE文件系统中创建一个映射到DLP文件密文的虚拟文件。
 
-DLP应用需要通过标准文件接口访问加密文件内容。
+DLP应用需要通过标准文件接口访问加密文件内容时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -938,7 +938,9 @@ ExampleFunction();
 
 replaceDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-替换link文件。使用Promise异步回调。调用成功后，使用新的link文件名替换当前link文件。**使用场景**：需要切换访问不同的DLP文件时，通过替换link文件实现文件映射的切换。
+替换link文件。使用Promise异步回调。调用成功后，使用新的link文件名替换当前link文件。
+
+需要切换访问不同的DLP文件时，通过替换link文件实现文件映射的切换。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1010,7 +1012,9 @@ ExampleFunction();
 
 replaceDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): void
 
-替换link文件，使用callback异步回调。调用成功后，使用新的link文件名替换当前link文件。**使用场景**：需要切换访问不同的DLP文件时替换link文件。
+替换link文件，使用callback异步回调。调用成功后，使用新的link文件名替换当前link文件。
+
+需要切换访问不同的DLP文件时替换link文件。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1077,7 +1081,9 @@ ExampleFunction();
 
 deleteDLPLinkFile(linkFileName: string): Promise&lt;void&gt;
 
-删除FUSE文件系统中创建的link文件。使用Promise异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。**使用场景**：DLP文件访问结束后清理link文件映射。
+删除FUSE文件系统中创建的link文件。使用Promise异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。
+
+DLP文件访问结束后清理link文件映射时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1149,7 +1155,7 @@ deleteDLPLinkFile(linkFileName: string, callback: AsyncCallback&lt;void&gt;): vo
 
 删除FUSE文件系统中创建的link文件，使用callback异步回调。调用成功后，从FUSE文件系统中移除指定的link文件。
 
-DLP文件访问结束后清理link文件映射。
+DLP文件访问结束后清理link文件映射时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1219,7 +1225,7 @@ recoverDLPFile(plaintextFd: number): Promise&lt;void&gt;
 
 移除DLP文件的权限控制，恢复成明文文件。使用Promise异步回调。
 
-文件所有者决定取消文件的DLP保护，将其转换为普通文件以便自由分享。
+文件所有者决定取消文件的DLP保护时使用此接口，将其转换为普通文件以便自由分享。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1300,7 +1306,7 @@ recoverDLPFile(plaintextFd: number, callback: AsyncCallback&lt;void&gt;): void
 
 移除DLP文件的权限控制，恢复成明文文件，使用callback异步回调。
 
-文件所有者决定取消文件的DLP保护。
+文件所有者决定取消文件的DLP保护时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1380,7 +1386,7 @@ closeDLPFile(): Promise&lt;void&gt;
 
 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
-文件所有者决定关闭DLP文件。
+文件所有者决定关闭DLP文件时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1449,7 +1455,7 @@ closeDLPFile(callback: AsyncCallback&lt;void&gt;): void
 
 调用openDLPFile()成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile()释放资源。
 
-文件所有者决定关闭DLP文件。
+文件所有者决定关闭DLP文件时使用此接口。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1521,8 +1527,6 @@ generateDLPFile(plaintextFd: number, ciphertextFd: number, property: DLPProperty
 DLP管理应用调用该接口，将明文文件加密生成权限受控文件，仅在授权列表内的用户可以打开，授权又分为完全控制权限和只读权限。使用Promise方式异步返回DLPFile管理对象。使用完DLPFile对象后，应调用closeDLPFile释放对象，避免资源泄露。
 
 调用generateDLPFile成功后返回DLPFile对象，必须在使用完毕后调用closeDLPFile释放资源。
-
-企业文档管理系统需要将敏感文档加密为DLP文件，并设置访问权限列表，以实现文档的安全分享和权限管理。
 
 **系统接口：** 此接口为系统接口。
 
