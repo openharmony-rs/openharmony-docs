@@ -38,7 +38,7 @@
    >
    > 确保AVSession对象在后台播放期间不被系统回收/应用不主动释放，否则会导致歌词组件异常。
 
-<!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DesktopLyric.ets) -->
+   <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DesktopLyric.ets) --> 
 
 ```ts
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
