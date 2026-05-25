@@ -1,4 +1,10 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn管理组件拥有的状态
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -89,13 +95,17 @@ export struct Child { // 定义包含@State成员属性的子组件
     Column() {
       // 显示子组件count状态
       Text(`child count: ${this.count}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Button('child change value')
         .onClick(() => {
           // 子组件@State状态的变化不会同步给ArkTS-Sta父组件，不会刷新父组件的UI，但子组件UI会刷新
           this.count += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -122,17 +132,24 @@ struct Index { // 使用包含@State成员属性的子组件
       Child({ count: this.count })
       // 显示父组件count状态
       Text(`parent count: ${this.count}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Button('parent change value')
         .onClick((value: ClickEvent) => {
           // 父组件状态变化不会同步给ArkTS-Dyn子组件，不会刷新子组件的UI，但父组件UI会刷新
           this.count += 2;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-statemanager-v1-demo1](figures/arkts-sta-interop-dyn-statemanager-v1-demo1.gif)
 
 ### 与ArkTS-Dyn的\@Prop交互
 
@@ -163,13 +180,17 @@ export struct Child { // 定义包含@Prop成员属性的子组件
     Column() {
       // 显示子组件count状态
       Text(`child count: ${this.count}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Button('child change value')
         .onClick(() => {
           // 子组件@Prop状态的变化不会同步给ArkTS-Sta父组件，不会刷新父组件的UI，但子组件UI会刷新
           this.count += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -196,17 +217,24 @@ struct Index { // 使用包含@Prop成员属性的子组件
       Child({ count: this.count })
       // 显示父组件count状态
       Text(`parent count: ${this.count}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Button('parent change value')
         .onClick((value: ClickEvent) => {
           // 父组件状态变化会同步给ArkTS-Dyn子组件，父组件和子组件的UI都会刷新
           this.count += 2;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-statemanager-v1-demo2](figures/arkts-sta-interop-dyn-statemanager-v1-demo2.gif)
 
 ### 与ArkTS-Dyn的\@Link交互
 
@@ -227,13 +255,17 @@ export struct Child { // 包含@Link成员属性的子组件
     Column() {
       // 显示子组件count状态
       Text(`child count: ${this.count}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Button('child change value')
         .onClick(() => {
           // 子组件@Link状态的变化会同步给ArkTS-Sta父组件，父组件和子组件的UI都会刷新
           this.count += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -260,17 +292,24 @@ struct Index { // 使用包含@Link成员属性的子组件
       Child({ count: this.count })
       // 显示父组件count状态
       Text(`parent count: ${this.count}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Button('parent change value')
         .onClick((value: ClickEvent) => {
           // 父组件状态的变化会同步给ArkTS-Dyn子组件，父组件和子组件的UI都会刷新
           this.count += 2;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
 
+示例效果图：
+
+![arkts-sta-interop-dyn-statemanager-v1-demo3](figures/arkts-sta-interop-dyn-statemanager-v1-demo3.gif)
 
 ### 与ArkTS-Dyn的\@Provide/\@Consume交互
 
@@ -293,10 +332,12 @@ export struct Child { // 包含@Provide成员属性的子组件
     Column() {
       // 显示子组件@Provide状态变量message
       Text(`provide message: ${this.message}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       // ArkTS-Dyn自定义组件
       GrandSon()
     }
+    .width('100%')
   }
 }
 
@@ -309,13 +350,17 @@ export struct GrandSon { // 包含@Consume成员属性的子孙组件
     Column() {
       // 显示子孙组件count状态
       Text(`child count: ${this.count}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Button('child change value')
         .onClick(() => {
           // 子孙组件的状态变化会同步给ArkTS-Sta祖先组件，祖先组件和子孙组件的UI都会刷新
           this.count += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -344,13 +389,21 @@ struct Index { // 使用包含@Provide成员属性的子组件
       Child({ message: this.message })
       // 显示祖先组件count状态
       Text(`parent count: ${this.count}`)
-        .fontSize(30)
+        .fontSize(20)
+        .margin(10)
       Button('parent change value')
         .onClick((value: ClickEvent) => {
           // 祖先组件状态的变化会同步给ArkTS-Dyn子孙组件，祖先组件和包含对应@Consume的子孙组件的UI都会刷新
           this.count += 2;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-sta-interop-dyn-statemanager-v1-demo4](figures/arkts-sta-interop-dyn-statemanager-v1-demo4.gif)

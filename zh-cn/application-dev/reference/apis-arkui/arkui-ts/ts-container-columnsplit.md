@@ -100,6 +100,8 @@ ArkTS-Sta: divider(value: ColumnSplitDividerStyle | null | undefined)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -111,29 +113,6 @@ ArkTS-Sta: divider(value: ColumnSplitDividerStyle | null | undefined)
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null<br/>ArkTS-Sta: [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null \| undefined | 是   | 分割线的margin，即设置分割线与子组件的距离。<br/>默认值：null。当设置为null时，分割线与子组件的距离为0vp。<br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
-
-## ColumnSplitDividerStyle<sup>10+</sup>对象说明
-
-设置子组件与上下分割线的距离。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| startMargin | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 子组件与其上方分割线的距离。<br/>默认值：0vp <br />非法值：按默认值处理，此时[getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9)接口获取到的属性值为undefined。 |
-| endMargin   | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 子组件与其下方分割线的距离。<br/>默认值：0vp <br />非法值：按默认值处理，此时[getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9)接口获取到的属性值为undefined。 |
-
->  **说明：**
->
-> 与[RowSplit](ts-container-rowsplit.md)相同，ColumnSplit的分割线可调整上下两侧子组件的高度，子组件的高度调整范围受其最大最小高度限制。
->
-> 支持[clip](ts-universal-attributes-sharp-clipping.md#clip12)、[margin](ts-universal-attributes-size.md#margin)等通用属性，未设置clip属性时，其默认值为true。
 
 ### attributeModifier<sup>12+</sup>
 
@@ -156,6 +135,31 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ColumnSplitAttribute> 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnSplitAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnSplitAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置ColumnSplit组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
+## ColumnSplitDividerStyle<sup>10+</sup>对象说明
+
+设置子组件与上下分割线的距离。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| startMargin | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 子组件与其上方分割线的距离。<br/>默认值：0vp <br />非法值：按默认值处理，此时[getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9)接口获取到的属性值为undefined。 |
+| endMargin   | [Dimension](ts-types.md#dimension10)       | 否 | 是  | 子组件与其下方分割线的距离。<br/>默认值：0vp <br />非法值：按默认值处理，此时[getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9)接口获取到的属性值为undefined。 |
+
+>  **说明：**
+>
+> 与[RowSplit](ts-container-rowsplit.md)相同，ColumnSplit的分割线可调整上下两侧子组件的高度，子组件的高度调整范围受其最大最小高度限制。
+>
+> 支持[clip](ts-universal-attributes-sharp-clipping.md#clip12)、[margin](ts-universal-attributes-size.md#margin)等通用属性，未设置clip属性时，其默认值为true。
 
 ## 事件
 

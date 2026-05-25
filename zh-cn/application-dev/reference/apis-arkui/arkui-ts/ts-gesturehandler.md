@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## GestureHandler\<T>
 
@@ -995,7 +997,7 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 
 ArkTS-Dyn: onCancel(event: Callback\<void>): GestureGroupHandler
 
-ArkTS-Sta: onCancel(event: Callback\<void>): this
+ArkTS-Sta: onCancel(event: VoidCallback): this
 
 设置手势组处理器取消回调。顺序组合手势（[GestureMode](./ts-combined-gestures.md#gesturemode枚举说明).Sequence）取消后触发回调。
 
@@ -1011,7 +1013,7 @@ ArkTS-Sta: onCancel(event: Callback\<void>): this
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<void> | 是 | 手势组处理器取消回调。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void><br/>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) | 是 | 手势组处理器取消回调。 |
 
 **返回值：**
 

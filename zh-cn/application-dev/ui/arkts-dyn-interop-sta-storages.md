@@ -1,4 +1,10 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta管理应用拥有的状态
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -71,7 +77,7 @@ export { MainPage } from './src/main/ets/components/MainPage'; // 导出ArkTS-St
 
 ### 通过AppStorage接口进行交互
 
-状态管理V1互操作支持通过ArkTS-Sta的[AppStorage接口](../reference/apis-arkui/arkui-ts/ts-state-management.md)操作ArkTS-Dyn的AppStorage数据。
+状态管理V1互操作支持通过ArkTS-Sta的[AppStorage接口](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)操作ArkTS-Dyn的AppStorage数据。
 
 示例如下：
 
@@ -88,14 +94,17 @@ let gPropA: number = 1;
 
 @Component
 export struct MainPage { // 定义ArkTS-Sta自定义组件
-  build() {
+  build(): void {
     Column() {
       Button('change AppStorage')
         .onClick(() => {
           // 通过接口修改ArkTS-Dyn的AppStorage并同步更新ArkTS-Dyn组件
           AppStorage.setOrCreate('PropA', ++gPropA);
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -116,10 +125,16 @@ struct Index {
     Column() {
       MainPage()
       Text(`current value: ${this.storageLink}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+示例效果图：
+
+![arkts-dyn-interop-sta-storages-demo1](figures/arkts-dyn-interop-sta-storages-demo1.gif)
 
 
 ### ArkTS-Sta使用ArkTS-Dyn AppStorage中的数据
@@ -143,23 +158,35 @@ export struct MainPage {
   @StorageLink('LinkA') appLink: string = 'staticA';
   @StoragePropRef('LinkA') appProp: string = 'staticA';
 
-  build() {
+  build(): void {
     Row() {
       Column() {
         Text('----- static storagelink -----')
+          .fontSize(20)
+          .margin(10)
         Text(`Storage LinkA: ${this.appLink}`)
+          .fontSize(20)
+          .margin(10)
         Button('change LinkA')
           .onClick((e: ClickEvent) => {
             // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
             this.appLink += 'b';
           })
+          .width(300)
+          .margin(10)
         Text('----- static storagepropref -----')
+          .fontSize(20)
+          .margin(10)
         Text(`Storage PropA: ${this.appProp}`)
+          .fontSize(20)
+          .margin(10)
         Button('change PropA')
           .onClick((e: ClickEvent) => {
             // 点击后仅更新当前Text组件
             this.appProp += 'b';
           })
+          .width(300)
+          .margin(10)
       }
     }
   }
@@ -184,24 +211,41 @@ struct Index {
   build() {
     Column() {
       Text('----- dynamic storagelink -----')
+        .fontSize(20)
+        .margin(10)
       Text(`Storage LinkA: ${this.appLink}`)
+        .fontSize(20)
+        .margin(10)
       Button('change LinkA')
         .onClick((e: ClickEvent) => {
           // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
           this.appLink += 'a';
         })
+        .width(300)
+        .margin(10)
       Text('----- dynamic storageprop -----')
+        .fontSize(20)
+        .margin(10)
       Text(`Storage PropA: ${this.appProp}`)
+        .fontSize(20)
+        .margin(10)
       Button('change PropA')
         .onClick((e: ClickEvent) => {
           // 点击后仅更新当前Text组件
           this.appProp += 'a';
         })
+        .width(300)
+        .margin(10)
       MainPage()
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-storages-demo2](figures/arkts-dyn-interop-sta-storages-demo2.gif)
 
 ### ArkTS-Sta使用ArkTS-Dyn LocalStorage中的数据
 
@@ -224,23 +268,35 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
   @LocalStorageLink('LinkA') localLink: string = 'staticA';
   @LocalStoragePropRef('LinkA') localProp: string = 'staticA';
 
-  build() {
+  build(): void {
     Row() {
       Column() {
         Text('----- static localstoragelink -----')
+          .fontSize(20)
+          .margin(10)
         Text(`LocalStorage LinkA: ${this.localLink}`)
+          .fontSize(20)
+          .margin(10)
         Button('change LinkA')
           .onClick((e: ClickEvent) => {
             // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
             this.localLink += 'b';
           })
+          .width(300)
+          .margin(10)
         Text('----- static localstoragepropref -----')
+          .fontSize(20)
+          .margin(10)
         Text(`LocalStorage PropA: ${this.localProp}`)
+          .fontSize(20)
+          .margin(10)
         Button('change PropA')
           .onClick((e: ClickEvent) => {
             // 点击后仅更新当前Text组件
             this.localProp += 'b';
           })
+          .width(300)
+          .margin(10)
       }
     }
   }
@@ -267,24 +323,41 @@ struct Index {
   build() {
     Column() {
       Text('----- dynamic localstoragelink -----')
+        .fontSize(20)
+        .margin(10)
       Text(`LocalStorage LinkA: ${this.localLink}`)
+        .fontSize(20)
+        .margin(10)
       Button('change LinkA')
         .onClick((e: ClickEvent) => {
           // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
           this.localLink += 'a';
         })
+        .width(300)
+        .margin(10)
       Text('----- dynamic localstorageprop -----')
+        .fontSize(20)
+        .margin(10)
       Text(`LocalStorage PropA: ${this.localProp}`)
+        .fontSize(20)
+        .margin(10)
       Button('change PropA')
         .onClick((e: ClickEvent) => {
           // 点击后仅更新当前Text组件
           this.localProp += 'a';
         })
+        .width(300)
+        .margin(10)
       MainPage()
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-storages-demo3](figures/arkts-dyn-interop-sta-storages-demo3.gif)
 
 ### ArkTS-Sta使用ArkTS-Dyn PersistentStorage中的数据
 
@@ -307,25 +380,37 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
   @StorageLink('LinkA') persistLink: string = 'staticB';
   @StoragePropRef('LinkA') persistProp: string = 'staticB';
 
-  build() {
+  build(): void {
     Row() {
       Column() {
         Text('----- static storagelink -----')
-         // 退出应用后重新进入，修改保留
+          .fontSize(20)
+          .margin(10)
+        // 退出应用后重新进入，修改保留
         Text(`PersistentStorage LinkA: ${this.persistLink}`)
+          .fontSize(20)
+          .margin(10)
         Button('change LinkA')
           .onClick((e: ClickEvent) => {
             // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
             this.persistLink += 'b';
           })
+          .width(300)
+          .margin(10)
         Text('----- static storagepropref -----')
+          .fontSize(20)
+          .margin(10)
         // 退出应用后重新进入，同步为LinkA的值
         Text(`PersistentStorage PropB: ${this.persistProp}`)
+          .fontSize(20)
+          .margin(10)
         Button('change PropB')
           .onClick((e: ClickEvent) => {
             // 点击后仅更新当前Text组件
             this.persistProp += 'b';
           })
+          .width(300)
+          .margin(10)
       }
     }
   }
@@ -351,26 +436,43 @@ struct Index {
   build() {
     Column() {
       Text('----- dynamic storagelink -----')
+        .fontSize(20)
+        .margin(10)
       // 退出应用后重新进入，修改保留
       Text(`PersistentStorage LinkA: ${this.persistLink}`)
+        .fontSize(20)
+        .margin(10)
       Button('change LinkA')
         .onClick((e: ClickEvent) => {
           // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
           this.persistLink += 'a';
         })
+        .width(300)
+        .margin(10)
       Text('----- dynamic storageprop -----')
+        .fontSize(20)
+        .margin(10)
       // 退出应用后重新进入，同步为LinkA的值
       Text(`PersistentStorage PropB: ${this.persistProp}`)
+        .fontSize(20)
+        .margin(10)
       Button('change PropB')
         .onClick((e: ClickEvent) => {
           // 点击后仅更新当前Text组件
           this.persistProp += 'a';
         })
+        .width(300)
+        .margin(10)
       MainPage()
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-storages-demo4](figures/arkts-dyn-interop-sta-storages-demo4.gif)
 
 ### ArkTS-Sta使用ArkTS-Dyn Environment中的数据
 
@@ -393,25 +495,35 @@ export struct MainPage { // 定义ArkTS-Sta自定义组件
   @StorageLink('fontScale') fontScaleLink: number = 4.0;
   @StoragePropRef('fontScale') fontScaleProp: number = 4.0;
 
-  build() {
+  build(): void {
     Row() {
       Column() {
         Text('----- static storagelink -----')
+          .fontSize(20)
+          .margin(10)
         Text(`Environment fontscale link: ${this.fontScaleLink}`)
           .fontSize(this.fontScaleLink)
+          .margin(10)
         Button('change fontscale link')
           .onClick((e: ClickEvent) => {
             // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件，fontSize加2
             this.fontScaleLink += 2.0;
           })
+          .width(300)
+          .margin(10)
         Text('----- static storagepropref -----')
+          .fontSize(20)
+          .margin(10)
         Text(`Environment fontscale prop: ${this.fontScaleProp}`)
           .fontSize(this.fontScaleProp)
+          .margin(10)
         Button('change fontscale prop')
           .onClick((e: ClickEvent) => {
             // 点击后仅更新当前Text组件，fontSize加2
             this.fontScaleProp += 2.0;
           })
+          .width(300)
+          .margin(10)
       }
     }
   }
@@ -436,23 +548,38 @@ struct Index { // 定义ArkTS-Dyn主组件
   build() {
     Column() {
       Text('----- dynamic storagelink -----')
+        .fontSize(20)
+        .margin(10)
       Text(`Environment fontscale link: ${this.fontScaleLink}`)
         .fontSize(this.fontScaleLink)
+        .margin(10)
       Button('change fontScale link')
         .onClick((e: ClickEvent) => {
           // 点击后同步更新ArkTS-Dyn和ArkTS-Sta中的Text组件
           this.fontScaleLink += 1.0;
         })
+        .width(300)
+        .margin(10)
       Text('----- dynamic storageprop -----')
+        .fontSize(20)
+        .margin(10)
       Text(`Environment fontscale prop: ${this.fontScaleProp}`)
         .fontSize(this.fontScaleProp)
+        .margin(10)
       Button('change fontScale prop')
         .onClick((e: ClickEvent) => {
           // 点击后仅更新当前Text组件
           this.fontScaleProp += 1.0;
         })
+        .width(300)
+        .margin(10)
       MainPage()
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-storages-demo5](figures/arkts-dyn-interop-sta-storages-demo5.gif)

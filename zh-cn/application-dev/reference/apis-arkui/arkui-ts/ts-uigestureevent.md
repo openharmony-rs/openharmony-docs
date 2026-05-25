@@ -14,6 +14,8 @@
 >
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
 
 ## UIGestureEvent
@@ -42,7 +44,7 @@ ArkTS-Sta: addGesture(gesture: GestureHandler, priority?: GesturePriority, mask?
 | ------ | ------ | ---- | -------------------------- |
 | gesture  |  ArkTS-Dyn: [GestureHandler\<T>](./ts-gesturehandler.md#gesturehandlert)<br/>ArkTS-Sta: [GestureHandler](./ts-gesturehandler.md#gesturehandler23) | 是   | 手势处理器对象。 |
 | priority  |  [GesturePriority](./ts-gesturehandler.md#gesturepriority枚举说明) | 否   | 绑定手势的优先级。<br>默认值：GesturePriority.NORMAL |
-| mask  |  [GestureMask][GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask枚举说明) | 否   | 事件响应设置。<br>默认值：GestureMask.Normal |
 
 ### addParallelGesture
 

@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import { serial } from "@kit.BasicServicesKit";
+import serial from '@ohos.busManager.serial';
 ```
 
 ## serial.addPortAuthorization
@@ -31,7 +31,7 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口：** 此接口为系统接口，仅允许特定的串口授权弹窗应用调用。
+**系统接口：** 此接口为系统接口。
 
 **系统能力：**  SystemCapability.BusManager.Serial
 
@@ -62,7 +62,7 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { serial } from "@kit.BasicServicesKit";
+import serial from '@ohos.busManager.serial';
 
 // 添加串口访问权限（仅系统应用可用）
 let tokenId: string = '123456';

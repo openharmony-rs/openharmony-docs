@@ -33,7 +33,11 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -65,7 +69,11 @@ dial\(phoneNumber: string, options: DialOptions, callback: AsyncCallback\<boolea
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -100,7 +108,11 @@ dial\(phoneNumber: string, options?: DialOptions\): Promise\<boolean\>
 
 **需要权限**：ohos.permission.PLACE_CALL（该权限仅系统应用可申请）
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -1126,6 +1138,8 @@ call.rejectCall((err: BusinessError) => {
 拨打电话的可选参数。
 
 **系统能力**：SystemCapability.Applications.Contacts
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |

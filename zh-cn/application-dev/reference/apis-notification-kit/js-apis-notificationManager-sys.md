@@ -3369,8 +3369,6 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3445,8 +3443,6 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3519,8 +3515,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 设置指定应用是否支持分布式通知。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3605,8 +3599,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3689,8 +3681,6 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3771,8 +3761,6 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3852,8 +3840,6 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3921,8 +3907,6 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 获取通知的提醒方式。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -5061,8 +5045,6 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -5141,8 +5123,6 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 设置是否将通知同步到未安装应用程序的设备(Promise形式)。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -9545,7 +9525,7 @@ ArkTS-Dyn: snoozeNotification(hashCode: string, delayTime: number): Promise\<voi
 
 ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\>
 
-通知稍后提醒。此接口允许设置通知在指定时间间隔后再次发出提醒。使用Promise异步回调。
+设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -9564,7 +9544,7 @@ ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\
 | 参数名      | 类型                  | 必填 | 说明                         |
 | --------- | --------------------- | ---- | ---------------------------- |
 | hashCode   | string | 是  | 需要设置稍后提醒通知的唯一标识。 |
-| delayTime   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 稍后提醒的时间间隔，单位：秒。 |
+| delayTime   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 稍后提醒的时间间隔。<br/>单位：秒。 |
 
 **返回值：**
 
@@ -9580,7 +9560,6 @@ ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 801 | Capability not supported. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 1600007 | The notification does not exist. |
@@ -9605,7 +9584,7 @@ ArkTS-Sta示例：
 ```ts
 // 此处应改为开发者需要设定稍后提醒通知的唯一标识
 let hashCode: string = "hashCode";
-let delayTime: number = 60;
+let delayTime: long = 60;
 notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
   console.info("snoozeNotification success.")
 }).catch((err: Error):void => {

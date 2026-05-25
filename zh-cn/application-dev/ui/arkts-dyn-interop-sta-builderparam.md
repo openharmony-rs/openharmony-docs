@@ -1,4 +1,10 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta的@BuilderParam（引用@Builder函数）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -68,12 +74,12 @@ export struct Child {
   @State age: number = 20;
 
   @Builder
-  myBuilder(person: Person) {}
+  myBuilder(person: Person): void {}
 
   // 使用@BuilderParam接收ArkTS-Dyn侧传递的@Builder函数
   @BuilderParam customBuilderParam: (person: Person) => void = this.myBuilder;
 
-  build() {
+  build(): void {
     Column() {
       // 调用@BuilderParam定义的变量，传递ArkTS-Sta侧的对象字面量
       this.customBuilderParam({ name: this.name, age: this.age })
@@ -82,12 +88,17 @@ export struct Child {
           // 修改状态变量，触发@Builder内部UI刷新
           this.name += 'a';
         })
+        .width(300)
+        .margin(10)
       Button('changeAge')
         .onClick(() => {
           // 修改状态变量，触发@Builder内部UI刷新
           this.age += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -112,8 +123,12 @@ struct Parent { // ArkTS-Dyn侧的自定义组件
   personInfo(person: Person) {
     Column() {
       Text(`Name: ${person.name}`)
+        .fontSize(20) 
+        .margin(10)
       Text(`Age: ${person.age}`)
-      }
+        .fontSize(20) 
+        .margin(10)
+    }
   }
 
   build() {
@@ -121,6 +136,7 @@ struct Parent { // ArkTS-Dyn侧的自定义组件
       // 传递@Builder函数引用
       Child({ customBuilderParam: this.personInfo })
     }
+    .width('100%')
   }
 }
 ```
@@ -133,6 +149,9 @@ struct Parent { // ArkTS-Dyn侧的自定义组件
 }
 ```
 
+示例效果图：
+
+![arkts-dyn-interop-sta-builderparam-demo1](figures/arkts-dyn-interop-sta-builderparam-demo1.gif)
 
 ### 按值传递参数
 
@@ -171,13 +190,13 @@ import { Component, Builder, BuilderParam, Column } from '@ohos.arkui.component'
 @Component
 export struct Child { // ArkTS-Sta侧的自定义组件
   @Builder
-  myBuilder(str: string) {
+  myBuilder(str: string): void {
   }
 
   // 使用@BuilderParam接收ArkTS-Dyn侧传递的@Builder函数
   @BuilderParam customBuilderParam: (input: string) => void = this.myBuilder;
 
-  build() {
+  build(): void {
     Column() {
       this.customBuilderParam('Hello World!')
     }
@@ -214,6 +233,8 @@ struct Parent {
   @Builder
   myText(input: string) { // ArkTS-Dyn侧的@Builder函数
     Text(input)
+      .fontSize(20) 
+      .margin(10)
   }
 
   build() {
@@ -224,3 +245,7 @@ struct Parent {
   }
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-builderparam-demo2](figures/arkts-dyn-interop-sta-builderparam-demo2.png)

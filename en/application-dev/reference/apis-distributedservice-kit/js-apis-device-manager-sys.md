@@ -487,7 +487,7 @@ For details about how to initialize `dmInstance` in the example, see [deviceMana
 
 ### getLocalDeviceInfoSync<sup>8+</sup>
 
-getLocalDeviceInfoSync(): [DeviceInfo](#deviceinfo)
+getLocalDeviceInfoSync(): DeviceInfo
 
 Obtains local device information synchronously.
 

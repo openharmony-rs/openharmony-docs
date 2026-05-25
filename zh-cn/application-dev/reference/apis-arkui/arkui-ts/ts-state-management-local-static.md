@@ -14,7 +14,15 @@
 
 在ArkTS-Sta中使用时，开发指南参考：[@Local装饰器：组件内部状态（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-local.md)。
 
+## @Local
+
+@interface Local
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 

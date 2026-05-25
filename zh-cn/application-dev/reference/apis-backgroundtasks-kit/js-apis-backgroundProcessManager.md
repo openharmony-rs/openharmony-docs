@@ -107,7 +107,7 @@ let childProcessPid = 33333;
 try {
     backgroundProcessManager.resetProcessPriority(childProcessPid); 
 } catch (error) {
-    console.error(`setProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    console.error(`resetProcessPriority failed, errCode: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -150,7 +150,7 @@ setPowerSaveMode(pid: number, powerSaveMode: PowerSaveMode): Promise&lt;void&gt;
 | 201      | Permission denied. |
 | 801      | Capability not supported. |
 | 31800002      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified; <br> 2. Incorrect parameter types; 3. PowerSaveMode status is out of range. |
-| 31800003      | Setup error, this setting is overridden by settings in Task Manager. |
+| 31800003      | Setup error, This setting is overridden by settings in Task Manager |
 | 31800004      | The setting failed due to system scheduling reasons. |
 
 **示例：**

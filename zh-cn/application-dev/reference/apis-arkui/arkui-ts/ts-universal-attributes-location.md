@@ -55,6 +55,8 @@ align(alignment: Alignment | LocalizedAlignment): T
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -270,6 +272,8 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -326,6 +330,8 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -361,8 +367,8 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 | middle | [HorizontalAlignParam](#horizontalalignparam23对象说明) |否|是| 设置横向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | top    | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置顶部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | bottom | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置底部对齐的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| center | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>API version 23，之前入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
-| bias<sup>11+</sup>   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| center | [VerticalAlignParam](#verticalalignparam23对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>API version 23之前，入参类型为{ anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |
+| bias<sup>11+</sup>   | [Bias](./ts-types.md#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## HorizontalAlignParam<sup>23+</sup>对象说明
 
@@ -375,6 +381,8 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -399,6 +407,8 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -413,6 +423,8 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 ## LocalizedAlignRuleOptions<sup>12+</sup>对象说明
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -434,6 +446,8 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -448,6 +462,8 @@ ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 ## LocalizedVerticalAlignParam<sup>12+</sup>对象说明
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -471,6 +487,8 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 详细用法请参考[RelativeContainer示例7（设置链）](ts-container-relativecontainer.md#示例7设置链)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -499,6 +517,8 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -526,6 +546,8 @@ ArkTS-Sta: chainWeight(chainWeight: ChainWeightOptions | undefined): this
 > **说明：**
 >
 > 从API version 23开始，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
