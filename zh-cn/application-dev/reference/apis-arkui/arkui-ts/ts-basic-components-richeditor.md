@@ -6491,47 +6491,58 @@ struct RichEditorExample {
 ```
 ![richEditorIncludeFontPadding](figures/richEditorIncludeFontPadding.gif)
 
-### 示例36（设置开启行首标点符号压缩）
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)属性设置行首标点符号压缩。
+### 示例36（设置行首标点符号压缩和行尾标点符号悬挂）
 
-从API version 23开始，新增compressLeadingPunctuation属性。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
+
+文本自动换行后，剩余内容（含标点符号）需能放入上一行，标点符号悬挂才生效。
+
+从API version 23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
 
 ```ts
 @Entry
 @Component
-struct CompressLeadingPunctuationDemo {
+struct PunctuationDemo {
   controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: '20fp' } };
   @State compressLeadingPunctuation: boolean = false;
-  @State text: string = '「0123456789\n『0123456789\n（0123456789\n《0123456789\n〈0123456789\n【0123456789\n〖0123456789\n〔0123456789\n［0123456789\n｛0123456789';
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】\n【0123456789、\n〖0123456789。\n〔0123456789﹑\n［0123456789〞\n｛0123456789';
 
   build() {
     Column() {
-      RichEditor(this.options)
+      RichEditor({ controller: this.controller })
         .onReady(() => {
-          this.controller.addTextSpan(this.text)
+          this.controller.addTextSpan(this.text, this.textSpanOptions)
         })
         .compressLeadingPunctuation(this.compressLeadingPunctuation)
-        .borderWidth(1)
-        .borderColor(Color.Green)
+        .punctuationOverflow(this.punctuationOverflow)
+        .border({ width: 1, color: Color.Black })
         .align(Alignment.Center)
-        .height("30%")
-        .width("50%")
+        .height('35%')
+        .width('50%')
 
       Column() {
-        Button("开启行首标点符号压缩").onClick(() => {
+        Button('开启行首标点符号压缩').onClick(() => {
           this.compressLeadingPunctuation = true
-        }).margin({ top: 10 })
-        Button("关闭行首标点符号压缩").onClick(() => {
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
           this.compressLeadingPunctuation = false
-        }).margin({ top: 10 })
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
       }
-    }.width("100%").padding(20)
+    }.width('100%').padding(20)
   }
 }
 ```
-![CompressLeadingPunctuation](figures/richEditorCompressLeadingPunctuation.gif)
+![Punctuation](figures/richEditorPunctuation.gif)
 
 ### 示例37（设置拖动预览样式）
 该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置拖动预览样式。
