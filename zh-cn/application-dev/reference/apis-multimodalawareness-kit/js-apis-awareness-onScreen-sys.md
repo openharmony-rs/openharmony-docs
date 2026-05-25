@@ -696,19 +696,19 @@ try {
 import onScreen from "@ohos.multimodalAwareness.onScreen";
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
-    'InjectEvent',    //（必填字段）注入事件能力：表示当前业务需要使用事件注入（如按键、点击、返回等系统事件注入）。
+    'InjectEvent',    // （必填字段）注入事件能力：表示当前业务需要使用事件注入（如按键、点击、返回等系统事件注入）。
   ]
 }
 
 let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
   parameters: {
-     // （必填字段）注入事件命令，用于向系统注入按键/操作事件。
+     //  （必填字段）注入事件命令，用于向系统注入按键/操作事件。
     "InjectEvent": {
-       // （injectEvent必填，其他可选）注入事件的具体内容：JSON字符串格式，包含组件类型、执行动作、参数。
+       //  （injectEvent必填，其他可选）注入事件的具体内容：JSON字符串格式，包含组件类型、执行动作、参数。
       "injectEvent": '{"componentType":"","action":"back","params":{}}',
-      "compId": ["0"],    //（可选）目标组件ID数组：指定要注入事件的组件。
-      "windowId": 0,      //（可选）窗口ID：指定注入事件的目标窗口，0表示当前激活窗口。
-      "displayId": -1     //（可选）显示设备ID：-1表示使用默认显示设备。
+      "compId": ["0"],    // （可选）目标组件ID数组：指定要注入事件的组件。
+      "windowId": 0,      // （可选）窗口ID：指定注入事件的目标窗口，0表示当前激活窗口。
+      "displayId": -1     // （可选）显示设备ID：-1表示使用默认显示设备。
     }
   }
 }
