@@ -619,6 +619,8 @@ Allows an application to activate enterprise devices.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | wearables
+
 **Since**: 12
 
 ## ohos.permission.RECEIVE_ENTERPRISE_POLICY_EVENT
@@ -630,6 +632,8 @@ Allows a system application to subscribe to the policy events published by the E
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 14
 
@@ -4722,6 +4726,8 @@ This permission prevents unauthorized access to custom configuration files, such
 **Authorization mode**: system_grant
 
 **Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | wearables
 
 **Since**: 18
 
