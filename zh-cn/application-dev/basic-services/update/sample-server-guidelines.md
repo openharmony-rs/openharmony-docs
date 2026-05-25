@@ -6,11 +6,17 @@
 <!--Tester: @mamba-ting-->
 <!--Adviser: @fang-jinxu-->
 
+## 功能介绍
+
+   本指南旨在帮助开发者基于OpenHarmony系统搭建一个简易的OTA升级搜包示例服务器。该服务器通过SSL协议通信，模拟向设备管理端（或系统服务）返回升级包的元数据信息（如版本号、校验值、下载地址等），用
+   
+   于开发和调试系统升级功能。
+
 ## 开发步骤
 
-1. 生成SSL证书
+1. 准备SSL证书。
 
-    生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
+    生成SSL证书。生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
 
     ```shell
     openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out serverCert.cer -subj "/C=CN/ST=GD/L=GZ/O=abc/OU=defg/CN=hijk/emailAddress=test.com"

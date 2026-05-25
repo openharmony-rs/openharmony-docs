@@ -1,4 +1,4 @@
-# Basic Services Kit术语（Update）
+# Update Kit术语
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Update-->
 <!--Owner: @RainyDay_005; @huangsiping3-->
