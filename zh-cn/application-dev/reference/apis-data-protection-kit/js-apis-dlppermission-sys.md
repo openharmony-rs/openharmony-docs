@@ -41,54 +41,7 @@
 
 - **DLPFile**: 表示一个DLP文件对象。
 
-```mermaid
-classDiagram
-    class dlpPermission {
-        <<module>>
-        getDLPGatheringPolicy() Promise~GatheringPolicyType~
-        installDLPSandbox() Promise~DLPSandboxInfo~
-        uninstallDLPSandbox() Promise~void~
-        on(event, callback) void
-        off(event, callback) void
-        generateDLPFile() Promise~DLPFile~
-        openDLPFile() Promise~DLPFile~
-    }
-    
-    class DLPFile {
-        dlpProperty: DLPProperty
-        addDLPLinkFile(linkFileName: string) Promise~void~
-        replaceDLPLinkFile(linkFileName: string) Promise~void~
-        deleteDLPLinkFile(linkFileName: string) Promise~void~
-        stopFuseLink() Promise~void~
-        resumeFuseLink() Promise~void~
-        recoverDLPFile(plaintextFd: number) Promise~void~
-        closeDLPFile() Promise~void~
-    }
-    
-    class GatheringPolicyType {
-        <<enumeration>>
-        GATHERING = 1
-        NON_GATHERING = 2
-    }
-    
-    class DLPSandboxInfo {
-        <<interface>>
-        appIndex: number
-        tokenID: number
-        bindAppIndex?: number
-    }
-    
-    class DLPSandboxState {
-        <<interface>>
-        bundleName: string
-        appIndex: number
-    }
-    
-    dlpPermission ..> DLPFile : Dependency
-    dlpPermission ..> GatheringPolicyType : Dependency
-    dlpPermission ..> DLPSandboxInfo : Dependency
-    dlpPermission ..> DLPSandboxState : Dependency
-```
+![UML图](./figure/dlpPermission_main_class.png)
 
 ### API配对调用关系表
 
