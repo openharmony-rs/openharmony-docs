@@ -240,6 +240,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
 | audioBitrate | number     | 否 | 是 | 输出音频的码率，单位为比特率（bps），支持范围[1, 500000]。默认设置为48Kbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式，当前仅支持AAC。默认设置为AAC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| audioCodecV2 | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式。如果指定的格式不受支持，prepare将失败。默认设置为AAC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 <br> **起始版本：** 26.0.0。 |
 | fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否 | 否   | 输出视频文件的封装格式，当前视频文件仅支持MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | videoBitrate         | number | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p, 480P]默认码率值为1Mbps，(480P, 720P]默认码率值为2Mbps，(720P, 1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否 | 是   | 输出视频的编码格式，当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
