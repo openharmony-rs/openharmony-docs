@@ -180,9 +180,9 @@ dlpPermission.isDLPFile(file, (err, isDLPFile) => {
 
 getDLPPermissionInfo(): Promise&lt;DLPPermissionInfo&gt;
 
-查询当前DLP沙箱的权限信息。仅支持在DLP沙箱应用中调用。返回的权限信息包括文件的授权类型和可执行的操作权限(如查看、编辑、复制等)。
+查询当前DLP沙箱的权限信息。仅支持在DLP沙箱应用中调用。返回的权限信息包括文件的授权类型和可执行的操作权限(如查看、编辑、复制等)。使用Promise异步回调。
 
-在DLP沙箱中处理文件时,可根据权限信息判断当前用户可以执行哪些操作,避免调用无权限的功能。使用Promise异步回调。
+在DLP沙箱中处理文件时，可根据权限信息判断当前用户可以执行哪些操作，避免调用无权限的功能。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -380,7 +380,7 @@ off(type: 'openDLPFile', listener?: Callback&lt;AccessedDLPFileInfo&gt;): void
 
 取消监听打开DLP文件。仅支持在非DLP沙箱应用中调用。调用成功后，将不再接收DLP文件打开事件的通知。
 
-通常在页面销毁或不再需要监听时调用以释放资源。
+该接口通常在页面销毁或不再需要监听时调用以释放资源。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -417,7 +417,7 @@ isInSandbox(): Promise&lt;boolean&gt;
 
 查询当前应用是否运行在DLP沙箱环境。调用成功后返回boolean值，true表示运行在沙箱中，false表示不在沙箱中。使用Promise异步回调。
 
-用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
+该接口用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -454,7 +454,7 @@ isInSandbox(callback: AsyncCallback&lt;boolean&gt;): void
 
 查询当前应用是否运行在DLP沙箱环境。使用callback异步回调。
 
-用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
+该接口用于判断当前应用是否处于DLP沙箱环境，以便决定是否执行沙箱相关的操作或调用沙箱专用接口。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -494,7 +494,7 @@ getDLPSupportedFileTypes(): Promise&lt;Array&lt;string&gt;&gt;
 
 查询当前可支持权限设置和校验的文件扩展名类型列表。调用成功后返回支持的文件类型列表，用于判断哪些文件类型可进行DLP权限管理。使用Promise异步回调。
 
-用于获取支持DLP权限管理的文件类型列表，以便决定当前文件是否可以进行加密。
+该接口用于获取支持DLP权限管理的文件类型列表，以便决定当前文件是否可以进行加密。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -531,7 +531,7 @@ getDLPSupportedFileTypes(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): vo
 
 查询当前可支持权限设置和校验的文件扩展名类型列表。调用成功后返回支持的文件类型列表，用于判断哪些文件类型可进行DLP权限管理。使用callback异步回调。
 
-用于获取支持DLP权限管理的文件类型列表，以便决定当前文件是否可以进行加密。
+该接口用于获取支持DLP权限管理的文件类型列表，以便决定当前文件是否可以进行加密。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -571,7 +571,7 @@ setRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景，可提升文件打开效率。使用Promise异步回调。
 
-用于设置DLP沙箱的保留状态，避免频繁打开同一DLP文件时重复创建沙箱环境，提升文件访问效率。
+该接口用于设置DLP沙箱的保留状态，避免频繁打开同一DLP文件时重复创建沙箱环境，提升文件访问效率。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -619,7 +619,7 @@ setRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;void&
 
 设置DLP沙箱的保留状态。默认情况下，打开DLP文件时系统会自动创建沙箱环境，关闭文件后自动销毁沙箱。设置保留状态后，即使关闭DLP文件，沙箱环境也会保留，便于快速重新打开相同DLP文件。适用于需要频繁操作同一DLP文件的场景，可提升文件打开效率。
 
-用于设置DLP沙箱的保留状态，避免频繁打开同一DLP文件时重复创建沙箱环境，提升文件访问效率。
+该接口用于设置DLP沙箱的保留状态，避免频繁打开同一DLP文件时重复创建沙箱环境，提升文件访问效率。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -669,7 +669,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;): Promise&lt;void&gt;
 
 取消沙箱保留状态即恢复DLP文件关闭时自动卸载沙箱策略。使用Promise异步回调。
 
-用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
+该接口用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -714,7 +714,7 @@ cancelRetentionState(docUris: Array&lt;string&gt;, callback: AsyncCallback&lt;vo
 
 取消沙箱保留状态即恢复DLP文件关闭时自动卸载沙箱策略。使用callback异步回调。
 
-用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
+该接口用于取消沙箱保留状态，恢复默认行为以释放系统资源，适用于不再频繁访问DLP文件的场景。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -756,7 +756,7 @@ getRetentionSandboxList(bundleName?: string): Promise&lt;Array&lt;RetentionSandb
 
 查询指定应用的保留沙箱信息列表。仅支持在非DLP沙箱应用中调用。使用Promise异步回调。
 
-用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
+该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -801,7 +801,7 @@ getRetentionSandboxList(bundleName: string, callback: AsyncCallback&lt;Array&lt;
 
 查询指定应用的保留沙箱信息列表。使用callback异步回调。
 
-用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
+该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -843,7 +843,7 @@ getRetentionSandboxList(callback: AsyncCallback&lt;Array&lt;RetentionSandboxInfo
 
 查询当前应用的保留沙箱信息列表。使用callback异步回调。
 
-用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
+该接口用于查询指定应用的保留沙箱列表，以便查看或管理当前处于保留状态的沙箱环境。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -884,7 +884,7 @@ getDLPFileAccessRecords(): Promise&lt;Array&lt;AccessedDLPFileInfo&gt;&gt;
 
 查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。仅支持在非DLP沙箱应用中调用。使用Promise异步回调。
 
-用于获取最近访问的DLP文件记录列表，便于审计追踪和文件使用情况管理。
+该接口用于获取最近访问的DLP文件记录列表，便于审计追踪和文件使用情况管理。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -922,7 +922,7 @@ getDLPFileAccessRecords(callback: AsyncCallback&lt;Array&lt;AccessedDLPFileInfo&
 
 查询最近访问的DLP文件列表。调用成功后返回文件访问记录，用于追踪和管理DLP文件的使用情况。使用callback异步回调。
 
-用于获取最近访问的DLP文件记录列表，便于审计追踪和文件使用情况管理。
+该接口用于获取最近访问的DLP文件记录列表，便于审计追踪和文件使用情况管理。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -963,7 +963,7 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 在当前[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)界面以无边框形式打开DLP权限管理应用。使用Promise异步回调。
 
-用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。
+该接口用于拉起DLP权限管理应用配置文件权限，并将用户操作结果返回给调用方。
 
 > **说明：**
 >
@@ -1025,7 +1025,7 @@ setSandboxAppConfig(configInfo: string): Promise&lt;void&gt;
 
 设置沙箱应用配置信息，配置信息为JSON字符串格式，具体内容由应用自行设置。调用成功后，沙箱应用将按照配置信息运行。使用Promise异步回调。
 
-用于设置沙箱应用的配置信息，以便应用按需传递自定义参数。
+该接口用于设置沙箱应用的配置信息，以便应用按需传递自定义参数。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1070,7 +1070,7 @@ cleanSandboxAppConfig(): Promise&lt;void&gt;
 
 清理沙箱应用配置信息。调用成功后，沙箱应用配置将被清除，恢复默认状态。使用Promise异步回调。
 
-用于清理沙箱应用的配置信息，恢复默认状态以防止配置残留影响后续使用。
+该接口用于清理沙箱应用的配置信息，恢复默认状态以防止配置残留影响后续使用。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1108,7 +1108,7 @@ getSandboxAppConfig(): Promise&lt;string&gt;
 
 获取沙箱应用配置信息，使用Promise异步回调。
 
-用于获取沙箱应用的配置信息，便于读取或验证当前的配置状态。
+该接口用于获取沙箱应用的配置信息，便于读取或验证当前的配置状态。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
@@ -1144,7 +1144,7 @@ isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
 查询当前系统是否提供加密保护特性，仅支持企业设备且需[MDM（Mobile Device Management，移动设备管理）](../../mdm/mdm-kit-intro.md)配置使能。调用成功后返回查询结果，用于判断系统是否支持DLP加密功能。使用Promise异步回调。
 
-用于判断当前系统是否支持DLP加密功能，以便在不支持的设备上做兼容处理或功能降级。
+该接口用于判断当前系统是否支持DLP加密功能，以便在不支持的设备上做兼容处理或功能降级。
 
 > **说明：**
 >
@@ -1183,7 +1183,7 @@ setEnterprisePolicy(policy: EnterprisePolicy): void
 
 设置企业应用防护策略。调用成功后，企业应用的DLP防护将按照设置的策略执行。
 
-可用于企业管理员配置DLP安全策略，以统一管理企业数据安全防护规则。
+该接口可用于企业管理员配置DLP安全策略，以统一管理企业数据安全防护规则。
 
 > **说明：**
 >
@@ -1441,7 +1441,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 
 将DLP文件解密生成明文文件，仅支持企业账号调用。使用Promise异步回调。
 
-用于将DLP加密文件解密为明文文件，适用于拥有者权限用户导出或迁移文件。
+该接口用于将DLP加密文件解密为明文文件，适用于拥有者权限用户导出或迁移文件。
 > **说明：**
 >
 > 该接口仅支持企业账号调用，需要企业自行搭建企业账号服务器配套使用。由企业服务器管控账号是否有权限解密DLP文件。
@@ -1512,7 +1512,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 在DLP文件中解析文件头，获取DLP明文策略。返回的策略JSON字符串包含[DLPProperty](#dlpproperty21)和[CustomProperty](#customproperty21)信息。使用Promise异步回调。
 
-可用于在查看DLP文件权限配置等场景中，获取文件的策略信息以便进行分析。
+该接口可用于在查看DLP文件权限配置等场景中，获取文件的策略信息以便进行分析。
 
 > **说明：**
 >
@@ -1656,7 +1656,7 @@ connectServer(requestId: string, requestData: string, callback: Callback\<string
 
 该函数提供给SA（System Ability）侧调用，处理完连接云端服务的请求后，通过callback将结果返回给SA（System Ability）。
 
-可用于企业账号认证、云端权限验证等场景，实现SA与云服务器的通信能力，完成权限校验或账号验证流程。
+该接口可用于企业账号认证、云端权限验证等场景，实现SA与云服务器的通信能力，完成权限校验或账号验证流程。
 
 > **说明：**
 >
@@ -1806,7 +1806,7 @@ static unregisterPlugin(): void
   
 提供将回调从SA（System Ability）侧注销的能力。
 
-可用于应用退出时注销回调释放资源，确保回调能力正确释放。
+该接口可用于应用退出时注销回调释放资源，确保回调能力正确释放。
 
 > **说明：**
 >
