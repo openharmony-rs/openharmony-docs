@@ -28,7 +28,7 @@
 
 ### 核心接口类型
 
-- **CustomProperty**：表示自定义策略，包含企业定制策略的json字符串和企业DLP文件的查询选项。
+- **CustomProperty**：表示自定义策略，包含企业定制策略的JSON字符串和企业DLP文件的查询选项。
 - **DLPProperty**：表示授权相关信息，包含权限设置者账号、权限设置者账号的ID和权限设置者账号类型等。
 - **AuthUser**：表示授权用户数据，包含被授权用户账号、被授权用户账号类型和被授予的权限等。
 - **DlpConnPlugin**：用于注册云端认证回调能力的接口，包含连接服务器方法（参数：请求标识、请求数据、回调函数）。
@@ -1331,7 +1331,7 @@ DLP文件授权类型的枚举。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| policyString | string | 否 | 否 | 表示企业定制策略的json字符串。长度范围[0, 4194304]字节，超出此范围抛出错误码19100001。 |
+| policyString | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度范围[0, 4194304]字节，超出此范围抛出错误码19100001。 |
 
 ## dlpPermission.generateDlpFileForEnterprise<sup>21+</sup>
 
@@ -1515,7 +1515,7 @@ queryDlpPolicy(dlpFd: number): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象，返回当前DLP策略的json字符串。长度不超过4194304字节。 |
+| Promise&lt;string&gt; | Promise对象，返回当前DLP策略的JSON字符串。长度不超过4194304字节。 |
 
 **错误码：**
 
@@ -1586,7 +1586,7 @@ dlpPermission.queryDlpPolicy(dlpFd).then((policy) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| enterprise | string | 否 | 否 | 表示企业定制策略的json字符串。长度范围[0, 4194304]字节，超出此范围抛出错误码19100001。 |
+| enterprise | string | 否 | 否 | 表示企业定制策略的JSON字符串。长度范围[0, 4194304]字节，超出此范围抛出错误码19100001。 |
 | options | [DlpFileQueryOptions](#dlpfilequeryoptions) | 否 | 是 | 企业DLP文件的查询选项，默认为空。**起始版本**：26.0.0**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DLPProperty<sup>21+</sup>
