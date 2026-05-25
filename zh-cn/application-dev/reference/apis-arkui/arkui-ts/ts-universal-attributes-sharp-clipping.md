@@ -86,6 +86,8 @@ clip(value: boolean | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[clip<sup>12+</sup>](#clip12)和[clip<sup>18+</sup>](#clip18)。
@@ -386,6 +388,8 @@ mask(value: ProgressMask | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[mask<sup>12+</sup>](#mask12)和[mask<sup>18+</sup>](#mask18)。
@@ -419,6 +423,8 @@ mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute |
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -503,6 +509,8 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 为组件上添加指定形状的遮罩。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
