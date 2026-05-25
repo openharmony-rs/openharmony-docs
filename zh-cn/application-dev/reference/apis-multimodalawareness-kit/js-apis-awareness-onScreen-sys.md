@@ -700,16 +700,14 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 }
 
 let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
-  "InjectEvent": {
-    "InjectEvent" : {
-      "componentType":'',
-      "action": 'back',
-      "params": {}
+  parameters: {
+    "InjectEvent": {
+      "injectEvent": '{"componentType":"","action":"back","params":{}}',
+      "compId": ["0"],
+      "windowId": 0,
+      "displayId": -1
     }
-    "comId": ["0"],
-    "windowId": 0,
-    "displayId": -1
-   }
+  }
 }
 
 try {
