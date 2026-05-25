@@ -458,7 +458,7 @@ typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *p
 
 | 参数项 | 描述 |
 | -- | -- |
-| (OH_AVPlayer \*player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | 指向OH_AVPlayer实例的指针。 |
 | OH_AVBuffer \*pcmBuffer | 音频PCM数据。音频PCM数据仅在此回调期间有效，回调返回后由播放器释放。 |
 | void \*userData | 指向用户指定数据的指针。 |
 
