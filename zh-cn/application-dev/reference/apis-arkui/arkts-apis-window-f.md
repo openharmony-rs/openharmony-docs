@@ -1807,7 +1807,7 @@ offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
 
 关闭应用进程获焦状态变化的监听。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
