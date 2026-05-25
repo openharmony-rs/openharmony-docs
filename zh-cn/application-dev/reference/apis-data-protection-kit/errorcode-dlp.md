@@ -276,7 +276,7 @@ The user does not have the permission.
 
 **错误描述**
 
-当前登录用户没有执行该操作或访问该DLP文件的权限。
+当前登录的用户没有执行该操作或访问该DLP文件的权限。
 
 **可能原因**
 
