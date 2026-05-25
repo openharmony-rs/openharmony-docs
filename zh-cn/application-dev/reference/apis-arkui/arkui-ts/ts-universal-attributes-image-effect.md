@@ -1,8 +1,8 @@
 # 图像效果
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -1298,6 +1298,8 @@ useShadowBatching(value: boolean | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[useShadowBatching<sup>11+</sup> ](#useshadowbatching11)和[useShadowBatching<sup>18+</sup>](#useshadowbatching18)。
@@ -1383,6 +1385,8 @@ sphericalEffect(value: double | undefined): this
 设置组件的图像球面化程度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1470,6 +1474,8 @@ lightUpEffect(value: double | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[lightUpEffect<sup>12+</sup> ](#lightupeffect12)和[lightUpEffect<sup>18+</sup>](#lightupeffect18)。
@@ -1556,6 +1562,8 @@ pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
 设置组件的图像边缘像素扩展距离。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
