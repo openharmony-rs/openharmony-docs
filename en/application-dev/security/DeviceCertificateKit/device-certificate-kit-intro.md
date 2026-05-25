@@ -15,7 +15,7 @@ The certificate framework provides APIs for parsing and validating digital certi
 
 You can use the APIs to parse and validate a certificate, certificate extensions, and a certificate revocation list (CRL), and validate a certificate chain.
 
-The certificate framework module shields the differences between third-party algorithm libraries to make development a more enjoyable experience.
+The certificate framework module shields the differences between third-party algorithm libraries to enable rapid development.
 
 **Scenarios**
 

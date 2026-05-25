@@ -1,7 +1,7 @@
 # Interface (AVSessionController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -17,6 +17,7 @@ AVSessionController控制器可查看会话ID，并可完成对会话发送命�
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## 属性
@@ -33,6 +34,7 @@ import { avSession } from '@kit.AVSessionKit';
 **示例：**
 
 ```ts
+// Index.ets
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -49,7 +51,7 @@ struct Index {
     avSession.createAVSession(this.getUIContext().getHostContext(), this.tag, "audio").then(async (data: avSession.AVSession) => {
       this.currentAVSession = data;
       this.sessionId = this.currentAVSession.sessionId;
-      this.AVSessionController = await this.currentAVSession.getController();
+      this.avsessionController = await this.currentAVSession.getController();
       console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
     });
   }
@@ -94,7 +96,11 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 **示例：**
 
 ```ts
-avsessionController.getAVPlaybackState((state: avSession.AVPlaybackState) => {
+avcontroller.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
+  if (err) {
+    console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in getting AV playback state.');
 });
 ```
@@ -128,7 +134,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 **示例：**
 
 ```ts
-avsessionController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+avcontroller.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
   console.info('Succeeded in getting AV playback state.');
 });
 ```
@@ -162,7 +168,7 @@ getAVMetadata(): Promise\<AVMetadata>
 **示例：**
 
 ```ts
-avsessionController.getAVMetadata().then((metadata: avSession.AVMetadata) => {
+avcontroller.getAVMetadata().then((metadata: avSession.AVMetadata) => {
   console.info(`Succeeded in getting AV metadata, assetId: ${metadata.assetId}`);
 });
 ```
@@ -194,7 +200,11 @@ getAVMetadata(callback: AsyncCallback\<AVMetadata>): void
 **示例：**
 
 ```ts
-avsessionController.getAVMetadata((metadata: avSession.AVMetadata) => {
+avcontroller.getAVMetadata((err: BusinessError, metadata: avSession.AVMetadata) => {
+  if (err) {
+    console.error(`Failed to get AV metadata, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting AV metadata, assetId: ${metadata.assetId}`);
 });
 ```
@@ -228,8 +238,7 @@ getAVQueueTitle(): Promise\<string>
 **示例：**
 
 ```ts
-
-avsessionController.getAVQueueTitle().then((title: string) => {
+avcontroller.getAVQueueTitle().then((title: string) => {
   console.info(`Succeeded in getting AV queue title: ${title}`);
 });
 ```
@@ -261,8 +270,11 @@ getAVQueueTitle(callback: AsyncCallback\<string>): void
 **示例：**
 
 ```ts
-
-avsessionController.getAVQueueTitle((title: string) => {
+avcontroller.getAVQueueTitle((err: BusinessError, title: string) => {
+  if (err) {
+    console.error(`Failed to get AV queue title, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting AV queue title: ${title}`);
 });
 ```
@@ -296,8 +308,7 @@ getAVQueueItems(): Promise\<Array\<AVQueueItem>>
 **示例：**
 
 ```ts
-
-avsessionController.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
+avcontroller.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
   console.info(`Succeeded in getting AV queue items, length: ${items.length}`);
 });
 ```
@@ -329,8 +340,11 @@ getAVQueueItems(callback: AsyncCallback\<Array\<AVQueueItem>>): void
 **示例：**
 
 ```ts
-
-avsessionController.getAVQueueItems((items: avSession.AVQueueItem[]) => {
+avcontroller.getAVQueueItems((err: BusinessError, items: avSession.AVQueueItem[]) => {
+  if (err) {
+    console.error(`Failed to get AV queue items, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting AV queue items, length: ${items.length}`);
 });
 ```
@@ -371,9 +385,8 @@ skipToQueueItem(itemId: number): Promise\<void>
 **示例：**
 
 ```ts
-
 let queueItemId = 0;
-avsessionController.skipToQueueItem(queueItemId).then(() => {
+avcontroller.skipToQueueItem(queueItemId).then(() => {
   console.info('Succeeded in skipping to queue item.');
 });
 ```
@@ -407,9 +420,12 @@ skipToQueueItem(itemId: number, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-
 let queueItemId = 0;
-avsessionController.skipToQueueItem(queueItemId, () => {
+avcontroller.skipToQueueItem(queueItemId, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to skip to queue item, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in skipping to queue item.');
 });
 ```
@@ -442,8 +458,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 **示例：**
 
 ```ts
-
-avsessionController.getOutputDevice().then((deviceInfo: avSession.OutputDeviceInfo) => {
+avcontroller.getOutputDevice().then((deviceInfo: avSession.OutputDeviceInfo) => {
   console.info('Succeeded in getting output device.');
 });
 ```
@@ -474,8 +489,11 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 **示例：**
 
 ```ts
-
-avsessionController.getOutputDevice((deviceInfo: avSession.OutputDeviceInfo) => {
+avcontroller.getOutputDevice((err: BusinessError, deviceInfo: avSession.OutputDeviceInfo) => {
+  if (err) {
+    console.error(`Failed to get output device, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in getting output device.');
 });
 ```
@@ -523,8 +541,7 @@ import { Key, KeyEvent } from '@kit.InputKit';
 let keyItem: Key = {code:0x49, pressedTime:2, deviceId:0};
 let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
-
-avsessionController.sendAVKeyEvent(event).then(() => {
+avcontroller.sendAVKeyEvent(event).then(() => {
   console.info('Succeeded in sending AV key event.');
 });
 ```
@@ -561,10 +578,15 @@ sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
 ```ts
 import { Key, KeyEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: Key = {code:0x49, pressedTime:2, deviceId:0};
 let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
-avsessionController.sendAVKeyEvent(event, () => {
+avcontroller.sendAVKeyEvent(event, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to send AV key event, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in sending AV key event.');
 });
 ```
@@ -598,8 +620,7 @@ getLaunchAbility(): Promise\<WantAgent>
 **示例：**
 
 ```ts
-
-avsessionController.getLaunchAbility().then((agent: object) => {
+avcontroller.getLaunchAbility().then((agent: object) => {
   console.info(`Succeeded in getting launch ability: ${agent}`);
 });
 ```
@@ -631,8 +652,11 @@ getLaunchAbility(callback: AsyncCallback\<WantAgent>): void
 **示例：**
 
 ```ts
-
-avsessionController.getLaunchAbility((agent: object) => {
+avcontroller.getLaunchAbility((err: BusinessError, agent: object) => {
+  if (err) {
+    console.error(`Failed to get launch ability, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting launch ability: ${agent}`);
 });
 ```
@@ -665,7 +689,7 @@ getRealPlaybackPositionSync(): number
 **示例：**
 
 ```ts
-let time: number = avsessionController.getRealPlaybackPositionSync();
+let time: number = avcontroller.getRealPlaybackPositionSync();
 ```
 
 ## isActive<sup>10+</sup>
@@ -697,8 +721,7 @@ isActive(): Promise\<boolean>
 **示例：**
 
 ```ts
-
-avsessionController.isActive().then((isActive: boolean) => {
+avcontroller.isActive().then((isActive: boolean) => {
   console.info(`Succeeded in checking active state: ${isActive}`);
 });
 ```
@@ -730,8 +753,11 @@ isActive(callback: AsyncCallback\<boolean>): void
 **示例：**
 
 ```ts
-
-avsessionController.isActive((isActive: boolean) => {
+avcontroller.isActive((err: BusinessError, isActive: boolean) => {
+  if (err) {
+    console.error(`Failed to check active state, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in checking active state: ${isActive}`);
 });
 ```
@@ -764,8 +790,7 @@ destroy(): Promise\<void>
 **示例：**
 
 ```ts
-
-avsessionController.destroy().then(() => {
+avcontroller.destroy().then(() => {
   console.info('Succeeded in destroying.');
 });
 ```
@@ -796,8 +821,11 @@ destroy(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-
-avsessionController.destroy(() => {
+avcontroller.destroy((err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to destroy controller, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in destroying.');
 });
 ```
@@ -831,8 +859,7 @@ getValidCommands(): Promise\<Array\<AVControlCommandType>>
 **示例：**
 
 ```ts
-
-avsessionController.getValidCommands().then((validCommands: avSession.AVControlCommandType[]) => {
+avcontroller.getValidCommands().then((validCommands: avSession.AVControlCommandType[]) => {
   console.info(`Succeeded in getting valid commands, size: ${validCommands.length}`);
 });
 ```
@@ -864,8 +891,11 @@ getValidCommands(callback: AsyncCallback\<Array\<AVControlCommandType>>): void
 **示例：**
 
 ```ts
-
-avsessionController.getValidCommands((validCommands: avSession.AVControlCommandType[]) => {
+avcontroller.getValidCommands((err: BusinessError, validCommands: avSession.AVControlCommandType[]) => {
+  if (err) {
+    console.error(`Failed to get valid commands, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info(`Succeeded in getting valid commands, size: ${validCommands.length}`);
 });
 ```
@@ -913,9 +943,8 @@ sendControlCommand(command: AVControlCommand): Promise\<void>
 **示例：**
 
 ```ts
-
 let avCommand: avSession.AVControlCommand = {command:'play'};
-avsessionController.sendControlCommand(avCommand).then(() => {
+avcontroller.sendControlCommand(avCommand).then(() => {
   console.info('Succeeded in sending control command.');
 });
 ```
@@ -956,9 +985,12 @@ sendControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): v
 **示例：**
 
 ```ts
-
 let avCommand: avSession.AVControlCommand = {command:'play'};
-avsessionController.sendControlCommand(avCommand, () => {
+avcontroller.sendControlCommand(avCommand, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to send control command, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
   console.info('Succeeded in sending control command.');
 });
 ```
@@ -1007,23 +1039,11 @@ sendCommonCommand(command: string, args: {[key: string]: Object}): Promise\<void
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
 
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
-});
 let commandName = "my_command";
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).sendCommonCommand(commandName, {command : "This is my command"}).then(() => {
-    console.info('Succeeded in sending common command.');
-  })
-}
+avcontroller.sendCommonCommand(commandName, {command : "This is my command"}).then(() => {
+  console.info('Succeeded in sending common command.');
+});
 ```
 
 ## sendCommonCommand<sup>10+</sup>
@@ -1063,23 +1083,15 @@ sendCommonCommand(command: string, args: {[key: string]: Object}, callback: Asyn
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-          
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
-});
+
 let commandName = "my_command";
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).sendCommonCommand(commandName, {command : "This is my command"}, () => {
-    console.info('Succeeded in sending common command.');
-  })
-}
+avcontroller.sendCommonCommand(commandName, {command : "This is my command"}, (err: BusinessError) => {
+  if (err) {
+    console.error(`Failed to send common command, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info('Succeeded in sending common command.');
+})
 ```
 
 ## sendCustomData<sup>20+</sup>
@@ -1117,6 +1129,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 **示例：**
 
 ```ts
+// Index.ets
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1187,6 +1200,7 @@ getExtras(): Promise\<{[key: string]: Object}>
 **示例：**
 
 ```ts
+// Index.ets
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1257,22 +1271,13 @@ getExtras(callback: AsyncCallback\<{[key: string]: Object}>): void
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+avcontroller.getExtras((err: BusinessError, extras) => {
+  if (err) {
+    console.error(`Failed to get extras, code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting extras: ${extras}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).getExtras((extras) => {
-    console.info(`Succeeded in getting extras: ${extras}`);
-  });
-}
 ```
 
 ## getExtrasWithEvent<sup>18+</sup>
@@ -1309,7 +1314,6 @@ getExtrasWithEvent(extraEvent: string): Promise\<ExtraInfo>
 **示例：**
 
 ```ts
-
 let controller: avSession.AVSessionController | ESObject;
 const COMMON_COMMAND_STRING_1 = 'AUDIO_GET_VOLUME';
 const COMMON_COMMAND_STRING_2 = 'AUDIO_GET_AVAILABLE_DEVICES';
@@ -1357,30 +1361,7 @@ isDesktopLyricEnabled(): Promise\<boolean>
 | 6600111  | The desktop lyrics feature is not supported. |
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let enabled: boolean = await controller.isDesktopLyricEnabled()
-          console.info(`desktop lyric enabled:${enabled}`)
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.isDesktopLyricEnabled();
 ```
 
 ## onDesktopLyricEnabled<sup>23+</sup>
@@ -1409,33 +1390,11 @@ onDesktopLyricEnabled(callback: Callback\<boolean>): void
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricEnabled((enabled: boolean) => {
-            console.info(`desktop lyric enabled state : ${enabled}`);
-          })
-          console.info('Succeeded in setting onDesktopLyricEnabled.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricEnabled((enabled: boolean) => {
+  console.info(`desktop lyric enabled state : ${enabled}`);
+})
 ```
 
 ## offDesktopLyricEnabled<sup>23+</sup>
@@ -1464,31 +1423,9 @@ offDesktopLyricEnabled(callback?: Callback\<boolean>): void
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricEnabled();
-          console.info('Succeeded in setting offDesktopLyricEnabled.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricEnabled();
 ```
 
 ## setDesktopLyricVisible<sup>23+</sup>
@@ -1528,30 +1465,7 @@ setDesktopLyricVisible(visible: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          await controller.setDesktopLyricVisible(true);
-          console.info('Succeeded in setting desktop lyric visible.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.setDesktopLyricVisible(true);
 ```
 
 ## isDesktopLyricVisible<sup>23+</sup>
@@ -1583,31 +1497,9 @@ isDesktopLyricVisible(): Promise\<boolean>
 | 6600111  | The desktop lyrics feature is not supported. |
 
 **示例：**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let visible: boolean = await controller.isDesktopLyricVisible();
-          console.info(`isDesktopLyricVisible: ${visible}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.isDesktopLyricVisible();
 ```
 
 ## onDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1636,32 +1528,11 @@ onDesktopLyricVisibilityChanged(callback: Callback\<boolean>): void
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricVisibilityChanged((visible: boolean) => {
-            console.info(`desktop lyric visible state: ${visible}`);
-          });
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricVisibilityChanged((visible: boolean) => {
+  console.info(`desktop lyric visible state: ${visible}`);
+});
 ```
 
 ## offDesktopLyricVisibilityChanged<sup>23+</sup>
@@ -1690,30 +1561,9 @@ offDesktopLyricVisibilityChanged(callback?: Callback\<boolean>): void
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricVisibilityChanged();
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricVisibilityChanged();
 ```
 
 ## setDesktopLyricState<sup>23+</sup>
@@ -1753,33 +1603,10 @@ setDesktopLyricState(state: DesktopLyricState): Promise\<void>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let state: avSession.DesktopLyricState = {
-            isLocked: true,
-          };
-          await controller.setDesktopLyricState(state);
-          console.info('Succeeded in setting desktop lyric state.');
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+let state: avSession.DesktopLyricState = {
+  isLocked: true,
+};
+avcontroller.setDesktopLyricState(state);
 ```
 
 ## getDesktopLyricState<sup>23+</sup>
@@ -1813,30 +1640,7 @@ getDesktopLyricState(): Promise\<DesktopLyricState>
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          let state: avSession.DesktopLyricState = await controller.getDesktopLyricState();
-          console.info(`getDesktopLyricState: ${state.isLocked}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.getDesktopLyricState();
 ```
 
 ## onDesktopLyricStateChanged<sup>23+</sup>
@@ -1865,32 +1669,11 @@ onDesktopLyricStateChanged(callback: Callback\<DesktopLyricState>): void
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
-            console.info(`desktop lyric isLocked : ${state.isLocked}`);
-          })
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
+  console.info(`desktop lyric isLocked : ${state.isLocked}`);
+})
 ```
 
 ## offDesktopLyricStateChanged<sup>23+</sup>
@@ -1919,30 +1702,9 @@ offDesktopLyricStateChanged(callback?: Callback\<DesktopLyricState>): void
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'hello world';
-
-  build() {
-    Column() {
-      Text(this.message)
-        .onClick(async () => {
-          let tag: string = "createNewSession";
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-          console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
-          let controller: avSession.AVSessionController = await currentAVSession.getController();
-          controller.offDesktopLyricStateChanged();
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
+avcontroller.offDesktopLyricStateChanged();
 ```
 
 ## on('metadataChange')<sup>10+</sup>
@@ -1978,11 +1740,11 @@ on(type: 'metadataChange', filter: Array\<keyof AVMetadata> | 'all', callback: (
 **示例：**
 
 ```ts
-avsessionController.on('metadataChange', 'all', (metadata: avSession.AVMetadata) => {
+avcontroller.on('metadataChange', 'all', (metadata: avSession.AVMetadata) => {
   console.info(`on metadataChange assetId : ${metadata.assetId}`);
 });
 
-avsessionController.on('metadataChange', ['assetId', 'title', 'description'], (metadata: avSession.AVMetadata) => {
+avcontroller.on('metadataChange', ['assetId', 'title', 'description'], (metadata: avSession.AVMetadata) => {
   console.info(`on metadataChange assetId : ${metadata.assetId}`);
 });
 
@@ -2018,7 +1780,7 @@ off(type: 'metadataChange', callback?: (data: AVMetadata) => void)
 **示例：**
 
 ```ts
-avsessionController.off('metadataChange');
+avcontroller.off('metadataChange');
 ```
 
 ## on('playbackStateChange')<sup>10+</sup>
@@ -2054,11 +1816,11 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 **示例：**
 
 ```ts
-avsessionController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+avcontroller.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
-avsessionController.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: avSession.AVPlaybackState) => {
+avcontroller.on('playbackStateChange', ['state', 'speed', 'loopMode'], (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 ```
@@ -2093,7 +1855,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void)
 **示例：**
 
 ```ts
-avsessionController.off('playbackStateChange');
+avcontroller.off('playbackStateChange');
 ```
 
 ## on('callMetadataChange')<sup>11+</sup>
@@ -2129,11 +1891,11 @@ on(type: 'callMetadataChange', filter: Array\<keyof CallMetadata> | 'all', callb
 **示例：**
 
 ```ts
-avsessionController.on('callMetadataChange', 'all', (callmetadata: avSession.CallMetadata) => {
+avcontroller.on('callMetadataChange', 'all', (callmetadata: avSession.CallMetadata) => {
   console.info(`on callMetadataChange state : ${callmetadata.name}`);
 });
 
-avsessionController.on('callMetadataChange', ['name'], (callmetadata: avSession.CallMetadata) => {
+avcontroller.on('callMetadataChange', ['name'], (callmetadata: avSession.CallMetadata) => {
   console.info(`on callMetadataChange state : ${callmetadata.name}`);
 });
 ```
@@ -2168,7 +1930,7 @@ off(type: 'callMetadataChange', callback?: Callback\<CallMetadata>): void
 **示例：**
 
 ```ts
-avsessionController.off('callMetadataChange');
+avcontroller.off('callMetadataChange');
 ```
 
 ## on('callStateChange')<sup>11+</sup>
@@ -2204,11 +1966,11 @@ on(type: 'callStateChange', filter: Array\<keyof AVCallState> | 'all', callback:
 **示例：**
 
 ```ts
-avsessionController.on('callStateChange', 'all', (callstate: avSession.AVCallState) => {
+avcontroller.on('callStateChange', 'all', (callstate: avSession.AVCallState) => {
   console.info(`on callStateChange state : ${callstate.state}`);
 });
 
-avsessionController.on('callStateChange', ['state'], (callstate: avSession.AVCallState) => {
+avcontroller.on('callStateChange', ['state'], (callstate: avSession.AVCallState) => {
   console.info(`on callStateChange state : ${callstate.state}`);
 });
 ```
@@ -2243,7 +2005,7 @@ off(type: 'callStateChange', callback?: Callback\<AVCallState>): void
 **示例：**
 
 ```ts
-avsessionController.off('callMetadataChange');
+avcontroller.off('callStateChange');
 ``` 
 
 ## on('sessionDestroy')<sup>10+</sup>
@@ -2278,7 +2040,7 @@ on(type: 'sessionDestroy', callback: () => void)
 **示例：**
 
 ```ts
-avsessionController.on('sessionDestroy', () => {
+avcontroller.on('sessionDestroy', () => {
   console.info('Succeeded in session destroy.');
 });
 ```
@@ -2313,7 +2075,7 @@ off(type: 'sessionDestroy', callback?: () => void)
 **示例：**
 
 ```ts
-avsessionController.off('sessionDestroy');
+avcontroller.off('sessionDestroy');
 ```
 
 ## on('activeStateChange')<sup>10+</sup>
@@ -2348,7 +2110,7 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 **示例：**
 
 ```ts
-avsessionController.on('activeStateChange', (isActive: boolean) => {
+avcontroller.on('activeStateChange', (isActive: boolean) => {
   console.info(`Succeeded in active state change: ${isActive}`);
 });
 ```
@@ -2383,7 +2145,7 @@ off(type: 'activeStateChange', callback?: (isActive: boolean) => void)
 **示例：**
 
 ```ts
-avsessionController.off('activeStateChange');
+avcontroller.off('activeStateChange');
 ```
 
 ## on('validCommandChange')<sup>10+</sup>
@@ -2418,7 +2180,7 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 **示例：**
 
 ```ts
-avsessionController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
+avcontroller.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
   console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
   console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
 });
@@ -2454,7 +2216,7 @@ off(type: 'validCommandChange', callback?: (commands: Array\<AVControlCommandTyp
 **示例：**
 
 ```ts
-avsessionController.off('validCommandChange');
+avcontroller.off('validCommandChange');
 ```
 
 ## on('outputDeviceChange')<sup>10+</sup>
@@ -2489,7 +2251,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 **示例：**
 
 ```ts
-avsessionController.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
+avcontroller.on('outputDeviceChange', (state: avSession.ConnectionState, device: avSession.OutputDeviceInfo) => {
   console.info(`on outputDeviceChange state: ${state}, device : ${device}`);
 });
 ```
@@ -2524,7 +2286,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 **示例：**
 
 ```ts
-avsessionController.off('outputDeviceChange');
+avcontroller.off('outputDeviceChange');
 ```
 
 ## on('sessionEvent')<sup>10+</sup>
@@ -2559,22 +2321,10 @@ on(type: 'sessionEvent', callback: (sessionEvent: string, args: {[key: string]: 
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-       
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+// Index.ets
+avcontroller.on('sessionEvent', (sessionEvent, args) => {
+  console.info(`OnSessionEvent, sessionEvent is ${sessionEvent}, args: ${JSON.stringify(args)}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).on('sessionEvent', (sessionEvent, args) => {
-    console.info(`OnSessionEvent, sessionEvent is ${sessionEvent}, args: ${JSON.stringify(args)}`);
-  });
-}
 ```
 
 ## off('sessionEvent')<sup>10+</sup>
@@ -2607,7 +2357,7 @@ off(type: 'sessionEvent', callback?: (sessionEvent: string, args: {[key: string]
 **示例：**
 
 ```ts
-avsessionController.off('sessionEvent');
+avcontroller.off('sessionEvent');
 ```
 
 ## on('queueItemsChange')<sup>10+</sup>
@@ -2642,7 +2392,7 @@ on(type: 'queueItemsChange', callback: (items: Array<[AVQueueItem](arkts-apis-av
 **示例：**
 
 ```ts
-avsessionController.on('queueItemsChange', (items: avSession.AVQueueItem[]) => {
+avcontroller.on('queueItemsChange', (items: avSession.AVQueueItem[]) => {
   console.info(`OnQueueItemsChange, items length is ${items.length}`);
 });
 ```
@@ -2677,7 +2427,7 @@ off(type: 'queueItemsChange', callback?: (items: Array<[AVQueueItem](arkts-apis-
 **示例：**
 
 ```ts
-avsessionController.off('queueItemsChange');
+avcontroller.off('queueItemsChange');
 ```
 
 ## on('queueTitleChange')<sup>10+</sup>
@@ -2710,7 +2460,7 @@ on(type: 'queueTitleChange', callback: (title: string) => void): void
 **示例：**
 
 ```ts
-avsessionController.on('queueTitleChange', (title: string) => {
+avcontroller.on('queueTitleChange', (title: string) => {
   console.info(`queueTitleChange, title is ${title}`);
 });
 ```
@@ -2745,7 +2495,7 @@ off(type: 'queueTitleChange', callback?: (title: string) => void): void
 **示例：**
 
 ```ts
-avsessionController.off('queueTitleChange');
+avcontroller.off('queueTitleChange');
 ```
 
 ## on('extrasChange')<sup>10+</sup>
@@ -2778,22 +2528,9 @@ on(type: 'extrasChange', callback: (extras: {[key: string]: Object}) => void): v
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+avcontroller.on('extrasChange', (extras) => {
+  console.info(`Caught extrasChange event,the new extra is: ${JSON.stringify(extras)}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).on('extrasChange', (extras) => {
-    console.info(`Caught extrasChange event,the new extra is: ${JSON.stringify(extras)}`);
-  });
-}
 ```
 
 ## off('extrasChange')<sup>10+</sup>
@@ -2826,7 +2563,7 @@ off(type: 'extrasChange', callback?: (extras: {[key: string]: Object}) => void):
 **示例：**
 
 ```ts
-avsessionController.off('extrasChange');
+avcontroller.off('extrasChange');
 ```
 
 ## on('customDataChange')<sup>20+</sup>
@@ -2858,22 +2595,10 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-import { avSession } from '@kit.AVSessionKit';
-
-let tag: string = "createNewSession";
-let sessionId: string = "";
-let controller:avSession.AVSessionController | undefined = undefined;
-avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSession)=> {
-  currentAVSession = data;
-  sessionId = currentAVSession.sessionId;
-  controller = await currentAVSession.getController();
-  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+avcontroller.on('customDataChange', (callback) => {
+  console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
 });
-if (controller !== undefined) {
-  (controller as avSession.AVSessionController).on('customDataChange', (callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
-  });
-}
+
 ```
 
 ## off('customDataChange')<sup>20+</sup>
@@ -2905,7 +2630,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 **示例：**
 
 ```ts
-avsessionController.off('customDataChange');
+avcontroller.off('customDataChange');
 ```
 
 ## getAVPlaybackStateSync<sup>10+</sup>
@@ -2937,7 +2662,7 @@ getAVPlaybackStateSync(): AVPlaybackState;
 **示例：**
 
 ```ts
-let playbackState: avSession.AVPlaybackState = avsessionController.getAVPlaybackStateSync();
+let playbackState: avSession.AVPlaybackState = avcontroller.getAVPlaybackStateSync();
 ```
 
 ## getAVMetadataSync<sup>10+</sup>
@@ -2967,8 +2692,9 @@ getAVMetadataSync(): AVMetadata
 | 6600103  | The session controller does not exist. |
 
 **示例：**
+
 ```ts
-let metaData: avSession.AVMetadata = avsessionController.getAVMetadataSync();
+let metaData: avSession.AVMetadata = avcontroller.getAVMetadataSync();
 ```
 
 ## getAVCallState<sup>11+</sup>
@@ -2998,7 +2724,7 @@ getAVCallState(): Promise\<AVCallState>
 **示例：**
 
 ```ts
-avsessionController.getAVCallState().then((callstate: avSession.AVCallState) => {
+avcontroller.getAVCallState().then((callstate: avSession.AVCallState) => {
   console.info(`Succeeded in getting AV call state: ${callstate.state}`);
 });
 ```
@@ -3030,7 +2756,7 @@ getAVCallState(callback: AsyncCallback\<AVCallState>): void
 **示例：**
 
 ```ts
-avsessionController.getAVCallState((callstate: avSession.AVCallState) => {
+avcontroller.getAVCallState((err: BusinessError, callstate: avSession.AVCallState) => {
   console.info(`Succeeded in getting AV call state: ${callstate.state}`);
 });
 ```
@@ -3062,7 +2788,7 @@ getCallMetadata(): Promise\<CallMetadata>
 **示例：**
 
 ```ts
-avsessionController.getCallMetadata().then((calldata: avSession.CallMetadata) => {
+avcontroller.getCallMetadata().then((calldata: avSession.CallMetadata) => {
   console.info(`Succeeded in getting call metadata, name: ${calldata.name}`);
 });
 ```
@@ -3094,7 +2820,7 @@ getCallMetadata(callback: AsyncCallback\<CallMetadata>): void
 **示例：**
 
 ```ts
-avsessionController.getCallMetadata((calldata: avSession.CallMetadata) => {
+avcontroller.getCallMetadata((calldata: avSession.CallMetadata) => {
   console.info(`Succeeded in getting call metadata, name: ${calldata.name}`);
 });
 ```
@@ -3128,7 +2854,7 @@ getAVQueueTitleSync(): string
 **示例：**
 
 ```ts
-let currentQueueTitle: string = avsessionController.getAVQueueTitleSync();
+let currentQueueTitle: string = avcontroller.getAVQueueTitleSync();
 ```
 
 ## getAVQueueItemsSync<sup>10+</sup>
@@ -3160,7 +2886,7 @@ getAVQueueItemsSync(): Array\<AVQueueItem\>
 **示例：**
 
 ```ts
-let currentQueueItems: Array<avSession.AVQueueItem> = avsessionController.getAVQueueItemsSync();
+let currentQueueItems: Array<avSession.AVQueueItem> = avcontroller.getAVQueueItemsSync();
 ```
 
 ## getOutputDeviceSync<sup>10+</sup>
@@ -3191,7 +2917,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 **示例：**
 
 ```ts
-let currentOutputDevice: avSession.OutputDeviceInfo = avsessionController.getOutputDeviceSync();
+let currentOutputDevice: avSession.OutputDeviceInfo = avcontroller.getOutputDeviceSync();
 ```
 
 ## isActiveSync<sup>10+</sup>
@@ -3223,7 +2949,7 @@ isActiveSync(): boolean
 **示例：**
 
 ```ts
-let isActive: boolean = avsessionController.isActiveSync();
+let isActive: boolean = avcontroller.isActiveSync();
 ```
 
 ## getValidCommandsSync<sup>10+</sup>
@@ -3255,5 +2981,5 @@ getValidCommandsSync(): Array\<AVControlCommandType\>
 **示例：**
 
 ```ts
-let validCommands: Array<avSession.AVControlCommandType> = avsessionController.getValidCommandsSync();
+let validCommands: Array<avSession.AVControlCommandType> = avcontroller.getValidCommandsSync();
 ```

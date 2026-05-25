@@ -1,10 +1,10 @@
 # hid_ddk_api.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## Overview
 
@@ -149,7 +149,7 @@ Initializes an HID DDK.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK is not initialized.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.|
 
 ### OH_Hid_Release()
 
@@ -248,7 +248,7 @@ Writes a report to an HID device.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | uint8_t *data | Data to be written.|
-| uint32_t length | Length of the data to be written. The maximum value is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
+| uint32_t length | Length of data to be written. The maximum value is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 | uint32_t *bytesWritten | Number of written bytes.|
 
 **Returns**

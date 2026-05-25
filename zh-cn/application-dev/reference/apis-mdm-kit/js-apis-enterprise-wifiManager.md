@@ -1,10 +1,10 @@
 # @ohos.enterprise.wifiManager（Wi-Fi管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供企业设备Wi-Fi管理能力，包括查询Wi-Fi开启状态等。
 
@@ -117,7 +117,6 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -144,7 +143,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -172,7 +170,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -200,7 +197,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -227,7 +223,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -254,7 +249,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -298,7 +292,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -342,7 +335,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -386,7 +378,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -431,7 +422,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -931,17 +921,17 @@ Wi-Fi配置信息。
 
 | 名称          | 类型                              | 只读 | 可选 | 说明                                                        |
 | ------------- | ----------------------------------| ---- | ----| ------------------------------------------------------- |
-| ssid          | string                                | 否   | 否 | Wi-Fi热点名称，编码格式为UTF-8。                               |
-| bssid         | string                                | 否   | 是 | Wi-Fi热点的MAC地址。获取方式如下：打开设置应用-点击系统选项-点击开发者选项-开启WLAN详细日志记录开关，然后进入设置应用中的WLAN列表，查看显示的MAC地址。若一个Wi-Fi对应多个MAC地址，需添加所有MAC地址。                                          |
-| preSharedKey  | string                                | 否   | 否 | 预共享密钥。                                                |
-| isHiddenSsid  | boolean                               | 否   | 是 | 是否是隐藏网络。true表示是隐藏网络，false表示不是隐藏网络。 |
+| ssid          | string                                | 否   | 否 | Wi-Fi热点名称，最大长度为32字节，编码格式为UTF-8。          |
+| bssid         | string                                | 否   | 是 | Wi-Fi热点的MAC地址，长度6个字节，例如：00:11:22:33:44:55。获取方式如下：打开设置应用-点击系统选项-点击开发者选项-开启WLAN详细日志记录开关，然后进入设置应用中的WLAN列表，查看显示的MAC地址。若一个Wi-Fi对应多个MAC地址，需添加所有MAC地址。                                          |
+| preSharedKey  | string                                | 否   | 否 | 热点的密钥，最大长度为64字节。                               |
+| isHiddenSsid  | boolean                               | 否   | 是 | 是否是隐藏网络。true表示是隐藏网络，false表示不是隐藏网络，默认为false。 |
 | securityType  | [WifiSecurityType](#wifisecuritytype) | 否   | 否 | 安全类型。                                                 |
-| creatorUid    | number                                | 否   | 是 | 创建用户的ID。                                              |
-| disableReason | number                                | 否   | 是 | 禁用原因。                                                  |
-| netId         | number                                | 否   | 是 | 分配的网络ID。                                              |
-| randomMacType | number                                | 否   | 是 | 随机MAC类型。0-随机MAC地址， 1-设备MAC地址。                  |
+| creatorUid    | number                                | 否   | 是 | 创建用户的ID，默认值-1。                                    |
+| disableReason | number                                | 否   | 是 | 禁用原因，默认值0。                                         |
+| netId         | number                                | 否   | 是 | 分配的网络ID，默认值-1。                                     |
+| randomMacType | number                                | 否   | 是 | 随机MAC类型。0-随机MAC地址， 1-设备MAC地址，默认值0。         |
 | randomMacAddr | string                                | 否   | 是 | MAC地址。randomMacType为设备MAC类型时，该字段必填。               |
-| ipType        | [IpType](#iptype)                     | 否   | 是 | IP地址类型。                                                |
+| ipType        | [IpType](#iptype)                     | 否   | 是 | IP地址类型，默认值DHCP。                                         |
 | staticIp      | [IpProfile](#ipprofile)               | 否   | 是 | 静态IP配置信息。ipType为STATIC时，该字段必填。                |
 | eapProfile    | [WifiEapProfile](#wifieapprofile)     | 否   | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时必填。     |
 
@@ -990,10 +980,10 @@ IP配置信息。
 
 | 名称         | 类型                | 只读 | 可选 | 说明        |
 | ------------ | ------------------- | ---- | ----| ----------- |
-| ipAddress    | number              | 否   | 否  | IP地址，十进制表示，正常点分十进制写法为192.168.1.1，对应的十进制为3232235777。    |
-| gateway      | number              | 否   | 否  | 默认网关，十进制表示，通常是路由器的IP地址。      |
-| prefixLength | number              | 否   | 否  | 子网掩码。      |
-| dnsServers   | number[]            | 否   | 否  | DNS服务器，数组内最多包含首选DNS服务器和备用DNS服务器两个地址。 |
+| ipAddress    | number              | 否   | 否  | IP地址，十进制表示，正常点分十进制写法为192.168.1.1，对应的十进制为3232235777。地址值范围0.0.0.0到255.255.255.255。    |
+| gateway      | number              | 否   | 否  | 默认网关，十进制表示，通常是路由器的IP地址。地址值范围0.0.0.0到255.255.255.255。      |
+| prefixLength | number              | 否   | 否  | 子网掩码。地址值范围0.0.0.0到255.255.255.255。      |
+| dnsServers   | number[]            | 否   | 否  | DNS服务器，数组内最多包含首选DNS服务器和备用DNS服务器两个地址。地址值范围0.0.0.0到255.255.255.255。 |
 | domains      | Array&lt;string&gt; | 否   | 否  | 域信息。    |
 
 ## WifiEapProfile
@@ -1006,7 +996,7 @@ IP配置信息。
 
 | 名称              | 类型                          | 只读 | 可选 | 说明                             |
 | ----------------- | ----------------------------- | ---- |----| -------------------------------- |
-| eapMethod         | [EapMethod](#eapmethod)       | 否   | 否 | AP认证方式。                     |
+| eapMethod         | [EapMethod](#eapmethod)       | 否   | 否 | EAP认证方式。                     |
 | phase2Method      | [Phase2Method](#phase2method) | 否   | 否 | 第二阶段认证方式。只有eapMethod为EAP_PEAP或EAP_TTLS时需要填写。               |
 | identity          | string                        | 否   | 否 | 身份信息。当eapMethod为TLS时，该字段不能为空。                       |
 | anonymousIdentity | string                        | 否   | 否 | 匿名身份。                       |

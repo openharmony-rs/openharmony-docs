@@ -1,7 +1,7 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -42,7 +42,7 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -57,7 +57,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 
 try {
-  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     console.info(`openSubscriberSettings success`);
@@ -70,11 +70,13 @@ try {
 }
 ```
 
-## notificationExtensionSubscription.openSubscriptionSettingsWithResult<sup>26+</sup>
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult
 
 openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
 
 Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can toggle on the **Allow access to notifications on this device** switch and grant access to notifications for specified applications. This API uses a promise to return the result. When the semi-modal window is closed, the user-defined authorization result is returned.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -92,7 +94,7 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 | Type    | Description| 
 | ------- |--|
-| Promise\<[UserGrantSetting](#usergrantsetting26)\> | Promise used to return the result of the authorization set by the user.| 
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise used to return the result of the authorization set by the user.|
 
 **Error codes**
 
@@ -111,7 +113,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 
 try {
-  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
+  // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
@@ -148,7 +150,7 @@ Subscribes to the notification extension. You can subscribe to the notification 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
@@ -168,7 +170,7 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  console.info(`subscribe success`);
 }).catch((err: BusinessError) => {
   console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
@@ -193,7 +195,7 @@ Unsubscribes from the notification extension. This API uses a promise to return 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -206,7 +208,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
   console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
@@ -230,7 +232,7 @@ Obtains the subscription information about the notification extension of this ap
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -267,7 +269,7 @@ Checks whether the **Allow access to notifications on this device** switch is to
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
@@ -308,7 +310,7 @@ Obtains the applications that are allowed to access device notifications. This A
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -349,7 +351,7 @@ Describes the notification information delivered to the [onReceiveMessage](js-ap
 
 | Type| Description|
 | --- | --- |
-| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |Describes the notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |Notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
 
 ## SubscribeType
 
@@ -385,11 +387,13 @@ Describes the bundle information of the authorized application.
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | Bundle information of the authorized application.|
 
-## UserGrantSetting<sup>26+</sup>
+## UserGrantSetting
 
 type UserGrantSetting = _UserGrantSetting
 
 Describes the user authorization settings.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -397,4 +401,4 @@ Describes the user authorization settings.
 
 | Type| Description|
 | --- | --- |
-| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting26) | User authorization settings.|
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting) | User authorization settings.|

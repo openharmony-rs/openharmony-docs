@@ -384,13 +384,13 @@ try {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
         serviceData:[serviceDataUnit],
- 	    advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
+        advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     let advResponse: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
         serviceData:[serviceDataUnit],
- 	    advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
+        advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     ble.startAdvertising(setting, advData ,advResponse);
 } catch (err) {
@@ -615,13 +615,13 @@ try {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
         serviceData:[serviceDataUnit],
- 	    advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
+        advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     let advResponse: ble.AdvertiseData = {
         serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
         manufactureData:[manufactureDataUnit],
         serviceData:[serviceDataUnit],
- 	    advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
+        advertiseName:"testName" // You need to apply for the ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME permission.
     };
     let advertisingParams: ble.AdvertisingParams = {
         advertisingSettings: setting,
@@ -3088,6 +3088,8 @@ Reads the value of the specified characteristic. This API uses an asynchronous c
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name           | Type                                      | Mandatory  | Description                     |
@@ -3825,7 +3827,7 @@ Sets whether to enable the client to receive characteristic change notifications
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change notification.<br>The value **true** means to enable characteristic change notification, and the value **false** means the opposite.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change notification.<br>**true** to enable; **false** otherwise.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -3898,7 +3900,7 @@ Sets whether to enable the client to receive characteristic change notifications
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change notification.<br>The value **true** means to enable characteristic change notification, and the value **false** means the opposite.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change notification.<br>**true** to enable; **false** otherwise.|
 
 **Return value**
 
@@ -3970,7 +3972,7 @@ Sets whether to enable the client to receive characteristic change indications f
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>The value **true** means to enable characteristic change indication, and the value **false** means the opposite.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>**true** to enable; **false** otherwise.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -4043,7 +4045,7 @@ Sets whether to enable the client to receive characteristic change indications f
 | Name           | Type                                     | Mandatory  | Description                           |
 | -------------- | --------------------------------------- | ---- | ----------------------------- |
 | characteristic | [BLECharacteristic](#blecharacteristic) | Yes   | Characteristic of the server.                     |
-| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>The value **true** means to enable characteristic change indication, and the value **false** means the opposite.|
+| enable         | boolean                                 | Yes   | Whether to enable characteristic change indication.<br>**true** to enable; **false** otherwise.|
 
 **Return value**
 
@@ -4588,7 +4590,7 @@ setPhy(phyValue: PhyValue): Promise&lt;void&gt;
 Sets the physical channel type of the link on the client. This API uses a promise to return the result.
 
 - This method can be called only after the [connect](#connect) method is called to initiate a connection and the connection is successful.
-- After the client calls **setPhy** to set the physical channel type, the underlying layer will perform negotiation and produce the physical channel type supported by both the client and device based on the capabilities of the device. For example, if the client supports and sets [BLE_PHY_2M](#blephy23), but the device supports only [BLE_PHY_1M](#blephy23), the final type remains [BLE_PHY_1M](#blephy23).
+- After the client calls **setPhy** to set the physical channel type, the underlying layer will perform negotiation and produce the physical channel type supported by both the client and device based on the capabilities of the device. For example, if the server supports and sets [BLE_PHY_2M](#blephy23), but the device supports only [BLE_PHY_1M](#blephy23), the final type remains [BLE_PHY_1M](#blephy23).
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -4765,6 +4767,7 @@ Starts BLE scanning. This API uses a promise to return the result.<br>
 
 **Parameters**
 
+<!--Table: auto; auto; 10%; 50%-->
 | Name    | Type                                    | Mandatory  | Description                                 |
 | ------- | -------------------------------------- | ---- | ----------------------------------- |
 | filters | Array&lt;[ScanFilter](#scanfilter)&gt; | Yes   | Filter criteria for BLE advertising. Devices that meet the filter criteria will be reported.<br>- If this parameter is set to **null**, all discoverable BLE devices nearby will be scanned. However, this method is not recommended as it may pick up unexpected devices and increase power consumption.<br>- In geofence scan reporting mode (that is, [ScanReportMode](#scanreportmode15) is set to **FENCE_SENSITIVITY_LOW** or **FENCE_SENSITIVITY_HIGH**), this parameter cannot be set to **null**; that is, non-null filters must be passed.<br>- Filter resources are shared by all applications. It is recommended that an application use no more than three filters. If filter resources are exhausted, the scan will fail and error code 2900009 will be returned.|
@@ -5138,6 +5141,7 @@ Defines the scan result to be reported upon scanning advertising packets that me
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: auto; auto; 10%; 10%; 60%-->
 | Name      | Type       | Read-Only| Optional  | Description                                |
 | -------- | ----------- | ---- | ---- | ---------------------------------- |
 | deviceId | string      | No| No   | Bluetooth device address. Example: XX:XX:XX:XX:XX:XX<br>For information security purposes, if the [actual MAC address type](./js-apis-bluetooth-common.md#bluetoothaddresstype) is not configured in [ScanFilter](#scanfilter) when the application starts scanning, the device address obtained here is the [virtual MAC address](./js-apis-bluetooth-common.md#bluetoothaddresstype).<br>- The virtual address remains unchanged after a device is paired successfully.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.<br>- To persistently save the addresses, call [access.addPersistentDeviceId](js-apis-bluetooth-access.md#accessaddpersistentdeviceid16).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5177,6 +5181,7 @@ Defines the BLE advertising packet data, which can also be used in the response 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 15%; 15%; 8%; 8%; 54%-->
 | Name             | Type                                    | Read-Only| Optional  | Description                         |
 | --------------- | ---------------------------------------- | ---- | ---- | --------------------------- |
 | serviceUuids    | Array&lt;string&gt;                      | No| No   | Service UUID.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5265,12 +5270,13 @@ Defines the scan filters for BLE advertising packet data. Only advertising packe
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 19%; 13%; 8%; 8%; 52%-->
 | Name                                    | Type   | Read-Only| Optional | Description                                                        |
 | ------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
 | deviceId                                 | string      | No| Yes   | BLE device address. Example: XX:XX:XX:XX:XX:XX<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | address<sup>23+</sup> | [BluetoothAddress](js-apis-bluetooth-common.md#bluetoothaddress) | No| Yes| BLE device address and address type.<br>Compared with **deviceId**, this parameter can be used to specify both the BLE device address and address type to filter BLE advertising packets.<br>If both this parameter and **deviceId** are specified, only this parameter takes effect.|
 | name                                     | string      | No| Yes   | BLE device name.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
-| serviceUuid                              | string      | No| Yes   | Service UUID. This parameter is usually carried in the broadcast packets of a peripheral device, indicating the service UUID supported by the peripheral device. Example: 00001888-0000-1000-8000-00805f9b34fb<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| serviceUuid                              | string      | No| Yes   | Service UUID. This parameter is usually carried in the broadcast packets of a peripheral device, indicating the service UUID supported by the peripheral device. for example, 00001888-0000-1000-8000-00805f9b34fb.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | serviceUuidMask             | string      | No| Yes    | Service UUID mask. This parameter can be used with **serviceUuid** to filter specific service UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | serviceSolicitationUuid     | string      | No| Yes    | Service solicitation UUID. This parameter is usually carried in the broadcast packets of a central device, indicating the UUID of the service that the central device wants to search for. Example: 00001888-0000-1000-8000-00805F9B34FB<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | serviceSolicitationUuidMask | string      | No| Yes    | Service solicitation UUID mask. This parameter can be used with **serviceSolicitationUuid** to filter specific service solicitation UUIDs. Example: FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5288,6 +5294,7 @@ Defines the scan options.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: auto; auto; 10%; 10%; 60%-->
 | Name       | Type                   | Read-Only| Optional  | Description                                    |
 | --------- | ----------------------- | ---- | ---- | -------------------------------------- |
 | interval  | number                  | No| Yes   | Delay for reporting the scan result, in ms. The default value is **0**. This parameter is used together with [ScanReportMode](#scanreportmode15).<br>- This parameter does not take effect in normal and geofence scan reporting modes. The advertising packets that meet the filtering criteria are reported immediately.<br>- This parameter takes effect in batch scan reporting mode. The advertising packets that meet the filtering criteria are stored in the cache queue and reported after the specified delay. If this parameter is not set or its value is in the range of [0, 5000), the Bluetooth subsystem sets the delay to **5000** by default. If the number of advertising packets that meet the filtering criteria exceeds the hardware's cache capability within the specified delay, the Bluetooth subsystem reports the scan result in advance.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
@@ -5303,6 +5310,7 @@ Describes the properties supported by a GATT characteristic. The properties dete
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name      | Type | Read-Only| Optional  | Description         |
 | -------- | ------ |---- |---- | ----------- |
 | write    | boolean | No| Yes | Whether the write operation is supported.<br>The value **true** indicates that the write operation is supported and a response is required, and the value **false** indicates that the write operation is not supported. The default value is **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -5323,6 +5331,7 @@ Defines the permissions required for GATT characteristic or descriptor read/writ
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 19%; 10%; 8%; 8%; 55%-->
 | Name      | Type | Read-Only| Optional  | Description         |
 | -------- | ------ |---- |---- | ----------- |
 | read | boolean   | No|  Yes   | Whether reading characteristics or descriptors is allowed.<br>**true** to enable, **false** otherwise. The default value is **true**.|
@@ -5476,6 +5485,7 @@ Enumerates scan result reporting modes.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 20%; 10%; 70%-->
 | Name     | Value   | Description                          |
 | --------  | ---- | ------------------------------ |
 | NORMAL  | 1    | Conventional reporting mode. The BLE advertising packets that meet the filter criteria are reported immediately after being scanned.<br>**Atomic service API**: This API can be used in atomic services since API version 15.      |

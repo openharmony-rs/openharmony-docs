@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zourongchun-->
-<!--Designer: @kurli1-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -268,11 +268,11 @@ onOverrideErrorPage的回调函数，网页加载失败时触发。
 | ------- | ------------------------ |
 | string | 返回以Base64编码的HTML文本内容。 |
 
-## MouseInfoCallback<sup>20+<sup>
+## MouseInfoCallback<sup>20+</sup>
 
 type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
-当鼠标/触摸板点击到同层标签时触发该回调。
+当鼠标/触摸板单击到同层标签时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -280,13 +280,13 @@ type MouseInfoCallback = (event: NativeEmbedMouseInfo) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| event | [NativeEmbedMouseInfo](./arkts-basic-components-web-i.md#nativeembedmouseinfo20) | 是 | 提供鼠标/触摸板在同层标签上点击或长按的详细信息。 |
+| event | [NativeEmbedMouseInfo](./arkts-basic-components-web-i.md#nativeembedmouseinfo20) | 是 | 提供鼠标/触摸板在同层标签上单击或长按的详细信息。 |
 
 **示例：**
 
 完整示例代码参考[onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20)。
 
-## OnNativeEmbedObjectParamChangeCallback<sup>21+<sup>
+## OnNativeEmbedObjectParamChangeCallback<sup>21+</sup>
 
 type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) => void
 
@@ -304,7 +304,7 @@ type OnNativeEmbedObjectParamChangeCallback = (event: NativeEmbedParamDataInfo) 
 
 完整示例代码参考[onNativeEmbedObjectParamChange](./arkts-basic-components-web-events.md#onnativeembedobjectparamchange21)。
 
-## OnDetectBlankScreenCallback<sup>22+<sup>
+## OnDetectBlankScreenCallback<sup>22+</sup>
 
 type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => void
 
@@ -354,7 +354,7 @@ type OnMicrophoneCaptureStateChangeCallback = (event: MicrophoneCaptureStateChan
 
 type TextSelectionChangeCallback = (selectionText: string) => void
 
-onTextSelectionChange的回调函数，选区内容改变时触发。
+onTextSelectionChange的回调，选区内容改变时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -368,7 +368,7 @@ onTextSelectionChange的回调函数，选区内容改变时触发。
 
 完整示例代码参考[onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23)。
 
-## OnFirstScreenPaintCallback<sup>23+<sup>
+## OnFirstScreenPaintCallback<sup>23+</sup>
 
 type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 

@@ -32,7 +32,7 @@ Enumerates the external encrypted data types.
 
 ## HuksExternalCryptoTag
 
-Enumerates the tag types of a specified parameter.
+Enumerates the tags used to invoke parameters.
 
 **System capability**: SystemCapability.Security.Huks.CryptoExtension
 
@@ -46,7 +46,7 @@ Enumerates the tag types of a specified parameter.
 
 ## HuksExternalCryptoParam
 
-Defines the input parameter types.
+Defines the type of the param array used for calling the API.
 
 **System capability**: SystemCapability.Security.Huks.CryptoExtension
 
@@ -260,7 +260,7 @@ getProperty(resourceId: string, propertyId: string, params?: Array\<HuksExternal
 
 Obtains a property value. This API uses a promise to return the result.
 
-**propertyId** indicates the ID of the property to be queried. Currently, only the SKF API names defined in GMT 0016-2023 can be used as property IDs. The supported IDs are as follows:
+The **propertyId** parameter indicates the ID of the property to be queried. Currently, only the SKF API names defined in GMT 0016-2023 can be used as property IDs. The supported IDs are as follows:
 
 - SKF_EnumDev
 - SKF_GetDevInfo
@@ -277,13 +277,13 @@ Obtains a property value. This API uses a promise to return the result.
 | -------- | ------- | ---- | ----------|
 | resourceId | string | Yes  | Resource ID, which can be obtained using [certificateManagerDialog.openAuthorizeDialog22+](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22). The result contains **resourceId**.|
 | propertyId | string | Yes  | Property name for the search operation, which is the SKF API name defined in GMT 0016-2023. You need to make adaptation based on the API name.|
-| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | No  | Input parameters to be passed to the **ExtensionAbility**. If a non-system application passes [HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag), the parameter is invalid.|
+| params  | Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)> | No  | Parameters to be passed to [Extension Ability](js-apis-CryptoExtensionAbility.md). If a non-system application passes [HUKS_EXT_CRYPTO_TAG_UID](#huksexternalcryptotag), the parameter is invalid.|
 
 **Return value**
 
 | Type  | Description  |
 | -------- | ------- |
-| Promise\<Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)>> | Param array that contains the property result to be queried.|
+| Promise\<Array\<[HuksExternalCryptoParam](#huksexternalcryptoparam)>> | Promise that returns the operation result. If the call is successful, an array of the **HuksExternalCryptoParam** type is returned, containing the properties to be queried.|
 
 **Error codes**
 

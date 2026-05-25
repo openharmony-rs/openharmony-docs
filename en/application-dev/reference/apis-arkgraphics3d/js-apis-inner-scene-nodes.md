@@ -21,7 +21,7 @@ import { LayerMask, NodeType, Container, Node, Geometry, LightType, Light, SpotL
 
 ## LayerMask
 
-Layer mask of the node.
+Defines the layer mask of a node.
 
 ### getEnabled
 
@@ -55,7 +55,7 @@ function layerMask(): void {
     if (result) {
       let node : Node | null = result.getNodeByPath("rootNode_");
       if (node) {
-          // Obtain the enabled status of the mask.
+          // Obtain the enabling status of the mask. You can perform subsequent processing on the return value based on service requirements.
           let enabled: boolean = node.layerMask.getEnabled(1);
       }
     }
@@ -110,10 +110,10 @@ Enumerates the node types.
 
 | Name| Value| Description|
 | ---- | ---- | ---- |
-| NODE | 1 | Empty node.|
-| GEOMETRY | 2 | Geometry node.|
-| CAMERA | 3 | Camera node.|
-| LIGHT | 4 | Light node.|
+| NODE | 1 | The node is an empty node.|
+| GEOMETRY | 2 | Geometric type node.|
+| CAMERA | 3 | Camera type node.|
+| LIGHT | 4 | Light type node.|
 | CUSTOM<sup>21+</sup> | 255 | Custom node, which is usually defined in an extension plugin.|
 
 ## Container\<T>
@@ -160,7 +160,7 @@ function append(): void {
 
 insertAfter(item: T, sibling: T | null): void
 
-Inserts a node after a sibling node.
+Inserts the object after the sibling node.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -168,7 +168,7 @@ Inserts a node after a sibling node.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| item | T | Yes| Node to insert.|
+| item | T | Yes| Node to be inserted.|
 | sibling | T \| null | Yes| Sibling node.|
 
 **Example**
@@ -344,15 +344,15 @@ The 3D scene consists of nodes in a tree hierarchy, where each node implements a
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| position | [Position3](js-apis-inner-scene-types.md#position3) | No| No| Position of the node.|
-| rotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No| No| Rotation angle of the node.|
-| scale | [Scale3](js-apis-inner-scene-types.md#scale3) | No| No| Scale factor of the node.|
-| visible | boolean | No| No| Whether the node is visible. **true** if visible, **false** otherwise.|
-| nodeType | [NodeType](#nodetype) | Yes| No| Type of the node.|
-| layerMask | [LayerMask](#layermask) | Yes| No| Layer mask of the node.|
-| path | string | Yes| No| Path of the node.|
-| parent | [Node](#node) \| null | Yes| No| Parent node of the node. If the parent node does not exist, the value is null.|
-| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | Yes| No| Child node of the node. If the node does not have a child, the value is null. This is a read-only property, indicating that you cannot directly replace the entire children container. However, you can modify the children using container methods like [append()](#append), [insertAfter()](#insertafter), [remove()](#remove), or [clear()](#clear). If the node being appended or inserted already exists in the container, it is removed first and then reinserted. As a result, the total number of child nodes remains unchanged, making the operation seem ineffective. The count increases only when a new node is added.|
+| position | [Position3](js-apis-inner-scene-types.md#position3) | No| No| Node position, in scene units of the world coordinate system (for example, cm, m, or km).|
+| rotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No| No| Rotation angle of a node.|
+| scale | [Scale3](js-apis-inner-scene-types.md#scale3) | No| No| Node scale.|
+| visible | boolean | No| No| Whether a node is visible. **true** if visible, **false** otherwise.|
+| nodeType | [NodeType](#nodetype) | Yes| No| Node type.|
+| layerMask | [LayerMask](#layermask) | Yes| No| Layer mask of a node.|
+| path | string | Yes| No| Node path.|
+| parent | [Node](#node) \| null | Yes| No| Parent node of the node and null if it does not exist.|
+| children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | Yes| No| Child node of the node and null if it does not exist. This is a read-only property, indicating that you cannot directly replace the entire children container. However, you can operate the child nodes using container methods like [append()](#append), [insertAfter()](#insertafter), [remove()](#remove), or [clear()](#clear). If the node being appended or inserted already exists in the container, it is removed first and then reinserted. As a result, the total number of child nodes remains unchanged, making the operation seem ineffective. The count increases only when a new node is added.|
 
 ### getNodeByPath
 
@@ -366,13 +366,13 @@ Obtains a node by path. If no node is obtained, null is returned.
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| path | string | Yes| Path in the scene node hierarchy. Each layer is separated by a slash (/).|
+| path | string | Yes| Path in the scene node tree. Each layer is separated by a slash (/).|
 
 **Return value**
 
 | Type| Description|
 | ---- | ---- |
-| [Node](#node) \| null | Node object.|
+| [Node](#node) \| null | Returns the node object.|
 
 **Example**
 
@@ -423,7 +423,7 @@ Light node, which inherits from [Node](#node).
 | ---- | ---- | ---- | ---- | ---- |
 | lightType | [LightType](#lighttype) | Yes| No| Light type.|
 | color | [Color](js-apis-inner-scene-types.md#color) | No| No| Color.|
-| intensity | number | No| No| Light intensity. The value is a real number greater than 0.|
+| intensity | number | No| No| Light density in candelas (cd) with a value range of real numbers greater than 0.|
 | shadowEnabled | boolean | No| No| Whether the shadow effect is enabled. **true** if enabled, **false** otherwise.|
 | enabled | boolean | No| No| Whether the light is used. **true** if used, **false** otherwise.|
 
@@ -437,8 +437,8 @@ A spotlight emits a conical beam of light in a specific direction, with the inte
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| innerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the start of the decay, corresponding to the semi-apex angle of the cone, within which the light intensity does not decay with angle. It is represented in radians. The default value is **0**. The value must be greater than or equal to **0** and less than or equal to **outerAngle**.|
-| outerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the end of the decay, corresponding to the semi-apex angle of the cone, beyond which there is no light intensity. It is represented in radians. The default value is **PI/4**. The value must be greater than or equal to **innerAngle** and less than or equal to **PI/2**.|
+| innerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the start of the decay, corresponding to the semi-apex angle of the cone, within which the light intensity does not decay with angle. The unit is radian (rad), and the default value is **0**. The value must be greater than or equal to **0** and less than or equal to **outerAngle**.|
+| outerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the end of the decay, corresponding to the semi-apex angle of the cone, beyond which there is no light intensity. The unit is radian (rad), and the default value is **PI/4**. The value must be greater than or equal to **innerAngle** and less than or equal to **PI/2**.|
 
 > **NOTE**
 > 
@@ -460,9 +460,9 @@ Camera node, which inherits from [Node](#node).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| fov | number | No| No| Field of view. The value ranges from 0 to π radians.|
-| nearPlane | number | No| No| Near plane. The value is greater than 0.|
-| farPlane | number | No| No| Remote plane. The value must be greater than that of **nearPlane**.|
+| fov | number | No| No| Field of view. The unit is radian (rad). The value ranges from 0 to π radians.|
+| nearPlane | number | No| No| Near plane. The unit is the scene unit (such as cm, m, and km) in the world coordinate system. The value is greater than 0.|
+| farPlane | number | No| No| Far plane. The unit is the scene unit (such as cm, m, and km) in the world coordinate system. The value is greater than that of nearPlane.|
 | enabled | boolean | No| No| Whether the camera is enabled. **true** if enabled, **false** otherwise.|
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | No| No| Post-processing settings.|
 | effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | Yes| No| Post-processing effects applied to the camera output.|
@@ -482,7 +482,7 @@ Casts a ray from a specific position on the screen to detect and retrieve inform
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | Yes| Normalized screen coordinates within the UI coordinate system. The value range is [0, 1], where (0,0) corresponds to the top-left corner of the Component3D component, and (1,1) corresponds to the bottom-right corner.|
+| viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | Yes| Normalized screen coordinates. The value range is [0, 1], where (0,0) corresponds to the top-left corner of the Component3D component, and (1,1) corresponds to the bottom-right corner.|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | Yes| Configuration parameters for raycasting, such as detection range and filtered nodes.|
 
 **Return value**
@@ -522,19 +522,24 @@ function Raycast(): void {
     });
 }
 
+// Vector subtraction, which returns the result of l - r.
 function Sub(l: Vec3, r: Vec3): Vec3 {
   return { x: l.x - r.x, y: l.y - r.y, z: l.z - r.z };
 }
+// Vector dot product, which returns the inner product of l and r.
 function Dot(l: Vec3, r: Vec3): number {
   return l.x * r.x + l.y * r.y + r.z * l.z;
 }
+// Vector normalization, which returns the unit vector of l.
 function Normalize(l: Vec3): Vec3 {
   let d = Math.sqrt(Dot(l, l));
   return { x: l.x / d, y: l.y / d, z: l.z / d };
 }
+// Vector cross product, which returns the cross product of l and r.
 function Cross(l: Vec3, r: Vec3): Vec3 {
   return { x: (l.y * r.z - l.z * r.y), y: (l.z * r.x - l.x * r.z), z: (l.x * r.y - l.y * r.x) };
 }
+// Quaternion scalar multiplication, which returns the result of quaternion l multiplied by scalar d.
 function Mul(l: Quaternion, d: number): Quaternion {
   return {
     x: l.x * d,
@@ -543,6 +548,7 @@ function Mul(l: Quaternion, d: number): Quaternion {
     w: l.w * d
   };
 }
+// lookAt function: sets the position and orientation of the node to look from the eye position toward the center position, with up as the up direction.
 function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
 
   let t: number;
@@ -630,8 +636,6 @@ function GetViewMatrix(): void {
       // Create a camera.
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
       camera.enabled = true;
-      // Set the camera view.
-      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
       // Obtain the view matrix of the camera.
       let viewMatrix: Mat4x4 = camera.getViewMatrix();
     });
@@ -669,8 +673,6 @@ function GetProjectionMatrix(): void {
       // Create a camera.
       let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
       camera.enabled = true;
-      // Set the camera view.
-      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
       // Obtain the projection matrix of the camera.
       let projectionMatrix: Mat4x4 = camera.getProjectionMatrix();
     });

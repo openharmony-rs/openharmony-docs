@@ -1,8 +1,8 @@
 # OH_AVRecorder_EncoderInfo
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -34,4 +34,4 @@ The struct describes the encoder information.
 | [OH_AVRecorder_Range](capi-avrecorder-oh-avrecorder-range.md) height | Video frame height range, with the minimum and maximum heights specified. This parameter is available only for video encoders.|
 | [OH_AVRecorder_Range](capi-avrecorder-oh-avrecorder-range.md) channels | Audio channel count for the audio capturer, with the minimum and maximum numbers of audio channels specified. This parameter is available only for audio encoders.|
 | int32_t* sampleRate | Pointer to the list of audio sample rates, including all available audio sample rates. This parameter is available only for audio encoders.|
-| int32_t sampleRateLen | Length of the audio sample rate list.|
+| int32_t sampleRateLen | Length of the audio sampling rate list.|

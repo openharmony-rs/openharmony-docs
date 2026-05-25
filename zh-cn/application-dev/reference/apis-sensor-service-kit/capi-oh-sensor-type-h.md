@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
@@ -706,7 +706,7 @@ int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sen
 | 参数项 | 描述 |
 | -- | -- |
 | [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)* subscriber | 指向传感器订阅者信息的指针。 |
-| [const Sensor_EventCallback](capi-oh-sensor-type-h.md#sensor_eventcallback) callback | 设置回调函数。 |
+| [Sensor_EventCallback](capi-oh-sensor-type-h.md#sensor_eventcallback) callback | 设置回调函数。 |
 
 **返回：**
 

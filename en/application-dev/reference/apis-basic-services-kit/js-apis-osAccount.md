@@ -49,7 +49,7 @@ Checks whether this domain account is supported. This API uses a promise to retu
 
 **System capability**: SystemCapability.Account.OsAccount
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -550,7 +550,7 @@ Checks whether this system account is unlocked. This API uses a promise to retur
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this system account is unlocked; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -582,7 +582,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a system account has been verified. This API uses an asynchronous callback to return the result.
+Checks whether this system account is unlocked. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -640,7 +640,7 @@ Checks whether this system account has been verified. This API uses a promise to
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this system account has been verified; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the system account has been verified; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -1102,7 +1102,7 @@ Obtains the local IDs of all non-system-level system accounts. Non-system-level 
 
 **System capability**: SystemCapability.Account.OsAccount
 
-**Model restriction**: This API can be used only in the stage model.
+**Model constraint**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -3107,6 +3107,61 @@ For details about the error codes, see [Account Management Error Codes](errorcod
   }
   ```
 
+### getOsAccountNameByLocalId
+
+getOsAccountNameByLocalId(localId: number): Promise&lt;string&gt;
+
+Obtains the name of a system account based on its local ID. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Required permission**: ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Parameters**
+
+| Name  | Type  | Mandatory| Description                    |
+| -------- | ------ | ---- | ----------------------- |
+| localId  | number | Yes  | Local ID of the target system account.|
+
+**Return value**
+
+| Type               | Description                    |
+| ------------------- | ----------------------- |
+| Promise&lt;string&gt; | Promise used to return the name of the target system account.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                    |
+| -------- | --------------------------- |
+| 201 | Permission denied. |
+| 12300001 | The system service works abnormally. |
+| 12300003 | Account not found. |
+| 12300008 | Restricted Account. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountNameByLocalId(100).then((name: string) => {
+    console.info('getOsAccountNameByLocalId, name: ' + name);
+  }).catch((err: BusinessError) => {
+    console.error('getOsAccountNameByLocalId err: ' + err);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountNameByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### getForegroundOsAccountLocalId<sup>15+</sup>
 
 getForegroundOsAccountLocalId(): Promise&lt;number&gt;
@@ -3295,6 +3350,8 @@ Represents the domain account information.
 | domain      | string | No| No | Domain name.    |
 | accountName | string | No| No | Domain account name.|
 | serverConfigId<sup>18+</sup> | string | No| Yes | Domain account configuration ID, which is an empty string by default.|
+| additionalInfo | Record<string, Object> | No| Yes| Additional information about the domain account.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
+
 
 ## DomainServerConfig<sup>18+</sup>
 

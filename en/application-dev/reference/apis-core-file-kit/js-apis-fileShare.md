@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
-<!--Tester: @leiyuqian-->
+<!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
 The **FileShare** module provides APIs for granting permissions on a user file to another application based on the file Uniform Resource Identifier (URI). Then, the authorized application can call [@ohos.file.fs](js-apis-file-fs.md) APIs to access the file.
@@ -70,7 +70,7 @@ Represents a permission policy, that is, a policy for granting or activating the
 | Name | Type | Read-Only| Optional| Description                                                  |
 |------|-------|------|-----|------------------------------------------------------|
 | uri| string | No  | No| URI of the file, on which the permission is to be granted or activated.                                      |
-| operationMode | number | No  | No| URI operation mode. For details, see [OperationMode](#operationmode11). To grant multiple permissions, you can combine them, for example, use READ_MODE \| WRITE_MODE to grant the read and write permissions.|
+| operationMode | number | No  | No| URI operation mode. For details, see [OperationMode](#operationmode11). To grant multiple permissions, you can combine them, for example, use READ_MODE | WRITE_MODE to grant the read and write permissions.|
 
 ## PathPolicyInfo<sup>15+</sup>
 

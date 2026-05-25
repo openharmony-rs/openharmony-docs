@@ -46,7 +46,7 @@ Provides attribute names and value types of a node element.
 | bundleName           | string                                                             | No  | No  | Bundle name.|
 | checkable            | boolean                                                            | No  | No  | Whether the element is checkable. The value **true** indicates that the element is checkable, and **false** indicates the opposite.<br>Default value: **false**.|
 | checked              | boolean                                                            | No  | No  | Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
-| children             | Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;        | No  | No  | All child elements.|
+| children             | Array&lt;[AccessibilityElement](#accessibilityelement)&gt;        | No  | No  | All child elements.|
 | clickable            | boolean                                                            | No  | No  | Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
 | componentId          | number                                                             | No  | No  | ID of the component to which the element belongs. <br>Default value: **-1**.|
 | componentType        | string                                                             | No  | No  | Type of the component to which the element belongs, for example, **Button** for the button component and **Image** for the image component.|
@@ -59,7 +59,7 @@ Provides attribute names and value types of a node element.
 | focusable            | boolean                                                            | No  | No  | Whether the element is focusable. The value **true** indicates that the element is focusable, and **false** indicates the opposite.<br>Default value: **false**.|
 | hintText             | string                                                             | No  | No  | Hint text.|
 | inputType            | number                                                             | No  | No  | Type of the input text. <br>Default value: **0**.|
-| inspectorKey         | string                                                             | No  | No  | Inspector key.|
+| inspectorKey         | string                                                             | No  | No  | Alias of the element.|
 | isActive             | boolean                                                            | No  | No  | Whether the element is active. The value **true** indicates that the element is active and **false** indicates the opposite.<br>Default value: **true**.|
 | isEnable             | boolean                                                            | No  | No  | Whether the element is enabled. The value **true** indicates that the element is enabled, and **false** indicates the opposite.<br>Default value: **false**.|
 | isHint               | boolean                                                            | No  | No  | Whether the element is a hint. The value **true** indicates that the element is a hint, and **false** indicates the opposite.<br>Default value: **false**.|
@@ -71,18 +71,18 @@ Provides attribute names and value types of a node element.
 | layer                | number                                                             | No  | No  | Display layer of the element.|
 | longClickable        | boolean                                                            | No  | No  | Whether the element is long-clickable. The value **true** indicates that the element is long-clickable, and **false** indicates the opposite.<br>Default value: **false**.|
 | pageId               | number                                                             | No  | No  | Page ID. <br>Default value: **-1**.|
-| parent               | [AccessibilityElement](#accessibilityelement9)                     | No  | No  | Parent element of the element.|
+| parent               | [AccessibilityElement](#accessibilityelement)                     | No  | No  | Parent element of the element.|
 | pluralLineSupported  | boolean                                                            | No  | No  | Whether the element supports multiple lines of text. The value **true** indicates that the element supports multiple lines of text, and **false** indicates the opposite.<br>Default value: **false**.|
 | rect                 | [Rect](#rect)                                                      | No  | No  | Area of the element.|
 | resourceName         | string                                                             | No  | No  | Resource name of the element.|
-| rootElement          | [AccessibilityElement](#accessibilityelement9)                     | No  | No  | Root element of the window element.|
+| rootElement          | [AccessibilityElement](#accessibilityelement)                     | No  | No  | Root element of the window element.|
 | screenRect           | [Rect](#rect)                                                      | No  | No  | Display area of the element.|
 | scrollable           | boolean                                                            | No  | No  | Whether the element is scrollable. The value **true** indicates that the element is scrollable, and **false** indicates the opposite.<br>Default value: **false**.|
 | selected             | boolean                                                            | No  | No  | Whether the element is selected. The value **true** indicates that the element is selected, and **false** indicates the opposite.<br>Default value: **false**.|
 | startIndex           | number                                                             | No  | No  | Index of the first list item on the screen. <br>Default value: **0**.|
 | text                 | string                                                             | No  | No  | Text of the element.|
 | textLengthLimit      | number                                                             | No  | No  | Maximum text length of the element.|
-| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| No  | No  | Unit of movement when the text is read.|
+| textMoveUnit         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| No  | No  | Granularity of movement when the text is read.|
 | triggerAction        | [accessibility.Action](js-apis-accessibility.md#action)            | No  | No  | Action that triggers the element event.|
 | type                 | [WindowType](#windowtype)                                          | No  | No  | Window type of the element.|
 | valueMax             | number                                                             | No  | No  | Maximum value. <br>Default value: **0**.|
@@ -90,9 +90,9 @@ Provides attribute names and value types of a node element.
 | valueNow             | number                                                             | No  | No  | Current value. <br>Default value: **0**.|
 | windowId             | number                                                             | No  | No  | Window ID. <br>Default value: **-1**.|
 | textType<sup>12+</sup>             | string                                                             | No  | No  | Accessibility text type of an element, which is configured by the **accessibilityTextHint** attribute of the component.|
-| offset<sup>12+</sup>             | number              | No  | No  | Pixel offset of the content area relative to the top coordinate of a scrollable component, such as **List** and **Grid**. <br>Default value: **0**.|
+| offset<sup>12+</sup>             | number              | No  | No  | For scrollable components such as **List** and **Grid**, this attribute indicates the pixel offset of the content area relative to the top coordinate of the component. The unit is pixel (px). <br>Default value: **0**.|
 | hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | No  | No  | Touchable area of an element.|
-| customComponentType<sup>18+</sup>             | string                                                             | No  | Yes  | Custom component type.|
+| customComponentType<sup>18+</sup>             | string                                                             | No  | Yes  | Custom component type. It corresponds to [AccessibilityRoleType Enumeration Description](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilityroletype18) of the element.|
 | accessibilityNextFocusId<sup>18+</sup>             | number                | No  | Yes  | ID of the next component to be focused on. You can use **findElement('elementId')** to obtain the value of this attribute set on the component from the **AccessibilityElementInfo** object. <br>Default value: **-1**.|
 | accessibilityPreviousFocusId<sup>18+</sup>             | number                | No  | Yes  | ID of the previous component to be focused on. You can use **findElement('elementId')** to obtain the value of this attribute set on the component from the **AccessibilityElementInfo** object. <br>Default value: **-1**.|
 | extraInfo<sup>18+</sup>             | string     | No | Yes  | Extended attributes, which are used to define the attributes of specific components, including:<br>- **CheckboxGroupSelectedStatus**: selection status of the **CheckboxGroup** component. The options are as follows:<br>**0**: selected<br>**1**: partially selected<br>**2**: not selected<br>- **Row**: row where a focused item is located in **Grid**.<br>- **Column**: column where a focused item is located in **Grid**.<br>- **ListItemIndex**: row where a focused item is located in **List**.<br>- **SideBarContainerStates**: expansion state of the expandable components (such as **SideBarContainer** and **Select**). The options are as follows:<br>**0**: collapsed<br>**1**: expanded<br>- **ToggleType**: type of the **Toggle** component. The options are as follows:<br>**0**: checkbox<br>**1**: switch<br>**2**: button<br>- **BindSheet**: position of the **BindSheet** component on the screen. The options are as follows:<br>**0**: high<br>**1**: middle<br>**2**: low<br>- **hasRegisteredHover**: whether the component has registered the **onAccessibilityHover** event callback. The value **1** indicates that the component has registered the event callback; otherwise, this field is not used.<br>- **direction**: layout direction of the **List** component. The value can be **vertical** or **horizontal**.<br>- **expandedState**: expanded state of list items in the **List** component. The value can be **expanded** or **collapsed**.<br>- **componentTypeDescription**: detailed information about the component type.|
@@ -136,10 +136,10 @@ Defines a rectangle.
 
 | Name    | Type    | Read-Only  | Optional  | Description       |
 | ------ | ------ | ---- | ---- | --------- |
-| left   | number | No   | No   | Left boundary of the rectangle.|
-| top    | number | No   | No   | Top boundary of the rectangle.|
-| width  | number | No   | No   | Width of the rectangle. |
-| height | number | No   | No   | Height of the rectangle. |
+| left   | number | No   | No   | Left boundary of the rectangle, in pixels.|
+| top    | number | No   | No   | Top boundary of the rectangle, in pixels.|
+| width  | number | No   | No   | Width of the rectangle, in pixels. |
+| height | number | No   | No   | Height of the rectangle, in pixels. |
 
 ## WindowType
 
@@ -193,7 +193,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let targetNames = ['com.ohos.xyz'];
 axContext.setTargetBundleName(targetNames).then(() => {
-  console.info(`Succeeded in set target bundle names, targetNames is ${targetNames}`);
+  console.info(`succeeded in setting target bundle names, targetNames is ${targetNames}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to set target bundle names, Code is ${err.code}, message is ${err.message}`);
 })
@@ -238,7 +238,7 @@ try {
       console.error(`failed to set target bundle names, Code is ${err.code}, message is ${err.message}`);
       return;
     }
-    console.info(`Succeeded in set target bundle names, targetNames is ${targetNames}`);
+    console.info(`succeeded in setting target bundle names, targetNames is ${targetNames}`);
   });
 } catch (error) {
   console.error(`failed to set target bundle names, Because ${JSON.stringify(error)}`);
@@ -266,7 +266,7 @@ Obtains the focus element. This API uses a promise to return the result.
 **Return value**
 | Type                                 | Description                    |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the current focus element.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the current focus element.|
 
 **Error codes**
 
@@ -287,7 +287,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getFocusElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.info(`Succeeded in get focus element,${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get focus element, Code is ${err.code}, message is ${err.message}`);
 })
@@ -309,7 +309,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the current focus element.|
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the current focus element.|
 
 **Error codes**
 
@@ -334,7 +334,7 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get focus element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -355,7 +355,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 | Name                 | Type                                      | Mandatory  | Description               |
 | -------------------- | ---------------------------------------- | ---- | ----------------- |
 | isAccessibilityFocus | boolean                                  | Yes   | Whether the obtained focus element is an accessibility focus. The value **True** means that the obtained focus element is an accessibility focus, and **False** means the opposite.   |
-| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the current focus element.|
+| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the current focus element.|
 
 **Error codes**
 
@@ -381,7 +381,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get focus element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -407,7 +407,7 @@ Obtains the root element of a window. This API uses a promise to return the resu
 
 | Type                                 | Description                    |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the root element of the specified window.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the root element of the specified window.|
 
 **Error codes**
 
@@ -428,7 +428,7 @@ let rootElement: AccessibilityElement;
 
 axContext.getWindowRootElement().then((data: AccessibilityElement) => {
   rootElement = data;
-  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get root element of the window, Code is ${err.code}, message is ${err.message}`);
 });
@@ -450,7 +450,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 | Name     | Type                                      | Mandatory  | Description                |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the root element.|
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the root element.|
 
 **Error codes**
 
@@ -475,7 +475,7 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -496,7 +496,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 | Name     | Type                                      | Mandatory  | Description                    |
 | -------- | ---------------------------------------- | ---- | ---------------------- |
 | windowId | number                                   | Yes   | ID of the window whose root element is to be obtained. If this parameter is not specified, it indicates the current active window.|
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the root element.    |
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the root element.    |
 
 **Error codes**
 
@@ -522,7 +522,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
     return;
   }
   rootElement = data;
-  console.info(`Succeeded in get root element of the window, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -548,7 +548,7 @@ Obtains the list of windows on a display. This API uses a promise to return the 
 
 | Type                                      | Description                    |
 | ---------------------------------------- | ---------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise used to return the window list.|
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise used to return the window list.|
 
 **Error codes**
 
@@ -566,7 +566,7 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 axContext.getWindows().then((data: AccessibilityElement[]) => {
-  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
 });
@@ -588,7 +588,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the window list.|
+| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the window list.|
 
 **Error codes**
 
@@ -610,7 +610,7 @@ axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
     console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -631,7 +631,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 | Name      | Type                                      | Mandatory  | Description                   |
 | --------- | ---------------------------------------- | ---- | --------------------- |
 | displayId | number                                   | Yes   | ID of the display from which the window information is obtained. If this parameter is not specified, it indicates the default main display.|
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the window list.    |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the window list.    |
 
 **Error codes**
 
@@ -654,7 +654,7 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
     console.error(`failed to get windows, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get windows, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -704,7 +704,7 @@ for (let i = 0; i < 10; i++) {
   gesturePath.points.push(gesturePoint);
 }
 axContext.injectGesture(gesturePath).then(() => {
-  console.info(`Succeeded in inject gesture,gesturePath is ${gesturePath}`);
+  console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
 });
@@ -753,7 +753,7 @@ axContext.injectGesture(gesturePath, (err: BusinessError) => {
     console.error(`failed to inject gesture, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in inject gesture,gesturePath is ${gesturePath}`);
+  console.info(`Succeeded in injecting gesture,gesturePath is ${gesturePath}`);
 });
 ```
 ## AccessibilityExtensionContext.injectGestureSync<sup>(deprecated)</sup>
@@ -796,7 +796,7 @@ for (let i = 0; i < 10; i++) {
 axContext.injectGestureSync(gesturePath);
 ```
 
-## AccessibilityElement<sup>9+</sup>
+## AccessibilityElement
 
 Defines the **AccessibilityElement**. Before calling APIs of **AccessibilityElement**, you must call [AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated) or [AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated) to obtain an **AccessibilityElement** instance.
 
@@ -830,7 +830,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
-  console.info(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
 });
@@ -866,7 +866,7 @@ rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) =>
     console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get attribute names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -915,7 +915,7 @@ let attributeName: ElementAttributeKeys = 'bundleName';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.attributeValue(attributeName).then((data: string) => {
-  console.info(`Succeeded in get attribute value by name, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute value by name, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
 });
@@ -963,7 +963,7 @@ rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => 
     console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get attribute value, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting attribute value, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -992,7 +992,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.actionNames().then((data: string[]) => {
-  console.info(`Succeeded in get action names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
 })
@@ -1025,7 +1025,7 @@ rootElement.actionNames((err: BusinessError, data: string[]) => {
     console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get action names, ${JSON.stringify(data)}`);
+  console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
 })
 ```
 
@@ -1072,7 +1072,7 @@ let actionName = 'action';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.performAction(actionName).then(() => {
-  console.info(`Succeeded in perform action,actionName is ${actionName}`);
+  console.info(`succeeded in performing action,actionName is ${actionName}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1086,7 +1086,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement is an instance of AccessibilityElement.
 // An action that does not require any parameter setting is an action without parameters, as specified in the action description.
 rootElement.performAction('click').then(() => {
-  console.info(`Succeeded in perform action.`);
+  console.info(`succeeded in performing action.`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1104,7 +1104,7 @@ rootElement.performAction('setSelection', {
   selectTextEnd: '8',   // End position of the selection.
   selectTextInForWard: true   // true indicates the insertion point, and false indicates the selection range.
 }).then(() => {
-  console.info(`Succeeded in perform action`);
+  console.info(`succeeded in performing action`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1118,7 +1118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 rootElement.performAction('setCursorPosition', {
   offset: '1'   // Position of the cursor.
 }).then(() => {
-  console.info(`Succeeded in perform action`);
+  console.info(`succeeded in performing action`);
 }).catch((err: BusinessError) => {
   console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1165,7 +1165,7 @@ rootElement.performAction(actionName, (err: BusinessError) => {
     console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in perform action, actionName is ${actionName}`);
+  console.info(`succeeded in performing action, actionName is ${actionName}`);
 });
 ```
 
@@ -1212,7 +1212,7 @@ rootElement.performAction(actionName, parameters, (err: BusinessError) => {
     console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in perform action,actionName is ${actionName}, parameters is ${parameters}`);
+  console.info(`succeeded in performing action,actionName is ${actionName}, parameters is ${parameters}`);
 });
 ```
 
@@ -1239,7 +1239,7 @@ Finds an element based on the content type. This API uses a promise to return th
 
 | Type                                      | Description                           |
 | ---------------------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1258,7 +1258,7 @@ let condition = 'keyword';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('content', condition).then((data: AccessibilityElement[]) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1282,7 +1282,7 @@ Finds an element based on the content type. This API uses an asynchronous callba
 | --------- | ---------------------------------------- | ---- | ---------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'content'**.|
 | condition | string                                   | Yes   | Search criteria.                    |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the result.    |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the result.    |
 
 **Error codes**
 
@@ -1305,7 +1305,7 @@ rootElement.findElement('content', condition, (err: BusinessError, data: Accessi
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1332,7 +1332,7 @@ Finds an element based on the focus type. This API uses a promise to return the 
 
 | Type                                 | Description                            |
 | ----------------------------------- | ------------------------------ |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the result.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1352,7 +1352,7 @@ let condition: FocusType = 'normal';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('focusType', condition).then((data: AccessibilityElement) => {
-  console.info(`Succeeded in find element,${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1376,7 +1376,7 @@ Finds an element based on the focus type. This API uses an asynchronous callback
 | --------- | ---------------------------------------- | ---- | ---------------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'focusType'**.|
 | condition | [FocusType](#focustype)                  | Yes   | Focus type.                      |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the result.         |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the result.         |
 
 **Error codes**
 
@@ -1400,7 +1400,7 @@ rootElement.findElement('focusType', condition, (err: BusinessError, data: Acces
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```
 
@@ -1427,7 +1427,7 @@ Finds an element based on the focus direction. This API uses a promise to return
 
 | Type                                 | Description                              |
 | ----------------------------------- | -------------------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the result.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1447,7 +1447,7 @@ let condition: FocusDirection = 'up';
 
 // rootElement is an instance of AccessibilityElement.
 rootElement.findElement('focusDirection', condition).then((data: AccessibilityElement) => {
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
 });
@@ -1471,7 +1471,7 @@ Finds an element based on the focus direction. This API uses an asynchronous cal
 | --------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'focusDirection'**.|
 | condition | [FocusDirection](#focusdirection)        | Yes   | Direction of the next focus element.                          |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the result.             |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the result.             |
 
 **Error codes**
 
@@ -1495,6 +1495,6 @@ rootElement.findElement('focusDirection', condition, (err: BusinessError, data: 
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in find element, ${JSON.stringify(data)}`);
+  console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 });
 ```

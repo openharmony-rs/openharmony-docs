@@ -19,7 +19,7 @@
 
 ## 接口
 
-## SaveIconStyle枚举说明
+## SaveIconStyle
 
 保存控件的图标风格。
 

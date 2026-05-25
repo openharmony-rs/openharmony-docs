@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -64,6 +64,7 @@ HiAppEvent通过事件领域和事件名称关联应用事件，并通过addWatc
 |-----------|------------------|-----------------|-------------------|
 |崩溃事件|   支持  |   支持   |   支持   |
 |应用冻屏事件|   支持  |   支持   |   支持   |
+|应用冻屏告警事件|   支持   |   支持   |   支持   |
 |资源泄漏事件|   支持  |   支持   |   支持   |
 |地址越界事件|   支持  |   不支持   |   支持   |
 |主线程超时事件|   支持  |   支持   |   支持   |

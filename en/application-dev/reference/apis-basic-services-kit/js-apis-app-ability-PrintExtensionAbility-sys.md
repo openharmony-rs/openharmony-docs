@@ -5,7 +5,7 @@
 <!--Owner: @guoshengbang-->
 <!--Designer: @gcw_4D6e0BBd-->
 <!--Tester: @guoshengbang-->
-<!--Adviser: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 The **PrintExtensionAbility** module provides operation APIs of the print extension ability.
 

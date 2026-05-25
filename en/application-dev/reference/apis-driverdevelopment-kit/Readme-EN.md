@@ -69,6 +69,7 @@
     - [UsbRequestPipe](capi-usbddk-usbrequestpipe.md)
     - [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md)
     - [Usb_DeviceArray](capi-usbddk-usb-devicearray.md)
+    - [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md)
     - [UsbSerial_Params](capi-serialddk-usbserial-params.md)
     - [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md)
 - Error Codes<!--driver-development-errcode-->

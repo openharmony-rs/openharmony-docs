@@ -37,7 +37,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createA2dpSrcProfile(): A2dpSourceProfile
 
-Creates a [A2DP source](../../connectivity/terminology.md#a2dp-source) instance. Through this instance, you can use the local device as the A2DP source device and implement functions such as obtaining the Bluetooth media audio playback status of the local device.
+Creates a [A2DP source](../../connectivity/terminology.md#a2dp-source) instance. Through this instance, you can use the local device as the A2DP source device and implement functions such as obtaining the audio playback status based on the Bluetooth protocol between the local device and the other device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -93,7 +93,7 @@ Obtains the media audio playback status between the local and peer devices.
 
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | Yes   | Address of the peer device, for example, XX:XX:XX:XX:XX:XX.|
+| deviceId | string | Yes   | Address of the remote device, for example, ***XX*:*XX*:*XX*:*XX*:*XX*:*XX***.|
 
 **Return value**
 

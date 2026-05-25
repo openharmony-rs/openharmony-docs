@@ -81,18 +81,6 @@ Defines a higher-resolution image object.
 | ------ | ----------------------------- |-----| ---------- | ---------- |
 | raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| No | Yes  | Raw image.|
 
-## ExposureMode
-
-Enumerates the exposure modes.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name                          | Value  | Description     |
-| ----------------------------- |-----|---------|
-| EXPOSURE_MODE_MANUAL<sup>12+</sup>          | 3   | Manual exposure mode.|
-
 ## PolicyType<sup>12+</sup>
 
 Enumerates the policy types.
@@ -224,7 +212,7 @@ Mutes or unmutes the camera device.
 
 | Name     | Type                             | Mandatory | Description       |
 | -------- | --------------------------------- | ---- | ---------- |
-| mute     | boolean                           |  Yes |  Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
+| mute     | boolean                           |  Yes |  Whether to mute the camera device. **true** to mute, **false** otherwise. |
 
 **Example**
 
@@ -249,7 +237,7 @@ Mutes the camera device permanently.
 
 | Name     | Type                         | Mandatory | Description                                        |
 | -------- |-----------------------------| ---- |--------------------------------------------|
-| mute     | boolean                     |  Yes | Mutes or unmutes the camera device. **true** to mute, **false** otherwise.                  |
+| mute     | boolean                     |  Yes | Whether to mute the camera device. **true** to mute, **false** otherwise.                  |
 | type     | [PolicyType](#policytype12) |  Yes | Policy type. For details about the available options, see [PolicyType](#policytype12).|
 
 **Error codes**
@@ -3212,7 +3200,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
-| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.  |
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
 
 > **NOTE**
 >This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
@@ -5087,8 +5075,8 @@ Enumerates the exposure metering modes.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
-| Name                          | Value  | Description        |
-| ----------------------------- | ---- | ----------- |
+| Name                          | Value  | Description        | 
+| ----------------------------- | ---- | ----------- | 
 | CENTER_HIGHLIGHT_WEIGHTED   | 3    | Center-weighted and highlight metering mode. This mode focuses on the highlight area near the center of the screen.      |
 
 ## FocusRangeType<sup>15+</sup>

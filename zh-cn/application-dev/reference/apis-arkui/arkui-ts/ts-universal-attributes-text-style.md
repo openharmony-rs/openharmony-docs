@@ -12,7 +12,9 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## TextContentControllerBase
 
@@ -238,8 +240,8 @@ scrollToVisible(range?: TextRange): void
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | type  | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 设置文本装饰线类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| color  | &nbsp;[ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 设置文本装饰线颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是 | 设置文本装饰线样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| color  | &nbsp;[ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 设置文本装饰线颜色。<br/>默认值：Color.Black。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是 | 设置文本装饰线样式。<br/>默认值：TextDecorationStyle.SOLID。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | thicknessScale | number | 否   | 是 | 设置文本装饰线的粗细缩放比例。<br/>默认值：1.0 <br/>取值范围：[0, +∞) <br/>**说明：** 负值按默认值处理。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SelectionOptions<sup>12+</sup>对象说明
@@ -252,7 +254,7 @@ setTextSelection选中文字时的配置。
 
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
-| menuPolicy | [MenuPolicy](#menupolicy12) | 否   | 是 | 菜单弹出的策略。 |
+| menuPolicy | [MenuPolicy](#menupolicy12) | 否   | 是 | 菜单弹出的策略。 默认值：MenuPolicy.DEFAULT。|
 
 ## MenuPolicy<sup>12+</sup>
 
@@ -292,4 +294,4 @@ SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
-| offset | number | 否   | 是   | 插入文本的位置。 |
+| offset | number | 否   | 是   | 插入文本的位置。<br/>**说明：**<br/>当需要在指定位置（而非末尾）插入文本时传入此参数。不传入时默认插入到文本末尾。 |

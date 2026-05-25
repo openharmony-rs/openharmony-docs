@@ -29,6 +29,7 @@ Enumerates the error codes used in the certificate management APIs.
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
 | CM_ERROR_NOT_SYSTEM_APP   | 202      | The caller is not a system application.<br> **System API**: This is a system API.|
+| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | The password is incorrect.<br> **System API**: This is a system API.<br>**Since**: 26.0.0|
 
 ## certificateManager.getAllAppPrivateCertificates
 

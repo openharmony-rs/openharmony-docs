@@ -2,11 +2,11 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @qq_42700029-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回授权或拒绝权限功能的对象。示例代码参考[onPermissionRequest事件](./arkts-basic-components-web-events.md#onpermissionrequest9)。
+Web组件返回授权或拒绝权限功能的对象。示例代码参考[onPermissionRequest](./arkts-basic-components-web-events.md#onpermissionrequest9)事件。
 
 > **说明：**
 >
@@ -64,7 +64,7 @@ getAccessibleResource(): Array\<string\>
 
 grant(resources: Array\<string\>): void
 
-对网页访问的给定权限进行授权。
+对网页所请求的权限进行授权。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

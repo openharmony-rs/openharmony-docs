@@ -70,7 +70,7 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 ```
 
 ## metadataBinding.decodeImage
-function decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
+decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 Decodes the information carried in the image. This API uses a promise to return the result.
 

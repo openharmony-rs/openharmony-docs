@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 
 > **说明：**
@@ -52,10 +52,10 @@ struct MainPage {
     Package.hasInstalled({
       bundleName: 'com.example.bundlename',
       success: (data) => {
-        console.log('package has installed: ' + data);
+        console.info('package has installed: ' + data);
       },
       fail: (msg:string, code) => {
-        console.log('query package fail, code: ' + code + ', data: ' + msg);
+        console.error('query package fail, code: ' + code + ', data: ' + msg);
       },
     });
   }

@@ -86,7 +86,7 @@ Extension configuration format:
   ]
 }
 ```
-The extension configuration is stored in [dataShare](../database/share-config.md#configuration-in-modulejson5). The URI is fixed in the format of **datashareproxy://[Bundle name]/browserNativeMessagingHosts**.
+The extension configuration is exposed to the browser application through [dataShare configuration](../database/share-config.md#configuration-in-modulejson5). For details about how to configure the extension, see step 6 in [Implementing the WebNativeMessagingExtensionAbility (for Application Developers)](#implementing-the-webnativemessagingextensionability-for-application-developers). The URI is in a fixed format: **datashareproxy://[Bundle name]/browserNativeMessagingHosts**. The **value** field specifies the JSON string of the extension configuration described above, and the **allowList** field specifies the appIdentifier of the browser application allowed to access the configuration.
 
 ### Lifecycle Management of WebNativeMessagingExtensionAbility
 - [onConnectNative](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md#onconnectnative): Triggered when the browser extension calls **runtime.connectNative**. If **WebNativeMessagingExtensionAbility** is not running, calling **runtime.connectNative** will start **WebNativeMessagingExtensionAbility** and trigger this callback.

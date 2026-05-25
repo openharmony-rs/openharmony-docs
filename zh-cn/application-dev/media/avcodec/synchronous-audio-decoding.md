@@ -119,7 +119,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    MediaKeySession *session = nullptr;
    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
    ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-   if (ret != DRM_OK) {
+   if (ret != DRM_ERR_OK) {
        // 如果创建失败，请查看DRM接口文档及日志信息。
        printf("create media key session failed.");
        return;

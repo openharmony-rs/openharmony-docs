@@ -245,12 +245,10 @@ struct Index {
 
 禁用拖拽方式主要分为两类：
 
-1. 网页侧通过w3c css、js进行拦截/禁用。
+1. 网页侧通过W3C CSS、JS进行拦截/禁用。
 2. 应用侧通过Web组件runJavaScriptExt接口注入JS进行拦截/禁用。
 
 H5示例1:
-
-<!-- @[W3cForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/w3c-forbid.html) -->
 
 ``` HTML
 <html lang="zh-CN">
@@ -317,8 +315,6 @@ H5示例1:
 ![w3c-forbid-drag](figures/w3c-forbid-drag.gif)
 
 html示例2:
-
-<!-- @[RunJsForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/runJs-forbid.html) -->
 
 ``` HTML
 <html lang="zh-CN">

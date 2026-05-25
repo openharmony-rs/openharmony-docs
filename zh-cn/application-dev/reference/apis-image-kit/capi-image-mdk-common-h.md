@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -38,7 +38,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | 可能被使用的接口返回值的枚举。 |
+| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | 被使用的接口返回值的枚举。 |
 
 ## 枚举类型说明
 
@@ -50,7 +50,7 @@ enum IRNdkErrCode
 
 **描述**
 
-可能被使用的接口返回值的枚举。
+被使用的接口返回值的枚举。
 
 **起始版本：** 10
 
@@ -143,8 +143,8 @@ enum IRNdkErrCode
 | IMAGE_RESULT_CREATE_SURFACE_FAILED = IMAGE_RESULT_BASE + 156 | 创建surface失败。 |
 | IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED = IMAGE_RESULT_BASE + 157 | 从surface获取参数失败。 |
 | IMAGE_RESULT_GET_SURFACE_FAILED = IMAGE_RESULT_BASE + 158 | 获取surface失败。| 
-| IMAGE_RESULT_SURFACE_ACQUIRE_BUFFER_FAILED = IMAGE_RESULT_BASE + 159 | 申请内存失败。 |
-| IMAGE_RESULT_SURFACE_REQUEST_BUFFER_FAILED = IMAGE_RESULT_BASE + 160 | 申请内存失败。 |
+| IMAGE_RESULT_SURFACE_ACQUIRE_BUFFER_FAILED = IMAGE_RESULT_BASE + 159 | 消费者申请内存失败。 |
+| IMAGE_RESULT_SURFACE_REQUEST_BUFFER_FAILED = IMAGE_RESULT_BASE + 160 | 生产者申请内存失败。 |
 | IMAGE_RESULT_REGISTER_LISTENER_FAILED = IMAGE_RESULT_BASE + 161 | 注册监听失败。 |
 | IMAGE_RESULT_REGISTER_BUFFER_FAILED = IMAGE_RESULT_BASE + 162 | 注册内存失败。 |
 | IMAGE_RESULT_FREAD_FAILED = IMAGE_RESULT_BASE + 163 | 读取文件失败。 |

@@ -133,7 +133,6 @@ which are returned when an API call is incorrect or the **on()** API is used to 
 | DEVICE_PREEMPTED           | 7400109    | The camera is preempted.<br> **Atomic service API**: This API can be used in atomic services since API version 19. |
 | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | The configuration conflicts with the current configuration.<br> **Atomic service API**: This API can be used in atomic services since API version 19.|
 | SERVICE_FATAL_ERROR        | 7400201    | The camera service is abnormal.<br> **Atomic service API**: This API can be used in atomic services since API version 19.   |
-| UNSUPPORTED_MULTI_CAMERA_COMBINATION<sup>24+</sup> | 7400113 | Combination of multiple cameras is not supported.<br>**Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## TorchMode<sup>11+</sup>
 
@@ -260,6 +259,7 @@ Enumerates the exposure modes.
 | EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).<br>After this mode is used, it takes effect only for the first photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| EXPOSURE_MODE_MANUAL | 3    | Manual exposure. The exposure duration can be set.<br>In this mode, you can set the exposure duration by calling [ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24).<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## FocusMode
 
@@ -403,7 +403,7 @@ Enumerates the effect types supported by the camera controller.
 |-----------|---|---------|
 | BEAUTY    | 0 | Beauty effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.  |
 | PORTRAIT  | 1 | Portrait blur effect.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| AUTO_FRAMING<sup>24+</sup> | 2 | Automatic composition.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
+| AUTO_FRAMING<sup>24+</sup> | 2 | Auto focus.<br> **Atomic service API**: This API can be used in atomic services since API version 24.|
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
@@ -495,3 +495,20 @@ Enumerates the OIS axes.
 | ------------------------- | ---- | ------------    |
 | PITCH      | 0    | Pitch axis. It controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.  |
 | YAW   | 1    | Yaw axis. It controls the left-right rotation of the camera body, that is, the camera body rotates around the axis perpendicular to the lens.|
+
+## ExposureState
+
+Enumerates the exposure states.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name                      | Value  | Description           |
+| ------------------------- | ---- | ------------    |
+| EXPOSURE_STATE_SCAN       | 0    | Focusing.    |
+| EXPOSURE_STATE_CONVERGED  | 1    | Exposure converged.    |

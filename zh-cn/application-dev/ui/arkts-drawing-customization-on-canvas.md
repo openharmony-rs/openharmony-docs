@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Canvas提供画布组件，用于自定义绘制图形，开发者使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
+[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)提供画布组件，用于自定义绘制图形，开发者使用[CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象和[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md)对象在Canvas组件上进行绘制，绘制对象可以是基础形状、文本、图片等。
 
 
 ## 使用画布组件绘制自定义图形
@@ -51,8 +51,8 @@ struct CanvasExample1 {
   ![2023022793003](figures/2023022793003.jpg)
 
 - 离屏绘制是指将需要绘制的内容先绘制在缓存区，再将其转换成图片，一次性绘制到Canvas上，加快了绘制速度。过程为：
-  1. 通过transferToImageBitmap方法将离屏画布最近渲染的图像创建为一个ImageBitmap对象。
-  2. 通过CanvasRenderingContext2D对象的transferFromImageBitmap方法显示给定的ImageBitmap对象。
+  1. 通过[transferToImageBitmap](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#transfertoimagebitmap)方法将离屏画布最近渲染的图像创建为一个[ImageBitmap](../reference/apis-arkui/arkui-ts/ts-components-canvas-imagebitmap.md)对象。
+  2. 通过[CanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md)对象的[transferFromImageBitmap](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#transferfromimagebitmap)方法显示给定的ImageBitmap对象。
 
     具体使用参考[OffscreenCanvasRenderingContext2D](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md)对象。
 
@@ -112,7 +112,7 @@ import lottie from '@ohos/lottie'
 
 ## 初始化画布组件
 
-onReady(event: () =&gt; void)是Canvas组件初始化完成时的事件回调，调用该事件后，可获取Canvas组件的确定宽高，进一步使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象调用相关API进行图形绘制。
+onReady(event: () =&gt; void)是Canvas组件初始化完成时的事件回调，调用该事件后，可获取Canvas组件的确定宽度[width](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#width)和高度[height](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#height)，进一步使用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象调用相关API进行图形绘制。
 
 
 <!-- @[initCanvasComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/InitCanvasComponent.ets) -->
@@ -134,7 +134,7 @@ Canvas(this.context)
 
 ## 画布组件绘制方式
 
-在Canvas组件的事件回调onReady()被调用之后，开发者可以直接使用Canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义Path2D对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
+在Canvas组件的事件回调[onReady](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md#onready)()被调用之后，开发者可以直接使用Canvas组件进行绘制。或者可以脱离Canvas组件和onReady()生命周期，单独定义[Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)对象构造理想的路径，并在onReady()调用之后使用Canvas组件进行绘制。
 
 - 通过CanvasRenderingContext2D对象直接调用相关API进行绘制。
 
@@ -157,7 +157,7 @@ Canvas(this.context)
 
   ![2023022793719(1)](figures/2023022793719.jpg)
 
-- 先单独定义path2D对象构造理想的路径，再通过调用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的stroke接口或者fill接口进行绘制，具体使用可以参考[Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)对象。
+- 先单独定义path2D对象构造理想的路径，再通过调用CanvasRenderingContext2D对象和OffscreenCanvasRenderingContext2D对象的[stroke](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#stroke-1)接口或者[fill](../reference/apis-arkui/arkui-ts/ts-offscreencanvasrenderingcontext2d.md#fill-1)接口进行绘制，具体使用可以参考[Path2D](../reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.md)对象。
 
 
 <!-- @[definePath2d_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasComponentDrawingMethod.ets) -->
@@ -311,8 +311,8 @@ struct CustomFont {
         .height('100%')
         .backgroundColor('#F5DC62')
         .onReady(() => {
-          // 加载自定义字体
           let fontCollection = text.FontCollection.getGlobalInstance();
+          // 加载rawfile目录下的自定义字体文件customFont.ttf
           fontCollection.loadFontSync('customFont', $rawfile('customFont.ttf'));
           this.context.font = '30vp customFont';
           this.context.fillText('Hello World!', 20, 50);
@@ -403,7 +403,7 @@ Canvas(this.context)
 
 ## 使用状态变量驱动画布刷新
 
-可以使用状态变量来驱动Canvas刷新，将变化的数据通过@Watch监听，并绑定自定义的draw()方法。当数据刷新时，@Watch绑定的方法会执行绘制逻辑，使Canvas刷新。
+可以使用状态变量来驱动Canvas刷新，将变化的数据通过[@Watch](state-management/arkts-watch.md)监听，并绑定自定义的draw()方法。当数据刷新时，@Watch绑定的方法会执行绘制逻辑，使Canvas刷新。
 
 
 <!-- @[canvasContentUpdate_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomCanvas/entry/src/main/ets/pages/canvas/CanvasContentUpdate.ets) -->

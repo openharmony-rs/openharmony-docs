@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **NOTE**
 >
@@ -110,7 +110,7 @@ The possible causes are as follows:
 
 1. Check that the target device administrator application has been enabled.
 2. Check that the specified device administrator ability component of the target device administrator application has been enabled.
-3. Check whether the device administrator application to be disabled is the caller itself.
+3. Ensure that the device administrator application to be disabled is the caller itself.
 
 ## 9200006 Invalid User ID
 
@@ -130,8 +130,8 @@ The possible causes are as follows:
 
 **Solution**
 
-1. Check whether the user ID specified for the API is valid.
-2. Check whether the caller user ID and the specified user ID are the same. If the application is a device administrator application, policies cannot be set across users.
+1. Ensure that the user ID specified for the API is valid.
+2. Ensure that the caller user ID and the specified user ID are the same. If the application is a device administrator application, policies cannot be set across users.
 
 ## 9200007 System Ability Error
 
@@ -247,15 +247,15 @@ The possible causes are as follows:
 2. The length of the input parameter exceeds the upper limit.
 3. The length of the input array exceeds the upper limit.
 4. The parameter value is out of the value range.
-5. The blocklist or trustlist that has not been set is removed.
+5. A removal operation is performed on a blocklist or trustlist that has not been set yet.
 
 **Solution**
 
-1. Check whether the input **EnterpriseAdminExtensionAbility** belongs to the current application.
-2. Check whether the length of the input parameter exceeds the upper limit.
-3. Check whether the length of the input array exceeds the upper limit.
-4. Check whether the input parameter value is within the supported value range.
-5. Before removing the list, check whether the corresponding list is set.
+1. Ensure that the input **EnterpriseAdminExtensionAbility** belongs to the current application.
+2. Ensure that the length of the input parameter does not exceed the upper limit.
+3. Ensure that the length of the input array does not exceed the upper limit.
+4. Ensure that the input parameter value is within the supported value range.
+5. Before removing the list, ensure that the corresponding list is set.
 
 ## 9200013 Control Not Immediately Effective
 
@@ -287,13 +287,13 @@ This error code is generated when the component fails to be started.
 
 **Possible Causes**
 
-1. If the list of apps that cannot be run (for example, by calling the [addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) API) is set and the app is in the list, the component fails to be started.
-2. If the list of apps that can be run (for example, by calling the [addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21) API) is set and the app is not in the list, the component fails to be started.
+1. If the list of applications that are forbidden to run is set (for example, by calling the [addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) API) and the application is in the list, the component fails to be started.
+2. If the list of applications that are allowed to run is set (for example, by calling the [addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21) API) and the application is not in the list, the component fails to be started.
 
 **Solution**
 
-1. Remove the app from the list of apps that cannot run, for example, by calling the [removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync) API.
-2. Add the app to the list of apps that can run, for example, by calling the [addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21) API.
+1. Remove the application from the list of applications that are forbidden to run, for example, by calling the [removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync) API.
+2. Add the application to the list of applications that are allowed to run, for example, by calling the [addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21) API.
 
 ## 9200015 Component Not Exist
 
@@ -314,6 +314,24 @@ This error code is generated when a component that does not exist is started.
 
 1. Check whether the values of **bundleName** and **abilityName** in **want** are correct.
 2. Check whether the passed component is visible to the outside.
+
+## 9200016 Service Timeout
+
+**Error Message**
+
+Service timeout.
+
+**Description**
+
+This error code is reported when the service times out.
+
+**Possible Causes**
+
+The service times out.
+
+**Solution**
+
+Try again later.
 
 ## 9201001 Failed to Manage the Certificate
 
@@ -341,7 +359,7 @@ Failed to install the application.
 
 **Description**
 
-This error code is reported when a device administrator application fails to install an enterprise app.
+This error code is reported when a device administrator application fails to install an enterprise application.
 
 **Possible Causes**
 
@@ -534,3 +552,154 @@ The Ethernet configuration fails. The possible causes are as follows:
 1. Check whether the NIC is enabled.
 2. Check whether the input NIC name is correct.
 3. Check whether the configured parameters are correct.
+
+## 9201011 Invalid Activation Lock Credential
+
+**Error Message**
+
+The credential of the activation lock is invalid.
+
+**Description**
+
+The credential for the activation lock is invalid.
+
+**Possible Causes**
+
+1. The format of the passed activation lock credential is incorrect.
+2. The values of fields in the passed activation lock credential are incorrect.
+3. The passed activation lock credential does not match the current device.
+
+**Solution**
+
+1. Ensure that the format of the activation lock credential is correct.
+2. Ensure that the values of fields in the activation lock credential are correct.
+3. Ensure that the activation lock credential is for the current device.
+
+## 9201012 Failed to Enable or Disable Activation Lock
+
+**Error Message**
+
+Failed to enable or disable the activation lock.
+
+**Description**
+
+Failed to disable or enable the activation lock.
+
+**Possible Causes**
+
+<!--RP1-->The device does not support the activation lock service.
+<!--RP1End-->
+
+**Solution**
+
+<!--RP2-->Ensure that the device supports the activation lock service.
+<!--RP2End-->
+
+## 9201013 Number of Applications in Dock Reaches Maximum
+
+**Error Message**
+
+The number of applications in the Dock has reached the maximum.
+
+**Description**
+
+This error code is reported when an enterprise device administrator fails to add an application to the Dock.
+
+**Possible Causes**
+
+The number of applications in the Dock has reached the maximum.
+
+**Solution**
+
+Delete unnecessary applications from the Dock.
+
+## 9201014 Specified Application Already in Docker
+
+**Error Message**
+
+The application is already in the Dock.
+
+**Description**
+
+This error code is reported when an enterprise device administrator fails to add an application to the Dock.
+
+**Possible Causes**
+
+The specified application has already in the Dock.
+
+**Solution**
+
+Remove the specified application from the Dock and add it to the specified location in the Dock again.
+
+## 9201015 Specified Application Not Installed
+
+**Error Message**
+
+The application is not installed.
+
+**Description**
+
+This error code is reported when the policy of an application needs to be delivered but the application has not been installed.
+
+**Possible Causes**
+
+The specified application has not been installed yet.
+
+**Solution**
+
+Install the specified application and try again.
+
+## 9201016 Specified Application Not in Dock
+
+**Error Message**
+
+The application has not been added to the Dock.
+
+**Description**
+
+This error code is reported when an enterprise device administrator removes an application from the Dock.
+
+**Possible Causes**
+
+The application to be removed is not in the Dock.
+
+**Solution**
+
+Ensure that the package name of the application to be removed from the Dock is correct.
+
+## 9201018 Specified Application Inoperable
+
+**Error Message**
+
+The application is inoperable.
+
+**Description**
+
+This error code is reported when an enterprise device administrator fails to add an application to the Dock.
+
+**Possible Causes**
+
+The specified application, such as Application Center, Task Center, Files, Recycle Bin, or an application without an icon, is inoperable.
+
+**Solution**
+
+The specified application cannot be added to the Dock. Add another application.
+
+## 9201019 Specified Location Inoperable
+
+**Error Message**
+
+The location is inoperable.
+
+**Description**
+
+This error code is reported when an enterprise device administrator fails to add an application to the Dock.
+
+**Possible Causes**
+
+If the application in position 0 or 1 in the Dock is Application Center or Task Center, the application at that location cannot be changed.
+
+**Solution**
+
+Add the application to another location.
+<!--no_check-->

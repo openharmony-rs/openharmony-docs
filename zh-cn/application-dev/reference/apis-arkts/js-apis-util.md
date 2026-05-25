@@ -1,8 +1,8 @@
 # @ohos.util (util工具函数)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -40,14 +40,6 @@ format(format: string,  ...args: Object[]): string
 | 类型   | 说明              |
 | ------ | -----------------|
 | string | 格式化后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **格式说明符：**
 
@@ -151,14 +143,6 @@ errnoToString(errno: number): string
 | ------ | ---------------------- |
 | string | 错误码对应的详细信息。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -210,14 +194,6 @@ callbackWrapper(original: Function): (err: Object, value: Object)=&gt;void
 | -------- | -------- |
 | (err: Object, value: Object)=&gt;void | 返回一个回调函数，该函数第一个参数err是拒绝原因（如果&nbsp;Promise&nbsp;已解决，则为&nbsp;null），第二个参数value是已解决的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -253,14 +229,6 @@ promisify(original: (err: Object, value: Object) =&gt; void): Function
 | 类型 | 说明 |
 | -------- | -------- |
 | Function | 返回一个&nbsp;Promise&nbsp;的函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -302,14 +270,6 @@ generateRandomUUID(entropyCache?: boolean): string
 | -------- | -------- |
 | string | 表示此UUID的字符串。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -340,14 +300,6 @@ generateRandomBinaryUUID(entropyCache?: boolean): Uint8Array
 | -------- | -------- |
 | Uint8Array | 表示此UUID的Uint8Array值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -360,7 +312,7 @@ console.info(JSON.stringify(uuid));
 
 parseUUID(uuid: string): Uint8Array
 
-将generateRandomUUID生成的string类型UUID转换为generateRandomBinaryUUID生成的UUID，符合RFC 4122版本规范。
+将generateRandomUUID生成的string类型UUID转换为[util.generateRandomBinaryUUID](#utilgeneraterandombinaryuuid9)生成的UUID，符合RFC 4122版本规范。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -380,11 +332,10 @@ parseUUID(uuid: string): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 10200002 | Invalid uuid string. |
 
 **示例：**
@@ -511,14 +462,6 @@ getHash(object: object): number
 | -------- | -------- |
 | number | Hash值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -644,6 +587,9 @@ EventHandler和libuv的异步事件循环机制在执行异步任务时，任务
 
 ``` C++
 // napi_init.cpp C++侧示例代码
+#include "napi/native_api.h"
+#include "uv.h"
+
 static napi_value CreateObject(napi_env env, napi_callback_info info)
 {
     uv_loop_s* loop = nullptr;
@@ -673,6 +619,12 @@ static napi_value CreateObject(napi_env env, napi_callback_info info)
 }
 ```
 
+在CMakeLists.txt中添加以下动态链接库：
+
+```txt
+libuv.so
+```
+
 ``` TypeScript
 // index.d.ts 接口声明
 export const createObject: () => void;
@@ -694,6 +646,20 @@ try {
 }
 ```
 
+**可能出现的问题：**
+
+如果之前内存泄漏的对象被继续使用，使用enableLocalHandleDetection接口后，系统会回收内存泄漏对象。继续使用该对象会导致内存泄漏问题转变为稳定性问题。
+
+``` C++
+napi_value global_js_object;
+napi_value dangerous_function(napi_env env, napi_callback_info info) {
+    napi_value js_obj;
+    napi_create_object(env, &js_obj);
+    global_js_object = js_obj; // 直接存储到全局变量，开启LocalHandle内存泄漏兜底机制后被释放
+    return nullptr;
+}
+```
+
 ### onVMHeapMemoryPressure<sup>24+</sup>
 
 static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean
@@ -701,6 +667,8 @@ static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold:
 注册一个回调函数，在虚拟机主线程完成垃圾回收后，如果堆内存超过预警阈值则触发回调执行。
 
 虚拟机是通过统计存活对象大小来判断是否达到内存预警阈值，由于虚拟机堆存在一定内存碎片以及浮动垃圾，无法保证在OOM前肯定会触发到回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -742,6 +710,8 @@ static offVMHeapMemoryPressure(): void
 
 取消已注册的内存预警回调函数。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **示例：**
@@ -755,6 +725,8 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 ## HeapMemoryThreshold<sup>24+</sup>
 
 堆内存预警阈值配置，用于指定触发回调的堆内存预警阈值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -814,7 +786,7 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| stream | boolean | 否 | 是 | 在随后的decodeWithStream()调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
+| stream | boolean | 否 | 是 | 在随后的[decodeWithStream](#decodewithstreamdeprecated)调用中是否跟随附加数据块。如果以块的形式处理数据，则设置为true；如果处理最后的数据未分块，则设置为false。默认为false。 |
 
 ## Aspect<sup>11+</sup>
 
@@ -838,14 +810,6 @@ static addBefore(targetClass: Object, methodName: string, isStatic: boolean, bef
 | methodName   | string   | 是   | 指定的原方法名，不支持read-only方法。                    |
 | isStatic     | boolean  | 是   | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。      |
 | before       | Function | 是   | 要插入的函数对象。函数有参数，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），其余参数是原方法的参数。函数也可以无参数，无参时不做处理。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -931,14 +895,6 @@ static addAfter(targetClass: Object, methodName: string, isStatic: boolean, afte
 | isStatic     | boolean  | 是   | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。      |
 | after        | Function | 是   | 要插入的函数。函数有参数时，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），第二个参数是原方法的返回值（如果原方法没有返回值，则为undefined），其余参数是原方法的参数。函数也可以无参，无参时不做处理。  |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -1013,14 +969,6 @@ static replace(targetClass: Object, methodName: string, isStatic: boolean, inste
 | methodName   | string   | 是   | 指定的原方法名，不支持read-only方法。                  |
 | isStatic     | boolean  | 是   | 指定的原方法是否为静态方法。true表示静态方法，false表示实例方法。       |
 | instead      | Function | 是   | 要用来替换原方法的函数。函数有参数时，则第一个参数是this对象（若isStatic为true，则为类对象即targetClass；若isStatic为false，则为调用方法的实例对象），其余参数是原方法的参数。函数也可以无参，无参时不做处理。   |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1116,14 +1064,6 @@ static create(encoding?: string, options?: TextDecoderOptions): TextDecoder
 | ---------- | ------------------ |
 | [TextDecoder](#textdecoder) | 返回一个TextDecoder对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -1163,14 +1103,6 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 解码后的数据。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1235,14 +1167,6 @@ decodeWithStream(input: Uint8Array, options?: DecodeWithStreamOptions): string
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 解码后的数据。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1413,14 +1337,6 @@ TextEncoder的构造函数。
 | ----- | ---- | ---- | ---- |
 | encoding | string | 否 | 编码格式，默认值为'utf-8'。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -1449,14 +1365,6 @@ static create(encoding?: string): TextEncoder
 | ---------- | ------------------ |
 | [TextEncoder](#textencoder) | 返回一个TextEncoder对象。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -1484,14 +1392,6 @@ encodeInto(input?: string): Uint8Array
 | 类型       | 说明               |
 | ---------- | ------------------ |
 | Uint8Array | 返回编码后的Uint8Array对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -1524,14 +1424,6 @@ encodeIntoUint8Array(input: string, dest: Uint8Array): EncodeIntoUint8ArrayInfo
 | 类型       | 说明               |
 | ---------- | ------------------ |
 | [EncodeIntoUint8ArrayInfo](#encodeintouint8arrayinfo11) | 返回一个对象，read表示已编码的字符数，written表示编码字符所占用的字节数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1664,14 +1556,6 @@ static parseRationalNumber(numerator: number,denominator: number): RationalNumbe
 | -------- | -------- |
 | [RationalNumber](#rationalnumber8) | RationalNumber对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -1704,14 +1588,6 @@ static createRationalFromString(rationalString: string): RationalNumber
 | -------- | -------- |
 | [RationalNumber](#rationalnumber8)​ | RationalNumber对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | The type of rationalString must be string. |
-
 **示例：**
 
 ```ts
@@ -1739,14 +1615,6 @@ compare(another: RationalNumber): number​
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
 | number | 两个对象相等时返回0；给定对象小于当前对象时返回1；给定对象大于当前对象时返回-1。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1856,14 +1724,6 @@ static getCommonFactor(number1: number, number2: number): number
 | 类型   | 说明                           |
 | ------ | ------------------------------ |
 | number | 返回两个给定数字的最大公约数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -2192,14 +2052,6 @@ constructor(capacity?: number)
 | -------- | ------ | ---- | ---------------------------- |
 | capacity | number | 否   | 指示要为缓冲区自定义的容量，不传默认值为64，最大值不能超过2147483647。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -2222,14 +2074,6 @@ updateCapacity(newCapacity: number): void
 | 参数名      | 类型   | 必填 | 说明                         |
 | ----------- | ------ | ---- | ---------------------------- |
 | newCapacity | number | 是   | 指示要为缓冲区自定义的容量，最大值不能超过2147483647。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 
 **示例：**
 
@@ -2509,14 +2353,6 @@ get(key: K): V | undefined
 | ------------------------ | ------------------------------------------------------------ |
 | V \| undefined | 如果指定的键存在于缓冲区中，则返回与键关联的值；否则返回createDefault创建的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -2549,14 +2385,6 @@ put(key: K,value: V): V
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
 | V    | 返回与添加的键关联的值。如果键或值为空，则抛出此异常。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -2661,14 +2489,6 @@ remove(key: K): V | undefined
 | ------------------------ | ------------------------------------------------------------ |
 | V&nbsp;\|&nbsp;undefined | 返回一个包含已删除键值对的Optional对象；如果key不存在，则返回undefined，如果key为null，则抛出异常。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -2701,14 +2521,6 @@ afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 | key      | K       | 是   | 表示删除的键。                                               |
 | value    | V       | 是   | 表示删除的值。                                               |
 | newValue | V       | 是   | 如果已调用put方法并且要添加的键已经存在，则参数值是关联的新值。其他情况下参数值为空。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例一：**
 
@@ -2812,14 +2624,6 @@ contains(key: K): boolean
 | ------- | ------------------------------------------ |
 | boolean | 如果缓冲区包含指定的键，则返回&nbsp;true。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -2851,14 +2655,6 @@ createDefault(key: K): V
 | 类型 | 说明               |
 | ---- | ------------------ |
 | V    | 返回与键关联的值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3021,14 +2817,6 @@ constructor(lowerObj: ScopeType, upperObj: ScopeType)
 | lowerObj | [ScopeType](#scopetype8) | 是   | 指定作用域实例的下限。 |
 | upperObj | [ScopeType](#scopetype8) | 是   | 指定作用域实例的上限。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3127,14 +2915,6 @@ intersect(range: ScopeHelper): ScopeHelper
 | ------------------------------ | ------------------------------ |
 | [ScopeHelper](#scopehelper9) | 返回给定范围和当前范围的交集。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3191,14 +2971,6 @@ intersect(lowerObj:ScopeType,upperObj:ScopeType):ScopeHelper
 | 类型                         | 说明                                     |
 | ---------------------------- | ---------------------------------------- |
 | [ScopeHelper](#scopehelper9) | 返回当前范围与给定下限和上限范围的交集。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3350,14 +3122,6 @@ expand(lowerObj: ScopeType,upperObj: ScopeType): ScopeHelper
 | ---------------------------- | ------------------------------------ |
 | [ScopeHelper](#scopehelper9) | 返回当前范围和给定下限和上限的并集。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3412,14 +3176,6 @@ expand(range: ScopeHelper): ScopeHelper
 | 类型                         | 说明                               |
 | ---------------------------- | ---------------------------------- |
 | [ScopeHelper](#scopehelper9) | 返回包括当前范围和给定范围的并集。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3477,14 +3233,6 @@ expand(value: ScopeType): ScopeHelper
 | ---------------------------- | -------------------------------- |
 | [ScopeHelper](#scopehelper9) | 返回包括当前范围和给定值的并集。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3539,14 +3287,6 @@ contains(value: ScopeType): boolean
 | ------- | --------------------------------------------------- |
 | boolean | 如果给定值包含在当前范围内返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ```ts
@@ -3600,14 +3340,6 @@ contains(range: ScopeHelper): boolean
 | 类型    | 说明                                                  |
 | ------- | ----------------------------------------------------- |
 | boolean | 如果给定范围在当前范围内则返回true，否则返回false。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3664,14 +3396,6 @@ clamp(value: ScopeType): ScopeType
 | 类型                     | 说明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
 | [ScopeType](#scopetype8) | 如果传入的value小于下限，返回lowerObj；如果大于上限值，返回upperObj；如果在当前范围内，返回value。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3748,14 +3472,6 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 | ---------- | ----------------------------- |
 | Uint8Array | 返回编码后的Uint8Array对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
   ```ts
@@ -3789,14 +3505,6 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 | 类型   | 说明                 |
 | ------ | -------------------- |
 | string | 返回编码后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -3892,14 +3600,6 @@ decodeSync(src: Uint8Array | string, options?: Type): Uint8Array
 | ---------- | ----------------------------- |
 | Uint8Array | 返回解码后新分配的Uint8Array对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
   ```ts
@@ -3936,14 +3636,6 @@ encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
 | ------------------------- | --------------------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回异步编码后新分配的Uint8Array对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
   ```ts
@@ -3978,14 +3670,6 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
 | 类型                  | 说明                     |
 | --------------------- | ------------------------ |
 | Promise&lt;string&gt; | 返回异步编码后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -4027,14 +3711,6 @@ decode(src: Uint8Array | string, options?: Type): Promise&lt;Uint8Array&gt;
 | ------------------------- | --------------------------------- |
 | Promise&lt;Uint8Array&gt; | 返回异步解码后新分配的Uint8Array对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
   ```ts
@@ -4068,14 +3744,6 @@ StringDecoder的构造函数。
 | ------ | ------------------------------ | ---- | --------------------------------- |
 | encoding  | string | 否   | 输入数据的编码类型。默认值：'utf-8'。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
   ```ts
@@ -4103,14 +3771,6 @@ write(chunk: string | Uint8Array): string
 | 类型       | 说明                          |
 | ---------- | ----------------------------- |
 | string | 返回解码后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -4143,14 +3803,6 @@ end(chunk?: string | Uint8Array): string
 | 类型       | 说明                          |
 | ---------- | ----------------------------- |
 | string | 返回解码后的字符串。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -5637,7 +5289,7 @@ const device = new DeviceManageViewModel("test");
 | length | number | 是 | 否 | 当前缓冲区中值的总数。 |
 
 **示例：**
-
+  <!--code_no_check-->
   ```ts
   let pro : util.LruBuffer<number,number>= new util.LruBuffer();
   pro.put(2,10);

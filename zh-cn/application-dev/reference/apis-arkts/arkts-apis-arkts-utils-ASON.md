@@ -1,8 +1,8 @@
 # ArkTSUtils.ASON
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -113,7 +113,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
 | text   | string | 是 | 有效的JSON字符串。|
-| reviver   | [Transformer](#transformer) | 否 | 转换函数，传入该参数，可以用来修改解析生成的原始值。默认值是undefined。目前只支持传入undefined。|
+| reviver   | [Transformer](#transformer) | 否 | 转换函数，传入该参数，可以用来修改解析生成的原始值。默认值是undefined。该参数目前仅支持传入undefined值，其他值会被忽略或视为无效。|
 | options   | [ParseOptions](#parseoptions) | 否 | 解析的配置，传入该参数，可以用来控制解析生成的结果类型。默认值是undefined。|
 
 **返回值：**
@@ -121,14 +121,6 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 | 类型 | 说明 |
 | -------- | -------- |
 | [ISendable](#isendable) \| null | 返回ISendable数据或null。入参为null时，返回null。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息      |
-| -------- | ------------- |
-| 401      | Parameter error. Invalid JSON string. |
 
 **示例：**
 
@@ -192,14 +184,6 @@ stringify(value: Object | null | undefined): string
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 转换后的JSON字符串。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息      |
-| -------- | ------------- |
-| 401      | Parameter error. Invalid ArkTS value. |
 
 **示例：**
 

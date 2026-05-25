@@ -49,7 +49,7 @@ layoutDirection(value: SecurityComponentLayoutDirection): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection枚举说明) |是 | 安全控件上图标和文字分布的方向。<br/>默认值：SecurityComponentLayoutDirection.HORIZONTAL。|
+| value | [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) |是 | 安全控件上图标和文字分布的方向。<br/>默认值：SecurityComponentLayoutDirection.HORIZONTAL。|
 
 **返回值：**
 
@@ -357,7 +357,7 @@ borderRadius(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value |  [Dimension](ts-types.md#dimension10) |是 |安全控件的边框圆角半径。|
+| value |  [Dimension](ts-types.md#dimension10) |是 |安全控件的边框圆角半径。默认值: 0vp。|
 
 **返回值：**
 
@@ -379,7 +379,7 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| radius |  [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |是 |安全控件的边框圆角半径。|
+| radius |  [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |是 |安全控件的边框圆角半径。默认值: 0vp。|
 
 **返回值：**
 
@@ -827,7 +827,7 @@ focusBox(style: FocusBoxStyle): T
 
 
 
-## SecurityComponentLayoutDirection枚举说明
+## SecurityComponentLayoutDirection
 
 安全控件上图标和文字的排列方向。
 
@@ -840,7 +840,7 @@ focusBox(style: FocusBoxStyle): T
 | HORIZONTAL | 0 | 安全控件上图标和文字分布的方向为水平排列。 |
 | VERTICAL | 1 | 安全控件上图标和文字分布的方向为垂直排列。 |
 
-## ButtonType枚举说明
+## ButtonType
 
 按钮类型。
 

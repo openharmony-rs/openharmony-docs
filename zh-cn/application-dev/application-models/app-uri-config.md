@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @liusu23-->
 <!--Designer: @ccllee1; @xukeke-->
-<!--Tester: @lixueqing513; @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang; @lusq-->
+<!--Adviser: @HelloCrease-->
 
 ## uris标签说明
 当在[module.json5](../quick-start/module-configuration-file.md)文件的[skills字段](../quick-start/module-configuration-file.md#skills标签)中声明uris时，主要包含如下字段。

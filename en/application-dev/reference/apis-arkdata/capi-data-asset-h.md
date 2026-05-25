@@ -26,7 +26,7 @@ Defines data asset structs.<br>Asset is a data struct used in data management. Y
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Defines a struct for a data asset, which provides information about a data asset.|
+| [Data_Asset](capi-rdb-data-asset.md) | Data_Asset | Defines a struct for a data asset,<br>which provides information about a data asset.|
 
 ### Enums
 
@@ -180,7 +180,7 @@ Sets the creation time for an asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t createTime | Creation time to set.|
+| int64_t createTime | Creation time to set. No specific unit. You can specify it.|
 
 **Returns**
 
@@ -206,7 +206,7 @@ Sets the last modification time for a data asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t modifyTime | Last modification time to set.|
+| int64_t modifyTime | Last modification time to set. No specific unit. You can specify it.|
 
 **Returns**
 
@@ -365,7 +365,7 @@ Obtains the creation time of a data asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t *createTime | Pointer to the creation time obtained, in int64_t format.|
+| int64_t *createTime | Pointer to the creation time obtained, in int64_t format. No specific unit. You can specify it.|
 
 **Returns**
 
@@ -395,7 +395,7 @@ Obtains the last modification time of an asset.
 | Name| Description|
 | -- | -- |
 | [Data_Asset](capi-rdb-data-asset.md) *asset | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
-| int64_t *modifyTime | Pointer to the last modification time obtained, in int64_t format.|
+| int64_t *modifyTime | Pointer to the last modification time obtained, in int64_t format. No specific unit. You can specify it.|
 
 **Returns**
 
@@ -539,7 +539,7 @@ Destroys multiple [Data_Asset](capi-rdb-data-asset.md) objects and reclaims the 
 
 | Name| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) **assets | Double pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
+| [Data_Asset](capi-rdb-data-asset.md) **assets | Pointer to the [Data_Asset](capi-rdb-data-asset.md) instance.|
 | uint32_t count | Number of [Data_Asset](capi-rdb-data-asset.md) objects to be destroyed.|
 
 **Returns**

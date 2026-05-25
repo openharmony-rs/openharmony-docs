@@ -66,7 +66,7 @@ Sets the spacing between child components of the **Row** component.
 
 > **NOTE**
 >
-> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While starting version information is preserved for historical anonymous objects, there may be cases where the outer element's @since version number is higher than inner element's. This does not affect interface usability.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -76,11 +76,11 @@ Sets the spacing between child components of the **Row** component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | No| Yes| Spacing between child components.<br>Since API version 9, this parameter does not take effect when it is set to a negative number or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround** or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp.<br>Invalid values are treated as the default value.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | No| Yes| Spacing between child components.<br>Since API version 9, this parameter does not take effect when it is set to a negative number or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround** or **FlexAlign.SpaceEvenly**.<br>Default value: **0**<br>Unit: vp.<br>If an invalid value is set, the default value is used instead.<br>**NOTE**<br>The value of **space** can be a number greater than or equal to 0 or a string that can be converted to a number.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## RowOptionsV2<sup>18+</sup>
 
-Sets the spacing between child components of the **Row** component. The spacing type **SpaceType** can be number, string, or Resource.
+Sets the spacing between child components of the **Row** component. The spacing type **SpaceType** can be of the number, string, or Resource type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -134,7 +134,7 @@ Sets the alignment mode of the child components in the horizontal direction.
 
 >  **NOTE**
 >
->  During the row layout, if [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for a child component, the child component is not compressed by default. This can result in the total main axis size of all child components exceeding the container's main axis size, which makes **FlexAlign.Center** and **FlexAlign.End** ineffective.
+>  During the row layout, if [flexShrink](ts-universal-attributes-flex-layout.md#flexshrink) is not set for a child component, the child component is not compressed by default. As a result, the total main-axis size of all child components may exceed the container's main-axis size, causing **FlexAlign.Center** and **FlexAlign.End** to become ineffective.
 
 ### reverse<sup>12+</sup>
 
@@ -156,17 +156,17 @@ Sets whether to reverse the horizontal arrangement of child components.
 
 >  **NOTE**
 >
->  If the **reverse** attribute is not set, the arrangement on the main axis remains in the normal order. If the attribute is set to **undefined**, it defaults to **true**, which reverses the arrangement on the main axis.<br>Keep in mind that the main axis arrangement direction is also affected by the **direction** attribute. If **reverse** is set to **true**, it effectively reverses the arrangement that results from the **direction** attribute settings.
+>  If the **reverse** attribute is not set, the arrangement on the main axis remains in normal order. If the attribute is set to **undefined**, it defaults to **true**, which reverses the arrangement on the main axis.<br>Keep in mind that the main axis arrangement direction is also affected by the **direction** attribute. If **reverse** is set to **true**, it effectively reverses the arrangement that results from the **direction** attribute settings.
 
 ## Events
 
 The [universal events](ts-component-general-events.md) are supported.
 
-## Example
+## Examples
 
 ### Example 1: Setting the Layout Attributes of the Row Component
 
-This example demonstrates how to set the layout attributes of the **Row** component, such as the spacing and alignment mode and its effect.
+This example demonstrates the effect of setting the layout attributes (such as the spacing and alignment mode) of the **Row** component.
 
 ```json
 // resources/base/element/string.json
@@ -235,7 +235,7 @@ struct RowExample {
 
 ### Example 2: Configuring the Reverse Attribute
 
-This example demonstrates how to set the **reverse** attribute of the **Row** component and its effect.
+This example demonstrates the effect of setting the **reverse** attribute of the **Row** component.
 
 ```ts
 @Entry
