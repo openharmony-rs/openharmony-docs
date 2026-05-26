@@ -40,8 +40,6 @@ motionBlur(value: MotionBlurOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[motionBlur<sup>23+</sup>](#motionblur23)。
@@ -82,8 +80,6 @@ motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[motionBlur<sup>23+</sup>](#motionblur23)。
@@ -121,8 +117,6 @@ motionBlur(value: MotionBlurOptions | undefined): this
 6、模糊半径建议设置1以内，否则会产生非预期效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
