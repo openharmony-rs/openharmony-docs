@@ -907,7 +907,7 @@ export default function abilityTest() {
 <!-- @[findWindowAndOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
 
 ``` TypeScript
-import { describe, expect, it, TestType } from "../../../../../hypium/index";
+import { describe, expect, it, TestType } from '../../../../../hypium/index';
 // 导入测试依赖kit
 import { Driver } from '@kit.TestKit';
 
