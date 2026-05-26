@@ -16,144 +16,144 @@ zh-cn/application-dev/ai/mindspore/Readme-CN.md @zhuguodong8 @jjfeing @ge-yafang
 zh-cn/application-dev/ai/nnrt/neural-network-runtime-guidelines.md @GbuzhidaoR @ge-yafang
 zh-cn/application-dev/ai/nnrt/Neural-Network-Runtime-Kit-Introduction.md @GbuzhidaoR @ge-yafang
 zh-cn/application-dev/ai/nnrt/Readme-CN.md @GbuzhidaoR @ge-yafang
-zh-cn/application-dev/application-models/ability-exit-info-record.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/ability-recover-guideline.md @wendel @Luobniz21 @HelloCrease
-zh-cn/application-dev/application-models/ability-startup-with-explicit-want.md @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/ability-terminology.md @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/abilitykit-overview.md @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/abilitystage.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/access-dataability.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/access-datashareextensionability-from-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/actions-entities.md @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/agent-extension-ability.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/agent-extension-configuration.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/agent-manager-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/api-switch-overview.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/app-deviceconfig-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/app-linking-startup.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/app-restart.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/app-service-extension-ability.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/app-startup-overview.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/app-startup.md @yzkp @HelloCrease
-zh-cn/application-dev/application-models/app-stop.md @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/app-uri-config.md @hanchen45 @liusu23 @ccllee1 @xukeke @HelloCrease
-zh-cn/application-dev/application-models/application-component-configuration-fa.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/application-models/application-component-configuration-stage.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/application-models/application-context-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/application-context-stage.md @li-weifeng2024 @xuzhihao666 @HelloCrease
-zh-cn/application-dev/application-models/application-lifecycle.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/application-models.md @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/application-startup-options.md @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/autofillextensionability-guide-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/bind-serviceability-from-stage.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/bind-serviceextensionability-from-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/canopenlink.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/application-models/capi-nativechildprocess-development-guideline.md @SKY2001 @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/capi-nativechildprocess-exit-info.md @SKY2001 @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/component-startup-rules-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/component-startup-rules-inner-device-sys.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/component-startup-rules-inner-device.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/component-startup-rules.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/config-file-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/config-file-stage.md @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/configuration-file-diff.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/connect-serviceability.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/context-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/create-dataability.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/create-pageability.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/create-serviceability.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/dataability-configuration.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/dataability-lifecycle.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/dataability-overview.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/dataability-permission-control.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/dataability-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/dataabilityhelper-switch.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/deep-linking-startup.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/embeddeduiextensionability.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/application-models/explicit-implicit-want-mappings.md @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/extensionability-overview.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/fa-model-development-overview.md @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/fa-stage-interaction-overview.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/featureability-switch.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/file-processing-apps-startup.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/application-models/hop-cross-device-migration.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/application-models/hop-multi-device-collaboration.md @hobbycao @gsxiaowen @w_Machine_cc
-zh-cn/application-dev/application-models/insight-intent-access-specifications.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/insight-intent-config-development.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/insight-intent-debug.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/insight-intent-decorator-development.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/insight-intent-definition.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/insight-intent-overview.md @linjunjie6 @li-weifeng2024 @HelloCrease
+zh-cn/application-dev/application-models/ability-exit-info-record.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/ability-recover-guideline.md @wendel @Luobniz21 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/ability-startup-with-explicit-want.md @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/ability-terminology.md @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/abilitykit-overview.md @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/abilitystage.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/access-dataability.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/access-datashareextensionability-from-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/actions-entities.md @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/agent-extension-ability.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/agent-extension-configuration.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/agent-manager-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/api-switch-overview.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/app-deviceconfig-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/app-linking-startup.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/app-restart.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/app-service-extension-ability.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/app-startup-overview.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/app-startup.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/app-stop.md @ccllee1 @HelloCrease @lixueqing513
+zh-cn/application-dev/application-models/app-uri-config.md @hanchen45 @liusu23 @ccllee1 @xukeke @HelloCrease @liangchengguang @lusq
+zh-cn/application-dev/application-models/application-component-configuration-fa.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/application-models/application-component-configuration-stage.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/application-models/application-context-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/application-context-stage.md @li-weifeng2024 @xuzhihao666 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/application-lifecycle.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/application-models.md @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/application-startup-options.md @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/autofillextensionability-guide-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/bind-serviceability-from-stage.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/bind-serviceextensionability-from-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/canopenlink.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/application-models/capi-nativechildprocess-development-guideline.md @SKY2001 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/capi-nativechildprocess-exit-info.md @SKY2001 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/component-startup-rules-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/component-startup-rules-inner-device-sys.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/component-startup-rules-inner-device.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/component-startup-rules.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/config-file-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/config-file-stage.md @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/configuration-file-diff.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/connect-serviceability.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/context-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/create-dataability.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/create-pageability.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/create-serviceability.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/dataability-configuration.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/dataability-lifecycle.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/dataability-overview.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/dataability-permission-control.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/dataability-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/dataabilityhelper-switch.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/deep-linking-startup.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/embeddeduiextensionability.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/explicit-implicit-want-mappings.md @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/extensionability-overview.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/fa-model-development-overview.md @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/fa-stage-interaction-overview.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/featureability-switch.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/file-processing-apps-startup.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/application-models/hop-cross-device-migration.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/application-models/hop-multi-device-collaboration.md @hobbycao @gsxiaowen @w_Machine_cc @hanjiawei
+zh-cn/application-dev/application-models/insight-intent-access-specifications.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/insight-intent-config-development.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/insight-intent-debug.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/insight-intent-decorator-development.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/insight-intent-definition.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/insight-intent-overview.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/inter-device-interaction-hop-overview.md 无
-zh-cn/application-dev/application-models/lifecycleapp-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/lifecycledata-switch.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/lifecycleform-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/lifecycleservice-switch.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/link-between-apps-overview.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/mission-management-fa-sys.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/mission-management-launch-type-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/mission-management-overview-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/mission-set-icon-name-for-task-snapshot-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/model-switch-overview.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/module-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/obtaining-target-app-url-info.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/page-mission-stack-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/pageability-configuration.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/pageability-launch-type.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/pageability-lifecycle.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/pageability-overview.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/pageability-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/particleability-switch.md @xialiangwei @jsjzju @HelloCrease
+zh-cn/application-dev/application-models/lifecycleapp-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/lifecycledata-switch.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/lifecycleform-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/lifecycleservice-switch.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/link-between-apps-overview.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/mission-management-fa-sys.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/mission-management-launch-type-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/mission-management-overview-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/mission-set-icon-name-for-task-snapshot-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/model-switch-overview.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/module-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/obtaining-target-app-url-info.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/page-mission-stack-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/pageability-configuration.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/pageability-launch-type.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/pageability-lifecycle.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/pageability-overview.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/pageability-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/particleability-switch.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/photoEditorExtensionAbility.md 无
-zh-cn/application-dev/application-models/preload-application.md @SKY2001 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/process-model-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/process-model-stage.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/application-models/Readme-CN.md @jayleehw @HelloCrease
-zh-cn/application-dev/application-models/redirection-rules.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/request-permissions.md @lidongrui @ccllee1 @HelloCrease
+zh-cn/application-dev/application-models/preload-application.md @SKY2001 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/process-model-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/process-model-stage.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/Readme-CN.md @jayleehw @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/redirection-rules.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/request-permissions.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/request-switch.md 无
 zh-cn/application-dev/application-models/resourcemanager-switch.md 无
-zh-cn/application-dev/application-models/serviceability-configuration.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/serviceability-lifecycle.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/serviceability-overview.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/serviceability-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/serviceextensionability-sys.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/stage-model-development-overview.md @ccllee1 @Luobniz21 @HelloCrease
-zh-cn/application-dev/application-models/start-dataability.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/start-email-apps-by-mailto.md @sxsxjc @stardrift1 @HelloCrease
-zh-cn/application-dev/application-models/start-email-apps.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/application-models/start-express-apps.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/application-models/start-finance-apps.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/application-models/start-flight-apps.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/application-models/start-intent-panel.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/application-models/start-local-pageability.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/start-navigation-apps.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/application-models/start-page.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/start-pageability-from-stage.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/start-remote-pageability-sys.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/start-serviceability.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/application-models/start-uiability-from-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/stop-pageability.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/storage-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/subscribe-system-environment-variable-changes.md @wkljy @xuzhihao666 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/system-app-startup.md @HelloCrease @ccllee1
-zh-cn/application-dev/application-models/thread-model-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/thread-model-stage.md @xialiangwei @yzkp @HelloCrease
-zh-cn/application-dev/application-models/uiability-cross-device-interaction.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/uiability-data-sync-with-ui.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/uiability-intra-device-interaction.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/uiability-launch-type.md @wendel @Luobniz21 @HelloCrease
-zh-cn/application-dev/application-models/uiability-lifecycle.md @wendel @Luobniz21 @HelloCrease
-zh-cn/application-dev/application-models/uiability-overview.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/uiability-startup-adjust.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/application-models/uiability-usage.md @wendel @HelloCrease
-zh-cn/application-dev/application-models/uiextensionability-sys.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/application-models/uiserviceextension-sys.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/application-models/uiserviceextension.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/want-fa.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/want-overview.md @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/widget-switch.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/application-models/window-properties.md @lidongrui @ccllee1 @HelloCrease
+zh-cn/application-dev/application-models/serviceability-configuration.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/serviceability-lifecycle.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/serviceability-overview.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/serviceability-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/serviceextensionability-sys.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/stage-model-development-overview.md @ccllee1 @Luobniz21 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/start-dataability.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/start-email-apps-by-mailto.md @sxsxjc @stardrift1 @HelloCrease @Lww11964
+zh-cn/application-dev/application-models/start-email-apps.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/application-models/start-express-apps.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/application-models/start-finance-apps.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/application-models/start-flight-apps.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/application-models/start-intent-panel.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/application-models/start-local-pageability.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/start-navigation-apps.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/application-models/start-page.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/start-pageability-from-stage.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/start-remote-pageability-sys.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/start-serviceability.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/start-uiability-from-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/stop-pageability.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/storage-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/subscribe-system-environment-variable-changes.md @wkljy @xuzhihao666 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/system-app-startup.md @HelloCrease @ccllee1 @liangchengguang
+zh-cn/application-dev/application-models/thread-model-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/thread-model-stage.md @xialiangwei @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiability-cross-device-interaction.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiability-data-sync-with-ui.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiability-intra-device-interaction.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiability-launch-type.md @wendel @Luobniz21 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiability-lifecycle.md @wendel @Luobniz21 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiability-overview.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiability-startup-adjust.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiability-usage.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiextensionability-sys.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiserviceextension-sys.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/uiserviceextension.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/want-fa.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/want-overview.md @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/widget-switch.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/application-models/window-properties.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
 zh-cn/application-dev/application-models/window-switch.md 无
 zh-cn/application-dev/application-test/perftest-guideline.md @inter515 @Brilliantry_Rui
 zh-cn/application-dev/application-test/Readme-CN.md @inter515 @Brilliantry_Rui
@@ -520,13 +520,13 @@ zh-cn/application-dev/dfx/performance-analysis-kit-overview.md @mzyan @liyueric 
 zh-cn/application-dev/dfx/performance-analysis-kit-terminology.md @mzyan @liyueric @jinqiuheng
 zh-cn/application-dev/dfx/Readme-CN.md @mzyan @liyueric @jinqiuheng
 zh-cn/application-dev/dfx/uinput.md @zhaoxueyuan @hanruofei @Brilliantry_Rui
-zh-cn/application-dev/displaymanager/display-terminology.md @waterwin @hejunfei1991 @ge-yafang
-zh-cn/application-dev/displaymanager/displaymanager-faqs.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/displaymanager/displayManager-overview.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/displaymanager/native-display-manager.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/displaymanager/Readme-CN.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/displaymanager/screenProperty-guideline.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/displaymanager/virtualScreen-guideline-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
+zh-cn/application-dev/displaymanager/display-terminology.md @waterwin @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/displaymanager/displaymanager-faqs.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/displaymanager/displayManager-overview.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/displaymanager/native-display-manager.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/displaymanager/Readme-CN.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/displaymanager/screenProperty-guideline.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/displaymanager/virtualScreen-guideline-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/distributedservice/abilityconnectmanager-guidelines-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
 zh-cn/application-dev/distributedservice/abilityconnectmanager-guidelines.md @hobbycao @gsxiaowen @hu-zhiqiong
 zh-cn/application-dev/distributedservice/devicemanager-guidelines.md @hwzhangchuang @hu-zhiqiong
@@ -560,7 +560,7 @@ zh-cn/application-dev/faqs/faqs-sdk.md 无
 zh-cn/application-dev/faqs/faqs-sensor.md 无
 zh-cn/application-dev/faqs/faqs-startup.md 无
 zh-cn/application-dev/faqs/faqs-third-fourth-party-library.md 无
-zh-cn/application-dev/faqs/faqs-window-manager.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
+zh-cn/application-dev/faqs/faqs-window-manager.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/faqs/full-sdk-compile-guide.md 无
 zh-cn/application-dev/faqs/full-sdk-switch-guide.md 无
 zh-cn/application-dev/faqs/Readme-CN.md @fang-jinxu @lingminghw
@@ -1272,327 +1272,327 @@ zh-cn/application-dev/reference/syscap.md @mgy917 @jiangwensai @RayShih
 zh-cn/application-dev/reference/tablet-syscap-list.md @fang-jinxu @lingminghw
 zh-cn/application-dev/reference/tv-syscap-list.md @fang-jinxu @lingminghw
 zh-cn/application-dev/reference/wearable-syscap-list.md @fang-jinxu @lingminghw
-zh-cn/application-dev/reference/apis-ability-kit/capi-ability-access-control-h.md @xia-bubai @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/capi-ability-base-common-h.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-ability-childprocessconfigs.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-ability-resource-info-h.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-ability-runtime-common-h.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityaccesscontrol.md @xia-bubai @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilitybase-element.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilitybase-want.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilitybase.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-abilityruntime-context.md @yangzhongkai @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-abilityruntime-context8h.md @yangzhongkai @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-context-h.md @yangzhongkai @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-extensioninstance.md @yangzhongkai @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-extensioninstance8h.md @yangzhongkai @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-nativeabilitywrapper.md @wangzhen416 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-connectoptions.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-startoptions.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-application-context-h.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-bundle-manager-common-h.md @wanghang904 @hanfeng6 @HelloCrease
+zh-cn/application-dev/reference/apis-ability-kit/capi-ability-access-control-h.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/capi-ability-base-common-h.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-ability-childprocessconfigs.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-ability-resource-info-h.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-ability-runtime-common-h.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityaccesscontrol.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilitybase-element.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilitybase-want.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilitybase.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-abilityruntime-context.md @yangzhongkai @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-abilityruntime-context8h.md @yangzhongkai @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-context-h.md @yangzhongkai @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-extensioninstance.md @yangzhongkai @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-extensioninstance8h.md @yangzhongkai @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-nativeabilitywrapper.md @wangzhen416 @ccllee1 @HelloCrease @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-allmodularobjectextensioninfos8h.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-connectoptions.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modularobjectextensioncontext8h.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modularobjectextensioninfo8h.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-oh-abilityruntime-modularobjectextensioninstance.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime-startoptions.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-abilityruntime.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-application-context-h.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-bundle-manager-common-h.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
 zh-cn/application-dev/reference/apis-ability-kit/capi-childprocess.md 无
-zh-cn/application-dev/reference/apis-ability-kit/capi-connect-options-h.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-context-constant-h.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-extension-ability-h.md @yangzhongkai @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-modular-object-extension-ability-h.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-modular-object-extension-context-h.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-modular-object-extension-manager-h.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-ability-wrapper-h.md @wangzhen416 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-abilityresourceinfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-applicationinfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-elementname.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-metadata.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-modulemetadata.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-child-process-h.md @SKY2001 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-native-interface-bundle-h.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-nativechildprocess-args.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-nativechildprocess-fd.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-nativechildprocess-fdlist.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-nativechildprocess-options.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-start-options-h.md @zhu-feimo @yangxuguang-huawei @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/capi-want-h.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/errorcode-ability.md @dsz2025 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/errorcode-access-token.md @xia-bubai @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/errorcode-appDomainVerify-sys.md @hw-xpc @xuchuanqi87 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/errorcode-bundle.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/errorcode-DistributedSchedule.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/errorcode-screenLockFileManager.md @steven-q @JiDong-CS1 @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-ability.md @lidongrui @ccllee1 @HelloCrease
+zh-cn/application-dev/reference/apis-ability-kit/capi-connect-options-h.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-context-constant-h.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-extension-ability-h.md @yangzhongkai @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-modular-object-extension-ability-h.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-modular-object-extension-context-h.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-modular-object-extension-manager-h.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-ability-wrapper-h.md @wangzhen416 @ccllee1 @HelloCrease @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-abilityresourceinfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-applicationinfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-elementname.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-metadata.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle-oh-nativebundle-modulemetadata.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-bundle.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-child-process-h.md @SKY2001 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-native-interface-bundle-h.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/capi-nativechildprocess-args.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-nativechildprocess-fd.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-nativechildprocess-fdlist.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-nativechildprocess-options.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-start-options-h.md @zhu-feimo @yangxuguang-huawei @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/capi-want-h.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/errorcode-ability.md @dsz2025 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/errorcode-access-token.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/errorcode-appDomainVerify-sys.md @hw-xpc @xuchuanqi87 @HelloCrease @sl_sunshineGirl
+zh-cn/application-dev/reference/apis-ability-kit/errorcode-bundle.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/errorcode-DistributedSchedule.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/reference/apis-ability-kit/errorcode-screenLockFileManager.md @steven-q @JiDong-CS1 @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-ability.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-dataUriUtils.md 无
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-errorCode.md @dsz2025 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-featureAbility.md @lidongrui @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-particleAbility.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-wantConstant-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-wantConstant.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl-sys.md @xia-bubai @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl.md @xia-bubai @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-ability.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityConstant-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md @wkljy @xuzhihao666 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityManager-sys.md @dsz2025 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityManager.md @dsz2025 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-actionExtensionAbility.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-application-sys.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-application.md @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-applicationStateChangeCallback.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appManager-sys.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appManager.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md @rr_cn @peterhuangyu @jinqiuheng
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md @littlejerry1 @wendel @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoFillManager-sys.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoFillManager.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoStartupManager-sys.md @zhu-feimo @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoStartupManager.md @zhu-feimo @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-childProcess.md @SKY2001 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-childProcessArgs.md @SKY2001 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md @SKY2001 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-childProcessOptions.md @SKY2001 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-common-sys.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-common.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-completionHandler.md @littlejerry1 @yangxuguang-huawei @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-CompletionHandlerForAbilityStartCallback.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-CompletionHandlerForAtomicService.md @littlejerry1 @wendel @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-configuration.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-configurationConstant.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-contextConstant-sys.md @wkljy @yangxuguang-huawei @Luobniz21 @ccllee1 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-contextConstant.md @wkljy @yangxuguang-huawei @Luobniz21 @ccllee1 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-continueManager.md @hobbycao @gsxiaowen @hu-zhiqiong
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-errorCode.md @dsz2025 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-featureAbility.md @lidongrui @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-particleAbility.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-wantConstant-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-ability-wantConstant.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl-sys.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-ability.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityConstant-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityLifecycleCallback.md @wkljy @xuzhihao666 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityManager-sys.md @dsz2025 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityManager.md @dsz2025 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-actionExtensionAbility.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-application-sys.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-application.md @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-applicationStateChangeCallback.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appManager-sys.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appManager.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appRecovery.md @rr_cn @peterhuangyu @jinqiuheng @gcw_KuLfPSbe
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md @littlejerry1 @wendel @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoFillManager-sys.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoFillManager.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoStartupManager-sys.md @zhu-feimo @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-autoStartupManager.md @zhu-feimo @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-childProcess.md @SKY2001 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-childProcessArgs.md @SKY2001 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md @SKY2001 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-childProcessOptions.md @SKY2001 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-common-sys.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-common.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-completionHandler.md @littlejerry1 @yangxuguang-huawei @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-CompletionHandlerForAbilityStartCallback.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-CompletionHandlerForAtomicService.md @littlejerry1 @wendel @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-configuration.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-configurationConstant.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-contextConstant-sys.md @wkljy @yangxuguang-huawei @Luobniz21 @ccllee1 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-contextConstant.md @wkljy @yangxuguang-huawei @Luobniz21 @ccllee1 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-continueManager.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
 zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-dataUriUtils.md 无
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-dialogRequest.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-dialogSession-sys.md @zhu-feimo @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-environmentCallback.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-errorManager.md @rr_cn @peterhuangyu @jinqiuheng
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntent-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntent.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntentContext.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntentDriver-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentEntryExecutor.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntentProvider.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager-sys.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-missionManager-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionAbility.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionContext.md @liusu23 @xukeke @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-quickFixManager-sys.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-scriptManager.md @RuiChen_01 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md @linjunjie6 @xuzhihao666 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-shareExtensionAbility.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-startOptions-sys.md @dsz2025 @yangxuguang-huawei @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-startOptions.md @dsz2025 @yangxuguang-huawei @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-systemConfiguration.md @RuiChen_01 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiAbility.md @littlejerry1 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md @zexin_c @xuzhihao666 @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md @zexin_c @xuzhihao666 @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md @zexin_c @xuzhihao666 @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-verticalpanelmanager-sys.md @yuhong35 @xukeke @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-want.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentConstant-sys.md @yangxuguang-huawei @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentConstant.md @yangxuguang-huawei @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility-sys.md @SKY2001 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md @SKY2001 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupConfig.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupListener.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupManager.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-cli-cliManager-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-appDomainVerify-sys.md @hw-xpc @xuchuanqi87 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-abilityManager-sys.md @dsz2025 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-appManager-sys.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-appManager.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-configuration.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-configurationConstant.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-KioskStatus.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-missionManager-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-want.md @wkljy @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-AbilityInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ApplicationInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-BundleInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-BundleInstaller-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle-BundleStatusCallback-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-CustomizeData.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle-distributedBundle-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ElementName.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-HapModuleInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-LauncherAbilityInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ModuleInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-PermissionDef-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-remoteAbilityInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ShortcutInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ShortcutInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-ApplicationInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-AppProvisionInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-BundleInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-BundlePackInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-businessAbilityInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-dispatchInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-elementName.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-extensionAbilityInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-launcherAbilityInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-metadata.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-overlayModuleInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-permissionDef-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-pluginBundleInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-remoteAbilityInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-sharedBundleInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-shortcutInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-skill.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-SkillInfo.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleMonitor-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleResourceManager-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-businessAbilityRouter-sys.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-continuation-continuationExtraParams.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-continuation-continuationManager.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-continuation-continuationResult.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedBundleManager-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedMissionManager-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-abilityResult.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-dataAbilityOperation.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-dataAbilityResult.md @xialiangwei @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-startAbilityParameter.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-want.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-app-appVersionInfo.md @xialiangwei @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-app-context.md @xialiangwei @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-app-processInfo.md @xialiangwei @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityFirstFrameStateData-sys.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityFirstFrameStateObserver-sys.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityForegroundStateObserver-sys.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityMonitor.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityRunningInfo.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityStartCallback.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-AgentCard.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md @SKY2001 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-agentExtensionContext.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md @SKY2001 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md @SKY2001 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-appForegroundStateObserver-sys.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-applicationContext-sys.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-applicationContext.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-appServiceExtensionContext.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-appStateData.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillExtensionContext-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillPopupConfig-sys.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillRect.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillRequest-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillRequest.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillTriggerType.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillType.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoStartupCallback-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoStartupInfo-sys.md @dsz2025 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-baseContext.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-context-sys.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-context.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-continuableInfo-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-continueCallback-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-continueDeviceInfo-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-continueMissionInfo-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-customData-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-EmbeddableUIAbilityContext.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-errorObserver.md @rr_cn @peterhuangyu @jinqiuheng
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-eventHub.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-extensionContext.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-extensionRunningInfo-sys.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-loopObserver.md @rr_cn @peterhuangyu @jinqiuheng
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionCallbacks-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionDeviceInfo-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionInfo-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionListener-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionParameter-sys.md @hobbycao @gsxiaowen @hu-zhiqiong
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionSnapshot-sys.md @littlejerry1 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-multiAppMode-sys.md @wendel @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-pageNodeInfo-sys.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-pageNodeInfo.md @hanchen45 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-processData.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-processInformation.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-processRunningInfo.md @SKY2001 @yzkp @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-runningAppClone-sys.md @wendel @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-runningMultiAppInfo-sys.md @wendel @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-runningMultiInstanceInfo-sys.md @wendel @Luobniz21 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-sendableContext.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md @yewei0794 @jsjzju @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md @littlejerry1 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md @dsz2025 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md @zhu-feimo @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext-sys.md @zexin_c @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiServiceExtensionconnectcallback.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiserviceExtensionContext-sys.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiservicehostproxy-sys.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md @zexin_c @xhz-sz @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-viewData-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-viewData.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-wantAgent-triggerInfo-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-wantAgent-triggerInfo.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-installer-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-LauncherAbilityResourceInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-launcherBundleManager-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-launcherBundleManager.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-overlay-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-overlay.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-permissionrequestresult.md @xia-bubai @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-privacyManager-sys.md @xia-bubai @linshuqing @hehehe-li @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-recoverableApplicationInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-screenLockFileManager-sys.md @steven-q @JiDong-CS1 @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-screenLockFileManager.md @steven-q @JiDong-CS1 @zengyawen
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-shortcutManager-sys.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-shortcutManager.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-skillManager.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-system-package.md @wanghang904 @hanfeng6 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-uripermissionmanager-sys.md @dsz2025 @ccllee1 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-wantAgent-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/js-apis-wantAgent.md @linjunjie6 @li-weifeng2024 @HelloCrease
-zh-cn/application-dev/reference/apis-ability-kit/Readme-CN.md @wanghang904 @dsz2025 @hanfeng6 @lihaitao @HelloCrease
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-dialogRequest.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-dialogSession-sys.md @zhu-feimo @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-environmentCallback.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-errorManager.md @rr_cn @peterhuangyu @jinqiuheng @gcw_KuLfPSbe
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-extensionAbility.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntent-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntent.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntentContext.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntentDriver-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-InsightIntentEntryExecutor.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntentExecutor.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-insightIntentProvider.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager-sys.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-kioskManager.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-missionManager-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionAbility.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-photoEditorExtensionContext.md @liusu23 @xukeke @HelloCrease @lusq
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-quickFixManager-sys.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-scriptManager.md @RuiChen_01 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md @linjunjie6 @xuzhihao666 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-shareExtensionAbility.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-startOptions-sys.md @dsz2025 @yangxuguang-huawei @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-startOptions.md @dsz2025 @yangxuguang-huawei @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-systemConfiguration.md @RuiChen_01 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiAbility.md @littlejerry1 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md @zexin_c @xuzhihao666 @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md @zexin_c @xuzhihao666 @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-uiServiceExtensionAbility-sys.md @zexin_c @xuzhihao666 @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-verticalpanelmanager-sys.md @yuhong35 @xukeke @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-want.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantAgent.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-wantConstant.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentConstant-sys.md @yangxuguang-huawei @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentConstant.md @yangxuguang-huawei @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility-sys.md @SKY2001 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md @SKY2001 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupConfig.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupConfigEntry.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupListener.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupManager.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-appstartup-startupTask.md @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-cli-cliManager-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-appDomainVerify-sys.md @hw-xpc @xuchuanqi87 @HelloCrease @sl_sunshineGirl
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-abilityManager-sys.md @dsz2025 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-appManager-sys.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-appManager.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-configuration.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-configurationConstant.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-KioskStatus.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-missionManager-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-application-want.md @wkljy @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-AbilityInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ApplicationInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-BundleInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-BundleInstaller-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle-BundleStatusCallback-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-CustomizeData.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle-distributedBundle-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ElementName.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-HapModuleInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle-InnerBundleManager-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-LauncherAbilityInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ModuleInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-PermissionDef-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-remoteAbilityInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ShortcutInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundle-ShortcutInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-Bundle.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-ApplicationInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-AppProvisionInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-BundleInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-BundlePackInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-businessAbilityInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-dispatchInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-elementName.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-extensionAbilityInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-hapModuleInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-launcherAbilityInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-metadata.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-overlayModuleInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-permissionDef-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-pluginBundleInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-remoteAbilityInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-sharedBundleInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-shortcutInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-skill.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-SkillInfo.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleMonitor-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleResourceManager-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-businessAbilityRouter-sys.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-continuation-continuationExtraParams.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-continuation-continuationManager.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-continuation-continuationResult.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-defaultAppManager.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedBundleManager-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-distributedMissionManager-sys.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-freeInstall-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-abilityResult.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-dataAbilityOperation.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-dataAbilityResult.md @xialiangwei @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-startAbilityParameter.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-ability-want.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-app-appVersionInfo.md @xialiangwei @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-app-context.md @xialiangwei @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-app-processInfo.md @xialiangwei @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityFirstFrameStateData-sys.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityFirstFrameStateObserver-sys.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityForegroundStateObserver-sys.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityMonitor.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityRunningInfo.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityStageContext.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityStageMonitor.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityStartCallback.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-AgentCard.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md @SKY2001 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-agentExtensionContext.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md @SKY2001 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md @SKY2001 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-appForegroundStateObserver-sys.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-applicationContext-sys.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-applicationContext.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-appServiceExtensionContext.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-appStateData.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillExtensionContext-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillPopupConfig-sys.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillRect.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillRequest-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillRequest.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillTriggerType.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoFillType.md @hanchen45 @ccllee1 @HelloCrease @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoStartupCallback-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-autoStartupInfo-sys.md @dsz2025 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-baseContext.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-context-sys.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-context.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-continuableInfo-sys.md @hobbycao @gsxiaowen @hu-zhiqiong @zhaodengqi
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-continueCallback-sys.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-continueDeviceInfo-sys.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-continueMissionInfo-sys.md @hobbycao @gsxiaowen @hu-zhiqiong @zhaodengqi
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-customData-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-EmbeddableUIAbilityContext.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-errorObserver.md @rr_cn @peterhuangyu @jinqiuheng @gcw_KuLfPSbe
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-eventHub.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-extensionContext.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-extensionRunningInfo-sys.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-loopObserver.md @rr_cn @peterhuangyu @jinqiuheng @gcw_KuLfPSbe
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionCallbacks-sys.md @hobbycao @gsxiaowen @hu-zhiqiong @hanjiawei
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionDeviceInfo-sys.md @hobbycao @gsxiaowen @hu-zhiqiong @zhaodengqi
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionInfo-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionListener-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionParameter-sys.md @hobbycao @gsxiaowen @hu-zhiqiong @zhaodengqi
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-missionSnapshot-sys.md @littlejerry1 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-multiAppMode-sys.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-pageNodeInfo-sys.md @hanchen45 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-pageNodeInfo.md @hanchen45 @ccllee1 @HelloCrease @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-processData.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-processInformation.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-processRunningInfo.md @SKY2001 @yzkp @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-runningAppClone-sys.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-runningMultiAppInfo-sys.md @wendel @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-runningMultiInstanceInfo-sys.md @wendel @Luobniz21 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-sendableContext.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-serviceExtensionContext-sys.md @yewei0794 @jsjzju @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md @littlejerry1 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-ToolInfo-sys.md @littlejerry1 @ccllee1 @HelloCrease @dsz2025
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext-sys.md @dsz2025 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md @zhu-feimo @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext-sys.md @zexin_c @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiServiceExtensionconnectcallback.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiserviceExtensionContext-sys.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiservicehostproxy-sys.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-uiserviceproxy.md @zexin_c @xhz-sz @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-viewData-sys.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-application-viewData.md @hanchen45 @Luobniz21 @ccllee1 @HelloCrease @lixueqing513
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-wantAgent-triggerInfo-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-wantAgent-triggerInfo.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-installer-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-LauncherAbilityResourceInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-launcherBundleManager-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-launcherBundleManager.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-overlay-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-overlay.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-permissionrequestresult.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-privacyManager-sys.md @xia-bubai @linshuqing @hehehe-li @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-recoverableApplicationInfo-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-screenLockFileManager-sys.md @steven-q @JiDong-CS1 @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-screenLockFileManager.md @steven-q @JiDong-CS1 @zengyawen @leiyuqian
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-shortcutManager-sys.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-shortcutManager.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-skillManager.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-system-package.md @wanghang904 @hanfeng6 @HelloCrease @kongjing2
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-uripermissionmanager-sys.md @dsz2025 @ccllee1 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-wantAgent-sys.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/js-apis-wantAgent.md @linjunjie6 @li-weifeng2024 @HelloCrease @liangchengguang
+zh-cn/application-dev/reference/apis-ability-kit/Readme-CN.md @wanghang904 @dsz2025 @hanfeng6 @lihaitao @HelloCrease @kongjing2
 zh-cn/application-dev/reference/apis-accessibility-kit/errorcode-accessibility.md @qiiiiiiian @z7o @w_Machine_cc
 zh-cn/application-dev/reference/apis-accessibility-kit/js-apis-accessibility-config-sys.md @qiiiiiiian @z7o @w_Machine_cc
 zh-cn/application-dev/reference/apis-accessibility-kit/js-apis-accessibility-GesturePath.md @qiiiiiiian @z7o @w_Machine_cc
@@ -2044,13 +2044,13 @@ zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext-uiobserver.md @p
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uicontext.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uimaterial-sys.md @hehongyang3 @zhanghaibo0 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkts-apis-uimaterial.md @hehongyang3 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-e.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-f.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-i.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-t.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-Window.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-WindowStage.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/arkts-apis-window.md @waterwin @nyankomiya @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-e.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-f.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-i.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-t.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-Window.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-WindowStage.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/arkts-apis-window.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityactionarguments.md @wangyinhua @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfo.md @wangyinhua @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfolist.md @wangyinhua @dutie123 @Brilliantry_Rui
@@ -2286,17 +2286,17 @@ zh-cn/application-dev/reference/apis-arkui/capi-native-node-napi-h.md @piggyguy 
 zh-cn/application-dev/reference/apis-arkui/capi-native-render-h.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-type-h.md @piggyguy @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-native-xcomponent-key-event-h.md @sd-wu @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-cutoutinfo.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-displaycolorspace.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-displayhdrformat.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-displayinfo.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-displaysinfo.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-rect.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-waterfalldisplayarearects.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-oh-display-capture-h.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-oh-display-info-h.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-oh-display-manager-h.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-oh-displaymanager.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-cutoutinfo.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-displaycolorspace.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-displayhdrformat.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-displayinfo.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-displaysinfo.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-rect.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-nativedisplaymanager-waterfalldisplayarearects.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-display-capture-h.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-display-info-h.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-display-manager-h.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-displaymanager.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md @zjsxstar @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-nativewindow.md @zjsxstar @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md @sd-wu @dutie123 @Brilliantry_Rui
@@ -2312,27 +2312,27 @@ zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomp
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-touchpoint.md @zjsxstar @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md @sd-wu @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md @sd-wu @dutie123 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-oh-window-comm-h.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-oh-window-event-filter-h.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-oh-window-h.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-oh-window-pip-h.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-pictureinpicture-pipconfig.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-struct.md @waterwin @nyankomiya @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/capi-oh-window-comm-h.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-window-event-filter-h.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-window-h.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-oh-window-pip-h.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-pictureinpicture-pipconfig.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-struct.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/capi-styled-string-h.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-ui-input-event-h.md @yihao-lin @piggyguy @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-avoidarea.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-oh-windowmanager-densityinfo.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-oh-windowmanager-framemetrics.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-rect.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowmanager-mainwindowinfo.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowmanager-windowsnapshotconfig.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowproperties.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/capi-windowmanager.md @waterwin @nyankomiya @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-avoidarea.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-oh-windowmanager-densityinfo.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-oh-windowmanager-framemetrics.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-rect.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowmanager-mainwindowinfo.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowmanager-windowsnapshotconfig.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager-windowproperties.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/capi-windowmanager.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/errorcode-adopt.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-attributeModifier.md @wangjunman1 @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-bindSheet.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-canvas.md @ZhangYu-Coder @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/errorcode-display.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/errorcode-display.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/errorcode-drag-event.md @yihao-lin @piggyguy @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-drawable-descriptor.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-env.md @liwenzhen3 @s10021109 @zhang_yixin13
@@ -2356,10 +2356,10 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-uiappearance.md 无
 zh-cn/application-dev/reference/apis-arkui/errorcode-uicontext.md @wangyang2022 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-uiextension.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-video.md @sd-wu @sunbees @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/errorcode-window.md @waterwin @nyankomiya @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/errorcode-window.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/errorcode-xcomponent.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-animator.md @CCFFWW @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-application-windowExtensionAbility-sys.md @chbchb12 @stupidb @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-application-windowExtensionAbility-sys.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-AttributeUpdater.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-builderNode.md @sunbees @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-ComponentContent.md @ZhangYu-Home @Brilliantry_Rui
@@ -2385,23 +2385,23 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-resource.md @fangzhiyua
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-shape.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-theme.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-UIContext-sys.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension-sys.md @chbchb12 @stupidb @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension.md @chbchb12 @stupidb @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension-sys.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-uiExtension.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-arkui-xcomponentNode.md @zjsxstar @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-curve.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-devicestatus-draginteraction-sys.md @wuliangdong @guo867 @hu-zhiqiong
-zh-cn/application-dev/reference/apis-arkui/js-apis-display-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-display.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-floatingBall.md @betafringe007 @taoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-floatView.md @betafringe007 @zhoulin_ @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-display-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-display.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-floatingBall.md @betafringe007 @taoweihua @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-floatView.md @betafringe007 @zhoulin_ @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-font.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-getContext.md @wangyang2022 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-inner-application-windowExtensionContext-sys.md @chbchb12 @stupidb @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-inner-application-windowExtensionContext-sys.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-matrix4.md @CCFFWW @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-measure.md @hddgzw @xiangyuan6 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-mediaquery.md @zju_ljz @lanshouren @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow-sys.md @betafringe007 @taoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md @betafringe007 @taoweihua @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow-sys.md @betafringe007 @taoweihua @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-pipWindow.md @betafringe007 @taoweihua @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-plugincomponent-sys.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-plugincomponent.md @dutie123 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-postCardAction.md @Qian-Win @cx983299475 @Brilliantry_Rui
@@ -2409,9 +2409,9 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-prompt.md @houguobiao @Brilli
 zh-cn/application-dev/reference/apis-arkui/js-apis-promptAction-sys.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-promptAction.md @houguobiao @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-router.md @mayaolll @jiangdayuan @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-screen-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-screenshot-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-screenshot.md @oh_wangxk @logn @hejunfei1991 @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-screen-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-screenshot-sys.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-screenshot.md @oh_wangxk @logn @hejunfei1991 @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/js-apis-stateManagement.md @jiyujia926 @liwenzhen3 @zhangboren @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-app.md @liyujie43 @weixin_52725220 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-configuration.md @yihao-lin @piggyguy @Brilliantry_Rui
@@ -2420,9 +2420,9 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-system-prompt.md @houguobiao 
 zh-cn/application-dev/reference/apis-arkui/js-apis-system-router.md @mayaolll @jiangdayuan @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance-sys.md @fangzhiyuan1 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance.md @fangzhiyuan1 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-apis-uiExtensionHost-sys.md @chbchb12 @stupidb @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-window-sys.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/reference/apis-arkui/js-apis-windowAnimationManager-sys.md @waterwin @nyankomiya @ge-yafang
+zh-cn/application-dev/reference/apis-arkui/js-apis-uiExtensionHost-sys.md @chbchb12 @stupidb @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-window-sys.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/reference/apis-arkui/js-apis-windowAnimationManager-sys.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
 zh-cn/application-dev/reference/apis-arkui/Readme-CN.md @tsj_20201 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md @zhangboren @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md @seaside_wu1 @shiyu_huang @Brilliantry_Rui
@@ -5509,28 +5509,28 @@ zh-cn/application-dev/web/web_component_process.md @weixin_41848015 @libing23232
 zh-cn/application-dev/web/web_full_screen.md @zhangyao75477 @gzweioh @HelloShuo
 zh-cn/application-dev/webgl/Readme-CN.md @samhu1989 @shi-yang-2012 @ge-yafang
 zh-cn/application-dev/webgl/webgl-2d-guidelines.md @samhu1989 @shi-yang-2012 @ge-yafang
-zh-cn/application-dev/windowmanager/application-adaptation-freeform-window.md @hanxuebing1 @chengyiyi @ge-yafang
-zh-cn/application-dev/windowmanager/application-window-as.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/application-window-fa.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/application-window-stage.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/brightness-control.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/freeform-window-overview.md @hanxuebing1 @chengyiyi @ge-yafang
-zh-cn/application-dev/windowmanager/immersive-window-feature.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/launch-page-config.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/launch-page-overview.md @xiaochaobu @tenMiles @ge-yafang
-zh-cn/application-dev/windowmanager/launch-page-resource-config.md @xiaochaobu @tenMiles @ge-yafang
-zh-cn/application-dev/windowmanager/native-window-event-filter.md @waterwin @stupidb @ge-yafang
-zh-cn/application-dev/windowmanager/Readme-CN.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/screenshot-and-privacy-mode.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/system-window-stage-sys.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/window-animation.md @gcw_bkPrirku @liaojunhua @ge-yafang
-zh-cn/application-dev/windowmanager/window-config-m.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/window-faqs.md @JUGaaab @ki_ja @ge-yafang
-zh-cn/application-dev/windowmanager/window-focus-guide.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/window-layout.md @yyuehao @ge-yafang
-zh-cn/application-dev/windowmanager/window-mode-overview.md @yyuehao @ge-yafang
-zh-cn/application-dev/windowmanager/window-overview.md @Pakoo007 @ki_ja @ge-yafang
-zh-cn/application-dev/windowmanager/window-rotation-practical-case.md @lizihao_73 @wambers584 @ge-yafang
+zh-cn/application-dev/windowmanager/application-adaptation-freeform-window.md @hanxuebing1 @chengyiyi @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/application-window-as.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/application-window-fa.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/application-window-stage.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/brightness-control.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/freeform-window-overview.md @hanxuebing1 @chengyiyi @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/immersive-window-feature.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/launch-page-config.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/launch-page-overview.md @xiaochaobu @tenMiles @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/launch-page-resource-config.md @xiaochaobu @tenMiles @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/native-window-event-filter.md @waterwin @stupidb @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/Readme-CN.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/screenshot-and-privacy-mode.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/system-window-stage-sys.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-animation.md @gcw_bkPrirku @liaojunhua @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-config-m.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-faqs.md @JUGaaab @ki_ja @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-focus-guide.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-layout.md @yyuehao @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-mode-overview.md @yyuehao @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-overview.md @Pakoo007 @ki_ja @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-rotation-practical-case.md @lizihao_73 @wambers584 @ge-yafang @qinliwen0417
 zh-cn/application-dev/windowmanager/window-rotation.md @waterwin @nyankomiya @qinliwen0417 @ge-yafang
-zh-cn/application-dev/windowmanager/window-terminology.md @waterwin @nyankomiya @ge-yafang
-zh-cn/application-dev/windowmanager/window-zorder-guide.md @waterwin @nyankomiya @ge-yafang
+zh-cn/application-dev/windowmanager/window-terminology.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
+zh-cn/application-dev/windowmanager/window-zorder-guide.md @waterwin @nyankomiya @ge-yafang @qinliwen0417
