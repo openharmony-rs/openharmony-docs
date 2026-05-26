@@ -40,8 +40,8 @@ operateDevice(admin: Want, operate: string, addition?: string): void
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| operate  | string                                                  | 是   | 要执行的操作。<br/>- resetFactory：设备恢复出厂设置。接口调用后，设备将立即恢复出厂设置。恢复完成后，整机设备数据将全部被擦除且无法恢复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。<br/>- reboot：设备重启。<br/>- shutDown：设备关机。<br/>- lockScreen：设备锁屏。 <!--RP1--><!--RP1End-->|
-| addition | string                                                  | 否   | <!--RP2-->执行时附加参数。目前无需传入。<!--RP2End-->       |
+| operate  | string                                                  | 是   | 要执行的操作。<br/>- resetFactory：设备恢复出厂设置。接口调用后，设备将立即恢复出厂设置。恢复完成后，整机设备数据将全部被擦除且无法恢复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。<br/>- reboot：设备重启。<br/>- shutDown：设备关机。<br/>- lockScreen：设备锁屏。<br/>- diskErase：磁盘擦除。 <!--RP1--><!--RP1End-->|
+| addition | string                                                  | 否   | <!--RP2-->执行时附加参数。当operate类型为磁盘擦除时，附加参数为图片的沙箱路径。若磁盘擦除成功后需给用户展示信息，可设置该参数传递信息，该图片大小需小于5KB（建议使用二维码图片）。<!--RP2End-->       |
 
 **错误码：**
 
@@ -66,10 +66,12 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 
+let filePath: string = '/test.png';
+
 try {
   // 参数需根据实际情况进行替换
-  deviceControl.operateDevice(wantTemp, 'resetFactory');
+  deviceControl.operateDevice(wantTemp, 'diskErase', filePath);
 } catch (err) {
-  console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to disk erase. Code is ${err.code}, message is ${err.message}`);
 }
 ```
