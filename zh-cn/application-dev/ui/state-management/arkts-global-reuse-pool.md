@@ -685,6 +685,7 @@ SubChild aboutToReuse         // 和GlobalChild一起被复用
 
 ```plaintext
 LegacyComp aboutToDisappear
+ReusableChild aboutToRecycle
 ```
 
 再点击"检查LegacyComp": `count=0, maxCount=0`（复用池被手动清空了）
