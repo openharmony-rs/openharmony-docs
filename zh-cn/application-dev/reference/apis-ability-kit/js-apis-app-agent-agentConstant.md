@@ -9,11 +9,7 @@
 
 agentConstant模块提供Agent相关的常量。
 
-> **说明：**
->
-> 本模块首批接口从API版本26.0.0开始支持。
->
-> 本模块接口仅可在Stage模型下使用。
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -24,6 +20,10 @@ import { agentConstant } from '@kit.AbilityKit';
 ## agentConstant.AgentCardType
 
 Agent卡片的类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API**：从API版本26.0.0开始，该枚举支持在原子化服务中使用。
 
