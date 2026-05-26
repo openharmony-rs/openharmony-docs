@@ -78,7 +78,7 @@ renderFit(fitMode: Optional\<RenderFit>): T
 
 ## renderFit<sup>23+</sup>
 
-renderFit(fitMode: RenderFit | undefined): this
+renderFit(fitMode: RenderFit | undefined)
 
 设置宽高动画过程中的组件内容填充方式。
 
@@ -95,12 +95,6 @@ renderFit(fitMode: RenderFit | undefined): this
 | 参数名  | 类型                                       | 必填 | 说明                                                         |
 | ------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | fitMode | [RenderFit](ts-appendix-enums.md#renderfit10) \| undefined | 是   | 设置宽高动画过程中的组件内容填充方式。<br/>当fitMode的值为undefined时，取默认值。恢复为内容填充方式为RenderFit.TOP_LEFT的效果。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| this | 返回当前组件。 |
 
 >  **说明：**
 >

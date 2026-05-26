@@ -996,7 +996,7 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## backgroundBrightness<sup>23+</sup> 
+## backgroundBrightness<sup>23+</sup>
 
 backgroundBrightness(params: BackgroundBrightnessOptions | undefined)
 

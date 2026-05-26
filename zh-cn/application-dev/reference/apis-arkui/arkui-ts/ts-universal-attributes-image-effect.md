@@ -1382,7 +1382,7 @@ sphericalEffect(effect: Optional\<number>): T
 
 ## sphericalEffect<sup>23+</sup>
 
-sphericalEffect(value: double | undefined): this
+sphericalEffect(value: double | undefined)
 
 设置组件的图像球面化程度。
 
@@ -1399,12 +1399,6 @@ sphericalEffect(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 设置组件的图像球面化程度。<br/>取值范围：[0,1]。<br/>**说明：**<br/>1. 如果value等于0则图像保持原样，如果value等于1则图像为完全球面化效果。在0和1之间，数值越大，则球面化程度越高。<br/>`value < 0 `或者` value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>2. 组件阴影和外描边不支持球面效果。<br>3. 设置value大于0时，组件冻屏不更新并且把组件内容绘制到透明离屏buffer上，如果要更新组件属性则需要把value设置为0。<br/>当value的值为undefined时，恢复为图像球面化程度为0的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## lightUpEffect<sup>12+</sup> 
 
@@ -1468,7 +1462,7 @@ lightUpEffect(degree: Optional\<number>): T
 
 ## lightUpEffect<sup>23+</sup> 
 
-lightUpEffect(value: double | undefined): this
+lightUpEffect(value: double | undefined)
 
 设置组件图像亮起程度。
 
@@ -1485,12 +1479,6 @@ lightUpEffect(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 设置组件图像亮起程度。<br/>取值范围：[0,1]。<br/>如果value等于0则图像为全黑，如果value等于1则图像为全亮效果。0到1之间数值越大，表示图像亮度越高。`value < 0` 或者 `value > 1`为异常情况，`value < 0`按0处理，`value > 1`按1处理。<br/>当value的值为undefined时，恢复为亮起为1的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## pixelStretchEffect<sup>12+</sup> 
 
@@ -1555,7 +1543,7 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 ## pixelStretchEffect<sup>23+</sup> 
 
-pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
+pixelStretchEffect(options: PixelStretchEffectOptions | undefined)
 
 设置组件的图像边缘像素扩展距离。
 
@@ -1572,12 +1560,6 @@ pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [PixelStretchEffectOptions](#pixelstretcheffectoptions10) \| undefined | 是   | 设置组件的图像边缘像素扩展距离。<br/>参数`options`包括上下左右四个方向的边缘像素扩展距离。<br/>**说明：**<br/>1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。<br/>2. 如果距离为负值，表示内缩，但是最终图像大小不变。<br/>内缩方式：<br/>图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。<br/>图像用边缘像素扩展到原来大小。<br/>3. 对`options`的输入约束：<br/>上下左右四个方向的扩展统一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。<br/>所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。<br/>所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。<br/>当options的值为undefined时，恢复为无像素扩展效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## PixelStretchEffectOptions<sup>10+</sup>
 
