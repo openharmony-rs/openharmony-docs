@@ -318,31 +318,31 @@ perfTest.destroy();
     **ArkTS-Sta示例：**
 
     <!-- @[CPUMetric_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
-
+    
     ``` TypeScript
-    import { describe, expect, it, Level } from "../../../hypium/index";
+    import { describe, expect, it, Level } from '../../../hypium/index';
     import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
     import { PerfMeasureResult, PerfMetric, PerfTest, PerfTestStrategy } from '@ohos.test.PerfTest';
     import { Callback } from '@ohos.base';
-    import { Utils } from '../../../main/ets/utils/Utils';
-
+    import { Utils } from '../../ets/utils/Utils.ets';
+    
     export default function PerfTestTest(): void {
       describe('PerfTestTest2', (): void => {
         it('testExample1', 0, async (): Promise<void> => {
           let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE];
           let actionCode: Callback<Callback<boolean>> = (finish: Callback<boolean>) => {
-            Utils.CalculateTest();
+            Utils.calculateTest();
             finish(true);
           };
           let resetCode: Callback<Callback<boolean>> = (finish: Callback<boolean>) => {
-            Utils.Reset();
+            Utils.reset();
             finish(true);
           };
           let perfTestStrategy: PerfTestStrategy = {
             metrics: metrics,
             actionCode: actionCode,
             resetCode: resetCode,
-            bundleName: 'com.samples.test.perftest',
+            bundleName: 'com.samples.test.perftest.static',
             iterations: 10,
             timeout: 20000
           };
