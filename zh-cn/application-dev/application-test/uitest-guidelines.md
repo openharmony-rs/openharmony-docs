@@ -831,7 +831,7 @@ export default function abilityTest() {
 <!-- @[mouseAndKey_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/MouseAndKeyOp.test.ets) -->
 
 ``` TypeScript
-import { beforeAll, describe, expect, it, Level, Size, TestType } from "../../../../../hypium/index";
+import { beforeAll, describe, expect, it, Level, Size, TestType } from '../../../../../hypium/index';
 // 导入测试依赖kit
 import { Driver, MouseButton } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
