@@ -29,10 +29,10 @@ import { TestRunner } from '@kit.TestKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| onPrepare | [OnPrepareFn](#onpreparefn) | 否    | 否    | 为运行测试用例准备单元测试环境。<br/>**ArkTS-Sta起始版本：** 23 |
-| onRun | [OnRunFn](#onrunfn) | 否    | 否    | 运行全部测试用例。<br/>**ArkTS-Sta起始版本：** 23 |
-| onStop | [OnStopFn](#onstopfn) | 否 | 是 | 当测试完成时，系统会在测试环境退出前触发该回调。<br/>**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
-<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+| onPrepare | [OnPrepareFn](#onpreparefn) | 否    | 否    | 为运行测试用例准备单元测试环境。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta<br/>**ArkTS-Sta起始版本：** 23 |
+| onRun | [OnRunFn](#onrunfn) | 否    | 否    | 运行全部测试用例。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta<br/>**ArkTS-Sta起始版本：** 23 |
+| onStop | [OnStopFn](#onstopfn) | 否 | 是 | 当测试完成时，系统会在测试环境退出前触发该回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+
 **示例：**
 
 ArkTS-Sta示例：
@@ -54,7 +54,7 @@ export default class UserTestRunner implements TestRunner {
 }
 ```
 
-## TestRunner.onPrepare
+### onPrepare
 
 onPrepare(): void
 
@@ -62,7 +62,9 @@ onPrepare(): void
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -81,7 +83,7 @@ export default class UserTestRunner implements TestRunner {
 }
 ```
 
-## TestRunner.onRun
+### onRun
 
 onRun(): void
 
@@ -89,7 +91,10 @@ onRun(): void
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -121,8 +126,6 @@ type OnPrepareFn = () => void
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
@@ -134,8 +137,6 @@ type OnRunFn = () => void
 当运行测试用例时，会触发该回调。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
@@ -151,7 +152,7 @@ type OnStopFn = () => void
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
