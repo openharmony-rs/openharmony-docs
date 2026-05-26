@@ -26,9 +26,7 @@ hdc shell hidumper -s WindowManagerService -a '<参数>'
 | `-w {WinId}` | 查看指定窗口详细信息 | `hidumper -s WindowManagerService -a '-w 13'` | 已知窗口ID，需要查看特定窗口详细信息。 |
 | `-w {WinId} {ArkUI option}` | 查看指定窗口的ArkUI渲染信息 | `hidumper -s WindowManagerService -a '-w 13 -arkui'` | 需要查看窗口UI节点数量、渲染状态等信息。 |
 | `-p` | 查看窗口父子树结构 | `hidumper -s WindowManagerService -a '-p'` | 排查窗口父子关系、层级树结构等问题。 |
-| `-v` | 查看窗口可见性信息 | `hidumper -s WindowManagerService -a '-v'` | 排查窗口显示/隐藏问题。 |
 | `-c` | 查看窗口截图信息 | `hidumper -s WindowManagerService -a '-c'` | 高级调试场景（截图相关信息）。 |
-| `-b` | 查看窗口绑定的信息 | `hidumper -s WindowManagerService -a '-b'` | 高级调试场景（surface、buffer绑定等）。 |
 
 
 ### 查看所有窗口列表
@@ -73,11 +71,11 @@ total window num: 12
 | DisplayId | 显示设备ID | 屏幕设备的唯一标识，0表示主屏幕，多屏场景下可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕的DisplayId。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299。 |
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识一个窗口实例，如13。 |
-| Type | 窗口类型 | 应用窗口：1表示应用主窗口，其他值详见[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)。 |
-| Mode | 窗口模式 | 1表示全屏模式，102表示自由悬浮窗模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
-| Flag | 状态标志位 | 0：正常显示状态；1：隐藏状态。 |
+| Type | 窗口类型 | 应用窗口：1表示应用主窗口，2表示应用子窗口；系统窗口：值为2000+。该值是系统内部标识，不直接对应[WindowType](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)枚举值。 |
+| Mode | 窗口模式 | 1表示全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
+| Flag | 状态标志位 | 状态标识值。当前该字段为预留字段，无实际意义。 |
 | ZOrd | 窗口层级（Z序） | 数值越大层级越高，如4比2层级高，-1表示隐藏层级。 |
-| Orientation | 窗口方向 | 窗口的实际显示方向。0：竖屏；1：反向横屏；2：反向竖屏；3：横屏。该定义与[RotationChangeInfo](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)中的orientation一致|
+| Orientation | 窗口方向 | 窗口方向标识值。当前该字段为预留字段，无实际意义。 |
 | [ x y w h ] | 窗口矩形区域 | 窗口位置和大小，坐标以屏幕左顶点为原点。如[0 0 720 1280]表示位置(0,0)，大小720x1280。 |
 
 ### 查看获焦窗口
@@ -113,8 +111,9 @@ hdc shell hidumper -s WindowManagerService -a '-w 13'
 ```
 
 `-w 13` 参数表示查看WinId为13的窗口详细信息。
-
 输出示例：
+
+<!--RP1-->
 ```bash
 ----------------------------------WindowManagerService----------------------------------
 WindowName: note0
@@ -135,6 +134,33 @@ isSnapshotSkip: 0
 WindowRect: [ 0, 0, 720, 1280 ]
 TouchHotAreas: [ 0, 0, 720, 1280 ]
 ```
+<!--RP1End-->
+
+<!--Del-->
+```bash
+----------------------------------WindowManagerService----------------------------------
+WindowName: note0
+DisplayId: 0
+WinId: 13
+Pid: 18299
+Type: 1
+Mode: 1
+Flag: 0
+Orientation: 0
+FirstFrameCallbackCalled: 1
+ISVisible: false
+isRSVisible: false
+Focusable: true
+DecoStatus: true
+IsPrivacyMode: false
+WindowRect: [ 0, 0, 720, 1280 ]
+ScaleX:1
+ScaleY:1
+Offset: [ 0, 0]
+Scale: [ 1, 1, 0.5, 0.5]
+ParentWindowId: 0
+```
+<!--DelEnd-->
 
 字段含义详细说明：
 
@@ -145,24 +171,49 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。 |
 | Pid | 进程ID | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。 |
 | Type | 窗口类型 | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口；2000+：表示为系统窗口。 |
-| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式；2：表示为分屏模式；102：表示为自由悬浮窗模式，其他值详见[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)。 |
-| Flag | 状态标志位 | 窗口状态标志。0：表示为正常显示状态；1：表示为隐藏状态。 |
-| Orientation | 窗口方向 | 窗口的实际显示方向。0：表示为竖屏；1：表示为反向横屏；2：表示为反向竖屏；3：表示为横屏。该定义与[RotationChangeInfo](../reference/apis-arkui/arkts-apis-window-i.md#rotationchangeinfo19)中的orientation一致，与设置旋转策略的[Orientation枚举](../reference/apis-arkui/arkts-apis-window-e.md#orientation9)含义不同。 |
-| IsStartingWindow | 是否是启动页窗口 | 启动页标识。true：表示为[应用启动页](launch-page-overview.md)窗口；false：表示为正常应用窗口。启动页是应用冷启动时显示的首个页面，在应用内容加载完成前显示。 |
-| FirstFrameCallbackCalled | 首帧回调状态 | 首帧绘制状态。0：表示为首帧未完成；1：表示为首帧绘制回调已调用。 |
+| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
+| Flag | 状态标志位 | 状态标识值。当前该字段为预留字段，无实际意义。 |
+| Orientation | 窗口方向 | 窗口方向标识值。当前该字段为预留字段，无实际意义。 |
+| FirstFrameCallbackCalled | 首帧回调状态 | 0：表示首帧回调未调用；1：表示首帧回调已调用。 |
+<!--Del-->
+| IsStartingWindow | 是否是启动页窗口 | true：表示为[应用启动页](launch-page-overview.md)窗口；false：表示为正常应用窗口。 |
+<!--DelEnd-->
+<!--Del-->
 | VisibilityState | 可见性状态 | 窗口可见性。0：表示为窗口可见；1：表示为窗口隐藏；2：表示为窗口部分可见。 |
-| Focusable | 是否可获焦 | 窗口获焦能力。true：表示为窗口可以获焦；false：表示为窗口不可获焦。 |
-| DecoStatus | 装饰状态 | 窗口装饰状态。true：表示为窗口装饰已启用（有标题栏等）；false：表示为窗口无装饰。 |
+<!--DelEnd-->
+<!--RP2-->
+| ISVisible | 是否可见（IS侧） | 窗口在IS侧的可见性。true：表示窗口可见；false：表示窗口不可见。 |
+| isRSVisible | 是否可见（RS侧） | 窗口在RS侧的可见性。true：表示窗口可见；false：表示窗口不可见。 |
+<!--RP2End-->
+| Focusable | 是否可获焦 | true：表示窗口可以获焦；false：表示窗口不可获焦。 |
+| DecoStatus | 装饰状态 | true：表示窗口装饰已启用（有标题栏等）；false：表示窗口无装饰。 |
 | IsPrivacyMode | 是否隐私模式 | 窗口隐私模式。true：表示为隐私窗口；false：表示为正常窗口。隐私窗口在不同设备上的截屏表现不同，详见[隐私模式](./screenshot-and-privacy-mode.md#规格表现)。 |
+<!--Del-->
 | isSnapshotSkip | 截屏时是否显示该窗口 | 截屏显示标识。0：表示为截屏时显示该窗口内容；1：表示为截屏时不显示该窗口内容。 |
+<!--DelEnd-->
 | WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
+<!--Del-->
 | TouchHotAreas | 触摸热区 | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。 |
+<!--DelEnd-->
+<!--RP2-->
+| ScaleX | X轴缩放比例 | 窗口在X轴的缩放比例，如1：表示为无缩放。 |
+| ScaleY | Y轴缩放比例 | 窗口在Y轴的缩放比例，如1：表示为无缩放。 |
+| Offset | 偏移量 | 窗口的偏移量，格式为[x, y]，如[0, 0]：表示为无偏移。 |
+| Scale | 缩放参数 | 窗口的缩放参数，格式为[x, y, pivotX, pivotY]。 |
+| ParentWindowId | 父窗口ID | 父窗口的唯一标识符。0：表示为无父窗口；其他值：表示为父窗口的WinId。 |
+<!--RP2End-->
 
 常见问题定位：
 
 问题1：窗口不显示
 
+<!--Del-->
 - `VisibilityState`为1：窗口被隐藏，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)显示。
+<!--DelEnd-->
+<!--RP2-->
+- `ISVisible`为false：窗口在IS侧不可见，检查窗口显示状态。
+- `isRSVisible`为false：窗口在RS侧不可见，检查窗口显示状态。
+<!--RP2End-->
 - `Flag`为1：状态标志为隐藏，检查窗口是否被隐藏。
 
 问题2：窗口无法接收键盘输入
@@ -170,10 +221,12 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 - `Focusable`为false：窗口不可获焦，调用[setWindowFocusable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)设置可获焦。
 - 确认窗口在前台区域（分隔线以上）。
 
+<!--Del-->
 问题3：截屏时窗口内容未隐藏
 
 - `IsPrivacyMode`为false：未启用隐私模式。
 - `isSnapshotSkip`为0：截屏时显示窗口内容。
+<!--DelEnd-->
 
 解决方案：调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式。
 
@@ -313,12 +366,12 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 | `windowState` | 窗口状态 | 窗口当前状态（显示、隐藏等） |
 | `curWidth` | 当前宽度（vp） | 窗口当前实际宽度，单位为vp |
 | `curHeight` | 当前高度（vp） | 窗口当前实际高度，单位为vp |
-| `minWidth` | 最小宽度限制（vp） | 系统规定的最小宽度阈值 |
-| `minHeight` | 最小高度限制（vp） | 系统规定的最小高度阈值 |
-| `screenWidth` | 屏幕宽度（像素） | 当前屏幕的宽度，单位为像素 |
-| `screenHeight` | 屏幕高度（像素） | 当前屏幕的高度，单位为像素 |
+| `minWidth` | 最小宽度限制（vp） | 若未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)配置过WindowLimits，该值等于[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小宽度。 |
+| `minHeight` | 最小高度限制（vp） | 若未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)配置过WindowLimits，该值等于[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小高度。 |
+| `screenWidth` | 屏幕宽度（px） | 当前屏幕的宽度，单位为px |
+| `screenHeight` | 屏幕高度（px） | 当前屏幕的高度，单位为px |
 | `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值。若未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)设置窗口尺寸限制，该值等于[getWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits9)返回的最大尺寸。推荐开发者先通过getWindowLimits查询系统默认限制后再设置。 |
-| `sessionRect` | 窗口矩形区域（像素） | 窗口的位置和尺寸，单位为像素，坐标以屏幕左顶点为原点 |
+| `sessionRect` | 窗口矩形区域（px） | 窗口的位置和尺寸，单位为px，坐标以屏幕左顶点为原点 |
 
 **检测逻辑**
 
@@ -329,7 +382,7 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 
 > **说明：**
 >
-> `screenWidthVp`、`screenHeightVp`为屏幕尺寸的vp值，由系统内部根据故障日志中的`screenWidth`、`screenHeight`（像素值）除以屏幕密度计算得到。故障日志中不直接输出这两个值，开发者可通过`screenWidthVp = screenWidth / density`自行计算。
+> `screenWidthVp`、`screenHeightVp`为屏幕尺寸的vp值，由系统内部根据故障日志中的`screenWidth`、`screenHeight`（px值）除以屏幕密度计算得到。故障日志中不直接输出这两个值，开发者可通过`screenWidthVp = screenWidth / density`自行计算。
 >
 > WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数。`maxFloatingWindowSize`为系统规定的最大尺寸阈值（宽度和高度共用），窗口宽度应在[minWidth, maxFloatingWindowSize]范围内，窗口高度应在[minHeight, maxFloatingWindowSize]范围内。
 >
@@ -347,7 +400,7 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
    - `windowName`：确认异常窗口名称
    - `curWidth`、`curHeight`：查看当前异常尺寸值（vp）
    - `minWidth`、`minHeight`、`maxFloatingWindowSize`：对比限制阈值（vp）
-   - `screenWidth`、`screenHeight`：对比屏幕尺寸（像素，需转换为vp）
+   - `screenWidth`、`screenHeight`：对比屏幕尺寸（px，需转换为vp）
 
 3. 判断异常类型。根据curWidth、curHeight与限制值、屏幕尺寸的对比：
    - 如果 `curWidth > maxFloatingWindowSize` 或 `curHeight > maxFloatingWindowSize`：窗口尺寸超过最大限制
