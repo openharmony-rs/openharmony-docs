@@ -32,7 +32,7 @@ setFlashMode(flashMode: FlashMode): void
 1. 设备是否支持闪光灯，可使用方法[hasFlash](arkts-apis-camera-FlashQuery.md#hasflash11)。
 2. 设备是否支持指定的闪光灯模式，可使用方法[isFlashModeSupported](arkts-apis-camera-FlashQuery.md#isflashmodesupported11)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -72,7 +72,7 @@ getFlashMode(): FlashMode
 
 获取当前设备的闪光灯模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -116,7 +116,7 @@ onFlashStateChange(callback: Callback\<FlashState\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -144,7 +144,7 @@ offFlashStateChange(callback?: Callback\<FlashState\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

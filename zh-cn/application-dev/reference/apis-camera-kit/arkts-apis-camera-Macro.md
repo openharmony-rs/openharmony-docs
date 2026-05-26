@@ -30,7 +30,7 @@ enableMacro(enabled: boolean): void
 >
 > 使用该接口前，需要先通过[isMacroSupported](arkts-apis-camera-MacroQuery.md#ismacrosupported19)接口查询当前设备是否支持微距能力。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

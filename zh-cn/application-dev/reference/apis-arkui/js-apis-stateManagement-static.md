@@ -611,6 +611,33 @@ struct Index {
 }
 ```
 
+## StorageDefaultSubCreators
+
+type StorageDefaultSubCreators = Map\<Class, StorageDefaultCreator\<object\>\>
+
+保存对象类型及其默认构造器的Map。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { StorageDefaultSubCreators, ObservedV2, Trace } from '@kit.ArkUI';
+@ObservedV2
+class Info {
+  @Trace age: int = 25;
+  @Trace name: string = 'Tom';
+}
+const creators: StorageDefaultSubCreators = new StorageDefaultSubCreators([
+  [ Class.from<Info>(), () => new Info() ]
+]);
+```
 
 ## ConnectOptions
 
@@ -631,6 +658,7 @@ globalConnect参数类型。
 | toJson         | [ToJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#tojsontypet)      | 否 | 是   | 转换存储对象到JSON格式对象的函数。                      |
 | fromJson       | [FromJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#fromjsontypet)  | 否 | 是   | 转换JSON格式对象到存储对象的函数。 |
 | enableAutoSave       | boolean   | 否   | 是   | 是否自动持久化存储数据，默认值为true。 |
+| defaultSubCreators | [StorageDefaultSubCreators](#storagedefaultsubcreators) | 否 | 是 | 保存对象类型及其默认构造器的Map。用于恢复内层对象数据。默认值为undefined。 |
 
 ## BaseConnectOptions
 
