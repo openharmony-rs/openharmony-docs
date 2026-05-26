@@ -722,3 +722,17 @@ With this permission, the application can improve handwriting performance, ensur
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.GET_ENTERPRISE_CONFIG
+
+Allows an application to obtain custom enterprise device management (EDM) configuration files.
+
+With this permission, the application can obtain custom EDM configuration files, including those for wallpapers and browser policies.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
