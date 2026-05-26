@@ -903,7 +903,7 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
  **示例：**
 ```ts
 import { webSocket } from '@kit.NetworkKit';
-import { BusinessError, Callback } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ws = webSocket.createWebSocket();
 ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
@@ -953,7 +953,7 @@ let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
   } else {
     console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
   }
- }
+};
 ws.on('openInfo', callback1);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 ws.off('openInfo', callback1);
