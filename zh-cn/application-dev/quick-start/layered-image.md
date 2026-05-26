@@ -216,6 +216,24 @@
 1. 在[app.json5配置文件](app-configuration-file.md)中添加[alternateIcons标签](app-configuration-file.md#alternateicons标签)，声明备用图标列表。
 
     <!-- @[layered_image_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/AppScope/app.json5) -->
+    
+    ``` JSON5
+    {
+      "app": {
+        // ...
+        "alternateIcons": [
+          {
+            "name": "summer_theme",
+            "icon": "$media:layered_image"
+          },
+          {
+            "name": "winter_theme",
+            "icon": "$media:winter_icon"
+          }
+        ]
+      }
+    }
+    ```
 
 2. 使用[bundleManager.setAlternateIcon](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
 
