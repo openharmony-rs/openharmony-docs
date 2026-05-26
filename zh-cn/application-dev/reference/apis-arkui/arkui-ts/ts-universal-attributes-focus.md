@@ -147,6 +147,8 @@ focusBox(style: FocusBoxStyle): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -203,6 +205,8 @@ requestFocus(value: string): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 |  只读 | 可选 | 说明  |
@@ -218,6 +222,8 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 设置当前组件在指定容器内获焦的优先级。需要配合[focusScopeId](#focusscopeid12)一起使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -240,6 +246,8 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值      | 说明        |
@@ -253,6 +261,8 @@ focusScopePriority(scopeId: string, priority?: FocusPriority): T
 设置按键事件处理的优先级。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -268,6 +278,8 @@ focusScopeId(id: string, isGroup?: boolean): T
 设置当前容器组件的id标识，以及是否为焦点组。
 
 **原子化服务API：**  从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -292,6 +304,8 @@ focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): T
 
 **原子化服务API：**  从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -315,6 +329,8 @@ tabStop(isTabStop: boolean): T
 设置当前容器组件的tabStop，可决定焦点在走焦时是否会停留在当前容器。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -345,6 +361,8 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -364,6 +382,8 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 设置对应的按键对应的走焦目的组件，缺省则遵循默认走焦规则。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

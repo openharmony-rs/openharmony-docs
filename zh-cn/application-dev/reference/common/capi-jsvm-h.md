@@ -6456,23 +6456,23 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_
 JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result);
 ```
 
-**Description**
+**描述**
 
 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。
 
-**Since**: 24
+**起始版本：** 24
 
-**Parameters**
+**参数：**
 
-| Name| Description |
+| 参数项 | 描述 |
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 调用JSVM-API的环境。 |
 | [JSVM_CodeCache](capi-jsvm-jsvm-codecache.md) cacheData | 需要进行反序列化的字节码缓存数据。 |
 | [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | 后台反序列化结果。 |
 
-**Returns**
+**返回：**
 
-| Type| Description|
+| 类型 | 说明 |
 | -- | -- |
 | JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): 表示传入参数不合法。|
 
@@ -6482,20 +6482,20 @@ JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache
 JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result);
 ```
 
-**Description**
+**描述**
 
 当 *JSVM_DeserializeResult* 不再被使用时进行释放。
 
-**Since**: 24
+**起始版本：** 24
 
-**Parameters**
+**参数：**
 
-| Name| Description |
+| 参数项 | 描述 |
 | -- | -- |
 | [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | 需要进行释放的后台反序列化结果。 |
 
-**Returns**
+**返回：**
 
-| Type| Description|
+| 类型 | 说明 |
 | -- | -- |
 | JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): 表示传入参数不合法。|

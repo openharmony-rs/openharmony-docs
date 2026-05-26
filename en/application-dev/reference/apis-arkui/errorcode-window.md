@@ -506,6 +506,128 @@ Updating floating balls based on static templates is not supported.
 
 Delete any existing floating balls based on static templates and create new ones.
 
+## 1300030 Repeated Operations on the Float View
+
+**Error Message**
+
+Repeated operations on the float view.
+
+**Description**
+
+This error code is reported when operations are repeated on the float view.
+
+**Possible Causes**
+
+1. The float view is being started or has been started, and is started again.
+
+2. The float view is being stopped or has been stopped, and is stopped again.
+
+3. The float view callback is registered repeatedly.
+
+**Solution**
+
+1. You are advised to use [onStateChange](js-apis-floatView.md#onstatechange) to obtain the current status change. Before starting the float view, check whether the float view has been started.
+
+2. You are advised to use [onStateChange](js-apis-floatView.md#onstatechange) to obtain the current status change. Before stopping the float view, check whether the float view has been stopped.
+
+3. Before registering the float view callback, ensure that the callback has not been registered.
+
+## 1300031 Operation Not Supported in the Float View
+
+**Error Message**
+
+The floatView state does not support this operation.
+
+**Description**
+
+The float view does not support the operation.
+
+**Possible Causes**
+
+1. The float view has been started but has not been stopped, and an operation that requires the float view be in stopped state (such as binding or unbinding) is performed.
+
+2. The float view has not been started, and an operation that requires the float view be in started state (such as stopping, restoring the main window, or obtaining window attributes) is performed.
+
+3. The float view is in stopping state, and a startup operation is performed.
+
+**Solution**
+
+1. Before performing an operation, check the current status of the float view to ensure that it meets the state requirements of the API.
+
+2. To stop the float view, ensure that the float view has been started.
+
+3. Wait until the float view stops (confirmed through the status change callback) and then perform the follow-up procedure.
+
+## 1300032 Failed to Restore the Main Window
+
+**Error Message**
+
+Failed to restore the main window.
+
+**Description**
+
+This error code is reported when the float view fails to start the main window of the application.
+
+**Possible Causes**
+
+1. The user has never clicked the float view.
+
+2. The float view is not displayed in the foreground.
+
+3. The main window is in the **PAUSED** lifecycle state.
+
+4. The main window is in the multitasking screen.
+
+**Solution**
+
+1. Instruct the user to click the float view and then try to restore the main window.
+
+2. Check whether the float view is displayed in the foreground.
+
+3. Check the lifecycle state of the main window to avoid calling the restoration API when the main window is in the **PAUSED** state.
+
+4. Ensure that the main window is not in the multitasking state and try to restore it again.
+
+## 1300033 Failed to Start the Float View
+
+**Error Message**
+
+Failed to start float view.
+
+**Description**
+
+This error code is reported when the float view fails to be started.
+
+**Possible Causes**
+
+1. Multiple float views are started for the same application.
+
+2. When the float view is started, the main window associated with the context is not displayed in the foreground.
+
+**Solution**
+
+1. Only one float view can be started for the same application. Do not start multiple float views at the same time.
+
+2. Before starting the float view, ensure that the application window to which the context is passed is displayed in the foreground.
+
+## 1300034 Operation of the Float View Conflicts with Those of Other Float Views
+
+**Error Message**
+
+This operation conflicts with other floating windows.
+
+**Description**
+
+This error code is reported when this operation conflicts with other float views.
+
+**Possible Causes**
+
+The floating ball window or PiP window has been started in the application.
+
+**Solution**
+
+Before starting the float view, stop the floating ball window and PiP window.
+
 ## 1001 Window Null Pointer Exception<sup>(deprecated)</sup>
 **Error Message**<br>
 A window null pointer occurs.

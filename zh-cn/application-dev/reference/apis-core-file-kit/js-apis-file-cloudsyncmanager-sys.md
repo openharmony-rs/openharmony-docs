@@ -854,7 +854,7 @@ startTransfer(targetUri: string, callback: Callback&lt;TransferProgress&gt;): vo
 
 | 参数名   | 类型                             | 必填 | 说明                                                                                |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
-| targetUri | string | 是  | 用于存放搬迁后的文件路径URI，必须以“/file://docs/storage/Users/currentUser/”为前缀。 |
+| targetUri | string | 是  | 用于存放搬迁后的文件路径URI，必须以“file://docs/storage/Users/currentUser/”为前缀。 |
 | callback | Callback&lt;[TransferProgress](js-apis-file-cloudsyncmanager-sys.md#transferprogress)&gt; | 是   | 回调函数，返回搬迁进度。 |
 
 **错误码：**
@@ -876,7 +876,7 @@ startTransfer(targetUri: string, callback: Callback&lt;TransferProgress&gt;): vo
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let targetPath: string = "/file://docs/storage/Users/currentUser/Download/";
+let targetPath: string = "file://docs/storage/Users/currentUser/Download/";
 try {
     let downgradeMgr = new cloudSyncManager.DowngradeDownload("com.demo");
     downgradeMgr.startTransfer(targetPath, (data: cloudSyncManager.TransferProgress) => {

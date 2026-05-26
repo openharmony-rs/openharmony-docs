@@ -12,6 +12,8 @@
 >
 > - 该组件从API version 10开始支持。后续版本新增内容，采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
 
@@ -650,6 +652,26 @@ horizontalScrolling(enabled: Optional\<boolean>)
 | ------ | ----- | ---- | ---- |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否启用水平滚动。<br/>true表示启用水平滚动，false表示禁用水平滚动，文本将自动换行。设置为undefined或null时，不启用水平滚动。|
 
+### punctuationOverflow
+
+punctuationOverflow(enabled: Optional\<boolean>)
+
+设置是否启用行尾标点符号悬挂。不通过该接口设置，默认标点符号不悬挂。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ----- | ---- | ---- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是 | 是否启用行尾标点符号悬挂。<br/>true表示启用行尾标点符号悬挂，false表示不启用行尾标点符号悬挂。设置为undefined或null时，不启用标点符号悬挂。|
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持[OnDidChangeCallback](ts-text-common.md#ondidchangecallback12)、[StyledStringChangedListener](ts-text-common.md#styledstringchangedlistener12)、[StyledStringChangeValue](ts-text-common.md#styledstringchangevalue12)和以下事件：
@@ -1089,7 +1111,7 @@ Span类型信息。
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | strokeWidth<sup>23+</sup> | number                                   | 否   | 是   | 文本描边宽度。<br/>单位为[vp](ts-pixel-units.md#基本像素单位)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | 否   | 是   | 文本描边颜色。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**起始版本：** 26.0.0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**起始版本：** 26.0.0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 在RichEditorTextStyle中，fontWeight是设置字体粗细的输入参数。
 
@@ -1451,6 +1473,26 @@ setStyledPlaceholder(styledString: StyledString): void
 | 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
 | styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是 | 设置属性字符串样式的提示文本，其优先级高于[placeholder](#placeholder12)属性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](./ts-universal-styled-string.md#gesturestyle)样式绑定的手势事件，以及[UrlStyle](./ts-universal-styled-string.md#urlstyle14)样式的超链接跳转能力。|
+
+### scrollToVisible
+
+scrollToVisible(range?: TextRange): void
+
+将指定范围内的内容滚动到可视区域。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| range | [TextRange](ts-text-common.md#textrange12) | 否    | 滚动到可视区域的内容范围，包括内容起始位置和终止位置。<br>起始位置应小于等于结束位置，否则接口调用无效。起始位置小于0视为0，结束位置大于全文长度视为全文长度。<br>未指定范围时，默认为全部内容。未指定起始位置，默认起始位置为0；未指定结束位置，默认结束位置为全文长度。 |
 
 ## RichEditorController
 
@@ -1945,7 +1987,7 @@ SymbolSpan样式选项。
 | paragraphSpacing<sup>19+</sup> | number | 否    | 是 | 设置段落间距大小。<br/>单位：fp<br/>段落间距默认大小为0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是 | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | textDirection<sup>23+</sup> | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  是  |  是  | 设置文本着色器效果。<br/>该接口与[RichEditorTextStyle](#richeditortextstyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[RichEditorTextStyle](#richeditortextstyle)的fontColor。<br/>**起始版本：** 26.0.0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| shaderStyle  | [ShaderStyle](ts-text-common.md#shaderstyle20) |  否  |  是  | 设置文本着色器效果。<br/>该接口与[RichEditorTextStyle](#richeditortextstyle)中的strokeWidth同时设置时，该接口不生效，shaderStyle的优先级高于[RichEditorTextStyle](#richeditortextstyle)的fontColor。<br/>**起始版本：** 26.0.0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## LeadingMarginPlaceholder<sup>11+</sup>
 
@@ -2009,7 +2051,7 @@ SymbolSpan样式选项。
 | textBackgroundStyle<sup>18+</sup> | [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明) | 否 | 是    | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | strokeWidth<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) \| number    | 否   | 是 | 文本描边宽度。如果LengthMetrics的unit值是[PERCENT](../js-apis-arkui-graphics.md#lengthunit12)，当前设置不生效，作为0处理。<br/>值小于0时为实体字，大于0时为轮廓字，等于0时无描边效果。<br/>默认值：0vp。<br/>单位：LengthMetrics类型时跟随LengthMetrics，number类型时是vp。<br/>取值范围：(-∞, +∞)<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | strokeColor<sup>23+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | 否   | 是 | 文本描边颜色。<br/>默认值：跟随字体颜色。<br/>设置异常值时跟随字体颜色。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 是 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**起始版本：** 26.0.0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| strokeJoinStyle | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) | 否 | 是 | 文本描边拐角样式。<br/>默认值：StrokeJoinStyle.MITER_JOIN。<br/>**起始版本：** 26.0.0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## PlaceholderStyle<sup>12+</sup>
 
@@ -2122,7 +2164,7 @@ RichEditor span信息。
 | menuType<sup>13+</sup> | [MenuType](ts-text-common.md#menutype13枚举说明) | 否 | 是 | 自定义选择菜单类型。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>默认值：MenuType.SELECTION_MENU。 |
 | onMenuShow<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单显示时回调。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | onMenuHide<sup>15+</sup> | [MenuCallback](#menucallback15) | 否 | 是 |  自定义选择菜单隐藏时回调。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。该参数只在RichEditor中生效。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| previewMenuOptions<sup>18+</sup> | [PreviewMenuOptions](#previewmenuoptions18) | 否 | 是 |  预览菜单的选项。该参数只在RichEditor中生效。<br/>从API版本26.0.0开始，该参数在Text组件中也生效。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## PreviewMenuOptions<sup>18+</sup>
 
@@ -4763,7 +4805,9 @@ struct RichEditorDemo {
 ![PreventDefaultExample](figures/richEditorPreventDefault.gif)
 
 ### 示例15（配置文字特性效果）
-通过[addTextSpan](#addtextspan)接口设置文字特性效果（[fontFeature](#richeditortextstyle)）。当添加“ss01”特性的FontFeature属性时，数字“0”由原来的椭圆形改变为带有倒圆角形。
+该示例通过[addTextSpan](#addtextspan)接口设置文字特性效果（[fontFeature](#richeditortextstyle)）。当添加“ss01”特性的FontFeature属性时，数字“0”由原来的椭圆形改变为带有倒圆角形。同时通过[RichEditorTextStyle](#richeditortextstyle)的strokeJoinStyle接口设置文本描边拐角样式。
+
+从API版本26.0.0开始，[RichEditorTextStyle](#richeditortextstyle)新增strokeJoinStyle接口。
 
 ```ts
 @Entry
@@ -4790,7 +4834,8 @@ struct RichEditorExample {
                 style:
                 {
                   fontSize: 30,
-                  fontFeature: "\"ss01\" 1"
+                  fontFeature: "\"ss01\" 1",
+                  strokeJoinStyle: StrokeJoinStyle.MITER_JOIN
                 }
               })
           })
@@ -6466,47 +6511,58 @@ struct RichEditorExample {
 ```
 ![richEditorIncludeFontPadding](figures/richEditorIncludeFontPadding.gif)
 
-### 示例36（设置开启行首标点符号压缩）
-该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)属性设置行首标点符号压缩。
+### 示例36（设置行首标点符号压缩和行尾标点符号悬挂）
 
-从API version 23开始，新增compressLeadingPunctuation属性。
+本示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)设置行首标点符号压缩，通过[punctuationOverflow](#punctuationoverflow)设置行尾标点符号悬挂。
+
+文本自动换行后，剩余内容（含标点符号）需能放入上一行，标点符号悬挂才生效。
+
+从API version 23开始，新增compressLeadingPunctuation接口。
+
+从API版本26.0.0开始，新增punctuationOverflow接口。
 
 ```ts
 @Entry
 @Component
-struct CompressLeadingPunctuationDemo {
+struct PunctuationDemo {
   controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
-
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: '20fp' } };
   @State compressLeadingPunctuation: boolean = false;
-  @State text: string = '「0123456789\n『0123456789\n（0123456789\n《0123456789\n〈0123456789\n【0123456789\n〖0123456789\n〔0123456789\n［0123456789\n｛0123456789';
+  @State punctuationOverflow: boolean = false;
+  @State text: string = '「0123456789！\n『0123456789：\n（0123456789；\n《0123456789）\n〈0123456789】\n【0123456789、\n〖0123456789。\n〔0123456789﹑\n［0123456789〞\n｛0123456789';
 
   build() {
     Column() {
-      RichEditor(this.options)
+      RichEditor({ controller: this.controller })
         .onReady(() => {
-          this.controller.addTextSpan(this.text)
+          this.controller.addTextSpan(this.text, this.textSpanOptions)
         })
         .compressLeadingPunctuation(this.compressLeadingPunctuation)
-        .borderWidth(1)
-        .borderColor(Color.Green)
+        .punctuationOverflow(this.punctuationOverflow)
+        .border({ width: 1, color: Color.Black })
         .align(Alignment.Center)
-        .height("30%")
-        .width("50%")
+        .height('35%')
+        .width('50%')
 
       Column() {
-        Button("开启行首标点符号压缩").onClick(() => {
+        Button('开启行首标点符号压缩').onClick(() => {
           this.compressLeadingPunctuation = true
-        }).margin({ top: 10 })
-        Button("关闭行首标点符号压缩").onClick(() => {
+        }).margin(5)
+        Button('关闭行首标点符号压缩').onClick(() => {
           this.compressLeadingPunctuation = false
-        }).margin({ top: 10 })
+        }).margin(5)
+        Button('开启行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = true
+        }).margin(5)
+        Button('关闭行尾标点符号悬挂').onClick(() => {
+          this.punctuationOverflow = false
+        }).margin(5)
       }
-    }.width("100%").padding(20)
+    }.width('100%').padding(20)
   }
 }
 ```
-![CompressLeadingPunctuation](figures/richEditorCompressLeadingPunctuation.gif)
+![Punctuation](figures/richEditorPunctuation.gif)
 
 ### 示例37（设置拖动预览样式）
 该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置拖动预览样式。
@@ -6749,3 +6805,137 @@ struct HorizontalScrollDemo {
 }
 ```
 ![enableHorizontalScroll](figures/richEditorHorizontalScroll.gif)
+
+### 示例42（设置文本着色器效果）
+
+该示例通过[RichEditorParagraphStyle](#richeditorparagraphstyle11)中shaderStyle接口实现文本着色效果。
+
+从API版本26.0.0开始，RichEditorParagraphStyle新增shaderStyle接口。
+
+```ts
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  controller1: RichEditorController = new RichEditorController();
+  options1: RichEditorOptions = { controller: this.controller1 };
+  controller2: RichEditorController = new RichEditorController();
+  options2: RichEditorOptions = { controller: this.controller2 };
+  controller3: RichEditorController = new RichEditorController();
+  options3: RichEditorOptions = { controller: this.controller3 };
+
+  aboutToAppear() {
+    this.controller.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions1 } })
+    this.controller1.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.linearGradientOptions2 } })
+    this.controller2.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.radialGradientOptions } })
+    this.controller3.addTextSpan(this.message, { paragraphStyle: { shaderStyle: this.colorShaderStyle } })
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('angle为45°的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options)
+        .width('80%')
+        .margin({ top: 10 })
+        .onReady(() => {
+          let spans: Array<RichEditorImageSpanResult | RichEditorTextSpanResult> =
+              this.controller.getSpans();
+          if (spans.length > 0 && (spans[0] as RichEditorTextSpanResult).paragraphStyle) {
+            let shaderStyle: ShaderStyle | undefined =
+              (spans[0] as RichEditorTextSpanResult).paragraphStyle?.shaderStyle;
+            if (typeof (shaderStyle as ColorShaderStyle)['color'] != 'undefined') {
+              console.info(' color shaderStyle : ' + JSON.stringify(shaderStyle));
+            } else if (typeof (shaderStyle as RadialGradientStyle)['options']['center'] != 'undefined') {
+              console.info(' radial gradient shaderStyle : ' + JSON.stringify(shaderStyle));
+            } else if (typeof (shaderStyle as LinearGradientStyle)['options']['colors'] != 'undefined') {
+              console.info(' linear gradient shaderStyle : ' + JSON.stringify(shaderStyle));
+            }
+          }
+        }).borderWidth(1)
+      Text('direction为LeftTop的线性渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options1)
+        .width('80%')
+        .margin({ top: 10 })
+        .borderWidth(1)
+      Text('径向渐变').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options2)
+        .width('80%')
+        .margin({ top: 10 })
+        .borderWidth(1)
+      Text('纯色').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      RichEditor(this.options3)
+        .width('80%')
+        .margin({ top: 10 })
+        .borderWidth(1)
+    }
+  }
+}
+```
+![RichEditorShaderStyle](figures/richEditorShaderStyle.png)
+
+### 示例43（将指定范围的文字滚动到可视区内）
+
+本示例通过[scrollToVisible](#scrolltovisible)将可视区外的文本滚动到可视区内。
+
+从API版本26.0.0开始，新增scrollToVisible接口。
+
+```ts
+@Entry
+@Component
+struct ScrollToVisibleDemo {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 30 } };
+  exampleText: string = '第一段示例文本\n第二段示例文本\n第三段示例文本\n第四段示例文本' +
+    '\n第五段示例文本\n第六段示例文本\n第七段示例文本\n第八段示例文本';
+
+  build() {
+    Column() {
+      RichEditor({ controller: this.controller })
+        .onReady(() => {
+          this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+        })
+        .width('250vp')
+        .height('150vp')
+        .border({ width: 1, color: Color.Black })
+        .margin(10)
+      Button('滚动首段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 0, end: 7})
+      }).margin(5)
+      Button('滚动末段文本至可视区').onClick((event: ClickEvent) => {
+        this.controller.scrollToVisible({start: 64, end: 71})
+      }).margin(5)
+    }
+  }
+}
+```
+
+![RichEditorScrollToVisible](figures/richEditorScrollToVisible.gif)
+

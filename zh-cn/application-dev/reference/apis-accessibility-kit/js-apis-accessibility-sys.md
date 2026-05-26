@@ -133,7 +133,7 @@ import { accessibility } from '@kit.AccessibilityKit';
 | SCROLL_BACKWARD            | 12   | 表示向后滚动组件。                |
 | SET_SELECTION              | 13   | 表示选定组件内文本范围。             |
 | SET_CURSOR_POSITION        | 14   | 表示设置组件内的光标位置。             |
-| HOME                       | 15   | 表示组件返回首页操作。              |
+| HOME                       | 15   | 表示组件返回首页操作。<br>**使用约束：** 此操作在多屏场景下，仅在主屏幕上生效。              |
 | BACK                       | 16   | 表示执行返回操作。               |
 | RECENT_TASK                | 17   | 显示最近任务。                  |
 | NOTIFICATION_CENTER        | 18   | 显示通知中心。                  |

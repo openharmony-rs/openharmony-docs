@@ -34,13 +34,13 @@ Since offline components do not participate in actual rendering, taking snapshot
 The following use cases illustrate common usage methods of the component snapshot capability.
 
 ### Capturing Long Content (Scrolling Snapshot)
-Long content is usually implemented using scrollable container components. When you take a snapshot, only the visible content within the container is captured, and content beyond the boundary is not included. If **LazyForEach** or **Repeat** is used, content outside the display range is not built or captured by the system.
+Long content is usually implemented using scrollable container components. When you take a snapshot, only the visible content within the container is captured, and content beyond the boundary is not included. If [LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md) or [Repeat](../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md) is used, content that exceeds the display range will not be built or captured by the system.
 
 You can use scrollable container APIs to simulate user swiping for page-by-page snapshots, then stitch the **PixelMap** objects of each page by offset to generate a complete long image. The key points are simulating swiping, maintaining the relationship between displacement and pixel maps, and implementing **PixelMap** read and write operations.
 
 **Step 1: Add a scroll controller and event listener.**
 
-To simulate scrolling and listen for the component's scroll offset, you need to add a scroll controller and scroll listener to the scrollable container (**List** component in this example).
+To simulate scrolling and listen to the specific [offset](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset) of component scrolling, you need to add a scroll controller and scroll listener to the [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) component (using the list as an example).
 
 <!-- @[scroll_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/ScrollSnapshot.ets) -->
 
@@ -147,7 +147,7 @@ static scrollAnimation(scroller: Scroller, duration: number, scrollHeight: numbe
 
 **Step 3: Stitch the long snapshot.**
 
-Call **image.createPixelMapSync()** to create a long snapshot **longPixelMap** and iterate through the previously saved image fragment data (**this.areaArray**). Construct an **image.PositionArea** object **area**, and call **longPixelMap.writePixelsSync(area)** to write these fragments into the correct positions one by one, thereby stitching them into a complete long snapshot.
+Use the image.[createPixelMapSync](../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmapsync12)() method to create a long screenshot **longPixelMap**, traverse the previously saved image segment data (**this.areaArray**), construct the **image.PositionArea** object **area**, and call the longPixelMap.[writePixelsSync](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#writepixelssync12)(area) method to write these segments one by one to the correct positions to stitch a complete long screenshot.
 
 <!-- @[merge_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/common/ImageUtils.ets) -->
 
@@ -195,7 +195,7 @@ static async mergeImage(areaArray: image.PositionArea[], lastOffsetY: number, li
 
 **Step 4: Save the snapshot.**
 
-Use the **SaveButton** security component to save the snapshot.
+Use the security component [SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md) to save the screenshot to the album.
 
 <!-- @[save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentSnapshot/entry/src/main/ets/view/SnapshotPreview.ets) -->
 
@@ -347,7 +347,7 @@ Another common reason for unexpected snapshots is image resource loading. Image 
 
 The following optimization approaches can be taken:
 1. Pre-parse images into PixelMap format and configure the PixelMap for the image component. This approach is recommended for optimization.
-2. Set the **syncLoad** attribute of the **Image** component to **true** to force synchronous loading, ensuring resources can be directly submitted when the component is built.
+2. Set the [syncLoad](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#syncload8) attribute of the image component to **true** to force synchronous loading. This ensures that resources can be directly submitted when the component is built.
 3. Specify the delay duration and set **checkImageStatus** to **true** to attempt to take a snapshot. If error 160001 is returned, retry with an increased delay.
 
 
