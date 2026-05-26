@@ -472,7 +472,7 @@ import { connection } from '@kit.NetworkKit';
 
 // 获取App绑定的网络信息
 let netHandle = connection.getAppNetSync();
-console.info(Succeeded to getappnetSync:' + JSON.stringify(netHandle));
+console.info('Succeeded to getappnetSync:' + JSON.stringify(netHandle));
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -1643,7 +1643,7 @@ let option: connection.QueryOptions = {
 connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
   console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get msg: ${JSON.stringify(err)}`)
+  console.error(`Failed to get msg. Code:${err.code},message:${err.message}`)
 });
 ```
 
@@ -2027,7 +2027,7 @@ getPacFileUrl(): string
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
-console.info("Succeeded to pacFileUrl");
+console.info("Succeeded to get pacFileUrl");
 ```
 
 ## connection.findProxyForUrl<sup>20+</sup>
@@ -2551,9 +2551,9 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(Succeeded to result);  // 预期结果：www.xn--fsq092h.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(Succeeded to result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.example.com
 ```
 
 ## connection.getDnsUnicode<sup>23+</sup>
@@ -2593,9 +2593,9 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(Succeeded to result);  // 预期结果：www.示例.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.示例.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(Succeeded to result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.example.com
 ```
 
 ## connection.getSystemNetPortStates<sup>24+</sup>
@@ -2836,7 +2836,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError) => {
-  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+  console.error(`Failed to register.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -2875,7 +2875,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError) => {
-   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+   console.error(`Failed to unregister.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -2912,12 +2912,12 @@ netCon.on('netAvailable', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+  console.error(`Failed to register.Code:${err.code},message:${err.message}`);
 });
 
 // 使用unregister接口取消订阅网络可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+  console.error(`Failed to unregister.Code:err.code,message:{err.code}`);
 });
 ```
 
@@ -3118,12 +3118,12 @@ netCon.on('netUnavailable', () => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+   console.error(`Failed to get register.Code:${err.code},message:${err.message}`);
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+  console.error(`Failed to get unregister.Code:${err.code},message:${err.message}`);
 });
 ```
 
@@ -3190,7 +3190,7 @@ interface Data {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('Failed to bind');
+        console.error(Failed tobind.Code:${error.code},message:${error.message});
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
@@ -3477,7 +3477,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get ERROR msg: ${JSON.stringify(err)}`)
+    console.error(Failed to get Addresses Name.Code:${error.code},message:${error.message});
   });
 });
 ```
@@ -3745,7 +3745,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
    bearerPrivateIdentifier: `${networkId}`
  });
  netConnectionWlan.register((error: BusinessError) => {
-   console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+   console.error(`Failed to get register.Code:${err.code},message:${err.message}`);
  });
 });
 ```
