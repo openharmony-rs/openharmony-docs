@@ -171,15 +171,15 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
     **ArkTS-Sta示例：**
 
     <!-- @[click_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/basicExampleTest/BasicExample.test.ets) -->
-
+    
     ``` TypeScript
     import { describe, expect, it, Level } from '../../../../hypium/index';
     // 导入测试依赖kit
     import { abilityDelegatorRegistry, Component, Driver, ON } from '@kit.TestKit';
     import { UIAbility, Want } from '@kit.AbilityKit';
-
+    
     const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-
+    
     export default function abilityTest(): void {
       describe('ActsAbilityTest', (): void => {
         it('testUiExample', Level.LEVEL3, async (): Promise<void> => {
@@ -198,7 +198,7 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
           // 确认当前应用顶部Ability为指定的ability
           const ability: UIAbility = await delegator.getCurrentTopAbility();
           expect(ability.context.abilityInfo.name).assertEqual('EntryAbility');
-
+    
           // 依据指定文本"toClickToAfterIndex"查找目标控件
           const toClick: Component | null = await driver.findComponent(ON.text('toClickToAfterIndex'));
           // 点击目标控件
