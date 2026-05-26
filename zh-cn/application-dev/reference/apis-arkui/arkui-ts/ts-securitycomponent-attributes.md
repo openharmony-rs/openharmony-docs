@@ -27,7 +27,7 @@ iconSize(value: Dimension): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) | 是 |安全控件上图标的尺寸。<br/>默认值：16vp。<br/>不支持设置百分比字符串。|
+| value | [Dimension](ts-types.md#dimension10) | 是 |安全控件上图标的尺寸。<br/>默认值：16vp。<br/>不支持设置百分比字符串。<br/>设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -71,7 +71,7 @@ position(value: Position): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>**异常情况说明**：<br/>1.当入参为异常值（如入参不符合Position定义等）、入参为Position类型但x和y均为异常值（如undefined或其他与格式要求不符的字符串等）时，该属性不生效；<br/>2.当入参的Position中，x和y有且仅有一个异常值时，值异常的属性会被置为0。如输入{x: 0, y: 'a'}，最终效果按{x: 0, y: 0}显示。 |
+| value | [Position](ts-types.md#position) |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>1.当入参为undefined、null，或Position对象中x、y属性值为非数字类型（如字符串'abc'、对象、数组等）时，该属性不生效；当x和y中仅有一个为异常值时，异常值会被置为0；<br/>2.当入参的Position中，x和y有且仅有一个异常值时，值异常的属性会被置为0。如输入{x: 0, y: 'a'}，最终效果按{x: 0, y: 0}显示。 |
 
 **返回值：**
 
@@ -93,7 +93,7 @@ markAnchor(value: Position): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) |是 |安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常配合position和offset属性使用，单独使用时，效果类似offset。<br/>无默认值，设置异常值时该属性不生效。|
+| value | [Position](ts-types.md#position) |是 |安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常配合position和offset属性使用，配合使用时可精确定位控件位置。单独使用时，效果类似offset。<br/>无默认值。<br/>当入参为异常值时，该属性不生效。|
 
 **返回值：**
 
@@ -115,7 +115,7 @@ offset(value: Position | Edges | LocalizedEdges): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) |是 |安全控件相对于自身布局位置的坐标偏移。设置此属性不会影响父容器的布局，仅在绘制过程中调整位置。<br/>无默认值，设置异常值时该属性不生效。|
+| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) |是 |安全控件相对于自身布局位置的坐标偏移。设置此属性不会影响父容器的布局，仅在绘制过程中调整位置。<br/>无默认值。<br/>当入参为异常值时，该属性不生效。|
 
 **返回值：**
 
@@ -137,7 +137,7 @@ fontSize(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |是 |安全控件上文字的尺寸。<br/>默认值：16fp。<br/>不支持设置百分比字符串。|
+| value | [Dimension](ts-types.md#dimension10) |是 |安全控件上文字的尺寸。<br/>默认值：16fp。<br/>不支持设置百分比字符串。<br/>设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -181,7 +181,7 @@ fontWeight(value: number | FontWeight | string | Resource): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> |是 |安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium；如果value入参为非法值，文字粗细将被设置为FontWeight.Normal。|
+| value | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource)<sup>20+</sup> |是 |安全控件上文字粗细。<br/>number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。<br/>string类型支持使用数字字符串（如'400'），以及FontWeight中的枚举值对应的字符串（如'bold'、'bolder'、'lighter'、'regular'、'medium'）。<br/>从API version 20开始，支持Resource类型。Resource类型仅支持'integer'和'string'，当类型为'integer'时，取值参考前述number类型；当类型为'string'时，取值参考前述string类型。<br/>如果控件未设置fontWeight，文字粗细将默认设置为FontWeight.Medium；如果value入参为undefined、null，number类型不在[100, 900]范围内，或string类型不符合FontWeight枚举值对应的字符串格式，文字粗细将被设置为FontWeight.Normal。|
 
 **返回值：**
 
@@ -349,6 +349,9 @@ borderRadius(value: Dimension): T
 
 设置安全控件的边框圆角半径。
 
+**约束与限制：**
+borderRadius的设置效果受ButtonType影响。当按钮类型为Capsule或Circle时，borderRadius设置不生效，按钮圆角半径由按钮类型自动确定；当按钮类型为Normal时，borderRadius设置生效。具体影响请参见[ButtonType](#buttontype)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -357,7 +360,7 @@ borderRadius(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value |  [Dimension](ts-types.md#dimension10) |是 |安全控件的边框圆角半径。默认值: 0vp。|
+| value |  [Dimension](ts-types.md#dimension10) |是 |安全控件的边框圆角半径。<br/>默认值: 0vp。<br/>不支持设置百分比字符串。圆角半径受组件尺寸限制，最小值为0，最大值为宽高中较小值的一半。设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -379,7 +382,7 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| radius |  [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |是 |安全控件的边框圆角半径。默认值: 0vp。|
+| radius |  [Dimension](ts-types.md#dimension10) \| [BorderRadiuses](ts-types.md#borderradiuses9) |是 |安全控件的边框圆角半径。<br/>默认值: 0vp。<br/>Dimension类型不支持设置百分比字符串。圆角半径受组件尺寸限制，最小值为0，最大值为宽高中较小值的一半。设置异常值时该属性不生效。|
 
 **返回值：**
 
@@ -401,7 +404,7 @@ padding(value: Padding | Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) |是 |安全控件的内边距。<br/>默认值：上下8vp，左右16vp。<br/>**说明**：本参数不支持设置百分比字符串数据类型。若设置百分比字符串，则对应内边距显示为0。|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) |是 |安全控件的内边距。<br/>默认值：上下8vp，左右16vp。<br/>**说明：** 本参数不支持设置百分比字符串数据类型。若设置百分比字符串，则对应内边距显示为0。|
 
 **返回值：**
 
@@ -445,7 +448,7 @@ textIconSpace(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |是 |安全控件中图标和文字的间距。<br/>默认值：4vp。<br/>**说明**：本参数不支持设置百分比字符串数据类型，若设置百分比字符串，则图标和文字的间距显示为0；从API 14开始，若设置值为负值，则使用默认值。|
+| value | [Dimension](ts-types.md#dimension10) |是 |安全控件中图标和文字的间距。<br/>默认值：4vp。<br/>**说明：** 本参数不支持设置百分比字符串数据类型，若设置百分比字符串，则图标和文字的间距显示为0；从API 14开始，若设置值为负值，则使用默认值。|
 
 **返回值：**
 
@@ -467,7 +470,7 @@ width(value: Length): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-|value | [Length](ts-types.md#length) |是 |安全控件自身的宽度，缺省时将根据元素内容自适配宽度。|
+|value | [Length](ts-types.md#length) |是 |安全控件自身的宽度，缺省时将根据元素内容自适配宽度。未显式指定单位时，单位为vp。|
 
 **返回值：**
 
@@ -489,7 +492,7 @@ height(value: Length): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Length](ts-types.md#length) |是|安全控件自身的高度，缺省时将根据元素内容自适配高度。|
+| value | [Length](ts-types.md#length) |是|安全控件自身的高度，缺省时将根据元素内容自适配高度。未显式指定单位时，单位为vp。|
 
 **返回值：**
 
@@ -511,7 +514,7 @@ size(value: SizeOptions): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [SizeOptions](ts-types.md#sizeoptions) |是 |宽高尺寸，缺省时将根据元素内容自适配高宽尺寸。|
+| value | [SizeOptions](ts-types.md#sizeoptions) |是 |宽高尺寸，缺省时将根据元素内容自适配高宽尺寸。未显式指定单位时，单位为vp。|
 
 **返回值：**
 
@@ -555,7 +558,7 @@ alignRules(alignRule: AlignRuleOption): T
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9对象说明) | 是   | 指定设置在相对容器中子组件的对齐规则。 |
+| alignRule | [AlignRuleOption](ts-universal-attributes-location.md#alignruleoption9对象说明) | 是   | 对齐规则配置对象，包含top、bottom、left、right、center等锚点对齐配置，用于指定安全控件在[RelativeContainer](ts-container-relativecontainer.md)中的对齐位置和方式。 |
 
 **返回值：**
 
@@ -577,7 +580,7 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignRule | [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明) | 是   | 指定设置在相对容器中子组件的对齐规则。 |
+| alignRule | [LocalizedAlignRuleOptions](ts-universal-attributes-location.md#localizedalignruleoptions12对象说明) | 是   | 对齐规则配置对象，使用start/end替代left/right以支持RTL布局镜像。包含top、bottom、start、end、center等锚点对齐配置，用于指定安全控件在[RelativeContainer](ts-container-relativecontainer.md)中的对齐位置和方式。 |
 
 **返回值：**
 
@@ -644,7 +647,7 @@ minFontScale(scale: number | Resource): T
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最小的字体缩小倍数。<br/>取值范围：[0, 1]。<br/>**说明：** <br/>设置的值小于0时，按值为0处理，即缩小不受限制；设置的值大于1，按值为1处理，即缩小不生效。 |
+| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最小的字体缩小倍数。<br/>取值范围：[0, 1]。<br/>**说明：** <br/>设置的值小于0时，按值为0处理，即允许缩小到任意倍数；设置的值大于1时，按值为1处理，即不允许缩小字体。 |
 
 **返回值：**
 
@@ -666,7 +669,7 @@ maxFontScale(scale: number | Resource): T
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最大的字体放大倍数。<br/>取值范围：[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按值为1处理，异常值默认不生效。 |
+| scale  | number \| [Resource](ts-types.md#resource) | 是   | 文本最大的字体放大倍数。<br/>取值范围：[1, +∞)。<br/>**说明：** <br/>设置的值小于1时，按值为1处理；设置的值为undefined、null、NaN或负数等非法值时，属性不生效。 |
 
 **返回值：**
 
@@ -680,6 +683,7 @@ minFontSize(minSize: number | string | Resource): T
 
 设置文本最小显示字号。
 - 配合[maxFontSize](#maxfontsize18)以及[maxLines](#maxlines18)或布局大小限制使用，可实现自适应字号，单独设置不生效。
+- minFontSize应小于maxFontSize，若设置值大于maxFontSize，将按maxFontSize处理。
 - minFontSize小于或等于0时，自适应字号不生效。
 - 自适应字号生效时，fontSize设置不生效。
 
@@ -691,7 +695,7 @@ minFontSize(minSize: number | string | Resource): T
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| minSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本最小显示字号。 |
+| minSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本最小显示字号。未显式指定单位时，单位为fp。 |
 
 **返回值：**
 
@@ -715,7 +719,7 @@ maxFontSize(maxSize: number | string | Resource): T
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| maxSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本最大显示字号。 |
+| maxSize  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 文本最大显示字号。未显式指定单位时，单位为fp。 |
 
 **返回值：**
 
@@ -761,7 +765,7 @@ heightAdaptivePolicy(policy: TextHeightAdaptivePolicy): T
 
 当设置为TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST时，优先使用布局约束来调整文本高度。如果布局大小超过布局约束，则尝试在[minFontSize](#minfontsize18)和[maxFontSize](#maxfontsize18)的范围内缩小字体以满足布局约束。如果将字体大小缩小到minFontSize后，布局大小仍然超过布局约束，则删除超过布局约束的行；如果设置了[maxLines](#maxlines18)属性，布局后行数不超过maxlines值（可能存在横向截断）；如果未设置maxlines属性值，布局后的行数不限制。
 
-安全控件文本未完全显示时，点击不授权。
+安全控件文本未完全显示时，点击不授权。文本是否完全显示受heightAdaptivePolicy、minFontSize、maxFontSize、maxLines、width和height等属性影响。
 
 具体效果请见[示例](#示例3)。
 
@@ -817,7 +821,7 @@ focusBox(style: FocusBoxStyle): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12对象说明) | 是   | 设置安全控件系统焦点框样式。 |
+| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12对象说明) | 是   | 焦点框样式配置对象，包含margin（焦点框与控件的间距）和strokeColor（焦点框边框颜色）等属性，用于自定义系统焦点框的外观样式。 |
 
 **返回值：**
 
@@ -850,9 +854,9 @@ focusBox(style: FocusBoxStyle): T
 - 当按钮类型为Circle时，borderRadius设置不生效：
   - 若同时设置了宽和高，按钮圆角半径为宽高中较小值的一半；
   - 若只设置宽、高中的一个，按钮圆角半径为所设宽或所设高值的一半；
-  - 若未设置宽高或borderRadius的值为负数，按钮圆角半径将根据具体布局确定。
-- 当按钮类型为Normal时，按钮圆角半径可通过borderRadius设置，圆角大小受组件尺寸限制，最小值为0，最大值为组件宽高中较小值的一半。
-- 当按钮类型为ROUNDED_RECTANGLE时，若不设置borderRadius，圆角矩形按钮的圆角半径大小保持默认值20vp不变，不随按钮高度变化而变化。
+  - 若未设置宽高或borderRadius的值为负数，按钮圆角半径将根据具体布局确定。适用于图标按钮，如音量控制、播放/暂停等场景。
+- 当按钮类型为Normal时，按钮圆角半径可通过borderRadius设置，圆角大小受组件尺寸限制，最小值为0，最大值为组件宽高中较小值的一半。适用于需要自定义圆角大小或保持直角的按钮场景。
+- 当按钮类型为ROUNDED_RECTANGLE时，若不设置borderRadius，圆角矩形按钮的圆角半径大小保持默认值20vp不变，不随按钮高度变化而变化。适用于需要统一圆角风格的按钮场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
