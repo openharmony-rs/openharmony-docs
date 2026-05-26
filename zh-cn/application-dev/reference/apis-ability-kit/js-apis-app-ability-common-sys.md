@@ -302,4 +302,8 @@ let autoStartupCallback: common.AutoStartupCallback;
 let uiServiceHostProxy: common.UIServiceHostProxy;
 let agentProxy: common.AgentProxy;
 let agentExtensionConnectCallback: common.AgentExtensionConnectCallback;
+let toolInfo: common.ToolInfo;
+let toolSummary: common.ToolSummary;
+let cliToolEvent: common.CliToolEvent;
+let toolEventCallback: common.ToolEventCallback;
 ```
