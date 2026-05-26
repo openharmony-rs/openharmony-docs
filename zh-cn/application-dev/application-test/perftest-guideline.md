@@ -62,7 +62,7 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     **ArkTS-Sta示例：**
 
     <!-- @[metricsDefine_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
-
+    
     ``` TypeScript
     let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE];
     ```
