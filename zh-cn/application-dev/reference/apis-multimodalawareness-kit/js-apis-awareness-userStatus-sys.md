@@ -123,8 +123,8 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | --- | --- | --- | --- | --- |
 | feature | [UserStatusFeature](#userstatusfeature) | 是 | 否 | 表示用户状态检测功能类型。 |
 | status | string | 是 | 否 | 表示特定功能下的多阶段检测状态。 |
-| result | number | 是 | 否 | 表示用户状态检测结果。 |
-| errCode | number | 是 | 否 | 表示业务错误码，默认0表示成功。|
+| result | int | 是 | 否 | 表示用户状态检测结果。 |
+| errCode | int | 是 | 否 | 表示业务错误码，默认0表示成功。|
 
 ## UserBlowData
 
@@ -136,13 +136,13 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| facePosition | number[] | 是 | 是 | 表示人脸相对于屏幕的位置。 |
-| strengthLevel | number | 是 | 是 | 表示吹气力度。 |
-| blowDirection | number | 是 | 是 | 表示吹气方向。 |
-| emotion | number | 是 | 是 | 表示用户情绪级别。 |
+| facePosition | double[] | 是 | 是 | 表示人脸相对于屏幕的位置。 |
+| strengthLevel | int | 是 | 是 | 表示吹气力度。 |
+| blowDirection | int | 是 | 是 | 表示吹气方向。 |
+| emotion | int | 是 | 是 | 表示用户情绪级别。 |
 | isGazeStatus | boolean | 是 | 是 | 表示用户是否注视屏幕。 |
-| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
-| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
+| gravityAcceleration | double[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
+| linearAcceleration | double[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
 
 ## UserEmotionData
 
@@ -154,12 +154,12 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| emotionRealTime | number | 是 | 是 | 表示用户实时情绪级别。 |
-| confidence | number | 是 | 是 | 表示用户情绪置信度。 |
+| emotionRealTime | int | 是 | 是 | 表示用户实时情绪级别。 |
+| confidence | int | 是 | 是 | 表示用户情绪置信度。 |
 | isRealTime | boolean | 是 | 是 | 表示情绪数据是否为实时数据。 |
-| emotionNonRealTime | number[] | 是 | 是 | 表示用户非实时情绪级别。 |
-| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
-| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
+| emotionNonRealTime | int[] | 是 | 是 | 表示用户非实时情绪级别。 |
+| gravityAcceleration | double[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
+| linearAcceleration | double[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
 
 ## ComfortReminderData
 
@@ -173,7 +173,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | --- | --- | --- | --- | --- |
 | fusionReminderData | [ReminderLevel](#reminderlevel) | 是 | 否 | 表示综合检测后的提醒级别。 |
 | swingReminderData | [ReminderLevel](#reminderlevel) | 是 | 否 | 表示注视设备时提醒级别。 |
-| eventType | number | 是 | 否 | 表示事件类型。 |
+| eventType | int | 是 | 否 | 表示事件类型。 |
 
 ## UserFacesData
 
@@ -185,12 +185,12 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
-| visualAngle | number[] | 是 | 是 | 表示用户看屏幕的视角。 |
-| angularVelocity | number[] | 是 | 是 | 表示当前状态下设备的角速度。 |
-| gravityAcceleration | number[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
-| linearAcceleration | number[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
-| azimuth | number[] | 是 | 是 | 表示当前状态下设备的方位角。 |
-| faceNum | number | 是 | 是 | 表示检测到的人脸数量。 |
+| visualAngle | double[] | 是 | 是 | 表示用户看屏幕的视角。 |
+| angularVelocity | double[] | 是 | 是 | 表示当前状态下设备的角速度。 |
+| gravityAcceleration | double[] | 是 | 是 | 表示当前状态下设备的重力加速度。 |
+| linearAcceleration | double[][] | 是 | 是 | 表示当前状态下设备的线性加速度。 |
+| azimuth | double[] | 是 | 是 | 表示当前状态下设备的方位角。 |
+| faceNum | int | 是 | 是 | 表示检测到的人脸数量。 |
 
 ## UserGesturesData
 
@@ -203,11 +203,11 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | isHandExist | boolean | 是 | 是 | 表示用户手是否存在。 |
-| handPosition | number[] | 是 | 是 | 表示手相对于屏幕的位置。 |
-| motionGesture | number | 是 | 是 | 表示用户动态手势类型。 |
-| handType | number | 是 | 是 | 表示用户静态手势类型。 |
-| directionAngle | number[] | 是 | 是 | 表示用户手势与屏幕方向的夹角。 |
-| gestureSpeed | number[] | 是 | 是 | 表示手势速度。 |
+| handPosition | double[] | 是 | 是 | 表示手相对于屏幕的位置。 |
+| motionGesture | int | 是 | 是 | 表示用户动态手势类型。 |
+| handType | int | 是 | 是 | 表示用户静态手势类型。 |
+| directionAngle | double[] | 是 | 是 | 表示用户手势与屏幕方向的夹角。 |
+| gestureSpeed | double[] | 是 | 是 | 表示手势速度。 |
 
 ## UserFaceAngleData
 
@@ -223,7 +223,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 ## userStatus.subscribe
 
-subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;, deviceInfo?: DeviceInfo[]): number
+subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;, deviceInfo?: DeviceInfo[]): int
 
 订阅用户状态监控，以获取用户状态数据。
 
@@ -243,7 +243,7 @@ subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;
 
 | 类型                           | 说明         |
 | ---------------------------- | ---------- |
-| number | 返回注册的回调ID。唯一标识对应回调函数。 |
+| int | 返回注册的回调ID。唯一标识对应回调函数。 |
 
 **错误码**：
 
@@ -276,7 +276,7 @@ try {
 
 ## userStatus.unsubscribe
 
-unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&gt;): number
+unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&gt;): int
 
 取消订阅用户状态监控。
 
@@ -295,7 +295,7 @@ unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&
 
 | 类型                           | 说明         |
 | ---------------------------- | ---------- |
-| number | 返回配置执行结果。返回0表示操作成功，非零值表示操作失败。 |
+| int | 返回配置执行结果。返回0表示操作成功，非零值表示操作失败。 |
 
 
 **错误码**：
@@ -329,7 +329,7 @@ try {
 
 ## userStatus.configure
 
-configure(featureId: UserStatusFeature, detail: string): number
+configure(featureId: UserStatusFeature, detail: string): int
 
 配置功能参数。
 
@@ -348,7 +348,7 @@ configure(featureId: UserStatusFeature, detail: string): number
 
 | 类型                           | 说明         |
 | ---------------------------- | ---------- |
-| number | 返回配置执行结果。返回0表示操作成功，非零值表示操作失败。 |
+| int | 返回配置执行结果。返回0表示操作成功，非零值表示操作失败。 |
 
 **错误码**：
 
