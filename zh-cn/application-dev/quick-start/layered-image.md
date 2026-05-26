@@ -224,6 +224,47 @@
 3. 调用[bundleManager.setAlternateIcon](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口传入空字符串可恢复默认图标。
 
     <!-- @[layered_image_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
+    
+    ``` TypeScript
+    import { bundleManager } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    @Entry
+    @Component
+    struct Index {
+    
+      build() {
+        Scroll() {
+          Column() {
+            // ...
+            Text("RestoreDefaultIcon")
+              .fontSize($r('app.float.page_text_font_size'))
+              .fontWeight(FontWeight.Bold)
+              .alignRules({
+                center: { anchor: '__container__', align: VerticalAlign.Center },
+                middle: { anchor: '__container__', align: HorizontalAlign.Center }
+              })
+              .onClick(() => {
+                try {
+                  bundleManager.setAlternateIcon('').then(() => {
+                    hilog.info(0x0000, 'testTag', 'restore default icon successfully');
+                  }).catch((err: BusinessError) => {
+                    hilog.error(0x0000, 'testTag', 'restore default icon failed. Cause: %{public}s', err.message);
+                  });
+                } catch (err) {
+                  let message = (err as BusinessError).message;
+                  hilog.error(0x0000, 'testTag', 'restore default icon failed. Cause: %{public}s', message);
+                }
+              })
+            // ...
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
 
 4. 使用[bundleManager.getAlternateIcons](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetalternateicons)接口查询备用图标信息。返回的[AlternateIconInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#alternateiconinfo)数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
 
