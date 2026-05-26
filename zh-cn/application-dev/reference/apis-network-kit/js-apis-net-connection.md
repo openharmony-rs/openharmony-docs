@@ -2718,7 +2718,7 @@ let options: connection.TraceRouteOptions = {
 connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
     console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
-    console.error('Failed to get request. Code:${err.code},message:${err.message}');
+    console.error(`Failed to get request. Code:${err.code},message:${err.message}`);
 });
 ```
 
