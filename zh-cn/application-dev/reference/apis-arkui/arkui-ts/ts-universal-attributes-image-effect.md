@@ -114,7 +114,7 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions, sysOptions?: SystemAd
 
 ## blur<sup>23+</sup>
 
-blur(blurRadius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): this
+blur(blurRadius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions)
 
 为组件添加内容模糊效果。
 
@@ -133,12 +133,6 @@ blur(blurRadius: double | undefined, options?: BlurOptions, sysOptions?: SystemA
 | blurRadius            | double \| undefined                                            | 是   | 当前组件添加内容模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>当blurRadius的值为undefined时，维持之前取值。<br/>取值范围：[0, +∞) |
 | options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0]  |
 | sysOptions   |  [SystemAdaptiveOptions](ts-universal-attributes-background.md#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## shadow
 
@@ -204,7 +198,7 @@ shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
 
 ## shadow<sup>23+</sup>
 
-shadow(value: ShadowOptions | ShadowStyle | undefined): this
+shadow(value: ShadowOptions | ShadowStyle | undefined)
 
 为组件添加阴影效果。
 
@@ -221,12 +215,6 @@ shadow(value: ShadowOptions | ShadowStyle | undefined): this
 | 参数名                | 类型                                                         | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ShadowOptions](#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle<sup>10+</sup>](#shadowstyle10枚举说明) \| undefined | 是   | 为当前组件添加阴影效果。<br/>入参类型为ShadowOptions时，可以指定模糊半径、阴影的颜色、X轴和Y轴的偏移量。<br/>入参类型为ShadowStyle时，可指定不同阴影样式。<br/>当value的值为undefined时，恢复为无样式的阴影效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## grayscale
 
@@ -1091,7 +1079,7 @@ renderGroup(isGroup: Optional\<boolean>): T
 
 ## renderGroup<sup>23+</sup>
 
-renderGroup(value: boolean | undefined): this
+renderGroup(value: boolean | undefined)
 
 设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
 
@@ -1110,12 +1098,6 @@ renderGroup(value: boolean | undefined): this
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean \| undefined | 是   | 设置当前控件和子控件是否先整体离屏渲染绘制后再与父控件融合绘制。当前控件的不透明度不为1时绘制效果可能有差异。<br/>默认值：false <br/> false表示不进行离屏渲染直接绘制。<br/>当value的值为undefined时，按照不组成节点组处理。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-|  this | 返回当前组件。 |
 
 ## blendMode<sup>11+</sup>
 
@@ -1184,7 +1166,8 @@ blendMode(mode: Optional\<BlendMode>, type?: BlendApplyType): T
 | T | 返回当前组件。 |
 
 ## blendMode<sup>23+</sup> 
-blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
+
+blendMode(value: BlendMode | undefined, type?: BlendApplyType)
 
 将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。
 
@@ -1202,12 +1185,6 @@ blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
 | ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [BlendMode](#blendmode11枚举说明) \| undefined   | 是   | 混合模式。<br/>默认值：BlendMode.NONE<br/>当mode的值为undefined时，恢复为内容不进行混合的效果。<br/>**说明：**<br/>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
 | type   | [BlendApplyType](#blendapplytype11枚举说明) | 否   | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur12)，[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)，[brightness](#brightness)等需要截屏的接口无法截取到正确的画面。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## BlendApplyType<sup>11+</sup>枚举说明
 
@@ -1296,7 +1273,7 @@ useShadowBatching(use: Optional\<boolean>): T
 
 ## useShadowBatching<sup>23+</sup> 
 
-useShadowBatching(value: boolean | undefined): this
+useShadowBatching(value: boolean | undefined)
 
 控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。
 
@@ -1313,12 +1290,6 @@ useShadowBatching(value: boolean | undefined): this
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean \| undefined | 是   | 控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。<br/>默认值：false<br/>**说明：**<br/>1. 默认不开启，如果子节点的阴影半径较大，节点各自的阴影会互相重叠。 当开启时，元素的阴影将不会重叠。<br/>2. 不推荐useShadowBatching嵌套使用，如果嵌套使用，只会对当前的子节点生效，无法递推。<br/>当value的值为undefined时，恢复为不使用元素阴影重叠的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## sphericalEffect<sup>12+</sup>
 

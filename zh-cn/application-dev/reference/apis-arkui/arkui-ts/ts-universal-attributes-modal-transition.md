@@ -56,7 +56,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 
 ## bindContentCover<sup>23+</sup>
 
-bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, type?: ModalTransition): this
+bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, type?: ModalTransition)
 
 给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
 
@@ -75,12 +75,6 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 | isShow  | boolean \| Bindable\<boolean\> \| undefined       | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
 | builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined | 是   | 配置全屏模态页面内容。                                       |
 | type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 同transition同时设置时，此属性不生效。                                 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## bindContentCover
 
@@ -114,7 +108,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, options?: ContentCover
 
 ## bindContentCover<sup>23+</sup>
 
-bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: ContentCoverOptions): this
+bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: CustomBuilder | undefined, options?: ContentCoverOptions)
 
 给组件绑定全屏模态页面，点击后显示模态页面。模态页面内容自定义，显示方式可设置无动画过渡，上下切换过渡以及透明渐变过渡。
 
@@ -133,12 +127,6 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 | isShow  | boolean \| Bindable\<boolean\> \| undefined                      | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
 | builder | [CustomBuilder](ts-types.md#custombuilder8) \| undefined  | 是   | 配置全屏模态页面内容。                                      |
 | options | [ContentCoverOptions](#contentcoveroptions) | 否   | 配置全屏模态页面的可选属性。                                 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## ContentCoverOptions
 继承自[BindOptions](ts-universal-attributes-sheet-transition.md#bindoptions)。
