@@ -551,7 +551,7 @@ export default function abilityTest() {
 <!-- @[inputText_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/InputText.test.ets) -->
 
 ``` TypeScript
-import { describe, it, Level, Size, TestType } from "../../../../../hypium/index";
+import { describe, it, Level, Size, TestType } from '../../../../../hypium/index';
 // 导入测试依赖kit
 import { Component, Driver, ON, Point } from '@kit.TestKit';
 
