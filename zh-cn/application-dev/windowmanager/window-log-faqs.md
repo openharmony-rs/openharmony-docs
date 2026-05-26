@@ -134,37 +134,9 @@ isSnapshotSkip: 0
 WindowRect: [ 0, 0, 720, 1280 ]
 TouchHotAreas: [ 0, 0, 720, 1280 ]
 ```
-<!--RP1End-->
-
-<!--Del-->
-```bash
-----------------------------------WindowManagerService----------------------------------
-WindowName: note0
-DisplayId: 0
-WinId: 13
-Pid: 18299
-Type: 1
-Mode: 1
-Flag: 0
-Orientation: 0
-FirstFrameCallbackCalled: 1
-ISVisible: false
-isRSVisible: false
-Focusable: true
-DecoStatus: true
-IsPrivacyMode: false
-WindowRect: [ 0, 0, 720, 1280 ]
-ScaleX:1
-ScaleY:1
-Offset: [ 0, 0]
-Scale: [ 1, 1, 0.5, 0.5]
-ParentWindowId: 0
-```
-<!--DelEnd-->
 
 字段含义详细说明：
 
-<!--Del-->
 | 字段 | 含义 | 取值说明 |
 |------|------|----------|
 | WindowName | 窗口名称 | 应用自定义的窗口名称。如note0：表示为备忘录应用窗口；SystemUi_StatusBar：表示为系统状态栏窗口。 |
@@ -184,69 +156,34 @@ ParentWindowId: 0
 | isSnapshotSkip | 截屏时是否显示该窗口 | 截屏显示标识。0：表示为截屏时显示该窗口内容；1：表示为截屏时不显示该窗口内容。 |
 | WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
 | TouchHotAreas | 触摸热区 | 窗口可触摸的区域，格式为[x, y, width, height]，坐标以窗口左顶点为原点。 |
-<!--DelEnd-->
-
-<!--RP2-->
-| 字段 | 含义 | 取值说明 |
-|------|------|----------|
-| WindowName | 窗口名称 | 应用自定义的窗口名称。如note0：表示为备忘录应用窗口；SystemUi_StatusBar：表示为系统状态栏窗口。 |
-| DisplayId | 显示设备ID | 显示设备标识。0：表示为主屏幕；其他值：表示为其他屏幕。多屏场景可通过[getAllDisplays()](../reference/apis-arkui/js-apis-display.md#displaygetalldisplays9)查询所有屏幕信息。 |
-| WinId | 窗口唯一标识符 | 窗口ID，用于唯一标识该窗口实例，如13：表示为窗口ID。 |
-| Pid | 进程ID | 创建该窗口的应用进程ID，如18299：表示为应用进程ID。 |
-| Type | 窗口类型 | 窗口类型标识。1：表示为应用主窗口；2：表示为应用子窗口；2000+：表示为系统窗口。 |
-| Mode | 窗口模式 | 窗口模式标识。1：表示为全屏模式。该值是系统内部标识，不完全对应[WindowMode](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#windowmode12)枚举值。 |
-| Flag | 状态标志位 | 状态标识值。当前该字段为预留字段，无实际意义。 |
-| Orientation | 窗口方向 | 窗口方向标识值。当前该字段为预留字段，无实际意义。 |
-| FirstFrameCallbackCalled | 首帧回调状态 | 0：表示首帧回调未调用；1：表示首帧回调已调用。 |
-| ISVisible | 是否可见（IS侧） | 窗口在IS侧的可见性。true：表示窗口可见；false：表示窗口不可见。 |
-| isRSVisible | 是否可见（RS侧） | 窗口在RS侧的可见性。true：表示窗口可见；false：表示窗口不可见。 |
-| Focusable | 是否可获焦 | true：表示窗口可以获焦；false：表示窗口不可获焦。 |
-| DecoStatus | 装饰状态 | true：表示窗口装饰已启用（有标题栏等）；false：表示窗口无装饰。 |
-| IsPrivacyMode | 是否隐私模式 | 窗口隐私模式。true：表示为隐私窗口；false：表示为正常窗口。隐私窗口在不同设备上的截屏表现不同，详见[隐私模式](./screenshot-and-privacy-mode.md#规格表现)。 |
-| WindowRect | 窗口矩形区域 | 窗口位置和尺寸，格式为[x, y, width, height]，坐标以屏幕左顶点为原点。如[0, 0, 720, 1280]：表示为位置(0,0)，尺寸720x1280。 |
-| ScaleX | X轴缩放比例 | 窗口在X轴的缩放比例，如1：表示为无缩放。 |
-| ScaleY | Y轴缩放比例 | 窗口在Y轴的缩放比例，如1：表示为无缩放。 |
-| Offset | 偏移量 | 窗口的偏移量，格式为[x, y]，如[0, 0]：表示为无偏移。 |
-| Scale | 缩放参数 | 窗口的缩放参数，格式为[x, y, pivotX, pivotY]。 |
-| ParentWindowId | 父窗口ID | 父窗口的唯一标识符。0：表示为无父窗口；其他值：表示为父窗口的WinId。 |
-<!--RP2End-->
+<!--RP1End-->
 
 常见问题定位：
 
-问题1：窗口不显示
-
-<!--Del-->
-- `VisibilityState`为1：窗口被隐藏，调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)显示。
-<!--DelEnd-->
-<!--RP2-->
-- `ISVisible`为false：窗口在IS侧不可见，检查窗口显示状态。
-- `isRSVisible`为false：窗口在RS侧不可见，检查窗口显示状态。
-<!--RP2End-->
-- `Flag`为1：状态标志为隐藏，检查窗口是否被隐藏。
-
-问题2：窗口无法接收键盘输入
+窗口无法接收键盘输入
 
 - `Focusable`为false：窗口不可获焦，调用[setWindowFocusable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)设置可获焦。
 - 确认窗口在前台区域（分隔线以上）。
 
-<!--Del-->
-问题3：截屏时窗口内容未隐藏
+<!--RP2-->
+截屏时窗口内容未隐藏
 
 - `IsPrivacyMode`为false：未启用隐私模式。
 - `isSnapshotSkip`为0：截屏时显示窗口内容。
-<!--DelEnd-->
+<!--RP2End-->
 
 解决方案：调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式。
 
-问题4：窗口启动性能慢
+窗口启动性能慢
 
 - `FirstFrameCallbackCalled`为0：首帧未完成，可能页面加载慢。
 - 结合日志分析启动耗时。
 
-问题5：窗口触摸区域异常
-
+<!--RP3-->
+窗口触摸区域异常
 - `TouchHotAreas`尺寸异常：触摸热区设置错误。
 - 与`WindowRect`对比，确认是否正确设置
+<!--RP3End-->
 
 ### 定位思路
 
