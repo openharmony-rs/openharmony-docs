@@ -29,5 +29,5 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 
 | 名称 | 类型 | 值 | 说明 |
 | -------- | -------- | -------- | -------- |
-| WORK_SCHEDULER_CONDITION | string | 'WORK_SCHEDULER_CONDITION' | 表示当前任务触发时满足的最后一个条件。可以作为workInfo.parameters的key值，在延迟任务调度回调接口[onWorkStart](js-apis-WorkSchedulerExtensionAbility.md#onWorkStart)中使用。 |
+| WORK_SCHEDULER_CONDITION | string | 'WORK_SCHEDULER_CONDITION' | 表示当前任务触发时满足的最后一个条件。可以作为workInfo.parameters的key值，在延迟任务调度回调接口[onWorkStart](js-apis-WorkSchedulerExtensionAbility.md#onworkstart)中使用。 |
 | EXECUTE_IMMEDIATE | string | 'executeImmediate' | 表示请求的任务是否立即执行。可以作为workInfo.parameters的key值，在申请延迟任务接口[startWork](js-apis-resourceschedule-workScheduler.md#workschedulerstartwork)中使用。 |
