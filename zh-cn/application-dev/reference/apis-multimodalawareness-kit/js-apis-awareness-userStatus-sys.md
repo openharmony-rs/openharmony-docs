@@ -64,7 +64,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | QUICK_GESTURES_RECOGNITION | 7 | 表示快速手势识别功能（20ms上报间隔）。 |
 | FACE_RELATIVE_POSITION_RECOGNITION | 8 | 表示人脸位姿识别功能（100ms上报间隔）。 |
 | QUICK_FACE_RELATIVE_POSITION_RECOGNITION | 9 | 表示快速人脸位姿识别功能（20ms上报间隔）。 |
-| HAND_GAZE_COORDINATION | 11 | 表示手眼同行检测功能。 |
+| HAND_GAZE_COORDINATION | 11 | 表示手眼协同检测功能。 |
 | USER_BLOWING_STATUS | 12 | 表示用户吹气状态检测功能。 |
 | USER_MOOD | 13 | 表示用户情绪检测功能。 |
 | COMFORT_REMINDER | 15 | 表示铃声舒适检测功能。 |
@@ -319,7 +319,7 @@ const TAG = 'UserStatusDemo';
 try {
   let mistouchFeatureId = userStatus.UserStatusFeature.ANTI_MISTOUCH;
   userStatus.unsubscribe(mistouchFeatureId, (data: userStatus.UserStatusData) => {
-    console.info(TAG, `unsubscribe succeeded, error: ${data.result}`);
+    console.info(TAG, `unsubscribe succeeded, result: ${data.result}`);
   });
 } catch (err) {
   let error = err as BusinessError;
