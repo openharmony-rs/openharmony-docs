@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -18,11 +18,11 @@ Invalid parameter value.
 
 **Description**
 
-Invalid parameters are specified.
+The parameter is invalid.
 
 **Possible Causes**
 
-1. The value of **account** is empty or exceeds 1024 characters.
+1. The account is empty or exceeds 1024 characters.
 
 2. The account type is incorrect.
 
@@ -30,7 +30,7 @@ Invalid parameters are specified.
 
 4. The system time is later than the authorization expiration time.
 
-5. **Fd** is less than **0**.
+5. The value of **Fd** is less than **0**.
 
 6. The value of **tokenId** is **0**.
 
@@ -407,7 +407,7 @@ No network connection.
 
 **Description**
 
-The device is not connected to Wi-Fi.
+The network is not connected.
 
 **Possible Causes**
 
@@ -444,7 +444,7 @@ Parameter error.
 
 **Description**
 
-The parameter is invalid.
+Invalid parameter.
 
 **Possible Causes**
 

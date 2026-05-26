@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 This module provides system-related and enhanced [i18n](../../internationalization/i18n-l10n.md) capabilities, such as locale management, phone number formatting, and calendar, through supplementary i18n APIs that are not defined in [ECMA 402](https://dev.ecma-international.org/publications-and-standards/standards/ecma-402/). The [intl](js-apis-intl.md) module provides basic i18n capabilities through the standard i18n APIs defined in ECMA 402. It works with the **i18n** module to provide a complete suite of i18n capabilities. The terms used in the APIs are defined as follows:
 - Pattern string, which is a string consisting of [Unicode date field symbols](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table) and custom text enclosed by single quotation marks.
@@ -15,7 +15,7 @@ This module provides system-related and enhanced [i18n](../../internationalizati
 >
 >  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [date and time formatting API](#simplenumberformat18) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the official CLDR documentation.
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [date and time formatting API](#simplenumberformat18) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 
@@ -30,7 +30,7 @@ import { i18n } from '@kit.LocalizationKit';
 
 Provides system attribute configuration functions, including translating language and country/region names, obtaining the list of supported languages and countries/regions, and obtaining the system language and region.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Global.I18n
 
@@ -137,8 +137,6 @@ static getSystemLanguages(): Array&lt;string&gt;
 
 Obtains the list of system languages.
 
-Since API version 11, this API is supported in ArkTS widgets.
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.I18n
@@ -177,7 +175,7 @@ Obtains the list of countries/regions supported for the specified language.
 
 | Type                 | Description          |
 | ------------------- | ------------ |
-| Array&lt;string&gt; | List of countries/regions supported for the specified language.|
+| Array&lt;string&gt; | List of countries/regions supported for the language specified by **language**.|
 
 **Error codes**
 
@@ -227,7 +225,7 @@ Checks whether a language is a suggested language in the specified region. It ca
 
 | Type     | Description                                      |
 | ------- | ---------------------------------------- |
-| boolean | Whether a language is a suggested language. The value **true** indicates that the language is a suggested language of the region, the the value false indicates the opposite.|
+| boolean | Whether a language is a suggested language. The value **true** indicates yes, and the value **false** indicates no.|
 
 **Error codes**
 
@@ -368,7 +366,7 @@ Checks whether the 24-hour clock is used. To listen for system time format chang
 
 | Type     | Description                                      |
 | ------- | ---------------------------------------- |
-| boolean | Whether the 24-hour clock is used. The value **true** indicates that the 24-hour clock is used, the the value **false** means the opposite.|
+| boolean | Whether the 24-hour clock is used. The value **true** indicates that the 24-hour clock is used, the the value **false** indicates that the 12-hour clock is used.|
 
 **Example**
   ```ts
@@ -735,7 +733,7 @@ Obtains the **Calendar** object for the specified locale and calendar type.
 
 | Type                    | Description   |
 | ---------------------- | ----- |
-| [Calendar](#calendar8) | **Calendar** object.|
+| [Calendar](#calendar) | **Calendar** object.|
 
 **Example**
   ```ts
@@ -853,7 +851,7 @@ Defines a list of entities.
 | begin | number | No   | No   | Start position of the entity in the input string.|
 | end | number | No   | No   | End position of the entity the input string.|
 
-## Calendar<sup>8+</sup>
+## Calendar
 
 Provides calendar management capabilities, such as calendar name retrieval and date calculation.
 
@@ -1111,27 +1109,27 @@ Obtains the values of the calendar attributes in this **Calendar** object.
 
 | Name  | Description                                      |
 | ----- | ---------------------------------------- |
-| era | Era, for example, AD or BC.|
+| era | Era, for example, BC or AD in the Gregorian calendar.|
 | year | Year.|
 | month | Month. Note: The month starts from **0**. For example, **0** indicates January.|
 | date | Date.|
 | hour | Wall-clock hour.|
-| hour_of_day | Hour of day.|
+| hour_of_day | Hour of the day.|
 | minute | Minute.|
 | second | Second.|
 | millisecond | Millisecond.|
-| week_of_year | Week of year. Note that the algorithm for calculating the first week of a year varies according to regions. For example, the first seven days in a year are the first week.|
-| year_woy | Year used with the week of year field. |
-| week_of_month | Week of month.|
-| day_of_week_in_month | Day of week in month.|
-| day_of_year | Day of year.|
-| day_of_week | Day of week.|
-| milliseconds_in_day | Milliseconds in day.|
-| zone_offset | Fixed time zone offset in milliseconds (excluding DST).|
-| dst_offset | DST offset in milliseconds.|
-| dow_local | Localized day of week.|
-| extended_year | Extended year, which can be a negative number.|
-| julian_day | Julian day.|
+| week_of_year | Week of the year, calculated based on weeks. Note that the determination of the first week varies by region.|
+| year_woy | Week of the year, calculated numerically. For example, days 1–7 of the year belong to the first week.|
+| week_of_month | Week of the month, calculated based on weeks.|
+| day_of_week_in_month | Week of the month, calculated numerically. For example, days 1–7 belong to the first week.|
+| day_of_year | Day of the year.|
+| day_of_week | Day of the week.|
+| milliseconds_in_day | Millisecond of the day.|
+| zone_offset | Fixed time zone offset in milliseconds (excluding daylight saving time).|
+| dst_offset | Daylight saving time offset in milliseconds. |
+| dow_local | Localized day of the week.|
+| extended_year | Extended year value. Negative numbers are supported.|
+| julian_day | Julian day, relative to the current time zone.|
 | is_leap_month | Whether a month is a leap month.|
 
 **Return value**
@@ -1352,7 +1350,7 @@ Creates a **PhoneNumberFormat** object.
 
 | Name    | Type                                      | Mandatory  | Description              |
 | ------- | ---------------------------------------- | ---- | ---------------- |
-| country | string                                   | Yes   | Country/region to which the phone number to be formatted belongs.|
+| country | string                                   | Yes   | Country/Region code of the phone number. For details, see [Locale ID](../../internationalization/i18n-locale-culture.md#how-it-works).|
 | options | [PhoneNumberFormatOptions](#phonenumberformatoptions8) | No   | Options for **PhoneNumberFormat** object initialization. The default value is **NATIONAL**. |
 
 **Example**
@@ -1572,7 +1570,7 @@ Obtains the index list of the current locale.
 
   let indexUtil: i18n.IndexUtil = i18n.getInstance('zh-CN');
   // indexList = [ '...', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-  //              'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
+  // 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '...' ]
   let indexList: Array<string> = indexUtil.getIndexList();
   ```
 
@@ -1636,7 +1634,7 @@ Obtains the index of the **text** object.
 
 getLineInstance(locale: string): BreakIterator
 
-Obtains a **BreakIterator** object. The **BreakIterator** object maintains an internal break iterator that can be used to access various line break points.
+Obtains a **BreakIterator** object for locating line break points in text. This object maintains an internal break iterator that can be used to access each line break points.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2441,7 +2439,7 @@ Obtains a list of IDs supported by the **Transliterator** object.
   ```ts
   import { i18n } from '@kit.LocalizationKit';
 
-  // A total of 742 IDs are supported. One ID is comprised of two parts separated by a hyphen (-) in the format of source-destination. For example, in **ids = ["Han-Latin","Latin-ASCII", "Amharic-Latin/BGN","Accents-Any", ...]**, **Han-Latin** indicates conversion from Chinese to Latin, and **Amharic-Latin** indicates conversion from Amharic to Latin.
+  // A total of 742 IDs are supported. One ID is comprised of two parts separated by a hyphen (-) in the format of source-destination. For example, in ids = ["Han-Latin","Latin-ASCII", "Amharic-Latin/BGN","Accents-Any", ...], Han-Latin indicates conversion from Chinese to Latin, and Amharic-Latin indicates conversion from Amharic to Latin.
   // For more information, see ISO-15924.
   let ids: string[] = i18n.Transliterator.getAvailableIDs();
   ```
@@ -2795,20 +2793,20 @@ The following table lists only the common types. For more details, see the Unico
 
 | Name| Value| Description|
 | ---- | -------- | ---------- |
-| U_UNASSIGNED | U_UNASSIGNED | Non-category for unassigned and non-character code points.|
+| U_UNASSIGNED | U_UNASSIGNED | Category for unassigned and non-character code points.|
 | U_GENERAL_OTHER_TYPES | U_GENERAL_OTHER_TYPES | Same as **U_UNASSIGNED**.|
 | U_UPPERCASE_LETTER | U_UPPERCASE_LETTER | Uppercase letter.|
 | U_LOWERCASE_LETTER | U_LOWERCASE_LETTER | Lowercase letter. |
 | U_TITLECASE_LETTER | U_TITLECASE_LETTER | Title case letter.|
 | U_MODIFIER_LETTER | U_MODIFIER_LETTER | Modifier letter.|
-| U_OTHER_LETTER | U_OTHER_LETTER | Letters other than the uppercase letter, lowercase letter, title case letter, and modifier letter.|
+| U_OTHER_LETTER | U_OTHER_LETTER | Letter other than the uppercase letter, lowercase letter, title case letter, and modifier letter.|
 | U_NON_SPACING_MARK | U_NON_SPACING_MARK | Non-spacing mark, such as the accent symbol **'** and the variable symbol **#**.|
 | U_ENCLOSING_MARK | U_ENCLOSING_MARK | Enclosing mark, for example, a circle or a box.|
 | U_COMBINING_SPACING_MARK | U_COMBINING_SPACING_MARK | Spacing mark, for example, the vowel symbol **[]**.|
 | U_DECIMAL_DIGIT_NUMBER | U_DECIMAL_DIGIT_NUMBER | Decimal number.|
-| U_LETTER_NUMBER | U_LETTER_NUMBER | Letter and number (including Roman numeral).|
+| U_LETTER_NUMBER | U_LETTER_NUMBER | Alphanumeric and Roman numerals.|
 | U_OTHER_NUMBER | U_OTHER_NUMBER | Other numbers, which are used as encryption symbols, marker symbols, or non-Arabic numerals, such as **@**, **#**, **(1)**, and **①**.|
-| U_SPACE_SEPARATOR | U_SPACE_SEPARATOR | Space separator, for example, a space character, uninterrupted space character, or space character with a fixed width.|
+| U_SPACE_SEPARATOR | U_SPACE_SEPARATOR | Whitespace separator, for example, space character, non-breaking space character, or fixed-width space character.|
 | U_LINE_SEPARATOR | U_LINE_SEPARATOR | Line separator.|
 | U_PARAGRAPH_SEPARATOR | U_PARAGRAPH_SEPARATOR | Paragraph separator.|
 | U_CONTROL_CHAR | U_CONTROL_CHAR | Control character.|
@@ -2818,8 +2816,8 @@ The following table lists only the common types. For more details, see the Unico
 | U_DASH_PUNCTUATION | U_DASH_PUNCTUATION | Dash punctuation.|
 | U_START_PUNCTUATION | U_START_PUNCTUATION | Start punctuation, for example, the left parenthesis.|
 | U_END_PUNCTUATION | U_END_PUNCTUATION | End punctuation, for example, the right parenthesis.|
-| U_INITIAL_PUNCTUATION | U_INITIAL_PUNCTUATION | Initial punctuation, for example, the left double quotation mark or left single quotation mark.|
-| U_FINAL_PUNCTUATION | U_FINAL_PUNCTUATION | Final punctuation, for example, the right double quotation mark or right single quotation mark.|
+| U_INITIAL_PUNCTUATION | U_INITIAL_PUNCTUATION | Opening quotation mark, for example, the left double quotation mark or left single quotation mark.|
+| U_FINAL_PUNCTUATION | U_FINAL_PUNCTUATION | Closing quotation mark, for example, the right double quotation mark or right single quotation mark.|
 | U_CONNECTOR_PUNCTUATION | U_CONNECTOR_PUNCTUATION | Connector punctuation.|
 | U_OTHER_PUNCTUATION | U_OTHER_PUNCTUATION | Other punctuations.|
 | U_MATH_SYMBOL | U_MATH_SYMBOL | Mathematical symbol.|
@@ -3724,7 +3722,7 @@ Formats the rich text time and date.
 
 constructor(dateTimeFormat: Intl.DateTimeFormat | SimpleDateTimeFormat, options?: StyledDateTimeFormatOptions)
 
-Creates an object for formatting the time and date that need to be displayed in rich text.
+Creates a date and time formatting object for rich text display.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -4196,7 +4194,7 @@ Creates a **NumberForma**t object for the specified locale.
 |   Name |      Type     | Mandatory|     Description     |
 | --------- | ------------- | ---- | ------------- |
 | numberFormat | [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) | Yes  | **NumberFormat** object. |
-| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | No| Configuration options of the **NumberFormat** object. |
+| options | [AdvancedMeasureFormatOptions](#advancedmeasureformatoptions23) | No| Configuration options of the **NumberFormat** object. Default value: Same as [numberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) |
 
 **Example**
   ```ts

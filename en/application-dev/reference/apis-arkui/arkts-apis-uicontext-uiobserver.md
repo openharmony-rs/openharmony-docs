@@ -2091,7 +2091,7 @@ Listens for pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#o
 
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                      | Yes  | Event type. The value is fixed at **'beforePanEnd'**, indicating command dispatch after the execution of the pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event. The registered callback is triggered after **onActionEnd** is executed.|
+| type     | string                                                      | Yes  | Event type. The value is fixed at **'afterPanEnd'**, indicating command dispatch after the execution of the pan gesture [onActionEnd](arkui-ts/ts-basic-gestures-pangesture.md#onactionend) event. The registered callback is triggered after **onActionEnd** is executed.|
 | callback | [PanListenerCallback](arkts-apis-uicontext-t.md#panlistenercallback19) | Yes  | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent), [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12), and the target component's [FrameNode](js-apis-arkui-frameNode.md) information.  |
 
 **Example**

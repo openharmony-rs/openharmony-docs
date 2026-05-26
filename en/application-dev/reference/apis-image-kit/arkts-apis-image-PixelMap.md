@@ -6,7 +6,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
-The **PixelMap** class provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width × Height × [Bytes per pixel](arkts-apis-image-e.md#pixelmapformat7).
+The **PixelMap** class provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width × Height × Bytes per pixel (see [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7))
 
 Since API version 11, PixelMap supports cross-thread calls through [Worker](../apis-arkts/js-apis-worker.md). If a PixelMap object is invoked by another thread through [Worker](../apis-arkts/js-apis-worker.md), all APIs of the PixelMap object cannot be called in the original thread. Otherwise, error 501 is reported, indicating that the server cannot complete the request.
 
@@ -779,7 +779,7 @@ function GetImageInfoSync(pixelMap:image.PixelMap) {
 
 getBytesNumberPerRow(): number
 
-Obtains the number of bytes per row of this image. Unit: bytes.
+Obtains the number of bytes per row of this image. The unit is bytes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -805,7 +805,7 @@ function GetBytesNumberPerRow(pixelMap: image.PixelMap) {
 
 getPixelBytesNumber(): number
 
-Obtains the total number of bytes of this image. Unit: bytes.
+Obtains the total number of bytes of this image. The unit is bytes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1420,7 +1420,7 @@ Creates an image that has been cropped and resized based on the specified croppi
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | ------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8) | Yes  | Area to crop. It must be within the original image's dimension (in pixels).|
+| region   | [Region](arkts-apis-image-i.md#region8) | Yes  | Area to crop. It must be within the original image's dimensions (in px).|
 | x        | number | Yes  | Scale factor of the width. It must not be **0**.|
 | y        | number | Yes  | Scale factor of the height. It must not be **0**.|
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**.|
@@ -1478,7 +1478,7 @@ Creates an image that has been cropped and resized based on the specified croppi
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | ------------------- | ---- | ----------------------------- |
-| region   | [Region](arkts-apis-image-i.md#region8) | Yes  | Area to crop. It must be within the original image's dimension (in pixels).|
+| region   | [Region](arkts-apis-image-i.md#region8) | Yes  | Area to crop. It must be within the original image's dimensions (in px).|
 | x        | number | Yes  | Scale factor of the width. It must not be **0**.|
 | y        | number | Yes  | Scale factor of the height. It must not be **0**.|
 | level    | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**.|
@@ -1757,7 +1757,7 @@ Rotates this image based on a given angle. This API uses an asynchronous callbac
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | Yes  | Angle to rotate. Unit: degrees.|
+| angle    | number               | Yes  | Angle to rotate. The unit is degrees.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -1801,7 +1801,7 @@ Rotates a PixelMap based on a given angle. This API uses a promise to return the
 
 | Name| Type  | Mandatory| Description                         |
 | ------ | ------ | ---- | ----------------------------- |
-| angle  | number | Yes  | Angle to rotate. Unit: degrees.|
+| angle  | number | Yes  | Angle to rotate. The unit is degrees.|
 
 **Return value**
 
@@ -1845,7 +1845,7 @@ Rotates this image based on a given angle. This API returns the result synchrono
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | Yes  | Angle to rotate. Unit: degrees.|
+| angle    | number               | Yes  | Angle to rotate. The unit is degrees.|
 
 **Error codes**
 

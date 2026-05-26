@@ -29,4 +29,4 @@ Provides the widget editing function.
 **System capability**: SystemCapability.Ability.Form
   | Name| Type   | Read-Only| Optional |Description|
   | ------ | ------ | ---- | ---- | ---- |
-  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | No  | No|Context of **FormEditExtensionAbility**. The default value is an object inherited from **UIExtensionContext**.|
+  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | No  | No|Context of the **FormEditExtensionAbility**. The default value is the object which inherits from [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#uiextensioncontext-1).|

@@ -197,9 +197,9 @@ Obtains all physical cameras that constitute a logical camera by calling [OH_Cam
 
 ### OH_CameraDevice_DeleteConstituentCameraDevices()
 
-```c
-Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device* constituentCameras, uint32_t size)
-```
+```c 
+Camera_ErrorCode OH_CameraDevice_DeleteConstituentCameraDevices(const Camera_Device* logicalCamera, Camera_Device* constituentCameras, uint32_t size) 
+``` 
 
 **Description**
 
@@ -399,4 +399,3 @@ Obtains the color filter array arrangement of a camera sensor.
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
-<!--no_check-->

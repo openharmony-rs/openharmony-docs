@@ -39,7 +39,7 @@ Defines the basic APIs of the camera.
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | Describes the parameters related to photo capture.|
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | Describes the frame shutter information.|
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | Describes the capture end information.|
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | Describes the rectangle.<br> The detection point must be in the coordinate system (0-1), where the top-left corner is (0, 0) and the bottom-right corner is (1, 1).<br> The coordinate system is based on the horizontal device direction with the device's charging port on the right.<br> If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the returned point is {x, y}, then the coordinate point after conversion is (1-y, x).|
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | Defines the rectangle.<br> The detection point must be in the coordinate system (0-1), where the top-left corner is (0, 0) and the bottom-right corner is (1, 1).<br> The coordinate system is based on the horizontal device direction with the device's charging port on the right.<br> If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the returned point is {x, y}, then the coordinate point after conversion is (1-y, x).|
 | [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | Describes the camera metadata.|
 | [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | Describes the flashlight status information.|
 | [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | Describes the smooth zoom information.|
@@ -51,7 +51,7 @@ Defines the basic APIs of the camera.
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | Describes the effect status information of a camera controller.|
 | [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | Describes the check result for whether a camera lens is blocked or dirty.|
 | [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | Describes the zoom range.|
-| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | Configures the physical aperture.|
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | Describes the physical aperture configuration.|
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | Describes the camera manager.<br> You can call [OH_Camera_GetCameraManager](#oh_camera_getcameramanager) to create such an object.|
 
 ### Enums
@@ -254,6 +254,7 @@ Enumerates the camera output formats.
 | Enum Item| Description|
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888.|
+| CAMERA_FORMAT_DNG = 4 | DNG format.<br>**Since**: 24|
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420 SP.|
 | CAMERA_FORMAT_JPEG = 2000 | JPEG.|
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010.<br>**Since**: 12|
@@ -315,6 +316,7 @@ Enumerates the exposure modes.
 | EXPOSURE_MODE_LOCKED = 0 | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
 | EXPOSURE_MODE_AUTO = 1 | Auto exposure. The metering point can be set by calling [OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint).<br>After this mode is used, it takes effect only for the first photo capture.|
 | EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
+| EXPOSURE_MODE_MANUAL = 3 | Manual exposure mode You can use the [OH_CaptureSession_SetExposureDuration](capi-capture-session-h.md#oh_capturesession_setexposureduration) API to set the exposure duration.<br>**Since**: 24|
 
 ### OH_Camera_ExposureMeteringMode
 
@@ -657,6 +659,7 @@ Enumerates the effect types of a camera controller.
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | Beauty effect.|
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | Portrait blur effect.|
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | Auto focus effect.<br>**Since**: 24|
 
 ### Camera_PhotoQualityPrioritization
 

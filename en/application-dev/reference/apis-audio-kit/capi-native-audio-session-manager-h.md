@@ -1,8 +1,8 @@
 # native_audio_session_manager.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -74,6 +74,7 @@ The file declares the functions related to an audio session manager.<br> You can
 | [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_unregistercurrentinputdevicechangecallback) | - | Unregisters the callback used to listen for input device changes of an audio session manager.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)](#oh_audiosessionmanager_releasedevice) | - | Releases an audio device for an audio session manager.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(OH_AudioSessionManager *audioSessionManager, bool enable)](#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers) | - | Enables the function of receiving mute playback suggestion notifications during mixed playback.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)](#oh_audiosessionmanager_setcapturemutehint) | - | Transfers the mute status of the recording stream in the current audio session to the system audio module. This API is used to report the mute status of the recording stream in the current audio session to the system audio module, without changing its actual mute status. Currently, the system audio module adjusts policies based on the set status to reduce power consumption only on some PC/2-in-1 devices. This API can be called only when there are running recording streams in the current audio session. Otherwise, error code AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE is returned. If both the stream-level API and this API are called for a recording stream, the settings of the stream-level API take precedence.|
 | [bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSessionManager)](#oh_audiosessionmanager_isothermediaplaying) | - | Checks whether audio of the MUSIC, MOVIE, AUDIOBOOK, and GAME media types is being played by other applications. Activated audio sessions of the media types are also checked.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager *audioSessionManager, uint32_t behavior)](#oh_audiosessionmanager_setbehavior) | - | Sets audio session behavior parameters. (Multiple flags can be combined.) If this API is called while an audio session is active, you must call the [OH_AudioSessionManager_ActivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) API again for the settings to take effect.|
 
@@ -905,6 +906,31 @@ Enables the function of receiving mute playback suggestion notifications during 
 | Type| Description|
 | -- | -- |
 | [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioSessionManager** parameter is nullptr.<br>         AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE:<br>                                                 1. Audio session scene not set.<br>                                                 2. Call this function after the audio session is activated.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_SetCaptureMuteHint()
+
+```c
+OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)
+```
+
+**Description**
+
+Transfers the mute status of the recording stream in the current audio session to the system audio module. This API is used to report the mute status of the recording stream in the current audio session to the system audio module, without changing its actual mute status. Currently, the system audio module adjusts policies based on the set status to reduce power consumption only on some PC/2-in-1 devices. This API can be called only when there are running recording streams in the current audio session. Otherwise, error code AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE is returned. If both the stream-level API and this API are called for a recording stream, the settings of the stream-level API take precedence.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to the audio session management instance returned by [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager).|
+| bool mute | If the recording stream has been muted by the application, pass **true**. If the recording stream has been unmuted by the application, pass **false**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| OH_AudioCommon_Result | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioSessionManager** parameter is nullptr.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: The operation status is abnormal as there is no running recording stream in the current process.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
 
 ### OH_AudioSessionManager_IsOtherMediaPlaying()
 

@@ -10,9 +10,9 @@ The **FormExtensionAbility** module provides lifecycle callbacks invoked when a 
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs of this module can be used only in the stage model.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](./js-apis-app-form-formExtensionAbility.md).
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The APIs of this module can be used only in the stage model.
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](./js-apis-app-form-formExtensionAbility.md).
 
 ## Modules to Import
 

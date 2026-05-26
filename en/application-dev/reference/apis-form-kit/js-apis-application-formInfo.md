@@ -9,8 +9,8 @@ The **formInfo** module provides types and enums related to the widget informati
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This module is deprecated since API version 9. You are advised to use [formInfo](js-apis-app-form-formInfo.md) instead.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This module is deprecated since API version 9. You are advised to use [formInfo](js-apis-app-form-formInfo.md) instead.
 
 ## Modules to Import
 

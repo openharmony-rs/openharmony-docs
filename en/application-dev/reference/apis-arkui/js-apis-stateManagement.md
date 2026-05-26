@@ -172,7 +172,7 @@ Stores key-value pair data on the application disk. If the given key already exi
 
 | Name  |Type  |Mandatory  | Description                                                     |
 | ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptions18)    |Yes |Connection settings.|
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |Yes |Connection settings.|
 
 **Return value**
 
@@ -263,7 +263,7 @@ Stores key-value pair data on the application disk. Supports the persistence of 
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|  
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollectionst-s23)\| [ConnectOptions\<T\>](#connectoptionst18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|  
 
 When you use **defaultSubCreator** in **globalConnect**, you must provide **defaultCreator**. The return type of the **defaultSubCreator** function must be the same as the collection item type returned by **defaultCreator**.<br>When **globalConnect** persists data of the **Array\<ClassA>** type, you need to use the **defaultSubCreator** option to instruct the state management framework to create an instance of **ClassA**. The following is an example of using **globalConnect** to persist data of the **Array\<ClassA>** type:
 
@@ -399,7 +399,7 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 });
 ```
 
-## ConnectOptions<sup>18+</sup>
+## ConnectOptions\<T\><sup>18+</sup>
 
 Defines the parameter type for **globalConnect**.
 
@@ -414,9 +414,9 @@ Defines the parameter type for **globalConnect**.
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Default constructor. You are advised to pass this parameter. If **globalConnect** is connected to the key for the first time, an error is reported if this parameter is not passed in.|
 |areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
 
-## ConnectOptionsCollections<sup>23+</sup>
+## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
-Defines the parameter type for the [globalConnect](#globalconnect23) API. **ConnectOptionsCollections** is inherited from [ConnectOptions](#connectoptions18). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**).
+Defines the parameter type for the [globalConnect](#globalconnect23) API. **ConnectOptionsCollections\<T, S\>** is inherited from [ConnectOptions\<T\>](#connectoptionst18). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**).
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -427,7 +427,7 @@ Defines the parameter type for the [globalConnect](#globalconnect23) API. **Conn
 |Parameter  |Type   |Read-Only  |Optional   |Description     |
 |--------|------------|------------|-----------|--------------|
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. **defaultSubCreator** should be provided together with **defaultCreator**; otherwise, the container data cannot be persisted. The collection item type **S** must be the same as the return type of **defaultSubCreator**. If **defaultSubCreator** is provided but **defaultCreator** is not, the persistence fails.|
-|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort) |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array\<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array\<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
+|defaultSubCreator   | StorageDefaultCreator\<S\>   |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array\<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array\<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
 
 The following shows the examples of **StorageDefaultCreator\<T>** and **StorageDefaultCreator\<S>**:
 
@@ -948,7 +948,7 @@ This API can be used together with [enableV2Compatibility](#enablev2compatibilit
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>[Collections types](../apis-arkts/arkts-apis-arkts-collections.md) and classes decorated with [@Sendable](../../arkts-utils/arkts-sendable.md) are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
+| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>The [collections](../apis-arkts/arkts-apis-arkts-collections.md) type and classes decorated with [@Sendable](../../arkts-utils/arkts-sendable.md) are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
 
 **Return value**
 
@@ -1513,7 +1513,7 @@ Defines a synchronous callback.
 
 ## MonitorOptions<sup>20+</sup>
 
-Defines the optional parameters for [addMonitor](#addmonitor20), which are used to configure the callback type.
+Defines the optional parameters of [addMonitor](#addmonitor20), which are used to configure the callback type.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

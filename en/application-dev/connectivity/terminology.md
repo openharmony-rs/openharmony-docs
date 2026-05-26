@@ -73,6 +73,8 @@ Network access point in the [PAN](#pan) protocol that serves as the gateway devi
 ## O
 ### OPP
 Object Push Profile, which is built on the Generic Object Exchange Profile (GOEP) to transmit data (such as images and documents) between devices.
+### OOB
+Out of Band, which refers to the transmission of information using a channel independent of the primary data channel. For example, during the pairing process, Bluetooth devices can exchange security keys via non-Bluetooth channels such as a WiFi network or NFC, thereby enhancing pairing security.
 ## P
 ### PAN
 Personal Area Network, which implements network sharing between devices. [NAP](#nap) and [PANU](#panu) are two major roles in the protocol.
@@ -94,6 +96,8 @@ Radio Frequency Communication (RFC) protocol, which is designed to simulate trad
 ### RSSI
 Received signal strength indicator. It is used in wireless communications to quantify the signal strength at the receiver in dBm.
 ## S
+### SCO
+Synchronous Connection-Oriented, which is a synchronous connection link. It is primarily used for transmitting time-sensitive audio data, such as in voice call scenarios.
 ### SDP
 Service Discovery Protocol, which is used to discover and identify services provided by other Bluetooth devices.
 ### Service

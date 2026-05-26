@@ -143,6 +143,7 @@
     - [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md)
     - [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md)
     - [OH_Drawing_StrutStyle](capi-drawing-oh-drawing-strutstyle.md)
+    - [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md)
     - [OH_Drawing_Point2D](capi-drawing-oh-drawing-point2d.md)
     - [OH_Drawing_Point3D](capi-drawing-oh-drawing-point3d.md)
     - [OH_Drawing_Image_Info](capi-drawing-oh-drawing-image-info.md)

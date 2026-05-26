@@ -2592,10 +2592,6 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback&
 
 获取指定资源名称对应的指定屏幕密度图片资源Base64编码，使用callback异步回调。
 
-> **说明**
->
-> 推荐使用[getMediaBase64ByName](#getmediacontentbase6410)或[getMediaContentBase64](#getmediacontentbase6410)接口，具体请参考[ResourceManager](#resourcemanager)的说明。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager

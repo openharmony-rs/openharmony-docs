@@ -290,6 +290,9 @@
       - [Text组件的文本绘制与显示](ndk-styled-string.md)
       - [添加输入框文本事件监听](ndk-textarea-event.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
+  - 媒体展示<!--arkts-build-media-ndk-->
+    - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
+  - [使用导航类组件](ndk-navigation-query.md)
   - [构建自定义组件](ndk-build-custom-components.md)
   - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
   - [构建渲染节点](ndk-embed-render-components.md)

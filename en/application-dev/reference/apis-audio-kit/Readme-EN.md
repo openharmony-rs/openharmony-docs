@@ -1,8 +1,8 @@
 # Audio Kit
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -60,8 +60,8 @@
     - [native_audio_suite_base.h](capi-native-audio-suite-base-h.md)
     - [native_audio_suite_engine.h](capi-native-audio-suite-engine-h.md)
     - [native_audio_session_base.h](capi-native-audio-session-base-h.md)
-    - [native_midi_base.h](capi-native-midi-base-h.md)
     - [native_midi.h](capi-native-midi-h.md)
+    - [native_midi_base.h](capi-native-midi-base-h.md)
   - Structs<!--audio-struct-->
     - [OH_AudioManager](capi-ohaudio-oh-audiomanager.md)
     - [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md)

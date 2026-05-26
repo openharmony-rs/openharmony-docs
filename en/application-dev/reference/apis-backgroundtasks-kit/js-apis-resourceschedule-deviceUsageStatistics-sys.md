@@ -4,15 +4,15 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The **usageStatistics** module provides APIs for collecting statistics on device usage. For example, you can use the APIs to query whether an application is commonly used and an application's priority group, usage duration, system events (hibernation, wakeup, unlocking, and screen locking), application events (foreground, background, and start and end of continuous tasks), and the number of notifications.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this module are system APIs.
+> The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -41,7 +41,7 @@ Checks whether an application is commonly used (with the value of **GroupType** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -92,7 +92,7 @@ Checks whether an application is commonly used (with the value of **GroupType** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -141,7 +141,7 @@ Checks whether an application is commonly used (with the value of **GroupType** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -178,7 +178,7 @@ Queries the priority group of this application. This API uses a promise to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -223,7 +223,7 @@ Queries the priority group of this application. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -271,7 +271,7 @@ Queries the priority group of this application. This API returns the result sync
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -316,7 +316,7 @@ Queries the priority group of the application specified by **bundleName**. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -365,7 +365,7 @@ Queries the priority group of the application specified by **bundleName**. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -420,7 +420,7 @@ Queries the priority group of the application specified by **bundleName**. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -467,7 +467,7 @@ Sets a new group for the application specified by **bundleName**. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -517,7 +517,7 @@ Sets a new group for the application specified by **bundleName**. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -569,7 +569,7 @@ Queries the application usage duration statistics based on the specified start t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -624,7 +624,7 @@ Queries the application usage duration statistics based on the specified start t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -677,7 +677,7 @@ Queries the usage duration of an application (including cloned applications) bas
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -729,7 +729,7 @@ Queries application usage details based on the specified bundle name and applica
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -779,7 +779,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -838,7 +838,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -889,7 +889,7 @@ Queries events of all applications based on the specified start time and end tim
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -947,7 +947,7 @@ Queries events of all applications based on the specified start time and end tim
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -996,7 +996,7 @@ Queries events of this application based on the specified start time and end tim
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 202  | Not System App. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
@@ -1051,7 +1051,7 @@ Queries events of this application based on the specified start time and end tim
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 202  | Not System App. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
@@ -1106,7 +1106,7 @@ Queries statistics about system events (hibernation, wakeup, unlocking, and lock
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1154,7 +1154,7 @@ Queries statistics about system events (hibernation, wakeup, unlocking, and lock
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1209,7 +1209,7 @@ Queries the number of notifications from all applications based on the specified
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1257,7 +1257,7 @@ Queries the number of notifications from all applications based on the specified
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1289,7 +1289,7 @@ usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessErr
 
 queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
-Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information.  
+Queries the usage records of unused HAP files for each application in the FA model (no more than 1000 records). If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses a promise to return the result.
 
 This API uses a promise to return a maximum of 1000 FA usage records sorted by time (most recent first).
 
@@ -1301,13 +1301,13 @@ This API uses a promise to return a maximum of 1000 FA usage records sorted by t
 
 | Type                                      | Description                                |
 | ---------------------------------------- | ---------------------------------- |
-| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the result. A maximum of 1000 usage records can be returned.|
+| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the usage records of unused HAP files (no more than 1000 records).|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1341,7 +1341,7 @@ usageStatistics.queryModuleUsageRecords().then((res: Array<usageStatistics.HapMo
 
 queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
 
-Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses an asynchronous callback to return a maximum of 1000 usage records.
+Queries the usage records of unused HAP files for each application in the FA model (no more than 1000 records). If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1357,7 +1357,7 @@ Queries the usage records of unused HAP files for each application in the FA mod
 
 For details about the error codes, see [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID       | Error Message                      |
+| Error Code       | Error Message                      |
 | ---------- | ----------------------------       |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1414,7 +1414,7 @@ Queries a given number of usage records of unused HAP files for each application
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1464,7 +1464,7 @@ Queries a given number of usage records of unused HAP files for each application
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1521,7 +1521,7 @@ Registers a callback for application group changes. When an application group of
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1575,7 +1575,7 @@ Registers a callback for application group changes. When an application group of
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1630,7 +1630,7 @@ Unregisters the callback for application group changes. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1674,7 +1674,7 @@ Unregisters the callback for application group changes. This API uses an asynchr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1719,7 +1719,7 @@ Defines the information about the usage record in the FA model.
 | abilityDescriptionId | number                                   | No   | Yes   | **MainAbility** description ID of the FA.|
 | abilityIconId        | number                                   | No   | Yes   | **MainAbility** icon ID of the FA.       |
 | launchedCount        | number                                   | No   | No   | Number of FA startup times.                     |
-| lastModuleUsedTime   | number                                   | No   | No   | Last time when the FA was used.                  |
+| lastModuleUsedTime   | number                                   | No   | No   | Last time when the FA was used, in milliseconds.                  |
 | formRecords          | Array&lt;[HapFormInfo](#hapforminfo)&gt; | No   | No   | Array of widget usage records in the FA.                  |
 
 ## HapFormInfo
@@ -1733,7 +1733,7 @@ Defines the information about the usage record of FA widgets.
 | formName         | string | No   | No   | Widget name.      |
 | formDimension    | number | No   | No   | Widget dimensions.      |
 | formId           | number | No   | No   | Widget ID.      |
-| formLastUsedTime | number | No   | No   | Last time when the widget was clicked.|
+| formLastUsedTime | number | No   | No   | Last time when the widget was clicked, in milliseconds.|
 | count            | number | No   | No   | Number of clicks on the widget.   |
 
 ## AppGroupCallbackInfo
@@ -1759,15 +1759,15 @@ Provides the usage duration information of an application.
 | Name                     | Type    | Read-Only  | Optional  | Description                                      |
 | ------------------------ | ------ | ---- | ---- | ---------------------------------------- |
 | bundleName               | string | No   | Yes   | Bundle name of the application.                                   |
-| abilityPrevAccessTime    | number | No   | Yes   | Last time when the application was used.                            |
-| abilityInFgTotalTime     | number | No   | Yes   | Total time that the application runs in the foreground.                            |
+| abilityPrevAccessTime    | number | No   | Yes   | Last time when the application was used, in milliseconds.                            |
+| abilityInFgTotalTime     | number | No   | Yes   | Total time that the application runs in the foreground, in milliseconds.                            |
 | id                       | number | No   | No   | User ID.|
-| abilityPrevSeenTime      | number | No   | Yes   | Last time when the application was visible in the foreground.|
-| abilitySeenTotalTime     | number | No   | Yes   | Total time that the application is visible in the foreground.|
-| fgAbilityAccessTotalTime | number | No   | Yes   | Total time that the application accesses the foreground.|
-| fgAbilityPrevAccessTime  | number | No   | Yes   | Last time when the application accessed the foreground.|
-| infosBeginTime           | number | No   | Yes   | Time logged in the first application usage record in the **BundleActiveInfo** object.|
-| infosEndTime             | number | No   | Yes   | Time logged in the last application usage record in the **BundleActiveInfo** object.|
+| abilityPrevSeenTime      | number | No   | Yes   | Last time when the application was visible in the foreground, in milliseconds.|
+| abilitySeenTotalTime     | number | No   | Yes   | Total time that the application is visible in the foreground, in milliseconds.|
+| fgAbilityAccessTotalTime | number | No   | Yes   | Total time that the application accesses the foreground, in milliseconds.|
+| fgAbilityPrevAccessTime  | number | No   | Yes   | Last time when the application accessed the foreground, in milliseconds.|
+| infosBeginTime           | number | No   | Yes   | Time logged in the first application usage record in the **BundleActiveInfo** object, in milliseconds.|
+| infosEndTime             | number | No   | Yes   | Time logged in the last application usage record in the **BundleActiveInfo** object, in milliseconds.|
 | appIndex<sup>15+</sup>                 | number | No   | Yes   | Application index.|
 
 ## BundleEvents
@@ -1780,7 +1780,7 @@ Provides information about an application event.
 | --------------------- | ------ | ---- | ---- | ---------------------------------------- |
 | bundleName            | string | No   | Yes   | Bundle name of the application.                                   |
 | eventId             | number | No   | Yes   | Application event type.                                 |
-| eventOccurredTime     | number | No   | Yes   | Timestamp when the application event occurs.                             |
+| eventOccurredTime     | number | No   | Yes   | Timestamp when the application event occurs, in milliseconds.                             |
 | appGroup | number | No   | Yes   | Group of the application by usage priority.|
 | indexOfLink           | string | No   | Yes   | Shortcut ID.|
 | nameOfClass           | string | No   | Yes   | Class name.|

@@ -298,12 +298,12 @@ Enumerates the print job states.
 
 **Since**: 24
 
-| Name                | Value | Description         |
-| -------------------- | -- |-------------- |
-| OH_PRINT_JOB_SUCCEED | 0  | Successful print job.|
-| OH_PRINT_JOB_FAIL    | 1  | Print job failed.|
-| OH_PRINT_JOB_CANCEL  | 2  | Print job canceled.|
-| OH_PRINT_JOB_BLOCK   | 3  | Print job blocked.|
+| Name                | Description         |
+| -------------------- |-------------- |
+| OH_PRINT_JOB_SUCCEED = 0 | Successful print job.|
+| OH_PRINT_JOB_FAIL = 1    | Print job failed.|
+| OH_PRINT_JOB_CANCEL = 2  | Print job canceled.|
+| OH_PRINT_JOB_BLOCK = 3   | Print job blocked.|
 
 ## Function Description
 
@@ -784,7 +784,7 @@ Updates the printer properties based on the KV pairs.
 
 | Name                                                      | Description                      |
 | ------------------------------------------------------------ | -------------------------- |
-| const char *printerId                                        | Pointer to the printer ID.       |
+| const char *printerId                                        | Pointer to the printer ID to be set.       |
 | [const Print_PropertyList](capi-oh-print-print-propertylist.md) *propertyList | Pointer to the list of printer properties to be updated.|
 
 **Returns**
@@ -813,7 +813,7 @@ Restores printer properties to the default settings based on the property key li
 
 | Name                                                      | Description                    |
 | ------------------------------------------------------------ | ------------------------ |
-| const char *printerId                                        | Pointer to the printer ID.     |
+| const char *printerId                                        | Pointer to the printer ID to be restored.     |
 | [const Print_StringList](capi-oh-print-print-stringlist.md) *propertyKeyList | Pointer to the property key list.|
 
 **Returns**

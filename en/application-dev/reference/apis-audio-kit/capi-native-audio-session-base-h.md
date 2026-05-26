@@ -1,8 +1,8 @@
 # native_audio_session_base.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -52,7 +52,6 @@ Enumerates the audio session behavior flags.
 | Enum Item| Description|
 | -- | -- |
 | DEFAULT_BEHAVIOR = 0x00000000 | Default behavior, which is used to clear the session behavior flag.<br>**Since**: 24|
-| VOIP_PRIVACY_TYPE_PUBLIC = 0x00000001 | Non-private VoIP, which can be recorded. Concurrent recording of VoIP streams and other application streams are supported.<br>**Since**: 26.0.0|
 | MUTE_WHEN_INTERRUPTED = 0x00000002 | Mute the audio stream when it is interrupted. You need to call [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) to set the behavior and call [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) to make it take effect. An application will receive an [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_INTERRUPT_HINT_MUTE notification when playback is muted, and an [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_INTERRUPT_HINT_UNMUTE notification when the playback is unmuted.<br>**Since**: 24|
 
 ### OH_AudioSession_ConcurrencyMode
@@ -64,6 +63,10 @@ enum OH_AudioSession_ConcurrencyMode
 **Description**
 
 Enumerates the audio concurrency modes.
+
+This enum is moved from **native_audio_session_manager.h** to this header file since API version 24.
+
+Before API version 24, use this enum only when **native_audio_session_manager.h** is referenced. Since API version 24, this enum can be used as long as **native_audio_session_manager.h** or **native_audio_session_base.h** is referenced.
 
 **Since**: 12
 

@@ -1,7 +1,7 @@
 # @ohos.enterprise.browser (Browser Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -43,9 +43,9 @@ Sets the sub-policy for a specified browser.
 | Name     | Type                                                   | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appId       | string                                                  | Yes  | Application ID, which is used to specify the browser.                                    |
-| policyName  | string                                                  | Yes  | Name of the browser policy to set. If the value is an empty string, the browser policy corresponding to the application ID is set.|
-| policyValue | string                                                  | Yes  | Browser policy to set. If the value is an empty string, the policy corresponding to the policy name is removed.|
+| appId       | string                                                  | Yes  | Application ID, which uniquely identifies an application. This ID is used to specify the browser. For details, see [What Is appidentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier).                                                               |
+| policyName  | string                                                  | Yes  | Browser sub-policy name, which is agreed upon by the API caller and the specified browser. If the value is an empty string, the browser policy corresponding to **appId** is to be set.|
+| policyValue | string                                                  | Yes  | Browser sub-policy, which is agreed upon by the API caller and the specified browser. If the value is an empty string, the policy corresponding to the policy name is removed.|
 
 **Error codes**
 
