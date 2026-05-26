@@ -174,7 +174,7 @@ transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;Transitio
 
 ## TransitionEffect<sup>10+</sup>对象说明
 
-TransitionEffect以函数的形式指定转场效果。提供了以下接口：
+TransitionEffect以函数的形式指定转场效果。
 
 ### 属性
 

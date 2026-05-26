@@ -139,9 +139,9 @@ constructor(options?: PathShapeOptions)
 
 ### commands
 
-commands(commands: string): PathShape
+ArkTS-Dyn: commands(commands: string): PathShape
 
-commands(commands: string): this
+ArkTS-Sta: commands(commands: string): this
 
 设置路径的绘制指令。
 

@@ -150,16 +150,10 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称              | 类型                                       | 只读 | 可选   | 说明            |
 | --------------- | -------------------- | -------------------- | ---- | ------------- |
 | dismiss | [Callback](./ts-types.md#callback12)\<void> | 否 | 否    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否 | 否    | 返回本次拦截全屏模态页面退出的事件原因。  |
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否 | 否    | 返回本次拦截全屏模态页面退出的事件原因。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ### dismiss<sup>23+</sup>
 
@@ -168,8 +162,6 @@ dismiss(): void
 半模态面板关闭回调函数。开发者需要退出时调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
