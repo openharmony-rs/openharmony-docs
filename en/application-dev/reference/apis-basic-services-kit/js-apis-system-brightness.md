@@ -265,7 +265,7 @@ export default {
 
 setMode(options?: SetBrightnessModeOptions): void
 
-Sets the screen brightness mode.
+Sets the screen brightness adjustment mode.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -342,9 +342,12 @@ export default {
 
 setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 
->This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
-
 Sets whether to always keep the screen on. Call this API in **onShow()**.
+
+> **NOTE**
+>
+> - This API is no longer maintained since API version 7 except for lite wearables. You are advised to use [window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9) instead.
+> - On Lite Wearables, this API can only prevent the system from turning off the screen due to inactivity timeout (automatic). It cannot prevent screen-off caused by user actions (such as covering the screen) or the end of the keep-screen-on period.
 
 **System capability**: SystemCapability.PowerManager.DisplayPowerManager.Lite
 
