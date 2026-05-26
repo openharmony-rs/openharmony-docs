@@ -923,7 +923,7 @@ off(type: 'locationEnabledChange', callback?: Callback&lt;boolean&gt;): void
 
 on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callback: Callback&lt;Array&lt;Location&gt;&gt;): void
 
-订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[isCachedGnssServiceSupported](#isCachedGnssServiceSupported)接口判断对应能力是否支持。
+订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -975,7 +975,7 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
 
 off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&gt;&gt;): void
 
-取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[isCachedGnssServiceSupported](#isCachedGnssServiceSupported)接口判断对应能力是否支持。
+取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1027,7 +1027,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 
 on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;): void
 
-订阅GNSS卫星状态信息上报事件。使用callback异步回调。调用该接口前建议先通过[isGnssServiceSupported](#isGnssServiceSupported)接口判断对应能力是否支持。
+订阅GNSS卫星状态信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1104,7 +1104,7 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
 
 off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt;): void
 
-取消订阅GNSS卫星状态信息上报事件。调用该接口前建议先通过[isGnssServiceSupported](#isGnssServiceSupported)接口判断对应能力是否支持。
+取消订阅GNSS卫星状态信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1153,7 +1153,7 @@ off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt
 
 on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
 
-订阅GNSS NMEA信息上报事件。使用callback异步回调。调用该接口前建议先通过[isGnssServiceSupported](#isGnssServiceSupported)接口判断对应能力是否支持。
+订阅GNSS NMEA信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1202,7 +1202,7 @@ on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
 
 off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
 
-取消订阅GNSS NMEA信息上报事件。调用该接口前建议先通过[isGnssServiceSupported](#isGnssServiceSupported)接口判断对应能力是否支持。
+取消订阅GNSS NMEA信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1252,7 +1252,7 @@ off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
 
 on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[isGnssFenceServiceSupported](#isGnssFenceServiceSupported)接口判断对应能力是否支持。
+添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1319,7 +1319,7 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[isGnssFenceServiceSupported](#isGnssFenceServiceSupported)接口判断对应能力是否支持。
+删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2005,7 +2005,7 @@ isGeocoderAvailable(): boolean
 
 getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 
-获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[isCachedGnssServiceSupported](#isCachedGnssServiceSupported)接口判断对应能力是否支持。
+获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2055,7 +2055,7 @@ getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 
 getCachedGnssLocationsSize(): Promise&lt;number&gt;
 
-获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[isCachedGnssServiceSupported](#isCachedGnssServiceSupported)接口判断对应能力是否支持。
+获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2103,7 +2103,7 @@ getCachedGnssLocationsSize(): Promise&lt;number&gt;
 
 flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 
-读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[isCachedGnssServiceSupported](#isCachedGnssServiceSupported)接口判断对应能力是否支持。
+读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2151,7 +2151,7 @@ flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 
 flushCachedGnssLocations(): Promise&lt;void&gt;
 
-读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[isCachedGnssServiceSupported](#isCachedGnssServiceSupported)接口判断对应能力是否支持。
+读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2381,7 +2381,7 @@ getCountryCode(): Promise&lt;CountryCode&gt;
 
 addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;
 
-添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。调用该接口前建议先通过[isGnssFenceServiceSupported](#isGnssFenceServiceSupported)接口判断对应能力是否支持。
+添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 APP可以在入参[GnssGeofenceRequest](#gnssgeofencerequest12)中传入回调函数用于接收地理围栏事件；也可以传入通知对象[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)，在系统识别到地理围栏事件发生时会弹出APP创建的通知。
 
@@ -2504,7 +2504,7 @@ removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 
 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。
 
-GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[isGnssFenceServiceSupported](#isGnssFenceServiceSupported)接口判断对应能力是否支持。
+GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2559,7 +2559,7 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
 
-获取地理围栏功能支持的坐标系列表。调用该接口前建议先通过[isGnssFenceServiceSupported](#isGnssFenceServiceSupported)接口判断对应能力是否支持。
+获取地理围栏功能支持的坐标系列表。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -3114,11 +3114,13 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
   }
   ```
 
-## geoLocationManager.isGnssServiceSupported<sup>26+</sup>
+## geoLocationManager.isGnssServiceSupported
 
 isGnssServiceSupported(): boolean
 
 判断是否支持GNSS功能。
+
+**起始版本：** 26.0.0
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3149,11 +3151,13 @@ isGnssServiceSupported(): boolean
   }
   ```
 
-## geoLocationManager.isGnssFenceServiceSupported<sup>26+</sup>
+## geoLocationManager.isGnssFenceServiceSupported
 
 isGnssFenceServiceSupported(): boolean
 
 判断是否支持围栏功能。
+
+**起始版本：** 26.0.0
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3184,11 +3188,13 @@ isGnssFenceServiceSupported(): boolean
   }
   ```
 
-## geoLocationManager.isCachedGnssServiceSupported<sup>26+</sup>
+## geoLocationManager.isCachedGnssServiceSupported
 
 isCachedGnssServiceSupported(): boolean
 
 判断是否支持GNSS batching功能。
+
+**起始版本：** 26.0.0
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3223,7 +3229,7 @@ isCachedGnssServiceSupported(): boolean
 
 getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
 
-查询当前有效的围栏信息。使用Promise异步回调。调用该接口前建议先通过[isGnssFenceServiceSupported](#isGnssFenceServiceSupported)接口判断对应能力是否支持。
+查询当前有效的围栏信息。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
