@@ -7024,7 +7024,7 @@ export default class EntryAbility extends UIAbility {
     try {
       await rdbStore.rekey(key);
       console.info('rekey succeeded');
-    } catch (err: BusinessError) {
+    } catch (err) {
       console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
     }
   }
