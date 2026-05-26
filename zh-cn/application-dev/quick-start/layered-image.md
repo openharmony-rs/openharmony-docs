@@ -228,6 +228,46 @@
 4. 使用[bundleManager.getAlternateIcons](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetalternateicons)接口查询备用图标信息。返回的[AlternateIconInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#alternateiconinfo)数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
 
     <!-- @[layered_image_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
+    
+    ``` TypeScript
+    import { bundleManager } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    @Entry
+    @Component
+    struct Index {
+    
+      build() {
+        Scroll() {
+          Column() {
+            // ...
+            Text("GetAlternateIcons")
+              .fontSize($r('app.float.page_text_font_size'))
+              .fontWeight(FontWeight.Bold)
+              .alignRules({
+                center: { anchor: '__container__', align: VerticalAlign.Center },
+                middle: { anchor: '__container__', align: HorizontalAlign.Center }
+              })
+              .onClick(() => {
+                try {
+                  bundleManager.getAlternateIcons().then((data) => {
+                    hilog.info(0x0000, 'testTag', 'getAlternateIcons successfully. Data: %{public}s', JSON.stringify(data));
+                  }).catch((err: BusinessError) => {
+                    hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', err.message);
+                  });
+                } catch (err) {
+                  let message = (err as BusinessError).message;
+                  hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', message);
+                }
+              })
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
 
 <!--Del-->
 ## 管控规则
