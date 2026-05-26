@@ -3583,5 +3583,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/source-obfuscation.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts",
+				"functions":[
+					{
+						"end_line":365,
+						"name":"optionExample_keepPropertyName6",
+						"start_line":356
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/arkts-coding-style-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":598,
+						"name":"use_T_incorrectExample",
+						"start_line":595
+					},
+					{
+						"end_line":606,
+						"name":"use_T_correctExample",
+						"start_line":602
+					}
+				]
+			}
+		]
 	}
 ]
