@@ -30,10 +30,6 @@ Error code: 1300012
 
     答：在该状态时，代表画中画窗口即将停止或已经停止，此时不可调用`stopPiP`接口。
 
-- 是否在`aboutToDisappear`生命周期方法中调用`stopPiP`接口。
-
-    答：在该生命周期时，代表画中画窗口即将被销毁，此时调用`stopPiP`接口可能会导致错误。
-
 - 是否在`setTimeout`、`Promise`等异步回调中调用`stopPiP`，且回调执行时窗口可能已销毁。
 
     答：在异步回调函数中，可能会存在画中画窗口已经被销毁，但未获取其状态，调用`stopPiP`接口会导致错误。
@@ -72,7 +68,7 @@ async function stopPiPSafely(pipController: PiPController) {
 
 ```text
 Error Name: Error
-Error Message: [PiPWindow][startPiP]msg:
+Error Message: [PiPWindow][startPiP]msg: The window is already started or is about to start.
 Error code: 1300012
 ```
 
