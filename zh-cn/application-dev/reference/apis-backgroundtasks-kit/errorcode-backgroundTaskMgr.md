@@ -116,6 +116,7 @@ Continuous task verification failed.
 13. 应用申请TASK_KEEPING长时任务时，未申请ACL授权。
 14. 数据传输类型不支持通过更新接口更新长时任务类型。
 15. 在后台申请除播音外新的长时任务类型。
+16. 应用申请[MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21)类型的长时任务时，未申请ACL授权。
 
 **处理步骤**
 
@@ -134,6 +135,7 @@ Continuous task verification failed.
 13. 请检查申请TASK_KEEPING长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
 14. 请检查更新长时任务时，原类型或者新增类型是否包含了数据传输类型。
 15. 请检查除了播音和已经在前台申请过的长时任务类型，是否在后台申请了其他长时任务类型。
+16. 请检查申请[MODE_SPECIAL_SCENARIO_PROCESSING](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmode21)类型的长时任务时，是否申请了[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)或者[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的ACL授权。
 
 ## 9800006 长时任务通知信息校验失败
 
