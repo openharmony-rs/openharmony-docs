@@ -30,7 +30,7 @@ import { AtomicServiceNavigation } from '@kit.ArkUI';
 ``` ts
 AtomicServiceNavigation({
     navPathStack?: NavPathStack,
-    navigationContent: Callback<void>,
+    navigationContent?: Callback<void>,
     title?: ResourceStr,
     titleOptions?: TitleOptions,
     gradientBackground?: GradientBackground,
