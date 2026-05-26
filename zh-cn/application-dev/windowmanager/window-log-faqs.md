@@ -315,7 +315,7 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 | `minHeight` | 最小高度限制（vp） | 若未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)配置过WindowLimits，该值等于[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小高度。 |
 | `screenWidth` | 屏幕宽度（px） | 当前屏幕的宽度，单位为px |
 | `screenHeight` | 屏幕高度（px） | 当前屏幕的高度，单位为px |
-| `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值。若未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)设置窗口尺寸限制，该值等于[getWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits9)返回的最大尺寸。推荐开发者先通过getWindowLimits查询系统默认限制后再设置。 |
+| `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最大尺寸阈值。 |
 | `sessionRect` | 窗口矩形区域（px） | 窗口的位置和尺寸，单位为px，坐标以屏幕左顶点为原点 |
 
 **检测逻辑**
@@ -329,9 +329,9 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 >
 > `screenWidthVp`、`screenHeightVp`为屏幕尺寸的vp值，由系统内部根据故障日志中的`screenWidth`、`screenHeight`（px值）除以屏幕密度计算得到。故障日志中不直接输出这两个值，开发者可通过`screenWidthVp = screenWidth / density`自行计算。
 >
-> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数。`maxFloatingWindowSize`为系统规定的最大尺寸阈值（宽度和高度共用），窗口宽度应在[minWidth, maxFloatingWindowSize]范围内，窗口高度应在[minHeight, maxFloatingWindowSize]范围内。
+> WINDOW_RECT_CHECK异常表示窗口尺寸不在系统规定的范围内。开发者应根据故障日志中的curWidth、curHeight值与系统限制对比，调整[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)调用时的尺寸参数。`maxFloatingWindowSize`为系统规定的最大尺寸阈值，窗口宽度和高度的最大限制均为此值，即窗口宽度应在[minWidth, maxFloatingWindowSize]范围内，窗口高度应在[minHeight, maxFloatingWindowSize]范围内。
 >
-> 条件2需要同时满足"小于最小限制"和"小于屏幕尺寸"两个条件，原因如下：当窗口尺寸小于最小限制但已接近屏幕尺寸时，说明设备屏幕本身较小，属于设备限制而非开发者设置错误；只有当窗口尺寸同时小于最小限制和屏幕尺寸时，才说明开发者设置的窗口尺寸过小，需要调整。
+> 条件2需要同时满足"小于最小限制"和"小于屏幕尺寸"两个条件，原因如下：当窗口尺寸小于最小限制但已达到屏幕尺寸时（如`curWidth < minWidth`但`curWidth >= screenWidthVp`），说明屏幕尺寸本身较小，窗口已占满屏幕无法再增大，属于设备限制而非开发者设置问题，系统不报错；只有当窗口尺寸同时小于最小限制和屏幕尺寸时，才说明开发者设置的窗口尺寸过小，可以设置更大的窗口，需要调整。
 
 **分析定位及解决**
 
