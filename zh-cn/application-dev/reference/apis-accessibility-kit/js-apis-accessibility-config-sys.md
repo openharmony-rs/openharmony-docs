@@ -103,7 +103,7 @@ config.enableAbility(name, capability).then(() => {
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-启用辅助扩展，使用callback异步回调。
+启用辅助扩展。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -263,7 +263,7 @@ config.disableAbility(name).then(() => {
 
 disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-关闭辅助扩展，使用callback异步回调。
+关闭辅助扩展。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -310,7 +310,7 @@ config.disableAbility(name, (err: BusinessError) => {
 
 on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&gt;): void
 
-添加启用的辅助扩展的列表变化监听，使用callback异步回调。
+添加启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -349,7 +349,7 @@ config.on('enabledAccessibilityExtensionListChange', () => {
 
 off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void&gt;): void
 
-取消启用的辅助扩展的列表变化监听，使用callback异步回调。
+取消启用的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -388,7 +388,7 @@ config.off('enabledAccessibilityExtensionListChange', () => {
 
 on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): void
 
-添加已安装的辅助扩展的列表变化监听，使用callback异步回调。
+添加已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -427,7 +427,7 @@ config.on('installedAccessibilityListChange', () => {
 
 off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): void
 
-取消已安装的辅助扩展的列表变化监听，使用callback异步回调。
+取消已安装的辅助扩展的列表变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -787,7 +787,7 @@ config.highContrastText.set(value).then(() => {
 
 set(value: T, callback: AsyncCallback&lt;void&gt;): void
 
-设置属性，使用callback异步回调。
+设置属性。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -871,7 +871,7 @@ config.highContrastText.get().then((data: boolean) => {
 
 get(callback: AsyncCallback&lt;T&gt;): void
 
-获取属性，使用callback异步回调。
+获取属性。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -910,7 +910,7 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
 
 on(callback: Callback&lt;T&gt;): void
 
-添加属性变化监听，使用callback异步回调。
+添加属性变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -948,7 +948,7 @@ config.highContrastText.on((data: boolean) => {
 
 off(callback?: Callback&lt;T&gt;): void
 
-取消属性变化监听，使用callback异步回调。
+取消属性变化监听。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 

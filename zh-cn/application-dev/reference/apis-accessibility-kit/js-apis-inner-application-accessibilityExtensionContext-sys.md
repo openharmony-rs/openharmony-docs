@@ -1192,7 +1192,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 
 findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
-根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素，使用Promise异步回调。
+根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1240,7 +1240,7 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 getCursorPosition(): Promise\<number>
 
-获取文本组件中光标位置，使用Promise异步回调。
+获取文本组件中光标位置。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1269,7 +1269,7 @@ rootElement.getCursorPosition().then((data: number) => {
 
 getCursorPosition(callback: AsyncCallback\<number>): void
 
-获取文本组件中光标位置，使用callback异步回调。
+获取文本组件中光标位置。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 

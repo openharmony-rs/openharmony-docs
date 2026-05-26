@@ -230,7 +230,7 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 
-监听字幕配置启用状态变化事件，使用callback异步回调。
+监听字幕配置启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -284,7 +284,7 @@ struct Index {
 
 on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 
-监听字幕风格变化事件，使用callback异步回调。
+监听字幕风格变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -339,7 +339,7 @@ struct Index {
 
 off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听字幕配置启用状态变化事件，使用callback异步回调。
+取消监听字幕配置启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -396,7 +396,7 @@ struct Index {
 
 off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
-取消字幕风格变化监听事件，使用callback异步回调。
+取消字幕风格变化监听事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -622,7 +622,7 @@ type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
 getAbilityLists(abilityType: AbilityType, stateType: AbilityState): Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;
 
-查询辅助应用列表，使用Promise异步回调。
+查询辅助应用列表。使用Promise异步回调。
 
 > **说明：**
 >
@@ -663,7 +663,7 @@ accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibili
 
 getAbilityLists(abilityType: AbilityType, stateType: AbilityState,callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;): void
 
-查询辅助应用列表，使用callback异步回调。
+查询辅助应用列表。使用callback异步回调。
 
 > **说明：**
 >
@@ -701,7 +701,7 @@ accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, da
 
 getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState): Promise&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;
 
-查询辅助应用列表，使用Promise异步回调。
+查询辅助应用列表。使用Promise异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -784,7 +784,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((dat
 
 getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState, callback: AsyncCallback&lt;Array&lt;AccessibilityAbilityInfo&gt;&gt;): void
 
-查询辅助应用列表，使用callback异步回调。
+查询辅助应用列表。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -980,7 +980,7 @@ let captionsManager = accessibility.getCaptionsManager();
 
 on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听辅助应用启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+监听辅助应用启用状态变化事件。使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
 > **说明：**
 >
@@ -1028,7 +1028,7 @@ accessibility.on('accessibilityStateChange', (data: boolean) => {
 
 on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听触摸浏览功能启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+监听触摸浏览功能启用状态变化事件。使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
 
 > **说明：**
 >
@@ -1073,7 +1073,7 @@ accessibility.on('touchGuideStateChange', (data: boolean) => {
 
 on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听屏幕朗读功能启用状态变化事件，使用callback异步回调。
+监听屏幕朗读功能启用状态变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -1115,7 +1115,7 @@ accessibility.on('screenReaderStateChange', (data: boolean) => {
 
 on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
-监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -1399,7 +1399,7 @@ struct Index {
 
 off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听辅助应用启用状态变化事件，使用callback异步回调。
+取消监听辅助应用启用状态变化事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1436,7 +1436,7 @@ accessibility.off('accessibilityStateChange', (data: boolean) => {
 
 off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听触摸浏览启用状态变化事件，使用callback异步回调。
+取消监听触摸浏览启用状态变化事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1473,7 +1473,7 @@ accessibility.off('touchGuideStateChange', (data: boolean) => {
 
 off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
-取消监听屏幕朗读启用状态变化事件，使用callback异步回调。
+取消监听屏幕朗读启用状态变化事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1510,7 +1510,7 @@ accessibility.off('screenReaderStateChange', (data: boolean) => {
 
 off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
-取消监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+取消监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -1788,7 +1788,7 @@ struct Index {
 
 isOpenAccessibility(): Promise&lt;boolean&gt;
 
-判断是否启用了辅助应用，使用Promise异步回调。
+判断是否启用了辅助应用。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1819,7 +1819,7 @@ accessibility.isOpenAccessibility().then((data: boolean) => {
 
 isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 
-判断是否启用了辅助应用，使用callback异步回调。
+判断是否启用了辅助应用。使用callback异步回调。
 
 > **说明：**
 >
@@ -1882,7 +1882,7 @@ let status: boolean = accessibility.isOpenAccessibilitySync();
 
 isOpenTouchGuide(): Promise&lt;boolean&gt;
 
-判断触摸浏览模式是否开启，使用Promise异步回调。
+判断触摸浏览模式是否开启。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1913,7 +1913,7 @@ accessibility.isOpenTouchGuide().then((data: boolean) => {
 
 isOpenTouchGuide(callback: AsyncCallback&lt;boolean&gt;): void
 
-判断触摸浏览模式是否开启，使用callback异步回调。
+判断触摸浏览模式是否开启。使用callback异步回调。
 
 > **说明：**
 >
@@ -2382,7 +2382,7 @@ struct Index {
 
 sendEvent(event: EventInfo): Promise&lt;void&gt;
 
-发送无障碍事件，使用Promise异步回调。
+发送无障碍事件。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2425,7 +2425,7 @@ accessibility.sendEvent(eventInfo).then(() => {
 
 sendEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-发送无障碍事件，使用callback异步回调。
+发送无障碍事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -2465,7 +2465,7 @@ accessibility.sendEvent(eventInfo, (err: BusinessError) => {
 
 sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
-发送无障碍事件，使用Promise异步回调。
+发送无障碍事件。使用Promise异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -2516,7 +2516,7 @@ accessibility.sendAccessibilityEvent(eventInfo).then(() => {
 
 sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): void
 
-发送无障碍事件，使用callback异步回调。
+发送无障碍事件。使用callback异步回调。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
