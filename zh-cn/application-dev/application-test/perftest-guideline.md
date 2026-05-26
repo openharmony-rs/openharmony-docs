@@ -248,19 +248,19 @@ perfTest.destroy();
     **ArkTS-Sta示例：**
 
     <!-- @[utils_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/ets/utils/Utils.ets) -->
-
+    
     ``` TypeScript
     export class Utils {
       static num: number = 0;
       static maxNum: number = 10000;
     
-      public static CalculateTest(): void {
+      public static calculateTest(): void {
         for (let index: number = 0; index < Utils.maxNum; index++) {
           Utils.num++;
         }
       }
     
-      public static Reset(): void {
+      public static reset(): void {
         Utils.num = 0;
       }
     }
