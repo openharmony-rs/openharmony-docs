@@ -20,17 +20,17 @@
 import { image } from '@kit.ImageKit';
 ```
 
- ## GainmapParams<sup>26+</sup>
+## GainmapParams
 
- Gainmap参数设置选项。
+Gainmap（增益图）参数设置选项。
 
- **系统接口：** 该接口为系统接口。
+**系统接口：** 该接口为系统接口。
 
- **系统能力：** SystemCapability.Multimedia.Image.Core
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称               | 类型              | 只读 | 可选 | 说明             |
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
-| isFullSizeGainmap<sup>26+</sup> | [boolean] | 否   | 否   | 返回Picture中的GainMap是否使用全尺寸图，默认值为false；<br/>false: GainMap不使用全尺寸图，宽高均为主图的一半;<br/>true: GainMap使用全尺寸图，宽高和主图一致。 |
+| isFullSizeGainmap<sup>26+</sup> | boolean | 否   | 否   | 返回Picture中的Gainmap（增益图）是否使用全尺寸图。<br/>true表示使用全尺寸图，宽高和主图一致；false表示不使用全尺寸图，宽高均为主图的一半。默认值为false。|
 
 ## DecodingOptions<sup>7+</sup>
 
@@ -40,7 +40,7 @@ import { image } from '@kit.ImageKit';
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统接口：** 该接口为系统接口。
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -129,13 +129,13 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
-## image.createPictureByHdrAndSdrPixelMap<sup>26+</sup>
+## image.createPictureByHdrAndSdrPixelMap
 
- createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, params: GainmapParams): Promise\<Picture>
+createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, params: GainmapParams): Promise\<Picture>
 
-根据HDR PixelMap和SDR PixelMap创建Picture对象。系统将使用HDR和SDR PixelMap生成一个增益图（gainmap），返回的Picture对象将包含SDR PixelMap和生成的gainmap PixelMap，像素格式为RGBA8888。gainmap PixelMap的尺寸可以通过设置params进行选择。使用Promise异步回调。
+根据HDR PixelMap和SDR PixelMap创建Picture对象。系统将使用HDR和SDR PixelMap生成一个gainmap（增益图），返回的Picture对象将包含SDR PixelMap和生成的gainmap PixelMap，像素格式为RGBA8888。gainmap PixelMap的尺寸可以通过设置params进行选择。使用Promise异步回调。
 
- **系统接口：** 该接口为系统接口。
+ **系统接口：** 此接口为系统接口。
 
  **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -171,7 +171,7 @@ import { image } from '@kit.ImageKit';
 
 async function CreatePictureTest(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // SDR
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // 获取SDR图片
   let imageSource: image.ImageSource = image.createImageSource(rawFile);
   let decodingOptionsForSDR: image.DecodingOptions = {
     desiredDynamicRange : image.DecodingDynamicRange.SDR,
@@ -188,7 +188,7 @@ async function CreatePictureTest(context: Context) {
   // 获取计算生成的gainmap并编码。
   let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap, params);
   if (picture != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in Creating picture');
   } else {
     console.error('Create picture failed');
   }
