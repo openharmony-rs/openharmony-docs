@@ -334,8 +334,6 @@ apiAvailable(version: string | number): boolean;
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口Stage模型和FA模型下皆可使用。
-
 **系统能力**：SystemCapability.Startup.SystemInfo
 
 **参数：**
