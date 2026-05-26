@@ -228,7 +228,7 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 ### on('enableChange')<sup>(deprecated)</sup>
 
-on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
+on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void
 
 监听字幕配置启用状态变化事件，使用callback异步回调。
 
@@ -282,7 +282,7 @@ struct Index {
 
 ### on('styleChange')<sup>(deprecated)</sup>
 
-on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void;
+on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void
 
 监听字幕风格变化事件，使用callback异步回调。
 
@@ -337,7 +337,7 @@ struct Index {
 
 ### off('enableChange')<sup>(deprecated)</sup>
 
-off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void;
+off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听字幕配置启用状态变化事件，使用callback异步回调。
 
@@ -394,7 +394,7 @@ struct Index {
 
 ### off('styleChange')<sup>(deprecated)</sup>
 
-off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void;
+off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void
 
 取消字幕风格变化监听事件，使用callback异步回调。
 

@@ -156,7 +156,7 @@ type WindowType = 'application' | 'system'
 
 ## AccessibilityExtensionContext.setTargetBundleName<sup>(deprecated)</sup>
 
-setTargetBundleName(targetNames: Array\<string>): Promise\<void>;
+setTargetBundleName(targetNames: Array\<string>): Promise\<void>
 
 设置关注的目标包名，使用Promise异步回调。
 
@@ -201,7 +201,7 @@ axContext.setTargetBundleName(targetNames).then(() => {
 
 ## AccessibilityExtensionContext.setTargetBundleName<sup>(deprecated)</sup>
 
-setTargetBundleName(targetNames: Array\<string>, callback: AsyncCallback\<void>): void;
+setTargetBundleName(targetNames: Array\<string>, callback: AsyncCallback\<void>): void
 
 设置关注的目标包名，使用callback异步回调。
 
@@ -247,7 +247,7 @@ try {
 
 ## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
 
-getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>;
+getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>
 
 获取焦点元素, 使用Promise异步回调。
 
@@ -295,7 +295,7 @@ axContext.getFocusElement().then((data: AccessibilityElement) => {
 
 ## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
 
-getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void;
+getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void
 
 获取焦点元素, 使用callback异步回调。
 
@@ -340,7 +340,7 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
 
 ## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
 
-getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<AccessibilityElement>): void;
+getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<AccessibilityElement>): void
 
 获取焦点元素, 使用callback异步回调。
 
@@ -387,7 +387,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
 
 ## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
 
-getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>;
+getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>
 
 获取指定窗口的根节点元素, 使用Promise异步回调。
 
@@ -436,7 +436,7 @@ axContext.getWindowRootElement().then((data: AccessibilityElement) => {
 
 ## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
 
-getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void;
+getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void
 
 获取指定窗口的根节点元素, 使用callback异步回调。
 
@@ -481,7 +481,7 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
 
 ## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
 
-getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityElement>): void;
+getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityElement>): void
 
 获取指定窗口的根节点元素, 使用callback异步回调。
 
@@ -528,7 +528,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
 
 ## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
 
-getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>;
+getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>
 
 获取指定屏幕中的所有窗口，使用Promise异步回调。
 
@@ -574,7 +574,7 @@ axContext.getWindows().then((data: AccessibilityElement[]) => {
 
 ## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
 
-getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
+getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 
 获取指定屏幕中的所有窗口，使用callback异步回调。
 
@@ -616,7 +616,7 @@ axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
 
 ## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
 
-getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
+getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 
 获取指定屏幕中的所有窗口，使用callback异步回调。
 
@@ -660,7 +660,7 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
 
 ## AccessibilityExtensionContext.injectGesture<sup>(deprecated)</sup>
 
-injectGesture(gesturePath: GesturePath): Promise\<void>;
+injectGesture(gesturePath: GesturePath): Promise\<void>
 
 > **说明：**
 >
@@ -806,7 +806,7 @@ axContext.injectGestureSync(gesturePath);
 
 ### attributeNames<sup>(deprecated)</sup>
 
-attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>;
+attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>
 
 获取节点元素的所有属性名称，使用Promise异步回调。
 
@@ -838,7 +838,7 @@ rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
 
 ### attributeNames<sup>(deprecated)</sup>
 
-attributeNames\<T extends keyof ElementAttributeValues>(callback: AsyncCallback\<Array\<T>>): void;
+attributeNames\<T extends keyof ElementAttributeValues>(callback: AsyncCallback\<Array\<T>>): void
 
 获取节点元素的所有属性名称，使用callback异步回调。
 
@@ -872,7 +872,7 @@ rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) =>
 
 ### attributeValue<sup>(deprecated)</sup>
 
-attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promise\<ElementAttributeValues[T]>;
+attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promise\<ElementAttributeValues[T]>
 
 根据属性名称获取属性值，使用Promise异步回调。
 
@@ -969,7 +969,7 @@ rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => 
 
 ### actionNames<sup>(deprecated)</sup>
 
-actionNames(): Promise\<Array\<string>>;
+actionNames(): Promise\<Array\<string>>
 
 获取节点元素支持的所有操作名称，使用Promise异步回调。
 
@@ -1000,7 +1000,7 @@ rootElement.actionNames().then((data: string[]) => {
 
 ### actionNames<sup>(deprecated)</sup>
 
-actionNames(callback: AsyncCallback\<Array\<string>>): void;
+actionNames(callback: AsyncCallback\<Array\<string>>): void
 
 获取节点元素支持的所有操作名称，使用callback异步回调。
 
@@ -1031,7 +1031,7 @@ rootElement.actionNames((err: BusinessError, data: string[]) => {
 
 ### performAction<sup>(deprecated)</sup>
 
-performAction(actionName: string, parameters?: object): Promise\<void>;
+performAction(actionName: string, parameters?: object): Promise\<void>
 
 根据操作名称执行某个操作，使用Promise异步回调。
 
@@ -1126,7 +1126,7 @@ rootElement.performAction('setCursorPosition', {
 
 ### performAction<sup>(deprecated)</sup>
 
-performAction(actionName: string, callback: AsyncCallback\<void>): void;
+performAction(actionName: string, callback: AsyncCallback\<void>): void
 
 根据操作名称执行某个操作，使用callback异步回调。
 
@@ -1171,7 +1171,7 @@ rootElement.performAction(actionName, (err: BusinessError) => {
 
 ### performAction<sup>(deprecated)</sup>
 
-performAction(actionName: string, parameters: object, callback: AsyncCallback\<void>): void;
+performAction(actionName: string, parameters: object, callback: AsyncCallback\<void>): void
 
 根据操作名称执行某个操作，使用callback异步回调。
 
@@ -1218,7 +1218,7 @@ rootElement.performAction(actionName, parameters, (err: BusinessError) => {
 
 ### findElement('content')<sup>(deprecated)</sup>
 
-findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityElement>>;
+findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据节点内容查询所有节点元素，使用Promise异步回调。
 
@@ -1266,7 +1266,7 @@ rootElement.findElement('content', condition).then((data: AccessibilityElement[]
 
 ### findElement('content')<sup>(deprecated)</sup>
 
-findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
+findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<AccessibilityElement>>): void
 
 根据节点内容查询所有节点元素。使用callback异步回调。
 
@@ -1311,7 +1311,7 @@ rootElement.findElement('content', condition, (err: BusinessError, data: Accessi
 
 ### findElement('focusType')<sup>(deprecated)</sup>
 
-findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElement>;
+findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElement>
 
 根据焦点元素类型查询节点元素，使用Promise异步回调。
 
@@ -1360,7 +1360,7 @@ rootElement.findElement('focusType', condition).then((data: AccessibilityElement
 
 ### findElement('focusType')<sup>(deprecated)</sup>
 
-findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<AccessibilityElement>): void;
+findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<AccessibilityElement>): void
 
 根据焦点元素类型查询节点元素，使用callback异步回调。
 
@@ -1406,7 +1406,7 @@ rootElement.findElement('focusType', condition, (err: BusinessError, data: Acces
 
 ### findElement('focusDirection')<sup>(deprecated)</sup>
 
-findElement(type: 'focusDirection', condition: FocusDirection): Promise\<AccessibilityElement>;
+findElement(type: 'focusDirection', condition: FocusDirection): Promise\<AccessibilityElement>
 
 根据下一焦点元素方向查询节点元素，使用Promise异步回调。
 
@@ -1455,7 +1455,7 @@ rootElement.findElement('focusDirection', condition).then((data: AccessibilityEl
 
 ### findElement('focusDirection')<sup>(deprecated)</sup>
 
-findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCallback\<AccessibilityElement>): void;
+findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCallback\<AccessibilityElement>): void
 
 根据下一焦点元素方向查询节点元素，使用callback异步回调。
 

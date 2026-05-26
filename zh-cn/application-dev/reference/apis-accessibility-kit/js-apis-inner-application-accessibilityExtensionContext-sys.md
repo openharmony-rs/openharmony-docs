@@ -710,7 +710,7 @@ export default class AccessibilityManager {
 
 ## getAccessibilityFocusedElement<sup>20+</sup>
 
-getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
+getAccessibilityFocusedElement(): Promise\<AccessibilityElement>
 
 获取当前获得焦点的元素。使用Promise异步回调。
 
@@ -781,7 +781,7 @@ export default class AccessibilityManager {
 
 ## getRootInActiveWindow<sup>20+</sup>
 
-getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement)>;
+getRootInActiveWindow(windowId ?: number): Promise\<AccessibilityElement>
 
 获取活动窗口根元素。使用Promise异步回调。
 
@@ -858,7 +858,7 @@ export default class AccessibilityManager {
 
 ## getAccessibilityWindowsSync<sup>20+</sup>
 
-getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement)>
+getAccessibilityWindowsSync(displayId?: number): Array\<AccessibilityElement>
 
 获取窗口列表。
 

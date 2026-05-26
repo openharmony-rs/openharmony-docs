@@ -101,7 +101,7 @@ config.enableAbility(name, capability).then(() => {
 
 ## enableAbility
 
-enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt;, callback: AsyncCallback&lt;void&gt;): void
+enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 启用辅助扩展，使用callback异步回调。
 
