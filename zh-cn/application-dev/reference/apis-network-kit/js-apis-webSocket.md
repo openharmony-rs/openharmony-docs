@@ -901,19 +901,18 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
  | callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | 是   | 回调函数。返回WebSocket连接的详细信息。 |
 
  **示例：**
-
 ```ts
- import { webSocket } from '@kit.NetworkKit';
- import { BusinessError, Callback } from '@kit.BasicServicesKit';
- 
- let ws = webSocket.createWebSocket();
- ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
-    if (value?.protocol != undefined) {
-            console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
-    } else {
-            console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
-    }
-  });
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+});
 ```
 
  ### off('openInfo')
@@ -943,22 +942,22 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
 
  **示例：**
  
- ```ts
- import { webSocket } from '@kit.NetworkKit';
- import { BusinessError } from '@kit.BasicServicesKit';
- 
- let ws = webSocket.createWebSocket();
- let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
-    if (value?.protocol != undefined) {
-        console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
-    } else {
-        console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
-    }
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
  }
- ws.on('openInfo', callback1);
- // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
- ws.off('openInfo', callback1);
- ```
+ws.on('openInfo', callback1);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+ws.off('openInfo', callback1);
+```
 
 ### on('message')
 on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
@@ -2888,6 +2887,6 @@ WebSocket连接成功后的详细信息。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| status | number | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为WebSocket协议。 |
+| status | int | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为WebSocket协议。 |
 | message | string | 否 | 否 | 服务器返回的状态信息。与status字段对应，例如：status=101时，该字段返回"Switching Protocols"。 |
 | protocol | string | 否 | 是 | 服务器返回的协商后的协议。 |
