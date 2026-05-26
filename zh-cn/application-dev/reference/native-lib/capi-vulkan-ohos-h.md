@@ -51,7 +51,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| VkFlags | VkSwapchainImageUsageFlagsOHOS | 设置掩码的位掩码类型<br>**起始版本：** 10 |
+| VkFlags | VkSwapchainImageUsageFlagsOHOS | 设置掩码的位掩码类型。<br>**起始版本：** 10 |
 | VkFlags | VkSurfaceCreateFlagsOHOS | 用于Vulkan Surface创建时使用的VkFlags类型位掩码，预留的标志类型。<br>**起始版本：** 10 |
 
 ### 宏定义
