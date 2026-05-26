@@ -1307,6 +1307,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontStyle     | [FontStyle](#fontstyle)                              | 否 | 是 | 字体样式，默认为常规样式。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | baseline      | [TextBaseline](#textbaseline)                        | 否 | 是 | 文本基线类型，默认为ALPHABETIC。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | fontFamilies  | Array\<string>                                       | 否 | 是 | 字体家族名称列表，默认为空，匹配系统字体。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
+| fontTypefaces | Array\<[drawing.Typeface](arkts-apis-graphics-drawing-Typeface.md)> | 否 | 是 | 指定排版字体对象数组，用于优先使用指定的字体对象进行文本塑形，跳过字体匹配流程。当数组中某个字体对象无法塑形部分文字时，未能塑形的文字将使用系统字体进行塑形。默认为空数组，表示不指定字体对象，使用默认字体匹配流程。<br/>当fontTypefaces与[fontFamilies](#textstyle)同时设置时，fontTypefaces优先级更高。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | fontSize      | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 字体大小，浮点数，默认为14.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | letterSpacing | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 字符间距，正数拉开字符距离，若是负数则拉近字符距离，浮点数，默认为0.0，单位为物理像素px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23|
 | wordSpacing   | ArkTS-Dyn: number<br>ArkTS-Sta: double               | 否 | 是 | 单词间距，浮点数，默认为0.0，单位为px。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23                 |
@@ -1383,6 +1384,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | variationAxisRecords<sup>24+</sup> | Array<[FontVariationAxis](#fontvariationaxis24)> | 否 | 是 | 字体可变轴记录数组，用于描述字体支持的可变轴信息。非可变字体此字段为undefined。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
 | variationInstanceRecords<sup>24+</sup> | Array<[FontVariationInstance](#fontvariationinstance24)> | 否 | 是 | 字体可变实例记录数组，用于描述字体支持的可变实例信息。非可变字体此字段为undefined。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24 |
 | index<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是 | 字体索引，字体文件为ttc类型时有效，ttf类型统一为0。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| languages | Array\<string> | 否 | 是 | 字体语言，默认为undefined。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| fontFeatures | Array\<string> | 否 | 是 | 字体特性，默认为undefined。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## FontVariationAxis<sup>24+</sup>
 
@@ -2322,6 +2325,7 @@ struct Index {
 | firstLineHeadIndent | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 设置段落首行缩进，缩进值需大于等于0，默认值为0。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | tailIndents | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<double> | 否 | 是 | 设置行尾缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 | headIndents | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<double> | 否 | 是 | 设置行首缩进数组，数组中每个元素代表一行缩进值，当实际文本行数超过缩进数组个数时，超过行的缩进为数组最后一个值，缩进值需全大于等于0，默认为空数组。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
+| punctuationOverflow | boolean | 否 | 是 | 设置文本排版时是否使能行尾标点悬挂。true表示使能行尾标点悬挂，允许行尾的特定标点字符悬挂到排版宽度之外显示；false表示不使能行尾标点悬挂，默认值为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 行首压缩的标点范围:
 | 标点 | Unicode码位 | Unicode名称 |
@@ -3432,6 +3436,96 @@ paragraph.updateDecoration({
   decorationThicknessScale: 2.0,
 });
 ```
+### getVisibleTextRanges
+
+getVisibleTextRanges(): Array\<Range\>
+
+获取段落中可见文本的范围。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| Array\<[Range](#range)\> | 可见文本范围数组。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World Hello World Hello World Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            maxLines: 1,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let visibleRanges = paragraph.getVisibleTextRanges();
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D";
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click")
+        .onClick(() => {
+          let textData = "Hello World Hello World Hello World Hello World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            maxLines: 1,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let visibleRanges = paragraph.getVisibleTextRanges();
+        })
+    }
+  }
+}
+```
 
 ### getCharacterRangeForGlyphRange<sup>24+</sup>
 
@@ -3976,7 +4070,7 @@ getParagraphStyle(): ParagraphStyle
 
 | 类型 | 说明 |
 | - | - |
-| [ParagraphStyle](#paragraphstyle) | 段落的样式配置。 |
+| [ParagraphStyle](#paragraphstyle) | 段落的样式配置。<br>ArkTS-Dyn: 其中`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、`textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于[common2D.Color](js-apis-graphics-common2D.md#color)对象参数：alpha=255、red=0、green=0、blue=0，示例中提供numberToRGBA转换方法作为参考。<br>ArkTS-Sta: 其中`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、`textStyle.decoration.color`属性：返回[common2D.Color](js-apis-graphics-common2D.md#color)对象。 |
 
 **示例：**
 
@@ -3984,6 +4078,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { text } from '@kit.ArkGraphics2D'
+import { common2D } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -4008,10 +4103,22 @@ struct Index {
           let paragraphStyle = paragraph.getParagraphStyle();
           if (paragraphStyle.textStyle != undefined) {
             console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+            if (paragraphStyle.textStyle?.color != undefined && typeof paragraphStyle.textStyle?.color == 'number') {
+              let textColor: common2D.Color = numberToRGBA(paragraphStyle.textStyle?.color);
+              console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+            }
           }
         })
     }
   }
+}
+
+function numberToRGBA(colorNum: number): common2D.Color {
+  const a = (colorNum >>> 24) & 0xFF;
+  const r = (colorNum >>> 16) & 0xFF;
+  const g = (colorNum >>> 8) & 0xFF;
+  const b = colorNum & 0xFF;
+  return { alpha: a, red: r, green: g, blue: b };
 }
 ```
 
@@ -4020,6 +4127,7 @@ ArkTS-Sta示例：
 ```ts
 import { Entry, Component, Column, Button} from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D";
+import { common2D } from '@kit.ArkGraphics2D'
 
 @Entry
 @Component
@@ -4042,8 +4150,137 @@ struct Index {
           let paragraph = paragraphBuilder.build();
           paragraph.layoutSync(200);
           let paragraphStyle = paragraph.getParagraphStyle();
-          console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+          if (paragraphStyle.textStyle != undefined) {
+            console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+            let textColor = paragraphStyle.textStyle?.color;
+            if (textColor != undefined) {
+              console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+            }
+          }
         })
+    }
+  }
+}
+```
+
+### forceReuseRasterResult
+
+forceReuseRasterResult(isForce: boolean): void
+
+设置是否强制复用光栅化结果。设置后，在下次调用[paint](#paint)绘制时生效。true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|  ---   | ---  | ---  | ---  |
+| isForce | boolean | 是 | 是否强制复用光栅化结果。true表示强制复用光栅化结果，false表示允许更新光栅化结果。 |
+ 
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { text, drawing } from '@kit.ArkGraphics2D'
+import { image } from '@kit.ImageKit'
+ 
+function textFunc(pixelmap: PixelMap) {
+  let canvas = new drawing.Canvas(pixelmap);
+  let textData = "Hello World";
+  let myTextStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let myParagraphStyle: text.ParagraphStyle = {
+    textStyle: myTextStyle
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+  paragraphBuilder.addText(textData);
+  let paragraph = paragraphBuilder.build();
+  paragraph.layoutSync(200);
+  paragraph.forceReuseRasterResult(true);
+  paragraph.paint(canvas, 0, 0);
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: PixelMap = undefined;
+  fun: Function = textFunc;
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button("Click").onClick(() => {
+        if (this.pixelmap == undefined) {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import { drawing } from '@kit.ArkGraphics2D'
+import { text } from "@kit.ArkGraphics2D"
+import { image } from '@kit.ImageKit';
+
+function textFunc(pixelmap?: image.PixelMap) {
+  if (pixelmap) {
+    let canvas = new drawing.Canvas(pixelmap);
+    let textData = "Hello World";
+    let myTextStyle: text.TextStyle = {
+      color: { alpha: 255, red: 255, green: 0, blue: 0 },
+      fontSize: 33,
+    };
+    let myParagraphStyle: text.ParagraphStyle = {
+      textStyle: myTextStyle
+    };
+    let fontCollection = new text.FontCollection();
+    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+    paragraphBuilder.addText(textData);
+    let paragraph = paragraphBuilder.build();
+    paragraph.layoutSync(200);
+    
+    paragraph.forceReuseRasterResult(true);
+    paragraph.paint(canvas, 0, 0);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State pixelmap?: image.PixelMap = undefined;
+  fun: (pixelmap?: image.PixelMap) => void = textFunc;
+  build() {
+    Column() {
+      Image(this.pixelmap).width(200).height(200);
+      Button("Click").onClick((e: ClickEvent) => {
+        if (this.pixelmap == undefined) {
+          const color: ArrayBuffer = new ArrayBuffer(160000);
+          let opts: image.InitializationOptions =
+            { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 200, width: 200 } }
+          this.pixelmap = image.createPixelMapSync(color, opts);
+        }
+        this.fun(this.pixelmap);
+      })
     }
   }
 }
@@ -6354,6 +6591,138 @@ ArkTS-Sta示例：
 let advancesRange = runs[0].getAdvances({start:1, end:2}); // 获取渲染块从起始位置1开始, 长度为2范围内的字形宽度
 advancesRange = runs[0].getAdvances({start:-1, end:2}); // -1是非法参数，将返回undefined
 advancesRange = runs[0].getAdvances({start:0, end:-10}); // -10是非法参数，将返回undefined
+```
+
+### getTextStyle
+
+getTextStyle(): TextStyle
+
+获取该排版单元的文本样式。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                   |说明                                   |
+| ---------------------- | ------------------------------------- |
+| [TextStyle](#textstyle)  | 该排版单元的文本样式。<br>**说明：**<br>ArkTS-Dyn: 1.`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、`textStyle.decoration.color`属性：返回32位无符号整型颜色数值。示例：返回值`4278190080`，对应纯黑色十六进制颜色值`0xFF000000`，等价于[common2D.Color](js-apis-graphics-common2D.md#color)对象参数：alpha=255、red=0、green=0、blue=0，示例中提供numberToRGBA转换方法作为参考。<br>ArkTS-Sta: 1.`textStyle.color`、`textStyle.textShadows.color`、`textStyle.backgroundRect.color`、`textStyle.decoration.color`属性：返回[common2D.Color](js-apis-graphics-common2D.md#color)对象。<br>2.`textStyle.ellipsis`和`textStyle.ellipsisMode`为段落属性，不支持通过本接口获取，应使用[getParagraphStyle()](#getparagraphstyle)。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { text } from "@kit.ArkGraphics2D"
+import { common2D } from '@kit.ArkGraphics2D'
+import { JSON } from "@kit.ArkTS";
+
+function textFunc() {
+  let textStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let paragraphStyle: text.ParagraphStyle = {
+    textStyle: textStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+  paragraphBuilder.addText("Hello World");
+  let paragraph = paragraphBuilder.build();
+  paragraph.layoutSync(50);
+  let lines = paragraph.getTextLines();
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let runs = line.getGlyphRuns();
+    for (let j = 0; j < runs.length; j++) {
+      const run = runs[j];
+      const runStyle = run.getTextStyle();
+      console.info(`print line [${i}] run [${j}] textStyle: ${JSON.stringify(runStyle)}`);
+      if (runStyle?.color != undefined && typeof runStyle?.color == 'number') {
+        let textColor: common2D.Color = numberToRGBA(runStyle?.color);
+        console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+      }
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        textFunc();
+      })
+    }
+  }
+}
+
+function numberToRGBA(colorNum: number): common2D.Color {
+  const alpha = (colorNum >>> 24) & 0xFF;
+  const red = (colorNum >>> 16) & 0xFF;
+  const green = (colorNum >>> 8) & 0xFF;
+  const blue = colorNum & 0xFF;
+  return { alpha: alpha, red: red, green: green, blue: blue };
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
+import { text } from "@kit.ArkGraphics2D"
+import { common2D } from '@kit.ArkGraphics2D'
+
+function textFunc() {
+  let textStyle: text.TextStyle = {
+    color: { alpha: 255, red: 255, green: 0, blue: 0 },
+    fontSize: 33,
+  };
+  let paragraphStyle: text.ParagraphStyle = {
+    textStyle: textStyle,
+    align: text.TextAlign.END,
+  };
+  let fontCollection = new text.FontCollection();
+  let paragraphBuilder = new text.ParagraphBuilder(paragraphStyle, fontCollection);
+  paragraphBuilder.addText("Hello World");
+  let paragraph = paragraphBuilder.build();
+  paragraph.layoutSync(50);
+  let lines = paragraph.getTextLines();
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    let runs = line.getGlyphRuns();
+    for (let j = 0; j < runs.length; j++) {
+      const run = runs[j];
+      const runStyle = run.getTextStyle();
+      console.info(`print line [${i}] run [${j}] textStyle: ${JSON.stringify(runStyle)}`);
+      let textColor = runStyle?.color;
+      if (textColor != undefined) {
+        console.info(`Print text color ARGB: ${textColor.alpha}, ${textColor.red}, ${textColor.green}, ${textColor.blue}`);
+      }
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("Click").onClick((e: ClickEvent) => {
+        textFunc();
+      })
+    }
+  }
+}
 ```
 
 ## TextTab<sup>18+</sup>

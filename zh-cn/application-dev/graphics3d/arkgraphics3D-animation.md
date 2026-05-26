@@ -16,7 +16,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和控制3D场景、相机以及动画资源。
 
    <!-- @[anim_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
-   
+
    ``` TypeScript
    import { Animation, Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
    ```
@@ -25,6 +25,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 
    调用Scene.load()方法从应用的resources/rawfile/目录加载.glb（或.gltf）模型，并在加载完成后获取Scene对象。
 
+   ArkTS-Dyn示例：
    <!-- @[anim_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
@@ -38,6 +39,20 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[anim_load](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/animation.ets) -->
+ 
+   ``` TypeScript
+   Scene.load($rawfile('gltf/BrainStem/glTF/BrainStem.glb'))
+     .then(async (result: Scene) => {
+       this.scene = result;
+       let rf: SceneResourceFactory = this.scene!.getResourceFactory();
+       // ...
+     }).catch((err: Error) => {
+       console.error(err);
+     });
+   ```
+
 3. 获取动画并注册回调。
 
    从scene.animations[0]获取动画资源，启用并注册onStarted()、onFinished()回调，用于监听动画播放状态或触发逻辑。
@@ -46,6 +61,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
     - onStarted()：动画开始播放时触发，start与restart操作均会触发该回调。
     - onFinished()：动画播放完成或执行finish操作时触发。
 
+   ArkTS-Dyn示例：
    <!-- @[anim_pick_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
@@ -68,10 +84,33 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[anim_pick_anim](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/animation.ets) -->
+
+   ``` TypeScript
+   this.anim = this.scene!.animations[0];
+   if (this.anim) {
+     this.anim!.enabled = true;
+     // 注册回调函数
+     this.anim!.onStarted(() => {
+       // ...
+       this.animationCallbackInvoked = 'animation on start';
+     });
+     this.anim!.onFinished(() => {
+       // ...
+       this.animationCallbackInvoked = 'animation on finish';
+     });
+     // ...
+   } else {
+     console.error('No animation found in scene.');
+   }
+   ```
+
 4. 创建相机与设置场景渲染参数。
 
    通过SceneResourceFactory.createCamera()创建相机并调整观察位置。随后将加载完成的Scene封装为SceneOptions，并指定渲染类型为ModelType.SURFACE，以便通过Component3D在界面上进行渲染。
 
+   ArkTS-Dyn示例：
    <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
@@ -81,6 +120,18 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    this.cam.enabled = true;
    this.cam.position.z = 5;
    this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/animation.ets) -->
+
+   ``` TypeScript
+   // 创建相机
+   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   // 设置相机属性
+   this.cam!.enabled = true;
+   this.cam!.position.z = 5;
+   this.sceneOpt = { scene: this.scene!, modelType: ModelType.SURFACE } as SceneOptions;
    ```
 
 5. 构建界面与动画控制。
@@ -95,6 +146,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
     - 重启（restart）：从动画的起点开始播放动画。
     - 跳转（seek）：按比例跳转动画进度（例如seek(0.3)跳至总时长的30%）。
 
+   ArkTS-Dyn示例：
    <!-- @[anim_controls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
@@ -157,6 +209,72 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
        this.anim = this.scene.animations[0];
        // seek to 30%
        this.anim.seek(0.3);
+     });
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[anim_controls](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/animation.ets) -->
+
+   ``` TypeScript
+   Button('start')
+     // ...
+     .onClick(() => {
+       if (!this.scene || !this.scene!.animations[0]) {
+         return;
+       }
+       this.anim = this.scene!.animations[0];
+       this.anim!.start();
+     });
+
+   Button('pause')
+     // ...
+     .onClick(() => {
+       if (!this.scene || !this.scene!.animations[0]) {
+         return;
+       }
+       this.anim = this.scene!.animations[0];
+       this.anim!.pause();
+     });
+
+   Button('stop')
+     // ...
+     .onClick(() => {
+       if (!this.scene || !this.scene!.animations[0]) {
+         return;
+       }
+       this.anim = this.scene!.animations[0];
+       this.anim!.stop();
+     });
+
+   Button('finish')
+     // ...
+     .onClick(() => {
+       if (!this.scene || !this.scene!.animations[0]) {
+         return;
+       }
+       this.anim = this.scene!.animations[0];
+       this.anim!.finish();
+     });
+
+   Button('restart')
+     // ...
+     .onClick(() => {
+       if (!this.scene || !this.scene!.animations[0]) {
+         return;
+       }
+       this.anim = this.scene!.animations[0];
+       this.anim!.restart();
+     });
+
+   Button('seek to 30% progress')
+     // ...
+     .onClick(() => {
+       if (!this.scene || !this.scene!.animations[0]) {
+         return;
+       }
+       this.anim = this.scene!.animations[0];
+       // 跳转到动画进度30%位置
+       this.anim!.seek(0.3);
      });
    ```
 

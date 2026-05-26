@@ -118,23 +118,16 @@ ArkTS-Sta示例：
       userAuthInstance.onAuthTip((authTipInfo: userAuth.AuthTipInfo) => {
         try {
           Logger.info('userAuthInstance callback.');
-          this.result[ResultIndex.PERCEIVE_ADJUST] = (`${authTipInfo.tipType}`);
-          this.showResult(`${authTipInfo.tipType}`);
-          // 认证完成后取消订阅
-          userAuthInstance.offAuthTip();
+          EAWorker.postToMain<void>((): void => {
+            this.result[ResultIndex.PERCEIVE_ADJUST] =
+              `tipType: ${authTipInfo.tipType}, tipCode: ${authTipInfo.tipCode}`;
+          });
         } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+          Logger.error(`onResult failed, code: ${error.code}, Message: ${error.message}`);
         }
       });
       // 开始认证
       userAuthInstance.start();
-        // 取消订阅认证过程中的提示信息。
-        userAuthInstance.offAuthTip();
-        Logger.info('off authTip successfully.');
-        // 取消认证
-        userAuthInstance.cancel();
-        Logger.info('auth cancel successfully.');
     } catch (error) {
       const err: BusinessError = error as BusinessError;
       Logger.error(`auth failed, code is ${err?.code as int}, message is ${err?.message}`);

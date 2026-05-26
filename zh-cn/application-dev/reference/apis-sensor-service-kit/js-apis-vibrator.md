@@ -29,7 +29,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -187,7 +187,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -577,7 +577,7 @@ stopVibration(callback: AsyncCallback&lt;void&gt;): void
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -629,7 +629,7 @@ stopVibration(): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -748,7 +748,7 @@ stopVibrationSync(): void
 
 **需要权限**：ohos.permission.VIBRATE
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1066,7 +1066,7 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
    ```
 
 
-## vibrator.on<sup>19+</sup>
+## vibrator.on('vibratorStateChange')<sup>19+</sup>
 
 on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): void
 
@@ -1125,7 +1125,7 @@ onVibratorStateChange(callback: Callback&lt;VibratorStatusEvent&gt;): void
 
 **ArkTS模式:** 该接口仅适用于ArkTS-Sta。
 
-**相关接口:** 该接口对应的ArkTS-Dyn接口是[on('vibratorStateChange')](#vibratoron19)。
+**相关接口:** 该接口对应的ArkTS-Dyn接口是[on('vibratorStateChange')](#vibratoronvibratorstatechange19)。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1284,7 +1284,7 @@ offVibratorStateChange(callback?: Callback&lt;VibratorStatusEvent&gt;): void
 | 名称               | 类型      | 只读 | 可选 | 说明                               |
 |------------------|---------|----|----|----------------------------------|
 | timestamp        | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 报告事件的时间戳，单位ms。                        |
-| deviceId         | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 设备的ID。                           |
+| deviceId         | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 设备ID。                           |
 | vibratorCount    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 设备上的马达的数量。                       |
 | isVibratorOnline | boolean | 否  | 否  | 指示设备的上线和下线状态，true表示上线，false表示下线。 |
 
@@ -1302,8 +1302,8 @@ offVibratorStateChange(callback?: Callback&lt;VibratorStatusEvent&gt;): void
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ---- | ------ | ---- | ---- |------------------------------------------------------------|
-| deviceId    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 设备的ID：默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 |
-| vibratorId    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 马达ID：默认值为0，控制的是该设备的全部马达，API19以后马达ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)设备上下线接口[on](#vibratoron19)查询。     |
+| deviceId    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 设备ID：默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on('vibratorStateChange')](#vibratoronvibratorstatechange19)查询。 |
+| vibratorId    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 马达ID：默认值为0，控制的是该设备的全部马达，API19以后马达ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on('vibratorStateChange')](#vibratoronvibratorstatechange19)查询。     |
 
 
 
@@ -1710,7 +1710,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 指定时长振动类型。
 
-**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口在支持原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1900,7 +1900,7 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 | 名称             | 类型      | 只读 | 可选 | 说明                          |
 |----------------|---------|----|----|-----------------------------|
 | id       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 马达ID， 默认值为0。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                     |
-| deviceId<sup>19+</sup>       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23                    |
+| deviceId<sup>19+</sup>       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on('vibratorStateChange')](#vibratoronvibratorstatechange19)查询。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23                    |
 | usage       | [Usage](#usage9) | 否  | 否  | 马达振动的使用场景。默认值为'unknown'，取值范围只允许在[Usage](#usage9)提供的类型中选取。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                     |
 
 ## Usage<sup>9+</sup>

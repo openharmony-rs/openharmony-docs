@@ -1,4 +1,4 @@
-# 应用级变量的状态管理(ArkTS-Sta)
+# 应用级变量的状态管理 (ArkTS-Sta)
 
 状态管理模块提供了应用程序的数据存储能力、持久化数据管理能力、UIAbility数据存储能力和应用程序需要的环境状态。
 
@@ -8,6 +8,8 @@
 >
 > - 首批接口从API version 23开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
+**ArkTS-Sta起始版本：** 23
+
 ## 导入模块
 
 ```ts
@@ -16,7 +18,15 @@ import { AppStorage, LocalStorage, PersistentStorage, Environment, LayoutDirecti
 
 ## AppStorage
 
+const AppStorage: LocalStorage
+
 AppStorage具体UI使用说明，详见[AppStorage(应用全局的UI状态存储)](../../../ui/state-management-static/arkts-static-appstorage.md)
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 ### ref
 
@@ -176,7 +186,11 @@ static get&lt;T&gt;(propName: string): T | undefined
 
 获取propName在[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中对应的属性值。如果不存在则返回undefined。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -204,7 +218,11 @@ static set&lt;T&gt;(propName: string, newValue: T): boolean
 
 在[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中设置propName对应属性的值。如果newValue的值和propName对应属性的值相同，即不需要做赋值操作，状态变量不会通知UI刷新propName对应属性的值，newValue可以为null或undefined。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -366,7 +384,12 @@ let res: int = AppStorage.size(); // 1
 
 LocalStorage具体UI使用说明，详见[LocalStorage(页面级UI状态存储)](../../../ui/state-management-static/arkts-static-localstorage.md)
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 
 ### constructor
 
@@ -374,7 +397,11 @@ constructor(initializingProperties?: RecordData)
 
 创建一个新的[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)实例。使用initializingProperties中的属性和其数值，初始化LocalStorage实例。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -396,7 +423,11 @@ has(propName: string): boolean
 
 判断propName对应的属性是否在[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中存在。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -425,7 +456,11 @@ get&lt;T&gt;(propName: string): T | undefined
 
 获取propName在[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中对应的属性值。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -454,7 +489,11 @@ set&lt;T&gt;(propName: string, newValue: T): boolean
 
 在[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中设置propName对应属性的值。如果newValue的值和propName对应属性的值相同，即不需要做赋值操作，状态变量不会通知UI刷新propName对应属性的值。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -488,7 +527,11 @@ setOrCreate&lt;T&gt;(propName: string, newValue: T): boolean
 
 如果propName不存在，则创建propName属性，值为newValue。setOrCreate只可以创建单个LocalStorage的键值对，如果想创建多个LocalStorage键值对，可以多次调用此方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -521,6 +564,12 @@ public ref\<T\>(propName: string): AbstractProperty\<T\>&nbsp;|&nbsp;undefined
 
 如果给定的propName在[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中存在，则获得LocalStorage中propName对应数据的引用。否则，返回undefined。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                 |
@@ -551,7 +600,11 @@ public setAndRef&lt;T&gt;(propName: string, defaultValue: T): AbstractProperty&l
 
 与[ref](#ref-1)接口类似，如果给定的propName在[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中存在，则获得LocalStorage中propName对应数据的引用。如果不存在，则使用defaultValue在LocalStorage中创建和初始化propName对应的属性，并返回其引用。defaultValue须为T类型，可以为null或undefined。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -587,7 +640,11 @@ link&lt;T&gt;(propName: string): SubscribedAbstractProperty&lt;T&gt;&nbsp;|&nbsp
 
 如果LocalStorage中不存在propName，则返回undefined。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -618,7 +675,11 @@ setAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstractProper
 
 与[link](#link)接口类似，如果给定的propName在[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中存在，则返回该propName对应的属性的双向绑定数据。如果不存在，则使用defaultValue在LocalStorage中创建和初始化propName对应的属性，返回其双向绑定数据。defaultValue必须为T类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -657,7 +718,11 @@ delete(propName: string): boolean
 
 需要等待使用\@LocalStorageLink/\@LocalStoragePropRef的自定义组件被垃圾回收。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -689,7 +754,11 @@ keys(): IterableIterator&lt;string&gt;
 
 返回[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所有的属性名。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -712,7 +781,11 @@ size(): int
 
 返回[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中的属性数量。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -737,7 +810,11 @@ clear(): boolean
 
 订阅者的含义参考[delete](#delete)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -756,7 +833,11 @@ let res: boolean = storage.clear(); // true，已经没有订阅者
 
 ## AbstractProperty\<T\>
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 ### get
 
@@ -764,7 +845,11 @@ get(): T
 
 读取[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性的数据。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -788,7 +873,11 @@ set(newValue: T): void
 
 更新[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性的数据，newValue必须是T类型，可以为null或undefined。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -821,7 +910,11 @@ info(): string
 
 读取[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性的属性名。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -840,11 +933,15 @@ ref1?.info(); //  ref1.info()='PropA'
 ```
 
 ### onChange
-onChange(onChangeFunc: OnChangeType\<T\> | undefined): void
+onChange(onChangeFunc: OnChangeType&lt;T&gt; | undefined): void
 
 注册[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性变化的事件。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -867,7 +964,13 @@ ref1?.onChange((propertyName: string, value: number) => {
 
 ## SubscribedAbstractProperty
 
+继承自[AbstractProperty\<T\>](#abstractpropertyt)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 ### get
 
@@ -923,7 +1026,11 @@ abstract aboutToBeDeleted(): void
 >
 >仅为了和动态Arkts接口保持一致，无实际功能。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -952,7 +1059,11 @@ info(): string
 
 指定持久化属性及其默认值的键值对对象，作为[persistProps](#persistprops)参数传入。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                  | 只读 | 可选 | 说明                                                     |
 | ------------ | ------------------------------------- | --- | ---- | ------------------------------------------------------------ |
@@ -961,35 +1072,47 @@ info(): string
 | toJson       | ToJsonType\<T\> | 否 | 是 | 默认值为undefined。见[ToJsonType](#tojsontypet)，用于序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功序列化。|
 | fromJson     | FromJsonType\<T\> | 否 | 是 | 默认值为undefined。见[FromJsonType](#fromjsontypet)，用于反序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功反序列化。|
 
-## ToJsonType\<T\>
+## ToJSONType\<T\>
 
-type ToJsonType\<T\> = (value: T) => jsonx.JsonElement
+type ToJSONType\<T\> = (value: T) => jsonx.JsonElement;
 
 >**说明：**
 >
 >静态ArkTS序列化接口，需开发者自己实现。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## FromJsonType\<T\>
+**ArkTS-Sta起始版本：** 23
 
-type FromJsonType\<T\> = (element: jsonx.JsonElement) => T
+## FromJSONType\<T\>
+
+type FromJSONType\<T\> = (element: jsonx.JsonElement) => T
 
 >**说明：**
 >
 >静态ArkTS反序列化接口，需开发者自己实现。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 ## PersistentStorage
 
 PersistentStorage具体UI使用说明，详见[PersistentStorage(持久化存储UI状态)](../../../ui/state-management-static/arkts-static-persiststorage.md)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 ### persistProp
 
-static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T\>, fromJson?: FromJsonType\<T\>): boolean
+static persistProp&lt;T&gt;(key: string, defaultValue: T, toJson?: ToJSONType\<T\>, fromJson?: FromJSONType\<T\>): boolean
 
 将[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中key对应的属性持久化到文件中。该接口的调用通常在访问AppStorage之前。
 
@@ -1007,7 +1130,11 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T
 
 5. 对于复杂类型(联合类型都是复杂类型)，开发者必须实现toJson和fromJson才能实现持久化，只有boolean、int、double、long、string，开发者可以不传入toJson和fromJson。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1015,8 +1142,8 @@ static persistProp&lt;T&gt;(key: string, defaultValue: T, ToJson?: ToJsonType\<T
 | ------------ | ------ | ---- | ------------------------------------------------------------ |
 | key          | string | 是   | 属性名。                                                     |
 | defaultValue | T      | 是   | 当在[PersistentStorage](#persistentstorage)和[AppStorage](#appstorage)中未查询到key时，使用defaultValue中。|
-| toJson       | ToJsonType\<T\> | 否 | 见[ToJsonType](#tojsontypet)，用于序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功序列化。|
-| fromJson     | FromJsonType\<T\> | 否 | 见[FromJsonType](#fromjsontypet)，用于反序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功反序列化。|
+| toJson       | ToJSONType\<T\> | 否 | 见[ToJSONType](#tojsontypet)，用于序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功序列化。|
+| fromJson     | FromJSONType\<T\> | 否 | 见[FromJSONType](#fromjsontypet)，用于反序列化。对于复杂类型（除boolean、int、double、long、string外），开发者必须实现该方法才能成功反序列化。|
 
 **返回值：**
 
@@ -1034,7 +1161,11 @@ static deleteProp(key: string): void
 
 [persistProp](#persistprop)的逆向操作。将key对应的属性从PersistentStorage中删除，后续[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)的操作，对[PersistentStorage](../../../ui/state-management-static/arkts-static-persiststorage.md)不会再有影响。该操作会将对应的key从持久化文件中删除，如果希望再次持久化，可以再次调用[persistProp](#persistprop)接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1056,7 +1187,11 @@ static persistProps(props: PersistPropsOptions\<Any\>[]): void
 
 将[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中key对应的属性持久化到文件中。与[persistProp](#persistprop)的区别在于可以一次性持久化多个数据，适用场景是：应用启动时调用持久化接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1103,7 +1238,11 @@ static keys(): Array&lt;string&gt;
 
 返回所有持久化属性的属性名的数组。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1122,7 +1261,11 @@ let keys: Array<string> = PersistentStorage.keys();
 
 用于指定环境变量名称及其默认值的键值对对象，作为[envProps](#envprops)参数传入。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                        | 必填 | 说明                                                     |
 | ------------ | --------------------------- | ---- | ------------------------------------------------------------ |
@@ -1133,7 +1276,12 @@ let keys: Array<string> = PersistentStorage.keys();
 
 Environment具体使用说明，详见[Environment(设备环境查询)](../../../ui/state-management/arkts-environment.md)
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 
 ### envProp
 
@@ -1145,7 +1293,11 @@ static envProp&lt;T&gt;(key: string, value: T): boolean
 
 在没有调用envProp的情况下，就使用AppStorage读取环境变量是错误的。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1170,7 +1322,11 @@ static envProps(props: EnvPropsOptions[]): void
 
 和[envProp](#envprop)类似，不同点在于参数为数组，可以一次性初始化多个数据。建议在应用启动时调用，将系统环境变量批量存入[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)中。需注意的是，如果传入的dafultValue为[ColorMode](../../../ui/state-management-static/arkts-static-environment.md#environment内置参数)、[LayoutDirection](../../../ui/state-management-static/arkts-static-environment.md#environment内置参数)类型，或是数字，则需额外指定其具体类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1198,7 +1354,11 @@ static keys(): Array&lt;string&gt;
 
 返回环境变量的属性key的数组。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1232,7 +1392,11 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 
 系统当前深浅色模式。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值    | 说明      |
 | ----- | -----| ----------|
@@ -1244,20 +1408,28 @@ let keys: Array<string> = Environment.keys(); // keys 包含 accessibilityEnable
 
 系统的布局方向类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值    | 说明      |
 | ----- | -----| ----------|
-| LTR   | 0    | 从左向右布局。 |
-| RTL   | 1    | 从右向左布局。 |
-| AUTO  | 2    | 自动布局，跟随系统。 |
+| LTR | 1 | 从左向右布局。 |
+| RTL | 0 | 从右向左布局。 |
+| Auto | 2 | 自动布局，跟随系统。 |
 
 ## OnChangeType
 type OnChangeType\<T\> = (propertyName: string, newValue: T) => void
 
 注册[AppStorage](../../../ui/state-management-static/arkts-static-appstorage.md)/[LocalStorage](../../../ui/state-management-static/arkts-static-localstorage.md)中所引用属性变化事件的回调函数类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 参数名 | 类型                                          | 必填 | 说明                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------ |

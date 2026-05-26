@@ -15,7 +15,7 @@
 
 表示公共事件的订阅者。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -52,7 +52,7 @@ ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。使用cal
 
 ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -112,7 +112,7 @@ ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。使用Pro
 
 ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -160,7 +160,7 @@ ArkTS-Dyn: 获取有序公共事件传递的数据（number类型）。
 
 ArkTS-Sta: 获取有序公共事件传递的数据（int类型）。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -203,7 +203,7 @@ ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。使用cal
 
 ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -264,7 +264,7 @@ ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。使用Pro
 
 ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -326,7 +326,7 @@ ArkTS-Dyn: 设置有序公共事件传递的数据（number类型）。
 
 ArkTS-Sta: 设置有序公共事件传递的数据（int类型）。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -367,7 +367,7 @@ getData(callback: AsyncCallback\<string>): void
 
 获取有序公共事件传递的数据（string类型）。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -425,7 +425,7 @@ getData(): Promise\<string>
 
 获取有序公共事件传递的数据（string类型）。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -469,7 +469,7 @@ getDataSync(): string
 
 获取有序公共事件传递的数据（string类型）。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -498,7 +498,7 @@ setData(data: string, callback: AsyncCallback\<void>): void
 
 设置有序公共事件传递的数据（string类型）。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -555,7 +555,7 @@ setData(data: string): Promise\<void>
 
 设置有序公共事件传递的数据（string类型）。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -613,7 +613,7 @@ setDataSync(data: string): void
 
 设置有序公共事件传递的数据（string类型）。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -656,7 +656,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string, callback:AsyncCallback\<void>
 
 设置有序公共事件数据。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -716,7 +716,7 @@ ArkTS-Sta: setCodeAndData(code: int, data: string): Promise\<void>
 
 设置有序公共事件传递的数据。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -775,7 +775,7 @@ ArkTS-Sta: setCodeAndDataSync(code: int, data: string): void
 
 设置有序公共事件传递的数据。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -1501,7 +1501,7 @@ getSubscribeInfo(callback: AsyncCallback\<CommonEventSubscribeInfo>): void
 
 获取订阅者的订阅信息。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -1559,7 +1559,7 @@ ArkTS-Sta: getSubscribeInfo(): Promise\<CommonEventSubscribeInfo|null>
 
 获取订阅者的订阅信息。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -1605,7 +1605,7 @@ ArkTS-Sta: getSubscribeInfoSync(): CommonEventSubscribeInfo|null
 
 获取订阅者的订阅信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 

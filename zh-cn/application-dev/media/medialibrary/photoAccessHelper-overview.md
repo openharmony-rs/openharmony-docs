@@ -1,9 +1,15 @@
 # Media Library Kit 简介
+
 <!--Kit: Media Library Kit-->
+
 <!--Subsystem: Multimedia-->
+
 <!--Owner: @yixiaoff-->
+
 <!--Designer: @liweilu1-->
+
 <!--Tester: @xchaosioda-->
+
 <!--Adviser: @w_Machine_cc-->
 
 Media Library Kit（媒体文件管理服务）提供了管理相册和媒体文件的能力，包括图片和视频，帮助应用快速构建图片和视频的展示与播放功能。
@@ -20,12 +26,13 @@ Media Library Kit（媒体文件管理服务）提供了管理相册和媒体文
 - 管理动态照片
   - [访问和管理动态照片资源](photoAccessHelper-movingphoto.md)
   - [使用MovingPhotoView播放动态照片](movingphotoview-guidelines.md)
+
 <!--RP2--><!--RP2End-->
 
 面向**三方应用受限**开放如下能力：
 
 > **注意：**
->
+> 
 > 受限开放的能力需要[申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)。<!--RP1-->这部分权限受限开放。<!--RP1End-->
 
 - [媒体资源使用指导](photoAccessHelper-resource-guidelines.md)，包括：
@@ -46,19 +53,22 @@ Media Library Kit（媒体文件管理服务）提供了管理相册和媒体文
   - 取消指定URI的监听。
 
 <!--Del-->
+
 面向**系统应用**开放如下能力：
 
 - 媒体资源增删操作，包括：
+  
   - 创建媒体资源。
   - 将媒体资源放入回收站。
   - 永久删除媒体资源。
-
 - 相册相关操作，包括：
+  
   - 创建用户相册。
   - 删除用户相册。
   - 隐藏相册。
   - 设置收藏和取消收藏。
   - 使用截屏和录屏相册。
+
 <!--DelEnd-->
 
 ## 亮点/特征
@@ -71,3 +81,6 @@ Media Library Kit（媒体文件管理服务）提供了管理相册和媒体文
 ## 框架原理
 
 媒体库接收用户对媒体资产的获取与变更请求，进行请求合法性检查和权限校验，通过后与数据库进行交互，并返回请求结果。
+
+<!--RP3--><!--RP3End-->
+

@@ -582,13 +582,13 @@ export class Mover {
 
 **ArkTS-Sta示例：**
 
-<!-- @[rdb_Mover](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Mover.ets) -->
+<!-- @[rdb_Mover](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Mover.ets) -->   
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 
 export class Mover {
-  async move(eStore: relationalStore.RdbStore, cStore: relationalStore.RdbStore) {
+  async move(eStore: relationalStore.RdbStore, cStore: relationalStore.RdbStore): Promise<void> {
     if (eStore != null && cStore != null) {
       let predicates = new relationalStore.RdbPredicates('employee');
       let resultSet = await cStore.query(predicates);
@@ -631,7 +631,7 @@ export class Store {
       rdbStore = await relationalStore.getRdbStore(storeInfo.context, storeInfo.config);
       if (rdbStore.version == 0) {
         await rdbStore.executeSql(SQL_CREATE_TABLE);
-        console.info(`ECDB_Encry succeeded in getting Store ：${storeInfo.storeId}`);
+        console.info(`ECDB_Encry succeeded in getting Store: ${storeInfo.storeId}`);
         rdbStore.version = 1;
       }
     } catch (e) {
@@ -711,7 +711,7 @@ export class Store {
 
 **ArkTS-Sta示例：**
 
-<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Store.ets) -->
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Store.ets) -->   
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -734,8 +734,8 @@ export class Store {
     try {
       rdbStore = await relationalStore.getRdbStore(storeInfo.context!, storeInfo.config!);
       if (rdbStore.version == 0) {
-        await rdbStore.executeSql(SQL_CREATE_TABLE);
-        console.info(`ECDB_Encry succeeded in getting Store ：${storeInfo.storeId}`);
+        await rdbStore.execute(SQL_CREATE_TABLE);
+        console.info(`ECDB_Encry succeeded in getting Store: ${storeInfo.storeId}`);
         rdbStore.version = 1;
       }
     } catch (e) {
@@ -745,7 +745,7 @@ export class Store {
     return rdbStore;
   }
 
-  async putOnedata(rdbStore: relationalStore.RdbStore) {
+  async putOnedata(rdbStore: relationalStore.RdbStore): Promise<void> {
     if (rdbStore != undefined) {
       const valueBucket: relationalStore.ValuesBucket = {
         'ID': id++,
@@ -764,7 +764,7 @@ export class Store {
     }
   }
 
-  async getDataNum(rdbStore: relationalStore.RdbStore) {
+  async getDataNum(rdbStore: relationalStore.RdbStore): Promise<void> {
     if (rdbStore != undefined) {
       try {
         let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -778,7 +778,7 @@ export class Store {
     }
   }
 
-  async deleteAlldata(rdbStore: relationalStore.RdbStore) {
+  async deleteAlldata(rdbStore: relationalStore.RdbStore): Promise<void> {
     if (rdbStore != undefined) {
       try {
         let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -792,7 +792,7 @@ export class Store {
     }
   }
 
-  async updateOnedata(rdbStore: relationalStore.RdbStore) {
+  async updateOnedata(rdbStore: relationalStore.RdbStore): Promise<void> {
     if (rdbStore != undefined) {
       try {
         let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -865,7 +865,7 @@ export let lockObserve = new SecretKeyObserver();
 
 **ArkTS-Sta示例：**
 
-<!-- @[rdb_SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ets) -->
+<!-- @[rdb_SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ets) -->   
 
 ``` TypeScript
 import { ECStoreManager } from './ECStoreManager';
@@ -893,7 +893,7 @@ export class SecretKeyObserver {
     this.storeManager = storeManager;
   }
 
-  updateLockStatus(code: Double) {
+  updateLockStatus(code: Double): void {
     if (this.lockStatus === SecretStatus.Lock) {
       this.onLock();
     } else {
@@ -905,7 +905,7 @@ export class SecretKeyObserver {
   private storeManager: ECStoreManager = new ECStoreManager();
 }
 
-export let lockObserve = new SecretKeyObserver();
+export let lockObserve: SecretKeyObserver = new SecretKeyObserver();
 ```
 
 
@@ -991,7 +991,7 @@ export class ECStoreManager {
 
 **ArkTS-Sta示例：**
 
-<!-- @[rdb_ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ets) -->
+<!-- @[rdb_ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ets) -->   
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -1185,7 +1185,7 @@ export default class EntryAbility extends UIAbility {
 
 **ArkTS-Sta示例：**
 
-<!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/entryability/EntryAbility.ets) -->   
 
 ``` TypeScript
 import UIAbility from '@ohos.app.ability.UIAbility';
@@ -1204,15 +1204,15 @@ import { application, contextConstant } from '@kit.AbilityKit';
 
 const DOMAIN = 0x0000;
 
-export let storeManager = new ECStoreManager();
+export let storeManager: ECStoreManager = new ECStoreManager();
 
-export let e_secretKeyObserver = new SecretKeyObserver();
+export let e_secretKeyObserver: SecretKeyObserver = new SecretKeyObserver();
 
 let mover = new Mover();
 let subscriber: commonEventManager.CommonEventSubscriber | undefined;
 
 export function createCB(err: BusinessError | null,
-  commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined) {
+  commonEventSubscriber: commonEventManager.CommonEventSubscriber | undefined): void {
   if (!err) {
     console.info('ECDB_Encrypt createSubscriber');
     subscriber = commonEventSubscriber;
@@ -1255,7 +1255,7 @@ class EntryAbility extends UIAbility {
       storeId: 'cstore.db'
     };
     application.createModuleContext(this.context, 'entry').then((eContext) => {
-      eContext.area = contextConstant.AreaMode.EL5;
+      eContext.createAreaModeContext(contextConstant.AreaMode.EL5);
       eInfo = {
         context: eContext,
         config: {
@@ -1422,7 +1422,7 @@ struct Index {
 
 **ArkTS-Sta示例：**
 
-<!-- @[rdb_encryptedEStoreGuidelines_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets) -->
+<!-- @[rdb_encryptedEStoreGuidelines_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/RelationalStore/RdbStoreSta/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets) -->   
 
 ``` TypeScript
 import {

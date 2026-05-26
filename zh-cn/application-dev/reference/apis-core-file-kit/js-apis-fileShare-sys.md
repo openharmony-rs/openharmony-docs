@@ -320,7 +320,7 @@ getSharedDirectoryInfo(): Promise&lt;Array&lt;SharedDirectoryInfo&gt;&gt;
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201      | Permission verification failed.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |
@@ -398,7 +398,7 @@ grantSharedDirectoryPermission(): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201      | Permission verification failed.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |
@@ -470,7 +470,7 @@ revokeSharedDirectoryPermission(): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
-| 201      | Permission verification failed.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | The caller is not a system application.|
 | 801      | Capability not supported. |
 | 13900001      | Operation not permitted. |
@@ -546,7 +546,7 @@ ArkTS-Sta: revokePermission(tokenID: int): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
@@ -630,7 +630,7 @@ ArkTS-Sta: revokePermission(tokenID: int, policies: Array&lt;PolicyInfo&gt;): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 如果存在URI撤销授权失败，则抛出13900001错误码，且失败URI信息将在抛出异常data属性中以Array<[PolicyErrorResult](js-apis-fileShare.md#policyerrorresult11)>形式提供错误信息。
 
@@ -744,7 +744,7 @@ ArkTS-Sta: getPersistentPolicy(tokenID: int): Promise&lt;Array&lt;PolicyInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |

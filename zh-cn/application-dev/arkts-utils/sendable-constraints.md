@@ -1,7 +1,7 @@
 # Sendable使用规则与约束
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -493,7 +493,7 @@ let a2: SendableA = new A() as SendableA; // 编译报错
 
 ### 箭头函数不可标记为Sendable
 
-箭头函数不支持\@Sendable装饰器，因此它是非Sendable函数，因此不支持共享。
+箭头函数不支持\@Sendable装饰器，因此它是非Sendable函数，不支持共享。
 
 **正例：**
 <!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/arrowfunctions/src/main/ets/pages/Index.ets) -->

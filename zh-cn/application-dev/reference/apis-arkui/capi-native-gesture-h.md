@@ -38,6 +38,8 @@
 | [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)   | ArkUI_TouchRecognizerHandleArray | 定义触摸识别器句柄数组。      |
 | [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)    | ArkUI_GestureRecognizerHandle  | 提供手势识别器句柄类型对象定义。   |
 | [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)    | ArkUI_GestureRecognizerHandleArray  | 提供手势识别器句柄类型数组对象定义。   |
+| [ArkUI_NativeGestureAPI_3](capi-arkui-nativemodule-arkui-nativegestureapi-3.md)               | ArkUI_NativeGestureAPI_3 | 定义手势模块接口集合。包含[ArkUI_NativeGestureAPI_1](capi-arkui-nativemodule-arkui-nativegestureapi-1.md)、[ArkUI_NativeGestureAPI_2](capi-arkui-nativemodule-arkui-nativegestureapi-2.md)结构体中的手势接口及新增手势接口。      |
+| [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md) | ArkUI_ParallelGestureEvent  | 定义并行手势事件，用于并行手势事件的回调函数[setGestureParallelTo](capi-arkui-nativemodule-arkui-nativegestureapi-3.md#setgestureparallelto)。 |
 
 ### 枚举
 
@@ -1645,7 +1647,7 @@ ArkUI_ErrorCode OH_ArkUI_PanGesture_SetDistanceMap(ArkUI_GestureRecognizer* reco
 | -- | -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 手势识别器指针。 |
 | int size | 手势最小滑动阈值数组的大小。 |
-| int* toolTypeArray | 指向输入事件的工具类型数组的指针。当设置[UI_INPUT_EVENT_TOOL_TYPE_XXX](./capi-ui-input-event-h.md#anonymous2)以外的值时，设置不生效。 |
+| int* toolTypeArray | 指向输入事件的工具类型数组的指针。当设置[UI_INPUT_EVENT_TOOL_TYPE](./capi-ui-input-event-h.md#anonymous2)_XXX以外的值时，设置不生效。 |
 | double* distanceArray | 指向最小滑动阈值数组的指针。单位为px。 |
 
 **返回：**

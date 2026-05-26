@@ -52,8 +52,7 @@ obtainingEnrolledCredentialInformation() {
     Logger.info('get current enrolled state successfully.');
     return enrolledState.credentialDigest;
   } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`get current enrolled state failed, code is ${err?.code}, message is ${err?.message}`);
+      Logger.error(`get current enrolled state failed, code is ${error.code}, message is ${error.message}`);
     return false;
   }
 }

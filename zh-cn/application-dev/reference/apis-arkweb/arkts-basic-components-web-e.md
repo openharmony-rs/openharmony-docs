@@ -28,11 +28,11 @@ ConsoleMessage的信息级别。
 
 | 名称    | 值 | 说明    |
 | ----- | -- | ---- |
-| ArkTS-Dyn: Debug <br>ArkTS-Sta: DEBUG| 0 | 调试级别。 |
-| ArkTS-Dyn: Error <br>ArkTS-Sta: ERROR| 1 | 错误级别。 |
+| ArkTS-Dyn: Debug <br>ArkTS-Sta: DEBUG| 1 | 调试级别。 |
+| ArkTS-Dyn: Error <br>ArkTS-Sta: ERROR| 4 | 错误级别。 |
 | ArkTS-Dyn: Info  <br>ArkTS-Sta: INFO| 2 | 消息级别。 |
-| ArkTS-Dyn: Log  <br>ArkTS-Sta: LOG| 3 | 日志级别。 |
-| ArkTS-Dyn: Warn <br>ArkTS-Sta: WARN| 4 | 警告级别。 |
+| ArkTS-Dyn: Log  <br>ArkTS-Sta: LOG| 5 | 日志级别。 |
+| ArkTS-Dyn: Warn <br>ArkTS-Sta: WARN| 3 | 警告级别。 |
 
 ## ConsoleMessageSource<sup>23+</sup>
 
@@ -549,7 +549,7 @@ Web布局模式的配置。
 | 名称          | 值 | 说明                 |
 | ----------- | -- | ------------------ |
 | NONE        | 0 | 默认值，按vsync调度流程绘制。         |
-| SCROLLBY_FROM_ZERO_OFFSET | 1 | 在使用scrollby（只支持带滚动偏移量）且Web页面滚动偏移量为0，渲染流程跳过vsync调度直接绘制。 |
+| SCROLLBY_FROM_ZERO_OFFSET | 1 | 在使用scrollBy（只支持带滚动偏移量）且Web页面滚动偏移量为0，渲染流程跳过vsync调度直接绘制。 |
 
 ## PdfLoadResult<sup>20+</sup>
 

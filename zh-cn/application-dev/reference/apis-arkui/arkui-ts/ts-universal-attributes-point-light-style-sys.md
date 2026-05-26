@@ -14,7 +14,9 @@
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 只有Image、Column、Flex、Row、Stack支持设置点光源。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 只有[Image](./ts-basic-components-image.md)、[Column](./ts-container-column.md)、[Flex](./ts-container-flex.md)、[Row](./ts-container-row.md)、[Stack](./ts-container-stack.md)支持设置点光源。
 
 ## PointLightStyle
 
@@ -32,7 +34,7 @@
 | ----------- | ----------------------------------------------------------- | ---- |  ---- | ------------------------------------------------------------ |
 | lightSource | [LightSource](#lightsource对象说明)                         | 否   |  是   | 设置光源属性，光源会影响到周围标记为可以被照亮的组件，并在组件上产生光效。<br/>默认值：无光源 |
 | illuminated | [IlluminatedType](ts-appendix-enums-sys.md#illuminatedtype) | 否   |  是  | 设置当前组件是否可以被光源照亮，以及被照亮的类型。<br/>默认值：IlluminatedType.NONE |
-| bloom       | number                                                      | 否   |  是   | 设置组件的发光强度，建议取值范围为0-1。<br/>默认值：0        |
+| bloom       | number                                                      | 否   |  是   | 设置组件的发光强度，取值范围为[0, 1]，超出取值范围时会转换为默认值。<br/>默认值：0        |
 
 ## LightSource对象说明
 
@@ -55,6 +57,8 @@
 | color<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 光源颜色。<br/>默认值：Color.White                       |
 
 ## 示例
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -108,3 +112,64 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, State } from '@kit.ArkUI';
+import { Row, Flex, TouchEvent, TouchType, FlexAlign, Color, SizeOptions, RowOptions, IlluminatedType } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State lightIntensity: number = 0;
+  @State bloomValue: number = 0;
+
+  build() {
+    Row({ space: 20 } as RowOptions) {
+      Flex()
+        .pointLight({ illuminated: IlluminatedType.BORDER })
+        .backgroundColor(0x307af7)
+        .size({ width: 50, height: 50 } as SizeOptions)
+        .borderRadius(25)
+
+      Flex()
+        .pointLight({
+          lightSource: {
+            intensity: this.lightIntensity,
+            positionX: "50%",
+            positionY: "50%",
+            positionZ: 80
+          },
+          bloom: this.bloomValue
+        })
+        .animation({ duration: 333 })
+        .backgroundColor(0x307af7)
+        .size({ width: 50, height: 50 } as SizeOptions)
+        .borderRadius(25)
+        .onTouch((event: TouchEvent) => {
+          if (event.type === TouchType.Down) {
+            this.lightIntensity = 2;
+            this.bloomValue = 1;
+          } else if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
+            this.lightIntensity = 0;
+            this.bloomValue = 0;
+          }
+        })
+
+      Flex()
+        .pointLight({ illuminated: IlluminatedType.BORDER_CONTENT })
+        .backgroundColor(0x307af7)
+        .size({ width: 50, height: 50 } as SizeOptions)
+        .borderRadius(25)
+    }
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor(Color.Black)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![point_light_style](./figures/point_light_style.PNG)

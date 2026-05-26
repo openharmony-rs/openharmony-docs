@@ -1,4 +1,10 @@
-# @ohos.arkui.stateManagement (状态管理)
+# @ohos.arkui.stateManagement (状态管理) (ArkTS-Sta)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926; @liwenzhen3-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 状态管理模块提供了应用程序动态刷新、UI数据存储、使能数据观察等能力。
 
@@ -605,14 +611,43 @@ struct Index {
 }
 ```
 
+## StorageDefaultSubCreators
+
+type StorageDefaultSubCreators = Map\<Class, StorageDefaultCreator\<object\>\>
+
+保存对象类型及其默认构造器的Map。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { StorageDefaultSubCreators, ObservedV2, Trace } from '@kit.ArkUI';
+@ObservedV2
+class Info {
+  @Trace age: int = 25;
+  @Trace name: string = 'Tom';
+}
+const creators: StorageDefaultSubCreators = new StorageDefaultSubCreators([
+  [ Class.from<Info>(), () => new Info() ]
+]);
+```
 
 ## ConnectOptions
 
 globalConnect参数类型。
 
-**起始版本：** 26.0.0
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称           | 类型                       | 只读 | 可选 | 说明                                                                                                                                                                                                                                      |
 | -------------- | -------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -623,6 +658,7 @@ globalConnect参数类型。
 | toJson         | [ToJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#tojsontypet)      | 否 | 是   | 转换存储对象到JSON格式对象的函数。                      |
 | fromJson       | [FromJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#fromjsontypet)  | 否 | 是   | 转换JSON格式对象到存储对象的函数。 |
 | enableAutoSave       | boolean   | 否   | 是   | 是否自动持久化存储数据，默认值为true。 |
+| defaultSubCreators | [StorageDefaultSubCreators](#storagedefaultsubcreators) | 否 | 是 | 保存对象类型及其默认构造器的Map。用于恢复内层对象数据。默认值为undefined。 |
 
 ## BaseConnectOptions
 
@@ -642,15 +678,25 @@ connect参数类型。
 
 UIUtils是状态管理提供的工具，用于处理可观察数据。
 
+**ArkTS-Sta起始版本：** 23
+
 ### makeObserved
 
-static makeObserved\<T extends object\>(source: T): T
+static makeObserved\<T extends object \| null \| undefined\>(source: T): T
 
 将不可观察数据转化为可观察数据。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
 
+> **说明：**
+>
+> 默认情况下，返回对象支持深度观察，可观察嵌套属性变化。
+>
+> 如果传入了undefined或null，则直接返回传入值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -669,21 +715,100 @@ static makeObserved\<T extends object\>(source: T): T
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-import { UIUtils } from '@ohos.arkui.stateManagement';
-interface Info {
+import { Entry, Component, Column, Text, ClickEvent, UIUtils, Button } from '@kit.ArkUI';
+
+export interface Info {
   name: string,
-  age: number
+  age: int
 }
+
+export interface Person {
+  info: Info
+}
+
 @Entry
 @Component
 struct Index {
-  info: Info = UIUtils.makeObserved({ name: 'Jack', age: 25} as Info) as Info;
+  // 深度观察
+  person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person) as Person;
+
   build() {
     Column() {
-      Text(`info.name: ${this.info.name}`)
-        .onClick((e: ClickEvent) => {
-          this.info.name = 'Tom';
+      Text(`info.name: ${this.person.info.name}`)
+      Button('change name')
+        .onClick(() => {
+          this.person.info.name = 'Jackson'; // 由于是深度观察，第二层属性变化也会触发刷新。
+        })
+      Button('replace info')
+        .onClick(() => {
+          this.person.info = { name: 'Tom', age: 25 } as Info; // 触发刷新，属于第一层属性变化
+        })
+    }
+  }
+}
+```
+
+### makeObserved
+
+static makeObserved\<T extends object \| null \| undefined\>(source: T, allowDeep: boolean): T
+
+将不可观察数据转化为可观察数据，并通过`allowDeep`控制观察深度。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
+
+> **说明：**
+>
+> 如果传入了undefined或null，则直接返回传入值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| source | T | 是 | 数据源对象。 |
+| allowDeep | boolean | 是 | 是否深度观察。传入`true`时为深度观察；传入`false`时仅观察第一层属性变化。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| T | 可观察的数据对象。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Text, ClickEvent, UIUtils, Button } from '@kit.ArkUI';
+
+export interface Info {
+  name: string,
+  age: int
+}
+
+export interface Person {
+  info: Info
+}
+
+@Entry
+@Component
+struct Index {
+  // 一层观察
+  person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person, false) as Person;
+
+  build() {
+    Column() {
+      Text(`info.name: ${this.person.info.name}`)
+      Button('change name')
+        .onClick(() => {
+          this.person.info.name = 'Jackson'; // 不触发刷新，属于第二层属性变化
+        })
+      Button('replace info')
+        .onClick(() => {
+          this.person.info = { name: 'Tom', age: 25 } as Info; // 触发刷新，属于第一层属性变化
         })
     }
   }
@@ -696,9 +821,11 @@ static getTarget\<T extends object\>(source: T): T
 
 获取状态管理框架包装前的原始对象。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -744,9 +871,9 @@ static getLifecycle\<T extends IVariableOwner\>(customComponent: T): CustomCompo
 
 getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 24
 
@@ -935,7 +1062,11 @@ static addMonitor(valueCallback: MonitorValueCallback | MonitorValueCallback[], 
 
 动态地为状态变量注册监听。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -989,13 +1120,79 @@ struct Page {
 }
 ```
 
+### addMonitor
+
+static addMonitor(valueInfo: MonitorValueInfo | MonitorValueInfo[], monitorCallback: MonitorCallback, options?: MonitorBaseOptions): IMonitorDecoratedVariable
+
+动态地为状态变量注册监听。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名          | 类型                                                         | 必填 | 说明                                                         |
+| --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| valueCallback   | [MonitorValueInfo](#monitorvalueinfo) \| MonitorValueInfo[]  | 是   | 监听变量的信息或其数组。                                     |
+| monitorCallback | [MonitorCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorcallback) | 是   | 触发监听时调用的回调函数。                                   |
+| options         | [MonitorBaseOptions](#monitorbaseoptions)                    | 否   | 设置函数的行为，默认行为详见[MonitorBaseOptions](#monitorbaseoptions)。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| [IMonitorDecoratedVariable](./arkui-ts/ts-state-management-monitor-static.md#imonitordecoratedvariable) | 指代监听关系的句柄。 |
+
+```ts
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: int = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+  // 注册监听关系
+    this.monitor = UIUtils.addMonitor({ valueCallback: () => this.value, path: 'value' }, this.onChange);
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<int>(path)?.before} to ${monitor.value<int>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 值修改时触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+```
+
 ### clearMonitor<sup>23+</sup>
 
 static clearMonitor(monitor: IMonitorDecoratedVariable): void
 
 动态地为状态变量解绑监听。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1098,11 +1295,39 @@ struct Index {
 }
 ```
 
+### getCustomComponentContext
+
+static getCustomComponentContext\<T extends IVariableOwner\>(customComponent: T): CustomComponentContext
+
+获取自定义组件的上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：**26.0.0
+
+**参数：**
+
+| 参数名          | 类型 | 必填 | 说明             |
+| --------------- | ---- | ---- | ---------------- |
+| customComponent | T    | 是   | 自定义组件对象。 |
+
+**返回值：**
+
+| 类型                                              | 说明                         |
+| ------------------------------------------------- | ---------------------------- |
+| [CustomComponentContext](#customcomponentcontext) | 传入自定义组件的上下文信息。 |
+
 ## MonitorOptions<sup>23+</sup>
 
 设置监听的行为。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
@@ -1207,7 +1432,11 @@ type GetterCallback\<T\> = () => T
 
 获取绑定值的回调方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1255,7 +1484,11 @@ type SetterCallback\<T\> = (newValue: T) => void
 
 设置绑定值的回调方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1313,12 +1546,22 @@ struct MyApp {
 
 只读数据绑定的泛型类可以绑定任意类型的数据（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 ### value
 get value(): T
 
 提供get访问器以获取当前绑定值。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1348,12 +1591,22 @@ function CustomButton(readOnlyParam: Binding<number>) {
 
 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 ### value
 set value(newValue: T)
 
 提供set访问器，用于设置当前绑定值。构造MutableBinding类实例时必须提供set访问器，否则会触发运行时错误。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1453,3 +1706,464 @@ function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: Muta
 | ------ | ---- | ---- |---- | ------------ |
 | elementName | string  | 否 | 否   | 组件的名称。 |
 | elementId | int | 否 | 否   | 组件的ID。 |
+
+## MonitorValueInfo
+
+监听变量信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| valueCallback | [MonitorValueCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorvaluecallback) | 否   | 否   | 获取变量的回调。                                             |
+| path          | string                                                       | 否   | 是   | 路径信息。未传入将使用自动生成的默认值。                     |
+| observeProps  | boolean                                                      | 否   | 是   | 是否开启属性观察。<br>true：开启属性观察；false：不开启属性观察。<br>默认值：false。 |
+
+## MonitorBaseOptions
+
+监听基础选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| isSynchronous | boolean                                                      | 否   | 是   | 是否同步回调。<br>true：同步回调；false：异步回调。<br>默认值：false。 |
+| owner         | [IVariableOwner](./arkui-ts/ts-state-management-monitor-static.md#ivariableowner) | 否   | 是   | 指定冻结的组件，仅能传入[@ComponentV2](../../ui/state-management-static/arkts-static-componentv2.md)装饰的自定义组件。默认值为`undefined`，即不指定冻结的组件。 |
+
+## CustomComponentContext
+
+自定义组件的上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+## ObservedArray\<T\>
+
+继承自Array\<T\>，为可观察API操作的Array对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr1 = new ObservedArray<int>();
+```
+
+### constructor
+
+constructor(first: T, ...d: T[])
+
+使用元素列表初始化ObservedArray实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| first | T | 是 | 第一个元素。 |
+| d | T[] | 否 | 其余元素组成的数组，默认为[]。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr2 = new ObservedArray<int>(1, 2, 3);
+```
+
+### constructor
+
+constructor(arrayLen: int, initializer: ObservedArrayInitializer\<T\>)
+
+使用指定的长度和初始化函数初始化ObservedArray实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| arrayLen | int | 是 | 数组初始长度。 |
+| initializer | [ObservedArrayInitializer\<T\>](#observedarrayinitializer) | 是 | 数组元素初始化函数。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr3 = new ObservedArray<int>(3, (index: int): int => index * 10);
+```
+
+## ObservedArrayInitializer
+
+type ObservedArrayInitializer\<T\> = (index: int) => T
+
+ObservedArray的元素初始化函数类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| index | int | 是 | 当前初始化元素的索引。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| T | 对应索引位置的元素值。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let initializer = (index: int): int => index;
+let arr = new ObservedArray<int>(4, initializer);
+```
+
+## ObservedMap\<K, V\>
+
+继承自Map\<K, V\>，为可观察API操作的Map对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map1 = new ObservedMap<int, string>();
+```
+
+### constructor
+
+constructor(initialCapacity: int)
+
+使用指定的容量创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| initialCapacity | int | 是 | 指定的初始容量。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map2 = new ObservedMap<int, string>(16);
+```
+
+### constructor
+
+constructor(entries: [K, V][])
+
+使用键值对数组创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| entries | [K, V][] | 是 | 初始键值对数组。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map3 = new ObservedMap<int, string>([[0, 'a'], [1, 'b']]);
+```
+
+### constructor
+
+constructor(map: Map\<K, V\>)
+
+使用已有Map对象创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| map | Map\<K, V\> | 是 | 初始Map对象。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map4 = new ObservedMap<int, string>(new Map<int, string>([[0, 'a'], [1, 'b']]));
+```
+
+## ObservedSet\<K\>
+
+继承自Set\<K\>，为可观察API操作的Set对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set1 = new ObservedSet<int>();
+```
+
+### constructor
+
+constructor(bucketsCount: int)
+
+使用指定的容量创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| bucketsCount | int | 是 | 指定的初始容量。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set2 = new ObservedSet<int>(16);
+```
+
+### constructor
+
+constructor(values: K[])
+
+使用元素数组创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| values | K[] | 是 | 初始元素数组。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set3 = new ObservedSet<int>([1, 2, 3]);
+```
+
+### constructor
+
+constructor(set: Set\<K\>)
+
+使用已有Set对象创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| set | Set\<K\> | 是 | 初始Set对象。 |
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set4 = new ObservedSet<int>(new Set<int>([1, 2, 3]));
+```
+
+## ObservedDate
+
+继承自Date，为可观察API操作的Date对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedDate } from '@kit.ArkUI';
+
+let date1 = new ObservedDate();
+```
+
+### constructor
+
+constructor(value: long | string | Date)
+
+使用指定初始值创建ObservedDate实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value | long \| string \| Date | 是 | 初始时间值。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedDate } from '@kit.ArkUI';
+
+let date2 = new ObservedDate('2021-08-08');
+let date3 = new ObservedDate(new Date('2021-08-08'));
+```

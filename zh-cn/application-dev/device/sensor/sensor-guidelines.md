@@ -131,6 +131,8 @@
 
    通过on()接口，实现对传感器的持续监听，传感器上报周期interval设置为100000000纳秒。
 
+   ArkTS-Dyn示例：
+
    <!-- @[sensor_js_on_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
@@ -145,7 +147,25 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+    <!-- @[sensor_js_on_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     sensor.onAccelerometerChange((data: sensor.AccelerometerResponse) => {
+         console.info(TAG + "Succeeded in obtaining data. x: " + data.x + " y: " + data.y + " z: " + data.z);
+         // ...
+     }, { interval: 100000000 });
+   } catch (error) {
+       let e: BusinessError = error as BusinessError;
+       console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
    第三个参数还可以传入SensorInfoParam，传递deviceId、sensorIndex。
+
+   ArkTS-Dyn示例：
 
    <!-- @[sensor_js_on_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -161,9 +181,27 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[sensor_js_on_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try { 
+     sensor.onAccelerometerChange((data: sensor.AccelerometerResponse) => {
+           console.info("Succeeded in obtaining data. x: " + data.x + " y: " + data.y + " z: " + data.z);
+           // ...
+     }, { interval: 100000000, sensorInfoParam: { deviceId: -1 } });
+   } catch (error) {
+       let e: BusinessError = error as BusinessError;
+       console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
    ![输入图片说明](figures/002.png)
 
    通过once()接口，实现对传感器的一次监听。
+
+   ArkTS-Dyn示例：
 
    <!-- @[sensor_js_once_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -179,11 +217,29 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+     <!-- @[sensor_js_once_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     sensor.onceAccelerometerChange((data: sensor.AccelerometerResponse) => {
+         console.info("Succeeded in obtaining data. x: " + data.x + " y: " + data.y + " z: " + data.z);
+         // ...
+     });
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`Failed to invoke once. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
    ![输入图片说明](figures/003.png)
 
 7. 取消持续监听。
 
    取消持续监听，此场景下未订阅而取消监听为异常行为，需处理异常。
+
+   ArkTS-Dyn示例：
 
    <!-- @[sensor_js_off_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -196,7 +252,22 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[sensor_js_off_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     sensor.offAccelerometerChange();
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`Failed to invoke off. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
    根据SensorInfoParam取消监听。
+
+   ArkTS-Dyn示例：
 
    <!-- @[sensor_js_off_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -209,9 +280,24 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[sensor_js_off_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     sensor.offAccelerometerChange({ deviceId: -1 });
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`Failed to invoke off. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
 8. 动态传感器状态的监听，在收到设备下线事件通知时，用户应主动调用off关闭该设备上的传感器。 
 
    注册监听, SensorStatusEvent 会返回事件时间戳、传感器ID、传感器索引、上线或下线、设备id、设备名称等值。
+
+   ArkTS-Dyn示例：
 
    <!-- @[sensor_js_on_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -229,13 +315,47 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+    <!-- @[sensor_js_on_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     sensor.onSensorStatusChange((data: sensor.SensorStatusEvent) => {
+         console.info(`timestamp: ${data.timestamp},
+         deviceId: ${data.deviceId} deviceName: ${data.deviceName}
+         sensorId: ${data.sensorId} sensorIndex:${data.sensorIndex} isSensorOnline: ${data.isSensorOnline}`);
+     });
+     // ···
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
    取消监听。
+
+   ArkTS-Dyn示例：
 
    <!-- @[sensor_js_off_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
      sensor.off('sensorStatusChange');
+     // ···
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[sensor_js_off_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     sensor.offSensorStatusChange();
      // ···
    } catch (error) {
      let e: BusinessError = error as BusinessError;

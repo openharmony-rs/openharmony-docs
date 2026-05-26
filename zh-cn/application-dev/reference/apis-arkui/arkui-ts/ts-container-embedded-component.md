@@ -12,9 +12,13 @@ EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIE
 
 > **说明：**
 >
-> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>- 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>- 本模块接口仅可在Stage模型下使用。
+>
+>- API版本26.0.0之前，EmbeddedComponent组件获焦时，其拉起的EmbeddedUIExtensionAbility进程内焦点直接下发到第一个可获焦子节点。从API版本26.0.0开始，
+> 如果外部走焦到EmbeddedUIExtensionAbility，焦点正常下发到第一个可获焦子节点。
+> 如果由于层级页面切换导致焦点转移到EmbeddedUIExtensionAbility，则与UIAbility保持统一规则。两者在拉起一个层级页面且该页面未设置[defaultFocus](ts-universal-attributes-focus.md#defaultfocus9)、未[主动请求焦点](../../../ui/arkts-common-events-focus-event.md#主动获焦失焦)时，焦点均停留在根容器，不下发到子节点。
 
 ## 使用约束
 
@@ -98,7 +102,7 @@ ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
 ArkTS-Dyn: onError(callback: ErrorCallback)
 
-ArkTS-Sta: onError(callback: ErrorCallback | undefined)
+ArkTS-Sta: onError(callback: ErrorCallback\<BusinessError> | undefined)
 
 被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
@@ -118,7 +122,27 @@ ArkTS-Sta: onError(callback: ErrorCallback | undefined)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---- |
-| callback | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
+| callback | ArkTS-Dyn: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta: [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。<br/>ArkTS-Sta模式下，可传入undefined，表示取消回调函数。 |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<EmbeddedComponentAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置EmbeddedComponent组件的属性修改器。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<EmbeddedComponentAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是 | EmbeddedComponent组件的属性修改器。取值为undefined时，不使用attributeModifier。 |
 
 > **说明：**
 >
@@ -133,19 +157,19 @@ ArkTS-Sta: onError(callback: ErrorCallback | undefined)
 
 用于表示被拉起的EmbeddedUIExtensionAbility的返回结果。
 
+### 属性
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
-
-### 属性
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| code | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码。 |
+| code | number | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码。 |
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被拉起EmbeddedUIExtensionAbility退出时返回的数据。 |
 
 ## 示例（加载EmbeddedComponent）

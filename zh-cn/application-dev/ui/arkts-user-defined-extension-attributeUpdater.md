@@ -8,7 +8,7 @@
 
 ## 概述
 
-在大量属性频繁更新的场景下，使用状态变量可能导致前端状态管理的计算量过大，并且需要对单个组件进行全量属性更新。尽管可以通过[AttributeModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md)机制实现按需更新属性，但前端仍会采用一定的diff和reset策略，这可能带来性能问题。
+在大量属性频繁更新的场景下，使用状态变量可能导致前端状态管理的计算量过大，并且需要对单个组件进行全量属性更新。尽管可以通过AttributeModifier[（动态属性设置）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md)机制实现按需更新属性，但前端仍会采用一定的diff和reset策略，这可能带来性能问题。
 
 `AttributeUpdater`作为一个特殊的`AttributeModifier`，不仅继承了`AttributeModifier`的功能，还提供了直接获取属性对象的能力。通过属性对象，开发者能够直接更新对应属性，无需经过状态变量。开发者可以利用`AttributeUpdater`实现自定义的更新策略，从而进一步提升属性更新的性能。
 
@@ -63,6 +63,8 @@ export declare class AttributeUpdater<T> implements AttributeModifier<T> {
 
 组件初始化完成之后，开发者可以通过`AttributeUpdater`实例的`attribute`属性方法，获取到属性对象。通过属性对象直接修改属性，会立即触发组件属性的更新。
 
+ArkTS-Dyn示例：
+
 <!-- @[att_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSUserAttributeUpdater/entry/src/main/ets/pages/AttModifier.ets) -->
 
 ``` TypeScript
@@ -98,7 +100,46 @@ struct updaterDemo {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+``` TypeScript
+import { Column, Component, Entry, Row, Button, ButtonAttribute } from '@kit.ArkUI';
+import { AttributeUpdater } from '@ohos.arkui.modifier'
+
+class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
+  // 首次绑定时触发initializeModifier方法，进行属性初始化
+  initializeModifier(instance: ButtonAttribute): void {
+    instance.backgroundColor('#2787D9')
+      .width('50%')
+      .height(30)
+  }
+}
+
+@Entry
+@Component
+struct updaterDemo {
+  modifier: MyButtonModifier = new MyButtonModifier()
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+          .onClick(() => {
+            // 通过attribute，直接修改组件属性，并立即触发组件属性更新
+            this.modifier.attribute?.backgroundColor('#17A98D').width('30%')
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![AttributeUpdater](figures/AttributeUpdater.gif)
+
 
 
 ## 通过modifier更新组件的构造参数
@@ -149,7 +190,7 @@ struct updaterDemo {
 
 ArkTS-Sta示例：
 
-```ts
+``` TypeScript
 // index.ets
 
 import { Entry, Text, Column, Row, Component, Button, ClickEvent, TextAttribute,Color, TextAlign } from '@ohos.arkui.component';

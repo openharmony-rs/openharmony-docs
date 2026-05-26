@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng; @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 - ArkTS API<!--arkts-arkts-->
   - @arkts.collections (ArkTS容器集)<!--js-apis-arkts-collections-->
@@ -37,6 +37,7 @@
   - [@ohos.fastbuffer (FastBuffer)](js-apis-fastbuffer.md)
   - [@ohos.process (获取进程相关的信息)](js-apis-process.md)
   - [@ohos.taskpool (启动任务池)](js-apis-taskpool.md)
+  - [@ohos.transfer (系统对象转换工具)](js-apis-transfer.md)
   - [@ohos.uri (URI字符串解析)](js-apis-uri.md)
   - [@ohos.url (URL字符串解析)](js-apis-url.md)
   - [@ohos.util (util工具函数)](js-apis-util.md)
@@ -60,6 +61,19 @@
   - [@ohos.worker (启动一个Worker)(系统接口)](js-apis-worker-sys.md)
   <!--DelEnd-->
   - [@ohos.xml (xml解析与生成)](js-apis-xml.md)
+  - builtin相关接口（ArkTS-Sta）<!--js-apis-arkts-builtin-->
+    - ArkTS语言基本类型<!--js-apis-arkts-primitive-types-->
+      - [Array](arkts-sta-array.md)
+      - [Boolean](arkts-sta-boolean.md)
+      - [Byte](arkts-sta-byte.md)
+      - [Char](arkts-sta-char.md)
+      - [Deepcopy (深拷贝)](arkts-sta-deepcopy.md)
+      - [Int](arkts-sta-int.md)
+      - [JSON](arkts-sta-json.md)
+      - [Map](arkts-sta-map.md)
+      - [Set](arkts-sta-set.md)
+      - [jsonx](arkts-sta-jsonx.md)
+      - [reflect](arkts-sta-reflect.md)
   - 已停止维护的接口<!--arkts-arkts-dep-->
     - [@ohos.util.Vector (线性容器Vector)](js-apis-vector.md)
 - 错误码<!--arkts-arkts-errcode-->

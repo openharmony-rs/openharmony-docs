@@ -47,7 +47,7 @@ equalTo(field: string, value: ValueType): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -84,7 +84,7 @@ and(): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -115,7 +115,7 @@ orderByAsc(field: string): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -150,7 +150,7 @@ orderByDesc(field: string): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -187,7 +187,7 @@ ArkTS-Sta: limit(total: int, offset: int): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -227,7 +227,7 @@ in(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-**原子化服务API：**  从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：**  从API version 20开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 10
 

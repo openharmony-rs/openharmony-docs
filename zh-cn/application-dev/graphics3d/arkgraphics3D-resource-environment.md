@@ -26,6 +26,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
 
    调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。随后构建SceneOptions对象，指定场景及渲染模式，用于后续通过Component3D将场景内容渲染到界面中。
 
+   ArkTS-Dyn示例：
    <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
@@ -46,22 +47,54 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+   ``` TypeScript
+   if (this.scene === null) {
+     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+     Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
+       .then(async (result: Scene) => {
+         // 全局保存已加载的场景，以便复用
+         globalScene = result;
+         this.scene = result;
+         this.sceneOpt = { scene: this.scene!, modelType: ModelType.SURFACE } as SceneOptions;
+         this.rf = this.scene!.getResourceFactory();
+         // ...
+       })
+       .catch((error: Error) => {
+         console.error('init error: ' + error + '.');
+       });
+   }
+   ```
+
 3. 初始化相机。
 
    创建相机对象并设置相机启用状态与观察位置，用于后续展示模型。
 
+   ArkTS-Dyn示例：
    <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-   
+
    ``` TypeScript
    this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
    this.cam.enabled = true;
    this.cam.position.z = 5;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+   ``` TypeScript
+   this.cam = await this.rf!.createCamera({ 'name': 'Camera1' });
+   this.cam!.enabled = true;
+   this.cam!.position.z = 5;
+   ```
+
 4. 获取几何体节点。
 
    通过Scene.getNodeByPath()方法获取目标模型的几何体（Geometry）节点，并记录其原始材质，以便在后续修改材质后可进行回退或恢复操作。
 
+   ArkTS-Dyn示例：
    <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
@@ -71,10 +104,21 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+   ``` TypeScript
+   this.geom = this.scene!.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
+
+   // 记录原始材质
+   this.originalMat = this.geom!.mesh.subMeshes[0].material as ShaderMaterial;
+   ```
+
 5. 创建环境并绑定图片。
 
    使用SceneResourceFactory.createEnvironment()创建环境对象，并通过createImage()加载环境贴图。设置backgroundType为等距柱状投影背景，将图片绑定到environmentImage，再调整indirectDiffuseFactor等属性以控制环境光强度。
 
+   ArkTS-Dyn示例：
    <!-- @[create_environment_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
@@ -115,10 +159,43 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[create_environment_promise](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+   ``` TypeScript
+   async function createEnvironmentPromise(): Promise<Environment> {
+     // 确保在访问 sceneFactory 之前场景已加载完成
+     if (!globalScene) {
+       throw new Error('Scene is not loaded yet.');
+     }
+   
+     try {
+       let sceneFactory: SceneResourceFactory = globalScene!.getResourceFactory();
+       // 加载环境贴图资源，路径和文件名可根据项目实际资源自定义，支持资源类型包括.ktx、.jpg、.png等
+       let sceneImageParameter: SceneResourceParameters = { name: 'image', uri: $rawfile('image/Cube_BaseColor.png') };
+       let imageEntity = await sceneFactory.createImage(sceneImageParameter);
+       // 创建环境
+       let sceneEnvironmentParameter: SceneResourceParameters = { name: 'env' };
+       let envEntity = await sceneFactory.createEnvironment(sceneEnvironmentParameter);
+   
+       envEntity.backgroundType = EnvironmentBackgroundType.BACKGROUND_EQUIRECTANGULAR;
+       // 设置环境相关属性
+       envEntity.environmentImage = imageEntity;
+       envEntity.indirectDiffuseFactor.x = 1;
+       envEntity.indirectDiffuseFactor.y = 1;
+       envEntity.indirectDiffuseFactor.z = 1;
+       return envEntity;
+     } catch (error) {
+       throw new Error('Failed to create environment:' + error);
+     }
+   }
+   ```
+
 6. 应用环境到场景。
 
    在按钮点击事件中调用createEnvironmentPromise()创建环境资源，并将其赋值给场景的environment属性，使环境背景立即生效。
 
+   ArkTS-Dyn示例：
    <!-- @[environment_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
@@ -136,6 +213,28 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
          this.scene.environment = this.env;
        }
      });
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[environment_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/arkgraphic/resource.ets) -->
+
+   ``` TypeScript
+   Button('Add to Environment')
+     // ...
+     .onClick(() => {
+       console.info('Start to replace with a material of image');
+       (async () => {
+         if (!this.scene || !this.cam) {
+           return;
+         }
+         this.env = await createEnvironmentPromise();
+         if (this.env) {
+           this.scene!.environment = this.env!;
+         }
+       })().catch(error => {
+         console.error('Failed to create environment:', error);
+       });
+     })
    ```
 
 <!--RP1-->

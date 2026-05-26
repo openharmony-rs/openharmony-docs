@@ -62,7 +62,8 @@ async obtainingAuthLockState() : Promise<string> {
     Logger.info('get auth lock state successfully.');
     return authLockStateContent;
   } catch (error) {
-    const errorMessage : string = `get auth lock state failed, err code is : ${error?.code}, err message is : ${error?.message}`;
+      const errorMessage: string =
+        `get auth lock state failed, err code is : ${error.code}, err message is : ${error.message}`;
     Logger.error(errorMessage);
     return errorMessage;
   }

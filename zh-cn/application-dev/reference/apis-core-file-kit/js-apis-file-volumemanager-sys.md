@@ -1109,6 +1109,392 @@ ArkTS-Sta: partition(diskId: string, type: int, callback: AsyncCallback&lt;void&
   });
   ```
 
+## VerifyType
+
+刻录数据校验类型的枚举。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+| 名称         | 值    | 说明                 |
+| ----------- | ------- | -------------------- |
+| KEY_DATA    | 0       | 关键数据校验类型。     |
+| FULL_DATA   | 1       | 全量数据校验类型。     |
+
+## volumemanager.erase
+
+erase(volumeId: string): Promise&lt;void&gt;
+
+擦除指定卷设备，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| volumeId | string | 是   | 卷设备id。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| ---------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13600023 | Disc not erasable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let volumeId: string = "";
+volumeManager.erase(volumeId).then(() => {
+  console.info("erase successfully.");
+}).catch((error: BusinessError) => {
+  console.error("erase failed with error:" + JSON.stringify(error));
+});
+```
+
+## volumemanager.eject
+
+eject(volumeId: string): Promise&lt;void&gt;
+
+弹出指定卷设备，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| volumeId | string | 是   | 卷设备id。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| ---------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let volumeId: string = "";
+volumeManager.eject(volumeId).then(() => {
+  console.info("eject successfully.");
+}).catch((error: BusinessError) => {
+  console.error("eject failed with error:" + JSON.stringify(error));
+});
+```
+
+## volumemanager.createIsoImage
+
+createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
+
+从指定卷设备创建ISO镜像文件，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| volumeId | string | 是   | 卷设备id。 |
+| filePath | string | 是   | ISO镜像文件的保存路径。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| ---------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13600024 | Empty disc. |
+| 13600025 | Failed to write the ISO file. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let volumeId: string = "";
+let filePath: string = "";
+volumeManager.createIsoImage(volumeId, filePath).then(() => {
+  console.info("createIsoImage successfully.");
+}).catch((error: BusinessError) => {
+  console.error("createIsoImage failed with error:" + JSON.stringify(error));
+});
+```
+
+## volumemanager.burn
+
+burn(volumeId: string, want: Want): Promise&lt;void&gt;
+
+向指定卷设备刻录数据，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| volumeId | string | 是   | 卷设备id。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的Want信息。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| ---------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+ 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13600026 | Insufficient disc space. |
+| 13600027 | Source data not found. |
+| 13600028 | Burn operation failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+import { Want } from '@kit.AbilityKit';
+let volumeId: string = "";
+let want: Want = {
+  diskName: "MyDisc",
+  burnPath: "/data/storage/el2/base/files/burn_data",
+  isIsoImage: false,
+  burnSpeed: 0,
+  fsType: "ISO9660",
+  isIncBurnSupport: true
+};
+volumeManager.burn(volumeId, want).then(() => {
+  console.info("burn successfully.");
+}).catch((error: BusinessError) => {
+  console.error("burn failed with error:" + JSON.stringify(error));
+});
+```
+
+## volumemanager.getOpProcess
+
+ArkTS-Dyn: getOpProcess(volumeId: string): Promise&lt;number&gt;
+
+ArkTS-Sta: getOpProcess(volumeId: string): Promise&lt;int&gt;
+
+获取指定卷设备的操作进度，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| volumeId | string | 是   | 卷设备id。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| ---------------------- | ---------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回光驱刻录操作进度，进度值为0-100的整数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600008 | No such object. |
+| 13600029 | No ongoing operation. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let volumeId: string = "";
+volumeManager.getOpProcess(volumeId).then((progress: number) => {
+  console.info("getOpProcess successfully, progress:" + progress);
+}).catch((error: BusinessError) => {
+  console.error("getOpProcess failed with error:" + JSON.stringify(error));
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let volumeId: string = "";
+volumeManager.getOpProcess(volumeId).then((progress: int) => {
+  console.info("getOpProcess successfully, progress:" + progress);
+}).catch((error: BusinessError) => {
+  console.error("getOpProcess failed with error:" + JSON.stringify(error));
+});
+```
+
+## volumemanager.verifyBurnData
+
+verifyBurnData(volumeId: string, verType: VerifyType): Promise&lt;void&gt;
+
+校验指定卷设备的刻录数据，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Volume
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| volumeId | string | 是   | 卷设备id。 |
+| verType | [VerifyType](#verifytype) | 是   | 刻录数据的校验类型。 |
+
+**返回值：**
+
+| 类型                   | 说明       |
+| ---------------------- | ---------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13600030 | Verification failed. |
+| 13600031 | Data mismatch. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let volumeId: string = "";
+let verType: volumeManager.VerifyType = volumeManager.VerifyType.KEY_DATA;
+volumeManager.verifyBurnData(volumeId, verType).then(() => {
+  console.info("verifyBurnData successfully.");
+}).catch((error: BusinessError) => {
+  console.error("verifyBurnData failed with error:" + JSON.stringify(error));
+});
+```
+
 ## Volume
 
 卷的属性信息。
@@ -1129,3 +1515,4 @@ ArkTS-Sta: partition(diskId: string, type: int, callback: AsyncCallback&lt;void&
 | state       | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23           |
 | path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。<br> **ArkTS-Dyn起始版本**：9 <br>**ArkTS-Sta起始版本**：23          |
 | fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS等。<br> **ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23        |
+| extraInfo   | string  | 否 | 是 | 卷设备的扩展信息。<br>**ArkTS-Dyn起始版本**：26.0.0 <br>**ArkTS-Sta起始版本**：26.0.0 <br>**模型约束**：此接口仅可在Stage模型下使用。         |

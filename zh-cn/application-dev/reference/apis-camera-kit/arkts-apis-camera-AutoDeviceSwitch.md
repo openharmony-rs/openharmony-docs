@@ -30,7 +30,7 @@ enableAutoDeviceSwitch(enabled: boolean): void
 > **说明：**
 > 该接口仅用于有多个前置镜头的折叠设备，在不同的折叠状态下可自动切换到当前可使用的前置镜头。无法实现前后置镜头的切换。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -46,7 +46,7 @@ enableAutoDeviceSwitch(enabled: boolean): void
 
 | 错误码ID   | 错误信息                                                                                                                                       |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed. |
+| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed.<br>适用版本：19+ |
 | 7400102 | Operation not allowed.                                                                                                                         |
 | 7400103 | Session not config.                                                                                                                            |
 | 7400201 | Camera service fatal error.                                                                                                                    |

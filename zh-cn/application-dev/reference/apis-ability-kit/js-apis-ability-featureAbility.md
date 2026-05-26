@@ -4,12 +4,14 @@
 <!--Subsystem: Ability-->
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 FeatureAbility模块提供与用户进行交互的Ability的能力，包括启动新的Ability、停止Ability、获取dataAbilityHelper对象、获取当前Ability对应的窗口，连接断连Service等。
 
 > **说明：**
+>
+> 本模块仅支持ArkTS-Dyn。
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -38,6 +40,8 @@ startAbility(parameter: StartAbilityParameter, callback: AsyncCallback\<number>)
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -93,6 +97,8 @@ startAbility(parameter: StartAbilityParameter): Promise\<number>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 6
+
 **参数：**
 
 | 参数名        | 类型                                       | 必填   | 说明             |
@@ -147,6 +153,8 @@ acquireDataAbilityHelper(uri: string): DataAbilityHelper
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明           |
@@ -186,6 +194,8 @@ startAbilityForResult(parameter: StartAbilityParameter, callback: AsyncCallback\
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -241,6 +251,8 @@ startAbilityForResult(parameter: StartAbilityParameter): Promise\<AbilityResult>
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -301,6 +313,8 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名        | 类型                              | 必填   | 说明             |
@@ -356,6 +370,8 @@ terminateSelfWithResult(parameter: AbilityResult): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名        | 类型                              | 必填   | 说明            |
@@ -405,7 +421,7 @@ featureAbility.terminateSelfWithResult(
 });
 ```
 
-## featureAbility.hasWindowFocus<sup>7+<sup>
+## featureAbility.hasWindowFocus<sup>7+</sup>
 
 hasWindowFocus(callback: AsyncCallback\<boolean>): void
 
@@ -414,6 +430,8 @@ hasWindowFocus(callback: AsyncCallback\<boolean>): void
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -436,7 +454,7 @@ featureAbility.hasWindowFocus((error, data) => {
 });
 ```
 
-## featureAbility.hasWindowFocus<sup>7+<sup>
+## featureAbility.hasWindowFocus<sup>7+</sup>
 
 hasWindowFocus(): Promise\<boolean>
 
@@ -445,6 +463,8 @@ hasWindowFocus(): Promise\<boolean>
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -472,6 +492,8 @@ getWant(callback: AsyncCallback\<Want>): void
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -504,6 +526,8 @@ getWant(): Promise\<Want>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 6
+
 **返回值：**
 
 | 类型                      | 说明               |
@@ -530,6 +554,8 @@ getContext(): Context
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -563,6 +589,8 @@ terminateSelf(callback: AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名       | 类型                   | 必填   | 说明       |
@@ -591,6 +619,8 @@ terminateSelf(): Promise\<void>
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -626,6 +656,8 @@ connectAbility(request: Want, options:ConnectOptions): number
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -677,6 +709,8 @@ disconnectAbility(connection: number, callback:AsyncCallback\<void>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名         | 类型                   | 必填   | 说明                      |
@@ -727,6 +761,8 @@ disconnectAbility(connection: number): Promise\<void>
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -784,6 +820,8 @@ getWindow(callback: AsyncCallback\<window.Window>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名     | 类型                          | 必填 | 说明                          |
@@ -817,6 +855,8 @@ getWindow(): Promise\<window.Window>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 **返回值：**
 
 | 类型                    | 说明                          |
@@ -846,6 +886,8 @@ featureAbility.getWindow().then((data: window.Window) => {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 | 名称                                     | 值   | 说明                                       |
 | ---------------------------------------- | ---- | ---------------------------------------- |
 | WINDOW_MODE_UNDEFINED       | 0    | 未定义。 |
@@ -873,6 +915,8 @@ featureAbility.AbilityWindowConfiguration.WINDOW_MODE_UNDEFINED
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 | 名称                           | 值              | 说明                                       |
 | ---------------------------- | --------------- | ---------------------------------------- |
 | BOUNDS_KEY      | 'abilityBounds' | 窗口显示大小属性的参数名。 |
@@ -896,6 +940,8 @@ featureAbility.AbilityStartSetting.BOUNDS_KEY
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**ArkTS-Dyn起始版本：** 7
+
 | 名称                             | 值    | 说明                                       |
 | ------------------------------ | ---- | ---------------------------------------- |
 | NO_ERROR         | 0    | 没有异常。   |
@@ -910,6 +956,8 @@ featureAbility.AbilityStartSetting.BOUNDS_KEY
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS-Dyn起始版本：** 7
 
 | 名称                       | 值    | 说明                                       |
 | ------------------------ | ---- | ---------------------------------------- |
@@ -928,6 +976,8 @@ Context模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
 | 类型 | 说明 |
 | --- | --- |
 | [_Context](js-apis-inner-app-context.md) | Context模块。 |
@@ -942,6 +992,8 @@ type AppVersionInfo = _AppVersionInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
 | 类型 | 说明 |
 | --- | --- |
 | [_AppVersionInfo](js-apis-inner-app-appVersionInfo.md) | 应用版本信息。 |
@@ -955,6 +1007,8 @@ type ProcessInfo = _ProcessInfo
 **模型约束**：此接口仅可在FA模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 | 类型 | 说明 |
 | --- | --- |

@@ -42,7 +42,7 @@ on(type: 'error', observer: ErrorObserver): number
 **ArkTS-Dyn起始版本**：9
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观测器。 |
@@ -50,9 +50,9 @@ on(type: 'error', observer: ErrorObserver): number
 
 **返回值**：
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | number | 观测器的索引值，与观测器一一对应。可用于`errorManager.off`函数中的`observerId`参数。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 观测器的索引值，与观测器一一对应。可用于`errorManager.off`函数中的`observerId`参数。 |
 
 **错误码**：
 
@@ -64,7 +64,7 @@ on(type: 'error', observer: ErrorObserver): number
 | 16000003 | The specified ID does not exist. |
 
 **示例**：
-    
+
 ```ts
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -107,7 +107,7 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 **ArkTS-Dyn起始版本**：18
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观测器。 |
@@ -162,7 +162,7 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 **ArkTS-Dyn起始版本**：18
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'globalErrorOccurred'，表示错误观测器。 |
@@ -218,7 +218,7 @@ off(type: 'error', observerId: number,  callback: AsyncCallback\<void>): void
 **ArkTS-Dyn起始版本**：9
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观测器。 |
@@ -274,7 +274,7 @@ off(type: 'error', observerId: number): Promise\<void>
 **ArkTS-Dyn起始版本**：9
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'error'，表示错误观测器。 |
@@ -335,7 +335,7 @@ on(type: 'loopObserver', timeout: number, observer: LoopObserver): void
 **ArkTS-Dyn起始版本**：12
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示注册主线程消息处理耗时监听器。 |
@@ -379,7 +379,7 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 **ArkTS-Dyn起始版本**：18
 
 **参数**：
- 
+
 | 参数名                   | 类型                                                          | 必填 | 说明                                       |
 |-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
 | type                  | string                                                      | 是 | 填写'globalUnhandledRejectionDetected'，表示注册被拒绝promise监听器。 |
@@ -437,7 +437,7 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 **ArkTS-Dyn起始版本**：12
 
 **参数**：
- 
+
 | 参数名                   | 类型                                                          | 必填 | 说明                                       |
 |-----------------------|-------------------------------------------------------------| -------- |------------------------------------------|
 | type                  | string                                                      | 是 | 填写'unhandledRejection'，表示注册被拒绝promise监听器。 |
@@ -498,7 +498,7 @@ on(type: 'freeze', observer: FreezeObserver): void
 **ArkTS-Dyn起始版本**：18
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'freeze'，表示应用主线程freeze观测器。 |
@@ -540,7 +540,7 @@ off(type: 'loopObserver', observer?: LoopObserver): void
 **ArkTS-Dyn起始版本**：12
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'loopObserver'，表示应用主线程观测器。 |
@@ -725,7 +725,7 @@ off(type: 'freeze', observer?: FreezeObserver): void
 **ArkTS-Dyn起始版本**：18
 
 **参数**：
- 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 填写'freeze'，表示应用主线程freeze观测器。 |

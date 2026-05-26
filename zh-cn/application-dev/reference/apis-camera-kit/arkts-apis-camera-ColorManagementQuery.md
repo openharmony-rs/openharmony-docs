@@ -25,7 +25,7 @@ getSupportedColorSpaces(): Array\<colorSpaceManager.ColorSpace\>
 
 获取支持的色彩空间列表。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -34,6 +34,15 @@ getSupportedColorSpaces(): Array\<colorSpaceManager.ColorSpace\>
 | 类型                                             | 说明                           |
 | ----------------------------------------------- | ---------------------------- |
 | Array<[colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace)>| 支持的色彩空间列表。若接口调用失败，返回undefined。     |
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103         | Session not config, only throw in session usage.<br>适用版本：12-17 |
 
 **示例：**
 

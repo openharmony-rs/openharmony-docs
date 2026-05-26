@@ -9,19 +9,21 @@
 
 reuse属性用于给\@ReusableV2装饰的自定义组件指定复用选项。
 
-本文档仅为API参考说明。实际功能使用与限制见[@ReusableV2装饰器：V2组件复用](../../../ui/state-management/arkts-new-reusableV2.md)。
+本文档仅为API参考说明。实际功能使用与限制见[@ReusableV2装饰器：V2组件复用（ArkTS-Dyn）](../../../ui/state-management/arkts-new-reusableV2.md)和[@ReusableV2装饰器：组件复用（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-new-reusableV2.md)。
 
 >  **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## reuse
 
-ArkTS-Dyn: reuse(options: ReuseOptions)
+ArkTS-Dyn: reuse(options: ReuseOptions): T
 
-ArkTS-Sta: reuse(options: ReuseOptions | undefined)
+ArkTS-Sta: reuse(options: ReuseOptions | undefined): this
 
 复用选项，用于设置V2自定义组件的复用选项。
 
@@ -47,7 +49,7 @@ ArkTS-Sta: reuse(options: ReuseOptions | undefined)
 
 | 类型                          | 说明                                           |
 | ----------------------------|---------------------------------------------- |
-|   T |   返回当前组件。 |
+|   ArkTS-Dyn: T <br/> ArkTS-Sta: this |   返回当前组件。 |
 
 ## ReuseOptions
 

@@ -255,8 +255,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    ArkTS-Sta示例：
 
-   <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    dataPreferences.flush((err: BusinessError | null) :void => {
      if (err) {
@@ -305,8 +305,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    ArkTS-Sta示例：
 
-   <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    let observer = (key: string) => {
      Logger.info('The key ' + key + ' changed.');
@@ -356,8 +356,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    ArkTS-Sta示例：
 
-   <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    let observer = (key: string) => {
      Logger.info('The key ' + key + ' changed.');
@@ -410,8 +410,8 @@ GSKV是从API version 18起提供的一种存储模式，数据以二进制的�
 
    ArkTS-Sta示例：
 
-   <!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData-Sta/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    let options: preferences.Options = { name: 'myStore' };
    preferences.deletePreferences(context, options, (err: BusinessError | null) :void => {

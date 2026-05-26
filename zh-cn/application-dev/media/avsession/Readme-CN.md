@@ -1,7 +1,7 @@
 # AVSession Kit（音视频播控服务）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -13,7 +13,7 @@
   - [媒体会话提供方(C/C++)](using-ohavsession-developer.md)
   - [应用接入AVSession场景介绍](avsession-access-scene.md)
   - [后台播放](avsession-background-scene.md)
-  - [应用接入桌面歌词](avsession-desktop-lyrics.md)
+  - [应用接入歌词组件](avsession-desktop-lyrics.md)
   <!--Del-->
   - [媒体会话控制方(仅对系统应用开放)](using-avsession-controller-sys.md)
   <!--DelEnd-->

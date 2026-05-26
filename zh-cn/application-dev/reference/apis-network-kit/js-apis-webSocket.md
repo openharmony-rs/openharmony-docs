@@ -782,11 +782,10 @@ onOpen(callback: Callback\<OpenResult\>): void
 
 订阅WebSocket的打开事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -857,11 +856,9 @@ offOpen(callback?: Callback\<OpenResult\>): void
 >
 > 可以指定传入offOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -927,11 +924,9 @@ onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > AsyncCallback中的数据可以是字符串或ArrayBuffer。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -997,11 +992,9 @@ offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > 可以指定传入onMessage中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1060,11 +1053,9 @@ onWebSocketClose(callback: AsyncCallback\<CloseResult\>): void
 
 订阅WebSocket的关闭事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1126,11 +1117,9 @@ offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 >
 > 可以指定传入onWebSocketClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1192,8 +1181,6 @@ onWebSocketError(callback: ErrorCallback): void
 
 订阅WebSocket的Error事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 **参数：**
@@ -1201,6 +1188,8 @@ onWebSocketError(callback: ErrorCallback): void
 | 参数名   | 类型          | 必填 | 说明                            |
 | -------- | ------------- | ---- | ------------------------------- |
 | callback | ErrorCallback | 是   | 回调函数，返回Error事件结果。 |
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **示例：**
 
@@ -1256,7 +1245,6 @@ offWebSocketError(callback?: ErrorCallback): void
 >
 > 可以指定传入onWebSocketError中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1266,7 +1254,7 @@ offWebSocketError(callback?: ErrorCallback): void
 | -------- | ------------- | ---- | ------------------------------- |
 | callback | ErrorCallback | 否   | 回调函数，用于指定需要移除的回调。      |
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **示例：**
 
@@ -1285,7 +1273,7 @@ on(type: 'dataEnd', callback: Callback\<void\>): void
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1374,7 +1362,7 @@ offDataEnd(callback?: Callback\<void\>): void
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1781,7 +1769,7 @@ listAllConnections(): WebSocketConnection[]
 **返回值：**
 | 类型                                        | 说明                         |
 | ------------------------------------------- | ---------------------------- |
-| [WebSocketConnection[]](#websocketconnection19) | 以字符串数组形式返回所有客户端的信息。|
+| [WebSocketConnection](#websocketconnection19)[] | 以字符串数组形式返回所有客户端的信息。|
 
 **错误码：**
 
@@ -2446,6 +2434,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Communication.NetStack
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
@@ -2504,6 +2494,8 @@ off(type: 'error', callback?: ErrorCallback): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力：** SystemCapability.Communication.NetStack
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2774,6 +2766,10 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 关闭WebSocketServer连接时，订阅close事件得到的指定客户端的关闭结果。
 
 **系统能力：** SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 名称 | 类型   | 只读 | 可选 | 说明                            |

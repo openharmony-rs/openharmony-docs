@@ -2,8 +2,7 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @wuliangdong-->
-<!--Designer: @butterls-->
-<!--Tester: @zhaodengqi-->
+<!--Designer: @hanruofei-->
 <!--Adviser: @hu-zhiqiong-->
 
 键鼠穿越功能模块，提供两台或多台设备组网协同后键鼠共享能力，实现键鼠输入设备的跨设备协同操作。
@@ -792,8 +791,8 @@ try {
 
 | 名称           | 类型            | 只读 | 可选 | 说明                           |
 | ---------------- | -------------- | ---- | ---- | ------------------------------ |
-| displayX       | number         | 否   | 否   | 鼠标指针位于屏幕的X坐标上的位置。 |
-| displayY       | number         | 否   | 否   | 鼠标指针位于屏幕的Y坐标上的位置。 |
+| displayX       | number         | 否   | 否   | 鼠标指针位于屏幕的X坐标上的位置，单位：px。 |
+| displayY       | number         | 否   | 否   | 鼠标指针位于屏幕的Y坐标上的位置，单位：px。 |
 | displayWidth   | number         | 否   | 否   | 屏幕宽度，单位：px。                      |
 | displayHeight  | number         | 否   | 否   | 屏幕高度，单位：px。                      |
 
@@ -822,8 +821,8 @@ try {
 
 | 名称      | 类型           | 只读 | 可选 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
-| displayX      | number         | 否   | 否   | 鼠标X坐标位置。 |
-| displayY      | number         | 否   | 否   | 鼠标Y坐标位置。 |
+| displayX      | number         | 否   | 否   | 鼠标X坐标位置，单位：px。 |
+| displayY      | number         | 否   | 否   | 鼠标Y坐标位置，单位：px。 |
 | displayId     | number         | 否   | 否   | 对端设备屏幕标识。 |
 
 ## cooperate.prepare<sup>(deprecated)</sup>

@@ -142,7 +142,7 @@ API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Abili
 **ArkTS-Sta起始版本**：23
 
 **示例：**
-    
+
 ```ts
 import { appRecovery, errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -275,6 +275,8 @@ setRestartWant(want: Want): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { appRecovery, Want } from '@kit.AbilityKit';
 
@@ -286,6 +288,32 @@ struct Index {
       .fontSize(40)
       .fontWeight(FontWeight.Bold)
       .onClick(()=> {
+        // set restart want
+        let want: Want = {
+          bundleName: "ohos.samples.recovery",
+          abilityName: "RecoveryAbility"
+        };
+
+        appRecovery.setRestartWant(want);
+      })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { appRecovery, Want } from '@kit.AbilityKit';
+import { Entry, Component, Button, FontWeight } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button("启动到恢复Ability")
+      .fontSize(40)
+      .fontWeight(FontWeight.Bold)
+      .onClick(() => {
         // set restart want
         let want: Want = {
           bundleName: "ohos.samples.recovery",

@@ -25,7 +25,7 @@ beginConfig(): void
 
 开始配置会话。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -36,7 +36,7 @@ beginConfig(): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400105                |  Session config locked.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -60,7 +60,7 @@ commitConfig(callback: AsyncCallback\<void\>): void
 
 提交配置信息，通过注册回调函数获取结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -101,7 +101,7 @@ commitConfig(): Promise\<void\>
 
 提交配置信息。使用Promise异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -141,7 +141,7 @@ canAddInput(cameraInput: CameraInput): boolean
 
 判断当前cameraInput是否可以添加到session中。当前函数需要在[beginConfig](#beginconfig11)和[commitConfig](#commitconfig11-1)之间生效。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -172,7 +172,7 @@ addInput(cameraInput: CameraInput): void
 
 把[CameraInput](arkts-apis-camera-CameraInput.md)加入到会话。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -189,8 +189,9 @@ addInput(cameraInput: CameraInput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：11-17                 |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+           |
 
 **示例：**
 
@@ -214,7 +215,7 @@ removeInput(cameraInput: CameraInput): void
 
 移除[CameraInput](arkts-apis-camera-CameraInput.md)。当前函数需要在[beginConfig](#beginconfig11)和[commitConfig](#commitconfig11-1)之间生效。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -231,8 +232,9 @@ removeInput(cameraInput: CameraInput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：11-17                 |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+           |
 
 **示例：**
 
@@ -256,7 +258,7 @@ canAddOutput(cameraOutput: CameraOutput): boolean
 
 判断当前cameraOutput是否可以添加到session中。当前函数需要在[addInput](#addinput11)和[commitConfig](#commitconfig11-1)之间生效。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -287,7 +289,7 @@ addOutput(cameraOutput: CameraOutput): void
 
 把[CameraOutput](arkts-apis-camera-CameraOutput.md)加入到会话。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -304,8 +306,9 @@ addOutput(cameraOutput: CameraOutput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：11-17                 |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+           |
 
 **示例：**
 
@@ -329,7 +332,7 @@ removeOutput(cameraOutput: CameraOutput): void
 
 从会话中移除[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -346,8 +349,9 @@ removeOutput(cameraOutput: CameraOutput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
-| 7400201                |  Camera service fatal error.                                   |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：11-17                 |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+           |
 
 **示例：**
 
@@ -371,7 +375,7 @@ start(callback: AsyncCallback\<void\>): void
 
 开始会话工作，通过注册回调函数获取结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -387,7 +391,7 @@ start(callback: AsyncCallback\<void\>): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>适用版本：12+                |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -413,7 +417,7 @@ start(): Promise\<void\>
 
 开始会话工作。使用Promise异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -429,7 +433,7 @@ start(): Promise\<void\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>适用版本：12+                |
 | 7400103                |  Session not config.                                   |
 | 7400201                |  Camera service fatal error.                           |
 
@@ -453,7 +457,7 @@ stop(callback: AsyncCallback\<void\>): void
 
 停止会话工作，通过注册回调函数获取结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -493,7 +497,7 @@ stop(): Promise\<void\>
 
 停止会话工作。使用Promise异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -531,7 +535,7 @@ release(callback: AsyncCallback\<void\>): void
 
 释放会话资源，通过注册回调函数获取结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -571,7 +575,7 @@ release(): Promise\<void\>
 
 释放会话资源。使用Promise异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

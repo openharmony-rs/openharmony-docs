@@ -17,7 +17,7 @@
 ## 导入模块
 
 ```ts
-import { usbManager } from '@kit.BasicServicesKit';
+import usbManager from '@ohos.usbManager';
 ```
 
 ## usbFunctionsFromString<sup>(deprecated)</sup>
@@ -318,11 +318,11 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；addDeviceAccessRight不会触发弹框，而是直接添加软件包访问设备的权限。
 
-> **说明：**
->
-> 从 API version 12开始支持。
-
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -347,7 +347,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
 | 801      | Capability not supported.                                    |
@@ -379,15 +379,17 @@ let tokenId: string = "";
 
 ## getFunctionsFromString<sup>12+</sup>
 
-getFunctionsFromString(funcs: string): number
+ArkTS-Dyn: getFunctionsFromString(funcs: string): number
+
+ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
 
-> **说明：**
->
-> 从 API version 12开始支持。
-
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -403,7 +405,7 @@ getFunctionsFromString(funcs: string): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 转化后的数字掩码。 |
+| ArkTS-Dyn: number<br> ArkTS-Sta: int | 转化后的数字掩码。 |
 
 **错误码：**
 
@@ -411,7 +413,7 @@ getFunctionsFromString(funcs: string): number
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.                                    |
@@ -420,20 +422,22 @@ getFunctionsFromString(funcs: string): number
 
 ```ts
 let funcs: string = "acm";
-let ret: number = usbManager.getFunctionsFromString(funcs);
+let ret: int = usbManager.getFunctionsFromString(funcs);
 ```
 
 ## getStringFromFunctions<sup>12+</sup>
 
-getStringFromFunctions(funcs: FunctionType): string
+ArkTS-Dyn: getStringFromFunctions(funcs: FunctionType): string
+
+ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 在设备模式下，将数字掩码形式的USB功能列表转化为字符串。
 
-> **说明：**
->
-> 从 API version 12开始支持。
-
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -443,7 +447,7 @@ getStringFromFunctions(funcs: FunctionType): string
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | 是   | USB功能数字掩码。 |
+| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | USB功能数字掩码。 |
 
 **返回值：**
 
@@ -457,29 +461,35 @@ getStringFromFunctions(funcs: FunctionType): string
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 801      | Capability not supported.                                    |
+| 202      | Permission denied. Normal application do not have permission to use system api.   |
+| 801      | Capability not supported.  |
 
 **示例：**
 
 ```ts
-let funcs: number = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
+let funcs: int = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
 let ret: string = usbManager.getStringFromFunctions(funcs);
 ```
 
 ## setDeviceFunctions<sup>12+</sup>
 
-setDeviceFunctions(funcs: FunctionType): Promise\<void\>
+ArkTS-Dyn: setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。使用Promise异步回调。
+ArkTS-Sta: setDeviceFunctions(funcs: int): Promise\<void\>
+
+在设备模式下，设置当前的USB功能列表。
 
 > **说明：**
 >
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -489,7 +499,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | 是   | USB功能数字掩码。 |
+| funcs  | ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| 是   | USB功能数字掩码。 |
 
 **返回值：**
 
@@ -503,7 +513,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
 | 801      | Capability not supported.                                    |
@@ -514,7 +524,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-let funcs: number = usbManager.FunctionType.HDC;
+let funcs: int = usbManager.FunctionType.HDC;
 usbManager.setDeviceFunctions(funcs).then(() => {
     console.info('usb setDeviceFunctions successfully.');
 }).catch((err : BusinessError) => {
@@ -524,7 +534,9 @@ usbManager.setDeviceFunctions(funcs).then(() => {
 
 ## getDeviceFunctions<sup>12+</sup>
 
-getDeviceFunctions(): FunctionType
+ArkTS-Dyn: getDeviceFunctions(): FunctionType
+
+ArkTS-Sta: getDeviceFunctions(): int
 
 在设备模式下，获取当前的USB功能列表的数字组合掩码。开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`，注意需要对接口返回值做判空处理。
 
@@ -534,6 +546,10 @@ getDeviceFunctions(): FunctionType
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -542,7 +558,8 @@ getDeviceFunctions(): FunctionType
 
 | 类型                          | 说明                              |
 | ----------------------------- | --------------------------------- |
-| [FunctionType](#functiontype) | 当前的USB功能列表的数字组合掩码。 |
+| ArkTS-Dyn:  [FunctionType](#functiontype)<br> ArkTS-Sta: int| USB功能数字掩码。 |
+| undefined |开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
 
 **错误码：**
 
@@ -557,7 +574,7 @@ getDeviceFunctions(): FunctionType
 **示例：**
 
 ```ts
-let ret: number = usbManager.getDeviceFunctions();
+let ret: int = usbManager.getDeviceFunctions();
 ```
 
 ## getPortList<sup>12+</sup>
@@ -572,6 +589,10 @@ getPortList(): Array\<USBPort\>
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -581,6 +602,7 @@ getPortList(): Array\<USBPort\>
 | 类型                       | 说明                  |
 | -------------------------- | --------------------- |
 | Array<[USBPort](#usbport)> | USB端口描述信息列表。 |
+| undefined | 开发者模式关闭时，如果没有设备接入，接口可能返回`undefined`<br>**ArkTs模式**：该返回值仅适用于ArkTs-Dyn|
 
 **错误码：**
 
@@ -600,11 +622,17 @@ let ret: Array<usbManager.USBPort> = usbManager.getPortList();
 
 ## getPortSupportModes<sup>12+</sup>
 
-getPortSupportModes(portId: number): PortModeType
+ArkTS-Dyn: getPortSupportModes(portId: number): PortModeType
+
+ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 
 获取指定的端口支持的模式列表的组合掩码。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -614,7 +642,7 @@ getPortSupportModes(portId: number): PortModeType
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| portId | number | 是   | 端口号。 |
+| portId | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 端口号。 |
 
 **返回值：**
 
@@ -636,20 +664,26 @@ getPortSupportModes(portId: number): PortModeType
 **示例：**
 
 ```ts
-let ret: number = usbManager.getPortSupportModes(0);
+let ret: int = usbManager.getPortSupportModes(0);
 ```
 
 ## setPortRoleTypes<sup>12+</sup>
 
-setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
+ArkTS-Dyn: setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
 
-设置指定的端口支持的角色模式，包含充电角色、数据传输角色。使用Promise异步回调。
+ArkTS-Sta: setPortRoleTypes(portId: int, powerRole: PowerRoleType, dataRole: DataRoleType): Promise\<void\>
+
+设置指定的端口支持的角色模式，包含充电角色、数据传输角色。
 
 > **说明：**
 >
 > 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -659,7 +693,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 | 参数名    | 类型                            | 必填 | 说明             |
 | --------- | ------------------------------- | ---- | ---------------- |
-| portId    | number                          | 是   | 端口号。         |
+| portId    | ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是   | 端口号。 |
 | powerRole | [PowerRoleType](#powerroletype) | 是   | 充电的角色。     |
 | dataRole  | [DataRoleType](#dataroletype)   | 是   | 数据传输的角色。 |
 
@@ -685,8 +719,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-
-let portId: number = 1;
+let portId: int = 1;
 usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
   console.info('usb setPortRoleTypes successfully.');
 }).catch((err : BusinessError) => {
@@ -696,13 +729,19 @@ usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.
 
 ## addAccessoryRight<sup>14+<sup>
 
-addAccessoryRight(tokenId: number, accessory: USBAccessory): void
+ArkTS-Dyn: addAccessoryRight(tokenId: number, accessory: USBAccessory): void
+
+ArkTS-Sta: addAccessoryRight(tokenId: int, accessory: USBAccessory): void
 
 为应用程序添加访问USB配件权限。
 
 usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessoryRight不会触发弹窗，而是直接添加应用程序访问设备的权限。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：14
+
+**ArkTS-Sta起始版本**：23
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
 
@@ -712,7 +751,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 | 参数名    | 类型         | 必填 | 说明                     |
 | --------- | ------------ | ---- | ------------------------ |
-| tokenId   | number       | 是   | 应用程序tokenId。 |
+| tokenId   | ArkTS-Dyn: number<br> ArkTS-Sta: int   | 是   | 应用程序tokenId。|
 | accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | 是   | USB配件。                |
 
 **错误码：**
@@ -739,7 +778,7 @@ try {
   let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
   bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
   let bundleInfo = await bundleManager.getBundleInfoForSelf(flags)
-  let tokenId: number = bundleInfo.appInfo.accessTokenId
+  let tokenId: int = bundleInfo.appInfo.accessTokenId
   usbManager.addAccessoryRight(tokenId, accList[0])
   hilog.info(0, 'testTag ui', `addAccessoryRight success`)
 } catch (error) {
@@ -753,11 +792,15 @@ USB设备端口。
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称           | 类型                            | 只读 | 可选 | 说明                                |
 | -------------- | ------------------------------- | ---- | ---- | ----------------------------------- |
-| id             | number                          | 否   | 否   | USB端口唯一标识。                   |
+| id             | ArkTS-Dyn: number<br> ArkTS-Sta: int                        | 否   | 否   | USB端口唯一标识。                   |
 | supportedModes | [PortModeType](#portmodetype)   | 否   | 否   | USB端口所支持的模式的数字组合掩码。 |
 | status         | [USBPortStatus](#usbportstatus) | 否   | 否   | USB端口角色。                       |
 
@@ -767,19 +810,28 @@ USB设备端口角色信息。
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统能力：** SystemCapability.USB.USBManager
 
-| 名称             | 类型   |只读 | 可选 | 说明                   |
-| ---------------- | ------ | ---- | ---- | ---------------------- |
-| currentMode      | number | 否   | 否   | 当前的USB模式。        |
-| currentPowerRole | number | 否   | 否   | 当前设备充电模式。     |
-| currentDataRole  | number | 否   | 否   | 当前设备数据传输模式。 |
+| 名称             | 类型 |只读 | 可选 | 说明                   |
+| ---------------- | ------| ---- | ----| ---------------------- |
+| currentMode      | ArkTS-Dyn: number<br> ArkTS-Sta: int| 否   | 否     | 当前的USB模式。|
+| currentPowerRole | ArkTS-Dyn: number<br> ArkTS-Sta: int| 否   | 否      | 当前设备充电模式。|
+| currentDataRole  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否      | 当前设备数据传输模式。 |
+
 
 ## FunctionType
 
 USB设备侧功能。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -802,6 +854,10 @@ USB端口模式类型。
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称      | 值 | 说明                                                 |
@@ -818,6 +874,10 @@ USB端口模式类型。
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **系统能力：** SystemCapability.USB.USBManager
 
 | 名称   | 值 | 说明       |
@@ -831,6 +891,10 @@ USB端口模式类型。
 数据角色类型。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **系统能力：** SystemCapability.USB.USBManager
 

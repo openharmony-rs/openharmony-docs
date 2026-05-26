@@ -1,4 +1,10 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta的自定义构建函数（@Builder）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -17,7 +23,7 @@
 
 ### 按回调传递参数
 
-开发者可以通过[`UIUtils.makeBinding()`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebindingt)函数、[`Binding`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
+开发者可以通过[`UIUtils.makeBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebindingt)函数、[`Binding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding<T>`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
 
 在ArkTS-Dyn调用ArkTS-Sta自定义构建函数的场景下，ArkTS-Sta侧@Builder需要接收静态`Binding`或静态`MutableBinding`类型。由于ArkTS-Dyn侧通过`UIUtils.makeBinding()`创建的是动态`Binding`或`MutableBinding`，与ArkTS-Sta的参数类型不兼容。因此在传递给@Builder之前，需要使用`transfer.transferStatic()`将其转换为静态`Binding`或静态`MutableBinding`类型。
 
@@ -68,13 +74,17 @@ export function createStaticBinding(binding: Object): Any {
 }
 
 @Builder
-export function CustomButton(num1: MutableBinding<number>, num2: Binding<number>) {
+export function CustomButton(num1: MutableBinding<number>, num2: Binding<number>): void {
   Column() {
     Text(`CustomButton num1: ${num1.value}, num2: ${num2.value}`)
+      .fontSize(20)
+      .margin(10)
     Button('change num1')
       .onClick(() => {
         num1.value++;
       })
+      .width(300)
+      .margin(10)
   }
 }
 ```
@@ -115,16 +125,25 @@ struct Parent {
         )
       )
       Text(`num1: ${this.num1}`)
+        .fontSize(20)
+        .margin(10)
       Button('change num1')
         .onClick(() => {
           this.num1++;
         })
+        .width(300)
+        .margin(10)
       Text(`num2: ${this.num2}`)
+        .fontSize(20)
+        .margin(10)
       Button('change num2')
         .onClick(() => {
           this.num2++;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -136,6 +155,10 @@ struct Parent {
   "static_library": "file:../static_library"
 }
 ```
+
+示例效果图：
+
+![arkts-dyn-interop-sta-builder-demo1](figures/arkts-dyn-interop-sta-builder-demo1.gif)
 
 ### 按引用传递参数
 
@@ -172,7 +195,7 @@ project/
 
 示例如下：
 
-- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并并导出`Person`类。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
+- 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出`Person`类。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
@@ -200,10 +223,14 @@ import { Builder, Text, Column } from '@ohos.arkui.component';
 import { Person } from 'dynamic_module'; // 引入ArkTS-Dyn侧的Person类
 
 @Builder
-export function personInfo(person: Person) { // 按引用传递参数，需传入对象字面量
+export function personInfo(person: Person): void { // 按引用传递参数，需传入对象字面量
   Column(){
     Text(`Name: ${person.name}`)
+      .fontSize(20)
+      .margin(10)
     Text(`Age: ${person.age}`)
+      .fontSize(20)
+      .margin(10)
   }
 }
 ```
@@ -243,12 +270,17 @@ struct Parent {
           // 变化name状态变量，触发@Builder内部UI刷新
           this.name += 'a';
         })
+        .width(300)
+        .margin(10)
       Button('changeAge')
         .onClick(() => {
           // 变化age状态变量，触发@Builder内部UI刷新
           this.age += 1;
         })
+        .width(300)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
@@ -261,6 +293,9 @@ struct Parent {
 }
 ```
 
+示例效果图：
+
+![arkts-dyn-interop-sta-builder-demo2](figures/arkts-dyn-interop-sta-builder-demo2.gif)
 
 ### 按值传递参数
 
@@ -297,9 +332,9 @@ project/
 import { Builder, Text } from '@ohos.arkui.component';
 
 @Builder
-export function showTextBuilder(input: string) { // 按值传递参数，不会触发UI刷新
+export function showTextBuilder(input: string): void { // 按值传递参数，不会触发UI刷新
   Text(input)
-    .fontSize(30)
+    .fontSize(20)
 }
 ```
 
@@ -340,3 +375,6 @@ struct Parent {
 }
 ```
 
+示例效果图：
+
+![arkts-dyn-interop-sta-builder-demo3](figures/arkts-dyn-interop-sta-builder-demo3.png)

@@ -26,7 +26,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -43,7 +43,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -58,7 +58,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -73,7 +73,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -88,7 +88,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -105,7 +105,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -122,7 +122,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -139,7 +139,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：9
 
@@ -156,7 +156,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -173,7 +173,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -190,7 +190,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：9
 
@@ -207,7 +207,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -222,7 +222,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -237,7 +237,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -252,7 +252,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -267,7 +267,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -282,7 +282,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -297,7 +297,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -314,7 +314,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：9
 
@@ -329,7 +329,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -344,7 +344,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -359,7 +359,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -374,7 +374,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -389,7 +389,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -404,7 +404,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -419,7 +419,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -434,7 +434,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -449,7 +449,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -464,7 +464,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：11
 
@@ -479,7 +479,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：12
 
@@ -494,7 +494,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：12
 
@@ -509,7 +509,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：13
 
@@ -524,7 +524,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：14
 
@@ -539,7 +539,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -556,7 +556,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -573,7 +573,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -590,7 +590,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -607,7 +607,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -626,7 +626,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -643,7 +643,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -660,7 +660,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -677,7 +677,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -696,7 +696,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -713,7 +713,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -730,7 +730,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -751,7 +751,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -768,7 +768,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -785,7 +785,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 
@@ -802,7 +802,7 @@
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：Phone | PC/2in1 | Tablet
 

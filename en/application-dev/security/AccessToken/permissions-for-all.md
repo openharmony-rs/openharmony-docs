@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Enable via ACL" is not involved for permissions of the normal level.
+> "Certificate-based authorization" is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -161,6 +161,8 @@ Allows an application to read data from a gyroscope sensor or uncalibrated gyros
 ## ohos.permission.INTERNET
 
 Allows an application to access the Internet.
+
+With this permission, an application can obtain IP addresses, perform DNS resolution, or customize DNS rules.
 
 **Permission level**: normal
 

@@ -1932,6 +1932,9 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2815,7 +2818,7 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onActivate](#onactivate22)（激活完成），[onActivating](#onactivating22)（激活中）。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onActivate](#onactivate23)（激活完成），[onActivating](#onactivating23)（激活中）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2873,7 +2876,7 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offActivate](#offactivate22)（激活完成），[offActivating](#offactivating22)（激活中）。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offActivate](#offactivate23)（激活完成），[offActivating](#offactivating23)（激活中）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3256,7 +3259,7 @@ ArkTS-Dyn: getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;)
 
 ArkTS-Sta: getBundleIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
 
-通过uid查询对应的bundleId，使用callback异步回调。
+通过uid查询对应的bundleId。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3334,7 +3337,7 @@ ArkTS-Dyn: getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
 ArkTS-Sta: getBundleIdForUid(uid: int): Promise&lt;int&gt;
 
-通过uid查询对应的bundleId，使用Promise异步回调。
+通过uid查询对应的bundleId。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3480,7 +3483,7 @@ ArkTS-Sta示例：
   }
   ```
 
-### onActivate<sup>22+</sup>
+### onActivate<sup>23+</sup>
 
 onActivate(name: string, callback: Callback&lt;int&gt;): void
 
@@ -3514,7 +3517,7 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
 | 201 | Permission denied.|
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid type name. |
+| 12300002 | Invalid name. |
 
 **示例：**
 
@@ -3532,7 +3535,7 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
   }
   ```
 
-### onActivating<sup>22+</sup>
+### onActivating<sup>23+</sup>
 
 onActivating(name: string, callback: Callback&lt;int&gt;): void
 
@@ -3566,7 +3569,7 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
 | 201 | Permission denied.|
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid type name. |
+| 12300002 | Invalid name. |
 
 **示例：**
 
@@ -3584,7 +3587,7 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
   }
   ```
 
-### offActivate<sup>22+</sup>
+### offActivate<sup>23+</sup>
 
 offActivate(name: string, callback?: Callback&lt;int&gt;): void
 
@@ -3618,7 +3621,7 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
 | 201 | Permission denied.|
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid type name. |
+| 12300002 | Invalid name. |
 
 **示例：**
 
@@ -3637,7 +3640,7 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
   }
   ```
 
-### offActivating<sup>22+</sup>
+### offActivating<sup>23+</sup>
 
 offActivating(name: string, callback?: Callback&lt;int&gt;): void
 
@@ -3671,7 +3674,7 @@ offActivating(name: string, callback?: Callback&lt;int&gt;): void
 | 201 | Permission denied.|
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid type name. |
+| 12300002 | Invalid name. |
 
 **示例：**
 
@@ -3698,7 +3701,7 @@ onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switching')](#on12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on12)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3749,7 +3752,7 @@ offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switching')](#off12)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off12)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3797,7 +3800,7 @@ onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('switched')](#on12-1)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on](#on12-1)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3848,7 +3851,7 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('switched')](#off12-1)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off](#off12-1)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3893,7 +3896,7 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询当前进程是否处于主用户，使用callback异步回调。
+查询当前进程是否处于主用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3968,7 +3971,7 @@ ArkTS-Sta示例：
 
 isMainOsAccount(): Promise&lt;boolean&gt;
 
-查询当前进程是否处于主用户，使用Promise异步回调。
+查询当前进程是否处于主用户。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4204,7 +4207,7 @@ ArkTS-Dyn: getOsAccountConstraintSourceTypes(localId: number, constraint: string
 
 ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, callback: AsyncCallback&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;): void
 
-查询指定系统账号的指定约束来源信息，使用callback异步回调。
+查询指定系统账号的指定约束来源信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4287,7 +4290,7 @@ ArkTS-Dyn: getOsAccountConstraintSourceTypes(localId: number, constraint: string
 
 ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
 
-查询指定系统账号的指定约束来源信息，使用Promise异步回调。
+查询指定系统账号的指定约束来源信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4372,7 +4375,7 @@ ArkTS-Dyn: getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 ArkTS-Sta: getOsAccountType(localId: int): Promise&lt;OsAccountType&gt;
 
-查询指定系统账号的类型，使用Promise异步回调。
+查询指定系统账号的类型。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4836,7 +4839,7 @@ try {
 | resultCode | [AuthorizationResultCode](#authorizationresultcode24) | 否 | 否 | 授权结果码。|
 | privilege | string | 否 | 否 | 与授权关联的权限。 |
 | isReused | boolean | 否 | 是 | 是否为复用的授权结果，默认为undefined。<br/>true:表示是复用的授权结果。false:表示不是复用的授权结果。 |
-| validityPeriod | number | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
+| validityPeriod | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
 | token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
 
 ## UserAuth<sup>8+</sup>
@@ -5235,7 +5238,6 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
 | 12300020 | Device hardware abnormal. |
@@ -6254,7 +6256,7 @@ ArkTS-Sta示例：
 
 ## DomainPluginAuthFunc<sup>23+</sup>
 
-DomainPluginAuthFunc: (domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback) => void
+type DomainPluginAuthFunc = (domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUserAuthCallback) => void
 
 认证指定的域账号。
 
@@ -6339,7 +6341,7 @@ try {
 
 ## DomainPluginAuthWithPopupFunc<sup>23+</sup>
 
-DomainPluginAuthWithPopupFunc: (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+type DomainPluginAuthWithPopupFunc = (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
 
 弹窗认证指定的域账号。
 
@@ -6407,7 +6409,7 @@ try {
 
 ## DomainPluginAuthWithTokenFunc<sup>23+</sup>
 
-DomainPluginAuthWithTokenFunc: (domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback) => void
+type DomainPluginAuthWithTokenFunc = (domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: IUserAuthCallback) => void
 
 使用授权令牌认证指定的域账号。
 
@@ -6476,7 +6478,7 @@ try {
 
 ## DomainPluginGetAccountInfoFunc<sup>23+</sup>
 
-DomainPluginGetAccountInfoFunc: (options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;) => void
+type DomainPluginGetAccountInfoFunc = (options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;) => void
 
 查询指定域账号的信息。
 
@@ -6549,7 +6551,7 @@ try {
 
 ## DomainPluginGetAuthStatusInfoFunc<sup>23+</sup>
 
-DomainPluginGetAuthStatusInfoFunc: (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;AuthStatusInfo&gt;) => void
+type DomainPluginGetAuthStatusInfoFunc = (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;AuthStatusInfo&gt;) => void
 
 查询指定域账号的认证状态信息。
 
@@ -6621,7 +6623,7 @@ try {
 
 ## DomainPluginBindAccountFunc<sup>23+</sup>
 
-DomainPluginBindAccountFunc: (domainAccountInfo: DomainAccountInfo, localId: int, callback: AsyncCallback&lt;void&gt;) => void
+type DomainPluginBindAccountFunc = (domainAccountInfo: DomainAccountInfo, localId: int, callback: AsyncCallback&lt;void&gt;) => void
 
 绑定指定的域账号。
 
@@ -6690,7 +6692,7 @@ try {
 
 ## DomainPluginUnbindAccountFunc<sup>23+</sup>
 
-DomainPluginUnbindAccountFunc: (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;void&gt;) => void
+type DomainPluginUnbindAccountFunc = (domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;void&gt;) => void
 
 解绑指定的域账号。
 
@@ -6758,7 +6760,7 @@ try {
 
 ## DomainPluginIsAccountTokenValidFunc<sup>23+</sup>
 
-DomainPluginIsAccountTokenValidFunc: (domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: AsyncCallback&lt;boolean&gt;) => void
+type DomainPluginIsAccountTokenValidFunc = (domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback: AsyncCallback&lt;boolean&gt;) => void
 
 检查指定的域账号令牌是否有效。
 
@@ -6827,7 +6829,7 @@ try {
 
 ## DomainPluginGetAccessTokenFunc<sup>23+</sup>
 
-DomainPluginGetAccessTokenFunc: (options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;) => void
+type DomainPluginGetAccessTokenFunc = (options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;) => void
 
 根据指定的选项获取域访问令牌。
 
@@ -6911,15 +6913,15 @@ try {
 
 | 名称      | 类型                                    | 只读 | 可选 | 说明             |
 | ---------- | --------------------------------------- | ---- | ---- | --------------- |
-| auth   | [DomainPluginAuthFunc](#domainpluginauthfunc23)  | 否 | 否   | 认证指定的域账号。|
-| authWithPopup   | [DomainPluginAuthWithPopupFunc](#domainpluginauthwithpopupfunc23)  | 否 | 否   | 弹窗认证指定的域账号。|
-| authWithToken   | [DomainPluginAuthWithTokenFunc](#domainpluginauthwithtokenfunc23)  | 否 | 否    | 使用授权令牌认证指定的域账号。|
-| getAccountInfo   | [DomainPluginGetAccountInfoFunc](#domainplugingetaccountinfofunc23)  | 否 | 否    | 查询指定域账号的信息。|
-| getAuthStatusInfo   | [DomainPluginGetAuthStatusInfoFunc](#domainplugingetauthstatusinfofunc23)  | 否 | 否    | 查询指定域账号的认证状态信息。|
-| bindAccount   | [DomainPluginBindAccountFunc](#domainpluginbindaccountfunc23)  | 否 | 否    | 绑定指定的域账号|
-| unbindAccount   | [DomainPluginUnbindAccountFunc](#domainpluginunbindaccountfunc23)  | 否 | 否    | 解绑指定的域账号。|
-| isAccountTokenValid   | [DomainPluginIsAccountTokenValidFunc](#domainpluginisaccounttokenvalidfunc23)  | 否 | 否    | 检查指定的域账号令牌是否有效。|
-| getAccessToken   | [DomainPluginGetAccessTokenFunc](#domainplugingetaccesstokenfunc23)  | 否 | 否    | 根据指定的选项获取域访问令牌。|
+| auth<sup>23+</sup>   | [DomainPluginAuthFunc](#domainpluginauthfunc23)  | 否 | 否   | 认证指定的域账号。|
+| authWithPopup<sup>23+</sup>   | [DomainPluginAuthWithPopupFunc](#domainpluginauthwithpopupfunc23)  | 否 | 否   | 弹窗认证指定的域账号。|
+| authWithToken<sup>23+</sup>   | [DomainPluginAuthWithTokenFunc](#domainpluginauthwithtokenfunc23)  | 否 | 否    | 使用授权令牌认证指定的域账号。|
+| getAccountInfo<sup>23+</sup>   | [DomainPluginGetAccountInfoFunc](#domainplugingetaccountinfofunc23)  | 否 | 否    | 查询指定域账号的信息。|
+| getAuthStatusInfo<sup>23+</sup>   | [DomainPluginGetAuthStatusInfoFunc](#domainplugingetauthstatusinfofunc23)  | 否 | 否    | 查询指定域账号的认证状态信息。|
+| bindAccount<sup>23+</sup>   | [DomainPluginBindAccountFunc](#domainpluginbindaccountfunc23)  | 否 | 否    | 绑定指定的域账号|
+| unbindAccount<sup>23+</sup>   | [DomainPluginUnbindAccountFunc](#domainpluginunbindaccountfunc23)  | 否 | 否    | 解绑指定的域账号。|
+| isAccountTokenValid<sup>23+</sup>   | [DomainPluginIsAccountTokenValidFunc](#domainpluginisaccounttokenvalidfunc23)  | 否 | 否    | 检查指定的域账号令牌是否有效。|
+| getAccessToken<sup>23+</sup>   | [DomainPluginGetAccessTokenFunc](#domainplugingetaccesstokenfunc23)  | 否 | 否    | 根据指定的选项获取域访问令牌。|
 
 ### auth<sup>9+</sup>
 
@@ -7819,9 +7821,11 @@ authWithPopup(callback: IUserAuthCallback): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：**
 
-从API version 11开始无需申请权限，建议升级SDK版本。
+API版本11+：N/A
+
+API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -7839,7 +7843,6 @@ authWithPopup(callback: IUserAuthCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -7901,9 +7904,11 @@ ArkTS-Sta: authWithPopup(localId: int, callback: IUserAuthCallback): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：**
 
-从API version 11开始无需申请权限，建议升级SDK版本。
+API版本11+：N/A
+
+API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -7922,7 +7927,6 @@ ArkTS-Sta: authWithPopup(localId: int, callback: IUserAuthCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
@@ -8519,26 +8523,26 @@ ArkTS-Sta示例：
 
 ### getAccessToken<sup>11+</sup>
 
-ArkTS-Dyn: getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&lt;Uint8Array&gt;): void
+getAccessToken(businessParams: Record&lt;string, Object&gt;, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: AsyncCallback&lt;Uint8Array&gt;): void
-
-获取当前域账号的业务访问令牌，使用callback异步回调。
+获取当前域账号的业务访问令牌。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getAccessToken](#getaccesstoken23)。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
-| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 指示结果回调。如果获取成功，err返回null，否则为错误对象。|
+| businessParams | Record&lt;string, Object&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 回调函数。如果获取成功，err返回null，否则为错误对象。|
 
 **错误码：**
 
@@ -8547,7 +8551,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
@@ -8560,7 +8563,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: 
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8584,7 +8586,48 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例：
+### getAccessToken<sup>23+</sup>
+
+getAccessToken(businessParams: Record&lt;string, RecordData&gt;, callback: AsyncCallback&lt;Uint8Array&gt;): void
+
+获取当前域账号的业务访问令牌。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getAccessToken](#getaccesstoken11)。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| businessParams | Record&lt;string, RecordData&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 回调函数。如果获取成功，err返回null，否则为错误对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid business parameters. |
+| 12300003 | Domain account not found. |
+| 12300013 | Network exception. |
+| 12300014 | The domain account is not authenticated. |
+| 12300111 | The operation time out. |
+| 12300114 | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8611,25 +8654,25 @@ ArkTS-Sta示例：
 
 ### getAccessToken<sup>11+</sup>
 
-ArkTS-Dyn: getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt;
+getAccessToken(businessParams: Record&lt;string, Object&gt;): Promise&lt;Uint8Array&gt;
 
-ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uint8Array&gt;
-
-查询当前域账号的业务访问令牌，使用promise异步回调。
+查询当前域账号的业务访问令牌。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getAccessToken](#getaccesstoken23-1)。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| businessParams | Record&lt;string, Object&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
 
 **返回值：**
 
@@ -8644,7 +8687,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Pro
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
@@ -8657,7 +8699,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Pro
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8679,7 +8720,53 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例：
+### getAccessToken<sup>23+</sup>
+
+getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uint8Array&gt;
+
+查询当前域账号的业务访问令牌。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getAccessToken](#getaccesstoken11-1)。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| businessParams | Record&lt;string, RecordData&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| :------------------------ | ----------------------- |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid business parameters. |
+| 12300003 | Domain account not found. |
+| 12300013 | Network exception. |
+| 12300014 | The domain account is not authenticated. |
+| 12300111 | The operation time out. |
+| 12300114 | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -9353,7 +9440,7 @@ ArkTS-Sta示例：
 
 delUser(token: Uint8Array, callback: IIdmCallback): void
 
-删除具有身份验证令牌的用户，使用callback异步回调。
+删除具有身份验证令牌的用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -10857,15 +10944,11 @@ ArkTS-Sta示例：
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| fromAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换来源系统账号ID。 |
-| toAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换目标系统账号ID。 |
-| displayId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。 |
+| fromAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换来源系统账号ID。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| toAccountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 切换目标系统账号ID。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| displayId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 切换事件发生的逻辑屏ID，默认值为0。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ConstraintChangeInfo<sup>23+</sup>
 
@@ -10895,7 +10978,7 @@ ArkTS-Sta示例：
 
 | 名称      | 类型   | 只读  | 可选   | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| shortName | string | 否 | 否   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| shortName | string | 否 | ArkTS-Dyn: 否<br>ArkTS-Sta: 是   | 表示账号短名称（用作个人文件夹目录）。 <br/>**约束：** <br>1. 不允许出现的字符：\< \> \| : " * ? / \\<br>2. 不允许独立出现的字符串：.或..<br>3. 长度不超过255个字符。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 <br>ArkTS-Dyn环境下必须指定；ArkTS-Sta环境下可以不指定。|
 | disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
@@ -10935,7 +11018,7 @@ ArkTS-Sta示例：
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
-表示[查询认证凭据信息](#getauthinfo12)的可选参数集合。
+表示查询认证凭据信息[getAuthInfo](#getauthinfo12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -10986,7 +11069,7 @@ ArkTS-Sta示例：
 
 ## AuthOptions<sup>12+</sup>
 
-表示[认证用户](#auth12)的可选参数集合。
+表示认证用户[auth](#auth12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -11004,7 +11087,7 @@ ArkTS-Sta示例：
 
 ## GetInputDataOptions<sup>12+</sup>
 
-表示[通知调用者获取数据](#ongetdata8)的可选参数集合。
+表示通知调用者获取数据[onGetData](#ongetdata8)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 

@@ -56,8 +56,7 @@ obtainingSupported() {
     Logger.info('current auth trust level is supported.');
     return true;
   } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    Logger.error(`current auth trust level is not supported, code is ${err?.code}, message is ${err?.message}`);
+      Logger.error(`current auth trust level is not supported, code is ${error.code}, message is ${error.message}`);
     return false;
   }
 }

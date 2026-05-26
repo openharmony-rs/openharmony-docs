@@ -30,7 +30,9 @@ import { MeasureText } from '@kit.ArkUI';
 
 ## MeasureText.measureText<sup>(deprecated)</sup>
 
-static measureText(options: MeasureOptions): number
+ArkTS-Dyn: static measureText(options: MeasureOptions): number
+
+ArkTS-Sta: static measureText(options: MeasureOptions): double
 
 计算指定文本作为单行文本显示时的宽度。如果文本包含多行（由换行符`\n`分隔），则返回其中最长的行的宽度。
 
@@ -46,9 +48,9 @@ static measureText(options: MeasureOptions): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -60,7 +62,7 @@ static measureText(options: MeasureOptions): number
 
 | 类型          | 说明       |
 | ------------  | --------- |
-| number        | 文本宽度。<br/>单位：px |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double        | 文本宽度。<br/>单位：px |
 
 > **说明：**
 >
@@ -166,17 +168,17 @@ struct Index {
 | 名称           | 类型             | 只读 | 可选 | 说明                      |
 | -------------- | ------------------------- | ---- | ---- | ----------------------------- |
 | textContent | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource)                                                                                             | 否   | 否 | 设置被计算文本内容。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                                  |
-| constraintWidth<sup>10+</sup> | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource)   | 否 | 是  | 设置被计算文本布局宽度。<br/>**说明：** <br/>默认单位为vp，不支持设置百分比字符串。若不设置，则文本SizeOptions宽度为单行布局所占最大宽度值，若设置则为设置值。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                             |
+| constraintWidth<sup>10+</sup> | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource)   | 否 | 是  | 设置被计算文本布局宽度。<br/>**说明：** <br/>默认单位为vp，不支持设置百分比字符串。若不设置，则文本SizeOptions宽度为单行布局所占最大宽度值，若设置则为设置值。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                             |
 | fontSize       | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource)               | 否 | 是   | 设置被计算文本字体大小，fontSize为number类型时，使用vp单位。<br/>默认值：16<br/>**说明：** <br/>不支持设置百分比字符串。<br/>从API version 12开始，fontSize为number类型时，使用fp单位。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23    |
 | fontStyle      | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontStyle](arkui-ts/ts-appendix-enums.md#fontstyle)  <br/> ArkTS-Sta:  int&nbsp;\|&nbsp;[FontStyle](arkui-ts/ts-appendix-enums.md#fontstyle)                        | 否 | 是   | 设置被计算文本字体样式。<br>默认值：FontStyle.Normal<br/>number类型取值范围为[0,1]，取值间隔为1，依次对应FontStyle中的枚举值。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23            |
 | fontWeight     | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[FontWeight](arkui-ts/ts-appendix-enums.md#fontweight) <br/> ArkTS-Sta: int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[FontWeight](arkui-ts/ts-appendix-enums.md#fontweight)  | 否 | 是   | 设置被计算文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | fontFamily     | string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource)                                   | 否 | 是   | 设置被计算文本字体列表。默认字体'HarmonyOS Sans'，且当前只支持这种字体。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | letterSpacing  | ArkTS-Dyn: number&nbsp;\|&nbsp;string   <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string   | 否 | 是   | 设置被计算文本字符间距。<br/>默认值：0<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| textAlign<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;[TextAlign](arkui-ts/ts-appendix-enums.md#textalign) <br/> ArkTS-Sta: int&nbsp;\|&nbsp;[TextAlign](arkui-ts/ts-appendix-enums.md#textalign)              | 否 | 是   | 设置被计算文本水平方向的对齐方式。<br/>默认值：TextAlign.Start<br/>number类型取值范围为[0,3]，取值间隔为1，依次对应TextAlign中的枚举值。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| overflow<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;[TextOverflow](arkui-ts/ts-appendix-enums.md#textoverflow) <br/> ArkTS-Sta: int&nbsp;\|&nbsp;[TextOverflow](arkui-ts/ts-appendix-enums.md#textoverflow)         | 否 | 是   | 设置被计算文本超长时的截断方式。<br/>默认值：1<br/>number类型取值范围为[0,3]，取值间隔为1，依次对应TextOverflow中的枚举值。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| maxLines<sup>10+</sup>  | ArkTS-Dyn: number     <br/> ArkTS-Sta: int              | 否 | 是   | 设置被计算文本最大行数。<br/>取值范围：[0, INT32_MAX]<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| lineHeight<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource)    | 否 | 是   | 设置被计算文本行高。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| baselineOffset<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;string   <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string                                                          | 否 | 是   | 设置被计算文本基线的偏移量。<br />默认值：0<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| textCase<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;[TextCase](arkui-ts/ts-appendix-enums.md#textcase) <br/> ArkTS-Sta: int&nbsp;\|&nbsp;[TextCase](arkui-ts/ts-appendix-enums.md#textcase)                 | 否 | 是   | 设置被计算文本大小写。<br />默认值：TextCase.Normal<br/>number类型取值范围为[0,2]，取值间隔为1，依次对应TextCase中的枚举值。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| textIndent<sup>11+</sup> |  ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string  | 否 | 是  | 设置首行文本缩进，默认值为0。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| wordBreak<sup>11+</sup> | [WordBreak](arkui-ts/ts-appendix-enums.md#wordbreak11) | 否 | 是   | 设置断行规则。 <br />默认值：WordBreak.BREAK_WORD <br/>**说明：** <br/>WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}，`maxLines`组合使用可实现英文单词按字母截断，超出部分以省略号显示。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| textAlign<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;[TextAlign](arkui-ts/ts-appendix-enums.md#textalign) <br/> ArkTS-Sta: int&nbsp;\|&nbsp;[TextAlign](arkui-ts/ts-appendix-enums.md#textalign)              | 否 | 是   | 设置被计算文本水平方向的对齐方式。<br/>默认值：TextAlign.Start<br/>number类型取值范围为[0,3]，取值间隔为1，依次对应TextAlign中的枚举值。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| overflow<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;[TextOverflow](arkui-ts/ts-appendix-enums.md#textoverflow) <br/> ArkTS-Sta: int&nbsp;\|&nbsp;[TextOverflow](arkui-ts/ts-appendix-enums.md#textoverflow)         | 否 | 是   | 设置被计算文本超长时的截断方式。<br/>默认值：1<br/>number类型取值范围为[0,3]，取值间隔为1，依次对应TextOverflow中的枚举值。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| maxLines<sup>10+</sup>  | ArkTS-Dyn: number     <br/> ArkTS-Sta: int              | 否 | 是   | 设置被计算文本最大行数。<br/>取值范围：[0, INT32_MAX]<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| lineHeight<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource) <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](arkui-ts/ts-types.md#resource)    | 否 | 是   | 设置被计算文本行高。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| baselineOffset<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;string   <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string                                                          | 否 | 是   | 设置被计算文本基线的偏移量。<br />默认值：0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| textCase<sup>10+</sup>  | ArkTS-Dyn: number&nbsp;\|&nbsp;[TextCase](arkui-ts/ts-appendix-enums.md#textcase) <br/> ArkTS-Sta: int&nbsp;\|&nbsp;[TextCase](arkui-ts/ts-appendix-enums.md#textcase)                 | 否 | 是   | 设置被计算文本大小写。<br />默认值：TextCase.Normal<br/>number类型取值范围为[0,2]，取值间隔为1，依次对应TextCase中的枚举值。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| textIndent<sup>11+</sup> |  ArkTS-Dyn: number&nbsp;\|&nbsp;string <br/> ArkTS-Sta: double&nbsp;\|&nbsp;string  | 否 | 是  | 设置首行文本缩进，默认值为0。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| wordBreak<sup>11+</sup> | [WordBreak](arkui-ts/ts-appendix-enums.md#wordbreak11) | 否 | 是   | 设置断行规则。 <br />默认值：WordBreak.BREAK_WORD <br/>**说明：** <br/>WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}，`maxLines`组合使用可实现英文单词按字母截断，超出部分以省略号显示。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |

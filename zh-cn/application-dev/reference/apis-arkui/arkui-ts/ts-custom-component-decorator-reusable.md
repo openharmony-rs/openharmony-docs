@@ -1,4 +1,4 @@
-# @Reusable: 组件复用
+# \@Reusable：组件复用
 
 为了降低反复创建销毁自定义组件带来的性能开销，开发者可以使用\@Reusable装饰\@Component装饰的自定义组件，达成组件复用的效果。开发指南参考：[\@Reusable装饰器：组件复用](../../../ui/state-management/arkts-reusable.md)。
 
@@ -8,7 +8,7 @@
 >
 > - 本装饰器首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

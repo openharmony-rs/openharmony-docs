@@ -1890,6 +1890,8 @@ struct Index {
 
 * `@SyncMonitor('obsObj.objObj2*')` - 错误，属性名称`obsObj2*`无效
 
+* `@SyncMonitor(['*'])` - 错误，不存在属性名称
+
 ### 监听变量从可访问变为不可访问和从不可访问变为可访问
 \@Monitor仅会保存变量可访问时的值，当状态变量变为不可访问的状态时，并不会记录其值的变化。从API version 20开始，如果需要监听可访问到不可访问和不可访问到可访问的状态变化，可以使用[addMonitor](./arkts-new-addMonitor-clearMonitor.md#监听变量从可访问到不访问和从不可访问到可访问)。
 

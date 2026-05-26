@@ -26,7 +26,7 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 构造菜单选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,13 +42,13 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 | 名称      | 类型                                        | 只读 | 可选 | 说明                             |
 | --------- | ------------------------------------------- | ---- | ---- | -------------------------------------- |
-| startIcon | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem的起始图标。不支持Symbol图标。使用Symbol图标时，须使用symbolStartIcon。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23      |
-| content   | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem的内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23  |
-| endIcon   | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem的末尾图标。不支持Symbol图标。使用Symbol图标时，须使用symbolEndIcon。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23 |
-| labelInfo | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem结束的标签信息，如快捷方式Ctrl+C等。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23  |
-| builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 用于构建二级菜单。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23                      |
-| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | 否   | 是   | MenuItem起始的Symbol图标。配置该项时，原先startIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
-| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是   | MenuItem末尾的Symbol图标。配置该项时，原先endIcon图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| startIcon | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem的起始图标。不支持Symbol图标。使用Symbol图标时，须使用symbolStartIcon。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23      |
+| content   | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem的内容。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23  |
+| endIcon   | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem的末尾图标。不支持Symbol图标。使用Symbol图标时，须使用symbolEndIcon。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23 |
+| labelInfo | [ResourceStr](ts-types.md#resourcestr)      | 否   | 是   | MenuItem结束的标签信息，如快捷方式Ctrl+C等。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23  |
+| builder   | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 用于构建二级菜单。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 9 <br/> **ArkTS-Sta起始版本：** 23                      |
+| symbolStartIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | 否   | 是   | MenuItem起始的Symbol图标。配置该项时，原先startIcon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| symbolEndIcon<sup>12+</sup>   | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md)| 否   | 是   | MenuItem末尾的Symbol图标。配置该项时，原先endIcon图标不显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 
 
 ## 属性
@@ -67,7 +67,7 @@ ArkTS-Sta: selected(value: boolean | undefined | Bindable\<boolean\>)
 
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +89,7 @@ ArkTS-Sta: selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier | undef
 
 设置当菜单项被选中时，是否显示被选中的图标。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,7 +111,9 @@ ArkTS-Sta: contentFont(value: Font | undefined)
 
 设置菜单项中内容信息的字体样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -133,7 +135,9 @@ ArkTS-Sta: contentFontColor(value: ResourceColor | undefined)
 
 设置菜单项中内容信息的字体颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -155,7 +159,9 @@ ArkTS-Sta: labelFont(value: Font | undefined)
 
 设置菜单项中标签信息的字体样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,7 +183,9 @@ ArkTS-Sta: labelFontColor(value: ResourceColor | undefined)
 
 设置菜单项中标签信息的字体颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,7 +215,7 @@ attributeModifier(modifier: AttributeModifier\<MenuItemAttribute\> | AttributeMo
 
 | 参数名    | 类型                                                                                              | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------------------------------------------- | ---- | -------------------------- |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[MenuItemAttribute](#menuitemattribute)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[CommonMethod](./ts-component-general-attributes.md)\>&nbsp;\|&nbsp;undefined | 是   | MenuItem组件的属性修改器。取值为undefined时，则不使用属性修改器。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[MenuItemAttribute](#menuitemattribute)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<CommonMethod\>&nbsp;\|&nbsp;undefined | 是   | MenuItem组件的属性修改器。取值为undefined时，则不使用属性修改器。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md) |
 
 ## 事件
 
@@ -219,7 +227,7 @@ ArkTS-Sta: onChange(callback: ((selected: boolean) => void) | undefined)
 
 当选中状态发生变化时，触发该回调。只有手动触发且MenuItem状态改变时才会触发onChange回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

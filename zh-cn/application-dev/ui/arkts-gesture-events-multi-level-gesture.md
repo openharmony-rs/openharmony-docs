@@ -16,11 +16,19 @@
 
 [触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)（onTouch事件）是所有手势组成的基础，包括Down、Move、Up、Cancel四种类型。手势均由触摸事件组成，例如，点击为Down和Up，滑动为Down和一系列Move及Up。触摸事件具有以下特殊性：
 
-1.监听了onTouch事件的组件，在手指落下被触摸时均会收到onTouch事件的回调，被触摸受到触摸热区和触摸控制影响。
+1. 监听了onTouch事件的组件，在手指落下被触摸时均会收到onTouch事件的回调，被触摸受到触摸热区和触摸控制影响。
 
-2.onTouch事件的回调是闭环的。若一个组件收到了手指Id为0的Down事件，后续也会收到手指Id为0的Move事件和Up事件。
+2. onTouch事件的回调是闭环的。若一个组件收到了手指Id为0的Down事件，后续也会收到手指Id为0的Move事件和Up事件。
 
-3.onTouch事件的回调是一致的。若一个组件收到了手指Id为0的Down事件，但未收到手指Id为1的Down事件，则后续只会收到手指Id为0的touch事件，不会收到手指Id为1的后续touch事件。
+3. onTouch事件的回调是一致的。若一个组件收到了手指Id为0的Down事件，但未收到手指Id为1的Down事件，则后续只会收到手指Id为0的touch事件，不会收到手指Id为1的后续touch事件。
+
+4. onTouch事件在以下场景会触发Cancel类型事件：
+
+   - 手指按住屏幕同时点击Home键返回桌面，此时触发Cancel事件。
+
+   <!--RP1--><!--RP1End-->
+
+   - 手指触摸过程中存在手写笔操作，手指的触摸操作会收到Cancel事件。
 
 对于一般的容器组件（例如：Column），父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件根据布局进行触发。
 
@@ -36,7 +44,7 @@ Column() {
 
 当触摸组件C时，会触发组件A和组件C的onTouch回调，不触发组件B的回调。
 
-特殊的容器组件，如Stack等组件，由于子组件之间存在着堆叠关系，子组件的布局也存在相互遮盖关系。
+特殊的容器组件，如[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)等组件，由于子组件之间存在着堆叠关系，子组件的布局也存在相互遮盖关系。
 
 所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
@@ -74,7 +82,7 @@ Column() {
 
 当父组件和子组件均绑定点击手势时，子组件的优先级高于父组件。
 
-因此，当在B组件上进行点击时，组件B所绑定的TapGesture的回调会被触发，而组件A所绑定的TapGesture的回调不会被触发。
+因此，当在B组件上进行点击时，组件B所绑定的[TapGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-tapgesture.md)的回调会被触发，而组件A所绑定的TapGesture的回调不会被触发。
 
 <!-- @[prioritysecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
 
@@ -98,7 +106,7 @@ Column()
 
 可以通过设置属性，控制默认的多层级手势事件竞争流程，更好地实现手势事件。
 
-目前，通过设置[触摸热区](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md)和[触摸测试](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)可以控制Touch事件的分发，从而可以影响到onTouch事件和手势的响应。而绑定手势方法属性可以控制手势的竞争从而影响手势的响应，但不能影响到onTouch事件。
+目前，通过设置[触摸热区](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md)和[触摸测试](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)可以控制Touch事件的分发，从而可以影响到[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件和手势的响应。而绑定手势方法属性可以控制手势的竞争从而影响手势的响应，但不能影响到onTouch事件。
 
 ### 触摸热区对手势和事件的控制
 
@@ -125,7 +133,7 @@ Column() {
 
 当绑定了responseRegion后，手势与事件的响应区域范围将以所绑定的区域范围为准，而不是以布局区域为准，可能出现布局相关区域不响应手势与事件的情况。
 
-此外，responseRegion属性支持由多个Rect组成的数组作为入参，以支持更多开发需求。
+此外，responseRegion属性支持由多个[Rectangle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#rectangle对象说明)组成的数组作为入参，以支持更多开发需求。
 
 ### 触摸测试对手势和事件的控制
 
