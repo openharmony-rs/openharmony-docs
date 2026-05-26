@@ -122,7 +122,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            // 处理状态变更。
        }
        if (state == OH_AVRecorder_State::ERROR) {
-           OH_LOG_INFO(LOG_APP, "==NDKDemo== Recorder OnStateChange ERROR, reason: %{public}s", reasonStr);
+           OH_LOG_ERROR(LOG_APP, "==NDKDemo== Recorder OnStateChange ERROR, reason: %{public}s", reasonStr);
            // 处理状态变更。
        }
    }

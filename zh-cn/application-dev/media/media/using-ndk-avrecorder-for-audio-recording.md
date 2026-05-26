@@ -182,7 +182,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
        config.profile.audioSampleRate = 48000;
     
-       config.profile.fileFormat = AVRECORDER_CFT_MPEG_4A;
+       config.profile.fileFormat = AVRECORDER_CFT_MP3;
        config.fileGenerationMode = AVRECORDER_APP_CREATE;
     }
 
@@ -376,7 +376,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       config.profile.audioCodec = AVRECORDER_AUDIO_AAC;
       config.profile.audioSampleRate = 48000;
 
-      config.profile.fileFormat = AVRECORDER_CFT_MPEG_4;
+      config.profile.fileFormat = AVRECORDER_CFT_MP3;
       config.fileGenerationMode = AVRECORDER_APP_CREATE;
 
       config.metadata.location.latitude = 27.791863;
@@ -516,6 +516,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          napi_create_int32(env, AV_ERR_INVALID_VAL, &res);
          return res;
       }
+      close(g_outputFd);
       
       int result = OH_AVRecorder_Release(g_avRecorder);
       g_avRecorder = nullptr;   // 释放录制资源后，需要显式地将g_avRecorder指针置空。
