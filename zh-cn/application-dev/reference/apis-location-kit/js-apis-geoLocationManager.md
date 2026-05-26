@@ -3145,7 +3145,7 @@ isGnssServiceSupported(): boolean
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   try {
-      let locationEnabled = geoLocationManager.isGnssServiceSupported();
+      let gnssServiceSupported = geoLocationManager.isGnssServiceSupported();
   } catch (err) {
       console.error("errCode:" + err.code + ", message:"  + err.message);
   }
@@ -3182,7 +3182,7 @@ isGnssFenceServiceSupported(): boolean
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   try {
-      let locationEnabled = geoLocationManager.isGnssFenceServiceSupported();
+      let gnssFenceServiceSupported = geoLocationManager.isGnssFenceServiceSupported();
   } catch (err) {
       console.error("errCode:" + err.code + ", message:"  + err.message);
   }
@@ -3219,7 +3219,7 @@ isCachedGnssServiceSupported(): boolean
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
   try {
-      let locationEnabled = geoLocationManager.isCachedGnssServiceSupported();
+      let cachedGnssServiceSupported = geoLocationManager.isCachedGnssServiceSupported();
   } catch (err) {
       console.error("errCode:" + err.code + ", message:"  + err.message);
   }
