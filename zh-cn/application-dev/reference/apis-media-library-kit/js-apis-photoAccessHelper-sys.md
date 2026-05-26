@@ -4831,26 +4831,25 @@ createAssetsWithAlbum(creationSettings: CreationSetting[], isRealTimeThumb: bool
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```ts
-async handleTestApi() {
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     // 构造创建参数。
-    let creationSettings = [
+    let creationSettings: Array<photoAccessHelper.CreationSetting> = [
       {
-        title: this.title,
-        fileNameExtension: this.fileNameExtension,
-        photoType: this.photoType
+        title: 'test',
+        fileNameExtension: 'jpg',
+        photoType: photoAccessHelper.PhotoType.IMAGE
       }
     ];
-    // 指定相册地址。
-    let finalAlbumUri = this.albumUri.trim() || undefined;
     // 创建资产时不实时生成缩略图。
-    let whetherRealTimeThumb = false;
-
+    let isRealTimeThumb: boolean = false;
+    // 指定相册地址。
+    let albumUri: string = 'file://media/PhotoAlbum/10';
     // 调用接口，创建资产。
-    let result = await phAccessHelper.createAssetsWithAlbum(
+    let result: Array<string> = await phAccessHelper.createAssetsWithAlbum(
       creationSettings,
-      whetherRealTimeThumb,
-      finalAlbumUri
+      isRealTimeThumb,
+      albumUri
     );
     console.info('Succeeded in creating assets with album, uri is ' + result);
   } catch (err) {
