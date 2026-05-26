@@ -123,8 +123,6 @@ scrollBarWidth(value: number | string)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -165,6 +163,8 @@ scrollSnap(value: ScrollSnapOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -180,8 +180,6 @@ edgeEffect(edgeEffect: EdgeEffect, options?: EdgeEffectOptions)
 设置边缘滑动效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,6 +237,8 @@ friction(value: number | Resource)
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1190,6 +1190,8 @@ getFrameNode(): FrameNode | undefined
 获取与当前Scroller绑定的FrameNode。
 
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
