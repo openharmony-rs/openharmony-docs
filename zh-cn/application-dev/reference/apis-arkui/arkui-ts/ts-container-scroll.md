@@ -160,8 +160,6 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 7
@@ -213,6 +211,8 @@ ArkTS-Sta: scrollSnap(value: ScrollSnapOptions | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -234,8 +234,6 @@ ArkTS-Sta: edgeEffect(edgeEffect: EdgeEffect | undefined, options?: EdgeEffectOp
 设置边缘滑动效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,6 +309,8 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1476,6 +1476,8 @@ getFrameNode(): FrameNode | undefined
 获取与当前Scroller绑定的FrameNode。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
