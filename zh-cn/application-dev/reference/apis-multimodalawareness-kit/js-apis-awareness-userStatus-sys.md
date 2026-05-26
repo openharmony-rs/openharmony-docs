@@ -365,7 +365,6 @@ configure(featureId: UserStatusFeature, detail: string): int
 import { BusinessError } from '@kit.BasicServicesKit';
 import { userStatus } from '@kit.MultimodalAwarenessKit';
 
-
 interface ConfigParam {
   description: string;
   value: number[];
