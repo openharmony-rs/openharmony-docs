@@ -26,7 +26,7 @@
 
 1. 准备SSL证书。
 
-    生成SSL证书。生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
+    生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
 
     ```shell
     openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out serverCert.cer -subj "/C=CN/ST=GD/L=GZ/O=abc/OU=defg/CN=hijk/emailAddress=test.com"
