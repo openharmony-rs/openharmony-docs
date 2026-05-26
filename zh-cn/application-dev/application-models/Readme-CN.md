@@ -45,6 +45,7 @@
     - [应用启动](application-startup-options.md)
     - [应用启动框架AppStartup](app-startup.md)
     - [应用预加载](preload-application.md)
+    - [应用快启启动](hyperstartup-application.md)
     - [应用重启](app-restart.md)
     - [应用退出](app-stop.md)
     - [获取应用异常退出原因](ability-exit-info-record.md)
