@@ -30,7 +30,7 @@ import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 
 ## HalfScreenLaunchComponent
 
-HalfScreenLaunchComponent({&emsp;content: Callback\<void>,&emsp;appId: string,&emsp;options?: AtomicServiceOptions,&emsp;onError?: ErrorCallback,&emsp;onTerminated?: Callback&lt;TerminationInfo&gt;,&emsp;onReceive?: Callback&lt;Record&lt;string, Object&gt;&gt; })
+HalfScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo>, onReceive?: Callback<Record<string, Object>> })
 
 **装饰器类型：**\@Component
 
