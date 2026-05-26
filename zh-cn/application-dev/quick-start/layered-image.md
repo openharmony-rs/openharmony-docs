@@ -220,6 +220,49 @@
 2. 使用[bundleManager.setAlternateIcon](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
 
     <!-- @[layered_image_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
+    
+    ``` TypeScript
+    import { bundleManager } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    @Entry
+    @Component
+    struct Index {
+    
+      build() {
+        Scroll() {
+          Column() {
+            Text("SetAlternateIcon")
+              .fontSize($r('app.float.page_text_font_size'))
+              .fontWeight(FontWeight.Bold)
+              .alignRules({
+                center: { anchor: '__container__', align: VerticalAlign.Center },
+                middle: { anchor: '__container__', align: HorizontalAlign.Center }
+              })
+              .onClick(() => {
+                // alternateIconName需要替换为app.json5中alternateIcons标签下配置的name字段值
+                let alternateIconName: string = 'summer_theme';
+                try {
+                  bundleManager.setAlternateIcon(alternateIconName).then(() => {
+                    hilog.info(0x0000, 'testTag', 'setAlternateIcon successfully');
+                  }).catch((err: BusinessError) => {
+                    hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', err.message);
+                  });
+                } catch (err) {
+                  let message = (err as BusinessError).message;
+                  hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', message);
+                }
+              })
+            // ...
+            // ...
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
 
 3. 调用[bundleManager.setAlternateIcon](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口传入空字符串可恢复默认图标。
 
