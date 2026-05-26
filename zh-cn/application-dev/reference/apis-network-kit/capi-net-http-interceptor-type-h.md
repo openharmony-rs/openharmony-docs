@@ -80,7 +80,7 @@ enum OH_Interceptor_Type
 **参数：**
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TYPE_READ_ONLY | 只读拦截器。 |
+| OH_TYPE_READ_ONLY | 只读拦截器。**起始版本：** 24。 |
 
 ### OH_Interceptor_Result
 
@@ -125,6 +125,7 @@ typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(
 | int32_t *isModified | 标识拦截器是否修改了数据包。对OH_TYPE_READ_ONLY类型拦截器无效，可配置为nullptr。<br>- 0表示未对数据执行修改操作。<br>- 非0表示已对数据执行修改操作。 |
 
 **返回：**
-| 类型 | 说明 |
-| -- | -- |
+
+| 类型                                            | 说明                                                         |
+| ----------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Interceptor_Result](#oh_interceptor_result) | 拦截器处理结果。<br>- OH_CONTINUE：继续处理 <br>- OH_ABORT：拦截处理 |
