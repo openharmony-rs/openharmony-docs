@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 1. 本模块首批接口从API version 26.0.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 1. 本模块首批接口从API version 26.0.0开始支持。
 > 2. 本模块为系统接口。
 
 ## 导入模块
@@ -229,7 +229,7 @@ subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
-**系统API**：此接口为系统接口，仅系统应用可调用。
+**系统API**：此接口为系统接口。
 
 **参数**：
 
@@ -241,7 +241,9 @@ subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;
 
 **返回值**：
 
-返回注册的回调ID。
+| 类型                           | 说明         |
+| ---------------------------- | ---------- |
+| number | 返回注册的回调ID。唯一标识对应回调函数。 |
 
 **错误码**：
 
@@ -280,7 +282,7 @@ unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
-**系统API**：此接口为系统接口，仅系统应用可调用。
+**系统API**：此接口为系统接口。
 
 **参数**：
 
@@ -291,7 +293,10 @@ unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&
 
 **返回值**：
 
-返回0表示操作成功；返回非零值表示操作失败。
+| 类型                           | 说明         |
+| ---------------------------- | ---------- |
+| number | 返回配置执行结果。返回0表示操作成功，非零值表示操作失败。 |
+
 
 **错误码**：
 
@@ -330,7 +335,7 @@ configure(featureId: UserStatusFeature, detail: string): number
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
-**系统API**：此接口为系统接口，仅系统应用可调用。
+**系统API**：此接口为系统接口。
 
 **参数**：
 
@@ -341,7 +346,9 @@ configure(featureId: UserStatusFeature, detail: string): number
 
 **返回值**：
 
-返回0表示操作成功；返回非零值表示操作失败。
+| 类型                           | 说明         |
+| ---------------------------- | ---------- |
+| number | 返回配置执行结果。返回0表示操作成功，非零值表示操作失败。 |
 
 **错误码**：
 
@@ -389,7 +396,7 @@ queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomicCap[]
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
-**系统API**：此接口为系统接口，仅系统应用可调用。
+**系统API**：此接口为系统接口。
 
 **参数**：
 
@@ -399,7 +406,9 @@ queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomicCap[]
 
 **返回值**：
 
-返回设备支持的原子能力列表。
+| 类型                           | 说明         |
+| ---------------------------- | ---------- |
+| [UserStatusAtomicCap](#userstatusatomiccap)[]| 返回设备支持的原子能力列表。 |
 
 **错误码**：
 
