@@ -6,9 +6,25 @@
 <!--Tester: @mamba-ting-->
 <!--Adviser: @fang-jinxu-->
 
+## 功能介绍
+
+示例服务器：在线升级本地仿真环境
+
+本工具旨在模拟生产环境中的搜包服务器，基于SSL协议构建安全通信通道。它支持版本检测与升级包元数据查询，能够返回升级包的版本详情，文件校验值及大小等关键数据，帮助开发者在零依赖本地环境下复刻在线升级流程。
+
+核心应用场景：
+
+- 功能开发调试：为在线升级模块提供独立的测试数据源。
+
+- 流程本地验证：在无需联网的情况下，全流程验证从检测更新到下载升级包的逻辑闭环。
+
+- 包格式兼容性测试：快速验证不同格式升级包解析与处理的正确性。
+
 ## 开发步骤
 
-1. 生成SSL证书
+示例服务器的开发，需要完成以下步骤：
+
+1. 准备SSL证书。
 
     生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
 
@@ -16,9 +32,10 @@
     openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out serverCert.cer -subj "/C=CN/ST=GD/L=GZ/O=abc/OU=defg/CN=hijk/emailAddress=test.com"
     ```
 
+> **说明**
+> SSL证书用于保障服务器与设备之间的通信安全，证书有效期建议设置为365天以上。
 
-
-2. 修改bundle.json
+2. 修改bundle.json。
 
     在build字段新增一个sub_component。
 
@@ -29,7 +46,7 @@
     ],
     ```
 
-3. 建立代码目录
+3. 建立代码目录。
 
     进入到update_updateservice目录下，执行以下命令，建立代码目录。
 
@@ -43,7 +60,7 @@
     touch server_sample/src/main.cpp               // 创建main.cpp文件
     ```
 
-4. 编写编译文件BUILD.gn
+4. 编写编译文件BUILD.gn。
 
     文件BUILD.gn一共编译两个ohos组件，一个是ohos_shared_library库文件libserver_process.z.so，另一个是ohos_executable可执行文件testserver。
 
@@ -88,7 +105,7 @@
     }
     ```
 
-5. 编写头文件server_process.h
+5. 编写头文件server_process.h。
 
     文件server_process.h声明了示例服务器的接口。
 
@@ -134,7 +151,7 @@
     #endif // __SERVER_PROCESS_H__
     ```
 
-6. 编写server_process.c、main.cpp
+6. 编写server_process.c、main.cpp。
 
     文件server_process.c主要声明了服务器的返回报文格式respondContent，main.cpp可参考普通SSL协议的服务器编写，注意包含相关头文件，同时加载serverKey.pem和serverCert.cer两个证书。
 
@@ -183,15 +200,15 @@
     "}";
     ```
 
-7. 编译输出产物
+7. 编译输出产物。
 
     编译输出目录会新增testserver和libserver_process.z.so两个文件。
 
-8. 升级包制作
+8. 升级包制作。
 
     参考[update_packaging_tools仓](https://gitcode.com/openharmony/update_packaging_tools)制作升级包。
 
-9. 启动搜包服务器
+9. 启动搜包服务器。
 
     建议在开发板上新建一个纯英文路径，然后将testserver、libserver_process.z.so、serverCert.cer和serverKey.pem放到同一个目录下，进入该目录，执行以下启动命令即可启动搜包服务器。
 
@@ -199,3 +216,18 @@
     ./testserver ./libserver_process.z.so &
     ```
 
+## 调试说明
+
+示例服务器启动后，可通过以下方式进行调试验证：
+
+1. **确认服务器启动成功**：执行启动命令后，服务器进程会在后台运行，可通过`ps -ef | grep testserver`命令查看进程状态。
+
+2. **验证SSL通信**：确保serverKey.pem和serverCert.cer证书文件路径正确，证书文件应放置于/data/sdcard目录下。
+
+3. **检查端口监听**：示例服务器默认监听端口需与设备端搜包接口配置一致，可通过`netstat -an | grep <端口号>`确认端口监听状态。
+
+4. **日志查看**：服务器运行日志可通过logcat或串口日志查看，关键接口调用会打印`[ServerProcess]`前缀的日志信息。
+
+> **说明**
+>
+> 示例服务器仅用于开发调试，不建议在生产环境直接使用。生产环境的升级服务器需要根据实际业务需求进行定制开发，包括权限验证、包管理、版本管控等完整功能。
