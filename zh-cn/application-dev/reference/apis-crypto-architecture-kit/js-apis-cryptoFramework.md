@@ -1110,6 +1110,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
+| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1186,7 +1187,6 @@ getEncodedDer(format: string): DataBlob
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
 | 17630001 | crypto operation error. |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
