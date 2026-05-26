@@ -1,4 +1,4 @@
-# @ohos.resourceschedule.workScheduler (延迟任务调度)
+# @ohos.resourceschedule.workScheduler (延迟任务调度)(系统接口)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -9,11 +9,7 @@
 
 本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。
 
->  **说明：**
->
->  本模块首批接口从API version 26.0.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
->  本模块接口仅可在Stage模型下使用。
+**起始版本：** 26.0.0
 
 ## 导入模块
 
@@ -22,6 +18,10 @@ import { workScheduler } from '@kit.BackgroundTasksKit';
 ```
 
 ## 常量
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
