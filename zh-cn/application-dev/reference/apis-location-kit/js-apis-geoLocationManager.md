@@ -941,7 +941,7 @@ off(type: 'locationEnabledChange', callback?: Callback&lt;boolean&gt;): void
 
 on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callback: Callback&lt;Array&lt;Location&gt;&gt;): void
 
-订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
+订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -980,7 +980,9 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
     'wakeUpCacheQueueFull': true
   };
   try {
-    geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -991,7 +993,7 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
 
 off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&gt;&gt;): void
 
-取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
+取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1029,8 +1031,10 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
     'wakeUpCacheQueueFull': true
   };
   try {
-    geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
-    geoLocationManager.off('cachedGnssLocationsChange');
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+      geoLocationManager.off('cachedGnssLocationsChange');
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1041,7 +1045,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 
 on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;): void
 
-订阅GNSS卫星状态信息上报事件。使用callback异步回调。
+订阅GNSS卫星状态信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1105,7 +1109,9 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
   }
 
   try {
-    geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+    if (geoLocationManager.isGnssServiceSupported()) {
+      geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1116,7 +1122,7 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
 
 off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt;): void
 
-取消订阅GNSS卫星状态信息上报事件。
+取消订阅GNSS卫星状态信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1151,8 +1157,10 @@ off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt
     console.info('satelliteStatusChange: ' + JSON.stringify(satelliteStatusInfo));
   }
   try {
-    geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
-    geoLocationManager.off('satelliteStatusChange', gnssStatusCb);
+    if (geoLocationManager.isGnssServiceSupported()) {
+      geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+      geoLocationManager.off('satelliteStatusChange', gnssStatusCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1163,7 +1171,7 @@ off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt
 
 on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
 
-订阅GNSS NMEA信息上报事件。使用callback异步回调。
+订阅GNSS NMEA信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1199,7 +1207,9 @@ on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
   }
 
   try {
-    geoLocationManager.on('nmeaMessage', nmeaCb);
+    if (geoLocationManager.isGnssServiceSupported()) {
+      geoLocationManager.on('nmeaMessage', nmeaCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1210,7 +1220,7 @@ on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
 
 off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
 
-取消订阅GNSS NMEA信息上报事件。
+取消订阅GNSS NMEA信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1246,8 +1256,10 @@ off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
   }
 
   try {
-    geoLocationManager.on('nmeaMessage', nmeaCb);
-    geoLocationManager.off('nmeaMessage', nmeaCb);
+    if (geoLocationManager.isGnssServiceSupported()) {
+      geoLocationManager.on('nmeaMessage', nmeaCb);
+      geoLocationManager.off('nmeaMessage', nmeaCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1258,7 +1270,7 @@ off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
 
 on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
+添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1311,7 +1323,9 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
       "geofence": { "latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000 }
     };
     try {
-      geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      if (geoLocationManager.isGnssFenceServiceSupported()) {
+        geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      }
     } catch (err) {
       console.error("errCode:" + err.code + ", message:" + err.message);
     }
@@ -1323,7 +1337,7 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
+删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1376,8 +1390,10 @@ off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): v
       "geofence": { "latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000 }
     };
     try {
-      geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
-      geoLocationManager.off('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      if (geoLocationManager.isGnssFenceServiceSupported()) {
+        geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+        geoLocationManager.off('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      }
     } catch (err) {
       console.error("errCode:" + err.code + ", message:" + err.message);
     }
@@ -2007,7 +2023,7 @@ isGeocoderAvailable(): boolean
 
 getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 
-获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
+获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2037,14 +2053,16 @@ getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.getCachedGnssLocationsSize((err, size) => {
-      if (err) {
-        console.error('getCachedGnssLocationsSize: err=' + JSON.stringify(err));
-      }
-      if (size) {
-        console.info('getCachedGnssLocationsSize: size=' + JSON.stringify(size));
-      }
-    });
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.getCachedGnssLocationsSize((err, size) => {
+        if (err) {
+          console.error('getCachedGnssLocationsSize: err=' + JSON.stringify(err));
+        }
+        if (size) {
+          console.info('getCachedGnssLocationsSize: size=' + JSON.stringify(size));
+        }
+      });
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -2055,7 +2073,7 @@ getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 
 getCachedGnssLocationsSize(): Promise&lt;number&gt;
 
-获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。
+获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2085,12 +2103,14 @@ getCachedGnssLocationsSize(): Promise&lt;number&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    geoLocationManager.getCachedGnssLocationsSize().then((result) => {
-      console.info('promise, getCachedGnssLocationsSize: ' + JSON.stringify(result));
-    })
-      .catch((error: BusinessError) => {
-        console.error('promise, getCachedGnssLocationsSize: error=' + JSON.stringify(error));
-      });
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.getCachedGnssLocationsSize().then((result) => {
+        console.info('promise, getCachedGnssLocationsSize: ' + JSON.stringify(result));
+      })
+        .catch((error: BusinessError) => {
+          console.error('promise, getCachedGnssLocationsSize: error=' + JSON.stringify(error));
+        });
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -2101,7 +2121,7 @@ getCachedGnssLocationsSize(): Promise&lt;number&gt;
 
 flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 
-读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
+读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2132,11 +2152,13 @@ flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.flushCachedGnssLocations((err) => {
-      if (err) {
-        console.error('flushCachedGnssLocations: err=' + JSON.stringify(err));
-      }
-    });
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.flushCachedGnssLocations((err) => {
+        if (err) {
+          console.error('flushCachedGnssLocations: err=' + JSON.stringify(err));
+        }
+      });
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -2147,7 +2169,7 @@ flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 
 flushCachedGnssLocations(): Promise&lt;void&gt;
 
-读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。
+读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2178,12 +2200,14 @@ flushCachedGnssLocations(): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    geoLocationManager.flushCachedGnssLocations().then(() => {
-      console.info('promise, flushCachedGnssLocations success');
-    })
-      .catch((error: BusinessError) => {
-        console.error('promise, flushCachedGnssLocations: error=' + JSON.stringify(error));
-      });
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.flushCachedGnssLocations().then(() => {
+        console.info('promise, flushCachedGnssLocations success');
+      })
+        .catch((error: BusinessError) => {
+          console.error('promise, flushCachedGnssLocations: error=' + JSON.stringify(error));
+        });
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -2375,7 +2399,7 @@ getCountryCode(): Promise&lt;CountryCode&gt;
 
 addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;
 
-添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。
+添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 APP可以在入参[GnssGeofenceRequest](#gnssgeofencerequest12)中传入回调函数用于接收地理围栏事件；也可以传入通知对象[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)，在系统识别到地理围栏事件发生时会弹出APP创建的通知。
 
@@ -2475,15 +2499,17 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
     }
   }
   try {
-    // 添加围栏
-    geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
-      // 围栏添加成功后返回围栏ID
-      console.info("addGnssGeofence success, fence id: " + id);
-      let fenceId = id;
-    }).catch((err: BusinessError) => {
-      console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code +
-      ",errMessage:" + (err as BusinessError).message);
-    });
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      // 添加围栏
+      geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
+        // 围栏添加成功后返回围栏ID
+        console.info("addGnssGeofence success, fence id: " + id);
+        let fenceId = id;
+      }).catch((err: BusinessError) => {
+        console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code +
+        ",errMessage:" + (err as BusinessError).message);
+      });
+    }
   } catch (error) {
     console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
   }
@@ -2496,7 +2522,7 @@ removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 
 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。
 
-GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
+GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2534,11 +2560,13 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
   // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的
   let fenceId = 1;
   try {
-    geoLocationManager.removeGnssGeofence(fenceId).then(() => {
-      console.info("removeGnssGeofence success fenceId:" + fenceId);
-    }).catch((error: BusinessError) => {
-      console.error("removeGnssGeofence: error=" + JSON.stringify(error));
-    });
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      geoLocationManager.removeGnssGeofence(fenceId).then(() => {
+        console.info("removeGnssGeofence success fenceId:" + fenceId);
+      }).catch((error: BusinessError) => {
+        console.error("removeGnssGeofence: error=" + JSON.stringify(error));
+      });
+    }
   } catch (error) {
     console.error("removeGnssGeofence: error=" + JSON.stringify(error));
   }
@@ -2549,7 +2577,7 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
 
-获取地理围栏功能支持的坐标系列表。
+获取地理围栏功能支持的坐标系列表。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -2574,8 +2602,10 @@ getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    let supportedCoordTypes: Array<geoLocationManager.CoordinateSystemType> = geoLocationManager.getGeofenceSupportedCoordTypes();
-    console.info("getGeofenceSupportedCoordTypes return:" + JSON.stringify(supportedCoordTypes));
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      let supportedCoordTypes: Array<geoLocationManager.CoordinateSystemType> = geoLocationManager.getGeofenceSupportedCoordTypes();
+      console.info("getGeofenceSupportedCoordTypes return:" + JSON.stringify(supportedCoordTypes));
+    }
   } catch (error) {
     console.error("getGeofenceSupportedCoordTypes: error=" + JSON.stringify(error));
   }
@@ -3102,11 +3132,122 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
   }
   ```
 
+## geoLocationManager.isGnssServiceSupported
+
+isGnssServiceSupported(): boolean
+
+判断是否支持GNSS功能。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持GNSS功能。<br/>false：不支持GNSS功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let gnssServiceSupported = geoLocationManager.isGnssServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
+## geoLocationManager.isGnssFenceServiceSupported
+
+isGnssFenceServiceSupported(): boolean
+
+判断是否支持围栏功能。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持围栏功能。<br/>false：不支持围栏功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let gnssFenceServiceSupported = geoLocationManager.isGnssFenceServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
+## geoLocationManager.isCachedGnssServiceSupported
+
+isCachedGnssServiceSupported(): boolean
+
+判断是否支持GNSS batching功能。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持GNSS batching功能。<br/>false：不支持GNSS batching功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let cachedGnssServiceSupported = geoLocationManager.isCachedGnssServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
 ## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
 getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
 
-查询当前有效的围栏信息。使用Promise异步回调。
+查询当前有效的围栏信息。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3133,17 +3274,19 @@ getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.getActiveGeoFences().then((res) => {
-      if (res) {
-        console.info("fence num:" + res.size);
-        for (const item of res) {
-          console.info("data=" + JSON.stringify(item));
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      geoLocationManager.getActiveGeoFences().then((res) => {
+        if (res) {
+          console.info("fence num:" + res.size);
+          for (const item of res) {
+            console.info("data=" + JSON.stringify(item));
+          }
         }
-      }
-    })
-      .catch((error: BusinessError) => {
-        console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
-      });
+      })
+        .catch((error: BusinessError) => {
+          console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
+        });
+    }
   } catch (error) {
     console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
   }
