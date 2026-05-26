@@ -3154,7 +3154,7 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"p2pStateChange"字符串。 |
-| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回1:空闲, 2:启动中, 3:已启动, 4:正在关闭, 5:已关闭。|
+| callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回1：空闲， 2：启动中， 3：已启动， 4：正在关闭，5:已关闭。|
 
 **P2P状态改变事件的枚举：**
 
@@ -3519,7 +3519,7 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pDiscoveryChange"字符串。 |
-  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0:状态无变化,1:状态有变化。|
+  | callback | Callback&lt;number&gt; | 是 | 状态改变回调函数。返回0：状态无变化，1：状态有变化。|
 
 **发现设备状态改变事件的枚举：**
 
