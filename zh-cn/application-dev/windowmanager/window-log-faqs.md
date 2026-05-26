@@ -165,12 +165,12 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 - `Focusable`为false：窗口不可获焦，调用[setWindowFocusable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)设置可获焦。
 - 确认窗口在前台区域（分隔线以上）。
 
-<!--RP2-->
+<!--Del-->
 截屏时窗口内容未隐藏
 
 - `IsPrivacyMode`为false：未启用隐私模式。
 - `isSnapshotSkip`为0：截屏时显示窗口内容。
-<!--RP2End-->
+`<!--DelEnd-->
 
 解决方案：调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式。
 
@@ -179,11 +179,11 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 - `FirstFrameCallbackCalled`为0：首帧未完成，可能页面加载慢。
 - 结合日志分析启动耗时。
 
-<!--RP3-->
+<!--Del-->
 窗口触摸区域异常
 - `TouchHotAreas`尺寸异常：触摸热区设置错误。
 - 与`WindowRect`对比，确认是否正确设置
-<!--RP3End-->
+`<!--DelEnd-->
 
 ### 定位思路
 
