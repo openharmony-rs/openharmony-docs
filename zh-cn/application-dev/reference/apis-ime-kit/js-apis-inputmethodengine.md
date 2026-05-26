@@ -4921,7 +4921,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 | capitalizeMode<sup>20+</sup>         | [CapitalizeMode](#capitalizemode20) | 是 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。                                                                                         |
 | gradientMode<sup>20+</sup>           | [GradientMode](#gradientmode20) | 是 | 是 | 渐变模式。如果没有设置或设置非法值，默认不使用渐变模式。                                                                                                    |
 | extraConfig<sup>22+</sup>            | [InputMethodExtraConfig](./js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 是 | 是 | 输入法扩展信息。                                                                                                                        |
-| consumeKeyEvents      | boolean   | 是   | 是   | 编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>**起始版本：** 26.0.0。 <br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
+| consumeKeyEvents      | boolean   | 是   | 是   | 编辑框是否具有完整处理字母、字符、功能等按键的能力。<br/>- 值为true，表示具备此能力。<br/>- 值为false，表示不具备此能力。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 该参数仅可在Stage模型下使用。 |
 
 ## KeyEvent
 

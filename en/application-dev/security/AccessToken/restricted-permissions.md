@@ -444,6 +444,8 @@ Allows a device administrator application to manage personal device restrictions
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
 **Since**: 15
 
 ## ohos.permission.START_PROVISIONING_MESSAGE
@@ -455,6 +457,8 @@ Allows an application to start the device management service deployment process,
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 15
 
