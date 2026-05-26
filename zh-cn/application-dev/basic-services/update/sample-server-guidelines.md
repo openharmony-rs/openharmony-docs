@@ -222,7 +222,7 @@
 
 1. **确认服务器启动成功**：执行启动命令后，服务器进程会在后台运行，可通过`ps -ef | grep testserver`命令查看进程状态。
 
-2. **验证SSL通信**：确保serverKey.pem和serverCert.cer证书文件路径正确，证书文件需放在/data/sdcard目录下。
+2. **验证SSL通信**：确保serverKey.pem和serverCert.cer证书文件路径正确，证书文件应放置于/data/sdcard目录下。
 
 3. **检查端口监听**：示例服务器默认监听端口需与设备端搜包接口配置一致，可通过`netstat -an | grep <端口号>`确认端口监听状态。
 
