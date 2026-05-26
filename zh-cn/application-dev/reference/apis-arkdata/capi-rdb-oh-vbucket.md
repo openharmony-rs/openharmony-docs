@@ -60,14 +60,14 @@ int (*putText)(OH_VBucket *bucket, const char *field, const char *value)
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名               |
+| const char *field  | 数据库表中的列名，不能为空               |
 | const char *value  | 数据库表中指定列名对应的值。   |
 
 **返回：**
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### putInt64()
 
@@ -86,14 +86,14 @@ int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名               |
+| const char *field  | 数据库表中的列名，不能为空               |
 | int64_t value      | 数据库表中指定列名对应的值。   |
 
 **返回：**
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### putReal()
 
@@ -112,14 +112,14 @@ int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名               |
+| const char *field  | 数据库表中的列名，不能为空               |
 | double value       | 数据库表中指定列名对应的值。   |
 
 **返回：**
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### putBlob()
 
@@ -138,7 +138,7 @@ int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名               |
+| const char *field  | 数据库表中的列名，不能为空               |
 | const uint8_t *value | 数据库表中指定列名对应的值。 |
 | uint32_t size      | 表示value的长度。              |
 
@@ -146,7 +146,7 @@ int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### putNull()
 
@@ -165,13 +165,13 @@ int (*putNull)(OH_VBucket *bucket, const char *field)
 | 参数项             | 描述                           |
 | ------------------ | ------------------------------ |
 | OH_VBucket *bucket | 表示指向OH_VBucket实例的指针。 |
-| const char *field  | 数据库表中的列名               |
+| const char *field  | 数据库表中的列名，不能为空               |
 
 **返回：**
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### clear()
 
@@ -195,7 +195,7 @@ int (*clear)(OH_VBucket *bucket)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### destroy()
 
@@ -219,5 +219,5 @@ int (*destroy)(OH_VBucket *bucket)
 
 | 类型 | 说明                                       |
 | ---- | ------------------------------------------ |
-| int  | 返回操作是否成功，出错时返回对应的错误码。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
