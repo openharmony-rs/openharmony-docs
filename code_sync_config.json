@@ -3528,5 +3528,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/media/using-soundpool-for-playback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/SoundPool/SoundPoolStaArkTS/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"create",
+						"start_line":57
+					},
+					{
+						"end_line":91,
+						"name":"load_callback",
+						"start_line":85
+					},
+					{
+						"end_line":102,
+						"name":"play_finished_callback",
+						"start_line":94
+					},
+					{
+						"end_line":111,
+						"name":"error_callback",
+						"start_line":103
+					},
+					{
+						"end_line":78,
+						"name":"load_sound",
+						"start_line":72
+					},
+					{
+						"end_line":134,
+						"name":"play_sound",
+						"start_line":114
+					},
+					{
+						"end_line":169,
+						"name":"off_callback_load_completed",
+						"start_line":167
+					},
+					{
+						"end_line":172,
+						"name":"off_callback_play_finished",
+						"start_line":170
+					},
+					{
+						"end_line":175,
+						"name":"off_callback_error",
+						"start_line":173
+					}
+				]
+			}
+		]
 	}
 ]
