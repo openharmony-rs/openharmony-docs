@@ -6817,7 +6817,7 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 手动更新加密数据库的密钥。使用Promise异步回调。
 
-从API version 26开始，该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
+从API版本26.0.0开始，该接口支持向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）使用。
 
 仅支持加密数据库进行密钥更新，不支持非加密数据库变加密数据库及加密数据库变非加密数据库，且需要保持加密参数和密钥生成方式与建库时一致。
 
