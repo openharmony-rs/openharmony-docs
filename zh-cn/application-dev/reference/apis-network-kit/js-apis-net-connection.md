@@ -2785,13 +2785,13 @@ connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultIn
 
 > **说明：**
 >
->（1）设备从无网络状态转变为有网络状态时，将触发[on("netAvailable")](#onnetavailable)事件、[on("netCapabilitiesChange")](#onnetcapabilitieschange)事件和[on("netConnectionPropertiesChange")](#onnetconnectionpropertieschange)事件；
+>（1）设备从无网络状态转变为有网络状态时，将触发[on('netAvailable')](#onnetavailable)事件、[on('netCapabilitiesChange')](#onnetcapabilitieschange)事件和[on('netConnectionPropertiesChange')](#onnetconnectionpropertieschange)事件；
 >
->（2）接收到[on("netAvailable")](#onnetavailable)事件后，若设备从有网络状态转变为无网络状态，将触发[on("netLost")](#onnetlost)事件；
+>（2）接收到[on('netAvailable')](#onnetavailable)事件后，若设备从有网络状态转变为无网络状态，将触发[on('netLost')](#onnetlost)事件；
 >
->（3）若未接收到[on("netAvailable")](#onnetavailable)事件，则将直接接收到[on("netUnavailable")](#onnetunavailable)事件；
+>（3）若未接收到[on('netAvailable')](#onnetavailable)事件，则将直接接收到[on('netUnavailable')](#onnetunavailable)事件；
 >
->（4）设备从WiFi网络切换至蜂窝网络时，将先触发[on("netLost")](#onnetlost)事件（WiFi丢失），随后触发[on("netAvailable")](#onnetavailable)事件（蜂窝可用）。
+>（4）设备从WiFi网络切换至蜂窝网络时，将先触发[on('netLost')](#onnetlost)事件（WiFi丢失），随后触发[on('netAvailable')](#onnetavailable)事件（蜂窝可用）。
 
 ### register
 
@@ -3190,7 +3190,7 @@ interface Data {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error(Failed tobind.Code:${error.code},message:${error.message});
+        console.error(Failed to bind.Code:${error.code},message:${error.message});
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
@@ -3198,13 +3198,13 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-         console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
+           console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.info("Succeeded to  get message, message:" + value.message + ",Succeeded to  get remoteInfo:" + value.remoteInfo);
+      console.info("Succeeded to get message, message:" + value.message + ",Succeeded to get remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -3221,7 +3221,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
+           console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
