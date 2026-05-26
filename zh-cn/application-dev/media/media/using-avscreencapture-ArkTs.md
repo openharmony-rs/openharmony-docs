@@ -349,7 +349,7 @@ export class AVScreenCaptureDemo {
     if (!this.captureFile) {
       return;
     }
-    fileIo.closeSync(this.captureFile);
+    fileIo.closeSync(this.captureFile.fd);
   }
 
   private setConfig(): void {
