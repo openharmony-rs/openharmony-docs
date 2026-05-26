@@ -2599,6 +2599,11 @@
 						"end_line":19,
 						"name":"include",
 						"start_line":16
+					},
+					{
+						"end_line":45,
+						"name":"request_suspend_delay",
+						"start_line":21
 					}
 				]
 			}
