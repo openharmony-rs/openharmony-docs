@@ -410,19 +410,14 @@ perfTest.destroy();
     **ArkTS-Sta示例：**
 
     <!-- @[scroll_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/ets/pages/PageListPage.ets) -->
-
+    
     ``` TypeScript
-    import {
-      Entry, Component, Column, Row, Text, Scroll, ScrollDirection, BarState, Color,
-      ForEach, Scroller, TextAlign
-    } from '@ohos.arkui.component'
-
     @Entry
     @Component
     struct ListPage {
       scroller: Scroller = new Scroller();
       private arr: int[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+    
       build() {
         Row() {
           Column() {
