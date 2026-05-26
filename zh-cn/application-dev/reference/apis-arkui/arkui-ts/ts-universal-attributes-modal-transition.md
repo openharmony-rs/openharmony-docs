@@ -156,6 +156,8 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 
 ## DismissContentCoverAction<sup>12+</sup>类型说明
 
+### 属性
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -168,8 +170,22 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 
 | 名称              | 类型                                       | 只读 | 可选   | 说明            |
 | --------------- | -------------------- | -------------------- | ---- | ------------- |
-| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否 | 否    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。 |
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否 | 否    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
 | reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否 | 否    | 返回本次拦截全屏模态页面退出的事件原因。  |
+
+### dismiss<sup>23+</sup>
+
+dismiss(): void
+
+半模态面板关闭回调函数。开发者需要退出时调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 
