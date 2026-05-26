@@ -530,29 +530,29 @@ perfTest.destroy();
     **ArkTS-Sta示例：**
 
     <!-- @[slideFps_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/SlideFps.test.ets) -->
-
+    
     ``` TypeScript
-    import { describe, expect, it, Level } from "../../../hypium/index";
+    import { describe, beforeAll, expect, it, Level } from '../../../hypium/index';
     import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
     import { Driver, ON } from '@ohos.UiTest';
     import { PerfMeasureResult, PerfMetric, PerfTest, PerfTestStrategy } from '@ohos.test.PerfTest';
     import { Callback } from '@ohos.base';
     import Want from '@ohos.app.ability.Want';
-
+    import { TestHelper, startAbility, stopApplication } from './TestHelper.test';
+    
     const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-
+    const bundleName: string = abilityDelegatorRegistry.getArguments().bundleName;
+    
     export default function PerfTestTest(): void {
       describe('PerfTestTest1', () => {
+        beforeAll(async () => {
+          await startAbility(bundleName, 'EntryAbility');
+          await TestHelper.msSleep(2000);
+        })
         it('testExample2', Level.LEVEL3, async (): Promise<void> => {
-          let driver: Driver = Driver.create();
-          await driver.delayMs(1000);
-          const bundleName: string = abilityDelegatorRegistry.getArguments().bundleName;
-          const want: Want = {
-            bundleName: bundleName,
-            abilityName: 'EntryAbility'
-          };
-          await delegator.startAbility(want);
-          await driver.delayMs(1000);
+          let driver = Driver.create();
+          await TestHelper.pushUrl('pages/Index', 'Index');
+          await driver!.delayMs(2000);
           let toPageListBtn = await driver.findComponent(ON.id('toPageList'));
           if (toPageListBtn != null) {
             await toPageListBtn.click();
