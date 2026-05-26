@@ -365,21 +365,22 @@ configure(featureId: UserStatusFeature, detail: string): int
 import { BusinessError } from '@kit.BasicServicesKit';
 import { userStatus } from '@kit.MultimodalAwarenessKit';
 
+
+interface ConfigParam {
+  description: string;
+  value: number[];
+}
+interface ConfigDetail {
+  params: ConfigParam[];
+}
+const moodFeatureId = userStatus.UserStatusFeature.USER_MOOD;
+const configData: ConfigDetail = {
+  params: [
+    { description: "isRealTime", value: [1] },
+    { description: "report_time", value: [1000] }
+  ]
+};
 try {
-  interface ConfigParam {
-    description: string;
-    value: number[];
-  }
-  interface ConfigDetail {
-    params: ConfigParam[];
-  }
-  const moodFeatureId = userStatus.UserStatusFeature.USER_MOOD;
-  const configData: ConfigDetail = {
-    params: [
-      { description: "isRealTime", value: [1] },
-      { description: "report_time", value: [1000] }
-    ]
-  };
   const result = userStatus.configure(moodFeatureId, JSON.stringify(configData));
   console.log("configure result: ", result);
 } catch (err) {
