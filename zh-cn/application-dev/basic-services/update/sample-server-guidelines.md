@@ -35,7 +35,7 @@
 > **说明**
 > SSL证书用于保障服务器与设备之间的通信安全，证书有效期建议设置为365天以上。
 
-2. 修改bundle.json
+2. 修改bundle.json。
 
     在build字段新增一个sub_component。
 
@@ -46,7 +46,7 @@
     ],
     ```
 
-3. 建立代码目录
+3. 建立代码目录。
 
     进入到update_updateservice目录下，执行以下命令，建立代码目录。
 
@@ -60,7 +60,7 @@
     touch server_sample/src/main.cpp               // 创建main.cpp文件
     ```
 
-4. 编写编译文件BUILD.gn
+4. 编写编译文件BUILD.gn。
 
     文件BUILD.gn一共编译两个ohos组件，一个是ohos_shared_library库文件libserver_process.z.so，另一个是ohos_executable可执行文件testserver。
 
@@ -105,7 +105,7 @@
     }
     ```
 
-5. 编写头文件server_process.h
+5. 编写头文件server_process.h。
 
     文件server_process.h声明了示例服务器的接口。
 
@@ -151,7 +151,7 @@
     #endif // __SERVER_PROCESS_H__
     ```
 
-6. 编写server_process.c、main.cpp
+6. 编写server_process.c、main.cpp。
 
     文件server_process.c主要声明了服务器的返回报文格式respondContent，main.cpp可参考普通SSL协议的服务器编写，注意包含相关头文件，同时加载serverKey.pem和serverCert.cer两个证书。
 
@@ -200,15 +200,15 @@
     "}";
     ```
 
-7. 编译输出产物
+7. 编译输出产物。
 
     编译输出目录会新增testserver和libserver_process.z.so两个文件。
 
-8. 升级包制作
+8. 升级包制作。
 
     参考[update_packaging_tools仓](https://gitcode.com/openharmony/update_packaging_tools)制作升级包。
 
-9. 启动搜包服务器
+9. 启动搜包服务器。
 
     建议在开发板上新建一个纯英文路径，然后将testserver、libserver_process.z.so、serverCert.cer和serverKey.pem放到同一个目录下，进入该目录，执行以下启动命令即可启动搜包服务器。
 
