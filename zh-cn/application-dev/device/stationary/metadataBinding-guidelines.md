@@ -1,9 +1,9 @@
 # 记忆链接开发指导
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
-<!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
-<!--Tester: @judan-->
+<!--Owner: @codexu62-->
+<!--Designer: @yuxiaoyang-->
+<!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
