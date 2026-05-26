@@ -26,8 +26,6 @@ renderFit(fitMode: RenderFit): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -58,8 +56,6 @@ renderFit(fitMode: Optional\<RenderFit>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -87,8 +83,6 @@ renderFit(fitMode: RenderFit | undefined): this
 设置宽高动画过程中的组件内容填充方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
