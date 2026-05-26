@@ -3885,7 +3885,7 @@ on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
 | 参数名   | 类型                                                        | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
 | type     | string                                                      | 是   | 输入事件类型，取唯一值'fingerprint'。 |
-| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | 是   | 回调函数，返回指纹手势输入事件。         |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | 是   | 回调函数，返回指纹器件手势输入事件。         |
 
 **错误码**：
 
