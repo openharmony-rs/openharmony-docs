@@ -7,7 +7,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-<!-- md-trans-meta sourceCommit=09270f91b417ea5ec4bcdbc08e1efeacfd1ff910 translatedAt=2026-05-26T06:26:35.195Z pushedAt=2026-05-26T08:38:49.910Z -->
+<!-- md-trans-meta sourceCommit=09270f91b417ea5ec4bcdbc08e1efeacfd1ff910 translatedAt=2026-05-26T06:26:35.195Z pushedAt=2026-05-26T09:30:58.498Z -->
 > **NOTE**
 >
 > The initial APIs of this component  are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -157,7 +157,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001127285034](figures/zh-cn_image_0000001127285034.gif)
+![en-us_image_0000001127285034](figures/en-us_image_0000001127285034.gif)
 
 ```html
 <!-- xxx.hml -->
