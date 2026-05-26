@@ -256,7 +256,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 
-// exclusionStr以字符串的形式列出不使用代理的主机名，以逗号为分隔符。
+// 将exclusionStr以逗号分割为数组。
 let exclusionStr = "192.168,test.com";
 // exclusionArray将exclusionStr以逗号分割为数组。
 let exclusionArray = exclusionStr.split(',');
@@ -2716,7 +2716,7 @@ let options: connection.TraceRouteOptions = {
 };
 
 connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
-    console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
+    console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
     console.error('Failed to get request. Code:${err.code},message:${err.message}');
 });
@@ -3198,7 +3198,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-           console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
+           console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
@@ -3221,7 +3221,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-           console.info(Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
+           console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
@@ -3477,7 +3477,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(Failed to get Addresses Name.Code:${error.code},message:${error.message});
+    console.error(`Failed to get Addresses Name.Code:${error.code},message:${error.message}`);
   });
 });
 ```
