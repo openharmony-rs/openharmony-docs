@@ -148,7 +148,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 | Flag | 状态标志位 | 状态标识值。当前该字段为预留字段，无实际意义。 |
 | Orientation | 窗口方向 | 窗口方向标识值。当前该字段为预留字段，无实际意义。 |
 | IsStartingWindow | 是否是启动页窗口 | true：表示为[应用启动页](launch-page-overview.md)窗口；false：表示为正常应用窗口。 |
-| FirstFrameCallbackCalled | 首帧回调状态 | 0：表示首帧回调未调用；1：表示首帧回调已调用。 |
+| FirstFrameCallbackCalled | 首帧回调状态 | 0：表示首帧回调未返回；1：表示首帧回调已返回。 |
 | VisibilityState | 可见性状态 | 窗口可见性。0：表示为窗口可见；1：表示为窗口隐藏；2：表示为窗口部分可见。 |
 | Focusable | 是否可获焦 | true：表示窗口可以获焦；false：表示窗口不可获焦。 |
 | DecoStatus | 装饰状态 | true：表示窗口装饰已启用（有标题栏等）；false：表示窗口无装饰。 |
@@ -162,22 +162,19 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 窗口无法接收键盘输入
 
-- `Focusable`为false：窗口不可获焦，调用[setWindowFocusable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)设置可获焦。
-- 确认窗口在前台区域（分隔线以上）。
+- 确认窗口的`Focusable`是否为false，若为false，调用[setWindowFocusable()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowfocusable9)传入true设置可获焦。
+- 确认窗口是否在前台区域（分隔线以上）。
 
 <!--Del-->
 截屏时窗口内容未隐藏
 
-- `IsPrivacyMode`为false：未启用隐私模式。
-- `isSnapshotSkip`为0：截屏时显示窗口内容。
-`<!--DelEnd-->
-
-解决方案：调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)启用隐私模式。
+- 确认窗口是否为非隐私窗口且设置了截图时显示窗口内容，即`IsPrivacyMode`为false且`isSnapshotSkip`为0，截图时不会隐藏。
+- 若需要截屏时隐藏窗口内容，调用[setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9)传入true启用隐私模式。
+<!--DelEnd-->
 
 窗口启动性能慢
 
-- `FirstFrameCallbackCalled`为0：首帧未完成，可能页面加载慢。
-- 结合日志分析启动耗时。
+- 确认窗口是否首帧未显示完成，若FirstFrameCallbackCalled为0：首帧未完成，可能页面加载慢。需要结合日志分析启动耗时原因。
 
 <!--Del-->
 窗口触摸区域异常
