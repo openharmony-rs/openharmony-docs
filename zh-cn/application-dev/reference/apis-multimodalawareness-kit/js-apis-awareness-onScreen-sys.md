@@ -140,7 +140,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |UiTree|获取页面内json树信息。<br> **起始版本：** 26.0.0|
     |InjectEvent|注入事件。<br> **起始版本：** 26.0.0|
   * groupId支持能力列表<br>
-    按业务场景预设的一组能力集合。可统一订阅业务场景，如下所示：
+    按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
 
     |groupId支持能力列表|对应子项能力|功能说明|
     | ---- | ------ | ------|
