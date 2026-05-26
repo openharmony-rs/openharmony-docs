@@ -24,7 +24,7 @@ restoreDefault(): void
 
 恢复默认的光标样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +73,7 @@ setCursor(value: PointerStyle): void
 >
 > 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,7 +129,7 @@ ArkTS-Sta: setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): v
 >
 > 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
