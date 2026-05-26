@@ -89,14 +89,14 @@ UI测试是在<!--RP14-->[单元测试](unittest-guidelines.md)<!--RP14End-->基
     **ArkTS-Sta示例：**
 
     <!-- @[clickToAfter_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/ets/pages/ClickToAfter.ets) -->
-
+    
     ``` TypeScript
     @Entry
     @Component
     struct ClickToAfterIndex {
       @State message: string = 'Hello World';
       @State text: string = '';
-
+    
       build() {
         Row() {
           Column() {
