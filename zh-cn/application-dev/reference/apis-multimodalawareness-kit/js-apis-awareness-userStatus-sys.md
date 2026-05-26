@@ -381,7 +381,7 @@ const configData: ConfigDetail = {
 };
 try {
   const result = userStatus.configure(moodFeatureId, JSON.stringify(configData));
-  console.log("configure result: ", result);
+  console.info("configure result: ", result);
 } catch (err) {
   let error = err as BusinessError;
   console.error("configure failed, err code is " + error.code);
@@ -431,7 +431,7 @@ try {
     userStatus.UserStatusAtomicCap.SENSOR_GYROSCOPE
   ];
   const result = userStatus.queryCapabilities(capabilities);
-  console.log("Query capabilities result: ", result);
+  console.info("Query capabilities result: ", result);
 } catch (err) {
   let error = err as BusinessError;
   console.error("Query capabilities failed, err code is " + error.code);
