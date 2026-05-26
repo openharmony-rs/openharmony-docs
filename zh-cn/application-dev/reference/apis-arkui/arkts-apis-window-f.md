@@ -716,7 +716,7 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
@@ -1243,7 +1243,7 @@ offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
 
 关闭应用进程获焦状态变化的监听。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
