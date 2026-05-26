@@ -972,7 +972,7 @@ export default function abilityTest() {
 <!-- @[touchPadOp_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/uitestStatic/entry/src/main/src/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
 
 ``` TypeScript
-import { describe, expect, it, Level, Size, TestType } from "../../../../../hypium/index";
+import { describe, expect, it, Level, Size, TestType } from '../../../../../hypium/index';
 // 导入测试依赖kit
 import { Driver, UiDirection } from '@kit.TestKit';
 import { BusinessError } from '@ohos.base';
