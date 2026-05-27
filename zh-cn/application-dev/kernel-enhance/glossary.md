@@ -16,7 +16,7 @@
 
 ## K
 
-- ### Kernel Enhance Kit；内核增强能力套件
+- ### Kernel Enhance Kit;内核增强能力套件
 
     OpenHarmony为开发者提供的内核增强能力开发套件，包含QoS调度、Purgeable Memory管理和格物（Gewu）端侧推理服务三大能力，用于优化应用的性能、资源管理和用户体验。
 
