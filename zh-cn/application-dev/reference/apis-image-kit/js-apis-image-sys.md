@@ -33,6 +33,8 @@ Gainmap（增益图）参数设置选项。
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称               | 类型              | 只读 | 可选 | 说明             |
+| ------------------ | ----------------- | ---- | ---- | ---------------- |
+| isFullSizeGainmap| boolean | 否   | 否   | 返回Picture中的Gainmap（增益图）是否使用全尺寸图。<br/>true表示使用全尺寸图，宽高和主图一致；false表示不使用全尺寸图，宽高均为主图的一半。默认值为false。|
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
 | isFullSizeGainmap| boolean | 否   | 否   | 返回Picture中的Gainmap（增益图）是否使用全尺寸图。<br/>true表示使用全尺寸图，宽高和主图一致；false表示不使用全尺寸图，宽高均为主图的一半。默认值为false。|
 
