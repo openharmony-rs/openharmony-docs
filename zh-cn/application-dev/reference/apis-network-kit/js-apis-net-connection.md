@@ -3223,7 +3223,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-           console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
+           console.info('Succeeded to get defaultHttpProxy: ' + JSON.stringify(data));
         }
       });
     });
