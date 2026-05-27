@@ -52,6 +52,7 @@
 | FOCUSED  | 2  | 聚焦状态。         |
 | DISABLED | 4  | 禁用状态。         |
 | SELECTED | 8  | 选中状态。         |
+| HOVERED  | 16 | 悬浮状态。<br/>**起始版本：** 26.0.0         |
 
 ## Alignment
 

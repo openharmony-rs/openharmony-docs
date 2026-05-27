@@ -3259,6 +3259,7 @@ enum ArkUI_UIState
 | UI_STATE_FOCUSED = 1 << 1 | 获焦状态。 |
 | UI_STATE_DISABLED = 1 << 2 | 禁用状态。 |
 | UI_STATE_SELECTED = 1 << 3 | 选中状态，此状态仅由某些特定类型的组件支持，分别是Checkbox、Radio、Toggle、List、Grid和MenuItem。 |
+| UI_STATE_HOVERED = 1 << 4 | 悬浮状态。 |
 
 ### ArkUI_FocusWrapMode
 
