@@ -274,7 +274,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.Http
   if (!err) {
    console.info('Succeeded to get Result: ' + JSON.stringify(data.result));
    console.info('Succeeded to get code: ' + JSON.stringify(data.responseCode));
-   console.info('Succeeded to get type:' + JSON.stringify(data.resultType));
+   console.info('Succeeded to get type: ' + JSON.stringify(data.resultType));
    console.info('Succeeded to get header: '+JSON.stringify(data.header));
    console.info('Succeeded to get cookies:' + JSON.stringify(data.cookies)); // 从API version 8开始支持cookie。
   } else {
