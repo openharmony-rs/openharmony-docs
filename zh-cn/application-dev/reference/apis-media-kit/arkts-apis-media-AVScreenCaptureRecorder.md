@@ -53,7 +53,6 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import fileIo from '@ohos.file.fs';
 import { media } from '@kit.MediaKit';
@@ -118,8 +117,6 @@ startRecording(): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -173,8 +170,6 @@ stopRecording(): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -233,8 +228,6 @@ pauseRecording(): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -293,8 +286,6 @@ resumeRecording(): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -356,8 +347,6 @@ skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -418,8 +407,6 @@ setMicEnabled(enable: boolean): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -480,8 +467,6 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -542,8 +527,6 @@ excludePickerWindows(excludedWindows: Array\<number>): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let excludedWindows: Array<number> = [101, 102, 103];
@@ -604,8 +587,6 @@ presentPicker(): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -659,8 +640,6 @@ release(): Promise\<void>
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -706,8 +685,6 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -761,8 +738,6 @@ on(type: 'error', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -806,8 +781,6 @@ if (avScreenCaptureRecorder != undefined) {
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
@@ -849,8 +822,6 @@ off(type: 'error', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-// Index.ets
-import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 初始化avScreenCaptureRecorder。
