@@ -14,10 +14,11 @@
 > **说明：**
 > 
 > - 在非[自由窗口](freeform-window-overview.md#自由窗口)状态下，子窗只会在应用主窗口范围显示。
+> - 在[自由窗口](freeform-window-overview.md#自由窗口)状态下，子窗可超出应用主窗口范围显示。
 
 ## 开发步骤
 
-1. 通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)接口或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)创建应用子窗口。子窗口创建后默认为[沉浸式布局](window-terminology.md#沉浸式布局)。 
+1. 通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)接口或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)创建应用子窗口。子窗口创建后默认为[沉浸式布局](immersive-window-feature.md#沉浸式布局)。
 
    API版本26.0.0开始，支持在使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)创建子窗时设置[SubWindowOptions](../reference/apis-arkui/arkts-apis-window-i.md#subwindowoptions11)中的zLevelAboveParentLoosened为true，此时创建的子窗称为独立子窗。
 
@@ -43,6 +44,8 @@
    ```
 
    ```ts
+   let windowStage_: window.WindowStage | undefined = undefined;
+   let independent_windowClass: window.Window | undefined = undefined;
    // 1.使用createSubWindowWithOptions接口创建独立子窗
    let options : window.SubWindowOptions = {
      title: 'title',

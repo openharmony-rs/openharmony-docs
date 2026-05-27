@@ -16,6 +16,7 @@
    通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建模态窗口（TYPE_DIALOG）。
 
    ```ts
+   let dialog_windowClass: window.Window | undefined = undefined;
    // 1.创建模态窗口。
    let config: window.Configuration = {
      name: "DialogWindow", windowType: window.WindowType.TYPE_DIALOG, ctx: getContext(this)
@@ -24,6 +25,11 @@
      let errCode: number = err.code;
      if (errCode) {
        console.error('Failed to create the dialogWindow. Cause: ' + JSON.stringify(err));
+       return;
+     }
+     dialog_windowClass = data;
+     if (!dialog_windowClass) {
+       console.error('dialog_windowClass is null');
        return;
      }
      console.info('Succeeded in creating the dialogWindow. Data: ' + JSON.stringify(data));
@@ -38,22 +44,27 @@
   
    ```ts
    // 2.模态窗口创建成功后，设置模态窗口的位置、大小及相关属性等。
-   dailog_windowClass.moveWindowTo(700, 100, (err) => {
+   dialog_windowClass.moveWindowTo(700, 100, (err) => {
      let errCode: number = err.code;
      if (errCode) {
        console.error('Failed to move the window. Cause:' + JSON.stringify(err));
        return;
      }
      console.info('Succeeded in moving the window.');
-   });
-   dailog_windowClass.resize(500, 500, (err) => {
-     let errCode: number = err.code;
-     if (errCode) {
-       console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+     if (!dialog_windowClass) {
+       console.error('dialog_windowClass is null');
        return;
      }
-     console.info('Succeeded in changing the window size.');
+     dialog_windowClass.resize(500, 500, (err) => {
+       let errCode: number = err.code;
+       if (errCode) {
+         console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+         return;
+        }
+        console.info('Succeeded in changing the window size.');
+      });
    });
+   
    ```
 
 3. 加载显示窗口的具体内容。  
@@ -62,7 +73,7 @@
 
    ```ts
    // 3.为模态窗口加载对应的目标页面。
-   dailog_windowClass.setUIContent("pages/DialogWindow", (err) => {
+   dialog_windowClass.setUIContent("pages/DialogWindow", (err) => {
      let errCode: number = err.code;
      if (errCode) {
        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
@@ -70,7 +81,7 @@
      }
      console.info('Succeeded in loading the content.');
      // 显示模态窗口。
-     (dailog_windowClass as window.Window).showWindow((err) => {
+     (dialog_windowClass as window.Window).showWindow((err) => {
        let errCode: number = err.code;
        if (errCode) {
          console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
@@ -86,7 +97,7 @@
    当不再需要模态窗口时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)接口销毁模态窗口。
 
    ```ts
-   dailog_windowClass.destroyWindow((err: BusinessError) => {
+   dialog_windowClass.destroyWindow((err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {
        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));

@@ -9,13 +9,13 @@
 
 ## 场景介绍
 
-全局悬浮窗具有在应用主窗口退后台时，继续在前台显示的能力，适用于如音乐应用显示桌面歌词等场景。
+全局悬浮窗具有在应用主窗口退后台时，继续在前台显示的能力，适用于如多人视频通话、屏幕共享等场景。
 
 全局悬浮窗的层级比所有应用主窗、子窗的层级高。
 
 **全局悬浮窗和标准悬浮窗的对比：**
 
-- 共同点：全局悬浮窗和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用其继续显示UI，例如音乐应用用于显示桌面歌词等。
+- 共同点：全局悬浮窗和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
 
 - 区别：
 
@@ -23,11 +23,11 @@
 
   - 标准悬浮窗由系统管理并统一绘制UI，动效更为高端精致。
 
-  - 标准悬浮窗支持和闪控球联合使用，实现更复杂场景。
+  - 标准悬浮窗支持和闪控球联合使用，实现更复杂的场景。
 
-  - 全局悬浮窗仅支持在2in1设备上使用。
+  - 全局悬浮窗仅支持在PC/2in1设备上使用。
 
-  - 标准悬浮窗支持在Phone、Tablet、2in1设备上使用。
+  - 标准悬浮窗支持在Phone、Tablet、PC/2in1设备上使用。
 
 - 适用场景：
 
@@ -57,6 +57,7 @@
    通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
    ```ts
+   let float_windowClass: window.Window | undefined = undefined;
    let config: window.Configuration = {
      name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: getContext(this)
    };
@@ -64,6 +65,11 @@
      let errCode: number = err.code;
      if (errCode) {
        console.error('Failed to create the floatWindow. Cause: ' + JSON.stringify(err));
+       return;
+     }
+     float_windowClass = data;
+     if (!float_windowClass) {
+       console.error('float_windowClass is null');
        return;
      }
      console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
@@ -83,7 +89,7 @@
      }
      console.info('Succeeded in moving the window.');
      if (!float_windowClass) {
-       console.error('float_windowClassis null');
+       console.error('float_windowClass is null');
        return;
      }
      float_windowClass.resize(600, 900, (err) => {

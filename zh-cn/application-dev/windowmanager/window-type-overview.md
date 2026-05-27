@@ -7,11 +7,11 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-窗口子系统将窗口分为系统窗口、应用窗口两种基本类型。
+窗口分为系统窗口、应用窗口两种类型。
 
 ## 系统窗口
 
-系统窗口指完成系统特定功能的窗口。如音量条、壁纸、通知栏、状态栏、导航栏等。
+系统窗口指完成系统特定功能的窗口。如音量条、壁纸、通知栏、状态栏、导航栏等。<!--Del-->具体可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。<!--DelEnd-->
 
 ## 应用窗口
 
@@ -29,11 +29,9 @@
 
 - 子窗口  
 
-  Stage模型下通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口创建。
+  Stage模型下通过[createSubWindow()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindow9-1)或[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口创建。具体可见[子窗口开发指导](subwindow-guide.md)。
 
   当使用[createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#createsubwindowwithoptions11)接口配置zLevelAboveParentLoosened属性为true时，创建得到的子窗称为独立子窗。
-
-  具体可见[子窗口开发指导](subwindow-guide.md)。
 
 - 全局悬浮窗（即WindowType.TYPE_FLOAT），具体可见[全局悬浮窗开发指导](global-floating-window-guide.md)。
 

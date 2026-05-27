@@ -8,11 +8,11 @@
 
 ## WindowStage
 
-**WindowStage**是HarmonyOS中的窗口管理器，负责管理应用内的各个基本窗口单元（Window 实例）。
+**WindowStage**是OpenHarmony中的窗口管理器，负责管理一个UIAbility所对应的主窗口。
 
 ## Window
 
-**Window**是HarmonyOS中的窗口实例，是窗口管理器管理的基本单元。每个Window实例代表一个独立的窗口。
+**Window**是OpenHarmony中的窗口实例。每个Window实例代表一个独立的窗口。
 
 ## 悬浮窗
 
