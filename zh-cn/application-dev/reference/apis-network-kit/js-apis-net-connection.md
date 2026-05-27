@@ -2838,7 +2838,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError) => {
-  console.error(`Failed to register.Code:${err.code},message:${err.message}`);
+  console.error(`Failed to register.Code:${error.code},message:${error.message}`);
 });
 ```
 
