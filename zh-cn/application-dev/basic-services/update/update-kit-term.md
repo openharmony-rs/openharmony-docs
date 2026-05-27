@@ -22,7 +22,7 @@
 
 ### Deep Factory Reset（深度恢复出厂设置）
 
-Deep Factory Reset，通过覆写等方式深度清除用户数据分区与操作系统分区。相比强制恢复，清除范围更大，覆盖操作系统分区，数据更难恢复。
+Deep Factory Reset，通过覆盖等方式深度清除用户数据分区与操作系统分区。相比强制恢复，清除范围更大，覆盖操作系统分区，数据更难恢复。
 
 ### Differential Package（差分包）
 
