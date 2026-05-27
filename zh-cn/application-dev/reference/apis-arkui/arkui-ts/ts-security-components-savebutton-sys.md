@@ -17,7 +17,7 @@
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[SaveButton](ts-security-components-savebutton.md)。
 
-## 关键 Class/Interface 介绍
+## 关键Class/Interface介绍
 
 ### 核心枚举类型
 
