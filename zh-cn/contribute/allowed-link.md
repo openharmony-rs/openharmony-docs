@@ -13,3 +13,7 @@
 | docs/zh-cn/application-dev/reference/development-intro-api.md | [系统能力SystemCapability列表](phone-syscap-list.md) | Common | Common | 是 | 2026-05-19 |
 | docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-common.md | [唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) | MDM Kit | Customization | 是 | 2026-05-18 |
 | docs/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md | [deviceInfo.distributionOSReleaseType](../apis-basic-services-kit/js-apis-device-info.md) | Ability Kit | BundleManager | 是 | 2026-05-26 |
+| docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-Window.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
+| docs/zh-cn/application-dev/reference/apis-arkui/js-apis-window-sys.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
+| docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-f.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
+| docs/zh-cn/application-dev/reference/apis-arkui/arkts-apis-window-i.md | [独立子窗](../../windowmanager/window-type-overview.md#辅助窗口) | ArkUI Kit | ArkUI | 是 | 2026-05-26 |
