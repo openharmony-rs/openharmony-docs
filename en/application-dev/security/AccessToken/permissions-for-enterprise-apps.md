@@ -169,7 +169,7 @@ With this permission, the application can obtain Wi-Fi configurations, such as t
 
 **Authorization mode**: system_grant
 
-**Supported devices**: general devices
+**Supported devices**: PCs/2-in-1 devices
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
