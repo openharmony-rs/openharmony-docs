@@ -13,7 +13,7 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| hiTraceChain.begin(name: string, flags?: number = HiTraceFlag.DEFAULT): HiTraceId | 开始跟踪，并返回创建的HiTraceId。 |
+| ArkTS-Dyn: hiTraceChain.begin(name: string, flags?: number = HiTraceFlag.DEFAULT): HiTraceId <br/>ArkTS-Sta: hiTraceChain.begin(name: string, flags?: int = HiTraceFlag.DEFAULT): HiTraceId| 开始跟踪，并返回创建的HiTraceId。 |
 | hiTraceChain.end(id: HiTraceId): void | 结束跟踪。 |
 | hiTraceChain.getId(): HiTraceId | 获取跟踪标识。 |
 | hiTraceChain.setId(id: HiTraceId): void | 设置跟踪标识。 |
@@ -27,7 +27,9 @@
 
 ## 开发步骤
 
-HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考[约束与限制](hitracechain-intro.md#约束与限制)，了解常见的支持与不支持HiTraceChain自动传递的机制。
+ArkTS-Dyn示例：
+
+HiTraceChain在ArkTS-Dyn中的使用方法参考以下示例，开发者可参考[约束与限制](hitracechain-intro.md#约束与限制)，了解常见的支持与不支持HiTraceChain自动传递的机制。
 
 
 ### async/await和promise/then异步任务中使用HiTraceChain
@@ -351,3 +353,57 @@ async/await和promise/then异步任务支持HiTraceChain自动传递，示例结
 
       - hilog日志前附加的[chainId spanId parentSpanId]格式的信息即为HiTraceId信息，例如[a92ab34b3c84ea7 dc842f 3cafdfd]表示跟踪链标识chainId值为a92ab34b3c84ea7，分支标识spanId值为dc842f，父分支标识parentSpanId值为3cafdfd。
       - 示例得到的chainId值为a92ab34b3c84ea7，可使用chainId值过滤日志，查看业务完整的调用链hilog日志。
+
+
+ArkTS-Sta示例：
+
+HiTraceChain在ArkTS-Sta中的使用方法参考以下示例，开发者可参考[约束与限制](hitracechain-intro.md#约束与限制)，了解常见的支持与不支持HiTraceChain自动传递的机制。
+
+1. 在DevEco Studio中新建工程，选择“Empty Ability”，工程的目录结构如下：
+
+   ```txt
+   ├── entry
+   │   ├── src
+   │       ├── main
+   │       │   ├── ets
+   │       │   │   ├── entryability
+   │       │   │   │   └── EntryAbility.ets
+   │       │   │   └── pages
+   │       │   │       └── Index.ets
+   ```
+
+2. 编辑工程中的“entry &gt; src &gt; main &gt; ets &gt; pages &gt：
+   导入所需依赖：
+   <!-- @[TestHiTraceChain_Import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
+    
+   定义测试方法：
+   <!-- @[TestHiTraceChain_TestFunc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
+
+   添加按钮以触发接口调用：
+   <!-- @[TestHiTraceChain_Button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
+
+3. 点击DevEco Studio界面中的运行按钮，运行应用工程，并在hilog日志中过滤“testTag”：
+   点击设备上“testHiTraceIdPassedAutomatically”触发业务逻辑可在hilog中看到以下内容： 
+  ```
+  05-28 11:47:20.499   7439-7439     A00000/testTag                  com.examp...racedemo  I     HiTraceId is invalid, begin hiTraceChain
+  05-28 11:47:20.500   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 0, 0] record with traceId at first task
+  05-28 11:47:20.509   7439-7439     A00000/testTag                  com.examp...racedemo  I     hiTraceChain end in main thread
+  05-28 11:47:20.511   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 1
+  05-28 11:47:20.511   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 2
+  05-28 11:47:20.511   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 3
+  05-28 11:47:20.511   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 4
+  05-28 11:47:20.511   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 5
+  05-28 11:47:20.511   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 6
+  05-28 11:47:20.512   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 7
+  05-28 11:47:20.512   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 8
+  05-28 11:47:20.512   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 9
+  05-28 11:47:20.512   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at task 10
+  05-28 11:47:20.513   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab3bac87a1a6, 857f6f, 0] record with traceId at then function
+  ```
+  “testHiTraceIdPassedManually”按钮触发业务逻辑，可在hilog日志中看到以下内容：
+  ```
+  05-28 11:49:00.787   7439-7439     A00000/testTag                  com.examp...racedemo  I     HiTraceId is invalid, begin hiTraceChain
+  05-28 11:49:00.788   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab4bb2cc0575, 0, 0] start testHiTraceIdPassedManually async trace
+  05-28 11:49:00.789   7439-7439     A00000/testTag                  com.examp...racedemo  I     hiTraceChain end in main thread
+  05-28 11:49:00.890   7439-7439     A00000/testTag                  com.examp...racedemo  I     [a92ab4bb2cc0575, 3b5f934, 0] end testHiTraceIdPassedManually async trace
+  ```
