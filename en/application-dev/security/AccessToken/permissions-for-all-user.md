@@ -13,7 +13,7 @@ This type of permissions must be declared in the application installation packag
 
 <!--Del-->
 > **NOTE**
-> "Certificate-based authorization" is not required for normal-level permissions.
+> **Certificate-based authorization** is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -114,7 +114,7 @@ The system provides the continuous task mechanism. For applications that need to
 
 Allows an application to obtain the device location.
 
-**Prerequisites**: This permission must be requested with [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location) together.
+**Prerequisites**: This permission must be requested with [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location).
 
 **Permission level**: normal
 
@@ -176,7 +176,7 @@ Allows an application to obtain users' health data, such as heart rate.
 
 ## ohos.permission.ACCESS_NEARLINK
 
-Allows an application to use NearLink, such as device pairing and connecting to nearby devices.
+Allows an application to access and use NearLink, such as device pairing and connecting to nearby devices.
 
 **Permission level**: normal
 
@@ -186,7 +186,7 @@ Allows an application to use NearLink, such as device pairing and connecting to 
 
 ## ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY
 
-Allows an application to access the **Download** directory and its subdirectories in the user directory.
+Allows an application to access the **Download** directory and its subdirectories in the public directory.
 
 <!--RP2--><!--RP2End-->
 
@@ -202,7 +202,7 @@ Allows an application to access the **Download** directory and its subdirectorie
 
 ## ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY
 
-Allows an application to access the **Documents** directory and its subdirectories in the user directory.
+Allows an application to access the **Documents** directory and its subdirectories in the public directory.
 
 <!--RP2--><!--RP2End-->
 

@@ -41,7 +41,7 @@ Row(options?: RowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options<sup>18+</sup> | [RowOptions](#rowoptions18对象说明) | 否 | 横向布局元素间距，支持设置number或string类型。 |
+| options<sup>18+</sup> | [RowOptions](#rowoptions18对象说明) | 否 | 横向布局元素间距，支持设置number或string类型。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### Row<sup>18+</sup>
 Row(options?: RowOptions | RowOptionsV2)
@@ -51,6 +51,8 @@ Row(options?: RowOptions | RowOptionsV2)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,6 +74,8 @@ Row(options?: RowOptions | RowOptionsV2)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -85,6 +89,8 @@ Row(options?: RowOptions | RowOptionsV2)
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -145,6 +151,8 @@ reverse(isReversed: Optional\<boolean\>)
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

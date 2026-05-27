@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Certificate-based authorization" is not required for normal-level permissions.
+> **Certificate-based authorization** is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -62,13 +62,15 @@ Allows an application to obtain the print framework capability.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 10
 
 ## ohos.permission.DISCOVER_BLUETOOTH
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
- 
+
 
 **Permission level**: normal
 
@@ -310,6 +312,8 @@ Allows an application that has accessed the cloud to obtain its device-cloud syn
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables | smart locks
+
 **Valid since**: 11
 
 ## ohos.permission.STORE_PERSISTENT_DATA
@@ -396,7 +400,7 @@ Allows an application to set pinned windows.
 
 ## ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
-Allows a system application to use infrared interfaces.
+Allows an application to use infrared interfaces.
 
 With this permission, the application can obtain the maximum frequency supported by the infrared module and send infrared signals at a specific frequency.
 
@@ -533,7 +537,7 @@ This permission can be requested when the application meets the following condit
 
 Allows an application to set the main window container to be transparent and remove the shadow of the outer border of the main window.
 
-With this permission, the application can set the background color the shadow visibility of the main window.
+With this permission, the application can set the background color and the shadow visibility of the main window.
 
 **Permission level**: normal
 
@@ -577,7 +581,7 @@ This permission applies only to independent binary programs, not to HAPs.
 
 Allows an application to turn off the screen but keep it unlocked after a timeout.
 
-With this permission, the application prevents the device from locking by default when the screen turns off after a timeout.
+The device locks by default when the screen turns off after a timeout. With this permission, the application does not enter the lock screen when the screen turns off after a timeout.
 
 **Permission level**: normal
 
@@ -711,7 +715,7 @@ With this permission, the application can obtain the encryption and decryption s
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Valid since**: 26.0.0
+**Since**: 26.0.0
 
 ## ohos.permission.STYLUS_FRAME_BOOST
 
@@ -726,3 +730,17 @@ With this permission, the application can improve handwriting performance, ensur
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.GET_ENTERPRISE_CONFIG
+
+Allows an application to obtain custom enterprise device management (EDM) configuration files.
+
+With this permission, the application can obtain custom EDM configuration files, including those for wallpapers and browser policies.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
