@@ -109,7 +109,7 @@ struct Index {
               .fontSize(50)
               .fontWeight(FontWeight.Bold)
               .onClick(async () => {
-    // ...
+                // ...
                 let w: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/MyWorker2.ts');
                 w.onmessage = (e: MessageEvents): void => {
                   // 接收Worker子线程的结果
