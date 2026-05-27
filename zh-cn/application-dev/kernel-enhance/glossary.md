@@ -1,4 +1,5 @@
-# 术语
+# 术语<!--kernel-enhance-kit-->
+<!--Kit: Kernel Enhance Kit-->
 <!--Subsystem: Kernel-->
 <!--Owner: @yzl-kongzhenhua; @Leibobo; @gatieme; @fang-jinxu-->
  <!--Designer: @wangxiayang; @lizongfeng; @zzzuo; @tanyihua; @lingminghw-->
