@@ -15,7 +15,7 @@ The **swiper** component provides a container that allows users to switch among 
 
 ## Child Components
 
-All child components except **<list>** are supported.
+All child components except **list** are supported.
 
 
 ## Properties

@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **<picker-view>** component provides the view that shows an embedded scrollable picker on the screen.
+The **picker-view** component provides the view that shows an embedded scrollable picker on the screen.
 
 > **NOTE**
 >

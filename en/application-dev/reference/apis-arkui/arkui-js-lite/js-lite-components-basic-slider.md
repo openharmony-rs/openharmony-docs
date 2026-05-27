@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **<slider>** component is used to quickly adjust settings, such as volume and brightness.
+The **slider** component is used to quickly adjust settings, such as volume and brightness.
 
 > **NOTE**
 >
