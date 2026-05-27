@@ -110,7 +110,7 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 ## useEffect<sup>23+</sup>
 
-useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined): this
+useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined)
 
 用于设置组件是否应用<!--Del-->父级[EffectComponent](ts-container-effectcomponent-sys.md)或<!--DelEnd-->窗口定义的效果模板。
 
@@ -130,12 +130,6 @@ useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined): t
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | useEffect  | boolean \| undefined                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false<br/>当useEffect的值为undefined时，恢复为无应用模板的效果。 |
 | effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) \| undefined | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT<br/>当effectType的值为undefined时，恢复为无应用模板的效果。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| this | 返回当前组件。 |
 
 ## EffectType<sup>14+</sup>
 
