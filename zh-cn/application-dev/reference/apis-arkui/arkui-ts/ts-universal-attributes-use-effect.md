@@ -120,7 +120,7 @@ useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)，[useEffect<sup>14+</sup>](#useeffect14)和[useEffect<sup>18+</sup>](#useeffect18)。同一API版本下的单参数版本见[useEffect<sup>23+</sup>](#useeffect23单参数)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)，[useEffect<sup>14+</sup>](#useeffect14)和[useEffect<sup>18+</sup>](#useeffect18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -143,7 +143,7 @@ useEffect(value: boolean | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)。同一API版本下的双参数版本见[useEffect<sup>23+</sup>](#useeffect23)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)。
 
 **ArkTS-Sta起始版本：** 23
 
