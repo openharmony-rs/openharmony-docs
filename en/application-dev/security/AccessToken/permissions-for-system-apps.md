@@ -5749,7 +5749,7 @@ Allows an application to send update instructions to the head unit.
 
 **Authorization mode**: system_grant
 
-**Enable via ACL**: true
+**Certificate-based authorization**: true
 
 **Supported devices**: cars
 
