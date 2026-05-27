@@ -945,7 +945,7 @@ let abilityState: accessibility.AbilityState = 'enable';
 accessibility.getAbilityLists(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
   console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
+  console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -984,7 +984,7 @@ let abilityState: accessibility.AbilityState = 'enable';
 
 accessibility.getAbilityLists(abilityType, abilityState, (err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
   if (err) {
-    console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
     return;
   }
   console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
@@ -1266,7 +1266,7 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
     console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
   } catch (error) {
     let err = error as BusinessError;
-    console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
   }
 
   // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
@@ -1295,7 +1295,7 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
     console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
   } catch (error) {
     let err = error as BusinessError;
-    console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
   }
   ```
 
