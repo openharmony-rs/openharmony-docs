@@ -35,8 +35,6 @@ Gainmap（增益图）参数设置选项。
 | 名称               | 类型              | 只读 | 可选 | 说明             |
 | ------------------ | ----------------- | ---- | ---- | ---------------- |
 | isFullSizeGainmap| boolean | 否   | 否   | 返回Picture中的Gainmap（增益图）是否使用全尺寸图。<br/>true表示使用全尺寸图，宽高和主图一致；false表示不使用全尺寸图，宽高均为主图的一半。默认值为false。|
-| ----------------- | ----------------- | ---- | ---- | ---------------- |
-| isFullSizeGainmap| boolean | 否   | 否   | 返回Picture中的Gainmap（增益图）是否使用全尺寸图。<br/>true表示使用全尺寸图，宽高和主图一致；false表示不使用全尺寸图，宽高均为主图的一半。默认值为false。|
 
 ## DecodingOptions<sup>7+</sup>
 
@@ -151,26 +149,26 @@ createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, p
 
 **参数：**
 
- | 参数名       | 类型                | 必填 | 说明             |
- | ------------ | ------------------- | ---- | ---------------- |
- | hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA1010102/YCBCR_P010，色彩空间是BT2020_HLG。 |
- | sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA8888/NV21/NV12，色彩空间是P3。 |
- | params | [GainmapParams](js-apis-image-sys.md) | 是   | Gainmap Params，包含一个bool类型的参数isFullSizeGainmap，来决定是否使用全尺寸Gainmap，默认值是{isFullSizeGainmap : false}。|
+| 参数名       | 类型                | 必填 | 说明             |
+| ------------ | ------------------- | ---- | ---------------- |
+| hdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | HDR PixelMap，位深16bit或10bit，像素格式为RGBA_F16/RGBA1010102/YCBCR_P010，色彩空间是BT2020_HLG。 |
+| sdrPixelMap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | SDR PixelMap，位深8bit，像素格式为RGBA8888/NV21/NV12，色彩空间是P3。 |
+| params | [GainmapParams](js-apis-image-sys.md) | 是   | Gainmap Params，包含一个bool类型的参数isFullSizeGainmap，来决定是否使用全尺寸Gainmap，默认值是{isFullSizeGainmap : false}。|
 
- **返回值：**
+**返回值：**
 
- | 类型               | 说明              |
- | ------------------ | ----------------- |
- |Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture包含sdr和gainmap，像素格式为RGBA8888。 |
+| 类型               | 说明              |
+| ------------------ | ----------------- |
+|Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture包含sdr和gainmap，像素格式为RGBA8888。 |
 
- **错误码：**
+**错误码：**
 
- 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)和[通用错误码](../errorcode-universal.md)。
 
- | 错误码ID | 错误信息                                                     |
- | -------- | ------------------------------------------------------------ |
- | 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
- |  202      | Non-system applications are not allowed to use system APIs. |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600201      | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
+|  202      | Non-system applications are not allowed to use system APIs. |
 
  **示例：**
 
@@ -181,7 +179,7 @@ import { image } from '@kit.ImageKit';
 
 async function CreatePictureTest(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // 获取SDR图片
+  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // 获取SDR图片。
   let imageSource: image.ImageSource = image.createImageSource(rawFile);
   let decodingOptionsForSDR: image.DecodingOptions = {
     desiredDynamicRange : image.DecodingDynamicRange.SDR,
