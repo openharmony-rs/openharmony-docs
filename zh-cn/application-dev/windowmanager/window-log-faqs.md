@@ -110,7 +110,6 @@ Focus window: 13
 hdc shell hidumper -s WindowManagerService -a '-w 13'
 ```
 
-`-w 13` 参数表示查看WinId为13的窗口详细信息。
 输出示例：
 
 <!--RP1-->
