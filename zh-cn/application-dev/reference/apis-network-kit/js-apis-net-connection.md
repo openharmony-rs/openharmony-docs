@@ -1046,7 +1046,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-     console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+     console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
 });
 ```
 
