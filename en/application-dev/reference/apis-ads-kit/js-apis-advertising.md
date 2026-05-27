@@ -6,8 +6,8 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-
 <!-- md-trans-meta sourceCommit=ea2d8082679fb01eb444ae8d25a7681c82490ad7 translatedAt=2026-05-25T07:02:07.946Z pushedAt=2026-05-27T13:10:01.965Z -->
+
 The advertising module provides APIs for requesting and displaying ads.
 
 > **Note:**

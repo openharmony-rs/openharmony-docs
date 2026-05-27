@@ -6,8 +6,8 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-
 <!-- md-trans-meta sourceCommit=ea2d8082679fb01eb444ae8d25a7681c82490ad7 translatedAt=2026-05-25T06:56:55.074Z pushedAt=2026-05-27T13:10:05.576Z -->
+
 This module provides the capability of obtaining and resetting the Open Anonymous Device Identifier (OAID).
 
 > **NOTE**<br>

@@ -6,8 +6,8 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-
 <!-- md-trans-meta sourceCommit=ea2d8082679fb01eb444ae8d25a7681c82490ad7 translatedAt=2026-05-25T06:57:04.051Z pushedAt=2026-05-27T13:09:59.116Z -->
+
 This module provides the capability of displaying ads, covering native, roll, splash, and other ad styles.
 
 > **NOTE**
