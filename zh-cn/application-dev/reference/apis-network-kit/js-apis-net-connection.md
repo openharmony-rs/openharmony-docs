@@ -2379,7 +2379,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
   if (data.length !== 0) {
     console.info(`Succeeded to get ipAddress: ${JSON.stringify(data.ipAddress)}`);
-    console.info(`Succeeded to get ifaceName: ${JSON.stringify(data.iface)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(data.iface)}`);
     console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
     console.info('Succeeded to get ifaceName: ' + JSON.stringify(data.iface));
     console.info('Succeeded to get macAddress: ' + JSON.stringify(data.macAddress));
