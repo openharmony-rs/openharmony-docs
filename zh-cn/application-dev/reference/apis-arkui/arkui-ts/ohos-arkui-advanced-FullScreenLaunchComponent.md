@@ -37,7 +37,7 @@ import { FullScreenLaunchComponent } from '@kit.ArkUI';
 
 ## FullScreenLaunchComponent
 
-FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo> })
+FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: AtomicServiceOptions, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo>, onReceive?: Callback<Record<string, Object>> })
 
 **装饰器类型：**\@Component
 

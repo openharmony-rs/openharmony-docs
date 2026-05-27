@@ -16,7 +16,7 @@ Sendable对象在不同并发实例间默认采用引用传递，这种方式比
 由于跨并发实例序列化的开销随数据量线性增长，因此当传输数据量较大时（100KB的数据传输耗时约为1ms），跨并发实例的拷贝开销会影响应用性能。使用引用传递方式传输对象可提升性能。
 
 **示例：**
-<!-- @[across_concurrent_instance_transfer_large_data ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/Index.ets) --> 
+<!-- @[across_concurrent_instance_transfer_large_data ](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableScenarios/bigdata/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -61,7 +61,7 @@ struct Index {
           let sensorTask = new taskpool.LongTask(sensorListener);
           emitter.on({ eventId: 0 }, (data) => {
             // Do something here
-            console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}`);
+            console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
           });
           taskpool.execute(sensorTask).then(() => {
             console.info('Add listener of ACCELEROMETER success');
