@@ -659,6 +659,8 @@ on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本**：20
 
+**相关接口**：该接口对应的ArkTS-Sta接口是[onPreDisconnect](#accessibilityextensioncontextonpredisconnect23)。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -814,6 +816,8 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offPreDisconnect](#accessibilityextensioncontextoffpredisconnect23)。
 
 **参数：**
 

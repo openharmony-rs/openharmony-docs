@@ -889,7 +889,9 @@ config.setSeniorModeStateForApp(infos).then(() => {
 
 ## config.getSeniorModeStateForApp
 
-getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;boolean&gt;
+ArkTS-Dyn: getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;boolean&gt;
+
+ArkTS-Sta: getSeniorModeStateForApp(bundleName: string, appIndex?: int): Promise&lt;boolean&gt;
 
 查询应用“长辈模式”的状态。使用Promise异步回调。
 
@@ -910,7 +912,7 @@ getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;bool
 | 参数名 | 类型                                                                           | 必填 | 说明 |
 | -------- |------------------------------------------------------------------------------| -------- | -------- |
 | bundleName | string | 是 | 查询“长辈模式”的应用包名。 |
-| appIndex | number | 否 | 应用包的分身索引标识。<br>取值范围：大于等于0的整数。缺省时，appIndex默认为0。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 应用包的分身索引标识。<br>取值范围：大于等于0的整数。缺省时，appIndex默认为0。 |
 
 **返回值：**
 
@@ -1490,5 +1492,5 @@ type OnDisconnectCallback = () => void
 | 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
 | ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
 | bundleName | string | 否   | 否   | 应用包名。 |
-| appIndex | number | 否   | 是   | 应用包的分身索引标识。<br>取值大于等于0的整数，缺省时默认为0。|
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 应用包的分身索引标识。<br>取值大于等于0的整数，缺省时默认为0。|
 | seniorModeState | boolean | 否   | 否   | 应用是否开启状态为“长辈模式”，true表示开启，false表示未开启。|

@@ -1695,7 +1695,7 @@ struct Index {
 
 onTouchModeChange(callback: Callback&lt;string&gt;): void
 
-监听屏幕朗读功能启用状态变化事件。使用callback异步回调。
+监听触摸浏览功能下的单击/双击操作模式变化事件。使用callback异步回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
