@@ -635,7 +635,7 @@ ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
   if (value?.protocol != undefined) {
     console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
   } else {
-    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+    console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
   }
 });
 ```
@@ -674,7 +674,7 @@ let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
   if (value?.protocol != undefined) {
     console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
   } else {
-    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+    console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
   }
 }
 ws.on('openInfo', callback1);
