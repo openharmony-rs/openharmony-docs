@@ -42,7 +42,7 @@ import { LayoutAlgorithm, CustomLayoutAlgorithm, RowLayoutAlgorithm, ColumnLayou
 
 > **说明：**
 >
-> CustomLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm类型变量](#layoutalgorithm)，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> CustomLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
 **装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
@@ -108,7 +108,7 @@ onLayout(self: FrameNode, position: Position): void
 
 > **说明：**
 >
-> RowLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm类型变量](#layoutalgorithm)，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> RowLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
 **装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
@@ -182,7 +182,7 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 > **说明：**
 >
-> ColumnLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm类型变量](#layoutalgorithm)，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> ColumnLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
 **装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
@@ -256,7 +256,7 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 > **说明：**
 >
-> StackLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm类型变量](#layoutalgorithm)，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> StackLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
 
 **装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
@@ -325,7 +325,7 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 > **说明：**
 >
-> GridLayoutAlgorithm类对象可以赋值给[LayoutAlgorithm类型变量](#layoutalgorithm)，作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
+> GridLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
 **装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
