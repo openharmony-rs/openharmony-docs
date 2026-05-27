@@ -64,7 +64,7 @@ For example, the application can determine whether the user is in motion or to r
 
 **Authorization mode**: user_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | tv | wearable
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -170,7 +170,7 @@ Allows an application to obtain users' health data, such as heart rate.
 
 **Authorization mode**: user_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | tv | wearable
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 

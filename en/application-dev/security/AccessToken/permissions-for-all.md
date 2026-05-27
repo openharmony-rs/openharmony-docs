@@ -82,13 +82,13 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 Allows an application to read data from an acceleration sensor.
 
-Acceleration sensors includes normal, uncalibrated, and linear acceleration sensor.
+Acceleration sensors include normal, uncalibrated, and linear acceleration sensor.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | tv | wearable
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -154,13 +154,13 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 Allows an application to read data from a gyroscope sensor.
 
-Gyroscope sensors include normal and uncalibrated gyroscope sensor.
+Gyroscope sensors include normal and uncalibrated gyroscope sensors.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | tv | wearable
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -248,13 +248,13 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 
 Allows an application to control vibration.
 
-Vibration includs one-time vibration, preset vibration, or custom vibration.
+Vibration includes one-time vibration, preset vibration, or custom vibration.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | tv | wearable
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
