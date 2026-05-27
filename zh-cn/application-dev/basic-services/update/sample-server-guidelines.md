@@ -26,7 +26,7 @@
 
 1. 准备SSL证书。
 
-    生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
+   生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
 
     ```shell
     openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out serverCert.cer -subj "/C=CN/ST=GD/L=GZ/O=abc/OU=defg/CN=hijk/emailAddress=test.com"
@@ -37,7 +37,7 @@
 
 2. 修改bundle.json。
 
-    在build字段新增一个sub_component。
+   在build字段新增一个sub_component。
 
     ```json
     "sub_component": [
@@ -48,7 +48,7 @@
 
 3. 建立代码目录。
 
-    进入到update_updateservice目录下，执行以下命令，建立代码目录。
+   进入到update_updateservice目录下，执行以下命令，建立代码目录。
 
     ```shell
     mkdir server_sample                            // 建立示例服务器server_sample目录
@@ -62,7 +62,7 @@
 
 4. 编写编译文件BUILD.gn。
 
-    文件BUILD.gn一共编译两个ohos组件，一个是ohos_shared_library库文件libserver_process.z.so，另一个是ohos_executable可执行文件testserver。
+   文件BUILD.gn一共编译两个ohos组件，一个是ohos_shared_library库文件libserver_process.z.so，另一个是ohos_executable可执行文件testserver。
 
     ```gn
     import("//build/ohos.gni")
@@ -107,7 +107,7 @@
 
 5. 编写头文件server_process.h。
 
-    文件server_process.h声明了示例服务器的接口。
+   文件server_process.h声明了示例服务器的接口。
 
     ```c++
     #ifndef __SERVER_PROCESS_H__
@@ -153,7 +153,7 @@
 
 6. 编写server_process.c、main.cpp。
 
-    文件server_process.c主要声明了服务器的返回报文格式respondContent，main.cpp可参考普通SSL协议的服务器编写，注意包含相关头文件，同时加载serverKey.pem和serverCert.cer两个证书。
+   文件server_process.c主要声明了服务器的返回报文格式respondContent，main.cpp可参考普通SSL协议的服务器编写，注意包含相关头文件，同时加载serverKey.pem和serverCert.cer两个证书。
 
     ```c
     #include "server_process.h"
@@ -202,15 +202,15 @@
 
 7. 编译输出产物。
 
-    编译输出目录会新增testserver和libserver_process.z.so两个文件。
+   编译输出目录会新增testserver和libserver_process.z.so两个文件。
 
 8. 升级包制作。
 
-    参考[update_packaging_tools仓](https://gitcode.com/openharmony/update_packaging_tools)制作升级包。
+   参考[update_packaging_tools仓](https://gitcode.com/openharmony/update_packaging_tools)制作升级包。
 
 9. 启动搜包服务器。
 
-    建议在开发板上新建一个纯英文路径，然后将testserver、libserver_process.z.so、serverCert.cer和serverKey.pem放到同一个目录下，进入该目录，执行以下启动命令即可启动搜包服务器。
+   建议在开发板上新建一个纯英文路径，然后将testserver、libserver_process.z.so、serverCert.cer和serverKey.pem放到同一个目录下，进入该目录，执行以下启动命令即可启动搜包服务器。
 
     ```shell
     ./testserver ./libserver_process.z.so &
