@@ -272,7 +272,7 @@ let options: http.HttpRequestOptions = {
 // 发起一个HTTP请求。
 httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
-   console.info('Succeeded to get Result: ' + JSON.stringify(data.result));
+   console.info('Succeeded to get result: ' + JSON.stringify(data.result));
    console.info('Succeeded to get code: ' + JSON.stringify(data.responseCode));
    console.info('Succeeded to get type: ' + JSON.stringify(data.resultType));
    console.info('Succeeded to get header: ' + JSON.stringify(data.header));
