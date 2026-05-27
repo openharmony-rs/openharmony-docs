@@ -26,7 +26,7 @@ clearFocus(): void
 
 清除焦点，将焦点强制转移到页面根容器节点，焦点链路上其他节点失焦。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,7 +91,7 @@ requestFocus(key: string): void
 
 通过组件的id将焦点转移到组件树对应的实体节点，当前帧生效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,7 +177,7 @@ activate(isActive: boolean, autoInactive?: boolean): void
 
 设置当前界面的[焦点激活态](../../ui/arkts-common-events-focus-event.md)。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,7 +237,7 @@ isActive(): boolean
 
 焦点激活态可参考[基础概念：焦点激活态](../../ui/arkts-common-events-focus-event.md#基础概念)。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -308,7 +308,7 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 
 设置页面切换时，新的页面是否需要主动获取焦点。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -380,7 +380,7 @@ setKeyProcessingMode(mode: KeyProcessingMode): void
 
 设置按键事件处理的优先级。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
