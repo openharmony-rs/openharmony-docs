@@ -2877,7 +2877,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError) => {
-   console.error(`Failed to unregister.Code:${err.code},message:${err.message}`);
+   console.error(`Failed to unregister.Code:${error.code},message:${error.message}`);
 });
 ```
 
