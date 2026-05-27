@@ -63,7 +63,7 @@ background(content: CustomBuilder | ResourceColor, options?: BackgroundOptions):
 
 ## background<sup>24+</sup>
 
-background(content: CustomBuilder | ResourceColor | undefined, options?: BackgroundOptions): this
+background(content: CustomBuilder | ResourceColor | undefined, options?: BackgroundOptions)
 
 设置组件背景。
 
@@ -257,7 +257,7 @@ backgroundImage(src: ResourceStr&nbsp;|&nbsp;PixelMap, options?: BackgroundImage
 
 ## backgroundImage<sup>23+</sup>
 
-backgroundImage(src: ResourceStr | PixelMap | undefined, options: BackgroundImageOptions): this
+backgroundImage(src: ResourceStr | PixelMap | undefined, options: BackgroundImageOptions)
 
 设置组件的背景图片。
 
@@ -532,7 +532,7 @@ backgroundBlurStyle(style: Optional\<BlurStyle>, options?: BackgroundBlurStyleOp
 
 ## backgroundBlurStyle<sup>23+</sup>
 
-backgroundBlurStyle(style: BlurStyle | undefined, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions): this
+backgroundBlurStyle(style: BlurStyle | undefined, options?: BackgroundBlurStyleOptions, sysOptions?: SystemAdaptiveOptions)
 
 为当前组件提供一种背景材质模糊能力，通过枚举值的方式封装了不同的模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度。
 
@@ -553,12 +553,6 @@ backgroundBlurStyle(style: BlurStyle | undefined, options?: BackgroundBlurStyleO
 | style                 | [BlurStyle](#blurstyle9) \| undefined                          | 是   | 背景模糊样式。模糊样式中封装了模糊半径、蒙版颜色、蒙版透明度、饱和度、亮度五个参数。<br/>当style的值为undefined时，恢复为默认关闭模糊的背景。 |
 | options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10对象说明) | 否   | 背景模糊选项。<br/>该参数在ArkTS卡片中，暂不支持使用。                                            |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 >  **说明：**
 >
@@ -672,7 +666,7 @@ backdropBlur(radius: Optional\<number>, options?: BlurOptions, sysOptions?: Syst
 
 ## backdropBlur<sup>23+</sup>
 
-backdropBlur(radius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions): this
+backdropBlur(radius: double | undefined, options?: BlurOptions, sysOptions?: SystemAdaptiveOptions)
 
 为组件添加背景模糊效果，支持自定义设置模糊半径和灰阶参数。
 
@@ -693,12 +687,6 @@ backdropBlur(radius: double | undefined, options?: BlurOptions, sysOptions?: Sys
 | radius                | double \| undefined                                            | 是   | 为当前组件添加背景模糊效果，入参为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>当radius的值为undefined时，恢复为默认无模糊的背景。 |
 | options | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) | 否   | 灰阶模糊参数。对图像中的黑白色进行色阶调整，使其趋于灰色更为柔和美观，对图像中的彩色调整没有效果。<br/>默认值：grayscale: [0,0] |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 >  **说明：**
 >
@@ -801,7 +789,7 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 
 ## backgroundEffect<sup>23+</sup> 
 
-backgroundEffect(options: BackgroundEffectOptions | undefined, sysOptions?: SystemAdaptiveOptions): this
+backgroundEffect(options: BackgroundEffectOptions | undefined, sysOptions?: SystemAdaptiveOptions)
 
 设置组件背景属性，包括背景模糊半径、亮度、饱和度和颜色等参数。
 
@@ -825,12 +813,6 @@ backgroundEffect(options: BackgroundEffectOptions | undefined, sysOptions?: Syst
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [BackgroundEffectOptions](#backgroundeffectoptions11) \| undefined | 是   | 设置组件背景属性包括：饱和度，亮度，颜色。<br/>当options的值为undefined时，恢复为无效果的背景。 |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   否   |  系统自适应调节参数。<br/>默认值：{ disableSystemAdaptation: false }    |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## BackgroundEffectOptions<sup>11+</sup>
 
@@ -888,7 +870,7 @@ backgroundImageResizable(value: ResizableOptions): T
 
 ## backgroundImageResizable<sup>23+</sup>
 
-backgroundImageResizable(value: ResizableOptions | undefined): this
+backgroundImageResizable(value: ResizableOptions | undefined)
 
 设置背景图在拉伸时可调整大小的图像选项。
 
@@ -911,12 +893,6 @@ backgroundImageResizable(value: ResizableOptions | undefined): this
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
 | value  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) \|&nbsp;undefined | 是   | 图像拉伸时可调整大小的图像选项。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## BackgroundBlurStyleOptions<sup>10+</sup>对象说明
 
@@ -1012,7 +988,7 @@ backgroundBrightness(options: Optional\<BackgroundBrightnessOptions>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## backgroundBrightness<sup>23+</sup> 
+## backgroundBrightness<sup>23+</sup>
 
 backgroundBrightness(params: BackgroundBrightnessOptions | undefined)
 
