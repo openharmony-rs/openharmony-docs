@@ -472,7 +472,7 @@ import { connection } from '@kit.NetworkKit';
 
 // 获取App绑定的网络信息
 let netHandle = connection.getAppNetSync();
-console.info('Succeeded to getappnetSync:' + JSON.stringify(netHandle));
+console.info('Succeeded to getAppNetSync:' + JSON.stringify(netHandle));
 ```
 
 ## connection.setAppNet<sup>9+</sup>
