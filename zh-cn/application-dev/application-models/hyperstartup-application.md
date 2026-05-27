@@ -1,11 +1,13 @@
-# 概述
+# 基于鸿蒙内核应用快启技术实现的应用加速启动
+
+## 概述
 
 从API version 24开始，提供应用快启机制。该机制提前持久化保存应用启动的中间状态，启动应用从中间状态直接加载。当用户启动应用时，由于会跳过部分的启动流程，所需的启动时间会缩短，有助于提升用户的启动体验和应用竞争力。开发者可以通过如下两方面判断，应用是否适合接入快启特性
 
 1. 应用冷启动性能差，启动时延高于1.6s或者存在启动舆情问题
 2. 资源、模块加载在启动过程中的占比耗时超过25%
 
-## 相关名称解释
+### 相关名称解释
 
 | 名词 | 描述 |
 | --- | --- |
@@ -13,13 +15,13 @@
 | 快照  | 应用启动流程中间状态的上下文备份  |
 | 快照点  |  时序上，快照点前的启动流程会被打进快照中，应用启动时会跳过这些流程；快照点后的启动流程不受影响 |
 
-# 约束限制
+## 约束限制
 
 * 开发者模式下，debug签名的应用不受系统侧管控限制，开发者可以进行快照特性接入开发和测试
 * 应用接入快启后，会产生一定的资源占用，所以每用户同时生效的应用是有限的，这会根据用户偏好启用
 * 接入快启的应用会对资源产生占用，为防止资源滥用，系统会管控接入的应用。因此开发者需要和华为侧对接，进行测试，然后正式上线
 
-# 规格说明
+## 规格说明
 
 | 规格 | 说明 |
 | --- | --- |
@@ -27,17 +29,17 @@
 | 快照销毁 | 应用卸载，应用安装，应用更新，系统重启以及一些系统环境变量发生变化  |
 | 快照重置 | 快照销毁后，若满足快照制作前置条件，则再次触发快照生成条件时则重做快照 |
 
-# 实现原理
+## 实现原理
 
 快启技术将启动流程的中间状态（快照）进行持久化保存。应用启动时，直接加载快照，从而实现跳过这部分启动流程，达到启动加速的目标。如下图所示，快启启动相较于普通启动就是直接跳过了启动的一阶段，达到了减少启动时延的目标。
 
 ![image](./figures/hyperstartup-application-process.png)
 
-## 快照涵盖的启动流程
+### 快照涵盖的启动流程
 
 包含在快照内的流程有：AbilityStage模块加载，[AbilityStage.onCreate](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)，UIAbility模块加载。特别地，在[模块加载](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-module-side-effects)过程中会有一些代码执行，这包括：顶层代码（top level），so的constructor，类静态变量初始化等。
 
-# 接口说明
+## 接口说明
 
 系统提供了一整套API，支持快照特性的接入和适配。
 
@@ -48,9 +50,9 @@
 | [setHyperSnapEnabled ](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled)| 普通调用接口，设置快照开启/关闭。特别地，设置关闭时会立即销毁快照；设置开启时，会择机制作快照，并在下次启动时生效快启启动 |
 | [requestRebuildHyperSnap  ](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap)| 普通调用接口，调用可以重做一次快照  |
 
-# 开发步骤
+## 开发步骤
 
-## 产生状态不一致的快照风险操作
+### 产生状态不一致的快照风险操作
 
 快照化跳过了部分启动流程，为了保证数据一致性和状态正确，开发者需要消除制作快照流程中的风险操作，才能保障快启启动的应用数据的正确性。
 
@@ -78,7 +80,7 @@
 
 快照制作中，禁止有状态的进程间通讯，比如保存应用状态和数据持久化，否则会触发保护极致导致快照制作失败。
 
-## 将快照风险操作后置到快照点外
+### 将快照风险操作后置到快照点外
 
 系统对开发者提供了新的回调接口AbilityStage.onAboutToCreateAbility。从时序上讲，该回调接口在AbilityStage. OnCreate()之后执行，但不会被放到快照制作过程中去执行。特别地，即使不开启快照功能，该回调接口也会执行。
 
@@ -182,7 +184,7 @@ export class AppAbilityStage extends AbilityStage {
 
 1、根据业务逻辑进行调整，将快照风险操作挪出快照。
 
-## 在更新回调接口中进行数据更新
+### 在更新回调接口中进行数据更新
 
 考虑到实际调整业务逻辑的困难，部分对外数据交互难以剥离。快照机制对开发者提供了新的回调接口 AbilityStage. onLaunchFromHyperSnap()，该回调接口只会在从镜像启动的流程（而不是镜像制作流程）中执行，正常冷启动不执行该回调。开发者可以在该回调接口中，重新请求一次外部数据进行同步，保证数据的一致性。
 
@@ -215,7 +217,7 @@ export class AppAbilityStage extends AbilityStage {
 }
 ```
 
-# 支持云推开关来关闭/开启快照功能
+## 支持云推开关来关闭/开启快照功能
 
 借助setHyperSnapEnabled(true/false)接口，应用可以自己根据需要关闭应用的快启启动功能，直到云推开关再次打开。
 
@@ -267,7 +269,7 @@ export class AppAbilityStage extends AbilityStage {
   }
   ```
 
-# 支持应用主动镜像重置
+## 支持应用主动镜像重置
 
 类似地，鸿蒙系统对外提供了requestRebuildHyperSnap接口，该接口支持应用在自己的业务逻辑中主动调用，销毁当前快照，择机重做。
 
@@ -286,18 +288,18 @@ export class LauncherAbility extends UIAbility {
 }
 ```
 
-# 通过调整业务逻辑扩大快照收益
+## 通过调整业务逻辑扩大快照收益
 
 快照内包含的内容越多，快照收益越大。
 
 开发者可以对整个启动流程进行梳理和分析，将适合做到快照内的启动逻辑（即不含快照风险操作），在保障业务逻辑正确性的条件下前置到快照内，扩大快照收益。
 
-## 启动过程中的时序无关且快照友好的业务逻辑前置到快照内
+### 启动过程中的时序无关且快照友好的业务逻辑前置到快照内
 
 * 如果存在某个任务可以前置且无时序依赖，那么可以考虑放到快照内以扩大收益
 * 同时，需要考虑这个任务的快照友好性（参考前文）
 
-## 启动过程中的import动作前置到快照内
+### 启动过程中的import动作前置到快照内
 
 import动作前置是有范围的，系统建议将冷启动过程中的import动作都尽可能地放到快照内，以扩大收益。如下图所示，通过trace工具扫描关键词“Evaluate”，检索出启动过程中的import动作
 
@@ -325,7 +327,7 @@ export class AppAbilityStage extends AbilityStage {
 
 ```
 
-# 快照接入的辅助工具
+## 快照接入的辅助工具
 
 为了快速帮助开发者定位需要适配和修改的内容，系统提供了[配套插件工具](https://gitcode.com/LYZ-H/HyperSnapshot/blob/master/tools/hyperstartupcheck-user-manual.md
 )。该工具基于代码扫描，直接识别具有快照风险行为的代码，并报告给开发者进行修正，节省人工排查工作量，提升应用适配快照的效率。
