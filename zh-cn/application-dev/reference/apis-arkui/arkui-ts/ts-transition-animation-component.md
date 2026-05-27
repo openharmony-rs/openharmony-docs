@@ -51,7 +51,7 @@ transition(value: TransitionOptions | TransitionEffect): T
 
 ## transition<sup>23+</sup>
 
-transition(value: TransitionEffect | undefined): this
+transition(value: TransitionEffect | undefined)
 
 设置组件插入时显示和删除时隐藏的过渡效果。
 
@@ -68,12 +68,6 @@ transition(value: TransitionEffect | undefined): this
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- |  ---- | -------- |
 | value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。<br/>当value的值为undefined时，无过渡效果。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| this | 返回当前组件。 |
 
 
 ## transition<sup>12+</sup>
@@ -120,7 +114,7 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 ## transition<sup>23+</sup>
 
-transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;TransitionFinishCallback&gt; | undefined): this
+transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;TransitionFinishCallback&gt; | undefined)
 
 设置组件插入时显示和删除时隐藏的过渡效果。
 
@@ -140,11 +134,6 @@ transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;Transitio
 | -------- | -------- |  ---- | -------- |
 | value | [TransitionEffect](#transitioneffect10对象说明) \| undefined  | 是 | 设置组件插入时显示和删除时隐藏的过渡效果。<br/>**说明：** <br/>详细描述[TransitionEffect](#transitioneffect10对象说明)对象说明。<br/>当value的值为undefined时，无过渡效果。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| this | 返回当前组件。 |
 
 >  **说明：**
 >  当前有两种方式触发组件的transition：

@@ -51,7 +51,7 @@ animation(value:AnimateParam): T
 
 ## animation<sup>23+</sup>
 
-animation(value: AnimateParam | undefined): this
+animation(value: AnimateParam | undefined)
 
 设置组件的属性动画。
 
@@ -73,12 +73,6 @@ animation(value: AnimateParam | undefined): this
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
 | value | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) \| undefined | 是    | 设置动画效果相关参数。<br/>当value的值为undefined时，无动画效果。          |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| this | 返回当前组件。 |
 
 属性动画只对写在animation前面的属性生效，且对组件构造器的属性不生效。
 

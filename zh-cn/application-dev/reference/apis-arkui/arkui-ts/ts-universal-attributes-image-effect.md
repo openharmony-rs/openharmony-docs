@@ -280,7 +280,7 @@ grayscale(grayscale: Optional\<number>): T
 
 ## grayscale<sup>23+</sup>
 
-grayscale(value: double | undefined): this
+grayscale(value: double | undefined)
 
 为组件添加灰度效果。
 
@@ -298,77 +298,9 @@ grayscale(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加灰度效果。值定义为灰度转换的比例，入参1.0则完全转为灰度图像，入参0.0则图像无变化，入参在0.0和1.0之间时，效果呈线性变化。<br/>取值范围：[0.0, 1.0]<br/>**说明：**<br/>设置小于0.0的值时，按值为0.0处理，设置大于1.0的值时，按值为1.0处理。<br/>当grayscale的值为undefined时，取默认值0.0。恢复为无灰度效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## brightness
-
-brightness(value: number): T
-
-为组件添加高光效果。不通过该接口设置时，默认无变化。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[brightness<sup>23+</sup>](#brightness23)。
-
-**ArkTS-Dyn起始版本：** 7
-
-**参数：** 
-
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 为当前组件添加高光效果，入参为高光比例，值为1时没有效果，小于1时亮度变暗，小于或等于0为全黑，大于1时亮度增加，数值越大亮度越大，亮度大于或等于2时会变为全白。<br/>取值范围：[0, +∞)<br/>推荐取值范围：[0, 2]<br/>**说明：**<br/>设置小于0的值时，按值为0处理。|
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## brightness<sup>18+</sup>
-
-brightness(brightness: Optional\<number>): T
-
-为组件添加高光效果。不通过该接口设置时，默认无变化。与[brightness](#brightness)相比，brightness参数新增了对undefined类型的支持。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[brightness<sup>23+</sup>](#brightness23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名     | 类型              | 必填 | 说明                                                         |
-| ---------- | ----------------- | ---- | ------------------------------------------------------------ |
-| brightness | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 为当前组件添加高光效果，入参为高光比例，值为1时没有效果，小于1时亮度变暗，小于或等于0为全黑，大于1时亮度增加，数值越大亮度越大，亮度大于或等于2时会变为全白。<br/>取值范围：[0, +∞)<br/>推荐取值范围：[0, 2]<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当brightness的值为undefined时，恢复为亮度为1的高光效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
 ## brightness<sup>23+</sup>
 
-brightness(value: double | undefined): this
+brightness(value: double | undefined)
 
 为组件添加高光效果。
 
@@ -386,77 +318,9 @@ brightness(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加高光效果，入参为高光比例，值为1时没有效果，小于1时亮度变暗，小于或等于0为全黑，大于1时亮度增加，数值越大亮度越大，亮度大于或等于2时会变为全白。<br/>取值范围：[0, +∞)<br/>推荐取值范围：[0, 2]<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当brightness的值为undefined时，恢复为亮度为1的高光效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## saturate
-
-saturate(value: number): T
-
-为组件添加饱和度效果。不通过该接口设置时，默认无变化。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[saturate<sup>23+</sup>](#saturate23)。
-
-**ArkTS-Dyn起始版本：** 7
-
-**参数：** 
-
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 为当前组件添加饱和度效果，饱和度为颜色中的含色成分和消色成分(灰)的比例，入参为1时，显示原图像，大于1时含色成分越大，饱和度越大，小于1时消色成分越大，饱和度越小。<br/>推荐取值范围：[0, 50)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## saturate<sup>18+</sup>
-
-saturate(saturate: Optional\<number>): T
-
-为组件添加饱和度效果。不通过该接口设置时，默认无变化。与[saturate](#saturate)相比，saturate参数新增了对undefined类型的支持。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[saturate<sup>23+</sup>](#saturate23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名   | 类型              | 必填 | 说明                                                         |
-| -------- | ----------------- | ---- | ------------------------------------------------------------ |
-| saturate | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 为当前组件添加饱和度效果，饱和度为颜色中的含色成分和消色成分(灰)的比例，入参为1时，显示原图像，大于1时含色成分越大，饱和度越大，小于1时消色成分越大，饱和度越小。<br/>推荐取值范围：[0, 50)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当saturate的值为undefined时。恢复为饱和度为1的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
 ## saturate<sup>23+</sup>
 
-saturate(value: double | undefined): this
+saturate(value: double | undefined)
 
 为组件添加饱和度效果。不通过该接口设置时，默认无变化。
 
@@ -474,77 +338,9 @@ saturate(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加饱和度效果，饱和度为颜色中的含色成分和消色成分(灰)的比例，入参为1时，显示原图像，大于1时含色成分越大，饱和度越大，小于1时消色成分越大，饱和度越小。<br/>推荐取值范围：[0, 50)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当saturate的值为undefined时。恢复为饱和度为1的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## contrast
-
-contrast(value: number): T
-
-为组件添加对比度效果。不通过该接口设置时，默认无变化。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[contrast<sup>23+</sup>](#contrast23)。
-
-**ArkTS-Dyn起始版本：** 7
-
-**参数：** 
-
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 为当前组件添加对比度效果，入参为对比度的值。值为1时，显示原图，大于1时，值越大对比度越高，图像越清晰醒目，小于1时，值越小对比度越低，当对比度为0时，图像变为全灰。<br/>推荐取值范围：[0, 10)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## contrast<sup>18+</sup>
-
-contrast(contrast: Optional\<number>): T
-
-为组件添加对比度效果。不通过该接口设置时，默认无变化。与[contrast](#contrast)相比，contrast参数新增了对undefined类型的支持。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[contrast<sup>23+</sup>](#contrast23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名   | 类型              | 必填 | 说明                                                         |
-| -------- | ----------------- | ---- | ------------------------------------------------------------ |
-| contrast | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 为当前组件添加对比度效果，入参为对比度的值。值为1时，显示原图，大于1时，值越大对比度越高，图像越清晰醒目，小于1时，值越小对比度越低，当对比度为0时，图像变为全灰。<br/>推荐取值范围：[0, 10)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当contrast的值为undefined时，恢复为对比度为1的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
 ## contrast<sup>23+</sup>
 
-contrast(value: double | undefined): this
+contrast(value: double | undefined)
 
 为组件添加对比度效果。不通过该接口设置时，默认无变化。
 
@@ -562,77 +358,9 @@ contrast(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加对比度效果，入参为对比度的值。值为1时，显示原图，大于1时，值越大对比度越高，图像越清晰醒目，小于1时，值越小对比度越低，当对比度为0时，图像变为全灰。<br/>推荐取值范围：[0, 10)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当contrast的值为undefined时，恢复为对比度为1的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## invert
-
-invert(value: number | InvertOptions): T
-
-反转输入的图像。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[invert<sup>23+</sup>](#invert23)。
-
-**ArkTS-Dyn起始版本：** 7
-
-**参数：** 
-
-| 参数名 | 类型                                                         | 必填 | 说明                                                         |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[InvertOptions](#invertoptions11对象说明)<sup>11+</sup> | 是   | 反转输入的图像。<br/>入参对象为number时。入参为图像反转的比例，值为1时完全反转，值为0则图像无变化。<br/>取值范围：[0, 1]。<br/>设置小于0的值时，按值为0处理。设置大于1的值时，按值为1处理。<br/>入参对象为 InvertOptions时，对比背景颜色灰度值和阈值区间，背景颜色灰度值小于阈值区间时反色取high值，当背景颜色灰度值大于阈值区间时反色取low值，背景颜色灰度值在阈值区间内取值由high线性渐变到low。<br/>**说明：**<br/>number和InvertOptions两种形式的入参对应不同的反转效果。两种类型的入参切换时，不会清除之前已设置的反转效果，两种反转效果会同时存在，建议始终使用同一种形式的入参。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## invert<sup>18+</sup>
-
-invert(options: Optional\<number | InvertOptions>): T
-
-反转输入的图像。与[invert](#invert)相比，options参数新增了对undefined类型的支持。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[invert<sup>23+</sup>](#invert23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名  | 类型                                                         | 必填 | 说明                                                         |
-| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;[InvertOptions](#invertoptions11对象说明)<sup>11+</sup>> | 是   | 反转输入的图像。<br/>入参对象为number时。入参为图像反转的比例，值为1时完全反转，值为0则图像无变化。<br/>取值范围：[0, 1]。<br/>设置小于0的值时，按值为0处理。设置大于1的值时，按值为1处理。<br/>入参对象为 InvertOptions时，对比背景颜色灰度值和阈值区间，背景颜色灰度值小于阈值区间时反色取high值，当背景颜色灰度值大于阈值区间时反色取low值，背景颜色灰度值在阈值区间内取值由high线性渐变到low。<br/>当options的值为undefined时，恢复为图像无变化的效果。<br/>**说明：**<br/>number和InvertOptions两种形式的入参对应不同的反转效果。两种类型的入参切换时，不会清除之前已设置的反转效果，两种反转效果会同时存在，建议始终使用同一种形式的入参。|
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
 ## invert<sup>23+</sup>
 
-invert(value: double | InvertOptions | undefined): this
+invert(value: double | InvertOptions | undefined)
 
 反转输入的图像。
 
@@ -650,77 +378,9 @@ invert(value: double | InvertOptions | undefined): this
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | double \| &nbsp;[InvertOptions](#invertoptions11对象说明)<sup>11+</sup><br/> \| undefined | 是   | 反转输入的图像。<br/>入参对象为number时,入参为图像反转的比例，值为1时完全反转，值为0则图像无变化。（百分比）<br/>取值范围：[0, 1]。<br/>设置小于0的值时，按值为0处理。设置大于1的值时，按值为1处理。<br/>入参对象为 InvertOptions时，对比背景颜色灰度值和阈值区间，背景颜色灰度值小于阈值区间时反色取high值，当背景颜色灰度值大于阈值区间时反色取low值，背景颜色灰度值在阈值区间内取值由high线性渐变到low。<br/>当value的值为undefined时，恢复为图像无变化的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## sepia
-
-sepia(value: number): T
-
-将图像转换为深褐色。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[sepia<sup>23+</sup>](#sepia23)。
-
-**ArkTS-Dyn起始版本：** 7
-
-**参数：** 
-
-| 参数名 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 将图像转换为深褐色，降低色彩度，产生温暖复古的图像风格。入参为褐色滤镜强度，值为1则完全是深褐色的，值小于等于0则图像无变化，值大于1会进一步放大色彩偏移比例，图像整体会变得更亮且色彩更加偏黄/偏红，但不属于标准sepia效果。<br/>取值范围：[0, +∞)，推荐取值范围：(0, 1]。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## sepia<sup>18+</sup>
-
-sepia(sepia: Optional\<number>): T
-
-将图像转换为深褐色。与[sepia](#sepia)相比，sepia参数新增了对undefined类型的支持。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[sepia<sup>23+</sup>](#sepia23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名 | 类型              | 必填 | 说明                                                         |
-| ------ | ----------------- | ---- | ------------------------------------------------------------ |
-| sepia  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 将图像转换为深褐色，降低色彩度，产生温暖复古的图像风格。入参为褐色滤镜强度，值为1则完全是深褐色的，值小于等于0则图像无变化，值大于1会进一步放大色彩偏移比例，图像整体会变得更亮且色彩更加偏黄/偏红，但不属于标准sepia效果。<br/>当sepia的值为undefined时，恢复为图像无变化的效果。<br/> 取值范围：[0, +∞)，推荐取值范围：(0, 1]。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
 ## sepia<sup>23+</sup>
 
-sepia(value: double | undefined): this
+sepia(value: double | undefined)
 
 将图像转换为深褐色。
 
@@ -738,77 +398,9 @@ sepia(value: double | undefined): this
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 将图像转换为深褐色，降低色彩度，产生温暖复古的图像风格。入参为褐色滤镜强度，值为1则完全是深褐色的，值小于等于0则图像无变化，值大于1会进一步放大色彩偏移比例，图像整体会变得更亮且色彩更加偏黄/偏红，但不属于标准sepia效果。（百分比）<br/>当value的值为undefined时，恢复为图像无变化的效果。<br/>取值范围：[0, +∞)，推荐取值范围：(0, 1]。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## hueRotate
-
-hueRotate(value: number | string): T
-
-色相旋转效果。不通过该接口设置时，默认无变化。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[hueRotate<sup>23+</sup>](#huerotate23)。
-
-**ArkTS-Dyn起始版本：** 7
-
-**参数：** 
-
-| 参数名 | 类型                       | 必填 | 说明                                                         |
-| ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | 是   | 色相旋转效果，输入参数为旋转角度。<br/>取值范围：(-∞, +∞)<br/>**说明：**<br/>色调旋转360度会显示原始颜色。先将色调旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## hueRotate<sup>18+</sup>
-
-hueRotate(rotation: Optional\<number | string>): T
-
-色相旋转效果。不通过该接口设置时，默认无变化。与[hueRotate](#huerotate)相比，rotation参数新增了对undefined类型的支持。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[hueRotate<sup>23+</sup>](#huerotate23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名   | 类型                                  | 必填                                                         | 说明 |
-| -------- | ------------------------------------- | ------------------------------------------------------------ | ---- |
-| rotation | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number&nbsp;\|&nbsp;string> | 是   |色相旋转效果，输入参数为旋转角度。<br/>取值范围：(-∞, +∞)<br/>string需为数值字符串类型。<br/>**说明：**<br/>色调旋转360度会显示原始颜色。先将色调旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。<br/>当rotation的值为undefined时，恢复为无色相旋转的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
 ## hueRotate<sup>23+</sup>
 
-hueRotate(value: double | string | undefined): this
+hueRotate(value: double | string | undefined)
 
 色相旋转效果。
 
@@ -826,77 +418,9 @@ hueRotate(value: double | string | undefined): this
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
 | value  | double&nbsp;\|&nbsp;string \| undefined | 是   | 色相旋转效果，输入参数为旋转角度。<br/>默认值：'0deg'<br/>取值范围：(-∞, +∞)<br/>**说明：**<br/>色调旋转360度会显示原始颜色。先将色调旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。<br/>当value的值为undefined时，恢复为无色相旋转的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## colorBlend
-
-colorBlend(value: Color | string | Resource): T
-
-为组件添加颜色叠加效果。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[colorBlend<sup>23+</sup>](#colorblend23)。
-
-**ArkTS-Dyn起始版本：** 7
-
-**参数：** 
-
-| 参数名 | 类型                                                         | 必填 | 说明                                           |
-| ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
-| value  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 为当前组件添加颜色叠加效果，入参为叠加的颜色字符串。取值可为string类型，如'0x000000'，'rgba(0,0,0,1)'。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## colorBlend<sup>18+</sup>
-
-colorBlend(color: Optional\<Color | string | Resource>): T
-
-为组件添加颜色叠加效果。与[colorBlend](#colorblend)相比，color参数新增了对undefined类型的支持。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[colorBlend<sup>23+</sup>](#colorblend23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名 | 类型                                                         | 必填 | 说明                                                         |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)> | 是   | 为当前组件添加颜色叠加效果，入参为叠加的颜色。取值可为string类型，如'0x000000'，'rgba(0,0,0,1)'。<br/>当color的值为undefined时，恢复为无颜色叠加的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
 ## colorBlend<sup>23+</sup>
 
-colorBlend(value: Color | string | Resource | undefined): this
+colorBlend(value: Color | string | Resource | undefined)
 
 为组件添加颜色叠加效果。
 
@@ -914,77 +438,9 @@ colorBlend(value: Color | string | Resource | undefined): this
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
 | value  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 为当前组件添加颜色叠加效果，入参为叠加的颜色字符串。<br/>当value的值为undefined时，恢复为无颜色叠加的效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## linearGradientBlur<sup>12+</sup> 
-
-linearGradientBlur(value: number, options: LinearGradientBlurOptions): T
-
-为组件添加内容线性渐变模糊效果。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[linearGradientBlur<sup>23+</sup>](#lineargradientblur23)。
-
-**ArkTS-Dyn起始版本：** 12
-
-**参数：** 
-
-| 参数名  | 类型                                                         | 必填 | 说明                                                         |
-| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | number                                                       | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000] |
-| options | [LinearGradientBlurOptions](#lineargradientbluroptions12) | 是   | 设置线性渐变模糊效果。  <br/>线性渐变参数，包含模糊程度和模糊位置数组fractionStops，及渐变模糊方向direction。|
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## linearGradientBlur<sup>18+</sup> 
-
-linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradientBlurOptions>): T
-
-为组件添加内容线性渐变模糊效果。与[linearGradientBlur<sup>12+</sup>](#lineargradientblur12)相比，新增了对undefined类型的支持。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[linearGradientBlur<sup>23+</sup>](#lineargradientblur23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名  | 类型                                                         | 必填 | 说明                                                         |
-| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| blurRadius   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>                                            | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000]<br/>当blurRadius的值为undefined时，恢复为渐变模糊为0的效果。 |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LinearGradientBlurOptions](#lineargradientbluroptions12)> | 是   | 设置线性渐变模糊效果。<br/>线性渐变参数，包含模糊程度和模糊位置数组fractionStops，及渐变模糊方向direction。|
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
 ## linearGradientBlur<sup>23+</sup> 
 
-linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions | undefined): this
+linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1000,82 +456,6 @@ linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | double \| undefined                                            | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000]<br/>当value的值为undefined时，恢复为渐变模糊为0的效果。 |
 | options | [LinearGradientBlurOptions](#lineargradientbluroptions12) \| undefined | 是   | 设置线性渐变模糊效果。<br/>当options的值为undefined时，恢复为渐变模糊为0的效果。<br/>线性渐变参数，包含模糊程度和模糊位置数组fractionStops，及渐变模糊方向direction。  |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
-## renderGroup<sup>10+</sup>
-
-renderGroup(value: boolean): T
-
-设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
-
-不设置该属性时，默认不组成节点组。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[renderGroup<sup>23+</sup>](#rendergroup23)。
-
-**ArkTS-Dyn起始版本：** 10
-
-**参数：** 
-
-| 参数名 | 类型    | 必填 | 说明                                                         |
-| ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 设置当前组件和子组件是否组成节点组。<br/> false表示不组成节点组，不进行离屏渲染直接绘制。<br/> true表示当前组件和子组件组成节点组，进行离屏渲染后再与父组件融合绘制。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
-
-## renderGroup<sup>18+</sup>
-
-renderGroup(isGroup: Optional\<boolean>): T
-
-设置是否组成节点组。节点组表示当前组件和子组件组成的子树先在离屏画布中渲染，再与父组件融合绘制。设置为节点组后，系统会缓存绘制结果，提升性能。但如果节点组内的组件频繁更新，缓存失效，可能导致性能下降。此外，设置为节点组后，当前组件的不透明度不为1时，绘制效果可能有差异。
-
-与[renderGroup<sup>10+</sup>](#rendergroup10)相比，isGroup参数新增了对undefined类型的支持。
-
-不设置该属性时，默认不组成节点组。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[renderGroup<sup>23+</sup>](#rendergroup23)。
-
-**ArkTS-Dyn起始版本：** 18
-
-**参数：** 
-
-| 参数名  | 类型               | 必填 | 说明                                                         |
-| ------- | ------------------ | ---- | ------------------------------------------------------------ |
-| isGroup | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 设置当前组件和子组件是否组成节点组。<br/> false表示不组成节点组，不进行离屏渲染直接绘制。<br/> true表示当前组件和子组件组成节点组，进行离屏渲染后再与父组件融合绘制。<br/>当isGroup的值为undefined时，按照不组成节点组处理。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
 
 ## renderGroup<sup>23+</sup>
 
@@ -1567,7 +947,7 @@ pixelStretchEffect(options: PixelStretchEffectOptions | undefined)
 
 ## systemBarEffect<sup>12+</sup>
 
-systemBarEffect(): T
+systemBarEffect()
 
 根据背景进行智能反色并且带有模糊效果。
 
@@ -1580,12 +960,6 @@ systemBarEffect(): T
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| T | 返回当前组件。 |
 
 ## ShadowType<sup>10+</sup>枚举说明
 
