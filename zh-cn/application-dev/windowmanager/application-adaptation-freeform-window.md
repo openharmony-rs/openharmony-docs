@@ -407,7 +407,7 @@
         this.topAreaHeight = this.mainWindow.getWindowDecorHeight();
         this.mainWindow.on("windowSizeChange", (data) => {
           this.windowSize = data;
-          this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
+          this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
         })
       }
 
@@ -420,7 +420,7 @@
           this.windowSize.width = WindowProperties.drawableRect.width;
           this.titleButtonRect = this.mainWindow.getTitleButtonRect();
           this.topAreaHeight = this.titleButtonRect.height;
-          this.topAreaWidth = px2vp(this.windowSize.width) - this.titleButtonRect.width;
+          this.topAreaWidth = this.getUIContext().px2vp(this.windowSize.width) - this.titleButtonRect.width;
           console.info(`titleButtonRect: ${JSON.stringify(this.titleButtonRect)}`);
         } catch (exception) {
           console.error(`Failed to get the area of title buttons. Cause code: ${exception.code}, message: ${exception.message}`);

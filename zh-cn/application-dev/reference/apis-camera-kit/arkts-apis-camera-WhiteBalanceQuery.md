@@ -25,7 +25,7 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 检测是否支持当前传入的白平衡模式。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -74,7 +74,7 @@ getWhiteBalanceRange(): Array\<number\>
 
 获取手动白平衡模式下，白平衡值的范围。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
