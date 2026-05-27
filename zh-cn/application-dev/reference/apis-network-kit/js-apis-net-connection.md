@@ -3125,7 +3125,7 @@ netCon.register((error: BusinessError) => {
 
 // 使用unregister接口取消订阅网络不可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(`Failed to get unregister.Code:${err.code},message:${err.message}`);
+  console.error(`Failed to get unregister.Code:${error.code},message:${error.message}`);
 });
 ```
 
