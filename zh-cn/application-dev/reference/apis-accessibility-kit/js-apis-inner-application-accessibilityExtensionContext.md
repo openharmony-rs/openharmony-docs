@@ -175,7 +175,7 @@ type WindowType = 'application' | 'system'
 
 ## AccessibilityExtensionContext.setTargetBundleName<sup>(deprecated)</sup>
 
-setTargetBundleName(targetNames: Array\<string>): Promise\<void>;
+setTargetBundleName(targetNames: Array\<string>): Promise\<void>
 
 设置关注的目标包名。使用Promise异步回调。
 
@@ -274,7 +274,7 @@ try {
 
 ## AccessibilityExtensionContext.getFocusElement<sup>(deprecated)</sup>
 
-getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>;
+getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>
 
 获取焦点元素。使用Promise异步回调。
 
@@ -328,7 +328,7 @@ axContext.getFocusElement().then((data: AccessibilityElement) => {
 
 getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void
 
-获取焦点元素, 使用callback异步回调。
+获取焦点元素。使用callback异步回调。
 
 > **说明：**
 >
@@ -377,7 +377,7 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
 
 getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<AccessibilityElement>): void
 
-获取焦点元素, 使用callback异步回调。
+获取焦点元素。使用callback异步回调。
 
 > **说明：**
 >
@@ -426,7 +426,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
 
 ## AccessibilityExtensionContext.getWindowRootElement<sup>(deprecated)</sup>
 
-getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>;
+getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>
 
 获取指定窗口的根节点元素。使用Promise异步回调。
 
@@ -481,7 +481,7 @@ axContext.getWindowRootElement().then((data: AccessibilityElement) => {
 
 getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void
 
-获取指定窗口的根节点元素, 使用callback异步回调。
+获取指定窗口的根节点元素。使用callback异步回调。
 
 > **说明：**
 >
@@ -530,7 +530,7 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
 
 getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityElement>): void
 
-获取指定窗口的根节点元素, 使用callback异步回调。
+获取指定窗口的根节点元素。使用callback异步回调。
 
 > **说明：**
 >
@@ -579,7 +579,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
 
 ## AccessibilityExtensionContext.getWindows<sup>(deprecated)</sup>
 
-getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>;
+getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>
 
 获取指定屏幕中的所有窗口。使用Promise异步回调。
 
@@ -723,7 +723,7 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
 
 ## AccessibilityExtensionContext.injectGesture<sup>(deprecated)</sup>
 
-injectGesture(gesturePath: GesturePath): Promise\<void>;
+injectGesture(gesturePath: GesturePath): Promise\<void>
 
 注入手势。使用Promise异步回调。
 
@@ -875,11 +875,9 @@ axContext.injectGestureSync(gesturePath);
 
 无障碍节点元素，在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 ### attributeNames<sup>(deprecated)</sup>
 
-attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>;
+attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>
 
 获取节点元素的所有属性名称。使用Promise异步回调。
 
@@ -953,7 +951,7 @@ rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) =>
 
 ### attributeValue<sup>(deprecated)</sup>
 
-attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promise\<ElementAttributeValues[T]>;
+attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promise\<ElementAttributeValues[T]>
 
 根据属性名称获取属性值。使用Promise异步回调。
 
@@ -1057,7 +1055,7 @@ rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => 
 
 ### actionNames<sup>(deprecated)</sup>
 
-actionNames(): Promise\<Array\<string>>;
+actionNames(): Promise\<Array\<string>>
 
 获取节点元素支持的所有操作名称。使用Promise异步回调。
 
@@ -1127,7 +1125,7 @@ rootElement.actionNames((err: BusinessError, data: string[]) => {
 
 ### performAction<sup>(deprecated)</sup>
 
-performAction(actionName: string, parameters?: object): Promise\<void>;
+performAction(actionName: string, parameters?: object): Promise\<void>
 
 根据操作名称执行某个操作。使用Promise异步回调。
 
@@ -1165,64 +1163,53 @@ performAction(actionName: string, parameters?: object): Promise\<void>;
 
 **示例：**
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+- 无参数Action
 
-let actionName = 'action';
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
-rootElement.performAction(actionName).then(() => {
-  console.info(`succeeded in performing action,actionName is ${actionName}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
-});
-```
+  // rootElement是AccessibilityElement的实例
+  // Action描述中无明确要求的，均为无参数Action
+  rootElement.performAction('click').then(() => {
+    console.info(`succeeded in performing action.`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
-**无参数Action示例：**
+- 有参数Action（setSelection）
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
-// Action描述中无明确要求的，均为无参数Action
-rootElement.performAction('click').then(() => {
-  console.info(`succeeded in performing action.`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
-});
-```
+  // rootElement是AccessibilityElement的实例
+  // setSelection示例代码
+  rootElement.performAction('setSelection', {
+    selectTextBegin: '0', // 表示选择起始位置
+    selectTextEnd: '8',   // 表示选择结束位置
+    selectTextInForWard: true   // true表示为前光标，false表示为后光标
+  }).then(() => {
+    console.info(`succeeded in performing action`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
-**有参数Action示例：**
+- 有参数Action（setCursorPosition）
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
-// setSelection示例代码
-rootElement.performAction('setSelection', {
-  selectTextBegin: '0', // 表示选择起始位置
-  selectTextEnd: '8',   // 表示选择结束位置
-  selectTextInForWard: true   // true表示为前光标，false表示为后光标
-}).then(() => {
-  console.info(`succeeded in performing action`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// rootElement是AccessibilityElement的实例
-// setCursorPosition示例代码
-rootElement.performAction('setCursorPosition', {
-  offset: '1'   // 表示光标的设置位置
-}).then(() => {
-  console.info(`succeeded in performing action`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
-});
-```
+  // rootElement是AccessibilityElement的实例
+  // setCursorPosition示例代码
+  rootElement.performAction('setCursorPosition', {
+    offset: '1'   // 表示光标的设置位置
+  }).then(() => {
+    console.info(`succeeded in performing action`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 ### performAction<sup>(deprecated)</sup>
 
@@ -1326,7 +1313,7 @@ rootElement.performAction(actionName, parameters, (err: BusinessError) => {
 
 ### findElement('content')<sup>(deprecated)</sup>
 
-findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityElement>>;
+findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据节点内容查询所有节点元素。使用Promise异步回调。
 
@@ -1427,7 +1414,7 @@ rootElement.findElement('content', condition, (err: BusinessError, data: Accessi
 
 ### findElement('focusType')<sup>(deprecated)</sup>
 
-findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElement>;
+findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElement>
 
 根据焦点元素类型查询节点元素。使用Promise异步回调。
 
@@ -1530,7 +1517,7 @@ rootElement.findElement('focusType', condition, (err: BusinessError, data: Acces
 
 ### findElement('focusDirection')<sup>(deprecated)</sup>
 
-findElement(type: 'focusDirection', condition: FocusDirection): Promise\<AccessibilityElement>;
+findElement(type: 'focusDirection', condition: FocusDirection): Promise\<AccessibilityElement>
 
 根据下一焦点元素方向查询节点元素。使用Promise异步回调。
 

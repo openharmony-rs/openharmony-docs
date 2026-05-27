@@ -52,7 +52,10 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | customAction          | string | 否   | 是| 执行[AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).EXECUTE_CUSTOM_ACTION时配置，表示自定义操作的名称。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 | accessibilityFocusScene          | [AccessibilityFocusScene](./js-apis-accessibility-sys.md#accessibilityfocusscene) | 否   | 是| 执行[AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).ACCESSIBILITY_FOCUS时配置，用于设置无障碍聚焦的场景。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本**：26.0.0<br>**ArkTS-Sta起始版本**：26.0.0 |
 
-例如：选中文本输入框中index从0到7的字符时，executeAction(AccessibilityAction.SET_SELECTION, parameter)方法设置的参数如下:
+**示例：**
+
+选中文本输入框中index从0到7的字符时，executeAction(AccessibilityAction.SET_SELECTION, parameter)方法设置的参数如下:
+
 ```ts
 let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true }
 ```
@@ -1021,7 +1024,7 @@ export default class AccessibilityManager {
 
 ## getAccessibilityFocusedElement<sup>20+</sup>
 
-getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
+getAccessibilityFocusedElement(): Promise\<AccessibilityElement>
 
 获取当前获得焦点的元素。使用Promise异步回调。
 
@@ -1096,9 +1099,9 @@ export default class AccessibilityManager {
 
 ## getRootInActiveWindow<sup>20+</sup>
 
-ArkTS-Dyn: getRootInActiveWindow(windowId ?: number): Promise\<AccessibilityElement>;
+ArkTS-Dyn: getRootInActiveWindow(windowId ?: number): Promise\<AccessibilityElement>
 
-ArkTS-Sta: getRootInActiveWindow(windowId ?: int): Promise\<AccessibilityElement>;
+ArkTS-Sta: getRootInActiveWindow(windowId ?: int): Promise\<AccessibilityElement>
 
 获取活动窗口根元素。使用Promise异步回调。
 
@@ -1359,7 +1362,7 @@ export default class AccessibilityManager {
 | startIndex<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 屏幕上第一个列表项的索引。<br>默认值：0。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23|
 | text<sup>20+</sup> | string | 否 | 是 | 元素的文本内容。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23|
 | textLengthLimit<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 元素的最大文本长度。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23|
-| textMoveUnit<sup>20+</sup> | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit) | 否 | 是 | 文本朗读时的移动单位。<br>默认值：0。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23|
+| textMoveUnit<sup>20+</sup> | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit) | 否 | 是 | 文本朗读时的移动单位。<br>默认值：char。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23|
 | triggerAction<sup>20+</sup> | [accessibility.Action](js-apis-accessibility.md#action) | 否 | 是 | 触发元素事件的操作。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23|
 | type<sup>20+</sup> | [WindowType](js-apis-inner-application-accessibilityExtensionContext.md#windowtype) | 否 | 是 | 元素的窗口类型。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23|
 | valueMax<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 最大值。<br>默认值：0。<br>**ArkTS-Dyn起始版本**：20<br>**ArkTS-Sta起始版本**：23|
@@ -1869,55 +1872,60 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 | 9300005 | This action is not supported.            |
 
 **示例：**
-```ts
-// 无参数Action示例：
-import { AccessibilityAction } from '@kit.AccessibilityKit';
 
-// rootElement是AccessibilityElement的实例
-// Action描述中无明确要求的，均为无参数Action
-try {
-  await rootElement.executeAction(AccessibilityAction.CLICK);
-  console.info(`succeeded in performing action CLICK`);
-}catch (error){
-  console.error(`failed to perform action CLICK, Code is ${error?.code}, message is ${error?.message}`);
-}
-```
+- 无参数Action
 
+  ```ts
+  // 无参数Action示例：
+  import { AccessibilityAction } from '@kit.AccessibilityKit';
 
-
-```ts
-// 有参数Action示例：
-import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
-
-try {
-  // selectTextBegin: 表示选择起始位置
-  // selectTextEnd: 表示选择结束位置
-  // selectTextInForWard: true表示为前光标，false表示为后光标
-  let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true }
   // rootElement是AccessibilityElement的实例
-  // setSelection示例代码
-  rootElement.executeAction(AccessibilityAction.SET_SELECTION, p);
-  console.info(`succeeded in performing action SET_SELECTION`);
-}catch (error){
-  console.error(`failed to perform action SET_SELECTION, Code is ${error?.code}, message is ${error?.message}`);
-}
-```
+  // Action描述中无明确要求的，均为无参数Action
+  try {
+    await rootElement.executeAction(AccessibilityAction.CLICK);
+    console.info(`succeeded in performing action CLICK`);
+  }catch (error){
+    console.error(`failed to perform action CLICK, Code is ${error?.code}, message is ${error?.message}`);
+  }
+  ```
 
-```ts
-// 有参数Action示例：
-import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+- 有参数Action（setSelection）
 
-try {
-  // offset: 表示光标的设置位置
-  let p : Parameter = { offset: '1' }
-  // rootElement是AccessibilityElement的实例
-  // setCursorPosition示例代码
-  rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, p);
-  console.info(`succeeded in performing action SET_CURSOR_POSITION`);
-}catch (error){
-  console.error(`failed to perform action SET_CURSOR_POSITION, Code is ${error?.code}, message is ${error?.message}`);
-}
-```
+  ```ts
+  // 有参数Action示例：
+  import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+
+  try {
+    // selectTextBegin: 表示选择起始位置
+    // selectTextEnd: 表示选择结束位置
+    // selectTextInForWard: true表示为前光标，false表示为后光标
+    let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true }
+    // rootElement是AccessibilityElement的实例
+    // setSelection示例代码
+    rootElement.executeAction(AccessibilityAction.SET_SELECTION, p);
+    console.info(`succeeded in performing action SET_SELECTION`);
+  }catch (error){
+    console.error(`failed to perform action SET_SELECTION, Code is ${error?.code}, message is ${error?.message}`);
+  }
+  ```
+
+- 有参数Action（setCursorPosition）
+
+  ```ts
+  // 有参数Action示例：
+  import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+
+  try {
+    // offset: 表示光标的设置位置
+    let p : Parameter = { offset: '1' }
+    // rootElement是AccessibilityElement的实例
+    // setCursorPosition示例代码
+    rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, p);
+    console.info(`succeeded in performing action SET_CURSOR_POSITION`);
+  }catch (error){
+    console.error(`failed to perform action SET_CURSOR_POSITION, Code is ${error?.code}, message is ${error?.message}`);
+  }
+  ```
 
 ### getParent<sup>20+</sup>
 

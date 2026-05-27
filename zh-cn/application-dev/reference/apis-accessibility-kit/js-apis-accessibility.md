@@ -847,8 +847,8 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'textUpdate'              | 表示组件文本已更改的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
 | 'textSelectionUpdate'     | 表示选定文本已更改的事件，当前版本暂不支持。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
 | 'scroll'                  | 表示滚动视图的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'requestFocusForAccessibility'     | 表示主动聚焦的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
-| 'announceForAccessibility'         | 表示主动播报的事件。<br>**ArkTS-Dyn起始版本**：7<br>**ArkTS-Sta起始版本**：23 |
+| 'requestFocusForAccessibility'<sup>12+</sup>     | 表示主动聚焦的事件。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
+| 'announceForAccessibility'<sup>12+</sup>         | 表示主动播报的事件。<br>**ArkTS-Dyn起始版本**：12<br>**ArkTS-Sta起始版本**：23 |
 | 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
 | 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
 | 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
@@ -1038,45 +1038,49 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 |**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
 |**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
 
-**查询所有已安装的辅助应用示例：**
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+**示例：**
 
-let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+- 查询所有已安装的辅助应用
 
-accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
-});
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
-// 日志打印结果为：
-// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
-// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
-// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
-// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
-// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
-// "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
-```
+  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
+  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
 
-**查询所有已启用的具有语音反馈的辅助应用示例：**
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+  accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+  });
 
-let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
+  // 日志打印结果为：
+  // [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+  // "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+  // "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+  // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+  // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+  // "announceForAccessibility","announceForAccessibilityNotInterrupt",
+  // "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+  ```
 
-accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
-});
-```
+- 查询所有已启用的具有语音反馈的辅助应用
+
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
+  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+
+  accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 ## accessibility.getAccessibilityExtensionList<sup>9+</sup>
 
@@ -1245,53 +1249,55 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
 |**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
 |**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
 
-**查询所有已安装的辅助应用示例：**
+**示例：**
 
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+- 查询所有已安装的辅助应用
 
-let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
-let data: accessibility.AccessibilityAbilityInfo[];
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
-}
+  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
+  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+  let data: accessibility.AccessibilityAbilityInfo[];
 
-// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
-// 日志打印结果为：
-// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
-// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
-// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
-// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
-// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
-// "announceForAccessibility","announceForAccessibilityNotInterrupt",
-// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
-```
+  try {
+    data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
+  }
 
-**查询所有已启用的具有语音反馈的辅助应用示例：**
+  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
+  // 日志打印结果为：
+  // [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+  // "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+  // "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+  // "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+  // "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+  // "announceForAccessibility","announceForAccessibilityNotInterrupt",
+  // "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+  ```
 
-```ts
-import { accessibility } from '@kit.AccessibilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+- 查询所有已启用的具有语音反馈的辅助应用
 
-let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
-let data: accessibility.AccessibilityAbilityInfo[];
+  ```ts
+  import { accessibility } from '@kit.AccessibilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-try {
-  data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
-  console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
-}
-```
+  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
+  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+  let data: accessibility.AccessibilityAbilityInfo[];
+
+  try {
+    data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+    console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
+  }
+  ```
 
 <!--RP1-->
 <!--RP1End-->
@@ -3629,6 +3635,8 @@ getTouchModeSync(): string
 | 类型        | 说明                                  |
 | ----------- | ------------------------------------- |
 | string | 表示当前操作模式。<br>- singleTouchMode：表示单击操作模式。<br>- doubleTouchMode：表示双击操作模式。<br>- none：表示未开启触摸浏览功能。 |
+
+**示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';

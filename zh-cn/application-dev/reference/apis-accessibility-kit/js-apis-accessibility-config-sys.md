@@ -47,7 +47,7 @@ import { config } from '@kit.AccessibilityKit';
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23    |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。<br>**ArkTS-Dyn起始版本**：11<br>**ArkTS-Sta起始版本**：23          |
 
-## enableAbility
+## config.enableAbility
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
 
@@ -104,9 +104,9 @@ config.enableAbility(name, capability).then(() => {
 });
 ```
 
-## enableAbility
+## config.enableAbility
 
-enableAbility(name: string, capability: Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt;, callback: AsyncCallback&lt;void&gt;): void
+enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;, callback: AsyncCallback&lt;void&gt;): void
 
 启用辅助扩展。使用callback异步回调。
 
@@ -178,7 +178,7 @@ config.enableAbility(name, capability, (err: BusinessError | null) => {
 });
 ```
 
-## enableAbilityWithCallback<sup>23+</sup>
+## config.enableAbilityWithCallback<sup>23+</sup>
 
 enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capability&gt;, connectCallback: ConnectCallback): Promise&lt;void&gt;
 
@@ -242,7 +242,7 @@ config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
 });
 ```
 
-## disableAbility
+## config.disableAbility
 
 disableAbility(name: string): Promise&lt;void&gt;
 
@@ -296,7 +296,7 @@ config.disableAbility(name).then(() => {
 })
 ```
 
-## disableAbility
+## config.disableAbility
 
 disableAbility(name: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -366,7 +366,7 @@ config.disableAbility(name, (err: BusinessError | null) => {
 });
 ```
 
-## on('enabledAccessibilityExtensionListChange')
+## config.on('enabledAccessibilityExtensionListChange')
 
 on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&gt;): void
 
@@ -411,7 +411,7 @@ config.on('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## onEnabledAccessibilityExtensionListChange<sup>23+</sup>
+## config.onEnabledAccessibilityExtensionListChange<sup>23+</sup>
 
 onEnabledAccessibilityExtensionListChange(callback: Callback&lt;void&gt;): void
 
@@ -468,7 +468,7 @@ struct Index {
 }
 ```
 
-## off('enabledAccessibilityExtensionListChange')
+## config.off('enabledAccessibilityExtensionListChange')
 
 off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void&gt;): void
 
@@ -513,7 +513,7 @@ config.off('enabledAccessibilityExtensionListChange', () => {
 });
 ```
 
-## offEnabledAccessibilityExtensionListChange<sup>23+</sup>
+## config.offEnabledAccessibilityExtensionListChange<sup>23+</sup>
 
 offEnabledAccessibilityExtensionListChange(callback?: Callback&lt;void&gt;): void
 
@@ -574,7 +574,7 @@ struct Index {
 }
 ```
 
-## on('installedAccessibilityListChange')<sup>12+</sup>
+## config.on('installedAccessibilityListChange')<sup>12+</sup>
 
 on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): void
 
@@ -619,7 +619,7 @@ config.on('installedAccessibilityListChange', () => {
 });
 ```
 
-## onInstalledAccessibilityListChange<sup>23+</sup>
+## config.onInstalledAccessibilityListChange<sup>23+</sup>
 
 onInstalledAccessibilityListChange(callback: Callback&lt;void&gt;): void
 
@@ -676,7 +676,7 @@ struct Index {
 }
 ```
 
-## off('installedAccessibilityListChange')<sup>12+</sup>
+## config.off('installedAccessibilityListChange')<sup>12+</sup>
 
 off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): void
 
@@ -721,7 +721,7 @@ config.off('installedAccessibilityListChange', () => {
 });
 ```
 
-## offInstalledAccessibilityListChange<sup>23+</sup>
+## config.offInstalledAccessibilityListChange<sup>23+</sup>
 
 offInstalledAccessibilityListChange(callback?: Callback&lt;void&gt;): void
 
@@ -782,7 +782,7 @@ struct Index {
 }
 ```
 
-## setMagnificationState<sup>20+</sup>
+## config.setMagnificationState<sup>20+</sup>
 
 setMagnificationState(state: boolean): void
 
@@ -827,7 +827,7 @@ try {
 }
 ```
 
-## setSeniorModeStateForApp
+## config.setSeniorModeStateForApp
 
 setSeniorModeStateForApp(appSeniorModeInfos: Array&lt;AppSeniorModeInfo&gt;): Promise&lt;void&gt;
 
@@ -887,7 +887,7 @@ config.setSeniorModeStateForApp(infos).then(() => {
 });
 ```
 
-## getSeniorModeStateForApp
+## config.getSeniorModeStateForApp
 
 getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promise&lt;boolean&gt;
 
@@ -942,7 +942,7 @@ config.getSeniorModeStateForApp("com.example.myapplication", 0).then((data: bool
 });
 ```
 
-## onSeniorModeStateChangeForApp
+## config.onSeniorModeStateChangeForApp
 
 onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 
@@ -1003,7 +1003,7 @@ struct Index {
 }
 ```
 
-## offSeniorModeStateChangeForApp
+## config.offSeniorModeStateChangeForApp
 
 offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
