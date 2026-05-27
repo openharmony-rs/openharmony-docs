@@ -258,7 +258,7 @@ import { http } from '@kit.NetworkKit';
 
 // 将exclusionStr以逗号分割为数组。
 let exclusionStr = "192.168,test.com";
-// exclusionArray将exclusionStr以逗号分割为数组。
+// exclusionArray将exclusionStr以逗号分隔为数组。
 let exclusionArray = exclusionStr.split(',');
 connection.setAppHttpProxy({
   host: "192.168.xx.xxx",
