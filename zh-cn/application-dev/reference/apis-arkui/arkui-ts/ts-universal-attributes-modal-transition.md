@@ -152,7 +152,7 @@ bindContentCover(isShow: boolean | Bindable<boolean\> | undefined, builder: Cust
 
 | 名称              | 类型                                       | 只读 | 可选   | 说明            |
 | --------------- | -------------------- | -------------------- | ---- | ------------- |
-| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否 | 否    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
+| dismiss | [Callback](./ts-types.md#callback12)\<void> | 否 | 否    | 全屏模态页面关闭回调函数。开发者需要退出页面时调用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 12 |
 | reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12枚举说明) | 否 | 否    | 返回本次拦截全屏模态页面退出的事件原因。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ### dismiss<sup>23+</sup>
