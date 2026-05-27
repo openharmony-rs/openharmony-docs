@@ -159,7 +159,7 @@ createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: PixelMap, p
 
 | 类型               | 说明              |
 | ------------------ | ----------------- |
-|Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture包含sdr和gainmap，像素格式为RGBA8888。 |
+|Promise\<[Picture](arkts-apis-image-Picture.md)> | Promise对象，返回Picture包含SDR和Gainmap，像素格式为RGBA8888。 |
 
 **错误码：**
 
