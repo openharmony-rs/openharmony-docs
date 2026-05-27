@@ -1565,10 +1565,10 @@ findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// elementId为10
+// elementId为10。
 let condition = 10;
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1667,10 +1667,10 @@ findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityE
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致
+// condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致。
 let condition = 'location'; 
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1757,7 +1757,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.getCursorPosition().then((data: number) => {
   console.info(`succeeded in getting cursor position, ${data}`);
 }).catch((err: BusinessError) => {
@@ -1807,7 +1807,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.getCursorPosition((err: BusinessError, data: number) => {
   if (err && err.code) {
     console.error(`failed to get cursor position, Code is ${err.code}, message is ${err.message}`);
@@ -1873,14 +1873,14 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 **示例：**
 
-- 无参数Action
+- 无参数Action。
 
   ```ts
   // 无参数Action示例：
   import { AccessibilityAction } from '@kit.AccessibilityKit';
 
-  // rootElement是AccessibilityElement的实例
-  // Action描述中无明确要求的，均为无参数Action
+  // rootElement是AccessibilityElement的实例。
+  // Action描述中无明确要求的，均为无参数Action。
   try {
     await rootElement.executeAction(AccessibilityAction.CLICK);
     console.info(`succeeded in performing action CLICK`);
@@ -1889,19 +1889,19 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
   }
   ```
 
-- 有参数Action（setSelection）
+- 有参数Action（setSelection）。
 
   ```ts
   // 有参数Action示例：
   import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
   try {
-    // selectTextBegin: 表示选择起始位置
-    // selectTextEnd: 表示选择结束位置
-    // selectTextInForWard: true表示为前光标，false表示为后光标
+    // selectTextBegin: 表示选择起始位置。
+    // selectTextEnd: 表示选择结束位置。
+    // selectTextInForWard: true表示为前光标，false表示为后光标。
     let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true }
-    // rootElement是AccessibilityElement的实例
-    // setSelection示例代码
+    // rootElement是AccessibilityElement的实例。
+    // setSelection示例代码。
     rootElement.executeAction(AccessibilityAction.SET_SELECTION, p);
     console.info(`succeeded in performing action SET_SELECTION`);
   }catch (error){
@@ -1909,17 +1909,17 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
   }
   ```
 
-- 有参数Action（setCursorPosition）
+- 有参数Action（setCursorPosition）。
 
   ```ts
   // 有参数Action示例：
   import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
   try {
-    // offset: 表示光标的设置位置
+    // offset: 表示光标的设置位置。
     let p : Parameter = { offset: '1' }
-    // rootElement是AccessibilityElement的实例
-    // setCursorPosition示例代码
+    // rootElement是AccessibilityElement的实例。
+    // setCursorPosition示例代码。
     rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, p);
     console.info(`succeeded in performing action SET_CURSOR_POSITION`);
   }catch (error){
@@ -2177,7 +2177,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 ```ts
 // Page.ets
-// Click TextInput and then it is the accessibility focus element, up direction element is Text#connect
+// Click TextInput and then it is the accessibility focus element, up direction element is Text#connect.
   build() {
     Text('Connect')
         .id('connect')
@@ -2317,7 +2317,7 @@ ArkTS-Sta: findElementById(condition: long): Promise\<AccessibilityElement>;
 
 ```ts
 // Page.ets
-// Click TextInput and then it is the accessibility focus element
+// Click TextInput and then it is the accessibility focus element.
   build() {
     Text('Connect')
         .id('connect')

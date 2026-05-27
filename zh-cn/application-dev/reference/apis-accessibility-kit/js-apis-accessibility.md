@@ -1040,14 +1040,14 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 
 **示例：**
 
-- 查询所有已安装的辅助应用
+- 查询所有已安装的辅助应用。
 
   ```ts
   import { accessibility } from '@kit.AccessibilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
 
   accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
     console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
@@ -1055,7 +1055,7 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
     console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
   });
 
-  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
+  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
   // 日志打印结果为：
   // [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
   // "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
@@ -1066,14 +1066,14 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
   // "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
   ```
 
-- 查询所有已启用的具有语音反馈的辅助应用
+- 查询所有已启用的具有语音反馈的辅助应用。
 
   ```ts
   import { accessibility } from '@kit.AccessibilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
 
   accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
     console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
@@ -1132,8 +1132,8 @@ ArkTS-Dyn示例：
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
   if (err) {
@@ -1143,7 +1143,7 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
   console.info(`succeeded in getting accessibility extension list, ${JSON.stringify(data)}`);
 });
 
-// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
+// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
 // 日志打印结果为：
 // [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
 // "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
@@ -1160,8 +1160,8 @@ ArkTS-Sta示例：
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError | null, data: accessibility.AccessibilityAbilityInfo[] | undefined) => {
   if (err?.code) {
@@ -1180,8 +1180,8 @@ ArkTS-Dyn示例：
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
   if (err) {
@@ -1198,8 +1198,8 @@ ArkTS-Sta示例：
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError | null, data: accessibility.AccessibilityAbilityInfo[] | undefined) => {
   if (err?.code) {
@@ -1251,14 +1251,14 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
 
 **示例：**
 
-- 查询所有已安装的辅助应用
+- 查询所有已安装的辅助应用。
 
   ```ts
   import { accessibility } from '@kit.AccessibilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
-  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+  let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型。
+  let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装。
   let data: accessibility.AccessibilityAbilityInfo[];
 
   try {
@@ -1269,7 +1269,7 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
     console.error(`failed to get accessibility extension list because ${JSON.stringify(err)}`);
   }
 
-  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
+  // 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用。
   // 日志打印结果为：
   // [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
   // "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
@@ -1280,14 +1280,14 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
   // "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
   ```
 
-- 查询所有已启用的具有语音反馈的辅助应用
+- 查询所有已启用的具有语音反馈的辅助应用。
 
   ```ts
   import { accessibility } from '@kit.AccessibilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
-  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
+  let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型。
+  let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用。
   let data: accessibility.AccessibilityAbilityInfo[];
 
   try {
@@ -1376,8 +1376,8 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 import { accessibility } from '@kit.AccessibilityKit';
 
 // 系统内已安装一个或多个辅助应用时:
-// 1. 启用辅助应用场景：第一个辅助应用启用后，回调函数会返回true
-// 2. 禁用辅助应用场景：若一个或多个辅助应用已启用，最后一个已启用的辅助应用被禁用时，回调函数会返回false
+// 1. 启用辅助应用场景：第一个辅助应用启用后，回调函数会返回true。
+// 2. 禁用辅助应用场景：若一个或多个辅助应用已启用，最后一个已启用的辅助应用被禁用时，回调函数会返回false。
 accessibility.on('accessibilityStateChange', (data: boolean) => {
   console.info(`subscribe accessibility state change, result: ${JSON.stringify(data)}`);
 });
@@ -1478,8 +1478,8 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 import { accessibility } from '@kit.AccessibilityKit';
 
 // 系统内已安装一个或多个具备触摸浏览能力的辅助应用（Capability配置中含有'touchGuide'的辅助应用）时：
-// 1. 启用触摸浏览辅助应用场景：第一个触摸浏览辅助应用启用后，回调函数会返回true
-// 2. 禁用触摸浏览辅助应用场景：若一个或多个触摸浏览辅助应用已启用，最后一个已启用的触摸浏览辅助应用被禁用时，回调函数会返回false
+// 1. 启用触摸浏览辅助应用场景：第一个触摸浏览辅助应用启用后，回调函数会返回true。
+// 2. 禁用触摸浏览辅助应用场景：若一个或多个触摸浏览辅助应用已启用，最后一个已启用的触摸浏览辅助应用被禁用时，回调函数会返回false。
 accessibility.on('touchGuideStateChange', (data: boolean) => {
   console.info(`subscribe touch guide state change, result: ${JSON.stringify(data)}`);
 });
@@ -2723,8 +2723,8 @@ isOpenAccessibilitySync(): boolean
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 1、系统内已安装多个辅助应用，若都没有开启，返回false
-// 2、系统内已安装多个辅助应用，若开启任意一个，返回true
+// 1、系统内已安装多个辅助应用，若都没有开启，返回false。
+// 2、系统内已安装多个辅助应用，若开启任意一个，返回true。
 let status: boolean = accessibility.isOpenAccessibilitySync();
 ```
 
@@ -3507,7 +3507,7 @@ struct Index {
 
   build() {
     Column() {
-      // 待聚焦组件添加id属性，id唯一性由使用者保证
+      // 待聚焦组件添加id属性，id唯一性由使用者保证。
       Button('待聚焦组件').id('click')
     }
   }
@@ -3521,7 +3521,7 @@ let eventInfo: accessibility.EventInfo = ({
   type: 'requestFocusForAccessibility',
   bundleName: 'com.example.MyApplication',
   triggerAction: 'common',
-  customId: 'click' // 对应待聚焦组件id属性值
+  customId: 'click' // 对应待聚焦组件id属性值。
 });
 
 accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
