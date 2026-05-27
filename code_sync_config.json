@@ -4783,5 +4783,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/distributedservice/abilityconnectmanager-guidelines.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/ArkTS-Sta/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":150,
+						"name":"sta_abilityconnectionmanager_on",
+						"start_line":113
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":236,
+						"name":"disconnect",
+						"start_line":218
+					}
+				]
+			}
+		]
 	}
 ]
