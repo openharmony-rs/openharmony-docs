@@ -7,7 +7,7 @@
 <!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[瀑布流组件](ts-container-waterflow.md)的子组件，用来展示瀑布流具体item。
+瀑布流组件[WaterFlow](ts-container-waterflow.md)的子组件，用来展示瀑布流具体item。
 
 
 > **说明：**

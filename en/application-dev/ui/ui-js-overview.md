@@ -34,3 +34,12 @@ ArkUI with the JavaScript-compatible web-like development paradigm consists of t
 - **Porting Layer**
 
   Abstracts the platform layer to provide abstract APIs to connect to the platform. For example, event interconnection, rendering pipeline interconnection, and lifecycle interconnection.
+
+
+## ArkUI.Full and ArkUI.Lite
+
+The JS-compatible web-like development paradigm is divided into two versions based on functional completeness and applicable scenarios: ArkUI.Full and ArkUI.Lite. ArkUI.Lite is a subset of ArkUI.Full. ArkUI.Full includes all capabilities of ArkUI.Lite while providing additional components and features. You can choose the appropriate version based on the complexity and resource requirements of your applications.
+
+- **ArkUI.Full**: The complete web-like development paradigm, offering comprehensive UI development capabilities. It supports full container components, basic components, media components, canvas components, grid components, SVG components, and custom components. Designed for devices such as smartphones and tablets, it is suitable for developing feature-rich, highly interactive applications.<!--RP2--><!--RP2End-->
+
+- **ArkUI.Lite**: A lightweight web-like development paradigm, which is a subset of ArkUI.Full. It only supports a selection of core container components, basic components, and basic canvas components. Designed for resource-constrained small devices such as sports watches, it is suitable for lightweight application development.<!--RP3--><!--RP3End-->

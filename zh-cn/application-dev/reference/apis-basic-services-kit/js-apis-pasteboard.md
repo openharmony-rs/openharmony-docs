@@ -1070,6 +1070,7 @@ addRecord(mimeType: string, value: ValueType): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 12900002 | The number of records exceeds the upper limit, <br>**适用版本：** 9 - 9 |
 
 **示例：**
 
@@ -1960,7 +1961,7 @@ getData(callback: AsyncCallback&lt;PasteData&gt;): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**适用版本：** 12+ |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
 **示例：**
@@ -2003,7 +2004,7 @@ getData(): Promise&lt;PasteData&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -2565,7 +2566,7 @@ getDataSync(): PasteData
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. since API version 12. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. <br>**适用版本：** 12+ |
 
 **示例：**
 
@@ -2868,6 +2869,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API, <br>**适用版本：** 12 - 13 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 12900006 | Settings already exist. |
 
@@ -2900,6 +2902,7 @@ removeAppShareOptions(): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API, <br>**适用版本：** 12 - 13 |
 
 **示例：**
 
@@ -2938,7 +2941,7 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| patterns | [Array&lt;Pattern&gt;](#pattern13) | 是 | 需要在剪贴板中检测的模式。 |
+| patterns | Array&lt;[Pattern](#pattern13)&gt; | 是 | 需要在剪贴板中检测的模式。 |
 
 **返回值：**
 

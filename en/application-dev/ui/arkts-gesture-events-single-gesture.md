@@ -338,7 +338,7 @@ export struct Pinch {
             PinchGesture({ fingers: 3 })
               .onActionStart((event: GestureEvent | undefined) => {
                 console.info('Pinch start');
-              // When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
+              })// When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
               .onActionUpdate((event: GestureEvent | undefined) => {
                 if (event) {
                   this.scaleValue = this.pinchValue * event.scale;
@@ -435,7 +435,7 @@ export struct Rotation {
 ```
 
 
-![rotation](figures/rotation.png)
+
 
 
 ## Swipe Gesture (SwipeGesture)

@@ -90,26 +90,39 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 **注解使用示例：**
 
-预置条件：工程根目录下build-profile.json5文件设置的compatibleSdkVersion值为20。
+<!--RP2-->
+兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
+<!--RP2End-->
+
+权限告警消除预置条件：module.json5配置文件的requestPermissions标签中没有申请权限。
+
+> **说明：**
+>
+> 用于容器节点时，会屏蔽节点下子节点产生的告警
+>
+> 重复规则屏蔽时，仅生效最近的符合规则的屏蔽类型
 
   ```typescript
-  import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
+  import { SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { common } from '@kit.AbilityKit';
-  import { wifiManager } from '@kit.ConnectivityKit';
-  wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
+  import { systemDateTime } from '@kit.BasicServicesKit';
+  // 兼容性告警消除部分
+  systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
   @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
   function myFunc() {
-    wifiManager.startScan(); // 使用@SuppressWarnings注解后，告警被抑制。
+    systemDateTime.getAutoTimeStatus(); // 使用@SuppressWarnings注解后，兼容性告警被抑制。用于myFunc()容器节点时，子节点的兼容性告警也被抑制。
   }
 
   @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
   class MyClass {
-    wifiScanResult = wifiManager.startScan(); // 使用@SuppressWarnings注解后，告警被抑制。
+    status = systemDateTime.getAutoTimeStatus(); // 使用@SuppressWarnings注解后，兼容性告警被抑制。
   }
 
+
+  // 权限告警消除部分
   async function savePhotoToGallery(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
@@ -117,9 +130,16 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   }
 
   @SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
+  async function savePhotoToGallerySuppressCompatibility(context: common.UIAbilityContext) {
+    let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]}) // 如果同时存在两种屏蔽内容，仅生效最近的抑制类型。（兼容性告警被抑制，权限告警仍然存在）
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，兼容性告警被抑制，权限告警仍然存在。
+  }
+
+  @SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
   async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
-    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，告警被抑制。
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，权限告警被抑制。
   }
   ```
 
@@ -132,32 +152,46 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 > 仅支持单行注释(//)格式，示例：// @SuppressWarnings compatibility
 >
 > 不支持多行注释(/\*\*/)格式，示例：/\* @SuppressWarnings compatibility */
+>
+> 不支持屏蔽容器节点下的子节点
 
 **注释使用示例：**
 
-预置条件：工程根目录下build-profile.json5文件设置的compatibleSdkVersion值为20。
+<!--RP3-->
+兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
+<!--RP3End-->
+
+权限告警消除预置条件：module.json5配置文件的requestPermissions标签中没有申请权限。
 
   ```typescript
-  import { Available } from '@kit.BasicServicesKit';
-  import { wifiManager } from '@kit.ConnectivityKit';
+  import { systemDateTime } from '@kit.BasicServicesKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { common } from '@kit.AbilityKit';
-  wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
+  // 兼容性告警消除部分
+  systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
   // @SuppressWarnings compatibility
-  wifiManager.startScan(); // 使用@SuppressWarnings注释后，告警被抑制。
+  systemDateTime.getAutoTimeStatus();  // 使用@SuppressWarnings注释后，兼容性告警被抑制。
 
+
+  // 权限告警消除部分
   async function savePhotoToGallery(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+    // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
+  }
+  // @SuppressWarnings permission
+  async function savePhotoToGallerySuppressNoUse(context: common.UIAbilityContext) {
+    let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用注释后，容器内子节点的告警不支持消除，仍会产生告警
     // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
   }
 
   async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
     // @SuppressWarnings permission
-    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注释后，告警被抑制。
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注释后，权限告警被抑制。
   }
   ```
 

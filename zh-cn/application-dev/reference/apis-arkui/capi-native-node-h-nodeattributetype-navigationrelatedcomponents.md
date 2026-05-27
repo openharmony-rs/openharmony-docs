@@ -415,7 +415,8 @@ NODE_SWIPER_PREV_MARGIN = 1001015
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 前边距数值，单位为vp。.value[1].i32：是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
+| .value[0].f32 | 前边距数值，单位为vp。 |
+| .value[1].i32 | 是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
 
 ## NODE_SWIPER_NEXT_MARGIN
 
@@ -440,7 +441,8 @@ NODE_SWIPER_NEXT_MARGIN = 1001016
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 后边距数值，单位为vp。.value[1].i32：是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
+| .value[0].f32 | 后边距数值，单位为vp。 |
+| .value[1].i32 | 是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
 
 ## NODE_SWIPER_INDICATOR
 
@@ -542,7 +544,7 @@ NODE_SWIPER_PAGE_FLIP_MODE = 1001021
 ```
 
 设置组件鼠标滚轮翻页模式。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下，作为属性获取方法返回值[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)格式如下。
 
 **起始版本：** 15
 
@@ -551,7 +553,12 @@ NODE_SWIPER_PAGE_FLIP_MODE = 1001021
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置组件鼠标滚轮翻页模式，参数类型[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)。<br>属性获取方法返回值[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)格式： |
+| .value[0].i32 | 设置组件鼠标滚轮翻页模式，参数类型[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | 鼠标滚轮翻页模式。 |
 
 ## NODE_SWIPER_AUTO_FILL

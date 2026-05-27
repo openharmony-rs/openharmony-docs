@@ -22,7 +22,7 @@ key(value: string): T
 
 组件的唯一标识，唯一性由使用者保证。与[id](ts-securitycomponent-attributes.md#id15)同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。
 
-此接口仅用于对应用的测试。
+此接口仅用于对应用的测试，用于验证安全控件的属性设置和交互行为，在生产环境中应使用公开接口[id](ts-securitycomponent-attributes.md#id15)。
 
 **系统接口：** 此接口为系统接口。
 

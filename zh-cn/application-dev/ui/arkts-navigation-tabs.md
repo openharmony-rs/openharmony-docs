@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -98,7 +98,7 @@ Tabs() {
 ![底部导航](figures/底部导航.gif)
 
 
-导航栏位置使用Tabs的barPosition参数进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
+导航栏位置使用Tabs的[barPosition](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabsoptions15)属性进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
 
 
 <!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
@@ -110,7 +110,7 @@ Tabs({ barPosition: BarPosition.End }) {
 }
 ```
 
-底部导航栏可通过设置TabContent的[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)来实现底部页签样式，详细示例请参考：[示例9（设置底部页签使用symbol图标）](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#示例9设置底部页签使用symbol图标)。
+底部导航栏可通过设置TabContent的[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)来实现底部页签样式，详细示例请参考：[示例8（设置底部页签使用symbol图标）](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#示例8设置底部页签使用symbol图标)。
 
 
 ## 顶部导航
@@ -176,7 +176,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 ![限制导航](figures/限制导航.gif)
 
 
-控制滑动切换的属性为scrollable，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
+控制滑动切换的属性为[scrollable](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#scrollable)，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
 
 <!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
@@ -461,7 +461,7 @@ Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.
 
 >  **说明：** 
 >
-> 弹窗只适用于底部页签BottomTabBarStyle。
+> 弹窗只适用于底部页签[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)。
 
 **图14** 在适老化场景下通过长按底部页签显示适老化弹窗。
 

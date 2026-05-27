@@ -49,6 +49,21 @@
 **取值：** "usual.event.PACKAGE_INSTALLATION_STARTED"
 
 
+### COMMON_EVENT_DYNAMIC_ICON_CHANGED<sup>12+</sup>
+
+表示应用动态图标发生变化的公共事件。
+
+在应用的动态图标发生变更时，会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.DYNAMIC_ICON_CHANGED"
+
+
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
 
 表示包管理资源数据刷新的公共事件。

@@ -1,4 +1,4 @@
-# @ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)（系统接口）
+# @ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->

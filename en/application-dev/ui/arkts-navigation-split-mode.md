@@ -12,19 +12,19 @@
 
 ### mode
 
-The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9) attribute is used to control the display mode of **Navigation**. Three modes are available: single-column, split-view, and adaptive.
+The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9) attribute is used to control the display mode of **Navigation**. Four modes are available: single-column, split-view, adaptive, and aspect ratio–based adaptive.
 
-  **Figure 1** Single-column layout (NavigationMode.Stack)
+**Figure 1** Single-column layout (NavigationMode.Stack)
 
 ![img](figures/NavigationModeStack.png)
 
-  **Figure 2** Split-view layout (NavigationMode.Split)
+**Figure 2** Split-view layout (NavigationMode.Split)
 
 ![img](figures/NavigationModeSplit.png)
 
-  **Figure 3** Adaptive layout (NavigationMode.Auto)
+**Figure 3** Adaptive layout (NavigationMode.Auto)
 
-![img](figures/NavigationModeAuto.gif)
+
 
 ### navBarPosition
 
@@ -148,7 +148,7 @@ struct NewsDetail {
       }
     }
     .title(this.title)
-    .backgroundColor('# fff6e3c8')
+    .backgroundColor('#fff6e3c8')
     .onReady((ctx: NavDestinationContext) => {
       // Obtain the passed page parameters via the onReady lifecycle.
       let param = ctx.pathInfo.param as NewsItem;
@@ -187,7 +187,7 @@ struct NewsHome {
           Column() {
             Text(`${item.title}`).margin(15).fontSize(25).fontColor(Color.Black)
             Text(`${item.overview}`).fontSize(13).fontColor(Color.Gray)
-          }.margin({bottom: 15}).backgroundColor('# eeeeee').width('100%')
+          }.margin({bottom: 15}).backgroundColor('#eeeeee').width('100%')
           .borderRadius(15).height(120).onClick(() => {
             // When a user taps a news label, a NavDestination page is pushed to the right subpage to display the news details.
             this.stack?.pushPath({name: 'NewsDetail', param: item})
@@ -231,4 +231,4 @@ struct Index {
 
 **Figure 10** Final effect
 
-![img](figures/NavigationSplitModeExample.gif)
+

@@ -1,4 +1,4 @@
-# @ohos.systemParameter (系统属性)（系统接口）
+# @ohos.systemParameter (系统属性)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->

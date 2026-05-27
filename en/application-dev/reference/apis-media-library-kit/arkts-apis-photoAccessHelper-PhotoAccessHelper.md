@@ -2348,22 +2348,22 @@ For details about how to create a phAccessHelper instance, see the example provi
 
 ```ts
 private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MedialibraryAvailability
+  changeData: photoAccessHelper.MediaLibraryAvailability
 ) => void;
 
-onMedialibraryAvailability = async () => {
+onMediaLibraryAvailability = async () => {
   try {
     this.handleMediaLibraryChange = (
-      changeData: photoAccessHelper.MedialibraryAvailability
+      changeData: photoAccessHelper.MediaLibraryAvailability
     ) => {
       const availabilityStatus = changeData.availabilityStatus;
       const unavailabilityReason = changeData.unavailabilityReason;
       console.info(`Media library status changed: status=${availabilityStatus}, reason=${unavailabilityReason}`);
     };
-    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
+    this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
     console.info('Media library listener registered successfully.');
   } catch (err) {
-    console.error(`onMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+    console.error(`onMediaLibraryAvailability failed::${err.code}, ${err.message} !`);
   }
 };
 ```
@@ -2403,16 +2403,16 @@ For details about how to create a phAccessHelper instance, see the example provi
 
 ```ts
 private handleMediaLibraryChange?: (
-  changeData: photoAccessHelper.MedialibraryAvailability
+  changeData: photoAccessHelper.MediaLibraryAvailability
 ) => void;
 
-offMedialibraryAvailability1 = async () => {
+offMediaLibraryAvailability = async () => {
   try {
-    await this.helper.onMedialibraryAvailability(this.handleMediaLibraryChange);
-    await this.helper.offMedialibraryAvailability(this.handleMediaLibraryChange);
+    this.helper.onMediaLibraryAvailability(this.handleMediaLibraryChange);
+    this.helper.offMediaLibraryAvailability(this.handleMediaLibraryChange);
     console.info('Media library listener unregistered successfully.');
   } catch (err) {
-    console.error(`offMedialibraryAvailability failed::${err.code}, ${err.message} !`);
+    console.error(`offMediaLibraryAvailability failed::${err.code}, ${err.message} !`);
   }
 };
 ```

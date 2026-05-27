@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
 
@@ -240,7 +240,7 @@ killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
 
 **返回值：**
 
@@ -287,7 +287,7 @@ killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCal
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
+| accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getcreatedosaccountscountdeprecated)。 |
 | callback | AsyncCallback\<void\> | 是 | 回调函数，当切断account进程成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -464,4 +464,90 @@ clearUpApplicationData(bundleName: string): Promise\<void>
     .catch((err: BusinessError) => {
       console.error(`ClearUpApplicationData failed, error code: ${err.code}, error msg: ${err.message}.`);
     });
+  ```
+
+## appManager.getProcessRunningInformation<sup>(deprecated)</sup>
+
+getProcessRunningInformation(): Promise\<Array\<ProcessRunningInfo>>
+
+获取有关运行进程的信息。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)替代。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口**：此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | Promise对象，返回有关运行进程的信息。 |
+
+**错误码**：
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. |
+
+**示例：**
+    
+  ```ts
+  import appManager from '@ohos.application.appManager';
+  import { BusinessError } from '@ohos.base';
+
+  appManager.getProcessRunningInformation().then((data) => {
+    console.info(`The process running infos is: ${JSON.stringify(data)}`);
+  }).catch((error: BusinessError) => {
+    console.error(`error: ${JSON.stringify(error)}`);
+  });
+  ```
+
+## appManager.getProcessRunningInformation<sup>(deprecated)</sup>
+
+getProcessRunningInformation(callback: AsyncCallback\<Array\<ProcessRunningInfo>>): void
+
+获取有关运行进程的信息。使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[appManager.getRunningProcessInformation](js-apis-app-ability-appManager.md#appmanagergetrunningprocessinformation)替代。
+
+**需要权限**：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback\<Array\<[ProcessRunningInfo](js-apis-inner-application-processRunningInfo.md)>> | 是 | 回调函数，返回有关运行进程的信息。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. |
+
+**示例：**
+    
+  ```ts
+  import appManager from '@ohos.application.appManager';
+
+  appManager.getProcessRunningInformation((error, data) => {
+    if (error && error.code !== 0) {
+      console.error(`getProcessRunningInformation fail, error: ${JSON.stringify(error)}`);
+    } else {
+      console.info(`getProcessRunningInformation success, data: ${JSON.stringify(data)}`);
+    }
+  });
   ```

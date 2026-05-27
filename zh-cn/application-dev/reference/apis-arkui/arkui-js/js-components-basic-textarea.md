@@ -74,7 +74,7 @@
 | share<sup>5+</sup>        | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现分享按钮，点击分享按钮之后，触发该回调，返回选中的文本内容。 |
 | search<sup>5+</sup>       | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现搜索按钮，点击搜索按钮之后，触发该回调，返回选中的文本内容。 |
 | optionselect<sup>5+</sup> | {&nbsp;index:optionIndex,&nbsp;value:&nbsp;selectedText&nbsp;} | 文本选择弹窗中设置menuoptions属性后，用户在文本选择操作后，点击菜单项后触发该回调，返回点击的菜单项序号和选中的文本内容。 |
-| selectchange<sup>6+</sup> | {&nbsp;start:&nbsp;number，end:&nbsp;number&nbsp;} | 文本选择变化时触发事件。                             |
+| selectchange<sup>6+</sup> | {&nbsp;start:&nbsp;number,&nbsp;end:&nbsp;number&nbsp;} | 文本选择变化时触发事件。                             |
 
 
 ## 方法

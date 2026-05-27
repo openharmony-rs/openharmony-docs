@@ -1,8 +1,8 @@
 # Audio Kit简介
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -124,4 +124,4 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
 - [音频管理（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio)
 
-<!--PR1--><!--PR1End-->
+<!--RP1--><!--RP1End-->

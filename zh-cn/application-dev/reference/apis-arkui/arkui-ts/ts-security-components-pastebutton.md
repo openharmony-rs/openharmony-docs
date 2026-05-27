@@ -27,6 +27,8 @@ PasteButton()
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -39,6 +41,8 @@ PasteButton(options: PasteButtonOptions)
 
 为避免因控件样式不合法而导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -47,11 +51,11 @@ PasteButton(options: PasteButtonOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [PasteButtonOptions](#pastebuttonoptions) | 是 | 创建包含指定元素的粘贴控件。<br/>默认值：<br/>{<br/>icon: PasteIconStyle.LINES,<br/>text: PasteDescription.PASTE,<br/>buttonType: ButtonType.Capsule <br/>} |
+| options | [PasteButtonOptions](#pastebuttonoptions) | 是 | 粘贴控件的配置选项，用于指定图标、文本和按钮类型等元素属性。<br/>默认值：<br/>{<br/>icon: PasteIconStyle.LINES,<br/>text: PasteDescription.PASTE,<br/>buttonType: ButtonType.Capsule <br/>}  |
 
 ## PasteButtonOptions
 
-用于指定粘贴控件的图标、文本等指定元素。
+用于设置粘贴控件的图标、文本、按钮类型等属性。
 
 > **说明：**
 >
@@ -63,7 +67,9 @@ PasteButton(options: PasteButtonOptions)
 >     - PasteDescription默认样式为PASTE。
 >
 >     - ButtonType默认样式为Capsule。
-> - icon、text和buttonType不支持动态修改。
+> - icon、text和buttonType不支持动态修改。这是因为安全控件的样式和属性在创建时已通过系统校验，动态修改可能导致控件样式不符合安全控件规范，从而影响授权的有效性。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -73,7 +79,7 @@ PasteButton(options: PasteButtonOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | icon | [PasteIconStyle](#pasteiconstyle) | 否 | 是 | 设置粘贴控件的图标风格。<br/>不传入该参数表示没有图标。 |
 | text | [PasteDescription](#pastedescription) | 否 | 是 | 设置粘贴控件的文本描述。<br/>不传入该参数表示没有文字描述。 |
-| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | 否 | 是 | 设置粘贴控件的背景样式。<br/>不传入该参数，系统默认提供Capsule类型按钮。 |
+| buttonType | [ButtonType](ts-securitycomponent-attributes.md#buttontype) | 否 | 是 | 设置粘贴控件的背景样式。<br/>不传入该参数，系统默认提供Capsule类型按钮。<br/>**注意：** 按钮样式需符合安全控件约束，详见[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。 |
 
 ## 属性
 
@@ -82,6 +88,8 @@ PasteButton(options: PasteButtonOptions)
 ## PasteIconStyle
 
 粘贴控件的图标风格。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -95,6 +103,8 @@ PasteButton(options: PasteButtonOptions)
 
 粘贴控件的文本描述。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -106,6 +116,8 @@ PasteButton(options: PasteButtonOptions)
 ## PasteButtonOnClickResult
 
 粘贴控件点击后的授权结果。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -122,6 +134,8 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 
 点击粘贴控件触发该回调。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -130,9 +144,9 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| event | [ClickEvent](ts-universal-events-click.md#clickevent) |是 |见ClickEvent对象说明。|
+| event | [ClickEvent](ts-universal-events-click.md#clickevent) |是 |点击事件对象，包含点击的位置、时间戳、输入设备等信息。详细信息请参考ClickEvent对象说明。|
 | result | [PasteButtonOnClickResult](#pastebuttononclickresult)| 是 | 剪贴板权限的授权结果，授权后可以读取当前剪贴板内容。|
-| error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。<br>错误码0表示点击粘贴控件授权成功。<br>错误码1表示系统内部错误。<br>错误码2表示属性设置错误，包括但不限于：<br>1. 字体或图标设置过小。<br>2. 字体或图标与背托颜色相近。<br>3. 字体或图标颜色过于透明。<br>4. padding为负值。<br>5. 按钮被其他组件或窗口遮挡。<br>6. 文本超出背托范围。<br>7. 按钮超出窗口或屏幕。<br>8. 按钮整体尺寸过大。<br>9. 按钮文本被截断，显示不全。<br>10. 相关属性设置影响安全控件显示。|
+| error | [BusinessError&lt;void&gt;](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否 | 点击按钮时的错误码和错误信息。错误码0表示无错误，授权结果需通过result参数判断。<br>错误码1表示系统内部错误。<br>错误码2表示属性设置错误，包括但不限于：<br>1. 字体或图标设置过小。<br>2. 字体或图标与背托颜色相近。<br>3. 字体或图标颜色过于透明。<br>4. padding为负值。<br>5. 按钮被其他组件或窗口遮挡。<br>6. 文本超出背托范围。<br>7. 按钮超出窗口或屏幕。<br>8. 按钮整体尺寸过大。<br>9. 按钮文本被截断，显示不全。<br>10. 部分安全控件相关属性的设置导致控件无法正常显示。|
 
 ## 事件
 
@@ -142,7 +156,9 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 
 onClick(event: PasteButtonCallback)
 
-点击动作触发该回调。
+点击动作触发该回调，回调返回授权结果，授权成功后应用可读取剪贴板内容。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -152,7 +168,7 @@ onClick(event: PasteButtonCallback)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| event | [PasteButtonCallback](#pastebuttoncallback18) |是 |见PasteButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [PasteButtonOnClickResult](#pastebuttononclickresult)) => void。<br>从API18开始，变更为PasteButtonCallback。|
+| event | [PasteButtonCallback](#pastebuttoncallback18) |是 | 点击事件的回调函数，用于处理粘贴控件点击后的授权结果。见PasteButtonCallback。<br>在API10-17时，参数类型为：(event: [ClickEvent](ts-universal-events-click.md#clickevent), result: [PasteButtonOnClickResult](#pastebuttononclickresult)) => void。<br>从API18开始，变更为PasteButtonCallback。|
 
 ## 示例
 
