@@ -2919,7 +2919,7 @@ netCon.register((error: BusinessError) => {
 
 // 使用unregister接口取消订阅网络可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(`Failed to unregister.Code:${err.code},message:${err.code}`);
+  console.error(`Failed to unregister.Code:${error.code},message:${error.message}`);
 });
 ```
 
