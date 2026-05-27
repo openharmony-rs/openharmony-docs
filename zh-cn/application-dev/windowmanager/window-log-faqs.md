@@ -180,7 +180,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 窗口触摸区域异常
 - `TouchHotAreas`尺寸异常：触摸热区设置错误。
 - 与`WindowRect`对比，确认是否正确设置
-`<!--DelEnd-->
+<!--DelEnd-->
 
 ### 定位思路
 
@@ -201,7 +201,9 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
    - 确认操作是否生效
 
 4. 关注关键属性：
+   <!--Del-->
    - VisibilityState：确认窗口是否显示
+   <!--DelEnd-->
    - ZOrder：确认层级关系
    - WindowRect：确认窗口大小和位置
 
