@@ -140,7 +140,7 @@ Cancels a reminder published. This API uses an asynchronous callback to return t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| reminderId | number | Yes| ID of the agent-powered reminder to be canceled. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+| reminderId | number | Yes| ID of the agent-powered reminder to be canceled. The reminder ID is returned when the [reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder) API is called.|
 | callback | AsyncCallback\<void> | Yes| Callback used to return the result. If all the reminders are canceled, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -181,7 +181,7 @@ Cancels a reminder published. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| reminderId | number | Yes| ID of the agent-powered reminder to be canceled. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+| reminderId | number | Yes| ID of the agent-powered reminder to be canceled. The reminder ID is returned when the [reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder) API is called.|
 
 **Return value**
 
@@ -642,7 +642,7 @@ Adds a non-reminder date for a recurring calendar reminder with a specific ID. F
 
 | Name    | Type  | Mandatory| Description                              |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | Yes  | ID of the agent-powered reminder to be added. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+| reminderId | number | Yes  | ID of the agent-powered reminder to be added. The reminder ID is returned when the [reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder) API is called.|
 | date       | Date   | Yes  | Non-reminder date.                    |
 
 **Return value**
@@ -688,7 +688,7 @@ Deletes all non-reminder dates for a recurring calendar reminder with a specific
 
 | Name    | Type  | Mandatory| Description                              |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | Yes  | ID of the agent-powered reminder to be removed. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+| reminderId | number | Yes  | ID of the agent-powered reminder to be deleted. The reminder ID is returned when the [reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder) API is called.|
 
 **Return value**
 
@@ -731,7 +731,7 @@ Obtains all non-reminder dates for a recurring calendar reminder with a specific
 
 | Name    | Type  | Mandatory| Description                              |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | Yes  | ID of the agent-powered reminder to be queried. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+| reminderId | number | Yes  | ID of the agent-powered reminder to be queried. The reminder ID is returned when the [reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder) API is called.|
 
 **Return value**
 
@@ -779,7 +779,7 @@ Updates the agent-powered reminder with the specified ID. This API uses a promis
 
 | Name    | Type  | Mandatory| Description                              |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | Yes  | ID of the agent-powered reminder to be updated. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+| reminderId | number | Yes  | ID of the agent-powered reminder to be updated. The reminder ID is returned when the [reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder) API is called.|
 | reminderReq | [ReminderRequest](#reminderrequest) | Yes  | Request instance used to set detailed information such as the reminder type and ringing duration.|
 
 **Return value**
@@ -829,7 +829,7 @@ Cancels the notification card displayed in the notification center with the agen
 
 | Name    | Type  | Mandatory| Description                              |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | Yes  | ID of the agent-powered reminder to be canceled. The reminder ID is returned when the [publishReminder](#reminderagentmanagerpublishreminder) API is called.|
+| reminderId | number | Yes  | ID of the agent-powered reminder to be canceled. The reminder ID is returned when the [reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder) API is called.|
 
 **Return value**
 
