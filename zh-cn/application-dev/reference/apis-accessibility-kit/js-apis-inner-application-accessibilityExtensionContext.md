@@ -800,10 +800,6 @@ axContext.injectGestureSync(gesturePath);
 
 无障碍节点元素，在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
-
 ### attributeNames<sup>(deprecated)</sup>
 
 attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>

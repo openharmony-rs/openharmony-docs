@@ -116,13 +116,13 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'setText'                 | 表示设置文本操作，需配置参数setText。 |
 | 'delete'                  | 表示删除操作。当前版本暂不支持。   |
 | 'setSelection'            | 表示选择操作，需配置参数selectTextBegin、selectTextEnd、selectTextInForWard。   |
-| 'common'            | 表示没有特定操作，用于主动聚焦、主动播报等场景。   |
-| 'home'                | 表示返回桌面操作。   |
-| 'back'                | 表示返回上一级操作。   |
-| 'recentTask'          | 表示打开最近任务操作。   |
-| 'notificationCenter'      | 表示打开通知栏操作。   |
-| 'controlCenter'       | 表示打开控制中心操作。   |
-| 'setCursorPosition'     | 表示设置光标位置操作，需配置参数offset。   |
+| 'common'<sup>12+</sup>            | 表示没有特定操作，用于主动聚焦、主动播报等场景。   |
+| 'home'<sup>12+</sup>                | 表示返回桌面操作。   |
+| 'back'<sup>12+</sup>                | 表示返回上一级操作。   |
+| 'recentTask'<sup>12+</sup>          | 表示打开最近任务操作。   |
+| 'notificationCenter'<sup>12+</sup>      | 表示打开通知栏操作。   |
+| 'controlCenter'<sup>12+</sup>       | 表示打开控制中心操作。   |
+| 'setCursorPosition'<sup>12+</sup>     | 表示设置光标位置操作，需配置参数offset。   |
 | 'injectAction'    | 表示注入动作，需配置参数injectActionType。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction。<br>**起始版本：** 26.0.0   |
 
@@ -569,8 +569,8 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'textUpdate'              | 表示组件文本已更改的事件。 |
 | 'textSelectionUpdate'     | 表示选定文本已更改的事件，当前版本暂不支持。 |
 | 'scroll'                  | 表示滚动视图的事件。    |
-| 'requestFocusForAccessibility'     | 表示主动聚焦的事件。 |
-| 'announceForAccessibility'         | 表示主动播报的事件。 |
+| 'requestFocusForAccessibility'<sup>12+</sup>     | 表示主动聚焦的事件。 |
+| 'announceForAccessibility'<sup>12+</sup>         | 表示主动播报的事件。 |
 | 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。|
 | 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。|
 | 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
