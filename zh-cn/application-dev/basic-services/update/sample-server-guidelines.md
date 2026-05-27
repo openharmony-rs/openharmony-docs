@@ -28,29 +28,29 @@
 
    生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
 
-    ```shell
+   ```shell
     openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out serverCert.cer -subj "/C=CN/ST=GD/L=GZ/O=abc/OU=defg/CN=hijk/emailAddress=test.com"
-    ```
+   ```
 
-> **说明**
-> SSL证书用于保障服务器与设备之间的通信安全，证书有效期建议设置为365天以上。
+   **说明**
+   SSL证书用于保障服务器与设备之间的通信安全，证书有效期建议设置为365天以上。
 
 2. 修改bundle.json。
 
    在build字段新增一个sub_component。
 
-    ```json
+   ```json
     "sub_component": [
-        "//base/update/updateservice/server_sample:testserver",
-        ...
+      "//base/update/updateservice/server_sample:testserver",
+      ...
     ],
-    ```
+   ```
 
 3. 建立代码目录。
 
    进入到update_updateservice目录下，执行以下命令，建立代码目录。
 
-    ```shell
+   ```shell
     mkdir server_sample                            // 建立示例服务器server_sample目录
     touch server_sample/BUILD.gn                   // 创建BUILD.gn编译文件
     mkdir server_sample/include                    // 建立示例服务器头文件include目录
@@ -58,58 +58,58 @@
     mkdir server_sample/src                        // 建立示例服务器c/c++文件src目录
     touch server_sample/src/server_process.c       // 创建server_process.c文件
     touch server_sample/src/main.cpp               // 创建main.cpp文件
-    ```
+   ```
 
 4. 编写编译文件BUILD.gn。
 
    文件BUILD.gn一共编译两个ohos组件，一个是ohos_shared_library库文件libserver_process.z.so，另一个是ohos_executable可执行文件testserver。
 
-    ```gn
+   ```gn
     import("//build/ohos.gni")
 
     ohos_shared_library("server_process") {
-        sources = [
-            "//base/update/updateservice/server_sample/src/server_process.c",
-        ]
+      sources = [
+        "//base/update/updateservice/server_sample/src/server_process.c",
+      ]
 
-        include_dirs = [
-            "//base/update/updateservice/server_sample/include",
-            "//third_party/openssl/include",
-        ]
+      include_dirs = [
+        "//base/update/updateservice/server_sample/include",
+        "//third_party/openssl/include",
+      ]
 
-        deps = [
-            "//base/update/updater/services/log:libupdaterlog",
-            "//third_party/bounds_checking_function:libsec_static",
-            "//third_party/openssl:crypto_source",
-            "//third_party/openssl:ssl_source",
-            "//utils/native/base:utils",
-        ]
+      deps = [
+        "//base/update/updater/services/log:libupdaterlog",
+        "//third_party/bounds_checking_function:libsec_static",
+        "//third_party/openssl:crypto_source",
+        "//third_party/openssl:ssl_source",
+        "//utils/native/base:utils",
+      ]
 
-        part_name = "update_service"
+      part_name = "update_service"
     }
 
     ohos_executable("testserver") {
-        sources = [
-            "//base/update/updateservice/server_sample/src/main.cpp",
-        ]
+      sources = [
+        "//base/update/updateservice/server_sample/src/main.cpp",
+      ]
 
-        include_dirs = [
-            "//base/update/updateservice/server_sample/include",
-        ]
+      include_dirs = [
+        "//base/update/updateservice/server_sample/include",
+      ]
 
-        deps = [
-            "//base/update/updateservice/server_sample:server_process",
-        ]
+      deps = [
+        "//base/update/updateservice/server_sample:server_process",
+      ]
 
-        part_name = "update_service"
+      part_name = "update_service"
     }
-    ```
+   ```
 
 5. 编写头文件server_process.h。
 
    文件server_process.h声明了示例服务器的接口。
 
-    ```c++
+   ```c++
     #ifndef __SERVER_PROCESS_H__
     #define __SERVER_PROCESS_H__
 
@@ -149,13 +149,13 @@
     int Close();
 
     #endif // __SERVER_PROCESS_H__
-    ```
+   ```
 
 6. 编写server_process.c、main.cpp。
 
    文件server_process.c主要声明了服务器的返回报文格式respondContent，main.cpp可参考普通SSL协议的服务器编写，注意包含相关头文件，同时加载serverKey.pem和serverCert.cer两个证书。
 
-    ```c
+   ```c
     #include "server_process.h"
 
     #include <netinet/in.h>
@@ -198,7 +198,7 @@
             "\"content\": \"This package message is used for sampleContent\""
         "}]"
     "}";
-    ```
+   ```
 
 7. 编译输出产物。
 
@@ -212,9 +212,9 @@
 
    建议在开发板上新建一个纯英文路径，然后将testserver、libserver_process.z.so、serverCert.cer和serverKey.pem放到同一个目录下，进入该目录，执行以下启动命令即可启动搜包服务器。
 
-    ```shell
+   ```shell
     ./testserver ./libserver_process.z.so &
-    ```
+   ```
 
 ## 调试说明
 
@@ -228,6 +228,6 @@
 
 4. **日志查看**：服务器运行日志可通过logcat或串口日志查看，关键接口调用会打印`[ServerProcess]`前缀的日志信息。
 
-> **说明**
->
-> 示例服务器仅用于开发调试，不建议在生产环境直接使用。生产环境的升级服务器需要根据实际业务需求进行定制开发，包括权限验证、包管理、版本管控等完整功能。
+ **说明**
+
+示例服务器仅用于开发调试，不建议在生产环境直接使用。生产环境的升级服务器需要根据实际业务需求进行定制开发，包括权限验证、包管理、版本管控等完整功能。
