@@ -3620,7 +3620,7 @@ isWlanSupported(): boolean
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | Wi-Fi是否可用。true表示Wi-Fi可用，&nbsp;false表示Wi-Fi不可用。 |
+Wi-Fi是否可用。true 表示 Wi-Fi 可用，&nbsp;false 表示 Wi-Fi 不可用。
 
 **错误码：**
 
