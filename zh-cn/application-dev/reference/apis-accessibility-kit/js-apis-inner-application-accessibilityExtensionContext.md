@@ -1074,51 +1074,55 @@ rootElement.performAction(actionName).then(() => {
 });
 ```
 
-**无参数Action示例：**
+**示例：**
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+- 无参数Action
 
-// rootElement是AccessibilityElement的实例
-// Action描述中无明确要求的，均为无参数Action
-rootElement.performAction('click').then(() => {
-  console.info(`succeeded in performing action.`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
-});
-```
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-**有参数Action示例：**
+  // rootElement是AccessibilityElement的实例
+  // Action描述中无明确要求的，均为无参数Action
+  rootElement.performAction('click').then(() => {
+    console.info(`succeeded in performing action.`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+- 有参数Action（setSelection）
 
-// rootElement是AccessibilityElement的实例
-// setSelection示例代码
-rootElement.performAction('setSelection', {
-  selectTextBegin: '0', // 表示选择起始位置
-  selectTextEnd: '8',   // 表示选择结束位置
-  selectTextInForWard: true   // true表示为前光标，false表示为后光标
-}).then(() => {
-  console.info(`succeeded in performing action`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
-});
-```
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+  // rootElement是AccessibilityElement的实例
+  // setSelection示例代码
+  rootElement.performAction('setSelection', {
+    selectTextBegin: '0', // 表示选择起始位置
+    selectTextEnd: '8',   // 表示选择结束位置
+    selectTextInForWard: true   // true表示为前光标，false表示为后光标
+  }).then(() => {
+    console.info(`succeeded in performing action`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
-// rootElement是AccessibilityElement的实例
-// setCursorPosition示例代码
-rootElement.performAction('setCursorPosition', {
-  offset: '1'   // 表示光标的设置位置
-}).then(() => {
-  console.info(`succeeded in performing action`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
-});
-```
+- 有参数Action（setCursorPosition）
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  // rootElement是AccessibilityElement的实例
+  // setCursorPosition示例代码
+  rootElement.performAction('setCursorPosition', {
+    offset: '1'   // 表示光标的设置位置
+  }).then(() => {
+    console.info(`succeeded in performing action`);
+  }).catch((err: BusinessError) => {
+    console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 ### performAction<sup>(deprecated)</sup>
 
