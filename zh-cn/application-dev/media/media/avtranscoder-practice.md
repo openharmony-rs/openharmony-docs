@@ -143,6 +143,7 @@
        // 转码完成回调函数。
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
+         await transcoder?.release()
          let lastFd = transcoder.fdDst;
  	     if (lastFd != undefined) {
  	       fs.closeSync(lastFd);
@@ -150,11 +151,11 @@
  	     if (fileDescriptor != undefined) {
  	       fs.closeSync(fileDescriptor.fd);
          }
-         await transcoder?.release()
          workerPort.postMessage('complete');
        })
        // 转码错误回调函数。
        transcoder.on('error', async (err: BusinessError) => {
+         await transcoder?.release();
          let lastFd = transcoder.fdDst;
  	     if (lastFd != undefined) {
  	       fs.closeSync(lastFd);
@@ -162,7 +163,6 @@
  	     if (fileDescriptor != undefined) {
  	       fs.closeSync(fileDescriptor.fd);
  	     }
-         await transcoder?.release();
        })
        // 转码进度更新回调函数。
        transcoder.on('progressUpdate', (progress: number) => {
