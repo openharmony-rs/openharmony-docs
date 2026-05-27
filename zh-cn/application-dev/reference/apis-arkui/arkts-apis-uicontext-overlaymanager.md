@@ -366,7 +366,7 @@ removeComponentContent(content: ComponentContent): void
 
 **示例：**
 
-请参考[addComponentContent示例](#addcomponentcontent12)。
+请参考[addComponentContent](#addcomponentcontent12)示例。
 
 ## showComponentContent<sup>12+</sup>
 
@@ -388,7 +388,7 @@ showComponentContent(content: ComponentContent): void
 
 **示例：**
 
-请参考[addComponentContent示例](#addcomponentcontent12)。
+请参考[addComponentContent](#addcomponentcontent12)示例。
 
 ## hideComponentContent<sup>12+</sup>
 
@@ -410,7 +410,7 @@ hideComponentContent(content: ComponentContent): void
 
 **示例：**
 
-请参考[addComponentContent示例](#addcomponentcontent12)。
+请参考[addComponentContent](#addcomponentcontent12)示例。
 
 ## showAllComponentContents<sup>12+</sup>
 
@@ -426,7 +426,7 @@ showAllComponentContents(): void
 
 **示例：**
 
-请参考[addComponentContent示例](#addcomponentcontent12)。
+请参考[addComponentContent](#addcomponentcontent12)示例。
 
 ## hideAllComponentContents<sup>12+</sup>
 
@@ -442,4 +442,4 @@ hideAllComponentContents(): void
 
 **示例：**
 
-请参考[addComponentContent示例](#addcomponentcontent12)。
+请参考[addComponentContent](#addcomponentcontent12)示例。
