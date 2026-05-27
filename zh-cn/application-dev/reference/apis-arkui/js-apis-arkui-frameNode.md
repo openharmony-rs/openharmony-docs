@@ -14,8 +14,6 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 当前不支持在预览器中使用FrameNode节点。
 >
 > - FrameNode节点暂不支持拖拽。
@@ -3358,8 +3356,6 @@ adoptChild(child: FrameNode): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 22
@@ -3393,8 +3389,6 @@ removeAdoptedChild(child: FrameNode): void
 移除被接纳的目标附属节点。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
