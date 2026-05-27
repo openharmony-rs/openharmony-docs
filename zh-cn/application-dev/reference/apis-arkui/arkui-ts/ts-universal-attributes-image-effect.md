@@ -198,7 +198,7 @@ shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
 
 ## shadow<sup>23+</sup>
 
-shadow(value: ShadowOptions | ShadowStyle | undefined): this
+shadow(value: ShadowOptions | ShadowStyle | undefined)
 
 为组件添加阴影效果。
 
@@ -280,7 +280,7 @@ grayscale(grayscale: Optional\<number>): T
 
 ## grayscale<sup>23+</sup>
 
-grayscale(value: double | undefined): this
+grayscale(value: double | undefined)
 
 为组件添加灰度效果。
 
@@ -297,12 +297,6 @@ grayscale(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加灰度效果。值定义为灰度转换的比例，入参1.0则完全转为灰度图像，入参0.0则图像无变化，入参在0.0和1.0之间时，效果呈线性变化。<br/>取值范围：[0.0, 1.0]<br/>**说明：**<br/>设置小于0.0的值时，按值为0.0处理，设置大于1.0的值时，按值为1.0处理。<br/>当grayscale的值为undefined时，取默认值0.0。恢复为无灰度效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## brightness
 
@@ -368,7 +362,7 @@ brightness(brightness: Optional\<number>): T
 
 ## brightness<sup>23+</sup>
 
-brightness(value: double | undefined): this
+brightness(value: double | undefined)
 
 为组件添加高光效果。
 
@@ -385,12 +379,6 @@ brightness(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加高光效果，入参为高光比例，值为1时没有效果，小于1时亮度变暗，小于或等于0为全黑，大于1时亮度增加，数值越大亮度越大，亮度大于或等于2时会变为全白。<br/>取值范围：[0, +∞)<br/>推荐取值范围：[0, 2]<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当brightness的值为undefined时，恢复为亮度为1的高光效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## saturate
 
@@ -456,7 +444,7 @@ saturate(saturate: Optional\<number>): T
 
 ## saturate<sup>23+</sup>
 
-saturate(value: double | undefined): this
+saturate(value: double | undefined)
 
 为组件添加饱和度效果。不通过该接口设置时，默认无变化。
 
@@ -473,12 +461,6 @@ saturate(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加饱和度效果，饱和度为颜色中的含色成分和消色成分(灰)的比例，入参为1时，显示原图像，大于1时含色成分越大，饱和度越大，小于1时消色成分越大，饱和度越小。<br/>推荐取值范围：[0, 50)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当saturate的值为undefined时。恢复为饱和度为1的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## contrast
 
@@ -544,7 +526,7 @@ contrast(contrast: Optional\<number>): T
 
 ## contrast<sup>23+</sup>
 
-contrast(value: double | undefined): this
+contrast(value: double | undefined)
 
 为组件添加对比度效果。不通过该接口设置时，默认无变化。
 
@@ -561,12 +543,6 @@ contrast(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 为当前组件添加对比度效果，入参为对比度的值。值为1时，显示原图，大于1时，值越大对比度越高，图像越清晰醒目，小于1时，值越小对比度越低，当对比度为0时，图像变为全灰。<br/>推荐取值范围：[0, 10)<br/>**说明：**<br/>设置小于0的值时，按值为0处理。<br/>当contrast的值为undefined时，恢复为对比度为1的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## invert
 
@@ -632,7 +608,7 @@ invert(options: Optional\<number | InvertOptions>): T
 
 ## invert<sup>23+</sup>
 
-invert(value: double | InvertOptions | undefined): this
+invert(value: double | InvertOptions | undefined)
 
 反转输入的图像。
 
@@ -649,12 +625,6 @@ invert(value: double | InvertOptions | undefined): this
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | double \| &nbsp;[InvertOptions](#invertoptions11对象说明)<sup>11+</sup><br/> \| undefined | 是   | 反转输入的图像。<br/>入参对象为number时,入参为图像反转的比例，值为1时完全反转，值为0则图像无变化。（百分比）<br/>取值范围：[0, 1]。<br/>设置小于0的值时，按值为0处理。设置大于1的值时，按值为1处理。<br/>入参对象为 InvertOptions时，对比背景颜色灰度值和阈值区间，背景颜色灰度值小于阈值区间时反色取high值，当背景颜色灰度值大于阈值区间时反色取low值，背景颜色灰度值在阈值区间内取值由high线性渐变到low。<br/>当value的值为undefined时，恢复为图像无变化的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## sepia
 
@@ -720,7 +690,7 @@ sepia(sepia: Optional\<number>): T
 
 ## sepia<sup>23+</sup>
 
-sepia(value: double | undefined): this
+sepia(value: double | undefined)
 
 将图像转换为深褐色。
 
@@ -737,12 +707,6 @@ sepia(value: double | undefined): this
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | double \| undefined | 是   | 将图像转换为深褐色，降低色彩度，产生温暖复古的图像风格。入参为褐色滤镜强度，值为1则完全是深褐色的，值小于等于0则图像无变化，值大于1会进一步放大色彩偏移比例，图像整体会变得更亮且色彩更加偏黄/偏红，但不属于标准sepia效果。（百分比）<br/>当value的值为undefined时，恢复为图像无变化的效果。<br/>取值范围：[0, +∞)，推荐取值范围：(0, 1]。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## hueRotate
 
@@ -808,7 +772,7 @@ hueRotate(rotation: Optional\<number | string>): T
 
 ## hueRotate<sup>23+</sup>
 
-hueRotate(value: double | string | undefined): this
+hueRotate(value: double | string | undefined)
 
 色相旋转效果。
 
@@ -825,12 +789,6 @@ hueRotate(value: double | string | undefined): this
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
 | value  | double&nbsp;\|&nbsp;string \| undefined | 是   | 色相旋转效果，输入参数为旋转角度。<br/>默认值：'0deg'<br/>取值范围：(-∞, +∞)<br/>**说明：**<br/>色调旋转360度会显示原始颜色。先将色调旋转180 度，然后再旋转-180度会显示原始颜色。数据类型为number时，值为90和'90deg'效果一致。<br/>当value的值为undefined时，恢复为无色相旋转的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## colorBlend
 
@@ -896,7 +854,7 @@ colorBlend(color: Optional\<Color | string | Resource>): T
 
 ## colorBlend<sup>23+</sup>
 
-colorBlend(value: Color | string | Resource | undefined): this
+colorBlend(value: Color | string | Resource | undefined)
 
 为组件添加颜色叠加效果。
 
@@ -913,12 +871,6 @@ colorBlend(value: Color | string | Resource | undefined): this
 | 参数名 | 类型                                                         | 必填 | 说明                                           |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
 | value  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 为当前组件添加颜色叠加效果，入参为叠加的颜色字符串。<br/>当value的值为undefined时，恢复为无颜色叠加的效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## linearGradientBlur<sup>12+</sup> 
 
@@ -984,7 +936,7 @@ linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradi
 
 ## linearGradientBlur<sup>23+</sup> 
 
-linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions | undefined): this
+linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1000,12 +952,6 @@ linearGradientBlur(value: double | undefined, options: LinearGradientBlurOptions
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | double \| undefined                                            | 是   | 为模糊半径，模糊半径越大越模糊，为0时不模糊。<br/>取值范围：[0, 1000]<br/>当value的值为undefined时，恢复为渐变模糊为0的效果。 |
 | options | [LinearGradientBlurOptions](#lineargradientbluroptions12) \| undefined | 是   | 设置线性渐变模糊效果。<br/>当options的值为undefined时，恢复为渐变模糊为0的效果。<br/>线性渐变参数，包含模糊程度和模糊位置数组fractionStops，及渐变模糊方向direction。  |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## renderGroup<sup>10+</sup>
 
@@ -1190,12 +1136,6 @@ blendMode(value: BlendMode | undefined, type?: BlendApplyType)
 | value  | [BlendMode](#blendmode11枚举说明) \| undefined   | 是   | 混合模式。<br/>默认值：BlendMode.NONE<br/>当mode的值为undefined时，恢复为内容不进行混合的效果。<br/>**说明：**<br/>混合模式设置为BlendMode.NONE时，blend效果实际为默认的BlendMode.SRC_OVER，且BlendApplyType不生效。 |
 | type   | [BlendApplyType](#blendapplytype11枚举说明) | 否   | blendMode实现方式是否离屏。<br/>默认值：BlendApplyType.FAST<br/>**说明：**<br/>1. 设置BlendApplyType.FAST时，不离屏。<br/>2. 设置BlendApplyType.OFFSCREEN时，会创建当前组件大小的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再用指定的混合模式与下方画布已有内容进行混合。使用该实现方式时，将导致[linearGradientBlur<sup>12+</sup>](#lineargradientblur12)，[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)，[brightness](#brightness)等需要截屏的接口无法截取到正确的画面。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## BlendApplyType<sup>11+</sup>枚举说明
 
 指示如何将指定的混合模式应用于视图的内容。
@@ -1365,7 +1305,7 @@ sphericalEffect(effect: Optional\<number>): T
 
 ## sphericalEffect<sup>23+</sup>
 
-sphericalEffect(value: double | undefined): this
+sphericalEffect(value: double | undefined)
 
 设置组件的图像球面化程度。
 
@@ -1447,7 +1387,7 @@ lightUpEffect(degree: Optional\<number>): T
 
 ## lightUpEffect<sup>23+</sup> 
 
-lightUpEffect(value: double | undefined): this
+lightUpEffect(value: double | undefined)
 
 设置组件图像亮起程度。
 
@@ -1530,7 +1470,7 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 ## pixelStretchEffect<sup>23+</sup> 
 
-pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
+pixelStretchEffect(options: PixelStretchEffectOptions | undefined)
 
 设置组件的图像边缘像素扩展距离。
 
@@ -1549,12 +1489,6 @@ pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | options | [PixelStretchEffectOptions](#pixelstretcheffectoptions10) \| undefined | 是   | 设置组件的图像边缘像素扩展距离。<br/>参数`options`包括上下左右四个方向的边缘像素扩展距离。<br/>**说明：**<br/>1. 如果距离为正值，表示向外扩展，放大原来图像大小。上下左右四个方向分别用边缘像素填充，填充的距离即为设置的边缘扩展的距离。<br/>2. 如果距离为负值，表示内缩，但是最终图像大小不变。<br/>内缩方式：<br/>图像根据`options`的设置缩小，缩小大小为四个方向边缘扩展距离的绝对值。<br/>图像用边缘像素扩展到原来大小。<br/>3. 对`options`的输入约束：<br/>上下左右四个方向的扩展统一为非正值或者非负值。即四个边同时向外扩或者内缩，方向一致。<br/>所有方向的输入均为百分比或者具体值，不支持百分比和具体值混用。<br/>所有异常情况下，显示为{0, 0, 0, 0}效果，即跟原图保持一致。<br/>当options的值为undefined时，恢复为无像素扩展效果。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
 
 ## PixelStretchEffectOptions<sup>10+</sup>
 
