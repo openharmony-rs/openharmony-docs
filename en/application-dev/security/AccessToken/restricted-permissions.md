@@ -406,7 +406,11 @@ Allows an application to preload files to improve the file opening speed.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: PCs/2-in-1 devices | tablets
+
 **Since**: 15
+
+**Changelog**: Since API version 26.0.0, this permission is also available on tablets.
 
 ## ohos.permission.SET_PAC_URL
 
