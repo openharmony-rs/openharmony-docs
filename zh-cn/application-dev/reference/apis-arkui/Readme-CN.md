@@ -353,6 +353,7 @@
     - [Span](arkui-ts/ts-basic-components-span.md)
     - [ImageSpan](arkui-ts/ts-basic-components-imagespan.md)
     - [ContainerSpan](arkui-ts/ts-basic-components-containerspan.md)
+    - [SelectionContainer](arkui-ts/ts-basic-components-selectioncontainer.md)
     - [SymbolSpan](arkui-ts/ts-basic-components-symbolSpan.md)
     - [SymbolGlyph](arkui-ts/ts-basic-components-symbolGlyph.md)
     - [Hyperlink](arkui-ts/ts-container-hyperlink.md)
