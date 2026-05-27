@@ -1,4 +1,10 @@
 # EffectComponent (系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 特效合并容器组件，用于子节点特效绘制的合并，实现特效的绘制性能优化。
 
