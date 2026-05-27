@@ -27,15 +27,3 @@ PDF文档中预定义的目标位置，可用于直接导航到指定位置。
 ### PDF Document in Application Sandbox；应用沙箱内PDF文档
 
 存储在应用沙箱目录内的PDF文档。
-
-## R
-
-### resource://
-
-资源路径，用于访问应用本地资源文件的路径协议。
-
-## Z
-
-### Zoom Factor；缩放系数
-
-用于控制PDF文档预览时缩放比例的参数值。
