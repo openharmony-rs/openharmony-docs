@@ -188,6 +188,7 @@
         - [绑定全模态页面 (bindContentCover)](arkts-contentcover-page.md)
      - [即时反馈 (Toast)](arkts-create-toast.md)
      - [设置浮层 (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
+  - [沉浸光感](arkts-immersive-light-sense.md)
   - 几何图形绘制<!--arkts-draw-graphics-->
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)
