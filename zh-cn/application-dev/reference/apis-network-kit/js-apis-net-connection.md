@@ -2382,7 +2382,7 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
     console.info(`Succeeded to get ifaceName: ${JSON.stringify(data.iface)}`);
     console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
     console.info(`Succeeded to get ifaceName: ' + JSON.stringify(data.iface));
-    console.info(`Succeeded to get macAddress: ' + JSON.stringify(data.macAddress));
+    console.info('Succeeded to get macAddress: ' + JSON.stringify(data.macAddress));
   }
 }).catch((error: BusinessError) => {
   console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
