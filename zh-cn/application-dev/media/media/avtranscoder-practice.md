@@ -33,7 +33,6 @@
    import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS'
    import { SendableObject } from '../util/SendableObject';
    import { common, sendableContextManager } from '@kit.AbilityKit';
-   import resourceManager from '@ohos.resourceManager';
    ```
 
    ```ts
