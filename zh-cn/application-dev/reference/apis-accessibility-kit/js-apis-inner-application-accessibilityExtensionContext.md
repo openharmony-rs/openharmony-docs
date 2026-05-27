@@ -824,7 +824,7 @@ attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>
 import { ElementAttributeKeys } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
   console.info(`succeeded in getting attribute names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -856,7 +856,7 @@ attributeNames\<T extends keyof ElementAttributeValues>(callback: AsyncCallback\
 import { ElementAttributeKeys } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) => {
   if (err && err.code) {
     console.error(`failed to get attribute names, Code is ${err.code}, message is ${err.message}`);
@@ -909,7 +909,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let attributeName: ElementAttributeKeys = 'bundleName';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.attributeValue(attributeName).then((data: string) => {
   console.info(`succeeded in getting attribute value by name, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -953,7 +953,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let attributeName: ElementAttributeKeys = 'bundleName';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => {
   if (err && err.code) {
     console.error(`failed to get attribute value, Code is ${err.code}, message is ${err.message}`);
@@ -986,7 +986,7 @@ actionNames(): Promise\<Array\<string>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.actionNames().then((data: string[]) => {
   console.info(`succeeded in getting action names, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1015,7 +1015,7 @@ actionNames(callback: AsyncCallback\<Array\<string>>): void
 **示例：**
 
 ```ts
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.actionNames((err: BusinessError, data: string[]) => {
   if (err && err.code) {
     console.error(`failed to get action names, Code is ${err.code}, message is ${err.message}`);
@@ -1061,28 +1061,13 @@ performAction(actionName: string, parameters?: object): Promise\<void>
 
 **示例：**
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let actionName = 'action';
-
-// rootElement是AccessibilityElement的实例
-rootElement.performAction(actionName).then(() => {
-  console.info(`succeeded in performing action,actionName is ${actionName}`);
-}).catch((err: BusinessError) => {
-  console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
-});
-```
-
-**示例：**
-
-- 无参数Action
+- 无参数Action。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  // rootElement是AccessibilityElement的实例
-  // Action描述中无明确要求的，均为无参数Action
+  // rootElement是AccessibilityElement的实例。
+  // Action描述中无明确要求的，均为无参数Action。
   rootElement.performAction('click').then(() => {
     console.info(`succeeded in performing action.`);
   }).catch((err: BusinessError) => {
@@ -1090,17 +1075,17 @@ rootElement.performAction(actionName).then(() => {
   });
   ```
 
-- 有参数Action（setSelection）
+- 有参数Action（setSelection）。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  // rootElement是AccessibilityElement的实例
-  // setSelection示例代码
+  // rootElement是AccessibilityElement的实例。
+  // setSelection示例代码。
   rootElement.performAction('setSelection', {
-    selectTextBegin: '0', // 表示选择起始位置
-    selectTextEnd: '8',   // 表示选择结束位置
-    selectTextInForWard: true   // true表示为前光标，false表示为后光标
+    selectTextBegin: '0', // 表示选择起始位置。
+    selectTextEnd: '8',   // 表示选择结束位置。
+    selectTextInForWard: true   // true表示为前光标，false表示为后光标。
   }).then(() => {
     console.info(`succeeded in performing action`);
   }).catch((err: BusinessError) => {
@@ -1108,15 +1093,15 @@ rootElement.performAction(actionName).then(() => {
   });
   ```
 
-- 有参数Action（setCursorPosition）
+- 有参数Action（setCursorPosition）。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  // rootElement是AccessibilityElement的实例
-  // setCursorPosition示例代码
+  // rootElement是AccessibilityElement的实例。
+  // setCursorPosition示例代码。
   rootElement.performAction('setCursorPosition', {
-    offset: '1'   // 表示光标的设置位置
+    offset: '1'   // 表示光标的设置位置。
   }).then(() => {
     console.info(`succeeded in performing action`);
   }).catch((err: BusinessError) => {
@@ -1159,7 +1144,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let actionName = 'action';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.performAction(actionName, (err: BusinessError) => {
   if (err && err.code) {
     console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
@@ -1206,7 +1191,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let actionName = 'action';
 let parameters: object = [];
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.performAction(actionName, parameters, (err: BusinessError) => {
   if (err && err.code) {
     console.error(`failed to perform action, Code is ${err.code}, message is ${err.message}`);
@@ -1256,7 +1241,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition = 'keyword';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('content', condition).then((data: AccessibilityElement[]) => {
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1299,7 +1284,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition = 'keyword';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('content', condition, (err: BusinessError, data: AccessibilityElement[])=>{
   if (err && err.code) {
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
@@ -1350,7 +1335,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition: FocusType = 'normal';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('focusType', condition).then((data: AccessibilityElement) => {
   console.info(`succeeded in finding element,${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1394,7 +1379,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition: FocusType = 'normal';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('focusType', condition, (err: BusinessError, data: AccessibilityElement)=>{
   if (err && err.code) {
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
@@ -1445,7 +1430,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition: FocusDirection = 'up';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('focusDirection', condition).then((data: AccessibilityElement) => {
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1489,7 +1474,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let condition: FocusDirection = 'up';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('focusDirection', condition, (err: BusinessError, data: AccessibilityElement) =>{
   if (err && err.code) {
     console.error(`failed to find element, Code is ${err.code}, message is ${err.message}`);
