@@ -4858,5 +4858,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/quick-start/layered-image.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/bmsSample/LayeredImage3/AppScope/app.json5",
+				"functions":[
+					{
+						"end_line":39,
+						"name":"layered_image_005",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":107,
+						"name":"layered_image_006",
+						"start_line":16
+					},
+					{
+						"end_line":106,
+						"name":"layered_image_007",
+						"start_line":17
+					},
+					{
+						"end_line":105,
+						"name":"layered_image_008",
+						"start_line":18
+					}
+				]
+			}
+		]
 	}
 ]
