@@ -38,6 +38,8 @@ ArkTS-Sta: setDynamicDimming(id: string, value: double): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**系统接口：** 此接口为系统接口。 
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -81,6 +83,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。 
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -205,6 +209,8 @@ ArkTS-Sta: freezeUINode(uniqueId: int, isFrozen: boolean): void
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。 
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -478,6 +484,8 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。 
 
 **参数：**
 
