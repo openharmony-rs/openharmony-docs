@@ -1,12 +1,12 @@
 # @ohos.security.identifySensitiveContent (识别敏感内容)
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @winnieHuYu-->
-<!--Designer: @QRF-->
+<!--Owner: @Yuan_bys-->
+<!--Designer: @zhengdu_628-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-识别敏感内容通过输入的[扫描策略](#policy)来检测指定文件中的敏感信息。系统根据提供的[Policy](#policy)策略（包括敏感标签、关键字集合和正则表达式），对文件内容进行关键字匹配和正则表达式匹配，返回匹配到的敏感内容结果。
+识别敏感内容通过输入的[Policy](#policy)来检测指定文件中的敏感信息。系统根据提供的[Policy](#policy)策略（包括敏感标签、关键字集合和正则表达式），对文件内容进行关键字匹配和正则表达式匹配，返回匹配到的敏感内容结果。
 
 > **说明：**
 >
@@ -21,7 +21,7 @@ import { identifySensitiveContent } from '@kit.DataProtectionKit';
 ## identifySensitiveContent.scanFile
 scanFile(filePath: string, identifyPolicies:Array&lt;Policy&gt;): Promise&lt;Array&lt;MatchResult&gt;&gt;
 
-根据设置的策略，识别指定文件中的敏感内容。通过Promise异步返回识别结果数组，包含匹配的敏感标签、匹配内容及匹配数量。
+根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。使用Promise异步回调。
 
 **需要权限**：ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
 
@@ -37,7 +37,7 @@ scanFile(filePath: string, identifyPolicies:Array&lt;Policy&gt;): Promise&lt;Arr
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;[MatchResult](#matchresult)&gt;&gt; | Promise对象。返回敏感内容识别的结果。成功时返回匹配结果数组，异常返回错误码。 |
+| Promise&lt;Array&lt;[MatchResult](#matchresult)&gt;&gt; | Promise对象，返回敏感内容识别的结果。成功时返回匹配结果数组，异常返回错误码。 |
 
 **错误码：**
 
@@ -45,12 +45,12 @@ scanFile(filePath: string, identifyPolicies:Array&lt;Policy&gt;): Promise&lt;Arr
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | 权限校验失败，应用无权限使用该API，需要申请权限。 |
-| 801 | 该设备不支持此API，因此无法正常调用。 |
-| 19110001 | 参数错误。 |
-| 19110002 | 对文件进行敏感信息识别时超时，无法在规定时间内完成识别流程。 |
-| 19110003 | 传入的文件不被当前操作支持，可能是路径、类型或权限不符合要求。 |
-| 19110004 | 系统内部功能模块运行异常，导致文件敏感信息识别相关操作无法正常执行。 |
+| 201 | permission denied. |
+| 801 | Capability not supported. |
+| 19110001 | Parameter error.Possible causes:1. Incorrect policy format. 2. Invalid parameter range. |
+| 19110002 | Sensitive file content identification timed out. |
+| 19110003 | The file is not supported. Possible causes:1. The file path does not exist. 2. The file type is not supported. 3. The file permission is not supported. |
+| 19110004 | A system error has occurred. |
 
 **示例：**
 
@@ -84,17 +84,16 @@ try {
 
 定义敏感内容识别策略。
 
-**策略工作机制：**
-- 单个策略内，关键词与正则表达式为顺序组合关系，实行两级匹配：首先进行关键词匹配，若命中，则仅在该关键词匹配位置的前后50字节窗口内，进行正则表达式匹配。
-- 多个Policy策略之间独立，扫描时会分别应用每个策略
-- sensitiveLabel用于标记匹配结果，便于识别具体匹配的策略
+- 单个策略内，关键字与正则表达式为顺序组合关系，实行两级匹配：首先进行关键字匹配，若命中，则仅在该关键字匹配位置的前后50字节窗口内，进行正则表达式匹配。
+- 多个Policy策略之间独立，扫描时会分别应用每个策略。
+- sensitiveLabel用于标记匹配结果，便于识别具体匹配的策略。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | sensitiveLabel | string | 否 | 否 | 表示识别策略的标签，用于标识和分类匹配结果。长度范围1-30字节。 |
-| keywords | Array&lt;string&gt; | 否 | 否 | 表示关键字集合，用于匹配文件中的敏感关键字。<br>系统会在文件内容中搜索这些关键字，匹配时区分大小写,匹配成功则返回识别结果。Array最大50，每个元素最大30字节。 |
+| keywords | Array&lt;string&gt; | 否 | 否 | 表示关键字集合，用于匹配文件中的敏感关键字。<br>系统会在文件内容中搜索这些关键字，匹配时区分大小写，匹配成功则返回识别结果。Array最大50，每个元素最大30字节。 |
 | regex | string | 否 | 否 | 表示匹配敏感内容的正则表达式。系统将在文件内容中按此正则表达式进行模式匹配，匹配成功的内容将返回在结果中。长度范围0-512字节。<br>在输入字符串时，需检查某些特殊字符（如反斜杠 \、双引号 "、换行符等），不会被自动转义，确保字符串的输入效果。 |
 
 ## MatchResult

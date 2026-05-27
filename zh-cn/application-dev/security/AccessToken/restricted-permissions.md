@@ -414,7 +414,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：PC/2in1 | Tablet
+
 **起始版本**：15
+
+**变更信息**：从API版本26.0.0开始，增加支持在平板上申请。
 
 ## ohos.permission.SET_PAC_URL
 
@@ -440,6 +444,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：15
 
 ## ohos.permission.START_PROVISIONING_MESSAGE
@@ -451,6 +457,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：15
 
