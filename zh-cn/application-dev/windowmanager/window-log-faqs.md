@@ -39,7 +39,7 @@ SetResizeByDragEnabled: This is not main window or decor enabled sub window
 
 该接口用于控制是否允许通过拖拽进行窗口缩放，有以下前提条件：
 - 仅支持应用主窗口和子窗口调用。 
-- 主窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下调用可立即生效，在非[自由窗口](freeform-window-overview.md#自由窗口)状态下调用时不报错不生效，切换到[自由窗口](freeform-window-overview.md#自由窗口)状态下生效。
+- 主窗口仅在[自由窗口](window-terminology.md#自由窗口)状态下调用可立即生效，在非[自由窗口](window-terminology.md#自由窗口)状态下调用时不报错不生效，切换到[自由窗口](window-terminology.md#自由窗口)状态下生效。
 - 子窗口必须开启窗口装饰栏（decorEnabled=true）才能调用此接口。
 
 **步骤2：检查子窗口创建配置**
