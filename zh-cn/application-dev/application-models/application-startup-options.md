@@ -106,7 +106,6 @@ struct StartWithSpecifiedWindowModeAbility {
 
 <!-- @[startOptions_supportWindowModes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StartOptions/SupportWindowModes/src/main/ets/pages/Index.ets) --> 
 
-
 ``` TypeScript
 import { common, Want, StartOptions, bundleManager } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -250,7 +249,7 @@ struct SpecifyDisplayScreen {
   build() {
     Row() {
       Column() {
-        Button("在当前屏幕上启动")
+        Button("在主屏幕上启动")
           .onClick(() => {
             // context为调用方UIAbility的UIAbilityContext
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -266,7 +265,7 @@ struct SpecifyDisplayScreen {
             };
 
             let options: StartOptions = {
-              displayId: -1 // 在当前屏幕上启动
+              displayId: -1 // 在主屏幕上启动
             };
 
             context.startAbility(want, options).then(() => {
