@@ -1,5 +1,9 @@
 # 术语
-
+<!--Subsystem: Kernel-->
+<!--Owner: @yzl-kongzhenhua; @Leibobo; @gatieme; @fang-jinxu-->
+ <!--Designer: @wangxiayang; @lizongfeng; @zzzuo; @tanyihua; @lingminghw-->
+ <!--Tester: @lianxuanself; @laonie666; @panny060; @RayShih-->
+ <!--Adviser: @fang-jinxu-->
 ## G
 
 - ### Gewu;格物
