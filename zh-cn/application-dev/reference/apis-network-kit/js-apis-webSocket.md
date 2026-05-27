@@ -606,6 +606,83 @@ ws.on('open', callback1);
 ws.off('open', callback1);
 ```
 
+### on('openInfo')
+
+on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
+
+订阅WebSocket的打开信息事件，使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect)发起连接请求前调用。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                          |
+| -------- | ----------------------- | ---- | ----------------------------- |
+| type     | string                  | 是   | 订阅的事件类型。'openInfo'：WebSocket的打开信息事件。 |
+| callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | 是   | 回调函数。返回WebSocket连接的详细信息。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+});
+```
+
+### off('openInfo')
+
+off(type: 'openInfo', callback?: AsyncCallback\<WebSocketOpenInfo\>): void
+
+取消订阅WebSocket的打开信息事件，使用callback异步回调。
+
+> **说明：**
+>
+> 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                          |
+| -------- | ----------------------- | ---- | ----------------------------- |
+| type     | string                  | 是   | 取消订阅的事件类型。'openInfo'：WebSocket的打开信息事件。 |
+| callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | 否   | 回调函数。 |
+
+**示例：**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+}
+ws.on('openInfo', callback1);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+ws.off('openInfo', callback1);
+```
+
 ### on('message')
 
 on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
@@ -1082,7 +1159,7 @@ listAllConnections(): WebSocketConnection[]
 **返回值：**
 | 类型                                        | 说明                         |
 | ------------------------------------------- | ---------------------------- |
-| [WebSocketConnection[]](#websocketconnection19) | 以字符串数组形式返回所有客户端的信息。|
+| [WebSocketConnection](#websocketconnection19)[] | 以字符串数组形式返回所有客户端的信息。|
 
 **错误码：**
 
@@ -1496,7 +1573,7 @@ localServer.off('error');
 | skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。 |
 | pingInterval<sup>21+</sup> | number | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
 | pongTimeout<sup>21+</sup> | number | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
-| minSupportTlsProtocol<sup>26+</sup> | [TlsProtocol](#tlsprotocol26) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。|
+| minSupportTlsProtocol | [TlsProtocol](#tlsprotocol) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ClientCert<sup>11+</sup>
 
@@ -1649,11 +1726,15 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 | clientConnection | [WebSocketConnection](#websocketconnection19) | 是 | 客户端信息，包括客户端的ip地址和端口号port。             |
 | closeReason | [CloseResult](#closeresult10)  | 是 | 关闭WebSocket连接时，订阅close事件得到的关闭结果。 |
 
-## TlsProtocol<sup>26+</sup>
+## TlsProtocol
 
 TLS协议类型。
 
-**系统能力**：SystemCapability.Communication.NetStack
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 |            名称         | 值   | 说明        |
 | :----------------------- | :---- | :---------- |
@@ -1661,3 +1742,19 @@ TLS协议类型。
 | TLS_V_1_1  | 1    | TLS版本号1.1。 |
 | TLS_V_1_2 | 2    | TLS版本号1.2。 |
 | TLS_V_1_3 | 3    | TLS版本号1.3。 |
+
+## WebSocketOpenInfo
+
+WebSocket连接成功后的详细信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| status | number | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为websocket协议。 |
+| message | string | 否 | 否 | 服务器返回的状态信息。与status字段对应，例如：status=101时，该字段返回"Switching Protocols"。 |
+| protocol | string | 否 | 是 | 服务器返回的协商后的协议。 |
