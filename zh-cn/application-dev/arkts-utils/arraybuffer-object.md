@@ -80,7 +80,7 @@ struct Index {
           for (let i: number = 0; i < taskNum; i++) {
             let arrayBufferSlice: ArrayBuffer =
               arrayBuffer.slice(arrayBuffer.byteLength / taskNum * i, arrayBuffer.byteLength / taskNum * (i + 1));
-            // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false
+            // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false，改成true，就可以实现转移方式的传输
             taskPoolGroup.addTask(createImageTask(arrayBufferSlice, false));
           }
           // 执行Task，UI主线程接收处理完成后的结果
