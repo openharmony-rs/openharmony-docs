@@ -140,7 +140,7 @@
    >
    > - 当录像流已设置过固定帧率时，预览流帧率要设置成录像帧率的约数，且必须也为固定帧率。
    >
-   > - 录像模式建议在commitConfig后设置视频防抖[setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)，以提升录制内容的效果稳定。
+   > - 录像模式时，建议在commitConfig后设置视频防抖[setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)，以提升录制内容的效果稳定。
    >
    > - 录像流设置为高分辨率（如3280*2160）的场景下，必须设置视频防抖。
 
