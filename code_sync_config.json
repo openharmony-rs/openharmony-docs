@@ -52801,7 +52801,7 @@
 				"functions":[
 					{
 						"end_line":61,
-						"name":"startOptions_dispalyId",
+						"name":"startOptions_displayId",
 						"start_line":15
 					}
 				]
@@ -52872,6 +52872,26 @@
 					{
 						"end_line":86,
 						"name":"startOptions_hidesplash",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/StartOptions/SupportWindowModes/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"startOptions_supportWindowModes",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/StartOptions/SetSplitRatioAbility/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"startOptions_setSplitRatioAbility",
 						"start_line":15
 					}
 				]
