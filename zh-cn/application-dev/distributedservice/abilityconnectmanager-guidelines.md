@@ -338,20 +338,25 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 <!-- @[disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  hilog.info(0x0000, 'testTag', 'disconnectRemoteAbility begin');
+``` TypeScript
+disconnectRemoteAbility(): void {
   if (this.sessionId == -1) {
     hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-  return;
+    return;
   }
   abilityConnectionManager.disconnect(this.sessionId);
+  this.receiveMessage = 'disConnect';
+}
 
-  hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
-  abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
-  ```
+destroySession(): void {
+  try {
+    abilityConnectionManager.destroyAbilityConnectionSession(this.sessionId);
+    this.receiveMessage = 'destroy';
+  } catch (err) {
+    console.log(TAG, 'createDeviceManager err: ' + JSON.stringify(err));
+    hilog.error(0x0000, 'testTag', 'connect failed');
+  }
+```
 
 
 ### 调测验证
