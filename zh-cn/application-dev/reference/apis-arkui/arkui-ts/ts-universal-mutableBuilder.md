@@ -6,13 +6,15 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
-使用mutableBuilder封装全局@Builder，实现全局@Builder的动态切换。开发指南见[mutableBuilder：实现全局@Builder动态更新](../../../ui/state-management/arkts-mutableBuilder.md) 
+使用mutableBuilder封装全局@Builder，实现全局@Builder的动态切换。开发指南见[mutableBuilder：实现全局@Builder动态更新](../../../ui/state-management/arkts-mutableBuilder.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 22开始支持。
+> - 本模块首批接口从API version 22开始支持。
 >
-> 后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## mutableBuilder
 

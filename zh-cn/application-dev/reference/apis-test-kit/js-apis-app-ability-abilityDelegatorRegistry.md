@@ -106,7 +106,7 @@ console.info(`getArguments testRunnerClassName: ${args.testRunnerClassName}`);
 
 type AbilityDelegator = _AbilityDelegator
 
-AbilityDelegator模块。
+提供通过[AbilityMonitor](../apis-ability-kit/js-apis-inner-application-abilityMonitor.md)实例来监听和管理[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)生命周期变化的能力。例如获取UIAbility当前状态（如是否已创建/是否在前台等）、查询当前获焦的UIAbility、等待UIAbility进入某个生命周期节点（如等待UIAbility进入onForeground）、启动指定UIAbility、设置超时机制等功能。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -120,7 +120,7 @@ AbilityDelegator模块。
 
 type AbilityDelegatorArgs = _AbilityDelegatorArgs
 
-AbilityDelegatorArgs模块。
+提供在应用程序执行测试用例期间，获取测试用例参数AbilityDelegatorArgs对象的能力。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -134,7 +134,7 @@ AbilityDelegatorArgs模块。
 
 type AbilityMonitor = _AbilityMonitor
 
-AbilityMonitor模块。
+提供作为abilityDelegator中的[addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9)的入参来监听指定UIAbility的生命周期变化。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -148,7 +148,7 @@ AbilityMonitor模块。
 
 type ShellCmdResult = _ShellCmdResult
 
-ShellCmdResult模块。
+提供Shell命令执行结果的能力。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -162,7 +162,7 @@ ShellCmdResult模块。
 
 type AbilityStageMonitor = _AbilityStageMonitor
 
-AbilityStageMonitor模块。
+提供监听指定[AbilityStage](../apis-ability-kit/js-apis-app-ability-abilityStage.md)对象的能力。开发者可以将AbilityStageMonitor作为[abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor9)的入参来注册监听。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 

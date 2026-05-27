@@ -14,6 +14,8 @@ The **SubHeader** component is positioned at the top of list items or content se
 >
 > - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - This component can be used only in the stage model.
+>
 > - If the **SubHeader** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeader** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeader** component.
 
 
@@ -44,17 +46,17 @@ SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?:
 
 | Name| Type| Mandatory| Decorator        | Description|
 | -------- | -------- | -------- |---------------| -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Icon.<br>The **icon** attribute takes effect only when the **secondaryTitle** attribute is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | No| -             | Icon symbol options. This parameter is available when **icon** is set to a [symbol glyph](ts-basic-components-symbolGlyph.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Primary title.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously, the **primaryTitle** attribute will not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Secondary title.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| select | [SelectOptions](#selectoptions) | No| -             | Content and events for selection.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| icon | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Icon.<br>Default value: **undefined**, indicating that no icon is displayed.<br>The **icon** attribute takes effect only when the **secondaryTitle** attribute is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| iconSymbolOptions<sup>12+</sup> | [SymbolOptions](#symboloptions12) | No| -             | Icon symbol options. This parameter is available when **icon** is set to a [symbol glyph](ts-basic-components-symbolGlyph.md).<br>Default value: **undefined**, indicating that no icon is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Primary title.<br>Default value: **undefined**, indicating that no primary title is displayed.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously, the **primaryTitle** attribute will not take effect.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | No| \@Prop        | Secondary title.<br>Default value: **undefined**, indicating that no secondary title is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| select | [SelectOptions](#selectoptions) | No| -             | Content and events for selection.<br>Default value: **undefined**, indicating that no drop-down list is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | operationType | [OperationType](#operationtype) | No| \@Prop        | Style of elements in the operation area (right).<br>Default value: **OperationType.BUTTON**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| operationItem | Array&lt;[OperationOption](#operationoption)&gt; | No| -             | Items in the operation area (right).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | No| -             | Icon symbol options.<br>This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](ts-basic-components-symbolGlyph.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No| -             | Text attributes of the primary title, such as the font color, font size, and font weight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| secondaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No| -             | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| titleBuilder<sup>12+</sup> | () => void | No| @BuilderParam | Content of the custom title area.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| operationItem | Array&lt;[OperationOption](#operationoption)&gt; | No| -             | Items in the operation area (right).<br>Default value: **undefined**, indicating that the operation area is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| operationSymbolOptions<sup>12+</sup> | Array&lt;[SymbolOptions](#symboloptions12)&gt; | No| -             | Icon symbol options.<br>This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](ts-basic-components-symbolGlyph.md).<br>Default value: **undefined**, indicating that no symbol icon is set.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| primaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No| -             | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**, indicating that the default style is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| secondaryTitleModifier<sup>12+</sup> | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No| -             | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**, indicating that the default style is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| titleBuilder<sup>12+</sup> | () => void | No| @BuilderParam | Content of the custom title area.<br>Default value: **undefined**, indicating that no custom title is used.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | No| @Prop         | Margin of the content. Negative numbers are not supported.<br>Default value:<br> `{start: LengthMetrics.resource(` <br> `$r('sys.float.margin_left'))`, <br> `end: LengthMetrics.resource(` <br> `$r('sys.float.margin_right'))}`<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | contentPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | No| @Prop         | Padding of the content.<br>Default value:<br>If a secondary title, with or without an icon, is displayed on the left:<br> {start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | titleAccessibilityText<sup>23+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No| @Prop         | Customized content to be read in the title.<br>Default value: **undefined**.<br>If the value is **undefined**, the title content displayed by the component is read by default.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.  |
@@ -124,7 +126,7 @@ Defines the style of elements in the subheader operation area.
 The [universal events](ts-component-general-events.md) are not supported.
 
 ## Example
-### Example 1: Implementing an Efficiency-Oriented Subheader
+### Example 1: Implementing an Efficiency-oriented Subheader
 This example demonstrates how to implement a subheader where the left side contains an icon and a secondary title, and the right side has a text button.
 
 ```ts
@@ -470,8 +472,10 @@ struct SubHeaderExample {
 ```
 ![figures/en-us_image_subheader_example08](figures/en-us_image_subheader_example08.png)
 
-### Example 9: Enabling the Button on the Right Side to Receive Default Focus
-This example demonstrates how to use **defaultFocus** to enable the button on the right side of the **SubHeader** component to receive default focus. This functionality is supported since API version 18.
+### Example 9: Setting the Right-Side Button to Obtain Focus by Default
+This example demonstrates how to set the **defaultFocus** attribute in **SubHeader** to ensure the right-side button obtains focus by default in the focused state.
+
+The **defaultFocus** API is added to [OperationOption](#operationoption) since API version 18.
 ```ts
 import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';
 

@@ -11,7 +11,7 @@ From API version 22, you can obtain the locking status of a specified authentica
 
 ## Available APIs
 
-For details about the parameters, return values, and error codes, see [getAuthLockState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22).
+For details about the parameters, return values, and error codes, see [userAuth.getAuthLockState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22).
 
 | API| Description|
 | -------- | -------- |
@@ -36,7 +36,7 @@ async obtainingAuthLockState() : Promise<string> {
       Logger.info('the authentication of given authType is permanent locked');
     }
     const authLockStateContent : string = JSON.stringify(authLockState);
-    Logger.info(`get auth lock state success, authLockState is: ${authLockStateContent}`);
+    Logger.info('get auth lock state successfully');
     return authLockStateContent;
   } catch (error) {
     const errorMessage : string = `get auth lock state failed, err code is : ${error?.code}, err message is : ${error?.message}`;

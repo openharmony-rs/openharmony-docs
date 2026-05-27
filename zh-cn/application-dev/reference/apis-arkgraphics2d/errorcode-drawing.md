@@ -1,8 +1,8 @@
 # 图形绘制与显示错误码
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -14,7 +14,7 @@
 
 **错误信息**
 
-The parameter value is out of range.
+Parameter error. Possible causes: Incorrect parameter range.
 
 **错误描述**
 

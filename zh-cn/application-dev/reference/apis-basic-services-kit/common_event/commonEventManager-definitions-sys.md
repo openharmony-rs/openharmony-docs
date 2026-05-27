@@ -1,9 +1,8 @@
 # 系统定义的公共事件(系统接口)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -20,7 +19,6 @@
 
 ## Ability Kit
 
-
 ### COMMON_EVENT_BOOT_COMPLETED
 
 表示用户已完成引导并加载系统。
@@ -33,9 +31,7 @@
 
 **订阅者所需权限：** ohos.permission.RECEIVER_STARTUP_COMPLETED（该权限仅系统应用可申请）
 
-
 **取值：** "usual.event.BOOT_COMPLETED"
-
 
 
 ### COMMON_EVENT_PACKAGE_INSTALLATION_STARTED<sup>12+</sup>
@@ -51,6 +47,21 @@
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_INSTALLATION_STARTED"
+
+
+### COMMON_EVENT_DYNAMIC_ICON_CHANGED<sup>12+</sup>
+
+表示应用动态图标发生变化的公共事件。
+
+在应用的动态图标发生变更时，会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.DYNAMIC_ICON_CHANGED"
 
 
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
@@ -108,7 +119,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.KIOSK_MODE_ON
+**取值：** "usual.event.KIOSK_MODE_ON"
 
 
 ### COMMON_EVENT_KIOSK_MODE_OFF<sup>20+</sup>
@@ -121,7 +132,22 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.KIOSK_MODE_OFF
+**取值：** "usual.event.KIOSK_MODE_OFF"
+
+
+### COMMON_EVENT_APP_FIRST_LAUNCH<sup>24+</sup>
+
+在应用安装后首次启动时，事件通知服务将触发并发布系统公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**订阅者所需权限：**ohos.permission.INSTALL_BUNDLE（该权限仅系统应用可申请）
+
+**取值：** "usual.event.APP_FIRST_LAUNCH"
 
 
 ## Background Tasks Kit 
@@ -159,6 +185,7 @@
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.CUSTOM_CONFIG_POLICY_UPDATED"
+
 
 ### COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED<sup>20+</sup>
 
@@ -285,10 +312,24 @@
 **取值：** "usual.event.USER_LOCKED"
 
 
+### COMMON_EVENT_SCREEN_LOCK_EXITING
+
+表示锁屏退出的公共事件。
+
+锁屏退出时将会触发事件通知服务发布该系统公共事件，此公共事件不关注文件系统是否解密。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**取值：** "usual.event.SCREEN_LOCK_EXITING"
+
+
 ## Core File Kit
 
 文件管理子系统面向应用发布如下系统公共事件，应用如需订阅系统公共事件，请参考公共事件[@ohos.commonEventManager](../js-apis-commonEventManager.md)。
-
 
 ### COMMON_EVENT_VOLUME_REMOVED
 
@@ -303,7 +344,6 @@
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
 **取值：** "usual.event.data.VOLUME_REMOVED"
-
 
 
 ### COMMON_EVENT_VOLUME_UNMOUNTED
@@ -380,6 +420,7 @@
 
 **取值：** "usual.event.RESTORE_START"
 
+
 ### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
 提示云盘同步根已更新。
@@ -392,7 +433,22 @@
 
 **订阅者所需权限：** ohos.permission.ACCESS_CLOUD_DISK_INFO（该权限仅系统应用可申请）
 
-**取值：** usual.event.CLOUD_DISK_STATE_CHANGED
+**取值：** "usual.event.CLOUD_DISK_STATE_CHANGED"
+
+
+### COMMON_EVENT_RESTORE_END<sup>23+</sup>
+
+表示某个应用结束恢复的公共事件。
+
+当数据迁移相关应用拉起备份恢复框架进行恢复任务，某个应用恢复结束后会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.RESTORE_END_NOTIFICATION（该权限仅系统应用可申请）
+
+**取值：** "usual.event.RESTORE_END"
 
 ## Media Kit
 
@@ -408,8 +464,24 @@
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
-**取值：** usual.event.SCREEN_SHARE
+**取值：** "usual.event.SCREEN_SHARE"
 
+
+## Network Kit
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
+
+表示VPN连接状态的公共事件。
+
+当VPN连接或者断开时会发送此公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.VPN_CONNECTION_STATUS_CHANGED"
 
 ## Telephony Kit
 
@@ -425,7 +497,7 @@
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
-**取值：** usual.event.SMS_RECEIVED_COMPLETED
+**取值：** "usual.event.SMS_RECEIVED_COMPLETED"
 
 
 ### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>
@@ -440,7 +512,7 @@
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
-**取值：** usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED
+**取值：** "usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED"
 
 
 ### COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED<sup>10+</sup>
@@ -455,10 +527,7 @@
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
-**取值：** usual.event.SMS_CB_RECEIVE_COMPLETED
-
-
-
+**取值：** "usual.event.SMS_CB_RECEIVE_COMPLETED"
 
 
 ### COMMON_EVENT_OPERATOR_CONFIG_CHANGED<sup>10+</sup>
@@ -473,7 +542,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.OPERATOR_CONFIG_CHANGED
+**取值：** "usual.event.OPERATOR_CONFIG_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -488,7 +557,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED
+**取值：** "usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -503,7 +572,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED
+**取值：** "usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -518,7 +587,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED
+**取值：** "usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SET_PRIMARY_SLOT_STATUS<sup>11+</sup>
@@ -533,7 +602,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.SET_PRIMARY_SLOT_STATUS
+**取值：** "usual.event.SET_PRIMARY_SLOT_STATUS"
 
 
 ### COMMON_EVENT_PRIMARY_SLOT_ROAMING<sup>11+</sup>
@@ -548,7 +617,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.PRIMARY_SLOT_ROAMING
+**取值：** "usual.event.PRIMARY_SLOT_ROAMING"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -563,7 +632,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED
+**取值：** "usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+</sup>
@@ -578,7 +647,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.CELLULAR_DATA_STATE_CHANGED
+**取值：** "usual.event.CELLULAR_DATA_STATE_CHANGED"
 
 
 ### COMMON_EVENT_INCOMING_CALL_MISSED<sup>10+</sup>
@@ -593,7 +662,7 @@
 
 **订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
 
-**取值：** usual.event.INCOMING_CALL_MISSED
+**取值：** "usual.event.INCOMING_CALL_MISSED"
 
 
 ### COMMON_EVENT_RADIO_STATE_CHANGE<sup>10+</sup>
@@ -608,7 +677,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.RADIO_STATE_CHANGE
+**取值：** "usual.event.RADIO_STATE_CHANGE"
 
 
 ### COMMON_EVENT_SPECIAL_CODE<sup>10+</sup>
@@ -623,7 +692,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.DIALER_SPECIAL_CODE
+**取值：** "usual.event.DIALER_SPECIAL_CODE"
 
 
 ### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+</sup>
@@ -638,7 +707,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.AUDIO_QUALITY_CHANGE
+**取值：** "usual.event.AUDIO_QUALITY_CHANGE"
 
 
 ## 预留公共事件
@@ -657,7 +726,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.STK_COMMAND
+**取值：** "usual.event.STK_COMMAND"
 
 
 ### COMMON_EVENT_STK_SESSION_END<sup>10+</sup>
@@ -672,7 +741,7 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.STK_SESSION_END
+**取值：** "usual.event.STK_SESSION_END"
 
 
 ### COMMON_EVENT_STK_CARD_STATE_CHANGED<sup>10+</sup>
@@ -688,7 +757,7 @@
 **订阅者所需权限：** 无
 
 
-**取值：** usual.event.STK_CARD_STATE_CHANGED
+**取值：** "usual.event.STK_CARD_STATE_CHANGED"
 
 ### COMMON_EVENT_STK_ALPHA_IDENTIFIER<sup>10+</sup>
 
@@ -702,7 +771,8 @@
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.STK_ALPHA_IDENTIFIER
+**取值：** "usual.event.STK_ALPHA_IDENTIFIER"
+
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 
@@ -716,4 +786,4 @@
 
 **订阅者所需权限：** ohos.permission.RECEIVE_SMS（该权限仅系统应用可申请）
 
-**取值：** usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED
+**取值：** "usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED"

@@ -136,7 +136,7 @@ When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis
 
 **Solution**
 
-Ensure that **defaultCreator** passed by **connect** or **globalConnect** is of the **StorageDefaultCreator\<T\>** type. **globalConnect** is used as an example. For details, see the [globalConnect example](./js-apis-stateManagement.md#globalconnect18).
+Ensure that **defaultCreator** passed by **connect** or **globalConnect** is of the **StorageDefaultCreator\<T\>** type. The following uses **globalConnect** as an example. For details, see [globalConnect](./js-apis-stateManagement.md#globalconnect18).
 
 ## 140105 PersistenceV2 Mixes connect and globalConnect That Use the Same Key
 
@@ -168,7 +168,7 @@ The encryption level set for [globalConnect](./js-apis-stateManagement.md#global
 
 **Possible Causes**
 
-The value of the [areaMode](./js-apis-stateManagement.md#connectoptions18) attribute of [ConnectOptions](./js-apis-stateManagement.md#connectoptions18) of **globalConnect** is not within the range of EL1 to EL5.
+The value of the [areaMode](./js-apis-stateManagement.md#connectoptionst18) attribute of [ConnectOptions](./js-apis-stateManagement.md#connectoptionst18) of **globalConnect** is not within the range of EL1 to EL5.
 
 **Solution**
 
@@ -187,7 +187,7 @@ A type mismatch error occurs when [connect](./js-apis-stateManagement.md#connect
 **Possible Causes**
 
 - The type of the **type** parameter is inconsistent with the return type of **defaultCreator**.
-- The persistent data structure is modified. As a result, when the data is read from the disk to the memory again, the type does not match.
+- The persistent data structure is modified. As a result, when the data is read from the disk to the memory again, the type does not match. In this case, only an error code is reported in the log, and no runtime exception is thrown.
 
 **Solution**
 
@@ -206,7 +206,7 @@ The [\@Type](../../ui/state-management/arkts-new-type.md) decorator is missing w
 
 **Possible Causes**
 
-When the **globalConnect** API is used to persist data, the \@Type decorator is missing in the data type.
+When the **globalConnect** API is used to persist data, the \@Type decorator is missing in the data type. This error code is reported in the log and no runtime exception is thrown.
 
 **Solution**
 
@@ -340,3 +340,5 @@ The key is not of the string or [TypeConstructorWithArgs\<T\>](./js-apis-stateMa
 **Solution**
 
 Ensure that the key passed for using the **remove** API of **AppStorageV2** and **PersistenceV2** and the **save** API of **PersistenceV2** is of the string or **TypeConstructorWithArgs\<T\>** type.
+
+<!--no_check-->

@@ -4690,7 +4690,7 @@ try {
 
 authWithPopup(callback: IUserAuthCallback): void
 
-Authenticates this domain account with a dialog box.
+Authenticates a domain account in a pop-up window.
 
 **System API**: This is a system API.
 
@@ -4747,7 +4747,7 @@ No permission is required since API version 11. Use the SDK of the latest versio
 
 authWithPopup(localId: number, callback: IUserAuthCallback): void
 
-Authenticates this domain account with a dialog box.
+Authenticates a domain account in a pop-up window.
 
 **System API**: This is a system API.
 
@@ -6442,10 +6442,10 @@ Defines the executor property.
 | result       | number                       | No   | No  | Result.        |
 | authSubType  | [AuthSubType](#authsubtype8) | No   | No  | Authentication credential subtype.|
 | remainTimes  | number                       | No   | Yes  | Number of remaining authentication times, which is **-1** by default.    |
-| freezingTime | number                       | No   | Yes  | Freezing time, which is **-1** by default.    |
+| freezingTime | number                       | No   | Yes  | Freezing time, in milliseconds. The default value is **-1**.    |
 | enrollmentProgress<sup>10+</sup> | string   | No   | Yes  | Enrollment progress, which is left blank by default.|
 | sensorInfo<sup>10+</sup> | string           | No   | Yes  | Sensor information, which is left blank by default.|
-| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, which is **undefined** by default.|
+| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, in milliseconds. The default value is **undefined**.|
 | credentialLength<sup>20+</sup> | number | No   | Yes  | Credential length, which is **undefined** by default. When credentials with indefinite-length attributes such as biometric information are queried, **undefined** is returned.|
 
 ## AuthResult<sup>8+</sup>
@@ -6460,11 +6460,11 @@ Defines the authentication result information.
 | ------------ | ----------- | ----- | ----- | ----------------- |
 | token        | Uint8Array  | No   | Yes  | Authentication token, which is left blank by default.     |
 | remainTimes  | number      | No   | Yes  | Number of remaining authentication times, which is left blank by default.     |
-| freezingTime | number      | No   | Yes  | Freezing time. By default, no value is passed in.     |
-| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, which is **undefined** by default.|
+| freezingTime | number      | No   | Yes  | Freezing time, in milliseconds. The default value is left empty.     |
+| nextPhaseFreezingTime<sup>12+</sup> | number | No   | Yes  | Next freezing time, in milliseconds. The default value is **undefined**.|
 | credentialId<sup>12+</sup> | Uint8Array  | No   | Yes  | Credential ID, which is left blank by default.|
 | accountId<sup>12+</sup>         | number | No   | Yes  | System account ID, which is **undefined** by default.|
-| pinValidityPeriod<sup>12+</sup> | number | No   | Yes  | Authentication validity period, which is **undefined** by default.|
+| pinValidityPeriod<sup>12+</sup> | number | No   | Yes  | Authentication validity period, in milliseconds. The default value is **undefined**.|
 
 ## CredentialInfo<sup>8+</sup>
 
@@ -6509,7 +6509,7 @@ Defines enrolled credential information.
 | authSubType  | [AuthSubType](#authsubtype8) | No   | No  | Authentication credential subtype.|
 | templateId   | Uint8Array                               | No   | No  | Authentication credential template ID.    |
 | isAbandoned<sup>20+</sup>   | boolean                      | No   | Yes  | Whether the credential is abandoned. The abandoned credential may be stored as a backup credential for a period of time. The value **true** indicates that the credential is abandoned, and the value **false** indicates the opposite. The default value is **undefined**.  |
-| validityPeriod<sup>20+</sup>   | number                    | No   | Yes  | Validity period of the credential. The default value is **undefined**.    |
+| validityPeriod<sup>20+</sup>   | number                    | No   | Yes  | Credential validity period, in milliseconds. The default value is **undefined**.    |
 
 ## GetPropertyType<sup>8+</sup>
 
@@ -6743,7 +6743,7 @@ Presents the authentication status information.
 | Name     | Type  | Read-Only | Optional| Description      |
 | ----------- | ------ | ---- | ---- | ---------- |
 | remainTimes  | number | No| No | Number of remaining times.  |
-| freezingTime | number | No| No | Freezing time.|
+| freezingTime | number | No| No | Freezing time, in milliseconds.|
 
 ## GetDomainAccessTokenOptions<sup>10+</sup>
 
@@ -6837,7 +6837,7 @@ Represents the optional parameter used to create a system account.
 | Name     | Type  | Read-Only | Optional  | Description      |
 | ----------- | ------ | ---- | ---- | ---------- |
 | shortName | string | No| No  | Short name of the account (used as the name of the personal folder).<br>**The short name cannot**:<br>1. Contain any of the following characters: \< \>\| : " * ? / \\<br>2. Contain any of the following: . or ..<br>3. Exceed 255 characters.|
-| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Forbidden list of the preinstalled applications, which cannot be installed on the device. The value is empty by default.|
+| disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Forbidden list of the preinstalled applications, which cannot be installed on the device. The value is left empty by default.|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | No| Yes  | Trustlist of the preinstalled applications, which can be installed on the device. The default value is **std::nullopt**.|
 | token<sup>24+</sup> | Uint8Array | No  | Yes  | Token obtained from the authentication management API. The value is left empty by default.|
 

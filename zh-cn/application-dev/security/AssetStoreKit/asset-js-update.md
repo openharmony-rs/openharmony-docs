@@ -9,7 +9,7 @@
 
 ## 接口介绍
 
-可通过API文档查看更新关键资产的异步接口[update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate)、同步接口[updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12)的详细介绍。
+开发者可以查阅API文档，获取关键资产更新接口的详细说明：异步接口[update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate)、同步接口[updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12)。
 
 在更新关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 

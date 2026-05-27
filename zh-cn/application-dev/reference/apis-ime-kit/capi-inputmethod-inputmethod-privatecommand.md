@@ -1,7 +1,7 @@
 # InputMethod_PrivateCommand
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -12,7 +12,7 @@ typedef struct InputMethod_PrivateCommand InputMethod_PrivateCommand
 
 ## 概述
 
-表示私有数据的结构体类型。输入框和输入法应用之间交互的私有数据。
+表示私有数据的结构体类型。用于输入框与输入法应用间交互的私有数据结构。
 
 **起始版本：** 12
 

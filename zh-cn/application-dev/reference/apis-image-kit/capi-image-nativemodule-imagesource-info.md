@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -27,7 +27,7 @@ OH_ImageSource_Info结构体内容和操作方式如下：
 | bool | isHdr | 是否为高动态范围（HDR）的信息 | [OH_ImageSourceInfo_GetDynamicRange](capi-image-source-native-h.md#oh_imagesourceinfo_getdynamicrange) |获取图片是否为高动态范围的信息。|
 | [Image_MimeType](capi-image-nativemodule-image-string.md) | mimeType | 图片源的MIME类型 | [OH_ImageSourceInfo_GetMimetype](./capi-image-source-native-h.md#oh_imagesourceinfo_getmimetype) | 获取图片的MimeType。|
 
-**起始版本：** 13
+**起始版本：** 12
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
 

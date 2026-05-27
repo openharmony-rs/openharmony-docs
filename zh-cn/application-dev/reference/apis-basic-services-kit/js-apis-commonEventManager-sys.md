@@ -1,9 +1,8 @@
 # @ohos.commonEventManager (公共事件模块)(系统应用)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -35,7 +34,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -51,7 +50,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
 | 1500003  | The common event sending frequency too high. |
 | 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -89,7 +88,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -106,7 +105,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
 | 1500003  | The common event sending frequency too high. |
 | 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -151,14 +150,14 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 **需要权限**:  ohos.permission.COMMONEVENT_STICKY
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                             |
 | -------- | -------------------- | ---- | -------------------------------- |
 | event    | string               | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。       |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当移除粘性事件成功，err为undefined，否则为错误对象。。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当移除粘性事件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -166,9 +165,9 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application dose not have permission to call the interface.     |  
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |   
+| 201      | Permission verification failed. The application does not have the permission required to call the API.     |  
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      |   
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -197,7 +196,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 **需要权限**:  ohos.permission.COMMONEVENT_STICKY
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
@@ -217,9 +216,9 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | The application dose not have permission to call the interface.     |  
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 201      | Permission verification failed. The application does not have the permission required to call the API.     |  
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -246,13 +245,13 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true:使能 false：去使能。 |
+| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true：使能 false：去使能。 |
 | callback  | AsyncCallback\<void> | 是   | 回调函数。当设置静态订阅事件使能状态成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -261,8 +260,8 @@ setStaticSubscriberState(enable: boolean, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -290,13 +289,13 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**系统API**：此接口为系统接口，三方应用不支持调用。
+**系统接口**：此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true:使能 false：去使能。 |
+| enable  | boolean | 是   | 表示静态订阅事件使能状态。 true：使能 false：去使能。 |
 
 **返回值：**
 
@@ -310,8 +309,8 @@ setStaticSubscriberState(enable: boolean): Promise\<void>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -359,8 +358,8 @@ setStaticSubscriberState(enable: boolean, events?: Array\<string>): Promise\<voi
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.        |
 | 1500008  | Failed to initialize the common event service. |
 

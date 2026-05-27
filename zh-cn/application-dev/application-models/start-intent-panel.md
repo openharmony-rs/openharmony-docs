@@ -5,7 +5,7 @@
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
 <!--Tester: @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 本章节主要介绍拉起方应用如何通过指定应用类型、而非某个具体的应用，来实现应用跳转。通常有以下几种方式：
 

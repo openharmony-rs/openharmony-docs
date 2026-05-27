@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 ## 概述
 
@@ -33,7 +33,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t OH_BatteryInfo_GetCapacity()](#oh_batteryinfo_getcapacity) | 返回当前电池容量。 |
+| [int32_t OH_BatteryInfo_GetCapacity()](#oh_batteryinfo_getcapacity) | 返回当前电池容量百分比。 |
 | [BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()](#oh_batteryinfo_getpluggedtype) | 返回当前插入的类型。 |
 
 ### 变量
@@ -64,7 +64,7 @@ enum BatteryInfo_BatteryPluggedType
 | PLUGGED_TYPE_AC = 1 | 电源是交流充电。 |
 | PLUGGED_TYPE_USB = 2 | 电源是USB DC充电。 |
 | PLUGGED_TYPE_WIRELESS = 3 | 电源为无线充电。 |
-| PLUGGED_TYPE_BUTT = 4 | 预留枚举 |
+| PLUGGED_TYPE_BUTT = 4 | 未知类型。 |
 
 
 ## 函数说明

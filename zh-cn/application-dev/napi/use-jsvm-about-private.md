@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行private相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -96,7 +96,7 @@ const char *srcCallNative = R"JS(privateTest();)JS";
 ```
 
 ## 预期输出结果
-```
+```txt
 private property set: 1
 private property deleted is undefined: 1
 second private property set: 2

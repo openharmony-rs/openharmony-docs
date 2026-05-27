@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 `deviceConfig` 包含设备上的应用配置信息，支持 `default`、`tv`、`car`、`wearable` 等属性。
 
@@ -15,7 +15,7 @@
 <!--RP1-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| default | 默认设备类型，详情参考[标准系统开发板](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/dev-board-on-the-master.md#标准系统开发板)。 | 对象 | 可缺省，缺省值为空。 |
+| default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 | 对象 | 可缺省，缺省值为空。 |
 | tablet | 标识平板特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | tv | 标识智慧屏特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
 | car | 标识车机特有的应用配置信息。 | 对象 | 可缺省，缺省值为空。 |
@@ -30,6 +30,7 @@
 
 **表2** **deviceConfig设备对象内部结构说明**
 
+<!--Table: 10%; 60%; 15%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | process | 标识应用或Ability的进程名。如果在deviceConfig标签下配置了process标签，则应用的所有Ability运行在此进程中。如果在abilities标签下为某个Ability配置了process标签，则该Ability运行在此进程中。该标签最大长度为31。 | 字符串 | 可缺省，缺省值为空。 |

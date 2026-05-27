@@ -434,7 +434,8 @@
   struct Index {
     context = this.getUIContext().getHostContext();
     /* 请将$r('app.string.StyledStringParagraphStyle_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为
-     "段落标题\n正文第一段落开始0123456789正文第一段落结束，通过replaceStyle清空原样式替换新样式。"*/
+     * "段落标题\n正文第一段落开始0123456789正文第一段落结束，通过replaceStyle清空原样式替换新样式。"
+     */
     @State message1: string =
       this.context!.resourceManager.getStringSync($r('app.string.StyledStringParagraphStyle_Text_2').id);
     titleParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
@@ -733,7 +734,7 @@
 
 可通过[ImageAttachment](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#imageattachment)来添加图片。
 
-以下示例展示了如何将图片和文本附加到同一个MutableStyledString对象上，并实现图文混排。
+以下示例展示了如何将图片和文本附加到同一个[MutableStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#mutablestyledstring)对象上，并实现图文混排。
 
 > **说明：**
 >
@@ -783,11 +784,11 @@
     }
   
     leadingMarginValue: ParagraphStyle = new ParagraphStyle({ leadingMargin: LengthMetrics.vp(5)});
-    //行高样式对象
+    // 行高样式对象
     lineHeightStyle1: LineHeightStyle= new LineHeightStyle(new LengthMetrics(24));
-    //Bold样式
+    // Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
-    //创建含段落样式的对象paragraphStyledString1
+    // 创建含段落样式的对象paragraphStyledString1
     // 请将$r('app.string.StyledStringImageAttachment_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"\n品牌相纸 高清冲印30张\n限时直降5.15元 限量赠送"
     paragraphStyledString1: MutableStyledString =
       new MutableStyledString(this.getUIContext()
@@ -1215,7 +1216,8 @@ export struct StyledStringHtml {
   
         // 按钮3:将HTML转换回SpanString
         /* 请将$r('app.string.Converted_HTML_back_to_SpanString')替换为实际资源文件，在本示例中该资源文件的
-         value值为"Converted HTML back to SpanString" */
+         * value值为"Converted HTML back to SpanString"
+         */
         Button($r('app.string.Converted_HTML_back_to_SpanString')).onClick(async () => {
           this.spanString = await StyledString.fromHtml(this.html);
           this.controller.setStyledString(this.spanString);
@@ -1240,7 +1242,7 @@ export struct StyledStringHtml {
 
 ## 场景示例
 
-该示例通过ParagraphStyle、LineHeightStyle、TextStyle对象展示了会员过期提示的效果。
+该示例通过[ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle)、[LineHeightStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#lineheightstyle)、[TextStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle)对象展示了会员过期提示的效果。
 
 <!-- @[styledStringSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringSceneExample.ets) -->
 
@@ -1251,11 +1253,11 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Component
 export struct StyledStringSceneExample {
   alignCenterParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
-  //行高样式对象
+  // 行高样式对象
   lineHeightStyle1: LineHeightStyle = new LineHeightStyle(LengthMetrics.vp(24));
-  //Bold样式
+  // Bold样式
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
-  //创建含段落样式的对象paragraphStyledString1
+  // 创建含段落样式的对象paragraphStyledString1
   // 请将$r('app.string.StyledStringSceneExample_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"您的豪华钻石已过期1天\n续费可继续享受会员专属权益"
   paragraphStyledString1: MutableStyledString =
     new MutableStyledString(this.getUIContext()

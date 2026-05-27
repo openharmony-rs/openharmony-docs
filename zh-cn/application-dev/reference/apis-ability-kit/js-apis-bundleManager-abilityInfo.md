@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 Ability信息，可以通过[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取Ability信息，其中参数[bundleFlags](js-apis-bundleManager.md#bundleflag)至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ABILITY。
 
@@ -21,6 +21,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
  **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                  | 类型                                                     | 只读 | 可选 | 说明                                      |
 | --------------------- | -------------------------------------------------------- | ---- | ---- | ------------------------------------------ |
 | bundleName            | string                                                   | 是   | 否   | 应用Bundle名称。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |

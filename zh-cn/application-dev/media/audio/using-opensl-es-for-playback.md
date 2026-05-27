@@ -1,8 +1,8 @@
 # 使用OpenSL ES开发音频播放功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -166,7 +166,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. 获取接口SL_PLAYSTATE_PLAYING的playItf实例，开始播放。
+7. 获取接口SL_IID_PLAY的playItf实例，开始播放。
      
    ```cpp
    SLPlayItf playItf = nullptr;

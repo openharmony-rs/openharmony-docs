@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输，包括字符串、[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流、图片、传输流。
 
@@ -39,7 +39,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'，完成`collaborateEvent()`调用，触发该事件。   |
 | sessionId | number  | 是    | 表示创建的协同会话ID。    |
-| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 是    | 表示注册的回调函数，callback返回协同事件的信息。    |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 是    | 表示注册的回调函数，callback返回协同事件的信息。    |
 
 **错误码：**
 
@@ -120,7 +120,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'。    |
 | sessionId | number  | 是    | 表示创建的协同会话ID。    |
-| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则关闭该监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 否    | 表示注册的回调函数。如果传入该参数，则关闭该监听。如果未传入该参数，则取消所有'collaborateEvent'事件监听。    |
 
 **错误码：**
 
@@ -220,7 +220,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   try {
     let photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
@@ -233,7 +233,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
       return;
       }
 
-      let file = fs.openSync(photoSelectResult.photoUris[0], fs.OpenMode.READ_ONLY);
+      let file = fileIo.openSync(photoSelectResult.photoUris[0], fileIo.OpenMode.READ_ONLY);
       hilog.info(0x0000, 'testTag', 'file.fd:' + file.fd);
 
       let sessionId = 100;
@@ -282,7 +282,6 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300001      | Only one stream can be created for the current session.|
@@ -412,7 +411,7 @@ getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 ## abilityConnectionManager.updateSurfaceParam
 
-updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
+updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
 更新与传输流绑定的Surface的配置信息。
 
@@ -426,7 +425,7 @@ updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 | param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
 
 **错误码：**
@@ -458,7 +457,7 @@ updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;
 
 ## abilityConnectionManager.destroyStream
 
-destroyStream(sessionId:&nbsp;number):&nbsp;void
+destroyStream(streamId:&nbsp;number):&nbsp;void
 
 发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。
 
@@ -472,7 +471,7 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 
@@ -480,7 +479,6 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
@@ -497,7 +495,7 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 ## abilityConnectionManager.startStream
 
-startStream(sessionId:&nbsp;number):&nbsp;void
+startStream(streamId:&nbsp;number):&nbsp;void
 
 启动指定传输流。
 
@@ -511,7 +509,7 @@ startStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 
@@ -536,7 +534,7 @@ startStream(sessionId:&nbsp;number):&nbsp;void
 
 ## abilityConnectionManager.stopStream
 
-stopStream(sessionId:&nbsp;number):&nbsp;void
+stopStream(streamId:&nbsp;number):&nbsp;void
 
 停止指定传输流。
 
@@ -550,7 +548,7 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 
@@ -571,19 +569,6 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
   hilog.info(0x0000, 'testTag', 'stopStream called');
   abilityConnectionManager.stopStream(sessionId)
   ```
-
-## CollaborateEventInfo
-
-协作事件信息。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-| 名称       | 类型   | 只读 | 可选 | 说明      |
-| -------- | ------ | ---- | ---- | ------- |
-| eventType | [CollaborateEventType](#collaborateeventtype) | 否    | 否   | 表示协作事件的类型。 |
-| eventMsg | string | 否    | 是   | 表示协作事件的协作消息。 |
 
 ## StreamParam
 
@@ -615,19 +600,6 @@ Surface配置参数。
 | format | [VideoPixelFormat](#videopixelformat) | 否    | 是   | 表示视频像素格式，此选项必须在发送端配置。 |
 | rotation | number | 否    | 是   | 表示视频的旋转角度（取值范围为{0, 90, 180, 270}，默认值为0）。 |
 | flip | [FlipOptions](#flipoptions) | 否    | 是   | 表示视频是否反转。 |
-
-## CollaborateEventType
-
-协作事件的类型的枚举。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-| 名称|  值 | 说明 |
-|-------|-------|-------|
-| SEND_FAILURE | 0 |表示任务发送失败。|
-| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
 
 ## FlipOptions
 

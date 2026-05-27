@@ -32,19 +32,15 @@
 
 2. 导入系统账号模块。
 
-   <!-- @[import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
-import { osAccount, BusinessError } from '@kit.BasicServicesKit';
-```
+   ```ts
+   import { osAccount, BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 3. 获取账号管理单实例对象。
 
-   <!-- @[obtain_account_management_single_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
-let accountManager = osAccount.getAccountManager();
-```
+   ```ts
+   let accountManager = osAccount.getAccountManager();
+   ```
 
 
 ## 创建系统账号
@@ -55,9 +51,7 @@ let accountManager = osAccount.getAccountManager();
 
 调用[createOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccount)接口，指定昵称和类型信息来创建系统账号。
 
-<!-- @[specify_nickname_and_type_information_to_create_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let name: string = 'Bob';
     let type: osAccount.OsAccountType = osAccount.OsAccountType.NORMAL;
 
@@ -69,7 +63,7 @@ let accountManager = osAccount.getAccountManager();
         console.info('createOsAccount osAccountInfo:' + JSON.stringify(osAccountInfo));
       }
     });
-```
+   ```
 
 ## 查询所有已创建的系统账号
 
@@ -79,9 +73,7 @@ let accountManager = osAccount.getAccountManager();
 
 调用[queryAllCreatedOsAccounts](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryallcreatedosaccounts)接口查询全量账号。  
 
-<!-- @[query_the_full_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     accountManager.queryAllCreatedOsAccounts((err: BusinessError, accountArr: osAccount.OsAccountInfo[])=>{
       if (err) {
         console.info(`queryAllCreatedOsAccounts code is ${err.code}, message is ${err.message}`);
@@ -89,7 +81,7 @@ let accountManager = osAccount.getAccountManager();
         console.info('queryAllCreatedOsAccounts accountArr:' + JSON.stringify(accountArr));
       }
     });
-```
+   ```
 
 ## 查询指定系统账号信息
 
@@ -99,9 +91,7 @@ let accountManager = osAccount.getAccountManager();
 
 调用[queryOsAccountById](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#queryosaccountbyid)接口查询指定账号的详细信息。
 
-<!-- @[query_information_of_the_specified_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 100;
     accountManager.queryOsAccountById(localId, (err: BusinessError, accountInfo: osAccount.OsAccountInfo)=>{
       if (err) {
@@ -110,7 +100,7 @@ let accountManager = osAccount.getAccountManager();
         console.info('queryOsAccountById accountInfo:' + JSON.stringify(accountInfo));
       }
     });
-```
+   ```
 
 ## 修改系统账号头像和昵称
 
@@ -120,9 +110,7 @@ let accountManager = osAccount.getAccountManager();
 
 1. 调用[setOsAccountProfilePhoto](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountprofilephoto)接口修改系统账号头像。
 
-   <!-- @[change_system_account_avatar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 100;
     let newPhoto: string = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAAXNSR0IArs4c6QAAAARnQU1BAA'+
       'Cxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVDhPvZLBDYMwDEV/ugsXRjAT0EHCOuFIBwkbdIRewi6unbiAyoGgSn1SFH85+Y'+
@@ -136,26 +124,24 @@ let accountManager = osAccount.getAccountManager();
         console.info('Successfully updated system account avatar');
       }
     });
-```
+   ```
 
 2. 调用[setOsAccountName](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#setosaccountname)接口修改系统账号名称。
 
-   <!-- @[change_system_account_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 100;
-	// ···
+    // ···
     let newName: string = 'Tom';
     accountManager.setOsAccountName(localId, newName, (err: BusinessError) => {
       if (err) {
         console.error(`setOsAccountName failed, code is ${err.code}, message is ${err.message}`);
-		// ···
+    // ···
       } else {
         console.info('setOsAccountName successfully');
-		// ···
+    // ···
       }
     });
-```
+   ```
 
 
 ## 激活系统账号
@@ -166,21 +152,19 @@ let accountManager = osAccount.getAccountManager();
 
 调用[activateOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#activateosaccount)接口激活指定系统账号。
 
-<!-- @[activate_system_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 101;
-	// ···
+    // ···
     accountManager.activateOsAccount(localId, (err: BusinessError)=>{
       if (err) {
         console.error(`activateOsAccount failed, code is ${err.code}, message is ${err.message}`);
-		// ···
+    // ···
       } else {
         console.info('activateOsAccount successfully');
-		// ···
+    // ···
       }
     });
-```
+   ```
 
 
 ## 删除系统账号
@@ -191,19 +175,17 @@ let accountManager = osAccount.getAccountManager();
 
 调用[removeOsAccount](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#removeosaccount)接口删除指定的账号。
 
-<!-- @[delete_the_specified_account](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/SystemAccount/entry/src/main/ets/pages/SystemAccount/ManageSystemAccounts.ets) -->
-
-``` TypeScript
+   ```ts
     let localId: number = 101;
-	// ···
+    // ···
     accountManager.removeOsAccount(localId, (err: BusinessError)=>{
       if (err) {
         console.error(`removeOsAccount failed, code is ${err.code}, message is ${err.message}`);
-		// ···
+    // ···
       } else {
         console.info('removeOsAccount successfully');
-		// ···
+    // ···
       }
     });
-```
+   ```
 

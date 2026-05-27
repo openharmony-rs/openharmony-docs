@@ -2,8 +2,8 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -316,7 +316,7 @@ setSize(textSize: number): void
 
 | 参数名   | 类型   | 必填 | 说明             |
 | -------- | ------ | ---- | ---------------- |
-| textSize | number | 是   | 字型大小，该参数为浮点数，为负数时字型大小会被置为0。字型大小为0时，绘制的文字不会显示。|
+| textSize | number | 是   | 字型大小，该参数为浮点数，为负数时字型大小会被置为0。字型大小为0时，绘制的文字不会显示。单位为物理像素px。|
 
 **错误码：**
 
@@ -349,7 +349,7 @@ getSize(): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字型大小，浮点数。 |
+| number | 字型大小，浮点数。单位为物理像素px。 |
 
 **示例：**
 
@@ -469,7 +469,7 @@ measureText(text: string, encoding: TextEncoding): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 文本的宽度，浮点数。 |
+| number | 文本的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -508,7 +508,7 @@ measureSingleCharacter(text: string): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字符的宽度，浮点数。 |
+| number | 字符的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -555,7 +555,7 @@ measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>)
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字符的宽度，浮点数，单位为px。 |
+| number | 字符的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -1104,8 +1104,8 @@ getTextPath(text: string, byteLength: number, x: number, y: number): Path
 | ------   | ------------------------------------------------   | ---- | ---------------------- |
 |   text   |    string                                          | 是   | 表示存储UTF-8 文本编码的字符。|
 |byteLength|    number                                          | 是   | 表示要获取对应文本路径的字节长度，按传入的字节长度和实际的文本字节大小之间的最小值来获取对应的文本路径。|
-|    x     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。|
-|    y     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。|
+|    x     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。单位为物理像素px。|
+|    y     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。单位为物理像素px。|
 
 **返回值：**
 
@@ -1136,6 +1136,56 @@ class DrawingRenderNode extends RenderNode {
     let myString: string = "Hello";
     let length: number = buffer.from(myString).length;
     let path = font.getTextPath(myString, length, 0, 100);
+    canvas.drawPath(path);
+  }
+}
+```
+
+## getTextPathWithFallback
+
+getTextPathWithFallback(text: string, byteLength: number, x: number, y: number): Path
+
+获取文字的轮廓路径，支持字体回退能力。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名    | 类型                                               | 必填 | 说明                    |
+| ------   | ------------------------------------------------   | ---- | ---------------------- |
+|   text   |    string                                          | 是   | 表示存储UTF-8文本编码的字符。|
+|byteLength|    number                                          | 是   | 表示要获取对应文本路径的字节长度，按传入的字节长度和实际的文本字节大小之间的最小值来获取对应的文本路径。|
+|    x     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。单位为物理像素px。|
+|    y     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。单位为物理像素px。|
+
+**返回值：**
+
+| 类型   | 说明             |
+| ------ | ---------------- |
+| [Path](arkts-apis-graphics-drawing-Path.md) | 返回获取到的文本的路径轮廓。创建路径轮廓失败时，返回undefined。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { buffer } from '@kit.ArkTS';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    font.setSize(50)
+    let myString: string = "Hello";
+    let length = buffer.from(myString).length;
+    let path = font.getTextPathWithFallback(myString, length, 0, 100);
+    if (path == undefined) {
+      return;
+    }
     canvas.drawPath(path);
   }
 }

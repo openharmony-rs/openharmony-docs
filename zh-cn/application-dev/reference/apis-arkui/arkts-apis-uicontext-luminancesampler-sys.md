@@ -64,7 +64,7 @@ onBackgroundLuminanceChange(samplingCallback: Callback&lt;number&gt;): void
 
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
-| samplingCallback | Callback&lt;number&gt; | 是 | 监听回调。触发同时返回当前背景亮度。 |
+| samplingCallback | Callback&lt;number&gt; | 是 | 监听回调。触发同时返回当前背景亮度。<br/>**说明**：监听回调里不能调用[offBackgroundLuminanceChange](#offbackgroundluminancechange23)。|
 
 **示例：** 
 

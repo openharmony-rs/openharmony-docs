@@ -13,7 +13,9 @@ reuse属性用于给\@ReusableV2装饰的自定义组件指定复用选项。
 
 >  **说明：**
 >
-> 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## reuse
 
@@ -53,7 +55,7 @@ reuse(options: ReuseOptions): T
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| reuseId | [ReuseIdCallback](#reuseidcallback) | 否 | 是 | 复用标识id，相同复用标识id的V2自定义组件会被互相复用。默认的复用标识id为自定义组件名。 |
+| reuseId | [ReuseIdCallback](#reuseidcallback) | 否 | 是 | 复用标识id，相同复用标识id的V2自定义组件会被互相复用。默认的复用标识id为自定义组件名。<br>在API版本26.0.0之前，当reuseId不是显式返回字符串字面量的回调方法时，实际的复用标识id为该自定义组件的名称。例如，`Child().reuse({ reuseId: () => getReuseId() })`的实际复用标识为`"Child"`。<br>在API版本26.0.0及以后，支持将非显式返回字符串字面量形式的reuseId作为实际的复用标识id。例如，`Child().reuse({ reuseId: () => getReuseId() })`的实际复用标识为`getReuseId()`的返回结果。 |
 
 ## ReuseIdCallback
 

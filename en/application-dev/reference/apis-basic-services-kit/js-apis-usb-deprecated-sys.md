@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **usb** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control.
 
@@ -13,7 +13,7 @@ The **usb** module provides USB device management functions, including USB devic
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are no longer maintained since API version 9. You are advised to use [`@ohos.usbManager`](js-apis-usbManager.md).
+> The APIs provided by this module are no longer maintained since API version 9. You are advised to use [@ohos.usbManager](js-apis-usbManager.md).
 >
 > This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.usb (USB Manager) (No Longer Maintained)](js-apis-usb-deprecated.md).
 
@@ -102,7 +102,7 @@ Sets the current USB function list in Device mode.
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
 
 **Example**
 
@@ -209,7 +209,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and **false** indicates the opposite.|
 
 **Example**
 

@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy; @yangxuguang-huawei; @Luobniz21-->
 <!--Designer: @ccllee1; @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ContextConstant提供Context相关的枚举，包含文件加密分区等级、UIAbility启动后的进程模式等。
 
@@ -150,6 +150,39 @@ export default class EntryAbility extends UIAbility {
       let message = (err as BusinessError).message;
       console.error(`setOnNewWantSkipScenarios failed, code is ${code}, message is ${message}`);
     }
+  }
+}
+```
+
+## ContextType
+
+表示常见Context类型的枚举，用于[isContextOf](./js-apis-inner-application-context.md#iscontextof)接口。
+
+**起始版本**：26.0.0
+
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称  | 值 | 说明                                                                                                                   |
+|-----| -------- |----------------------------------------------------------------------------------------------------------------------|
+| APPLICATION_CONTEXT | 0 | [ApplicationContext](js-apis-inner-application-applicationContext.md)类型。     |
+| ABILITY_STAGE_CONTEXT | 1 | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md)类型。     |
+| UIABILITY_CONTEXT | 2 | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)类型。     |
+| FORM_EXTENSION_CONTEXT | 3 | [FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md)类型。     |
+| APP_SERVICE_EXTENSION_CONTEXT | 4 | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)类型。     |
+
+**示例：**
+
+```ts
+import { UIAbility, contextConstant } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
+    let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
+    hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }
 }
 ```

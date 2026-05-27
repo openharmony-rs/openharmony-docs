@@ -1,7 +1,7 @@
 # Functions
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -21,6 +21,10 @@ import { avSession } from '@kit.AVSessionKit';
 createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AVSession>
 
 创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，结果通过Promise异步回调方式返回。
+
+> **说明：**
+> 
+> - 在业务执行阶段需要保持avsession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -52,11 +56,12 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
+  private avsessionController !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() { 
@@ -71,9 +76,7 @@ struct Index {
             avSession.createAVSession(context, tag, "audio").then(async (data: avSession.AVSession) => {
             currentAVSession = data;
             sessionId = currentAVSession.sessionId;
-            console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
-            }).catch((err: BusinessError) => {
-            console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
             });
           })
       }
@@ -88,6 +91,10 @@ struct Index {
 createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback\<AVSession>): void
 
 创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。
+
+> **说明：**
+> 
+> - 在业务执行阶段需要保持avsession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -112,11 +119,13 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
+  private avsessioncontroller !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() {
@@ -128,15 +137,11 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           let sessionId: string;  // 供后续函数入参使用。
 
-          avSession.createAVSession(context, tag, "audio", async (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
+          avSession.createAVSession(context, tag, "audio", async (err:BusinessError, data: avSession.AVSession) => {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
-              console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
-            }
-          });
+              console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+            });
         })
     }
     .width('100%')
@@ -181,11 +186,12 @@ getAVSession(context: Context): Promise\<AVSession>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
+  private avsessioncontroller !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() {
@@ -201,9 +207,7 @@ struct Index {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
               sessionTag = currentAVSession.sessionTag;
-              console.info(`GetAVSession : SUCCESS : sessionId=${sessionId}, sessionTag=${sessionTag}`);
-            }).catch((err: BusinessError) => {
-              console.error(`GetAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+              console.info(`Succeeded in getting AV session, sessionId: ${sessionId}, sessionTag: ${sessionTag}`);
             });
           })
       }
@@ -242,7 +246,6 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -254,14 +257,12 @@ struct Index {
         Text(this.message)
           .onClick(()=>{
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
               if (descriptors.length > 0 ) {
-                console.info(`getAllSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
+                console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`);
+                console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
+                console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
               }
-            }).catch((err: BusinessError) => {
-              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -308,8 +309,8 @@ createController(sessionId: string): Promise\<AVSessionController>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -320,16 +321,12 @@ struct Index {
         Text(this.message)
           .onClick(()=>{
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
               if (descriptors.length > 0 ) {
                 avSession.createController(descriptors[0]?.sessionId).then((avcontroller: avSession.AVSessionController) => {
-                  console.info('CreateController : SUCCESS ');
-                }).catch((err: BusinessError) => {
-                  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+                  console.info('Succeeded in creating controller.');
                 });
               }
-            }).catch((err: BusinessError) => {
-              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -368,6 +365,7 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -665,12 +663,9 @@ isDesktopLyricSupported(): Promise\<boolean>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
-  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
-}).catch((err: BusinessError) => {
-  console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info(`Succeeded in checking desktop lyric supported: ${isSupported}`);
 });
 ```

@@ -38,7 +38,7 @@
    // 添加ArkWeb抛滑丢帧事件观察者
    hiAppEvent.addWatcher({
      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-     name: 'webJankwatcher',
+     name: 'webJankWatcher',
      // 开发者可以订阅感兴趣的系统事件，此处是订阅了ArkWeb抛滑丢帧事件
      appEventFilters: [
        {
@@ -65,7 +65,7 @@
            // 开发者可以获取抛滑阶段发生丢帧的最大时长
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.max_app_frame_time=${eventInfo.params['max_app_frame_time']}`);
            const webId: number = eventInfo.params['web_id'];
-           // webIdToUrlMap时定义的变量用于实现webId到url的映射，通过系统侧获取的web_id查询到发生丢帧的网页
+           //webIdToUrlMap是一个定义的变量，用于实现webId到url的映射，通过系统侧获取的web_id查询到发生丢帧的网页
            const currentUrl = webIdToUrlMap.get(webId);
            // 开发者可以获取到发生卡顿的页面
            hilog.info(0x0000, 'testTag', `HiAppEvent get currentUrl=${currentUrl}`);

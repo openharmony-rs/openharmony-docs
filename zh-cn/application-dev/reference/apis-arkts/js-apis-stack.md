@@ -1,14 +1,14 @@
 # @ohos.util.Stack (线性容器Stack)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
 Stack基于数组的数据结构实现，特点是先进后出，只能在一端进行数据的插入和删除。
 
-Stack和[Queue](js-apis-queue.md)相比，Queue基于循环队列实现，只能在一端删除另一端插入，而Stack都在一端操作。
+Stack和[Queue](js-apis-queue.md)相比，Queue基于循环队列实现，在尾部增加元素在头部删除元素；而Stack只在一端进行操作。
 
 **推荐使用场景：** 一般符合先进后出的场景可以使用Stack。
 
@@ -253,11 +253,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**

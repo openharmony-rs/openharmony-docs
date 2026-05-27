@@ -263,6 +263,8 @@ Enumerates the audio stream usage.
 | STREAM_USAGE_ENFORCED_TONE<sup>10+</sup>  | 15     | Forcible tone (such as camera shutter sound effect).|
 | STREAM_USAGE_ULTRASONIC<sup>10+</sup>     | 16     | Ultrasonic (currently provided only for MSDP).|
 | STREAM_USAGE_VOICE_CALL_ASSISTANT<sup>12+</sup>     | 21     | Voice assistant for calls.|
+| STREAM_USAGE_ANNOUNCEMENT<sup>24+</sup>   | 22     | Notification tone.<br>**Model restriction**: This API can be used only in the stage model.|
+| STREAM_USAGE_EMERGENCY<sup>24+</sup>      | 23     | Emergency tone.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## InterruptRequestType<sup>9+</sup>
 
@@ -840,7 +842,7 @@ Sets the type of volume that the volume keys should control.
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | volumeType     | [AudioVolumeType](#audiovolumetype)                       | Yes  | Type of audio volume to control.|
-| duration |number | Yes  | Duration that the volume keys will control this type of volume if no volume key events occur. When this time expires, the forced volume type setting is canceled. The maximum duration is 10 seconds. If the duration is set to **-1**, the setting is canceled.|
+| duration |number | Yes  | Duration that the volume keys will control this type of volume if no volume key events occur, in seconds. When this time expires, the forced volume type setting is canceled. The maximum duration is 10 seconds. If the duration is set to **-1**, the setting is canceled.|
 
 **Error codes**
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
@@ -985,7 +987,7 @@ try {
 
 getAppVolumePercentageForUid(uid: number\): Promise<number\>
 
-Obtains the volume of an application based on the application ID. This API uses a promise to return the result.
+Obtains the volume percentage (within a range of 0 to 100) of an application based on the application ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1001,7 +1003,7 @@ Obtains the volume of an application based on the application ID. This API uses 
 
 | Type               | Description                         |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt; | Promise used to return the application volume (ranging from 0 to 100).|
+| Promise&lt;number&gt; | Promise used to return the application volume percentage (ranging from 0 to 100).|
 
 **Error codes**
 
@@ -1027,7 +1029,7 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
 
 setAppVolumePercentageForUid(uid: number, volume: number\): Promise<void\>
 
-Sets the application volume (within a range of 0 to 100) based on the application ID. This API uses a promise to return the result.
+Sets the volume percentage (within a range of 0 to 100) of an application based on the application ID. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1038,7 +1040,7 @@ Sets the application volume (within a range of 0 to 100) based on the applicatio
 | Name    | Type                                     | Mandatory| Description      |
 | ---------- | ---------------------------------------- | ---- |----------|
 | uid    | number                                   | Yes  | Application ID.  |
-| volume    | number                                   | Yes  | Volume to set.|
+| volume    | number                                   | Yes  | Volume percentage. The value range is [0, 100].|
 
 **Return value**
 
@@ -3050,7 +3052,7 @@ Starting from API version 23, this API does not require the ohos.permission.MANA
 
 | Type                 | Description                        |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise that returns no result.|
+| Promise&lt;void&gt;   | Promise that returns no value.|
 
 **Error codes**
 
@@ -3119,7 +3121,7 @@ Starting from API version 23, this API does not require the ohos.permission.MANA
 
 | Type                 | Description                        |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise that returns no result.|
+| Promise&lt;void&gt;   | Promise that returns no value.|
 
 **Error codes**
 
@@ -3187,7 +3189,7 @@ Starting from API version 23, this API does not require the ohos.permission.MANA
 
 | Type                 | Description                        |
 | --------------------- | --------------------------- |
-| Promise&lt;void&gt;   | Promise that returns no result.|
+| Promise&lt;void&gt;   | Promise that returns no value.|
 
 **Error codes**
 

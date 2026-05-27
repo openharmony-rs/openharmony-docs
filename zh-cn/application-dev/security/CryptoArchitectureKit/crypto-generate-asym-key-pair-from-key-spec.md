@@ -19,7 +19,7 @@
    
    RSACommonParamsSpec是AsyKeySpec的子类。需要通过参数algName指定算法'RSA'；指定密钥参数类型AsyKeySpecType.COMMON_PARAMS_SPEC，表示是公私钥中包含的公共参数。
 
-   使用密钥参数生成密钥时，用到的bigint类型需要以大端模式输入，且必须为正数。
+   使用密钥参数生成密钥时，bigint类型参数需采用大端字节序输入，且值应为正数以满足数学运算要求。
 
 2. 创建[RSAPubKeySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#rsapubkeyspec10)对象，用于指定RSA算法中公钥包含的参数（n, pk）。
    
@@ -192,7 +192,7 @@
 
    ECCCommonParamsSpec是AsyKeySpec的子类。需要通过参数algName指定算法'ECC'；指定密钥参数类型AsyKeySpecType.COMMON_PARAMS_SPEC，表示是公私钥中包含的公共参数。
 
-   使用密钥参数生成密钥时，用到的bigint类型需要以大端模式输入，且必须为正数。
+   使用密钥参数生成密钥时，bigint类型参数需采用大端字节序输入，且值应为正数以满足数学运算要求。
 
 2. 调用[cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10)，将ECCCommonParamsSpec对象传入，创建非对称密钥生成器（AsyKeyGeneratorBySpec）。
 
@@ -416,7 +416,7 @@
 
 1. 构造[ECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecccommonparamsspec10)对象，用于指定非对称公共密钥参数。根据[genECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#genecccommonparamsspec11)接口传入相应的NID字符串名称生成相应的非对称公共密钥参数。
 
-    使用密钥参数生成密钥时，用到的bigint类型需要以大端模式输入，且必须为正数。
+   使用密钥参数生成密钥时，bigint类型参数需采用大端字节序输入，且值应为正数以满足数学运算要求。
 
 2. 创建[ECCKeyPairSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecckeypairspec10)对象，并且algName设置为SM2，用于指定SM2算法中密钥对包含的参数。
 

@@ -211,7 +211,7 @@ struct WebComponent {
    }
    ```
 
-- 可选参数permission是一个json字符串，示例如下：
+- 可选参数permission是一个JSON字符串，示例如下：
   ```json5
   {
     "javascriptProxyPermission": {

@@ -16,10 +16,12 @@ You can pass in the string parameter **format** to specify the format of the poi
 1. Pass the uncompressed ECC point data of the uint8_t type, and call [OH_CryptoEcPoint_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_create) to construct a [OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md) object for generating point data.
 2. Call [OH_CryptoEcPoint_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode) to obtain the compressed point data.
 
-```C++
+<!-- @[convert_ecc_uncompressed_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/compressedPointData.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 
-static OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
+OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
 {
     uint8_t pk[] = {
         4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111,
@@ -44,15 +46,18 @@ static OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
 }
 ```
 
+
 ## Converting Compressed Point Data into a Key Object
 
 1. Pass the compressed ECC point data of the uint8_t type, and call [OH_CryptoEcPoint_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_create) to construct a [OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md) object for generating point data.
 2. Call [OH_CryptoEcPoint_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode) to obtain the uncompressed point data.
 
-```C++
+<!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/getKeyObject.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
 
-static OH_Crypto_ErrCode doTestEccPointCompressedToPoint()
+OH_Crypto_ErrCode doTestEccPointCompressedToPoint()
 {
     uint8_t pk[] = {
         2, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111,

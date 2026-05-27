@@ -1,7 +1,7 @@
 # Hid_EventTypeArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -27,4 +27,4 @@ Defines a struct for an array of event types.
 | Name| Description|
 | -- | -- |
 | Hid_EventType* hidEventType | Array of event types.|
-| uint16_t length | Length of the array.|
+| uint16_t length | Valid length of an array.|

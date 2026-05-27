@@ -218,7 +218,7 @@ typedef void (*OH_Pasteboard_ProgressListener)(Pasteboard_ProgressInfo* progress
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)* progressInfo | 定义进度上报的数据结构，且仅当进度指示选项[Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)设置为NONE时才会上报此信息。 |
+| [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)* progressInfo | 定义进度上报的数据结构，且仅当进度指示选项[Pasteboard_ProgressIndicator](#pasteboard_progressindicator)设置为PASTEBOARD_NONE时才会上报此信息。 |
 
 ### Pasteboard_Notify()
 
@@ -688,7 +688,7 @@ void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 
 ### OH_Pasteboard_GetDataParams_SetProgressIndicator()
 
@@ -707,7 +707,7 @@ void OH_Pasteboard_GetDataParams_SetProgressIndicator(Pasteboard_GetDataParams* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 | [Pasteboard_ProgressIndicator](#pasteboard_progressindicator) progressIndicator | 定义进度条指示选项。 |
 
 ### OH_Pasteboard_GetDataParams_SetDestUri()
@@ -727,7 +727,7 @@ void OH_Pasteboard_GetDataParams_SetDestUri(Pasteboard_GetDataParams* params, co
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 | const char* destUri | 定义拷贝文件目标路径。 |
 | uint32_t destUriLen | 定义拷贝文件目标路径长度。 |
 
@@ -748,7 +748,7 @@ void OH_Pasteboard_GetDataParams_SetFileConflictOptions(Pasteboard_GetDataParams
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 | [Pasteboard_FileConflictOptions](#pasteboard_fileconflictoptions) option | 定义文件拷贝冲突时的选项，默认为PASTEBOARD_OVERWRITE。 |
 
 ### OH_Pasteboard_GetDataParams_SetProgressListener()
@@ -768,7 +768,7 @@ void OH_Pasteboard_GetDataParams_SetProgressListener(Pasteboard_GetDataParams* p
 
 | 参数项                                                                              | 描述 |
 |----------------------------------------------------------------------------------| -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params             | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params             | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 | const [OH_Pasteboard_ProgressListener](#oh_pasteboard_progresslistener) listener | 表示进度上报回调函数。 |
 
 ### OH_Pasteboard_ProgressInfo_GetProgress()
@@ -813,7 +813,7 @@ void OH_Pasteboard_ProgressCancel(Pasteboard_GetDataParams* params)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 
 ### OH_Pasteboard_GetDataWithProgress()
 
@@ -835,7 +835,7 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板Pasteboard_GetDataParams的指针。 |
 | int* status | 该参数是输出参数，表示执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。 |
 
 **返回：**

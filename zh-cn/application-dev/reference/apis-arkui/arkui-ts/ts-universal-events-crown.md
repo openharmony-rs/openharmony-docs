@@ -5,13 +5,16 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-   指扭动表冠时触发的事件，事件的分发依赖于应用焦点，开发者可以通过[焦点事件](ts-universal-focus-event.md)自定义事件处理。
+
+指旋转表冠时触发的事件，事件的分发依赖于应用焦点，开发者可以通过[焦点事件](ts-universal-focus-event.md)自定义事件处理。
 
 >  **说明：**
 >
 > - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 手动旋转表冠以触发其存在默认的交互逻辑，例如旋转手表的表冠后，滚动条会根据旋转表冠的旋转方向进行滚动。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 手动旋转表冠以触发其存在默认的交互逻辑，例如旋转手表的表冠后，滚动条会根据旋转表冠的旋转方向进行滚动。
 >
 > - 组件收到表冠事件的前提是该组件获焦，焦点控制可以通过[focusable](ts-universal-attributes-focus.md#focusable)、[defaultFocus](ts-universal-attributes-focus.md#defaultfocus9)、[focusOnTouch](ts-universal-attributes-focus.md#focusontouch9)进行管理。
 >
@@ -23,7 +26,7 @@
 
 onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
-组件获焦以后扭动表冠时触发该回调。
+组件获焦以后旋转表冠时触发该回调。
 
 > **说明：**
 >
@@ -55,9 +58,9 @@ onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
 | 名称                   | 类型       | 只读    |  可选   |  说明                                                       |
 | --------------------- | ------------- | ---------- |------------ |-------------------------------------- |
-| timestamp         | number   |  否     | 否    |时间戳。                                  |
-| angularVelocity | number   |  否     | 否    |旋转角速度，每秒转的角度(°/s)。                   |
-| degree          | number   |  否     | 否    |相对旋转角度。<br>单位：度。<br>取值范围:[-360, 360]。     |
+| timestamp         | number   |  否     | 否    |时间戳。触发事件时距离系统启动的时间间隔。<br>单位：ns                                  |
+| angularVelocity | number   |  否     | 否    |旋转角速度。<br>单位：deg/s   |
+| degree          | number   |  否     | 否    |相对旋转角度。<br>单位：deg <br>取值范围:[-360, 360]。     |
 | action          | [CrownAction](ts-appendix-enums.md#crownaction18)   |  否     | 否    |表冠动作。  |
 | stopPropagation | Callback\<void>    |  否      | 否    |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。                         |
 

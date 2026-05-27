@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
@@ -219,7 +219,7 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 
 ## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
-obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -254,7 +254,7 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 ## workScheduler.obtainAllWorks<sup>10+<sup>
 
-obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
+obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -400,7 +400,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 ## workScheduler.isLastWorkTimeOut<sup>10+<sup>
 
-isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
@@ -515,13 +515,13 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 是    |电池状态。             |
 | storageRequest  | [StorageRequest](#storagerequest) | 否    | 是    |存储状态。             |
 | isRepeat        | boolean                           | 否    | 是    |是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
-| repeatCycleTime | number                            | 否    | 是    |循环间隔，单位为毫秒。             |
+| repeatCycleTime | number                            | 否    | 是    |循环间隔，单位：ms。             |
 | repeatCount     | number                            | 否    | 是    |循环次数。             |
 | isPersisted     | boolean                           | 否    | 是    |注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
 | isDeepIdle      | boolean                           | 否    | 是    |是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
-| idleWaitTime    | number                            | 否    | 是    |空闲等待时间，单位为毫秒。           |
+| idleWaitTime    | number                            | 否    | 是    |空闲等待时间，单位：ms。           |
 | parameters      | Record<string, number \| string \| boolean>  | 否    | 是    |携带参数信息。 |
-| earliestStartTime<sup>22+</sup> | number | 否    | 是    |任务首次执行时间距离任务申请时间的间隔，单位为毫秒，默认为0，范围大于等于0。 |
+| earliestStartTime<sup>22+</sup> | number | 否    | 是    |任务首次执行时间距离任务申请时间的间隔，单位：ms，默认为0，范围大于等于0。 |
 
 ## NetworkType
 

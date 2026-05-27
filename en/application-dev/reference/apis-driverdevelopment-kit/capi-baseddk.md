@@ -1,14 +1,14 @@
 # BaseDdk
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-Provides BASE DDK APIs for creating, mapping, unmapping, and destroying an **Ashmem** object.
+Provides BASE DDK APIs for creating, mapping, unmapping, and destroying the shared memory.
 
 **Since**: 12
 ## Files

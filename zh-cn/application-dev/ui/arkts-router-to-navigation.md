@@ -164,7 +164,7 @@ export struct PageOne {
 }
 ```
 
-每个子页也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
+每个子页面也需要配置到系统配置文件`router_map.json`中（参考[系统路由表](./arkts-navigation-cross-package.md#系统路由表)）。
 
 ```json5
 // 工程配置文件module.json5中配置 {"routerMap": "$profile:router_map"}
@@ -224,7 +224,7 @@ struct Index {
     Navigation(this.pathStack) {
       // ...
     }.width('100%').height('100%')
-    .title('Navigation， Navigation')
+    .title('Navigation, Navigation')
     .mode(NavigationMode.Stack)
   }
 }
@@ -678,7 +678,7 @@ Navigation作为路由组件，默认支持跨包跳转。
 
 **方案二：** 系统路由表
 
-从API version 12版本开始，Navigation支持系统跨模块的路由表方案，整体设计是将路由表方案下沉到系统中管理，即在需要路由的各个业务模块（HSP/HAR）中独立配置`router_map.json`文件，在触发路由跳转时，应用只需要通过`NavPathStack`进行路由跳转，此时系统会自动完成路由模块的动态加载、组件构建，并完成路由跳转功能，从而实现了开发层面的模块解耦。
+从API version 12开始，Navigation支持系统跨模块的路由表方案，整体设计是将路由表方案下沉到系统中管理，即在需要路由的各个业务模块（HSP/HAR）中独立配置`router_map.json`文件，在触发路由跳转时，应用只需要通过`NavPathStack`进行路由跳转，此时系统会自动完成路由模块的动态加载、组件构建，并完成路由跳转功能，从而实现了开发层面的模块解耦。
 
 具体可参考Navigation[系统路由表](./arkts-navigation-cross-package.md#系统路由表)。
 

@@ -21,7 +21,7 @@ The system provides the following permissions:
 
 - [Restricted permissions](restricted-permissions.md)
 
-   Restricted permissions are system_basic permission that can be granted to normal applications.
+   Restricted permissions are system_basic permissions that can be granted to normal applications.
 
 - [Permissions for enterprise applications](permissions-for-enterprise-apps.md)
 
@@ -38,10 +38,10 @@ The system provides the following permissions:
 
    1. [system_grant permissions available to system applications via ACL](permissions-for-system-apps.md):
 
-       The permissions can be requested via [ACL](declare-permissions-in-acl.md). The ACL allows a system application or system service to have permissions beyond its APL. The requested permissions will be automatically granted when the application is installed.
+       The permissions can be requested via [ACL](declare-permissions-in-acl.md) across APLs. The requested permissions will be automatically granted when the application is installed.
    2. [system_grant non-ACL permissions for system applications](permissions-for-system-apps-no-acl.md):
 
-       The permissions cannot be requested via ACL. You need to quey the application's APL and determine whether the application can request the permissions. The requested permissions will be automatically granted when the application is installed.
+       The permissions cannot be requested via ACL. You need to query the application's APL and determine whether the application can request the permissions. The requested permissions will be automatically granted when the application is installed.
 
    3. [user_grant permissions available to system applications via ACL](permissions-for-system-apps-user.md):
 

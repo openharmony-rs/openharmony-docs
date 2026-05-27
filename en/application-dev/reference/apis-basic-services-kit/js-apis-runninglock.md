@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **runningLock** module provides APIs for creating, querying, holding, and releasing running locks. A running lock enables the proximity sensor to turn on or off the screen, or prevents the device from entering sleep mode when the screen is off. For details about the running lock types, see [RunningLockType](#runninglocktype).
 
@@ -23,7 +23,7 @@ import {runningLock} from '@kit.BasicServicesKit';
 
 isSupported(type: RunningLockType): boolean
 
-**API description**: Checks whether the system supports the running lock of a specified type.
+Checks whether a specified type of **RunningLock** is supported.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -62,7 +62,7 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-**API description**: Creates a running lock. This API uses an asynchronous callback to return the result.
+Creates a **RunningLock** object. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -102,7 +102,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-**API description**: Creates a running lock. This API uses a promise to return the result.
+Creates a **RunningLock** object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -147,9 +147,9 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boolean&gt;): void
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
+Checks whether a specified type of **RunningLock** is supported. This API uses an asynchronous callback to return the result.
 
-**API description**: Checks whether the system supports the running lock of a specified type. This API uses an asynchronous callback to return the result.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -176,9 +176,9 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 
 isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
+Checks whether a specified type of **RunningLock** is supported. This API uses a promise to return the result.
 
-**API description**: Checks whether the system supports the running lock of a specified type. This API uses a promise to return the result.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.isSupported](#runninglockissupported9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -210,9 +210,9 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 
 createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
+Creates a **RunningLock** object. This API uses an asynchronous callback to return the result.
 
-**API description**: Creates a running lock. This API uses an asynchronous callback to return the result.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -222,9 +222,9 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 | Name  | Type                                      | Mandatory| Description                                                        |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| name     | string                                     | Yes  | Name of the **RunningLock** object.                                                  |
+| name     | string                                     | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix. |
 | type     | [RunningLockType](#runninglocktype)        | Yes  | Type of the **RunningLock** object to be created.                                          |
-| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback<[RunningLock](#runninglock)> | Yes  | Callback used to return the result. If a lock is successfully created, **err** is **undefined** and **data** is the created **RunningLock**. Otherwise, **err** is an error object. **AsyncCallback** has encapsulated an API of the **RunningLock** class. |
 
 **Example**
 
@@ -242,9 +242,9 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
+Creates a **RunningLock** object. This API uses a promise to return the result.
 
-**API description**: Creates a running lock. This API uses a promise to return the result.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [runningLock.create](#runninglockcreate9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -254,7 +254,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 | Name| Type                               | Mandatory| Description              |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| name   | string                              | Yes  | Name of the **RunningLock** object.        |
+| name   | string                              | Yes  | Name of the **RunningLock** object. A recommended name consists of the package or class name and a suffix. |
 | type   | [RunningLockType](#runninglocktype) | Yes  | Type of the **RunningLock** object to be created.|
 
 **Returns**
@@ -283,7 +283,7 @@ Defines a **RunningLock** object.
 
 hold(timeout: number): void
 
-**API description**: Holds a running lock.
+Locks and holds a **RunningLock** object.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -339,7 +339,7 @@ class RunningLockTest {
 
 unhold(): void
 
-**API description**: Releases this running lock.
+Releases a **RunningLock** object.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -389,7 +389,7 @@ class RunningLockTest {
 
 isHolding(): boolean
 
-**API description**: Checks whether this running lock is being held.
+Checks the hold status of the **RunningLock** object.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -430,9 +430,9 @@ class RunningLockTest {
 
 lock(timeout: number): void
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9) instead.
+Locks and holds a **RunningLock** object.
 
-**API description**: Locks a running lock.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.hold](#hold9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -461,9 +461,9 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 unlock(): void
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.unhold](#unhold9) instead.
+Releases a **RunningLock** object.
 
-**API description**: Releases this running lock.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.unhold](#unhold9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -486,9 +486,9 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 isUsed(): boolean
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.isHolding](#isholding9) instead.
+Checks the hold status of the **RunningLock** object.
 
-**API description**: Checks whether this running lock is used.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [RunningLock.isHolding](#isholding9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -520,4 +520,4 @@ Enumerates the types of **RunningLock** objects.
 | --------------------------------- | ---- | ------------------------------------------------------------ |
 | BACKGROUND<sup>(deprecated)</sup> | 1    | A lock that prevents the system from entering sleep mode when the screen is off.<br>**NOTE**<br>This parameter is supported since API version 7 and deprecated since API version 10.|
 | PROXIMITY_SCREEN_CONTROL          | 2    | A lock that enables the proximity sensor and turns on or off the screen based on the distance between the sensor and the obstacle. |
-| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time. Note: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../basic-services/powermgr/runningLock/runningLock-dev.md).|
+| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | A background lock that prevents the system from automatically entering sleep mode when the user is inactive for a period of time. <br>**Note**: This lock cannot prevent the system from entering the forced sleep state in scenarios such as closing the PC lid. The user must listen for the [COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12) event and release this lock after receiving the event. The behavior of this lock varies with devices. For details about how to use this type of lock, see [Preventing the Idle System from Entering Sleep Mode](../../basic-services/powermgr/runningLock/runningLock-dev.md).|

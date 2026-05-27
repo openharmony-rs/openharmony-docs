@@ -88,7 +88,7 @@ let surfaceId = '123456';
 let manager = new faceAuth.FaceAuthManager();
 try {
   manager.setSurfaceId(surfaceId);
-  console.info('set surface id success');
+  console.info('set surface id successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
   console.error(`set surface id failed, Code is ${err?.code}, message is ${err?.message}`);

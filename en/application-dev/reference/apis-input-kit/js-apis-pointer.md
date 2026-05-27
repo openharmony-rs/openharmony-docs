@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **pointer** module provides APIs related to pointer attribute management, such as querying and setting pointer attributes.
 
@@ -728,7 +728,7 @@ Mouse pointer style.
 | CROSS                            | 13   | Cross (accurate selection)  |![Cross.png](./figures/Cross.png)|
 | CURSOR_COPY                      | 14   | Copy    |![Copy.png](./figures/Copy.png)|
 | CURSOR_FORBID                    | 15   | Forbid   |![Forbid.png](./figures/Forbid.png)|
-| COLOR_SUCKER                     | 16   | Sucker    |![Colorsucker.png](./figures/Colorsucker.png)|
+| COLOR_SUCKER                     | 16   | Color picker    |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING                    | 17   | Grabbing hand  |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN                        | 18   | Opening hand  |![Hand_Open.png](./figures/Hand_Open.png)|
 | HAND_POINTING                    | 19   | Hand-shaped pointer  |![Hand_Poniting.png](./figures/Hand_Pointing.png)|
@@ -761,16 +761,16 @@ Mouse pointer style.
 | RUNNING_RIGHT<sup>22+</sup>         | 46   | Running in the background (extension 2)|![Loading_Right.png](./figures/Loading_Right.png)|
 | AECH_DEVELOPER_DEFINED_ICON<sup>22+</sup>         | 47   | Custom circular pointer|![Custom_Cursor_Circle.png](./figures/Custom_Cursor_Circle.png)|
 | SCREENRECORDER_CURSOR<sup>20+</sup>         | 48   | Screen recording |![ScreenRecorder_Cursor.png](./figures/ScreenRecorder_Cursor.png)|
-| LASER_CURSOR<sup>22+</sup>        | 49   | Floating This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
-| LASER_CURSOR_DOT<sup>22+</sup>        | 50   | Click This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
-| LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | Laser pointer This pointer can be used only when the stylus enters the air mouse mode.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
+| LASER_CURSOR<sup>22+</sup>        | 49   | Floating This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
+| LASER_CURSOR_DOT<sup>22+</sup>        | 50   | Click This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
+| LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | Laser pointer This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
 | DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | Custom pointer. You can use the [setCustomCursor](#pointersetcustomcursor15) to set a custom pointer, but not the [setPointerStyle](#pointersetpointerstyle-1) directly.|You can customize pointers as needed via API.|
 
 ## pointer.setCustomCursor<sup>11+</sup>
 
 setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): Promise&lt;void&gt;
 
-Sets the custom mouse pointer style of the specified window. This API uses a promise to return the result.
+Sets the custom cursor style of the specified window. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 
@@ -779,7 +779,7 @@ Sets the custom mouse pointer style of the specified window. This API uses a pro
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
 | windowId  | number  | Yes   | Window ID.                         |
-| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Pixel map resource.|
+| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Custom cursor resource.|
 | focusX  | number | No   | Focus x of the custom cursor. The value is greater than or equal to **0**. The default value is **0**.|
 | focusY  | number | No   | Focus y of the custom cursor. The value is greater than or equal to **0**. The default value is **0**.|
 
@@ -845,7 +845,7 @@ Defines custom cursor resources.
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
 | Name    | Type    | Read-Only    | Optional    | Description    |
 | -------- | ------- | -------- | -------- | ------- |
-| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Pixel map resource. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
+| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No  | No  | Pixel map. The minimum size is subject to the minimum limit of the image. The maximum size is 256 x 256 px.|
 | focusX  | number | No  | Yes  | Horizontal coordinate of the cursor focus. The coordinates are restricted by the size of the custom cursor. The minimum value is **0**, and the maximum value is the maximum width of the image. The default value is **0** if the parameter is left empty.|
 | focusY  | number | No  | Yes  | Vertical coordinate of the cursor focus. The coordinates are restricted by the size of the custom cursor. The minimum value is **0**, and the maximum value is the maximum height of the image. The default value is **0** if the parameter is left empty.|
 
@@ -863,7 +863,8 @@ Defines custom cursor configuration.
 
 setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
 
-Sets the custom mouse pointer style of the specified window. This API uses a promise to return the result.
+Sets the custom cursor style of the specified window. This API uses a promise to return the result asynchronously.
+
 The cursor may be switched back to the system style in the following cases: application window layout change, hot zone switching, page redirection, moving of the cursor out of the window and then back to the window, or moving of the cursor in different areas of the window. In this case, you need to reset the cursor style.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Pointer
@@ -873,8 +874,8 @@ The cursor may be switched back to the system style in the following cases: appl
 | Name   | Type   | Mandatory   | Description   |
 | -------- | -------- | -------- | -------- |
 | windowId  | number  | Yes   | Window ID.                         |
-| cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | Yes   | Custom cursor resource.|
-| config  | [CursorConfig](js-apis-pointer.md#cursorconfig15) | Yes   | Custom cursor configuration, which specifies whether to adjust the cursor size based on system settings. If **followSystem** in **CursorConfig** is set to **true**, the supported adjustment range is [size of the cursor image, 256 x 256].|
+| cursor  | [CustomCursor](#customcursor15) | Yes   | Custom cursor resource.|
+| config  | [CursorConfig](#cursorconfig15) | Yes   | Custom cursor configuration, which specifies whether to adjust the cursor size based on system settings. If **followSystem** in **CursorConfig** is set to **true**, the supported adjustment range is [size of the cursor image, 256 x 256].|
 
 **Return value**
 
@@ -884,7 +885,7 @@ The cursor may be switched back to the system style in the following cases: appl
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Device Error Codes](./errorcode-inputdevice.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Mouse Pointer Error Codes](./errorcode-pointer.md).
 
 | ID | Error Message            |
 | ---- | --------------------- |
@@ -947,7 +948,7 @@ Sets the custom mouse pointer style of the specified window. This API returns th
 | Name   | Type    | Mandatory  | Description                                 |
 | ----- | ------ | ---- | ----------------------------------- |
 | windowId  | number  | Yes   | Window ID. The value must be an integer greater than 0.                         |
-| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Pixel map resource.|
+| pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes   | Custom cursor resource.|
 | focusX  | number | No   | Focus x of the custom cursor. The value is greater than or equal to **0**. The default value is **0**.|
 | focusY  | number | No   | Focus y of the custom cursor. The value is greater than or equal to **0**. The default value is **0**.|
 

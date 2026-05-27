@@ -38,7 +38,7 @@
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { media } from '@kit.MediaKit';
    private currentProgress: number = 0;
    private avTranscoder: media.AVTranscoder | undefined = undefined;
@@ -77,7 +77,7 @@
          await this.avTranscoder.release();
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
-         fs.closeSync(this.avTranscoder!.fdDst);
+         fileIo.closeSync(this.avTranscoder!.fdDst);
        }
      }
    }
@@ -161,7 +161,7 @@
    > 转码输出文件fd（即示例里fdDst），形式为number。需要调用基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
    
    ```ts
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { media } from '@kit.MediaKit';
    private avTranscoder: media.AVTranscoder | undefined = undefined;
    private context: Context | undefined;
@@ -178,7 +178,7 @@
        // 设置输出目标文件的沙箱路径。
        let outputFilePath = this.context.filesDir + "/output.mp4";
        // 文件不存在时创建并打开文件，文件存在时打开文件。
-       let file = fs.openSync(outputFilePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+       let file = fileIo.openSync(outputFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
        // 设置转码的目标文件属性fdDst。
        this.avTranscoder.fdDst = file.fd; // 参考应用文件访问与管理中的开发示例获取创建的视频文件fd填入此处。
      }
@@ -267,7 +267,7 @@
          await this.avTranscoder.release();
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
-         fs.closeSync(this.avTranscoder!.fdDst);
+         fileIo.closeSync(this.avTranscoder!.fdDst);
        }
      }
    }
@@ -287,7 +287,7 @@
 参考以下示例，完成“开始转码-暂停转码-恢复转码-转码完成”的完整流程。
   
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS)，并将示例工程的资源复制到对应目录。
-    ```
+    ```txt
     AVTranscoderArkTS
     entry/src/main/ets/
     └── pages

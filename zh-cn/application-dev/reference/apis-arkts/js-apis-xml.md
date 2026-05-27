@@ -1,8 +1,8 @@
 # @ohos.xml (XML解析与生成)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -52,14 +52,6 @@ XmlSerializer的构造函数。
 | buffer   | ArrayBuffer \| DataView | 是   | 用于接收写入XML信息的ArrayBuffer或DataView内存。 |
 | encoding | string                            | 否   | 编码格式，默认'utf-8'（目前仅支持'utf-8'）。               |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -87,14 +79,6 @@ setAttributes(name: string, value: string): void
 | ------ | ------ | ---- | --------------- |
 | name   | string | 是   | 属性。   |
 | value  | string | 是   | 属性值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -130,14 +114,6 @@ addEmptyElement(name: string): void
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | name   | string | 是   | 元素的名称。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -197,14 +173,6 @@ startElement(name: string): void
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | name   | string | 是   | 当前元素的元素名。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -273,14 +241,6 @@ setNamespace(prefix: string, namespace: string): void
 | prefix    | string | 是   | 当前元素及其子元素的前缀。     |
 | namespace | string | 是   | 当前元素及其子元素的命名空间。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -312,14 +272,6 @@ setComment(text: string): void
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
 | text   | string | 是   | 当前元素的注释内容。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -354,14 +306,6 @@ setCDATA(text: string): void
 | ------ | ------ | ---- | ----------------- |
 | text   | string | 是   | CDATA属性的内容。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -390,14 +334,6 @@ setText(text: string): void
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
 | text   | string | 是   | text属性的内容。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -430,14 +366,6 @@ setDocType(text: string): void
 | 参数名 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- | ------------------- |
 | text   | string | 是   | DocType属性的内容。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -950,14 +878,6 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 | buffer   | ArrayBuffer \| DataView | 是   | 用于解析的XML文本信息。|
 | encoding | string                            | 否   | 编码格式，默认'utf-8'（目前仅支持'utf-8'）。         |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -984,14 +904,6 @@ parseXml(option: ParseOptions): void
 | 参数名 | 类型                          | 必填 | 说明          |
 | ------ | ----------------------------- | ---- | ------------- |
 | option | [ParseOptions](#parseoptions) | 是   | XML解析选项。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 具体使用场景可参照[解析XML标签和标签值](../../arkts-utils/xml-parsing.md#解析xml标签和标签值)和[解析XML属性和属性值](../../arkts-utils/xml-parsing.md#解析xml属性和属性值)
@@ -1038,14 +950,6 @@ parse(option: ParseOptions): void
 | 参数名 | 类型                          | 必填 | 说明                             |
 | ------ | ----------------------------- | ---- | -------------------------------- |
 | option | [ParseOptions](#parseoptions) | 是   | XML解析选项。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1151,7 +1055,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getColumnNumber() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1195,7 +1099,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getDepth() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1231,7 +1135,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getLineNumber() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1267,7 +1171,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getName() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1306,7 +1210,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getNamespace() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1345,7 +1249,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getPrefix() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:false, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1381,7 +1285,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getText() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1420,7 +1324,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.isEmptyElementTag() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1459,7 +1363,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.isWhitespace() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1493,7 +1397,7 @@ let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer);
 let str = "";
 function func(key: xml.EventType, value: xml.ParseInfo) {
   str += 'key:' + key + ' value:' + value.getAttributeCount() + ' ';
-  return true; // Determines whether to continually parse, which is used to continue or terminate parsing.
+  return true; // 决定是否继续解析，用于继续或终止解析。
 }
 let options: xml.ParseOptions = {supportDoctype:true, ignoreNameSpace:true, tokenValueCallbackFunction:func}
 that.parseXml(options);
@@ -1527,11 +1431,20 @@ console.info(str);
 
 XmlSAXParser类用于以流式方式解析XML文本。适用于需要边读取边处理的场景，支持从[stream.Readable](js-apis-stream.md#readable) 流中读取XML数据并进行解析。
 
+> **说明：**
+>
+> - 本接口采用流式解析的方式，理论上可以解析任意大小的XML文本。但考虑到实际性能表现，建议单次解析的数据大小不超过300MB，以避免解析时间过长影响使用体验。
+
 ### constructor<sup>24+</sup>
 
 constructor(inputStream: stream.Readable, encoding?: string)
 
 XmlSAXParser的构造函数。
+
+> **说明：**
+>
+> - `inputStream`参数必须传入继承自[Readable](js-apis-stream.md#readable)且实现[Doread](js-apis-stream.md#doread)的类。可以传入其他模块中满足该条件的类，如[ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12)。
+
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -1572,8 +1485,9 @@ parse(xmlSAXHandler: XmlSAXHandler): void
 
 > **说明：**
 >
-> - 在调用parse函数后，用户可以通过控制流的方式来控制解析进度。任意数据块被消费后，解析器会解析相应的进度。具体流控制方式详见[@ohos.util.stream (数据流基类stream)](js-apis-stream.md)。
-> - parse接口注册了流的on监听器，不建议再对流的监听器进行操作。
+> - 在调用parse函数后，用户可以通过控制流的方式来控制解析进度。任意数据块被推入后，解析器会解析相应的进度。具体流控制方式详见[@ohos.util.stream (数据流基类stream)](js-apis-stream.md)。
+> - 可以配合自动控制数据的流使用，如[ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12)，此时用户不再需要手动控制数据。
+> - parse接口注册了流的on监听器，会自动读取流中的数据。不建议再对流的监听器进行操作或者读取数据，以免发生冲突导致接口能力失效。
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -1605,11 +1519,17 @@ let readableStream = new TestReadable();
 let saxParser = new xml.XmlSAXParser(readableStream);
 
 let handler: xml.XmlSAXHandler = {
-  startDocument: () => {},
-  endDocument: () => {},
-  startElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string, string>) => {},
-  endElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined) => {},
-  characters: (content: string) => {}
+  startDocument: () => {
+  },
+  endDocument: () => {
+  },
+  startElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined,
+    attributes: Map<string, string>) => {
+  },
+  endElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined) => {
+  },
+  characters: (content: string) => {
+  }
 };
 
 saxParser.parse(handler);
@@ -1696,6 +1616,8 @@ characters(content: string): void
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
@@ -1725,7 +1647,8 @@ const saxHandler: xml.XmlSAXHandler = {
   endDocument() {
     console.info("endDocument");
   },
-  startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined, attributes: Map<string, string>) {
+  startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined,
+    attributes: Map<string, string>) {
     console.info("startElement elementName:", elementName);
     console.info("startElement namespaceURI:", namespaceURI);
     console.info("startElement qName:", qName);

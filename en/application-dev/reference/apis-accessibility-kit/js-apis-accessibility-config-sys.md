@@ -93,7 +93,7 @@ let name: string = 'com.ohos.example/axExtension';
 let capability: accessibility.Capability[] = ['retrieve'];
 
 config.enableAbility(name, capability).then(() => {
-  console.info(`Succeeded  in enable ability, name is ${name}, capability is ${capability}`);
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
 });
@@ -145,7 +145,7 @@ config.enableAbility(name, capability, (err: BusinessError) => {
     console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`); 
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`); 
 });
 ```
 
@@ -203,7 +203,7 @@ let connectCallback: config.ConnectCallback = {
 }
 
 config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
-  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`);
+  console.info(`Succeeded in enabling ability, name is ${name}, capability is ${capability}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
 });
@@ -253,7 +253,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name).then(() => {
-  console.info(`Succeeded in disable ability, name is ${name}`);
+  console.info(`Succeeded in disabling ability, name is ${name}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
 })
@@ -299,10 +299,10 @@ let name: string = 'com.ohos.example/axExtension';
 
 config.disableAbility(name, (err: BusinessError) => {
   if (err) {
-    console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+    console.error(`failed to disable ability, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in disable, name is ${name}`);
+  console.info(`Succeeded in disabling, name is ${name}`);
 });
 ```
 
@@ -549,7 +549,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let value: boolean = true;
 
 config.highContrastText.set(value).then(() => {
-  console.info(`Succeeded in set highContrastText value is ${value}`);
+  console.info(`succeeded in setting highContrastText value is ${value}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
 });
@@ -597,7 +597,7 @@ config.highContrastText.set(value, (err: BusinessError) => {
     console.error(`failed to set highContrastText, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in set highContrastText, value is ${value}`);
+  console.info(`succeeded in setting highContrastText, value is ${value}`);
 });
 ```
 
@@ -633,7 +633,7 @@ import { config } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 config.highContrastText.get().then((data: boolean) => {
-  console.info(`Succeeded in get highContrastText, data is ${data}`);
+  console.info(`succeeded in getting highContrastText, data is ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
 });
@@ -674,7 +674,7 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
     console.error(`failed to get highContrastText, Code is ${err.code}, message is ${err.message}`);
     return;
   }
-  console.info(`Succeeded in get highContrastText, data is ${data}`);
+  console.info(`succeeded in getting highContrastText, data is ${data}`);
 });
 ```
 
@@ -786,6 +786,7 @@ Describes the callback to be invoked when the connection to **AccessibilityExten
 ## DaltonizationColorFilter
 
 Enumerates the daltonization filters. 
+
 The configuration of **DaltonizationColorFilter** takes effect only when [daltonizationState](#properties) is set to **true**; the normal type <sup>11+</sup> is used when [daltonizationState](#properties) is set to **false**.
 
 **System API**: This is a system API.
@@ -816,6 +817,7 @@ Defines the length of time for a click.
 ## RepeatClickInterval<sup>11+</sup>
 
 Defines the interval between repeated clicks. 
+
 The configuration of **RepeatClickInterval** takes effect when [ignoreRepeatClick](#properties) is set to **true**; the normal type is used when [ignoreRepeatClick](#properties) is set to **false**.
 
 **System API**: This is a system API.

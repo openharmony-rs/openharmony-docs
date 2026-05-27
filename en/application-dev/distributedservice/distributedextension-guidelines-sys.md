@@ -51,6 +51,9 @@ The application on device A integrates **DistributedExtensionAbility**. When DSo
 * You need to log in with the same HUAWEI ID on different devices.
 * Cross-device collaboration is supported only for UIAbility applications with the same bundle name on different devices.
 
+<!--RP1-->
+<!--RP1End-->
+
 ## Environment Setup
 
 ### Environment Requirements
@@ -80,7 +83,7 @@ Cross-device connection management enables real-time processing of application b
 
 ### Available APIs
 
-For details about how to use the **DistributedExtensionAbility** APIs, see [DistributedExtensionAbility API Reference](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md).
+For details about how to use the APIs, see [@ohos.application.DistributedExtensionAbility (Distributed Extension)](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md).
 
 | Name                                                              | Description                      |
 | -------------------------------------------------------------------- | -------------------------- |

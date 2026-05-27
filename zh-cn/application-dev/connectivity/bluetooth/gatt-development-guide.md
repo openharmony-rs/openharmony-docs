@@ -1138,9 +1138,9 @@ export class GattServerManager {
       this.gattServer.addService(gattService); // 6.2 注册服务
       this.gattServer.on('connectionStateChange', this.onGattServerStateChange); // 6.3 订阅连接状态
       this.gattServer.on('characteristicRead', this.onCharacteristicRead); // 6.4 订阅特征值读事件
-      this.gattServer.on('characteristicWrite', this.onCharacteristicWrite); // 6.5 订阅特征值读事件
-      this.gattServer.on('descriptorRead', this.onDescriptorRead); // 6.6 订阅特征值读事件
-      this.gattServer.on('descriptorWrite', this.onDescriptorWrite); // 6.7 订阅特征值读事件
+      this.gattServer.on('characteristicWrite', this.onCharacteristicWrite); // 6.5 订阅特征值写事件
+      this.gattServer.on('descriptorRead', this.onDescriptorRead); // 6.6 订阅描述符读事件
+      this.gattServer.on('descriptorWrite', this.onDescriptorWrite); // 6.7 订阅描述符写事件
     } catch (err) {
       console.error(TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
     }
@@ -1194,11 +1194,11 @@ export class GattServerManager {
     console.info(TAG, 'unRegisterServer ' + this.myServiceUuid);
     try {
       this.gattServer.removeService(this.myServiceUuid); // 8.1 删除服务
-      this.gattServer.off('connectionStateChange', this.onGattServerStateChange) // 8.2 取消订阅连接状态
-      this.gattServer.on('characteristicRead', this.onCharacteristicRead); // 8.3 订阅特征值读事件
-      this.gattServer.on('characteristicWrite', this.onCharacteristicWrite); // 8.4 订阅特征值读事件
-      this.gattServer.on('descriptorRead', this.onDescriptorRead); // 8.5 订阅特征值读事件
-      this.gattServer.on('descriptorWrite', this.onDescriptorWrite); // 8.6 订阅特征值读事件
+      this.gattServer.off('connectionStateChange', this.onGattServerStateChange); // 8.2 取消订阅连接状态
+      this.gattServer.off('characteristicRead', this.onCharacteristicRead); // 8.3 取消订阅特征值读事件
+      this.gattServer.off('characteristicWrite', this.onCharacteristicWrite); // 8.4 取消订阅特征值写事件
+      this.gattServer.off('descriptorRead', this.onDescriptorRead); // 8.5 取消订阅描述符读事件
+      this.gattServer.off('descriptorWrite', this.onDescriptorWrite); // 8.6 取消订阅描述符写事件
       this.gattServer.close() // 8.7 如果应用不再使用此gattServer，则需要close
     } catch (err) {
       console.error(TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);

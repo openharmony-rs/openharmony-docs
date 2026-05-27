@@ -11,6 +11,8 @@
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -100,21 +102,58 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | null | 表示null。 |
 | undefined | 表示undefined。 |
 
+## UriPermission
+
+拖拽场景下的URI授权策略。
+
+>**说明：**
+>
+>此授权策略仅在拖拽场景下生效，其他场景不生效。
+
+支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：
+- 仅使用NONE：不做任何文件授权。
+- 仅使用READ：仅做单次只读授权。
+- 仅使用WRITE：做单次读、写授权（写授权包含读授权）。
+- READ+WRITE：做单次读、写授权，与仅写授权等同。
+- READ+PERSIST：做持久化读授权。
+- WRITE+PERSIST：做持久化读写授权。
+- READ+WRITE+PERSIST：做持久化读写授权。
+
+拖拽授权策略应用规则（按优先级从高到低）：
+- 单个数据级别：FileUri、HTML两个UDS以及File、Image、Video、Audio、Folder、HTML六个UDC数据结构支持配置授权策略参数，仅对单个record单次生效，优先级最高。
+- UnifiedData级别：UnifiedDataProperties中提供的授权参数对单次拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。
+- 默认级别：若单个数据和UnifiedDataProperties均未配置授权策略，则按照拖拽默认逻辑进行代理授权。默认逻辑如下：
+
+    - FileUri类型数据（FileUri UDS或File、Image、Video、Audio、Folder五个UDC类型）：拖拽场景下默认授权为READ+WRITE+PERSIST（读+写+持久化授权）。
+    - HTML类型数据，仅针对HTML文本中img标签下的uri做读授权。
+
+**起始版本**：26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+| 名称 | 值 | 说明 |
+| ------------ | --- | ------------------------------------------- |
+| NONE | 0 | 表示未授予任何权限。 |
+| READ | 1 | 表示读取或查看数据的权限。 |
+| WRITE | 2 | 表示修改数据的权限（包含READ）。 |
+| PERSIST | 3 | 表示持久化文件的权限。 |
+
 ## UnifiedDataProperties<sup>12+</sup>
 
 定义统一数据对象中所有数据记录的属性，包含时间戳、标签、粘贴范围以及一些附加数据等。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| extras | Record<string, object> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。 |
-| tag | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。 |
-| timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。 |
-| shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。 |
-| getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。 |
+| extras | Record<string, object> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| tag | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -130,6 +169,10 @@ properties.extras = {
 };
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+// 从API 26.0.0版本开始，支持uri授权策略
+properties.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
 properties.getDelayData = ((type: string) => {
   if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
     let plainTextDetails : Record<string, string> = {
@@ -916,14 +959,13 @@ link.description = 'This is description';
 
 HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言数据。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| htmlContent  | string | 否 | 否 | html格式内容。             |
-| plainContent | string | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。 |
+| htmlContent  | string | 否 | 否 | html格式内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。             |
+| plainContent | string | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -931,20 +973,23 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 let html = new unifiedDataChannel.HTML();
 html.htmlContent = '<div><p>标题</p></div>';
 html.plainContent = 'This is plainContent';
+// 从API 26.0.0版本开始，支持uri授权策略
+html.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.WRITE
+];
 ```
 
 ## File
 
 File类型数据，是[UnifiedRecord](#unifiedrecord)的子类，也是文件类型数据的基类，用于描述文件类型数据，推荐开发者优先使用File的子类描述数据，如[Image](#image)、[Video](#video)、[Folder](#folder)等具体子类。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| details | Record<string, string> | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。 |
-| uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。                                                                                                                                            |
+| details | Record<string, string> | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权），只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -960,11 +1005,15 @@ export default class EntryAbility extends UIAbility {
     let pathDir = context.filesDir;
     let file = new unifiedDataChannel.File();
     file.details = {
-        name: 'test',
-        type: 'txt'
+      'name': 'test',
+      'type': 'txt'
     };
     let filePath = pathDir + '/test.txt';
     file.uri = fileUri.getUriFromPath(filePath);
+    // 从API 26.0.0版本开始，支持uri授权策略
+    file.uriAuthorizationPolicies = [
+      unifiedDataChannel.UriPermission.WRITE
+    ];
   }
 }
 ```
@@ -1164,8 +1213,8 @@ let unifiedData = new unifiedDataChannel.UnifiedData(form);
 | -------- | -------- | -------- | -------- | -------- |
 | appId       | string | 否 | 否 | 图标对应的应用id。      |
 | appName     | string | 否 | 否 | 图标对应的应用名。       |
-| appIconId   | string | 否 | 否 | 图标的图片id。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>        |
-| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>    |
+| appIconId   | string | 否 | 否 | 图标的图片id。<br/>        |
+| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。   |
 | bundleName  | string | 否 | 否 | 图标对应的应用bundle名。 |
 | abilityName | string | 否 | 否 | 图标对应的应用ability名。 |
 
@@ -1274,10 +1323,10 @@ UDMF已经支持的数据通路枚举类型。其主要用途是标识各种UDMF
 | 名称       | 值         | 说明      |
 |----------|-----------|---------|
 | DATA_HUB | 'DataHub' | 公共数据通路。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| DRAG<sup>14+</sup> | 'Drag' | 拖拽类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在拖拽场景下使用UDMF来跨应用数据共享。 |
-| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | 系统分享类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在系统分享场景下使用UDMF来跨应用数据共享。 |
-| PICKER<sup>20+</sup> | 'Picker' | Picker类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在Picker选择器场景下使用UDMF来跨应用数据共享。 |
-| MENU<sup>20+</sup> | 'Menu' | 菜单类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在右键菜单场景下使用UDMF来跨应用数据共享。 |
+| DRAG<sup>14+</sup> | 'Drag' | 拖拽类型数据通道。<br/>**适用场景：** 适用于在拖拽场景下使用UDMF来跨应用数据共享。 |
+| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | 系统分享类型数据通道。<br/>**适用场景：** 适用于在系统分享场景下使用UDMF来跨应用数据共享。 |
+| PICKER<sup>20+</sup> | 'Picker' | Picker类型数据通道。<br/>**适用场景：** 适用于在Picker选择器场景下使用UDMF来跨应用数据共享。 |
+| MENU<sup>20+</sup> | 'Menu' | 菜单类型数据通道。<br/>**适用场景：** 适用于在右键菜单场景下使用UDMF来跨应用数据共享。 |
 
 ## Visibility<sup>20+</sup> 
 
@@ -1287,8 +1336,8 @@ UDMF已经支持的数据通路枚举类型。其主要用途是标识各种UDMF
 
 | 名称          | 值   | 说明                          |
 | ------------- | ---- |------------------------------|
-| ALL           | 0    | 可见性等级，所有应用可见。<br/>**模型约束：** 此接口仅可在Stage模型下使用。     |
-| OWN_PROCESS   | 1    | 可见性等级，仅数据提供者可见。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| ALL           | 0    | 可见性等级，所有应用可见。    |
+| OWN_PROCESS   | 1    | 可见性等级，仅数据提供者可见。  |
 
 ## Options
 
@@ -1447,8 +1496,6 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **参数：**
@@ -1476,7 +1523,7 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 | 名称                   | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- |-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
 | loadHandler    | [DataLoadHandler](#dataloadhandler20)       | 否 | 否| 表示用于延迟加载数据的处理函数。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。             |
-| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用.<br/>**模型约束：** 此接口仅可在Stage模型下使用。              |
+| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。              |
 | dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | 否 | 否| 用于描述当前发送方可生成的数据类型及数量信息。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。              |
 
 ## unifiedDataChannel.insertData
@@ -1999,8 +2046,6 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 **需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **参数：**
@@ -2040,8 +2085,6 @@ removeAppShareOptions(intention: Intention): void
 清除[setAppShareOptions](#unifieddatachannelsetappshareoptions14)设置的管控信息。
 
 **需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -2086,8 +2129,6 @@ convertRecordsToEntries(data: UnifiedData): void
 否则不会产生任何行为。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 

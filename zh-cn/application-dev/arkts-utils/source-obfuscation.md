@@ -1,10 +1,10 @@
 # ArkGuard混淆原理及功能
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 术语清单
 
@@ -417,6 +417,8 @@ test(a2);
 >**注意**：
 >
 >release模式构建的应用栈信息仅包含代码行号，不包含列号，因此-compact功能开启后无法依据报错栈中的行号定位到源码具体位置。
+>
+>若希望对部分源码路径仍保留换行（便于对照报错栈行号阅读混淆中间产物），可在开启`-compact`的同时，使用[-keep-uncompact](#-keep-uncompact)指定不参与压缩的源码路径。
 
 ### -remove-comments
 
@@ -1162,6 +1164,7 @@ example["log"].info
 | 指定保留注释 | [`-keep-comments`](#-keep-comments) |
 | 指定保留声明文件中的所有名称 | [`-keep-dts`](#-keep-dts) |
 | 指定保留源码文件中的所有名称 | [`-keep`](#-keep) |
+| 在代码压缩时排除指定路径的文件 | [`-keep-uncompact`](#-keep-uncompact) |
 
 ### -keep-property-name
 
@@ -1338,18 +1341,18 @@ console.info(obj2['m']); // 此时，'m'会被正确混淆，m可以选择性保
 
 8.使用到的数字字面量属性需要手动保留，例如：
 
- <!-- @[optionExample_keepPropertyName6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->       
- 
- ``` TypeScript
- class MyClass09 {
-   123 = 'numeric-prop'; // 数字字面量属性
-   [456] = 'computed'; // 计算属性中的数字
-   method() {
-     console.info(this[123]); // 123和456需要被保留
-     console.info(this[456]);
-   }
- }
- ```
+  <!-- @[optionExample_keepPropertyName6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->
+  
+  ``` TypeScript
+  class MyClass09 {
+    123 = 'numeric-prop'; // 数字字面量属性
+    [456] = 'computed'; // 计算属性中的数字
+    method() {
+      console.info(this[123]); // 123和456需要被保留
+      console.info(this[456]);
+    }
+  }
+  ```
 
 ### -keep-global-name
 
@@ -1382,6 +1385,8 @@ export namespace Ns {
 **需要手动配置白名单的顶层作用域名称**
 
 当以命名导入的方式导入so库的API时，如果同时开启`-enable-toplevel-obfuscation`和`-enable-export-obfuscation`选项，需要手动保留API的名称。
+
+在只开启`-enable-toplevel-obfuscation`规则的情况下，如果so库没有提供声明文件（如Index.d.ts），混淆工具无法将该库的方法收集至白名单中，因此so库的方法仍可能被混淆。此时需提供so库的声明文件，或将so库的方法加入到`-keep-global-name`选项中以避免被混淆。
 
 <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/cpp/types/libentry/Index.d.ts) -->         
 
@@ -1599,6 +1604,26 @@ Human
 
 3. 使用-keep规则保留某个文件时，该文件中的代码不会被混淆，但是在其他文件中引用该文件中的属性名称时，仍然可能被混淆，此时可参考[-keep规则常见案例](./source-obfuscation-questions.md#跨文件调用某属性该属性在一个文件中保留在另一个文件中被混淆)来解决。
 
+### -keep-uncompact
+
+从API版本26.0.0开始，可通过`-keep-uncompact`指定相对路径下的源码**不参与**代码压缩。
+
+**使用该选项时，需要注意以下事项：**
+
+1. 该选项在开启[-compact](#-compact)功能后才会生效；未开启`-compact`时，配置本选项不产生效果。
+
+2. 配置的路径仅支持相对路径，`./`和`../`均为相对于混淆配置文件所在的目录。若配置路径为文件夹，则该文件夹下的文件及子文件夹中的文件都不被压缩。
+
+3. 当配置路径指向远程三方包（即`oh_modules`目录）时，需指定其在**工程级**`oh_modules`中的真实路径（与[`-keep`](#-keep)中保留远程HAP包的方式二一致），以确保路径解析正确。
+
+```text
+-compact
+-keep-uncompact
+./src/main/ets/example/FileA.ets
+./src/main/ets/example/folder
+../oh_modules/somePackage/src
+```
+
 ### 保留选项支持的通配符
 
 **名称类通配符**
@@ -1788,6 +1813,7 @@ a*
 | -enable-filename-obfuscation | HAR包文件/文件夹名称混淆 <br> HAP/HSP文件/文件夹名称混淆 | 10 <br> 12 |
 | -enable-export-obfuscation   | 向外导入或导出的名称混淆 | 10 |
 | -compact                     | 去除不必要的空格符和所有的换行符 | 10 |
+| -keep-uncompact              | 开启`-compact`时，指定路径下的源码不进行代码压缩 | 26.0.0 |
 | -remove-log                  | 删除特定场景中的console.* | 10 |
 | -print-namecache             | 将名称缓存保存到指定的文件路径 | 10 |
 | -apply-namecache             | 复用指定的名称缓存文件 | 10 |

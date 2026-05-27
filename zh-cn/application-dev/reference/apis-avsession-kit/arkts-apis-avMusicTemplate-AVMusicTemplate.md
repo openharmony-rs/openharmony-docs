@@ -27,8 +27,8 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 | 名称       | 类型   | 只读 | 可选 | 说明                 |
 | :--------- | :----- | :--- | :--- | :------------------- |
-| sessionId  | string | 是   | 否   | 音频模板唯一的标识。 |
-| sessionTag | string | 是   | 否   | 音频模板标签。       |
+| sessionId  | string | 否   | 否   | 音频模板唯一的标识。 |
+| sessionTag | string | 否   | 否   | 音频模板标签。       |
 
 **示例：**
 
@@ -62,12 +62,8 @@ export class TemplateManager {
       console.warn('createTemplate: template not undefined');
       return
     }
-    try {
-      this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);
-      console.info('createTemplate: success');
-    } catch (e) {
-      console.error(`createTemplate, errCode: ${e?.code}`);
-    }
+    this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);
+    console.info('Succeeded in creating template.');
   }
 }
 ```
@@ -148,13 +144,8 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private queryMainTabsEvent: avMusicTemplate.QueryMainTabsEvent = async () => {
     return new Promise<avMusicTemplate.MediaTab[]>(async (resolve, reject) => {
-      try {
-        let tabs: avMusicTemplate.MediaTab[] = await this.getMainTabs();
-        resolve(tabs);
-      } catch (e) {
-        console.error(`queryMainTabsEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let tabs: avMusicTemplate.MediaTab[] = await this.getMainTabs();
+      resolve(tabs);
     });
   };
 
@@ -263,13 +254,8 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private queryMediaTabContentEvent: avMusicTemplate.QueryMediaTabContentEvent = async (tabId: string) => {
     return new Promise<avMusicTemplate.MediaTabContent>(async (resolve, reject) => {
-      try {
-        let tabContent: avMusicTemplate.MediaTabContent = await this.createMediaTabContent();
-        resolve(tabContent);
-      } catch (e) {
-        console.error(`queryMediaTabContentEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let tabContent: avMusicTemplate.MediaTabContent = await this.createMediaTabContent();
+      resolve(tabContent);
     });
   };
 
@@ -413,13 +399,8 @@ export class TemplateManager {
   private queryMediaEntityEvent: avMusicTemplate.QueryMediaEntityEvent =
     async (params: avMusicTemplate.QueryMediaEntityParam) => {
       return new Promise<avMusicTemplate.PageMediaEntity>(async (resolve, reject) => {
-        try {
-          let pageMediaEntity: avMusicTemplate.PageMediaEntity = await this.createPageMediaEntity();
-          resolve(pageMediaEntity);
-        } catch (e) {
-          console.error(`queryMediaEntityEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let pageMediaEntity: avMusicTemplate.PageMediaEntity = await this.createPageMediaEntity();
+        resolve(pageMediaEntity);
       });
     };
 
@@ -548,13 +529,8 @@ export class TemplateManager {
   private queryCompilationEvent: avMusicTemplate.QueryCompilationEvent =
     async (compilationId: string, pageIndex: number) => {
       return new Promise<avMusicTemplate.PageMediaEntity>(async (resolve, reject) => {
-        try {
-          let pageMediaEntity: avMusicTemplate.PageMediaEntity = await this.createPageMediaEntity();
-          resolve(pageMediaEntity);
-        } catch (e) {
-          console.error(`queryCompilationEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let pageMediaEntity: avMusicTemplate.PageMediaEntity = await this.createPageMediaEntity();
+        resolve(pageMediaEntity);
       });
     };
 
@@ -683,13 +659,8 @@ export class TemplateManager {
   private queryPlaylistEvent: avMusicTemplate.QueryPlaylistEvent =
     async (pageIndex: number, sort: avMusicTemplate.Sort) => {
       return new Promise<avMusicTemplate.PageMediaEntity>(async (resolve, reject) => {
-        try {
-          let pageMediaEntity: avMusicTemplate.PageMediaEntity = await this.createPageMediaEntity();
-          resolve(pageMediaEntity);
-        } catch (e) {
-          console.error(`queryPlaylistEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let pageMediaEntity: avMusicTemplate.PageMediaEntity = await this.createPageMediaEntity();
+        resolve(pageMediaEntity);
       });
     };
 
@@ -817,13 +788,8 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private queryCurrentSingleEvent: avMusicTemplate.QueryCurrentSingleEvent = async () => {
     return new Promise<avMusicTemplate.Single>(async (resolve, reject) => {
-      try {
-        let single: avMusicTemplate.Single = await this.createCurrentSingle();
-        resolve(single);
-      } catch (e) {
-        console.error(`queryCurrentSingleEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let single: avMusicTemplate.Single = await this.createCurrentSingle();
+      resolve(single);
     });
   };
 
@@ -963,14 +929,9 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private queryCompilationByKeywordEvent: avMusicTemplate.QueryCompilationByKeywordEvent = async (keyword: string) => {
     return new Promise<avMusicTemplate.Compilation[]>(async (resolve, reject) => {
-      try {
-        let compilation: avMusicTemplate.Compilation = await this.createCompilation();
-        let compilations: avMusicTemplate.Compilation[] = [compilation];
-        resolve(compilations);
-      } catch (e) {
-        console.error(`queryCompilationByKeywordEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let compilation: avMusicTemplate.Compilation = await this.createCompilation();
+      let compilations: avMusicTemplate.Compilation[] = [compilation];
+      resolve(compilations);
     });
   };
 
@@ -1099,13 +1060,8 @@ export class TemplateManager {
   private queryMediaEntityByKeywordEvent: avMusicTemplate.QueryMediaEntityByKeywordEvent =
     async (keyword: string, searchType: avMusicTemplate.EntityType, pageIndex: number) => {
       return new Promise<avMusicTemplate.PageMediaEntity>(async (resolve, reject) => {
-        try {
-          let pageMediaEntity: avMusicTemplate.PageMediaEntity = await this.createPageMediaEntity();
-          resolve(pageMediaEntity);
-        } catch (e) {
-          console.error(`queryMediaEntityByKeywordEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let pageMediaEntity: avMusicTemplate.PageMediaEntity = await this.createPageMediaEntity();
+        resolve(pageMediaEntity);
       });
     };
 
@@ -1233,14 +1189,9 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private queryRecommendMediaEntityListEvent: avMusicTemplate.QueryRecommendMediaEntityListEvent = async () => {
     return new Promise<avMusicTemplate.MediaEntity[]>(async (resolve, reject) => {
-      try {
-        let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
-        let mediaEntities: avMusicTemplate.MediaEntity[] = [mediaEntity];
-        resolve(mediaEntities);
-      } catch (e) {
-        console.error(`queryRecommendMediaEntityListEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let mediaEntity: avMusicTemplate.MediaEntity = await this.createMediaEntity();
+      let mediaEntities: avMusicTemplate.MediaEntity[] = [mediaEntity];
+      resolve(mediaEntities);
     });
   };
 
@@ -1349,13 +1300,8 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private queryHotWordsEvent: avMusicTemplate.QueryHotWordsEvent = async () => {
     return new Promise<string[]>(async (resolve, reject) => {
-      try {
-        let hotWords: string[] = ['热词1', '热词2', '热词3', '热词4', '热词5'];
-        resolve(hotWords);
-      } catch (e) {
-        console.error(`queryHotWordsEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let hotWords: string[] = ['热词1', '热词2', '热词3', '热词4', '热词5'];
+      resolve(hotWords);
     });
   };
 
@@ -1446,13 +1392,8 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private querySearchHistoryEvent: avMusicTemplate.QuerySearchHistoryEvent = async () => {
     return new Promise<string[]>(async (resolve, reject) => {
-      try {
-        let searchHistory: string[] = ['搜索历史1', '搜索历史2', '搜索历史3', '搜索历史4', '搜索历史5'];
-        resolve(searchHistory);
-      } catch (e) {
-        console.error(`querySearchHistoryEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let searchHistory: string[] = ['搜索历史1', '搜索历史2', '搜索历史3', '搜索历史4', '搜索历史5'];
+      resolve(searchHistory);
     });
   };
 
@@ -1543,13 +1484,8 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private clearSearchHistoryEvent: avMusicTemplate.ClearSearchHistoryEvent = async () => {
     return new Promise<avMusicTemplate.OperResult>(async (resolve, reject) => {
-      try {
-        let operResult: avMusicTemplate.OperResult = await this.createOperResult();
-        resolve(operResult);
-      } catch (e) {
-        console.error(`clearSearchHistoryEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let operResult: avMusicTemplate.OperResult = await this.createOperResult();
+      resolve(operResult);
     });
   };
 
@@ -1652,14 +1588,9 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private loginEvent: avMusicTemplate.LoginEvent = async (controlType: avMusicTemplate.LoginType, id?: string) => {
     return new Promise<avMusicTemplate.QrCodeInfo[]>(async (resolve, reject) => {
-      try {
-        let qrCodeInfo: avMusicTemplate.QrCodeInfo = await this.createQrCodeInfo();
-        let qrCodeInfos: avMusicTemplate.QrCodeInfo[] = [qrCodeInfo];
-        resolve(qrCodeInfos);
-      } catch (e) {
-        console.error(`loginEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let qrCodeInfo: avMusicTemplate.QrCodeInfo = await this.createQrCodeInfo();
+      let qrCodeInfos: avMusicTemplate.QrCodeInfo[] = [qrCodeInfo];
+      resolve(qrCodeInfos);
     });
   };
 
@@ -1769,13 +1700,8 @@ export class TemplateManager {
   private requestDialogInfoEvent: avMusicTemplate.RequestDialogInfoEvent =
     async (actionType: avMusicTemplate.DialogActionType, actionInfo?: avMusicTemplate.DialogActionInfo) => {
       return new Promise<avMusicTemplate.DialogInfo>(async (resolve, reject) => {
-        try {
-          let dialogInfo: avMusicTemplate.DialogInfo = await this.createDialogInfo();
-          resolve(dialogInfo);
-        } catch (e) {
-          console.error(`requestDialogInfoEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let dialogInfo: avMusicTemplate.DialogInfo = await this.createDialogInfo();
+        resolve(dialogInfo);
       });
     };
 
@@ -1891,13 +1817,8 @@ export class TemplateManager {
   private handleMemberPurchaseEvent: avMusicTemplate.HandleMemberPurchaseEvent =
     async (info: avMusicTemplate.MemberPurchaseInfo) => {
       return new Promise<avMusicTemplate.DialogInfo>(async (resolve, reject) => {
-        try {
-          let dialogInfo: avMusicTemplate.DialogInfo = await this.createDialogInfo();
-          resolve(dialogInfo);
-        } catch (e) {
-          console.error(`handleMemberPurchaseEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let dialogInfo: avMusicTemplate.DialogInfo = await this.createDialogInfo();
+        resolve(dialogInfo);
       });
     };
 
@@ -2013,14 +1934,9 @@ export class TemplateManager {
   private queryMemberPurchaseEvent: avMusicTemplate.QueryMemberPurchaseEvent =
     async (memberPurchaseType: avMusicTemplate.MemberPurchaseType) => {
       return new Promise<avMusicTemplate.MemberPurchaseInfo[]>(async (resolve, reject) => {
-        try {
-          let memberPurchaseInfo: avMusicTemplate.MemberPurchaseInfo = await this.createQueryMemberPurchase();
-          let memberPurchaseInfos: avMusicTemplate.MemberPurchaseInfo[] = [memberPurchaseInfo];
-          resolve(memberPurchaseInfos);
-        } catch (e) {
-          console.error(`queryMemberPurchaseEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let memberPurchaseInfo: avMusicTemplate.MemberPurchaseInfo = await this.createQueryMemberPurchase();
+        let memberPurchaseInfos: avMusicTemplate.MemberPurchaseInfo[] = [memberPurchaseInfo];
+        resolve(memberPurchaseInfos);
       });
     };
 
@@ -2127,13 +2043,8 @@ export class TemplateManager {
   private queryCustomContentEvent: avMusicTemplate.QueryCustomContentEvent =
     async (queryTypes: avMusicTemplate.CustomType[]) => {
       return new Promise<avMusicTemplate.CustomElement>(async (resolve, reject) => {
-        try {
-          let customElement: avMusicTemplate.CustomElement = await this.createCustomContent();
-          resolve(customElement);
-        } catch (e) {
-          console.error(`queryCustomContentEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let customElement: avMusicTemplate.CustomElement = await this.createCustomContent();
+        resolve(customElement);
       });
     };
 
@@ -2257,14 +2168,9 @@ export class TemplateManager {
   private downloadMediaEntityEvent: avMusicTemplate.DownloadMediaEntityEvent =
     async (controlType: avMusicTemplate.DownloadControlType, mediaEntity: avMusicTemplate.MediaEntity) => {
       return new Promise<avMusicTemplate.OperResult>(async (resolve, reject) => {
-        try {
-          let operResult: avMusicTemplate.OperResult = await this.createOperResult();
-          this.downloadMediaEntity(mediaEntity);
-          resolve(operResult);
-        } catch (e) {
-          console.error(`downloadMediaEntityEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let operResult: avMusicTemplate.OperResult = await this.createOperResult();
+        this.downloadMediaEntity(mediaEntity);
+        resolve(operResult);
       });
     };
 
@@ -2390,13 +2296,8 @@ export class TemplateManager {
   private settingsChangeEvent: avMusicTemplate.SettingsChangeEvent =
     async (settingItem: avMusicTemplate.SettingItem) => {
       return new Promise<avMusicTemplate.SettingItem>(async (resolve, reject) => {
-        try {
-          let settingItem: avMusicTemplate.SettingItem = await this.settingsChange();
-          resolve(settingItem);
-        } catch (e) {
-          console.error(`settingsChangeEvent fail, errCode: ${e?.code}`);
-          reject(e);
-        }
+        let settingItem: avMusicTemplate.SettingItem = await this.settingsChange();
+        resolve(settingItem);
       });
     };
 
@@ -2504,13 +2405,8 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private problemAndAdviceEvent: avMusicTemplate.ProblemAndAdviceEvent = async (advice: string) => {
     return new Promise<avMusicTemplate.OperResult>(async (resolve, reject) => {
-      try {
-        let operResult: avMusicTemplate.OperResult = await this.createOperResult();
-        resolve(operResult);
-      } catch (e) {
-        console.error(`problemAndAdviceEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let operResult: avMusicTemplate.OperResult = await this.createOperResult();
+      resolve(operResult);
     });
   };
 
@@ -2614,13 +2510,8 @@ export class TemplateManager {
   private playForSearchEvent: avMusicTemplate.PlayForSearchEvent = async (command: avMusicTemplate.SearchPlayInfoType,
     args: avMusicTemplate.SearchPlayInfo) => {
     return new Promise<avMusicTemplate.OperResult>(async (resolve, reject) => {
-      try {
-        let operResult: avMusicTemplate.OperResult = await this.createOperResult();
-        resolve(operResult);
-      } catch (e) {
-        console.error(`playForSearchEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let operResult: avMusicTemplate.OperResult = await this.createOperResult();
+      resolve(operResult);
     });
   };
 
@@ -2723,13 +2614,8 @@ export class TemplateManager {
   private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
   private executeActionEvent: avMusicTemplate.ExecuteActionEvent = async (actionType: string, params: string) => {
     return new Promise<string>(async (resolve, reject) => {
-      try {
-        let result: string = 'success';
-        resolve(result);
-      } catch (e) {
-        console.error(`executeActionEvent fail, errCode: ${e?.code}`);
-        reject(e);
-      }
+      let result: string = 'success';
+      resolve(result);
     });
   };
 
@@ -2912,13 +2798,8 @@ export class TemplateManager {
     private favoriteMediaEntityEvent: avMusicTemplate.FavoriteMediaEntityEvent =
         async (actionType: avMusicTemplate.MediaFavoriteType, mediaEntity: avMusicTemplate.MediaEntity) => {
             return new Promise<avMusicTemplate.OperResult>(async (resolve, reject) => {
-                try {
-                    let operResult: avMusicTemplate.OperResult = await this.createOperResult();
-                    resolve(operResult);
-                } catch (e) {
-                    console.error(`favoriteMediaEntityEvent fail, errCode: ${e?.code}`);
-                    reject(e);
-                }
+                let operResult: avMusicTemplate.OperResult = await this.createOperResult();
+                resolve(operResult);
             });
         };
 
@@ -3016,7 +2897,7 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setUserInfo can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3085,7 +2966,7 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setDialogCommand can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3148,7 +3029,7 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setCurrentSingle can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3244,7 +3125,7 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setMediaEntities can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3302,7 +3183,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setTabContent can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3374,7 +3255,7 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setPlaylist can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3442,7 +3323,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setDownloadMediaEntityStatus can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3503,7 +3384,7 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setCustomElements can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3559,7 +3440,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 | 参数名       | 类型                                                         | 必填 | 说明         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------ |
-| settingItems | [SettingItem](arkts-apis-avMusicTemplate-i.md#settingitem) | 是   | 设置项数组。 |
+| settingItems | [SettingItem](arkts-apis-avMusicTemplate-i.md#settingitem)[] | 是   | 设置项数组。 |
 
 **返回值：**
 
@@ -3575,7 +3456,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function setSettings can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3633,7 +3514,7 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported.function reportExecuteAction can not work correctly due to limited device capabilities. |
 | 35000005 | AVMusicTemplate does not exist.                              |
-| 35000011 | Thr data write error, data is invalid.                       |
+| 35000011 | The data write error, data is invalid.                       |
 
 **示例：**
 
@@ -3684,7 +3565,7 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 | -------- | -------------------------------------- |
 | 801      | capability not supported.              |
 | 35000005 | AVMusicTemplate does not exist.        |
-| 35000011 | Thr data write error, data is invalid. |
+| 35000011 | The data write error, data is invalid. |
 
 **示例：**
 
@@ -3716,8 +3597,6 @@ export class TemplateManager {
         }
         wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
             this.template?.setExtensionAbility(agent);
-        }).catch((e: BusinessError) => {
-            console.error(`getWantAgent, errCode: ${e?.code}`);
         })
     };
 }

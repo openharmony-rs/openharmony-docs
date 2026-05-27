@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 - ArkTS API<!--localization-arkts-->
   - [@ohos.i18n (国际化-I18n)](js-apis-i18n.md)

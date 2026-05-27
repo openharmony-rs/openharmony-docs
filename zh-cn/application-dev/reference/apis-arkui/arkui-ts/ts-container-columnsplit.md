@@ -60,6 +60,8 @@ divider(value: ColumnSplitDividerStyle | null)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -73,6 +75,8 @@ divider(value: ColumnSplitDividerStyle | null)
 设置子组件与上下分割线的距离。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,7 +107,7 @@ divider(value: ColumnSplitDividerStyle | null)
 @Component
 struct ColumnSplitExample {
   build() {
-    Column(){
+    Column() {
       Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
       ColumnSplit() {
         Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)

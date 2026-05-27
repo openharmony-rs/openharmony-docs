@@ -1,14 +1,14 @@
 # inputmethod_types_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
-提供了输入法相关的类型定义。
+提供了输入法相关的类型定义，包含键盘状态、回车键功能类型，光标移动方向等。
 
 **引用文件：** <inputmethod/inputmethod_types_capi.h>
 

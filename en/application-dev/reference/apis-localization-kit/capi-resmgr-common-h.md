@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## Overview
 
@@ -43,7 +43,7 @@ Provides the enum types and structures for resource manager APIs.
 
 ### ResourceManager_ErrorCode
 
-```
+```c
 enum ResourceManager_ErrorCode
 ```
 
@@ -71,7 +71,7 @@ Enumerates resource manager error codes.
 
 ### ScreenDensity
 
-```
+```c
 enum ScreenDensity
 ```
 
@@ -92,7 +92,7 @@ Enumerates screen density types.
 
 ### ResourceManager_Direction
 
-```
+```c
 enum ResourceManager_Direction
 ```
 
@@ -109,7 +109,7 @@ Enumerates screen orientations.
 
 ### ResourceManager_ColorMode
 
-```
+```c
 enum ResourceManager_ColorMode
 ```
 
@@ -126,7 +126,7 @@ Enumerates color modes.
 
 ### ResourceManager_DeviceType
 
-```
+```c
 enum ResourceManager_DeviceType
 ```
 

@@ -22,7 +22,7 @@ import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ## ISendable
 type ISendable = lang.ISendable
 
-**ISendable** is the parent type of all sendable types except null and undefined. It does not have any necessary methods or properties.
+The ISendable type is redefined to align with the API specifications of the current module.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -136,14 +136,6 @@ Obtains the color space type.
 | ------------------ | ------------------------ |
 | [colorSpaceManager.ColorSpace](js-apis-colorSpaceManager.md#colorspace)  | Color space type.|
 
-**Error codes**
-
-For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
-
-| ID| Error Message|
-| ------- | ----------------------- |
-| 18600001 | The parameter value is abnormal. |
-
 **Example**
 
 ```ts
@@ -163,14 +155,6 @@ Obtains the coordinates of the white point in the color space.
 | Type               | Description                    |
 | ------------------ | ------------------------ |
 | [collections.Array\<number\>](../apis-arkts/arkts-apis-arkts-collections-Array.md)  | Coordinates [x, y] of the white point.|
-
-**Error codes**
-
-For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
-
-| ID| Error Message|
-| ------- | ----------------------- |
-| 18600001 | The parameter value is abnormal. |
 
 **Example**
 
@@ -192,14 +176,6 @@ Obtains the gamma of the color space.
 | Type               | Description                    |
 | ------------------ | ------------------------ |
 | number  | Gamma of the color space.|
-
-**Error codes**
-
-For details about the error codes, see [colorSpaceManager Error Codes](errorcode-colorspace-manager.md).
-
-| ID| Error Message|
-| ------- | ----------------------- |
-| 18600001 | The parameter value is abnormal. |
 
 **Example**
 

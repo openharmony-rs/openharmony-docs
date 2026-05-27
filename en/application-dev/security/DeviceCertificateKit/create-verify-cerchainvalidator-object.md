@@ -26,7 +26,7 @@ You can refer to the following example to construct a certificate chain from mul
 
 3. Create a [CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata) object.
    
-   The certificate framework provides the **CertChainValidator** object to validate the root of the trust chain. The **CertChainValidator** object to be validated must comply with the data structure definition [CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata).
+   The certificate framework provides the **CertChainValidator** object to validate the root of the trust chain. This object must comply with the data structure definition [CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata).
 
 4. Use [CertChainValidator.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate) to validate the certificate chain data.
 

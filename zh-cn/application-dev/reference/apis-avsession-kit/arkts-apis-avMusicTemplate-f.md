@@ -83,7 +83,7 @@ export class TemplateManager {
     }
     try {
       this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);
-      console.info('createTemplate: success');
+      console.info('Succeeded in creating template.');
     } catch (e) {
       console.error(`createTemplate, errCode: ${e?.code}`);
     }

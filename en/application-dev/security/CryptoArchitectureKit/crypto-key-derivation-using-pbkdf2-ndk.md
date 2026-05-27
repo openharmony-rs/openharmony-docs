@@ -11,41 +11,36 @@ For details about the corresponding algorithm specifications, see [PBKDF2](crypt
 
 ## How to Develop
 
-1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) and specify the string parameter **PBKDF2** to create a key derivation parameter object.
+1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) with the string parameter **PBKDF2** to create a key derivation parameter object.
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by PBKDF2. Example:
    - **CRYPTO_KDF_KEY_DATABLOB**: original password used to generate the derived key.
    - **CRYPTO_KDF_SALT_DATABLOB**: salt value.
    - **CRYPTO_KDF_ITER_COUNT_INT**: number of iterations. The value must be a positive integer.
 
-3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) and specify the string parameter **PBKDF2|SHA256** to create a key derivation function object.
+3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) with the string parameter **PBKDF2|SHA256** to create a key derivation function object.
 
 4. Call [OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive) and specify the byte length of the target key.
 
-```C++
+<!-- @[pbkdf2_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/cpp/types/project/pbkdf2_test.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
+#include "file.h"
 
-static OH_Crypto_ErrCode doTestPbkdf2()
+static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
 {
-    // Create a PBKDF2 parameter object.
-    OH_CryptoKdfParams *params = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_Create("PBKDF2", &params);
-    if (ret != CRYPTO_SUCCESS) {
-        return ret;
-    }
-
     // Set the password.
     const char *password = "123456";
     Crypto_DataBlob passwordBlob = {
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(password)),
         .len = strlen(password)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_KEY_DATABLOB, &passwordBlob);
+    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &passwordBlob);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
+        goto end;
     }
 
     // Set the salt value.
@@ -54,10 +49,9 @@ static OH_Crypto_ErrCode doTestPbkdf2()
         .data = reinterpret_cast<uint8_t *>(const_cast<char *>(salt)),
         .len = strlen(salt)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_SALT_DATABLOB, &saltBlob);
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &saltBlob);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
+        goto end;
     }
 
     // Set the number of iterations.
@@ -66,9 +60,27 @@ static OH_Crypto_ErrCode doTestPbkdf2()
         .data = reinterpret_cast<uint8_t *>(&iterations),
         .len = sizeof(int)
     };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_ITER_COUNT_INT, &iterationsBlob);
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_ITER_COUNT_INT, &iterationsBlob);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
+        goto end;
+    }
+end:
+    OH_CryptoKdfParams_Destroy(*params);
+    *params = nullptr;
+    return ret;
+}
+
+OH_Crypto_ErrCode doTestPbkdf2()
+{
+    // Create a PBKDF2 parameter object.
+    OH_CryptoKdfParams *params = nullptr;
+    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_Create("PBKDF2", &params);
+    if (ret != CRYPTO_SUCCESS) {
+        return ret;
+    }
+
+    ret = setParams(&params);
+    if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
 

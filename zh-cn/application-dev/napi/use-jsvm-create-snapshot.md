@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行虚拟机快照相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -31,8 +31,10 @@ JavaScript虚拟机（JSVM）的快照创建功能，将当前运行时的JavaSc
 cpp部分代码：
 
 **注意事项**: 需要在OH_JSVM_Init的时候，将JSVM对外部的依赖注册到initOptions.externalReferences中。
-```cpp
-// hello.cpp
+
+<!-- @[oh_jsvm_create_snapshot_and_create_env_from_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/createsnapshot/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
 #include <hilog/log.h>
@@ -101,7 +103,7 @@ static JSVM_Value CreateHelloString(JSVM_Env env, JSVM_CallbackInfo info)
 // 提供外部引用的方式以便JavaScript环境可以调用绑定的函数
 static JSVM_CallbackStruct helloCb = {CreateHelloString, nullptr};
 
-static intptr_t externals[] = {
+static intptr_t g_externals[] = {
     (intptr_t)&helloCb,
     0,
 };
@@ -152,8 +154,8 @@ static void CreateVMSnapshot()
     // 将snapshot保存到文件中
     // 保存快照数据，/data/storage/el2/base/files/test_blob.bin为沙箱路径
     // 以包名为com.example.jsvm为例，实际文件会保存到/data/app/el2/100/base/com.example.jsvm/files/test_blob.bin
-    std::ofstream file(
-        "/data/storage/el2/base/files/test_blob.bin", std::ios::out | std::ios::binary | std::ios::trunc);
+    std::ofstream file("/data/storage/el2/base/files/test_blob.bin",
+                       std::ios::out | std::ios::binary | std::ios::trunc);
     file.write(blobData, blobSize);
     file.close();
     // 关闭并销毁环境和虚拟机
@@ -228,7 +230,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试JS
-const char *srcCallNative = R"JS(adjustExternalMemory();)JS";
+const char *SRC_CALL_NATIVE = R"JS(adjustExternalMemory();)JS";
 
 static int32_t TestJSVM()
 {
@@ -242,7 +244,7 @@ static int32_t TestJSVM()
     // 初始化JavaScript引擎实例
     if (g_aa == 0) {
         g_aa++;
-        initOptions.externalReferences = externals;
+        initOptions.externalReferences = g_externals;
         int argc = 0;
         char **argv = nullptr;
         initOptions.argc = &argc;
@@ -251,23 +253,23 @@ static int32_t TestJSVM()
     }
     // 创建JSVM环境
     CHECK(OH_JSVM_CreateVM(nullptr, &vm));
-    CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
     CHECK(OH_JSVM_OpenVMScope(vm, &vmScope));
+    CHECK(OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env));
     CHECK_RET(OH_JSVM_OpenEnvScope(env, &envScope));
     CHECK_RET(OH_JSVM_OpenHandleScope(env, &handleScope));
 
     // 通过script调用测试函数
     JSVM_Script script;
     JSVM_Value jsSrc;
-    CHECK_RET(OH_JSVM_CreateStringUtf8(env, srcCallNative, JSVM_AUTO_LENGTH, &jsSrc));
+    CHECK_RET(OH_JSVM_CreateStringUtf8(env, SRC_CALL_NATIVE, JSVM_AUTO_LENGTH, &jsSrc));
     CHECK_RET(OH_JSVM_CompileScript(env, jsSrc, nullptr, 0, true, nullptr, &script));
     CHECK_RET(OH_JSVM_RunScript(env, script, &result));
 
     // 销毁JSVM环境
     CHECK_RET(OH_JSVM_CloseHandleScope(env, handleScope));
     CHECK_RET(OH_JSVM_CloseEnvScope(env, envScope));
-    CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
     CHECK(OH_JSVM_DestroyEnv(env));
+    CHECK(OH_JSVM_CloseVMScope(vm, vmScope));
     CHECK(OH_JSVM_DestroyVM(vm));
     return 0;
 }
@@ -296,14 +298,13 @@ static napi_module demoModule = {
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
-    .nm_modname = "entry",
+    .nm_modname = "createsnapshot",
     .nm_priv = ((void *)0),
     .reserved = {0},
 };
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
 ```
-<!-- @[oh_jsvm_create_snapshot_and_create_env_from_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/createsnapshot/src/main/cpp/hello.cpp) -->
 
 ArkTS侧示例代码：
 

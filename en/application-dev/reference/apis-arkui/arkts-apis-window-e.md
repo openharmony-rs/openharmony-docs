@@ -21,7 +21,7 @@ Enumerates the window types.
 | Name                                 | Value| Description                                                                                    |
 |-------------------------------------| ------ |----------------------------------------------------------------------------------------|
 | TYPE_APP                            | 0      | Child window of an application.<br>**Model restriction**: This API can be used only in the FA model.                                                  |
-| TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>Note: This property is supported since API version 7 and deprecated since API version 11.<br>                           |
+| TYPE_SYSTEM_ALERT<sup>(deprecated)</sup>               | 1     | System alert window.<br>**Note**: This API has been deprecated since API version 11,<br>and was supported since API version 7.                          |
 | TYPE_FLOAT<sup>9+</sup>             | 8      | Global floating window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_DIALOG<sup>10+</sup>           | 16      | Modal window.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | TYPE_MAIN<sup>18+</sup>             | 32      | Main window of an application.<br>This window type cannot be used during window creation.                              |
@@ -32,17 +32,18 @@ Enumerates the types of areas to avoid for window content.
 
 When adapting window content for an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout), you should adjust the content based on the corresponding [AvoidArea](arkts-apis-window-i.md#avoidarea7) specified by **AvoidAreaType**.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
 | Name                            | Value  | Description                                                        |
 | -------------------------------- | ---- | ------------------------------------------------------------ |
-| TYPE_SYSTEM                      | 0    | Default area of the system. <!--RP11-->It contains the status bar and three-button navigation bar.<!--RP11End-->       |
-| TYPE_CUTOUT                      | 1    | Cutout area.                                                             |
-| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | Side return gesture area. Currently, no devices support this type of avoid area.                                   |
-| TYPE_KEYBOARD<sup>9+</sup>       | 3    | Fixed soft keyboard area.                                                             |
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | Bottom navigation bar. <!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End-->                             |
+| TYPE_SYSTEM                      | 0    | Default area of the system. <!--RP11-->It contains the status bar and three-button navigation bar.<!--RP11End--> <br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_CUTOUT                      | 1    | Cutout area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | Side return gesture area. Currently, no devices support this type of avoid area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_KEYBOARD<sup>9+</sup>       | 3    | Fixed soft keyboard area.<br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | Bottom navigation bar. <!--Del-->OpenHarmony devices do not support this capability.<!--DelEnd--> <br> **System capability**: SystemCapability.WindowManager.WindowManager.Core<br> **Atomic service API**: This API can be used in atomic services since API version 11.|
+| TYPE_FLOAT_NAVIGATION | 5    | Three-button navigation bar. <!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End--> <br>**System capability**: SystemCapability.Window.SessionManager<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+
+<!--RP13-->
+
+<!--RP13End-->
 
 ## Orientation<sup>9+</sup>
 
@@ -125,8 +126,8 @@ Enumerates the window modes.
 | Name      | Value  | Description                         |
 | ---------- | ---- | ----------------------------- |
 | UNDEFINED  | 0    | The window mode is not defined by the application.      |
-| FULL_SCREEN | 1    | The application window is in full-screen mode. On 2-in-1 devices, the window covers the entire screen without a dock bar or status bar.            |
-| MAXIMIZE    | 2    | The application window is maximized. On 2-in-1 devices, the window covers the entire screen with a dock bar and status bar.  |
+| FULL_SCREEN | 1    | The application is displayed in full screen.<br>In [freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen with no dock, title bar, or status bar displayed by default.<br>You can use [maximize()](arkts-apis-window-Window.md#maximize12) and [setTitleAndDockHoverShown()](arkts-apis-window-Window.md#settitleanddockhovershown14) to configure whether to display the title bar and dock upon hovering over the hot zone.<br>The last call takes precedence when both the **maximize()** and **setTitleAndDockHoverShown()** APIs are called.<br>In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen with no title bar or dock displayed. You can use [setSpecificSystemBarEnabled()](arkts-apis-window-Window.md#setspecificsystembarenabled11) to configure whether to display the status bar.|
+| MAXIMIZE    | 2    | The application window is maximized. In [freeform window](../../windowmanager/window-terminology.md#freeform-window) state, the window occupies the entire screen, and the dock, status bar, and title bar are displayed without requiring a hover. This state is unavailable in non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) state.|
 | MINIMIZE    | 3    | The application window is minimized.  |
 | FLOATING    | 4    | The application is displayed in a floating window.  |
 | SPLIT_SCREEN  | 5    | The application is displayed in split-screen mode.  |
@@ -308,8 +309,8 @@ Enumerates the modality types of the child window.
 
 | Name                | Value     | Description      |
 | -------------------- | ------ | ---------- |
-| WINDOW_MODALITY      | 0      | Window-modal. Select this value when you want the parent window not to respond to user interactions.|
-| APPLICATION_MODALITY | 1      | Application-modal. This type is effective only in [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode.<br> Select this value when other instances of the application should also not respond to user operations.<br> **Device behavior differences**: This enumerated value can be properly called on 2-in-1 devices and tablets. If it is used as an input parameter on other device types, error code 801 is returned.|
+| WINDOW_MODALITY      | 0      | Select this value when only the parent window should not respond to user operations.|
+| APPLICATION_MODALITY | 1      |  Select this value when other instances of the application should also not respond to user operations.<br> **Device behavior differences**: This enumeration can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.|
 
 ## ScreenshotEventType<sup>20+</sup>
 
@@ -324,6 +325,24 @@ Enumerates the screenshot event types.
 | SCROLL_SHOT_START | 2 | Scroll screenshot starts.|
 | SCROLL_SHOT_END | 3 | Scroll screenshot ends.|
 | SCROLL_SHOT_ABORT | 4 | Scroll screenshot aborted.|
+
+## OrientationExecutionResult
+
+Enumerates the result of setting the window display orientation.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name  |  Value| Description                  |
+| ------ | ---- | --------------------- |
+| ORIENTATION_APPLIED | 0 | The setting has taken effect.|
+| ORIENTATION_IGNORED | 1 | The setting does not take effect.|
+| ORIENTATION_PENDING | 2 | The setting will take effect after the system animation ends.|
 
 ## RotationInfoType<sup>23+</sup>
 

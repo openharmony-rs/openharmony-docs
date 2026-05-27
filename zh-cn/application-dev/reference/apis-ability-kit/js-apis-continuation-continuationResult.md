@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @hu-zhiqiong-->
 
 流转管理入口返回的设备信息。
 
@@ -19,7 +19,7 @@ ContinuationManager的[on](js-apis-continuation-continuationManager.md#continuat
 
 > **说明：**
 > 
-> 从API version 22开始废弃，建议使用[devicebasicinfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)代替。
+> 从API version 22开始废弃，建议使用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)代替。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -372,7 +372,7 @@ sim.getShowName(0).then((data: string) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\): void
+setShowNumber\(slotId: number, teleNumber: string, callback: AsyncCallback\<void\>\): void
 
 设置指定卡槽SIM卡的号码。使用callback异步回调。
 
@@ -387,7 +387,7 @@ setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\)
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------- | ---- | -------------------------------------- |
 | slotId   | number                    | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| number   | string                    | 是   | SIM卡号码。                              |
+| teleNumber   | string                    | 是   | SIM卡号码。                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                             |
 
 **错误码：**
@@ -420,7 +420,7 @@ sim.setShowNumber(0, number, (err: BusinessError) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, number: string\): Promise\<void\>
+setShowNumber\(slotId: number, teleNumber: string\): Promise\<void\>
 
 设置指定卡槽SIM卡的号码。使用Promise异步回调。
 
@@ -435,7 +435,7 @@ setShowNumber\(slotId: number, number: string\): Promise\<void\>
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| number | string | 是   | SIM卡号码。                              |
+| teleNumber | string | 是   | SIM卡号码。                              |
 
 **返回值：**
 
@@ -3427,6 +3427,57 @@ async getAllSimAccountInfoList(): Promise<ResponseData<sim.IccAccountInfo[] | nu
       return this.handleError(this.getAllSimAccountInfoList.name, err);
     }
   }
+```
+
+## sim.setSimLabelIndex<sup>23+</sup>
+
+setSimLabelIndex(simId: number, simLabelIndex: number): Promise\<void\>
+
+设置SIM卡的标签索引。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| simId | number | 是   | SIM账户信息标识的simId。<br/>范围：[1, 500]。 |
+| simLabelIndex    | number | 是   | SIM卡的标签索引。<br/>范围：[1, 10]。                                   |
+
+**返回值：**
+
+| 类型           | 说明                        |
+| -------------- | --------------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.|
+| 202 | Non-system applications use system APIs.                     |
+| 8300001  | Invalid parameter value.                      |
+| 8300002 | Service connection failed.                               |
+| 8300003  |Do not have sim card.|
+| 8300999  |Unknown error code.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { sim } from '@kit.TelephonyKit';
+
+sim.setSimLabelIndex(1,  0).then(() => {
+    console.info(`setSimLabelIndex success.`);
+}).catch((err: BusinessError) => {
+    console.error(`setSimLabelIndex failed, promise: err->${JSON.stringify(err)}`);
+});
 ```
 
 ## LockType<sup>8+</sup>

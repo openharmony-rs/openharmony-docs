@@ -1,7 +1,7 @@
 # ScsiPeripheral_Request
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -28,6 +28,6 @@ Defines the request structure.
 | -- | -- |
 | uint8_t commandDescriptorBlock[SCSIPERIPHERAL_MAX_CMD_DESC_BLOCK_LEN] | Command descriptor block.|
 | uint8_t cdbLength | Length of the command descriptor block.|
-| int8_t dataTransferDirection | Data transmission direction.|
+| int8_t dataTransferDirection | Data transfer direction: **–1** indicates no data transfer, **–2** indicates data transfer (write) from the host to the device, **–3** indicates data transfer (read) from the device to the host, and **–4** indicates bidirectional data transfer.|
 | ScsiPeripheral_DeviceMemMap* data | Buffer for data transmission.|
 | uint32_t timeout | Timeout duration, in ms.|

@@ -34,7 +34,7 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 | 参数名  | 类型                                                         | 必填 | 说明                       |
 | ------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的Context。 |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的上下文。 |
 
 **返回值：**
 
@@ -73,6 +73,8 @@ struct Index {
 ```
 
 ## PhotoAccessHelper
+
+提供操作系统媒体资源能力的接口。
 
 ### getAssets
 
@@ -524,7 +526,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 get(member: string): photoAccessHelper.MemberType
 
-获取PhotoAsset成员参数。
+获取PhotoAsset成员参数的值。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -816,7 +818,7 @@ isAfterLast(): boolean
 
 | 类型    | 说明                                                        |
 | ------- | ----------------------------------------------------------- |
-| boolean | 当读到最后一条记录后，后续没有记录返回true，否则返回false。 |
+| boolean | 当结果集指向最后一行时返回true，否则返回false。|
 
 **错误码：**
 
@@ -857,7 +859,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 close(): void
 
-释放FetchResult实例并使其失效。无法调用其他方法。
+释放FetchResult实例并使其失效。释放后无法调用其他方法。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

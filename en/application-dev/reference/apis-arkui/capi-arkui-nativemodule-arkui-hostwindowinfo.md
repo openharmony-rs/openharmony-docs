@@ -1,8 +1,8 @@
 # ArkUI_HostWindowInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_HostWindowInfo ArkUI_HostWindowInfo
 
 ## Overview
 
-Defines a struct for the host window information.
+Defines host window information.
 
 **Since**: 15
 

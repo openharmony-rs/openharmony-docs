@@ -1911,7 +1911,7 @@ Adds a custom tone with a given FD to the tone library. This API uses a promise 
 |-----|-----------|----|------------------------------------------------------------------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes | Application context.                                                             |
 | toneAttr | [ToneAttrs](#toneattrs12) | Yes | Attributes of the tone.                                                                 |
-| fd  | number    | Yes | File descriptor, which is obtained by calling [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).|
+| fd  | number    | Yes | File descriptor, which can be obtained using [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).|
 | offset | number    | No | Offset from which the data is read, in bytes. The default value is **0**.                                             |
 | length | number    | No | Length of the data to read, in bytes. By default, the length is the total number of remaining bytes after the offset.                                |
 
@@ -2369,15 +2369,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let ringPath: string = '';
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
-ringPath = result.getUri();
 
-systemSoundManagerInstance.openToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info('Succeeded in doing openToneList.');
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) => {
+  console.info('Succeeded in getting current ringtone attribute.');
+  systemSoundManagerInstance.openToneList([toneAttrs.getUri()]).then((value) => {
+    console.info('Succeeded in opening tone list.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to open tone list. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to openToneList. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2420,19 +2423,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let ringPath: string = '';
+let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
-let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrentRingtoneAttribute(systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0 );
-ringPath = result.getUri();
 
-systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info('Succeeded in doing removeCustomizedToneList.');
+systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) => {
+  console.info('Succeeded in getting current ringtone attribute.');
+  systemSoundManagerInstance.removeCustomizedToneList([toneAttrs.getUri()]).then((value) => {
+    console.info('Succeeded in using removeCustomizedToneList function.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to use removeCustomizedToneList function. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to removeCustomizedToneList. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
-## RingtonePlayer<sup>10+</sup>
+## RingtonePlayer
 
 type RingtonePlayer = _RingtonePlayer
 
@@ -2460,7 +2466,7 @@ Defines a system tone player.
 |-----------------|-----------|
 | [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | System tone player.|
 
-## RingtoneOptions<sup>10+</sup>
+## RingtoneOptions
 
 type RingtoneOptions = _RingtoneOptions
 

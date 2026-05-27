@@ -1,10 +1,10 @@
 # Usb_DeviceArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Usb_DeviceArray {...} Usb_DeviceArray
@@ -12,7 +12,7 @@ typedef struct Usb_DeviceArray {...} Usb_DeviceArray
 
 ## 概述
 
-设备ID清单，用于存放OH_Usb_GetDevices接口获取到的设备ID列表和设备数量。
+设备ID清单，用于存放[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)接口获取到的设备ID列表和设备数量。
 
 **起始版本：** 18
 
@@ -26,7 +26,7 @@ typedef struct Usb_DeviceArray {...} Usb_DeviceArray
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t* deviceIds | 开发者申请好的设备数组首地址，申请的大小不超过128个设备ID。 |
+| uint64_t* deviceIds | 开发者申请好的设备ID数组首地址，申请的数组大小建议一般不超过128，以避免过度占用内存。 |
 | uint32_t num | 实际返回的设备数量，根据数量遍历deviceIds获得设备ID。当该值为0时，表示不存在USB设备。 |
 
 

@@ -81,18 +81,6 @@ lcd闪光灯信息项。
 | ------ | ----------------------------- |-----| ---------- | ---------- |
 | raw<sup>12+</sup> | [image.Image](../apis-image-kit/arkts-apis-image-Image.md)| 否  | 是   | raw图。 |
 
-## ExposureMode
-
-枚举，曝光模式。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                           | 值   | 说明      |
-| ----------------------------- |-----|---------|
-| EXPOSURE_MODE_MANUAL<sup>12+</sup>          | 3   | 手动曝光模式。 |
-
 ## PolicyType<sup>12+</sup>
 
 枚举，策略类型。
@@ -494,49 +482,6 @@ function preLaunch(context: common.BaseContext): void {
 }
 ```
 
-### createDeferredPreviewOutput
-
-createDeferredPreviewOutput(profile?: Profile): PreviewOutput
-
-创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型             | 必填 | 说明       |
-| -------- | --------------- | ---- | --------- |
-| profile | [Profile](arkts-apis-camera-i.md#profile) | 否 | 相机预览流的配置文件。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | --------------- |
-| [PreviewOutput](#previewoutput) | 返回预览输出对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202             |  Not System Application.       |
-| 7400101         |  Parameter missing or parameter type incorrect. |
-
-**示例：**
-
-```ts
-import { common } from '@kit.AbilityKit';
-
-function getDeferredPreviewOutput(context: common.BaseContext, previewProfile: camera.Profile): camera.PreviewOutput {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const output: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  return output;
-}
-```
-
 ### preSwitchCamera<sup>11+</sup>
 
 preSwitchCamera(cameraId: string): void
@@ -602,8 +547,6 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG<sup>12+</sup> |   4   | Digital Negative格式的图。      |
-| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> |    5    | Extreme Digital格式的图。   |
 | CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | DEPTH_16格式的深度图。      |
 | CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | DEPTH_32格式的深度图。      |
 
@@ -636,7 +579,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| depthDataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | 是  |  否  | 深度数据的精度，分为相对精度和绝对精度。 |
+| dataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | 是  |  否  | 深度数据的精度，分为相对精度和绝对精度。 |
 
 ## DepthDataQualityLevel<sup>13+</sup>
 
@@ -1169,59 +1112,6 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
 ## PreviewOutput
 
 预览输出类。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
-
-### addDeferredSurface
-
-addDeferredSurface(surfaceId: string): void
-
-配置延迟预览的Surface，可以在[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[Session.start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型         | 必填 | 说明                       |
-| -------- | --------------| ---- | ------------------------ |
-| surfaceId | string | 是 | 从[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件获取的surfaceId。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202                    |  Permission verification failed. A non-system application calls a system API.    |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-
-**示例：**
-
-```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraDevice);
-  const previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  const photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
-  const session: camera.Session  = cameraManager.createSession(mode);
-  session.beginConfig();
-  session.addInput(cameraInput);
-  session.addOutput(previewOutput);
-  session.addOutput(photoOutput);
-  await session.commitConfig();
-  try {
-    await session.start();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`start session failed. error code: ${err.code}`);
-  }
-  previewOutput.addDeferredSurface(previewSurfaceId);
-}
-```
 
 ### isSketchSupported<sup>11+</sup>
 
@@ -2486,7 +2376,7 @@ setExposure(exposure: number): void
 
 | 参数名      | 类型                    | 必填 | 说明                                                                      |
 | -------- | --------------------------| ---- |-------------------------------------------------------------------------|
-| value    | number                    | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
+| exposure    | number                    | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
 
  **错误码：**
 
@@ -2561,9 +2451,9 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](#scenefeaturedetecti
 | -------- |---------------------------------| -------- | -------- |---------|
 | tripodStatus | [TripodStatus](#tripodstatus13) |   是     |    否    | 脚架状态信息。 |
 
-## SceneDetection<sup>12+</sup>
+## SceneDetectionQuery<sup>12+</sup>
 
-场景检测能力。
+场景检测查询能力。
 
 ### isSceneFeatureSupported<sup>12+</sup>
 
@@ -2604,6 +2494,9 @@ function isSceneFeatureSupported(photoSessionForSys: camera.PhotoSessionForSys, 
   return isSupported;
 }
 ```
+## SceneDetection<sup>12+</sup>
+
+场景检测能力。继承[SceneDetectionQuery](#scenedetectionquery12)。
 
 ### enableSceneFeature<sup>12+</sup>
 
@@ -2662,70 +2555,13 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
 }
 ```
 
-## ZoomPointInfo<sup>12+</sup>
-
-等效焦距信息。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称     | 类型        |   只读   | 可选  | 说明       |
-| -------- | ---------- | -------- |-----| ---------- |
-| zoomRatio |   number   |   是     | 否   | 可变焦距比。 |
-| equivalentFocalLength |   number   |   是     | 否   | 当前焦距比对应的等效焦距值。 |
-
 ## ZoomQuery<sup>12+</sup>
 
 提供获取当前模式的等效焦距信息列表的方法。
 
-### getZoomPointInfos<sup>12+</sup>
-
-getZoomPointInfos(): Array\<ZoomPointInfo\>
-
-获取当前模式的等效焦距信息列表。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型                | 说明                                                  |
-| ----------          | -----------------------------                         |
-|  Array\<[ZoomPointInfo](#zoompointinfo12)\>| 获取当前模式的等效焦距信息列表。                   |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202                    |  Not System Application.                      |
-| 7400103                |  Session not config, only throw in session usage.      |
-
-**示例：**
-
-```ts
-import { camera } from '@kit.CameraKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getZoomPointInfos(photoSessionForSys: camera.PhotoSessionForSys): Array<camera.ZoomPointInfo> {
-  let zoomPointInfos: Array<camera.ZoomPointInfo> = [];
-  try {
-    zoomPointInfos = photoSessionForSys.getZoomPointInfos();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getZoomPointInfos call failed. error code: ${err.code}`);
-  }
-  return zoomPointInfos;
-}
-```
-
 ## Zoom<sup>11+</sup>
 
-Zoom extend [ZoomQuery](#zoomquery12)
+Zoom extends [ZoomQuery](#zoomquery12)
 
 提供了处理设备变焦效果的相关方法，包括获取当前的变焦比，设置变焦比率，以及通过平滑方法设置目标变焦比，以及一些开启和结束变焦的函数。
 
@@ -2798,19 +2634,6 @@ function unprepareZoom(sessionExtendsZoom: camera.Zoom): void {
   }
 }
 ```
-
-## ZoomRange<sup>11+</sup>
-
-获取支持的变焦范围。变焦范围为[min, max)，即包括最小值，不包括最大值。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称     | 类型           | 只读 | 可选 | 说明         |
-| -------- | ------------- |---- | ---- | -------------|
-| min      | number        | 是  |  否  | 获取的可变焦距范围的最小值。  |
-| max      | number        | 是  |  否  | 获取的可变焦距范围的最大值。 |
 
 ## Beauty<sup>11+</sup>
 
@@ -3156,22 +2979,9 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
 }
 ```
 
-## PhysicalAperture<sup>11+</sup>
+## ApertureQuery<sup>12+</sup>
 
-物理光圈信息。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称       | 类型                       |  只读 | 可选  | 说明               |
-| ---------- | ------------------------- | ----- |-----| ----------------- |
-| zoomRange  | [ZoomRange](#zoomrange11) | 否    | 否   | 特定物理光圈的变焦范围。  |
-| apertures  | Array\<number\>           | 否    | 否   | 支持的物理光圈列表。      |
-
-## Aperture<sup>11+</sup>
-
-光圈类，用于设置光圈参数。
+光圈查询能力。
 
 ### getSupportedVirtualApertures<sup>11+</sup>
 
@@ -3206,6 +3016,10 @@ function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Arr
   return virtualApertures;
 }
 ```
+
+## Aperture<sup>11+</sup>
+
+光圈类，用于设置光圈参数。继承[ApertureQuery](#aperturequery12)。
 
 ### getVirtualAperture<sup>11+</sup>
 
@@ -3245,7 +3059,7 @@ function getVirtualAperture(session: camera.PortraitPhotoSession): number {
 
 setVirtualAperture(aperture: number): void
 
-设置虚拟光圈。可以线通过[getSupportedVirtualApertures](#getsupportedvirtualapertures11)获取当前设备所支持的虚拟光圈列表。
+设置虚拟光圈。可以先通过[getSupportedVirtualApertures](#getsupportedvirtualapertures11)获取当前设备所支持的虚拟光圈列表。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3271,107 +3085,6 @@ setVirtualAperture(aperture: number): void
 ```ts
 function setVirtualAperture(session: camera.PortraitPhotoSession, virtualAperture: number): void {
   session.setVirtualAperture(virtualAperture);
-}
-```
-
-### getSupportedPhysicalApertures<sup>11+</sup>
-
-getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
-
-获取支持的物理光圈列表。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型                                             | 说明                           |
-| ----------------------------------------------- | ---------------------------- |
-| Array<[PhysicalAperture](#physicalaperture11)>    | 支持的物理光圈列表。               |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 7400102         |  Operation not allowed, the inputDevice or the session is abnormal.   |
-| 7400103         |  Session not config.                          |
-
-**示例：**
-
-```ts
-function getSupportedPhysicalApertures(session: camera.PortraitPhotoSession): Array<camera.PhysicalAperture> {
-  let physicalApertures: Array<camera.PhysicalAperture> = session.getSupportedPhysicalApertures();
-  return physicalApertures;
-}
-```
-
-### getPhysicalAperture<sup>11+</sup>
-
-getPhysicalAperture(): number
-
-获取当前设置的物理光圈值。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型                 | 说明                           |
-| -------------------- | ---------------------------- |
-| number               | 当前设置的物理光圈值。           |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 7400103         |  Session not config.                             |
-| 202             |  Not System Application.                         |
-
-**示例：**
-
-```ts
-function getPhysicalAperture(session: camera.PortraitPhotoSession): number {
-  let physicalAperture: number = session.getPhysicalAperture();
-  return physicalAperture;
-}
-```
-
-### setPhysicalAperture<sup>11+</sup>
-
-setPhysicalAperture(aperture: number): void
-
-设置物理光圈。可以线通过[getSupportedPhysicalApertures](#getsupportedphysicalapertures11)获取当前设备所支持的物理光圈列表。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名         | 类型                    | 必填 | 说明                      |
-| ------------ |------------------------- | -- | -------------------------- |
-| aperture       | number                 | 是 | 物理光圈值，通过[getSupportedPhysicalApertures](#getsupportedphysicalapertures11)接口获取。   |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 7400103         |  Session not config.                          |
-| 202             |  Not System Application.                      |
-
-**示例：**
-
-```ts
-function setPhysicalAperture(session: camera.PortraitPhotoSession, physicalAperture: number): void {
-  session.setPhysicalAperture(physicalAperture);
 }
 ```
 
@@ -4303,7 +4016,7 @@ NightPhotoSession extends Session, Flash, AutoExposure, Focus, Zoom, ColorEffect
 
 夜景拍照模式会话类，继承自[Session](arkts-apis-camera-Session.md)，用于设置夜景拍照模式的参数以及保存所需要的所有资源[CameraInput](arkts-apis-camera-CameraInput.md)、[CameraOutput](arkts-apis-camera-CameraOutput.md)、[PhotoOutput](arkts-apis-camera-PhotoOutput.md)。
 
-夜景拍照需要监听拍照结束事件[onCaptureEnd](arkts-apis-camera-PhotoOutput.md#oncaptureend)作为一次拍照的结束。
+夜景拍照需要监听拍照结束事件[on('captureEnd')](arkts-apis-camera-PhotoOutput.md#oncaptureend)作为一次拍照的结束。
 
 ### on('error')<sup>11+</sup>
 
@@ -5260,20 +4973,6 @@ ISO参数信息。
 
 ---
 
-## ExposureInfo<sup>12+</sup>
-
-曝光参数信息。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称              | 类型    | 只读 | 可选  | 说明               |
-| ----------------- | ------- | ---- |-----| ------------------ |
-| exposureTime | number  | 是   | 是   | 曝光时间值，单位为毫秒。 |
-
----
-
 ## ApertureInfo<sup>12+</sup>
 
 光圈参数信息。
@@ -5300,172 +4999,17 @@ ISO参数信息。
 | ----------- | ------- | ---- |-----| ---------- |
 | lumination  | number  | 是   | 是   | 范围[0, 1]，光照值归一化数值。|
 
-## CameraFormat
+## ExposureMeteringMode<sup>12+</sup> 
 
-枚举，输出格式。
+枚举，测光模式。 
 
-**系统能力：** SystemCapability.Multimedia.Camera.Core
+**系统接口：** 此接口为系统接口。 
 
-| 名称                     | 值        | 说明         |
-| ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG<sup>12+</sup>  | 4         | DNG格式的RAW图片。**系统接口：** 此接口为系统接口。         |
-| CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup>  | 5         | DNG格式的增强RAW图片，JPG和RAW图片封装在同一个文件中，最高支持16bit的RAW数据。**系统接口：** 此接口为系统接口。         |
-## ExposureMeteringMode<sup>12+</sup>
+**系统能力：** SystemCapability.Multimedia.Camera.Core 
 
-枚举，测光模式。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称                           | 值   | 说明         |
-| ----------------------------- | ---- | ----------- |
-| MATRIX          | 0    | 对画面广泛区域进行测光。 |
-| CENTER          | 1    | 对整个画面进行测光，但最大比重分配给中央区域。 |
-| SPOT            | 2    | 对画面测光点周围约2.5%进行测光 |
-
-## AutoExposureQuery<sup>12+</sup>
-
-提供了查询设备是否支持特定曝光模式，曝光补偿的范围，以及是否支持特定的曝光测光模式的方法。
-
-### isExposureMeteringModeSupported<sup>12+</sup>
-
-isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
-
-检测传入的测光模式是否支持。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名      | 类型                           | 必填  | 说明                           |
-| -------- | -------------------------------| ---- | ----------------------------- |
-| aeMeteringMode   | [ExposureMeteringMode](#exposuremeteringmode12)  | 是   | 测光模式。                      |
-
-**返回值：**
-
-| 类型        | 说明                          |
-| ---------- | ----------------------------- |
-| boolean    | 获取是否支持传入的测光模式，返回true为支持，返回false为不支持。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 7400103                |  Session not config, only throw in session usage.          |
-
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function isExposureMeteringModeSupported(professionalPhotoSession: camera.ProfessionalPhotoSession): boolean {
-  let isSupported: boolean = false;
-  try {
-    isSupported = professionalPhotoSession.isExposureMeteringModeSupported(camera.ExposureMeteringMode.CENTER);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The isExposureMeteringModeSupported call failed. error code: ${err.code}`);
-  }
-  return isSupported;
-}
-```
-
-## AutoExposure
-
-AutoExposure extends [AutoExposureQuery](#autoexposurequery12)
-
-提供了处理设备自动曝光的相关功能，包括获取和设置曝光模式、测量点，查询补偿范围，设定曝光补偿，和获取设置曝光的测光模式。
-
-### getExposureMeteringMode<sup>12+</sup>
-
-getExposureMeteringMode(): ExposureMeteringMode
-
-获取当前测光模式。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型        | 说明                          |
-| ---------- | ----------------------------- |
-| [ExposureMeteringMode](#exposuremeteringmode12)    | 获取当前测光模式。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 7400102                | Operation not allowed, the inputDevice or the session is abnormal. |
-| 7400103                |  Session not config, only throw in session usage.   |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getExposureMeteringMode(professionalPhotoSession: camera.ProfessionalPhotoSession): camera.ExposureMeteringMode | undefined {
-  let exposureMeteringMode: camera.ExposureMeteringMode | undefined = undefined;
-  try {
-    exposureMeteringMode = professionalPhotoSession.getExposureMeteringMode();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The getExposureMeteringMode call failed. error code: ${err.code}`);
-  }
-  return exposureMeteringMode;
-}
-```
-
-### setExposureMeteringMode<sup>12+</sup>
-
-setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
-
-设置测光模式。进行设置之前，需要先检查设备是否支持指定的测光模式，可使用方法[isExposureMeteringModeSupported](#isexposuremeteringmodesupported12)。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名      | 类型                            | 必填 | 说明                    |
-| -------- | -------------------------------| ---- | ----------------------- |
-| aeMeteringMode   | [ExposureMeteringMode](#exposuremeteringmode12)  | 是   | 测光模式。                |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.    |
-| 7400103                |  Session not config, only throw in session usage.             |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setExposureMeteringMode(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    professionalPhotoSession.setExposureMeteringMode(camera.ExposureMeteringMode.CENTER);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The setExposureMeteringMode call failed. error code: ${err.code}`);
-  }
-}
-```
+| 名称                           | 值   | 说明         | 
+| ----------------------------- | ---- | ----------- | 
+| CENTER_HIGHLIGHT_WEIGHTED   | 3    | 中心高光加权测光模式。专注于屏幕中心附近的高光区域。       |
 
 ## FocusRangeType<sup>15+</sup>
 
@@ -5900,96 +5444,6 @@ function getFocusDriven(session: camera.VideoSessionForSys): camera.FocusDrivenT
 }
 ```
 
-## ManualFocus<sup>12+</sup>
-
-手动对焦类，对设备手动设置对焦操作。
-
-### setFocusDistance<sup>12+</sup>
-
-setFocusDistance(distance: number): void
-
-手动设置对焦距离，可设置范围为[0, 1]之间的浮点数，0表现为近景，1表现为远景。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名      | 类型                     | 必填 | 说明                 |
-| -------- | ----------------------- | ---- | ------------------- |
-| distance | number | 是   | 范围[0, 1]：该值为归一化值，0为近景，1为远景，<br>可在该范围内调节。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setFocusDistance(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    let distance: number = 0.5;
-    professionalPhotoSession.setFocusDistance(distance);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The setFocusDistance call failed. error code: ${err.code}`);
-  }
-}
-```
-
-### getFocusDistance<sup>12+</sup>
-
-getFocusDistance(): number
-
-获取当前的对焦距离。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型        | 说明                          |
-| ---------- | ----------------------------- |
-| number    | 返回当前对焦距离的归一化值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
-| 202     | Not System Application. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getFocusDistance(professionalPhotoSession: camera.ProfessionalPhotoSession): number {
-  let distance: number = 0;
-  try {
-    distance = professionalPhotoSession.getFocusDistance();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The getFocusDistance call failed. error code: ${err.code}`);
-  }
-  return distance;
-}
-```
-
 ## ManualIsoQuery<sup>12+</sup>
 
 提供了查询设备是否支持手动设置ISO和获取设备支持的ISO范围的方法。
@@ -6077,101 +5531,6 @@ function getIsoRange(professionalPhotoSession: camera.ProfessionalPhotoSession):
     console.error(`The getIsoRange call failed. error code: ${err.code}`);
   }
   return isoRange;
-}
-```
-
-## ManualIso<sup>12+</sup>
-
-ManualIso extends [ManualIsoQuery](#manualisoquery12)
-
-提供了获取和设置设备手动ISO（感光度）的功能。
-
-### setIso<sup>12+</sup>
-setIso(iso: number): void
-
-设置ISO值。
-
-> **注意：**
->
-> 当ISO值设置为0时，表示设置自动ISO。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名      | 类型                     | 必填 | 说明                 |
-| -------- | ----------------------- | ---- | ------------------- |
-| iso | number | 是   | 设置ISO值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setIso(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    let iso: number = 200;
-    professionalPhotoSession.setIso(iso);
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The setIso call failed. error code: ${err.code}`);
-  }
-}
-```
-
-### getIso<sup>12+</sup>
-
-getIso(): number
-
-获取当前的ISO值。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型        | 说明                          |
-| ---------- | ----------------------------- |
-| number    | 返回当前ISO值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400103                |  Session not config.                                   |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getIso(professionalPhotoSession: camera.ProfessionalPhotoSession): number {
-  let iso: number = 0;
-  try {
-    iso = professionalPhotoSession.getIso();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The getIso call failed. error code: ${err.code}`);
-  }
-  return iso;
 }
 ```
 
@@ -6496,7 +5855,7 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | 参数名     | 类型                                                      | 必填 | 说明                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | 是   | 监听事件，固定为'exposureInfoChange'。         |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
 
@@ -6539,7 +5898,7 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 | 参数名     | 类型                                                      | 必填 | 说明                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | 是   | 监听事件，固定为'exposureInfoChange'。         |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 否   | 回调函数，可选，用于匹配on('exposureInfoChange')的callback。 |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| 否   | 回调函数，可选，用于匹配on('exposureInfoChange')的callback。 |
 
 **错误码：**
 
@@ -7030,7 +6389,7 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | 参数名     | 类型                                                      | 必填 | 说明                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | 是   | 监听事件，固定为'exposureInfoChange'。         |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
 
@@ -7073,7 +6432,7 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 | 参数名     | 类型                                                      | 必填 | 说明                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | 是   | 监听事件，固定为'exposureInfoChange'。         |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 否   | 回调函数，可选，用于匹配on('exposureInfoChange')的callback。 |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| 否   | 回调函数，可选，用于匹配on('exposureInfoChange')的callback。 |
 
 **错误码：**
 
@@ -8073,7 +7432,7 @@ on(type: 'exposureInfoChange', callback: AsyncCallback\<ExposureInfo\>): void
 | 参数名     | 类型                                                      | 必填 | 说明                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | 是   | 监听事件，固定为'exposureInfoChange'。         |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 是   | 回调函数，用于获取曝光信息。         |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| 是   | 回调函数，用于获取曝光信息。         |
 
 **错误码：**
 
@@ -8116,7 +7475,7 @@ off(type: 'exposureInfoChange', callback?: AsyncCallback\<ExposureInfo\>): void
 | 参数名     | 类型                                                      | 必填 | 说明                               |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | 是   | 监听事件，固定为'exposureInfoChange'。         |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| 否   | 回调函数，可选，用于匹配on('exposureInfoChange')的callback。 |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| 否   | 回调函数，可选，用于匹配on('exposureInfoChange')的callback。 |
 
 **错误码：**
 

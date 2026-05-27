@@ -56,15 +56,12 @@ import { PromptAction  } from '@kit.ArkUI';
 import { JSON } from '@kit.ArkTS';
 
 let proxy: rpc.IRemoteObject | undefined;
-let connectId : number | undefined;
-
-// Define the return value to determine the pop-up display.
-let isDisconnect = false;
+let connectId: number | undefined;
 
 // Death notification
 class MyDeathRecipient implements rpc.DeathRecipient {
   onRemoteDied() {
-    hilog.info(0x0000, 'testTag', 'IPCClient: server is died');
+    hilog.info(0x0000, 'testTag', 'server is died');
   }
 }
 let deathRecipient = new MyDeathRecipient();
@@ -77,69 +74,68 @@ Connect to the service, obtain the proxy, and register the death listener. Remov
 ``` TypeScript
 // Connect to the service.
 function connectAbility(context:common.UIAbilityContext, promptAction: PromptAction) {
-  hilog.info(0x00000, 'testTag', 'IPCClient: begin to connect Ability');
+  hilog.info(0x00000, 'testTag', 'begin to connect Ability');
   let want: Want = {
     bundleName: 'com.example.ipc_stub',
     abilityName: 'ServiceAbility',
   };
   let connect: common.ConnectOptions = {
     onConnect: (elementName, remoteProxy) => {
-      hilog.info(0x00000, 'testTag', 'IPCClient: onConnect. elementName is :' + JSON.stringify(elementName));
+      hilog.info(0x00000, 'testTag', 'onConnect. elementName is :' + JSON.stringify(elementName));
       proxy = remoteProxy;
       // Register a death listener on the client.
       try {
         proxy.registerDeathRecipient(deathRecipient, 0);
-        hilog.info(0x00000, 'testTag', 'IPCClient: registerDeathRecipient success');
+        hilog.info(0x00000, 'testTag', 'registerDeathRecipient success');
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        hilog.error(0x0000, 'testTag', 'IPCClient: register failed, code is ' + code + ', message is ' + message);
+        hilog.error(0x0000, 'testTag', 'register failed, code is ' + code + ', message is ' + message);
       }
       // ...
     },
 
     onDisconnect: (elementName) => {
-      hilog.info(0x0000, 'testTag', 'IPCClient: onDisconnect. elementName is ' + JSON.stringify(elementName));
+      hilog.info(0x0000, 'testTag', 'onDisconnect. elementName is ' + JSON.stringify(elementName));
       // Remove the death listener from the client.
       try {
         proxy?.unregisterDeathRecipient(deathRecipient, 0);
-        hilog.info(0x00000, 'testTag', 'IPCClient: unregisterDeathRecipient success');
+        hilog.info(0x00000, 'testTag', 'unregisterDeathRecipient success');
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        hilog.error(0x0000, 'testTag', 'IPCClient: unregister failed, code is ' + code + ', message is ' + message);
+        hilog.error(0x0000, 'testTag', 'unregister failed, code is ' + code + ', message is ' + message);
       }
       proxy = undefined;
       // ...
     },
 
     onFailed: (code: number) => {
-      hilog.info(0x0000, 'testTag', 'IPCClient: onFailed. code is ' + code);
+      hilog.info(0x0000, 'testTag', 'onFailed. code is ' + code);
       // ...
     },
   }
 
   try {
     connectId = context.connectServiceExtensionAbility(want, connect);
-    hilog.info(0x00000, 'testTag', 'IPCClient: begin to connect Ability end');
+    hilog.info(0x00000, 'testTag', 'begin to connect Ability end');
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'IPCClient: connectAbility failed, code is ' + code + ', message is ' + message);
+    hilog.error(0x0000, 'testTag', 'connectAbility failed, code is ' + code + ', message is ' + message);
   }
 }
 
 // Close the connection.
 function disconnectAbility(context: common.UIAbilityContext) {
-  hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability. connectId is ' + connectId);
+  hilog.info(0x00000, 'testTag', 'begin to disconnect Ability. connectId is ' + connectId);
   if (connectId != undefined) {
     try {
       context.disconnectServiceExtensionAbility(connectId);
-      hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability end');
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      hilog.error(0x0000, 'testTag', 'IPCClient: disconnect failed, code is ' + code + ', message is ' + message);
+      hilog.error(0x0000, 'testTag', 'disconnect failed, code is ' + code + ', message is ' + message);
     }
   }
 }
@@ -160,17 +156,14 @@ import { abilityAccessCtrl, PermissionRequestResult, common, Want} from '@kit.Ab
 import { JSON } from '@kit.ArkTS';
 import { PromptAction  } from '@kit.ArkUI';
 
-let proxy: rpc.IRemoteObject | undefined
-let connectId: number | undefined
-let dmInstance: distributedDeviceManager.DeviceManager
+let proxy: rpc.IRemoteObject | undefined;
+let connectId: number | undefined;
+let dmInstance: distributedDeviceManager.DeviceManager;
 let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
 let deviceId: string| undefined;
 
-// Define the return value to determine the pop-up display.
-let isDisconnect = false;
-
 // Death notification
-class MyDeathRecipient implements rpc.DeathRecipient{
+class MyDeathRecipient implements rpc.DeathRecipient {
   onRemoteDied() {
     hilog.info(0x0000, 'testTag', 'server is died');
   }
@@ -185,52 +178,52 @@ Obtain the [permission for multi-device collaboration](../security/AccessToken/p
 ``` TypeScript
 // Obtain the permission.
 function getPermission(context:common.UIAbilityContext) {
-  hilog.info(0x00000, 'testTag', 'RpcClient: begin to requestPermissions');
+  hilog.info(0x00000, 'testTag', 'begin to requestPermissions');
   try {
     let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
     atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC'],
       (err: BusinessError, data: PermissionRequestResult) => {
       if (err) {
-        hilog.error(0x0000, 'testTag', 'RpcClient: requestPermissions failed, code is ' +
-          err.code + ', message is ' + err.message);
+        hilog.error(0x0000, 'testTag', 'requestPermissions failed, code is ' + err.code);
+        hilog.error(0x0000, 'testTag', 'requestPermissions failed, message is ' + err.message);
       } else {
-        hilog.info(0x0000, 'testTag','RpcClient: requestPermissions success, result is ' + JSON.stringify(data));
-        hilog.info(0x0000, 'testTag','RpcClient: data permissions is ' + data.permissions);
-        hilog.info(0x0000, 'testTag','RpcClient: data authResults is ' + data.authResults);
-        hilog.info(0x0000, 'testTag','RpcClient: data dialogShownResults is ' + data.dialogShownResults);
+        hilog.info(0x0000, 'testTag', 'requestPermissions success, result is ' + JSON.stringify(data));
+        hilog.info(0x0000, 'testTag', 'data permissions is ' + data.permissions);
+        hilog.info(0x0000, 'testTag', 'data authResults is ' + data.authResults);
+        hilog.info(0x0000, 'testTag', 'data dialogShownResults is ' + data.dialogShownResults);
       }
     });
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'RpcClient: getPermission failed, code is  ' + code + ', message is ' + message);
+    hilog.error(0x0000, 'testTag', 'getPermission failed, code is ' + code + ', message is ' + message);
   }
 }
 
 // Obtain the peer device information.
 function getDeviceId(promptAction: PromptAction) {
-  hilog.info(0x00000, 'testTag', 'RpcClient: begin to getDeviceId');
+  hilog.info(0x00000, 'testTag', 'begin to getDeviceId');
   try {
     dmInstance = distributedDeviceManager.createDeviceManager('com.example.rpc_client');
-    hilog.info(0x0000, 'testTag', 'RpcClient: createDeviceManager success');
+    hilog.info(0x0000, 'testTag', 'createDeviceManager success');
     deviceList = dmInstance.getAvailableDeviceListSync();
-    hilog.info(0x0000, 'testTag', 'RpcClient: deviceList is' + JSON.stringify(deviceList));
+    hilog.info(0x0000, 'testTag', 'deviceList is ' + JSON.stringify(deviceList));
     if (deviceList.length !== 0) {
       deviceId = deviceList[0].networkId;
-      hilog.info(0x0000, 'testTag', 'RpcClient: networkId is ' + deviceId);
+      hilog.info(0x0000, 'testTag', 'networkId is ' + deviceId);
       // ...
     }
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'RpcClient: getDeviceId failed, code is  ' + code + ', message is ' + message);
+    hilog.error(0x0000, 'testTag', 'getDeviceId failed, code is ' + code + ', message is ' + message);
     // ...
   }
 }
 
 // Connect to the service.
 function connectAbility(context:common.UIAbilityContext, promptAction: PromptAction) {
-  hilog.info(0x00000, 'testTag', 'RpcClient: begin to connect Ability');
+  hilog.info(0x00000, 'testTag', 'begin to connect Ability');
   let want: Want = {
     bundleName: 'com.example.rpc_stub',
     abilityName: 'ServiceAbility',
@@ -239,35 +232,35 @@ function connectAbility(context:common.UIAbilityContext, promptAction: PromptAct
 
   let connect: common.ConnectOptions = {
     onConnect: (elementName, remoteProxy) => {
-      hilog.info(0x00000, 'testTag', 'RpcClient: onConnect. elementName is :' +  JSON.stringify(elementName));
+      hilog.info(0x00000, 'testTag', 'onConnect. elementName is ' + JSON.stringify(elementName));
       proxy = remoteProxy;
       // Register a death listener on the client.
       try {
         proxy.registerDeathRecipient(deathRecipient, 0);
-        hilog.info(0x00000, 'testTag', 'RpcClient: registerDeathRecipient success');
+        hilog.info(0x00000, 'testTag', 'registerDeathRecipient success');
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        hilog.error(0x0000, 'testTag', 'RpcClient: register failed, code is ' + code + ', message is ' + message);
+        hilog.error(0x0000, 'testTag', 'register failed, code is ' + code + ', message is ' + message);
       };
       // ...
     },
     onDisconnect: (elementName) => {
-      hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect. elementName is ' + JSON.stringify(elementName));
+      hilog.info(0x0000, 'testTag', 'onDisconnect. elementName is ' + JSON.stringify(elementName));
       // Remove the death listener from the client.
       try {
         proxy?.unregisterDeathRecipient(deathRecipient, 0);
-        hilog.info(0x00000, 'testTag', 'RpcClient: unregisterDeathRecipient success');
+        hilog.info(0x00000, 'testTag', 'unregisterDeathRecipient success');
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        hilog.error(0x0000, 'testTag', 'RpcClient: unregister failed, code is ' + code + ', message is ' + message);
+        hilog.error(0x0000, 'testTag', 'unregister failed, code is ' + code + ', message is ' + message);
       }
       proxy = undefined;
       // ...
     },
     onFailed: (code: number) => {
-      hilog.info(0x0000, 'testTag', 'RpcClient: onFailed. code is :' + code);
+      hilog.info(0x0000, 'testTag', 'onFailed. code is ' + code);
       // ...
     },
   }
@@ -277,20 +270,20 @@ function connectAbility(context:common.UIAbilityContext, promptAction: PromptAct
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'RpcClient: connectService failed, code is ' + code + ', message is ' + message);
+    hilog.error(0x0000, 'testTag', 'connectService failed, code is ' + code + ', message is ' + message);
   }
 }
 
 // Close the connection.
 function disconnectAbility(context: common.UIAbilityContext) {
-  hilog.info(0x00000, 'testTag', 'RpcClient: begin to disconnect Ability');
+  hilog.info(0x00000, 'testTag', 'begin to disconnect Ability');
   if (connectId != undefined) {
     try {
       context.disconnectServiceExtensionAbility(connectId);
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      hilog.error(0x0000, 'testTag', 'pcClient: disconnectService failed, code is ' + code + ', message is ' + message);
+      hilog.error(0x0000, 'testTag', 'disconnectService failed, code is ' + code + ', message is ' + message);
     }
   }
 }

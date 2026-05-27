@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **adminManager** module provides administrator permission management capabilities for enterprise MDM applications, including enabling or disabling administrator permissions, subscribing to events, delegating applications, and granting permissions.
 
@@ -421,7 +421,7 @@ Enables the device administrator application to open a page for the BYOD adminis
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | type  | [AdminType](#admintype15)             | Yes   | Type of the activated device administrator application. Only the **ADMIN_TYPE_BYOD** type is supported. |
-| context  | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md) | Yes| Context information of the administrator application.|
+| context  | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | Yes| Context information of the administrator application.|
 | parameters  | Record\<string, string> | Yes| Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo** and **localDeactivationPolicy**.<br>- **activateId**: project activation ID.<br>- **customizedInfo**: enterprise-defined information.<br>- **localDeactivationPolicy**: local deactivation delay (unit: hour). This parameter is supported since API version 22<!--RP1--><!--RP1End-->.|
 
 **Error codes**
@@ -594,6 +594,7 @@ Enumerates the system management events that can be subscribed to.
 | MANAGED_EVENT_ACCOUNT_REMOVED<sup>18+</sup>  | 7    | An account is removed.|
 | MANAGED_EVENT_STARTUP_GUIDE_COMPLETED<sup>24+</sup> | 8    | The startup wizard is complete. **Model restriction**: This API can be used only in the stage model.|
 | MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | Device startup is complete. **Model restriction**: This API can be used only in the stage model.|
+| MANAGED_EVENT_BUNDLE_UPDATED                | 10    | Application update events. **Model restriction**: This API can be used only in the stage model. **Since**: 26.0.0|
 
 ## AdminType<sup>15+</sup>
 
@@ -629,7 +630,7 @@ Defines the policy type for the trustlist or blocklist.
 |allowed_bluetooth_devices|[bluetoothManager.addAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanageraddallowedbluetoothdevices)<br>[bluetoothManager.removeAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanagerremoveallowedbluetoothdevices)<br>[bluetoothManager.getAllowedBluetoothDevices](js-apis-enterprise-bluetoothManager.md#bluetoothmanagergetallowedbluetoothdevices)|Adds allowed Bluetooth devices.<br>Removes allowed Bluetooth devices.<br>Obtains allowed Bluetooth devices.|
 |set_browser_policies|[browser.setPolicySync](js-apis-enterprise-browser.md#browsersetpolicysync)<br>[browser.getPoliciesSync](js-apis-enterprise-browser.md#browsergetpoliciessync)|Sets the sub-policy for a specified browser.<br>Obtains the policy of a specified browser.|
 |allowed_install_bundles|[bundleManager.addAllowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanageraddallowedinstallbundlessync)<br>[bundleManager.removeAllowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)<br>[bundleManager.getAllowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagergetallowedinstallbundlessync)|Adds the applications that can be installed by the current or specified user.<br>Removes the applications that can be installed.<br>Obtains the applications that can be installed by the current or specified user.|
-|disallowed_install_bundles|[bundleManager.addDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)<br>[bundleManager.removeDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagerremoveallowedinstallbundlessync)<br>[bundleManager.getDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)|Adds the applications that are not allowed to be installed by the current or specified user.<br>Removes the applications that are not allowed to be installed.<br>Obtains the applications that cannot be installed by the current or specified user.|
+|disallowed_install_bundles|[bundleManager.addDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanageradddisallowedinstallbundlessync)<br>[bundleManager.removeDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagerremovedisallowedinstallbundlessync)<br>[bundleManager.getDisallowedInstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagergetdisallowedinstallbundlessync)|Adds the applications that are not allowed to be installed by the current or specified user.<br>Removes the applications that are not allowed to be installed.<br>Obtains the applications that cannot be installed by the current or specified user.|
 |disallowed_uninstall_bundles|[bundleManager.addDisallowedUninstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)<br>[bundleManager.removeDisallowedUninstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagerremovedisalloweduninstallbundlessync)<br>[bundleManager.getDisallowedUninstallBundlesSync](js-apis-enterprise-bundleManager.md#bundlemanagergetdisalloweduninstallbundlessync)|Adds the applications that cannot be uninstalled by the current or specified user.<br>Removes the applications that cannot be uninstalled.<br>Obtains the applications that cannot be uninstalled by the current or specified user.|
 |get_device_info|[deviceInfo.getDeviceInfo](js-apis-enterprise-deviceInfo.md#deviceinfogetdeviceinfo)|Obtains device information.|
 |location_policy|[locationManager.setLocationPolicy](js-apis-enterprise-locationManager.md#locationmanagersetlocationpolicy)<br>[locationManager.getLocationPolicy](js-apis-enterprise-locationManager.md#locationmanagergetlocationpolicy)|Sets the location service policy.<br>Obtains the location service policy.|
@@ -662,3 +663,4 @@ Defines the policy type for the trustlist or blocklist.
 |clear_up_application_data|[applicationManager.clearUpApplicationData](js-apis-enterprise-applicationManager.md#applicationmanagerclearupapplicationdata20)|Clears all application data.|
 |disallow_unmute_device|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **unmuteDevice** as the parameter to disable or enable audio playback of the device.<br>Accepts **unmuteDevice** as the parameter to check whether audio playback of the device is disabled.|
 |disabled_hdc_remote|[restrictions.setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)<br>[restrictions.getDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy)|Accepts **hdcRemote** as the parameter to disable or enable the device's capability of debugging other devices through hdc.<br>Accepts **hdcRemote** as the parameter to check whether the device's capability of debugging other devices through hdc is disabled.|
+<!--no_check-->

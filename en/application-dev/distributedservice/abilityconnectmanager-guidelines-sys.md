@@ -59,6 +59,9 @@ Cross-device connection management is built on a distributed component managemen
 
 - The distributed component management framework does not censor the transmitted content during the collaboration process. If data privacy is involved, it is recommended that the application employs measures such as pop-up notification to notify users.
 
+<!--RP1-->
+<!--RP1End-->
+
 
 ## Environment setup
 

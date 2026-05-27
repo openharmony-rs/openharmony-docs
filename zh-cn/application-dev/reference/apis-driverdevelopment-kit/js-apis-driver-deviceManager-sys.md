@@ -1,10 +1,10 @@
 # @ohos.driver.deviceManager (外设管理)(系统接口)
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 本模块主要提供管理外部设备的相关功能，包括查询扩展外设详细信息和查询扩展外设驱动详细信息。
 

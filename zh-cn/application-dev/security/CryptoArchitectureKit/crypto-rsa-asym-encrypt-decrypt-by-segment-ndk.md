@@ -135,14 +135,14 @@ OH_Crypto_ErrCode doTestRsaEncLongMessage()
     }
 
     std::string message =
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!"
-        "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!";
+        "This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!"
+        "This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!";
 
     std::vector<uint8_t> plainText(message.begin(), message.end());
     std::vector<uint8_t> cipherText = doTestRsaEnc(keyPair, plainText);

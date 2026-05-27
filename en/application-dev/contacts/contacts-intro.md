@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 The Contacts Kit allows users to add, delete, modify, and query contacts easily. It provides a series of APIs for you to quickly integrate contact management functions into your applications.
 
-For details, see [@ohos.contact](../reference/apis-contacts-kit/js-apis-contact.md).
+For details, see [@ohos.contact (Contacts)](../reference/apis-contacts-kit/js-apis-contact.md).
 
 
 ## Available Capabilities
@@ -120,3 +120,8 @@ struct Contact {
   }
 }
 ```
+
+
+<!--RP3-->
+
+<!--RP3End-->

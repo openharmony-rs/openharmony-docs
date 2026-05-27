@@ -1,8 +1,8 @@
 # native_audio_suite_engine.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -70,6 +70,7 @@
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetPureVoiceChangeOption(OH_AudioNode* audioNode, OH_AudioSuite_PureVoiceChangeOption* option)](#oh_audiosuiteengine_getpurevoicechangeoption) | - | 获取传统变声节点的配置参数。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_SetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType type)](#oh_audiosuiteengine_setgeneralvoicechangetype) | - | 设置通用变声节点的配置参数。 |
 | [OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode* audioNode, OH_AudioSuite_GeneralVoiceChangeType* type)](#oh_audiosuiteengine_getgeneralvoicechangetype) | - | 获取通用变声节点的配置参数。 |
+| [OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)](#oh_audiosuite_printinfo) | - | 打印AudioSuite运行时快照。 |
 
 ## 函数说明
 
@@ -279,7 +280,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | void* audioData | 获取音频需要写入的数据地址。 |
 | int32_t requestFrameSize | audioData的内存字节大小，需大于0。 |
-| int32_t* responseSize | 管线写入audioData的音频数据大小，不会大于requestFrameSize。 |
+| int32_t* responseSize | 管线写入audioData的音频数据大小，不会大于requestFrameSize，单位为字节。 |
 | bool* finishedFlag | 标识当前管线是否渲染完成。 |
 
 **返回：**
@@ -306,7 +307,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_MultiRenderFrame(OH_AudioSuitePipeline*
 | -- | -- |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 音频编创管线句柄。通过[OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline)获取句柄。 |
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | 用户读取音频数据时所使用的数组指针，每个一维数组大小需一致。 |
-| int32_t* responseSize | 管线写入audioData的音频数据大小。系统会确保每个一维数组被填充的数据大小一致。 |
+| int32_t* responseSize | 管线写入audioData的音频数据大小。系统会确保每个一维数组被填充的数据大小一致，单位为字节。 |
 | bool* finishedFlag | 标记当前管线是否渲染完成。 |
 
 **返回：**
@@ -1199,5 +1200,31 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_GetGeneralVoiceChangeType(OH_AudioNode*
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。 <br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION：audioNode节点类型为非通用变声效果节点。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数无效。例如，audioNode为空指针。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+
+### OH_AudioSuite_PrintInfo()
+
+```c
+OH_AudioSuite_Result OH_AudioSuite_PrintInfo(OH_AudioSuiteEngine* audioSuiteEngine, OH_AudioSuitePipeline* audioSuitePipeline, int fd)
+```
+
+**描述**
+
+打印AudioSuite运行时快照。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AudioSuiteEngine](capi-ohaudiosuite-oh-audiosuiteenginestruct.md)* audioSuiteEngine | 指向需要显示运行时快照的AudioSuiteEngine的指针。 |
+| [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | 指向需要显示运行时快照的AudioSuitePipeline的指针。<br>                           如果audioSuitePipeline为空，输出所有管道（引擎下的所有管道/节点）。否则，仅输出此流程和节点的快照。 |
+| int fd | 文件句柄，表示快照信息存储的位置。<br>           如果fd小于0，快照信息存储在日志中。否则，快照将以追加模式存储在由fd句柄指向的文件中。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数为nullptr或无效值。<br>         AUDIOSUITE_ERROR_SYSTEM：系统存在其他异常。 |
 
 

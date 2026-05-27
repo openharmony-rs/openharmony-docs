@@ -1,10 +1,10 @@
 # @ohos.enterprise.securityManager（安全管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供设备安全管理的能力，包括查询安全补丁状态、查询文件加密状态等。
 
@@ -141,7 +141,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     .then((result) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
-    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((err: BusinessError) => {
   console.error(`Failed to get raw file content. message: ${err.message}`);
@@ -376,10 +376,10 @@ let policy: securityManager.PasswordPolicy = {
   additionalDescription: '至少八个字符，至少一个大写字母，一个小写字母，一个数字和一个特殊字符',
 };
 try {
-    securityManager.setPasswordPolicy(wantTemp, policy);
-    console.info(`Succeeded in setting password policy.`);
+  securityManager.setPasswordPolicy(wantTemp, policy);
+  console.info(`Succeeded in setting password policy.`);
 } catch(err) {
-    console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -431,10 +431,134 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
-    console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy(wantTemp);
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.setScreenLockDisabledForAccount
+
+setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
+
+禁用/启用当前用户的滑动解锁能力。启用时：设备灭屏后再亮屏，用户需要在屏幕上滑动后才能进入桌面。禁用时：设备灭屏后再亮屏会直接进入桌面。
+
+> **说明：**
+>
+> 1.该接口能力仅在设备无锁屏密码时生效。
+> 
+> 2.设备默认属于启用滑动解锁的状态。
+>
+> 3.设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
+>
+> 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
+**参数：**
+
+| 参数名  | 类型                                                    | 必填 | 说明                              |
+| ------- | ------------------------------------------------------- | ---- | --------------------------------- |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                    |
+| disable | boolean                                                  | 是   | 是否禁用当前用户的滑动解锁能力。true表示禁用，false表示不禁用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9201021  | A lock screen password has been set for the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  securityManager.setScreenLockDisabledForAccount(wantTemp, true);
+  console.info(`Succeeded in setting screen lock disabled for account.`);
+} catch(err) {
+  console.error(`Failed to set screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.isScreenLockDisabledForAccount
+
+isScreenLockDisabledForAccount(admin: Want): boolean
+
+查询当前用户的滑动解锁能力是否被禁用。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+
+**返回值：**
+
+| 类型    | 说明                 |
+| ------- | -------------------- |
+| boolean | 返回true表示当前用户的滑动解锁能力已禁用，false表示未禁用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+  let result: boolean = securityManager.isScreenLockDisabledForAccount(wantTemp);
+  console.info(`Succeeded in checking screen lock disabled for account, result : ${result}`);
+} catch(err) {
+  console.error(`Failed to check screen lock disabled for account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -457,7 +581,7 @@ setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): vo
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
-| tokenId | number | 是 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。当前只支持最多100个tokenId被保存策略。 |
+| tokenId | number | 是 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。 |
 | policy | [ClipboardPolicy](#clipboardpolicy) | 是 | 剪贴板策略。 |
 
 **错误码**：
@@ -485,10 +609,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let tokenId: number = 586874394;
 try {
-    securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
-    console.info(`Succeeded in setting clipboard policy.`);
+  securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
+  console.info(`Succeeded in setting clipboard policy.`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -509,7 +633,7 @@ getAppClipboardPolicy(admin: Want, tokenId?: number): string
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
-| tokenId | number | 否 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。当前只支持最多100个tokenId被保存策略。 |
+| tokenId | number | 否 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。 |
 
 **返回值：**
 
@@ -542,10 +666,10 @@ let wantTemp: Want = {
 // 需根据实际情况进行替换
 let tokenId: number = 586874394;
 try {
-    let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
-    console.info(`Succeeded in getting password policy, result : ${result}`);
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -553,7 +677,7 @@ try {
 
 setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void
 
-设置指定用户下指定应用的设备剪贴板策略。当前只支持最多保存100个策略。
+设置指定用户下指定应用的设备剪贴板策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -597,10 +721,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
-    console.info(`Succeeded in setting clipboard policy.`);
+  securityManager.setAppClipboardPolicy(wantTemp, bundleName, accountId, securityManager.ClipboardPolicy.IN_APP);
+  console.info(`Succeeded in setting clipboard policy.`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -655,10 +779,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
-    console.info(`Succeeded in getting password policy, result : ${result}`);
+  let result: string = securityManager.getAppClipboardPolicy(wantTemp, bundleName, accountId);
+  console.info(`Succeeded in getting clipboard policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set clipboard policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -669,7 +793,9 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
 > **说明：**
 >
-> 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
+> 1.本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
+>
+> 2.水印图片会以平铺方式重复覆盖整个应用界面。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -715,10 +841,10 @@ let bundleName: string = 'com.example.myapplication';
 let source: string = '/data/storage/el1/base/test.png';
 let accountId: number = 100;
 try {
-    securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
-    console.info(`Succeeded in setting set watermarkImage policy.`);
+  securityManager.setWatermarkImage(wantTemp, bundleName, source, accountId);
+  console.info(`Succeeded in setting set watermarkImage policy.`);
 } catch(err) {
-    console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -768,10 +894,10 @@ let wantTemp: Want = {
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
-    securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
-    console.info(`Succeeded in setting cancel watermarkImage policy.`);
+  securityManager.cancelWatermarkImage(wantTemp, bundleName, accountId);
+  console.info(`Succeeded in setting cancel watermarkImage policy.`);
 } catch(err) {
-    console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -822,17 +948,17 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
-      // 需根据实际情况进行替换
-      appIdentifier: '736498586',
-      appIndex: 0,
-      accountId: 100
+  // 需根据实际情况进行替换
+  appIdentifier: '736498586',
+  appIndex: 0,
+  accountId: 100
 };
 let permissionsTemp: Array<string> = ['ohos.permission.CAMERA', 'ohos.permission.LOCATION'];
 try {
-    securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
-    console.info('Succeeded in setting permission managed state.');
+  securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
+  console.info('Succeeded in setting permission managed state.');
 } catch(err) {
-    console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -885,17 +1011,17 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 let appInstanceTemp: securityManager.ApplicationInstance = {
-      // 需根据实际情况进行替换
-      appIdentifier: '736498586',
-      appIndex: 0,
-      accountId: 100
+  // 需根据实际情况进行替换
+  appIdentifier: '736498586',
+  appIndex: 0,
+  accountId: 100
 };
 let permissionTemp: string = 'ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION';
 try {
-    let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
-    console.info(`Succeeded in getting permission managed state, result : ${result}`);
+  let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
+  console.info(`Succeeded in getting permission managed state, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -958,10 +1084,10 @@ let wantTemp: Want = {
   abilityName: 'EnterpriseAdminAbility'
 };
 try {
-    securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
-    console.info(`Succeeded in setting managed policy.`);
+  securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
+  console.info(`Succeeded in setting managed policy.`);
 } catch(err) {
-    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1014,10 +1140,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
-    console.info(`Succeeded in getting managed policy, result : ${result}`);
+  let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
+  console.info(`Succeeded in getting managed policy, result : ${result}`);
 } catch(err) {
-    console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -1025,7 +1151,7 @@ try {
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
 
-安装企业重签名证书。
+安装企业应用重签名证书。
 
 同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate24)进行卸载。
 
@@ -1033,9 +1159,9 @@ installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, f
 
 在企业应用分发场景下，<!--RP2--><!--RP2End-->开发者可以使用重签名证书对企业应用进行二次签名，签名完成后将应用包提供给企业管理员。企业管理员可以将重签名后的应用安装在已部署重签名证书的企业设备上。
 
-企业重签名证书使用流程：<!--RP3--><!--RP3End--><br>1.通过MDM应用安装企业重签名证书；<br>2.开发者利用签名工具（如ohos-signer或DevEco Studio签名插件），对原始HAP包进行二次签名；<br>3.安装重签名应用（可以通过企业私有应用市场安装）；<br>4.运行应用。
+企业应用重签名证书使用流程：<!--RP3--><!--RP3End--><br>1.通过MDM应用安装企业应用重签名证书；<br>2.开发者利用签名工具（如ohos-signer或DevEco Studio签名插件），对原始HAP包进行二次签名；<br>3.安装重签名应用（可以通过企业私有应用市场安装）；<br>4.运行应用。
 
-规格约束：<br>1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行；<br>2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用；<br>3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
+规格约束：<br>1.安装新的签名证书之后，使用旧签名证书的应用可以继续运行；<br>2.已经安装的企业应用，安装了新的企业签名证书后，已安装的应用如需更新，可以直接覆盖安装，无需先卸载原应用；<br>3.企业场景下，特别是在涉及信息安全的场景中，企业需要确保员工使用的移动设备中仅安装并运行特定的内部软件和工具。企业应用重签名证书通过统一的应用身份标识，与系统的应用管理与权限控制机制配合使用，可支持企业应用的静默安装、受控的系统能力调用及运行范围限制，从而实现企业软件在受控终端上的准入控制与安全管理。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1079,7 +1205,7 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-// test.cer证书文件需要放置在应用沙箱目录下，并确保是有效的企业重签名证书
+// test.cer证书文件需要放置在应用沙箱目录下，并确保是有效的企业应用重签名证书
 // 需根据实际情况进行替换
 const filePath = '/test.cer';
 // 需根据实际情况进行替换
@@ -1101,7 +1227,7 @@ try {
 
 uninstallEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, accountId: number): void
 
-卸载企业重签名证书。
+卸载企业应用重签名证书。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1152,6 +1278,126 @@ try {
   console.error(`Failed to uninstall enterprise re signature certificate.
     Code: ${err.code}, message: ${err.message}`);
 };
+```
+
+## securityManager.setScreenWatermarkImage
+
+setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
+
+设置屏幕水印策略，对所有用户生效。
+
+> **说明：**
+>
+> 1.屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
+>
+> 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
+
+**起始版本**：26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 图像对象。图片宽度不超过设备屏幕宽度的两倍，图片高度不超过设备屏幕高度的两倍。图片像素占用大小不得超过128MB。图片像素占用大小计算公式：图片宽度(像素)×图片高度(像素)×每个像素占用的字节数（通常为4）。例如：一张100×100的图片，像素占用大小为100×100×4=40000字节。对于1920×1080分辨率的屏幕，若使用相同分辨率的图片，像素占用大小为1920×1080×4=8294400字节（约7.9MB）。                                                       |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { common, Want } from '@kit.AbilityKit';
+import { image } from '@kit.ImageKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+// 此处'test.png'仅作示例，请开发者自行替换
+const path: string = context.filesDir + "/test.png";
+// 创建ImageSource
+const imageSource: image.ImageSource = image.createImageSource(path);
+// 创建PixelMap
+imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+  try {
+    securityManager.setScreenWatermarkImage(wantTemp, pixelMap);
+    console.info(`Succeeded in setting screen watermark image.`);
+  } catch(err) {
+    console.error(`Failed to set screen watermark image. Code: ${err.code}, message: ${err.message}`);
+  }
+}).catch((err: Error) => {
+  console.error(`Failed to create PixelMap. message: ${err.message}`);
+});
+```
+
+## securityManager.cancelScreenWatermarkImage
+
+cancelScreenWatermarkImage(admin: Want): void
+
+取消屏幕水印策略，对所有用户生效。
+
+**起始版本**：26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。        |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+    securityManager.cancelScreenWatermarkImage(wantTemp);
+    console.info(`Succeeded in canceling screen watermark image.`);
+} catch(err) {
+    console.error(`Failed to cancel screen watermark image. Code: ${err.code}, message: ${err.message}`);
+}
 ```
 
 ## CertBlob
