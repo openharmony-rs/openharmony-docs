@@ -1,4 +1,4 @@
-# 视频解码同步模式
+# 同步模式视频解码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -15,7 +15,7 @@
 
 当前支持的解码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频解码)。
 
-视频解码的限制约束、支持的能力、状态机调用关系请参考[视频解码](video-decoding.md)。
+视频解码的限制约束、支持的能力、状态机调用关系请参考[异步模式视频解码](video-decoding.md)。
 
 ## 适用场景
 
@@ -142,7 +142,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    示例中的变量说明如下：
    
-   nativeWindow：获取方式请参考[视频解码Surface模式](video-decoding.md#surface模式)的“步骤-6：设置surface”。
+   nativeWindow：获取方式请参考[异步模式视频解码Surface模式](video-decoding.md#surface模式)的“步骤-6：设置surface”。
 
     ```c++
     // 设置surface。

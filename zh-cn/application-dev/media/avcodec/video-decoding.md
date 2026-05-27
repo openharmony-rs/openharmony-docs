@@ -1,4 +1,4 @@
-# 视频解码
+# 异步模式视频解码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -9,7 +9,7 @@
 
 视频解码是多媒体处理的核心环节，功能是将压缩的视频码流解码为原始像素数据。视频解码支持同步模式与异步模式两种运行机制，两者主要区别为buffer获取方式的同异步之分，开发者可根据自身业务选择适合的接口调用模式。
 
-本文档主要介绍异步模式视频解码的实现流程，同步模式视频解码请参考[视频解码同步模式](synchronous-video-decoding.md)。根据解码后数据处理方式的不同，视频解码支持Surface模式和Buffer模式两种输出模式，适用于不同的应用场景。
+本文档主要介绍异步模式视频解码的实现流程，同步模式视频解码请参考[同步模式视频解码](synchronous-video-decoding.md)。根据解码后数据处理方式的不同，视频解码支持Surface模式和Buffer模式两种输出模式，适用于不同的应用场景。
 
 - Surface模式
 
@@ -420,7 +420,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    >
    > 可以采用以下方案进行更改：
    > 1. 等1号解码器完全释放后，再调用OH_VideoDecoder_Start接口启动2号解码器。
-   > 2. 1号解码器用surface1，2号解码器先调用OH_ConsumerSurface_Create接口创建临时surface，等1号解码器释放后，再调用OH_VideoDecoder_SetSurface接口将2号解码器绑定至surface1上，详情请参见：[创建视频解码器和NativeWindow初始化并行](../../media/avcodec/parallel-decoding-nativeWindow.md)。
+   > 2. 1号解码器用surface1，2号解码器先调用OH_ConsumerSurface_Create接口创建临时surface，等1号解码器释放后，再调用OH_VideoDecoder_SetSurface接口将2号解码器绑定至surface1上，详情请参见：[如何创建视频解码器和NativeWindow初始化并行](../../media/avcodec/parallel-decoding-nativeWindow.md)。
 
 
 7. 调用OH_VideoDecoder_Prepare()解码器就绪。

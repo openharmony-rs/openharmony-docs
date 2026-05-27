@@ -45,7 +45,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 **开发指导**
 
-基础编码流程请参考[视频编码](video-encoding.md)，下面仅针对编码器配置阶段做具体说明。
+基础编码流程请参考[异步模式视频编码](video-encoding.md)，下面仅针对编码器配置阶段做具体说明。
 
 1. 配置编码器参数。
 
@@ -74,7 +74,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    如下以低时延视频通话场景为示例，其示例中的变量说明如下：
 
-   videoEnc：视频编码器实例的指针。创建方式可参考[视频编码Surface模式](video-encoding.md#surface模式)“步骤-2：创建编码器实例对象”。
+   videoEnc：视频编码器实例的指针。创建方式可参考[异步模式视频编码Surface模式](video-encoding.md#surface模式)“步骤-2：创建编码器实例对象”。
 
    ```c++
    // 1. 创建AVFormat参数实例。
@@ -103,7 +103,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 2. （可选）在运行过程中动态配置编码器参数。
 
-   详情可参考[视频编码Surface模式](video-encoding.md#surface模式)“步骤-9：OH_VideoEncoder_SetParameter()在运行过程中动态配置编码器参数”。
+   详情可参考[异步模式视频编码Surface模式](video-encoding.md#surface模式)“步骤-9：OH_VideoEncoder_SetParameter()在运行过程中动态配置编码器参数”。
 
    ```c++
    // 1. 创建AVFormat参数实例。
@@ -176,7 +176,7 @@ OH_AVFormat_Destroy(format);
 
 **开发指导**
 
-基础编码流程请参考[视频编码](video-encoding.md)，下面仅针对编码器配置阶段，对配置实时流媒体编码场景的参数做具体说明。
+基础编码流程请参考[异步模式视频编码](video-encoding.md)，下面仅针对编码器配置阶段，对配置实时流媒体编码场景的参数做具体说明。
 
 娱乐直播场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
@@ -282,7 +282,7 @@ OH_AVFormat_Destroy(format);
 
 **开发指导**
 
-基础编码流程请参考[视频编码](video-encoding.md)，下面仅针对编码器配置阶段，对配置离线编码场景的编码参数做具体说明。
+基础编码流程请参考[异步模式视频编码](video-encoding.md)，下面仅针对编码器配置阶段，对配置离线编码场景的编码参数做具体说明。
 
 视频编辑场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
