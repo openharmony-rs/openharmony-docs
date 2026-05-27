@@ -34,6 +34,8 @@ measureText(options: MeasureOptions): number
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -85,6 +87,8 @@ measureTextSize(options: MeasureOptions): SizeOptions
 计算指定文本单行布局下的宽度和高度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,6 +252,8 @@ struct TextDemo {
 getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<Paragraph\>
 
 将属性字符串根据文本布局选项转换成对应的[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)数组。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
