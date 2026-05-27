@@ -33,6 +33,7 @@
    import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS'
    import { SendableObject } from '../util/SendableObject';
    import { common, sendableContextManager } from '@kit.AbilityKit';
+   import resourceManager from '@ohos.resourceManager';
    ```
 
    ```ts
@@ -143,13 +144,25 @@
        // 转码完成回调函数。
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
-         fileIo.closeSync(transcoder.fdDst); // 关闭fdDst。
+         let fdDst = transcoder.fdDst;
+ 	     if (fdDst != undefined) {
+ 	       fs.closeSync(fdDst);
+ 	     }
+ 	     if (fileDescriptor != undefined) {
+ 	       fs.closeSync(fileDescriptor.fd);
+         }
          await transcoder?.release()
          workerPort.postMessage('complete');
        })
        // 转码错误回调函数。
        transcoder.on('error', async (err: BusinessError) => {
-         fileIo.closeSync(transcoder.fdDst);
+         let fdDst = transcoder.fdDst;
+ 	     if (fdDst != undefined) {
+ 	       fs.closeSync(fdDst);
+ 	     }
+ 	     if (fileDescriptor != undefined) {
+ 	       fs.closeSync(fileDescriptor.fd);
+ 	     }
          await transcoder?.release();
        })
        // 转码进度更新回调函数。
@@ -157,10 +170,12 @@
          console.info(`AVTranscoder progressUpdate = ${progress}`);
          workerPort.postMessage(progress);
        })
+       
+       let fileDescriptor: resourceManager.RawFileDescriptor | undefined;
 
        try {
          // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
-         let fileDescriptor = await context.resourceManager.getRawFd('H264_AAC.mp4');
+         fileDescriptor = await context.resourceManager.getRawFd('H264_AAC.mp4');
          transcoder.fdSrc = fileDescriptor; // 设置fdSrc。
        } catch (error) {
          console.error('Failed to get the file descriptor, please check the resource and path.');
