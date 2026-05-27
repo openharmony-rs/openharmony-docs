@@ -30,7 +30,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 Defines the heartbeat broadcast policy.
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -43,7 +43,7 @@ Defines the heartbeat broadcast policy.
 
 Defines device profile information filter options.
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -57,7 +57,7 @@ Defines device profile information filter options.
 
 Defines the service profile information. It is populated based on the data returned from the cloud.
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -72,7 +72,7 @@ Defines the service profile information. It is populated based on the data retur
 
 Defines the device profile information.
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -111,7 +111,7 @@ Defines the device profile information.
 
 Defines the device icon information filter options.
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -127,7 +127,7 @@ Defines the device icon information filter options.
 
 Defines the device icon information.
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -145,7 +145,7 @@ Defines the device icon information.
 
 Defines the network ID filter options.
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -158,9 +158,11 @@ Defines the network ID filter options.
 
 Defines a struct to identify a distributed device.
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC, ohos.permission.ACCESS_SERVICE_DM, and ohos.permission.sec.ACCESS_UDID
 
-**Model restriction:** This API can be used only in the stage model.
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System API:** This is a system API.
 
@@ -179,9 +181,9 @@ replyUiAction(action: number, actionResult: string): void
 
 Replies to the user's UI operation. This API can be used only by the PIN HAP of the **deviceManager**.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -233,9 +235,9 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 Subscribes to the reply to the UI operation result. This API returns the result asynchronously through a callback.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -291,9 +293,9 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 Unsubscribes from the reply to the UI operation result. This API returns the result asynchronously through a callback.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -336,9 +338,9 @@ setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: number): void
 
 Sets the heartbeat broadcast policy.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -384,9 +386,9 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 Obtains the list of devices under the same account. This API uses a promise to return the result.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -440,9 +442,9 @@ putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfileInfo&gt;):
 
 Updates the device list. This API uses a promise to return the result.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -456,7 +458,7 @@ Updates the device list. This API uses a promise to return the result.
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful. |
+  | Promise&lt;number&gt; | Operation result. The value **0** indicates that the operation is successful. |
 
 **Error codes**
 
@@ -495,9 +497,9 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 Obtains the device icon. This API uses a promise to return the result.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -561,9 +563,9 @@ getLocalDisplayDeviceName(maxNameLength: number): Promise&lt;string&gt;
 
 Obtains the local device's display name with the specified length. This API uses a promise to return the result.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -577,7 +579,7 @@ Obtains the local device's display name with the specified length. This API uses
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | string | Maximum number of bytes in the local device's display name.|
+  | Promise&lt;string&gt; | Maximum number of bytes in the local device's display name.|
 
 **Error codes**
 
@@ -616,9 +618,9 @@ setLocalDeviceName(deviceName: string): Promise&lt;number&gt;
 
 Sets the local device name. This API uses a promise to return the result.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -632,7 +634,7 @@ Sets the local device name. This API uses a promise to return the result.
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful.|
+  | Promise&lt;number&gt; | Operation result. The value **0** indicates that the operation is successful.|
 
 **Error codes**
 
@@ -674,9 +676,9 @@ setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt;number&gt;
 
 Sets the remote device name. This API uses a promise to return the result.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -691,7 +693,7 @@ Sets the remote device name. This API uses a promise to return the result.
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful.|
+  | Promise&lt;number&gt; | Operation result. The value **0** indicates that the operation is successful.|
 
 **Error codes**
 
@@ -734,9 +736,9 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 Obtains the list of network devices according to the specified filter options. This API uses a promise to return the result.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 
@@ -792,11 +794,11 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 Queries the device identification based on the device ID.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM, ohos.permission.DISTRIBUTED_DATASYNC, and ohos.permission.sec.ACCESS_UDID
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM, ohos.permission.DISTRIBUTED_DATASYNC, and ohos.permission.sec.ACCESS_UDID
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System API:** This is a system API.
 
@@ -856,11 +858,11 @@ restoreLocalDeviceName(): void
 
 Restores the local device name by resetting the network settings.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System API:** This is a system API.
 
@@ -899,9 +901,9 @@ Restores the local device name by resetting the network settings.
 >
 > This API is supported since API version 18 and deprecated since API version 24. You are advised to use [restoreLocalDeviceName](#restorelocaldevicename24) instead.
 
-**Required permissions:** ohos.permission.ACCESS_SERVICE_DM
+**Required permissions**: ohos.permission.ACCESS_SERVICE_DM
 
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
+**System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **System API:** This is a system API.
 

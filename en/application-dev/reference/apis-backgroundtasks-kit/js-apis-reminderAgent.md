@@ -529,9 +529,9 @@ Defines the reminder to publish.
 | actionButton | [[ActionButton](#actionbuttondeprecated)?, [ActionButton](#actionbuttondeprecated)?] | No| Yes| Button displayed in the reminder notification. (The parameter is optional. Up to two buttons are supported.)|
 | wantAgent | WantAgent | No| Yes| Information about the ability that is redirected to when the notification is clicked.|
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagentdeprecated) | No| Yes| Information about the ability that is automatically started when the reminder arrives. If the device is in use, a notification will be displayed.|
-| ringDuration | number | No| Yes| Ringing duration, in seconds. The default value is **1**.|
+| ringDuration | number | No| Yes| Ringing duration,<br> in seconds. The default value is **-1**.|
 | snoozeTimes | number | No| Yes| Number of reminder snooze times. The default value is **0**.|
-| timeInterval | number | No| Yes| Reminder snooze interval, in seconds. The default value is **0**.|
+| timeInterval | number | No| Yes| Reminder snooze interval,<br> in seconds. The default value is **0**.|
 | title | string | No| Yes| Reminder title.|
 | content | string | No| Yes| Reminder content.|
 | expiredContent | string | No| Yes| Content to be displayed after the reminder expires.|
@@ -585,7 +585,7 @@ Defines a reminder for a scheduled timer.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | No| No| Number of seconds in the countdown timer.|
+| triggerTimeInSeconds | number | No| No| Number of seconds in the countdown timer.<br>  |
 
 
 ## LocalDateTime<sup>(deprecated)</sup>

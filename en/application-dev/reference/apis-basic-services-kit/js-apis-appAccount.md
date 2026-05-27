@@ -3230,7 +3230,7 @@ Adds an application account name and additional information. This API uses a pro
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 Adds an application account implicitly based on the specified owner. This API uses an asynchronous callback to return the result.
 
@@ -4288,7 +4288,7 @@ Unsubscribes from account information changes.
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 Authenticates an application account. This API uses an asynchronous callback to return the result.
 
@@ -5329,7 +5329,7 @@ Provides OAuth authenticator callbacks.
 
 ### onResult<sup>(deprecated)</sup>
 
-onResult: (code: number, result: {[key: string]: any;}) =&gt; void
+onResult: (code: number, result: { [key: string]: any }) =&gt; void
 
 Called to return the result of an authentication request.
 
@@ -5430,7 +5430,7 @@ Creates an application account implicitly based on the specified account owner. 
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 Adds an application account implicitly based on the specified authorization type and options. This API uses an asynchronous callback to return the result.
 
@@ -5468,7 +5468,7 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 Authenticates an application account to obtain the OAuth token. This API uses an asynchronous callback to return the result.
 
