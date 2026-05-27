@@ -831,11 +831,7 @@ Failed to install the HAP because of insufficient system disk space.
 
 **处理步骤**
 
-<<<<<<< HEAD
-清理系统磁盘空间后重试。可参考[错误码17700016](../apis-ability-kit/errorcode-bundle.md#17700016-系统磁盘空间不足导致应用安装失败)。
-=======
 清理系统磁盘空间后重试。
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201023 企业设备管理禁止安装导致应用安装失败
 
@@ -856,10 +852,6 @@ Failed to install the HAP because enterprise device management disallows the ins
 
 1. 检查应用是否在允许安装名单中，不在名单中的应用不允许安装。
 2. 检查应用是否在禁止安装名单中，在名单中的应用不允许安装。
-<<<<<<< HEAD
-可参考[错误码17700041](../apis-ability-kit/errorcode-bundle.md#17700041-企业设备管理不允许安装该应用)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201024 HAP解析失败导致应用安装失败
 
@@ -883,10 +875,6 @@ Failed to install the HAP because the HAP fails to be parsed.
 1. 检查HAP包文件是否完整无损。
 2. 检查HAP包格式是否正确。
 3. 检查HAP包配置文件是否符合规范。
-<<<<<<< HEAD
-可参考[错误码17700010](../apis-ability-kit/errorcode-bundle.md#17700010-文件解析失败导致应用安装失败)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201025 HAP签名验证失败导致应用安装失败
 
@@ -910,10 +898,6 @@ Failed to install the HAP because the HAP signature fails to be verified.
 1. 检查HAP包签名是否有效。
 2. 检查HAP包签名证书是否过期。
 3. 检查HAP包签名证书是否为可信证书。
-<<<<<<< HEAD
-可参考[错误码17700011](../apis-ability-kit/errorcode-bundle.md#17700011-签名校验失败导致应用安装失败)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201026 HAP路径无效或文件过大导致应用安装失败
 
@@ -935,10 +919,6 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 
 1. 检查HAP包路径是否存在且有效。
 2. 检查HAP包文件大小是否在系统允许范围内。
-<<<<<<< HEAD
-可参考[错误码17700012](../apis-ability-kit/errorcode-bundle.md#17700012-安装包路径无效或者文件过大导致应用安装失败)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201027 HAP配置信息不一致导致安装失败
 
@@ -957,10 +937,6 @@ Failed to install the HAPs because they have different configuration information
 **处理步骤**
 
 检查待安装的多个HAP包配置信息是否一致。
-<<<<<<< HEAD
-可参考[错误码17700015](../apis-ability-kit/errorcode-bundle.md#17700015-多个hap配置信息不同导致应用安装失败)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201028 isolationMode配置不支持导致应用安装失败
 
@@ -979,10 +955,6 @@ HAP包配置的isolationMode不被当前系统支持。
 **处理步骤**
 
 检查HAP包配置的isolationMode是否为系统支持的值。
-<<<<<<< HEAD
-可参考[错误码17700044](../apis-ability-kit/errorcode-bundle.md#17700044-安装包设置的多进程配置项与系统配置项设置矛盾)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201029 HAP版本过低导致应用安装失败
 
@@ -1001,10 +973,6 @@ Failed to install the HAP since the version of the HAP to install is too early.
 **处理步骤**
 
 使用更高版本的HAP包进行安装。
-<<<<<<< HEAD
-可参考[错误码17700017](../apis-ability-kit/errorcode-bundle.md#17700017-新安装的应用版本号低于已安装的版本号导致应用安装失败)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201030 VersionCode不大于当前版本导致应用安装失败
 
@@ -1023,20 +991,12 @@ Failed to install the HAP because the VersionCode to be updated is not greater t
 **处理步骤**
 
 确保待安装的HAP包VersionCode大于当前已安装应用的VersionCode。
-<<<<<<< HEAD
-可参考[错误码17700047](../apis-ability-kit/errorcode-bundle.md#17700047-要更新的应用版本没有大于当前版本)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201031 依赖模块不存在导致应用安装失败
 
 **错误信息**
 
-<<<<<<< HEAD
-Installation failed because the dependant module does not exist.
-=======
 Installation failed because the dependent module does not exist.
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 **错误描述**
 
@@ -1049,10 +1009,6 @@ Installation failed because the dependent module does not exist.
 **处理步骤**
 
 先安装应用依赖的模块，然后再安装该应用。
-<<<<<<< HEAD
-可参考[错误码17700018](../apis-ability-kit/errorcode-bundle.md#17700018-安装失败依赖的模块不存在)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201032 指定用户ID不存在
 
@@ -1071,12 +1027,8 @@ The specified user ID is not found.
 **处理步骤**
 
 检查指定的用户ID是否为有效的用户ID。
-<<<<<<< HEAD
-可参考[错误码17700004](../apis-ability-kit/errorcode-bundle.md#17700004-指定的用户不存在)。
-=======
 
 可参考[包管理子系统通用错误码](../apis-ability-kit/errorcode-bundle.md)中的错误码17700004。
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201033 overlay检查失败导致应用安装失败
 
@@ -1086,18 +1038,6 @@ Failed to install the HAP because the overlay check failed.
 
 **错误描述**
 
-<<<<<<< HEAD
-当overlay检查失败导致应用安装失败时，会产生此错误码。
-
-**可能原因**
-
-overlay应用的配置不符合系统要求。
-
-**处理步骤**
-
-检查overlay应用的配置是否符合系统overlay要求。
-可参考[错误码17700031](../apis-ability-kit/errorcode-bundle.md#17700031-overlay特征校验失败导致hap安装失败)。
-=======
 当安装overlay特征的应用时，指定的应用和待安装的overlay特征应用不为预置应用，或者目标应用/目标module是overlay特征的应用/module。
 
 **可能原因**
@@ -1113,7 +1053,6 @@ overlay应用的配置不符合系统要求。
 2. 检查目标应用是否为预置应用。
 3. 检查目标应用是否不为overlay特征的应用。
 4. 检查目标module是否不为overlay特征的module。
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201034 HSP缺少必需权限导致应用安装失败
 
@@ -1132,10 +1071,6 @@ HSP包缺少必需的权限配置。
 **处理步骤**
 
 检查HSP包是否包含所有必需的权限配置。
-<<<<<<< HEAD
-可参考[错误码17700036](../apis-ability-kit/errorcode-bundle.md#17700036-共享库缺少allowappsharelibrary特权导致安装失败)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201035 跨应用共享库安装不被允许导致应用安装失败
 
@@ -1154,10 +1089,6 @@ Installation failed because the installation of cross-app shared libraries is no
 **处理步骤**
 
 确认当前场景是否允许安装跨应用共享库。
-<<<<<<< HEAD
-可参考[错误码17700039](../apis-ability-kit/errorcode-bundle.md#17700039-不允许安装应用间共享库)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201036 数据代理URI错误导致应用安装失败
 
@@ -1176,10 +1107,6 @@ HAP包中数据代理的URI配置不正确。
 **处理步骤**
 
 检查HAP包中数据代理的URI配置是否正确。
-<<<<<<< HEAD
-可参考[错误码17700042](../apis-ability-kit/errorcode-bundle.md#17700042-数据代理中的uri配置错误)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201037 数据代理权限配置错误导致应用安装失败
 
@@ -1198,10 +1125,6 @@ HAP包中数据代理的权限配置不正确。
 **处理步骤**
 
 检查HAP包中数据代理的权限配置是否正确。
-<<<<<<< HEAD
-可参考[错误码17700043](../apis-ability-kit/errorcode-bundle.md#17700043-数据代理中的权限配置错误)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201038 代码签名验证失败导致应用安装失败
 
@@ -1223,10 +1146,6 @@ Failed to install the HAP due to code signature verification failure.
 
 1. 检查HAP包代码签名是否有效。
 2. 检查HAP包代码签名证书是否为可信证书。
-<<<<<<< HEAD
-可参考[错误码17700048](../apis-ability-kit/errorcode-bundle.md#17700048-代码签名校验失败)。
-=======
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 ## 9201039 企业设备验证失败导致应用安装失败
 
@@ -1247,9 +1166,6 @@ Failed to install the HAP due to enterprise device verification failure.
 **处理步骤**
 
 确认设备是否在企业设备管理范围内，并通过企业设备管理验证。
-<<<<<<< HEAD
-可参考[错误码17700050](../apis-ability-kit/errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装)。
-=======
 
 ## 9201043 API调用的前置条件未满足
 
@@ -1268,4 +1184,3 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 **处理步骤**
 
 先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343

@@ -730,11 +730,7 @@ installForResult(admin: Want, hapFilePaths: Array\<string>, installParam?: Insta
 | 9201028  | Failed to install the HAP because the isolationMode configured is not supported. |
 | 9201029  | Failed to install the HAP since the version of the HAP to install is too early. |
 | 9201030  | Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode. |
-<<<<<<< HEAD
-| 9201031  | Installation failed because the dependant module does not exist. |
-=======
 | 9201031  | Installation failed because the dependent module does not exist. |
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 | 9201032  | The specified user ID is not found. |
 | 9201033  | Failed to install the HAP because the overlay check failed. |
 | 9201034  | Failed to install the HSP due to missing required permissions. |
@@ -746,11 +742,7 @@ installForResult(admin: Want, hapFilePaths: Array\<string>, installParam?: Insta
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
-<<<<<<< HEAD
-
-=======
 不传入installParam参数使用示例：
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
@@ -762,30 +754,19 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-<<<<<<< HEAD
-// 需根据实际情况进行替换
-let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
-=======
 // 需根据实际情况进行替换bundleName，例如bundleName为com.example.myapplication，则有效路径为'/data/storage/el2/base/com.example.myapplication/haps/entry/testinstall/ExtensionTest.hap'
 // 请确保对应路径下的文件必须存在，并且应用有权限访问。
 let hapFilePaths: Array<string> = ['/data/storage/el2/base/bundleName/haps/entry/testinstall/ExtensionTest.hap'];
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 
 bundleManager.installForResult(wantTemp, hapFilePaths).then(() => {
   console.info('Succeeded in installing bundles.');
 }).catch((err: BusinessError) => {
-<<<<<<< HEAD
-=======
   // 在此处获取到错误码后，可参考接口注释中的错误原因进行相应的错误处理。
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
   console.error(`Failed to install bundles. Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
-<<<<<<< HEAD
-=======
 传入installParam参数使用示例：
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 ```ts
 import { bundleManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
@@ -797,14 +778,9 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-<<<<<<< HEAD
-// 需根据实际情况进行替换
-let hapFilePaths: Array<string> = ['/data/storage/el2/base/haps/entry/testinstall/ExtensionTest.hap'];
-=======
 // 需根据实际情况进行替换bundleName，例如bundleName为com.example.myapplication，则有效路径为'/data/storage/el2/base/com.example.myapplication/haps/entry/testinstall/ExtensionTest.hap'
 // 请确保对应路径下的文件必须存在，并且应用有权限访问。
 let hapFilePaths: Array<string> = ['/data/storage/el2/base/bundleName/haps/entry/testinstall/ExtensionTest.hap'];
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
 const params: Record<string, string> = {
   'ohos.bms.param.enterpriseForAllUser': 'true'
 };
@@ -817,10 +793,7 @@ let installParam: bundleManager.InstallParam = {
 bundleManager.installForResult(wantTemp, hapFilePaths, installParam).then(() => {
   console.info('Succeeded in installing bundles.');
 }).catch((err: BusinessError) => {
-<<<<<<< HEAD
-=======
   // 在此处获取到错误码后，可参考接口注释中的错误原因进行相应的错误处理。
->>>>>>> 69d25e65725101b2ab38b270758887cefe4ea343
   console.error(`Failed to install bundles. Code is ${err.code}, message is ${err.message}`);
 });
 ```
