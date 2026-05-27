@@ -27,7 +27,7 @@
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
-## createImageLattice<sup>12+</sup>
+## createImageLattice<sup>18+</sup>
 
 ArkTS-Dyn: static createImageLattice(xDivs: Array\<number>, yDivs: Array\<number>, fXCount: number, fYCount: number, fBounds?: common2D.Rect | null, fRectTypes?: Array\<RectType> | null, fColors?: Array\<common2D.Color> | null): Lattice
 
@@ -37,7 +37,7 @@ ArkTS-Sta: static createImageLattice(xDivs: Array\<int>, yDivs: Array\<int>, fXC
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
 
@@ -142,7 +142,7 @@ static createImageLattice(xDivs: Array\<number>, yDivs: Array\<number>, fXCount:
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -197,6 +197,7 @@ static createImageLatticeWithArrayInt(xDivs: Array\<int>, yDivs: Array\<int>, fX
 
 **示例：**
 
+ArkTS-Sta示例：
 ```ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -205,7 +206,7 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     let xDivs : Array<int> = [1, 2, 4];
     let yDivs : Array<int> = [1, 2, 4];
-    let colorArray :Array<int>=[0xffffffff,0x44444444,0x99999999,0xffffffff,0x44444444,0x99999999,0xffffffff,0x44444444,0x99999999,0x44444444,0x99999999,0xffffffff,0x44444444,0x99999999,0xffffffff,0x44444444];
+    let colorArray: Array<int> = [(0xffffffff).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0xffffffff).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0xffffffff).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0xffffffff).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0xffffffff).toInt(), (0x44444444).toInt()];
     let lattice = drawing.Lattice.createImageLatticeWithArrayInt(xDivs, yDivs, 3, 3,null,null,colorArray);
   }
 }
