@@ -43,7 +43,7 @@
 | [OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnUri callback, void *userData)](#oh_avrecorder_seturicallback) | 设置URI回调函数，以便应用能够响应AVRecorder生成的URI事件。此接口必须在[OH_AVRecorder_Start](#oh_avrecorder_start)调用之前调用。 |
 | [OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)](#oh_avrecorder_setwillmutewheninterrupted) | 设置是否开启静音打断模式。 |
 | [OH_AVErrCode OH_AVRecorder_GetAudioCapturerMaxAmplitude(OH_AVRecorder *recorder, int32_t *amplitude)](#oh_avrecorder_getaudiocapturermaxamplitude) | 获取当前音频最大振幅。获取到的值为最近两次调用之间的最大振幅。例如，在1s时获取过一次最大振幅，然后在2s时再次调用该方法，那么返回值是1s到2s之间的最大振幅值。<br> 该方法只能在[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)方法调用之后，且必须在[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法之前调用。 |
-| [OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, OH_AVFormat *metadata)](#oh_avrecorder_setmetadata) | 设置录制的元数据信息。如果metadata参数与config.metadata.customInfo（参考[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)和[OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)）中存在相同的键，前者的对应值将覆盖后者。<br> 该方法只能在OH_AVRecorder_Prepare方法调用之后，且必须在[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法之前调用。 |
+| [OH_AVErrCode OH_AVRecorder_SetMetadata(OH_AVRecorder *recorder, const OH_AVFormat *metadata)](#oh_avrecorder_setmetadata) | 设置录制的元数据信息。如果metadata参数与config.metadata.customInfo（参考[OH_AVRecorder_Prepare](capi-avrecorder-h.md#oh_avrecorder_prepare)和[OH_AVRecorder_Config](capi-avrecorder-oh-avrecorder-config.md)）中存在相同的键，前者的对应值将覆盖后者。<br> 该方法只能在OH_AVRecorder_Prepare方法调用之后，且必须在[OH_AVRecorder_Stop](capi-avrecorder-h.md#oh_avrecorder_stop)方法之前调用。 |
 
 ## 函数说明
 
