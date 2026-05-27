@@ -3083,7 +3083,7 @@ netCon.register((error: BusinessError) => {
 
 // 使用unregister接口取消订阅网络丢失事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(`Failed to get request.Code:${err.code},message:${err.message}`);
+  console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
 });
 ```
 
