@@ -59,6 +59,58 @@ ArkTS-Dyn示例：
 
 <!-- @[all_outputDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets) -->
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION, // 音频流使用类型:语音通话。根据业务场景配置,参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+// ...
+  // 创建AudioRenderer实例。
+  audio.createAudioRenderer(audioRendererOptions).then((data) => {
+    audioRenderer = data;
+    console.info('AudioFrameworkRenderLog: AudioRenderer Created : Success : Stream Type: SUCCESS');
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+    // ...
+  });
+
+  if (audioRenderer) {
+    // 订阅监听音频流输出设备变化及原因。
+    (audioRenderer as audio.AudioRenderer).on('outputDeviceChangeWithInfo', async (deviceChangeInfo: audio
+    .AudioStreamDeviceChangeInfo) => {
+      switch (deviceChangeInfo.changeReason) {
+        case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
+          // 响应设备不可用事件,如果应用处于播放状态,应暂停播放,更新UX界面。
+          // await audioRenderer.pause();
+          break;
+        case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
+          // 应用根据业务情况响应设备可用事件。
+          break;
+        case audio.AudioStreamDeviceChangeReason.REASON_OVERRODE:
+          // 应用根据业务情况响应设备强选事件。
+          break;
+        case audio.AudioStreamDeviceChangeReason.REASON_UNKNOWN:
+          // 应用根据业务情况响应未知原因事件。
+          break;
+      }
+    });
+  }
+```
+
 ArkTS-Sta示例：
 
 <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
