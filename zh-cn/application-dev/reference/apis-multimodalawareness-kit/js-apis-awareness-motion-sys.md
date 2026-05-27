@@ -8,7 +8,7 @@
 
 本模块提供对用户动作的感知能力，包括用户的手势、动作等。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 拾取事件枚举。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -38,7 +38,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 旋转事件枚举。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -56,7 +56,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 传感器检测到的物理方向枚举。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -75,7 +75,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 由智能算法计算出的逻辑方向枚举。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -93,7 +93,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 智能旋转传感器事件的基本数据结构。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -110,7 +110,7 @@ onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 
 订阅拾取传感器事件。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -157,7 +157,7 @@ onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 
 订阅旋转传感器事件。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -204,7 +204,7 @@ onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 
 订阅智能旋转传感器事件。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -251,7 +251,7 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 取消订阅拾取传感器事件。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -293,7 +293,7 @@ offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
 取消订阅旋转传感器事件。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -335,7 +335,7 @@ offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
 取消订阅智能旋转传感器事件。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 

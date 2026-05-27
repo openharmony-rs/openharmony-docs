@@ -8,7 +8,7 @@
 
 本模块提供用户状态感知能力，包括手势检测、环境音检测等功能。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示设备类型。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -41,7 +41,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示设备信息。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -58,7 +58,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示用户状态检测功能类型。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -82,7 +82,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示用户状态支持的原子化服务能力。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -111,7 +111,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示提醒强度级别，触发提醒铃声时使用。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -126,7 +126,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示用户状态数据。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -143,7 +143,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示用户吹气数据，继承自[UserStatusData](#userstatusdata)。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -163,7 +163,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示用户情绪数据，继承自[UserStatusData](#userstatusdata)。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -182,7 +182,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示舒适提醒数据，继承自[UserStatusData](#userstatusdata)。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -198,7 +198,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示用户朝向数据，继承自[UserStatusData](#userstatusdata)。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -217,7 +217,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示用户手势数据，继承自[UserFacesData](#userfacesdata)。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -236,7 +236,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 表示用户朝向角度数据，继承自[UserStatusData](#userstatusdata)。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -252,7 +252,7 @@ subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;
 
 订阅用户状态监控，以获取用户状态数据。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -307,7 +307,7 @@ unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&
 
 取消订阅用户状态监控。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -362,7 +362,7 @@ configure(featureId: UserStatusFeature, detail: string): number
 
 配置功能参数。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -425,7 +425,7 @@ queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomicCap[]
 
 查询设备支持的原子化服务能力。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
