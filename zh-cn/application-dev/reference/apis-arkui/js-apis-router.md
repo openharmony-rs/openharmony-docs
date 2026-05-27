@@ -1511,6 +1511,7 @@ this.getUIContext().getRouter().getParams();
 以下代码仅适用于javascript文件，不适用于ArkTS文件
 
 <!--deprecated_code_no_check-->
+<!--code_no_check-->
 
 ```js
 // 在当前页面中
@@ -1526,12 +1527,13 @@ export default {
 }
 ```
 <!--deprecated_code_no_check-->
+<!--code_no_check-->
 
 ```js
 // 在detail页面中
 export default {
   onInit() {
-    console.info('showData1:' + this.getUIContext().getRouter().getParams()['data1']);
+    console.info('showData1:' + router.getParams()['data1']);
   }
 }
 ```
