@@ -28,9 +28,9 @@ foregroundColor(value: ResourceColor | ColoringStrategy): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 10
-
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[foregroundColor<sup>23+</sup>](#foregroundcolor23)。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -56,9 +56,9 @@ foregroundColor(color: Optional\<ResourceColor | ColoringStrategy>): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Dyn起始版本：** 18
-
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[foregroundColor<sup>23+</sup>](#foregroundcolor23)。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
