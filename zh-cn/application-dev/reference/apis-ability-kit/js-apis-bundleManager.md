@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用信息的查询能力，支持应用包信息[BundleInfo](js-apis-bundleManager-bundleInfo.md)、应用程序信息[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)、UIAbility组件信息[AbilityInfo](js-apis-bundleManager-abilityInfo.md)、ExtensionAbility组件信息[ExtensionAbilityInfo](js-apis-bundleManager-extensionAbilityInfo.md)等信息的查询。
 
@@ -25,19 +25,19 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                                          | 值         | 说明                                                         |
 | --------------------------------------------- | ---------- | ------------------------------------------------------------ |
-| GET_BUNDLE_INFO_DEFAULT                       | 0x00000000 | 获取默认包信息，不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_APPLICATION              | 0x00000001 | 用于获取包含applicationInfo的bundleInfo，获取的bundleInfo不包含signatureInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_HAP_MODULE               | 0x00000002 | 用于获取包含hapModuleInfo的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_ABILITY                  | 0x00000004 | 用于获取包含ability的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、extensionAbility和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY        | 0x00000008 | 用于获取包含extensionAbility的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability 和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION     | 0x00000010 | 用于获取包含permission的bundleInfo。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、extensionAbility和ability的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_METADATA                 | 0x00000020 | 用于获取applicationInfo、moduleInfo、abilityInfo和extensionAbilityInfo中包含的metadata。单独使用不生效，它需要与GET_BUNDLE_INFO_WITH_APPLICATION、GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY配合使用，其中：<br/>-&nbsp;获取applicationInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。<br/>-&nbsp;获取moduleInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>-&nbsp;获取abilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY一起使用。<br/>-&nbsp;获取extensionAbilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_DISABLE                  | 0x00000040 | 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_SIGNATURE_INFO           | 0x00000080 | 用于获取包含signatureInfo的bundleInfo。获取的bundleInfo不包含applicationInfo、hapModuleInfo、extensionAbility、ability和permission的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | 用于获取包含fileContextMenuConfig的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | 用于获取包含routerMap的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | 用于获取包含skills的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>23+</sup>      | 0x00010000 | 用于获取包含hapModuleInfo的bundleInfo，仅支持entry模块对应的bundleInfo.hapModulesInfo，如果entry模块不存在，bundleInfo.hapModulesInfo列表为空。获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_DEFAULT                       | 0x00000000 | 获取默认包信息，不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_APPLICATION              | 0x00000001 | 用于获取包含applicationInfo的bundleInfo，获取的bundleInfo不包含signatureInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_HAP_MODULE               | 0x00000002 | 用于获取包含hapModuleInfo的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_ABILITY                  | 0x00000004 | 用于获取包含ability的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、extensionAbility和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY        | 0x00000008 | 用于获取包含extensionAbility的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability 和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION     | 0x00000010 | 用于获取包含permission的bundleInfo。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、extensionAbility和ability的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_METADATA                 | 0x00000020 | 用于获取applicationInfo、moduleInfo、abilityInfo和extensionAbilityInfo中包含的metadata。单独使用不生效，它需要与GET_BUNDLE_INFO_WITH_APPLICATION、GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY配合使用，其中：<br/>-&nbsp;获取applicationInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。<br/>-&nbsp;获取moduleInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>-&nbsp;获取abilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY一起使用。<br/>-&nbsp;获取extensionAbilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_DISABLE                  | 0x00000040 | 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_SIGNATURE_INFO           | 0x00000080 | 用于获取包含signatureInfo的bundleInfo。获取的bundleInfo不包含applicationInfo、hapModuleInfo、extensionAbility、ability和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | 用于获取包含fileContextMenuConfig的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | 用于获取包含routerMap的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | 用于获取包含skills的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>23+</sup>      | 0x00010000 | 用于获取包含hapModuleInfo的bundleInfo，仅支持entry模块对应的bundleInfo.hapModulesInfo，如果entry模块不存在，bundleInfo.hapModulesInfo列表为空。获取的bundleInfo不包含signatureInfo、applicationInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## ExtensionAbilityType
 
@@ -48,7 +48,7 @@ import { bundleManager } from '@kit.AbilityKit';
 <!--Table: 30%; 10%; 60%-->
 | 名称 | 值 | 说明 |
 |:----------------:|:---:|-----|
-| FORM             | 0   | [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)：卡片扩展能力，提供卡片开发能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| FORM             | 0   | [FormExtensionAbility](../apis-form-kit/js-apis-app-form-formExtensionAbility.md)：卡片扩展能力，提供卡片开发能力。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | WORK_SCHEDULER   | 1   | [WorkSchedulerExtensionAbility](../apis-backgroundtasks-kit/js-apis-WorkSchedulerExtensionAbility.md)：延时任务扩展能力，允许应用在系统闲时执行实时性不高的任务。 |
 | INPUT_METHOD     | 2   | [InputMethodExtensionAbility](../apis-ime-kit/js-apis-inputmethod-extension-ability.md)：输入法扩展能力，用于开发输入法应用。 |
 |<!--DelRow--> SERVICE          | 3   | [ServiceExtensionAbility](js-apis-app-ability-serviceExtensionAbility-sys.md)：后台服务扩展能力，提供后台运行并对外提供相应能力。|
@@ -59,7 +59,7 @@ import { bundleManager } from '@kit.AbilityKit';
 |<!--DelRow--> WALLPAPER        | 8   | WallpaperExtensionAbility：壁纸扩展能力，用于实现桌面壁纸。预留能力，仅系统应用支持。 |
 | BACKUP           |  9  | [BackupExtensionAbility](../apis-core-file-kit/js-apis-application-backupExtensionAbility.md)：数据备份扩展能力，提供应用数据的备份恢复能力。 |
 |<!--DelRow--> WINDOW     |  10 | [WindowExtensionAbility](../apis-arkui/js-apis-application-windowExtensionAbility-sys.md)：界面组合扩展能力，允许系统应用进行跨应用的界面拉起和嵌入。 |
-| ENTERPRISE_ADMIN |  11 | [EnterpriseAdminExtensionAbility](../apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)：企业设备管理扩展能力，提供企业管理时处理管理事件的能力，比如设备上应用安装事件、锁屏密码输入错误次数过多事件等。 |
+| ENTERPRISE_ADMIN |  11 | [EnterpriseAdminExtensionAbility](../apis-mdm-kit/js-apis-EnterpriseAdminExtensionAbility.md)：企业设备管理扩展能力，提供企业管理时处理管理事件的能力。 |
 |<!--DelRow--> THUMBNAIL        | 13  | ThumbnailExtensionAbility：文件缩略图扩展能力，用于为文件提供图标缩略图的能力。预留能力，仅系统应用支持。 |
 |<!--DelRow--> PREVIEW          | 14  | PreviewExtensionAbility：文件预览扩展能力，提供文件预览的能力，其他应用可以直接在应用中嵌入显示。预留能力，仅系统应用支持。 |
 |<!--DelRow--> PRINT<sup>10+</sup> | 15 | PrintExtensionAbility：文件打印扩展能力，提供应用打印照片、文档等办公场景。仅系统应用支持。 |
@@ -75,13 +75,15 @@ import { bundleManager } from '@kit.AbilityKit';
 | FORM_EDIT<sup>18+</sup> | 27 | [FormEditExtensionAbility](../apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)：为开发者提供卡片编辑的能力，继承自UIExtensionAbility。 |
 | DISTRIBUTED<sup>20+</sup> | 28 | [DistributedExtensionAbility](../apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。 |
 | APP_SERVICE<sup>20+</sup> | 29 | [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)：为企业普通应用提供后台服务能力。 |
-| LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | SELECTION<sup>24+</sup> | 31 | [SelectionExtensionAbility](../apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)：为开发者提供划词弹窗能力的ExtensionAbility。<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md)：为开发者提供Web原生消息通信能力的ExtensionAbility。|
 | FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)：提供故障延迟通知的能力。|
 | NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)：提供通知订阅的相关功能。|
 | CRYPTO<sup>22+</sup> | 35 | [CryptoExtensionAbility](../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md)：提供外部密钥管理扩展的相关功能。|
 | PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| AGENT<sup>24+</sup> | 37 | [AgentExtensionAbility](js-apis-app-agent-agentExtensionAbility.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| AGENT_UI<sup>24+</sup> | 38 | [AgentUIExtensionAbility](js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。<br>**模型约束**：此接口仅可在Stage模型下使用。|
 | UNSPECIFIED      | 255 | 不指定类型<!--Del-->，配合[queryExtensionAbilityInfo接口](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo)可以查询所有类型的ExtensionAbility<!--DelEnd-->。 |
 <!--RP2--><!--RP2End-->
 
@@ -89,7 +91,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 权限授予状态。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -102,7 +104,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 标识该组件所支持的窗口模式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -116,7 +118,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 标识组件的[启动模式](../../application-models/uiability-launch-type.md)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -137,8 +139,8 @@ import { bundleManager } from '@kit.AbilityKit';
 |  名称   | 值   |                            说明                            |
 | :-----: | ---- | :--------------------------------------------------------: |
 | PAGE    | 1    | UI界面类型的Ability。表示基于Page模板开发的FA，用于提供与用户交互的能力。        |
-| SERVICE | 2    | 后台服务类型的Ability，无UI界面。表示基于Service模板开发的[PA（ParticleAbility）](js-apis-ability-particleAbility.md)，用于提供后台运行任务的能力，例如后台下载或者播放音乐。  |
-|  DATA   | 3    | 表示基于Data模板开发的[PA（ParticleAbility）](js-apis-ability-particleAbility.md)，用于对外部提供统一的数据访问对象。 |
+| SERVICE | 2    | 后台服务类型的Ability，无UI界面。表示基于Service模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于提供后台运行任务的能力，例如后台下载或者播放音乐。  |
+|  DATA   | 3    | 表示基于Data模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于对外部提供统一的数据访问对象。 |
 
 ## DisplayOrientation
 
@@ -149,27 +151,27 @@ import { bundleManager } from '@kit.AbilityKit';
 <!--Table: 40%; 10%; 50%-->
 | 名称                               |值 |说明 |
 |:----------------------------------|---|---|
-| UNSPECIFIED                        |0 |表示未定义方向模式，由系统判定。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LANDSCAPE                          |1 |表示横屏显示模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| PORTRAIT                           |2 |表示竖屏显示模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| FOLLOW_RECENT                      |3 |表示跟随上一个显示模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| LANDSCAPE_INVERTED                 |4 |表示反向横屏显示模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| PORTRAIT_INVERTED                  |5 |表示反向竖屏显示模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION                      |6 |表示传感器在旋转到横向和竖向时，页面会自动旋转。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_LANDSCAPE            |7 |表示传感器在旋转到横向时，页面会自动旋转。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_PORTRAIT             |8 |表示传感器在旋转到竖向时，页面会自动旋转。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_RESTRICTED           |9 |表示受开关控制的自动旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| AUTO_ROTATION_LANDSCAPE_RESTRICTED |10|表示受开关控制的自动横向旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| AUTO_ROTATION_PORTRAIT_RESTRICTED  |11|表示受开关控制的自动竖向旋转模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| LOCKED                             |12|表示锁定模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup> |13|受开关控制和由系统判定的自动旋转模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| FOLLOW_DESKTOP<sup>12+</sup> |14|跟随桌面的旋转模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| UNSPECIFIED                        |0 |表示未定义方向模式，由系统判定。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LANDSCAPE                          |1 |表示横屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PORTRAIT                           |2 |表示竖屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| FOLLOW_RECENT                      |3 |表示跟随上一个显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LANDSCAPE_INVERTED                 |4 |表示反向横屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PORTRAIT_INVERTED                  |5 |表示反向竖屏显示模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| AUTO_ROTATION                      |6 |表示传感器在旋转到横向和竖向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| AUTO_ROTATION_LANDSCAPE            |7 |表示传感器在旋转到横向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| AUTO_ROTATION_PORTRAIT             |8 |表示传感器在旋转到竖向时，页面会自动旋转。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| AUTO_ROTATION_RESTRICTED           |9 |表示受开关控制的自动旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| AUTO_ROTATION_LANDSCAPE_RESTRICTED |10|表示受开关控制的自动横向旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| AUTO_ROTATION_PORTRAIT_RESTRICTED  |11|表示受开关控制的自动竖向旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| LOCKED                             |12|表示锁定模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| AUTO_ROTATION_UNSPECIFIED<sup>12+</sup> |13|受开关控制和由系统判定的自动旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| FOLLOW_DESKTOP<sup>12+</sup> |14|跟随桌面的旋转模式。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## CompatiblePolicy<sup>10+</sup>
 
 标识动态共享库的版本兼容类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -181,7 +183,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 标识模块类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -195,7 +197,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 标识应用的类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -219,7 +221,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -240,7 +242,7 @@ getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
 
 根据给定的bundleFlags获取当前应用的BundleInfo。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -293,7 +295,7 @@ getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>):
 
 根据给定的bundleFlags获取当前应用的BundleInfo。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -302,7 +304,7 @@ getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>):
 | 参数名     | 类型   | 必填 | 说明                |
 | ----------- | ------ | ---- | --------------------- |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的当前应用的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
@@ -345,9 +347,9 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 
 > 说明：
-> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -358,11 +360,11 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 | moduleName   | string                        | 是   | 表示Module名称。                                     |
 | abilityName  | string                        | 是   | 表示UIAbility组件的名称。                                    |
 | metadataName | string                        | 是   | 表示UIAbility组件的[元信息名称](../../quick-start/module-configuration-file.md#metadata标签)，即module.json5配置文件中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name。                                  |
-| callback     | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
+| callback     | AsyncCallback<Array\<string>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -404,9 +406,9 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName?: stri
 根据给定的moduleName、abilityName和metadataName（module.json5中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)下的metadata标签的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 
 > 说明：
-> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+> 如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -426,7 +428,7 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName?: stri
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -487,9 +489,9 @@ getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: 
 
 以同步方法根据给定的moduleName、abilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
 
->如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+>如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -509,7 +511,7 @@ getProfileByAbilitySync(moduleName: string, abilityName: string, metadataName?: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -564,9 +566,9 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用callback异步回调。
 
->如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+>如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -577,11 +579,11 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 | moduleName           | string                        | 是   | 表示Module名称。                                   |
 | extensionAbilityName | string                        | 是   | 表示ExtensionAbility组件的名称。                         |
 | metadataName         | string                        | 是   | 表示ExtensionAbility组件的元信息名称，即module.json5配置文件中[extensionAbilities标签](../../quick-start/module-configuration-file.md#extensionabilities标签)下的metadata标签的name。                                 |
-| callback             | AsyncCallback<Array\<string>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
+| callback             | AsyncCallback<Array\<string>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的Array\<string>；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -621,9 +623,9 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串。使用Promise异步回调。
 
->如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+>如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -643,7 +645,7 @@ getProfileByExtensionAbility(moduleName: string, extensionAbilityName: string, m
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -692,9 +694,9 @@ getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: strin
 
 以同步方法根据给定的moduleName、extensionAbilityName和metadataName（module.json5中[metadata标签](../../quick-start/module-configuration-file.md#metadata标签)下的name）获取自身相应配置文件的json格式字符串，返回对象为string数组。
 
->如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理模块](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
+>如果配置文件信息采用了资源引用格式，则返回值将保持资源引用格式（例如 $string:res_id），开发者可以通过[资源管理](../apis-localization-kit/js-apis-resource-manager.md)的相关接口，来获取引用的资源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -714,7 +716,7 @@ getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: strin
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -759,7 +761,7 @@ getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 
 以同步方法根据给定的bundleFlags获取当前应用的BundleInfo。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -807,7 +809,7 @@ canOpenLink(link: string): boolean
 
 根据给定的链接判断目标应用是否可访问，链接中的scheme需要在[module.json5文件](../../quick-start/module-configuration-file.md)的querySchemes字段下配置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -825,7 +827,7 @@ canOpenLink(link: string): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -856,7 +858,7 @@ getLaunchWant(): Want
 
 获取本应用[入口UIAbility](../../quick-start/application-package-glossary.md#uiability)的Want参数。
 
-**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -868,7 +870,7 @@ getLaunchWant(): Want
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -912,12 +914,12 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
+| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的bundleInfo；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -1000,11 +1002,11 @@ getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。|
-| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
+| callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -1060,7 +1062,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise
 | ----------- | ------ | ---- | ---------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。       |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
+| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。  |
 
 **返回值：**
 
@@ -1070,7 +1072,7 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
@@ -1146,7 +1148,7 @@ getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): Bund
 | ----------- | ------ | ---- | -------------------------------------------------------- |
 | bundleName  | string | 是   | 表示要查询的应用Bundle名称。                                 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。 |
-| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。              |
+| userId      | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。              |
 
 **返回值：**
 
@@ -1156,7 +1158,7 @@ getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): Bund
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
@@ -1216,7 +1218,7 @@ getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -1261,11 +1263,11 @@ getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | uid      | number                 | 是   | 表示应用程序的UID。                                            |
-| callback | AsyncCallback\<string> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
+| callback | AsyncCallback\<string> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleName；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | --------------------- |
@@ -1322,7 +1324,7 @@ getBundleNameByUid(uid: number): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ---------------------|
@@ -1377,7 +1379,7 @@ getBundleNameByUidSync(uid: number): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ---------------------|
@@ -1429,7 +1431,7 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | --------------------------------------|
@@ -1482,7 +1484,7 @@ getSignatureInfo(uid: number): SignatureInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ---------------------|
@@ -1513,7 +1515,7 @@ getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 
 获取指定资源标识符和组件信息标志对应的Ability信息。使用Promise异步回调。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.GET_ABILITY_INFO
 
@@ -1536,7 +1538,7 @@ getAbilityInfo(uri: string, abilityFlags: number): Promise\<Array\<AbilityInfo>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------- |
@@ -1572,7 +1574,7 @@ cleanBundleCacheFilesForSelf(): Promise\<void>
 
 清理应用自身的缓存。使用Promise异步回调。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1615,7 +1617,7 @@ getPluginBundlePathForSelf(pluginBundleName: string): string
 
 **错误码：**
 
-错误码请参见[ohos.bundle错误码](errorcode-bundle.md)。
+错误码请参见[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID  | 错误信息                                  |
 | -------- | --------------------------------------- |
@@ -1658,7 +1660,7 @@ getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
 | 参数名     | 类型   | 必填 | 说明                       |
 | ---------- | ------ | ---- | ------------------------- |
 | bundleName | string | 是   | 表示应用的包名。 |
-| userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
+| userId     | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br/>默认值：调用方所在用户。<br/>取值范围：大于等于0。 |
 
 **返回值：**
 
@@ -1788,6 +1790,8 @@ ArkTS-Sta: getInstalledBundleList(bundleFlags: int): Promise<Array\<BundleInfo>>
  
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
+**设备行为差异：** 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回201错误码。
+
 **ArkTS-Dyn起始版本：** 26.0.0
 
 **ArkTS-Sta起始版本：** 26.0.0
@@ -1824,12 +1828,117 @@ let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
 try {
   bundleManager.getInstalledBundleList(bundleFlags).then((data) => {
     hilog.info(0x0000, 'testTag', 'getInstalledBundleList successfully. Data: %{public}s', JSON.stringify(data));
-  }).catch((err: BusinessError) => {
+  }).catch((err: Error) => {
     hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', err.message);
   });
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getInstalledBundleList failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.setAlternateIcon
+
+setAlternateIcon(alternateIconName: string): Promise\<void>;
+
+根据给定的备用图标名称设置调用方自身的备用图标。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                       |
+| ----------- | ------ | ---- | ---------------------------- |
+| alternateIconName  | string | 是   | 要设置的备用图标名称。备用图标名称须在app.json5中[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)的name字段内。<br/>alternateIconName为空时表示取消备用图标。 |
+
+**返回值：**
+
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 17700308 | The alternateIconName must match the name field under alternateIcons in the app.json5 file. |
+| 17700309 | No alternate icon is enabled. |
+| 17700310 | Failed to set the alternate icon. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// alternateIconName需要替换为要设置的备用图标名称
+let alternateIconName: string = 'com.ohos.demo';
+
+try {
+  bundleManager.setAlternateIcon(alternateIconName).then((data) => {
+    hilog.info(0x0000, 'testTag', 'setAlternateIcon successfully');
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAlternateIcon failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAlternateIcons
+
+getAlternateIcons(): Promise<Array\<AlternateIconInfo>>
+
+查询当前应用在app.json5中[alternateIcons标签](../../quick-start/app-configuration-file.md#alternateicons标签)配置的备用图标信息。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise<Array\<[AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo)>> | Promise对象，返回当前应用的备用图标信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | ---------------------------------- |
+| 17700311 | Failed to obtain alternate icon. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+  bundleManager.getAlternateIcons().then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAlternateIcons successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAlternateIcons failed. Cause: %{public}s', message);
 }
 ```
 
@@ -1839,7 +1948,7 @@ type ApplicationInfo = _ApplicationInfo
 
 应用程序信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1853,7 +1962,7 @@ type ModuleMetadata = _ModuleMetadata
 
 模块的元数据信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1867,7 +1976,7 @@ type Metadata = _Metadata
 
 元数据信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1881,7 +1990,7 @@ type BundleInfo = _BundleInfo.BundleInfo
 
 应用包信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1896,7 +2005,7 @@ type UsedScene = _BundleInfo.UsedScene
 
 权限使用的场景和时机。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1910,7 +2019,7 @@ type ReqPermissionDetail = _BundleInfo.ReqPermissionDetail
 
 应用运行时需向系统申请的权限集合的详细信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1924,7 +2033,7 @@ type SignatureInfo = _BundleInfo.SignatureInfo
 
 应用包的签名信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1938,7 +2047,7 @@ type HapModuleInfo = _HapModuleInfo.HapModuleInfo
 
 模块信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1952,7 +2061,7 @@ type PreloadItem = _HapModuleInfo.PreloadItem
 
 原子化服务中模块的预加载模块信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1966,7 +2075,7 @@ type Dependency = _HapModuleInfo.Dependency
 
 模块所依赖的动态共享库信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1980,7 +2089,7 @@ type RouterItem = _HapModuleInfo.RouterItem
 
 模块配置的路由表信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1994,7 +2103,7 @@ type DataItem = _HapModuleInfo.DataItem
 
 模块配置的路由表中的自定义数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2008,7 +2117,7 @@ type AbilityInfo = _AbilityInfo.AbilityInfo
 
 Ability信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2022,7 +2131,7 @@ type WindowSize = _AbilityInfo.WindowSize
 
 窗口尺寸。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2037,7 +2146,7 @@ type ExtensionAbilityInfo = _ExtensionAbilityInfo.ExtensionAbilityInfo
 
 ExtensionAbility信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2051,7 +2160,7 @@ type ElementName = _ElementName
 
 ElementName信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2065,7 +2174,7 @@ type Skill = _Skill.Skill
 
 skill信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2079,7 +2188,7 @@ type SkillUrl = _Skill.SkillUri
 
 SkillUri信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2098,3 +2207,21 @@ type AppCloneIdentity = _BundleInfo.AppCloneIdentity
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |应用包的身份信息。 |
+
+## AlternateIconInfo
+
+ArkTS-Dyn: type AlternateIconInfo = _BundleInfo.AlternateIconInfo
+
+ArkTS-Sta: type AlternateIconInfo = _AlternateIconInfo
+
+应用备用图标信息。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| ArkTS-Dyn: [_BundleInfo.AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo)<br>ArkTS-Sta: [_AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo) | 应用的备用图标信息。 |

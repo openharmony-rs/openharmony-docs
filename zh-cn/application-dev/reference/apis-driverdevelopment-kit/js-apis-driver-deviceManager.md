@@ -1,7 +1,7 @@
 # @ohos.driver.deviceManager (外设管理)
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -456,7 +456,7 @@ try {
 
 unbindDevice(deviceId: number): Promise&lt;number&gt;
 
-解除设备绑定。
+解除设备绑定。该接口使用一个Promise对象来返回结果。
 
 > **说明**
 > 从 API version 10开始支持，从API version 19开始废弃。建议使用[deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19)替代。

@@ -519,6 +519,8 @@ JSON文件共包含3个属性。
 
    注册监听。
 
+   ArkTS-Dyn示例：
+
    <!-- @[vibrator_js_vibrator_on_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
@@ -537,7 +539,26 @@ JSON文件共包含3个属性。
                }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[vibrator_js_vibrator_on_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+
+   ``` TypeScript
+   try {
+     // 订阅 vibratorStateChange事件
+     vibrator.onVibratorStateChange((data: vibrator.VibratorStatusEvent) => {
+       console.info('vibrator state callback info:', JSON.stringify(data));
+       // ...
+     });
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
    取消监听,取消传入的callback需与注册的一致。
+
+   ArkTS-Dyn示例：
 
    <!-- @[vibrator_js_vibrator_off_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -557,6 +578,25 @@ JSON文件共包含3个属性。
                  let e: BusinessError = error as BusinessError;
                  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
                }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[vibrator_js_vibrator_off_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples-Sta/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     // 取消订阅 vibratorStateChange事件
+     vibrator.offVibratorStateChange((data: vibrator.VibratorStatusEvent) => {
+      console.info('vibrator state callback info:', JSON.stringify(data));
+      // ...
+     });
+     // 取消订阅所有 vibratorStateChange事件
+     // vibrator.offVibratorStateChange();
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+   }
    ```
 
 9. 通过设备ID和马达ID获取预置振动效果信息。

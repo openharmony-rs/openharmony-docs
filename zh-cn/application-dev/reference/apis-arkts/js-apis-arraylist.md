@@ -1,8 +1,8 @@
 # @ohos.util.ArrayList (线性容器ArrayList)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -17,9 +17,11 @@ ArrayList和[LinkedList](js-apis-linkedlist.md)相比，ArrayList的随机访问
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -32,13 +34,17 @@ import { ArrayList } from '@kit.ArkTS';
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| length | number | 是 | 否 | ArrayList的元素个数。 |
+| length | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否 | ArrayList的元素个数。 |
 
 
 ### constructor
@@ -47,9 +53,13 @@ constructor()
 
 ArrayList的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -61,8 +71,16 @@ ArrayList的构造函数。
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<string | number>();
+```
+
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<string | int> = new ArrayList<string | int>();
 ```
 
 
@@ -72,9 +90,13 @@ add(element: T): boolean
 
 在ArrayList尾部插入元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -98,6 +120,8 @@ add(element: T): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 class C1 {
   name: string = ""
@@ -116,37 +140,71 @@ console.info("result2:", result2);  // result2: true
 console.info("length:", arrayList.length);  // length: 5
 ```
 
+ArkTS-Sta示例：
+
+```ts
+class C1 {
+  name: string = ""
+  age: string = ""
+}
+let arrayList: ArrayList<string | int | boolean | Array<int> | C1> =
+  new ArrayList<string | int | boolean | Array<int> | C1>();
+let result1 = arrayList.add("a");
+let result2 = arrayList.add(1);
+let b: Array<int> = [1, 2, 3];
+let result3 = arrayList.add(b);
+let c : C1 = {name: "Dylan", age: "13"}
+let result4 = arrayList.add(c);
+let result5 = arrayList.add(false);
+```
+
 ### insert
 
-insert(element: T, index: number): void
+ArkTS-Dyn: insert(element: T, index: number): void
+
+ArkTS-Sta: insert(element: T, index: int): void
 
 在长度范围内指定位置index插入元素element。如果index超出范围，则插入失败。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | element | T | 是 | 被插入的元素。 |
-| index | number | 是 | 被插入的位置索引。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 被插入的位置索引。需要小于等于int32_max即2147483647。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number | string | boolean>();
+arrayList.insert("A", 0);
+arrayList.insert(0, 1);
+arrayList.insert(true, 2);
+```
+
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int | string | boolean> = new ArrayList<int | string | boolean>();
 arrayList.insert("A", 0);
 arrayList.insert(0, 1);
 arrayList.insert(true, 2);
@@ -159,9 +217,13 @@ has(element: T): boolean
 
 判断此ArrayList中是否包含该指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -194,13 +256,19 @@ console.info("result:", result);  // result: true
 
 ### getIndexOf
 
-getIndexOf(element: T): number
+ArkTS-Dyn: getIndexOf(element: T): number
+
+ArkTS-Sta: getIndexOf(element: T): int
 
 返回指定元素第一次出现的下标，查找失败返回-1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -212,7 +280,7 @@ getIndexOf(element: T): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回指定元素第一次出现时的下标值，查找失败返回-1。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回指定元素第一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -224,6 +292,8 @@ getIndexOf(element: T): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
 arrayList.add(2);
@@ -234,18 +304,38 @@ arrayList.add(1);
 arrayList.add(2);
 arrayList.add(4);
 let result: number = arrayList.getIndexOf(2); 
+```
+
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(2);
+arrayList.add(1);
+arrayList.add(2);
+arrayList.add(4);
+let result: int = arrayList.getIndexOf(2);
 console.info("result = ", result); // result = 0
 ```
 
 ### getLastIndexOf
 
-getLastIndexOf(element: T): number
+ArkTS-Dyn: getLastIndexOf(element: T): number
+
+ArkTS-Sta: getLastIndexOf(element: T): int
 
 返回指定元素最后一次出现的下标，查找失败返回-1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -257,7 +347,7 @@ getLastIndexOf(element: T): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回指定元素最后一次出现时的下标值，查找失败返回-1。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回指定元素最后一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -268,6 +358,8 @@ getLastIndexOf(element: T): number
 | 10200011 | The getLastIndexOf method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let arrayList = new ArrayList<number>();
@@ -282,21 +374,42 @@ let result: number = arrayList.getLastIndexOf(2);
 console.info("result = ", result); // result = 5
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(2);
+arrayList.add(1);
+arrayList.add(2);
+arrayList.add(4);
+let result: int = arrayList.getLastIndexOf(2);
+console.info("result = ", result); // result = 5
+```
+
 ### removeByIndex
 
-removeByIndex(index: number): T
+ArkTS-Dyn: removeByIndex(index: number): T
+
+ArkTS-Sta: removeByIndex(index: int): T
 
 根据元素的下标值查找元素，返回元素后将其删除。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定元素的下标值。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定元素的下标值。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -306,15 +419,16 @@ removeByIndex(index: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "index" is out of range. |
 | 10200011 | The removeByIndex method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let arrayList = new ArrayList<number>();
@@ -327,15 +441,32 @@ let result: number = arrayList.removeByIndex(2);
 console.info("result = ", result); // result = 5
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(2);
+arrayList.add(4);
+let result: int = arrayList.removeByIndex(2);
+console.info("result = ", result); // result = 5
+```
+
 ### remove
 
 remove(element: T): boolean
 
 删除查找到的第一个指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -359,6 +490,8 @@ remove(element: T): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
 arrayList.add(2);
@@ -369,37 +502,68 @@ let result: boolean = arrayList.remove(2);
 console.info("result = ", result); // result =  true
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result: boolean = arrayList.remove(2);
+console.info("result = ", result); // result =  true
+```
+
 ### removeByRange
 
-removeByRange(fromIndex: number, toIndex: number): void
+ArkTS-Dyn: removeByRange(fromIndex: number, toIndex: number): void
+
+ArkTS-Sta: removeByRange(fromIndex: int, toIndex: int): void
 
 删除指定范围内的元素，区间包含fromIndex，但不包含toIndex，即左闭右开区间[fromIndex, toIndex)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fromIndex | number | 是 | 起始下标。 |
-| toIndex | number | 是 | 终止下标。 |
+| fromIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 起始下标。 |
+| toIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 终止下标。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The removeByRange method cannot be bound. |
 
+
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let arrayList = new ArrayList<number>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+arrayList.removeByRange(2, 4);
+```
+
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
 arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
@@ -413,9 +577,13 @@ replaceAllElements(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt
 
 用户操作ArrayList中的元素，用操作后的元素替换原元素并返回操作后的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -434,11 +602,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The replaceAllElements method cannot be bound. |
 
 **示例：**
@@ -455,15 +622,54 @@ arrayList.replaceAllElements((value: number): number => {
 });
 ```
 
+### replaceAllElements<sup>23+</sup>
+
+replaceAllElements(callbackFn: ArrayListReplaceCb\<T\>): void
+
+用户操作ArrayList中的元素，用操作后的元素替换原元素并返回操作后的元素。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callbackFn | [ArrayListReplaceCb\<T\>](#arraylistreplacecbt23) | 是 | 回调函数。 |
+
+**示例：**
+
+```ts
+import { ArrayListReplaceCb } from '@ohos.util.ArrayList';
+
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let arrayListCb: ArrayListReplaceCb<int> = (value: int, index: int, arrlist: ArrayList<int>): int => {
+  // 用户操作逻辑根据实际场景进行添加。
+  return value;
+};
+arrayList.replaceAllElements(arrayListCb);
+```
+
 ### forEach
 
 forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) => void, thisArg?: Object): void
 
 在遍历ArrayList实例对象的过程中，对每个元素执行回调函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -482,11 +688,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -506,15 +711,53 @@ arrayList.forEach((value: number, index?: number) => {
 // value:4 index:3
 ```
 
+### forEach<sup>23+</sup>
+
+forEach(callbackFn: ArrayListForEachCb\<T\>): void
+
+通过回调函数来遍历ArrayList实例对象上的元素以及元素对应的下标。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callbackFn | [ArrayListForEachCb\<T\>](#arraylistforeachcbt23) | 是 | 回调函数。 |
+
+**示例：**
+
+```ts
+import { ArrayListForEachCb } from '@ohos.util.ArrayList';
+
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let arrayListCb: ArrayListForEachCb<int> = (value: int, index: int, arrlist: ArrayList<int>) => {
+  console.info("value: " + value, " index: " + index);
+};
+arrayList.forEach(arrayListCb);
+```
+
 ### sort
 
 sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 根据指定比较器所定义的顺序，对ArrayList中的元素进行排序。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -524,14 +767,15 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 10200011 | The sort method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let arrayList = new ArrayList<number>();
@@ -544,22 +788,49 @@ arrayList.sort((a: number, b: number) => b - a);
 arrayList.sort();
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { ArrayListComparatorFn } from '@kit.ArkTS'; 
+
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let arrayListCb1: ArrayListComparatorFn<int> = (a: int, b: int): double => {
+  return a - b;
+}
+let arrayListCb2: ArrayListComparatorFn<int> = (a: int, b: int): double => {
+  return b - a;
+}
+arrayList.sort(arrayListCb1);
+arrayList.sort(arrayListCb2);
+arrayList.sort();
+```
+
 ### subArrayList
 
-subArrayList(fromIndex: number, toIndex: number): ArrayList&lt;T&gt;
+ArkTS-Dyn: subArrayList(fromIndex: number, toIndex: number): ArrayList&lt;T&gt;
+
+ArkTS-Sta: subArrayList(fromIndex: int, toIndex: int): ArrayList&lt;T&gt;
 
 根据下标截取ArrayList中的一段元素，并返回这一段ArrayList实例，区间包含fromIndex，但不包含toIndex，即左闭右开区间[fromIndex, toIndex)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| fromIndex | number | 是 | 起始下标。 |
-| toIndex | number | 是 | 终止下标。 |
+| fromIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 起始下标。 |
+| toIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 终止下标。 |
 
 **返回值：**
 
@@ -569,15 +840,16 @@ subArrayList(fromIndex: number, toIndex: number): ArrayList&lt;T&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The subArrayList method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let arrayList = new ArrayList<number>();
@@ -589,15 +861,31 @@ let result: ArrayList<number> = arrayList.subArrayList(2, 4);
 console.info("result = ", result.length); // result = 2
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result: ArrayList<int> = arrayList.subArrayList(2, 4);
+console.info("result = ", result.length); // result = 2
+```
+
 ### clear
 
 clear(): void
 
 清除ArrayList中的所有元素，并把length置为0。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -609,8 +897,21 @@ clear(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+arrayList.clear();
+```
+
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
 arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
@@ -624,9 +925,13 @@ clone(): ArrayList&lt;T&gt;
 
 克隆一个与ArrayList相同的实例，并返回克隆后的实例。修改克隆后的实例并不会影响原实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 
 **返回值：**
@@ -645,6 +950,8 @@ clone(): ArrayList&lt;T&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
 arrayList.add(2);
@@ -655,21 +962,39 @@ let result:  ArrayList<number> = arrayList.clone();
 console.info("result = ", result.length); // result = 4
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result:  ArrayList<int> = arrayList.clone();
+console.info("result = ", result.length); // result = 4
+```
+
 ### getCapacity
 
-getCapacity(): number
+ArkTS-Dyn: getCapacity(): number
+
+ArkTS-Sta: getCapacity(): int
 
 获取当前实例的容量大小。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 获取当前实例的容量大小。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 获取当前实例的容量大小。 |
 
 **错误码：**
 
@@ -681,6 +1006,8 @@ getCapacity(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
 arrayList.add(2);
@@ -691,15 +1018,31 @@ let result: number = arrayList.getCapacity();
 console.info("result = ", result); // result = 10
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result: int = arrayList.getCapacity();
+console.info("result = ", result); // result = 10
+```
+
 ### convertToArray
 
 convertToArray(): Array&lt;T&gt;
 
 把当前ArrayList实例转换成数组，并返回转换后的数组。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -717,6 +1060,8 @@ convertToArray(): Array&lt;T&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
 arrayList.add(2);
@@ -727,15 +1072,31 @@ let result: Array<number> = arrayList.convertToArray();
 console.info("result = ", result); // result =  2,4,5,4
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result: Array<int> = arrayList.convertToArray();
+console.info("result = ", result); // result =  2,4,5,4
+```
+
 ### isEmpty
 
 isEmpty(): boolean
 
 判断该ArrayList是否为空。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -753,6 +1114,8 @@ isEmpty(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
 arrayList.add(2);
@@ -763,21 +1126,39 @@ let result: boolean = arrayList.isEmpty();
 console.info("result = ", result); // result =  false
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result: boolean = arrayList.isEmpty();
+console.info("result = ", result); // result =  false
+```
+
 ### \[index: number\]<sup>12+</sup>
 
-\[index: number\]: T
+ArkTS-Dyn: \[index: number\]: T
+
+ArkTS-Sta: \[index: int\]: T
 
 获取指定索引值对应位置的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 元素的位置索引。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 元素的位置索引。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -787,14 +1168,15 @@ console.info("result = ", result); // result =  false
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. |
 | 10200001 | The value of index is out of range. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let arrayList = new ArrayList<number>();
@@ -806,35 +1188,67 @@ let result: number = arrayList[2];
 console.info("result = ", result); // result =  5
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+let result: int = arrayList[2];
+console.info("result = ", result); // result =  5
+```
+
 ### increaseCapacityTo
 
-increaseCapacityTo(newCapacity: number): void
+ArkTS-Dyn: increaseCapacityTo(newCapacity: number): void
+
+ArkTS-Sta: increaseCapacityTo(newCapacity: int): void
 
 如果传入的新容量大于或等于ArrayList中的元素个数，将容量变更为新容量。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| newCapacity | number | 是 | 新容量。 |
+| newCapacity | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 新容量。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The increaseCapacityTo method cannot be bound. |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+arrayList.increaseCapacityTo(2);
+arrayList.increaseCapacityTo(8);
+console.info("result = ", arrayList.length); // result = 4
+```
+
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
 arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
@@ -850,9 +1264,13 @@ trimToCurrentLength(): void
 
 释放ArrayList中预留的空间，把容量调整为当前的元素个数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -864,8 +1282,22 @@ trimToCurrentLength(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let arrayList = new ArrayList<number>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+arrayList.trimToCurrentLength();
+console.info("result = ", arrayList.length); // result = 4
+```
+
+ArkTS-Sta示例：
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
 arrayList.add(2);
 arrayList.add(4);
 arrayList.add(5);
@@ -880,9 +1312,13 @@ console.info("result = ", arrayList.length); // result = 4
 
 返回一个迭代器，每一项都是一个JavaScript对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -929,25 +1365,126 @@ while(!temp.done) {
 // value: 4
 ```
 
-### ArrayListComparatorFn\<T\><sup>23+</sup>
+### $_iterator<sup>23+</sup>
 
-type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
+\$_iterator\(): IterableIterator&lt;T&gt;
 
-ArrayList中sort方法的回调函数。
+返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| firstValue | T | 是 | 需要排序的前一项元素。 |
-| secondValue | T | 是 | 需要排序的后一项元素。 |
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 通过回调函数返回的值，ArrayList能够根据自定义的比较规则维护元素的顺序。 |
+| IterableIterator&lt;T&gt; | 返回一个迭代器。 |
+
+**示例：**
+
+```ts
+let arrayList: ArrayList<int> = new ArrayList<int>();
+arrayList.add(2);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(4);
+
+// 使用方法一：
+for (let item of arrayList) {
+  console.info(`value : ${item}`);
+}
+
+// 使用方法二：
+let iter = arrayList.$_iterator();
+let temp: IteratorResult<int> = iter.next();
+while(!temp.done) {
+    console.info(`value:${temp.value}`);
+    temp = iter.next();
+}
+/**
+ * value:2
+ * value:4
+ * value:5
+ * value:4
+ * */
+```
+
+### ArrayListComparatorFn\<T\><sup>23+</sup>
+
+ArkTS-Dyn: type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
+
+ArkTS-Sta: type ArrayListComparatorFn\<T\> = (firstValue: T, secondValue: T) => double
+
+ArrayList中sort方法的回调函数。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| firstValue | T | 是 | 前一项元素。 |
+| secondValue | T | 是 | 后一项元素。 |
+
+**返回值：**
+
+| 类型 | 说明  |
+| -------- | -------- |
+| ArkTS-Dyn: number <br> ArkTS-Sta: double| 比较函数的结果返回值。  |
+
+### ArrayListForEachCb\<T\><sup>23+</sup>
+
+type ArrayListForEachCb\<T\> = (value: T, index: int, arrlist: ArrayList\<T\>) => void
+
+ArrayList中forEach方法的回调函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | T | 是 | 当前遍历到的元素。 |
+| index | int | 是 | 当前遍历到的下标值。 |
+| arrlist | [ArrayList&lt;T&gt;](#arraylist) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |
+
+### ArrayListReplaceCb\<T\><sup>23+</sup>
+
+type ArrayListReplaceCb\<T\> = (value: T, index: int, arrlist: ArrayList\<T\>) => T
+
+ArrayList中replaceAllElements方法的回调函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | T | 是 | 当前遍历到的元素。 |
+| index | int | 是 | 当前遍历到的下标值。 |
+| arrlist | [ArrayList&lt;T&gt;](#arraylist) | 是 | 当前调用[replaceAllElements](#replaceallelements23)方法的实例对象。 |
+
+**返回值：**
+
+| 类型 | 说明  |
+| -------- | -------- |
+| T | replaceAllElements方法的返回值。  |

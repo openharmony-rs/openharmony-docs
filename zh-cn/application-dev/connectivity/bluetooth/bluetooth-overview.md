@@ -32,7 +32,7 @@
 
 - 蓝牙子系统定义的地址类型。蓝牙设备的实际MAC地址属于用户的隐私信息，在发现设备的过程中，蓝牙子系统会给每个蓝牙外设分配一个虚拟MAC地址，并保存该虚拟MAC地址和外设实际MAC地址的映射关系。
 
-- 蓝牙协议定义的地址类型。蓝牙协议定义的蓝牙设备地址类型主要可以分为两大类：Public Address和Random Address。传统蓝牙使用的是Public Address，低功耗蓝牙可以使用Public Address和Random Address。其中，Random Address又包括Static Random Adress和Private Random Address两种类型。Private Random Address可以继续分为Non-resolvable Private Address和Resolvable Private Address两种类型。每种地址类型介绍如下：
+- 蓝牙协议定义的地址类型。蓝牙协议定义的蓝牙设备地址类型主要可以分为两大类：Public Address和Random Address。传统蓝牙使用的是Public Address，低功耗蓝牙可以使用Public Address和Random Address。其中，Random Address又包括Static Random Address和Private Random Address两种类型。Private Random Address可以继续分为Non-resolvable Private Address和Resolvable Private Address两种类型。每种地址类型介绍如下：
 
 | 类型                | 说明     |
 | ------------------ |  ------ |

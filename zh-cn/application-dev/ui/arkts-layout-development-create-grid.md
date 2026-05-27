@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @fangyuhao-->
+<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -584,6 +584,7 @@ Column({ space: 5 } as ColumnOptions) {
    ```
 
    ArkTS-Sta示例：
+
    ```ts
    import { Scroller, Grid } from '@ohos.arkui.component';
    // gridScroller初始化Grid组件的scroller参数，绑定gridScroller与网格。
@@ -605,6 +606,7 @@ Column({ space: 5 } as ColumnOptions) {
    ```
 
    ArkTS-Sta示例：
+
    ```ts
    import { Scroller, ScrollBar, ScrollBarOptions } from '@ohos.arkui.component';
    // gridScroller初始化ScrollBar组件的scroller参数，绑定gridScroller与滚动条。

@@ -24,7 +24,7 @@
 | ---------- | -------------------------- | -- | -- |-----------------------------------------------------------------------------|
 | name       | string                     | 否 | 否 | 窗口名称。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                              |
 | windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 否 | 否 | 窗口类型。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                       |
-| ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 是 | 当前应用上下文信息。不设置，则默认为空。<br>FA模型下不需要使用该参数，即可创建子窗口，使用该参数时会报错。<br>Stage模型必须使用该参数，用于创建悬浮窗、模态窗或系统窗口。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 是 | 当前应用上下文信息。不设置，则默认为空。<br>FA模型下不需要使用该参数，即可创建子窗口，使用该参数时会报错。<br>Stage模型必须使用该参数，用于创建全局悬浮窗、模态窗或系统窗口。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
 | displayId  | ArkTS-Dyn: number<br/>ArkTS-Sta: long                     | 否 | 是 | 当前屏幕ID。不设置，则默认为父窗口屏幕ID。<br>该参数应为非负整数，且对应屏幕ID存在。<br>扩展屏、异源虚拟屏场景下，全局悬浮窗可通过设置屏幕ID显示在指定屏幕上。<br>模态窗、系统窗设置屏幕ID无效，默认为父窗口屏幕ID。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core  <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23   |
 | parentId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                     | 否 | 是 | 父窗口ID。不设置，则默认为-1，默认父窗为当前应用上下文对应主窗。<br>FA模型下，该参数应为非负整数，且对应父窗口ID存在。<br>Stage模型下，该参数设置无效。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                              |
 | decorEnabled<sup>12+</sup> | boolean | 否 | 是 | 是否显示窗口装饰，仅在windowType为TYPE_DIALOG时生效。true表示显示，false表示不显示。此参数默认值为false。<br>**系统能力：** SystemCapability.Window.SessionManager <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
@@ -136,7 +136,7 @@
 
 窗口内容的避让区域。
 
-窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)对应的AvoidArea做窗口内容避让。
+窗口内容做[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)对应的AvoidArea做窗口内容避让。
 
 在避让区域内，应用窗口内容被遮挡且无法响应用户点击事件。
 
@@ -160,7 +160,7 @@
 
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
-以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时需关注。
+以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)适配时需关注。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -301,9 +301,10 @@
 | ------------------------------------- | ------------------------- | ---- | ---- |--------------------------------------------------------------------------------------------------------|
 | windowRect<sup>7+</sup>               | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 否   | 窗口尺寸，其中左边界上边界是相对于窗口所在屏幕左上顶点计算，可在页面生命周期[onPageShow](./arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或应用生命周期[onForeground](../apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)阶段获取。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
 | drawableRect<sup>11+</sup>            | [Rect](arkts-apis-window-i.md#rect7)             | 否   | 否   | 窗口内的可绘制区域尺寸，其中左边界上边界是相对于窗口左上顶点计算。在Stage模型下，需要在调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)加载页面内容后获取该属性。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23|
-| type<sup>7+</sup>                     | [WindowType](arkts-apis-window-e.md#windowtype7) | 否   | 否   | 窗口类型。<br/>当前存在主窗使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)接口返回type不准确的问题，开发者在创建窗口时已指明窗口类型，无需通过getWindowProperties()接口获取窗口类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
+| type<sup>(deprecated)</sup>                     | [WindowType](arkts-apis-window-e.md#windowtype7) | 否   | 否   | 窗口类型。<br/>当前存在主窗使用[getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9)接口返回type不准确的问题，从API版本26.0.0开始废弃，可使用[windowType](#windowproperties)字段代替。<br/>**起始版本：** 7 <br/>**废弃版本：** 26.0.0 <br/>**替代接口：** [windowType](#windowproperties) <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
+| windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 否   | 是   | 窗口类型，默认值是[TYPE_MAIN](arkts-apis-window-e.md#windowtype7)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core <br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 | isFullScreen                          | boolean                   | 否   | 否   |在满足isLayoutFullScreen为true的条件下如果隐藏了状态栏，返回值为true，其他情况下均返回false。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
-| isLayoutFullScreen<sup>7+</sup>       | boolean                   | 否   | 否   | 对于子窗，如果设置了[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)，返回值为true。<br/>对于主窗，如果设置了[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)且处于全屏模式，返回值为true。<br/>其他情况下均返回false<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
+| isLayoutFullScreen<sup>7+</sup>       | boolean                   | 否   | 否   | 对于子窗，如果设置了[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，返回值为true。<br/>对于主窗，如果设置了[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)且处于全屏模式，返回值为true。<br/>其他情况下均返回false<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
 | focusable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可获焦。true表示可获焦；false表示不可获焦。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
 | touchable<sup>7+</sup>                | boolean                   | 否   | 否   | 窗口是否可触摸。true表示可触摸；false表示不可触摸。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 7 <br>**ArkTS-Sta起始版本：** 23|
 | brightness                            | ArkTS-Dyn: number<br>ArkTS-Sta: double                    | 否   | 否   | 窗口亮度。通过[setWindowBrightness()](arkts-apis-window-Window.md#setwindowbrightness9)设置窗口的亮度值。该参数为浮点数，可设置的亮度范围为[0.0, 1.0]或-1.0，其取值1.0时表示最大亮度，取值-1.0时，表示亮度跟随系统。如果窗口没有设置亮度值，表示亮度跟随系统，此时获取到的亮度值为-1.0。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**系统能力：** SystemCapability.WindowManager.WindowManager.Core<br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
@@ -396,7 +397,7 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- | ------------------------------------------ |
-| displayId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 |目标屏幕ID，该参数应为整数，输入非整数时将向下取整。默认值为undefined。填入该参数时，将移动到相对于目标屏幕左上角的指定位置。此参数不传、传undefined或传入目标屏幕ID不存在时，将移动到相对于当前屏幕左上角的指定位置。|
+| displayId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 |目标屏幕ID，该参数应为整数，输入非整数时将向下取整。默认值为undefined。填入该参数时，将移动到相对于目标屏幕左上角的指定位置。仅支持主屏和扩展屏。此参数不传、传undefined或传入目标屏幕ID不存在时，将移动到相对于当前屏幕左上角的指定位置。|
 
 ## WindowDensityInfo<sup>15+</sup>
 
@@ -414,7 +415,7 @@
 | ------ | -------- | ---- | ---- | ---------- |
 | systemDensity  | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统显示大小缩放系数，跟随用户设置变化，该参数变化范围为0.5-4.0。 |
 | defaultDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口所在屏幕的系统默认显示大小缩放系数，跟随窗口所在屏幕变化，该参数变化范围为0.5-4.0。 |
-| customDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
+| customDensity | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 窗口自定义设置的显示大小缩放系数，该参数取值范围为0.5-4.0。未设置该参数时，将跟随系统显示大小缩放系数变化。该参数仅主窗口生效，在子窗、模态窗、全局悬浮窗或系统窗口上等于系统显示大小缩放系数(systemDensity)。 |
 
 ## WindowInfoOptions
 
@@ -440,18 +441,12 @@
 
 窗口布局信息。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **系统能力：**  SystemCapability.Window.SessionManager
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。|
-| windowAlpha | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否 | 是 | 窗口透明度。有效值范围为[0.0, 1.0]，0.0表示完全透明，1.0表示完全不透明。默认值是-1.0，表示未查询到窗口透明度或者查询失败。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| windowRect | [Rect](arkts-apis-window-i.md#rect7)  | 否 | 否 | 窗口尺寸，窗口在屏幕上的实际位置和大小。<br/> **ArkTS-Dyn起始版本：** 15 <br/>**ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| windowAlpha | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否 | 是 | 窗口透明度。有效值范围为[0.0, 1.0]，0.0表示完全透明，1.0表示完全不透明。默认值是-1.0，表示未查询到窗口透明度或者查询失败。<br/>说明：本透明度非窗口背景色透明度（可通过[setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9)接口设置）。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## KeyboardInfo<sup>18+</sup>
 
@@ -481,6 +476,41 @@
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
 | focusOnShow | boolean  |  否  |  是  | 窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow20)显示时是否自动获焦，默认为true。该参数对主窗、模态窗、dialog窗口不生效。|
+
+## WindowSnapshotAnimationConfig
+
+窗口截图动画配置，仅支持在调用[maximizeWithOptions()](arkts-apis-window-Window.md#maximizewithoptions)或[recover()](arkts-apis-window-Window.md#recover)接口时配置。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                       |
+| ------ | ------ | ---- | ---- |------------------------------------------ |
+| duration |  number  |  否  |  是  | 截图淡出动画执行时长，单位为ms，该参数应为正整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画执行时长默认值为400，其他场景默认值为250。取值范围为[0, 400]，超出取值返回会报错。|
+| delay |  number  |  否  |  是  | 截图淡出动画延迟时长，单位为ms，该参数应为正整数，输入浮点数会向下取整。不指定时使用系统默认值：全屏模式和自由悬浮窗口模式互相切换场景下截图淡出动画延迟时长默认值为350，其他场景默认值为50。取值范围为[0, 350]，超出取值返回会报错。|
+
+## MaximizeOptions
+
+最大化配置选项。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                       |
+| ------ | ------ | ---- | ---- |------------------------------------------ |
+| maximizePresentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12)  |  否  |  是  | 最大化时的布局方式，默认值为[MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12).ENTER_IMMERSIVE。|
+| acrossDisplayPresentation | [AcrossDisplayPresentation](arkts-apis-window-e.md#acrossdisplaypresentation)  |  否  |  是  | 折叠屏跨屏策略，默认值为[AcrossDisplayPresentation](arkts-apis-window-e.md#acrossdisplaypresentation).FOLLOW_ACROSS_DISPLAY_SETTING。仅主窗口可设置，非主窗口调用时返回错误码1300004。**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。|
+| snapshotAnimationConfig | [WindowSnapshotAnimationConfig](#windowsnapshotanimationconfig)  |  否  |  是  | 截图动画配置。在窗口最大化和窗口恢复[自由窗口](../../windowmanager/window-terminology.md#自由窗口)过程中，系统会通过截图动画遮盖应用布局变化的跳变，可通过此属性指定截图淡出动画延迟和淡出动画执行时长。仅主窗口可设置，主窗口不指定时使用系统默认动画；子窗默认无截图动画，即截图动画参数duration和delay均为0，传入其他动画参数返回1300004错误码。当duration为0时，表示取消截图动画。|
 
 ## WindowAnimationConfig<sup>20+</sup>
 
@@ -514,10 +544,10 @@
 | windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 窗口ID。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本:** 23|
 | windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | 否   | 否   | 窗口模式枚举。<br>**ArkTS-Dyn起始版本:** 18<br>**ArkTS-Sta起始版本:** 23|
 | isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-apis-window-Window.md#isfocused12)接口一致。<br>**ArkTS-Dyn起始版本:** 18<br>**ArkTS-Sta起始版本:** 23|
-| globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。<br>**ArkTS-Dyn起始版本:** 20<br>**ArkTS-Sta起始版本:** 23|
+| globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸，其中的宽高是未经缩放计算过的原始值。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。<br>**ArkTS-Dyn起始版本:** 20<br>**ArkTS-Sta起始版本:** 23|
 | globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。|
 | displayId | number | 否 | 是 | 窗口所在屏幕的ID。默认返回主屏幕ID，该参数为整数。<br>**起始版本：** 26.0.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 |
-| globalRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 窗口所在物理屏幕上的真实显示区域。若窗口显示时经过了缩放，获取到的是缩放后窗口在屏幕上的真实位置和大小。默认值：[0, 0, 0, 0]。<br>**起始版本：** 26.0.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| globalRect | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 窗口所在物理屏幕上的真实显示区域，以所在屏幕的左上角为坐标原点。若窗口显示时经过了缩放，获取到的是缩放后窗口在屏幕上的真实位置和大小。默认值：[0, 0, 0, 0]。<br>**起始版本：** 26.0.0 <br> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## TransitionAnimation<sup>20+</sup>
 
@@ -601,7 +631,7 @@
 
 窗口旋转变化时的窗口信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
@@ -622,7 +652,7 @@
 
 应用窗口与系统窗口大小存在限制，具体限制与相关规则可见[resize](arkts-apis-window-Window.md#resize9)。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
@@ -641,7 +671,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.Window.SessionManager
 
@@ -669,6 +699,7 @@
 | zLevel<sup>18+</sup>    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 子窗口层级级别，仅当子窗口未启用模态属性，即未设置isModal时生效。该参数是整数，取值范围为[-10000, 10000]，浮点数输入将向下取整。不设置，则默认为0。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23|
 | maximizeSupported<sup>19+</sup>    | boolean | 否 | 是 | 子窗口是否支持最大化特性。true表示子窗口支持最大化，false表示子窗口不支持最大化。不设置，则默认为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上，作为入参使用时，对应接口不生效不报错，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 23|
 | outlineEnabled<sup>20+</sup>    | boolean | 否 | 是 | 子窗口是否显示描边。true表示子窗口显示描边，false表示子窗口不显示描边。不设置，则默认为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该参数在2in1设备、其他设备的电脑模式中可正常调用，在其他设备和其他模式中作为入参使用时，对应接口不生效不报错。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23|
+| zLevelAboveParentLoosened | boolean | 否 | 是 | 子窗是否是[独立子窗](../../windowmanager/window-terminology.md#应用窗口)。true表示子窗是独立子窗，false表示子窗不是独立子窗。不设置，则默认为false。<br>**起始版本：** 26.0.0 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## KeyFramePolicy<sup>20+</sup>
 

@@ -1,9 +1,9 @@
 # 组件导航和页面路由概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 页面是指由布局、组件、交互逻辑等构成的可视化交互单元，承载着特定功能逻辑与信息展示，是用户与应用进行操作交互的核心界面载体。一个完整的应用往往由多个页面组成，组件导航（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）和页面路由（[@ohos.router](../reference/apis-arkui/arkts-apis-uicontext-router.md)）均提供了应用内的页面跳转能力。
@@ -36,7 +36,7 @@
 | 业务场景                                      | Navigation                            | Router                                 |
 | --------------------------------------------- | ------------------------------------- | -------------------------------------- |
 | 一次开发多端部署能力                                      | 支持，Auto模式自适应单栏和双栏显示。    | 不支持                                 |
-| 跳转指定页面                                  | [pushPath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpath10) & [pushDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestination11)            | [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) & [pushNameRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushnamedroute)              |
+| 跳转指定页面                                  | [pushPath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpath10) & [pushDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushdestination11)            | [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) & [pushNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushnamedroute)              |
 | 跳转HSP中页面                                 | 支持                                  | 支持                                   |
 | 跳转HAR中页面                                 | 支持                                  | 支持                                   |
 | 跳转传参                                      | 支持                                  | 支持                                  |
@@ -48,7 +48,7 @@
 | 页面返回传参                                  | 支持                                  | 支持                                   |
 | 返回指定路由                                  | 支持                                  | 支持                                   |
 | 页面返回弹窗                                  | 支持，通过路由拦截实现。                | [showAlertBeforeBackPage](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)              |
-| 路由替换                                      | [replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11) & [replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11)       | [replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl) & [replaceNameRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute)          |
+| 路由替换                                      | [replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11) & [replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11)       | [replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl) & [replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute)          |
 | 路由栈清理                                    | [clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10)                                 | [clear](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear)                                  |
 | 清理指定路由                                  | [removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11) & [removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11)        | 不支持                                 |
 | 转场动画                                      | 支持                                  | 支持                                   |
@@ -58,7 +58,7 @@
 | 页面生命周期监听                              | [UIObserver.on('navDestinationUpdate')](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onnavdestinationupdate11) | [UIObserver.on('routerPageUpdate')](../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#onrouterpageupdate11)     |
 | 获取页面栈对象                                | 支持                                  | 不支持                                 |
 | 路由拦截                                      | 支持通过[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)做路由拦截 。      | 不支持                                 |
-| 路由栈信息查询                                | 支持                                  | [getState()](../reference/apis-arkui/arkts-apis-uicontext-router.md#getstate)  & [getLength()](../reference/apis-arkui/arkts-apis-uicontext-router.md#getlengthdeprecated)               |
+| 路由栈信息查询                                | 支持                                  | [getState()](../reference/apis-arkui/arkts-apis-uicontext-router.md#getstate)|
 | 路由栈move操作                                | [moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10)   & [moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)             | 不支持                                 |
 | 沉浸式页面                                    | 支持                                  | 不支持，需通过window配置。               |
 | 设置页面标题栏（titlebar）和工具栏（toolbar） | 支持                                  | 不支持                                 |

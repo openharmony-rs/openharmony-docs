@@ -1,8 +1,8 @@
 # Interfaces (其他)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -18,11 +18,11 @@
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明               |
 | ------------ | ------------------------------------------------- | ---- |---| ------------------ |
-| samplingRate | [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)          | 否 | 否 | 音频文件的采样率。 |
-| channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。 |
-| sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)          | 否 | 否 | 音频采样格式。     |
-| encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。     |
-| channelLayout<sup>11+</sup> | [AudioChannelLayout](arkts-apis-audio-e.md#audiochannellayout11)  | 否 | 是 | 音频声道布局，默认值为0x0。 |
+| samplingRate | ArkTS-Dyn: [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| number<br> ArkTS-Sta: [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| int| 否 | 否 | 音频文件的采样率，单位为赫兹（Hz）。支持传入[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)。<br>从API版本26.0.0开始：<br>- 参数samplingRate在ArkTS-Dyn上支持number类型，ArkTS-Sta上支持int类型。<br>- 音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。<br>**ArkTS-Dyn起始版本：** 26.0.0<br> **ArkTS-Sta起始版本：** 26.0.0|
+| channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)         | 否 | 否 | 音频采样格式。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
+| channelLayout<sup>11+</sup> | [AudioChannelLayout](arkts-apis-audio-e.md#audiochannellayout11)  | 否 | 是 | 音频声道布局，默认值为0x0。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
 
 ## AudioRendererInfo<sup>8+</sup>
 
@@ -31,8 +31,8 @@
 | 名称          | 类型                        | 只读 | 可选 | 说明            |
 | ------------- | --------------------------- | ---- |---| --------------- |
 | content<sup>(deprecated)</sup> | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 是 | 音频内容类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br>API version 8、9为必填参数，从API version 10开始为可选参数，默认值为CONTENT_TYPE_UNKNOWN。<br>从API version 8开始支持，从API version 10开始废弃，建议使用usage替代。 |
-| usage         | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| rendererFlags | number                      | 否 | 否 | 播放流行为标志。<br>设置为0即可。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| usage         | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| rendererFlags | number                      | 否 | 否 | 播放流行为标志。<br>设置为0即可。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Volume|
 
 ## AudioRendererOptions<sup>8+</sup>
@@ -49,7 +49,7 @@
 
 音频中断时，应用接收的中断事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -73,6 +73,8 @@
 ## AudioSessionStrategy<sup>12+</sup>
 
 音频会话策略。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -131,19 +133,34 @@
 
 | 名称                          | 类型                       | 只读 | 可选 | 说明       |
 | ----------------------------- | -------------------------- | ---- | ---- | ---------- |
-| deviceRole                    | [DeviceRole](arkts-apis-audio-e.md#devicerole)  | 是   | 否   | 设备角色。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| deviceType                    | [DeviceType](arkts-apis-audio-e.md#devicetype)  | 是   | 否   | 设备类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| id<sup>9+</sup>               | number                     | 是   | 否   | 唯一的设备id。  <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| name<sup>9+</sup>             | string                     | 是   | 否   | 设备名称。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| address<sup>9+</sup>          | string                     | 是   | 否   | 设备静态MAC地址。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| sampleRates<sup>9+</sup>      | Array&lt;number&gt;        | 是   | 否   | 支持的采样率。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| channelCounts<sup>9+</sup>    | Array&lt;number&gt;        | 是   | 否   | 支持的通道数。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| channelMasks<sup>9+</sup>     | Array&lt;number&gt;        | 是   | 否   | 支持的通道掩码。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| displayName<sup>10+</sup>     | string                     | 是   | 否   | 设备显示名。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| encodingTypes<sup>11+</sup>    | Array&lt;[AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)&gt;                     | 是   | 是 | 支持的编码类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| deviceRole                    | [DeviceRole](arkts-apis-audio-e.md#devicerole)  | 是   | 否   | 设备角色。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| deviceType                    | [DeviceType](arkts-apis-audio-e.md#devicetype)  | 是   | 否   | 设备类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| id<sup>9+</sup>               | number                     | 是   | 否   | 唯一的设备id。  <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| name<sup>9+</sup>             | string                     | 是   | 否   | 设备名称。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| address<sup>9+</sup>          | string                     | 是   | 否   | 设备静态MAC地址。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| sampleRates<sup>9+</sup>      | Array&lt;number&gt;        | 是   | 否   | 支持的采样率。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| channelCounts<sup>9+</sup>    | Array&lt;number&gt;        | 是   | 否   | 支持的通道数。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| channelMasks<sup>9+</sup>     | Array&lt;number&gt;        | 是   | 否   | 支持的通道掩码。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| displayName<sup>10+</sup>     | string                     | 是   | 否   | 设备显示名。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| encodingTypes<sup>11+</sup>    | Array&lt;[AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)&gt;                     | 是   | 是 | 支持的编码类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | spatializationSupported<sup>18+</sup>     | boolean                     | 是   | 是 | 设备是否支持空间音频。true表示支持空间音频，false表示不支持空间音频。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Spatialization|
 | model<sup>22+</sup>           | string                     | 是   | 是 | 设备的具体型号类别。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
 | capabilities<sup>22+</sup>    | Array&lt;[AudioStreamInfo](#audiostreaminfo8)&gt;| 是   | 是 | 设备支持的音频流能力。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
+
+## AudioDevicePair
+
+描述返听使用的音频设备对，包含输入设备和输出设备。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+| 名称              | 类型                                              | 只读 | 可选 | 说明               |
+| :---------------- | :------------------------------------------------ | :--- |---| :----------------- |
+| inputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输入音频设备描述。 |
+| outputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输出音频设备描述。 |
 
 ## VolumeEvent<sup>9+</sup>
 
@@ -198,14 +215,13 @@
 
 流设备变更时，应用接收到的事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
 | 名称              | 类型                                                                | 只读 | 可选 | 说明               |
 | :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
-| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。 |
-| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 流设备变更原因。 |
+| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 流设备变更原因。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| preDevices | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 否 | 是 | 应用流设备变更前的设备信息。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## CurrentOutputDeviceChangedEvent<sup>20+</sup>
 
@@ -218,6 +234,7 @@
 | devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。 |
 | changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 设备变更原因。 |
 | recommendedAction | [OutputDeviceChangeRecommendedAction](arkts-apis-audio-e.md#outputdevicechangerecommendedaction20) | 否 | 否 | 设备变更后推荐的操作。 |
+| preDevices | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 否 | 是 | 应用输出设备变更前的设备信息。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CurrentInputDeviceChangedEvent<sup>21+</sup>
 

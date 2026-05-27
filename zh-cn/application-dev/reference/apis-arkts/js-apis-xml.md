@@ -1,8 +1,8 @@
 # @ohos.xml (XML解析与生成)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -18,7 +18,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -41,9 +43,13 @@ XmlSerializer的构造函数。
 >
 > buffer是开发者根据需要自定义大小的缓存区域，用于临时存储生成的XML文本。在使用过程中必须确保缓存区域足以容纳生成的文本内容。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -51,14 +57,6 @@ XmlSerializer的构造函数。
 | -------- | --------------------------------- | ---- | ------------------------------------------------ |
 | buffer   | ArrayBuffer \| DataView | 是   | 用于接收写入XML信息的ArrayBuffer或DataView内存。 |
 | encoding | string                            | 否   | 编码格式，默认'utf-8'（目前仅支持'utf-8'）。               |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -77,9 +75,13 @@ setAttributes(name: string, value: string): void
 >
 > 该接口对所添加数据不做标准XML校验处理，确保所添加的数据符合标准XML规范。例如不允许添加数字开头的属性名称以及添加多个同名的属性名称。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -87,14 +89,6 @@ setAttributes(name: string, value: string): void
 | ------ | ------ | ---- | --------------- |
 | name   | string | 是   | 属性。   |
 | value  | string | 是   | 属性值。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -121,23 +115,19 @@ addEmptyElement(name: string): void
 >
 > 该接口对所添加数据不做标准XML校验处理，确保所添加的数据符合标准XML规范。例如不允许添加数字开头的元素名称。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | name   | string | 是   | 元素的名称。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -158,9 +148,13 @@ setDeclaration(): void
 
 设置带有编码信息的文件声明。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -188,23 +182,19 @@ startElement(name: string): void
 >
 >- 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
 | name   | string | 是   | 当前元素的元素名。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -232,9 +222,13 @@ endElement(): void
 >
 > 调用该接口前必须先调用[startElement](#startelement)接口写入元素开始标记。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -262,9 +256,13 @@ setNamespace(prefix: string, namespace: string): void
 >
 > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如禁止添加数字开头的前缀以及为同一个元素设置多个命名空间。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -272,14 +270,6 @@ setNamespace(prefix: string, namespace: string): void
 | --------- | ------ | ---- | ------------------------------ |
 | prefix    | string | 是   | 当前元素及其子元素的前缀。     |
 | namespace | string | 是   | 当前元素及其子元素的命名空间。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -303,23 +293,19 @@ setComment(text: string): void
 
 添加注释内容。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
 | text   | string | 是   | 当前元素的注释内容。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -344,23 +330,19 @@ setCDATA(text: string): void
 >
 > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许在CDATA标签中添加包含"\]\]\>"字符串的数据。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明              |
 | ------ | ------ | ---- | ----------------- |
 | text   | string | 是   | CDATA属性的内容。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -381,23 +363,19 @@ setText(text: string): void
 
 添加标签值。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
 | text   | string | 是   | text属性的内容。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -421,23 +399,19 @@ setDocType(text: string): void
 
 添加文档类型。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                |
 | ------ | ------ | ---- | ------------------- |
 | text   | string | 是   | DocType属性的内容。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -466,9 +440,13 @@ constructor(encoding?: string)
 
 XmlDynamicSerializer的构造函数。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -496,9 +474,13 @@ getOutput(): ArrayBuffer
 
 返回XML字符串的ArrayBuffer。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -531,9 +513,13 @@ setAttributes(name: string, value: string): void
 >
 > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的属性名称以及添加多个同名的属性名称。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -577,9 +563,13 @@ addEmptyElement(name: string): void
 >
 > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -615,9 +605,13 @@ setDeclaration(): void
 
 编写带有编码的文件声明。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -653,9 +647,13 @@ startElement(name: string): void
 >
 >- 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -697,9 +695,13 @@ endElement(): void
 >
 > 调用该接口前必须先调用[startElement](#startelement)接口写入元素开始标记。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -735,9 +737,13 @@ setNamespace(prefix: string, namespace: string): void
 >
 > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的前缀以及对同一个元素设置多个命名空间。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -776,9 +782,13 @@ setComment(text: string): void
 
 写入注释内容。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -818,9 +828,13 @@ setCdata(text: string): void
 >
 > 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许在CDATA标签中添加包含"\]\]\>"字符串的数据。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -856,9 +870,13 @@ setText(text: string): void
 
 写入标签值。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -897,9 +915,13 @@ setDocType(text: string): void
 
 写入文档类型。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -939,9 +961,13 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 
 构造并返回一个XmlPullParser对象。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -949,14 +975,6 @@ constructor(buffer: ArrayBuffer | DataView, encoding?: string)
 | -------- | --------------------------------- | ---- | ------------------------------------------ |
 | buffer   | ArrayBuffer \| DataView | 是   | 用于解析的XML文本信息。|
 | encoding | string                            | 否   | 编码格式，默认'utf-8'（目前仅支持'utf-8'）。         |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -975,23 +993,19 @@ parseXml(option: ParseOptions): void
 
 解析XML。
 
-**原子化服务API**：从API version 14 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明          |
 | ------ | ----------------------------- | ---- | ------------- |
 | option | [ParseOptions](#parseoptions) | 是   | XML解析选项。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 具体使用场景可参照[解析XML标签和标签值](../../arkts-utils/xml-parsing.md#解析xml标签和标签值)和[解析XML属性和属性值](../../arkts-utils/xml-parsing.md#解析xml属性和属性值)
@@ -1029,23 +1043,19 @@ parse(option: ParseOptions): void
 >
 > 从API version 8开始支持，从API version 14开始废弃，建议使用[parseXml<sup>14+</sup>](#parsexml14)替代。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明                             |
 | ------ | ----------------------------- | ---- | -------------------------------- |
 | option | [ParseOptions](#parseoptions) | 是   | XML解析选项。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1079,44 +1089,78 @@ that.parse(options);
 // note
 ```
 
-## AttributeWithTagCb<sup>20+</sup>
-
-type AttributeWithTagCb = (tagName: string, key: string, value: string) => boolean
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Utils.Lang
-
-**参数：**
-
-| 参数名   |  类型  | 必填 |  说明   |
-| ------- | -------| ---- | ------ |
-| tagName | string | 是   | 标签名称。|
-| key     | string | 是   | 属性名称。|
-| value   | string | 是   | 属性的值。|
-
-**返回值：**
-
-| 类型    | 说明                                                                       |
-| ------- | ------------------------------------------------------------------------- |
-| boolean | 是否继续解析标签名称、属性名称及属性的值。true表示继续解析，false表示停止解析。 |
-
 ## ParseOptions
 
 XML解析选项。
 
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang。
 
+| 名称                           | 类型                                                         | 只读  | 可选 | 说明                                    |
+| ------------------------------ | ------------------------------------------------------------ | ---- | ----|  --------------------------------------- |
+| supportDoctype                 | boolean                                                      | 否  | 是 | 是否解析文档类型，false表示不解析文档类型，true表示解析文档类型，默认值false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23|
+| ignoreNameSpace                | boolean                                                      | 否  | 是 | 是否忽略命名空间，忽略命名空间后，将不会对其进行解析。true表示忽略命名空间，false表示不忽略命名空间，默认值false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23 |
+| tagValueCallbackFunction       | (name: string, value: string) =&gt; boolean | 否 | 是  | 解析开始标签、标签值和结束标签，默认值undefined，表示不解析。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23|
+| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否 | 是  | 解析属性和属性值，默认值undefined，表示不解析。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23|
+|attributeWithTagCallbackFunction<sup>20+</sup>| [AttributeWithTagCb](#attributewithtagcb20) |否 |是 | 解析tagName标签，默认值undefined，表示不解析。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 20 <br/>  **ArkTS-Sta起始版本：** 24 |
+| tokenValueCallbackFunction     | (eventType: [EventType](#eventtype), value: [ParseInfo](#parseinfo)) =&gt; boolean | 否  | 是 | 解析元素事件类型([EventType](#eventtype))和[ParseInfo](#parseinfo)属性，默认值undefined，表示不解析。<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 8 <br/>  **ArkTS-Sta起始版本：** 23 |
 
-| 名称                           | 类型                                                         | 只读 | 可选 | 说明                                    |
-| ------------------------------ | ------------------------------------------------------------ | ---- | ---- | --------------------------------------- |
-| supportDoctype                 | boolean                                                      | 否   | 是   | 是否解析文档类型，false表示不解析文档类型，true表示解析文档类型，默认值false。  <br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| ignoreNameSpace                | boolean                                                      | 否   | 是   | 是否忽略命名空间，忽略命名空间后，将不会对其进行解析。true表示忽略命名空间，false表示不忽略命名空间，默认值false。 <br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| tagValueCallbackFunction       | (name: string, value: string) =&gt; boolean | 否   | 是   | 解析开始标签、标签值和结束标签，默认值undefined，表示不解析。 <br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | 否   | 是   | 解析属性和属性值，默认值undefined，表示不解析。 <br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| tokenValueCallbackFunction     | (eventType: [EventType](#eventtype), value: [ParseInfo](#parseinfo)) =&gt; boolean | 否   | 是   | 解析元素事件类型([EventType](#eventtype))和[ParseInfo](#parseinfo)属性，默认值undefined，表示不解析。 <br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| attributeWithTagCallbackFunction<sup>20+</sup> | [AttributeWithTagCb](#attributewithtagcb20) | 否 | 是   | 解析标签名称、属性名称及属性的值，默认值为undefined，表示不执行解析。 <br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+## AttributeWithTagCb<sup>20+</sup>
+
+type AttributeWithTagCb = (tagName: string, key: string, value: string) => boolean
+
+ParseOptions中attributeWithTagCallbackFunction的回调方法，三个字符串参数都是由XML解析器在解析过程中自动提取的，开发者无法直接自定义这些值。开发者只能在回调函数中通过返回值来决定如何处理这些已存在的属性。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| tagName | string | 是 | 当前属性所属XML元素的标签名。 |
+| key | string | 是 | 当前属性所属XML元素的名称。 |
+| value | string | 是 | 当前属性所属XML元素的值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 是否继续解析xml数据，true表示继续解析数据，false表示结束解析。 |
+
+**示例：**
+
+```ts
+let xmlStr = 
+    '<?xml version="1.0" encoding="utf-8"?>' +
+    '<column name="Giana"><value integer="1"/></column>' +
+    '<column name="category"><value Boolean="true"/></column>' +
+    '<column name="day"><orange Boolean="3"/></column>';
+let textEncoder = new util.TextEncoder();
+let arrBuffer = textEncoder.encodeInto(xmlStr);
+let that = new xml.XmlPullParser(arrBuffer.buffer as object as ArrayBuffer, 'UTF-8');
+
+let attrWithTag = (tagName: string, key: string, value: string): boolean => {
+    if (tagName == "orange") {
+        console.info('key: ',key,' value: ',value); // key:  Boolean  value:  3
+        arktest.assertEQ(value, '3');
+    }
+    return true;
+}
+
+let options: xml.ParseOptions = {
+    supportDoctype: true,
+    ignoreNameSpace: true,
+    attributeWithTagCallbackFunction:attrWithTag
+};
+that.parseXml(options);
+```
 
 ## ParseInfo
 
@@ -1125,19 +1169,25 @@ XML解析选项。
 
 ### getColumnNumber
 
-getColumnNumber(): number
+ArkTS-Dyn: getColumnNumber(): number
+
+ArkTS-Sta: getColumnNumber(): int
 
 获取当前列号，从1开始计数。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回当前列号。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回当前列号。 |
 
 **示例：**
 
@@ -1161,7 +1211,9 @@ console.info(str);
 
 ### getDepth
 
-getDepth(): number
+ArkTS-Dyn: getDepth(): number
+
+ArkTS-Sta: getDepth(): int
 
 获取元素的当前深度。
 
@@ -1169,15 +1221,19 @@ getDepth(): number
 >
 > 标签内的空白事件深度与标签的深度保持一致。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number | 返回元素的当前深度。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回元素的当前深度。 |
 
 **示例：**
 
@@ -1205,19 +1261,25 @@ console.info(str);
 
 ### getLineNumber
 
-getLineNumber(): number
+ArkTS-Dyn: getLineNumber(): number
+
+ArkTS-Sta: getLineNumber(): int
 
 获取当前行号，从1开始。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回当前行号。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回当前行号。 |
 
 **示例：**
 
@@ -1245,9 +1307,13 @@ getName(): string
 
 获取当前元素名称。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1280,9 +1346,13 @@ getNamespace(): string
 
 获取当前元素的命名空间。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1319,9 +1389,13 @@ getPrefix(): string
 
 获取当前元素前缀。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1359,9 +1433,13 @@ getText(): string
 
 获取当前事件的文本内容。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1394,9 +1472,13 @@ isEmptyElementTag(): boolean
 
 判断当前元素是否为空元素。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1433,9 +1515,13 @@ isWhitespace(): boolean
 
 判断当前事件是否仅包含空格字符。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1468,18 +1554,24 @@ console.info(str);
 ```
 ### getAttributeCount
 
-getAttributeCount(): number
+ArkTS-Dyn: getAttributeCount(): number
+
+ArkTS-Sta: getAttributeCount(): int
 
 获取当前开始标记的属性数。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| number | 当前开始标记的属性数。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前开始标记的属性数。 |
 
 **示例：**
 
@@ -1505,9 +1597,13 @@ console.info(str);
 
 事件类型枚举。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值   | 说明                  |
 | ---------------- | ---- | --------------------- |
@@ -1542,11 +1638,15 @@ XmlSAXParser的构造函数。
 > - `inputStream`参数必须传入继承自[Readable](js-apis-stream.md#readable)且实现[Doread](js-apis-stream.md#doread)的类。可以传入其他模块中满足该条件的类，如[ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12)。
 
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1557,6 +1657,7 @@ XmlSAXParser的构造函数。
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { xml, stream } from '@kit.ArkTS';
 
@@ -1566,6 +1667,23 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
+  }
+}
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream, 'utf-8');
+```
+
+ArkTS-Sta示例：
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
   }
 }
 
@@ -1585,11 +1703,15 @@ parse(xmlSAXHandler: XmlSAXHandler): void
 > - 可以配合自动控制数据的流使用，如[ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12)，此时用户不再需要手动控制数据。
 > - parse接口注册了流的on监听器，会自动读取流中的数据。不建议再对流的监听器进行操作或者读取数据，以免发生冲突导致接口能力失效。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1599,6 +1721,7 @@ parse(xmlSAXHandler: XmlSAXHandler): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { xml, stream } from '@kit.ArkTS';
 
@@ -1608,6 +1731,39 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
+  }
+}
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream);
+
+let handler: xml.XmlSAXHandler = {
+  startDocument: () => {
+  },
+  endDocument: () => {
+  },
+  startElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined,
+    attributes: Map<string, string>) => {
+  },
+  endElement: (elementName: string, namespaceURI: string | undefined, qName: string | undefined) => {
+  },
+  characters: (content: string) => {
+  }
+};
+
+saxParser.parse(handler);
+```
+
+ArkTS-Sta示例：
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
   }
 }
 
@@ -1641,11 +1797,15 @@ startDocument(): void
 
 当解析器在XML文本开始解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters<sup>24+</sup>](#characters24)。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 ### endDocument<sup>24+</sup>
 
@@ -1657,11 +1817,15 @@ endDocument(): void
 >
 > 当可读流结束时触发此回调。在stream中调用push()，传入null值，从而触发该回调。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 ### startElement<sup>24+</sup>
 
@@ -1669,11 +1833,15 @@ startElement(elementName: string, namespaceURI: string | undefined, qName: strin
 
 当解析器在XML文本中元素开始解析时触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters<sup>24+</sup>](#characters24)。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1690,11 +1858,15 @@ endElement(elementName: string, namespaceURI: string | undefined, qName: string 
 
 当解析器在XML文本中元素结束解析触发的回调函数。该回调函数需要开发者自行实现。具体使用示例可见[characters<sup>24+</sup>](#characters24)。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1710,9 +1882,15 @@ characters(content: string): void
 
 当解析器在XML元素内部遇到文本内容时调用的回调函数。该回调函数需要开发者自行实现。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1722,6 +1900,7 @@ characters(content: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { xml, stream } from '@kit.ArkTS';
 
@@ -1731,6 +1910,75 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
+  }
+}
+
+const saxHandler: xml.XmlSAXHandler = {
+  startDocument() {
+    console.info("startDocument");
+  },
+  endDocument() {
+    console.info("endDocument");
+  },
+  startElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined,
+    attributes: Map<string, string>) {
+    console.info("startElement elementName:", elementName);
+    console.info("startElement namespaceURI:", namespaceURI);
+    console.info("startElement qName:", qName);
+    if (attributes) {
+      attributes.forEach((value, key) => {
+        console.info("startElement attribute:", key, "=", value);
+      });
+    }
+  },
+  endElement(elementName: string, namespaceURI: string | undefined, qName: string | undefined) {
+    console.info("endElement elementName:", elementName);
+  },
+  characters(content: string) {
+    console.info("characters:", content);
+  }
+};
+
+let readableStream = new TestReadable();
+let saxParser = new xml.XmlSAXParser(readableStream);
+saxParser.parse(saxHandler);
+
+let testData = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<root xmlns:ns1="http://example.com/ns1">\n' +
+  '  <ns1:child ns1:attr1="value1" attr2="value2">Text content</ns1:child>\n' +
+  '</root>';
+
+readableStream.push(testData);
+readableStream.push(null);
+// 输出示例：
+// startDocument
+// startElement elementName: root
+// startElement namespaceURI: undefined
+// startElement qName: undefined
+// characters: 
+// 
+// startElement elementName: child
+// startElement namespaceURI: http://example.com/ns1
+// startElement qName: ns1:child
+// startElement attribute: attr2 = value2
+// startElement attribute: ns1:attr1 = value1
+// characters: Text content
+// endElement elementName: child
+// characters: 
+// endElement elementName: root
+// endDocument
+```
+
+ArkTS-Sta示例：
+```ts
+import { xml, stream } from '@kit.ArkTS';
+
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
   }
 }
 

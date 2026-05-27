@@ -562,7 +562,7 @@ export default class CryptoExtension extends CryptoExtensionAbility {
 
 ## CryptoExtensionAbility.onImportCertificate
 
-onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo, params?: huksExternalCrypto.HuksExternalCryptoParam[]): Promise&lt;HuksCryptoExtensionResult&gt;
+onImportCertificate(handle: string, params: huksExternalCrypto.HuksExternalCryptoParam[], certInfo: HuksCryptoExtensionCertInfo): Promise&lt;HuksCryptoExtensionResult&gt;
 
 导入指定资源句柄的证书。使用Promise异步回调。
 
@@ -577,8 +577,8 @@ onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo, param
 | 参数名   | 类型  | 必填 | 说明  |
 | -------- | ----- | ---- | ------|
 | handle | string | 是   | 导入证书的资源句柄。 |
+| params  | [huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)[] | 是 | 导入证书所需的属性参数。 |
 | certInfo | [HuksCryptoExtensionCertInfo](#hukscryptoextensioncertinfo) | 是   | 待导入的证书信息。需指定证书类型（purpose）。 |
-| params  | [huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)[] | 否 | 导入证书所需的属性参数。 |
 
 **返回值：**
 
@@ -593,8 +593,8 @@ import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
   HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
-  onImportCertificate(handle: string, certInfo: HuksCryptoExtensionCertInfo,
-      params?: huksExternalCrypto.HuksExternalCryptoParam[]): Promise<HuksCryptoExtensionResult> {
+  onImportCertificate(handle: string, params: huksExternalCrypto.HuksExternalCryptoParam[],
+      certInfo: HuksCryptoExtensionCertInfo): Promise<HuksCryptoExtensionResult> {
     const result: HuksCryptoExtensionResult = {
       resultCode: 0
     };

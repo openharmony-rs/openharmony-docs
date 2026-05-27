@@ -237,7 +237,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let account: string = 'test_id';
 let switches: Record<string, boolean> = { 'test_bundleName1': true, 'test_bundleName2': false };
 try {
-  cloudData.Config.enableCloud(account, switches, (err: BusinessError) => {
+  cloudData.Config.enableCloud(account, switches, (err: BusinessError|null) => {
     if (err === undefined) {
       console.info('Succeeded in enabling cloud');
     } else {
@@ -298,7 +298,7 @@ let switches: Record<string, boolean> = { 'test_bundleName1': true, 'test_bundle
 try {
   cloudData.Config.enableCloud(account, switches).then(() => {
     console.info('Succeeded in enabling cloud');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to enable.Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -346,7 +346,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let account: string = 'test_id';
 try {
-  cloudData.Config.disableCloud(account, (err: BusinessError) => {
+  cloudData.Config.disableCloud(account, (err: BusinessError|null) => {
     if (err === undefined) {
       console.info('Succeeded in disabling cloud');
     } else {
@@ -405,7 +405,7 @@ let account: string = 'test_id';
 try {
   cloudData.Config.disableCloud(account).then(() => {
     console.info('Succeeded in disabling cloud');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to disableCloud. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -456,7 +456,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let account: string = 'test_id';
 let bundleName: string = 'test_bundleName';
 try {
-  cloudData.Config.changeAppCloudSwitch(account, bundleName, true, (err: BusinessError) => {
+  cloudData.Config.changeAppCloudSwitch(account, bundleName, true, (err: BusinessError|null) => {
     if (err === undefined) {
       console.info('Succeeded in changing App cloud switch');
     } else {
@@ -518,7 +518,7 @@ let bundleName: string = 'test_bundleName';
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true).then(() => {
     console.info('Succeeded in changing App cloud switch');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
@@ -589,7 +589,7 @@ let config: cloudData.SwitchConfig = {
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true, config).then(() => {
     console.info('Succeeded in changing App cloud switch');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to change App cloud switch. Code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
@@ -639,7 +639,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let account: string = 'test_id';
 let bundleName: string = 'test_bundleName';
 try {
-  cloudData.Config.notifyDataChange(account, bundleName, (err: BusinessError) => {
+  cloudData.Config.notifyDataChange(account, bundleName, (err: BusinessError|null) => {
     if (err === undefined) {
       console.info('Succeeded in notifying the change of data');
     } else {
@@ -700,7 +700,7 @@ let bundleName: string = 'test_bundleName';
 try {
   cloudData.Config.notifyDataChange(account, bundleName).then(() => {
     console.info('Succeeded in notifying the change of data');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -751,7 +751,7 @@ let extraData: string = '{"data":"{"accountId":"aaa","bundleName":"com.bbb.xxx",
 try {
   cloudData.Config.notifyDataChange({
     eventId: eventId, extraData: extraData
-  }, (err: BusinessError) => {
+  }, (err: BusinessError|null) => {
     if (err === undefined) {
       console.info('Succeeded in notifying the change of data');
     } else {
@@ -812,7 +812,7 @@ let userId: number = 100;
 try {
   cloudData.Config.notifyDataChange({
     eventId: eventId, extraData: extraData
-  }, userId, (err: BusinessError) => {
+  }, userId, (err: BusinessError|null) => {
     if (err === undefined) {
       console.info('Succeeded in notifying the change of data');
     } else {
@@ -836,7 +836,7 @@ let userId: int = 100;
 try {
   cloudData.Config.notifyDataChange({
     eventId: eventId, extraData: extraData
-  }, userId, (err: BusinessError|null,data) => {
+  }, userId, (err: BusinessError|null, data) => {
     if (err === undefined || null) {
       console.info('Succeeded in notifying the change of data');
     } else {
@@ -905,7 +905,7 @@ try {
     eventId: eventId, extraData: extraData
   }, userId).then(() => {
     console.info('Succeeded in notifying the change of data');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -927,7 +927,7 @@ try {
     eventId: eventId, extraData: extraData
   }, userId).then(() => {
     console.info('Succeeded in notifying the change of data');
-  }).catch((err: Error) => {
+  }).catch((err) => {
     console.error(`Failed to notify the change of data. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -986,7 +986,7 @@ const storeId:string = "storeId";
 
 cloudData.Config.queryStatistics(accountId, bundleName, storeId).then((result) => {
     console.info(`Succeeded in querying statistics. Info is ${JSON.stringify(result)}`);
-}).catch((err: BusinessError) => {
+}).catch((err) => {
     console.error(`Failed to query statistics. Error code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -1041,7 +1041,7 @@ const storeId:string = "storeId";
 try {
     cloudData.Config.queryLastSyncInfo(accountId, bundleName, storeId).then((result) => {
     	console.info(`Succeeded in querying last syncinfo. Info is ${JSON.stringify(result)}`);
-	}).catch((err: BusinessError) => {
+	}).catch((err) => {
     	console.error(`Failed to query last syncinfo. Error code is ${err.code}, message is ${err.message}`);
 	});
 } catch(e) {
@@ -1104,7 +1104,7 @@ const bundleInfos: Array<cloudData.BundleInfo> = [
 try {
   cloudData.Config.queryLastSyncInfo(accountId, bundleInfos).then((result) => {
     console.info(`Succeeded in querying last sync info. Result is ${JSON.stringify(result)}`);
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to query last sync info. Error code is ${err.code}, message is ${err.message}`);
   });
 } catch(e) {
@@ -1285,7 +1285,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
     console.info('Succeeded in setting the global cloud strategy');
-}).catch((err: BusinessError) => {
+}).catch((err) => {
     console.error(`Failed to set global cloud strategy. Code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1341,7 +1341,7 @@ try{
     console.info('Succeeded in getting progress details.');
   }).then(() => {
       console.info('Succeeded in syncing cloud data.');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
       console.error(`Failed to sync cloud data. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -1395,7 +1395,7 @@ let appActions: dataType = {
   'test_bundleName2': cloudData.ClearAction.CLEAR_CLOUD_DATA_AND_INFO
 };
 try {
-  cloudData.Config.clear(account, appActions, (err: BusinessError) => {
+  cloudData.Config.clear(account, appActions, (err: BusinessError|null) => {
     if (err === undefined) {
       console.info('Succeeding in clearing cloud data');
     } else {
@@ -1460,7 +1460,7 @@ let appActions: dataType = {
 try {
   cloudData.Config.clear(account, appActions).then(() => {
     console.info('Succeeding in clearing cloud data');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
@@ -1536,8 +1536,147 @@ let config: Record<string, cloudData.ClearConfig> = {
 try {
   cloudData.Config.clear(account, appActions, config).then(() => {
     console.info('Succeeding in clearing cloud data');
-  }).catch((err: BusinessError) => {
+  }).catch((err) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+```
+
+### cloudSync
+
+static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
+
+对指定应用的数据按照云同步配置信息进行端云同步，当[CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig)中的downloadOnly为true时，端云同步仅把云侧数据下行到本地，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| bundleInfo | [BundleInfo](#bundleinfo) | 是 | 应用包信息配置。BundleInfo的实例对象。 |
+| config | [relationalStore.CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig) | 是 | 云同步配置。 |
+| progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202      | Permission verification failed, application is not a system application. |
+| 801      | Capability not supported because the device does not support the device-cloud capability. |
+| 14800001 | Invalid arguments. Possible causes: Empty conditions. |
+
+**示例：**
+
+```ts
+import { cloudData } from '@kit.ArkData';
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+let bundleInfo: bundleManager.BundleInfo = {
+  name: 'com.example.myapplication',
+  // 其他BundleInfo字段...
+};
+
+let config: relationalStore.CloudSyncConfig = {
+  mode: relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
+  enablePredicate: true
+};
+
+try {
+  cloudData.Config.cloudSync(bundleInfo, config, (progressDetails: relationalStore.ProgressDetails) => {
+    console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
+  }).then(() => {
+    console.info('Succeeded in cloud sync');
+  }).catch((err) => {
+    console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### stopCloudSync
+
+static stopCloudSync(bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;void&gt;
+
+停止与云端的数据同步，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是 | 应用包信息配置数组。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 801      | Capability not supported because the device does not support the device-cloud capability. |
+| 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0. |
+
+**示例：**
+
+```ts
+import { cloudData } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+let bundleInfos: Array<bundleManager.BundleInfo> = [
+  { name: 'com.example.myapplication1' },
+  { name: 'com.example.myapplication2' }
+];
+
+try {
+  cloudData.Config.stopCloudSync(bundleInfos).then(() => {
+    console.info('Succeeded in stopping cloud sync');
+  }).catch((err) => {
+    console.error(`Failed to stop cloud sync. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -1725,7 +1864,7 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
   const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
   console.info(`sharing resource: ${res}`);
   sharingResource = res;
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -1786,7 +1925,7 @@ participants.push({
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
-cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data'], (err: BusinessError, resultSet) => {
+cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data'], (err: BusinessError|null, resultSet) => {
   if (err) {
     console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -1856,7 +1995,7 @@ participants.push({
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
-cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (err: BusinessError, resultSet) => {
+cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (err: BusinessError|null, resultSet) => {
   if (err) {
     console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -1928,7 +2067,7 @@ participants.push({
 })
 cloudData.sharing.share('sharing_resource_test', participants).then((result) => {
   console.info(`share success, result: ${result}`);
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`share failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -1983,7 +2122,7 @@ participants.push({
   },
   attachInfo: ''
 })
-cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessError, result) => {
+cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessError|null, result) => {
   if (err) {
     console.error(`share failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -2049,7 +2188,7 @@ participants.push({
 })
 cloudData.sharing.unshare('sharing_resource_test', participants).then((result) => {
   console.info(`unshare succeeded, result: ${result}`);
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -2104,7 +2243,7 @@ participants.push({
   },
   attachInfo: ''
 })
-cloudData.sharing.unshare('sharing_resource_test', participants, ((err: BusinessError, result) => {
+cloudData.sharing.unshare('sharing_resource_test', participants, ((err: BusinessError|null, result) => {
   if (err) {
     console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -2155,7 +2294,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 cloudData.sharing.exit('sharing_resource_test').then((result) => {
   console.info(`exit share success, result: ${result}`);
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -2195,7 +2334,7 @@ exit(sharingResource: string, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;)
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError, result) => {
+cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError|null, result) => {
   if (err) {
     console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -2262,7 +2401,7 @@ participants.push({
 
 cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((result) => {
   console.info(`change privilege succeeded, result: ${result}`);
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -2318,7 +2457,7 @@ participants.push({
   attachInfo: ''
 })
 
-cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: BusinessError, result) => {
+cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: BusinessError|null, result) => {
   if (err) {
     console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -2369,7 +2508,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
   console.info(`query participants succeeded, result: ${result}`);
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -2409,7 +2548,7 @@ queryParticipants(sharingResource: string, callback: AsyncCallback&lt;Result&lt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessError, result) => {
+cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessError|null, result) => {
   if (err) {
     console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -2460,7 +2599,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').then((result) => {
   console.info(`query participants by invitation succeeded, result: ${result}`);
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -2500,7 +2639,7 @@ queryParticipantsByInvitation(invitationCode: string, callback: AsyncCallback&lt
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', ((err: BusinessError, result) => {
+cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', ((err: BusinessError|null, result) => {
   if (err) {
     console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -2554,7 +2693,7 @@ let shareResource: string | undefined;
 cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED).then((result: cloudData.sharing.Result<string>) => {
   console.info(`confirm invitation succeeded, result: ${result}`);
   shareResource = result.value;
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -2596,7 +2735,7 @@ confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback&
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let shareResource: string;
-cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED, ((err: BusinessError, result) => {
+cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sharing.State.STATE_ACCEPTED, ((err: BusinessError|null, result) => {
   if (err) {
     console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
     return;
@@ -2649,7 +2788,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.State.STATE_REJECTED).then((result) => {
   console.info(`change confirmation succeeded, result: ${result}`);
-}).catch((err: BusinessError) => {
+}).catch((err) => {
   console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
 })
 
@@ -2690,7 +2829,7 @@ changeConfirmation(sharingResource: string, state: State, callback: AsyncCallbac
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.State.STATE_REJECTED, ((err: BusinessError, result) => {
+cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.State.STATE_REJECTED, ((err: BusinessError|null, result) => {
   if (err) {
     console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
     return;

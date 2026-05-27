@@ -1,6 +1,6 @@
 # wrapBuilder：封装全局@Builder（ArkTS-Sta）
 
-  当在一个`struct`内使用多个全局`@Builder`函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用`wrapBuilder`封装全局`@Builder`。
+  当在一个`struct`内使用多个全局`@Builder`函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder-static.md)封装全局`@Builder`。
 
   在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
@@ -95,7 +95,7 @@ struct Index {
 
 ##  @Builder方法赋值给变量在UI语法中使用
 
-自定义组件Index使用`ForEach`进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
+自定义组件Index使用[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach-sta.md)进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
 
 ```ts
 'use static'

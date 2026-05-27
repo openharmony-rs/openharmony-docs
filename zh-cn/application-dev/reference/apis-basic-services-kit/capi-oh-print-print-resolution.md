@@ -20,3 +20,35 @@ typedef struct {...} Print_Resolution
 
 **所在头文件：** [ohprint.h](capi-ohprint-h.md)
 
+## 汇总
+
+### 成员变量
+
+| 名称 | 描述 |
+| -- | -- |
+| uint32_t [horizontalDpi](#horizontaldpi) | 水平分辨率，单位：dpi。 |
+| uint32_t [verticalDpi](#verticaldpi) | 垂直分辨率，单位：dpi。 |
+
+
+## 结构体成员变量说明
+
+
+### horizontalDpi
+
+```c
+uint32_t Print_Resolution::horizontalDpi
+```
+**描述**
+
+水平分辨率，单位：dpi。
+
+
+### verticalDpi
+
+```c
+uint32_t Print_Resolution::verticalDpi
+```
+**描述**
+
+垂直分辨率，单位：dpi。
+

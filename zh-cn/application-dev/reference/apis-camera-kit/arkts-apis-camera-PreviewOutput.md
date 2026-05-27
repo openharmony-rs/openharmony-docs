@@ -28,7 +28,7 @@ on(type: 'frameStart', callback: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -63,7 +63,7 @@ off(type: 'frameStart', callback?: AsyncCallback\<void\>): void
 
 注销预览帧启动的监听。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -92,7 +92,7 @@ on(type: 'frameEnd', callback: AsyncCallback\<void\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -127,7 +127,7 @@ off(type: 'frameEnd', callback?: AsyncCallback\<void\>): void
 
 注销监听预览帧结束。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -156,7 +156,7 @@ on(type: 'error', callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -187,7 +187,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 注销监听预览输出的错误事件。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -212,7 +212,7 @@ function unregisterPreviewOutputError(previewOutput: camera.PreviewOutput): void
 
 查询支持的帧率范围。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -242,7 +242,7 @@ setFrameRate(minFps: number, maxFps: number): void
 > **说明：**
 > 仅在[PhotoSession](arkts-apis-camera-PhotoSession.md)或[VideoSession](arkts-apis-camera-VideoSession.md)模式下支持。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -278,7 +278,7 @@ getActiveFrameRate(): FrameRateRange
 
 使用[setFrameRate](#setframerate12)接口对预览流设置过帧率后可查询。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -303,7 +303,7 @@ getActiveProfile(): Profile
 
 获取当前生效的配置信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -347,11 +347,11 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 
 - 设备自然方向：设备默认使用方向。例如，直板机默认使用方向为竖屏（充电口向下）。
 - 相机镜头角度：值等于相机图像顺时针旋转到设备自然方向的角度。例如，直板机后置相机传感器是横屏安装的，所以需要顺时针旋转90度到设备自然方向。
-- [屏幕旋转角度](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section15598121101615)：显示设备的屏幕顺时针旋转角度。
+- [屏幕旋转角度](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-direction#section737072712182)：显示设备的屏幕顺时针旋转角度。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -359,7 +359,7 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | --------------| ---- | ------------------------ |
-| displayRotation | number  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。<br> 从API version 23开始，入参displayRotation为可选参数，当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。 |
+| displayRotation | number  | 否   | 显示设备的屏幕旋转角度，通过[display.getDefaultDisplaySync](../apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获得。<br> 从API version 23开始，入参displayRotation为可选参数，当不传入参数时，由系统获取displayRotation进行预览旋转角度计算。<br> 单位为度数（degree），取值范围为[0, 360]。 |
 
 **返回值：**
 
@@ -373,6 +373,7 @@ getPreviewRotation(displayRotation?: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：12-22  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -413,7 +414,7 @@ setPreviewRotation(previewRotation: ImageRotation, isDisplayLocked?: boolean): v
 
 设置预览旋转角度。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -601,7 +602,7 @@ isBandwidthCompressionSupported(): boolean
 
 检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -640,7 +641,7 @@ enableBandwidthCompression(enabled: boolean): void
 > **说明：**
 > 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之前调用，否则会影响预览流出流格式。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -675,13 +676,13 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
   }
 }
 ```
-### addDeferredSurface<sup>24+</sup>
+## addDeferredSurface<sup>24+</sup>
 
 addDeferredSurface(surfaceId: string): void
 
-配置延迟预览的Surface，可以在[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[Session.start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
+配置延迟预览的Surface，可以在[commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

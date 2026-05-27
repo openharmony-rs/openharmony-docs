@@ -44,12 +44,20 @@ import { Consume, Provide } from '@kit.ArkUI';
 | 初始化规则          | 必须定义本地默认值。<br/>支持从父组件传入变量（含undefined类型），此时优先使用传入值进行初始化。<br/>若父组件未传值，则使用本地默认值进行初始化。 |
 | 同步规则            | **在子组件使用时：**<br>不与父组件中的任何类型变量同步。<br/>父组件传入的外部变量对\@Provide初始化时，仅作为初始值，后续变量的变化不会同步至\@Provide。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、[\@PropRef](./arkts-static-propref.md)、\@Provide。<br/>\@Provide变量的变化会同步给子组件的\@Link、\@PropRef变量。<br/>与后代子组件中别名匹配的\@Consume变量双向同步 |
 
+  **图1** \@Provide初始化规则图示  
+
+![provide-initialization](../figures/provide-initialization.png)
+
 | \@Consume变量装饰器 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数          | alias：别名，常量字符串，可选。<br/>如果提供了别名，则必须存在\@Provide变量与其有相同的别名；否则，则需要变量名相同。<br/>指定别名方法为：\@Consume({ alias: 'aliasName' })或\@Consume('aliasName')。 |
 | 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
 | 初始化规则          | 禁止外部传入初始化。<br>通过别名/变量名寻找匹配的\@Provide变量，并与之双向同步。<br>从API version 23起，支持本地设置默认值。当找不到匹配的\@Provide变量时，使用本地默认值初始化。|
 | 同步规则            | **在子组件使用时：**<br/>与祖先组件匹配的\@Provide变量双向同步。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、\@Provide。<br/>\@Consume变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
+
+  **图2** \@Consume初始化规则图示  
+
+![consume-initialization](../figures/consume-initialization.png)
 
 ## 观察变化和行为表现
 
@@ -614,7 +622,7 @@ struct GrandParent {
 
 ### 无@Provide，仅使用本地默认值初始化@Consume
 
-以下示例中仅使用\@Consume，点击Child组件中的Button，对应Button下方的UI会刷新，且会触发\@Watch的回调。
+以下示例中仅使用\@Consume，点击Child组件中的Button，对应Button下方的UI会刷新，且会触发[\@Watch](./arkts-static-watch.md)的回调。
 
 ```ts
 'use static'

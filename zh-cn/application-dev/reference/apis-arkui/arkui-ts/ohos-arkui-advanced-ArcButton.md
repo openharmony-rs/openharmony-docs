@@ -43,9 +43,9 @@ ArcButton({ options: ArcButtonOptions })
 
 创建ArcButton实例，入参是弧形按钮配置选项。
 
-**装饰器类型：** @Component
+**装饰器类型：** ArkTS-Dyn：@Component；ArkTS-Sta：@ComponentV2
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -57,11 +57,13 @@ ArcButton({ options: ArcButtonOptions })
 
 | 名称    | 类型             | 必填 | 装饰器类型  | 说明                      |
 | ------- | ---------------- | ---- | ----------- | ------------------------- |
-| options | [ArcButtonOptions](#arcbuttonoptions) | 是   | @Require | 定义ArcButton组件的文本、背景色、阴影等参数。 |
+| options | [ArcButtonOptions](#arcbuttonoptions) | 是   | ArkTS-Dyn: @Require<br/>ArkTS-Sta: @Require, @Param | 定义ArcButton组件的文本、背景色、阴影等参数。 |
 
 ## ArcButtonOptions
 
 定义ArcButton的默认样式或自定义样式参数。
+
+**装饰器类型：** ArkTS-Sta: @ObservedV2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -69,23 +71,23 @@ ArcButton({ options: ArcButtonOptions })
 
 | 名称             | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| position         | [ArcButtonPosition](#arcbuttonposition)                      | 否   | 否   | 上下弧形按钮类型属性。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| styleMode        | [ArcButtonStyleMode](#arcbuttonstylemode)                    | 否   | 否   | 弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](#arcbuttonprogressconfig23)样式同时使用。<br>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| status           | [ArcButtonStatus](#arcbuttonstatus)                          | 否   | 否   | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| label     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 否   | 弧形按钮显示文本。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否   | 否   | 弧形按钮背景模糊能力。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| backgroundColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否   | 弧形按钮背景颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.Black<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                 |
-| shadowColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否   | 弧形按钮阴影颜色。<br/>默认值：Color.Black<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                 |
-| shadowEnabled    | boolean                                                      | 否   | 否   | 弧形按钮阴影开关。<br/>默认值：false<br/>值为true时，显示阴影。值为false时，不显示阴影。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 否   | 弧形按钮文本大小。<br/>默认值：19fp<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                        |
-| fontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否   | 弧形按钮文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                 |
-| pressedFontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否   | 弧形按钮按下文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23             |
-| fontStyle | [FontStyle](ts-appendix-enums.md#fontstyle)                  | 否   | 否   | 弧形按钮文本样式。<br/>默认值：FontStyle.Normal<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23            |
-| fontFamily | string \| [Resource](ts-types.md#resource)                   | 否   | 否   | 弧形按钮字体名。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                             |
-| fontMargin | [LocalizedMargin](ts-types.md#localizedmargin12)             | 否   | 否   | 弧形按钮文本边距。<br/>默认值：{start:24vp, top: 10vp,end: 24vp, bottom:16vp }<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-|onTouch | [Callback](ts-types.md#voidcallback12)&lt; [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)&gt; | 否   | 是   | 弧形按钮手指触摸动作触发该回调。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-|onClick | [Callback](ts-types.md#voidcallback12)&lt;[ClickEvent](ts-universal-events-click.md#clickevent) &gt; | 否   | 是   | 弧形按钮点击动作触发该回调。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| progressConfig<sup>23+</sup> | [ArcButtonProgressConfig](#arcbuttonprogressconfig23)          | 否  | 是 | ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（[示例1](#示例1-设置弧形按钮)），设置后表现为进度条样式（[示例2](#示例2-设置设备进度条按钮)），进度条样式不受[ArcButtonStyleMode](#arcbuttonstylemode)属性设置影响。 <br/>默认值：[ArcButtonProgressConfig](#arcbuttonprogressconfig23) 的各项子属性均取其默认值。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
+| position         | [ArcButtonPosition](#arcbuttonposition)                      | 否   | 否   | 上下弧形按钮类型属性。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| styleMode        | [ArcButtonStyleMode](#arcbuttonstylemode)                    | 否   | 否   | 弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](#arcbuttonprogressconfig23)样式同时使用。<br>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| status           | [ArcButtonStatus](#arcbuttonstatus)                          | 否   | 否   | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| label     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 否   | 弧形按钮显示文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否   | 否   | 弧形按钮背景模糊能力。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| backgroundColor  | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否   | 弧形按钮背景颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.Black<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                 |
+| shadowColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否   | 弧形按钮阴影颜色。<br/>默认值：Color.Black<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                 |
+| shadowEnabled    | boolean                                                      | 否   | 否   | 弧形按钮阴影开关。<br/>默认值：false<br/>值为true时，显示阴影。值为false时，不显示阴影。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 否   | 弧形按钮文本大小。<br/>默认值：19fp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                        |
+| fontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否   | 弧形按钮文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                 |
+| pressedFontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 否   | 弧形按钮按下文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23             |
+| fontStyle | [FontStyle](ts-appendix-enums.md#fontstyle)                  | 否   | 否   | 弧形按钮文本样式。<br/>默认值：FontStyle.Normal<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23            |
+| fontFamily | string \| [Resource](ts-types.md#resource)                   | 否   | 否   | 弧形按钮字体名。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                             |
+| fontMargin | [LocalizedMargin](ts-types.md#localizedmargin12)             | 否   | 否   | 弧形按钮文本边距。<br/>默认值：{start:24vp, top: 10vp,end: 24vp, bottom:16vp }<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+|onTouch | [Callback](ts-types.md#voidcallback12)&lt; [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)&gt; | 否   | 是   | 弧形按钮手指触摸动作触发该回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+|onClick | [Callback](ts-types.md#voidcallback12)&lt;[ClickEvent](ts-universal-events-click.md#clickevent) &gt; | 否   | 是   | 弧形按钮点击动作触发该回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| progressConfig<sup>23+</sup> | [ArcButtonProgressConfig](#arcbuttonprogressconfig23)          | 否  | 是 | ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（[示例1](#示例1-设置弧形按钮)），设置后表现为进度条样式（[示例2](#示例2-设置设备进度条按钮)），进度条样式不受[ArcButtonStyleMode](#arcbuttonstylemode)属性设置影响。 <br/>默认值：[ArcButtonProgressConfig](#arcbuttonprogressconfig23) 的各项子属性均取其默认值。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ### constructor
 
@@ -93,7 +95,7 @@ constructor(options: CommonArcButtonOptions)
 
 弧形按钮的构造函数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -115,29 +117,29 @@ ArcButton的默认样式或自定义样式参数。
 
 | 名称                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| position            | [ArcButtonPosition](#arcbuttonposition)                      | 否   | 是  | 上下弧形按钮类型属性。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| styleMode           | [ArcButtonStyleMode](#arcbuttonstylemode)                    | 否   | 是  | 弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](#arcbuttonprogressconfig23)样式同时使用。<br>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| status              | [ArcButtonStatus](#arcbuttonstatus)                          | 否   | 是   | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23            |
-| label               | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是 | 弧形按钮显示文本。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                           |
-| backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否   | 是  | 弧形按钮背景模糊能力。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23            |
-| backgroundColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 是 | 弧形按钮背景颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.Black<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                   |
-| shadowColor         | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 是  | 弧形按钮阴影颜色。<br/>默认值：Color.Black<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                   |
-| shadowEnabled       | boolean                                                      | 否   | 是 | 弧形按钮阴影开关。<br/>默认值：false<br/>值为true时，显示阴影。值为false时，不显示阴影。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| fontSize            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是  | 弧形按钮文本大小。<br/>默认值：19fp<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                          |
-| fontColor           | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 是  | 弧形按钮文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                   |
-| pressedFontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 是  | 弧形按钮按下文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23               |
-| fontStyle           | [FontStyle](ts-appendix-enums.md#fontstyle)                  | 否   | 是  | 弧形按钮文本样式。<br/>默认值：FontStyle.Normal<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23              |
-| fontFamily          | string \| [Resource](ts-types.md#resource)                   | 否   | 是  | 弧形按钮字体名。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                             |
-| fontMargin          | [LocalizedMargin](ts-types.md#localizedmargin12)             | 否   | 是  | 弧形按钮文本边距。<br/>默认值：{start:24vp, top: 10vp,end: 24vp, bottom:16vp }<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
-| onTouch             | [Callback](ts-types.md#voidcallback12)&lt; [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)&gt; | 否   | 是   | 弧形按钮手指触摸动作触发该回调。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                             |
-| onClick             | [Callback](ts-types.md#voidcallback12)&lt;[ClickEvent](ts-universal-events-click.md#clickevent) &gt; | 否   | 是   | 弧形按钮点击动作触发该回调。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                 |
-| progressConfig<sup>23+</sup> | [ArcButtonProgressConfig](#arcbuttonprogressconfig23) | 否   | 是 | ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（[示例1](#示例1-设置弧形按钮)），设置后表现为进度条样式（[示例2](#示例2-设置设备进度条按钮)），进度条样式不受[ArcButtonStyleMode](#arcbuttonstylemode)属性设置影响。 <br/>默认值：[ArcButtonProgressConfig](#arcbuttonprogressconfig23) 的各项子属性均取其默认值。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 | 
+| position            | [ArcButtonPosition](#arcbuttonposition)                      | 否   | 是  | 上下弧形按钮类型属性。<br/>默认值：ArcButtonPosition.BOTTOM_EDGE<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| styleMode           | [ArcButtonStyleMode](#arcbuttonstylemode)                    | 否   | 是  | 弧形按钮样式模式。该样式不支持与[ArcButtonProgressConfig](#arcbuttonprogressconfig23)样式同时使用。<br>默认值：ArcButtonStyleMode.EMPHASIZED_LIGHT<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| status              | [ArcButtonStatus](#arcbuttonstatus)                          | 否   | 是   | 弧形按钮状态。<br/>默认值：ArcButtonStatus.NORMAL<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23            |
+| label               | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是 | 弧形按钮显示文本。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                           |
+| backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否   | 是  | 弧形按钮背景模糊能力。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23            |
+| backgroundColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 是 | 弧形按钮背景颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.Black<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                   |
+| shadowColor         | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 是  | 弧形按钮阴影颜色。<br/>默认值：Color.Black<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                   |
+| shadowEnabled       | boolean                                                      | 否   | 是 | 弧形按钮阴影开关。<br/>默认值：false<br/>值为true时，显示阴影。值为false时，不显示阴影。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| fontSize            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 是  | 弧形按钮文本大小。<br/>默认值：19fp<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                          |
+| fontColor           | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 是  | 弧形按钮文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                   |
+| pressedFontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | 是  | 弧形按钮按下文本颜色。<br/>ArcButtonStyleMode需要设置为CUSTOM。<br/>默认值：Color.White<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23               |
+| fontStyle           | [FontStyle](ts-appendix-enums.md#fontstyle)                  | 否   | 是  | 弧形按钮文本样式。<br/>默认值：FontStyle.Normal<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23              |
+| fontFamily          | string \| [Resource](ts-types.md#resource)                   | 否   | 是  | 弧形按钮字体名。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                             |
+| fontMargin          | [LocalizedMargin](ts-types.md#localizedmargin12)             | 否   | 是  | 弧形按钮文本边距。<br/>默认值：{start:24vp, top: 10vp,end: 24vp, bottom:16vp }<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| onTouch             | [Callback](ts-types.md#voidcallback12)&lt; [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)&gt; | 否   | 是   | 弧形按钮手指触摸动作触发该回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                             |
+| onClick             | [Callback](ts-types.md#voidcallback12)&lt;[ClickEvent](ts-universal-events-click.md#clickevent) &gt; | 否   | 是   | 弧形按钮点击动作触发该回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23                                 |
+| progressConfig<sup>23+</sup> | [ArcButtonProgressConfig](#arcbuttonprogressconfig23) | 否   | 是 | ArcButton进度条参数。不设置该属性时ArcButton组件表现为按钮样式（[示例1](#示例1-设置弧形按钮)），设置后表现为进度条样式（[示例2](#示例2-设置设备进度条按钮)），进度条样式不受[ArcButtonStyleMode](#arcbuttonstylemode)属性设置影响。 <br/>默认值：[ArcButtonProgressConfig](#arcbuttonprogressconfig23) 的各项子属性均取其默认值。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 | 
 
 ## ArcButtonProgressConfig<sup>23+</sup>   
 
 ArcButton内进度条的参数配置。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -147,13 +149,13 @@ ArcButton内进度条的参数配置。
 | ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | value               | number                                                       |否  |否  | 进度条当前值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total] |
 | total               | number                                                       |否  |是  | 进度的最大值。<br/>默认值：100<br/>取值范围：[0, 2147483647]，设置0或超出取值范围取默认值为100。 |
-| color               | [ResourceColor](ts-types.md#resourcecolor)                   |否  |是  | 进度条前景色。如果组件设置了背景色（[backgroundColor](#arcbuttonoptions)），进度条前景色默认值取组件背景色。进度条前景色不受按钮样式（[ArcButtonStyleMode](#arcbuttonstylemode)）设置影响。进度条背景色仅依赖进度条前景色设置，取进度条前景色的25%透明度。 <br/> 默认值："#1F71FF"，显示为蓝色。 |
+| color               | [ResourceColor](ts-types.md#resourcecolor)                   |否  |是  | 进度条前景色。如果组件设置了[ArcButtonOptions](#arcbuttonoptions)的背景色（backgroundColor），进度条前景色默认值取组件背景色。进度条前景色不受按钮样式（[ArcButtonStyleMode](#arcbuttonstylemode)）设置影响。进度条背景色仅依赖进度条前景色设置，取进度条前景色的25%透明度。 <br/> 默认值："#1F71FF"，显示为蓝色。 |
 
 ## ArcButtonPosition
 
 定义ArcButton可设置的弧形按钮的类型。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -171,7 +173,7 @@ ArcButton内进度条的参数配置。
 
 定义ArcButton可设置弧形按钮样式模式。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -182,7 +184,7 @@ ArcButton内进度条的参数配置。
 | 名称             | 值   | 说明             |
 | ---------------- | ---- | ---------------- |
 | EMPHASIZED_LIGHT | 0    | 强调样式，亮色，表现为蓝色背景、白色文字。 |
-| EMPHASIZED_DARK  | 1    | 警告样式，暗色，表现为红色背景、白色文字。 |
+| EMPHASIZED_DARK  | 1    | 强调样式，暗色，表现为红色背景、白色文字。 |
 | NORMAL_LIGHT     | 2    | 常规样式，亮色，表现为深蓝色背景、蓝色文字。 |
 | NORMAL_DARK      | 3    | 常规样式，暗色，表现为深灰色背景、蓝色文字。 |
 | CUSTOM           | 4    | 自定义按钮颜色和字体颜色。 |
@@ -192,7 +194,7 @@ ArcButton内进度条的参数配置。
 
 定义ArcButton可设置的弧形按钮状态。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -212,7 +214,7 @@ ArcButton内进度条的参数配置。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -234,7 +236,7 @@ constructor(value: double, total?: double, color?: ResourceColor)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -345,7 +347,7 @@ struct Index {
 
 ### 示例2 (设置设备进度条按钮)
 
-该示例展示了ArcButton组件进度条样式的基本用法。从API version 23开始，新增[progressConfig](#arcbuttonoptions)接口。示例配置如下：
+该示例展示了ArcButton组件进度条样式的基本用法。从API version 23开始，新增[ArcButtonOptions](#arcbuttonoptions)的progressConfig接口。示例配置如下：
 
 1.topOptions定义了上弧形按钮。按钮文本为Add，字体大小为15fp，按钮状态为正常状态，按钮样式为亮色强调，启用阴影。按钮设置了点击事件，点击按钮将增加进度条的进度。
 

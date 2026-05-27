@@ -1,9 +1,8 @@
 # oh_commonevent_support.h
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -90,7 +89,7 @@
 | static const char * const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT = "usual.event.QUICK_FIX_REVOKE_RESULT" | 表示撤销快速修复的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_USER_INFO_UPDATED = "usual.event.USER_INFO_UPDATED" | 表示用户信息已更新的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_SIM_STATE_CHANGED = "usual.event.SIM_STATE_CHANGED" | 表示SIM卡状态更新的公共事件。<br>**起始版本：** 12 |
-| static const char * const COMMON_EVENT_CALL_STATE_CHANGED = "usual.event.CALL_STATE_CHANGED" | 表示呼叫状态更新的公共事件。<br>**起始版本：** 12 |
+| static const char * const COMMON_EVENT_CALL_STATE_CHANGED = "usual.event.CALL_STATE_CHANGED" | 表示呼叫状态更新的公共事件。<br>**订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_NETWORK_STATE_CHANGED = "usual.event.NETWORK_STATE_CHANGED" | 表示网络状态更新的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_SIGNAL_INFO_CHANGED = "usual.event.SIGNAL_INFO_CHANGED" | 表示信号信息更新的公共事件。<br>**起始版本：** 12 |
 | static const char * const COMMON_EVENT_SCREEN_UNLOCKED = "usual.event.SCREEN_UNLOCKED" | 表示屏幕解锁的公共事件。<br>**起始版本：** 12 |

@@ -53,7 +53,7 @@ import { StoragePropRef } from '@kit.ArkUI';
 | \@StoragePropRef变量装饰器 | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ |
 | 装饰器参数               | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型        | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，需要和AppStorage中对应属性类型相同，否则会因类型不一致导致应用行为异常。<br/>支持上述类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@StoragePropRef('AA') a: number \| null = null`能通过编译，`@StoragePropRef('AA') a: number = null`无法通过编译。 |
+| 允许装饰的变量类型        | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)、[Date](#装饰date类型变量)、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，需要和AppStorage中对应属性类型相同，否则会因类型不一致导致应用行为异常。<br/>支持上述类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@StoragePropRef('AA') a: number \| null = null`能通过编译，`@StoragePropRef('AA') a: number = null`无法通过编译。 |
 | 不允许装饰的变量类型    | 不支持装饰Function类型。变量声明类型是Function时编译报错；变量声明类型是包含Function的联合类型并且实际类型是Function时会运行时报错。 |
 | 同步类型                | 单向同步：从AppStorage的对应属性到组件的状态变量。<br/>组件本地的修改是允许的，但是AppStorage中给定的属性一旦发生变化，将覆盖本地的修改。 |
 | 被装饰变量的初始值       | 必须指定，如果AppStorage实例中不存在属性，则用该初始值初始化该属性，并存入AppStorage中。 |
@@ -63,7 +63,7 @@ import { StoragePropRef } from '@kit.ArkUI';
 | 传递/访问            | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
 | 从父节点初始化和更新 | 禁止从父节点初始化和更新@StoragePropRef。仅支持使用AppStorage中对应key的属性进行初始化，如果不存在对应key，则使用本地默认值进行初始化。 |
-| 初始化子节点        | 支持，可用于初始化\@State、\@Link、\@PropRef、\@Provide。    |
+| 初始化子节点        | 支持，可用于初始化[\@State](arkts-static-state.md)、[\@Link](arkts-static-link.md)、[\@PropRef](arkts-static-propref.md)、[\@Provide](arkts-static-provide-and-consume.md)。    |
 | 是否支持组件外访问   | 否。                                                         |
 
 ### 观察变化和行为表现

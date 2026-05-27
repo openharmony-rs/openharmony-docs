@@ -25,7 +25,7 @@
    在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和管理3D场景与相机。
 
    <!-- @[model_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
-   
+
    ``` TypeScript
    import { Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
    ```
@@ -36,6 +36,7 @@
 
    以下示例展示通过相对路径加载.glb模型：
 
+   ArkTS-Dyn示例：
    <!-- @[model_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
    
    ``` TypeScript
@@ -54,10 +55,29 @@
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[model_load](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/init.ets) -->
+
+   ``` TypeScript
+   if (this.scene == null) {
+     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+     Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
+       .then(async (result: Scene) => {
+         this.scene = result;
+         let rf: SceneResourceFactory = this.scene!.getResourceFactory();
+         // ...
+       })
+       .catch((error: Error) => {
+         console.error('Scene load failed: ' + error);
+       });
+   }
+   ```
+
 3. 创建相机并设置场景渲染参数。
 
    使用SceneResourceFactory.createCamera()创建相机，并设置相机启用状态与观察位置。通过调整相机的z轴位置，可控制观察距离。随后将加载完成的Scene封装为SceneOptions，并指定渲染类型为ModelType.SURFACE，用于Component3D渲染显示。
 
+   ArkTS-Dyn示例：
    <!-- @[camera_scene_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
    
    ``` TypeScript
@@ -68,6 +88,19 @@
    this.cam.position.z = 5;
    
    this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[camera_scene_params](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/init.ets) -->
+
+   ``` TypeScript
+   // 创建相机
+   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   // 设置相机参数
+   this.cam!.enabled = true;
+   this.cam!.position.z = 5;
+
+   this.sceneOpt = { scene: this.scene!, modelType: ModelType.SURFACE } as SceneOptions;
    ```
 
 4. 渲染3D模型。
@@ -105,6 +138,7 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
 
    使用Scene.load()从应用的resources/rawfile/目录加载.glb模型文件，.glb为glTF的二进制封装格式，与.gltf内容等价但更便于加载与使用。模型加载成功后返回Scene对象，可通过它获取SceneResourceFactory用于后续创建相机。
 
+   ArkTS-Dyn示例：
    <!-- @[cam_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
    
    ``` TypeScript
@@ -120,10 +154,28 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[cam_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/camera.ets) -->
+
+   ``` TypeScript
+   try {
+     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+     let scene: Scene = await Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
+     // ...
+     let sceneFactory: SceneResourceFactory = scene.getResourceFactory();
+     let sceneCameraParameter: SceneNodeParameters = { name: 'camera' };
+     // ...
+   } catch (error) {
+     console.error('Camera create failed: ' + error);
+     // ...
+   }
+   ```
+
 3. 创建相机并配置相机参数。
 
    调用 SceneResourceFactory.createCamera()创建相机，并配置相机的启用状态、位置、视场角（FoV）等参数。相机位置影响场景的观察距离，FoV决定画面透视范围。
 
+   ArkTS-Dyn示例：
    <!-- @[cam_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
    
    ``` TypeScript
@@ -147,10 +199,30 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[cam_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/camera.ets) -->
+
+   ``` TypeScript
+   let cameraEntity: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+
+   // 使能相机
+   cameraEntity.enabled = true;
+
+   // 设置相机位置
+   cameraEntity.position.z = 5;
+
+   // 设置Fov
+   cameraEntity.fov = 60 * Math.PI / 180;
+
+   // 设置其他相机参数
+   // ...
+   ```
+
 4. 初始化与渲染绑定。
 
    完成相机初始化后，将加载好的场景与相机绑定，并设置场景渲染参数。通过构建SceneOptions对象，即可将场景交由Component3D渲染显示，具体渲染方式可参考模型加载示例。
 
+   ArkTS-Dyn示例：
    <!-- @[cam_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) --> 
    
    ``` TypeScript
@@ -164,10 +236,25 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[cam_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/camera.ets) --> 
+
+   ``` TypeScript
+   this.camera = await createCameraPromise();
+   if (globalScene && this.camera) {
+     this.scene = globalScene;
+     this.positionX = this.camera!.position.x;
+     this.positionY = this.camera!.position.y;
+     this.positionZ = this.camera!.position.z;
+     this.sceneOpt = { scene: this.scene!, modelType: ModelType.SURFACE } as SceneOptions;
+   }
+   ```
+
 5. 相机交互。
 
    开发者可通过设置相机的位置、旋转、缩放、FoV等参数，以实现交互式视角控制。以下示例以Z轴控制为例，X/Y轴逻辑与此类似。
 
+   ArkTS-Dyn示例：
    <!-- @[cam_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
    
    ``` TypeScript
@@ -186,6 +273,30 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
            return;
          }
          this.camera.position.z = value;
+       }
+     })
+     .width('100%')
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[cam_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/camera.ets) -->
+
+   ``` TypeScript
+   Slider({
+     value: this.positionZ,
+     min: 5,
+     max: 10,
+     step: 0.1,
+     style: SliderStyle.OutSet
+   })
+     .showTips(false)
+     .onChange((value: double, mode: SliderChangeMode) => {
+       this.positionZ = value;
+       if (mode === SliderChangeMode.End) {
+         if (!this.scene || !this.camera) {
+           return;
+         }
+         this.camera!.position.z = value;
        }
      })
      .width('100%')
@@ -213,6 +324,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
 
    使用Scene.load()从应用的resources/rawfile/目录加载.glb模型文件，.glb为glTF的二进制封装格式，与.gltf内容等价但更便于加载与使用。模型加载成功后返回Scene对象，可通过它获取SceneResourceFactory用于后续创建灯光。
 
+   ArkTS-Dyn示例：
    <!-- @[light_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    
    ``` TypeScript
@@ -228,10 +340,28 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[light_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/light.ets) -->
+
+   ``` TypeScript
+   try {
+     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+     let scene = await Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
+     // ...
+     let sceneFactory: SceneResourceFactory = scene.getResourceFactory();
+     let lightParameter: SceneNodeParameters = { name: 'light' };
+     // ...
+   } catch (error) {
+     console.error('Light creation failed: ' + error);
+     // ...
+   }
+   ```
+
 3. 创建灯光并配置灯光参数。
 
    调用 SceneResourceFactory.createLight()创建灯光，并配置灯光的类型、位置、颜色等参数。灯光类型决定了光线的方向，位置决定了光线的位置，颜色决定了光线的颜色。
 
+   ArkTS-Dyn示例：
    <!-- @[light_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    
    ``` TypeScript
@@ -249,10 +379,23 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[light_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/light.ets) -->
+
+   ``` TypeScript
+   let lightEntity = await sceneFactory.createLight(lightParameter, LightType.DIRECTIONAL);
+   // 设置平行光颜色
+   lightEntity.color = { r: 0.8, g: 0.1, b: 0.2, a: 1.0 };
+
+   // 设置其他灯光参数
+   // ...
+   ```
+
 4. 初始化与渲染绑定。
 
    完成灯光初始化后，将加载好的场景与灯光进行绑定，并设置场景渲染参数。通过构建SceneOptions对象，即可将场景交由Component3D渲染显示。同时创建相机并设置观察位置，用于控制场景显示效果。
 
+   ArkTS-Dyn示例：
    <!-- @[light_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    
    ``` TypeScript
@@ -271,10 +414,30 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[light_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/light.ets) -->
+
+   ``` TypeScript
+   this.light = await createLightPromise();
+   if (globalScene && this.light) {
+     this.scene = globalScene;
+     this.sceneOpt = { scene: this.scene!, modelType: ModelType.SURFACE } as SceneOptions;
+     this.rf = this.scene!.getResourceFactory();
+     this.cam = await this.rf!.createCamera({ 'name': 'Camera1' });
+     this.cam!.enabled = true;
+     this.cam!.position.z = 5;
+     // 初始化颜色值
+     this.red = this.light!.color.r;
+     this.green = this.light!.color.g;
+     this.blue = this.light!.color.b;
+   }
+   ```
+
 5. 灯光交互。
 
    开发者可通过调整灯光的颜色、位置或方向等参数，实现交互式光照控制。以下示例展示了基于颜色分量（R/G/B）的交互逻辑，其余参数的控制方式与此类似。
 
+   ArkTS-Dyn示例：
    <!-- @[light_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
    
    ``` TypeScript
@@ -293,6 +456,35 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
            return;
          }
          this.light.color = {
+           r: this.red,
+           g: this.green,
+           b: this.blue,
+           a: 1.0
+         }
+       }
+     })
+     .width('100%')
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[light_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics3D/ArkGraphics3DSta/entry/src/main/ets/scene/light.ets) -->
+
+   ``` TypeScript
+   Slider({
+     value: this.red,
+     min: 0,
+     max: 1,
+     step: 0.01,
+     style: SliderStyle.OutSet
+   })
+     .showTips(false)
+     .onChange((value: double, mode: SliderChangeMode) => {
+       this.red = value;
+       if (mode === SliderChangeMode.End) {
+         if (!this.scene || !this.light) {
+           return;
+         }
+         this.light!.color = {
            r: this.red,
            g: this.green,
            b: this.blue,

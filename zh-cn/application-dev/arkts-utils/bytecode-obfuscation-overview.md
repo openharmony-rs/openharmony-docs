@@ -4,7 +4,7 @@
 <!--Owner: @oatuwwutao; @Graceunderpressure-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 从API version 20开始，ArkGuard提供了基础字节码混淆能力，将代码中的函数名、类名、文件名等名字变成简短无意义的名字，提高通过阅读代码猜测其用途的难度。由于标识符名称缩短，通过混淆可以有效降低包大小。
 

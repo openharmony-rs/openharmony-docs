@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -90,9 +90,13 @@ Codec MIME类型枚举。
 
 高级音频编码（AAC）类型枚举。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值                    | 说明                        |
 | ------------ | --------------------- | --------------------------- |
@@ -309,18 +313,22 @@ Codec MIME类型枚举。
 
 | 名称                      | 值   | 说明                   |
 | ------------------------- | ---- | ---------------------- |
-| AUDIO_SOURCE_TYPE_DEFAULT | 0    | 默认的音频输入源类型。 |
-| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
-| AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | 表示语音识别场景的音频源。 |
-| AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | 表示语音通话场景的音频源。 |
-| AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | 表示短语音消息的音频源。 |
-| AUDIO_SOURCE_TYPE_CAMCORDER<sup>12+</sup>     | 13    | 表示相机录像的音频源。 |
+| AUDIO_SOURCE_TYPE_DEFAULT | 0    | 默认的音频输入源类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | 表示语音识别场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | 表示语音通话场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | 表示短语音消息的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_CAMCORDER<sup>12+</sup>     | 13    | 表示相机录像的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## VideoSourceType<sup>9+</sup>
 
 表示视频录制中视频源类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                            |
 | ----------------------------- | ---- | ------------------------------- |
@@ -347,6 +355,10 @@ Codec MIME类型枚举。
 表示创建媒体文件模式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                            |
 | ----------------------------- | ---- | ------------------------------- |
@@ -398,7 +410,6 @@ Codec MIME类型枚举。
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
-
 | 名称                 | 值   | 说明                           |
 | -------------------- | ---- | ------------------------------ |
 | LOADING_ERROR_SUCCESS | 0    | 由客户端返回，表示已经推送到资源末尾。 |
@@ -494,6 +505,10 @@ Codec MIME类型枚举。
 | WINDOW_ONLY | 0    | 仅显示窗口列表。 |
 | SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
 | SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
+| APP_ONLY | 3    | 仅显示应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_AND_APP | 4    | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_AND_APP | 5    | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_WINDOW_AND_APP | 6    | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AVMetricsEventType<sup>23+</sup>
 
@@ -537,7 +552,11 @@ Codec MIME类型枚举。
 
 表示音频编码格式的枚举。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称    | 值   | 说明                                                         |
 | ------- | ---- | ------------------------------------------------------------ |
@@ -554,7 +573,11 @@ Codec MIME类型枚举。
 
 表示音频封装格式的枚举。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称     | 值   | 说明                                                         |
 | -------- | ---- | ------------------------------------------------------------ |

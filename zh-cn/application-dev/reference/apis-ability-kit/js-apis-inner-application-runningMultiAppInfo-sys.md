@@ -4,15 +4,18 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 定义应用多开在运行态的结构信息。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 12 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口为系统接口。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口为系统接口。
 
 ## 使用说明
 
@@ -26,10 +29,10 @@
 
 | 名称                      | 类型   | 只读  | 可选  | 说明       |
 | ------------------------- | ------ | ---- | ---- | --------- |
-| bundleName | string | 否  | 否  | 应用的包名。 |
-| mode | [MultiAppMode](js-apis-inner-application-multiAppMode-sys.md) | 否  | 否  | 应用多开模式。 |
-| runningAppClones | Array<[RunningAppClone](js-apis-inner-application-runningAppClone-sys.md)> | 否  | 是  | 特定包名在运行态的分身应用信息。 |
-| runningMultiInstances<sup>14+</sup> | Array<[RunningMultiInstanceInfo](js-apis-inner-application-runningMultiInstanceInfo-sys.md)> | 否  | 是  | 特定包名在运行态的多实例应用信息。 |
+| bundleName | string | 否  | 否  | 应用的包名。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| mode | [MultiAppMode](js-apis-inner-application-multiAppMode-sys.md) | 否  | 否  | 应用多开模式。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| runningAppClones | Array<[RunningAppClone](js-apis-inner-application-runningAppClone-sys.md)> | 否  | 是  | 特定包名在运行态的分身应用信息。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| runningMultiInstances<sup>14+</sup> | Array<[RunningMultiInstanceInfo](js-apis-inner-application-runningMultiInstanceInfo-sys.md)> | 否  | 是  | 特定包名在运行态的多实例应用信息。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
 
@@ -42,7 +45,8 @@ try {
   appManager.getRunningMultiAppInfo(bundleName)
     .then((info: appManager.RunningMultiAppInfo) => {
       console.info(`getRunningMultiAppInfo success, data: ${JSON.stringify(info)}`);
-    }).catch((err: BusinessError) => {
+    }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`getRunningMultiAppInfo failed, code: ${err.code}, msg:${err.message}`);
   })
 } catch (err) {
@@ -51,3 +55,4 @@ try {
   console.error(`getRunningMultiAppInfo error, code: ${code}, msg:${msg}`);
 }
 ```
+

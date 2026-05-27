@@ -1,17 +1,19 @@
 # Class (Int32Array)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
-一种线性数据结构，底层基于[ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)实现。
+一种线性数据结构，底层基于[ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md)实现。
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Class仅适用于ArkTS-Dyn。
 >
-> 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
 **装饰器类型：**\@Sendable
 
@@ -25,7 +27,7 @@ import { collections } from '@kit.ArkTS';
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
@@ -42,7 +44,7 @@ constructor()
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **错误码：**
 
@@ -63,7 +65,7 @@ constructor(length: number)
 
 构造函数，用于创建一个指定长度的ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -75,11 +77,10 @@ constructor(length: number)
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                  |
 | -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 | 10200012 | The Int32Array's constructor cannot be directly invoked. |
 
 
@@ -95,7 +96,7 @@ constructor(elements: Iterable\<number>)
 
 构造函数，以Iterable创建一个ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -107,11 +108,10 @@ constructor(elements: Iterable\<number>)
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Int32Array's constructor cannot be directly invoked. |
 
 **示例：**
@@ -128,7 +128,7 @@ constructor(array: ArrayLike\<number> | ArrayBuffer)
 
 构造函数，以ArrayLike或ArkTS ArrayBuffer创建一个ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -140,11 +140,10 @@ constructor(array: ArrayLike\<number> | ArrayBuffer)
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Int32Array's constructor cannot be directly invoked. |
 
 **示例：**
@@ -175,7 +174,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 构造函数，以ArrayBuffer创建一个ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -189,11 +188,10 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | -------------------------------------------------------   |
-| 401      | Parameter error.                                         |
 | 10200012 | The Int32Array's constructor cannot be directly invoked. |
 
 **示例：**
@@ -211,7 +209,7 @@ static from(arrayLike: ArrayLike\<number>): Int32Array
 
 从一个ArrayLike或者可迭代对象中创建一个ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -227,14 +225,6 @@ static from(arrayLike: ArrayLike\<number>): Int32Array
 | ------------ | --------- |
 | Int32Array | 新创建的ArkTS Int32Array对象。|
 
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                  |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
-
 **示例：**
 ```ts
 let arrayLike = [1, 3, 5];
@@ -246,7 +236,7 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 
 从一个ArrayLike中创建一个ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -261,14 +251,6 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 | 类型         | 说明      |
 | ------------ | --------- |
 | Int32Array | 新创建的ArkTS Int32Array对象。|
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                  |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **示例：**
 
@@ -295,7 +277,7 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 
 从一个可迭代对象中创建一个ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -310,14 +292,6 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 | 类型         | 说明      |
 | ------------ | --------- |
 | Int32Array | 新创建的ArkTS Int32Array对象。|
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                  |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **示例：**
 
@@ -342,7 +316,7 @@ static of(...items: number[]): Int32Array
 
 通过可变数量的参数创建一个新的ArkTS Int32Array对象，参数个数可以是0个、1个或者多个。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -358,14 +332,6 @@ static of(...items: number[]): Int32Array
 | --------- | ----------------------- |
 | Int32Array | 新的ArkTS Int32Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -379,7 +345,7 @@ toString(): string
 
 ArkTS Int32Array转换为字符串。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -412,7 +378,7 @@ toLocaleString(): string
 
 根据当前应用的系统地区获取符合当前文化习惯的数字表示形式，让每个元素调用自己的toLocaleString方法把数字转换为字符串，然后使用逗号将每个元素的结果字符串按照顺序拼接成字符串。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -445,7 +411,7 @@ copyWithin(target: number, start: number, end?: number): Int32Array
 
 从ArkTS Int32Array指定范围内的元素依次拷贝到目标位置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -465,11 +431,10 @@ copyWithin(target: number, start: number, end?: number): Int32Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
@@ -486,7 +451,7 @@ some(predicate: TypedArrayPredicateFn\<number, Int32Array>): boolean
 
 测试ArkTS Int32Array中的是否存在元素满足指定条件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -504,11 +469,10 @@ some(predicate: TypedArrayPredicateFn\<number, Int32Array>): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The some method cannot be bound.   |
 | 10200201 | Concurrent modification error. |
 
@@ -525,7 +489,7 @@ every(predicate: TypedArrayPredicateFn\<number, Int32Array>): boolean
 
 测试ArkTS Int32Array中的所有元素是否满足指定条件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -543,11 +507,10 @@ every(predicate: TypedArrayPredicateFn\<number, Int32Array>): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The every method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -564,7 +527,7 @@ fill(value: number, start?: number, end?: number): Int32Array
 
 使用特定值填充ArkTS Int32Array指定范围的全部元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -584,11 +547,10 @@ fill(value: number, start?: number, end?: number): Int32Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -606,7 +568,7 @@ filter(predicate: TypedArrayPredicateFn\<number, Int32Array>): Int32Array
 
 返回一个新ArkTS Int32Array，其包含满足指定条件的所有元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -624,11 +586,10 @@ filter(predicate: TypedArrayPredicateFn\<number, Int32Array>): Int32Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -645,7 +606,7 @@ find(predicate: TypedArrayPredicateFn\<number, Int32Array>): number | undefined
 
 返回ArkTS Int32Array中第一个满足指定条件的元素的值，如果所有元素都不满足，则返回undefined。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -663,11 +624,10 @@ find(predicate: TypedArrayPredicateFn\<number, Int32Array>): number | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -684,7 +644,7 @@ findIndex(predicate: TypedArrayPredicateFn\<number, Int32Array>): number
 
 返回ArkTS Int32Array中第一个满足指定条件的元素索引，如果所有元素都不满足，则返回-1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -702,11 +662,10 @@ findIndex(predicate: TypedArrayPredicateFn\<number, Int32Array>): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -722,7 +681,7 @@ forEach(callbackFn: TypedArrayForEachCallback\<number, Int32Array>): void
 
 对ArkTS Int32Array中的每个元素执行提供的回调函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -735,11 +694,10 @@ forEach(callbackFn: TypedArrayForEachCallback\<number, Int32Array>): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -757,7 +715,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 
 返回在ArkTS Int32Array中给定元素的第一个索引，如果不存在，则返回-1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -776,11 +734,10 @@ indexOf(searchElement: number, fromIndex?: number): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.                |
 
@@ -800,7 +757,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 
 返回ArkTS Int32Array实例中最后一次出现searchElement的索引，如果对象不包含，则为-1。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -841,7 +798,7 @@ join(separator?: string): string
 
 将ArkTS Int32Array的所有元素拼接成一个字符串，元素之间使用指定的分隔符分隔。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -859,11 +816,10 @@ join(separator?: string): string
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -879,7 +835,7 @@ map(callbackFn: TypedArrayMapCallback\<number, Int32Array>): Int32Array
 
 对ArkTS Int32Array中的每个元素应用指定的回调函数，并使用结果创建一个新的ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -897,11 +853,10 @@ map(callbackFn: TypedArrayMapCallback\<number, Int32Array>): Int32Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -917,7 +872,7 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int32Array>): numbe
 
 对ArkTS Int32Array中的每个元素执行归约函数，并返回最终的归约结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -934,11 +889,10 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int32Array>): numbe
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID |                      错误信息                     |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The reduce method cannot be bound.               |
 | 10200201 | Concurrent modification error.               |
 
@@ -956,7 +910,7 @@ reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Int32Array>): 
 
 反向遍历ArkTS Int32Array，对ArkTS Int32Array中的每个元素执行归约函数，并返回最终的归约结果。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -973,11 +927,10 @@ reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Int32Array>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -994,7 +947,7 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int32Array>, initia
 
 对ArkTS Int32Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1013,11 +966,10 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int32Array>, initia
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1035,7 +987,7 @@ reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Int32A
 
 反向遍历ArkTS Int32Array，对ArkTS Int32Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1053,11 +1005,10 @@ reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Int32A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -1074,7 +1025,7 @@ reduce\<U>(callbackFn: TypedArrayReduceCallback\<U, number, Int32Array>, initial
 
 对ArkTS Int32Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1093,11 +1044,10 @@ reduce\<U>(callbackFn: TypedArrayReduceCallback\<U, number, Int32Array>, initial
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1114,7 +1064,7 @@ reverse(): Int32Array
 
 反转ArkTS Int32Array。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1145,7 +1095,7 @@ set(array: ArrayLike\<number>, offset?: number): void
 
 将传入的ArrayLike元素依次写入到指定的起始位置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1157,11 +1107,10 @@ set(array: ArrayLike\<number>, offset?: number): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The set method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1178,7 +1127,7 @@ slice(start?: number, end?: number): Int32Array
 
 返回一个新的ArkTS Int32Array对象，其包含原ArkTS Int32Array指定范围的内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1197,11 +1146,10 @@ slice(start?: number, end?: number): Int32Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1219,7 +1167,7 @@ sort(compareFn?: TypedArrayCompareFn\<number>): Int32Array
 
 对ArkTS Int32Array进行排序，并返回排序后的ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1237,11 +1185,10 @@ sort(compareFn?: TypedArrayCompareFn\<number>): Int32Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------ |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.         |
 
@@ -1259,7 +1206,7 @@ subarray(begin?: number, end?: number): Int32Array
 
 从指定的位置截取数组，返回一个新的、基于相同ArkTS ArrayBuffer的ArkTS Int32Array对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1278,11 +1225,10 @@ subarray(begin?: number, end?: number): Int32Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID |            错误信息                               |
 | -------- | -------------------------------------------------|
-| 401      | Parameter error.                                 |
 | 10200011 | The subarray method cannot be bound.             |
 | 10200201 | Concurrent modification error.               |
 
@@ -1299,7 +1245,7 @@ at(index: number): number | undefined
 
 返回指定下标的元素，如果不存在，则返回undefined。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1316,11 +1262,10 @@ at(index: number): number | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID |                       错误信息                    |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The at method cannot be bound.                   |
 | 10200201 | Concurrent modification error.               |
 
@@ -1338,7 +1283,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 
 判断ArkTS Int32Array是否包含特定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1357,11 +1302,10 @@ includes(searchElement: number, fromIndex?: number): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1379,7 +1323,7 @@ entries(): IterableIterator\<[number, number]>
 
 返回一个新的迭代器对象，该对象包含ArkTS Int32Array中每个元素的键值对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1413,7 +1357,7 @@ keys(): IterableIterator\<number>
 
 返回一个新的迭代器对象，该对象包含ArkTS Int32Array中每个元素的键（下标）。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1447,7 +1391,7 @@ values(): IterableIterator\<number>
 
 返回一个新的迭代器对象，该对象包含ArkTS Int32Array中每个元素的值。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1486,7 +1430,7 @@ for (const value of iterator) {
 >
 > 本接口不支持在.ets文件中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1520,7 +1464,7 @@ for (let item of int32Array) {
 
 返回Int32Array指定索引位置的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 

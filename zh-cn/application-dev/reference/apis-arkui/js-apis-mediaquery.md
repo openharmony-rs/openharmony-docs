@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 该模块不支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)的文件声明处使用，即不能在UIAbility的生命周期中调用，需要在创建组件实例后使用。
 >
@@ -36,11 +38,15 @@ matchMediaSync(condition: string): MediaQueryListener
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery)方法获取当前UI上下文关联的[MediaQuery](arkts-apis-uicontext-mediaquery.md)对象。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：** 
 
@@ -52,9 +58,11 @@ matchMediaSync(condition: string): MediaQueryListener
 
 | 类型               | 说明                                         |
 | ------------------ | -------------------------------------------- |
-| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
+| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和注销监听回调。 |
 
 **示例：** 
+
+ArkTS-Dyn示例：
 
 ```ts
 import { mediaquery } from '@kit.ArkUI';
@@ -63,17 +71,29 @@ let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orient
 ```
 
 
+ArkTS-Sta示例：
+
+```ts
+import mediaquery from '@ohos.mediaquery';
+
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+```
+
 ## MediaQueryListener
 
 媒体查询的句柄，并包含了申请句柄时的首次查询结果。媒体查询根据设置的条件语句，比如'(width <= 600vp)'，比较系统信息，若首次查询时相关信息未初始化，matches返回false。
 
 继承自[MediaQueryResult](#mediaqueryresult)。
 
-**卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 
 ### on('change')
@@ -86,11 +106,15 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 >
 > 注册的回调中不允许进一步调用on或off。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：** 
 
@@ -101,7 +125,7 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 
 **示例：** 
 
-  详见[off('change')](#offchange)示例。
+详见[off('change')](#offchange)示例。
 
 ### off('change')
 
@@ -109,18 +133,22 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 
 通过句柄向对应的查询条件取消注册回调，当媒体属性发生变更时不再触发指定的回调。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：** 
 
 | 参数名   | 类型                             | 必填 | 说明                                                       |
 | -------- | -------------------------------- | ---- | ---------------------------------------------------------- |
 | type     | string                           | 是   | 必须填写字符串'change'。                                   |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
 
 **示例：**
 
@@ -138,19 +166,83 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   }
 }
 listener.on('change', onPortrait) // 注册回调
-listener.off('change', onPortrait) // 取消注册回调
-  ```
+listener.off('change', onPortrait) // 注销回调
+```
+
+### onChange<sup>23+</sup>
+
+onChange(callback: Callback&lt;MediaQueryResult&gt;): void
+
+通过句柄向对应的查询条件注册回调，当媒体属性发生变更时会触发该回调。
+
+> **说明：** 
+>
+> 注册的回调中不允许进一步调用onChange或offChange。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------ |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 是   | 向媒体查询注册的回调。     |
+
+**示例：** 
+
+详见[offChange](#offchange23)示例。
+
+### offChange<sup>23+</sup>
+
+offChange(callback?: Callback&lt;MediaQueryResult&gt;): void
+
+通过句柄向对应的查询条件取消注册回调，当媒体属性发生变更时不再触发指定的回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                       |
+| -------- | ----------------------------------------------------- | ---- | ---------------------------------------------------------- |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要注销的回调，如果参数缺省则注销该句柄下所有的回调。 |
+
+**示例：**
+
+```ts
+import mediaquery from '@kit.ArkUI';
+
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+  if (mediaQueryResult.matches) {
+    // do something here
+  } else {
+    // do something here
+  }
+}
+listener.onChange(onPortrait) // 注册回调
+listener.offChange(onPortrait) // 注销回调
+```
 
 ## MediaQueryResult
 
 用于执行媒体查询操作。
 
-**卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -165,6 +257,8 @@ listener.off('change', onPortrait) // 取消注册回调
 > **说明：**
 >
 > 推荐通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery)方法获取当前UI上下文关联的[MediaQuery](arkts-apis-uicontext-mediaquery.md)对象。
+
+ArkTS-Dyn示例：
 
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
@@ -207,4 +301,53 @@ struct MediaQueryExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Margin, Text, Color, Flex, FlexDirection, ItemAlign, FlexAlign } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import mediaquery from '@ohos.mediaquery';
+import common from '@ohos.app.ability.common';
+import window from '@ohos.window';
+import { UIContext } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct MediaQueryExample {
+  @State color: string = '#DB7093';
+  @State text: string = 'Portrait';
+  listener: mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)'); // 监听横屏事件，mediaquery.matchMediaSync接口已废弃，建议使用this.getUIContext().getMediaQuery().matchMediaSync()来获取
+
+  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+    if (mediaQueryResult.matches) {
+      this.color = '#FFD700'
+      this.text = 'Landscape'
+    } else {
+      this.color = '#DB7093'
+      this.text = 'Portrait'
+    }
+  }
+
+  aboutToAppear() {
+    let portraitFunc = (mediaQueryResult: mediaquery.MediaQueryResult): void => this.onPortrait(mediaQueryResult)
+    // 绑定回调函数
+    this.listener.on('change', portraitFunc);
+  }
+
+  aboutToDisappear() {
+    // 解绑listener中注册的回调函数
+    this.listener.off('change');
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Text(this.text).fontSize(24).fontColor(this.color)
+    }
+    .width('100%').height('100%')
+  }
+}
+```
+
 ![media_query](figures/media_query.png)

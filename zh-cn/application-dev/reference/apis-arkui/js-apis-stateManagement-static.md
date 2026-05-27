@@ -1,4 +1,10 @@
-# @ohos.arkui.stateManagement (状态管理)
+# @ohos.arkui.stateManagement (状态管理) (ArkTS-Sta)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926; @liwenzhen3-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 状态管理模块提供了应用程序动态刷新、UI数据存储、使能数据观察等能力。
 
@@ -14,15 +20,17 @@
 import { AppStorageV2, PersistenceV2, UIUtils } from '@ohos.arkui.stateManagement';
 ```
 
-## AppStorageV2<sup>22+</sup>
+## AppStorageV2
+
+**起始版本：** 26.0.0
 
 AppStorageV2提供状态变量在应用级全局共享的能力。
 
 AppStorageV2具体UI使用说明，详见[AppStorageV2：应用全局的UI状态存储](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)。
 
-### connect<sup>22+</sup>
+### connect
 
-static connect\<T extends object\>( ttype: Type, key: string, defaultCreator?: StorageDefaultCreator\<T\> ): T | undefined
+static connect\<T extends object\>(ttype: Class, key: string, defaultCreator?: StorageDefaultCreator\<T\>): T | undefined
 
 将键值对数据存储在应用内存中。如果给定的key已经存在于[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，存储后返回。
 
@@ -34,13 +42,15 @@ static connect\<T extends object\>( ttype: Type, key: string, defaultCreator?: S
 >
 >- 建议key使用有意义的值，可由字母、数字和下划线组成，长度不超过255字符，避免使用非法字符或空字符。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名         | 类型                                                                              | 必填 | 说明                 |
 | -------------- | --------------------------------------------------------------------------------- | ---- | -------------------- |
-| ttype          | Type                                                                              | 是   | 指定的类型。         |
+| ttype          | Class                                                                              | 是   | 指定的类型。         |
 | key            | string                                                                            | 是   | 指定的key。          |
 | defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort22) | 否   | 获取默认值的构造器，默认值为undefined。 |
 
@@ -55,33 +65,34 @@ static connect\<T extends object\>( ttype: Type, key: string, defaultCreator?: S
 ```ts
 'use static'
 
-import { AppStorageV2 } from '@ohos.arkui.stateManagement';
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { AppStorageV2, ObservedV2, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class SampleClass {
   @Trace p: number = 0;
 }
 
-const ISampleType = Type.from<SampleClass>();
+const ISampleType = Class.from<SampleClass>();
 
 // 将key为key_as1、value为new SampleClass()对象的键值对存储到内存中，并赋值给as1
 const as1: SampleClass = AppStorageV2.connect<SampleClass>(ISampleType, 'key_as1', () => new SampleClass())!;
 ```
 
-### connect<sup>22+</sup>
+### connect
 
-static connect\<T extends object\>( ttype: Type, defaultCreator?: StorageDefaultCreator\<T\> ): T | undefined
+static connect\<T extends object\>(ttype: Class, defaultCreator?: StorageDefaultCreator\<T\>): T | undefined
 
 将键值对数据存储在应用内存中。如果给定的ttype已经存在于[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)中，返回对应的值；否则，通过获取默认值的构造器构造默认值，存储后返回。
 
 >**说明：**
 >
->- ttype使用[Type](../apis-arkts/js-apis-util.md#type10).from\<classname\>()方法获得。
+>- ttype使用Class.from\<classname\>()方法获得。
 >
 >- 未传入key时，默认使用ttype的name作为key。
 >
 >- 如果数据已存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +100,7 @@ static connect\<T extends object\>( ttype: Type, defaultCreator?: StorageDefault
 
 | 参数名         | 类型                                                                              | 必填 | 说明                 |
 | -------------- | --------------------------------------------------------------------------------- | ---- | -------------------- |
-| ttype          | Type                                                                              | 是   | 指定的类型。         |
+| ttype          | Class                                                                              | 是   | 指定的类型。         |
 | defaultCreator | StorageDefaultCreator\<T\> | 否   | 获取默认值的构造器，默认值为undefined。 |
 
 **返回值：**
@@ -103,26 +114,25 @@ static connect\<T extends object\>( ttype: Type, defaultCreator?: StorageDefault
 ```ts
 'use static'
 
-import { AppStorageV2 } from '@ohos.arkui.stateManagement';
-import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
+import { AppStorageV2, ObservedV2, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class SampleClass {
   @Trace p: number = 0;
 }
 
-const ISampleType = Type.from<SampleClass>();
+const ISampleType = Class.from<SampleClass>();
 
-// 将ttype为SampleClass的Type、value为new SampleClass()对象的键值对存储到内存中，并赋值给as2
+// 将ttype为SampleClass的Class、value为new SampleClass()对象的键值对存储到内存中，并赋值给as2
 const as2: SampleClass | undefined = AppStorageV2.connect<SampleClass>(ISampleType, () => new SampleClass());
 
-// ttype为SampleClass的Type的对象已经在AppStorageV2中，将该对象返回给as3
+// ttype为SampleClass的Class的对象已经在AppStorageV2中，将该对象返回给as3
 const as3: SampleClass = AppStorageV2.connect<SampleClass>(ISampleType)!;
 ```
 
-### remove<sup>22+</sup>
+### remove
 
-static remove(keyOrType: string | Type): void
+static remove(keyOrType: string | Class): void
 
 将指定的键值对数据从[AppStorageV2](../../../application-dev/ui/state-management-static/arkts-static-appstoragev2.md)里面删除。如果指定的键值不存在于AppStorageV2中，将删除失败。
 
@@ -130,13 +140,15 @@ static remove(keyOrType: string | Type): void
 >
 >删除AppStorageV2中不存在的key会报警告。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名    | 类型           | 必填 | 说明                                                                   |
 | --------- | -------------- | ---- | ---------------------------------------------------------------------- |
-| keyOrType | string \| Type | 是   | 需要删除的key。如果传入的是Type类型，则删除的key为Type类型入参的name。 |
+| keyOrType | string \| Class | 是   | 需要删除的key。如果传入的是Class类型，则删除的key为Class类型入参的name。 |
 
 **示例：**
 
@@ -149,13 +161,13 @@ import { AppStorageV2 } from '@ohos.arkui.stateManagement';
 // 假设AppStorageV2中存在keyOrType为key_as1的键，从AppStorageV2中删除该键值对数据
 AppStorageV2.remove('key_as1');
 
-// 假设AppStorageV2中存在keyOrType为SampleClass的Type的键，从AppStorageV2中删除该键值对数据
-AppStorageV2.remove(Type.from<SampleClass>());
+// 假设AppStorageV2中存在keyOrType为SampleClass的Class的键，从AppStorageV2中删除该键值对数据
+AppStorageV2.remove(Class.from<SampleClass>());
 
 // 假设AppStorageV2中不存在keyOrType为key_as2的键，打印warn日志警告
 AppStorageV2.remove('key_as2');
 ```
-### keys<sup>22+</sup>
+### keys
 
 static keys(): Array\<string\>
 
@@ -164,6 +176,8 @@ static keys(): Array\<string\>
 >**说明：**
 >
 >key在Array中的顺序是无序的，与key插入到AppStorageV2中的顺序无关。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -178,32 +192,34 @@ static keys(): Array\<string\>
 ```ts
 'use static'
 
-import { AppStorageV2 } from '@ohos.arkui.stateManagement';
+import { AppStorageV2 } from '@kit.ArkUI';
 
 // 假设AppStorageV2中存在两个key（key_as1、key_as2），返回[key_as1、key_as2]，并赋值给keys
 const keys: Array<string> = AppStorageV2.keys();
 ```
 
-## PersistenceV2<sup>22+</sup>
+## PersistenceV2
 
 PersistenceV2具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../ui/state-management-static/arkts-static-new-persistencev2.md)。
 
-### connect<sup>23+</sup>
+**起始版本：** 26.0.0
 
-static connect\<T extends object\>( ttype: Type, toJson: ToJSONType\<T\>, fromJson: FromJSONType\<T\>, defaultCreator?: StorageDefaultCreator\<T\>, enableAutoSave?: boolean ): T | undefined
+### connect
+
+static connect\<T extends object\>(ttype: Class, defaultCreator?: StorageDefaultCreator\<T\>, connectOptions?: BaseConnectOptions\<T\>): T | undefined
 
 将键值对数据储存在应用磁盘中。如果给定的key已经存在于PersistenceV2中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 | 参数名         | 类型                                     | 必填 | 说明                                                  |
 | -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
-| ttype | Type | 是   | 传入的参数的Type类型。 |
-| toJson         | [ToJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#tojsontypet)                          | 是   | 转换存储对象到JSON格式对象的函数。                      |
-| fromJson       | [FromJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#fromjsontypet)                        | 是   | 转换JSON格式对象到存储对象的函数。 |
+| ttype | Class | 是   | 传入的参数的Class类型。 |
 | defaultCreator | StorageDefaultCreator\<T\> | 否   | 默认数据的构造器，默认值为undefined。 |
-| enableAutoSave | boolean | 否   | 是否自动持久化存储数据，默认值为true。 |  
+| connectOptions | BaseConnectOptions\<T\> | 否   | 可选配置 |  
 
 **返回值：**
 
@@ -214,13 +230,13 @@ static connect\<T extends object\>( ttype: Type, toJson: ToJSONType\<T\>, fromJs
 > **说明：**
 >
 >
-> 1、ttype使用Type.from\<classname\>()方法获得。
+> 1、ttype使用Class.from\<classname\>()方法获得。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
 > 3、PersistenceV2中存储的key为ttype的name，例如，如果传入Info类的实例，此处存储的key即为Info。
 >
-> 4、当不传入enableAutoSave或设置为true时，此时修改@Observed或@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
+> 4、当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
 
 **示例：**
 
@@ -239,69 +255,34 @@ class Person {
   @Trace userName: string = 'John';
   userId: int = 1;
   @Trace info: Info = new Info();
-
-  public toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJson(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
-}
-
-const toJsonPerson = (person: Person) => {
-  return person.toJson();
-}
-
-const fromJsonPerson = (json: jsonx.JsonElement): Person => {
-  let person = new Person();
-  person.fromJson(json);
-  return person;
 }
 
 const p1: Person = PersistenceV2.connect<Person>(
-  Type.from<Person>(),
-  toJsonPerson,
-  fromJsonPerson,
+  Class.from<Person>(),
   (): Person => {
     return new Person();
-  },true
+  }, {
+    enableAutoSave: true
+  }
 )!;
 ```
-### connect<sup>23+</sup>
+### connect
 
-  static connect\<T extends object\>( ttype: Type, key: string, toJson: ToJSONType\<T\>, fromJson: FromJSONType\<T\>, defaultCreator?: StorageDefaultCreator\<T\>, enableAutoSave?: boolean ): T | undefined
+static connect\<T extends object\>(ttype: Class, key: string, defaultCreator?: StorageDefaultCreator\<T\>, connectOptions?: BaseConnectOptions\<T\>): T | undefined
 
 将键值对数据储存在应用磁盘中。如果给定的key已经存在于PersistenceV2中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 | 参数名         | 类型                                     | 必填 | 说明                                                  |
 | -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
-| ttype | Type | 是   | 传入的参数的Type类型。 |
-| key | Type | 是   | 指定的key。 |
-| toJson         | ToJSONType\<T\>                          | 是   | 转换存储对象到JSON格式对象的函数。                      |
-| fromJson       | FromJSONType\<T\>                        | 是   | 转换JSON格式对象到存储对象的函数。            |
+| ttype | Class | 是   | 传入的参数的Class类型。 |
+| key | string | 是   | 指定的key。 |
 | defaultCreator | StorageDefaultCreator\<T\> | 否   | 默认数据的构造器，默认值为undefined。 |
-| enableAutoSave | boolean | 否   | 是否自动持久化存储数据，默认值为true。 |  
+| connectOptions | BaseConnectOptions\<T\> | 否   | 可选配置 |  
 
 **返回值：**
 
@@ -311,13 +292,13 @@ const p1: Person = PersistenceV2.connect<Person>(
 
 > **说明：**
 >
-> 1、ttype使用Type.from\<classname\>()方法获得。
+> 1、ttype使用Class.from\<classname\>()方法获得。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
 > 3、key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
 >
-> 4、当不传入enableAutoSave或设置为true时，此时修改@Observed或@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
+> 4、当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
 
 **示例：**
 
@@ -336,235 +317,33 @@ class Person {
   @Trace userName: string = 'John';
   userId: int = 1;
   @Trace info: Info = new Info();
-
-  public toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJson(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
-}
-
-const toJsonPerson = (person: Person) => {
-  return person.toJson();
-}
-
-const fromJsonPerson = (json: jsonx.JsonElement): Person => {
-  let person = new Person();
-  person.fromJson(json);
-  return person;
 }
 
 const p1: Person = PersistenceV2.connect<Person>(
-  Type.from<Person>(),
-  'Person',
-  toJsonPerson,
-  fromJsonPerson,
-  (): Person => {
-    return new Person();
-  },true
-)!;
-```
-
-### connect<sup>23+</sup> 
-
-  static connect\<T extends SerializableObject\>( ttype: Type, defaultCreator?: StorageDefaultCreator\<T\>, enableAutoSave?: boolean ): T | undefined
-
-将键值对数据储存在应用磁盘中。如果给定的key已经存在于PersistenceV2中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-| 参数名         | 类型                                     | 必填 | 说明                                                  |
-| -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
-| ttype | Type | 是   | 传入的参数的Type类型。 |         
-| defaultCreator | StorageDefaultCreator\<T\> | 否   | 默认数据的构造器，默认值为undefined。 |
-| enableAutoSave | boolean | 否   | 是否自动持久化存储数据，默认值为true。 |  
-
-**返回值：**
-
-| 类型           | 说明                                                |
-| -------------- | --------------------------------------------------- |
-| T \| undefined | 创建或获取数据成功时，返回数据；否则返回undefined。 |
-
-> **说明：**
->
-> 1、ttype使用Type.from\<classname\>()方法获得。
->
-> 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
-> 
-> 3、PersistenceV2中存储的key为ttype的name，例如，如果传入Info类的实例，此处存储的key即为Info。
->
-> 4、当不传入enableAutoSave或设置为true时，此时修改@Observed或@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
-
-**示例：**
-
-```ts
-'use static'
-
-import { PersistenceV2, ObservedV2, Trace, SerializableObject } from '@kit.ArkUI';
-
-@ObservedV2
-class Info {
-  @Trace userInfo: int = 1;
-}
-
-@ObservedV2
-class Person implements SerializableObject {
-  @Trace userName: string = 'John';
-  userId: int = 1;
-  @Trace info: Info = new Info();
-
-  public toJSON(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJSON(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
-}
-
-const p1: Person = PersistenceV2.connect<Person>(
-  Type.from<Person>(),
-  (): Person => {
-    return new Person();
-  },true
-)!;
-```
-### connect<sup>23+</sup>
-
-  static connect\<T extends SerializableObject\>( ttype: Type, key: string, defaultCreator?: StorageDefaultCreator\<T\>, enableAutoSave?: boolean ): T | undefined
-
-将键值对数据储存在应用磁盘中。如果给定的key已经存在于PersistenceV2中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-| 参数名         | 类型                                     | 必填 | 说明                                                  |
-| -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
-| ttype | Type | 是   | 传入的参数的Type类型。 |        
-| key | Type | 是   | 指定的key。 | 
-| defaultCreator | StorageDefaultCreator\<T\> | 否   | 默认数据的构造器，默认值为undefined。 |
-| enableAutoSave | boolean | 否   | 是否自动持久化存储数据，默认值为true。 |  
-
-**返回值：**
-
-| 类型           | 说明                                                |
-| -------------- | --------------------------------------------------- |
-| T \| undefined | 创建或获取数据成功时，返回数据；否则返回undefined。 |
-
-> **说明：**
->
-> 1、ttype使用Type.from\<classname\>()方法获得。
->
-> 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
->
-> 3、key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
->
-> 4、当不传入enableAutoSave或设置为true时，此时修改@Observed或@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
-
-**示例：**
-
-```ts
-'use static'
-
-import { PersistenceV2, ObservedV2, Trace, SerializableObject } from '@kit.ArkUI';
-
-@ObservedV2
-class Info {
-  @Trace userInfo: int = 1;
-}
-
-@ObservedV2
-class Person implements SerializableObject {
-  @Trace userName: string = 'John';
-  userId: int = 1;
-  @Trace info: Info = new Info();
-
-  public toJSON(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJSON(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
-}
-
-const p1: Person = PersistenceV2.connect<Person>(
-  Type.from<Person>(),
+  Class.from<Person>(),
   'Person',
   (): Person => {
     return new Person();
-  },true
+  }, {
+    enableAutoSave: true
+  }
 )!;
 ```
 
-### globalConnect<sup>22+</sup>
+### globalConnect
 
-static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>, toJson: ToJSONType\<T\>, fromJson: FromJSONType\<T\>): T | undefined
+static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>): T | undefined
 
 将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management-static/arkts-static-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 | 参数名         | 类型                                     | 必填 | 说明                                                  |
 | -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
-| connectOptions | [ConnectOptions\<T\>](#connectoptions22) | 是   | 传入的connect参数，详细说明见ConnectOptions参数说明。 |
-| toJson         | ToJSONType\<T\>                          | 是   | 转换存储对象到JSON格式对象的函数。                      |
-| fromJson       | FromJSONType\<T\>                        | 是   | 转换JSON格式对象到存储对象的函数。                      |
+| connectOptions | [ConnectOptions\<T\>](#connectoptions) | 是   | 传入的connect参数，详细说明见ConnectOptions参数说明。 |
 
 **返回值：**
 
@@ -611,144 +390,12 @@ class Person {
   @Trace userName: string = 'John';
   userId: int = 1;
   @Trace info: Info = new Info();
-
-  public toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJson(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
-}
-
-const toJsonPerson = (person: Person) => {
-  return person.toJson();
-}
-
-const fromJsonPerson = (json: jsonx.JsonElement): Person => {
-  let person = new Person();
-  person.fromJson(json);
-  return person;
 }
 
 const p1: Person = PersistenceV2.globalConnect<Person>({
-  Type.from<Person>(),
-  'Person',
-  (): Person => {
-    return new Person();
-  },
-  areaMode: contextConstant.AreaMode.EL1,
-  enableAutoSave: true
-}, toJsonPerson, fromJsonPerson)!;
-
-```
-### globalConnect<sup>22+</sup>
-
-static globalConnect\<T extends SerializableObject\>(connectOptions: ConnectOptions\<T\>): T | undefined
-
-
-将键值对数据储存在应用磁盘中。如果给定的key已经存在于[PersistenceV2](../../ui/state-management-static/arkts-static-new-persistencev2.md)中，返回对应的值；否则，会通过获取默认值的构造器构造默认值，并返回。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-| 参数名         | 类型                                     | 必填 | 说明                                                  |
-| -------------- | ---------------------------------------- | ---- | ----------------------------------------------------- |
-| connectOptions | [ConnectOptions\<T\>](#connectoptions22) | 是   | 传入的connect参数，详细说明见ConnectOptions参数说明。 |
-
-**返回值：**
-
-| 类型           | 说明                                                |
-| -------------- | --------------------------------------------------- |
-| T \| undefined | 创建或获取数据成功时，返回数据；否则返回undefined。 |
-
-> **说明：**
->
->
-> 1、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
->
-> 2、同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。
->
-> 3、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
->
-> 4、关联[\@Observed](../../ui/state-management-static/arkts-static-observed-and-objectlink.md)对象时，因为该类型的name属性未定义，需要指定key或者自定义name属性。
->
-> 4、数据的存储路径为应用级别，不同module使用相同的key和相同的加密分区进行globalConnect，存储的数据副本应用仅有一份。
->
-> 5、globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。
->
-> 6、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key必须不一致，否则会运行时报错。
->
-> 7、EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
-
-**示例：**
-仅供开发者了解globalConnect用法，完整使用需开发者自己写出@Entry组件。
-
-<!--code_no_check-->
-```ts
-'use static'
-
-import { PersistenceV2, ObservedV2, Trace, SerializableObject } from '@kit.ArkUI';
-import { contextConstant } from '@kit.AbilityKit';
-
-@ObservedV2
-class Info {
-  @Trace userInfo: int = 1;
-}
-
-@ObservedV2
-class Person implements SerializableObject {
-  @Trace userName: string = 'John';
-  userId: int = 1;
-  @Trace info: Info = new Info();
-
-  public toJSON(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-    // 存储userId
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setInteger(this.userId);
-    root.setElement('userId', userIdEle);
-    // 存储info对象
-    const inforoot = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    const infoEle = new jsonx.JsonElement();
-    infoEle.setInteger(this.info.userInfo);
-    inforoot.setElement('userInfo', infoEle);
-    root.setElement('inforoot', inforoot);
-    return root;
-  }
-
-  public fromJSON(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-    this.info.userInfo = json.getElement('inforoot').getElement('userInfo').asInteger();
-  }
-}
-
-const p1: Person = PersistenceV2.globalConnect<Person>({
-  Type.from<Person>(),
-  'Person',
-  (): Person => {
+  type: Class.from<Person>(),
+  key: 'Person',
+  defaultCreator: () => {
     return new Person();
   },
   areaMode: contextConstant.AreaMode.EL1,
@@ -757,9 +404,9 @@ const p1: Person = PersistenceV2.globalConnect<Person>({
 
 ```
 
-### remove<sup>22+</sup>
+### remove
 
-static remove(keyOrType: string | Type): void
+static remove(keyOrType: string | Class): void
 
 将指定的键值对数据从PersistenceV2里面删除。如果指定的键值不存在于PersistenceV2中，将删除失败。
 
@@ -767,13 +414,15 @@ static remove(keyOrType: string | Type): void
 >
 >删除PersistenceV2中不存在的key会打印warn日志警告。
 
+**起始版本：** 26.0.0
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名    | 类型           | 必填 | 说明                                                                   |
 | --------- | -------------- | ---- | ---------------------------------------------------------------------- |
-| keyOrType | string \| Type | 是   | 需要删除的key。如果传入的是Type类型，则删除的key为Type类型入参的name。 |
+| keyOrType | string \| Class | 是   | 需要删除的key。如果传入的是Class类型，则删除的key为Class类型入参的name。 |
 
 **示例：**
 
@@ -781,19 +430,19 @@ static remove(keyOrType: string | Type): void
 ```ts
 'use static'
 
-import { PersistenceV2 } from '@ohos.arkui.stateManagement';
+import { PersistenceV2 } from '@kit.ArkUI';
 
 // 假设PersistenceV2中存在keyOrType为key_as1的键，从PersistenceV2中删除该键值对数据
 PersistenceV2.remove('key_as1');
 
 // 假设PersistenceV2中存在keyOrType为SampleClass的键，从PersistenceV2中删除该键值对数据
-PersistenceV2.remove(Type.from<SampleClass>());
+PersistenceV2.remove(Class.from<SampleClass>());
 
 // 假设PersistenceV2中不存在keyOrType为key_as2的键，打印warn日志警告
 PersistenceV2.remove('key_as2');
 ```
 
-### keys<sup>22+</sup>
+### keys
 
 static keys(): Array\<string\>
 
@@ -802,6 +451,8 @@ static keys(): Array\<string\>
 >**说明：**
 >
 >key在Array中的顺序是无序的，与key插入到PersistenceV2中的顺序无关。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -816,17 +467,19 @@ static keys(): Array\<string\>
 ```ts
 'use static'
 
-import { PersistenceV2 } from '@ohos.arkui.stateManagement';
+import { PersistenceV2 } from '@kit.ArkUI';
 
 // 假设PersistenceV2中存在两个key（key_as1、key_as2），返回[key_as1、key_as2]，并赋值给keys
 const keys: Array<string> = PersistenceV2.keys();
 ```
 
-### save<sup>22+</sup>
+### save
 
-static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;Type\<T\>):&nbsp;void
+static save(keyOrType: string \| Class): void
 
 手动持久化指定的键值对数据。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -834,7 +487,7 @@ static&nbsp;save\<T\>(keyOrType:&nbsp;string&nbsp;|&nbsp;Type\<T\>):&nbsp;void
 
 | 参数名    | 类型                | 必填 | 说明                                                             |
 | --------- | ------------------- | ---- | ---------------------------------------------------------------- |
-| keyOrType | string \| Type\<T\> | 是   | 需要持久化的key；如果指定的是type类型，持久化的key为type的name。 |
+| keyOrType | string \| Class | 是   | 需要持久化的key；如果指定的是Class类型，持久化的key为Class的name。 |
 
 >**说明：**
 >
@@ -856,7 +509,7 @@ class SampleClass {
 PersistenceV2.save('key_as1');
 
 // 假设PersistenceV2中存在keyOrType为SampleClass的键，持久化该键值对数据
-PersistenceV2.save(Type.from<SampleClass>());
+PersistenceV2.save(Class.from<SampleClass>());
 
 // 假设PersistenceV2中不存在keyOrType为key_as2的键，打印warn日志警告
 PersistenceV2.save('key_as2');
@@ -867,6 +520,8 @@ PersistenceV2.save('key_as2');
 static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 在持久化失败时调用。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -880,16 +535,18 @@ static notifyOnError(callback: PersistenceErrorCallback | undefined): void
 
 ```ts
 // 持久化失败时调用
-PersistenceV2.notifyOnError((key: string, reason: string, message: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${message}`);
+PersistenceV2.notifyOnError((key: string, reason: string, message: string, oldValue?: string) => {
+  console.error(`error key: ${key}, reason: ${reason}, message: ${message} ${oldValue}`);
 });
 ```
 
-## PersistenceErrorCallback<sup>22+</sup>
+## PersistenceErrorCallback
 
-type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' | 'unknown', message: string) => void
+type PersistenceErrorCallback = (key: string, reason: string, message: string, oldValue?: string) => void
 
 持久化失败时返回错误原因的回调。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -898,8 +555,9 @@ type PersistenceErrorCallback = (key: string, reason: 'quota' | 'serialization' 
 | 参数名  | 类型                                    | 必填 | 说明             |
 | ------- | --------------------------------------- | ---- | ---------------- |
 | key     | string                                  | 是   | 出错的键值。     |
-| reason  | 'quota' \| 'serialization' \| 'unknown' | 是   | 出错的原因类型。 |
+| reason  | string                                  | 是   | 出错的原因类型。 |
 | message | string                                  | 是   | 出错的更多消息。 |
+| oldValue | string                                 | 否   | 反序列化失败时返回原始序列化数据。 |
 
 **示例：**
 
@@ -922,50 +580,18 @@ import {
 class Person {
   @Trace userName: string = 'John';
   userId: number = 1;
-
-  public toJson(): jsonx.JsonElement {
-    const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
-    // 存储 userName
-    const userNameEle = new jsonx.JsonElement();
-    userNameEle.setString(this.userName);
-    root.setElement('userName', userNameEle);
-
-    const userIdEle = new jsonx.JsonElement();
-    userIdEle.setDouble(this.userId);
-    root.setElement('userId', userIdEle);
-
-    return root;
-  }
-
-  public fromJson(json: jsonx.JsonElement): void {
-    this.userName = json.getElement('userName').asString();
-    this.userId = json.getElement('userId').asInteger();
-  }
-}
-
-const toJsonPerson = (person: Person) => {
-  return person.toJson();
-}
-
-const fromJsonPerson = (json: jsonx.JsonElement): Person => {
-  let person = new Person();
-  person.fromJson(json);
-  return person;
 }
 
 // 接受序列化失败的回调
-// PersistenceErrorCallback 指的是 (key: string, reason: string, msg: string) => {console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);}
-PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
-  console.error(`error key: ${key}, reason: ${reason}, message: ${msg}`);
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+  console.error(`error key: ${key}, reason: ${reason}, message: ${msg} ${oldValue}`);
 });
 
 @Entry
 @ComponentV2
 struct Index {
   @Local cp: Person = PersistenceV2.connect<Person>(
-    Type.from<Person>(),
-    toJsonPerson,
-    fromJsonPerson,
+    Class.from<Person>(),
     (): Person => {
       return new Person();
     })!;
@@ -974,10 +600,8 @@ struct Index {
     Column() {
       Button(`Page1 connect the key Sample ${this.cp.userName}`)
         .onClick((e: ClickEvent) => {
-          this.cp = PersistenceV2.connect<Person>(Type.from<Person>(),
+          this.cp = PersistenceV2.connect<Person>(Class.from<Person>(),
             'Key',
-            toJsonPerson,
-            fromJsonPerson,
             () => new Person())!;
         })
     }
@@ -987,34 +611,92 @@ struct Index {
 }
 ```
 
+## StorageDefaultSubCreators
 
-## ConnectOptions<sup>22+</sup>
+type StorageDefaultSubCreators = Map\<Class, StorageDefaultCreator\<object\>\>
+
+保存对象类型及其默认构造器的Map。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { StorageDefaultSubCreators, ObservedV2, Trace } from '@kit.ArkUI';
+@ObservedV2
+class Info {
+  @Trace age: int = 25;
+  @Trace name: string = 'Tom';
+}
+const creators: StorageDefaultSubCreators = new StorageDefaultSubCreators([
+  [ Class.from<Info>(), () => new Info() ]
+]);
+```
+
+## ConnectOptions
 
 globalConnect参数类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称           | 类型                       | 只读 | 可选 | 说明                                                                                                                                                                                                                                      |
+| -------------- | -------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type           | Class                  | 否   | 否   | 指定的类型。                                                                                                                                                                                                                              |
+| key            | string                     | 否   | 是   | 传入的key，不传则使用type的名字作为key。                                                                                                                                                                                                  |
+| defaultCreator | StorageDefaultCreator\<T\> | 否   | 是   | 默认数据的构造器，默认值为undefined，建议传递，如果globalConnect是第一次连接key，不传会报错。                                                                                                                                                                |
+| areaMode       | contextConstant.AreaMode   | 否   | 是   | 加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径。 |
+| toJson         | [ToJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#tojsontypet)      | 否 | 是   | 转换存储对象到JSON格式对象的函数。                      |
+| fromJson       | [FromJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#fromjsontypet)  | 否 | 是   | 转换JSON格式对象到存储对象的函数。 |
+| enableAutoSave       | boolean   | 否   | 是   | 是否自动持久化存储数据，默认值为true。 |
+| defaultSubCreators | [StorageDefaultSubCreators](#storagedefaultsubcreators) | 否 | 是 | 保存对象类型及其默认构造器的Map。用于恢复内层对象数据。默认值为undefined。 |
+
+## BaseConnectOptions
+
+connect参数类型。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 类型                       | 只读 | 可选 | 说明                                                                                                                                                                                                                                      |
 | -------------- | -------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type           | Type                  | 否   | 否   | 指定的类型。                                                                                                                                                                                                                              |
-| key            | string                     | 否   | 是   | 传入的key，不传则使用type的名字作为key。                                                                                                                                                                                                  |
-| defaultCreator | StorageDefaultCreator\<T\> | 否   | 是   | 默认数据的构造器，默认值为undefined，建议传递，如果globalConnect是第一次连接key，不传会报错。                                                                                                                                                                |
-| areaMode       | contextConstant.AreaMode   | 否   | 是   | 加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径。 |
+| toJson         | [ToJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#tojsontypet)      | 否 | 是   | 转换存储对象到JSON格式对象的函数。                      |
+| fromJson       | [FromJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#fromjsontypet)  | 否 | 是   | 转换JSON格式对象到存储对象的函数。 |
 | enableAutoSave       | boolean   | 否   | 是   | 是否自动持久化存储数据，默认值为true。 |
 
 ## UIUtils
 
 UIUtils是状态管理提供的工具，用于处理可观察数据。
 
+**ArkTS-Sta起始版本：** 23
+
 ### makeObserved
 
-static makeObserved\<T extends object\>(source: T): T
+static makeObserved\<T extends object \| null \| undefined\>(source: T): T
 
 将不可观察数据转化为可观察数据。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
 
+> **说明：**
+>
+> 默认情况下，返回对象支持深度观察，可观察嵌套属性变化。
+>
+> 如果传入了undefined或null，则直接返回传入值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1033,21 +715,100 @@ static makeObserved\<T extends object\>(source: T): T
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, ClickEvent } from '@ohos.arkui.component';
-import { UIUtils } from '@ohos.arkui.stateManagement';
-interface Info {
+import { Entry, Component, Column, Text, ClickEvent, UIUtils, Button } from '@kit.ArkUI';
+
+export interface Info {
   name: string,
-  age: number
+  age: int
 }
+
+export interface Person {
+  info: Info
+}
+
 @Entry
 @Component
 struct Index {
-  info: Info = UIUtils.makeObserved({ name: 'Jack', age: 25} as Info) as Info;
+  // 深度观察
+  person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person) as Person;
+
   build() {
     Column() {
-      Text(`info.name: ${this.info.name}`)
-        .onClick((e: ClickEvent) => {
-          this.info.name = 'Tom';
+      Text(`info.name: ${this.person.info.name}`)
+      Button('change name')
+        .onClick(() => {
+          this.person.info.name = 'Jackson'; // 由于是深度观察，第二层属性变化也会触发刷新。
+        })
+      Button('replace info')
+        .onClick(() => {
+          this.person.info = { name: 'Tom', age: 25 } as Info; // 触发刷新，属于第一层属性变化
+        })
+    }
+  }
+}
+```
+
+### makeObserved
+
+static makeObserved\<T extends object \| null \| undefined\>(source: T, allowDeep: boolean): T
+
+将不可观察数据转化为可观察数据，并通过`allowDeep`控制观察深度。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
+
+> **说明：**
+>
+> 如果传入了undefined或null，则直接返回传入值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| source | T | 是 | 数据源对象。 |
+| allowDeep | boolean | 是 | 是否深度观察。传入`true`时为深度观察；传入`false`时仅观察第一层属性变化。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| T | 可观察的数据对象。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { Entry, Component, Column, Text, ClickEvent, UIUtils, Button } from '@kit.ArkUI';
+
+export interface Info {
+  name: string,
+  age: int
+}
+
+export interface Person {
+  info: Info
+}
+
+@Entry
+@Component
+struct Index {
+  // 一层观察
+  person: Person = UIUtils.makeObserved({ info: { name: 'Jack', age: 25 } as Info } as Person, false) as Person;
+
+  build() {
+    Column() {
+      Text(`info.name: ${this.person.info.name}`)
+      Button('change name')
+        .onClick(() => {
+          this.person.info.name = 'Jackson'; // 不触发刷新，属于第二层属性变化
+        })
+      Button('replace info')
+        .onClick(() => {
+          this.person.info = { name: 'Tom', age: 25 } as Info; // 触发刷新，属于第一层属性变化
         })
     }
   }
@@ -1060,9 +821,11 @@ static getTarget\<T extends object\>(source: T): T
 
 获取状态管理框架包装前的原始对象。支持built-in类型（Array、Map、Set、Date）以及interface字面量。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1108,9 +871,9 @@ static getLifecycle\<T extends IVariableOwner\>(customComponent: T): CustomCompo
 
 getLifecycle用于获取[自定义组件的生命周期](./arkui-ts/ts-custom-component-new-lifecycle.md)实例。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 24
 
@@ -1299,7 +1062,11 @@ static addMonitor(valueCallback: MonitorValueCallback | MonitorValueCallback[], 
 
 动态地为状态变量注册监听。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1353,13 +1120,79 @@ struct Page {
 }
 ```
 
+### addMonitor
+
+static addMonitor(valueInfo: MonitorValueInfo | MonitorValueInfo[], monitorCallback: MonitorCallback, options?: MonitorBaseOptions): IMonitorDecoratedVariable
+
+动态地为状态变量注册监听。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名          | 类型                                                         | 必填 | 说明                                                         |
+| --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| valueCallback   | [MonitorValueInfo](#monitorvalueinfo) \| MonitorValueInfo[]  | 是   | 监听变量的信息或其数组。                                     |
+| monitorCallback | [MonitorCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorcallback) | 是   | 触发监听时调用的回调函数。                                   |
+| options         | [MonitorBaseOptions](#monitorbaseoptions)                    | 否   | 设置函数的行为，默认行为详见[MonitorBaseOptions](#monitorbaseoptions)。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| [IMonitorDecoratedVariable](./arkui-ts/ts-state-management-monitor-static.md#imonitordecoratedvariable) | 指代监听关系的句柄。 |
+
+```ts
+'use static'
+
+import { IMonitor, IMonitorDecoratedVariable, UIUtils, Local, Entry, ComponentV2, Column, Text, Button } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local value: int = 0;
+  monitor?: IMonitorDecoratedVariable;
+
+  aboutToAppear() {
+  // 注册监听关系
+    this.monitor = UIUtils.addMonitor({ valueCallback: () => this.value, path: 'value' }, this.onChange);
+  }
+
+  onChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      console.info(`[DynamicMonitor] Value has changed from ${monitor.value<int>(path)?.before} to ${monitor.value<int>(path)?.now}.`);
+    });
+  }
+
+  build() {
+    Column() {
+      Text(`Current value: ${this.value}`)
+
+      // 值修改时触发回调函数
+      Button('Increase value')
+        .onClick(() => {
+          this.value++;
+        })
+    }
+  }
+}
+```
+
 ### clearMonitor<sup>23+</sup>
 
 static clearMonitor(monitor: IMonitorDecoratedVariable): void
 
 动态地为状态变量解绑监听。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1462,11 +1295,39 @@ struct Index {
 }
 ```
 
+### getCustomComponentContext
+
+static getCustomComponentContext\<T extends IVariableOwner\>(customComponent: T): CustomComponentContext
+
+获取自定义组件的上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：**26.0.0
+
+**参数：**
+
+| 参数名          | 类型 | 必填 | 说明             |
+| --------------- | ---- | ---- | ---------------- |
+| customComponent | T    | 是   | 自定义组件对象。 |
+
+**返回值：**
+
+| 类型                                              | 说明                         |
+| ------------------------------------------------- | ---------------------------- |
+| [CustomComponentContext](#customcomponentcontext) | 传入自定义组件的上下文信息。 |
+
 ## MonitorOptions<sup>23+</sup>
 
 设置监听的行为。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
@@ -1571,7 +1432,11 @@ type GetterCallback\<T\> = () => T
 
 获取绑定值的回调方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1619,7 +1484,11 @@ type SetterCallback\<T\> = (newValue: T) => void
 
 设置绑定值的回调方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1677,12 +1546,22 @@ struct MyApp {
 
 只读数据绑定的泛型类可以绑定任意类型的数据（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 ### value
 get value(): T
 
 提供get访问器以获取当前绑定值。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1712,12 +1591,22 @@ function CustomButton(readOnlyParam: Binding<number>) {
 
 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器（需要与@builder参数列表同时使用）。当调用函数时，需要使用makeBinding来进行值的传递。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
 ### value
 set value(newValue: T)
 
 提供set访问器，用于设置当前绑定值。构造MutableBinding类实例时必须提供set访问器，否则会触发运行时错误。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1817,3 +1706,464 @@ function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: Muta
 | ------ | ---- | ---- |---- | ------------ |
 | elementName | string  | 否 | 否   | 组件的名称。 |
 | elementId | int | 否 | 否   | 组件的ID。 |
+
+## MonitorValueInfo
+
+监听变量信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| valueCallback | [MonitorValueCallback](./arkui-ts/ts-state-management-monitor-static.md#monitorvaluecallback) | 否   | 否   | 获取变量的回调。                                             |
+| path          | string                                                       | 否   | 是   | 路径信息。未传入将使用自动生成的默认值。                     |
+| observeProps  | boolean                                                      | 否   | 是   | 是否开启属性观察。<br>true：开启属性观察；false：不开启属性观察。<br>默认值：false。 |
+
+## MonitorBaseOptions
+
+监听基础选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| isSynchronous | boolean                                                      | 否   | 是   | 是否同步回调。<br>true：同步回调；false：异步回调。<br>默认值：false。 |
+| owner         | [IVariableOwner](./arkui-ts/ts-state-management-monitor-static.md#ivariableowner) | 否   | 是   | 指定冻结的组件，仅能传入[@ComponentV2](../../ui/state-management-static/arkts-static-componentv2.md)装饰的自定义组件。默认值为`undefined`，即不指定冻结的组件。 |
+
+## CustomComponentContext
+
+自定义组件的上下文信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.0.0
+
+## ObservedArray\<T\>
+
+继承自Array\<T\>，为可观察API操作的Array对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr1 = new ObservedArray<int>();
+```
+
+### constructor
+
+constructor(first: T, ...d: T[])
+
+使用元素列表初始化ObservedArray实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| first | T | 是 | 第一个元素。 |
+| d | T[] | 否 | 其余元素组成的数组，默认为[]。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr2 = new ObservedArray<int>(1, 2, 3);
+```
+
+### constructor
+
+constructor(arrayLen: int, initializer: ObservedArrayInitializer\<T\>)
+
+使用指定的长度和初始化函数初始化ObservedArray实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| arrayLen | int | 是 | 数组初始长度。 |
+| initializer | [ObservedArrayInitializer\<T\>](#observedarrayinitializer) | 是 | 数组元素初始化函数。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let arr3 = new ObservedArray<int>(3, (index: int): int => index * 10);
+```
+
+## ObservedArrayInitializer
+
+type ObservedArrayInitializer\<T\> = (index: int) => T
+
+ObservedArray的元素初始化函数类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| index | int | 是 | 当前初始化元素的索引。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| T | 对应索引位置的元素值。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedArray } from '@kit.ArkUI';
+
+let initializer = (index: int): int => index;
+let arr = new ObservedArray<int>(4, initializer);
+```
+
+## ObservedMap\<K, V\>
+
+继承自Map\<K, V\>，为可观察API操作的Map对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map1 = new ObservedMap<int, string>();
+```
+
+### constructor
+
+constructor(initialCapacity: int)
+
+使用指定的容量创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| initialCapacity | int | 是 | 指定的初始容量。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map2 = new ObservedMap<int, string>(16);
+```
+
+### constructor
+
+constructor(entries: [K, V][])
+
+使用键值对数组创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| entries | [K, V][] | 是 | 初始键值对数组。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map3 = new ObservedMap<int, string>([[0, 'a'], [1, 'b']]);
+```
+
+### constructor
+
+constructor(map: Map\<K, V\>)
+
+使用已有Map对象创建ObservedMap实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| map | Map\<K, V\> | 是 | 初始Map对象。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedMap } from '@kit.ArkUI';
+
+let map4 = new ObservedMap<int, string>(new Map<int, string>([[0, 'a'], [1, 'b']]));
+```
+
+## ObservedSet\<K\>
+
+继承自Set\<K\>，为可观察API操作的Set对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set1 = new ObservedSet<int>();
+```
+
+### constructor
+
+constructor(bucketsCount: int)
+
+使用指定的容量创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| bucketsCount | int | 是 | 指定的初始容量。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set2 = new ObservedSet<int>(16);
+```
+
+### constructor
+
+constructor(values: K[])
+
+使用元素数组创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| values | K[] | 是 | 初始元素数组。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set3 = new ObservedSet<int>([1, 2, 3]);
+```
+
+### constructor
+
+constructor(set: Set\<K\>)
+
+使用已有Set对象创建ObservedSet实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| set | Set\<K\> | 是 | 初始Set对象。 |
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedSet } from '@kit.ArkUI';
+
+let set4 = new ObservedSet<int>(new Set<int>([1, 2, 3]));
+```
+
+## ObservedDate
+
+继承自Date，为可观察API操作的Date对象。详见[ObservedArray/ObservedMap/ObservedSet/ObservedDate：具有观察能力的Built-in类型](../../../application-dev/ui/state-management-static/arkts-static-new-observed-built-in-types.md)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### constructor
+
+constructor()
+
+无参构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedDate } from '@kit.ArkUI';
+
+let date1 = new ObservedDate();
+```
+
+### constructor
+
+constructor(value: long | string | Date)
+
+使用指定初始值创建ObservedDate实例。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value | long \| string \| Date | 是 | 初始时间值。 |
+
+**示例：**
+
+```ts
+'use static'
+
+import { ObservedDate } from '@kit.ArkUI';
+
+let date2 = new ObservedDate('2021-08-08');
+let date3 = new ObservedDate(new Date('2021-08-08'));
+```

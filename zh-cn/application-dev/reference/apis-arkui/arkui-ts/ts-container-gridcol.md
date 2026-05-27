@@ -10,24 +10,34 @@
 
 >  **说明：**
 >
-> 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。  
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。  
 
 ## 子组件
 
 可以包含单个子组件。
+
 ## 接口
+
+### GridCol
 
 GridCol(option?: GridColOptions)
 
 栅格列布局组件。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
+
 | 参数名 | 类型                                                  | 必填 | 说明                                                         |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | option   | [GridColOptions](#gridcoloptions对象说明) | 否   | 栅格布局子组件参数。 |
@@ -36,11 +46,15 @@ GridCol(option?: GridColOptions)
 
 设置栅格列布局组件布局选项。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -57,57 +71,97 @@ API version 20之后，`span`的继承规则见[GridColColumnOption](#gridcolcol
 
 ### span
 
-span(value: number | GridColColumnOption)
+ArkTS-Dyn: span(value: number | GridColColumnOption)
+
+ArkTS-Sta: span(value: int | GridColColumnOption | undefined)
 
 设置占用列数。span为0，意味着该元素不参与布局计算，即不会被渲染。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                     |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------ |
-| value  | number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) | 是   | 占用列数。<br/>取值为非负整数，默认值为1。<br />非法值：按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) \| undefined | 是   | 占用列数。<br/>取值为非负整数，默认值为1。<br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### gridColOffset
 
-gridColOffset(value: number | GridColColumnOption)
+ArkTS-Dyn: gridColOffset(value: number | GridColColumnOption)
+
+ArkTS-Sta: gridColOffset(value: int | GridColColumnOption | undefined)
 
 设置相对于前一个栅格子组件偏移的列数。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                             |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) | 是   | 相对于前一个栅格子组件偏移的列数。<br/>取值为非负整数，默认值：0  <br />非法值：按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) \| undefined | 是   | 相对于前一个栅格子组件偏移的列数。<br/>取值为非负整数，默认值：0  <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### order
 
-order(value: number | GridColColumnOption)
+ArkTS-Dyn: order(value: number | GridColColumnOption)
+
+ArkTS-Sta: order(value: int | GridColColumnOption | undefined)
 
 设置栅格子组件的序号，根据序号从小到大对栅格子组件进行排序。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) | 是   | 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br/>取值为非负整数，默认值：0  <br />非法值：按默认值处理。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;[GridColColumnOption](#gridcolcolumnoption) \| undefined | 是   | 元素的序号，根据栅格子组件的序号，从小到大对栅格子组件做排序。<br/>取值为非负整数，默认值：0  <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+
+### attributeModifier<sup>12+</sup>
+
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<GridColAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridColAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridColAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridColAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridCol组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## GridColColumnOption
 
@@ -127,26 +181,33 @@ order(value: number | GridColColumnOption)
   ```
 - 建议手动配置不同断点下GridCol组件所占列数，避免默认补全列数的布局效果不符合预期。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| xs  | number | 否 | 是  | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
-| sm  | number | 否 | 是  | 在栅格大小为sm的设备上，栅格容器组件的栅格列数。      |
-| md  | number | 否 | 是  | 在栅格大小为md的设备上，栅格容器组件的栅格列数。    |
-| lg  | number | 否 | 是  | 在栅格大小为lg的设备上，栅格容器组件的栅格列数。      |
-| xl  | number | 否 | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
-| xxl | number | 否 | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
+| xs  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
+| sm  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为sm的设备上，栅格容器组件的栅格列数。      |
+| md  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为md的设备上，栅格容器组件的栅格列数。    |
+| lg  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为lg的设备上，栅格容器组件的栅格列数。      |
+| xl  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
+| xxl | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
 
 ## 事件
 支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
+
 GridCol的基本用法示例。
+
+**ArkTS-Dyn示例：**
 
 ```ts
 // xxx.ets
@@ -182,6 +243,49 @@ struct GridColExample {
         this.currentBp = breakpoint
       })
     }.width('80%').margin({ left: 10, top: 5, bottom: 5 }).height(200)
+    .border({ color: '#880606', width: 2 })
+  }
+}
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, GridRow, GridCol, Column, Row,  GridRowDirection, BreakpointsReference, Margin, Color, ForEach} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+@Entry
+@Component
+struct GridColExample {
+  @State bgColors: Color[] =
+    [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown];
+  @State currentBp: string = 'unknown';
+
+  build() {
+    Column() {
+      GridRow({
+        columns: 5,
+        gutter: { x: 5, y: 10 },
+        breakpoints: {
+          value: ["400vp", "600vp", "800vp"],
+          reference: BreakpointsReference.WindowSize
+        },
+        direction: GridRowDirection.Row
+      }) {
+        ForEach(this.bgColors, (color: Color) => {
+          GridCol({
+            span: { xs: 1, sm: 2, md: 3, lg: 4 },
+            offset: 0,
+            order: 0
+          }) {
+            Row().width("100%").height("20vp")
+          }.borderColor(color).borderWidth(2)
+        })
+      }.width("100%").height("100%")
+      .onBreakpointChange((breakpoint) => {
+        this.currentBp = breakpoint
+      })
+    }.width('80%').margin({ left: 10, top: 5, bottom: 5 } as Margin).height(200)
     .border({ color: '#880606', width: 2 })
   }
 }

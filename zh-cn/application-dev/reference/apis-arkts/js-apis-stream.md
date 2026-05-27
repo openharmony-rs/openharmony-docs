@@ -1,8 +1,8 @@
 # @ohos.util.stream (数据流基类stream)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,7 +12,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -26,17 +28,21 @@ import { stream  } from '@kit.ArkTS';
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型      | 只读 | 可选  | 说明        |
 | ------- | -------- | ------ | ------ | ----------- |
 | writableObjectMode  | boolean   | 是   | 否 | 指定可写流是否以对象模式工作。true表示流被配置为对象模式，false表示流处于非对象模式。当前版本只支持原始数据（字符串和Uint8Array），返回值为false。 |
-| writableHighWatermark | number | 是 | 否  | 定义可写流缓冲区数据量的水位线大小。当前版本不支持开发者自定义修改水位线大小。调用[write()](#write)写入数据后，若缓冲区数据量达到该值，[write()](#write)会返回false。默认值为16 * 1024字节。|
+| writableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义可写流缓冲区数据量的水位线大小。当前版本不支持开发者自定义修改水位线大小。调用[write()](#write)写入数据后，若缓冲区数据量达到该值，[write()](#write)会返回false。默认值为16 * 1024字节。|
 | writable | boolean | 是 | 否  | 表示可写流是否处于可写状态。true表示流当前是可写的，false表示流当前不再接受写入操作。|
-| writableLength | number | 是 | 否  | 表示可写流缓冲区中待写入的字节数。|
-| writableCorked | number | 是  | 否 | 表示可写流cork状态计数。值大于0时，可写流处于强制写入缓冲区状态；值为0时，该状态解除。使用[cork()](#cork)方法时计数加一，使用[uncork()](#uncork)方法时计数减一，使用[end()](#end)方法时计数清零。|
+| writableLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 表示可写流缓冲区中待写入的字节数。|
+| writableCorked | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是  | 否 | 表示可写流cork状态计数。值大于0时，可写流处于强制写入缓冲区状态；值为0时，该状态解除。使用[cork()](#cork)方法时计数加一，使用[uncork()](#uncork)方法时计数减一，使用[end()](#end)方法时计数清零。|
 | writableEnded | boolean | 是  | 否 | 表示当前可写流的[end()](#end)是否被调用，该状态不代表数据已经全部写入。true表示[end()](#end)已被调用，false表示[end()](#end)未被调用。 |
 | writableFinished | boolean | 是  | 否 | 表示当前可写流是否处于写入完成状态。true表示当前流已处于写入完成状态，false表示当前流的写入操作可能还在进行中。 |
 
@@ -46,9 +52,13 @@ constructor()
 
 Writable的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -62,9 +72,13 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 将数据写入流的缓冲区中。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -82,17 +96,17 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200035 | The doWrite method has not been implemented. |
 | 10200036 | The stream has been ended. |
 | 10200037 | The callback is invoked multiple times consecutively. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -109,15 +123,36 @@ let writableStream = new TestWritable();
 writableStream.write('test', 'utf8');
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    console.info("Writable chunk is", chunk); // 期望结果: Writable chunk is test
+    callback.unsafeCall();
+  }
+}
+
+let writableStream = new TestWritable();
+writableStream.write('test', 'utf8');
+```
+
 ### end
 
 end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable
 
 结束可写流的写入操作。如果属性writableCorked的值大于0，会置零该值并输出缓冲区剩余数据。如果传入chunk参数，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -135,15 +170,15 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200035 | The doWrite method has not been implemented. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -165,15 +200,41 @@ writableStream.end('finish', 'utf8', () => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    console.info("Writable chunk is", chunk);
+    callback.unsafeCall();
+  }
+  // Writable chunk is test
+  // Writable chunk is finish
+}
+
+let writableStream = new TestWritable();
+writableStream.write('test', 'utf8');
+writableStream.end('finish', 'utf8', () => {
+  console.info("Writable is end"); // 期望结果: Writable is end
+});
+```
+
 ### setDefaultEncoding
 
 setDefaultEncoding(encoding?: string): boolean
 
 设置可写流的默认字符编码。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -187,16 +248,9 @@ setDefaultEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示成功，false表示失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -213,15 +267,36 @@ let result = writableStream.setDefaultEncoding('utf8');
 console.info("Writable is result", result); // Writable is result true
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    callback.unsafeCall();
+  }
+}
+
+let writableStream = new TestWritable();
+let result = writableStream.setDefaultEncoding('utf8');
+console.info("Writable is result", result); // 期望结果: Writable is result true
+```
+
 ### cork
 
 cork(): boolean
 
 使后续写入的数据强制写入缓冲区，优化连续写入操作的性能。使用后属性writableCorked的值会加一。建议和[uncork()](#uncork)成对使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -231,6 +306,7 @@ cork(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -247,15 +323,36 @@ let result = writableStream.cork();
 console.info("Writable cork result", result); // Writable cork result true
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    callback.unsafeCall();
+  }
+}
+
+let writableStream = new TestWritable();
+let result = writableStream.cork();
+console.info("Writable cork result", result); // 期望结果: Writable cork result true
+```
+
 ### uncork
 
 uncork(): boolean
 
 解除cork状态，解除后刷新缓冲区数据并写入目标位置。使用后属性writableCorked的值会减一，如果该值降为0，则解除cork状态，否则流依然处于cork状态。建议和[cork()](#cork)成对使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -265,6 +362,7 @@ uncork(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -287,33 +385,55 @@ writableStream.on('finish', () => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    callback.unsafeCall();
+  }
+}
+
+let writableStream = new TestWritable();
+writableStream.cork();
+writableStream.write('data1', 'utf8');
+writableStream.write('data2', 'utf8');
+writableStream.uncork();
+writableStream.on('finish', () => {
+  console.info("all Data is End"); // 期望结果: all Data is End
+});
+writableStream.end();
+```
+
 ### on
 
-on(event: string, callback: Callback<emitter.EventData>): void
+ArkTS-Dyn: on(event: string, callback: Callback<emitter.EventData>): void
+
+ArkTS-Sta: on(event: string, callback: Function): void
 
 注册事件处理函数来监听可写流上的不同事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
-| callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | 是 | 回调函数，返回事件传输的数据。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function | 是 | 回调函数，返回事件传输的数据。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -334,33 +454,53 @@ writable.write('hello', 'utf8', () => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    callback.unsafeCall(new Error());
+  }
+}
+
+let callbackCalled = false;
+let writable = new TestWritable();
+writable.on('error', (): void => {
+  console.info("Writable event test", callbackCalled.toString()); // 期望结果: Writable event test false
+});
+writable.write('hello', 'utf8', () => {
+});
+```
+
 ### off
 
-off(event: string, callback?: Callback<emitter.EventData>): void
+ArkTS-Dyn: off(event: string, callback?: Callback<emitter.EventData>): void
+
+ArkTS-Sta: off(event: string, callback?: Function): void
 
 移除通过[on](#on)注册的事件处理函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'drain' `\|`'error'` \| `'finish'` 。<br/>\- `'close'`：完成[end()](#end)调用，结束写入操作，触发该事件。<br/>\- `'drain'`：在可写流缓冲区中数据清空时触发该事件。<br/>\- `'error'`：在可写流发生异常时触发该事件。<br/>\- `'finish'`：在数据缓冲区全部写入到目标后触发该事件。 |
-| callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | 否 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function   | 否 | 回调函数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -386,29 +526,51 @@ setTimeout(() => {
 }, 0);
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+ }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    callback.unsafeCall();
+  }
+}
+
+let writableStream = new TestWritable();
+let testListenerCalled = false;
+let testListener = () => {
+  testListenerCalled = true;
+};
+writableStream.on('finish', testListener);
+writableStream.off('finish');
+writableStream.write('test');
+writableStream.end();
+setTimeout(() => {
+  console.info("Writable off test", testListenerCalled.toString()); // 期望结果: Writable off test false
+}, 0);
+```
+
 ### doInitialize
 
 doInitialize(callback: Function): void
 
 用户实现这个函数。该函数在可写流初始化阶段被调用，无需用户调用。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | Function | 是 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -433,9 +595,13 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 
 提供一个数据写出接口供开发者实现，该接口函数会在数据被成功写出时自动调用，无需手动触发。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -445,16 +611,9 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -471,15 +630,36 @@ let writableStream = new TestWritable();
 writableStream.write('data', 'utf8');
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    console.info("Writable chunk is", chunk); // 期望结果: Writable chunk is data
+    callback.unsafeCall();
+  }
+}
+
+let writableStream = new TestWritable();
+writableStream.write('data', 'utf8');
+```
+
 ### doWritev
 
 doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 提供一个数据批量写出接口供使用者实现，该接口函数会在数据被成功写出时自动调用，无需用户手动触发。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -488,16 +668,9 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 | chunks    | string[] \|  Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestWritable extends stream.Writable {
   constructor() {
@@ -519,17 +692,43 @@ writableStream.uncork();
 writableStream.end();
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWritev(chunks: string[] | Uint8Array[], callback: Function) {
+    console.info("Writable chunk", chunks);
+    callback.unsafeCall();
+  }
+  // Writable chunk data1
+  // Writable chunk data2
+}
+
+let writableStream = new TestWritable();
+writableStream.write('data1', 'utf8');
+writableStream.write('data2', 'utf8');
+writableStream.uncork();
+writableStream.end();
+```
+
 ## ReadableOptions
 
 Readable构造函数的选项信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | -------- | ---- | ---- | -------------- |
-| encoding | string  | 否 | 是 | 指定数据的编码格式，如果传入非法字符串，将会在Readable构造函数中抛出异常。<br/>-&nbsp;支持格式：utf-8、UTF-8、GBK、GB2312、gb2312、GB18030、gb18030、ibm866、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、windows-1257、windows-1258、gbk、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、x-mac-cyrillic、utf-16be、utf-16le。 <br/>-&nbsp; 默认值是：'utf-8'。|
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 必填 | 说明 |
+| ---- | -------- | ---- | -------------- |
+| encoding | string  | 否 | 指定数据的编码格式，如果传入非法字符串，将会在Readable构造函数中抛出异常。<br/>-&nbsp;支持格式：utf-8、UTF-8、GBK、GB2312、gb2312、GB18030、gb18030、ibm866、iso-8859-2、iso-8859-3、iso-8859-4、iso-8859-5、iso-8859-6、iso-8859-7、iso-8859-8、iso-8859-8-i、iso-8859-10、iso-8859-13、iso-8859-14、iso-8859-15、koi8-r、koi8-u、macintosh、windows-874、windows-1250、windows-1251、windows-1252、windows-1253、windows-1254、windows-1255、windows-1256、windows-1257、windows-1258、gbk、big5、euc-jp、iso-2022-jp、shift_jis、euc-kr、x-mac-cyrillic、utf-16be、utf-16le。 <br/>-&nbsp; 默认值是：'utf-8'。|
 
 ## Readable
 
@@ -537,17 +736,21 @@ Readable构造函数的选项信息。
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型      | 只读| 可选  | 说明        |
 | ------- | -------- | ------ | ------ | ----------- |
 | readableObjectMode  | boolean   | 是   | 否 | 用于指定可读流是否以对象模式工作。true表示流被配置为对象模式，false表示流处于非对象模式。当前版本只支持原始数据（字符串和Uint8Array），返回值为false。|
 | readable | boolean | 是 | 否  | 表示可读流是否处于可读状态。true表示流处于可读状态，false表示流中没有更多数据可供读取。 |
-| readableHighWatermark | number | 是 | 否  | 定义缓冲区的最大数据量。默认值为16 * 1024字节。|
+| readableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义缓冲区的最大数据量。默认值为16 * 1024字节。|
 | readableFlowing | boolean \| null | 是 | 否  | 表示当前可读流的状态。true表示流处于流动模式，false表示流处于非流动模式。默认值是true。|
-| readableLength | number | 是 | 否  | 表示缓冲区的当前字节数。|
+| readableLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 表示缓冲区的当前字节数。|
 | readableEncoding | string \| null | 是 | 否  | 被解码成字符串时所使用的字符编码。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | readableEnded | boolean | 是  | 否 | 表示当前可读流是否已经结束。true表示流已经没有更多数据可读且已结束，false表示流尚未结束，仍有数据可读或等待读取。 |
 
@@ -557,9 +760,13 @@ constructor()
 
 Readable的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -573,23 +780,19 @@ constructor(options: ReadableOptions)
 
 Readable的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | -------- | -------- |
 | options   | [ReadableOptions](#readableoptions)   | 是 | Readable构造函数的选项信息。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -602,37 +805,43 @@ let readableStream = new stream.Readable(option);
 
 ### read
 
-read(size?: number): string | null
+ArkTS-Dyn: read(size?: number): string | null
+
+ArkTS-Sta: read(size?: int): buffer.Buffer | string | null
 
 从可读流缓冲区读取数据，并返回读取到的数据，如果未读取到数据，则返回null。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
 | ------ | -------- | -------- | -------- |
-| size   | number   | 否 | 读取数据的字节数。默认为undefined。 |
+| size   | ArkTS-Dyn: number<br>ArkTS-Sta: int   | 否 | 读取数据的字节数。默认为undefined。 |
 
 **返回值：**
 
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| string \| null | 可读流读取出的数据。 |
+| ArkTS-Dyn: string \| null<br>ArkTS-Sta: buffer.Buffer \| string \| null | 可读流读取出的数据。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200038 | The doRead method has not been implemented. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -650,15 +859,37 @@ let dataChunk = readableStream.read();
 console.info('Readable data is', dataChunk); // Readable data is test
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+}
+
+let readableStream = new TestReadable();
+readableStream.push('test');
+readableStream.pause();
+let dataChunk = readableStream.read();
+console.info('Readable data is', dataChunk); // 期望结果: Readable data is test
+```
+
 ### resume
 
 resume(): Readable
 
 将流的读取模式从暂停切换到流动模式，可用接口isPaused判断是否已切换。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -668,6 +899,7 @@ resume(): Readable
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -683,15 +915,35 @@ readableStream.resume();
 console.info("Readable test resume", !readableStream.isPaused()); // 切换流动模式成功时，此处日志将打印"Readable test resume true"
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+}
+
+let readableStream = new TestReadable();
+readableStream.resume();
+console.info("Readable test resume", !readableStream.isPaused()); // 切换流动模式成功时，此处日志将打印"Readable test resume true"
+```
+
 ### pause
 
 pause(): Readable
 
 将流的读取模式从流动切换到暂停模式，可用接口isPaused判断是否已切换。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -701,6 +953,7 @@ pause(): Readable
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -716,6 +969,22 @@ readableStream.pause();
 console.info("Readable test pause", readableStream.isPaused()); // Readable test pause true
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+}
+
+let readableStream = new TestReadable();
+readableStream.pause();
+console.info("Readable test pause", readableStream.isPaused()); // 期望结果: Readable test pause true
+```
+
 ### setEncoding
 
 setEncoding(encoding?: string): boolean
@@ -724,9 +993,13 @@ setEncoding(encoding?: string): boolean
 
 当缓冲区有数据时，不允许设置字符编码，返回值为false。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -740,16 +1013,9 @@ setEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -765,15 +1031,35 @@ let result = readableStream.setEncoding('utf8');
 console.info("Readable result", result); // Readable result true
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+}
+
+let readableStream = new TestReadable();
+let result = readableStream.setEncoding('utf8');
+console.info("Readable result", result); // 期望结果: Readable result true
+```
+
 ### isPaused
 
 isPaused(): boolean
 
 检查流是否处于暂停模式，调用[pause()](#pause)后，返回值为true；调用[resume()](#resume)后，返回值为false。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -783,6 +1069,7 @@ isPaused(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -799,15 +1086,36 @@ readableStream.pause();
 console.info("Readable isPaused", readableStream.isPaused()); // Readable isPaused true
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+}
+
+let readableStream = new TestReadable();
+console.info("Readable isPaused", readableStream.isPaused()); // 期望结果: Readable isPaused false
+readableStream.pause();
+console.info("Readable isPaused", readableStream.isPaused()); // 期望结果: Readable isPaused true
+```
+
 ### pipe
 
 pipe(destination: Writable, options?: Object): Writable
 
 将一个可读流与一个可写流连接起来，实现数据的自动传输。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -822,16 +1130,9 @@ pipe(destination: Writable, options?: Object): Writable
 | -------- | -------- |
 | [Writable](#writable) | 返回当前可写流对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -860,15 +1161,48 @@ let writable = new TestWritable();
 readable.pipe(writable);
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+    this.push('test');
+    this.push(null);
+  }
+}
+
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    console.info("Readable test pipe", chunk); // 期望结果: Readable test pipe test
+    callback.unsafeCall();
+  }
+}
+
+let readable = new TestReadable();
+let writable = new TestWritable();
+readable.pipe(writable);
+```
+
 ### unpipe
 
 unpipe(destination?: Writable): Readable
 
 从可写流中移除所有或指定的已连接的可读流。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -882,16 +1216,9 @@ unpipe(destination?: Writable): Readable
 | -------- | -------- |
 | [Readable](#readable) | 返回当前可读流对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -924,33 +1251,65 @@ readable.on('data', () => {
 // unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event triggered"
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+    this.push('test');
+    this.push(null);
+  }
+}
+
+class TestWritable extends stream.Writable {
+  constructor() {
+    super();
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    callback.unsafeCall();
+  }
+}
+
+let readable = new TestReadable();
+let writable = new TestWritable();
+readable.pipe(writable);
+readable.unpipe(writable);
+readable.on('data', () => {
+  console.info("Readable test unpipe data event called");
+});
+// unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event called"
+```
+
 ### on
 
-on(event: string, callback: Callback<emitter.EventData>): void
+ArkTS-Dyn: on(event: string, callback: Callback<emitter.EventData>): void
+
+ArkTS-Sta: on(event: string, callback: Function): void
 
 注册事件处理函数来监听可读流上的不同事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
-| callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\> | 是 | 回调函数，返回事件数据。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function | 是 | 回调函数，返回事件数据。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -969,33 +1328,51 @@ readable.on('error', () => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+    throw new Error('Simulated error');
+  }
+}
+
+let readable = new TestReadable();
+readable.push('test');
+readable.on('error', (): void => {
+  console.info("error event called"); // 期望结果: error event called
+});
+```
+
 ### off
 
-off(event: string, callback?: Callback<emitter.EventData>): void
+ArkTS-Dyn: off(event: string, callback?: Callback<emitter.EventData>): void
+
+ArkTS-Sta: off(event: string, callback?: Function): void
 
 移除通过[on](#on)注册的事件处理函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
-| callback | Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\>   | 否 | 回调函数。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function   | 否 | 回调函数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -1019,15 +1396,43 @@ readable.push('test');
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+}
+
+let readable = new TestReadable();
+
+function read() {
+  console.info("read() called");
+}
+
+readable.setEncoding('utf8');
+readable.on('readable', read);
+readable.off('readable');
+readable.push('test');
+// off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
+```
+
 ### doInitialize
 
 doInitialize(callback: Function): void
 
 使用者实现这个函数，这个函数在可读流第一次使用[on](#on-1)监听时被调用。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1035,16 +1440,9 @@ doInitialize(callback: Function): void
 | -------- | -------- | -------- | -------- |
 | callback | Function | 是 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class MyReadable extends stream.Readable {
   doInitialize(callback: Function) {
@@ -1061,32 +1459,48 @@ myReadable.on('data', () => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+class MyReadable extends stream.Readable {
+  doInitialize(callback: Function) {
+    super.doInitialize(callback);
+    console.info("Readable doInitialize"); // 期望结果: Readable doInitialize
+}
+
+  doRead(size: int) {
+  }
+}
+
+let myReadable = new MyReadable();
+myReadable.on('data', () => {
+});
+```
+
 ### doRead
 
-doRead(size: number): void
+ArkTS-Dyn: doRead(size: number): void
+
+ArkTS-Sta: doRead(size: int): void
 
 数据读取接口，需要在子类中被实现。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型     | 必填     | 说明 |
 | -------- | -------- | -------- | -------- |
-| size | number | 是 | 读取数据的字节数。 取值范围：0 <= size <= Number.MAX_VALUE。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| size | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 读取数据的字节数。取值范围：0 <= size <= Number.MAX_VALUE。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -1103,15 +1517,36 @@ readable.on('data', () => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+    console.info("doRead called"); // 期望结果: doRead called
+  }
+}
+
+let readable = new TestReadable();
+readable.on('data', () => {
+});
+```
+
 ### push
 
 push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 
 将数据推送到可读流缓冲区中。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1128,6 +1563,7 @@ push(chunk: Uint8Array | string | undefined | null, encoding?: string): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestReadable extends stream.Readable {
   constructor() {
@@ -1144,6 +1580,23 @@ readable.push(testData);
 console.info("Readable push test", readable.readableLength); // Readable push test 11
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestReadable extends stream.Readable {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+}
+
+let readable = new TestReadable();
+let testData = 'Hello world';
+readable.push(testData);
+console.info("Readable push test", readable.readableLength); // 期望结果: Readable push test 11
+```
+
 ## Duplex
 
 双工流是一个同时支持可读和可写能力的流。双工流允许数据在两个方向上进行传输，既可以读取数据，又可以写入数据。
@@ -1152,17 +1605,21 @@ Duplex类继承[Readable](#readable)，支持Readable中所有的方法。
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型      | 只读 | 可选  | 说明        |
 | ------- | -------- | ------ | ------ | ----------- |
 | writableObjectMode  | boolean   | 是   | 否 | 用于指定双工流的写模式是否以对象模式工作。true表示流的写模式被配置为对象模式，false表示流的写模式处于非对象模式。当前版本只支持原始数据（字符串和Uint8Array），返回值为false。 |
-| writableHighWatermark | number | 是 | 否  | 定义双工流的写模式下缓冲区数据量的水位线大小。当前版本不支持开发者自定义修改设置水位线大小。调用[write()](#write-1)写入后，若缓冲区数据量达到该值，[write()](#write-1)会返回false。默认值为16 * 1024字节。|
+| writableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义双工流的写模式下缓冲区数据量的水位线大小。当前版本不支持开发者自定义修改设置水位线大小。调用[write()](#write-1)写入后，若缓冲区数据量达到该值，[write()](#write-1)会返回false。默认值为16 * 1024字节。|
 | writable | boolean | 是 | 否  | 表示双工流是否处于可写状态。true表示当前流是可写的，false表示流当前不再接受写入操作。|
-| writableLength | number | 是 | 否  | 表示双工流缓冲区中待写入的字节数。|
-| writableCorked | number | 是  | 否 | 表示双工流cork状态计数。值大于0时，双工流处于强制写入缓冲区状态，值为0时，该状态解除。使用[cork()](#cork-1)方法时计数加一，使用[uncork()](#uncork-1)方法时计数减一，使用[end()](#end-1)方法时计数清零。|
+| writableLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 表示双工流缓冲区中待写入的字节数。|
+| writableCorked | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是  | 否 | 表示双工流cork状态计数。值大于0时，双工流处于强制写入缓冲区状态，值为0时，该状态解除。使用[cork()](#cork-1)方法时计数加一，使用[uncork()](#uncork-1)方法时计数减一，使用[end()](#end-1)方法时计数清零。|
 | writableEnded | boolean | 是  | 否 | 表示当前双工流的[end()](#end-1)是否被调用，该状态不代表数据已经全部写入。true表示[end()](#end-1)已被调用，false表示[end()](#end-1)未被调用。|
 | writableFinished | boolean | 是  | 否 | 表示当前双工流是否处于写入完成状态。true表示当前流已处于写入完成状态，false表示当前流的写入操作可能还在进行中。|
 
@@ -1172,9 +1629,13 @@ constructor()
 
 Duplex的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -1188,9 +1649,13 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 将数据写入流的缓冲区中。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1208,17 +1673,17 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200036 | The stream has been ended. |
 | 10200037 | The callback is invoked multiple times consecutively. |
 | 10200039 | The doTransform method has not been implemented for a class that inherits from Transform. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestDuplex extends stream.Duplex {
   constructor() {
@@ -1239,15 +1704,40 @@ let result = duplexStream.write('test', 'utf8');
 console.info("duplexStream result", result); // duplexStream result true
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestDuplex extends stream.Duplex {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    console.info("duplexStream chunk is", chunk); // 期望结果: duplexStream chunk is test
+    callback.unsafeCall();
+  }
+}
+
+let duplexStream = new TestDuplex();
+let result = duplexStream.write('test', 'utf8');
+console.info("duplexStream result", result); // 期望结果: duplexStream result true
+```
+
 ### end
 
 end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writable
 
 结束双工流的写入操作。如果属性writableCorked的值大于0，会置零该值并输出缓冲区剩余数据。如果传入chunk参数，则根据实际运行情况，通过write或者doWrite将其作为最后一块数据写入。其中通过doWrite写入时，encoding参数的合法性检查依赖doWrite。end单独使用（不使用write）并传入chunk参数的情况下，必然通过doWrite写入。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1265,15 +1755,15 @@ end(chunk?: string | Uint8Array, encoding?: string, callback?: Function): Writab
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200039 | The doTransform method has not been implemented for a class that inherits from Transform. |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestDuplex extends stream.Duplex {
   constructor() {
@@ -1295,15 +1785,41 @@ duplexStream.end('test', 'utf8', () => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestDuplex extends stream.Duplex {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+  console.info("Duplex chunk is", chunk); // 期望结果: Duplex chunk is test
+  callback.unsafeCall();
+  }
+}
+
+let duplexStream = new TestDuplex();
+duplexStream.end('test', 'utf8', () => {
+  console.info("Duplex is end"); // 期望结果: Duplex is end
+});
+```
+
 ### setDefaultEncoding
 
 setDefaultEncoding(encoding?: string): boolean
 
 设置双工流的默认字符编码，确保在读取数据时正确解析字符。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1317,16 +1833,9 @@ setDefaultEncoding(encoding?: string): boolean
 | -------- | -------- |
 | boolean | 返回是否设置成功。true表示设置成功，false表示设置失败。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestDuplex extends stream.Duplex {
   constructor() {
@@ -1346,15 +1855,39 @@ let result = duplexStream.setDefaultEncoding('utf8');
 console.info("duplexStream is result", result); // duplexStream is result true
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestDuplex extends stream.Duplex {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    callback.unsafeCall();
+  }
+}
+
+let duplexStream = new TestDuplex();
+let result = duplexStream.setDefaultEncoding('utf8');
+console.info("duplexStream is result", result); // 期望结果: duplexStream is result true
+```
+
 ### cork
 
 cork(): boolean
 
 将写入的数据强制写入缓冲区暂存，用来优化连续写入操作的性能。使用后属性writableCorked的值会加一。建议和[uncork()](#uncork-1)成对使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1376,9 +1909,13 @@ uncork(): boolean
 
 解除cork状态，解除后将缓冲区中的数据全部刷新，并将其写入目标位置。使用后属性writableCorked的值会减一，如果该值降为0，则解除cork状态，否则流依然处于cork状态。建议和[cork()](#cork-1)成对使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1388,6 +1925,7 @@ uncork(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let dataWritten = '';
 class TestDuplex extends stream.Duplex {
@@ -1412,15 +1950,44 @@ duplexStream.uncork();
 console.info("Duplex test uncork", dataWritten); // Duplex test uncork ab
 ```
 
+ArkTS-Sta示例：
+```ts
+let dataWritten = '';
+class TestDuplex extends stream.Duplex {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    dataWritten += chunk;
+    callback.unsafeCall();
+  }
+}
+
+let duplexStream = new TestDuplex();
+duplexStream.cork();
+duplexStream.write('a');
+duplexStream.write('b');
+duplexStream.uncork();
+console.info("Duplex test uncork", dataWritten); // 期望结果: Duplex test uncork
+```
+
 ### doWrite
 
 doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 
 数据写出接口是一个由使用者实现的函数，在数据被写出时自动调用，而不需要用户手动调用。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1430,16 +1997,9 @@ doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestDuplex extends stream.Duplex {
   constructor() {
@@ -1459,15 +2019,39 @@ let duplexStream = new TestDuplex();
 duplexStream.write('data', 'utf8');
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestDuplex extends stream.Duplex {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    console.info("duplexStream chunk is", chunk); // 期望结果: duplexStream chunk is data
+    callback.unsafeCall();
+  }
+}
+
+let duplexStream = new TestDuplex();
+duplexStream.write('data', 'utf8');
+```
+
 ### doWritev
 
 doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
 数据分批写出接口是一个由使用者实现的函数，在数据被写出时自动调用，而不需要用户手动调用。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1476,16 +2060,9 @@ doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 | chunks    | string[] \| Uint8Array[] | 是 | 待批量写出的数据块数组。 |
 | callback  | Function | 是 | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestDuplex extends stream.Duplex {
   constructor() {
@@ -1513,6 +2090,34 @@ duplexStream.uncork();
 duplexStream.end();
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestDuplex extends stream.Duplex {
+  constructor() {
+    super();
+  }
+
+  doRead(size: int) {
+  }
+
+  doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
+    callback.unsafeCall();
+  }
+
+  doWritev(chunks: string[] | Uint8Array[], callback: Function) {
+    console.info("duplexStream chunk", (chunks as string[])[0]); // 期望结果: duplexStream chunk data1
+    callback.unsafeCall();
+  }
+}
+
+let duplexStream = new TestDuplex();
+duplexStream.cork();
+duplexStream.write('data1', 'utf8');
+duplexStream.write('data2', 'utf8');
+duplexStream.uncork();
+duplexStream.end();
+```
+
 ## Transform
 
 转换流是一个特殊的双工流，支持可读和可写能力的流，可以对数据进行转换并输出结果。Transform类继承[Duplex](#duplex)，支持Duplex中所有的方法。
@@ -1523,9 +2128,13 @@ constructor()
 
 Transform的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -1539,9 +2148,13 @@ doTransform(chunk: string, encoding: string, callback: Function): void
 
 对输入的数据块进行转换或处理，并通过回调函数通知操作完成。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1551,16 +2164,9 @@ doTransform(chunk: string, encoding: string, callback: Function): void
 | encoding  | string | 是   | 字符编码类型。当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。 |
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestTransform extends stream.Transform {
   constructor() {
@@ -1579,15 +2185,38 @@ let tr = new TestTransform();
 tr.write("hello");
 ```
 
+ArkTS-Sta示例：
+```ts
+class TestTransform extends stream.Transform {
+  constructor() {
+    super();
+  }
+
+  doTransform(chunk: string, encoding: string, callback: Function) {
+    let stringChunk = chunk.toString().toUpperCase();
+    console.info("Transform test doTransform", stringChunk); // 期望结果: Transform test doTransform HELLO
+    this.push(stringChunk);
+    callback.unsafeCall();
+  }
+}
+
+let tr = new TestTransform();
+tr.write("hello");
+```
+
 ### doFlush
 
 doFlush(callback: Function): void
 
 该函数会在流结束时被调用，用于处理剩余的数据。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1595,16 +2224,9 @@ doFlush(callback: Function): void
 | -------- | -------- | -------- | -------- |
 | callback  | Function | 是   | 回调函数。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 class TestTransform extends stream.Transform {
   constructor() {
@@ -1625,4 +2247,27 @@ transform.end('my test');
 transform.on('data', (data) => {
   console.info("data is", data.data); // data is test
 });
+```
+
+ArkTS-Sta示例：
+```ts
+class TestTransform extends stream.Transform {
+  constructor() {
+    super();
+  }
+
+  doTransform(chunk: string, encoding: string, callback: Function) {
+    callback.unsafeCall();
+  }
+
+  doFlush(callback: Function) {
+    callback.unsafeCall('test');
+  }
+}
+
+let transform = new TestTransform();
+transform.on('data', (data: Object) => {
+  console.info("StreamTest data is", data); // 期望结果: data is test
+});
+transform.end('my test');
 ```

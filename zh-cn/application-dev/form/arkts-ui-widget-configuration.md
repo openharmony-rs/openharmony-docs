@@ -1,9 +1,9 @@
 # 配置ArkTS卡片的配置文件
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 卡片相关的配置文件包括[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)配置和卡片配置。如果是[独立卡片包](./arkts-ui-widget-creation.md#方式二独立包方式创建卡片)，还会包含[独立卡片包配置](./arkts-ui-widget-configuration.md#独立卡片包配置)。
@@ -155,7 +155,7 @@
 | abilityName       | 字符串 | 否  | 趣味交互场景LiveFormExtensionAbility名称，默认为空。                                                                                              |
 | targetBundleName  | 字符串 | 是  | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。       |
 | subBundleName     | 字符串 | 否  | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)，默认为空。|
-| keepStateDuration | 数值  | 否  | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为[0,10000]的整数，超过取值范围则取默认值10000。                                               |
+| keepStateDuration | 数值  | 否  | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。                                               |
 
 ```json5
 {
@@ -178,7 +178,8 @@
 | 名称                                    | 类型     | 必填 | 说明 |
 |---------------------------------------|--------|----|----------------------------|
 | abilityName                           | 字符串 | 是  | 场景动效LiveFormExtensionAbility名称。|
-| <!--DelRow-->disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。 |
+| disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。<br/>**说明：**<br/>从API version 20开始支持该字段配置，功能仅对系统应用生效。 |
+| triggerTypes                           | 字符串数组 | 否  | 场景动效触发类型，支持的取值包括shake（摇一摇）。<br/>**说明：**<br/>从API版本26.0.0开始，支持该字段。|
 
 <!--RP2-->
    ```json5
@@ -193,6 +194,9 @@
               "PULL_DOWN_SEARCH",
               "LONG_CLICK",
               "DRAG"
+            ],
+            "triggerTypes": [
+              "shake"
             ]
          }          
        }

@@ -41,7 +41,7 @@
 
 ## 布局子元素在排列方向上的间距
 
-在布局容器内，可以通过space属性设置排列方向上子元素的间距，使各子元素在排列方向上有等间距效果。
+在布局容器内，可以通过[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)组件的[space](../reference/apis-arkui/arkui-ts/ts-container-row.md#rowoptions18对象说明)属性或[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)组件的[space](../reference/apis-arkui/arkui-ts/ts-container-column.md#columnoptions18对象说明)设置排列方向上子元素的间距，使各子元素在排列方向上有等间距效果。
 
 
 ### Column容器内排列方向上的间距

@@ -27,7 +27,7 @@ getIso(): number
 
 获取当前ISO值。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -68,9 +68,11 @@ function getIso(photoSession: camera.PhotoSession): number {
 
 setIso(iso: number): void
 
-设置ISO感光度值，仅在[ExposureMode](arkts-apis-camera-e.md#exposuremode)为EXPOSURE_MODE_LOCKED时支持设置ISO感光度值，设置的值需在[getSupportedIsoRange](arkts-apis-camera-ManualIsoQuery.md#getsupportedisorange24)范围内。
+设置ISO感光度值。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+当曝光锁定模式[ExposureMode](arkts-apis-camera-e.md#exposuremode)为EXPOSURE_MODE_LOCKED时，不支持设置ISO感光度值。设置的值需在[getSupportedIsoRange](arkts-apis-camera-ManualIsoQuery.md#getsupportedisorange24)范围内。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

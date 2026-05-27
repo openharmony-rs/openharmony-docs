@@ -1,7 +1,7 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)(系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -10,15 +10,23 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
+>
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本页面仅包含本模块的系统接口，其他公开接口参见[notificationExtensionSubscription](./js-apis-notificationExtensionSubscription.md)。
 
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import notificationExtensionSubscription from '@ohos.notificationExtensionSubscription';
 ```
 
 ## notificationExtensionSubscription.getAllSubscriptionBundles
@@ -32,6 +40,10 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -52,11 +64,21 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getAllSubscriptionBundles fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
+  console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+  console.error(`getAllSubscriptionBundles fail: ${error}`);
 });
 ```
 
@@ -71,6 +93,10 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -98,6 +124,7 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
@@ -115,6 +142,24 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+let targetBundle: notificationExtensionSubscription.BundleOption =
+  {
+    // 应改为开发者需要查询的目标应用信息
+    bundle: 'com.example.testnotification',
+  };
+notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen: boolean) => {
+  if (isOpen) {
+    console.info('GrantedState true');
+  } else {
+    console.info('GrantedState false');
+  }
+}).catch((error: Error) => {
+  console.error(`getUserGrantedState fail: ${error}`);
+});
+```
+
 ## notificationExtensionSubscription.setUserGrantedState
 
 setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void\>
@@ -126,6 +171,10 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -154,6 +203,7 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
@@ -164,6 +214,20 @@ notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then((
   console.info(`setUserGrantedState successfully.`);
 }).catch((err: BusinessError) => {
   console.error(`setUserGrantedState fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let targetBundle: notificationExtensionSubscription.BundleOption =
+  {
+    // 应改为开发者需要查询的目标应用信息
+    bundle: 'com.example.testnotification',
+  };
+notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then(() => {
+  console.info(`setUserGrantedState successfully.`);
+}).catch((error: Error) => {
+  console.error(`setUserGrantedState fail: ${error}`);
 });
 ```
 
@@ -178,6 +242,10 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -205,6 +273,7 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let targetBundle: notificationExtensionSubscription.BundleOption =
 {
@@ -215,6 +284,20 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).the
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let targetBundle: notificationExtensionSubscription.BundleOption =
+  {
+    // 应改为开发者需要查询的目标应用信息
+    bundle: 'com.example.testnotification',
+  };
+notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+}).catch((error: Error) => {
+  console.error(`getUserGrantedEnabledBundles fail: ${error}`);
 });
 ```
 
@@ -229,6 +312,10 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -258,6 +345,7 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 let targetBundle: notificationExtensionSubscription.BundleOption =
   {
@@ -274,5 +362,25 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
   console.info(`setUserGrantedBundleState successfully.`);
 }).catch((err: BusinessError) => {
   console.error(`setUserGrantedBundleState fail: ${JSON.stringify(err)}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let targetBundle: notificationExtensionSubscription.BundleOption =
+  {
+    // 应改为开发者需要设置的目标应用信息
+    bundle: 'com.example.testnotification',
+  };
+let enabledBundles: notificationExtensionSubscription.BundleOption[] = [
+  // 应改为开发者需要授权的实际应用
+  { bundle: 'com.example.xxx', uid: 11111111 },
+  { bundle: 'com.example.xxxx', uid: 11111111 },
+  { bundle: 'com.example.xxxxx' },
+];
+notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enabledBundles, true).then(() => {
+  console.info(`setUserGrantedBundleState successfully.`);
+}).catch((error: Error) => {
+  console.error(`setUserGrantedBundleState fail: ${error}`);
 });
 ```

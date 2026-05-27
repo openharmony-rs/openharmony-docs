@@ -13,7 +13,7 @@
 
 <!--Del-->
 > **说明：**
-> 权限级别为normal的权限，不涉及ACL使能字段。
+> 权限级别为normal的权限，不涉及是否支持证书授权字段。
 <!--DelEnd-->
 
 ## 申请方式
@@ -161,6 +161,8 @@
 ## ohos.permission.INTERNET
 
 允许使用Internet网络。
+
+获取该权限后，应用可以获取IP地址、进行DNS解析或自定义DNS规则等。
 
 **权限级别**：normal
 

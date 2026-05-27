@@ -1,8 +1,8 @@
 # 组件动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -20,7 +20,7 @@ ArkUI为组件提供了通用的属性动画和转场动画能力的同时，还
 
 - 减少开发者工作量，例如列表滑动组件自带滑动动效，开发者直接调用即可。
 
-更多效果，可以参考[组件说明](../reference/apis-arkui/arkui-ts/ts-container-flex.md)。
+以下给出Checkbox的默认动画示例和效果。更多效果，请参考对应的组件说明。
 
 示例代码和效果如下。
 
@@ -54,7 +54,7 @@ struct ComponentDemo {
 
 - 在滑动或者点击操作时通过改变各个Scroll子组件的仿射属性来实现各种效果。
 
-- 如果要在滑动过程中定制动效，可在滑动回调[onScroll](../reference/apis-arkui/arkui-ts/ts-container-grid.md#onscrolldeprecated)中监控滑动距离，并计算每个组件的仿射属性。也可以自己定义手势，通过手势监控位置，手动调用ScrollTo改变滑动位置。
+- 如果要在滑动过程中定制动效，可在滑动回调[onDidScroll](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12)中监控滑动距离，并计算每个组件的仿射属性。也可以自己定义手势，通过手势监控位置，手动调用ScrollTo改变滑动位置。
 
 - 在滑动回调[onScrollStop](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop14)或手势结束回调中对滑动的最终位置进行微调。
 

@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -1461,6 +1461,7 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 
 <!--code_no_check-->
 ```ts
+// EntryAbility.ets
 import { window } from '@kit.ArkUI';
 import { UIAbility } from '@kit.AbilityKit';
 import { relationalStore } from '@kit.ArkData';

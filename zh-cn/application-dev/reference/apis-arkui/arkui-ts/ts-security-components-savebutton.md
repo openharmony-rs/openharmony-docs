@@ -34,7 +34,9 @@ SaveButton()
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[SaveButton](#savebutton-3)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +54,9 @@ SaveButton(options: SaveButtonOptions)
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[SaveButton](#savebutton-3)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,6 +79,8 @@ SaveButton(options?: SaveButtonOptions)
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[SaveButton](#savebutton-1)和[SaveButton](#savebutton-2)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +110,9 @@ SaveButton(options?: SaveButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +130,9 @@ SaveButton(options?: SaveButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -135,35 +145,39 @@ SaveButton(options?: SaveButtonOptions)
 
 保存控件的文本描述。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DOWNLOAD | 0 | 保存控件的文字描述为“下载”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| DOWNLOAD_FILE | 1 | 保存控件的文字描述为“下载文件”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| SAVE | 2 | 保存控件的文字描述为“保存”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| SAVE_IMAGE | 3 | 保存控件的文字描述为“保存图片”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| SAVE_FILE | 4 | 保存控件的文字描述为“保存文件”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| DOWNLOAD_AND_SHARE | 5 | 保存控件的文字描述为“下载分享”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| RECEIVE | 6 | 保存控件的文字描述为“接收”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| CONTINUE_TO_RECEIVE | 7 | 保存控件的文字描述为“继续接收”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| SAVE_TO_GALLERY<sup>12+</sup> | 8 | 保存控件的文字描述为“保存至图库”。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| EXPORT_TO_GALLERY<sup>12+</sup> | 9 | 保存控件的文字描述为“导出”。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| QUICK_SAVE_TO_GALLERY<sup>12+</sup> | 10 | 保存控件的文字描述为“快速保存图片”。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| RESAVE_TO_GALLERY<sup>12+</sup> | 11 | 保存控件的文字描述为“重新保存”。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| SAVE_ALL<sup>18+</sup> | 12 | 保存控件的文字描述为“全部保存”。 <br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| DOWNLOAD | 0 | 保存控件的文字描述为“下载”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| DOWNLOAD_FILE | 1 | 保存控件的文字描述为“下载文件”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| SAVE | 2 | 保存控件的文字描述为“保存”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| SAVE_IMAGE | 3 | 保存控件的文字描述为“保存图片”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| SAVE_FILE | 4 | 保存控件的文字描述为“保存文件”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| DOWNLOAD_AND_SHARE | 5 | 保存控件的文字描述为“下载分享”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| RECEIVE | 6 | 保存控件的文字描述为“接收”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| CONTINUE_TO_RECEIVE | 7 | 保存控件的文字描述为“继续接收”。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| SAVE_TO_GALLERY<sup>12+</sup> | 8 | 保存控件的文字描述为“保存至图库”。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| EXPORT_TO_GALLERY<sup>12+</sup> | 9 | 保存控件的文字描述为“导出”。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| QUICK_SAVE_TO_GALLERY<sup>12+</sup> | 10 | 保存控件的文字描述为“快速保存图片”。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| RESAVE_TO_GALLERY<sup>12+</sup> | 11 | 保存控件的文字描述为“重新保存”。 <br/>**ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| SAVE_ALL<sup>18+</sup> | 12 | 保存控件的文字描述为“全部保存”。 <br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## SaveButtonOnClickResult
 
 保存控件点击后的授权结果。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SUCCESS | 0 | 保存控件点击后权限授权成功。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后弹窗用户取消授权。 <br/>**ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。  |
+| SUCCESS | 0 | 保存控件点击后权限授权成功。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| TEMPORARY_AUTHORIZATION_FAILED | 1 | 保存控件点击后权限授权失败。 <br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| CANCELED_BY_USER<sup>21+</sup>  | 2 | 保存控件点击后弹窗用户取消授权。 <br/>**ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。  |
 
 ## SaveButtonCallback<sup>18+</sup>
 
@@ -175,7 +189,9 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -191,7 +207,7 @@ type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, e
 
 SaveButtonAttribute提供自定义图标（setIcon）、自定义文本（setText）、图标尺寸（iconSize）、图标圆角（iconBorderRadius），以及按压态效果（stateEffect）等属性设置的方法。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 ### setIcon<sup>20+</sup>
 
@@ -207,7 +223,9 @@ ArkTS-Sta: setIcon(icon: Resource | undefined)
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -231,7 +249,9 @@ ArkTS-Sta: setText(text: string | Resource | undefined)
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,7 +273,9 @@ ArkTS-Sta: iconSize(size: Dimension | SizeOptions | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,7 +299,9 @@ ArkTS-Sta: iconBorderRadius(radius: Dimension | BorderRadiuses | undefined)
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -301,7 +325,9 @@ ArkTS-Sta: stateEffect(enabled: boolean | undefined)
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -323,7 +349,9 @@ ArkTS-Sta: userCancelEvent(enabled: boolean | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -339,7 +367,7 @@ ArkTS-Dyn: symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
 ArkTS-Sta: symbolIconColor(color: Array&lt;ResourceColor&gt; | undefined)
 
-设置安全控件Symbol图标颜色。
+设置保存控件Symbol图标颜色。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -357,7 +385,7 @@ ArkTS-Sta: symbolIconColor(color: Array&lt;ResourceColor&gt; | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| color  |  ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\> <br> ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[渲染策略](#symbolrenderingstrategy)下默认值不同。<br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。 |
+| color  |  ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\> <br> ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | 设置保存控件Symbol图标颜色。<br/> 默认值：不同[symbolRenderingStrategy](#symbolrenderingstrategy)下默认值不同。<br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。 |
 
 ### symbolFontWeight
 
@@ -365,7 +393,7 @@ ArkTS-Dyn: symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
 ArkTS-Sta: symbolFontWeight(fontWeight: int | FontWeight | string | Resource | undefined)
 
-设置安全控件Symbol图标粗细。
+设置保存控件Symbol图标粗细。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -383,7 +411,7 @@ ArkTS-Sta: symbolFontWeight(fontWeight: int | FontWeight | string | Resource | u
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| fontWeight  | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| undefined \| [Resource](ts-types.md#resource) | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
+| fontWeight  | ArkTS-Dyn: number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: int \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| undefined \| [Resource](ts-types.md#resource) | 是   | 设置保存控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
 
 ### symbolRenderingStrategy
 
@@ -391,7 +419,7 @@ ArkTS-Dyn: symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 ArkTS-Sta: symbolRenderingStrategy(strategy: SymbolRenderingStrategy | undefined)
 
-设置安全控件Symbol图标渲染策略。
+设置保存控件Symbol图标渲染策略。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -409,7 +437,7 @@ ArkTS-Sta: symbolRenderingStrategy(strategy: SymbolRenderingStrategy | undefined
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| strategy  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) <br> ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | 安全控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
+| strategy  | ArkTS-Dyn: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) <br> ArkTS-Sta: [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) \| undefined | 是   | 保存控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 <br/>ArkTS-Sta：设定为undefined时使用默认值进行设置。|
 
 不同渲染策略效果可参考以下示意图。
 
@@ -435,7 +463,9 @@ ArkTS-Sta: onClick(event: SaveButtonCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

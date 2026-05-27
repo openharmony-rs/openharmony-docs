@@ -2,14 +2,16 @@
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @foredward-->
-<!--Designer: @h00918518-->
-<!--Tester: @WIFIroam-test-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @gcw_3Lx1FoMT-->
+<!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
 该模块提供了第三方客户端接入802.1X认证（一种基于端口的网络接入控制协议）流程的机制，支撑客户端的定制认证等功能。
 
 > **说明：** 
+>
+> 本模块仅适用于ArkTS-Dyn。
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -60,16 +62,12 @@ import {eap} from '@kit.NetworkKit';
 let netType = 1;
 let eapCode = 1;
 let eapType = 25;
-let  eapData = (eapData:eap.EapData):void => {
-  console.info("rsp result",JSON.stringify(eapData))
-}
-    
-try {
-  eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
-  console.info('regCustomEapHandler success');
-} catch (err) {
-  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
+let eapData = (eapData:eap.EapData):void => {
+  console.info("rsp result", JSON.stringify(eapData));
+};
+
+eap.regCustomEapHandler(netType, eapCode, eapType, eapData);
+console.info('regCustomEapHandler success');
 ```
 
 ## eap.unregCustomEapHandler
@@ -111,16 +109,12 @@ import {eap} from '@kit.NetworkKit';
 let netType = 1;
 let eapCode = 1;
 let eapType = 25;
-let  eapData = (eapData:eap.EapData):void => {
-  console.info("rsp result",JSON.stringify(eapData))
-}
-    
-try {
-  eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
-  console.info('unregCustomEapHandler success');
-} catch (err) {
-  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
-}
+let eapData = (eapData:eap.EapData):void => {
+  console.info("rsp result", JSON.stringify(eapData));
+};
+
+eap.unregCustomEapHandler(netType, eapCode, eapType, eapData);
+console.info('unregCustomEapHandler success');
 ```
 
 ## eap.replyCustomEapData

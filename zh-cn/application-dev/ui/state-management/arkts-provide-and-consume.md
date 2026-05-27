@@ -266,9 +266,9 @@
    }
    ```
 
-5. \@Provide与\@Consume不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+5. \@Provide与\@Consume不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 
-   从API version 23开始，添加对\@Provide与\@Consume装饰Function类型变量的校验，编译期会报错。
+   从API version 23开始，在应用编译时添加了相关校验，\@Provide与\@Consume装饰Function类型变量会提示ERROR，应在代码中删除Function类型变量的\@Provide或\@Consume装饰器。
 
 6. 从API version 20开始，支持跨BuilderNode配对\@Provide/\@Consume。在BuilderNode上树时，\@Consume通过key匹配找到最近的\@Provide，两者类型需要一致，如果不一致，则会抛出运行时错误。
 

@@ -73,6 +73,7 @@
 - [证书PKCS12的创建和解析](create-parse-pkcs12.md)
 - [证书链在线校验证书吊销状态](create-verify-cerchainvalidator-revocation-object.md)
 - [证书链校验时下载缺失的中间CA证书](allow-download-Intermediate-Cert.md)
+- [构建并校验证书链](build-and-verify-cert-chain.md)
 
 证书算法库框架主要提供了以下类，开发者可以查阅对应API参考，了解以下接口：
 

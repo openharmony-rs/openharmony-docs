@@ -10,7 +10,11 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -28,11 +32,15 @@ import { LayoutAlgorithm, CustomLayoutAlgorithm, RowLayoutAlgorithm, ColumnLayou
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 ## CustomLayoutAlgorithm
 
@@ -44,6 +52,10 @@ import { LayoutAlgorithm, CustomLayoutAlgorithm, RowLayoutAlgorithm, ColumnLayou
 
 **装饰器类型：** \@ObservedV2
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 ### onMeasure
 onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 
@@ -53,13 +65,19 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 >
 > 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[measure()](js-apis-arkui-frameNode.md#measure12)方法测量子组件大小，参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](./arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -69,7 +87,10 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 | constraint | [LayoutConstraint](js-apis-arkui-frameNode.md#layoutconstraint12) | 是 | 动态布局组件进行测量时使用的布局约束。|
 
 ### onLayout
-onLayout(self: FrameNode, position: Position): void
+
+ArkTS-Dyn: onLayout(self: FrameNode, position: Position): void
+
+ArkTS-Sta: onLayout(self: FrameNode, position: NodePosition): void
 
 通过重写此函数，开发者可以自定义排列子组件的位置。ArkUI框架会在动态布局组件确定位置时，将该组件对应的FrameNode和布局位置通过onLayout传递给开发者。不允许在onLayout函数中改变状态变量。
 
@@ -77,20 +98,26 @@ onLayout(self: FrameNode, position: Position): void
 >
 > 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[layout()](js-apis-arkui-frameNode.md#layout12)方法设置子组件位置，参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](./arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
   
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | self | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | 是 | 动态布局组件在组件树上的实体节点。|
-| position | [Position](js-apis-arkui-graphics.md#position) | 是 | 动态布局组件进行布局时使用的位置信息。|
+| position | ArkTS-Dyn: [Position](js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](js-apis-arkui-graphics.md#nodeposition23) | 是 | 动态布局组件进行布局时使用的位置信息。|
 
 **示例：**
 
@@ -106,15 +133,25 @@ onLayout(self: FrameNode, position: Position): void
 
 **装饰器类型：** \@ObservedV2
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 ### 属性
+
+**装饰器类型：** \@ObservedV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -129,13 +166,19 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 水平方向线性布局算法类的构造函数。
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -153,11 +196,15 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -176,15 +223,25 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 **装饰器类型：** \@ObservedV2
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 ### 属性
+
+**装饰器类型：** \@ObservedV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -199,13 +256,19 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 垂直方向线性布局算法类的构造函数。
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -223,11 +286,15 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -247,15 +314,25 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 **装饰器类型：** \@ObservedV2
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 ### 属性
+
+**装饰器类型：** \@ObservedV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -267,13 +344,19 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 堆叠布局算法类的构造函数。
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -291,11 +374,15 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -311,15 +398,23 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 **装饰器类型：** \@ObservedV2
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 ### 属性
+
+**装饰器类型：** \@ObservedV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
@@ -333,13 +428,17 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 网格布局算法类的构造函数。
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -357,11 +456,13 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |

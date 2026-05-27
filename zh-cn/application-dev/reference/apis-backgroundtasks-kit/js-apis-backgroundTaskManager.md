@@ -5,7 +5,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供后台任务管理能力。
 
@@ -92,7 +92,7 @@ getRemainingDelayTime(requestId: number, callback: AsyncCallback&lt;number&gt;):
 | 参数名       | 类型                          | 必填   | 说明                                       |
 | --------- | --------------------------- | ---- | ---------------------------------------- |
 | requestId | number                      | 是    | 延迟挂起的请求ID。这个值通过调用[requestSuspendDelay](#backgroundtaskmanagerrequestsuspenddelaydeprecated)方法获取。 |
-| callback  | AsyncCallback&lt;number&gt; | 是    | 指定的callback回调方法。用于返回应用程序进入挂起状态之前的剩余时间，以毫秒为单位。 |
+| callback  | AsyncCallback&lt;number&gt; | 是    | 指定的callback回调方法。用于返回应用程序进入挂起状态之前的剩余时间，单位：ms。 |
 
 **示例**：
 
@@ -132,7 +132,7 @@ getRemainingDelayTime(requestId: number): Promise&lt;number&gt;
 
 | 类型                    | 说明                                       |
 | --------------------- | ---------------------------------------- |
-| Promise&lt;number&gt; | 指定的Promise回调方法。返回应用程序进入挂起状态之前的剩余时间，以毫秒为单位。 |
+| Promise&lt;number&gt; | 指定的Promise回调方法。返回应用程序进入挂起状态之前的剩余时间，单位：ms。 |
 
 **示例**：
 
@@ -507,7 +507,7 @@ export default class EntryAbility extends UIAbility {
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | requestId       | number | 否    | 否    | 延迟挂起的请求ID。                               |
-| actualDelayTime | number | 否    | 否    | 应用的实际挂起延迟时间，以毫秒为单位。<br/>一般情况下默认值为180000，低电量（依据系统低电量广播）时默认值为60000。 |
+| actualDelayTime | number | 否    | 否    | 应用的实际挂起延迟时间，单位：ms。<br/>一般情况下默认值为180000，低电量（依据系统低电量广播）时默认值为60000。 |
 
 ## BackgroundMode<sup>(deprecated)</sup>
 

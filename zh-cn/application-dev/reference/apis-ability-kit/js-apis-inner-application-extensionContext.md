@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ExtensionContext是[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的上下文环境，继承自[Context](js-apis-inner-application-context.md#context)。
 
@@ -12,8 +12,11 @@ ExtensionContext模块提供访问特定[ExtensionAbility](js-apis-app-ability-e
 
 > **说明：**
 >
->  - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->  - 本模块接口仅可在Stage模型下使用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -23,11 +26,15 @@ import { common } from '@kit.AbilityKit';
 
 ## 属性
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称 | 类型 | 只读 | 可选 | 说明 | 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | currentHapModuleInfo | [HapModuleInfo](js-apis-bundleManager-hapModuleInfo.md) | 否 | 否 | 所属Hap包的信息。 |
 | config   | [Configuration](js-apis-app-ability-configuration.md) | 否 | 否 | 所属Module的配置信息。 |

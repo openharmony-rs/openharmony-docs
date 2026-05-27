@@ -27,7 +27,7 @@ resourceToSendableResource(resource: Resource): SendableResource
 
 将Resource对象转换为SendableResource对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.ResourceManager
 
@@ -82,7 +82,7 @@ sendableResourceToResource(resource: SendableResource): Resource
 
 将SendableResource对象转换为Resource对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.ResourceManager
 
@@ -135,7 +135,7 @@ try {
 
 type Resource = _Resource
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 
@@ -147,7 +147,7 @@ type Resource = _Resource
 
 type SendableResource = _SendableResource
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Global.ResourceManager
 

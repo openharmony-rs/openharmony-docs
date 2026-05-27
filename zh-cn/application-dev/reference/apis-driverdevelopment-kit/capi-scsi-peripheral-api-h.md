@@ -1,7 +1,7 @@
 # scsi_peripheral_api.h
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -451,6 +451,6 @@ int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseD
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 调用接口成功。<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) senseData格式不是描述符或固定格式、senseDataLen小于<br>         SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE或者senseDataLen小于SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE。 |
+| int32_t | [SCSIPERIPHERAL_DDK_SUCCESS](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) 调用接口成功。<br>         [SCSIPERIPHERAL_DDK_INVALID_PARAMETER](capi-scsi-peripheral-types-h.md#scsiperipheral_ddkerrcode) senseData格式不是描述符或固定格式、senseDataLen小于<br>         [SCSIPERIPHERAL_MIN_DESCRIPTOR_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#scsiperipheral_min_descriptor_format_sense)或者senseDataLen小于[SCSIPERIPHERAL_MIN_FIXED_FORMAT_SENSE](capi-scsi-peripheral-types-h.md#scsiperipheral_min_fixed_format_sense)。 |
 
 

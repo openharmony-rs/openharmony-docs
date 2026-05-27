@@ -1,8 +1,8 @@
 # 使用AVMetadataExtractor提取音视频元数据信息(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -25,7 +25,9 @@
    
    开发者需根据实际情况，确认资源有效性并设置（只能设置其中一种）：
    
-   - 如果设置fdSrc，可以使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。也可以通过应用沙箱路径访问对应资源（必须确保资源可用），参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+   - 如果设置fdSrc，可以使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考ResourceManager API中的[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。也可以通过应用沙箱路径访问对应资源（必须确保资源可用），参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+
+     ArkTS-Dyn:
      ```ts
      import { common } from '@kit.AbilityKit';
      import { media } from '@kit.MediaKit';
@@ -38,8 +40,34 @@
      // 设置fdSrc，test.mp3为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
      avMetadataExtractor.fdSrc = await context.resourceManager.getRawFd('test.mp3');
      ```
+     ArkTS-Sta:
+     <!-- @[set_fdSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+     
+     ```ts
+     import media from '@ohos.multimedia.media';
+     import { globalContext } from '../entryability/GlobalContext';
+     private avMetadataExtractor: media.AVMetadataExtractor | undefined;
+     private context: Context | undefined;
+     private fileDescriptor: resourceManager.RawFileDescriptor | undefined;
+  
+     // 创建AVMetadataExtractor对象。
+     this.avMetadataExtractor = await media.createAVMetadataExtractor();
+     // 获取rawfile目录下资源文件描述符，设置fdSrc属性。
+     // 获取当前组件所在Ability的Context，并通过Context获取应用文件路径。
+     this.context = globalContext.getAbilityContext();
+     // 设置fdSrc，test.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
+     this.fileDescriptor = await this.context!!.resourceManager.getRawFd('test.mp4');
+     const descriptor: media.AVFileDescriptor = {
+       fd: this.fileDescriptor!.fd,
+       offset: this.fileDescriptor!.offset,
+       length: this.fileDescriptor!.length
+     };
+     this.avMetadataExtractor!!.fdSrc = descriptor;
+     ```
 
    - 如果设置dataSrc，必须正确设置dataSrc中的callback属性，确保callback被调用时能正确读取到对应资源，使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+   
+     ArkTS-Dyn:
      ```ts
      import { fileIo, ReadOptions } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
@@ -77,8 +105,54 @@
      };
      // 设置dataSrc。
      avMetadataExtractor.dataSrc = dataSrc;
-     ```
 
+     // 在执行完后续获取元数据或者抽帧操作后，需要关闭fd。
+     fileIo.closeSync(fd);
+     ```
+     ArkTS-Sta:
+     <!-- @[set_dataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+     ```ts
+     import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+     import common from '@ohos.app.ability.common';
+     import media from '@ohos.multimedia.media';
+     private avMetadataExtractor: media.AVMetadataExtractor | undefined;
+     private context: Context | undefined;
+     private fileDescriptor: resourceManager.RawFileDescriptor | undefined;
+     const TAG = 'MetadataDemo';
+
+     // 创建AVMetadataExtractor对象。
+     this.avMetadataExtractor = await media.createAVMetadataExtractor();
+     this.context = globalContext.getAbilityContext();
+     let rootPath: string = this.context!!.filesDir; // 应用文件目录。
+     let fileName: string = '/test.mp4'; // test.mp4为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
+     // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
+     // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
+     let fd: Int = fs.openSync(rootPath + fileName, fs.OpenMode.READ_ONLY).fd;
+     let fileSize: Long = fs.statSync(rootPath + fileName).size;
+     let dataCallback = (buffer: ArrayBuffer, len: Long, pos?: Long | undefined): Int => {
+       if (buffer == undefined || len == undefined || pos == undefined) {
+         console.error(TAG, `dataSrc callback param invalid`);
+         return -1;
+       }
+       let options: ReadOptions = {
+         offset: pos,
+         length: len
+       };
+       let num: Int = fs.readSync(fd, buffer, options).toInt();
+       console.info(TAG, 'readAt end, num: ' + num);
+       if (num > 0 && fileSize >= pos) {
+         return num;
+       }
+       return -1;
+     }
+     let dataSrc: media.AVDataSrcDescriptor = {
+       fileSize: fileSize,
+       callback: dataCallback
+     };
+      // 设置dataSrc。
+     this.avMetadataExtractor!!.dataSrc = dataSrc;
+     ```
+  
    - 如果设置[setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20)，必须正确设置setUrlSource中的url和headers属性，确保正确访问url。
      ```ts
      import { media } from '@kit.MediaKit';
@@ -92,8 +166,10 @@
      };
      avMetadataExtractor.setUrlSource(url, headers);
      ```
-
+     
    - 不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
+   
+     ArkTS-Dyn:
      ```ts
      import { common } from '@kit.AbilityKit';
      import { fileIo } from '@kit.CoreFileKit';
@@ -107,7 +183,23 @@
      let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
      avMetadataExtractor.fdSrc = fileIo.openSync(rootPath + testFilename); // 设置fdSrc属性。
      ```
+     ArkTS-Sta:
+     <!-- @[set_dataSrc](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+     ```ts
+     import { common } from '@kit.AbilityKit';
+     import { fileIo as fs } from '@kit.CoreFileKit';
+     import media from '@ohos.multimedia.media';
+     private avMetadataExtractor: media.AVMetadataExtractor | undefined;
+     private context: Context | undefined;
 
+     // 创建AVMetadataExtractor对象。
+      this.avMetadataExtractor = await media.createAVMetadataExtractor();
+      this.context = globalContext.getAbilityContext();
+      let rootPath: string = this.context!!.filesDir; // 应用文件目录。
+      let fileName: string = '/test.mp4'; // test.mp4为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
+      let fd: Int = fs.openSync(rootPath + fileName).fd; // 获取fdSrc属性。
+     
+     ```
 3. 获取元数据：调用fetchMetadata()，可以获取到一个[AVMetadata](../../reference/apis-media-kit/arkts-apis-media-i.md#avmetadata11)对象，通过访问该对象的各个属性，可以获取到元数据。
    ```ts
    // 获取元数据（callback模式）。
@@ -149,6 +241,8 @@
    ```
 
 6. （可选）获取视频缩略图：调用fetchFrameByTime，可以获取到视频缩略图。
+
+   ArkTS-Dyn:
    ```ts
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
@@ -163,8 +257,26 @@
    // 获取视频缩略图（promise模式）。
    this.pixelMap = await avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param);
    ```
-
+   ArkTS-Sta:
+   <!-- @[fetch_frame](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+   ```ts
+   import { image } from '@kit.ImageKit';
+   // pixelMap对象声明，用于图片显示。
+   @State pixelMap: image.PixelMap | undefined = undefined;
+   private avMetadataExtractor: media.AVMetadataExtractor | undefined; 
+   // 接口入参声明。
+   let timeUs: Long = 0;
+   let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+   let param: media.PixelMapParams = {
+     width : 300,
+     height : 300
+   }
+   // 获取视频缩略图（promise模式）。
+   this.pixelMap = await this.avMetadataExtractor!!.fetchFrameByTime(timeUs, queryOption, param);
+   ```
 7. （可选）批量获取视频缩略图：调用fetchFramesByTimes，能够批量获取视频缩略图。
+
+   ArkTS-Dyn:
    ```ts
    import { image } from '@kit.ImageKit';
    // pixelMap对象声明，用于图片显示。
@@ -177,12 +289,12 @@
      height : 300
    }
    // 获取视频缩略图（callback模式）。
-   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
      if (err) {
-       console.error(`fetch failed, error = ${JSON.stringify(err)}`);
+       console.error(TAG, `fetch frame failed, error code: ${err.code}, error message: ${err.message}`);
        return;
      }
-     console.info(`fetch success.`);
+     console.info(TAG, `fetch frame successfully.`);
      if (frameInfo !== undefined && frameInfo.image !== undefined) {
        this.pixelMap = frameInfo.image;
      }
@@ -191,7 +303,35 @@
    // 批量获取缩略图任务耗时可能较长，可以调用cancelAllFetchFrames停止在当前extractor上所有缩略图获取任务（仅对批量获取接口生效）。
    avMetadataExtractor.cancelAllFetchFrames();
    ```
-
+   ArkTS-Sta:
+   <!-- @[fetch_frames](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS-sta/entry/src/main/ets/pages/Index.ets) -->
+   ```ts
+   import image from '@ohos.multimedia.image';
+   // pixelMap对象声明，用于图片显示。
+   @State pixelMap: image.PixelMap | undefined = undefined;
+   private avMetadataExtractor: media.AVMetadataExtractor | undefined;
+   // 回调函数声明。
+   let onFrameFetched = (frameInfo: media.FrameInfo, err?: BusinessError | undefined): void => {
+        if (err) {
+          console.info(TAG, `fetchFramesByTimes callback fail, error = ${JSON.stringify(err)}`);
+          return;
+        }
+        if (frameInfo !== undefined && frameInfo.image !== undefined && frameInfo.actualTimeUs != undefined) {
+          this.pixelMap = frameInfo.image;
+          console.info(TAG, `fetchFrameByTime callback succ.`);
+        }
+      };
+      let timesUs: Long[] = [0];
+      let queryOption = media.AVImageQueryOptions.AV_IMAGE_QUERY_NEXT_SYNC;
+      let param: media.PixelMapParams = {
+        width: 300,
+        height: 300
+      };
+   // 批量获取视频缩略图（callback模式）。
+   this.avMetadataExtractor!!.fetchFramesByTimes(timesUs, queryOption, param, onFrameFetched);
+   // 暂停批量获取视频缩略图。
+   this.avMetadataExtractor!!.cancelAllFetchFrames();
+   ```
 8. 释放资源：调用release()销毁实例，释放资源。
    ```ts
    // 释放资源（callback模式）。

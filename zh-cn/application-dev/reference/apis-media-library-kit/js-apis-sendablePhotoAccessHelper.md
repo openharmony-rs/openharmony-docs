@@ -26,7 +26,7 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -34,7 +34,7 @@ getPhotoAccessHelper(context: Context): PhotoAccessHelper
 
 | 参数名  | 类型                                                         | 必填 | 说明                       |
 | ------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的Context。 |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的上下文。 |
 
 **返回值：**
 
@@ -73,6 +73,8 @@ struct Index {
 ```
 
 ## PhotoAccessHelper
+
+提供操作系统媒体资源能力的接口。
 
 ### getAssets
 
@@ -220,7 +222,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 
 此接口在未申请相册管理模块权限'ohos.permission.WRITE_IMAGEVIDEO'时，可以使用安全控件创建媒体资源，详情请参考[保存媒体库资源](../../media/medialibrary/photoAccessHelper-savebutton.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -466,7 +468,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 | 名称        | 类型                    | 只读 | 可选 | 说明                                                         |
 | ----------- | ----------------------- | ---- | ---- | ------------------------------------------------------------ |
-| uri<sup>12+</sup>         | string                  | 是   | 否   | 媒体文件资源URI（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件URI介绍中的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| uri<sup>12+</sup>         | string                  | 是   | 否   | 媒体文件资源URI（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件URI介绍中的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoType   | [PhotoType](#phototype) | 是   | 否   | 媒体文件类型。                                               |
 | displayName | string                  | 是   | 否   | 显示文件名，包含后缀名。字符串长度的取值范围为[1, 255]。                                     |
 
@@ -524,7 +526,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 get(member: string): photoAccessHelper.MemberType
 
-获取PhotoAsset成员参数。
+获取PhotoAsset成员参数的值。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -638,7 +640,7 @@ commitModify(): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -816,7 +818,7 @@ isAfterLast(): boolean
 
 | 类型    | 说明                                                        |
 | ------- | ----------------------------------------------------------- |
-| boolean | 当读到最后一条记录后，后续没有记录返回true，否则返回false。 |
+| boolean | 当结果集指向最后一行时返回true，否则返回false。|
 
 **错误码：**
 
@@ -857,7 +859,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 close(): void
 
-释放FetchResult实例并使其失效。无法调用其他方法。
+释放FetchResult实例并使其失效。释放后无法调用其他方法。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1319,7 +1321,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 枚举，媒体文件类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -1332,7 +1334,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 枚举，不同[PhotoAsset](#photoasset)的类型。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

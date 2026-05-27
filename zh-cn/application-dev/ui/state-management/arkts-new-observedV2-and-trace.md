@@ -948,7 +948,7 @@ let realInfo: Info = new Info();
 let jsonResult: string = JSON.stringify(realInfo); // '{"__ob_name":"Tom","__ob_age":24}'
 ```
 
-将@ObservedV2装饰的对象通过JSON.stringify序列化后，再通过JSON.parse反序列化，将失去观察能力。
+将@ObservedV2装饰的对象通过[JSON.stringify](../../reference/apis-arkts/js-apis-json.md#jsonstringify-1)序列化后，再通过JSON.parse反序列化，将失去观察能力。
 
 ```ts
 @ObservedV2

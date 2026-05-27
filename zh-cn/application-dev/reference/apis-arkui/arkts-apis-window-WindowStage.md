@@ -40,7 +40,7 @@ getMainWindow(callback: AsyncCallback&lt;Window&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -141,7 +141,7 @@ getMainWindow(): Promise&lt;Window&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -239,7 +239,7 @@ getMainWindowSync(): Window
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -324,13 +324,13 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 
 创建该WindowStage实例下的子窗口，使用callback异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -431,13 +431,13 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 
 创建该WindowStage实例下的子窗口，使用Promise异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -529,13 +529,13 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 
 创建该WindowStage实例下的子窗口，使用Promise异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#subwindowoptions11)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -610,7 +610,7 @@ getSubWindow(callback: AsyncCallback&lt;Array&lt;Window&gt;&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -667,7 +667,7 @@ getSubWindow(): Promise&lt;Array&lt;Window&gt;&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -724,7 +724,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -823,7 +823,7 @@ loadContent(path: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -925,7 +925,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -1017,7 +1017,7 @@ loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1162,7 +1162,7 @@ loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1298,7 +1298,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -1514,7 +1514,7 @@ on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -1629,7 +1629,7 @@ off(eventType: 'windowStageEvent', callback?: Callback&lt;WindowStageEventType&g
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -2425,7 +2425,7 @@ setCustomDensity(density: number): void
 
 已创建的子窗和系统窗口不会立即跟随主窗的customDensity变化重新布局，而是在子窗或系统窗口下一次位置、大小、系统缩放大小等窗口布局信息变化时跟随主窗的customDensity变化重新布局。
 
-当存在同时使用该接口和[setDefaultDensityEnabled(true)](#setdefaultdensityenabled12)的情况时，以最后调用的设置效果为准。
+当存在同时使用该接口和[setDefaultDensityEnabled()](#setdefaultdensityenabled12)接口传入true的情况时，以最后调用的设置效果为准。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2483,7 +2483,7 @@ ArkTS-Sta: setCustomDensity(density: double, applyToSubWindow?: boolean): void
 
 支持应用主窗口自定义显示大小缩放系数，并设置已创建的子窗和系统窗口跟随主窗重新布局的生效时机。
 
-当存在同时使用该接口和[setDefaultDensityEnabled(true)](#setdefaultdensityenabled12)的情况时，以最后调用的设置效果为准。
+当存在同时使用该接口和[setDefaultDensityEnabled()](#setdefaultdensityenabled12)接口传入true的情况时，以最后调用的设置效果为准。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2568,7 +2568,7 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2671,7 +2671,7 @@ removeStartingWindow(): Promise&lt;void&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -3309,7 +3309,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置主窗的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持悬浮窗模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。<br> 注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
+| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置主窗的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持自由悬浮窗口模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。<br> 注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
 
 **返回值：**
 
@@ -3411,7 +3411,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置主窗的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持悬浮窗模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。<br> 注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中属性的supportWindowModes字段取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
+| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置主窗的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持自由悬浮窗口模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，不支持仅配置SPLIT。<br> 注：数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)中属性的supportWindowModes字段取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
 | grayOutMaximizeButton | boolean | 是 | 是否显示并将主窗口的最大化按钮置灰。true表示显示并将主窗口的最大化按钮置灰，此时最大化按钮不可用；false表示不显示主窗口的最大化按钮。此参数配置仅在supportedWindowModes不支持FULL_SCREEN时生效。 |
 
 **返回值：**

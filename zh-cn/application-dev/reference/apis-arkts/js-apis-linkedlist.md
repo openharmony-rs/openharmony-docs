@@ -1,8 +1,8 @@
 # @ohos.util.LinkedList (线性容器LinkedList)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -23,10 +23,11 @@ LinkedList和[ArrayList](js-apis-arraylist.md)相比，LinkedList插入数据效
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
-
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 ## 导入模块
 
@@ -38,13 +39,17 @@ import { LinkedList } from '@kit.ArkTS';
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| length | number | 是 | 否 | LinkedList的元素个数。 |
+| length | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否 | LinkedList的元素个数。 |
 
 
 ### constructor
@@ -53,9 +58,13 @@ constructor()
 
 LinkedList的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -68,8 +77,16 @@ LinkedList的构造函数。
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<string | number | boolean | object>();
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList: LinkedList<string | int | boolean | object> = new LinkedList<string | int | boolean | object>();
 ```
 
 
@@ -79,9 +96,13 @@ add(element: T): boolean
 
 在LinkedList尾部插入元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -105,8 +126,28 @@ add(element: T): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<string | number | boolean | object>();
+let result = linkedList.add("a");
+let result1 = linkedList.add(1);
+let b = [1, 2, 3];
+let result2 = linkedList.add(b);
+class C {
+  name: string = ''
+  age: string = ''
+}
+let c: C = {name : "Dylan", age : "13"};
+let result3 = linkedList.add(c);
+let result4 = linkedList.add(false);
+console.info("result = ", result4) // result =  true
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList: LinkedList<string | int | boolean | object> = new LinkedList<string | int | boolean | object>();
 let result = linkedList.add("a");
 let result1 = linkedList.add(1);
 let b = [1, 2, 3];
@@ -127,9 +168,13 @@ addFirst(element: T): void
 
 在LinkedList头部插入元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -146,6 +191,8 @@ addFirst(element: T): void
 | 10200011 | The addFirst method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let linkedList = new LinkedList<string | number | boolean | object>();
@@ -164,34 +211,60 @@ let result = linkedList.get(2);
 console.info("result:", result);  // result: 1,2,3
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let linkedList: LinkedList<string | int | boolean | object> = new LinkedList<string | int | boolean | object>();
+linkedList.addFirst("a");
+linkedList.addFirst(1);
+let b = [1, 2, 3];
+linkedList.addFirst(b);
+class C {
+  name: string = ''
+  age: string = ''
+}
+let c: C = {name : "Dylan", age : "13"};
+linkedList.addFirst(c);
+linkedList.addFirst(false);
+let result = linkedList.get(2); 
+console.info("result:", result);  // result: 1,2,3
+```
+
 ### insert
 
-insert(index: number, element: T): void
+ArkTS-Dyn: insert(index: number, element: T): void
+
+ArkTS-Sta: insert(index: int, element: T): void
 
 在长度范围内任意位置插入指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 插入位置索引。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 插入位置索引。需要小于等于int32_max即2147483647。 |
 | element | T | 是 | 插入元素。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The insert method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let linkedList = new LinkedList<string | number | boolean | object>();
@@ -202,15 +275,30 @@ let result = linkedList.get(1);
 console.info("result:", result);  // result: 0
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let linkedList: LinkedList<string | int | boolean | object> = new LinkedList<string | int | boolean | object>();
+linkedList.insert(0, "A");
+linkedList.insert(1, 0);
+linkedList.insert(2, true);
+let result = linkedList.get(1); 
+console.info("result:", result);  // result: 0
+```
+
 ### has
 
 has(element: T): boolean
 
 判断LinkedList中是否包含指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -243,19 +331,25 @@ console.info("result:", result);  // result: true
 
 ### get
 
-get(index: number): T
+ArkTS-Dyn: get(index: number): T
+
+ArkTS-Sta: get(index: int): T
 
 根据下标获取LinkedList中的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定的下标值。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指定的下标值。需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -265,14 +359,16 @@ get(index: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 10200001 | The value of index is out of range. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The get method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let linkedList = new LinkedList<number>();
@@ -287,15 +383,36 @@ let result = linkedList.get(2);
 console.info("result:", result);  // result: 5
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(2);
+linkedList.add(1);
+linkedList.add(2);
+linkedList.add(4);
+let result = linkedList.get(2);
+console.info("result:", result);  // result: 5
+```
+
 ### getLastIndexOf
 
-getLastIndexOf(element: T): number
+ArkTS-Dyn: getLastIndexOf(element: T): number
+
+ArkTS-Sta: getLastIndexOf(element: T): int
 
 查找指定元素最后一次出现时的下标值，查找失败返回-1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -307,7 +424,7 @@ getLastIndexOf(element: T): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回指定元素最后一次出现时的下标值，查找失败返回-1。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回指定元素最后一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -318,6 +435,8 @@ getLastIndexOf(element: T): number
 | 10200011 | The getLastIndexOf method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let linkedList = new LinkedList<number>();
@@ -332,15 +451,36 @@ let result = linkedList.getLastIndexOf(2);
 console.info("result:", result);  // result: 5
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(2);
+linkedList.add(1);
+linkedList.add(2);
+linkedList.add(4);
+let result = linkedList.getLastIndexOf(2);
+console.info("result:", result);  // result: 5
+```
+
 ### getIndexOf
 
-getIndexOf(element: T): number
+ArkTS-Dyn: getIndexOf(element: T): number
+
+ArkTS-Sta: getIndexOf(element: T): int
 
 查找指定元素第一次出现时的下标值，查找失败返回-1。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -352,7 +492,7 @@ getIndexOf(element: T): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回指定元素第一次出现时的下标值，查找失败返回-1。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 返回指定元素第一次出现时的下标值，查找失败返回-1。 |
 
 **错误码：**
 
@@ -364,8 +504,25 @@ getIndexOf(element: T): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(2);
+linkedList.add(1);
+linkedList.add(2);
+linkedList.add(4);
+let result = linkedList.getIndexOf(2);
+console.info("result:", result);  // result: 0
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
 linkedList.add(2);
 linkedList.add(4);
 linkedList.add(5);
@@ -383,9 +540,13 @@ removeByIndex(index: number): T
 
 根据元素的下标值查找元素，并将其删除。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -401,11 +562,10 @@ removeByIndex(index: number): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The removeByIndex method cannot be bound. |
 
@@ -428,9 +588,13 @@ removeFirst(): T
 
 删除并返回LinkedList的第一个元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -466,9 +630,13 @@ removeLast(): T
 
 删除并返回LinkedList的最后一个元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -498,15 +666,146 @@ let result = linkedList.removeLast();
 console.info("result:", result);  // result: 4
 ```
 
+### removeByIndex<sup>20+</sup>
+
+removeByIndex(index: int): T \| undefined
+
+根据下标值查找元素，并将其删除。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| index | int | 是 | 指定元素的下标值。需要小于等于int32_max（即2147483647）。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T \| undefined | 返回删除的元素，如果为空返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200001 | The value of "index" is out of range. It must be >= 0 && <= ${length}. Received value is: ${index} |
+| 10200010 | Container is empty. |
+
+**示例：**
+
+```ts
+let linkedList: LinkedList<int> = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(2);
+linkedList.add(4);
+let result = linkedList.removeByIndex(2);
+```
+
+### removeFirst<sup>20+</sup>
+
+removeFirst(): T \| undefined
+
+删除并返回LinkedList的第一个元素。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T \| undefined | 返回删除的元素，容器为空时返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200010 | Container is empty. |
+
+**示例：**
+
+```ts
+let linkedList: LinkedList<int> = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(2);
+linkedList.add(4);
+let result = linkedList.removeFirst();
+```
+
+### removeLast<sup>20+</sup>
+
+removeLast(): T \| undefined
+
+删除并返回LinkedList的最后一个元素。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T \| undefined | 返回删除的元素，容器为空时返回undefined。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200010 | Container is empty. |
+
+**示例：**
+
+```ts
+let linkedList: LinkedList<int> = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(2);
+linkedList.add(4);
+let result = linkedList.removeLast();
+```
+
 ### remove
 
 remove(element: T): boolean
 
 删除查找到的第一个指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -530,8 +829,22 @@ remove(element: T): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+let result = linkedList.remove(2);
+console.info("result:", result);  // result: true
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
 linkedList.add(2);
 linkedList.add(4);
 linkedList.add(5);
@@ -546,9 +859,13 @@ removeFirstFound(element: T): boolean
 
 删除第一次出现的指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -574,6 +891,8 @@ removeFirstFound(element: T): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number>();
 linkedList.add(2);
@@ -584,15 +903,30 @@ let result = linkedList.removeFirstFound(4);
 console.info("result:", result);  // result: true
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+let result = linkedList.removeFirstFound(4);
+```
+
 ### removeLastFound
 
 removeLastFound(element: T): boolean
 
 删除最后一次出现的指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -618,6 +952,8 @@ removeLastFound(element: T): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number>();
 linkedList.add(2);
@@ -628,15 +964,30 @@ let result = linkedList.removeLastFound(4);
 console.info("result:", result);  // result: true
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let linkedList: LinkedList<int> = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+let result = linkedList.removeLastFound(4);
+```
+
 ### clone
 
 clone(): LinkedList&lt;T&gt;
 
 克隆一个与LinkedList相同的实例并返回。修改克隆后的实例并不会影响原实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -654,8 +1005,22 @@ clone(): LinkedList&lt;T&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+let result = linkedList.clone();
+console.info("result:", result.has(4));  // result: true
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
 linkedList.add(2);
 linkedList.add(4);
 linkedList.add(5);
@@ -670,9 +1035,13 @@ forEach(callbackFn: (value: T, index?: number, LinkedList?: LinkedList&lt;T&gt;)
 
 通过回调函数来遍历LinkedList实例对象上的元素以及其下标。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -691,11 +1060,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -715,15 +1083,56 @@ linkedList.forEach((value: number, index: number) => {
 // value:4 index:3
 ```
 
+### forEach<sup>20+</sup>
+
+forEach(callbackfn: LinkedListForEachCb\<T\>): void
+
+通过回调函数遍历LinkedList实例对象的元素以及元素对应的下标值。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callbackFn | [LinkedListForEachCb\<T\>](#linkedlistforeachcbt20) | 是 | 回调函数。 |
+
+**示例：**
+
+```ts
+import { LinkedListForEachCb } from '@kit.ArkTS';
+
+let linkedList: LinkedList<int> = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(7);
+let linkedListCb: LinkedListForEachCb<int> = (value: int, index: int, linkedList: LinkedList<int>) => {
+  console.info("value:" + value, "index:" + index);
+};
+
+linkedList.forEach(linkedListCb);
+```
+
 ### clear
 
 clear(): void
 
 清除LinkedList中的所有元素，并将length置为0。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -734,6 +1143,8 @@ clear(): void
 | 10200011 | The clear method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let linkedList = new LinkedList<number>();
@@ -746,21 +1157,40 @@ let result = linkedList.has(2);
 console.info("result:", result);  // result: false
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+linkedList.clear();
+let result = linkedList.has(2);
+console.info("result:", result);  // result: false
+```
+
 ### set
 
-set(index: number, element: T): T
+ArkTS-Dyn: set(index: number, element: T): T
+
+ArkTS-Sta: set(index: int, element: T): T
 
 替换LinkedList指定位置的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 查找的下标值。需要小于等于int32_max即2147483647。 |
+| index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 查找的下标值。需要小于等于int32_max即2147483647。 |
 | element | T | 是 | 用来替换的元素。 |
 
 **返回值：**
@@ -771,18 +1201,32 @@ set(index: number, element: T): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The set method cannot be bound. |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number | string>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+let result = linkedList.set(2, "b");
+console.info("result:", result);  // result: b
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int | string>();
 linkedList.add(2);
 linkedList.add(4);
 linkedList.add(5);
@@ -797,9 +1241,13 @@ convertToArray(): Array&lt;T&gt;
 
 将当前LinkedList实例转换成数组并返回。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -816,8 +1264,23 @@ convertToArray(): Array&lt;T&gt;
 | 10200011 | The convertToArray method cannot be bound. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+let result = linkedList.convertToArray();
+console.info("result:", result);  // result: 2,4,5,4
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
 linkedList.add(2);
 linkedList.add(4);
 linkedList.add(5);
@@ -832,9 +1295,13 @@ getFirst(): T
 
 获取LinkedList实例中的第一个元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -848,12 +1315,27 @@ getFirst(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The getFirst method cannot be bound. |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+let result = linkedList.getFirst();
+console.info("result:", result);  // result: 2
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
 linkedList.add(2);
 linkedList.add(4);
 linkedList.add(5);
@@ -868,9 +1350,13 @@ getLast(): T
 
 获取LinkedList实例中的最后一个元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -884,12 +1370,27 @@ getLast(): T
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
+| 10200010 | Container is empty. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Sta。|
 | 10200011 | The getLast method cannot be bound. |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let linkedList = new LinkedList<number>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+let result = linkedList.getLast();
+console.info("result:", result);  // result: 4
+```
+
+ArkTS-Sta示例：
+
+```ts
+let linkedList = new LinkedList<int>();
 linkedList.add(2);
 linkedList.add(4);
 linkedList.add(5);
@@ -904,9 +1405,13 @@ console.info("result:", result);  // result: 4
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -952,3 +1457,68 @@ while(!temp.done) {
 // value: 5
 // value: 4
 ```
+
+### $_iterator<sup>20+</sup>
+
+\$_iterator\(): IterableIterator&lt;T&gt;
+
+返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| IterableIterator&lt;T&gt; | 返回一个迭代器。 |
+
+**示例：**
+
+```ts
+let linkedList: LinkedList<int> = new LinkedList<int>();
+linkedList.add(2);
+linkedList.add(4);
+linkedList.add(5);
+linkedList.add(4);
+
+// 使用方法一：
+for (let item of linkedList) {
+  console.info("value:" + item);
+}
+
+// 使用方法二：
+let iter = linkedList.$_iterator();
+let temp: IteratorResult<int> = iter.next();
+while(!temp.done) {
+  console.info("value:" + temp.value);
+  temp = iter.next();
+}
+```
+
+### LinkedListForEachCb\<T\><sup>20+</sup>
+
+type LinkedListForEachCb\<T\> = (value: T, index: int, linkedList: LinkedList\<T\>) => void
+
+LinkedList中forEach方法的回调函数。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | T | 是 | 当前遍历到的元素。 |
+| index | int | 是 | 当前遍历到的下标值。 |
+| linkedList | [LinkedList&lt;T&gt;](#linkedlist) | 是 | 当前调用[forEach](#foreach20)方法的实例对象。 |

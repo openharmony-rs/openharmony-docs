@@ -1223,8 +1223,8 @@ ArkTS-Sta: drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Arr
 | ----------- | -------------  | ---- | ------------------------------- |
 | vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | 是   | 绘制顶点的连接方式。 |
 | vertexCount   | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
-| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
-| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>     | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| texs    | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
 | colors      | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
 | indexCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
 | indices  | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
@@ -1983,6 +1983,85 @@ class DrawingRenderNode extends RenderNode {
     canvas.attachPen(pen);
     canvas.drawLine(0.0, 0.0, 20.0, 20.0);
     canvas.detachPen();
+  }
+}
+```
+
+## drawGlyphs
+
+ArkTS-Dyn: drawGlyphs(glyphIds: Array\<number\>, glyphIdOffset: number, positions: Array\<common2D.Point\>, positionOffset: number, glyphCount: number, font: Font): void
+
+ArkTS-Sta: drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Array\<common2D.Point\>, positionOffset: int, glyphCount: int, font: Font): void
+
+绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数**
+
+| 参数名          | 类型                                     | 必填 | 说明                                              |
+| ------         | -------------------                      | ---- | -----------                                      |
+| glyphIds       | ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<int\>               | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。|
+| glyphIdOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。<br>如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。<br>如果glyphIdOffset小于0则抛出错误码25900001。|
+| positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。|
+| positionOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。<br>如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。<br>如果positionOffset小于0则抛出错误码25900001。|
+| glyphCount     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容，并抛出错误码25900001。<br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。|
+| font           | [Font](arkts-apis-graphics-drawing-Font.md)                     | 是   | 用于绘图的字体。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    let glyphsArray : Array<number> = [100, 200, 300];
+    let positionArray : Array<common2D.Point> = [{ x: 100.0, y: 100.0 }, { x: 200.0, y: 100.0 }, { x: 150.0, y: 200.0 }];
+    canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
+    canvas.detachBrush();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    canvas.attachBrush(brush);
+    let glyphsArray : Array<int> = [100, 200, 300];
+    let positionArray : Array<common2D.Point> = [{ x: 100.0, y: 100.0 }, { x: 200.0, y: 100.0 }, { x: 150.0, y: 200.0 }];
+    canvas.drawGlyphs(glyphsArray, 0, positionArray, 0, 3, font);
+    canvas.detachBrush();
   }
 }
 ```
@@ -3585,6 +3664,62 @@ class DrawingRenderNode extends RenderNode {
     let rect: common2D.Rect = { left: 10, top: 100, right: 200, bottom: 300 };
     canvas.clipRect(rect);
     canvas.resetClip();
+  }
+}
+```
+
+## isOpaque
+
+isOpaque(): boolean
+
+检查当前绘制到设备的图层是否不透明。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 返回当前绘制到设备的图层是否不透明的结果，true表示不透明，false表示透明。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info("canvas.isOpaque() returned true");
+    } else {
+      console.info("canvas.isOpaque() returned false");
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info("canvas.isOpaque() returned true");
+    } else {
+      console.info("canvas.isOpaque() returned false");
+    }
   }
 }
 ```

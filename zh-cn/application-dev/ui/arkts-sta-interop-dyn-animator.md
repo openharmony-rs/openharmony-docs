@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-从API version 22开始，支持在ArkTS-Sta中创建AnimateResult调用ArkTS-Dyn的[play](../reference/apis-arkui/js-apis-animator.md#play)、[pause](../reference/apis-arkui/js-apis-animator.md#pause)、[finish](../reference/apis-arkui/js-apis-animator.md#finish)、[cancle](../reference/apis-arkui/js-apis-animator.md#cancel)等接口实现动画的播放、暂停、结束、删除。在ArkTS-Sta互操作场景下，导出ArkTS-Dyn的play等接口，在ArkTS-Sta的页面中直接调用。
+从API version 22开始，支持在ArkTS-Sta中通过[createAnimator](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)创建[AnimateResult](../reference/apis-arkui/js-apis-animator.md#animatorresult)调用ArkTS-Dyn的[play](../reference/apis-arkui/js-apis-animator.md#play)、[pause](../reference/apis-arkui/js-apis-animator.md#pause)、[finish](../reference/apis-arkui/js-apis-animator.md#finish)、[cancle](../reference/apis-arkui/js-apis-animator.md#cancel)等接口实现动画的播放、暂停、结束、删除。在ArkTS-Sta互操作场景下，导出ArkTS-Dyn的play等接口，在ArkTS-Sta的页面中直接调用。
 
 完整示例结构如下所示。
 

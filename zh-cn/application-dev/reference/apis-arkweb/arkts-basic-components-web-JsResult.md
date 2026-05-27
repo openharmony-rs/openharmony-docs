@@ -6,9 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回的弹窗确认或弹窗取消功能对象。示例代码参考[onAlert事件](./arkts-basic-components-web-events.md#onalert)。
+Web组件返回的弹窗确认或取消功能对象。示例代码参考[onAlert事件](./arkts-basic-components-web-events.md#onalert)。
 
-支持使用@ohos.transfer系统对象转换工具进行动静态类型转换。
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
 
 > **说明：**
 >

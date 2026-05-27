@@ -5552,6 +5552,10 @@ ArkTS-Sta: onLoadIntercept(callback: Callback\<OnLoadInterceptEvent, boolean\> |
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
 
+> **说明：**
+>
+> - onLoadIntercept无法获取到完整的headers，如需获取完整headers建议在[onInterceptRequest](#oninterceptrequest9)或者通过WebSchemeHandler的[onRequestStart](./arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)中获取。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 10

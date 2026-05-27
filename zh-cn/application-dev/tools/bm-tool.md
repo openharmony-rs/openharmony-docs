@@ -45,11 +45,11 @@ bm help
 
 ### userId
 
-表示当前系统账号的编号，系统账号的相关接口请参考[系统账号管理模块](../reference/apis-basic-services-kit/js-apis-osAccount.md)，下面给出几种常见的系统账号。
+表示当前系统账号的编号，系统账号的相关接口请参考[@ohos.account.osAccount (系统账号管理)](../reference/apis-basic-services-kit/js-apis-osAccount.md)，下面给出几种常见的系统账号。
 
 - userId = 100，表示编号为100的系统账号，系统默认账号，在设备出厂首次启动时由系统账号管理模块创建，且创建完成后会在100账号下安装所有的预置应用。
 
-- userId = 102，表示编号为102的系统账号，由系统账号管理模块创建，<!--Del-->可以使用[createOsAccountForDomain接口](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md)创建账号，<!--DelEnd-->仅支持系统应用创建账号。在100账号下安装的应用，在102账号下不会显示，如有需求，需要在102账号下重新安装。在创建102账号过程中，系统会在102账号下安装预置系统应用。
+- userId = 102，表示编号为102的系统账号，由系统账号管理模块创建，<!--Del-->可以使用[createOsAccountForDomain](../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#createosaccountfordomain8)接口创建账号，<!--DelEnd-->仅支持系统应用创建账号。在100账号下安装的应用，在102账号下不会显示，如有需求，需要在102账号下重新安装。在创建102账号过程中，系统会在102账号下安装预置系统应用。
 
 - userId = 0，表示共有系统账号，也叫账号0，该共有系统账号和系统账号编号不同，不是系统账号管理模块创建的。在账号0下安装的应用，所有系统账号共享，会在每个系统账号下都会显示。所有三方应用都不能安装到账号0下。
 
@@ -372,7 +372,7 @@ bm dump-dependencies [-h] [-n bundleName] [-m moduleName]
 | -------- | -------- |
 | -h | 帮助信息。 |
 | -n | 必选参数，查询指定应用依赖的共享库信息。|
-| -m | 可选参数，查询指定应用指定模块依赖的共享库信息。|
+| -m | 必选参数，查询指定应用指定模块依赖的共享库信息。|
 
 示例：
 ```Bash
@@ -983,22 +983,24 @@ error: install host installer failed.
 
 请尝试重启设备后重新安装。
 
-### 9568262 插件安装命令错误
+### 9568262 安装解析应用失败
 **错误信息**
 
 error: install parse failed.
 
 **错误描述**
 
-插件安装使用的命令不正确。
+安装解析应用失败。
 
 **可能原因**
 
-安装插件用了[bm install](#安装命令install)命令。
+1. 使用了[bm install](#安装命令install)命令安装插件。
+2. 使用了[bm install](#安装命令install)命令安装[bundleType](../quick-start/app-configuration-file.md#配置文件标签)为skill类型的包。
 
 **处理步骤**
 
-安装插件请使用[bm install-plugin](#安装插件命令install-plugin)命令。
+1. 安装插件请使用[bm install-plugin](#安装插件命令install-plugin)命令。
+2. skill类型的包不支持命令行安装，请修改应用[bundleType](../quick-start/app-configuration-file.md#配置文件标签)的类型<!--Del-->，或者需要使用预置方式进行安装<!--DelEnd-->。
 
 ### 9568265 安装过程中内部参数有误
 **错误信息**
@@ -1189,7 +1191,7 @@ error: install failed due to insufficient disk memory.
 
 **处理步骤**
 
-查看设备存储空间并清理，保证满足安装所需空间，再重试安装应用。
+查看应用安装的设备存储空间并清理，保证满足安装所需空间，再重试安装应用。模拟器上存储空间清理之后仍然失败，请尝试创建新的模拟器设备，并设置更大的存储空间，详情请参考[创建新的模拟器](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-emulator-create#section1764055173710)。
 <!--RP4-->
 ```bash
 # 查看磁盘空间使用情况
@@ -1276,7 +1278,7 @@ SysCap不一致导致安装失败。
 
 **可能原因**
 
-多个HAP/HSP中配置的[SysCap](./../reference/syscap.md)不一致。
+多个HAP/HSP中配置的[SysCap](./../reference/syscap.md#syscap的用途)不一致。
 
 **处理步骤**
 
@@ -3105,7 +3107,7 @@ error: install parse syscap error.
 
 **错误描述**
 
-安装过程中，解析安装包获取[SysCap](./../reference/syscap.md)信息失败。
+安装过程中，解析安装包获取[SysCap](./../reference/syscap.md#syscap的用途)信息失败。
 
 **可能原因**
 

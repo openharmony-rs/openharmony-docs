@@ -11,13 +11,20 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.account.distributedAccount (分布式账号管理)](js-apis-distributed-account.md)。
 
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { distributedAccount } from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import distributedAccount from '@ohos.account.distributedAccount';
 ```
 
 ## DistributedAccountAbility
@@ -26,7 +33,9 @@ import { distributedAccount } from '@kit.BasicServicesKit';
 
 ### getOsAccountDistributedInfoByLocalId<sup>10+</sup>
 
-getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback&lt;DistributedInfo&gt;): void
+ArkTS-Dyn: getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback&lt;DistributedInfo&gt;): void
+
+ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int, callback: AsyncCallback&lt;DistributedInfo&gt;): void
 
 获取指定系统账号的分布式信息。使用callback异步回调。
 
@@ -36,11 +45,15 @@ getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback&lt
 
 **需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或(ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS)
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | localId | number | 是 | 系统账号ID。 |
+  | localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号ID。 |
   | callback | AsyncCallback&lt;[DistributedInfo](js-apis-distributed-account.md#distributedinfo)&gt; | 是 | 回调参数。当获取分布式账号信息成功，err为undefined，data为获取到的分布式账号信息对象；否则为错误对象。 |
 
 **错误码：**
@@ -54,7 +67,9 @@ getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+import { distributedAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
@@ -73,9 +88,32 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import distributedAccount from '@ohos.account.distributedAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+try {
+  accountAbility.getOsAccountDistributedInfoByLocalId(100,
+    (err: BusinessError | null, data: distributedAccount.DistributedInfo | undefined) => {
+      if (err) {
+        console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('distributed information: ' + JSON.stringify(data));
+      }
+    });
+} catch (e: Error) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### getOsAccountDistributedInfoByLocalId<sup>10+</sup>
 
-getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;DistributedInfo&gt;
+ArkTS-Dyn: getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;DistributedInfo&gt;
+
+ArkTS-Sta: getOsAccountDistributedInfoByLocalId(localId: int): Promise&lt;DistributedInfo&gt;
 
 获取指定系统账号的分布式信息。使用Promise异步回调。
 
@@ -85,11 +123,15 @@ getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;DistributedInf
 
 **需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS或(ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS与ohos.permission.GET_DISTRIBUTED_ACCOUNTS)
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | localId | number | 是 | 系统账号ID。 |
+  | localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号ID。 |
 
 **返回值：**
 
@@ -108,7 +150,9 @@ getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;DistributedInf
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+import { distributedAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
@@ -125,9 +169,31 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import distributedAccount from '@ohos.account.distributedAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+try {
+  accountAbility.getOsAccountDistributedInfoByLocalId(100).then((
+    data: distributedAccount.DistributedInfo) => {
+    console.info('distributed information: ' + JSON.stringify(data));
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e: Error) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ### setOsAccountDistributedInfoByLocalId<sup>10+</sup>
 
-setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;): void
 
 设置指定系统账号的分布式信息。使用callback异步回调。
 
@@ -137,11 +203,15 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 **需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | localId | number | 是 | 系统账号ID。 |
+  | localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号ID。 |
   | distributedInfo | [DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 是 | 分布式账号信息。 |
   | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置指定系统账号的分布式信息成功时，err为undefined，否则为错误对象。 |
 
@@ -159,12 +229,14 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+import { distributedAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 let accountInfo: distributedAccount.DistributedInfo =
-  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
+  {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
 try {
   accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo, (err: BusinessError) => {
     if (err) {
@@ -174,6 +246,28 @@ try {
     }
   });
 } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import distributedAccount from '@ohos.account.distributedAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+let accountInfo: distributedAccount.DistributedInfo =
+  {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+try {
+  accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo, (err: BusinessError | null) => {
+    if (err) {
+      console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('setOsAccountDistributedInfoByLocalId successfully');
+    }
+  });
+} catch (e: Error) {
   const err = e as BusinessError;
   console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }
@@ -181,7 +275,9 @@ try {
 
 ### setOsAccountDistributedInfoByLocalId<sup>10+</sup>
 
-setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: DistributedInfo): Promise&lt;void&gt;
+ArkTS-Dyn: setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: DistributedInfo): Promise&lt;void&gt;
+
+ArkTS-Sta: setOsAccountDistributedInfoByLocalId(localId: int, distributedInfo: DistributedInfo): Promise&lt;void&gt;
 
 设置指定系统账号的分布式信息。使用Promise异步回调。
 
@@ -191,11 +287,15 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 **需要权限：** ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | localId | number | 是 | 系统账号ID。 |
+  | localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号ID。 |
   | distributedInfo | [DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 是 | 分布式账号信息。 |
 
 **返回值：**
@@ -218,19 +318,42 @@ setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: Distribut
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
+import { distributedAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 let accountInfo: distributedAccount.DistributedInfo =
-  { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
+  {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+try {
+  accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo).then(() => {
+      console.info('setOsAccountDistributedInfoByLocalId successfully');
+  }).catch((err: BusinessError) => {
+      console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+    const err = e as BusinessError;
+    console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import distributedAccount from '@ohos.account.distributedAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
+let accountInfo: distributedAccount.DistributedInfo =
+  {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
 try {
   accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo).then(() => {
     console.info('setOsAccountDistributedInfoByLocalId successfully');
-  }).catch((err: BusinessError) => {
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
     console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
   });
-} catch (e) {
+} catch (e: Error) {
   const err = e as BusinessError;
   console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
 }

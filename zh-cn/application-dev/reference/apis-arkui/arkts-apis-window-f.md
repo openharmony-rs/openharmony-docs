@@ -26,13 +26,13 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 创建子窗口或者系统窗口，使用callback异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
 **需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -135,13 +135,13 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 创建子窗口或者系统窗口，使用Promise异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
 **需要权限：** ohos.permission.SYSTEM_FLOAT_WINDOW（仅当创建窗口类型为window.WindowType.TYPE_FLOAT时需要申请）
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -244,7 +244,7 @@ findWindow(name: string): Window
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -303,7 +303,9 @@ getLastWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 
 若无应用子窗口或子窗口未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)进行显示，则返回应用主窗口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+自由窗口状态下，[独立子窗](../../windowmanager/window-terminology.md#应用窗口)不在接口的计算范围内。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -426,7 +428,9 @@ getLastWindow(ctx: BaseContext): Promise&lt;Window&gt;
 
 若无应用子窗口或子窗口未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)进行显示，则返回应用主窗口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+自由窗口状态下，[独立子窗](../../windowmanager/window-terminology.md#应用窗口)不在接口的计算范围内。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -552,12 +556,14 @@ ArkTS-Sta: shiftAppWindowFocus(sourceWindowId: int, targetWindowId: int): Promis
 
 目标窗口需确保具有获得焦点的能力（可通过[setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)设置），并确保调用[showWindow()](arkts-apis-window-Window.md#showwindow9)成功且执行完毕。
 
+非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+
 > **说明：**
 >
 > 在调用shiftAppWindowFocus()前，建议确保目标窗口已调用[loadContent()](arkts-apis-window-Window.md#loadcontent9)或[setUIContent()](arkts-apis-window-Window.md#setuicontent9)并生效，否则可能会导致不可见窗口获取焦点，造成功能异常或影响用户体验。
 >
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1038,6 +1044,13 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long): Promise&lt;Array&lt;WindowLa
 
 获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。
 
+> **说明：**
+>
+> 本接口返回的可见窗口与肉眼所见可能存在区别，如以下场景：
+> - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+> - 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
+> - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -1065,7 +1078,7 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long): Promise&lt;Array&lt;WindowLa
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
@@ -1117,6 +1130,13 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long, option?: WindowInfoOptions): 
 
 根据option指定的过滤条件获取指定屏幕上可见的窗口布局信息数组，其中返回的每个Rect的宽、高是已经过缩放计算后的值，按当前窗口层级排列，层级最高的对应数组index为0，使用Promise异步回调。当未传入option或其中的字段都为默认值时，当前接口与[getAllWindowLayoutInfo](#windowgetallwindowlayoutinfo15)等价。
 
+> **说明：**
+>
+> 本接口返回的可见窗口与肉眼所见可能存在区别，如以下场景：
+> - 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+> - 窗口通过[setWindowMask](arkts-apis-window-Window.md#setwindowmask12)接口设置异形窗口蒙层时，不会影响窗口可见状态计算，窗口仍可见，即使掩码全部设置为0，窗口依然按照其原本矩形大小参与可见状态计算。
+> - 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动智慧多窗悬浮窗时返回的下层窗口依然是可见的。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -1146,9 +1166,9 @@ ArkTS-Sta: getAllWindowLayoutInfo(displayId: long, option?: WindowInfoOptions): 
 
 | 错误码ID    | 错误信息 |
 |----------| ------------------------------ |
-| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
-| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
@@ -1250,6 +1270,9 @@ try {
       console.info(`abilityName:${windowInfo.abilityName}`);
       console.info(`bundleName:${windowInfo.bundleName}`);
       console.info(`isFocused:${windowInfo.isFocused}`);
+      console.info(`displayId:${windowInfo.displayId}`);
+      console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
+      console.info(`globalRect:${JSON.stringify(windowInfo.globalRect)}`);
     })
   }).catch((err: BusinessError) => {
     console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
@@ -1313,7 +1336,7 @@ ArkTS-Sta: getGlobalWindowMode(displayId?: long): Promise&lt;int&gt;
 
 | 类型                             | 说明                      |
 | -------------------------------- |-------------------------|
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回获取到的窗口模式。每一个二进制位代表一种窗口模式，当前支持的窗口模式见[GlobalWindowMode](arkts-apis-window-e.md#globalwindowmode20)，返回值为对应窗口模式值按位进行或运算的结果。比如，当前屏幕上存在全屏窗口、悬浮窗和画中画三种窗口，则返回值为`0b1\|0b100\|0b1000 = 13`。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回获取到的窗口模式。每一个二进制位代表一种窗口模式，当前支持的窗口模式见[GlobalWindowMode](arkts-apis-window-e.md#globalwindowmode20)，返回值为对应窗口模式值按位进行或运算的结果。比如，当前屏幕上存在全屏窗口、自由悬浮窗口和画中画三种窗口，则返回值为`0b1\|0b100\|0b1000 = 13`。|
 
 **错误码：**
 
@@ -1753,7 +1776,9 @@ onApplicationFocusStateChange(callback: Callback\<boolean\>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1782,11 +1807,13 @@ offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
 
 关闭应用进程获焦状态变化的监听。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1818,7 +1845,7 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 
 创建子窗口，使用callback异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 > **说明：**
 >
@@ -1864,7 +1891,7 @@ create(id: string, type: WindowType): Promise&lt;Window&gt;
 
 创建子窗口，使用Promise异步回调。
 
-子窗口创建后默认是[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)。
+子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 > **说明：**
 >

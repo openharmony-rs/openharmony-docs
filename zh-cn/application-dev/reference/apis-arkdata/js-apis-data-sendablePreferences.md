@@ -29,7 +29,7 @@ import { sendablePreferences } from '@kit.ArkData';
 
 ## 常量
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -44,7 +44,7 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
 获取Preferences实例，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -102,7 +102,7 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 获取Preferences实例，此为同步接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -155,7 +155,7 @@ deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -213,7 +213,7 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 
 应用首次调用[getPreferences](#sendablepreferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#sendablepreferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -270,7 +270,7 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 
 应用首次调用[getPreferences](#sendablepreferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#sendablepreferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -311,7 +311,7 @@ class EntryAbility extends UIAbility {
 
 Preferences实例配置选项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -333,7 +333,7 @@ get(key: string, defValue: lang.ISendable): Promise&lt;lang.ISendable&gt;
 
 从缓存的Preferences实例中获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -380,7 +380,7 @@ getSync(key: string, defValue: lang.ISendable): lang.ISendable
 
 从缓存的Preferences实例中获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue，此为同步接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -419,7 +419,7 @@ getAll(): Promise&lt;lang.ISendable&gt;
 
 获取缓存的Preferences实例中的所有键值数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -459,7 +459,7 @@ getAllSync(): lang.ISendable
 
 获取缓存的Preferences实例中的所有键值数据，此为同步接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -500,7 +500,7 @@ put(key: string, value: lang.ISendable): Promise&lt;void&gt;
   >
   > 当对应的键已经存在时，put()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -551,7 +551,7 @@ putSync(key: string, value: lang.ISendable): void
   >
   > 当对应的键已经存在时，putSync()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -583,7 +583,7 @@ has(key: string): Promise&lt;boolean&gt;
 
 检查缓存的Preferences实例中是否包含名为给定Key的存储键值对，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -631,7 +631,7 @@ hasSync(key: string): boolean
 
 检查缓存的Preferences实例中是否包含名为给定Key的存储键值对，此为同步接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -673,7 +673,7 @@ delete(key: string): Promise&lt;void&gt;
 
 从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -717,7 +717,7 @@ deleteSync(key: string): void
 
 从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -752,7 +752,7 @@ flush(): Promise&lt;void&gt;
   >
   > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -793,7 +793,7 @@ flushSync(): void
   >
   > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -817,7 +817,7 @@ clear(): Promise&lt;void&gt;
 
 清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -854,7 +854,7 @@ clearSync(): void
 
 清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -882,7 +882,7 @@ on(type: 'change', callback: Callback&lt;string&gt;): void
   >
   > 当调用[removePreferencesFromCache](#sendablepreferencesremovepreferencesfromcache)或者[deletePreferences](#sendablepreferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#sendablepreferencesgetpreferences)后需要重新订阅数据变更。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -933,7 +933,7 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
   >
   > 当调用[removePreferencesFromCache](#sendablepreferencesremovepreferencesfromcache)或者[deletePreferences](#sendablepreferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#sendablepreferencesgetpreferences)后需要重新订阅数据变更。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -981,7 +981,7 @@ on(type: 'dataChange', keys: Array&lt;string&gt;, callback: Callback&lt;lang.ISe
   >
   > 当调用[removePreferencesFromCache](#sendablepreferencesremovepreferencesfromcache)或者[deletePreferences](#sendablepreferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#sendablepreferencesgetpreferences)后需要重新订阅数据变更。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1028,7 +1028,7 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 
 取消订阅数据变更。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1074,7 +1074,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 
 本接口提供给申请了[dataGroupId](#options)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1117,7 +1117,7 @@ off(type: 'dataChange', keys: Array&lt;string&gt;, callback?: Callback&lt;lang.I
 
 取消精确订阅数据变更。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 

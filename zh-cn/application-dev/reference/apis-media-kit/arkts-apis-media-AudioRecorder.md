@@ -8,7 +8,8 @@
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder](arkts-apis-media-AVRecorder.md)替代。
+> - 本模块仅适用于ArkTS-Dyn。
+> - 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder](arkts-apis-media-AVRecorder.md)替代。
 
 音频录制管理类，用于录制音频媒体。在调用AudioRecorder的方法前，需要先通过[createAudioRecorder()](arkts-apis-media-f.md#mediacreateaudiorecorderdeprecated) 构建一个AudioRecorder实例。
 
@@ -30,6 +31,8 @@ prepare(config: AudioRecorderConfig): void
 **需要权限：** ohos.permission.MICROPHONE
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -74,6 +77,8 @@ start(): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
+**ArkTS-Dyn起始版本：** 6
+
 **示例：**
 
 ```ts
@@ -93,6 +98,8 @@ pause():void
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.pause](arkts-apis-media-AVRecorder.md#pause9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 **示例：**
 
@@ -114,6 +121,8 @@ resume():void
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
+**ArkTS-Dyn起始版本：** 6
+
 **示例：**
 
 ```ts
@@ -134,6 +143,8 @@ stop(): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
+**ArkTS-Dyn起始版本：** 6
+
 **示例：**
 
 ```ts
@@ -153,6 +164,8 @@ release(): void
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.release](arkts-apis-media-AVRecorder.md#release9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 **示例：**
 
@@ -177,6 +190,8 @@ reset(): void
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
 
+**ArkTS-Dyn起始版本：** 6
+
 **示例：**
 
 ```ts
@@ -196,6 +211,8 @@ on(type: 'prepare' | 'start' | 'pause' | 'resume' | 'stop' | 'release' | 'reset'
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.on('stateChange')](arkts-apis-media-AVRecorder.md#onstatechange9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -257,6 +274,8 @@ on(type: 'error', callback: ErrorCallback): void
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVRecorder.on('error')](arkts-apis-media-AVRecorder.md#onerror9)替代。
 
 **系统能力：** SystemCapability.Multimedia.Media.AudioRecorder
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 

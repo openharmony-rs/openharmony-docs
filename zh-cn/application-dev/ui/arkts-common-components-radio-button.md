@@ -18,7 +18,7 @@ Radio通过调用[RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-compon
 Radio(options: {value: string, group: string})
 ```
 
-其中，value是单选框的名称，group是单选框的所属群组名称。checked属性可以设置单选框的状态，状态分别为false和true，设置为true时表示单选框被选中。
+其中，value是单选框的名称，group是单选框的所属群组名称。[checked](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#checked)属性可以设置单选框的状态，状态分别为false和true，设置为true时表示单选框被选中。
 
 Radio支持设置选中状态和非选中状态的样式。
 
@@ -36,7 +36,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 ## 添加事件
 
-除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
+除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Radio还用于选中后触发某些操作，可以绑定[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#onchange)事件来响应选中操作后的自定义行为。
 
 <!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 
@@ -44,14 +44,14 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 Radio({ value: 'Radio1', group: 'radioGroup' })
   .onChange((isChecked: boolean) => {
     if(isChecked) {
-      //需要执行的操作
+      // 需要执行的操作
       // ···
     }
   })
 Radio({ value: 'Radio2', group: 'radioGroup' })
   .onChange((isChecked: boolean) => {
     if(isChecked) {
-      //需要执行的操作
+      // 需要执行的操作
       // ···
     }
   })

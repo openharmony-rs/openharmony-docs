@@ -12,6 +12,8 @@
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
+>  - 本模块接口仅可在Stage模型下使用。
+>
 >  - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## motionBlur
@@ -34,7 +36,7 @@ motionBlur(value: MotionBlurOptions): T
 >
 > - 模糊半径建议设置1以内，否则会产生非预期效果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,7 +76,7 @@ motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
 6、模糊半径建议设置1以内，否则会产生非预期效果。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,7 +140,7 @@ motionBlur(value: MotionBlurOptions | undefined): this
 
 运动模糊选项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,21 +150,21 @@ motionBlur(value: MotionBlurOptions | undefined): this
 
 | 名称          | 类型                                                        | 只读  | 可选  | 说明                                                         |
 | ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
-| radius | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined   | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内。 |
+| radius | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined   | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内。单位：px。 |
 | anchor | ArkTS-Dyn: [MotionBlurAnchor](#motionbluranchor对象说明) <br> ArkTS-Sta: [MotionBlurAnchor](#motionbluranchor对象说明) \| undefined | 否    | 否    | 运动模糊锚点坐标。运动模糊锚点坐标设置时需要与动画缩放的锚点保持一致设置。 |
 
 ## MotionBlurAnchor对象说明
 
 运动模糊锚点坐标。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型                                                        | 只读  | 可选  | 说明                                                         |
 | ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
-| x | number      | 否    | 否    | 锚点坐标x值，取值范围[0.0, 1.0]。 |
-| y | number      | 否    | 否    | 锚点坐标y值，取值范围[0.0, 1.0]。 |
+| x | number      | 否    | 否    | 锚点坐标x值，取值范围[0.0, 1.0]。无单位，基于组件尺寸，代表横向尺寸相对占比。 |
+| y | number      | 否    | 否    | 锚点坐标y值，取值范围[0.0, 1.0]。无单位，基于组件尺寸，代表纵向尺寸相对占比。 |
 
 ## 示例
 

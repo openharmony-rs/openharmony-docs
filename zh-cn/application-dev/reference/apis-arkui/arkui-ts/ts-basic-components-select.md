@@ -18,7 +18,7 @@ ArkTS-Dyn: Select(options: Array\<SelectOption\>)
 
 ArkTS-Sta: Select(options: Array\<SelectOption\>, content_?: CustomBuilder)
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,15 +41,15 @@ ArkTS-Sta: Select(options: Array\<SelectOption\>, content_?: CustomBuilder)
 
 | 名称 | 类型                            | 只读 | 可选 | 说明             |
 | ------ | ----------------------------------- | ---- | ---- | -------------- |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 否   | 否   | 下拉选项内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
-| icon   | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 下拉选项图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
-| symbolIcon<sup>12+</sup>  |[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | 否   | 是  | 下拉选项Symbol图片。<br/>symbolIcon优先级高于icon。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
+| value  | [ResourceStr](ts-types.md#resourcestr) | 否   | 否   | 下拉选项内容。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| icon   | [ResourceStr](ts-types.md#resourcestr) | 否   | 是   | 下拉选项图片。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| symbolIcon<sup>12+</sup>  |[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | 否   | 是  | 下拉选项Symbol图片。<br/>symbolIcon优先级高于icon。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23|
 
 ## MenuAlignType<sup>10+</sup>
 
 定义Select组件下拉菜单与Select组件本身的对齐方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -67,7 +67,7 @@ ArkTS-Sta: Select(options: Array\<SelectOption\>, content_?: CustomBuilder)
 
 定义Select下拉菜单的避让模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +88,7 @@ ArkTS-Sta: type OnSelectCallback = (index: int, selectStr: string) => void
 
 Select组件选择项的回调函数类型。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -107,7 +107,7 @@ Select组件选择项的回调函数类型。
 
 菜单外描边选项。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +124,7 @@ Select组件选择项的回调函数类型。
 
 菜单项配置接口，用于ContentModifier中。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -146,7 +146,7 @@ triggerSelect(index: number, value: string): void
 
 触发选中该菜单项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -175,7 +175,7 @@ selected(value: number | Resource)
 
 从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -199,7 +199,9 @@ selected(numCount: Optional<number | Resource>)
 
 该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,7 +249,7 @@ value(value: ResourceStr)
 
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,7 +273,9 @@ value(resStr: Optional\<ResourceStr\>)
 
 该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,7 +317,9 @@ controlSize(value: ControlSize)
 
 设置Select组件的尺寸。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -343,7 +349,9 @@ controlSize(size: Optional\<ControlSize\>)
 
 设置Select组件的尺寸。与[controlSize](#controlsize12)<sup>12+</sup>相比，size参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -405,7 +413,9 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration\>)
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -419,7 +429,7 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration\>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12对象说明) | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)<[MenuItemConfiguration](#menuitemconfiguration12)> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### menuItemContentModifier<sup>18+</sup>
 
@@ -431,7 +441,9 @@ menuItemContentModifier(modifier: Optional\<ContentModifier\<MenuItemConfigurati
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -445,7 +457,7 @@ menuItemContentModifier(modifier: Optional\<ContentModifier\<MenuItemConfigurati
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12对象说明)> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)<[MenuItemConfiguration](#menuitemconfiguration12)>> | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### menuItemContentModifier<sup>23+</sup>
 
@@ -465,7 +477,7 @@ menuItemContentModifier(modifier: ContentModifier\<MenuItemConfiguration\> | und
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<MenuItemConfiguration>](#menuitemconfiguration12对象说明) \| undefined | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)<[MenuItemConfiguration](#menuitemconfiguration12)> \| undefined | 是   | 在Select组件上，定制下拉菜单项内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ### divider<sup>12+</sup>
 
@@ -473,7 +485,9 @@ divider(options: Optional\<DividerOptions\> | null)
 
 设置分割线样式，不设置该属性则按"默认值"展示分割线。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -507,7 +521,7 @@ divider(options: DividerOptions | null | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                                  |
 | ------ | ------- | ---- | --------------------------------------------------------------------- |
-| options  | [DividerOptions](ts-basic-components-textpicker.md#divideroptions12对象说明) \| null \| undefined | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null时，不显示分割线。<br/>3.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br/>4.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
+| options  | [DividerOptions](ts-basic-components-textpicker.md#divideroptions12对象说明) \| null \| undefined | 是   | 1.设置DividerOptions，则按设置的样式显示分割线。<br/>默认值：<br/>{<br/>strokeWidth: '1px' , <br/>color: '#33182431'<br/>}<br/>2.设置为null时，不显示分割线。<br/>3.取值为undefined时，按默认值处理。 <br/> 4.strokeWidth设置过宽时，会覆盖文字。分割线会从每一个Item底部开始，同时向上向下画分割线。<br/>5.startMargin和endMargin的默认值与不设置divider属性时的分割线样式保持一致。startMargin和endMargin的和与optionWidth的值相等时，不显示分割线。 startMargin和endMargin的和超过optionWidth的值时，按照默认样式显示分割线。|
 
 ### dividerStyle<sup>19+</sup>
 
@@ -515,7 +529,9 @@ dividerStyle(style: Optional\<DividerStyleOptions\>)
 
 设置分割线样式，不设置该属性则按"默认值"展示分割线。该属性与divider互斥，按调用顺序生效。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -558,7 +574,7 @@ font(value: Font)
 
 设置下拉按钮本身的文本样式。当size为0时，文本不显示，当size为负值时，文本的size按照默认值显示。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -580,7 +596,9 @@ font(selectFont: Optional\<Font\>)
 
 设置下拉按钮本身的文本样式。当size为0时，文本不显示，当size为负值时，文本的size按照默认值显示。与[font](#font)相比，selectFont参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -622,7 +640,7 @@ fontColor(value: ResourceColor)
 
 设置下拉按钮本身的文本颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -644,7 +662,9 @@ fontColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉按钮本身的文本颜色。与[fontColor](#fontcolor)相比，resColor参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -686,7 +706,7 @@ selectedOptionBgColor(value: ResourceColor)
 
 设置下拉菜单选中项的背景色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -708,7 +728,9 @@ selectedOptionBgColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单选中项的背景色。与[selectedOptionBgColor](#selectedoptionbgcolor)相比，resColor参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -750,7 +772,7 @@ selectedOptionFont(value: Font)
 
 设置下拉菜单选中项的文本样式。当size为0的时候，文本不显示，当size为负值的时候，文本的size按照默认值显示。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -772,7 +794,9 @@ selectedOptionFont(selectFont: Optional\<Font\>)
 
 设置下拉菜单选中项的文本样式。当size为0的时候，文本不显示，当size为负值的时候，文本的size按照默认值显示。与[selectedOptionFont](#selectedoptionfont)相比，selectFont参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -814,7 +838,7 @@ selectedOptionFontColor(value: ResourceColor)
 
 设置下拉菜单选中项的文本颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,7 +860,9 @@ selectedOptionFontColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单选中项的文本颜色。与[selectedOptionFontColor](#selectedoptionfontcolor)相比，resColor参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -878,7 +904,7 @@ optionBgColor(value: ResourceColor)
 
 设置下拉菜单项的背景色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -900,7 +926,9 @@ optionBgColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单项的背景色。与[optionBgColor](#optionbgcolor)相比，resColor参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -942,7 +970,7 @@ optionFont(value: Font)
 
 设置下拉菜单项的文本样式。当size为0的时候，文本不显示，当size为负值的时候，文本的size按照默认值显示。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -966,7 +994,9 @@ optionFont(selectFont: Optional\<Font\>)
 
 与[optionFont](#optionfont)相比，selectFont参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1010,7 +1040,7 @@ optionFontColor(value: ResourceColor)
 
 设置下拉菜单项的文本颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1024,7 +1054,7 @@ optionFontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 下拉菜单项的文本颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_primary') |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 下拉菜单项的文本颜色。取值为undefined时，按默认值处理。<br/>默认值：$r('sys.color.ohos_id_color_text_primary') |
 
 ### optionFontColor<sup>18+</sup>
 
@@ -1032,7 +1062,9 @@ optionFontColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单项的文本颜色。与[optionFontColor](#optionfontcolor)相比，resColor参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1074,7 +1106,9 @@ space(value: Length)
 
 设置下拉菜单项的文本与箭头的间距。不支持设置百分比。将间距设置为null、undefined，或者小于等于8的值时，取默认值。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1096,7 +1130,9 @@ space(spaceLength: Optional\<Length\>)
 
 设置下拉菜单项的文本与箭头的间距。不支持设置百分比。设置为null、undefined，或者小于等于8的值，取默认值。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1138,7 +1174,9 @@ arrowPosition(value: ArrowPosition)
 
 设置下拉菜单项的文本与箭头之间的对齐方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1160,7 +1198,9 @@ arrowPosition(position: Optional\<ArrowPosition\>)
 
 设置下拉菜单项的文本与箭头之间的对齐方式。与[arrowPosition](#arrowposition10)相比，position参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1202,7 +1242,9 @@ menuAlign(alignType: MenuAlignType, offset?: Offset)
 
 设置下拉按钮与下拉菜单间的对齐方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1225,7 +1267,9 @@ menuAlign(alignType: Optional\<MenuAlignType\>, offset?: Offset)
 
 设置下拉按钮与下拉菜单间的对齐方式。与[menuAlign](#menualign10)<sup>10+</sup>相比，alignType参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1273,7 +1317,9 @@ optionWidth(value: Dimension | OptionWidthMode )
 
 Select组件距屏幕边缘的左右间距为16vp，建议将组件本身及菜单项的宽度设置为小于等于`calc(100% - 32vp)`的值，以避免下拉菜单弹出时发生偏移。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1299,7 +1345,9 @@ optionWidth(width: Optional\<Dimension | OptionWidthMode\> )
 
 Select组件距屏幕边缘的左右间距为16vp，建议将组件本身及菜单项的宽度设置为小于等于`calc(100% - 32vp)`的值，以避免下拉菜单弹出时发生偏移。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1347,7 +1395,9 @@ optionHeight(value: Dimension)
 
 如果下拉菜单所有选项的实际高度没有设定的高度大，下拉菜单的高度按实际高度显示。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1373,7 +1423,9 @@ optionHeight(height: Optional\<Dimension\>)
 
 如果下拉菜单所有选项的实际高度小于设定的高度，下拉菜单的高度按实际高度显示。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1423,7 +1475,9 @@ menuBackgroundColor(value: ResourceColor)
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1445,7 +1499,9 @@ menuBackgroundColor(resColor: Optional\<ResourceColor\>)
 
 设置下拉菜单的背景色。与[menuBackgroundColor](#menubackgroundcolor11)<sup>11+</sup>相比，resColor参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1491,7 +1547,9 @@ menuBackgroundBlurStyle(value: BlurStyle)
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1513,7 +1571,9 @@ menuBackgroundBlurStyle(style: Optional\<BlurStyle\>)
 
 设置下拉菜单的背景模糊材质。与[menuBackgroundBlurStyle](#menubackgroundblurstyle11)<sup>11+</sup>相比，style参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1555,7 +1615,9 @@ avoidance(mode: AvoidanceMode)
 
 设置下拉菜单的避让模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1589,7 +1651,7 @@ avoidance(mode: AvoidanceMode | undefined)
 
 | 参数名    | 类型                                      | 必填 | 说明                                                         |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode       | [AvoidanceMode](#avoidancemode19枚举说明) \| undefined | 是   | 设置下拉菜单的避让模式。<br/>默认值：AvoidanceMode.COVER_TARGET |
+| mode       | [AvoidanceMode](#avoidancemode19枚举说明) \| undefined | 是   | 设置下拉菜单的避让模式。取值为undefined时，按默认值处理。<br/>默认值：AvoidanceMode.COVER_TARGET |
 
 ### menuOutline<sup>20+</sup>
 
@@ -1599,7 +1661,9 @@ ArkTS-Sta: menuOutline(outline: MenuOutlineOptions | undefined)
 
 设置下拉菜单框的外描边样式。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1611,7 +1675,7 @@ ArkTS-Sta: menuOutline(outline: MenuOutlineOptions | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| outline  | ArkTS-Dyn: [MenuOutlineOptions](#menuoutlineoptions20对象说明)<br/>ArkTS-Sta: [MenuOutlineOptions](#menuoutlineoptions20对象说明) \| undefined | 是   | 下拉菜单框的外描边样式。 |
+| outline  | ArkTS-Dyn: [MenuOutlineOptions](#menuoutlineoptions20对象说明)<br/>ArkTS-Sta: [MenuOutlineOptions](#menuoutlineoptions20对象说明) \| undefined | 是   | 下拉菜单框的外描边样式。取值为undefined时，按各属性的默认值处理。 |
 
 ### showDefaultSelectedIcon<sup>20+</sup>
 
@@ -1621,7 +1685,9 @@ ArkTS-Sta: showDefaultSelectedIcon(show: boolean | undefined)
 
 设置是否显示默认选择的图标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1635,11 +1701,11 @@ ArkTS-Sta: showDefaultSelectedIcon(show: boolean | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean \| undefined | 是   | 是否显示默认选定的图标。<br>默认值为false，true代表显示默认选择的图标，false代表不显示默认选择的图标。<br>当show为true，并且通过selectedOptionBgColor设置选中项的背景色时，同时显示所设置的选中项的背景色和默认选定的图标；当show为true，但未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。false代表不显示默认选定的图标，通过突出显示背景色来表示选中。 |
+| show  | ArkTS-Dyn: boolean<br>ArkTS-Sta: boolean \| undefined | 是   | 是否显示默认选定的图标。取值为undefined时，按默认值处理。<br>默认值为false，true代表显示默认选择的图标，false代表不显示默认选择的图标。<br>当show为true，并且通过selectedOptionBgColor设置选中项的背景色时，同时显示所设置的选中项的背景色和默认选定的图标；当show为true，但未通过selectedOptionBgColor设置选中项的背景色时，不突出显示背景色，只显示默认选定的图标。false代表不显示默认选定的图标，通过突出显示背景色来表示选中。 |
 
 ### textModifier<sup>20+</sup>
 
-textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
+textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)\>)
 
 定制Select按钮文本样式的方法，在应用了textModifier之后，Select按钮的文本样式将完全由开发者自定义。
 
@@ -1647,7 +1713,9 @@ textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribut
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1661,7 +1729,7 @@ textModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribut
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 在Select组件上，定制按钮文本样式的方法。 <br/> 当modifier的值为undefined时，不自定义文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 在Select组件上，定制按钮文本样式的方法。 <br/> 当modifier的值为undefined时，不自定义文本样式。 |
 
 ### textModifier<sup>23+</sup>
 
@@ -1681,7 +1749,7 @@ textModifier(modifier: TextModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 在Select组件上，定制按钮文本样式的方法。|
+| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 在Select组件上，定制按钮文本样式的方法。取值为undefined时，则不使用文本修改器。|
 
 ### arrowModifier<sup>20+</sup>
 
@@ -1693,7 +1761,9 @@ arrowModifier(modifier: Optional\<SymbolGlyphModifier\>)
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1727,11 +1797,11 @@ arrowModifier(modifier: SymbolGlyphModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | 在Select组件上，定制Select按钮下拉箭头图标样式的方法。 |
+| modifier  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | 在Select组件上，定制Select按钮下拉箭头图标样式的方法。取值为undefined时，则不使用箭头修改器。 |
 
 ### optionTextModifier<sup>20+</sup>
 
-optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
+optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)\>)
 
 定制Select下拉菜单未选中项文本样式的方法，在应用optionTextModifier之后，下拉菜单未选中项的文本样式将完全由开发者自定义。
 
@@ -1741,7 +1811,9 @@ optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-at
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1755,11 +1827,11 @@ optionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-at
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。<br/> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。<br/> 当modifier的值为undefined时，不自定义下拉菜单未选中项的文本样式。 |
 
 ### optionTextModifier<sup>23+</sup>
 
-optionTextModifier(modifier: [TextModifier](ts-universal-attributes-attribute-modifier.md) | undefined)
+optionTextModifier(modifier: [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | undefined)
 
 定制Select下拉菜单未选中项文本样式的方法，在应用optionTextModifier之后，下拉菜单未选中项的文本样式将完全由开发者自定义。
 
@@ -1777,11 +1849,11 @@ optionTextModifier(modifier: [TextModifier](ts-universal-attributes-attribute-mo
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。|
+| modifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 在Select组件上，定制Select下拉菜单未选中项样式的方法。取值为undefined时，则不使用此选项修改器。|
 
 ### selectedOptionTextModifier<sup>20+</sup>
 
-selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md)\>)
+selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)\>)
 
 定制Select下拉菜单选中项文本样式的方法，在应用selectedOptionTextModifier之后，下拉菜单选中项的文本样式将完全由开发者自定义。
 
@@ -1791,7 +1863,9 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1805,7 +1879,7 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md)> | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 <br/> 当modifier的值为undefined时，不自定义下拉菜单项选中项的文本样式。 |
+| modifier  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)> | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 <br/> 当modifier的值为undefined时，不自定义下拉菜单项选中项的文本样式。 |
 
 ### selectedOptionTextModifier<sup>23+</sup>
 
@@ -1827,7 +1901,7 @@ selectedOptionTextModifier(modifier: TextModifier | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。 |
+| modifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) \| undefined | 是   | 设置下拉菜单项选中项的文本样式。<br/>开发者可以根据需要管理和维护文本的样式进行设置。取值为undefined时，则不使用选中项文本修改器。 |
 
 ### showInSubWindow<sup>20+</sup>
 
@@ -1837,7 +1911,9 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 设置下拉菜单是否显示在子窗中。未通过该接口设置时，下拉菜单默认不显示在子窗中。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1851,7 +1927,7 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br>ArkTS-Sta: boolean \| undefined | 是   | 设置下拉菜单是否显示在子窗中。<br>true代表下拉菜单显示在子窗中。<br>false代表下拉菜单不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。 |
+| showInSubWindow  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br>ArkTS-Sta: boolean \| undefined | 是   | 设置下拉菜单是否显示在子窗中。<br>true代表下拉菜单显示在子窗中。<br>false代表下拉菜单不显示在子窗中。<br>默认值：2in1设备为true，其他设备为false。取值为undefined时，按默认值处理。 |
 
 ### keyboardAvoidMode<sup>23+</sup>
 
@@ -1861,7 +1937,7 @@ ArkTS-Sta: keyboardAvoidMode(mode: MenuKeyboardAvoidMode | undefined)
 
 设置Select菜单避让键盘的模式。默认不避让。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1885,7 +1961,7 @@ ArkTS-Sta: minKeyboardAvoidDistance(distance: LengthMetrics | undefined)
 
 设置Select菜单与键盘之间的最小距离。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1917,13 +1993,63 @@ attributeModifier(modifier: AttributeModifier\<SelectAttribute\> | AttributeModi
 
 | 参数名   | 类型                                                                                                                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier | AttributeModifier\<[SelectAttribute](#属性)\> \| AttributeModifier\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | Select组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
+| modifier | AttributeModifier\<[SelectAttribute](./ts-basic-components-select.md)\> \| AttributeModifier\<[通用属性](./ts-component-general-attributes.md)\> \| undefined | 是   | Select组件的属性修改器。<br/>当modifier的值为undefined时，不使用属性修改器。 |
+
+### menuBackgroundBlurStyleOptions
+
+ArkTS-Dyn: menuBackgroundBlurStyleOptions(blurStyle: Optional\<BackgroundBlurStyleOptions>)
+
+ArkTS-Sta: menuBackgroundBlurStyleOptions(blurStyle: BackgroundBlurStyleOptions | undefined)
+
+设置Select组件的背景模糊效果。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| blurStyle  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)><br/>ArkTS-Sta: [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) \| undefined | 是   | 设置Select组件的背景模糊效果。<br/>当blurStyle的值为undefined时，恢复默认值，默认值请参考BackgroundBlurStyleOptions类型说明。 |
+
+### menuBackgroundEffect
+
+ArkTS-Dyn: menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
+
+ArkTS-Sta: menuBackgroundEffect(effect: BackgroundEffectOptions | undefined)
+
+设置Select组件的背景属性。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名  | 类型                                                         | 必填 | 说明                                       |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| effect | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)><br/>ArkTS-Sta: [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) \| undefined | 是   | 设置Select组件的背景属性，包括：模糊半径、亮度、饱和度和颜色。<br/>当effect的值为undefined时，恢复默认值，默认值请参考BackgroundEffectOptions类型说明。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 
 箭头的位置。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1940,7 +2066,9 @@ attributeModifier(modifier: AttributeModifier\<SelectAttribute\> | AttributeModi
 
 下拉菜单的对齐方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1958,7 +2086,9 @@ attributeModifier(modifier: AttributeModifier\<SelectAttribute\> | AttributeModi
 
 下拉菜单避让模式的枚举选项。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1975,7 +2105,9 @@ attributeModifier(modifier: AttributeModifier\<SelectAttribute\> | AttributeModi
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1996,7 +2128,9 @@ attributeModifier(modifier: AttributeModifier\<SelectAttribute\> | AttributeModi
 
 下拉菜单框的外描边参数对象。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2017,7 +2151,7 @@ onSelect(callback: (index: number, value: string) => void)
 
 下拉菜单选中某一项时，会触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2026,6 +2160,12 @@ onSelect(callback: (index: number, value: string) => void)
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | (index: number, value: string) => void | 是   | 下拉菜单选中某一项触发的回调。 |
+
+callback回调参数说明：
 
 | 参数名 | 类型   | 必填 | 说明                          |
 | ------ | ------ | ---- | ----------------------------- |
@@ -2038,7 +2178,9 @@ onSelect(callback: Optional\<OnSelectCallback\> )
 
 下拉菜单选中某一项时，会触发回调。与[onSelect](#onselect)相比，callback参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2059,6 +2201,8 @@ onSelect(callback: Optional\<OnSelectCallback\> )
 onSelect(callback: OnSelectCallback | undefined)
 
 下拉菜单选中某一项时，触发回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

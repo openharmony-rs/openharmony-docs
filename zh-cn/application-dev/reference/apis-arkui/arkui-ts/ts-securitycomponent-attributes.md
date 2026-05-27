@@ -26,7 +26,7 @@ ArkTS-Sta: iconSize(value: Dimension | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +54,7 @@ ArkTS-Sta: layoutDirection(value: SecurityComponentLayoutDirection | undefined):
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,7 +82,7 @@ ArkTS-Sta: position(value: Position | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,7 +110,7 @@ ArkTS-Sta: markAnchor(value: Position | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -138,7 +138,7 @@ ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,7 +166,7 @@ ArkTS-Sta: fontSize(value: Dimension | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,7 +194,7 @@ ArkTS-Sta: fontStyle(value: FontStyle | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,7 +222,7 @@ ArkTS-Sta: fontWeight(value: int | FontWeight | string | Resource | undefined): 
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,7 +250,7 @@ ArkTS-Sta: fontFamily(value: string | Resource | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -278,7 +278,7 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -306,7 +306,7 @@ ArkTS-Sta: iconColor(value: ResourceColor | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -334,7 +334,7 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -362,7 +362,7 @@ ArkTS-Sta: borderStyle(value: BorderStyle | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -390,7 +390,7 @@ ArkTS-Sta: borderWidth(value: Dimension | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -418,7 +418,7 @@ ArkTS-Sta: borderColor(value: ResourceColor | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -446,7 +446,7 @@ borderRadius(radius: Dimension): T
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[borderRadius](#borderradius-1)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -474,7 +474,7 @@ borderRadius(radius: Dimension | BorderRadiuses): T
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[borderRadius](#borderradius-1)。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -528,7 +528,7 @@ ArkTS-Sta: padding(value: Padding | Dimension | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -556,7 +556,7 @@ ArkTS-Sta: align(alignType: Alignment | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -584,7 +584,7 @@ ArkTS-Sta: textIconSpace(value: Dimension | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -612,7 +612,7 @@ ArkTS-Sta: width(value: Length | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -640,7 +640,7 @@ ArkTS-Sta: height(value: Length | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -668,7 +668,7 @@ ArkTS-Sta: size(value: SizeOptions | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -696,7 +696,7 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -724,7 +724,7 @@ alignRules(alignRule: AlignRuleOption): T
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[alignRules](#alignrules)。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -752,7 +752,7 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[alignRules](#alignrules)。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -806,7 +806,7 @@ ArkTS-Sta: id(id: string | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -834,7 +834,7 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -863,7 +863,7 @@ ArkTS-Sta: minFontScale(scale: double | Resource | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -891,7 +891,7 @@ ArkTS-Sta: maxFontScale(scale: double | Resource | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -922,7 +922,7 @@ ArkTS-Sta: minFontSize(minSize: double | string | Resource | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -952,7 +952,7 @@ ArkTS-Sta: maxFontSize(maxSize: double | string | Resource | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -980,7 +980,7 @@ ArkTS-Sta: maxLines(line: int | Resource | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1022,7 +1022,7 @@ ArkTS-Sta: heightAdaptivePolicy(policy: TextHeightAdaptivePolicy | undefined): t
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1050,7 +1050,7 @@ ArkTS-Sta: enabled(respond: boolean | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1078,7 +1078,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1102,7 +1102,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1129,7 +1129,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

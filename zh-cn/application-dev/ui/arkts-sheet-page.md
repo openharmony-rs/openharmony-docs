@@ -50,7 +50,7 @@
 
 半模态上述交互默认的嵌套模式为：{Forward：PARENT\_FIRST，Backward：SELF\_FIRST}
 
-如果开发者希望在面板内容的builder中定义滚动容器，如List、Scroll，并结合半模态的上述交互能力，那么需要在垂直方向上为滚动容器设置嵌套滚动属性。
+如果开发者希望在面板内容的builder中定义滚动容器，如[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)，并结合半模态的上述交互能力，那么需要在垂直方向上为滚动容器设置嵌套滚动属性。
 
 ```ts
 .nestedScroll({

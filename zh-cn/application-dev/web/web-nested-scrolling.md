@@ -20,6 +20,7 @@ Web组件嵌套滚动可通过[方案1：使用nestedScroll属性实现嵌套滚
 
 **完整代码**
 
+ArkTS-Dyn示例：
 <!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) --> 
 
 ``` TypeScript
@@ -29,7 +30,6 @@ import { webview } from '@kit.ArkWeb';
 @ComponentV2
 struct NestedScroll {
   private scrollerForScroll: Scroller = new Scroller();
-  private listScroller: Scroller = new Scroller();
   controller: webview.WebviewController = new webview.WebviewController();
   @Local arr: Array<number> = [];
 
@@ -56,6 +56,65 @@ struct NestedScroll {
               .fontSize(16)
               .textAlign(TextAlign.Center)
           })
+      }
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) --> 
+
+``` TypeScript
+import {
+  $rawfile,
+  Column,
+  Component,
+  Entry,
+  ForEach,
+  List,
+  ListItem,
+  Scroll,
+  Scroller,
+  Text,
+  Web,
+  State,
+  GestureControl,
+  TextAlign,
+  NestedScrollMode
+} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct NestedScroll {
+  private scrollerForScroll: Scroller = new Scroller();
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State arr: Array<int> = new Array<int>();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 10; i++) {
+      this.arr.push(i);
+    }
+  }
+
+  build() {
+    Scroll(this.scrollerForScroll) {
+      Column() {
+        Web({ src: $rawfile('scroll.html'), controller: this.controller })
+          .nestedScroll({
+            scrollUp: NestedScrollMode.PARENT_FIRST, // 向上滚动父组件优先
+            scrollDown: NestedScrollMode.SELF_FIRST, // 向下滚动子组件优先
+          }).height('100%')
+        ForEach(this.arr, (item: int) => {
+          ListItem() {
+            Text('Scroll Area')
+              .width('100%')
+              .height('40%')
+              .backgroundColor(0x330000FF)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+          }
+        }, (item: int) => item.toString())
       }
     }
   }
@@ -183,6 +242,7 @@ struct NestedScroll {
 
 **完整代码**
 
+ArkTS-Dyn示例：
 <!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) --> 
 
 ``` TypeScript
@@ -291,7 +351,137 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) --> 
 
+``` TypeScript
+import {
+  $rawfile,
+  Column,
+  Component,
+  Entry,
+  ForEach,
+  List,
+  ListItem,
+  Scroll,
+  Scroller,
+  Text,
+  Web,
+  BaseGestureEvent,
+  GestureRecognizer,
+  GestureJudgeResult,
+  ScrollState,
+  WebBypassVsyncCondition,
+  State,
+  GestureControl,
+  TextAlign,
+  OnScrollFrameBeginHandlerResult
+} from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  scroller: Scroller = new Scroller();
+  listScroller: Scroller = new Scroller();
+  webController: webview.WebviewController = new webview.WebviewController(undefined);
+  isWebAtEnd: boolean = false;
+  webHeight: number;
+  @State arr: Array<int> = new Array<int>();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 10; i++) {
+      this.arr.push(i)
+    }
+  }
+
+  getWebHeight() {
+    try {
+      this.webController.runJavaScriptExt('window.innerHeight',
+        (error, result) => {
+          if (error || !result) {
+            return;
+          }
+          if (result.getType() === webview.JsMessageType.NUMBER) {
+            this.webHeight = result.getNumber() as Double;
+          }
+        })
+    } catch (error) {
+    }
+  }
+
+  checkScrollBottom() {
+    this.isWebAtEnd = false;
+    try {
+      if (this.webController.getPageOffset().y + this.webHeight >= this.webController.getPageHeight()) {
+        this.isWebAtEnd = true;
+      }
+    } catch (err) {
+      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+    }
+  }
+
+  build() {
+    Scroll(this.scroller) {
+      Column() {
+        Web({
+          src: $rawfile('scroll.html'),
+          controller: this.webController,
+        }).height('100%')
+          .bypassVsyncCondition(WebBypassVsyncCondition.SCROLLBY_FROM_ZERO_OFFSET)
+          .onPageEnd(() => {
+            this.webController.setScrollable(false, webview.ScrollType.EVENT);
+            this.getWebHeight();
+          })
+          .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
+            others: Array<GestureRecognizer>) => {
+            if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
+              return GestureJudgeResult.REJECT;
+            }
+            return GestureJudgeResult.CONTINUE;
+          })
+        List({ scroller: this.listScroller }) {
+          ForEach(this.arr, (item: int) => {
+            ListItem() {
+              Text('Scroll Area')
+                .width('100%')
+                .height('40%')
+                .backgroundColor(0x330000FF)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+            }
+          }, (item: int) => item.toString())
+        }
+        .height('100%')
+        .maintainVisibleContentPosition(true)
+        .enableScrollInteraction(false)
+      }
+    }
+    .onScrollFrameBegin((offset: double, state: ScrollState) => {
+      this.checkScrollBottom();
+      if (offset > 0) {
+        if (!this.isWebAtEnd) {
+          this.webController.scrollBy(0, offset)
+          return { offsetRemain: 0 } as OnScrollFrameBeginHandlerResult
+        } else if (this.scroller.isAtEnd()) {
+          this.listScroller.scrollBy(0, offset)
+          return { offsetRemain: 0 } as OnScrollFrameBeginHandlerResult
+        }
+      } else if (offset < 0) {
+        if (this.listScroller.currentOffset()!.yOffset > 0) {
+          this.listScroller.scrollBy(0, offset)
+          return { offsetRemain: 0 } as OnScrollFrameBeginHandlerResult
+        } else if (this.scroller.currentOffset()!.yOffset <= 0) {
+          this.webController.scrollBy(0, offset)
+          return { offsetRemain: 0 } as OnScrollFrameBeginHandlerResult
+        }
+      }
+      return { offsetRemain: offset } as OnScrollFrameBeginHandlerResult
+    })
+  }
+}
+```
 加载的html文件。
 
 ```html

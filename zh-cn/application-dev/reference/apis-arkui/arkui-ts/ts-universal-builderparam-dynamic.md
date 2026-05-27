@@ -1,6 +1,6 @@
 # \@BuilderParam装饰器：引用\@Builder函数
 
-\@BuilderParam用于装饰指向@Builder方法的变量。开发指南见[\@BuilderParam装饰器：引用\@Builder函数](../../../ui/state-management/arkts-builderparam.md)。
+\@BuilderParam用于装饰指向[@Builder](./ts-universal-builder-dynamic.md)方法的变量。开发指南见[\@BuilderParam装饰器：引用\@Builder函数](../../../ui/state-management/arkts-builderparam.md)。
 
 > **说明：**
 >
@@ -10,9 +10,9 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **示例：**
 

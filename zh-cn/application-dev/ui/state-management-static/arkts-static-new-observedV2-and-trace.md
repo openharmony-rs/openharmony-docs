@@ -379,7 +379,7 @@ struct Index {
 'use static'
 
 import { Button, Column, ComponentV2, Divider, Entry, FontWeight, 
-         ForEach, Row, Text, ObservedV2, Trace } from '@kit.ArkUI';
+         ForEach, Row, Text, ObservedV2, Trace, List, ListItem } from '@kit.ArkUI';
 
 let nextId: number = 0;
 
@@ -424,10 +424,17 @@ struct Index {
 
       Divider()
 
-      ForEach(this.arr.numberArr, (item: number, index: int) => {
-        Text(`${index} ${item}`)
-          .fontSize(40)
-      })
+      List() {
+        ForEach(this.arr.numberArr, (item: number, index: int) => {
+          ListItem() {
+            Row() {
+              Text(`${index} ${item}`)
+                .fontSize(40)
+            }
+          }
+        })
+      }
+      .height('20%')
 
       Button('push')
         .onClick((e) => {

@@ -10,15 +10,25 @@
 敏感数据密钥在锁屏后会触发销毁，销毁后敏感数据无法读写，需解锁屏幕触发恢复敏感数据密钥后方可访问。本模块提供应用锁屏下敏感数据保护的能力，支持申请和释放锁屏下敏感数据访问权限等。
 
 > **说明：**
-> - 本模块首批接口从API version 12 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.ability.screenLockFileManager](js-apis-screenLockFileManager.md)。
 
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
+
+ArkTS-Sta示例：
+```ts
+import screenLockFileManager from '@ohos.ability.screenLockFileManager';
+```
+
 ## screenLockFileManager.acquireAccess
 
 acquireAccess(dataType: DataType): AccessStatus
@@ -30,6 +40,10 @@ acquireAccess(dataType: DataType): AccessStatus
 **需要权限：** ohos.permission.ACCESS_SCREEN_LOCK_MEDIA_DATA 或 ohos.permission.ACCESS_SCREEN_LOCK_ALL_DATA
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -60,9 +74,28 @@ acquireAccess(dataType: DataType): AccessStatus
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 申请锁屏下媒体类型数据的访问权限
 import { screenLockFileManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+    let acquireStatus = screenLockFileManager.acquireAccess(screenLockFileManager.DataType.MEDIA_DATA);
+    if (acquireStatus === screenLockFileManager.AccessStatus.ACCESS_GRANTED) {
+        hilog.info(0x0000, 'testTag', 'acquireAccess successfully.');
+    }
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'acquireAccess failed: %{public}s', message);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// 申请锁屏下媒体类型数据的访问权限
+import screenLockFileManager from '@ohos.ability.screenLockFileManager';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -88,6 +121,10 @@ releaseAccess(dataType: DataType): ReleaseStatus
 **需要权限：** ohos.permission.ACCESS_SCREEN_LOCK_MEDIA_DATA 或 ohos.permission.ACCESS_SCREEN_LOCK_ALL_DATA
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -118,9 +155,28 @@ releaseAccess(dataType: DataType): ReleaseStatus
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 释放锁屏下媒体类型数据的访问权限
 import { screenLockFileManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+    let releaseStatus = screenLockFileManager.releaseAccess(screenLockFileManager.DataType.MEDIA_DATA);
+    if (releaseStatus === screenLockFileManager.ReleaseStatus.RELEASE_GRANTED) {
+        hilog.info(0x0000, 'testTag', 'releaseAccess successfully.');
+    }
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'releaseAccess failed: %{public}s', message);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// 释放锁屏下媒体类型数据的访问权限
+import screenLockFileManager from '@ohos.ability.screenLockFileManager';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -146,6 +202,10 @@ queryAppKeyState(dataType: DataType): KeyStatus
 **需要权限：** ohos.permission.ACCESS_SCREEN_LOCK_MEDIA_DATA 或 ohos.permission.ACCESS_SCREEN_LOCK_ALL_DATA
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -174,9 +234,32 @@ queryAppKeyState(dataType: DataType): KeyStatus
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // 查询锁屏下媒体类型数据的访问权限
 import { screenLockFileManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try {
+    let keyStatus = screenLockFileManager.queryAppKeyState(screenLockFileManager.DataType.MEDIA_DATA);
+    if (keyStatus === screenLockFileManager.KeyStatus.KEY_NOT_EXIST) {
+        hilog.info(0x0000, 'testTag', 'Key does not exist.');
+    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_RELEASED) {
+        hilog.info(0x0000, 'testTag', 'Key has been released.');
+    } else if (keyStatus === screenLockFileManager.KeyStatus.KEY_EXIST) {
+        hilog.info(0x0000, 'testTag', 'Key exists.');
+    }
+} catch (err) {
+    let message = (err as BusinessError).message;
+    hilog.error(0x0000, 'testTag', 'queryAppKeyState failed: %{public}s', message);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// 查询锁屏下媒体类型数据的访问权限
+import screenLockFileManager from '@ohos.ability.screenLockFileManager';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

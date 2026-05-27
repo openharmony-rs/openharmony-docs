@@ -8,6 +8,17 @@
 
 用户需要分享文件、保存图片、视频等用户文件时，开发者可以通过系统预置的[文件选择器（FilePicker）](../reference/apis-core-file-kit/js-apis-file-picker.md)，实现该能力。通过Picker访问相关文件，将拉起对应的应用，引导用户完成界面操作，接口本身无需申请权限。Picker选择文件或文件夹获取到的URI只具有**临时读写权限**，获取持久化权限需要通过[FilePicker设置永久授权](file-persistPermission.md#通过picker获取临时授权并进行授权持久化)方式获取。
 
+**约束限制**
+
+如果使用系统能力为SystemCapability.FileManagement.UserFileService.FolderSelection的接口时，可使用[canIUse](../reference/common/js-apis-syscap.md#caniuse)接口，确认设备是否具有该系统能力：
+
+```ts
+if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection')) {
+      console.error('This API is not supported on this device');
+      return;
+}
+```
+
 根据用户文件的常见类型，选择器（FilePicker）分别提供以下选项：
 
 - [PhotoViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#photoviewpickerdeprecated)：适用于图片或视频类型文件的选择与保存（该接口在后续版本不再演进）。请使用PhotoAccessHelper的[PhotoViewPicker](../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)来选择图片文件。请使用[安全控件保存媒体库资源](../media/medialibrary/photoAccessHelper-savebutton.md)。
@@ -52,7 +63,7 @@
    documentSelectOptions.maxSelectNumber = 5;
    // 指定选择的文件或者目录的URI（可选）。
    documentSelectOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
-   // 选择的文档类型，默认值是FILE(文件类型)。该参数在2in1设备中可正常使用，在其他设备中无效果。 
+   // 选择的文档类型，默认值是FILE(文件类型)。从API版本26.0.0开始，当文件类型是FOLDER时，Phone设备支持该参数；当文件类型是MIXED时，该参数在2in1设备中可正常使用，在其他设备中无效果。 
    documentSelectOptions.selectMode = picker.DocumentSelectMode.FILE;
    // 选择文件的后缀类型['后缀类型描述|后缀类型']（可选，不传该参数，默认不过滤，即显示所有文件），若选择项存在多个后缀名，则每一个后缀名之间用英文逗号进行分隔（可选），后缀类型名不能超过100。此外2in1设备支持通配符方式['所有文件(*.*)|.*']（说明：从API version 17开始，手机支持该配置），表示为显示所有文件。
     documentSelectOptions.fileSuffixFilters = ['图片(.png, .jpg)|.png,.jpg', '文档|.txt', '视频|.mp4', '.pdf']; 

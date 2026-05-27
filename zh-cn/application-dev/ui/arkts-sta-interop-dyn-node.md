@@ -2,7 +2,7 @@
 
 ## FrameNode和TypedFrameNode自定义节点
 
-针对FrameNode和[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)类型，UI框架通过transferStatic接口将ArkTS-Dyn的基类FrameNode和子类TypedFrameNode对象转换为ArkTS-Sta的基类FrameNode对象，转换后的FrameNode对象可在ArkTS-Sta上下文中进行树构建。
+针对FrameNode和[TypedFrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#typedframenode12)类型，UI框架通过transferStatic接口将ArkTS-Dyn的基类[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)和子类TypedFrameNode对象转换为ArkTS-Sta的基类FrameNode对象，转换后的FrameNode对象可在ArkTS-Sta上下文中进行树构建。
 
 如下示例代码展示了相关用法。
 

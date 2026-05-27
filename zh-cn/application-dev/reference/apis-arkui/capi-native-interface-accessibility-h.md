@@ -1,7 +1,7 @@
 # native_interface_accessibility.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -676,6 +676,10 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementIn
 
 
 为ArkUI_AccessibilityElementInfo设置是否被检查。
+
+> **说明：** 
+>
+> 本接口仅设置是否被检查，不会设置是否可查。若需要设置是否可查，需调用[OH_ArkUI_AccessibilityElementInfoSetCheckable](#oh_arkui_accessibilityelementinfosetcheckable)。
 
 **起始版本：** 13
 

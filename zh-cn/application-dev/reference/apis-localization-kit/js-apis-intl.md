@@ -9,17 +9,21 @@
 
 本模块提供基础的应用国际化能力，包括时间日期格式化、数字格式化、排序等，相关接口在ECMA 402标准中定义。
 
-[I18N模块](js-apis-i18n.md)提供其他非ECMA 402定义的国际化接口，与本模块共同使用可提供完整的国际化支持能力。
+[国际化-I18n](js-apis-i18n.md)提供其他非ECMA 402定义的国际化接口，与本模块共同使用可提供完整的国际化支持能力。
 
 >  **说明：**
 >
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如[数字格式化接口](#numberformat)，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅CLDR官方文档。
+>  - 本模块接口基于[CLDR](https://cldr.unicode.org)国际化数据库实现，随着CLDR标准的迭代演进，接口处理结果可能会相应调整。例如数字格式化接口，其返回值仅适用于界面展示场景，开发者请勿对返回格式进行硬编码或假设性判断，否则可能导致版本兼容问题。其中，API version 12 对应[CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42)版本，具体数据变更详情可查阅[CLDR官方文档](https://cldr.unicode.org/)。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
 >
 >  - 从API version 12开始，本模块全接口支持在原子化服务中使用。
+>
+>  - 本模块首批ArkTS-Sta接口从API version 20开始支持。
 
 
 ## 导入模块
@@ -34,11 +38,15 @@ import { intl } from '@kit.LocalizationKit';
 
 > 从API version 6开始支持，从API version 20开始废弃，建议使用[Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale)替代。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称              | 类型     | 只读  |  可选  | 说明                                       |
 | --------------- | ------- | -------- | -------- | ---------------------------------------- |
@@ -57,15 +65,19 @@ import { intl } from '@kit.LocalizationKit';
 
 constructor()
 
-> 从API version 8开始支持，从API version 20开始废弃，建议使用[i18n.System.getSystemLocaleInstance](js-apis-i18n.md#getsystemlocaleinstance20)替代。
+> 从API version 8开始支持，从API version 20开始废弃，建议使用[Intl.Locale.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale)替代。
 
 创建区域对象。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **示例：**
 ```ts
@@ -85,11 +97,15 @@ constructor(locale: string, options?: LocaleOptions)
 
 创建区域对象。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -116,11 +132,15 @@ toString(): string
 
 获取区域对象的字符串。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -145,11 +165,15 @@ maximize(): Locale
 
 最大化区域信息，补齐区域对象中缺少的脚本、国家地区信息。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -183,11 +207,15 @@ minimize(): Locale
 
 最小化区域信息，移除区域对象中的脚本、国家地区信息。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -218,11 +246,15 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 区域初始化选项。从API version 9开始，LocaleOptions属性由必填改为可选。
 
-**卡片能力**：从API version 11开始，该类型支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该类型支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称              | 类型      | 只读   | 可选   |  说明                                       |
 | --------------- | ------- | ---- | ---- |---------------------------------------- |
@@ -243,7 +275,7 @@ localeID = minimizedLocale.toString(); // localeID = 'en'
 
 提供日期格式化的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -255,11 +287,13 @@ constructor()
 
 创建时间、日期格式化对象。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **示例：**
 ```ts
@@ -277,11 +311,13 @@ constructor(locale: string | Array&lt;string&gt;, options?: DateTimeOptions)
 
 创建时间、日期格式化对象。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -309,11 +345,13 @@ format(date: Date): string
 
 对时间、日期进行格式化。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -349,11 +387,13 @@ formatRange(startDate: Date, endDate: Date): string
 
 对时间段、日期段进行格式化。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -387,11 +427,13 @@ resolvedOptions(): DateTimeOptions
 
 获取创建时间、日期格式化对象时设置的配置项。
 
-**卡片能力**：从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -417,11 +459,13 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 时间、日期格式化时可设置的配置项。从API version 9开始，DateTimeOptions的属性由必填改为可选。
 
-**卡片能力**：从API version 11开始，该类型支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该类型支持在ArkTS卡片中使用。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
 
 | 名称              | 类型      | 只读   | 可选   | 说明                                       |
 | --------------- | ------- | ---- | ---- |  ---------------------------------------- |
@@ -449,7 +493,7 @@ let timeStyle: string | undefined = options.timeStyle; // timeStyle = 'medium'
 
 提供标准的数字格式化的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -459,9 +503,13 @@ constructor()
 
 使用当前系统区域创建数字格式化对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -478,9 +526,13 @@ constructor(locale: string | Array&lt;string&gt;, options?: NumberOptions)
 
 根据指定的区域和配置项创建数字格式化对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -499,19 +551,25 @@ let formatter: intl.NumberFormat = new intl.NumberFormat('en-GB', { style: 'deci
 
 ### format
 
-format(num: number): string
+ArkTS-Dyn: format(num: number): string
+
+ArkTS-Sta: format(num: double): string
 
 格式化数字。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明   |
 | ------ | ------ | ---- | ---- |
-| num | number | 是    | 数字对象。 |
+| num | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 数字对象。 |
 
 **返回值：**
 
@@ -538,20 +596,26 @@ let result: string = formatter.format(1.23456); // result = 1.23
 
 ### formatRange<sup>18+</sup>
 
-formatRange(startRange: number, endRange: number): string
+ArkTS-Dyn: formatRange(startRange: number, endRange: number): string
+
+ArkTS-Sta: formatRange(startRange: double, endRange: double): string
 
 对数字范围进行格式化。
 
-**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明   |
 | ------ | ------ | ---- | ---- |
-| startRange | number | 是    | 开始数字。 |
-| endRange | number | 是    | 结束数字。 |
+| startRange | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 开始数字。 |
+| endRange | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是    | 结束数字。 |
 
 **返回值：**
 
@@ -575,9 +639,13 @@ resolvedOptions(): NumberOptions
 
 获取创建数字格式化对象时设置的配置项。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 6
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -601,40 +669,38 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 
 创建数字格式化对象时可设置的配置项。从API version 9开始，NumberOptions的属性由必填改为可选。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Global.I18n
 
 | 名称                       | 类型      | 只读   | 可选   |  说明                                       |
 | ------------------------ | ------- | ---- | ---- |  ---------------------------------------- |
-| locale                   | string  | 否    | 是    | 合法的区域ID，&nbsp;如："zh-Hans-CN"。<br>默认值：系统当前区域ID。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。               |
-| currency                 | string  | 否    | 是    | 货币单位，&nbsp;取值符合[ISO-4217标准](https://www.iso.org/iso-4217-currency-codes.html)，如："EUR"，"CNY"，"USD"等。<br>从API version 12开始支持三位数字代码，如："978"，"156"，"840"等。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。    |
-| currencySign             | string  | 否    | 是    | 货币单位的符号显示，取值包括：&nbsp;"standard"，"accounting"。<br>默认值：standard。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表19](#附录)。 |
-| currencyDisplay          | string  | 否    | 是    | 货币的显示方式，取值包括："symbol",&nbsp;"narrowSymbol",&nbsp;"code",&nbsp;"name"。<br>默认值：symbol。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表20](#附录)。 |
-| unit                     | string  | 否    | 是    | 单位名称，如："meter"，"inch"，“hectare”等。<br>从API version 18开始新增支持的组合单位有： "beat-per-minute", "body-weight-per-second", "breath-per-minute", "foot-per-hour", "jump-rope-per-minute", "meter-per-hour", "milliliter-per-minute-per-kilogram", "rotation-per-minute", "step-per-minute", "stroke-per-minute"。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。       |
-| unitDisplay              | string  | 否    | 是    | 单位的显示格式，取值包括："long",&nbsp;"short",&nbsp;"narrow"。<br>默认值：short。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表21](#附录)。 |
-| unitUsage<sup>8+</sup>   | string  | 否    | 是    | 单位的使用场景，取值包括："default",&nbsp;"area-land-agricult",&nbsp;"area-land-commercl",&nbsp;"area-land-residntl",&nbsp;"length-person",&nbsp;"length-person-small",&nbsp;"length-rainfall",&nbsp;"length-road",&nbsp;"length-road-small",&nbsp;"length-snowfall",&nbsp;"length-vehicle",&nbsp;"length-visiblty",&nbsp;"length-visiblty-small",&nbsp;"length-person-informal",&nbsp;"length-person-small-informal",&nbsp;"length-road-informal",&nbsp;"speed-road-travel",&nbsp;"speed-wind",&nbsp;"temperature-person",&nbsp;"temperature-weather",&nbsp;"volume-vehicle-fuel",&nbsp;"elapsed-time-second",&nbsp;"size-file-byte",&nbsp;"size-shortfile-byte"。<br>默认值：default。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表22](#附录)。 |
-| signDisplay              | string  | 否    | 是    | 数字符号的显示格式，取值包括：<br>"auto"：自动判断是否显示正负符号。<br>"never"：不显示正负号。<br>"always"：总是显示正负号。<br>"exceptZero"：除了0都显示正负号。<br>默认值："auto"。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| compactDisplay           | string  | 否    | 是    | 紧凑显示格式，取值包括："long",&nbsp;"short"。<br>默认值：short。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表18](#附录)。      |
-| notation                 | string  | 否    | 是    | 数字的表示方法，取值包括："standard",&nbsp;"scientific",&nbsp;"engineering",&nbsp;"compact"。<br>默认值：standard。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表17](#附录)。 |
-| localeMatcher            | string  | 否    | 是    | 要使用的区域匹配算法，取值包括："lookup",&nbsp;"best&nbsp;fit"。<br>默认值：best fit。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| style                    | string  | 否    | 是    | 数字的显示格式，取值包括："decimal",&nbsp;"currency",&nbsp;"percent",&nbsp;"unit"。<br>默认值：decimal。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| numberingSystem          | string  | 否    | 是    | 数字系统，取值包括：<br>"adlm",&nbsp;"ahom",&nbsp;"arab",&nbsp;"arabext",&nbsp;"bali",&nbsp;"beng",&nbsp;"bhks",&nbsp;"brah",&nbsp;"cakm",&nbsp;"cham",&nbsp;"deva",&nbsp;"diak",&nbsp;"fullwide",&nbsp;"gong",&nbsp;"gonm",&nbsp;"gujr",&nbsp;"guru",&nbsp;"hanidec",&nbsp;"hmng",&nbsp;"hmnp",&nbsp;"java",&nbsp;"kali",&nbsp;"khmr",&nbsp;"knda",&nbsp;"lana",&nbsp;"lanatham",&nbsp;"laoo",&nbsp;"latn",&nbsp;"lepc",&nbsp;"limb",&nbsp;"mathbold",&nbsp;"mathdbl",&nbsp;"mathmono",&nbsp;"mathsanb",&nbsp;"mathsans",&nbsp;"mlym",&nbsp;"modi",&nbsp;"mong",&nbsp;"mroo",&nbsp;"mtei",&nbsp;"mymr",&nbsp;"mymrshan",&nbsp;"mymrtlng",&nbsp;"newa",&nbsp;"nkoo",&nbsp;"olck",&nbsp;"orya",&nbsp;"osma",&nbsp;"rohg",&nbsp;"saur",&nbsp;"segment",&nbsp;"shrd",&nbsp;"sind",&nbsp;"sinh",&nbsp;"sora",&nbsp;"sund",&nbsp;"takr",&nbsp;"talu",&nbsp;"tamldec",&nbsp;"telu",&nbsp;"thai",&nbsp;"tibt",&nbsp;"tirh",&nbsp;"vaii",&nbsp;"wara",&nbsp;"wcho"。<br>默认值：区域的默认数字系统。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
-| useGrouping              | boolean | 否    | 是    | true表示分组显示，false表示不分组显示。<br>默认值：true。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表16](#附录)。                                  |
-| minimumIntegerDigits     | number  | 否    | 是    | 表示要使用的最小整数位数，取值范围：1~21。<br>默认值：1。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表11](#附录)。                  |
-| minimumFractionDigits    | number  | 否    | 是    | 表示要使用的最小分数位数，取值范围：0~20。<br>默认值：0。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表12](#附录)。                  |
-| maximumFractionDigits    | number  | 否    | 是    | 表示要使用的最大分数位数，取值范围：1~21。<br>默认值：3。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表13](#附录)。                  |
-| minimumSignificantDigits | number  | 否    | 是    | 表示要使用的最小有效位数，取值范围：1~21。<br>默认值：1。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表14](#附录)。                 |
-| maximumSignificantDigits | number  | 否    | 是    | 表示要使用的最大有效位数，取值范围：1~21。<br>默认值：21。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表15](#附录)。                  |
-| roundingPriority<sup>18+</sup>   | string  | 否    | 是    | 最大分数位数和最大有效位数同时设置时的舍入优先级，取值包括："auto"，"morePrecision"&nbsp;取最大分数位数，"lessPrecision"&nbsp;取最大有效位数。<br>默认值：auto。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                  |
-| roundingIncrement<sup>18+</sup>  | number  | 否    | 是    | 表示舍入增量，取值范围：1，2，5，10，20，25，50，100，200，250，500，1000，2000，2500，5000。<br>默认值：1。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。                  |
-| roundingMode<sup>18+</sup>       | string  | 否    | 是    | 表示舍入模式，取值包括：<br>"ceil"：向上取整。<br>"floor"：向下取整。<br>"expand"：远离零取整。<br>"trunc"：向零取整。<br>"halfCeil"：半向上取整，大于等于增量的一半时向上取整，小于增量的一半时向下取整。<br>"halfFloor"：半向下取整，大于增量的一半时向上取整，小于等于增量的一半时向下取整。<br>"halfExpand"：半远离零取整，大于等于增量的一半时远离零取整，小于增量的一半时向零取整。<br>"halfTrunc"：半向零取整，大于增量的一半时远离零取整，小于等于增量的一半时向零取整。<br>"halfEven"：半向偶数取整，大于增量的一半时 远离零取整，小于增量的一半时向零取整，等于增量的一半时向最近的偶数位舍入。<br>默认值：halfExpand。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
+| locale                   | string  | 否    | 是    | 合法的区域ID，&nbsp;如："zh-Hans-CN"。<br>默认值：系统当前区域ID。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23 |
+| currency                 | string  | 否    | 是    | 货币单位，&nbsp;取值符合[ISO-4217标准](https://www.iso.org/iso-4217-currency-codes.html)，如："EUR"，"CNY"，"USD"等。<br>从API version 12开始支持三位数字代码，如："978"，"156"，"840"等。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| currencySign             | string  | 否    | 是    | 货币单位的符号显示，取值包括：&nbsp;"standard"，"accounting"。<br>默认值：standard。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表19](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| currencyDisplay          | string  | 否    | 是    | 货币的显示方式，取值包括："symbol",&nbsp;"narrowSymbol",&nbsp;"code",&nbsp;"name"。<br>默认值：symbol。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表20](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| unit                     | string  | 否    | 是    | 单位名称，如："meter"，"inch"，“hectare”等。<br>从API version 18开始新增支持的组合单位有： "beat-per-minute", "body-weight-per-second", "breath-per-minute", "foot-per-hour", "jump-rope-per-minute", "meter-per-hour", "milliliter-per-minute-per-kilogram", "rotation-per-minute", "step-per-minute", "stroke-per-minute"。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| unitDisplay              | string  | 否    | 是    | 单位的显示格式，取值包括："long",&nbsp;"short",&nbsp;"narrow"。<br>默认值：short。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表21](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| unitUsage<sup>8+</sup>   | string  | 否    | 是    | 单位的使用场景，取值包括："default",&nbsp;"area-land-agricult",&nbsp;"area-land-commercl",&nbsp;"area-land-residntl",&nbsp;"length-person",&nbsp;"length-person-small",&nbsp;"length-rainfall",&nbsp;"length-road",&nbsp;"length-road-small",&nbsp;"length-snowfall",&nbsp;"length-vehicle",&nbsp;"length-visiblty",&nbsp;"length-visiblty-small",&nbsp;"length-person-informal",&nbsp;"length-person-small-informal",&nbsp;"length-road-informal",&nbsp;"speed-road-travel",&nbsp;"speed-wind",&nbsp;"temperature-person",&nbsp;"temperature-weather",&nbsp;"volume-vehicle-fuel",&nbsp;"elapsed-time-second",&nbsp;"size-file-byte",&nbsp;"size-shortfile-byte"。<br>默认值：default。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表22](#附录)。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23  |
+| signDisplay              | string  | 否    | 是    | 数字符号的显示格式，取值包括：<br>"auto"：自动判断是否显示正负符号。<br>"never"：不显示正负号。<br>"always"：总是显示正负号。<br>"exceptZero"：除了0都显示正负号。<br>默认值："auto"。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| compactDisplay           | string  | 否    | 是    | 紧凑显示格式，取值包括："long",&nbsp;"short"。<br>默认值：short。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表18](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| notation                 | string  | 否    | 是    | 数字的表示方法，取值包括："standard",&nbsp;"scientific",&nbsp;"engineering",&nbsp;"compact"。<br>默认值：standard。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表17](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23 |
+| localeMatcher            | string  | 否    | 是    | 要使用的区域匹配算法，取值包括："lookup",&nbsp;"best&nbsp;fit"。<br>默认值：best fit。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| style                    | string  | 否    | 是    | 数字的显示格式，取值包括："decimal",&nbsp;"currency",&nbsp;"percent",&nbsp;"unit"。<br>默认值：decimal。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| numberingSystem          | string  | 否    | 是    | 数字系统，取值包括：<br>"adlm",&nbsp;"ahom",&nbsp;"arab",&nbsp;"arabext",&nbsp;"bali",&nbsp;"beng",&nbsp;"bhks",&nbsp;"brah",&nbsp;"cakm",&nbsp;"cham",&nbsp;"deva",&nbsp;"diak",&nbsp;"fullwide",&nbsp;"gong",&nbsp;"gonm",&nbsp;"gujr",&nbsp;"guru",&nbsp;"hanidec",&nbsp;"hmng",&nbsp;"hmnp",&nbsp;"java",&nbsp;"kali",&nbsp;"khmr",&nbsp;"knda",&nbsp;"lana",&nbsp;"lanatham",&nbsp;"laoo",&nbsp;"latn",&nbsp;"lepc",&nbsp;"limb",&nbsp;"mathbold",&nbsp;"mathdbl",&nbsp;"mathmono",&nbsp;"mathsanb",&nbsp;"mathsans",&nbsp;"mlym",&nbsp;"modi",&nbsp;"mong",&nbsp;"mroo",&nbsp;"mtei",&nbsp;"mymr",&nbsp;"mymrshan",&nbsp;"mymrtlng",&nbsp;"newa",&nbsp;"nkoo",&nbsp;"olck",&nbsp;"orya",&nbsp;"osma",&nbsp;"rohg",&nbsp;"saur",&nbsp;"segment",&nbsp;"shrd",&nbsp;"sind",&nbsp;"sinh",&nbsp;"sora",&nbsp;"sund",&nbsp;"takr",&nbsp;"talu",&nbsp;"tamldec",&nbsp;"telu",&nbsp;"thai",&nbsp;"tibt",&nbsp;"tirh",&nbsp;"vaii",&nbsp;"wara",&nbsp;"wcho"。<br>默认值：区域的默认数字系统。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| useGrouping              | boolean | 否    | 是    | true表示分组显示，false表示不分组显示。<br>默认值：true。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表16](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| minimumIntegerDigits     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最小整数位数，取值范围：1~21。<br>默认值：1。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表11](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| minimumFractionDigits    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最小分数位数，取值范围：0~20。<br>默认值：0。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表12](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| maximumFractionDigits    | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最大分数位数，取值范围：1~21。<br>默认值：3。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表13](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| minimumSignificantDigits | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最小有效位数，取值范围：1~21。<br>默认值：1。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表14](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23   |
+| maximumSignificantDigits | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示要使用的最大有效位数，取值范围：1~21。<br>默认值：21。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>不同取值的显示效果请参考[附录表15](#附录)。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23  |
+| roundingPriority<sup>18+</sup>   | string  | 否    | 是    | 最大分数位数和最大有效位数同时设置时的舍入优先级，取值包括："auto"，"morePrecision"&nbsp;取最大分数位数，"lessPrecision"&nbsp;取最大有效位数。<br>默认值：auto。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23  |
+| roundingIncrement<sup>18+</sup>  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否    | 是    | 表示舍入增量，取值范围：1，2，5，10，20，25，50，100，200，250，500，1000，2000，2500，5000。<br>默认值：1。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23  |
+| roundingMode<sup>18+</sup>       | string  | 否    | 是    | 表示舍入模式，取值包括：<br>"ceil"：向上取整。<br>"floor"：向下取整。<br>"expand"：远离零取整。<br>"trunc"：向零取整。<br>"halfCeil"：半向上取整，大于等于增量的一半时向上取整，小于增量的一半时向下取整。<br>"halfFloor"：半向下取整，大于增量的一半时向上取整，小于等于增量的一半时向下取整。<br>"halfExpand"：半远离零取整，大于等于增量的一半时远离零取整，小于增量的一半时向零取整。<br>"halfTrunc"：半向零取整，大于增量的一半时远离零取整，小于等于增量的一半时向零取整。<br>"halfEven"：半向偶数取整，大于增量的一半时 远离零取整，小于增量的一半时向零取整，等于增量的一半时向最近的偶数位舍入。<br>默认值：halfExpand。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23  |
 
 ## Collator<sup>8+</sup>
 
 提供字符串排序的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -644,9 +710,13 @@ constructor()
 
 使用当前系统区域创建排序对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 ```ts
@@ -663,9 +733,13 @@ constructor(locale: string | Array&lt;string&gt;, options?: CollatorOptions)
 
 根据指定的区域和配置项创建排序对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -685,13 +759,19 @@ let collator = new intl.Collator('zh-CN', {localeMatcher: 'lookup', usage: 'sort
 
 ### compare<sup>8+</sup>
 
-compare(first: string, second: string): number
+ArkTS-Dyn: compare(first: string, second: string): number
+
+ArkTS-Sta: compare(first: string, second: string): int
 
 根据配置项的排序规则，比较两个字符串。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -704,7 +784,7 @@ compare(first: string, second: string): number
 
 | 类型     | 说明                                       |
 | ------ | ---------------------------------------- |
-| number | 比较结果。<br>- number为负数时，表示first排序在second之前。<br>- number为0时，表示first与second排序相同。<br>- number为正数，表示first排序在second之后。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 比较结果。<br>- 返回值为负数时，表示first排序在second之前。<br>- 返回值为0时，表示first与second排序相同。<br>- 返回值为正数，表示first排序在second之后。 |
 
 **示例：**
 ```ts
@@ -723,9 +803,13 @@ resolvedOptions(): CollatorOptions
 
 获取创建排序对象时设置的配置项。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -749,11 +833,15 @@ let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
 
 创建排序对象时可设置的配置项。
 
-从API version 9中，CollatorOptions中的属性改为可选。
+从API version 9开始，CollatorOptions中的属性改为可选。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型      | 只读   | 可选   | 说明                                       |
 | ----------------- | ------- | ---- | ---- | ---------------------------------------- |
@@ -772,7 +860,7 @@ let ignorePunctuation = options.ignorePunctuation; // ignorePunctuation = true
 
 提供获取单复数类型的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -784,9 +872,13 @@ constructor()
 
 创建单复数对象来计算数字的单复数类别。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **示例：**
 ```ts
@@ -805,9 +897,13 @@ constructor(locale: string | Array&lt;string&gt;, options?: PluralRulesOptions)
 
 创建单复数对象来计算数字的单复数类别。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -832,9 +928,13 @@ select(n: number): string
 
 获取数字的单复数类别。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -870,9 +970,13 @@ plural = enPluralRules.select(1); // plural = 'one'
 
 创建单复数对象时可设置的配置项。从API version 9开始，PluralRulesOptions的属性由必填改为可选。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称                       | 类型     | 只读   | 可选   | 说明                                       |
 | ------------------------ | ------ | ---- | ---- | ---------------------------------------- |
@@ -891,7 +995,7 @@ plural = enPluralRules.select(1); // plural = 'one'
 
 提供相对时间格式化的能力。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Global.I18n
 
@@ -903,9 +1007,13 @@ constructor()
 
 创建相对时间格式化对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **示例：**
 ```ts
@@ -924,9 +1032,13 @@ constructor(locale: string | Array&lt;string&gt;, options?: RelativeTimeFormatIn
 
 创建相对时间格式化对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -956,9 +1068,13 @@ format(value: number, unit: string): string
 
 对相对时间进行格式化。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -992,9 +1108,13 @@ formatToParts(value: number, unit: string): Array&lt;object&gt;
 
 对相对时间进行格式化，获取格式化结果中各个部分的对象数组。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1027,9 +1147,13 @@ resolvedOptions(): RelativeTimeFormatResolvedOptions
 
 获取相对时间格式化对象的格式化配置项。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -1057,9 +1181,13 @@ let style: string = options.style; // style = 'short'
 
 从API version 9开始，RelativeTimeFormatInputOptions中的属性改为可选。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称            | 类型     | 只读   | 可选   |说明                                       |
 | ------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1073,9 +1201,13 @@ let style: string = options.style; // style = 'short'
 
 相对时间格式化对象的格式化配置项。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称              | 类型     | 只读  | 可选   |说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -1090,7 +1222,7 @@ let style: string = options.style; // style = 'short'
 
 下方表格以时间：2021年9月17日 13:04:00、2021年9月17日 00:25:00和区域ID: zh-CN、en为例，说明[DateTimeOptions](#datetimeoptionsdeprecated)的取值和显示结果。
 
-**表1** 日期显示格式(dateStyle)
+**表1** 日期显示格式 (dateStyle)
 
 | 取值   | 描述                                    | 2021年9月17日 13:04:00，区域ID为zh-CN显示结果 | 2021年9月17日 13:04:00，区域ID为en显示结果 |
 | ------ | --------------------------------------- | ------------------------------------------  | ---------------------------------------- |
@@ -1099,7 +1231,7 @@ let style: string = options.style; // style = 'short'
 | short  | 简短的日期显示，包含年份、月份和天数。     | 2021/9/17                                   | 9/17/21                                  |
 | medium | 中等长度日期显示，包含年份、月份和天数。   | 2021年9月17日                                | Sep 17, 2021                             |
 
-**表2** 时间显示格式(timeStyle)
+**表2** 时间显示格式 (timeStyle)
 
 | 取值   | 描述 | 2021年9月17日 13:04:00，区域ID为zh-CN显示结果 | 2021年9月17日 13:04:00，区域ID为en显示结果 |
 | ------ | ------------- | -------- | -------- |
@@ -1108,14 +1240,14 @@ let style: string = options.style; // style = 'short'
 | short  | 简短时间显示，包含小时和分钟。 | 13:04 | 13:04 |
 | medium | 中等长度时间显示，包含小时、分钟和秒。 | 13:04:00 | 13:04:00 |
 
-**表3** 年份显示格式(year)
+**表3** 年份显示格式 (year)
 
 | 取值 | 描述 | 2021年9月17日 13:04:00，区域ID为zh-CN显示结果 | 2021年9月17日 13:04:00，区域ID为en显示结果 |
 | -------- | --------- | -------- | -------- |
 | numeric | 完整的年份显示。 | 2021年 | 2021 |
 | 2-digit | 用完整年份的后2位数字表示年份。 | 21年 | 21 |
 
-**表4** 星期显示格式(weekday)
+**表4** 星期显示格式 (weekday)
 
 | 取值 | 描述 | 2021年9月17日 13:04:00，区域ID为zh-CN显示结果 | 2021年9月17日 13:04:00，区域ID为en显示结果 |
 | -------- | ------- | -------- | -------- |
@@ -1123,7 +1255,7 @@ let style: string = options.style; // style = 'short'
 | short | 简短的星期显示。 | 周五 | Fri |
 | narrow | 最简短的星期显示。 | 五 | F |
 
-**表5** 时制格式(hourCycle)
+**表5** 时制格式 (hourCycle)
 
 | 取值 | 描述            | 2021年9月17日 13:04:00，区域ID为zh-CN显示结果 | 2021年9月17日 00:25:00，区域ID为zh-CN显示结果 |
 | --- | --------------- | -------------------------------------------- | ------------------------------------------- |
@@ -1137,7 +1269,7 @@ let style: string = options.style; // style = 'short'
 > 不设置dateStyle或timeStyle参数时，hourCycle不同取值的显示效果如上表格。
 
 
-**表6** 时制格式(hourCycle)
+**表6** 时制格式 (hourCycle)
 
 | 取值 | 描述            | 2021年9月17日 13:04:00，区域ID为zh-CN显示结果 | 2021年9月17日 00:25:00，区域ID为zh-CN显示结果 |
 | --- | --------------- | -------------------------------------------- | ------------------------------------------- |
@@ -1150,7 +1282,7 @@ let style: string = options.style; // style = 'short'
 >
 > 设置dateStyle或timeStyle参数时，hourCycle不同取值的显示效果如上表格。
 
-**表7** 月份格式(month)
+**表7** 月份格式 (month)
 
 | 取值 | 描述 | 2021年9月17日 13:04:00，区域ID为zh-CN显示结果 | 2021年9月17日 13:04:00，区域ID为en显示结果 |
 | -------- | --------- | -------- | -------- |
@@ -1160,14 +1292,14 @@ let style: string = options.style; // style = 'short'
 | short | 简短的月份显示。 | 9月 | Sep |
 | narrow | 最简短的月份显示。 | 9 | S |
 
-**表8** 时区名称的本地化表示(timeZoneName)
+**表8** 时区名称的本地化表示 (timeZoneName)
 
 | 取值  | 描述                | 2021年9月17日 13:04:00，区域ID为zh-CN显示结果 | 2021年9月17日 13:04:00，区域ID为en显示结果 |
 | ----- | ------------------ | -------------------------------------------- | ---------------------------------------- |
 | long  | 详细的时区名称显示。 | 中国标准时间                                  | China Standard Time                      |
 | short | 简短的时区名称显示。 | GMT+8                                        | GMT+8                                    |
 
-**表9** 纪元的显示格式(era)
+**表9** 纪元的显示格式 (era)
 
 | 取值 | 描述 | 2021年9月17日 13:04:00，区域ID为zh-CN显示效果 | 2021年9月17日 13:04:00，区域ID为en显示效果 |
 | -------- | ------ | -------- | -------- |
@@ -1175,7 +1307,7 @@ let style: string = options.style; // style = 'short'
 | short | 简短的纪元显示。 | 公元 | AD |
 | narrow | 最简短的纪元显示。 | 公元 | A |
 
-**表10** 时段的显示格式(dayPeriod)
+**表10** 时段的显示格式 (dayPeriod)
 
 | 取值 | 描述 | 2021年9月17日 13:04:00，区域ID为zh-CN显示效果 | 2021年9月17日 13:04:00，区域ID为en显示效果 |
 | -------- | ------ | -------- | -------- |
@@ -1189,49 +1321,49 @@ let style: string = options.style; // style = 'short'
 
 以123000.123为例，各选项取值和显示效果如下表所示：
 
-**表11** 最小整数位数(minimumIntegerDigits)
+**表11** 最小整数位数 (minimumIntegerDigits)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
 | 6 | 123,000.123 |
 | 7 | 0,123,000.123 |
 
-**表12** 最小小数位数(minimumFractionDigits)
+**表12** 最小小数位数 (minimumFractionDigits)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
 | 3 | 123,000.123 |
 | 4 | 123,000.1230 |
 
-**表13** 最大小数位数(maximumFractionDigits)
+**表13** 最大小数位数 (maximumFractionDigits)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
 | 3 | 123,000.123 |
 | 2 | 123,000.12 |
 
-**表14** 最小有效位数(minimumSignificantDigits)
+**表14** 最小有效位数 (minimumSignificantDigits)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
 | 9 | 123,000.123 |
 | 10 | 123,000.1230 |
 
-**表15** 最大有效位数(maximumSignificantDigits)
+**表15** 最大有效位数 (maximumSignificantDigits)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
 | 9 | 123,000.123 |
 | 8 | 123,000.12 |
 
-**表16** 是否分组显示(useGrouping)
+**表16** 是否分组显示 (useGrouping)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
 | true | 123,000.123 |
 | false | 123000.123 |
 
-**表17** 数字的表示方法(notation)
+**表17** 数字的表示方法 (notation)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
@@ -1240,7 +1372,7 @@ let style: string = options.style; // style = 'short'
 | engineering | 123.000123E3 |
 | compact | 123K |
 
-**表18** 紧凑显示格式(compactDisplay)
+**表18** 紧凑显示格式 (compactDisplay)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
@@ -1251,14 +1383,14 @@ let style: string = options.style; // style = 'short'
 
 以货币单位USD，数字大小-12300为例。
 
-**表19** 货币单位的符号(currencySign)
+**表19** 货币单位的符号 (currencySign)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
 | standard | -US$12,300.00 |
 | accounting | (US$12,300.00) |
 
-**表20** 货币的显示方式(currencyDisplay)
+**表20** 货币的显示方式 (currencyDisplay)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
@@ -1271,7 +1403,7 @@ let style: string = options.style; // style = 'short'
 
 以单位hectare，数字大小-12300为例。
 
-**表21** 单位的显示格式(unitDisplay)
+**表21** 单位的显示格式 (unitDisplay)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
@@ -1279,7 +1411,7 @@ let style: string = options.style; // style = 'short'
 | short | -12,300 ha |
 | narrow | -12,300ha |
 
-**表22** 单位的使用场景(unitUsage)
+**表22** 单位的使用场景 (unitUsage)
 
 | 取值 | 显示效果 |
 | -------- | -------- |
@@ -1291,14 +1423,14 @@ let style: string = options.style; // style = 'short'
 
 以相对时间：一天前，区域ID: fr-FR和en-GB为例。
 
-**表23** 数值表示(numeric)
+**表23** 数值表示 (numeric)
 
 | 取值   | 描述                                          | 显示效果(fr-FR) | 显示效果(en-GB) |
 | ------ | -------------------------------------------- | -------------- | --------------- |
 | always | 使用数值表示相对时间。                         | il y a 1 jour  | 1 day ago       |
 | auto   | 根据区域ID自适应选择短语或数值表示相对时间。 | hier           | yesterday       |
 
-**表24** 相对时间样式(style)
+**表24** 相对时间样式 (style)
 
 | 取值   | 描述                  | 显示效果(fr-FR) | 显示效果(en-GB) |
 | ------ | -------------------- | -------------- | --------------  |

@@ -1,9 +1,9 @@
 # ArkTS卡片适配常见问题
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 ## ArkTS卡片开发是否支持V2装饰器？如何从V1到V2迁移？

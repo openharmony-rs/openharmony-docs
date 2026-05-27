@@ -1,7 +1,7 @@
 # @ohos.multimedia.avVolumePanel (音量面板)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -37,7 +37,7 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 **装饰器类型：** [@Component](../../ui/state-management/arkts-create-custom-components.md#component)
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -50,13 +50,13 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 音量面板参数设置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 | 名称 | 类型 |只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------- |
-|position | [Position](../apis-arkui/arkui-ts/ts-types.md#position) | 否 | 是 | 设置音量面板的位置。<br>如果不设置该参数，则为系统音量条位置。<br>如果设置该参数且参数对应屏幕内位置，则显示开发者设置的位置。<br>如果设置该参数且参数对应屏幕外位置，例如（-1, -1），不显示系统音量条，建议开发者显示自定义音量条。 |
+|position | [Position](../apis-arkui/arkui-ts/ts-types.md#position) | 否 | 是 | 设置音量面板的位置。<br>如果不设置该参数，则为系统默认的音量面板位置。<br>如果设置该参数且参数对应屏幕内位置，则显示应用设置的位置。<br>如果设置该参数但参数信息无效，例如（-1, -1），则隐藏系统默认音量面板。<br>**注意：** 若应用需隐藏系统默认音量面板，必须提供自定义音量面板，以确保用户仍可调节音量。 |
 
 ## 事件
 
@@ -66,6 +66,7 @@ AVVolumePanel({volumeLevel?: number, volumeParameter?: AVVolumePanelParameter})
 
 1. 应用在实现自定义音量条的过程中，建议使用音频框架的音量变化监听接口，通过接口回调的音量类型volumeEvent.volumeType，音量等级volumeEvent.volume以及是否显示音量条volumeEvent.updateUi等信息，应用可以判断是否需要处理当前数据和显示自定义的音量条，具体可参考[on('streamVolumeChange')](arkts-apis-audio-AudioVolumeManager.md#onstreamvolumechange20)介绍。
 2. 为确保用户能感知音量变化，不允许应用后台调节音量，系统会做出对应的控制措施。
+3. 系统提供音量面板的目的是，由用户在应用界面主动操作来调节系统音量，而非应用主动调节。因此，若应用通过设置音量面板位置参数隐藏了系统默认音量面板，必须提供应用自定义的音量面板，以确保用户正常进行音量调节。
 
 ## 示例
 

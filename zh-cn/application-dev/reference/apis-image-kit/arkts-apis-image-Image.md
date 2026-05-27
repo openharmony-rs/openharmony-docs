@@ -16,6 +16,7 @@ Image的属性仅支持在创建时初始化，后续无法再修改，且其属
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTs-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 
@@ -31,11 +32,11 @@ import { image } from '@kit.ImageKit';
 
 | 名称     | 类型               | 只读 | 可选 | 说明                                               |
 | -------- | ------------------ | ---- | ---- | -------------------------------------------------- |
-| clipRect<sup>9+</sup> | [Region](arkts-apis-image-i.md#region8) | 否   | 否   |要裁剪的图像区域。恒等于整个图像，不支持修改。                                 |
-| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。<br>如果Image对象所存储的是相机预览流数据（YUV图像数据），那么获取到的size中的宽和高分别对应YUV图像的宽和高。<br>如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。<br>Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的是previewOutput还是captureOutput。<br>相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../media/camera/camera-shooting-case.md)。|
-| format<sup>9+</sup>    | number             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。 |
-| timestamp<sup>12+</sup> | number         | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取EXIF时间戳信息。|
-| colorSpace<sup>23+</sup> | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 是 | 否 | 图像色彩空间，色域枚举类型。<br />**模型约束：** 此接口仅可在Stage模型下使用。|
+| clipRect<sup>9+</sup> | [Region](arkts-apis-image-i.md#region8) | 否   | 否   | 要裁剪的图像区域。恒等于整个图像，不支持修改。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23 |
+| size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。<br>如果Image对象所存储的是相机预览流数据（YUV图像数据），那么获取到的size中的宽和高分别对应YUV图像的宽和高。<br>如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。<br>Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId通过[createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)接口还是[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutputdeprecated)接口传给相机。<br>相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../media/camera/camera-shooting-case.md)。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23|
+| format<sup>9+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。</br>**ArkTS-Dyn起始版本：** 9</br>**ArkTS-Sta起始版本：** 23 |
+| timestamp<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: long         | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取EXIF时间戳信息。</br>**ArkTS-Dyn起始版本：** 12</br>**ArkTS-Sta起始版本：** 23|
+| colorSpace<sup>23+</sup> | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 是 | 否 | 图像色彩空间，色域枚举类型。</br>**ArkTS-Dyn起始版本：** 23</br>**ArkTS-Sta起始版本：** 23<br />**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## getComponent<sup>9+</sup>
 
@@ -44,6 +45,10 @@ getComponent(componentType: ComponentType, callback: AsyncCallback\<Component>):
 根据图像的组件类型从图像中获取组件缓存。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -54,6 +59,7 @@ getComponent(componentType: ComponentType, callback: AsyncCallback\<Component>):
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -68,6 +74,25 @@ async function GetComponent(img : image.Image) {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function GetComponentFunc(img: image.Image): void {
+  try {
+    img.getComponent(image.ComponentType.JPEG, (err: BusinessError | null, component: image.Component | undefined) =>{
+      if (err) {
+        console.error(0x00000, 'GetComponentFunc', 'getComponent failed: ' + err);
+      } else {
+        console.info(0x00000, 'GetComponentFunc', 'getComponent success!');
+      }
+    })
+  } catch (err) {
+    console.error(0x00000, 'GetComponentFunc', 'GetComponentFunc failed: ' + err);
+  }
+}
+```
+
 ## getComponent<sup>9+</sup>
 
 getComponent(componentType: ComponentType): Promise\<Component>
@@ -75,6 +100,10 @@ getComponent(componentType: ComponentType): Promise\<Component>
 根据图像的组件类型从图像中获取组件缓存。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,6 +119,7 @@ getComponent(componentType: ComponentType): Promise\<Component>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -99,6 +129,18 @@ async function GetComponent(img : image.Image) {
   }).catch((error: BusinessError) => {
     console.error(`Failed to get the component.code ${error.code},message is ${error.message}`);
   })
+}
+```
+
+ArkTS-Sta示例：
+```ts
+function GetComponentFunc(img: image.Image): void {
+  try {
+    let component: image.Component = await img.getComponent(image.ComponentType.JPEG);
+    console.info(0x00000, 'GetComponentFunc', 'GetComponentFunc success!');
+  } catch (err) {
+    console.error(0x00000, 'GetComponentFunc', 'GetComponentFunc failed: ' + err);
+  }
 }
 ```
 
@@ -116,6 +158,10 @@ release(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明           |
@@ -124,6 +170,7 @@ release(callback: AsyncCallback\<void>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -135,6 +182,25 @@ async function Release(img : image.Image) {
       console.info('Succeeded in releasing the image instance.');
     }
   })
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@ohos.base';
+
+function ReleaseFunc(img: image.Image): void {
+  try {
+    img.release((err: BusinessError | null) => {
+      if (err) {
+        console.error(0x00000, 'ReleaseFunc', 'release failed: ' + err);
+      } else {
+        console.info(0x00000, 'ReleaseFunc', 'release success!');
+      }
+    })
+  } catch (err) {
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+  }
 }
 ```
 
@@ -152,14 +218,19 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                  |
 | -------------- | --------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -169,6 +240,17 @@ async function Release(img : image.Image) {
   }).catch((error: BusinessError) => {
     console.error(`Failed to release the image instance.code ${error.code},message is ${error.message}`);
   })
+}
+```
+
+ArkTS-Sta示例：
+```ts
+function ReleaseFunc(img: image.Image): void {
+  try {
+    await img.release()
+  } catch (err) {
+    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
+  }
 }
 ```
 
@@ -185,6 +267,10 @@ getBufferData(): ImageBufferData | null
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                              | 说明                              |
@@ -193,14 +279,31 @@ getBufferData(): ImageBufferData | null
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-function GetBufferData(img: image.Image) {
+function GetBufferData(img : image.Image) {
   const bufferData = img.getBufferData();
   if (bufferData == null) {
     console.error('Failed to get the bufferData: bufferData is null.');
     return;
   }
   console.info('Succeeded in getting bufferData.');
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetBufferData(img : image.Image) {
+  try {
+    let bufferData = img.getBufferData()
+    if (bufferData) {
+      console.info('Succeeded in getting bufferData.');
+    }
+  } catch (err) {
+    console.info('Get bufferData failed.');
+  }
 }
 ```
 
@@ -213,6 +316,10 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue | null
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -237,13 +344,30 @@ getMetadata(key: HdrMetadataKey): HdrMetadataValue | null
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 async function GetMetadata(img : image.Image) {
   try {
     let staticMetadata = img.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
     console.info(`getMetadata:${staticMetadata}`);
   } catch (err) {
-    console.error('getMetadata failed' + err);
+    console.error('Failed to getMetadata.' + err);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetMetadata(img : image.Image) {
+  try {
+    let staticMetadata = img.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
+    if (staticMetadata) {
+      console.info(`GetMetadata:${staticMetadata}`);
+    }
+  } catch (err) {
+    console.error('GetMetadata failed' + err);
   }
 }
 ```

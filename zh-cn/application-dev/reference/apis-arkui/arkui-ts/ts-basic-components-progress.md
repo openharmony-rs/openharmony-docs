@@ -25,9 +25,9 @@ Progress(options: ProgressOptions)
 
 创建进度条组件。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -45,24 +45,24 @@ Progress(options: ProgressOptions)
 
 进度条选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                        | 类型                                | 只读 | 可选 | 说明                                     |
 | -------------------------- | ----------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
-| value                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 指定当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| total                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 是   | 指定进度总长。设置小于等于0的数值时置为100。<br/>默认值：100<br/>取值范围：[0, 2147483647]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| type<sup>8+</sup>          | [ProgressType](#progresstype8枚举说明)   | 否   | 是   | 指定进度条类型。<br/>默认值：ProgressType.Linear<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 不同的type需分别对应相应的[style](#style8)属性设置，详细映射关系参考[ProgressStyleMap](#progressstylemap10对象说明)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| value                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 否   | 指定当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total]<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| total                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否   | 是   | 指定进度总长。设置小于等于0的数值时置为100。<br/>默认值：100<br/>取值范围：[0, 2147483647]<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| type<sup>8+</sup>          | [ProgressType](#progresstype8枚举说明)   | 否   | 是   | 指定进度条类型。<br/>默认值：ProgressType.Linear<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 不同的type需分别对应相应的[style](#style8)属性设置，详细映射关系参考[ProgressStyleMap](#progressstylemap10对象说明)。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | style<sup>(deprecated)</sup> | [ProgressStyle](#progressstyle枚举说明) | 否   | 是   | 指定进度条样式。<br/>该参数从API version8开始废弃，建议使用type替代。<br/>默认值：ProgressStyle.Linear <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn模式。<br/>**ArkTS-Dyn起始版本：** 7|
 
 ## ProgressType<sup>8+</sup>枚举说明
 
 进度条类型。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,9 +82,9 @@ Progress(options: ProgressOptions)
 
 进度条样式。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +100,9 @@ Progress(options: ProgressOptions)
 
 进度条类型和样式的映射表。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,9 +134,9 @@ ArkTS-Sta: value(value: double | undefined)
 
 设置当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。非法数值不生效。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,9 +162,9 @@ ArkTS-Sta: color(value: ResourceColor | LinearGradient | undefined)
 
 从API version 23开始支持利用[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)设置Linear样式和Capsule样式的渐变色。API version 22及之前版本利用LinearGradient设置Linear样式和Capsule样式的渐变色时，会以默认主题色显示。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用，暂不支持LinearGradient。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用，暂不支持LinearGradient。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -194,7 +196,7 @@ ArkTS-Sta: style(value: LinearStyleOptions \| RingStyleOptions \| CapsuleStyleOp
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br/>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;<br/>[ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp;\|&nbsp;[EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10)<br/> ArkTS-Sta: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br/>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;undefined | 是   | 组件的样式。<br/>- CapsuleStyleOptions：设置Capsule的样式。<br/>- RingStyleOptions：设置Ring的样式。<br/>- LinearStyleOptions：设置Linear的样式。<br/>- ScaleRingStyleOptions：设置ScaleRing的样式。<br/>- EclipseStyleOptions：设置Eclipse的样式。<br/>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。 |
+| value  | ArkTS-Dyn: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br/>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;<br/>[ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp;\|&nbsp;[EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10)<br/> ArkTS-Sta: [ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp;\|&nbsp;[CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp;\|&nbsp;<br/>[RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp;\|&nbsp;[LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp;\|&nbsp;undefined | 是   | 组件的样式。<br/>- CapsuleStyleOptions：设置Capsule的样式。<br/>- RingStyleOptions：设置Ring的样式。<br/>- LinearStyleOptions：设置Linear的样式。<br/>- ScaleRingStyleOptions：设置ScaleRing的样式。<br/>- EclipseStyleOptions：设置Eclipse的样式。<br/>- ProgressStyleOptions：仅可设置各类型进度条的strokeWidth、scaleCount、scaleWidth，仅对支持这些样式设置的进度条生效。<br/>设置undefined时显示为与进度条类型相对应的默认样式。 |
 
 ### contentModifier<sup>12+</sup>
 ArkTS-Dyn: contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
@@ -203,7 +205,9 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ProgressConfiguration\> | 
 
 定制progress内容区的方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,7 +218,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ProgressConfiguration\> | 
 **参数：**
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
-| modifier | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)><br/> ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)>&nbsp;\|&nbsp;undefined | 是   | 在progress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier | ArkTS-Dyn: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)><br/> ArkTS-Sta: [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ProgressConfiguration](#progressconfiguration12)>&nbsp;\|&nbsp;undefined | 是   | 在progress组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>设置undefined时显示为默认内容。 |
 
 ### privacySensitive<sup>12+</sup>
 
@@ -228,9 +232,11 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -242,13 +248,15 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| isPrivacySensitiveMode  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br/> 默认值：false<br/>**说明：** <br/>设置null或undefined表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
+| isPrivacySensitiveMode  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\><br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 设置隐私敏感，隐私模式下进度清零，文字将被遮罩。true：打开隐私敏感；false：关闭隐私敏感。<br/> 默认值：false<br/>**说明：** <br/>设置undefined表示不敏感。<!--Del--><br/>需要在卡片中使用Progress，并用[FormComponent](./ts-basic-components-formcomponent-sys.md)组件设置[隐私遮罩](./ts-universal-attributes-obscured.md)属性，显示卡片时才有隐私遮罩效果。<!--DelEnd--> |
 
 ## ProgressConfiguration<sup>12+</sup>
 
-进度条配置。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
+进度条配置。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -265,7 +273,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 进度条通用样式选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,13 +287,15 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 扫光效果选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
 | ------------- | ------- | ---- | -------- | -------- |
-| enableScanEffect | boolean | 否 | 是 | 扫光效果的开关。仅支持[Linear、Ring、Capsule](#progresstype8枚举说明)类型的进度条。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false |
+| enableScanEffect | boolean | 否 | 是 | 扫光效果的开关。仅支持[ProgressType](#progresstype8枚举说明)类型为Linear、Ring、Capsule的进度条。<br/>true：表示开启扫光效果。<br/>false：表示关闭扫光效果。<br/>默认值：false |
 
 ## ProgressStyleOptions<sup>8+</sup>
 
@@ -291,9 +303,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 继承自[CommonProgressStyleOptions](#commonprogressstyleoptions10)。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,7 +325,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 继承自[ScanEffectOptions](#scaneffectoptions10)和[CommonProgressStyleOptions](#commonprogressstyleoptions10)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -333,7 +347,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 继承自[ScanEffectOptions](#scaneffectoptions10)和[CommonProgressStyleOptions](#commonprogressstyleoptions10)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -349,7 +365,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 继承自[ScanEffectOptions](#scaneffectoptions10)和[CommonProgressStyleOptions](#commonprogressstyleoptions10)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -364,7 +382,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 继承自[CommonProgressStyleOptions](#commonprogressstyleoptions10)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -384,7 +404,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 继承自[CommonProgressStyleOptions](#commonprogressstyleoptions10)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,7 +414,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 进度条的当前状态。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
