@@ -6,8 +6,6 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-本术语表按英文首字母排序。
-
 ## D
 
 - ### Data Loss Prevention (DLP)；数据防泄漏
