@@ -35,6 +35,8 @@ setDynamicDimming(id: string, value: number): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -72,6 +74,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -190,6 +194,8 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -457,6 +463,8 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
