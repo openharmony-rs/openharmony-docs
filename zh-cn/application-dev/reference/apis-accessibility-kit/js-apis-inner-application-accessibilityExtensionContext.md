@@ -662,11 +662,11 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
 
 injectGesture(gesturePath: GesturePath): Promise\<void>
 
+注入手势。使用Promise异步回调。
+
 > **说明：**
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
-
-注入手势。使用Promise异步回调。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -713,11 +713,11 @@ axContext.injectGesture(gesturePath).then(() => {
 
 injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
+注入手势。使用callback异步回调。
+
 > **说明：**
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
-
-注入手势。使用callback异步回调。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
