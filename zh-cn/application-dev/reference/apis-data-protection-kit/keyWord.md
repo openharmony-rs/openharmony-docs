@@ -1,4 +1,4 @@
-# 术语表
+# DLP术语表
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
