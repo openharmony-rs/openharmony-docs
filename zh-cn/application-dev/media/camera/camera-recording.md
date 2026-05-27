@@ -142,7 +142,7 @@
    >
    > - 录像模式时，建议在commitConfig后设置视频防抖[setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)，以提升录制内容的效果稳定。
    >
-   > - 录像流设置为高分辨率（如3280*2160）的场景下，必须设置视频防抖。
+   > - 录像流设置为高分辨率（如3280*2160）的场景下，必须设置视频防抖模式。
 
    先通过videoOutput的[start](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#start-1)方法启动录像输出流，再通过avRecorder的[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9)方法开始录像。
 
