@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 1. 本模块首批接口从API version 26.0.0开始支持。
+> 1. 本模块首批接口从API版本26.0.0开始支持。
 > 2. 本模块为系统接口。
 
 ## 导入模块
@@ -73,7 +73,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 ## UserStatusAtomicCap
 
-表示用户状态原子能力类型。
+表示用户状态原子化服务能力类型。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -81,7 +81,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| ATOMIC_UNKNOWN | 0 | 表示未知原子能力。 |
+| ATOMIC_UNKNOWN | 0 | 表示未知原子化服务能力。 |
 | FACE_RELATIVE_POSITION | 1 | 表示检测人脸相对于屏幕。 |
 | FACE_NUM_CHANGE | 2 | 表示检测人脸数量变化。 |
 | GESTURE | 3 | 表示检测用户手势。 |
@@ -392,7 +392,7 @@ try {
 
 queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomicCap[]
 
-查询设备支持的原子能力。
+查询设备支持的原子化服务能力。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -402,13 +402,13 @@ queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomicCap[]
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| capabilities | [UserStatusAtomicCap](#userstatusatomiccap)[] | 是 | 表示要查询的原子能力列表。 |
+| capabilities | [UserStatusAtomicCap](#userstatusatomiccap)[] | 是 | 表示要查询的原子化服务能力列表。 |
 
 **返回值**：
 
 | 类型                           | 说明         |
 | ---------------------------- | ---------- |
-| [UserStatusAtomicCap](#userstatusatomiccap)[]| 返回设备支持的原子能力列表。 |
+| [UserStatusAtomicCap](#userstatusatomiccap)[]| 返回设备支持的原子化服务能力列表。 |
 
 **错误码**：
 
