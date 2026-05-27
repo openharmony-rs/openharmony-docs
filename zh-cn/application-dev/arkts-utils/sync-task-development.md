@@ -75,7 +75,7 @@ struct Index {
           .fontWeight(FontWeight.Bold)
           .onClick(async () => {
             mainFunc();
-// ...
+            // ...
           })
       }
       .width('100%')
