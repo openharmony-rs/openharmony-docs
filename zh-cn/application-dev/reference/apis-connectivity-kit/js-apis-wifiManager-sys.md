@@ -650,7 +650,7 @@ try {
 }
 ```
 
-## wifiManager.disableNetwork<sup>23+</sup>	 
+## wifiManager.disableNetwork<sup>23+</sup>
 
 
 disableNetwork(netId: number, blockDuration: number): void

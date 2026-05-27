@@ -11,7 +11,7 @@
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 从API Version 9 开始，该接口不再维护，推荐使用[`@ohos.wifiManager (WLAN)`](js-apis-wifiManager.md)等相关接口。
+> 从API Version 9 开始，该接口不再维护，推荐使用[@ohos.wifiManager (WLAN)](js-apis-wifiManager.md)等相关接口。
 
 
 ## 导入模块
@@ -94,7 +94,7 @@ getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 ohos.permission.LOCATION)
 
@@ -115,7 +115,7 @@ getScanInfos(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 ohos.permission.LOCATION)
 
@@ -904,7 +904,7 @@ getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Promise对象。表示对端设备列表信息。 |
+  | Promise&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | Promise对象。表示对端设备列表信息。 |
 
 
 ## wifi.getP2pPeerDevices<sup>(deprecated)</sup>
@@ -925,7 +925,7 @@ getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示对端设备列表信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 是 | 回调函数。当操作成功时，err为0，data表示对端设备列表信息。如果error为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
@@ -1301,7 +1301,7 @@ try {
 | groupName | string | 否 | 否 | 群组名称。 |
 | networkId | number | 否 | 否 | 网络ID。 |
 | frequency | number | 否 | 否 | 群组的频率。 |
-| clientDevices | [WifiP2pDevice[]](#wifip2pdevicedeprecated) | 否 | 否 | 接入的设备列表信息。 |
+| clientDevices | [WifiP2pDevice](#wifip2pdevicedeprecated)[] | 否 | 否 | 接入的设备列表信息。 |
 | goIpAddress | string | 否 | 否 | 群组IP地址。 |
 
 
@@ -1834,7 +1834,7 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pPeerDeviceChange"字符串。 |
-  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 是 | 状态改变回调函数。 |
 
 
 ## wifi.off('p2pPeerDeviceChange')<sup>(deprecated)</sup>
@@ -1856,7 +1856,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"p2pPeerDeviceChange"字符串。 |
-  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | 否 | 状态改变回调函数。如果callback不填，将取消注册该事件关联的所有回调函数。 |
 
 **示例：**
 ```ts
