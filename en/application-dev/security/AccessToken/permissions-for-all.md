@@ -82,7 +82,7 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 Allows an application to read data from an acceleration sensor.
 
-Acceleration sensors include normal, uncalibrated, and linear acceleration sensor.
+Acceleration sensors include normal, uncalibrated, and linear acceleration sensors.
 
 **Permission level**: normal
 
