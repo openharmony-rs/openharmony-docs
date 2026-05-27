@@ -174,14 +174,14 @@ let audioManager = audio.getAudioManager();
 let audioSessionManager = audioManager.getSessionManager();
 
 // ...
-  // 监听当前输入设备变化事件,当选择输入设备成功后会触发该回调。
+  // 监听当前输入设备变化事件，当选择输入设备成功后会触发该回调。
   audioSessionManager.onCurrentInputDeviceChanged((currentInputDeviceChangedEvent: audio.CurrentInputDeviceChangedEvent) => {
     console.info(`Succeeded in using on function. CurrentInputDeviceChangedEvent: ${JSON.stringify(currentInputDeviceChangedEvent)}`);
     // ...
   });
   // ...
 
-  // 监听音频可选输入设备连接状态变化事件,当有输入设备上下线时会收到回调通知。
+  // 监听音频可选输入设备连接状态变化事件，当有输入设备上下线时会收到回调通知。
   audioSessionManager.onAvailableDeviceChange(audio.DeviceUsage.MEDIA_INPUT_DEVICES, (deviceChanged: audio.DeviceChangeAction) => {
     console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(deviceChanged)}`);
     // ...
@@ -192,7 +192,7 @@ let audioSessionManager = audioManager.getSessionManager();
     // 获取当前可选的音频输入设备列表。
     let data = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
     console.info(`Succeeded in getting available devices. AudioDeviceDescriptors: ${JSON.stringify(data)}`);
-    // 当前可选音频输入设备列表不为空时,可进行选择。
+    // 当前可选音频输入设备列表不为空时，可进行选择。
     audioSessionManager.selectMediaInputDevice(data[0]).then(() => {
       console.info('Succeeded in selecting media input device.');
       // ...
