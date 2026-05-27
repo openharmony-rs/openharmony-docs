@@ -1,4 +1,4 @@
-# ExtendableGridItem（可扩展的GridItem）
+# ExtendableGridItem (可扩展的GridItem)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-[GridItem](./ts-container-griditem.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableGridItem，支持重写GridItem中的[属性](./ts-container-griditem.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[GridItem](./ts-container-griditem.md)。
+[GridItem](./ts-container-griditem.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableGridItem，支持重写GridItem中的[属性](./ts-container-griditem.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[GridItem](./ts-container-griditem.md)。开发指南请参考[内置组件扩展](../../../ui/state-management-static/arkts-static-extendable-inner-component.md)。
 
 **起始版本：** 26.0.0
 
