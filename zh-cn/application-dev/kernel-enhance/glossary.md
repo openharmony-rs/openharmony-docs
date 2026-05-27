@@ -28,7 +28,7 @@
 
 ## Q
 
-- ### QoS (Quality of Service)；服务质量
+- ### QoS (Quality of Service);服务质量
 
     OpenHarmony中任务的优先调度属性。开发者按任务与用户交互的关联程度对其进行分类，系统据此安排各任务的CPU时间分配和调度次序，以优化应用响应速度和资源利用率。
 
