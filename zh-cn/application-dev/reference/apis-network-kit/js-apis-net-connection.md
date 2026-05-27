@@ -3747,7 +3747,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
    bearerPrivateIdentifier: `${networkId}`
  });
  netConnectionWlan.register((error: BusinessError) => {
-   console.error(`Failed to get register.Code:${err.code},message:${err.message}`);
+   console.error(`Failed to get register.Code:${error.code},message:${error.message}`);
  });
 });
 ```
