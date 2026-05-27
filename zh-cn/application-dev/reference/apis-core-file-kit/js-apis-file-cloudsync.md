@@ -1676,19 +1676,17 @@ try {
 
 ### cleanFileCache
 
-ArkTS-Dyn: cleanFileCache(): Promise&lt;void&gt;
+cleanFileCache(): Promise&lt;void&gt;
 
-ArkTS-Sta: cleanFileCache(): Promise&lt;void&gt;
-
-删除所有已缓存文件（未上云文件、写打开文件及缩略图文件不会被删除）。使用Promise异步回调，无返回结果。
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
+删除所有已缓存文件，未上云文件、写打开文件及缩略图文件不会被删除。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **返回值：**
 
@@ -1738,15 +1736,15 @@ ArkTS-Dyn: getCachedTotalSize(): Promise&lt;number&gt;
 
 ArkTS-Sta: getCachedTotalSize(): Promise&lt;long&gt;
 
-获取已缓存文件总大小（包含本地新增未上云文件大小，不包含缩略图文件大小）。使用Promise异步回调，返回已缓存文件总大小。
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
+获取已缓存文件的总大小，包含本地新增未上云文件、本地新增已上云文件及已下载文件大小，不包含缩略图文件大小。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **返回值：**
 

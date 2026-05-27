@@ -1626,13 +1626,15 @@ constructor(bundleName: string)
 
 端云同步流程的构造函数，用于获取CloudFileCache类的实例。
 
-**起始版本：** 26.0.0
-
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
