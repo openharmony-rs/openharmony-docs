@@ -1896,9 +1896,9 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
   import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
   try {
-    // selectTextBegin: 表示选择起始位置。
-    // selectTextEnd: 表示选择结束位置。
-    // selectTextInForWard: true表示为前光标，false表示为后光标。
+    // selectTextBegin：表示选择起始位置。
+    // selectTextEnd：表示选择结束位置。
+    // selectTextInForWard：true表示为前光标，false表示为后光标。
     let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true }
     // rootElement是AccessibilityElement的实例。
     // setSelection示例代码。
@@ -1916,7 +1916,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
   import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
   try {
-    // offset: 表示光标的设置位置。
+    // offset：表示光标的设置位置。
     let p : Parameter = { offset: '1' }
     // rootElement是AccessibilityElement的实例。
     // setCursorPosition示例代码。
@@ -2177,7 +2177,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 ```ts
 // Page.ets
-// Click TextInput and then it is the accessibility focus element, up direction element is Text#connect.
+// 点击TextInput使其成为无障碍焦点元素，向上方向的下一个焦点元素是Text#connect。
   build() {
     Text('Connect')
         .id('connect')
@@ -2317,7 +2317,7 @@ ArkTS-Sta: findElementById(condition: long): Promise\<AccessibilityElement>;
 
 ```ts
 // Page.ets
-// Click TextInput and then it is the accessibility focus element.
+// 点击TextInput使其成为无障碍焦点元素。
   build() {
     Text('Connect')
         .id('connect')
