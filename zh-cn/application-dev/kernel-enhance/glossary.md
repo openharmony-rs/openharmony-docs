@@ -1,10 +1,10 @@
 # 术语<!--kernel-enhance-kit-->
 <!--Kit: Kernel Enhance Kit-->
 <!--Subsystem: Kernel-->
-<!--Owner: @yzl-kongzhenhua; @Leibobo; @gatieme; @fang-jinxu-->
- <!--Designer: @wangxiayang; @lizongfeng; @zzzuo; @tanyihua; @lingminghw-->
- <!--Tester: @lianxuanself; @laonie666; @panny060; @RayShih-->
- <!--Adviser: @fang-jinxu-->
+<!--Owner: @yzl-kongzhenhua; @Leibobo-->
+<!--Designer: @wangxiayang-->
+<!--Tester: @lianxuanself; @laonie666; @panny060-->
+<!--Adviser: @fang-jinxu-->
 ## G
 
 - ### Gewu;格物
