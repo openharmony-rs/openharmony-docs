@@ -30,7 +30,7 @@ useEffect(value: boolean): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)（单参数）。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -60,7 +60,7 @@ useEffect(useEffect: boolean, effectType: EffectType): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)（双参数）。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)。
 
 **ArkTS-Dyn起始版本：** 14
 
@@ -91,7 +91,7 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)（双参数）。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useEffect<sup>23+</sup>](#useeffect23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -120,7 +120,7 @@ useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)，[useEffect<sup>14+</sup>](#useeffect14)和[useEffect<sup>18+</sup>](#useeffect18)。同一API版本下的单参数版本见[useEffect<sup>23+</sup>](#useeffect23单参数)（单参数）。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)，[useEffect<sup>14+</sup>](#useeffect14)和[useEffect<sup>18+</sup>](#useeffect18)。同一API版本下的单参数版本见[useEffect<sup>23+</sup>](#useeffect23单参数)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -131,7 +131,7 @@ useEffect(useEffect: boolean | undefined, effectType: EffectType | undefined)
 | useEffect  | boolean \| undefined                                                      | 是   | 控制组件是否应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>useEffect为true时表示应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：false<br/>当useEffect的值为undefined时，恢复为无应用模板的效果。 |
 | effectType | [EffectType](ts-universal-attributes-use-effect.md#effecttype14) \| undefined | 是   | 设置组件应用<!--Del-->父级EffectComponent或<!--DelEnd-->窗口定义的效果模板。<br/>默认值：EffectType.DEFAULT<br/>当effectType的值为undefined时，恢复为无应用模板的效果。 |
 
-## useEffect<sup>23+</sup>（单参数）
+## useEffect<sup>23+</sup>
 
 useEffect(value: boolean | undefined)
 
@@ -143,7 +143,7 @@ useEffect(value: boolean | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)。同一API版本下的双参数版本见[useEffect<sup>23+</sup>](#useeffect23)（双参数）。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useEffect](#useeffect)。同一API版本下的双参数版本见[useEffect<sup>23+</sup>](#useeffect23)。
 
 **ArkTS-Sta起始版本：** 23
 
