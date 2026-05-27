@@ -24,8 +24,6 @@ import { image } from '@kit.ImageKit';
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
-
 **System capability**: SystemCapability.Multimedia.Image.Core
 
 For details about the property values, see [PropertyKey](arkts-apis-image-e.md#propertykey7).
@@ -65,7 +63,7 @@ For details about the property values, see [PropertyKey](arkts-apis-image-e.md#p
 | yCbCrPositioning                    | number                                             | No  | Yes  | Position of chroma components relative to the luminance component.                              |
 | referenceBlackWhite                 | number[]                                           | No  | Yes  | Reference black point value and white point value.                                        |
 | copyright                           | string                                             | No  | Yes  | Copyright notice of the image.                                            |
-| exposureTime                        | number                                             | No  | Yes  | Exposure time.                                                  |
+| exposureTime                        | number                                             | No  | Yes  | Exposure time, in seconds.                                                  |
 | fNumber                             | number                                             | No  | Yes  | F number, for example, f/1.8.                                           |
 | exposureProgram                     | number                                             | No  | Yes  | Class used for exposure setting when the camera captures a photo.                      |
 | spectralSensitivity                 | string                                             | No  | Yes  | Spectral sensitivity of each channel of the camera.                          |
@@ -135,8 +133,8 @@ For details about the property values, see [PropertyKey](arkts-apis-image-e.md#p
 | subsecTimeDigitized                 | string                                             | No  | Yes  | Second of **DateTimeDigitized**.             |
 | flashpixVersion                     | string                                             | No  | Yes  | FlashPix format version supported by the FlashPix Extension Resource (FPXR), which is used to enhance device compatibility.|
 | colorSpace                          | number                                             | No  | Yes  | Color space information, which is usually recorded as a color space descriptor.                |
-| pixelXDimension                     | number                                             | No  | Yes  | Image size on the X axis (horizontal axis in a two-dimensional coordinate system).          |
-| pixelYDimension                     | number                                             | No  | Yes  | Image size on the Y axis (vertical axis in a two-dimensional coordinate system).            |
+| pixelXDimension                     | number                                             | No  | Yes  | Image size on the X axis (horizontal axis in a two-dimensional coordinate system). The unit is px.          |
+| pixelYDimension                     | number                                             | No  | Yes  | Image size on the Y axis (vertical axis in a two-dimensional coordinate system). The unit is px.             |
 | relatedSoundFile                    | string                                             | No  | Yes  | Name of the audio file related to the image data.                            |
 | flashEnergy                         | number                                             | No  | Yes  | Flash energy at the time the image is captured. The unit is beam candlepower seconds (BCPS).|
 | spatialFrequencyResponse            | ArrayBuffer                                        | No  | Yes  | Spatial frequency table of the camera or input device.                                  |
@@ -153,7 +151,7 @@ For details about the property values, see [PropertyKey](arkts-apis-image-e.md#p
 | exposureMode                        | number                                             | No  | Yes  | Exposure mode.                                  |
 | whiteBalance                        | number                                             | No  | Yes  | White balance.                                                    |
 | digitalZoomRatio                    | number                                             | No  | Yes  | Digital zoom ratio used when the image is captured.                                        |
-| focalLengthIn35mmFilm               | number                                             | No  | Yes  | Focal length of the 35 mm film.                                            |
+| focalLengthIn35mmFilm               | number                                             | No  | Yes  | 35 mm equivalent focal length, in milliseconds.                                            |
 | sceneCaptureType                    | number                                             | No  | Yes  | Type of the scene that is captured.                                            |
 | gainControl                         | number                                             | No  | Yes  | Degree of overall image gain adjustment.                                      |
 | contrast                            | number                                             | No  | Yes  | Contrast optimization policy applied by the camera. For example, standard processing and contrast reduction.    |
@@ -185,7 +183,7 @@ Creates an empty [ExifMetadata](arkts-apis-image-ExifMetadata.md) instance.
 
 **Returns**:
 
-| Type                                            | **Description**                      |
+| Type                                            | Description                      |
 | ------------------------------------------------ | -------------------------- |
 | [ExifMetadata](arkts-apis-image-ExifMetadata.md) | Empty **ExifMetadata** instance.|
 
@@ -214,13 +212,13 @@ For details about the properties, see [PropertyKey](arkts-apis-image-e.md#proper
 
 **Parameters**:
 
-| Name| Type          | Mandatory| **Description**                  |
+| Name| Type          | Mandatory| Description                  |
 | ------ | -------------- | ---- | ---------------------- |
 | key    | Array\<string> | Yes  | Names of the properties to query.|
 
 **Returns**:
 
-| Type                                    | **Description**                                         |
+| Type                                    | Description                                         |
 | ---------------------------------------- | --------------------------------------------- |
 | Promise\<Record\<string, string \| null>> | Promise used to return the obtained image metadata property values.|
 
@@ -236,11 +234,11 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -297,11 +295,11 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -346,11 +344,11 @@ Obtains all properties and their values from the image metadata. This API return
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -393,11 +391,11 @@ Clones the Exif metadata. This API returns the result asynchronously through a p
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -419,7 +417,7 @@ async function exifMetadataClone(context: Context) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -438,11 +436,11 @@ Obtains the metadata in binary format. This API returns the result asynchronousl
 **Example**:
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -460,7 +458,7 @@ async function exifMetadataGetBlob(context: Context) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 
@@ -493,11 +491,11 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 **Example**:
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // An image containing Exif metadata is required.
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }

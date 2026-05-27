@@ -525,50 +525,6 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
 });
 ```
 
-### setMetadata<sup>19+</sup>
-setMetadata(metadata: Record\<string, string\>): void
-
-Sets custom metadata for the recording file of AVRecorder.
-
-This API can be called only after the [prepare()](arkts-apis-media-AVRecorder.md#prepare9-1) event is successfully triggered and before the [stop()](arkts-apis-media-AVRecorder.md#stop9) API is called.
-
-**System capability**: SystemCapability.Multimedia.Media.AVRecorder
-
-**System API**: This is a system API.
-
-**Parameters**
-
-| Name  | Type                 | Mandatory| Description                                                               |
-| -------- | -------------------- | ---- | -------------------------------------------------------------------|
-| metadata | [Record<string, string>]  | Yes  | Tag and value of the metadata in key-value pairs.<br>- The first string is the tag.<br>- The second string is the value.|
-
-**Return value**
-
-| Type           | Description       |
-| --------------- |-----------|
-| void | No result.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message           |
-|-------|-----------------|
-| 202   | Not System App. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let meta : Record<string, string> = {
-   'com.openharmony.userdefine':'10',
-   'com.openharmony.userdefine2':'20'
-};
-
-avRecorder.setMetadata(meta);
-```
-
 ## AVRecorderProfile<sup>9+</sup>
 
 Describes the audio and video recording profile.

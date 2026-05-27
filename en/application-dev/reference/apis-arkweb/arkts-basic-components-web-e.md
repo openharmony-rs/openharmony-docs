@@ -444,7 +444,7 @@ Enumerates whether to allow the rendering process to bypass the vsync scheduling
 | Name         | Value| Description                |
 | ----------- | -- | ------------------ |
 | NONE        | 0 | The rendering process does not bypass the vsync scheduling. Default value.        |
-| SCROLLBY_FROM_ZERO_OFFSET | 1 | When **scrollby** is used (only the scrolling offset is supported) and the scrolling offset of the web page is **0**, the rendering process bypasses the vsync scheduling.|
+| SCROLLBY_FROM_ZERO_OFFSET | 1 | When **scrollBy** is used (only the scrolling offset is supported) and the scrolling offset of the web page is **0**, the rendering process bypasses the vsync scheduling.|
 
 ## PdfLoadResult<sup>20+</sup>
 

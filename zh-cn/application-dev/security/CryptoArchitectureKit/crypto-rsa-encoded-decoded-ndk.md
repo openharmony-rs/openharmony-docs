@@ -23,9 +23,9 @@
 
    如何生成RSA非对称密钥对，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-asym-key-generation-conversion-spec.md#rsa)。
 
-2. 调用[OH_CryptoAsymKeyGenerator_SetPassword]，传入编码后的私钥字符串与编码口令。
+2. 调用[OH_CryptoAsymKeyGenerator_SetPassword](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_setpassword)，传入编码后的私钥字符串与编码口令。
 
-3. 调用[OH_CryptoAsymKeyGenerator_Convert]，传入参数CRYPTO_PEM和编码后的私钥字符串，返回RSA密钥对。
+3. 调用[OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)，传入参数CRYPTO_PEM和编码后的私钥字符串，返回RSA密钥对。
 
 - 编码示例：
 

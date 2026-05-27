@@ -246,6 +246,7 @@
 | [int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventdowntime) | - | 获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。|
 | [Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent, Input_TouchEventToolType toolType)](#oh_input_settoucheventtooltype) | - | 设置触屏输入事件的工具类型。|
 | [Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_TouchEvent* touchEvent)](#oh_input_gettoucheventtooltype) | - | 获取触屏输入事件的工具类型。 |
+| [Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)](#oh_input_bindinputdevicetodisplay) | - | 绑定指定输入设备到指定屏幕。|
 
 ## 枚举类型说明
 
@@ -4300,6 +4301,8 @@ Input_Result OH_Input_GetPointerLocation(int32_t *displayId, double *displayX, d
 
 获取当前屏幕上鼠标的坐标点。
 
+从API版本26.0.0开始，非焦点应用持有ohos.permission.INPUT_DEVICE_CONFIGURATOR权限，可调用该接口。
+
 **设备行为差异**：该接口在Wearable设备上返回3900010错误码，在其他设备上可正常调用。
 
 **起始版本：** 20
@@ -4392,8 +4395,6 @@ Input_Result OH_Input_RemoveKeyEventHook(Input_KeyEventCallback callback)
 
 **起始版本：** 21
 
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -4475,7 +4476,7 @@ Input_Result OH_Input_GetPointerStyle(int32_t windowId, int32_t *pointerStyle)
 
 **描述**
 
-获取指定窗口的鼠标光标样式。
+获取指定窗口的鼠标光标样式。此接口仅支持获取本应用进程内窗口的鼠标光标样式。
 
 **设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
@@ -4503,7 +4504,7 @@ Input_Result OH_Input_SetPointerStyle(int32_t windowId, int32_t pointerStyle)
 
 **描述**
 
-设置指定窗口的鼠标光标样式。
+设置指定窗口的鼠标光标样式。此接口仅支持设置本应用进程内窗口的鼠标光标样式。
 
 **设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
@@ -4701,9 +4702,7 @@ Input_Result OH_Input_SetCustomCursor(int32_t windowId, Input_CustomCursor* cust
 
 设置自定义鼠标光标样式。
 
-应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
-
-**设备行为差异**：该接口在Wearable设备上返回801错误码，在其他设备上可正常调用。
+应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。此接口仅支持设置本应用进程内窗口的自定义鼠标光标样式。
 
 **起始版本：** 22
 
@@ -4799,7 +4798,7 @@ Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_Po
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
-| [Input_PointerStyle](capi-oh-pointer-style-h.md) | 鼠标光标信息的光标样式枚举，具体请参考[Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle)。|
+| [Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle) | 鼠标光标信息的光标样式枚举，具体请参考[Input_PointerStyle](./capi-oh-pointer-style-h.md#input_pointerstyle)。|
 
 **返回：**
 
@@ -4917,9 +4916,7 @@ Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent,
 
 **描述**
 
-设置触屏输入事件的压力。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置触屏输入事件的压力。如果未设置压力值，或者不在合法范围内，默认值是0.0。
 
 **起始版本：** 24
 
@@ -4946,8 +4943,6 @@ double OH_Input_GetTouchEventPressure(const struct Input_TouchEvent* touchEvent)
 
 获取触屏输入事件的压力。
 
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
-
 **起始版本：** 24
 
 **参数：**
@@ -4970,9 +4965,7 @@ void OH_Input_SetTouchEventWindowX(struct Input_TouchEvent* touchEvent, int32_t 
 
 **描述**
 
-设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。如果未设置，默认值是0。
 
 **起始版本：** 24
 
@@ -4992,8 +4985,6 @@ int32_t OH_Input_GetTouchEventWindowX(const struct Input_TouchEvent* touchEvent)
 **描述**
 
 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的X坐标。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 24
 
@@ -5017,9 +5008,7 @@ void OH_Input_SetTouchEventWindowY(struct Input_TouchEvent* touchEvent, int32_t 
 
 **描述**
 
-设置触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。如果未设置，默认值是0。
 
 **起始版本：** 24
 
@@ -5039,8 +5028,6 @@ int32_t OH_Input_GetTouchEventWindowY(const struct Input_TouchEvent* touchEvent)
 **描述**
 
 获取触屏输入事件以指定窗口左上角为原点的相对坐标系的Y坐标。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 24
 
@@ -5064,9 +5051,7 @@ void OH_Input_SetTouchEventDownTime(struct Input_TouchEvent* touchEvent, int64_t
 
 **描述**
 
-设置当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。如果未设置，默认值是0。
 
 **起始版本：** 24
 
@@ -5086,8 +5071,6 @@ int64_t OH_Input_GetTouchEventDownTime(const struct Input_TouchEvent* touchEvent
 **描述**
 
 获取当前触屏事件对应手指/其他触屏外设最近一次按下事件发生的时间。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
 
 **起始版本：** 24
 
@@ -5111,9 +5094,7 @@ Input_Result OH_Input_SetTouchEventToolType(struct Input_TouchEvent* touchEvent,
 
 **描述**
 
-设置触屏输入事件的工具类型。
-
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
+设置触屏输入事件的工具类型。如果未设置toolType，默认值是Input_TouchEventToolType.TOOL_TYPE_FINGER。
 
 **起始版本：** 24
 
@@ -5140,8 +5121,6 @@ Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_Touch
 
 获取触屏输入事件的工具类型。
 
-**设备行为差异**：该接口在Wearable设备上调用无效果，在其他设备上可正常调用。
-
 **起始版本：** 24
 
 **参数：**
@@ -5155,3 +5134,33 @@ Input_TouchEventToolType OH_Input_GetTouchEventToolType(const struct Input_Touch
 | 类型 | 说明 |
 | -- | -- |
 | [Input_TouchEventToolType](#input_toucheventtooltype) | 工具类型。 |
+
+### OH_Input_BindInputDeviceToDisplay()
+
+```c
+Input_Result OH_Input_BindInputDeviceToDisplay(int32_t inputDeviceId, int32_t displayId)
+```
+
+**描述**
+
+绑定指定输入设备到指定屏幕。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**需要权限：** ohos.permission.INPUT_DEVICE_CONFIGURATOR
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| int32_t inputDeviceId | 指定输入设备的设备ID。 |
+| int32_t displayId | 指定屏幕的屏幕ID。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Input_Result](#input_result) | OH_Input_BindInputDeviceToDisplay函数返回值：<br>  [INPUT_SUCCESS](#input_result)表示操作成功。<br>  [INPUT_PERMISSION_DENIED](#input_result)表示权限校验失败。<br>  [INPUT_PARAMETER_ERROR](#input_result)表示参数检查失败。<br>  [INPUT_SERVICE_EXCEPTION](#input_result)表示服务异常，请重试。 |

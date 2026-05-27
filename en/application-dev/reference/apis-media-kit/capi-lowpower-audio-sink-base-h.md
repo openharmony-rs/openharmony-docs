@@ -2,7 +2,7 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -83,7 +83,7 @@ Called when the playback position is updated in the LowPowerAudioSink.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | Pointer to an OH_LowPowerAudioSink instance.|
-| int64_t currentPosition | Current playback position.|
+| int64_t currentPosition | Current playback position. The unit is milliseconds.|
 | void* userData | Pointer to user-defined data.|
 
 ### OH_LowPowerAudioSink_OnDataNeeded()

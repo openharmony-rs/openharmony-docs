@@ -12,7 +12,7 @@
 
 Typical scenarios for utilizing display properties are as follows:
 
-- Display information query: You can query the display resolution, physical pixel density, logical pixel density, refresh rate, dimensions, rotation direction, and rotation angle. For details, see [Display Properties](../reference/apis-arkui/js-apis-display.md#properties).
+- Display information query: You can query the display resolution, physical pixel density, logical pixel density, refresh rate, dimensions, rotation direction, and rotation angle. For details, see [Display Properties](../reference/apis-arkui/js-apis-display.md#attributes).
 - Display status monitoring: You can listen for changes in the rotation, resolution, and refresh rate of the display.
 - Folding state monitoring: You can check whether the device is foldable and listen for changes in its folding state (whether it is unfolded or folded).
 

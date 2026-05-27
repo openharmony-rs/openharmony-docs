@@ -1,7 +1,7 @@
 # NotificationInfo
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -24,5 +24,5 @@
 | bundleName           | string | 是   | 否   | 创建通知的包名。                                 |
 | appIndex             | number | 是   | 否   | 创建通知的应用包的分身索引标识，仅在分身应用中生效。|
 | appName              | string | 是   | 是   | 创建通知的应用程序名称。                          |
-| deliveryTime         | number | 是   | 是   | 通知发布的时间戳（毫秒数）。                      |
+| deliveryTime         | number | 是   | 是   | 通知发布的时间戳。<br>数据格式：时间戳。<br>单位：ms。|
 | groupName            | string | 是   | 是   | 通知组名称。默认情况下此参数为空。                 |

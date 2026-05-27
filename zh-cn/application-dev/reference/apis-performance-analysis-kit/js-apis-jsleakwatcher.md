@@ -1,13 +1,13 @@
-# @ohos.hiviewdfx.jsLeakWatcher (js泄漏检测)
+# @ohos.hiviewdfx.jsLeakWatcher (ArkTS泄漏检测)
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu_tao-->
+<!--Owner: @Lutao98-->
 <!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-本模块提供了监控js对象是否发生泄漏的能力。
+本模块提供了监控ArkTS对象是否发生泄漏的能力。
 
 > **说明：**
 >
@@ -24,7 +24,7 @@ import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 
 enable(isEnable: boolean): void
 
-使能js对象泄漏检测，默认关闭。
+使能ArkTS对象泄漏检测，默认关闭。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
@@ -116,11 +116,9 @@ let files: Array<string> = jsLeakWatcher.dump(context?.filesDir);
 
 enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Callback&lt;Array&lt;string&gt;&gt;): void
 
-使能js对象泄漏检测，默认关闭。
+使能ArkTS对象泄漏检测。
 
-这个接口通过一次调用即可检测JS对象的内存泄漏，比之前需要调用四个函数（enable、watch、check、dump）的方法更加简洁。
-
-如果发生内存泄漏，泄漏文件将通过回调函数返回给开发者。
+此接口通过一次调用即可检测ArkTS对象的内存泄漏，比之前需要调用四个函数（enable、watch、check、dump）的方法更加简洁。
 
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
@@ -129,7 +127,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| isEnabled | boolean | 是| 是否使能js对象内存泄漏检测功能。true：开启js内存泄漏检测功能；false：关闭js内存泄漏检测功能。|
+| isEnabled | boolean | 是| 是否使能ArkTS对象内存泄漏检测功能。true：开启ArkTS内存泄漏检测功能；false：关闭ArkTS内存泄漏检测功能。|
 | configs | Array&lt;string&gt; | 是| 配置项，数组中每个元素为监测具体对象的类型。<br>可配置项包括：XComponent，NodeContainer，Window，CustomComponent和Ability。<br>**说明**：传入空数组代表监测以上全部对象。 |
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口的返回的内存泄漏的对象。<br>回调函数中传入一个数组对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
@@ -149,7 +147,7 @@ enableLeakWatcher(isEnabled: boolean, configs: Array&lt;string&gt;, callback: Ca
 <!--code_no_check-->
 ```ts
 let config: Array<string> = ['XComponent'];
-// 监测js对象XComponent的内存泄漏
+// 监测ArkTS对象XComponent的内存泄漏
 // 传入空数组代表监测全部对象
 jsLeakWatcher.enableLeakWatcher(true, config, (filePath: Array<string>) => {
     console.info('JsLeakWatcher leaklistFileName:' + filePath[0]);
@@ -173,7 +171,7 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | 是| 是否使能ArkTS对象内存泄漏检测功能。<br>true：开启ArkTS内存泄漏检测功能。<br>false：关闭ArkTS内存泄漏检测功能。|
-| configs | [LeakWatcherConfig](#leakwatcherconfig) | 是| LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。|
+| configs | [LeakWatcherConfig](#leakwatcherconfig24) | 是| LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。<br>**说明**：对象中参数类型传入空值或假值代表该属性设置为默认值。|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | 是| 回调函数，用于接收jsLeakWatcher.enableLeakWatcher接口的返回的内存泄漏的对象。<br>回调函数中传入一个数组对象，索引0为泄漏列表文件名，后缀为.jsleaklist；索引1为虚拟机内存快照文件名，后缀为.rawheap。|
 
 
@@ -191,30 +189,10 @@ enableLeakWatcher(isEnabled: boolean, configs: LeakWatcherConfig, callback: Call
 
 <!--code_no_check-->
 ```ts
-enum MonitorObjectType {
-  ALL = -1, 
-  CUSTOM_COMPONENT = 1 << 0,
-  WINDOW = 1 << 1,
-  NODE_CONTAINER = 1 << 2,
-  X_COMPONENT = 1 << 3,
-  ABILITY = 1 << 4
-};
-
-interface LeakWatcherConfig {
-  monitorObjectTypes: MonitorObjectType;
-  objectUniqueIDs: Array<number>;
-  checkInterval: number;
-  fgLeakCountThreshold: number;
-  bgLeakCountThreshold: number;
-  maxStoredHeapDumps: number;
-  dumpHeapWaitTimeMs: number;
-  exclusionList: Array<string>;
-}
-
 // 监测ArkTS对象CustomComponent和Window的内存泄漏
 // 对象中类型传入空值或假值代表该属性设置为默认值
-let config: LeakWatcherConfig = {
-    monitorObjectTypes: MonitorObjectType.CUSTOM_COMPONENT | MonitorObjectType.WINDOW,
+let config: jsLeakWatcher.LeakWatcherConfig = {
+    monitorObjectTypes: jsLeakWatcher.MonitorObjectType.CUSTOM_COMPONENT | jsLeakWatcher.MonitorObjectType.WINDOW,
     objectUniqueIDs: [],
     checkInterval: 10000,
     fgLeakCountThreshold: 5,
@@ -230,7 +208,7 @@ jsLeakWatcher.enableLeakWatcher(true, config, (filePath : Array<string>) => {
 ```
 
 
-## LeakWatcherConfig
+## LeakWatcherConfig<sup>24+</sup>
 
 LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的可配置属性。
 
@@ -238,9 +216,9 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 
 | 名称 | 类型 | 只读 | 可选 | 说明 | 
 | ------- | ------- | ------- | ------- | ------- | 
-| monitorObjectTypes | [MonitorObjectType](#monitorobjecttype) | 否 | 否 | 被监测对象类型。<br>默认监测所有组件类型。 |
+| monitorObjectTypes | [MonitorObjectType](#monitorobjecttype24) | 否 | 否 | 被监测对象类型。<br>默认监测所有组件类型。 |
 | objectUniqueIDs | Array&lt;number&gt; | 否   | 是   | 被监测泄漏对象ID列表。<br>只作用于自定义组件，不会影响其他组件类型的监测。<br>例如：白名单中设置的对象类名ID与自定义ID列表存在相同值时，生效自定义ID列表参数。<br>默认为空数组。 |
-| checkInterval | number | 否 | 是 | 每轮泄漏检测间隔时间，单位：ms。<br>默认为30秒。 |
+| checkInterval | number | 否 | 是 | 每轮泄漏检测间隔时间，单位：ms。<br>默认为90000ms。<br>如果应用输入的自定义检测间隔时间小于默认值，JSLeakWatcher强制将间隔设置为默认值。<br>当前JSLeakWatcher泄漏检测性能开销较大，会导致应用卡顿，建议增大该参数，减少卡顿频率。 |
 | fgLeakCountThreshold | number | 否 | 是 | 应用在前台泄漏个数达到设定值触发dump。<br>GC/Dump阶段，大于等于5时触发Dump。<br>阈值默认为5。 |
 | bgLeakCountThreshold | number | 否 | 是 | 应用在后台泄漏个数达到设定值触发dump。<br>GC/Dump阶段，大于等于1时触发Dump。<br>阈值默认为1。 |
 | maxStoredHeapDumps | number | 否 | 是 | 最大dump保存个数，避免磁盘空间占满，超过则删除时间戳最小的rawheap、jsleaklist文件。<br>默认保存10个rawheap、10个jsleaklist文件。 |
@@ -248,7 +226,7 @@ LeakWatcherConfig对象类型，对象中包含多个用于内存泄漏监测的
 | exclusionList | Array&lt;string&gt; | 否 | 是 | 过滤不想监测的对象类名。<br>作用于Window、CustomComponent和Ability组件，不会影响其他组件类型的过滤。<br>存在混淆问题时无法进行过滤，只在开发态生效。<br>配置项冲突优先级：ID列表 > 白名单。<br>默认为空数组。 |
 
 
-## MonitorObjectType
+## MonitorObjectType<sup>24+</sup>
 
 需要监控的组件对象类型枚举。
 

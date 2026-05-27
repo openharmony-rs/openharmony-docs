@@ -1,4 +1,4 @@
-# MediaCachedImage（系统接口）
+# MediaCachedImage (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @baosiyuan-->

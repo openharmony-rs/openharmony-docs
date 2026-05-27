@@ -19,14 +19,15 @@
 import file from '@system.file';
 ```
 
+## File
 
-## file.move
+### move
 
-move(Object): void
+static move(options: FileMoveOption): void
 
 将指定文件移动到其他指定位置。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.moveFile](js-apis-file-fs.md#fileiomovefile)替代。
 
@@ -36,19 +37,7 @@ move(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| srcUri | string | 是 | 要移动的文件的uri。字符串最大长度为128，且不能包含“"\*+,:;&lt;=&gt;?[]\|\x7F”等特殊符号。 |
-| dstUri | string | 是 | 文件要移动到的位置的uri。字符串最大长度为128，且不能包含“"\*+,:;&lt;=&gt;?[]\|\x7F”等特殊符号。 |
-| success | Function | 否 | 接口调用成功的回调函数，返回文件要移动到的位置的uri。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O错误。 |
-| 301 | 文件或目录不存在。 |
+| options | [FileMoveOption](#filemoveoption) | 是 | 文件移动选项。 |
 
 **示例：**
 
@@ -132,11 +121,9 @@ export default {
   }
 }
 ```
+### copy
 
-
-## file.copy
-
-copy(Object): void
+static copy(options: FileCopyOption): void
 
 将指定文件拷贝并存储到指定位置。
 
@@ -150,19 +137,7 @@ copy(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| srcUri | string | 是 | 要拷贝的文件的uri。 |
-| dstUri | string | 是 | 文件要拷贝到的位置的uri。<br/>不支持用应用资源路径或tmp类型的uri。 |
-| success | Function | 否 | 接口调用成功的回调函数，返回文件要拷贝到的位置的uri。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O错误。 |
-| 301 | 文件或目录不存在。 |
+| options | [FileCopyOption](#filecopyoption) | 是 | 文件拷贝选项。 |
 
 **示例：**
 
@@ -247,14 +222,13 @@ export default {
 }
 ```
 
+### list
 
-## file.list
-
-list(Object): void
+static list(options: FileListOption): void
 
 获取指定路径下全部文件的列表。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile)替代。
 
@@ -264,33 +238,7 @@ list(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 目录uri。字符串最大长度为128，且不能包含“"\*+,:;&lt;=&gt;?[]\|\x7F”等特殊符号。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-success返回值：
-
-| 参数名 | 类型 | 说明 |
-| -------- | -------- | -------- |
-| fileList | Array&lt;FileInfo&gt; | 获取的文件列表，其中每个文件的信息的格式为：<br/>{<br/>uri:'file1',<br/>lastModifiedTime:1589965924479,<br/>length:10240,<br/>type:&nbsp;'file'<br/>} |
-
-**表1** FileInfo
-
-| 参数名 | 类型 | 说明 |
-| -------- | -------- | -------- |
-| uri | string | 文件的&nbsp;uri。 |
-| lastModifiedTime | number | 文件上一次保存时的时间戳，显示从1970/01/01&nbsp;00:00:00&nbsp;GMT到当前时间的毫秒数。 |
-| length | number | 文件的大小，单位为Byte。 |
-| type | string | 文件的类型，可选值为：<br/>-&nbsp;dir：目录；<br/>-&nbsp;file：文件。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O错误。 |
-| 301 | 文件或目录不存在。 |
+| options | [FileListOption](#filelistoption) | 是 | 获取指定路径下全部文件的列表选项。 |
 
 **示例：**
 
@@ -373,14 +321,13 @@ export default {
 }
 ```
 
+### get
 
-## file.get
-
-get(Object): void
+static get(options: FileGetOption): void
 
 获取指定本地文件的信息。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.stat](js-apis-file-fs.md#fileiostat)替代。
 
@@ -390,29 +337,7 @@ get(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 文件的uri。 |
-| recursive | boolean | 否 | 是否进行递归获取子目录文件列表，true为进行该操作，缺省为false。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-success返回值：
-
-| 参数名 | 类型 | 说明 |
-| -------- | -------- | -------- |
-| uri | string | 文件的uri。 |
-| length | number | 文件长度，单位为Byte。 |
-| lastModifiedTime | number | 文件保存时的时间戳，从1970/01/01&nbsp;00:00:00到当前时间的毫秒数。 |
-| type | string | 文件类型，可选值为：<br/>-&nbsp;dir：目录；<br/>-&nbsp;file：文件。 |
-| subFiles | Array | 文件列表。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O错误。 |
-| 301 | 文件或目录不存在。 |
+| options | [FileGetOption](#filegetoption) | 是 | 获取指定本地文件的信息选项。 |
 
 **示例：**
 
@@ -494,15 +419,13 @@ export default {
   }
 }
 ```
+### delete
 
-
-## file.delete
-
-delete(Object): void
+static delete(options: FileDeleteOption): void
 
 删除本地文件。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.unlink](js-apis-file-fs.md#fileiounlink)替代。
 
@@ -512,18 +435,7 @@ delete(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 删除文件的uri，不能是应用资源路径。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 参数错误。 |
-| 300 | I/O错误。 |
-| 301 | 文件或目录不存在。 |
+| options | [FileDeleteOption](#filedeleteoption) | 是 | 删除本地文件选项。 |
 
 **示例：**
 
@@ -607,13 +519,13 @@ export default {
 ```
 
 
-## file.writeText
+### writeText
 
-writeText(Object): void
+static writeText(options: FileWriteTextOption): void
 
 写文本内容到指定文件。仅支持文本文档读写。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.write](js-apis-file-fs.md#fileiowrite)替代。
 
@@ -623,20 +535,7 @@ writeText(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 本地文件uri，如果文件不存在会创建文件。 |
-| text | string | 是 | 写入的字符串。 |
-| encoding | string | 否 | 编码格式，默认为UTF-8。 |
-| append | boolean | 否 | 是否追加模式，默认为false。true为追加，false为不追加。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 参数错误。 |
-| 300 | I/O错误。 |
+| options | [FileWriteTextOption](#filewritetextoption) | 是 | 写文本内容到指定文件选项。 |
 
 **示例：**
 
@@ -721,14 +620,13 @@ export default {
 }
 ```
 
+### writeArrayBuffer
 
-## file.writeArrayBuffer
-
-writeArrayBuffer(Object): void
+static writeArrayBuffer(options: FileWriteArrayBufferOption): void
 
 写Buffer内容到指定文件。仅支持文本文档读写。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.write](js-apis-file-fs.md#fileiowrite)替代。
 
@@ -738,20 +636,7 @@ writeArrayBuffer(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 本地文件uri，如果文件不存在会创建文件。 |
-| buffer | Uint8Array | 是 | 写入的Buffer。 |
-| position | number | 否 | 文件开始写入数据的位置的偏移量，单位为Byte，默认为0。 |
-| append | boolean | 否 | 是否追加模式，默认为false。当设置为true时，position参数无效。true为追加，false为不追加。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O错误。 |
+| options | [FileWriteArrayBufferOption](#filewritearraybufferoption) | 是 | 写Buffer内容到指定文件选项。 |
 
 **示例：**
 
@@ -837,13 +722,13 @@ export default {
 ```
 
 
-## file.readText
+### readText
 
-readText(Object): void
+static readText(options: FileReadTextOption): void
 
 从指定文件中读取文本内容。仅支持文本文档读写。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.readText](js-apis-file-fs.md#fileioreadtext)替代。
 
@@ -853,28 +738,7 @@ readText(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 本地文件uri。 |
-| encoding | string | 否 | 编码格式，缺省为UTF-8。 |
-| position | number | 否 | 读取的起始位置，单位为Byte，默认值为文件的起始位置。 |
-| length | number | 否 | 读取的长度，单位为Byte，默认值为4096。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-success返回值：
-
-| 参数名 | 类型 | 说明 |
-| -------- | -------- | -------- |
-| text | string | 读取到的文本内容。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O错误。 |
-| 301 | 文件或目录不存在。 |
-| 302 | 要读取的文件内容超过4KB。 |
+| options | [FileReadTextOption](#filereadtextoption) | 是 | 从指定文件中读取文本内容选项。 |
 
 **示例：**
 
@@ -958,13 +822,13 @@ export default {
 ```
 
 
-## file.readArrayBuffer
+### readArrayBuffer
 
-readArrayBuffer(Object): void
+static readArrayBuffer(options: FileReadArrayBufferOption): void
 
 从指定文件中读取Buffer内容。仅支持文本文档读写。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.read](js-apis-file-fs.md#fileioread)替代。
 
@@ -974,26 +838,7 @@ readArrayBuffer(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 本地文件uri。 |
-| position | number | 否 | 读取的起始位置，单位为Byte，缺省为文件的起始位置。 |
-| length | number | 否 | 需要读取的长度，单位为Byte，缺省则读取到文件结尾。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-success返回值：
-
-| 参数名 | 类型 | 说明 |
-| -------- | -------- | -------- |
-| buffer | Uint8Array | 读取到的文件内容。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O错误。 |
-| 301 | 文件或目录不存在。 |
+| options | [FileReadArrayBufferOption](#filereadarraybufferoption) | 是 | 从指定文件中读取Buffer内容选项。 |
 
 **示例：**
 
@@ -1081,13 +926,13 @@ export default {
 ```
 
 
-## file.access
+### access
 
-access(Object): void
+static access(options: FileAccessOption): void
 
 判断指定文件或目录是否存在。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.access](js-apis-file-fs.md#fileioaccess)替代。
 
@@ -1097,18 +942,7 @@ access(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 目录或文件uri。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O&nbsp;错误。 |
-| 301 | 文件或目录不存在。 |
+| options | [FileAccessOption](#fileaccessoption) | 是 | 判断指定文件或目录是否存在选项。 |
 
 **示例：**
 
@@ -1192,13 +1026,13 @@ export default {
 ```
 
 
-## file.mkdir
+### mkdir
 
-mkdir(Object): void
+static mkdir(options: FileMkdirOption): void
 
 创建指定目录。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.mkdir](js-apis-file-fs.md#fileiomkdir)替代。
 
@@ -1208,18 +1042,7 @@ mkdir(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 目录的uri路径。 |
-| recursive | boolean | 否 | 是否递归创建该目录的上级目录，缺省为false。true为递归创建，false是不递归创建。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O&nbsp;错误。 |
+| options | [FileMkdirOption](#filemkdiroption) | 是 | 创建指定目录选项。 |
 
 **示例：**
 
@@ -1302,13 +1125,13 @@ export default {
 }
 ```
 
-## file.rmdir
+### rmdir
 
-rmdir(Object): void
+static rmdir(options: FileRmdirOption): void
 
 删除指定目录。
 
-> **说明**： 
+> **说明**：
 >
 > 除Lite Wearable外，从API version 10开始废弃，请使用[fileIo.rmdir](js-apis-file-fs.md#fileiormdir)替代。
 
@@ -1318,19 +1141,7 @@ rmdir(Object): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| uri | string | 是 | 目录的uri路径。 |
-| recursive | boolean | 否 | 是否递归删除子文件和子目录，缺省为false。true为递归删除，false为不递归删除。 |
-| success | Function | 否 | 接口调用成功的回调函数。 |
-| fail | Function | 否 | 接口调用失败的回调函数。 |
-| complete | Function | 否 | 接口调用结束的回调函数。 |
-
-fail返回错误代码：
-
-| 错误码 | 说明 |
-| -------- | -------- |
-| 202 | 出现参数错误。 |
-| 300 | 出现I/O&nbsp;错误。 |
-| 301 | 文件或目录不存在。 |
+| options | [FileRmdirOption](#filermdiroption) | 是 | 删除指定目录选项。 |
 
 **示例：**
 
@@ -1412,3 +1223,222 @@ export default {
   }
 }
 ```
+
+## FileResponse
+
+文件返回。包含文件的信息。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 文件的URI。 |
+| length | number | 否 | 否 | 文件长度，单位为Byte。|
+| lastModifiedTime | number | 否 | 否 | 文件保存时的时间戳，从1970/01/01&nbsp;00:00:00到当前时间的毫秒数。 |
+| type | 'dir' \| 'file' | 否 | 否 | 文件类型，可选值为：<br/> -dir：目录；<br/> -file：文件。 |
+| subFiles | Array&lt;[FileResponse](#fileresponse)&gt; | 否 | 是 | 文件列表。 |
+
+## FileListResponse
+
+文件列表返回，包含文件列表信息。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| fileList | Array&lt;[FileResponse](#fileresponse)&gt; | 否 | 否 | 获取的文件列表，其中每个文件的信息的格式为：<br/>{<br/>uri:'file1',<br/>lastModifiedTime:1589965924479,<br/>length:10240,<br/>type:&nbsp;'file'<br/>} |
+
+## FileReadTextResponse
+
+文本读取返回，包含读取到的文本内容。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| text | string | 否 | 否 | 读取到的文本内容。 |
+
+## FileReadArrayBufferResponse
+
+文件读取返回，包含读取到的文件内容。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| buffer | Uint8Array | 否 | 否 | 读取到的文件内容。 |
+
+## FileMoveOption
+
+可选项类型，支持move接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| srcUri | string | 否 | 否 | 要移动的文件的URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| dstUri | string | 否 | 否 | 文件要移动到的位置的URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| success | (uri: string) => void | 否 | 是 | 接口调用成功的回调函数，uri为文件要移动到的位置的URI。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+## FileCopyOption
+
+可选项类型，支持copy接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| srcUri | string | 否 | 否 | 要拷贝的文件的URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| dstUri | string | 否 | 否 | 文件要拷贝到的位置的URI。<br/>不支持用应用资源路径或tmp类型的URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| success | (uri: string) => void | 否 | 是 | 接口调用成功的回调函数，uri为文件要拷贝到的位置的URI。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+## FileListOption
+
+可选项类型，支持list接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 目录URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| success | (data: FileListResponse) => void | 否 | 是 | 接口调用成功的回调函数。data为[FileListResponse](#filelistresponse)。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+## FileGetOption
+
+可选项类型，支持get接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 文件的URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| recursive | boolean | 否 | 是 | 是否进行递归获取子目录文件列表。true表示进行递归操作，false表示不递归。参数缺省时，默认为false。 |
+| success | (file: FileResponse) => void | 否 | 是 | 接口调用成功的回调函数。 file为[FileResponse](#fileresponse)。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+## FileDeleteOption
+
+可选项类型，支持delete接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 删除文件的URI，不能是应用资源路径。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| success | () => void | 否 | 是 | 接口调用成功的回调函数。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+## FileWriteTextOption
+
+可选项类型，支持writeText接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 本地文件URI，如果文件不存在会创建文件。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| text | string | 否  | 否 | 写入的字符串。 |
+| encoding | string | 否  | 是 | 编码格式，默认为UTF-8。 |
+| append | boolean | 否  | 是 | 是否追加模式，默认为false。true为追加，false为不追加。 |
+| success | () => void | 否  | 是 | 接口调用成功的回调函数。 |
+| fail | (data: string, code: number) => void | 否  | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。 |
+| complete | () => void | 否  | 是 | 接口调用结束的回调函数。 |
+
+
+## FileWriteArrayBufferOption
+
+可选项类型，支持writeArrayBuffer接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 本地文件URI，如果文件不存在会创建文件。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| buffer | Uint8Array | 否 | 否 | 写入的Buffer。 |
+| position | number | 否 | 是 | 文件写入的起始偏移位置，单位为Byte，默认为0。 |
+| append | boolean | 否 | 是 | 是否追加模式，默认为false。当设置为true时，position参数无效。true为追加，false为不追加。 |
+| success | () => void | 否 | 是 | 接口调用成功的回调函数。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+## FileReadTextOption
+
+可选项类型，支持readText接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 本地文件URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| encoding | string | 否 | 是 | 编码格式，缺省为UTF-8。 |
+| position | number | 否 | 是 | 读取的起始位置，单位为Byte，默认为文件的起始位置。 |
+| length | number | 否 | 是 | 读取的长度，单位为Byte，默认值为4096。 |
+| success | (data: FileReadTextResponse) => void | 否 | 是 | 接口调用成功的回调函数。data为[FileReadTextResponse](#filereadtextresponse)。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。<br/>302：要读取的文件内容超过4KB。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+## FileReadArrayBufferOption
+
+可选项类型，支持readArrayBuffer接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 本地文件URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| position | number | 否 | 是 | 读取的起始位置，单位为Byte，缺省为文件的起始位置。 |
+| length | number | 否 | 是 | 需要读取的长度，单位为Byte，缺省则读取到文件结尾。 |
+| success | (data: FileReadArrayBufferResponse) => void | 否 | 是 | 接口调用成功的回调函数。data为[FileReadArrayBufferResponse](#filereadarraybufferresponse)。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+## FileAccessOption
+
+可选项类型，支持access接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 目录或文件URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| success | () => void | 否 | 是 | 接口调用成功的回调函数。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+
+## FileMkdirOption
+
+可选项类型，支持mkdir接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 目录URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| recursive | boolean | 否 | 是 | 是否递归创建该目录的上级目录，缺省为false。true为递归创建，false是不递归创建。 |
+| success | () => void | 否 | 是 | 接口调用成功的回调函数。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |
+
+
+## FileRmdirOption
+
+可选项类型，支持rmdir接口使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO.Lite
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| uri | string | 否 | 否 | 目录URI。由于轻量级穿戴设备底层文件系统的限制，该值必须满足以下要求：<br/>1. URI 中不得包含以下特殊字符：\\"*+,:;<=>?[]\\|\x7F等。<br/>2. 最大允许字符长度为128个字符。 |
+| recursive | boolean | 否 | 是 | 是否递归删除子文件和子目录，缺省为false。true为递归删除，false为不递归删除。 |
+| success | () => void | 否 | 是 | 接口调用成功的回调函数。 |
+| fail | (data: string, code: number) => void | 否 | 是 | 接口调用失败的回调函数。<br/>data为错误信息。<br/>code为可能返回的错误码：<br/>202：出现参数错误。<br/>300：出现I/O错误。<br/>301：文件或目录不存在。 |
+| complete | () => void | 否 | 是 | 接口调用结束的回调函数。 |

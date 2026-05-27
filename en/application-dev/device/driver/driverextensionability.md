@@ -1,7 +1,7 @@
 # UI-free Driver Development
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -26,7 +26,7 @@ Before you get started, make necessary preparations by following instructions in
 
 To implement a driver, create a DriverExtensionAbility in the DevEco Studio project. The procedure is as follows:
 
-1. Create an OpenHarmony project. For details, see [Creating a Project] (https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-create-new-project). (If a project has been created in [UI-based Driver Development](externaldevice-guidelines.md), skip this step.)
+1. Create an OpenHarmony project. For details, see [Creating a Project](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-create-new-project). (If a project has been created in [UI-based Driver Development](externaldevice-guidelines.md), skip this step.)
 
 2. In the **ets** directory of the project, right-click **New** > **Directory** to create a directory named **driverextability**.
 

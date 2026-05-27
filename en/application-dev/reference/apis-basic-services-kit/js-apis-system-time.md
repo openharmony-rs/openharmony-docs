@@ -81,7 +81,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 | Name  | Type              | Mandatory| Description                           |
 | -------- | ----------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time elapsed since the Unix epoch.        |
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time elapsed since the Unix epoch, in milliseconds.        |
 
 **Error codes**
 
@@ -447,7 +447,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object?](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -654,7 +654,7 @@ let time = 1611081385000;
 try {
   systemTime.setTime(time, (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting time. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting time`);
@@ -710,7 +710,7 @@ try {
   systemTime.setTime(time).then(() => {
     console.info(`Succeeded in setting time.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting time. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -756,7 +756,7 @@ let date = new Date();
 try {
   systemTime.setDate(date, (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting date. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting date.`);
@@ -811,7 +811,7 @@ try {
   systemTime.setDate(date).then(() => {
     console.info(`Succeeded in setting date.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting date. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set date. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;
@@ -856,7 +856,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   systemTime.setTimezone('Asia/Shanghai', (error: BusinessError) => {
     if (error) {
-      console.info(`Failed to setting timezone. message: ${error.message}, code: ${error.code}`);
+      console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
       return;
     }
     console.info(`Succeeded in setting timezone.`);
@@ -910,7 +910,7 @@ try {
   systemTime.setTimezone('Asia/Shanghai').then(() => {
     console.info(`Succeeded in setting timezone.`);
   }).catch((error: BusinessError) => {
-    console.info(`Failed to setting timezone. message: ${error.message}, code: ${error.code}`);
+    console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
   let error = e as BusinessError;

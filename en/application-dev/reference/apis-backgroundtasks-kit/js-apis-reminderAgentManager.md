@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -26,8 +26,6 @@ publishReminder(reminderReq: ReminderRequest, callback: AsyncCallback\<number>):
 
 Publishes a reminder. This API uses an asynchronous callback to return the result.
 
-Once an agent-powered reminder is published, the notification center will display the reminder when the scheduled time arrives. If the value of [ReminderRequest.ringDuration](#reminderrequest) is greater than 0, a custom ringtone will be played on the alarm channel by default. If the value is less than or equal to 0, no ringtone will be played.
-
 > **NOTE**
 >
 > This API can be called only after the [notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10) permission is obtained.
@@ -43,7 +41,7 @@ Once an agent-powered reminder is published, the notification center will displa
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | reminderReq | [ReminderRequest](#reminderrequest) | Yes| Request used for publishing the reminder.|
-  | callback | AsyncCallback\<number> | Yes| Callback used to return the published reminder's ID.|
+  | callback | AsyncCallback\<number> | Yes| Callback used to return the result. After the agent-powered reminder is published, **err** is **undefined**, and **data** is the ID of the published reminder. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -79,8 +77,6 @@ reminderAgentManager.publishReminder(timer, (err: BusinessError, reminderId: num
 publishReminder(reminderReq: ReminderRequest): Promise\<number>
 
 Publishes a reminder. This API uses a promise to return the result.
-
-If the value of [ReminderRequest.ringDuration](#reminderrequest) is greater than 0, the custom ringtone is played on the alarm channel by default. If the value is less than or equal to 0, no ringtone is played.
 
 > **NOTE**
 >
@@ -229,7 +225,7 @@ Obtains all [valid (not yet expired) reminders](../../task-management/agent-powe
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback\<Array\<[ReminderRequest](#reminderrequest)>> | Yes| Callback used to return all the valid reminders.|
+| callback | AsyncCallback\<Array\<[ReminderRequest](#reminderrequest)>> | Yes| Callback used to return the result. If the agent-powered reminder is queried, **err** is **undefined**, and **data** contains all valid (not yet expired) reminders set by the current application. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1043,28 +1039,29 @@ Defines the request for publishing a reminder.
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | reminderType | [ReminderType](#remindertype) | No| No| Type of the reminder.|
 | actionButton | [[ActionButton?, ActionButton?, ActionButton?]](#actionbutton) | No| Yes| Buttons displayed for the reminder notification.<br>For third-party applications, a maximum of two buttons are supported.<br>For system applications, a maximum of three buttons are supported in API version 10 and later versions, and a maximum of two buttons are supported in versions earlier than API version 10.|
 | wantAgent | [WantAgent](#wantagent) | No| Yes| Information about the ability that is redirected to when the reminder is clicked.|
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagent) | No| Yes| Information about the ability that is started automatically and displayed in full-screen mode when the reminder arrives. If the device is in use, only a notification banner is displayed.<br> This API is reserved.|
-| ringDuration | number | No| Yes| Ringing duration, in seconds. The default value is 1 second, and the maximum value is 30 minutes.|
+| ringDuration | number | No| Yes| Ringing duration.<br> The value ranges from 0 to1800, in seconds. The default value is **1**.<br>If the value is **0**, the system notification tone is used.<br>If the value is greater than 0 and [ReminderRequest.customRingUri](#reminderrequest) is set, the reminder rings on the specified channel [ReminderRequest.ringChannel](#reminderrequest). Otherwise, the custom notification tone of the agent-powered reminder is used.|
 | snoozeTimes | number | No| Yes| Number of reminder snooze times. The default value is **0**. (It is not applicable to countdown reminders.)|
-| timeInterval | number | No| Yes| Reminder snooze interval, in seconds. The minimum value is 30 seconds. (It is not applicable to countdown reminders.)|
+| timeInterval | number | No| Yes| Reminder snooze interval,<br> in seconds. The minimum value is 30s. (It is not applicable to countdown reminders.)|
 | title | string | No| Yes| Reminder title.|
-| titleResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the reminder title.|
+| titleResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the reminder title, which can be obtained through $r(*resource-name*).id.|
 | content | string | No| Yes| Reminder content.|
-| contentResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the reminder content.|
+| contentResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the reminder content, which can be obtained through $r(*resource-name*).id.|
 | expiredContent | string | No| Yes| Content to be displayed after the reminder expires.|
-| expiredContentResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the content to be displayed after the reminder expires.|
+| expiredContentResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the content to be displayed after the reminder expires, which can be obtained through $r(*resource-name*).id.|
 | snoozeContent | string | No| Yes| Content to be displayed when the reminder is snoozing. (It is not applicable to countdown reminders.)|
-| snoozeContentResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the content to be displayed when the reminder is snoozing.|
-| notificationId | number | No| Yes| Notification ID used by the reminder. You must pass in a notification ID. If there are reminders with the same notification ID, the later one will overwrite the earlier one.|
+| snoozeContentResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the content to be displayed when the reminder is snoozing, which can be obtained through $r(*resource-name*).id.|
+| notificationId | number | No| Yes| Notification ID used by the reminder. You must pass in a notification ID. If there are reminders with the same notification ID, the later one will overwrite the earlier one. The default value is **0**.|
 | groupId<sup>11+</sup> | string | No| Yes| Group ID used for the reminder. If "Don't ask again" or similar information is selected for the reminder, other reminders with the same group ID are also canceled.|
 | slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No| Yes| Type of the slot used by the reminder.|
-| tapDismissed<sup>10+</sup> | boolean | No| Yes| Whether the reminder is automatically cleared. For details, see [NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1).<br> - **true** (default): The reminder is automatically cleared after the notification or button is tapped.<br> - **false**: The reminder is retained after the notification or button is tapped.|
-| autoDeletedTime<sup>10+</sup> | number | No| Yes| Time when the reminder is automatically cleared. For details, see [NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1).|
+| tapDismissed<sup>10+</sup> | boolean | No| Yes| Whether the reminder is automatically cleared. The default value is **true**. For details, see [NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1).<br> - **true** (default): The reminder is automatically cleared after the notification or button is tapped.<br> - **false**: The reminder is retained after the notification or button is tapped.|
+| autoDeletedTime<sup>10+</sup> | number | No| Yes| Time when the notification is automatically cleared.<br> The data format is timestamp, in milliseconds. For details, please refer to [NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1).|
 | snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No| Yes| Type of the slot used by the snoozed reminder. (It is not applicable to countdown reminders.)|
 | customRingUri<sup>11+</sup> | string | No| Yes| URI of the custom prompt tone. The prompt tone file must be stored in the **resources/rawfile** directory and supports formats such as M4A, AAC, MP3, OGG, WAV, FLAC, and AMR.|
 | ringChannel<sup>20+</sup> | [RingChannel](#ringchannel20) | No| Yes| Audio channel of the custom prompt tone. The default channel is the alarm channel.|
@@ -1080,9 +1077,9 @@ Defines a reminder for a calendar event.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | dateTime | [LocalDateTime](#localdatetime) | No| No| Reminder time.|
-| repeatMonths | Array\<number> | No| Yes| Month in which the reminder repeats. The value range is [1, 12]. This parameter must be used together with **repeatDays**.|
-| repeatDays | Array\<number> | No| Yes| Day in which the reminder repeats. The value range is [1, 31]. This parameter must be used together with **repeatMonths**.|
-| daysOfWeek<sup>11+</sup> | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday.|
+| repeatMonths | Array\<number> | No| Yes| Month in which the reminder repeats. The value range is [1, 12]. This parameter is left empty by default. This parameter must be used together with **repeatDays**.|
+| repeatDays | Array\<number> | No| Yes| Day in which the reminder repeats. The value range is [1, 31]. This parameter is left empty by default. This parameter must be used together with **repeatMonths**.|
+| daysOfWeek<sup>11+</sup> | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday. This parameter is left empty by default.|
 | endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | No| Yes| End time of the reminder.|
 
 
@@ -1098,7 +1095,7 @@ Defines a reminder for an alarm.
 | -------- | -------- | -------- | -------- | -------- |
 | hour | number | No| No| Hour portion of the reminder time. The value range is [0, 23].|
 | minute | number | No| No| Minute portion of the reminder time. The value range is [0, 59].|
-| daysOfWeek | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday.|
+| daysOfWeek | Array\<number> | No| Yes| Days of a week when the reminder repeats. The value ranges from 1 to 7, corresponding to the data from Monday to Sunday. This parameter is left empty by default.|
 
 
 ## ReminderRequestTimer
@@ -1111,7 +1108,7 @@ Defines a reminder for a scheduled timer.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | No| No| Number of seconds in the countdown timer.|
+| triggerTimeInSeconds | number | No| No| Number of seconds in the countdown timer.<br> Unit: s|
 
 
 ## LocalDateTime

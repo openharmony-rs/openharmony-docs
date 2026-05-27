@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AgentUIExtensionAbility继承自[UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md)，为开发者提供接入端侧Agent UI界面显示能力。
 
@@ -18,6 +18,8 @@ AgentUIExtensionAbility继承自[UIExtensionAbility](js-apis-app-ability-uiExten
 > 本模块首批接口从API version 24 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
+>
+> 本模块接口不支持在[har](../../quick-start/har-package.md)包中使用。
 
 ## 约束限制
 

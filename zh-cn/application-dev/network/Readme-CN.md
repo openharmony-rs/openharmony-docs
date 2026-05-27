@@ -18,6 +18,7 @@
     - [使用Socket访问网络](socket-connection.md)
     - [使用MDNS访问局域网服务](net-mdns.md)
     - [使用DNS解析域名](net-dns.md)
+    - [使用HTTP全局拦截器(C/C++)](native-httpinterceptor-guidelines.md)
 
 - 连接网络<!--network-kit-network-connecttion-->
     - [管理网络连接](net-connection-manager.md)

@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## 概述
@@ -16,4 +16,4 @@
 | 名称 | 描述 |
 | -- | -- |
 | [vibrator.h](capi-vibrator-h.md) | 为您提供标准的开放API，用于控制马达振动的启停。 |
-| [vibrator_type.h](capi-vibrator-type-h.md) | 为您提供标准的开放API，用于控制马达振动的启停 |
+| [vibrator_type.h](capi-vibrator-type-h.md) | 为您提供标准的开放API，用于控制马达振动的启停。 |

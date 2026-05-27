@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,7 +13,7 @@ typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTask
 
 ## Overview
 
-A struct that describes all transient task information.
+A struct that describes all transient task information. The struct returns all transient task information, including the remaining quota of the current day.
 
 **Since**: 20
 

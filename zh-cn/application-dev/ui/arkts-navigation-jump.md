@@ -241,26 +241,26 @@ NavPathStack可以通过Push相关的接口（如[pushPath](../reference/apis-ar
 NavPathStack可以通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口实现页面返回，参考示例如下。
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
-   
+
    ``` TypeScript
    // 返回到上一页
    this.pathStack.pop();
    ```
    <!-- @[popToName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) -->
-   
+
    ``` TypeScript
    // 返回到上一个pageOne页面
    this.pathStack.popToName('temp4-pageOne');
    ```
 
    <!-- @[popToIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/PageTwo.ets) --> 
-   
+
    ``` TypeScript
    // 返回到索引为0的页面
    this.pathStack.popToIndex(0);
    ```
    <!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 返回到根首页（清除栈中所有页面）
    this.pageStack.clear();
@@ -271,7 +271,7 @@ NavPathStack可以通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-componen
 NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepath11)、[replacePathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacepathbyname11)、[replaceDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#replacedestination18)）实现页面替换，参考示例如下。
 
    <!-- @[replacePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 将栈顶页面替换为pageTwo
    this.pageStack.replacePath({ name: 'pageTwo', param: 'PageTwo Param' });
@@ -279,7 +279,7 @@ NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis
    ```
 
    <!-- @[replaceDestination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    const DOMAIN = 0x0000;
    // 带错误码的替换，跳转结束会触发异步回调，返回错误码信息
@@ -297,19 +297,19 @@ NavPathStack可以通过Replace相关接口（如[replacePath](../reference/apis
 NavPathStack可以通过Remove相关接口（如[removeByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyname11)、[removeByIndexes](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebyindexes11)、[removeByNavDestinationId](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#removebynavdestinationid12)）实现删除路由栈中特定页面的功能，参考示例如下。
 
    <!-- @[removeByName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 删除栈中name为pageTwo的所有页面
    this.pageStack.removeByName('pageTwo');
    ```
    <!-- @[removeByIndexes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 删除指定索引的页面
    this.pageStack.removeByIndexes([1]);
    ```
    <!-- @[removeByNavDestinationId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 删除指定id的页面
    this.pageStack.removeByNavDestinationId('1');
@@ -320,13 +320,13 @@ NavPathStack可以通过Remove相关接口（如[removeByName](../reference/apis
 NavPathStack可以通过Move相关接口（如[moveToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#movetotop10)、[moveIndexToTop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#moveindextotop10)）实现移动路由栈中特定页面到栈顶的功能，参考示例如下。
 
    <!-- @[moveToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 移动栈中name为pageTwo的页面到栈顶
    this.pageStack.moveToTop('pageTwo');
    ```
    <!-- @[moveIndexToTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 移动栈中索引为1的页面到栈顶
    this.pageStack.moveIndexToTop(1);
@@ -348,7 +348,7 @@ NavPathStack可以通过Move相关接口（如[moveToTop](../reference/apis-arku
 NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调，可以获取此页面对应的参数。
 
    <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
-   
+
    ``` TypeScript
    @Component
    struct Page01 {
@@ -370,7 +370,7 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->  
-   
+
    ``` TypeScript
    class NavParam {
      desc: string = 'navigation-param'
@@ -399,7 +399,7 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
 其他业务场景，可以通过主动调用NavPathStack的获取接口（如[getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10)、[getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10)、[getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10)、[getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)）获取指定页面的参数。
 
    <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-   
+
    ``` TypeScript
    // 获取栈中所有页面name集合
    this.pageStack.getAllPathName();
@@ -424,7 +424,7 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
 以willShow为例，在回调中通过修改路由栈实现路由拦截重定向。
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-   
+
    ``` TypeScript
    const DOMAIN = 0x0000;
    this.pageStack.setInterception({
@@ -705,60 +705,60 @@ export struct PageTwo {
 
 实现步骤为：
 
-1. 工程配置文件[module.json5](../quick-start/module-configuration-file.md)中配置`{"routerMap": "$profile:router_map"}`。
+1. router_map.json中配置全局路由表，导航控制器NavPathStack可根据路由表中的name将对应页面信息入栈。
 
-2. router_map.json中配置全局路由表，导航控制器NavPathStack可根据路由表中的name将对应页面信息入栈。
+   ``` json
+   {
+     "routerMap" : [
+       {
+         "name" : "WLAN",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Bluetooth",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Personal Hotspot",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Connect & Share",
+         "pageSourceFile"  : "src/main/ets/pages/PageTwo.ets",
+         "buildFunction" : "PageTwoBuilder"
+       },
+       {
+         "name" : "Projection",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Print",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "VPN",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "Private DNS",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       },
+       {
+         "name" : "NFC",
+         "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
+         "buildFunction" : "PageOneBuilder"
+       }
+     ]
+   }
+   ```
 
-``` json
-{
-  "routerMap" : [
-    {
-      "name" : "WLAN",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Bluetooth",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Personal Hotspot",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Connect & Share",
-      "pageSourceFile"  : "src/main/ets/pages/PageTwo.ets",
-      "buildFunction" : "PageTwoBuilder"
-    },
-    {
-      "name" : "Projection",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Print",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "VPN",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "Private DNS",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    },
-    {
-      "name" : "NFC",
-      "pageSourceFile"  : "src/main/ets/pages/PageOne.ets",
-      "buildFunction" : "PageOneBuilder"
-    }
-  ]
-}
-```
+2. 工程配置文件[module.json5](../quick-start/module-configuration-file.md)中配置`{"routerMap": "$profile:router_map"}`。
 
 ![zh-cn_image_0000001588458252](figures/arkts-navigation-transition_1.gif)

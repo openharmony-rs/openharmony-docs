@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wendel; @Luobniz21-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 场景介绍
 
@@ -26,6 +26,8 @@
 - 备份数据存储在[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md#want)中的parameter字段中，由于序列化大小限制，支持的最大数据量为200KB。
 
 - 重启设备不支持还原备份。
+
+- 备份恢复机制依赖任务保留机制，如果应用设置[removeMissionAfterTerminate](../quick-start/module-configuration-file.md#abilities标签)为true，或者设备不支持任务保留（比如PC/2in1设备），则备份恢复机制不生效。
 
 - [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)不支持备份恢复。
 

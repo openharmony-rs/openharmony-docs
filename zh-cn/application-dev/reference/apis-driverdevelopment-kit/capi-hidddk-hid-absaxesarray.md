@@ -1,10 +1,10 @@
 # Hid_AbsAxesArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
@@ -26,7 +26,7 @@ typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
 
 | 名称 | 描述 |
 | -- | -- |
-| Hid_AbsAxes* hidAbsAxes | 绝对坐标属性编码 |
+| [Hid_AbsAxes](capi-hid-ddk-types-h.md#hid_absaxes)* hidAbsAxes | 绝对坐标属性编码 |
 | uint16_t length | 数组的有效长度 |
 
 

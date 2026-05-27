@@ -34,6 +34,46 @@ menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 | ------ | ------ | ---- | -------------- |
 | material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23)> | 是 | 设置下拉菜单系统材质。材质设置为非法值、undefined时，按照不设置系统材质处理。 |
 
+## menuDistortionMode
+
+menuDistortionMode(mode: DistortionMode)
+
+新材质下，设置下拉菜单的非线性动画模式。未通过该接口设置时，默认为DistortionMode.DISTORTION_AUTO。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| mode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 是 | 设置新材质下下拉菜单的非线性动画模式。 |
+
+## menuEdgeLightMode
+
+menuEdgeLightMode(mode: EdgeLightMode)
+
+新材质下，设置下拉菜单的流光动画模式。未通过该接口设置时，默认为EdgeLightMode.EDGELIGHT_DISABLED。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明           |
+| ------ | ------ | ---- | -------------- |
+| mode | [EdgeLightMode](./ts-appendix-enums-sys.md#edgelightmode) | 是 | 设置新材质下下拉菜单的流光动画模式。 |
+
 ## 示例
 ### 示例1（设置Select和下拉菜单系统材质）
 

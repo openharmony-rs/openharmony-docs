@@ -3,7 +3,7 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
 The **cloudSyncManager** module provides APIs for managing device-cloud sync for applications. You can use the APIs to enable or disable device-cloud sync, change the device-cloud sync switch for an application, notify cloud data changes, clear or retain cloud files when a cloud account exits, and perform full download.
@@ -359,9 +359,9 @@ let switches: Record<string, boolean> = {
   'com.example.bundleName2': false
 }
 cloudSyncManager.enableCloud(accountId, switches).then(() => {
-  console.error("enableCloud successfully");
+  console.info("enableCloud successfully.");
 }).catch((err: BusinessError) => {
-  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 

@@ -30,7 +30,7 @@ The file declares the APIs for parsing audio and video media data.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) | OH_AVDemuxer | Describes a native object for the OH_AVDemuxer interface.|
-| [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | Describes a native object for the DRM_MediaKeySystemInf interface.|
+| [DRM_MediaKeySystemInfo](capi-avdemuxer-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | Describes a native object for the DRM_MediaKeySystemInfo API.|
 
 ### Functions
 

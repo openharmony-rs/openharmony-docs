@@ -109,10 +109,10 @@ If an application needs to play an online streaming media asset by parsing an M3
 
 **Case 5: playing an online streaming media asset by parsing an M3U8 file in the application sandbox**
 
-If an application needs to play an online streaming media asset by parsing an M3U8 file in the application sandbox, the application can obtain the file handle through [fs.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync), combine the file handle into fdUrl, and set the MIME type to **APPLICATION_M3U8** through [setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12).
+If an application needs to play an online streaming media asset by parsing an M3U8 file in the application sandbox, the application can obtain the file handle through [fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync), combine the file handle into fdUrl, and set the MIME type to **APPLICATION_M3U8** through [setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12).
 ```ts
  import { media } from '@kit.MediaKit';
- import { fileIo as fs } from '@kit.CoreFileKit';
+ import { fileIo } from '@kit.CoreFileKit';
  import { common } from '@kit.AbilityKit';
  // Define the class member avPlayer and context.
  private avPlayer: media.AVPlayer | null = null;
@@ -126,8 +126,8 @@ If an application needs to play an online streaming media asset by parsing an M3
  // Obtain the sandbox address filesDir through UIAbilityContext. The stage model is used as an example.
  let m3u8FileName = '';
  let filePath = `${this.context.filesDir}/${m3u8FileName}`; 
- // Obtain the file handle through fs.openSync.
- let file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+ // Obtain the file handle through fileIo.openSync.
+ let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
  let fd : string = file.fd.toString();
  // Use the file handle to construct the URL of the local M3U8 file.
  let fdUrl : string = "fd://" + fd + "?offset=" + "0" + "&size=" + "0";
@@ -151,7 +151,7 @@ If an application needs to play an online streaming media asset by parsing an M3
 **Case 1: application sandbox file playback**
 ```ts
  import { media } from '@kit.MediaKit';
- import { fileIo as fs } from '@kit.CoreFileKit';
+ import { fileIo } from '@kit.CoreFileKit';
  import { common } from '@kit.AbilityKit';
  // Define the class member avPlayer, context, and fileName.
  private avPlayer: media.AVPlayer | null = null;
@@ -167,7 +167,7 @@ If an application needs to play an online streaming media asset by parsing an M3
  // Obtain the sandbox address filesDir through UIAbilityContext. The stage model is used as an example.
  let path = `${this.context?.filesDir}/${this.fileName}`;
  // Open the corresponding file address to obtain the file descriptor and assign a value to the URL to trigger the reporting of the initialized state.
- let file = await fs.open(path);
+ let file = await fileIo.open(path);
  fdPath = fdPath + '' + file.fd;
  this.avPlayer.url = fdPath;
 ```
@@ -175,7 +175,6 @@ If an application needs to play an online streaming media asset by parsing an M3
 **Case 2: local file playback**
 
 > **NOTE**
->
 > When the AVPlayer is used to play local resources, it exclusively occupies the file descriptor.
 
 ```ts
@@ -201,7 +200,7 @@ If an application needs to play an online streaming media asset by parsing an M3
 
 ## Running the Sample Project
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSURL), and copy its resources to the corresponding directories. You can also directly run the sample project.
-    ```
+    ```txt
     AVPlayerArkTSURL
     entry/src/main/ets/
     └── pages
@@ -232,8 +231,8 @@ If an application needs to play an online streaming media asset by parsing an M3
     ```
 3. Comment out or uncomment the above examples in the **entry/src/main/ets/pages/Index.ets** file, and compile and run the application.
 
-4. After installing the application, you can run the following commands to add the /entry/src/main/resources/rawfile/test.m3u8 file in the sample project to the application sandbox, allowing you to run sandbox-related examples. (`<FILESDIR>` is the physical path. For example, in the sample project, you can print "this.context.filesDir" using **console.info** to obtain the application sandbox path and then find the physical path based on the mappings between application sandbox paths and physical paths in [Application Sandbox](../../file-management/app-sandbox-directory.md).)
-    ```
+4. After installing the application, you can add **/entry/src/main/resources/rawfile/test.m3u8** from the sample project to the application sandbox using the following command, and then run the related sandbox examples. `<FILESDIR>` refers to the physical path. In the sample project, you can obtain the application sandbox path by printing **this.context.filesDir** using **console.info**. Then, refer to the `mapping table between application sandbox paths and physical paths` in the [application sandbox guide](../../file-management/app-sandbox-directory.md) to locate the corresponding physical path.
+    ```txt
     hdc file send "[Directory]\test.m3u8" <FILESDIR>
     hdc file send "[Directory]\test_01.mp3" <FILESDIR>
     ```

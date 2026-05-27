@@ -85,3 +85,9 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
   ```
   **示例**<br>
   ![save](figures/param-save.png)
+  
+### 系统参数错误码说明
+
+**错误码说明**
+
+错误码详情参考[系统参数](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md)文档描述

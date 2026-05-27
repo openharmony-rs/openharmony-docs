@@ -298,12 +298,12 @@ enum OH_Print_JobState
 
 **起始版本：** 24
 
-| 名称                 | 值  | 说明          |
-| -------------------- | -- |-------------- |
-| OH_PRINT_JOB_SUCCEED | 0  | 打印任务成功。 |
-| OH_PRINT_JOB_FAIL    | 1  | 打印任务失败。 |
-| OH_PRINT_JOB_CANCEL  | 2  | 打印任务取消。 |
-| OH_PRINT_JOB_BLOCK   | 3  | 打印任务阻塞。 |
+| 名称                 | 说明          |
+| -------------------- |-------------- |
+| OH_PRINT_JOB_SUCCEED = 0 | 打印任务成功。 |
+| OH_PRINT_JOB_FAIL = 1    | 打印任务失败。 |
+| OH_PRINT_JOB_CANCEL = 2  | 打印任务取消。 |
+| OH_PRINT_JOB_BLOCK = 3   | 打印任务阻塞。 |
 
 ## 函数说明
 
