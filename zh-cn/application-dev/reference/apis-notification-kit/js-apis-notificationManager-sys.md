@@ -224,7 +224,6 @@ notificationManager.publish(notificationRequest, userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let notificationRequest: notificationManager.NotificationRequest = {
     id: 1,
@@ -243,7 +242,7 @@ let userId: int = 1;
 
 notificationManager.publish(notificationRequest, userId).then(() => {
     console.info("publish success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
     console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
@@ -3369,8 +3368,6 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3445,8 +3442,6 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3519,8 +3514,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 设置指定应用是否支持分布式通知。使用callback异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3605,8 +3598,6 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3689,8 +3680,6 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3771,8 +3760,6 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3852,8 +3839,6 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -3921,8 +3906,6 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 获取通知的提醒方式。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -5061,8 +5044,6 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, ca
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
@@ -5141,8 +5122,6 @@ ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): P
 设置是否将通知同步到未安装应用程序的设备(Promise形式)。
 
 **系统能力**：SystemCapability.Notification.Notification
-
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 

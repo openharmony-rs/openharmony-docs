@@ -10,7 +10,8 @@ metadata流。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -24,9 +25,13 @@ start(callback: AsyncCallback\<void\>): void
 
 开始输出metadata，通过注册回调函数获取结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -45,6 +50,8 @@ start(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -59,15 +66,36 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.start((error:Error | null) => {
+    let err = error as BusinessError;
+    if (err && err!.code !== 0) {
+      console.error(`Failed to start metadata output, error code: ${err!.code}.`);
+      return;
+    }
+    console.info('Callback returned with metadata output started.');
+  });
+}
+```
+
 ## start
 
 start(): Promise\<void\>
 
 开始输出metadata。使用Promise异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -86,6 +114,8 @@ start(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -98,15 +128,34 @@ function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startMetadataOutput(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.start().then(() => {
+    console.info('Callback returned with metadata output started.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to metadata output stop, error code: ${err.code}`);
+  });
+}
+```
+
 ## stop
 
 stop(callback: AsyncCallback\<void\>): void
 
 停止输出metadata，通过注册回调函数获取结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -115,6 +164,8 @@ stop(callback: AsyncCallback\<void\>): void
 | callback | AsyncCallback\<void\>       | 是   | 回调函数。当停止输出metadata成功，err为undefined，否则为错误对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -130,15 +181,36 @@ function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.stop((error: Error | null) => {
+    let err = error as BusinessError;
+    if (err && err!.code !== 0) {
+      console.error(`Failed to stop the metadata output, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback returned with metadata output stopped.');
+  })
+}
+```
+
 ## stop
 
 stop(): Promise\<void\>
 
 停止输出metadata。使用Promise异步回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -148,6 +220,8 @@ stop(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -156,6 +230,21 @@ function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
     console.info('Callback returned with metadata output stopped.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to metadata output stop, error code: ${error.code}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopMetadataOutput(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.stop().then(() => {
+    console.info('Callback returned with metadata output stopped.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to metadata output stop, error code: ${err.code}`);
   });
 }
 ```
@@ -170,9 +259,15 @@ on(type: 'metadataObjectsAvailable', callback: AsyncCallback\<Array\<MetadataObj
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMetadataObjectsAvailable](#onmetadataobjectsavailable23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -199,15 +294,63 @@ function registerMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput)
 }
 ```
 
+## onMetadataObjectsAvailable<sup>23+</sup>
+
+onMetadataObjectsAvailable(callback: AsyncCallback\<Array\<MetadataObject\>\>): void
+
+监听检测到的metadata对象，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('metadataObjectsAvailable')](#onmetadataobjectsavailable)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| callback | AsyncCallback\<Array\<[MetadataObject](arkts-apis-camera-i.md#metadataobject)\>\> | 是   | 回调函数，用于获取metadata数据。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(err: BusinessError | null, metadataObjectArr: Array<camera.MetadataObject> | undefined): void {
+  if (err !== undefined && err!.code !== 0) {
+    console.error(`Callback Error, errorCode: ${err!.code}`);
+    return;
+  }
+  console.info('metadata output metadataObjectsAvailable');
+}
+
+function registerMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.onMetadataObjectsAvailable(callback);
+}
+ ```
+
 ## off('metadataObjectsAvailable')
 
 off(type: 'metadataObjectsAvailable', callback?: AsyncCallback\<Array\<MetadataObject\>\>): void
 
 注销监听检测到的metadata对象。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMetadataObjectsAvailable](#offmetadataobjectsavailable23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -224,6 +367,34 @@ function unregisterMetadataObjectsAvailable(metadataOutput: camera.MetadataOutpu
 }
 ```
 
+## offMetadataObjectsAvailable<sup>23+</sup>
+
+offMetadataObjectsAvailable(callback?: AsyncCallback\<Array\<MetadataObject\>\>): void
+
+注销监听检测到的metadata对象。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('metadataObjectsAvailable')](#offmetadataobjectsavailable)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+ 
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback\<Array\<[MetadataObject](arkts-apis-camera-i.md#metadataobject)\>\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+ 
+**示例：**
+
+```ts
+function unregisterMetadataObjectsAvailable(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.offMetadataObjectsAvailable();
+}
+```
+
 ## on('error')
 
 on(type: 'error', callback: ErrorCallback): void
@@ -234,9 +405,15 @@ on(type: 'error', callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onError](#onerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -259,15 +436,59 @@ function registerMetadataOutputError(metadataOutput: camera.MetadataOutput): voi
 }
 ```
 
+## onError<sup>23+</sup>
+
+onError(callback: ErrorCallback): void
+
+监听metadata流的错误，通过注册回调函数获取结果。使用callback异步回调。
+
+> **说明：**
+>
+> 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是   | 回调函数，用于获取错误信息。返回错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(metadataOutputError: BusinessError): void {
+  console.error(`Metadata output error code: ${metadataOutputError.code}`);
+}
+
+function registerMetadataOutputError(metadataOutput: camera.MetadataOutput): void {
+   metadataOutput.onError(callback);
+}
+```
+
 ## off('error')
 
 off(type: 'error', callback?: ErrorCallback): void
 
 注销监听metadata流的错误。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offError](#offerror23)。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -284,13 +505,41 @@ function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): v
 }
 ```
 
+## offError<sup>23+</sup>
+
+offError(callback?: ErrorCallback): void
+
+注销监听metadata流的错误。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror)。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function unregisterMetadataOutputError(metadataOutput: camera.MetadataOutput): void {
+  metadataOutput.offError();
+}
+```
+
 ## addMetadataObjectTypes<sup>23+</sup> 
 
 addMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 新增需要上报的检测对象类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -332,7 +581,7 @@ removeMetadataObjectTypes(types: Array\<MetadataObjectType\>): void
 
 删除需要上报的检测对象类型。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

@@ -57,9 +57,9 @@ this.objLink= ...
 import { Observed } from '@kit.ArkUI';
 
 class Child {
-  public num: number;
+  public num: int;
 
-  constructor(num: number) {
+  constructor(num: int) {
     this.num = num;
   }
 }
@@ -67,9 +67,9 @@ class Child {
 @Observed
 class Parent {
   public child: Child;
-  public count: number;
+  public count: int;
 
-  constructor(child: Child, count: number) {
+  constructor(child: Child, count: int) {
     this.child = child;
     this.count = count;
   }
@@ -115,17 +115,17 @@ this.parent.child.num = 5;
     
     @Observed
     class Info {
-      count: number;
+      count: int;
     
-      constructor(count: number) {
+      constructor(count: int) {
         this.count = count;
       }
     }
     
     class Test {
-      msg: number;
+      msg: int;
     
-      constructor(msg: number) {
+      constructor(msg: int) {
         this.msg = msg;
       }
     }
@@ -153,9 +153,9 @@ this.parent.child.num = 5;
 
     @Observed
     class Info {
-      count: number;
+      count: int;
     
-      constructor(count: number) {
+      constructor(count: int) {
         this.count = count;
       }
     }
@@ -197,9 +197,9 @@ this.parent.child.num = 5;
 
     @Observed
     class Info {
-      count: number;
+      count: int;
     
-      constructor(count: number) {
+      constructor(count: int) {
         this.count = count;
       }
     }
@@ -242,9 +242,9 @@ this.parent.child.num = 5;
 
     @Observed
     class Info {
-      count: number;
+      count: int;
     
-      constructor(count: number) {
+      constructor(count: int) {
         this.count = count;
       }
     }
@@ -292,7 +292,7 @@ this.parent.child.num = 5;
 
     @Observed
     class Info {
-      count: number = 99;
+      count: int = 99;
     }
     
     @Component
@@ -326,7 +326,7 @@ this.parent.child.num = 5;
     import { Column, Component, Entry, ObjectLink, Observed, State, Text } from '@kit.ArkUI';
     @Observed
     class Info {
-      count: number = 99;
+      count: int = 99;
     }
 
     @Component
@@ -361,7 +361,7 @@ this.parent.child.num = 5;
     
     @Observed
     class Info {
-      count: number = 99;
+      count: int = 99;
     }
     
     @Component
@@ -466,9 +466,9 @@ import { Button, Column, CommonMethod, Component, Entry, Observed, State, Text, 
 @Observed
 class Animal {
   name: string;
-  age: number;
+  age: int;
 
-  constructor(name: string, age: number) {
+  constructor(name: string, age: int) {
     this.name = name;
     this.age = age;
   }
@@ -478,7 +478,7 @@ class Animal {
 class Dog extends Animal {
   kinds: string;
 
-  constructor(name: string, age: number, kinds: string) {
+  constructor(name: string, age: int, kinds: string) {
     super(name, age);
     this.kinds = kinds;
   }
@@ -687,14 +687,14 @@ struct Index {
 
 import { Button, Column, Component, Entry, ForEach, ObjectLink, Observed, Row, State } from '@kit.ArkUI';
 
-let NextID: number = 1;
+let NextID: int = 1;
 
 @Observed
 class Info {
-  public id: number;
-  public info: number;
+  public id: int;
+  public info: int;
 
-  constructor(info: number) {
+  constructor(info: int) {
     this.id = NextID++;
     this.info = info;
   }
@@ -762,21 +762,27 @@ struct Parent {
         .width(320)
         .margin(10)
         .onClick((e) => {
-          this.arrA[Math.floor(this.arrA.length / 2) as int].info = 10;
+          if (this.arrA[(this.arrA.length / 2) as int]) {
+            this.arrA[(this.arrA.length / 2) as int].info = 10;
+          } else {
+            console.info('middle element does not exist');
+          }
         })
       Button(`ViewParent: item property in middle`)
         .width(320)
         .margin(10)
         .onClick((e) => {
-          this.arrA[Math.floor(this.arrA.length / 2) as int] = new Info(11);
+          this.arrA[(this.arrA.length / 2) as int] = new Info(11);
         })
     }
   }
 }
 ```
 
+![Observed_ObjectLink_object_array](../figures/Observed_ObjectLink_object_array.gif)
 
-- this.arrA[Math.floor(this.arrA.length/2)] = new Info(..) ：该状态变量的改变触发2次更新：
+
+- this.arrA[(this.arrA.length/2) as int] = new Info(..) ：该状态变量的改变触发2次更新：
   1. ForEach：数组项的赋值导致ForEach的itemGenerator被修改，因此数组项被识别为有更改，ForEach的item builder将执行，创建新的Child组件实例。
   2. Child({ label: `ViewChild this.arrA[last]`, info: this.arrA[this.arrA.length-1] })：上述更改改变了数组中第二个元素，所以绑定this.arrA[1]的Child将被更新。
 
@@ -784,7 +790,7 @@ struct Parent {
   1. ForEach：新添加的Info对象对于ForEach是未知的itemGenerator，ForEach的item builder将执行，创建新的Child组件实例。
   2. Child({ label: `ViewChild this.arrA[last]`, info: this.arrA[this.arrA.length-1] })：数组的最后一项有更改，因此引起第二个Child的实例的更改。对于Child({ label: `ViewChild this.arrA[first]`, info: this.arrA[0] })，数组的更改并没有触发一个数组项更改的改变，所以第一个Child不会刷新。
 
-- this.arrA[Math.floor(this.arrA.length/2)].info：@State无法观察到第二层的变化，但是Info被\@Observed装饰，Info的属性的变化将被\@ObjectLink观察到。
+- this.arrA[(this.arrA.length/2)].info：@State无法观察到第二层的变化，但是Info被\@Observed装饰，Info的属性的变化将被\@ObjectLink观察到。
 
 ### 序列化和反序列化
 
@@ -891,18 +897,18 @@ import { Button, Column, Component, Entry, ObjectLink, Observed, State, Text } f
 
 @Observed
 class Source {
-  public source: number;
+  public source: int;
 
-  constructor(source: number) {
+  constructor(source: int) {
     this.source = source;
   }
 }
 
 @Observed
 class Data {
-  public data: number;
+  public data: int;
 
-  constructor(data: number) {
+  constructor(data: int) {
     this.data = data;
   }
 }
@@ -971,3 +977,5 @@ struct Child {
   }
 }
 ```
+
+![ObjectLink-support-union-types](../figures/ObjectLink-support-union-types.gif)

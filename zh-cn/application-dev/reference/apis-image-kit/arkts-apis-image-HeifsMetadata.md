@@ -29,7 +29,7 @@ import { image } from '@kit.ImageKit';
 
 | 名称                         | 类型   | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------ |
-| heifsDelayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| heifsDelayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | HEIF序列图片的每帧播放时长。单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | heifsCanvasHeight |  ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>该值为正整数。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
 | heifsCanvasWidth | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>该值为正整数。</br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
 | heifsUnclampedDelayTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | HEIF序列图片每帧未钳制的延迟时长。<br>单位为毫秒（ms）。<br>该值为正整数。 </br>**ArkTS-Dyn起始版本：** 26.0.0</br>**ArkTS-Sta起始版本：** 26.0.0 |
@@ -61,7 +61,7 @@ ArkTS-Dyn示例：
 async function heifsMetadataCreateInstance(context: Context) {
   let heifsMetadata = image.HeifsMetadata.createInstance();
   if (heifsMetadata != undefined) {
-    console.info("createInstance success");
+    console.info("createInstance successfully.");
   }
 }
 ```
@@ -134,9 +134,9 @@ async function heifsMetadataGetProperties(context: Context) {
   let metaData = await imageSource.readImageMetadata(["HeifsDelayTime"]);
   if (metaData != undefined && metaData.heifsMetadata != undefined) {
     await metaData.heifsMetadata.getProperties(["HeifsDelayTime"]).then((data) => {
-      console.info('Get properties ',JSON.stringify(data));
+      console.info('Succeeded in getting properties. ',JSON.stringify(data));
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -242,7 +242,7 @@ async function heifsMetadataSetProperties(context: Context) {
       "HeifsDelayTime": "200",
     };
     await metaData.heifsMetadata.setProperties(setkey).then(async () => {
-      console.info('Set properties success.');
+      console.info('Succeeded in setting properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -340,7 +340,7 @@ async function heifsMetadataGetAllProperties(context: Context) {
       console.info('Metadata have ', count, ' properties');
       console.info(`Get metadata all properties: ${data}`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -432,7 +432,7 @@ async function heifsMetadataClone(context: Context) {
     new_metadata.getProperties(["HeifsDelayTime"]).then((data1) => {
       console.info(`Clone new_metadata and get Properties: ${data1}`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone new_metadata. error.code: ${err.code}, error.message: ${err.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -521,7 +521,7 @@ async function heifsMetadataGetBlob(context: Context) {
   if (metaData != undefined && metaData.heifsMetadata != undefined) {
     let blob = await metaData.heifsMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
     }
   }
 }
@@ -615,7 +615,7 @@ async function heifsMetadataSetBlob(context: Context) {
   if (metaData != undefined && metaData.heifsMetadata != undefined) {
     let blob = await metaData.heifsMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
       metaData.heifsMetadata.setBlob(blob);
     }
     let new_blob = metaData.heifsMetadata.getBlob();

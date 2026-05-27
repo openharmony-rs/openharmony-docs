@@ -1199,7 +1199,7 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
   console.error(`Failed to get installed bundle storage stats. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-<!--no-check-->
+<!--code_no_check-->
 ```ts
 // 返回示例
 [

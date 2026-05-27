@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供打印模块 C 接口的定义。
+向应用提供使用CAPI访问打印系统的能力。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

@@ -45,7 +45,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
-| 1500003  | The common event sending frequency too high. |
+| 1500003  | The common event sending frequency too high.<br> 适用版本：20 |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -94,7 +94,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 1500003  | The common event sending frequency too high. |
+| 1500003  | The common event sending frequency too high.<br> 适用版本：20 |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -304,7 +304,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. |
+| 1500010  | The count of subscriber exceed system specification. <br> 适用版本：20|
 
 **示例：**
 

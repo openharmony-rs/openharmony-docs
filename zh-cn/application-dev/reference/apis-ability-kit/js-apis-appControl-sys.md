@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用拦截能力。对应用设置处置状态后，应用会被禁止运行；用户点击桌面图标时，会根据应用的处置状态，跳转到对应的页面。本模块支持对应用的处置状态进行设置、获取、删除。
 
@@ -16,7 +16,7 @@
 
 ## 导入模块
 
-``` ts
+```ts
 import { appControl } from '@kit.AbilityKit';
 ```
 
@@ -724,7 +724,8 @@ let rule: appControl.DisposedRule = {
   elementList: [
     elementName
   ],
-  priority: 100
+  priority: 100,
+  pageJump: appControl.PageJumpMode.PAGE_JUMP_WINDOW_SHOW
 };
 
 try {
@@ -789,7 +790,8 @@ let rule: appControl.DisposedRule = {
   elementList: [
     elementName
   ],
-  priority: 100
+  priority: 100,
+  pageJump: appControl.PageJumpMode.PAGE_JUMP_WINDOW_SHOW
 };
 
 let disposedRuleConfiguration: appControl.DisposedRuleConfiguration = {
@@ -991,7 +993,7 @@ try {
 
 标识拦截规则。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
@@ -999,16 +1001,17 @@ try {
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的页面。 |
 | componentType | [ComponentType](#componenttype11)  | 否   | 否   | 拦截时将提升的能力的类型。 |
-| disposedType | [DisposedType](#disposedrule11) | 否   | 否 | 对应用的拦截规则。 |
+| disposedType | [DisposedType](#disposedtype11) | 否   | 否 | 对应用的拦截规则。 |
 | controlType | [ControlType](#controltype11) | 否   | 否 | 拦截指定应用程序的不同策略。 |
 | elementList | Array\<[ElementName](js-apis-bundleManager-elementName.md)> | 否   | 否 | 拦截指定应用程序能力的列表。 |
 | priority | number | 否   | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
+| pageJump | [PageJumpMode](#pagejumpmode) | 否   | 是 | 指定目标应用被拦截时是否跳转到页面。默认值为PageJumpMode.PAGE_JUMP_WINDOW_SHOW。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ### ComponentType<sup>11+</sup>
 
 标识功能组件类型。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
@@ -1021,7 +1024,7 @@ try {
 
 标识拦截应用程序的方式，例如禁用应用的全部能力、禁用应用的指定能力、或者不禁用。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
@@ -1035,7 +1038,7 @@ try {
 
 标识拦截指定应用程序的不同策略。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
@@ -1044,25 +1047,42 @@ try {
 | ALLOWED_LIST | 1    | 允许运行指定功能的列表。 |
 | DISALLOWED_LIST | 2    | 不允许运行指定功能的列表。 |
 
+### PageJumpMode
+
+标识目标应用被拦截时是否跳转到页面。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称    | 值   | 说明                 |
+| ------- | ---- | -------------------- |
+| PAGE_JUMP_WINDOW_SHOW | 0    | 目标应用被拦截时跳转到页面。 |
+| PAGE_JUMP_WINDOW_NOT_SHOW | 1    | 目标应用被拦截时不跳转到页面。 |
+
 ## UninstallDisposedRule<sup>15+</sup>
 
 标识卸载处置规则。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的组件。 |
-| UninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
+| uninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
 | priority | number | 否 | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
 
 ### UninstallComponentType<sup>15+</sup>
 
 标识卸载时功能组件类型。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 

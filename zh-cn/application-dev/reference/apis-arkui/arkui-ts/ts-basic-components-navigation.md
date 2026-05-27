@@ -994,7 +994,7 @@ ArkTS-Sta: onTitleModeChange(callback: ((titleMode: NavigationTitleMode) => void
 
 ArkTS-Dyn: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void) 
 
-ArkTS-Sta: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void | undefined)
+ArkTS-Sta: onNavBarStateChange(callback: ((isVisible: boolean) => void) | undefined)
 
 导航页显示状态切换时触发该回调。
 
@@ -1010,13 +1010,13 @@ ArkTS-Sta: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void | undef
 
 | 参数名    | 类型    | 必填 | 说明                                           |
 | --------- | ------- | ---- | ---------------------------------------------- |
-| callback | ArkTS-Dyn: (isVisible: boolean) => void<br/>ArkTS-Sta: (isVisible: boolean) => void \| undefined | 是 | 导航页显示状态切换时触发的回调函数。<br/>isVisible：true表示显示导航页，false表示隐藏导航页。<br/>取值为undefined时，不触发回调函数。 |
+| callback | ArkTS-Dyn: (isVisible: boolean) => void<br/>ArkTS-Sta: ((isVisible: boolean) => void) \| undefined | 是 | 导航页显示状态切换时触发的回调函数。<br/>isVisible：true表示显示导航页，false表示隐藏导航页。<br/>取值为undefined时，不触发回调函数。 |
 
 ### onNavigationModeChange<sup>11+</sup>
 
 ArkTS-Dyn: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void) 
 
-ArkTS-Sta: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void | undefined)
+ArkTS-Sta: onNavigationModeChange(callback: ((mode: NavigationMode) => void) | undefined)
 
 当Navigation首次显示或者单双栏状态发生变化时触发该回调。
 
@@ -1032,7 +1032,7 @@ ArkTS-Sta: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void | 
 
 | 参数名    | 类型    | 必填 | 说明                                           |
 | --------- | ------- | ---- | ---------------------------------------------- |
-| callback | ArkTS-Dyn: (mode: NavigationMode) => void<br/>ArkTS-Sta: (mode: NavigationMode) => void \| undefined | 是 | Navigation首次显示或者单双栏状态发生变化时触发的回调函数。<br/>mode：导航页的显示模式，NavigationMode.Split表示当前Navigation显示为双栏，NavigationMode.Stack表示当前Navigation显示为单栏。<br/>取值为undefined时，不触发回调函数。 |
+| callback | ArkTS-Dyn: (mode: [NavigationMode](#navigationmode9枚举说明)) => void<br/>ArkTS-Sta: ((mode: NavigationMode) => void) \| undefined | 是 | Navigation首次显示或者单双栏状态发生变化时触发的回调函数。<br/>mode：导航页的显示模式，NavigationMode.Split表示当前Navigation显示为双栏，NavigationMode.Stack表示当前Navigation显示为单栏。<br/>取值为undefined时，不触发回调函数。 |
 
 ### customNavContentTransition<sup>11+</sup>
 
@@ -2799,7 +2799,7 @@ Navigation分割线颜色及上下边距。
 
 ## SystemBarStyle<sup>12+</sup>
 
-ArkTS-Dyn: type SystemBarStyle = SystemBarStyle
+ArkTS-Dyn: type SystemBarStyle = import('../api/@ohos.window').default.SystemBarStyle
 
 ArkTS-Sta: type SystemBarStyle = window.SystemBarStyle
 
@@ -2815,7 +2815,7 @@ ArkTS-Sta: type SystemBarStyle = window.SystemBarStyle
 
 | 类型     | 说明               |
 | -------- | ------------------ |
-| ArkTS-Dyn: [SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)<br/>ArkTS-Sta: window.SystemBarStyle   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
+| ArkTS-Dyn: import('../api/@ohos.window').default.[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)<br/>ArkTS-Sta: window.SystemBarStyle   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
 
 ## HomePathInfo<sup>20+</sup>
 

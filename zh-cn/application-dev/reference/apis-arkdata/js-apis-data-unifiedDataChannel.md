@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -191,8 +193,6 @@ ArkTS-Sta类型声明：
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 值 | 说明 |
@@ -210,12 +210,12 @@ ArkTS-Sta类型声明：
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| extras | ArkTS-Dyn: Record<string, object> <br/>ArkTS-Sta: Record<string, [RecordData](../apis-basic-services-kit/js-apis-base.md)> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| extras | ArkTS-Dyn: Record<string, object> <br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | tag | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -1542,7 +1542,8 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 | -------- | -------- | -------- | -------- | -------- |
 | htmlContent  | string | 否 | 否 | html格式内容。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。           |
 | plainContent  | ArkTS-Dyn: string <br/>ArkTS-Sta: string \| undefined | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ（仅读授权），仅在img标签等场景下生效。只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
 
 **示例：**
 
@@ -1566,7 +1567,7 @@ File类型数据，是[UnifiedRecord](#unifiedrecord)的子类，也是文件类
 | -------- | -------- | -------- | -------- | -------- |
 | details | ArkTS-Dyn: Record<string, string> <br/>ArkTS-Sta: Record<string, string> \| undefined | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 | 
 | uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                         |
-| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权），只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权），只针对单个record使用，优先级最高，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -1853,8 +1854,8 @@ let unifiedData = new unifiedDataChannel.UnifiedData(form);
 | -------- | -------- | -------- | -------- | -------- |
 | appId       | string | 否 | 否 | 图标对应的应用id。      |
 | appName     | string | 否 | 否 | 图标对应的应用名。       |
-| appIconId   | string | 否 | 否 | 图标的图片id。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>        |
-| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>    |
+| appIconId   | string | 否 | 否 | 图标的图片id        |
+| appLabelId  | string | 否 | 否 | 图标名称对应的标签id。   |
 | bundleName  | string | 否 | 否 | 图标对应的应用bundle名。 |
 | abilityName | string | 否 | 否 | 图标对应的应用ability名。 |
 
@@ -1992,10 +1993,10 @@ UDMF已经支持的数据通路枚举类型。其主要用途是标识各种UDMF
 | 名称       | 值         | 说明      |
 |----------|-----------|---------|
 | DATA_HUB | 'DataHub' | 公共数据通路。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
-| DRAG<sup>14+</sup> | 'Drag' | 拖拽类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在拖拽场景下使用UDMF来跨应用数据共享。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
-| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | 系统分享类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在系统分享场景下使用UDMF来跨应用数据共享。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| PICKER<sup>20+</sup> | 'Picker' | Picker类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在Picker选择器场景下使用UDMF来跨应用数据共享。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| MENU<sup>20+</sup> | 'Menu' | 菜单类型数据通道。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**适用场景：** 适用于在右键菜单场景下使用UDMF来跨应用数据共享。 <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| DRAG<sup>14+</sup> | 'Drag' | 拖拽类型数据通道。<br/>**适用场景：** 适用于在拖拽场景下使用UDMF来跨应用数据共享。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| SYSTEM_SHARE<sup>20+</sup> | 'SystemShare' | 系统分享类型数据通道。<br/>**适用场景：** 适用于在系统分享场景下使用UDMF来跨应用数据共享。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| PICKER<sup>20+</sup> | 'Picker' | Picker类型数据通道。<br/>**适用场景：** 适用于在Picker选择器场景下使用UDMF来跨应用数据共享。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| MENU<sup>20+</sup> | 'Menu' | 菜单类型数据通道。<br/>**适用场景：** 适用于在右键菜单场景下使用UDMF来跨应用数据共享。 <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## Visibility<sup>20+</sup> 
 
@@ -2009,8 +2010,8 @@ UDMF已经支持的数据通路枚举类型。其主要用途是标识各种UDMF
 
 | 名称          | 值   | 说明                          |
 | ------------- | ---- |------------------------------|
-| ALL           | 0    | 可见性等级，所有应用可见。<br/>**模型约束：** 此接口仅可在Stage模型下使用。     |
-| OWN_PROCESS   | 1    | 可见性等级，仅数据提供者可见。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| ALL           | 0    | 可见性等级，所有应用可见。    |
+| OWN_PROCESS   | 1    | 可见性等级，仅数据提供者可见。  |
 
 ## Options
 
@@ -2197,8 +2198,6 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 22
@@ -2230,7 +2229,7 @@ type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<Unified
 | 名称                   | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                 |
 |----------------------|-------------------------------------------------| ---- |-----|-----------------------------------------------------------------------------------------------------------------------------------------------|
 | loadHandler    | [DataLoadHandler](#dataloadhandler20)       | 否 | 否| 表示用于延迟加载数据的处理函数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23             |
-| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23              |
+| delayedDataLoadHandler<sup>22+</sup> | [DelayedDataLoadHandler](#delayeddataloadhandler22) | 否 | 是| 表示用于延迟加载数据的异步处理函数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23              |
 | dataLoadInfo | [DataLoadInfo](#dataloadinfo20) | 否 | 否| 用于描述当前发送方可生成的数据类型及数量信息。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23              |
 
 ## unifiedDataChannel.insertData
@@ -3063,8 +3062,6 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 **需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 14
@@ -3108,8 +3105,6 @@ removeAppShareOptions(intention: Intention): void
 清除[setAppShareOptions](#unifieddatachannelsetappshareoptions14)设置的管控信息。
 
 **需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -3158,8 +3153,6 @@ convertRecordsToEntries(data: UnifiedData): void
 否则不会产生任何行为。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
