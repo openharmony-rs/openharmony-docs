@@ -4808,5 +4808,55 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/arraybuffer-object.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"copy_arraybuffer_transfer",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/ason-parsing-generation.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectRelated/entry/src/main/ets/managers/AsonParsingGeneration.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"example_serialize",
+						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/sync-task-development.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"taskpool_handle_sync_task",
+						"start_line":16
+					},
+					{
+						"end_line":81,
+						"name":"worker_handle_associated_sync_task",
+						"start_line":19
+					}
+				]
+			}
+		]
 	}
 ]
