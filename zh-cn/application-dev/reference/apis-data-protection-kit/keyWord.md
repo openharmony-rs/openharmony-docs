@@ -1,4 +1,10 @@
 # 术语表
+<!--Kit: Data Protection Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @winnieHuYu-->
+<!--Designer: @QRF-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
 
 本术语表按英文首字母排序。
 
