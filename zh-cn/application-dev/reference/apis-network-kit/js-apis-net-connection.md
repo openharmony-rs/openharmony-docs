@@ -3192,7 +3192,7 @@ interface Data {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error(Failed to bind.Code:${error.code},message:${error.message});
+        console.error(`Failed to bind.Code:${error.code},message:${error.message}`);
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
