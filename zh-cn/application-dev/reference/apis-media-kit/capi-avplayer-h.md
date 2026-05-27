@@ -625,6 +625,8 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 
 在有效范围内，设置播放器的播放速率。<br> 支持的状态包括已准备、正在播放、已暂停、已完成。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 20
 
 **参数：**
@@ -638,7 +640,7 @@ OH_AVErrCode OH_AVPlayer_SetPlaybackRate(OH_AVPlayer *player, float rate)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../AVCodecKit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置播放速率。<br>         AV_ERR_OPERATE_NOT_PERMIT：在不支持的状态下或在直播期间调用这个方法。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者设置速率超出范围。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置播放速率。<br>         AV_ERR_OPERATE_NOT_PERMIT：在不支持的状态下或在直播期间调用这个方法。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者设置速率超出范围。 |
 
 ### OH_AVPlayer_GetPlaybackSpeed()
 
