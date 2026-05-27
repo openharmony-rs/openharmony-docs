@@ -78,13 +78,15 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 ## ohos.permission.ACCELEROMETER
 
-Allows an application to read data from an acceleration sensor, uncalibrated acceleration sensor, or linear acceleration sensor.
+Allows an application to read data from an acceleration sensor.
 
- 
+Acceleration sensors includes normal, uncalibrated, and linear acceleration sensor.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | tv | wearable
 
 **Valid since**: 7
 
@@ -148,13 +150,15 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 ## ohos.permission.GYROSCOPE
 
-Allows an application to read data from a gyroscope sensor or uncalibrated gyroscope sensor.
+Allows an application to read data from a gyroscope sensor.
 
- 
+Gyroscope sensors include normal and uncalibrated gyroscope sensor.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | tv | wearable
 
 **Valid since**: 7
 
@@ -240,13 +244,15 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 
 ## ohos.permission.VIBRATE
 
-Allows an application to control vibration,
+Allows an application to control vibration.
 
-including one-time vibration, preset vibration, or custom vibration.
+Vibration includs one-time vibration, preset vibration, or custom vibration.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | tv | wearable
 
 **Valid since**: 7
 

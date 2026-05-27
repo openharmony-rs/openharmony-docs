@@ -86,7 +86,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | 2in1 | Tablet | TV | Wearable
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -158,7 +158,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | 2in1 | Tablet | TV | Wearable
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -252,7 +252,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | 2in1 | Tablet | TV | Wearable
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
