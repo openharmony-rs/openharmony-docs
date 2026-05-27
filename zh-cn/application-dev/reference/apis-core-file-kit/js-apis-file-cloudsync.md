@@ -1738,7 +1738,7 @@ ArkTS-Dyn: getCachedTotalSize(): Promise&lt;number&gt;
 
 ArkTS-Sta: getCachedTotalSize(): Promise&lt;long&gt;
 
-获取已缓存文件总大小（包含本地新增未上云文件大小，不包含缩略图文件大小）。使用Promise异步回调，返回已缓存文件总大小。使用Promise异步回调，返回已缓存文件总大小。
+获取已缓存文件总大小（包含本地新增未上云文件大小，不包含缩略图文件大小）。使用Promise异步回调，返回已缓存文件总大小。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
