@@ -1395,7 +1395,7 @@ ArkTS-Sta: type ImageMatrix = matrix4.Matrix4Transit
 
 ### onComplete
 
-ArkTS-Dyn: onComplete(callback: (event?: { width: number, height: number, componentWidth: number, componentHeight: number, loadingStatus: number,contentWidth: number, contentHeight: number, contentOffsetX: number, contentOffsetY: number }) =&gt; void)
+onComplete(callback: (event?: { width: number, height: number, componentWidth: number, componentHeight: number, loadingStatus: number, contentWidth: number, contentHeight: number, contentOffsetX: number, contentOffsetY: number }) =&gt; void)
 
 图片数据加载成功和解码成功时均触发该回调，使用callback异步回调，返回成功加载的图片尺寸。
 
@@ -1429,7 +1429,7 @@ ArkTS-Dyn: onComplete(callback: (event?: { width: number, height: number, compon
 
 ### onComplete<sup>23+</sup>
 
-ArkTS-Sta: onComplete(callback: ImageOnCompleteCallback | undefined)
+onComplete(callback: ImageOnCompleteCallback | undefined)
 
 图片数据加载成功和解码成功时均触发该回调，使用callback异步回调，返回成功加载的图片尺寸。
 
