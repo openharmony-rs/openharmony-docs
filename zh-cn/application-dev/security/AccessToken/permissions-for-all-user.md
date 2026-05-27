@@ -64,6 +64,8 @@
 
 **授权方式**：用户授权（user_grant）
 
+**支持设备**：Phone | 2in1 | Tablet | TV | Wearable
+
 **起始版本**：7
 
 ## ohos.permission.CAMERA
@@ -167,6 +169,8 @@
 **权限级别**：normal
 
 **授权方式**：用户授权（user_grant）
+
+**支持设备**：Phone | 2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 

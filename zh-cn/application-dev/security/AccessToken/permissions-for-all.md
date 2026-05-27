@@ -86,6 +86,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | 2in1 | Tablet | TV | Wearable
+
 **起始版本**：7
 
 ## ohos.permission.ACCESS_BIOMETRIC
@@ -155,6 +157,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | 2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
@@ -247,6 +251,8 @@
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | 2in1 | Tablet | TV | Wearable
 
 **起始版本**：7
 
