@@ -1099,6 +1099,8 @@ renderGroup(value: boolean | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[renderGroup<sup>10+</sup>](#rendergroup10)和[renderGroup<sup>18+</sup>](#rendergroup18)。
@@ -1189,6 +1191,8 @@ blendMode(value: BlendMode | undefined, type?: BlendApplyType): this
 将当前控件的内容（包含子节点内容）与下方画布（可能为离屏画布）已有内容进行混合。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1302,6 +1306,8 @@ useShadowBatching(value: boolean | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[useShadowBatching<sup>11+</sup> ](#useshadowbatching11)和[useShadowBatching<sup>18+</sup>](#useshadowbatching18)。
@@ -1387,6 +1393,8 @@ sphericalEffect(value: double | undefined): this
 设置组件的图像球面化程度。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1474,6 +1482,8 @@ lightUpEffect(value: double | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[lightUpEffect<sup>12+</sup> ](#lightupeffect12)和[lightUpEffect<sup>18+</sup>](#lightupeffect18)。
@@ -1560,6 +1570,8 @@ pixelStretchEffect(options: PixelStretchEffectOptions | undefined): this
 设置组件的图像边缘像素扩展距离。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

@@ -126,6 +126,8 @@ transition(value: TransitionEffect | undefined,  onFinish: Optional&lt;Transitio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[transition<sup>12+</sup>](#transition12)。

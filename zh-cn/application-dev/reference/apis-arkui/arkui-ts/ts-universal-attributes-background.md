@@ -69,9 +69,11 @@ background(content: CustomBuilder | ResourceColor | undefined, options?: Backgro
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[background<sup>10+</sup>](#background10)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
@@ -259,11 +261,13 @@ backgroundImage(src: ResourceStr | PixelMap | undefined, options: BackgroundImag
 
 设置组件的背景图片。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundImage<sup>18+</sup>](#backgroundimage18)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -282,6 +286,8 @@ backgroundImage(src: ResourceStr | PixelMap | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
@@ -298,11 +304,13 @@ backgroundImage(src: ResourceStr | PixelMap | undefined, repeat: ImageRepeat)
 
 设置组件的背景图片。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[backgroundImage](#backgroundimage)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -530,6 +538,8 @@ backgroundBlurStyle(style: BlurStyle | undefined, options?: BackgroundBlurStyleO
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundBlurStyle<sup>9+</sup>](#backgroundblurstyle9)，[backgroundBlurStyle<sup>18+</sup>](#backgroundblurstyle18)和[backgroundBlurStyle<sup>19+</sup>](#backgroundblurstyle19)。
@@ -668,6 +678,8 @@ backdropBlur(radius: double | undefined, options?: BlurOptions, sysOptions?: Sys
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[backdropBlur](#backdropblur)，[backdropBlur<sup>18+</sup>](#backdropblur18)和[backdropBlur<sup>19+</sup>](#backdropblur19)。
@@ -799,6 +811,8 @@ backgroundEffect(options: BackgroundEffectOptions | undefined, sysOptions?: Syst
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[backgroundEffect<sup>11+</sup>](#backgroundeffect11)，[backgroundEffect<sup>18+</sup>](#backgroundeffect18)和[backgroundEffect<sup>19+</sup>](#backgroundeffect19)。
@@ -883,6 +897,8 @@ backgroundImageResizable(value: ResizableOptions | undefined): this
 当设置top+bottom大于原图的高或者left+right大于原图的宽时，ResizableOptions属性设置不生效。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
