@@ -73,7 +73,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 ## UserStatusAtomicCap
 
-表示用户状态原子化服务能力类型。
+表示用户状态支持的原子化服务能力。
 
 **系统能力**：SystemCapability.MultimodalAwareness.UserStatus
 
@@ -81,7 +81,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| ATOMIC_UNKNOWN | 0 | 表示未知原子化服务能力。 |
+| ATOMIC_UNKNOWN | 0 | 表示未知的原子化服务能力。 |
 | FACE_RELATIVE_POSITION | 1 | 表示检测人脸相对于屏幕。 |
 | FACE_NUM_CHANGE | 2 | 表示检测人脸数量变化。 |
 | GESTURE | 3 | 表示检测用户手势。 |
