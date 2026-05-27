@@ -222,7 +222,7 @@
 
 ## MetadataObjectType
 
-枚举，metadata流。
+枚举，metadata元数据检测类型。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -230,6 +230,30 @@
 | ------------------------- | ---- | ----------------- |
 | FACE_DETECTION            | 0    | 元数据的对象类型，用于人脸检测。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | HUMAN_BODY<sup>23+</sup>     | 1    | 元数据的对象类型，用于人体检测。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| CAT_FACE               | 2    | 用于检测猫脸的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| CAT_BODY                   | 3    | 用于检测猫的身体的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| DOG_FACE                   | 4    | 用于检测狗脸的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| DOG_BODY                   | 5    | 用于检测狗的身体的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| SALIENT_DETECTION          | 6    | 用于显著性检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| BAR_CODE_DETECTION         | 7    | 用于二维码检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| BASIC_FACE_DETECTION       | 8    | 用于基础人脸检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## Emotion
+
+枚举，人脸检测信息中的情绪类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明              |
+| -------------------------- | ---- | ----------------- |
+| NEUTRAL                    | 0    | 平静。 |
+| SADNESS                    | 1    | 悲伤。 |
+| SMILE                      | 2    | 微笑。 |
+| SURPRISE                   | 3    | 惊讶。 |
 
 ## FlashMode
 
