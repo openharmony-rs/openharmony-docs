@@ -401,12 +401,12 @@ function checkLockMetadataSupport(metadataOutput: camera.MetadataOutput): void {
 
 lockMetadataObjectTracking(point: Point): void
 
- 锁定对特定元数据对象（如猫脸、狗脸）的追踪。
+锁定对特定元数据对象（如猫脸、狗脸）的追踪。
  
- > **说明：**
- >
- > - 该功能以point所指向的点所在的对象为追踪对象，如果该点不存在追踪对象，则功能不生效。
- > - 被锁定追踪的对象离开取景范围超过三秒或调用解锁追踪后，锁定追踪自动取消。
+> **说明：**
+>
+> - 该功能以point所指向的点所在的对象为追踪对象，如果该点不存在追踪对象，则功能不生效。
+> - 被锁定追踪的对象离开取景范围超过三秒或调用解锁追踪后，锁定追踪自动取消。
 
 **起始版本：** 26.0.0
 
