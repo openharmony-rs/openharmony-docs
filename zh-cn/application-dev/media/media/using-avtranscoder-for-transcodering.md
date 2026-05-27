@@ -80,7 +80,7 @@
          // 2.关闭转码目标文件fd。
          if (fdDst != undefined) {
  	       fs.closeSync(fdDst);
- 	     }
+         }
        }
      }
    }
