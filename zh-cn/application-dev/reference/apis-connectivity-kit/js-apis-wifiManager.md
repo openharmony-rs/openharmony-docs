@@ -1188,9 +1188,9 @@ connectToCandidateConfig(settings: ConnectSettings): Promise&lt;void&gt;
 
 **返回值：**
 
- 	| 类型 | 说明 |
- 	| -------- | -------- |
- 	| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4662,14 +4662,14 @@ isWlanSupported(): boolean
 
 **返回值：**
 
- 	| 类型 | 说明 |
- 	| -------- | -------- |
- 	| boolean | Wi-Fi是否可用。true表示Wi-Fi可用，&nbsp;false表示Wi-Fi不可用。 |
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | Wi-Fi是否可用。true表示Wi-Fi可用，&nbsp;false表示Wi-Fi不可用。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
- 	| 错误码 | 错误信息 |
- 	| -------- | -------- |
- 	| 2501000  | Operation failed. |
+  | 错误码 | 错误信息 |
+  | -------- | -------- |
+  | 2501000  | Operation failed. |
