@@ -1,14 +1,14 @@
 # @ohos.util.TreeSet (非线性容器TreeSet)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
 TreeSet基于[TreeMap](js-apis-treemap.md)实现，在TreeSet中，只对value对象进行处理。TreeSet可用于存储一系列值的集合，元素中value唯一且有序。
 
-TreeSet和[HashSet](js-apis-hashset.md)中的元素都不允许重复。HashSet中的数据无序存放，而TreeSet是有序存放。HashSet允许插入null值，但TreeSet不建议插入空值，可能会影响排序结果。
+TreeSet和[HashSet](js-apis-hashset.md)中的元素都不允许重复。HashSet中的数据无序存放，而TreeSet是有序存放。HashSet允许插入null值，但TreeSet不建议插入null值，可能会影响排序结果。
 
 **推荐使用场景：** 一般需要存储有序集合的场景，可以使用TreeSet。
 
@@ -77,12 +77,12 @@ comparator的参数说明：
 **示例：**
 
 ```ts
-//默认构造
+// 默认构造
 let treeSet = new TreeSet<string | number | boolean | Object>();
 ```
 
 ```ts
-//使用comparator firstValue < secondValue，表示期望结果为升序排序。反之firstValue > secondValue，表示为降序排序。
+// 使用comparator firstValue < secondValue，表示期望结果为升序排序。反之firstValue > secondValue，表示为降序排序。
 let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
   return firstValue < secondValue;
 });
@@ -100,7 +100,7 @@ for (let value of treeSet) {
 ```
 
 ```ts
-//当插入自定义类型时，则必须要提供比较函数。
+// 当插入自定义类型时，则必须要提供比较函数。
 class TestEntry{
   public id: number = 0;
 }

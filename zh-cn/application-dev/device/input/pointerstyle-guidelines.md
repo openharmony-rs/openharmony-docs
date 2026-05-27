@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 场景介绍
 
@@ -19,7 +19,7 @@ import { pointer } from '@kit.InputKit';
 
 ## 接口说明
 
-鼠标光标控制常用接口如下表所示，接口详细介绍请参见[ohos.multimodalInput.pointer文档](../../reference/apis-input-kit/js-apis-pointer.md)。
+鼠标光标控制常用接口如下表所示，接口详细介绍请参见[@ohos.multimodalInput.pointer](../../reference/apis-input-kit/js-apis-pointer.md)。
 
 | 接口名称                                                       | 描述                                                         |
 | ------------------------------------------ | ------------------------------------------------------- |

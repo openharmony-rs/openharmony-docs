@@ -5,15 +5,15 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The reminderAgentManager module provides APIs related to agent-powered reminders. When your application is frozen or exits, the timing and notification functions of your application will be taken over by a system service running in the background. You can use the APIs to create scheduled reminders for countdown timers, calendar events, and alarm clocks.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.reminderAgentManager (Agent-Powered Reminders)](js-apis-reminderAgentManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.reminderAgentManager (Agent-Powered Reminders)](js-apis-reminderAgentManager.md).
 
 
 ## Modules to Import
@@ -54,8 +54,8 @@ The data provider needs to set the ID, read/write permissions, and basic informa
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | uri | string | No| No| URI of the data, which is the unique identifier for cross-application data access.|
-| equalTo | Record<string, number \| string \| boolean> | No| No| Filter criteria. Currently, only equal to is supported.|
-| value | [ValueBucket](../apis-arkdata/js-apis-data-valuesBucket.md#valuesbucket) | No| No| New data.|
+| equalTo | Record<string, number \| string \| boolean> | No| No| Filter criteria. Currently, only **equalTo** is supported.|
+| value | [ValuesBucket](../apis-arkdata/js-apis-data-valuesBucket.md#valuesbucket) | No| No| New data.|
 
 ## ReminderRequestCalendar
 

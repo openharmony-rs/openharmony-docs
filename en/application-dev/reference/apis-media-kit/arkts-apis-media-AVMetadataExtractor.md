@@ -1,19 +1,19 @@
 # Interface (AVMetadataExtractor)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+
+AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
+
+For details about the demo of obtaining audio or video metadata and video thumbnails, see [Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)](../../media/media/avmetadataextractor.md).
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-AVMetadataExtractor is a class for metadata retrieval. It provides APIs to obtain metadata and thumbnails from media assets. Before calling any API of AVMetadataExtractor, you must use [media.createAVMetadataExtractor](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
-
-For details about the demo of obtaining audio or video metadata and video thumbnails, see [Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)](../../media/media/avmetadataextractor.md).
 
 ## Modules to Import
 
@@ -42,7 +42,7 @@ Sets the data source for a network on-demand resource. Only network metadata ([f
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| url | string       | Yes  | URL of the media resource.<br>1. The video formats MP4, MPEG-TS, and MKV are supported.<br>2. The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported.<br>**Example of supported URLs**:<br>1. HTTP: http\://xx<br>2. HTTPS: https\://xx<br>Note: HLS/DASH and live streaming resources cannot be set.|
+| url | string       | Yes  | URL of the media resource.<br>1. The video formats MP4, MPEG-TS, and MKV are supported.<br>2. The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported.<br>**Example of supported URLs**:<br>1. HTTP: http://xx<br>2. HTTPS: https://xx<br>Note: HLS/DASH and live streaming resources are not supported.|
 | headers | Record\<string, string> | No  | Custom HTTP headers for accessing the network resource. The default value is empty.|
 
 **Example**
@@ -54,7 +54,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor(async (error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     let url = "http://xx";
@@ -120,7 +120,7 @@ let param: media.PixelMapParams = {
 };
 // Obtain the thumbnail.
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
@@ -144,7 +144,7 @@ Obtains video thumbnails in batches. This API uses an asynchronous callback to r
 > - The given video resource is decoded first, and then image frames are extracted from each time point in the **timesUs** array based on the provided **options** and **param**.
 > - When each image extraction is complete, the system calls the callback function and passes the extraction result. Note that the execution order of the callback function may be inconsistent with the time points in the **timesUs** array.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -152,7 +152,7 @@ Obtains video thumbnails in batches. This API uses an asynchronous callback to r
 
 | Name  | Type                                        | Mandatory| Description                               |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timesUs | number[]                   | Yes  | Set of time points of all thumbnails to be obtained in the video.<br>The unit is microsecond (μs), and the value range of the array length is [0, 4096].|
+| timesUs | number[]                   | Yes  | Set of time points of all thumbnails to be obtained in the video.<br>The unit is microsecond (μs), and the value range of the array length is (0, 4096].|
 | queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | Yes  | Relationship between the time passed in and the video frame.|
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | Yes  | Format parameters of the thumbnail to be obtained.|
 | callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | Yes  | Thumbnail information to be returned and possible exception types.<br>For details about the exception types, see the returned error code information.|
@@ -177,25 +177,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
 
-// Initialize input parameters.
-let timesUs: number[] = [0];
-let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
-let param: media.PixelMapParams = {
-  width: 300,
-  height: 300
-};
-// Obtain the thumbnail.
-let avMetadataExtractor = await media.createAVMetadataExtractor();
-if (avMetadataExtractor !== null) {
-  console.info('Succeeded in creating AVMetadataExtractor');
-  avMetadataExtractor.fetchFramesByTimes (timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
-    if (err) {
-      console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
-      return;
-    }
-    if (frameInfo != undefined && frameInfo.image != undefined) {
-      let pixelMap = frameInfo.image;
-    }});
+async function fetchFramesByTimesDemo() {
+  // Initialize input parameters.
+  let timesUs: number[] = [0];
+  let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+  let param: media.PixelMapParams = {
+    width: 300,
+    height: 300
+  };
+  // Obtain the thumbnail.
+  let avMetadataExtractor = await media.createAVMetadataExtractor();
+  if (avMetadataExtractor !== null) {
+    console.info('Succeeded in creating AVMetadataExtractor');
+    avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+      if (err) {
+        console.info(`fetchFramesByTimes callback failed, error = ${JSON.stringify(err)}`);
+        return;
+      }
+      if (frameInfo != undefined && frameInfo.image != undefined) {
+        let pixelMap = frameInfo.image;
+      }});
+  }
 }
 ```
 
@@ -205,7 +207,7 @@ cancelAllFetchFrames(): void
 
 Cancels the ongoing task of obtaining thumbnails in batches. (The thumbnails that have been obtained are not affected.)
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -217,7 +219,7 @@ import { media } from '@kit.MediaKit';
 let avMetadataExtractor: media.AVMetadataExtractor | undefined = undefined;
 
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.cancelAllFetchFrames();

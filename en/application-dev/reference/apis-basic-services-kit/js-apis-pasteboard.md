@@ -77,7 +77,7 @@ Creates a **PasteData** object of the specified type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -119,7 +119,7 @@ Creates a **PasteData** object that contains multiple types of data.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -168,7 +168,7 @@ Creates a **PasteDataRecord** object of the specified type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types;  3. Parameter verification failed. |
 
@@ -345,6 +345,7 @@ Creates a **PasteData** object of the URI type.
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createUriData('dataability:///com.example.myapplication1/user.txt');
 ```
+
 ## pasteboard.createHtmlTextRecord<sup>(deprecated)</sup>
 
 createHtmlTextRecord(htmlText: string): PasteDataRecord
@@ -679,7 +680,7 @@ Adds custom data of an extra type to **PasteDataRecord**. The MIME type added us
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -716,7 +717,7 @@ Obtains the intersection of the input MIME type and the MIME type of the pastebo
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -754,13 +755,13 @@ Obtains custom data of the specified MIME type from **PasteDataRecord**.
 
 | Type                                     | Description                                                                                                                  |
 |-----------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| Promise&lt;[ValueType](#valuetype9)&gt; | Promise used to return the custom data of the specified MIME type.<br>If **PasteDataRecord** contains data of multiple MIME types, the non-**PasteDataRecord** data of the default MIME type can be obtained only through this API.|
+| Promise&lt;[ValueType](#valuetype9)&gt; | Promise used to return the custom data of the specified MIME type in **PasteDataRecord**.<br>If **PasteDataRecord** contains data of multiple MIME types, the non-**PasteDataRecord** data of the default MIME type can be obtained only through this API.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -808,7 +809,7 @@ Forcibly converts the content in a **PasteData** object to text. This API uses a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: Incorrect parameters types. |
 
@@ -1044,6 +1045,7 @@ let htmlRecord: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.
 pasteData.addRecord(textRecord);
 pasteData.addRecord(htmlRecord);
 ```
+
 ### addRecord<sup>9+</sup>
 
 addRecord(mimeType: string, value: ValueType): void
@@ -1065,7 +1067,7 @@ Adds a data record to this pasteboard, and adds its type to **mimeTypes** in [Pa
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 
@@ -1166,7 +1168,7 @@ Sets a [PasteDataProperty](#pastedataproperty7) object.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1241,10 +1243,10 @@ Obtains the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1303,7 +1305,7 @@ let tag: string = pasteData.getTag();
 
 hasType(mimeType: string): boolean
 
-Checks whether the pasteboard contains data of the specified type.
+Checks whether the pasteboard contains data of the specified MIME type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1313,7 +1315,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in Constants(#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type.|
+| mimeType | string | Yes| Type of the data to query. The value can be a predefined type listed in [Constants](#constants), including HTML, WANT, plain text, URI, and pixel map, or a custom MIME type.|
 
 **Return value**
 
@@ -1325,7 +1327,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1356,7 +1358,7 @@ Removes the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1389,7 +1391,7 @@ Replaces the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1558,6 +1560,7 @@ Adds a URI record to this pasteboard, and adds **MIMETYPE_TEXT_URI** to **mimeTy
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 pasteData.addUriRecord('dataability:///com.example.myapplication1/user.txt');
 ```
+
 ### getRecordAt<sup>(deprecated)</sup>
 
 getRecordAt(index: number): PasteDataRecord
@@ -1585,7 +1588,7 @@ Obtains the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1623,7 +1626,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1633,6 +1636,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 let hasType: boolean = pasteData.hasMimeType(pasteboard.MIMETYPE_TEXT_PLAIN);
 ```
+
 ### removeRecordAt<sup>(deprecated)</sup>
 
 removeRecordAt(index: number): boolean
@@ -1660,7 +1664,7 @@ Removes the record with a specific index from the pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1731,7 +1735,7 @@ Subscribes to the content change event of the system pasteboard.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1764,7 +1768,7 @@ Unsubscribes from the system pasteboard content change event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1798,7 +1802,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -1865,7 +1869,7 @@ Writes a **PasteData** object to the pasteboard. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
 | 27787278 | Replication is prohibited. |
@@ -1911,7 +1915,7 @@ Writes a **PasteData** object to the pasteboard. This API uses a promise to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
 | 27787278 | Replication is prohibited. |
@@ -1953,7 +1957,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -1996,7 +2000,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 27787277 | Another copy or paste operation is in progress. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -2018,7 +2022,7 @@ systemPasteboard.getData().then((pasteData: pasteboard.PasteData) => {
 
 hasRemoteData(): boolean
 
-Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to check whether the pasteboard data contains custom data types or read the pasteboard data.
+Checks whether the pasteboard data is on a remote device. Transferring data across devices takes time. If the pasteboard data is on a remote device, do not check for custom data types or read the pasteboard data on the UI thread.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -2060,7 +2064,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2129,7 +2133,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2197,7 +2201,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2267,7 +2271,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2338,7 +2342,7 @@ Writes a **PasteData** object to the pasteboard. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
@@ -2411,7 +2415,7 @@ Checks whether the data in the pasteboard is from another device.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 
@@ -2447,7 +2451,7 @@ Obtains the name of the application that provides data.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 
@@ -2489,7 +2493,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401 | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 12900005 | Excessive processing time for internal data. |
@@ -2520,7 +2524,7 @@ Clears the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 
@@ -2558,7 +2562,7 @@ Reads data in the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
@@ -2595,7 +2599,7 @@ Writes data to the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 12900005 | Excessive processing time for internal data. |
@@ -2633,7 +2637,7 @@ Checks whether the system pasteboard contains data. This API returns the result 
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 12900005 | Excessive processing time for internal data. |
 
@@ -2671,7 +2675,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses a promise to r
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 27787277 | Another copy or paste operation is in progress. |
@@ -2718,7 +2722,7 @@ Reads data in the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 12900005 | Excessive processing time for internal data. |
@@ -2763,7 +2767,7 @@ Writes a **PasteData** object to the pasteboard. This API uses a promise to retu
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 27787277 | Another copy or paste operation is in progress. |
@@ -2812,7 +2816,7 @@ Writes data to the system pasteboard. This API returns the result synchronously.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 12900005 | Excessive processing time for internal data. |
@@ -2861,7 +2865,7 @@ Sets pasteable range of pasteboard data for applications.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -2893,7 +2897,7 @@ Deletes the global pasteable range of the application.
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
@@ -2919,6 +2923,8 @@ Describes the modes supported by the pasteboard.
 | URL                              | 0   | URL.                                                             |
 | NUMBER                        | 1   | Number.                                                   |
 | EMAIL_ADDRESS | 2   | Email address.|
+| HTTP_URL<sup>24+</sup> | 3   | HTTP URL.<br> **Model constraint**: This API can be used only in the stage model.|
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | Flight number.<br> **Model constraint**: This API can be used only in the stage model.|
 
 ### detectPatterns<sup>13+</sup>
 
@@ -2932,7 +2938,7 @@ Detects [patterns](#pattern13) on the local pasteboard. This API uses a promise 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| patterns | [Array&lt;Pattern&gt;](#pattern13) | Yes| Pattern to be detected in the pasteboard.|
+| patterns | Array&lt;[Pattern](#pattern13)&gt; | Yes| Pattern to be detected in the pasteboard.|
 
 **Return value**
 
@@ -2944,7 +2950,7 @@ Detects [patterns](#pattern13) on the local pasteboard. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code ID| Error Message|
+| Error Code| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. 3. Parameter verification failed. |
 
@@ -2993,7 +2999,7 @@ Obtains the MIME type from the pasteboard. This API uses a promise to return the
 import { pasteboard, BusinessError } from '@kit.BasicServicesKit'
 
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-systemPasteboard.getMimeTypes().then((data: Array<String>) => {
+systemPasteboard.getMimeTypes().then((data: Array<string>) => {
     console.info('Succeeded in getting mimeTypes. mimeTypes: ' + data.sort().join(','));
 }).catch((err: BusinessError) => {
     console.error('Failed to get mimeTypes. Cause:' + err.message);
@@ -3028,7 +3034,7 @@ Obtains the pasteboard data and progress. This API uses a promise to return the 
 
 For details about the error codes, see [Pasteboard Error Codes](errorcode-pasteboard.md).
 
-| Error Code ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error.                                             |
@@ -3123,7 +3129,7 @@ Callback to be invoked when the pasteboard content changes.
 
 **System capability**: SystemCapability.MiscServices.Pasteboard
 
-### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
+### onRemoteUpdate<sup>22+</sup>
 
 onRemoteUpdate(callback: UpdateCallback): void
 

@@ -1,4 +1,4 @@
-# Connectivity Kit
+# About This Kit
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -7,7 +7,7 @@
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-## About This Kit
+## Overview
 
 Mobile devices have become an integral part of everyday life. For example, people listen to music with Bluetooth headphones, surf the Internet over Wi-Fi, and use their mobile phone as a transit pass or credit card.
 
@@ -52,30 +52,39 @@ Different Bluetooth modules provide APIs applicable to different scenarios, help
   Implements phone book data sharing between devices over Phone Book Access Profile (PBAP). For example, this module supports synchronization of contact and call log data between a phone and a head unit. For details, see [@ohos.bluetooth.pbap](../reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md).
 
 ### WLAN
+
 A wireless local area network (WLAN) uses the radio, infrared, or other technologies to transmit data between devices that are not physically connected with each other. It is widely used in offices and public places where mobile devices are used.
 
 The WLAN system provides users with WLAN access (STA mode), peer-to-peer data transmission (P2P mode), and hotspot sharing (AP mode).
 
 - STA mode<br>
-  The device in Station (STA) mode can be considered as a client of an existing wireless network. It can be connected to another routing network, such as a home router, to provide uplink data services. For details, see [@ohos.wifiManager](../reference/apis-connectivity-kit/js-apis-wifiManager.md).
+  STA mode, or Station mode, can be understood as a workstation, that is, a client, within a network. When a device has this capability, it can connect to another routing network, such as a home router, and is typically used to provide data uplink services. For details, see [@ohos.wifiManager (WLAN)](../reference/apis-connectivity-kit/js-apis-wifiManager.md).
 
 - P2P mode<br>
-  The P2P mode is also called Wi-Fi Direct, which allows two devices to establish a direct Wi-Fi connection without an intermediary wireless access point (AP). It can set up a TCP/IP connection between two STAs without an AP. Of the two STAs, one is called the group owner (GO), which serves as a traditional AP; the other is called a group client (GC), which connects to the GO like an AP. For details, see [@ohos.wifiManager](../reference/apis-connectivity-kit/js-apis-wifiManager.md).
+  P2P mode is also known as Wi-Fi Direct. Wi-Fi Direct is a peer-to-peer connection technology that allows two STAs to establish a TCP/IP connection directly without requiring an AP. One STA acts as a traditional AP, referred to as the Group Owner (GO), while the other STA acts as the Group Client (GC) and connects to the GO in the same way that it connects to an AP. For details, see [@ohos.wifiManager (WLAN)](../reference/apis-connectivity-kit/js-apis-wifiManager.md).
 
 - AP mode<br>
-  In AP mode, the Wi-Fi module provides downlink data services for the devices (clients) that join the WLAN. It creates a WLAN, like a central device, allowing other devices to connect to this network. For details, see [@ohos.wifiManager](../reference/apis-connectivity-kit/js-apis-wifiManager.md).
+  AP mode provides downlink data services for member devices (that is, clients) joining a WLAN. It enables the wireless formation of a WLAN, functioning as the central device of the WLAN. For details, see [@ohos.wifiManager (WLAN)](../reference/apis-connectivity-kit/js-apis-wifiManager.md).
 
 ### NFC
+
 The Near Field Communication (NFC) service provides functionalities such as NFC switch control, NFC tag reading and writing, and NFC card emulation.
 
-- NFC control<br>
-  The **nfc.controller** module provides APIs for enabling and disabling NFC. To call the APIs provided by this module, the application must have the ohos.permission.MANAGE_SECURE_SETTINGS permission, which is available only for system applications. That is, only system applications can enable or disable NFC. For details, see [@ohos.nfc.controller](../reference/apis-connectivity-kit/js-apis-nfcController.md).
+- **NFC switch control**<br/>
+  Provides the functions of enabling and disabling NFC. Applications that enable or disable NFC need to declare the **ohos.permission.MANAGE_SECURE_SETTINGS** permission, which can only be declared by system applications. Therefore, only system applications can enable or disable NFC. For details, see [@ohos.nfc.controller (Standard NFC)](../reference/apis-connectivity-kit/js-apis-nfcController.md).
 
 - NFC tag reading and writing<br>
-  The **nfc.tag** module provides APIs for discovering NFC tags, dispatching NFC tags to applications, and enabling applications to read or write NFC tags. You need to declare the NFC tag read/write capability for your application in the specified format, so that the application can receive NFC tags dispatched. For details, see [@ohos.nfc.tag](../reference/apis-connectivity-kit/js-apis-nfcTag.md).
+  Provides the capabilities of discovering NFC tags and distributing them to applications, as well as allowing applications to access NFC tags through the NFC tag read/write API. Applications need to declare the NFC tag read/write capability in the specified format. Only after the declaration can applications receive NFC tag distributions. For details, see [@ohos.nfc.tag (Standard NFC Tags)](../reference/apis-connectivity-kit/js-apis-nfcTag.md).
 
 - NFC card emulation<br>
-  The **cardEmulation** module provides APIs for implementing payment card and access card solutions. You need to declare the NFC card emulation capability for your application in the specified format so that the application can implement NFC communications. For details, see [@ohos.nfc.cardEmulation](../reference/apis-connectivity-kit/js-apis-cardEmulation.md).
+  Provides NFC card emulation capabilities and allows electronic devices to complete card-based interactions by tapping the device against an NFC reader. Applications must declare NFC card emulation capabilities in the required format before they can support card emulation features. For details, see [@ohos.nfc.cardEmulation (Standard NFC Card Emulation)](../reference/apis-connectivity-kit/js-apis-cardEmulation.md).
+
+### Converged Short-Range Communication
+
+The converged short-range communication service provides unified management of short-range communication technologies in the OpenHarmony system.
+
+- **PartnerAgent service module**<br/>
+  Provides interworking services between partner devices and OpenHarmony devices. Within the module, interworking services such as media control, phone call reverse control, and health monitoring can be implemented. For details, see [@ohos.FusionConnectivity.partnerAgent](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md).
 
 ### Working Principles
 

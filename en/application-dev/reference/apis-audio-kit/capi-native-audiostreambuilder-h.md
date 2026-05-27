@@ -1,16 +1,14 @@
 # native_audiostreambuilder.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The file declares the functions related to an audio stream builder.
-
-You can use the functions to create and destroy an audio stream builder, set audio stream attributes, and set callbacks.
+The file declares the functions related to an audio stream builder.<br>You can use the functions to create and destroy an audio stream builder, set audio stream attributes, and set callbacks.
 
 **File to include**: <ohaudio/native_audiostreambuilder.h>
 
@@ -59,6 +57,7 @@ You can use the functions to create and destroy an audio stream builder, set aud
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerWillMuteWhenInterrupted(OH_AudioStreamBuilder* builder, bool muteWhenInterrupted)](#oh_audiostreambuilder_setcapturerwillmutewheninterrupted) | Sets whether to mute the audio input stream when an audio interruption occurs.|
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(OH_AudioStreamBuilder* builder, OH_AudioRenderer_OnFastStatusChange callback, void* userData)](#oh_audiostreambuilder_setrendererfaststatuschangecallback) | Sets a callback for low-latency status changes during audio playback.|
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(OH_AudioStreamBuilder* builder, OH_AudioCapturer_OnFastStatusChange callback, void* userData)](#oh_audiostreambuilder_setcapturerfaststatuschangecallback) | Sets a callback for low-latency status changes during audio recording.|
+| [OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStreamBuilder* builder, uint32_t mode)](#oh_audiostreambuilder_setplaybackcapturemode) | Sets the audio modes for internal audio recording (capturing sound from the applications on the device). The modes determine the types of audio streams to be recorded. This function applies only to [AudioStream_Type_Capturer](./capi-native-audiostream-base-h.md#oh_audiostream_type). This API is currently not available for public use.|
 
 ## Function Description
 
@@ -70,9 +69,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Create(OH_AudioStreamBuilder** build
 
 **Description**
 
-Creates an audio stream builder, which can be an audio renderer or capturer.
-
-You need to call [OH_AudioStreamBuilder_Destroy](#oh_audiostreambuilder_destroy) to destroy the builder when it is no longer required.
+Creates an audio stream builder, which can be an audio renderer or capturer.<br>You need to call [OH_AudioStreamBuilder_Destroy](#oh_audiostreambuilder_destroy) to destroy the builder when it is no longer required.
 
 **Since**: 10
 
@@ -98,9 +95,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_Destroy(OH_AudioStreamBuilder* build
 
 **Description**
 
-Destroys an audio stream builder.
-
-You need to call this function to destroy the builder when it is no longer required.
+Destroys an audio stream builder.<br>You need to call this function to destroy the builder when it is no longer required.
 
 **Since**: 10
 
@@ -366,9 +361,7 @@ Sets callbacks for an audio renderer.
 
 **Substitute**
 
-Use the following APIs for substitute:
-
-[OH_AudioStreamBuilder_SetRendererWriteDataCallback](#oh_audiostreambuilder_setrendererwritedatacallback), [OH_AudioStreamBuilder_SetRendererInterruptCallback](#oh_audiostreambuilder_setrendererinterruptcallback), [OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback](#oh_audiostreambuilder_setrendereroutputdevicechangecallback), and [OH_AudioStreamBuilder_SetRendererErrorCallback](#oh_audiostreambuilder_setrenderererrorcallback)
+Use the following APIs for substitute:<br>[OH_AudioStreamBuilder_SetRendererWriteDataCallback](#oh_audiostreambuilder_setrendererwritedatacallback), [OH_AudioStreamBuilder_SetRendererInterruptCallback](#oh_audiostreambuilder_setrendererinterruptcallback), [OH_AudioStreamBuilder_SetRendererOutputDeviceChangeCallback](#oh_audiostreambuilder_setrendereroutputdevicechangecallback), and [OH_AudioStreamBuilder_SetRendererErrorCallback](#oh_audiostreambuilder_setrenderererrorcallback)
 
 
 **Parameters**
@@ -404,7 +397,7 @@ Sets the callback for audio renderer device change events.
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Pointer to an audio stream builder instance, which is created by calling [OH_AudioStreamBuilder_Create](#oh_audiostreambuilder_create).|
 | [OH_AudioRenderer_OutputDeviceChangeCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_outputdevicechangecallback) callback | Callback that will be used to process events related to audio renderer device changes.|
-| void* userData | Pointer to the application data passed through the callback.|
+| void* userData | Pointer to the application data passed through the callbacks.|
 
 **Returns**
 
@@ -454,9 +447,7 @@ Sets callbacks for an audio capturer.
 
 **Substitute**
 
-Use the following APIs for substitute:
-
-[OH_AudioStreamBuilder_SetCapturerReadDataCallback](#oh_audiostreambuilder_setcapturerreaddatacallback), [OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback](#oh_audiostreambuilder_setcapturerdevicechangecallback), [OH_AudioStreamBuilder_SetCapturerInterruptCallback](#oh_audiostreambuilder_setcapturerinterruptcallback), and [OH_AudioStreamBuilder_SetCapturerErrorCallback](#oh_audiostreambuilder_setcapturererrorcallback)
+Use the following APIs for substitute:<br>[OH_AudioStreamBuilder_SetCapturerReadDataCallback](#oh_audiostreambuilder_setcapturerreaddatacallback), [OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback](#oh_audiostreambuilder_setcapturerdevicechangecallback), [OH_AudioStreamBuilder_SetCapturerInterruptCallback](#oh_audiostreambuilder_setcapturerinterruptcallback), and [OH_AudioStreamBuilder_SetCapturerErrorCallback](#oh_audiostreambuilder_setcapturererrorcallback)
 
 
 **Parameters**
@@ -492,7 +483,7 @@ Sets the callback used to write both audio data and metadata.
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Pointer to an audio stream builder instance, which is created by calling [OH_AudioStreamBuilder_Create](#oh_audiostreambuilder_create).|
 | [OH_AudioRenderer_WriteDataWithMetadataCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_writedatawithmetadatacallback) callback | Callback used to write both audio data and metadata.|
-| void* userData | Pointer to the application data passed through the callback.|
+| void* userData | Pointer to the application data passed through the callbacks.|
 
 **Returns**
 
@@ -560,11 +551,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetFrameSizeInCallback(OH_AudioStrea
 
 **Description**
 
-Sets the frame size for each callback during playback. The frame size must be at least equal to the size of the data processed by the audio hardware at a time and less than half of the internal buffer capacity.
-
-In the case of low-latency playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 5 ms, 10 ms, 15 ms, or 20 ms.
-
-In the case of common playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 20 ms to 100 ms. For example, if the sampling rate is 48000 Hz, the frame length of 20 ms audio data is calculated as follows: frameSize = 48000 x 0.02, that is, 960 sampling points.
+Sets the frame size for each callback during playback. The frame size must be at least equal to the size of the data processed by the audio hardware at a time and less than half of the internal buffer capacity.<br>In the case of low-latency playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 5 ms, 10 ms, 15 ms, or 20 ms.<br>In the case of common playback, **frameSize** can be set to the frame length corresponding to the audio that lasts for 20 ms to 100 ms. For example, if the sampling rate is 48000 Hz, the frame length of 20 ms audio data is calculated as follows: frameSize = 48000 x 0.02, that is, 960 sampling points.
 
 **Since**: 11
 
@@ -616,9 +603,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallback(OH_Audi
 
 **Description**
 
-Sets the callback used to write audio data.
-
-This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audiostreambuilder_setrenderercallback). If both the functions are used, only the last callback takes effect.
+Sets the callback used to write audio data.<br>This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audiostreambuilder_setrenderercallback). If both the functions are used, only the last callback takes effect.
 
 **Since**: 12
 
@@ -629,7 +614,7 @@ This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audi
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Pointer to an audio stream builder instance, which is created by calling [OH_AudioStreamBuilder_Create](#oh_audiostreambuilder_create).|
 | [OH_AudioRenderer_OnWriteDataCallback](capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback) callback | Callback to be used to write audio data.|
-| void* userData | Pointer to the application data passed through the callback.|
+| void* userData | Pointer to the application data passed through the callbacks.|
 
 **Returns**
 
@@ -645,13 +630,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced
 
 **Description**
 
-Sets the callback used to write audio data.
-
-This function is similar to [OH_AudioStreamBuilder_SetRendererWriteDataCallback](#oh_audiostreambuilder_setrendererwritedatacallback).
-
-If both the functions are used, only the last callback takes effect.
-
-Unlike **OH_AudioStreamBuilder_SetRendererWriteDataCallback**, **OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced** allows an application to pass variable-length audio data and notify the system of the length of the data written.
+Sets the callback used to write audio data.<br>This function is similar to [OH_AudioStreamBuilder_SetRendererWriteDataCallback](#oh_audiostreambuilder_setrendererwritedatacallback).<br>If both the functions are used, only the last callback takes effect.<br>Unlike **OH_AudioStreamBuilder_SetRendererWriteDataCallback**, **OH_AudioStreamBuilder_SetRendererWriteDataCallbackAdvanced** allows an application to pass variable-length audio data and notify the system of the length of the data written.
 
 **Since**: 20
 
@@ -662,7 +641,7 @@ Unlike **OH_AudioStreamBuilder_SetRendererWriteDataCallback**, **OH_AudioStreamB
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Pointer to an audio stream builder instance, which is created by calling [OH_AudioStreamBuilder_Create](#oh_audiostreambuilder_create).|
 | [OH_AudioRenderer_OnWriteDataCallbackAdvanced](capi-native-audiorenderer-h.md#oh_audiorenderer_onwritedatacallbackadvanced) callback | Callback to be used to write audio data.|
-| void* userData | Pointer to the application data passed through the callback.|
+| void* userData | Pointer to the application data passed through the callbacks.|
 
 **Returns**
 
@@ -678,9 +657,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererInterruptCallback(OH_Audi
 
 **Description**
 
-Sets the callback for interruption events of an audio renderer.
-
-This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audiostreambuilder_setrenderercallback). If both the functions are used, only the last callback takes effect.
+Sets the callback for interruption events of an audio renderer.<br>This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audiostreambuilder_setrenderercallback). If both the functions are used, only the last callback takes effect.
 
 **Since**: 20
 
@@ -707,9 +684,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererErrorCallback(OH_AudioStr
 
 **Description**
 
-Sets the callback for error events of an audio renderer.
-
-This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audiostreambuilder_setrenderercallback). If both the functions are used, only the last callback takes effect.
+Sets the callback for error events of an audio renderer.<br>This function is similar to [OH_AudioStreamBuilder_SetRendererCallback](#oh_audiostreambuilder_setrenderercallback). If both the functions are used, only the last callback takes effect.
 
 **Since**: 20
 
@@ -736,9 +711,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerReadDataCallback(OH_Audio
 
 **Description**
 
-Sets the callback used to read data for an audio capturer.
-
-This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audiostreambuilder_setcapturercallback). If both the functions are used, only the last callback takes effect.
+Sets the callback used to read data for an audio capturer.<br>This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audiostreambuilder_setcapturercallback). If both the functions are used, only the last callback takes effect.
 
 **Since**: 20
 
@@ -765,9 +738,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerDeviceChangeCallback(OH_A
 
 **Description**
 
-Sets the callback for audio capturer device change events.
-
-This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audiostreambuilder_setcapturercallback). If both the functions are used, only the last callback takes effect.
+Sets the callback for audio capturer device change events.<br>This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audiostreambuilder_setcapturercallback). If both the functions are used, only the last callback takes effect.
 
 **Since**: 20
 
@@ -794,9 +765,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerInterruptCallback(OH_Audi
 
 **Description**
 
-Sets the callback for interruption events of an audio capturer.
-
-This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audiostreambuilder_setcapturercallback). If both the functions are used, only the last callback takes effect.
+Sets the callback for interruption events of an audio capturer.<br>This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audiostreambuilder_setcapturercallback). If both the functions are used, only the last callback takes effect.
 
 **Since**: 20
 
@@ -823,9 +792,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerErrorCallback(OH_AudioStr
 
 **Description**
 
-Sets the callback for error events of an audio capturer.
-
-This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audiostreambuilder_setcapturercallback). If both the functions are used, only the last callback takes effect.
+Sets the callback for error events of an audio capturer.<br>This function is similar to [OH_AudioStreamBuilder_SetCapturerCallback](#oh_audiostreambuilder_setcapturercallback). If both the functions are used, only the last callback takes effect.
 
 **Since**: 20
 
@@ -923,3 +890,28 @@ Sets a callback for low-latency status changes during audio recording.
 | Type| Description|
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>        **AUDIOSTREAM_ERROR_INVALID_PARAM**: A parameter is invalid. For example, the **builder** parameter is nullptr.|
+
+### OH_AudioStreamBuilder_SetPlaybackCaptureMode()
+
+```c
+OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStreamBuilder* builder, uint32_t mode)
+```
+
+**Description**
+
+Sets the audio modes for internal audio recording (capturing sound from the applications on the device). The modes determine the types of audio streams to be recorded. This function applies only to [AudioStream_Type_Capturer](./capi-native-audiostream-base-h.md#oh_audiostream_type). This API is currently not available for public use.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Pointer to a builder instance created by [OH_AudioStreamBuilder_Create](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_create).|
+| uint32_t mode | Internal audio recording modes to be set. The value can be a combination of multiple values in [OH_AudioStream_PlaybackCaptureMode](capi-native-audiostream-base-h.md#oh_audiostream_playbackcapturemode).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: Invalid parameters. For example, **builder** or **mode** is nullptr.|

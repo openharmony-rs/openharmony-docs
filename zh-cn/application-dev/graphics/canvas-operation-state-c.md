@@ -102,7 +102,7 @@ OH_Drawing_BrushDestroy(brush);
 
 ### 接口说明
 
-矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_matrix.h](../reference/apis-arkgraphics2d/capi-drawing-matrix-h.md)。
+矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -212,7 +212,7 @@ OH_Drawing_RectDestroy(rect);
 
 ## 画布状态保存与恢复
 
-保存操作用于保存当前画布的状态到一个栈顶，恢复操作用于恢复保存在栈顶的画布状态，恢复操作一旦执行，保存和恢复操作中间一系列平移、缩放、剪裁等操作都会被清除。
+保存操作用于保存当前画布的状态到一个栈顶，恢复操作用于恢复保存在栈顶的画布状态，恢复操作一旦执行，保存和恢复操作中间一系列平移、缩放、裁剪等操作都会被清除。
 
 
 ### 接口说明

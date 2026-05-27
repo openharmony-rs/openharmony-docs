@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-WhiteBalance 继承自 [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md)。
+WhiteBalance继承自[WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md)。
 
 提供了处理设备白平衡的相关功能，包括获取和设置白平衡模式以及白平衡值。
 

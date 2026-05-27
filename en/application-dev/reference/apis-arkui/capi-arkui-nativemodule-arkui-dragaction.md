@@ -12,7 +12,7 @@ typedef struct ArkUI_DragAction ArkUI_DragAction
 
 ## Overview
 
-Defines a struct for a drag action.
+Defines a drag action.
 
 **Since**: 12
 

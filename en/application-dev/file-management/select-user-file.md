@@ -81,13 +81,13 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    > - Further operations can be performed on the documents based on the file URIs. You are advised to define a global variable to save the URI.<br>
    > - If metadata needs to be obtained, you can use the [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) and [@ohos.file.fileuri](../reference/apis-core-file-kit/js-apis-file-fileuri.md) APIs to obtain document attribute information, such as the document name, size, access time, modification time, and path, based on the URI.
 
-4. After the application UI is returned from FilePicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open a document based on the URI. The file descriptor (FD) is returned after the document is opened.
+4. After the application UI is returned from FilePicker, call [fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync) to open a document based on the URI. The file descriptor (FD) is returned after the document is opened.
 
    ```ts
    if (uris.length > 0) {
    	let uri: string = uris[0];
-   	// Note that the mode parameter of fs.openSync() is fs.OpenMode.READ_ONLY.
-   	let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+   	// Note that the mode parameter is fileIo.OpenMode.READ_ONLY.
+   	let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
    	console.info('file fd: ' + file.fd);
     }
    ```
@@ -149,13 +149,13 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    > - You can persist the temporary permission for a URI. For details, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
    > - You can read file data based on the URI. You are advised to define a global variable to save the URI. For example, you can use the [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) API to obtain the FD of the audio clip based on the URI, and then develop the audio playback application with the media service. For details, see [Audio Playback Development](../media/audio/audio-playback-overview.md).
 
-4. After the application UI is returned from AudioPicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open an audio clip based on the URI. The FD is returned after the audio clip is opened.
+4. After the application UI is returned from AudioPicker, call [fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync) to open an audio clip based on the URI. The FD is returned after the audio clip is opened.
 
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
-      // Note that the mode parameter of fs.openSync() is fs.OpenMode.READ_ONLY.
-      let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+      // Note that the mode parameter is fileIo.OpenMode.READ_ONLY.
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_ONLY);
       console.info('file fd: ' + file.fd);
    }
    ```

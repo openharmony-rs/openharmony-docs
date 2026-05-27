@@ -2,8 +2,7 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @wuliangdong-->
-<!--Designer: @butterls-->
-<!--Tester: @zhaodengqi-->
+<!--Designer: @hanruofei-->
 <!--Adviser: @hu-zhiqiong-->
 
 The **cooperate** module implements screen hopping for two or more networked devices to share the keyboard and mouse for collaborative operations.
@@ -38,9 +37,9 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -78,7 +77,7 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Parameters               | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -86,7 +85,7 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -122,6 +121,8 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
+**Parameters**
+
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the operation result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
@@ -130,7 +131,7 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -168,7 +169,7 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 **Return value**
 
-| Parameters               | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -176,7 +177,7 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -221,9 +222,9 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -269,15 +270,15 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name             | Description                     |
+| Type             | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API.|
@@ -325,7 +326,7 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -367,7 +368,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name             | Description                     |
+| Type             | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -375,7 +376,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -419,7 +420,7 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -462,7 +463,7 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 **Return value**
 
-| Parameters                  | Description                                                        |
+| Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.|
 
@@ -470,7 +471,7 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -495,7 +496,7 @@ try {
 
 
 
-## on('cooperateMessage')<sup>11+</sup>
+## cooperate.on('cooperateMessage')<sup>11+</sup>
 
 on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void;
 
@@ -516,7 +517,7 @@ Enables listening for screen hopping status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -539,7 +540,7 @@ try {
 
 
 
-## off('cooperateMessage')<sup>11+</sup>
+## cooperate.off('cooperateMessage')<sup>11+</sup>
 
 off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void;
 
@@ -553,18 +554,18 @@ Disables listening for screen hopping status change events.
 
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | Yes  | Event type. The value is **cooperate**.                               |
+| type     | string                                                | Yes  | Event type. The value is **cooperateMessage**.                               |
 | callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | No  | Callback to be unregistered. If this parameter is not specified, all callbacks registered by the current application will be unregistered.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes:1.Incorrect parameter types.2.Parameter verification failed. |
 
 **Example**
 
@@ -605,7 +606,7 @@ try {
 ```
 
 
-## on('cooperateMouse')<sup>12+</sup>
+## cooperate.on('cooperateMouse')<sup>12+</sup>
 
 on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void;
 
@@ -619,7 +620,7 @@ Registers a listener for the mouse cursor position of a device.
 
 | Name  | Type                                                 | Mandatory| Description                                |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                | Yes  | Event type, which is **'cooperateMouse'**.  |
+| type     | string                                                | Yes  | Event type. The value is **cooperateMouse**.  |
 | networkId| string                                                | Yes  | Descriptor of the target device.  |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | Yes  | Callback used to return the mouse cursor position of the device.|
 
@@ -627,7 +628,7 @@ Registers a listener for the mouse cursor position of a device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -651,7 +652,7 @@ try {
 
 
 
-## off('cooperateMouse')<sup>12+</sup>
+## cooperate.off('cooperateMouse')<sup>12+</sup>
 
 off(type: 'cooperateMouse', networkId: string, callback?: Callback&lt;MouseLocation&gt;): void;
 
@@ -665,7 +666,7 @@ Unregisters the listener for the mouse cursor position of a device.
 
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | Yes  | Event type, which is **'cooperateMouse'**.                               |
+| type     | string                                                | Yes  | Event type. The value is **cooperateMouse**.                               |
 | networkId| string                                                | Yes  | Descriptor of the target device.  |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | No  | Callback to be unregistered. If this parameter is not specified, all callbacks registered by the current application will be unregistered.|
 
@@ -673,7 +674,7 @@ Unregisters the listener for the mouse cursor position of a device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -737,15 +738,15 @@ Starts screen hopping based on the specified options. This API uses a promise to
 
 **Return value**
 
-| Parameters               | Description                     |
+| Type               | Description                     |
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -832,7 +833,7 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.prepareCooperate](#cooperatepreparecooperate11).
+> This API is deprecated since API version 11. You are advised to use [cooperate.prepareCooperate](#cooperatepreparecooperate11).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -846,7 +847,7 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -877,13 +878,13 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.prepareCooperate](#cooperatepreparecooperate11-1).
+> This API is deprecated since API version 11. You are advised to use [cooperate.prepareCooperate](#cooperatepreparecooperate11-1).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **Return value**
 
-| Parameters                | Description                    |
+| Type                | Description                    |
 | ------------------- | ------------------------------- |
 | Promise&lt;void&gt;      | Promise that returns no value.|
 
@@ -891,7 +892,7 @@ Prepares for screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -922,9 +923,11 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.unprepareCooperate](#cooperateunpreparecooperate11).
+> This API is deprecated since API version 11. You are advised to use [cooperate.unprepareCooperate](#cooperateunpreparecooperate11).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**Parameters**
 
 | Name  | Type                     | Mandatory| Description                                      |
 | -------- | ------------------------- | ---- | ------------------------------------------ |
@@ -934,7 +937,7 @@ Cancels the preparation for screen hopping. This API uses an asynchronous callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -965,13 +968,13 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.unprepareCooperate](#cooperateunpreparecooperate11-1).
+> This API is deprecated since API version 11. You are advised to use [cooperate.unprepareCooperate](#cooperateunpreparecooperate11-1).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
 **Return value**
 
-| Parameters               | Description                                         |
+| Type               | Description                                         |
 | ------------------- | --------------------------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -979,7 +982,7 @@ Cancels the preparation for screen hopping. This API uses a promise to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1010,7 +1013,7 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.activateCooperate](#cooperateactivatecooperate11).
+> This API is deprecated since API version 11. You are advised to use [cooperate.activateCooperate](#cooperateactivatecooperate11).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1024,9 +1027,9 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------------------- |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 | 202 | Permission verification failed. A non-system application calls a system API.|
@@ -1060,7 +1063,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.activateCooperate](#cooperateactivatecooperate11-1).
+> This API is deprecated since API version 11. You are advised to use [cooperate.activateCooperate](#cooperateactivatecooperate11-1).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1075,15 +1078,15 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name                 | Description                            |
+| Type                 | Description                            |
 | ---------------------- | ------------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------------------- |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status.|
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -1117,7 +1120,7 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.deactivateCooperate](#cooperatedeactivatecooperate11).
+> This API is deprecated since API version 11. You are advised to use [cooperate.deactivateCooperate](#cooperatedeactivatecooperate11).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1132,7 +1135,7 @@ Stops screen hopping. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 |Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1163,7 +1166,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.deactivateCooperate](#cooperatedeactivatecooperate11-1).
+> This API is deprecated since API version 11. You are advised to use [cooperate.deactivateCooperate](#cooperatedeactivatecooperate11-1).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1177,7 +1180,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 **Return value**
 
-| Name               | Description                           |
+| Type               | Description                           |
 | --------             | ----------------------------   |
 | Promise&lt;void&gt; |  Promise that returns no value.|
 
@@ -1185,7 +1188,7 @@ Stops screen hopping. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 
@@ -1215,7 +1218,7 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.deactivateCooperate](#cooperategetcooperateswitchstate11).
+> This API is deprecated since API version 11. You are advised to use [cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1230,7 +1233,7 @@ Obtains the screen hopping status of the target device. This API uses an asynchr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1262,7 +1265,7 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11-1).
+> This API is deprecated since API version 11. You are advised to use [cooperate.getCooperateSwitchState](#cooperategetcooperateswitchstate11-1).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1276,14 +1279,14 @@ Obtains the screen hopping status of the target device. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
 **Return value**
 
-| Parameters                       | Description                    |
+| Type                       | Description                    |
 | -------------------        | ------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.|
 
@@ -1308,7 +1311,7 @@ try {
 
 
 
-## on('cooperate')<sup>(deprecated)</sup>
+## cooperate.on('cooperate')<sup>(deprecated)</sup>
 
 on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateMsg }&gt;): void;
 
@@ -1316,7 +1319,7 @@ Enables listening for screen hopping status change events.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [on('cooperateMessage')](#oncooperatemessage11).
+> This API is deprecated since API version 11. You are advised to use [cooperate.on('cooperateMessage')](#cooperateoncooperatemessage11).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1331,7 +1334,7 @@ Enables listening for screen hopping status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1356,7 +1359,7 @@ try {
 
 
 
-## off('cooperate')<sup>(deprecated)</sup>
+## cooperate.off('cooperate')<sup>(deprecated)</sup>
 
 off(type: 'cooperate', callback?: Callback&lt;void&gt;): void;
 
@@ -1364,7 +1367,7 @@ Disables listening for screen hopping status change events.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [off('cooperateMessage')](#offcooperatemessage11).
+> This API is deprecated since API version 11. You are advised to use [cooperate.off('cooperateMessage')](#cooperateoffcooperatemessage11).
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 
@@ -1379,7 +1382,7 @@ Disables listening for screen hopping status change events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message         |
+| Error Code| Error Message         |
 | -------- | ----------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
@@ -1432,7 +1435,7 @@ Represents a screen hopping message notification.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. You are advised to use [CooperateState](#cooperatestate11) instead.
+> This API is deprecated since API version 11. You are advised to use [CooperateState](#cooperatestate11) instead.
 
 **System capability**: SystemCapability.Msdp.DeviceStatus.Cooperate
 

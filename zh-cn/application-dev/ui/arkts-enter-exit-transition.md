@@ -17,11 +17,11 @@
 | IDENTITY | 禁用转场效果。 | 无。 |
 | OPACITY | 默认的转场效果，透明度转场。 | 出现时透明度从0到1，消失时透明度从1到0。 |
 | SLIDE | 滑动转场效果。 | 出现时从窗口左侧滑入，消失时从窗口右侧滑出。 |
-| translate | 通过设置组件平移创建转场效果。 | 出现时为translate接口设置的值到默认值0，消失时为默认值0到translate接口设置的值。 |
-| rotate | 通过设置组件旋转创建转场效果。 | 出现时为rotate接口设置的值到默认值0，消失时为默认值0到rotate接口设置的值。 |
-| opacity | 通过设置透明度参数创建转场效果。 | 出现时为opacity设置的值到默认透明度1，消失时为默认透明度1到opacity设置的值。 |
+| translate | 通过设置组件平移创建转场效果。 | 出现时，平移参数的值从translate接口设置的值变化为默认值0，消失时从默认值0变化为translate接口设置的值。 |
+| rotate | 通过设置组件旋转创建转场效果。 | 出现时，旋转参数的值从rotate接口设置的值变化为默认值0，消失时从默认值0变化为rotate接口设置的值。 |
+| opacity | 通过设置透明度参数创建转场效果。 | 出现时，透明度参数的值从opacity设置的值变化为透明度默认值1，消失时从透明度默认值1变化为opacity设置的值。 |
 | move | 通过[TransitionEdge](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitionedge10)创建从窗口哪条边缘出来的效果。 | 出现时从TransitionEdge方向滑入，消失时滑出到TransitionEdge方向。 |
-| asymmetric | 通过此方法组合非对称的出现消失转场效果。<br/>- appear：出现转场的效果。<br/>- disappear：消失转场的效果。 | 出现时采用appear设置的TransitionEffect出现效果，消失时采用disappear设置的[TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)消失效果。 |
+| asymmetric | 通过此方法组合非对称的出现消失转场效果，即出现、消失为两套独立不同的动画，效果不互为逆过程。具体使用可参考[asymmetric](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#asymmetric10)。<br/>- appear：出现转场的效果。<br/>- disappear：消失转场的效果。 | 出现时采用appear设置的TransitionEffect出现效果，消失时采用disappear设置的[TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)消失效果。 |
 | combine | 组合其他TransitionEffect。 | 组合其他TransitionEffect，一起生效。 |
 | animation | 定义转场效果的动画参数：<br/>-&nbsp;如果不定义会跟随[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)的动画参数。<br/>-&nbsp;不支持通过控件的animation接口配置动画参数。<br/>-&nbsp;TransitionEffect中animation的onFinish不生效。 | 调用顺序是从上往下，上面TransitionEffect的animation也会作用到下面TransitionEffect。 |
 
@@ -31,7 +31,7 @@
    <!-- @[transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/compTransition/template6/Index.ets) -->
    
    ``` TypeScript
-   // 出现时会是所有转场效果的出现效果叠加，消失时会是所有消失转场效果的叠加
+   // 出现时会是所有出现转场效果的叠加，消失时会是所有消失转场效果的叠加
    // 说明各个effect跟随的动画参数
    private effect: object =
      TransitionEffect.OPACITY // 创建了透明度转场效果，这里没有调用animation接口，会跟随animateTo的动画参数

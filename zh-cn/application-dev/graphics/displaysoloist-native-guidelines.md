@@ -1,8 +1,8 @@
 # NativeDisplaySoloist开发指导 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
-<!--Designer: @hudi33-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -131,7 +131,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
 3. 在 Native C++层获取NativeXComponent。建议使用单例模式保存XComponent。此步骤需要在napi_init的过程中处理。
 
-    创建一个PluginManger单例类，用于管理NativeXComponent。
+    创建一个PluginManager单例类，用于管理NativeXComponent。
    <!-- @[display_soloist_create_plugin_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/plugin/plugin_manager.h) -->
    
    ``` C
@@ -303,11 +303,11 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
        if (render != nullptr) {
            DisplaySoloist_ExpectedRateRange range;
            bool useExclusiveThread = false;
-           if (id == "xcomponentId30") {
+           if (id == "xcomponentId_30") {
                range = {30, 120, 30};
            }
    
-           if (id == "xcomponentId120") {
+           if (id == "xcomponentId_120") {
                range = {30, 120, 120};
            }
            ExecuteDisplaySoloist(id, range, useExclusiveThread, nativeXComponent);

@@ -1,16 +1,14 @@
 # native_audio_stream_manager.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The file declares the functions related to an audio stream manager.
-
-You can call the functions to create an audio stream manager and set and manage audio streams.
+The file declares the functions related to an audio stream manager.<br> You can call the functions to create an audio stream manager and set and manage audio streams.
 
 **File to include**: <ohaudio/native_audio_stream_manager.h>
 

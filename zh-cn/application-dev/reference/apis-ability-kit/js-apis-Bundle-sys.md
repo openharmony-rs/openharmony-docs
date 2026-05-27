@@ -4,17 +4,17 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
-本模块提供应用信息查询能力，支持[包信息](js-apis-bundle-BundleInfo.md)、[应用信息](js-apis-bundle-ApplicationInfo.md)、[Ability组件信息](js-apis-bundle-AbilityInfo.md)等信息的查询，以及应用禁用状态的查询、设置等。
+本模块提供应用信息查询能力，支持[BundleInfo](js-apis-bundle-BundleInfo.md)、[ApplicationInfo](js-apis-bundle-ApplicationInfo.md)、[AbilityInfo](js-apis-bundle-AbilityInfo.md)等信息的查询，以及应用禁用状态的查询、设置等。
 
 > **说明：**
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API version 9开始，该模块不再维护，系统接口建议使用[`@ohos.bundle.bundleManager`](js-apis-bundleManager-sys.md)替代。
+> 从API version 9开始，该模块不再维护，系统接口建议使用[应用程序包管理模块](js-apis-bundleManager-sys.md)替代。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[`@ohos.bundle`](js-apis-Bundle.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[Bundle模块](js-apis-Bundle.md)。
 
 ## 导入模块
 

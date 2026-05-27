@@ -1,8 +1,8 @@
 # Using AVRecorder to Record Videos (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -10,7 +10,7 @@ You can use the [AVRecorder](media-kit-intro.md#avrecorder) to develop the video
 
 In this topic, you will learn how to use the AVRecorder to complete the process of starting, pausing, resuming, and stopping video recording.
 
-During application development, you can use the **state** property of the AVRecorder to obtain the AVRecorder state or call **on('stateChange')** to listen for state changes. Your code must meet the state machine requirements. For example, **pause()** is called only when the AVRecorder is in the **started** state, and **resume()** is called only when it is in the **paused** state.
+During application development, you can use the **state** property of AVRecorder to obtain its current state or use [on('stateChange')](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#onstatechange9) to listen for state change events. During development, you must strictly comply with the state machine requirements. For example, you can call the [pause](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#pause9-1) API only in the **started** state and call the [resume](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#resume9-1) API only in the **paused** state.
 
 **Figure 1** Recording state transition
 
@@ -37,11 +37,10 @@ Before your development, configure the following permissions for your applicatio
 > **NOTE**
 >
 > The AVRecorder only processes video data. To complete video recording, it must work with the video data collection module, which transfers the captured video data to the AVRecorder for data processing through the surface. Currently, the mainstream data collection module is the camera module. For details about the implementation, see [Video Recording](../camera/camera-recording.md).
->
 > For details about how to create and save a file, see [Accessing Application Files](../../file-management/app-file-access.md). By default, files are saved in the sandbox path of the application. To save them to Gallery, use the [security components](../medialibrary/photoAccessHelper-savebutton.md).
 
 
-Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md) for the API reference.
+For details about the APIs, see [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md).
 
 1. Create an AVRecorder instance. The AVRecorder is in the **idle** state.
 
@@ -79,7 +78,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    });
    ```
 
-3. Set video recording parameters and call **prepare()**. The AVRecorder enters the **prepared** state.
+3. Set video recording parameters and call [prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1) to enter the **prepared** state.
 
    > **NOTE**
    >
@@ -93,16 +92,17 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    > - The [recording specifications](media-kit-intro.md#supported-formats) in use must be those supported. The video bit rate, resolution, and frame rate are subject to the ranges supported by the hardware device.
    >
    > - The recording output URL (URL in **avConfig** in the sample code) must be in the format of fd://xx (where xx indicates a file descriptor). You must call [ohos.file.fs of Core File Kit](../../reference/apis-core-file-kit/js-apis-file-fs.md) to implement access to the application file. For details, see [Accessing Application Files](../../file-management/app-file-access.md).
+   > - For details about the video file encapsulation format (**fileFormat**) and video encoding format (**videoCodec**) configured in the sample code, see [AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9).
 
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
    let avProfile: media.AVRecorderProfile = {
-     fileFormat: media.ContainerFormatType.CFT_MPEG_4, // Video file container format. Only MP4 is supported.
+     fileFormat: media.ContainerFormatType.CFT_MPEG_4, // Video file encapsulation format.
      videoBitrate: 200000, // Video bit rate.
-     videoCodec: media.CodecMimeType.VIDEO_AVC, // Video file encoding format. AVC is supported.
+     videoCodec: media.CodecMimeType.VIDEO_AVC, // Video file encoding format.
      videoFrameWidth: 640, // Video frame width.
      videoFrameHeight: 480, // Video frame height.
      videoFrameRate: 30 // Video frame rate
@@ -114,13 +114,13 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
 
    const context: Context = this.getUIContext().getHostContext()!; // Refer to Accessing Application Files.
    let filePath: string = context.filesDir + '/example.mp4';
-   let videoFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+   let videoFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
    let fileFd: number = videoFile.fd; // Obtain the file FD.
   
    let avConfig: media.AVRecorderConfig = {
      videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV, // Video source type. YUV and ES are supported.
      profile: avProfile,
-     url: 'fd://' + fileFd.toString(), // Create, read, and write a video file by referring to the sample code in Accessing Application Files.
+     url: 'fd://' + fileFd.toString(), // Create, read, and write a video file by referring to the sample code in Application File Access and Management.
      metadata: videoMetaData
    };
 
@@ -135,9 +135,9 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
 
 4. Obtain the surface ID required for video recording.
 
-   Call **getInputSurface()**. The returned surface ID is transferred to the video data collection module, which is the camera module in the sample code.
+   Call [getInputSurface](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9-1). The surface ID in the return value is passed to the video data input source module. which is the camera module in the sample code.
 
-   The video data collection module obtains the surface based on the surface ID and transmits video data to the AVRecorder through the surface. Then the AVRecorder processes the video data.
+     The video data collection module obtains the surface based on the surface ID and transmits video data to the AVRecorder through the surface. Then the AVRecorder processes the video data.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -149,23 +149,19 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    });
    ```
 
-5. Initialize the video data input source.
+5. Initialize the video data input source. This step is performed in the video data collection module. For the camera module, you need to create a Camera instance, obtain the camera list, create a camera input stream, and create a video output stream. For details, see [Video Recording](../camera/camera-recording.md).
 
-   This step is performed in the video data collection module. For the camera module, you need to create a Camera instance, obtain the camera list, create a camera input stream, and create a video output stream. For details, see [Video Recording](../camera/camera-recording.md).
+6. Start recording. Start the input source to input video data, for example, by calling **camera.VideoOutput.start** of the camera module. Call [start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9-1). The AVRecorder enters the **started** state.
 
-6. Start recording.
+7. Call [pause](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#pause9-1) to pause the recording. The AVRecorder enters the **paused** state, and the input source stops inputting data. for example, by calling **camera.VideoOutput.stop** of the camera module.
 
-   Start the input source to input video data, for example, by calling **camera.VideoOutput.start** of the camera module. Then call **AVRecorder.start()** to switch the AVRecorder to the **started** state.
+8. Call [resume](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#resume9-1) to resume recording. The AVRecorder enters the **started** state again.
 
-7. Call **pause()** to pause recording. The AVRecorder enters the **paused** state. In addition, pause data input, for example, by calling **camera.VideoOutput.stop** of the camera module.
+9. Call [stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1) to stop recording. The AVRecorder enters the **stopped** state and the camera stops recording.
 
-8. Call **resume()** to resume recording. The AVRecorder enters the **started** state again.
+10. Call [reset](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#reset9-1) to reset resources. The AVRecorder enters the **idle** state and recording parameters can be configured again.
 
-9. Call **stop()** to stop recording. The AVRecorder enters the **stopped** state again. In addition, stop camera recording.
-
-10. Call **reset()** to reset the resources. The AVRecorder enters the **idle** state. In this case, you can reconfigure the recording parameters.
-
-11. Call **release()** to release the resources. The AVRecorder enters the **released** state. In addition, release the video data input source resources (camera resources in this example).
+11. Call [release](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#release9-1) to release the instance. The AVRecorder enters the **released** state, exits recording, and releases resources related to the video data input source, such as camera resources.
 
 
 ## Complete Sample Code
@@ -178,7 +174,8 @@ import { common } from '@kit.AbilityKit';
 import { camera } from '@kit.CameraKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs, fileUri } from '@kit.CoreFileKit';
+import { fileUri } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function videoRecording(context: common.Context): Promise<void> {
@@ -209,9 +206,9 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // Set recording parameters to complete the preparations.
   let avProfile: media.AVRecorderProfile = {
-    fileFormat: media.ContainerFormatType.CFT_MPEG_4, // Video file container format. Only MP4 is supported.
+    fileFormat: media.ContainerFormatType.CFT_MPEG_4, // Video file encapsulation format.
     videoBitrate: 100000, // Video bit rate.
-    videoCodec: media.CodecMimeType.VIDEO_AVC, // Video file encoding format. AVC is supported.
+    videoCodec: media.CodecMimeType.VIDEO_AVC, // Video file encoding format.
     videoFrameWidth: 640, // Video frame width.
     videoFrameHeight: 480, // Video frame height.
     videoFrameRate: 30 // Video frame rate
@@ -222,16 +219,16 @@ async function videoRecording(context: common.Context): Promise<void> {
   let avConfig: media.AVRecorderConfig = {
     videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV, // Video source type. YUV and ES are supported.
     profile: avProfile,
-    url: 'fd://35', // Create, read, and write a file by referring to the sample code in Accessing Application Files.
+    url: 'fd://35', // Create, read, and write a file by referring to the sample code in Application File Access and Management.
     metadata: videoMetaData
   };
 
   // Create a file and set avConfig.url.
   let filePath: string = ''; // File path.
-  let videoFile: fs.File | undefined = undefined;
+  let videoFile: fileIo.File | undefined = undefined;
   try {
-    filePath = context.filesDir + '/example.mp4'; // File sandbox path. The file name extension must match the container format.
-    videoFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE); // Open the file.
+    filePath = context.filesDir + '/example.mp4'; // File sandbox path. The file name extension must match the encapsulation format.
+    videoFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); // Open the file.
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to open file, error code: ${err.code}, message: ${err.message}`);
@@ -257,7 +254,7 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // Start recording.
   try {
-    if (avRecorder.state === 'prepared') { // start() can be called only when the AVRecorder is in the prepared state .
+    if (avRecorder.state === 'prepared') { // start() can be called only when the AVRecorder is in the prepared state.
       await startCameraOutput(); // Start camera stream output.
       await avRecorder.start();
     }
@@ -268,7 +265,7 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // Pause recording.
   try {
-    if (avRecorder.state === 'started') { // pause() can be called only when the AVRecorder is in the started state .
+    if (avRecorder.state === 'started') { // pause() can be called only when the AVRecorder is in the started state.
       await avRecorder.pause();
       await stopCameraOutput(); // Stop the camera stream output.
     }
@@ -279,7 +276,7 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // Resume recording.
   try {
-    if (avRecorder.state === 'paused') { // resume() can be called only when the AVRecorder is in the paused state .
+    if (avRecorder.state === 'paused') { // resume() can be called only when the AVRecorder is in the paused state.
       await startCameraOutput(); // Start camera stream output.
       await avRecorder.resume();
     }
@@ -319,7 +316,7 @@ async function videoRecording(context: common.Context): Promise<void> {
   // Close the file descriptor of the recording file.
   try {
     if (videoFile !== undefined) {
-      await fs.close(videoFile.fd);
+      await fileIo.close(videoFile.fd);
     }
   } catch (error) {
     let err = error as BusinessError;
@@ -331,6 +328,7 @@ async function videoRecording(context: common.Context): Promise<void> {
   
   // The security component saves the media asset to Gallery.
   let phAccessHelper: photoAccessHelper.PhotoAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
+
   // Ensure that the asset specified by uriPath exists.
   let uriPath: string = fileUri.getUriFromPath(filePath); // Obtain the file URI, which is used by the security component when saving the file to Gallery.
   let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = 

@@ -556,7 +556,7 @@ struct DragControllerPage {
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-import { fileUri, fileIo as fs } from '@kit.CoreFileKit';
+import { fileUri, fileIo as fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { dragController } from '@kit.ArkUI';
 
@@ -595,12 +595,12 @@ struct ImageExample {
                     let data =
                       context.resourceManager.getRawFdSync('test1.mp4');
                     let filePath = context.filesDir + '/test1.mp4';
-                    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+                    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
                     let bufferSize = data.length as number;
                     let buf = new ArrayBuffer(bufferSize);
-                    fs.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
-                    fs.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
-                    fs.closeSync(file.fd);
+                    fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
+                    fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
+                    fileIo.closeSync(file.fd);
                     context.resourceManager.closeRawFdSync('test1.mp4')
                     this.uri = fileUri.getUriFromPath(filePath);
                     let videoMp: uniformDataStruct.FileUri = {
@@ -1202,10 +1202,10 @@ animate(options: AnimationOptions, handler: () => void): void
 
 | 名称 | 值|说明                                                          |
 | ------ | --------------------- |--------------------------------------- |
-| BEGIN  | - |拖拽进入组件范围静止一段时间，被识别为悬停状态。此时允许进行一些悬停检测的准备操作。 |
-| UPDATE | - |拖拽已处于悬停状态，如果继续静止会定期触发UPDATE通知，以检查悬停状态。此时允许UI效果刷新以突出悬停状态。 |
-| END    | - |如果最后一次UPDATE通知后拖拽继续静止会进入END，整个悬停检测结束。进入END后拖拽需要移出组件范围后再次进入组件或移入组件内子组件才会重新开始悬停检测。此时应用程序可进行清理、导航或视图切换操作。 |
-| CANCEL | - |拖拽进入BEGIN后，在手指/鼠标抬起、切换窗口、息屏、移出组件范围、移入组件内子组件或组件内移动超过检测阈值等场景会触发CANCEL通知，悬停检测中断。应用程序将恢复UI样式，并取消待定的导航及视图切换操作。 |
+| BEGIN  | 0 |拖拽进入组件范围静止一段时间，被识别为悬停状态。此时允许进行一些悬停检测的准备操作。 |
+| UPDATE | 1 |拖拽已处于悬停状态，如果继续静止会定期触发UPDATE通知，以检查悬停状态。此时允许UI效果刷新以突出悬停状态。 |
+| END    | 2 |如果最后一次UPDATE通知后拖拽继续静止会进入END，整个悬停检测结束。进入END后拖拽需要移出组件范围后再次进入组件或移入组件内子组件才会重新开始悬停检测。此时应用程序可进行清理、导航或视图切换操作。 |
+| CANCEL | 3 |拖拽进入BEGIN后，在手指/鼠标抬起、切换窗口、息屏、移出组件范围、移入组件内子组件或组件内移动超过检测阈值等场景会触发CANCEL通知，悬停检测中断。应用程序将恢复UI样式，并取消待定的导航及视图切换操作。 |
 
 ## DragSpringLoadingConfiguration<sup>20+</sup>
 

@@ -1,8 +1,8 @@
-# @ohos.notification (Notification模块)(系统应用)
+# @ohos.notification (Notification模块)(系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API version 9开始，该接口不再维护，推荐使用新接口[@ohos.notificationManager](js-apis-notificationManager.md)。
+> 从API version 9开始，该模块不再维护，建议使用[@ohos.notificationManager](js-apis-notificationManager-sys.md)替代。
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[Notification](./js-apis-notification.md)。
@@ -153,7 +153,7 @@ import Base from '@ohos.base';
 // addslot回调
 let addSlotCallBack = (err: Base.BusinessError) => {
   if (err) {
-    console.info("addSlot failed " + JSON.stringify(err));
+    console.error("addSlot failed " + JSON.stringify(err));
   } else {
     console.info("addSlot success");
   }
@@ -234,7 +234,7 @@ import Base from '@ohos.base';
 // addSlots回调
 let addSlotsCallBack = (err: Base.BusinessError) => {
   if (err) {
-    console.info("addSlots failed " + JSON.stringify(err));
+    console.error("addSlots failed " + JSON.stringify(err));
   } else {
     console.info("addSlots success");
   }
@@ -324,7 +324,7 @@ import NotificationSubscribe from '@ohos.notificationSubscribe';
 // subscribe回调
 let subscribeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("subscribe failed " + JSON.stringify(err));
+    console.error("subscribe failed " + JSON.stringify(err));
   } else {
     console.info("subscribe success");
   }
@@ -368,7 +368,7 @@ import NotificationSubscribe from '@ohos.notificationSubscribe';
 
 let subscribeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("subscribe failed " + JSON.stringify(err));
+    console.error("subscribe failed " + JSON.stringify(err));
   } else {
     console.info("subscribe success");
   }
@@ -453,7 +453,7 @@ import NotificationSubscribe from '@ohos.notificationSubscribe';
 
 let unsubscribeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("unsubscribe failed " + JSON.stringify(err));
+    console.error("unsubscribe failed " + JSON.stringify(err));
   } else {
     console.info("unsubscribe success");
   }
@@ -537,7 +537,7 @@ import Base from '@ohos.base';
 
 let enableNotificationCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("enableNotification failed " + JSON.stringify(err));
+    console.error("enableNotification failed " + JSON.stringify(err));
   } else {
     console.info("enableNotification success");
   }
@@ -615,7 +615,7 @@ import Base from '@ohos.base';
 
 let isNotificationEnabledCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isNotificationEnabled failed " + JSON.stringify(err));
+    console.error("isNotificationEnabled failed " + JSON.stringify(err));
   } else {
     console.info("isNotificationEnabled success");
   }
@@ -690,7 +690,7 @@ import Base from '@ohos.base';
 
 let isNotificationEnabledCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isNotificationEnabled failed " + JSON.stringify(err));
+    console.error("isNotificationEnabled failed " + JSON.stringify(err));
   } else {
     console.info("isNotificationEnabled success");
   }
@@ -762,7 +762,7 @@ import Base from '@ohos.base';
 
 let displayBadgeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("displayBadge failed " + JSON.stringify(err));
+    console.error("displayBadge failed " + JSON.stringify(err));
   } else {
     console.info("displayBadge success");
   }
@@ -839,7 +839,7 @@ import Base from '@ohos.base';
 
 let isBadgeDisplayedCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isBadgeDisplayed failed " + JSON.stringify(err));
+    console.error("isBadgeDisplayed failed " + JSON.stringify(err));
   } else {
     console.info("isBadgeDisplayed success");
   }
@@ -917,7 +917,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 let setSlotByBundleCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("setSlotByBundle failed " + JSON.stringify(err));
+    console.error("setSlotByBundle failed " + JSON.stringify(err));
   } else {
     console.info("setSlotByBundle success");
   }
@@ -1002,7 +1002,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 let getSlotsByBundleCallback = (err: Base.BusinessError, data: NotificationManager.NotificationSlot[]) => {
   if (err) {
-    console.info("getSlotsByBundle failed " + JSON.stringify(err));
+    console.error("getSlotsByBundle failed " + JSON.stringify(err));
   } else {
     console.info("getSlotsByBundle success");
   }
@@ -1080,7 +1080,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 let getSlotNumByBundleCallback = (err: Base.BusinessError, data: number) => {
   if (err) {
-    console.info("getSlotNumByBundle failed " + JSON.stringify(err));
+    console.error("getSlotNumByBundle failed " + JSON.stringify(err));
   } else {
     console.info("getSlotNumByBundle success");
   }
@@ -1159,7 +1159,7 @@ import Base from '@ohos.base';
 
 let removeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("remove failed " + JSON.stringify(err));
+    console.error("remove failed " + JSON.stringify(err));
   } else {
     console.info("remove success");
   }
@@ -1250,7 +1250,7 @@ let hashCode: string = 'hashCode';
 
 let removeCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("remove failed " + JSON.stringify(err));
+    console.error("remove failed " + JSON.stringify(err));
   } else {
     console.info("remove success");
   }
@@ -1324,7 +1324,7 @@ import Base from '@ohos.base';
 
 let removeAllCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeAll failed " + JSON.stringify(err));
+    console.error("removeAll failed " + JSON.stringify(err));
   } else {
     console.info("removeAll success");
   }
@@ -1360,7 +1360,7 @@ import Base from '@ohos.base';
 
 let removeAllCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeAll failed " + JSON.stringify(err));
+    console.error("removeAll failed " + JSON.stringify(err));
   } else {
     console.info("removeAll success");
   }
@@ -1432,7 +1432,7 @@ import Base from '@ohos.base';
 
 function removeAllCallback(err: Base.BusinessError) {
   if (err) {
-    console.info("removeAll failed " + JSON.stringify(err));
+    console.error("removeAll failed " + JSON.stringify(err));
   } else {
     console.info("removeAll success");
   }
@@ -1500,7 +1500,7 @@ import NotificationManager from '@ohos.notificationManager';
 
 function getAllActiveNotificationsCallback(err: Base.BusinessError, data: NotificationManager.NotificationRequest[]) {
   if (err) {
-    console.info("getAllActiveNotifications failed " + JSON.stringify(err));
+    console.error("getAllActiveNotifications failed " + JSON.stringify(err));
   } else {
     console.info("getAllActiveNotifications success");
   }
@@ -1567,7 +1567,7 @@ import Base from '@ohos.base';
 
 let removeGroupByBundleCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("removeGroupByBundle failed " + JSON.stringify(err));
+    console.error("removeGroupByBundle failed " + JSON.stringify(err));
   } else {
     console.info("removeGroupByBundle success");
   }
@@ -1644,7 +1644,7 @@ import Base from '@ohos.base';
 
 let setDoNotDisturbDateCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("setDoNotDisturbDate failed " + JSON.stringify(err));
+    console.error("setDoNotDisturbDate failed " + JSON.stringify(err));
   } else {
     console.info("setDoNotDisturbDate success");
   }
@@ -1728,7 +1728,7 @@ import Base from '@ohos.base';
 
 let setDoNotDisturbDateCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("setDoNotDisturbDate failed " + JSON.stringify(err));
+    console.error("setDoNotDisturbDate failed " + JSON.stringify(err));
   } else {
     console.info("setDoNotDisturbDate success");
   }
@@ -1815,7 +1815,7 @@ import Base from '@ohos.base';
 
 let getDoNotDisturbDateCallback = (err: Base.BusinessError, data: Notification.DoNotDisturbDate) => {
   if (err) {
-    console.info("getDoNotDisturbDate failed " + JSON.stringify(err));
+    console.error("getDoNotDisturbDate failed " + JSON.stringify(err));
   } else {
     console.info("getDoNotDisturbDate success");
   }
@@ -1881,7 +1881,7 @@ import Base from '@ohos.base';
 
 let getDoNotDisturbDateCallback = (err: Base.BusinessError, data: Notification.DoNotDisturbDate) => {
   if (err) {
-    console.info("getDoNotDisturbDate failed " + JSON.stringify(err));
+    console.error("getDoNotDisturbDate failed " + JSON.stringify(err));
   } else {
     console.info("getDoNotDisturbDate success");
   }
@@ -1956,7 +1956,7 @@ import Base from '@ohos.base';
 
 let supportDoNotDisturbModeCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("supportDoNotDisturbMode failed " + JSON.stringify(err));
+    console.error("supportDoNotDisturbMode failed " + JSON.stringify(err));
   } else {
     console.info("supportDoNotDisturbMode success");
   }
@@ -2021,7 +2021,7 @@ import Base from '@ohos.base';
 
 let enabledNotificationCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("enableDistributed failed " + JSON.stringify(err));
+    console.error("enableDistributed failed " + JSON.stringify(err));
   } else {
     console.info("enableDistributed success");
   }
@@ -2090,7 +2090,7 @@ import Base from '@ohos.base';
 
 let enableDistributedByBundleCallback = (err: Base.BusinessError) => {
   if (err) {
-    console.info("enableDistributedByBundle failed " + JSON.stringify(err));
+    console.error("enableDistributedByBundle failed " + JSON.stringify(err));
   } else {
     console.info("enableDistributedByBundle success");
   }
@@ -2169,7 +2169,7 @@ import Base from '@ohos.base';
 
 let isDistributedEnabledByBundleCallback = (err: Base.BusinessError, data: boolean) => {
   if (err) {
-    console.info("isDistributedEnabledByBundle failed " + JSON.stringify(err));
+    console.error("isDistributedEnabledByBundle failed " + JSON.stringify(err));
   } else {
     console.info("isDistributedEnabledByBundle success" + JSON.stringify(data));
   }
@@ -2248,7 +2248,7 @@ import Base from '@ohos.base';
 
 let getDeviceRemindTypeCallback = (err: Base.BusinessError, data: Notification.DeviceRemindType) => {
   if (err) {
-    console.info("getDeviceRemindType failed " + JSON.stringify(err));
+    console.error("getDeviceRemindType failed " + JSON.stringify(err));
   } else {
     console.info("getDeviceRemindType success");
   }

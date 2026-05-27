@@ -5,7 +5,7 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
-一种非线性数据结构。
+一种存储唯一值的非线性数据结构，能够高效地进行元素存在性检测和去重操作。
 
 > **说明：**
 >

@@ -1,14 +1,14 @@
 # Custom Composition
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
-Custom composition provides component-level customization capabilities, allowing you to create advanced components with service logic by combining existing components. During composition, you can: (1) Use layout containers and common layout attributes to arrange child component positions. (2) Utilize the **Canvas** component for pure custom drawing. (3) Employ the **Shape** component to construct geometric shapes through shape combinations for interactive graphics and animations. (4) Apply the animation module to create flexible animation effects across different attribute types.
+Custom composition provides component-level customization capabilities, allowing you to create advanced components with service logic by combining existing components. When composing components, you can use layout containers and universal layout properties to customize the positioning of child components. You can use the [Canvas](arkts-drawing-customization-on-canvas.md) component for fully custom drawing, or use [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md) components to combine shapes, build geometric figures, and achieve interactive graphic animations. (4) Apply the animation module to create flexible animation effects across different attribute types.
 
 ## Basic Concepts
 

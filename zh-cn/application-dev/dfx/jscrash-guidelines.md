@@ -322,7 +322,7 @@ hdc shell param set persist.ark.properties 0x105c
 hdc shell reboot
 ```
 
-Promise异步任务中抛出的异常默认不会导致JS Crash，但可以通过[ErrorManager unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获Rejected Promise后，主动将异常抛出，从而触发JS Crash。
+Promise异步任务中抛出的异常默认不会导致JS Crash，但可以通过[on('unhandledRejection')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获Rejected Promise后，主动将异常抛出，从而触发JS Crash。
 
 在启用Promise异步栈功能的情况下，当Promise任务中抛出异常并导致JS Crash时，JS Crash日志中会展示Promise异步任务创建时的栈信息。
 

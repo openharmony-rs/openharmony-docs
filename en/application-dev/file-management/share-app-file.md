@@ -10,7 +10,7 @@ An application can share a file with another application based on the uniform re
 
 ## Using startAbility to Start a File Application
 
-[startAbility](../application-models/file-processing-apps-startup.md)-based file sharing: You can use [wantConstant.Flags](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) to specify the read or read/write permission on the file for the target application (application with which the file is shared). The target application can call [fs.open](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopen) to open the file based on the URI and perform read and write operations.
+[startAbility](../application-models/file-processing-apps-startup.md)-based file sharing: You can use [wantConstant.Flags](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#flags) to specify the read or read/write permission on the file for the target application (application with which the file is shared). The target application can call [fileIo.open](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopen) to open the file based on the URI and perform read and write operations.
 
 ## Shareable Application Directories
 

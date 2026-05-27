@@ -1,8 +1,8 @@
 # @ohos.distributedsched.proxyChannelManager (代理通道管理)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
-<!--Owner: @huangkai71-->
-<!--Designer: @lee_jet520-->
+<!--Owner: @jzy_123-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -89,8 +89,8 @@ struct Index {
         .onClick(() => {
           let channelInfo: proxyChannelManager.ChannelInfo = {
             linkType: proxyChannelManager.LinkType.LINK_BR,
-            peerDevAddr: "xx:xx:xx:xx:xx:xx", //穿戴设备蓝牙mac
-            peerUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", //穿戴侧监听的uuid
+            peerDevAddr: "xx:xx:xx:xx:xx:xx", // 穿戴设备蓝牙mac
+            peerUuid: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", // 穿戴侧监听的uuid
           };
           // 以下为使用 try/catch 判断
           try {

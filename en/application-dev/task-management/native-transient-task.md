@@ -5,15 +5,19 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## When to Use
 
 An application is suspended after it runs in the background for a short period of time. If the application needs to execute a short-time task in the background, for example, saving the status, it can request a transient task to extend the running time in the background.
 
+## Constraints
+
+If the **Request transient task** button is tapped for more than three consecutive times, the number of transient tasks exceeds the upper limit, and an error is reported. For more constraints, see [constraints on transient tasks (ArkTS)](transient-task.md#constraints).
+
 ## Available APIs
 
-The following table lists the common APIs. For details, see [API Reference](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#functions).
+The following table lists the common APIs. For details, see [transient_task_api.h](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md).
 
 
 | Name| Description|
@@ -29,12 +33,12 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 1. Encapsulate the functions.
 
-   <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
-
+   <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   
    ``` C++
    #include "napi/native_api.h"
    #include "transient_task/transient_task_api.h"
-
+   
    TransientTask_DelaySuspendInfo delaySuspendInfo;
    const int32_t TransientTask_TIMER = 3;
    static void Callback(void)
@@ -42,7 +46,7 @@ The following table lists the common APIs. For details, see [API Reference](../r
        // The transient task is about to end. The service cancels the transient task here.
        OH_BackgroundTaskManager_CancelSuspendDelay(delaySuspendInfo.requestId);
    }
-
+   
    // Request a transient task.
    static napi_value RequestSuspendDelay(napi_env env, napi_callback_info info)
    {
@@ -55,7 +59,7 @@ The following table lists the common APIs. For details, see [API Reference](../r
        }
        return result;
    }
-
+   
    // Obtain the remaining time.
    static napi_value GetRemainingDelayTime(napi_env env, napi_callback_info info)
    {
@@ -69,7 +73,7 @@ The following table lists the common APIs. For details, see [API Reference](../r
        }
        return result;
    }
-
+   
    // Cancel the transient task.
    static napi_value CancelSuspendDelay(napi_env env, napi_callback_info info)
    {
@@ -78,10 +82,10 @@ The following table lists the common APIs. For details, see [API Reference](../r
        napi_create_int32(env, res, &result);
        return result;
    }
-
+   
    // Obtain all transient task information.
    TransientTask_TransientTaskInfo transientTaskInfo;
-
+   
    static napi_value GetTransientTaskInfo(napi_env env, napi_callback_info info)
    {
        napi_value result;
@@ -101,7 +105,7 @@ The following table lists the common APIs. For details, see [API Reference](../r
                if (transientTaskInfo.transientTasks[index].requestId == 0) {
                    continue;
                }
-            
+               
                napi_value napiWork = nullptr;
                napi_create_object(env, &napiWork);
    
@@ -130,8 +134,8 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 2. Register the functions.
 
-   <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
-
+   <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   
    ``` C++
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
@@ -150,8 +154,8 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 3. Register the module.
 
-   <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
-
+   <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
+   
    ``` C++
    static napi_module demoModule = {
        .nm_version = 1,
@@ -162,7 +166,7 @@ The following table lists the common APIs. For details, see [API Reference](../r
        .nm_priv = ((void*)0),
        .reserved = { 0 },
    };
-
+   
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
    {
        napi_module_register(&demoModule);
@@ -171,11 +175,11 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 ### Declaring the Functions in the index.d.ts File
 
-   <!-- @[declaration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
-   ```ts
+   <!-- @[declaration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
    import backgroundTaskManager from '@kit.BackgroundTasksKit';
-
+   
    export const RequestSuspendDelay: () => number;
    export const GetRemainingDelayTime: () => number;
    export const CancelSuspendDelay: () => number;
@@ -184,25 +188,28 @@ The following table lists the common APIs. For details, see [API Reference](../r
 
 ### Calling the Functions in the index.ets File
 
-   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->
+   
    ``` TypeScript
    import testTransientTask from 'libentry.so';
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = '';
-
+     // ...
+   
      build() {
        Row() {
          Column() {
+           // ...
            Text(this.message)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
            Button() {
              Text("RequestSuspendDelay").fontSize(20)
            }
+           .id('request_suspend_delay')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -210,10 +217,11 @@ The following table lists the common APIs. For details, see [API Reference](../r
            .onClick(() => {
              this.RequestSuspendDelay();
            })
-
+   
            Button(){
              Text('GetRemainingDelayTime').fontSize(20)
            }
+           .id('get_remaining_delay_time')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -221,10 +229,11 @@ The following table lists the common APIs. For details, see [API Reference](../r
            .onClick(() => {
              this.GetRemainingDelayTime();
            })
-
+   
            Button(){
              Text('CancelSuspendDelay').fontSize(20)
            }
+           .id('cancel_suspend_delay')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -232,10 +241,11 @@ The following table lists the common APIs. For details, see [API Reference](../r
            .onClick(() => {
              this.CancelSuspendDelay();
            })
-
+   
            Button(){
              Text('GetTransientTaskInfo').fontSize(20)
            }
+           .id('get_transient_task_info')
            .margin({ top: 10, bottom: 10 })
            .width(250)
            .height(40)
@@ -248,22 +258,23 @@ The following table lists the common APIs. For details, see [API Reference](../r
        }
        .height('100%')
      }
-
+   
      RequestSuspendDelay() {
        let requestId = testTransientTask.RequestSuspendDelay();
+       // ...
        console.info('The return requestId is ' + requestId);
      }
-
+   
      GetRemainingDelayTime() {
        let time = testTransientTask.GetRemainingDelayTime();
        console.info('The time is ' + time);
      }
-
+   
      CancelSuspendDelay() {
        let ret = testTransientTask.CancelSuspendDelay();
        console.info('The ret is ' + ret);
      }
-
+   
      GetTransientTaskInfo() {
        let ret = testTransientTask.GetTransientTaskInfo();
        console.info('The ret is ' + JSON.stringify(ret));
@@ -304,6 +315,3 @@ Configure the `CMakeLists.txt` file. Add the required shared library, that is, `
    ```txt
    The ret is {"remainingQuota":600000,"transientTasks":[]}
    ```
-> **NOTE**
->
->If the `Request transient task` button is tapped for more than three consecutive times, the number of transient tasks exceeds the upper limit, and an error is reported. For more constraints, see [Transient Task (ArkTS)](transient-task.md#constraints).

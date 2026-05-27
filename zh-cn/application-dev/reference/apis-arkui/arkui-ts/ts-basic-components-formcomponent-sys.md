@@ -76,8 +76,8 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 说明              |
 | --------- | ------------------------------- | ---- | ---- | ----------------- |
-| id        | number                 |   否   |  否   | 卡片标识（number类型）。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。                                        |
-| idString      | string            |   否   |  否   | 卡片标识（string类型）。                             |
+| id        | number                 |   否   |  否   | 卡片标识。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。                                        |
+| idString      | string            |   否   |  否   | 卡片标识。                             |
 | isLocked<sup>22+</sup>      | boolean             |   否   |   否   | 表示卡片是否被锁定，true表示卡片被锁定，false表示卡片没有被锁定。|
 
 ## FormSize<sup>18+</sup>
@@ -90,8 +90,8 @@ ohos.permission.REQUIRE_FORM, ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 | 参数名    | 参数类型                        | 只读 | 可选 | 说明    |
 | --------- | ------------------------------- | ---- | ---- |---------|
-| width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。 |
-| height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。 |
+| width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。<br/>**说明：**<br>width的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
+| height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。<br/>**说明：**<br>height的取值范围大于0，小于2^53。如果不在范围内的数值卡片不显示。 |
 
 ## ErrorInformation<sup>18+</sup>
 

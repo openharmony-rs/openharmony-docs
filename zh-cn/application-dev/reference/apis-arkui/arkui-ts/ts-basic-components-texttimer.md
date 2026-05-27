@@ -8,7 +8,7 @@
 
 通过文本显示计时信息并控制其计时器状态的组件。
 
-组件不可见时，时间变动将停止，组件的可见状态基于[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)处理，可见阈值ratios大于0即视为可见状态。
+组件不可见（非锁屏状态和应用后台状态）时，UI时间变动将停止（即该组件此时不会绘制），[onTimer](#ontimer)仍然会正常触发。
 
 >  **说明：**
 >
@@ -32,7 +32,7 @@ TextTimer(options?: TextTimerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options |  [TextTimerOptions](#texttimeroptions对象说明)| 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。 |
+| options |  [TextTimerOptions](#texttimeroptions对象说明)| 否 | 通过文本显示计时信息并控制其计时器状态的组件参数。默认值继承[TextTimerOptions](#texttimeroptions对象说明) 。|
 
 ## TextTimerOptions对象说明
 
@@ -199,7 +199,7 @@ contentModifier(modifier: ContentModifier\<TextTimerConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<TextTimerConfiguration>](#texttimerconfiguration12对象说明) | 是   | 在TextTimer组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[TextTimerConfiguration](#texttimerconfiguration12对象说明)> | 是   | 在TextTimer组件上，定制内容区的方法。<br/>modifier： 内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## 事件
 

@@ -4,7 +4,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 This module provides APIs for collecting statistics on device usage.
 
@@ -16,11 +16,11 @@ System applications can call these APIs to implement the following features:
 
 > **NOTE**
 >
-> - This module is deprecated since API version 9. You are advised to use [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md) instead.
+> This module is deprecated since API version 9. You are advised to use [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md) instead.
 >
-> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundleState](js-apis-deviceUsageStatistics.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundleState](js-apis-deviceUsageStatistics.md).
 
 ## Modules to Import
 
@@ -417,15 +417,15 @@ Provides the usage duration information of an application.
 | Name                     | Type    | Mandatory  | Description                                      |
 | ------------------------ | ------ | ---- | ---------------------------------------- |
 | bundleName               | string | No   | Bundle name of the application.                                   |
-| abilityPrevAccessTime    | number | No   | Last time when the application was used.                            |
-| abilityInFgTotalTime     | number | No   | Total time that the application runs in the foreground.                            |
+| abilityPrevAccessTime    | number | No   | Last time when the application was used, in milliseconds.                            |
+| abilityInFgTotalTime     | number | No   | Total time that the application runs in the foreground, in milliseconds.                            |
 | id                       | number | Yes   | User ID.|
-| abilityPrevSeenTime      | number | No   | Last time when the application was visible in the foreground.|
-| abilitySeenTotalTime     | number | No   | Total time that the application is visible in the foreground.|
-| fgAbilityAccessTotalTime | number | No   | Total time that the application accesses the foreground.|
-| fgAbilityPrevAccessTime  | number | No   | Last time when the application accessed the foreground.|
-| infosBeginTime           | number | No   | Time logged in the first application usage record in the **BundleActiveInfo** object.|
-| infosEndTime             | number | No   | Time logged in the last application usage record in the **BundleActiveInfo** object.|
+| abilityPrevSeenTime      | number | No   | Last time when the application was visible in the foreground, in milliseconds.|
+| abilitySeenTotalTime     | number | No   | Total time that the application is visible in the foreground, in milliseconds.|
+| fgAbilityAccessTotalTime | number | No   | Total time that the application accesses the foreground, in milliseconds.|
+| fgAbilityPrevAccessTime  | number | No   | Last time when the application accessed the foreground, in milliseconds.|
+| infosBeginTime           | number | No   | Time logged in the first application usage record in the **BundleActiveInfo** object, in milliseconds.|
+| infosEndTime             | number | No   | Time logged in the last application usage record in the **BundleActiveInfo** object, in milliseconds.|
 
 ### merge<sup>(deprecated)</sup>
 
@@ -452,7 +452,7 @@ Provides information about an application event.
 | --------------------- | ------ | ---- | ---------------------------------------- |
 | bundleName            | string | No   | Bundle name of the application.                                   |
 | stateType             | number | No   | Application event type.                                 |
-| stateOccurredTime     | number | No   | Timestamp when the application event occurs.                             |
+| stateOccurredTime     | number | No   | Timestamp when the application event occurs, in milliseconds.                             |
 | appUsagePriorityGroup | number | No   | Group of the application by usage priority.|
 | indexOfLink           | string | No   | Shortcut ID.|
 | nameOfClass           | string | No   | Class name.|

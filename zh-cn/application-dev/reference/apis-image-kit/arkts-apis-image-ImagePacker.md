@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -328,7 +328,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                                                   |
 | -------------- | ------------------------------------------------------ |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **示例：**
 
@@ -358,7 +358,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 | 参数名   | 类型                            | 必填 | 说明                           |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。                 |
-| fd       | number                          | 是   | 文件描述符。                   |
+| fd       | number                          | 是   | 文件描述符。取值范围为[0，65535]。                   |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，当编码进文件成功，err为undefined，否则为错误对象。  |
 
@@ -382,7 +382,7 @@ packToFile(source: ImageSource, fd: number, options: PackingOption, callback: As
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   // 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
@@ -390,7 +390,7 @@ async function PackToFile(context : Context) {
   const imageSourceObj: image.ImageSource = image.createImageSource(path);
   let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
   const filePath: string = context.filesDir + "/image_source.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts, (err: BusinessError) => {
     if (err) {
@@ -415,14 +415,14 @@ packToFile (source: ImageSource, fd: number, options: PackingOption): Promise\<v
 | 参数名 | 类型                            | 必填 | 说明           |
 | ------ | ------------------------------- | ---- | -------------- |
 | source | [ImageSource](arkts-apis-image-ImageSource.md)     | 是   | 编码的ImageSource。 |
-| fd     | number                          | 是   | 文件描述符。   |
+| fd     | number                          | 是   | 文件描述符。取值范围为[0，65535]。   |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。 |
 
 **返回值：**
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -444,7 +444,7 @@ packToFile (source: ImageSource, fd: number, options: PackingOption): Promise\<v
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   // 此处'test.png'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
@@ -452,7 +452,7 @@ async function PackToFile(context : Context) {
   const imageSourceObj: image.ImageSource = image.createImageSource(path);
   let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 };
   const filePath: string = context.filesDir + "/image_source.jpg";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   imagePackerObj.packToFile(imageSourceObj, file.fd, packOpts).then(() => {
     console.info('Succeeded in packing the image to file.');
@@ -478,7 +478,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption,  callback: Asy
 | 参数名   | 类型                            | 必填 | 说明                           |
 | -------- | ------------------------------- | ---- | ------------------------------ |
 | source   | [PixelMap](arkts-apis-image-PixelMap.md)          | 是   | 编码的PixelMap资源。           |
-| fd       | number                          | 是   | 文件描述符。                   |
+| fd       | number                          | 是   | 文件描述符。取值范围为[0，65535]。                   |
 | options   | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。                 |
 | callback | AsyncCallback\<void>            | 是   | 回调函数，当编码图片进文件成功，err为undefined，否则为错误对象。  |
 
@@ -502,7 +502,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption,  callback: Asy
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
@@ -510,7 +510,7 @@ async function PackToFile(context : Context) {
   const path: string = context.filesDir + "/pixel_map.jpg";
   image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePackerObj: image.ImagePacker = image.createImagePacker();
     imagePackerObj.packToFile(pixelmap, file.fd, packOpts, (err: BusinessError) => {
       if (err) {
@@ -539,14 +539,14 @@ packToFile (source: PixelMap, fd: number, options: PackingOption): Promise\<void
 | 参数名 | 类型                            | 必填 | 说明                 |
 | ------ | ------------------------------- | ---- | -------------------- |
 | source | [PixelMap](arkts-apis-image-PixelMap.md)          | 是   | 编码的PixelMap资源。 |
-| fd     | number                          | 是   | 文件描述符。         |
+| fd     | number                          | 是   | 文件描述符。取值范围为[0，65535]。         |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。       |
 
 **返回值：**
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -568,7 +568,7 @@ packToFile (source: PixelMap, fd: number, options: PackingOption): Promise\<void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
@@ -576,7 +576,7 @@ async function PackToFile(context : Context) {
   const path: string = context.filesDir + "/pixel_map.jpg";
   image.createPixelMap(color, opts).then((pixelmap: image.PixelMap) => {
     let packOpts: image.PackingOption = { format: "image/jpeg", quality: 98 }
-    let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     const imagePackerObj: image.ImagePacker = image.createImagePacker();
     imagePackerObj.packToFile(pixelmap, file.fd, packOpts)
       .then(() => {
@@ -601,14 +601,14 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise\<void>
 | 参数名  | 类型                         | 必填 | 说明                 |
 | ------- | ---------------------------- | ---- | -------------------- |
 | picture  | [Picture](arkts-apis-image-Picture.md)          | 是   | 编码的Picture资源。 |
-| fd      | number                       | 是   | 文件描述符。         |
+| fd      | number                       | 是   | 文件描述符。取值范围为[0，65535]。         |
 | options | [PackingOption](arkts-apis-image-i.md#packingoption) | 是   | 设置编码参数。       |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -623,7 +623,7 @@ packToFile(picture: Picture, fd: number, options: PackingOption): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context: Context) {
   const resourceMgr = context.resourceManager;
@@ -639,7 +639,7 @@ async function PackToFile(context: Context) {
   const imagePackerObj: image.ImagePacker = image.createImagePacker();
   if (imagePackerObj != null) {
     const filePath: string = context.filesDir + "/test.jpg";
-    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
     let packOpts: image.PackingOption = {
       format: "image/jpeg",
       quality: 98,
@@ -667,14 +667,14 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: number, o
 | 参数名           | 类型                                                      | 必填 | 说明                   |
 | ---------------- | --------------------------------------------------------- | ---- | ---------------------- |
 | pixelmapSequence | Array<[PixelMap](arkts-apis-image-PixelMap.md)>                             | 是   | 待编码的PixelMap序列。 |
-| fd               | number                                                    | 是   | 文件描述符。           |
+| fd               | number                                                    | 是   | 文件描述符。取值范围为[0，65535]。           |
 | options          | [PackingOptionsForSequence](arkts-apis-image-i.md#packingoptionsforsequence18) | 是   | 动图编码参数。         |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -689,7 +689,7 @@ packToFileFromPixelmapSequence(pixelmapSequence: Array\<PixelMap>, fd: number, o
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 async function PackToFile(context : Context) {
   const resourceMgr = context.resourceManager;
@@ -699,7 +699,7 @@ async function PackToFile(context : Context) {
   let imageSource = image.createImageSource(color);
   let pixelMapList = await imageSource.createPixelMapList();
   let path: string = context.cacheDir + '/result.gif';
-  let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(path, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   let ops: image.PackingOptionsForSequence = {
     frameCount: 3,  // 指定GIF编码中的帧数为3。
     delayTimeList: [10, 10, 10],  // 指定GIF编码中3帧的延迟时间分别为100ms、100ms、100ms。

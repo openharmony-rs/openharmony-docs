@@ -85,7 +85,7 @@
 
 ## 接口说明
 
-以下是单版本键值型分布式数据库跨设备数据端端同步功能的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
+以下是单版本键值型分布式数据库跨设备数据端端同步功能的相关接口，更多接口及使用方式请见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |

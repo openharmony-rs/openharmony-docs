@@ -55,7 +55,7 @@ When a user needs to share files such as images and videos, use **Picker** to st
 
 ## Reading File Data by URI
 
-1. After the UI returns from Gallery, use a button to call other functions. Specifically, use[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open the file and obtain its FD through the [media file URI](../../file-management/user-file-uri-intro.md#media-file-uri). Note that the **mode** parameter of **fileIo.openSync()** must be **fileIo.OpenMode.READ_ONLY**.
+1. After the UI returns from Gallery, use a button to call other functions. Specifically, use [fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync) to open the file and obtain its FD through the [media file URI](../../file-management/user-file-uri-intro.md#media-file-uri). Note that the **mode** parameter of **fileIo.openSync()** must be **fileIo.OpenMode.READ_ONLY**.
 
    ```ts
    try {

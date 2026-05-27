@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
@@ -56,11 +56,11 @@ chainAnimationOptions(value: ChainAnimationOptions)
 
 | 名称           | 类型                                       | 只读   | 可选 | 说明                                       |
 | ------------ | ---------------------------------------- | ---- | -- | ---------------------------------------- |
-| minSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最小间距。                            |
-| maxSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最大间距。                            |
+| minSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最小间距。<br/>单位：与Length一致。                            |
+| maxSpace     | [Length](ts-types.md#length)             | 否    | 否 | 设置链式联动动效最大间距。<br/>单位：与Length一致。                          |
 | conductivity | number                                   | 否    | 是 | 设置链式联动动效传导系数。取值范围[0,1]，数值越大，动效传导范围越远。<br/>默认值：0.7 |
 | intensity    | number                                   | 否    | 是 | 设置链式联动动效效果强度。取值范围[0,1]，数值越大，动效效果越明显。<br/>默认值：0.3 |
 | edgeEffect   | [ChainEdgeEffect](#chainedgeeffect10枚举说明) | 否    | 是 | 设置链式联动动效边缘效果。<br/>默认值：ChainEdgeEffect.DEFAULT |
-| stiffness    | number                                   | 否    | 是 | 设置链式联动动效效果刚度。<br/>默认值：228 |
-| damping      | number                                   | 否    | 是 | 设置链式联动动效效果阻尼。<br/>默认值：30 |
+| stiffness    | number                                   | 否    | 是 | 设置链式联动动效效果刚度。<br/>取值范围[0, +∞)<br/>默认值：228 |
+| damping      | number                                   | 否    | 是 | 设置链式联动动效效果阻尼。<br/>取值范围[0, +∞)<br/>默认值：30 |
 

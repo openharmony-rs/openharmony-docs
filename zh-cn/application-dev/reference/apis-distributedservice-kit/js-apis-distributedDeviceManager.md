@@ -135,6 +135,8 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 设备管理实例，用于获取可信设备和本地设备的相关信息。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
 
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
 ### getAvailableDeviceListSync
 
 getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
@@ -189,7 +191,7 @@ getAvailableDeviceList(callback:AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&gt
 
   | 参数名       | 类型                                     | 必填   | 说明                    |
   | -------- | ---------------------------------------- | ---- | --------------------- |
-  | callback | AsyncCallback&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | 是    | 获取所有可信设备列表的回调，返回设备信息。 |
+  | callback | AsyncCallback&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | 是    | 回调函数。当获取可信设备列表成功，err为undefined，data为获取到的Array&lt;DeviceBasicInfo&gt;；否则为错误对象。 |
 
 **错误码：**
 
@@ -235,7 +237,7 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | Promise&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Promise实例，用于获取异步返回结果。 |
+  | Promise&lt;Array&lt;[DeviceBasicInfo](#devicebasicinfo)&gt;&gt; | Promise对象，返回分布式设备基本信息列表。 |
 
 **错误码：**
 

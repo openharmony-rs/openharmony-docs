@@ -1,9 +1,9 @@
 # MultiNavigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **MultiNavigation** is a component designed for multi-column display and routing navigation on large-screen devices.
@@ -12,7 +12,7 @@
 >
 > This component is supported since API version 14. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> Due to the nested stack structure of **MultiNavigation**, calling APIs explicitly stated as unsupported in this document or APIs not listed in the supported API list (such as **getParent**, **setInterception**, and **pushDestination**) may lead to unpredictable issues.
+> Due to the multi-stack nesting of **MultiNavigation**, calling unsupported APIs explicitly specified in this document or APIs outside the supported API list of the document (such as [getParent](ts-basic-components-navigation.md#getparent11), [setInterception](ts-basic-components-navigation.md#setinterception12), and [pushDestination](ts-basic-components-navigation.md#pushdestination11)) may result in unexpected behavior.
 >
 > In scenarios with deep nesting, **MultiNavigation** may encounter routing animation issues.
 
@@ -34,22 +34,22 @@ Creates and initializes a **MultiNavigation** component.
 
 The **MultiNavigation** component follows the default left-to-right stack clearing rule. This means that a click from the home page on the left triggers the loading of the detail page and simultaneously clears all other detail pages on the right, ensuring that only the most recently loaded detail page is displayed on the right. However, if a detail page loading operation is performed again on the right detail page, the system will not perform the stack clearing action. For visual reference, see the [demo of navigation from the home page to the detail page](#example).
 
-**Decorator**: @Component
+**Decorator**: [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 |   Name  |          Type         | Mandatory| Decorator| Description|
-|:---------:|:----------------------:|------ |:------:|-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) |  Yes| @State | Navigation stack.|
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | Yes| @BuilderParam | Routing rules for loading the target page.|
+|---------|----------------------|------ |------|-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  Yes| [@State](../../../ui/state-management/arkts-state.md) | Navigation stack.|
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | Yes| [@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Routing rules for loading the target page.|
 | onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | No| - | Callback invoked when the mode of the **MultiNavigation** component changes.|
 | onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | No| - | Callback invoked when the home page is on the top of the navigation stack.|
 
 ## MultiNavPathStack
 
-Implements a navigation stack of the **MultiNavigation** component. Currently, this stack can be created only by the user and cannot be obtained through callbacks. Do not use events or APIs such as **onReady** of **NavDestination** to obtain the navigation stack and perform stack operations, as this may lead to unpredictable issues.
+Implements a navigation stack of the **MultiNavigation** component. Currently, this stack can be created only by the user and cannot be obtained through callbacks. Do not use events or APIs such as [onReady](ts-basic-components-navdestination.md#onready11) of [NavDestination](ts-basic-components-navdestination.md) to obtain **NavPathStack** and perform stack operations. Otherwise, unexpected issues may occur.
 
 ### constructor
 
@@ -304,7 +304,7 @@ Pops pages until the first navigation destination page that matches **name** fro
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞).|
+| number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞)|
 
 ### popToName
 
@@ -328,7 +328,7 @@ Pops pages until the first navigation destination page that matches **name** fro
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞).|
+| number | Returns the index of the first navigation destination page that matches **name** from the bottom of the navigation stack; returns **-1** if no such a page is found.<br>Value range: [-1, +∞)|
 
 ### popToIndex
 
@@ -344,7 +344,7 @@ Returns the navigation stack to the page specified by **index**.
 
 |  Name  |             Type               | Mandatory| Description          |
 |:------------:|:--------:|:------:| ---------------------- |
-|    index     |  number  |   Yes   | Index of the navigation destination page.<br>Value range: [0, +∞).|
+|    index     |  number  |   Yes   | Index of the navigation destination page.<br>Value range: [0, +∞)|
 |   animated   | boolean  |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
 ### popToIndex
@@ -361,7 +361,7 @@ Returns the navigation stack to the page specified by **index** and invokes the 
 
 |  Name  |             Type               | Mandatory| Description          |
 | ----- | ------ | ---- | ---------------------- |
-| index | number | Yes   | Index of the navigation destination page.<br>Value range: [0, +∞). |
+| index | number | Yes   | Index of the navigation destination page.<br>Value range: [0, +∞) |
 | result | Object | Yes| Custom processing result on the page.|
 | animated | boolean | No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
@@ -430,7 +430,7 @@ Moves the navigation destination page specified by **index** to the top of the n
 
 |  Name  |             Type               | Mandatory| Description          |
 |:---------:|:-------:|:------:| ------------------- |
-|   index    | number  |   Yes   | Index of the navigation destination page.<br>Value range: [0, +∞).|
+|   index    | number  |   Yes   | Index of the navigation destination page.<br>Value range: [0, +∞)|
 | animated  | boolean |   No   | Whether to support the transition animation.<br>Default value: **true**.<br>**true**: The transition animation is supported.<br>**false**: The transition animation is not supported.|
 
 ### clear
@@ -483,7 +483,7 @@ Obtains the parameter information of the navigation destination page specified b
 
 |  Name  |             Type               | Mandatory| Description          |
 |:-------:|:--------:|:------:| ---------------------- |
-|  index  |  number  |   Yes   | Index of the navigation destination page.<br>Value range: [0, +∞).|
+|  index  |  number  |   Yes   | Index of the navigation destination page.<br>Value range: [0, +∞)|
 
 **Return value**
 
@@ -549,7 +549,7 @@ Obtains the stack size.
 
 | Type    | Description    |
 | ------ | ------ |
-| number | Stack size.<br>Value range: [0, +∞).|
+| number | Stack size.<br>Value range: [0, +∞)|
 
 ### disableAnimation
 
@@ -615,7 +615,7 @@ Sets whether to retain the bottom page when the **pop** or **clear** APIs is cal
 > **NOTE**
 >
 > **MultiNavigation** treats the home page as a navigation destination page in the stack. By default, calling **pop** or **clear** will also remove the bottom page.
-> If this API is called with **TRUE**, **MultiNavigation** will retain the bottom page when the **pop** or **clear** API is called.
+> If this API is called with **true**, **MultiNavigation** will retain the bottom page when the **pop** or **clear** API is called.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -637,8 +637,8 @@ Sets a placeholder page.
 >
 > The placeholder page is a special page type. When set, it forms a default split-screen effect with the home page on some large-screen devices, that is, the left side is the home page, and the right side is the placeholder page.
 > 
-> In scenarios where the application's drawable area is less than 600 vp, or when a foldable screen switches from the expanded state to the folded state, or when a tablet switches from landscape to portrait mode, the placeholder page will be automatically removed, resulting in only the home page being shown.
-> Conversely, when the application's drawable area is greater than or equal to 600 vp, or when a foldable screen switches from the folded state to the expanded state, or when a tablet switches from portrait to landscape mode, the placeholder page will be automatically added to form a split-screen.
+> In scenarios where the app's drawable area is less than 600 vp, or when a foldable screen switches from the expanded state to the folded state, or when a tablet switches from landscape to portrait mode, the placeholder page will be automatically removed, resulting in only the home page being shown.
+> Conversely, when the app's drawable area is greater than or equal to 600 vp, or when a foldable screen switches from the folded state to the expanded state, or when a tablet switches from portrait to landscape mode, the placeholder page will be automatically added to form a split-screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 

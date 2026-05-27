@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 场景介绍
 
@@ -19,7 +19,7 @@ import { inputDevice } from '@kit.InputKit';
 
 ## 接口说明
 
-输入设备管理常用接口如下表所示，接口详细介绍请参考[ohos.multimodalInput.inputDevice文档](../../reference/apis-input-kit/js-apis-inputdevice.md)。
+输入设备管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputDevice](../../reference/apis-input-kit/js-apis-inputdevice.md)。
 
 | 接口名称  | 描述 |
 | ----------- | ------------------------------------------------------------ | 

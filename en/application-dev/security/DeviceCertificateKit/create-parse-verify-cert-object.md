@@ -19,6 +19,7 @@ This topic walks you through on how to create a certificate object, obtain infor
 2. Use [cert.createX509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509cert) to create an **X509Cert** object based on the existing X.509 certificate data.
 
 3. Obtain certificate information.<br>
+
    Here is an example of obtaining the certificate version, certificate serial number, certificate issuer name, certificate subject name, and string-type data of the certificate object. For more field information, see [@ohos.security.cert (Certificate)](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509cert).
 
 4. Use [X509Cert.getPublicKey](../../reference/apis-device-certificate-kit/js-apis-cert.md#getpublickey) to obtain the public key in the certificate and use [X509Cert.verify](../../reference/apis-device-certificate-kit/js-apis-cert.md#verify) to verify the signature. In this example, a self-signed certificate is used. Therefore, the public key in the certificate is obtained. In your app experience, obtain the public key for signature verification based on actual situation.
@@ -48,7 +49,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 function certSample(): void {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
-    // Convert the certificate data from a string to a Unit8Array.
+    // Convert the certificate data from a string to a Uint8Array.
     data: textEncoder.encodeInto(certData),
     // Certificate format. Only PEM and DER are supported. In this example, the certificate is in PEM format.
     encodingFormat: cert.EncodingFormat.FORMAT_PEM

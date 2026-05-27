@@ -1,7 +1,7 @@
 # @ohos.app.ability.DriverExtensionAbility (Driver Extension Ability)
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
@@ -21,7 +21,7 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 
 ## DriverExtensionAbility
 
-### Attributes
+### Properties
 
 **Model restriction**: This API can be used only in the stage model.
 

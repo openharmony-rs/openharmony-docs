@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @LeechyLiang-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -86,14 +86,14 @@ Integer literals are classified into the following:
 
 A floating-point literal includes the following:
 
-* Decimal integer, optionally signed (that is, prefixed with "+" or "-")
+* Decimal integer. Positive (+) and negative (-) sign prefixes are supported. Positive values are used by default.
 * Decimal point (".")
 * Fractional part (represented by a string of decimal digits)
 * Exponent part that starts with "e" or "E", followed by an optionally signed (that is, prefixed with "+" or "-") integer
 
 Example:
 
-<!-- @[float_type_factorial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
+<!-- @[float_type_factorial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
 
 ``` TypeScript
 let n1 = 3.14;
@@ -105,21 +105,21 @@ function factorial(n: number): number {
   if (n <= 1) {
     return 1;
   }
-  return n * factorial(n - 1);
+  return n * (n - 1);
 }
-// ...
-  factorial(n1) //  7.660344000000002.
-  factorial(n2) //  7.680640444893748.
-  factorial(n3) //  1.
-  factorial(n4) //  9.33262154439441e+157.
+  // ...
+  factorial(n1) // 6.719600000000001
+  factorial(n2) // 6.728008294464001
+  factorial(n3) // 1
+  factorial(n4) // 9900
 ```
 
-The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the BigInt type to ensure the precision as required.
+The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use **bigint** to ensure the precision as required.
 
 <!-- @[big_int_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
 
 ``` TypeScript
-let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
+let bigInt: bigint = 999999999999999999999999999999999999999999999999999999999999n;
 console.info('bigInt:' + bigInt.toString());
 ```
 
@@ -162,11 +162,11 @@ The void type is used to specify that a function does not return a value.
 
 This type has the only one value which is also void. As void is a reference type, it can be used as type argument for generic types.
 
-<!-- @[generic_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->  
+<!-- @[generic_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
 ``` TypeScript
 class Class<T> {
-  //...
+  // ...
 }
 let instance: Class<void>;
 ```
@@ -317,7 +317,9 @@ let emptyData: NullableObject = null;
 
 Simple assignment operator **=** is used as in **x = y**.
 
-Compound assignment operators combine an assignment with an operator. For example, **a += b** equals **a = a + b**, where **+=** is a compound assignment operator.
+Compound assignment operators combine an assignment with an operator. For example, **a += b** equals **a = a + b**,
+
+where **+=** is a compound assignment operator.
 
 Compound assignment operators are as follows: **+=**, **-=**, ***=**, **/=**, **%=**, **<<=**, **>>=**, **>>>=**, **&=**, **|=**, and **^=**.
 
@@ -486,7 +488,7 @@ If there is no **break**, then the next statements in the **switch** are execute
 
 A conditional expression returns the result of one of the other two expressions based on the Boolean value of the first expression.
 
-A conditional expression is as follows.
+Example:
 
 ```typescript
 condition ? expression1 : expression2
@@ -554,7 +556,7 @@ for (let i = 0; i < 10; i += 2) {
 
 **for-of statement**
 
-You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. A **for-of** statement is as follows.
+You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. Example:
 
 ```typescript
 for (forVar of IterableExpression) {
@@ -575,7 +577,7 @@ for (let ch of 'a string object') {
 
 **while statement**
 
-The **while** statement executes **statements** as long as the value of **condition** is **true**. A **while** statement is as follows.
+The **while** statement executes **statements** as long as the value of **condition** is **true**. Example:
 
 ```typescript
 while (condition) {
@@ -598,7 +600,7 @@ while (n < 3) {
 
 **do-while statement**
 
-If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. A **do-while** statement is as follows.
+If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. Example:
 
 ```typescript
 do {
@@ -621,7 +623,7 @@ do {
 
 A **break** statement is used to terminate any loop statement or the **switch** statement.
 
-A **break** statement is as follows.
+Example:
 
 <!-- @[break_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
@@ -656,7 +658,7 @@ label: while (true) {
 
 A **continue** statement stops the execution of the current loop iteration and passes control to the next iteration.
 
-A **continue** statement is as follows.
+Example:
 
 <!-- @[continue_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/BasicKnowledge.ets) -->   
 
@@ -785,13 +787,13 @@ function hello(name?: string) {
 
 Another form contains an expression that specifies a default value. If the optional parameter is omitted in a function call, the default value of the parameter is used as the argument.
 
-<!-- @[default_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+<!-- @[default_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
 
 ``` TypeScript
 function multiply(n: number, coeff: number = 2): number {
   return n * coeff;
 }
-// ...
+  // ...
   multiply(2);  // Return 2*2.
   multiply(2, 3); // Return 2*3.
 ```
@@ -800,7 +802,7 @@ function multiply(n: number, coeff: number = 2): number {
 
 The last parameter of a function can be a rest parameter in the format of **...restName: Type[]**. It allows a function to receive a variable-length array for processing variable-quantity parameter inputs.
 
-<!-- @[rest_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+<!-- @[rest_parameter_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
 ``` TypeScript
 function sum(...numbers: number[]): number {
@@ -810,7 +812,7 @@ function sum(...numbers: number[]): number {
   }
   return res;
 }
-// ...
+  // ...
   sum(); // Return 0.
   sum(1, 2, 3); // Return 6.
 ```
@@ -846,7 +848,7 @@ Variables and other entities defined in a function are local to the function and
 
 If the name of a variable defined in the function is equal to the name of an entity in the outer scope, then the local definition shadows the outer entity.
 
-<!-- @[variable_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
+<!-- @[variable_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
 
 ``` TypeScript
 let outerVar = 'I am outer ';
@@ -855,7 +857,7 @@ function func() {
   let outerVar = 'I am inside';
   console.info(outerVar); // Output: I am inside
 }
-// ...
+  // ...
   func();
 ```
 
@@ -928,7 +930,7 @@ A closure is the combination of a function and the lexical environment within wh
 
 In the following example, the **f** function returns a closure that captures the **count** variable. Each time **z** is called, the value of **count** is retained and incremented.
 
-<!-- @[closure_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+<!-- @[closure_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
 ``` TypeScript
 function f(): () => number {
@@ -936,7 +938,7 @@ function f(): () => number {
   let g = (): number => { count++; return count; };
   return g;
 }
-// ...
+  // ...
   let z = f();
   z(); // Return 1.
   z(); // Return 2.
@@ -946,7 +948,7 @@ function f(): () => number {
 
 A function can be specified to be called in different ways by writing overload signatures. To do so, several functions' headers that have the same name but different signatures are written to the same function and immediately followed by the single implementation function.
 
-<!-- @[function_overload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->   
+<!-- @[function_overload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Function.ets) -->    
 
 ``` TypeScript
 function foo1(x: number): void;            /* First function definition */
@@ -954,8 +956,8 @@ function foo1(x: string): void;            /* Second function definition */
 function foo1(x: number | string): void {  /* Implementation signature */
 }
 
-foo1(123);     //  Use the first function definition.
-foo1('aa'); // Use the second function definition.
+foo1(123);     // OK. Use the first function definition.
+foo1('aa'); // OK. Use the second function definition.
 ```
 
 An error occurs if two overload signatures have identical parameter lists.
@@ -1015,7 +1017,7 @@ Instance fields exist on every instance of a class. Each instance has its own se
 
 An instance of the class is used to access an instance field.
 
-<!-- @[instance_field_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+<!-- @[instance_field_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->    
 
 ``` TypeScript
 class Person1 {
@@ -1030,7 +1032,7 @@ class Person1 {
     return this.name;
   }
 }
-// ...
+  // ...
   let p1 = new Person1('Alice', 25);
   p1.name; // Alice
   let p2 = new Person1('Bob', 28);
@@ -1073,14 +1075,14 @@ class Person {
   }
   
   getName(): string {
-    // Return type "string" hides the fact that name can be undefined.
-    // The most correct action would be to write the return type as "string | undefined". By doing so, we could tell the users of our API about all possible return values.
+    // Return type "string" hides the fact that name can be "undefined".
+    // A more appropriate approach is to annotate the return type as "string | undefined" to inform users of all possible return values of this API.
     return this.name;
   }
 }
 
 let jack = new Person();
-// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, "jack.setName('Jack')" is not called.
 jack.getName().length; // Runtime exception: name is undefined.
 ```
 
@@ -1096,7 +1098,7 @@ class Person3 {
     this.name = n;
   }
 
-  // The type is string in all cases; null and undefined are impossible.
+  // The type is 'string' in all cases; "null" and "undefined" are impossible.
   getName(): string {
     return this.name;
   }
@@ -1104,7 +1106,7 @@ class Person3 {
 
 
 let jack = new Person3();
-// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, "jack.setName('Jack')" is not called.
 jack.getName().length; // 0, no runtime error.
 ```
 
@@ -1118,7 +1120,7 @@ class Person {
     this.name = n;
   }
 
-  // Compilation error: name can be undefined. Therefore, the return value type of the API cannot be defined as string only.
+  // Compile-time error: name can be "undefined". Therefore, the return value type of the API cannot be defined as string only.
   getNameWrong(): string {
     return this.name;
   }
@@ -1129,7 +1131,7 @@ class Person {
 }
 
 let jack = new Person();
-// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, "jack.setName('Jack')" is not called.
 
 // Compile-time error: Compiler suspects that the next line of code possibly accesses something undefined.
 jack.getName().length;  // Compilation failed.
@@ -1143,7 +1145,7 @@ jack.getName()?.length; // Successful compilation and no runtime error.
 
 In the following example, a **setter** is used to forbid setting invalid values of the **_age** property:
 
-<!-- @[getter_setter_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+<!-- @[getter_setter_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->    
 
 ``` TypeScript
 class Person4 {
@@ -1157,11 +1159,10 @@ class Person4 {
     this._age = x;
   }
 }
-// ...
+  // ...
   let p = new Person4();
   p.age; // Output 0.
-  // ...
-    p.age = -42; // Error will be thrown as an attempt to set incorrect age.
+  p.age = -42; // Error will be thrown as an attempt to set incorrect age.
 ```
 
 A class can define a **getter** or a **setter**.
@@ -1209,7 +1210,7 @@ A static method defines a common behavior of the class as a whole.
 
 The class name is used to call a static method.
 
-<!-- @[static_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
+<!-- @[static_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->    
 
 ``` TypeScript
 class C2 {
@@ -1217,7 +1218,7 @@ class C2 {
     return 'this is a static method.';
   }
 }
-// ...
+  // ...
   console.info(C2.staticMethod());
 ```
 
@@ -1341,8 +1342,8 @@ class C {
   }
 }
 let c = new C();
-c.foo(123);     // Use the first signature.
-c.foo('aa'); // Use the second signature.
+c.foo(123);     // OK. Use the first signature.
+c.foo('aa'); // OK. Use the second signature.
 ```
 
 An error occurs if two overload signatures have identical names and parameter lists.
@@ -1405,8 +1406,8 @@ class C {
   constructor(x: number | string) {  /* Implementation signature */
   }
 }
-let c1 = new C(123);      // Use the first signature.
-let c2 = new C('abc');    // Use the second signature.
+let c1 = new C(123);      // OK. Use the first signature.
+let c2 = new C('abc');    // OK. Use the second signature.
 ```
 
 An error occurs if two overload signatures have identical names and parameter lists.
@@ -1435,7 +1436,7 @@ class C {
 }
 let c = new C();
 c.x = 'a'; // OK, as the field is public.
-c.y = 'b'; // Compile-time error: 'y' is not visible.
+c.y = 'b'; // Compile-time error: 'y' is invisible.
 ```
 
 **Protected**
@@ -1449,8 +1450,8 @@ class Base {
 }
 class Derived extends Base {
   foo() {
-    this.x = 'a'; // Access the protected member.
-    this.y = 'b'; // Compile-time error: 'y' is not visible because it is private.
+    this.x = 'a'; // OK. Access the protected member.
+    this.y = 'b'; // Compile-time error. 'y' is invisible because it is private.
   }
 }
 ```
@@ -1459,7 +1460,7 @@ class Derived extends Base {
 
 An object literal is an expression that can be used to create a class instance and provide some initial values. It can be used instead of the expression **new** as it is more convenient in some cases.
 
-An object literal is a list of ***property name*: *value*** enclosed in a pair of curly brackets ({}).
+An object literal is a list of **'*property name*: *value*'** enclosed in a pair of curly brackets ({}).
 
 <!-- @[object_literal_as_class_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
@@ -1510,18 +1511,18 @@ let cc: C[] = [{n: 1, s: 'a'}, {n: 2, s: 'b'}];
 
 The generic **Record<K, V>** type is used to map the properties of a type (Key type) to another type (Value type). A special form of object literal is used to initialize the value of such type:
 
-<!-- @[record_type_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->  
+<!-- @[record_type_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
 ``` TypeScript
 let map: Record<string, number> = {
   'John': 25,
   'Mary': 21
 };
-// ...
+  // ...
   map['John']; // 25
 ```
 
-The **K** type can be either string or number (excluding BigInt), while **V** can be any type.
+The **K** type can be either string or number (excluding **bigint**), while **V** can be any type.
 
 <!-- @[record_type_complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Class.ets) -->   
 
@@ -1582,7 +1583,7 @@ Only abstract classes can have abstract methods. A compile-time error occurs if 
 
 ```typescript
 class Y {
-  abstract method(p: string) // Compile-time error: Abstract methods can only appear within an abstract class.
+  abstract method(p: string)  // Compile-time error: Abstract methods can only appear within an abstract class.
 }
 ```
 
@@ -1811,13 +1812,13 @@ In the above example, the **Key** type extends **Hashable**, and all methods of 
 
 Use a generic function to create a more universal code. Consider a function that returns the last element of the array:
 
-<!-- @[generic_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->   
+<!-- @[generic_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/GenericTypesAndFunctions.ets) -->    
 
 ``` TypeScript
 function last(x: number[]): number {
   return x[x.length - 1];
 }
-// ...
+  // ...
   last([1, 2, 3]); // 3
 ```
 
@@ -2060,7 +2061,7 @@ If a list of identifiers contains an alias in the form **ident as alias**, the e
 import { X as Z, Y } from './utils';
 Z // Denote X from Utils.
 Y // Denote Y from Utils.
-X // Compile-time error: 'X' is not visible.
+X // Compile-time error: 'X' is invisible.
 ```
 
 **Dynamic import**
@@ -2071,11 +2072,11 @@ The **import()** syntax, commonly called dynamic import, is a function-like expr
 
 In the following example, **import(modulePath)** loads a module and returns a promise that resolves into a module object that contains all its exports. This expression can be called from any place in the code.
 
-<!-- @[module_dynamic_import_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Calc.ets) -->   
+<!-- @[module_dynamic_import_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Calc.ets) -->    
 
 ``` TypeScript
 // Calc.ets
-export function add(a:number, b:number):number {
+export function add(a: number, b: number): number {
   let c = a + b;
   console.info('Dynamic import, %d + %d = %d', a, b, c);
   return c;
@@ -2086,6 +2087,7 @@ export function add(a:number, b:number):number {
 
 ``` TypeScript
 // Index.ets
+// ESObject is a type used to annotate JS/TS objects in ArkTS cross-language call scenarios.
 import('./Calc').then((obj: ESObject) => {
   console.info(obj.add(3, 5));
 }).catch((err: Error) => {
@@ -2095,10 +2097,10 @@ import('./Calc').then((obj: ESObject) => {
 
 You can also use **let module = await import(modulePath)** inside an async function.
 
-<!-- @[module_import_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/say.ets) -->    
+<!-- @[module_import_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Say.ets) -->    
 
 ``` TypeScript
-// say.ets
+// Say.ets
 export function hi() {
   console.info('Hello');
 }
@@ -2204,7 +2206,7 @@ class MyClass {
 
 The name of the annotation to be used must be prefixed with the **@** symbol (for example, **@MyAnno**). No space or line separator is allowed between the **@** symbol and the name.
 ```typescript
-ClassAuthor({authorName: "Bob"}) // Compile-time error: The annotation must be prefixed with '@'.
+ClassAuthor({authorName: "Bob"}) // Compile-time error: The annotation must be prefixed with the @ symbol.
 @ ClassAuthor({authorName: "Bob"}) // Compile-time error: No space or line separator is allowed between the @ symbol and the name.
 ```
 If the annotation name cannot be accessed, a compile-time error occurs.
@@ -2247,7 +2249,7 @@ The following types can be used for annotation fields:
 >**NOTE**
 >
 > - If other types are used for annotation fields, a compile-time error occurs.
-> - The BigInt type is not supported for annotation fields.
+> - The **bigint** type is not supported for annotation fields.
 
 The default value of an annotation field must be specified using a constant expression.<br>The following types of constant expressions are used:
 * Numeric literal
@@ -2430,20 +2432,20 @@ export @interface MyAnno1 {}
 Currently, only the annotations in the **import {}** and **import * as** forms can be imported.<br>
 **Example**
 
-<!-- @[annotation_export_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.ets) -->   
+<!-- @[annotation_export_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
 
 ``` TypeScript
-// a.ets
+// MyAnno.ets
 export @interface MyAnno2 {}
 export @interface ClassAuthor2 {}
 ```
 
-<!-- @[annotation_export_example_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
+<!-- @[annotation_export_example_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->      
 
 ``` TypeScript
-// b.ets
-import { MyAnno2 } from './a';
-import * as ns from './a';
+// Annotation.ets
+import { MyAnno2 } from './MyAnno';
+import * as ns from './MyAnno';
 // ...
 @MyAnno2
 @ns.ClassAuthor2
@@ -2463,11 +2465,10 @@ import type { MyAnno } from './a'; // Compile-time error: The type symbol is not
 ```
 
 - If an annotation is imported only from a module, the module side effects will not be triggered.
-
-<!-- @[annotation_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.ets) -->   
+<!-- @[annotation_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
 
 ``` TypeScript
-// a.ets
+// MyAnno.ets
 export @interface Anno {}
 
 export @interface ClassAuthor1 {}
@@ -2475,13 +2476,15 @@ export @interface ClassAuthor1 {}
 console.info('hello');
 ```
 
-<!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->   
+
+
+<!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->    
 
 ``` TypeScript
-// b.ets
-import { MyAnno2 } from './a';
-import * as ns from './a';
-// Only the Anno module is imported, which does not execute console.info of a.ets.
+// Annotation.ets
+import { MyAnno2 } from './MyAnno';
+import * as ns from './MyAnno';
+// Only the Anno module is imported, which does not execute console.info of MyAnno.ets.
 class X {
   // ...
 }
@@ -2499,10 +2502,10 @@ ambientAnnotationDeclaration:
 
 **Example**
 
-<!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.d.ets) -->    
+<!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->     
 
 ``` TypeScript
-// a.d.ets
+// NameAnno.d.ets
 export declare @interface ClassAuthor3 {}
 ```
 
@@ -2510,20 +2513,38 @@ In the preceding declaration:
 - No new annotation definition is introduced, but the annotation type information is provided.
 - Annotations must be defined in other source code files.
 - The ambient declaration and implementation of an annotation must be the same, including the field type and default value.
-```typescript
-// a.d.ets
-export declare @interface NameAnno{name: string = ""}
 
-// a.ets
+<!-- @[annotation_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->     
+
+``` TypeScript
+// NameAnno.d.ets
+export declare @interface NameAnno{name: string = ""}
+```
+
+
+<!-- @[annotation_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
+
+``` TypeScript
+// MyAnno.ets
 export @interface NameAnno{name: string = ""} // ok
 ```
-The ambient declaration of an annotation is similar to that of a class and can also be imported.
-```typescript
-// a.d.ets
-export declare @interface MyAnno {}
 
-// b.ets
-import { MyAnno } from './a';
+
+The ambient declaration of an annotation is similar to that of a class and can also be imported.
+
+<!-- @[annotation_anno](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->     
+
+``` TypeScript
+// NameAnno.d.ets
+export declare @interface MyAnno {}
+```
+
+
+<!-- @[annotation_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ImportMyAnno.ets) -->    
+
+``` TypeScript
+// ImportMyAnno.ets
+import { MyAnno } from './NameAnno';
 
 @MyAnno
 class C {
@@ -2531,86 +2552,104 @@ class C {
 }
 ```
 
+
 **.d.ets files automatically generated by a compiler**<br>
 When a compiler automatically generates .d.ets files based on ETS code, the following situations may occur:
 
 1. When the annotation definition is exported, the annotation definition in the source code is retained in the .d.ets file.
 
-   <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.ets) -->    
-
+   <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->   
+   
    ``` TypeScript
-   // a.ets
+   // MyAnno.ets
    export @interface ClassAuthor5 {}
-
+   
    @interface MethodAnno { // Not exported
      data: number;
    }
    ```
    
-   <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/a.d.ets) -->     
+   <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) --> 
    
    ``` TypeScript
-   // a.d.ets
+   // NameAnno.d.ets
    export declare @interface ClassAuthor3 {}
-   ``` 
+   ```
 
 2. If all the following conditions are met, the annotation instance of the entity in the source code is retained in the .d.ets file.<br>
   2.1 The annotation definition (including imported annotation) is exported.<br>
   2.2 If the entity is a class, the class is exported.<br>
   2.3 If the entity is a method, the class is exported, and the method is not private.
-   ```typescript
-   // a.ets
-   import { ClassAuthor } from './author';
-
-   export @interface MethodAnno {
+   <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
+   
+   ``` TypeScript
+   // MyAnno.ets
+   import { ClassAuthor4 } from './Author';
+   
+   export @interface MethodAnno4 {
      data: number = 0;
    }
-
-   @ClassAuthor
+   
+   @ClassAuthor4
    class MyClass {
-     @MethodAnno({data: 123})
+     @MethodAnno4({data: 123})
      foo() {}
-
-     @MethodAnno({data: 456})
+   
+     @MethodAnno4({data: 456})
      private bar() {}
    }
-
-   // Declaration file generated by the a.d.ets compiler
-   import {ClassAuthor} from "./author";
-
-   export declare @interface MethodAnno {
-     data: number = 0;
-   }
-
-   @ClassAuthor
-   export declare class MyClass {
-     @MethodAnno({data: 123})
-     foo(): void;
-
-     bar; // Annotations are not retained for private methods.
-   }
    ```
+
+
+  <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->  
+  
+  ``` TypeScript
+  // Declaration file generated by the NameAnno.d.ets compiler
+  import { ClassAuthor4 } from './Author';
+  
+  export declare @interface MethodAnno4 {
+    data: number = 0;
+  }
+  
+  @ClassAuthor4
+  export declare class MyClass {
+    @MethodAnno4({data: 123})
+    foo(): void;
+  
+    bar; // Annotations are not retained for private methods.
+  }
+  ```
+  
 
 **.d.ets file generated by the developer**<br>
 The annotation information in the .d.ets file generated by you is not automatically applied to the implemented source code.<br>
 **Example**
-```typescript
-// Declaration file generated by you in b.d.ets
-@interface ClassAuthor {}
 
-@ClassAuthor // The declaration file contains annotations.
+<!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) --> 
+
+``` TypeScript
+// Declaration file generated by you in NameAnno.d.ets
+@interface ClassAuthor6 {}
+
+@ClassAuthor6 // The declaration file contains annotations.
 class C {
   // ...
 }
+```
 
-// Source code of the declaration file implemented by you in b.ets
-@interface ClassAuthor {}
+
+<!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) --> 
+
+``` TypeScript
+// Source code of the declaration file implemented by you in MyAnno.ets
+@interface ClassAuthor6 {}
 
 // The implementation file does not contain annotations.
 class C {
   // ...
 }
 ```
+
 In the final build product, **class C** does not have annotations.
 
 **Duplicate annotations and inheritance**

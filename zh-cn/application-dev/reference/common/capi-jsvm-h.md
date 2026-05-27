@@ -1,7 +1,7 @@
 # jsvm.h
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -42,8 +42,8 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm,JSVM_MicrotaskPolicy policy)](#oh_jsvm_setmicrotaskpolicy) | 用于设置虚拟机实例的微任务执行策略。如果该方法未被调用，虚拟机实例的默认策略为 JSVM_MicrotaskPolicy::JSVM_MICROTASK_AUTO。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)](#oh_jsvm_destroyvm) | 销毁一个虚拟机实例。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env,JSVM_Value target,JSVM_Value handler,JSVM_Value* result)](#oh_jsvm_createproxy) | 创建JavaScript Proxy，等价于在 JavaScript 中执行 new Proxy(target, handler)。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)](#oh_jsvm_isproxy) | 判断传入值value是否为 JavaScript Proxy。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_proxygettarget) | 获取 JavaScript Proxy 中的目标对象。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)](#oh_jsvm_isproxy) | 判断传入值value是否为 JavaScript Proxy。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_proxygettarget) | 获取 JavaScript Proxy 中的目标对象。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm,JSVM_VMScope* result)](#oh_jsvm_openvmscope) | 为虚拟机实例打开一个新的虚拟机作用域。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm,JSVM_VMScope scope)](#oh_jsvm_closevmscope) | 关闭虚拟机实例的虚拟机作用域。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Env* result)](#oh_jsvm_createenv) | 基于新环境上下文的可选属性，创建一个新环境。 |
@@ -85,9 +85,9 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createarray) | 返回对应于JavaScript Array类型的JSVM-API值。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env,size_t length,JSVM_Value* result)](#oh_jsvm_createarraywithlength) | 返回对应于JavaScript Array类型的JSVM-API值。Array的长度属性设置为传入的长度参数。但是，不保证底层缓冲区在创建数组时由VM预先分配。该行为留给底层VM实现。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env,size_t byteLength,void** data,JSVM_Value* result)](#oh_jsvm_createarraybuffer) | 返回JavaScript ArrayBuffer类型对应的JSVM-API值。ArrayBuffer用于表示固定长度的二进制数据缓冲区。通常用作TypedArray对象的后备缓冲区。分配的ArrayBuffer有一个底层字节缓冲区，其大小由传入的length参数决定。底层缓冲区可选择返回给调用方，调用方可直接操作该缓冲区。此缓冲区只能直接从native代码写入。如果想从JavaScript写入该缓冲区，需创建TypedArray或DataView对象。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)](#oh_jsvm_allocatearraybufferbackingstoredata) | 申请一段 BackingStore 内存给 array buffer 使用。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | 释放由 OH_JSVM_AllocateArrayBufferBackingStoreData 申请的 BackingStore 内存。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | 在申请得到的 BackingStore 内存上创建 array buffer。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)](#oh_jsvm_allocatearraybufferbackingstoredata) | 申请一段 BackingStore 内存给 array buffer 使用。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | 释放由 OH_JSVM_AllocateArrayBufferBackingStoreData 申请的 BackingStore 内存。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | 在申请得到的 BackingStore 内存上创建 array buffer。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* result)](#oh_jsvm_createdate) | 分配一个JavaScript Date对象。此API不处理闰秒。这是因为ECMAScript遵循POSIX时间规范，对闰秒进行忽略。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Value* result)](#oh_jsvm_createexternal) | 分配一个带有外部数据的JavaScript值。这用于通过JavaScript代码传递外部数据。后续可以使用OH_JSVM_GetValueExternal由native代码检索。该API添加了一个JSVM_Finalize回调，当刚刚创建的JavaScript对象被垃圾回收时将调用该回调。创建的值不是一个对象，因此不支持附加属性。它被认为是一个独特的值类型：使用外部值调用OH_JSVM_Typeof()会生成JSVM_EXTERNAL。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createobject) | 分配一个默认的JavaScript对象。该函数功能等同于在JavaScript中执行new Object()。 |
@@ -204,10 +204,10 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env,JSVM_Value value,bool* isFunction)](#oh_jsvm_isfunction) | 此API检查传入的值是否为Function。这相当于JS中的`typeof value === 'function'`。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env,JSVM_Value value,bool* isObject)](#oh_jsvm_isobject) | 此API检查传入的值是否为Object。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env,JSVM_Value value,bool* isBigInt)](#oh_jsvm_isbigint) | 此API检查传入的值是否为BigInt。这相当于JS中的`typeof value === 'bigint'`。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_createmap) | 此API返回与JavaScript Map类型对应的JavaScript值。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)](#oh_jsvm_ismap) | 此API检查传入的值是否为Map。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)](#oh_jsvm_isconstructor) | 此API检查传入的值是否为构造函数。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)](#oh_jsvm_createregexp) | 此API返回与输入的JavaScript字符串对应的正则表达式对象。接口可能会抛出异常。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_createmap) | 此API返回与JavaScript Map类型对应的JavaScript值。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)](#oh_jsvm_ismap) | 此API检查传入的值是否为Map。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)](#oh_jsvm_isconstructor) | 此API检查传入的值是否为构造函数。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)](#oh_jsvm_createregexp) | 此API返回与输入的JavaScript字符串对应的正则表达式对象。接口可能会抛出异常。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_objectgetprototypeof) | 获取JavaScript object的原型。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value prototype)](#oh_jsvm_objectsetprototypeof) | 设置给定的JavaScript object的原型。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createset) | 创建JavaScript Set对象。 |
@@ -251,15 +251,16 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm,JSVM_HandlerForFatalError handler)](#oh_jsvm_sethandlerforfatalerror) | 为Fatal错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm,JSVM_HandlerForPromiseReject handler)](#oh_jsvm_sethandlerforpromisereject) | 为PromiseReject错误设置回调处理。当接口被重复调用时，仅最后一次生效。当传入的handler为null时，表示取消之前的设置。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t option_count,JSVM_DefineClassOptions options[],JSVM_Value* result)](#oh_jsvm_defineclasswithoptions) | 在封装一个 C++ 类时，通过构造函数传递的 C++ 构造函数回调应该是类中的一个静态方法，该方法调用实际的类构造函数，然后根据传入的不同选项，将新的 C++ 实例封装在一个 JavaScript 对象中并返回封装对象。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateExternalStringLatin1(JSVM_Env env,char* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringlatin1) | 此 API 使用 ISO-8859-1 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateExternalStringUtf16(JSVM_Env env,char16_t* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringutf16) | 此 API 使用 UTF16-LE 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env,char* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringlatin1) | 此 API 使用 ISO-8859-1 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env,char16_t* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringutf16) | 此 API 使用 UTF16-LE 编码的 C 字符串，创建一个外部的 JavaScript 字符串。创建外部字符串失败时会复制原生字符串。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env,JSVM_Value description,JSVM_Data* result)](#oh_jsvm_createprivate) | 创建一个 JavaScript private key 对象。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value value)](#oh_jsvm_setprivate) | 为传入的object设置一个 private 属性。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value *result)](#oh_jsvm_getprivate) | 从传入的object获取 private key 对应的 private 属性。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key)](#oh_jsvm_deleteprivate) | 从传入的 object 上删除 private key 对应的 private 属性。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,uint32_t initialRefcount,JSVM_Ref* result)](#oh_jsvm_createdatareference) | 创建一个对于给定 JSVM_Data 对象的引用，初始的引用计数为传入的 initialRefcount。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)](#oh_jsvm_getreferencedata) | 如果引用仍然有效，通过 result 参数返回对应的 JSVM_Data，表示与 JSVM_Ref 关联的 JavaScript 值。否则结果将为空。 |
-
+| [JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)](#oh_jsvm_backgrounddeserialize) | 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result)](#oh_jsvm_releasedeserializeresult) | 当 *JSVM_DeserializeResult* 不再被使用时进行释放。|
 ## 函数说明
 
 ### OH_JSVM_Init()
@@ -395,7 +396,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env,JSVM_Value target,JSVM_
 ### OH_JSVM_IsProxy()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)
+JSVM_Status OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)
 ```
 
 **描述**
@@ -422,7 +423,7 @@ JSVM_Status JSVM_CDECL OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isPro
 ### OH_JSVM_ProxyGetTarget()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
+JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
 ```
 
 **描述**
@@ -740,7 +741,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | 包含要编译的脚本的JavaScript代码。 |
 | size_t optionCount | 传入的 option 数组的长度。 |
 | JSVM_CompileOptions options[] | option 数组，存放所有的编译选项。 |
-| [JSVM_Script](capi-jsvm-jsvm-value--8h.md)* result | 编译后的脚本。 |
+| [JSVM_Script](capi-jsvm-jsvm-script--8h.md)* result | 编译后的脚本。 |
 
 **返回：**
 
@@ -1559,7 +1560,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env,size_t byteLength
 ### OH_JSVM_AllocateArrayBufferBackingStoreData()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)
+JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)
 ```
 
 **描述**
@@ -1586,7 +1587,7 @@ JSVM_Status JSVM_CDECL OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLe
 ### OH_JSVM_FreeArrayBufferBackingStoreData()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_FreeArrayBufferBackingStoreData(void *data)
+JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)
 ```
 
 **描述**
@@ -1611,7 +1612,7 @@ JSVM_Status JSVM_CDECL OH_JSVM_FreeArrayBufferBackingStoreData(void *data)
 ### OH_JSVM_CreateArrayBufferFromBackingStoreData()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)
+JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)
 ```
 
 **描述**
@@ -3619,7 +3620,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CallFunction(JSVM_Env env,JSVM_Value recv,JSVM_V
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) recv | 传递给被调用函数的this值。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) func | 表示将调用的JavaScript函数。 |
 | size_t argc | argv数组中的元素个数。 |
-| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JSVM_values数组，表示将作为参数传递给函数的JavaScript值。 |
+| const [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JSVM_values数组，表示将作为参数传递给函数的JavaScript值。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示返回的JavaScript对象。 |
 
 **返回：**
@@ -3734,7 +3735,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_NewInstance(JSVM_Env env,JSVM_Value constructor,
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | 调用JSVM-API的环境。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) constructor | 表示将作为构造函数调用的JavaScript函数。 |
 | size_t argc | argv数组中的元素个数。 |
-| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JavaScript值数组。其中JSVM_Value表示构造函数的参数。如果argc为零，则可以通过传入NULL来忽略此参数。 |
+| const [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JavaScript值数组。其中JSVM_Value表示构造函数的参数。如果argc为零，则可以通过传入NULL来忽略此参数。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示返回的JavaScript对象，在本例中是构造的对象。 |
 
 **返回：**
@@ -4257,7 +4258,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateSnapshot(JSVM_VM vm,size_t contextCount,co
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 目标环境，API接口将在该环境下调用。 |
 | size_t contextCount | 上下文个数。 |
-| [const JSVM_Env](capi-jsvm-jsvm-env--8h.md)* contexts | 要添加到快照的上下文数组。 |
+| const [JSVM_Env](capi-jsvm-jsvm-env--8h.md)* contexts | 要添加到快照的上下文数组。 |
 | const char** blobData | 快照数据。 |
 | size_t* blobSize | 快照数据的大小。 |
 
@@ -4475,7 +4476,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env,cons
 | [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) constructor                     | 用于创建类的构造函数的回调函数。此方法必须是JSVM_Callback类型。constructor中callback回调需为静态成员。不能使用C++类构造函数。详情请参考[JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md)。 |
 | size_t propertyCount                                                              | properties数组参数中的项数。 |
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | 描述静态数据和实例数据的属性描述符数组类上的属性、访问器和方法请参考JSVM_PropertyDescriptor。 |
-| [JSVM_PropertyHandlerCfg](capi-jsvm-jsvm-propertyhandlerconfigurationstruct.md) propertyHandlerCfg                                    | 访问实例对象属性触发相应的回调函数。 |
+| [JSVM_PropertyHandlerCfg](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) propertyHandlerCfg                                    | 访问实例对象属性触发相应的回调函数。 |
 | [JSVM_Callback](capi-jsvm-jsvm-callbackstruct.md) callAsFunctionCallback          | 将实例对象作为函数调用将触发此回调。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result                 | 表示JavaScript类的构造函数的JSVM_Value。 |
 
@@ -4834,7 +4835,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env,JSVM_Value value,bool* isB
 ### OH_JSVM_CreateMap()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
+JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
 ```
 
 **描述**
@@ -4860,7 +4861,7 @@ JSVM_Status JSVM_CDECL OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
 ### OH_JSVM_IsMap()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)
+JSVM_Status OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)
 ```
 
 **描述**
@@ -4887,7 +4888,7 @@ JSVM_Status JSVM_CDECL OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)
 ### OH_JSVM_IsConstructor()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)
+JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)
 ```
 
 **描述**
@@ -4914,7 +4915,7 @@ JSVM_Status JSVM_CDECL OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool*
 ### OH_JSVM_CreateRegExp()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)
+JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)
 ```
 
 **描述**
@@ -5121,7 +5122,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env,const char
 | const char* funcName | 包含函数名称的字符串。如果传入NULL，则创建一个匿名函数。 |
 | size_t length | funcName的长度（以字节为单位）或JSVM_AUTO_LENGTH（如果以 null 结尾）。 |
 | size_t argc | argv数组中的元素个数。 |
-| [const JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JSVM_values数组，表示将作为参数传递给函数的JavaScript值。 |
+| const [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* argv | JSVM_values数组，表示将作为参数传递给函数的JavaScript值。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | 包含作为函数体的JavaScript字符串。 |
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | 表示新创建函数的JavaScript函数对象的JSVM_Value。 |
 
@@ -6327,4 +6328,52 @@ JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_
 | -- | -- |
 | JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) 表示传入参数不合法。 |
 
+### OH_JSVM_BackgroundDeserialize()
 
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result);
+```
+
+**描述**
+
+在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | 调用JSVM-API的环境。 |
+| [JSVM_CodeCache](capi-jsvm-jsvm-codecache.md) cacheData | 需要进行反序列化的字节码缓存数据。 |
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | 后台反序列化结果。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): 表示传入参数不合法。|
+
+### OH_JSVM_ReleaseDeserializeResult()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result);
+```
+
+**描述**
+
+当 *JSVM_DeserializeResult* 不再被使用时进行释放。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [JSVM_DeserializeResult](capi-jsvm-jsvm-deserializeresult.md)* result | 需要进行释放的后台反序列化结果。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  返回执行状态码 JSVM_Status。<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): 表示执行成功。<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): 表示传入参数不合法。|

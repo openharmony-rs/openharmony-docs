@@ -48,7 +48,7 @@ Sets the foreground color of the component. Components without explicit foregrou
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)> | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.<br>If the color value is **undefined**, the previous setting or the component's default value is retained. The specific behavior may vary across components. It is recommended that you use explicit color values or [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)> | Yes  | Foreground color. The value can be a specific color or a coloring strategy. Property animations are not supported.<br>If the color value is **undefined**, the previous setting or the component's default value is retained. The specific behavior may vary across components. It is recommended that you use explicit color values or [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).|
 
 **Return value**
 
@@ -82,7 +82,7 @@ struct ForegroundColorExample {
 
 ### Example 2: Setting the Foreground Color to Background Inverse
 
-This example demonstrates how to set the foreground color to the inverse of the background color using [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).INVERT.
+This example demonstrates how to set the foreground color to the inverse of the background color using [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)**.INVERT**.
 
 ```ts
 // xxx.ets
@@ -123,3 +123,4 @@ struct ForegroundColorInherit {
 ```
 
 ![foregroundColor_circle](figures/foregroundColorInherit.png)
+<!--no_check-->

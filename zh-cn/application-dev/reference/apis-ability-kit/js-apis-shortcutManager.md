@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用对于[快捷方式](../../quick-start/typical-scenario-configuration.md)的管理能力，包括设置快捷方式是否显示等。
 
@@ -37,7 +37,7 @@ setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
 
 | 类型             | 说明              |
 | -------------- | --------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 

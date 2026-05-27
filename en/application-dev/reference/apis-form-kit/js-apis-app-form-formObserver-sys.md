@@ -1,17 +1,17 @@
 # @ohos.app.form.formObserver (formObserver) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **formObserver** module provides APIs related to widget listeners. You can use the APIs to subscribe to and unsubscribe from widget addition, removal, and visibility change events, and obtain information about running widgets.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs provided by this module are system APIs.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -265,9 +265,9 @@ formObserver.off('formRemove', bundleName, callback);
 ```
 > **NOTE**
 >
-> - **on('formRemove', callback)** and **off('formRemove', callback)** must be used in pairs.
-> - **on('formRemove', bundleName, callback)** and **off('formRemove', bundleName, callback)** must be used in pairs.
-> - To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
+> **on('formRemove', callback)** and **off('formRemove', callback)** must be used in pairs.
+> **on('formRemove', bundleName, callback)** and **off('formRemove', bundleName, callback)** must be used in pairs.
+> To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
 
 ## on('notifyVisible')
 
@@ -402,9 +402,9 @@ formObserver.off('notifyVisible', bundleName, callback);
 
 > **NOTE**
 >
-> - **on('notifyVisible', callback)** and **off('notifyVisible', callback)** must be used in pairs.
-> - **on('notifyVisible', bundleName, callback)** and **off('notifyVisible', bundleName, callback)** must be used in pairs.
-> - To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
+> **on('notifyVisible', callback)** and **off('notifyVisible', callback)** must be used in pairs.
+> **on('notifyVisible', bundleName, callback)** and **off('notifyVisible', bundleName, callback)** must be used in pairs.
+> To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
 
 ## on('notifyInvisible')
 
@@ -509,7 +509,7 @@ Unsubscribes from events indicating that a widget becomes invisible. This API us
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type       | string                                                       | Yes  | Event type. This value **'notifyInvisible'** indicates a widget invisibility event.   |
-| hostBundleName | string                                                       | No  | Name of the bundle that functions as the widget host, on which the widget visibility state changes are subscribed.<br> To cancel the subscription for a given bundle name, this parameter must be set to the same value as **bundleName** in **on('notifyVisible')**.<br> |
+| hostBundleName | string                                                       | No  | Name of the bundle that functions as the widget host, on which the widget visibility state changes are subscribed.<br> To cancel the subscription for a given bundle name, this parameter must be set to the same value as **bundleName** in **on('notifyInvisible')**.<br> |
 | observerCallback   | Callback &lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | No  | Callback used to return an array of widgets that have unsubscribed from the event. If no value is passed in, all the subscriptions to the specified event are canceled.<br> To cancel the subscription with a given callback, this parameter must be set to the same value as **callback** in **on('notifyInvisible')**.|
 
 **Error codes**
@@ -539,9 +539,9 @@ formObserver.off('notifyInvisible', bundleName, callback);
 
 > **NOTE**
 >
-> - **on('notifyInvisible', callback)** and **off('notifyInvisible', callback)** must be used in pairs.
-> - **on('notifyInvisible', bundleName, callback)** and **off('notifyInvisible', bundleName, callback)** must be used in pairs.
-> - To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
+> **on('notifyInvisible', callback)** and **off('notifyInvisible', callback)** must be used in pairs.
+> **on('notifyInvisible', bundleName, callback)** and **off('notifyInvisible', bundleName, callback)** must be used in pairs.
+> To cancel the subscription with a given callback or for a given bundle name, the **callback** or **bundleName** parameter in **off()** must be set to the same value as that in **on()**.
 
 
 ## getRunningFormInfos

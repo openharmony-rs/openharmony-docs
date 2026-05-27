@@ -14,7 +14,7 @@
 >
 >    \- 对于Lite Wearable设备类型，该模块长期维护，正常使用。
 >
->     \- 对于支持该模块的其他设备类型，该模块从API Version 6开始不再维护，推荐使用新接口[`@ohos.deviceInfo`](js-apis-device-info.md)进行设备信息查询。
+>     \- 对于支持该模块的其他设备类型，该模块从API Version 6开始不再维护，推荐使用新接口[@ohos.deviceInfo](js-apis-device-info.md)进行设备信息查询。
 >
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -40,6 +40,111 @@ getInfo(options?: GetDeviceOptions): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | options | [GetDeviceOptions](#getdeviceoptionsdeprecated) | 否 | 定义设备信息获取的参数选项。 |
+
+**示例：**
+
+ArkTS示例：
+
+```typescript
+export default class Page {
+  getInfo() {
+    interface DeviceData {
+      brand: string;
+    }
+
+    try {
+      device.getInfo({
+        success: (data: DeviceData) => {
+          console.info('Device information obtained successfully. Device brand:' + data.brand);
+        },
+        fail: (data: string, code: number) => {
+          console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
+        },
+      });
+    } catch (error) {
+      console.error('Device information API is not supported');
+    }
+  }
+}
+```
+
+JS示例：
+
+```xml
+<div class="container">
+    <text class="title">Device Information</text>
+    <input type="button" value="Get Device Brand" class="button" onclick="getDeviceInfo"></input>
+    <text class="info">{{brandInfo}}</text>
+</div>
+```
+
+```css
+/*xxx.css*/
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 50px;
+}
+
+.button {
+    font-size: 30px;
+    text-align: center;
+    width: 240px;
+    height: 80px;
+    margin: 20px;
+}
+
+.info {
+    font-size: 28px;
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    margin-top: 50px;
+    color: #007dff;
+}
+```
+
+```js
+//xxx.js
+import device from '@system.device';
+
+export default {
+    data: {
+        brandInfo: 'Click the button to get device brand'
+    },
+    
+    getDeviceInfo() {
+        try {
+            device.getInfo({
+                success: (data) => {
+                    console.info('Device information obtained successfully. Device brand:' + data.brand);
+                    this.brandInfo = 'Device brand: ' + data.brand;
+                },
+                fail: (data, code) => {
+                    console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
+                    this.brandInfo = 'Failed to obtain, error code: ' + code;
+                },
+            });
+        } catch (error) {
+            console.error('Device information API is not supported');
+            this.brandInfo = 'Current device does not support this API';
+        }
+    }
+}
+```
 
 ## GetDeviceOptions<sup>(deprecated)</sup>
 
@@ -67,35 +172,9 @@ getInfo(options?: GetDeviceOptions): void
 | product | string | 代号。 |
 | language<sup>4+</sup> | string | 系统语言。 |
 | region<sup>4+</sup> | string | 系统地区。 |
-| windowWidth | number | 可使用的窗口宽度。 |
-| windowHeight | number | 可使用的窗口高度。 |
-| screenDensity<sup>4+</sup> | number | 屏幕密度。 |
+| windowWidth | number | 可使用的窗口宽度，单位px。 |
+| windowHeight | number | 可使用的窗口高度，单位px。 |
+| screenDensity<sup>4+</sup> | number | 屏幕密度，单位dpi。 |
 | screenShape<sup>4+</sup> | string | 屏幕形状。可取值：<br/>-&nbsp;rect：方形屏；<br/>-&nbsp;circle：圆形屏。 |
 | apiVersion<sup>4+</sup> | number | 系统API版本号。 |
 | deviceType<sup>4+</sup> | string | 设备类型。 |
-
-
-**示例：**
-
-```typescript
-export default class Page {
-  getInfo() {
-    interface DeviceData {
-      brand: string;
-    }
-
-    try {
-      device.getInfo({
-        success: (data: DeviceData) => {
-          console.info('Device information obtained successfully. Device brand:' + data.brand);
-        },
-        fail: (data: string, code: number) => {
-          console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
-        },
-      });
-    } catch (error) {
-      console.error('Device information API is not supported');
-    }
-  }
-}
-```

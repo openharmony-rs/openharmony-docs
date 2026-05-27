@@ -1,8 +1,8 @@
 # @ohos.util.Deque (线性容器Deque)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -312,10 +312,10 @@ deque.forEach((value: number, index: number): void => {
 });
 /*
 输出结果：value:1 index:0
-        value:2 index:1
-        value:3 index:2
-        value:4 index:3
-*/
+         value:2 index:1
+         value:3 index:2
+         value:4 index:3
+ */
 ```
 
 ### getFirst
@@ -427,11 +427,12 @@ for (let item of deque) {
   console.info("value:" + item);
 }
 /*
-输出结果：4
-        5
-        4
-        2
-*/
+输出结果：
+value:4
+value:5
+value:4
+value:2
+ */
 
 // 使用方法二：
 let iter = deque[Symbol.iterator]();
@@ -441,9 +442,10 @@ while(!temp.done) {
   temp = iter.next();
 }
 /*
-输出结果：4
-        5
-        4
-        2
-*/
+输出结果：
+value:4
+value:5
+value:4
+value:2
+ */
 ```

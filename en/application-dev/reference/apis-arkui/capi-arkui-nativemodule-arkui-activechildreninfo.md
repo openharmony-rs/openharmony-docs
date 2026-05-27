@@ -1,8 +1,8 @@
 # ArkUI_ActiveChildrenInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
 
 ## Overview
 
-Defines a struct for active child node information.
+Defines active child node information.
 
 **Since**: 14
 

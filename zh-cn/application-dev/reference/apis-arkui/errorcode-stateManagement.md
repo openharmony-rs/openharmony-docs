@@ -136,7 +136,7 @@ defaultCreator不是StorageDefaultCreator\<T\>类型。
 
 **处理步骤**
 
-确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect示例](./js-apis-stateManagement.md#globalconnect18)。
+确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect](./js-apis-stateManagement.md#globalconnect18)。
 
 ## 140105 PersistenceV2混用connect和globalConnect并使用相同的key
 
@@ -168,7 +168,7 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **可能原因**
 
-设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptions18)的[areaMode](./js-apis-stateManagement.md#connectoptions18)属性范围不在EL1-EL5内。
+设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptionst18)的[areaMode](./js-apis-stateManagement.md#connectoptionst18)属性范围不在EL1-EL5内。
 
 **处理步骤**
 
@@ -187,7 +187,7 @@ The type of target mismatches the type of source.
 **可能原因**
 
 - type类型和defaultCreator返回类型不一致。
-- 开发者修改了持久化的数据结构，导致重新从磁盘里读取数据到内存中时，发生类型不匹配。
+- 开发者修改了持久化的数据结构，导致重新从磁盘里读取数据到内存中时，发生类型不匹配。该情况仅通过日志上报错误码，不会抛出运行时异常。
 
 **处理步骤**
 
@@ -206,7 +206,7 @@ Miss @Type.
 
 **可能原因**
 
-使用globalConnect接口持久化数据时，持久化的数据类型缺少\@Type装饰器。
+使用globalConnect接口持久化数据时，持久化的数据类型缺少\@Type装饰器。该错误码通过日志上报，不会抛出运行时异常。
 
 **处理步骤**
 

@@ -52,7 +52,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    在配置编码器参数阶段，配置适合低时延编码场景的参数。
 
    低时延短距投屏场景，典型分辨率的编码参数（以H.265为例）推荐如下：   
-   | 分辨率（px）    | 帧率（fps） | 码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+   | 分辨率（px）    | 帧率（fps） | 码率（kbps）| 接入帧间隔（ms） | 码控模式 |
    | ------------------| -------- | -------- | ------ | ------ |
    | 2560x1600  | 60       | 5000     | 5000 |  CBR  |
    | 1920x1080  | 60       | 3500     | 5000 |  CBR  |
@@ -60,7 +60,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    | 960x540  | 60       | 1500    | 5000 |  CBR  |
 
    低时延视频通话、视频会议、连麦直播等场景，典型分辨率的编码参数（以H.265为例）推荐如下：   
-   | 分辨率（px）    | 帧率（fps） | 码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+   | 分辨率（px）    | 帧率（fps） | 码率（kbps）| 接入帧间隔（ms） | 码控模式 |
    | ------------------| -------- | -------- | ------ | ------ |
    | 1920x1080  | 30       | 1500     | -1 |  CBR  |
    | 1280x720  | 30       | 1000     | -1 |  CBR  |
@@ -86,7 +86,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI（视频可用性信息），视频YUV值域标志，0:limited range 1:full range。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI，视频源色域。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // VUI，OETF/EOTF曲线。
-   OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient:: MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, OH_HEVCProfile::HEVC_PROFILE_MAIN); // 视频编码器profile。
    OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 必须配置，视频帧率。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, -1); // 必须配置，接入帧间隔。
@@ -131,7 +131,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 娱乐直播场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
-| 分辨率（px）     | 帧率（fps） | 码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+| 分辨率（px）     | 帧率（fps） | 码率（kbps）| 接入帧间隔（ms） | 码控模式 |
 | ------------------| -------- | -------- | ------ | ------ |
 | 1920x1080  | 25       | 3000     | 2000 |  VBR  |
 | 1080x720  | 25       | 1500     | 2000 |  VBR  |
@@ -140,7 +140,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 游戏直播场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
-| 分辨率（px）     | 帧率（fps） | 码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+| 分辨率（px）     | 帧率（fps） | 码率（kbps）| 接入帧间隔（ms） | 码控模式 |
 | ------------------| -------- | -------- | ------ | ------ |
 | 1920x1080  | 60      | 6000     | 5000 |  VBR  |
 
@@ -154,7 +154,7 @@ OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); /
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI，视频YUV值域标志，0:limited range 1:full range。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI，视频源色域。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // VUI，OETF/EOTF曲线。
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient:: MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, OH_HEVCProfile::HEVC_PROFILE_MAIN); // 视频编码器profile。
 OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 25.0); // 必须配置，视频帧率。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, 2000); // 必须配置，接入帧间隔，单位为ms。
@@ -173,7 +173,7 @@ OH_AVFormat_Destroy(format);
 
 娱乐直播场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
-| 分辨率（px）    | 帧率（fps） | SQR质量因子 | 峰值码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+| 分辨率（px）    | 帧率（fps） | SQR质量因子 | 峰值码率（kbps）| 接入帧间隔（ms） | 码控模式 |
 | ------------------| -------- | -------- | ------ | ------ | -------- |
 | 1920x1080  | 25 |  25    | 3000     | 2000 |  SQR  |
 | 1080x720  | 25  |  25   | 1500     | 2000 |  SQR  |
@@ -182,7 +182,7 @@ OH_AVFormat_Destroy(format);
 
 游戏直播场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
-| 分辨率（px）    | 帧率（fps） | SQR质量因子 | 峰值码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+| 分辨率（px）    | 帧率（fps） | SQR质量因子 | 峰值码率（kbps）| 接入帧间隔（ms） | 码控模式 |
 | ------------------| -------- | -------- | ------ | ------ | -------- |
 | 1920x1080  | 60   |  25   | 6000     | 5000 |  SQR  |
 
@@ -198,7 +198,7 @@ OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); /
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI，视频YUV值域标志，0:limited range 1:full range。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI，视频源色域。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // VUI，OETF/EOTF曲线。
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient:: MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, OH_HEVCProfile::HEVC_PROFILE_MAIN); // 视频编码器profile。
 OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 25.0); // 必须配置，视频帧率。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, 2000); // 必须配置，接入帧间隔，单位为ms。
@@ -237,7 +237,7 @@ OH_AVFormat_Destroy(format);
 
 视频编辑场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
-| 分辨率（px）  | 帧率（fps） | 码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+| 分辨率（px）  | 帧率（fps） | 码率（kbps）| 接入帧间隔（ms） | 码控模式 |
 | ------------------| -------- | -------- | ------ | ------ |
 | 3840x2160  | 30       | 25000     | 5000 |  VBR  |
 | 2560x1440  | 30       | 15000     | 5000 |  VBR  |
@@ -247,7 +247,7 @@ OH_AVFormat_Destroy(format);
 
 视频分享场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
-| 分辨率（px）    | 帧率（fps） | 码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+| 分辨率（px）    | 帧率（fps） | 码率（kbps）| 接入帧间隔（ms） | 码控模式 |
 | ------------------| -------- | -------- | ------ | ------ |
 | 3840x2160  | 30       | 5600     | 5000 |  VBR  |
 | 2560x1440  | 30       | 4900     | 5000 |  VBR  |
@@ -265,7 +265,7 @@ OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); /
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI，视频YUV值域标志，0:limited range 1:full range。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI，视频源色域。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // VUI，OETF/EOTF曲线。
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient:: MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, OH_HEVCProfile::HEVC_PROFILE_MAIN); // 视频编码器profile。
 OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 必须配置，视频帧率。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, 5000); // 必须配置，接入帧间隔，单位为ms。
@@ -284,7 +284,7 @@ OH_AVFormat_Destroy(format);
 
 视频编辑场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
-| 分辨率（px）    | 帧率（fps） | SQR质量因子 | 峰值码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+| 分辨率（px）    | 帧率（fps） | SQR质量因子 | 峰值码率（kbps）| 接入帧间隔（ms） | 码控模式 |
 | ------------------| -------- | -------- | ------ | ------ | ------ |
 | 3840x2160  | 30   | 25    | 25000     | 5000 |  SQR  |
 | 2560x1440  | 30   | 25    | 15000     | 5000 |  SQR  |
@@ -294,7 +294,7 @@ OH_AVFormat_Destroy(format);
 
 视频分享场景，典型分辨率的编码参数（以H.265为例）推荐如下：
 
-| 分辨率（px）    | 帧率（fps） | SQR质量因子 | 峰值码率（kpbs）| 接入帧间隔（ms） | 码控模式 |
+| 分辨率（px）    | 帧率（fps） | SQR质量因子 | 峰值码率（kbps）| 接入帧间隔（ms） | 码控模式 |
 | ------------------| -------- | -------- | ------ | ------ |-------- |
 | 3840x2160  | 30   | 25    | 5600     | 5000 |  SQR  |
 | 2560x1440  | 30   | 25    | 4900     | 5000 |  SQR  |
@@ -314,7 +314,7 @@ OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); /
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI，视频YUV值域标志，0:limited range 1:full range。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI，视频源色域。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // VUI，OETF/EOTF曲线。
-OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient:: MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, OH_HEVCProfile::HEVC_PROFILE_MAIN); // 视频编码器profile。
 OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 30.0); // 必须配置，视频帧率。
 OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL, 5000); // 必须配置，接入帧间隔，单位为ms。

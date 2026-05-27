@@ -9,7 +9,7 @@
 
 以RSA和SM2为例，随机生成非对称密钥对（KeyPair），并获得二进制数据。
 
-非对称密钥对可用于后续加解密等操作，二进制数据可用于存储或运输。
+非对称密钥对可用于后续加解密等操作，二进制数据可用于存储或传输。
 
 ## 随机生成RSA密钥对
 
@@ -124,10 +124,10 @@
   
   function generateSM2KeySync() {
     // 创建一个AsyKeyGenerator实例
-    let rsaGenerator = cryptoFramework.createAsyKeyGenerator('SM2_256');
+    let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
     // 使用密钥生成器随机生成非对称密钥对
     try {
-      let keyPair = rsaGenerator.generateKeyPairSync();
+      let keyPair = sm2Generator.generateKeyPairSync();
       if (keyPair != null) {
         let pubKey = keyPair.pubKey;
         let priKey = keyPair.priKey;

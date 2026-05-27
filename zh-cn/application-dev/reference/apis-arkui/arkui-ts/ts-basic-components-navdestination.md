@@ -1,9 +1,9 @@
 # NavDestination
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 作为子页面的根容器，用于显示[Navigation](ts-basic-components-navigation.md)的内容区。
@@ -12,7 +12,7 @@
 >
 > - 该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
+> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性实现安全区避让。
 >
 > - NavDestination组件必须配合Navigation使用，作为Navigation目的页面的根节点，单独使用只能作为普通容器组件，不具备路由相关属性能力。
 >
@@ -80,7 +80,7 @@ hideTitleBar(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 是否隐藏标题栏。<br/>默认值：false<br/>true：&nbsp;隐藏标题栏。<br/>false：&nbsp;显示标题栏。 |
+| value  | boolean | 是   | 是否隐藏标题栏。<br/>默认值：false<br/>true：隐藏标题栏。<br/>false：显示标题栏。 |
 
 ### hideTitleBar<sup>13+</sup>
 
@@ -201,7 +201,7 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)  | 是   | 标题栏返回键图标。 |
+| icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)  | 是   | 标题栏返回键图标。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 返回键无障碍播报内容。</br>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
 ### menus<sup>12+</sup>
@@ -318,7 +318,7 @@ systemTransition(type: NavigationSystemTransitionType)
 
 recoverable(recoverable: Optional&lt;boolean&gt;)
 
-配置NavDestination是否可恢复。如配置为可恢复，当应用进程异常退出并重新冷启动时，可自动创建该NavDestination。该功能需NavDestination对应的Navigation也配置了[可恢复属性](ts-basic-components-navigation.md#recoverable14)。
+配置NavDestination是否可恢复。如配置为可恢复，当应用进程异常退出并重新冷启动时，可自动创建该NavDestination。该功能需NavDestination对应的Navigation也配置了可恢复属性[recoverable](ts-basic-components-navigation.md#recoverable14)。
 
 > **说明：**
 >
@@ -465,8 +465,8 @@ enableStatusBar(enabled: Optional&lt;boolean&gt;, animated?: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统状态栏的显示/隐藏状态。<br/>true：&nbsp;显示状态栏。<br/>false：&nbsp;隐藏状态栏。 |
-| animated  | boolean | 否   | 是否使用动画的方式显示/隐藏系统状态栏，默认值为：false。<br/>true：使用动画的方式显示/隐藏系统状态栏。<br/>false：不使用动画的方式显示/隐藏系统状态栏。 |
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统状态栏的显示/隐藏状态。<br/>true：显示状态栏。<br/>false：隐藏状态栏。 |
+| animated  | boolean | 否   | 是否使用动画的方式显示/隐藏系统状态栏。<br/>默认值：false<br/>true：使用动画的方式显示/隐藏系统状态栏。<br/>false：不使用动画的方式显示/隐藏系统状态栏。 |
 
 ### enableNavigationIndicator<sup>19+</sup>
 
@@ -492,7 +492,7 @@ enableNavigationIndicator(enabled: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统导航条的显示/隐藏状态。 <br/>true：&nbsp;显示导航条。<br/>false：&nbsp;隐藏导航条。 |
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统导航条的显示/隐藏状态。<br/>true：显示导航条。<br/>false：隐藏导航条。 |
 
 ## NavDestinationMode枚举说明<sup>11+</sup>
 
@@ -891,9 +891,9 @@ NavDestination自定义动画接口。
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | ----  | ---   | ---- | ---- |----- |
 | onTransitionEnd | Callback\<void> | 否 | 是 | 转场动画结束时的回调函数。 |
-| duration | number | 否 | 是 | 转场动画的持续时间，默认值为1000（毫秒）。 |
+| duration | number | 否 | 是 | 转场动画的持续时间。<br/>默认值：1000（毫秒）<br/>单位：ms |
 | curve | [Curve](ts-appendix-enums.md#curve) | 否 | 是 | 动画的曲线类型，默认值为[Curve.EaseInOut](ts-appendix-enums.md#curve)。 |
-| delay | number | 否 | 是 | 转场动画的延迟。默认值为0（毫秒）。 |
+| delay | number | 否 | 是 | 转场动画的延迟。<br/>默认值：0（毫秒）<br/>单位：ms |
 | event | Callback\<void> | 否 | 否 | 指定转场动效的闭包函数，系统会根据闭包中对组件UI状态的修改，生成对应的过渡动画。参见[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)中的event。 |
 
 ## NavDestinationTransitionDelegate<sup>15+</sup>
@@ -911,7 +911,7 @@ NavDestination自定义转场动画的代理函数。
 | 参数名  | 类型     | 必填 | 说明                    |
 |------|--------|----|-----------------------|
 | operation | [NavigationOperation](ts-basic-components-navigation.md#navigationoperation11枚举说明) | 是  | 当前页面转场的操作类型。 |
-| isEnter | boolean | 是  | 当前页面是否为入场页面。<br/>true：&nbsp;当前页面是入场页面。<br/>false：&nbsp;当前页面不是入场页面。 |
+| isEnter | boolean | 是  | 当前页面是否为入场页面。<br/>true：当前页面是入场页面；false：当前页面不是入场页面。 |
 
 **返回值：**
 
@@ -1476,7 +1476,9 @@ struct HomeBody {
 
 ### 示例4（NavDestination配置页面方向和对应状态栏、导航条显隐）
 
-以下示例主要演示每个NavDestination可以配置指定的页面方向和状态栏，导航条显隐状态。
+以下示例主要演示每个NavDestination可以配置[preferredOrientation](#preferredorientation19)指定的页面方向和状态栏，导航条显隐状态。
+
+从API version 19开始，新增了preferredOrientation属性。
 
 ```ts
 import { window } from '@kit.ArkUI';

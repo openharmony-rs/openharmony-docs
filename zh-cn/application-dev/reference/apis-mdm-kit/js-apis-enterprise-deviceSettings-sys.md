@@ -1,10 +1,10 @@
 # @ohos.enterprise.deviceSettings （设备设置管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供企业设备设置能力，包括获取设备息屏时间等。
 
@@ -252,7 +252,7 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     }
   });
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
@@ -321,24 +321,13 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
     .then((result) => {
       console.info(`Succeeded in installing user certificate, result : ${JSON.stringify(result)}`);
     }).catch((err: BusinessError) => {
-    console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to install user certificate. Code: ${err.code}, message: ${err.message}`);
   })
 }).catch((error: BusinessError) => {
-  console.error(`Failed to get row file content. message: ${error.message}`);
+  console.error(`Failed to get raw file content. message: ${error.message}`);
   return;
 });
 ```
-
-## CertBlob
-
-证书信息。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称         | 类型     | 只读 | 可选 | 说明                            |
-| ----------- | --------| ----- | ---- | ------------------------------- |
-| inData | Uint8Array | 否 | 否 |证书的二进制内容。 |
-| alias | string | 否 | 否 |证书别名，别名长度小于40个字符。 |
 
 ## deviceSettings.uninstallUserCertificate
 
@@ -573,6 +562,17 @@ try {
   console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## CertBlob
+
+证书信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| inData | Uint8Array | 否 | 否 |证书的二进制内容。 |
+| alias | string | 否 | 否 |证书别名，别名长度小于40个字符。 |
 
 ## PowerPolicy<sup>11+</sup>
 

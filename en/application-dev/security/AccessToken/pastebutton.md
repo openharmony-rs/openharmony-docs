@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to read data from the pasteboard without any prompt information.
+The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to silently read data from the pasteboard.
 
 After the component integrated into your application is tapped, no authorization dialog box will be displayed when your application reads data from the pasteboard. You can use this component for any application that needs to read data from the pasteboard, while eliminating the pop-up windows.
 

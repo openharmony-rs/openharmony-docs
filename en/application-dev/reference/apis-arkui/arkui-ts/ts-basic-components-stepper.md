@@ -1,9 +1,9 @@
 # Stepper
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **Stepper** component provides a step navigator, suitable for guiding users through a step-by-step task completion process.
@@ -39,7 +39,7 @@ Creates a **Stepper** component.
 
 | Name| Type| Mandatory | Description|
 | ------| -------- | --------------- | -------- |
-| value | { index?: number }   | No| Index of the **StepperItem** that is currently displayed.<br>Default value: **0**<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).|
+| value | { index?: number }   | No| Index of the **StepperItem** that is currently displayed.<br>Value range: [0, number of child components – 1]<br>Default value: **0**<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).|
 
 
 ## Attributes
@@ -155,6 +155,7 @@ Triggered when switching to the previous step by clicking [prevLabel](ts-basic-c
 ## Example
 
 ### Example 1: Using the Stepper Component
+
 This example demonstrates how to use the **Stepper** component.
 
 ```ts
@@ -257,7 +258,8 @@ struct StepperExample {
 ![stepper](figures/stepper.gif)
 
 ### Example 2: Using Swiper as a Substitute for Stepper
-This example demonstrates how to use the **Swiper** component to achieve the functionality of the **Stepper** component. The resulting effect is the same as in Example 1.
+
+This example demonstrates how to use the [Swiper](ts-container-swiper.md) component to implement the features of the **Stepper** component. The effect is the same as that in example 1.
 
 ```ts
 @Styles

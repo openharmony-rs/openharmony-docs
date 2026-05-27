@@ -136,7 +136,7 @@ When [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis
 
 **Solution**
 
-Ensure that **defaultCreator** passed by **connect** or **globalConnect** is of the **StorageDefaultCreator\<T\>** type. **globalConnect** is used as an example. For details, see the [globalConnect example](./js-apis-stateManagement.md#globalconnect18).
+Ensure that **defaultCreator** passed by **connect** or **globalConnect** is of the **StorageDefaultCreator\<T\>** type. The following uses **globalConnect** as an example. For details, see [globalConnect](./js-apis-stateManagement.md#globalconnect18).
 
 ## 140105 PersistenceV2 Mixes connect and globalConnect That Use the Same Key
 
@@ -146,7 +146,7 @@ ERROR, Duplicate key used when connect
 
 **Description**
 
-[connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) use the same key.
+This error code is reported when [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) use the same key.
 
 **Possible Causes**
 
@@ -164,11 +164,11 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **Description**
 
-The encryption level set for [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) to store data is not within the range of EL1 to EL5.
+This error code is reported when the encryption level set for [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) to store data is not within the range of EL1 to EL5.
 
 **Possible Causes**
 
-The value of the [areaMode](./js-apis-stateManagement.md#connectoptions18) attribute of [ConnectOptions](./js-apis-stateManagement.md#connectoptions18) of **globalConnect** is not within the range of EL1 to EL5.
+The value of the [areaMode](./js-apis-stateManagement.md#connectoptionst18) attribute of [ConnectOptions](./js-apis-stateManagement.md#connectoptionst18) of **globalConnect** is not within the range of EL1 to EL5.
 
 **Solution**
 
@@ -182,12 +182,12 @@ The type of target mismatches the type of source.
 
 **Description**
 
-A type mismatch error occurs when [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used.
+This error code is reported when [connect](./js-apis-stateManagement.md#connect) of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) or [connect](./js-apis-stateManagement.md#connect) and [globalConnect](./js-apis-stateManagement.md#globalconnect18) of [PersistenceV2](./js-apis-stateManagement.md#persistencev2) are used.
 
 **Possible Causes**
 
 - The type of the **type** parameter is inconsistent with the return type of **defaultCreator**.
-- The persistent data structure is modified. As a result, when the data is read from the disk to the memory again, the type does not match.
+- The persistent data structure is modified. As a result, when the data is read from the disk to the memory again, the type does not match. In this case, only an error code is reported in the log, and no runtime exception is thrown.
 
 **Solution**
 
@@ -206,7 +206,7 @@ The [\@Type](../../ui/state-management/arkts-new-type.md) decorator is missing w
 
 **Possible Causes**
 
-When the **globalConnect** API is used to persist data, the \@Type decorator is missing in the data type.
+When the **globalConnect** API is used to persist data, the \@Type decorator is missing in the data type. This error code is reported in the log and no runtime exception is thrown.
 
 **Solution**
 
@@ -220,7 +220,7 @@ Ensure that the \@Type decorator is used to decorate the class name when the **g
 
 **Description**
 
-The input parameters are modified in the function decorated by [\@Builder](../../ui/state-management/arkts-builder.md).
+This error code is reported when the input parameters are modified in the function decorated by [\@Builder](../../ui/state-management/arkts-builder.md).
 
 **Possible Causes**
 
@@ -295,7 +295,7 @@ duplicate @Provide property. Property with this name is provided by one of the a
 
 **Description**
 
-The @Provide decorators with the duplicate key declared exist in the same component, parent component, or ancestor node. For details, see the [@Provide constraints](../../ui/state-management/arkts-provide-and-consume.md#constraints).
+This error code is reported when the @Provide decorators with the duplicate key declared exist in the same component, parent component, or ancestor node. For details, see the [@Provide constraints](../../ui/state-management/arkts-provide-and-consume.md#constraints).
 
 **Possible Causes**
 
@@ -313,7 +313,7 @@ Illegal variable value error with decorated variable
 
 **Description**
 
-An unsupported type is used when you create a state variable in state management V1.
+This error code is reported when an unsupported type is used when you create a state variable in state management V1.
 
 **Possible Causes**
 
@@ -331,7 +331,7 @@ The key is invalid, key must be string or TypeConstructorWithArgs type.
 
 **Description**
 
-An invalid key is passed for using the [remove](./js-apis-stateManagement.md#remove) API of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) and [PersistenceV2](./js-apis-stateManagement.md#persistencev2) and the [save](./js-apis-stateManagement.md#save) API of **PersistenceV2**.
+This error code is reported when an invalid key is passed for using the [remove](./js-apis-stateManagement.md#remove) API of [AppStorageV2](./js-apis-stateManagement.md#appstoragev2) and [PersistenceV2](./js-apis-stateManagement.md#persistencev2) and the [save](./js-apis-stateManagement.md#save) API of **PersistenceV2**.
 
 **Possible Causes**
 

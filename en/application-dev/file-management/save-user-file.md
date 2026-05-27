@@ -79,13 +79,13 @@ If the security component cannot be called to save images and videos in your dev
    > - Quick saving:
    > 	- You can directly access the download directory in [DOWNLOAD mode](#saving-files-to-the-download-directory).
 
-4. After the application UI is returned from FilePicker, you can call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open a document based on the URI. The FD is returned after the document is opened.
+4. After the application UI is returned from FilePicker, you can call [fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync) to open a document based on the URI. The FD is returned after the document is opened.
 
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
-      // Note that the permission specified by the mode parameter of fs.openSync() is fs.OpenMode.READ_WRITE.
-      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      // Note that the permission specified by the mode parameter is fileIo.OpenMode.READ_WRITE.
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
       console.info('file fd: ' + file.fd);
    }
    ```
@@ -144,13 +144,13 @@ If the security component cannot be called to save images and videos in your dev
    > - Quick saving:
    > 	- You can directly access the download directory in [DOWNLOAD mode](#saving-files-to-the-download-directory).
 
-4. After the application UI is returned from FilePicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open an audio clip based on the URI. The FD is returned after the audio clip is opened.
+4. After the application UI is returned from FilePicker, call [fileIo.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync) to open an audio clip based on the URI. The FD is returned after the audio clip is opened.
 
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
-      // Note that the permission specified by the mode parameter of fs.openSync() is fileIo.OpenMode.READ_WRITE.
-      let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
+      // Note that the permission specified by the mode parameter of fileIo.openSync is fileIo.OpenMode.READ_WRITE.
+      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
       console.info('file fd: ' + file.fd);
    }
    ```
@@ -206,9 +206,9 @@ If the security component cannot be called to save images and videos in your dev
      uri = documentSaveResult[0];
      console.info('documentViewPicker.save succeed and uri is:' + uri);
      const testFilePath = new fileUri.FileUri(uri + '/test.txt').path;
-     const file = fs.openSync(testFilePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-     fs.writeSync(file.fd, 'Hello World!');
-     fs.closeSync(file.fd);
+     const file = fileIo.openSync(testFilePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+     fileIo.writeSync(file.fd, 'Hello World!');
+     fileIo.closeSync(file.fd);
    }).catch((err: BusinessError) => {
      console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
    })

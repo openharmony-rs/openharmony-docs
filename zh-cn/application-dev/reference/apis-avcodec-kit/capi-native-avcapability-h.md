@@ -34,6 +34,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_AVCodecCategory](#oh_avcodeccategory) | OH_AVCodecCategory | 编解码器类别。 |
+| [OH_AVCodecType](#oh_avcodectype) | OH_AVCodecType | 编解码器类型。 |
 | [OH_AVCapabilityFeature](#oh_avcapabilityfeature) | OH_AVCapabilityFeature | 可以在特定编解码器场景中使用的可选特性。 |
 
 ### 函数
@@ -42,8 +43,12 @@
 | -- | -- |
 | [OH_AVCapability *OH_AVCodec_GetCapability(const char *mime, bool isEncoder)](#oh_avcodec_getcapability) | 获取系统推荐的编解码器能力。 |
 | [OH_AVCapability *OH_AVCodec_GetCapabilityByCategory(const char *mime, bool isEncoder, OH_AVCodecCategory category)](#oh_avcodec_getcapabilitybycategory) | 获取指定类别中的编解码器能力。通过指定类别，匹配的编解码器仅限于硬件编解码器或软件编解码器。 |
+| [OH_AVCapability **OH_AVCodec_GetCapabilityList(OH_AVCodecType codecType, uint32_t *count)](#oh_avcodec_getcapabilitylist) | 获取指定编解码器类型的能力列表。此功能会根据提供的编解码器类型检索出系统支持的所有匹配的编解码器能力。 |
 | [bool OH_AVCapability_IsHardware(OH_AVCapability *capability)](#oh_avcapability_ishardware) | 检查能力实例是否描述了硬件编解码器。 |
+| [bool OH_AVCapability_IsSecure(OH_AVCapability *capability)](#oh_avcapability_issecure) | 检查能力实例是否描述了一个DRM解码器。 |
 | [const char *OH_AVCapability_GetName(OH_AVCapability *capability)](#oh_avcapability_getname) | 获取编解码器名称。 |
+| [const char *OH_AVCapability_GetMimeType(OH_AVCapability *capability)](#oh_avcapability_getmimetype) | 获取编解码器的MIME类型。 |
+| [bool OH_AVCapability_CheckMimeType(OH_AVCapability *capability, const char *mimeType)](#oh_avcapability_checkmimetype) | 检查编解码器的MIME类型是否与指定的MIME类型匹配。 |
 | [int32_t OH_AVCapability_GetMaxSupportedInstances(OH_AVCapability *capability)](#oh_avcapability_getmaxsupportedinstances) | 获取编解码器支持的最大实例数。 |
 | [OH_AVErrCode OH_AVCapability_GetEncoderBitrateRange(OH_AVCapability *capability, OH_AVRange *bitrateRange)](#oh_avcapability_getencoderbitraterange) | 获取编码器支持的比特率范围。 |
 | [bool OH_AVCapability_IsEncoderBitrateModeSupported(OH_AVCapability *capability, OH_BitrateMode bitrateMode)](#oh_avcapability_isencoderbitratemodesupported) | 检查编码器是否支持特定的比特率模式。 |
@@ -90,6 +95,25 @@ enum OH_AVCodecCategory
 | -- | -- |
 | HARDWARE = 0 | 硬件编解码。 |
 | SOFTWARE | 软件编解码。 |
+
+### OH_AVCodecType
+
+```c
+enum OH_AVCodecType
+```
+
+**描述**
+
+编解码器类型。
+
+**起始版本：** 24
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_AVCODEC_TYPE_VIDEO_ENCODER = 0 | 表示视频编码器。<br>**起始版本：** 24 |
+| OH_AVCODEC_TYPE_VIDEO_DECODER = 1 | 表示视频解码器。<br>**起始版本：** 24 |
+| OH_AVCODEC_TYPE_AUDIO_ENCODER = 2 | 表示音频编码器。<br>**起始版本：** 24 |
+| OH_AVCODEC_TYPE_AUDIO_DECODER = 3 | 表示音频解码器。<br>**起始版本：** 24 |
 
 ### OH_AVCapabilityFeature
 
@@ -170,6 +194,35 @@ OH_AVCapability *OH_AVCodec_GetCapabilityByCategory(const char *mime, bool isEnc
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) * | 如果现有编解码器匹配，则返回能力实例，如果指定的MIME类型与任何现有编解码器不匹配，则返回NULL。 |
 
+### OH_AVCodec_GetCapabilityList()
+
+```c
+OH_AVCapability **OH_AVCodec_GetCapabilityList(OH_AVCodecType codecType, uint32_t *count)
+```
+
+**描述**
+
+获取指定编解码器类型的能力列表。此功能会根据提供的编解码器类型检索出系统支持的所有匹配的编解码器能力。
+
+>**说明：** 
+> 
+>编解码器能力列表的内存由系统底层全局维护，调用者无需管理其生命周期，不得手动分配或释放此内存。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCodecType](capi-native-avcapability-h.md#oh_avcodectype) codecType | 指定要查询的编解码器类型。 |
+| uint32_t *count | 输出参数。指向一个uint32_t变量的指针，用于存储匹配到的编解码器能力数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVCapability **](capi-avcapability-oh-avcapability.md) | 如果找到匹配项，则返回指向OH_AVCapability实例数组的指针。<br>         如果未找到匹配的编解码器或发生错误，则返回NULL。 |
+
 ### OH_AVCapability_IsHardware()
 
 ```c
@@ -196,6 +249,30 @@ bool OH_AVCapability_IsHardware(OH_AVCapability *capability)
 | -- | -- |
 | bool | 如果能力实例描述的是硬件编解码器，则返回true，如果功能实例描述的是软件编解码器，则为false。 |
 
+### OH_AVCapability_IsSecure()
+
+```c
+bool OH_AVCapability_IsSecure(OH_AVCapability *capability)
+```
+
+**描述**
+
+检查能力实例是否描述了一个DRM解码器。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | 编解码能力指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 如果能力实例描述的是DRM解码器，则返回true。<br>         如果能力实例描述的是非DRM解码器，则为false。 |
+
 ### OH_AVCapability_GetName()
 
 ```c
@@ -221,6 +298,55 @@ const char *OH_AVCapability_GetName(OH_AVCapability *capability)
 | 类型 | 说明 |
 | -- | -- |
 | const char * | 返回编解码器名称字符串。 |
+
+### OH_AVCapability_GetMimeType()
+
+```c
+const char *OH_AVCapability_GetMimeType(OH_AVCapability *capability)
+```
+
+**描述**
+
+获取编解码器的MIME类型。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | 编解码能力指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| const char * | 返回编解码器的MIME类型字符串。 |
+
+### OH_AVCapability_CheckMimeType()
+
+```c
+bool OH_AVCapability_CheckMimeType(OH_AVCapability *capability, const char *mimeType)
+```
+
+**描述**
+
+检查编解码器的MIME类型是否与指定的MIME类型匹配。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | 编解码能力指针。 |
+| const char *mimeType | 要检查的目标MIME类型字符串。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 如果MIME类型匹配则返回true，否则返回false。 |
 
 ### OH_AVCapability_GetMaxSupportedInstances()
 
@@ -770,7 +896,7 @@ OH_AVErrCode OH_AVCapability_GetVideoSupportedNativeBufferFormats(OH_AVCapabilit
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：能力实例无效、能力实例是音频编码解码器能力、指向NativeBuffer格式数组的指针为空指针、<br> 或指向NativeBuffer格式数组的元素数目的指针为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：能力实例无效、能力实例是音频编解码器能力、指向NativeBuffer格式数组的指针为空指针、<br> 或指向NativeBuffer格式数组的元素数目的指针为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
 
 ### OH_AVCapability_GetSupportedProfiles()
 

@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 该模块针对关系型数据库（Relational Database，RDB）提供了sendable支持。支持从查询结果集中获取sendable类型ValuesBucket用于并发实例间传递。
@@ -162,7 +162,7 @@ toSendableAsset(asset: NonSendableAsset): Asset
 
 | 参数名 | 类型                                   | 必填 | 说明                        |
 | ------ | -------------------------------------- | ---- | :-------------------------- |
-| asset  | [NonSendableAsset](#nonsendablebucket) | 是   | 不可跨线程传递的Asset数据。 |
+| asset  | [NonSendableAsset](#nonsendableasset) | 是   | 不可跨线程传递的Asset数据。 |
 
 **返回值**：
 
@@ -211,7 +211,7 @@ fromSendableAsset(asset: Asset): NonSendableAsset
 
 | 类型                                   | 说明                        |
 | -------------------------------------- | --------------------------- |
-| [NonSendableAsset](#nonsendablebucket) | 不可跨线程传递的Asset数据。 |
+| [NonSendableAsset](#nonsendableasset) | 不可跨线程传递的Asset数据。 |
 
 **错误码：**
 

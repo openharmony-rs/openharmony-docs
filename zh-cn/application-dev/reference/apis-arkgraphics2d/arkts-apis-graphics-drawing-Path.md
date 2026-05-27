@@ -505,7 +505,7 @@ addArc(rect: common2D.Rect, startAngle: number, sweepAngle: number): void
 
 向路径添加一段圆弧。
 
-当startAngle和sweepAngle同时满足以下两种情况时，添加整个椭圆而不是圆弧:
+当startAngle和sweepAngle同时满足以下两种情况时，添加整个椭圆而不是圆弧：
 
 1.startAngle对90取余接近于0；
 

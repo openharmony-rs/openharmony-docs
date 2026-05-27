@@ -94,4 +94,4 @@ In this callback function, the parameter type is [RotationChangeInfo](arkts-apis
 
 | Type| Description|
 | -------------------------------- | ------------------------------------ |
-| U | Value of type [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void.|  |
+| U | Value of the [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) or void type returned by the callback.|

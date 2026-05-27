@@ -87,6 +87,7 @@ static void onMessage(struct WebSocket *wsClient, char *data, uint32_t length)
     }
     tmp[length] = '\0';
     OH_LOG_INFO(LOG_APP, "onMessage: len: %{public}u, data: %{public}s", length, tmp);
+    delete[] tmp;
 }
 
 static void onError(struct WebSocket *wsClient, WebSocket_ErrorResult errorResult)
@@ -193,7 +194,7 @@ static napi_value CloseWebsocket(napi_env env, napi_callback_info info)
 }
 ```
 
-ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返回true，否则返回false。在创建代表WebSocket客户端的WebSocket结构体指针前，需要定义以下回调函数：连接开启时的onOpen回调、接收普通消息的onMessage回调、接收错误消息的onError回调、接收关闭消息的onClose回调。在示例代码中，还调用了`OH_WebSocketClient_Send`、`OH_WebSocketClient_Close`等函数向服务器发送消息，主动关闭WebSocket连接。
+ConnectWebsocket函数接收一个WebSocket URL并尝试连接，连接成功返回true，否则返回false。在创建代表WebSocket客户端的WebSocket结构体指针前，需要定义以下回调函数：连接开启时的onOpen回调、接收普通消息的onMessage回调、接收错误消息的onError回调、接收关闭消息的onClose回调。在示例代码中，还调用了[`OH_WebSocketClient_Send`](../reference/apis-network-kit/capi-net-websocket-h.md#oh_websocketclient_send)、[`OH_WebSocketClient_Close`](../reference/apis-network-kit/capi-net-websocket-h.md#oh_websocketclient_close)等函数向服务器发送消息，主动关闭WebSocket连接。
 
 
 2、将通过napi封装好的`napi_value`类型对象初始化导出，通过外部函数接口，将函数暴露给JavaScript使用。示例代码中，ConnectWebsocket函数就会作为外部函数Connect暴露出去；SendMessage函数作为外部函数Send暴露出去；CloseWebsocket函数作为外部函数Close暴露出去。

@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 
@@ -82,7 +82,7 @@
 
 ## 接口说明
 
-以下是关系型设备协同分布式数据库跨设备数据同步功能的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+以下是关系型设备协同分布式数据库跨设备数据同步功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -381,91 +381,91 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 
 ```json
 {
-    "dbSchema": [
-      {
-        "version": 0,
-        "bundleName": "com.example.rdbDataSync",
-        "dbName": "RdbTest",
-        "tables": [
-          {
-            "tableName": "EMPLOYEE",
-            "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
-            "fields": [
-              {
-                "columnName": "ID",
-                "type": "Integer",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": true
-              },
-              {
-                "columnName": "NAME",
-                "type": "Text",
-                "primaryKey": true,
-                "notNull": true,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "AGE",
-                "type": "Integer",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "SALARY",
-                "type": "Float",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "CODES",
-                "type": "Blob",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              }
-            ]
-          },
-          {
-            "tableName": "EMPLOYEE2",
-            "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
-            "fields": [
-              {
-                "columnName": "NAME",
-                "type": "Text",
-                "primaryKey": true,
-                "notNull": true,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "AGE",
-                "type": "Integer",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "SALARY",
-                "type": "Float",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "CODES",
-                "type": "Blob",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  "dbSchema": [
+    {
+      "version": 0,
+      "bundleName": "com.example.rdbDataSync",
+      "dbName": "RdbTest",
+      "tables": [
+        {
+          "tableName": "EMPLOYEE",
+          "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
+          "fields": [
+            {
+              "columnName": "ID",
+              "type": "Integer",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": true
+            },
+            {
+              "columnName": "NAME",
+              "type": "Text",
+              "primaryKey": true,
+              "notNull": true,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "AGE",
+              "type": "Integer",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "SALARY",
+              "type": "Float",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "CODES",
+              "type": "Blob",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            }
+          ]
+        },
+        {
+          "tableName": "EMPLOYEE2",
+          "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
+          "fields": [
+            {
+              "columnName": "NAME",
+              "type": "Text",
+              "primaryKey": true,
+              "notNull": true,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "AGE",
+              "type": "Integer",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "SALARY",
+              "type": "Float",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "CODES",
+              "type": "Blob",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
 
 ### schema约束与示意

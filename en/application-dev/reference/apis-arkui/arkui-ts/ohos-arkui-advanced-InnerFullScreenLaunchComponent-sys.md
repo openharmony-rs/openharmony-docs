@@ -7,7 +7,7 @@
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
-**InnerFullScreenLaunchComponent** is a component that allows the invoker to choose the timing for launching an atomic service. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
+**InnerFullScreenLaunchComponent** is a component that allows the invoker to choose the timing for launching an atomic service. If the invoked app (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
 > **NOTE**
 >
@@ -48,9 +48,9 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 | -------- | -------- | -------- | -------- | -------- |
 | content | Callback\<void> | Yes| \@BuilderParam | Content displayed in the component.|
 | controller | [LaunchController](#launchcontroller) | Yes| - | Controller for launching the atomic service.|
-| onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.|
-| onError<sup>23+<sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Callback triggered when an exception occurs during the execution of an embedded atomic service. You can obtain the error information based on the **code**, **name**, and **message** parameters in the callback and rectify the exception accordingly.|
-| onTerminated<sup>23+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Callback triggered when an embedded atomic service is exited properly by clicking the exit button or calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) This callback is not triggered when the atomic service is exited by a swipe gesture.|
+| onReceive<sup>20+</sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.|
+| onError<sup>23+</sup> | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Callback triggered when an exception occurs during the execution of an embedded atomic service. You can obtain the error information based on the **code**, **name**, and **message** parameters in the callback and rectify the exception accordingly.|
+| onTerminated<sup>23+</sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - | Callback triggered when an embedded atomic service exits normally via user-triggered exit button taps or calls to [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself), but not triggered on edge swipe exits.|
 
 ## LaunchController
 
@@ -74,7 +74,7 @@ Represents the callback triggered when the user signs in to the atomic service.
 
 | Name| Type| Mandatory| Description|
 | --------------- | ------ |------ |------ |
-|appId | string |Yes| Application ID for the atomic service.|
+|appId | string |Yes| App ID for the atomic service.|
 | options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | No| Parameters for launching the atomic service.|
 
 ## Events
@@ -90,7 +90,7 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 struct Index {
 
   @Builder
-  ColumChild() {
+  ColumnChild() {
     Column() {
       Text('InnerFullScreenLaunchComponent').fontSize(16).margin({top: 100})
       Button('Start Sunrise/Sunset')
@@ -110,7 +110,7 @@ struct Index {
   build() {
     Column() {
       InnerFullScreenLaunchComponent({
-          content: this.ColumChild,
+          content: this.ColumnChild,
           controller: this.controller,
           onReceive: (data) => {
             console.info("onReceive, data: " + data['ohos.atomicService.window']);

@@ -124,7 +124,7 @@ autoHalfFold(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | 是   | 是否开启自动旋转。<br/>默认值：true，设置true表示FolderStack在[半折叠状态](ts-appendix-enums.md#foldstatus11)进行布局时开启自动旋转，设置false表示关闭自动旋转。该属性不区分设备类型。<br />非法值：按默认值处理。 |
+| value  | boolean | 是   | 是否开启自动旋转。<br/>默认值：true，设置true表示FolderStack在半折叠状态（见[FoldStatus](ts-appendix-enums.md#foldstatus11)）进行布局时开启自动旋转，设置false表示关闭自动旋转。该属性不区分设备类型。<br />非法值：按默认值处理。 |
 
 ## 事件
 
@@ -336,10 +336,10 @@ struct Index {
   }
 }
 ```
-**图1** 横屏展开
-</br> ![FolderStack01.png](figures/FolderStack01.png)
-</br> **图2** 横屏半折叠
-</br> ![FolderStack02.png](figures/FolderStack02.png)
+**图1** 横屏展开</br>
+![FolderStack01.png](figures/FolderStack01.png)</br>
+**图2** 横屏半折叠</br>
+![FolderStack02.png](figures/FolderStack02.png)
 
 ### 示例2（使用attributeModifier动态设置FolderStack组件的属性及方法）
 
@@ -426,19 +426,19 @@ struct attributeDemo {
 }
 ```
 
-**图1** 横屏展开
-</br> 预期日志：
-</br> The device is currently in the expanded state
-</br> this foldStatus:1
-</br> this isHoverMode:0
-</br> this appRotation:3
-</br> this windowStatusType:1
-</br> ![FolderStack03](figures/FolderStack03.png)
-</br> **图2** 横屏半折叠
-</br> 预期日志：
-</br> The device is currently in the half folded state
-</br> this foldStatus:3
-</br> this isHoverMode:1
-</br> this appRotation:3
-</br> this windowStatusType:1
-</br> ![FolderStack04](figures/FolderStack04.png)
+**图1** 横屏展开</br>
+预期日志：</br>
+The device is currently in the expanded state</br>
+this foldStatus:1</br>
+this isHoverMode:0</br>
+this appRotation:3</br>
+this windowStatusType:1</br>
+![FolderStack03](figures/FolderStack03.png)</br>
+**图2** 横屏半折叠</br>
+预期日志：</br>
+The device is currently in the half folded state</br>
+this foldStatus:3</br>
+this isHoverMode:1</br>
+this appRotation:3</br>
+this windowStatusType:1</br>
+![FolderStack04](figures/FolderStack04.png)

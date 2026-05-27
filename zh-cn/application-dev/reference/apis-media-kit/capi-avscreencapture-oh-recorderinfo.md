@@ -1,8 +1,8 @@
 # OH_RecorderInfo
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -27,7 +27,7 @@ typedef struct OH_RecorderInfo {...} OH_RecorderInfo
 | 名称 | 描述 |
 | -- | -- |
 | char* url | 录制文件的URL。 |
-| uint32_t urlLen | 录制文件的URL长度。 |
+| uint32_t urlLen | 录制文件的URL的长度值。 |
 | [OH_ContainerFormatType](capi-native-avscreen-capture-base-h.md#oh_containerformattype) fileFormat | 录制文件的格式。 |
 
 

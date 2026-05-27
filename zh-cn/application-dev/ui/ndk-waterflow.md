@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fangyuhao-->
+<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArkUI开发框架在NDK接口提供了瀑布流容器组件，通过瀑布流自身的排列规则，将不同大小的"项目"自上而下如瀑布般紧密布局。
@@ -14,7 +14,7 @@ ArkUI开发框架在NDK接口提供了瀑布流容器组件，通过瀑布流自
 
 ## 使用懒加载
 ### NodeAdapter介绍 
-NDK中提供了NodeAdapter对象替代ArkTS侧的LazyForeach功能，用于按需生成子组件。详情请参阅[NodeAdapter介绍](../ui/ndk-loading-long-list.md#nodeadapter介绍)。
+NDK中提供了NodeAdapter对象替代ArkTS侧的[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)功能，用于按需生成子组件。详情请参阅[NodeAdapter介绍](../ui/ndk-loading-long-list.md#nodeadapter介绍)。
 
 ### 实现懒加载适配器
 
@@ -201,17 +201,17 @@ private:
 
 } // namespace NativeModule
 
-#endif //MYAPPLICATION_FLOWITEMADAPTER_H
+#endif // MYAPPLICATION_FLOWITEMADAPTER_H
 ```
 
 ## 创建分组
-使用WaterflowSection类管理waterflow中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建ArkUI_WaterFlowSectionOption对象，在析构函数中将其销毁。
+使用WaterflowSection类管理[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建[ArkUI_WaterFlowSectionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)对象，在析构函数中将其销毁。
 
 
-<!-- @[worterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
+<!-- @[waterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
 
 ``` C
-//WaterflowSection.h
+// WaterflowSection.h
 
 #ifndef MYAPPLICATION_WATERFLOWSECTION_H
 #define MYAPPLICATION_WATERFLOWSECTION_H

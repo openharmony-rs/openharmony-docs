@@ -109,7 +109,7 @@ If an application needs to play an online streaming media asset by parsing an M3
 
 **Case 5: playing an online streaming media asset by parsing an M3U8 file in the application sandbox**
 
-If an application needs to play an online streaming media asset by parsing an M3U8 file in the application sandbox, the application can obtain the file handle through [fs.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync), combine the file handle into fdUrl, and set the MIME type to **APPLICATION_M3U8** through [setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12).
+If an application needs to play an online streaming media asset by parsing an M3U8 file in the application sandbox, the application can obtain the file handle through [fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileioopensync), combine the file handle into fdUrl, and set the MIME type to **APPLICATION_M3U8** through [setMimeType](../../reference/apis-media-kit/arkts-apis-media-MediaSource.md#setmimetype12).
 ```ts
  import { media } from '@kit.MediaKit';
  import { fileIo as fs } from '@kit.CoreFileKit';

@@ -386,7 +386,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**.|
 
 ### enableDataDetector<sup>11+</sup>
 
@@ -849,7 +849,7 @@ The **marqueeOptions** settings take effect only when **textOverflow** is set to
 
 | Name| Type                                      | Mandatory| Description                                      |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextMarqueeOptions](#textmarqueeoptions18)> | Yes| Marquee animation properties such as enable/disable, step size, loop count, and direction.|
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextMarqueeOptions](#textmarqueeoptions18)> | Yes| Marquee animation properties such as enable/disable, step size, loop count, and direction.|
 
 ### maxFontScale<sup>12+</sup>
 
@@ -1035,7 +1035,7 @@ If [constraintSize](ts-universal-attributes-size.md#constraintsize) is set for t
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| minLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | Yes  | Minimum number of lines of the text.<br>Value range: [0, *INT32_MAX*]<br>If the value is less than 0, the value 0 is used.|
+| minLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | Yes  | Minimum number of lines of the text.<br>Value range: [0, *INT32_MAX*]<br>If the value is less than 0, the value 0 is used.|
 
 ### includeFontPadding<sup>23+</sup>
 
@@ -1051,7 +1051,7 @@ Sets whether to add spacing at the beginning and end of a line to avoid text tru
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| include | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to add spacing at the beginning and end of a line to avoid text truncation.<br>The value true indicates that spacing is added at the beginning and end of a line, and the value false indicates that spacing is not added at the beginning and end of a line.|
+| include | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to add spacing at the beginning and end of a line to avoid text truncation.<br>The value true indicates that spacing is added at the beginning and end of a line, and the value false indicates that spacing is not added at the beginning and end of a line.|
 
 ### fallbackLineSpacing<sup>23+</sup>
 
@@ -1067,7 +1067,7 @@ For multi-line text overlapping, the line height can be automatically adjusted b
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the line height is automatically adjusted based on the actual text height.<br>The value true indicates that the line height is automatically adjusted based on the actual text height, and the value false indicates that the line height is not automatically adjusted based on the actual text height.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether the line height is automatically adjusted based on the actual text height.<br>The value true indicates that the line height is automatically adjusted based on the actual text height, and the value false indicates that the line height is not automatically adjusted based on the actual text height.|
 
 ### optimizeTrailingSpace<sup>20+</sup>
 
@@ -1093,7 +1093,7 @@ When optimizing pure space text by setting [optimizeTrailingSpace](#optimizetrai
 
 | Name          | Type            | Mandatory| Description                                           |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| optimize         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to optimize trailing spaces.<br>**true** to optimize, **false** otherwise.<br>Default value: **false**.|
+| optimize         | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to optimize trailing spaces.<br>**true** to optimize, **false** otherwise.<br>Default value: **false**.|
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -1115,7 +1115,7 @@ Whether to enable the compression of punctuation marks at the beginning of a lin
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable the compression of punctuation at the beginning of a line.<br>The value true indicates that the compression of punctuation at the beginning of a line is enabled, and the value false indicates that the compression of punctuation at the beginning of a line is disabled.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable the compression of punctuation at the beginning of a line.<br>The value true indicates that the compression of punctuation at the beginning of a line is enabled, and the value false indicates that the compression of punctuation at the beginning of a line is disabled.|
 
 ### privacySensitive<sup>12+</sup>
 
@@ -1264,7 +1264,7 @@ This API takes effect only when the height of the text content exceeds the compo
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | Yes  | Vertical alignment of the text.<br>If the value is **undefined** or invalid, alignment defaults to **Center**.|
+| textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | Yes  | Vertical alignment of the text.<br>If the value is **undefined** or invalid, alignment defaults to **Center**.|
 
 ### textDirection<sup>23+</sup>
 
@@ -1400,7 +1400,7 @@ When this and is used together with [halfLeading](#halfleading12), **halfLeading
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| textVerticalAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)> | Yes  | Vertical alignment of text paragraphs.<br>Default value: **TextVerticalAlign.BASELINE**.|
+| textVerticalAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[TextVerticalAlign](ts-text-common.md#textverticalalign20)> | Yes  | Vertical alignment of text paragraphs.<br>Default value: **TextVerticalAlign.BASELINE**.|
 
 ### wordBreak<sup>11+</sup>
 

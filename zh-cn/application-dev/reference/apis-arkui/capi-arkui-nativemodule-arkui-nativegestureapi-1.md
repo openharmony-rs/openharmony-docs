@@ -253,7 +253,7 @@ void (*dispose)(ArkUI_GestureRecognizer* recognizer)
 
 | 参数项                                                                                   | 描述 |
 |---------------------------------------------------------------------------------------| -- |
-| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer| 指向自定义弹窗控制器的指针。 |
+| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer| 需要销毁的手势的指针。 |
 
 ### addChildGesture()
 

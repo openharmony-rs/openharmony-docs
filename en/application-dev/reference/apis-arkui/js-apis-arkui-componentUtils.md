@@ -111,9 +111,9 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 
 | Name    | Type| Read-Only   | Optional    | Description                              |
 | --------| ---- | -------------------| -------------------------------| -----------------------------------|
-| x       | number | No      | No   | Translation distance along the x-axis.<br>Unit: px                      |
-| y       | number | No      | No   | Translation distance along the y-axis.<br>Unit: px                      |
-| z       | number | No      | No    | Translation distance along the z-axis.<br>Unit: px                      |
+| x       | number | No      | No   | Translation distance along the x-axis.<br>Unit: vp                      |
+| y       | number | No      | No   | Translation distance along the y-axis.<br>Unit: vp                      |
+| z       | number | No      | No    | Translation distance along the z-axis.<br>Unit: vp                      |
 
 ### ScaleResult
 
@@ -123,11 +123,11 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 
 | Name    | Type| Read-Only   | Optional  | Description                              |
 | --------| ---- | ---- |-----------------------------------| -----------------------------------|
-| x       | number | No      | No| Scale factor along the x-axis.<br>Unit: px                      |
-| y       | number | No      | No | Scale factor along the y-axis.<br>Unit: px                      |
-| z       | number | No      | No| Scale factor along the z-axis.<br>Unit: px                      |
-| centerX | number | No      | No| X-coordinate of the center point.<br>Unit: px                 |
-| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: px               |
+| x       | number | No      | No| Scale factor along the x-axis.                      |
+| y       | number | No      | No | Scale factor along the y-axis.                      |
+| z       | number | No      | No| Scale factor along the z-axis.                      |
+| centerX | number | No      | No| X-coordinate of the center point.<br>Unit: vp                 |
+| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: vp               |
 
 ### RotateResult
 
@@ -137,12 +137,12 @@ Implements a **ComponentInfo** object, which provides the size, position, transl
 
 | Name    | Type | Read-Only   | Optional    | Description                              |
 | --------| ---- | -----------------| ---------------------------------| -----------------------------------|
-| x       | number | No      | No | X-coordinate of the rotation vector.<br>Unit: px                  |
-| y       | number | No      | No | Y-coordinate of the rotation vector.<br>Unit: px                  |
-| z       | number | No      | No | Z coordinate of the rotation vector.<br>Unit: px                  |
-| angle   | number | No      | No | Rotation angle.<br>Unit: px                         |
-| centerX | number | No      | No | X-coordinate of the center point.<br>Unit: px                |
-| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: px                |
+| x       | number | No      | No | X-coordinate of the rotation vector.                  |
+| y       | number | No      | No | Y-coordinate of the rotation vector.                  |
+| z       | number | No      | No | Z coordinate of the rotation vector.                  |
+| angle   | number | No      | No | Rotation angle.<br>Unit: deg                         |
+| centerX | number | No      | No | X-coordinate of the center point.<br>Unit: vp                |
+| centerY | number | No      | No | Y-coordinate of the center point.<br>Unit: vp                |
 
 ### Matrix4Result
 
@@ -154,7 +154,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 
 | Type| Description                              |
 | --------| -----------------------------------|
-| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**.<br>Unit: px |
+| [number,number,number,number,<br>number,number,number,number,<br>number,number,number,number,<br>number,number,number,number] | A number array whose length is 16 (4 x 4). For details, see **4 x 4 matrix description**. |
 
 **4 x 4 matrix description**
 

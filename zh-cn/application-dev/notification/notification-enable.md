@@ -1,9 +1,8 @@
 # 请求通知授权
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -11,7 +10,7 @@
 
 ## 接口说明
 
-接口详情参见[API参考](../reference/apis-notification-kit/js-apis-notificationManager.md)。
+接口详情参见[@ohos.notificationManager (NotificationManager模块)](../reference/apis-notification-kit/js-apis-notificationManager.md)。
 
 **表1** 通知授权接口功能介绍
 
@@ -69,7 +68,7 @@
 
 3. （可选）拉起通知管理半模态弹窗，向用户再次申请通知授权。
 
-   <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
+   <!-- @[reapply_notify_auth_halfModal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
    
    ``` TypeScript
    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;

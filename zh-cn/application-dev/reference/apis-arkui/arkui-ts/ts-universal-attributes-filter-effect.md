@@ -116,6 +116,32 @@ compositingFilter(filter: Filter): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
+## materialFilter<sup>23+</sup>
+
+materialFilter(filter: Filter | undefined): T
+
+设置系统材质滤镜效果，系统材质滤镜的绘制早于[backgroundFilter](#backgroundfilter)绘制，即位于backgroundFilter的更底层。
+
+>**说明：**
+>
+> 该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                 |
+| ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
+| filter | [Filter](#filter) &nbsp;\|&nbsp; undefined | 是   | 系统材质滤镜视觉效果。设置为undefined时恢复为无系统材质滤镜效果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
 ## Filter
 
 type Filter = Filter

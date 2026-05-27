@@ -64,10 +64,13 @@ A well-named identifier meets the following requirements:
 **[Description]**
 
 Classes are named in upper camel case.
+
 Class names are usually nouns or noun phrases, for example, Person, Student, and Worker. Avoid verbs and ambiguous words like Data and Info in class names.
 
 **[Correct Example]**
-```
+<!-- @[Upper_Camel_Case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
 // Class name
 class User {
   username: string
@@ -89,11 +92,11 @@ enum UserType {
 
 // Namespace name
 namespace Base64Utils {
-  function encrypt() {
+  export function encrypt() {
     // todo encrypt
   }
 
-  function decrypt() {
+  export function decrypt() {
     // todo decrypt
   }
 };
@@ -112,20 +115,25 @@ A function is usually named as a verb or verb phrase in lower camel case. Exampl
 4. has + noun/adjective()
 5. verb()
 6. verb + object()
+
 A variable name is usually a noun or noun phrase in lower camel case.
 
 **[Correct Example]**
-```
+<!-- @[lower_Camel_Case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let msg = 'Hello world';
 
 function sendMsg(msg: string) {
   // todo send message
+  // ...
 }
 
 let userName = 'Zhangsan';
 
 function findUser(userName: string) {
   // todo find user by user name
+  // ...
 }
 ```
 
@@ -139,13 +147,15 @@ A constant name must consist of uppercase letters separated by underscores (_). 
 
 **[Correct Example]**
 
-```
-const MAX_USER_SIZE = 10000;
+<!-- @[Uppercase_Underline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
-enum UserType {
+``` TypeScript
+enum UserType1 {
   TEACHER = 0,
   STUDENT = 1
 };
+
+const MAX_USER_SIZE = 10000;
 ```
 
 ### Do Not Use Negative Boolean Variable Names
@@ -158,7 +168,9 @@ It is recommended that a local variable of the Boolean type be prefixed with a m
 
 **[Incorrect Example]**
 
-```
+<!-- @[boolean_guide_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let isNoError = true;
 let isNotFound = false;
 
@@ -168,7 +180,9 @@ function next() {}
 
 **[Correct Example]**
 
-```
+<!-- @[boolean_guide_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let isError = false;
 let isFound = true;
 
@@ -187,11 +201,14 @@ function hasNext() {}
 Use spaces only to indent.
 
 Preferentially use two-space indentation in most scenarios. Use four spaces in line break scenarios.
+
 Do not use the Tab key to indent. Currently, almost all IDEs and code editors support automatic conversion of a Tab input to two spaces. The code editors should be configured to use spaces for indentation.
 
 **[Correct Example]**
 
-```
+<!-- @[spaces_indentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 class DataSource {
   id: number = 0
   title: string = ''
@@ -237,7 +254,9 @@ function test(dataSource: DataSource[]) {
 The code line width should not be too long. Otherwise, it is difficult to read.
 
 The line width requirement encourages you to shorten function and variable names, reduce nesting, and write concise comments to improve code readability.
+
 It is recommended that each line contain no more than 120 characters unless a longer line can significantly improve the code readability and no information is hidden.
+
 Exception: If a one-line comment contains a command or URL of more than 120 characters, you can keep the line for ease in using copy, paste, and search with the **grep** command. Put the error information of preprocessor directives in one line to facilitate reading and understanding even if the line contains more than 120 characters.
 
 ### Use Braces in Conditional Statements and Loop Statements
@@ -250,17 +269,21 @@ It is a best practice to add braces ({}) to the execution body of statements suc
 
 **[Incorrect Example]**
 
-```
+<!-- @[use_braces_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let condition = true;
-if (condition) 
+if (condition)
   console.info('success');
-for (let idx = 0; idx < 5; ++idx) 
+for (let idx = 0; idx < 5; ++idx)
   console.info('', idx);
 ```
 
 **[Correct Example]**
 
-```
+<!-- @[use_braces_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let condition = true;
 if (condition) {
   console.info('success');
@@ -280,7 +303,9 @@ Use two spaces to indent the case or default statement in a switch statement blo
 
 **[Correct Example]**
 
-```
+<!-- @[switch_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 switch (condition) {
   case 0: {
     doSomething();
@@ -302,11 +327,14 @@ switch (condition) {
 **[Description]**
 
 When a statement is too long or difficult to read, start a new line at a proper position.
+
 During line breaking, always place operators at the end of lines, indicating that the operations are to be continued. This is also the default configurations of typical formatting tools.
 
 **[Correct Example]**
 
-```
+<!-- @[line_break_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 // The if conditional statement exceeds the line width.
 if (userCount > MAX_USER_COUNT ||
   userCount < MIN_USER_COUNT) {
@@ -321,11 +349,12 @@ if (userCount > MAX_USER_COUNT ||
 **[Description]**
 
 Each statement should declare only one variable.
+
 In this way, it is easier to add variable declarations and can avoid errors, because you do not need to consider changing a semicolon (;) to a comma (,). It is also easier for the debugger to debug variables one by one, rather than skipping all variables at a time.
 
 **[Incorrect Example]**
 
-```
+``` TypeScript
 let maxCount = 10, isCompleted = false;
 let pointX, pointY;
 pointX = 10; pointY = 0;
@@ -333,7 +362,9 @@ pointX = 10; pointY = 0;
 
 **[Correct Example]**
 
-```
+<!-- @[variable_definitions_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 let maxCount = 10;
 let isCompleted = false;
 let pointX = 0;
@@ -351,7 +382,9 @@ Use spaces to highlight keywords and important information. The general recommen
 2. Do not add a space between the method name and the open parentheses of the parameter list when defining or calling the method.
 3. Add a space between the keyword **else** or **catch** and the close brace (}).
 4. Add a space before the open brace ({), except when:
+
 a. The open brace is used as the first parameter of a method or the first element in an array, for example, **foo({ name: 'abc' })**.
+
 b. The open brace is used in a template name, for example, **abc${name}**.
 5. Spaces are added before and after the binary operator (+, -, *, =, <, >, <=, >=, ===, !==, &&, ||). Spaces are added on both sides of the ternary operator (? :).
 6. Add a space after the comma in array initialization and the comma between multiple parameters in a method.
@@ -361,26 +394,30 @@ b. The open brace is used in a template name, for example, **abc${name}**.
 
 **[Incorrect Example]**
 
-```
-// There is no space between if and the open parenthesis.
-if(isJedi) {
-  fight();
-}
+<!-- @[highlight_keywords_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+  // There is no space between if and the open parenthesis.
+  if(isJedi) {
+    fight();
+  }
+  // ...
 // There is a space between the method name fight and the open parenthesis.
-function fight (): void {
+function fightBad (): void {
   console.info('Swooosh!');
 }
 ```
 
 **[Correct Example]**
 
-```
-// There is a space between if and the open parenthesis.
-if (isJedi) {
-  fight();
-}
+<!-- @[highlight_keywords_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
 
+``` TypeScript
+  // There is a space between if and the open parenthesis.
+  if (isJedi) {
+    fight();
+  }
+  // ...
 // There is no space between the method name fight and the open parenthesis.
 function fight(): void {
   console.info('Swooosh!');
@@ -389,43 +426,52 @@ function fight(): void {
 
 **[Incorrect Example]**
 
-```
+<!-- @[highlight_else_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 if (flag) {
   // ...
-}else {  // There is no space between the close brace and else.
+}else { // There is no space between the close brace and else.
   // ...
 }
 ```
 
 **[Correct Example]**
 
-```
+<!-- @[highlight_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 if (flag) {
   // ...
-} else {  // There is a space between the close brace and else.
+} else { // There is a space between the close brace and else.
   // ...
 }
 ```
 
 **[Correct Example]**
 
-```
-function foo() {  // There is a space before the open brace in the method declaration.
+<!-- @[highlight_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo() { // There is a space before the open brace in the method declaration.
   // ...
 }
-
-bar('attr', {  // There is a space before the open brace.
-  age: '1 year',
-  sbreed: 'Bernese Mountain Dog',
-});
+// ...
+  bar('attr', { // There is a space before the open brace.
+    age: '1 year',
+    sbreed: 'Bernese Mountain Dog',
+  });
 ```
 
 **[Correct Example]**
 
+<!-- @[highlight_comma_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const arr = [1, 2, 3]; // There is a space after the comma during array initialization and no space before the comma.
+myFunc(bar1, foo1, baz); // There is a space after the comma between multiple parameters of a method and no space before the comma.
 ```
-const arr = [1, 2, 3];  // There is a space after the comma during array initialization. There is no space before the comma.
-myFunc(bar, foo, baz);  // There is a space after the comma between multiple parameters of a method. There is no space before the comma.
-```
+
 
 ### Use Single Quotation Marks for Strings
 
@@ -437,16 +483,20 @@ To maintain code consistency and readability, use single quotes.
 
 **[Incorrect Example]**
 
-```
-let message = "world";
-console.info(message);
+<!-- @[single_quotation_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let message1 = 'world';
+console.info(message1);
 ```
 
 **[Correct Example]**
 
-```
-let message = 'world';
-console.info(message);
+<!-- @[single_quotation_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+let message2 = 'world';
+console.info(message2);
 ```
 
 ### If an Object Literal Has More Than Four Properties, Place Each of Them at Separate Lines
@@ -459,7 +509,9 @@ The properties of an object literal should be all placed at the same line or eac
 
 **[Incorrect Example]**
 
-```
+<!-- @[many_properties_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 interface I {
   name: string
   age: number
@@ -469,12 +521,14 @@ interface I {
   bar: boolean
 }
 
-let obj: I = { name: 'tom', age: 16, value: 1, sum: 2, foo: true, bar: false }
+let obj1: I = { name: 'tom', age: 16, value: 1, sum: 2, foo: true, bar: false }
 ```
 
 **[Correct Example]**
 
-```
+<!-- @[many_properties_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 interface I {
   name: string
   age: number
@@ -484,7 +538,8 @@ interface I {
   bar: boolean
 }
 
-let obj: I = {
+// ...
+let obj2: I = {
   name: 'tom',
   age: 16,
   value: 1,
@@ -504,7 +559,9 @@ In conditional statements, place **else** in the same line as the close parenthe
 
 **[Incorrect Example]**
 
-```
+<!-- @[put_else_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 if (isOk) {
   doThing1();
   doThing2();
@@ -516,7 +573,9 @@ else {
 
 **[Correct Example]**
 
-```
+<!-- @[put_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 if (isOk) {
   doThing1();
   doThing2();
@@ -527,7 +586,9 @@ if (isOk) {
 
 **[Incorrect Example]**
 
-```
+<!-- @[put_catch_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 try {
   doSomething();
 }
@@ -538,7 +599,9 @@ catch (err) {
 
 **[Correct Example]**
 
-```
+<!-- @[put_catch_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 try {
   doSomething();
 } catch (err) {
@@ -556,8 +619,10 @@ Follow a consistent style of using braces in the project. You are advised to put
 
 **[Incorrect Example]**
 
-```
-function foo()
+<!-- @[put_brace_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo1()
 {
   // ...
 }
@@ -565,8 +630,10 @@ function foo()
 
 **[Correct Example]**
 
-```
-function foo() {
+<!-- @[put_brace_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo2() {
   // ...
 }
 ```
@@ -583,8 +650,10 @@ ArkTS provides the **private**, **protected**, and **public** access modifiers. 
 
 **[Incorrect Example]**
 
-```
-class C {
+<!-- @[accessible_modifiers_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+class C1 {
   count: number = 0
 
   getCount(): number {
@@ -595,8 +664,10 @@ class C {
 
 **[Correct Example]**
 
-```
-class C {
+<!-- @[accessible_modifiers_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+class C2 {
   private count: number = 0
 
   public getCount(): number {
@@ -615,18 +686,22 @@ In ArkTS, a floating-point number must contain a decimal point, but no digit is 
 
 **[Incorrect Example]**
 
-```
-const num = .5;
-const num = 2.;
-const num = -.7;
+<!-- @[not_omit_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const num1 = .5;
+const num2 = 2.;
+const num3 = -.7;
 ```
 
 **[Correct Example]**
 
-```
-const num = 0.5;
-const num = 2.0;
-const num = -0.7;
+<!-- @[not_omit_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+const num4 = 0.5;
+const num5 = 2.0;
+const num6 = -0.7;
 ```
 
 ### Use Number.isNaN() to Check Whether a Variable Is Number.NaN
@@ -636,12 +711,16 @@ const num = -0.7;
 **[Description]**
 
 In ArkTS, **Number.NaN** is a particular value of a numeric data type. It represents a non-numeric value in the double-precision 64-bit format, as defined in the IEEE floating-point standard.
+
 **Number.NaN** is unique in ArkTS because it is not equal to any value, including itself. For example, the result of comparison with **Number.NaN** is confusing, as the values of **Number.NaN !== Number.NaN** and **Number.NaN != Number.NaN** are both **true**.
+
 Therefore, you must use **Number.isNaN()** to check whether a value is **Number.NaN**.
 
 **[Incorrect Example]**
 
-```
+<!-- @[check_NaN_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 if (foo == Number.NaN) {
   // ...
 }
@@ -653,7 +732,9 @@ if (foo != Number.NaN) {
 
 **[Correct Example]**
 
-```
+<!-- @[check_NaN_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 if (Number.isNaN(foo)) {
   // ...
 }
@@ -673,21 +754,26 @@ To traverse an array, preferentially use the methods provided by **Array**, such
 
 **[Incorrect Example]**
 
-```
+<!-- @[array_methods_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 const numbers = [1, 2, 3, 4, 5];
 // Use for to traverse an existing array to generate a new array.
-const increasedByOne: number[] = [];
+const increasedByOne1: number[] = [];
 for (let i = 0; i < numbers.length; i++) {
-  increasedByOne.push(numbers[i] + 1);
+  increasedByOne1.push(numbers[i] + 1);
 }
 ```
 
 **[Correct Example]**
 
-```
+<!-- @[array_methods_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 const numbers = [1, 2, 3, 4, 5];
+// ...
 // Better: Use the map method.
-const increasedByOne: number[] = numbers.map(num => num + 1);
+const increasedByOne2: number[] = numbers.map(num => num + 1);
 ```
 
 ### Do Not Assign Values in Control Conditional Expressions
@@ -697,11 +783,14 @@ const increasedByOne: number[] = numbers.map(num => num + 1);
 **[Description]**
 
 Control conditional expressions are usually used in **if**, **while**, **for**, and **?:** statements.
+
 Assigning values in this type of expression often leads to unexpected behavior and poor code readability.
 
 **[Incorrect Example]**
 
-```
+<!-- @[assignValues_expressions_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 // It is difficult to understand the value assignment in the control conditional expression.
 if (isFoo = false) {
   // ...
@@ -710,7 +799,9 @@ if (isFoo = false) {
 
 **[Correct Example]**
 
-```
+<!-- @[assignValues_expressions_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 const isFoo = false; // Assign a value above and directly use it in the if statement.
 if (isFoo) {
   // ...
@@ -727,8 +818,10 @@ If the **return**, **break**, **continue**, or **throw** statement is used in a 
 
 **[Incorrect Example]**
 
-```
-function foo() {
+<!-- @[finally_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo4() {
   try {
     // ...
     return 1;
@@ -737,14 +830,16 @@ function foo() {
     return 2;
   } finally {
     return 3;
- }
+  }
 }
 ```
 
 **[Correct Example]**
 
-```
-function foo() {
+<!-- @[finally_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function foo5() {
   try {
     // ...
     return 1;
@@ -767,38 +862,52 @@ function foo() {
 
 **[Incorrect Example]**
 
-```
+<!-- @[noESObject_lib_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+
+``` TypeScript
 // lib.ets
 export interface I {
   sum: number
 }
 
-export function getObject(value: number): I {
+export function getObject1(value: number): I {
   let obj: I = { sum: value };
   return obj
 }
+```
 
-// app.ets
-import { getObject } from 'lib'
-let obj: ESObject = getObject(123);
+<!-- @[noESObject_app_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+import { getObject1 } from './lib'
+// ...
+let obj1: I = getObject1(123);
 ```
 
 **[Correct Example]**
 
-```
+<!-- @[noESObject_lib_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/lib.ets) -->  
+
+``` TypeScript
 // lib.ets
 export interface I {
   sum: number
 }
 
-export function getObject(value: number): I {
+// ...
+export function getObject2(value: number): I {
   let obj: I = { sum: value };
   return obj
 }
+```
 
-// app.ets
-import { getObject, I } from 'lib'
-let obj: I = getObject(123);
+<!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Index.ets
+import { getObject2, I } from './lib';
+// ...
+let obj2: I = getObject2(123);
 ```
 
 ### Use T[] for the Array Type
@@ -811,14 +920,18 @@ ArkTS provides two array types: **T[]** and **Array\<T>**. To improve code reada
 
 **[Incorrect Example]**
 
-```
+<!-- @[use_T[]_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->    
+
+``` TypeScript
 let x: Array<number> = [1, 2, 3];
 let y: Array<string> = ['a', 'b', 'c'];
 ```
 
 **[Correct Example]**
 
-```
+<!-- @[use_T[]_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
 // Use the T[] syntax.
 let x: number[] = [1, 2, 3];
 let y: string[] = ['a', 'b', 'c'];

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -120,7 +120,7 @@ struct Page {
 
   aboutToAppear(): void {
     // 错误用法，已经给age注册过方法名为onChange1的函数，无法重复注册相同函数名的监听函数
-    // 打印错误日志提示添加失败：FIX THIS APPLICATION ERROR: AddMonitor onChange1 failed when adding path age because duplicate key
+    // 打印错误日志提示添加失败：FIX THIS APPLICATION ERROR: AddMonitor 'onChange1' owned by 'User' path: 'age' - failed when adding duplicate path
     UIUtils.addMonitor(this.user, 'age', this.onChange1);
   }
 
@@ -661,6 +661,7 @@ struct Page {
   }
 
   aboutToAppear(): void {
+    // addMonitor支持配置成同步监听函数
     UIUtils.addMonitor(this, 'user.age', this.onChange, { isSynchronous: true })
   }
 
@@ -690,6 +691,7 @@ class User {
 struct Page {
   @Local user: User = new User();
 
+  // @Monitor仅支持异步监听
   @Monitor('user.age')
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -728,6 +730,7 @@ class Info {
   @Trace message: string = 'not initialized';
 
   constructor() {
+    // addMonitor可以监听构造函数中message的变化
     UIUtils.addMonitor(this, 'message', this.onMessageChange);
     this.message = 'initialized';
   }

@@ -1,17 +1,17 @@
 # @ohos.app.form.formInfo (formInfo) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **formInfo** module provides types and enums related to the widget information and state.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md).
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md).
 
 ## Modules to Import
 
@@ -33,9 +33,9 @@ Defines the widget information.
 | resizable<sup>20+</sup> | boolean  | Yes   | Yes    | Whether the widget can be resized by dragging. The value must be in the **supportDimensions** configuration list of the widget or the widget with the same **groupId**.<br>- **true**: The widget can be resized.<br>- **false**: The widget cannot be resized.|
 | groupId<sup>20+</sup> | string     | Yes   | Yes    | Common ID of a group of widgets. If the values of **groupId** of multiple widgets are the same and the value of **resizable** is **true**, the **supportDimensions** configuration of multiple widgets is shared. For example, if the **groupId** values of widgets A and B are the same and the **resizable** values are **true**, widget A can be adjusted to any size specified by **supportDimensions**.<br>It is recommended that this field be set when multiple widgets with the same functionality need to be resized.|
 | isTemplateForm<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is a template widget.<br>- **true**: The widget is a template widget.<br>- **false**: The widget is not a template widget.|
-| isStandbySupported<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| isStandbyAdapted<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget has been adapted to the landscape standby mode.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| isPrivacySensitive<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is privacy-sensitive.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| isStandbySupported<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.<br>**Model restriction**: This API can be used only in the stage model.|
+| isStandbyAdapted<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget has been adapted to the landscape standby mode.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.<br>**Model restriction**: This API can be used only in the stage model.|
+| isPrivacySensitive<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is privacy-sensitive.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ##  FormParam
 
@@ -112,7 +112,7 @@ Defines the widget information filter. Only the widget information that meets th
 | Name       | Type  | Mandatory        |Description        |
 | ----------- | ---- | ------------ |------------ |
 | bundleName<sup>12+</sup>    | string    |No   | Only the widget information in which **bundleName** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **bundleName**.<br>**System API**: This is a system API. |
-| supportedDimensions<sup>12+</sup> | Array\<number\> |No   | Only the widget information in which **supportedDimensions** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedDimensions**.<br>**System API**: This is a system API. |
+| supportedDimensions<sup>12+</sup> | Array\<number\> |No   | Only the widget information in which **supportedDimensions** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedDimensions**.<br>**System API**: This is a system API.<br>**Note:** The value is an array containing a maximum of 9 integers. The value range of each integer is [1, 9], where the value **5** is supported since API version 9 and deprecated since API version 20.<br>For details, see [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension). |
 | supportedShapes<sup>12+</sup>  | Array\<number\> |No   | Only the widget information in which **supportedShapes** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedShapes**.<br>**System API**: This is a system API.  |
 
 ## FormLocation<sup>12+</sup>
@@ -227,11 +227,11 @@ Defines the parameters for a scene-based widget.
 | Name| Type| Read-Only| Optional| Description                                                                                                                                             |
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | No| No | ExtensionAbility name, for example, LiveFormExtensionAbility name of the widget provider.                                    |
-| disabledDesktopBehaviors | string | No| Yes | The options are **SWIPE_DESKTOP**, **PULL_DOWN_SEARCH**, **LONG_CLICK**, and **DRAG**. You can select one or more options. Use a vertical bar (\|) in between to concatenate two different operations, for example, SWIPE_DESKTOP\|PULL_DOWN_SEARCH. By default, no operation is disabled.|
+| disabledDesktopBehaviors | string | No| Yes | The options are **SWIPE_DESKTOP**, **PULL_DOWN_SEARCH**, **LONG_CLICK**, and **DRAG**. If multiple options are used, use vertical bars (\|) to separate them. For example, **SWIPE_DESKTOP\|PULL_DOWN_SEARCH**. By default, no operation is disabled.|
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
-### (formId: string): Promise&lt;formInfo.Rect&gt;
+type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 Callback for querying the widget position and dimension. It uses a promise to return the result.
 
@@ -249,7 +249,7 @@ Callback for querying the widget position and dimension. It uses a promise to re
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the position and dimension of the widget relative to the upper left corner of the screen, in vp.|
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the widget position relative to the upper-left corner of the screen and the widget dimensions.|
 
 **Error codes**
 

@@ -13,7 +13,7 @@
 蓝牙的实现原理是基于无线电技术的短距离通信协议，使用2.4GHz频段的无线电波进行通信，使用频率跳跃技术（Frequency Hopping Spread Spectrum，FHSS）来避免与其他无线设备的干扰。在通信过程中，蓝牙设备会发送和接收数据包，并且使用不同的蓝牙协议来控制通信流程和数据传输。
 
 ## 传统蓝牙
-蓝牙基础率/增加数据率（Basic Rate/Enhanced Data Rate，BR/EDR），也被称为传统蓝牙。蓝牙EDR技术是蓝牙BR技术的增强版本，有更高的数据传输速率，比BR快2\~3倍，最高可达2\~3Mbps。在理想条件下，通信范围约100米。
+蓝牙基础率/增强数据率（Basic Rate/Enhanced Data Rate，BR/EDR），也被称为传统蓝牙。蓝牙EDR技术是蓝牙BR技术的增强版本，有更高的数据传输速率，比BR快2\~3倍，最高可达2\~3Mbps。在理想条件下，通信范围约100米。
 
 传统蓝牙提供了多样化且成熟的技术协议。例如：高级音频分发、免提通话、个人局域网、电话簿访问等协议。利用这些技术，使得传统蓝牙可以满足许多不同应用场景下的多样化需求。例如：使用蓝牙耳机、音响等设备听音乐，通过车载访问手机电话本、短信等数据，实现设备间的数据共享。
 
@@ -32,7 +32,7 @@
 
 - 蓝牙子系统定义的地址类型。蓝牙设备的实际MAC地址属于用户的隐私信息，在发现设备的过程中，蓝牙子系统会给每个蓝牙外设分配一个虚拟MAC地址，并保存该虚拟MAC地址和外设实际MAC地址的映射关系。
 
-- 蓝牙协议定义的地址类型。蓝牙协议定义的蓝牙设备地址类型主要可以分为两大类：Public Address和Random Address。传统蓝牙使用的是Public Address，低功耗蓝牙可以使用Public Address和Random Address。其中，Random Address又包括Static Random Adress和Private Random Address两种类型。Private Random Address可以继续分为Non-resolvable Private Address和Resolvable Private Address两种类型。每种地址类型介绍如下：
+- 蓝牙协议定义的地址类型。蓝牙协议定义的蓝牙设备地址类型主要可以分为两大类：Public Address和Random Address。传统蓝牙使用的是Public Address，低功耗蓝牙可以使用Public Address和Random Address。其中，Random Address又包括Static Random Address和Private Random Address两种类型。Private Random Address可以继续分为Non-resolvable Private Address和Resolvable Private Address两种类型。每种地址类型介绍如下：
 
 | 类型                | 说明     |
 | ------------------ |  ------ |

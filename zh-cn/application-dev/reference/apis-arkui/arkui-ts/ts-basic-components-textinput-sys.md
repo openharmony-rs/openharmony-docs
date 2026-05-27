@@ -55,7 +55,7 @@ voiceButton(options: Optional\<VoiceButtonOptions\>)
 // xxx.ets
 @Entry
 @Component
-struct TextInputxample {
+struct TextInputExample {
 
   build() {
     Column() {

@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 本模块接口从API version 9开始废弃，建议使用新接口[`@ohos.hiviewdfx.hiAppEvent`](js-apis-hiviewdfx-hiappevent.md)替代。
+> - 本模块接口从API version 9开始废弃，建议使用新接口[@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md)替代。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 

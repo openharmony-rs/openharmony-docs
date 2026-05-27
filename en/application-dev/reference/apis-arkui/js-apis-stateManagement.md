@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926; @liwenzhen3; @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -172,7 +172,7 @@ Stores key-value pair data on the application disk. If the given key already exi
 
 | Name  |Type  |Mandatory  | Description                                                     |
 | ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptions18)    |Yes |Connection settings.|
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |Yes |Connection settings.|
 
 **Return value**
 
@@ -232,7 +232,7 @@ const p1: Sample = PersistenceV2.globalConnect({
   areaMode: contextConstant.AreaMode.EL1
 })!;
 
-// Use key:global2 for connection and use the constructor function. If the encryption level not specified, the default EL2 level is used.
+// Use key:global2 for connection and use the constructor function. If the encryption level is not specified, the default EL2 level is used.
 const p2: Sample = PersistenceV2.globalConnect({ type: Sample, key: 'global2', defaultCreator: () => new Sample() })!;
 
 // Use key:global3 for connection and set the encryption parameter ranging from 0 to 4; otherwise, a crash occurs. In this case, EL3 is set.
@@ -263,7 +263,7 @@ Stores key-value pair data on the application disk. Supports the persistence of 
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|  
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollectionst-s23)\| [ConnectOptions\<T\>](#connectoptionst18) |  Yes  | Passed **globalConnect** parameters. For details, see the description of **ConnectOptions** and **ConnectOptionsCollections**.<br>If **defaultSubCreator** is provided in **ConnectOptionsCollections**, **defaultCreator** must be provided. Otherwise, the persistence fails. The collection item type S must be the same as the return type of **defaultSubCreator**. If the return types are inconsistent, an error will be reported during compilation.|  
 
 When you use **defaultSubCreator** in **globalConnect**, you must provide **defaultCreator**. The return type of the **defaultSubCreator** function must be the same as the collection item type returned by **defaultCreator**.<br>When **globalConnect** persists data of the **Array\<ClassA>** type, you need to use the **defaultSubCreator** option to instruct the state management framework to create an instance of **ClassA**. The following is an example of using **globalConnect** to persist data of the **Array\<ClassA>** type:
 
@@ -399,7 +399,7 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 });
 ```
 
-## ConnectOptions<sup>18+</sup>
+## ConnectOptions\<T\><sup>18+</sup>
 
 Defines the parameter type for **globalConnect**.
 
@@ -414,9 +414,9 @@ Defines the parameter type for **globalConnect**.
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Default constructor. You are advised to pass this parameter. If **globalConnect** is connected to the key for the first time, an error is reported if this parameter is not passed in.|
 |areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
 
-## ConnectOptionsCollections<sup>23+</sup>
+## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
-Defines the parameter type for [globalConnect](#globalconnect23) API. ConnectOptionsCollections is inherited from [ConnectOptions](#connectoptions18). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**).
+Defines the parameter type for the [globalConnect](#globalconnect23) API. **ConnectOptionsCollections\<T, S\>** is inherited from [ConnectOptions\<T\>](#connectoptionst18). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**).
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -427,7 +427,7 @@ Defines the parameter type for [globalConnect](#globalconnect23) API. ConnectOpt
 |Parameter  |Type   |Read-Only  |Optional   |Description     |
 |--------|------------|------------|-----------|--------------|
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. **defaultSubCreator** should be provided together with **defaultCreator**; otherwise, the container data cannot be persisted. The collection item type **S** must be the same as the return type of **defaultSubCreator**. If **defaultSubCreator** is provided but **defaultCreator** is not, the persistence fails.|
-|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array\<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array\<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
+|defaultSubCreator   | StorageDefaultCreator\<S\>   |No  |Yes  |Persists container data. If the return value of **defaultSubCreator** is **undefined** or **null**, the persistence fails. When a user-defined class collection (such as **Array\<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array\<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.|
 
 The following shows the examples of **StorageDefaultCreator\<T>** and **StorageDefaultCreator\<S>**:
 
@@ -562,10 +562,10 @@ Defines the decorator and component information associated with the observable o
 
 | Parameter| Type| Read-Only | Optional| Description    |
 | ------ | ---- | ---- |---- | ------------ |
-| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br>If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br>If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br>If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br>If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br>If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
+| decoratorName | string  | No| No  | Decorator name.<br>For a V1 object, the value is the name of the decorator associated with the object.<br> If the V1 object uses [@Track](./../../ui/state-management/arkts-track.md), the value is **'@Track'**.<br> If the V2 object uses [@Trace](./../../ui/state-management/arkts-new-observedV2-and-trace.md), the value is **'@Trace'**.<br> If the V2 object uses [makeObserved](#makeobserved), the value is **'MakeObserved'**.<br> If the V2 object uses [enableV2Compatibility](#enablev2compatibility19), the value is **'EnableV2Compatible'**.<br> If the V2 object uses built-in data, the value is **'ProxyObservedV2'**.|
 | stateVariableName | string  | No| No  | Name of the attribute decorated by the decorator.|
-| owningComponentOrClassName | string  | No| No  | Component or object name.<br>For a V1 object, the component name is returned.<br>For a V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator, the object name is returned.<br>For a V2 object, the object name is returned.|
-| owningComponentId | number  | No| No  | Component ID.<br>For a V1 object, the component ID is returned.<br>For the V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator or for the V2 object, **-1** is returned instead of the component ID.|
+| owningComponentOrClassName | string  | No| No  | Component or object name.<br>For a V1 object, the component name is returned.<br> For a V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator, the object name is returned.<br> For a V2 object, the object name is returned.|
+| owningComponentId | number  | No| No  | Component ID.<br>For a V1 object, the component ID is returned.<br> For the V1 object whose properties are decorated by the [@Track](./../../ui/state-management/arkts-track.md) decorator or for the V2 object, **-1** is returned instead of the component ID.|
 | dependentInfo | Array<[ElementInfo](#elementinfo23)>  | No| No  | Information about the component that uses the observable object. If the object is not used in any UI, an empty array is returned.|
 
 ## ElementInfo<sup>23+</sup>
@@ -873,7 +873,7 @@ struct Index {
 
 static enableV2Compatibility\<T extends object\>(source: T): T
 
-Enables V1 state variables to be observable in @ComponentV2. This API is primarily used in scenarios where V1 and V2 state management are mixed. For details, see [Mixing Use of State Management V1 and V2](../../ui/state-management/arkts-v1-v2-mixusage.md).
+Enables V1 state variables to be observable in @ComponentV2. This API is primarily used in scenarios where V1 and V2 state management are mixed. For details, see [Mixed Use of State Management V1 and V2 (API Version 19 and Later)](../../ui/state-management/arkts-v1-v2-mixusage.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -938,7 +938,7 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 Wraps an unobservable object into an object that is observable by V1 state management. This API is equivalent to @Observed and can be used to initialize @ObjectLink.
 
-This API can be used together with [enableV2Compatibility](#enablev2compatibility19) in scenarios where state management V1 and V2 are used together. For details, see [Mixing Use of State Management V1 and V2](../../ui/state-management/arkts-v1-v2-mixusage.md).
+This API can be used together with [enableV2Compatibility](#enablev2compatibility19) in scenarios where state management V1 and V2 are used together. For details, see [Mixed Use of State Management V1 and V2 (API Version 19 and Later)](../../ui/state-management/arkts-v1-v2-mixusage.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -948,7 +948,7 @@ This API can be used together with [enableV2Compatibility](#enablev2compatibilit
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | ------------ |
-| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>The [collections](../apis-arkts/arkts-apis-arkts-collections.md) type and [\@Sendable](../../arkts-utils/arkts-sendable.md) decorated classes are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
+| source | T    | Yes  | Data source. Common classes, Array, Map, Set, and Date types are supported.<br>The [collections](../apis-arkts/arkts-apis-arkts-collections.md) type and classes decorated with [@Sendable](../../arkts-utils/arkts-sendable.md) are not supported.<br>**undefined** and **null** are not supported. V2 state management data and the return value of [makeObserved](#makeobserved) are not supported.|
 
 **Return value**
 
@@ -1087,7 +1087,7 @@ Creates a mutable two-way data binding instance, which is used to construct the 
 
 | Type| Description                                            |
 | ---- | ------------------------------------------------ |
-| [MutableBinding\<T\>](#mutablebindingt20)    | Returns a two-way data binding instance with a **value** attribute, which allows you read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**.|
+| [MutableBinding\<T\>](#mutablebindingt20)    | Returns a two-way data binding instance with a **value** attribute, which allows you to read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**.|
 
 **Example**
 
@@ -1513,7 +1513,7 @@ Defines a synchronous callback.
 
 ## MonitorOptions<sup>20+</sup>
 
-Defines the optional parameter of [addMonitor](#addmonitor20), which is used to configure the callback type.
+Defines the optional parameters of [addMonitor](#addmonitor20), which are used to configure the callback type.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

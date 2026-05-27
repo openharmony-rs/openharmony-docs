@@ -1,4 +1,4 @@
-# @ohos.net.vpnExtension (VPN 增强管理)
+# @ohos.net.vpnExtension (VPN增强管理)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -12,14 +12,14 @@
 > **说明：**
 >
 > 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br>
-> 如下模块不支持在VpnExtensionAbility引用，可能会导致程序异常退出。<br>
-> - [@ohos.contact(联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
-> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager(位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
+> 以下模块不支持在VpnExtensionAbility中引用，可能会导致程序异常退出。<br>
+> - [@ohos.contact (联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
+> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
 > - [@ohos.multimedia.audio(音频管理)](../apis-audio-kit/arkts-apis-audio.md)<br>
 > - [@ohos.multimedia.camera(相机管理)](../apis-camera-kit/arkts-apis-camera.md)<br>
-> - [@ohos.telephony.call(拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>
-> - [@ohos.telephony.sim(SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>
-> - [@ohos.telephony.sms(短信服务)](../apis-telephony-kit/js-apis-sms.md)<br>
+> - [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>
+> - [@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>
+> - [@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)<br>
 
 ## 导入模块
 
@@ -559,6 +559,10 @@ generateVpnId(): Promise\<string\>
 
 如需使用系统多VPN能力，需调用该接口生成vpnId，配置到VpnConfig中。
 
+>**注意**
+>
+>当前系统多VPN能力仅支持IPv4。
+
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
 **返回值：**
@@ -644,6 +648,7 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
+<!--Table: 19%; 20%; 8%; 8%; 45%-->
 | 名称             | 类型                                      | 只读 | 可选 | 说明                                       |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
 | addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。API version 23之前，最多支持64个IP地址；从API version 23开始，最多支持2000个IP地址。                                  |
@@ -656,8 +661,8 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 | isIPv6Accepted      | boolean                                                         | 否  | 是 | 是否支持IPv6。true表示支持，false表示不支持, 默认值为false。<br>**注意**：若支持IPv6功能，需要在addresses中配置IPv6类型的IP地址。  |
 | isInternal          | boolean                                                         | 否  | 是 | 是否支持内置VPN。true表示支持，false表示不支持, 默认值为false。 |
 | isBlocking          | boolean                                                        | 否  | 是 | 是否阻塞模式。true表示阻塞模式，false表示非阻塞模式, 默认值为false。       |
-| trustedApplications | Array\<string\>                                                | 否  | 是 | 受信任的应用信息列表，string类型表示的包名。当配置该列表后，仅该列表中的应用数据才能根据routes被VPN代理。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
-| blockedApplications | Array\<string\>                                                 | 否  | 是 | 被阻止的应用信息列表，string类型表示的包名。当配置该列表后，该列表中的应用数据不会被VPN代理，其他应用可以根据routes配置被VPN代理。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
+| trustedApplications | Array\<string\>                                                | 否  | 是 | 受信任的应用信息列表，string类型表示的包名。当配置该列表后，仅该列表中的应用数据才能根据routes被VPN代理。API version 23前最多可配置64个受信任的应用包名；从API version 23开始最多可配置256个受信任的应用包名。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
+| blockedApplications | Array\<string\>                                                 | 否  | 是 | 被阻止的应用信息列表，string类型表示的包名。当配置该列表后，该列表中的应用数据不会被VPN代理，其他应用可以根据routes配置被VPN代理。API version 23前最多可配置64个被阻止的应用包名；从API version 23开始最多可配置256个被阻止的应用包名。<br>**注意**：trustedApplications和blockedApplications列表不能同时配置。                         |
 
 **示例：**
 

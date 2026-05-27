@@ -1,8 +1,8 @@
 # 开放权限（系统授权）
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -13,7 +13,7 @@
 
 <!--Del-->
 > **说明：**
-> 权限级别为normal的权限，不涉及ACL使能字段。
+> 权限级别为normal的权限，不涉及是否支持证书授权字段。
 <!--DelEnd-->
 
 ## 申请方式
@@ -656,3 +656,31 @@
 **支持设备**：2in1
 
 **起始版本**：23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+允许应用使用HDR提亮能力。
+
+获取该权限后，应用可为组件内容添加HDR提亮效果。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+允许应用查询ObjectEditorExtensionAbility信息和拉起ObjectEditorExtensionAbility组件。
+
+获取该权限后，应用可以查询当前可插入的嵌入内容类型，并编辑该类型的内容。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24

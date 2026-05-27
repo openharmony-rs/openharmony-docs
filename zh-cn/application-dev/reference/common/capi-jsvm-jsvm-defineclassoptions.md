@@ -1,7 +1,7 @@
 # JSVM_DefineClassOptions
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -27,8 +27,9 @@ typedef struct {...} JSVM_DefineClassOptions
 | 名称                                                                            | 描述            |
 |-------------------------------------------------------------------------------|---------------|
 | [JSVM_DefineClassOptionsId](capi-jsvm-types-h.md#jsvm_defineclassoptionsid) id | 定义Class的选项ID。 |
-| void* ptr   | void*类型。      |
-| int num      | int类型。        |
-| bool boolean   | bool类型。            |
+| content     | id对应的定义Class选项值联合体。 |
+| content.ptr   | 指向定义Class选项值的指针。 |
+| content.num      | 存储整数类型的定义Class选项值。 |
+| content.boolean   | 存储布尔类型的定义Class选项值。|
 
 

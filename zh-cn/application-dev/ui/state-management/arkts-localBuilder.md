@@ -122,7 +122,7 @@ struct Parent {
 ### 按回调传递参数
 
 从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
-<!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) -->
+<!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) --> 
 
 ``` TypeScript
 import { UIUtils, Binding } from '@kit.ArkUI';
@@ -141,6 +141,7 @@ struct Parent {
 
   build() {
     Column() {
+      // 通过UIUtils.makeBinding()方法和Binding类，实现@Builder函数中状态变量的刷新
       this.citeLocalBuilder(UIUtils.makeBinding<string>(() => this.variableValue))
       Button('Click me')
         .onClick(() => {
@@ -160,7 +161,7 @@ struct Parent {
 > 若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。见常见错误[\@LocalBuilder函数和`$$`参数一起使用UI不刷新](#localbuilder函数和参数一起使用ui不刷新)。
 
 组件Parent内的\@LocalBuilder函数在build函数内调用，按键值对写法进行传值，当点击Click me时，\@LocalBuilder内的Text文本内容会随着状态变量内容的改变而改变。
-<!-- @[pass_by_reference_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ReferencePassing.ets) -->
+<!-- @[pass_by_reference_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ReferencePassing.ets) --> 
 
 ``` TypeScript
 class ReferenceType {
@@ -181,6 +182,7 @@ struct Parent {
 
   build() {
     Column() {
+      // 按键值对写法进行传值，传入的参数发生变化，会引起citeLocalBuilder内的UI刷新
       this.citeLocalBuilder({ paramString: this.variableValue })
       Button('Click me').onClick(() => {
         this.variableValue = 'Hi World';
@@ -193,7 +195,7 @@ struct Parent {
 按引用传递参数时，如果在\@LocalBuilder函数内调用自定义组件，ArkUI提供`$$`作为按引用传递参数的范式。
 
 组件Parent内的\@LocalBuilder函数内调用自定义组件，且按照引用传递参数将值传递到自定义组件，当Parent组件内状态变量值发生变化时，\@LocalBuilder函数内的自定义组件HelloComponent的message值也会随之更新。
-<!-- @[pass_by_reference_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ParentRefSync.ets) -->
+<!-- @[pass_by_reference_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ParentRefSync.ets) --> 
 
 ``` TypeScript
 class ReferenceType {
@@ -228,6 +230,7 @@ struct Parent {
 
   build() {
     Column() {
+      // 按引用传递参数，传入的参数发生变化，会引起citeLocalBuilder内的UI刷新
       this.citeLocalBuilder({ paramString: this.variableValue })
       Button('Click me').onClick(() => {
         this.variableValue = 'Hi World';
@@ -321,7 +324,7 @@ struct Child {
 调用\@LocalBuilder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@LocalBuilder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
 
 组件Parent将\@State修饰的label值按照函数传参方式传递到\@LocalBuilder函数内，此时\@LocalBuilder函数获取到的值为普通变量值，所以改变\@State修饰的label值时，\@LocalBuilder函数内的值不会发生改变。
-<!-- @[pass_by_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ValuePassing.ets) -->
+<!-- @[pass_by_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ValuePassing.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -338,6 +341,8 @@ struct Parent {
 
   build() {
     Column() {
+      // 按值传递参数
+      // 改变@State修饰的label值时，@LocalBuilder函数内的值不会发生改变
       this.citeLocalBuilder(this.label)
     }
   }
@@ -509,7 +514,7 @@ struct Child {
 【正例】
 
 在声明@LocalBuilder的组件下创建状态变量并在@LocalBuilder函数内访问，可以在状态变量变化时更新@LocalBuilder内的UI组件。
-<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) -->
+<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) --> 
 
 ``` TypeScript
 class LayoutSize {
@@ -557,3 +562,85 @@ struct Child {
 ```
 
 ![localBuilder_double_dollar.gif](./figures/localBuilder_double_dollar.gif)
+
+### @LocalBuilder函数在参数处直接调用出现布局错乱
+
+@LocalBuilder装饰的函数作为参数时，直接传递函数的执行结果，会导致布局和预期效果有偏差。
+
+【反例】
+
+<!-- @[problem_ui_structure_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructureOpposite.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Page {
+  @State message: string[] = ['1', '2', '3'];
+
+  build() {
+    List() {
+      // 错误写法，直接传递itemFoot的执行结果。
+      ListItemGroup({ space: 10, footer: this.itemFoot() }) {
+        ForEach(this.message, (item: string, index: number) => {
+          ListItem() {
+            Stack() {
+              Text(item)
+                .fontSize(30)
+            }
+          }
+        })
+      }
+    }
+  }
+
+  @LocalBuilder
+  itemFoot() {
+    Column() {
+      Text('itemFoot')
+        .fontSize(30)
+    }
+  }
+}
+```
+
+![localBuilder_parameter_passing_error_format.png](./figures/localBuilder_parameter_passing_error_format.png)
+
+【正例】
+
+ @LocalBuilder装饰的函数作为参数时，使用 `() => { 函数调用 }` 的形式，布局能够符合预期效果。
+
+<!-- @[problem_ui_structure_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructurePositive.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Page {
+  @State message: string[] = ['1', '2', '3'];
+
+  build() {
+    List() {
+      // 正确写法，使用() => { 函数调用 }的形式。
+      ListItemGroup({ space: 10, footer: () => { this.itemFoot() } }) {
+        ForEach(this.message, (item: string, index: number) => {
+          ListItem() {
+            Stack() {
+              Text(item)
+                .fontSize(30)
+            }
+          }
+        })
+      }
+    }
+  }
+
+  @LocalBuilder
+  itemFoot() {
+    Column() {
+      Text('itemFoot')
+        .fontSize(30)
+    }
+  }
+}
+```
+
+![localBuilder_parameter_transmission_in_correct_form.png](./figures/localBuilder_parameter_transmission_in_correct_form.png)

@@ -51,6 +51,9 @@
 * 设备间需要登录相同的华为账号。
 * 不同设备间只有相同bundleName的UIAbility应用才能进行协同。
 
+<!--RP1-->
+<!--RP1End-->
+
 ## 环境准备
 
 ### 环境要求
@@ -80,7 +83,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 ### 接口说明
 
-分布式扩展能力API的接口使用指导请参见[DistributedExtensionAbility API参考](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)。
+分布式扩展能力API的接口使用指导请参见[@ohos.application.DistributedExtensionAbility (协同Extension)](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md)。
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
@@ -179,4 +182,3 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 **解决措施**
 
 重新发消息触发进程重新拉起。
-

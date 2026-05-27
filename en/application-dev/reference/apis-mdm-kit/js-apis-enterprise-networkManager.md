@@ -1,20 +1,20 @@
 # @ohos.enterprise.networkManager (Network Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **networkManager** module provides APIs for network management of enterprise devices, including obtaining the device IP address and MAC address.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
 
 ## Modules to Import
@@ -452,7 +452,7 @@ Obtains the global network proxy.
 
 | Type                                                        | Description                          |
 | ------------------------------------------------------------ | ------------------------------ |
-| [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | Global HTTP proxy configuration obtained.|
+| [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | Global HTTP proxy configuration information.|
 
 **Error codes**
 
@@ -1102,12 +1102,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  // Replace it as required.
+  // Replace with actual values.
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1159,7 +1159,7 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
@@ -1211,12 +1211,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  // Replace it as required.
+  // Replace with actual values.
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1269,7 +1269,7 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
@@ -1324,12 +1324,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  // Replace it as required.
+  // Replace with actual values.
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1385,7 +1385,7 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
@@ -1451,7 +1451,7 @@ let config: networkManager.InterfaceConfig = {
   "netMask": "255.255.255.0",
   "dnsServers": "192.168.1.1"
 }
-let networkInterface: string = "eth0"; // Replace with actual values.
+let networkInterface: string = "eth0"; // Replace it as required.
 try {
   networkManager.setEthernetConfig(wantTemp, networkInterface, config);
   console.info('Succeeded in setting ethernet config.');
@@ -1497,7 +1497,7 @@ In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 ar
 
 | Name      | Type             | Read-only| Optional| Description                                                        |
 | ---------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
-| domainName | string            | No  | Yes|Domain name. This parameter is mandatory when a domain name filtering rule is added. Segment matching is supported. For example, if **domainName** is set to **example.com**, **example.com**, **www.example.com**, and **www.test.example.com** will be matched, while **linkexample.com** will not be matched.                              |
+| domainName | string            | No  | Yes|Domain name. This parameter is mandatory when a domain name filtering rule is added. Segment matching is supported. For example, if `example.com` is set to **example.com**, `example.com`, `www.example.com`, and `www.test.example.com` will be matched, while `linkexample.com` will not be matched.                              |
 | appUid     | string            | No  | Yes|UID of the application.                                                   |
 | action     | [Action](#action) | No  | Yes|Action to take, that is, receive or discard the data packets.<br>This parameter is mandatory when a domain name filtering rule is added.<br>This parameter is optional when a domain name filtering rule is removed. If this parameter is left empty, all [Action](#action) chains are cleared, and **domainName** and **appUid** must be also left empty.|
 | direction<sup>15+</sup> | [Direction](#direction) | No| Yes|Direction chains to which the rule applies.<br>This parameter is optional when a domain name filtering rule is added. If this parameter is set to output chain or input chain, the output chain takes effect. If this parameter is set to a forward chain, **appUid** must be empty. Otherwise, error code 401 will be returned.<br>This parameter is optional when a domain name filtering rule is removed. If the value is empty, all [Direction](#direction) chains are cleared, and **domainName** and **appUid** must be empty.|

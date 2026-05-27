@@ -1,9 +1,9 @@
 # Pixel Units
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArkUI provides four pixel units, with vp as the reference data unit.
@@ -12,10 +12,11 @@ ArkUI provides four pixel units, with vp as the reference data unit.
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Directly using vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx may cause issues due to [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). The following APIs are deprecated since API version 18. It is recommended to obtain a [UIContext](../arkts-apis-uicontext-uicontext.md) instance via **getUIContext()** and then use the [vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)/[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)/[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)/[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)/[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)/[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12) under **UIContext** to call instance-bound APIs.
+> - Directly using vp2px/px2vp/fp2px/px2fp/lpx2px/px2lpx may cause issues due to [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). The following APIs are deprecated since API version 18. You are advised to obtain a [UIContext](../arkts-apis-uicontext-uicontext.md) instance via **getUIContext()** and then use the [vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)/[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)/[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)/[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)/[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)/[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12) under **UIContext** to call instance-bound APIs.
 >
 > - When no UI instance is created, vp2px/px2vp uses the default screen's virtual pixel ratio for conversion. In this scenario, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
+## Basic Pixel Units
 
 | Name| Description                                                        |
 | ---- | ------------------------------------------------------------ |

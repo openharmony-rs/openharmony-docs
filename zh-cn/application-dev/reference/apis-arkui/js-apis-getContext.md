@@ -1,14 +1,14 @@
 # getContext
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
 如果需要在页面中获得当前Ability的Context，可调用getContext接口获取当前页面关联的[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
-> **说明：**	
+> **说明：**
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 该接口仅限Stage模型使用。
 

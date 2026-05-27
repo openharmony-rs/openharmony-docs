@@ -27,7 +27,7 @@
 
 按键事件到ArkUI框架之后，会先找到完整的节点获焦链。从叶子节点到根节点，逐一发送按键事件，若有子组件可以处理则优先给子组件处理，若子组件无法处理，则进行冒泡寻找父组件进行处理。 
 
-Web组件的KeyEvent流程与上述过程有所不同。在[onKeyPreIme](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeypreime12)返回false时，Web组件不会匹配快捷键。而在第三次按键派发过程中，Web组件会将未消费的[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)通过ReDispatch重新派发回ArkUI，在ReDispatch中再执行匹配快捷键等操作。
+Web组件的KeyEvent流程与上述过程有所不同。在[onKeyPreIme](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeypreime12)返回false时，Web组件不会匹配快捷键。而在第三次按键派发过程中，Web组件会将未消费的[KeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent对象说明)重新派发回ArkUI，在重新派发过程中再执行匹配快捷键等操作。
 
 ## onKeyEvent & onKeyPreIme
 
@@ -109,7 +109,7 @@ struct KeyEventExample {
 
 1. 由于onKeyEvent事件默认是冒泡的，所以Button和Column的onKeyEvent都可以响应。
 
-2. 每个按键都有2次回调，分别对应KeyType.Down和KeyType.Up，表示按键被按下、然后抬起。
+2. 每个按键都有2次回调，分别对应KeyType.Down和KeyType.Up，表示按键被按下，然后抬起。
 
 
 如果要阻止冒泡，即仅Button响应键盘事件，Column不响应，在Button的onKeyEvent回调中加入event.stopPropagation()方法即可，如下：

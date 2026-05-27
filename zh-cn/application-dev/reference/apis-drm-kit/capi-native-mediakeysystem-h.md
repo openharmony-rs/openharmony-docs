@@ -27,13 +27,13 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef  Drm_ErrCode (\*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#mediakeysystem_callback) | MediaKeySystem_Callback | MediaKeySystem事件触发时将调用的回调，不返回MediaKeySystem实例，适用于单个MediaKeySystem场景。 |
-| [typedef Drm_ErrCode (\*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysystem_callback) | OH_MediaKeySystem_Callback | MediaKeySystem事件触发时将调用的回调，返回MediaKeySystem实例，适用于多个MediaKeySystem场景。 |
+| [typedef  Drm_ErrCode (\*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#mediakeysystem_callback) | MediaKeySystem_Callback | MediaKeySystem事件触发时将调用的回调函数，不返回MediaKeySystem实例，适用于单个MediaKeySystem场景。 |
+| [typedef Drm_ErrCode (\*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysystem_callback) | OH_MediaKeySystem_Callback | MediaKeySystem事件触发时将调用的回调函数，返回MediaKeySystem实例，适用于多个MediaKeySystem场景。 |
 | [Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)](#oh_mediakeysystem_setcallback) | - | 设置MediaKeySystem事件回调。 |
 | [Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *descs, uint32_t *count)](#oh_mediakeysystem_getmediakeysystems) | - | 获取设备支持的DRM解决方案的名称和唯一标识的列表。 |
 | [bool OH_MediaKeySystem_IsSupported(const char *name)](#oh_mediakeysystem_issupported) | - | 查询设备是否支持对应的DRM解决方案。 |
-| [bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)](#oh_mediakeysystem_issupported2) | - | 查询设备是否支持对应的DRM解决方案名称及媒体类型。 |
-| [bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)](#oh_mediakeysystem_issupported3) | - | 查询设备是否支持对应的DRM解决方案、媒体类型、内容保护级别。 |
+| [bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)](#oh_mediakeysystem_issupported2) | - | 查询设备是否支持对应的DRM解决方案名称及媒体类型。可通过[OH_MediaKeySystem_IsSupported](#oh_mediakeysystem_issupported)接口先确认name参数对应的DRM解决方案是否是设备支持的。 |
+| [bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)](#oh_mediakeysystem_issupported3) | - | 查询设备是否支持对应的DRM解决方案、媒体类型、内容保护级别。可通过[OH_MediaKeySystem_IsSupported2](#oh_mediakeysystem_issupported2)接口先判断mimeType是否支持。 |
 | [Drm_ErrCode OH_MediaKeySystem_Create(const char *name, MediaKeySystem **mediaKeySystem)](#oh_mediakeysystem_create) | - | 创建MediaKeySystem实例。 |
 | [Drm_ErrCode OH_MediaKeySystem_SetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, const char *value)](#oh_mediakeysystem_setconfigurationstring) | - | 设置字符串类型的配置属性。 |
 | [Drm_ErrCode OH_MediaKeySystem_GetConfigurationString(MediaKeySystem *mediaKeySystem, const char *configName, char *value, int32_t valueLen)](#oh_mediakeysystem_getconfigurationstring) | - | 获取字符串类型配置属性值。 |
@@ -61,7 +61,7 @@ typedef  Drm_ErrCode (*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t
 
 **描述**
 
-MediaKeySystem事件触发时将调用的回调，不返回MediaKeySystem实例，适用于单个MediaKeySystem场景。
+MediaKeySystem事件触发时将调用的回调函数，不返回MediaKeySystem实例，适用于单个MediaKeySystem场景。
 
 **起始版本：** 11
 
@@ -89,7 +89,7 @@ typedef Drm_ErrCode (*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem
 
 **描述**
 
-MediaKeySystem事件触发时将调用的回调，返回MediaKeySystem实例，适用于多个MediaKeySystem场景。
+MediaKeySystem事件触发时将调用的回调函数，返回MediaKeySystem实例，适用于多个MediaKeySystem场景。
 
 **起始版本：** 12
 
@@ -179,13 +179,13 @@ bool OH_MediaKeySystem_IsSupported(const char *name)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | DRM解决方案名称。 |
+| const char *name | 输入参数，DRM解决方案名称。可通过[OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems)接口获取设备支持的DRM解决方案名称。示例："com.clearplay.drm"。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 表示是否支持指定DRM解决方案。true表示支持，false表示不支持。   |
+| bool |  返回是否支持指定的DRM解决方案。true表示支持，false表示不支持。    |
 
 
 ### OH_MediaKeySystem_IsSupported2()
@@ -196,7 +196,7 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 
 **描述**
 
-查询设备是否支持对应的DRM解决方案名称及媒体类型。
+查询设备是否支持对应的DRM解决方案名称及媒体类型。可通过[OH_MediaKeySystem_IsSupported](#oh_mediakeysystem_issupported)接口先确认name参数对应的DRM解决方案是否是设备支持的。
 
 **起始版本：** 11
 
@@ -205,14 +205,14 @@ bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | DRM解决方案名称。 |
-| const char *mimeType | 媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hev。 |
+| const char *name | 输入参数，DRM解决方案名称。可通过[OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems)接口获取设备支持的DRM解决方案名称。 |
+| const char *mimeType | 输入参数，媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hevc。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool |  表示是否支持指定DRM解决方案及媒体类型。true表示支持，false表示不支持。    |
+| bool |  表示是否支持指定的DRM解决方案及媒体类型。当name和mimeType都支持时返回true，否则返回false。当name或mimeType参数为空或无效时返回false。    |
 
 ### OH_MediaKeySystem_IsSupported3()
 
@@ -222,7 +222,7 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_C
 
 **描述**
 
-查询设备是否支持对应的DRM解决方案、媒体类型、内容保护级别。
+查询设备是否支持对应的DRM解决方案、媒体类型、内容保护级别。可通过[OH_MediaKeySystem_IsSupported2](#oh_mediakeysystem_issupported2)接口先判断mimeType是否支持。
 
 **起始版本：** 11
 
@@ -231,15 +231,15 @@ bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType,DRM_C
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | DRM解决方案名称。 |
-| const char *mimeType | 媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hev。 |
-| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) contentProtectionLevel | 内容保护级别。 |
+| const char *name | 输入参数，DRM解决方案名称。可通过[OH_MediaKeySystem_GetMediaKeySystems](#oh_mediakeysystem_getmediakeysystems)接口获取设备支持的DRM解决方案名称。 |
+| const char *mimeType | 输入参数，媒体类型，支持的媒体类型取决于DRM解决方案，如：video/avc、video/hevc。 |
+| [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) contentProtectionLevel | 输入参数，内容保护级别。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| bool |  表示是否支持指定DRM解决方案，媒体类型以及内容保护级别。true表示支持，false表示不支持。    |
+| bool |  表示是否支持指定的DRM解决方案、媒体类型以及内容保护级别。当name、mimeType和contentProtectionLevel都支持时返回true，否则返回false。    |
 
 ### OH_MediaKeySystem_Create()
 

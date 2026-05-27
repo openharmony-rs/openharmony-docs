@@ -35,6 +35,7 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称       | 类型    | 只读 | 可选 | 说明                                    |
 | ---------- | ---------- | ---- | --- | ------------------------------------- |
 | delay      | number     | 否  | 是    | 动画的整体延时时间，单位为ms（毫秒），默认不延时播放。<br/>默认值：0<br/>**说明：** <br/>&nbsp;delay>=0为延迟播放，delay<0表示提前播放。对于delay<0的情况：当delay的绝对值小于实际动画时长，动画将在开始后第一帧直接运动到delay绝对值的时刻的状态；当delay的绝对值大于等于实际动画时长，动画将在开始后第一帧直接运动到终点状态。其中实际动画时长等于单次动画时长乘以动画播放次数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
