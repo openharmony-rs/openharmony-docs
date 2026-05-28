@@ -140,7 +140,7 @@ struct Index {
     Column({space: 10}) {
       Column({space: 10}) {
         ContainerReader({
-          size: this.containerSize!!, //和this.containerSize变量绑定，ContainerReader尺寸变化时this.containerSize自动更新。
+          size: this.containerSize!!, // 和this.containerSize变量绑定，ContainerReader尺寸变化时this.containerSize自动更新。
           widthBreakpoint: this.widthBp!!,
           heightBreakpoint: this.heightBp!!
         }) {
