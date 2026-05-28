@@ -653,13 +653,13 @@ on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的ArkTS-Sta接口是[onPreDisconnect](#accessibilityextensioncontextonpredisconnect23)。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
-
-**相关接口**：该接口对应的ArkTS-Sta接口是[onPreDisconnect](#accessibilityextensioncontextonpredisconnect23)。
 
 **参数：**
 
@@ -729,13 +729,13 @@ onPreDisconnect(callback: Callback\<void>): void
 
 此注册函数需要与[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)配合使用，如果不调用[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
 
-**系统接口**：此接口为系统接口。
-
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20)。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -811,13 +811,13 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的ArkTS-Sta接口是[offPreDisconnect](#accessibilityextensioncontextoffpredisconnect23)。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
-
-**相关接口**：该接口对应的ArkTS-Sta接口是[offPreDisconnect](#accessibilityextensioncontextoffpredisconnect23)。
 
 **参数：**
 
@@ -885,13 +885,13 @@ offPreDisconnect(callback?: Callback\<void>): void
 
 取消已经向无障碍服务注册的预关闭回调函数，无障碍服务关闭该扩展服务前不再执行该回调。使用callback异步回调。
 
-**系统接口**：此接口为系统接口。
-
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('preDisconnect')](#accessibilityextensioncontextoffpredisconnect20)。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -2279,9 +2279,9 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 ### findElementById<sup>20+</sup>
 
-ArkTS-Dyn: findElementById(condition: number): Promise\<AccessibilityElement>;
+ArkTS-Dyn: findElementById(condition: number): Promise\<AccessibilityElement>
 
-ArkTS-Sta: findElementById(condition: long): Promise\<AccessibilityElement>;
+ArkTS-Sta: findElementById(condition: long): Promise\<AccessibilityElement>
 
 根据元素 ID 查找元素。使用Promise异步回调。
 
