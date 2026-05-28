@@ -1019,7 +1019,7 @@ Enumerates the parity check modes.
 
 ## StopBits
 
-Enumerates of the number of stop bits, in bits.
+Enumerates the number of stop bits, in bits.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
