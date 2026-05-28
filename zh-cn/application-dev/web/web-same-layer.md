@@ -432,6 +432,28 @@ display，position，z-index，visibility，opacity, background-color，backgrou
    开发者则需要调用[onNativeEmbedMouseEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedmouseevent20)来监听同层渲染区域的鼠标事件。
 
    <!-- @[native_embed_mouse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   
+   ``` TypeScript
+   .onNativeEmbedMouseEvent((mouse) => {
+     console.info('NativeEmbed onNativeEmbedMouseEvent' + JSON.stringify(mouse.mouseEvent));
+     this.componentIdArr.forEach((componentId: string) => {
+       let nodeController = this.nodeControllerMap.get(componentId);
+       // 将获取到的同层区域的事件发送到该区域embedId对应的nodeController上。
+       if (nodeController?.getEmbedId() === mouse.embedId) {
+         let ret = nodeController?.postInputEvent(mouse.mouseEvent);
+         if (ret) {
+           console.info('onNativeEmbedMouseEvent success ' + componentId);
+         } else {
+           console.info('onNativeEmbedMouseEvent fail ' + componentId);
+         }
+         if (mouse.result) {
+           // 通知Web组件鼠标事件消费结果。
+           mouse.result.setMouseEventResult(ret);
+         }
+       }
+     })
+   })
+   ```
 
 **完整示例：**
 
