@@ -4579,7 +4579,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可为通过 {@link Contact#getId()})获得的值表示创建成功。 |
+| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可通过 {@link Contact#getId()})获得的值表示创建成功。 |
 
 **错误码：**
 
@@ -4606,8 +4606,45 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-// fengyang todo 
+let mode = contact.ContactSyncMode.MODE_INCREMENTAL;
+const totalBatches: number = 3;
+const syncId: number = Date.now();
+for (let batch: number = 1; batch <= totalBatches; batch++) {
+  try {
+    const remaining: number = totalCount - (batch - 1) * batchSize;
+    const currentBatchSize: number = Math.min(batchSize, remaining);
+    const contacts: contact.Contact[] = [];
+    for (let i: number = 0; i < count; i++) {
+      const contactData: contact.Contact = {
+        name: {
+          fullName: 同步联系人${i + 1}_${batch}批次
+          },
+        phoneNumbers: [{
+          phoneNumber: 1380000${String(i + 1).padStart(4, '0')},
+          labelName: '手机'
+        }],
+        emails: [{
+          email: contact${i + 1}@example.com,
+          labelName: '工作'
+          }]
+        };
+      contacts.push(contactData);
+    }
+    const progress: ContactSyncProgress = {
+      syncId: syncId,
+      currentBatch: batch,
+      totalBatches: totalBatches
+    };
+    console.info(`同步批次 ${batch}/${totalBatches}, 联系人数量: ${currentBatchSize}`);
+    let result = await contact.syncContacts(context, mode, progress, contacts);
+    console.info(`批次 ${batch} 同步成功 result `  + JSON.stringify(result));
+    console.info(`syncContacts 完成: syncId=${syncId}, 总批次=${totalBatches}`);
+  }
+  catch (err) {
+    const e = err as BusinessError;
+    console.error(`syncContacts 失败: code=${e.code}, message=${e.message}`);
+  }
+}
 ```
 
 ## contact.queryContactSyncInfo<sup>26+</sup>
@@ -4657,8 +4694,8 @@ import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-// fengyang todo 
+const syncInfoList: ContactSyncInfo[] = await contact.queryContactSyncInfo(context) as ContactSyncInfo[];
+console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList));
 ```
 
 ## contact.importContactsViaUI<sup>26+</sup>
@@ -4684,7 +4721,7 @@ importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&l
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可为通过 {@link Contact#getId()})获得的值表示创建成功。 |
+| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可通过 {@link Contact#getId()})获得的值表示创建成功。 |
 
 **错误码：**
 
@@ -4722,7 +4759,7 @@ let contactInfo: contact.Contact = {
 contactList.push(contactInfo);
 let promise = contact.importContactsViaUI(context, contactList);
 promise.then((data) => {
-    console.info(`Succeeded in import Contact via UI.data->${JSON.stringify(data)}`);
+  console.info(`Succeeded in importing Contact via UI: data -> ${JSON.stringify(data)}`);
 });
 ```
 
@@ -5529,6 +5566,6 @@ let website: contact.Website = {
 | mode        | [ContactSyncMode](#contactsyncmode26) |  否  |  否   |  联系人同步模式。     |
 | syncId        | int |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
 | completedBatches        | Array&lt;int&gt; |  否  |  否    | 表示已成功同步的联系人的批处理标识符数组。值的范围是从1到totalBatches。     |
-| totalBatches        | int |  否  |  否    | 指示要同步的联系人批次总数。     |
-| lastSyncTime        | int |  否  |  否    | 指示联系人同步的最新时间戳（毫秒）。|
+| totalBatches        | int |  否  |  否    | 表示要同步的联系人批次总数。     |
+| lastSyncTime        | int |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
 
