@@ -114,6 +114,24 @@
    - **方法签名约定**：第一个参数类型固定为[ArkTSScriptInfo](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo)。
 
    <!-- @[music_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   
+   ``` TypeScript
+   export default class MusicSkill {
+     // ...
+     public async playMusicByName(info: scriptManager.ArkTSScriptInfo, ...argv: string[]): Promise<void> {
+       /* 见 3.3 ~ 3.5 */
+       // ...
+     }
+   
+     // ...
+     public async controlPlayback(info: scriptManager.ArkTSScriptInfo, ...argv: string[]): Promise<void> {
+       /* 同上模式 */
+       // ...
+     }
+   
+     // ...
+   }
+   ```
 
    3.3 解析并校验入参。
 
