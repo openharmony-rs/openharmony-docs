@@ -130,7 +130,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     按具体业务场景预设的能力，可进行单一订阅或者触发，如下：
     |capList支持能力列表|功能说明|
     | ---- | ------ |
-    |Article|获取阅读场景感知信息。|
+    |Article|获取阅读场景的感知信息。|
     |ShortVideo|获取短视频场景的感知信息。|
     |Todo|获取待办场景的感知信息。|
     |Activity|获取基础服务的感知信息。|
@@ -145,11 +145,11 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
     |groupId支持能力列表|对应子项能力|功能说明|
     | ---- | ------ | ------|
-    |SmartEdge|Article|获取阅读场景感知信息。|
+    |SmartEdge|Article|获取阅读场景的感知信息。|
     |SmartEdge|ShortVideo|获取短视频场景的感知信息。|
     |SmartEdge|Todo|获取待办场景的感知信息。|
     |SmartEdge|Activity|获取基础服务的感知信息。|
-    |CeliaMemory|Article|获取阅读场景感知信息。|
+    |CeliaMemory|Article|获取阅读场景的感知信息。|
     |CeliaMemory|Todo|获取待办场景的感知信息。|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
@@ -749,7 +749,7 @@ apperceive接口支持的groupId能力列表，如下：
 |SmartEdge|ShortVideo|获取短视频场景的感知信息。|
 |SmartEdge|Todo|获取待办场景的感知信息。|
 |SmartEdge|Activity|获取基础服务的感知信息。|
-|CeliaMemory|Article|获取阅读场景感知信息。|
+|CeliaMemory|Article|获取阅读场景的感知信息。|
 |CeliaMemory|Todo|获取待办场景的感知信息。|
 
 **返回值：**
