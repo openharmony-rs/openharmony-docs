@@ -205,6 +205,13 @@ display，position，z-index，visibility，opacity, background-color，backgrou
    同层渲染功能默认不开启，如果要使用同层渲染的功能，可通过[enableNativeEmbedMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enablenativeembedmode11)来开启。
 
    <!-- @[enable_native_embedmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   
+   ``` TypeScript
+   Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+   // ...
+     // 配置同层渲染开关开启。
+     .enableNativeEmbedMode(true)
+   ```
 
 3. 创建自定义组件。
 
