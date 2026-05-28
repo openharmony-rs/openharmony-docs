@@ -358,7 +358,7 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 | 类型           | 说明                                       |
 | -------------- | ------------------------------------------ |
-| Promise\<number> | Promise对象，返回所添加水印的编号。 |
+| Promise\<number> | Promise对象，返回所添加水印的编号id。 |
 
 **错误码：**
 
