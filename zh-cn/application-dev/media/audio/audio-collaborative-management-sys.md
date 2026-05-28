@@ -1,8 +1,8 @@
 # 移动全景声管理（仅对系统应用开放）
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @tom_guo-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 

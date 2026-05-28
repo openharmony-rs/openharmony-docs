@@ -1,15 +1,18 @@
 # 文本组件公共接口
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
->文本类组件公共接口。
->本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 文本类组件公共接口。
 
 ## CaretStyle<sup>10+</sup>
 
@@ -31,7 +34,7 @@
 > 文本内容变更后，需等待布局完成才可获取到最新的布局信息。
 
 ### 导入对象
-以Text组件为例，完整示例请参考Text组件的[示例10获取文本信息](./ts-basic-components-text.md#示例10获取文本信息)。
+以Text组件为例，完整示例请参考Text组件的[示例10（获取文本信息）](./ts-basic-components-text.md#示例10获取文本信息)。
 ```ts
 controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
@@ -67,8 +70,8 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| x | number | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
-| y | number | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
+| x | number | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| y | number | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -92,8 +95,8 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 | 参数名    | 类型   | 必填   | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| x | number | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
-| y | number | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
+| x | number | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
+| y | number | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -1123,7 +1126,7 @@ setExtraConfig(config: InputMethodExtraConfig): void
 
 | 名称              | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------- | ------- | ------- | ------- | ------------------------------------------------------------ |
-| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置[TextArea](./ts-basic-components-textarea.md)组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[`textOverflow`](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
+| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置[TextArea](./ts-basic-components-textarea.md)组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[textOverflow](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
 
 ## MaxLinesMode<sup>20+</sup>
 
@@ -1317,4 +1320,22 @@ Span的无障碍朗读功能属性。
 | ------ | ---------- | ---- | ------------------ | ------------------ |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。组件无文本属性时，屏幕朗读选中此组件不会播报。设置该属性后可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：''<br>值为undefined时，按默认值处理。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍说明属性。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果，尤其当这些后果无法仅从组件的属性和无障碍文本中直接获取时。<br>默认值：''<br>值为undefined时，按默认值处理。 |
-| accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。<br>支持取值如下：<br>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br>"yes"：当前组件可被无障碍辅助服务识别。<br>"no"：当前组件不可被无障碍辅助服务识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+| accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。<br>支持取值如下：<br>"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。<br>"yes"：当前组件可被无障碍辅助服务识别。<br>"no"：当前组件不可被无障碍辅助服务识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+
+## FontVariation
+
+type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation
+
+可变字体的属性。
+
+**起始版本：** 26.0.0
+ 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型                              | 说明   |
+| --------------------------------- | --------------------------------- |
+| import('../api/@ohos.graphics.text').default.[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation) | 可变字体的属性。 |

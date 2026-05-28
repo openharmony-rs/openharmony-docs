@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 URI权限管理模块。用于应用A授权/撤销授权URI给应用B。

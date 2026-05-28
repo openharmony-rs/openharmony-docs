@@ -1,8 +1,8 @@
 # Interfaces (其他)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -118,23 +118,6 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | [key: string]| Object | 否  | 是  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
 
-## WatermarkConfiguration
-
-视频录制添加水印的配置参数。水印位置以视频左上角为原点计算。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-| 名称      | 类型   | 只读 | 可选 | 说明             |
-| --------- | ------ | ---- | ---- | ---------------- |
-| top  | number | 否   | 否   | 水印相对于视频顶部位置的偏移量。取值为整数，单位为像素（px）。 |
-| left | number | 否   | 否   | 水印相对于视频左侧位置的偏移量。取值为整数，单位为像素（px）。 |
-| width  | number | 否   | 是   | 水印图片的宽度。取值为正整数，取值范围为[1, 4096]，单位为像素（px）。 |
-| height | number | 否   | 是   | 水印图片的高度。取值为正整数，取值范围为[1, 4096]，单位为像素（px）。 |
-
 ## AVRecorderConfig<sup>9+</sup>
 
 表示音视频录制的参数设置。
@@ -150,7 +133,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | profile         | [AVRecorderProfile](#avrecorderprofile9) | 否   | 否   | 录制的profile，必要参数。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。|
 | url             | string                                   | 否   | 否   | 录制输出URL：fd://xx (fd number) ![img](figures/zh-cn_image_url.png)，必要参数。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
 |fileGenerationMode<sup>12+</sup> | [FileGenerationMode](arkts-apis-media-e.md#filegenerationmode12)  | 否   |  是   |  创建媒体文件的模式，配合[on('photoAssetAvailable')](arkts-apis-media-AVRecorder.md#onphotoassetavailable12)监听使用。|
-| rotation<sup>(deprecated)</sup>        | number                                   | 否   | 是   | 录制的视频旋转角度，mp4格式支持0、90、180和270，默认值为0。<br>从API version 6开始支持，从API version 12开始废弃。建议使用[AVMetadata](#avmetadata11).videoOrientation替代。<br>如果同时设置两个值，将会采用[AVMetadata](#avmetadata11).videoOrientation。     |
+| rotation<sup>(deprecated)</sup>        | number                                   | 否   | 是   | 录制的视频旋转角度，单位为度（°）。mp4格式支持0°、90°、180°和270°，默认值为0°。<br>从API version 6开始支持，从API version 12开始废弃。建议使用[AVMetadata](#avmetadata11).videoOrientation替代。<br>如果同时设置两个值，将会采用[AVMetadata](#avmetadata11).videoOrientation。     |
 | location<sup>(deprecated)</sup>        | [Location](#location)                    | 否   | 是   | 录制的地理位置，默认不记录地理位置信息。<br>从API version 6开始支持，从API version 12开始废弃。建议使用 [AVMetadata](#avmetadata11).location。<br>如果同时设置两个值，将会采用[AVMetadata](#avmetadata11).location。 |
 | metadata<sup>12+</sup>        | [AVMetadata](#avmetadata11)              | 否   | 是   | 设置元数据信息。详细内容请参考 [AVMetadata](#avmetadata11)。                  |
 | maxDuration<sup>18+</sup>        | number             | 否   | 是   | 设置录制的最大时长，单位为秒，有效值取值范围[1, 2^31-1]，无效输入会重置为最大值。录制到达设定时长后，录制会自动停止，并通过stateChange回调录制状态，[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9) = 'stopped'，[StateChangeReason](arkts-apis-media-e.md#statechangereason9) = BACKGROUND。|

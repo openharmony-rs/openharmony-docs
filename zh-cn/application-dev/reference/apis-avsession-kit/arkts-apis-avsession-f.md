@@ -57,6 +57,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -118,6 +119,8 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -132,7 +135,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           let sessionId: string;  // 供后续函数入参使用。
 
-          avSession.createAVSession(context, tag, "audio", async (data: avSession.AVSession) => {
+          avSession.createAVSession(context, tag, "audio", async (err:BusinessError, data: avSession.AVSession) => {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
               console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
@@ -182,9 +185,11 @@ getAVSession(context: Context): Promise\<AVSession>
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
+  private avsessioncontroller !: avSession.AVSessionController;
   @State message: string = 'hello world';
 
   build() {
@@ -303,6 +308,7 @@ createController(sessionId: string): Promise\<AVSessionController>
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -357,6 +363,7 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {

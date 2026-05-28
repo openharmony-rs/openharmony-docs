@@ -341,6 +341,20 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 
 **Valid since**: 11
 
+## ohos.permission.THEME_SKIN
+
+Allows a system application to obtain theme skinning resources in the skin directory.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 20
+
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 Allows an application to read the accessibility configuration.
@@ -2714,6 +2728,8 @@ Allows an application to read the pasteboard via silent access.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **Valid since**: 11
 
 ## ohos.permission.SET_CODE_PROTECT_INFO
@@ -3690,6 +3706,8 @@ Allows a system application to access the over-the-air update directory.
 
 **Certificate-based authorization**: true
 
+**Supported devices**: wearables
+
 **Valid since**: 12
 
 ## ohos.permission.MANAGE_MOUSE_CURSOR
@@ -4266,6 +4284,20 @@ Allows an application to access the application lock.
 
 **Valid since**: 13
 
+## ohos.permission.ACCESS_CAR_CONTROL
+
+Allows an application to access or start the vehicle control interface.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 13
+
 ## ohos.permission.ACCESS_APP_SINGLE_PERMISSION_MANAGEMENT
 
 Allows an application to launch a page for modifying a specific permission of another application.
@@ -4448,7 +4480,7 @@ Allows an application to read the data of Account Suggestions and start the UIEx
 
 **Certificate-based authorization**: true
 
-**Valid since**: 18
+**Valid since**: 16
 
 ## ohos.permission.GET_PAGE_INFO
 
@@ -5817,6 +5849,26 @@ Allows an application to trigger the Always On Display (AOD) mode or exit it, an
 
 **Since**: 26.0.0
 
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+
+Allows a system application to use Skills.
+
+With this permission, an application can:
+
+- Query information about Skill packages.
+- Listen for events such as the installation, update, and uninstallation of Skill packages.
+- Access the sandbox directory where Skill packages are installed.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: General
+
+**Since**: 26.0.0
+
 ## ohos.permission.DCAS_OTA_PERMISSION
 
 Allows an application and a service to access the device-side model deployment management.
@@ -6111,6 +6163,34 @@ Allows an application to query storage using CLI commands.
 
 **Since**: 26.0.0
 
+## ohos.permission.cli.START_ABILITY
+
+Allows an agent application to start specific applications using CLI commands.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
+## ohos.permission.cli.KILL_APP_PROCESSES
+
+Allows an agent application to stop specific applications using CLI commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
 Allows a system application to read and write map data.
@@ -6124,5 +6204,21 @@ With this permission, the application can access and modify the offline map data
 **Certificate-based authorization**: true
 
 **Supported devices**: phones
+
+**Since**: 20
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+Allows a system application to use the credential management feature of the passkey service.
+
+With this permission, the system application can obtain and delete all credentials of the passkey service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20

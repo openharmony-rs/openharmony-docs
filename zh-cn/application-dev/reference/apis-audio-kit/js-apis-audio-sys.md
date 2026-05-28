@@ -1,8 +1,8 @@
 # @ohos.multimedia.audio (音频管理)(系统接口)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -3281,6 +3281,63 @@ async function getExcludedDevices(){
 }
 ```
 
+### restoreOutputDeviceByFilter
+
+restoreOutputDeviceByFilter(filter: AudioRendererFilter): Promise&lt;void&gt;
+
+根据指定的音频渲染过滤条件恢复音频输出设备。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**参数：**
+
+| 参数名                       | 类型                                                         | 必填 | 说明                      |
+| --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
+| filter          | [AudioRendererFilter](#audiorendererfilter9)          | 是   | 过滤条件。               |
+
+**返回值：**
+
+| 类型                  | 说明                         |
+| --------------------- | --------------------------- |
+| Promise&lt;void&gt;   | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202     | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let outputAudioRendererFilter: audio.AudioRendererFilter = {
+  uid : 20010041,
+  rendererInfo : {
+    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
+    rendererFlags : 0
+  },
+  rendererId : 0
+};
+
+audioRoutingManager.restoreOutputDeviceByFilter(outputAudioRendererFilter).then(() => {
+  console.info('Succeeded in restoring output device by filter.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to restore output device by filter. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## getActiveOutputDeviceDescriptors
 
 getActiveOutputDeviceDescriptors(): Promise&lt;AudioDeviceDescriptors&gt;
@@ -5911,3 +5968,36 @@ async function unregisterReadMicInDataCallback(): Promise<void> {
   }
 }
 ```
+
+## AudioRendererOptions<sup>8+</sup>
+
+音频渲染器选项信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称         | 类型                                               | 只读 | 可选 | 说明               |
+| ------------ | ------------------------------------------------- | ---- |---| ------------------ |
+| originalAppIdInfo | [AppIdInfo](#appidinfo) | 否 | 是 | 表示音频流的原始应用ID信息。<br> **起始版本：** 26.0.0 |
+
+## AppIdInfo
+
+应用ID信息，包含应用的UID（标识应用身份）、PID（标识运行中的进程）、Token ID（用于常规身份识别与权限校验）和FullToken ID（携带应用完整身份权限信息，用于原始应用溯源与全链路权限校验）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称         | 类型                                               | 只读 | 可选 | 说明               |
+| ------------ | ------------------------------------------------- | ---- |---| ------------------ |
+| appUid       | number                                            | 否   | 否 | 应用UID，用于标识应用身份。    |
+| appPid       | number                                            | 否   | 否 | 应用PID，用于标识运行中的进程。    |
+| appTokenId   | number                                            | 否   | 否 | 应用Token ID，用于常规身份识别与权限校验。    |
+| appFullTokenId | number                                            | 否   | 否 | 应用FullToken ID，携带应用完整身份权限信息，用于原始应用溯源与全链路权限校验。    |
