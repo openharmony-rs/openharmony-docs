@@ -159,7 +159,7 @@ struct ListOnMoveExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
           .onMove((from: number, to: number) => {
             let tmp = this.arr.splice(from, 1);
             this.arr.splice(to, 0, tmp[0]);
