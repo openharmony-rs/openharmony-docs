@@ -7019,6 +7019,7 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekey(cryptoParam1);
           console.info('rekey successful');
         } catch (err) {
+          let e = err as BusinessError;
           console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
@@ -7071,6 +7072,7 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekey(cryptoParam2);
           console.info('rekey successful');
         } catch (err) {
+          let e = err as BusinessError;
           console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
@@ -7114,6 +7116,7 @@ export default class EntryAbility extends UIAbility {
           await (store as relationalStore.RdbStore).rekey(newCryptoParam);
           console.info('rekey successful');
         } catch (err) {
+          let e = err as BusinessError;
           console.error(`rekey failed, code is ${err.code}, message is ${err.message}`);
         }
       }
