@@ -36,10 +36,11 @@ import { Param } from '@kit.ArkUI';
 
 - 当装饰boolean、string、number类型时，可观察数据源同步变化。
 
-  ```ts
-  'use static'
+  <!-- @[ParamBasicTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamBasicTypes.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
+  
   @Entry
   @ComponentV2
   struct Index {
@@ -83,10 +84,11 @@ import { Param } from '@kit.ArkUI';
 
 - 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2和\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰器。
 
-  ```ts
-  'use static'
+  <!-- @[ParamClassObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamClassObject.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
+  
   class RawObject {
     name: string;
     constructor(name: string) {
@@ -137,17 +139,18 @@ import { Param } from '@kit.ArkUI';
       Column() {
         Text(`${this.rawObject.name}`)
         Text(`${this.observedObject.name}`)
-      }
-    }  
+      }  
+    }
   }
   ```
 
 - 装饰的变量为简单类型数组时，可观察数组整体或数组项变化。
 
-  ```ts
-  'use static'
+  <!-- @[ParamArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamArray.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
+
   @Entry
   @ComponentV2
   struct Index {
@@ -210,10 +213,11 @@ import { Param } from '@kit.ArkUI';
 
 - 当装饰interface字面量类型时，仅可以观察到字面量整体的变化，无法观察到属性的变化，可以使用[makeObserved接口](./arkts-static-new-makeObserved.md)实现对字面量属性的观察。
 
-  ```ts
-  'use static'
+  <!-- @[ParamInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamInterface.ets) -->
   
+  ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
+
   interface Info {
     name: string;
     age: number;
@@ -365,10 +369,11 @@ import { Param } from '@kit.ArkUI';
 
 \@Param能够接受父组件\@Local或\@Param传递的数据并与之变化同步。
 
-```ts
-'use static'
+<!-- @[ParamFromParentToChild](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamFromParentToChild.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, ForEach, Local, ObservedV2, Param, Require, Text, Trace } from '@kit.ArkUI';
+
 @ObservedV2
 class Region {
   @Trace x: number;
@@ -436,10 +441,11 @@ struct SubComponent {
 
 当装饰Array类型时，可以观察到Array整体及其元素的变化。通过API操作更改数组内容也能被观察到。
 
-```ts
-'use static'
+<!-- @[ParamArrayVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamArrayVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {
@@ -484,10 +490,11 @@ struct Child {
 
 当装饰Date类型时，可以观察到数据源对Date整体的赋值及其API操作的变化。
 
-```ts
-'use static'
+<!-- @[ParamDateVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamDateVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Text } from '@kit.ArkUI';
+
 @ComponentV2
 struct DateComponent {
   @Param selectedDate: Date = new Date('2024-01-01');
@@ -538,10 +545,11 @@ struct ParentComponent {
 
 当装饰Map类型时，可以观察到数据源对Map整体的赋值及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[ParamMapVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamMapVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
+
 @ComponentV2
 struct Child {
   @Param value: Map<number, string> = new Map<number, string>();
@@ -594,9 +602,9 @@ struct MapSample {
 
 当装饰Set类型时，可以观察到数据源对Set整体的赋值及其API操作带来的变化。
 
-```ts
-'use static'
+<!-- @[ParamSetVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamSetVariable.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
 @ComponentV2
 struct Child {
@@ -647,10 +655,11 @@ struct SetSample {
 
 \@Param支持null、undefined以及联合类型。以下示例中，count类型为number | null，点击改变count的类型时，UI会自动刷新。
 
-```ts
-'use static'
+<!-- @[ParamUnionType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ParamDecorator/entry/src/main/ets/pages/ParamUnionType.ets) -->
 
+``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Text } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct Index {
