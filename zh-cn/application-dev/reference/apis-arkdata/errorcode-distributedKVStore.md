@@ -129,3 +129,23 @@ Database or result set already closed.
 
 1. 在数据库相关操作前，请重新打开数据库之后再重试当前操作。
 2. 在查询结果集相关操作前，请重新查询获取结果集之后再重试当前操作。
+
+## 15100006 更新数据库加密密钥失败
+
+**错误信息**
+
+Failed to update the key.
+
+**错误描述**
+
+在调用[rekey](js-apis-distributedKVStore.md#rekey)接口更新数据库加密密钥时失败。
+
+**可能原因**
+
+1. 在调用[getKVStore](js-apis-distributedKVStore.md#getkvstore)接口创建数据库时，未使用加密方式（即encrypt为false）。
+2. 密钥更新过程中发生内部错误。
+
+**处理步骤**
+
+1. 在使用[rekey](js-apis-distributedKVStore.md#rekey)接口更新加密数据库密钥前，请确保当前数据库为加密数据库（即调用[getKVStore](js-apis-distributedKVStore.md#getkvstore)接口创建数据库时配置encrypt为true）。
+2. 重新尝试更新密钥。
