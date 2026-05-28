@@ -271,15 +271,8 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
-
 try {
-    connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX', (err: BusinessError) => {
-        if (err) {
-            console.error('cancelPairingDevice callback failed');
-        } else {
-            console.info('cancelPairingDevice callback successful');
-        }
-    });
+    connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -885,7 +878,7 @@ try {
         "deviceRole": connection.DeviceRole.DEVICE_ROLE_PERIPHERAL_ONLY
     }
     connection.pairDeviceOutOfBand(transport, null, oobData).then(() => {
-        console.info('pairDeviceOutOfBand');
+        console.info('pairDeviceOufOfBand');
     }, (err: BusinessError) => {
         console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
     });
