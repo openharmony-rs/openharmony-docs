@@ -196,7 +196,7 @@ async function CreatePictureTest(context: Context) {
   // 获取计算生成的gainmap并编码。
   let picture: image.Picture = await image.createPictureByHdrAndSdrPixelMap(hdrPixelMap, sdrPixelMap, params);
   if (picture != null) {
-    console.info('Succeeded in Creating picture');
+    console.info('Succeeded in creating picture');
   } else {
     console.error('Create picture failed');
   }
