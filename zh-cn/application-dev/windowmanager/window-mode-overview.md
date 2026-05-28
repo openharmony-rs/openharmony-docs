@@ -83,7 +83,7 @@
 
 > **说明：**
 > 
-> - 应用子窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下支持FULL_SCREEN与MAXIMIZE模式，且需要在创建子窗时将maximizeSupported参数配置为true，或者通过[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes26)配置支持。
+> - 应用子窗口仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下支持FULL_SCREEN与MAXIMIZE模式，且需要在创建子窗时将maximizeSupported参数配置为true；或者通过[setSupportedWindowModes()](../reference/apis-arkui/arkts-apis-window-Window.md#setsupportedwindowmodes26)配置支持。
 > 
 > - FULL_SCREEN与MAXIMIZE的主要差异：
 >
