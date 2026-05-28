@@ -6,8 +6,8 @@
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-
 <!-- md-trans-meta sourceCommit=09270f91b417ea5ec4bcdbc08e1efeacfd1ff910 translatedAt=2026-05-26T06:26:35.195Z pushedAt=2026-05-26T09:30:58.498Z -->
+
 > **NOTE**
 >
 > The initial APIs of this component  are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
