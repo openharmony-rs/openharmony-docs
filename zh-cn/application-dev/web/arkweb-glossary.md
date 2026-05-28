@@ -444,7 +444,7 @@ Web组件作为图形canvas节点跟随系统送显的渲染模式。
 
 移动设备上的虚拟键盘，用于输入文字。
 
-### soft keyboard avoidance；软键盘避让
+### Soft Keyboard Avoidance；软键盘避让
 
 Web页面为避开软键盘显示区域而进行的布局调整。
 
