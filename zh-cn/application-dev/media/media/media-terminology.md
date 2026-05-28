@@ -80,12 +80,6 @@ ArkTS接口提供的屏幕录制组件，通过配置录制参数启动屏幕录
 
 描述音频流类型的结构体，包含usage（流使用类型）和rendererFlags（渲染器标志），用于配置音频播放的流类型，影响音频焦点管理和设备路由策略。
 
-## B
-
-**BufferingInfoType；缓冲事件类型**
-
-定义网络播放缓冲状态的枚举类型，包括BUFFERING_START（开始缓冲）、BUFFERING_END（结束缓冲）、BUFFERING_PERCENT（缓冲百分比）、CACHED_DURATION（已缓存时长），用于监听流媒体播放的缓冲进度和网络状态。
-
 ## C
 
 **CodecMimeType；编解码器MIME类型**
