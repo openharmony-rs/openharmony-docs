@@ -136,8 +136,8 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |Activity|获取基础服务的感知信息。|
     |UiImage|获取页面内子图信息。|
     |JumpContext|高亮跳转到指定上下文。|
-    |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在capture接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码。|
-    |UiTree|获取页面内json树信息。<br> **起始版本：** 26.0.0|
+    |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在capture接口使用，capList仅传递"QuickSnap"时生效，其他使用接口均返回401错误码。|
+    |UiTree|获取页面内JSON树信息。<br> **起始版本：** 26.0.0|
     |InjectEvent|注入事件。<br> **起始版本：** 26.0.0|
     |CollectStrategy|获取屏幕采集策略。<br> **起始版本：** 26.0.0|
 
