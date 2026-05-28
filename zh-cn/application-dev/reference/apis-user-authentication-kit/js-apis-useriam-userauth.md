@@ -870,10 +870,10 @@ start(): void
 | -------- | ------------------------------------------------ |
 | 201      | Permission denied. Possible causes: <br>1.No permission to access biometric. <br>2.No permission to start authentication from background.|
 | 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
-| 12500001 | Authentication failed. <br> 适用版本：10-19， 24+                    |
+| 12500001 | Authentication failed. <br> 适用版本：10-19， 26+                    |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
-| 12500004 | Authentication timeout. <br> 适用版本：10-19， 24+                       |
+| 12500004 | Authentication timeout. <br> 适用版本：10-19， 26+                       |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
 | 12500007 | Authentication service is busy. <br> 适用版本：10-19                 |
@@ -1651,7 +1651,7 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 | 参数名         | 类型                               | 必填 | 说明                       |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE(协同认证)。从API version 11开始支持PIN查询，API version 24开始支持COMPANION_DEVICE查询。|
+| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE(协同认证)。从API version 11开始支持PIN查询，API version 26开始支持COMPANION_DEVICE查询。|
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | 是   | 认证信任等级。用于指定查询的认证可信等级，有效值为ATL1(10000)、ATL2(20000)、ATL3(30000)、ATL4(40000)。等级越高，对认证方案的活体检测能力要求越高。       |
 
 > **错误码返回顺序说明：**
@@ -2104,7 +2104,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 | PIN<sup>10+</sup>         | 1    | 口令认证。用户通过输入锁屏密码完成认证。锁屏密码认证具有高安全性，认证可信等级可达ATL4，适用于支付、重要操作确认等高安全场景。用户需要手动输入，体验不如生物认证便捷。 |
 | FACE        | 2    | 人脸认证。用户通过人脸识别完成认证，系统会验证用户面部特征与已注册人脸的匹配度。人脸认证支持不同级别的活体检测能力，详细划分原则可参考[生物认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。优点是体验便捷，缺点是对设备和光照条件有一定要求。 |
 | FINGERPRINT | 4    | 指纹认证。用户通过指纹传感器完成认证，系统会验证用户指纹特征与已注册指纹的匹配度。指纹认证支持多种认证可信等级，详细划分原则可参考[生物认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)，适用于中等安全场景。优点是操作简单快捷，缺点是设备需配备指纹传感器，且湿手或指纹磨损可能影响识别效果。 |
-| COMPANION_DEVICE<sup>24+</sup>  | 64    | 伴随设备认证。用户通过佩戴的伴随设备完成认证。伴随设备认证支持多种认证可信等级，详细划分原则可参考[生物认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。
+| COMPANION_DEVICE<sup>26+</sup>  | 64    | 伴随设备认证。用户通过佩戴的伴随设备完成认证。伴随设备认证支持多种认证可信等级，详细划分原则可参考[生物认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。
 ## AuthTrustLevel<sup>8+</sup>
 
 表示认证结果的信任等级枚举。该枚举定义了四个认证可信等级，用于描述认证结果的安全强度。认证可信等级越高，表示认证方案的活体检测能力越强、用户身份识别越精确，适用于更高安全要求的业务场景。应用应根据业务场景的安全需求选择合适的认证可信等级。
