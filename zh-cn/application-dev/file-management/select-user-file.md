@@ -163,7 +163,6 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    let buffer = new ArrayBuffer(4096); // 分配一个大小为4096字节的缓冲区
    let readLen = fileIo.readSync(file.fd, buffer); // 读取文件内容
    console.info('readSync data to file succeed and buffer size is:' + readLen);
-   // 读取完成后关闭fd。
    fileIo.closeSync(file);
    ```
 
