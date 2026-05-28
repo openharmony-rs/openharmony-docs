@@ -60,7 +60,7 @@
 
 2. 配置module.json5文件。
 
-   在`entry/src/main/module.json5`的`module`标签下新增[skillProfiles标签](module-configuration-file.md#skillprofiles标签)，将Skill注册到模块。
+   在`entry/src/main/module.json5`的`module`标签下新增[skillProfiles标签](../quick-start/module-configuration-file.md#skillprofiles标签)，将Skill注册到模块。
 
    示例Skill运行时需要添加网络权限访问云端音乐列表，在`module`标签下的requestPermissions标签配置。
 
