@@ -211,6 +211,72 @@ display，position，z-index，visibility，opacity, background-color，backgrou
    用于控制和反馈对应NodeContainer上的节点行为。
 
    <!-- @[create_nodecontainer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
+   
+   ``` TypeScript
+   // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
+   class MyNodeController extends NodeController {
+     private rootNode: BuilderNode<[Params]> | undefined | null;
+     private embedId_: string = '';
+     private surfaceId_: string = '';
+     private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+     private width_: number = 0;
+     private height_: number = 0;
+     private type_: string = '';
+     private isDestroy_: boolean = false;
+   
+     setRenderOption(params: NodeControllerParams) {
+       this.surfaceId_ = params.surfaceId;
+       this.renderType_ = params.renderType;
+       this.embedId_ = params.embedId;
+       this.width_ = params.width;
+       this.height_ = params.height;
+       this.type_ = params.type;
+     }
+   
+     // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+     // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
+     makeNode(uiContext: UIContext): FrameNode | null {
+       if (this.isDestroy_) { // rootNode为null。
+         return null;
+       }
+       if (!this.rootNode) { // rootNode 为undefined时。
+         this.rootNode = new BuilderNode(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+         if (this.rootNode) {
+           this.rootNode.build(
+             wrapBuilder(textInputBuilder), {  textOne: 'myTextInput', width: this.width_, height: this.height_  });
+           return this.rootNode.getFrameNode();
+         }else{
+           return null;
+         }
+       }
+       // 返回FrameNode节点。
+       return this.rootNode.getFrameNode();
+     }
+   
+     updateNode(arg: Object): void {
+       this.rootNode?.update(arg);
+     }
+   
+     getEmbedId(): string {
+       return this.embedId_;
+     }
+   
+     setDestroy(isDestroy: boolean): void {
+       this.isDestroy_ = isDestroy;
+       if (this.isDestroy_) {
+         this.rootNode = null;
+       }
+     }
+   
+     postEvent(event: TouchEvent | undefined): boolean {
+       return this.rootNode?.postTouchEvent(event) as boolean;
+     }
+   
+     postInputEvent(event: MouseEvent | undefined): boolean {
+       return this.rootNode?.postInputEvent(event) as boolean;
+     }
+   }
+   ```
 
 5. 监听同层渲染的生命周期变化。
 
