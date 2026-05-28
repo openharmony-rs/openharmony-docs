@@ -1079,7 +1079,7 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
   console.error(`Failed to get installed bundle storage stats. Code is ${err.code}, message is ${err.message}`);
 });
 ```
-<!--no-check-->
+<!--code_no_check-->
 ```ts
 // 返回示例
 [
@@ -1176,7 +1176,7 @@ bundleManager.getInstalledBundleStorageStats(wantTemp, bundleNames, accountId).t
 | process                    | string                                                       | 是   | 否   | 应用程序的进程名称。 |
 | codePath                   | string                                                       | 是   | 否   | 应用程序的安装目录。 |
 | removable                  | boolean                                                      | 是   | 否   | 应用程序是否可以被移除，取值为true表示可以被移除，取值为false表示不可以被移除。 |
-| accessTokenId             | number                                                       | 是   | 否   | 应用程序的accessTokenId，应用的身份标识，在[程序访问控制校验接口](../apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。 |
+| accessTokenId             | number                                                       | 是   | 否   | 应用程序的accessTokenId，应用的身份标识，在程序访问控制校验接口[checkAccessToken](../apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9)中使用。 |
 | uid                       | number                                                       | 是   | 否   | 应用程序的UID。 |
 | iconResource              | [Resource](#resource20) | 是 | 否 | 应用程序的图标资源信息，包含了该资源的信息的bundleName、moduleName和id。 |
 | labelResource             | [Resource](#resource20) | 是 | 否 | 应用程序的标签资源信息，包含了该资源的信息的bundleName、moduleName和id。 |

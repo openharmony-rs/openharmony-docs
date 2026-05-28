@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,7 +48,7 @@ OH_MIDI包含客户端、设备、端口和事件四个核心概念。使用OH_M
 
 ## OH_MIDI设备（Device）
 
-MIDI设备是指物理或虚拟的MIDI接口设备，包括USB MIDI键盘、蓝牙MIDI控制器等。设备连接后，MIDI服务会为其分配标识符（[OH_MIDIDeviceInformation](../../reference/apis-audio-kit/capi-ohmidi-oh-midiportinformation.md)中的`midiDeviceId`），用于在当前会话中区分和管理不同设备。
+MIDI设备是指物理或虚拟的MIDI接口设备，包括USB MIDI键盘、蓝牙MIDI控制器等。设备连接后，MIDI服务会为其分配标识符（[OH_MIDIDeviceInformation](../../reference/apis-audio-kit/capi-ohmidi-oh-midideviceinformation.md)中的`midiDeviceId`），用于在当前会话中区分和管理不同设备。
 
 设备信息包含设备类型（USB或蓝牙）、原生协议能力、设备名称、厂商ID、产品ID和设备地址等属性。
 
@@ -148,5 +148,5 @@ UMP格式通过消息类型（Message Type）区分不同消息。MT是UMP数据
 ## 相关参考
 
 - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
-- [OH_MIDI](../../reference/apis-audio-kit/capi-ohmidi.md) API参考
+- [OHMIDI](../../reference/apis-audio-kit/capi-ohmidi.md)API参考
 - MIDI状态码枚举：[OH_MIDIStatusCode](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midistatuscode)

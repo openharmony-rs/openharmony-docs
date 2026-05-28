@@ -299,6 +299,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendMessage()方法给对端应用发送文本信息。
 
+<!-- @[sendmessage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -312,6 +314,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **2.发送字节流数据**
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendData()方法给对端应用发送字节数据。
+
+<!-- @[senddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -331,6 +335,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **结束协同**
 
 业务协同完毕后需及时结束协同状态。若是后续短期内还有协同需要，可调用disconnect()方法断开应用间的连接，保留sessionId，以便下次继续使用该sessionId进行连接。若是短期无需使用协同业务，可直接调用destroyAbilityConnectionSession()接口销毁会话，此时会自动断开连接。
+
+<!-- @[disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';

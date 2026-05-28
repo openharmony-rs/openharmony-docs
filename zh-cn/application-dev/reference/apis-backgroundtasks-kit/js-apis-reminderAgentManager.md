@@ -140,7 +140,7 @@ cancelReminder(reminderId: number, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| reminderId | number | 是 | 需要取消的代理提醒的id，代理提醒id会在[发布代理提醒](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
+| reminderId | number | 是 | 需要取消的代理提醒的id，代理提醒id会在调用[reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
 | callback | AsyncCallback\<void> | 是 | 回调函数，当取消代理提醒成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
@@ -181,7 +181,7 @@ cancelReminder(reminderId: number): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| reminderId | number | 是 | 需要取消的代理提醒的id，代理提醒id会在[发布代理提醒](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
+| reminderId | number | 是 | 需要取消的代理提醒的id，代理提醒id会在调用[reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
 
 **返回值：**
 
@@ -642,7 +642,7 @@ addExcludeDate(reminderId: number, date: Date): Promise\<void>
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要添加不提醒日期的代理提醒id，代理提醒id会在[发布代理提醒](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
+| reminderId | number | 是   | 需要添加不提醒日期的代理提醒id，代理提醒id会在调用[reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
 | date       | Date   | 是   | 不提醒的日期。                     |
 
 **返回值：**
@@ -688,7 +688,7 @@ deleteExcludeDates(reminderId: number): Promise\<void>
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要删除不提醒日期的代理提醒id，代理提醒id会在[发布代理提醒](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
+| reminderId | number | 是   | 需要删除不提醒日期的代理提醒id，代理提醒id会在调用[reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
 
 **返回值：**
 
@@ -731,7 +731,7 @@ getExcludeDates(reminderId: number): Promise\<Array\<Date>>
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要查询不提醒日期的代理提醒id，代理提醒id会在[发布代理提醒](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
+| reminderId | number | 是   | 需要查询不提醒日期的代理提醒id，代理提醒id会在调用[reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
 
 **返回值：**
 
@@ -779,7 +779,7 @@ updateReminder(reminderId: number, reminderReq: ReminderRequest): Promise\<void>
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要更新的代理提醒的id，代理提醒id会在[发布代理提醒](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
+| reminderId | number | 是   | 需要更新的代理提醒的id，代理提醒id会在调用[reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
 | reminderReq | [ReminderRequest](#reminderrequest) | 是   | 代理提醒对象实例，用于设置提醒类型、响铃时长等具体信息。 |
 
 **返回值：**
@@ -829,7 +829,7 @@ cancelReminderOnDisplay(reminderId: number): Promise\<void>
 
 | 参数名     | 类型   | 必填 | 说明                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| reminderId | number | 是   | 需要取消的代理提醒的id，代理提醒id会在[发布代理提醒](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
+| reminderId | number | 是   | 需要取消的代理提醒的id，代理提醒id会在调用[reminderAgentManager.publishReminder](#reminderagentmanagerpublishreminder)时作为返回值返回。 |
 
 **返回值：**
 
@@ -1109,8 +1109,8 @@ ReminderRequestTimer extends ReminderRequest
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。<br> 单位：s |
-| repeatInterval | number | 否 | 是 | 重复周期，无默认值，未赋值时，无重复周期。需和repeatCount一起使用。<br/>单位：s，范围：[86400, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 |
-| repeatCount | number | 否 | 是 | 重复次数，默认值为0，无限次重复。需和repeatInterval一起使用。<br/>范围：[0, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 |
+| repeatInterval | number | 否 | 是 | 重复周期，无默认值，未赋值时，无重复周期。需和repeatCount一起使用。<br/>单位：s，范围：[86400, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| repeatCount | number | 否 | 是 | 重复次数，默认值为0，无限次重复。需和repeatInterval一起使用。<br/>范围：[0, +∞)。超出范围返回错误码401。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## LocalDateTime
