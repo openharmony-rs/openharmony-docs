@@ -65,6 +65,28 @@
    示例Skill运行时需要添加网络权限访问云端音乐列表，在`module`标签下的requestPermissions标签配置。
 
    <!-- @[module_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/src/main/module.json5) -->
+   
+   ``` JSON5
+   {
+     "module": {
+       // ...
+       "skillProfiles": [
+         {
+           "name": "music-assistant", // Skill名，需与SKILL.md的name一致
+           "abilityName": "EntryAbility", // 与该Skill关联的组件名称
+           "srcEntries": [  // 实现Skill的代码文件路径列表
+             "../../skills/music-assistant/scripts/MusicSkill.ets"
+           ]
+         }
+       ],
+   
+       "requestPermissions": [  // Skill运行需要的权限列表
+         { "name": "ohos.permission.INTERNET" }
+       ],
+       // ...
+     }
+   }
+   ```
 
 3. 实现ArkTS脚本。
 
