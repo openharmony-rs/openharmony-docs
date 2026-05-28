@@ -870,10 +870,10 @@ start(): void
 | -------- | ------------------------------------------------ |
 | 201      | Permission denied. Possible causes: <br>1.No permission to access biometric. <br>2.No permission to start authentication from background.|
 | 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
-| 12500001 | Authentication failed. <br> 适用版本：10-19， 26+                    |
+| 12500001 | Authentication failed. <br> 适用版本：10-19， 24+                    |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
-| 12500004 | Authentication timeout. <br> 适用版本：10-19， 26+                       |
+| 12500004 | Authentication timeout. <br> 适用版本：10-19， 24+                       |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
 | 12500007 | Authentication service is busy. <br> 适用版本：10-19                 |
@@ -1651,7 +1651,7 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 | 参数名         | 类型                               | 必填 | 说明                       |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE(协同认证)。从API version 11开始支持PIN查询，API version 26开始支持COMPANION_DEVICE查询。|
+| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE(协同认证)。从API version 11开始支持PIN查询，API version 24开始支持COMPANION_DEVICE查询。|
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | 是   | 认证信任等级。用于指定查询的认证可信等级，有效值为ATL1(10000)、ATL2(20000)、ATL3(30000)、ATL4(40000)。等级越高，对认证方案的活体检测能力要求越高。       |
 
 > **错误码返回顺序说明：**
