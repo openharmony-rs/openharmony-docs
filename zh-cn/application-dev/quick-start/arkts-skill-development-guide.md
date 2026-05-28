@@ -172,6 +172,51 @@
    业务执行完成后，需将结果封装为[ExecuteResult](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult)，并通过调用[completeArkTSScriptInApp](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp)回传给系统智能体，回包内容应与SKILL.md中“执行返回值”声明的分支保持一致。
 
    <!-- @[music_skill_branch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   
+   ``` TypeScript
+   // 成功分支示例
+   const first: Track = playResult.tracks[0];     
+   const playingTrack: Record<string, Object> = {     
+     'name': first.name,     
+     'singer': first.singer,     
+     'duration': first.duration     
+   };
+   const data: Record<string, Object> = {     
+     'playingTrack': playingTrack,     
+     'matchedCount': playResult.tracks.length     
+   };
+   const payload: Record<string, Object> = {
+     'type': 'result',
+     'status': 'success',
+     'data': data
+   };
+   await this.report(info, { code: 0, result: payload });
+         // ...
+   
+   // 失败分支示例（以 ERR_NOT_FOUND 为例）
+   const payloadData: Record<string, Object> = {     
+     'searchedKeywords': [] 
+   };
+   const payload: Record<string, Object> = {
+     'type': 'result',
+     'status': 'failed',
+     'errCode': 'ERR_NOT_FOUND',
+     'data': payloadData,
+     'suggestion': `没有找到${singer}${songName.length > 0 ? `的《${songName}》` : '相关歌曲'}`
+   };
+   await this.report(info, { code: -1, result: payload });
+   // ...
+   
+   // 唯一的回包出口：只封装API调用与异常打印，不参与结果构造
+   private async report(info: scriptManager.ArkTSScriptInfo, result: scriptManager.ExecuteResult): Promise<void> {
+     try {
+       await scriptManager.completeArkTSScriptInApp(info.context, info.requestCode, result);
+     } catch (e) {
+       const err = e as BusinessError;
+       console.error(`completeArkTSScriptInApp failed, code: ${err.code}, message: ${err.message}`);
+     }
+   }
+   ```
 
 4. 编写SKILL.md。
 
