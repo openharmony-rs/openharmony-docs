@@ -8454,7 +8454,7 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValid
 通过构建并验证证书链来验证证书。使用Promise异步回调。
 
 证书链构建过程遵循以下规则：
-1. 可信锚点源：始终使用可信证书列表（trustedCerts）作为信任锚点源。仅当trustSystemCa设置为true时，预配置的证书才会被用作信任锚源。
+1. 可信锚点源：始终使用可信任证书列表（trustedCerts）作为信任锚点源。仅当trustSystemCa设置为true时，预配置的证书才会被用作信任锚源。
 2. 颁发者搜索顺序：系统首先从信任锚源中搜索颁发者。如果无法找到颁发者，系统将在不受信任的证书列表（untrustedCerts）中搜索。在线下载的中间CA证书即为不受信任的证书。
 3. 信任锚锁定：一旦在信任锚源中找到发行者，后续的查找过程就不会回溯到不受信任的证书，即后续的证书必须来自信任锚源。
 4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（来自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到发行者时，构建即完成。
