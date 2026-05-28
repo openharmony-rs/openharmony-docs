@@ -261,8 +261,6 @@ Describes the parameters used to maintain the relative position between the chil
 | currentLayoutMode             | string               | No  | Yes  | Current layout mode of the child window, which is used to control the UI effect customized by the application. If this parameter is not passed, the default value is an empty string.|
 | parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | No  | Yes  | Callback triggered when the parent window size changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window size changes. By default, this parameter is not passed, and notifications about the parent window size changes cannot be received.|
 | parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | No  | Yes  | Callback triggered when the parent window mode changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window mode changes. By default, this parameter is not passed, and notifications about the parent window mode changes cannot be received.|
-| isIntersectedWidthLimit | boolean | No| Yes| Whether the width of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the width of the child window and that of the bound main window cannot exceed the intersection of the width limits of the two windows. If there is no intersection between the width limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the width of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the width limits of all windows.<br>The value **false** indicates that the width of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.|
-| isIntersectedHeightLimit | boolean | No| Yes| Whether the height of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the height of the child window and that of the bound main window cannot exceed the intersection of the height limits of the two windows. If there is no intersection between the height limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the height of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the height limits of all windows.<br>The value **false** indicates that the height of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.|
 
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
@@ -1275,81 +1273,6 @@ try {
 }
 ```
 
-## window.createSubWindowAndBindParent<sup>24+</sup>
-
-createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
-
-Creates a subwindow and binds it to the parent window. This API uses a promise to return the result.
-
-Only the main window can be bound as the parent window.
-
-The subwindow is displayed or hidden along with the parent window, but is not destroyed when the parent window is destroyed. The subwindow listens to the lifecycle changes of the parent window through a callback function.
-
-It is recommended that you destroy the created subwindow after the parent window is destroyed.
-
-**Model restriction**: This API can be used only in the stage model.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Window.SessionManager
-
-**Parameters**
-
-| Name  | Type                    | Mandatory| Description                                               |
-| -------- | ----------------------- | -- |---------------------------------------------------|
-| name | string | Yes| Window name.|
-| parentId | number | Yes| Parent window ID. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
-| ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Current application context.|
-| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | Yes| Callback used to return the lifecycle changes of the bound parent window.|
-
-**Return value**
-
-| Type| Description|
-| -------------------------------- | ------------------------------------ |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to return the child window created.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
-
-| ID| Error Message|
-| ------- | -------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. This can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
-| 1300003 | This window manager service works abnormally. |
-| 1300009 | The parent window is invalid. Possible cause: 1. The parent window does not exist or has been destroyed. 2. Invalid window type. Only main windows are supported.|
-
-**Example**
-
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    let windowClass: window.Window | undefined = undefined;
-    const parentWindowEventListener = (windowId: number, event: window.WindowEventType) => {
-      // ...
-    }
-    try {
-      let promise = window.createSubWindowAndBindParent('test', 100, this.context, parentWindowEventListener);
-      promise.then((data) => {
-        console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
-        windowClass = data;
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (exception) {
-      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
-  }
-}
-```
-
 ## Window
 
 Represents a window instance, which is the basic unit managed by the window manager.
@@ -1812,9 +1735,7 @@ export default class EntryAbility extends UIAbility {
           },
           parentWindowStatusChangeCallback:(type: window.WindowStatusType) => {
             console.info(`Successfully accepted parentWindow status change, statusType: ${type}`);
-          },
-          isIntersectedWidthLimit: true,
-          isIntersectedHeightLimit: true
+          }
         }
         subWindow.attachLayoutToParentWindow(anchorInfo, attachOptions).then(() => {
           console.info("Succeeded in attaching to the main window");

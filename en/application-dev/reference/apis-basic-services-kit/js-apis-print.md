@@ -9,7 +9,7 @@
 
 The **print** module provides APIs for basic print operations.
 
-> **NOTE** 
+> **NOTE**
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -33,16 +33,17 @@ Subscribes to the block events of a print job. This API uses an asynchronous cal
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>It means that the print job is blocked.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>The print job is blocked.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is blocked.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -76,16 +77,17 @@ Subscribes to the success events of a print job. This API uses an asynchronous c
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>It means that the print job is successful.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>The print job is successful.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is successful.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -119,16 +121,17 @@ Subscribes to the failure events of a print job. This API uses an asynchronous c
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>It means that the print job is failed.|
-| callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is failed.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>The print job fails.|
+| callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job fails.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -162,16 +165,17 @@ Subscribes to the cancellation events of a print job. This API uses an asynchron
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>It means that the print job is canceled.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>The print job is canceled.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to notify the caller that the print job is canceled.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -205,16 +209,17 @@ Unsubscribes from the block events of a print job. This API uses an asynchronous
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>It means that the print job is blocked.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'block'**.<br>The print job is blocked.|
 | callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the block events of a specified print job.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -248,16 +253,17 @@ Unsubscribes from the success events of a print job. This API uses an asynchrono
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>It means that the print job is successful.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'succeed'**.<br>The print job is successful.|
 | callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the success events of a specified print job.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -291,16 +297,17 @@ Unsubscribes from the failure events of a print job. This API uses an asynchrono
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>It means that the print job is failed.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'fail'**.<br>The print job fails.|
 | callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the failure events of a specified print job.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -334,16 +341,17 @@ Unsubscribes from the cancellation events of a print job. This API uses an async
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>It means that the print job is canceled.|
+| type | string | Yes| Listening type.<br>The value is fixed at **'cancel'**.<br>The print job is canceled.|
 | callback | Callback&lt;void&gt; | No| Callback used to unsubscribe from the cancellation events of a specified print job.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -381,7 +389,8 @@ Sends an empty PDF file descriptor to a third-party application. The third-party
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of the print job.|
 | oldAttrs | [PrintAttributes](#printattributes11) | Yes| Old print attributes.|
@@ -391,9 +400,9 @@ Sends an empty PDF file descriptor to a third-party application. The third-party
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -435,16 +444,17 @@ Registers a listener for print job state changes.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | jobId | string | Yes| ID of the print job.|
 | state | [PrintDocumentAdapterState](#printdocumentadapterstate11) | Yes| New state of the print job.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -476,7 +486,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -487,16 +497,17 @@ Prints files. This API uses an asynchronous callback to return the result. To st
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | Yes| List of files to print. Images (in .jpg, .png, .gif, .bmp, or .webp format) and PDF files are supported. You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
-| callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | Yes| Callback to be invoked when the print job is finished.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -522,7 +533,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
@@ -533,20 +544,22 @@ Prints files. This API uses a promise to return the result. To start the system 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | Yes| List of files to print. Images (in .jpg, .png, .gif, .bmp, or .webp format) and PDF files are supported. You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | Print result.|
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise used to return a [PrintTask](#printtask) object.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -581,17 +594,18 @@ Prints files. This API uses an asynchronous callback to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
-| callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | Yes| Callback to be invoked when the print job is finished.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -644,21 +658,23 @@ Prints files. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | Yes| List of files to be printed. Currently, the following file types are supported: ".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", and ".xml". You should save the files to the application sandbox, obtain the sandbox URI through **fileUri.getUriFromPath**, and then pass this URI as a parameter to this API.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | Print result.|
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise used to return a [PrintTask](#printtask) object.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -702,30 +718,32 @@ struct Index {
 
 print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes, context: Context): Promise&lt;PrintTask&gt;
 
-Prints a file. This API uses a promise to return the result.
+Prints a file. This API uses a promise to return the result. Currently, only the .pdf file type is supported.
 
 **Required permissions**: ohos.permission.PRINT
 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| jobName | string | Yes| Name of the file to print, for example, **test.pdf**. The printer uses the [onStartLayoutWrite](#onstartlayoutwrite11) API to send the **fd** of the empty PDF file to the API caller. The API caller uses the new print attributes to update the file to print.|
+| jobName | string | Yes| Name of the file to print, for example, **test.pdf**. Currently, only .pdf files are supported. The printer uses the [onStartLayoutWrite](#onstartlayoutwrite11) API to send the **fd** of the empty PDF file to the API caller. The API caller uses the new print attributes to update the file to print.|
 | printAdapter | [PrintDocumentAdapter](#printdocumentadapter11) | Yes| [PrintDocumentAdapter](#printdocumentadapter11) API instance implemented by a third-party application.|
 | printAttributes | [PrintAttributes](#printattributes11) | Yes| Print attributes.|
 | context | Context | Yes| UIAbilityContext used to start the system print UI.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | Print result.|
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise used to return a [PrintTask](#printtask) object.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -785,7 +803,8 @@ Defines the print attributes.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | copyNumber | number | No| Yes| Number of printed file copies. The default value is **1**.|
 | pageRange | [PrintPageRange](#printpagerange11) | No| Yes| Page range of the file to print.|
@@ -801,7 +820,8 @@ Defines the print range.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | startPage | number | No| Yes| Start page. The default value is **1**.|
 | endPage | number | No| Yes| End page. The default value is the maximum number of pages of the file to be printed.|
@@ -815,7 +835,8 @@ Defines the size of the printed page.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | No| No| Paper size ID.|
 | name | string | No| No| Paper size name.|
@@ -830,7 +851,7 @@ Enumerates the print direction modes.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | DIRECTION_MODE_AUTO | 0 | Automatic.|
 | DIRECTION_MODE_PORTRAIT | 1 | Portrait mode.|
@@ -842,7 +863,7 @@ Enumerates the color modes.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | COLOR_MODE_MONOCHROME | 0 | Black and white.|
 | COLOR_MODE_COLOR | 1 | Color.|
@@ -853,7 +874,7 @@ Enumerates the duplex modes.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | DUPLEX_MODE_NONE | 0 | Simplex (single-sided).|
 | DUPLEX_MODE_LONG_EDGE | 1 | Duplex (double-sided) with flipping on long edge.|
@@ -865,7 +886,7 @@ Enumerates the print page types.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | PAGE_ISO_A3 | 0 | A3.|
 | PAGE_ISO_A4 | 1 | A4.|
@@ -886,11 +907,11 @@ Enumerates the print job states.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | PREVIEW_DESTROY | 0 | The preview fails.|
 | PRINT_TASK_SUCCEED | 1 | The print job is successful.|
-| PRINT_TASK_FAIL | 2 | The print job is failed.|
+| PRINT_TASK_FAIL | 2 | The print job fails.|
 | PRINT_TASK_CANCEL | 3 | The print job is canceled.|
 | PRINT_TASK_BLOCK | 4 | The print job is blocked.|
 
@@ -900,7 +921,7 @@ Enumerates the print file creation status.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | PRINT_FILE_CREATED | 0 | The print file is created successfully.|
 | PRINT_FILE_CREATION_FAILED | 1 | The print file fails to be created.|
@@ -912,7 +933,7 @@ Enumerates the printer states.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | PRINTER_ADDED | 0 | A new printer is added.|
 | PRINTER_REMOVED | 1 | The printer is removed.|
@@ -927,7 +948,7 @@ Enumerates the print job states.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | PRINT_JOB_PREPARE | 0 | The printer is prepared for the print job.|
 | PRINT_JOB_QUEUED | 1 | The print job is on the print queue of the printer.|
@@ -941,11 +962,11 @@ Enumerates the print job substates.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | PRINT_JOB_COMPLETED_SUCCESS | 0 | The print job is successful.|
-| PRINT_JOB_COMPLETED_FAILED | 1 | The print job is failed.|
-| PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled by user.|
+| PRINT_JOB_COMPLETED_FAILED | 1 | The print job fails.|
+| PRINT_JOB_COMPLETED_CANCELLED | 2 | The print job is canceled.|
 | PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | The print file is corrupted.|
 | PRINT_JOB_BLOCK_OFFLINE | 4 | The printer is offline.|
 | PRINT_JOB_BLOCK_BUSY | 5 | The printer is occupied by another process.|
@@ -983,7 +1004,7 @@ Enumerates the print error codes.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | E_PRINT_NONE | 0 | No error.|
 | E_PRINT_NO_PERMISSION | 201 | No permission.|
@@ -996,6 +1017,9 @@ Enumerates the print error codes.
 | E_PRINT_INVALID_PRINT_JOB | 13100006 | Invalid print job.|
 | E_PRINT_FILE_IO | 13100007 | Incorrect file input/output.|
 | E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | Excessive files. Maximum number: 99.|
+| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | The SMB-based shared printer account is locked due to multiple failed login attempts.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | The SMB-based shared printer fails to be connected (due to a network error, unreachable host, or blocked port).<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | The SMB-based shared printer account or password is incorrect.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 
 ## ApplicationEvent<sup>14+</sup>
 
@@ -1003,7 +1027,7 @@ Enumerates print application events.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | APPLICATION_CREATED | 0 | Starts the print application.|
 | APPLICATION_CLOSED_FOR_STARTED | 1 | Closes the print application by clicking **Start**.|
@@ -1020,20 +1044,22 @@ Adds a printer to the printer discovery list. This API uses a promise to return 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerInformation | [PrinterInformation](#printerinformation14) | Yes| The added printer.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Result of adding a printer to the printer discovery list.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1071,20 +1097,22 @@ Updates the printer capabilities to the printer discovery list. This API uses a 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerInformation | [PrinterInformation](#printerinformation14) | Yes| Printer whose capability is to be updated.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Result of updating the printer capabilities to the printer discovery list.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1140,20 +1168,22 @@ Removes a printer from the printer discovery list. This API uses a promise to re
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer to remove.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Result of removing a printer from the printer discovery list.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1183,20 +1213,22 @@ Obtains printer information based on the printer ID. This API uses a promise to 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID used to obtain information.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;[PrinterInformation](#printerinformation14)&gt; | Printer information obtained based on the printer ID.|
+| Promise&lt;[PrinterInformation](#printerinformation14)&gt; | Promise used to return the printer information.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1222,7 +1254,8 @@ Defines the printer information.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | printerId | string | No| No| Printer ID.|
 | printerName | string | No| No| Printer name.|
@@ -1233,6 +1266,8 @@ Defines the printer information.
 | printerMake | string | No| Yes| Printer model.|
 | preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | No| Yes| Printer preferences.|
 | alias<sup>18+</sup> | string | No| Yes| Printer alias.|
+| selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | No| Yes| Information about the driver selected when a printer is added.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| selectedProtocol<sup>24+</sup> | string | No| Yes| Protocol used when a printer is added.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | options | string | No| Yes| Printer details.|
 
 ## PrinterCapabilities<sup>14+</sup>
@@ -1242,7 +1277,8 @@ Defines the printer capabilities.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | No| No| List of paper sizes supported by the printer.|
 | supportedColorModes | Array&lt;[PrintColorMode](#printcolormode11)&gt; | No| No| List of color modes supported by the printer.|
@@ -1258,7 +1294,7 @@ Enumerates the print qualities.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | QUALITY_DRAFT | 3 | Draft|
 | QUALITY_NORMAL | 4 | Standard|
@@ -1270,7 +1306,7 @@ Enumerates the print directions.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | ORIENTATION_MODE_PORTRAIT | 0 | Portrait mode.|
 | ORIENTATION_MODE_LANDSCAPE | 1 | Landscape mode.|
@@ -1284,7 +1320,7 @@ Enumerates the printer states.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | PRINTER_IDLE | 0 | The printer is idle.|
 | PRINTER_BUSY | 1 | The printer is busy.|
@@ -1297,7 +1333,8 @@ Defines the printer preferences.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Attributes**
-| **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | No| Yes| Default duplex mode.|
 | defaultPrintQuality | [PrintQuality](#printquality14) | No| Yes| Default print quality.|
@@ -1305,6 +1342,9 @@ Defines the printer preferences.
 | defaultPageSizeId | string | No| Yes| ID of the default paper size. The value can be a standard paper size defined by the International Organization for Standardization (ISO), for example, ISO_A4, or a non-standard paper size defined in the system, for example, Custom.178 × 254 mm.|
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | No| Yes| Default print orientation.|
 | borderless | boolean | No| Yes| Whether to print without margins. The value **true** means to print without margins, and **false** means the opposite. The default value is **false**.|
+| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | No| Yes| Default color mode. The default value is black and white.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| defaultCollate<sup>24+</sup> | boolean | No| Yes| Default output order. The value **true** means that pages are printed collated, and **false** means the opposite. The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>|
+| defaultReverse<sup>24+</sup> | boolean | No| Yes| Default print order. The value **true** means that pages are printed in reverse order, and **false** means that pages are printed in normal order. The default value is **false**.<br>**Model restriction**: This API can be used only in the stage model.<br>|
 | options | string | No| Yes| Other fields in the printer preferences. The fields are queried from the printer or obtained from the printer driver and stored in the string in JSON format.|
 
 ## PrinterEvent<sup>18+</sup>
@@ -1313,7 +1353,7 @@ Enumerates printer-related events.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | PRINTER_EVENT_ADDED | 0 | Printer added.|
 | PRINTER_EVENT_DELETED | 1 | Printer deleted.|
@@ -1328,7 +1368,7 @@ Enumerates default printer types.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | DEFAULT_PRINTER_TYPE_SET_BY_USER | 0 | The printer set by the user serves as the default printer.|
 | DEFAULT_PRINTER_TYPE_LAST_USED_PRINTER | 1 | The printer used last time serves as the default printer.|
@@ -1344,15 +1384,16 @@ Obtains the list of printers added to the system. This API uses a promise to ret
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the result.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a list of all added printers.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1379,7 +1420,8 @@ Defines a callback that takes the printer event and printer information as param
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | event | [PrinterEvent](#printerevent18) | Yes| Printer event.|
 | printerInformation | [PrinterInformation](#printerinformation14) | Yes| Printer information.|
@@ -1388,23 +1430,24 @@ Defines a callback that takes the printer event and printer information as param
 
 on(type: 'printerChange', callback: PrinterChangeCallback): void
 
-Registers a listener for the printer change events.
+Registers a listener for the printer change events. This API uses a callback to return the result.
 
 **Required permissions**: ohos.permission.PRINT
 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | Yes| Printer change event.|
 | callback | [PrinterChangeCallback](#printerchangecallback18) | Yes| Callback to be invoked when the printer changes.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1433,16 +1476,17 @@ Unregisters the listener for printer state change events. This API uses a callba
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | Yes| Printer change event.|
 | callback | [PrinterChangeCallback](#printerchangecallback18) | No| Callback to unregister.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1472,16 +1516,17 @@ Discovers printers by specifying the extension list. The discovered printers con
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| extensionList | Array&lt;string&gt; | Yes| List of [PrintExtensionAbilities](./js-apis-app-ability-PrintExtensionAbility.md) to be loaded. The list members are the bundle names of the applications with print extension abilities. An empty list indicates that all extension abilities are loaded.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| extensionList | Array&lt;string&gt; | Yes| List of [PrintExtensionAbilities](js-apis-app-ability-PrintExtensionAbility.md) to be loaded. The list members are the bundle names of the applications with print extension abilities. An empty list indicates that all extension abilities are loaded.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback to be invoked when a printer is discovered.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1515,20 +1560,22 @@ Discovers printers by specifying the extension list. The discovered printers con
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| extensionList | Array&lt;string&gt; | Yes| List of [PrintExtensionAbilities](./js-apis-app-ability-PrintExtensionAbility.md) to be loaded. The list members are the bundle names of the applications with print extension abilities. An empty list indicates that all extension abilities are loaded.|
+| extensionList | Array&lt;string&gt; | Yes| List of [PrintExtensionAbilities](js-apis-app-ability-PrintExtensionAbility.md) to be loaded. The list members are the bundle names of the applications with print extension abilities. An empty list indicates that all extension abilities are loaded.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1560,15 +1607,16 @@ Stops discovering printers. This API uses an asynchronous callback to return the
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback to be invoked when printer discovery is stopped.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1598,15 +1646,16 @@ Stops discovering printers. This API uses a promise to return the result.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1634,16 +1683,17 @@ Connects to a printer by printer ID. This API uses an asynchronous callback to r
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback to be invoked when a printer is connected.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1674,20 +1724,22 @@ Connects to a printer by printer ID. This API uses a promise to return the resul
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | printerId | string | Yes| Printer ID.|
 
 **Return value**
-| **Type**| **Description**|
+
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; |Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Error Codes of the Print Service](./errorcode-print.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1705,7 +1757,7 @@ print.connectPrinter(printerId).then(() => {
 })
 ```
 
-## startPrint<sup>23+</sup>
+## print.startPrint<sup>23+</sup>
 
 startPrint(job: PrintJobData): Promise&lt;void&gt;
 
@@ -1733,7 +1785,7 @@ Prints a file or binary data. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1742,11 +1794,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import fs from "@ohos.file.fs";
+import { fileIo } from '@kit.CoreFileKit';
 
-let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
-let file: fs.File;
-file = fs.openSync(tempPath, 4);
+let tempPath = '/data/storage/el2/base/haps/entry/files/note.jpg';
+let file: fileIo.File;
+file = fileIo.openSync(tempPath, 4);
 
 let printJobData: print.PrintJobData = {
     printerId: "printerId",
@@ -1814,15 +1866,556 @@ Defines a print job.
 | isLandscape | boolean | No| No| Whether pages are printed in landscape mode. The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
 | colorMode | [PrintColorMode](#printcolormode11) | No| No| Color mode.|
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | No| No| Simplex or duplex mode.|
-| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | No| No| Selected page size.|
+| pageSize | [PrintPageSize](#printpagesize11) | No| No| Selected page size.|
 | jobId | string | No| Yes| Unique identifier of the print job.|
-| fdList | Array&lt;number&gt; | No| Yes| FD list of files to print.|
+| fdList | number[]; | No| Yes| FD list of files to print.|
 | binaryData | Uint8Array | No| Yes| Binary data to print.|
 | printQuality | [PrintQuality](#printquality14) | No| Yes| Print quality.|
 | mediaType | string | No| Yes| Type of the paper to print.|
 | isBorderless | boolean | No| Yes| Whether to print without margins. The value **true** means to print without margins, and **false** means the opposite. Default value: **true**.|
 | isAutoRotate | boolean | No| Yes| Whether to automatically rotate the page. The value **true** means to automatically rotate the page, and **false** means the opposite. Default value: **true**.|
-| isReverse | boolean | No| Yes| Whether pages are printed in reverse order. The value **true** means that pages are printed in reverse order, and **false** means the opposite. The default value is **false**.|
+| isReverse | boolean | No| Yes| Whether pages are printed in reverse order. The value **true** means that pages are printed in reverse order, and **false** means that pages are printed in normal order. The default value is **false**.|
 | isCollate | boolean | No| Yes| Whether pages are printed uncollated. The value **true** means that pages are printed uncollated, and **false** means the opposite. Default value: **true**.|
-| isSequential | boolean | No| Yes| Whether pages are printed in sequential order.|
+| isSequential | boolean | No| Yes| Whether the printing is sequential. The value **true** means that the printing is sequential, and **false** means the opposite. The default value is **false**.|
 | options | string | No| Yes| Object stringified in JSON format.|
+
+## PrintMargin<sup>24+</sup>
+
+Defines the page margins for printing.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| top | number | No| Yes| Top margin of the page, in millimeters. The default value is **0**.  |
+| bottom | number | No| Yes| Bottom margin of the page, in millimeters. The default value is **0**.  |
+| left | number | No| Yes| Left margin of the page, in millimeters. The default value is **0**.  |
+| right | number | No| Yes| Right margin of the page, in millimeters. The default value is **0**.  |
+
+## PrinterRange<sup>24+</sup>
+
+Defines the print range.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| startPage | number | No| Yes| Start page. The default value is **1**.|
+| endPage | number | No| Yes| End page. The default value is the maximum number of pages of the file to be printed.|
+| pages | Array&lt;number&gt; | No| Yes| Page range set of the file to print. The default value is empty.|
+
+## PreviewAttribute<sup>24+</sup>
+
+Defines the print preview attributes.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| previewRange | [PrinterRange](#printerrange24) | No| No| Preview page range.|
+| result | number | No| Yes| Print preview result. The default value is **-1**.|
+
+## PrintResolution<sup>24+</sup>
+
+Defines the resolution for printing.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| id | string | No| No| Resolution ID.|
+| horizontalDpi | number | No| No| Horizontal DPI.  |
+| verticalDpi | number | No| No| Vertical DPI.  |
+
+## PrinterCapability<sup>24+</sup>
+
+Defines the printer capabilities.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| colorMode | number | No| No| Color mode.|
+| duplexMode | number | No| No| Simplex or duplex mode.|
+| pageSize | Array&lt;[PrintPageSize](#printpagesize11)&gt; | No| No| List of page sizes supported by the printer.|
+| resolution | Array&lt;[PrintResolution](#printresolution24)&gt; | No| Yes| List of resolutions supported by the printer.|
+| minMargin | [PrintMargin](#printmargin24) | No| Yes| Minimum margin of the printer.|
+| options | Object | No| Yes| Printer options. The value is a JSON object string.|
+
+## PrinterInfo<sup>24+</sup>
+
+Provides the printer information.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | No| No| Printer ID.|
+| printerName | string | No| No| Printer name.|
+| printerState | [PrinterState](#printerstate14) | No| No| Printer state.|
+| printerIcon | number | No| Yes| Resource ID of the printer icon. The default value is **-1**.|
+| description | string | No| Yes| Printer description.|
+| capability | [PrinterCapability](#printercapability24) | No| Yes| Printer capability.|
+| options | Object | No| Yes| Printer options. The value is a JSON object string.|
+
+## PrintJob<sup>24+</sup>
+
+Defines a print job.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| fdList | Array&lt;number&gt; | No| No| FD list of files to print.|
+| jobId | string | No| No| ID of the print job.|
+| printerId | string | No| No| ID of the printer used for printing.|
+| jobState | [PrintJobState](#printjobstate14) | No| No| State of the print job.|
+| jobSubstate | [PrintJobSubState](#printjobsubstate14) | No| No| Substate of the print job.|
+| copyNumber | number | No| No| Copy of the file list.|
+| pageRange | [PrinterRange](#printerrange24) | No| No| Print range.|
+| isSequential | boolean | No| No| Whether the printing is sequential. The value **true** means that the printing is sequential, and **false** means the opposite. The default value is **false**.|
+| pageSize | [PrintPageSize](#printpagesize11) | No| No| Selected page size.|
+| isLandscape | boolean | No| No| Whether pages are printed in landscape mode. The value **true** indicates that pages are printed in landscape mode, and **false** indicates that pages are printed in portrait mode. The default value is **false**.|
+| colorMode | number | No| No| Color mode.|
+| duplexMode | number | No| No| Simplex or duplex mode.|
+| margin | [PrintMargin](#printmargin24) | No| Yes| Current page margin.|
+| preview | [PreviewAttribute](#previewattribute24) | No| Yes| Preview settings.|
+| options | Object | No| Yes| Printer options. The value is a JSON object string.|
+
+## print.updatePrintJobState<sup>24+</sup>
+
+updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState, callback: AsyncCallback&lt;void&gt;): void
+
+Updates the print job state. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| jobId | string | Yes| ID of the print job.|
+| state | [PrintJobState](#printjobstate14) | Yes| Print job state.|
+| subState | [PrintJobSubState](#printjobsubstate14) | Yes| Substate of the print job.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback to be invoked when the print job state is updated.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | The application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = 'jobId';
+let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
+let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
+print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
+    if (err) {
+        console.error('updatePrintJobState failed, because : ' + JSON.stringify(err));
+    } else {
+        console.info('updatePrintJobState success');
+    }
+})
+```
+
+## print.updatePrintJobState<sup>24+</sup>
+
+updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise&lt;void&gt;
+
+Updates the print job state. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| jobId | string | Yes| ID of the print job.|
+| state | [PrintJobState](#printjobstate14) | Yes| Print job state.|
+| subState | [PrintJobSubState](#printjobsubstate14) | Yes| Substate of the print job.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = 'jobId';
+let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
+let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
+print.updatePrintJobState(jobId, state, subState).then(() => {
+    console.info('update print job state success');
+}).catch((error: BusinessError) => {
+    console.error('update print job state error : ' + JSON.stringify(error));
+})
+```
+
+## print.updatePrinterInformation<sup>24+</sup>
+
+updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;void&gt;
+
+Updates the information of a printer in the system. This API uses a promise to return the result. Currently, only the **alias** and **options** fields of [PrinterInformation](#printerinformation14) can be updated.
+
+**Required permissions**: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| printerInformation | [PrinterInformation](#printerinformation14) | Yes| Printer information to be updated.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testPageSize : print.PrintPageSize = {
+    id : 'ISO_A4',
+    name : 'iso_a4_210x297mm',
+    width : 8268,
+    height : 11692
+};
+
+let testCapability : print.PrinterCapabilities = {
+    supportedPageSizes : [testPageSize],
+    supportedColorModes : [print.PrintColorMode.COLOR_MODE_MONOCHROME],
+    supportedDuplexModes : [print.PrintDuplexMode.DUPLEX_MODE_NONE],
+    supportedMediaTypes : ['stationery'],
+    supportedQualities : [print.PrintQuality.QUALITY_NORMAL],
+    supportedOrientations : [print.PrintOrientationMode.ORIENTATION_MODE_PORTRAIT],
+    options : 'testOptions'
+};
+
+let printerInformation : print.PrinterInformation = {
+    printerId : 'testPrinterId',
+    printerName : 'testPrinterName',
+    printerStatus : 0,
+    description : 'testDesc',
+    capability : testCapability,
+    uri : 'testUri',
+    printerMake : 'testPrinterMake',
+    options : 'testOptions'
+};
+print.updatePrinterInformation(printerInformation).then(() => {
+    console.info('updatePrinterInformation success');
+}).catch((error: BusinessError) => {
+    console.error('updatePrinterInformation error : ' + JSON.stringify(error));
+})
+```
+
+## PpdInfo<sup>24+</sup>
+
+Defines the PPD file information of the printer driver.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| manufacturer | string | No| No| Printer vendor name in the current PPD file.|
+| nickName | string | No| No| Printer alias in the current PPD file.|
+| ppdName | string | No| No| Name of the current PPD file.|
+
+## SharedHost<sup>24+</sup>
+
+Defines the shared device information.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Attributes**
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| ip | string | No| No| IP address of the shared device.|
+| shareName | string | No| No| Host name of the shared device.|
+| workgroupName | string | No| No| Workgroup name of the shared device.|
+
+## print.addPrinter<sup>24+</sup>
+
+addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise&lt;boolean&gt;
+
+Adds a printer to the system. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_PRINT_JOB or ohos.permission.PRINTER_DRIVER
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| printerName | string | Yes| Printer name.|
+| uri | string | Yes| Printer URI.|
+| ppdName | string | No| PPD file name of the printer.|
+| options | string | No| JSON object string, which indicates the printer option parameter.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise used to return the result indicating whether the printer is successfully added.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 13100003 | Add the printer to system failed. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerName : string = 'printerName';
+let uri : string = 'uri';
+let ppdName : string = 'ppdName';
+print.addPrinter(printerName, uri, ppdName).then(() => {
+    console.info('add printer success');
+}).catch((error: BusinessError) => {
+    console.error('add printer error : ' + JSON.stringify(error));
+})
+```
+
+## WatermarkHandleResult<sup>24+</sup>
+
+Enumerates the results of forcible watermark processing.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| WATERMARK_HANDLE_SUCCESS | 0 | The forcible watermark processing is successful.|
+| WATERMARK_HANDLE_FAILURE | 1 | The forcible watermark processing fails.|
+
+## print.WatermarkCallback<sup>24+</sup>
+
+type WatermarkCallback = (jobId: string, fd: number) => void
+
+Defines the callback type used to register an event listener for forcible watermark processing.
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| jobId | string | Yes| ID of the print job.|
+| fd | number | Yes| File descriptor of the file.|
+
+## print.registerWatermarkCallback<sup>24+</sup>
+
+registerWatermarkCallback(callback: WatermarkCallback): void
+
+Registers an event listener for forcible watermark processing.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | Yes| Callback type used to register an event listener for forcible watermark processing.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+} catch (error) {
+    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+}
+```
+
+## print.unregisterWatermarkCallback<sup>24+</sup>
+
+unregisterWatermarkCallback(callback?: WatermarkCallback): void
+
+Deregisters an event listener for forcible watermark processing.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | No| Callback type used to register an event listener for forcible watermark processing.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+    // Deregister the specified callback for watermark processing.
+    print.unregisterWatermarkCallback(watermarkCallback);
+    console.info('unregisterWatermarkCallback success');
+} catch (error) {
+    console.error('unregisterWatermarkCallback error: ' + JSON.stringify(error));
+}
+```
+
+## print.notifyWatermarkComplete<sup>24+</sup>
+
+notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void
+
+Notifies that watermark processing is complete.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**System capability**: SystemCapability.Print.PrintFramework
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| jobId | string | Yes| ID of the print job.|
+| result | [WatermarkHandleResult](#watermarkhandleresult24) | Yes| Watermark processing result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code| Error Message                                   |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**Example**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+
+    try {
+        // Notify the system that the watermark processing is successful.
+        print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);
+        console.info('notifyWatermarkComplete success');
+    } catch (error) {
+        console.error('notifyWatermarkComplete error: ' + JSON.stringify(error));
+    }
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+} catch (error) {
+    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+}
+```

@@ -637,7 +637,7 @@ enableBandwidthCompression(enabled: boolean): void
 
 使能之前，可先使用方法[isBandwidthCompressionSupported](#isbandwidthcompressionsupported23)对设备是否支持预览带宽压缩进行检查。
 
-> **说明：**
+> **说明：** 
 > 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之前调用，否则会影响预览流出流格式。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -675,7 +675,8 @@ function enableBandwidthCompression(previewOutput: camera.PreviewOutput, enabled
   }
 }
 ```
-### addDeferredSurface<sup>24+</sup>
+
+## addDeferredSurface<sup>24+</sup>
 
 addDeferredSurface(surfaceId: string): void
 

@@ -3,7 +3,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @chenzhe123-->
-<!--Designer: @wangchun-->
+<!--Designer: @wangchun410-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu -->
 
@@ -41,7 +41,7 @@ Checks whether the system DND mode is enabled. This API uses a promise to return
 
 For details about the error codes, see [Intelligent Scene Error Codes](errorcode-intelligentScene.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 35200001 | Internal error.                            |
@@ -51,16 +51,19 @@ For details about the error codes, see [Intelligent Scene Error Codes](errorcode
 ```js
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
-let isDoNotDisturbEnabled: boolean = false;
-try {
-  isDoNotDisturbEnabled = await intelligentScene.isDoNotDisturbEnabled();
-} catch (err) {
-  console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
-}
-if (isDoNotDisturbEnabled) {
-  console.info('DoNotDisturb state is open');
-} else {
-  console.info('DoNotDisturb state is closed');
+async function isDoNotDisturbEnabled(): Promise<boolean> {
+  let isDoNotDisturbEnabled: boolean = false;
+  try {
+    isDoNotDisturbEnabled = await intelligentScene.isDoNotDisturbEnabled();
+  } catch (err) {
+    console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
+  }
+  if (isDoNotDisturbEnabled) {
+    console.info('DoNotDisturb state is open');
+  } else {
+    console.info('DoNotDisturb state is closed');
+  }
+  return isDoNotDisturbEnabled;
 }
 ```
 
@@ -86,7 +89,7 @@ Checks whether this application is allowed to push notifications in DND mode. If
 
 For details about the error codes, see [Intelligent Scene Error Codes](errorcode-intelligentScene.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 35200001 | Internal error.                            |
@@ -96,15 +99,18 @@ For details about the error codes, see [Intelligent Scene Error Codes](errorcode
 ```js
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
-let isNotifyAllowedInDoNotDisturb: boolean = false;
-try {
-  isNotifyAllowedInDoNotDisturb = await intelligentScene.isNotifyAllowedInDoNotDisturb();
-} catch (err) {
-  console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
-}
-if (isNotifyAllowedInDoNotDisturb) {
-  console.info('Allowed to notify in doNotDisturb state');
-} else {
-  console.info('Not allowed to notify in doNotDisturb state or doNotDisturb is closed');
+async function isNotifyAllowedInDoNotDisturb(): Promise<boolean> {
+  let isNotifyAllowedInDoNotDisturb: boolean = false;
+  try {
+    isNotifyAllowedInDoNotDisturb = await intelligentScene.isNotifyAllowedInDoNotDisturb();
+  } catch (err) {
+    console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
+  }
+  if (isNotifyAllowedInDoNotDisturb) {
+    console.info('Allowed to notify in doNotDisturb state');
+  } else {
+    console.info('Not allowed to notify in doNotDisturb state or doNotDisturb is closed');
+  }
+  return isNotifyAllowedInDoNotDisturb;
 }
 ```

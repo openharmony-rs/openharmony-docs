@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 autoStartupManager模块提供获取自身应用的开机自启状态。

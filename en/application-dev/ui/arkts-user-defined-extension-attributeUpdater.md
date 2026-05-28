@@ -1,8 +1,8 @@
 # Attribute Updater (AttributeUpdater)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -31,15 +31,15 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 }
 ```
 
-**AttributeUpdater** enhances the **AttributeModifier** API by offering additional features. It provides **initializeModifier** for initializing a component's attributes, **attribute** for obtaining the attribute object (which enables direct updates to the component's attributes), and **updateConstructorParams** for directly updating the component's constructor parameters.
+**AttributeUpdater** implements the **AttributeModifier** API and provides the [initializeModifier](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#initializemodifier) method to initialize component attributes. You can use the [attribute](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#attribute) method to obtain the attribute object and directly update the attributes of the corresponding component. You can also directly update the constructor parameters of the component using [updateConstructorParams](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#properties).
 
 ## How to Use
 
 - You can extend the **AttributeUpdater\<T>** class and set it up through the universal method **AttributeModifier** of the component. When the binding is first established, the **initializeModifier** API is triggered to initialize attributes. This is followed by a series of lifecycle events that are consistent with those of **AttributeModifier**.
 - After the component is initialized, you can obtain the attribute object through the **attribute** method of the **AttributeUpdater** instance. If the component is not initialized, the method will return **undefined**.
 - Modifying attributes through **attribute** will store the latest settings within the current object and immediately trigger an update of the component's attributes.
-- Designating an **AttributeUpdater** instance as a mutable state variable, or updating the attributes of the corresponding component through other state variables, will trigger **applyNormalAttribute**. If you do not override this logic, by default, all attributes obtained by the **attribute** object will be updated in batch.
-- If you override the **applyNormalAttribute** API without calling **super**, you will not be able to obtain the attribute object, and the **initializeModifier** method will not be executed.
+- Designating an **AttributeUpdater** instance as a mutable state variable, or updating the attributes of the corresponding component through other state variables, will trigger [applyNormalAttribute](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#applynormalattribute). If you do not override this logic, by default, all attributes obtained by the **attribute** object will be updated in batch.
+- If you override the [applyNormalAttribute](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#applynormalattribute) logic and do not call this method of the super class, the ability to obtain **attribute** objects will be lost, and the **initializeModifier** method will not be called.
 - A single **AttributeUpdater** object can be associated with only one component. If it is associated with multiple components, attribute settings will be applied to only one of these components.
 
 ## Directly Modifying Attributes Through Modifier

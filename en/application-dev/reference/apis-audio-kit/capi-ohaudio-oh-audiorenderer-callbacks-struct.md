@@ -1,8 +1,8 @@
 # OH_AudioRenderer_Callbacks_Struct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -46,7 +46,6 @@ Use the following callback types for substitute:
 ## Member Function Description
 
 > **NOTE**
->
 > No enumerated values are defined as the return values of the following callbacks. In the current version, no processing specific to the return value is provided. To support expansion in later versions, the default value **0** is used.
 
 ### OH_AudioRenderer_OnWriteData()

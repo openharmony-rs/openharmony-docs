@@ -1,9 +1,9 @@
 # Implementing Dark and Light Mode Adaptation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
@@ -65,7 +65,7 @@ To enhance user experience, applications should adapt to the system's dark and l
 
 2. Image Resource Adaptation
 
-    To adapt images to dark and light modes, use resource qualifier directories. Specifically, place images with the same name in the **dark/media** directory. Reference these images using the **$r** syntax based on their **key** values. The system will automatically load the appropriate image based on the current mode.
+    To adapt images to dark and light modes, use resource qualifier directories. Specifically, place images with the same name in the **dark/media** directory. Reference these images using the [$r](../reference/apis-arkui/js-apis-arkui-resource.md#r) syntax based on their **key** values. The system will automatically load the appropriate image based on the current mode.
 
     For SVG icons, use the [fillColor](arkts-graphics-display.md#displaying-vector-images) attribute with system resources to dynamically adjust their appearance for dark and light modes, eliminating the need for separate image sets.
 
@@ -79,7 +79,7 @@ To enhance user experience, applications should adapt to the system's dark and l
 
     The **Web** component supports dark color mode configuration. For details, see [Setting the Dark Mode](../web/web-set-dark-mode.md).
 
-4. Custom Node Adaptation
+4. Custom node adaptation
 
     Custom nodes **BuilderNode** and **ComponentContent** require manual propagation of system environment change events to trigger complete node updates. For implementation details, see the [BuilderNode system environment change](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12) section.
 
@@ -101,11 +101,11 @@ To enhance user experience, applications should adapt to the system's dark and l
         value.updateConfiguration();
       })
     }
-    // ···
+    // ...
       aboutToAppear(): void {
-        // ···
+        // ...
             this.getUIContext()?.postFrameCallback(new MyFrameCallback());
-        // ···
+        // ...
       }
     ```
 
@@ -113,18 +113,18 @@ To enhance user experience, applications should adapt to the system's dark and l
 
     Applications can listen for system color mode changes and perform custom logic, such as initializing resources of other types. When an application uses [setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18) to manually set the color mode, it will not receive the **onConfigurationUpdate** callback. Except for this case, this listener remains effective regardless of whether the application follows the system's color mode changes.
 
-    a. Save the current color mode to the AppStorage in the **onCreate()** lifecycle of the AbilityStage.
+    a. Obtain the current color mode of the application during the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate) lifecycle of AbilityStage and save it to [AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage).
 
     <!-- @[create_set_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     onCreate(): void {
-      // ···
+      // ...
       AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
     }
     ```
 
-    b. Update the color mode to the AppStorage in the **onConfigurationUpdate()** lifecycle callback of the AbilityStage..
+    b. Obtain the latest color mode in the [onConfigurationUpdate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate) lifecycle of AbilityStage and update it to AppStorage.
 
     <!-- @[update_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -135,7 +135,7 @@ To enhance user experience, applications should adapt to the system's dark and l
     }
     ```
 
-    c. Use @StorageProp and @Watch to listen for color mode changes and refresh the state variable.
+    c. In the page, use [@StorageProp](state-management/arkts-appstorage.md#storageprop) + [@Watch](state-management/arkts-watch.md) to obtain the current latest color and listen for changes in the device's dark mode.
 
     <!-- @[prop_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -144,19 +144,19 @@ To enhance user experience, applications should adapt to the system's dark and l
       ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT;
     ```
 
-    d. Refresh the state variable based on the latest color mode in the **aboutToAppear()** API.
+    d. Update the state variable in the [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) initialization function based on the current color mode.
 
     <!-- @[color_mode_change_appear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
     ``` TypeScript
     aboutToAppear(): void {
-      // ···
+      // ...
       if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
         // Resource initialization logic for light mode
-      // ···
+        // ...
       } else {
         // Resource initialization logic for dark mode
-      // ···
+        // ...
       }
     }
     ```
@@ -432,7 +432,8 @@ While offering less granular control compared to resource configuration and them
 
 > **NOTE**
 >
-> The color inversion capability requires [enabled color mode switching overhead optimization](#optimizing-color-mode-switching-overhead).
+> - The color inversion capability requires [enabled color mode switching overhead optimization](#optimizing-color-mode-switching-overhead).
+> - In cross-process scenarios, if you want to use the color inversion capability, both the [UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md) and the host of the corresponding **UIExtensionAbility** need to be adapted simultaneously. For details about the APIs related to the **UIExtensionAbility** host, see [@ohos.arkui.uiExtension (uiExtension)](../reference/apis-arkui/js-apis-arkui-uiExtension.md).
 
 1. Implement color inversion.
 

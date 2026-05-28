@@ -32,7 +32,7 @@ Defines the heartbeat broadcast policy.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 | Name        | Value | Description             |
 | ----------- | ---- | --------------- |
@@ -45,7 +45,7 @@ Defines device profile information filter options.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 | Name        | Type | Read-Only| Optional            |  Description   |
 | ----------- | ---- | -- | --- |--------------- | 
@@ -59,7 +59,7 @@ Defines the service profile information. It is populated based on the data retur
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 | Name          | Type | Read-Only| Optional             |  Description   |
 | -------------- | ---- | --------| ------- | --------|
@@ -74,7 +74,7 @@ Defines the device profile information.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 | Name          | Type | Read-Only  |Optional             |  Description   |
 | -------------- | ---- | ---| --------------- | --------|
@@ -113,7 +113,7 @@ Defines the device icon information filter options.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 | Name          | Type | Read-Only| Optional             |  Description   |
 | -------------- | ---- | -------| -------- | --------|
@@ -129,7 +129,7 @@ Defines the device icon information.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 | Name          | Type | Read-Only |Optional             |  Description   |
 | -------------- | ---- | ------| --------- | --------|
@@ -147,7 +147,7 @@ Defines the network ID filter options.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 | Name          | Type | Read-Only| Optional             |  Description   |
 | -------------- | ---- | ------ | --------- | --------|
@@ -158,11 +158,13 @@ Defines the network ID filter options.
 
 Defines a struct to identify a distributed device.
 
+**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC, ohos.permission.ACCESS_SERVICE_DM, and ohos.permission.sec.ACCESS_UDID
+
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 | Name      | Type | Read-Only| Optional             | Description         |
 |----------| ---- | ------ | --------- |-------------|
@@ -183,7 +185,7 @@ Replies to the user's UI operation. This API can be used only by the PIN HAP of 
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -196,7 +198,7 @@ Replies to the user's UI operation. This API can be used only by the PIN HAP of 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -237,7 +239,7 @@ Subscribes to the reply to the UI operation result. This API returns the result 
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -250,7 +252,7 @@ Subscribes to the reply to the UI operation result. This API returns the result 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                            |
@@ -295,7 +297,7 @@ Unsubscribes from the reply to the UI operation result. This API returns the res
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -308,7 +310,7 @@ Unsubscribes from the reply to the UI operation result. This API returns the res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -340,7 +342,7 @@ Sets the heartbeat broadcast policy.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -353,7 +355,7 @@ Sets the heartbeat broadcast policy.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -388,7 +390,7 @@ Obtains the list of devices under the same account. This API uses a promise to r
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -406,7 +408,7 @@ Obtains the list of devices under the same account. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -444,7 +446,7 @@ Updates the device list. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -456,13 +458,13 @@ Updates the device list. This API uses a promise to return the result.
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful. |
+  | Promise&lt;number&gt; | Operation result. The value **0** indicates that the operation is successful. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -499,7 +501,7 @@ Obtains the device icon. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -517,7 +519,7 @@ Obtains the device icon. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -565,7 +567,7 @@ Obtains the local device's display name with the specified length. This API uses
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -577,13 +579,13 @@ Obtains the local device's display name with the specified length. This API uses
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | string | Maximum number of bytes in the local device's display name.|
+  | Promise&lt;string&gt; | Maximum number of bytes in the local device's display name.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -620,7 +622,7 @@ Sets the local device name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -632,13 +634,13 @@ Sets the local device name. This API uses a promise to return the result.
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful.|
+  | Promise&lt;number&gt; | Operation result. The value **0** indicates that the operation is successful.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -678,7 +680,7 @@ Sets the remote device name. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -691,13 +693,13 @@ Sets the remote device name. This API uses a promise to return the result.
 
   | Type                                                      | Description                              |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | number | Operation result. The value **0** indicates that the operation is successful.|
+  | Promise&lt;number&gt; | Operation result. The value **0** indicates that the operation is successful.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -738,7 +740,7 @@ Obtains the list of network devices according to the specified filter options. T
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -756,7 +758,7 @@ Obtains the list of network devices according to the specified filter options. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -798,7 +800,7 @@ Queries the device identification based on the device ID.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Parameters**
 
@@ -816,7 +818,7 @@ Queries the device identification based on the device ID.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID   | Error Message                                                                                                             |
+| Error Code   | Error Message                                                                                                             |
 |----------|-------------------------------------------------------------------------------------------------------------------|
 | 201      | User permission verify failed.            |
 | 202      | The caller is not a system application.                                    |
@@ -860,13 +862,15 @@ Restores the local device name by resetting the network settings.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**Model restriction**: This API can be used only in the stage model.
+
+**System API:** This is a system API.
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -901,13 +905,13 @@ Restores the local device name by resetting the network settings.
 
 **System capability**: SystemCapability.DistributedHardware.DeviceManager
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |

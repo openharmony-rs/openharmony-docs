@@ -136,7 +136,7 @@ defaultCreator不是StorageDefaultCreator\<T\>类型。
 
 **处理步骤**
 
-确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect示例](./js-apis-stateManagement.md#globalconnect18)。
+确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect](./js-apis-stateManagement.md#globalconnect18)。
 
 ## 140105 PersistenceV2混用connect和globalConnect并使用相同的key
 
@@ -168,7 +168,7 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **可能原因**
 
-设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptions18)的[areaMode](./js-apis-stateManagement.md#connectoptions18)属性范围不在EL1-EL5内。
+设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptionst18)的[areaMode](./js-apis-stateManagement.md#connectoptionst18)属性范围不在EL1-EL5内。
 
 **处理步骤**
 

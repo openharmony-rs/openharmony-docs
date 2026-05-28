@@ -1,8 +1,8 @@
 # native_audiocapturer.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -42,6 +42,7 @@ The file declares the functions related to an audio capturer.
 | [OH_AudioStream_Result OH_AudioCapturer_GetFrameSizeInCallback(OH_AudioCapturer* capturer, int32_t* frameSize)](#oh_audiocapturer_getframesizeincallback) | - | Obtains the frame size in the callback. The frame size is the fixed length of the buffer returned by each callback.|
 | [OH_AudioStream_Result OH_AudioCapturer_GetTimestamp(OH_AudioCapturer* capturer, clockid_t clockId,int64_t* framePosition, int64_t* timestamp)](#oh_audiocapturer_gettimestamp) | - | Obtains the information about the input audio stream timestamp and the current data frame position.<br> This function obtains the actual recording position (specified by **framePosition**) of the audio channel and the timestamp when recording to that position (specified by **timestamp**, in nanoseconds).|
 | [OH_AudioStream_Result OH_AudioCapturer_GetFramesRead(OH_AudioCapturer* capturer, int64_t* frames)](#oh_audiocapturer_getframesread) | - | Obtains the number of frames that have been read since the stream was created.|
+| [OH_AudioStream_Result OH_AudioCapturer_SetMuteHint(OH_AudioCapturer* capturer, bool mute)](#oh_audiocapturer_setmutehint) | - | Transfers the mute status of the current recording stream to the system audio module. This API is used to report the mute status of the application to the system audio module, without changing the recording stream's actual mute status. Currently, the system audio module adjusts policies based on the set status to reduce power consumption only on some PC/2-in-1 devices. This API can be called only when a recording stream is running. Otherwise, error AUDIOSTREAM_ERROR_ILLEGAL_STATE is returned. If both the stream-level mute hint API (this API) and the session-level mute hint API are called for a recording stream, the settings of the stream-level API take precedence.|
 | [OH_AudioStream_Result OH_AudioCapturer_GetOverflowCount(OH_AudioCapturer* capturer, uint32_t* count)](#oh_audiocapturer_getoverflowcount) | - | Obtains the number of overloaded audio streams of an audio capturer.|
 | [typedef void (\*OH_AudioCapturer_OnReadDataCallback)(OH_AudioCapturer* capturer, void* userData, void* audioData, int32_t audioDataSize)](#oh_audiocapturer_onreaddatacallback) | OH_AudioCapturer_OnReadDataCallback | Defines the callback used to read audio data. To eliminate power-on noise caused by the microphone hardware design, the first 100 ms of data after recording starts is typically muted.|
 | [typedef void (\*OH_AudioCapturer_OnDeviceChangeCallback)(OH_AudioCapturer* capturer, void* userData, OH_AudioDeviceDescriptorArray* deviceArray)](#oh_audiocapturer_ondevicechangecallback) | OH_AudioCapturer_OnDeviceChangeCallback | Defines the callback for audio capturer device change events.|
@@ -475,6 +476,31 @@ Obtains the number of frames that have been read since the stream was created.
 | Type| Description|
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: The **capturer** parameter is nullptr.|
+
+### OH_AudioCapturer_SetMuteHint()
+
+```c
+OH_AudioStream_Result OH_AudioCapturer_SetMuteHint(OH_AudioCapturer* capturer, bool mute)
+```
+
+**Description**
+
+Transfers the mute status of the current recording stream to the system audio module. This API is used to report the mute status of the application to the system audio module, without changing the recording stream's actual mute status. Currently, the system audio module adjusts policies based on the set status to reduce power consumption only on some PC/2-in-1 devices. This API can be called only when a recording stream is running. Otherwise, error AUDIOSTREAM_ERROR_ILLEGAL_STATE is returned. If both the stream-level mute hint API (this API) and the session-level mute hint API are called for a recording stream, the settings of the stream-level API take precedence.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| OH_AudioCapturer* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
+| bool mute | If the recording stream has been muted by the application, pass **true**. If the recording stream has been unmuted by the application, pass **false**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| OH_AudioStream_Result | **AUDIOSTREAM_SUCCESS**: The function is executed successfully.<br>         **AUDIOSTREAM_ERROR_INVALID_PARAM**: The **capturer** parameter is nullptr.<br>         **AUDIOSTREAM_ERROR_ILLEGAL_STATE**: The operation status is abnormal as the recording stream is not in the running state.<br>         **AUDIOSTREAM_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
 
 ### OH_AudioCapturer_GetOverflowCount()
 

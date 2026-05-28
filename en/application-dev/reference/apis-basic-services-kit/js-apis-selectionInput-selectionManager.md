@@ -42,13 +42,13 @@ Registers a callback to listen for the word selection completion event. This API
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'selectionCompleted'**.|
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes  | Callback used to return the word selection information.      |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | Yes  | Callback used to return the word selection information. This callback is triggered only when the user selects text using the mouse or touchpad (by double-clicking, triple-clicking, or pressing and sliding the left mouse button) and then presses **Ctrl**.      |
 
 **Error codes**
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
@@ -119,7 +119,7 @@ Obtains this selected text content. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600004   | The interface is called too frequently. |
@@ -148,7 +148,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 Creates a word selection panel. This API uses a promise to return the result.
 
-Only one [main panel](js-apis-selectionInput-selectionPanel.md#paneltype) and one [menu panel](js-apis-selectionInput-selectionPanel.md#paneltype) can be created for a single word selection application.
+Only one [MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) and one [MAIN_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) can be created for one word selection application.
 
 **System capability**: SystemCapability.SelectionInput.Selection
 
@@ -170,7 +170,7 @@ Only one [main panel](js-apis-selectionInput-selectionPanel.md#paneltype) and on
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
@@ -244,7 +244,7 @@ Destroys the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 
@@ -363,7 +363,7 @@ Sets the page content for the word selection panel. This API uses a promise to r
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -404,7 +404,7 @@ Shows the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -441,7 +441,7 @@ Hides the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -478,7 +478,7 @@ Moves the word selection panel by dragging. This API uses a promise to return th
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -538,7 +538,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -587,7 +587,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| ID  | Error Message                      |
+| Error Code  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -623,7 +623,7 @@ Registers a callback to listen for the destroy event of the word selection panel
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'destroyed'**.|
-| callback | Callback\<void> | Yes  | Callback function. The return value is null.      |
+| callback | Callback\<void> | Yes  | Callback function that returns no value.      |
 
 **Example**
 <!--code_no_check-->
@@ -654,7 +654,7 @@ Unregisters the callback used to listen for the destroy event of the word select
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes  | Event type, which is **'destroyed'**.              |
-| callback | Callback\<void> | No  | Callback function. The return value is null. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 <!--code_no_check-->
@@ -683,7 +683,7 @@ Registers a callback to listen for the hide event of the word selection panel. T
 | Name  | Type                                       | Mandatory| Description                                          |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | Yes  | Event type, which is **'hidden'**.|
-| callback | Callback\<void> | Yes  | Callback function. The return value is null.      |
+| callback | Callback\<void> | Yes  | Callback function that returns no value.      |
 
 **Example**
 <!--code_no_check-->
@@ -714,7 +714,7 @@ Unregisters the callback used to listen for the hide event of the word selection
 | Name  | Type                                       | Mandatory| Description                                                        |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | Yes  | Event type, which is **'hidden'**.              |
-| callback | Callback\<void> | No  | Callback function. The return value is null. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | Callback\<void> | No  | Callback function that returns no value. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 <!--code_no_check-->

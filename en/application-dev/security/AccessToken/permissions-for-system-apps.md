@@ -19,7 +19,7 @@ For details about the process for requesting permissions, see [Workflow for Requ
 
 ## ohos.permission.RUNNING_LOCK
 
-Allows an application to obtain a running lock.
+Allows an application to obtain a running lock to keep running in the background.
 
 **Permission level**: normal
 
@@ -175,7 +175,7 @@ Allows a system application to display the **Learn more** dialog for detailed in
 
 ## ohos.permission.WRITE_PROTECTION_ADVICE_POLICY
 
-Allows a system application to write the protection advice database.
+Allows a system application to modify the protection advice database.
 
 **Permission level**: system_basic
 
@@ -449,7 +449,7 @@ Allows a system application to forcibly restore a device to its factory settings
 
 **Certificate-based authorization**: true
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -477,7 +477,7 @@ Allows a system application or system service to call the update APIs to downloa
 
 ## ohos.permission.RECEIVE_UPDATE_MESSAGE
 
-Allows a system application or system ability to listen for the key events occurred in the system update process.
+Allows a system application or system service to listen for the key events occurred in the system update process.
 
 **Permission level**: system_basic
 
@@ -489,7 +489,7 @@ Allows a system application or system ability to listen for the key events occur
 
 ## ohos.permission.GET_ALL_PROCESSES
 
-Allows a system application or system ability to read files in **/proc**.
+Allows a system application or system service to read files in **/proc**.
 
 **Permission level**: system_core
 
@@ -669,7 +669,7 @@ Allows an application to query default applications.
 
 ## ohos.permission.MANAGE_INTELLIGENT_VOICE
 
-Allows an application to access the intelligent voice service interfaces.
+Allows an application to access the intelligent voice service APIs.
 
 **Permission level**: system_basic
 
@@ -681,7 +681,7 @@ Allows an application to access the intelligent voice service interfaces.
 
 ## ohos.permission.POWER_MANAGER
 
-Allows an application to hibernate or wake up the device by calling an API.
+Allows an application to hibernate or wake up the device by calling an API of the power management subsystem.
 
 **Permission level**: system_core
 
@@ -741,9 +741,9 @@ Allows an application to install and uninstall other applications except enterpr
 
 ## ohos.permission.INSTALL_ALLOW_DOWNGRADE
 
-Allows an application to downgrade and install other applications.
+Allows an application to downgrade other applications.
 
-With this permission, the system application can overwrite an installed application with an earlier version, even if a later version is already present.
+With this permission, an application can perform downgrade installation of other applications, even if a later version already exists.
 
 **Permission level**: system_core
 
@@ -753,7 +753,7 @@ With this permission, the system application can overwrite an installed applicat
 
 **Certificate-based authorization**: true
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_SHORTCUTS
 
@@ -951,7 +951,7 @@ Allows an application to mount and unmount external cards.
 
 ## ohos.permission.PROXY_AUTHORIZATION_URI
 
-Allows the application proxy to authorize the URI.
+Allows the application to act as a proxy for granting URI permissions.
 
 **Permission level**: system_basic
 
@@ -1011,7 +1011,7 @@ Allows installation of enterprise MDM applications on enterprise devices.
 
 ## ohos.permission.INSTALL_SELF_BUNDLE
 
-Allows automatic updates of enterprise MDM applications on enterprise devices.
+Allows enterprise MDM applications to self-update on enterprise devices.
 
 **Permission level**: system_core
 
@@ -1166,7 +1166,7 @@ Allows a system service or system application to enable or disable system trace.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.DEVICE_STANDBY_EXEMPTION
 
@@ -1314,7 +1314,7 @@ Allows an application to obtain the disposed application status.
 
 ## ohos.permission.FILE_ACCESS_MANAGER
 
-Allows a file management application to access user data files through the FAF.
+Allows a file management application to access public data files through the FAF.
 
 **Permission level**: system_basic
 
@@ -1448,7 +1448,7 @@ Allows an application to query the unique identifier of a device.
 
 ## ohos.permission.ACCESS_MISSIONS
 
-Allows an application to obtain information about running processes and mission in a mission stack.
+Allows an application to obtain information about missions in a mission stack.
 
 **Permission level**: system_basic
 
@@ -1570,7 +1570,7 @@ Allows an application to read telephony information.
 
 ## ohos.permission.ACCESS_BOOSTER_SERVICE
 
-Allows a system ability or system application to call network booster service APIs, such as APIs for network quality perception, network scenario prediction, and network acceleration.
+Allows a system service or system application to call network booster service APIs, such as APIs for network quality perception, network scenario prediction, and network acceleration.
 
 **Permission level**: system_basic
 
@@ -2260,7 +2260,7 @@ Allows a system application to shield the shortcut key distribution logic.
 
 ## ohos.permission.MANAGE_TRUSTED_RING
 
-Allows the use of the capabilities provided by the critical asset trusted ring service.
+Allows the use of the capabilities provided by the asset trusted ring service.
 
 **Permission level**: system_basic
 
@@ -2272,7 +2272,7 @@ Allows the use of the capabilities provided by the critical asset trusted ring s
 
 ## ohos.permission.USE_TRUSTED_RING
 
-Allows an applications or service to use the critical asset trusted ring.
+Allows an application or service to use the asset trusted ring.
 
 **Permission level**: system_basic
 
@@ -2296,7 +2296,7 @@ Allows an application to listen for the installation progress of other applicati
 
 ## ohos.permission.LAUNCH_SPAMSHIELD_PAGE
 
-Allows an application to access the shielded spam pages.
+Allows an application to access the spam shield pages.
 
 **Permission level**: system_basic
 
@@ -2356,7 +2356,7 @@ Allows a system application to process the advice provided by the Security & Pri
 
 ## ohos.permission.USE_SECURITY_PRIVACY_MESSAGER
 
-Allows a system service to call permission management interfaces.
+Allows a system service to call permission management APIs.
 
 **Permission level**: system_core
 
@@ -2960,7 +2960,7 @@ for example, enabling or disabling UWB communication, querying the chip type, an
 
 Allows a system application to use UWB ranging,
 
-for example, opening a session for UWB ranging, starting ranging, stoping ranging, and closing a session.
+for example, opening a session for UWB ranging, starting ranging, stopping ranging, and closing a session.
 
 **Permission level**: system_basic
 
@@ -3008,7 +3008,7 @@ Allows an application to query the location of an offline device.
 
 ## ohos.permission.REGISTER_FINDNETWORK_ACCESSORY
 
-Allows an application or system ability to initiate the process for registering the Find Network accessories.
+Allows an application or system service to initiate the process for registering the Find Network accessories.
 
 **Permission level**: system_basic
 
@@ -3020,7 +3020,7 @@ Allows an application or system ability to initiate the process for registering 
 
 ## ohos.permission.MANAGE_SHUTDOWN_FINDNETWORK
 
-Allows a system application or system ability to manage the service that enables a powered-off device to be found by another device with the same account.
+Allows a system application or system service to manage the service that enables a powered-off device to be found by another device with the same account.
 
 **Permission level**: system_basic
 
@@ -3716,7 +3716,7 @@ Allows an application to obtain and set the status of input devices.
 
 ## ohos.permission.ACTIVATE_DEVICE_PSI
 
-Allows a system application or system ability to report the device activation status.
+Allows a system application or system service to report the device activation status.
 
 **Permission level**: system_basic
 
@@ -3740,7 +3740,7 @@ Allows an application to dump audio data to a local storage device.
 
 ## ohos.permission.RECEIVE_FUSION_MESSAGES
 
-Allows a system application or system ability to receive fusion service messages.
+Allows a system application or system service to receive fusion service messages.
 
 **Permission level**: system_basic
 
@@ -3764,7 +3764,7 @@ Allows a system application or system service to receive BMS broker messages.
 
 ## ohos.permission.ACCESS_FUSION_MANAGER
 
-Allows a system ability or system application to access the fusion service.
+Allows a system service or system application to access the fusion service.
 
 **Permission level**: system_basic
 
@@ -3848,7 +3848,7 @@ Allows a system application to start the File Manager application to copy, cut, 
 
 ## ohos.permission.CLEAR_RECYCLEBIN
 
-Allows a system application to start the File Manager application to clear the trash.
+Allows a system application to start the File Manager application to clear the Recycle Bin.
 
 **Permission level**: system_basic
 
@@ -3860,7 +3860,7 @@ Allows a system application to start the File Manager application to clear the t
 
 ## ohos.permission.GET_FILE_THUMBNAIL
 
-Allows a system ability to obtain file thumbnails.
+Allows a system service to obtain file thumbnails.
 
 **Permission level**: system_basic
 
@@ -3884,7 +3884,7 @@ Allows a system application to apply for IP addresses from the DHCP server.
 
 ## ohos.permission.ALLOW_CONNECT_CAR
 
-Allows an application to connect to a telematics device.
+Allows an application to connect to a head unit.
 
 **Permission level**: system_basic
 
@@ -4236,7 +4236,7 @@ Allows a system application to read the application lock state.
 
 ## ohos.permission.WRITE_APP_LOCK
 
-Allows a system application to set the application lock state.
+Allows a system application to modify the application lock state.
 
 **Permission level**: system_core
 
@@ -4459,6 +4459,7 @@ Allows a system application to obtain the page information of a specified applic
 Allows a peripheral extension driver to access the USB Serial DDK APIs.
 
 The APIs can be used to develop the following types of peripheral extension drivers:
+
 Peripherals connected to the host via a USB bus and:
 
 1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
@@ -4487,8 +4488,6 @@ Allows an application to access the RBT library.
 ## ohos.permission.ACCESS_STARTUPGUIDE
 
 Allows a system application to access common data and common events of the startup wizard.
-
-This permission is available only to the applications on smartphones, tablets, and 2-in-1 devices.
 
 **Permission level**: system_basic
 
@@ -4770,7 +4769,7 @@ Allows an application to install and uninstall fonts.
 
 **Valid since**: 19
 
-**Changelog**: Since API version 23, this permission is also available on phones.
+**Changelog**: Since API version 23, this permission is also available on smartphones.
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 
@@ -4856,7 +4855,7 @@ Allows an application to access the sandbox directories of other applications.
 
 ## ohos.permission.REQUEST_DISABLE_NOTIFICATION
 
-Allows an application to run background request tasks without triggering notifications in the notification bar.
+Allows an application to run background upload and download tasks without triggering notifications in the notification bar.
 
 **Permission level**: system_basic
 
@@ -4870,7 +4869,7 @@ Allows an application to run background request tasks without triggering notific
 
 ## ohos.permission.RESTORE_APP
 
-Allows a system application to display a pop-up window for application restore.
+Allows a system application to display a dialog box for application restore.
 
 **Permission level**: system_basic
 
@@ -4922,7 +4921,7 @@ Allows a system application to inject playback audio into the capture stream.
 
 **Supported devices**: general devices
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.kernel.ALLOW_APP_CODE_DECRYPT
 
@@ -5260,7 +5259,7 @@ Allows an application to access the directory containing compatible applications
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.MANAGE_SELF_SKILLS
 
@@ -5276,7 +5275,7 @@ With this permission, the application can extend its implicit matching capabilit
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.DATA_IDENTIFY_ANONYMIZE
 
@@ -5290,7 +5289,7 @@ Allows a system application to invoke the data identification and anonymization 
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
 
-**Since**: 22
+**Valid since**: 22
 
 ## ohos.permission.CAPTURE_SCREEN_ALL
 
@@ -5318,7 +5317,7 @@ Allows an application to obtain background task status.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.SET_BACKGROUND_TASK_STATE
 
@@ -5332,7 +5331,7 @@ Allows an application to obtain and set the user authorization status of special
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.SET_LAUNCH_REASON_MESSAGE
 
@@ -5394,8 +5393,7 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 **Supported devices**: general devices
 
-**Since**: 22
-
+**Valid since**: 22
 
 ## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
 
@@ -5407,9 +5405,10 @@ Allows a system application to access media sharing resources within the camera 
 
 **Certificate-based authorization**: true
 
-**Supported devices**: General
+**Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
+
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
@@ -5422,7 +5421,7 @@ Allows an application that has accessed Cloud to manage cloud data.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_RISK_PHOTOS
 
@@ -5436,7 +5435,7 @@ Allows a system application to access potentially risky images or videos.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.READ_CLOUD_IMAGEVIDEO
 
@@ -5450,11 +5449,11 @@ Allows an application to read image or video files from the user's cloud storage
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ACCESS_SECURE_FENCE
 
-Allows a system application to access secure access fence capability..
+Allows a system application to access the security fence capability.
 
 **Permission level**: system_basic
 
@@ -5462,13 +5461,13 @@ Allows a system application to access secure access fence capability..
 
 **Certificate-based authorization**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablet | tv | car
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
- 	 
-Allows a system application to access the runtime capability framework.
+
+Allows a system application to use the running capability framework.
 
 **Permission level**: system_basic
 
@@ -5478,7 +5477,7 @@ Allows a system application to access the runtime capability framework.
 
 **Supported devices**: phones | tablets | TVs | wearables
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
 
@@ -5494,11 +5493,11 @@ With this permission, the system application can help users add the widgets to d
 
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 20
+**Valid since**: 20
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
 
-Allows an application to add the WiseCard of other applications.
+Allows users to add WiseCard widgets of other apps.
 
 **Permission level**: system_basic
 
@@ -5508,11 +5507,11 @@ Allows an application to add the WiseCard of other applications.
 
 **Supported devices**: general devices
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
 
-Allows a system application to manage the education space.
+Allows an application to manage local education space accounts.
 
 **Permission level**: system_basic
 
@@ -5522,11 +5521,11 @@ Allows a system application to manage the education space.
 
 **Supported devices**: tablets
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
 
-Allows a system application to query the education space properties.
+Allows an application to query the properties of local education space accounts.
 
 **Permission level**: system_basic
 
@@ -5536,7 +5535,7 @@ Allows a system application to query the education space properties.
 
 **Supported devices**: tablets
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_STANDBY
 
@@ -5548,9 +5547,9 @@ Allows an application to manage the standby state of the page, such as controlli
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+**Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ACCESS_STANDBY
 
@@ -5562,14 +5561,14 @@ Allows an application to query whether the page is in the standby state and acce
 
 **Certificate-based authorization**: true
 
-**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+**Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 23
+**Valid since**: 23
 
 ## ohos.permission.RESTORE_END_NOTIFICATION
 
 Allows a system application to subscribe to the restore end event of the backup framework.
- 	 
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -5578,13 +5577,13 @@ Allows a system application to subscribe to the restore end event of the backup 
 
 **Supported devices**: general devices
 
-**since**: 23
+**Valid since**: 23
 
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
-Allows an application to acquire the local account authorization.
+Allows an application to obtain the local account authorization.
 
-With this permission, the application can call the API to acquire the local account authorization. Once authorized, the application can handle sensitive tasks like creating or removing local accounts, modifying the local account type, and adjusting time and time zone settings.
+With this permission, the application can call the API to obtain the local account authorization. Once authorized, the application can handle sensitive tasks like creating or deleting local accounts, modifying account types, and adjusting time and time zone settings.
 
 **Permission level**: system_basic
 
@@ -5592,9 +5591,9 @@ With this permission, the application can call the API to acquire the local acco
 
 **Certificate-based authorization**: true
 
-**Supported devices**: PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
-**Since**: 24
+**Valid since**: 24
 
 ## ohos.permission.GET_AGENT_CARD
 
@@ -5606,9 +5605,9 @@ Allows a system application to obtain AgentCard information.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: General
+**Supported devices**: general devices
 
-**Since**: 24
+**Valid since**: 24
 
 ## ohos.permission.ASSET_CACHE_MANAGER
 
@@ -5622,7 +5621,7 @@ Allows an application to deliver, control, and query tasks through the asset cac
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 24
+**Valid since**: 24
 
 ## ohos.permission.CONNECT_AGENT
 
@@ -5634,15 +5633,15 @@ Allows a system application to connect to the Agent.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: General
+**Supported devices**: general devices
 
-**Since**: 24
+**Valid since**: 24
 
 ## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
 
 Allows an application to bypass sensor controls.
 
-With the permission, the application can always use sensors.
+With this permission, the application can always use sensors.
 
 **Permission level**: system_basic
 

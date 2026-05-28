@@ -1,9 +1,9 @@
 # @ohos.app.form.FormEditExtensionAbility (FormEditExtensionAbility)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 The **FormEditExtensionAbility** module, inherited from [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md), provides the widget editing function.
 
@@ -29,4 +29,4 @@ Provides the widget editing function.
 **System capability**: SystemCapability.Ability.Form
   | Name| Type   | Read-Only| Optional |Description|
   | ------ | ------ | ---- | ---- | ---- |
-  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | No  | No|Context of **FormEditExtensionAbility**. The default value is an object inherited from **UIExtensionContext**.|
+  | context |  [FormEditExtensionContext](./js-apis-inner-application-formEditExtensionContext.md) | No  | No|Context of the **FormEditExtensionAbility**. The default value is the object which inherits from [UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#uiextensioncontext-1).|

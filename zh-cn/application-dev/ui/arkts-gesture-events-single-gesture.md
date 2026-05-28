@@ -367,7 +367,7 @@ export struct Pinch {
 ```
 
 
-![pinch](figures/pinch.png)
+![pinch](figures/pinch.gif)
 
 
 ## 旋转手势（RotationGesture）
@@ -407,7 +407,7 @@ export struct Rotation {
                   if(event){
                     this.angle = this.rotateValue + event.angle;
                   }
-                  console.info('RotationGesture is onActionEnd');
+                  console.info('RotationGesture is onActionUpdate');
                 })
                   // 当旋转结束抬手时，固定组件在旋转结束时的角度
                 .onActionEnd(() => {
@@ -437,7 +437,7 @@ export struct Rotation {
 ```
 
 
-![rotation](figures/rotation.png)
+![rotation](figures/rotation-2.gif)
 
 
 ## 快滑手势（SwipeGesture）

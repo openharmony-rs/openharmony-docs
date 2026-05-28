@@ -1,7 +1,7 @@
 # SelectTitleBar
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -48,7 +48,7 @@ SelectTitleBar({selected: number, options: Array&lt;SelectOption&gt;, menuItems?
 | options | Array&lt;[SelectOption](ts-basic-components-select.md#selectoption)&gt; | Yes| - | Options in the drop-down menu.|
 | menuItems | Array&lt;[SelectTitleBarMenuItem](#selecttitlebarmenuitem)&gt;              | No| - | List of menu items on the right side of the title bar. This parameter is passed to add a list of menu items to the right side of the title bar. If this parameter is not specified, the menu area on the right is not displayed. |
 | subtitle | [ResourceStr](ts-types.md#resourcestr)                                      | No| - | Subtitle, used to display supplementary information. This parameter is passed to show the subtitle. If this parameter is not specified, the subtitle area is not displayed.|
-| badgeValue | number                                                                      | No| - | Value for the badge.<br>Value range: [-2147483648, 2147483647]. If the value is out of the range, 4294967296 is added or subtracted so that the value is within the range. If the value is not an integer, it is rounded off to the nearest integer. For example, 5.5 is rounded off to 5.<br>Note: The badge will not be displayed if the value is less than or equal to 0.<br>The maximum number of messages is 99. If this limit is exceeded, only **99+** is displayed. Extremely large values are considered exceptional and will result in the badge not being displayed.|
+| badgeValue | number                                                                      | No| - | Value for the badge.<br>Value range: [-2147483648, 2147483647]. If the value is out of the range, 4294967296 is added or subtracted so that the value is within the range. If the value is not an integer, it is rounded off to the nearest integer. For example, 5.5 is rounded off to 5.<br>Note: The badge will not be displayed if the value is less than or equal to 0.<br>The maximum number of messages is 99. If this limit is exceeded, only **99+** is displayed. Extremely large values are considered invalid and will result in the badge not being displayed.|
 | hidesBackButton | boolean                                                                     | No| - | Whether to hide the back arrow on the left.<br>Default value: **false**. **true** to hide, **false** to show.|
 | onSelected | ((index:&nbsp;number)&nbsp;=&gt;&nbsp;void)                                   | No| - | Callback invoked when an option in the drop-down menu is selected. The index of the selected option is passed in. This parameter is passed to handle specific service logic after an option in the drop-down menu is selected. This parameter can be omitted when there is no specific service logic.|
 

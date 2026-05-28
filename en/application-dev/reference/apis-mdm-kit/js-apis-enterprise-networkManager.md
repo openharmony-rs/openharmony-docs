@@ -1,7 +1,7 @@
 # @ohos.enterprise.networkManager (Network Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -1497,7 +1497,7 @@ In API version 21 and earlier versions, only IPv4 is supported. IPv4 and IPv6 ar
 
 | Name      | Type             | Read-only| Optional| Description                                                        |
 | ---------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
-| domainName | string            | No  | Yes|Domain name. This parameter is mandatory when a domain name filtering rule is added. Segment matching is supported. For example, if **domainName** is set to **example.com**, **example.com**, **www.example.com**, and **www.test.example.com** will be matched, while **linkexample.com** will not be matched.                              |
+| domainName | string            | No  | Yes|Domain name. This parameter is mandatory when a domain name filtering rule is added. Segment matching is supported. For example, if `example.com` is set to **example.com**, `example.com`, `www.example.com`, and `www.test.example.com` will be matched, while `linkexample.com` will not be matched.                              |
 | appUid     | string            | No  | Yes|UID of the application.                                                   |
 | action     | [Action](#action) | No  | Yes|Action to take, that is, receive or discard the data packets.<br>This parameter is mandatory when a domain name filtering rule is added.<br>This parameter is optional when a domain name filtering rule is removed. If this parameter is left empty, all [Action](#action) chains are cleared, and **domainName** and **appUid** must be also left empty.|
 | direction<sup>15+</sup> | [Direction](#direction) | No| Yes|Direction chains to which the rule applies.<br>This parameter is optional when a domain name filtering rule is added. If this parameter is set to output chain or input chain, the output chain takes effect. If this parameter is set to a forward chain, **appUid** must be empty. Otherwise, error code 401 will be returned.<br>This parameter is optional when a domain name filtering rule is removed. If the value is empty, all [Direction](#direction) chains are cleared, and **domainName** and **appUid** must be empty.|

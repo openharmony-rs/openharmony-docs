@@ -191,7 +191,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_1](figures/zh-cn_full_screen_modal_none_1.gif)
+![en-us_full_screen_modal_none_1](figures/en-us_full_screen_modal_none_1.gif)
 
 ### Example 2: Implementing a Custom Transition Animation
 
@@ -305,7 +305,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_2](figures/zh-cn_full_screen_modal_none_2.gif)
+![en-us_full_screen_modal_none_2](figures/en-us_full_screen_modal_none_2.gif)
 
 ### Example 3: Implementing a Slide-up and Slide-down Transition Animation
 
@@ -403,7 +403,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_default](figures/zh-cn_full_screen_modal_default.gif)
+![en-us_full_screen_modal_default](figures/en-us_full_screen_modal_default.gif)
 
 ### Example 4: Implementing an Opacity Transition Animation
 
@@ -502,7 +502,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_alpha.gif)
+![en-us_full_screen_modal_alpha](figures/en-us_full_screen_modal_alpha.gif)
 
 ### Example 5: Implementing Custom Transitions with Different Effects
 
@@ -618,7 +618,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_transition.gif)
+![en-us_full_screen_modal_alpha](figures/en-us_full_screen_modal_transition.gif)
 
 ### Example 6: Setting a Full-Screen Modal to Adapt to the Safe Area
 
@@ -681,4 +681,4 @@ struct SafeAreaController {
 }
 ```
 
-![zh-cn-enableSafeArea](figures/en-us-enablesafearea.png)
+![en-us-enableSafeArea](figures/en-us-enablesafearea.png)

@@ -1,13 +1,13 @@
 # LocalStorage: Storing Page-Level UI State
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
 
-LocalStorage provides storage for the page-level UI state. The parameters of the LocalStorage type accepted through the \@Entry decorator share the same LocalStorage instance on the page. LocalStorage also allows for state sharing across pages in a UIAbility instance.
+LocalStorage provides storage for the page-level UI state. The parameters of the LocalStorage type accepted through the \@Entry decorator share the same LocalStorage instance on the page. LocalStorage supports status sharing among multiple pages in a [UIAbility](../../application-models/uiability-overview.md) instance.
 
 
 This topic focuses on the usage scenarios of LocalStorage and its associated decorators: \@LocalStorageProp and \@LocalStorageLink.
@@ -26,7 +26,7 @@ LocalStorage also provides APIs for manual create, retrieve, update, delete (CRU
 
 LocalStorage is an in-memory "database" that ArkTS provides for storing state variables required to build pages of the application UI.
 
-- Applications can create multiple instances of LocalStorage. These LocalStorage instances can be shared within a page or across pages and [UIAbility](../../application-models/uiability-overview.md) instances through the [getSharedLocalStorage](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12) interface.
+- Applications can create multiple **LocalStorage** instances. These instances can be shared within a page or across pages and **UIAbility** instances via the [getSharedLocalStorage](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12) API.
 
 - The root node of a component tree, which is the [\@Component](./arkts-create-custom-components.md#component) decorated with [\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry), can be assigned a LocalStorage instance. All child instances of this custom component automatically gain access to this shared LocalStorage instance.
 
@@ -65,7 +65,7 @@ By decorating a variable with \@LocalStorageProp(key), a one-way data synchroniz
 | \@LocalStorageProp Decorator| Description                                                        |
 | ---------------------------- | ------------------------------------------------------------ |
 | Parameters                  | **key**: constant string, mandatory (the string must be quoted)                 |
-| Allowed variable types          | Object, class, string, number, Boolean, enum, and array of these types.<br>API version 12 and later: Map, Set, Date, undefined, null, and union types of these types. For details, see [Using Union Types in LocalStorage](#using-union-types-in-localstorage).<br>For details about the scenarios of nested objects, see [Observed Changes and Behavior](#observed-changes-and-behavior).<br>**NOTE**<br>The variable type must be specified. Whenever possible, use the same type as that of the corresponding property in LocalStorage. Otherwise, implicit type conversion occurs, causing application behavior exceptions.|
+| Allowed variable types          | Object, class, string, number, Boolean, enum, and array of these types.<br>Since API version 12, the [Decorating Variables of the Map Type](#decorating-variables-of-the-map-type), [Decorating Variables of the Set Type](#decorating-variables-of-the-set-type), [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type), **undefined**, **null**, and their union types are supported. For details, see [Using Union Types in LocalStorage](#using-union-types-in-localstorage).<br>For details about the scenarios of nested objects, see [Observed Changes and Behavior](#observed-changes-and-behavior).<br>**NOTE**<br>The variable type must be specified. Whenever possible, use the same type as that of the corresponding property in LocalStorage. Otherwise, implicit type conversion occurs, causing application behavior exceptions.|
 | Synchronization type                    | One-way: from the property in LocalStorage to the component variable. The component variable can be changed locally, but an update from LocalStorage will overwrite local changes.|
 | Initial value for the decorated variable          | Mandatory. If the property does not exist in LocalStorage, it will be created and initialized with this value.|
 
@@ -75,11 +75,11 @@ By decorating a variable with \@LocalStorageProp(key), a one-way data synchroniz
 | Behavior   | Description                                                                                 |
 | ---------- |-------------------------------------------------------------------------------------|
 | Initialization and update from the parent component| Forbidden.|
-| Child component initialization    | Supported. The decorated variable can be used to initialize an \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.                                          |
+| Child component initialization    | Supported. Can be used to initialize variables decorated with [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Prop](./arkts-prop.md), or [\@Provide](./arkts-provide-and-consume.md).                                          |
 | Access from outside the component | No                                                                                 |
 
 
-![localstorageprop-initialization](figures/localstorageprop-initialization.png)
+
 
   **Figure 1** \@LocalStorageProp initialization rule
 
@@ -147,7 +147,7 @@ The following figure shows the data synchronization between LocalStorage and \@L
 | Access from outside the component | No                                                                                 |
 
 
-![localstoragelink-initialization](figures/localstoragelink-initialization.png)
+
 
   **Figure 3** \@LocalStorageLink initialization rule
 
@@ -199,8 +199,9 @@ The figure below shows the data synchronization between LocalStorage and \@Local
     @LocalStorageLink('PropA') localStorageLink: number = 2;
     ```
 
-2. \@LocalStorageProp and \@LocalStorageLink cannot decorate variables of the function type. Before API version 23, the framework throws a runtime error.
-Since API version 23, validation of \@LocalStorageProp and \@LocalStorageLink for function-type variables is added, and a compilation error will be reported.
+2. \@LocalStorageProp and \@LocalStorageLink do not support variables of type **Function**. In versions earlier than API version 23, the application would encounter a runtime error.
+
+   Starting from API version 23, relevant compile-time validation has been added. Decorating a **Function** type variable with \@LocalStorageProp or \@LocalStorageLink will result in an **ERROR** message. You should remove the \@LocalStorageProp and \@LocalStorageLink decorators from variables of the **Function** type in your code.
 
 3. Once created, a named property cannot have its type changed. A value of same type must be used for subsequent calls to the Set method.
 
@@ -490,14 +491,14 @@ struct ParentFour {
 
 In the preceding examples, the LocalStorage instance is shared only in an \@Entry decorated component and its child component (a page). To enable a LocalStorage instance to be shared across pages, you can create a LocalStorage instance in the owning UIAbility and pass it through windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9).
 
-<!-- @[localstorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[localstorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 ``` TypeScript
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
-// ···
+// ...
 export default class EntryAbility extends UIAbility {
   para: Record<string, number> = {
     'PropA': 47
@@ -506,10 +507,12 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Change the following to "windowStage.loadContent('pages/PageFiveShare', this.storage);" as required.
-    windowStage.loadContent('pages/Index', this.storage);
+    windowStage.loadContent('pages/Index', this.storage).catch(() => {
+      hilog.error(DOMAIN, 'testTag', '%{public}s', 'Ability onCreonWindowStageCreateate');
+    });
   }
 
-// ···
+  // ...
 }
 ```
 
@@ -639,19 +642,19 @@ This example uses \@LocalStorageLink to implement the following:
 > When properties do not require parent initialization, **{}** must be passed in as the first parameter.
 > The LocalStorage instance passed to child components as a constructor parameter is determined at initialization. You can use @LocalStorageLink or LocalStorage APIs to modify the property values stored in the LocalStorage instance, but the LocalStorage instance itself cannot be dynamically modified.
 
-<!-- @[localStorage_page_six_local_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets) -->
+<!-- @[localStorage_page_six_local_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets) --> 
 
 ``` TypeScript
 let localStorageOne: LocalStorage = new LocalStorage();
-localStorageOne.setOrCreate('propA', 'propA');
+localStorageOne.setOrCreate('PropA', 'propA');
 
 let localStorageTwo: LocalStorage = new LocalStorage();
-localStorageTwo.setOrCreate('propB', 'propB');
+localStorageTwo.setOrCreate('PropB', 'propB');
 
 @Entry(localStorageOne)
 @Component
 struct TestIndex {
-  // 'PropA' is in two-way synchronization with 'propA' in localStorageOne.
+  // The variable propA and 'PropA' in localStorageOne are bidirectionally synchronized.
   @LocalStorageLink('PropA') propA: string = 'Hello World';
   @State count: number = 0;
 
@@ -674,7 +677,7 @@ struct TestIndex {
 @Component
 struct ChildSix {
   @Link count: number;
-  //  'Hello World' is in two-way synchronization with 'propB' in localStorageTwo. If there is no 'propB' in localStorageTwo, the default value 'Hello World' is used.
+  // The variable propB and 'PropB' in localStorageTwo are bidirectionally synchronized. If there is no PropB in localStorageTwo, the default value 'Hello World' is used.
   @LocalStorageLink('PropB') propB: string = 'Hello World';
 
   build() {
@@ -687,19 +690,19 @@ struct ChildSix {
 
 1. If a custom component does not have any property defined, it can accept a LocalStorage instance as the only input parameter.
 
-   <!-- @[localStorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) -->
+   <!-- @[localStorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) --> 
    
    ``` TypeScript
    let localStorageInstance: LocalStorage = new LocalStorage();
-   localStorageInstance.setOrCreate('propA', 'propA');
+   localStorageInstance.setOrCreate('PropA', 'propA');
    
    let localStorageChange: LocalStorage = new LocalStorage();
-   localStorageChange.setOrCreate('propB', 'propB');
+   localStorageChange.setOrCreate('PropB', 'propB');
    
    @Entry(localStorageInstance)
    @Component
    struct Index {
-     // PropA is in two-way synchronization with PropA in localStorageInstance.
+     // The variable propA and 'PropA' in localStorageInstance are bidirectionally synchronized.
      @LocalStorageLink('PropA') propA: string = 'Hello World';
      @State count: number = 0;
    
@@ -731,19 +734,19 @@ struct ChildSix {
 
 2. If the defined property does not need to be initialized from the parent component, {} must be passed in as the first parameter.
 
-   <!-- @[localStorage_page_six_local_storageB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageB.ets) -->
+   <!-- @[localStorage_page_six_local_storageB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageB.ets) --> 
    
    ``` TypeScript
    let localStorageBOne: LocalStorage = new LocalStorage();
-   localStorageBOne.setOrCreate('propA', 'propA');
+   localStorageBOne.setOrCreate('PropA', 'propA');
    
    let localStorageBTwo: LocalStorage = new LocalStorage();
-   localStorageBTwo.setOrCreate('propB', 'propB');
+   localStorageBTwo.setOrCreate('PropB', 'propB');
    
    @Entry(localStorageBOne)
    @Component
    struct PageSixLocalStorageB {
-     // 'PropA' is in two-way synchronization with 'propA' in localStorageBOne.
+     // The variable propA and 'PropA' in localStorageBOne are bidirectionally synchronized.
      @LocalStorageLink('PropA') propA: string = 'Hello World';
      @State count: number = 0;
    
@@ -765,7 +768,7 @@ struct ChildSix {
    @Component
    struct Child {
      @State count: number = 5;
-     //  'Hello World' is in two-way synchronization with 'propB' in localStorageBTwo. If there is no 'propB' in localStorageBTwo, the default value 'Hello World' is used.
+     // The variable propB and 'PropB' in localStorageBTwo are bidirectionally synchronized. If there is no 'PropB' in localStorageBTwo, the default value 'Hello World' is used.
      @LocalStorageLink('PropB') propB: string = 'Hello World';
    
      build() {
@@ -782,27 +785,27 @@ Different LocalStorage instances can be passed to the custom component. In this 
 
 This example uses \@LocalStorageLink to implement the following:
 
-- Clicking **Next Page** in the parent component creates and redirects to the page named **pageOne**. The text displayed on the page is the value of **propA** bound to the LocalStorage instance **localStorageA**, that is, **propA**.
+- Clicking **Next Page** in the parent component creates and redirects to the page named **pageOne**. The text displayed on the page is the value **'propA'** of **'PropA'** in the LocalStorage instance **localStorageA**.
 
-- Clicking **Next Page** on the page creates and redirects to the page named **pageTwo**. The text displayed on the page is the value of **propB** bound to the LocalStorage instance **localStorageB**, that is, **propB**.
+- Clicking **Next Page** on the page creates and redirects to the page named **pageTwo**. The text displayed on the page is the value **'propB'** of **'PropB'** in the LocalStorage instance **localStorageB**.
 
-- Clicking **Next Page** on the page again creates and redirects to the page named **pageTree**. The text displayed on the page is the value of **propC** bound to the LocalStorage instance **localStorageC**, that is, **propC**.
+- Clicking **Next Page** on the page creates and redirects to the page named **pageThree**. The text displayed on the page is the value **'propC'** of **'PropC'** in the LocalStorage instance **localStorageC**.
 
-- Clicking **Next Page** on the page again creates and redirects to the page named **pageOne**. The text displayed on the page is the value of **propA** bound to the LocalStorage instance **localStorageA**, that is, **propA**.
+- Clicking **Next Page** on the page creates and redirects to the page named **pageOne**. The text displayed on the page is the value**'propA'** of **'PropA'** in the LocalStorage instance **localStorageA**.
 
-- The **Text** component in the **NavigationContentMsgStack** custom component shares the value of **propA** bound to the LocalStorage instance in the custom component tree.
+- The **Text** component in the **NavigationContentMsgStack** custom component shares the value of **PropA** from the LocalStorage instance **localStorageA** in the custom component tree.
 
-<!-- @[localStorage_page_my_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageMyNavigation.ets) -->
+<!-- @[localStorage_page_my_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageMyNavigation.ets) --> 
 
 ``` TypeScript
 let localStorageA: LocalStorage = new LocalStorage();
-localStorageA.setOrCreate('propA', 'propA');
+localStorageA.setOrCreate('PropA', 'propA');
 
 let localStorageB: LocalStorage = new LocalStorage();
-localStorageB.setOrCreate('propB', 'propB');
+localStorageB.setOrCreate('PropB', 'propB');
 
 let localStorageC: LocalStorage = new LocalStorage();
-localStorageC.setOrCreate('propC', 'propC');
+localStorageC.setOrCreate('PropC', 'propC');
 
 @Entry
 @Component
@@ -850,7 +853,7 @@ struct PageOneStack {
     NavDestination() {
       Column() {
         NavigationContentMsgStack()
-        // Display the value of PropA in the bound LocalStorage instance.
+        // Display the value 'propA' of 'PropA' in the bound LocalStorage instance.
         Text(`${this.propA}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -877,7 +880,7 @@ struct PageTwoStack {
     NavDestination() {
       Column() {
         NavigationContentMsgStack()
-        // If there is no PropB in the bound LocalStorage instance, the locally initialized value Hello World is displayed.
+        // If there is no 'PropB' in the bound LocalStorage instance, the locally initialized value 'Hello World' is displayed.
         Text(`${this.propB}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -906,7 +909,7 @@ struct PageThreeStack {
       Column() {
         NavigationContentMsgStack()
 
-        // If there is no PropC in the bound LocalStorage instance, the locally initialized value pageThreeStack is displayed.
+        // If there is no 'PropC' in the bound LocalStorage instance, the locally initialized value 'pageThreeStack' is displayed.
         Text(`${this.propC}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -943,11 +946,12 @@ struct NavigationContentMsgStack {
 
 The following example demonstrates how to use union types. The type of variable **linkA** is **number | null**, and the type of variable **linkB** is **number | undefined**. The **Text** components display **null** and **undefined** upon initialization, numbers when clicked, and **null** and **undefined** when clicked again.
 
-<!-- @[localStorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) -->
+<!-- @[localStorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) --> 
 
 ``` TypeScript
 @Component
 struct LocalStorageLinkComponent {
+  // Union types are supported in LocalStorage.
   @LocalStorageLink('LinkA') linkA: number | null = null;
   @LocalStorageLink('LinkB') linkB: number | undefined = undefined;
 
@@ -1071,7 +1075,7 @@ struct Index {
 
 In this example, the **selectedDate** variable decorated by \@LocalStorageLink is of the Date type. After the button is clicked, the value of **selectedDate** changes, and the UI is re-rendered.
 
-<!-- @[localStorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) -->
+<!-- @[localStorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1081,6 +1085,7 @@ struct LocalDateSample {
 
   build() {
     Column() {
+      // Update a variable of Date type, triggering a UI refresh.
       Button('set selectedDate to 2023-07-08')
         .margin(10)
         .onClick(() => {
@@ -1119,7 +1124,7 @@ struct LocalDateSample {
 
 In this example, the **message** variable decorated by @LocalStorageLink is of the **Map\<number, string\>** type. After the button is clicked, the value of **message** changes, and the UI is re-rendered.
 
-<!-- @[localStorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) -->
+<!-- @[localStorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1135,6 +1140,7 @@ struct LocalMapSample {
           Text(`${item[1]}`).fontSize(30)
           Divider()
         })
+        // Update a variable of Map type, triggering a UI refresh.
         Button('init map').onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
@@ -1166,7 +1172,7 @@ struct LocalMapSample {
 
 In this example, the **memberSet** variable decorated by @LocalStorageLink is of the **Set\<number\>** type. After the button is clicked, the value of **memberSet** changes, and the UI is re-rendered.
 
-<!-- @[localStorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) -->
+<!-- @[localStorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1182,6 +1188,7 @@ struct LocalSetSample {
             .fontSize(30)
           Divider()
         })
+        // Update a variable of Set type, triggering a UI refresh.
         Button('init set')
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
@@ -1208,7 +1215,7 @@ struct LocalSetSample {
 
 ### Changing State Variables Outside a Custom Component
 
-<!-- @[localStorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) -->
+<!-- @[localStorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) --> 
 
 ``` TypeScript
 let storageChange = new LocalStorage();
@@ -1234,6 +1241,7 @@ struct Test {
       Text(`count value: ${this.count}`)
       Button('change')
         .onClick(() => {
+          // Change a state variable outside the custom component, triggering a UI refresh.
           model.call('count', this.count + 1);
         })
     }
@@ -1241,4 +1249,4 @@ struct Test {
 }
 ```
 
-<!--no_check-->
+

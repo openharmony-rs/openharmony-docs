@@ -53,6 +53,8 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 >
 > 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[measure()](js-apis-arkui-frameNode.md#measure12)方法测量子组件大小，参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](./arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
@@ -76,6 +78,8 @@ onLayout(self: FrameNode, position: Position): void
 > **说明：**
 >
 > 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[layout()](js-apis-arkui-frameNode.md#layout12)方法设置子组件位置，参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](./arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
+
+**装饰器类型：** \@ObservedV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
   
@@ -108,6 +112,8 @@ onLayout(self: FrameNode, position: Position): void
 
 ### 属性
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
@@ -128,6 +134,8 @@ onLayout(self: FrameNode, position: Position): void
 constructor(option?: RowLayoutAlgorithmOptions)
 
 水平方向线性布局算法类的构造函数。
+
+**装饰器类型：** \@ObservedV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -178,6 +186,8 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 ### 属性
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
@@ -198,6 +208,8 @@ constructor(option?: RowLayoutAlgorithmOptions)
 constructor(option?: ColumnLayoutAlgorithmOptions)
 
 垂直方向线性布局算法类的构造函数。
+
+**装饰器类型：** \@ObservedV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -249,6 +261,8 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 ### 属性
 
+**装饰器类型：** \@ObservedV2
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
@@ -266,6 +280,8 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 constructor(option?: StackLayoutAlgorithmOptions)
 
 堆叠布局算法类的构造函数。
+
+**装饰器类型：** \@ObservedV2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -313,9 +329,9 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 ### 属性
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**装饰器类型：** \@ObservedV2
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -333,9 +349,9 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 网格布局算法类的构造函数。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**装饰器类型：** \@ObservedV2
 
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -356,8 +372,6 @@ constructor(option?: GridLayoutAlgorithmOptions)
 设置网格布局算法的列数模板、列间距、行间距。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 

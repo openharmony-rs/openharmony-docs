@@ -13,7 +13,7 @@ The **deviceManager** module provides APIs for distributed device management.
 System applications can call the APIs to do the following:
 
 - Subscribe to or unsubscribe from device state changes.
-- Discover devices nearby.
+- Discover peripheral untrusted devices.
 - Authenticate or deauthenticate a device.
 - Query the trusted device list.
 - Query local device information, including the device name, type, and ID.
@@ -46,7 +46,7 @@ Creates a **DeviceManager** instance.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -284,7 +284,7 @@ Releases this **DeviceManager** instance when it is no longer used.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -292,7 +292,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -326,7 +326,7 @@ Obtains all trusted devices synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -334,7 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -375,7 +375,7 @@ Enables the DSoftBus heartbeat mode to quickly bring offline trusted devices onl
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                        |
+| Error Code| Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -384,7 +384,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -419,14 +419,14 @@ Obtains all trusted devices. This API uses an asynchronous callback to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                        |
+| Error Code| Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -467,13 +467,13 @@ Obtains all trusted devices. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                        |
+| Error Code| Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -487,7 +487,7 @@ For details about how to initialize `dmInstance` in the example, see [deviceMana
 
 ### getLocalDeviceInfoSync<sup>8+</sup>
 
-getLocalDeviceInfoSync(): [DeviceInfo](#deviceinfo)
+getLocalDeviceInfoSync(): DeviceInfo
 
 Obtains local device information synchronously.
 
@@ -507,7 +507,7 @@ Obtains local device information synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -515,7 +515,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -550,14 +550,14 @@ Obtains local device information. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                        |
+| Error Code| Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -599,13 +599,13 @@ Obtains local device information. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                        |
+| Error Code| Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -640,14 +640,14 @@ Obtains the information about a specific device based on the network ID. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                        |
+| Error Code| Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified networkId is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -696,14 +696,14 @@ Obtains the information about a specific device based on the network ID. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                        |
+| Error Code| Error Message                                                        |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified networkId is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -739,7 +739,7 @@ Starts to discover peripheral devices. The discovery process lasts 2 minutes. A 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -749,7 +749,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -805,7 +805,7 @@ Starts to discover peripheral devices. The discovery process lasts 2 minutes. A 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -815,7 +815,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -892,7 +892,7 @@ Stops device discovery.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -901,7 +901,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -937,7 +937,7 @@ Publishes device information for discovery purposes. The publish process lasts 2
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -947,7 +947,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -997,7 +997,7 @@ Stops publishing device information.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -1006,7 +1006,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1044,14 +1044,14 @@ Authenticates a device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1137,7 +1137,7 @@ Deauthenticates a device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -1146,7 +1146,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1197,14 +1197,14 @@ Verifies authentication information.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1271,7 +1271,7 @@ Sets a user operation.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -1279,7 +1279,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1291,7 +1291,7 @@ For details about how to initialize `dmInstance` in the example, see [deviceMana
       operateAction = 3 - Cancel the display of the PIN box.
       operateAction = 4 - Cancel the display of the PIN input box.
       operateAction = 5 - Confirm the input in the PIN input box.
-    */
+     */
     let operation = 0;
     dmInstance.setUserOperation(operation, "extra");
   } catch (err) {
@@ -1323,14 +1323,14 @@ Obtains the registration information of the credential.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified params is greater than 255.    |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1385,14 +1385,14 @@ Imports credential information.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified credentialInfo is greater than 5999. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
 <!--code_no_check-->
   ```ts
   import { BusinessError } from '@ohos.base';
@@ -1480,14 +1480,14 @@ Deletes credential information.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified credentialInfo is greater than 5999. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1545,14 +1545,14 @@ Subscribes to UI status changes.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1600,14 +1600,14 @@ Unsubscribes from UI status changes.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1642,14 +1642,14 @@ Subscribes to changes in the device state.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -1699,14 +1699,14 @@ Unsubscribes from changes in the device state.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -1756,14 +1756,14 @@ Subscribes to device discovery events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -1813,14 +1813,14 @@ Unsubscribes from device discovery events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import deviceManager from '@ohos.distributedHardware.deviceManager';
   import { BusinessError } from '@ohos.base';
@@ -1870,14 +1870,14 @@ Subscribes to device discovery failures.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1919,14 +1919,14 @@ Unsubscribes from device discovery failures.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -1968,14 +1968,14 @@ Subscribes to device information publication success events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2016,14 +2016,14 @@ Unsubscribes from device information publication success events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2064,14 +2064,14 @@ Subscribes to device information publication failures.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2113,14 +2113,14 @@ Unsubscribes from device information publication failures.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2162,14 +2162,14 @@ Subscribes to dead events of the **DeviceManager** service.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 
@@ -2206,14 +2206,14 @@ Unsubscribes from dead events of the **DeviceManager** service.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                       |
+| Error Code| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed. 4. The size of specified eventType is greater than 255. |
 
 **Example**
 
-For details about how to initialize `dmInstance` in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
+For details about how to initialize **dmInstance** in the example, see [deviceManager.createDeviceManager](#devicemanagercreatedevicemanager).
   ```ts
   import { BusinessError } from '@ohos.base';
 

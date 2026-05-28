@@ -49,7 +49,7 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_GetMainWindowSnapshot(int32_t* windowIdList, size_t windowIdListSize, WindowManager_WindowSnapshotConfig config, OH_WindowManager_WindowSnapshotCallback callback)](#oh_windowmanager_getmainwindowsnapshot) | - | Obtains the screenshots of one or more main windows specified by **windowId**.|
 | [void OH_WindowManager_ReleaseMainWindowSnapshot(const OH_PixelmapNative* snapshotPixelMapList)](#oh_windowmanager_releasemainwindowsnapshot) | - | Releases the memory used by the main window screenshot list.|
 | [int32_t OH_WindowManager_LockCursor(int32_t windowId, bool isCursorFollowMovement)](#oh_windowmanager_lockcursor) | - | Locks the mouse cursor within the specified window area and controls whether the cursor follows mouse movements. It is only supported by the window that currently has focus, and the lock is automatically released when the window loses focus.|
-| [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | Clears the mouse cursor mode previously set for the window.|<!--Del-->
+| [int32_t OH_WindowManager_UnlockCursor(int32_t windowId)](#oh_windowmanager_unlockcursor) | - | Clears the mouse cursor mode previously set for the window.|
 | [int32_t OH_WindowManager_DensityInfo_GetDefaultDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getdefaultdensity) | - | Obtains the scale factor of the system default display size of the screen where the window is located.|
 | [int32_t OH_WindowManager_DensityInfo_GetSystemDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getsystemdensity) | - | Obtains the scale factor of the system display size of the screen where the window is located.|
 | [int32_t OH_WindowManager_DensityInfo_GetCustomDensity(const OH_WindowManager_DensityInfo* info, float* density)](#oh_windowmanager_densityinfo_getcustomdensity) | - | Obtains the scale factor of the custom display size of the window.|
@@ -57,7 +57,6 @@ The file declares the window management APIs. You can use the APIs to set and ob
 | [int32_t OH_WindowManager_RegisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_registerdensityinfochangecallback) | - | Registers a callback for listening to window scale factor changes.<br> This callback will be triggered when any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.<br> To unregister this callback, use [OH_WindowManager_UnregisterDensityInfoChangeCallback](capi-oh-window-h.md#oh_windowmanager_unregisterdensityinfochangecallback).|
 | [int32_t OH_WindowManager_UnregisterDensityInfoChangeCallback(int32_t windowId, OH_WindowManager_DensityInfoCallback callback)](#oh_windowmanager_unregisterdensityinfochangecallback) | - | Unregisters the callback for listening to window scale factor changes.<br> This callback will not be triggered after being unregistered even if any of the following changes: the scale factor of the system display size of the screen where the window is located, the scale factor of the system default display size, or the scale factor of the custom display size.<br>|
 | [int32_t OH_WindowManager_DensityInfo_Release(const OH_WindowManager_DensityInfo* info)](#oh_windowmanager_densityinfo_release) | - | Releases the memory occupied by the window scale factor object.|
-<!--DelEnd-->
 
 ## Function Description
 
@@ -694,7 +693,6 @@ Clears the mouse cursor mode previously set for the window.
 | -- | -- |
 | int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_NO_PERMISSION**: You do not have the permission to call the API.<br>**WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED**: The device is not supported.<br>**WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL**: The window status is abnormal.<br>**WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL**: The window manager service is abnormal.|
 
-<!--Del-->
 ### OH_WindowManager_DensityInfo_GetDefaultDensity()
 
 ```c
@@ -880,4 +878,3 @@ Releases the memory occupied by the window scale factor object.
 | Type| Description|
 | -- | -- |
 | int32_t | One of the following result codes:<br>**OK**: The function is successfully called.<br>**WINDOW_MANAGER_ERRORCODE_INCORRECT_PARAM**: A parameter is incorrect. Possible cause: The parameter value is invalid.<br>For details, see [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
-<!--DelEnd-->

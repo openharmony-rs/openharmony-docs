@@ -609,7 +609,7 @@ try {
   console.error(`Failed to auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-<!--no-check-->
+<!--code_no_check-->
 ```ts
 // 返回示例
 [
@@ -749,7 +749,7 @@ try {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-<!--no-check-->
+<!--code_no_check-->
 ```ts
 // 返回示例
 [
@@ -1330,7 +1330,7 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-设置Kiosk模式的特征。通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心、控制中心。
+设置Kiosk模式的特征。通过本接口可以控制在Kiosk模式下能否进入通知中心、控制中心。
 
 从API version 24开始，新增支持设置是否允许底部上滑进入最近任务栏，左滑或右滑悬停展示侧边DOCK栏。
 
@@ -2079,7 +2079,7 @@ try {
   console.error(`Failed to get dock apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-<!--no-check-->
+<!--code_no_check-->
 ```ts
 // 返回示例
 [

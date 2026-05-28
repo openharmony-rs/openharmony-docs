@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -12,7 +12,7 @@
 > 
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API Version 9开始，该接口不再维护，推荐使用新接口[@ohos.data.relationalStore#ResultSet](arkts-apis-data-relationalStore-ResultSet.md)。
+> 从API Version 9开始，该接口不再维护，推荐使用新接口[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)。
 
 ## ResultSet
 
@@ -28,8 +28,8 @@ let predicates = new dataRdb.RdbPredicates("EMPLOYEE");
 predicates.equalTo("AGE", 18);
 let promise = rdbStore.query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
 promise.then((resultSet) => {
-  console.log(TAG + "resultSet columnNames:" + resultSet.columnNames);
-  console.log(TAG + "resultSet columnCount:" + resultSet.columnCount);
+  console.info(TAG + "resultSet columnNames:" + resultSet.columnNames);
+  console.info(TAG + "resultSet columnCount:" + resultSet.columnCount);
 });
 ```
 
@@ -138,7 +138,7 @@ promisequerygoto.then((resultSet) => {
   resultSet.goTo(1);
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -171,7 +171,7 @@ promisequerygotorow.then((resultSet) => {
   resultSet.goToRow(5);
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -198,7 +198,7 @@ promisequerygoFirst.then((resultSet) => {
   resultSet.goToFirstRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -225,7 +225,7 @@ promisequerygoLast.then((resultSet) => {
   resultSet.goToLastRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -252,7 +252,7 @@ promisequerygoNext.then((resultSet) => {
   resultSet.goToNextRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -279,7 +279,7 @@ promisequerygoPrev.then((resultSet) => {
   resultSet.goToPreviousRow();
   resultSet.close();
 }).catch((err) => {
-  console.log('query failed');
+  console.error('query failed');
 });
 ```
 
@@ -429,7 +429,7 @@ let promiseClose = rdbStore.query(predicatesClose, ["ID", "NAME", "AGE", "SALARY
 promiseClose.then((resultSet) => {
   resultSet.close();
 }).catch((err) => {
-  console.log('resultset close failed');
+  console.error('resultset close failed');
 });
 ```
 

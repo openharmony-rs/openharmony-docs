@@ -2,15 +2,13 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The file declares the functions related to an audio routing manager.
-
-You can use the functions to create an audio routing manager, register and deregister a callback to listen for device connection status changes, and release devices.
+The file declares the functions related to an audio routing manager.<br> You can use the functions to create an audio routing manager, register and deregister a callback to listen for device connection status changes, and release devices.
 
 **File to include**: <ohaudio/native_audio_routing_manager.h>
 
@@ -68,7 +66,7 @@ Defines a pointer to the callback that returns the changed audio device descript
 | Name| Description|
 | -- | -- |
 | [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype) type | Device connection status, which is [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype). The status can be either connected or disconnected.|
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | Pointer to the audio device descriptors in the array. For details, see [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md). Do not release the pointer to the audioDeviceDescriptorArray struct separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | Pointer to the audio device descriptor array. For details, see [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md). Do not release the pointer to **audioDeviceDescriptorArray** separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the **DeviceDescriptor** array.|
 
 ### OH_AudioManager_GetAudioRoutingManager()
 
@@ -114,7 +112,7 @@ Obtains available devices based on the device flag.
 | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | Handle to the audio routing manager, which is obtained by calling [OH_AudioManager_GetAudioRoutingManager](#oh_audiomanager_getaudioroutingmanager).|
 | [OH_AudioDevice_Flag](capi-native-audio-device-base-h.md#oh_audiodevice_flag) deviceFlag | Device flag, which is used to filter the target device.|
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptors in the array. Do not release the pointer to the audioDeviceDescriptorArray struct separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptor array. Do not release the pointer to **audioDeviceDescriptorArray** separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the **DeviceDescriptor** array.|
 
 **Returns**
 
@@ -141,7 +139,7 @@ Obtains the available audio devices.
 | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | Handle to the audio routing manager, which is obtained by calling [OH_AudioManager_GetAudioRoutingManager](#oh_audiomanager_getaudioroutingmanager).|
 | [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage) deviceUsage | Usage scenario of the audio device. For details about the available options, see [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage).|
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptors in the array. Do not release the pointer to the audioDeviceDescriptorArray struct separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptor array. Do not release the pointer to **audioDeviceDescriptorArray** separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the **DeviceDescriptor** array.|
 
 **Returns**
 
@@ -168,7 +166,7 @@ Obtains the output device with the highest priority based on the usage scenario 
 | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | Handle to the audio routing manager, which is obtained by calling [OH_AudioManager_GetAudioRoutingManager](#oh_audiomanager_getaudioroutingmanager).|
 | [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) streamUsage | Usage scenario of the audio output stream. For details about the available options, see [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage).|
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptors in the array. Do not release the pointer to the audioDeviceDescriptorArray struct separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptor array. Do not release the pointer to **audioDeviceDescriptorArray** separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the **DeviceDescriptor** array.|
 
 **Returns**
 
@@ -195,7 +193,7 @@ Obtains the input device with the highest priority based on the usage scenario o
 | -- | -- |
 | [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | Handle to the audio routing manager, which is obtained by calling [OH_AudioManager_GetAudioRoutingManager](#oh_audiomanager_getaudioroutingmanager).|
 | [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) sourceType | Usage scenario of the audio input stream. For details about the available options, see [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype).|
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptors in the array. Do not release the pointer to the audioDeviceDescriptorArray struct separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the DeviceDescriptor array.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | Double pointer to the audio device descriptor array. Do not release the pointer to **audioDeviceDescriptorArray** separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the **DeviceDescriptor** array.|
 
 **Returns**
 
@@ -299,7 +297,7 @@ Defines a pointer to the callback that returns the blocked status of one or more
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | Pointer to the array of audio devices, which are obtained by calling [OH_AudioRoutingManager_GetDevices](#oh_audioroutingmanager_getdevices). Do not release the pointer to the **audioDeviceDescriptorArray** struct separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the **DeviceDescriptor** array.|
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | Pointer to the array of audio devices, which are obtained by calling [OH_AudioRoutingManager_GetDevices](#oh_audioroutingmanager_getdevices). Do not release the pointer to **audioDeviceDescriptorArray** separately. Instead, call [OH_AudioRoutingManager_ReleaseDevices](#oh_audioroutingmanager_releasedevices) to release the **DeviceDescriptor** array.|
 | [OH_AudioDevice_BlockStatus](capi-native-audio-device-base-h.md#oh_audiodevice_blockstatus) status | Blocked status of the audio device.|
 |  void *userData | Pointer to user data.|
 
@@ -337,9 +335,7 @@ OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioR
 
 **Description**
 
-Sets a callback function to be invoked when the microphone's blocked status is changed.
-
-Before using this function, check whether the current device supports microphone blocking detection. The application receives a callback only when the microphone is used for recording and the microphone's blocked status changes. Currently, this function takes effect only for the microphone on the local device.
+Sets a callback function to be invoked when the microphone's blocked status is changed.<br> Before using this function, check whether the current device supports microphone blocking detection. The application receives a callback only when the microphone is used for recording and the microphone's blocked status changes. Currently, this function takes effect only for the microphone on the local device.
 
 **Since**: 13
 

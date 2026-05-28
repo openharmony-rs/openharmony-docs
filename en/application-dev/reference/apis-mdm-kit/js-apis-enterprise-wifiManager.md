@@ -1,7 +1,7 @@
 # @ohos.enterprise.wifiManager (Wi-Fi Management)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
+<!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
@@ -117,7 +117,6 @@ Scenario 1: public Wi-Fi development
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -140,11 +139,10 @@ try {
 }
 ```
 
-***Multiple Wi-Fi networks with the same name but different BSSIDs***
+Scenario 2: multiple Wi-Fi networks with the same name but different BSSIDs
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -172,7 +170,6 @@ Scenario 3: old industrial devices with low security
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -200,7 +197,6 @@ Scenario 4: home networks, small offices, and consumer routers
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -227,7 +223,6 @@ Scenario 5: modern IoT device networks
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -254,7 +249,6 @@ Scenario 6: company networks and university campus networks
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -298,7 +292,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -342,7 +335,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -386,7 +378,6 @@ try {
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -431,7 +422,6 @@ Scenario 7: fixed IP address for client access
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -931,17 +921,17 @@ Represents the Wi-Fi configuration information.
 
 | Name         | Type                             | Read-Only| Optional| Description                                                       |
 | ------------- | ----------------------------------| ---- | ----| ------------------------------------------------------- |
-| ssid          | string                                | No  | No| Name of the Wi-Fi hotspot, in UTF-8 format.                              |
-| bssid         | string                                | No  | Yes| MAC address of the Wi-Fi hotspot. To obtain the MAC address, enable **Enable Wi-Fi verbose logging** under **Settings** > **System & updates** > **Developer options** first, and then go to the WLAN list to check the MAC address. If a Wi-Fi network has multiple MAC addresses, all of them must be added here.                                         |
-| preSharedKey  | string                                | No  | No| Pre-shared key.                                               |
-| isHiddenSsid  | boolean                               | No  | Yes| Whether the network is hidden. The value **true** indicates that the network is hidden; the value **false** indicates the opposite.|
+| ssid          | string                                | No  | No| Wi-Fi hotspot name. The maximum length is 32 bytes, and the encoding format is UTF-8.         |
+| bssid         | string                                | No  | Yes| MAC address of the Wi-Fi hotspot, with a length of 6 bytes. For example, **00:11:22:33:44:55**. To obtain the MAC address, enable **Enable Wi-Fi verbose logging** under **Settings** > **System & updates** > **Developer options** first, and then go to the WLAN list to check the MAC address. If a Wi-Fi network has multiple MAC addresses, all of them must be added here.                                         |
+| preSharedKey  | string                                | No  | No| Key of the hotspot. The maximum length is 64 bytes.                              |
+| isHiddenSsid  | boolean                               | No  | Yes| Whether the network is hidden. The value **true** indicates yes, and the value **false** indicates no. The default value is **false**.|
 | securityType  | [WifiSecurityType](#wifisecuritytype) | No  | No| Security type.                                                |
-| creatorUid    | number                                | No  | Yes| ID of the creator.                                             |
-| disableReason | number                                | No  | Yes| Reason for disabling Wi-Fi.                                                 |
-| netId         | number                                | No  | Yes| Network ID allocated.                                             |
-| randomMacType | number                                | No  | Yes| Random MAC. The value **0** indicates a random MAC address, and the value **1** indicates device MAC address.                 |
+| creatorUid    | number                                | No  | Yes| ID of the user who creates the network. The default value is **-1**.                                   |
+| disableReason | number                                | No  | Yes| Disabling reason. The default value is **0**.                                        |
+| netId         | number                                | No  | Yes| Allocated network ID. The default value is **-1**.                                    |
+| randomMacType | number                                | No  | Yes| Random MAC address type The value **0** indicates random MAC address, and the value **1** indicates device MAC address. The default value is **0**.        |
 | randomMacAddr | string                                | No  | Yes| MAC address. This field is mandatory when **randomMacType** is set to device MAC address.              |
-| ipType        | [IpType](#iptype)                     | No  | Yes| IP address type.                                               |
+| ipType        | [IpType](#iptype)                     | No  | Yes| IP address type. The default value is **DHCP**.                                        |
 | staticIp      | [IpProfile](#ipprofile)               | No  | Yes| Static IP address information. This field is mandatory when **ipType** is set to **STATIC**.               |
 | eapProfile    | [WifiEapProfile](#wifieapprofile)     | No  | Yes| Extensible Authentication Protocol (EAP) configuration. This field is mandatory only when **securityType** is set to **WIFI_SEC_TYPE_EAP**.    |
 
@@ -990,10 +980,10 @@ Represents IP configuration information.
 
 | Name        | Type               | Read-Only| Optional| Description       |
 | ------------ | ------------------- | ---- | ----| ----------- |
-| ipAddress    | number              | No  | No | IP address, represented in decimal format. For example, the standard dotted decimal notation **192.168.1.1** corresponds to the decimal value **3232235777**.   |
-| gateway      | number              | No  | No | Default gateway, represented in decimal format, usually the IP address of the router.     |
-| prefixLength | number              | No  | No | Subnet mask.     |
-| dnsServers   | number[]            | No  | No | DNS server. The array can contain a maximum of two addresses: the primary DNS server and the secondary DNS server.|
+| ipAddress    | number              | No  | No | IP address, represented in decimal format. For example, the standard dotted decimal notation **192.168.1.1** corresponds to the decimal value **3232235777**. The address value ranges from 0.0.0.0 to 255.255.255.255.   |
+| gateway      | number              | No  | No | Default gateway, represented in decimal format, usually the IP address of the router. The address value ranges from 0.0.0.0 to 255.255.255.255.     |
+| prefixLength | number              | No  | No | Subnet mask. The address value ranges from 0.0.0.0 to 255.255.255.255.     |
+| dnsServers   | number[]            | No  | No | DNS server. The array can contain a maximum of two addresses: the primary DNS server and the secondary DNS server. The address value ranges from 0.0.0.0 to 255.255.255.255.|
 | domains      | Array&lt;string&gt; | No  | No | Domain information.   |
 
 ## WifiEapProfile

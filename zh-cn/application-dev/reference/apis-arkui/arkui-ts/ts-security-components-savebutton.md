@@ -27,8 +27,6 @@ SaveButton()
 
 为避免控件样式不合法导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -40,8 +38,6 @@ SaveButton(options: SaveButtonOptions)
 创建包含指定元素的保存控件。
 
 为避免控件样式不合法导致授权失败，请开发者先了解安全控件样式的[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -69,8 +65,6 @@ SaveButton(options: SaveButtonOptions)
 >   ButtonType默认样式为Capsule。
 > - icon、text、buttonType不支持动态修改。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -85,8 +79,6 @@ SaveButton(options: SaveButtonOptions)
 
 保存控件的图标风格。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -99,8 +91,6 @@ SaveButton(options: SaveButtonOptions)
 ## SaveDescription枚举说明
 
 保存控件的文本描述。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,8 +114,6 @@ SaveButton(options: SaveButtonOptions)
 
 保存控件点击后的授权结果。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
@@ -139,8 +127,6 @@ SaveButton(options: SaveButtonOptions)
 type SaveButtonCallback = (event: ClickEvent, result: SaveButtonOnClickResult, error?: BusinessError&lt;void&gt;) =&gt; void
 
 点击保存控件触发该回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -165,8 +151,6 @@ setIcon(icon: Resource)
 
 设置保存控件的图标。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -184,8 +168,6 @@ setIcon(icon: Resource)
 setText(text: string | Resource)
 
 设置保存控件的文本。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
@@ -205,8 +187,6 @@ iconSize(size: Dimension | SizeOptions)
 
 设置保存控件的图标尺寸。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -222,8 +202,6 @@ iconSize(size: Dimension | SizeOptions)
 iconBorderRadius(radius: Dimension | BorderRadiuses)
 
 设置保存控件图标的边框圆角半径。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
@@ -243,8 +221,6 @@ stateEffect(enabled: boolean)
 
 设置保存控件的按压效果。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **需要权限**：ohos.permission.CUSTOMIZE_SAVE_BUTTON
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
@@ -262,8 +238,6 @@ stateEffect(enabled: boolean)
 userCancelEvent(enabled: boolean)
 
 设置接收保存控件的用户取消授权事件。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -288,8 +262,6 @@ userCancelEvent(enabled: boolean)
 onClick(event: SaveButtonCallback)
 
 点击动作触发该回调。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
