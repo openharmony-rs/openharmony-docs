@@ -116,37 +116,37 @@ ohos_executable("testserver") {
 
 /*
  Init函数：用于创建socket环境，并预设置一些属性
-*/
+ */
 int Init();
 
 /*
  SetParam函数：所有插件参数设置的统一接口
-*/
+ */
 int SetParam(const char *key, const char *value);
 
 /*
  GetParam函数：所有插件参数获取的统一接口
-*/
+ */
 int GetParam(const char *key, char *value);
 
 /*
  ReverseSetParamCallback函数：回调
-*/
+ */
 int ReverseSetParamCallback(int(*setParam)(const char *key, const char *value));
 
 /*
  Open函数：用于服务打开的接口
-*/
+ */
 int Open();
 
 /*
  MainLoop函数：每隔100ms调用一次
-*/
+ */
 int MainLoop();
 
 /*
  Close函数，用于关闭服务并释放资源
-*/
+ */
 int Close();
 
 #endif // __SERVER_PROCESS_H__
