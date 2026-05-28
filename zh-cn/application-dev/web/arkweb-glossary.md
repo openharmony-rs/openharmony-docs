@@ -228,7 +228,7 @@ JavaScript桥接，应用与Web页面之间进行JavaScript交互的机制。
 
 ### Light Color Scheme；浅色配色方案
 
-适合正常光环境的浅色配色方案。
+适合正常光照环境的浅色配色方案。
 
 ### Light Mode；浅色模式
 
