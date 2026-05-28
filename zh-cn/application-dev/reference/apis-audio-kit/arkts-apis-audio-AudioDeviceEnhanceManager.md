@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,8 @@
 
 > **说明：**
 >
-> 应用在使用前应先调用[isEnhancedRoutingSupported](#isenhancedroutingsupported)，确认系统是否支持音频设备增强管理功能。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 应用在使用前应先调用[isEnhancedRoutingSupported](#isenhancedroutingsupported)，确认系统是否支持音频设备增强管理功能。
 
 **起始版本：** 26.0.0
 
@@ -34,11 +35,13 @@ isEnhancedRoutingSupported(): boolean
 > - 应用在调用增强路由相关接口前，先调用本接口确认系统是否支持。即使是同一类型设备，不同机型也会因硬件限制而支持情况不同。
 > - 当系统不支持增强路由能力时，调用相关接口不会生效，并会为应用或音频流选择默认的输入输出设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -68,11 +71,13 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 > - 当应用退出或所选设备离线时，此选择将失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > - 当系统不支持此功能时，会为应用选择默认输出设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -122,11 +127,13 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 > - 当应用退出或所选设备离线时，此选择将失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > - 当系统不支持此功能时，会为应用选择默认输入设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -176,11 +183,13 @@ selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioD
 > - 当应用退出或所选设备离线时，此选择将失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > - 当系统不支持此功能时，会为该音频播放流选择默认输出设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -229,11 +238,13 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 > - 当应用退出或所选设备离线时，此选择将失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > - 当系统不支持此功能时，会为该音频录制流选择默认输入设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
