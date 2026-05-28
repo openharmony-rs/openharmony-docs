@@ -383,6 +383,69 @@ windowClass.showWindow();
 
 错误码1300002表示窗口状态异常或窗口对象无效。
 
+### 窗口销毁时调用getLastWindow崩溃
+
+开发者在窗口销毁过程中（如onWindowStageDestroy、页面销毁等）调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9-1)接口，导致应用崩溃。
+
+**典型日志信息**
+
+故障日志格式：
+
+```text
+Error Name: Error
+Error Message: [window][getLastWindow]msg: xxx
+Error code: 1300002
+Stack trace:
+  at window.getLastWindow (WindowManagerService)
+  at MyComponent.onWindowStageDestroy (MyAbility.ts:50)
+```
+
+关键信息：
+- 错误码：1300002
+- 堆栈：getLastWindow()调用位置
+- 文件名和行号：定位具体代码位置
+
+**分析定位及解决**
+
+根据日志堆栈定位getLastWindow()调用位置，检查是否在销毁流程中（onWindowStageDestroy、aboutToDisappear等）。常见场景：窗口创建时未调用[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)加载页面，销毁流程中错误调用getLastWindow导致崩溃。
+
+解决要点：
+- getLastWindow()调用位置不在onWindowStageDestroy、aboutToDisappear、onDestroy等销毁回调中
+- 异步任务不会在销毁后执行getLastWindow()
+
+**正反案例**
+
+错误示例
+
+```ts
+// 错误：窗口创建时未加载页面，销毁流程中调用getLastWindow
+onWindowStageCreate(windowStage: window.WindowStage) {
+    // 缺失：未调用loadContent加载页面
+    windowStage.getMainWindow((err, win) => {
+        win.showWindow(); // 直接显示空窗口
+    });
+}
+
+onWindowStageDestroy() {
+    let lastWindow = window.getLastWindow(this.context); // 崩溃！
+}
+```
+
+正确示例
+
+```ts
+// 正确：窗口创建时立即加载页面，销毁流程只做资源清理
+onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.getMainWindow((err, win) => {
+        win.loadContent('pages/MainPage'); // 创建时加载页面
+    });
+}
+
+onWindowStageDestroy() {
+    this.cleanupResources(); // 只做资源清理，不调用getLastWindow
+}
+```
+
 ### 子窗口调用setResizeByDragEnabled接口失败
 
 开发者在子窗口上调用[setResizeByDragEnabled()](../reference/apis-arkui/arkts-apis-window-Window.md#setresizebydragenabled14)接口设置窗口可拖拽缩放时，返回错误码1300002，无法实现拖拽缩放功能。
