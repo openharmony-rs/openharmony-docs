@@ -331,7 +331,7 @@ create(config: PiPConfiguration, contentNode: typeNode.XComponent): Promise&lt;P
 | 参数名          | 类型                                       | 必填        | 说明                                                                                                                                                                                                                                     |
 |--------------|------------------------------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | config       | [PiPConfiguration](#pipconfiguration)    | 是         | 创建画中画控制器的参数。该参数不能为空，并且构造该参数的context不能为空。构造该参数时，如果指定了templateType，需保证templateType是[PiPTemplateType](#piptemplatetype)类型；如果指定了controlGroups，需保证controlGroups与templateType匹配，详见[PiPControlGroup](#pipcontrolgroup12)。 |
-| contentNode       | [typeNode.XComponent](js-apis-arkui-frameNode.md#xcomponent12)    | 是         | 用于渲染画中画窗口中的内容。该参数不能为空。|
+| contentNode       | [typeNode.XComponent](js-apis-arkui-typeNode.md#xcomponent)    | 是         | 用于渲染画中画窗口中的内容。该参数不能为空。|
 
 **返回值：**
 
@@ -1078,7 +1078,7 @@ updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 
 | 参数名          | 类型                                       | 必填        | 说明                                                                                                                                                                                                                                     |
 |--------------|------------------------------------------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| contentNode       | [typeNode.XComponent](js-apis-arkui-frameNode.md#xcomponent12)    | 是         | 用于渲染画中画窗口中的内容。该参数不能为空。|
+| contentNode       | [typeNode.XComponent](js-apis-arkui-typeNode.md#xcomponent)    | 是         | 用于渲染画中画窗口中的内容。该参数不能为空。|
 
 **返回值：**
 
