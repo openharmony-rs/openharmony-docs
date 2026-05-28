@@ -255,11 +255,9 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    ``` TypeScript
    if (uris.length > 0) {
      let uri: string = uris[0];
-      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
      let file = fileIo.openSync(uri, fileIo.OpenMode.READ_WRITE);
      // ...
        console.info('file fd: ' + file.fd);
-   }
    ```
 
 5. 通过（fd）使用[fileIo.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fileiowritesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
