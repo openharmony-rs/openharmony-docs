@@ -97,6 +97,14 @@
    入口脚本需要从`@kit.AbilityKit`引入`scriptManager`，同时引入待桥接的应用内业务模块。
 
    <!-- @[music_skill_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   
+   ``` TypeScript
+   
+   import { scriptManager } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // 应用既有业务模块
+   import { MusicPlayer, Track, PlayResult } from '../../../src/main/ets/service/MusicPlayer';
+   ```
 
    3.2 定义入口类骨架。
 
