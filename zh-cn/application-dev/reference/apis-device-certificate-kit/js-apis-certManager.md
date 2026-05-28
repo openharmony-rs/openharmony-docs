@@ -70,8 +70,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | purpose          | [CmKeyPurpose](#cmkeypurpose)                       | 否  | 否  | 表示密钥使用目的的枚举。 |
-| padding        | [CmKeyPadding](#cmkeypadding)                       | 否   | 是  | 表示填充方式的枚举。默认值：CM_PADDING_NONE，表示无填充方式。 |
-| digest        | [CmKeyDigest](#cmkeydigest)                       | 否   | 是  | 表示摘要算法的枚举。默认值：CM_DIGEST_NONE，表示不使用摘要算法，需要业务传入已计算摘要的数据进行签名验签。 |
+| padding        | [CmKeyPadding](#cmkeypadding)                       | 否   | 是  | 表示填充方式的枚举。默认值：CM_PADDING_PSS，表示使用PSS填充方式。 |
+| digest        | [CmKeyDigest](#cmkeydigest)                       | 否   | 是  | 表示摘要算法的枚举。默认值：CM_DIGEST_SHA256，表示使用SHA256摘要算法。 |
 
 
 ## CertInfo
@@ -293,7 +293,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>): void
 
-表示安装私有凭据，用于导入包含私钥和证书的密钥库文件。适用于身份认证、数据保护、安全通信等场景。使用Callback回调异步返回结果。
+表示安装私有凭据。使用Callback回调异步返回结果。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -674,7 +674,7 @@ try {
 
 installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 
-安装用户CA证书，用户CA证书用于验证服务端证书合法性，适用于访问自签名证书或私有CA的场景。与系统CA证书的区别：用户CA是应用自行安装的私有CA，系统CA是系统预置的公共CA。使用Promise异步回调。
+安装用户CA证书。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -807,7 +807,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 
 | 参数名       | 类型                         | 必填 | 说明           |
 |-----------|----------------------------|----|--------------|
-表示待删除证书的唯一标识符，长度限制256字节以内。
+| certUri     | string                 | 是  | 表示待删除证书的唯一标识符，长度限制256字节以内。    |
 
 **错误码：**
 
@@ -861,7 +861,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user. Please request user authorization for the certificate or credential.<br>适用版本：12+ |
+| 17500005 | The application is not authorized by the user. Please call [openAuthorizeDialog](./js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog20) method to request user authorization for the certificate or credential.<br>适用版本：12+ |
 
 **示例**：
 ```ts
@@ -948,7 +948,7 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): void
 
-表示签名、验签的数据更新操作，需要在init操作之后调用，用于传入待处理的数据。使用Callback回调异步返回结果。
+表示签名、验签的数据更新操作，需要在init操作之后调用，用于传入待签名、验签的数据。使用Callback回调异步返回结果。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -958,7 +958,7 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，需先调用init方法获得，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
 | data | Uint8Array                   | 是   | 表示待签名、验签的数据。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当签名、验签的数据更新操作成功时，err为null，否则为错误对象。 |
 
@@ -1010,7 +1010,7 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
 | data | Uint8Array                   | 是   | 表示待签名、验签的数据。 |
 
 **返回值**：
@@ -1067,7 +1067,7 @@ finish(handle: Uint8Array, callback: AsyncCallback<CMResult>): void
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当签名成功时，err为null，data为[CMResult](#cmresult)对象中的outData属性，表示签名数据；否则为错误对象。 |
 
 **错误码：**
@@ -1120,7 +1120,7 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
 | signature | Uint8Array                   | 是   | 表示签名数据。 |
 | callback | AsyncCallback\<[CMResult](#cmresult)> | 是   | 回调函数。当验签成功时，err为null；否则为错误对象。 |
 
@@ -1172,7 +1172,7 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | 是   | 表示初始化操作返回的句柄，最大长度为8字节。 |
+| handle | Uint8Array                   | 是   | 表示操作句柄，需先调用init方法获得。 |
 | signature | Uint8Array                   | 否   | 表示用于验签操作的签名数据。签名操作时无需传入此参数。 |
 
 **返回值**：
@@ -1863,8 +1863,8 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
 | keyUri | string | 是 | 表示USB key证书的uri。<br>keyUri参数用于标识证书实体，可以通过调用[getUkeyCertificateList](#certificatemanagergetukeycertificatelist)接口得到，最大长度为256字节。 |
-| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为8196字节。<br>证书数据格式遵循SKF规范的定义。 |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN或PURPOSE_ENCRYPT。 |
+| cert | Uint8Array | 是 | 表示待导入的证书数据。最大长度为1MB。<br>证书数据格式遵循SKF规范的定义。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | 是 | 表示USB key证书属性信息。<br>UkeyInfo.CertificatePurpose只能取值为PURPOSE_SIGN、PURPOSE_ENCRYPT或PURPOSE_DEFAULT。 |
 
 **返回值**：
 
@@ -1881,7 +1881,7 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | Indicates that the certificate does not exist. |
+| 17500002 | The certificate identified by keyuri does not exist. |
 | 17500010 | Indicates that access USB key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
