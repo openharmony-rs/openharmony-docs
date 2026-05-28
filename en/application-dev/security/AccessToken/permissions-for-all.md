@@ -144,6 +144,8 @@ Allows an application to obtain Wi-Fi information and use the Wi-Fi P2P capabili
 
 With this permission, the application can obtain Wi-Fi information, including the Wi-Fi on/off state, scan results, connection information, connection state, device capability, and P2P state. In addition, the application can use the P2P capability.
 
+From API version 22, the support for the P2P capability is added to this permission.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
