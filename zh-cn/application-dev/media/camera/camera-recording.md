@@ -171,17 +171,27 @@
    先通过avRecorder的[stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1)方法停止录像，再通过videoOutput的[stop](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#stop-1)方法停止录像输出流。
 
    <!-- @[camera_video_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
-   ```ts
-   async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-     avRecorder.stop((err: BusinessError) => {
-     if (err) {
-       console.error(`Failed to stop the video output ${err.message}`);
+   
+   ``` TypeScript
+   async stopVideo(): Promise<void> {
+     Logger.info(TAG, 'stopVideo is called');
+     if (!this.isRecording) {
+       Logger.info(TAG, 'not in recording');
        return;
      }
-     console.info('Callback invoked to indicate the video output stop success.');
-     });
-     await videoOutput.stop();
+     try {
+       if (this.avRecorder) {
+         await this.avRecorder.stop();
+       }
+       if (this.videoOutput) {
+         await this.videoOutput.stop();
+       }
+       this.isRecording = false;
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `stopVideo err: ${err.code}`);
+     }
+     Logger.info(TAG, 'stopVideo End of call');
    }
    ```
 
