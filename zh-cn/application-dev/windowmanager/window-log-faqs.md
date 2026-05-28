@@ -214,7 +214,7 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 
 **可能原因**
 
-WINDOW_FROZEN_DETECTION是一个窗口伪冻屏检测事件。搭载openharmony 7.0.0及以上版本的设备支持此检测事件。
+WINDOW_FROZEN_DETECTION是一个窗口伪冻屏检测事件。搭载OpenHarmony-7.0-Beta1 7.0.0及以上版本的设备支持此检测事件。
 
 当未成功设置UIContent、布局异常等情形时会触发此事件，可为排查伪冻屏问题提供线索，但事件触发并不等同于伪冻屏已实际发生。常见的异常类型包括：SetUIContent timeout（窗口内容加载超时）、RectCheck err（窗口尺寸异常）等。
 
