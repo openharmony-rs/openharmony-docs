@@ -92,6 +92,8 @@ Progress(options: ProgressOptions)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称        | 类型                                      |
@@ -171,6 +173,8 @@ contentModifier(modifier:ContentModifier\<ProgressConfiguration\>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -192,6 +196,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -206,6 +212,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型  | 只读 | 可选 |说明         |
@@ -219,6 +227,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型                      | 只读 | 可选 | 说明                                                                                        |
@@ -230,6 +240,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 扫光效果选项。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -263,6 +275,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型 | 只读 | 可选 | 说明 |
@@ -283,6 +297,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 类型                      | 只读 | 可选 | 说明                                                                                        |
@@ -299,6 +315,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 类型                      | 只读 | 可选 | 说明                                                                                        |
@@ -313,6 +331,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 继承自[CommonProgressStyleOptions](#commonprogressstyleoptions10)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -330,6 +350,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## ProgressStatus<sup>10+</sup>枚举说明
@@ -337,6 +359,8 @@ privacySensitive(isPrivacySensitiveMode: Optional\<boolean\>)
 进度条的当前状态。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

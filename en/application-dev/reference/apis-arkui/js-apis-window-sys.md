@@ -248,8 +248,8 @@ Describes the parameters used to maintain the relative position between the chil
 | currentLayoutMode             | string               | No  | Yes  | Current layout mode of the child window, which is used to control the UI effect customized by the application. If this parameter is not passed, the default value is an empty string.|
 | parentWindowSizeChangeCallback             |     Callback&lt;[Size](arkts-apis-window-i.md#size7)&gt;           | No  | Yes  | Callback triggered when the parent window size changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window size changes. By default, this parameter is not passed, and notifications about the parent window size changes cannot be received.|
 | parentWindowStatusChangeCallback             |     Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt;           | No  | Yes  | Callback triggered when the parent window mode changes. The callback is triggered immediately after the binding, and notifications are sent when the parent window mode changes. By default, this parameter is not passed, and notifications about the parent window mode changes cannot be received.|
-| isIntersectedWidthLimit | boolean | No| Yes| Whether the width of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the width of the child window and that of the bound main window cannot exceed the intersection of the width limits of the two windows. If there is no intersection between the width limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the width of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the width limits of all windows.<br>The value **false** indicates that the width of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.|
-| isIntersectedHeightLimit | boolean | No| Yes| Whether the height of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the height of the child window and that of the bound main window cannot exceed the intersection of the height limits of the two windows. If there is no intersection between the height limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the height of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the height limits of all windows.<br>The value **false** indicates that the height of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.|
+| isIntersectedWidthLimit | boolean | No| Yes| Whether the width of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the width of the child window and that of the bound main window cannot exceed the intersection of the width limits of the two windows. If there is no intersection between the width limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the width of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the width limits of all windows.<br>The value **false** indicates that the width of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.<br>**Since**: 26.0.0|
+| isIntersectedHeightLimit | boolean | No| Yes| Whether the height of the child window is mutually restricted with that of the bound main window.<br>The value **true** indicates that the height of the child window and that of the bound main window cannot exceed the intersection of the height limits of the two windows. If there is no intersection between the height limits of the two windows, they do not restrict each other. When this parameter is set to **true** for multiple child windows at the same time, the height of all windows (including the main window) involved in mutual restriction is restricted by the intersection of the height limits of all windows.<br>The value **false** indicates that the height of the child window is not mutually restricted with that of the bound main window.<br>The default value is **false**.<br>**Since**: 26.0.0|
 
 ## WindowLayoutMode<sup>(deprecated)</sup>
 
@@ -1253,7 +1253,7 @@ try {
 }
 ```
 
-## window.createSubWindowAndBindParent<sup>24+</sup>
+## window.createSubWindowAndBindParent
 
 createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
 
@@ -1264,6 +1264,8 @@ Only the main window can be bound as the parent window.
 The subwindow is displayed or hidden along with the parent window, but is not destroyed when the parent window is destroyed. The subwindow listens to the lifecycle changes of the parent window through a callback function.
 
 It is recommended that you destroy the created subwindow after the parent window is destroyed.
+
+**Since**: 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1278,7 +1280,7 @@ It is recommended that you destroy the created subwindow after the parent window
 | name | string | Yes| Window name.|
 | parentId | number | Yes| Parent window ID. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 | ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Current application context.|
-| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | Yes| Callback used to return the lifecycle changes of the bound parent window.|
+| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener) | Yes| Callback used to return the lifecycle changes of the bound parent window.|
 
 **Return value**
 
@@ -4904,3 +4906,5 @@ Describes the parameters for creating a window for a UI ServiceExtensionAbility.
 | windowRect   | [Rect](arkts-apis-window-i.md#rect7) | No| No  | Rectangular area of the window.|
 | subWindowOptions   | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | No| Yes| Parameters used for creating a child window. There is no default value. This parameter is mandatory when **windowAttribute** is set to **SUB_WINDOW**. Otherwise, the window fails to be created.|
 | systemWindowOptions   | [SystemWindowOptions](#systemwindowoptions14) | No| Yes| Parameters for creating a system window. There is no default value. This parameter is mandatory when **windowAttribute** is set to **SYSTEM_WINDOW**. Otherwise, the window fails to be created.|
+
+<!--no_check-->

@@ -1,12 +1,12 @@
 # NotificationSubscriber (System API)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-The **NotificationSubscriber** module provides callbacks for receiving or removing notifications and serves as the input parameter of [subscribe](./js-apis-notificationSubscribe-sys.md).
+The **NotificationSubscriber** module serves as the input parameter of [subscribeNotification](js-apis-notificationSubscribe-sys.md#notificationsubscribesubscribenotification) and provides callbacks for receiving or removing notifications.
 
 > **NOTE**
 >
@@ -49,14 +49,6 @@ Called when a new notification is received.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
   console.info('===> onConsume in test');
   let req = data.request;
@@ -67,7 +59,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConsume: onConsumeCallback
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onCancel
@@ -91,14 +87,6 @@ Called when a notification is canceled.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let onCancelCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
   console.info('===> onCancel in test');
   let req = data.request;
@@ -109,7 +97,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onCancel: onCancelCallback
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onUpdate
@@ -133,21 +125,17 @@ Called when notification sorting is updated. Not supported currently.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onUpdate: (map) => {
     console.info(`===> onUpdateCallback map: ${JSON.stringify(map)}`);
   }
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onConnect
@@ -171,14 +159,6 @@ Called when subscription is complete.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let onConnectCallback = () => {
   console.info('===> onConnect in test');
 }
@@ -187,7 +167,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onConnect: onConnectCallback
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onDisconnect
@@ -211,13 +195,6 @@ Called when unsubscription is complete.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
 let unsubscribeCallback = (err: BusinessError) => {
   if (err) {
     console.error(`unsubscribe failed, code is ${err.code}, message is ${err.message}`);
@@ -239,7 +216,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 
 // The onConnect callback is invoked when subscription to the notification is complete.
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 // The onDisconnect callback is invoked when unsubscription to the notification is complete.
 notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
 ```
@@ -265,14 +246,6 @@ Called when the service is disconnected.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let onDestroyCallback = () => {
   console.info('===> onDestroy in test');
 }
@@ -281,7 +254,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDestroy: onDestroyCallback
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onDoNotDisturbDateChange<sup>(deprecated)</sup>
@@ -351,14 +328,6 @@ Called when the DND time settings are changed.
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let onDoNotDisturbChangedCallback = (mode: notificationManager.DoNotDisturbDate) => {
   console.info(`===> onDoNotDisturbChanged: ${JSON.stringify(mode)}`);
 }
@@ -367,7 +336,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onDoNotDisturbChanged: onDoNotDisturbChangedCallback
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onEnabledNotificationChanged<sup>8+</sup>
@@ -391,14 +364,6 @@ Listens for the notification enabled state changes.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let onEnabledNotificationChangedCallback = (callbackData: notificationSubscribe.EnabledNotificationCallbackData) => {
   console.info("bundle: ", callbackData.bundle);
   console.info("uid: ", callbackData.uid);
@@ -409,7 +374,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledNotificationChanged: onEnabledNotificationChangedCallback
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onBadgeChanged<sup>10+</sup>
@@ -433,14 +402,6 @@ Listens for the change of the notification badge number.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onBadgeChanged: (data) => {
     console.info("bundle: ", data.bundle);
@@ -449,7 +410,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   }
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onBatchCancel<sup>11+</sup>
@@ -473,14 +438,6 @@ Called for batch deletion.
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let onBatchCancelCallBack = (data: Array<notificationSubscribe.SubscribeCallbackData>) => {
   console.info('===> onBatchCancel in test');
   let req = data[0].request;
@@ -491,7 +448,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onBatchCancel: onBatchCancelCallBack
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onEnabledPriorityChanged<sup>23+</sup>
@@ -513,16 +474,18 @@ Called when the enabling state of the priority notification changes.
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
     console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
   }
 };
-try {
-  notificationSubscribe.subscribe(subscriber);
-} catch (error) {
-  console.error("subscribe failed");
-}
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ### onEnabledPriorityByBundleChanged<sup>23+</sup>
@@ -544,19 +507,21 @@ Called when the enabling state of the application priority notification changes.
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
     console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
   }
 };
-try {
-  notificationSubscribe.subscribe(subscriber);
-} catch (error) {
-  console.error("subscribe failed");
-}
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
-### Attribute
+### Attributes
 
 Callback function for notifications of system property value changes.
 
@@ -585,6 +550,7 @@ Callback function for notifications of system property value changes.
 | reason          | number                                                             | Yes | Yes | Reason for deletion. The options are as follows:<br>**1**: The notification is deleted after being clicked.<br>**2**: The notification is deleted by the user.|
 | sound           | string                                                             | Yes | Yes | Sound used for notification.|
 | vibrationValues | Array\<number\>                                                    | Yes | Yes | Vibration used for notification.|
+| voiceContent | [VoiceContent](#voicecontent)                                              | Yes | Yes | Voice broadcast content of the notification.<br> **Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
 
@@ -649,6 +615,19 @@ Callback function for notifications of system property value changes.
 | uid         | number | Yes  | No  | UID of the application. |
 | enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | Yes | No | Whether the priority notification for an application is enabled.<br> - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications.|
 
+## VoiceContent
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+| Name           | Type                                                                | Read Only| Optional| Description    |
+| --------------- |--------------------------------------------------------------------| ---- | --- | -------- |
+| textContent | string                                             | Yes | Yes | Text voice broadcast content.|
 
 ## BadgeEnabledChangedCallback<sup>12+</sup>
 
@@ -671,14 +650,6 @@ Defines a callback function to listen for the enabling state changes of the appl
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('subscribeCallback');
-  }
-};
-
 let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
   console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
 };
@@ -686,7 +657,11 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onBadgeEnabledChanged: BadgeEnabledChangedCallback
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## SystemUpdateCallback<sup>23+</sup>
@@ -708,17 +683,19 @@ type SystemUpdateCallback = (data: SubscribeCallbackData) => void
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
     let req = data.request;
     console.info(`onSystemUpdate callback req.priorityType: ${req.priorityNotificationType}`);
   }
 };
-try {
-  notificationSubscribe.subscribe(subscriber);
-} catch (error) {
-  console.error("subscribe failed");
-}
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## EnabledSilentReminderChangedCallback<sup>24+</sup>
@@ -744,14 +721,6 @@ Defines a callback function to listen for the enabling state changes of the appl
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info("subscribeCallback");
-  }
-};
-
 let onEnabledSilentReminderChangedCallback: notificationSubscribe.EnabledSilentReminderChangedCallback = (callbackData: notificationSubscribe.EnabledSilentReminderCallbackData) => {
   console.info("bundle: ", callbackData.bundle);
   console.info("uid: ", callbackData.uid);
@@ -762,5 +731,9 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledSilentReminderChanged: onEnabledSilentReminderChangedCallback
 };
 
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
+notificationSubscribe.subscribeNotification(subscriber).then(() => {
+  console.info("subscribeNotification success");
+}).catch((err: BusinessError) => {
+  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+});
 ```

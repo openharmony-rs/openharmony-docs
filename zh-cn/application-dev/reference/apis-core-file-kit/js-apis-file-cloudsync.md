@@ -33,7 +33,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 | UPLOAD_FAILED |  1 | 上行同步失败。 |
 | DOWNLOADING |  2 | 下行同步中。 |
 | DOWNLOAD_FAILED |  3 | 下行同步失败。 |
-| COMPLETED |  4 | 同步成功。 |
+| COMPLETED |  4 | 同步成功或首次注册同步状态回调成功均返回。 |
 | STOPPED |  5 | 同步已停止。 |
 
 ## ErrorType<sup>12+</sup>
@@ -1015,6 +1015,90 @@ try {
   let error:BusinessError = err as BusinessError;
   console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
 }
+
+```
+
+### cleanFileCache
+
+cleanFileCache(): Promise&lt;void&gt;
+
+删除所有已缓存文件，未上云文件、写打开文件及缩略图文件不会被删除。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**返回值：**
+
+| 类型  | 说明 |
+| ------ | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+
+fileCache.cleanFileCache().then(() => {
+  console.info("clean file cache successfully");
+}).catch((err: BusinessError) => {
+  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+});
+
+```
+
+### getCachedTotalSize
+
+getCachedTotalSize(): Promise&lt;number&gt;
+
+获取已缓存文件的总大小，包含本地新增未上云文件、本地新增已上云文件及已下载文件大小，不包含缩略图文件大小。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**返回值：**
+
+| 类型  | 说明 |
+| ------ | ---- |
+| Promise&lt;number&gt; | Promise对象，返回已缓存文件总大小。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID                     | 错误信息        |
+| ---------------------------- | ---------- |
+| 13900010 | Try again. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let fileCache = new cloudSync.CloudFileCache();
+
+fileCache.getCachedTotalSize().then((totalDownloadSize: number) => {
+  console.info("totalDownloadSize: " + totalDownloadSize);
+}).catch((err: BusinessError) => {
+  console.error("get totalDownloadSize failed with error message: " + err.message + ", error code: " + err.code);
+});
 
 ```
 
