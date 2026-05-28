@@ -22,6 +22,8 @@
 
 **相关示例：** [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
+接口在每个版本、每种模式和状态下的支持情况说明如下表所示。
+
 ### 接口状态矩阵
 
 下方是不同状态下是否可以调用接口的情况概览，√表示可以调用，×表示不可调用。
