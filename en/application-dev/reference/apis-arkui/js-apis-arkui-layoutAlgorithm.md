@@ -10,7 +10,9 @@ Provides layout algorithms supported by the [DynamicLayout](./arkui-ts/ts-contai
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -53,6 +55,8 @@ Customizes the size of the child component to be measured. When the size of the 
 >
 > In this callback, you can call [getChild()](js-apis-arkui-frameNode.md#getchild12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to obtain the child component **FrameNode** and call [measure()](js-apis-arkui-frameNode.md#measure12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to measure the size of the child component. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](./arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
 
+**Decorator**: \@ObservedV2
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 24.
@@ -76,6 +80,8 @@ Customizes the position of the child component to be arranged. When the position
 > **NOTE**
 >
 > In this callback, you can call [getChild()](js-apis-arkui-frameNode.md#getchild12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to obtain the child component **FrameNode** and call [layout()](js-apis-arkui-frameNode.md#layout12) of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to set the position of the child component. For details, see [Example 1: Implementing Waterfall Layout Using a Custom Layout Algorithm](./arkui-ts/ts-container-dynamiclayout.md#example-1-implementing-waterfall-layout-using-a-custom-layout-algorithm).
+
+**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
   
@@ -108,6 +114,8 @@ Horizontal linear layout algorithm class.
 
 ### Attributes
 
+**Decorator**: \@ObservedV2
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 24.
@@ -128,6 +136,8 @@ Horizontal linear layout algorithm class.
 constructor(option?: RowLayoutAlgorithmOptions)
 
 Constructs the horizontal linear layout algorithm class.
+
+**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -178,6 +188,8 @@ Vertical linear layout algorithm class.
 
 ### Attributes
 
+**Decorator**: \@ObservedV2
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 24.
@@ -198,6 +210,8 @@ Vertical linear layout algorithm class.
 constructor(option?: ColumnLayoutAlgorithmOptions)
 
 Constructs the vertical linear layout algorithm class.
+
+**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -249,6 +263,8 @@ Stack layout algorithm class.
 
 ### Attributes
 
+**Decorator**: \@ObservedV2
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 24.
@@ -266,6 +282,8 @@ Stack layout algorithm class.
 constructor(option?: StackLayoutAlgorithmOptions)
 
 Constructs the stack layout algorithm class.
+
+**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -313,6 +331,8 @@ Grid layout algorithm class.
 
 ### Attributes
 
+**Decorator**: \@ObservedV2
+
 **Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
@@ -330,6 +350,8 @@ Grid layout algorithm class.
 constructor(option?: GridLayoutAlgorithmOptions)
 
 Constructs the grid layout algorithm class.
+
+**Decorator**: \@ObservedV2
 
 **Model restriction**: This API can be used only in the stage model.
 
