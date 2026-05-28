@@ -9090,11 +9090,11 @@ try {
 }
 ```
 
-## setSupportedWindowModes<sup>26+</sup>
+## setSupportedWindowModes
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
 
-设置主窗或子窗的窗口支持模式，使用Promise异步回调。
+设置主窗或子窗的窗口模式，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -9102,12 +9102,13 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换为[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换为[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码；
+
 **参数：**
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置窗口的窗口支持模式。<br>- FULL_SCREEN：支持全屏模式。<br>- FLOATING：支持自由悬浮窗口模式。<br>- SPLIT：支持分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，主窗不支持仅配置SPLIT，子窗不支持配置SPLIT。<br>注：对于主窗来说，数组中SupportWindowMode字段取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
+| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置窗口支持的窗口模式。<br>- FULL_SCREEN：全屏模式。<br>- FLOATING：支持自由悬浮窗口模式。<br>- SPLIT：分屏模式。需要配合FULL_SCREEN或FLOATING一起使用，主窗不支持仅配置SPLIT，子窗不支持配置SPLIT。<br>说明：对于主窗来说，此参数数组中的取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
 
 **返回值：**
 
