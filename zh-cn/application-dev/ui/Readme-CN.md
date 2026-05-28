@@ -21,7 +21,7 @@
       - 自定义组件复用<!--arkts-component-reusable-->
         - [\@Reusable装饰器：V1组件复用](state-management/arkts-reusable.md)   
         - [\@ReusableV2装饰器：V2组件复用](state-management/arkts-new-reusableV2.md) 
-        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)
+        - [全局复用：集中化的组件回收与复用](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End--><!--RP8--><!--RP8End-->
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
@@ -147,7 +147,7 @@
     - [图标小符号 (SymbolGlyph/SymbolSpan)](arkts-common-components-symbol.md)
     - [属性字符串 (StyledString/MutableStyledString)](arkts-styled-string.md)
     - [图文混排](arkts-text-image-layout.md)
-    - [管理软键盘](arkts-manage-keyboard.md)<!--RP6--><!--RP6End-->
+    - [管理软键盘](arkts-manage-keyboard.md)<!--RP6--><!--RP6End--><!--RP5--><!--RP5End-->
   - 媒体展示<!--arkts-media-display-->
     - [显示图片 (Image)](arkts-graphics-display.md)
     - [视频播放 (Video)](arkts-common-components-video-player.md)
@@ -187,7 +187,7 @@
         - [绑定半模态页面 (bindSheet)](arkts-sheet-page.md)
         - [绑定全模态页面 (bindContentCover)](arkts-contentcover-page.md)
      - [即时反馈 (Toast)](arkts-create-toast.md)
-     - [设置浮层 (OverlayManager)](arkts-create-overlaymanager.md)
+     - [设置浮层 (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
   - 几何图形绘制<!--arkts-draw-graphics-->
     - [几何图形绘制概述](arkts-shape-overview.md)
     - [绘制几何图形 (Shape)](arkts-geometric-shape-drawing.md)

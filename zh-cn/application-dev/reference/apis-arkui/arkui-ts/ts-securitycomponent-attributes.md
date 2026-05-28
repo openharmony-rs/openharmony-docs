@@ -7,11 +7,30 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
+## 模块简介
+
 安全控件的基础属性，用于设置安全控件通用的属性。
+
+该模块主要用于以下场景：
+
+- 为[PasteButton](ts-security-components-pastebutton.md#pastebutton-1)、[SaveButton](ts-security-components-savebutton.md#savebutton-1)等安全控件统一设置布局、尺寸、文字、图标、边框和交互相关属性。
+- 在满足安全控件规范的前提下，调整安全控件显示效果和交互体验。
+- 通过链式调用方式复用安全控件通用属性能力。
 
 > **说明：**
 >
 > 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+
+## 关键Class/Interface介绍
+
+### 核心枚举类型
+
+- **[SecurityComponentLayoutDirection](#securitycomponentlayoutdirection)**：安全控件图标和文字排列方向枚举，用于指定横向或纵向布局。
+- **[ButtonType](#buttontype)**：安全控件按钮样式枚举，用于指定胶囊、圆形或普通按钮样式。
+
+### 核心接口类型
+
+- **SecurityComponentMethod&lt;T&gt;**：安全控件通用属性方法集合，用于为具体安全控件配置布局、尺寸、文字、图标、颜色、边框和交互属性。
 
 ## iconSize
 
@@ -27,7 +46,7 @@ iconSize(value: Dimension): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) | 是 |安全控件上图标的尺寸。<br/>默认值：16vp。<br/>不支持设置百分比字符串。<br/>设置异常值时该属性不生效。|
+| value | [Dimension](ts-types.md#dimension10) | 是 | 安全控件上图标的尺寸。<br/>默认值：16vp。<br/>该参数不支持百分比字符串。<br/>若传入异常值或无效单位，属性不生效，控件按照默认值显示。 |
 
 **返回值：**
 
@@ -49,7 +68,7 @@ layoutDirection(value: SecurityComponentLayoutDirection): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) |是 | 安全控件上图标和文字分布的方向。<br/>默认值：SecurityComponentLayoutDirection.HORIZONTAL。|
+| value | [SecurityComponentLayoutDirection](#securitycomponentlayoutdirection) |是 | 安全控件上图标和文字分布的方向。<br/>默认值：SecurityComponentLayoutDirection.HORIZONTAL。 |
 
 **返回值：**
 
@@ -71,7 +90,7 @@ position(value: Position): T
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>1.当入参为undefined、null，或Position对象中x、y属性值为非数字类型（如字符串'abc'、对象、数组等）时，该属性不生效；当x和y中仅有一个为异常值时，异常值会被置为0；<br/>2.当入参的Position中，x和y有且仅有一个异常值时，值异常的属性会被置为0。如输入{x: 0, y: 'a'}，最终效果按{x: 0, y: 0}显示。 |
+| value | [Position](ts-types.md#position) |是 | 安全控件左上角相对于父容器左上角的偏移位置。适用于通过绝对定位将安全控件放置到页面固定区域的场景。<br/>x和y建议均传入数值型坐标。<br/>若参数为undefined、null，或x、y为非数字类型时，该属性不生效，异常坐标会按0处理。 |
 
 **返回值：**
 
@@ -93,7 +112,7 @@ markAnchor(value: Position): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) |是 |安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常配合position和offset属性使用，配合使用时可精确定位控件位置。单独使用时，效果类似offset。<br/>无默认值。<br/>当入参为异常值时，该属性不生效。|
+| value | [Position](ts-types.md#position) |是 | 安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常与position()、offset()配合使用，用于更精细地设置控件展示位置。<br/>无默认值。<br/>传入异常值时该属性不生效。 |
 
 **返回值：**
 
@@ -115,7 +134,7 @@ offset(value: Position | Edges | LocalizedEdges): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) |是 |安全控件相对于自身布局位置的坐标偏移。设置此属性不会影响父容器的布局，仅在绘制过程中调整位置。<br/>无默认值。<br/>当入参为异常值时，该属性不生效。|
+| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) |是 | 安全控件相对于自身布局位置的坐标偏移。设置后不会影响父容器布局，仅在绘制阶段调整控件显示位置。<br/>无默认值。<br/>当入参异常时，该属性不生效。 |
 
 **返回值：**
 
@@ -137,7 +156,7 @@ fontSize(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |是 |安全控件上文字的尺寸。<br/>默认值：16fp。<br/>不支持设置百分比字符串。<br/>设置异常值时该属性不生效。|
+| value | [Dimension](ts-types.md#dimension10) |是 | 安全控件上文字的尺寸。<br/>默认值：16fp。<br/>该参数不支持百分比字符串。<br/>设置异常值时该属性不生效。 |
 
 **返回值：**
 

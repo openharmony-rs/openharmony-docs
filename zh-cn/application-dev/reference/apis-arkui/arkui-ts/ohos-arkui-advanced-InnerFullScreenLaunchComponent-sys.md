@@ -32,7 +32,7 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 
 ## InnerFullScreenLaunchComponent
 
-InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchController })
+InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchController, onReceive?: Callback<Record<string, Object>>, onError?: ErrorCallback, onTerminated?: Callback\<TerminationInfo> })
 
 **装饰器类型：**\@Component
 

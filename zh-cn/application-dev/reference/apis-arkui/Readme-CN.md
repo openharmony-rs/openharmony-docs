@@ -353,6 +353,7 @@
     - [Span](arkui-ts/ts-basic-components-span.md)
     - [ImageSpan](arkui-ts/ts-basic-components-imagespan.md)
     - [ContainerSpan](arkui-ts/ts-basic-components-containerspan.md)
+    - [SelectionContainer](arkui-ts/ts-basic-components-selectioncontainer.md)
     - [SymbolSpan](arkui-ts/ts-basic-components-symbolSpan.md)
     - [SymbolGlyph](arkui-ts/ts-basic-components-symbolGlyph.md)
     - [Hyperlink](arkui-ts/ts-container-hyperlink.md)
@@ -543,6 +544,7 @@
     - [TreeView](arkui-ts/ohos-arkui-advanced-TreeView.md)
     - [advanced.Counter](arkui-ts/ohos-arkui-advanced-Counter.md)
     - [CounterV2](arkui-ts/ohos-arkui-advanced-CounterV2.md)
+    - [DatePickerComponent](arkui-ts/ohos-arkui-advanced-DatePickerComponent.md)
   - 状态管理与渲染控制<!--state-management-and-rendering-control-->
     - [应用级变量的状态管理](arkui-ts/ts-state-management.md)
     - [状态管理V1装饰器参数](arkui-ts/ts-state-management-v1-parameter.md)
