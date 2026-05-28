@@ -4661,6 +4661,71 @@ const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 // fengyang todo 
 ```
 
+## contact.importContactsViaUI<sup>26+</sup>
+
+importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;int&gt;&gt;
+
+通过UI交互批量导入多个联系人。每次最多可导入100个联系人。
+
+**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+**参数：**
+
+| 参数名  | 类型                | 必填 | 说明                                                         |
+| ------- | ------------------- | ---- | ------------------------------------------------------------ |
+| context | Context             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| contacts      | Array&lt;[Contact](#contact)&gt;                      | 是   | 表示待导入数据库的联系人信息数组。       |
+
+**返回值：**
+
+| 类型                  | 说明                              |
+| --------------------- | --------------------------------- |
+| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可为通过 {@link Contact#getId()})获得的值表示创建成功。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 801       | The specified SystemCapability name was not found. |
+| 16700001      | General error. |
+| 16700002      | Invalid parameter value. |
+| 16700004      | The number of contacts exceeds the limit. |
+| 16700103      | User canceled. |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let contactList: contact.Contact[] = [];
+let contactInfo: contact.Contact = {
+  name: {
+    fullName: 'xxx'
+  },
+  phoneNumbers: [{
+    phoneNumber: '138xxxxxx'
+  }]
+}
+contactList.push(contactInfo);
+let promise = contact.importContactsViaUI(context, contactList);
+promise.then((data) => {
+    console.info(`Succeeded in import Contact via UI.data->${JSON.stringify(data)}`);
+});
+```
+
 ## ContactSelectionOptions<sup>10+</sup>
 
 选择联系人条件。
