@@ -258,7 +258,7 @@ Web组件的媒体播放由应用侧托管。
 
 系统内存达到临界值的警戒状态。
 
-### Mixed Content Policy；MixedContent策略
+### Mixed Content Policy；Mixed Content策略
 
 混合内容策略，用于控制HTTP和HTTPS混合内容的机制。
 
