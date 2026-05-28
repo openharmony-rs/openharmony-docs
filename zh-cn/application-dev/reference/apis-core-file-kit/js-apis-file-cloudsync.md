@@ -1064,7 +1064,7 @@ fileCache.cleanFileCache().then(() => {
 
 getCachedTotalSize(): Promise&lt;number&gt;
 
-获取已缓存文件的总大小，包含本地新增未上云文件大小，不包含缩略图文件大小。使用Promise异步回调。
+获取已缓存文件的总大小，包含本地新增未上云文件、本地新增已上云文件及已下载文件大小，不包含缩略图文件大小。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
