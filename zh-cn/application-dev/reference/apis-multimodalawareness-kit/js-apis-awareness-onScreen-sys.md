@@ -152,29 +152,29 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 * 校验规则：调用接口时，系统会单独检测capList和groupId。<br>
 * 能力列表：按能力项或分组ID使用屏上感知功能，具体定义如下。
   * capList支持能力列表<br>
-    按具体业务场景预设的能力，可进行单一订阅或者触发，如下
+    按具体业务场景预设的能力，可进行单一订阅或者触发，如下： 
     |capList支持能力列表|功能说明|
     | ---- | ------ |
-    |Article|获取阅读场景感知信息|
-    |ShortVideo|获取短视频场景的感知信息|
-    |Todo|获取待办场景的感知信息|
-    |Activity|获取基础服务的感知信息|
-    |UiImage|获取页面内子图信息|
-    |JumpContext|高亮跳转到指定上下文|
-    |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
-    |UiTree|获取页面json树信息<br> **起始版本：** 26.0.0|
-    |InjectEvent|注入事件<br> **起始版本：** 26.0.0|
+    |Article|获取阅读场景感知信息。|
+    |ShortVideo|获取短视频场景的感知信息。|
+    |Todo|获取待办场景的感知信息。|
+    |Activity|获取基础服务的感知信息。|
+    |UiImage|获取页面内子图信息。|
+    |JumpContext|高亮跳转到指定上下文。|
+    |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在capture接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码。|
+    |UiTree|获取页面内json树信息。<br> **起始版本：** 26.0.0|
+    |InjectEvent|注入事件。<br> **起始版本：** 26.0.0|
 
   * groupId支持能力列表<br>
-    按具体业务场景预设的能力，可进行单一订阅或者触发，如下：  
+    按业务场景预设的一组能力集合。可统一订阅业务场景，如下：  
     |groupId支持能力列表|对应子项能力|功能说明|
     | ---- | ------ | ------|
-    |SmartEdge|Article|获取阅读场景感知信息|
-    |SmartEdge|ShortVideo|获取短视频场景的感知信息|
-    |SmartEdge|Todo|获取待办场景的感知信息|
-    |SmartEdge|Activity|获取基础服务的感知信息|
-    |CeliaMemory|Article|获取阅读场景感知信息|
-    |CeliaMemory|Todo|获取待办场景的感知信息|
+    |SmartEdge|Article|获取阅读场景感知信息。|
+    |SmartEdge|ShortVideo|获取短视频场景的感知信息。|
+    |SmartEdge|Todo|获取待办场景的感知信息。|
+    |SmartEdge|Activity|获取基础服务的感知信息。|
+    |CeliaMemory|Article|获取阅读场景感知信息。|
+    |CeliaMemory|Todo|获取待办场景的感知信息。|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
