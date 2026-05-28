@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @liangryan-->
-<!--Designer: @liangryan-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
