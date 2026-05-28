@@ -57,7 +57,7 @@ confirm(userName: string, password: string): boolean
 
 isHttpAuthInfoSaved(): boolean
 
-检查Web组件是否保存了HTTP认证的账号密码信息。
+确定当前主机存储的凭据是否适合使用，如果凭据在当前请求中曾被服务器拒绝过，则不适用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -65,4 +65,4 @@ isHttpAuthInfoSaved(): boolean
 
 | 类型      | 说明                        |
 | ------- | ------------------------- |
-| boolean | 存在密码信息且认证成功返回true，其他返回false。 |
+| boolean | 存储的凭据适用返回true，其他返回false。 |
