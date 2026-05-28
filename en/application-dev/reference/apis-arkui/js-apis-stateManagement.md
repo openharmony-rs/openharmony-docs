@@ -2553,3 +2553,5 @@ Function for initializing the reusable custom component.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Model restriction**: This API can be used only in the stage model.
+
+<!--no_check-->

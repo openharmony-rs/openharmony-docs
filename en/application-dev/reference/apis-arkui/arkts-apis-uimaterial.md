@@ -473,3 +473,5 @@ struct LightEffect {
 ```
 
 ![en-us_sheet](figures/materialLightEffect.gif)
+
+<!--no_check-->

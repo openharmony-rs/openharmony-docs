@@ -27,3 +27,5 @@ The parameter provided to \@Env is invalid. \@Env supports the parameter of the 
 **Solution**
 
 Ensure that the type of the parameter provided to \@Env is [SystemProperties](./arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\>](./arkui-ts/ts-env-system-property.md#systemenvkeyt). For details, see [\@Env: Environment Variable](../../ui/arkts-env-system-property.md)
+
+<!--no_check-->
