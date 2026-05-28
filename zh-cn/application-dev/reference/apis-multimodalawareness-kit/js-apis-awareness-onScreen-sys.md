@@ -644,7 +644,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 interact接口支持的capList能力列表，如下：
 |capList能力列表|功能说明|
 | ---- | ------ |
-|JumpContext|高亮跳转到指定上下文|
+|JumpContext|高亮跳转到指定上下文。|
 |InjectEvent|注入事件。当capList能力列表为InjectEvent时，options字段为必填项，且其内容必须符合InjectEvent选项的规范（详见示例）。若options不符合规范，注入操作将失败，并返回错误码34000001。<br> **起始版本：** 26.0.0|
 
 **返回值：**
