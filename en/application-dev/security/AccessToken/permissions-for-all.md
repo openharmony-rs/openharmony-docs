@@ -744,3 +744,17 @@ With this permission, the application can obtain custom EDM configuration files,
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+## ohos.permission.VEHICLE_THERMAL
+
+Allows an application to access cockpit devices thermal info.
+
+With this permission, the application can subscribe and get thermal level and action.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
