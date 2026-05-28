@@ -202,7 +202,7 @@ When \@Provide specifies a variable alias, both the original variable name and a
     @Provide('b') num: number = 10;
     ```
 
-4. Before API version 20: A runtime error is thrown if no matching \@Provide decorated variable is found during \@Consume initialization. Starting from API version 20, when initializing an @Consume variable, if the developer has not defined an @Provide variable with the corresponding key and has not set a default value, the framework will throw a runtime error. Starting from API version 23, it will return error code [140112](../../reference/apis-arkui/errorcode-stateManagement.md#140112-consume missing the corresponding provide), indicating that the initialization of the @Consume variable failed because the corresponding @Provide variable with that key could not be found and no default value was set.
+4. Before API version 20: A runtime error is thrown if no matching \@Provide decorated variable is found during \@Consume initialization. Starting from API version 20, when initializing an @Consume variable, if the developer has not defined an @Provide variable with the corresponding key and has not set a default value, the framework will throw a runtime error. Starting from API version 23, it will return error code [140112](../../reference/apis-arkui/errorcode-stateManagement.md#140112-consume-does-not-have-the-corresponding-provide), indicating that the initialization of the @Consume variable failed because the corresponding @Provide variable with that key could not be found and no default value was set.
 
    **Incorrect Usage**
 

@@ -10,7 +10,7 @@
 
 The ArkUI development framework allows you to use the **Swiper** component in NDK APIs to provide the capability of displaying child components in carousel mode. This document describes the development guidelines for NDK APIs. For details about the ArkTS guidelines, see [Creating a Swiper](arkts-layout-development-create-looping.md).
 
-For details about the basic usage of the NDK and how to use the NDK APIs to build UIs, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md). After the page is built and [Swiper is created](#creating-a-swiper), you can optimize the page display by [setting common attributes](#setting-common-attributes) and [setting the navigation indicator](#setting-the-navigation indicator). When the page switches, you can obtain page switching information through [event listening](#listening-for-events).
+For details about the basic usage of the NDK and how to use the NDK APIs to build UIs, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md). After the page is built and [Swiper is created](#creating-a-swiper), you can optimize the page display by [setting common attributes](#setting-common-attributes) and [setting the navigation indicator](#setting-the-navigation-indicator). When the page switches, you can obtain page switching information through [event listening](#listening-for-events).
 
 ## Creating a Swiper
 
