@@ -11,7 +11,7 @@
 
 **userAuth**模块是OpenHarmony系统中用于用户身份认证的核心模块，提供了设备解锁、支付验证、应用登录等场景下的身份认证能力。
 
-该模块支持多种生物特征认证方式（人脸、指纹）和密码认证（PIN），并提供不同级别的安全信任等级。
+该模块支持多种生物特征认证方式（人脸、指纹）、密码认证（PIN）以及伴随设备认证，并提供不同级别的安全信任等级。
 
 该模块主要用于以下场景：
 - 设备解锁认证。
@@ -164,7 +164,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 ## EnrolledState<sup>12+</sup>
 
-用户注册凭据的状态。该接口用于描述用户已注册的认证凭据（如人脸、指纹）的当前状态，包括凭据摘要和数量。应用可通过[getEnrolledState](#userauthgetenrolledstate12)接口查询凭据状态，用于检测用户凭据是否发生变化（如新增或删除指纹/人脸），以便做出相应的业务处理。
+用户注册凭据的状态。该接口用于描述用户已注册的认证凭据（如人脸、指纹、伴随设备）的当前状态，包括凭据摘要和数量。应用可通过[getEnrolledState](#userauthgetenrolledstate12)接口查询凭据状态，用于检测用户凭据是否发生变化（如新增或删除指纹/人脸/伴随设备），以便做出相应的业务处理。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -283,7 +283,7 @@ getEnrolledState(authType: UserAuthType): EnrolledState
 
 | 参数名         | 类型                               | 必填 | 说明                       |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的凭据类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）。查询PIN时返回的是密码的整体状态，而非单个密码的数量。|
+| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的凭据类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE（伴随设备）。查询PIN时返回的是密码的整体状态，而非单个密码的数量。|
 
 **返回值：**
 
@@ -1651,7 +1651,7 @@ getAvailableStatus(authType : UserAuthType, authTrustLevel : AuthTrustLevel): vo
 
 | 参数名         | 类型                               | 必填 | 说明                       |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）。从API version 11开始支持PIN查询。|
+| authType       | [UserAuthType](#userauthtype8)     | 是   | 认证类型。用于指定查询的认证类型，支持FACE（人脸）、FINGERPRINT（指纹）、PIN（密码）、COMPANION_DEVICE(协同认证)。从API version 11开始支持PIN查询，API version 26开始支持COMPANION_DEVICE查询。|
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8) | 是   | 认证信任等级。用于指定查询的认证可信等级，有效值为ATL1(10000)、ATL2(20000)、ATL3(30000)、ATL4(40000)。等级越高，对认证方案的活体检测能力要求越高。       |
 
 > **错误码返回顺序说明：**
