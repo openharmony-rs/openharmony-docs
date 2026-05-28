@@ -1,4 +1,4 @@
-# @ohos.arkui.node 
+# @ohos.arkui.node (Custom Node)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -11,7 +11,9 @@ The **Node** module provides level-2 module APIs of custom nodes to export and u
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
+>
+> - The APIs of this module can be used only in the stage model.
+>
 > - Custom nodes are not available in DevEco Studio Previewer.
 
 ## BuilderNode

@@ -94,7 +94,7 @@
 | [Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)](#oh_pixelmapnative_scalewithantialiasing) | 根据指定的缩放算法和输入的宽高对图片进行缩放。<br>     建议使用[OH_PixelmapNative_ApplyScaleWithAntiAliasing](capi-pixelmap-native-h.md#oh_pixelmapnative_applyscalewithantialiasing)代替。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY)](#oh_pixelmapnative_createscaledpixelmap) | 根据输入的宽高的缩放比例，创建一个新的缩放后的图片，生成的新PixelMap不可编辑。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)](#oh_pixelmapnative_createscaledpixelmapwithantialiasing) | 根据指定的缩放算法和输入的宽高的缩放比例，创建一个新的缩放后的图片，生成的新PixelMap不可编辑。 |
-| [Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createalphapixelmap) | 从源PixelMap创建一个仅含有Alpha通道的PixelMap，生成的新PixelMap不可编辑。 |
+| [Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createalphapixelmap) | 从源PixelMap创建一个仅包含Alpha通道的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑。<br>若源PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。 |
 | [Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_clone) | 从源PixelMap复制出一个新的PixelMap。 |
 | [Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createcroppedandscaledpixelmap) | 基于源PixelMap创建一个裁剪并缩放的新PixelMap。 |
 | [Image_ErrorCode OH_PixelmapNative_ApplyTranslate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_applytranslate) | 根据指定的横向和纵向距离对PixelMap进行水平或垂直方向的平移。 |
@@ -113,7 +113,7 @@
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmapusingallocator) | 根据入参options创建空的pixelmap，pixelmap使用的内存类型可以通过allocator指定。默认情况下，系统会根据图像类型、图像大小、平台能力等选择内存类型。在处理此接口返回的像素图时，需要考虑步长影响。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurface) | 通过Surface的Surface ID创建一个PixelMap。 |
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurfaceWithTransformation(const char *surfaceId, size_t length, bool transformEnabled, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurfacewithtransformation) | 通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。 |
-| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromnativebuffer) | 通过NativeBuffer创建一个PixelMap。如果NativeBuffer的用途未配置[CPU访问权限](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage)，则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。 |
+| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromnativebuffer) | 通过NativeBuffer创建一个PixelMap。如果NativeBuffer的用途未配置CPU访问权限，则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。 |
 | [Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, OH_NativeBuffer **nativeBuffer)](#oh_pixelmapnative_getnativebuffer) | 从DMA内存的PixelMap中，获取NativeBuffer对象。 |
 | [Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue **value)](#oh_pixelmapnative_getmetadata) | 获取元数据。 |
 | [Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue *value)](#oh_pixelmapnative_setmetadata) | 设置元数据。 |
@@ -174,7 +174,8 @@ enum PIXEL_FORMAT
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102格式。 |
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010格式。 |
 | PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010格式。 |
-| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。<br/>**起始版本：** 26.0.0 |
+| PIXEL_FORMAT_ALPHA_U8 = 15 | ALPHA_U8格式。<br>**起始版本：** 26.0.0 |
+| PIXEL_FORMAT_ALPHA_F16 = 16 | ALPHA_F16格式。<br>**起始版本：** 26.0.0 |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -1360,7 +1361,7 @@ Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixe
 
 **描述**
 
-从源PixelMap创建一个仅含有Alpha通道的PixelMap，生成的新PixelMap不可编辑。
+从源PixelMap创建一个仅包含Alpha通道的ALPHA_8格式的PixelMap，生成的新PixelMap不可编辑。<br>     若源PixelMap的格式是ALPHA_F16，则新生成的PixelMap将维持ALPHA_F16格式。
 
 **起始版本：** 22
 
@@ -1851,7 +1852,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 **描述**
 
-通过NativeBuffer创建一个PixelMap。如果NativeBuffer的用途未配置[CPU访问权限](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage)，则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。
+通过NativeBuffer创建一个PixelMap。如果NativeBuffer的用途未配置CPU访问权限，则不支持创建。<br> 支持创建的像素格式为RGBA_8888、NV21、NV12、YCBCR_P010、YCRCB_P010。
 
 **起始版本：** 22
 
@@ -1866,7 +1867,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：nativeBuffer或pixelmap有误，像素格式不支持，或未配置[CPU访问权限](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage)。<br>         IMAGE_CREATE_PIXELMAP_FAILED：PixelMap创建失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：nativeBuffer或pixelmap有误，像素格式不支持，或未配置CPU访问权限。<br>         IMAGE_CREATE_PIXELMAP_FAILED：PixelMap创建失败。 |
 
 ### OH_PixelmapNative_GetNativeBuffer()
 

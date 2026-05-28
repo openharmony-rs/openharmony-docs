@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件获取文件对象。示例代码参考[onShowFileSelector事件](./arkts-basic-components-web-events.md#onshowfileselector9)。
+Web组件获取文件对象。示例代码参考[onShowFileSelector](./arkts-basic-components-web-events.md#onshowfileselector9)。
 
 > **说明：**
 >
@@ -78,7 +78,7 @@ isCapture(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否调用多媒体能力。<br>true表示调用多媒体能力，false表示未调用多媒体能力。 |
+| boolean | 返回是否调用多媒体能力。<br>true表示需要调用摄像头或麦克风等多媒体设备来获取文件（如拍照或录音），false表示仅从存储设备中选择已有文件。|
 
 ## getMimeTypes<sup>18+</sup>
 
@@ -148,7 +148,7 @@ isAcceptAllOptionExcluded(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否包含一个不应用任何文件类型过滤器的选项。<br>true表示不包含，false表示包含。 |
+| boolean | 返回是否排除“所有文件类型”选项。<br>true表示排除（不包含“所有文件类型”选项）。false表示不排除，开发者需要在文件选择器中添加“所有文件类型”选项。 |
 
 ## getAcceptableFileTypes<sup>23+</sup>
 

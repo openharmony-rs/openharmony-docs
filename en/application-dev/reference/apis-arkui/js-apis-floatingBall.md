@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
-<!--Designer: @zhoulin_-->
+<!--Designer: @taoweihua-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-This module provides essential functionalities for floating balls. It lets you check whether the device supports floating balls and create a controller to start, update, or stop them. It is ideal for tasks like comparing prices, searching for answers, or grabbing orders. The floating ball appears as a floating widget above other application, quickly showing important information.
+This module provides essential functionalities for floating balls. It lets you check whether the device supports floating balls and create a controller to start, update, or stop them. This module is ideal for cross-application scenarios such as question search, bill records, product price comparison, order grabbing, and translation, as well as real-time market monitoring in financial apps. It displays content in a small window. The floating ball appears as a floating widget above other application, quickly showing important information.
 
 > **NOTE**
 >
@@ -49,7 +49,7 @@ Creates a floating ball controller. This API uses a promise to return the result
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on tablets in non-desktop mode and phones, but returns error code 801 on other devices and tablets in desktop mode.
 
 **Parameters**
 
@@ -151,6 +151,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
+| 1300034 | This operation conflicts with other floating windows. Possible cause: App has already started float view.<br>Applicable versions: 26.0.0+|
 
 **Example**
 
@@ -529,7 +530,7 @@ Sets whether the floating ball is visible in the application. This API uses a pr
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -565,6 +566,95 @@ floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
 });
 ```
 
+### onDestroy
+
+onDestroy(callback: Callback&lt;string&gt;): void
+
+Registers a callback to listen for floating ball destruction events. When a floating ball is destroyed, the callback function receives the string indicating the destruction reason. To prevent memory leaks, call [offDestroy](#offdestroy) to unregister the callback when it is no longer needed.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|------------|------------|------------|------------|
+| callback | Callback&lt;string&gt; | Yes| Callback used to the reason why the floating ball is stopped. The stop reasons include:<br>- **"APP_STOP"**: The application proactively stops the floating ball.<br>- **"DUMPSTER_STOP"**: The floating ball is dragged to the trash can.<br>- **"LONG_PRESS_SINGLE_STOP"**: A single floating ball is long-pressed.<br>- **"LONG_PRESS_ALL_STOP"**: All floating balls are long-pressed.<br>- **"MAIN_WINDOW_DESTROY_STOP"**: The main window associated with the context is destroyed.<br>- **"SQUEEZE"**: The number of floating balls on the device exceeds the upper limit, and the floating ball is stopped by other floating balls.<br>- **"FLOAT_VIEW_STOP"**: After being bound to the standard floating window, the floating ball stops with the standard floating window.<br>- **"STOP_IN_SIDEBAR"**: The floating ball is stopped on the sidebar.|
+
+**Error codes**
+
+For details about the error codes, see [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
+| 1300022 | Repeated floating ball operation. |
+| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+
+**Example**
+
+```ts
+let onDestroy = (reason: string) => {
+  console.info('Floating ball has destroyed, reason: ' + reason);
+};
+try {
+  floatingBallController?.onDestroy(onDestroy);
+} catch(e) {
+  console.error(`Failed to onDestroy floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
+### offDestroy
+
+offDestroy(callback?: Callback&lt;string&gt;): void
+
+Unregisters the callback to listen for floating ball destruction events.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|------------|------------|------------|------------|
+| callback | Callback&lt;string&gt; | No| Callback to unregister. If a value is passed in, the corresponding callback is unregistered. If no value is passed in, all callbacks associated with the floating ball destruction events are unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
+| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+
+**Example**
+
+```ts
+let onDestroy = (reason: string) => {
+  console.info('Floating ball has destroyed, reason: ' + reason);
+};
+try {
+  floatingBallController?.offDestroy(onDestroy);
+} catch(e) {
+  console.error(`Failed to offDestroy floating ball. Cause:${e.code}, message:${e.message}`);
+}
+// Unregister all callbacks.
+try {
+  floatingBallController?.offDestroy();
+} catch(e) {
+  console.error(`Failed to offDestroy all listeners. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ## FloatingBallParams
 
 Describes the parameters for starting and updating the floating ball.
@@ -576,9 +666,11 @@ Describes the parameters for starting and updating the floating ball.
 | template | [FloatingBallTemplate](#floatingballtemplate) | No| No| Floating ball template.|
 | title | string | No| No| Title of the floating ball. It cannot be an empty string and cannot exceed 64 bytes.|
 | content | string | No| Yes| Content of the floating ball. It cannot exceed 64 bytes. The default value is an empty string, and no content is displayed on the floating ball.|
-| backgroundColor | string | No| Yes| Background color of the floating ball, in hexadecimal format without opacity (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the default background color of the system (light or dark mode) is used.|
+| backgroundColor | string | No| Yes| Background color of the floating ball, in hexadecimal format without the alpha channel (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the default background color of the system (light or dark mode) is used.|
+| titleColor | string | No| Yes| Title text color of the floating ball, in hexadecimal format without the alpha channel (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the color is automatically filled based on the background color. If the background color is light, the text color is filled with black (**'#E5000000'**). If the background color is dark, the text color is filled with white (**'#E5FFFFFF'**). When setting this attribute, you must also set **backgroundColor**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| contentColor | string | No| Yes| Content text color of the floating ball, in hexadecimal format without the alpha channel (for example, **'#008EF5'** or **'#FF008EF5'**). If this parameter is not specified, the color is automatically filled based on the background color. If the background color is light, the text color is filled with black (**'#99000000'**). If the background color is dark, the text color is filled with white (**'#99FFFFFF'**). When setting this attribute, you must also set **backgroundColor**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | No| Yes| Icon of the floating ball. The total number of bytes of the icon pixels cannot exceed 192 KB (which is obtained through [getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)). The recommended size is 128 px * 128 px. Actual display may vary based on the device capability and floating ball UI style.|
-| textUpdateAnimationType | [FloatingBallTextUpdateAnimationType](#floatingballtextupdateanimationtype) | No| Yes| Animation type used when the floating ball text is updated. The default value is **FloatingBallTextUpdateAnimationType.ANIMATION_NONE**.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
+| textUpdateAnimationType | [FloatingBallTextUpdateAnimationType](#floatingballtextupdateanimationtype) | No| Yes| Animation type used when the floating ball text is updated. The default value is **FloatingBallTextUpdateAnimationType.ANIMATION_NONE**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## FloatingBallState
 
@@ -620,7 +712,7 @@ Enumerates the animation types used when the floating ball text is updated.
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Since**: 26.0.0
 

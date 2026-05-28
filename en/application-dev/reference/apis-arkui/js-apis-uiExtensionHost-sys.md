@@ -10,11 +10,11 @@ Intended only for the **UIExtensionComponent** that has process isolation requir
 
 > **NOTE**
 >
-> No new function will be added to this module. Related functions will be provided in the [uiExtension](js-apis-arkui-uiExtension.md) interface.
+> - No new function will be added to this module. Related functions will be provided in the [uiExtension](js-apis-arkui-uiExtension.md) interface.
 >
-> The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -38,7 +38,7 @@ import { uiExtensionHost } from '@kit.ArkUI';
 
 getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
-Obtains the area where this window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area.
+Obtains the area where the host application window cannot be displayed, for example, the system bar area, notch, gesture area, and soft keyboard area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,7 +65,7 @@ Obtains the area where this window cannot be displayed, for example, the system 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -84,7 +84,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-Subscribes to events of system avoidance area changes.
+Subscribes to the event of changes to the area where the host application window cannot be displayed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,14 +99,17 @@ Subscribes to events of system avoidance area changes.
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listener has been registered. <br> 3. The UIExtension window proxy is abnormal. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -124,7 +127,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-Unsubscribes from events of system avoidance area changes.
+Unsubscribes from the event of changes to the area where the host application window cannot be displayed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,14 +142,17 @@ Unsubscribes from events of system avoidance area changes.
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listening type is not registered. <br> 3. The listener has not been registered. <br> 4. The UIExtension window proxy is abnormal. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession} from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -177,14 +183,17 @@ Subscribes to size change events of the component (**EmbeddedComponent** or **UI
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listener has been registered. <br> 3. The UIExtension window proxy is abnormal. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -192,7 +201,7 @@ export default class EntryAbility extends UIExtensionAbility {
     const extensionHostWindow = session.getUIExtensionHostWindowProxy();
     // Subscribe to size change events of the component (EmbeddedComponent or UIExtensionComponent).
     extensionHostWindow.on('windowSizeChange', (size) => {
-      console.info(`The avoid area of the host window is: ${JSON.stringify(size)}.`);
+      console.info(`The size of the component is: ${JSON.stringify(size)}.`);
     });
   }
 }
@@ -217,14 +226,17 @@ Unsubscribes from size change events of the component (**EmbeddedComponent** or 
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameters types.<br> 3. Parameter verification failed. |
+| 1300002  | Abnormal state. Possible causes: <br> 1. The listening type is not supported. <br> 2. The listening type is not registered. <br> 3. The listener has not been registered. <br> 4. The UIExtension window proxy is abnormal. |
 
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIExtensionAbility {
@@ -277,7 +289,7 @@ Sets whether to hide non-secure windows. This API uses a promise to return the r
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -345,7 +357,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -430,7 +442,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
@@ -510,7 +522,7 @@ Adds or deletes the watermark flag for this window. This API uses a promise to r
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -540,6 +552,7 @@ export default class EntryAbility extends UIExtensionAbility {
 hidePrivacyContentForHost(shouldHide: boolean): Promise&lt;void&gt;
 
 Sets whether to enable privacy protection for the UIExtension component during non-system screenshots. This API uses a promise to return the result.
+
 > **NOTE**
 >
 > When privacy protection is enabled, neither [window.snapshot](arkts-apis-window-Window.md#snapshot9) nor [UIContext.getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) will capture the content of the current component (excluding subwindows created under this component).
@@ -574,7 +587,7 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 **Example**
 
 ```ts
-// ExtensionProvider.ts
+// ExtensionProvider.ets
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

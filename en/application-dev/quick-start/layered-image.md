@@ -24,11 +24,23 @@ The display effects are as follows.
 
 * For the HAP file containing UIAbility configuration, the following scenarios are possible:
 
-  * If the **icon** and **label** fields under **abilities** of the [module.json5 file](module-configuration-file.md) are configured, and under **skills** of the corresponding ability, **entities** contains **entity.system.home** and **actions** contains **ohos.want.action.home**, the system returns the **icon** and **label** configured in the **module.json5** file. If there are multiple abilities that meet the requirements, the system returns the icon and label specified for the ability corresponding to **mainElement** in **module.json5**.
+  1. An entry **UIAbility** is a **UIAbility** whose **entities** in the **skills** tag contain **"entity.system.home"** and whose **actions** contain **"ohos.want.action.home"**.
+  
+  2. If multiple entry **UIAbilities** are configured in **module.json5**:
 
-  * If the **icon** and **label** fields under **abilities** of the **module.json5** file are not configured, the system returns the **icon** and **label** configured in [app.json5](app-configuration-file.md).
+      * If **mainElement** in **module.json5** is configured as an entry **UIAbility**, the system returns the **icon** and **label** configured for the entry **UIAbility** specified by **mainElement**.
 
-* For the HAP file that does not contain UIAbility configuration, the system returns the **icon** and **label** configured in **app.json5**.
+      * If **mainElement** is not configured in **module.json5**, or is not configured as an entry **UIAbility**, the system returns the **icon** and **label** configured for the first entry **UIAbility** in **module.json5**.
+
+  3. In **module.json5**, the system returns the **icon** or **label** in **app.json5** in either of the following cases:
+
+      * **mainElement** is configured as an entry **UIAbility**, but the entry **UIAbility** does not configure an **icon** or **label**.
+
+      * **mainElement** is not configured, or is not configured as an entry **UIAbility**, and the first entry **UIAbility** in **module.json5** does not configure an **icon** or **label**.
+
+  In a multi-HAP project, if an **entry**-type HAP exists, the **module.json5** file of the **entry**-type HAP is used. If no **entry**-type HAP exists, the system sorts the **moduleName** values of all HAPs in ASCII lexicographical order and uses the **module.json5** file of the **feature** HAP that appears last in the sorted result.
+
+* For the HAP file that does not contain **UIAbility** configuration, the system returns the **icon** and **label** configured in **app.json5**.
 
 >
 > **NOTE**

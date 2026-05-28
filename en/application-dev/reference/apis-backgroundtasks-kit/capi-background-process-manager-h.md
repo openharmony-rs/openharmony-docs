@@ -97,7 +97,7 @@ Sets the child process priority. After a child process is suppressed, the CPU re
 | int pid | ID of the child process to be suppressed, which is the value of the **pid** parameter after the child process is created through the [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess) API.|
 | [BackgroundProcessManager_ProcessPriority](capi-background-process-manager-h.md#backgroundprocessmanager_processpriority) priority | Suppression priority.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |
@@ -122,7 +122,7 @@ Unsuppresses the child process. In this case, the child process follows the sche
 | -- | -- |
 | int pid | ID of the child process, which is the value of the **pid** parameter of the [OH_Ability_StartNativeChildProcess](../apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess) API.|
 
-**Return value**
+**Returns**
 
 | Type| Description|
 | -- | -- |

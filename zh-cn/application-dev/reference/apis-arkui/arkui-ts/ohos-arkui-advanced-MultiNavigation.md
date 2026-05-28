@@ -10,11 +10,13 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
 > **说明：**
 >
-> 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 14开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](ts-basic-components-navigation.md#getparent11)、[setInterception](ts-basic-components-navigation.md#setinterception12)、[pushDestination](ts-basic-components-navigation.md#pushdestination11)等)，可能会发生无法预期的问题。
+> - 本模块接口仅可在Stage模型下使用。
 >
-> MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
+> - 由于MultiNavigation存在多重栈嵌套，调用本文档明确说明的不支持接口或不在本文档支持接口列表中的接口(例如[getParent](ts-basic-components-navigation.md#getparent11)、[setInterception](ts-basic-components-navigation.md#setinterception12)、[pushDestination](ts-basic-components-navigation.md#pushdestination11)等)，可能会发生无法预期的问题。
+>
+> - MultiNavigation在深层嵌套场景下，可能存在路由动效异常的问题。
 
 ## 导入模块
 
@@ -32,7 +34,7 @@ MultiNavigation({navDestination: NavDestinationBuildFunction, multiStack: MultiN
 
 创建并初始化MultiNavigation组件。
 
-MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左侧主页点击时，会触发详情页的加载并同时清除右侧所有其他详情页，确保右侧仅展示最新加载的详情页。然而，若在右侧的详情页上再次执行详情页加载操作，系统将不会执行清栈动作。效果可参见[主页跳转详情页效果演示](#示例)。
+MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左侧主页点击时，会触发详情页的加载并同时清除右侧所有其他详情页，确保右侧仅展示最新加载的详情页。然而，若在右侧的详情页上再次执行详情页加载操作，系统将不会执行清栈动作。效果可参见[示例](#示例)。
 
 **装饰器类型：** [@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 

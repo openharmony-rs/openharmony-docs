@@ -1,7 +1,7 @@
 # external_window.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->

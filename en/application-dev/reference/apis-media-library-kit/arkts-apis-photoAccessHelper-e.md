@@ -190,8 +190,8 @@ Enumerates the **DefaultChangeUri** subtypes.
 
 | Name             | Value                     | Description                                                        |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
-| DEFAULT_PHOTO_URI | 'file://media/Photo'      | Default **PhotoAsset** URI, which must be used with **forChildUris{true}** to subscribe to change notifications of all photo assets.|
-| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | Default album URI, which must be used with **forChildUris{true}** to subscribe to change notifications of all albums.|
+| DEFAULT_PHOTO_URI | 'file://media/Photo'      | Default **PhotoAsset** URI, which must be used with **forSubUri{true}** to subscribe to change notifications of all photo assets.|
+| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | Default album URI, which must be used with **forSubUri{true}** to subscribe to change notifications of all albums.|
 
 ## PhotoViewMIMETypes
 
@@ -492,3 +492,21 @@ Enumerates the permission states for reading media library assets.
 | FILE_NOT_EXIST | 1 | The asset does not exist. The asset may be hidden, moved to the recycle bin, or permanently deleted.|
 | READ_PERMISSION | 2 | The application has the read permission when obtaining the asset.|
 | NO_READ_PERMISSION | 3 | The application does not have the read permission when obtaining the asset.|
+
+## PreferredCompatibleMode
+
+Enumerates the transcoding modes based on the configured asset compatibility.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  Transcoding is performed based on the configured asset compatibility function.|
+| CURRENT |  1 |  No transcoding is performed. Assets are returned in their original format.|
+| COMPATIBLE |  2 |  All assets are transcoded into the most widely compatible format (such as JPEG).|

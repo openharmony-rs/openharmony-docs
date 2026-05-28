@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[页面跳转](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
+当开发者创建[自定义组件](./arkts-create-custom-components.md)并需要为其添加特定功能（例如[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
 
 在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
@@ -89,7 +89,7 @@
   }
   ```
 
-**图1** 示例效果图
+示例效果图
 
 ![builderparam-demo1](figures/builderparam-demo1.png)
 
@@ -152,7 +152,7 @@
   }
   ```
 
-**图2** 示例效果图
+示例效果图
 
 ![builderparam-demo2](figures/builderparam-demo2.png)
 
@@ -225,7 +225,7 @@ struct Parent {
   }
 }
 ```
-**图3** 示例效果图
+示例效果图
 
 ![builderparam-demo3](figures/builderparam-demo3.png)
 
@@ -298,7 +298,7 @@ struct CustomContainerUser {
   }
 }
 ```
-**图4** 示例效果图
+示例效果图
 
 ![builderparam-demo4](figures/builderparam-demo4.gif)
 
@@ -375,7 +375,9 @@ struct ParentPage {
   }
 }
 ```
+示例效果图
 
+![builderparam-demo8](figures/builderparam-demo8.png)
 
 ### 使用\@BuilderParam隔离多组件对\@Builder跳转逻辑的调用
 
@@ -523,7 +525,7 @@ struct HelloWorldPage {
 }   
 ```
 
-**图5** 示例效果图
+示例效果图
 
 ![builderparam-demo7](figures/builderparam-demo7.gif)
 
@@ -610,7 +612,7 @@ struct ParentPage {
   }
 }
 ```
-**图6** 示例效果图
+示例效果图
 
 ![builderparam-demo5](figures/builderparam-demo5.png)
 
@@ -697,7 +699,7 @@ struct ParentPage {
   }
 }
 ```
-**图7** 示例效果图
+示例效果图
 
 ![builderparam-demo6](figures/builderparam-demo6.png)
 

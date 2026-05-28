@@ -1,8 +1,8 @@
 # 图像效果
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -47,6 +47,8 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -71,6 +73,8 @@ blur(blurRadius: Optional\<number>, options?: BlurOptions, sysOptions?: SystemAd
 **卡片能力：** 从API version 19开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,6 +126,8 @@ shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -169,6 +175,8 @@ grayscale(grayscale: Optional\<number>): T
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,6 +226,8 @@ brightness(brightness: Optional\<number>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -265,6 +275,8 @@ saturate(saturate: Optional\<number>): T
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,6 +326,8 @@ contrast(contrast: Optional\<number>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -361,6 +375,8 @@ invert(options: Optional\<number | InvertOptions>): T
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -410,6 +426,8 @@ sepia(sepia: Optional\<number>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -458,6 +476,8 @@ hueRotate(rotation: Optional\<number | string>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -502,6 +522,8 @@ colorBlend(color: Optional\<Color | string | Resource>): T
 
 为组件添加颜色叠加效果。与[colorBlend](#colorblend)相比，color参数新增了对undefined类型的支持。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -528,6 +550,8 @@ linearGradientBlur(value: number, options: LinearGradientBlurOptions): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -550,6 +574,8 @@ linearGradientBlur(blurRadius: Optional\<number>, options: Optional\<LinearGradi
 为组件添加内容线性渐变模糊效果。与[linearGradientBlur<sup>12+</sup>](#lineargradientblur12)相比，新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -575,6 +601,8 @@ renderGroup(value: boolean): T
 不设置该属性时，默认不组成节点组。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -604,6 +632,8 @@ renderGroup(isGroup: Optional\<boolean>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
@@ -630,6 +660,8 @@ blendMode(value: BlendMode, type?: BlendApplyType): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -655,6 +687,8 @@ blendMode(mode: Optional\<BlendMode>, type?: BlendApplyType): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -678,6 +712,8 @@ blendMode(mode: Optional\<BlendMode>, type?: BlendApplyType): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 值 | 说明                                                             |
@@ -692,6 +728,8 @@ useShadowBatching(value: boolean): T
 控件内部子节点的阴影进行同层绘制，同层元素阴影重叠。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -717,6 +755,8 @@ useShadowBatching(use: Optional\<boolean>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
@@ -741,6 +781,8 @@ sphericalEffect(value: number): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -762,6 +804,8 @@ sphericalEffect(effect: Optional\<number>): T
 设置组件的图像球面化程度。与[sphericalEffect<sup>12+</sup>](#sphericaleffect12)相比，effect参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -785,6 +829,8 @@ lightUpEffect(value: number): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -806,6 +852,8 @@ lightUpEffect(degree: Optional\<number>): T
 设置组件图像亮起程度。与[lightUpEffect<sup>12+</sup>](#lightupeffect12)相比，degree参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -829,6 +877,8 @@ pixelStretchEffect(options: PixelStretchEffectOptions): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -851,6 +901,8 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -872,6 +924,8 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型                | 只读   | 可选   | 说明             |
@@ -889,6 +943,8 @@ systemBarEffect(): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -902,6 +958,8 @@ systemBarEffect(): T
 阴影类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -920,17 +978,19 @@ systemBarEffect(): T
 | 名称      | 类型                                       | 只读 | 可选   | 说明                                       |
 | ------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | radius  | number \| [Resource](ts-types.md#resource) | 否 | 否    | 阴影模糊半径。<br/>取值范围：[0, +∞)，API版本26.0.0开始取值范围变更为(-∞, +∞)<br/>单位：px<br/>**说明：**  <br/>API版本26.0.0之前，设置小于0的值时，按值为0处理。从API版本26.0.0开始，设置的值即为最终取值，当设置负数值时阴影消失。<br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果radius为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| type<sup>10+</sup> | [ShadowType](#shadowtype10枚举说明)  |      否 | 是    | 阴影类型。<br/>默认值：COLOR <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)\| [ColoringStrategy<sup>11+</sup> ](ts-appendix-enums.md#coloringstrategy10) | 否  | 是  | 阴影的颜色。<br/>默认为黑色。 <br/>**说明：** <br/>从API version 11开始，该接口支持使用ColoringStrategy实现智能取色，智能取色功能不支持在ArkTS卡片、[textShadow](ts-basic-components-text.md#textshadow10)中使用。<br/>当前仅支持平均取色和主色取色，智能取色区域为shadow绘制区域。<br/>支持使用'average'字符串触发智能平均取色模式，支持使用'primary'字符串触发智能主色模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
+| type<sup>10+</sup> | [ShadowType](#shadowtype10枚举说明)  |      否 | 是    | 阴影类型。<br/>默认值：COLOR <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。       |
+| color   | [Color](ts-appendix-enums.md#color) \| string \| [Resource](ts-types.md#resource)\| [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)<sup>11+</sup>  | 否  | 是  | 阴影的颜色。<br/>默认为黑色。 <br/>**说明：** <br/>从API version 11开始，该接口支持使用ColoringStrategy实现智能取色，智能取色功能不支持在ArkTS卡片、[textShadow](ts-basic-components-text.md#textshadow10)中使用。<br/>当前仅支持平均取色和主色取色，智能取色区域为shadow绘制区域。<br/>支持使用'average'字符串触发智能平均取色模式，支持使用'primary'字符串触发智能主色模式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
 | offsetX | number \| [Resource](ts-types.md#resource) | 否  | 是  | 阴影的X轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果offsetX为Resource类型，则传入的值需为number类型。<br/> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
 | offsetY | number \| [Resource](ts-types.md#resource) | 否 | 是   | 阴影的Y轴偏移量。<br/>默认值：0<br/>单位：px<br/>**说明：** <br/>如需使用vp单位的数值可用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)进行转换。<br/>如果offsetY为Resource类型，则传入的值需为number类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。|
-| fill<sup>11+</sup>     | boolean                                    | 否  | 是  | 阴影是否内部填充。true表示阴影在内部填充，false表示阴影在外部填充。<br/>默认值：false。<br/>**说明：**<br/>[textShadow](ts-basic-components-text.md#textshadow10)中该字段不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| fill<sup>11+</sup>     | boolean                                    | 否  | 是  | 阴影是否内部填充。true表示阴影在内部填充，false表示阴影在外部填充。<br/>默认值：false。<br/>**说明：**<br/>[textShadow](ts-basic-components-text.md#textshadow10)中该字段不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ShadowStyle<sup>10+</sup>枚举说明
 
 组件阴影效果。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -954,6 +1014,8 @@ systemBarEffect(): T
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -994,6 +1056,8 @@ systemBarEffect(): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型                                                        | 只读 | 可选  | 说明                                                         |
@@ -1009,6 +1073,8 @@ type FractionStop = [ number, number ]
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型      | 说明                                                       |
@@ -1020,6 +1086,8 @@ type FractionStop = [ number, number ]
 前景智能取反色。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1042,6 +1110,8 @@ type FractionStop = [ number, number ]
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称            |  类型                                           | 只读  | 可选  | 说明                                                     |
@@ -1060,6 +1130,8 @@ freeze(value: boolean): T
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1086,6 +1158,8 @@ freeze(freeze: Optional\<boolean>): T
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1131,7 +1205,7 @@ systemMaterial(material: SystemUiMaterial | undefined): T
 
 ## SystemUiMaterial
 
-type SystemUiMaterial = uiMaterial.Material
+type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material
 
 **起始版本：** 26.0.0
 
@@ -1145,7 +1219,35 @@ type SystemUiMaterial = uiMaterial.Material
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| uiMaterial.[Material](../arkts-apis-uimaterial.md#material)     | 系统材质对象。 |
+| import('../api/@ohos.arkui.uiMaterial').default.[Material](../arkts-apis-uimaterial.md#material)     | 系统材质对象。 |
+
+## doubleSided
+
+doubleSided(value: Optional\<boolean>): T
+
+是否绘制组件的双面。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                        | 必填 | 说明                                                         |
+| ------ | -------------------------- | ---- | ------------------------------------------------------------ |
+| value  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean>         | 是   | 是否绘制组件的双面。<br/>设置为true表示组件的正面和背面都是可见的。<br/>设置为false表示组件的正面是可见的，旋转时组件的背面是不可见的。<br/>设置为undefined时效果和设置为true时保持一致，默认开启双面绘制。  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
 
 ## 示例
 
@@ -1644,3 +1746,67 @@ struct Index {
 效果图如下：
 
 ![systemBarEffect](figures/systemBarEffect.png)
+
+### 示例11（设置组件是否双面绘制）
+
+该示例主要演示通过[doubleSided](#doublesided)来设置组件是否双面绘制。
+
+从API版本26.0.0开始，新增doubleSided方法。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct DoubleSided {
+  @State angleY: number = 0;
+  @State isAnimating: boolean = false;
+  @State isDoubleSided: boolean = true;
+  build() {
+    Column({space: 30}) {
+      Text('DoubleSided 背面剔除验证')
+        .fontSize(24)
+        .fontWeight(FontWeight.Bold)
+        .fontColor(Color.White)
+      Stack() {
+        Stack() {
+          Text('FRONT')
+            .fontSize(32)
+            .fontColor(Color.White)
+        }
+        .width(300)
+        .height(300)
+        .backgroundColor(Color.Blue)
+        .border({ width: 2, color: Color.Gray })
+        .doubleSided(this.isDoubleSided)
+        .rotate({ x: 0, y: 1, z: 0, angle: this.angleY})
+      }
+      .width(300)
+      .height(300)
+      Text(`Y轴旋转： ${Math.round(this.angleY)}°`)
+        .fontSize(16)
+        .fontColor(Color.White)
+      Button(this.isAnimating ? '复原' : '翻转')
+        .onClick(() => {
+          if (this.isAnimating) {
+            this.angleY = 0
+            this.isAnimating = false
+          } else {
+            this.isAnimating = true
+            this.angleY = 180
+          }
+        })
+      Button(`doubleSided: ${this.isDoubleSided ? 'true (双面)' : 'false (单面)'}`)
+        .backgroundColor(this.isDoubleSided ? '#4CAF50' : '#F44336')
+        .onClick(() => {
+          this.isDoubleSided = !this.isDoubleSided
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor('#1a1a1a')
+  }
+}
+```
+
+![doubleSidedEffect](figures/doubleSidedEffect.gif)

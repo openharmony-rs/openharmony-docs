@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 OpenLinkOptions可以作为[openLink()](js-apis-inner-application-uiAbilityContext.md#openlink12)的入参，用于标识是否仅打开AppLinking和传递键值对可选参数。
