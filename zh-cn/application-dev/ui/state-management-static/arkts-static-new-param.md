@@ -606,6 +606,7 @@ struct MapSample {
 
 ``` TypeScript
 import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, ForEach, Local, Param, Row, Text } from '@kit.ArkUI';
+
 @ComponentV2
 struct Child {
   @Param message: Set<number> = new Set<number>();
