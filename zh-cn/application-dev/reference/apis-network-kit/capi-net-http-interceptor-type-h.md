@@ -80,7 +80,7 @@ enum OH_Interceptor_Type
 **参数：**
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_TYPE_READ_ONLY | 只读拦截器。**起始版本：** 24。 |
+| OH_TYPE_READ_ONLY | 只读拦截器。|
 
 ### OH_Interceptor_Result
 
