@@ -28,7 +28,7 @@
 
 ### 核心枚举类型
 
-- **[UserAuthType](#userauthtype8)**：认证类型枚举（PIN、FACE、FINGERPRINT）。
+- **[UserAuthType](#userauthtype8)**：认证类型枚举（PIN、FACE、FINGERPRINT、COMPANION_DEVICE ）。
 - **[AuthTrustLevel](#authtrustlevel8)**：认证信任级别枚举（ATL1-ATL4）。
 - **[UserAuthResultCode](#userauthresultcode9)**：认证结果码枚举。
 - **[ReuseMode](#reusemode12)**：认证结果复用模式枚举。
@@ -327,7 +327,7 @@ try {
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | challenge      | Uint8Array                         |  否  |  否  | 随机挑战值，可用于防重放攻击。最大长度为32字节，可传Uint8Array([])。建议使用[加解密算法库框架](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md)生成的随机数作为挑战值，以增强安全性。认证通过后，挑战值会被包含在认证令牌中，业务可通过验证令牌中的挑战值来确认认证结果的有效性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| authType       | [UserAuthType](#userauthtype8)[]   |  否  |  否  | 认证类型列表，用来指定用户认证界面提供的认证方法。可同时指定多种认证类型，如[UserAuthType.PIN, UserAuthType.FACE, UserAuthType.FINGERPRINT]，用户可选择任意一种完成认证。认证类型的选择会影响认证结果复用的匹配条件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| authType       | [UserAuthType](#userauthtype8)[]   |  否  |  否  | 认证类型列表，用来指定用户认证界面提供的认证方法。可同时指定多种认证类型，如[UserAuthType.PIN, UserAuthType.FACE, UserAuthType.FINGERPRINT]，用户可选择任意一种完成认证。认证类型的选择会影响认证结果复用的匹配条件。暂不支持同时发起伴随设备认证和其他认证类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | authTrustLevel | [AuthTrustLevel](#authtrustlevel8) |  否  |  否  | 期望达到的认证可信等级。认证可信等级决定了认证的安全强度，应根据业务场景的安全需求选择合适的等级：<br>- ATL1：适用于业务风控、一般个人数据查询等低安全场景。<br>- ATL2：适用于应用登录、维持设备解锁状态等中等安全场景。<br>- ATL3：适用于设备解锁等较高安全场景。<br>- ATL4：适用于小额支付等高安全场景。<br>典型操作需要的身份认证可信等级，以及身份认证可信等级的划分请参见[认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | reuseUnlockResult<sup>12+</sup> | [ReuseUnlockResult](#reuseunlockresult12) |  否  |  是  | 表示可以复用解锁认证的结果。配置后，若满足复用条件，系统将直接返回之前的认证结果，无需用户再次进行认证交互。默认为不复用。启用认证结果复用可以提升用户体验，但应根据业务场景的安全需求合理配置复用模式和有效时长。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | skipLockedBiometricAuth<sup>20+</sup> | boolean |  否  |  是  | 是否跳过已禁用的认证方式自动切换至其它方式的认证。若无可切换的认证方式则关闭控件，返回认证冻结错误码。<br/>- true：生物认证冻结时，跳过倒计时界面直接切换到其他方式的认证（如从冻结的指纹切换到人脸或PIN）。适用于希望快速完成认证的场景。<br/>- false（默认）：不跳过，用户需要等待冻结倒计时结束后才能继续尝试该认证方式或手动切换。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
@@ -870,10 +870,10 @@ start(): void
 | -------- | ------------------------------------------------ |
 | 201      | Permission denied. Possible causes: <br>1.No permission to access biometric. <br>2.No permission to start authentication from background.|
 | 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
-| 12500001 | Authentication failed. <br> 适用版本：10-19                          |
+| 12500001 | Authentication failed. <br> 适用版本：10-19， 26+                    |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
-| 12500004 | Authentication timeout. <br> 适用版本：10-19                         |
+| 12500004 | Authentication timeout. <br> 适用版本：10-19， 26+                       |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
 | 12500007 | Authentication service is busy. <br> 适用版本：10-19                 |
@@ -2104,7 +2104,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 | PIN<sup>10+</sup>         | 1    | 口令认证。用户通过输入锁屏密码完成认证。锁屏密码认证具有高安全性，认证可信等级可达ATL4，适用于支付、重要操作确认等高安全场景。用户需要手动输入，体验不如生物认证便捷。 |
 | FACE        | 2    | 人脸认证。用户通过人脸识别完成认证，系统会验证用户面部特征与已注册人脸的匹配度。人脸认证支持不同级别的活体检测能力，详细划分原则可参考[生物认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。优点是体验便捷，缺点是对设备和光照条件有一定要求。 |
 | FINGERPRINT | 4    | 指纹认证。用户通过指纹传感器完成认证，系统会验证用户指纹特征与已注册指纹的匹配度。指纹认证支持多种认证可信等级，详细划分原则可参考[生物认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)，适用于中等安全场景。优点是操作简单快捷，缺点是设备需配备指纹传感器，且湿手或指纹磨损可能影响识别效果。 |
-
+| COMPANION_DEVICE<sup>26+</sup>  | 64    | 伴随设备认证。用户通过佩戴的伴随设备完成认证。伴随设备认证支持多种认证可信等级，详细划分原则可参考[生物认证可信等级划分原则](../../security/UserAuthenticationKit/user-authentication-overview.md#生物认证可信等级划分原则)。
 ## AuthTrustLevel<sup>8+</sup>
 
 表示认证结果的信任等级枚举。该枚举定义了四个认证可信等级，用于描述认证结果的安全强度。认证可信等级越高，表示认证方案的活体检测能力越强、用户身份识别越精确，适用于更高安全要求的业务场景。应用应根据业务场景的安全需求选择合适的认证可信等级。
