@@ -22,6 +22,7 @@
 
 1. 导入模块。
    
+   ArkTS-Dyn示例：
    <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
@@ -32,10 +33,22 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = 'ProcessModel';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 2. 根据[动态订阅公共事件](common-event-subscription.md)章节的步骤来订阅某个事件。
 
 3. 调用CommonEvent中的[unsubscribe()](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerunsubscribe)方法取消订阅某事件。
    
+   ArkTS-Dyn示例：
    <!-- @[UnsubscribePublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
@@ -49,6 +62,25 @@
          hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in unsubscribing.`);
          subscriberCustom = null;
        }
+     })
+   }
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[UnsubscribePublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
+   // subscriberCustom为订阅事件时创建的订阅者对象
+   if (subscriberCustom !== null) {
+     commonEventManager.unsubscribe(subscriberCustom as commonEventManager.CommonEventSubscriber,
+       (err: BusinessError | null) => {
+         if (err) {
+           hilog.error(DOMAIN_NUMBER, TAG,
+             `Failed to unsubscribe. code is ${err.code}, message is ${err.message}`);
+         } else {
+           hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in unsubscribing.`);
+           subscriberCustom = null;
+         }
      })
    }
    ```
