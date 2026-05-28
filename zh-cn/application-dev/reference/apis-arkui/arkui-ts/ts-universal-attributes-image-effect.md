@@ -142,7 +142,7 @@ shadow(value: ShadowOptions | ShadowStyle): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用，ArkTS卡片上不支持参数为 [ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)类型。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,7 +172,7 @@ shadow(options: Optional\<ShadowOptions | ShadowStyle>): T
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用，ArkTS卡片上不支持参数为[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明)类型。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
