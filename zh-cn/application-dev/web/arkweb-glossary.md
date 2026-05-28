@@ -496,7 +496,7 @@ Web资源响应类，用于构造自定义资源响应的数据结构。
 
 ### WebNativeMessagingExtensionAbility
 
-Web原生消息扩展能力，为浏览器扩展提供后台服务能力的组件。
+Web原生消息扩展能力，为浏览器扩展提供后台服务的组件。
 
 ### White Screen；白屏
 
