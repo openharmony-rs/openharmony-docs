@@ -42,7 +42,7 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。 |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。       |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。该回调仅在用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下Ctrl键时触发。       |
 
 **错误码：**
 
@@ -81,7 +81,7 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。               |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 回调函数，返回[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
@@ -148,7 +148,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 创建划词面板。使用Promise异步回调。
 
-单个划词应用仅允许创建一个[主面板类型](./js-apis-selectionInput-selectionPanel.md)和一个[菜单面板类型](./js-apis-selectionInput-selectionPanel.md)的窗口。
+单个划词应用仅允许创建一个[MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype)和一个[MAIN_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype)。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -158,8 +158,8 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
-| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前划词面板依赖的上下文信息。 |
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板信息。 |
+| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 当前划词面板依赖的上下文信息。 |
+| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板信息。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -623,7 +623,7 @@ on(type: 'destroyed', callback: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。 |
-| callback | Callback\<void> | 是   | 回调函数。       |
+| callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
 
 **示例：**
 <!--code_no_check-->
@@ -654,7 +654,7 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。               |
-| callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 <!--code_no_check-->
@@ -683,7 +683,7 @@ on(type: 'hidden', callback: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。 |
-| callback | Callback\<void> | 是   | 回调函数，返回当前划词服务的信息。       |
+| callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
 
 **示例：**
 <!--code_no_check-->
@@ -714,7 +714,7 @@ off(type: 'hidden', callback?: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。               |
-| callback | Callback\<void> | 否   | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 <!--code_no_check-->

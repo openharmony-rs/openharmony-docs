@@ -66,7 +66,7 @@ Enumerates the device statuses.
 | ENTER         | 1    | Enter state.  |
 | EXIT | 2   | Exit state.|
 
-## stationary.on('still' | 'relativeStill')
+## stationary.on
 
 on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callback: Callback&lt;ActivityResponse&gt;): void
 
@@ -92,7 +92,7 @@ stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) =
 })
 ```
 
-## stationary.once('still' | 'relativeStill')
+## stationary.once
 
 once(activity: ActivityType, callback: Callback&lt;ActivityResponse&gt;): void
 
@@ -115,7 +115,7 @@ stationary.once('still', (data) => {
 })
 ```
 
-## stationary.off('still' | 'relativeStill')
+## stationary.off
 
 off(activity: ActivityType, event: ActivityEvent, callback?: Callback&lt;ActivityResponse&gt;): void
 

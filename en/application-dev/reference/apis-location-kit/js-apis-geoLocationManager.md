@@ -234,7 +234,7 @@ Location information.
 | altitude | number | No| No| Location altitude, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | accuracy | number | No| No| Location accuracy, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | speed | number | No| No|Speed, in m/s.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| timeStamp | number | No| No| Location timestamp in the UTC format.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| timeStamp | number | No| No| Location timestamp in the UTC format, in milliseconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | direction | number | No| No| Direction information. The value ranges from **0** to **360**, in degrees.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | timeSinceBoot | number | No| No| Timestamp when the location is successfully obtained. The value is the duration from the time when the device is booted to the time when the location is obtained, in nanoseconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | additions | Array&lt;string&gt;| No| Yes| Additional description.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -490,7 +490,7 @@ Defines the Bluetooth scan result.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | deviceId | string | No| No| Address of the device discovered, for example, XX:XX:XX:XX:XX:XX.|
-| rssi | number | No| No| RSSI of the device.|
+| rssi | number | No| No| RSSI of the device discovered, in dBm.|
 | data | ArrayBuffer | No| Yes| Advertising packets sent by the device.|
 | deviceName | string | No| No| Name of the device detected.|
 | connectable | boolean | No| No| Whether the discovered device is connectable. The value **true** means the discovered device is connectable, and the value **false** means the opposite.|

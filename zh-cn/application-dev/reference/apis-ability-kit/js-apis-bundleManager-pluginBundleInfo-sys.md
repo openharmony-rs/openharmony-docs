@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 插件信息，通过接口[bundleManager.getAllPluginInfo](js-apis-bundleManager-sys.md#bundlemanagergetallplugininfo19)获取。
 

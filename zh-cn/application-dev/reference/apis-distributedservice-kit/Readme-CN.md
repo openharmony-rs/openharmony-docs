@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao;@huangkai71-->
 <!--Designer: @gsxiaowen;@lee_jet520-->
 <!--Tester: @hanjiawei;@Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 - ArkTS API<!--distributed-service-arkts-->
   

@@ -360,7 +360,7 @@ async function SetPictureObjMetadata(exifContext: Context) {
       console.error('Failed to set metadata. error.code: ' +JSON.stringify(error.code) + ' ,error.message:' + JSON.stringify(error.message));
     });
   } else {
-    console.error('exifPictureOb is null');
+    console.error('exifPictureObj is null');
   }
 }
 ```

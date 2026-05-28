@@ -1,9 +1,9 @@
 # @ohos.file.picker (Picker)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **Picker** module encapsulates APIs such as **DocumentViewPicker**, **AudioViewPicker**, and **PhotoViewPicker** to provide capabilities of selecting and saving files of different types. An application can select the API as required. The APIs of this module must be called in UIAbility. Otherwise, the **FilePicker**, **AudioPicker**, or **PhotoPicker** cannot be started.
@@ -775,7 +775,7 @@ Defines the options for selecting documents.
 |multiUriArray<sup>15+</sup>  | Array&lt;string&gt;                             |No   |  Yes| Whether to pass the URIs for batch authorization (only files are supported). This parameter is used together with **multiAuthMode** and does not take effect when **multiAuthMode** is set to **false**. By default, this parameter is left empty. (The files displayed on the batch authorization page are empty.)<br> **Device behavior differences**: This parameter can be used on smartphones but has no effect on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 15.<br>**System capability**: SystemCapability.FileManagement.UserFileService|
 |mergeMode<sup>15+</sup>  | [MergeTypeMode](#mergetypemode15)                             |No   |  Yes| Whether to enable the aggregation view mode for a file management application. The default value is **DEFAULT**, indicating that this parameter does not take effect and the aggregation view is disabled. If this parameter is set to a value other than **DEFAULT**, other parameters do not take effect.<br> **Device behavior differences**: This parameter can be used on smartphones but has no effect on other devices.<br>**Atomic service API**: This API can be used in atomic services since API version 15.<br>**System capability**: SystemCapability.FileManagement.UserFileService|
 |isEncryptionSupported<sup>19+</sup>    | boolean |No   |  Yes| Whether to support encryption (only files are supported). The default value is **false**. If this parameter is set to **true**, files can be encrypted on the Picker page.<br>**Atomic service API**: This API can be used in atomic services since API version 19.<br> **System capability**: SystemCapability.FileManagement.UserFileService|
-| allowsMulFolderSelection<sup>24+</sup>       | boolean                                      | No  | Yes| Whether multiple folders can be selected. The value **true** indicates that multiple folders can be selected, and the value **false** indicates the opposite. The default value is **false**.<br>This parameter must be used together with **selectMode**. When **selectMode** is set to **FOLDER** or **MIXED** and **allowsMulFolderSelection** is set to **true**, the function of selecting multiple folders takes effect.<br>**Atomic service API**: This API can be used in atomic services since API version 24.<br>**Model restriction**: This API can be used only in the stage model.<br> **System capability**: SystemCapability.FileManagement.UserFileService.FolderSelection|
+| allowsMulFolderSelection       | boolean                                      | No  | Yes| Whether multiple folders can be selected. The value **true** indicates that multiple folders can be selected, and the value **false** indicates the opposite. The default value is **false**.<br>This parameter must be used together with **selectMode**. When **selectMode** is set to **FOLDER** or **MIXED** and **allowsMulFolderSelection** is set to **true**, the function of selecting multiple folders takes effect.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.<br> **System capability**: SystemCapability.FileManagement.UserFileService.FolderSelection|
 
 ## DocumentPickerMode<sup>12+</sup>
 

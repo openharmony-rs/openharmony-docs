@@ -1,8 +1,8 @@
 # PersistenceV2: 持久化存储UI状态
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -46,7 +46,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 - save：手动持久化数据。
 - notifyOnError：响应序列化或反序列化失败的回调。将数据存入磁盘时，需要对数据进行序列化；当某个key序列化失败时，错误是不可预知的；可调用该接口捕获异常。
 
-以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-stateManagement.md)。
+以上接口详细描述请参考[PersistenceV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)和[AppStorageV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
 
 ## 使用限制
 
@@ -57,7 +57,7 @@ PersistenceV2继承自[AppStorageV2](../../reference/apis-arkui/js-apis-stateMan
 
 2、在API version 23以前，不支持`collections.Set`、`collections.Map`等类型。
 
-- 从API version 23开始， 提供globalConnect接口，支持[`collections.Set`](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[`collections.Map`](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)和[`collections.Array`](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
+- 从API version 23开始，提供globalConnect接口，支持[collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)和[collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)。`collections.Set`、`collections.Map`和`collections.Array`本身无法观察，在globalConnect接口使用defaultCreator时，需要使用[UIUtils.makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)，才能在值变化时自动保存，如果不使用，开发者需要手动调用[PersistenceV2.save(key)](../../reference/apis-arkui/js-apis-stateManagement.md#save)保存变化的数据。
 
    如下是新增接口globalConnect支持collections.Array的示例代码:
     
@@ -407,6 +407,8 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
 - 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+
+14、不支持在使用connect或globalConnect的类中使用[\@Computed](./arkts-new-computed.md)。\@Computed为只读属性，不支持赋值操作，因此会导致反序列化失败。
 
 ## globalConnect支持的类型
 

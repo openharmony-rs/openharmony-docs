@@ -1,14 +1,14 @@
 # MDM Kit简介
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 业务介绍
 
-MDM Kit（企业设备管理服务）为企业MDM（Mobile Device Management）应用提供设备管理API，用于管理并保护公司设备上的数据和应用程序。[MDM应用](./mdm-kit-term.md#mdm应用设备管理应用)可以通过集中管理、远程配置和监控来保障设备和数据的安全性和稳定性。它广泛应用于企业和政府机构，以确保员工和客户使用的设备和数据受到保护，实现企业高效管理、安全使用设备。
+MDM Kit（企业设备管理服务）为企业MDM（Mobile Device Management）应用提供设备管理API，用于管理并保护公司设备上的数据和应用程序。[MDM应用](./mdm-kit-term.md#mdm应用)可以通过集中管理、远程配置和监控来保障设备和数据的安全性和稳定性。它广泛应用于企业和政府机构，以确保员工和客户使用的设备和数据受到保护，实现企业高效管理、安全使用设备。
 
 ## 场景介绍
 - 企业派发设备场景（COPE）：指企业统一购买笔记本电脑、平板电脑、智能手机等设备，并将这些设备分发给企业员工使用，这类设备的所属权属于企业，企业对这类设备进行统一管理。

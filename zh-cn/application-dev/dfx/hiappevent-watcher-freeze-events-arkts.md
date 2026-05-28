@@ -89,6 +89,8 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
             // 开发者可以获取到应用冻屏事件发生时应用的前后台状态
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
+            // 开发者可以获取到应用冻屏事件发生时应用的唯一关联id
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
             // 开发者可以获取到应用冻屏事件发生时应用的版本信息
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
             // 开发者可以获取到应用冻屏事件发生时应用的包名
@@ -156,6 +158,7 @@
    HiAppEvent eventInfo.eventType=1
    HiAppEvent eventInfo.params.time=1711440881768
    HiAppEvent eventInfo.params.foreground=true
+   HiAppEvent eventInfo.params.app_running_unique_id=215456512336951247
    HiAppEvent eventInfo.params.bundle_version=1.0.0
    HiAppEvent eventInfo.params.bundle_name=com.example.myapplication
    HiAppEvent eventInfo.params.process_name=com.example.myapplication

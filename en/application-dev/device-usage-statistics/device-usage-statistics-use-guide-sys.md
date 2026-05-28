@@ -1,7 +1,7 @@
 # Device Usage Statistics Development (for System Applications Only)
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->

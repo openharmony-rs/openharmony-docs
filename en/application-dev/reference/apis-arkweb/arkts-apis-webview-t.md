@@ -1,8 +1,8 @@
 # Types
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc; @aohui; @zourongchun-->
-<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -37,7 +37,7 @@ Defines a callback triggered when the proxy is set successfully.
 
 For details about the sample code, see [removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride15).
 
-## CreateNativeMediaPlayerCallback<sup>12+<sup>
+## CreateNativeMediaPlayerCallback<sup>12+</sup>
 
 type CreateNativeMediaPlayerCallback = (handler: NativeMediaPlayerHandler, mediaInfo: MediaInfo) => NativeMediaPlayerBridge
 

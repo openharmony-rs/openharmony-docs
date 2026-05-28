@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @xhz-sz-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 UIServiceExtensionContext模块是[UIServiceExtension](js-apis-app-ability-uiServiceExtensionAbility-sys.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 
@@ -305,6 +305,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 16000006   | Cross-user operations are not allowed.         |
 | 16000008   | The crowdtesting application expires.        |
 | 16000011   | The context does not exist.         |
+| 16000012 | The application is controlled. |
 | 16000013   | The application is controlled by EDM.       |
 | 16000050   | Internal error.        |
 | 16000053   | The ability is not on the top of the UI.        |

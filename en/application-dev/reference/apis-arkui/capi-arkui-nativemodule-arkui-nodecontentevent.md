@@ -1,8 +1,8 @@
 # ArkUI_NodeContentEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_NodeContentEvent ArkUI_NodeContentEvent
 
 ## Overview
 
-Defines the general structure type for **NodeContent** events.
+Defines a node content event. This is a general struct type.
 
 **Since**: 12
 

@@ -31,7 +31,7 @@
 | [ArkWeb_SchemeHandler_](capi-web-arkweb-schemehandler.md) | ArkWeb_SchemeHandler | 该类用于拦截指定scheme的请求。 |
 | [ArkWeb_ResourceHandler_](capi-web-arkweb-resourcehandler.md) | ArkWeb_ResourceHandler | 用于被拦截的URL请求。可以通过ArkWeb_ResourceHandler发送自定义请求头以及自定义请求体。 |
 | [ArkWeb_Response_](capi-web-arkweb-response.md) | ArkWeb_Response | 为被拦截的请求构造一个ArkWeb_Response。 |
-| [ArkWeb_ResourceRequest_](capi-web-arkweb-resourcerequest.md) | ArkWeb_ResourceRequest | 对应内核的一个请求，可以通过OH_ArkWeb_ResourceRequest获取请求的URL、method、post data以及其他信息。 |
+| [ArkWeb_ResourceRequest_](capi-web-arkweb-resourcerequest.md) | ArkWeb_ResourceRequest | 对应内核的一个请求，可以通过OH_ArkWebResourceRequest_系列接口获取请求的URL、method、post data以及其他信息。如通过[OH_ArkWebResourceRequest_GetUrl](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_geturl)获取请求的URL。 |
 | [ArkWeb_RequestHeaderList_](capi-web-arkweb-requestheaderlist.md) | ArkWeb_RequestHeaderList | 请求头列表。 |
 | [ArkWeb_HttpBodyStream_](capi-web-arkweb-httpbodystream.md) | ArkWeb_HttpBodyStream | 请求的上传数据。使用OH_ArkWebHttpBodyStream_接口来读取上传的数据。 |
 
@@ -68,7 +68,7 @@
 | [int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamReadCallback readCallback)](#oh_arkwebhttpbodystream_setasyncreadcallback) | - | 为OH_ArkWebHttpBodyStream_AsyncRead设置回调函数。OH_ArkWebHttpBodyStream_AsyncRead的结果将通过readCallback通知给开发者。<br>该回调函数将在与OH_ArkWebHttpBodyStream_AsyncRead相同的线程中运行。 |
 | [int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream,ArkWeb_HttpBodyStreamInitCallback initCallback)](#oh_arkwebhttpbodystream_init) | - | 初始化ArkWeb_HttpBodyStream。在调用任何其他函数之前，必须调用此函数。该接口需要在IO线程调用。 |
 | [void OH_ArkWebHttpBodyStream_Read(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)](#oh_arkwebhttpbodystream_read) | - | 将请求的上传数据读取到buffer。buffer的大小必须大于bufLen。我们将从工作线程读取数据到buffer，因此在回调函数返回之前，不应在其他线程中使用buffer，以避免并发问题。 |
-| [void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)](#oh_arkwebhttpbodystream_asyncread) | - | 将请求的上传数据读取到buffer。buffer的大小必须大于bufLen。数据将从工作线程读取数据到buffer，因此在回调函数返回之前，不应在其他线程中使用buffer，以避免并发问题。 |
+| [void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bufLen)](#oh_arkwebhttpbodystream_asyncread) | - | 将请求的上传数据读取到buffer。buffer的大小必须大于bufLen。数据将从工作线程读取到buffer，因此在回调函数返回之前，不应在其他线程中使用buffer，以避免并发问题。 |
 | [uint64_t OH_ArkWebHttpBodyStream_GetSize(const ArkWeb_HttpBodyStream* httpBodyStream)](#oh_arkwebhttpbodystream_getsize) | - | 获取httpBodyStream的大小。当数据以分块的形式传输或httpBodyStream无效时，始终返回0。 |
 | [uint64_t OH_ArkWebHttpBodyStream_GetPosition(const ArkWeb_HttpBodyStream* httpBodyStream)](#oh_arkwebhttpbodystream_getposition) | - | 获取httpBodyStream当前的读取位置。 |
 | [bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStream)](#oh_arkwebhttpbodystream_ischunked) | - | 获取httpBodyStream是否采用分块传输。 |

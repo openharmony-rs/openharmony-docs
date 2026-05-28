@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AgentCard相当于Agent(智能体)的"名片"，用于描述Agent的能力和技能，由开发者在Agent的配置文件agent_config.json中配置。
 
@@ -35,6 +35,7 @@ import { common } from '@kit.AbilityKit';
 | agentId | string | 否 | 否 | Agent的唯一标识符，在同一个应用下面agentId不可重复。 |
 | name                  | string                                                   | 否   | 否   | Agent的名称。使用方一般用于在UI界面中展示给用户，例如"Recipe Assistant"（食谱助手）。 |
 | description           | string                                                   | 否   | 否   | Agent功能的描述。该描述应清晰说明Agent的核心功能和用途，帮助用户理解Agent能做什么，例如"帮助用户搜索食谱、规划菜单并提供烹饪建议"。 |
+| type  | [agentConstant.AgentCardType](js-apis-app-agent-agentConstant.md#agentconstantagentcardtype) | 否 | 是 | AgentCard的类型。<!--Del-->当[agentConstant.AgentCardType](js-apis-app-agent-agentConstant-sys.md#agentconstantagentcardtype)的枚举值为LOW_CODE时，对应的应用必须是系统应用，否则Agent卡片无法注册、安装或更新。<!--DelEnd-->如果未指定，默认为APP类型。 <br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 | provider | [AgentProvider](#agentprovider) | 否 | 是 | Agent的服务提供商信息，包含提供商的组织名称和官方网站URL，用于标识Agent的来源和版权信息。 |
 | version | string | 否 | 否 | Agent的版本号。遵循语义化版本规范（如"1.0.0"），格式由提供商定义。版本号用于标识Agent的功能迭代和兼容性变化。 |
 | documentationUrl           | string                                                   | 否   | 是   | Agent文档的URL。提供详细的Agent使用文档、API说明、示例和最佳实践指南，帮助开发者更好地集成和使用该Agent。 |

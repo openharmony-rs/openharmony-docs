@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @Fouckttt1-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 

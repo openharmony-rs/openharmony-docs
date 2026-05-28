@@ -247,6 +247,7 @@ struct Index {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
+          // 使用mutableBuilder显示弹出菜单
           .bindMenu(this.mutableBuilderMenu.builder)
         }, (item: number) => JSON.stringify(item))
       }

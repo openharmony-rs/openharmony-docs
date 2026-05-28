@@ -1008,7 +1008,7 @@ udp.off('error');
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| address<sup>11+</sup> | string | 否   | 否   | 本地绑定的ip地址。                                           |
+| address<sup>11+</sup> | string | 否   | 否   | IP地址。                                           |
 | port    | number | 否   | 否   | 端口号 ，范围0~65535。如果不指定系统随机分配端口。           |
 | family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPV6类型，该字段必须被显式指定为2。<br />- 3：Domain<sup>18+</sup>。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
 
@@ -1089,7 +1089,7 @@ Socket的连接信息。
 
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| address | string | 否   | 否   | 本地绑定的ip地址。                                           |
+| address | string | 否   | 否   | 对端的IP地址。                                           |
 | family  | 'IPv4' \| 'IPv6' | 否   | 否  | 网络协议类型，可选类型：<br />- IPv4<br />- IPv6<br />默认为IPv4。 |
 | port    | number | 否   | 否  | 端口号，范围0~65535。                                        |
 | size    | number | 否   | 否  | 服务器响应信息的字节长度。                                   |
@@ -1123,6 +1123,54 @@ let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance(
 ## MulticastSocket<sup>11+</sup>
 
 MulticastSocket连接。在调用MulticastSocket的方法前，需要先通过[socket.constructMulticastSocketInstance](#socketconstructmulticastsocketinstance11)创建MulticastSocket对象。
+
+### setReuseAddress
+
+setReuseAddress(reuse: boolean): void
+
+设置多播Socket是否支持地址复用。使用同步方式调用。
+
+> **说明：**
+> 用于控制多播Socket绑定端口时是否开启地址复用能力。
+> 如需绑定已被占用的端口，确保占用方开启了地址复用能力，同时本业务也需在调用[bind](#bind)前调用本接口以开启地址复用能力。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名         | 类型    | 必填 | 说明                         |
+| ------------- | ------- | ---- | ---------------------------- |
+| reuse         | boolean |  是  | 是否开启地址复用。true表示开启，false表示关闭。 |
+
+**示例：**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+let bindAddr: socket.NetAddress = {
+  // 0.0.0.0 表示绑定本机所有IPv4网络接口上的 8080 端口，常用于多播场景接收该端口的数据。
+  address: '0.0.0.0',
+  port: 8080
+}
+
+try {
+  multicast.setReuseAddress(true);
+  multicast.bind(bindAddr).then(() => {
+    console.info('setReuseAddress success');
+  }).catch((err: BusinessError) => {
+    console.error(`bind failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setReuseAddress failed, code is ${error.code}, message is ${error.message}`);
+}
+```
 
 ### addMembership<sup>11+</sup>
 
@@ -1980,7 +2028,7 @@ tcp.connect(tcpconnectoptions, (err: BusinessError) => {
 
 connect(options: TCPConnectOptions): Promise\<void\>
 
-连接到指定的IP地址和端口。使用promise异步回调。
+连接到指定的IP地址和端口。使用Promise异步回调。
 
 > **说明：**
 > 在没有执行tcp.bind的情况下，也可以直接调用该接口完成与TCP服务端的连接。
@@ -3000,7 +3048,7 @@ TCPSocket发送请求的参数。
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | data     | string\| ArrayBuffer  | 否   | 否   | 发送的数据。                                                 |
-| encoding | string | 否   | 是   | 字符编码(UTF-8，UTF-16BE，UTF-16LE，UTF-16，US-AECII，ISO-8859-1)，默认为UTF-8。 |
+| encoding | string | 否   | 是   | 字符编码(UTF-8，UTF-16BE，UTF-16LE，UTF-16，US-ASCII，ISO-8859-1)，默认为UTF-8。 |
 
 ## TCPExtraOptions
 
@@ -4487,7 +4535,7 @@ LocalSocket连接。在调用LocalSocket的方法前，需要先通过[socket.co
 
 bind(address: LocalAddress): Promise\<void\>;
 
-绑定本地套接字文件的路径。使用promise异步回调。
+绑定本地套接字文件的路径。使用Promise异步回调。
 
 > **说明：**
 > bind方法可以使客户端确保有个明确的本地套接字路径，显式的绑定一个本地套接字文件。
@@ -4546,7 +4594,7 @@ client.bind(address).then(() => {
 
 connect(options: LocalConnectOptions): Promise\<void\>
 
-连接到指定的套接字文件。使用promise异步回调。
+连接到指定的套接字文件。使用Promise异步回调。
 
 > **说明：**
 > 在没有执行localsocket.bind的情况下，也可以直接调用该接口完成与LocalSocket服务端的连接。
@@ -5351,8 +5399,8 @@ Socket套接字的基础属性。
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | receiveBufferSize | number  | 否   | 是   | 接收缓冲区大小（单位：Byte），取值范围0~262144，不设置或设置的值超过取值范围则会默认为8192。     |
 | sendBufferSize    | number  | 否   | 是   | 发送缓冲区大小（单位：Byte），取值范围0~262144，不设置或设置的值超过取值范围则会默认为8192。     |
-| reuseAddress      | boolean | 否   | 是   | 是否重用地址。true：重用地址；false：不重用地址。                   |
-| socketTimeout     | number  | 否   | 是   | 套接字超时时间，单位毫秒（ms）。    |
+| reuseAddress      | boolean | 否   | 是   | 是否重用地址。true：重用地址；false：不重用地址。默认值为false。                   |
+| socketTimeout     | number  | 否   | 是   | 套接字超时时间，单位毫秒（ms）。默认值为0，表示不设置超时时间。    |
 
 ## socket.constructLocalSocketServerInstance<sup>11+</sup>
 

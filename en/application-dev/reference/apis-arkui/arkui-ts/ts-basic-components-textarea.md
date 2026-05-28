@@ -57,7 +57,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 >
 >  The default value of the universal attribute [padding](ts-universal-attributes-size.md#padding) is as follows:<br>{<br>&nbsp;top: '8vp',<br>&nbsp;right: '16vp',<br>&nbsp;bottom: '8vp',<br>&nbsp;left: '16vp'<br> }
 >
->  Since API version 11, **.width('auto')** can be set for the **TextArea** component. Under this setting, the component auto-adapts its width to the text width, while respecting the **constraintSize** configuration and the maximum and minimum width restrictions received by the parent container. For details, see [Size](ts-universal-attributes-size.md).
+>  Since API version 11, **.width('auto')** can be set for the **TextArea** component. Under this setting, the component auto-adapts its width to the text width, while respecting the **constraintSize** configuration and the maximum and minimum width restrictions received by the parent container. For details, see [Sizing](ts-universal-attributes-size.md).
 
 ### placeholderColor
 

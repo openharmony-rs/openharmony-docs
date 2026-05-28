@@ -1,9 +1,9 @@
 # Color Inversion Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @demon_coffee-->
-<!--Tester: @demon_coffee-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**

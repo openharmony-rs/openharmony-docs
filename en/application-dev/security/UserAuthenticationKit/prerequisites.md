@@ -21,6 +21,6 @@ Before you get started, learn about the development process.
 
 ## Requesting Permissions
 
-The application capable of user authentication based on biometric features (such as face and fingerprints) must have the ohos.permission.ACCESS_BIOMETRIC permission.
+Before developing an application capable of user authentication based on biometric features (such as face and fingerprints), you must apply for the ohos.permission.ACCESS_BIOMETRIC permission.
 
 This permission is a system_grant permission and must be declared in the **requestPermissions** tag in the **module.json5** file. For details, see [Declaring Permissions](../AccessToken/declare-permissions.md).

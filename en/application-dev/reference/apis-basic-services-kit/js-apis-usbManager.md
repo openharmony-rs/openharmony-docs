@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **usbManager** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control on the host side as well as USB interface management, and function switch and query on the device side.
 
@@ -873,7 +873,7 @@ Cancels an asynchronous USB data transfer request.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| Only the [USBDevicePipe](#usbdevicepipe) and [USBEndpoint](#usbendpoint) parameters should be specified in this API.|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | Yes| This parameter is the same as the input parameter object of the [usbManager.usbSubmitTransfer](#usbmanagerusbsubmittransfer18) API.|
 
 **Error codes**
 

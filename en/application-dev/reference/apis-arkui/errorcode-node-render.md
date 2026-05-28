@@ -1,8 +1,8 @@
 # Render Node Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -153,4 +153,3 @@ The node is not adopted, making its RenderNode inaccessible.
 **Solution**
 
 Use the [OH_ArkUI_NativeModule_AdoptChild](./capi-native-node-h.md#oh_arkui_nativemodule_adoptchild) API to have the node adopted by another node before obtaining its RenderNode.
-<!--no_check-->

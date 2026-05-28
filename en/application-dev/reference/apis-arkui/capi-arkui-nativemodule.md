@@ -1,8 +1,8 @@
 # ArkUI_NativeModule
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
-<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Owner: @piggyguy; @wangyang2022-->
+<!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -32,6 +32,7 @@ Provides UI capabilities of ArkUI on the native side, such as UI component creat
 | [native_interface.h](capi-native-interface-h.md) | Declares a unified entry for the native module APIs.|
 | [native_interface_focus.h](capi-native-interface-focus-h.md) | Declares APIs for focus management, mainly used for actively transferring focus, managing the default focus transfer behavior, and controlling the focus activation state.|
 | [native_key_event.h](capi-native-key-event-h.md) | Declares the APIs of **NativeKeyEvent**.|
+| [native_material.h](capi-native-material-h.md) | Provides immersive material types and API declarations for ArkUI on the native side.|
 | [native_node.h](capi-native-node-h.md) | Declares the APIs of **NativeNode**.|
 | [native_node_napi.h](capi-native-node-napi-h.md) | Declares the functions used to convert FrameNodes on the ArkTS side into NodeHandles.|
 | [native_type.h](capi-native-type-h.md) | Defines the common types for the native module.|

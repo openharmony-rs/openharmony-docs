@@ -52,6 +52,14 @@ Provides C APIs for IPC serialization and deserialization.
 | [int OH_IPCParcel_ReadInt32(const OHIPCParcel *parcel, int32_t *value)](#oh_ipcparcel_readint32) | - | Reads an int32_t value from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteInt64(OHIPCParcel *parcel, int64_t value)](#oh_ipcparcel_writeint64) | - | Writes an int64_t value to an **OHIPCParcel** object.|
 | [int OH_IPCParcel_ReadInt64(const OHIPCParcel *parcel, int64_t *value)](#oh_ipcparcel_readint64) | - | Reads an int64_t value from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)](#oh_ipcparcel_writeuint8) | - | Writes a uint8_t value to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)](#oh_ipcparcel_readuint8) | - | Reads a uint8_t value from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)](#oh_ipcparcel_writeuint16) | - | Writes a uint16_t value to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)](#oh_ipcparcel_readuint16) | - | Reads a uint16_t value from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)](#oh_ipcparcel_writeuint32) | - | Writes a uint32_t value to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)](#oh_ipcparcel_readuint32) | - | Reads a uint32_t value from an **OHIPCParcel** object.|
+| [int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)](#oh_ipcparcel_writeuint64) | - | Writes a uint64_t value to an **OHIPCParcel** object.|
+| [int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)](#oh_ipcparcel_readuint64) | - | Reads a uint64_t value from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteFloat(OHIPCParcel *parcel, float value)](#oh_ipcparcel_writefloat) | - | Writes a float value to an **OHIPCParcel** object.|
 | [int OH_IPCParcel_ReadFloat(const OHIPCParcel *parcel, float *value)](#oh_ipcparcel_readfloat) | - | Reads a float value from an **OHIPCParcel** object.|
 | [int OH_IPCParcel_WriteDouble(OHIPCParcel *parcel, double value)](#oh_ipcparcel_writedouble) | - | Writes a double value to an **OHIPCParcel** object.|
@@ -527,6 +535,222 @@ Reads an int64_t value from an **OHIPCParcel** object.
 | ------ | ---- |
 | const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
 | int64_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.|
+
+### OH_IPCParcel_WriteUint8()
+
+```C
+int OH_IPCParcel_WriteUint8(OHIPCParcel *parcel, uint8_t value)
+```
+
+**Description**
+
+Writes a uint8_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint8_t value | Value to write.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.|
+
+### OH_IPCParcel_ReadUint8()
+
+```C
+int OH_IPCParcel_ReadUint8(const OHIPCParcel *parcel, uint8_t *value)
+```
+
+**Description**
+
+Reads a uint8_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint8_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.|
+
+### OH_IPCParcel_WriteUint16()
+
+```C
+int OH_IPCParcel_WriteUint16(OHIPCParcel *parcel, uint16_t value)
+```
+
+**Description**
+
+Writes a uint16_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint16_t value | Value to write.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.|
+
+### OH_IPCParcel_ReadUint16()
+
+```C
+int OH_IPCParcel_ReadUint16(const OHIPCParcel *parcel, uint16_t *value)
+```
+
+**Description**
+
+Reads a uint16_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint16_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.|
+
+### OH_IPCParcel_WriteUint32()
+
+```C
+int OH_IPCParcel_WriteUint32(OHIPCParcel *parcel, uint32_t value)
+```
+
+**Description**
+
+Writes a uint32_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint32_t value | Value to write.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.|
+
+### OH_IPCParcel_ReadUint32()
+
+```C
+int OH_IPCParcel_ReadUint32(const OHIPCParcel *parcel, uint32_t *value)
+```
+
+**Description**
+
+Reads a uint32_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint32_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_READ_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the read operation fails.|
+
+### OH_IPCParcel_WriteUint64()
+
+```C
+int OH_IPCParcel_WriteUint64(OHIPCParcel *parcel, uint64_t value)
+```
+
+**Description**
+
+Writes a uint64_t value to an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint64_t value | Value to write.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| int | Returns [OH_IPC_ErrorCode#OH_IPC_SUCCESS](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the operation is successful.<br> Returns [OH_IPC_ErrorCode#OH_IPC_CHECK_PARAM_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if invalid parameters are found.<br> Returns [OH_IPC_ErrorCode#OH_IPC_PARCEL_WRITE_ERROR](capi-ipc-error-code-h.md#oh_ipc_errorcode) if the write operation fails.|
+
+### OH_IPCParcel_ReadUint64()
+
+```C
+int OH_IPCParcel_ReadUint64(const OHIPCParcel *parcel, uint64_t *value)
+```
+
+**Description**
+
+Reads a uint64_t value from an **OHIPCParcel** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| ------ | ---- |
+| const [OHIPCParcel](capi-ohipcparcel.md) *parcel | Pointer to the **OHIPCParcel** object. It cannot be NULL.|
+| uint64_t *value | Pointer to the buffer for holding the read data. It cannot be NULL.|
 
 **Returns**
 

@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -124,7 +124,7 @@ import { image } from '@kit.ImageKit';
 | meteringMode                        | number                                             | 否   | 是   | 测光模式。                                                   |
 | lightSource                         | number                                             | 否   | 是   | 光源。                                                       |
 | flash                               | number                                             | 否   | 是   | 闪光。                                                       |
-| focalLength                         | number                                             | 否   | 是   | 焦距。单位为毫米。                                                       |
+| focalLength                         | number                                             | 否   | 是   | 焦距。单位为毫米（mm）。                                                       |
 | subjectArea                         | number[]                                           | 否   | 是   | 用于指示主要对象在整个场景中的位置和区域。                   |
 | makerNote                           | ArrayBuffer                                        | 否   | 是   | Exif/相机文件系统设计规则DCF（Design rule for Camera File system）写入器制造商记录所需信息的标签。                     |
 | userComment                         | string                                             | 否   | 是   | 用户评论。                                                   |
@@ -193,7 +193,7 @@ static createInstance(): ExifMetadata
 async function exifMetadataCreateInstance(context: Context) {
   let exifMetadata = image.ExifMetadata.createInstance();
   if (exifMetadata != undefined) {
-    console.info("createInstance success");
+    console.info("createInstance successfully.");
   }
 }
 ```
@@ -234,11 +234,11 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -251,7 +251,7 @@ async function exifMetadataGetProperties(context: Context) {
     await metaData.exifMetadata.getProperties(["ImageWidth", "ImageLength"]).then((data) => {
       console.info('Get properties ',JSON.stringify(data));
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -295,11 +295,11 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -314,7 +314,7 @@ async function exifMetadataSetProperties(context: Context) {
       "ImageLength": "300"
     };
     await metaData.exifMetadata.setProperties(setkey).then(async () => {
-      console.info('Set properties success.');
+      console.info('Succeeded in setting properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -344,11 +344,11 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -363,7 +363,7 @@ async function exifMetadataGetAllProperties(context: Context) {
       console.info('Metadata have ', count, ' properties');
       console.info(`Get metadata all properties: ${data}`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -391,11 +391,11 @@ clone(): Promise\<ExifMetadata>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -409,7 +409,7 @@ async function exifMetadataClone(context: Context) {
     new_metadata.getProperties(["ImageWidth"]).then((data1) => {
       console.info(`Clone new_metadata and get Properties: ${data1}`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone new_metadata. error.code: ${err.code}, error.message: ${err.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -436,11 +436,11 @@ getBlob(): Promise\<ArrayBuffer>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -452,7 +452,7 @@ async function exifMetadataGetBlob(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     let blob = await metaData.exifMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
     }
   }
 }
@@ -491,11 +491,11 @@ setBlob(blob: ArrayBuffer): Promise\<void>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
-  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   const fd: number = file?.fd;
   return fd;
 }
@@ -507,7 +507,7 @@ async function exifMetadataSetBlob(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     let blob = await metaData.exifMetadata.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
       metaData.exifMetadata.setBlob(blob);
     }
     let new_blob = metaData.exifMetadata.getBlob();

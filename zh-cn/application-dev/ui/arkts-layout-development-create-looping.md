@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 

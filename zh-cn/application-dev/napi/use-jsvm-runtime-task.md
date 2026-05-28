@@ -1,7 +1,7 @@
 # 使用JSVM-API接口创建多个引擎执行JS代码并销毁
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->

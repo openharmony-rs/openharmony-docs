@@ -195,6 +195,25 @@ Represents a vector including three values: x, y, and z.
 | y    | number | No  | No  | Rotation angle along the y-axis.<br>Value range: (-∞, +∞).|
 | z    | number | No  | No  | Rotation angle along the z-axis.<br>Value range: (-∞, +∞).|
 
+## Vector4
+
+Defines a vector that contains the x, y, z, and w coordinate values.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type  | Read-Only| Optional| Description    |
+| ---- | ------ | ---- | ---- | -------- |
+| x    | number | No | No  | X coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| y    | number | No | No  | Y coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| z    | number | No | No  | Z coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| w    | number | No | No  | W coordinate value of the vector.<br>Value range: (-∞, +∞).|
+
 ## Vector2T\<T><sup>12+</sup>
 
 Represents a vector of the T type that contains two values: x and y.

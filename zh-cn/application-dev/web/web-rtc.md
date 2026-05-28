@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @qq_42700029-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -50,9 +50,9 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
     ]
    ```
 
-通过在JavaScript中调用W3C标准协议接口navigator.mediaDevices.getUserMedia()，该接口用于拉起摄像头和麦克风。constraints参数是一个包含了video和audio两个成员的MediaStreamConstraints对象，用于说明请求的媒体类型。
+通过在JavaScript中调用W3C标准协议接口navigator.mediaDevices.getUserMedia()，该接口用于打开摄像头和麦克风。constraints参数是一个包含了video和audio两个成员的MediaStreamConstraints对象，用于说明请求的媒体类型。
 
-在下面的示例中，点击前端页面中的开启摄像头按钮再点击onConfirm，打开摄像头和麦克风。
+在下面的示例中，单击前端界面中的开启摄像头按钮再单击onConfirm，打开摄像头和麦克风。
 
 - 应用侧代码。
   <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
@@ -114,7 +114,7 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
   }
   ```
 
-- 前端页面index.html代码。
+- 前端界面index.html代码。
 
   ```html
   <!-- index.html -->

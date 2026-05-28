@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct Ability_ChildProcessConfigs Ability_ChildProcessConfigs

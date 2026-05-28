@@ -1,7 +1,7 @@
-# ArkUI_NodeAttributeType（文本类组件相关属性）
+# ArkUI_NodeAttributeType（文本显示类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## 概述
 
-定义ArkUI在Native侧可以设置的文本类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。
+定义ArkUI在Native侧可以设置的文本显示类组件相关属性样式集合，包含Text、Span、ImageSpan等组件属性设置。
 
 **起始版本：** 12
 
@@ -1085,7 +1085,7 @@ NODE_TEXT_LAYOUT_MANAGER = 1043
 
 | 类型 | 说明 |
 | -- | -- |
-| .object | 文本布局管理器对象，参数类型为[ArkUI_LayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)。 |
+| .object | 文本布局管理器对象，参数类型为[ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)。 |
 
 ## NODE_TEXT_EDIT_MENU_OPTIONS
 
@@ -1318,6 +1318,25 @@ NODE_TEXT_SELECTED_DRAG_PREVIEW_STYLE = 1053
 | 类型 | 说明 |
 | -- | -- |
 | .object | 文本选中状态下的拖拽预览样式。参数类型为[ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)。 |
+
+## NODE_TEXT_CONTROLLER
+
+```c
+NODE_TEXT_CONTROLLER = 1054
+```
+
+设置文本的控制器。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .object | 文本的控制器，参数类型为[ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)。 |
+
 
 ## NODE_SPAN_CONTENT
 

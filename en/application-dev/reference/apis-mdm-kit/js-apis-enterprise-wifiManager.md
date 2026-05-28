@@ -2,9 +2,9 @@
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **wifiManager** module provides Wi-Fi management capabilities for enterprise devices, including obtaining the Wi-Fi status.
 
@@ -915,8 +915,7 @@ Represents Wi-Fi access information containing Service Set Identifier (SSID) and
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name         | Type                            | Read-Only| Optional| Description                                                       |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | ssid          | string                           | No  | No| Name of the Wi-Fi hotspot. The encoding format is UTF-8 and the maximum length is 32 bytes (three bytes for each Chinese character and one byte for each English character).          |
@@ -1026,6 +1025,10 @@ Represents EAP profile (configuration) information.
 ## EapMethod
 
 Enumerates the EAP authentication methods.
+
+> **NOTE**
+>
+> Currently, only the EAP_PEAP and EAP_TLS authentication methods are supported.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 

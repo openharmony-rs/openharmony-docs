@@ -197,6 +197,122 @@ if (avScreenCaptureRecorder != undefined) {
 }
 ```
 
+## pauseRecording
+
+pauseRecording(): Promise\<void>
+
+Pauses screen recording. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value**
+
+| Type          | Description                            |
+| -------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                       |
+| -------- | -------------------------------- |
+| 5400102  | Operation not be permitted. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Initialize avScreenCaptureRecorder.
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// Other processes.
+
+// Call the pauseRecording method.
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.pauseRecording().then(() => {
+    console.info('Succeeded in pausing avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to pause avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+## resumeRecording
+
+resumeRecording(): Promise\<void>
+
+Resumes screen recording. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+**Return value**
+
+| Type         | Description                            |
+| -------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                       |
+| -------- | -------------------------------- |
+| 5400102  | Operation not be permitted. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Initialize avScreenCaptureRecorder.
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// Other processes.
+
+// Call the resumeRecording method.
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.resumeRecording().then(() => {
+    console.info('Succeeded in resuming avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to resume avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
 ## skipPrivacyMode<sup>12+</sup>
 
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>

@@ -38,7 +38,7 @@
 
 | 名称  | 描述   |
 |--------------|-----------|
-| [OH_DISPLAY_NAME_LENGTH](#oh_display_name_length)  32 | 屏幕名称的最大长度。 |
+| OH_DISPLAY_NAME_LENGTH 32| 屏幕名称的最大长度。<br>**起始版本：** 14 |
 
 ### 枚举
 
@@ -50,20 +50,6 @@
 | [NativeDisplayManager_FoldDisplayMode](#nativedisplaymanager_folddisplaymode) | NativeDisplayManager_FoldDisplayMode | 可折叠设备的显示模式枚举。 |
 | [NativeDisplayManager_DisplayState](#nativedisplaymanager_displaystate) | NativeDisplayManager_DisplayState | 显示设备的状态枚举。 |
 | [NativeDisplayManager_SourceMode](#nativedisplaymanager_sourcemode) | NativeDisplayManager_SourceMode | 设备的显示模式枚举。 |
-
-## 宏定义说明
-
-### OH_DISPLAY_NAME_LENGTH
-
-```c
-#define OH_DISPLAY_NAME_LENGTH 32
-```
-
-**描述**
-
-屏幕名称的最大长度。
-
-**起始版本：** 14
 
 ## 枚举类型说明
 

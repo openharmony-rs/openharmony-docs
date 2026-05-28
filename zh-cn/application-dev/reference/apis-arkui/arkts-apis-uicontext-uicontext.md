@@ -1,8 +1,8 @@
 # Class (UIContext)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,6 +11,8 @@ UIContext实例对象。
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
@@ -839,7 +841,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 在组件出现和消失时，可以通过[组件内转场](../apis-arkui/arkui-ts/ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[显式动画](./arkui-ts/ts-explicit-animation.md)中的[示例2](./arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > - 某些场景下，在[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
-> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish动画播放完成回调](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发动画播放完成回调[onFinish](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
 > - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
 **参数：**
@@ -1126,7 +1128,9 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 
 提供getFrameNodeByUniqueId接口通过组件的uniqueId获取组件树的实体节点。
 1. 当uniqueId对应的是系统组件时，返回组件所对应的FrameNode；
-2. 当uniqueId对应的是自定义组件时，若其有渲染内容，则返回该自定义组件的根节点，类型为__Common__；若其无渲染内容，则返回其第一个子组件的FrameNode。
+2. 当uniqueId对应的是自定义组件时：
+   - 若其有渲染内容，且没有被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，返回该自定义组件的根节点，类型为__Common__。
+   - 若其无渲染内容，或者被[@Reusable装饰器](../../ui/state-management/arkts-reusable.md)修饰时，在该自定义组件的子组件创建完成前调用此接口，将返回null；在该自定义组件的子组件创建完成后调用，返回其第一个子组件的FrameNode。
 3. 当uniqueId无对应的组件时，返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1853,6 +1857,10 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 获取虚拟键盘弹出时，页面的避让模式。
 
+> **说明：**
+>
+> 从API version 18开始，getKeyboardAvoidMode接口返回KeyboardAvoidMode枚举值，为整数类型。API version 18之前版本，getKeyboardAvoidMode接口返回字符串类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
@@ -2256,6 +2264,30 @@ getContextMenuController(): ContextMenuController
 |类型|说明|
 |----|----|
 |[ContextMenuController](arkts-apis-uicontext-contextmenucontroller.md)| 获取ContextMenuController对象。|
+
+## getSmartGestureController
+
+getSmartGestureController(): SmartGestureController
+
+获取[SmartGestureController](arkts-apis-uicontext-smartgesturecontroller.md)对象，可通过该对象控制智慧手势处理流程。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [SmartGestureController](arkts-apis-uicontext-smartgesturecontroller.md) | SmartGestureController对象。 |
+
+**示例：**
+
+参考智慧手势控制器[示例1（启用智慧手势并自定义动作处理）](arkts-apis-uicontext-smartgesturecontroller.md#示例1启用智慧手势并自定义动作处理)。
 
 ## getMeasureUtils<sup>12+</sup>
 
@@ -4369,7 +4401,9 @@ export struct pageThreeTmp {
 
 isEasySplit(): boolean
 
+<!--RP1-->
 获取当前UI实例的兼容模式分栏状态。
+<!--RP1End-->
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -4379,9 +4413,11 @@ isEasySplit(): boolean
 
 **返回值：**
 
+<!--RP2-->
 | 类型   | 说明               |
 | ------ | ------------------ |
 | boolean | 返回当前UI实例的兼容模式分栏状态。true表示处于分栏模式，false表示未处于分栏模式。 |
+<!--RP2End-->
 
 **示例：**
 
@@ -4411,7 +4447,7 @@ struct Index {
 
 enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
 
-启用或禁用事件直通。事件直通表示在事件分发过程中，不经过重采样直接下发给组件。未通过该接口设置时，默认禁用事件直通。
+启用或禁用事件直通。事件直通表示在事件分发过程中，不经过[重采样](../../ui/arkts-interaction-development-guide-touch-screen.md#重采样与历史点)直接下发给组件。未通过该接口设置时，默认禁用事件直通。
 
 **起始版本：** 26.0.0
 
@@ -4439,6 +4475,192 @@ struct Index {
       Button('Enable Event Passthrough')
         .onClick(() => {
           this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## addLocalInputEventMonitor
+
+addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): InputEventMonitor
+
+注册本地输入事件监听器。
+
+> **说明：**
+>
+> - 请勿在回调中执行耗时操作（如复杂计算或网络请求），否则可能导致应用卡顿。
+> - 该监听器仅在当前UIContext（即当前窗口）内有效，不会响应其他UIContext实例。
+> - 返回值InputEventMonitor对象是系统创建的唯一标识，开发者无法主动构造或伪造此对象，必须保留其引用以用于后续取消注册。
+> - 如果传入无效参数，则返回undefined，表示注册监听器失败。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ---- |
+| eventMask | number | 是 | 事件类型掩码，通过位运算指定要监听的事件类型。取值及对应含义请参考[InputEventSubTypeMask](arkui-ts/ts-appendix-enums.md#inputeventsubtypemask)。 |
+| listener | [InputEventListener](arkui-ts/ts-inputeventmonitor.md#inputeventlistener) | 是 | 事件监听器回调函数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ---- |
+| [InputEventMonitor](arkui-ts/ts-inputeventmonitor.md#inputeventmonitor) | 监听器唯一标识对象，用于后续取消注册。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct InputEventMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    // 监听鼠标左键按下事件
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        if (wrapper.isMouseEvent()) {
+          const event = wrapper.asMouseEvent()!;
+          console.info(`Mouse down at (${event.windowX}, ${event.windowY})`);
+          return { action: InputEventInterceptAction.CONTINUE };  // 允许事件继续传递
+        }
+        return { action: InputEventInterceptAction.BLOCK };  // 阻止事件传递
+      }
+    );
+  }
+  aboutToDisappear() {
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Text('Input Event Monitor Sample')
+        .fontSize(20)
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## removeLocalInputEventMonitor
+
+removeLocalInputEventMonitor(monitor: InputEventMonitor): void
+
+移除本地输入事件监听器。
+
+> **说明：**
+>
+> - 只能移除通过[addLocalInputEventMonitor](#addlocalinputeventmonitor)返回的InputEventMonitor对象。
+> - 无法通过手动构造对象来注销监听器。
+> - 如果传入无效对象，系统会静默忽略。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | ---- |
+| monitor | [InputEventMonitor](arkui-ts/ts-inputeventmonitor.md#inputeventmonitor) | 是 | 监听器标识对象，通过[addLocalInputEventMonitor](#addlocalinputeventmonitor)返回。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct RemoveMonitorSample {
+  private uiContext: UIContext | undefined = undefined;
+  private monitor: InputEventMonitor | null = null;
+  aboutToAppear() {
+    this.uiContext = this.getUIContext();
+    this.monitor = this.uiContext.addLocalInputEventMonitor(
+      InputEventSubTypeMask.LEFT_MOUSE_DOWN,
+      (wrapper: RawInputEventWrapper) => {
+        return { action: InputEventInterceptAction.CONTINUE };
+      }
+    );
+  }
+  aboutToDisappear() {
+    // 组件销毁时移除监听器
+    if (this.monitor && this.uiContext) {
+      this.uiContext.removeLocalInputEventMonitor(this.monitor);
+    }
+  }
+  build() {
+    Column() {
+      Button('Remove Monitor')
+        .onClick(() => {
+          if (this.monitor && this.uiContext) {
+            this.uiContext.removeLocalInputEventMonitor(this.monitor);
+            this.monitor = null;
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## setTextSelectionClearPolicy
+
+setTextSelectionClearPolicy(policy: TextSelectionClearPolicy): void
+
+设置文本组件的文本选择清除策略。未通过该接口设置时，默认策略为TextSelectionClearPolicy.KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                      | 必填 | 说明                                   |
+| ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
+| policy  | [TextSelectionClearPolicy](arkts-apis-uicontext-e.md#textselectionclearpolicy) | 是   | 文本选择清除策略。 |
+
+**示例：**
+
+```ts
+import { TextSelectionClearPolicy } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(20)
+        .margin(10)
+        .copyOption(CopyOptions.LocalDevice)
+      Button('Set Clear Policy')
+        .onClick(() => {
+          this.getUIContext()?.setTextSelectionClearPolicy(TextSelectionClearPolicy.CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH);
         })
     }
     .width('100%')

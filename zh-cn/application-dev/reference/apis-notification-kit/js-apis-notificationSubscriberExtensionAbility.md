@@ -1,7 +1,7 @@
 # @ohos.application.NotificationSubscriberExtensionAbility (通知订阅扩展能力)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->

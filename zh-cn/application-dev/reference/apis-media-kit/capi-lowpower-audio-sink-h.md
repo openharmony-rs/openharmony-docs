@@ -1,7 +1,7 @@
 # lowpower_audio_sink.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @Saber_e-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->

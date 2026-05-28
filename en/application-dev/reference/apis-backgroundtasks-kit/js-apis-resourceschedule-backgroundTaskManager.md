@@ -2,7 +2,7 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -1442,6 +1442,7 @@ Defines the type of a continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 30%; 10%; 60%-->
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | DATA_TRANSFER           | 1    | Data transfer.<br>Use scenario: upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>Note: During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).      |
@@ -1451,7 +1452,7 @@ Defines the type of a continuous task.
 | BLUETOOTH_INTERACTION   | 5    | Bluetooth-related services.<br>Use scenario: An application moves to the background while transferring files via Bluetooth.                 |
 | MULTI_DEVICE_CONNECTION | 6    | Multi-device connection.<br>Use scenario: distributed service connection and casting.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                |
 | VOIP<sup>13+</sup> | 8    | Audio and video calls.<br>Use scenario: Chat applications (with audio and video services) transition into the background during audio and video calls.<!--Del--><br>Note: No notification is displayed if a system application requests or updates a continuous task.<!--DelEnd-->                 |
-| TASK_KEEPING            | 9    | Computing tasks.<br>Use scenario: antivirus software.<br>Note: Starting from API version 21, this capability is available for PCs/2-in-1 devices, and non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.       |
+| TASK_KEEPING            | 9    | Computing tasks.<br>Use scenario: antivirus software.<br>**NOTE**: Starting from API version 21, this capability is available for PCs/2-in-1 devices, and non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). In API version 20 and earlier versions, this task type is limited to PCs/2-in-1 devices only.       |
 
 ## ContinuousTaskNotification<sup>12+</sup>
 
@@ -1476,6 +1477,7 @@ Describes the information about the cancellation of a continuous task.
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | reason | [ContinuousTaskCancelReason](#continuoustaskcancelreason15) | No   | No   | Reason for canceling the continuous task.|
 | id | number | No   | No   | ID of the continuous task canceled.|
+| detailedReason | [ContinuousTaskDetailedCancelReason](#continuoustaskdetailedcancelreason) | No   | Yes   | Detailed reason for canceling the continuous task.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## ContinuousTaskCancelReason<sup>15+</sup>
 
@@ -1483,6 +1485,7 @@ Describes the reason for canceling a continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | USER_CANCEL             | 1    | The task is canceled by the user.                 |
@@ -1492,10 +1495,35 @@ Describes the reason for canceling a continuous task.
 | SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION   | 5    | A continuous task of the AUDIO_PLAYBACK type is requested, but the [AVSession](../../media/avsession/avsession-overview.md) is not accessed. This value is reserved.                 |
 | SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING | 6    | A continuous task of the AUDIO_PLAYBACK type is requested, but the audio and video are not played. This value is reserved.                |
 | SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING | 7    | A continuous task of the AUDIO_RECORDING type is requested, but audio recording is not in progress. This value is reserved.                |
-| SYSTEM_CANCEL_NOT_USE_LOCATION            | 8    | A continuous task of the LOCATION type is requested, but location and navigation are not used. This value is reserved.       |
+| SYSTEM_CANCEL_NOT_USE_LOCATION            | 8    | A continuous task of the **LOCATION** type is requested, but the location service is not in use. This value is reserved.       |
 | SYSTEM_CANCEL_NOT_USE_BLUETOOTH            | 9    | A continuous task of the BLUETOOTH_INTERACTION type is requested, but Bluetooth-related services are not used. This value is reserved.       |
 | SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE            | 10    | A continuous task of the MULTI_DEVICE_CONNECTION type is requested, but multi-device connection is not used. This value is reserved.       |
-| SYSTEM_CANCEL_USE_ILLEGALLY            | 11    | A continuous task of an invalid type is used. For example, a continuous task of the AUDIO_PLAYBACK type is requested, but the audio and video playback and location and navigation services are used. This value is reserved.       |
+| SYSTEM_CANCEL_USE_ILLEGALLY            | 11    | A continuous task of an invalid type is used. For example, a continuous task of the **AUDIO_PLAYBACK** type is requested, but the audio playback and location services are in use. This value is reserved.       |
+
+## ContinuousTaskDetailedCancelReason
+
+Describes the detailed reason for canceling a continuous task.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name                    | Value | Description                   |
+| ----------------------- | ---- | --------------------- |
+| USER_CANCEL_REMOVE_NOTIFICATION           | 3    | User removal notification.|
+| SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED     | 4    | A continuous task of the **DATA_TRANSFER** type is requested, but the data transmission rate is low.|
+| SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_USE_AVSESSION   | 5    | A continuous task of the **AUDIO_PLAYBACK** type is requested, but [AVSession](../../media/avsession/avsession-overview.md) is not accessed.  |
+| SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING  | 6    | A continuous task of the **AUDIO_PLAYBACK** type is requested, but the audio and video are not played.  |
+| SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING | 7    | A continuous task of the **AUDIO_RECORDING** type is requested, but audio recording is not in progress.      |
+| SYSTEM_CANCEL_NOT_USE_LOCATION            | 8    | A continuous task of the **LOCATION** type is requested, but the location service is not in use.     |
+| SYSTEM_CANCEL_NOT_USE_BLUETOOTH           | 9    | A continuous task of the **BLUETOOTH_INTERACTION** type is requested, but Bluetooth is not in use.|
+| SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE        | 10   | A continuous task of the **MULTI_DEVICE_CONNECTION** type is requested, but the multi-device connection service is not in use.|
+| SYSTEM_CANCEL_USE_ILLEGALLY               | 11   | A continuous task of an invalid type is used. For example, a continuous task of the **AUDIO_PLAYBACK** type is requested, but the audio playback and location services are in use. |
+| SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE    | 12   | A continuous task of the **DATA_TRANSFER** type is requested, but the progress is not updated for a long time (the first update takes more than 10 minutes). |
+| SYSTEM_CANCEL_VOIP_NOT_RUNNING            | 13   | A continuous task of the **VOIP** type is requested, but no audio stream or recording stream is in progress. |
+| SYSTEM_CANCEL_USER_UNAUTHORIZED           | 14   | A continuous task of the special scenario type is requested, but the user is not authorized. |
 
 ## BackgroundSubMode<sup>16+</sup>
 
@@ -1519,33 +1547,54 @@ Defines the type of a continuous task.
 
 ## ContinuousTaskSuspendInfo<sup>20+</sup>
 
-Describes the information about continuous task suspension.
+Describes the information about a suspended continuous task.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | Name            | Type    | Read-Only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| continuousTaskId | number | No   | No   | ID of a suspended continuous task.|
+| continuousTaskId | number | No   | No   | ID of the suspended continuous task.|
 | suspendState | boolean | No   | No   | Continuous task state. The value **false** indicates that the task is activated, and the value **true** indicates that the task is suspended.|
 | suspendReason | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | No   | No   | Reason why the continuous task is suspended.|
+| suspendMessage | [SuspendMessage](#suspendmessage) | No   | No   | Describes the information about a suspended continuous task.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+
+## SuspendMessage
+
+Describes the reason why a continuous task is suspended.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name            | Type    | Read-Only  | Optional  | Description                                      |
+| --------------- | ------ | ---- | ---- | ---------------------------------------- |
+| message       | string | No   | No   | Suspension message.    |
+| reason       | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | No   | No   | Reason why the continuous task is suspended.    |
 
 ## ContinuousTaskSuspendReason<sup>20+</sup>
 
-Describes the reason why the continuous task is suspended.
+Describes the reason why a continuous task is suspended.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
-| SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED     | 4    | A continuous task of the DATA_TRANSFER type is requested, but the data transmission rate is low.                |
-| SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_USE_AVSESSION   | 5    | A continuous task of the AUDIO_PLAYBACK type is requested, but the [AVSession](../../media/avsession/avsession-overview.md) is not accessed.                 |
-| SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING  | 6    | A continuous task of the AUDIO_PLAYBACK type is requested, but the audio and video are not played. |
-| SYSTEM_SUSPEND_AUDIO_RECORDING_NOT_RUNNING | 7    | A continuous task of the AUDIO_RECORDING type is requested, but audio recording is not in progress. |
-| SYSTEM_SUSPEND_LOCATION_NOT_USED           | 8    | A continuous task of the LOCATION type is requested, but location and navigation are not used.|
-| SYSTEM_SUSPEND_BLUETOOTH_NOT_USED          | 9    | A continuous task of the BLUETOOTH_INTERACTION type is requested, but Bluetooth-related services are not used.|
-| SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED       | 10   | A continuous task of the MULTI_DEVICE_CONNECTION type is requested, but multi-device connection is not used. |
-| SYSTEM_SUSPEND_USED_ILLEGALLY              | 11    | A continuous task of an invalid type is used. For example, a continuous task of the AUDIO_PLAYBACK type is requested, but the audio and video playback and location and navigation services are used. This value is reserved.       |
+| SYSTEM_SUSPEND_DATA_TRANSFER_LOW_SPEED     | 4    | A continuous task of the **DATA_TRANSFER** type is requested, but the data transmission rate is low.                |
+| SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_USE_AVSESSION   | 5    | A continuous task of the **AUDIO_PLAYBACK** type is requested, but [AVSession](../../media/avsession/avsession-overview.md) is not accessed.                 |
+| SYSTEM_SUSPEND_AUDIO_PLAYBACK_NOT_RUNNING  | 6    | A continuous task of the **AUDIO_PLAYBACK** type is requested, but audio playback is not in progress. |
+| SYSTEM_SUSPEND_AUDIO_RECORDING_NOT_RUNNING | 7    | A continuous task of the **AUDIO_RECORDING** type is requested, but audio recording is not in progress. |
+| SYSTEM_SUSPEND_LOCATION_NOT_USED           | 8    | A continuous task of the **LOCATION** type is requested, but the location service is not in use.|
+| SYSTEM_SUSPEND_BLUETOOTH_NOT_USED          | 9    | A continuous task of the **BLUETOOTH_INTERACTION** type is requested, but Bluetooth is not in use.|
+| SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED       | 10   | A continuous task of the **MULTI_DEVICE_CONNECTION** type is requested, but the multi-device connection service is not in use. |
+| SYSTEM_SUSPEND_USED_ILLEGALLY              | 11    | A continuous task of an invalid type is used. For example, a continuous task of the **AUDIO_PLAYBACK** type is requested, but the audio playback and location services are in use. This value is reserved.       |
 | SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING         | 12    | A continuous task is suspended due to high system load. This value is reserved.       |
+| SYSTEM_SUSPEND_VOIP_NOT_USED               | 13   | A continuous task of the **VOIP** type is requested, but no audio stream or recording stream is in progress.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST    | 14   | A continuous task of the **BLUETOOTH_INTERACTION** type is requested, but there is no Bluetooth data flow for a period of time.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SYSTEM_SUSPEND_POSITION_NOT_MOVED          | 15   | A continuous task of the **LOCATION** type is requested, but the device is absolutely still for a period of time.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE         | 16   | A continuous task of the **AUDIO_PLAYBACK** type is requested, but the device is muted for a period of time.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | A continuous task of the special type is requested, but the user is not authorized.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## ContinuousTaskActiveInfo<sup>20+</sup>
 
@@ -1563,6 +1612,7 @@ Describes the continuous task information.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 25%; 15%; 8%; 8%; 44%-->
 | Name         | Type      | Read-Only  | Optional  | Description                   |
 |-------------|----------| ---- | ---- |-----------------------|
 | abilityName | string   | No   | No   | UIAbility name.         |
@@ -1595,6 +1645,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 25%; 25%; 8%; 8%; 44%-->
 | Name            | Type    | Read-Only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | No   | No   | Main type of a continuous task.<br>Note: The main type must match the subtype.    |
@@ -1772,6 +1823,7 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | Name                    | Value | Description                   |
 | ------------------------ | ---- | --------------------- |
 | MODE_DATA_TRANSFER              | 1         | Data transfer.<br>Use scenario: upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>**NOTE**<br>1. During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>2. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).                |
@@ -1781,9 +1833,10 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 | MODE_BLUETOOTH_INTERACTION      | 5         | Bluetooth-related services.<br>Use scenario: An application moves to the background while transferring files via Bluetooth.           |
 | MODE_MULTI_DEVICE_CONNECTION    | 6         | Multi-device connection.<br>Use scenario: distributed service connection and casting.         |
 | MODE_VOIP                       | 8         | Audio and video calls.<br>Use scenario: Chat applications (with audio and video services) transition into the background during audio and video calls. <!--Del--><br>Note: No notification is displayed if a system application requests or updates a continuous task.<!--DelEnd-->            |
-| MODE_TASK_KEEPING               | 9         | Computing tasks.<br>Use scenario: antivirus software.<br>Note: This capability is available only to PCs/2-in-1 devices, or non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system).|
+| MODE_TASK_KEEPING               | 9         | Computing tasks.<br>Use scenario: antivirus software.<br>**NOTE**: This capability is available only to PCs/2-in-1 devices, or non-PCs/2-in-1 devices that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system).|
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | Multimedia services.<br>Use scenarios: audio/video playback, recording, and audio/video calls. The scenario must match that of the subtype. You can select this task type or the corresponding main type for preceding scenarios. For example, you can request a continuous task of the **MODE_AUDIO_PLAYBACK** or **MODE_AV_PLAYBACK_AND_RECORD** type for audio/video playback.           |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | Special scenarios (available only for smartphones, tablets, PCs/2-in-1 devices).<br>Use scenarios: An application exports media files in the background or uses a third-party component to cast content in the background. The scenario must match that of the subtype.<br>**NOTE**<br>1. If an application needs to run in the background for a long time, it can request user authorization through the [requestAuthFromUser](#requestauthfromuser22) API and check the authorization result via [checkSpecialScenarioAuth](#checkspecialscenarioauth22).<br>2. This capability is available only to applications that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system).<br>3. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.|
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | Special scenarios (available only for smartphones, tablets, PCs/2-in-1 devices).<br>Use scenarios: An application exports media files in the background or uses a third-party component to cast content in the background. The scenario must match that of the subtype.<br>**NOTE**<br>1. If an application needs to run in the background for a long time, it can request user authorization through the [requestAuthFromUser](#requestauthfromuser22) API and check the authorization result via [checkSpecialScenarioAuth](#checkspecialscenarioauth22).<br>2. Since API version 24, this capability is available only to applications that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario). For API version 23 and earlier, this capability is available only to applications that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). Applications that have obtained this permission are not affected for API version 24 and later.<br>3. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.|
+| MODE_NEARLINK | 14 | NearLink device.<br>Use scenario: An application transitions into the background during the process of file transfer using NearLink.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -1791,6 +1844,7 @@ Defines the subtype of a continuous task. It is usually used together with the m
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 40%; 10%; 50%-->
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | **CAR_KEY** type. It is of the normal text notification type.      |
@@ -1817,8 +1871,9 @@ Mapping table of main types and subtypes of continuous tasks
 | MODE_MULTI_DEVICE_CONNECTION      | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_VOIP                         | SUBMODE_NORMAL_NOTIFICATION         |
 | MODE_TASK_KEEPING                 | SUBMODE_NORMAL_NOTIFICATION         |
-| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup><br>SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup><br>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup><br>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup>  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup> <br>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  <br>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup> |
+| MODE_AV_PLAYBACK_AND_RECORD  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<br>SUBMODE_AVSESSION_AUDIO_PLAYBACK<br>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<br>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<br>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION  |
+| MODE_SPECIAL_SCENARIO_PROCESSING  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION <br>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION  <br>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION |
+| MODE_NEARLINK                   | SUBMODE_NORMAL_NOTIFICATION         |
 
 ## UserAuthResult<sup>22+</sup>
 
@@ -1826,6 +1881,7 @@ Represents the user authorization result.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+<!--Table: 30%; 10%; 60%-->
 | Name          | Value| Description    |
 | ------------ |---|--------|
 | NOT_SUPPORTED | 0 | The authorization is not supported. For example, if the main type of the requested continuous task is not **MODE_SPECIAL_SCENARIO_PROCESSING**, continuous task running in the background is not supported.|

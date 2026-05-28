@@ -1,8 +1,8 @@
 # @ohos.enterprise.usbManager（USB管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -76,8 +76,8 @@ let wantTemp: Want = {
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
-      vendorId: 1,
-      productId: 1
+    vendorId: 1,
+    productId: 1
   }];
   usbManager.addAllowedUsbDevices(wantTemp, usbDeviceIds);
   console.info(`Succeeded in adding allowed USB devices.`);
@@ -131,8 +131,8 @@ let wantTemp: Want = {
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
-      vendorId: 1,
-      productId: 1
+    vendorId: 1,
+    productId: 1
   }];
   usbManager.removeAllowedUsbDevices(wantTemp, usbDeviceIds);
   console.info(`Succeeded in removing allowed USB devices.`);
@@ -373,10 +373,10 @@ let wantTemp: Want = {
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
-      baseClass: 8,
-      subClass: 0,
-      protocol: 0,
-      descriptor: usbManager.Descriptor.INTERFACE
+    baseClass: 8,
+    subClass: 0,
+    protocol: 0,
+    descriptor: usbManager.Descriptor.INTERFACE
   }];
   usbManager.addDisallowedUsbDevices(wantTemp, usbDevices);
   console.info(`Succeeded in adding disallowed USB devices.`);
@@ -430,10 +430,10 @@ let wantTemp: Want = {
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
-      baseClass: 8,
-      subClass: 0,
-      protocol: 0,
-      descriptor: usbManager.Descriptor.INTERFACE
+    baseClass: 8,
+    subClass: 0,
+    protocol: 0,
+    descriptor: usbManager.Descriptor.INTERFACE
   }];
   usbManager.removeDisallowedUsbDevices(wantTemp, usbDevices);
   console.info(`Succeeded in removing disallowed USB devices.`);

@@ -23,7 +23,7 @@ import {runningLock} from '@kit.BasicServicesKit';
 
 isSupported(type: RunningLockType): boolean
 
-**方法介绍：** 查询系统是否支持该类型的锁。
+查询系统是否支持该类型的锁。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -45,7 +45,7 @@ isSupported(type: RunningLockType): boolean
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 
 **示例：**
 
@@ -62,7 +62,7 @@ try {
 
 create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-**方法介绍：** 创建RunningLock锁。使用callback异步回调。
+创建RunningLock锁。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -82,7 +82,7 @@ create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLo
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **示例：**
@@ -102,7 +102,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-**方法介绍：** 创建RunningLock锁。使用Promise异步回调。
+创建RunningLock锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -127,7 +127,7 @@ create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
 | 错误码ID   | 错误信息    |
 |---------|---------|
-| 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 201     | If the permission is denied.|
 
 **示例：**
@@ -147,9 +147,9 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 
 isRunningLockTypeSupported(type: RunningLockType, callback: AsyncCallback&lt;boolean&gt;): void
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
+查询系统是否支持该类型的锁。使用callback异步回调。
 
-**方法介绍：** 查询系统是否支持该类型的锁。使用callback异步回调。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -176,9 +176,9 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
 
 isRunningLockTypeSupported(type: RunningLockType): Promise&lt;boolean>
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
+查询系统是否支持该类型的锁。使用Promise异步回调。
 
-**方法介绍：** 查询系统是否支持该类型的锁。使用Promise异步回调。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.isSupported](#runninglockissupported9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -210,9 +210,9 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
 
 createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLock&gt;): void
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
+创建RunningLock锁。使用callback异步回调。
 
-**方法介绍：** 创建RunningLock锁。使用callback异步回调。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -222,9 +222,9 @@ createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback&l
 
 | 参数名   | 类型                                       | 必填 | 说明                                                         |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| name     | string                                     | 是   | 锁的名字。                                                   |
+| name     | string                                     | 是   | 锁的名字。建议使用包名或类名加后缀的方式命名。                   |
 | type     | [RunningLockType](#runninglocktype)        | 是   | 要创建的锁的类型。                                           |
-| callback | AsyncCallback<[RunningLock](#runninglock)> | 是   | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象。 |
+| callback | AsyncCallback<[RunningLock](#runninglock)> | 是   | 回调函数。当创建锁成功，err为undefined，data为创建的RunningLock；否则为错误对象。AsyncCallback封装了一个RunningLock类型的类。 |
 
 **示例：**
 
@@ -242,9 +242,9 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
+创建RunningLock锁。使用Promise异步回调。
 
-**方法介绍：** 创建RunningLock锁。使用Promise异步回调。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[runningLock.create](#runninglockcreate9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -254,7 +254,7 @@ createRunningLock(name: string, type: RunningLockType): Promise&lt;RunningLock&g
 
 | 参数名 | 类型                                | 必填 | 说明               |
 | ------ | ----------------------------------- | ---- | ------------------ |
-| name   | string                              | 是   | 锁的名字。         |
+| name   | string                              | 是   | 锁的名字。建议使用包名或类名加后缀的方式命名。|
 | type   | [RunningLockType](#runninglocktype) | 是   | 要创建的锁的类型。 |
 
 **返回值：**
@@ -283,7 +283,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 hold(timeout: number): void
 
-**方法介绍：** 锁定和持有RunningLock。
+锁定和持有RunningLock。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -339,7 +339,7 @@ class RunningLockTest {
 
 unhold(): void
 
-**方法介绍：** 释放RunningLock锁。
+释放RunningLock锁。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -389,7 +389,7 @@ class RunningLockTest {
 
 isHolding(): boolean
 
-**方法介绍：** 查询当前RunningLock是持有状态还是释放状态。
+查询当前RunningLock是持有状态还是释放状态。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -430,9 +430,9 @@ class RunningLockTest {
 
 lock(timeout: number): void
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.hold](#hold9)替代。
+锁定和持有RunningLock。
 
-**方法介绍：** 锁定和持有RunningLock。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.hold](#hold9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -461,9 +461,9 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 unlock(): void
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.unhold](#unhold9)替代。
+释放RunningLock锁。
 
-**方法介绍：** 释放RunningLock锁。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.unhold](#unhold9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -486,9 +486,9 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 
 isUsed(): boolean
 
-> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.isHolding](#isholding9)替代。
+查询当前RunningLock是持有状态还是释放状态。
 
-**方法介绍：** 查询当前RunningLock是持有状态还是释放状态。
+> **说明：**<br>从API version 7开始支持，从API version 9开始不再维护，建议使用[RunningLock.isHolding](#isholding9)替代。
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
@@ -520,4 +520,4 @@ RunningLock锁的类型。
 | --------------------------------- | ---- | ------------------------------------------------------------ |
 | BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
 | PROXIMITY_SCREEN_CONTROL          | 2    | 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。  |
-| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。注意：不能阻止如PC合盖等场景系统进入强制睡眠，使用方必须监听[进入强制睡眠公共事件](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁请参考[阻止系统闲时进入睡眠开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。|
+| BACKGROUND_USER_IDLE<sup>23+</sup>| 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。<br>**注意：** 不能阻止如PC合盖等场景系统进入强制睡眠，使用方必须监听[COMMON_EVENT_ENTER_FORCE_SLEEP](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁请参考[阻止系统闲时进入睡眠开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。|

@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @yewei0794-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AppServiceExtensionContext模块是[AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的上下文环境，继承自[ExtensionContext](js-apis-inner-application-extensionContext.md)。
 

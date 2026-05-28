@@ -137,7 +137,7 @@ ArcButton内进度条的参数配置。
 | ------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | value               | number                                                       |否  |否  | 进度条当前值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total] |
 | total               | number                                                       |否  |是  | 进度的最大值。<br/>默认值：100<br/>取值范围：[0, 2147483647]，设置0或超出取值范围取默认值为100。 |
-| color               | [ResourceColor](ts-types.md#resourcecolor)                   |否  |是  | 进度条前景色。如果组件设置了背景色（[backgroundColor](#arcbuttonoptions)），进度条前景色默认值取组件背景色。进度条前景色不受按钮样式（[ArcButtonStyleMode](#arcbuttonstylemode)）设置影响。进度条背景色仅依赖进度条前景色设置，取进度条前景色的25%透明度。 <br/> 默认值："#1F71FF"，显示为蓝色。 |
+| color               | [ResourceColor](ts-types.md#resourcecolor)                   |否  |是  | 进度条前景色。如果组件设置了[ArcButtonOptions](#arcbuttonoptions)的背景色（backgroundColor），进度条前景色默认值取组件背景色。进度条前景色不受按钮样式（[ArcButtonStyleMode](#arcbuttonstylemode)）设置影响。进度条背景色仅依赖进度条前景色设置，取进度条前景色的25%透明度。 <br/> 默认值："#1F71FF"，显示为蓝色。 |
 
 ## ArcButtonPosition
 
@@ -164,7 +164,7 @@ ArcButton内进度条的参数配置。
 | 名称             | 值   | 说明             |
 | ---------------- | ---- | ---------------- |
 | EMPHASIZED_LIGHT | 0    | 强调样式，亮色，表现为蓝色背景、白色文字。 |
-| EMPHASIZED_DARK  | 1    | 警告样式，暗色，表现为红色背景、白色文字。 |
+| EMPHASIZED_DARK  | 1    | 强调样式，暗色，表现为红色背景、白色文字。 |
 | NORMAL_LIGHT     | 2    | 常规样式，亮色，表现为深蓝色背景、蓝色文字。 |
 | NORMAL_DARK      | 3    | 常规样式，暗色，表现为深灰色背景、蓝色文字。 |
 | CUSTOM           | 4    | 自定义按钮颜色和字体颜色。 |
@@ -278,7 +278,7 @@ struct Index {
 
 ### 示例2 (设置设备进度条按钮)
 
-该示例展示了ArcButton组件进度条样式的基本用法。从API version 23开始，新增[progressConfig](#arcbuttonoptions)接口。示例配置如下：
+该示例展示了ArcButton组件进度条样式的基本用法。从API version 23开始，新增[ArcButtonOptions](#arcbuttonoptions)的progressConfig接口。示例配置如下：
 
 1.topOptions定义了上弧形按钮。按钮文本为Add，字体大小为15fp，按钮状态为正常状态，按钮样式为亮色强调，启用阴影。按钮设置了点击事件，点击按钮将增加进度条的进度。
 
