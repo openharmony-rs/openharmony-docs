@@ -622,7 +622,7 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 > **说明：**
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
-> - 调用此方法后，务必在对象生命周期结束前使用[offSeniorModeStateChangeForApp](#offseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
+> - 调用此方法后，务必在对象生命周期结束前使用[config.offSeniorModeStateChangeForApp](#configoffseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
 
 **起始版本：** 26.0.0
 
@@ -692,7 +692,7 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[onSeniorModeStateChangeForApp](#onseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[config.onSeniorModeStateChangeForApp](#configonseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -983,7 +983,7 @@ config.highContrastText.off((data: boolean) => {
 
 ## ConnectCallback<sup>23+</sup>
 
-通过[enableAbilityWithCallback](#enableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
+通过[config.enableAbilityWithCallback](#configenableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
 
 **系统接口**：此接口为系统接口。
 
