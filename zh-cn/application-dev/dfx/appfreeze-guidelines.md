@@ -21,7 +21,7 @@
 
 > **注意：**
 >
-> AppFreeze检测仅对[release版本应用](performance-analysis-kit-terminology.md#release版本应用)生效，对[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)不生效。
+> 当开发者通过DevEco Studio的Debug按钮安装并启动应用时，会自动关闭当前工程的超时检测机制。避免调试过程出现超时检测影响开发者调试。
 
 | 故障类型 | 说明 |
 | -------- | -------- |
@@ -45,6 +45,10 @@
 ### APP_INPUT_BLOCK 用户输入响应超时
 
 **概述**：该故障是指点击事件超过5s未得到响应。
+
+> **说明：**
+>
+> 从**API version 24**开始，5s检测阈值扩大到8s。
 
 **检测原理**：用户点击应用时，输入系统会向应用侧发送点击事件；应用侧的响应反馈回执超时，则上报该故障。
 
@@ -276,6 +280,16 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 
 为解决上述问题，从API version 21开始，支持获取AppFreeze的增强日志。协助开发者定位问题，详见[AppFreeze（应用冻屏）增强日志实现原理](#实现原理)。
 
+若上述故障进程堆栈内容缺失，可能会出现以下几种日志信息：
+
+| 日志信息 | 说明 |
+| ------------- | ----------------------------------------------------------------------------------------------------------------- |
+| has been crashed | 目标进程crash。在收到目标进程的crash请求后，10s内收到抓栈请求，请参考故障时间点附近的crash日志。|
+| SIGDUMP error | 目标进程在收到抓栈请求时已经退出。|
+| is dumping | 目标进程正在dump。 短时间内连续请求，请参考故障时间点附近该进程的其他报错日志。|
+| State: S | 目标进程Sleep。|
+| errno(2) | 目标进程无响应信号。超时1s后没有返回堆栈信息时，日志中打印内核栈以及/proc/status。|
+
 > **说明：**
 >
 > 在整机高负载情况（如CPU高负载）下，采用低开销方式获取调用栈时，可能损失函数名信息。
@@ -424,7 +438,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 从API version 22开始，发生APP_INPUT_BLOCK故障时，日志中会同步输出多模点击输入（包含鼠标、键盘、触控板及触屏等输入方式）超时事件（Wait Event）。该事件信息中包含事件id，事件检测超时阈值，及前置事件id。
 
-事件检测超时阈值：log版本为8000毫秒，nolog版本为5000毫秒。
+事件检测超时阈值：log版本为8000毫秒，nolog版本为5000毫秒。从**API version 24**开始，APP_INPUT_BLOCK检测阈值不区分版本，均为8000毫秒。
 
 前置事件中包含：lastDispatchEvent为上次分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。
 

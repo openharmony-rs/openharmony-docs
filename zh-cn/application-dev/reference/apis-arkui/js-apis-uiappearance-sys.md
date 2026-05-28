@@ -1,9 +1,9 @@
 # @ohos.uiAppearance (用户界面外观)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用户界面外观提供管理系统外观的一些基础能力，目前仅包括深浅色模式配置。
@@ -32,6 +32,8 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 
+**系统接口：** 此接口为系统接口。
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -41,7 +43,7 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 | 错误码ID | 错误信息 |
 | -- | -- |
@@ -80,6 +82,8 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
 
+**系统接口：** 此接口为系统接口。
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -94,7 +98,7 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 
 **错误码：**
 
-错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 | 错误码ID | 错误信息 |
 | -- | -- |
@@ -147,7 +151,7 @@ setFontScale(fontScale: number): Promise\<void>
 
 **错误码：**
 
-错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 > **说明：**
 >
@@ -207,7 +211,7 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 **错误码：**
 
-错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 > **说明：**
 >

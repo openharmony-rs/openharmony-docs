@@ -108,7 +108,7 @@ cpp部分代码
 static napi_value GetInstanceData(napi_env env, napi_callback_info info)
 {
     InstanceData *resData = nullptr;
-    // napi_get_instance_data获取之前想关联的数据项
+    // napi_get_instance_data获取之前相关联的数据项
     napi_status status = napi_get_instance_data(env, (void **)&resData);
     if (status != napi_ok) {
         return nullptr;

@@ -197,7 +197,7 @@ target_link_libraries(entry PUBLIC
 
    // 设置输出显示的Surface。
    ImageEffect_ErrorCode errorCode = OH_ImageEffect_SetOutputSurface(imageEffect, outputNativeWindow);
-   if (res != 0) {
+   if (errorCode != ImageEffect_ErrorCode::EFFECT_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "OH_ImageEffect_SetOutputSurface fail!");
        return;
    }

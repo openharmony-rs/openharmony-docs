@@ -10,6 +10,8 @@
 
 Provides C APIs for IPC serialization and deserialization.
 
+For details about the development guide and sample, see [IPC and RPC Development (C/C++)](../../ipc/ipc-capi-development-guideline.md).
+
 **File to include**: <IPCKit/ipc_cparcel.h>
 
 **Library**: libipc_capi.so

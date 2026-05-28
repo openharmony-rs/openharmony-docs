@@ -15,11 +15,11 @@ This topic uses X25519, DH, and ECDH as an example to demonstrate how to perform
 
 Generate an asymmetric key for device A and device B each. For details, see [Key Generation](huks-key-generation-overview.md) or [Key Import](huks-key-import-overview.md).
 
-(Optional) You can specify the [HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keystoragetype) parameter when generating a key to decide if HUKS manages the resulting key from the key agreement process.
+(Optional) You can specify the [HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) parameter when generating a key to decide whether HUKS manages the key resulting from the key agreement process.
 
-- If this tag is set to **HUKS_STORAGE_ONLY_USED_IN_HUKS**, the shared secret is managed by HUKS. That is, the shared secret is always in a secure environment throughout its lifecycle.
+- [HUKS_STORAGE_ONLY_USED_IN_HUKS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeystoragetype): Yes. This ensures that the entire lifecycle of the agreed key remains within the secure environment.
 
-- If this tag is set to **HUKS_STORAGE_KEY_EXPORT_ALLOWED**, the shared secret generated will be returned to the caller for management. That is, service side ensures the key security.
+- [HUKS_STORAGE_KEY_EXPORT_ALLOWED](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeystoragetype): No. The key will be returned to the caller for management, and the service side is responsible for ensuring the key security.
 
 - If this tag is not set, the shared secret generated can be either managed by HUKS or returned to the caller for management. The key protection mode can be set in the subsequent key agreement on the service side.
 

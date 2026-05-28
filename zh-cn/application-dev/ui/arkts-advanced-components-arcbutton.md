@@ -1,4 +1,4 @@
-# 弧形按钮 (ArcButton)
+# 弧形按钮 (ArcButton)(圆形屏幕推荐使用)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->

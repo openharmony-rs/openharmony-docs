@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -38,7 +38,7 @@ The file declares the common enums and structs used by the image interface.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | Enumerates the return values that may be used by the interface.|
+| [IRNdkErrCode](#irndkerrcode) | IRNdkErrCode | Enumerates the used API return values.|
 
 ## Enum Description
 
@@ -50,13 +50,12 @@ enum IRNdkErrCode
 
 **Description**
 
-Enumerates the return values that may be used by the interface.
+Enumerates the used API return values.
 
 **Since**: 10
 
 | Enum Item| Description|
 | -- | -- |
-| -------- | -------- |
 | IMAGE_RESULT_SUCCESS = 0 | Operation succeeded.|
 | IMAGE_RESULT_BAD_PARAMETER = -1 | Invalid parameter.|
 | IMAGE_RESULT_IMAGE_RESULT_BASE = IMAGE_RESULT_BASE | Operation failed.|
@@ -80,8 +79,8 @@ Enumerates the return values that may be used by the interface.
 | IMAGE_RESULT_SOURCE_UNRESOLVED = IMAGE_RESULT_BASE + 18 | The image source is not parsed.|
 | IMAGE_RESULT_INVALID_PARAMETER = IMAGE_RESULT_BASE + 19 | Invalid image parameter.|
 | IMAGE_RESULT_DECODE_FAILED = IMAGE_RESULT_BASE + 20 | Failed to decode the image.|
-| IMAGE_RESULT_PLUGIN_REGISTER_FAILED = IMAGE_RESULT_BASE + 21 | Failed to register the plug-in.|
-| IMAGE_RESULT_PLUGIN_CREATE_FAILED = IMAGE_RESULT_BASE + 22 | Failed to create the plug-in.|
+| IMAGE_RESULT_PLUGIN_REGISTER_FAILED = IMAGE_RESULT_BASE + 21 | Failed to register the plugin.|
+| IMAGE_RESULT_PLUGIN_CREATE_FAILED = IMAGE_RESULT_BASE + 22 | Failed to create the plugin.|
 | IMAGE_RESULT_ENCODE_FAILED = IMAGE_RESULT_BASE + 23 | Failed to encode the image.|
 | IMAGE_RESULT_ADD_PIXEL_MAP_FAILED = IMAGE_RESULT_BASE + 24 | Failed to add the PixelMap.|
 | IMAGE_RESULT_HW_DECODE_UNSUPPORT = IMAGE_RESULT_BASE + 25 | Hardware decoding is not supported.|
@@ -115,13 +114,13 @@ Enumerates the return values that may be used by the interface.
 | IMAGE_RESULT_MEDIA_CODEC_ADAPTER_NOT_EXIST = IMAGE_RESULT_BASE + 54 | The media codec adapter does not exist.|
 | IMAGE_RESULT_MEDIA_CREATE_CODEC_ADAPTER_FAILED = IMAGE_RESULT_BASE + 55 | Failed to create the media codec adapter.|
 | IMAGE_RESULT_MEDIA_CODEC_ADAPTER_NOT_INIT = IMAGE_RESULT_BASE + 56 | The media codec adapter is not initialized.|
-| IMAGE_RESULT_MEDIA_ZCODEC_CREATE_FAILED = IMAGE_RESULT_BASE + 57 | Failed to create the media codec.|
-| IMAGE_RESULT_MEDIA_ZCODEC_NOT_EXIST = IMAGE_RESULT_BASE + 58 | The media codec does not exist.|
+| IMAGE_RESULT_MEDIA_ZCODEC_CREATE_FAILED = IMAGE_RESULT_BASE + 57 | Failed to create media codec.|
+| IMAGE_RESULT_MEDIA_ZCODEC_NOT_EXIST = IMAGE_RESULT_BASE + 58 | Media codec not found.|
 | IMAGE_RESULT_MEDIA_JNI_CLASS_NOT_EXIST = IMAGE_RESULT_BASE + 59 | The media JNI layer class does not exist.|
 | IMAGE_RESULT_MEDIA_JNI_METHOD_NOT_EXIST = IMAGE_RESULT_BASE + 60 | The media JNI layer method does not exist.|
 | IMAGE_RESULT_MEDIA_JNI_NEW_OBJ_FAILED = IMAGE_RESULT_BASE + 61 | Failed to create the object at the media JNI layer.|
 | IMAGE_RESULT_MEDIA_JNI_COMMON_ERROR = IMAGE_RESULT_BASE + 62 | The media JNI layer is abnormal.|
-| IMAGE_RESULT_MEDIA_DISTRIBUTE_NOT_SUPPORT = IMAGE_RESULT_BASE + 63 | The distributed feature is not supported.|
+| IMAGE_RESULT_MEDIA_DISTRIBUTE_NOT_SUPPORT = IMAGE_RESULT_BASE + 63 | Media distribution is not supported.|
 | IMAGE_RESULT_MEDIA_SOURCE_NOT_SET = IMAGE_RESULT_BASE + 64 | The media source is not set.|
 | IMAGE_RESULT_MEDIA_RTSP_ADAPTER_NOT_INIT = IMAGE_RESULT_BASE + 65 | The media RTSP adapter is not initialized.|
 | IMAGE_RESULT_MEDIA_RTSP_ADAPTER_NOT_EXIST = IMAGE_RESULT_BASE + 66 | The media RTSP adapter does not exist.|
@@ -144,15 +143,15 @@ Enumerates the return values that may be used by the interface.
 | IMAGE_RESULT_CREATE_SURFACE_FAILED = IMAGE_RESULT_BASE + 156 | Failed to create the surface.|
 | IMAGE_RESULT_SURFACE_GET_PARAMETER_FAILED = IMAGE_RESULT_BASE + 157 | Failed to obtain parameters from the surface.|
 | IMAGE_RESULT_GET_SURFACE_FAILED = IMAGE_RESULT_BASE + 158 | Failed to obtain the surface.| 
-| IMAGE_RESULT_SURFACE_ACQUIRE_BUFFER_FAILED = IMAGE_RESULT_BASE + 159 | Failed to allocate the memory.|
-| IMAGE_RESULT_SURFACE_REQUEST_BUFFER_FAILED = IMAGE_RESULT_BASE + 160 | Failed to allocate the memory.|
+| IMAGE_RESULT_SURFACE_ACQUIRE_BUFFER_FAILED = IMAGE_RESULT_BASE + 159 | Failed to allocate memory for the consumer.|
+| IMAGE_RESULT_SURFACE_REQUEST_BUFFER_FAILED = IMAGE_RESULT_BASE + 160 | Failed to allocate memory for the producer.|
 | IMAGE_RESULT_REGISTER_LISTENER_FAILED = IMAGE_RESULT_BASE + 161 | Failed to register the listener.|
 | IMAGE_RESULT_REGISTER_BUFFER_FAILED = IMAGE_RESULT_BASE + 162 | Failed to register the buffer.|
 | IMAGE_RESULT_FREAD_FAILED = IMAGE_RESULT_BASE + 163 | Failed to read the file.|
 | IMAGE_RESULT_PEEK_FAILED = IMAGE_RESULT_BASE + 164 | Failed to peek the file.|
 | IMAGE_RESULT_SEEK_FAILED = IMAGE_RESULT_BASE + 165 | Failed to seek the file.|
 | IMAGE_RESULT_STREAM_SIZE_ERROR = IMAGE_RESULT_BASE + 166 | The data stream is damaged.|
-| IMAGE_RESULT_FILE_FD_ERROR = IMAGE_RESULT_BASE + 167, | The file descriptor is corrupted.|
+| IMAGE_RESULT_FILE_FD_ERROR = IMAGE_RESULT_BASE + 167 | The file descriptor is corrupted.|
 | IMAGE_RESULT_FILE_DAMAGED = IMAGE_RESULT_BASE + 168 | The file is damaged.|
 | IMAGE_RESULT_CREATE_DECODER_FAILED = IMAGE_RESULT_BASE + 169 | Failed to create a decoder.|
 | IMAGE_RESULT_CREATE_ENCODER_FAILED = IMAGE_RESULT_BASE + 170 | Failed to create an encoder.|

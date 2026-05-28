@@ -1,9 +1,8 @@
 # 管理通知渠道
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -15,20 +14,20 @@
 
 <!--RP1-->
 <!--RP1End-->
-
+<!--RP2-->
 | SlotType             | 取值   | 分类     | 通知中心 | 横幅 | 锁屏 | 铃声/振动 | 状态栏图标 | 自动亮屏 |
 | -------------------- | ------ | --------| ------- |------|------|----------|-----------|---------|
-| UNKNOWN_TYPE         | 0      | 未知类型 | Y | N | N | N | N | N |
 | SOCIAL_COMMUNICATION | 1      | 社交通信 | Y | Y | Y | Y | Y | Y |
 | SERVICE_INFORMATION  | 2      | 服务提醒 | Y | Y | Y | Y | Y | Y |
-| CONTENT_INFORMATION  | 3      | 内容资讯 | Y | N | N | N | N | N |
 | CUSTOMER_SERVICE     | 5      | 客服消息 | Y | N | N | Y | Y | N |
+| CONTENT_INFORMATION  | 3      | 内容资讯 | Y | N | N | N | N | N |
+| UNKNOWN_TYPE         | 0      | 未知类型 | Y | N | N | N | N | N |
 | OTHER_TYPES          | 0xFFFF | 其他     | Y | N | N | N | N | N |
-
+<!--RP2End-->
 
 ## 接口说明
 
-通知渠道主要接口如下。其他接口介绍详情参见[API参考](../reference/apis-notification-kit/js-apis-notificationManager.md)。
+通知渠道主要接口如下。其他接口介绍详情参见[@ohos.notificationManager (NotificationManager模块)](../reference/apis-notification-kit/js-apis-notificationManager.md)。
 
 | **接口名** | **描述** |
 | ---------- | -------- |

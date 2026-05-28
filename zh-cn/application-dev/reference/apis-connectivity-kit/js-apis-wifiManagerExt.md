@@ -118,13 +118,13 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
 表示功率模式的枚举。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SLEEPING | 0 | 睡眠模式。 |
-| GENERAL | 1 | 常规模式。 |
-| THROUGH_WALL | 2 | 穿墙模式。 |
+| SLEEPING | 0 | 睡眠模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
+| GENERAL | 1 | 常规模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
+| THROUGH_WALL | 2 | 穿墙模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
 
 
 ## wifiManagerExt.getSupportedPowerMode
@@ -196,14 +196,19 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 **示例：**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
+async function getWifiPowerMode() {
   try {
-      let model = wifiManagerExt.getPowerMode();
-      console.info("model info:" + model);
-  }catch(error){
-      console.error("failed: " + JSON.stringify(error));
+    // 1. 使用 await 等待 Promise 解析完成
+    let model = await wifiManagerExt.getPowerMode();
+    
+    console.info("model info: " + model);
+  } catch (error) {
+    // 2. 捕获 Promise 拒绝时的错误
+    console.error("failed: " + JSON.stringify(error));
   }
+}
 ```
 
 ## wifiManagerExt.getPowerMode
@@ -256,7 +261,7 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
 setPowerMode(mode: PowerMode) : void
 
- 设置功率模式。
+设置功率模式。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。

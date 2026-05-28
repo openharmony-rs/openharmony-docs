@@ -171,7 +171,7 @@ Sets whether to reverse the vertical arrangement of child components.
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean\> | Yes  | Whether to reverse the vertical arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order vertically. **false**: Child components are arranged in normal order vertically.|
+| isReversed  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean\> | Yes  | Whether to reverse the vertical arrangement of child components.<br>Default value: **true**. **true**: Child components are arranged in reverse order vertically. **false**: Child components are arranged in normal order vertically.|
 
 >  **NOTE**
 >
@@ -289,3 +289,4 @@ struct ColumnReverseSample {
 ```
 
 ![column](figures/column_reverse.png)
+<!--no_check-->

@@ -2,14 +2,14 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
 ## 接口介绍
 
-可通过API文档查看新增关键资产的异步接口[add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd)、同步接口[addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12)的详细介绍。
+开发者可以查阅API文档，获取关键资产新增接口的详细说明：[add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd)、同步接口[addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12)。
 
 在新增关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
@@ -59,7 +59,7 @@
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[API文档](../../reference/apis-asset-store-kit/js-apis-asset.md)。
+> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)API文档。
 >
 > 在指定群组中新增一条关键资产的使用示例详见[新增群组关键资产](asset-js-group-access-control.md#新增群组关键资产)。
 

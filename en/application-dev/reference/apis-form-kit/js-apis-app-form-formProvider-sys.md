@@ -1,17 +1,17 @@
 # @ohos.app.form.formProvider (formProvider) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, set the update time, and request a widget release.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formProvider (formProvider)](./js-apis-app-form-formProvider.md).
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formProvider (formProvider)](./js-apis-app-form-formProvider.md).
 
 ## Modules to Import
 
@@ -282,7 +282,7 @@ Checks whether a widget can be added to the widget host. This API uses a promise
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise that returns whether a widget can be added to the widget host.<br>**true**: The widget can be added to the widget host.<br>**false**: The widget cannot be added to the widget host.|
+| Promise&lt;boolean&gt; | Promise used to return whether a widget can be added to the widget host.<br>**true**: The widget can be added to the widget host.<br>**false**: The widget cannot be added to the widget host.|
 
 **Error codes**
 
@@ -460,7 +460,7 @@ Updates the static configuration information of a specified template widget on t
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo.md#forminfo)&gt; | Yes| Static configuration information of a specified template widget.|
+| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo-sys.md#templateformdetailinfo23)&gt; | Yes| Static configuration information of a specified template widget.|
 
 **Return value**
 
@@ -523,7 +523,7 @@ Subscribes to controls on cross-bundle widget addition to the home screen. This 
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | Yes| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | Yes| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
 
 **Error codes**
 
@@ -570,7 +570,7 @@ Unsubscribes from controls on cross-bundle widget addition to the home screen. T
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | No| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | No| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
 
 **Error codes**
 

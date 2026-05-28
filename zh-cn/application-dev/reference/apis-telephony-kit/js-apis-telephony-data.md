@@ -102,7 +102,7 @@ console.info("Result: "+ data.getDefaultCellularDataSlotIdSync())
 
 getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
-获取蜂窝数据业务的上下行状态，使用callback方式作为异步方法。
+获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用callback方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -141,7 +141,7 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
 
 getCellularDataFlowType(): Promise\<DataFlowType\>
 
-获取蜂窝数据业务的上下行状态，使用Promise方式作为异步方法。
+获取蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头），使用Promise方式作为异步方法。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -151,7 +151,7 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 | 类型                                     | 说明                                            |
 | ---------------------------------------- | ----------------------------------------------- |
-| Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回获取蜂窝数据业务的上下行状态。 |
+| Promise\<[DataFlowType](#dataflowtype)\> | 以Promise形式返回蜂窝网络的数据流类型（对应信号栏旁边的上下行箭头）。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ isCellularDataEnabled(callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -312,7 +312,7 @@ isCellularDataEnabled(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -352,7 +352,7 @@ isCellularDataEnabledSync(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -395,7 +395,7 @@ isCellularDataRoamingEnabled(slotId: number, callback: AsyncCallback\<boolean\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -445,7 +445,7 @@ isCellularDataRoamingEnabled(slotId: number): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -493,7 +493,7 @@ isCellularDataRoamingEnabledSync(slotId: number): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)说明文档和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -547,7 +547,7 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
 异步获取默认移动数据的SIM卡的APN（access point name，接入点名称）信息。
 
-**需要权限**：ohos.permission.MANAGE_APN_SETTING（该权限是受限开放权限，仅需要连接移动数据专网进行办公室可以申请该权限，权限介绍参见[权限定义](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting)）
+**需要权限**：ohos.permission.MANAGE_APN_SETTING（该权限是受限开放权限，仅需要连接移动数据专网进行办公时可以申请该权限，权限介绍参见[权限定义](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting)）
 
 **系统能力**：SystemCapability.Telephony.CellularData
 

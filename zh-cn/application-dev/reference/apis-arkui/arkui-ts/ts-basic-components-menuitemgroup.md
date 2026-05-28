@@ -28,7 +28,7 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 | 参数名 | 类型                                                  | 必填 | 说明                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------- |
-| value  | [MenuItemGroupOptions](#menuitemgroupoptions对象说明) | 否   | 包含设置MenuItemGroup的标题和尾部显示信息。 |
+| value  | [MenuItemGroupOptions](#menuitemgroupoptions对象说明) | 否   | 包含设置MenuItemGroup的标题和尾部显示信息。<br/> 未设置时，不显示标题和尾部信息。 |
 
 ## MenuItemGroupOptions对象说明
 
@@ -40,8 +40,8 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 | 名称   | 类型                                                         | 只读 | 可选 | 说明                          |
 | ------ | ------------------------------------------------------------ | ---- | ---- | ----------------------------- |
-| header | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 设置对应group的标题显示信息。 |
-| footer | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 设置对应group的尾部显示信息。 |
+| header | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 设置对应group的标题显示信息。 <br/> 未设置时，不显示标题信息。 |
+| footer | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 是   | 设置对应group的尾部显示信息。 <br/> 未设置时，不显示尾部信息。 |
 
 ## 示例
 

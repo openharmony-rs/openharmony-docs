@@ -68,9 +68,9 @@
   breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // 表示xs、sm、md、lg、xl共5个断点被使用，小于320vp为xs，320vp-600vp为sm，  600vp-840vp为md，840vp-1440vp为lg，大于1440vp为xl。
   ```
 
-- 栅格容器通过监听窗口或容器的尺寸变化进行断点，通过reference设置断点切换参考物。考虑到应用可能以非全屏窗口的形式显示，以应用窗口宽度为参照物更为通用。
+- 栅格容器通过监听窗口或容器的尺寸变化进行断点，通过[reference](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints)设置断点切换参考物。考虑到应用可能以非全屏窗口的形式显示，以应用窗口宽度为参照物更为通用。
 
-  例如，通过断点设置将应用宽度分成6个区间，通过columns配置各断点下栅格容器的栅格列数。
+  例如，通过断点设置将应用宽度分成6个区间，通过[columns](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)配置各断点下栅格容器的栅格列数。
 
 
   <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets) -->
@@ -281,12 +281,12 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
     ![zh-cn_image_0000001563060689](figures/zh-cn_image_0000001563060690.gif)
 
-  仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据[栅格列数补全](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)取默认值。
+  仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据栅格列数补全（见[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)）取默认值。
 
 
 ### 排列方向
 
-栅格布局中，可以通过设置GridRow的direction属性来指定栅格子组件在栅格容器中的排列方向。该属性可以设置为[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).Row（从左往右排列）或[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).RowReverse（从右往左排列），以满足不同的布局需求。通过合理的direction属性设置，可以使得页面布局更加灵活和符合设计要求。
+栅格布局中，可以通过设置GridRow的[direction](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)属性来指定栅格子组件在栅格容器中的排列方向。该属性可以设置为[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).Row（从左往右排列）或[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).RowReverse（从右往左排列），以满足不同的布局需求。通过合理的direction属性设置，可以使得页面布局更加灵活和符合设计要求。
 
 - 子组件默认从左往右排列。
 
@@ -313,7 +313,7 @@ columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-
 
 ### 子组件间距
 
-GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
+GridRow中通过[gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)属性设置子元素在水平和垂直方向的间距。
 
 - 当gutter类型为number时，同时设置栅格子组件间水平和垂直方向边距且相等。下例中，设置子组件水平与垂直方向距离相邻元素的间距为10。
 
@@ -340,7 +340,7 @@ GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
 
 ## 子组件GridCol
 
-GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设置属性两种方式，设置span（占用列数），offset（偏移列数），order（元素序号）的值。
+[GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md)组件作为[GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md)组件的子组件，通过给GridCol传参或者设置属性两种方式，设置[span](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)（占用列数），[offset](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)（偏移列数），[order](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)（元素序号）的值。
 
 - 设置span。
 
@@ -434,7 +434,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 
     ![zh-cn_image_0000001511421264](figures/zh-cn_image_0000001511421264.png)
 
-- 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据[列数补全](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)取默认值。
+- 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据列数补全（见[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)）取默认值。
 
 
     <!-- @[GridColSpanToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToOption.ets) -->
@@ -713,4 +713,4 @@ struct GridRowExample {
 ![zh-cn_image_0000001563060697](figures/zh-cn_image_0000001563060697.png)
 
 
-综上所述，栅格组件提供了丰富的自定义能力，功能非常灵活和强大。只需要明确栅格在不同断点下的Columns、Margin、Gutter及span等参数，即可确定最终布局，无需关心具体的设备类型及设备状态（如横竖屏）等。
+综上所述，栅格组件提供了丰富的自定义能力，功能非常灵活和强大。只需要明确栅格在不同断点下的[columns](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)、[margin](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)及[span](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)等参数，即可确定最终布局，无需关心具体的设备类型及设备状态（如横竖屏）等。

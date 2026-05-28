@@ -1,10 +1,10 @@
 # ArkGuard混淆常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 如何排查功能异常
 
@@ -98,11 +98,11 @@ let jsonProp = jsonData.i.j;
 
 **问题原因**
 
-开启属性混淆后，源码会被混淆，但json文件不会。源码中通过`jsonData.i`访问属性时，由于属性名称已经被混淆，json数据中并不存在对应的字段，导致获取的值为`undefined`。
+开启属性混淆后，源码会被混淆，但JSON文件不会。源码中通过`jsonData.i`访问属性时，由于属性名称已经被混淆，JSON数据中并不存在对应的字段，导致获取的值为`undefined`。
 
 **解决方案**
 
-将json文件中的字段配置到属性白名单中。示例如下：
+将JSON文件中的字段配置到属性白名单中。示例如下：
 
 ```text
 -keep-property-name
@@ -314,19 +314,12 @@ addNum
 <!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/utils/Calc.ets) -->
 
 ``` TypeScript
+// 混淆前
+// hsp模块
 export function addNum(a: number, b: number) {
   return a + b;
 }
 ```
-
-<!-- @[export_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/pages/Index.ets) --> 
-
-``` TypeScript
-// 混淆前。
-// hsp模块。
-export { addNum } from '../utils/Calc';
-```
-
 
 <!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
@@ -343,7 +336,7 @@ addNum(1, 2);
 export function b() {}
 
 // entry模块
-import { n } from '@normalized:N&myhsp&&myhsp/Index&';
+import { n } from '@normalized:N&sharedlibrary&&sharedlibrary/Index&';
 
 n();
 ```
@@ -553,7 +546,7 @@ person["m"] = 20;
 
 **问题现象**
 
-Hilog日志中报错信息为：`table Account has no column named a23 in 'INSERT INTO Account(a23)'`。
+HiLog日志中报错信息为：`table Account has no column named a23 in 'INSERT INTO Account(a23)'`。
 
 **问题原因**
 

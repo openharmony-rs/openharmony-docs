@@ -1,8 +1,8 @@
 # @ohos.url (URL字符串解析)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -203,7 +203,7 @@ for (let item of pair) {
 
 forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => void, thisArg?: Object): void
 
-通过回调函数来遍历URLSearchParams实例对象上的键值对。
+通过回调函数来遍历URLParams实例对象上的键值对。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 

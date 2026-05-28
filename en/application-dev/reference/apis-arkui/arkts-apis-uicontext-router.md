@@ -1,9 +1,9 @@
 # Class (Router)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Provides APIs to access pages through URLs. You can use the APIs to navigate to a specified page in an application, replace the current page with another one in the same application, and return to the previous page or a specified page.
@@ -52,41 +52,104 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+// Define the class for passing parameters.
+class innerParams {
+  array: number[];
+
+  constructor(tuple: number[]) {
+    this.array = tuple;
+  }
+}
+
+class RouterParams {
+  data: innerParams;
+
+  constructor(tuple: number[]) {
+    this.data = new innerParams(tuple);
+  }
+}
 
 @Entry
 @Component
 struct Index {
   async routePage() {
-    this.getUIContext().getRouter().pushUrl({
-        url: 'pages/routerpage2',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
-          }
-        }
-      })
+    let options: router.RouterOptions = {
+      url: 'pages/second',
+      params: new RouterParams([12, 45, 78])
+    }
+    this.getUIContext()
+      .getRouter()
+      .pushUrl(options)
       .then(() => {
-        console.info('succeeded');
+        console.info('pushUrl success');
       })
-      .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+      .catch((err: ESObject) => {
+        console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
       })
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button() {
-        Text('next page')
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }.type(ButtonType.Capsule)
-      .margin({ top: 20 })
-      .backgroundColor('#ccc')
-      .onClick(() => {
-        this.routePage();
-      })
+      Text('First Page')
+      Button('Next page')
+        .type(ButtonType.Capsule)
+        .margin({ top: 20 })
+        .onClick(() => {
+          this.routePage()
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+```ts
+// Receive the passed parameters on the second page.
+class innerParams {
+  array: number[];
+
+  constructor(tuple: number[]) {
+    this.array = tuple;
+  }
+}
+
+class RouterParams {
+  data: innerParams;
+
+  constructor(tuple: number[]) {
+    this.data = new innerParams(tuple);
+  }
+}
+
+@Entry
+@Component
+struct Second {
+  @State data: object = (this.getUIContext().getRouter().getParams() as RouterParams).data;
+  @State secondData: string = '';
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Text('Second Page')
+      Button('Back')
+        .fontSize(30)
+        .onClick(() => {
+          try {
+            this.getUIContext().getRouter().showAlertBeforeBackPage({ message: 'Are you sure to return?' })
+          } catch (error) {
+            // TODO: Implement error handling.
+          }
+          this.getUIContext().getRouter().back()
+        })
+        .margin({ top: 20 })
+      Button(`The value on the first page: ${this.secondData}`)
+        .margin({ top: 20 })
+        .onClick(()=> {
+          this.secondData = (this.data['array'][1]).toString();
+        })
     }
     .width('100%')
     .height('100%')
@@ -389,7 +452,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -542,7 +605,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -699,7 +762,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -858,7 +921,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1015,7 +1078,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1169,7 +1232,7 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
       })
   }
 
@@ -1336,7 +1399,7 @@ See the example for [PushUrl](#pushurl).
 import { Router , UIContext } from '@kit.ArkUI';
 let uiContext: UIContext = this.getUIContext();
 let router: Router = uiContext.getRouter();
-router.back(1, {info:'From Home'}); // Returning with parameters.
+router.back(1, {info:'From the home page'}); // Returning with parameters.
 ```
 
 ## clear

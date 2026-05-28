@@ -1,8 +1,8 @@
 # 推荐使用OHAudio开发音频录制功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -11,6 +11,8 @@ OHAudio是系统在API version 10中引入的一套C API，此API在设计上实
 OHAudio音频录制状态变化示意图：
 
 ![OHAudioCapturer status change](figures/ohaudiocapturer-status-change.png)
+
+当音频流处于工作状态（非released状态）时，需要占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用OH_AudioCapturer_Release()回收音频资源，做好资源利用，避免后续创建音频流失败。
 
 ## 使用入门
 
@@ -104,7 +106,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    多音频并发处理可参考文档[处理音频焦点事件](audio-playback-concurrency.md)，仅接口语言差异。
 
    <!-- @[Set_AudioCallbackFunction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+   
    ``` C++
    void MyOnReadData_NewAPI(
        OH_AudioCapturer* capturer,
@@ -114,7 +116,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 从buffer中取出length长度的录音数据。
    }
-
+   
    void MyOnInterruptEvent_NewAPI(
        OH_AudioCapturer* capturer,
        void* userData,
@@ -123,7 +125,7 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 根据type和hint表示的音频中断信息，更新录制器状态和界面。
    }
-
+   
    void MyOnError_NewAPI(
        OH_AudioCapturer* capturer,
        void* userData,
@@ -133,8 +135,8 @@ OH_AudioStreamBuilder_Destroy(builder);
    }
    // ...
        // 配置音频中断事件回调函数。
-       OH_AudioCapturer_OnInterruptCallback OnIntereruptCb = MyOnInterruptEvent_NewAPI;
-       OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, OnIntereruptCb, nullptr);
+       OH_AudioCapturer_OnInterruptCallback OnInterruptCb = MyOnInterruptEvent_NewAPI;
+       OH_AudioStreamBuilder_SetCapturerInterruptCallback(builder, OnInterruptCb, nullptr);
    
        // 配置音频异常回调函数。
        OH_AudioCapturer_OnErrorCallback OnErrorCb = MyOnError_NewAPI;
@@ -217,7 +219,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 - 方式1：请确保[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**初始化。
 
   <!-- @[callback_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+  
   ``` C++
   int32_t MyOnReadData_Legacy(
       OH_AudioCapturer* capturer,
@@ -241,7 +243,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
       // 配置回调函数，如果需要监听，则赋值。
       callbacks.OH_AudioCapturer_OnReadData = MyOnReadData_Legacy;
       callbacks.OH_AudioCapturer_OnInterruptEvent = MyOnInterruptEvent_Legacy;
-
+      
       // （必选）如果不需要监听，使用空指针初始化。
       callbacks.OH_AudioCapturer_OnStreamEvent = nullptr;
       callbacks.OH_AudioCapturer_OnError = nullptr;
@@ -250,7 +252,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 - 方式2：使用前，初始化并清零结构体。
 
   <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
+  
   ``` C++
   int32_t MyOnReadData_Legacy(
       OH_AudioCapturer* capturer,

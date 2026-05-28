@@ -1,7 +1,7 @@
 # DialogV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -9,13 +9,13 @@
 
 The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting.
 
-This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now more easily manage dialog box data and states with greater flexibility, leading to faster UI updates.
+This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), V2 offers a higher level of observation and management over data objects beyond the component level. You can now manage dialog box data and states with greater flexibility, leading to faster UI updates.
 
 > **NOTE**
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
-> 
-> - This component is not supported on wearables.
+>
+> - This component can be used only in the stage model.
 >
 > - If the **DialogV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **DialogV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **DialogV2** component.
 
@@ -69,7 +69,7 @@ Defines the event triggered when the selected status of the check box changes.
 
 | Name    | Type     | Mandatory| Description                                           |
 | :------ |:--------| :- | :-------------------------------------------------- |
-| checked | boolean | Yes | Whether to select the check box.<br>Whether to select the check box.<br>**true**: The check box is selected. **false**: The check box is not selected.|
+| checked | boolean | Yes | Whether to select the check box.<br>**true**: The check box is selected. **false**: The check box is not selected.|
 
 ## SelectDialogV2
 
@@ -199,7 +199,7 @@ Displays a popover dialog box that is positioned relative to the target componen
 
 | Name           | Type                                                               | Mandatory| Decorator              | Description                                                |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
-| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**false**: The popover dialog box is hidden.<br>**false**: The popover dialog box is hidden.                                        |
+| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed.<br>**false**: The popover dialog box is hidden.                                        |
 | \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | No | @Event              | Callback invoked when the visibility of the dialog box changes. Use the **!!** syntax for two-way binding with **visible**.<br>By default, there is no event.|
 | popover       | [PopoverDialogV2Options](#popoverdialogv2options)                 | Yes | @Param<br>@Require | Options of the popover dialog box.                                        |
 | targetBuilder | [CustomBuilder](ts-types.md#custombuilder8)                       | Yes | @BuilderParam       | Target component relative to which the popover dialog box is positioned.                                     |
@@ -234,20 +234,19 @@ Defines the button used in a dialog box to perform actions.
 
 **Decorator**: @ObservedV2
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name          | Type                                                                    | Read-Only| Optional| Description                                                                         |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
-| content      | [ResourceStr](ts-types.md#resourcestr)                                 | No | No | Content of the button.<br>Decorator: @Trace                                                                     |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Action triggered when the button is clicked.<br>By default, there is no action.<br>Decorator: @Trace                                                       |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | No | Yes | Background of the button.<br>The setting follows **buttonStyle** by default.<br>Decorator: @Trace                                              |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | No | Yes | Font color of the button.<br>The setting follows **buttonStyle** by default.<br>Decorator: @Trace                                            |
-| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11) | No | Yes | Style of the button.<br>Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices<br>Decorator: @Trace|
-| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12)           | No | Yes | Role of the button.<br>Default value: **ButtonRole.NORMAL**<br>Decorator: @Trace                                          |
-| defaultFocus | boolean                                                                | No | Yes | Whether the button is the default focus.<br>**true**: The button is the default focus.<br>**false**: The button is not the default focus.<br>Default value: **false**.<br>Decorator: @Trace              |
-| enabled       | boolean                                                                | No | Yes | Whether the button is enabled.<br>**true**: The button is enabled.<br>**false**: The button is disabled.<br>Default value: **true**.<br>Decorator: @Trace                        |
+| content      | [ResourceStr](ts-types.md#resourcestr)                                 | No | No | Content of the button.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.      |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Event triggered when the button is clicked.<br>By default, there is no event.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
+| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | No | Yes | Background of the button.<br>The setting follows **buttonStyle** by default.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
+| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | No | Yes | Font color of the button.<br>The setting follows **buttonStyle** by default.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.    |
+| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11) | No | Yes | Style of the button.<br>Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12)           | No | Yes | Role of the button.<br>Default value: **ButtonRole.NORMAL**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| defaultFocus | boolean                                                                | No | Yes | Whether the button is the default focus.<br>**true**: The button is the default focus.<br>**false**: The button is not the default focus.<br>Default value: **false**.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| enabled       | boolean                                                                | No | Yes | Whether the button is enabled.<br>**true**: The button is enabled.<br>**false**: The button is disabled.<br>Default value: **true**.<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | No| Yes| Alignment method of the button text.<br>Default value: **TextAlign.Start**<br>Decorator: @Trace<br>**Atomic service API**: This API can be used in atomic services since API version 24.         |
 
 > **NOTE**
 >
@@ -275,20 +274,19 @@ A constructor used to create an **AdvancedDialogV2Button** instance.
 
 Provides options used to initialize an **AdvancedDialogV2Button** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name          | Type                                                                    | Read-Only| Optional| Description                                                                         |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
-| content      | [ResourceStr](ts-types.md#resourcestr)                                 | No | No | Content of the button.                                                                     |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Action triggered when the button is clicked.<br>By default, there is no action.                                                       |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | No | Yes | Background of the button.<br> The setting follows **buttonStyle** by default.                                             |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | No | Yes | Font color of the button.<br>The setting follows **buttonStyle** by default.                                            |
-| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11) | No | Yes | Style of the button.<br>Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices|
-| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12)           | No | Yes | Role of the button.<br>Default value: **ButtonRole.NORMAL**                                          |
-| defaultFocus | boolean                                                                | No | Yes | Whether the button is the default focus.<br>**true**: The button is the default focus.<br>**false**: The button is not the default focus.<br>Default value: **false**.              |
-| enabled       | boolean                                                                | No | Yes | Whether the button is enabled.<br>**true**: The button is enabled.<br>**false**: The button is disabled.<br>Default value: **true**.                        |
+| content      | [ResourceStr](ts-types.md#resourcestr)                                 | No | No | Content of the button.<br>**Atomic service API**: This API can be used in atomic services since API version 18.     |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | No | Yes | Event triggered when the button is clicked.<br>By default, there is no event.<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
+| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | No | Yes | Background of the button.<br> The setting follows **buttonStyle** by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18.  |
+| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | No | Yes | Font color of the button.<br>The setting follows **buttonStyle** by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11) | No | Yes | Style of the button.<br>Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12)           | No | Yes | Role of the button.<br>Default value: **ButtonRole.NORMAL**<br>**Atomic service API**: This API can be used in atomic services since API version 18.  |
+| defaultFocus | boolean                                                                | No | Yes | Whether the button is the default focus.<br>**true**: The button is the default focus.<br>**false**: The button is not the default focus.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18. |
+| enabled       | boolean                                                                | No | Yes | Whether the button is enabled.<br>**true**: The button is enabled.<br>**false**: The button is disabled.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.  |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | No| Yes| Alignment method of the button text.<br>Default value: **TextAlign.Start**<br>**Atomic service API**: This API can be used in atomic services since API version 24. |
 
 ## Example
 
@@ -336,7 +334,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("TipsDialogV2")
+          Button("Open TipsDialogV2")
             .width(96)
             .height(40)
             .onClick(() => {
@@ -556,7 +554,7 @@ struct Index {
 
 ### Example 5: Loading Dialog Box
 
-This example implements a loading dialog box that contains a progress indicator.
+This example implements a loading dialog box with content specified by the **content** parameter.
 
 ```ts
 import { LoadingDialogV2, UIContext  } from '@kit.ArkUI';
@@ -625,7 +623,7 @@ struct Index {
   dialogBuilder(): void {
     WithTheme({ theme: new CustomThemeImpl(new CustomThemeColors()) }) {
       LoadingDialogV2({
-        content: 'Text text text text text text',
+        content: 'This is where content is displayed.',
       })
     }
   }

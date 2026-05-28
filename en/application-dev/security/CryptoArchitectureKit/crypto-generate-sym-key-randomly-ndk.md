@@ -9,7 +9,7 @@
 
 The following uses AES and SM4 as an example to describe how to randomly generate a symmetric key (**OH_CryptoSymKey**).
 
-The symmetric key (**OH_CryptoSymKey**) object created can be used for subsequent encryption and decryption operations, and the binary data can be used for key storage or transfer.
+The symmetric key object may be used for subsequent encryption and decryption operations, and binary data may be used for storage or transmission.
 
 ## Adding the Dynamic Library in the CMake Script
 ```txt
@@ -25,12 +25,14 @@ For details about the algorithm specifications, see [AES](crypto-sym-key-generat
 2. Call [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to randomly generate a symmetric key object (**OH_CryptoSymKey**).
 
 3. Call [OH_CryptoSymKey_GetKeyData](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata) to obtain the binary data of the key object.
+<!-- @[generate_aes_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/aes.cpp) -->
 
-```c++
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_key.h"
+#include "file.h"
 
-static OH_Crypto_ErrCode testGenerateSymKey()
+OH_Crypto_ErrCode testGenerateSymKey()
 {
     OH_CryptoSymKeyGenerator *ctx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
@@ -55,6 +57,7 @@ static OH_Crypto_ErrCode testGenerateSymKey()
 }
 ```
 
+
 ## Randomly Generating an SM4 Key
 
 For details about the algorithm specifications, see [SM4](crypto-sym-key-generation-conversion-spec.md#sm4).
@@ -65,25 +68,28 @@ For details about the algorithm specifications, see [SM4](crypto-sym-key-generat
 
 3. Call [OH_CryptoSymKey_GetKeyData](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkey_getkeydata) to obtain the binary data of the key object.
 
-```c++
+<!-- @[generate_sm4_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/RandomlyGenerateSymmetricKey/entry/src/main/cpp/types/project/sm4.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_key.h"
+#include "file.h"
 
-static OH_Crypto_ErrCode testGenerateSM4Key()
+OH_Crypto_ErrCode testGenerateSM4Key()
 {
     OH_CryptoSymKeyGenerator *ctx = nullptr;
     OH_CryptoSymKey *keyCtx = nullptr;
-    Crypto_DataBlob out = {.data = nullptr, .len = 0}; // Binary data of the symmetric key.
-    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &ctx); // Create a symmetric key generator.
+    Crypto_DataBlob out = {.data = nullptr, .len = 0};
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &ctx);
     if (ret != CRYPTO_SUCCESS) {
         return ret;
     }
-    ret = OH_CryptoSymKeyGenerator_Generate(ctx, &keyCtx); // Randomly generate a symmetric key object.
+    ret = OH_CryptoSymKeyGenerator_Generate(ctx, &keyCtx);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoSymKeyGenerator_Destroy(ctx);
         return ret;
     }
-    ret = OH_CryptoSymKey_GetKeyData(keyCtx, &out); // Obtain the binary data of the symmetric key object.
+    ret = OH_CryptoSymKey_GetKeyData(keyCtx, &out);
     OH_CryptoSymKeyGenerator_Destroy(ctx);
     OH_CryptoSymKey_Destroy(keyCtx);
     if (ret != CRYPTO_SUCCESS) {

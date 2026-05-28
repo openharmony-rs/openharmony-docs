@@ -15,7 +15,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
    
    In addition to the example in this topic, [SM4](crypto-sym-key-generation-conversion-spec.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an SM4 symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
-2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|GCM|PKCS7'** to create a **Cipher** instance for encryption. The key type is **SM4_128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
+2. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|GCM|PKCS7'** to create a **Cipher** instance for encryption. The symmetric key type is **SM4_128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
 
 3. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In the **Cipher.init** API, set **opMode** to **CryptoMode.ENCRYPT_MODE** (encryption), **key** to **SymKey** (the key for encryption), and **params** to **GcmParamsSpec** corresponding to the GCM mode.
 
@@ -39,7 +39,7 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
 
 **Decryption**
 
-1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|GCM|PKCS7'** to create a **Cipher** instance for decryption. The key type is **SM4_128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
+1. Call [cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher) with the string parameter **'SM4_128|GCM|PKCS7'** to create a **Cipher** instance for decryption. The symmetric key type is **SM4_128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
 
 2. Call [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) to initialize the **Cipher** instance. In the **Cipher.init** API, set **opMode** to **CryptoMode.DECRYPT_MODE** (decryption), **key** to **SymKey** (the key for decryption), and **params** to **GcmParamsSpec** corresponding to the GCM mode.
 
@@ -49,16 +49,18 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
 
 - Example (using asynchronous APIs):
 
-  ```ts
+  <!-- @[async_symmetry_encrypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_seg_encryption_decryption/sm4_gcm_seg_encryption_decryption_asynchronous.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12);
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -73,12 +75,14 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "GcmParamsSpec"
+      algName: 'GcmParamsSpec'
     };
     return gcmParamsSpec;
   }
+  
   let gcmParams = genGcmParamsSpec();
-  // Encrypt the message by segment.
+  
+  // Perform segmented encryption.
   async function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
@@ -100,7 +104,8 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-  // Decrypt the message by segment.
+  
+  // Perform segmented decryption.
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, gcmParams);
@@ -118,19 +123,21 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
       decryptText = mergeText;
     }
     let decryptData = await decoder.doFinal(null);
-    if (decryptData === null) {
-      console.info('GCM decrypt success, decryptData is null');
+    if (decryptData == null) {
+      console.info('GCM decrypt result: success, decryptData is null.');
     }
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
+  
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
     let symKey = await sm4Generator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
+  
   async function sm4() {
     let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
     let symKey = await genSymKeyByData(keyData);
@@ -139,26 +146,29 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let encryptText = await encryptMessageUpdateBySegment(symKey, plainText);
     let decryptText = await decryptMessagePromise(symKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
   ```
 
+
 - Example (using synchronous APIs):
 
-  ```ts
+  <!-- @[sync_symmetry_encrypt_decrypt_sm4_gcm_seg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4ArkTs/entry/src/main/ets/pages/sm4_gcm_seg_encryption_decryption/sm4_gcm_seg_encryption_decryption_synchronous.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genGcmParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -173,12 +183,14 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "GcmParamsSpec"
+      algName: 'GcmParamsSpec'
     };
     return gcmParamsSpec;
   }
+  
   let gcmParams = genGcmParamsSpec();
-  // Encrypt the message by segment.
+  
+  // Perform segmented encryption.
   function encryptMessageUpdateBySegment(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
@@ -200,7 +212,8 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
-  // Decrypt the message by segment.
+  
+  // Perform segmented decryption.
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('SM4_128|GCM|PKCS7');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, gcmParams);
@@ -218,19 +231,21 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
       decryptText = mergeText;
     }
     let decryptData = decoder.doFinalSync(null);
-    if (decryptData === null) {
-      console.info('GCM decrypt success, decryptData is null');
+    if (decryptData == null) {
+      console.info('GCM decrypt result: success, decryptData is null.');
     }
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
+  
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let sm4Generator = cryptoFramework.createSymKeyGenerator('SM4_128');
     let symKey = sm4Generator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
+  
   function main() {
     let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
     let symKey = genSymKeyByData(keyData);
@@ -239,11 +254,10 @@ For details about the algorithm specifications, see [SM4](crypto-sym-encrypt-dec
     let encryptText = encryptMessageUpdateBySegment(symKey, plainText);
     let decryptText = decryptMessage(symKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
+      console.info('decrypt ok.');
       console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
     } else {
-      console.error('decrypt failed');
+      console.error('decrypt failed.');
     }
   }
-
   ```

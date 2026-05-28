@@ -6,12 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The MediaSourceLoadingRequest class defines a loading request object. Applications use this object to obtain the location of the requested resource and to interact with the player for data exchange.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 18.
-
-The MediaSourceLoadingRequest class defines a loading request object. Applications use this object to obtain the location of the requested resource and to interact with the player for data exchange.
 
 ## Modules to Import
 
@@ -21,12 +21,14 @@ import { media } from '@kit.MediaKit';
 
 ## Properties
 
+**Atomic service API**: This API can be used in atomic services since API version 18.
+
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 | Name  | Type   | Read-Only  | Optional  | Description               |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url       | string                        | No  | No  | Resource URL, which is the path to the resource that the application needs to open.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| header     | Record<string, string>        | No  | Yes  | HTTP request header. If the header exists, the application should set the header information in the HTTP request when downloading data.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| url       | string                        | No  | No  | Resource URL, which is the path to the resource that the application needs to open.|
+| header    | Record<string, string>        | No  | Yes  | HTTP request header. If the header exists, the application should set the header information in the HTTP request when downloading data.|
 
 ## respondData<sup>18+</sup>
 

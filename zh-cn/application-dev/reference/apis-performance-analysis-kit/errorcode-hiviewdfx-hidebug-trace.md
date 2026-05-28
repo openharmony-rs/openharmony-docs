@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -106,3 +106,43 @@ Quota exceeded.
 **处理步骤**
 
 等待进程或整机的调用配额刷新。
+
+## 11400120 trace文件存储达到限制
+
+**错误信息**
+
+Trace storage limit reached.
+
+**错误描述**
+
+采集trace返回的.sys文件在目录下的存储超出限制。
+
+**可能原因**
+
+采集trace返回的.sys文件在目录下的数量大于等于3份。
+
+**处理步骤**
+
+清理trace目录下的文件。
+
+## 11400302 trace采集超出资源配额
+
+**错误信息**
+
+Resource unavailable.
+
+**错误描述**
+
+应用调用trace采集超出系统资源配额。
+
+> **说明**：
+>
+> 开发者模式下[debug版本应用](../../dfx/performance-analysis-kit-terminology.md#debug版本应用)不被管控。
+
+**可能原因**
+
+应用调用trace采集超出系统资源的每日配额。
+
+**处理步骤**
+
+当天配额用完，等待次日系统资源配额刷新。

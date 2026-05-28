@@ -1,8 +1,8 @@
 # @ohos.util.LightWeightSet (非线性容器LightWeightSet)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,7 +12,7 @@ LightWeightSet依据泛型定义，采用轻量级结构，初始默认容量大
 
 集合中value值的查找依赖于hash算法，通过一个数组存储hash值，然后映射到其他数组中的value值。
 
-LightWeightSet和[HashSet](js-apis-hashset.md)都是用来存储键值的集合，但LightWeightSet的占用内存更小。
+LightWeightSet和[HashSet](js-apis-hashset.md)都是用来存储元素的集合，但LightWeightSet的占用内存更小。
 
 **推荐使用场景：** 当需要存取某个集合或是对某个集合去重时，推荐使用占用内存更小的LightWeightSet。
 
@@ -414,7 +414,7 @@ removeAt(index: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -456,7 +456,7 @@ getValueAt(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -572,6 +572,8 @@ let lightWeightSet = new LightWeightSet<string>();
 lightWeightSet.add("squirrel");
 lightWeightSet.add("sparrow");
 let result = lightWeightSet.toArray();
+console.info(result.toString());
+// sparrow,squirrel
 ```
 
 
@@ -803,7 +805,7 @@ equal(obj: Object): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 当obj为仅含string或number的LightWeightSet或数组，且对象内部元素构成相同时，返回true；其它情况返回false。 |
+| boolean | 当obj为仅含string或number的LightWeightSet或数组，且对象内部元素构成相同时，返回true；其他情况返回false。 |
 
 **错误码：**
 

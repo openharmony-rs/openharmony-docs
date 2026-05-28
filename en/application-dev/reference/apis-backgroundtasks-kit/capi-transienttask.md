@@ -5,11 +5,11 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## Overview
 
-The TransientTask module provides C APIs for transient tasks.
+The **TransientTask** module provides C APIs for transient tasks.
 
 **Since**: 13
 ## Files

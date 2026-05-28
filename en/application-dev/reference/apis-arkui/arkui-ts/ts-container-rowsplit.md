@@ -35,7 +35,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 > **NOTE**
 >
-> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md) is **true** for the **RowSplit** component.
+> The default value of [shape clipping](ts-universal-attributes-sharp-clipping.md) of the **RowSplit** component is **true**.
 
 ### resizeable
 

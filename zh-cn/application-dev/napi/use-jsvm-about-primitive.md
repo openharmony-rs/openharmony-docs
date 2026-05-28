@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行primitive类相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -194,7 +194,7 @@ static JSVM_Value CoerceToString(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value str = nullptr;
     JSVM_Status status = OH_JSVM_CoerceToString(env, args[0], &str);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToString fail");
+        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_CoerceToString failed");
         return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_CoerceToString success");
@@ -250,7 +250,7 @@ static JSVM_Value GetBoolean(JSVM_Env env, JSVM_CallbackInfo info)
     }
     JSVM_Status status = OH_JSVM_GetBoolean(env, type, &returnValue);
     if (status != JSVM_OK) {
-        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_GetBoolean fail");
+        OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_GetBoolean failed");
     } else {
         bool result = false;
         OH_JSVM_GetValueBool(env, returnValue, &result);

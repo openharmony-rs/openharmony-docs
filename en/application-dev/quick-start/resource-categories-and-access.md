@@ -5,14 +5,13 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
-During application development, you may need to use different resources, such as strings, colors, fonts, spacing, and icons. The values of these resources vary with devices or configurations. This topic describes resource types and provides guidance for resource development.
+## Function Description
 
-Resources are classified into the following types based on their sources:
+In application development, it is common to use resources such as strings, colors, fonts, spacing, and icons. To ensure the application delivers an optimal experience across different devices (e.g., mobile phones, tablets, vehicle head units) and configurations (e.g., languages, screen densities, color modes), the system supports an automatic resource dynamic matching mechanism that selects the most appropriate resources for various scenarios. This section describes resource types and organization methods, and provides guidance for resource development.
 
-- Application resources: resources customized by developers in applications. You can use resource files to manage resources on different devices or configurations.
-- System resources: resources provided by the system. You can obtain system icon resources from [HarmonyOS Symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol/) and system color, spacing, and rounded corner resources from the [system resource layer design table](https://gitcode.com/openharmony/docs/blob/master/en/design/ux-design/design-resources.md). In addition, you can obtain system color resources from [full table of basic and semantic tokens](https://developer.huawei.com/consumer/en/doc/design-guides/color-0000001776857164#section17672143841113). The resources in this table do not overlap with those in the system resource layer design table. Both are recommended system color resources.<br>Other system resources that are not listed in the tables are system component and underlying capability parameters. You are advised to use the system resources provided in the preceding tables.
+Based on source differences, resources are categorized into system resources and application resources. System resources are provided by the system.<!--RP2--> You can retrieve system symbol icons, colors, spacing, characters, and other resource information from [global_system_resources](https://gitcode.com/openharmony/global_system_resources/tree/master/systemres/main/resources/base/element). <!--RP2End-->Among these system resources, symbol icons can be further customized via [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md). Application resources are custom-defined within the application, and resource files can be used to manage how resources behave across different devices or configurations.
 
 ## Resource Categories
 
@@ -41,9 +40,11 @@ resources
 >
 > - Files in resource directories and resource group directories are considered as resource files and will not be obfuscated during application packaging.
 >
+> - For details about the resource packaging policies in directories other than **resources**, see [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+>
 > - The common resource files used across projects in the stage model are stored in the **resources** directory under **AppScope**.
 >
-> - The resource files in the **AppScope** directory are merged into the **resources** directory. If files with the same name exist in these two directories, the ones in the **AppScope** directory are retained after build and packaging.
+> - During compilation and build, resource files in the **AppScope** directory are merged into the resource files of modules. If resources with the same name exist in the same resource directory and resource group directory in multiple locations, resources are packaged based on the following priority order (from highest to lowest): resources in **AppScope**, the module of the HAP package itself, and dependent HAR modules. If resource conflicts exist among multiple dependent HAR modules, resources are overridden based on the dependency order under dependencies in **oh-package.json5**. Dependencies listed earlier have higher priority.
 
 ### Resource Directories
 
@@ -99,6 +100,7 @@ The name of a qualifiers directory consists of one or more qualifiers that repre
 
 Table 5 Requirements for qualifier values
 
+<!--Table: 20%; 80%-->
 | Qualifier Type      | Description and Value Range                                 |
 | ----------- | ---------------------------------------- |
 | MCC&MNC| Indicates the MCC and MNC, which are obtained from the network where the device is registered.<br>The MCC can be either followed by the MNC with an underscore (_) in between or be used independently. For example, **mcc460** represents China, and **mcc460_mnc00** represents China Mobile.<br>For details about the value range, see [ITU-T E.212](https://www.itu.int/rec/T-REC-E.212) (the international identification plan for public networks and subscriptions).|
@@ -246,7 +248,7 @@ If the **attr** attribute is not configured, a string is translated by default.
 
 | Name       | Type                   |  Description  |
 | --------- | ----------------------- |  ---- |
-| translatable |  boolean |  Whether the string needs to be translated.<br>**true**: The string needs to be translated.<br> **false**: The string does not need to be translated.|
+| translatable |  boolean |  Whether the string needs to be translated.<br>  **true**: The string needs to be translated.<br> **false**: The string does not need to be translated.|
 | priority    | string   |  Translation status of the string.<br>**code**: untranslated<br>**translate**: translated but not verified<br>**LT**: translated and verified<br>**customer**: custom  |
 
 ### Constraints
@@ -288,13 +290,20 @@ The following shows the **attr** attribute configured in **string**. The **strin
 
 ### HAP Resources
 
- - Access resources through `$r` or `$rawfile`.<br>Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>To access strings with multiple placeholders in the **string.json** file, for example, `%1$s` and `%2$d` in a value, use the `$r('app.string.label', 'aaa', 444)` format, where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.<br>To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
+**Method 1**: Access resources through `$r` or `$rawfile`. This method is suitable for simple and static resource reference scenarios, such as directly referencing resources in UI components.
+
+- Resources of the color, float, string, plural, media and profile types are accessed through `$r('app.type.name')`, in which **app** indicates the resource defined in the **resources** directory, **type** indicates the resource type, and **name** indicates the resource name.<br>
+- To access resources in the **rawfile** subdirectory, use the `$rawfile('filename')` format. **filename** indicates the relative path of a file in the **rawfile** subdirectory, which must contain the file name extension and cannot start with a slash (/).
 
    > **NOTE**
    >
-   > For details about how to use native APIs to access raw files, see [Raw File Development](../napi/rawfile-guidelines.md).
+   > - If multiple placeholders are used in **string.json**, for example, `%1$s` and `%2$d` in the resource value, access the resource in the form `$r('app.string.label', 'aaa', 444)`. where **label** indicates the resource name, and **'aaa'** and **444** are used to replace placeholders.
+   >
+   > - For the same resource, the resource ID in the **Resource** object obtained through `$r` changes when the application is recompiled and is therefore not fixed. Caching resource IDs is not recommended. If you must cache resource IDs, fix the resource IDs first. For details, see [Fixing the Resource ID](../tools/restool.md#fixing-the-resource-id).
+   >
+   > - For native access methods of **rawfile**, see the [Raw File Development Guide](../napi/rawfile-guidelines.md).
 
-  [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files.<br>The usage is as follows.
+  [Resource file examples](#resource-file-examples) show different .json files, including **color.json**, **string.json**, and **plural.json**. Before accessing application resources, you need to learn the usage specifications of the .json files. The following is an example:
 
   <!-- @[app_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
   
@@ -333,27 +342,41 @@ The following shows the **attr** attribute configured in **string**. The **strin
   Text($r('app.plural.eat_apple', 2, 2)).id('app_plural_resource')
   ```
 
-- After obtaining a **ResourceManager** object through the application context, call APIs of [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) to access different resources. Example:<br>Call **getContext().resourceManager.getStringByNameSync('test')** to obtain string resources.<br>Call **getContext().resourceManager.getRawFd('rawfilepath')** to obtain the descriptor information of the HAP where the raw file is located, and then use **{fd, offset, length}** to access the raw file.
+**Method 2**: Access resources through the [resourceManager API](../reference/apis-localization-kit/js-apis-resource-manager.md). This method offers more APIs and is suitable for building more complex application logic, such as image effect processing.
+
+After obtaining the **resourceManager** object from the context of the current module, call resource management APIs to access different types of resources by resource ID or resource name. For example, you can call `getContext().resourceManager.getStringByNameSync('test')` to obtain a string resource, or call `getContext().resourceManager.getRawFd('rawfilepath')` to obtain the descriptor information of the HAP package where the **rawfile** is located. You can then access the **rawfile** using **{fd, offset, length}**.
+
+> **NOTE**
+>
+> When a HAR module accesses its own resources, in API version 22 and earlier, intermediate-code HARs and bytecode HARs throw exceptions when accessing resources through resource ID-related APIs due to invalid resource IDs. Starting from API version 23, if [compatibleSdkVersion](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section45865492619) is set to **23** or later, intermediate-code HARs and bytecode HARs can properly access resources through resource ID-related APIs after the **onCreate()** callback of [AbilityStage](../application-models/abilitystage.md) in the current module is executed.
+ 
 
 ### Cross-HAP/HSP Resources
 
 <!--Del-->
 **Cross-Bundle Access (for System Applications Only)**
 
-- Create the context of the corresponding HAP or HSP file through the [createBundleContext(context, bundleName)](../reference/apis-ability-kit/js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12) API. After obtaining the **resourceManager** object, call different APIs of [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
+- Create the context of the corresponding HAP or HSP file through the [createBundleContext(context, bundleName)](../reference/apis-ability-kit/js-apis-app-ability-application-sys.md#applicationcreatebundlecontext) API. After obtaining the **resourceManager** object, call different APIs of [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
 <!--DelEnd-->
 
 **Inter-Bundle, Cross-Module Access**
 
-- Create the context of the corresponding module through the [createModuleContext(context, moduleName)](../reference/apis-ability-kit/js-apis-app-ability-application.md#applicationcreatemodulecontext12) API. After obtaining the **resourceManager** object, call different APIs of [resource management](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
+**Method 1**: Access resources across HSP packages through `$r` or `$rawfile`. This method is suitable for simple and static resource reference scenarios, such as directly referencing resources in UI components.
 
-- Access resources through `$r` or `$rawfile`. Specifically, perform either of the following:
+- Use `$r('[hsp].type.name')` to access resources in the **resources** directory, where **[hsp]** is the HSP module name, **type** is the resource type, and **name** is the resource name.
+- Use `$rawfile('[hsp].name')` to access resources in the **rawfile** directory. If the **rawfile** directory contains multiple levels of subdirectories, specify the path starting from the first directory under **rawfile**, for example, `$rawfile('[hsp].firstDir/secondDir/icon.png')`.
 
-  1. Add dependencies to the **oh-package.json5** file in the **entry** directory. For example, **"dependencies": {"library": "file:../library"}**.
+> **NOTE**
+>
+> When `$r` and `$rawfile` are used to access resources across HSP modules, resources are not validated during compilation. Ensure that the resources exist in the corresponding package.
 
-  ![Alt text](figures/add_dependencies.png)
+Example:
 
-  2. Obtain resources using variables or the literal **[*Module name*].*type*.*name***, where ***module name*** indicates the name of the HSP module, ***type*** indicates the resource type, and ***name*** indicates the resource name. The following is an example:
+1. Add dependencies to the **oh-package.json5** file in the **entry** directory. For example, **"dependencies": {"library": "file:../library"}**.
+
+    ![Alt text](figures/add_dependencies.png)
+
+2. Obtain resources.
 
    <!-- @[hsp_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Second.ets) -->
    
@@ -401,27 +424,63 @@ The following shows the **attr** attribute configured in **string**. The **strin
    }
    ```
 
-  > **NOTE**
-  >
-  > The HSP module name must be placed in the brackets ([]). If the **rawfile** directory contains multiple levels of folders, the path must start from the first level, for example, $rawfile('[hsp].firstDir/secondDir/icon.png'). When **$r** or **$rawfile** is used for cross-HSP resource access, resource verification is not available at compile time, and you need to manually check that the target resources exist in the corresponding location.
 
+**Method 2**: Access resources across HAP/HSP packages through **createModuleContext**. This method is suitable for scenarios where resource file data needs to be processed based on service logic, such as image encoding and decoding or string concatenation, and is recommended for small amounts of data.
+
+Call the createModuleContext(context, moduleName) API to create the context of another module in the same application. After obtaining the **resourceManager** object, call different [resource management APIs](../reference/apis-localization-kit/js-apis-resource-manager.md) to access various resources by resource ID or resource name.
+
+**Method 3**: Export HSP resources for use by other modules. When accessing resources in an HSP package across packages, you are advised to implement a resource management class to encapsulate exported resources. Other modules do not need to be aware of resource names inside the HSP. If resource names inside the HSP change, other modules are not affected.
+
+The implementation is as follows:
+1. Encapsulate the resources provided by the HSP into a resource management class.
+
+   ``` TypeScript
+   export class ResManager {
+     static getPic(): Resource {
+       return $r('app.media.image');
+     }
+     static getDesc(): Resource {
+       return $r('app.string.test_string');
+     }
+   }
+   ```
+2. Declare the APIs to expose in the HSP entry file **index.ets**.
+
+   ```TypeScript
+   export { ResManager } from './src/main/ets/common/ResManager';
+   ```
+3. Other modules can import **ResManager** to access resources exported by the HSP.
+
+   ``` TypeScript
+   import { ResManager } from 'library';
+
+   @Entry
+   @Component
+   struct Third {
+     build() {
+       Column() {
+         Text(ResManager.getDesc())
+           .fontSize(50)
+           .fontWeight(FontWeight.Bold)
+         Image(ResManager.getPic())
+           .height(100)
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```
 
 ### System Resources
-
-You can obtain system icon resources from [HarmonyOS Symbol](https://developer.huawei.com/consumer/en/design/harmonyos-symbol/) and system color, spacing, and rounded corner resources from the [system resource layer design table](https://gitcode.com/openharmony/docs/blob/master/en/design/ux-design/design-resources.md). In addition, you can obtain system color resources from [full table of basic and semantic tokens](https://developer.huawei.com/consumer/en/doc/design-guides/color-0000001776857164#section17672143841113). The resources in this table do not overlap with those in the system resource layer design table. Both are recommended system color resources.
-
-You can further set the icon colors through [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md).
 
 To access system resources, use the `$r('sys.type.name')` format, where **sys** indicates the system resource, **type** indicates the resource type, such as color, float, string, media, or symbol, and **name** indicates the resource name.
 
 > **NOTE**
-> - Other system resources that are not listed in the mentioned tables are system component and underlying capability parameters. You are advised to use the system resources provided in the preceding tables.
->
 > - For preset applications, you are advised to use system resources. For third-party applications, you can choose to use system resources or custom application resources as required.
 >
 > - The use of system resources is only supported in the declarative development paradigm.
 >
-> - Currently, the default system font used on the UI is HarmonyOS Sans, and the supported character range follows the standards in [Information technology—Chinese coded character set GB18030-2022](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3). If the characters cannot be displayed in HarmonyOS Sans, the system uses another font with the highest priority to display the characters. For details about the priority of the system fonts, see the **system/etc/fontconfig.json** configuration file on the device.
+> - The default system font used on the UI is HarmonyOS Sans, and the supported character range follows the standards in [Information technology—Chinese coded character set GB18030-2022](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=A1931A578FE14957104988029B0833D3). If the characters cannot be displayed in HarmonyOS Sans, the system uses another font with the highest priority to display the characters. For details about the priority of the system fonts, see the **/system/etc/fontconfig.json** configuration file on the device.
 
 <!-- @[system_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/ResourceCategoriesAndAccess/entry/src/main/ets/pages/Index.ets) -->
 
@@ -597,11 +656,11 @@ Overlay is a resource replacement mechanism. With overlay resource packages, you
 ### Using overlay in dynamic mode
 
 1. Place the overlay resource package in the target application installation path. For example, for the com.example.overlay application, place the overlay resource package in **data/app/el1/bundle/public/com.example.overlay/**.
-2. The application uses [addResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#addresource10) to load overlay resources and uses [removeResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#removeresource10) to remove overlay resources. The path to an overlay resource consists of the application's sandbox root directory (obtained through **getContext().bundleCodeDir**) and the overlay resource bundle name. For example, **let path = getContext().bundleCodeDir + "overlay *resource bundle name*"**, such as **/data/storage/el1/bundle/overlayResourcePackageName**.
+2. The application uses [addResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#addresource10) to load overlay resources and uses [removeResource(path)](../reference/apis-localization-kit/js-apis-resource-manager.md#removeresource10) to remove overlay resources. The path to an overlay resource consists of the application's sandbox root directory (obtained through **getContext().bundleCodeDir**) and the overlay resource bundle name. For example, **let path = getContext().bundleCodeDir + "overlay *resource bundle name*"**, such as **/data/storage/el1/bundle/overlayResourceBundleName**.
 
 ### Using overlay in static mode
 
-The overlay feature is enabled by default. For details about how to enable and disable this feature, see [@ohos.bundle.overlay (overlay)](../reference/apis-ability-kit/js-apis-overlay.md).
+This feature is enabled by default. For details about how to enable and disable this feature, see [@ohos.bundle.overlay (overlay Module)](../reference/apis-ability-kit/js-apis-overlay.md).
 
 The **app.json5** file in the inter-application overlay resource package supports the following fields:
 ```json
@@ -682,7 +741,7 @@ The **module.json5** file in the cross-application overlay resource package supp
 If the **module.json5** file of a module contains the **targetModuleName** and **targetPriority fields** during project creation on DevEco Studio, the module is identified as a module with the overlay feature in the installation phase. Modules with the overlay feature generally provide an overlay resource file for other modules on the device, so that the module specified by **targetModuleName** can display different colors, labels, themes, and the like by using the overlay resource file in a running phase.
 
 <!--Del-->
-
+##  
 
  
 

@@ -1,8 +1,8 @@
 # ArkUI_RenderNodeClipOption
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,10 +12,10 @@ typedef struct ArkUI_RenderNodeClipOption ArkUI_RenderNodeClipOption
 
 ## Overview
 
-Defines a struct for the render node clip configuration.
+Defines a render node clipping option.
 
 **Since**: 20
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
 
 **Header file**: [native_render.h](capi-native-render-h.md)

@@ -2,7 +2,7 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -198,9 +198,9 @@ Failed to operate the DLP file.
 
 **处理步骤**
 
-step1：请确认访问权限。
+1. 请确认访问权限。
 
-step2：请等待一段时间或重启后重试。
+2. 请等待一段时间或重启后重试。
 
 <!--Del-->
 ## 19100010 只读DLP文件

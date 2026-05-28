@@ -1,8 +1,8 @@
 # @ohos.multimedia.systemSoundManager (系统声音管理)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,7 +48,7 @@ createSystemSoundPlayer(): Promise&lt;SystemSoundPlayer | null&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |

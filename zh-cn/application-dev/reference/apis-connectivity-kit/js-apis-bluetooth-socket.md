@@ -387,7 +387,7 @@ sppWrite(clientSocket: number, data: ArrayBuffer): void
 - 若服务端使用，需在调用[socket.sppAccept](#socketsppaccept)后，且连接成功后使用。
 - 若开发者需感知传输过程中异常断连等错误，建议使用[socket.sppWriteAsync](#socketsppwriteasync18)。
 - 按照蓝牙协议规范，数据通道在空闲状态需进入休眠模式以降低功耗。蓝牙子系统实现上，通道在5-7s内没有数据交互时会进入休眠模式，将导致下次调用此接口发送数据前，会耗费500ms左右退出休眠模式才开始发送数据。
-- 若想减少每次发送数据前退休眠模式的耗时，建议每3s左右可往数据通道上发送一次任意大小的心跳数据，对数据通道进行保活，可防止进入休眠模式，但同时也会提高设备功耗。
+- 若想减少每次发送数据前退出休眠模式的耗时，建议每3s左右可往数据通道上发送一次任意大小的心跳数据，对数据通道进行保活，可防止进入休眠模式，但同时也会提高设备功耗。
 <!--RP1--><!--RP1End-->
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -750,6 +750,7 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称     | 类型                | 只读   | 可选   | 说明          |
 | ------ | ------------------- | ---- | ---- | ----------- |
 | uuid   | string              | 否    | 否    | RFCOMM套接字链路类型的服务UUID，例如"00001101-0000-1000-8000-00805F9B34FB"。<br>- 建议开发者使用自定义的服务UUID（可通过工具函数[util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)生成），也可以使用标准协议定义的Serial Port UUID服务(00001101-0000-1000-8000-00805F9B34FB)。<br>- SppType设置为SPP_RFCOMM时该参数必选。<br>- SppType设置为SPP_L2CAP或SPP_L2CAP_BLE时设置为空字符串。|

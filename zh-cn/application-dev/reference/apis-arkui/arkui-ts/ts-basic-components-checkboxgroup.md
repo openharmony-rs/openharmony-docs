@@ -34,7 +34,7 @@ CheckboxGroup(options?: CheckboxGroupOptions)
 
 | 参数名  | 类型                                                  | 必填 | 说明                 |
 | ------- | ----------------------------------------------------- | ---- | -------------------- |
-| options | [CheckboxGroupOptions](#checkboxgroupoptions对象说明) | 否   | 配置多选框群组参数。 |
+| options | [CheckboxGroupOptions](#checkboxgroupoptions对象说明) | 否   | 配置多选框群组参数。 <br/> 未设置时，按照CheckboxGroupOptions中各参数的默认值配置。 |
 
 ## CheckboxGroupOptions对象说明
 
@@ -254,7 +254,7 @@ contentModifier(modifier: Optional<ContentModifier\<CheckBoxGroupConfiguration>>
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ContentModifier\<CheckBoxGroupConfiguration>](#checkboxgroupconfiguration21对象说明)> | 是   | 在CheckboxGroup组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义类以实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<ContentModifier\<[CheckBoxGroupConfiguration](#checkboxgroupconfiguration21对象说明)>> | 是   | 在CheckboxGroup组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义类以实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ## 事件
 

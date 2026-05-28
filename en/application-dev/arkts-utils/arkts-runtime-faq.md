@@ -177,7 +177,7 @@ console.info('result[0]:', result[0]);
 
 ### Unexpected Parsing Result of Denormalized Floating-point Numbers in Number.parseFloat
 
-The **parseFloat** API does not support parsing denormalized numbers.  The parseFloat API does not support parsing denormalized numbers. If the input string represents a denormalized floating-point number, the output is 0.
+The **parseFloat** API does not support parsing denormalized numbers. If the input string represents a denormalized floating-point number, the output is 0.
 
 <!-- @[test_parseFloatTinyNumber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
@@ -359,7 +359,7 @@ struct Index {
 
    build() {
       Column() {
-         Text(`${this.d[0]}`); // Expected output: 0; Actual output: 0,1
+         Text(`${this.d[0]}`); // Expected output: 0; actual output: 0,1
       }
    }
 }

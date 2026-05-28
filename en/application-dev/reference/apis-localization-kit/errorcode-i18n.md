@@ -5,7 +5,7 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 > **NOTE**
 >
@@ -29,7 +29,6 @@ Parameter verification has failed. The probable cause is that the value of an in
 
 Check whether the values of input parameters are correct.
 
-<!--Del-->
 ## 8900001 Parameter Verification Error
 
 **Error Message**
@@ -47,4 +46,3 @@ Parameter verification has failed. The probable cause is that the value of an in
 **Solution**
 
 Check whether the values of input parameters are correct.
-<!--DelEnd-->

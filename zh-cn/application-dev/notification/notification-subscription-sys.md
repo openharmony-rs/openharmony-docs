@@ -1,9 +1,8 @@
 # 订阅通知（仅对系统应用开放）
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -27,7 +26,7 @@
 
 ## 接口说明
 
-通知订阅主要接口如下。详细接口介绍请参见[API参考](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)。
+通知订阅主要接口如下。详细接口介绍请参见[@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)。
 
 **表1** 通知订阅接口介绍
 

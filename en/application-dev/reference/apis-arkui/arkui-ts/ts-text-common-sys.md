@@ -82,8 +82,8 @@ Describes the keyboard visual style configuration.
 
 | Name   | Type                                                   | Read-Only| Optional| Description                                                   |
 | ------- | ----------------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20) | No  | Yes  | Keyboard gradient effect.<br>Default value: **KeyboardGradientMode.NONE**.|
-| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20) | No  | Yes  | Keyboard fluid lighting effect.<br>Default value: **KeyboardFluidLightMode.NONE**.|
+| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20) | No  | Yes  | Keyboard gradient effect.<br>Default value: **KeyboardGradientMode.NONE**|
+| fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20) | No  | Yes  | Keyboard fluid lighting effect.<br>Default value: **KeyboardFluidLightMode.NONE**|
 
 ## TextChangeReason<sup>20+</sup>
 
@@ -108,3 +108,19 @@ Enumerates the reasons for component content changes.
 | ACCESSIBILITY | 10 | Accessibility API.|
 | COLLABORATION | 11 | Cross-device photographing.|
 | STYLUS | 12 | Stylus input.|
+
+## VoiceButtonOptions<sup>23+</sup>
+
+Sets the voice button options.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name               | Type                                             | Read-Only| Optional| Description                                                                                 |
+|--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
+| enabled              | boolean                                         | No | Yes| Whether to enable or disable the voice button for the input box.<br>**true**: The voice button is enabled. **false**: The voice button is disabled.<br> Default value: **false**|

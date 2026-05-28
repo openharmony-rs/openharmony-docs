@@ -10,6 +10,8 @@
 
 Provides C APIs for creating and destroying a remote object, transferring data, and observing the dead status of a remote object.
 
+For details about the development guide and sample, see [IPC and RPC Development (C/C++)](../../ipc/ipc-capi-development-guideline.md).
+
 **File to include**: <IPCKit/ipc_cremote_object.h>
 
 **Library**: libipc_capi.so
@@ -418,4 +420,4 @@ Checks whether the **OHIPCRemoteStub** object corresponding to the **OHIPCRemote
 
 | Type| Description|
 | ---- | ---- |
-| int | Returns **1** if the **OHIPCRemoteStub** object is dead or invalid parameters are found; returns **0** otherwise. If invalid parameters are found, the **OHIPCRemoteStub** object does not exist.|
+| int | Returns **1** if the **OHIPCRemoteStub** object is dead or invalid parameters are found; returns **0** otherwise. If invalid parameters are found, the **OHIPCRemoteStub** object does not exist. **1** is returned.|

@@ -15,7 +15,7 @@
     - [Declaring Permissions](declare-permissions.md)
     - [Requesting User Authorization](request-user-authorization.md)
     - [Requesting User Authorization for the Second Time](request-user-authorization-second.md)
-    - [Requesting One-Time User Authorization](one-time-authorization.md)
+    - [Requesting One-Time User Authorization](one-time-authorization.md)<!--RP2--><!--RP2End-->
     - [Requesting Restricted Permissions](declare-permissions-in-acl.md)
   - [Application Permissions](app-permissions.md)
     - [Open system_grant Permissions](permissions-for-all.md)
@@ -28,9 +28,8 @@
     <!--DelEnd-->
     - [Permissions for Enterprise Applications](permissions-for-enterprise-apps.md)
     - [Permissions for MDM Applications](permissions-for-mdm-apps.md)
-  - [Application Permission Groups](app-permission-group-list.md)
+  - [Application Permission Groups](app-permission-group-list.md)<!--RP3--><!--RP3End-->
 - Using Security Components<!--security-components-->
   - [Security Component Overview](security-component-overview.md)
   - [Using PasteButton](pastebutton.md)
   - [Using SaveButton](savebutton.md)<!--RP1--><!--RP1End-->
-<!--no_check-->

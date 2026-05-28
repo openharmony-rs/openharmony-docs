@@ -169,7 +169,7 @@ onWindowStageCreate(windowStage: window.WindowStage) {
 <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-//Index.ets
+// Index.ets
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -223,7 +223,7 @@ struct KeyboardAvoidExample {
     Column() {
       Row().height('50%').width('100%').backgroundColor(Color.Gray)
       Web({ src: $rawfile('index.html'),controller: this.controller})
-        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) //此时ArkWeb组件不会调整任何视口的大小。
+        .keyboardAvoidMode(WebKeyboardAvoidMode.OVERLAYS_CONTENT) // 此时ArkWeb组件不会调整任何视口的大小。
       Text('I can see the bottom of the page')    
         .width('100%')
         .textAlign(TextAlign.Center)

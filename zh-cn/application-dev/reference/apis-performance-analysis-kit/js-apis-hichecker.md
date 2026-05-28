@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @Lutao98-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -228,7 +228,7 @@ getRule(): bigint
 hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
 
 // 获取已添加的规则
-hichecker.getRule();   // return 1n;
+hichecker.getRule(); // return 1n;
 ```
 
 ## hichecker.contains<sup>(deprecated)</sup>

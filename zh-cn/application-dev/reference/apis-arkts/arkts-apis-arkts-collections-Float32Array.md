@@ -117,10 +117,9 @@ constructor(elements: Iterable\<number>)
 **示例：**
 
 ```ts
-// 从一个Iterable构造对象
+// 从一个Iterable构造对象，Float32Array [1, 2, 3]
 let set: Set<number> = new Set<number>([1, 2, 3]);
 let array: collections.Float32Array = new collections.Float32Array(set);
-// Float32Array [1, 2, 3]
 ```
 
 ## constructor
@@ -273,24 +272,21 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 **示例：**
 
 ```ts
-// 例1 从一个对象创建
+// 例1 从一个对象创建，Float32Array [0, 1, 2, 3, 4]
 let array: collections.Float32Array = collections.Float32Array.from<number>(
   { length: 5 }, (v: Object, k: number) => k);
-// Float32Array [0, 1, 2, 3, 4]
 ```
 
 ```ts
-// 例2 从一个字符数组创建
+// 例2 从一个字符数组创建，Float32Array [1, 3, 5]
 let array: collections.Float32Array = collections.Float32Array.from<string>(
   ["1", "3", "5"], (v: string, k: number) => parseInt(v));
-// Float32Array [1, 3, 5]
 ```
 
 ```ts
-// 例3 从一个字符串创建
+// 例3 从一个字符串创建，Float32Array [1, 2, 3, 4, 5]
 let array: collections.Float32Array = collections.Float32Array.from<string>(
   "12345", (v: string, k: number) => parseInt(v));
-// Float32Array [1, 2, 3, 4, 5]
 ```
 
 ## from
@@ -325,18 +321,16 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 **示例：**
 
 ```ts
-// 例1 不指定映射函数
+// 例1 不指定映射函数，Float32Array [1, 2, 3]
 let set: Set<number> = new Set<number>([1, 2, 3]);
 let array: collections.Float32Array = collections.Float32Array.from(set);
-// Float32Array [1, 2, 3]
 ```
 
 ```ts
-// 例2 指定映射函数
+// 例2 指定映射函数，Float32Array [1, 3, 5]
 let set: Set<number> = new Set<number>([1, 2, 3]);
 let array: collections.Float32Array = collections.Float32Array.from(
   set, (v: number, k: number) => v + k);
-// Float32Array [1, 3, 5]
 ```
 
 ## of<sup>18+</sup>
@@ -480,8 +474,8 @@ copyWithin(target: number, start: number, end?: number): Float32Array
 
 ```ts
 let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
-let copied: collections.Float32Array = array.copyWithin(3, 1, 3);
 // Float32Array [1, 2, 3, 2, 3, 6, 7, 8]
+let copied: collections.Float32Array = array.copyWithin(3, 1, 3);
 ```
 
 ## some
@@ -639,8 +633,8 @@ filter(predicate: TypedArrayPredicateFn\<number, Float32Array>): Float32Array
 
 ```ts
 let array: collections.Float32Array = collections.Float32Array.from([0, 1, 2, 3, 4]);
-let filtered: collections.Float32Array = array.filter((element: number) => element % 2 == 0);
 // Float32Array [0, 2, 4]
+let filtered: collections.Float32Array = array.filter((element: number) => element % 2 == 0);
 ```
 
 ## find
@@ -1028,8 +1022,8 @@ reduce\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Float32Arra
 
 ```ts
 let array: collections.Float32Array = collections.Float32Array.from([1, 2, 3, 4, 5]);
-let reducedValue: number = array.reduce((accumulator: number, value: number) => accumulator + value, 1);
 // reducedValue == 16
+let reducedValue: number = array.reduce((accumulator: number, value: number) => accumulator + value, 1);
 ```
 
 ## reduceRight<sup>18+</sup>

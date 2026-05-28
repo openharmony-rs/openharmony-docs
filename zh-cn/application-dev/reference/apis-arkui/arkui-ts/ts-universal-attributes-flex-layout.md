@@ -11,7 +11,7 @@
 >  **说明：**
 >  - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - 仅[Flex](ts-container-flex.md)、[Column](ts-container-column.md)或[Row](ts-container-row.md)支持下述四种属性，[GridRow](ts-container-gridrow.md)仅支持设置[alignSelf](#alignself)。
+>  - 仅[Flex](ts-container-flex.md)、[Column](ts-container-column.md)、[Row](ts-container-row.md)和[DynamicLayout](ts-container-dynamiclayout.md)支持下述四种属性，[GridRow](ts-container-gridrow.md)仅支持设置[alignSelf](#alignself)。
 
 ## flexBasis
 
@@ -27,6 +27,7 @@ flexBasis(value: number | string): T
 
 **参数：** 
 
+<!--Table: auto; 10%; 10%; auto-->
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
 | value  | number&nbsp;\|&nbsp;string | 是   | 设置组件在父容器主轴方向上的基准尺寸。<br/>默认值：'auto'（表示组件在主轴方向上的基准尺寸为组件原本的大小）。<br/>string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'）或'auto'，不允许设置百分比字符串。<br/>number：取值范围(0,+∞)，单位为vp。<br/>异常值：默认为'auto'。 |

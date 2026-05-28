@@ -5,7 +5,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 - [About This Kit](background-task-overview.md)
 - [Transient Task (ArkTS)](transient-task.md)
@@ -14,4 +14,4 @@
 - [Deferred Task (ArkTS)](work-scheduler.md)
 - [Agent-powered Reminder (ArkTS)](agent-powered-reminder.md)<!--Del-->
 - [Efficiency Resource Request (ArkTS) (for Privileged System Applications Only)](efficiency-resource-request-sys.md)
-- [Device Usage Statistics (ArkTS) (for System Applications Only)](../device-usage-statistics/Readme-EN.md)<!--DelEnd-->
+- [Device Usage Statistics (ArkTS) (for System Applications Only)](../device-usage-statistics/Readme-EN.md)<!--DelEnd--><!--RP1--><!--RP1End-->

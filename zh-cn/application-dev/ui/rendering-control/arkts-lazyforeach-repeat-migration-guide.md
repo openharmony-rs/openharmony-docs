@@ -162,7 +162,7 @@ struct MyComponent {
    - 全量加载模式渲染所有子节点（对标[ForEach](./arkts-rendering-control-foreach.md)）。
    - 懒加载模式动态渲染屏幕区域和预加载区域内的子节点（需要与容器组件配合使用，对标LazyForEach）。
 
-   从LazyForEach迁移至Repeat时，需要调用[virtualScroll](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll))属性，使能懒加载。
+   从LazyForEach迁移至Repeat时，需要调用[virtualScroll](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll)属性，使能懒加载。
 
    ```ts
    // 迁移前 - LazyForEach

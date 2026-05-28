@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926; @liwenzhen3; @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -172,7 +172,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 | 参数名   |类型   |必填   | 说明                                                      |
 | ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptions18)    |是  |传入的connect参数，详细说明见ConnectOptions参数说明。 |
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  |传入的connect参数，详细说明见ConnectOptions参数说明。 |
 
 **返回值：**
 
@@ -263,7 +263,7 @@ static globalConnect\<T extends CollectionType<S\>, S extends object\>( </br >
 
 | 参数名   | 类型   | 必填 | 说明               |
 | -------- | ------ | ---- | ---------------------- |
-| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollections23)\| [ConnectOptions\<T\>](#connectoptions18) |  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。<br/>当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。|  
+| type | [ConnectOptionsCollections\<T, S\>](#connectoptionscollectionst-s23)\| [ConnectOptions\<T\>](#connectoptionst18) |  是   | 传入的globalConnect参数，详细说明见ConnectOptions和ConnectOptionsCollections参数说明。<br/>当开发者在ConnectOptionsCollections中提供默认defaultSubCreator时，则需要同时提供默认创建器defaultCreator，如果不提供，会导致持久化失败。且集合项类型S必须与defaultSubCreator的返回类型相同。如果返回类型不一致，编译会报错。|  
 
 当开发者在`globalConnect`中使用`defaultSubCreator`选项时，必须要提供`defaultCreator`。且`defaultSubCreator`函数的返回类型必须与`defaultCreator`返回的集合项类型相同。<br/>当`globalConnect`持久化`Array<ClassA>`类型的数据时，开发者需要使用`defaultSubCreator`选项去告诉状态管理框架创建`ClassA`类的一个实例。如下是`globalConnect`持久化`Array<ClassA>`类型的数据的示例：
 
@@ -399,7 +399,7 @@ PersistenceV2.notifyOnError((key: string, reason: string, msg: string) => {
 });
 ```
 
-## ConnectOptions<sup>18+</sup>
+## ConnectOptions\<T\><sup>18+</sup>
 
 globalConnect参数类型。
 
@@ -414,9 +414,9 @@ globalConnect参数类型。
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
 |areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)，对应数值：0-4，不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密等级数值不在0-4会直接运行crash。 |
 
-## ConnectOptionsCollections<sup>23+</sup>
+## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
-[globalConnect](#globalconnect23)接口参数类型，ConnectOptionsCollections继承自[ConnectOptions](#connectoptions18)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
+[globalConnect](#globalconnect23)接口参数类型，ConnectOptionsCollections\<T, S\>继承自[ConnectOptions\<T\>](#connectoptionst18)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -427,7 +427,7 @@ globalConnect参数类型。
 |名称   |类型    |只读   |可选    |说明      |
 |--------|------------|------------|-----------|--------------|
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |用于持久化容器类型数据，当提供默认`defaultSubCreator`时，则需要同时提供默认创建器`defaultCreator`，不提供默认创建器，会导致无法持久化容器类型数据。集合项类型`S`必须与`defaultSubCreator`的返回类型相同。如果提供defaultSubCreator，没有提供defaultCreator，会导致持久化失败。 |
-|defaultSubCreator   | [StorageDefaultCreator\<S\>](#storagedefaultcreatort)   |否   |是   |使用该集合项默认构造函数，用于持久化容器类数据。如果defaultSubCreator返回的是`undefined`或`null`，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
+|defaultSubCreator   | StorageDefaultCreator\<S\>   |否   |是   |使用该集合项默认构造函数，用于持久化容器类数据。如果defaultSubCreator返回的是`undefined`或`null`，会导致持久化失败。 当持久化用户自定义class类集合（如`Array<ClassA>`）时，`defaultCreator`中的泛型类型`T`为`Array<ClassA>`，则`defaultSubCreator`中的泛型类型`S`为`ClassA`。|
 
 如下展示`StorageDefaultCreator<T>`和`StorageDefaultCreator<S>`示例：
 
@@ -948,7 +948,7 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 | 参数名 | 类型 | 必填 | 说明     |
 | ------ | ---- | ---- | ------------ |
-| source | T    | 是   | 数据源。支持普通class、Array、Map、Set、Date类型。</br>不支持[collections类型](../apis-arkts/arkts-apis-arkts-collections.md)和[@Sendable](../../arkts-utils/arkts-sendable.md)修饰的class。</br>不支持undefined和null。不支持状态管理V2的数据和[makeObserved](#makeobserved)的返回值。 |
+| source | T    | 是   | 数据源。支持普通class、Array、Map、Set、Date类型。</br>不支持[collections](../apis-arkts/arkts-apis-arkts-collections.md)类型和[@Sendable](../../arkts-utils/arkts-sendable.md)修饰的class。</br>不支持undefined和null。不支持状态管理V2的数据和[makeObserved](#makeobserved)的返回值。 |
 
 **返回值：**
 
@@ -1521,7 +1521,7 @@ type TaskCallback = () => T
 
 | 名称 | 类型 | 只读 | 可选 | 说明     |
 | ------ | ---- | ---- | ---- | ------------ |
-|isSynchronous|boolean|否|是|配置当前回调函数否是为同步回调。true为同步回调。默认值为false，即异步回调。|
+|isSynchronous|boolean|否|是|配置当前回调函数是否为同步回调。true为同步回调。默认值为false，即异步回调。|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void

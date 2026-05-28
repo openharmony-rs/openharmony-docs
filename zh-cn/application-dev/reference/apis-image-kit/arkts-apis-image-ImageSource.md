@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -284,7 +284,7 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
   imageSourceObj.getImageProperties(key).then((data) => {
     console.info(JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(JSON.stringify(err));
+    console.error(`Failed to get the properties, error.code ${err.code}, error.message ${err.message}`);
   });
 }
 ```
@@ -354,7 +354,9 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 > **说明：**
 >
-> 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> 
+> - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -369,7 +371,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -411,7 +413,8 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 > **说明：**
 >
-> 调用modifyImageProperties修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperties会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperties修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperties会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperties接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -425,7 +428,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -472,6 +475,7 @@ modifyImagePropertiesEnhanced(records: Record\<string, string | null\>): Promise
 > - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
 > - 支持修改JPEG、PNG、HEIF和WEBP文件类型的图片属性，图片需要包含Exif信息。
+> - 调用modifyImagePropertiesEnhanced接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -538,6 +542,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 > - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
 > - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
 > - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+> - 从API版本24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -580,7 +585,7 @@ async function ReadImageMetadata(imageSourceObj : image.ImageSource) {
         " HwMnoteIsXmageSupported: " + metaData.makerNoteHuaweiMetadata.isXmageSupported);
     }
   }).catch((error: BusinessError) => {
-    console.error(`ReadImageMetadata failed error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to read image metadata. error.code is ${error.code}, error.message is ${error.message}`);
   })
 }
 ```
@@ -596,6 +601,7 @@ writeImageMetadata(imageMetadata: ImageMetadata): Promise\<void>
 > - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
 > - 该方法在内存中完成批量数据修改后会一次性写入文件，相比[modifyImageProperties](#modifyimageproperties12)更高效。
 > - 支持修改JPEG、PNG和HEIF文件类型的图片属性，图片需要包含Exif信息。修改属性前，先通过supportedFormats属性查询设备是否支持HEIF格式的Exif读写。
+> - 调用writeImageMetadata接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -635,9 +641,115 @@ async function WriteImageMetadata(imageSourceObj : image.ImageSource) {
     metaData.exifMetadata.imageLength = 3072;
   }
   await imageSourceObj.writeImageMetadata(metaData).then(() => {
-    console.info(`write image metadata success.`);
+    console.info(`Succeeded in writing image metadata.`);
   }).catch((error: BusinessError) => {
-    console.error(`writeImageMetadata failed error.code is ${error.code}, error.message is ${error.message}`);
+    console.error(`Failed to write image metadata. error.code is ${error.code}, error.message is ${error.message}`);
+  });
+}
+```
+
+## readImageMetadataByType<sup>24+</sup>
+
+readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise\<ImageMetadata>
+
+读取图像源的元数据，使用metadataTypes指定元数据类型。若未指定metadataTypes，则返回所有支持的元数据。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF、WEBP、DNG和HEIFS（不同硬件设备支持情况不同）文件。
+
+> **说明：**
+>
+> - EXIF_METADATA元数据类型适用于JPEG、PNG、HEIF、WEBP和DNG格式图片。
+> - HEIFS_METADATA元数据类型适用于HEIFS格式图片。
+> - 当传入的MetadataType与图片格式无法匹配时，返回错误码7700102。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名        | 类型            | 必填 | 说明                      |
+| ------------- | -------------- | ---- | ------------------------- |
+| metadataTypes | [MetadataType](arkts-apis-image-e.md#metadatatype13)[] | 否   | 元数据类型的数组。当该参数缺省时，获取全部支持的元数据。 |
+| index         | number         | 否   | 图片帧序号，表示获取指定帧的元数据。默认值为0。<br>- 单帧图片场景中index取值只能为0。<br>- 动图等多帧图片场景中index的取值范围为[0, 帧数-1]。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise\<[ImageMetadata](arkts-apis-image-i.md#imagemetadata23)> | Promise对象。返回的ImageMetadata对象中含有对应的metadata对象，通过ImageMetadata中的metadata对象可以获取图片属性值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700102  | Unsupported MIME type. |
+| 7700202  | Unsupported metadata.  |
+| 7700204  | Invalid parameter. Possible causes: 1.The index is negative.2. The index is greater than or equal to the number of frames in the image. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function ReadImageMetadataByType(imageSource : image.ImageSource, type: image.MetadataType) {
+  let types: image.MetadataType[] = [type];
+  await imageSource.readImageMetadataByType(types, 0).then((metaData: image.ImageMetadata) => {
+    if (metaData != undefined && metaData.exifMetadata != undefined) {
+      console.info("ImageWidth: " + metaData.exifMetadata.imageWidth);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to read image metadata by type. error.code is ${error.code}, error.message is ${error.message}`);
+  })
+}
+```
+
+## createImageRawData<sup>24+</sup>
+
+createImageRawData(): Promise\<ImageRawData>
+
+获取图片原始数据。使用Promise异步回调。目前仅支持获取DNG图片类型的原始数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<[ImageRawData](arkts-apis-image-i.md#imagerawdata24)> | Promise对象，返回ImageRawData对象，其中含有数据缓冲区和像素位数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700101  | Bad source.  |
+| 7700102  | Unsupported MIME type. |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function createImageRawData(imageSourceObj: image.ImageSource) {
+  await imageSourceObj.createImageRawData().then((data: image.ImageRawData) => {
+    console.info(`createImageRawData successfully. length: ${data.buffer.byteLength}, bitPerPixel:${data.bitsPerPixel}`);
+    if (data.bitsPerPixel == 16) {
+      let array: Uint16Array = new Uint16Array();
+      let value: string = "";
+      array = new Uint16Array(data.buffer);
+      for (let i = 0; i < array.length && i < 10; i++) {
+        value += array[i] + ', ';
+      }
+      console.info(`get dng rawdata is:${value}.`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create image rawData. error.code is ${error.code}, error.message is ${error.message}`);
   });
 }
 ```
@@ -657,13 +769,13 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
 | offset      | number              | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | number              | 是   | 当前buffer的长度。单位：字节。            |
+| length     | number              | 是   | 当前buffer的长度。单位： 字节（byte）。            |
 
 **返回值：**
 
 | 类型           | 说明                       |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。|
+| Promise\<void> | Promise对象，无返回结果。|
 
 **示例：**
 
@@ -696,7 +808,7 @@ updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number
 | buf        | ArrayBuffer         | 是   | 存放增量数据的buffer。           |
 | isFinished | boolean             | 是   | true表示数据更新完成，当前buffer内存放最后一段数据；false表示数据还未更新完成，需要继续更新。|
 | offset      | number              | 是   | 即当前buffer中的数据首地址，相对于整个图片文件首地址的偏移量。单位：字节。             |
-| length     | number              | 是   | 当前buffer的长度。单位：字节。            |
+| length     | number              | 是   | 当前buffer的长度。单位：字节（byte）。            |
 | callback   | AsyncCallback\<void> | 是   |  回调函数，当更新增量数据成功，err为undefined，否则为错误对象。 |
 
 **示例：**
@@ -747,7 +859,8 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
-| 7700301  | Failed to decode image.                                      |
+| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. |
+| 7700301  | Decode failed.                                               |
 
 **示例：**
 
@@ -758,9 +871,9 @@ async function CreatePicture(imageSourceObj : image.ImageSource) {
   };
   let pictureObj: image.Picture = await imageSourceObj.createPicture(options);
   if (pictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 }
 ```
@@ -809,9 +922,9 @@ async function CreatePictures(imageSourceObj : image.ImageSource) {
   for (let index = 0; index < frameCount; index++) {
     try {
       let pictureObj: image.Picture = await imageSourceObj.createPictureAtIndex(index);
-      console.info('Create picture succeeded for frame: ' + index);
+      console.info('Succeeded in creating picture for frame: ' + index);
     } catch (e) {
-      console.error('Create picture failed for frame: ' + index);
+      console.error('Failed to create picture for frame: ' + index);
     }
   }
 }
@@ -1029,7 +1142,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 > - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
 > - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
 > - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-> - 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
+> - 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时（如2000×3000像素的100帧GIF动图），会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1619,7 +1732,7 @@ release(): Promise\<void>
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> |  Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1766,6 +1879,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
 > - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1780,7 +1894,7 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 
 | 类型           | 说明                        |
 | -------------- | --------------------------- |
-| Promise\<void> |  Promise对象。无返回结果的Promise对象。|
+| Promise\<void> |  Promise对象，无返回结果。|
 
 **示例：**
 
@@ -1813,6 +1927,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
 > - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

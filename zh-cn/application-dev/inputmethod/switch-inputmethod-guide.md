@@ -1,7 +1,7 @@
 # 切换输入法应用
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -57,12 +57,17 @@
    
    ``` TypeScript
    async switchInputMethod(item: string) {
-     this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
-     let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
-     for (let i = 0; i < this.inputMethods.length; i++) {
-       if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
-         await inputMethod.switchInputMethod(this.inputMethods[i]);
+     try {
+       this.inputMethods = await inputMethod.getSetting().getInputMethods(true); // 获取已使能的输入法列表
+       let currentInputMethod = inputMethod.getCurrentInputMethod(); // 获取当前输入法
+       for (let i = 0; i < this.inputMethods.length; i++) {
+         if (item != currentInputMethod.name) { // 判断不是当前输入法时，切换到该输入法，实际开发中可以切换到固定输入法
+           await inputMethod.switchInputMethod(this.inputMethods[i]);
+         }
        }
+     } catch (err) {
+       let error = err as BusinessError;
+       Log.showError(TAG, `switchInputMethod catch error: ${error.code} ${error.message}`);
      }
    }
    ```

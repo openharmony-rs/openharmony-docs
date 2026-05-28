@@ -107,343 +107,353 @@ The metallic-roughness material based on PBR rendering, which conforms to the gl
 ## Creating Shader Materials and Setting Properties
 You can create shader materials using the **MaterialType.SHADER** type when you need to customize rendering logic or implement unique visual effects. Shader materials support binding of custom .shader files, where you can write custom rendering logic to flexibly control the appearance of models, achieving personalized visual effects such as outlines, highlights, and emissive effects. This example demonstrates the process of creating and using shader materials, including loading scenes, creating and binding shader resources, and applying shader materials to target geometry nodes.
 
-  1. Import the required modules.
+1. Import the required modules.
 
-     Import the core types provided by ArkGraphics 3D in the page script to create shader materials and bind shader resources.
+   Import the core types provided by ArkGraphics 3D in the page script to create shader materials and bind shader resources.
 
-     <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-     
-     ``` TypeScript
-     import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
-       SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D';
-     ```
+   <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+   
+   ``` TypeScript
+   import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
+     SceneResourceParameters, Shader, ShaderMaterial, EnvironmentBackgroundType } from '@kit.ArkGraphics3D';
+   ```
 
-  2. Load the scene and configure rendering parameters.
+2. Load the scene and configure rendering parameters.
 
-     Call **Scene.load()** to load model files in .glb or .gltf format, and obtain a scene object upon completion. Then, construct a SceneOptions object to specify the scene and rendering mode for rendering the scene content via Component3D.
+   Call **Scene.load()** to load model files in .glb or .gltf format, and obtain a scene object upon completion. Then, construct a SceneOptions object to specify the scene and rendering mode for rendering the scene content via Component3D.
 
-     <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-     
-     ``` TypeScript
-     if (this.scene === null) {
-       // Switched from .gltf to .glb; same content, different format
-       Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
-         .then(async (result: Scene) => {
-           // Assign loaded scene to globalScene for unified resource creation
-           globalScene = result;
-           this.scene = result;
-           this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
-           this.rf = this.scene.getResourceFactory();
-         // ···
-         })
-         .catch((error: string) => {
-           console.error('init error: ' + error + '.');
-         });
-     }
-     ```
-
-  3. Initialize the camera.
-
-     Create a camera object, and set its enabled state and viewing position for subsequent model display.
-
-     <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-     
-     ``` TypeScript
-     this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
-     this.cam.enabled = true;
-     this.cam.position.z = 5;
-     ```
-
-  4. Obtain the geometry node.
-
-     Call **Scene.getNodeByPath()** to obtain the geometry node of the target model, and record its original material. This enables rollback or recovery in case the material is later modified.
-
-     <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-     
-     ``` TypeScript
-     this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
-     
-     // record original material
-     this.originalMat = this.geom.mesh.subMeshes[0].material;
-     ```
-
-  5. Create a blank shader material.
-
-     Call **SceneResourceFactory.createMaterial()** to create a blank shader material in preparation for binding a custom shader.
-
-     <!-- @[create_material_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-     
-     ``` TypeScript
-     function createMaterialPromise(): Promise<Material> {
-       return new Promise((resolve, reject) => {
-         // Ensure the scene is loaded before accessing sceneFactory
-         if (globalScene) {
-           let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
-           let sceneMaterialParameter: SceneResourceParameters = { name: 'material' };
-           // Create Material
-           let material: Promise<Material> = sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
-           material.then(resolve)
-           .catch((err: string) => {
-             console.error('Blank material create failed: ' + err);
-             reject(err);
-           });
-         } else {
-           reject('Scene is not loaded yet.');
-         }
-       });
-     }
-     ```
-
-  6. Create and bind a shader resource.
-
-     Call **SceneResourceFactory.createShader()** to create a custom shader resource, and bind it to the shader material to implement custom rendering logic.
-
-     <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-     
-     ``` TypeScript
-     function createShaderPromise(): Promise<Shader> {
-       return new Promise((resolve, reject) => {
-         // Ensure the scene is loaded before accessing sceneFactory
-         if (globalScene) {
-           let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
-     
-           // Create a SceneResourceParameters object and use it to create a shader
-           let sceneResourceParameter: SceneResourceParameters = {
-             name: 'shaderResource',
-             uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
-           };
-     
-           let shader: Promise<Shader> = sceneFactory.createShader(sceneResourceParameter);
-           shader.then((shaderEntity: Shader) => {
-             resolve(shaderEntity);
-           }).catch((err: string) => {
-             console.error('Shader load failed: ' + err + '.');
-             reject(err);
-           });
-         } else {
-           reject('Scene is not loaded yet.');
-         }
-       });
-     }
-     ```
-
-  7. Apply the shader material to a geometry node.
-
-     By triggering button click events to call different functions, you can dynamically switch the model material at runtime, achieving a transition effect from the default material to the shader material.
-
-     <!-- @[material_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
-     
-     ``` TypeScript
-     Button('Replace with a blank material')
-     // ···
-       .onClick(async (): Promise<void> => {
-         console.info('Start to replace with a blank material');
-     
-         if (!this.blankMat) {
-           this.blankMat = await createMaterialPromise();
-         }
-     
-         if (!this.scene || !this.rf) {
-           return;
-         }
-     
-         this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
-     
-         this.geom.mesh.materialOverride = undefined;
-         if (this.blankMat) {
-           this.geom.mesh.subMeshes[0].material = this.blankMat;
-         }
-     
-       });
-     
-     Button('Replace with a Shader material')
-     // ···
-       .onClick(async (): Promise<void> => {
-         console.info('Start to replace with a shader material');
-     
-         if (!this.shader) {
-           this.shader = await createShaderPromise();
-         }
-     
-         if (!this.scene || !this.rf) {
-           return;
-         }
-     
-         if (!this.shaderMat) {
-           let rf = this.scene.getResourceFactory();
-           this.shaderMat = await rf.createMaterial({ name: 'shaderMat' }, MaterialType.SHADER);
-         }
-     
-         if (this.shader) {
-           this.shaderMat.colorShader = this.shader;
-         }
-     
-         this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
-     
-         this.geom.mesh.materialOverride = undefined;
-     
-         if (this.shaderMat) {
-           this.geom.mesh.subMeshes[0].material = this.shaderMat;
-         }
+   <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+   
+   ``` TypeScript
+   if (this.scene === null) {
+     // Switched from .gltf to .glb; same content, different format
+     Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
+       .then(async (result: Scene) => {
+         // Assign loaded scene to globalScene for unified resource creation
+         globalScene = result;
+         this.scene = result;
+         this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+         this.rf = this.scene.getResourceFactory();
+         // ...
        })
-     ```
+       .catch((error: string) => {
+         console.error('init error: ' + error + '.');
+       });
+   }
+   ```
+
+3. Initialize the camera.
+
+   Create a camera object, and set its enabled state and viewing position for subsequent model display.
+
+   <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+   
+   ``` TypeScript
+   this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+   this.cam.enabled = true;
+   this.cam.position.z = 5;
+   ```
+
+4. Obtain the geometry node.
+
+   Call **Scene.getNodeByPath()** to obtain the geometry node of the target model, and record its original material. This enables rollback or recovery in case the material is later modified.
+
+   <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+   
+   ``` TypeScript
+   this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
+   
+   // record original material
+   this.originalMat = this.geom.mesh.subMeshes[0].material;
+   ```
+
+5. Create a blank shader material.
+
+   Call **SceneResourceFactory.createMaterial()** to create a blank shader material in preparation for binding a custom shader.
+
+   <!-- @[create_material_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+   
+   ``` TypeScript
+   function createMaterialPromise(): Promise<Material> {
+     return new Promise((resolve, reject) => {
+       // Ensure the scene is loaded before accessing sceneFactory
+       if (globalScene) {
+         let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
+         let sceneMaterialParameter: SceneResourceParameters = { name: 'material' };
+         // Create Material
+         let material: Promise<Material> = sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
+         material.then(resolve)
+         .catch((err: string) => {
+           console.error('Blank material create failed: ' + err);
+           reject(err);
+         });
+       } else {
+         reject('Scene is not loaded yet.');
+       }
+     });
+   }
+   ```
+
+6. Create and bind a shader resource.
+
+   Call **SceneResourceFactory.createShader()** to create a custom shader resource, and bind it to the shader material to implement custom rendering logic.
+
+   <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+   
+   ``` TypeScript
+   function createShaderPromise(): Promise<Shader> {
+     return new Promise((resolve, reject) => {
+       // Ensure the scene is loaded before accessing sceneFactory
+       if (globalScene) {
+         let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
+   
+         // Create a SceneResourceParameters object and use it to create a shader
+         let sceneResourceParameter: SceneResourceParameters = {
+           name: 'shaderResource',
+           uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
+         };
+   
+         let shader: Promise<Shader> = sceneFactory.createShader(sceneResourceParameter);
+         shader.then((shaderEntity: Shader) => {
+           resolve(shaderEntity);
+         }).catch((err: string) => {
+           console.error('Shader load failed: ' + err + '.');
+           reject(err);
+         });
+       } else {
+         reject('Scene is not loaded yet.');
+       }
+     });
+   }
+   ```
+
+7. Apply the shader material to a geometry node.
+
+   By triggering button click events to call different functions, you can dynamically switch the model material at runtime, achieving a transition effect from the default material to the shader material.
+
+   <!-- @[material_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
+   
+   ``` TypeScript
+   Button('Replace with a blank material')
+     // ...
+     .onClick(async (): Promise<void> => {
+       console.info('Start to replace with a blank material');
+   
+       if (!this.blankMat) {
+         this.blankMat = await createMaterialPromise();
+       }
+   
+       if (!this.scene || !this.rf) {
+         return;
+       }
+   
+       this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
+   
+       this.geom.mesh.materialOverride = undefined;
+       if (this.blankMat) {
+         this.geom.mesh.subMeshes[0].material = this.blankMat;
+       }
+   
+     });
+   
+   Button('Replace with a Shader material')
+     // ...
+     .onClick(async (): Promise<void> => {
+       console.info('Start to replace with a shader material');
+   
+       if (!this.shader) {
+         this.shader = await createShaderPromise();
+       }
+   
+       if (!this.scene || !this.rf) {
+         return;
+       }
+   
+       if (!this.shaderMat) {
+         let rf = this.scene.getResourceFactory();
+         this.shaderMat = await rf.createMaterial({ name: 'shaderMat' }, MaterialType.SHADER);
+       }
+   
+       if (this.shader) {
+         this.shaderMat.colorShader = this.shader;
+       }
+   
+       this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
+   
+       this.geom.mesh.materialOverride = undefined;
+   
+       if (this.shaderMat) {
+         this.geom.mesh.subMeshes[0].material = this.shaderMat;
+       }
+     })
+   ```
 
 ## Creating PBR Materials and Setting Properties
 In ArkGraphics 3D, Physically Based Rendering (PBR) materials allow you to precisely control the appearance of objects by adjusting parameters such as metallicity, roughness, and transparency, achieving highly realistic rendering effects. Since different models may have varying PBR properties when exported, you are advised to adapt the material settings based on the model content. This example uses the CompareClearcoat model, which comes with clear coat-related material parameters, making it suitable for demonstrating the adjustment of clear coat effects. By setting properties like **clearCoat** and **clearCoatRoughness**, you can observe the changes in the strength, gloss, and reflection characteristics of the clear coat layer.
 
-  1. Import the required modules.
+1. Import the required modules.
 
-     Import the core types provided by ArkGraphics 3D in the page script to create PBR materials and bind texture resources.
+   Import the core types provided by ArkGraphics 3D in the page script to create PBR materials and bind texture resources.
 
-     <!-- @[pbr_clearcoat_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     import { Scene, Camera, Material, Node, Image, SceneResourceFactory, Geometry, EnvironmentBackgroundType,
-       PostProcessSettings, ToneMappingType, MetallicRoughnessMaterial, Vec4 } from '@kit.ArkGraphics3D';
-     import {lookAt, OrbitCameraHelper } from '../common/utils';
-     ```
+   <!-- @[pbr_clearcoat_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   import { Scene, Camera, Material, Node, Image, SceneResourceFactory, Geometry, EnvironmentBackgroundType,
+     PostProcessSettings, ToneMappingType, MetallicRoughnessMaterial, Vec4 } from '@kit.ArkGraphics3D';
+   import {lookAt, OrbitCameraHelper } from '../common/utils';
+   ```
 
-  2. Load scene resources.
+2. Load scene resources.
 
-     Call **Scene.load()** to load model files in .glb or .gltf format, and obtain a scene object upon completion. Once the scene is loaded, you can access the resource factory of the scene to create materials and other resources.
+   Call **Scene.load()** to load model files in .glb or .gltf format, and obtain a scene object upon completion. Once the scene is loaded, you can access the resource factory of the scene to create materials and other resources.
 
-     <!-- @[pbr_clearcoat_loadScene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     if (this.scene == null) {
-       // Switched from .gltf to .glb; same content, different format
-       Scene.load($rawfile('gltf/CompareClearcoat/CompareClearcoat.glb'))
-         .then(async (scene: Scene) => {
-           this.scene = scene;
-           if (!this.scene.root) {
-             return;
-           }
-           let rf: SceneResourceFactory = scene.getResourceFactory();
-     
-         // ···
-         });
+   <!-- @[pbr_clearcoat_loadScene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   if (this.scene == null) {
+     // Switched from .gltf to .glb; same content, different format
+     Scene.load($rawfile('gltf/CompareClearcoat/CompareClearcoat.glb'))
+       .then(async (scene: Scene) => {
+         this.scene = scene;
+         if (!this.scene.root) {
+           return;
+         }
+         let rf: SceneResourceFactory = scene.getResourceFactory();
+   
+         // ...
+       });
+   }
+   ```
+
+3. Obtain a geometry node and preload textures.
+
+   Obtain the target geometry node through the node path in the scene, extract its material, and preload the texture resources related to the clear coat layer.
+
+   <!-- @[pbr_clearcoat_getMaterialAndTextures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   let pbrNode: Node | null | undefined = this.scene.root?.getNodeByPath('Unnamed Node 1/GeoSphere003');
+   if (pbrNode) {
+     this.material = (pbrNode as Geometry).mesh.subMeshes[0].material;
+     let mrMaterial = (this.material as MetallicRoughnessMaterial);
+     let original: Image | null = mrMaterial.clearCoat.image;
+     const helmAlbedo: Resource = $rawfile('image/round_pattern.png');
+     const irregularUri: Resource = $rawfile('image/irregular_pattern.png');
+     let round: Image | null = await rf.createImage({name: 'round', uri: helmAlbedo });
+     let irregular: Image | null = await rf.createImage({name: 'irregular', uri: irregularUri });
+     if (original && round && irregular ) {
+       this.textures.push(original);
+       this.textures.push(round);
+       this.textures.push(irregular);
      }
-     ```
+   }
+   ```
 
-  3. Obtain a geometry node and preload textures.
+4. Configure environment lighting.
 
-     Obtain the target geometry node through the node path in the scene, extract its material, and preload the texture resources related to the clear coat layer.
+   Create an Image-based Lighting (IBL) environment, and configure the environment and radiance maps to implement realistic environment lighting.
 
-     <!-- @[pbr_clearcoat_getMaterialAndTextures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     let pbrNode: Node | null | undefined = this.scene.root?.getNodeByPath('Unnamed Node 1/GeoSphere003');
-     if (pbrNode) {
-       this.material = (pbrNode as Geometry).mesh.subMeshes[0].material;
-       let mrMaterial = (this.material as MetallicRoughnessMaterial);
-       let original: Image | null = mrMaterial.clearCoat.image;
-       const helmAlbedo: Resource = $rawfile('image/round_pattern.png');
-       const irregularUri: Resource = $rawfile('image/irregular_pattern.png');
-       let round: Image | null = await rf.createImage({name: 'round', uri: helmAlbedo });
-       let irregular: Image | null = await rf.createImage({name: 'irregular', uri: irregularUri });
-       if (original && round && irregular ) {
-         this.textures.push(original);
-         this.textures.push(round);
-         this.textures.push(irregular);
-       }
+   <!-- @[pbr_clearcoat_createIBL](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   scene.environment = await rf.createEnvironment({ name: 'env' });
+   scene.environment.backgroundType = EnvironmentBackgroundType.BACKGROUND_CUBEMAP;
+   scene.environment.environmentImage = await rf.createImage({ name: 'cube', uri: $rawfile('Environment/quarry_02_2k_skybox.ktx') });
+   scene.environment.radianceImage = await rf.createImage({ name: 'rad', uri: $rawfile('Environment/quarry_02_2k_radiance.ktx') });
+   scene.environment.irradianceCoefficients =
+     [{ x: 1.080343842506409, y: 0.936282396316528, z: 0.665518164634705 },
+       { x: 0.959947884082794, y: 0.828918874263763, z: 0.569704353809357 },
+       { x: 0.848236382007599, y: 0.715092182159424, z: 0.473145037889481 },
+       { x: -0.591795265674591, y: -0.501678705215454, z: -0.334018945693970 },
+       { x: -0.775423347949982, y: -0.655484378337860, z: -0.437325984239578 },
+       { x: 1.053589701652527, y: 0.887459456920624, z: 0.587381422519684 },
+       { x: -0.018954016268253, y: -0.014871496707201, z: -0.008891185745597 },
+       { x: -0.566255271434784, y: -0.476870059967041, z: -0.314557582139969 },
+       { x: -0.239390164613724, y: -0.200478553771973, z: -0.132790848612785 }];
+   ```
+
+5. Create a camera and set the view.
+
+   Create a camera object, set its position and target, and then enable orbit control to allow users to rotate and zoom the view with gestures.
+
+   <!-- @[pbr_clearcoat_createCamera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   this.cam = await rf.createCamera({ 'name': 'ClearcoatCam' });
+   this.cam.enabled = true;
+   lookAt(this.cam,{x:0,y:0,z:-3},{x:0,y:0,z:0},{x:0,y:1,z:0});
+   this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+   this.orbitCamera.SetOrbitFromEye(this.cam.position, this.scene.root.position, this.cam.rotation);
+   ```
+
+6. Switch the clear coat texture.
+
+   To allow users to switch between different clear coat textures, provide a button or event trigger for dynamic texture switching.
+
+   <!-- @[pbr_clearcoat_changeClearcoatTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   changeClearcoatTex() {
+     if (this.textures.length > 0) {
+       let i = ++this.textureInUse % this.textures.length;
+       (this.material as MetallicRoughnessMaterial).clearCoat.image = this.textures[i];
      }
-     ```
+   }
+   ```
 
-  4. Configure environment lighting.
+7. Adjust the strength of the clear coat layer.
 
-     Create an Image-based Lighting (IBL) environment, and configure the environment and radiance maps to implement realistic environment lighting.
+   To adjust the strength of the clear coat layer, use a slider to update the **clearCoat.factor** property of the material.
 
-     <!-- @[pbr_clearcoat_createIBL](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     scene.environment = await rf.createEnvironment({ name: 'env' });
-     scene.environment.backgroundType = EnvironmentBackgroundType.BACKGROUND_CUBEMAP;
-     scene.environment.environmentImage = await rf.createImage({ name: 'cube', uri: $rawfile('Environment/quarry_02_2k_skybox.ktx') });
-     scene.environment.radianceImage = await rf.createImage({ name: 'rad', uri: $rawfile('Environment/quarry_02_2k_radiance.ktx') });
-     scene.environment.irradianceCoefficients =
-       [{ x: 1.080343842506409, y: 0.936282396316528, z: 0.665518164634705 },
-         { x: 0.959947884082794, y: 0.828918874263763, z: 0.569704353809357 },
-         { x: 0.848236382007599, y: 0.715092182159424, z: 0.473145037889481 },
-         { x: -0.591795265674591, y: -0.501678705215454, z: -0.334018945693970 },
-         { x: -0.775423347949982, y: -0.655484378337860, z: -0.437325984239578 },
-         { x: 1.053589701652527, y: 0.887459456920624, z: 0.587381422519684 },
-         { x: -0.018954016268253, y: -0.014871496707201, z: -0.008891185745597 },
-         { x: -0.566255271434784, y: -0.476870059967041, z: -0.314557582139969 },
-         { x: -0.239390164613724, y: -0.200478553771973, z: -0.132790848612785 }];
-     ```
-
-  5. Create a camera and set the view.
-
-     Create a camera object, set its position and target, and then enable orbit control to allow users to rotate and zoom the view with gestures.
-
-     <!-- @[pbr_clearcoat_createCamera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     this.cam = await rf.createCamera({ 'name': 'ClearcoatCam' });
-     this.cam.enabled = true;
-     lookAt(this.cam,{x:0,y:0,z:-3},{x:0,y:0,z:0},{x:0,y:1,z:0});
-     this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
-     this.orbitCamera.SetOrbitFromEye(this.cam.position, this.scene.root.position, this.cam.rotation);
-     ```
-
-  6. Switch the clear coat texture.
-
-     To allow users to switch between different clear coat textures, provide a button or event trigger for dynamic texture switching.
-
-     <!-- @[pbr_clearcoat_changeClearcoatTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     changeClearcoatTex() {
-       if (this.textures.length > 0) {
-         let i = ++this.textureInUse % this.textures.length;
-         (this.material as MetallicRoughnessMaterial).clearCoat.image = this.textures[i];
-       }
+   <!-- @[pbr_clearcoat_setClearcoat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   setClearcoat(v: number) {
+     if (this.material) {
+       const f: Vec4 = (this.material as MetallicRoughnessMaterial).clearCoat.factor;
+       f.x = v / RESO;
+       (this.material as MetallicRoughnessMaterial).clearCoat.factor = f;
      }
-     ```
+   }
+   ```
 
-  7. Adjust the strength of the clear coat layer.
+8. Switch the roughness texture.
 
-     To adjust the strength of the clear coat layer, use a slider to update the **clearCoat.factor** property of the material.
+   Similar to switching clear coat textures, users can also switch between different roughness textures.
 
-     <!-- @[pbr_clearcoat_setClearcoat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     setClearcoat(v: number) {
-       if (this.material) {
-         const f: Vec4 = (this.material as MetallicRoughnessMaterial).clearCoat.factor;
-         f.x = v / RESO;
-         (this.material as MetallicRoughnessMaterial).clearCoat.factor = f;
-       }
+   <!-- @[pbr_clearcoat_changeRoughnessTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   changeClearcoatRoughTex() {
+     if (this.textures.length > 0) {
+       let i = ++this.textureInUse % this.textures.length;
+       (this.material as MetallicRoughnessMaterial).clearCoatRoughness.image = this.textures[i];
      }
-     ```
+   }
+   ```
 
-  8. Switch the roughness texture.
+9. Adjust the roughness of the clear coat layer.
 
-     Similar to switching clear coat textures, users can also switch between different roughness textures.
+   To adjust the roughness of the clear coat layer, use a slider to update the **clearCoatRoughness.factor** property of the material.
 
-     <!-- @[pbr_clearcoat_changeRoughnessTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     changeClearcoatRoughTex() {
-       if (this.textures.length > 0) {
-         let i = ++this.textureInUse % this.textures.length;
-         (this.material as MetallicRoughnessMaterial).clearCoatRoughness.image = this.textures[i];
-       }
+   <!-- @[pbr_clearcoat_setClearcoatRoughness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
+   
+   ``` TypeScript
+   setClearcoatRoughness(v: number) {
+     if (this.material) {
+       const f: Vec4 = (this.material as MetallicRoughnessMaterial).clearCoatRoughness.factor;
+       f.y = v / RESO;
+       (this.material as MetallicRoughnessMaterial).clearCoatRoughness.factor = f;
      }
-     ```
+   }
+   ```
 
-  9. Adjust the roughness of the clear coat layer.
+<!--RP1-->
+## Samples
 
-     To adjust the roughness of the clear coat layer, use a slider to update the **clearCoatRoughness.factor** property of the material.
+For detailed code implementations and examples, you can visit the corresponding samples directory to learn more:
+- [General Material Properties and PBR Material Example (ArkTS)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material)
 
-     <!-- @[pbr_clearcoat_setClearcoatRoughness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
-     
-     ``` TypeScript
-     setClearcoatRoughness(v: number) {
-       if (this.material) {
-         const f: Vec4 = (this.material as MetallicRoughnessMaterial).clearCoatRoughness.factor;
-         f.y = v / RESO;
-         (this.material as MetallicRoughnessMaterial).clearCoatRoughness.factor = f;
-       }
-     }
-     ```
+The following sample is provided to help you better understand how to efficiently use 3D resources:
+- [3D Engine Interface Example (ArkTS) (API version 12)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
+<!--RP1End-->

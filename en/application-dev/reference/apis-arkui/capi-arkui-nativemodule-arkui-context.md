@@ -1,8 +1,8 @@
 # ArkUI_Context
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_Context ArkUI_Context
 
 ## Overview
 
-Defines a struct for a UI context object.
+Defines a native UI context instance.
 
 **Since**: 12
 

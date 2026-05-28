@@ -67,7 +67,7 @@ export LD_LIBRARY_PATH=${PACKAGE_PATH}/tools/converter/lib:${LD_LIBRARY_PATH}
 
 ## 参数说明
 
-MindSpore Lite模型转换工具提供了多种参数设置，用户可根据需要来选择使用。此外，用户可输入`./converter_lite --help`获取实时帮助。
+MindSpore Lite模型转换工具提供了多种参数设置，用户可根据需要来选择使用。此外，用户可输入`./converter_lite --help`获取实时帮助信息。
 
 下面提供详细的参数说明。
 
@@ -146,10 +146,10 @@ extended_parameters=key_foo:value_foo;key_bar:value_bar
 - `input_dtypes`：[必选]模型输入数据类型，格式：类型，多个输入用`;`间隔。
 - `input_shapes`：[必选]模型输入形状，格式：整数数组，多个输入用`;`间隔。
 - `input_formats`：[可选]模型输入内存布局，格式：字符串，多个输入用`;`间隔，默认值NHWC。
-- `output_names`：[可选]模型输入名称，格式：字符串，多个输入用`;`间隔。
+- `output_names`：[可选]模型输出名称，格式：字符串，多个输出用`;`间隔。
 - `output_dtypes`：[必选]模型输出数据类型，格式：类型，多个输出用`;`间隔。
 - `output_shapes`：[必选]模型输出形状，格式：整数数组，多个输出用`;`间隔。
-- `output_formats`：[可选]模型输出内存布局，格式：字符串，多个输入用`;`间隔，默认值NHWC。
+- `output_formats`：[可选]模型输出内存布局，格式：字符串，多个输出用`;`间隔，默认值NHWC。
 - `extended_parameters`：[可选]推理硬件自定义配置，字符串键值对格式，会通过NNRt后端传给硬件。
 
 ## 附录

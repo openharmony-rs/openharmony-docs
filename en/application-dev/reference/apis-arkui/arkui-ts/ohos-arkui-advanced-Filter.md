@@ -1,7 +1,7 @@
 # Filter
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,12 +14,14 @@ The advanced filter component allows users to filter data with multiple criteria
 >
 > - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
+> - This component can be used only in the stage model.
+>
 > - If the **Filter** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **Filter** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **Filter** component.
 
 
 ## Modules to Import
 
-```
+```ts
 import { Filter } from '@kit.ArkUI';
 ```
 
@@ -46,9 +48,9 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 | Name| Type| Mandatory | Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | multiFilters | Array&lt;[FilterParams](#filterparams)&gt; | Yes  | \@Prop | List of filter criteria.|
-| additionFilters | [FilterParams](#filterparams) | No  | \@Prop | Additional quick filter.|
+| additionFilters | [FilterParams](#filterparams) | No  | \@Prop | Additional quick filter criteria. If this parameter is not specified, the additional quick filter criteria are not displayed.|
 | filterType | [FilterType](#filtertype) | No  | \@Prop | Filter type.<br>Default value: **FilterType.LIST_FILTER**.|
-| onFilterChanged | (filterResults: Array&lt;[FilterResult](#filterresult)&gt;) =&gt; void | Yes  | - | Callback invoked when the filter criteria is changed. The input parameter is the list of selected filter criteria.|
+| onFilterChanged | (filterResults: Array&lt;[FilterResult](#filterresult)&gt;)&nbsp;=&gt;&nbsp;void | Yes  | - | Callback invoked when the filter criteria are changed. The input parameter is the list of selected filter criteria.|
 | container | ()=&gt;void | Yes  | \@BuilderParam | Custom content of the filtering result display area, which is passed in a trailing closure.|
 
 ## FilterParams
@@ -62,7 +64,7 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 | Name| Type| Read-Only| Optional| Description                                                             |
 | -------- | -------- |----|----|-----------------------------------------------------------------|
 | name | [ResourceStr](ts-types.md#resourcestr) | No | No | Name of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated.             |
-| options | Array&lt;[ResourceStr](ts-types.md#resourcestr)&gt; | No | No | Options of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>The text is truncated with an ellipsis (...) if it is too long.|
+| options | Array&lt;[ResourceStr](ts-types.md#resourcestr)&gt; | No | No | Options of the filter criterion.<br>The default value is an empty array.<br>**NOTE**<br>The text is truncated with an ellipsis (...) if it is too long.|
 
 ## FilterType
 
@@ -116,7 +118,7 @@ struct Index {
     {
       name: 'Day',
       options: ['All', '1', '2', '3', '4', '5',' 6', '7','8', '9','10', '11', '12',
-        '13','14', '15', '16', '17', '18','19','20','21','22', '23'],
+        '13','14', '15', '16', '17', '18','19','20','21','22', '23', '24'],
     }];
   // Addition filter parameter. The name of the filter dimension must be specified. Otherwise, the entire filter dimension is not displayed.
   private additionParam: FilterParams =

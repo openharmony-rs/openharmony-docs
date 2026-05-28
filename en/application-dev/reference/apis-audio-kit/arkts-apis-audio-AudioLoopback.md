@@ -1,8 +1,8 @@
 # Interface (AudioLoopback)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @tom_guo-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -77,7 +77,7 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 6800101 | Parameter verification failed, form 0.0 to 1.0. |
+| 6800101 | Parameter verification failed, from 0.0 to 1.0. |
 
 **Example**
 

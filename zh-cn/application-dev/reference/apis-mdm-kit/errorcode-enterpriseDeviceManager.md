@@ -1,10 +1,10 @@
 # 企业设备管理错误码
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
@@ -40,7 +40,7 @@ The administrator application does not have permission to manage the device.
 
 **可能原因**
 
-激活成了DA管理器，但调用了SDA管理器接口。
+已激活为DA管理器，但调用了SDA管理器接口。
 
 **处理步骤**
 
@@ -112,6 +112,7 @@ Failed to deactivate the administrator application of the device.
 2. 检查解除激活时设备管理应用中指定设备管理元能力组件是否激活过。
 3. 检查调用者是否解除激活自身，设备管理器应用不能解除激活其他设备管理器应用。
 
+<!--Del-->
 ## 9200006 指定的用户ID非法
 
 **错误信息**
@@ -154,6 +155,7 @@ The system ability works abnormally.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
+<!--DelEnd-->
 
 ## 9200008 系统订阅事件无效
 
@@ -315,6 +317,24 @@ The ability does not exist.
 1. 检查want中的bundleName和abilityName是否正确。
 2. 检查传入的Ability对外是否可见。
 
+## 9200016 服务超时
+
+**错误信息**
+
+Service timeout.
+
+**错误描述**
+
+当服务超时时，方法将返回该错误码。
+
+**可能原因**
+
+服务超时。
+
+**处理步骤**
+
+服务超时，请稍后重试。
+
 ## 9201001 管理证书失败
 
 **错误信息**
@@ -345,17 +365,25 @@ Failed to install the application.
 
 **可能原因**
 
-该错误码表示安装企业应用失败，可能原因如下。
+该错误码表示安装企业应用失败。
+
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，可能原因如下。
 1. 应用安装路径为空、不存在、无效路径。
 2. 安装多个不同包名的应用。
 3. 当安装参数flag为0时再次安装已存在的应用。
 4. 传入无效用户id。
 
+<!--RP3--><!--RP3End-->
+
 **处理步骤**
+
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，处理步骤如下。
 
 1. 检查应用安装路径是有效的安装路径。
 2. 检查安装参数是有效的安装参数。
 3. 检查安装的是同一应用。
+
+<!--RP4--><!--RP4End-->
 
 ## 9201003 创建账号失败
 
@@ -534,3 +562,154 @@ Ethernet configuration failed. Ethernet device not connected.
 1. 检查网卡是否启用。
 2. 检查输入的网卡名是否正确。
 3. 检查配置的参数是否正确。
+
+## 9201011 禁用凭据无效
+
+**错误信息**
+
+The credential of the activation lock is invalid.
+
+**错误描述**
+
+禁用凭据无效。
+
+**可能原因**
+
+1. 传入的禁用凭据格式不正确。
+2. 传入的禁用凭据字段值不正确。
+3. 传入的禁用凭据非当前设备对应的凭据。
+
+**处理步骤**
+
+1. 检查禁用凭据格式是否正确。
+2. 检查禁用凭据各字段值是否正确。
+3. 检查禁用凭据是否是当前设备对应的禁用凭据。
+
+## 9201012 禁用或启用激活锁失败
+
+**错误信息**
+
+Failed to enable or disable the activation lock.
+
+**错误描述**
+
+禁用或启用激活锁失败。
+
+**可能原因**
+
+<!--RP1-->设备不支持激活锁服务。
+<!--RP1End-->
+
+**处理步骤**
+
+<!--RP2-->设备不支持激活锁服务。
+<!--RP2End-->
+
+
+## 9201013 快捷栏中的应用数量已到最大值
+
+**错误信息**
+
+The number of applications in the Dock has reached the maximum.
+
+**错误描述**
+
+当企业设备管理员添加应用到快捷栏失败时，会产生此错误码。
+
+**可能原因**
+
+快捷栏中的应用数量已经达到最大值。
+
+**处理步骤**
+
+删除快捷栏中多余的应用。
+
+## 9201014 指定应用已经在快捷栏中
+
+**错误信息**
+
+The application is already in the Dock.
+
+**错误描述**
+
+当企业设备管理员添加应用到快捷栏失败时，会产生此错误码。
+
+**可能原因**
+
+指定应用已经在快捷栏中，重复添加时会报此错误码。
+
+**处理步骤**
+
+从快捷栏中移除指定应用后，再次添加该应用到快捷栏的指定位置。
+
+## 9201015 指定应用未安装
+
+**错误信息**
+
+The application is not installed.
+
+**错误描述**
+
+当指定应用未安装时，需要下发此应用的策略时，会产生此错误码。
+
+**可能原因**
+
+指定应用未安装。
+
+**处理步骤**
+
+安装指定应用后重试。
+
+## 9201016 指定应用不在快捷栏
+
+**错误信息**
+
+The application has not been added to the Dock.
+
+**错误描述**
+
+当企业设备管理员从快捷栏中移除应用时，会产生此错误码。
+
+**可能原因**
+
+需要移除的应用不在快捷栏。
+
+**处理步骤**
+
+请检查需要从快捷栏中移除的应用包名是否填写正确。
+
+## 9201018 指定应用不支持操作
+
+**错误信息**
+
+The application is inoperable.
+
+**错误描述**
+
+当企业设备管理员添加应用到快捷栏失败时，会产生此错误码。
+
+**可能原因**
+
+指定应用如应用中心、任务中心、文件管理、回收站和无图标的应用不支持操作。
+
+**处理步骤**
+
+指定应用不支持添加，请添加其他应用到栏。
+
+## 9201019 指定位置不支持操作
+
+**错误信息**
+
+The location is inoperable.
+
+**错误描述**
+
+当企业设备管理员添加应用到快捷栏失败时，会产生此错误码。
+
+**可能原因**
+
+快捷栏中0或1位置的应用是应用中心或任务中心时，0或1位置的应用不可改变。
+
+**处理步骤**
+
+该位置不可添加应用，请将应用添加到其他位置。

@@ -5,7 +5,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -27,8 +27,8 @@
 
 | 名称                                                                                       | typedef关键字 | 描述 |
 |------------------------------------------------------------------------------------------| -- | -- |
-| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md)   | TransientTask_DelaySuspendInfo | 定义短时任务返回信息结构体。 |
-| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | 定义所有短时任务信息结构体。 |
+| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md)   | TransientTask_DelaySuspendInfo | 定义短时任务返回信息结构体。用于返回当前短时任务的任务ID和剩余时间。 |
+| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | 定义所有短时任务信息结构体。用于返回当日剩余总配额和已申请的所有短时任务信息。 |
 
 ### 宏定义
 

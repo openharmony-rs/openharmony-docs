@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Flash inherits from [FlashQuery](arkts-apis-camera-FlashQuery.md).
+**Flash** inherits from [FlashQuery](arkts-apis-camera-FlashQuery.md).
 
 It provides APIs related to the flash.
 
@@ -107,3 +107,58 @@ function getFlashMode(photoSession: camera.PhotoSession): camera.FlashMode | und
   return flashMode;
 }
 ```
+
+## onFlashStateChange<sup>24+</sup>
+
+onFlashStateChange(callback: Callback\<FlashState\>): void
+
+Subscribes to flash light status change events.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type           | Mandatory| Description      |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[FlashState](arkts-apis-camera-e.md#flashstate24)\> | Yes  | Callback used to return the flash light status.|
+
+**Example**
+
+```ts
+function onFlashStateChange(photoSession: camera.PhotoSession): void {
+  photoSession.onFlashStateChange((flashState: camera.FlashState) => {
+    console.info(`Flash state changed: ${flashState}`);
+  });
+}
+```
+
+## offFlashStateChange<sup>24+</sup>
+
+offFlashStateChange(callback?: Callback\<FlashState\>): void
+
+Unsubscribes from flash light status change events.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type           | Mandatory| Description      |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[FlashState](arkts-apis-camera-e.md#flashstate24)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
+**Example**
+
+```ts
+function offFlashStateChange(photoSession: camera.PhotoSession): void {
+  photoSession.offFlashStateChange();
+}
+```
+<!--no_check-->

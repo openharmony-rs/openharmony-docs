@@ -7,13 +7,14 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-属性动画是指当可动画属性的参数值发生变化时，在UI上产生的连续视觉效果。当参数值连续变化，且设置到可以引起UI发生变化的属性接口上时，即可实现属性动画。
+[属性动画](arkts-attribute-animation-overview.md)是指当可动画属性的参数值发生变化时，在UI上产生的连续视觉效果。当参数值连续变化，且设置到可以引起UI发生变化的属性接口上时，即可实现属性动画。除了组件本身支持动画的属性，ArkUI还提供了[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)用于自定义可动画属性。
 
-ArkUI提供[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)，用于自定义可动画属性接口。由于参数的数据类型必须具备一定程度的连续性，自定义可动画属性接口的参数类型仅支持number类型和实现[AnimatableArithmetic\<T>接口](../ui/state-management/arkts-animatable-extend.md#animatablearithmetict接口说明)的自定义类型。通过自定义可动画属性接口和可动画数据类型，在使用animateTo或animation执行动画时，通过逐帧回调函数修改不可动画属性接口的值，能够让不可动画属性接口实现动画效果。也可通过逐帧回调函数每帧修改可动画属性的值，实现逐帧布局的效果。
+由于参数的数据类型必须具备一定程度的连续性，即可以通过插值方法来填补数据点之间的空隙以达到视觉上的连续效果，自定义可动画属性接口的参数类型仅支持number类型和实现[AnimatableArithmetic\<T>接口](../ui/state-management/arkts-animatable-extend.md#animatablearithmetict接口说明)的自定义类型。通过自定义可动画属性接口和可动画数据类型，通过逐帧回调函数修改不可动画属性接口的值，能够让不可动画属性接口实现动画效果，可参考示例[使用自定义数据类型改变图形形状](#使用自定义数据类型改变图形形状)。也可通过逐帧回调函数每帧修改可动画属性的值，实现逐帧布局的效果，可参考示例[使用number数据类型改变Text组件宽度实现逐帧布局的效果](#使用number数据类型改变text组件宽度实现逐帧布局的效果)。关于可动画属性接口和不可动画属性接口的说明可参考[属性动画概述](arkts-attribute-animation-overview.md)中的属性接口分类说明。
 
 
-## 使用number数据类型和\@AnimatableExtend装饰器改变Text组件宽度实现逐帧布局的效果
+## 使用number数据类型改变Text组件宽度实现逐帧布局的效果
 
+该示例中通过[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)定义了可动画属性接口animatableWidth，通过传入number数据类型修改属性[width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)的值，实现了逐帧改变[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件宽度的动画。
 
 <!-- @[Animation_AnimatableProperty](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animatableProperty/template1/Index.ets) -->
 
@@ -49,8 +50,9 @@ struct AnimatablePropertyExample {
 ![zh-cn_image_0000001600119626](figures/zh-cn_image_0000001600119626.gif)
 
 
-## 使用自定义数据类型和\@AnimatableExtend装饰器改变图形形状
+## 使用自定义数据类型改变图形形状
 
+该示例中通过[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)定义了可动画属性接口animatablePoints，通过传入自定义的数据类型修改不可动画属性[points](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md#points)的值，实现了改变[Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)组件形状的动画。由于系统不支持Polyline组件points属性的动画，因此需要通过实现[AnimatableArithmetic\<T>接口](../ui/state-management/arkts-animatable-extend.md#animatablearithmetict接口说明)中加法、减法、乘法和判断相等函数，为该属性的参数定义做动画插值的方法。在动画过程中，系统侧根据定义的数据插值方法计算每帧的数据值，回调到[@AnimatableExtend装饰器](../ui/state-management/arkts-animatable-extend.md)修饰的自定义可动画属性接口，进而设置points属性，为points属性产生动画。
 
 <!-- @[Animation_AnimatableProperty](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animatableProperty/template2/Index.ets) -->
 

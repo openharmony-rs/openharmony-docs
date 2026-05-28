@@ -5,7 +5,7 @@
 <!--Owner: @ccllee1-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
 
 
 ## 如何获取设备横竖屏的状态变化通知(API 9)

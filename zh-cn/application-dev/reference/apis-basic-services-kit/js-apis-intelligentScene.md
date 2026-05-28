@@ -3,7 +3,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @chenzhe123-->
-<!--Designer: @wangchun-->
+<!--Designer: @wangchun410-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu -->
 
@@ -51,17 +51,20 @@ isDoNotDisturbEnabled(): Promise\<boolean>
 ```js
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
-let isDoNotDisturbEnabled: boolean | null = null;
-intelligentScene.isDoNotDisturbEnabled().then((isEnabled: boolean) => {
-  isDoNotDisturbEnabled = isEnabled;
-  if (isEnabled) {
+async function isDoNotDisturbEnabled(): Promise<boolean> {
+  let isDoNotDisturbEnabled: boolean = false;
+  try {
+    isDoNotDisturbEnabled = await intelligentScene.isDoNotDisturbEnabled();
+  } catch (err) {
+    console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
+  }
+  if (isDoNotDisturbEnabled) {
     console.info('DoNotDisturb state is open');
   } else {
     console.info('DoNotDisturb state is closed');
   }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
-});
+  return isDoNotDisturbEnabled;
+}
 ```
 
 ## intelligentScene.isNotifyAllowedInDoNotDisturb
@@ -96,15 +99,18 @@ isNotifyAllowedInDoNotDisturb(): Promise\<boolean>
 ```js
 import { BusinessError, intelligentScene } from '@kit.BasicServicesKit';
 
-let isNotifyAllowedInDoNotDisturb: boolean | null = null;
-intelligentScene.isNotifyAllowedInDoNotDisturb().then((isAllowed: boolean) => {
-  isNotifyAllowedInDoNotDisturb = isAllowed;
-  if (isAllowed) {
+async function isNotifyAllowedInDoNotDisturb(): Promise<boolean> {
+  let isNotifyAllowedInDoNotDisturb: boolean = false;
+  try {
+    isNotifyAllowedInDoNotDisturb = await intelligentScene.isNotifyAllowedInDoNotDisturb();
+  } catch (err) {
+    console.error(`Failed to get doNotDisturb state, code: ${err.code}, message: ${err.message}`);
+  }
+  if (isNotifyAllowedInDoNotDisturb) {
     console.info('Allowed to notify in doNotDisturb state');
   } else {
     console.info('Not allowed to notify in doNotDisturb state or doNotDisturb is closed');
   }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to get allow state, Code:${err.code}, message:${err.message}`);
-});
+  return isNotifyAllowedInDoNotDisturb;
+}
 ```

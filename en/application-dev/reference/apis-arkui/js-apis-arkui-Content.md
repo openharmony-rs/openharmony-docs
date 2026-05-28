@@ -1,12 +1,12 @@
 # Content
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**Content** defines the base class for **ComponentContent** and **NodeContent**.
+Defines the base class for **ComponentContent** and **NodeContent**.
 
 > **NOTE**
 >

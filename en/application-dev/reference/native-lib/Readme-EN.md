@@ -27,6 +27,9 @@
     - [Vulkan Module](capi-vulkan.md)
     - [vulkan_ohos.h](capi-vulkan-ohos-h.md)
     - [VkSurfaceCreateInfoOHOS](capi-vulkan-vksurfacecreateinfoohos.md)
+    - [VkNativeBufferOHOS](capi-vulkan-vknativebufferohos.md) 
+    - [VkSwapchainImageCreateInfoOHOS](capi-vulkan-vkswapchainimagecreateinfoohos.md)
+    - [VkPhysicalDevicePresentationPropertiesOHOS](capi-vulkan-vkphysicaldevicepresentationpropertiesohos.md)
     - [VkNativeBufferUsageOHOS](capi-vulkan-vknativebufferusageohos.md)
     - [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md)
     - [VkNativeBufferFormatPropertiesOHOS](capi-vulkan-vknativebufferformatpropertiesohos.md)
@@ -34,7 +37,10 @@
     - [VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md)
     - [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md)
     - [NativeWindow](capi-vulkan-nativewindow.md)
+    - [OHBufferHandle](capi-vulkan-ohbufferhandle.md)
     - [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)
+<!--RP1-->
+<!--RP1End-->    
 - Appendix<!--appendixes-->
   - [Native API Symbols Not Exported](musl-peculiar-symbol.md)
   - [NDK-Related musl libc Interface Usage Restrictions](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
@@ -42,3 +48,4 @@
   - [ICU4C Symbols Exported from Native APIs](icu4c-symbol.md)
   - [OpenGL ES 3.2 Symbols Exported from Native APIs](openglesv3-symbol.md)
   - [OpenGL Symbols Exported from Native APIs](opengl-symbol.md)
+  - [Seccomp-Provided System Call List](seccomp-symbol.md)

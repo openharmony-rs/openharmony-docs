@@ -11,6 +11,10 @@
 
 任务执行超时指要监控的业务代码逻辑执行时长超过业务逻辑预期时间。本文面向开发者介绍HiCollie模块对外提供函数执行时间超长的检测能力。
 
+> **注意：**
+>
+> 当开发者通过DevEco Studio的Debug按钮安装并启动应用时，会自动关闭当前工程的超时检测机制。避免调试过程出现超时检测影响开发者调试。
+
 ## 接口说明
 
 | 接口名 | 描述 |
@@ -79,7 +83,7 @@
    <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   //定义回调函数
+   // 定义回调函数
    void CallBack(void*)
    {
        OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimerNdk CallBack");  // 回调函数中打印日志
@@ -132,7 +136,7 @@
    <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   //添加点击事件，触发TestHiCollieTimerNdk方法。
+   // 添加点击事件，触发TestHiCollieTimerNdk方法。
    Button('TestHiCollieTimerNdk')
      .type(ButtonType.Capsule)
      .margin({

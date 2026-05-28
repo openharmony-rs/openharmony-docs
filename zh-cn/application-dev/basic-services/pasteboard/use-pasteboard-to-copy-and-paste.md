@@ -62,7 +62,7 @@ ArkTS数据类型对应剪贴板类型，详见[ohos.pasteboard](../../reference
 
 ### 接口说明
 
-使用剪贴板getData接口获取到uri类型数据之后，请使用文件管理的[fs.copy](../../reference/apis-core-file-kit/js-apis-file-fs.md#fscopy11)接口获取文件。
+使用剪贴板getData接口获取到uri类型数据之后，请使用文件管理的[fileIo.copy](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocopy11)接口获取文件。
 
 | 名称 | 说明                                                                                                                                        |
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------|
@@ -83,22 +83,32 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
 // ...
   export async function setPlainData(content: string): Promise<void> {
-    let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
-    await systemPasteboard.setData(pasteData);
-  }
-  export async function getPlainData(): Promise<string> {
-    // 从系统剪贴板中读取数据
-    let data = await systemPasteboard.getData();
-    // 从剪贴板数据中获取条目数量
-    let recordCount = data.getRecordCount();
-    // 从剪贴板数据中获取对应条目信息
-    let result = '';
-    for (let i = 0; i < recordCount; i++) {
-      let record = data.getRecord(i).toPlainText();
-      hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
-      result += record;
+    try {
+      let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
+      await systemPasteboard.setData(pasteData);
+      hilog.info(0xFF00, '[Sample_pasteboard]', 'Set data to pasteboard successfully');
+    } catch (error) {
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set data to pasteboard, error:' + error);
     }
-    return result;
+  }
+  export async function getPlainData(type: string): Promise<string> {
+    try {
+      // 从系统剪贴板中读取数据
+      let data = await systemPasteboard.getData();
+      // 从剪贴板数据中获取条目数量
+      let recordCount = data.getRecordCount();
+      // 从剪贴板数据中获取对应条目信息
+      let result = '';
+      for (let i = 0; i < recordCount; i++) {
+        let record = data.getRecord(i).toPlainText();
+        hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
+        result = record;
+      }
+      return result;
+    } catch (error) {
+      hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get data from pasteboard, error:' + error);
+      return '';
+    }
   }
 ```
 

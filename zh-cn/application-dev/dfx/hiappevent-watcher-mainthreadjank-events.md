@@ -25,6 +25,10 @@
 
 详见[主线程超时检测原理](apptask-timeout-guidelines.md#主线程超时检测)。
 
+> **注意：**
+>
+> 当开发者通过DevEco Studio的Debug按钮安装并启动应用时，会自动关闭当前工程的超时检测机制。避免调试过程出现超时检测影响开发者调试。
+
 ## 自定义参数
 
 setEventConfig接口不提供主线程超时结束自动停止采样栈的功能；从API version 22开始，提供configEventPolicy接口，该接口提供主线程超时结束自动停止采样栈的功能。

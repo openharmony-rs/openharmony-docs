@@ -9,7 +9,7 @@
 
 This topic uses AES and SM4 as an example to describe how to generate a symmetric key and obtain the binary data.
 
-The symmetric key (**SymKey**) object created can be used for subsequent encryption and decryption operations, and the binary data can be used for key storage or transfer.
+The symmetric key object may be used for subsequent encryption and decryption operations, and binary data may be used for storage or transmission.
 
 ## Randomly Generating an AES Key
 

@@ -298,12 +298,12 @@ enum OH_Print_JobState
 
 **起始版本：** 24
 
-| 名称                 | 值  | 说明          |
-| -------------------- | -- |-------------- |
-| OH_PRINT_JOB_SUCCEED | 0  | 打印任务成功。 |
-| OH_PRINT_JOB_FAIL    | 1  | 打印任务失败。 |
-| OH_PRINT_JOB_CANCEL  | 2  | 打印任务取消。 |
-| OH_PRINT_JOB_BLOCK   | 3  | 打印任务阻塞。 |
+| 名称                 | 说明          |
+| -------------------- |-------------- |
+| OH_PRINT_JOB_SUCCEED = 0 | 打印任务成功。 |
+| OH_PRINT_JOB_FAIL = 1    | 打印任务失败。 |
+| OH_PRINT_JOB_CANCEL = 2  | 打印任务取消。 |
+| OH_PRINT_JOB_BLOCK = 3   | 打印任务阻塞。 |
 
 ## 函数说明
 
@@ -473,7 +473,7 @@ Print_ErrorCode OH_Print_StartPrinterDiscovery(Print_PrinterDiscoveryCallback ca
 
 | 类型                                                 | 说明                                                         |
 | ---------------------------------------------------- | ------------------------------------------------------------ |
-| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | 返回 [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 需要 ohos.permission.PRINT 权限。<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 无法连接到打印服务能力。<br>         [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) 从 BMS 查询打印扩展列表失败。<br>         [PRINT_ERROR_INVALID_EXTENSION](capi-ohprint-h.md#print_errorcode) 未找到可用的打印扩展。 |
+| [Print_ErrorCode](capi-ohprint-h.md#print_errorcode) | 返回 [PRINT_ERROR_NONE](capi-ohprint-h.md#print_errorcode) 表示执行成功。<br>         [PRINT_ERROR_NO_PERMISSION](capi-ohprint-h.md#print_errorcode) 需要 ohos.permission.PRINT 权限。<br>         [PRINT_ERROR_RPC_FAILURE](capi-ohprint-h.md#print_errorcode) 无法连接到打印服务。<br>         [PRINT_ERROR_SERVER_FAILURE](capi-ohprint-h.md#print_errorcode) 从 BMS 查询打印扩展列表失败。<br>         [PRINT_ERROR_INVALID_EXTENSION](capi-ohprint-h.md#print_errorcode) 未找到可用的打印扩展。 |
 
 ### OH_Print_StopPrinterDiscovery()
 
