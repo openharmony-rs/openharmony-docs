@@ -378,7 +378,7 @@ on(type: 'enabledAccessibilityExtensionListChange', callback: Callback&lt;void&g
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onEnabledAccessibilityExtensionListChange](#onenabledaccessibilityextensionlistchange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[config.onEnabledAccessibilityExtensionListChange](#configonenabledaccessibilityextensionlistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -423,7 +423,7 @@ onEnabledAccessibilityExtensionListChange(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('enabledAccessibilityExtensionListChange')](#onenabledaccessibilityextensionlistchange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[config.on('enabledAccessibilityExtensionListChange')](#configonenabledaccessibilityextensionlistchange)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -480,7 +480,7 @@ off(type: 'enabledAccessibilityExtensionListChange', callback?: Callback&lt;void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offEnabledAccessibilityExtensionListChange](#offenabledaccessibilityextensionlistchange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[config.offEnabledAccessibilityExtensionListChange](#configoffenabledaccessibilityextensionlistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -525,7 +525,7 @@ offEnabledAccessibilityExtensionListChange(callback?: Callback&lt;void&gt;): voi
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('enabledAccessibilityExtensionListChange')](#offenabledaccessibilityextensionlistchange)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[config.off('enabledAccessibilityExtensionListChange')](#configoffenabledaccessibilityextensionlistchange)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -586,7 +586,7 @@ on(type: 'installedAccessibilityListChange', callback: Callback&lt;void&gt;): vo
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onInstalledAccessibilityListChange](#oninstalledaccessibilitylistchange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[config.onInstalledAccessibilityListChange](#configoninstalledaccessibilitylistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -631,7 +631,7 @@ onInstalledAccessibilityListChange(callback: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('installedAccessibilityListChange')](#oninstalledaccessibilitylistchange12)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[config.on('installedAccessibilityListChange')](#configoninstalledaccessibilitylistchange12)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -688,7 +688,7 @@ off(type: 'installedAccessibilityListChange', callback?: Callback&lt;void&gt;): 
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offInstalledAccessibilityListChange](#offinstalledaccessibilitylistchange23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[config.offInstalledAccessibilityListChange](#configoffinstalledaccessibilitylistchange23)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -733,7 +733,7 @@ offInstalledAccessibilityListChange(callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('installedAccessibilityListChange')](#offinstalledaccessibilitylistchange12)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[config.off('installedAccessibilityListChange')](#configoffinstalledaccessibilitylistchange12)。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -953,7 +953,7 @@ onSeniorModeStateChangeForApp(callback: Callback&lt;AppSeniorModeInfo&gt;): void
 > **说明：**
 >
 > - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
-> - 调用此方法后，务必在对象生命周期结束前使用[offSeniorModeStateChangeForApp](#offseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
+> - 调用此方法后，务必在对象生命周期结束前使用[config.offSeniorModeStateChangeForApp](#configoffseniormodestatechangeforapp)取消监听，否则可能会导致崩溃。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1027,7 +1027,7 @@ offSeniorModeStateChangeForApp(callback?: Callback\<AppSeniorModeInfo>): void
 
 | 参数名   | 类型                    | 必填 | 说明                                                         |
 | -------- | ----------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[onSeniorModeStateChangeForApp](#onseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
+| callback | Callback&lt;[AppSeniorModeInfo](#appseniormodeinfo)&gt; | 是   | 回调函数。返回被修改的应用“长辈模式”信息。需与[config.onSeniorModeStateChangeForApp](#configonseniormodestatechangeforapp)的callback一致。缺省时，表示注销所有已注册事件。 |
 
 **错误码：**
 
@@ -1378,7 +1378,7 @@ config.highContrastText.off((data: boolean) => {
 
 ## ConnectCallback<sup>23+</sup>
 
-通过[enableAbilityWithCallback](#enableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
+通过[config.enableAbilityWithCallback](#configenableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
 
 **系统接口**：此接口为系统接口。
 
