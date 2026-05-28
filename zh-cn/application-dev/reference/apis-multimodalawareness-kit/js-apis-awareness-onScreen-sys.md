@@ -455,7 +455,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | 否   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个感知信息项。|
-f
+
 **错误码**：
 
 以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
