@@ -58,8 +58,9 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 1. 导入模块。
 
+   ArkTs-Dyn示例：
    <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
-   
+
    ``` TypeScript
    // 导入usbManager模块
    import { serialManager } from '@kit.BasicServicesKit';
@@ -67,10 +68,40 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    import { buffer } from '@kit.ArkTS';
    import { JSON } from '@kit.ArkTS';
    ```
+   
+   ArkTs-Sta示例：
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+
+   ``` TypeScript
+   // 导入usbManager模块。
+   import { Entry, Text, Column, Component, Button, ClickEvent, Scroll, Row, Flex, TextArea, ButtonType, FlexDirection, ItemAlign, FlexAlign } from '@ohos.arkui.component'
+   import { State } from '@ohos.arkui.stateManagement'
+   import hilog from '@ohos.hilog'
+   import serialManager from '@ohos.usbManager.serial';
+   import { BusinessError } from '@kit.BasicServicesKit'
+   import { buffer } from '@kit.ArkTS';
+   ```
 
 2. 获取设备列表。
 
+   ArkTs-Dyn示例：
    <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取连接主设备的USB设备列表
+   let portList: serialManager.SerialPort[] = serialManager.getPortList();
+   console.info(`usbSerial portList: ${portList}`);
+   this.logInfo_ += '\n[INFO] usbSerial portList: ' + JSON.stringify(portList);
+   if (portList === undefined || portList.length === 0) {
+     console.error('usbSerial portList is empty');
+     this.logInfo_ += '\n[ERROR] usbSerial portList is empty';
+     return;
+   }
+   this.portList_ = portList;
+   ```
+
+   ArkTs-Sta示例：
+   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 获取连接主设备的USB设备列表
@@ -88,6 +119,7 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
 
 3. 获取设备操作权限。
 
+   ArkTs-Dyn示例：
    <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -113,8 +145,35 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    this.portId_ = portId;
    ```
 
+   ArkTs-Sta示例：
+   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.portList_ === undefined || this.portList_.length === 0) {
+     console.error('usbSerial portList is empty');
+     this.logInfo_ += '\n[ERROR] usbSerial portList is empty';
+     return;
+   }
+   let portList: serialManager.SerialPort[] = this.portList_;
+   let portId: int = portList[0].portId;
+   if (!serialManager.hasSerialRight(portId)) {
+     serialManager.requestSerialRight(portId).then((result: boolean) => {
+       console.info('serial device request right result: ' + result);
+       this.logInfo_ += '\n[INFO] serial device request right result: ' + JSON.stringify(result);
+     }).catch((error: Error) => {
+       console.error(`usb device request right failed : ${error}`);
+       this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     });
+   } else {
+     console.info('serial device already request right');
+     this.logInfo_ += '\n[INFO] serial device already request right';
+   }
+   this.portId_ = portId;
+   ```
+
 4. 根据串口打开设备。
 
+   ArkTs-Dyn示例：
    <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -129,8 +188,24 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    }
    ```
 
+   ArkTs-Sta示例：
+   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let portId: int = this.portId_;
+   try {
+     serialManager.open(portId)
+     console.info(`open usbSerial success, portId: ${portId}`);
+     this.logInfo_ += '\n[INFO] open usbSerial success, portId: ' + JSON.stringify(portId);
+   } catch (error) {
+     console.error(`open usbSerial error： ${error}`);
+     this.logInfo_ += '\n[ERROR] open usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
+
 5. 获取和修改串口配置。
 
+   ArkTs-Dyn示例：
    <!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -151,10 +226,54 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    }
    ```
 
+   ArkTs-Sta示例：
+   <!-- @[getSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let portId: int = this.portId_;
+   // 获取串口配置
+   try {
+     let attribute: serialManager.SerialAttribute = serialManager.getAttribute(portId);
+     if (attribute === undefined) {
+       console.error('getAttribute usbSerial error, attribute is undefined');
+       this.logInfo_ += '\n[ERROR] getAttribute usbSerial error, attribute is undefined';
+     } else {
+       console.info(`getAttribute usbSerial success, attribute: ${attribute}`);
+       this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
+     }
+   } catch (error) {
+     console.error(`getAttribute usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
+
+   ArkTs-Dyn示例：
    <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let portId: number = this.portId_;
+   // 设置串口配置
+   try {
+     let attribute: serialManager.SerialAttribute = {
+       baudRate: serialManager.BaudRates.BAUDRATE_9600,
+       dataBits: serialManager.DataBits.DATABIT_8,
+       parity: serialManager.Parity.PARITY_NONE,
+       stopBits: serialManager.StopBits.STOPBIT_1
+     }
+     serialManager.setAttribute(portId, attribute);
+     console.info(`setAttribute usbSerial success, attribute: ${attribute}`);
+     this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
+   } catch (error) {
+     console.error(`setAttribute usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
+
+   ArkTs-Sta示例：
+   <!-- @[setSerialConfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let portId: int = this.portId_;
    // 设置串口配置
    try {
      let attribute: serialManager.SerialAttribute = {
