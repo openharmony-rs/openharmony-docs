@@ -210,11 +210,13 @@ TouchHotAreas: [ 0, 0, 720, 1280 ]
 >
 > hidumper命令需要在设备或模拟器上执行，开发者可以通过hdc shell连接设备后执行。hidumper输出的是实时窗口状态，可能随窗口操作而变化，建议在问题发生时立即执行查询以获取准确信息。
 
-## 超时警告WINDOW_FROZEN_DETECTION的定位指导
+## WINDOW_FROZEN_DETECTION异常检测
 
 **可能原因**
 
-WINDOW_FROZEN_DETECTION 是一个窗口伪冻屏检测事件。当未成功设置UIContent、布局异常等情形时会触发此事件，可为排查伪冻屏问题提供线索，但事件触发并不等同于伪冻屏已实际发生。常见的异常类型包括：SetUIContent timeout（窗口内容加载超时）、RectCheck err（窗口尺寸异常）等。
+WINDOW_FROZEN_DETECTION是一个窗口伪冻屏检测事件。搭载openharmony 7.0.0及以上版本的设备支持此检测事件。
+
+当未成功设置UIContent、布局异常等情形时会触发此事件，可为排查伪冻屏问题提供线索，但事件触发并不等同于伪冻屏已实际发生。常见的异常类型包括：SetUIContent timeout（窗口内容加载超时）、RectCheck err（窗口尺寸异常）等。
 
 ### 定位窗口内容加载超时问题
 
@@ -301,20 +303,18 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 
 字段含义：
 
-| 字段 | 含义 | 说明 |
-|------|------|------|
-| `persistentId` | 窗口持久化ID | 窗口的唯一标识，用于定位具体窗口 |
-| `windowName` | 窗口名称 | 应用设置的窗口名称 |
-| `windowType` | 窗口类型 | 窗口类型值（如应用主窗口、子窗口等） |
-| `windowState` | 窗口状态 | 窗口当前状态（显示、隐藏等） |
-| `curWidth` | 当前宽度（vp） | 窗口当前实际宽度，单位为vp |
-| `curHeight` | 当前高度（vp） | 窗口当前实际高度，单位为vp |
-| `minWidth` | 最小宽度限制（vp） | 系统规定的最小宽度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小宽度。 |
-| `minHeight` | 最小高度限制（vp） | 系统规定的最小高度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小高度。 |
-| `screenWidth` | 屏幕宽度（px） | 当前屏幕的宽度，单位为px |
-| `screenHeight` | 屏幕高度（px） | 当前屏幕的高度，单位为px |
-| `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits9)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最大尺寸阈值。 |
-| `sessionRect` | 窗口矩形区域（px） | 窗口的位置和尺寸，单位为px，坐标以屏幕左顶点为原点 |
+| 字段 | 含义 | 说明                                                                                                                                                                                                                                     |
+|------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `persistentId` | 窗口持久化ID | 窗口的唯一标识，用于定位具体窗口                                                                                                                                                                                                                       |
+| `windowName` | 窗口名称 | 应用设置的窗口名称                                                                                                                                                                                                                              |
+| `windowType` | 窗口类型 | 窗口类型值（如应用主窗口、子窗口等）                                                                                                                                                                                                                     |
+| `windowState` | 窗口状态 | 窗口当前状态（显示、隐藏等）                                                                                                                                                                                                                         |
+| `curWidth` | 当前宽度（vp） | 窗口当前实际宽度，单位为vp                                                                                                                                                                                                                         |
+| `curHeight` | 当前高度（vp） | 窗口当前实际高度，单位为vp                                                                                                                                                                                                                         |
+| `minWidth` | 最小宽度限制（vp） | 系统规定的最小宽度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小宽度。     |
+| `minHeight` | 最小高度限制（vp） | 系统规定的最小高度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小高度。     |
+| `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最大尺寸阈值。 |
+| `sessionRect` | 窗口矩形区域（px） | 窗口的位置和尺寸，单位为px，坐标以屏幕左顶点为原点                                                                                                                                                                                                             |
 
 **检测逻辑**
 
