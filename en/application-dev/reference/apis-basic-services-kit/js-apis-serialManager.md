@@ -938,7 +938,7 @@ Represents the configuration parameters of a serial port.
 | baudRate | [BaudRates](#baudrates) |   No  | No | Baud rate of the serial port, in bit/s. |
 | dataBits | [DataBits](#databits)   |   No  | Yes | Data bits of the serial port. The default value is **8**. |
 | parity   | [Parity](#parity)       |   No  | Yes | Parity check. The default value is **None**, indicating that no parity check is performed.|
-| stopBits | [StopBits](#stopbits)   |   No  | Yes | Stop bits of the serial port, in bytes. The default value is **1**. |
+| stopBits | [StopBits](#stopbits)   |   No  | Yes | Stop bits of the serial port. The default value is **1**. |
 
 ## SerialPort
 
@@ -992,7 +992,7 @@ Enumerates the baud rates, in bit/s.
 
 ## DataBits
 
-Enumerates the number of data bits, in bytes.
+Enumerates the number of data bits.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -1019,7 +1019,7 @@ Enumerates the parity check modes.
 
 ## StopBits
 
-Enumerates of the number of stop bits, in bytes.
+Enumerates of the number of stop bits.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
