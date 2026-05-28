@@ -120,6 +120,27 @@
    每个能力方法的第一项任务是从`argv`中按位置获取参数，对照SKILL.md的`args` Schema完成前置校验。
 
    <!-- @[music_skill_verify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   
+   ``` TypeScript
+   // 例1：playMusicByName 的两个可选参数，至少一个非空
+   const songName: string = argv.length > 0 ? argv[0].trim() : '';
+   const singer: string = argv.length > 1 ? argv[1].trim() : '';
+   if (songName.length === 0 && singer.length === 0) {
+     // 走 ERR_INVALID_PARAMS 分支回包（见 3.5），不再进入业务
+         // ...
+     return;
+   }
+       // ...
+   
+   // 例2：controlPlayback 的枚举值参数，需用白名单二次校验
+   const action: string = argv.length > 0 ? argv[0].trim() : '';
+   const validActions: string[] = ['pause', 'resume', 'next', 'previous'];
+   if (!validActions.includes(action)) {
+     // 走 ERR_INVALID_PARAMS 分支回包
+         // ...
+     return;
+   }
+   ```
 
    3.4 调用应用内业务实现。
 
