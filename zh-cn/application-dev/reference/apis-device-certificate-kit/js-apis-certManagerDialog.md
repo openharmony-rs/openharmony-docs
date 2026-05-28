@@ -7,7 +7,7 @@
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
 
-证书管理对话框主要提供拉起证书管理界面的能力，用户在拉起的证书管理对话框可对证书进行管理（安装，存储，使用，销毁）。
+证书管理对话框主要提供拉起证书管理界面的能力，用户在拉起的证书管理对话框可对证书进行管理（安装、使用、销毁）。
 
 > **说明：**
 >
@@ -61,7 +61,8 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
 | NOT_SPECIFIED<sup>18+</sup>  | 0      | 不指定使用范围。 |
-| CURRENT_USER | 1      | 当前用户。 |
+| CURRENT_USER | 1      | 当前用户。表示证书仅对当前登录用户可用。 |
+| GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。表示证书对所有用户可见。 |
 | GLOBAL_USER<sup>18+</sup> | 2      | 公共目录。 |
 
 
@@ -77,7 +78,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 | ---------- | ------ | --------- |
 | ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。 |
 | ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | 表示调用接口时用户取消操作。 |
-| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时安装证书失败。 |
+| ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时操作失败。 |
 | ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示调用接口时设备类型不支持。 |
 | ERROR_NOT_COMPLY_SECURITY_POLICY<sup>18+</sup>  | 29700005      | 表示调用接口时不符合设备安全策略。 |
 | ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup>  | 29700006      | 表示调用接口时参数校验失败。<br>例如：参数格式不正确、参数范围无效 |
@@ -118,7 +119,7 @@ USB证书凭据授权请求信息。
 
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
-| keyUri | string   | 否   | 否   | 表示USB证书凭据的唯一标识符，长度限制256字节以内。 |
+| keyUri | string   | 否   | 否   | 表示USB证书凭据的唯一标识符，长度限制256字节以内。该参数值可通过调用[openAuthorizeDialog](#certificatemanagerdialogopenauthorizedialog22)接口返回的CertReference中获取。 |
 
 ## AuthorizeRequest<sup>22+</sup>
 
@@ -131,16 +132,16 @@ USB证书凭据授权请求信息。
 | 名称              | 类型    | 只读 | 可选 | 说明                         |
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certTypes | Array<[CertificateType](#certificatetype14)>   | 否   | 否   | 表示证书类型的列表。 |
-| certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | 否   | 是   | 表示证书用途。<br>若certTypes参数中存在CertificateType.CREDENTIAL_UKEY类型，则certPurpose参数生效。 |
-| keyAlgIDs |  Array\<string>  | 否   | 是   | 表示证书公钥的算法类型，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。支持的取值为RSA、EC或ECDSA。<br>若 keyAlgIDs包含不支持的算法，则该筛选器无效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
+| certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | 否   | 是   | 表示证书用途。<br>若certTypes参数中存在CertificateType.CREDENTIAL_UKEY类型，则certPurpose参数生效。若不传此参数或certTypes中不包含CREDENTIAL_UKEY，则不使用证书用途筛选。 |
+| keyAlgIDs |  Array\<string>  | 否   | 是   | 表示证书公钥的算法类型，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。支持的取值为RSA、EC或ECDSA。若不传此参数，则不按算法类型筛选证书。<br>若 keyAlgIDs包含不支持的算法，则该筛选器无效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
 | issuers |  Array\<Uint8Array>  | 否   | 是   | 表示以DER格式编码的证书颁发者，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。<br>如果issuers数组中存在长度为0的元素，则issuers筛选器不会生效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
-| uri | string  | 否   | 是   | 表示应用请求使用凭据用于验证服务器的地址，此uri显示在凭据授权对话框中。<br>**起始版本：** 26.0.0 |
+| uri | string  | 否   | 是   | 表示应用请求使用凭据时用于验证服务器的地址，此uri显示在凭据授权对话框中。<br>**起始版本：** 26.0.0 |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
 openCertificateManagerDialog(context: common.Context, pageType: CertificateDialogPageType): Promise\<void>
 
-表示拉起证书管理对话框，显示相应的页面。使用Promise异步回调。
+表示拉起证书管理对话框，显示相应的页面。调用成功后，用户可以在弹出的对话框中对证书进行安装、使用、销毁等管理操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -197,7 +198,7 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理安装证书向导，显示相应的页面。调用成功后，证书将被安装到指定范围，并返回证书的唯一标识符uri，应用可通过该uri使用证书进行后续操作。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -212,8 +213,8 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
-| certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型，目前支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。 |
-| certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前支持CURRENT_USER、NOT_SPECIFIED。 |
+| certType | [CertificateType](#certificatetype14)                   | 是   | 表示安装证书类型，目前支持CA_CERT、CREDENTIAL_USER、CREDENTIAL_SYSTEM。其中CA_CERT仅在PC/2in1设备上支持，其他设备会返回29700004错误码。 |
+| certScope | [CertificateScope](#certificatescope14)                   | 是   | 表示安装证书的使用范围，目前支持CURRENT_USER、NOT_SPECIFIED，不支持GLOBAL_USER。 |
 | cert | Uint8Array                  | 是   | 表示安装证书数据。 |
 
 **返回值**：
@@ -285,7 +286,7 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | 是   | 表示应用的上下文信息。 |
-| certType | [CertificateType](#certificatetype14)                   | 是   | 表示删除证书类型。 |
+| certType | [CertificateType](#certificatetype14)                   | 是   | 表示删除证书类型，目前仅支持CA_CERT。 |
 | certUri | string                  | 是   | 表示待删除证书的唯一标识符，最大长度为256字节。 |
 
 **返回值**：
@@ -337,7 +338,7 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-表示拉起证书管理对话框显示证书的详情。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
+表示拉起证书管理对话框显示证书的详情。调用成功后，将显示证书的基本信息、有效期、颁发者、使用者等详细信息，用户可查看证书内容。使用Promise异步回调。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -405,7 +406,7 @@ try {
 
 openAuthorizeDialog(context: common.Context): Promise\<string>
 
-打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。使用Promise异步回调。
+打开证书管理对话框的授权页面。在弹出的页面中，用户可以为应用授权证书。调用成功后，应用获得证书的使用权限，可通过返回的授权证书uri进行后续的证书操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -462,7 +463,7 @@ try {
 
 openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest): Promise\<CertReference>
 
-打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户为应用程序授权证书，可授权的证书类型包括应用私有凭据、用户公共凭据和USB凭据。使用Promise异步回调。
+打开证书授权对话框。在弹出的页面中，用户为应用程序授权证书，可授权的证书类型包括应用私有凭据、用户公共凭据和USB凭据。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -496,7 +497,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error; 4. Call other service failed. Please try again.                 |
 | 29700002 | The user cancels the authorization.                                                                                                             |
 | 29700006 | Indicates that the input parameters validation failed. for example, the parameter format is incorrect or the value range is invalid.            |
-| 29700007 | No available certificate for authorization            |
+| 29700007 | No available certificate for authorization. Possible causes: 1. No certificate matches the filter criteria; 2. All certificates have been deleted.            |
 
 **示例**：
 ```ts
@@ -531,7 +532,7 @@ try {
 
 openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRequest): Promise\<void>
 
-打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户可以输入PIN码授权USB证书凭据。使用Promise异步回调。
+打开USB凭据PIN码认证对话框的授权页面。在弹出的页面中，用户可以输入PIN码授权USB证书凭据。调用成功后，USB证书凭据将被解锁，应用可使用该凭据进行签名、加密等操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
