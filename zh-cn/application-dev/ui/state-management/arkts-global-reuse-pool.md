@@ -1130,12 +1130,13 @@ struct Index {
       console.info(`getReusableInfo(${compName}): undefined`);
     } else if (Array.isArray(ret)) {
       console.info(`getReusableInfo(${compName}): Array[${(ret as IReusableInfo[]).length}]`);
-      (ret as IReusableInfo[]).forEach((info: IReusableInfo, i: number) => {
+      (ret as IReusableInfo[]).forEach((info: IReusableInfo, i: int) => {
         console.info(`  [${i}] reuseId=${(info as IReusableInfo).reuseId}, `
           + `count=${(info as IReusableInfo).count}, maxCount=${(info as IReusableInfo).maxCount}`);
       });
     } else {
-      console.info(`getReusableInfo(${compName}): reuseId=${ret.reuseId}, count=${ret.count}, maxCount=${ret.maxCount}`);
+      console.info(`getReusableInfo(${compName}): reuseId=${(ret as IReusableInfo).reuseId}, `
+        + `count=${(ret as IReusableInfo).count}, maxCount=${(ret as IReusableInfo).maxCount}`);
     }
   }
 
