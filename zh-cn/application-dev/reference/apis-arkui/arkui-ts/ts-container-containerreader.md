@@ -288,7 +288,7 @@ struct Index {
           Row({ space: 2 }) {
             if (this.widthBp === WidthBreakpoint.WIDTH_XS || this.widthBp === WidthBreakpoint.WIDTH_SM) {
               Column() {
-                Text(`第 1 个 Column`+this.widthBp)
+                Text(`第 1 个 Column`)
                   .fontColor(Color.White)
               }
               .width('100%')
