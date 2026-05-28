@@ -285,6 +285,68 @@ display，position，z-index，visibility，opacity, background-color，backgrou
    开发者则需要调用[onNativeEmbedLifecycleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11)来监听同层渲染标签的生命周期变化。
 
    <!-- @[native_embed_lifecycle_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   
+   ``` TypeScript
+   // 获取embed标签的生命周期变化数据。
+   .onNativeEmbedLifecycleChange((embed) => {
+     console.info('NativeEmbed surfaceId' + embed.surfaceId);
+     // 如果使用embed.info.id作为映射nodeController的key，请在H5页面显式指定id。
+     const componentId = embed.info?.id?.toString() as string;
+     if (embed.status === NativeEmbedStatus.CREATE) {
+       console.info('NativeEmbed create' + JSON.stringify(embed.info));
+       // 创建节点控制器、设置参数。
+       let nodeController = new MyNodeController();
+       // embed.info.width和embed.info.height单位是px格式，需要转换成ets侧的默认单位vp。
+       nodeController.setRenderOption({surfaceId : embed.surfaceId as string,
+         type : embed.info?.type as string,
+         renderType : NodeRenderType.RENDER_TYPE_TEXTURE,
+         embedId : embed.embedId as string,
+         width : this.uiContext.px2vp(embed.info?.width),
+         height : this.uiContext.px2vp(embed.info?.height)});
+       this.edges = {
+         left: `${embed.info?.position?.x as number}px`,
+         top: `${embed.info?.position?.y as number}px`
+       };
+       nodeController.setDestroy(false);
+       // 根据Web传入的embed的id属性作为key，将nodeController存入Map。
+       this.nodeControllerMap.set(componentId, nodeController);
+       this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
+       this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
+       this.positionMap.set(componentId, this.edges);
+       // 将Web传入的embed的id属性存入@State状态数组变量中，用于动态创建nodeContainer节点容器,需要将push动作放在set之后。
+       this.componentIdArr.push(componentId);
+     } else if (embed.status === NativeEmbedStatus.UPDATE) {
+       let nodeController = this.nodeControllerMap.get(componentId);
+       console.info('NativeEmbed update' + JSON.stringify(embed));
+       this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`};
+       this.positionMap.set(componentId, this.edges);
+       this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
+       this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
+       interface UpdateNodeParams {
+         textOne: string;
+         width: number;
+         height: number;
+       }
+       const updateParams: UpdateNodeParams = {
+         textOne: 'update',
+         width: this.uiContext.px2vp(embed.info?.width),
+         height: this.uiContext.px2vp(embed.info?.height)
+       }
+       nodeController?.updateNode(updateParams);
+     } else if (embed.status === NativeEmbedStatus.DESTROY) {
+       console.info('NativeEmbed destroy' + JSON.stringify(embed));
+       let nodeController = this.nodeControllerMap.get(componentId);
+       nodeController?.setDestroy(true);
+       this.nodeControllerMap.delete(componentId);
+       this.positionMap.delete(componentId);
+       this.widthMap.delete(componentId);
+       this.heightMap.delete(componentId);
+       this.componentIdArr = this.componentIdArr.filter((value: string) => value != componentId);
+     } else {
+       console.info('NativeEmbed status' + embed.status);
+     }
+   })
+   ```
 
 6. 同层渲染手势事件。
 
