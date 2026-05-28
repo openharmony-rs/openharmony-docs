@@ -94,7 +94,7 @@
    - testJSON1方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
    - testJSON2方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
 
-     <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) -->
+     <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) --> 
      
      ``` TypeScript
      import { TJSON } from '@hadss/turbo-trans-json';
@@ -132,18 +132,15 @@
        let layoutS = layoutSendable as LayoutS;
        return layoutS;
      }
-     
-     export function testJSON() {
-       testJSON1();
-       testJSON2();
-     }
      ```
 
 4. 将普通对象转换为Sendable对象（toSendable）。
 
-   当`generateSendable: true`生效后，构建产物中会生成`toSendable()`，将普通对象转换为Sendable对象。其关键点在于会对普通对象做必要的容器转换，例如把`number[]`转换为`collections.Array<number>`。以下代码为编译时工具自动生成的，文件位于entry/src/generated目录下。
+   当`generateSendable: true`生效后，构建产物中会生成`toSendable()`，将普通对象转换为Sendable对象。其关键点在于会对普通对象做必要的容器转换，例如把`number[]`转换为`collections.Array<number>`。以下代码为编译时工具自动生成的，文件位于entry/src/generated/ets目录下。
 
    ``` TypeScript
+   import { collections } from '@kit.ArkTS';
+
    toSendable(): SendableLayout {
      const sendable = new SendableLayout();
    
@@ -155,7 +152,7 @@
    }
    ```
 
-   同时，生成的Sendable类型通常会提供`toOrigin()`，用于在需要继续按普通对象处理、复用原有逻辑或重新序列化时，将Sendable对象还原为普通对象。以下代码为编译时工具自动生成的，文件位于entry/src/generated目录下。
+   同时，生成的Sendable类型通常会提供`toOrigin()`，用于在需要继续按普通对象处理、复用原有逻辑或重新序列化时，将Sendable对象还原为普通对象。以下代码为编译时工具自动生成的，文件位于entry/src/generated/ets目录下。
 
    ``` TypeScript
    @Sendable
@@ -206,7 +203,7 @@
      system: appTasks, /* Built-in plugin of Hvigor. It cannot be modified. */
      plugins: [
        turboTransProtobufPlugin({
-         saveDir: 'src/main/ets/protobuf',
+         saveDir: 'src/main/ets/protobuf', // 保存生成代码的目录
          ignoreModuleNames: ['TurboTransCore', 'PerformanceBaseline', 'TurboTransProtobufCommon'], // 忽略的模块
          sendable: true, // 是否开启sendable
          debug: false, // 是否开启debug
@@ -309,8 +306,41 @@
 
 使用[UIUtils.makeObserved()](../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)方法可以将Sendable对象转换为可观察对象。
 
+- 定义并发任务。
 - 使用`taskpool.execute()`获取并发任务返回的Sendable对象，再通过`UIUtils.makeObserved()`转为可观察对象。
 - 当可观察对象的属性发生变化时，绑定的UI组件会自动刷新显示。
+
+### 定义并发任务
+
+定义observeJSON1与observeJSON2并发任务
+
+<!-- @[transferableObject_observeJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/concurrentFunc.ets) -->
+
+``` TypeScript
+import { LayoutS } from '../turbotrans_JSON/layout';
+import { testJSON1, testJSON2 } from '../turbotrans_JSON/test1';
+
+@Concurrent
+export function observeJSON1(): LayoutS {
+  return testJSON1();
+}
+
+@Concurrent
+export function observeJSON2(): LayoutS {
+  return testJSON2();
+}
+```
+
+定义observeProtobuf并发任务
+
+``` TypeScript
+import { testProtobuf } from '../turbotrans_protobuf/test1'
+
+@Concurrent
+export function observeProtobuf() {
+  return testProtobuf();
+}
+```
 
 ### 通过taskpool执行异步任务并将Sendable对象转换为可观察对象
 
@@ -324,6 +354,16 @@
 runTests() {
   taskpool.execute(observeJSON1).then((res) => {
     this.layout = UIUtils.makeObserved(res as LayoutS);
+  })
+}
+```
+
+执行observeProtobuf并发任务返回Sendable对象工程示例如下：
+
+``` TypeScript
+runTestsPb() {
+  taskpool.execute(observeProtobuf).then((res: test_pb) => {
+    this.pb = UIUtils.makeObserved(res)
   })
 }
 ```
@@ -415,7 +455,7 @@ struct Index {
         .height(50)
         .margin({ top: 20, bottom: 20 })
         .onClick(() => {
-          this.runTests();
+          this.runTestsPb();
         })
         .id('button')
 

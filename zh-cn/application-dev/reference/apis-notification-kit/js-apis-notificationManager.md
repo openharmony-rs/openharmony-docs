@@ -193,7 +193,6 @@ notificationManager.publish(notificationRequest).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // 通知Request对象
 let notificationRequest: notificationManager.NotificationRequest = {
@@ -209,7 +208,7 @@ let notificationRequest: notificationManager.NotificationRequest = {
 };
 notificationManager.publish(notificationRequest).then(() => {
   console.info(`Succeeded in publishing notification.`);
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
 });
 
@@ -2289,8 +2288,6 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 查询设备是否支持跨设备协同通知。使用callback异步回调。
 
-**设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **ArkTS-Dyn起始版本**：9
@@ -2352,8 +2349,6 @@ notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 isDistributedEnabled(): Promise\<boolean>
 
 查询设备是否支持跨设备协同通知。使用Promise异步回调。
-
-**设备行为差异**：该接口在Wearable/TV中回调返回恒为false，在其他设备类型中回调正常。
 
 **系统能力**：SystemCapability.Notification.Notification
 

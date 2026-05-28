@@ -53,7 +53,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. File creation failed. |
+| 32100001 | Internal handling failed. |
 | 32100002 | Encode process fail. Possible causes: 1. Image processing error; 2. Channel coding error. |
 
 **ArkTS-Dyn示例**:
@@ -120,7 +120,7 @@ decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. File read failed. |
+| 32100001 | Internal handling failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
 **ArkTS-Dyn示例**:
@@ -130,9 +130,9 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let encodeImage: image.PixelMap | undefined = undefined;
-let captrueMetadata: string = "";
+let captureMetadata: string = "";
 metadataBinding.decodeImage(encodeImage).then((metadata: string) =>{
-    captrueMetadata = metadata;
+    captureMetadata = metadata;
 }).catch((error:BusinessError)=>{
     console.error("decode image error" + error);
 });
@@ -144,11 +144,11 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let encodeImage: image.PixelMap | undefined = undefined;
-let captrueMetadata: string = "";
+let captureMetadata: string = "";
 if (encodeImage) {
     metadataBinding.decodeImage(encodeImage)
         .then((metadata: string) => {
-            captrueMetadata = metadata;
+            captureMetadata = metadata;
         })
         .catch((error: Error) => {
             const err = error as BusinessError;
@@ -156,7 +156,7 @@ if (encodeImage) {
         });
 } else {
     console.warn("encodeImage is undefined, skip decodeImage");
-    captrueMetadata = "";
+    captureMetadata = "";
 }
 ```
 
@@ -192,7 +192,7 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |   202    | Permission check failed. A non-system application uses the system API. |
-| 32100001 | Internal handling failed. Obtain metadata failed. |
+| 32100001 | Internal handling failed. |
 
 **ArkTS-Dyn示例**：
 ```ts

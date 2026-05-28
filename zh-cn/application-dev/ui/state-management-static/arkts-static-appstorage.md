@@ -252,23 +252,31 @@ struct Index {
   build() {
     Column() {
       Button(`From AppStorage ${this.storageLink}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.storageLink += 1;
         })
 
       Button(`From LocalStorage ${this.localStorageLink}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.localStorageLink += 1;
         })
 
       // class属性监听需要使用@Observed装饰才能观察变化
       Button(`From AppStorage ${this.storageLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.storageLinkObject.code += 1;
         })
 
       // class属性监听需要使用@Observed装饰才能观察变化
       Button(`From LocalStorage ${this.localStorageLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.localStorageLinkObject.code += 1;
         })
@@ -278,6 +286,8 @@ struct Index {
   }
 }
 ```
+
+![appstorage-withlocalstorage](../figures/appstorage_1.gif)
 
 ### \@StoragePropRef获得AppStorage中数据源的引用
 
@@ -319,7 +329,11 @@ struct Index {
   build() {
     Column() {
       Text(`data property code is ${this.data.code}`)
+        .fontSize(20)
+        .margin(10)
       Button('modify data property code')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.data.code += 10;
           // 如果只点击该Button，由于data是AppStorage中数据源的引用，则AppStorage中数据源的属性也会修改。
@@ -327,15 +341,20 @@ struct Index {
         })
 
       Button('replace data')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.data = new Data(200);
           // 如果点击该Button，本地的data变量会引用新的对象，所以不会影响AppStorage中的数据源。
           console.info(`PropA in AppStorage ${AppStorage.get<Data>('PropA')!.code}`);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![appstorage-storageref](../figures/appstorage_2.gif)
 
 ### AppStorage支持联合类型
 

@@ -1,7 +1,7 @@
 # 通过自绘制接入无障碍
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -473,13 +473,13 @@
    }
    ```
 
-4. provider通过回调函数[OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)或者[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)对接成功后，可开启无障碍功能。
+provider通过回调函数[OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)或者[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)对接成功后，可开启无障碍功能。
 
 ## 基于CustomNode的自绘制接入方式
 
 > **说明：**
 >
-> - 基于CustomNode的自定义绘制容器组件，仅支持类型为[ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)且无其他子节点的[native组件](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)。绘制容器组件的宽和高不能为0，避免被无障碍辅助应用忽略或错误处理子节点树。
+> - 基于CustomNode的自定义绘制容器组件，仅支持类型为[ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)且无其他子节点的[ArkUI_Node](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)。绘制容器组件的宽和高不能为0，避免被无障碍辅助应用忽略或错误处理子节点树。
 
 以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考[AccessibilityCustomCapi](https://gitcode.com/openharmony/applications_app_samples/pull/8450)。回调函数实现请参考[基于Xcomponent的自绘制接入方式](#基于xcomponent的自绘制接入方式)。完成回调函数实现后，开启无障碍功能，基于CustomNode构建渲染节点树的三方框架即可接入无障碍服务，实现控件树的无障碍交互与信息查询。
 

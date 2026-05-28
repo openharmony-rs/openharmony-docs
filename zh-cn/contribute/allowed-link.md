@@ -1,3 +1,4 @@
+<<<<<<< OpenHarmony_feature_sta_20260331
 # 链接白名单
 
 | 文档路径 | 链接信息 | kit | 子系统 | 结对人是否对齐 | 时间 |
@@ -12,4 +13,7 @@
 | docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-securityManager.md | [唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) | MDM Kit | Customization | 是 | 2026-05-20 |
 | docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-bundleManager.md | [deviceInfo.distributionOSReleaseType](../apis-basic-services-kit/js-apis-device-info.md) | MDM Kit | Customization | 是 | 2026-05-16 |
 | docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md | [唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) | MDM Kit | Customization | 是 | 2026-05-16 |
+| docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md | [协同业务](#servicetype) | MDM Kit | Customization | 是 | 2026-05-18 |
 | docs/zh-cn/application-dev/reference/development-intro-api.md | [系统能力SystemCapability列表](phone-syscap-list.md) | Common | Common | 是 | 2026-05-19 |
+| docs/zh-cn/application-dev/reference/apis-mdm-kit/js-apis-enterprise-applicationManager.md | [设备间单向传输数据能力禁用策略](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14) | MDM Kit | Customization | 是 | 2026-05-23 |
+| docs/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md | [deviceInfo.distributionOSReleaseType](../apis-basic-services-kit/js-apis-device-info.md) | Ability Kit | BundleManager | 是 | 2026-05-26 |

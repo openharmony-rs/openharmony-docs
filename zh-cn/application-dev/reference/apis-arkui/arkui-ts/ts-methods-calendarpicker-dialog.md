@@ -28,6 +28,8 @@ static show(options?: CalendarDialogOptions): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -47,6 +49,8 @@ static show(options?: CalendarDialogOptions): void
 日历选择器弹窗选项。
 
 继承自[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -81,7 +85,7 @@ static show(options?: CalendarDialogOptions): void
 
 ### 示例1（设置弹窗背板）
 
-该示例通过[CalendarDialogOptions](#calendardialogoptions对象说明)的backgroundColor、backgroundBlurStyle、shadow设置日历选择器弹窗背板。
+该示例通过[CalendarDialogOptions](#calendardialogoptions对象说明)的[backgroundColor](#calendardialogoptions对象说明)、[backgroundBlurStyle](#calendardialogoptions对象说明)、[shadow](#calendardialogoptions对象说明)设置日历选择器弹窗背板。
 
 ```ts
 // CalendarPickerDialogExampleDyn.ets
@@ -137,7 +141,7 @@ struct CalendarPickerDialogExample {
 
 ### 示例2（自定义按钮样式）
 
-从API version 12开始，该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的acceptButtonStyle、cancelButtonStyle实现自定义日历选择器弹窗按钮样式。
+从API version 12开始，该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的[acceptButtonStyle](#calendardialogoptions对象说明)、[cancelButtonStyle](#calendardialogoptions对象说明)实现自定义日历选择器弹窗按钮样式。
 
 ArkTS-Dyn示例：
 
@@ -314,7 +318,7 @@ struct CalendarPickerDialogExample {
 
 ### 示例4（设置日期选中态底板样式）
 
-从API version 10开始，该示例通过[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的hintRadius设置日期选中态底板样式。
+从API version 10开始，该示例通过[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的[hintRadius](ts-basic-components-calendarpicker.md#calendaroptions对象说明)设置日期选中态底板样式。
 
 ```ts
 // CalendarPickerDialogExampleDyn.ets
@@ -347,7 +351,7 @@ struct CalendarPickerDialogExample {
 
 ### 示例5（设置开始日期和结束日期）
 
-从API version 18开始，该示例通过[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的start和end设置日历选择器弹窗的开始日期和结束日期。
+从API version 18开始，该示例通过[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的[start](ts-basic-components-calendarpicker.md#calendaroptions对象说明)和[end](ts-basic-components-calendarpicker.md#calendaroptions对象说明)设置日历选择器弹窗的开始日期和结束日期。
 
 ```ts
 // CalendarPickerDialogExampleDyn.ets
@@ -380,7 +384,7 @@ struct CalendarPickerDialogExample {
 
 ### 示例6（设置系统当前日期在日历选择器弹窗内保持高亮显示，并设置禁用日期区间）
 
-从API version 19开始，该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的markToday，使系统当前日期在日历选择器弹窗内保持高亮显示，并通过配置[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的disabledDateRange设置禁用的日期区间。
+从API version 19开始，该示例通过配置[CalendarDialogOptions](#calendardialogoptions对象说明)的[markToday](#calendardialogoptions对象说明)，使系统当前日期在日历选择器弹窗内保持高亮显示，并通过配置[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)的[disabledDateRange](ts-basic-components-calendarpicker.md#calendaroptions对象说明)设置禁用的日期区间。
 
 ```ts
 // CalendarPickerExampleDyn.ets

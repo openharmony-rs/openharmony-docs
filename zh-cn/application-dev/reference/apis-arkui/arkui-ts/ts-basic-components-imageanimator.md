@@ -49,7 +49,7 @@ ArkTS-Dyn: images(value: Array\<ImageFrameInfo>)
 
 ArkTS-Sta: images(value: Array\<ImageFrameInfo> | undefined)
 
-设置图片帧信息集合。不支持动态更新。
+设置图片帧信息集合。不支持动态更新，动态更新可能会导致不可预期的行为。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -241,6 +241,8 @@ ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 17
@@ -301,9 +303,9 @@ attributeModifier(modifier: AttributeModifier\<ImageAnimatorAttribute> | Attribu
 
 ### onStart
 
-ArkTS-Sta: onStart(event: (() => void) | undefined)
-
 ArkTS-Dyn: onStart(event: () => void)
+
+ArkTS-Sta: onStart(event: (() => void) | undefined)
 
 状态回调，动画开始播放时触发。
 
@@ -325,9 +327,9 @@ ArkTS-Dyn: onStart(event: () => void)
 
 ### onPause
 
-ArkTS-Sta: onPause(event: (() => void) | undefined)
-
 ArkTS-Dyn: onPause(event: () => void)
+
+ArkTS-Sta: onPause(event: (() => void) | undefined)
 
 状态回调，动画暂停播放时触发。
 
@@ -349,9 +351,9 @@ ArkTS-Dyn: onPause(event: () => void)
 
 ### onRepeat
 
-ArkTS-Sta: onRepeat(event: (() => void) | undefined)
-
 ArkTS-Dyn: onRepeat(event: () => void)
+
+ArkTS-Sta: onRepeat(event: (() => void) | undefined)
 
 状态回调，动画重复播放时触发。
 
@@ -371,9 +373,9 @@ ArkTS-Dyn: onRepeat(event: () => void)
 
 ### onCancel
 
-ArkTS-Sta: onCancel(event: (() => void) | undefined)
-
 ArkTS-Dyn: onCancel(event: () => void)
+
+ArkTS-Sta: onCancel(event: (() => void) | undefined)
 
 状态回调，动画返回最初状态时触发。
 
@@ -395,9 +397,9 @@ ArkTS-Dyn: onCancel(event: () => void)
 
 ### onFinish
 
-ArkTS-Sta: onFinish(event: (() => void) | undefined)
-
 ArkTS-Dyn: onFinish(event: () => void)
+
+ArkTS-Sta: onFinish(event: (() => void) | undefined)
 
 状态回调，动画播放完成时或者停止播放时触发。 
 

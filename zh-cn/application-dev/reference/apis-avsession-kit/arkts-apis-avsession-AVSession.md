@@ -44,7 +44,7 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 
 设置会话元数据。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -400,7 +400,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise\<void>
 
 设置会话播放状态。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -499,7 +499,7 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 通过点击播控组件可以跳转到对应的播放界面，默认跳转到[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)接口传入的context所属的UIAbility界面。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -650,7 +650,7 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>): Pr
 
 包括事件名和键值对形式的事件内容。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -666,7 +666,7 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>): Pr
 | args | ArkTS-Dyn: {[key: string]: Object}<br>ArkTS-Sta: Record<string, Object> | 是   | 需要传递的会话事件内容。 |
 
 > **说明：**
-> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **返回值：**
 
@@ -747,7 +747,7 @@ ArkTS-Sta: dispatchSessionEvent(event: string, args: Record<string, Object>, cal
 
 > **说明：**
 
-> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+> 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **错误码：**
 
@@ -800,7 +800,7 @@ setAVQueueTitle(title: string): Promise\<void>
 
 设置媒体播放列表名称。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -935,7 +935,7 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void>
 
 媒体提供方设置键值对形式的自定义媒体数据包。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -951,7 +951,7 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>): Promise\<void>
 
 > **说明：**
 
-> 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+> 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **返回值：**
 
@@ -1027,7 +1027,7 @@ ArkTS-Sta: setExtras(extras: Record<string, Object>, callback: AsyncCallback\<vo
 
 > **说明：**
 
-> 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
+> 参数extras支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **错误码：**
 
@@ -1609,7 +1609,7 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 
 发送私有数据到远端设备。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2271,7 +2271,7 @@ getController(): Promise\<AVSessionController>
 
 获取本会话对应的控制器。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2388,7 +2388,7 @@ ArkTS-Sta: getAVCastController(): Promise<AVCastController | undefined>
 
 如果avsession未处于投播状态，则控制器将返回 null。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2468,7 +2468,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 通过会话获取播放设备信息。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2540,7 +2540,7 @@ activate(): Promise\<void>
 
 激活会话，激活后可正常使用会话。使用Promise异步回调方式。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2607,7 +2607,7 @@ deactivate(): Promise\<void>
 
 可通过[activate](#activate10)恢复。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2681,7 +2681,7 @@ destroy(): Promise\<void>
 
 销毁当前会话，使当前会话完全失效。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2759,7 +2759,7 @@ on(type: 'play', callback: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPlay](#onplay23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2841,7 +2841,7 @@ on(type: 'pause', callback: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPause](#onpause23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -2923,7 +2923,7 @@ on(type:'stop', callback: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onStop](#onstop23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3005,7 +3005,7 @@ on(type:'playNext', callback: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayNext](#onplaynext22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3086,7 +3086,7 @@ on(type:'playPrevious', callback: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayPrevious](#onplayprevious22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3125,7 +3125,7 @@ onPlayPrevious(callback: Callback\<CommandInfo>): void
 
 应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3168,7 +3168,7 @@ on(type: 'fastForward', callback: (time?: number) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onFastForward](#onfastforward22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3248,7 +3248,7 @@ on(type:'rewind', callback: (time?: number) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onRewind](#onrewind22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3329,7 +3329,7 @@ on(type:'playWithAssetId', callback: Callback\<string>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPlayWithAssetId](#onplaywithassetid23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3410,7 +3410,7 @@ off(type: 'playWithAssetId', callback?: Callback\<string>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayWithAssetId](#offplaywithassetid23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3487,7 +3487,7 @@ on(type: 'seek', callback: (time: number) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSeek](#onseek23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3565,7 +3565,7 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSetSpeed](#onsetspeed23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3643,7 +3643,7 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSetLoopMode](#onsetloopmode23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3721,7 +3721,7 @@ on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSetTargetLoopMode](#onsettargetloopmode23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3798,7 +3798,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onToggleFavorite](#ontogglefavorite23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3878,7 +3878,7 @@ session端可以选择对这个单项歌曲进行播放。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSkipToQueueItem](#onskiptoqueueitem23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -3960,7 +3960,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onHandleKeyEvent](#onhandlekeyevent23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4040,13 +4040,13 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 注册播放设备变化的事件监听。使用callback异步回调。
 
-应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+应用接入[multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onOutputDeviceChange](#onoutputdevicechange23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4083,7 +4083,7 @@ onOutputDeviceChange(callback: ConnectionEvent): void
 
 注册播放设备变化的事件监听。使用callback异步回调。
 
-应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
+应用接入[multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4126,7 +4126,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onCommonCommand](#oncommoncommand23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4256,7 +4256,7 @@ off(type: 'play', callback?: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPlay](#offplay22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4332,7 +4332,7 @@ off(type: 'pause', callback?: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPause](#offpause23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4410,7 +4410,7 @@ off(type: 'stop', callback?: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offStop](#offstop23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4488,7 +4488,7 @@ off(type: 'playNext', callback?: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayNext](#offplaynext22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4564,7 +4564,7 @@ off(type: 'playPrevious', callback?: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPlayPrevious](#offplayprevious22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4640,7 +4640,7 @@ off(type: 'fastForward', callback?: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offFastForward](#offfastforward22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4718,7 +4718,7 @@ off(type: 'rewind', callback?: () => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offRewind](#offrewind22)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4794,7 +4794,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSeek](#offseek23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4868,7 +4868,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSetSpeed](#offsetspeed23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -4942,7 +4942,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSetLoopMode](#offsetloopmode23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5016,7 +5016,7 @@ off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSetTargetLoopMode](#offsettargetloopmode23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5089,7 +5089,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offToggleFavorite](#offtogglefavorite23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5165,7 +5165,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSkipToQueueItem](#offskiptoqueueitem23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5241,7 +5241,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offHandleKeyEvent](#offhandlekeyevent23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5318,7 +5318,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offOutputDeviceChange](#offoutputdevicechange23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5392,7 +5392,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offCommonCommand](#offcommoncommand23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5465,7 +5465,7 @@ on(type: 'answer', callback: Callback\<void>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onAnswer](#onanswer23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5543,7 +5543,7 @@ off(type: 'answer', callback?: Callback\<void>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offAnswer](#offanswer23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5617,7 +5617,7 @@ on(type: 'hangUp', callback: Callback\<void>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onHangUp](#onhangup23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5695,7 +5695,7 @@ off(type: 'hangUp', callback?: Callback\<void>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offHangUp](#offhangup23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5769,7 +5769,7 @@ on(type: 'toggleCallMute', callback: Callback\<void>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onToggleCallMute](#ontogglecallmute23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5847,7 +5847,7 @@ off(type: 'toggleCallMute', callback?: Callback\<void>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offToggleCallMute](#offtogglecallmute23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -5921,7 +5921,7 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onCastDisplayChange](#oncastdisplaychange23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
@@ -6009,7 +6009,7 @@ off(type: 'castDisplayChange', callback?: Callback\<CastDisplayInfo>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offCastDisplayChange](#offcastdisplaychange23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
@@ -6113,7 +6113,7 @@ stopCasting(): Promise\<void>
 
 结束投播。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -6149,7 +6149,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 使用同步方法获取当前输出设备信息。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -6184,7 +6184,7 @@ getAllCastDisplays(): Promise<Array\<CastDisplayInfo>>
 
 获取当前系统中所有支持扩展屏投播的显示设备。通过Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
 
@@ -6230,7 +6230,7 @@ on(type:'playFromAssetId', callback: (assetId: number) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -6273,7 +6273,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -6312,7 +6312,7 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onCustomDataChange](#oncustomdatachange23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -6389,7 +6389,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offCustomDataChange](#offcustomdatachange23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 

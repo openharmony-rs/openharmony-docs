@@ -214,7 +214,11 @@ struct MapSample {
     Column() {
       // @LocalStorage装饰set，set api操作，能触发PersistentStorage的持久化
       Text(`${this.union}`)
+        .fontSize(20)
+        .margin(10)
       Button(`union change:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           if (Class.of(this.union) === Class.from<number>()) {
             this.union = null
@@ -226,15 +230,20 @@ struct MapSample {
         })    
       // appStorage整体赋值能触发PersistentStorage的持久化
       Button(`map change by appStorage:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           if (AppStorage.has('union')) {
             AppStorage.set<number | string | null>('union', 15);
           }
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![persistentstorage_union](../figures/persistentstorage1.gif)
 
 ### 装饰Date类型变量
 
@@ -267,20 +276,36 @@ struct MapSample {
     Column() {
       // @LocalStorage装饰set，set api操作，能触发PersistentStorage的持久化
       Text(`${this.date}`)
-      Button(`change update`).onClick((e: ClickEvent) => {
-        this.date = new Date('2023-09-09');
-      })
-      Button('increase the year by 1').onClick((e: ClickEvent) => {
-        this.date.setFullYear(this.date.getFullYear() + 1);
-      })
-      Button('increase the month by 1').onClick((e: ClickEvent) => {
-        this.date.setMonth(this.date.getMonth() + 1);
-      })
-      Button('parent increase the day by 1').onClick((e: ClickEvent) => {
-        this.date.setDate(this.date.getDate() + 1);
-      })
+        .fontSize(20)
+        .margin(10)
+      Button(`change update`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.date = new Date('2023-09-09');
+        })
+      Button('increase the year by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.date.setFullYear(this.date.getFullYear() + 1);
+        })
+      Button('increase the month by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.date.setMonth(this.date.getMonth() + 1);
+        })
+      Button('parent increase the day by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.date.setDate(this.date.getDate() + 1);
+        })
       // appStorage整体赋值能触发PersistentStorage的持久化
       Button(`map change by appStorage:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           let date = new Date();
           if (AppStorage.has('date')) {
@@ -288,9 +313,12 @@ struct MapSample {
           }
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![persistentstorage_date](../figures/persistentstorage2.gif)
 
 ### 装饰Map类型变量
 
@@ -304,7 +332,7 @@ import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, Per
 @Entry
 @Component
 struct MapSample {
-  success: boolean = PersistentStorage.persistProp<Map<string, string>>('map', new Map<string, string>(),
+  success: boolean = PersistentStorage.persistProp<Map<string, string>>('map', new Map<string, string>([['1', 'value1']]),
     (map: Map<string, string>): jsonx.JsonElement => {
       const root = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
       const mapEle = new jsonx.JsonElement({} as Record<string, jsonx.JsonElement>);
@@ -333,16 +361,24 @@ struct MapSample {
     Column() {
       // @LocalStorage装饰set，set api操作，能触发PersistentStorage的持久化
       Text(`${this.map}`)
+        .fontSize(20)
+        .margin(10)
       Button(`map add:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
             this.map.set('4', 'value4');
         })
       Button(`map delete:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
             this.map.delete('4');
         })
       // appStorage整体赋值能触发PersistentStorage的持久化
       Button(`map change by appStorage:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.map = new Map<string, string>([
             ['4', 'value4'],
@@ -354,9 +390,12 @@ struct MapSample {
           }
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![persistentstorage_map](../figures/persistentstorage3.gif)
 
 ### 装饰Set类型变量
 
@@ -398,17 +437,25 @@ struct SetSample {
   build() {
     Column() {
       // @LocalStorage装饰set，set api操作，能触发PersistentStorage的持久化
-      Text(`${this.set}`)
+      Text(`${Array.from(this.set)}`)
+        .fontSize(20)
+        .margin(10)
       Button(`set add:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
             this.set.add('value4');
         })
       Button(`set delete:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
             this.set.delete('value4');
         })
       // appStorage整体赋值能触发PersistentStorage的持久化
       Button(`set change by appStorage:`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.set = new Set<string>([
             'value4',
@@ -420,9 +467,12 @@ struct SetSample {
           }
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![persistentstorage_set](../figures/persistentstorage4.gif)
 
 ### 装饰class
 
@@ -456,11 +506,15 @@ struct ClassSample {
     Column() {
       // @Observed修饰的class属性改变，能触发PersistentStorage的持久化
       Button(`user Id: ${this.user.userId}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
             this.user.userId += 10;
         })
       // appStorage整体赋值能触发PersistentStorage的持久化
       Button(`user Id: ${this.user.userId}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.user = new User(456, 'byAppStorage', true);
           if (AppStorage.has('user')) {
@@ -468,6 +522,9 @@ struct ClassSample {
           }
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![persistentstorage_class](../figures/persistentstorage5.gif)

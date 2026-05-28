@@ -45,9 +45,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 - 在嵌套类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-   ```ts
-   'use static'
+   <!-- @[TraceNestedClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceNestedClass.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -78,9 +78,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 - 在继承类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-   ```ts
-   'use static'
+   <!-- @[TraceInheritClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceInheritClass.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -110,9 +110,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 - 类中使用\@Trace装饰的静态属性具有被观测变化的能力。
 
-   ```ts
-   'use static'
+   <!-- @[TraceStaticProperty](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceStaticProperty.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -150,9 +150,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 - 非\@Trace装饰的成员属性用在UI上无法触发UI刷新。
 
-   ```ts
-   'use static'
+   <!-- @[TraceUseRestrict](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceUseRestrict.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -239,9 +239,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 点击Button('change length')，length是被\@Trace装饰的属性，它的变化可以触发关联的UI组件，即UINode (1)的刷新，并输出"id: 1 renderTimes: x"的日志，其中x根据点击次数依次增长。
 
-```ts
-'use static'
+<!-- @[TraceNestedScene](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceNestedScene.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -293,9 +293,9 @@ struct Page {
 
 以下例子中，创建类Son和类Cousin的实例，点击Button('change Son age')和Button('change Cousin age')可以触发UI的刷新。
 
-```ts
-'use static'
+<!-- @[TraceInheritScene](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceInheritScene.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, FontWeight, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -375,9 +375,9 @@ struct Index {
 
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
-```ts
-'use static'
+<!-- @[TraceBasicArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceBasicArray.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Divider, Entry, FontWeight, 
          ForEach, Row, Text, ObservedV2, Trace, List, ListItem } from '@kit.ArkUI';
 
@@ -491,9 +491,9 @@ struct Index {
 * \@Trace装饰对象数组personList以及Person类中的age属性，因此当personList、age改变时均可以观测到变化。
 * 点击Text组件更改age时，Text组件会刷新。
 
-   ```ts
-   'use static'
+   <!-- @[TraceObjectArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceObjectArray.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    let nextId: number = 0;
@@ -564,9 +564,9 @@ struct Index {
 * 被\@Trace装饰的Map类型属性可以观测到调用API带来的变化，包括 set、clear、delete。
 * 因为Info类被\@ObservedV2装饰且属性memberMap被\@Trace装饰，点击Button('init map')对memberMap赋值也可以观测到变化。
 
-   ```ts
-   'use static'
+   <!-- @[TraceMapType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceMapType.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -622,9 +622,9 @@ struct Index {
 * 被\@Trace装饰的Set类型属性可以观测到调用API带来的变化，包括 add、clear、delete。
 * 因为Info类被\@ObservedV2装饰且属性memberSet被\@Trace装饰，点击Button('init set')对memberSet赋值也可以观察变化。
 
-   ```ts
-   'use static'
+   <!-- @[TraceSetType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceSetType.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -674,9 +674,9 @@ struct Index {
 * \@Trace装饰的Date类型属性可以观测调用API带来的变化，包括 setFullYear、setMonth、setDate、setHours、setMinutes、setSeconds、setMilliseconds、setTime、setUTCFullYear、setUTCMonth、setUTCDate、setUTCHours、setUTCMinutes、setUTCSeconds、setUTCMilliseconds。
 * 因为Info类被\@ObservedV2装饰且属性selectedDate被\@Trace装饰，点击Button('set selectedDate to 2023-07-08')对selectedDate赋值也可以观测到变化。
 
-   ```ts
-   'use static'
+   <!-- @[TraceDateType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceDateType.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, DatePicker, Divider, Entry, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -729,9 +729,9 @@ struct Index {
 
 **无参构造**
 
-```ts
-'use static'
+<!-- @[TraceSerializeNoParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceSerializeNoParam.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -768,9 +768,9 @@ struct Index {
 
 **有参构造**
 
-```ts
-'use static'
+<!-- @[TraceSerializeWithParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceSerializeWithParam.ets) -->
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
