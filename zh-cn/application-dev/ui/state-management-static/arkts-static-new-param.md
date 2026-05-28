@@ -150,7 +150,7 @@ import { Param } from '@kit.ArkUI';
   
   ``` TypeScript
   import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Param, Require, Text } from '@kit.ArkUI';
-
+  
   @Entry
   @ComponentV2
   struct Index {
