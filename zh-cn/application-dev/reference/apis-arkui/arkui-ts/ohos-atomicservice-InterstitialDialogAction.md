@@ -149,6 +149,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let dialogUIContext: UIContext | null = null;
 
 export function getDialogUIContext(): UIContext | null {
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
+  }
   return dialogUIContext;
 }
 
@@ -273,8 +276,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let dialogUIContext: UIContext | null = null;
 
 export function getDialogUIContext(): UIContext | null {
-  if (getDialogUIContext === null) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'getDialogUIContext is null');
+  if (dialogUIContext === null) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'dialogUIContext is null');
   }
   return dialogUIContext;
 }
