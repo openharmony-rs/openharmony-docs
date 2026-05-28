@@ -651,7 +651,7 @@ interact接口支持的capList能力列表，如下：
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
