@@ -398,6 +398,29 @@ display，position，z-index，visibility，opacity, background-color，backgrou
    开发者则需要调用[onNativeEmbedGestureEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedgestureevent11)来监听同层渲染区域的手势事件。
 
    <!-- @[native_embed_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+   
+   ``` TypeScript
+   // 获取同层渲染组件触摸事件信息。
+   .onNativeEmbedGestureEvent((touch) => {
+     console.info('NativeEmbed onNativeEmbedGestureEvent' + JSON.stringify(touch.touchEvent));
+     this.componentIdArr.forEach((componentId: string) => {
+       let nodeController = this.nodeControllerMap.get(componentId);
+       // 将获取到的同层区域的事件发送到该区域embedId对应的nodeController上。
+       if (nodeController?.getEmbedId() === touch.embedId) {
+         let ret = nodeController?.postEvent(touch.touchEvent);
+         if (ret) {
+           console.info('onNativeEmbedGestureEvent success ' + componentId);
+         } else {
+           console.info('onNativeEmbedGestureEvent fail ' + componentId);
+         }
+         if (touch.result) {
+           // 通知Web组件手势事件消费结果。
+           touch.result.setGestureEventResult(ret);
+         }
+       }
+     })
+   })
+   ```
 
 7. 同层渲染鼠标事件
 
