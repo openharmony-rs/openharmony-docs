@@ -140,7 +140,7 @@
    >
    > - 当录像流已设置过固定帧率时，预览流帧率要设置成录像帧率的约数，且必须也为固定帧率。
    >
-   > - 录像模式下，部分设备前置镜头录像分辨率选择3280*2160的场景下，存在稳定性问题，建议在commitConfig后设置视频防抖[setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)。
+   > - 部分设备前置镜头录像分辨率若选择3280*2160，录像模式下可能会出现视频倒置的情况，建议在commitConfig后设置视频防抖[setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11)，避免该问题。
 
    先通过videoOutput的[start](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#start-1)方法启动录像输出流，再通过avRecorder的[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9)方法开始录像。
 
