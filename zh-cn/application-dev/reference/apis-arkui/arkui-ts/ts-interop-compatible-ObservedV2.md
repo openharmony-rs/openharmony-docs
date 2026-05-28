@@ -23,6 +23,8 @@ enableCompatibleObservedV2ForStatic\<T\>(value: T): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Sta起始版本：** 23

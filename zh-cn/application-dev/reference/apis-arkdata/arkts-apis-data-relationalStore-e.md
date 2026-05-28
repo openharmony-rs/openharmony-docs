@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -368,7 +368,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称 | 值 | 说明 |
 |------|---|--------------------|
-| CONFLICT_POLICY_DEFAULT | 0 | 默认冲突策略，按照[端云同步模式](arkts-apis-data-relationalStore-e.md#syncmode)执行。 |
+| CONFLICT_POLICY_DEFAULT | 0 | 默认冲突策略，按照端云同步模式[SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)执行。 |
 | CONFLICT_POLICY_TIME_FIRST | 1 | 基于时间优先的冲突策略。 |
 | CONFLICT_POLICY_TEMP_PATH | 2 | 基于临时路径的冲突策略。 |
 

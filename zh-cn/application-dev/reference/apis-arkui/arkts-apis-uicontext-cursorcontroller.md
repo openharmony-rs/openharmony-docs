@@ -16,6 +16,8 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getCursorController()](arkts-apis-uicontext-uicontext.md#getcursorcontroller12)方法获取CursorController实例，再通过此实例调用对应方法。
 
 ## restoreDefault<sup>12+</sup>
@@ -24,7 +26,7 @@ restoreDefault(): void
 
 恢复默认的光标样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,7 +75,7 @@ setCursor(value: PointerStyle): void
 >
 > 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,7 +131,7 @@ ArkTS-Sta: setCustomCursor(value: image.PixelMap, focusX?: int, focusY?: int): v
 >
 > 该接口调用后不会立即生效，而是在下一帧改变鼠标光标样式。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

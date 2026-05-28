@@ -14,7 +14,15 @@
 
 在ArkTS-Sta中使用时，开发指南参考：[@Link装饰器：父子双向同步（ArkTS-Sta）](../../../ui/state-management-static/arkts-static-link.md)。
 
+## @Link
+
+@interface Link
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 

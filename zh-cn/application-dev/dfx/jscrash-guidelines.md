@@ -396,3 +396,66 @@ HybridStack:
 ```
 
 聚类方法同Cpp Crash一致，参考[CppCrash聚类](cppcrash-guidelines.md#cppcrash聚类)。
+
+## ArkTS-Dyn和ArkTS-Sta混合场景Js Crash栈回溯介绍
+### 能力概述
+
+在引入混合栈回溯能力之前，当应用在ArkTS-Dyn与ArkTS-Sta混合场景下发生JS Crash时，生成的JS Crash文件中通常只能看到发生异常的一侧（抛出异常的代码侧）的堆栈信息，无法完整展示跨模块的完整调用链路，导致问题定位困难。
+
+从API版本26.0.0开始，系统新增混合栈回溯能力。开启该功能后，在ArkTS-Dyn与ArkTS-Sta混合场景中发生JS崩溃时，系统将完整展示跨模块调用链路，帮助开发者快速定位异常根源。
+
+通过以下命令可以开启或关闭该功能。hdc shell param的更多使用方法，请参见[param工具](../tools/param-tool.md)。
+
+```shell
+# 开启
+hdc shell param set ark.interop.hybridstack.enable true
+# 关闭
+hdc shell param set ark.interop.hybridstack.enable false
+```
+
+### 堆栈展示
+
+**动态栈与静态栈差异**
+
+ArkTS-Dyn动态栈示例：
+```text
+at anonymous entry (entry/src/main/ets/pages/Index.ets:22:14)
+```
+ArkTS-Sta静态栈示例：
+```text
+at std.core.LinkerError.<ctor> (RuntimeLinkerErrors.ets:20:1)
+```
+| **差异点** | **ArkTS-Dyn** | **ArkTS-Sta** |
+|------------|---------------|---------------|
+|    函数名  | 只有函数名  |  包含函数文件路径 |
+|    列号  | 有正确的列号  |  列号固定为1 |
+
+场景一：ArkTS-Dyn调用ArkTS-Sta，在ArkTS-Sta中抛出异常。
+```text
+Stacktrace:
+at std.core.LinkerError.<ctor> (RuntimeLinkerErrors.ets:20:1)
+at std.core.LinkerUnresolvedMethodError.<ctor> (RuntimeLinkerErrors.ets:48:1)
+at har_2.src.main.ets.components.MainPage.ETSGLOBAL.foo1 (har_2/src/main/ets/components/MainPage.ets:12:1)
+at anonymous entry (entry/src/main/ets/pages/Index.ets:22:14)
+```
+
+场景二：ArkTS-Sta调用ArkTS-Dyn，在ArkTS-Dyn中抛出异常。
+```text
+Stacktrace:
+at name library (library/src/main/ets/pages/Index.ets:23:9)
+at entry.src.main.ets.pages.Index.Index.lambda_invoke-13 (entry/src/main/ets/pages/Index.ets:40:1) 
+at entry.src.main.ets.pages.Index.%%lambda-lambda_invoke-13.invoke1 (entry/src/main/ets/pages/Index.ets:-1:1) 
+at arkui.framework.peers.CallbackDeserializeCall.ETSGLOBAL.deserializeAndCallCallback_ClickEvent_Void (CallbackDeserializeCall.ets:353:1)
+at arkui.framework.peers.CallbackDeserializeCall.ETSGLOBAL.deserializeAndCallCallback (CallbackDeserializeCall.ets:4477:1)
+at arkui.ArkUIEntry.Application.lambda_invoke-135 (ArkUIEntry.ets:672:1)
+at arkui.ArkUIEntry.%%lambda-lambda_invoke-135.invoke0 (ArkUIEntry.ets:-1:1)
+at arkui.stateManagement.base.observeSingleton.ObserveSingleton.applyTaskDelayMutableStateChange (observeSingleton.ets:300:1)
+at arkui.ArkUIEntry.Application.lambda_invoke-136 (ArkUIEntry.ets:671:1)
+at arkui.ArkUIEntry.%%lambda-lambda_invoke-136.invoke1 (ArkUIEntry.ets:-1:1)
+at @koalaui.interop.events.ETSGLOBAL.handleApiEvent (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/events.ts:28:1)
+at @koalaui.interop.events.ETSGLOBAL.lambda_invoke-0 (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/events.ts:34:1)
+at @koalaui.interop.events.%%lambda-lambda_invoke-0.invoke2 (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/events.ts:-1:1) 
+at @koalaui.interop.callback.CallbackRegistry.call (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/callback.ts:70:1)
+at @koalaui.interop.callback.ETSGLOBAL.callCallback (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/callback.ts:91:1)
+at @koalaui.interop.InteropNativeModule.InteropNativeModule.callCallbackFromNative (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/InteropNativeModule.ts:26:1)
+```

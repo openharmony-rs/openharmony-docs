@@ -18,7 +18,7 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 >
 > - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及全模态[bindContentCover](ts-universal-attributes-modal-transition.md#bindcontentcover)的生命周期进行联动。
 >
-> - Navigation未设置主副标题（[title](#title)或[subTitle](#subtitledeprecated)）且[hideBackButton](#hidebackbutton)属性设置为true时，不显示标题栏。
+> - Navigation未设置标题（[title](#title)）且[hideBackButton](#hidebackbutton)属性设置为true时，不显示标题栏。
 >
 > - Navigation的子页面切换时，新页面会主动请求焦点。
 >
@@ -914,6 +914,28 @@ attributeModifier(modifier: AttributeModifier\<NavigationAttribute> | AttributeM
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
 | modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<NavigationAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>取值为undefined时，按当前组件的属性方法默认值处理。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>NavigationAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
+### configuration
+
+configuration(config: NavigationConfiguration)
+
+设置Navigation配置项，包括路由栈大小限制。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| config | [NavigationConfiguration](#navigationconfiguration) | 是 | Navigation配置项。 |
+
 ### subTitle<sup>(deprecated)</sup>
 
 subTitle(value: string)
@@ -994,7 +1016,7 @@ ArkTS-Sta: onTitleModeChange(callback: ((titleMode: NavigationTitleMode) => void
 
 ArkTS-Dyn: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void) 
 
-ArkTS-Sta: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void | undefined)
+ArkTS-Sta: onNavBarStateChange(callback: ((isVisible: boolean) => void) | undefined)
 
 导航页显示状态切换时触发该回调。
 
@@ -1010,13 +1032,13 @@ ArkTS-Sta: onNavBarStateChange(callback: (isVisible: boolean) =&gt; void | undef
 
 | 参数名    | 类型    | 必填 | 说明                                           |
 | --------- | ------- | ---- | ---------------------------------------------- |
-| callback | ArkTS-Dyn: (isVisible: boolean) => void<br/>ArkTS-Sta: (isVisible: boolean) => void \| undefined | 是 | 导航页显示状态切换时触发的回调函数。<br/>isVisible：true表示显示导航页，false表示隐藏导航页。<br/>取值为undefined时，不触发回调函数。 |
+| callback | ArkTS-Dyn: (isVisible: boolean) => void<br/>ArkTS-Sta: ((isVisible: boolean) => void) \| undefined | 是 | 导航页显示状态切换时触发的回调函数。<br/>isVisible：true表示显示导航页，false表示隐藏导航页。<br/>取值为undefined时，不触发回调函数。 |
 
 ### onNavigationModeChange<sup>11+</sup>
 
 ArkTS-Dyn: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void) 
 
-ArkTS-Sta: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void | undefined)
+ArkTS-Sta: onNavigationModeChange(callback: ((mode: NavigationMode) => void) | undefined)
 
 当Navigation首次显示或者单双栏状态发生变化时触发该回调。
 
@@ -1032,7 +1054,7 @@ ArkTS-Sta: onNavigationModeChange(callback: (mode: NavigationMode) =&gt; void | 
 
 | 参数名    | 类型    | 必填 | 说明                                           |
 | --------- | ------- | ---- | ---------------------------------------------- |
-| callback | ArkTS-Dyn: (mode: NavigationMode) => void<br/>ArkTS-Sta: (mode: NavigationMode) => void \| undefined | 是 | Navigation首次显示或者单双栏状态发生变化时触发的回调函数。<br/>mode：导航页的显示模式，NavigationMode.Split表示当前Navigation显示为双栏，NavigationMode.Stack表示当前Navigation显示为单栏。<br/>取值为undefined时，不触发回调函数。 |
+| callback | ArkTS-Dyn: (mode: [NavigationMode](#navigationmode9枚举说明)) => void<br/>ArkTS-Sta: ((mode: NavigationMode) => void) \| undefined | 是 | Navigation首次显示或者单双栏状态发生变化时触发的回调函数。<br/>mode：导航页的显示模式，NavigationMode.Split表示当前Navigation显示为双栏，NavigationMode.Stack表示当前Navigation显示为单栏。<br/>取值为undefined时，不触发回调函数。 |
 
 ### customNavContentTransition<sup>11+</sup>
 
@@ -2779,6 +2801,24 @@ Navigation分割线颜色及上下边距。
 | launchMode | [LaunchMode](#launchmode12枚举说明)  | 否    | 是    | 路由栈的操作模式。<br/>默认值：LaunchMode.STANDARD |
 | animated   | boolean  | 否    | 是    | 是否支持转场动画。<br/>true：支持转场动画；false：不支持转场动画。<br/>默认值：true|
 
+## NavigationConfiguration
+
+Navigation配置项。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| stackSizeLimit | number | 否 | 是 | Navigation路由栈的活跃页面节点数量限制。<br/>默认值：0，表示不限制路由栈大小。<br/>取值小于等于0时，不限制路由栈大小。<br/>取值大于0时，将活跃页面节点数量限制为指定值；超过限制后，系统会按照先入先出顺序自动销毁较早入栈的页面节点，页面的NavPathInfo完整保留在路由栈中，支持后续重新创建页面。 |
+
 ## MoreButtonOptions<sup>19+</sup>
 
 更多图标的菜单选项。
@@ -2799,7 +2839,7 @@ Navigation分割线颜色及上下边距。
 
 ## SystemBarStyle<sup>12+</sup>
 
-ArkTS-Dyn: type SystemBarStyle = SystemBarStyle
+ArkTS-Dyn: type SystemBarStyle = import('../api/@ohos.window').default.SystemBarStyle
 
 ArkTS-Sta: type SystemBarStyle = window.SystemBarStyle
 
@@ -2815,7 +2855,7 @@ ArkTS-Sta: type SystemBarStyle = window.SystemBarStyle
 
 | 类型     | 说明               |
 | -------- | ------------------ |
-| ArkTS-Dyn: [SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)<br/>ArkTS-Sta: window.SystemBarStyle   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
+| ArkTS-Dyn: import('../api/@ohos.window').default.[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)<br/>ArkTS-Sta: window.SystemBarStyle   | 状态栏文字颜色。<br/>默认值：`'#0xE5FFFFFF'`|
 
 ## HomePathInfo<sup>20+</sup>
 

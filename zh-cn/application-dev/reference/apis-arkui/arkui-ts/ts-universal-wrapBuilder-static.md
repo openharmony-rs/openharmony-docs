@@ -14,7 +14,11 @@ wrapBuilder\<T\>(builder: T): WrappedBuilder\<T\>
 
 wrapBuilder是一个模板函数，返回一个`WrappedBuilder`对象。模板参数`T`是@Builder的函数类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -45,6 +49,10 @@ let builderVar: WrappedBuilder<@Builder (value: string, size: number) => void> =
 
 @Builder函数的包装类。模板参数`T`应传入@Builder函数类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -60,7 +68,11 @@ constructor(builder: T)
 
 WrappedBuilder的构造函数。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

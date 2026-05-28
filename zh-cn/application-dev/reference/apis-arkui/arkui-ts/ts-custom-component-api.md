@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## getUIContext
 
@@ -25,8 +27,6 @@ getUIContext(): UIContext
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -66,9 +66,7 @@ struct MyComponent {
 
 ## getUniqueId<sup>12+</sup>
 
-ArkTS-Dyn: getUniqueId(): number
-
-ArkTS-Sta: getUniqueId(): int
+getUniqueId(): number
 
 获取当前组件的UniqueId。UniqueId为系统为每个组件分配的Id，可保证当前应用中的唯一性。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
@@ -78,13 +76,11 @@ ArkTS-Sta: getUniqueId(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回当前Component的UniqueId。 |
+| number | 返回当前Component的UniqueId。 |
 
 **示例：**
 
@@ -425,7 +421,9 @@ struct MyComponent {
 
 ## RouterPageInfo<sup>12+</sup>
 
-type RouterPageInfo = RouterPageInfo
+ArkTS-Dyn: type RouterPageInfo = RouterPageInfo
+
+ArkTS-Sta: type RouterPageInfo = uiObserver.RouterPageInfo
 
 RouterPageInfo实例对象。
 
@@ -439,7 +437,7 @@ RouterPageInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | 返回RouterPageInfo实例对象。 |
+| ArkTS-Dyn: [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo)<br/>ArkTS-Sta: uiObserver.RouterPageInfo | 返回RouterPageInfo实例对象。 |
 
 ## getDialogController<sup>18+</sup>
 

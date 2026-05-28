@@ -1,9 +1,9 @@
 # Updating Widget Content Through the router or call Event
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 With the router event, a touch on the widget can start the associated application's UIAbility in the foreground and trigger a widget update. With the call event, a touch on the widget can start the associated application's UIAbility in the background and trigger a widget update. On the widget page, the [postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1) API can be used to trigger a router or call event to start a UIAbility, which then updates the widget content. The following is an example of this widget update mode.

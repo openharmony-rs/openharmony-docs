@@ -162,7 +162,7 @@ ArkTS-Sta: imageAccess(imageAccess: boolean | undefined)
 
 | 参数名         | 类型    | 必填   | 说明            |
 | ----------- | ------- | ---- | --------------- |
-| imageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。<br>ArkTS-Dyn：传入undefined或null时为false。ArkTS-Sta：传入undefined或null时为false。|
+| imageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。<br>传入undefined或null时为false。|
 
 **示例：**
 
@@ -946,7 +946,7 @@ ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
 设置是否开启多窗口权限。若未显式调用该属性或入参值为undefined时，默认不开启多窗口权限。
 
-使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew事件](./arkts-basic-components-web-events.md#onwindownew9)。
+使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew](./arkts-basic-components-web-events.md#onwindownew9)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -958,7 +958,7 @@ ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
 | 参数名         | 类型    | 必填   | 说明         |
 | ----------- | ------- | ---- | ------------ |
-| multiWindow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。默认值：false。|
+| multiWindow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。|
 
 ## horizontalScrollBarAccess<sup>9+</sup>
 

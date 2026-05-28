@@ -30,7 +30,7 @@
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: string = '';
   @Trace arrayValue: Array<int> = [1, 2, 3, 4, 5];
   valueMonitor?: IMonitorDecoratedVariable;
@@ -94,7 +94,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: int = 0;
   valueMonitor?: IMonitorDecoratedVariable;
   valueMonitorDuplicated?: IMonitorDecoratedVariable;
@@ -149,7 +149,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: string = '';
   @Trace value2: string = '';
   valueMonitor?: IMonitorDecoratedVariable;
@@ -247,7 +247,7 @@ struct Page {
 import { UIUtils, IMonitor, IMonitorDecoratedVariable, Local, Entry, ComponentV2,
          Row, Column, Text, Button, UIUtils } from '@kit.ArkUI';
 
-interface Pair<R, V> {
+export interface Pair<R, V> {
   key: R;
   value: V;
 };
@@ -327,7 +327,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { Button, Column, ComponentV2, DatePicker, Divider, Entry, FontWeight, ForEach, IMonitor, IMonitorDecoratedVariable, Local, LocalStorageLink, ObservedV2, Param, Require, Row, Scroll, Set, TabContent, Tabs, Text, TextAlign, Trace, UIUtils } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, DatePicker, Divider, Entry, FontWeight, ForEach, IMonitor, IMonitorDecoratedVariable, Local, LocalStorageLink, ObservedV2, Param, Require, Row, Scroll, TabContent, Tabs, Text, TextAlign, Trace, UIUtils } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -358,7 +358,7 @@ struct TabContentTest {
 }
 
 @ObservedV2
-class Message {
+export class Message {
   @Trace message: number = 0;
 }
 
@@ -394,7 +394,8 @@ struct FreezeChild {
 ```typescript
 'use static'
 
-import { BusinessError, Button, Column, Component, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, State, Text, UIUtils } from '@kit.ArkUI';
+import { Button, Column, Component, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, State, Text, UIUtils } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Component
 struct Test {
@@ -449,7 +450,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: int = 0;
   @Trace valueError: number = 0;
   valueMonitor?: IMonitorDecoratedVariable;
@@ -504,7 +505,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace array: Array<int> = [1, 2, 3, 4, 5];
   @Trace map: Map<number, string> = new Map<number, string>([[1, 'first'], [2, 'second']]);
 
@@ -570,7 +571,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, Monitor, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace value: int = 0;
   valueMonitor?: IMonitorDecoratedVariable;
   valueMonitorDuplicated?: IMonitorDecoratedVariable;
@@ -630,7 +631,7 @@ import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable
 
 // class使用@ObservedV2修饰
 @ObservedV2
-class Test {
+export class Test {
   // @ObserevdV2与@Trace搭配使用
   @Trace value: int = 0;
   valueMonitor?: IMonitorDecoratedVariable;
@@ -707,7 +708,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class Test {
+export class Test {
   @Trace array: int[] = [1, 2, 3];
   arrayMonitor?: IMonitorDecoratedVariable;
 
@@ -822,7 +823,7 @@ import { ObservedV2, Trace, Local, IMonitor, IMonitorDecoratedVariable, UIUtils,
          ComponentV2, Column, Entry, Button } from '@kit.ArkUI';
 
 @ObservedV2
-class Info {
+export class Info {
   @Trace message: string = 'not initialized';
   messageMonitor?: IMonitorDecoratedVariable;
 
@@ -868,7 +869,7 @@ struct Page {
 import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Param, Require, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
-class User {
+export class User {
   @Trace age: number = 10;
   ageMonitor?: IMonitorDecoratedVariable;
 

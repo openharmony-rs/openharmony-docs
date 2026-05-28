@@ -1,4 +1,10 @@
 # 在ArkTS-Dyn中使用ArkTS-Sta的@Observed和@ObjectLink（嵌套类对象属性变化）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
@@ -92,40 +98,40 @@ export struct Index {
   @State state: MyClassA = new MyClassA();
 
   build() {
-    Scroll() {
-      Row() {
-        Column() {
-          // 在ArkTS-Dyn中使用动态@Observed装饰的数据
-          Text(this.state.name)
-            .height('10%')
-
-          Row() {
-            // 单独为静态@Observed装饰的类中的某一个成员赋值
-            Button('Member Assignment')
-              .layoutWeight(1)
-              .onClick(() => {
-                this.state.name = 'state: x';
-              })
-
-            // 创建新对象整体为静态@Observed装饰的类中的成员赋值
-            Button('Overall Assignment')
-              .layoutWeight(1)
-              .onClick(() => {
-                let data = new MyClassA();
-                data.name = 'state: Hello';
-                this.state = data;
-              })
-          }
-          .width('80%')
-        }
-        .width('100%')
+    Row() {
+      Column() {
+        // 在ArkTS-Dyn中使用动态@Observed装饰的数据
+        Text(this.state.name)
+          .fontSize(20) 
+          .margin(10)
+        // 单独为静态@Observed装饰的类中的某一个成员赋值
+        Button('Member Assignment')
+          .onClick(() => {
+            this.state.name = 'state: x';
+          })
+          .width(300)
+          .margin(10)
+        // 创建新对象整体为静态@Observed装饰的类中的成员赋值
+        Button('Overall Assignment')
+          .onClick(() => {
+            let data = new MyClassA();
+            data.name = 'state: Hello';
+            this.state = data;
+          })
+          .width(300)
+          .margin(10)
       }
+      .width('100%')
     }
     .height('100%')
   }
 }
 ```
 
+
+示例效果图：
+
+![arkts-dyn-interop-sta-observed-demo1](figures/arkts-dyn-interop-sta-observed-demo1.gif)
 
 ## 常见问题
 

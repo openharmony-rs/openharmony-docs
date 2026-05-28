@@ -83,11 +83,10 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------- | --------------------------------------------------- |
-| 401      | Parameter error.                                    |
 | 10200012 | The Array's constructor cannot be directly invoked. |
 
 **示例：**
@@ -113,11 +112,10 @@ ArkTS Array的构造函数，通过开发者提供的元素进行初始化。
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                            |
 | -------- | --------------------------------------------------- |
-| 401      | Parameter error.                                    |
 | 10200012 | The Array's constructor cannot be directly invoked. |
 
 **示例：**
@@ -150,14 +148,6 @@ static create\<T>(arrayLength: number, initialValue: T): Array\<T>
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401      | Parameter error.                   |
-
 **示例：**
 
 ```ts
@@ -185,14 +175,6 @@ static from\<T>(arrayLike: ArrayLike\<T>): Array\<T>
 | 类型      | 说明                    |
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 
 **示例：**
 
@@ -231,14 +213,6 @@ static from\<T>(iterable: Iterable\<T>): Array\<T>
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -256,7 +230,7 @@ static from\<T>(arrayLike: ArrayLike\<T> | Iterable\<T>, mapFn: ArrayFromMapFn\<
 
 从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -273,14 +247,6 @@ static from\<T>(arrayLike: ArrayLike\<T> | Iterable\<T>, mapFn: ArrayFromMapFn\<
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -295,7 +261,7 @@ static from\<U, T>(arrayLike: ArrayLike\<U> | Iterable\<U>, mapFn: ArrayFromMapF
 
 从一个实现了ArrayLike接口的对象创建一个新的ArkTS Array，并且使用自定义函数处理每个数组元素，ArrayLike接口对象的元素类型可以和数组元素的类型不一样。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -312,14 +278,6 @@ static from\<U, T>(arrayLike: ArrayLike\<U> | Iterable\<U>, mapFn: ArrayFromMapF
 | --------- | ----------------------- |
 | Array\<T> | 新创建的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -334,7 +292,7 @@ static isArray(value: Object | undefined | null): boolean
 
 检查传入的参数是否是一个ArkTS Array。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -350,14 +308,6 @@ static isArray(value: Object | undefined | null): boolean
 | --------- | ----------------------- |
 | boolean | 假如给定对象是ArkTS Array数组，返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -372,7 +322,7 @@ static of\<T>(...items: T\[]): Array\<T>
 
 通过可变数量的参数创建一个新的ArkTS Array。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -388,14 +338,6 @@ static of\<T>(...items: T\[]): Array\<T>
 | --------- | ----------------------- |
 | Array\<T> | 新的ArkTS Array实例。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                         |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -408,7 +350,7 @@ copyWithin(target: number, start: number, end?: number): Array\<T>
 
 从ArkTS Array指定范围内的元素依次拷贝到目标位置。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -428,11 +370,10 @@ copyWithin(target: number, start: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------ |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
@@ -450,7 +391,7 @@ lastIndexOf(searchElement: T, fromIndex?: number): number
 
 返回ArkTS Array实例中最后一次出现searchElement的索引，如果对象不包含，则为-1。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -491,7 +432,7 @@ some(predicate: ArrayPredicateFn\<T, Array\<T>>): boolean
 
 测试ArkTS Array是否存在满足指定条件的元素。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -529,7 +470,7 @@ reduceRight(callbackFn: ArrayReduceCallback\<T, T, Array\<T>>): T
 
 对Array中的每个元素按照从右到左顺序执行回调函数，将其结果作为累加值，并返回最终的结果。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -547,11 +488,10 @@ reduceRight(callbackFn: ArrayReduceCallback\<T, T, Array\<T>>): T
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.          |
 
@@ -569,7 +509,7 @@ reduceRight\<U = T>(callbackFn: ArrayReduceCallback\<U, T, Array\<T>>, initialVa
 
 与 [reduceRight](#reduceright18)方法类似，但它接受一个初始值作为第二个参数，用于在Array从右到左顺序遍历开始前初始化累加器。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -588,11 +528,10 @@ reduceRight\<U = T>(callbackFn: ArrayReduceCallback\<U, T, Array\<T>>, initialVa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                    |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.          |
 
@@ -661,11 +600,10 @@ push(...items: T[]): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The push method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -700,11 +638,10 @@ join(separator?: string): string
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -753,7 +690,7 @@ reverse(): Array\<T>
 
 反转ArkTS Array数组中的元素，并返回同一数组的引用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -804,11 +741,10 @@ unshift(...items: T[]): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The unshift method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -825,7 +761,7 @@ toString(): string
 
 ArkTS数组转换为字符串。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -876,11 +812,10 @@ slice(start?: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error.    |
 
@@ -915,11 +850,10 @@ sort(compareFn?: (a: T, b: T) => number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -956,11 +890,10 @@ indexOf(searchElement: T, fromIndex?: number): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -989,11 +922,10 @@ forEach(callbackFn: (value: T, index: number, array: Array\<T>) => void): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -1030,11 +962,10 @@ map\<U>(callbackFn: (value: T, index: number, array: Array\<T>) => U): Array\<U>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1073,11 +1004,10 @@ filter(predicate: (value: T, index: number, array: Array\<T>) => boolean): Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1112,11 +1042,10 @@ reduce(callbackFn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1152,11 +1081,10 @@ reduce\<U>(callbackFn: (previousValue: U, currentValue: T, currentIndex: number,
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1193,11 +1121,10 @@ at(index: number): T | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 401      | Parameter error.               |
 | 10200011 | The at method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1335,11 +1262,10 @@ find(predicate: (value: T, index: number, obj: Array\<T>) => boolean): T | undef
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1375,11 +1301,10 @@ includes(searchElement: T, fromIndex?: number): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------ |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error.       |
 
@@ -1414,11 +1339,10 @@ findIndex(predicate: (value: T, index: number, obj: Array\<T>) => boolean): numb
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.        |
 
@@ -1455,11 +1379,10 @@ fill(value: T, start?: number, end?: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1488,11 +1411,10 @@ shrinkTo(arrayLength: number): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The shrinkTo method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1525,11 +1447,10 @@ extendTo(arrayLength: number, initialValue: T): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The extendTo method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1549,7 +1470,7 @@ concat(...items: ConcatArray\<T>[]): Array\<T>
 
 拼接两个或多个数组。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1567,11 +1488,10 @@ concat(...items: ConcatArray\<T>[]): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                         |
 | ------- | -------- |
-| 401 |  Parameter error. Not a valid array. |
 | 10200011 | The concat method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1609,11 +1529,10 @@ splice(start: number): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The splice method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1630,7 +1549,7 @@ every(predicate: ArrayPredicateFn\<T, Array\<T>>): boolean
 
 测试ArkTS Array中的所有元素是否满足指定条件。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1667,7 +1586,7 @@ toLocaleString(): string
 
 根据当前应用的系统地区获取符合当前文化习惯的字符串表示形式，让每个元素调用自己的toLocaleString方法转换为字符串，然后使用逗号将每个元素的结果字符串按照顺序拼接成字符串。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1721,11 +1640,10 @@ splice(start: number, deleteCount: number, ...items: T[]): Array\<T>
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The splice method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1753,7 +1671,7 @@ let removeArray = array.splice(2, 2, 6, 7, 8); // array内容变为[1, 2, 6, 7, 
 >
 > 本接口不支持在.ets文件中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1787,7 +1705,7 @@ for (let item of array) {
 
 返回Array指定索引位置的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -1805,11 +1723,10 @@ for (let item of array) {
 
 **错误码**：
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                             |
 | ------- | ------------------------------------ |
-| 401 |        Parameter error.                  |
 | 10200001 | The value of index is out of range. |
 
 **示例：**

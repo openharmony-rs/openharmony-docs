@@ -14,6 +14,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## onMove
 
@@ -35,7 +37,7 @@ ArkTS-Sta: onMove(handler: OnMoveHandler | undefined): this
 
 | 参数名 | 类型      | 必填 | 说明       |
 | ------ | --------- | ---- | ---------- |
-| handler  | ArkTS-Dyn: Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefine | 是   | 拖拽动作。 |
+| handler  | ArkTS-Dyn: Optional\<[OnMoveHandler](#onmovehandler)\> <br/>ArkTS-Sta: [OnMoveHandler](#onmovehandler) \| undefined | 是   | 拖拽动作。 |
 
 **返回值：** 
 

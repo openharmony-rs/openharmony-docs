@@ -4,14 +4,16 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供监听指定[UIAbility](js-apis-app-ability-uiAbility.md)生命周期状态变化的能力。开发者可以将AbilityMonitor作为[abilityDelegator.addAbilityMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addabilitymonitor9)的入参来注册监听。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
 
 ## 导入模块
 
@@ -25,9 +27,13 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## AbilityMonitor
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                                         | 类型     | 只读 | 可选 | 说明                                                         |
 | ------------------------------------------------------------ | -------- | ---- | ---- | ------------------------------------------------------------ |
@@ -59,9 +65,10 @@ let monitor: abilityDelegatorRegistry.AbilityMonitor = {
 }
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
-  if (error) {
-    console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+abilityDelegator.addAbilityMonitor(monitor, (err: BusinessError<void> | null) => {
+  if (err) {
+    console.error(`addAbilityMonitor fail, error: ${JSON.stringify(err)}`);
   }
-});
+})
 ```
+

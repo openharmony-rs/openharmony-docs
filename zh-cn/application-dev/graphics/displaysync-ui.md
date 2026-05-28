@@ -1,8 +1,8 @@
 # 请求UI绘制帧率
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
-<!--Designer: @hudi33-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-此处以不同帧率改变文件组件字体大小为例，来模拟不同UI绘制帧率的效果。
+此处以不同帧率改变文本组件字体大小为例，来模拟不同UI绘制帧率的效果。
 
 1. 导入模块。
    <!-- @[display_sync_by_ui_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
@@ -227,6 +227,13 @@
        }
      };
 
+     if (this.backDisplaySyncSlow) {
+       // 取消订阅函数
+       this.backDisplaySyncSlow?.offFrame(draw30);
+       this.backDisplaySyncSlow?.stop();
+       this.backDisplaySyncSlow = undefined;
+     }
+ 
      let draw60 = (intervalInfo: displaySync.IntervalInfo) => {
        if (this.isBigger_60) {
          this.drawSecondSize += 1;
@@ -241,13 +248,6 @@
        }
      };
 
-     if (this.backDisplaySyncSlow) {
-       // 取消订阅函数
-       this.backDisplaySyncSlow?.offFrame(draw30);
-       this.backDisplaySyncSlow?.stop();
-       this.backDisplaySyncSlow = undefined;
-     }
- 
      if (this.backDisplaySyncFast) {
        // 取消订阅函数
        this.backDisplaySyncFast?.offFrame(draw60);

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 <!--Del-->
 - 快速入门<!--quick-start-->
@@ -44,6 +44,7 @@
     - [HSP转HAR指导](hsp-to-har.md)
     - [HAP转HAR指导](hap-to-har.md)
     - [集成态HSP](integrated-hsp.md)
+    - [基于ArkTS脚本开发应用Skill（ArkTS-Dyn）](arkts-skill-development-guide.md)
   - [应用程序包常见问题](common-problem-of-application.md)
   - [应用程序包术语](application-package-glossary.md)
 - [资源分类与访问](resource-categories-and-access.md)
@@ -57,6 +58,39 @@
     - [适配指导案例](arkts-more-cases.md)
   - 从ArkTS-Dyn到ArkTS-Sta的适配指导<!--arkts-dyn-to-arkts-sta-migration-->
     - [ArkTS Migration Visualizer使用指南](arkts-migration-visualizer-instructions.md)
+    - [ArkTS-Sta builtin迁移规则](arkts-dyn-to-sta-builtin-rules.md)
+      - [Array](builtin/arkts-dyn-to-sta-builtin-Array.md)
+      - [Constructor](builtin/arkts-dyn-to-sta-builtin-Constructor.md)
+      - [ReadOnly](builtin/arkts-dyn-to-sta-builtin-ReadOnly.md)
+      - [Annotations](builtin/arkts-dyn-to-sta-builtin-annotations.md)
+      - [stdlib1](builtin/arkts-dyn-to-sta-builtin-stdlib1.md)
+      - [stdlib2](builtin/arkts-dyn-to-sta-builtin-stdlib2.md)
+      - [stdlib3](builtin/arkts-dyn-to-sta-builtin-stdlib3.md)
+      - [BigUint64Array](builtin/arkts-dyn-to-sta-builtin-BigUint64Array.md)
+      - [BigInt64Array](builtin/arkts-dyn-to-sta-builtin-BigInt64Array.md)
+      - [Float32Array](builtin/arkts-dyn-to-sta-builtin-Float32Array.md)
+      - [Float64Array](builtin/arkts-dyn-to-sta-builtin-Float64Array.md)
+      - [Int8Array](builtin/arkts-dyn-to-sta-builtin-Int8Array.md)
+      - [Int16Array](builtin/arkts-dyn-to-sta-builtin-Int16Array.md)
+      - [Int32Array](builtin/arkts-dyn-to-sta-builtin-Int32Array.md)
+      - [Uint8Array](builtin/arkts-dyn-to-sta-builtin-Uint8Array.md)
+      - [Uint16Array](builtin/arkts-dyn-to-sta-builtin-Uint16Array.md)
+      - [Uint32Array](builtin/arkts-dyn-to-sta-builtin-Uint32Array.md)
+      - [Uint8ClampedArray](builtin/arkts-dyn-to-sta-builtin-Uint8ClampedArray.md)
+  - ArkTS-Sta动静态类型互操作规范指导<!--arkts-dyn-to-arkts-sta-spec-->
+    - [ArkTS-Sta互操作概述](arkts-interop-overview.md)
+    - [ArkTS-Sta互操作类型映射规则](arkts-interop-type-mapping.md)
+    - [ArkTS-Sta互操作场景](arkts-interop-more.md)
+    - [ArkTS-Sta互操作特性规范](arkts-interop-spec.md)
+    - [ArkTS动静态类型易用互操作规格指南](arkts-sta-interop-spec.md)
+    - [ArkTS动静态类型互操作声明文件生成工具Declgen规格指南](arkts-sta-declgen-spec.md)
+    - [ArkTS-Sta与ArkTS-Dyn互操作迁移规则](arkts-dyn-to-sta-interop-rules.md)
+  - 从ArkTS-Dyn到ArkTS-Sta的改造指导<!--arkts-dyn-to-arkts-sta-transformation-->
+    - [ArkTS静态类型及应用迁移改造概述](arkts-sta-additions-application-migration.md)
+    - [ArkTS静态类型迁移改造案例](arkts-sta-migration-case.md)
+    - [ArkTS静态类型改造案例](arkts-sta-transformation-case.md)
+    - [ArkTS静态类型应用迁移改造常见问题](arkts-sta-migration-questions.md)
+  - [ArkTS静态类型术语](arkts-sta-terminology.md)
   - [ArkTS高性能编程实践](arkts-high-performance-programming.md)
   - 面向其他语言的ArkTS迁移指导<!--arkts-for-other-languages-->
     - [从Java到ArkTS的迁移指导](getting-started-with-arkts-for-java-programmers.md)

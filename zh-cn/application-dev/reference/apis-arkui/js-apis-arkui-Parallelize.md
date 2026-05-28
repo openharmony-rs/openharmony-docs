@@ -30,7 +30,7 @@ import { ParallelOption, ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 ## ParallelizeUI
 
-ParallelizeUI(options: ParallelOption | undefined, content_: CustomBuilder)
+ParallelizeUI(options: ParallelOption | undefined, content_: CustomBuilder): void
 
 声明式的并行化创建UI方法。options参数为undefined时，默认开启并行化创建。
 
@@ -167,7 +167,7 @@ struct Index {
 
 
 ## ParallelizeUI\<T\>
-ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_: CustomBuilderT\<T\>)
+ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_: CustomBuilderT\<T\>): void
 
 声明式UI并行化创建接口。该方法支持在并行化环境中安全地使用外部定义的状态变量。options参数为undefined时，默认开启并行化创建。
 
@@ -183,7 +183,7 @@ ParallelizeUI\<T\>(options: ParallelOption | undefined, param: () => T, content_
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。|
 | param  | () => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。 |
-| content_  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8)T\<T\> | 是   | 定义要创建的UI内容。|
+| content_  | [CustomBuilderT](arkui-ts/ts-types.md#custombuildertt23)\<T\> | 是   | 定义要创建的UI内容。|
 
 
 **示例：**
@@ -271,8 +271,7 @@ ParallelizeUI\<V, T\>(options: ParallelOption | undefined, arr: Array\<V\>, para
 | options  | [ParallelOption](#paralleloption) \| undefined | 是   | 使用ParallelizeUI方法创建组件时选择是否开启并行化的参数，当options参数为undefined时，默认开启并行化创建。|
 | arr  | Array\<V\> | 是   | 数据源，为Array类型的数组。 |
 | param  | (item: V, index: int) => T | 是   | 参数生成函数，用于生成content_调用时的参数。该函数会在UI线程调用，开发者可将并行创建需要用到的数据在此处进行拷贝。避免数据多线程读写引发的安全性问题。<br/>说明：<br/>- item是当前数据项，index是数据项索引值。 |
-| content_  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8)T\<T\>): void | 是   | 定义要创建的UI内容。- param参数（必选）：param函数调用后返回的对象。 |
-
+| content_  | [CustomBuilderT](arkui-ts/ts-types.md#custombuildertt23)\<T\> | 是   | 定义要创建的UI内容。param参数为param函数调用后返回的对象。 |
 
 **示例：**
 

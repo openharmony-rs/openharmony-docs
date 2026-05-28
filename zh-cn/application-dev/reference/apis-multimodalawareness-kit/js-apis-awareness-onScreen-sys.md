@@ -164,6 +164,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在capture接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码。|
     |UiTree|获取页面内json树信息。<br> **起始版本：** 26.0.0|
     |InjectEvent|注入事件。<br> **起始版本：** 26.0.0|
+    |CollectStrategy|获取屏幕采集策略<br> **起始版本：** 26.0.0|
 
   * groupId支持能力列表<br>
     按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
@@ -702,7 +703,6 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
 主动触发屏幕行为交互，实现对界面行为的识别与行为回执。例如：当capList能力列表为JumpContext时，点击后通过回执信息精准跳转至指定段落并实现文字高亮。当capList能力列表为InjectEvent时，点击后执行相应的点击事件。
 
-
 **需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
@@ -727,7 +727,7 @@ interact接口支持的capList能力列表，如下：
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23[])&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)[]&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -771,7 +771,6 @@ try {
 
 **InjectEvent 示例**：
 
-```ts
 import onScreen from "@ohos.multimodalAwareness.onScreen";
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
@@ -780,10 +779,10 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 }
 
 let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  // （必填字段）注入事件命令，用于向系统注入按键/操作事件。
   parameters: {
-     // （必填字段）注入事件命令，用于向系统注入按键/操作事件。
+    // （injectEvent必填，其他可选）注入事件的具体内容：JSON字符串格式，包含组件类型、执行动作、参数。
     "InjectEvent": {
-       // （injectEvent必填，其他可选）注入事件的具体内容：JSON字符串格式，包含组件类型、执行动作、参数。
       "injectEvent": '{"componentType":"","action":"back","params":{}}',
       "compId": ["0"],    // （可选）目标组件ID数组：指定要注入事件的组件。
       "windowId": 0,      // （可选）窗口ID：指定注入事件的目标窗口，0表示当前激活窗口。

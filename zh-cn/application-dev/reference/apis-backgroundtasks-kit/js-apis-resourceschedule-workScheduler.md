@@ -335,7 +335,7 @@ workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
 
 ## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
 
-obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -370,7 +370,7 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 ## workScheduler.obtainAllWorks<sup>10+<sup>
 
-obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
+obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -560,9 +560,9 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 ## workScheduler.isLastWorkTimeOut<sup>10+<sup>
 
-ArkTS-Dyn: isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+ArkTS-Dyn: isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
-ArkTS-Sta: isLastWorkTimeOut(workId: int, callback : AsyncCallback\<boolean>): void
+ArkTS-Sta: isLastWorkTimeOut(workId: int, callback: AsyncCallback\<boolean>): void
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 

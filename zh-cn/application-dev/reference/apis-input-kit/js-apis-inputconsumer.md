@@ -132,7 +132,7 @@ struct Index {
           // 获取所有系统热键
           inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => {
             console.info(`Succeeded in getting list of system hotkeys: ${JSON.stringify(data)}.`);
-          }).catch((error: BusinessError) => {
+          }).catch((error) => {
             console.error(`Failed to get all system hotkeys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           })
         })
@@ -161,7 +161,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 | ---------- | -------------------------- | ---- | ---------- |
 | type       | string                     | 是    | 事件类型，固定取值为'hotkeyChange'。                   |
 | hotkeyOptions | [HotkeyOptions](#hotkeyoptions) | 是    | 快捷键选项。                 |
-| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | 是    | 回调函数，获取满足条件的组合按键输入事件。 |
+| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | 是    | 回调函数，返回满足条件的组合按键输入事件。 |
 
 **错误码**：
 
@@ -446,7 +446,7 @@ struct Index {
 
 on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent&gt;): void
 
-订阅按键按下事件，使用callback异步回调。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。
+订阅按键按下事件。若当前应用窗口为前台焦点窗口，用户按下指定按键，会触发回调。使用callback异步回调。
 
 订阅成功后，该按键事件的系统默认行为将被屏蔽，即不会再触发系统级的响应，如音量调节。要恢复系统响应，请使用[off](#inputconsumeroffkeypressed16)方法取消订阅。
 
@@ -466,7 +466,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 | ---------- | --------------------------             | ----  | ---------- |
 | type       | string                                 | 是     | 事件类型，固定取值为'keyPressed'。        |
 | options    | [KeyPressedConfig](#keypressedconfig16)| 是     | 按键事件消费设置。           |
-| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，用于返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
+| callback   | Callback&lt;[KeyEvent](./js-apis-keyevent.md#keyevent)&gt; | 是    | 回调函数，返回按键事件。订阅不同的按键事件需要使用不同的callback，否则订阅不生效。 |
 
 **错误码**：
 

@@ -1,9 +1,9 @@
 # @ohos.app.form.formInfo (formInfo)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formInfo模块提供了卡片信息和状态等相关类型和枚举。
@@ -279,7 +279,7 @@ import { formInfo } from '@kit.FormKit';
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
-### (formId: string): Promise&lt;formInfo.Rect&gt;
+type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 卡片位置、尺寸查询回调。使用Promise异步回调。
 
