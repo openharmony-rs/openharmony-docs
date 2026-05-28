@@ -1,8 +1,8 @@
 # UI组件适配（动效与视效）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -11,7 +11,7 @@
 ## 动效类接口
 
 ### create
-ArkTS-Dyn接口声明：static create(options: AnimatorOptions): AnimatorResult
+ArkTS-Dyn接口声明：[static create(options: AnimatorOptions): AnimatorResult](../reference/apis-arkui/js-apis-animator.md#createdeprecated)
 
 替代的ArkTS-Sta接口声明：[createAnimator(options: AnimatorOptions): AnimatorResult](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)
 
@@ -31,7 +31,7 @@ this.getUIContext().createAnimator({duration: 1500, easing: "friction", delay: 0
 
 
 ### createAnimator
-ArkTS-Dyn接口声明：static createAnimator(options: AnimatorOptions): AnimatorResult
+ArkTS-Dyn接口声明：[static createAnimator(options: AnimatorOptions): AnimatorResult](../reference/apis-arkui/js-apis-animator.md#createanimatordeprecated)
 
 替代的ArkTS-Sta接口声明：[createAnimator(options: AnimatorOptions): AnimatorResult](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#createanimator)
 
@@ -92,9 +92,9 @@ animatorResult.reset({duration: 500, easing: "friction", delay: 1, fill: "forwar
 
 
 ### onrepeat
-ArkTS-Dyn接口声明：onrepeat: () => void
+ArkTS-Dyn接口声明：[onrepeat: () => void](../reference/apis-arkui/js-apis-animator.md#animatorresult)
 
-替代的ArkTS-Sta接口声明：onRepeat: () => void
+替代的ArkTS-Sta接口声明：[onRepeat: () => void](../reference/apis-arkui/js-apis-animator.md#animatorresult)
 
 
 
@@ -118,9 +118,9 @@ animatorResult.onRepeat = ()=>{
 
 
 ### oncancel
-ArkTS-Dyn接口声明：oncancel: () => void
+ArkTS-Dyn接口声明：[oncancel: () => void](../reference/apis-arkui/js-apis-animator.md#animatorresult)
 
-替代的ArkTS-Sta接口声明：onCancel: () => void
+替代的ArkTS-Sta接口声明：[onCancel: () => void](../reference/apis-arkui/js-apis-animator.md#animatorresult)
 
 
 
@@ -144,9 +144,9 @@ animatorResult.onCancel = ()=>{
 
 
 ### onfinish
-ArkTS-Dyn接口声明：onfinish: () => void
+ArkTS-Dyn接口声明：[onfinish: () => void](../reference/apis-arkui/js-apis-animator.md#animatorresult)
 
-替代的ArkTS-Sta接口声明：onFinish: () => void
+替代的ArkTS-Sta接口声明：[onFinish: () => void](../reference/apis-arkui/js-apis-animator.md#animatorresult)
 
 
 
@@ -170,9 +170,9 @@ animatorResult.onFinish = ()=>{
 
 
 ### onframe
-ArkTS-Dyn接口声明：onframe: (progress: number) => void
+ArkTS-Dyn接口声明：[onframe: (progress: number) => void](../reference/apis-arkui/js-apis-animator.md#animatorresult)
 
-替代的ArkTS-Sta接口声明：onFrame: (progress: number) => void
+替代的ArkTS-Sta接口声明：[onFrame: (progress: number) => void](../reference/apis-arkui/js-apis-animator.md#animatorresult)
 
 
 
@@ -274,9 +274,9 @@ let a: ICurve = curves.initCurve(Curve.EaseIn)
 ```
 
 ### TransitionOptions
-ArkTS-Dyn接口声明：interface TransitionOptions
+ArkTS-Dyn接口声明：[interface TransitionOptions](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitionoptionsdeprecated)
 
-替代的ArkTS-Sta接口声明：class TransitionEffect<Type extends keyof TransitionEffects = keyof TransitionEffects, Effect extends TransitionEffects[Type] = TransitionEffects[Type]>
+替代的ArkTS-Sta接口声明：[class TransitionEffect<Type extends keyof TransitionEffects = keyof TransitionEffects, Effect extends TransitionEffects[Type] = TransitionEffects[Type]>](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
 
 
@@ -294,9 +294,9 @@ transition(TransitionEffect.opacity(0))
 
 
 ### opacity
-ArkTS-Dyn接口声明：opacity?: number
+ArkTS-Dyn接口声明：[opacity?: number](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitionoptionsdeprecated)
 
-替代的ArkTS-Sta接口声明：static opacity(alpha: number): TransitionEffect<"opacity">
+替代的ArkTS-Sta接口声明：[static opacity(alpha: number): TransitionEffect<"opacity">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
 
 
@@ -314,9 +314,9 @@ transition(TransitionEffect.opacity(0))
 
 
 ### rotate
-ArkTS-Dyn接口声明：rotate?: RotateOptions
+ArkTS-Dyn接口声明：[rotate?: RotateOptions](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitionoptionsdeprecated)
 
-替代的ArkTS-Sta接口声明：static rotate(options: RotateOptions): TransitionEffect<"rotate">
+替代的ArkTS-Sta接口声明：[static rotate(options: RotateOptions): TransitionEffect<"rotate">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
 
 
@@ -334,9 +334,9 @@ transition(TransitionEffect.rotate({x: 1, y: 1} as RotateOptions))
 
 
 ### scale
-ArkTS-Dyn接口声明：scale?: ScaleOptions
+ArkTS-Dyn接口声明：[scale?: ScaleOptions](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitionoptionsdeprecated)
 
-替代的ArkTS-Sta接口声明：static scale(options: ScaleOptions): TransitionEffect<"scale">
+替代的ArkTS-Sta接口声明：[static scale(options: ScaleOptions): TransitionEffect<"scale">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
 
 
@@ -354,9 +354,9 @@ transition(TransitionEffect.scale({x: 1, y: 1} as ScaleOptions))
 
 
 ### translate
-ArkTS-Dyn接口声明：translate?: TranslateOptions
+ArkTS-Dyn接口声明：[translate?: TranslateOptions](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitionoptionsdeprecated)
 
-替代的ArkTS-Sta接口声明：static translate(options: TranslateOptions): TransitionEffect<"translate">
+替代的ArkTS-Sta接口声明：[static translate(options: TranslateOptions): TransitionEffect<"translate">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
 
 
@@ -374,9 +374,9 @@ transition(TransitionEffect.translate({x: 1, y: 1} as TranslateOptions))
 
 
 ### type
-ArkTS-Dyn接口声明：type?: TransitionType
+ArkTS-Dyn接口声明：[type?: TransitionType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#transitiontype)
 
-替代的ArkTS-Sta接口声明：static asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect<"asymmetric">
+替代的ArkTS-Sta接口声明：[static asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEffect<"asymmetric">](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)
 
 
 
@@ -482,7 +482,7 @@ let m = matrix4.identity().scale({x: 1, y: 1})
 
 ArkTS-Dyn接口声明：[rotate(options: RotateOption): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#matrix4rotatedeprecated)
 
-替代的ArkTS-Sta接口声明：[rotate(options: RotateOption): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#rotate)
+替代的ArkTS-Sta接口声明：[rotate(options: RotateOption): Matrix4Transit](../reference/apis-arkui/js-apis-matrix4.md#scale)
 
 
 

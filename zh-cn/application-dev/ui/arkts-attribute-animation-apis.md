@@ -1,8 +1,8 @@
 # 实现属性动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @hehongyang3-->
-<!--Designer: @hehongyang3-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本章节讨论的属性动画不是狭义的[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)接口，而是通过给定新的可动画属性终值，对属性产生动画的方式。
+> 本章节讨论的属性动画不是狭义的[属性动画接口](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)，而是通过给定新的可动画属性终值，对属性产生动画的方式。
 
 | 动画接口 | 作用域 | 原理 | 使用场景 |
 | -------- | -------- | -------- | -------- |
