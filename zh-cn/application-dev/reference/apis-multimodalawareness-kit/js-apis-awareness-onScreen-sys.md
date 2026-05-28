@@ -127,7 +127,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 * 校验规则：调用接口时，系统会单独检测capList和groupId。<br>
 * 能力列表：按能力项或分组ID使用屏上感知功能，具体定义如下。
   * capList支持能力列表<br>
-    按具体业务场景预设的能力，可进行单一订阅或者触发，如下:
+    按具体业务场景预设的能力，可进行单一订阅或者触发，如下：
     |capList支持能力列表|功能说明|
     | ---- | ------ |
     |Article|获取阅读场景感知信息。|
@@ -142,7 +142,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |CollectStrategy|获取屏幕采集策略。<br> **起始版本：** 26.0.0|
 
   * groupId支持能力列表<br>
-    按业务场景预设的一组能力集合。可统一订阅业务场景，如下：
+    按具体业务场景预设的能力，可进行单一订阅或者触发，如下：
     |groupId支持能力列表|对应子项能力|功能说明|
     | ---- | ------ | ------|
     |SmartEdge|Article|获取阅读场景感知信息。|
@@ -563,7 +563,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-capture接口支持的capList能力列表：
+capture接口支持的capList能力列表，如下：
 |capList能力列表|功能说明|
 | ---- | ------ |
 |UiImage|获取页面内子图信息。|
@@ -640,7 +640,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-interact接口支持的capList能力列表：
+interact接口支持的capList能力列表，如下：
 |capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
@@ -742,10 +742,10 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-apperceive接口支持的groupId能力列表:
+apperceive接口支持的groupId能力列表，如下：
 |groupId能力列表|对应子项能力|功能说明|
 | ---- | ------ | ------|
-|SmartEdge|Article|获取阅读场景的感知信息|
+|SmartEdge|Article|获取阅读场景的感知信息。|
 |SmartEdge|ShortVideo|获取短视频场景的感知信息。|
 |SmartEdge|Todo|获取待办场景的感知信息。|
 |SmartEdge|Activity|获取基础服务的感知信息。|
