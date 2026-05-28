@@ -170,6 +170,12 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
      需要使用registerNativeEmbedRule注册object标签。
      <!-- @[register_object_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+     
+     ``` TypeScript
+     Web({src: $rawfile('test2.html'), controller: this.browserTabController})
+       // 注册同层标签为'object'，类型为'test'前缀
+       .registerNativeEmbedRule('object', 'test')
+     ```
 
      与registerNativeEmbedRule相对应的前端页面代码，类型可使用"test"及以"test"为前缀的字串。
 
