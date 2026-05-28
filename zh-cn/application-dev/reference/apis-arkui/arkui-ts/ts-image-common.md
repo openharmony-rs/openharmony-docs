@@ -31,17 +31,21 @@ type PixelMap = PixelMap
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型                | 只读 | 可选 | 说明                   |
 | ------ | ----------------- | ---- | -------------------- | -------------------- |
-| types | [ImageAnalyzerType[]](#imageanalyzertype12) | 否 | 否 | 图像AI分析类型。|
+| types | [ImageAnalyzerType](#imageanalyzertype12)[] | 否 | 否 | 图像AI分析类型。|
 
 ## ImageAnalyzerType<sup>12+</sup>
 
 图像AI分析类型，未设置时默认开启主体识别和文字识别功能。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,11 +61,13 @@ type PixelMap = PixelMap
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 类型                | 只读 | 可选 | 说明                   |
 | ------ | ----------------- | ---- | -------------------- | -------------------- |
-| types | [ImageAnalyzerType[]](#imageanalyzertype12) | 否 | 是 | 图像AI分析类型。 |
+| types | [ImageAnalyzerType](#imageanalyzertype12)[] | 否 | 是 | 图像AI分析类型。 |
 | aiController | [ImageAnalyzerController](#imageanalyzercontroller12) | 否 | 是 | 图像AI分析控制器。 |
 
 > **说明：**
@@ -76,6 +82,8 @@ type PixelMap = PixelMap
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### constructor<sup>12+</sup>
@@ -85,6 +93,8 @@ constructor()
 构造函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,13 +106,15 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值:**
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |
-| [ImageAnalyzerType[]](#imageanalyzertype12) | 对应组件支持的分析类型。 |
+| [ImageAnalyzerType](#imageanalyzertype12)[] | 对应组件支持的分析类型。 |
 
 ## ContentTransitionEffect<sup>21+</sup>对象说明
 

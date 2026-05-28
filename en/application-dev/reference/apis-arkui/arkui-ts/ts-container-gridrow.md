@@ -158,10 +158,10 @@ Breakpoint reference of the grid container component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Description|
-| -------- | -------- |
-| WindowSize | The window is used as a reference.|
-| ComponentSize | The container is used as a reference.|
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| WindowSize | 0 | The window is used as a reference.|
+| ComponentSize | 1 | The container is used as a reference.|
 
 ## GridRowDirection
 

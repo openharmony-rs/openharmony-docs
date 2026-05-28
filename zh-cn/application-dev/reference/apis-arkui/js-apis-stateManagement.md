@@ -10,7 +10,9 @@
 
 >**说明：**
 >
->本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 本文中T和S的含义如下：
@@ -1503,9 +1505,11 @@ getCustomComponentContext\<T extends BaseCustomComponent\>(customComponent: T): 
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1599,14 +1603,12 @@ type TaskCallback = () => T
 
 [addMonitor](#addmonitor20)的可选参数，用于配置回调类型以及是否使能通配符能力。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明     |
 | ------ | ---- | ---- | ---- | ------------ |
-|isSynchronous|boolean|否|是|配置当前回调函数否是为同步回调。true为同步回调。默认值为false，即异步回调。|
-|enableWildcard|boolean|否|是|配置当前addMonitor是否使能通配符能力。true为使能通配符能力，false为关闭通配符能力。默认值为false，即关闭通配符能力。当关闭通配符能力，但路径中含有通配符时，该路径将视为不合法路径。<br>**起始版本：** 26.0.0|
+|isSynchronous|boolean|否|是|配置当前回调函数是否为同步回调。true为同步回调。默认值为false，即异步回调。<br>**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。|
+|enableWildcard|boolean|否|是|配置当前addMonitor是否使能通配符能力。true为使能通配符能力，false为关闭通配符能力。默认值为false，即关闭通配符能力。当关闭通配符能力，但路径中含有通配符时，该路径将视为不合法路径。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
 ## MonitorCallback<sup>20+</sup>
 type MonitorCallback = (monitorValue: IMonitor) => void
@@ -2169,6 +2171,12 @@ struct CompV2 {
 
 **起始版本：** 26.0.0
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### getReusePool
 
 getReusePool(): IReusePool | undefined
@@ -2177,15 +2185,17 @@ getReusePool(): IReusePool | undefined
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
 | 类型                                   |  说明                          |
 | -------------------------------------- | ------------------------------------------------ |
-| [IReusePool](#ireusepool) \| undefined | 此组件的复用池（如果已配置）；否则为 `undefined`。 |
+| [IReusePool](#ireusepool) \| undefined | 当前组件配置全局复用池时，返回复用池信息，否则返回`undefined`。 |
 
 **示例：**
 
@@ -2207,15 +2217,19 @@ struct PoolOwner {
     const context = UIUtils.getCustomComponentContext(this);
     const pool = context.getReusePool();
     if (pool) {
-      console.info('已配置复用池');
+      console.info('Global reuse pool configured.');
     } else {
-      console.info('此组件上没有复用池');
+      console.info('No global reuse pool configured.');
     }
   }
 
   build() {
     Column() {
       ReusableChild()
+      Button('Check Pool')
+        .onClick(() => {
+          this.checkPool();
+        })
     }
   }
 }
@@ -2227,30 +2241,38 @@ struct PoolOwner {
 
 **起始版本：** 26.0.0
 
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### getReusableInfo
 
-getReusableInfo(reusableComp: Function, reuseId?: string): IReusableInfo | IReusableInfo[] | undefined
+getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
 
 检索此复用池中给定可复用组件类型的回收实例信息。
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名        | 类型                                 | 必填 |  说明            |
 | ------------ | ------------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------- |
-| reusableComp | Function | 是   | 要查询的可复用自定义组件的名称。|
+| constructor | [ReusableComponentConstructor](#reusablecomponentconstructor) | 是   | 要查询的可复用自定义组件的名称。|
 | reuseId      | string   | 否   | 可选的reuseId用于过滤结果。如果指定，则仅返回此特定reuseId复用池的信息。默认值是undefined，返回所有reuseId复用池信息。   |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [IReusableInfo](#ireusableinfo) \| [IReusableInfo](#ireusableinfo)[] \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
 
 **示例：**
 
@@ -2286,7 +2308,7 @@ struct PoolOwner {
     // 查询池接受的组件类型。
     const info = pool.getReusableInfo(ReusableChild);
     if (info === undefined) {
-      console.info('ReusableChild 不被此池接受');
+      console.info('No reuse pool that accepts ReusableChild');
     } else if (Array.isArray(info)) {
       // 使用了多个 reuseId 桶。
       info.forEach((item: IReusableInfo, i: number) => {
@@ -2299,7 +2321,7 @@ struct PoolOwner {
 
     // 查询特定的 reuseId — 始终返回单个 IReusableInfo。
     const bucketInfo = pool.getReusableInfo(ReusableChild, 'A') as IReusableInfo;
-    console.info(`reuseId 'myId': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
+    console.info(`reuseId 'A': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
   }
 
   build() {
@@ -2321,22 +2343,24 @@ struct PoolOwner {
 
 ### preRender
 
-preRender(builder: WrappedBuilder\<[]\>, n: number): Promise\<void\>
+preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
 预创建@Reusable/@ReusableV2组件并将它们放入此复用池中。
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名  | 类型                 | 必填 |  说明                            |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`n`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
-| n   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
+| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
+| times   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
 
 **返回值：**
 
@@ -2425,9 +2449,11 @@ struct CompA {
 
 **起始版本：** 26.0.0
 
-**原子化服务 API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称     | 类型   | 只读 | 可选 |  说明                               |
 | -------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -2491,11 +2517,11 @@ struct PoolOwner {
 
   build() {
     Column() {
-      Button('切换 A')
+      Button('切换A')
         .onClick(() => {
           this.showA = !this.showA;
         })
-      Button('切换 B')
+      Button('切换B')
         .onClick(() => {
           this.showB = !this.showB;
         })
@@ -2513,3 +2539,17 @@ struct PoolOwner {
   }
 }
 ```
+
+## ReusableComponentConstructor
+
+type ReusableComponentConstructor = Function
+
+复用自定义组件初始化函数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。

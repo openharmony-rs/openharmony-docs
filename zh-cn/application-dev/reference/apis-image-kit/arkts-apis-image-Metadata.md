@@ -70,7 +70,7 @@ async function GetProperties(context: Context) {
     await metaData.getProperties(["ImageWidth", "ImageLength"]).then((data2) => {
       console.info('Get properties ',JSON.stringify(data2));
     }).catch((error: BusinessError) => {
-      console.error(`Get properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -131,7 +131,7 @@ async function SetProperties(context: Context) {
       "ImageLength": "300"
     };
     await metaData.setProperties(setkey).then(async () => {
-      console.info('Set AuxPictureObj properties success.');
+      console.info('Succeeded in setting AuxPictureObj properties.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to set metadata Properties. code is ${error.code}, message is ${error.message}`);
     })
@@ -179,7 +179,7 @@ async function GetAllProperties(context: Context) {
       console.info('Metadata have ', count, ' properties');
       console.info(`Get metadata all properties: ${data2}`);
     }).catch((error: BusinessError) => {
-      console.error(`Get metadata all properties failed error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -222,7 +222,7 @@ async function Clone(context: Context) {
     new_metadata.getProperties(["ImageWidth"]).then((data1) => {
       console.info(`Clone new_metadata and get Properties: ${data1}`);
     }).catch((err: BusinessError) => {
-      console.error(`Clone new_metadata failed, error : ${err}`);
+      console.error(`Failed to clone new_metadata, error : ${err}`);
     });
   } else {
     console.error('Metadata is null.');
@@ -267,7 +267,7 @@ async function GetBlob(context: Context) {
   if (metaData != null) {
     let blob = await metaData.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
     }
   }
 }
@@ -324,7 +324,7 @@ async function setBlob(context: Context) {
   if (metaData != null) {
     let blob = await metaData.getBlob();
     if (blob != undefined) {
-      console.info("get blob success");
+      console.info("Succeeded in getting blob.");
       metaData.setBlob(blob);
     }
     let new_blob = metaData.getBlob();

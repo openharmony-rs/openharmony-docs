@@ -39,7 +39,7 @@
 | change | {&nbsp;index:&nbsp;currentIndex&nbsp;} | 当前显示的组件索引变化时触发该事件。 |
 | click | - | 点击动作触发该事件。 |
 | longpress | - | 长按动作触发该事件。 |
-| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | 组件上快速滑动后触发。 |
+| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | 组件上快速滑动后触发。 |
 
 
 ## 样式
@@ -119,6 +119,9 @@ export default {
     },
     onShow() {
         this.$refs.swiperObj.rotation({focus: true});
+    },
+    onHide() {
+        this.$refs.swiperObj.rotation({focus: false})
     }
 }
 ```

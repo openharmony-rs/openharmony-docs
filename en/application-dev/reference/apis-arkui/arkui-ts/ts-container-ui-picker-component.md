@@ -63,7 +63,7 @@ Creates a **UIPickerComponent** container, whose selected item is determined by 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options |  [UIPickerComponentOptions](#uipickercomponentoptions)| No| Parameters of the **UIPickerComponent** container.|
+| options |  [UIPickerComponentOptions](#uipickercomponentoptions)| No| Parameters of the **UIPickerComponent** container. If the parameter is left empty, the component is a placeholder but the content is empty.|
 
 ## UIPickerComponentOptions
 

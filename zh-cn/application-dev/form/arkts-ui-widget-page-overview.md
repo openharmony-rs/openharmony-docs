@@ -1,9 +1,9 @@
 # ArkTS卡片界面开发概述
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 ArkTS卡片开发采用通用<!--RP1-->[ArkTS语言](../quick-start/arkts-get-started.md)<!--RP1End-->，开发者可以使用[ArkTS声明式开发范式](../ui/arkts-ui-development-overview.md)开发ArkTS卡片页面。

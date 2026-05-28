@@ -1,8 +1,8 @@
 # Interface (AudioSessionManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -678,7 +678,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
   console.info('Succeeded in doing getAvailableDevices.');
 
   if (data[0]) {
@@ -963,7 +963,7 @@ audio.getAudioManager().getSessionManager().enableMuteSuggestionWhenMixWithOther
 ```
 
 
-## setCapturerMuteHint<sup>24</sup>
+## setCapturerMuteHint<sup>24+</sup>
 
 setCapturerMuteHint(mute: boolean): Promise&lt;void&gt;
 

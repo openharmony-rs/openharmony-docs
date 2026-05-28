@@ -19,9 +19,9 @@ To do so, you need to create a certificate chain object first.
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. Use [cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11) to create an X.509 certificate chain (**X509CertChain**) object.
+2. Use [cert.createX509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatex509certchain11) to create an X.509 certificate chain (**X509CertChain**) object and return the result.
 
-3. Call [x509CertChain.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11) to set **trustSystemCa** to **true** and use the prebuilt CA certificate to validate the certificate chain.
+3. Call [x509CertChain.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate11) to set **trustSystemCa** to **true** and use the prebuilt CA certificate to validate the certificate chain and return the result.
 
 <!-- @[verify-certchain-by-systemca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/VerifyCertchainBySystemca.ets) -->
 

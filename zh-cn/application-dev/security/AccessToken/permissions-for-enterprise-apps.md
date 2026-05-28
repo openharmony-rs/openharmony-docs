@@ -36,6 +36,8 @@
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
 
+**支持设备**：PC/2in1
+
 **起始版本**：10
 
 **变更信息**：API 10-14时，其权限级别为system_core，仅面向MDM应用开放；从API 14开始，权限级别变更为system_basic，开放范围变更为企业普通应用。
@@ -54,6 +56,8 @@
 
 <!--Del-->
 **是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：10
 
@@ -650,6 +654,23 @@ UDID（Unified Device ID）是设备的唯一标识。
 **支持设备**：PC/2in1
 
 **起始版本**：24
+
+## ohos.permission.DLP_POLICY_MANAGER
+
+允许企业普通应用通过数据防泄漏能力管理透明加解密策略。
+
+获取该权限后，应用可管理透明加解密策略，如指定其他应用的文件操作需透明加解密、指定对应的加解密算法等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
 
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 

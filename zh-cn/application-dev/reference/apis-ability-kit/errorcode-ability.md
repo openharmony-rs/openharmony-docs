@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 > **说明：**
@@ -846,7 +846,7 @@ Failed to obtain the target application information.
 
 **错误描述**
 
-调用[URI授权相关接口](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
+调用[@ohos.application.uriPermissionManager (URI权限管理)(系统接口)](js-apis-uripermissionmanager-sys.md)时，无法根据应用包名和分身索引获取到目标应用的相关信息。
 
 **可能原因**
 
@@ -860,6 +860,24 @@ Failed to obtain the target application information.
 2. 检查分身应用索引是否在允许范围内。
 3. 检查目标应用是否创建了该索引对应的分身应用。
 <!--DelEnd-->
+
+## 16000082 UIAbility正在启动中
+
+**错误信息**
+
+The UIAbility is being started.
+
+**错误描述**
+
+UIAbility正在启动中，onCreate或onWindowStageCreate生命周期回调尚未完成。
+
+**可能原因**
+
+UIAbility仍处于启动阶段，onCreate或onWindowStageCreate回调尚未执行完成。
+
+**处理步骤**
+
+等待UIAbility完成onCreate或onWindowStageCreate生命周期回调后再执行相关操作。
 
 ## 16000083 不允许该类型ExtensionAbility启动指定Ability
 
@@ -2679,3 +2697,223 @@ Maximum connections from the same caller have been reached.
 **处理步骤**
 
 调用方断开一些连接后重新发起连接。
+
+<!--Del-->
+## 35600030 CLI工具不存在
+
+**错误信息**
+
+No tool with the specified name exists.
+
+**错误描述**
+
+指定的工具不存在。
+
+**可能原因**
+
+系统内不存在此工具。
+
+**处理步骤**
+
+检查传入的cliName是否正确，需重新传入正确的cliName。
+
+## 35600031 工具并发数已达上限
+
+**错误信息**
+
+Maximum number of processes has been reached.
+
+**错误描述**
+
+工具并发数已达上限。
+
+**可能原因**
+
+系统内正在运行的工具已达到系统允许的上限，不允许再发起新的连接请求。
+
+**处理步骤**
+
+等待部分工具执行结束后重新发起连接。
+
+## 35600032 指定的session不存在
+
+**错误信息**
+
+The session does not exist.
+
+**错误描述**
+
+指定的session不存在。
+
+**可能原因**
+
+传入了错误的sessionId。
+
+**处理步骤**
+
+检查sessionId是否正确，传入正确的sessionId。
+
+## 35600033 向工具进程写入消息失败
+
+**错误信息**
+
+Failed to write message to tool.
+
+**错误描述**
+
+向工具进程写入消息失败。
+
+**可能原因**
+
+write系统调用失败。
+
+**处理步骤**
+
+缓冲区满或对端异常，尝试等待一会重新写入。
+
+## 35600050 偶发性报错
+
+**错误信息**
+
+System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module.
+
+**错误描述**
+
+系统运行过程中出现的一些应用无法解决的偶发性报错。
+
+**可能原因**
+
+1. 不能连接到系统服务。
+2. 系统服务之间通信失败。
+
+**处理步骤**
+
+1. 退出应用后重新尝试。
+2. 重启设备后重新尝试。
+<!--DelEnd-->
+
+## 16000161 当前进程的处理流程尚未结束，无法调用此API
+
+**错误信息**
+
+Delayed process exit is not pending in the current process, and this API cannot be called.
+
+**错误描述**
+
+在当前进程中，由于延迟退出进程未处于等待状态，因此无法调用此API。
+
+**可能原因**
+
+调用方在调用该API前，未启用当前进程延迟退出功能。
+
+**处理步骤**
+
+调用方先调用启用当前进程延迟退出接口，再调用该API。
+
+## 16000162 当前的进程中仍有其他UIAbility，无法调用此API
+
+**错误信息**
+
+The current process still has another UIAbility, and this API cannot be called.
+
+**错误描述**
+
+当前的进程中仍有其他UIAbility，此API无法被调用。
+
+**可能原因**
+
+调用方当前进程中还存在其他的UIAbility。
+
+**处理步骤**
+
+调用方保证当前进程中只有一个UIAbility且处于退出状态。
+
+## 35600004 指定的AgentCard版本低于当前版本
+
+**错误信息**
+
+The specified AgentCard version is older than the current version.
+
+**错误描述**
+
+指定的AgentCard版本低于当前版本。
+
+**可能原因**
+
+调用updateAgentCard接口时新版本号低于旧版本号。
+
+**处理步骤**
+
+将AgentCard中的version字段进行更新。
+
+## 35600005 指定的AgentCard版本无效
+
+**错误信息**
+
+The specified AgentCard version is invalid.
+
+**错误描述**
+
+指定的AgentCard版本无效。
+
+**可能原因**
+
+AgentCard中的version字段没有遵循SemVer的版本规则。
+
+**处理步骤**
+
+更新AgentCard中的version字段并遵循SemVer的版本规则。
+
+## 35600006 指定的AgentCard已被注册
+
+**错误信息**
+
+The specified AgentCard has already been registered. Use updateAgentCard instead.
+
+**错误描述**
+
+指定的AgentCard已被注册，请使用updateAgentCard接口。
+
+**可能原因**
+
+指定的AgentCard已被注册。
+
+**处理步骤**
+
+使用updateAgentCard接口。
+
+## 35600007 指定的LOW_CODE类型智能体已触发且尚未完成工作流
+
+**错误信息**
+
+The specified LOW_CODE agent has already been triggered and is not yet completed.
+
+**错误描述**
+
+指定的LOW_CODE类型智能体已触发且尚未完成工作流。
+
+**可能原因**
+
+指定的LOW_CODE类型智能体已触发且尚未完成工作流。
+
+**处理步骤**
+
+调用notifyLowCodeAgentComplete接口结束指定的LOW_CODE类型智能体。
+
+## 35600008 同一应用下AgentCard数量达到了上限
+
+**错误信息**
+
+The number of AgentCards in the bundle reaches the limit.
+
+**错误描述**
+
+同一应用下AgentCard数量达到了上限。
+
+**可能原因**
+
+同一应用下最多只能存在1000张AgentCard，调用agentManager.registerAgentCard接口时已达到此上限。
+
+**处理步骤**
+
+调用agentManager.deleteAgentCard删除不再需要的AgentCard。

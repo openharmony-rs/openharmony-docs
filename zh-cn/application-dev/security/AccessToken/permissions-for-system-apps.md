@@ -341,6 +341,20 @@
 
 **起始版本**：11
 
+## ohos.permission.THEME_SKIN
+
+允许系统应用获取到skin目录下的换肤资源。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.READ_ACCESSIBILITY_CONFIG
 
 允许应用读取无障碍配置信息。
@@ -605,6 +619,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
+
 **起始版本**：12
 
 ## ohos.permission.RECEIVE_ENTERPRISE_POLICY_EVENT
@@ -616,6 +632,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：14
 
@@ -789,6 +807,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：10
 
 ## ohos.permission.READ_HIVIEW_SYSTEM
@@ -801,6 +821,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：10
 
 ## ohos.permission.READ_DFX_SYSEVENT
@@ -812,6 +834,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
 
 **起始版本**：8
 
@@ -1262,6 +1286,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV
+
 **起始版本**：12
 
 ## ohos.permission.START_SHORTCUT
@@ -1431,6 +1457,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：9
 
@@ -2172,6 +2200,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：11
 
 ## ohos.permission.PERCEIVE_TRAIL
@@ -2716,6 +2746,8 @@
 
 **起始版本**：11
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 ## ohos.permission.SET_CODE_PROTECT_INFO
 
 允许系统应用设置云侧公钥以及工作秘钥密文，并协商代码保护秘钥信息。
@@ -3030,6 +3062,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Phone | Wearable | PC/2in1 | Tablet
+
 **起始版本**：13
 
 ## ohos.permission.MANAGE_SHUTDOWN_FINDNETWORK
@@ -3041,6 +3075,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | Wearable | PC/2in1 | Tablet
 
 **起始版本**：15
 
@@ -3690,6 +3726,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：Wearable
+
 **起始版本**：12
 
 ## ohos.permission.MANAGE_MOUSE_CURSOR
@@ -3905,6 +3943,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | Car
 
 **起始版本**：12
 
@@ -4160,6 +4200,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：PC/2in1
+
 **起始版本**：14
 
 ## ohos.permission.UTILIZE_RECOVERY_KEY
@@ -4171,6 +4213,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：14
 
@@ -4207,6 +4251,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：PC/2in1
 
 **起始版本**：14
 
@@ -4257,6 +4303,20 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**起始版本**：13
+
+## ohos.permission.ACCESS_CAR_CONTROL
+
+允许应用接入或拉起车辆控制界面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
 
 **起始版本**：13
 
@@ -4418,6 +4478,8 @@
 
 **是否支持证书授权**：true
 
+**支持设备**：PC/2in1 | Phone | Tablet
+
 **起始版本**：18
 
 ## ohos.permission.ACCESS_FUSION_AWARENESS_DATA
@@ -4442,7 +4504,7 @@
 
 **是否支持证书授权**：true
 
-**起始版本**：18
+**起始版本**：16
 
 ## ohos.permission.GET_PAGE_INFO
 
@@ -4490,8 +4552,6 @@
 ## ohos.permission.ACCESS_STARTUPGUIDE
 
 允许系统应用访问开机向导应用的普通数据、普通公共事件。
-
-仅手机、平板、2in1设备应用可申请此权限。
 
 **权限级别**：system_basic
 
@@ -4609,20 +4669,6 @@
 
 **起始版本**：18
 
-## ohos.permission.GET_NETWORK_STATS
-
-允许系统应用获取历史流量。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**起始版本**：10
-
-**变更信息**：API 10-11，是否支持证书授权为false；从API 12开始，变更为true。
-
 ## ohos.permission.READ_DLP_HIDE_SWITCH
 
 允许系统应用从窥屏提示数据库读取数据。
@@ -4682,6 +4728,8 @@
 **授权方式**：系统授权（system_grant）
 
 **是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | Wearable
 
 **起始版本**：18
 
@@ -5769,6 +5817,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.AUTO_UPDATER
+
+允许应用向车机设备发送升级指令。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。
@@ -5895,6 +5957,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.MANAGE_VOLUME_ENCRYPTION_POLICY
+
+允许应用配置卷加密策略。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.SUBSCRIBE_OUTDOOR_EXPLORATION_SERVICE
 
 允许应用使用户外模式服务提供海拔订阅能力。
@@ -5981,7 +6057,7 @@
 
 ## ohos.permission.MANAGE_AOD
 
-通过API调用AOD Service，触发进入或退出AOD、状态管理等接口时，需要校验该权限。
+允许应用触发进入或退出熄屏显示（AOD），并管理AOD状态。
 
 **权限级别**：system_core
 
@@ -5990,6 +6066,82 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_SKILL_PRIVILEGE
+     
+允许系统应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_VISION
+
+允许系统应用通过CLI命令查询无障碍视觉辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_HEARING
+
+允许系统应用通过CLI命令查询无障碍听觉辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_ACTION
+
+允许系统应用通过CLI命令查询无障碍行为辅助功能状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.CONNECT_GAME_ACCELERATION
+
+允许应用调整游戏场景下策略配置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | Tablet | TV
 
 **起始版本**：26.0.0
 
@@ -6018,5 +6170,93 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.GET_STORAGE_MANAGER
+
+允许应用通过CLI命令查询存储。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | LiteWearable
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.START_ABILITY
+
+允许智能体应用通过CLI命令启动指定应用。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.cli.KILL_APP_PROCESSES
+
+允许智能体应用通过CLI命令停止指定应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_MAPDATA_DIR
+
+允许系统应用读写地图数据。
+
+获取该权限后，应用可访问、修改下载到设备的地图离线数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone
+
+**起始版本**：20
+
+## ohos.permission.ACCESS_FIDO2_ONLINEAUTH_PRIVILEGE
+
+允许系统应用使用通行密钥服务的管理凭据功能。
+
+获取此权限后，应用可获取、删除通行密钥服务的全量凭据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
+## ohos.permission.TV_ACCESSORY_MANAGE
+
+允许系统应用查询与设置智慧屏配件信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：TV
 
 **起始版本**：26.0.0

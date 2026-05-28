@@ -27,12 +27,16 @@ For details about how to request the permissions for enterprise applications, se
 
 Allows an application to update the file guard policy.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 10
 
@@ -40,9 +44,11 @@ Allows an application to update the file guard policy.
 
 ## ohos.permission.FILE_GUARD_MANAGER
 
-Allows an application to scan media and sandbox and set file extended properties.
+Allows an application to scan the public directory and set file extended properties.
 
-Currently, the extended attributes include the file security level and file label.
+Currently, the extended properties include the file security level and file label.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -50,6 +56,8 @@ Currently, the extended attributes include the file security level and file labe
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 10
 
@@ -60,6 +68,8 @@ Currently, the extended attributes include the file security level and file labe
 Allows an enterprise application to modify files.
 
 With this permission, the application can obtain the write permission on user files and modify them.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -75,6 +85,8 @@ With this permission, the application can obtain the write permission on user fi
 ## ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 Allows an application to interact across local accounts.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -93,6 +105,8 @@ Allows an application to query the identities (such as names and IDs) of specifi
 
 With this permission, the application can query the identities of specified or all local accounts in the system. Based on the obtained identities, the application can further access or manage the target local accounts.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -109,6 +123,8 @@ With this permission, the application can query the identities of specified or a
 Allows an application to obtain running status information of another application.
 
 With this permission, the application can obtain the runtime information of other applications, including the **Ability**, **Extension**, and **Application** information.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -127,6 +143,8 @@ Allows an application to listen for the state of another application.
 
 With this permission, the application can register an application state observer.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -144,6 +162,8 @@ Allows an application to obtain basic information and sensitive information abou
 
 such as the app bundle name and version.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -160,6 +180,8 @@ such as the app bundle name and version.
 Allows an application to obtain the Wi-Fi configuration.
 
 With this permission, the application can obtain Wi-Fi configurations, such as the SSID, PSK, and encryption mode.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -180,6 +202,8 @@ Allows an application to configure Wi-Fi information.
 
 With this permission, the application can add and delete Wi-Fi networks, and modify Wi-Fi configurations.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -195,6 +219,8 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 
 Allows an application to obtain domain account information.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -209,6 +235,8 @@ Allows an application to obtain domain account information.
 ## ohos.permission.QUERY_AUDIT_EVENT
 
 Allows an enterprise security application to query security audit events.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -227,6 +255,8 @@ Allows a system application to kill other application processes.
 
 With this permission, the system application can terminate other running applications and manage processes in the system when necessary.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -244,6 +274,8 @@ Allows an application to manage Wi-Fi connections.
 
 With this permission, the application can enable or disable Wi-Fi, connect to Wi-Fi, and disconnect from Wi-Fi.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -257,6 +289,8 @@ With this permission, the application can enable or disable Wi-Fi, connect to Wi
 Allows an application to access the user CA certificates of enterprise devices.
 
 With this permission, the enterprise application can install private CA certificates on enterprise devices and manage the installed certificates.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -272,6 +306,8 @@ With this permission, the enterprise application can install private CA certific
 Allows a system application to configure firewall rules.
 
 Currently, this permission is available only to 2-in-1 device applications.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -290,6 +326,8 @@ Allows a system application to obtain firewall rules and firewall interception r
 
 Currently, this permission is available only to 2-in-1 device applications.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -305,6 +343,8 @@ Currently, this permission is available only to 2-in-1 device applications.
 
 Allows an application to obtain domain account server configurations.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -317,6 +357,8 @@ Allows an application to obtain domain account server configurations.
 ## ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 Allows an application to manage domain account server configurations.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -331,6 +373,8 @@ Allows an application to manage domain account server configurations.
 
 Allows an application to manage domain accounts.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -344,6 +388,8 @@ Allows an application to manage domain accounts.
 
 Allows an application to obtain the application package signature information.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -356,6 +402,8 @@ Allows an application to obtain the application package signature information.
 ## ohos.permission.VISIBLE_WINDOW_INFO
 
 Allows an application to obtain visible window information of the current screen.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -371,6 +419,8 @@ Allows an application to obtain visible window information of the current screen
 Allows an enterprise security application to block security audit events.
 
 With this permission, the enterprise security application can block security audit events, including file creation, opening, and deletion.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -389,6 +439,8 @@ Allows an application to be started as an **AppServiceExtension**.
 
 With this permission, the application can be started or connected as an **AppServiceExtension** by the same application or an application in the **appidentifierAllowList** configuration.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -405,6 +457,8 @@ With this permission, the application can be started or connected as an **AppSer
 Allows enterprise network security software to add private information to EAP packets.
 
 With this permission, the software can obtain 802.1X packets and add information to complete custom authentication.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -423,6 +477,8 @@ Allows a normal enterprise application to be installed under a specific user.
 
 The specific user supports applications running in singleton mode.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -439,6 +495,8 @@ The specific user supports applications running in singleton mode.
 Allows a normal enterprise application to query workspaces and the list of workspaces that cannot be deleted.
 
 With this permission, the application can query the basic information about workspaces and the workspaces that cannot be deleted.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -457,6 +515,8 @@ Allows an application to set network-specific extended attributes.
 
 With this permission, the application can specify whether a network is identified as internal or external.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -471,6 +531,8 @@ With this permission, the application can specify whether a network is identifie
 ## ohos.permission.MANAGE_ANTIVIRUS
 
 Allows an enterprise application to manage antivirus software.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -487,6 +549,8 @@ Allows an enterprise application to manage antivirus software.
 
 Allows enterprise antivirus software to register with the system and update basic information.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -501,6 +565,8 @@ Allows enterprise antivirus software to register with the system and update basi
 ## ohos.permission.CALL_TPM_CMD
 
 Allows an application to call Trusted Platform Module (TPM) commands.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -519,6 +585,8 @@ Allows an enterprise application to subscribe to events related to the enterpris
 
 With this permission, the application can call **spaceManager.subscribeEvent** or **spaceManager.unsubscribeEvent** to subscribe to or unsubscribe from events related to the enterprise workspace.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -535,6 +603,8 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 Allows an application to scan for and remediate viruses.
 
 This permission is only available to antivirus applications.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 
@@ -553,6 +623,8 @@ Allows an application to obtain the Unified Device ID (UDID).
 
 The UDID uniquely identifies a device.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -570,6 +642,8 @@ Allows an enterprise application to call printer management APIs.
 
 With this permission, the application can update print status and printer information.
 
+<!--RP2--><!--RP2End-->
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -581,9 +655,28 @@ With this permission, the application can update print status and printer inform
 
 **Valid since**: 24
 
+## ohos.permission.DLP_POLICY_MANAGER
+
+Allows common enterprise applications to manage transparent encryption/decryption policies through the data loss prevention capability.
+
+With this permission, an application can manage transparent encryption/decryption policies, such as specifying files of other applications that require transparent encryption/decryption and specifying encryption/decryption algorithms.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
 Allows an enterprise common application to obtain the list of all installed applications.
+
+<!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
 

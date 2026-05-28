@@ -1,7 +1,7 @@
 # NotificationInfo
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -24,5 +24,5 @@ The **NotificationInfo** module describes the notification information delivered
 | bundleName           | string | Yes  | No  | Name of the bundle that creates the notification.                                |
 | appIndex             | number | Yes  | No  | Index of the application clone that creates the notification. It takes effect only for application clones.|
 | appName              | string | Yes  | Yes  | Name of the application that creates the notification.                         |
-| deliveryTime         | number | Yes  | Yes  | Timestamp (in milliseconds) when the notification is published.                     |
+| deliveryTime         | number | Yes  | Yes  | Timestamp when the notification is published.<br>Data format: timestamp,<br>in milliseconds.|
 | groupName            | string | Yes  | Yes  | Notification group name, which is left empty by default.                |
