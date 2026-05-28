@@ -166,32 +166,7 @@ onVisibleIndexesChange(callback: OnVisibleIndexesChangeCallback | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [OnVisibleIndexesChangeCallback](#onvisibleindexeschangecallback)&nbsp;\|&nbsp;undefined | 是  | onVisibleIndexesChange事件的回调函数。方法入参为undefined时，取消监听。 |
-
-## OnVisibleIndexesChangeCallback
-
-ArkTS-Dyn: OnVisibleIndexesChangeCallback = (start: number, end: number) => void
-
-ArkTS-Sta: OnVisibleIndexesChangeCallback = (start: int, end: int) => void
-
-LazyVGridLayout可视区域内子组件的索引值发生变化时触发的回调类型。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                  |
-| ------ | ------ | ---- | ------------------------------------- |
-| start  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 当前可视区域内子组件的起始索引。可视区域内无子组件或者LazyVGridLayout内无子组件时返回-1。 |
-| end  | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是  | 当前可视区域内子组件的结束索引。可视区域内无子组件或者LazyVGridLayout内无子组件时返回-1。 |
+| callback  | [OnVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback)&nbsp;\|&nbsp;undefined | 是  | onVisibleIndexesChange事件的回调函数。方法入参为undefined时，取消监听。 |
 
 ## 示例
 
