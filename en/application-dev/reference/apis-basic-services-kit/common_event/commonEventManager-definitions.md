@@ -76,7 +76,7 @@ When the specified user applies a quick fix to the application on the device, th
 
 
 
-### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+<sup>
+### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+</sup>
 
 Indicates the result of revoking a quick fix to the application.
 
