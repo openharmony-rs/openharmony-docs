@@ -4579,7 +4579,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可通过 {@link Contact#getId()})获得的值表示创建成功。 |
+| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
 
 **错误码：**
 
