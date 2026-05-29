@@ -870,10 +870,10 @@ start(): void
 | -------- | ------------------------------------------------ |
 | 201      | Permission denied. Possible causes: <br>1.No permission to access biometric. <br>2.No permission to start authentication from background.|
 | 401      | Parameter error. Possible causes: <br>1.Incorrect parameter types. |
-| 12500001 | Authentication failed. <br> 适用版本：10-19，26+                    |
+| 12500001 | Authentication failed. <br> 适用版本：10-19                          |
 | 12500002 | General operation error.                         |
 | 12500003 | Authentication canceled.                         |
-| 12500004 | Authentication timeout. <br> 适用版本：10-19，26+                       |
+| 12500004 | Authentication timeout. <br> 适用版本：10-19                          |
 | 12500005 | The authentication type is not supported.        |
 | 12500006 | The authentication trust level is not supported. |
 | 12500007 | Authentication service is busy. <br> 适用版本：10-19                 |
