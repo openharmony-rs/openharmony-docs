@@ -70,7 +70,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       console.info(`getRdbStore done, data : ${data}`);
       rdbStore = data;
       rdbStore.executeSql(DDL_TBL_CREATE, [], (err) => {
-        console.error(`executeSql done, error message : ${err}`);
+        console.error(`Failed to executeSql. Code: ${err.code}, message: ${err.message}`);
       });
       if (callback) {
         callback();
@@ -109,7 +109,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   insert(uri: string, valueBucket: ValuesBucket, callback: Function) {
     if (valueBucket === null) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBuckets');
       return;
     }
     rdbStore.insert(TBL_NAME, valueBucket, (err, ret) => {
@@ -317,7 +317,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchInsert(uri: string, valueBuckets: Array<ValuesBucket>, callback: Function) {
     if (valueBuckets === null || valueBuckets.length <= 0) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBuckets');
       return;
     }
     rdbStore.batchInsert(TBL_NAME, valueBuckets, (err, ret) => {
