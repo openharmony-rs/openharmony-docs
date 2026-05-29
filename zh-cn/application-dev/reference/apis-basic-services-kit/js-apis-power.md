@@ -201,11 +201,11 @@ power.isScreenOn()
 
 | 名称                    | 值   | 说明                   |
 | ----------------------- | ---- | ---------------------- |
-| MODE_NORMAL             | 600  | 表示标准模式，默认值。<br/>**ArkTS-Dyn起始版本：**9<br/>**ArkTS-Sta起始版本：**23 |
-| MODE_POWER_SAVE         | 601  | 表示省电模式。<br/>**ArkTS-Dyn起始版本：**9<br/>**ArkTS-Sta起始版本：**23         |
-| MODE_PERFORMANCE        | 602  | 表示性能模式。<br/>**ArkTS-Dyn起始版本：**9<br/>**ArkTS-Sta起始版本：**23        |
-| MODE_EXTREME_POWER_SAVE | 603  | 表示超级省电模式。<br/>**ArkTS-Dyn起始版本：**9<br/>**ArkTS-Sta起始版本：**23     |
-| MODE_CUSTOM_POWER_SAVE<sup>20+</sup> | 650 | 表示自定义省电模式。<br/>**ArkTS-Dyn起始版本：**20<br/>**ArkTS-Sta起始版本：**23   |
+| MODE_NORMAL             | 600  | 表示标准模式，默认值。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/> <strong>ArkTS-Sta起始版本：</strong>23 |
+| MODE_POWER_SAVE         | 601  | 表示省电模式。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/><strong>ArkTS-Sta起始版本：</strong>23         |
+| MODE_PERFORMANCE        | 602  | 表示性能模式。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/><strong>ArkTS-Sta起始版本：</strong>23        |
+| MODE_EXTREME_POWER_SAVE | 603  | 表示超级省电模式。<br/><strong>ArkTS-Dyn起始版本：</strong>9<br/><strong>ArkTS-Sta起始版本：</strong>23     |
+| MODE_CUSTOM_POWER_SAVE<sup>20+</sup> | 650 | 表示自定义省电模式。<br/><strong>ArkTS-Dyn起始版本：</strong>20<br/><strong>ArkTS-Sta起始版本：</strong>23   |
 
 ## PowerKeyFilteringStrategy<sup>21+</sup>
 

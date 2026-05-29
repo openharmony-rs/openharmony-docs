@@ -208,11 +208,11 @@ console.info('thermal level is: ' + level);
 
 | 名称       | 值   | 说明                                                         |
 | ---------- | ---- | ------------------------------------------------------------ |
-| COOL       | 0    | 表明设备处于清凉状态，业务执行不受热控的限制。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23             |
-| NORMAL     | 1    | 表明设备温度正常，但邻近温热状态，无感知业务应降低规格和负载。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
-| WARM       | 2    | 表明设备进入温热状态，无感知业务应暂停或延迟运行。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
-| HOT        | 3    | 表明设备发热明显，无感知业务应停止，非关键业务应降低规格及负载。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
-| OVERHEATED | 4    | 表明设备发热严重，无感知业务与非关键业务应停止，前台关键业务应降低规格及负载。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
-| WARNING    | 5    | 表明设备过热即将进入紧急状态，整机资源供给大幅降低，停止所有非关键业务，前台关键业务应降低至最低规格。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
-| EMERGENCY  | 6    | 表明设备已经进入过热紧急状态，整机资源供给降至最低，设备功能受限，仅保留基础功能可用。<br/>**ArkTS-Dyn起始版本：**8<br/>**ArkTS-Sta起始版本：**23 |
-| ESCAPE<sup>11+</sup>     | 7    | 表明设备即将进入热逃生状态，所有业务将被强制停止，业务需做好逃生措施，例如保存重要数据等。 <br>**说明**：从API version 11开始支持。<br/>**ArkTS-Dyn起始版本：**11<br/>**ArkTS-Sta起始版本：**23|
+| COOL       | 0    | 表明设备处于清凉状态，业务执行不受热控的限制。<br/><strong>ArkTS-Dyn起始版本：</strong>8<br/><strong>ArkTS-Sta起始版本：</strong>23             |
+| NORMAL     | 1    | 表明设备温度正常，但邻近温热状态，无感知业务应降低规格和负载。<br/><strong>ArkTS-Dyn起始版本：</strong>8<br/><strong>ArkTS-Sta起始版本：</strong>23 |
+| WARM       | 2    | 表明设备进入温热状态，无感知业务应暂停或延迟运行。<br/><strong>ArkTS-Dyn起始版本：</strong>8<br/><strong>ArkTS-Sta起始版本：</strong>23 |
+| HOT        | 3    | 表明设备发热明显，无感知业务应停止，非关键业务应降低规格及负载。<br/><strong>ArkTS-Dyn起始版本：</strong>8<br/><strong>ArkTS-Sta起始版本：</strong>23 |
+| OVERHEATED | 4    | 表明设备发热严重，无感知业务与非关键业务应停止，前台关键业务应降低规格及负载。<br/><strong>ArkTS-Dyn起始版本：</strong>8<br/><strong>ArkTS-Sta起始版本：</strong>23 |
+| WARNING    | 5    | 表明设备过热即将进入紧急状态，整机资源供给大幅降低，停止所有非关键业务，前台关键业务应降低至最低规格。<br/><strong>ArkTS-Dyn起始版本：</strong>8<br/><strong>ArkTS-Sta起始版本：</strong>23 |
+| EMERGENCY  | 6    | 表明设备已经进入过热紧急状态，整机资源供给降至最低，设备功能受限，仅保留基础功能可用。<br/><strong>ArkTS-Dyn起始版本：</strong>8<br/><strong>ArkTS-Sta起始版本：</strong>23 |
+| ESCAPE<sup>11+</sup>     | 7    | 表明设备即将进入热逃生状态，所有业务将被强制停止，业务需做好逃生措施，例如保存重要数据等。 <br><strong>说明</strong>：从API version 11开始支持。<br/><strong>ArkTS-Dyn起始版本：</strong>11<br/><strong>ArkTS-Sta起始版本：</strong>23|
