@@ -9108,7 +9108,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 | 参数名    | 类型    | 必填 | 说明                                          |
 | --------- | ------- | ---- | --------------------------------------------- |
-| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置窗口支持的窗口模式。<br>- FULL_SCREEN：全屏模式。<br>- FLOATING：支持自由悬浮窗口模式。<br>- SPLIT：分屏模式。主窗不支持仅配置SPLIT，需要配合FULL_SCREEN或FLOATING一起使用。子窗不支持配置SPLIT。<br>说明：对于主窗来说，此参数数组中的取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
+| supportedWindowModes | Array&lt;[bundleManager.SupportWindowMode](../apis-ability-kit/js-apis-bundleManager.md#supportwindowmode)&gt; | 是   | 设置窗口支持的窗口模式。<br>- FULL_SCREEN：全屏模式。<br>- FLOATING：支持自由悬浮窗口模式。<br>- SPLIT：分屏模式。主窗不支持仅配置SPLIT，需要配合FULL_SCREEN或FLOATING一起使用；子窗不支持配置SPLIT。<br>说明：对于主窗来说，此参数数组中的取值不应该与该UIAbility对应的[module.json5配置文件](../../quick-start/module-configuration-file.md)中[abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的supportWindowMode字段取值或者[StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)的supportWindowModes属性取值冲突。当取值冲突时，最终以该参数设置的窗口支持模式为准。|
 
 **返回值：**
 
