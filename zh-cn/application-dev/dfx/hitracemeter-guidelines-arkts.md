@@ -247,6 +247,10 @@ ArkTS-Sta示例：
 2. 编辑工程中的“entry &gt; src &gt; main &gt; ets &gt; pages &gt：
    导入所需依赖：
    <!-- @[TestHiTraceMeter_Import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';
+   ```
 
    定义测试方法：
    <!-- @[TestHiTraceMeter_FUNC](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS_Sta/entry/src/main/ets/pages/Index.ets) -->
