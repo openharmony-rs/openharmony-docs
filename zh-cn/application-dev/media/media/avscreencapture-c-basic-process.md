@@ -356,9 +356,11 @@ config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
 // 传入多个窗口Id。
-int32_t* missionIds = new int32_t[2]{60, 61}; // 表示期望同时录制60、61号窗口，在配置参数结束后delete[] missionIds。
+int32_t* missionIds = new int32_t[2]{60, 61}; // 表示期望同时录制60、61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
 config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+
+// 在配置参数结束后执行"delete[] missionIds"。
 ```
 
 ## Phone/Tablet弹窗模式配置说明
