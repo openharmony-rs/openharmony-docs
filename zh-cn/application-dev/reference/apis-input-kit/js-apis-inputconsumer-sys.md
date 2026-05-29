@@ -360,7 +360,7 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 
 **起始版本：** 26.0.0
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -369,7 +369,7 @@ type KeyCommandCallback = (keyOptions: KeyOptions, keyEvent: KeyEvent) => void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | keyOptions | [KeyOptions](#keyoptions) | 是 | 触发回调时的组合键选项。 |
-| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 否 | 按键事件对象，包含按键详细信息。 |
+| keyEvent | [KeyEvent](js-apis-keyevent.md#keyevent) | 是 | 按键事件对象，包含按键详细信息。 |
 
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
