@@ -478,7 +478,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
       if (result != AV_ERR_OK) {
          OH_LOG_ERROR(LOG_APP, "==NDKDemo== AVRecorder Stop failed %{public}d", result);
       }
-      
+      close(g_outputFd);
       napi_value res;
       napi_create_int32(env, result, &res);
       return res;
@@ -516,7 +516,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
          napi_create_int32(env, AV_ERR_INVALID_VAL, &res);
          return res;
       }
-      close(g_outputFd);
       
       int result = OH_AVRecorder_Release(g_avRecorder);
       g_avRecorder = nullptr;   // 释放录制资源后，需要显式地将g_avRecorder指针置空。
