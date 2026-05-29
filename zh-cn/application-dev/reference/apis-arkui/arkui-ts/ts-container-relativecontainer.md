@@ -139,19 +139,15 @@ ArkTS-Sta: barrier(barrierStyle: Array&lt;BarrierStyle&gt; | Array&lt;LocalizedB
 | ------ | -------------------------------------- | ---- | ------------------------------ |
 | barrierStyle  | ArkTS-Dyn: Array\<[LocalizedBarrierStyle](#localizedbarrierstyle12对象说明)\><br/>ArkTS-Sta: Array\<[BarrierStyle](#barrierstyle12对象说明)\> \| Array\<[LocalizedBarrierStyle](#localizedbarrierstyle12对象说明)\> \| undefined | 是   | RelativeContainer容器内的屏障。<br/>取值为undefined时，与不设置表现一致。|
 
-### attributeModifier<sup>12+</sup>
+### attributeModifier<sup>23+</sup>
 
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<RelativeContainerAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<RelativeContainerAttribute> | AttributeModifier\<CommonMethod> | undefined)
+attributeModifier(modifier: AttributeModifier\<RelativeContainerAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置组件的动态属性。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -159,7 +155,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<RelativeContainerAttri
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<RelativeContainerAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<RelativeContainerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置RelativeContainer组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<RelativeContainerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置RelativeContainer组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## GuideLineStyle<sup>12+</sup>对象说明
 
