@@ -168,6 +168,27 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
 
+   除上述配置的参数外，还可以在Configure阶段配置以下可选参数：
+
+   - OH_MD_KEY_AUDIO_MAX_INPUT_BUFFER_SIZE：配置音频编码器最大输入缓冲区大小（单位：字节）。FLAC、MP3等帧对齐编码器设置该参数后会启用内部PCM缓存机制，允许输入数据无需按帧大小对齐，编码器会自动进行缓存与拆帧。实际缓冲区大小受编码器实现限制，如果设置的值超出上限，会被设置为上限值（上限为10MB）。
+
+   - OH_MD_KEY_AUDIO_ENCODER_PTS_MODE：配置音频编码器输出PTS模式，值类型为[OH_AudioEncoderPTSMode](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_audioencoderptsmode)。不同模式下输出帧的PTS计算方式不同：
+     - OH_AUDIO_ENCODER_PTS_MODE_DEFAULT：默认行为，不同编码器的PTS输出方式可能不同。
+     - OH_AUDIO_ENCODER_PTS_MODE_ZERO_START：PTS从0开始，按帧时长递增。适用于不依赖输入PTS、需要从0开始计时的场景。
+     - OH_AUDIO_ENCODER_PTS_MODE_FIRST_INPUT_START：PTS从首个输入帧的PTS开始，按帧时长递增。适用于需要保持与输入流PTS连续性的场景。
+
+   - OH_MD_KEY_AUDIO_ENCODER_ENABLE_SAMPLE_FORMAT_CONVERT：配置音频编码器采样格式转换开关，1表示开启，0表示关闭（默认）。音频编码器原生支持的采样格式有限（例如G711mu仅支持SAMPLE_S16LE），开启后编码器会自动将输入的PCM数据转换为编码器支持的格式进行编码，支持的输入采样格式扩展为：SAMPLE_U8、SAMPLE_S16LE、SAMPLE_S24LE、SAMPLE_S32LE、SAMPLE_F32LE。适用于输入PCM格式与编码器原生格式不一致的场景。
+
+   ```cpp
+   // 配置编码器最大输入缓冲区大小（可选），FLAC/MP3设置后可接受非帧对齐的输入数据。此处4096仅为参考值，开发者可按实际需要动态设置。
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_MAX_INPUT_BUFFER_SIZE, 4096);
+   // 配置编码器PTS输出模式（可选）。
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_ENCODER_PTS_MODE,
+       OH_AUDIO_ENCODER_PTS_MODE_FIRST_INPUT_START);
+   // 配置编码器采样格式转换开关（可选），开启后支持更多采样格式输入。
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_ENCODER_ENABLE_SAMPLE_FORMAT_CONVERT, 1);
+   ```
+
 4. 调用OH_AudioCodec_Prepare()，编码器就绪。
 
    ```cpp
