@@ -344,7 +344,9 @@ struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias, c
 **参考：**
 
 [OH_Huks_UpdateSession](capi-native-huks-api-h.md#oh_huks_updatesession)
+
 [OH_Huks_FinishSession](capi-native-huks-api-h.md#oh_huks_finishsession)
+
 [OH_Huks_AbortSession](capi-native-huks-api-h.md#oh_huks_abortsession)
 
 
@@ -378,7 +380,9 @@ struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle, c
 **参考：**
 
 [OH_Huks_InitSession](capi-native-huks-api-h.md#oh_huks_initsession)
+
 [OH_Huks_FinishSession](capi-native-huks-api-h.md#oh_huks_finishsession)
+
 [OH_Huks_AbortSession](capi-native-huks-api-h.md#oh_huks_abortsession)
 
 
@@ -412,7 +416,9 @@ struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle, c
 **参考：**
 
 [OH_Huks_InitSession](capi-native-huks-api-h.md#oh_huks_initsession)
+
 [OH_Huks_UpdateSession](capi-native-huks-api-h.md#oh_huks_updatesession)
+
 [OH_Huks_AbortSession](capi-native-huks-api-h.md#oh_huks_abortsession)
 
 
