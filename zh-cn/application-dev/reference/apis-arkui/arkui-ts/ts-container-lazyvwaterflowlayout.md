@@ -7,7 +7,7 @@
 <!--Tester: @huchuyun-->
 <!--Adviser: @Brilliantry_Rui-->
 
-该组件用于实现支持懒加载的瀑布流布局，其父组件仅限于[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)、[FlowItem](ts-container-flowitem.md)或[LazyColumnLayout](ts-container-lazycolumnlayout.md)，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
+该组件用于实现支持懒加载的瀑布流布局，其父组件仅限于[List](ts-container-list.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)或[FlowItem](ts-container-flowitem.md)，并支持使用自定义组件或[NodeContainer](ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
 
 该组件仅在[List](ts-container-list.md)组件、[Scroll](ts-container-scroll.md)组件、[WaterFlow](ts-container-waterflow.md)组件的单列模式或分段布局中的单列分段并且布局方向为FlexDirection.Column的情况下支持懒加载。在[WaterFlow](ts-container-waterflow.md)的多列模式或布局方向为FlexDirection.Row或FlexDirection.RowReverse的情况下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的[WaterFlow](ts-container-waterflow.md)组件下使用该组件会导致显示异常。当懒加载功能生效时，该组件仅加载显示区域内的子组件，并在帧间空闲间隙预加载显示区域上方和下方各半屏的内容。
 
@@ -149,39 +149,13 @@ onVisibleIndexesChange(callback: onVisibleIndexesChangeCallback | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |
-| callback  | [onVisibleIndexesChangeCallback](#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
+| callback  | [onVisibleIndexesChangeCallback](./ts-container-scrollable-common.md#onvisibleindexeschangecallback) \| undefined | 是   | 回调函数，当可见区域内的子组件索引发生变化时触发。<br/>方法入参为undefined时，取消监听。 |
 
 **返回值：**
 
 | 类型 | 说明           |
 | --- | -------------- |
 | T | 返回当前组件。 |
-
-## onVisibleIndexesChangeCallback
-
-type onVisibleIndexesChangeCallback = (start: number, end: number) => void
-
-当前瀑布流显示的子组件索引发生变化时的回调类型。
-
-> **说明：**
->
-> - 当LazyVWaterFlowLayout没有子组件时，start和end都返回-1。
-> - 当LazyVWaterFlowLayout完全在显示区域内无可见子组件时，start和end都返回-1。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                  |
-| ------ | ------ | ---- | ------------------------------------- |
-| start  | number | 是   | 可见区域起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
-| end    | number | 是   | 可见区域终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 
 ## 示例
 

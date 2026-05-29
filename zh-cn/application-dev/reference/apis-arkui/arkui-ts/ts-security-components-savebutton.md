@@ -279,7 +279,7 @@ userCancelEvent(enabled: boolean)
 
 symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
-设置安全控件Symbol图标颜色。
+设置保存控件Symbol图标颜色。
 
 **起始版本：** 26.0.0
 
@@ -295,13 +295,13 @@ symbolIconColor(color: Array&lt;ResourceColor&gt;)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置安全控件Symbol图标颜色。<br/> 默认值：不同[symbolrenderingstrategy](#symbolrenderingstrategy)下默认值不同。 |
+| color  | Array\<[ResourceColor](ts-types.md#resourcecolor)\> | 是   | 设置保存控件Symbol图标颜色。<br/> 默认值：不同[symbolrenderingstrategy](#symbolrenderingstrategy)下默认值不同。 |
 
 ### symbolFontWeight
 
 symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
-设置安全控件Symbol图标粗细。
+设置保存控件Symbol图标粗细。
 
 **起始版本：** 26.0.0
 
@@ -317,13 +317,13 @@ symbolFontWeight(fontWeight: number | FontWeight | string | Resource)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| fontWeight  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) | 是   | 设置安全控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 |
+| fontWeight  | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string \| [Resource](ts-types.md#resource) | 是   | 设置保存控件Symbol图标粗细。<br/>支持number类型：取值范围为[100,900]，取值间隔为100，数值越大字体越粗。默认值为400。<br/>支持string类型：可传入number类型的数字字符串（如"400"），或[FontWeight](ts-appendix-enums.md#fontweight)的枚举值的小写字符串（如"normal"）。<br/>默认值：FontWeight.Normal。 |
 
 ### symbolRenderingStrategy
 
 symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
-设置安全控件Symbol图标渲染策略。
+设置保存控件Symbol图标渲染策略。
 
 **起始版本：** 26.0.0
 
@@ -339,7 +339,7 @@ symbolRenderingStrategy(strategy: SymbolRenderingStrategy)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| strategy  | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 是   | 安全控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 |
+| strategy  | [SymbolRenderingStrategy](ts-basic-components-symbolGlyph.md#symbolrenderingstrategy11枚举说明) | 是   | 保存控件Symbol图标渲染策略。<br/>默认值：SymbolRenderingStrategy.SINGLE。 |
 
 不同渲染策略效果可参考以下示意图。
 

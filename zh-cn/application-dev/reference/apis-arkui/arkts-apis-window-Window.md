@@ -2079,7 +2079,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 <!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用Promise异步回调。
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2156,7 +2156,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 设置主窗口状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏，使用Promise异步回调。
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2235,7 +2235,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用Promise异步回调。
 
-子窗口调用后不生效。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -2371,7 +2371,7 @@ setStatusBarColor(color: ColorMetrics): Promise&lt;void&gt;
 
 设置主窗口状态栏的文字颜色，使用Promise异步回调。
 
-子窗口不支持设置状态栏文字颜色，调用无效果。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+子窗口不支持设置状态栏文字颜色，调用无效果。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -3618,13 +3618,15 @@ try {
 
 on(type: 'keyboardWillShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
-开启固定态软键盘即将开始显示的监听。此监听在固定态软键盘即将开始显示或软键盘由悬浮态切换为固定态时触发，此监听仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
+开启固定态软键盘即将开始显示的监听。此监听在固定态软键盘即将开始显示或软键盘由悬浮态切换为固定态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3668,6 +3670,8 @@ off(type: 'keyboardWillShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
@@ -3707,13 +3711,15 @@ try {
 
 on(type: 'keyboardWillHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
-开启固定态软键盘即将开始隐藏的监听。此监听在固定态软键盘即将开始隐藏或软键盘由固定态切换为悬浮态时触发，此监听仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
+开启固定态软键盘即将开始隐藏的监听。此监听在固定态软键盘即将开始隐藏或软键盘由固定态切换为悬浮态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -3757,6 +3763,8 @@ off(type: 'keyboardWillHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中返回801错误码。
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
@@ -3796,13 +3804,15 @@ try {
 
 on(type: 'keyboardDidShow', callback: Callback&lt;KeyboardInfo&gt;): void
 
-开启固定态软键盘显示动画完成的监听。此监听在固定态软键盘显示动画完成或软键盘由悬浮态切换至固定态时触发，此监听仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
+开启固定态软键盘显示动画完成的监听。此监听在固定态软键盘显示动画完成或软键盘由悬浮态切换至固定态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
 
 **参数：**
 
@@ -3844,6 +3854,8 @@ off(type: 'keyboardDidShow', callback?: Callback&lt;KeyboardInfo&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
@@ -3882,13 +3894,15 @@ try {
 
 on(type: 'keyboardDidHide', callback: Callback&lt;KeyboardInfo&gt;): void
 
-开启固定态软键盘隐藏动画完成的监听。此监听在固定态软键盘隐藏动画完成或软键盘由固定态切换至悬浮态时触发，此监听仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
+开启固定态软键盘隐藏动画完成的监听。此监听在固定态软键盘隐藏动画完成或软键盘由固定态切换至悬浮态时触发，仅对当前拉起或隐藏固定态软键盘的应用窗口生效。对于虚拟屏上应用拉起输入法键盘到主屏上，输入法键盘显隐通知只会给主屏上获焦窗口，而不是虚拟屏上应用窗口。
 
 改变软键盘为固定态或者悬浮态方法详细介绍请参见[changeFlag](../apis-ime-kit/js-apis-inputmethodengine.md#changeflag10)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
 
 **参数：**
 
@@ -3929,6 +3943,8 @@ off(type: 'keyboardDidHide', callback?: Callback&lt;KeyboardInfo&gt;): void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在Phone设备、Tablet设备和PC/2in1设备上可正常调用，在其他设备中不报错不生效。
 
 **参数：**
 
@@ -7547,85 +7563,6 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-## maximizeWithOptions
-
-maximizeWithOptions(maximizeOptions?: MaximizeOptions): Promise&lt;void&gt;
-
-实现窗口的最大化功能。主窗口可调用此接口实现最大化功能；子窗口需在创建时设置子窗口参数maximizeSupported为true，再调用此接口可实现最大化功能。支持配置最大化布局策略、折叠屏跨屏策略以及截图动画参数。使用Promise异步回调。
-
-> **说明：**
->
-> - 不传入maximizeOptions参数时，各字段取默认值，行为等同于调用[maximize()](#maximize12)并使用默认值。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
-
-**参数：**
-
-| 参数名 | 类型  | 必填 | 说明 |
-| ----- | ---------------------------- | -- | --------------------------------- |
-| maximizeOptions  | [MaximizeOptions](arkts-apis-window-i.md#maximizeoptions) | 否 | 最大化配置选项。不传入时，行为等同于调用[maximize()](#maximize12)并使用默认值。 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
-| 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and maximizable subwindows are supported; 2. The acrossDisplayPresentation parameter only supports main windows. |
-| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
-
-**示例：**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
-        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-        return;
-      }
-      let mainWindow = windowStage.getMainWindowSync();
-      let maximizeOptions: window.MaximizeOptions = {
-        maximizePresentation: window.MaximizePresentation.ENTER_IMMERSIVE,
-        acrossDisplayPresentation: window.AcrossDisplayPresentation.FOLLOW_ACROSS_DISPLAY_SETTING,
-        snapshotAnimationConfig: {
-          duration: 200,
-          delay: 30
-        }
-      };
-      mainWindow.maximizeWithOptions(maximizeOptions)
-        .then(() => {
-          console.info('Window maximized successfully.');
-        })
-        .catch((err: BusinessError) => {
-          console.error(`Failed to maximize the window. Cause code: ${err.code}, message: ${err.message}`);
-        });
-    });
-  }
-};
-```
-
 ## setResizeByDragEnabled<sup>14+</sup>
 setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -7775,79 +7712,6 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       let promise = windowClass.recover();
-      promise.then(() => {
-        console.info('Succeeded in recovering the window.');
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to recover the window. Cause code: ${err.code}, message: ${err.message}`);
-      });
-    } catch (exception) {
-      console.error(`Failed to recover the window. Cause code: ${exception.code}, message: ${exception.message}`);
-    }
-  }
-}
-```
-
-## recover
-
-recover(snapshotAnimationConfig: WindowSnapshotAnimationConfig): Promise&lt;void&gt;
-
-将主窗口从全屏、最大化或者分屏模式下还原为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING），并恢复到进入该模式之前的大小和位置，已经是自由悬浮窗口模式时不可再还原，支持配置截图动画参数。使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Window.SessionManager
-
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-**参数：**
-
-| 参数名 | 类型  | 必填 | 说明 |
-| ----- | ---------------------------- | -- | --------------------------------- |
-| snapshotAnimationConfig  | [WindowSnapshotAnimationConfig](arkts-apis-window-i.md#windowsnapshotanimationconfig) | 是 | 截图动画配置。 |
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | ------------------------------ |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300001 | Repeated operation. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The window does not support floating mode. |
-| 1300003 | This window manager service works abnormally. |
-| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
-
-**示例：**
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    console.info('onWindowStageCreate');
-    try {
-      let windowClass = windowStage.getMainWindowSync();
-      if (!windowClass) {
-        console.error('Failed to get main window.');
-        return;
-      }
-      let snapshotAnimationConfig: window.WindowSnapshotAnimationConfig = {
-        duration: 200,
-        delay: 30
-      };
-      let promise = windowClass.recover(snapshotAnimationConfig);
       promise.then(() => {
         console.info('Succeeded in recovering the window.');
       }).catch((err: BusinessError) => {
@@ -8337,6 +8201,71 @@ try {
 }
 ```
 
+## setWindowMaskWithAlpha
+
+setWindowMaskWithAlpha(windowMask: Uint8Array, maskWidth: number, maskHeight: number): Promise&lt;void&gt;
+
+通过按像素顺序排列的Alpha数组设置异形窗口的掩码，像素顺序以窗口左上角为像素起点，同行内从左到右依次排列，从上至下逐行排列。使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+
+当异形窗口大小发生变化时，实际的显示内容为掩码大小和窗口大小的交集部分。
+
+异形窗口蒙层设置不会影响窗口可见状态（可通过[on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11)或[on('occlusionStateChanged')](arkts-apis-window-Window.md#onocclusionstatechanged22)监听）计算。即使掩码全部设置为0，窗口仍可见，窗口依然按照其原本矩形大小参与可见状态计算。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名       | 类型                          | 必填 | 说明                           |
+| :----------- | :---------- | :--- | :----------------------------- |
+| windowMask   | Uint8Array  | 是   | 异形窗口的掩码，为按像素顺序排列的Alpha数组，该数组中每个元素代表对应像素的透明度，取值范围[0, 255]，0表示完全透明，255表示完全不透明，数组长度等于maskWidth乘以maskHeight。 |
+| maskWidth    | number      | 是   | 表示异形窗口掩码的宽度，必须等于窗口宽度。 |
+| maskHeight   | number      | 是   | 表示异形窗口掩码的高度，必须等于窗口高度。 |
+
+**返回值：**
+
+| 类型                                         | 说明                                |
+| :------------------------------------------- | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| :------- | :-------------------------------------------- |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
+| 1300003  | This window manager service works abnormally. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported. |
+| 1300016  | Parameter error. Possible cause: 1. The maskWidth is not equal to the window width or the maskHeight is not equal to the window height. 2. The length of windowMask is not equal to maskWidth multiplied by maskHeight. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = new Uint8Array(maskWidth * maskHeight);
+  for (let i = 0 ; i < maskHeight; i++) {
+    for (let j = 0 ; j < maskWidth; j++) {
+      windowMask[i * maskWidth + j] = (i + j) > (maskWidth + maskHeight) / 2 ? 255 : 0;
+    }
+  }
+  windowClass.setWindowMaskWithAlpha(windowMask, maskWidth, maskHeight).then(() => {
+    console.info('Succeeded in setting the window mask.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## clearWindowMask<sup>24+</sup>
 
 clearWindowMask(): Promise&lt;void&gt;
@@ -8431,10 +8360,10 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.                               |
+| 201      | Permission verification failed. The application does not have the permission required or a non-system application calls the API.                    |
 | 1300002  | This window state is abnormal.    |
 | 1300003  | This window manager service works abnormally.                                                                      |
-| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
 **示例：**
 
@@ -8594,7 +8523,18 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
+**设备行为差异：**
+ - 对于主窗口：
+   - 本接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；
+   - 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；
+   - 在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
+
+ - 对于显示装饰栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为true）：
+   - 在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；
+   - 在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；
+   - 在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用。
+
+ - 对于不显示装饰栏的子窗口（即创建子窗口时设置[SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11)中的decorEnabled为false），调用本接口将返回1300002或801错误码。
 
 **参数：**
 
@@ -8695,7 +8635,7 @@ setSubWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 子窗口调用该接口时，设置子窗口模态属性是否启用。启用子窗口模态属性后，其父级窗口不能响应用户操作，直到子窗口关闭或者子窗口的模态属性被禁用。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8774,7 +8714,7 @@ setSubWindowModal(isModal: boolean, modalityType: ModalityType): Promise&lt;void
 
 此接口仅支持设置子窗口模态类型，当需要禁用子窗口模态属性时，建议使用[setSubWindowModal<sup>12+</sup>](#setsubwindowmodal12)。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。子窗之外的窗口调用该接口时会报错。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -9178,7 +9118,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 
 创建子窗口，使用Promise异步回调。
 
-- 可以在主窗口下创建子窗口（包括[独立子窗](../../windowmanager/window-terminology.md#应用窗口)、非独立子窗）。
+- 可以在主窗口下创建子窗口（包括[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)、非独立子窗）。
 - 可以在子窗口下创建子窗口（只能创建非独立子窗，否则返回1300004错误码）。
 - 可以在全局悬浮窗下创建子窗口（只能创建非独立子窗，否则返回1300004错误码）。
 
@@ -9247,7 +9187,7 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 
 如果该子窗口处于获焦状态，且新的父窗口的子窗口存在层级更高的模态子窗口，则焦点会转移给该模态子窗口。
 
-针对[独立子窗](../../windowmanager/window-terminology.md#应用窗口)，仅支持迁移至主窗口下，否则返回1300009错误码。
+针对[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)，仅支持迁移至主窗口下，否则返回1300009错误码。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9355,7 +9295,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 设置标题栏上的最大化、最小化、关闭按钮是否可见。
 
-仅支持主窗和[独立子窗](../../windowmanager/window-terminology.md#应用窗口)，其他窗口调用时将返回1300004错误码。
+仅支持主窗和[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)，其他窗口调用时将返回1300004错误码。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -9522,7 +9462,7 @@ raiseToAppTop(): Promise&lt;void&gt;
 
 使用该接口需要先创建子窗口，并确保该子窗口调用[showWindow()](#showwindow9)并执行完毕。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -10601,7 +10541,7 @@ getWindowCornerRadius(): number
 
 | 类型 | 说明 |
 | ---------------------- | ------------------------------------------------------------------------------------ |
-| number | 当前子窗或悬浮窗的圆角半径值，单位为vp。 |
+| number | 当前子窗或全局悬浮窗的圆角半径值，单位为vp。 |
 
 **错误码：**
 
@@ -10786,7 +10726,7 @@ setFollowParentWindowLayoutEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置子窗或模态窗口（即WindowType为TYPE_DIALOG的窗口）的布局信息（position和size）是否跟随主窗，使用Promise异步回调。
 
-1、只支持主窗的一级子窗或模态窗口使用该接口。其中非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+1、只支持主窗的一级子窗或模态窗口使用该接口。其中非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
 
 2、当子窗或模态窗口调用该接口后，立即使其布局信息与主窗完全一致并保持，除非传入false再次调用该接口，否则效果将持续。
 
@@ -10876,7 +10816,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 该接口调用生效后，[setFollowParentWindowLayoutEnabled()](#setfollowparentwindowlayoutenabled17)接口调用不生效。
 
-[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用此接口时，将返回1300004错误码。
+[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用此接口时，将返回1300004错误码。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -11109,7 +11049,7 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 
 通过该接口改变子窗口的显示层级时，不会发生焦点切换。推荐使用[shiftAppWindowFocus()](arkts-apis-window-f.md#windowshiftappwindowfocus11)进行焦点切换。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -11181,7 +11121,7 @@ getSubWindowZLevel(): number
 
 获取当前子窗口层级级别。不支持主窗、系统窗调用。
 
-非[独立子窗](../../windowmanager/window-terminology.md#应用窗口)支持调用。[独立子窗](../../windowmanager/window-terminology.md#应用窗口)调用该接口不生效也不报错，返回默认值0。
+非[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)支持调用。[独立子窗](../../windowmanager/window-type-overview.md#辅助窗口)调用该接口不生效也不报错，返回默认值0。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -11495,7 +11435,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 <!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
 > **说明：**
 >
@@ -12341,7 +12281,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallbac
 
 <!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
 > **说明：**
 >
@@ -12398,7 +12338,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
 <!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制<!--RP14End-->，使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
 > **说明：**
 >
@@ -12458,7 +12398,7 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: Async
 
 设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用callback异步回调，<!--RP5-->该接口在2in1设备上调用不生效。<!--RP5End-->
 
-子窗口调用后不生效。非全屏模式（悬浮窗、分屏等场景）下配置不生效。
+子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
 > **说明：**
 >

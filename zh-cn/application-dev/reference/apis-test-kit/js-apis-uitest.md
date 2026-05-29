@@ -2078,7 +2078,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | 17000002 | The API does not support concurrent calls. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
 
 **示例：**
 ```ts
@@ -5317,7 +5317,7 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls.             |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported. function can not work correctly due to limited device capabilities. |
 
 **示例：**
 
@@ -5705,7 +5705,7 @@ triggerPenKey(key: PenKey, mode: PenMode, operation: PenKeyOperation, options?: 
 | -------- | ------------------------------------------------------------ |
 | 17000002 | The API does not support concurrent calls. |
 | 17000005 | This operation is not supported. |
-| 17000007 | Parameter verification failed. |
+| 17000007 | Parameter verification failed. Unsupported key, mode, and operation combination. |
 
 **示例：**
 
