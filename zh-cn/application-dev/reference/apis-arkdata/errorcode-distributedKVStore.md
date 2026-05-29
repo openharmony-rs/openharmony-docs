@@ -40,12 +40,12 @@ Over max limits.
 
 **可能原因**
 
-1.  在调用订阅数据库变化接口[on](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数量已超过最大限制数目8。
+1.  在调用订阅数据库变化接口[on('dataChange')](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数量已超过最大限制数目8。
 2.  调用获取数据库结果集接口[getResultSet](js-apis-distributedKVStore.md#getresultset)时，数据库当前打开的结果集数目超过最大限制数目8。
 
 **处理步骤**
 
-1. 如果在调用订阅数据库变化接口[on](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数量已超过最大限制，调用[off](js-apis-distributedKVStore.md#offdatachange)接口取消对数据库的部分订阅后，再次尝试订阅。
+1. 如果在调用订阅数据库变化接口[on('dataChange')](js-apis-distributedKVStore.md#ondatachange)时，对数据库的订阅数量已超过最大限制，调用[off('dataChange')](js-apis-distributedKVStore.md#offdatachange)接口取消对数据库的部分订阅后，再次尝试订阅。
 2. 如果在调用获取数据库结果集接口[getResultSet](js-apis-distributedKVStore.md#getresultset)时数据库当前打开的结果集数目超过最大限制，调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)接口关闭部分打开的结果集后重试。
 
 ## 15100002 打开已有数据库时参数配置发生变化
