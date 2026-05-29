@@ -39624,7 +39624,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/HKDFDerivation/entry/src/main/cpp/types/project/hkdf_test.cpp",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":104,
 						"name":"hkdf_test_cpp",
 						"start_line":16
 					}
@@ -39674,7 +39674,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/cpp/types/project/pbkdf2_test.cpp",
 				"functions":[
 					{
-						"end_line":103,
+						"end_line":108,
 						"name":"pbkdf2_test_cpp",
 						"start_line":16
 					}
@@ -54215,7 +54215,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/KemEncapsulateDecapsulate/entry/src/main/ets/pages/Sync.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":38,
 						"name":"kem_encapsulate_decapsulate_sync_test",
 						"start_line":16
 					}
