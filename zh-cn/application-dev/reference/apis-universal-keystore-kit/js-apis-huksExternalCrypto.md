@@ -58,6 +58,19 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | tag    | [HuksExternalCryptoTag](#huksexternalcryptotag)  | 否   | 否   | 参数标签，用于区分参数。 |
 | value  | boolean\|number\|bigint\|Uint8Array | 否   | 否   | 标签对应值。 |
 
+## HuksExternalErrorInfo
+
+表示外部密钥操作的Extension错误信息。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**起始版本：** 26
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| errno | number | 否 | 否 | Extension错误码。<br>- 非0值：Extension返回错误信息结构体时的错误码。<br>- 0值：Extension未返回错误信息结构体，保持上次的错误码。 |
+| errorDesc | string | 否 | 否 | Extension错误描述。<br>- Extension返回错误信息结构体时，返回Extension的描述。<br>- Extension未返回错误信息结构体时，保持上次的描述。 |
+
 ## HuksExternalPinAuthState
 
 表示Ukey PIN码管理的状态值的枚举。
@@ -698,5 +711,49 @@ async function testFunction() : Promise<void>
   } catch (error) {
     console.error(`promise: setProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
   }
+}
+```
+
+
+## huksExternalCrypto.getErrorInfo
+
+getErrorInfo(): HuksExternalErrorInfo
+
+获取最近一次外部密钥操作的Extension错误信息。该接口为同步接口。
+
+> **说明：**
+>
+> 1. 此接口仅返回Extension的错误信息，HUKS内部错误通过异常抛出。
+> 2. Extension未返回错误信息结构体时（errno为0），保持上一次的错误信息。
+> 3. 建议在操作失败后立即调用此接口获取Extension错误信息。
+
+**系统能力：** SystemCapability.Security.Huks.CryptoExtension
+
+**起始版本：** 26
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [HuksExternalErrorInfo](#huksexternalerrorinfo) | 返回最近一次操作的错误信息。 |
+
+**示例：**
+
+```ts
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+
+const testResourceId = JSON.stringify({
+  providerName: "testProviderName",
+  bundleName: "com.example.cryptoapplication",
+  abilityName: "CryptoExtension",
+  index: "testKey"
+});
+
+try {
+  await huksExternalCrypto.authUkeyPin(resourceId, params);
+} catch (error) {
+  const errorInfo = huksExternalCrypto.getErrorInfo();
+  console.info(`errno: ${errorInfo.errno}`);
+  console.info(`errorDesc: ${errorInfo.errorDesc}`);
 }
 ```
