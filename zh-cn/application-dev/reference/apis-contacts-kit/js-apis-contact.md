@@ -4554,7 +4554,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 
 ## contact.syncContacts
 
-syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;int&gt;&gt;
+syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgress, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
 批量同步多个联系人至联系人数据库。最多可批量同步400个联系人。调用方必须处于前台。
 
@@ -4581,7 +4581,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;int&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
+| Promise&lt;number&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
 
 **错误码：**
 
@@ -4705,7 +4705,7 @@ console.info('queryContactSyncInfo syncInfoList '  + JSON.stringify(syncInfoList
 
 ## contact.importContactsViaUI
 
-importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;int&gt;&gt;
+importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&lt;number&gt;&gt;
 
 通过UI交互批量导入多个联系人。每次最多可导入100个联系人。
 
@@ -4728,7 +4728,7 @@ importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&l
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回联系人创建结果的数组。数组中返回值大于0表示该联系人创建成功，返回值为-1表示创建失败，返回值为-2表示用户未选择该联系人。|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回联系人创建结果的数组。数组中返回值大于0表示该联系人创建成功，返回值为-1表示创建失败，返回值为-2表示用户未选择该联系人。|
 
 **错误码：**
 
@@ -5533,9 +5533,11 @@ let website: contact.Website = {
 ```
 
 
-## ContactSyncMode<sup>26+</sup>
+## ContactSyncMode
 
 枚举，同步模式的类型。
+
+**起始版本**：26.0.0
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -5546,9 +5548,11 @@ let website: contact.Website = {
 | MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts |
 | MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。<br/>**系统能力**：SystemCapability.Applications.Contacts                 |
 
-## ContactSyncProgress<sup>26+</sup>
+## ContactSyncProgress
 
 联系人同步进度的信息。包含同步ID、当前批次和总批次。
+
+**起始版本**：26.0.0
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -5556,13 +5560,15 @@ let website: contact.Website = {
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
-| syncId        | int |  否  |  否   |  表示用于同步所有联系人的同步标识符。该值应从0开始。     |
-| currentBatch        | int |  否  |  否    | 表示要同步的当前联系人批次的标识符。值的范围是从1到totalBatches。     |
-| totalBatches        | int |  否  |  否    | 表示要同步的联系人批次总数。     |
+| syncId        | number |  否  |  否   |  表示用于同步所有联系人的同步标识符。该值应从0开始。     |
+| currentBatch        | number |  否  |  否    | 表示要同步的当前联系人批次的标识符。值的范围是从1到totalBatches。     |
+| totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
 
-## ContactSyncInfo<sup>26+</sup>
+## ContactSyncInfo
 
 调用应用程序相关的联系人同步的信息。
+
+**起始版本**：26.0.0
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -5571,8 +5577,8 @@ let website: contact.Website = {
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | mode        | [ContactSyncMode](#contactsyncmode) |  否  |  否   |  联系人同步模式。     |
-| syncId        | int |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
-| completedBatches        | Array&lt;int&gt; |  否  |  否    | 表示已成功同步的联系人的批处理标识符数组。值的范围是从1到totalBatches。     |
-| totalBatches        | int |  否  |  否    | 表示要同步的联系人批次总数。     |
-| lastSyncTime        | int |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
+| syncId        | number |  否  |  否    | 表示用于同步所有联系人的同步标识符。     |
+| completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人的批处理标识符数组。值的范围是从1到totalBatches。     |
+| totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
+| lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳（毫秒）。|
 
