@@ -77,12 +77,12 @@
 
    - 定义倒计时实例。
      
-      <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+      <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->   
       
       ``` TypeScript
       let timer: reminderAgentManager.ReminderRequestTimer = {
         reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,  // 提醒类型为倒计时类型
-        ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长和振动时长（单位：秒）
+        ringDuration: Constant.REMINDER_DURATION,
         title: context.resourceManager.getStringSync($r('app.string.timer').id),  // 指明提醒标题, "app.string.timer"资源文件中的value值为"计时器"
         content: context.resourceManager.getStringSync($r('app.string.countdown_close').id),  // 指明提醒内容, "app.string.countdown_close"资源文件中的value值为"计时器已结束"
         wantAgent: {  // // 点击提醒通知后跳转的目标UIAbility信息
@@ -97,7 +97,7 @@
 
    - 定义日历实例。
      
-      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->   
       
       ``` TypeScript
       let calendar: reminderAgentManager.ReminderRequestCalendar = {
@@ -116,7 +116,7 @@
         }],
         // 点击提醒通知后跳转的目标UIAbility信息
         wantAgent: { pkgName: 'com.example.reminderagentmanager', abilityName: 'EntryAbility' },
-        ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长和振动时长（单位：秒）
+        ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长（单位：秒）
         title: context.resourceManager.getStringSync($r('app.string.calendar').id),  // 指明提醒标题, "app.string.calendar"资源文件中的value值为"日历"
         content: context.resourceManager.getStringSync($r('app.string.calendar_reach').id),  // 指明提醒内容, "app.string.calendar_reach"资源文件中的value值为"日历提醒时间到了"
         slotType: notificationManager.SlotType.CONTENT_INFORMATION  // 指明提醒的Slot类型
@@ -125,7 +125,7 @@
 
    - 定义闹钟实例。
    
-      <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
+      <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->   
       
       ``` TypeScript
       let alarm: reminderAgentManager.ReminderRequestAlarm = {
@@ -144,7 +144,7 @@
           }
         ],
         slotType: notificationManager.SlotType.CONTENT_INFORMATION,  // 指明提醒的Slot类型
-        ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长和振动时长（单位：秒）
+        ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长（单位：秒）
         wantAgent: {  // 点击提醒通知后跳转的目标UIAbility信息
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
