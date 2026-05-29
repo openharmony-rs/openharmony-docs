@@ -36737,6 +36737,11 @@
 						"end_line":365,
 						"name":"enable_mute_suggestion",
 						"start_line":24
+					},
+					{
+						"end_line":454,
+						"name":"set_session_behavior",
+						"start_line":26
 					}
 				]
 			}
@@ -37157,6 +37162,11 @@
 						"end_line":136,
 						"name":"cenable_muteSuggestion",
 						"start_line":117
+					},
+					{
+						"end_line":228,
+						"name":"cset_session_behavior",
+						"start_line":213
 					}
 				]
 			}
