@@ -1578,7 +1578,7 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略，该策略重启后失效。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
+为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
 
 冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
 
@@ -1586,7 +1586,7 @@ addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.Applica
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+**设备行为差异：** 在API版本26.0.0之前，该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API版本26.0.0开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1649,7 +1649,7 @@ removeFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.Appl
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+**设备行为差异：** 在API版本26.0.0之前，该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API版本26.0.0开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1712,7 +1712,7 @@ getFreezeExemptedApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+**设备行为差异：** 在API版本26.0.0之前，该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API版本26.0.0开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
