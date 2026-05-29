@@ -1,9 +1,9 @@
-# Calendar Error Codes
+# Calendar Kit Error Codes
 
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @huangxinwei-->
+<!--Designer: @windsky6-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -63,7 +63,11 @@ An internal program error occurred.
 
 **Possible causes**
 
-Internal processing exception.
+1. **dataShare** database execution error.
+
+2. Null pointer error.
+
+3. Data parsing error.
 
 **Solution**
 
