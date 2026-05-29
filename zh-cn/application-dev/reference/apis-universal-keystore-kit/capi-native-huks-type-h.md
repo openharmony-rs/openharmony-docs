@@ -513,7 +513,7 @@ enum OH_Huks_AuthStorageLevel
 | OH_HUKS_AUTH_STORAGE_LEVEL_ECE = 2 | 表示密钥仅在解锁状态时可访问。 |
 > **说明：**
 >
->  业务在使用存储等级为ECE的密钥时，建议通过感知[锁屏事件](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
+>  业务在使用存储等级为ECE的密钥时，建议通过锁屏事件[COMMON_EVENT_SCREEN_LOCKED](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked)来清理使用该密钥创建的会话资源，以保证安全性。
 ### OH_Huks_ChallengeType
 
 ```c
