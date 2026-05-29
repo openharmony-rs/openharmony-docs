@@ -55,17 +55,21 @@ import { image } from '@kit.ImageKit';
 - 格式示例中的key为：image.PropertyKey.XXX（XXX为枚举的名称，如：image.PropertyKey.XTSTYLE_TEMPLATE_NAME） 。
 - 格式示例仅用于说明修改传值和读取结果的格式。具体接口使用方法请参考：[modifyImageProperty](arkts-apis-image-ImageSource.md#modifyimageproperty11)（修改单个Exif字段）、[modifyImageProperties](arkts-apis-image-ImageSource.md#modifyimageproperties12)（修改多个Exif字段）、[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)（读取单个Exif字段）、[getImageProperties](arkts-apis-image-ImageSource.md#getimageproperties12)（读取多个Exif字段）。
 
+**起始版本：** 26.0.0。
+
+**系统接口：** 该接口为系统接口。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称                         | 值      | 说明       |
 | ---------------------------- | ------ | ---------- |
-| XTSTYLE_TEMPLATE_NAME     | 'HwMnoteXtStyleTemplateName'     | XTstyle模板名称。<br/>此接口为系统接口。<br>**起始版本：** 26.0.0|
-| XTSTYLE_CUSTOM_LIGHT_AND_SHADOW             | 'HwMnoteXtStyleCustomLightAndShadow'    | XTstyle自定义光影。<br/>此接口为系统接口。<br>**起始版本：** 26.0.0|
-| XTSTYLE_CUSTOM_SATURATION             | 'HwMnoteXtStyleCustomSaturation'    | XTstyle自定义饱和度。<br/>此接口为系统接口。<br>**起始版本：** 26.0.0|
-| XTSTYLE_CUSTOM_HUE             | 'HwMnoteXtStyleCustomHue'    | XTstyle自定义色调。<br/>此接口为系统接口。<br>**起始版本：** 26.0.0|
-| XTSTYLE_EXPOSURE_PARAM             | 'HwMnoteXtStyleExposureParam'    | XTstyle曝光参数。<br/>此接口为系统接口。<br>**起始版本：** 26.0.0|
+| XTSTYLE_TEMPLATE_NAME     | 'HwMnoteXtStyleTemplateName'     | XTstyle模板名称。|
+| XTSTYLE_CUSTOM_LIGHT_AND_SHADOW             | 'HwMnoteXtStyleCustomLightAndShadow'    | XTstyle自定义光影。|
+| XTSTYLE_CUSTOM_SATURATION             | 'HwMnoteXtStyleCustomSaturation'    | XTstyle自定义饱和度。|
+| XTSTYLE_CUSTOM_HUE             | 'HwMnoteXtStyleCustomHue'    | XTstyle自定义色调。|
+| XTSTYLE_EXPOSURE_PARAM             | 'HwMnoteXtStyleExposureParam'    | XTstyle曝光参数。|
 
 ## image.createPictureByHdrAndSdrPixelMap<sup>20+</sup>
 
