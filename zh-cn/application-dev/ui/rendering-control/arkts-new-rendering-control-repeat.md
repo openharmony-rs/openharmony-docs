@@ -257,6 +257,8 @@ Repeat组件默认开启节点复用功能。从API version 18开始，在懒加
 
 从API version 18开始，Repeat支持懒加载模式下[缓存池自定义组件冻结](../state-management/arkts-custom-components-freezeV2.md#repeat)。
 
+从API version 18开始，Repeat允许在[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each)中使用[@ReusableV2](../state-management/arkts-new-reusableV2.md)装饰的自定义组件。Repeat自身的复用能力优先于@ReusableV2的复用能力。在懒加载模式下，正常滑动场景、更新场景不会触发@ReusableV2的回收和复用，若开发者希望使用@ReusableV2的复用能力，建议关闭Repeat自身的复用能力。在全量加载模式下，删除、创建子组件会触发@ReusableV2的回收和复用。使用示例可参考[在Repeat组件中使用](../state-management/arkts-new-reusableV2.md#在repeat组件中使用)@ReusableV2。
+
 > **说明：**
 > 
 > Repeat子组件的节点操作分为四种：节点创建、节点更新、节点复用、节点销毁。其中，节点更新和节点复用的区别为：
