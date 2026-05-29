@@ -4722,7 +4722,7 @@ importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&l
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID (可通过 {@link Contact#getId()})获得的值表示创建成功。 |
+| Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回联系人创建结果的数组。数组中返回值大于0表示该联系人创建成功，返回值为-1表示创建失败，返回值为-2表示用户未选择该联系人。|
 
 **错误码：**
 
