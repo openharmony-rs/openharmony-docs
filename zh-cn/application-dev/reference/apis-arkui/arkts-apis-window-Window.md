@@ -15163,7 +15163,7 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError | null, windowClass) => {
       try {
         if (err?.code) {
-        console.error(Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message});
+        console.error(`Failed to obtain the main window. Cause code: ${err?.code}, message: ${err?.message}`);
         return;
         }
         if (windowClass != undefined) {
@@ -15175,7 +15175,7 @@ export default class EntryAbility extends UIAbility {
           promise.then(() => {
             console.info('Succeeded in setting window support modes');
           }).catch((err: Error) => {
-            console.error(Failed to set window support modes. Cause code: ${err.code}, message: ${err.message});
+            console.error(`Failed to set window support modes. Cause code: ${err.code}, message: ${err.message}`);
           });
         }
       } catch (exception) {
