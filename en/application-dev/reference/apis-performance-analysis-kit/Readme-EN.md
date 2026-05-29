@@ -55,6 +55,7 @@
     - [HiDebug_SystemMemInfo](capi-hidebug-hidebug-systemmeminfo.md)
     - [HiDebug_NativeMemInfo](capi-hidebug-hidebug-nativememinfo.md)
     - [HiDebug_MemoryLimit](capi-hidebug-hidebug-memorylimit.md)
+    - [OH_HiDebug_RequestTraceConfig](capi-hidebug-oh-hidebug-requesttraceconfig.md)
     - [HiDebug_JsStackFrame](capi-hidebug-hidebug-jsstackframe.md)
     - [HiDebug_NativeStackFrame](capi-hidebug-hidebug-nativestackframe.md)
     - [HiDebug_StackFrame](capi-hidebug-hidebug-stackframe.md)
@@ -62,6 +63,8 @@
     - [HiDebug_Backtrace_Object__*](capi-hidebug-hidebug-backtrace-object--8h.md)
     - [HiDebug_GraphicsMemorySummary](capi-hidebug-hidebug-graphicsmemorysummary.md)
     - [HiDebug_ProcessSamplerConfig](capi-hidebug-hidebug-processsamplerconfig.md)
+    - [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md)
+    - [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md)
     - [HiTraceId](capi-hitrace-hitraceid.md)
 - Error Codes<!--performance-analysis-errcode-->
   - [FaultLogger Error Codes](errorcode-faultlogger.md)

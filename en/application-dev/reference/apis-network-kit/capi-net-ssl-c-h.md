@@ -198,7 +198,7 @@ Boolean value indicating whether host name–based plaintext HTTP is allowed.
 | -- | -- |
 | int32_t | **0**: Success.<br>         **201**: Permission denied.<br>         **401**: Parameter error.|
 
-### OH_Netstack_IsCleartextCfgByComponent
+### OH_Netstack_IsCleartextCfgByComponent()
 
 ```c
 int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);

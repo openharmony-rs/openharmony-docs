@@ -196,7 +196,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
   console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx', // Peer IP address
+  address: '192.168.xx.xxx',  // Peer IP address
   port: 8080
 }
 let sendOptions: socket.UDPSendOptions = {
@@ -231,7 +231,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
   console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx', // Peer IP address
+  address: '192.168.xx.xxx',  // Peer IP address
   port: 8080
 }
 let socks5Server: socket.NetAddress = {
@@ -1008,7 +1008,7 @@ Defines the destination address.
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| address<sup>11+</sup> | string | No  | No  | Bound IP address.                                          |
+| address<sup>11+</sup> | string | No  | No  | IP address. In the **bind** method, this parameter indicates the local bound address. In the **connect** method, this parameter indicates the destination address.                                          |
 | port    | number | No  | No  | Port number. The value ranges from **0** to **65535**. If this parameter is not specified, the system randomly allocates a port.          |
 | family  | number | No  | No  | Network protocol type.<br>- **1**: IPv4 The default value is **1**.<br>- **2**: IPv6 For an IPv6 address, this field must be explicitly set to **2**.<br>- **3**: domain address<sup>18+</sup> For a domain address, this field must be explicitly set to **3**. Currently, only [TCPSocket.connect](#connect) and [TLSSocket.connect](#connect9) are supported.|
 
@@ -1089,7 +1089,7 @@ Defines information about the socket connection.
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| address | string | No  | No  | Bound IP address.                                          |
+| address | string | No  | No  | Peer IP address.                                          |
 | family  | 'IPv4' \| 'IPv6' | No  | No | Network protocol type.<br>- IPv4<br>- IPv6<br>The default value is **IPv4**.|
 | port    | number | No  | No | Port number. The value ranges from **0** to **65535**.                                       |
 | size    | number | No  | No | Length of the server response message, in bytes.                                  |
@@ -2640,7 +2640,8 @@ tcp.connect(tcpconnectoptions, () => {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
     reuseAddress: true,
-    socketTimeout: 3000
+    socketTimeout: 3000,
+    tcpFastOpen: false
   }
   tcp.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
     if (err) {
@@ -2717,7 +2718,8 @@ tcp.connect(tcpconnectoptions, () => {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
     reuseAddress: true,
-    socketTimeout: 3000
+    socketTimeout: 3000,
+    tcpFastOpen: false
   }
   tcp.setExtraOptions(tcpExtraOptions).then(() => {
     console.info('setExtraOptions success');
@@ -2998,7 +3000,7 @@ Defines the parameters for sending data over a TCP socket connection.
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | data     | string\| ArrayBuffer  | No  | No  | Data to send.                                                |
-| encoding | string | No  | Yes  | Character encoding format. The options are as follows: **UTF-8**, **UTF-16BE**, **UTF-16LE**, **UTF-16**, **US-AECII**, and **ISO-8859-1**. The default value is **UTF-8**.|
+| encoding | string | No  | Yes  | Character encoding format. The options are as follows: **UTF-8**, **UTF-16BE**, **UTF-16LE**, **UTF-16**, **US-ASCII**, and **ISO-8859-1**. The default value is **UTF-8**.|
 
 ## TCPExtraOptions
 
@@ -3012,6 +3014,7 @@ Defines other properties of the **TCPSocket** object. This object is inherited f
 | OOBInline         | boolean | No  | Yes  | Whether to enable OOBInline. The default value is **false**. The value **true** means to enable OOBInline, and the value **false** indicates the opposite.                                |
 | TCPNoDelay        | boolean | No  | Yes  | Whether to enable no-delay on the TCP socket connection. The default value is **false**. The value **true** means to enable no-delay on the TCP socket connection, and the value **false** indicates the opposite.                      |
 | socketLinger      | \{on:boolean, linger:number\}  | No  | Yes  | Socket linger.<br>- **on**: whether to enable socket linger. The value true means to enable socket linger and false means the opposite.<br>- **linger**: linger time, in ms. The value ranges from **0** to **65535**.<br>Specify this parameter only when **on** is set to **true**.|
+| tcpFastOpen<sup>24+</sup> | boolean                        | No | Yes | Whether to enable TCP Fast Open (TFO) in the TCP socket connection. This function allows the client to carry data during the first handshake, reducing the connection setup delay and improving the performance in high-frequency short connection scenarios. The default value is **false**. **true**: yes; **false**: no.<br>Currently, this parameter can be configured only on the client.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## socket.constructTCPSocketServerInstance<sup>10+</sup>
 
@@ -5348,8 +5351,8 @@ Defines base properties of the **LocalSocket** object.
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | receiveBufferSize | number  | No  | Yes  | Size of the RX buffer, in bytes. The value ranges from 0 to 262144. If this parameter is left unspecified or the unspecified value exceeds the value range, the default value **8192** is used.    |
 | sendBufferSize    | number  | No  | Yes  | Size of the TX buffer, in bytes. The value ranges from 0 to 262144. If this parameter is left unspecified or the unspecified value exceeds the value range, the default value **8192** is used.    |
-| reuseAddress      | boolean | No  | Yes  | Whether to reuse addresses. The value **true** means to reuse addresses, and the value **false** means the opposite.                  |
-| socketTimeout     | number  | No  | Yes  | Timeout duration of the local socket connection, in ms.   |
+| reuseAddress      | boolean | No  | Yes  | Whether to reuse addresses. The value **true** means to reuse addresses, and the value **false** means the opposite. The default value is **false**.                  |
+| socketTimeout     | number  | No  | Yes  | Timeout duration of the local socket connection, in ms. The default value is **0**, indicating that the timeout period is not set.   |
 
 ## socket.constructLocalSocketServerInstance<sup>11+</sup>
 
@@ -5951,7 +5954,7 @@ Sends data through a local socket connection. This API uses a promise to return 
 
 | Name | Type                             | Mandatory| Description                                                        |
 | ------- | --------------------------------- | ---- | -------------------------------------- |
-| options | [LocalSendOptions](#localsendoptions11) | Yes  | Defines the parameters for sending data over a local socket connection.|
+| options | [LocalSendOptions](#localsendoptions11) | Yes  | Parameters for sending data over a local socket connection.|
 
 **Return value**
 
@@ -6746,7 +6749,8 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   receiveBufferSize: 8192,
   sendBufferSize: 8192,
   reuseAddress: true,
-  socketTimeout: 3000
+  socketTimeout: 3000,
+  tcpFastOpen: false
 }
 tls.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
   if (err) {
@@ -6819,7 +6823,8 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   receiveBufferSize: 8192,
   sendBufferSize: 8192,
   reuseAddress: true,
-  socketTimeout: 3000
+  socketTimeout: 3000,
+  tcpFastOpen: false
 }
 tls.setExtraOptions(tcpExtraOptions).then(() => {
   console.info('setExtraOptions success');
