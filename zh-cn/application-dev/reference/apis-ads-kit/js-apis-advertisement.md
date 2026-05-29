@@ -38,4 +38,4 @@ import { advertising } from '@kit.AdsKit';
 | shown | boolean | 否 | 否 | 广告是否展示。<br/>- true：展示。<br/>- false：未展示。 | 
 | clicked | boolean | 否 | 否 | 广告是否被点击。<br/>- true：被点击。<br/>- false：未被点击。 | 
 | rewardVerifyConfig | Map&lt;string, string&gt; | 否 | 否 | 服务器验证参数。<br/>{<br/>customData: "test",<br/>userId: "12345"<br/>} | 
-| [key: string] | Object | 否 | 是 | 自定义参数。<br/>- isFullScreen：类型boolean。开屏广告自定义参数，用于标识返回的广告是否为全屏，true为全屏广告，false为半屏广告。<br/>- biddingInfo：类型Object。用于获取实时竞价相关结果。<br/>- biddingInfo.price：类型number。本条广告的eCPM（Effective Cost Per Mille，每一千次展示可以获得的广告收入）。<br/>- biddingInfo.cur：类型string。 本条广告的价格币种。支持币种：CNY（单位：元）、USD（单位：美元）、EUR（单位：欧元）、GBP（单位：英镑）、JPY（单位：日元）。<br/>- biddingInfo.nurl：类型string。媒体回传竞价成功结果的URL。<br/>- biddingInfo.lurl：类型string。媒体回传竞价失败通知其他DSP竞价成功结果的URL。 | 
+| [key: string] | Object | 否 | 是 | 自定义参数。<br/><!--RP1--><!--RP1End--> | 
