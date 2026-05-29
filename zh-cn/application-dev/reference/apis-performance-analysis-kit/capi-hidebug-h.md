@@ -613,15 +613,29 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
 
 异步启动当前进程资源采集功能。<br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。<br>若采集异常，则文件路径为NULL。
 
+**规格和约束：**
+
+1. 采集配额限制：<br>
+   - 整机（所有应用共享）：每日最多可采集4次；同一时刻，最高支持4个不同应用并行采集。
+   - 应用（单应用独享）：每日最多可采集2次；同一时刻，最高支持应用内2个进程并行采集。
+   - 进程（单进程独享）：同一时刻，仅支持启动1个采集任务。
+2. 系统负载熔断机制：
+   当系统触发以下任一负载保护条件时，API采集请求将被拒绝，并返回相应错误码：<br>
+   - CPU限制：整机系统CPU占用率超过70%；<br>
+   - 内存限制：整机系统可用内存不足20%；<br>
+   - 存储限制：整机系统可用存储空间不足20%。<br>
+3. 并发冲突约束：
+   - 当API采集与命令行工具或系统采集任务发生冲突时，API采集请求将被拒绝，并返回相应错误码。<br>
+4. 采集结果保存：<br>
+   - 存储路径：采集到的调用栈日志文件将自动保存在应用沙箱/data/storage/el2/base/files/目录下。<br>
+   - 文件名规则：”资源采集类型-进程名-进程号-时间戳.htrace”。<br>
+5. 权限约束：<br>
+   - 采集资源的目标进程仅支持调用接口进程本身，不支持跨进程采集。<br>
+
 > **注意：**
 >
-> 1. 当前接口每24小时可调用10次；
-> 2. 采集资源的目标进程仅支持调用接口进程本身；
-> 3. 系统CPU占用率超过70%或内存可用空间少于15%或存储可用空间少于15%时，接口将调用失败并返回对应错误码；
-> 4. 当接口与命令行工具或系统采集任务发生冲突时，将调用失败，并返回相应的错误码；
-> 5. 同一个应用如存在多个进程，此接口最多可同时启动4个；
-> 6. 采集结果将保存在应用沙箱/data/storage/el2/base/files/目录下，文件名为“资源采集类型-进程名-进程号-时间戳.htrace”。
-> 7. 从API版本26.0.0开始，该接口将尽量丢弃已释放内存调用栈数据，减少采集文件大小，进一步降低采集过程中的性能开销。
+> 1. 受到上述采集规格与约束限制，本API不保证采集请求一定成功。
+> 2. 调用本API会对系统性能产生影响，请谨慎使用；影响类别包括但不限于：CPU占用率、内存占用、存储占用、系统响应速度等。开发者在集成本API时，必须谨慎评估其性能功耗开销，并建立严格的条件触发策略（如仅在特定灰度范围内、应用资源超基线阈值时触发，同时须配置合理的采集参数以兼顾性能功耗开销平衡），再决策是否开启，严禁在线上环境盲目或高频次触发。
 
 **起始版本：** 24
 
@@ -637,7 +651,7 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>        HIDEBUG_RES_PROF_SUCCESS：启动资源采集成功。<br>        HIDEBUG_RES_PROF_INVALID_ARG：资源采集参数无效。<br>        HIDEBUG_RES_PROF_INVALID_MAX_DURATION：资源采集最大持续时间参数无效。<br>        HIDEBUG_RES_PROF_INVALID_FILTER_SIZE：资源采集过滤大小参数无效。<br>        HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH：资源采集最大回栈深度参数无效。<br>        HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL：资源采集统计间隔参数无效。<br>        HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL：资源采集采样大小参数无效。<br>        HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE：资源采集类型参数无效。<br>        HIDEBUG_RES_PROF_PERMISSION_DENIED：资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>        HIDEBUG_RES_PROF_ALREADY_STARTED：资源采集重复启动。<br>        HIDEBUG_RES_PROF_PROCESS_OVERLIMIT：资源采集进程数超出 4 个限制。<br>        HIDEBUG_RES_PROF_CONFLICT：资源采集与命令行工具或系统采集任务冲突。<br>        HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED：资源采集每日配额超出 10 次限制。<br>        HIDEBUG_RES_PROF_CPU_OVERLOADED：系统 CPU 处于高负载状态，CPU 占用率超过 70%。<br>        HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL：内存可用空间紧张，可用空间少于 15%。<br>        HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL：存储可用空间紧张，可用空间少于 15%。<br>        HIDEBUG_RES_PROF_FAILURE：启动资源采集失败。 |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br>        HIDEBUG_RES_PROF_SUCCESS：启动资源采集成功。<br>        HIDEBUG_RES_PROF_INVALID_ARG：资源采集参数无效。<br>        HIDEBUG_RES_PROF_INVALID_MAX_DURATION：资源采集最大持续时间参数无效。<br>        HIDEBUG_RES_PROF_INVALID_FILTER_SIZE：资源采集过滤大小参数无效。<br>        HIDEBUG_RES_PROF_INVALID_MAX_STACK_DEPTH：资源采集最大回栈深度参数无效。<br>        HIDEBUG_RES_PROF_INVALID_STATISTICS_INTERVAL：资源采集统计间隔参数无效。<br>        HIDEBUG_RES_PROF_INVALID_SAMPLE_INTERVAL：资源采集采样大小参数无效。<br>        HIDEBUG_RES_PROF_INVALID_RESOURCE_TYPE：资源采集类型参数无效。<br>        HIDEBUG_RES_PROF_PERMISSION_DENIED：资源采集权限不足，采集资源的目标进程仅支持调用接口进程本身。<br>        HIDEBUG_RES_PROF_ALREADY_STARTED：资源采集重复启动。<br>        HIDEBUG_RES_PROF_PROCESS_OVERLIMIT：资源采集进程数超出限制，详见[规格和约束](#oh_hidebug_startprofiler)。<br>        HIDEBUG_RES_PROF_CONFLICT：资源采集与命令行工具或系统采集任务冲突，详见[规格和约束](#oh_hidebug_startprofiler)。<br>        HIDEBUG_RES_PROF_DAILY_QUOTA_EXCEEDED：资源采集每日配额超出限制，详见[规格和约束](#oh_hidebug_startprofiler)。<br>        HIDEBUG_RES_PROF_CPU_OVERLOADED：系统 CPU 处于高负载状态，详见[规格和约束](#oh_hidebug_startprofiler)。<br>        HIDEBUG_RES_PROF_MEM_PRESSURE_CRITICAL：内存可用空间紧张，详见[规格和约束](#oh_hidebug_startprofiler)。<br>        HIDEBUG_RES_PROF_STORAGE_PRESSURE_CRITICAL：存储可用空间紧张，详见[规格和约束](#oh_hidebug_startprofiler)。<br>        HIDEBUG_RES_PROF_FAILURE：启动资源采集失败。 |
 
 ### OH_HiDebug_StopProfiler()
 
