@@ -9094,7 +9094,7 @@ try {
 
 setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowMode>): Promise&lt;void&gt;
 
-设置主窗或子窗的窗口模式，使用Promise异步回调。
+设置主窗或子窗支持的窗口模式，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -9102,7 +9102,7 @@ setSupportedWindowModes(supportedWindowModes: Array<bundleManager.SupportWindowM
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持且处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换为[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码；
+**设备行为差异：** 该接口在支持且处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用生效；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换为[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 

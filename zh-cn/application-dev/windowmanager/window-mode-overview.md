@@ -259,7 +259,7 @@
 | 配置值 | 模式 | 说明 |
 | -------- | -------- | -------- |
 | SupportWindowMode.FULL_SCREEN | 全屏模式 | 窗口支持全屏显示。 |
-| SupportWindowMode.SPLIT | 分屏模式 | 窗口支持分屏显示。需要配合FULL_SCREEN或FLOATING一起使用，主窗不支持仅配置SPLIT。子窗不支持配置SPLIT。 |
+| SupportWindowMode.SPLIT | 分屏模式 | 主窗不支持仅配置SPLIT，需要配合FULL_SCREEN和FLOATING一起使用，子窗不支持配置SPLIT。 |
 | SupportWindowMode.FLOATING | 悬浮模式 | 窗口支持自由悬浮形式显示。 |
 
 - 仅在[自由窗口](freeform-window-overview.md#自由窗口)状态下生效。
